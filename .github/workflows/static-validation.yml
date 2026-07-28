@@ -11,7 +11,7 @@ jobs:
   inexpensive-checks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Static package validation
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/static_validate.py --root .
       - name: Python tests
