@@ -288,6 +288,12 @@ class PackageContractTests(unittest.TestCase):
         self.assertTrue(excluded(Path("docs/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.md")))
         self.assertFalse(excluded(Path("docs/evidence/arbitrary_scenario_source.md")))
 
+    def test_source_manifest_excludes_only_the_approved_r1_contract(self) -> None:
+        self.assertTrue(
+            excluded(Path("docs/validation/R1_CALIBRATION_AND_COMPARISON_CONTRACT.md"))
+        )
+        self.assertFalse(excluded(Path("docs/validation/arbitrary_contract_source.md")))
+
     def test_waszkiewicz_dossier_contract_is_complete_but_not_frozen(self) -> None:
         dossier = json.loads(
             (
@@ -420,6 +426,210 @@ class PackageContractTests(unittest.TestCase):
         self.assertFalse(boundaries["calibration_contract_frozen"])
         self.assertFalse(boundaries["protected_comparison_contract_frozen"])
         self.assertFalse(boundaries["r1_implementation_authorized"])
+
+    def test_r1_contract_is_complete_frozen_and_not_implemented(self) -> None:
+        contract_path = (
+            ROOT
+            / "validation/contracts/R1_CALIBRATION_AND_COMPARISON_CONTRACT.json"
+        )
+        markdown_path = (
+            ROOT / "docs/validation/R1_CALIBRATION_AND_COMPARISON_CONTRACT.md"
+        )
+        self.assertTrue(contract_path.is_file())
+        self.assertTrue(markdown_path.is_file())
+        contract = json.loads(contract_path.read_text(encoding="utf-8"))
+        dossier = json.loads(
+            (
+                ROOT / "validation/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            contract["schema_version"],
+            "espresso.public.r1_calibration_and_comparison_contract.v1",
+        )
+        self.assertEqual(contract["contract_status"], "FROZEN_FOR_WP01R_004")
+        self.assertEqual(
+            contract["authority_status"], "EFFECTIVE_WHEN_MERGED_TO_MAIN"
+        )
+        self.assertEqual(
+            contract["source_dependency"]["commit"],
+            "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+        )
+        self.assertEqual(
+            contract["source_dependency"]["tree"],
+            "1d553e44ee2f7480a5df521560801b478618cc84",
+        )
+        self.assertEqual(
+            contract["dossier_dependency"]["disposition"],
+            "READY_FOR_WP01R_003_WITH_DECLARED_GAPS",
+        )
+        self.assertEqual(
+            contract["dossier_dependency"]["markdown"]["git_blob"],
+            "0198b490393e6c75f2b1be627ee67873da495ad7",
+        )
+        self.assertEqual(
+            contract["dossier_dependency"]["json"]["git_blob"],
+            "b224ab2a53dbee98f0e3354a3254429f1521d52d",
+        )
+        allowed_roles = {
+            "PRESCRIBED_INPUT",
+            "CALIBRATED_PARAMETER",
+            "PREDICTED_OUTPUT",
+            "PROTECTED_COMPARISON",
+            "PLAUSIBILITY_OBSERVATION",
+            "UNAVAILABLE_OR_EXCLUDED",
+        }
+        dossier_ids = {item["quantity_id"] for item in dossier["quantity_inventory"]}
+        crosswalk = contract["source_quantity_role_crosswalk"]
+        crosswalk_ids = [item["quantity_id"] for item in crosswalk]
+        self.assertEqual(len(crosswalk_ids), 42)
+        self.assertEqual(len(crosswalk_ids), len(set(crosswalk_ids)))
+        self.assertEqual(set(crosswalk_ids), dossier_ids)
+        self.assertTrue(all(item["role"] in allowed_roles for item in crosswalk))
+
+        scenario = contract["scenario_inputs"]
+        self.assertAlmostEqual(
+            scenario["hydraulic_bed_area_m2"], math.pi * 0.028**2, places=18
+        )
+        expected_porosity = 1.0 - 0.0185 / (
+            1400.0 * scenario["hydraulic_bed_area_m2"] * 0.010
+        )
+        self.assertAlmostEqual(
+            scenario["initial_porosity"], expected_porosity, places=15
+        )
+        pressure = next(
+            item
+            for item in contract["derived_contract_quantities"]
+            if item["quantity_id"] == "late-basket-pressure"
+        )
+        flow = next(
+            item
+            for item in contract["derived_contract_quantities"]
+            if item["quantity_id"] == "source-static-equilibrium-flow"
+        )
+        permeability = next(
+            item
+            for item in contract["derived_contract_quantities"]
+            if item["quantity_id"] == "uniform-darcy-permeability"
+        )
+        calibrated = [
+            item
+            for item in contract["derived_contract_quantities"]
+            if item["role"] == "CALIBRATED_PARAMETER"
+        ]
+        protected_quantities = [
+            item
+            for item in contract["derived_contract_quantities"]
+            if item["role"] == "PROTECTED_COMPARISON"
+        ]
+        self.assertEqual(
+            [item["quantity_id"] for item in calibrated],
+            ["uniform-darcy-permeability"],
+        )
+        self.assertEqual(
+            [item["quantity_id"] for item in protected_quantities],
+            [f"protected-flow-shape-9-{index}" for index in range(1, 6)],
+        )
+        self.assertAlmostEqual(pressure["value"], 8.70902419, places=12)
+        pc = contract["calibration_contract"]["source_fit_inputs"]["P_c_bar"]
+        qc = contract["calibration_contract"]["source_fit_inputs"]["Q_c_g_per_s"]
+        x = pressure["value"] / pc
+        expected_flow = qc * x * (4.0 - 6.0 * x + 4.0 * x**2 - x**3)
+        self.assertAlmostEqual(flow["value"], expected_flow, places=14)
+        expected_permeability = (
+            (expected_flow / 1000.0 / scenario["liquid_density_kg_m3"])
+            * scenario["dynamic_viscosity_Pa_s"]
+            * scenario["bed_depth_m"]
+            / (
+                scenario["hydraulic_bed_area_m2"]
+                * pressure["solver_value_Pa_gauge"]
+            )
+        )
+        self.assertAlmostEqual(
+            permeability["value"], expected_permeability, delta=1e-29
+        )
+        calibration = contract["calibration_contract"]
+        self.assertEqual(calibration["active_solver_calibration_degrees_of_freedom"], 1)
+        self.assertEqual(
+            calibration["active_calibrated_quantity_id"],
+            "uniform-darcy-permeability",
+        )
+        self.assertEqual(
+            calibration["source_fit_inputs"]["active_solver_degrees_of_freedom"], 0
+        )
+        self.assertEqual(
+            calibration["wetting_permeability_m2"],
+            calibration["saturated_permeability_m2"],
+        )
+        self.assertEqual(
+            calibration["wetting_equals_saturated_status"],
+            "EXPLICIT_ENGINEERING_SIMPLIFICATION",
+        )
+        envelope = calibration["diagnostic_envelope"]
+        self.assertEqual(
+            envelope["kind"], "NONPROBABILISTIC_SOURCE_FIT_CORNER_ENVELOPE"
+        )
+        self.assertFalse(envelope["confidence_interval"])
+        self.assertFalse(envelope["endpoint_can_rescue_failed_comparison"])
+
+        protected = contract["protected_comparison_contract"]
+        self.assertEqual(protected["shot_ids"], ["9-1", "9-2", "9-3", "9-4", "9-5"])
+        self.assertEqual(
+            protected["protected_indices"],
+            {"first": 100, "last": 899, "inclusive": True},
+        )
+        self.assertEqual(
+            protected["normalization_indices"],
+            {"first": 900, "last": 999, "inclusive": True},
+        )
+        self.assertEqual(
+            protected["metrics"]["undefined_pearson_disposition"], "FAIL"
+        )
+        self.assertEqual(
+            contract["time_mapping_contract"]["source_to_solver_offset_s"], 3.0
+        )
+        self.assertFalse(
+            contract["time_mapping_contract"]["source_first_drop_offset_8s_used"]
+        )
+        for forbidden in (
+            "permeability selection",
+            "time shifting",
+            "pressure adjustment",
+            "smoothing selection",
+            "amplitude scaling",
+        ):
+            self.assertIn(forbidden, protected["forbidden_uses"])
+        self.assertEqual(calibration["optimizer_iterations"], 0)
+        self.assertEqual(calibration["post_run_calibration_iterations"], 0)
+        self.assertFalse(
+            any(
+                token in protected["quantity"].lower()
+                for token in ("tds", "extraction yield", "dissolved mass")
+            )
+        )
+        excluded_text = " ".join(contract["unavailable_or_excluded"]).lower()
+        for token in (
+            "carman-kozeny",
+            "brewer quadratic",
+            "poroelastic",
+            "structural evolution",
+        ):
+            self.assertIn(token, excluded_text)
+        boundaries = contract["authorization_boundaries"]
+        self.assertFalse(boundaries["r1_case_implemented"])
+        self.assertEqual(boundaries["r1_execution_count"], 0)
+        self.assertEqual(boundaries["openfoam_execution_count"], 0)
+        self.assertEqual(boundaries["parameter_fitting_count"], 0)
+        self.assertEqual(boundaries["optimizer_iteration_count"], 0)
+        markdown = markdown_path.read_text(encoding="utf-8")
+        for token in (
+            "FROZEN_FOR_WP01R_004",
+            "2.8642613245723525e-15",
+            "9-1",
+            "indices 100–899",
+            "fixed source-processing first-drop offset of 8 s is excluded",
+        ):
+            self.assertIn(token, markdown)
 
     def test_puckworks_v2_lock_and_checkout_contract(self) -> None:
         lock = json.loads(

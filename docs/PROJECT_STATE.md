@@ -13,10 +13,7 @@
 
 WP01R-001 dependency review is complete. Puckworks is locked to reviewed
 `main` snapshot `fc61c4670ec7bf801e40bb391aab16048b8da26b` with recommendation
-`ADOPT_WITH_FOLLOWUP`. WP01R-002 has prepared the governed Waszkiewicz
-source/quantity/evidence dossier with disposition
-`READY_FOR_WP01R_003_WITH_DECLARED_GAPS`. Issue #5 is the next scientific
-decision task and must freeze prescribed, calibrated, excluded, and
-protected-comparison roles plus the validation contract. No calibration role,
-protected comparison, R1 implementation, or physical validation has been
-accepted.
+`ADOPT_WITH_FOLLOWUP`. WP01R-002 is merged and issue #4 is complete. The
+WP01R-003 calibration/comparison contract is frozen on its review branch and
+becomes authoritative when merged. Issue #6 is the next implementation task.
+R0 remains frozen and unchanged; no R1 run or physical result exists yet.
