@@ -14,13 +14,17 @@ No Puckworks code/data, paper text, restricted dataset, archived executable, or 
 
 ## Authorship and rights attestation
 
-Status: **HUMAN_CONFIRMATION_REQUIRED**.
+Status: **OWNER_CONFIRMED**.
 
 The required owner statement and its completion fields are in:
 
 - `provenance/PUBLIC_AUTHORSHIP_AND_RIGHTS_ATTESTATION.md`
 - `provenance/PUBLIC_AUTHORSHIP_AND_RIGHTS_ATTESTATION.json`
 
-Until the owner explicitly supplies that statement, the automated review does not mark authorship and rights provenance complete.
+Tim Brewer supplied the recorded statement on `2026-07-28T13:33:06Z`.
+Authorship and rights provenance is `OWNER_ATTESTED`, and the repository
+publication decision is `APPROVED_BY_OWNER`. No remaining provenance exception
+is recorded.
 
-This automated audit is not legal advice.
+The attestation is a good-faith owner/maintainer statement. The automated audit
+is not legal advice and provides no automated legal opinion.

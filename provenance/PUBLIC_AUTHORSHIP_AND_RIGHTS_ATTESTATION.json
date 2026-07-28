@@ -1,18 +1,24 @@
 {
   "schema_version": "espresso.public.authorship_rights_attestation.v1",
-  "status": "HUMAN_CONFIRMATION_REQUIRED",
+  "status": "OWNER_CONFIRMED",
   "owner": "Tim Brewer",
-  "confirmed": false,
-  "confirmation_date": null,
-  "required_statement": {
-    "entitled_to_publish_original_project_files_under_gpl_3_0_or_later": null,
-    "no_unacknowledged_third_party_source_restricted_data_paper_text_binary_or_confidential_material": null,
-    "openfoam_linked_or_derived_portions_gpl_compatible_and_notices_retained": null,
+  "confirmed": true,
+  "confirmation_timestamp_utc": "2026-07-28T13:33:06Z",
+  "verbatim_owner_statement": "“I, Tim Brewer, as the maintainer and publisher of this repository, confirm that, to the best of my knowledge and after reviewing the publication audit, I have the necessary rights or permissions to publish the repository content under GPL-3.0-or-later. I am not aware of any unacknowledged third-party source code, confidential material, restricted dataset, copyrighted paper text, proprietary binary, credential, or other content that I lack permission to publish. OpenFOAM-related licensing and retained notices are acknowledged. Puckworks remains an external MIT-licensed dependency and is not vendored. AI-assisted tools were used in development and review. Any remaining uncertainty is disclosed in the repository’s licensing and provenance records. This is a good-faith owner/maintainer attestation and is not legal advice.”",
+  "publication_readiness": "PASS",
+  "authorship_and_rights_provenance": "OWNER_ATTESTED",
+  "repository_publication_decision": "APPROVED_BY_OWNER",
+  "solver_license": "GPL-3.0-or-later",
+  "attested_facts": {
+    "entitled_to_publish_original_project_files_under_gpl_3_0_or_later": true,
+    "no_unacknowledged_third_party_source_restricted_data_paper_text_binary_or_confidential_material": true,
+    "openfoam_linked_or_derived_portions_gpl_compatible_and_notices_retained": true,
     "puckworks_external_mit_dependency_not_vendored": true,
     "ai_assistance_disclosed_where_applicable": true,
     "automated_audit_claimed_as_legal_advice": false,
     "uncertain_provenance_listed_explicitly": true
   },
-  "uncertain_provenance": [],
-  "publication_blocked_pending_human_confirmation": true
+  "automated_legal_opinion": "NOT_PROVIDED",
+  "remaining_provenance_exceptions": [],
+  "publication_blocked_pending_human_confirmation": false
 }

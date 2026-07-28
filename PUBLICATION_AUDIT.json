@@ -1,6 +1,10 @@
 {
   "schema_version": "espresso.public.publication_audit.v1",
-  "overall_disposition": "PASS_WITH_HUMAN_REVIEW_REQUIRED",
+  "overall_disposition": "PASS",
+  "publication_readiness": "PASS",
+  "authorship_and_rights_provenance": "OWNER_ATTESTED",
+  "repository_publication_decision": "APPROVED_BY_OWNER",
+  "automated_legal_opinion": "NOT_PROVIDED",
   "checks": {
     "source_verification": {"status": "PASS", "checked": 106, "total": 106},
     "current_public_aggregate_source_sha256": "ad6f9b84e69b6178d77f867a085198908dcda4afe2360ec840824faadc793267",
@@ -30,10 +34,10 @@
     "git_mode_portability": "PASS",
     "reachable_git_history_audit": {
       "status": "PASS",
-      "commit_count": 3,
-      "tag_count": 1,
-      "blob_count": 132,
-      "total_reachable_blob_bytes": 1415116
+      "commit_count": 4,
+      "tag_count": 2,
+      "blob_count": 142,
+      "total_reachable_blob_bytes": 1434017
     }
   },
   "findings": {
@@ -54,14 +58,17 @@
     "email_present_in_repository_files": false
   },
   "license_audit": {
-    "status": "HUMAN_REVIEW_REQUIRED",
+    "status": "PASS",
     "solver_license": "GPL-3.0-or-later",
     "puckworks_license": "MIT",
     "puckworks_material_vendored": false,
     "source_files_sampled_for_headers": 22,
     "files_with_spdx_header": 1,
     "automated_audit_is_legal_advice": false,
-    "human_rights_attestation": "HUMAN_CONFIRMATION_REQUIRED"
+    "human_rights_attestation": "OWNER_CONFIRMED",
+    "owner": "Tim Brewer",
+    "confirmation_timestamp_utc": "2026-07-28T13:33:06Z",
+    "remaining_provenance_exceptions": []
   },
   "tooling_limitations": [
     "gitleaks was not installed; explicit regex secret scanning was used.",

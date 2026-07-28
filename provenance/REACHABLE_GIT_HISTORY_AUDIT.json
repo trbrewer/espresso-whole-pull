@@ -4,14 +4,15 @@
   "scope": "every object reachable from all local branches, tags, and Git-note refs",
   "scanned_refs": [
     "refs/heads/main",
-    "refs/tags/v0.1.4-public-source"
+    "refs/tags/v0.1.4-public-source",
+    "refs/tags/v0.1.4-public.1"
   ],
   "branch_count": 1,
-  "tag_count": 1,
   "note_ref_count": 0,
-  "commit_count": 3,
-  "blob_count": 132,
-  "total_reachable_blob_bytes": 1415116,
+  "commit_count": 4,
+  "tag_count": 2,
+  "blob_count": 142,
+  "total_reachable_blob_bytes": 1434017,
   "pattern_occurrence_counts": {
     "private_home_path": 0,
     "private_hostname": 0,

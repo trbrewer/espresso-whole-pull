@@ -1,8 +1,10 @@
 # Publication Audit
 
-Overall disposition: **PASS with HUMAN_REVIEW_REQUIRED**
+Overall disposition: **PASS**
 
-Mandatory technical publication gates pass. Human review remains required for legacy-file authorship/license provenance and for the final GitHub repository creation decision.
+Mandatory technical publication gates pass. Tim Brewer supplied the
+owner/rightsholder attestation; authorship and rights provenance is
+`OWNER_ATTESTED`, and repository publication is `APPROVED_BY_OWNER`.
 
 ## Identity and scientific gates
 
@@ -17,9 +19,8 @@ Mandatory technical publication gates pass. Human review remains required for le
 - Git-mode portability: PASS across non-executable `0644` and `0664`
   layouts; executable-bit, content, missing-path, and added-path changes are
   detected.
-- Candidate reachable Git history: PASS (3 commits, 1 provenance tag, 132
-  unique blobs, 1,415,116 reachable blob bytes including the staged final
-  correction tree).
+- Candidate reachable Git history: PASS (4 commits, 2 tags, 142 unique blobs,
+  1,434,017 reachable blob bytes including the staged owner-attestation tree).
 
 ## Publication-boundary scans
 
@@ -43,14 +44,14 @@ The approved public email appears only in local Git commit/tag metadata, not rep
 
 ## Licensing
 
-License disposition: **PASS with HUMAN_REVIEW_REQUIRED**.
+License disposition: **PASS**.
 
 The custom solver declares GPL-3.0-or-later and the repository includes the GPLv3 text. Puckworks is external and MIT-licensed. No Puckworks code/data, third-party binary, archived executable, paper text, or restricted dataset was identified.
 
-Only the main solver source presently carries an SPDX header. Publication
-remains `HUMAN_CONFIRMATION_REQUIRED` until Tim Brewer explicitly confirms the
-rights statement in the authorship attestation. This automated audit is not
-legal advice.
+Only the main solver source presently carries an SPDX header. Tim Brewer
+supplied the good-faith owner/rightsholder statement recorded in the
+attestation. Remaining provenance exceptions: none. This automated audit is
+not legal advice and provides no automated legal opinion.
 
 ## GitHub check
 
