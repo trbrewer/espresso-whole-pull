@@ -1,0 +1,69 @@
+{
+  "schema_version": "espresso.whole_pull.case_manifest.v0.1.3",
+  "generated_at_utc": "2026-07-27T17:26:13.382596+00:00",
+  "scenario_id": "reference_R0_20g_58mm_9bar",
+  "solver": "espressoWholePullFoam",
+  "solver_version": "0.1.3",
+  "openfoam_target": "OpenFOAM Foundation 12",
+  "mode": "calibration",
+  "requested_mpi_ranks": 64,
+  "mesh_identity": {
+    "axial_cells": 256,
+    "radial_cells": 512,
+    "azimuthal_cells": 1,
+    "total_cells_expected": 131072,
+    "delta_t_s": 0.02,
+    "end_time_s": 30.0,
+    "wedge_angle_deg": 5.0,
+    "straight_sided_wedge_scale": 72.09146648398465,
+    "nominal_cylinder_volume_m3": 2.380952380952381e-05
+  },
+  "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+  "scientific_input_sha256": {
+    "config/reference_R0.json": "f390a4fd150345d8064ee695c3f2c491e75ff8a58b5ec73d675e843d12c8cc31",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "605e2b8d97a699fd24387c358b86ec89405bada682109797cf77e0b2b968cb2f",
+    "solver/espressoWholePullFoam/Make/files": "70aa84e2e2cbd37a9c25217fee498c234816cf41fb57b5f24c41a0e8495f7d83",
+    "solver/espressoWholePullFoam/Make/options": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
+    "cases/reference_R0_20g_58mm_9bar/system/blockMeshDict": "a69ba33790e4a984e2e0eae1ab2c8c16477b09893af73a83c0c6d21cf23950df",
+    "cases/reference_R0_20g_58mm_9bar/system/controlDict": "27e9392c67b152e63801f1849218c03fa856bd9b77f0e9f553025f5faf565bd0",
+    "cases/reference_R0_20g_58mm_9bar/system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+    "cases/reference_R0_20g_58mm_9bar/system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0",
+    "cases/reference_R0_20g_58mm_9bar/system/decomposeParDict": "e2bb7ab510f030fd36068bde89570bb343bb5fc68ba628ef79c6757f602d2b4d",
+    "cases/reference_R0_20g_58mm_9bar/constant/espressoModelProperties": "97c1ee88de0c0d26b5d8d0f239e0827ffa8f23ec11a7022f18f345de75b52a92",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74"
+  },
+  "scientific_bundle_sha256": "3c8abd9af426a7212ddbd6da08426af0c4661868fc6f06506bc28a626809ce2e",
+  "calibration": {
+    "parameter": "saturated_permeability_m2",
+    "target": "approximately 40 g total beverage mass at 30 s",
+    "independent_validation_status": "not_validated",
+    "note": "The 40 g endpoint is not an independent validation target in this run."
+  },
+  "claim_ceiling": "Numerically verified, evidence-connected, axisymmetric reference simulation of sharp-front wetting, Darcy flow, one-solute transport/extraction, and cup accumulation for a bounded calibration scenario; not independent real-coffee validation.",
+  "outputs": {
+    "ESPRESSO_WHOLE_PULL_REFERENCE_TRACES_V0_1_3.csv": {
+      "bytes": 972741,
+      "sha256": "0d0c4e978222168c5aa100f8c0e5b411dc375e58d10b14684bbdc49d06805eb4"
+    },
+    "ESPRESSO_WHOLE_PULL_REFERENCE_FIELD_INDEX_V0_1_3.json": {
+      "bytes": 69258,
+      "sha256": "0d6e8586ffb5ff666c9b70819c20862de3d9cdc98ff735c895f986712593b371"
+    },
+    "ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json": {
+      "bytes": 11611,
+      "sha256": "bd3425bb0536c11aeb90e4450c9153615885dc13e1f6bda342b011e19ddbe87b"
+    },
+    "reference_R0.foam": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

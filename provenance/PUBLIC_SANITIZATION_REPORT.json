@@ -1,0 +1,184 @@
+{
+  "schema_version": "espresso.public.sanitization.v1",
+  "status": "PASS",
+  "role": "deterministic host/path metadata sanitization",
+  "approved_files": [
+    "baseline_evidence/v0_1_2/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_2.json",
+    "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_NUMERICAL_QUALIFICATION_V0_1_3.json",
+    "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_3.json",
+    "docs/BASELINE_V0_1_2_RESULT.md",
+    "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md"
+  ],
+  "changed_files": [
+    "baseline_evidence/v0_1_2/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_2.json",
+    "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_NUMERICAL_QUALIFICATION_V0_1_3.json",
+    "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_3.json",
+    "docs/BASELINE_V0_1_2_RESULT.md",
+    "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md"
+  ],
+  "only_approved_files_changed": true,
+  "rules": [
+    {
+      "category": "package_root",
+      "pattern_role": "package_root",
+      "replacement": "<PACKAGE_ROOT>"
+    },
+    {
+      "category": "foam_user_appbin",
+      "pattern_role": "foam_user_appbin",
+      "replacement": "<FOAM_USER_APPBIN>"
+    },
+    {
+      "category": "openfoam_project_dir",
+      "pattern_role": "openfoam_project_dir",
+      "replacement": "<OPENFOAM_PROJECT_DIR>"
+    },
+    {
+      "category": "user_home",
+      "pattern_role": "user_home",
+      "replacement": "<USER_HOME>"
+    },
+    {
+      "category": "hostname",
+      "pattern_role": "hostname",
+      "replacement": "<HOSTNAME>"
+    }
+  ],
+  "files": [
+    {
+      "path": "baseline_evidence/v0_1_2/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_2.json",
+      "archival_sha256": "fa7292cb3ece058ed2d6f640f61480663fe7c82b748862a7d16aec54234791d8",
+      "public_sha256": "449bbbd25eb9e3ec6ccd61aba1d7a9b38bea6007e65649bfb58f69f38f1de87f",
+      "archival_bytes": 59636,
+      "public_bytes": 58923,
+      "replacement_counts": {
+        "package_root": 6,
+        "foam_user_appbin": 3,
+        "openfoam_project_dir": 12,
+        "user_home": 2,
+        "hostname": 3
+      },
+      "proof": {
+        "keys_unchanged": true,
+        "object_list_structure_unchanged": true,
+        "numeric_boolean_null_values_unchanged": true,
+        "string_scope": {
+          "changed_strings": 19,
+          "unchanged_strings": 861,
+          "unchanged_scalars": 71
+        }
+      },
+      "scientific_content_change": false,
+      "governing_physics_change": false
+    },
+    {
+      "path": "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_NUMERICAL_QUALIFICATION_V0_1_3.json",
+      "archival_sha256": "56b22c062595613e297b944843aaaef053c7e68328973502344a1087778e8987",
+      "public_sha256": "e928fb6c6553c06c58fb1efb591c2903632074b6e1b7c17cca916b084abd0fc3",
+      "archival_bytes": 106241,
+      "public_bytes": 87161,
+      "replacement_counts": {
+        "package_root": 212,
+        "foam_user_appbin": 0,
+        "openfoam_project_dir": 0,
+        "user_home": 0,
+        "hostname": 0
+      },
+      "proof": {
+        "keys_unchanged": true,
+        "object_list_structure_unchanged": true,
+        "numeric_boolean_null_values_unchanged": true,
+        "string_scope": {
+          "changed_strings": 212,
+          "unchanged_strings": 752,
+          "unchanged_scalars": 709
+        }
+      },
+      "scientific_content_change": false,
+      "governing_physics_change": false
+    },
+    {
+      "path": "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_3.json",
+      "archival_sha256": "e820fd55c23d8a5325a9ced8993c5577f6dcb3482fd219dc7b75e2e1db41e37d",
+      "public_sha256": "17be485a9cff074e364a76bec4742a95415072657c5031639859941dcdbc987b",
+      "archival_bytes": 98086,
+      "public_bytes": 96549,
+      "replacement_counts": {
+        "package_root": 13,
+        "foam_user_appbin": 6,
+        "openfoam_project_dir": 14,
+        "user_home": 2,
+        "hostname": 7
+      },
+      "proof": {
+        "keys_unchanged": true,
+        "object_list_structure_unchanged": true,
+        "numeric_boolean_null_values_unchanged": true,
+        "string_scope": {
+          "changed_strings": 35,
+          "unchanged_strings": 1411,
+          "unchanged_scalars": 161
+        }
+      },
+      "scientific_content_change": false,
+      "governing_physics_change": false
+    },
+    {
+      "path": "docs/BASELINE_V0_1_2_RESULT.md",
+      "archival_sha256": "b1799b9f0e3895657bc0ad04eff932fffbed2dfcd14a6a435d5dc137823ce4f2",
+      "public_sha256": "b5ef65308ff98a61401a386fcce5de14d2074fef5322711d2687caab32ba2af4",
+      "archival_bytes": 1064,
+      "public_bytes": 1063,
+      "replacement_counts": {
+        "package_root": 0,
+        "foam_user_appbin": 0,
+        "openfoam_project_dir": 0,
+        "user_home": 0,
+        "hostname": 1
+      },
+      "proof": {
+        "line_count_unchanged": true,
+        "changed_lines": [
+          3
+        ],
+        "changed_lines_limited_to_approved_substitutions": true,
+        "scientific_statements_changed": false,
+        "scientific_numerical_values_changed": false
+      },
+      "scientific_content_change": false,
+      "governing_physics_change": false
+    },
+    {
+      "path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md",
+      "archival_sha256": "f26d75b57a9a9422e41cd8bb184d50acf03678007ed32fe4395d269b0e53dfc3",
+      "public_sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
+      "archival_bytes": 109398,
+      "public_bytes": 109397,
+      "replacement_counts": {
+        "package_root": 0,
+        "foam_user_appbin": 0,
+        "openfoam_project_dir": 0,
+        "user_home": 0,
+        "hostname": 1
+      },
+      "proof": {
+        "line_count_unchanged": true,
+        "changed_lines": [
+          2176
+        ],
+        "changed_lines_limited_to_approved_substitutions": true,
+        "scientific_statements_changed": false,
+        "scientific_numerical_values_changed": false
+      },
+      "scientific_content_change": false,
+      "governing_physics_change": false
+    }
+  ],
+  "private_token_postcheck": {
+    "private_home_path_token": 0,
+    "private_hostname_token": 0
+  },
+  "scientific_content_change": false,
+  "governing_physics_change": false,
+  "scientific_configuration_change": false
+}

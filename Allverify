@@ -1,0 +1,280 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROFILE="${PROFILE:-standard}"
+case "$PROFILE" in
+    standard|smoke) ;;
+    *) echo "PROFILE must be 'standard' or 'smoke': $PROFILE" >&2; exit 2 ;;
+esac
+
+QUALIFICATION_DIR="$ROOT_DIR/qualification"
+REFERENCE_CASE="$ROOT_DIR/cases/reference_R0_20g_58mm_9bar"
+FREEZE_MANIFEST="$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_REFERENCE_FREEZE_MANIFEST_V0_1_4.json"
+FINALIZATION_STATUS="$QUALIFICATION_DIR/ESPRESSO_WHOLE_PULL_FREEZE_FINALIZATION_STATUS_V0_1_4.json"
+REFERENCE_BUILD="$REFERENCE_CASE/preflight/BUILD_PROVENANCE_V0_1_4.json"
+REFERENCE_BUILD_VERIFICATION="$REFERENCE_CASE/preflight/BUILD_PROVENANCE_VERIFICATION_V0_1_4.json"
+SOLVER_EXECUTABLE=""
+
+if [[ "$PROFILE" == "standard" ]]; then
+    REPORT="$QUALIFICATION_DIR/ESPRESSO_WHOLE_PULL_NUMERICAL_QUALIFICATION_V0_1_4.json"
+    RUNS_CSV="$QUALIFICATION_DIR/ESPRESSO_WHOLE_PULL_NUMERICAL_QUALIFICATION_RUNS_V0_1_4.csv"
+    RUNS_ROOT="$ROOT_DIR/qualification_runs/standard"
+    BUILD_VERIFICATION_OUTPUT="$REFERENCE_BUILD_VERIFICATION"
+    PRE_NO_PHYSICS_REPORT="$QUALIFICATION_DIR/NO_PHYSICS_CHANGE_VERIFICATION_PRE_STANDARD_V0_1_4.json"
+    NO_PHYSICS_REPORT="$QUALIFICATION_DIR/NO_PHYSICS_CHANGE_VERIFICATION_STANDARD_V0_1_4.json"
+    LOG_SUFFIX="standard"
+else
+    REPORT="$QUALIFICATION_DIR/ESPRESSO_WHOLE_PULL_NUMERICAL_SMOKE_V0_1_4.json"
+    RUNS_CSV="$QUALIFICATION_DIR/ESPRESSO_WHOLE_PULL_NUMERICAL_SMOKE_RUNS_V0_1_4.csv"
+    RUNS_ROOT="$ROOT_DIR/qualification_runs/smoke"
+    BUILD_VERIFICATION_OUTPUT="$QUALIFICATION_DIR/BUILD_PROVENANCE_VERIFICATION_SMOKE_V0_1_4.json"
+    PRE_NO_PHYSICS_REPORT="$QUALIFICATION_DIR/NO_PHYSICS_CHANGE_VERIFICATION_SMOKE_V0_1_4.json"
+    NO_PHYSICS_REPORT="$PRE_NO_PHYSICS_REPORT"
+    LOG_SUFFIX="smoke"
+fi
+
+CURRENT_STAGE="initialization"
+CURRENT_LOG=""
+mkdir -p "$QUALIFICATION_DIR"
+
+write_fallback_report() {
+    local code="$1" command_text="$2" line_number="$3"
+    [[ -f "$REPORT" ]] && return 0
+    python3 - "$REPORT" "$code" "$command_text" "$line_number" "$PROFILE" \
+        "$CURRENT_STAGE" "$CURRENT_LOG" <<'PY'
+import json, sys
+from datetime import datetime, timezone
+from pathlib import Path
+path=Path(sys.argv[1])
+report={
+  "schema_version":"espresso.whole_pull.numerical_qualification.v0.1.4",
+  "generated_at_utc":datetime.now(timezone.utc).isoformat(),
+  "package_version":"0.1.4",
+  "profile":sys.argv[5],
+  "status":"FAIL",
+  "execution_status":"FAILED_BEFORE_ORCHESTRATOR_COMPLETION",
+  "all_required_gates_pass":False,
+  "failure":{
+    "stage":sys.argv[6],
+    "exit_code":int(sys.argv[2]),
+    "command":sys.argv[3],
+    "line":int(sys.argv[4]),
+    "primary_log":sys.argv[7] or None,
+  },
+}
+path.parent.mkdir(parents=True,exist_ok=True)
+path.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
+PY
+}
+
+write_finalization_failure() {
+    local code="$1" command_text="$2" line_number="$3"
+    [[ "$PROFILE" == "standard" ]] || return 0
+    rm -f "$FREEZE_MANIFEST"
+    python3 - "$FINALIZATION_STATUS" "$code" "$command_text" "$line_number" \
+        "$CURRENT_STAGE" "$CURRENT_LOG" "$REPORT" <<'PY'
+import json, sys
+from datetime import datetime, timezone
+from pathlib import Path
+path=Path(sys.argv[1])
+report={
+  "schema_version":"espresso.whole_pull.freeze_finalization_status.v0.1.4",
+  "generated_at_utc":datetime.now(timezone.utc).isoformat(),
+  "package_version":"0.1.4",
+  "status":"FAIL",
+  "stage":sys.argv[5],
+  "exit_code":int(sys.argv[2]),
+  "command":sys.argv[3],
+  "line":int(sys.argv[4]),
+  "primary_log":sys.argv[6] or None,
+  "qualification_report":sys.argv[7],
+  "reference_freeze_status":"NOT_FROZEN",
+}
+path.parent.mkdir(parents=True,exist_ok=True)
+path.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
+PY
+}
+
+on_error() {
+    local code="$1" command_text="$2" line_number="$3"
+    trap - ERR
+    set +e
+    write_fallback_report "$code" "$command_text" "$line_number"
+    case "$CURRENT_STAGE" in
+        finalize_reference_acceptance_and_run_status|generate_terminal_freeze_manifest|verify_terminal_freeze_manifest)
+            write_finalization_failure "$code" "$command_text" "$line_number"
+            ;;
+    esac
+    echo >&2
+    echo "ERROR: Allverify failed during stage '${CURRENT_STAGE}' with exit code ${code}." >&2
+    echo "Share the qualification report:" >&2
+    echo "  $REPORT" >&2
+    if [[ "$PROFILE" == "standard" ]]; then
+        echo "Freeze-finalization status:" >&2
+        echo "  $FINALIZATION_STATUS" >&2
+    fi
+    if [[ -n "$CURRENT_LOG" ]]; then
+        echo "Primary log:" >&2
+        echo "  $CURRENT_LOG" >&2
+    fi
+    exit "$code"
+}
+trap 'on_error "$?" "$BASH_COMMAND" "$LINENO"' ERR
+
+run_logged() {
+    local stage="$1" log_path="$2"
+    shift 2
+    CURRENT_STAGE="$stage"
+    CURRENT_LOG="$log_path"
+    mkdir -p "$(dirname "$log_path")"
+    local code command_text
+    printf -v command_text '%q ' "$@"
+    trap - ERR
+    set +e
+    (
+        trap - ERR
+        set +e
+        "$@"
+    ) 2>&1 | tee "$log_path"
+    code=${PIPESTATUS[0]}
+    set -e
+    trap 'on_error "$?" "$BASH_COMMAND" "$LINENO"' ERR
+    if (( code != 0 )); then
+        on_error "$code" "$command_text" "${BASH_LINENO[0]:-0}"
+    fi
+}
+
+# shellcheck source=scripts/lib/openfoam_env.sh
+source "$ROOT_DIR/scripts/lib/openfoam_env.sh"
+CURRENT_STAGE="load_openfoam_environment"
+CURRENT_LOG="$QUALIFICATION_DIR/log.environment.$LOG_SUFFIX"
+trap - ERR
+set +e
+load_openfoam12 > >(tee "$CURRENT_LOG") 2>&1
+load_code=$?
+set -e
+trap 'on_error "$?" "$BASH_COMMAND" "$LINENO"' ERR
+if (( load_code != 0 )); then
+    on_error "$load_code" "load_openfoam12" "$LINENO"
+fi
+
+CURRENT_STAGE="required_command_check"
+CURRENT_LOG=""
+for cmd in python3 blockMesh checkMesh decomposePar reconstructPar; do
+    command -v "$cmd" >/dev/null 2>&1 || on_error 2 "command -v $cmd" "$LINENO"
+done
+
+# Both profiles reuse the exact executable produced by ./Allrun.  Requiring the
+# reference artifacts also prevents a smoke build from replacing a binary that
+# has already been bound by a terminal freeze manifest.
+for required in \
+    "$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_4.json" \
+    "$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_4.json" \
+    "$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_REFERENCE_TRACES_V0_1_4.csv" \
+    "$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_REFERENCE_FIELD_INDEX_V0_1_4.json" \
+    "$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_REFERENCE_CASE_MANIFEST_V0_1_4.json" \
+    "$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_STAGE_TIMINGS_V0_1_4.json" \
+    "$REFERENCE_BUILD"
+do
+    [[ -f "$required" ]] || on_error 2 "missing prerequisite: $required; run ./Allrun first" "$LINENO"
+done
+if [[ "$PROFILE" == "standard" ]]; then
+    rm -f "$FREEZE_MANIFEST" "$FINALIZATION_STATUS" "$REFERENCE_BUILD_VERIFICATION"
+fi
+
+rm -rf "$RUNS_ROOT"
+rm -f \
+    "$REPORT" \
+    "$RUNS_CSV" \
+    "$NO_PHYSICS_REPORT" \
+    "$QUALIFICATION_DIR/log.sourceManifest.$LOG_SUFFIX" \
+    "$QUALIFICATION_DIR/log.staticValidation.$LOG_SUFFIX" \
+    "$PRE_NO_PHYSICS_REPORT" \
+    "$QUALIFICATION_DIR/log.noPhysicsChange.pre.$LOG_SUFFIX" \
+    "$QUALIFICATION_DIR/log.noPhysicsChange.post.$LOG_SUFFIX" \
+    "$QUALIFICATION_DIR/log.pythonTests.$LOG_SUFFIX" \
+    "$QUALIFICATION_DIR/log.verifyBuild.$LOG_SUFFIX" \
+    "$QUALIFICATION_DIR/log.qualification.$LOG_SUFFIX"
+if [[ "$PROFILE" == "standard" ]]; then
+    rm -f \
+        "$NO_PHYSICS_REPORT" \
+        "$QUALIFICATION_DIR/log.freezeFinalization" \
+        "$QUALIFICATION_DIR/log.freezeManifest"
+else
+    rm -f "$BUILD_VERIFICATION_OUTPUT"
+fi
+
+run_logged "source_manifest_verification" "$QUALIFICATION_DIR/log.sourceManifest.$LOG_SUFFIX" \
+    python3 "$ROOT_DIR/scripts/verify_source_manifest.py" --root "$ROOT_DIR"
+run_logged "static_validation" "$QUALIFICATION_DIR/log.staticValidation.$LOG_SUFFIX" \
+    python3 "$ROOT_DIR/scripts/static_validate.py" --root "$ROOT_DIR"
+run_logged "prequalification_no_physics_change_verification" \
+    "$QUALIFICATION_DIR/log.noPhysicsChange.pre.$LOG_SUFFIX" \
+    python3 "$ROOT_DIR/scripts/verify_no_physics_change.py" \
+        --root "$ROOT_DIR" --output "$PRE_NO_PHYSICS_REPORT"
+run_logged "python_unit_tests" "$QUALIFICATION_DIR/log.pythonTests.$LOG_SUFFIX" \
+    python3 -m unittest discover -s "$ROOT_DIR/tests" -p 'test_*.py'
+
+# Reuse the exact executable that produced the reference Allrun.  Standard
+# qualification therefore binds the same linker product; smoke mode writes its
+# verification to an unbound profile-specific report and cannot mutate a freeze.
+run_logged "verify_reference_solver_build" "$QUALIFICATION_DIR/log.verifyBuild.$LOG_SUFFIX" \
+    python3 "$ROOT_DIR/scripts/verify_build_provenance.py" \
+        --root "$ROOT_DIR" --output "$BUILD_VERIFICATION_OUTPUT"
+
+# Read the absolute executable path recorded by ./Allrun.  Passing the path
+# explicitly prevents PATH resolution from selecting a different same-named
+# binary during qualification.
+SOLVER_EXECUTABLE="$(python3 -c 'import json,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); print((d.get("runtime_executable") or d.get("executable") or {}).get("path", ""))' "$REFERENCE_BUILD")"
+[[ "$SOLVER_EXECUTABLE" = /* ]] || on_error 2 "recorded solver executable path is not absolute: $SOLVER_EXECUTABLE" "$LINENO"
+[[ -x "$SOLVER_EXECUTABLE" ]] || on_error 2 "recorded solver executable is not executable: $SOLVER_EXECUTABLE" "$LINENO"
+
+run_logged "qualification_matrix" "$QUALIFICATION_DIR/log.qualification.$LOG_SUFFIX" \
+    python3 "$ROOT_DIR/scripts/run_qualification.py" \
+        --root "$ROOT_DIR" \
+        --profile "$PROFILE" \
+        --report "$REPORT" \
+        --runs-csv "$RUNS_CSV" \
+        --runs-root "$RUNS_ROOT" \
+        --solver-executable "$SOLVER_EXECUTABLE"
+
+if [[ "$PROFILE" == "standard" ]]; then
+    # Repeat after the matrix to prove that qualification did not mutate the
+    # qualified v0.1.3 governing physics/source contract.
+    run_logged "postqualification_no_physics_change_verification" \
+        "$QUALIFICATION_DIR/log.noPhysicsChange.post.$LOG_SUFFIX" \
+        python3 "$ROOT_DIR/scripts/verify_no_physics_change.py" \
+            --root "$ROOT_DIR" --output "$NO_PHYSICS_REPORT"
+
+    run_logged "finalize_reference_acceptance_and_run_status" \
+        "$QUALIFICATION_DIR/log.freezeFinalization" \
+        python3 "$ROOT_DIR/scripts/finalize_reference_freeze.py" --root "$ROOT_DIR"
+    run_logged "generate_terminal_freeze_manifest" \
+        "$QUALIFICATION_DIR/log.freezeManifest" \
+        python3 "$ROOT_DIR/scripts/generate_freeze_manifest.py" --root "$ROOT_DIR"
+
+    # Read-only final verification. No package artifact is written after the
+    # terminal manifest.
+    CURRENT_STAGE="verify_terminal_freeze_manifest"
+    CURRENT_LOG=""
+    python3 "$ROOT_DIR/scripts/verify_freeze_manifest.py" --root "$ROOT_DIR"
+fi
+
+CURRENT_STAGE="complete"
+CURRENT_LOG=""
+trap - ERR
+
+echo
+echo "Numerical qualification complete ($PROFILE profile). Share:"
+echo "  $REPORT"
+echo "Reduced run matrix:"
+echo "  $RUNS_CSV"
+if [[ "$PROFILE" == "standard" ]]; then
+    echo "Terminal immutable freeze manifest:"
+    echo "  $FREEZE_MANIFEST"
+    echo "WP-0.1H status: FROZEN / QUALIFIED"
+    echo "Physical validation status: NOT_ESTABLISHED"
+else
+    echo "Smoke mode passed orchestration checks only; it does not qualify or modify the frozen reference."
+fi

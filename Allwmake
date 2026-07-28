@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# shellcheck source=scripts/lib/openfoam_env.sh
+source "$ROOT_DIR/scripts/lib/openfoam_env.sh"
+load_openfoam12
+
+if [[ -z "${WM_PROJECT_DIR:-}" || -z "${FOAM_USER_APPBIN:-}" ]]; then
+    echo "Incomplete OpenFOAM Foundation 12 environment after load_openfoam12." >&2
+    echo "WM_PROJECT_DIR=${WM_PROJECT_DIR:-<unset>}" >&2
+    echo "FOAM_USER_APPBIN=${FOAM_USER_APPBIN:-<unset>}" >&2
+    exit 2
+fi
+
+BUILD_PURPOSE="${BUILD_PURPOSE:-reference_Allrun}"
+BUILD_PROVENANCE_OUTPUT="${BUILD_PROVENANCE_OUTPUT:-cases/reference_R0_20g_58mm_9bar/preflight/BUILD_PROVENANCE_V0_1_4.json}"
+TIMESTAMP_NORMALIZATION_OUTPUT="${TIMESTAMP_NORMALIZATION_OUTPUT:-cases/reference_R0_20g_58mm_9bar/preflight/TIMESTAMP_NORMALIZATION_V0_1_4.json}"
+ARCHIVED_EXECUTABLE_OUTPUT="${ARCHIVED_EXECUTABLE_OUTPUT:-cases/reference_R0_20g_58mm_9bar/preflight/espressoWholePullFoam_v0_1_4}"
+
+python3 "$ROOT_DIR/scripts/normalize_timestamps.py" \
+    --root "$ROOT_DIR" \
+    --output "$TIMESTAMP_NORMALIZATION_OUTPUT"
+
+FOAM_SOURCE_ROOT="${FOAM_SRC:-${WM_PROJECT_DIR}/src}"
+OPENFOAM_INCLUDE="$FOAM_SOURCE_ROOT/OpenFOAM/lnInclude"
+FINITE_VOLUME_INCLUDE="$FOAM_SOURCE_ROOT/finiteVolume/lnInclude"
+MESH_TOOLS_INCLUDE="$FOAM_SOURCE_ROOT/meshTools/lnInclude"
+OS_SPECIFIC_INCLUDE="$FOAM_SOURCE_ROOT/OSspecific/POSIX/lnInclude"
+REQUIRED_HEADERS=(
+    argList.H
+    Time.H
+    fvMesh.H
+    volFields.H
+    surfaceFields.H
+    IOdictionary.H
+    fixedValueFvPatchFields.H
+    zeroGradientFvPatchFields.H
+    fvMatrices.H
+    fvcFlux.H
+    fvcGrad.H
+    fvmDdt.H
+    fvmDiv.H
+    fvmLaplacian.H
+    PstreamReduceOps.H
+    mathematicalConstants.H
+    OSspecific.H
+    setRootCase.H
+    createTime.H
+    createMesh.H
+)
+
+missing=()
+for header in "${REQUIRED_HEADERS[@]}"; do
+    found=""
+    for directory in \
+        "$OPENFOAM_INCLUDE" \
+        "$FINITE_VOLUME_INCLUDE" \
+        "$MESH_TOOLS_INCLUDE" \
+        "$OS_SPECIFIC_INCLUDE"
+    do
+        if [[ -e "$directory/$header" ]]; then
+            found="$directory/$header"
+            break
+        fi
+    done
+    if [[ -z "$found" ]]; then
+        missing+=("$header")
+    fi
+done
+
+if (( ${#missing[@]} > 0 )); then
+    echo "OpenFOAM Foundation 12 header preflight failed." >&2
+    echo "FOAM source root: $FOAM_SOURCE_ROOT" >&2
+    echo "Missing from the configured lnInclude directories:" >&2
+    printf '  %s\n' "${missing[@]}" >&2
+    echo "Checked:" >&2
+    printf '  %s\n' \
+        "$OPENFOAM_INCLUDE" \
+        "$FINITE_VOLUME_INCLUDE" \
+        "$MESH_TOOLS_INCLUDE" \
+        "$OS_SPECIFIC_INCLUDE" >&2
+    exit 4
+fi
+
+echo "Foundation 12 source root: $FOAM_SOURCE_ROOT"
+echo "Foundation 12 explicit-header preflight: PASS (${#REQUIRED_HEADERS[@]} headers)"
+echo "Build purpose: $BUILD_PURPOSE"
+
+(
+    cd "$ROOT_DIR/solver/espressoWholePullFoam"
+    wclean
+    wmake
+)
+
+SOLVER_EXE="${FOAM_USER_APPBIN}/espressoWholePullFoam"
+if [[ ! -x "$SOLVER_EXE" ]]; then
+    echo "wmake returned without creating an executable at: $SOLVER_EXE" >&2
+    exit 3
+fi
+
+python3 "$ROOT_DIR/scripts/write_build_provenance.py" \
+    --root "$ROOT_DIR" \
+    --executable "$SOLVER_EXE" \
+    --purpose "$BUILD_PURPOSE" \
+    --archive-executable "$ARCHIVED_EXECUTABLE_OUTPUT" \
+    --output "$BUILD_PROVENANCE_OUTPUT"
+
+echo "Built: $SOLVER_EXE"
+echo "Build provenance: $BUILD_PROVENANCE_OUTPUT"
+echo "Archived executable: $ARCHIVED_EXECUTABLE_OUTPUT"

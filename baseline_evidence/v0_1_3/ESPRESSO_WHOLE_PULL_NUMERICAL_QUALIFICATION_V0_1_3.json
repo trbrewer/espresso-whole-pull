@@ -1,0 +1,2226 @@
+{
+  "schema_version": "espresso.whole_pull.numerical_qualification.v0.1.3",
+  "generated_at_utc": "2026-07-27T17:34:52.544491+00:00",
+  "package_version": "0.1.3",
+  "profile": "standard",
+  "status": "PASS",
+  "execution_status": "COMPLETED",
+  "all_required_gates_pass": true,
+  "gate_summary": {
+    "pass": 9,
+    "fail": 0,
+    "total": 9
+  },
+  "gates": {
+    "all_individual_runs_accepted": {
+      "status": "PASS",
+      "metric": {
+        "dt_0p020_ref_r32": "PASS",
+        "dt_0p010_ref_r32": "PASS",
+        "dt_0p005_ref_r32": "PASS",
+        "mesh_128x256_dt0p010_r16": "PASS",
+        "mesh_512x1024_dt0p010_r64": "PASS",
+        "rank_1_ref_dt0p010": "PASS",
+        "rank_16_ref_dt0p010": "PASS",
+        "rank_64_ref_dt0p010": "PASS",
+        "layered_rank_1": "PASS",
+        "layered_rank_16": "PASS"
+      },
+      "limit": "all matrix runs PASS their own acceptance reports",
+      "details": ""
+    },
+    "time_step_0p020_vs_0p005": {
+      "status": "PASS",
+      "metric": {
+        "first_drip_s": {
+          "status": "PASS",
+          "actual": 4.71169618523188,
+          "reference": 4.71169618523188,
+          "absolute_error": 0.0,
+          "limit": 1e-08
+        },
+        "outlet_flow_final_m3_s": {
+          "status": "PASS",
+          "actual": 1.48267597159441e-06,
+          "reference": 1.48267597159441e-06,
+          "relative_error": 0.0,
+          "limit": 0.005
+        },
+        "cup_beverage_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0409578674827949,
+          "reference": 0.0409644331539621,
+          "relative_error": 0.00016027735920381495,
+          "limit": 0.005
+        },
+        "time_to_40g_s": {
+          "status": "PASS",
+          "actual": 29.3744801706296,
+          "reference": 29.3702118526436,
+          "relative_error": 0.00014532813067249717,
+          "limit": 0.005
+        },
+        "cumulative_tds_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.116893063892201,
+          "reference": 0.116859968796997,
+          "relative_error": 0.0002832030125002463,
+          "limit": 0.005
+        },
+        "extraction_yield_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.239384531027731,
+          "reference": 0.239355119007933,
+          "relative_error": 0.00012288026226432282,
+          "limit": 0.005
+        },
+        "retained_dissolved_solute_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000192063111610996,
+          "reference": 0.000191881396336662,
+          "relative_error": 0.0009470187199136432,
+          "limit": 0.005
+        },
+        "remaining_extractable_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000619392295239687,
+          "reference": 0.000620162282313114,
+          "relative_error": 0.0012415896538484023,
+          "limit": 0.005
+        }
+      },
+      "limit": "<=0.5% relative; first drip <=1e-8 s",
+      "details": ""
+    },
+    "time_step_0p010_vs_0p005": {
+      "status": "PASS",
+      "metric": {
+        "first_drip_s": {
+          "status": "PASS",
+          "actual": 4.71169618523188,
+          "reference": 4.71169618523188,
+          "absolute_error": 0.0,
+          "limit": 1e-08
+        },
+        "outlet_flow_final_m3_s": {
+          "status": "PASS",
+          "actual": 1.48267597159441e-06,
+          "reference": 1.48267597159441e-06,
+          "relative_error": 0.0,
+          "limit": 0.0025
+        },
+        "cup_beverage_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0409573297094818,
+          "reference": 0.0409644331539621,
+          "relative_error": 0.00017340516964077892,
+          "limit": 0.0025
+        },
+        "time_to_40g_s": {
+          "status": "PASS",
+          "actual": 29.3748436625152,
+          "reference": 29.3702118526436,
+          "relative_error": 0.00015770433985425324,
+          "limit": 0.0025
+        },
+        "cumulative_tds_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.116881468621103,
+          "reference": 0.116859968796997,
+          "relative_error": 0.0001839793757205968,
+          "limit": 0.0025
+        },
+        "extraction_yield_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.239357642362149,
+          "reference": 0.239355119007933,
+          "relative_error": 1.0542303112015385e-05,
+          "limit": 0.0025
+        },
+        "retained_dissolved_solute_mass_kg": {
+          "status": "PASS",
+          "actual": 0.00019198970164747,
+          "reference": 0.000191881396336662,
+          "relative_error": 0.0005644388297965146,
+          "limit": 0.0025
+        },
+        "remaining_extractable_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000620003505385847,
+          "reference": 0.000620162282313114,
+          "relative_error": 0.00025602480478942823,
+          "limit": 0.0025
+        }
+      },
+      "limit": "<=0.25% relative; first drip <=1e-8 s",
+      "details": ""
+    },
+    "mesh_coarse_vs_fine": {
+      "status": "PASS",
+      "metric": {
+        "first_drip_s": {
+          "status": "PASS",
+          "actual": 4.71169618523188,
+          "reference": 4.71169618523188,
+          "absolute_error": 0.0,
+          "limit": 1e-08
+        },
+        "outlet_flow_final_m3_s": {
+          "status": "PASS",
+          "actual": 1.48267597159442e-06,
+          "reference": 1.4826759715944e-06,
+          "relative_error": 1.3425235615756867e-14,
+          "limit": 0.02
+        },
+        "cup_beverage_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0409531381043611,
+          "reference": 0.0409594333504215,
+          "relative_error": 0.00015369465701685253,
+          "limit": 0.02
+        },
+        "time_to_40g_s": {
+          "status": "PASS",
+          "actual": 29.3776686962543,
+          "reference": 29.3734254097368,
+          "relative_error": 0.00014446005048133025,
+          "limit": 0.02
+        },
+        "cumulative_tds_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.11679108033025,
+          "reference": 0.116926824822236,
+          "relative_error": 0.0011609354157386315,
+          "limit": 0.02
+        },
+        "extraction_yield_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.239148062106113,
+          "reference": 0.239462824409139,
+          "relative_error": 0.001314451643183645,
+          "limit": 0.02
+        },
+        "retained_dissolved_solute_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000194135406418103,
+          "reference": 0.000190921261726535,
+          "relative_error": 0.0168349227451251,
+          "limit": 0.02
+        },
+        "remaining_extractable_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000622041341366633,
+          "reference": 0.000618983867796314,
+          "relative_error": 0.004939504451390855,
+          "limit": 0.02
+        }
+      },
+      "limit": "<=2% relative; first drip <=1e-8 s",
+      "details": ""
+    },
+    "mesh_reference_vs_fine": {
+      "status": "PASS",
+      "metric": {
+        "first_drip_s": {
+          "status": "PASS",
+          "actual": 4.71169618523188,
+          "reference": 4.71169618523188,
+          "absolute_error": 0.0,
+          "limit": 1e-08
+        },
+        "outlet_flow_final_m3_s": {
+          "status": "PASS",
+          "actual": 1.48267597159441e-06,
+          "reference": 1.4826759715944e-06,
+          "relative_error": 6.712617807878434e-15,
+          "limit": 0.0075
+        },
+        "cup_beverage_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0409573297094818,
+          "reference": 0.0409594333504215,
+          "relative_error": 5.135913189284388e-05,
+          "limit": 0.0075
+        },
+        "time_to_40g_s": {
+          "status": "PASS",
+          "actual": 29.3748436625152,
+          "reference": 29.3734254097368,
+          "relative_error": 4.8283533793440505e-05,
+          "limit": 0.0075
+        },
+        "cumulative_tds_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.116881468621103,
+          "reference": 0.116926824822236,
+          "relative_error": 0.0003879024441307684,
+          "limit": 0.0075
+        },
+        "extraction_yield_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.239357642362149,
+          "reference": 0.239462824409139,
+          "relative_error": 0.0004392416536868936,
+          "limit": 0.0075
+        },
+        "retained_dissolved_solute_mass_kg": {
+          "status": "PASS",
+          "actual": 0.00019198970164747,
+          "reference": 0.000190921261726535,
+          "relative_error": 0.0055962332915303,
+          "limit": 0.0075
+        },
+        "remaining_extractable_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000620003505385847,
+          "reference": 0.000618983867796314,
+          "relative_error": 0.0016472765165320299,
+          "limit": 0.0075
+        }
+      },
+      "limit": "<=0.75% relative; first drip <=1e-8 s",
+      "details": ""
+    },
+    "parallel_equivalence_rank_16_ref_dt0p010_vs_rank1": {
+      "status": "PASS",
+      "metric": {
+        "first_drip_s": {
+          "status": "PASS",
+          "actual": 4.71169618523188,
+          "reference": 4.71169618523188,
+          "absolute_error": 0.0,
+          "limit": 1e-10
+        },
+        "outlet_flow_final_m3_s": {
+          "status": "PASS",
+          "actual": 1.48267597159441e-06,
+          "reference": 1.4826759715944e-06,
+          "relative_error": 6.712617807878434e-15,
+          "limit": 1e-06
+        },
+        "cup_water_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0361701768622388,
+          "reference": 0.0361701768622388,
+          "relative_error": 0.0,
+          "limit": 1e-06
+        },
+        "cup_solute_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0047871528474384,
+          "reference": 0.00478715284787999,
+          "relative_error": 9.224488014383708e-11,
+          "limit": 1e-06
+        },
+        "cup_beverage_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0409573297096772,
+          "reference": 0.0409573297101187,
+          "relative_error": 1.0779535813215634e-11,
+          "limit": 1e-06
+        },
+        "time_to_40g_s": {
+          "status": "PASS",
+          "actual": 29.3748436623916,
+          "reference": 29.3748436620725,
+          "relative_error": 1.0863077046030088e-11,
+          "limit": 1e-06
+        },
+        "cumulative_tds_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.116881468625317,
+          "reference": 0.116881468634839,
+          "relative_error": 8.14672188256618e-11,
+          "limit": 1e-06
+        },
+        "extraction_yield_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.23935764237192,
+          "reference": 0.239357642393999,
+          "relative_error": 9.224274215726498e-11,
+          "limit": 1e-06
+        },
+        "retained_water_mass_kg": {
+          "status": "PASS",
+          "actual": 0.00919047619047622,
+          "reference": 0.00919047619047611,
+          "relative_error": 1.1891394604753035e-14,
+          "limit": 1e-06
+        },
+        "retained_dissolved_solute_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000191989701662402,
+          "reference": 0.000191989701246584,
+          "relative_error": 2.1658350009732745e-09,
+          "limit": 1e-06
+        },
+        "remaining_extractable_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000620003505449234,
+          "reference": 0.000620003505029441,
+          "relative_error": 6.770816530887987e-10,
+          "limit": 1e-06
+        }
+      },
+      "limit": "<=1e-6 relative; first drip <=1e-10 s",
+      "details": ""
+    },
+    "parallel_equivalence_dt_0p010_ref_r32_vs_rank1": {
+      "status": "PASS",
+      "metric": {
+        "first_drip_s": {
+          "status": "PASS",
+          "actual": 4.71169618523188,
+          "reference": 4.71169618523188,
+          "absolute_error": 0.0,
+          "limit": 1e-10
+        },
+        "outlet_flow_final_m3_s": {
+          "status": "PASS",
+          "actual": 1.48267597159441e-06,
+          "reference": 1.4826759715944e-06,
+          "relative_error": 6.712617807878434e-15,
+          "limit": 1e-06
+        },
+        "cup_water_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0361701768622388,
+          "reference": 0.0361701768622388,
+          "relative_error": 0.0,
+          "limit": 1e-06
+        },
+        "cup_solute_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.00478715284724297,
+          "reference": 0.00478715284787999,
+          "relative_error": 1.3306882781518462e-10,
+          "limit": 1e-06
+        },
+        "cup_beverage_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0409573297094818,
+          "reference": 0.0409573297101187,
+          "relative_error": 1.5550336393160503e-11,
+          "limit": 1e-06
+        },
+        "time_to_40g_s": {
+          "status": "PASS",
+          "actual": 29.3748436625152,
+          "reference": 29.3748436620725,
+          "relative_error": 1.507072186985786e-11,
+          "limit": 1e-06
+        },
+        "cumulative_tds_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.116881468621103,
+          "reference": 0.116881468634839,
+          "relative_error": 1.1752075508818265e-10,
+          "limit": 1e-06
+        },
+        "extraction_yield_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.239357642362149,
+          "reference": 0.239357642393999,
+          "relative_error": 1.3306457358427665e-10,
+          "limit": 1e-06
+        },
+        "retained_water_mass_kg": {
+          "status": "PASS",
+          "actual": 0.00919047619047618,
+          "reference": 0.00919047619047611,
+          "relative_error": 7.55009181254161e-15,
+          "limit": 1e-06
+        },
+        "retained_dissolved_solute_mass_kg": {
+          "status": "PASS",
+          "actual": 0.00019198970164747,
+          "reference": 0.000191989701246584,
+          "relative_error": 2.0880599344291963e-09,
+          "limit": 1e-06
+        },
+        "remaining_extractable_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000620003505385847,
+          "reference": 0.000620003505029441,
+          "relative_error": 5.748452887485683e-10,
+          "limit": 1e-06
+        }
+      },
+      "limit": "<=1e-6 relative; first drip <=1e-10 s",
+      "details": ""
+    },
+    "parallel_equivalence_rank_64_ref_dt0p010_vs_rank1": {
+      "status": "PASS",
+      "metric": {
+        "first_drip_s": {
+          "status": "PASS",
+          "actual": 4.71169618523188,
+          "reference": 4.71169618523188,
+          "absolute_error": 0.0,
+          "limit": 1e-10
+        },
+        "outlet_flow_final_m3_s": {
+          "status": "PASS",
+          "actual": 1.48267597159441e-06,
+          "reference": 1.4826759715944e-06,
+          "relative_error": 6.712617807878434e-15,
+          "limit": 1e-06
+        },
+        "cup_water_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0361701768622388,
+          "reference": 0.0361701768622388,
+          "relative_error": 0.0,
+          "limit": 1e-06
+        },
+        "cup_solute_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.004787152847555,
+          "reference": 0.00478715284787999,
+          "relative_error": 6.788795871168435e-11,
+          "limit": 1e-06
+        },
+        "cup_beverage_mass_at_end_kg": {
+          "status": "PASS",
+          "actual": 0.0409573297097938,
+          "reference": 0.0409573297101187,
+          "relative_error": 7.932641887597963e-12,
+          "limit": 1e-06
+        },
+        "time_to_40g_s": {
+          "status": "PASS",
+          "actual": 29.374843662319,
+          "reference": 29.3748436620725,
+          "relative_error": 8.391584606394545e-12,
+          "limit": 1e-06
+        },
+        "cumulative_tds_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.116881468627831,
+          "reference": 0.116881468634839,
+          "relative_error": 5.995822407985435e-11,
+          "limit": 1e-06
+        },
+        "extraction_yield_mass_fraction": {
+          "status": "PASS",
+          "actual": 0.23935764237775,
+          "reference": 0.239357642393999,
+          "relative_error": 6.788587145699697e-11,
+          "limit": 1e-06
+        },
+        "retained_water_mass_kg": {
+          "status": "PASS",
+          "actual": 0.00919047619047618,
+          "reference": 0.00919047619047611,
+          "relative_error": 7.55009181254161e-15,
+          "limit": 1e-06
+        },
+        "retained_dissolved_solute_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000191989701675328,
+          "reference": 0.000191989701246584,
+          "relative_error": 2.233161496830686e-09,
+          "limit": 1e-06
+        },
+        "remaining_extractable_mass_kg": {
+          "status": "PASS",
+          "actual": 0.000620003505473441,
+          "reference": 0.000620003505029441,
+          "relative_error": 7.161251264384399e-10,
+          "limit": 1e-06
+        }
+      },
+      "limit": "<=1e-6 relative; first drip <=1e-10 s",
+      "details": ""
+    },
+    "layered_fixture_serial_parallel_equivalence": {
+      "status": "PASS",
+      "metric": {
+        "outlet_flow_m3_s": {
+          "actual": 1.01089030651339e-06,
+          "reference": 1.01089030651242e-06,
+          "relative_error": 9.596139923328755e-13,
+          "limit": 1e-08,
+          "status": "PASS"
+        },
+        "pressure_probe_1_Pa": {
+          "actual": 537963.544940295,
+          "reference": 537963.544940285,
+          "relative_error": 1.8610401710821713e-14,
+          "limit": 1e-08,
+          "status": "PASS"
+        },
+        "pressure_probe_2_Pa": {
+          "actual": 90509.1137649249,
+          "reference": 90509.113764925,
+          "relative_error": 1.1254491659606006e-15,
+          "limit": 1e-08,
+          "status": "PASS"
+        }
+      },
+      "limit": "<=1e-8 relative for flow and both pressure probes",
+      "details": ""
+    }
+  },
+  "matrix": [
+    {
+      "run_id": "dt_0p020_ref_r32",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.02,
+      "ranks": 32
+    },
+    {
+      "run_id": "dt_0p010_ref_r32",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.01,
+      "ranks": 32
+    },
+    {
+      "run_id": "dt_0p005_ref_r32",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.005,
+      "ranks": 32
+    },
+    {
+      "run_id": "mesh_128x256_dt0p010_r16",
+      "kind": "reference",
+      "axial_cells": 128,
+      "radial_cells": 256,
+      "delta_t_s": 0.01,
+      "ranks": 16
+    },
+    {
+      "run_id": "mesh_512x1024_dt0p010_r64",
+      "kind": "reference",
+      "axial_cells": 512,
+      "radial_cells": 1024,
+      "delta_t_s": 0.01,
+      "ranks": 64
+    },
+    {
+      "run_id": "rank_1_ref_dt0p010",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.01,
+      "ranks": 1
+    },
+    {
+      "run_id": "rank_16_ref_dt0p010",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.01,
+      "ranks": 16
+    },
+    {
+      "run_id": "rank_64_ref_dt0p010",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.01,
+      "ranks": 64
+    },
+    {
+      "run_id": "layered_rank_1",
+      "kind": "layered",
+      "axial_cells": 64,
+      "radial_cells": 128,
+      "delta_t_s": 0.02,
+      "ranks": 1
+    },
+    {
+      "run_id": "layered_rank_16",
+      "kind": "layered",
+      "axial_cells": 64,
+      "radial_cells": 128,
+      "delta_t_s": 0.02,
+      "ranks": 16
+    }
+  ],
+  "runs": {
+    "dt_0p020_ref_r32": {
+      "run_id": "dt_0p020_ref_r32",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.02,
+      "ranks": 32,
+      "status": "PASS",
+      "case": "qualification_runs/dt_0p020_ref_r32/case",
+      "config": "qualification_runs/dt_0p020_ref_r32/scenario.json",
+      "acceptance": "qualification_runs/dt_0p020_ref_r32/case/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "81c23729d33cba34173218c9b01447478bf7000ca04b2a481fd3873a89ab5b17",
+      "primary_outputs": {
+        "first_drip_s": 4.71169618523188,
+        "outlet_flow_final_m3_s": 1.48267597159441e-06,
+        "cup_water_mass_at_end_kg": 0.0361701768622402,
+        "cup_solute_mass_at_end_kg": 0.00478769062055463,
+        "cup_beverage_mass_at_end_kg": 0.0409578674827949,
+        "time_to_40g_s": 29.3744801706296,
+        "cumulative_tds_mass_fraction": 0.116893063892201,
+        "extraction_yield_mass_fraction": 0.239384531027731,
+        "retained_water_mass_kg": 0.00919047619047618,
+        "retained_dissolved_solute_mass_kg": 0.000192063111610996,
+        "remaining_extractable_mass_kg": 0.000619392295239687,
+        "max_liquid_balance_residual_kg": 6.03683769639929e-16,
+        "max_solute_balance_residual_kg": 2.59799722755627e-13,
+        "max_pressure_final_residual": 9.21082358399194e-15,
+        "max_concentration_final_residual": 9.96118734147702e-12,
+        "max_pressure_iterations": 0.0,
+        "max_concentration_iterations": 4.0,
+        "max_estimated_saturated_pore_courant": 0.7970866023292934,
+        "straight_sided_wedge_scale": 72.0914664839846,
+        "scaled_mesh_volume_m3": 2.38095238095239e-05,
+        "mesh_volume_relative_error": 2.27682456221956e-15
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": true,
+        "all_required_b0_parity_gates_pass": true,
+        "all_required_gates_pass": null
+      },
+      "total_stage_duration_s": 11.409925339998154,
+      "stages": [
+        {
+          "label": "dt_0p020_ref_r32: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "32",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/log.prepareCase",
+          "log_sha256": "ba76b909196110ef4f6595c70ddbe7d8f819ed661e8e43f4af0865cfdef64fb4",
+          "start_utc": "2026-07-27T17:27:17.601337+00:00",
+          "end_utc": "2026-07-27T17:27:18.127936+00:00",
+          "duration_s": 0.5264528719999362,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p020_ref_r32: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/log.blockMesh",
+          "log_sha256": "be6c66c7ee41d1d8e383fece9e2c2f1d4280a011470c0457e97cf276efd7f915",
+          "start_utc": "2026-07-27T17:27:18.128078+00:00",
+          "end_utc": "2026-07-27T17:27:18.927742+00:00",
+          "duration_s": 0.7995216359995538,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p020_ref_r32: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/log.checkMesh",
+          "log_sha256": "be2d2435e17b6190d73344c20e119fbb823bb8c76210de77ac0efd01f9854bf7",
+          "start_utc": "2026-07-27T17:27:18.927950+00:00",
+          "end_utc": "2026-07-27T17:27:23.149650+00:00",
+          "duration_s": 4.22156642399932,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p020_ref_r32: decomposePar",
+          "command": [
+            "decomposePar",
+            "-force"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/log.decomposePar",
+          "log_sha256": "15b582a50c24760422e8b16ec20f6dd279a46781ea2851b4f5ef943f3904cb83",
+          "start_utc": "2026-07-27T17:27:23.149871+00:00",
+          "end_utc": "2026-07-27T17:27:23.693485+00:00",
+          "duration_s": 0.5434775059984531,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p020_ref_r32: solver",
+          "command": [
+            "/usr/bin/mpirun",
+            "-np",
+            "32",
+            "espressoWholePullFoam",
+            "-parallel"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/log.solver",
+          "log_sha256": "7e3b0dd314e1c7c04e74a6966f66d2d29ee0a373b61d0d1f11d0593f24326178",
+          "start_utc": "2026-07-27T17:27:23.693676+00:00",
+          "end_utc": "2026-07-27T17:27:28.622982+00:00",
+          "duration_s": 4.928582822998578,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p020_ref_r32: reconstructPar",
+          "command": [
+            "reconstructPar",
+            "-latestTime"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/log.reconstructPar",
+          "log_sha256": "5cb295467c3fb0cae59fff0b01236a2865c364ea102cd756711509f1b53959ba",
+          "start_utc": "2026-07-27T17:27:28.623212+00:00",
+          "end_utc": "2026-07-27T17:27:28.933009+00:00",
+          "duration_s": 0.30970062100095674,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p020_ref_r32: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p020_ref_r32/log.postprocess",
+          "log_sha256": "588a1946d9976f09da02a474d882eafd4e383657d6e3168fd44b6641c00cf0fc",
+          "start_utc": "2026-07-27T17:27:28.962505+00:00",
+          "end_utc": "2026-07-27T17:27:29.043197+00:00",
+          "duration_s": 0.08062345800135517,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    "dt_0p010_ref_r32": {
+      "run_id": "dt_0p010_ref_r32",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.01,
+      "ranks": 32,
+      "status": "PASS",
+      "case": "qualification_runs/dt_0p010_ref_r32/case",
+      "config": "qualification_runs/dt_0p010_ref_r32/scenario.json",
+      "acceptance": "qualification_runs/dt_0p010_ref_r32/case/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "f41c7677b0ecc17e3b10f3117c93fa92cb599a523b2abcaedac6b062c24bda54",
+      "primary_outputs": {
+        "first_drip_s": 4.71169618523188,
+        "outlet_flow_final_m3_s": 1.48267597159441e-06,
+        "cup_water_mass_at_end_kg": 0.0361701768622388,
+        "cup_solute_mass_at_end_kg": 0.00478715284724297,
+        "cup_beverage_mass_at_end_kg": 0.0409573297094818,
+        "time_to_40g_s": 29.3748436625152,
+        "cumulative_tds_mass_fraction": 0.116881468621103,
+        "extraction_yield_mass_fraction": 0.239357642362149,
+        "retained_water_mass_kg": 0.00919047619047618,
+        "retained_dissolved_solute_mass_kg": 0.00019198970164747,
+        "remaining_extractable_mass_kg": 0.000620003505385847,
+        "max_liquid_balance_residual_kg": 6.66133814775094e-16,
+        "max_solute_balance_residual_kg": 1.99203993784141e-13,
+        "max_pressure_final_residual": 9.21082358399194e-15,
+        "max_concentration_final_residual": 9.9673881963804e-12,
+        "max_pressure_iterations": 0.0,
+        "max_concentration_iterations": 3.0,
+        "max_estimated_saturated_pore_courant": 0.3985433011646467,
+        "straight_sided_wedge_scale": 72.0914664839846,
+        "scaled_mesh_volume_m3": 2.38095238095239e-05,
+        "mesh_volume_relative_error": 2.27682456221956e-15
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": true,
+        "all_required_b0_parity_gates_pass": true,
+        "all_required_gates_pass": null
+      },
+      "total_stage_duration_s": 14.817782601006911,
+      "stages": [
+        {
+          "label": "dt_0p010_ref_r32: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "32",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/log.prepareCase",
+          "log_sha256": "a543f549856e457412fef779ed518a992de094a0d5c48f1465b97b5e4dd2fbe6",
+          "start_utc": "2026-07-27T17:27:29.044302+00:00",
+          "end_utc": "2026-07-27T17:27:30.051426+00:00",
+          "duration_s": 1.0070521129964618,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p010_ref_r32: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/log.blockMesh",
+          "log_sha256": "930a3ca2d443ee5448c1636d1af0ff15f52230bb02dba7d8fbb5f97b2edc2d5e",
+          "start_utc": "2026-07-27T17:27:30.051587+00:00",
+          "end_utc": "2026-07-27T17:27:30.857472+00:00",
+          "duration_s": 0.8057594989950303,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p010_ref_r32: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/log.checkMesh",
+          "log_sha256": "d63680be1fbb3375bdd4595ca081d23712b7111c2dc5152ecb668be1b861f640",
+          "start_utc": "2026-07-27T17:27:30.857685+00:00",
+          "end_utc": "2026-07-27T17:27:35.054118+00:00",
+          "duration_s": 4.196323001997371,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p010_ref_r32: decomposePar",
+          "command": [
+            "decomposePar",
+            "-force"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/log.decomposePar",
+          "log_sha256": "22974b0e5da6c1b994527de7c8f199675164f267ad064ebe8a6b619cb81d4f8b",
+          "start_utc": "2026-07-27T17:27:35.054360+00:00",
+          "end_utc": "2026-07-27T17:27:35.603652+00:00",
+          "duration_s": 0.5491575000050943,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p010_ref_r32: solver",
+          "command": [
+            "/usr/bin/mpirun",
+            "-np",
+            "32",
+            "espressoWholePullFoam",
+            "-parallel"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/log.solver",
+          "log_sha256": "3766f54b835580c7e1e7f7a266841e34d52c160ad768982a5440bb25378a64fc",
+          "start_utc": "2026-07-27T17:27:35.603856+00:00",
+          "end_utc": "2026-07-27T17:27:43.447562+00:00",
+          "duration_s": 7.8425955190032255,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p010_ref_r32: reconstructPar",
+          "command": [
+            "reconstructPar",
+            "-latestTime"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/log.reconstructPar",
+          "log_sha256": "080aeb9da4cb6d6b005a51903022ac15e3275cc9df37ad60ab8d784bfa5c1d09",
+          "start_utc": "2026-07-27T17:27:43.447760+00:00",
+          "end_utc": "2026-07-27T17:27:43.757123+00:00",
+          "duration_s": 0.30925619700428797,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p010_ref_r32: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p010_ref_r32/log.postprocess",
+          "log_sha256": "6464c40f86b5f88d20bcfad705408fdff5c0cbc2f2ab1dfeaa367f1dfa9cd27e",
+          "start_utc": "2026-07-27T17:27:43.810092+00:00",
+          "end_utc": "2026-07-27T17:27:43.917811+00:00",
+          "duration_s": 0.1076387710054405,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    "dt_0p005_ref_r32": {
+      "run_id": "dt_0p005_ref_r32",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.005,
+      "ranks": 32,
+      "status": "PASS",
+      "case": "qualification_runs/dt_0p005_ref_r32/case",
+      "config": "qualification_runs/dt_0p005_ref_r32/scenario.json",
+      "acceptance": "qualification_runs/dt_0p005_ref_r32/case/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "e634c65cadd45ea0e1bf8f8bb410bd86f46f793ec7871e418cef53b3da97dfc3",
+      "primary_outputs": {
+        "first_drip_s": 4.71169618523188,
+        "outlet_flow_final_m3_s": 1.48267597159441e-06,
+        "cup_water_mass_at_end_kg": 0.0361773307738034,
+        "cup_solute_mass_at_end_kg": 0.00478710238015867,
+        "cup_beverage_mass_at_end_kg": 0.0409644331539621,
+        "time_to_40g_s": 29.3702118526436,
+        "cumulative_tds_mass_fraction": 0.116859968796997,
+        "extraction_yield_mass_fraction": 0.239355119007933,
+        "retained_water_mass_kg": 0.00919047619047618,
+        "retained_dissolved_solute_mass_kg": 0.000191881396336662,
+        "remaining_extractable_mass_kg": 0.000620162282313114,
+        "max_liquid_balance_residual_kg": 3.740063814206e-15,
+        "max_solute_balance_residual_kg": 7.12283594930989e-15,
+        "max_pressure_final_residual": 9.21082358399194e-15,
+        "max_concentration_final_residual": 6.01915694382254e-13,
+        "max_pressure_iterations": 0.0,
+        "max_concentration_iterations": 3.0,
+        "max_estimated_saturated_pore_courant": 0.19927165058232335,
+        "straight_sided_wedge_scale": 72.0914664839846,
+        "scaled_mesh_volume_m3": 2.38095238095239e-05,
+        "mesh_volume_relative_error": 2.27682456221956e-15
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": true,
+        "all_required_b0_parity_gates_pass": true,
+        "all_required_gates_pass": null
+      },
+      "total_stage_duration_s": 22.4850071020046,
+      "stages": [
+        {
+          "label": "dt_0p005_ref_r32: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "32",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/log.prepareCase",
+          "log_sha256": "fc512de12b7bbb0a04e0a07042fc3f31f17cb66c502d38c441dddbd6bfc34a18",
+          "start_utc": "2026-07-27T17:27:43.919208+00:00",
+          "end_utc": "2026-07-27T17:27:45.896118+00:00",
+          "duration_s": 1.976838360002148,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p005_ref_r32: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/log.blockMesh",
+          "log_sha256": "1121e30ab2360705b7311fd3851b101111b55030afffe012ca46bc4be8e191b1",
+          "start_utc": "2026-07-27T17:27:45.896345+00:00",
+          "end_utc": "2026-07-27T17:27:46.698480+00:00",
+          "duration_s": 0.8020237490054569,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p005_ref_r32: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/log.checkMesh",
+          "log_sha256": "1aafdd9c51da680c05e0956939fe6cb2f880027a18373578f367fed221cac616",
+          "start_utc": "2026-07-27T17:27:46.698690+00:00",
+          "end_utc": "2026-07-27T17:27:50.907818+00:00",
+          "duration_s": 4.205273601000954,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p005_ref_r32: decomposePar",
+          "command": [
+            "decomposePar",
+            "-force"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/log.decomposePar",
+          "log_sha256": "2eb29987f52b66d135d99410ef1815e82f364768348d355a2e652bd5e316f09a",
+          "start_utc": "2026-07-27T17:27:50.908031+00:00",
+          "end_utc": "2026-07-27T17:27:51.452548+00:00",
+          "duration_s": 0.5443822770030238,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p005_ref_r32: solver",
+          "command": [
+            "/usr/bin/mpirun",
+            "-np",
+            "32",
+            "espressoWholePullFoam",
+            "-parallel"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/log.solver",
+          "log_sha256": "b8486933e7d4e83148ca1029f81eb6a41b402d03dcf3339db132e1986a2fdd2c",
+          "start_utc": "2026-07-27T17:27:51.452755+00:00",
+          "end_utc": "2026-07-27T17:28:05.933019+00:00",
+          "duration_s": 14.477890187998128,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p005_ref_r32: reconstructPar",
+          "command": [
+            "reconstructPar",
+            "-latestTime"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/log.reconstructPar",
+          "log_sha256": "3daf78aa2acafa80af156510c1a885a38b2511d11f5f56442ccbaa464c350954",
+          "start_utc": "2026-07-27T17:28:05.933222+00:00",
+          "end_utc": "2026-07-27T17:28:06.243737+00:00",
+          "duration_s": 0.3103867919999175,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "dt_0p005_ref_r32: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/dt_0p005_ref_r32/log.postprocess",
+          "log_sha256": "8f3d781b5a2c29a7eabee26aa4c62c4a2921525b8a17d4111d61f01f320dffe5",
+          "start_utc": "2026-07-27T17:28:06.297482+00:00",
+          "end_utc": "2026-07-27T17:28:06.465775+00:00",
+          "duration_s": 0.1682121349949739,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    "mesh_128x256_dt0p010_r16": {
+      "run_id": "mesh_128x256_dt0p010_r16",
+      "kind": "reference",
+      "axial_cells": 128,
+      "radial_cells": 256,
+      "delta_t_s": 0.01,
+      "ranks": 16,
+      "status": "PASS",
+      "case": "qualification_runs/mesh_128x256_dt0p010_r16/case",
+      "config": "qualification_runs/mesh_128x256_dt0p010_r16/scenario.json",
+      "acceptance": "qualification_runs/mesh_128x256_dt0p010_r16/case/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "37153fe47caed30cfe246c10de71655e04ba7ce26f8cb449101cb9a37393c434",
+      "primary_outputs": {
+        "first_drip_s": 4.71169618523188,
+        "outlet_flow_final_m3_s": 1.48267597159442e-06,
+        "cup_water_mass_at_end_kg": 0.0361701768622388,
+        "cup_solute_mass_at_end_kg": 0.00478296124212226,
+        "cup_beverage_mass_at_end_kg": 0.0409531381043611,
+        "time_to_40g_s": 29.3776686962543,
+        "cumulative_tds_mass_fraction": 0.11679108033025,
+        "extraction_yield_mass_fraction": 0.239148062106113,
+        "retained_water_mass_kg": 0.0091904761904762,
+        "retained_dissolved_solute_mass_kg": 0.000194135406418103,
+        "remaining_extractable_mass_kg": 0.000622041341366633,
+        "max_liquid_balance_residual_kg": 7.35522753814166e-16,
+        "max_solute_balance_residual_kg": 1.92162584859056e-15,
+        "max_pressure_final_residual": 4.70173261763808e-15,
+        "max_concentration_final_residual": 1.54059600858074e-13,
+        "max_pressure_iterations": 0.0,
+        "max_concentration_iterations": 3.0,
+        "max_estimated_saturated_pore_courant": 0.19927165058230417,
+        "straight_sided_wedge_scale": 72.0914664839846,
+        "scaled_mesh_volume_m3": 2.38095238095238e-05,
+        "mesh_volume_relative_error": 4.26904605416167e-16
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": true,
+        "all_required_b0_parity_gates_pass": true,
+        "all_required_gates_pass": null
+      },
+      "total_stage_duration_s": 6.80560563000472,
+      "stages": [
+        {
+          "label": "mesh_128x256_dt0p010_r16: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "16",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/log.prepareCase",
+          "log_sha256": "09d39dec08813bfcbbf889dde25858ca4eb1d1b38d76802a8e18c0798e1b7764",
+          "start_utc": "2026-07-27T17:28:06.467088+00:00",
+          "end_utc": "2026-07-27T17:28:07.013914+00:00",
+          "duration_s": 0.5467732910037739,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_128x256_dt0p010_r16: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/log.blockMesh",
+          "log_sha256": "0360a658486583a3e7ccb267b0baaafdc7b25dd423281e522754e17275cd81ba",
+          "start_utc": "2026-07-27T17:28:07.014039+00:00",
+          "end_utc": "2026-07-27T17:28:07.239256+00:00",
+          "duration_s": 0.22505042199918535,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_128x256_dt0p010_r16: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/log.checkMesh",
+          "log_sha256": "bbbefd5f00994fb7b247508dd3fb8e8918e04f6c859b1fc7683db678b3bbf5f4",
+          "start_utc": "2026-07-27T17:28:07.239437+00:00",
+          "end_utc": "2026-07-27T17:28:07.941411+00:00",
+          "duration_s": 0.7018607069985592,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_128x256_dt0p010_r16: decomposePar",
+          "command": [
+            "decomposePar",
+            "-force"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/log.decomposePar",
+          "log_sha256": "4efdd0114bc828ab44c036d63a405c9b64b11604186c56a3184bc776d53b22d4",
+          "start_utc": "2026-07-27T17:28:07.941603+00:00",
+          "end_utc": "2026-07-27T17:28:08.123360+00:00",
+          "duration_s": 0.18162995500460966,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_128x256_dt0p010_r16: solver",
+          "command": [
+            "/usr/bin/mpirun",
+            "-np",
+            "16",
+            "espressoWholePullFoam",
+            "-parallel"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/log.solver",
+          "log_sha256": "07999a81a8c3f25a08a4ff800aa3658411dee3590159d449661111a265df8922",
+          "start_utc": "2026-07-27T17:28:08.123581+00:00",
+          "end_utc": "2026-07-27T17:28:13.044831+00:00",
+          "duration_s": 4.919914906000486,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_128x256_dt0p010_r16: reconstructPar",
+          "command": [
+            "reconstructPar",
+            "-latestTime"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/log.reconstructPar",
+          "log_sha256": "84debf65436e8300b1314152e4cc41b85315796d0551298d9155b8955f4fe96c",
+          "start_utc": "2026-07-27T17:28:13.045030+00:00",
+          "end_utc": "2026-07-27T17:28:13.174233+00:00",
+          "duration_s": 0.12905100799980573,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_128x256_dt0p010_r16: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_128x256_dt0p010_r16/log.postprocess",
+          "log_sha256": "f2e830f138dad1d270db681e7e0afe53092c2335a3f43559e5906fecdbd2be08",
+          "start_utc": "2026-07-27T17:28:13.200513+00:00",
+          "end_utc": "2026-07-27T17:28:13.301919+00:00",
+          "duration_s": 0.10132534099830082,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    "mesh_512x1024_dt0p010_r64": {
+      "run_id": "mesh_512x1024_dt0p010_r64",
+      "kind": "reference",
+      "axial_cells": 512,
+      "radial_cells": 1024,
+      "delta_t_s": 0.01,
+      "ranks": 64,
+      "status": "PASS",
+      "case": "qualification_runs/mesh_512x1024_dt0p010_r64/case",
+      "config": "qualification_runs/mesh_512x1024_dt0p010_r64/scenario.json",
+      "acceptance": "qualification_runs/mesh_512x1024_dt0p010_r64/case/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "2cac27582917727b1de29ecd0cfeba9afc55729ae3ae66c2accdf5fc192eaa37",
+      "primary_outputs": {
+        "first_drip_s": 4.71169618523188,
+        "outlet_flow_final_m3_s": 1.4826759715944e-06,
+        "cup_water_mass_at_end_kg": 0.0361701768622388,
+        "cup_solute_mass_at_end_kg": 0.00478925648818278,
+        "cup_beverage_mass_at_end_kg": 0.0409594333504215,
+        "time_to_40g_s": 29.3734254097368,
+        "cumulative_tds_mass_fraction": 0.116926824822236,
+        "extraction_yield_mass_fraction": 0.239462824409139,
+        "retained_water_mass_kg": 0.00919047619047617,
+        "retained_dissolved_solute_mass_kg": 0.000190921261726535,
+        "remaining_extractable_mass_kg": 0.000618983867796314,
+        "max_liquid_balance_residual_kg": 6.45317133063372e-16,
+        "max_solute_balance_residual_kg": 7.14877100124715e-13,
+        "max_pressure_final_residual": 1.95824873137067e-14,
+        "max_concentration_final_residual": 9.99669597297921e-12,
+        "max_pressure_iterations": 0.0,
+        "max_concentration_iterations": 4.0,
+        "max_estimated_saturated_pore_courant": 0.7970866023294438,
+        "straight_sided_wedge_scale": 72.0914664839846,
+        "scaled_mesh_volume_m3": 2.38095238095239e-05,
+        "mesh_volume_relative_error": 2.70372916763573e-15
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": true,
+        "all_required_b0_parity_gates_pass": true,
+        "all_required_gates_pass": null
+      },
+      "total_stage_duration_s": 142.77443118601514,
+      "stages": [
+        {
+          "label": "mesh_512x1024_dt0p010_r64: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "64",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/log.prepareCase",
+          "log_sha256": "961a5eebe4850a57e9d907ec9b6f607f6b69a5ac42cea31e461a31bdf4f34d61",
+          "start_utc": "2026-07-27T17:28:13.303617+00:00",
+          "end_utc": "2026-07-27T17:28:15.368528+00:00",
+          "duration_s": 2.0648380720012938,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_512x1024_dt0p010_r64: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/log.blockMesh",
+          "log_sha256": "18e7c211ad4d6d4faee52843fd927cff19f568469078afbdcc385b1f073cd5a6",
+          "start_utc": "2026-07-27T17:28:15.368699+00:00",
+          "end_utc": "2026-07-27T17:28:18.536316+00:00",
+          "duration_s": 3.1674227719995542,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_512x1024_dt0p010_r64: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/log.checkMesh",
+          "log_sha256": "b476b33cb706267ba83c8c15bf7c12d6bcd3e6e71574840f0a8b5f41bf04e6b5",
+          "start_utc": "2026-07-27T17:28:18.536542+00:00",
+          "end_utc": "2026-07-27T17:29:00.970584+00:00",
+          "duration_s": 42.433947591001925,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_512x1024_dt0p010_r64: decomposePar",
+          "command": [
+            "decomposePar",
+            "-force"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/log.decomposePar",
+          "log_sha256": "bb92f11ead3e6d43159075f43472487b028eb604d9f7b3a1154b6d8efc729e67",
+          "start_utc": "2026-07-27T17:29:00.970746+00:00",
+          "end_utc": "2026-07-27T17:29:03.302126+00:00",
+          "duration_s": 2.3312243550026324,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_512x1024_dt0p010_r64: solver",
+          "command": [
+            "/usr/bin/mpirun",
+            "-np",
+            "64",
+            "espressoWholePullFoam",
+            "-parallel"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/log.solver",
+          "log_sha256": "cd6e2aa41832370ea6e0e74d0a3d7f20ec924e767d0f72c6810d6519cafffaf3",
+          "start_utc": "2026-07-27T17:29:03.302370+00:00",
+          "end_utc": "2026-07-27T17:30:34.857660+00:00",
+          "duration_s": 91.55470402400533,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_512x1024_dt0p010_r64: reconstructPar",
+          "command": [
+            "reconstructPar",
+            "-latestTime"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/log.reconstructPar",
+          "log_sha256": "f38081092845b0b8ff4f52a39739eb094beebcb170ffcf29bb3e12e0ac63db90",
+          "start_utc": "2026-07-27T17:30:34.857812+00:00",
+          "end_utc": "2026-07-27T17:30:35.951490+00:00",
+          "duration_s": 1.093582563000382,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "mesh_512x1024_dt0p010_r64: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/mesh_512x1024_dt0p010_r64/log.postprocess",
+          "log_sha256": "6b213b2a137101ba8be0d32addca4f36bc7cebd881ac73ff88c7b7dbc81d68dd",
+          "start_utc": "2026-07-27T17:30:36.029569+00:00",
+          "end_utc": "2026-07-27T17:30:36.158346+00:00",
+          "duration_s": 0.1287118090040167,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    "rank_1_ref_dt0p010": {
+      "run_id": "rank_1_ref_dt0p010",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.01,
+      "ranks": 1,
+      "status": "PASS",
+      "case": "qualification_runs/rank_1_ref_dt0p010/case",
+      "config": "qualification_runs/rank_1_ref_dt0p010/scenario.json",
+      "acceptance": "qualification_runs/rank_1_ref_dt0p010/case/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "a74013ef0d1ec4dedaf0ff5932e67c4f6734e607d4cf73a819d72d085e9d0d49",
+      "primary_outputs": {
+        "first_drip_s": 4.71169618523188,
+        "outlet_flow_final_m3_s": 1.4826759715944e-06,
+        "cup_water_mass_at_end_kg": 0.0361701768622388,
+        "cup_solute_mass_at_end_kg": 0.00478715284787999,
+        "cup_beverage_mass_at_end_kg": 0.0409573297101187,
+        "time_to_40g_s": 29.3748436620725,
+        "cumulative_tds_mass_fraction": 0.116881468634839,
+        "extraction_yield_mass_fraction": 0.239357642393999,
+        "retained_water_mass_kg": 0.00919047619047611,
+        "retained_dissolved_solute_mass_kg": 0.000191989701246584,
+        "remaining_extractable_mass_kg": 0.000620003505029441,
+        "max_liquid_balance_residual_kg": 6.52256026967279e-16,
+        "max_solute_balance_residual_kg": 3.18992378601799e-13,
+        "max_pressure_final_residual": 9.18754246023201e-15,
+        "max_concentration_final_residual": 9.97052090073258e-12,
+        "max_pressure_iterations": 0.0,
+        "max_concentration_iterations": 2.0,
+        "max_estimated_saturated_pore_courant": 0.39854330116464526,
+        "straight_sided_wedge_scale": 72.0914664839846,
+        "scaled_mesh_volume_m3": 2.38095238095243e-05,
+        "mesh_volume_relative_error": 2.24836425519181e-14
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": true,
+        "all_required_b0_parity_gates_pass": true,
+        "all_required_gates_pass": null
+      },
+      "total_stage_duration_s": 219.06843336200836,
+      "stages": [
+        {
+          "label": "rank_1_ref_dt0p010: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "1",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/log.prepareCase",
+          "log_sha256": "fc55034849e7e99735f6ade84ffb33138ca46ad70b080fc8b982ae122a29ec28",
+          "start_utc": "2026-07-27T17:30:36.159478+00:00",
+          "end_utc": "2026-07-27T17:30:37.195104+00:00",
+          "duration_s": 1.035569225998188,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_1_ref_dt0p010: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/log.blockMesh",
+          "log_sha256": "eadf03d6dec9958913b4cea12ff6e02fef5198728809e2ca6c67982a93d0a7a5",
+          "start_utc": "2026-07-27T17:30:37.195265+00:00",
+          "end_utc": "2026-07-27T17:30:38.007313+00:00",
+          "duration_s": 0.8118826930003706,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_1_ref_dt0p010: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/log.checkMesh",
+          "log_sha256": "419b4719cc9ce10448162af5159910d2136a3786372bce6bae748676b10ef1b2",
+          "start_utc": "2026-07-27T17:30:38.007519+00:00",
+          "end_utc": "2026-07-27T17:30:42.352489+00:00",
+          "duration_s": 4.3448710040029255,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_1_ref_dt0p010: solver",
+          "command": [
+            "espressoWholePullFoam"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/log.solver",
+          "log_sha256": "8d952eef5a2885172e4db45c376510f4a9652d32c8668796468dc6a533e9afa9",
+          "start_utc": "2026-07-27T17:30:42.352670+00:00",
+          "end_utc": "2026-07-27T17:34:15.123014+00:00",
+          "duration_s": 212.76945138900192,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_1_ref_dt0p010: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_1_ref_dt0p010/log.postprocess",
+          "log_sha256": "8879b1879c8e7e3c5030c924d99b69001103069301d84fdd4cf51c52bf6c2c38",
+          "start_utc": "2026-07-27T17:34:15.123240+00:00",
+          "end_utc": "2026-07-27T17:34:15.229977+00:00",
+          "duration_s": 0.10665905000496423,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    "rank_16_ref_dt0p010": {
+      "run_id": "rank_16_ref_dt0p010",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.01,
+      "ranks": 16,
+      "status": "PASS",
+      "case": "qualification_runs/rank_16_ref_dt0p010/case",
+      "config": "qualification_runs/rank_16_ref_dt0p010/scenario.json",
+      "acceptance": "qualification_runs/rank_16_ref_dt0p010/case/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "5ea6720168ebc9ec7e5cd272e2ef2534c4de9b4bc4e07f96243743befe60e238",
+      "primary_outputs": {
+        "first_drip_s": 4.71169618523188,
+        "outlet_flow_final_m3_s": 1.48267597159441e-06,
+        "cup_water_mass_at_end_kg": 0.0361701768622388,
+        "cup_solute_mass_at_end_kg": 0.0047871528474384,
+        "cup_beverage_mass_at_end_kg": 0.0409573297096772,
+        "time_to_40g_s": 29.3748436623916,
+        "cumulative_tds_mass_fraction": 0.116881468625317,
+        "extraction_yield_mass_fraction": 0.23935764237192,
+        "retained_water_mass_kg": 0.00919047619047622,
+        "retained_dissolved_solute_mass_kg": 0.000191989701662402,
+        "remaining_extractable_mass_kg": 0.000620003505449234,
+        "max_liquid_balance_residual_kg": 6.66133814775094e-16,
+        "max_solute_balance_residual_kg": 7.49569387052104e-14,
+        "max_pressure_final_residual": 9.20250112194143e-15,
+        "max_concentration_final_residual": 9.68592214453956e-12,
+        "max_pressure_iterations": 0.0,
+        "max_concentration_iterations": 3.0,
+        "max_estimated_saturated_pore_courant": 0.39854330116464526,
+        "straight_sided_wedge_scale": 72.0914664839846,
+        "scaled_mesh_volume_m3": 2.38095238095238e-05,
+        "mesh_volume_relative_error": 2.13452302708084e-15
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": true,
+        "all_required_b0_parity_gates_pass": true,
+        "all_required_gates_pass": null
+      },
+      "total_stage_duration_s": 19.17774550298782,
+      "stages": [
+        {
+          "label": "rank_16_ref_dt0p010: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "16",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/log.prepareCase",
+          "log_sha256": "5f1f2467aa0b12eb765bfb7cd98500a5c1b5719156985ce6a3c0c080702cadd6",
+          "start_utc": "2026-07-27T17:34:15.231615+00:00",
+          "end_utc": "2026-07-27T17:34:16.246404+00:00",
+          "duration_s": 1.0147201799991308,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_16_ref_dt0p010: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/log.blockMesh",
+          "log_sha256": "c27545df7f0af92f6404e304e4b31175a527cff257f8470de8bf618f81555c5c",
+          "start_utc": "2026-07-27T17:34:16.246566+00:00",
+          "end_utc": "2026-07-27T17:34:17.041420+00:00",
+          "duration_s": 0.7947457789996406,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_16_ref_dt0p010: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/log.checkMesh",
+          "log_sha256": "f6d6b17ecec24a6c7c26c6bd46771fb3e35ea878bfebf4ac06b95984df2c988f",
+          "start_utc": "2026-07-27T17:34:17.041612+00:00",
+          "end_utc": "2026-07-27T17:34:21.269062+00:00",
+          "duration_s": 4.22733985800005,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_16_ref_dt0p010: decomposePar",
+          "command": [
+            "decomposePar",
+            "-force"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/log.decomposePar",
+          "log_sha256": "9a946ae26e8a23e374b2b77d64e03ddd743acb75c586a451ac1ceb30fc52d779",
+          "start_utc": "2026-07-27T17:34:21.269307+00:00",
+          "end_utc": "2026-07-27T17:34:21.746536+00:00",
+          "duration_s": 0.4771113019960467,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_16_ref_dt0p010: solver",
+          "command": [
+            "/usr/bin/mpirun",
+            "-np",
+            "16",
+            "espressoWholePullFoam",
+            "-parallel"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/log.solver",
+          "log_sha256": "00e274d9d9e268252c9f7f21fb9a97e257dd4f92e6c8cf052f4d44e015a2d045",
+          "start_utc": "2026-07-27T17:34:21.746751+00:00",
+          "end_utc": "2026-07-27T17:34:34.032953+00:00",
+          "duration_s": 12.285323837997566,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_16_ref_dt0p010: reconstructPar",
+          "command": [
+            "reconstructPar",
+            "-latestTime"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/log.reconstructPar",
+          "log_sha256": "117394fc73a33d47128073d8823d492fd8f09d7969c4a0c4b8bfd95886891ee4",
+          "start_utc": "2026-07-27T17:34:34.033149+00:00",
+          "end_utc": "2026-07-27T17:34:34.303297+00:00",
+          "duration_s": 0.2699981089972425,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_16_ref_dt0p010: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_16_ref_dt0p010/log.postprocess",
+          "log_sha256": "fac8b7434e5d273b51ed9cd5dd5bf9513fade221714cb761f6bce2581f0fd1e4",
+          "start_utc": "2026-07-27T17:34:34.332127+00:00",
+          "end_utc": "2026-07-27T17:34:34.440703+00:00",
+          "duration_s": 0.108506436998141,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    "rank_64_ref_dt0p010": {
+      "run_id": "rank_64_ref_dt0p010",
+      "kind": "reference",
+      "axial_cells": 256,
+      "radial_cells": 512,
+      "delta_t_s": 0.01,
+      "ranks": 64,
+      "status": "PASS",
+      "case": "qualification_runs/rank_64_ref_dt0p010/case",
+      "config": "qualification_runs/rank_64_ref_dt0p010/scenario.json",
+      "acceptance": "qualification_runs/rank_64_ref_dt0p010/case/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "2230f2c471d4ac4e87a679b7808397f07f69b30b67ccbf68801297c6e28f065c",
+      "primary_outputs": {
+        "first_drip_s": 4.71169618523188,
+        "outlet_flow_final_m3_s": 1.48267597159441e-06,
+        "cup_water_mass_at_end_kg": 0.0361701768622388,
+        "cup_solute_mass_at_end_kg": 0.004787152847555,
+        "cup_beverage_mass_at_end_kg": 0.0409573297097938,
+        "time_to_40g_s": 29.374843662319,
+        "cumulative_tds_mass_fraction": 0.116881468627831,
+        "extraction_yield_mass_fraction": 0.23935764237775,
+        "retained_water_mass_kg": 0.00919047619047618,
+        "retained_dissolved_solute_mass_kg": 0.000191989701675328,
+        "remaining_extractable_mass_kg": 0.000620003505473441,
+        "max_liquid_balance_residual_kg": 6.66133814775094e-16,
+        "max_solute_balance_residual_kg": 2.28790226768561e-13,
+        "max_pressure_final_residual": 9.25133240376936e-15,
+        "max_concentration_final_residual": 9.99468118463153e-12,
+        "max_pressure_iterations": 0.0,
+        "max_concentration_iterations": 3.0,
+        "max_estimated_saturated_pore_courant": 0.39854330116464526,
+        "straight_sided_wedge_scale": 72.0914664839846,
+        "scaled_mesh_volume_m3": 2.38095238095238e-05,
+        "mesh_volume_relative_error": 7.11507675693612e-16
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": true,
+        "all_required_b0_parity_gates_pass": true,
+        "all_required_gates_pass": null
+      },
+      "total_stage_duration_s": 16.05497450299299,
+      "stages": [
+        {
+          "label": "rank_64_ref_dt0p010: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "64",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/log.prepareCase",
+          "log_sha256": "9101255509c2279c06d4d41172c342dc194d734c10092f20d914311d384a1c7b",
+          "start_utc": "2026-07-27T17:34:34.441825+00:00",
+          "end_utc": "2026-07-27T17:34:35.458649+00:00",
+          "duration_s": 1.016750991999288,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_64_ref_dt0p010: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/log.blockMesh",
+          "log_sha256": "1b474b46f486ad5e744ae9a4017a80d0d09b817566233de2124a4703c88ecc47",
+          "start_utc": "2026-07-27T17:34:35.458815+00:00",
+          "end_utc": "2026-07-27T17:34:36.260708+00:00",
+          "duration_s": 0.8017848789968411,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_64_ref_dt0p010: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/log.checkMesh",
+          "log_sha256": "5f77aa34cc5fc0970821e1d379a555537b0a400cfd5b43e819ba31139e15d445",
+          "start_utc": "2026-07-27T17:34:36.260909+00:00",
+          "end_utc": "2026-07-27T17:34:40.511027+00:00",
+          "duration_s": 4.249996776001353,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_64_ref_dt0p010: decomposePar",
+          "command": [
+            "decomposePar",
+            "-force"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/log.decomposePar",
+          "log_sha256": "354ec6343ae0de5c8761a0e0f97213c841a506df4aa7c816e619a22948ff8bd1",
+          "start_utc": "2026-07-27T17:34:40.511297+00:00",
+          "end_utc": "2026-07-27T17:34:41.190303+00:00",
+          "duration_s": 0.6787979699947755,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_64_ref_dt0p010: solver",
+          "command": [
+            "/usr/bin/mpirun",
+            "-np",
+            "64",
+            "espressoWholePullFoam",
+            "-parallel"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/log.solver",
+          "log_sha256": "c1d906a890402e70c3c9abe11286da797cbbf81b46d95fb884c464ea1f1a156e",
+          "start_utc": "2026-07-27T17:34:41.190516+00:00",
+          "end_utc": "2026-07-27T17:34:49.977212+00:00",
+          "duration_s": 8.785804507999273,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_64_ref_dt0p010: reconstructPar",
+          "command": [
+            "reconstructPar",
+            "-latestTime"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/log.reconstructPar",
+          "log_sha256": "9f450284393e6104f25cce788075cf633d8babe7b5904f832adbc0733fc7c54b",
+          "start_utc": "2026-07-27T17:34:49.977415+00:00",
+          "end_utc": "2026-07-27T17:34:50.390555+00:00",
+          "duration_s": 0.4130492080003023,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "rank_64_ref_dt0p010: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/rank_64_ref_dt0p010/log.postprocess",
+          "log_sha256": "4e809ab1866e0ef3799ee911fd3bf02b1d132c6669b44327f1ae8b4323e119dd",
+          "start_utc": "2026-07-27T17:34:50.446896+00:00",
+          "end_utc": "2026-07-27T17:34:50.555750+00:00",
+          "duration_s": 0.1087901700011571,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    "layered_rank_1": {
+      "run_id": "layered_rank_1",
+      "kind": "layered",
+      "axial_cells": 64,
+      "radial_cells": 128,
+      "delta_t_s": 0.02,
+      "ranks": 1,
+      "status": "PASS",
+      "case": "qualification_runs/layered_rank_1/case",
+      "config": "qualification_runs/layered_rank_1/scenario.json",
+      "acceptance": "qualification_runs/layered_rank_1/case/ESPRESSO_LAYERED_PRESSURE_FIXTURE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "a4c1bc49bb055dfa5b51af3e40199202f7502d18116cd38cf45fca7870b6d319",
+      "primary_outputs": {
+        "outlet_flow_m3_s": 1.01089030651242e-06,
+        "pressure_probe_1_Pa": 537963.544940285,
+        "pressure_probe_2_Pa": 90509.113764925,
+        "max_pressure_iterations": 122.0,
+        "max_pressure_final_residual": 8.13032855551844e-13
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": null,
+        "all_required_b0_parity_gates_pass": null,
+        "all_required_gates_pass": true
+      },
+      "total_stage_duration_s": 0.40540093400340993,
+      "stages": [
+        {
+          "label": "layered_rank_1: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "1",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/log.prepareCase",
+          "log_sha256": "140ba0326ff0de84eade8df470ce7f9e54aab2b87d865518c86fa1e526bc169e",
+          "start_utc": "2026-07-27T17:34:50.556811+00:00",
+          "end_utc": "2026-07-27T17:34:50.605974+00:00",
+          "duration_s": 0.04910975899838377,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_1: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/log.blockMesh",
+          "log_sha256": "8f7c037c03d36d3e9477c9a7af972f02498387f692afdf12e5dc5d05a17f9262",
+          "start_utc": "2026-07-27T17:34:50.606101+00:00",
+          "end_utc": "2026-07-27T17:34:50.690730+00:00",
+          "duration_s": 0.0845549950026907,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_1: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/log.checkMesh",
+          "log_sha256": "9454cde23f01b8998da64fbc227895b7324151384aca9f2da1aa802e3d1c21f7",
+          "start_utc": "2026-07-27T17:34:50.690887+00:00",
+          "end_utc": "2026-07-27T17:34:50.862558+00:00",
+          "duration_s": 0.17156260999763617,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_1: solver",
+          "command": [
+            "espressoWholePullFoam"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/log.solver",
+          "log_sha256": "dc697b6c5bca4fa7aeec5b0958e400921bf9cb3842a903d575edcbd8f93bb111",
+          "start_utc": "2026-07-27T17:34:50.862762+00:00",
+          "end_utc": "2026-07-27T17:34:50.927253+00:00",
+          "duration_s": 0.06438610800250899,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_1: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess_layered_fixture.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_1/log.postprocess",
+          "log_sha256": "318992a9a77cf6657c3fab6d4124c9b67733f7ced03fcc1d901da91a110a2260",
+          "start_utc": "2026-07-27T17:34:50.927480+00:00",
+          "end_utc": "2026-07-27T17:34:50.963337+00:00",
+          "duration_s": 0.035787462002190296,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    "layered_rank_16": {
+      "run_id": "layered_rank_16",
+      "kind": "layered",
+      "axial_cells": 64,
+      "radial_cells": 128,
+      "delta_t_s": 0.02,
+      "ranks": 16,
+      "status": "PASS",
+      "case": "qualification_runs/layered_rank_16/case",
+      "config": "qualification_runs/layered_rank_16/scenario.json",
+      "acceptance": "qualification_runs/layered_rank_16/case/ESPRESSO_LAYERED_PRESSURE_FIXTURE_ACCEPTANCE_V0_1_3.json",
+      "acceptance_sha256": "2d8288ca09c21a9868d7d92c2e0c1657306f6e06bc3f4d772c4655afd80c95e2",
+      "primary_outputs": {
+        "outlet_flow_m3_s": 1.01089030651339e-06,
+        "pressure_probe_1_Pa": 537963.544940295,
+        "pressure_probe_2_Pa": 90509.1137649249,
+        "max_pressure_iterations": 155.0,
+        "max_pressure_final_residual": 9.3263266719546e-13
+      },
+      "acceptance_summary": {
+        "all_required_numerical_gates_pass": null,
+        "all_required_b0_parity_gates_pass": null,
+        "all_required_gates_pass": true
+      },
+      "total_stage_duration_s": 1.5526003889972344,
+      "stages": [
+        {
+          "label": "layered_rank_16: prepareCase",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/prepare_case.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--nprocs",
+            "16",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/log.prepareCase",
+          "log_sha256": "7f8d7a94a220ffec26d5c1d785258dd7020b9175661e616752218a6b704506a4",
+          "start_utc": "2026-07-27T17:34:50.964773+00:00",
+          "end_utc": "2026-07-27T17:34:51.013564+00:00",
+          "duration_s": 0.0487387819957803,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_16: blockMesh",
+          "command": [
+            "blockMesh"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/log.blockMesh",
+          "log_sha256": "022dc69ade82aa820d6cb4dfbde15d9c1b7cadb84bd79160511cb62ae67d95a8",
+          "start_utc": "2026-07-27T17:34:51.013688+00:00",
+          "end_utc": "2026-07-27T17:34:51.100043+00:00",
+          "duration_s": 0.08626182300213259,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_16: checkMesh",
+          "command": [
+            "checkMesh",
+            "-allGeometry",
+            "-allTopology"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/log.checkMesh",
+          "log_sha256": "b4973237c22ac1979cd4f4cf257cfcdda68d6daf0aecad488fe38253bed85816",
+          "start_utc": "2026-07-27T17:34:51.100273+00:00",
+          "end_utc": "2026-07-27T17:34:51.273314+00:00",
+          "duration_s": 0.1729277530030231,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_16: decomposePar",
+          "command": [
+            "decomposePar",
+            "-force"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/log.decomposePar",
+          "log_sha256": "a48a5662e6850a2928f287abbfc9a1c51f54cb56a32050743660c64d161fddcf",
+          "start_utc": "2026-07-27T17:34:51.273532+00:00",
+          "end_utc": "2026-07-27T17:34:51.378061+00:00",
+          "duration_s": 0.10443204799958039,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_16: solver",
+          "command": [
+            "/usr/bin/mpirun",
+            "-np",
+            "16",
+            "espressoWholePullFoam",
+            "-parallel"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/log.solver",
+          "log_sha256": "bc5da801ed4917b35b16ec770d3ea15f787dca3cf954d033ccead90b7e87a8a6",
+          "start_utc": "2026-07-27T17:34:51.378314+00:00",
+          "end_utc": "2026-07-27T17:34:52.385502+00:00",
+          "duration_s": 1.0070867480026209,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_16: reconstructPar",
+          "command": [
+            "reconstructPar",
+            "-latestTime"
+          ],
+          "cwd": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/case",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/log.reconstructPar",
+          "log_sha256": "ab9f0275b9d152439b4608de263157798f85cd1a85f1ace285f3edf8719a9156",
+          "start_utc": "2026-07-27T17:34:52.385718+00:00",
+          "end_utc": "2026-07-27T17:34:52.482236+00:00",
+          "duration_s": 0.09641079799621366,
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "label": "layered_rank_16: postprocess",
+          "command": [
+            "/usr/bin/python3",
+            "<PACKAGE_ROOT>/scripts/postprocess_layered_fixture.py",
+            "--root",
+            "<PACKAGE_ROOT>",
+            "--config",
+            "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/scenario.json",
+            "--case-dir",
+            "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/case"
+          ],
+          "cwd": "<PACKAGE_ROOT>",
+          "log": "<PACKAGE_ROOT>/qualification_runs/layered_rank_16/log.postprocess",
+          "log_sha256": "53359046e12681231d618b47416ff263b75cfaf1750e7c54795162dc24461612",
+          "start_utc": "2026-07-27T17:34:52.506512+00:00",
+          "end_utc": "2026-07-27T17:34:52.543322+00:00",
+          "duration_s": 0.03674243699788349,
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    }
+  },
+  "failure": null,
+  "environment": {
+    "available_logical_cpus": 128,
+    "mpi_launcher": "/usr/bin/mpirun",
+    "mpi_args": [],
+    "wm_project": "OpenFOAM",
+    "wm_project_version": "12",
+    "wm_options": "linux64GccDPInt32Opt"
+  },
+  "artifacts": {
+    "runs_csv": {
+      "path": "qualification/ESPRESSO_WHOLE_PULL_NUMERICAL_QUALIFICATION_RUNS_V0_1_3.csv",
+      "bytes": 2750,
+      "sha256": "91815d5f9f7ca40b84eed485329a017cdb0b4b34a419e20c8c413b3cf3a4b2e1"
+    }
+  },
+  "claim": "PASS qualifies the v0.1.3 implementation numerically across the declared time-step, mesh, decomposition, layered-pressure, analytical, and B0 gates. It does not establish physical validation."
+}

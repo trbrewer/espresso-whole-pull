@@ -1,0 +1,116 @@
+{
+  "schema_version": "espresso.whole_pull.reference_scenario.v0.1.3",
+  "scenario_id": "reference_R0_20g_58mm_9bar",
+  "solver": "espressoWholePullFoam",
+  "solver_version": "0.1.3",
+  "openfoam_distribution": "OpenFOAM Foundation",
+  "openfoam_version": "12",
+  "mode": "calibration",
+  "calibration": {
+    "parameter": "saturated_permeability_m2",
+    "target": "approximately 40 g total beverage mass at 30 s",
+    "independent_validation_status": "not_validated",
+    "note": "The 40 g endpoint is not an independent validation target in this run."
+  },
+  "geometry": {
+    "basket_diameter_m": 0.058,
+    "basket_radius_m": 0.029,
+    "wedge_angle_deg": 5.0,
+    "axial_cells": 256,
+    "radial_cells": 512,
+    "azimuthal_cells": 1,
+    "axial_grading": 1.0,
+    "radial_grading": 1.0
+  },
+  "coffee_bed": {
+    "dry_dose_kg": 0.02,
+    "particle_solid_density_kg_m3": 1400.0,
+    "initial_porosity": 0.4,
+    "bed_depth_m": 0.009011660896432553,
+    "initial_extractable_fraction_dry_basis": 0.28
+  },
+  "liquid": {
+    "temperature_K": 366.15,
+    "density_kg_m3": 965.0,
+    "dynamic_viscosity_Pa_s": 0.000315,
+    "effective_solute_diffusivity_m2_s": 1e-09
+  },
+  "hydraulics": {
+    "target_inlet_pressure_gauge_Pa": 900000.0,
+    "outlet_pressure_gauge_Pa": 0.0,
+    "pressure_ramp_time_s": 3.0,
+    "saturated_permeability_m2": 1.77e-15,
+    "wetting_permeability_m2": 1.77e-15,
+    "front_pressure_gauge_Pa": 0.0,
+    "gravity_enabled": false,
+    "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+    "permeability_profile": {
+      "type": "uniform",
+      "interface_position_m": 0.004505830448216276,
+      "upstream_permeability_m2": 1.77e-15,
+      "downstream_permeability_m2": 1.77e-15
+    }
+  },
+  "wetting": {
+    "model": "darcy_sharp_front_storage",
+    "front_smoothing_cells": 1.0,
+    "initial_saturation": 0.0,
+    "initial_wet_front_m": 0.0
+  },
+  "extraction": {
+    "model": "single_effective_solute_first_order_with_capacity_ceiling",
+    "rate_constant_1_s": 0.15,
+    "saturation_concentration_kg_m3": 180.0,
+    "rate_parameter_status": "engineering_assumption_for_wp_0_1_not_independent_validation"
+  },
+  "time": {
+    "start_s": 0.0,
+    "end_s": 30.0,
+    "delta_t_s": 0.02,
+    "field_write_interval_s": 1.0,
+    "target_beverage_mass_kg": 0.04
+  },
+  "parallel": {
+    "default_subdomains": 64,
+    "decomposition_method": "scotch"
+  },
+  "pressure_nodes": {
+    "inlet": "bed_top_gauge_pressure",
+    "outlet": "basket_bottom_ambient_gauge_pressure"
+  },
+  "claim_ceiling": "Numerically verified, evidence-connected, axisymmetric reference simulation of sharp-front wetting, Darcy flow, one-solute transport/extraction, and cup accumulation for a bounded calibration scenario; not independent real-coffee validation.",
+  "output": {
+    "write_format": "binary",
+    "write_compression": false,
+    "live_stage_logging": true,
+    "reference_artifact_version": "0.1.3"
+  },
+  "verification": {
+    "pressure_probes": [
+      {
+        "name": "quarter_depth",
+        "position_m": 0.002252915224108138,
+        "half_width_m": 1.7952918192111726e-05
+      },
+      {
+        "name": "three_quarter_depth",
+        "position_m": 0.006758745672324415,
+        "half_width_m": 1.7952918192111726e-05
+      }
+    ],
+    "wedge_volume_relative_tolerance": 1e-08,
+    "analytical_flow_relative_tolerance": 1e-08,
+    "analytical_first_drip_absolute_tolerance_s": 1e-08,
+    "retained_water_relative_tolerance": 1e-08,
+    "b0_parity": {
+      "hydraulic_relative_tolerance": 1e-08,
+      "inventory_relative_tolerance": 0.005,
+      "event_absolute_tolerance_s": 1e-08
+    }
+  },
+  "numerical_hardening": {
+    "milestone": "WP-0.1H",
+    "release_role": "corrected_reference_and_qualification_candidate",
+    "reference_freeze_status": "pending_target_Allverify_pass"
+  }
+}

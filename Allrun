@@ -1,0 +1,322 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REFERENCE_CASE="$ROOT_DIR/cases/reference_R0_20g_58mm_9bar"
+FIXTURE_CASE="$ROOT_DIR/cases/fixture_layered_pressure_v0_1_4"
+RUN_STATUS="$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_4.json"
+TIMING_TSV="$REFERENCE_CASE/stage_timings_v0_1_4.tsv"
+STAGE_TIMINGS_JSON="$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_STAGE_TIMINGS_V0_1_4.json"
+STATUS_WRITER="$ROOT_DIR/scripts/write_run_status.py"
+
+CURRENT_STAGE="initialization"
+CURRENT_LOG=""
+AVAILABLE_CPUS=""
+NPROCS="${NPROCS:-}"
+KEEP_PROCESSORS="${KEEP_PROCESSORS:-}"
+RECONSTRUCT="${RECONSTRUCT:-}"
+SOLVER_EXECUTABLE=""
+
+mkdir -p "$REFERENCE_CASE" "$FIXTURE_CASE"
+"$ROOT_DIR/scripts/clean_case.sh"
+# A fresh reference run invalidates any earlier qualification/freeze binding.
+rm -rf "$ROOT_DIR/qualification_runs"
+# qualification/ is runtime-only; remove every prior smoke/standard report and
+# log so this Allrun begins a new, unambiguously unfrozen evidence chain.
+if [[ -d "$ROOT_DIR/qualification" ]]; then
+    find "$ROOT_DIR/qualification" -mindepth 1 -maxdepth 1 -type f -delete
+fi
+rm -f "$REFERENCE_CASE/ESPRESSO_WHOLE_PULL_REFERENCE_FREEZE_MANIFEST_V0_1_4.json"
+printf 'stage\tstart_utc\tend_utc\tduration_s\tstatus\texit_code\tlog\n' > "$TIMING_TSV"
+
+write_run_status() {
+    local status="$1"
+    local code="$2"
+    local command_text="$3"
+    local line_number="$4"
+
+    mkdir -p "$REFERENCE_CASE"
+    if command -v python3 >/dev/null 2>&1 && [[ -f "$STATUS_WRITER" ]]; then
+        python3 "$STATUS_WRITER" \
+            --root "$ROOT_DIR" \
+            --status "$status" \
+            --stage "$CURRENT_STAGE" \
+            --exit-code "$code" \
+            --command "$command_text" \
+            --line "$line_number" \
+            --current-log "$CURRENT_LOG" \
+            --nprocs "$NPROCS" \
+            --available-cpus "$AVAILABLE_CPUS" \
+            --keep-processors "$KEEP_PROCESSORS" \
+            --reconstruct "$RECONSTRUCT" \
+            --timings "$TIMING_TSV" \
+            --output "$RUN_STATUS"
+        return $?
+    fi
+
+    cat > "$RUN_STATUS" <<EOF
+{
+  "schema_version": "espresso.whole_pull.run_status.fallback.v0.1.4",
+  "package_version": "0.1.4",
+  "status": "$status",
+  "failure_or_completion_stage": "$CURRENT_STAGE",
+  "exit_code": $code,
+  "note": "Python 3 was unavailable; inspect $CURRENT_LOG"
+}
+EOF
+}
+
+on_error() {
+    local code="$1"
+    local command_text="$2"
+    local line_number="$3"
+    trap - ERR
+    set +e
+    echo >&2
+    echo "ERROR: Allrun failed during stage '${CURRENT_STAGE}' with exit code ${code}." >&2
+    write_run_status "FAIL" "$code" "$command_text" "$line_number" >&2
+    echo >&2
+    echo "Share this single diagnostic file for review:" >&2
+    echo "  $RUN_STATUS" >&2
+    if [[ -n "$CURRENT_LOG" ]]; then
+        echo "Primary log:" >&2
+        echo "  $CURRENT_LOG" >&2
+    fi
+    exit "$code"
+}
+trap 'on_error "$?" "$BASH_COMMAND" "$LINENO"' ERR
+
+record_timing() {
+    local stage="$1" start_utc="$2" end_utc="$3" start_ns="$4" end_ns="$5"
+    local status="$6" code="$7" log_path="$8"
+    local duration
+    duration="$(python3 - "$start_ns" "$end_ns" <<'PY'
+import sys
+print(f"{(int(sys.argv[2])-int(sys.argv[1]))/1e9:.9f}")
+PY
+)"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
+        "$stage" "$start_utc" "$end_utc" "$duration" "$status" "$code" \
+        "${log_path#$ROOT_DIR/}" >> "$TIMING_TSV"
+}
+
+run_logged() {
+    local stage="$1" log_path="$2"
+    shift 2
+    CURRENT_STAGE="$stage"
+    CURRENT_LOG="$log_path"
+    mkdir -p "$(dirname "$log_path")"
+
+    local start_utc end_utc start_ns end_ns code status command_text
+    start_utc="$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)"
+    start_ns="$(date +%s%N)"
+    printf -v command_text '%q ' "$@"
+
+    trap - ERR
+    set +e
+    # ERR traps are inherited by shell functions/subshells under `set -E`.
+    # Disable the inherited trap inside the logged command wrapper so one
+    # failing stage produces exactly one controlling run-status report.
+    (
+        trap - ERR
+        set +e
+        "$@"
+    ) 2>&1 | tee "$log_path"
+    code=${PIPESTATUS[0]}
+    set -e
+    trap 'on_error "$?" "$BASH_COMMAND" "$LINENO"' ERR
+
+    end_ns="$(date +%s%N)"
+    end_utc="$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)"
+    status="PASS"
+    (( code == 0 )) || status="FAIL"
+    record_timing "$stage" "$start_utc" "$end_utc" "$start_ns" "$end_ns" "$status" "$code" "$log_path"
+    if (( code != 0 )); then
+        on_error "$code" "$command_text" "${BASH_LINENO[0]:-0}"
+    fi
+}
+
+
+run_load_environment() {
+    local stage="$1" log_path="$2"
+    CURRENT_STAGE="$stage"
+    CURRENT_LOG="$log_path"
+    mkdir -p "$(dirname "$log_path")"
+
+    local start_utc end_utc start_ns end_ns code status
+    start_utc="$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)"
+    start_ns="$(date +%s%N)"
+    # Process substitution keeps load_openfoam12 in this shell, so its exported
+    # variables remain available to all later workflow stages. Temporarily
+    # suppress the global ERR trap so a failed environment load is handled once
+    # by the stage controller below.
+    trap - ERR
+    set +e
+    load_openfoam12 > >(tee "$log_path") 2>&1
+    code=$?
+    set -e
+    trap 'on_error "$?" "$BASH_COMMAND" "$LINENO"' ERR
+    end_ns="$(date +%s%N)"
+    end_utc="$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)"
+    status="PASS"
+    (( code == 0 )) || status="FAIL"
+    record_timing "$stage" "$start_utc" "$end_utc" "$start_ns" "$end_ns" "$status" "$code" "$log_path"
+    if (( code != 0 )); then
+        on_error "$code" "load_openfoam12" "${BASH_LINENO[0]:-0}"
+    fi
+}
+
+run_case_command() {
+    local case_dir="$1"
+    shift
+    (
+        cd "$case_dir"
+        export ESPRESSO_CASE_ROOT="$case_dir"
+        "$@"
+    )
+}
+
+# shellcheck source=scripts/lib/openfoam_env.sh
+source "$ROOT_DIR/scripts/lib/openfoam_env.sh"
+run_load_environment "load_openfoam_environment" "$REFERENCE_CASE/log.environment"
+
+CURRENT_STAGE="required_command_check"
+CURRENT_LOG=""
+for cmd in python3 wmake wclean blockMesh checkMesh; do
+    command -v "$cmd" >/dev/null 2>&1 || on_error 2 "command -v $cmd" "$LINENO"
+done
+
+AVAILABLE_CPUS="$(getconf _NPROCESSORS_ONLN 2>/dev/null || nproc 2>/dev/null || echo 1)"
+DEFAULT_NPROCS=32
+(( AVAILABLE_CPUS < DEFAULT_NPROCS )) && DEFAULT_NPROCS="$AVAILABLE_CPUS"
+NPROCS="${NPROCS:-$DEFAULT_NPROCS}"
+if ! [[ "$NPROCS" =~ ^[1-9][0-9]*$ ]]; then
+    on_error 2 "NPROCS must be a positive integer: $NPROCS" "$LINENO"
+fi
+if (( NPROCS > AVAILABLE_CPUS )) && [[ "${ALLOW_OVERSUBSCRIBE:-0}" != "1" ]]; then
+    on_error 2 "NPROCS exceeds available logical CPUs" "$LINENO"
+fi
+KEEP_PROCESSORS="${KEEP_PROCESSORS:-0}"
+RECONSTRUCT="${RECONSTRUCT:-all}"
+[[ "$KEEP_PROCESSORS" == "0" || "$KEEP_PROCESSORS" == "1" ]] || on_error 2 "invalid KEEP_PROCESSORS" "$LINENO"
+case "$RECONSTRUCT" in all|latest|none) ;; *) on_error 2 "invalid RECONSTRUCT" "$LINENO" ;; esac
+if (( NPROCS > 1 )) && [[ "$RECONSTRUCT" == "none" ]]; then
+    on_error 2 "parallel acceptance requires reconstruction" "$LINENO"
+fi
+
+run_logged "source_manifest_verification" "$REFERENCE_CASE/log.sourceManifest" \
+    python3 "$ROOT_DIR/scripts/verify_source_manifest.py" --root "$ROOT_DIR"
+run_logged "static_validation" "$REFERENCE_CASE/log.staticValidation" \
+    python3 "$ROOT_DIR/scripts/static_validate.py" --root "$ROOT_DIR"
+run_logged "no_physics_change_verification" "$REFERENCE_CASE/log.noPhysicsChange" \
+    python3 "$ROOT_DIR/scripts/verify_no_physics_change.py" \
+        --root "$ROOT_DIR" \
+        --output "$REFERENCE_CASE/preflight/NO_PHYSICS_CHANGE_VERIFICATION_V0_1_4.json"
+run_logged "python_unit_tests" "$REFERENCE_CASE/log.pythonTests" \
+    python3 -m unittest discover -s "$ROOT_DIR/tests" -p 'test_*.py'
+run_logged "build_solver" "$REFERENCE_CASE/log.wmake" \
+    env \
+        BUILD_PURPOSE="reference_Allrun" \
+        BUILD_PROVENANCE_OUTPUT="$REFERENCE_CASE/preflight/BUILD_PROVENANCE_V0_1_4.json" \
+        TIMESTAMP_NORMALIZATION_OUTPUT="$REFERENCE_CASE/preflight/TIMESTAMP_NORMALIZATION_V0_1_4.json" \
+        ARCHIVED_EXECUTABLE_OUTPUT="$REFERENCE_CASE/preflight/espressoWholePullFoam_v0_1_4" \
+        "$ROOT_DIR/Allwmake"
+
+# Invoke the exact absolute executable whose bytes were just recorded by
+# Allwmake.  Do not rely on PATH, which could resolve another same-named binary.
+SOLVER_EXECUTABLE="${FOAM_USER_APPBIN}/espressoWholePullFoam"
+[[ "$SOLVER_EXECUTABLE" = /* ]] || on_error 2 "solver executable path is not absolute: $SOLVER_EXECUTABLE" "$LINENO"
+[[ -x "$SOLVER_EXECUTABLE" ]] || on_error 2 "built solver executable is missing or not executable: $SOLVER_EXECUTABLE" "$LINENO"
+
+# Mandatory fast heterogeneous pressure fixture.
+run_logged "prepare_layered_pressure_fixture" "$FIXTURE_CASE/log.prepareCase" \
+    python3 "$ROOT_DIR/scripts/prepare_case.py" \
+        --root "$ROOT_DIR" --nprocs 1 \
+        --config config/fixture_layered_pressure.json \
+        --case-dir cases/fixture_layered_pressure_v0_1_4
+run_logged "fixture_blockMesh" "$FIXTURE_CASE/log.blockMesh" \
+    run_case_command "$FIXTURE_CASE" blockMesh
+run_logged "fixture_checkMesh" "$FIXTURE_CASE/log.checkMesh" \
+    run_case_command "$FIXTURE_CASE" checkMesh -allGeometry -allTopology
+run_logged "fixture_run_solver" "$FIXTURE_CASE/log.espressoWholePullFoam" \
+    run_case_command "$FIXTURE_CASE" "$SOLVER_EXECUTABLE"
+run_logged "fixture_postprocess" "$FIXTURE_CASE/log.postprocess" \
+    python3 "$ROOT_DIR/scripts/postprocess_layered_fixture.py" --root "$ROOT_DIR"
+
+# Production reference run.
+run_logged "prepare_reference_case" "$REFERENCE_CASE/log.prepareCase" \
+    python3 "$ROOT_DIR/scripts/prepare_case.py" --root "$ROOT_DIR" --nprocs "$NPROCS"
+
+echo "=== OpenFOAM whole-pull R0 freeze-finalization release v0.1.4 ==="
+echo "WM_PROJECT_VERSION=${WM_PROJECT_VERSION:-unknown}"
+echo "WM_OPTIONS=${WM_OPTIONS:-unknown}"
+echo "Reference case=$REFERENCE_CASE"
+echo "Ranks=$NPROCS"
+echo "Solver=$SOLVER_EXECUTABLE"
+
+run_logged "reference_blockMesh" "$REFERENCE_CASE/log.blockMesh" \
+    run_case_command "$REFERENCE_CASE" blockMesh
+run_logged "reference_checkMesh" "$REFERENCE_CASE/log.checkMesh" \
+    run_case_command "$REFERENCE_CASE" checkMesh -allGeometry -allTopology
+
+if (( NPROCS == 1 )); then
+    run_logged "reference_run_solver_serial" "$REFERENCE_CASE/log.espressoWholePullFoam" \
+        run_case_command "$REFERENCE_CASE" "$SOLVER_EXECUTABLE"
+else
+    for cmd in decomposePar reconstructPar; do
+        command -v "$cmd" >/dev/null 2>&1 || on_error 2 "command -v $cmd" "$LINENO"
+    done
+    run_logged "reference_decomposePar" "$REFERENCE_CASE/log.decomposePar" \
+        run_case_command "$REFERENCE_CASE" decomposePar -force
+
+    MPI_LAUNCHER="${MPI_LAUNCHER:-}"
+    if [[ -z "$MPI_LAUNCHER" ]]; then
+        if command -v mpirun >/dev/null 2>&1; then
+            MPI_LAUNCHER="$(command -v mpirun)"
+        elif command -v mpiexec >/dev/null 2>&1; then
+            MPI_LAUNCHER="$(command -v mpiexec)"
+        else
+            on_error 2 "locate MPI launcher" "$LINENO"
+        fi
+    fi
+    read -r -a MPI_EXTRA <<< "${MPI_ARGS:-}"
+    run_logged "reference_run_solver_parallel" "$REFERENCE_CASE/log.espressoWholePullFoam" \
+        run_case_command "$REFERENCE_CASE" "$MPI_LAUNCHER" "${MPI_EXTRA[@]}" \
+            -np "$NPROCS" "$SOLVER_EXECUTABLE" -parallel
+
+    case "$RECONSTRUCT" in
+        all)
+            run_logged "reference_reconstruct_all_times" "$REFERENCE_CASE/log.reconstructPar" \
+                run_case_command "$REFERENCE_CASE" reconstructPar
+            ;;
+        latest)
+            run_logged "reference_reconstruct_latest_time" "$REFERENCE_CASE/log.reconstructPar" \
+                run_case_command "$REFERENCE_CASE" reconstructPar -latestTime
+            ;;
+    esac
+    [[ "$KEEP_PROCESSORS" == "1" ]] || rm -rf "$REFERENCE_CASE"/processor*
+fi
+
+run_logged "reference_postprocess_acceptance" "$REFERENCE_CASE/log.postprocess" \
+    python3 "$ROOT_DIR/scripts/postprocess.py" --root "$ROOT_DIR"
+
+CURRENT_STAGE="complete"
+CURRENT_LOG="$REFERENCE_CASE/log.postprocess"
+write_run_status "PASS" "0" "" "0"
+trap - ERR
+
+echo
+echo "Run complete. Share this single run-status file for review:"
+echo "  $RUN_STATUS"
+echo "Controlling reference acceptance report:"
+echo "  $REFERENCE_CASE/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_4.json"
+echo "Stage timing report:"
+echo "  $STAGE_TIMINGS_JSON"
+echo "Mandatory layered pressure fixture report:"
+echo "  $FIXTURE_CASE/ESPRESSO_LAYERED_PRESSURE_FIXTURE_ACCEPTANCE_V0_1_4.json"
+echo "ParaView entry point:"
+echo "  $REFERENCE_CASE/reference_R0.foam"
+echo
+echo "Reference execution passed. The archive is not frozen until standard ./Allverify"
+echo "finalizes the acceptance/run status and writes the terminal freeze manifest."
+echo "Next command: ./Allverify"

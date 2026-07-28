@@ -1,0 +1,153 @@
+{
+  "schema_version": "espresso.whole_pull.stage_timings.v0.1.3",
+  "generated_at_utc": "2026-07-27T17:26:32.847864+00:00",
+  "source_tsv": "cases/reference_R0_20g_58mm_9bar/stage_timings_v0_1_3.tsv",
+  "stage_count": 16,
+  "sum_of_stage_durations_s": 29.632890375,
+  "stages": [
+    {
+      "stage": "load_openfoam_environment",
+      "start_utc": "2026-07-27T17:26:02.016494923Z",
+      "end_utc": "2026-07-27T17:26:02.023780052Z",
+      "duration_s": 0.003266808,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.environment"
+    },
+    {
+      "stage": "static_validation",
+      "start_utc": "2026-07-27T17:26:02.051848678Z",
+      "end_utc": "2026-07-27T17:26:02.124410242Z",
+      "duration_s": 0.067469024,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.staticValidation"
+    },
+    {
+      "stage": "python_unit_tests",
+      "start_utc": "2026-07-27T17:26:02.147648053Z",
+      "end_utc": "2026-07-27T17:26:03.546416288Z",
+      "duration_s": 1.39221841,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.pythonTests"
+    },
+    {
+      "stage": "build_solver",
+      "start_utc": "2026-07-27T17:26:03.572701083Z",
+      "end_utc": "2026-07-27T17:26:12.254731976Z",
+      "duration_s": 8.676519556,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.wmake"
+    },
+    {
+      "stage": "prepare_layered_pressure_fixture",
+      "start_utc": "2026-07-27T17:26:12.280419979Z",
+      "end_utc": "2026-07-27T17:26:12.337887263Z",
+      "duration_s": 0.051338495,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/fixture_layered_pressure_v0_1_3/log.prepareCase"
+    },
+    {
+      "stage": "fixture_blockMesh",
+      "start_utc": "2026-07-27T17:26:12.364575204Z",
+      "end_utc": "2026-07-27T17:26:12.458081833Z",
+      "duration_s": 0.087693878,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/fixture_layered_pressure_v0_1_3/log.blockMesh"
+    },
+    {
+      "stage": "fixture_checkMesh",
+      "start_utc": "2026-07-27T17:26:12.484449289Z",
+      "end_utc": "2026-07-27T17:26:12.664774300Z",
+      "duration_s": 0.174631541,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/fixture_layered_pressure_v0_1_3/log.checkMesh"
+    },
+    {
+      "stage": "fixture_run_solver",
+      "start_utc": "2026-07-27T17:26:12.689570797Z",
+      "end_utc": "2026-07-27T17:26:12.766574046Z",
+      "duration_s": 0.071378329,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/fixture_layered_pressure_v0_1_3/log.espressoWholePullFoam"
+    },
+    {
+      "stage": "fixture_postprocess",
+      "start_utc": "2026-07-27T17:26:12.791285812Z",
+      "end_utc": "2026-07-27T17:26:12.835112205Z",
+      "duration_s": 0.038998858,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/fixture_layered_pressure_v0_1_3/log.postprocess"
+    },
+    {
+      "stage": "prepare_reference_case",
+      "start_utc": "2026-07-27T17:26:12.859663208Z",
+      "end_utc": "2026-07-27T17:26:13.395603602Z",
+      "duration_s": 0.530494298,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.prepareCase"
+    },
+    {
+      "stage": "reference_blockMesh",
+      "start_utc": "2026-07-27T17:26:13.421107592Z",
+      "end_utc": "2026-07-27T17:26:14.230442296Z",
+      "duration_s": 0.804477349,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.blockMesh"
+    },
+    {
+      "stage": "reference_checkMesh",
+      "start_utc": "2026-07-27T17:26:14.256213051Z",
+      "end_utc": "2026-07-27T17:26:18.532845861Z",
+      "duration_s": 4.270796878,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.checkMesh"
+    },
+    {
+      "stage": "reference_decomposePar",
+      "start_utc": "2026-07-27T17:26:18.559020963Z",
+      "end_utc": "2026-07-27T17:26:19.263266308Z",
+      "duration_s": 0.697584049,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.decomposePar"
+    },
+    {
+      "stage": "reference_run_solver_parallel",
+      "start_utc": "2026-07-27T17:26:19.289656083Z",
+      "end_utc": "2026-07-27T17:26:24.942046069Z",
+      "duration_s": 5.646773466,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.espressoWholePullFoam"
+    },
+    {
+      "stage": "reference_reconstruct_all_times",
+      "start_utc": "2026-07-27T17:26:24.965945789Z",
+      "end_utc": "2026-07-27T17:26:31.722545477Z",
+      "duration_s": 6.750867208,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.reconstructPar"
+    },
+    {
+      "stage": "reference_postprocess_acceptance",
+      "start_utc": "2026-07-27T17:26:32.400406391Z",
+      "end_utc": "2026-07-27T17:26:32.775257843Z",
+      "duration_s": 0.368382228,
+      "status": "PASS",
+      "exit_code": 0,
+      "log": "cases/reference_R0_20g_58mm_9bar/log.postprocess"
+    }
+  ]
+}

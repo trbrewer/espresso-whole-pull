@@ -1,0 +1,2395 @@
+{
+  "schema_version": "espresso.whole_pull.field_index.v0.1.3",
+  "generated_at_utc": "2026-07-27T17:26:32.753964+00:00",
+  "expected_final_fields": [
+    "p",
+    "U",
+    "saturation",
+    "wetMask",
+    "porosity",
+    "permeability",
+    "hydraulicMobility",
+    "dissolvedConcentration",
+    "remainingExtractable",
+    "localExtractionRate",
+    "darcyFlux"
+  ],
+  "final_time_directory": "30",
+  "missing_final_fields": [],
+  "indexed_file_count": 339,
+  "files": [
+    {
+      "time_s": 0.0,
+      "field": "p",
+      "path": "0/p",
+      "bytes": 523,
+      "sha256": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b"
+    },
+    {
+      "time_s": 0.0,
+      "field": "U",
+      "path": "0/U",
+      "bytes": 482,
+      "sha256": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0"
+    },
+    {
+      "time_s": 0.0,
+      "field": "saturation",
+      "path": "0/saturation",
+      "bytes": 507,
+      "sha256": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993"
+    },
+    {
+      "time_s": 0.0,
+      "field": "wetMask",
+      "path": "0/wetMask",
+      "bytes": 504,
+      "sha256": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74"
+    },
+    {
+      "time_s": 0.0,
+      "field": "porosity",
+      "path": "0/porosity",
+      "bytes": 484,
+      "sha256": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0"
+    },
+    {
+      "time_s": 0.0,
+      "field": "permeability",
+      "path": "0/permeability",
+      "bytes": 493,
+      "sha256": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c"
+    },
+    {
+      "time_s": 0.0,
+      "field": "dissolvedConcentration",
+      "path": "0/dissolvedConcentration",
+      "bytes": 520,
+      "sha256": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72"
+    },
+    {
+      "time_s": 0.0,
+      "field": "remainingExtractable",
+      "path": "0/remainingExtractable",
+      "bytes": 495,
+      "sha256": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8"
+    },
+    {
+      "time_s": 0.0,
+      "field": "localExtractionRate",
+      "path": "0/localExtractionRate",
+      "bytes": 495,
+      "sha256": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d"
+    },
+    {
+      "time_s": 1.0,
+      "field": "p",
+      "path": "1/p",
+      "bytes": 1049770,
+      "sha256": "7a4c3a0ea7c1a0ec6e837e3fb3064123ec0d83bd7d39c32f9cb75dbd24a59096"
+    },
+    {
+      "time_s": 1.0,
+      "field": "U",
+      "path": "1/U",
+      "bytes": 3146850,
+      "sha256": "6c5f7d291567fcb566e96bf2f69baf906cf4c52346fc20338c9ba93fd4762556"
+    },
+    {
+      "time_s": 1.0,
+      "field": "saturation",
+      "path": "1/saturation",
+      "bytes": 1049726,
+      "sha256": "42f03bffcfdf1041b59cb7758fb89ebe7ecd622eee5d17580414abc7e6053f5f"
+    },
+    {
+      "time_s": 1.0,
+      "field": "wetMask",
+      "path": "1/wetMask",
+      "bytes": 1049723,
+      "sha256": "8fc164dfef6651e44724d75254277fa7675e81528b7f8a94a1295fdf2c0147ad"
+    },
+    {
+      "time_s": 1.0,
+      "field": "porosity",
+      "path": "1/porosity",
+      "bytes": 1092,
+      "sha256": "43e18bb6c9c708786afbc205369c85fadbedb3ad6fb68a6aa712b66e394f8b93"
+    },
+    {
+      "time_s": 1.0,
+      "field": "permeability",
+      "path": "1/permeability",
+      "bytes": 1114,
+      "sha256": "f97362f884506245e613c8de7f445f83ab733ce18832a4647da8b2df5fc4467a"
+    },
+    {
+      "time_s": 1.0,
+      "field": "hydraulicMobility",
+      "path": "1/hydraulicMobility",
+      "bytes": 1268,
+      "sha256": "6b6799d260de6b4790850d3b1a3848c21f73f4a79d0166add106b3f9a15ff081"
+    },
+    {
+      "time_s": 1.0,
+      "field": "dissolvedConcentration",
+      "path": "1/dissolvedConcentration",
+      "bytes": 1049752,
+      "sha256": "b7dc5fa1a5a0ceeb187595dc11b36a97b9dedf6ea392801c21d9ec0a28c45180"
+    },
+    {
+      "time_s": 1.0,
+      "field": "remainingExtractable",
+      "path": "1/remainingExtractable",
+      "bytes": 1049717,
+      "sha256": "5d91e37da5d18590c4d40152d2152cf47cd1071a13cd9bf8c3906a682af14a3d"
+    },
+    {
+      "time_s": 1.0,
+      "field": "localExtractionRate",
+      "path": "1/localExtractionRate",
+      "bytes": 1049717,
+      "sha256": "5ea55a47e8ac9b8b8665035ddb53985f8effbbfff39c2b0ba3eac9c176582c25"
+    },
+    {
+      "time_s": 1.0,
+      "field": "darcyFlux",
+      "path": "1/darcyFlux",
+      "bytes": 4195701,
+      "sha256": "f9f74098cf61ceffd57edc92d28dd554afa1ce78c25ac62178ad404cf2fc488d"
+    },
+    {
+      "time_s": 2.0,
+      "field": "p",
+      "path": "2/p",
+      "bytes": 1049770,
+      "sha256": "1544fd221cfff274204c65410bc6ee993f7a61b2c991c571efc60b765969f09b"
+    },
+    {
+      "time_s": 2.0,
+      "field": "U",
+      "path": "2/U",
+      "bytes": 3146850,
+      "sha256": "128f1aa5e67fbc6cfa10c30ff197ca58d04cf601806a5f6a4217dcca4b4bcb8e"
+    },
+    {
+      "time_s": 2.0,
+      "field": "saturation",
+      "path": "2/saturation",
+      "bytes": 1049726,
+      "sha256": "e207a1e1a31c5673fa6386c70bd435b18ddd8a7c5b57306a5d5ca958c5d5ee56"
+    },
+    {
+      "time_s": 2.0,
+      "field": "wetMask",
+      "path": "2/wetMask",
+      "bytes": 1049723,
+      "sha256": "e344a2cde951c18908a64699b5edca6af5acee7d6d6755903895be85666b212d"
+    },
+    {
+      "time_s": 2.0,
+      "field": "porosity",
+      "path": "2/porosity",
+      "bytes": 1092,
+      "sha256": "ecb4af3f790b1763485e247297aa6fb935c1eefdfc8e812697706a70fc26f3ab"
+    },
+    {
+      "time_s": 2.0,
+      "field": "permeability",
+      "path": "2/permeability",
+      "bytes": 1114,
+      "sha256": "95f98d46ea730a95a0a9fefd1fabcc00d3bdc6f0dd21a730bd13fe03ea549021"
+    },
+    {
+      "time_s": 2.0,
+      "field": "hydraulicMobility",
+      "path": "2/hydraulicMobility",
+      "bytes": 1268,
+      "sha256": "3ca2c368220640c9fb7973110853eeae5539181a194f92bb5e13a1a1066ee765"
+    },
+    {
+      "time_s": 2.0,
+      "field": "dissolvedConcentration",
+      "path": "2/dissolvedConcentration",
+      "bytes": 1049752,
+      "sha256": "deeafac1679ab359bfb0d061389be52a1c22258bbd55b4a01bed32df0481215b"
+    },
+    {
+      "time_s": 2.0,
+      "field": "remainingExtractable",
+      "path": "2/remainingExtractable",
+      "bytes": 1049717,
+      "sha256": "d55f697b5abde2157fe970c4f911f4dce89d9f4d669420b6a1f582890fc36d6a"
+    },
+    {
+      "time_s": 2.0,
+      "field": "localExtractionRate",
+      "path": "2/localExtractionRate",
+      "bytes": 1049717,
+      "sha256": "a45c155b5706f55e00aed63abaab313a3e0a662c74e7100164526afe095d7e5b"
+    },
+    {
+      "time_s": 2.0,
+      "field": "darcyFlux",
+      "path": "2/darcyFlux",
+      "bytes": 4195701,
+      "sha256": "2971bc78674a2fa6e99921d4b61f96674fa949220d3dce82234e3551e964a067"
+    },
+    {
+      "time_s": 3.0,
+      "field": "p",
+      "path": "3/p",
+      "bytes": 1049770,
+      "sha256": "e4db22d34ebc8a3ecf3fa77ae1d9f141da802385d954078f05614013590c91f8"
+    },
+    {
+      "time_s": 3.0,
+      "field": "U",
+      "path": "3/U",
+      "bytes": 3146850,
+      "sha256": "985f04314ae28e74c1bdf6ca0ca0312dbf63dee2d0c28769f3cf1e929507fe93"
+    },
+    {
+      "time_s": 3.0,
+      "field": "saturation",
+      "path": "3/saturation",
+      "bytes": 1049726,
+      "sha256": "d5365a846909a98430bc35147dcb027b1f1af3e44d382c73a8b47157e0e1df0b"
+    },
+    {
+      "time_s": 3.0,
+      "field": "wetMask",
+      "path": "3/wetMask",
+      "bytes": 1049723,
+      "sha256": "7d2e1d604bb9d323c652f1c028857ea0aa65d81b0d764567fe1f9473576aec55"
+    },
+    {
+      "time_s": 3.0,
+      "field": "porosity",
+      "path": "3/porosity",
+      "bytes": 1092,
+      "sha256": "3c6fab9821af24045af58911299a0026855b95f5613c0ca439d1820d9fd2a90f"
+    },
+    {
+      "time_s": 3.0,
+      "field": "permeability",
+      "path": "3/permeability",
+      "bytes": 1114,
+      "sha256": "f7e8ce1334f6a468b9bdf6adb23d5f91959c3a1d650070c784cd5bd4a0ce2cf9"
+    },
+    {
+      "time_s": 3.0,
+      "field": "hydraulicMobility",
+      "path": "3/hydraulicMobility",
+      "bytes": 1268,
+      "sha256": "8b673bc2a95aba42eba8211444d6b987784c5a3833ca85252fdb19b6f452074f"
+    },
+    {
+      "time_s": 3.0,
+      "field": "dissolvedConcentration",
+      "path": "3/dissolvedConcentration",
+      "bytes": 1049752,
+      "sha256": "3102e952cf278a1b2e84dd9d9d2c5ca23291ef484c3a02a4974da6f467fcef01"
+    },
+    {
+      "time_s": 3.0,
+      "field": "remainingExtractable",
+      "path": "3/remainingExtractable",
+      "bytes": 1049717,
+      "sha256": "8e01990be00b99ab76d57ff5321e499de3ba1d7835ebac438b8ff672ae5d5c8c"
+    },
+    {
+      "time_s": 3.0,
+      "field": "localExtractionRate",
+      "path": "3/localExtractionRate",
+      "bytes": 1049717,
+      "sha256": "3a18511c21624f96d859d345afc4f667e046b8b29f79ff957106317bccd0adbd"
+    },
+    {
+      "time_s": 3.0,
+      "field": "darcyFlux",
+      "path": "3/darcyFlux",
+      "bytes": 4195701,
+      "sha256": "3ff45ca559925ebe5fbb8cb6d1640ddec6c02c684aaee3aacd49cd444d91572f"
+    },
+    {
+      "time_s": 4.0,
+      "field": "p",
+      "path": "4/p",
+      "bytes": 1049770,
+      "sha256": "3e8059bce404311521d6612809a035facb121483079164391977d91184b97936"
+    },
+    {
+      "time_s": 4.0,
+      "field": "U",
+      "path": "4/U",
+      "bytes": 3146850,
+      "sha256": "a4b9ec760e4c0752bd84049c73d3bccb0da026c7e2843885bc14711b3dfc9afb"
+    },
+    {
+      "time_s": 4.0,
+      "field": "saturation",
+      "path": "4/saturation",
+      "bytes": 1049726,
+      "sha256": "043a3a5ee8abd662a0d6c03d178d83bb2bb06619c044526dc46f4c1d73efe244"
+    },
+    {
+      "time_s": 4.0,
+      "field": "wetMask",
+      "path": "4/wetMask",
+      "bytes": 1049723,
+      "sha256": "6881f3641bbc477b541e15113fe7b3f470f66a7eb2d94de65ba993343b5dcd48"
+    },
+    {
+      "time_s": 4.0,
+      "field": "porosity",
+      "path": "4/porosity",
+      "bytes": 1092,
+      "sha256": "59ded024c231708b6761d7790c9ccd1ecf7e62d76dce50f01a2a49da0fc8856c"
+    },
+    {
+      "time_s": 4.0,
+      "field": "permeability",
+      "path": "4/permeability",
+      "bytes": 1114,
+      "sha256": "1cb33564c85316ff62fc7c6b54fed11fcf44900967bd9f30a54ba77ab410b2f0"
+    },
+    {
+      "time_s": 4.0,
+      "field": "hydraulicMobility",
+      "path": "4/hydraulicMobility",
+      "bytes": 1268,
+      "sha256": "1acddbc8a1058f13ccb62cfa6f17ad76eb02ed00dff3dec23fe9cfdd17dd6ae6"
+    },
+    {
+      "time_s": 4.0,
+      "field": "dissolvedConcentration",
+      "path": "4/dissolvedConcentration",
+      "bytes": 1049752,
+      "sha256": "d9079b17af760c15e2919bb40af08d416eb7b8ec371bfd57503d3622d03d57cc"
+    },
+    {
+      "time_s": 4.0,
+      "field": "remainingExtractable",
+      "path": "4/remainingExtractable",
+      "bytes": 1049717,
+      "sha256": "3126ec82e999d253e727de4821bbe2372530aa636fd248f9d143df11b71d4e52"
+    },
+    {
+      "time_s": 4.0,
+      "field": "localExtractionRate",
+      "path": "4/localExtractionRate",
+      "bytes": 1049717,
+      "sha256": "81bc835e50f85ba00faeda56dded421bc72ad068fe82724e73e64f3b8972aaed"
+    },
+    {
+      "time_s": 4.0,
+      "field": "darcyFlux",
+      "path": "4/darcyFlux",
+      "bytes": 4195701,
+      "sha256": "9e855b45d44a4fd415014b4fc52b9236a98568c5d23b5bd1c67209d87355b327"
+    },
+    {
+      "time_s": 5.0,
+      "field": "p",
+      "path": "5/p",
+      "bytes": 1049770,
+      "sha256": "00548b1fcffec2e240f78ca3916c5bada9666ae52c63801f4cd22481265fcd6b"
+    },
+    {
+      "time_s": 5.0,
+      "field": "U",
+      "path": "5/U",
+      "bytes": 3146850,
+      "sha256": "522bebe7e203a6556c2b1e3f13c27a38a66a8e53fba837ae366714227b8d3a95"
+    },
+    {
+      "time_s": 5.0,
+      "field": "saturation",
+      "path": "5/saturation",
+      "bytes": 1125,
+      "sha256": "ad6b3ce4c92f95ad21be35a9b5340b18a297612203dec7286af6708c7a1befb0"
+    },
+    {
+      "time_s": 5.0,
+      "field": "wetMask",
+      "path": "5/wetMask",
+      "bytes": 1122,
+      "sha256": "133c45763ad0c884b830e603a9cc7237e301abceda7387ea2862d0b21d918893"
+    },
+    {
+      "time_s": 5.0,
+      "field": "porosity",
+      "path": "5/porosity",
+      "bytes": 1092,
+      "sha256": "b31009c7df16f2c6bd9ea6dfe1ac351815ef7c7f8d11d2222df24cd93689d1e4"
+    },
+    {
+      "time_s": 5.0,
+      "field": "permeability",
+      "path": "5/permeability",
+      "bytes": 1114,
+      "sha256": "470e62f36c133631bab022afb94d08699a259800e140d665bfdbcaaf3f293caa"
+    },
+    {
+      "time_s": 5.0,
+      "field": "hydraulicMobility",
+      "path": "5/hydraulicMobility",
+      "bytes": 1268,
+      "sha256": "5c52b5a26cab466366225134346bfeb3a97a13b5f21a1cbc59bcaaca47825a68"
+    },
+    {
+      "time_s": 5.0,
+      "field": "dissolvedConcentration",
+      "path": "5/dissolvedConcentration",
+      "bytes": 1049752,
+      "sha256": "09c4066b4f085334d7440866b3731d43c123a31f695e89dc8bb69201c6dcf9f6"
+    },
+    {
+      "time_s": 5.0,
+      "field": "remainingExtractable",
+      "path": "5/remainingExtractable",
+      "bytes": 1049717,
+      "sha256": "ee8514ae74a636bd8e8b37e7fd0cafc30cc8387f2d1577269b4d6582a86e1d0a"
+    },
+    {
+      "time_s": 5.0,
+      "field": "localExtractionRate",
+      "path": "5/localExtractionRate",
+      "bytes": 1049717,
+      "sha256": "6da3d2f79ff64603583484efcbdcae78cd154d425a72bac7109e38419413d25e"
+    },
+    {
+      "time_s": 5.0,
+      "field": "darcyFlux",
+      "path": "5/darcyFlux",
+      "bytes": 2100547,
+      "sha256": "87ff93a5dbdc3073d1c2bb9926f55ea9e0dc90b7487fbc1ddbd23207d57c953e"
+    },
+    {
+      "time_s": 6.0,
+      "field": "p",
+      "path": "6/p",
+      "bytes": 1049770,
+      "sha256": "b4e3addd1df97217acc96d558527cb6b6f5f1f716a086a29698d8c3f3cebe05f"
+    },
+    {
+      "time_s": 6.0,
+      "field": "U",
+      "path": "6/U",
+      "bytes": 3146850,
+      "sha256": "22798577cde0e68ec44b292ba9fd28ee478d4718048deaad5fe8f135a1dfbe73"
+    },
+    {
+      "time_s": 6.0,
+      "field": "saturation",
+      "path": "6/saturation",
+      "bytes": 1125,
+      "sha256": "a9d118dd6667d268ec68d4e15355e07a017367f2c53df0d07fd429ced6e7e4cf"
+    },
+    {
+      "time_s": 6.0,
+      "field": "wetMask",
+      "path": "6/wetMask",
+      "bytes": 1122,
+      "sha256": "d19f05ca63579bb5cdeeaa70bae5b7f99dead2f45638e9a4144df07e3d6c4b8b"
+    },
+    {
+      "time_s": 6.0,
+      "field": "porosity",
+      "path": "6/porosity",
+      "bytes": 1092,
+      "sha256": "98c4481c2f2b54d5ae3a4bfbe5db62fd64953da22375b26ced149bb2d748a39b"
+    },
+    {
+      "time_s": 6.0,
+      "field": "permeability",
+      "path": "6/permeability",
+      "bytes": 1114,
+      "sha256": "5ce779f2d3eeb498d267ae7fdca9bb9d32bf080ba25731abcbbbc941d061e6ca"
+    },
+    {
+      "time_s": 6.0,
+      "field": "hydraulicMobility",
+      "path": "6/hydraulicMobility",
+      "bytes": 1268,
+      "sha256": "37f77c7b7035cf9f6c4c6c6ae0953c0e73a702ba8fe3c6d8a0147f39ebfbada3"
+    },
+    {
+      "time_s": 6.0,
+      "field": "dissolvedConcentration",
+      "path": "6/dissolvedConcentration",
+      "bytes": 1049752,
+      "sha256": "a41c8494e21413db0653a5b05fed517aa8bfa065f66f2aba87a9fcd8ecee2ae4"
+    },
+    {
+      "time_s": 6.0,
+      "field": "remainingExtractable",
+      "path": "6/remainingExtractable",
+      "bytes": 1049717,
+      "sha256": "76fc81e354b7f4d93dc8bed94844eb01f640025db7c3830d590f57a7d90cb5b8"
+    },
+    {
+      "time_s": 6.0,
+      "field": "localExtractionRate",
+      "path": "6/localExtractionRate",
+      "bytes": 1049717,
+      "sha256": "946182970086158dc69a9a23aa4ee66a7920fbf5affe4de37e2eb2330b5b2fbb"
+    },
+    {
+      "time_s": 6.0,
+      "field": "darcyFlux",
+      "path": "6/darcyFlux",
+      "bytes": 2100547,
+      "sha256": "502602feea6dee4a474f7b3a009705bde68963f0b62463dcfd903cf0aabd7564"
+    },
+    {
+      "time_s": 7.0,
+      "field": "p",
+      "path": "7/p",
+      "bytes": 1049770,
+      "sha256": "b3d8a9f64cc9c805d2af93d2db31caf983dc8f864bf93f64903b8f0fe0e7bd8f"
+    },
+    {
+      "time_s": 7.0,
+      "field": "U",
+      "path": "7/U",
+      "bytes": 3146850,
+      "sha256": "26e72fa298b71f3f560e354838ba079ca1c02d34b9331d4e7337f81f885461f2"
+    },
+    {
+      "time_s": 7.0,
+      "field": "saturation",
+      "path": "7/saturation",
+      "bytes": 1125,
+      "sha256": "5af44fa98082835c27332962ebe8974cb3db7fa02b3331e61ec37fe7b2ab0c47"
+    },
+    {
+      "time_s": 7.0,
+      "field": "wetMask",
+      "path": "7/wetMask",
+      "bytes": 1122,
+      "sha256": "917a49f40f8e1eb58dfdb2ca45c45e7d799e837683c381bbd22bdbbc79b16ddc"
+    },
+    {
+      "time_s": 7.0,
+      "field": "porosity",
+      "path": "7/porosity",
+      "bytes": 1092,
+      "sha256": "99e5bf782ef29d5d0eb4235eea5de7120d1e0d6be5f57ba2fabfa0913f7e1a1c"
+    },
+    {
+      "time_s": 7.0,
+      "field": "permeability",
+      "path": "7/permeability",
+      "bytes": 1114,
+      "sha256": "944445f5cdf719d5923d2a1af2115be7e5a9e9a743ae94740e714a9053b5e049"
+    },
+    {
+      "time_s": 7.0,
+      "field": "hydraulicMobility",
+      "path": "7/hydraulicMobility",
+      "bytes": 1268,
+      "sha256": "5b9e8ad6ce35c67f52064b475907de155aaae434cef72375e0b7de401e3e4f03"
+    },
+    {
+      "time_s": 7.0,
+      "field": "dissolvedConcentration",
+      "path": "7/dissolvedConcentration",
+      "bytes": 1049752,
+      "sha256": "71f5c9363a0f6ed0b1c3e94a45460561fd7ba5a56b890b791b6bc42dd6d31092"
+    },
+    {
+      "time_s": 7.0,
+      "field": "remainingExtractable",
+      "path": "7/remainingExtractable",
+      "bytes": 1049717,
+      "sha256": "18ba0ef637d3b59e047a4ce824eac6e65ed3c0150d30a066b2d586a7fa985810"
+    },
+    {
+      "time_s": 7.0,
+      "field": "localExtractionRate",
+      "path": "7/localExtractionRate",
+      "bytes": 1049717,
+      "sha256": "2d194d0a64c614122a2cc04ec73bfd2c880730eba4b5ec39fde4f47524a4615a"
+    },
+    {
+      "time_s": 7.0,
+      "field": "darcyFlux",
+      "path": "7/darcyFlux",
+      "bytes": 2100547,
+      "sha256": "70eaaea430cb7c4f383c46cc24924db94595b868ad6ebfee57bdb7c245b2acb6"
+    },
+    {
+      "time_s": 8.0,
+      "field": "p",
+      "path": "8/p",
+      "bytes": 1049770,
+      "sha256": "a55cca357a2640d11fe02e638fd01faa00e75859c657ed940c388d7616494814"
+    },
+    {
+      "time_s": 8.0,
+      "field": "U",
+      "path": "8/U",
+      "bytes": 3146850,
+      "sha256": "7168353d32373084b810cccb5f570660ed65ab6bdb44718f69ec94aa474244c8"
+    },
+    {
+      "time_s": 8.0,
+      "field": "saturation",
+      "path": "8/saturation",
+      "bytes": 1125,
+      "sha256": "de4aaa0a759d3fa343e556b9e755ded035ebafc607f2d63b33c4daeab126f7ee"
+    },
+    {
+      "time_s": 8.0,
+      "field": "wetMask",
+      "path": "8/wetMask",
+      "bytes": 1122,
+      "sha256": "e0ead61e41f1b4133742c12cbecc457f484ac0fe719129037eab48b171450c83"
+    },
+    {
+      "time_s": 8.0,
+      "field": "porosity",
+      "path": "8/porosity",
+      "bytes": 1092,
+      "sha256": "a41026959336b1ccd245f6cee7b3d6dce8037bcdd3e3916bea7826e63c26a269"
+    },
+    {
+      "time_s": 8.0,
+      "field": "permeability",
+      "path": "8/permeability",
+      "bytes": 1114,
+      "sha256": "b8c873d78cd6b945dacb06ace23766ee247179a40aab473b76d8445ea65be7a3"
+    },
+    {
+      "time_s": 8.0,
+      "field": "hydraulicMobility",
+      "path": "8/hydraulicMobility",
+      "bytes": 1268,
+      "sha256": "2a08694f700e1dbec4660521e48fa8f53604829fb037f23bc1ae07797dd123cd"
+    },
+    {
+      "time_s": 8.0,
+      "field": "dissolvedConcentration",
+      "path": "8/dissolvedConcentration",
+      "bytes": 1049752,
+      "sha256": "dc5e49f311553bf37789c33f5dfab417195a169c1799b36229d06f989caa7ff6"
+    },
+    {
+      "time_s": 8.0,
+      "field": "remainingExtractable",
+      "path": "8/remainingExtractable",
+      "bytes": 1049717,
+      "sha256": "3a05721b8adbe93f7faa510e94c5a6d4ee354238d3c4ee3f49557f435ef45ec1"
+    },
+    {
+      "time_s": 8.0,
+      "field": "localExtractionRate",
+      "path": "8/localExtractionRate",
+      "bytes": 1049717,
+      "sha256": "a76c3f6c88b08a2209ea1cfe49ceae2f9984a8eb55b1188e225c1a9697bda3f1"
+    },
+    {
+      "time_s": 8.0,
+      "field": "darcyFlux",
+      "path": "8/darcyFlux",
+      "bytes": 2100547,
+      "sha256": "e79e873867f0f45d62ff822f536365c46a9dff391aed1265350378e7e56c98c6"
+    },
+    {
+      "time_s": 9.0,
+      "field": "p",
+      "path": "9/p",
+      "bytes": 1049770,
+      "sha256": "cac7453b0de166217c1d5b8226191a9cdebaed2d9ed00ec7a1ebb11feff5f0ee"
+    },
+    {
+      "time_s": 9.0,
+      "field": "U",
+      "path": "9/U",
+      "bytes": 3146850,
+      "sha256": "7e6506d55b01cd458a4101189564d46bd4bdf497a3173e34416e16964860f292"
+    },
+    {
+      "time_s": 9.0,
+      "field": "saturation",
+      "path": "9/saturation",
+      "bytes": 1125,
+      "sha256": "78dc22f98f7e3188f593ec8717fe02f71c4be11304556d31b55e183d7476f1c5"
+    },
+    {
+      "time_s": 9.0,
+      "field": "wetMask",
+      "path": "9/wetMask",
+      "bytes": 1122,
+      "sha256": "bc8158ea5a7202c027da3f130c6b4aab2ca428e226e455a147d06436ec38575c"
+    },
+    {
+      "time_s": 9.0,
+      "field": "porosity",
+      "path": "9/porosity",
+      "bytes": 1092,
+      "sha256": "88c240cea5a79a7f3719a4128bced362159ae0d8718877c8790422aff0399630"
+    },
+    {
+      "time_s": 9.0,
+      "field": "permeability",
+      "path": "9/permeability",
+      "bytes": 1114,
+      "sha256": "82b967e42a889b0236779471b6d1a88c0b6fe76e0299e769f2355950e35ed74e"
+    },
+    {
+      "time_s": 9.0,
+      "field": "hydraulicMobility",
+      "path": "9/hydraulicMobility",
+      "bytes": 1268,
+      "sha256": "fef63a8f5bebef8446b310fd73a4d110930b3e7f52f415ce044a5c97b6329442"
+    },
+    {
+      "time_s": 9.0,
+      "field": "dissolvedConcentration",
+      "path": "9/dissolvedConcentration",
+      "bytes": 1049752,
+      "sha256": "79882323df96f15069989d56cad38a68c66099cd56b73549e69c7ab36b7f8f05"
+    },
+    {
+      "time_s": 9.0,
+      "field": "remainingExtractable",
+      "path": "9/remainingExtractable",
+      "bytes": 1049717,
+      "sha256": "047e0948c4811b7547fb24acc6ba1ab1da523fef6363cc04240f0d7bb5261177"
+    },
+    {
+      "time_s": 9.0,
+      "field": "localExtractionRate",
+      "path": "9/localExtractionRate",
+      "bytes": 1049717,
+      "sha256": "ef4c9f32cd26f0da43d4883b8e74ca5abd68a258cba88fb0ddeb6c258e3c8a5b"
+    },
+    {
+      "time_s": 9.0,
+      "field": "darcyFlux",
+      "path": "9/darcyFlux",
+      "bytes": 2100547,
+      "sha256": "a9b59e0be7bf4304a70f7f4c9b45446af80988b4d94fe669e0da27cb1b8e49fb"
+    },
+    {
+      "time_s": 10.0,
+      "field": "p",
+      "path": "10/p",
+      "bytes": 1049771,
+      "sha256": "6d6ce5af9c5db9dfc8b656123a32d9d6de20b7b2fddc5a0d1842e295b55a52ba"
+    },
+    {
+      "time_s": 10.0,
+      "field": "U",
+      "path": "10/U",
+      "bytes": 3146851,
+      "sha256": "dfa6803f86417f5d5a128a31f3bfd833ab1ad06d76a3378db600b8ec56f0af2a"
+    },
+    {
+      "time_s": 10.0,
+      "field": "saturation",
+      "path": "10/saturation",
+      "bytes": 1126,
+      "sha256": "cc6baf7aaec34e38376d0f12f81f7e77f6bab35029d912aac3db099eb964f580"
+    },
+    {
+      "time_s": 10.0,
+      "field": "wetMask",
+      "path": "10/wetMask",
+      "bytes": 1123,
+      "sha256": "5ed4428679f43c90588a18654489a6b2e2724dafea903489ad3cfc589ed639d5"
+    },
+    {
+      "time_s": 10.0,
+      "field": "porosity",
+      "path": "10/porosity",
+      "bytes": 1093,
+      "sha256": "b9f8b8708333ef87b59dad58b929ce74115165486c100ed53c5d1ce68a93f76e"
+    },
+    {
+      "time_s": 10.0,
+      "field": "permeability",
+      "path": "10/permeability",
+      "bytes": 1115,
+      "sha256": "9013f834ebb7af880fb13897f7de3c6766cb00404c9f4e388dd13cba74eb4cc8"
+    },
+    {
+      "time_s": 10.0,
+      "field": "hydraulicMobility",
+      "path": "10/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "321c5f1e2b0ff0500d75c5fb49f3920c35daeb5d461105da9ac5d0f9e91d6ec1"
+    },
+    {
+      "time_s": 10.0,
+      "field": "dissolvedConcentration",
+      "path": "10/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "6b4774770689a576f3576ee452720b1747e8487bee43815a791e69ba9fb73e29"
+    },
+    {
+      "time_s": 10.0,
+      "field": "remainingExtractable",
+      "path": "10/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "5d30c8ba2f8ad51227f051f96824c71af32b3af46d59f44e25256c3c12eb292d"
+    },
+    {
+      "time_s": 10.0,
+      "field": "localExtractionRate",
+      "path": "10/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "5094ac8e59dc7abda02281400d933f7a184f6eaad7287167558af2db7537e2ec"
+    },
+    {
+      "time_s": 10.0,
+      "field": "darcyFlux",
+      "path": "10/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "f204a06fe51e56be1ccc0b2a8b8b1bc4a8921b60ca37e400f3d3fa3a76150070"
+    },
+    {
+      "time_s": 11.0,
+      "field": "p",
+      "path": "11/p",
+      "bytes": 1049771,
+      "sha256": "902cb8f3ca090a32b840a8bf4221b1c5d300c6f49f85e08a2d0d862bbb6aa436"
+    },
+    {
+      "time_s": 11.0,
+      "field": "U",
+      "path": "11/U",
+      "bytes": 3146851,
+      "sha256": "9ba9d6ba6921834d5d36481fa5c71c1abd4f1a9ec8671a5cae05a71a7ed862d9"
+    },
+    {
+      "time_s": 11.0,
+      "field": "saturation",
+      "path": "11/saturation",
+      "bytes": 1126,
+      "sha256": "e59deb44dfbe725ef10faa6b9565cfe6198369319beb902a947ccd2ccb10d4d0"
+    },
+    {
+      "time_s": 11.0,
+      "field": "wetMask",
+      "path": "11/wetMask",
+      "bytes": 1123,
+      "sha256": "b4bc79a8261e32a19240b48fdd32987e2149912998d6684cff69fd21dfdf62cb"
+    },
+    {
+      "time_s": 11.0,
+      "field": "porosity",
+      "path": "11/porosity",
+      "bytes": 1093,
+      "sha256": "15d219ea74456d4dde233803ffba08bef798d7ddd023d02a375464349b1a0f5e"
+    },
+    {
+      "time_s": 11.0,
+      "field": "permeability",
+      "path": "11/permeability",
+      "bytes": 1115,
+      "sha256": "04ba8ed50df7852c552011580b5a94a2dedc712e9ace7af3b2773885f51fe67f"
+    },
+    {
+      "time_s": 11.0,
+      "field": "hydraulicMobility",
+      "path": "11/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "7e6a11047e195a920ea07c9604e1dd62d8a8768830cbdf509d3d700f5141fdb0"
+    },
+    {
+      "time_s": 11.0,
+      "field": "dissolvedConcentration",
+      "path": "11/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "8dbe4a7deebdbbdb9d9d51e35f47b8c43c70050109232d8691fa2e5b271acf9e"
+    },
+    {
+      "time_s": 11.0,
+      "field": "remainingExtractable",
+      "path": "11/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "946dab845b1138bb7a2bcedf4b2d1f656f50e3c2eed0f93a9646fd98a7c3e905"
+    },
+    {
+      "time_s": 11.0,
+      "field": "localExtractionRate",
+      "path": "11/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "58a5f9c0b5b9c0cd9d77963eca67674fd611065238ca259fbd3b385f21fcb46e"
+    },
+    {
+      "time_s": 11.0,
+      "field": "darcyFlux",
+      "path": "11/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "d9912118f26c5ce365dd9b295fffb5fb43bb7a1ce2182f75174ca376a9e74b9b"
+    },
+    {
+      "time_s": 12.0,
+      "field": "p",
+      "path": "12/p",
+      "bytes": 1049771,
+      "sha256": "80e034129305047aae81ffb1119223091e21e2bb9def6a8e1d416b79c8128355"
+    },
+    {
+      "time_s": 12.0,
+      "field": "U",
+      "path": "12/U",
+      "bytes": 3146851,
+      "sha256": "322c4bf3673c189c39856857e72fba42b224fa0787e63ff91d862d13e798399a"
+    },
+    {
+      "time_s": 12.0,
+      "field": "saturation",
+      "path": "12/saturation",
+      "bytes": 1126,
+      "sha256": "3738b6cbf705642192cc47930d67fd24c0642d5ef313b6ffed30eed5a7218568"
+    },
+    {
+      "time_s": 12.0,
+      "field": "wetMask",
+      "path": "12/wetMask",
+      "bytes": 1123,
+      "sha256": "c3fb13bd1511e1c33656484fbab7f3dc7c142d709d2fa65063f470358c899574"
+    },
+    {
+      "time_s": 12.0,
+      "field": "porosity",
+      "path": "12/porosity",
+      "bytes": 1093,
+      "sha256": "4efdf3fbb7d53ecf129c3e8afcc9c4a53e38270cc5aa6946ed66eba262f4809d"
+    },
+    {
+      "time_s": 12.0,
+      "field": "permeability",
+      "path": "12/permeability",
+      "bytes": 1115,
+      "sha256": "8a2a692b3d717d13a3a710a23e6bf4fb6ec185c67e4810a5e961b273dc592a2a"
+    },
+    {
+      "time_s": 12.0,
+      "field": "hydraulicMobility",
+      "path": "12/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "93c1a1626bdd077e9aec9e050deb44168602b67404b9cd5dbdef0844bcd74a89"
+    },
+    {
+      "time_s": 12.0,
+      "field": "dissolvedConcentration",
+      "path": "12/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "d7498efeda69d9b252965e20ce166afa55aa760c898b5bb75c58fb467150e07f"
+    },
+    {
+      "time_s": 12.0,
+      "field": "remainingExtractable",
+      "path": "12/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "27fdb790dd7b585026549d72abbe3c08550645a7c84d3bdb98544b25dd0f5e2d"
+    },
+    {
+      "time_s": 12.0,
+      "field": "localExtractionRate",
+      "path": "12/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "6d54ec6303782efce530263c5ca057b4d0cae29d8c7758bb2627e243c4e19982"
+    },
+    {
+      "time_s": 12.0,
+      "field": "darcyFlux",
+      "path": "12/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "accbce2d13a74a975bca0bc72f2a301d615ecfeb484034c643fb81f90bfbdb23"
+    },
+    {
+      "time_s": 13.0,
+      "field": "p",
+      "path": "13/p",
+      "bytes": 1049771,
+      "sha256": "9fcce07c706eb6be9f6624fd47fb9d0e863152ed440deb7adc62399a12231f7c"
+    },
+    {
+      "time_s": 13.0,
+      "field": "U",
+      "path": "13/U",
+      "bytes": 3146851,
+      "sha256": "ca0ceeae20a7dd52652dbef125562db884c64d4163b865314793026da97a0133"
+    },
+    {
+      "time_s": 13.0,
+      "field": "saturation",
+      "path": "13/saturation",
+      "bytes": 1126,
+      "sha256": "e105e3084fa7edd2ae31ebe032e3027650b063b264fec7a011ffd17941632b4e"
+    },
+    {
+      "time_s": 13.0,
+      "field": "wetMask",
+      "path": "13/wetMask",
+      "bytes": 1123,
+      "sha256": "278fa4684f0e2880bab04ee4bc3e9cc6e42d7e4e4d2ec5316b3fa825bd7e5316"
+    },
+    {
+      "time_s": 13.0,
+      "field": "porosity",
+      "path": "13/porosity",
+      "bytes": 1093,
+      "sha256": "da33b484abbb8d87c26f177f7a0c5dd961ba5bfd054c26d678668373ae04ba63"
+    },
+    {
+      "time_s": 13.0,
+      "field": "permeability",
+      "path": "13/permeability",
+      "bytes": 1115,
+      "sha256": "893de58613c5045f058d8cf01c45548909f9826875951afef51c81389106706a"
+    },
+    {
+      "time_s": 13.0,
+      "field": "hydraulicMobility",
+      "path": "13/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "b52dea4589da63ffd4da27045f8a766259a6e40a54116231d6b5ca84118377c1"
+    },
+    {
+      "time_s": 13.0,
+      "field": "dissolvedConcentration",
+      "path": "13/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "b14b13b00061b51b8c9e2925fd48604275c1f1c997c05aefe6af6cf096bb8d39"
+    },
+    {
+      "time_s": 13.0,
+      "field": "remainingExtractable",
+      "path": "13/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "3dae1be09987b13a32ee241254d9deabdc929340d22471605e7cd4d78859ceab"
+    },
+    {
+      "time_s": 13.0,
+      "field": "localExtractionRate",
+      "path": "13/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "463e5b6882940177628755481620cc94e19d9f4f913f9aad39bd47ac31ee7f59"
+    },
+    {
+      "time_s": 13.0,
+      "field": "darcyFlux",
+      "path": "13/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "dcd55740d89b89e758f77f03bc58d5db1a8874ae77ae13bb5bf631f6dd5e5815"
+    },
+    {
+      "time_s": 14.0,
+      "field": "p",
+      "path": "14/p",
+      "bytes": 1049771,
+      "sha256": "3386a91552b6bb17eea9846b7cb15f9fc7a7a13f6e5a1925796e6623629033c6"
+    },
+    {
+      "time_s": 14.0,
+      "field": "U",
+      "path": "14/U",
+      "bytes": 3146851,
+      "sha256": "ff995a623d2068c6567db8e35d29b21414dbcabb0a301f201fdcee57598d29f7"
+    },
+    {
+      "time_s": 14.0,
+      "field": "saturation",
+      "path": "14/saturation",
+      "bytes": 1126,
+      "sha256": "6449781a591dce58307cc106ddba6347310c5bb9768399b7905b8b6cc224df09"
+    },
+    {
+      "time_s": 14.0,
+      "field": "wetMask",
+      "path": "14/wetMask",
+      "bytes": 1123,
+      "sha256": "9776969d6dbef3084533d559efdfa12297bd31724bcb08501d71517190052df2"
+    },
+    {
+      "time_s": 14.0,
+      "field": "porosity",
+      "path": "14/porosity",
+      "bytes": 1093,
+      "sha256": "4424e1d5e19f4b37621f2a164d3ee54d7ea4bf7c25e634ac140df7a92be4b388"
+    },
+    {
+      "time_s": 14.0,
+      "field": "permeability",
+      "path": "14/permeability",
+      "bytes": 1115,
+      "sha256": "fa53cb43bf54a68e10b988f47ee6528fc246e17350cadc298f8a1f0c46129ff2"
+    },
+    {
+      "time_s": 14.0,
+      "field": "hydraulicMobility",
+      "path": "14/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "3b3be04d0e35109f53a3412676b013954c2800dadda2431dce1e15fc13996ead"
+    },
+    {
+      "time_s": 14.0,
+      "field": "dissolvedConcentration",
+      "path": "14/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "76b2074abfc8f3112bf0a5e8ab277701e9b0188aede6e54a7f39b47da7617c41"
+    },
+    {
+      "time_s": 14.0,
+      "field": "remainingExtractable",
+      "path": "14/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "45530b4f82deb38865e121fa57b459bf3c48125fe5eb1e396726a86ce026263c"
+    },
+    {
+      "time_s": 14.0,
+      "field": "localExtractionRate",
+      "path": "14/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "8e3b51ca3ebc4b99e7d67251140fe71779d573fe3da6f55de850974793e853e1"
+    },
+    {
+      "time_s": 14.0,
+      "field": "darcyFlux",
+      "path": "14/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "d4ba634714bd5fea2568d1243231c4841ad8a33e8d53f37355ea345ecd500d70"
+    },
+    {
+      "time_s": 15.0,
+      "field": "p",
+      "path": "15/p",
+      "bytes": 1049771,
+      "sha256": "17689c031cc90081b2ab5d86b7e883bbd1ee84baa660a50ff154c5337065cce9"
+    },
+    {
+      "time_s": 15.0,
+      "field": "U",
+      "path": "15/U",
+      "bytes": 3146851,
+      "sha256": "7c41c389d9218aaef5c62c7a865aae0f14de8770d4f99f8d640fb31bc4b06cf0"
+    },
+    {
+      "time_s": 15.0,
+      "field": "saturation",
+      "path": "15/saturation",
+      "bytes": 1126,
+      "sha256": "c43da74ac68d9ee0cbf4510c147dcc24643462dc1ac04814765aa9754b46cb06"
+    },
+    {
+      "time_s": 15.0,
+      "field": "wetMask",
+      "path": "15/wetMask",
+      "bytes": 1123,
+      "sha256": "9632be70f2930ef605b0571bef124cae33a66431aaf9c69288980ec901bff450"
+    },
+    {
+      "time_s": 15.0,
+      "field": "porosity",
+      "path": "15/porosity",
+      "bytes": 1093,
+      "sha256": "4a7ea71982c3c4f8147418df60a0acbafc9c0e028e161be889246703adfc496f"
+    },
+    {
+      "time_s": 15.0,
+      "field": "permeability",
+      "path": "15/permeability",
+      "bytes": 1115,
+      "sha256": "b6dfe475d5ca13b2df47097f7b7a94b0b43d22a77810717ab8128f872f0a60b6"
+    },
+    {
+      "time_s": 15.0,
+      "field": "hydraulicMobility",
+      "path": "15/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "b4f8b043f9591e789a6197c7a5e6b9e4e1aa5456502cdcbce8c0ed9de2392620"
+    },
+    {
+      "time_s": 15.0,
+      "field": "dissolvedConcentration",
+      "path": "15/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "87a201076dc4144628a7a22882df9990da5fa2f5a05e1dc7958a79d488336316"
+    },
+    {
+      "time_s": 15.0,
+      "field": "remainingExtractable",
+      "path": "15/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "01c3fcf2ccb20a827376f6471c046b5b0c4b5c3e5eaea20814ef36ea5601a977"
+    },
+    {
+      "time_s": 15.0,
+      "field": "localExtractionRate",
+      "path": "15/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "a1b9865e5fb96da2c124add978d931d8b99ed0a246e277590d70a23f052f2314"
+    },
+    {
+      "time_s": 15.0,
+      "field": "darcyFlux",
+      "path": "15/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "a6eee2b546a9bd0be2bbe9a90c00d178d4b907664662be70467088188fb4ede5"
+    },
+    {
+      "time_s": 16.0,
+      "field": "p",
+      "path": "16/p",
+      "bytes": 1049771,
+      "sha256": "dc09a1a48d0d89301adf5067f0266fd6879a7b179caee5a73b2636143f371e3e"
+    },
+    {
+      "time_s": 16.0,
+      "field": "U",
+      "path": "16/U",
+      "bytes": 3146851,
+      "sha256": "014f5ee4f5d06f53d168bd321b1f6d2ec53125bdc3007dd50baed3936083ab99"
+    },
+    {
+      "time_s": 16.0,
+      "field": "saturation",
+      "path": "16/saturation",
+      "bytes": 1126,
+      "sha256": "cd970476f092b23e738df5d9dfc321d99d911af774b7444267ae28d61db2e8ef"
+    },
+    {
+      "time_s": 16.0,
+      "field": "wetMask",
+      "path": "16/wetMask",
+      "bytes": 1123,
+      "sha256": "aa370fe8d1c75b54d6da2473f504133eb6f1714a602672437eab60f4720f07aa"
+    },
+    {
+      "time_s": 16.0,
+      "field": "porosity",
+      "path": "16/porosity",
+      "bytes": 1093,
+      "sha256": "56ec2451c47286c00b5551f529f7fb6c21f22563324efc8751d5d1855e25df5b"
+    },
+    {
+      "time_s": 16.0,
+      "field": "permeability",
+      "path": "16/permeability",
+      "bytes": 1115,
+      "sha256": "6fb1de4ee6485f573b325c8fae62b1a81c539b57bc7f3a88afa12d9a4212a93d"
+    },
+    {
+      "time_s": 16.0,
+      "field": "hydraulicMobility",
+      "path": "16/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "ff7750076fe7f6e038c36ed95492e27ed63234a815991676dfa81d18856a1330"
+    },
+    {
+      "time_s": 16.0,
+      "field": "dissolvedConcentration",
+      "path": "16/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "eaa11a83f080e612bb77896e63f439c3c454bbac2d70521c5d3efcf4db78775b"
+    },
+    {
+      "time_s": 16.0,
+      "field": "remainingExtractable",
+      "path": "16/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "b78824bf6fda1e90f5793fd87a03b5210fbde4555acc6d6a535ed40a772db1ac"
+    },
+    {
+      "time_s": 16.0,
+      "field": "localExtractionRate",
+      "path": "16/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "cdc417521a266731fde39ce47daa19a8aa1a189332b6892009f71347cd39e8a3"
+    },
+    {
+      "time_s": 16.0,
+      "field": "darcyFlux",
+      "path": "16/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "92957468f74978bb807f03edb51506f6932bddee135002fe488c0e0cbb39f4ac"
+    },
+    {
+      "time_s": 17.0,
+      "field": "p",
+      "path": "17/p",
+      "bytes": 1049771,
+      "sha256": "7e7183f2358bd963843695f3f445016c60aa7d84998adfaec720ad6e69071eb1"
+    },
+    {
+      "time_s": 17.0,
+      "field": "U",
+      "path": "17/U",
+      "bytes": 3146851,
+      "sha256": "e1b58752837010be57894e7cb37d54609fb628d90bf7ebb951b0370d9a96e510"
+    },
+    {
+      "time_s": 17.0,
+      "field": "saturation",
+      "path": "17/saturation",
+      "bytes": 1126,
+      "sha256": "7fd482812a8df2c48acfc50fc4caf46b298466acb9f8bc549967e6fd58977554"
+    },
+    {
+      "time_s": 17.0,
+      "field": "wetMask",
+      "path": "17/wetMask",
+      "bytes": 1123,
+      "sha256": "f91f04860bec93ba96467697c1fdfac40ab03a372acbaebc386a6376087bf5bb"
+    },
+    {
+      "time_s": 17.0,
+      "field": "porosity",
+      "path": "17/porosity",
+      "bytes": 1093,
+      "sha256": "165e6775e069ed62353cceb6f12a38add5b4773a63623d2afd616f17e120c124"
+    },
+    {
+      "time_s": 17.0,
+      "field": "permeability",
+      "path": "17/permeability",
+      "bytes": 1115,
+      "sha256": "c7eb44b3e133c63451e3dab472c0d8144d19f7e11dbf5b5fe4c0bf3d4aac1f7b"
+    },
+    {
+      "time_s": 17.0,
+      "field": "hydraulicMobility",
+      "path": "17/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "02411ebf36d3b7834eddbd760238f643d7c47e2720155e6d01ef1c0a18793f3f"
+    },
+    {
+      "time_s": 17.0,
+      "field": "dissolvedConcentration",
+      "path": "17/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "27f3ba2e2c24d89bea8af472f0f5e8fb1641214079f74ae3dc987d120cd040e8"
+    },
+    {
+      "time_s": 17.0,
+      "field": "remainingExtractable",
+      "path": "17/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "a358fecdb019ca2c8ad74240a880ce71357d6aa5090461f3c35f7bcc67096d31"
+    },
+    {
+      "time_s": 17.0,
+      "field": "localExtractionRate",
+      "path": "17/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "3f049489b15f52cecc87a0a47d86799414d213672dcd811ae396289ef24457d0"
+    },
+    {
+      "time_s": 17.0,
+      "field": "darcyFlux",
+      "path": "17/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "a3bebabc765ba1970f0b56a66b0e5923812cbe39694f2b4488d48db583c28206"
+    },
+    {
+      "time_s": 18.0,
+      "field": "p",
+      "path": "18/p",
+      "bytes": 1049771,
+      "sha256": "90f1fe9a6adf7cc2431af9a53c0be90c43deba4e5151fa0f189d9dcc17a6ff76"
+    },
+    {
+      "time_s": 18.0,
+      "field": "U",
+      "path": "18/U",
+      "bytes": 3146851,
+      "sha256": "bb404ed9df6d0b5999b5000e9469561fd80bba06d8652295f51edbf23757ec7a"
+    },
+    {
+      "time_s": 18.0,
+      "field": "saturation",
+      "path": "18/saturation",
+      "bytes": 1126,
+      "sha256": "e236373e9efda1949482f829c18233bbd5fd28a5acc3381524188ce1d33e99f1"
+    },
+    {
+      "time_s": 18.0,
+      "field": "wetMask",
+      "path": "18/wetMask",
+      "bytes": 1123,
+      "sha256": "0d4511b45cd9e972bf39014bc14741417fade0358572baef821ebaf469ae9fe9"
+    },
+    {
+      "time_s": 18.0,
+      "field": "porosity",
+      "path": "18/porosity",
+      "bytes": 1093,
+      "sha256": "0818aef8ab1c54aeba2ba18ee2e144c882986c77c8caab7f1158cb2a65c260ce"
+    },
+    {
+      "time_s": 18.0,
+      "field": "permeability",
+      "path": "18/permeability",
+      "bytes": 1115,
+      "sha256": "96ec42d3aa72dfed20689e7d5606111ca54eb5c91d3cc2891f3c4d83a3980229"
+    },
+    {
+      "time_s": 18.0,
+      "field": "hydraulicMobility",
+      "path": "18/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "aa6cd8246ae862ee3a4dab782328145f7307f51fa4314c27943fc5b5a9d3265b"
+    },
+    {
+      "time_s": 18.0,
+      "field": "dissolvedConcentration",
+      "path": "18/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "6f628e0092986b09a14bcada9789614b99e38917761a2ff4bdc5e58be79cf055"
+    },
+    {
+      "time_s": 18.0,
+      "field": "remainingExtractable",
+      "path": "18/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "62ce2cddd84f9a7ee4445c7e88c188a5ebf8169e683c5b4624f145531de0b168"
+    },
+    {
+      "time_s": 18.0,
+      "field": "localExtractionRate",
+      "path": "18/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "68c7766f974cb86f490ccefd0c31a6a26f5f79cff246ec28336dc14a2fe1784b"
+    },
+    {
+      "time_s": 18.0,
+      "field": "darcyFlux",
+      "path": "18/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "b24b6cadea46eb5022ec4a9a2e3bab077a8d1ed9057e296bbccc18d53807c9ec"
+    },
+    {
+      "time_s": 19.0,
+      "field": "p",
+      "path": "19/p",
+      "bytes": 1049771,
+      "sha256": "079c058a5d6709e294f27624d99767255b843ef944f9471fbf0d568bfaf7cb44"
+    },
+    {
+      "time_s": 19.0,
+      "field": "U",
+      "path": "19/U",
+      "bytes": 3146851,
+      "sha256": "57e6e7b97548e4f955dd0867f99d5b2f09b6d135837cffb0025e0a207accb75e"
+    },
+    {
+      "time_s": 19.0,
+      "field": "saturation",
+      "path": "19/saturation",
+      "bytes": 1126,
+      "sha256": "3d7055c7f22b0de5800c6f026b149a9d7f4eaa11a8c39be95f038b7d7feaf2b0"
+    },
+    {
+      "time_s": 19.0,
+      "field": "wetMask",
+      "path": "19/wetMask",
+      "bytes": 1123,
+      "sha256": "37875d0abe66c51804ab99155da2445611e48c3e244255bc15a37705fb872449"
+    },
+    {
+      "time_s": 19.0,
+      "field": "porosity",
+      "path": "19/porosity",
+      "bytes": 1093,
+      "sha256": "6c9adb2658f04644404ac6c821b48d2a69e16ca2181deae97d20f6a52033af71"
+    },
+    {
+      "time_s": 19.0,
+      "field": "permeability",
+      "path": "19/permeability",
+      "bytes": 1115,
+      "sha256": "44d098b08aa206762ace2cbab934eb3a8f30e98eef8baffea5fd602f988d1718"
+    },
+    {
+      "time_s": 19.0,
+      "field": "hydraulicMobility",
+      "path": "19/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "a330f3d3af8c6a0549bb4e110d4ca9be8f04b6ee86cc8cba736aca3aa7024818"
+    },
+    {
+      "time_s": 19.0,
+      "field": "dissolvedConcentration",
+      "path": "19/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "106452f8c651bd2bd290c2ab4c1b0021ed3f83b52a8e9d7095fe2b29ca954912"
+    },
+    {
+      "time_s": 19.0,
+      "field": "remainingExtractable",
+      "path": "19/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "028e8c4afef85ce4adc8f082459cb45055ab8a70c07dd9bd0f46d7036983690c"
+    },
+    {
+      "time_s": 19.0,
+      "field": "localExtractionRate",
+      "path": "19/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "61876a9b1015929d36aae399c8c0e4ef71171ab3a0ace391b4ec00b9f0b17739"
+    },
+    {
+      "time_s": 19.0,
+      "field": "darcyFlux",
+      "path": "19/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "bfeb4cf8e8e843b39c1d8bc82884cf4139b2bc2f9c4a51484a15c4cce8fd06e3"
+    },
+    {
+      "time_s": 20.0,
+      "field": "p",
+      "path": "20/p",
+      "bytes": 1049771,
+      "sha256": "a2bc2dee51a8525241351a35717438608564bb34402892f35779877902fcf080"
+    },
+    {
+      "time_s": 20.0,
+      "field": "U",
+      "path": "20/U",
+      "bytes": 3146851,
+      "sha256": "0c5836b58f0f1113aba77b57deb3f8c4533e1b1764d94e073ba32ba2a8818ae0"
+    },
+    {
+      "time_s": 20.0,
+      "field": "saturation",
+      "path": "20/saturation",
+      "bytes": 1126,
+      "sha256": "4293e36a45954aa77bff815d6c75de13609b24c012b8274f4d2c583000754a46"
+    },
+    {
+      "time_s": 20.0,
+      "field": "wetMask",
+      "path": "20/wetMask",
+      "bytes": 1123,
+      "sha256": "00172c4c45b6ff551f52ebb2b775a01da30d3588e1edd29854f3bab5057bb5fd"
+    },
+    {
+      "time_s": 20.0,
+      "field": "porosity",
+      "path": "20/porosity",
+      "bytes": 1093,
+      "sha256": "cd7809a14deba9c2d5037cd2ae1f36ec087a76d05b7a8d5f9e7fea50525fb345"
+    },
+    {
+      "time_s": 20.0,
+      "field": "permeability",
+      "path": "20/permeability",
+      "bytes": 1115,
+      "sha256": "7dcd0fbcf30125ac66d1f13473ff9347d7da914646b28493533571872b45b855"
+    },
+    {
+      "time_s": 20.0,
+      "field": "hydraulicMobility",
+      "path": "20/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "0d45aa16fb46f6ddd1eefaec2c4a69f4f075b262a25d408b40845c96f7b751bf"
+    },
+    {
+      "time_s": 20.0,
+      "field": "dissolvedConcentration",
+      "path": "20/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "0d94d6aa163b5edf32102c17a862cb16ab6dea9533212f6f580aaabf1de44232"
+    },
+    {
+      "time_s": 20.0,
+      "field": "remainingExtractable",
+      "path": "20/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "0f249955e7643eab5c3676f1176b9fd9bc0641c82bc6c59fc4f2544a6cefce6d"
+    },
+    {
+      "time_s": 20.0,
+      "field": "localExtractionRate",
+      "path": "20/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "2db6f54d794c8572c01e4bd030ef944d51b0ac0f5eb0e8fae4af6d869b934a46"
+    },
+    {
+      "time_s": 20.0,
+      "field": "darcyFlux",
+      "path": "20/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "92cf2aa2909708a9bcfe0e358b8187b321ab34dee8ad500ab53f1b6a3f4bcd5d"
+    },
+    {
+      "time_s": 21.0,
+      "field": "p",
+      "path": "21/p",
+      "bytes": 1049771,
+      "sha256": "2e7d4539e8e4b2bc34fb0a244ddd75690c7f3a216d604faa4ddec31ddc203191"
+    },
+    {
+      "time_s": 21.0,
+      "field": "U",
+      "path": "21/U",
+      "bytes": 3146851,
+      "sha256": "0043ae41ddb7566900f56f8d90f1851e4b08528e55060e0a747f905813325923"
+    },
+    {
+      "time_s": 21.0,
+      "field": "saturation",
+      "path": "21/saturation",
+      "bytes": 1126,
+      "sha256": "f60c092049e1e0c7811053cac6900b4b7433a0147e637849b0de38a9eb4d8285"
+    },
+    {
+      "time_s": 21.0,
+      "field": "wetMask",
+      "path": "21/wetMask",
+      "bytes": 1123,
+      "sha256": "ea2b8ea931f75beea44e53e6824160ceaa365c66ed8d024d29c356ecea6c3b7f"
+    },
+    {
+      "time_s": 21.0,
+      "field": "porosity",
+      "path": "21/porosity",
+      "bytes": 1093,
+      "sha256": "766d5c10e2751e1630abcf081ed0393c891955a4bba599b682392da8061cf997"
+    },
+    {
+      "time_s": 21.0,
+      "field": "permeability",
+      "path": "21/permeability",
+      "bytes": 1115,
+      "sha256": "2765d4a8c67fc10d2f1fa8820ec9815f4ab59458649d68a0a48cf30d13117423"
+    },
+    {
+      "time_s": 21.0,
+      "field": "hydraulicMobility",
+      "path": "21/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "401143796747ff3b2a6564b42f788f7bc6a655d43269d299a4dcf7021fd6416c"
+    },
+    {
+      "time_s": 21.0,
+      "field": "dissolvedConcentration",
+      "path": "21/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "cffb30e2724313fed62d541b32fe0e3b643671860d3f8f580548b02a88d97ec5"
+    },
+    {
+      "time_s": 21.0,
+      "field": "remainingExtractable",
+      "path": "21/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "079ecd521774e95e422aed191f73b2f8c119c2f9cb69188045b5d222e887eb80"
+    },
+    {
+      "time_s": 21.0,
+      "field": "localExtractionRate",
+      "path": "21/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "91ac7fcbd22cbefaf4e1c01dbec58af02b534763eca57fc790e26ca9c953863b"
+    },
+    {
+      "time_s": 21.0,
+      "field": "darcyFlux",
+      "path": "21/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "01192765b7b59077e7995798b64e5930f6b4cfbc65f3cb779af90c9b85221d3d"
+    },
+    {
+      "time_s": 22.0,
+      "field": "p",
+      "path": "22/p",
+      "bytes": 1049771,
+      "sha256": "0937ce557bec35540362bd4744bb5e89eb928c0680ab938048822bdce75cecd5"
+    },
+    {
+      "time_s": 22.0,
+      "field": "U",
+      "path": "22/U",
+      "bytes": 3146851,
+      "sha256": "c8c5cc551dfc1625b8daddc97274ae6cd525e29e0a54091d5b598dfe58ba67d4"
+    },
+    {
+      "time_s": 22.0,
+      "field": "saturation",
+      "path": "22/saturation",
+      "bytes": 1126,
+      "sha256": "c985a3edad91acef9429f42972beddc46c591c992f6061b6f582124a35dbd8d1"
+    },
+    {
+      "time_s": 22.0,
+      "field": "wetMask",
+      "path": "22/wetMask",
+      "bytes": 1123,
+      "sha256": "4a24490033e90975785b0c17f802167837e2b7470752376ad0db8d15d16cdf0a"
+    },
+    {
+      "time_s": 22.0,
+      "field": "porosity",
+      "path": "22/porosity",
+      "bytes": 1093,
+      "sha256": "ecbf03748cc3bbd67937bb2791fa56fe84bdb90edc849f8da0ed856d5b30af46"
+    },
+    {
+      "time_s": 22.0,
+      "field": "permeability",
+      "path": "22/permeability",
+      "bytes": 1115,
+      "sha256": "a37d715c27a737abc4de765e5874d27ce72cdd044373e8b1ee8b0ccbc00e2136"
+    },
+    {
+      "time_s": 22.0,
+      "field": "hydraulicMobility",
+      "path": "22/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "0f20772519a823293354e32b1c3612e05f313d9b99bf8dff9b36198cd903edbd"
+    },
+    {
+      "time_s": 22.0,
+      "field": "dissolvedConcentration",
+      "path": "22/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "1414e45440ea289af51071082adb6a1068a795cffa3d445281ec666b3a911e70"
+    },
+    {
+      "time_s": 22.0,
+      "field": "remainingExtractable",
+      "path": "22/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "edc4640857e9e170197e52050b23b5167a03b70ebc5f2029d8bb5fa12d4ec4dc"
+    },
+    {
+      "time_s": 22.0,
+      "field": "localExtractionRate",
+      "path": "22/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "4b16b850e93f006eceb26929a738792c9074bb3ce5a63a670154568ebc7df2ef"
+    },
+    {
+      "time_s": 22.0,
+      "field": "darcyFlux",
+      "path": "22/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "4bfd855918264761a2c6ad150489861875ed55e9866ac8f729653c1fdb7acb93"
+    },
+    {
+      "time_s": 23.0,
+      "field": "p",
+      "path": "23/p",
+      "bytes": 1049771,
+      "sha256": "d48f45510dce19171f3b0feebc703efe26f2ad50781db94ac6a933f8c3066efe"
+    },
+    {
+      "time_s": 23.0,
+      "field": "U",
+      "path": "23/U",
+      "bytes": 3146851,
+      "sha256": "a4f27f1e45ee037411fbc74dfbc966d8a7409cc377bf36606eeaf996b2ee63f0"
+    },
+    {
+      "time_s": 23.0,
+      "field": "saturation",
+      "path": "23/saturation",
+      "bytes": 1126,
+      "sha256": "522258e8316e0842e78a4332e900066d162f6525a902602b199e6bf57c9600f4"
+    },
+    {
+      "time_s": 23.0,
+      "field": "wetMask",
+      "path": "23/wetMask",
+      "bytes": 1123,
+      "sha256": "f66770a7f13c9b005ba4e2d966589e1f58cd2520e423e5ed6d67cbb41916b14e"
+    },
+    {
+      "time_s": 23.0,
+      "field": "porosity",
+      "path": "23/porosity",
+      "bytes": 1093,
+      "sha256": "9f29b1387b587aca1fe848747bb23a959d0f167bed39a7ed2f46b7d3ce372882"
+    },
+    {
+      "time_s": 23.0,
+      "field": "permeability",
+      "path": "23/permeability",
+      "bytes": 1115,
+      "sha256": "9b2459ceb52f9e87b765c997c70c3f0d2f4e9f2eb1ab324118a49e2eee0437b0"
+    },
+    {
+      "time_s": 23.0,
+      "field": "hydraulicMobility",
+      "path": "23/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "0155ac260d9c1c6c23036b9a2ec8ddefbe7e64d509da4d4131bc2fa8e41a7db2"
+    },
+    {
+      "time_s": 23.0,
+      "field": "dissolvedConcentration",
+      "path": "23/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "6051124a8f8bcbcc9ec543a7fe429b7dc96a20c7a7112170fcb048d66cab795c"
+    },
+    {
+      "time_s": 23.0,
+      "field": "remainingExtractable",
+      "path": "23/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "2bcbc4c686caefd00434932c52eb75ac9874921a7ef874a1b4617e77a018f3c5"
+    },
+    {
+      "time_s": 23.0,
+      "field": "localExtractionRate",
+      "path": "23/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "c8702ee7d97cda28e708ec7e2eeed866c038e429726e9324e487158a25e410df"
+    },
+    {
+      "time_s": 23.0,
+      "field": "darcyFlux",
+      "path": "23/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "96761fc739017b200f6c9af926f8e7e3aaa636f4c9741af7243649dd94316380"
+    },
+    {
+      "time_s": 24.0,
+      "field": "p",
+      "path": "24/p",
+      "bytes": 1049771,
+      "sha256": "c00ea50fcca962c0d197ed424a379c9a41ff8c6a081778971b50150be93a426f"
+    },
+    {
+      "time_s": 24.0,
+      "field": "U",
+      "path": "24/U",
+      "bytes": 3146851,
+      "sha256": "979e7c774e4a04cc05f2a292a8d329a69df034f69c972e8044e070d450e5f6e9"
+    },
+    {
+      "time_s": 24.0,
+      "field": "saturation",
+      "path": "24/saturation",
+      "bytes": 1126,
+      "sha256": "2b901b114a9e8032b230e54140a87753d7b3a6666ba194095baedd882d1d5c55"
+    },
+    {
+      "time_s": 24.0,
+      "field": "wetMask",
+      "path": "24/wetMask",
+      "bytes": 1123,
+      "sha256": "77f4949298ec7e95f44db15161fe6a986df3481c82d02e9d8f28f815fb63da71"
+    },
+    {
+      "time_s": 24.0,
+      "field": "porosity",
+      "path": "24/porosity",
+      "bytes": 1093,
+      "sha256": "af43ef4c68a72c5fa209fd5f1e9dd6ed53ab363da8af07850dae4356ea5cbbdb"
+    },
+    {
+      "time_s": 24.0,
+      "field": "permeability",
+      "path": "24/permeability",
+      "bytes": 1115,
+      "sha256": "21d1248905a2808e6d87ad0bf10115b67cfaa401194d5a8ff423656ce20c2dbb"
+    },
+    {
+      "time_s": 24.0,
+      "field": "hydraulicMobility",
+      "path": "24/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "2b9ebc5427a1e0418971c9db8c5a0b7cbc749833c4b8d52d1c5a2c5de402bbc9"
+    },
+    {
+      "time_s": 24.0,
+      "field": "dissolvedConcentration",
+      "path": "24/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "c2bbe37bd1fa1a0914a63d1e1c2bd53da8f26c0ef09768b8a275c8b408ba8fac"
+    },
+    {
+      "time_s": 24.0,
+      "field": "remainingExtractable",
+      "path": "24/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "b9a9326c4319dbc31aaa218d70db56a9622c2dac004bcaeaaa329fb14c517abb"
+    },
+    {
+      "time_s": 24.0,
+      "field": "localExtractionRate",
+      "path": "24/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "4e829d550cbda5662edf205ad12164596e26e34c36590f8925a37b18bbaf4dd1"
+    },
+    {
+      "time_s": 24.0,
+      "field": "darcyFlux",
+      "path": "24/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "35704aeec825c11f6ec079a8801136d910f910659af2c1260efdc220981b0bb6"
+    },
+    {
+      "time_s": 25.0,
+      "field": "p",
+      "path": "25/p",
+      "bytes": 1049771,
+      "sha256": "3a25265302e909bbf80231dd57e41c002a9e0d656a02714e90fad5e5605d1c44"
+    },
+    {
+      "time_s": 25.0,
+      "field": "U",
+      "path": "25/U",
+      "bytes": 3146851,
+      "sha256": "dd6b62e49f64b927956c78ebb5c8eb682ed72a2213eecb596c6b654bd92664ee"
+    },
+    {
+      "time_s": 25.0,
+      "field": "saturation",
+      "path": "25/saturation",
+      "bytes": 1126,
+      "sha256": "3015797537b9f7fe7b6751b9e3671640ade3e7834ef2cb6e44806286a053ac72"
+    },
+    {
+      "time_s": 25.0,
+      "field": "wetMask",
+      "path": "25/wetMask",
+      "bytes": 1123,
+      "sha256": "16ced6815902257768fb7962c48d1763f95332fa74b5f283dbebedbc96bf511d"
+    },
+    {
+      "time_s": 25.0,
+      "field": "porosity",
+      "path": "25/porosity",
+      "bytes": 1093,
+      "sha256": "a498e3835851d5b87f9009a8c423fff1f526de8e7b9e89893381e0e203af3099"
+    },
+    {
+      "time_s": 25.0,
+      "field": "permeability",
+      "path": "25/permeability",
+      "bytes": 1115,
+      "sha256": "3440ddeb03e76a70909cb7e0072461d60f26309dfe4605147f461266c4c7a153"
+    },
+    {
+      "time_s": 25.0,
+      "field": "hydraulicMobility",
+      "path": "25/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "b68dce13d0700757bc1f2f4379bc965bf4ab4719e8e66c158af182e5f9c8f3a5"
+    },
+    {
+      "time_s": 25.0,
+      "field": "dissolvedConcentration",
+      "path": "25/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "59197c404a9203bafe01050488fbba434fb4d6bd81bc2adb78f241344b2f6f5f"
+    },
+    {
+      "time_s": 25.0,
+      "field": "remainingExtractable",
+      "path": "25/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "14087c9243d768aaf16c775c0c959f11c92fd0313b0f6dc6fbd818474bf2c900"
+    },
+    {
+      "time_s": 25.0,
+      "field": "localExtractionRate",
+      "path": "25/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "03852879b294a535d46ac219d82cf60de5bf141a3133300affc94b8970ce3adf"
+    },
+    {
+      "time_s": 25.0,
+      "field": "darcyFlux",
+      "path": "25/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "c05f9768b808a1acab3b14107c395f2de0bfa7b0985e8160b8b281f031d4e3e4"
+    },
+    {
+      "time_s": 26.0,
+      "field": "p",
+      "path": "26/p",
+      "bytes": 1049771,
+      "sha256": "751e9d002fd09b91a60773ce49210d4c4e8955693d984ef09fa82492f463b23a"
+    },
+    {
+      "time_s": 26.0,
+      "field": "U",
+      "path": "26/U",
+      "bytes": 3146851,
+      "sha256": "25235bd4bc1e30c853edcbe836de4abe8edb90a0c15e5d9d92a1aac5975e61d8"
+    },
+    {
+      "time_s": 26.0,
+      "field": "saturation",
+      "path": "26/saturation",
+      "bytes": 1126,
+      "sha256": "f6205718df9f5c0dfbdc2f206c0281e585faeac156a63fef47008cb1636615b9"
+    },
+    {
+      "time_s": 26.0,
+      "field": "wetMask",
+      "path": "26/wetMask",
+      "bytes": 1123,
+      "sha256": "328b2dabdb6c1d2842aa92d10da99ba955ec82d0edc203ebcd6c2f1a0fa9dbce"
+    },
+    {
+      "time_s": 26.0,
+      "field": "porosity",
+      "path": "26/porosity",
+      "bytes": 1093,
+      "sha256": "5db477f35200519fdbda591840de2c5404651f6603debde799100ea17fb6f35a"
+    },
+    {
+      "time_s": 26.0,
+      "field": "permeability",
+      "path": "26/permeability",
+      "bytes": 1115,
+      "sha256": "f89749464aa58bb93dada092ec56e72fd1c4c1bb4bd754b910030bda84ec32ca"
+    },
+    {
+      "time_s": 26.0,
+      "field": "hydraulicMobility",
+      "path": "26/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "0cc9e62e0edfa57c6700e6580852061002c1cc902335a4206ae91e6ca2ffeda0"
+    },
+    {
+      "time_s": 26.0,
+      "field": "dissolvedConcentration",
+      "path": "26/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "36dad98dc56f1eecfd19cba5df89dda85077ac8256205b6513c98ea8c9b35b28"
+    },
+    {
+      "time_s": 26.0,
+      "field": "remainingExtractable",
+      "path": "26/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "631fffcd1ef62a57f92b9a3cbb37cd02ffdd769cbf69a539b402fd38c984665b"
+    },
+    {
+      "time_s": 26.0,
+      "field": "localExtractionRate",
+      "path": "26/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "56e109a05ebb3168d7c0a82383c934d4adef355e02c231d06864198f961721c7"
+    },
+    {
+      "time_s": 26.0,
+      "field": "darcyFlux",
+      "path": "26/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "4988647504ada9bc22959183e086107b7f6e2d0e631f2517bc34927e6cc13042"
+    },
+    {
+      "time_s": 27.0,
+      "field": "p",
+      "path": "27/p",
+      "bytes": 1049771,
+      "sha256": "e24a92f6a17d2e08c80297d53ac7276668b0de19c7b4297e4dc48c9576498781"
+    },
+    {
+      "time_s": 27.0,
+      "field": "U",
+      "path": "27/U",
+      "bytes": 3146851,
+      "sha256": "ccc861603e61ed85341cb3ed13bcb325e149c8382e5db22737274a06c37429da"
+    },
+    {
+      "time_s": 27.0,
+      "field": "saturation",
+      "path": "27/saturation",
+      "bytes": 1126,
+      "sha256": "c52419a2bdb68901ac5af3a9e3762086cecde6b253ed38166dacd42f32b7de1b"
+    },
+    {
+      "time_s": 27.0,
+      "field": "wetMask",
+      "path": "27/wetMask",
+      "bytes": 1123,
+      "sha256": "ec5703ac236320d05caf50065f13f6cd7b635368c873546edf501c9fe9221068"
+    },
+    {
+      "time_s": 27.0,
+      "field": "porosity",
+      "path": "27/porosity",
+      "bytes": 1093,
+      "sha256": "c3a5c98401cca09af574d768f789cd55e1f4ff22c545251e9fa77fd8e02127f1"
+    },
+    {
+      "time_s": 27.0,
+      "field": "permeability",
+      "path": "27/permeability",
+      "bytes": 1115,
+      "sha256": "74533c971049c968bbbba162ec0be0df933ee30a99bb26858b7f793435736b25"
+    },
+    {
+      "time_s": 27.0,
+      "field": "hydraulicMobility",
+      "path": "27/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "0cdb05250d7370232066b6ce1afb7a7925fee89cb4dee3b8eeb537723ddb6fe6"
+    },
+    {
+      "time_s": 27.0,
+      "field": "dissolvedConcentration",
+      "path": "27/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "ee45c4e680f781d6897012adada7cc0d2e4a60d40c6412675ea1f343169b9de9"
+    },
+    {
+      "time_s": 27.0,
+      "field": "remainingExtractable",
+      "path": "27/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "6a333d8746b983239b0cc1c14bdc3043248538937807bc65065635af5df952fe"
+    },
+    {
+      "time_s": 27.0,
+      "field": "localExtractionRate",
+      "path": "27/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "0af6858bf9e7ab52d2aaf80ee40e0364f79a92e0617d766476ac9f850e38151f"
+    },
+    {
+      "time_s": 27.0,
+      "field": "darcyFlux",
+      "path": "27/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "abd37c4441301f767ffd8b7fb072789c62c7eb77e5be9e8fa41f9a9df18ec916"
+    },
+    {
+      "time_s": 28.0,
+      "field": "p",
+      "path": "28/p",
+      "bytes": 1049771,
+      "sha256": "5332fdcf62c5e5758511125552de70720c5798315cf94f4b69578d6cb37c6b1c"
+    },
+    {
+      "time_s": 28.0,
+      "field": "U",
+      "path": "28/U",
+      "bytes": 3146851,
+      "sha256": "82de01f340a99d6b68fc2c315c071484443f16adf09aac5c66ce7570acbf9b19"
+    },
+    {
+      "time_s": 28.0,
+      "field": "saturation",
+      "path": "28/saturation",
+      "bytes": 1126,
+      "sha256": "b0f0a30ddba1bb8c451100f53a32b083c2a26eebbfe3535a7dc26b54ec7c8278"
+    },
+    {
+      "time_s": 28.0,
+      "field": "wetMask",
+      "path": "28/wetMask",
+      "bytes": 1123,
+      "sha256": "baea610997d3a3aaf6e9eb422ce196805b4a008b0792eb8de41bacfc9586e963"
+    },
+    {
+      "time_s": 28.0,
+      "field": "porosity",
+      "path": "28/porosity",
+      "bytes": 1093,
+      "sha256": "32ea3ee371ffa94cbf6cf24bfaa95fcb2c3525e56f9648fb3ae83b1f05df3e49"
+    },
+    {
+      "time_s": 28.0,
+      "field": "permeability",
+      "path": "28/permeability",
+      "bytes": 1115,
+      "sha256": "45f46ceecd4e4e5f51534afc52100075d3376988c4df0800ab37baf5f0462d8d"
+    },
+    {
+      "time_s": 28.0,
+      "field": "hydraulicMobility",
+      "path": "28/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "122786bc50b6d8f2ce9c999b5467c8b9dc9bdf5bb37e7ccfe308fc35d495ab84"
+    },
+    {
+      "time_s": 28.0,
+      "field": "dissolvedConcentration",
+      "path": "28/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "8c25b10183e5917ef093d4ad1a076ac6f4bc768c07cb83b95f8d3a1b3d5184fa"
+    },
+    {
+      "time_s": 28.0,
+      "field": "remainingExtractable",
+      "path": "28/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "062e013e575d01b5c978a5c11916addd45c0b3881716ce9540571a2d0ae791a3"
+    },
+    {
+      "time_s": 28.0,
+      "field": "localExtractionRate",
+      "path": "28/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "ad3cc274af8f9db0634c804c7fc6768918b545c299a3e80d96b726767c064fa3"
+    },
+    {
+      "time_s": 28.0,
+      "field": "darcyFlux",
+      "path": "28/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "1e04809eb1c6eb94289e88f9498d78f73c504c4b8c532f70d8b361b35d333f92"
+    },
+    {
+      "time_s": 29.0,
+      "field": "p",
+      "path": "29/p",
+      "bytes": 1049771,
+      "sha256": "31fb1689337a318e928d8fc88aa95b2839ea83eb5acca965c8dc1b96c9bce1fb"
+    },
+    {
+      "time_s": 29.0,
+      "field": "U",
+      "path": "29/U",
+      "bytes": 3146851,
+      "sha256": "aa99beb373ffe63e9f9cf9c68ee4bc255ed65272767f79f0a501b9258e7d8c61"
+    },
+    {
+      "time_s": 29.0,
+      "field": "saturation",
+      "path": "29/saturation",
+      "bytes": 1126,
+      "sha256": "60f0dfd79a3c99de0558c9562c5f7ae0b50fe5b85f1584cb804125a180cee67f"
+    },
+    {
+      "time_s": 29.0,
+      "field": "wetMask",
+      "path": "29/wetMask",
+      "bytes": 1123,
+      "sha256": "3b22289861c7c64cde048c41c5e6713d9a2d9240cdcd8211b1ceb20b50cceae5"
+    },
+    {
+      "time_s": 29.0,
+      "field": "porosity",
+      "path": "29/porosity",
+      "bytes": 1093,
+      "sha256": "6cfcdb376439916456631226a8707af54e8b4cf254509ed8b1828420d83abb65"
+    },
+    {
+      "time_s": 29.0,
+      "field": "permeability",
+      "path": "29/permeability",
+      "bytes": 1115,
+      "sha256": "0c300d4ab4012ba64a040259d9c58e47549722091a3a9dad6f2710d12ebeb521"
+    },
+    {
+      "time_s": 29.0,
+      "field": "hydraulicMobility",
+      "path": "29/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "0ddbd0f2ecc4a36d4c041057377a80b329626ef5c89c1b6f1470e71560866fb9"
+    },
+    {
+      "time_s": 29.0,
+      "field": "dissolvedConcentration",
+      "path": "29/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "64b8b5efb77cc1544acc26121abe9c888ecb905abcaaecd8459624f0c9e97721"
+    },
+    {
+      "time_s": 29.0,
+      "field": "remainingExtractable",
+      "path": "29/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "8f21a4c303a4c41fa46fd3f3ed62bae0c9617d263b2b44dd69843f7dc1883caf"
+    },
+    {
+      "time_s": 29.0,
+      "field": "localExtractionRate",
+      "path": "29/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "c8fe694acfb27c124bad7d95671a09bfb851605d5d18236b3e5143b7bebd3210"
+    },
+    {
+      "time_s": 29.0,
+      "field": "darcyFlux",
+      "path": "29/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "ba9c2d7b06c368c580d4a60a97834c50eb4e28256f55739b440f9138fb3773cb"
+    },
+    {
+      "time_s": 30.0,
+      "field": "p",
+      "path": "30/p",
+      "bytes": 1049771,
+      "sha256": "b0a2811cc3c8e5dce81d429467ccbf20c2309d17dcc3dcfa5360e207ce98383e"
+    },
+    {
+      "time_s": 30.0,
+      "field": "U",
+      "path": "30/U",
+      "bytes": 3146851,
+      "sha256": "65ba65023299e4ea3a71c00283d75d05804b7c5ca0f0d05dbe07e2e4985ad286"
+    },
+    {
+      "time_s": 30.0,
+      "field": "saturation",
+      "path": "30/saturation",
+      "bytes": 1126,
+      "sha256": "55bff358769c894cc81d581ba7355efab5685d4dc7d129c13cc030057b1e3823"
+    },
+    {
+      "time_s": 30.0,
+      "field": "wetMask",
+      "path": "30/wetMask",
+      "bytes": 1123,
+      "sha256": "8a525eafdecc2cee20f8b9ba4fd3e49551834e2b8c2ae67d5232400458ab29cc"
+    },
+    {
+      "time_s": 30.0,
+      "field": "porosity",
+      "path": "30/porosity",
+      "bytes": 1093,
+      "sha256": "cf3244da9af34a4f9f04e557776d03f9b4a6b3a43a01bb5866e9033c0670baea"
+    },
+    {
+      "time_s": 30.0,
+      "field": "permeability",
+      "path": "30/permeability",
+      "bytes": 1115,
+      "sha256": "a0b9fbc37ff6d475b3c7610ba8b3c668f12fe69ac741d46e40b49f3fd694aec1"
+    },
+    {
+      "time_s": 30.0,
+      "field": "hydraulicMobility",
+      "path": "30/hydraulicMobility",
+      "bytes": 1269,
+      "sha256": "0a4f30d3059860dd368d71d26d0f7fc3171554cf7e91dd7cef96484cb3cf88ba"
+    },
+    {
+      "time_s": 30.0,
+      "field": "dissolvedConcentration",
+      "path": "30/dissolvedConcentration",
+      "bytes": 1049753,
+      "sha256": "a6851d608b17a896e830f44dabd3c3ae97d106b91556222602e770480569c841"
+    },
+    {
+      "time_s": 30.0,
+      "field": "remainingExtractable",
+      "path": "30/remainingExtractable",
+      "bytes": 1049718,
+      "sha256": "9c0a2876903a9423fb3c61eb98bef1c846f1bc2ccf77e4b44c74b92270189e68"
+    },
+    {
+      "time_s": 30.0,
+      "field": "localExtractionRate",
+      "path": "30/localExtractionRate",
+      "bytes": 1049718,
+      "sha256": "8afba8438bb3ace1accd952edff26e74068127466914d2b7fdb893e6acd34691"
+    },
+    {
+      "time_s": 30.0,
+      "field": "darcyFlux",
+      "path": "30/darcyFlux",
+      "bytes": 2100548,
+      "sha256": "733d561027ac8fe8182dbf759799050d9b0598054ceb1a64198f8631c73d3e80"
+    }
+  ]
+}

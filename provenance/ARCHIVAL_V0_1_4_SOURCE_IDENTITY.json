@@ -1,0 +1,19 @@
+{
+  "schema_version": "espresso.public.archival_source_identity.v1",
+  "source_version": "v0.1.4",
+  "archival_commit_sha": "b66da913804ea223eb64935de2d81746a344a25d",
+  "archival_tree_sha": "f0392b0f8909c4d8d6596489410f1c585b1f5ab9",
+  "archival_source_file_count": 106,
+  "archival_aggregate_source_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
+  "archival_source_manifest_sha256": "4e67c74f7b6b98149674434441309093d0c79fc6702566b1c52f69e2ec5dd1b6",
+  "terminal_freeze_manifest_sha256": "db2aefd7124ceaee26ba10a4bb1309787b7f4a94ea9a391b634df84a3fe3d6f1",
+  "scientific_input_file_count": 19,
+  "scientific_input_aggregate_sha256": "d70399a76b0023d93985d76c1c83a9a42b7148b3d71d16d1b5f88275be1ebe7a",
+  "no_physics_change_status": "PASS 28/28",
+  "governing_physics_change": false,
+  "reference_status": "FROZEN / QUALIFIED",
+  "physical_validation_status": "NOT_ESTABLISHED",
+  "archival_bundle_sha256": "aec2aad97e54b43a99eec59fd98c28dec4169e525aee60ef4126701e5392a3dd",
+  "public_history_contains_exact_archival_bytes": false,
+  "retention_statement": "The exact archival bytes and complete private history are retained offline and are not present in public Git history."
+}

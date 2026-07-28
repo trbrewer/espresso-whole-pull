@@ -1,0 +1,46 @@
+{
+  "schema_version": "espresso.public.baseline_derivation.v1",
+  "role": "sanitized public derivative",
+  "source_version": "v0.1.4",
+  "public_derivative_version": "v0.1.4-public.1",
+  "archival_aggregate_source_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
+  "public_source_manifest_sha256": "db80c980b3204c9e48999f01b6b67b75eaac5cef23b1bdd3011686bb6e0bb6b2",
+  "public_source_file_count": 106,
+  "public_aggregate_source_sha256": "944808575cf1dc1e3adf7e07023364e231fe3d2b8521522ab06308bee1da3605",
+  "sanitized_files": [
+    "baseline_evidence/v0_1_2/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_2.json",
+    "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_NUMERICAL_QUALIFICATION_V0_1_3.json",
+    "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_3.json",
+    "docs/BASELINE_V0_1_2_RESULT.md",
+    "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md"
+  ],
+  "sanitization_rules": {
+    "package_internal_absolute_path": "<PACKAGE_ROOT>/<relative-path>",
+    "openfoam_project_directory": "<OPENFOAM_PROJECT_DIR>",
+    "openfoam_user_application_directory": "<FOAM_USER_APPBIN>",
+    "generic_home_path": "<USER_HOME>/<relative-path>",
+    "hostname": "<HOSTNAME>"
+  },
+  "packaging_adaptation": {
+    "path": "scripts/generate_source_manifest.py",
+    "purpose": "Keep an explicit public governance, CI, provenance, and compact-evidence allowlist outside the fixed 106-file solver-package scope and record public-derivative metadata.",
+    "scientific_gate_weakened": false
+  },
+  "root_import_whitespace_exceptions": {
+    "scope": "Historical Markdown trailing whitespace preserved only in the sanitized derivative root commit; not a global waiver.",
+    "finding_count": 17,
+    "paths_and_lines": {
+      "README.md": [3, 4, 5],
+      "docs/QA_STATUS.md": [3, 4],
+      "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    }
+  },
+  "scientific_input_file_count": 19,
+  "scientific_input_aggregate_sha256": "d70399a76b0023d93985d76c1c83a9a42b7148b3d71d16d1b5f88275be1ebe7a",
+  "scientific_input_bundle_unchanged": true,
+  "no_physics_change_status": "PASS 28/28",
+  "governing_physics_change": false,
+  "scientific_configuration_change": false,
+  "byte_identical_to_archival_source": false,
+  "claim_ceiling": "NUMERICALLY_QUALIFIED_CALIBRATION_BASELINE; PHYSICAL_VALIDATION NOT_ESTABLISHED"
+}

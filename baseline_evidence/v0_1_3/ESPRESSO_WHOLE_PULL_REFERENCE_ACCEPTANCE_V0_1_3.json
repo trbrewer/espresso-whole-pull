@@ -1,0 +1,357 @@
+{
+  "schema_version": "espresso.whole_pull.reference_acceptance.v0.1.3",
+  "generated_at_utc": "2026-07-27T17:26:32.758605+00:00",
+  "package_version": "0.1.3",
+  "scenario_id": "reference_R0_20g_58mm_9bar",
+  "status": "PASS",
+  "execution_status": "COMPLETED",
+  "all_required_numerical_gates_pass": true,
+  "all_required_b0_parity_gates_pass": true,
+  "reference_freeze_status": "PENDING_FULL_ALLVERIFY",
+  "numerical_acceptance_gates": {
+    "simulation_reached_end_time": {
+      "status": "PASS",
+      "metric": 29.9999999999994,
+      "limit": "|time - 30.0| <= 0.0202",
+      "details": ""
+    },
+    "final_paraview_field_set_present": {
+      "status": "PASS",
+      "metric": {
+        "required": true,
+        "final_time_directory": "30",
+        "missing_fields": []
+      },
+      "limit": "all required fields present at reconstructed final time",
+      "details": ""
+    },
+    "all_trace_values_finite": {
+      "status": "PASS",
+      "metric": true,
+      "limit": "true",
+      "details": ""
+    },
+    "saturation_bounded": {
+      "status": "PASS",
+      "metric": {
+        "min": 0.0,
+        "max": 1.0
+      },
+      "limit": "0 <= saturation <= 1 (1e-10 tolerance)",
+      "details": ""
+    },
+    "concentration_nonnegative": {
+      "status": "PASS",
+      "metric": 0.0,
+      "limit": ">= -1e-10 kg/m3",
+      "details": ""
+    },
+    "liquid_conservation": {
+      "status": "PASS",
+      "metric": 6.00214322687975e-16,
+      "limit": "max absolute residual <= max(1e-9 kg, 1e-8 cumulative inlet water)",
+      "details": ""
+    },
+    "solute_inventory_conservation": {
+      "status": "PASS",
+      "metric": 1.83967728712168e-13,
+      "limit": "max absolute residual <= max(1e-10 kg, 1e-8 initial extractable mass)",
+      "details": ""
+    },
+    "pressure_linear_solver_residual": {
+      "status": "PASS",
+      "metric": 9.25133240376936e-15,
+      "limit": "maximum saturated-stage final residual <= 1e-8",
+      "details": ""
+    },
+    "concentration_linear_solver_residual": {
+      "status": "PASS",
+      "metric": 9.9788141645345e-12,
+      "limit": "maximum saturated-stage final residual <= 1e-7",
+      "details": ""
+    },
+    "pressure_iteration_limit": {
+      "status": "PASS",
+      "metric": 0.0,
+      "limit": "< configured maxIter 1000",
+      "details": ""
+    },
+    "concentration_iteration_limit": {
+      "status": "PASS",
+      "metric": 4.0,
+      "limit": "< configured maxIter 2000",
+      "details": ""
+    },
+    "estimated_saturated_pore_courant": {
+      "status": "PASS",
+      "metric": 0.7970866023292905,
+      "limit": "<= 1.2 using maximum superficial velocity, porosity, and axial spacing",
+      "details": "Implicit upwind transport remains stable above this; this is a resolution gate."
+    },
+    "straight_sided_wedge_volume_equivalence": {
+      "status": "PASS",
+      "metric": {
+        "relative_error": 7.11507675693612e-16,
+        "scale": 72.0914664839846,
+        "raw_wedge_volume_m3": 3.30268268503224e-07,
+        "scaled_volume_m3": 2.38095238095238e-05,
+        "nominal_cylinder_volume_m3": 2.38095238095238e-05
+      },
+      "limit": "relative volume error <= 1e-08",
+      "details": ""
+    },
+    "exact_sharp_front_first_drip": {
+      "status": "PASS",
+      "metric": {
+        "actual": 4.71169618523188,
+        "expected": 4.711696185231869,
+        "error": 1.1546319456101628e-14
+      },
+      "limit": "absolute error <= 1e-08",
+      "details": "The pressure ramp is integrated exactly within every time step."
+    },
+    "analytical_uniform_darcy_flow": {
+      "status": "PASS",
+      "metric": {
+        "actual": 1.48267597159441e-06,
+        "expected": 1.4826759715944223e-06,
+        "error": 8.283656018232837e-15
+      },
+      "limit": "relative error <= 1e-08",
+      "details": "Uniform permeability, cylindrical area, and declared pressure nodes."
+    },
+    "retained_water_cylindrical_volume": {
+      "status": "PASS",
+      "metric": {
+        "actual": 0.00919047619047618,
+        "expected": 0.00919047619047619,
+        "error": 1.1325137718812316e-15
+      },
+      "limit": "relative error <= 1e-08",
+      "details": ""
+    }
+  },
+  "openfoam_b0_parity_gates": {
+    "first_drip": {
+      "status": "PASS",
+      "metric": {
+        "actual": 4.71169618523188,
+        "expected": 4.711696185231892,
+        "error": 1.1546319456101628e-14
+      },
+      "limit": "absolute error <= 1e-08",
+      "details": ""
+    },
+    "final_outlet_flow": {
+      "status": "PASS",
+      "metric": {
+        "actual": 1.48267597159441e-06,
+        "expected": 1.4826759715944223e-06,
+        "error": 8.283656018232837e-15
+      },
+      "limit": "relative error <= 1e-08",
+      "details": ""
+    },
+    "cup_water_mass": {
+      "status": "PASS",
+      "metric": {
+        "actual": 0.0361701768622402,
+        "expected": 0.03617017686224037,
+        "error": 4.604164760599362e-15
+      },
+      "limit": "relative error <= 0.005",
+      "details": ""
+    },
+    "cup_solute_mass": {
+      "status": "PASS",
+      "metric": {
+        "actual": 0.00478769062052214,
+        "expected": 0.004787690620372176,
+        "error": 3.132269541668619e-11
+      },
+      "limit": "relative error <= 0.005",
+      "details": ""
+    },
+    "cup_beverage_mass": {
+      "status": "PASS",
+      "metric": {
+        "actual": 0.0409578674827624,
+        "expected": 0.04095786748261254,
+        "error": 3.658864605348479e-12
+      },
+      "limit": "relative error <= 0.005",
+      "details": ""
+    },
+    "cumulative_tds": {
+      "status": "PASS",
+      "metric": {
+        "actual": 0.1168930638915,
+        "expected": 0.11689306388826638,
+        "error": 2.7663075944577164e-11
+      },
+      "limit": "relative error <= 0.005",
+      "details": ""
+    },
+    "extraction_yield": {
+      "status": "PASS",
+      "metric": {
+        "actual": 0.239384531026107,
+        "expected": 0.2393845310186088,
+        "error": 3.132281136225501e-11
+      },
+      "limit": "relative error <= 0.005",
+      "details": ""
+    },
+    "retained_dissolved_solute": {
+      "status": "PASS",
+      "metric": {
+        "actual": 0.000192063111600667,
+        "expected": 0.00019206311159556392,
+        "error": 2.6569748521475132e-11
+      },
+      "limit": "relative error <= 0.005",
+      "details": ""
+    },
+    "remaining_extractable": {
+      "status": "PASS",
+      "metric": {
+        "actual": 0.000619392295206677,
+        "expected": 0.0006193922951780631,
+        "error": 4.619679433913485e-11
+      },
+      "limit": "relative error <= 0.005",
+      "details": ""
+    },
+    "time_to_target_mass": {
+      "status": "PASS",
+      "metric": {
+        "actual": 29.3744801706488,
+        "expected": 29.37448017074514,
+        "error": 3.2798023652402244e-12
+      },
+      "limit": "relative error <= 0.005",
+      "details": ""
+    }
+  },
+  "physical_plausibility_observations": {
+    "first_drip_detected": {
+      "status": "PASS",
+      "metric": 4.71169618523188,
+      "limit": "0 < first drip < 30.0 s",
+      "details": ""
+    },
+    "cup_mass_broad_plausibility": {
+      "status": "PASS",
+      "metric": 0.0409578674827624,
+      "limit": "15 to 80 g; plausibility only",
+      "details": ""
+    },
+    "tds_broad_plausibility": {
+      "status": "PASS",
+      "metric": 0.1168930638915,
+      "limit": "0 to 20% mass fraction; plausibility only",
+      "details": ""
+    },
+    "extraction_yield_broad_plausibility": {
+      "status": "PASS",
+      "metric": 0.239384531026107,
+      "limit": "0 to 35% dry-dose mass fraction; plausibility only",
+      "details": ""
+    }
+  },
+  "primary_outputs": {
+    "first_drip_s": 4.71169618523188,
+    "outlet_flow_final_m3_s": 1.48267597159441e-06,
+    "cup_water_mass_at_end_kg": 0.0361701768622402,
+    "cup_solute_mass_at_end_kg": 0.00478769062052214,
+    "cup_beverage_mass_at_end_kg": 0.0409578674827624,
+    "time_to_40g_s": 29.3744801706488,
+    "cumulative_tds_mass_fraction": 0.1168930638915,
+    "extraction_yield_mass_fraction": 0.239384531026107,
+    "retained_water_mass_kg": 0.00919047619047618,
+    "retained_dissolved_solute_mass_kg": 0.000192063111600667,
+    "remaining_extractable_mass_kg": 0.000619392295206677,
+    "max_liquid_balance_residual_kg": 6.00214322687975e-16,
+    "max_solute_balance_residual_kg": 1.83967728712168e-13,
+    "max_pressure_final_residual": 9.25133240376936e-15,
+    "max_concentration_final_residual": 9.9788141645345e-12,
+    "max_pressure_iterations": 0.0,
+    "max_concentration_iterations": 4.0,
+    "max_estimated_saturated_pore_courant": 0.7970866023292905,
+    "straight_sided_wedge_scale": 72.0914664839846,
+    "scaled_mesh_volume_m3": 2.38095238095238e-05,
+    "mesh_volume_relative_error": 7.11507675693612e-16
+  },
+  "analytical_reference": {
+    "model": "closed_form_and_reduced_preflight_not_an_openfoam_result",
+    "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+    "first_drip_s": 4.711696185231869,
+    "steady_outlet_volume_flow_m3_s": 1.4826759715944223e-06,
+    "steady_outlet_water_mass_flow_kg_s": 0.0014307823125886176,
+    "water_mass_at_end_kg_excluding_solute": 0.036182057813537505,
+    "initial_stored_water_mass_kg": 0.0,
+    "saturated_pore_water_mass_kg": 0.00919047619047619,
+    "straight_sided_wedge_scale": 72.09146648398465,
+    "nominal_cylinder_volume_m3": 2.380952380952381e-05,
+    "notes": [
+      "The permeability is the declared R0 hydraulic calibration parameter.",
+      "The preview does not establish physical validation."
+    ]
+  },
+  "b0_reduced_twin": {
+    "schema_version": "espresso.whole_pull.b0_reduced_twin.v0.1.3",
+    "model": "independent_1d_finite_volume_reduced_verification_twin",
+    "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+    "scenario_id": "reference_R0_20g_58mm_9bar",
+    "axial_cells": 256,
+    "delta_t_s": 0.02,
+    "primary_outputs": {
+      "first_drip_s": 4.711696185231892,
+      "outlet_flow_final_m3_s": 1.4826759715944223e-06,
+      "cup_water_mass_at_end_kg": 0.03617017686224037,
+      "cup_solute_mass_at_end_kg": 0.004787690620372176,
+      "cup_beverage_mass_at_end_kg": 0.04095786748261254,
+      "time_to_target_mass_s": 29.37448017074514,
+      "cumulative_tds_mass_fraction": 0.11689306388826638,
+      "extraction_yield_mass_fraction": 0.2393845310186088,
+      "retained_water_mass_kg": 0.00919047619047619,
+      "retained_dissolved_solute_mass_kg": 0.00019206311159556392,
+      "remaining_extractable_mass_kg": 0.0006193922951780631,
+      "solute_backdiffusion_mass_kg": 8.539728544910374e-07,
+      "max_liquid_balance_residual_kg": 7.424616477180734e-16,
+      "max_solute_balance_residual_kg": 2.937408617124243e-16,
+      "max_concentration_kg_m3": 174.91448696163906
+    },
+    "claim_ceiling": "Code/numerical verification twin only; not physical validation."
+  },
+  "calibration_and_validation": {
+    "mode": "calibration",
+    "calibration": {
+      "parameter": "saturated_permeability_m2",
+      "target": "approximately 40 g total beverage mass at 30 s",
+      "independent_validation_status": "not_validated",
+      "note": "The 40 g endpoint is not an independent validation target in this run."
+    },
+    "physical_validation_status": "NOT_ESTABLISHED",
+    "claim_ceiling": "Numerically verified, evidence-connected, axisymmetric reference simulation of sharp-front wetting, Darcy flow, one-solute transport/extraction, and cup accumulation for a bounded calibration scenario; not independent real-coffee validation."
+  },
+  "qualification_report": null,
+  "artifacts": {
+    "ESPRESSO_WHOLE_PULL_REFERENCE_TRACES_V0_1_3.csv": {
+      "bytes": 972741,
+      "sha256": "0d0c4e978222168c5aa100f8c0e5b411dc375e58d10b14684bbdc49d06805eb4"
+    },
+    "ESPRESSO_WHOLE_PULL_REFERENCE_FIELD_INDEX_V0_1_3.json": {
+      "bytes": 69258,
+      "sha256": "0d6e8586ffb5ff666c9b70819c20862de3d9cdc98ff735c895f986712593b371"
+    },
+    "reference_R0.foam": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ESPRESSO_WHOLE_PULL_REFERENCE_CASE_MANIFEST_V0_1_3.json": {
+      "bytes": 4481,
+      "sha256": "c3dc1350f1ad5aa26c4df46a80456b2061403063cca254ce90c818af0b1b46cd"
+    }
+  }
+}

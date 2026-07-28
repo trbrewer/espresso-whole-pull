@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+"$ROOT_DIR/scripts/clean_case.sh"
+rm -rf "$ROOT_DIR/qualification_runs"
+if [[ -d "$ROOT_DIR/qualification" ]]; then
+    find "$ROOT_DIR/qualification" -mindepth 1 -maxdepth 1 -type f -delete
+fi
+
+# shellcheck source=scripts/lib/openfoam_env.sh
+source "$ROOT_DIR/scripts/lib/openfoam_env.sh"
+if load_openfoam12 --optional; then
+    (
+        cd "$ROOT_DIR/solver/espressoWholePullFoam"
+        wclean || true
+    )
+    if [[ -n "${FOAM_USER_APPBIN:-}" ]]; then
+        rm -f "$FOAM_USER_APPBIN/espressoWholePullFoam"
+    fi
+else
+    rm -rf "$ROOT_DIR/solver/espressoWholePullFoam/Make"/linux*
+fi
+
+find "$ROOT_DIR" -type d -name __pycache__ -prune -exec rm -rf {} + 2>/dev/null || true
+find "$ROOT_DIR" -type f -name '*.pyc' -delete 2>/dev/null || true
+
+echo "Cleaned reference/fixture cases, qualification outputs, logs, reports, and solver build products."

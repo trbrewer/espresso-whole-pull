@@ -1,0 +1,111 @@
+{
+  "schema_version": "espresso.whole_pull.verification_fixture.v0.1.4",
+  "scenario_id": "fixture_layered_pressure_v0_1_4",
+  "solver": "espressoWholePullFoam",
+  "solver_version": "0.1.4",
+  "openfoam_distribution": "OpenFOAM Foundation",
+  "openfoam_version": "12",
+  "mode": "verification_fixture",
+  "calibration": {
+    "parameter": null,
+    "target": "exact discrete finite-volume layered-pressure reference",
+    "independent_validation_status": "not_applicable_code_verification_fixture",
+    "note": "This is a numerical verification fixture, not a coffee experiment."
+  },
+  "geometry": {
+    "basket_diameter_m": 0.058,
+    "basket_radius_m": 0.029,
+    "wedge_angle_deg": 5.0,
+    "axial_cells": 64,
+    "radial_cells": 128,
+    "azimuthal_cells": 1,
+    "axial_grading": 1.0,
+    "radial_grading": 1.0
+  },
+  "coffee_bed": {
+    "dry_dose_kg": 0.02,
+    "particle_solid_density_kg_m3": 1400.0,
+    "initial_porosity": 0.4,
+    "bed_depth_m": 0.009011660896432553,
+    "initial_extractable_fraction_dry_basis": 0.0
+  },
+  "liquid": {
+    "temperature_K": 366.15,
+    "density_kg_m3": 965.0,
+    "dynamic_viscosity_Pa_s": 0.000315,
+    "effective_solute_diffusivity_m2_s": 0.0
+  },
+  "hydraulics": {
+    "target_inlet_pressure_gauge_Pa": 900000.0,
+    "outlet_pressure_gauge_Pa": 0.0,
+    "pressure_ramp_time_s": 0.0,
+    "saturated_permeability_m2": 1.5e-15,
+    "wetting_permeability_m2": 1.5e-15,
+    "front_pressure_gauge_Pa": 0.0,
+    "gravity_enabled": false,
+    "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+    "permeability_profile": {
+      "type": "axial_two_layer",
+      "interface_position_m": 0.004505830448216276,
+      "upstream_permeability_m2": 7.5e-16,
+      "downstream_permeability_m2": 3e-15
+    }
+  },
+  "wetting": {
+    "model": "darcy_sharp_front_storage",
+    "front_smoothing_cells": 1.0,
+    "initial_saturation": 1.0,
+    "initial_wet_front_m": 0.009011660896432553
+  },
+  "extraction": {
+    "model": "single_effective_solute_first_order_with_capacity_ceiling",
+    "rate_constant_1_s": 0.0,
+    "saturation_concentration_kg_m3": 180.0,
+    "rate_parameter_status": "disabled_for_pressure_verification_fixture"
+  },
+  "time": {
+    "start_s": 0.0,
+    "end_s": 0.04,
+    "delta_t_s": 0.02,
+    "field_write_interval_s": 0.04,
+    "target_beverage_mass_kg": 0.04
+  },
+  "parallel": {
+    "default_subdomains": 1,
+    "decomposition_method": "scotch"
+  },
+  "pressure_nodes": {
+    "inlet": "bed_top_gauge_pressure",
+    "outlet": "basket_bottom_ambient_gauge_pressure"
+  },
+  "claim_ceiling": "Exact/discrete numerical verification fixture for the pressure solver; not physical validation.",
+  "output": {
+    "write_format": "binary",
+    "write_compression": false,
+    "live_stage_logging": true,
+    "reference_artifact_version": "0.1.4"
+  },
+  "verification": {
+    "pressure_probes": [
+      {
+        "name": "quarter_depth",
+        "position_m": 0.002252915224108138,
+        "half_width_m": 7.18116727684469e-05
+      },
+      {
+        "name": "three_quarter_depth",
+        "position_m": 0.006758745672324415,
+        "half_width_m": 7.18116727684469e-05
+      }
+    ],
+    "wedge_volume_relative_tolerance": 1e-08,
+    "discrete_flow_relative_tolerance": 1e-07,
+    "pressure_probe_absolute_tolerance_Pa": 5.0,
+    "require_nonzero_pressure_iterations": true
+  },
+  "numerical_hardening": {
+    "milestone": "WP-0.1H",
+    "fixture_role": "nonuniform_axial_permeability_pressure_solver_stress_test",
+    "release_role": "no_physics_change_freeze_finalization"
+  }
+}
