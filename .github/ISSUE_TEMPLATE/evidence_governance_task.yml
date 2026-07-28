@@ -1,0 +1,76 @@
+name: Evidence or governance task
+description: Propose evidence, dependency, dossier, contract, rights, or decision-record work that does not change governing physics.
+title: "[Evidence/governance] "
+labels: ["scientific-review", "evidence", "no-physics-change"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Fixed change declaration
+
+        `NO_GOVERNING_PHYSICS_CHANGE`
+
+        Use this form only when the task will not change governing physics or scientific configuration.
+  - type: input
+    id: objective
+    attributes:
+      label: Objective
+      description: State the single outcome this governed task should achieve.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence_or_governance_need
+    attributes:
+      label: Evidence, source, or governance need
+      description: Identify the evidence gap, dependency review, source dossier, contract, rights question, or decision need.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Identify the records, interfaces, sources, or repository areas that are in scope.
+    validations:
+      required: true
+  - type: textarea
+    id: required_outputs
+    attributes:
+      label: Required outputs
+      description: List the concrete documents, inventories, manifests, contracts, or decision records to produce.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_gates
+    attributes:
+      label: Acceptance gates
+      description: Give the objective checks and review conditions required for acceptance.
+    validations:
+      required: true
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Non-goals
+      description: State what this task must not change or attempt.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies_and_blockers
+    attributes:
+      label: Dependencies and blockers
+      description: Identify prerequisite issues, decisions, locked dependencies, missing authority, or write N/A.
+    validations:
+      required: true
+  - type: textarea
+    id: quantity_and_rights_semantics
+    attributes:
+      label: Quantity, evidence, and rights semantics
+      description: Record applicable units, bases, pressure nodes, calibration roles, protected comparisons, uncertainty, and rights. Write N/A only for categories that genuinely do not apply.
+    validations:
+      required: true
+  - type: checkboxes
+    id: declaration_confirmation
+    attributes:
+      label: Declaration confirmation
+      options:
+        - label: I confirm this task is `NO_GOVERNING_PHYSICS_CHANGE` and does not authorize a scientific-configuration change.
+          required: true

@@ -8,20 +8,65 @@ body:
     attributes:
       label: Change declaration
       options:
+        - NO_GOVERNING_PHYSICS_CHANGE
         - SOURCE_SCENARIO_CHANGE_ONLY
         - NUMERICAL_METHOD_CHANGE
         - GOVERNING_PHYSICS_CHANGE
     validations:
       required: true
   - type: textarea
-    id: rationale
+    id: objective
     attributes:
-      label: Named residual, evidence need, or engineering decision
+      label: Objective
+      description: State the single scientific or engineering outcome.
     validations:
       required: true
   - type: textarea
-    id: evidence
+    id: decision_need
     attributes:
-      label: Sources, calibration data, protected comparisons, uncertainty, and rights
+      label: Named residual, evidence need, or engineering decision
+      description: Name the specific residual, evidence gap, or decision that justifies the proposed change.
+    validations:
+      required: true
+  - type: textarea
+    id: affected_scientific_content
+    attributes:
+      label: Affected equations, source, configuration, or outputs
+      description: Identify exact equations, source files, configurations, interfaces, quantities, or outputs that may change.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence_contract
+    attributes:
+      label: Evidence, calibration data, protected comparisons, uncertainty, and rights
+      description: Separate prescribed, calibrated, predicted, and protected quantities; include sources, units, bases, pressure nodes, uncertainty, and rights.
+    validations:
+      required: true
+  - type: textarea
+    id: verification_validation
+    attributes:
+      label: Required verification and validation
+      description: List analytical, numerical, regression, source-linked comparison, or other required gates without overstating physical validation.
+    validations:
+      required: true
+  - type: textarea
+    id: claim_ceiling
+    attributes:
+      label: Claim-ceiling impact
+      description: State the current ceiling and whether the proposed work preserves, narrows, or could justify a separately reviewed change to it.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_gates
+    attributes:
+      label: Acceptance gates
+      description: Give measurable conditions required before the change can be accepted.
+    validations:
+      required: true
+  - type: textarea
+    id: non_goals_dependencies
+    attributes:
+      label: Non-goals and dependencies
+      description: State excluded work, prerequisite issues, locked dependencies, and blockers.
     validations:
       required: true
