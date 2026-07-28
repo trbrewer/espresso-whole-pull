@@ -1,6 +1,6 @@
 {
   "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
-  "generated_at_utc": "2026-07-28T21:31:56.778536+00:00",
+  "generated_at_utc": "2026-07-28T22:48:10.678959+00:00",
   "package": "espresso-whole-pull",
   "package_version": "0.1.4",
   "target": "OpenFOAM Foundation 12",
@@ -8,7 +8,10 @@
   "archival_aggregate_source_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
   "byte_identical_to_archival_source": false,
   "governing_physics_change": false,
-  "scientific_configuration_change": false,
+  "scientific_configuration_change": true,
+  "scientific_configuration_change_scope": "NEW_R1_SCENARIO_ONLY",
+  "qualified_R0_scientific_configuration_change": false,
+  "new_R1_scientific_configuration_added": true,
   "source_manifest_self_excluded": true,
   "mode_contract": "canonical Git object modes: 100644, 100755, or 120000",
   "excluded_runtime_patterns": [
@@ -20,10 +23,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 106,
-  "total_uncompressed_bytes_excluding_manifest": 1008416,
-  "aggregate_source_sha256": "c99460f19f96238e602478cf88600d98c2b946592dd16a9c5b40eb06e715c411",
-  "aggregate_sha256": "c99460f19f96238e602478cf88600d98c2b946592dd16a9c5b40eb06e715c411",
+  "file_count": 109,
+  "total_uncompressed_bytes_excluding_manifest": 1079292,
+  "aggregate_source_sha256": "5dedc82edd38c64bf6931fcf8b436df523b51bc3697b2c2c78437fd3d9c3ef7c",
+  "aggregate_sha256": "5dedc82edd38c64bf6931fcf8b436df523b51bc3697b2c2c78437fd3d9c3ef7c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md",
   "strategy_source_sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
   "files": {
@@ -58,8 +61,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "995980bace3a336f600fc25bba346997cd6279f3abf763f6ae3889ff08f7e59b",
-      "bytes": 2778,
+      "sha256": "f2ff935dc06a4db27f07e12b14ffa985d4df0cb0fc7323d3db9508842d847453",
+      "bytes": 2785,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -357,6 +360,11 @@
       "bytes": 3569,
       "git_mode": "100644"
     },
+    "config/reconstruction_R1_waszkiewicz_9bar.json": {
+      "sha256": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876",
+      "bytes": 7539,
+      "git_mode": "100644"
+    },
     "config/reference_R0.json": {
       "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
       "bytes": 4149,
@@ -468,8 +476,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "97685604652eba56dd93715636c2aea05a6ac98c49075cdb49966d4154e279b6",
-      "bytes": 7939,
+      "sha256": "260088959c76155e8deb25fddb922250c6ea0ce1212236b5628bc47e0005d790",
+      "bytes": 8183,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -493,8 +501,13 @@
       "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
-      "sha256": "4b34891a1d89c0bb5f2acdf7355bfa6225d980cfd552c314cbf5b0049c77e716",
-      "bytes": 15081,
+      "sha256": "0f72d9efd382b9d1d7d8cece1c011324123007293bc0bbebf98d9bee14e9427d",
+      "bytes": 31628,
+      "git_mode": "100755"
+    },
+    "scripts/r1_contract_bridge.py": {
+      "sha256": "811eaf4fd30082a3bd99a90579f6409a32e602a9057e5a59e57e179fd4ce4aec",
+      "bytes": 27702,
       "git_mode": "100755"
     },
     "scripts/run_qualification.py": {
@@ -550,6 +563,11 @@
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
       "sha256": "33412d78b8c0624ea6279acbb2c5d653c15a4753a38a228b58d27307110737f1",
       "bytes": 41313,
+      "git_mode": "100644"
+    },
+    "tests/test_r1_bridge.py": {
+      "sha256": "2bacc5e5110f25966852dbf2fb080b1b65ee1b4311a0f0454885fa4b04aad21c",
+      "bytes": 18837,
       "git_mode": "100644"
     },
     "tests/test_reference_case.py": {

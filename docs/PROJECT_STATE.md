@@ -13,7 +13,8 @@
 
 WP01R-001 dependency review is complete. Puckworks is locked to reviewed
 `main` snapshot `fc61c4670ec7bf801e40bb391aab16048b8da26b` with recommendation
-`ADOPT_WITH_FOLLOWUP`. WP01R-002 is merged and issue #4 is complete. The
-WP01R-003 calibration/comparison contract is frozen on its review branch and
-becomes authoritative when merged. Issue #6 is the next implementation task.
-R0 remains frozen and unchanged; no R1 run or physical result exists yet.
+`ADOPT_WITH_FOLLOWUP`. WP01R-002 and WP01R-003 are merged; issues #4 and #5
+are complete. The deterministic R1 bridge and case generator are implemented
+on the WP01R-004 review branch. R0 remains frozen and unchanged. No R1
+OpenFOAM execution or protected comparison has occurred; issue #7 is next
+after implementation review and merge.
