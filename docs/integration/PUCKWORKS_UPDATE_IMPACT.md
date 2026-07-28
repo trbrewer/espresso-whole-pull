@@ -90,10 +90,16 @@ WP01R-001 records but does not resolve:
 - protected-comparison selection;
 - final per-artifact redistribution clearance.
 
-Issue #4 owns the source/quantity/evidence dossier, bases, pressure nodes,
-provenance, and rights. Issue #5 owns calibration-input and parameter-role
-decisions. Issue #6 owns any required public/source interface mapping. Issue
-#7 owns protected comparisons, uncertainty, and validation contracts.
+Issue #4 owns the Waszkiewicz source/quantity/evidence dossier, source units
+and bases, source pressure and time nodes, provenance, rights, digitization or
+processing history, and the missing-data register. Issue #5 owns the frozen R1
+roles and contract: prescribed inputs, calibration inputs,
+protected-comparison selection, exclusions, downstream units, bases, nodes and
+time origins, uncertainty treatment, tolerances, parameter bounds, and
+validation/acceptance gates. Issue #6 owns the provenance-preserving Puckworks
+bridge and deterministic R1 case generator. Issue #7 owns execution against
+the frozen contract, conservation and comparison outputs, the
+protected-comparison scorecard, and residual classification.
 
 ## Disposition and drift
 

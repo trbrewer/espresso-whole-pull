@@ -5670,22 +5670,32 @@
   "downstream_impacts": {
     "4": [
       "source dossier",
-      "quantity units and bases",
-      "pressure nodes",
+      "source quantity units and bases",
+      "source pressure and time nodes",
       "provenance",
-      "rights"
+      "rights",
+      "processing and digitization history",
+      "missing-data register"
     ],
     "5": [
       "calibration-input authorization",
-      "parameter-role decisions"
+      "parameter-role decisions",
+      "protected-comparison selection",
+      "excluded-observation decisions",
+      "frozen downstream units, bases, nodes, and time origins",
+      "uncertainty and tolerance treatment",
+      "validation and acceptance contract"
     ],
     "6": [
-      "public/source interface mapping if required by the accepted dossier"
+      "Puckworks bridge",
+      "deterministic R1 case generator",
+      "source-to-solver interface mapping"
     ],
     "7": [
-      "protected-comparison selection",
-      "uncertainty",
-      "validation contracts"
+      "execution against the frozen R1 contract",
+      "protected-comparison scorecard",
+      "conservation and comparison outputs",
+      "residual classification"
     ]
   },
   "unresolved_ambiguities": [
