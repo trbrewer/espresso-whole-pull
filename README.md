@@ -30,7 +30,7 @@ The current target is OpenFOAM Foundation 12 on 64-bit Linux. Full OpenFOAM exec
 
 See `docs/ONBOARDING.md` before running or changing the model.
 
-[Puckworks](https://github.com/trbrewer/puckworks) is the public evidence/model/data dependency. It is reviewed and locked at `fc61c4670ec7bf801e40bb391aab16048b8da26b`, checked out with `tools/checkout_puckworks.sh`, and is not a submodule. The Waszkiewicz source dossier is prepared; the next WP-0.1R task is issue #5’s frozen calibration/protected-comparison contract.
+[Puckworks](https://github.com/trbrewer/puckworks) is the public evidence/model/data dependency. It is reviewed and locked at `fc61c4670ec7bf801e40bb391aab16048b8da26b`, checked out with `tools/checkout_puckworks.sh`, and is not a submodule. The Waszkiewicz calibration/comparison contract is prepared; after scientific approval, issue #6 implements the deterministic bridge and R1 case generator.
 
 ## License
 

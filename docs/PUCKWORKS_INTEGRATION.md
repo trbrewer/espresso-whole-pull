@@ -24,3 +24,11 @@ The issue #4 dossier is prepared from the exact locked commit:
 [JSON](../validation/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.json). Its
 disposition is `READY_FOR_WP01R_003_WITH_DECLARED_GAPS`; issue #5 must freeze
 the calibration/protected-comparison contract before implementation.
+
+The issue #5 contract is now prepared against that same exact lock:
+[Markdown](validation/R1_CALIBRATION_AND_COMPARISON_CONTRACT.md) and
+[JSON](../validation/contracts/R1_CALIBRATION_AND_COMPARISON_CONTRACT.json).
+It freezes one active calibration degree of freedom (uniform permeability)
+and five protected per-shot flow shapes. Chemistry is unprotected, and no
+poroelastic closure is implemented. Once approved and merged, issue #6 may
+implement the deterministic bridge and R1 case generator.

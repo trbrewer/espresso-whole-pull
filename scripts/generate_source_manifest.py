@@ -46,6 +46,7 @@ PUBLIC_DOCUMENTATION_PATHS = {
     "docs/PUCKWORKS_INTEGRATION.md",
     "docs/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.md",
     "docs/integration/PUCKWORKS_UPDATE_IMPACT.md",
+    "docs/validation/R1_CALIBRATION_AND_COMPARISON_CONTRACT.md",
     "docs/decisions/ADR-0001-PUBLIC_REPOSITORY_TRANSITION.md",
     "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md",
     "docs/strategy/history/espresso_puck_modeling_and_simulation_strategy_v1_3.md",
