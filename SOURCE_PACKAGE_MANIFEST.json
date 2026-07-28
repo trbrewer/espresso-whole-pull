@@ -1,6 +1,6 @@
 {
   "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
-  "generated_at_utc": "2026-07-28T22:48:10.678959+00:00",
+  "generated_at_utc": "2026-07-28T22:55:50.195229+00:00",
   "package": "espresso-whole-pull",
   "package_version": "0.1.4",
   "target": "OpenFOAM Foundation 12",
@@ -23,10 +23,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 109,
-  "total_uncompressed_bytes_excluding_manifest": 1079292,
-  "aggregate_source_sha256": "5dedc82edd38c64bf6931fcf8b436df523b51bc3697b2c2c78437fd3d9c3ef7c",
-  "aggregate_sha256": "5dedc82edd38c64bf6931fcf8b436df523b51bc3697b2c2c78437fd3d9c3ef7c",
+  "file_count": 112,
+  "total_uncompressed_bytes_excluding_manifest": 1097294,
+  "aggregate_source_sha256": "499194265bd2d6303b890ee13f75f8d972974a3ad3650edc6484ec5e7f254d55",
+  "aggregate_sha256": "499194265bd2d6303b890ee13f75f8d972974a3ad3650edc6484ec5e7f254d55",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md",
   "strategy_source_sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
   "files": {
@@ -61,8 +61,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "f2ff935dc06a4db27f07e12b14ffa985d4df0cb0fc7323d3db9508842d847453",
-      "bytes": 2785,
+      "sha256": "24c4dbe4e2e50b03e40968100674b30f77c1e8299bb39373faa1755297aebcd5",
+      "bytes": 2893,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -440,6 +440,11 @@
       "bytes": 6218,
       "git_mode": "100644"
     },
+    "docs/r1/WP01R_005_EXECUTION_RESULT.md": {
+      "sha256": "5c732ba6b51c0d7312f10818693974766bd0698600b7c188157425f624135333",
+      "bytes": 3437,
+      "git_mode": "100644"
+    },
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": {
       "sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
       "bytes": 109397,
@@ -458,6 +463,11 @@
     "scripts/espresso_reference_math.py": {
       "sha256": "c5331b8fc11bc4f04c939206e4b1e227cf46be16264b403b845af5294164f1d0",
       "bytes": 21794,
+      "git_mode": "100755"
+    },
+    "scripts/evaluate_r1.py": {
+      "sha256": "b1a8a7d7f51c822172bf381f314b03e84489d7594c82d5dff48ed2454ccd6583",
+      "bytes": 11710,
       "git_mode": "100755"
     },
     "scripts/finalize_reference_freeze.py": {
@@ -568,6 +578,11 @@
     "tests/test_r1_bridge.py": {
       "sha256": "2bacc5e5110f25966852dbf2fb080b1b65ee1b4311a0f0454885fa4b04aad21c",
       "bytes": 18837,
+      "git_mode": "100644"
+    },
+    "tests/test_r1_evaluation.py": {
+      "sha256": "7fba2269e6c548c850bf35a851a5e19eece5c5023644c63572238f40b39f7142",
+      "bytes": 2747,
       "git_mode": "100644"
     },
     "tests/test_reference_case.py": {

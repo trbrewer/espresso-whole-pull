@@ -1,0 +1,145 @@
+{
+  "calibration_reproduction": {
+    "limit": 0.02,
+    "relative_error": 6.464812795307743e-14,
+    "simulated_late_mean_g_per_s": 1.8821959328388052,
+    "status": "PASS",
+    "target_g_per_s": 1.8821959328386835
+  },
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "contract": {
+    "path": "validation/contracts/R1_CALIBRATION_AND_COMPARISON_CONTRACT.json",
+    "sha256": "1f15bf1f0d2f67ac131e891a9cec51aac78541e5c1e14ba420d8dbddbb843922"
+  },
+  "execution": {
+    "end_time_s": 102.999999999997,
+    "openfoam_environment": {
+      "WM_COMPILER": "Gcc",
+      "WM_LABEL_SIZE": "32",
+      "WM_MPLIB": "SYSTEMOPENMPI",
+      "WM_OPTIONS": "linux64GccDPInt32Opt",
+      "WM_PRECISION_OPTION": "DP",
+      "WM_PROJECT": "OpenFOAM",
+      "WM_PROJECT_VERSION": "12"
+    },
+    "openfoam_execution_count": 1,
+    "optimizer_iteration_count": 0,
+    "parameter_fitting_count": 0,
+    "post_run_adjustment_count": 0,
+    "solver_executable_sha256": "ada45a5440d08ae8da1a57d65cdf511748a340cd09a045121c59ea83a3d8d6d7"
+  },
+  "governing_physics_change": false,
+  "numerical_and_conservation": {
+    "all_numerical_gates_pass": true,
+    "all_reduced_twin_gates_pass": true,
+    "first_drip_s": 4.42643488212695,
+    "max_liquid_balance_residual_kg": 3.27515792264421e-15,
+    "max_solute_balance_residual_kg": 2.96758025257796e-13,
+    "source_acceptance_status": "PASS"
+  },
+  "overall_r1_physical_comparison": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+  "physical_validation": "NOT_ESTABLISHED",
+  "protected_comparison": {
+    "median_normalized_shape_rmse": 0.399249345465128,
+    "median_pearson_r": null,
+    "shots": [
+      {
+        "normalized_shape_rmse": 0.3809873383359685,
+        "observed_late_mean_g_per_s": 1.9935932,
+        "observed_normalized_population_std": 0.33989484086560967,
+        "pearson_gate_status": "FAIL",
+        "pearson_r": null,
+        "pearson_undefined_reason": "PREDICTED_NORMALIZED_STD_AT_OR_BELOW_1E-8",
+        "predicted_late_mean_g_per_s": 1.8821959328388052,
+        "predicted_normalized_population_std": 0.0,
+        "rmse_gate_status": "FAIL",
+        "shot_id": "9-1"
+      },
+      {
+        "normalized_shape_rmse": 0.3931333752645347,
+        "observed_late_mean_g_per_s": 1.8419079,
+        "observed_normalized_population_std": 0.3478706389844184,
+        "pearson_gate_status": "FAIL",
+        "pearson_r": null,
+        "pearson_undefined_reason": "PREDICTED_NORMALIZED_STD_AT_OR_BELOW_1E-8",
+        "predicted_late_mean_g_per_s": 1.8821959328388052,
+        "predicted_normalized_population_std": 0.0,
+        "rmse_gate_status": "FAIL",
+        "shot_id": "9-2"
+      },
+      {
+        "normalized_shape_rmse": 0.4809836650737017,
+        "observed_late_mean_g_per_s": 1.908161,
+        "observed_normalized_population_std": 0.39139488790731897,
+        "pearson_gate_status": "FAIL",
+        "pearson_r": null,
+        "pearson_undefined_reason": "PREDICTED_NORMALIZED_STD_AT_OR_BELOW_1E-8",
+        "predicted_late_mean_g_per_s": 1.8821959328388052,
+        "predicted_normalized_population_std": 0.0,
+        "rmse_gate_status": "FAIL",
+        "shot_id": "9-3"
+      },
+      {
+        "normalized_shape_rmse": 0.399249345465128,
+        "observed_late_mean_g_per_s": 1.8442842,
+        "observed_normalized_population_std": 0.35907810747234764,
+        "pearson_gate_status": "FAIL",
+        "pearson_r": null,
+        "pearson_undefined_reason": "PREDICTED_NORMALIZED_STD_AT_OR_BELOW_1E-8",
+        "predicted_late_mean_g_per_s": 1.8821959328388052,
+        "predicted_normalized_population_std": 0.0,
+        "rmse_gate_status": "FAIL",
+        "shot_id": "9-4"
+      },
+      {
+        "normalized_shape_rmse": 0.465988221877517,
+        "observed_late_mean_g_per_s": 1.7288328,
+        "observed_normalized_population_std": 0.39498315273591317,
+        "pearson_gate_status": "FAIL",
+        "pearson_r": null,
+        "pearson_undefined_reason": "PREDICTED_NORMALIZED_STD_AT_OR_BELOW_1E-8",
+        "predicted_late_mean_g_per_s": 1.8821959328388052,
+        "predicted_normalized_population_std": 0.0,
+        "rmse_gate_status": "FAIL",
+        "shot_id": "9-5"
+      }
+    ],
+    "shots_at_or_above_pearson_0_90": 0,
+    "shots_at_or_below_rmse_0_20": 0,
+    "status": "FAIL"
+  },
+  "r0_regression": {
+    "acceptance_sha256": "dbfe97e2fd420d7afab949cdd0710cdde2b56d908f1cbbb0308627492c234583",
+    "all_required_b0_parity_gates_pass": true,
+    "all_required_reference_gates_pass": true,
+    "cup_beverage_mass_at_end_kg": 0.0409578674827949,
+    "first_drip_s": 4.71169618523188,
+    "note": "Fresh regression run only; the frozen R0 baseline was not modified.",
+    "status": "PASS"
+  },
+  "residual_classification": {
+    "finding": "The frozen uniform-permeability model predicts a constant post-wetting flow and does not reproduce the protected rising-flow shapes.",
+    "primary": "STRUCTURAL_MODEL_INADEQUACY",
+    "retuning_authorized": false,
+    "software_execution_failure": false
+  },
+  "schema_version": "espresso.public.wp01r_005_scorecard.v1",
+  "solver_trace_sha256": "beb633f894106a27751fb1e0ec54fd1cf7514a6ede0f795f49f4a7e2b1c5f0c7",
+  "source_dependency": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "protected_source_path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+    "protected_source_sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "status_families": {
+    "CALIBRATION_REPRODUCTION": "PASS",
+    "CASE_GENERATION": "PASS",
+    "CHEMISTRY_PLAUSIBILITY": "REPORTED_UNSCORED",
+    "CONSERVATION": "PASS",
+    "CONTRACT_INTEGRITY": "PASS",
+    "NUMERICAL_VERIFICATION": "PASS",
+    "OVERALL_R1_PHYSICAL_COMPARISON": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+    "PROTECTED_FLOW_SHAPE_COMPARISON": "FAIL"
+  },
+  "task": "WP01R-005"
+}
