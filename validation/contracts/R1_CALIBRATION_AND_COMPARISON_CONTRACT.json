@@ -129,12 +129,43 @@
     {"quantity_id": "protected-flow-shape-9-5", "role": "PROTECTED_COMPARISON", "source_selector": "shot_id == 9-5; indices 100..899"}
   ],
   "solver_output_contract": [
-    {"output": "reduced_mass_flow_trace", "role": "PREDICTED_OUTPUT", "maximum_interval_s": 0.1, "unsmoothed": true},
+    {"output": "reduced_mass_flow_trace", "quantity_id": "hydraulic-equivalent-outlet-mass-flow", "role": "PREDICTED_OUTPUT", "formula": "1000 * 965 * outlet_flow_m3_s", "unit": "g/s", "maximum_interval_s": 0.1, "unsmoothed": true},
     {"output": "first_drip_time", "role": "PREDICTED_OUTPUT", "comparison_role": "PLAUSIBILITY_OBSERVATION"},
     {"output": "liquid_and_solute_conservation", "role": "PREDICTED_OUTPUT", "gate": "REQUIRED"},
     {"output": "beverage_mass_TDS_EY_solute_and_retained_inventories", "role": "PREDICTED_OUTPUT", "comparison_role": "CHEMISTRY_PLAUSIBILITY_ONLY"},
     {"output": "target_beverage_mass_0.04_kg", "role": "UNSCORED_DIAGNOSTIC", "termination_control": false}
   ],
+  "solver_to_source_flow_mapping": {
+    "source_observable": {
+      "quantity": "mass_flow_rate__g_per_s",
+      "source_basis": "scale-derived total beverage-mass-flow observation",
+      "unit": "g/s",
+      "source_path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv"
+    },
+    "primary_predicted_quantity": {
+      "quantity_id": "hydraulic-equivalent-outlet-mass-flow",
+      "solver_native_field": "outlet_flow_m3_s",
+      "formula": "q_pred_g_per_s = 1000 * liquid_density_kg_m3 * outlet_flow_m3_s",
+      "liquid_density_kg_m3": 965.0,
+      "unit": "g/s",
+      "basis": "HYDRAULIC_EQUIVALENT_LIQUID_MASS_FLOW",
+      "includes_solute_mass_flux": false,
+      "used_for_calibration_reproduction": true,
+      "used_for_protected_shape_comparison": true
+    },
+    "secondary_unscored_diagnostic": {
+      "quantity_id": "predicted-total-beverage-mass-flow",
+      "formula": "1000 * finite_difference(cup_beverage_mass_kg, time_s)",
+      "unit": "g/s",
+      "includes_solute_mass_flux": true,
+      "comparison_role": "UNSCORED_DIAGNOSTIC",
+      "may_replace_primary_quantity": false
+    },
+    "comparability_limitation": {
+      "status": "EXPLICIT_ENGINEERING_APPROXIMATION",
+      "statement": "The experimental scale derivative is total beverage mass flow, whereas the primary R1 comparison converts hydraulic outlet volume flow using the fixed liquid density and excludes predicted solute mass flux. This keeps the hydraulic comparison consistent with the frozen permeability inversion and prevents unprotected chemistry assumptions from controlling the protected score."
+    }
+  },
   "pressure_node_contract": [
     {"node": "REFERENCE_PRESSURE_BIN", "value_bar": 9.0, "role": "SOURCE_GROUPING_LABEL_ONLY", "solver_boundary": false},
     {"node": "LINE_OR_PUMP_SIDE_GAUGE", "role": "MEASURED_SOURCE_TRACE_PLAUSIBILITY", "solver_boundary": false},
@@ -218,6 +249,12 @@
     "equilibrium_mass_flow_g_per_s": 1.8821959328386835,
     "active_solver_calibration_degrees_of_freedom": 1,
     "active_calibrated_quantity_id": "uniform-darcy-permeability",
+    "historically_calibrated_scenario_parameter_count": 1,
+    "historically_calibrated_scenario_parameter": "uniform-darcy-permeability",
+    "runtime_adjustable_parameter_count": 0,
+    "generation_time_adjustable_parameter_count": 0,
+    "post_run_adjustable_parameter_count": 0,
+    "retuning_authorized": false,
     "central_uniform_permeability_m2": 2.8642613245723525e-15,
     "saturated_permeability_m2": 2.8642613245723525e-15,
     "wetting_permeability_m2": 2.8642613245723525e-15,
@@ -251,6 +288,15 @@
       "normalized_shape_rmse": "sqrt(mean((q_pred/q_pred_late - q_obs_i/q_obs_late_i)^2))",
       "pearson_r": "Pearson correlation(q_pred_norm, q_obs_norm_i)",
       "undefined_pearson_disposition": "FAIL"
+    },
+    "pearson_degeneracy": {
+      "standard_deviation_definition": "population standard deviation of the finite normalized protected-window vector",
+      "normalized_standard_deviation_epsilon": 1e-8,
+      "undefined_if_predicted_std_at_or_below_epsilon": true,
+      "undefined_if_observed_std_at_or_below_epsilon": true,
+      "nonfinite_value_disposition": "FAIL",
+      "undefined_disposition": "FAIL",
+      "jitter_or_regularization_allowed": false
     },
     "gates": {
       "median_normalized_shape_rmse_max": 0.15,
@@ -310,7 +356,7 @@
     {"status_family": "CASE_GENERATION", "gate": "deterministic case reproduces this contract"},
     {"status_family": "NUMERICAL_VERIFICATION", "gate": "OpenFOAM/reduced-twin parity including first drip at existing tolerance"},
     {"status_family": "CONSERVATION", "gate": "liquid and solute conservation pass existing numerical gates"},
-    {"status_family": "CALIBRATION_REPRODUCTION", "gate": "simulated late mean mass flow within 2% relative of 1.8821959328386835 g/s"},
+    {"status_family": "CALIBRATION_REPRODUCTION", "gate": "late-window mean of 1000 * 965 * outlet_flow_m3_s within 2% relative of 1.8821959328386835 g/s"},
     {"status_family": "CALIBRATION_REPRODUCTION", "gate": "static formula and central permeability reproduce within double-precision consistency tolerance"},
     {"status_family": "PROTECTED_FLOW_SHAPE_COMPARISON", "gate": "all predeclared RMSE and Pearson criteria pass"},
     {"status_family": "CHEMISTRY_PLAUSIBILITY", "gate": "report only; no protected TDS/EY pass claim"},

@@ -90,6 +90,11 @@ and central `K = 2.8642613245723525e-15 m2`. Saturated and wetting
 permeabilities are both this value, an explicit engineering simplification.
 Uniform permeability is the single active solver calibration degree of
 freedom. There are zero optimizer or post-run calibration iterations.
+This means one scenario parameter was historically obtained by the frozen
+analytical mapping; it is not adjustable during generation or execution.
+Runtime, generation-time, and post-run adjustable parameter counts are all
+zero, and retuning is not authorized. The central case must contain exactly
+`2.8642613245723525e-15 m2`.
 
 The covariance-diagonal source-fit values generate only a nonprobabilistic
 corner envelope, `2.56903088781814e-15` to
@@ -107,6 +112,16 @@ observed and predicted trace is normalized by its own mean over indices
 900–999. The unsmoothed prediction is linearly interpolated onto source times.
 Metrics over indices 100–899 are normalized RMSE and Pearson correlation.
 
+The protected prediction is the hydraulic-equivalent outlet mass flow
+`1000 * 965 * outlet_flow_m3_s` in g/s. It excludes predicted solute mass
+flux and is used for both late-flow calibration reproduction and protected
+shape scoring. The experimental scale derivative is total beverage mass flow,
+so this comparison is an explicit engineering approximation, not a direct
+reproduction of the experimental mass basis. The finite difference of total
+predicted cup-beverage mass remains an unscored secondary diagnostic and may
+not replace the hydraulic quantity. This prevents unprotected chemistry
+assumptions from controlling the protected score.
+
 All gates must hold:
 
 - median normalized RMSE `<= 0.15`;
@@ -120,7 +135,16 @@ pairwise `r = 0.9399097878989583`. These are pre-run engineering tolerances,
 not confidence limits or independent-validation thresholds. Protected traces
 cannot select permeability, time shift, pressure, smoothing, or amplitude.
 
-The central simulated late mean must reproduce the static target within 2%.
+Both normalized protected-window vectors must be finite. Pearson uses their
+population standard deviations and is undefined if either is at or below
+`1e-8`; nonfinite or undefined results fail that shot. No jitter,
+regularization, epsilon noise, or post-hoc detrending is allowed. A constant
+or numerically near-constant prediction is a scientifically valid model result
+and fails the Pearson gate rather than being converted into an artificial
+finite correlation.
+
+The late-window mean of `1000 * 965 * outlet_flow_m3_s` must reproduce the
+static target within 2%.
 The observed late mean differs from that target by `1.0009729863919606%`,
 within a predeclared 5% source-reconciliation plausibility check; it is not
 used to refit permeability.
