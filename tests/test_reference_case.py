@@ -284,6 +284,143 @@ class PackageContractTests(unittest.TestCase):
         self.assertTrue(excluded(Path("docs/integration/PUCKWORKS_UPDATE_IMPACT.md")))
         self.assertFalse(excluded(Path("docs/integration/arbitrary_solver_source.md")))
 
+    def test_source_manifest_excludes_only_the_approved_waszkiewicz_dossier(self) -> None:
+        self.assertTrue(excluded(Path("docs/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.md")))
+        self.assertFalse(excluded(Path("docs/evidence/arbitrary_scenario_source.md")))
+
+    def test_waszkiewicz_dossier_contract_is_complete_but_not_frozen(self) -> None:
+        dossier = json.loads(
+            (
+                ROOT / "validation/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            dossier["schema_version"],
+            "espresso.public.waszkiewicz_r1_source_dossier.v1",
+        )
+        self.assertEqual(dossier["analysis_status"], "COMPLETE")
+        self.assertEqual(
+            dossier["dossier_disposition"],
+            "READY_FOR_WP01R_003_WITH_DECLARED_GAPS",
+        )
+        self.assertEqual(
+            dossier["dependency_identity"]["commit"],
+            "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+        )
+        self.assertEqual(
+            dossier["dependency_identity"]["tree"],
+            "1d553e44ee2f7480a5df521560801b478618cc84",
+        )
+        allowed = {
+            "DIRECT_OBSERVATION",
+            "SOURCE_REPORTED_PARAMETER",
+            "DIGITIZED_VALUE",
+            "DERIVED_VALUE",
+            "FITTED_PARAMETER",
+            "ENGINEERING_ASSUMPTION",
+            "UNAVAILABLE",
+        }
+        quantities = dossier["quantity_inventory"]
+        self.assertTrue(quantities)
+        self.assertTrue(all(item["classification"] in allowed for item in quantities))
+        self.assertEqual(len(quantities), 42)
+        counts = {
+            classification: sum(
+                item["classification"] == classification for item in quantities
+            )
+            for classification in allowed
+        }
+        self.assertEqual(counts["FITTED_PARAMETER"], 11)
+        self.assertEqual(counts["ENGINEERING_ASSUMPTION"], 1)
+        self.assertEqual(sum(counts.values()), 42)
+        self.assertEqual(
+            {key: value for key, value in counts.items() if value},
+            dossier["quantity_classification_counts"],
+        )
+        self.assertTrue(
+            all(item["role_status"] == "PROPOSED_NOT_FROZEN" for item in quantities)
+        )
+        by_id = {item["quantity_id"]: item for item in quantities}
+        offset = by_id["first-drop-offset"]
+        self.assertEqual(offset["classification"], "ENGINEERING_ASSUMPTION")
+        self.assertEqual(offset["uncertainty"]["status"], "NOT_ESTIMATED")
+        self.assertIsNone(offset["uncertainty"]["value"])
+        self.assertEqual(offset["source_recorded_std_field"], 0.0)
+        self.assertEqual(
+            offset["proposed_r1_role"],
+            "EXCLUDED_SOURCE_PROCESSING_ASSUMPTION",
+        )
+        fitted_ids = {
+            item["quantity_id"]
+            for item in quantities
+            if item["classification"] == "FITTED_PARAMETER"
+        }
+        self.assertNotIn("first-drop-offset", fitted_ids)
+        time_offset = next(
+            item
+            for item in dossier["time_origin_map"]
+            if item["node_id"] == "SOLIDS_FIRST_DROP_OFFSET"
+        )
+        self.assertEqual(
+            time_offset["solver_mapping_status"],
+            "EXCLUDED_FROM_FUTURE_SOLVER_TIME_MAPPING",
+        )
+        covariance_uncertainties = [
+            item["uncertainty"]
+            for item in quantities
+            if item["uncertainty"]["status"] == "SOURCE_FIT_COVARIANCE_STD"
+        ]
+        self.assertTrue(covariance_uncertainties)
+        self.assertTrue(
+            all(
+                uncertainty["kind"]
+                == "CURVE_FIT_COVARIANCE_1SIGMA_APPROXIMATION"
+                and "not shot-to-shot experimental standard deviation"
+                in uncertainty["note"]
+                and "Off-diagonal covariance is not present" in uncertainty["note"]
+                for uncertainty in covariance_uncertainties
+            )
+        )
+        self.assertTrue(
+            all(
+                item["value_status"] != "RIGHTS_WITHHELD_FROM_DOSSIER"
+                for item in quantities
+                if item["rights_status"].startswith("CC-BY")
+            )
+        )
+        markdown = (
+            ROOT / "docs/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("fixed 8.0 s first-drop offset", markdown)
+        self.assertIn("was not optimized with the sigmoid parameters", markdown)
+        self.assertIn("not withheld because of a", markdown)
+        self.assertNotIn("fitted 8 s first-drop offset", markdown)
+        self.assertNotIn("8 s fitted offset", markdown)
+        artifacts = dossier["source_artifacts"]
+        self.assertTrue(artifacts)
+        self.assertTrue(
+            all(
+                item["rights_status"]
+                and item["license_or_restriction"]
+                and item["redistribution_treatment"]
+                for item in artifacts
+            )
+        )
+        self.assertGreaterEqual(len(dossier["pressure_node_map"]), 3)
+        self.assertGreaterEqual(len(dossier["time_origin_map"]), 5)
+        gaps = {item["register_id"]: item for item in dossier["missing_data_and_ambiguities"]}
+        for required in (
+            "basket-versus-bed-diameter",
+            "reference-versus-basket-pressure",
+            "mass-to-volumetric-flow",
+            "time-origin-mapping",
+        ):
+            self.assertIn(required, gaps)
+        boundaries = dossier["authorization_boundaries"]
+        self.assertFalse(boundaries["calibration_contract_frozen"])
+        self.assertFalse(boundaries["protected_comparison_contract_frozen"])
+        self.assertFalse(boundaries["r1_implementation_authorized"])
+
     def test_puckworks_v2_lock_and_checkout_contract(self) -> None:
         lock = json.loads(
             (ROOT / "dependencies/puckworks.lock.json").read_text(encoding="utf-8")
