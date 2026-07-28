@@ -4,9 +4,11 @@
   "source_version": "v0.1.4",
   "public_derivative_version": "v0.1.4-public.1",
   "archival_aggregate_source_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
-  "public_source_manifest_sha256": "db80c980b3204c9e48999f01b6b67b75eaac5cef23b1bdd3011686bb6e0bb6b2",
+  "root_tag_source_manifest_sha256": "db80c980b3204c9e48999f01b6b67b75eaac5cef23b1bdd3011686bb6e0bb6b2",
+  "current_source_manifest_sha256": "a2a618dc3fce2dfacabf51d3d61c70acdb610d63dad59850d2f67aaab992a867",
   "public_source_file_count": 106,
-  "public_aggregate_source_sha256": "944808575cf1dc1e3adf7e07023364e231fe3d2b8521522ab06308bee1da3605",
+  "root_tag_public_aggregate_source_sha256": "944808575cf1dc1e3adf7e07023364e231fe3d2b8521522ab06308bee1da3605",
+  "current_public_aggregate_source_sha256": "7aa09c0846608945a480cc54e610d62eb0becfc7e01a073f5ad0186315aebf2b",
   "sanitized_files": [
     "baseline_evidence/v0_1_2/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_2.json",
     "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_NUMERICAL_QUALIFICATION_V0_1_3.json",

@@ -60,6 +60,8 @@ def excluded(relative: Path) -> bool:
     name = relative.name
     if text == MANIFEST_NAME:
         return True
+    if ".git" in parts:
+        return True
     # Public repository governance, CI, provenance and compact evidence
     # summaries are tracked beside the fixed 106-file solver-package scope.
     # Keep this allowlist explicit so new solver/scenario files cannot bypass

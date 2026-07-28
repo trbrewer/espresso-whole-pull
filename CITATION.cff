@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this research software, please cite the repository and the exact version."
+title: "Espresso Whole-Pull"
+type: software
+authors:
+  - family-names: "Brewer"
+    given-names: "Tim"
+repository-code: "https://github.com/trbrewer/espresso-whole-pull"
+version: "0.1.4-public.1"
+date-released: "2026-07-28"
+license: "GPL-3.0-or-later"
+keywords:
+  - espresso
+  - OpenFOAM
+  - porous media
+  - extraction

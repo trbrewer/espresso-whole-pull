@@ -1,0 +1,40 @@
+# OpenFOAM runtime products
+processor*/
+postProcessing/
+constant/polyMesh/
+Make/linux*/
+qualification/runs/
+qualification_runs/
+artifacts/runtime/
+log.*
+core
+*.o
+*.so
+*.a
+
+# Numeric time directories; retain source templates.
+**/[1-9]*/
+**/[1-9][0-9]*/
+**/[0-9]*.[0-9]*/
+!**/0/
+!**/0.orig/
+
+# ParaView entry points are ignored unless deliberately forced.
+*.foam
+
+# Python and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local environments, credentials, and editors
+.env
+.env.*
+*.pem
+*.key
+.idea/
+.vscode/
+*~
+*.swp
+.DS_Store

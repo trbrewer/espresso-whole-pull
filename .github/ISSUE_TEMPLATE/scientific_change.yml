@@ -1,0 +1,27 @@
+name: Scientific change proposal
+description: Propose a scenario, numerical-method, or governing-physics change.
+title: "[Scientific change] "
+labels: ["scientific-review"]
+body:
+  - type: dropdown
+    id: declaration
+    attributes:
+      label: Change declaration
+      options:
+        - SOURCE_SCENARIO_CHANGE_ONLY
+        - NUMERICAL_METHOD_CHANGE
+        - GOVERNING_PHYSICS_CHANGE
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Named residual, evidence need, or engineering decision
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sources, calibration data, protected comparisons, uncertainty, and rights
+    validations:
+      required: true

@@ -1,0 +1,69 @@
+{
+  "schema_version": "espresso.public.publication_audit.v1",
+  "overall_disposition": "PASS_WITH_HUMAN_REVIEW_REQUIRED",
+  "checks": {
+    "source_verification": {"status": "PASS", "checked": 106, "total": 106},
+    "current_public_aggregate_source_sha256": "7aa09c0846608945a480cc54e610d62eb0becfc7e01a073f5ad0186315aebf2b",
+    "archival_aggregate_source_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
+    "scientific_inputs": {
+      "status": "PASS",
+      "checked": 19,
+      "total": 19,
+      "aggregate_sha256": "d70399a76b0023d93985d76c1c83a9a42b7148b3d71d16d1b5f88275be1ebe7a"
+    },
+    "no_physics_change": {
+      "status": "PASS",
+      "passed": 28,
+      "total": 28,
+      "governing_physics_change": false
+    },
+    "scientific_configuration_change": false,
+    "static_validation": {"status": "PASS", "passed": 32, "total": 32},
+    "python_tests": {"status": "PASS", "passed": 36, "total": 36},
+    "shell_syntax": "PASS",
+    "json_parsing": "PASS",
+    "yaml_cff_parsing": "PASS",
+    "markdown_local_links": "PASS",
+    "private_public_boundary": "PASS",
+    "generated_openfoam_product_scan": "PASS",
+    "large_file_scan": "PASS"
+  },
+  "findings": {
+    "private_home_path_token_occurrences": 0,
+    "private_hostname_token_occurrences": 0,
+    "absolute_home_path_occurrences": 0,
+    "private_workspace_name_occurrences": 0,
+    "personal_email_file_occurrences": 0,
+    "credential_token_private_key_password_findings": 0,
+    "generated_openfoam_product_findings": 0,
+    "files_over_10_mib": 0,
+    "files_over_50_mib": 0,
+    "broken_local_markdown_links": 0
+  },
+  "approved_git_metadata_identity": {
+    "name": "Tim Brewer",
+    "email_role": "explicitly approved public commit identity",
+    "email_present_in_repository_files": false
+  },
+  "license_audit": {
+    "status": "HUMAN_REVIEW_REQUIRED",
+    "solver_license": "GPL-3.0-or-later",
+    "puckworks_license": "MIT",
+    "puckworks_material_vendored": false,
+    "source_files_sampled_for_headers": 22,
+    "files_with_spdx_header": 1,
+    "automated_audit_is_legal_advice": false
+  },
+  "tooling_limitations": [
+    "gitleaks was not installed; explicit regex secret scanning was used.",
+    "GitHub CLI was not installed; authenticated account identity and private-repository existence could not be checked."
+  ],
+  "github_public_url_check": {
+    "proposed_repository": "trbrewer/espresso-whole-pull",
+    "public_url_status": 404,
+    "public_repository_visible": false,
+    "private_repository_existence_determined": false
+  },
+  "network_publication_count": 0,
+  "openfoam_execution_count": 0
+}

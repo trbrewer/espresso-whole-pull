@@ -1,0 +1,11 @@
+{
+  "schema_version": "espresso.public.puckworks_lock.v1",
+  "repository_url": "https://github.com/trbrewer/puckworks.git",
+  "historical_reviewed_commit": "352dacd51015d95a3b5a5b3e1a8fb331419d78b0",
+  "checkout_commit": "352dacd51015d95a3b5a5b3e1a8fb331419d78b0",
+  "dependency_role": "external public evidence/model/data dependency",
+  "license": "MIT",
+  "submodule": false,
+  "alignment_status": "FRESH_MAIN_REVIEW_REQUIRED",
+  "rights_restricted_material_vendored": false
+}

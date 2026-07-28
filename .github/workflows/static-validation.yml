@@ -1,0 +1,32 @@
+name: Static validation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  inexpensive-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static package validation
+        run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/static_validate.py --root .
+      - name: Python tests
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: No-physics contract
+        run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_no_physics_change.py --root . --output /tmp/no-physics.json
+      - name: Shell syntax
+        run: |
+          find . -type f \( -name '*.sh' -o -name 'Allrun' -o -name 'Allverify' -o -name 'Allclean' -o -name 'Allwmake' \) -print0 |
+            xargs -0 -n1 bash -n
+      - name: JSON syntax
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for path in Path(".").rglob("*.json"):
+              json.loads(path.read_text(encoding="utf-8"))
+          PY

@@ -1,0 +1,30 @@
+{
+  "schema_version": "espresso.public.baseline_summary.v1",
+  "baseline": "WP-0.1H v0.1.4",
+  "public_derivative": "v0.1.4-public.1",
+  "reference_status": "FROZEN / QUALIFIED",
+  "evidence_role": "NUMERICAL_QUALIFICATION",
+  "claim_ceiling": "NUMERICALLY_QUALIFIED_CALIBRATION_BASELINE",
+  "physical_validation_status": "NOT_ESTABLISHED",
+  "calibration_note": "Saturated permeability was selected to place the simplified R0 calculation near an approximately 40 g beverage endpoint at 30 s.",
+  "primary_outputs": {
+    "first_drip_s": 4.711696185,
+    "final_outlet_flow_mL_s": 1.482675972,
+    "total_beverage_mass_at_30_s_g": 40.957867483,
+    "time_to_40_g_s": 29.374480171,
+    "cumulative_TDS_percent": 11.689306389,
+    "extraction_yield_percent": 23.938453103
+  },
+  "acceptance_status": "PASS",
+  "numerical_qualification_status": "PASS",
+  "archival_source_aggregate_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
+  "root_tag_public_source_aggregate_sha256": "944808575cf1dc1e3adf7e07023364e231fe3d2b8521522ab06308bee1da3605",
+  "current_public_source_aggregate_sha256": "7aa09c0846608945a480cc54e610d62eb0becfc7e01a073f5ad0186315aebf2b",
+  "scientific_input_aggregate_sha256": "d70399a76b0023d93985d76c1c83a9a42b7148b3d71d16d1b5f88275be1ebe7a",
+  "reconstructed_field_aggregate_sha256": "9468de231dc2f50ed1db158a0a5520a16e505818f52f44b85d51426232543bfd",
+  "terminal_freeze_manifest_sha256": "db2aefd7124ceaee26ba10a4bb1309787b7f4a94ea9a391b634df84a3fe3d6f1",
+  "archived_executable_sha256": "ada45a5440d08ae8da1a57d65cdf511748a340cd09a045121c59ea83a3d8d6d7",
+  "offline_originals_in_public_git": false,
+  "governing_physics_change": false,
+  "scientific_configuration_change": false
+}

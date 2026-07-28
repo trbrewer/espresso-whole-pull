@@ -1,0 +1,26 @@
+name: Source integrity
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  source-and-boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify public source manifest
+        run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_source_manifest.py --root .
+      - name: Reject generated OpenFOAM products
+        run: |
+          if git ls-files | grep -E '(^|/)(processor[0-9]*|postProcessing|constant/polyMesh|Make/linux[^/]*|qualification/runs|artifacts/runtime)(/|$)|(^|/)log\.|\.(o|so)$'; then
+            exit 1
+          fi
+      - name: Reject private paths, hostnames, and secret forms
+        run: |
+          if git grep -I -n -E '(/home/[A-Za-z0-9._-]+|BEGIN (RSA |EC |OPENSSH |DSA )?PRIVATE KEY|AKIA[0-9A-Z]{16}|github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{30,})'; then
+            exit 1
+          fi
