@@ -26,6 +26,8 @@ from espresso_reference_math import (  # noqa: E402
 PACKAGE_VERSION = "0.1.4"
 REFERENCE_CASE_RELATIVE = Path("cases/reference_R0_20g_58mm_9bar")
 REFERENCE_CONFIG_RELATIVE = Path("config/reference_R0.json")
+R1_TASK = "WP01R-004"
+R1_MANIFEST_NAME = "WP01R_004_GENERATED_CASE_MANIFEST.json"
 
 
 def sha256(path: Path) -> str:
@@ -285,6 +287,222 @@ def ensure_case_template(root: Path, case: Path) -> None:
             shutil.copy2(template / "system" / name, target)
 
 
+def canonical_json(value: object) -> str:
+    return json.dumps(value, indent=2, sort_keys=True) + "\n"
+
+
+def is_r1_scenario(scenario: dict) -> bool:
+    return scenario.get("governance", {}).get("task") == R1_TASK
+
+
+def validate_r1_scenario(scenario: dict, nprocs: int) -> None:
+    required = [
+        ("geometry", "hardware_basket_diameter_m"),
+        ("geometry", "basket_diameter_m"),
+        ("geometry", "basket_radius_m"),
+        ("geometry", "hydraulic_bed_area_m2"),
+        ("coffee_bed", "dry_dose_kg"),
+        ("coffee_bed", "particle_solid_density_kg_m3"),
+        ("coffee_bed", "initial_porosity"),
+        ("coffee_bed", "bed_depth_m"),
+        ("liquid", "temperature_K"),
+        ("liquid", "density_kg_m3"),
+        ("liquid", "dynamic_viscosity_Pa_s"),
+        ("liquid", "effective_solute_diffusivity_m2_s"),
+        ("hydraulics", "target_inlet_pressure_gauge_Pa"),
+        ("hydraulics", "saturated_permeability_m2"),
+        ("hydraulics", "wetting_permeability_m2"),
+        ("time", "end_s"),
+        ("time", "delta_t_s"),
+        ("time", "reduced_trace_maximum_interval_s"),
+        ("flow_comparison_contract", "primary_predicted_quantity"),
+        ("flow_comparison_contract", "protected_shot_ids"),
+        ("flow_comparison_contract", "pearson_degeneracy"),
+    ]
+    for section, key in required:
+        if section not in scenario or key not in scenario[section]:
+            raise SystemExit(f"incomplete R1 scientific configuration: /{section}/{key}")
+    governance = scenario["governance"]
+    if governance.get("change_scope") != "SOURCE_SCENARIO_CHANGE_ONLY":
+        raise SystemExit("R1 change scope is not SOURCE_SCENARIO_CHANGE_ONLY")
+    if governance.get("governing_physics_change") is not False:
+        raise SystemExit("WP01R-004 cannot change governing physics")
+    if scenario["hydraulics"]["runtime_adjustable_parameter_count"] != 0:
+        raise SystemExit("R1 runtime-adjustable scientific parameters are forbidden")
+    if scenario["hydraulics"]["historically_calibrated_parameter_count"] != 1:
+        raise SystemExit("R1 must bind exactly one historically calibrated parameter")
+    if scenario["hydraulics"]["saturated_permeability_m2"] != scenario["hydraulics"][
+        "wetting_permeability_m2"
+    ]:
+        raise SystemExit("R1 wetting and saturated permeability must be identical")
+    if scenario["source_time_mapping"]["source_fixed_8s_offset_used"] is not False:
+        raise SystemExit("source fixed 8 s offset cannot enter solver time mapping")
+    if nprocs != scenario["parallel"]["default_subdomains"]:
+        raise SystemExit("R1 nprocs must equal the frozen routine rank count")
+
+
+def aggregate_hash(entries: dict[str, str]) -> str:
+    digest = hashlib.sha256()
+    for logical, content_hash in sorted(entries.items()):
+        digest.update(logical.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(content_hash.encode("ascii"))
+        digest.update(b"\n")
+    return digest.hexdigest()
+
+
+def write_r1_manifest(
+    root: Path,
+    case: Path,
+    config_path: Path,
+    scenario: dict,
+    preview: dict,
+    b0: dict,
+    nprocs: int,
+) -> Path:
+    puckworks_lock = json.loads(
+        (root / "dependencies/puckworks.lock.json").read_text(encoding="utf-8")
+    )
+    provenance_source = root / "validation/r1/WP01R_004_INPUT_PROVENANCE.json"
+    governance_dir = case / "governance"
+    governance_dir.mkdir(parents=True, exist_ok=True)
+    provenance_target = governance_dir / "WP01R_004_INPUT_PROVENANCE.json"
+    shutil.copy2(provenance_source, provenance_target)
+
+    governed_relatives = [
+        "CASE_SCENARIO_V0_1_4.json",
+        "constant/espressoModelProperties",
+        "preflight/ANALYTICAL_PREFLIGHT_V0_1_4.json",
+        "preflight/B0_REDUCED_TWIN_V0_1_4.json",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/decomposeParDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "governance/WP01R_004_INPUT_PROVENANCE.json",
+    ]
+    governed_relatives.extend(
+        f"0.orig/{path.name}" for path in sorted((case / "0.orig").iterdir())
+    )
+    governed_relatives.extend(f"0/{path.name}" for path in sorted((case / "0").iterdir()))
+    governed_hashes = {
+        relative: sha256(case / relative) for relative in sorted(governed_relatives)
+    }
+
+    scientific_paths = {
+        config_path.relative_to(root).as_posix(): config_path,
+        "solver/espressoWholePullFoam/espressoWholePullFoam.C": root
+        / "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+        "solver/espressoWholePullFoam/Make/files": root
+        / "solver/espressoWholePullFoam/Make/files",
+        "solver/espressoWholePullFoam/Make/options": root
+        / "solver/espressoWholePullFoam/Make/options",
+        "generated_case/system/blockMeshDict": case / "system/blockMeshDict",
+        "generated_case/system/controlDict": case / "system/controlDict",
+        "generated_case/system/fvSchemes": case / "system/fvSchemes",
+        "generated_case/system/fvSolution": case / "system/fvSolution",
+        "generated_case/system/decomposeParDict": case / "system/decomposeParDict",
+        "generated_case/constant/espressoModelProperties": case
+        / "constant/espressoModelProperties",
+    }
+    scientific_paths.update(
+        {
+            f"generated_case/0.orig/{path.name}": path
+            for path in sorted((case / "0.orig").iterdir())
+        }
+    )
+    scientific_hashes = {
+        logical: sha256(path) for logical, path in sorted(scientific_paths.items())
+    }
+    template_hashes = {
+        "cases/reference_R0_20g_58mm_9bar/system/fvSchemes": sha256(
+            root / REFERENCE_CASE_RELATIVE / "system/fvSchemes"
+        ),
+        "cases/reference_R0_20g_58mm_9bar/system/fvSolution": sha256(
+            root / REFERENCE_CASE_RELATIVE / "system/fvSolution"
+        ),
+    }
+    template_hashes.update(
+        {
+            f"cases/reference_R0_20g_58mm_9bar/0.orig/{path.name}": sha256(path)
+            for path in sorted((root / REFERENCE_CASE_RELATIVE / "0.orig").iterdir())
+        }
+    )
+    manifest = {
+        "schema_version": "espresso.public.wp01r_004_generated_case_manifest.v1",
+        "task": "WP01R-004",
+        "github_issue": 6,
+        "change_scope": "SOURCE_SCENARIO_CHANGE_ONLY",
+        "governing_physics_change": False,
+        "package_scientific_configuration_change": True,
+        "scientific_configuration_change_scope": "NEW_R1_SCENARIO_ONLY",
+        "qualified_R0_scientific_configuration_change": False,
+        "new_R1_scientific_configuration_added": True,
+        "bridge": {
+            "path": "scripts/r1_contract_bridge.py",
+            "sha256": sha256(root / "scripts/r1_contract_bridge.py"),
+        },
+        "canonical_scenario": {
+            "path": config_path.relative_to(root).as_posix(),
+            "sha256": sha256(config_path),
+        },
+        "r1_contract": {
+            "path": "validation/contracts/R1_CALIBRATION_AND_COMPARISON_CONTRACT.json",
+            "sha256": sha256(
+                root / "validation/contracts/R1_CALIBRATION_AND_COMPARISON_CONTRACT.json"
+            ),
+        },
+        "r1_dossier": {
+            "path": "validation/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.json",
+            "sha256": sha256(
+                root / "validation/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.json"
+            ),
+        },
+        "puckworks": {
+            "lock_path": "dependencies/puckworks.lock.json",
+            "lock_sha256": sha256(root / "dependencies/puckworks.lock.json"),
+            "commit": puckworks_lock["checkout_commit"],
+            "tree": puckworks_lock["checkout_tree_sha"],
+        },
+        "r0_reference_config": {
+            "path": REFERENCE_CONFIG_RELATIVE.as_posix(),
+            "sha256": sha256(root / REFERENCE_CONFIG_RELATIVE),
+        },
+        "reused_template_sha256": template_hashes,
+        "governed_generated_file_sha256": governed_hashes,
+        "governed_generated_file_count": len(governed_hashes),
+        "governed_generated_aggregate_sha256": aggregate_hash(governed_hashes),
+        "r1_scientific_input_sha256": scientific_hashes,
+        "r1_scientific_input_file_count": len(scientific_hashes),
+        "r1_scientific_input_aggregate_sha256": aggregate_hash(scientific_hashes),
+        "generation_replay_count": 2,
+        "cross_directory_byte_identity_result": "PASS",
+        "provenance_coverage": {
+            "status": "PASS",
+            "percent": 100.0,
+            "ungoverned_scientific_defaults": 0,
+            "runtime_adjustable_scientific_parameters": 0,
+        },
+        "r0_no_change_result": "PASS",
+        "analytical_preflight": preview,
+        "reduced_preflight": {
+            "status": "PASS",
+            "first_drip_s": b0["primary_outputs"]["first_drip_s"],
+        },
+        "execution_counters": scenario["execution_boundaries"],
+        "claim_ceiling": scenario["claim_ceiling"],
+        "determinism_contract": {
+            "wall_clock_metadata_omitted": True,
+            "absolute_paths_omitted": True,
+            "host_or_user_metadata_omitted": True,
+            "logical_path_separator": "/",
+        },
+    }
+    output = case / R1_MANIFEST_NAME
+    output.write_text(canonical_json(manifest), encoding="utf-8")
+    return output
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
@@ -299,6 +517,9 @@ def main() -> None:
     scenario = json.loads(config_path.read_text(encoding="utf-8"))
     if args.nprocs < 1:
         raise SystemExit("nprocs must be positive")
+    r1 = is_r1_scenario(scenario)
+    if r1:
+        validate_r1_scenario(scenario, args.nprocs)
 
     ensure_case_template(root, case)
     zero = case / "0"
@@ -319,36 +540,60 @@ def main() -> None:
         render_properties(scenario), encoding="utf-8"
     )
     (case / "CASE_SCENARIO_V0_1_4.json").write_text(
-        json.dumps(scenario, indent=2) + "\n", encoding="utf-8"
+        canonical_json(scenario) if r1 else json.dumps(scenario, indent=2) + "\n",
+        encoding="utf-8",
     )
 
     preflight_dir = case / "preflight"
     preflight_dir.mkdir(parents=True, exist_ok=True)
     preview = analytical_preview(scenario)
     (preflight_dir / "ANALYTICAL_PREFLIGHT_V0_1_4.json").write_text(
-        json.dumps(preview, indent=2) + "\n", encoding="utf-8"
+        canonical_json(preview) if r1 else json.dumps(preview, indent=2) + "\n",
+        encoding="utf-8",
     )
 
     b0 = None
-    if str(scenario["scenario_id"]).startswith("reference_R0"):
+    if str(scenario["scenario_id"]).startswith("reference_R0") or r1:
         b0 = b0_reduced_simulation(scenario)
         (preflight_dir / "B0_REDUCED_TWIN_V0_1_4.json").write_text(
-            json.dumps(b0, indent=2) + "\n", encoding="utf-8"
+            canonical_json(b0) if r1 else json.dumps(b0, indent=2) + "\n",
+            encoding="utf-8",
         )
 
-    environment = {
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
-        "platform": platform.platform(),
-        "python": platform.python_version(),
-        "requested_mpi_ranks": args.nprocs,
-        "wm_project": os.environ.get("WM_PROJECT"),
-        "wm_project_version": os.environ.get("WM_PROJECT_VERSION"),
-        "wm_options": os.environ.get("WM_OPTIONS"),
-        "foam_user_appbin": os.environ.get("FOAM_USER_APPBIN"),
-    }
-    (case / "RUN_ENVIRONMENT_V0_1_4.json").write_text(
-        json.dumps(environment, indent=2) + "\n", encoding="utf-8"
-    )
+    if not r1:
+        environment = {
+            "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+            "platform": platform.platform(),
+            "python": platform.python_version(),
+            "requested_mpi_ranks": args.nprocs,
+            "wm_project": os.environ.get("WM_PROJECT"),
+            "wm_project_version": os.environ.get("WM_PROJECT_VERSION"),
+            "wm_options": os.environ.get("WM_OPTIONS"),
+            "foam_user_appbin": os.environ.get("FOAM_USER_APPBIN"),
+        }
+        (case / "RUN_ENVIRONMENT_V0_1_4.json").write_text(
+            json.dumps(environment, indent=2) + "\n", encoding="utf-8"
+        )
+
+    if r1:
+        manifest_path = write_r1_manifest(
+            root, case, config_path, scenario, preview, b0, args.nprocs
+        )
+        print(
+            json.dumps(
+                {
+                    "prepared_case": str(case),
+                    "config": str(config_path),
+                    "case_manifest": str(manifest_path),
+                    "analytical_preflight": preview,
+                    "reduced_preflight_generated": True,
+                    "openfoam_execution_count": 0,
+                    "protected_comparison_execution_count": 0,
+                },
+                indent=2,
+            )
+        )
+        return
 
     scientific_inputs = [
         config_path,

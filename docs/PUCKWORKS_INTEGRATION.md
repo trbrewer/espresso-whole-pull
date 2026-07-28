@@ -32,3 +32,11 @@ It freezes one active calibration degree of freedom (uniform permeability)
 and five protected per-shot flow shapes. Chemistry is unprotected, and no
 poroelastic closure is implemented. Once approved and merged, issue #6 may
 implement the deterministic bridge and R1 case generator.
+
+WP01R-004 implements that deterministic bridge:
+`python3 scripts/r1_contract_bridge.py --root . --output
+config/reconstruction_R1_waszkiewicz_9bar.json --check`. The governed outputs
+are the [canonical scenario](../config/reconstruction_R1_waszkiewicz_9bar.json),
+[input provenance](../validation/r1/WP01R_004_INPUT_PROVENANCE.json), and
+[generated-case manifest](../validation/r1/WP01R_004_GENERATED_CASE_MANIFEST.json).
+No Puckworks code or protected series is copied or executed.
