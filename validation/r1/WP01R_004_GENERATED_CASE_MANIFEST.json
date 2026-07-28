@@ -5,8 +5,8 @@
     "model": "closed_form_and_reduced_preflight_not_an_openfoam_result",
     "nominal_cylinder_volume_m3": 2.4630086404143978e-05,
     "notes": [
-      "The permeability is the declared R0 hydraulic calibration parameter.",
-      "The preview does not establish physical validation."
+      "The R1 uniform permeability is the frozen WP01R-003 source-linked deterministic analytical inversion.",
+      "It was not fitted to OpenFOAM output, is not adjustable during generation or execution, and does not establish physical validation."
     ],
     "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
     "saturated_pore_water_mass_kg": 0.011016247665713227,
@@ -23,9 +23,13 @@
     "path": "config/reconstruction_R1_waszkiewicz_9bar.json",
     "sha256": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876"
   },
+  "case_generation": {
+    "cross_directory_byte_identity_result": "NOT_PERFORMED_IN_THIS_INVOCATION",
+    "cross_directory_comparison_performed": false,
+    "generation_invocation_count": 1
+  },
   "change_scope": "SOURCE_SCENARIO_CHANGE_ONLY",
   "claim_ceiling": "WP-0.1R is a source-linked, within-campaign reconstruction test of the existing numerically qualified sharp-front wetting and uniform-Darcy architecture for one Waszkiewicz rig condition. Its static hydraulic scale is calibrated from the source equilibrium relation, while five normalized per-shot flow shapes are reserved for predeclared comparison. It may identify model-form residuals, but it does not establish independent physical validation, transfer, poroelastic validation, chemistry validation, or taste prediction.",
-  "cross_directory_byte_identity_result": "PASS",
   "determinism_contract": {
     "absolute_paths_omitted": true,
     "host_or_user_metadata_omitted": true,
@@ -42,9 +46,16 @@
     "reduced_preflight_execution_count": 1,
     "scientific_result_status": "NOT_RUN"
   },
-  "generation_replay_count": 2,
+  "generator_determinism_qualification": {
+    "cross_directory_byte_identity_result": "PASS",
+    "qualification_kind": "WP01R_004_TWO_DIRECTORY_REPLAY",
+    "qualification_test": "tests/test_r1_bridge.py::R1BridgeTests::test_two_generations_have_identical_governed_bytes",
+    "qualified_generator_path": "scripts/prepare_case.py",
+    "qualified_generator_sha256": "0f72d9efd382b9d1d7d8cece1c011324123007293bc0bbebf98d9bee14e9427d",
+    "replay_count": 2
+  },
   "github_issue": 6,
-  "governed_generated_aggregate_sha256": "f4d65f42a68fcb80c15c43d352757dfd18879d5ebf81139ae1e0a4592efc8774",
+  "governed_generated_aggregate_sha256": "ea9bac2eea43e11ca3751cc73fb170f26fdbb6d8467440cf2ee5af258888e0ff",
   "governed_generated_file_count": 28,
   "governed_generated_file_sha256": {
     "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
@@ -68,7 +79,7 @@
     "CASE_SCENARIO_V0_1_4.json": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876",
     "constant/espressoModelProperties": "112f58af92d835772ca05f29a82e615cbea91f0386d7d49c990f6bd08a496bc9",
     "governance/WP01R_004_INPUT_PROVENANCE.json": "27b8710e96a23a8a2c60405562ea5977e37847bde1d0d53d70153ccbd677e455",
-    "preflight/ANALYTICAL_PREFLIGHT_V0_1_4.json": "f15f118095923fc2f4d991e6dedd25dba7ad0de1c0d29e55198e5147711b5d47",
+    "preflight/ANALYTICAL_PREFLIGHT_V0_1_4.json": "9f373ee7551c11f4d259d4fe707c97a769becc9555eb651c7cdf824176e58ece",
     "preflight/B0_REDUCED_TWIN_V0_1_4.json": "2d95fe527d78a9149a66d1609a33f5b3fcfa27bdc3b044a3de5a3a3a21fb13a0",
     "system/blockMeshDict": "d967125d29533b59021bab42b413e09987f31ed5420560f7bb6c97e9f66294bf",
     "system/controlDict": "969abd009a28317fcf0f8883f7ac5b9b977bf3ac5b6c841e238057d71c3ba187",

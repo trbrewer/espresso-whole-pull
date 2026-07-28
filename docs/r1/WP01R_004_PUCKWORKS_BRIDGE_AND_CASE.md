@@ -35,6 +35,13 @@ python3 scripts/prepare_case.py \
   --nprocs 32
 ```
 
+The R1 command requires the exact bridge-generated canonical configuration
+and an explicit fresh target. The target must not exist or must be an ordinary
+empty directory; symlinks and nonempty targets are rejected before mutation.
+Regeneration therefore requires removing the old target or choosing a new one.
+All R1 scientific fields, probes, selectors, thresholds, and dictionary inputs
+are required explicitly. The R1 renderer has zero scientific fallbacks.
+
 The generated case contains canonical scenario JSON, `blockMeshDict`,
 `controlDict`, `decomposeParDict`, `espressoModelProperties`, byte-exact
 qualified `fvSchemes`, `fvSolution`, `0.orig`, initialized `0`, analytical and
@@ -65,12 +72,18 @@ no protected numerical series is embedded or compared.
 Two unrelated target directories produce identical governed file sets,
 individual bytes, and aggregate identities. The generated manifest uses
 logical paths, sorted traversal, SHA-256 hashes, canonical JSON, and no
-environment metadata.
+environment metadata. Each case-local manifest truthfully records one
+generation invocation and no cross-directory comparison in that invocation.
+A separate qualification section binds the exact generator source hash to the
+real two-directory replay test and its passing result.
 
 Solver C++, reference mathematics, R0 configuration, qualified case templates,
 baseline evidence, and the 19-file R0 scientific-input bundle remain
 unchanged. Analytical and reduced preflights verify configuration only; they
-are not OpenFOAM or physical results.
+are not OpenFOAM or physical results. The R1 analytical preflight identifies
+uniform permeability as the frozen WP01R-003 source-linked deterministic
+analytical inversion: it was not fitted to OpenFOAM output, is not adjustable
+during generation or execution, and does not establish physical validation.
 
 WP01R-004 performs no fitting, optimization, OpenFOAM command, Puckworks code
 execution, or protected comparison. After review and merge, issue #7 may run

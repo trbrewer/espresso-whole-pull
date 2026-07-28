@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 import shutil
 import subprocess
@@ -13,6 +14,13 @@ ROOT = Path(__file__).resolve().parents[1]
 SCENARIO = ROOT / "config/reconstruction_R1_waszkiewicz_9bar.json"
 PROVENANCE = ROOT / "validation/r1/WP01R_004_INPUT_PROVENANCE.json"
 MANIFEST = ROOT / "validation/r1/WP01R_004_GENERATED_CASE_MANIFEST.json"
+
+SPEC = importlib.util.spec_from_file_location(
+    "prepare_case_for_r1_tests", ROOT / "scripts/prepare_case.py"
+)
+assert SPEC and SPEC.loader
+PREPARE_CASE = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(PREPARE_CASE)
 
 
 def load(path: Path) -> dict:
@@ -260,6 +268,154 @@ class R1BridgeTests(unittest.TestCase):
         self.assertNotIn("generated_at", text)
         self.assertNotIn("timestamp", text.lower())
         self.assertFalse((self.case_a / "RUN_ENVIRONMENT_V0_1_4.json").exists())
+        generation = manifest_a["case_generation"]
+        self.assertEqual(generation["generation_invocation_count"], 1)
+        self.assertFalse(generation["cross_directory_comparison_performed"])
+        self.assertEqual(
+            generation["cross_directory_byte_identity_result"],
+            "NOT_PERFORMED_IN_THIS_INVOCATION",
+        )
+        qualification = manifest_a["generator_determinism_qualification"]
+        self.assertEqual(qualification["replay_count"], 2)
+        self.assertEqual(
+            qualification["cross_directory_byte_identity_result"], "PASS"
+        )
+        self.assertEqual(
+            qualification["qualified_generator_sha256"],
+            sha256(ROOT / "scripts/prepare_case.py"),
+        )
+        self.assertIn(
+            "test_two_generations_have_identical_governed_bytes",
+            qualification["qualification_test"],
+        )
+
+    def test_r1_requires_explicit_case_dir_without_touching_r0(self) -> None:
+        reference = ROOT / "cases/reference_R0_20g_58mm_9bar"
+        before = {
+            path.relative_to(reference).as_posix(): sha256(path)
+            for path in reference.rglob("*")
+            if path.is_file()
+        }
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / "scripts/prepare_case.py"),
+                "--root",
+                str(ROOT),
+                "--config",
+                str(SCENARIO),
+                "--nprocs",
+                "32",
+            ],
+            capture_output=True,
+            text=True,
+            env={"PYTHONDONTWRITEBYTECODE": "1"},
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("requires explicit --case-dir", result.stderr)
+        after = {
+            path.relative_to(reference).as_posix(): sha256(path)
+            for path in reference.rglob("*")
+            if path.is_file()
+        }
+        self.assertEqual(before, after)
+
+    def test_r1_rejects_nonempty_stale_and_symlink_targets_before_mutation(self) -> None:
+        stale_names = (
+            "ordinary-file",
+            "constant/polyMesh/points",
+            "processor0/U",
+            "postProcessing/flow/0.dat",
+            "12/U",
+        )
+        for index, relative in enumerate(stale_names):
+            target = self.temp_root / f"stale-{index}"
+            stale = target / relative
+            stale.parent.mkdir(parents=True)
+            stale.write_text("unchanged\n", encoding="utf-8")
+            before = {
+                path.relative_to(target).as_posix(): path.read_bytes()
+                for path in target.rglob("*")
+                if path.is_file()
+            }
+            result = self._run_prepare(target)
+            self.assertNotEqual(result.returncode, 0, relative)
+            after = {
+                path.relative_to(target).as_posix(): path.read_bytes()
+                for path in target.rglob("*")
+                if path.is_file()
+            }
+            self.assertEqual(before, after, relative)
+        empty = self.temp_root / "empty-target"
+        empty.mkdir()
+        self.assertEqual(self._run_prepare(empty).returncode, 0)
+        link = self.temp_root / "case-link"
+        link.symlink_to(self.case_a, target_is_directory=True)
+        result = self._run_prepare(link)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("symlink", result.stderr)
+
+    def test_only_exact_canonical_scenario_is_accepted(self) -> None:
+        copied = self.temp_root / "copied-scenario.json"
+        copied.write_bytes(SCENARIO.read_bytes())
+        result = self._run_prepare(
+            self.temp_root / "copied-case", config=copied
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("exact canonical config", result.stderr)
+        altered = load(SCENARIO)
+        altered["hydraulics"]["target_inlet_pressure_gauge_Pa"] += 1.0
+        altered_path = self.temp_root / "altered-scenario.json"
+        altered_path.write_text(json.dumps(altered), encoding="utf-8")
+        result = self._run_prepare(
+            self.temp_root / "altered-case", config=altered_path
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(self._run_prepare(self.temp_root / "canonical-case").returncode, 0)
+
+    def test_r1_missing_scientific_fields_fail_closed(self) -> None:
+        removals = (
+            ("hydraulics", "permeability_profile", "interface_position_m"),
+            ("verification", "pressure_probes"),
+            ("output", "write_format"),
+            ("wetting", "initial_wet_front_m"),
+        )
+        for path in removals:
+            scenario = json.loads(json.dumps(self.scenario))
+            target = scenario
+            for key in path[:-1]:
+                target = target[key]
+            del target[path[-1]]
+            with self.assertRaises(SystemExit, msg="/".join(path)):
+                PREPARE_CASE.validate_r1_scenario(scenario, 32)
+
+    def test_r1_analytical_note_is_source_linked_not_r0_calibration(self) -> None:
+        preview = load(self.case_a / "preflight/ANALYTICAL_PREFLIGHT_V0_1_4.json")
+        notes = " ".join(preview["notes"])
+        self.assertIn("source-linked deterministic analytical inversion", notes)
+        self.assertIn("not adjustable", notes)
+        self.assertNotIn("declared R0 hydraulic calibration parameter", notes)
+
+    def _run_prepare(
+        self, target: Path, *, config: Path = SCENARIO
+    ) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / "scripts/prepare_case.py"),
+                "--root",
+                str(ROOT),
+                "--config",
+                str(config),
+                "--case-dir",
+                str(target),
+                "--nprocs",
+                "32",
+            ],
+            capture_output=True,
+            text=True,
+            env={"PYTHONDONTWRITEBYTECODE": "1"},
+        )
 
     def test_qualified_templates_and_r0_sources_are_unchanged(self) -> None:
         reference = ROOT / "cases/reference_R0_20g_58mm_9bar"
