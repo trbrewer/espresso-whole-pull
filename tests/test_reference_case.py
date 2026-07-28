@@ -5,6 +5,7 @@ import importlib.util
 import json
 import math
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -847,6 +848,82 @@ class ScriptIntegrationTests(unittest.TestCase):
         gates = aggregate_standard(results)
         self.assertTrue(gates)
         self.assertTrue(all(item["status"] == "PASS" for item in gates.values()))
+
+
+class PublicSourceManifestPortabilityTests(unittest.TestCase):
+    def copy_repository(self, destination: Path) -> None:
+        shutil.copytree(
+            ROOT,
+            destination,
+            ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "preflight"),
+        )
+
+    def verify(self, root: Path) -> subprocess.CompletedProcess[str]:
+        environment = dict(os.environ)
+        environment["PYTHONDONTWRITEBYTECODE"] = "1"
+        return subprocess.run(
+            [
+                sys.executable,
+                str(root / "scripts/verify_source_manifest.py"),
+                "--root",
+                str(root),
+            ],
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            env=environment,
+        )
+
+    def test_regular_file_group_write_bits_do_not_change_git_mode(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td) / "repo"
+            self.copy_repository(root)
+            readme = root / "README.md"
+            readme.chmod(0o644)
+            first = self.verify(root)
+            self.assertEqual(first.returncode, 0, first.stdout)
+            readme.chmod(0o664)
+            second = self.verify(root)
+            self.assertEqual(second.returncode, 0, second.stdout)
+
+    def test_actual_executable_bit_change_is_detected(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td) / "repo"
+            self.copy_repository(root)
+            (root / "README.md").chmod(0o755)
+            result = self.verify(root)
+            self.assertNotEqual(result.returncode, 0, result.stdout)
+            self.assertIn("metadata_mismatch", result.stdout)
+
+    def test_content_change_is_detected(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td) / "repo"
+            self.copy_repository(root)
+            with (root / "README.md").open("a", encoding="utf-8") as stream:
+                stream.write("\nchanged\n")
+            result = self.verify(root)
+            self.assertNotEqual(result.returncode, 0, result.stdout)
+            self.assertIn("metadata_mismatch", result.stdout)
+
+    def test_missing_manifest_path_is_detected(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td) / "repo"
+            self.copy_repository(root)
+            (root / "README.md").unlink()
+            result = self.verify(root)
+            self.assertNotEqual(result.returncode, 0, result.stdout)
+            self.assertIn("manifested_source_file_missing", result.stdout)
+
+    def test_additional_source_path_is_detected(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td) / "repo"
+            self.copy_repository(root)
+            (root / "UNEXPECTED_SOURCE_FILE.txt").write_text(
+                "unexpected\n", encoding="utf-8"
+            )
+            result = self.verify(root)
+            self.assertNotEqual(result.returncode, 0, result.stdout)
+            self.assertIn("unmanifested_source_file", result.stdout)
 
 
 if __name__ == "__main__":

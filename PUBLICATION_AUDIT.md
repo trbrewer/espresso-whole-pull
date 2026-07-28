@@ -7,13 +7,19 @@ Mandatory technical publication gates pass. Human review remains required for le
 ## Identity and scientific gates
 
 - Public source verification: 106/106 PASS
-- Current public aggregate: `7aa09c0846608945a480cc54e610d62eb0becfc7e01a073f5ad0186315aebf2b`
+- Current public aggregate: `ad6f9b84e69b6178d77f867a085198908dcda4afe2360ec840824faadc793267`
 - Archival aggregate: `182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e`
 - Scientific inputs: 19/19 byte-identical; aggregate `d70399a76b0023d93985d76c1c83a9a42b7148b3d71d16d1b5f88275be1ebe7a`
 - No-physics contract: 28/28 PASS; governing-physics change `false`
 - Scientific-configuration change: `false`
 - Static validation: 32/32 PASS
-- Python tests: 36/36 PASS
+- Python tests: 41/41 PASS
+- Git-mode portability: PASS across non-executable `0644` and `0664`
+  layouts; executable-bit, content, missing-path, and added-path changes are
+  detected.
+- Candidate reachable Git history: PASS (3 commits, 1 provenance tag, 132
+  unique blobs, 1,415,116 reachable blob bytes including the staged final
+  correction tree).
 
 ## Publication-boundary scans
 
@@ -41,7 +47,10 @@ License disposition: **PASS with HUMAN_REVIEW_REQUIRED**.
 
 The custom solver declares GPL-3.0-or-later and the repository includes the GPLv3 text. Puckworks is external and MIT-licensed. No Puckworks code/data, third-party binary, archived executable, paper text, or restricted dataset was identified.
 
-Only the main solver source presently carries an SPDX header. Human review should confirm authorship and rights for all legacy scripts, tests, documentation, and sanitized evidence before publication. This automated audit is not legal advice.
+Only the main solver source presently carries an SPDX header. Publication
+remains `HUMAN_CONFIRMATION_REQUIRED` until Tim Brewer explicitly confirms the
+rights statement in the authorship attestation. This automated audit is not
+legal advice.
 
 ## GitHub check
 

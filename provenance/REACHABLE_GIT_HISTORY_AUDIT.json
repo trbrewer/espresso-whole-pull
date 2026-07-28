@@ -1,0 +1,40 @@
+{
+  "schema_version": "espresso.public.reachable_git_history_audit.v1",
+  "status": "PASS",
+  "scope": "every object reachable from all local branches, tags, and Git-note refs",
+  "scanned_refs": [
+    "refs/heads/main",
+    "refs/tags/v0.1.4-public-source"
+  ],
+  "branch_count": 1,
+  "tag_count": 1,
+  "note_ref_count": 0,
+  "commit_count": 3,
+  "blob_count": 132,
+  "total_reachable_blob_bytes": 1415116,
+  "pattern_occurrence_counts": {
+    "private_home_path": 0,
+    "private_hostname": 0,
+    "absolute_home_path": 0,
+    "private_workspace_name": 0,
+    "personal_email_in_blob_content": 0,
+    "private_key": 0,
+    "github_token": 0,
+    "cloud_credential": 0,
+    "password_assignment": 0
+  },
+  "generated_openfoam_path_findings": 0,
+  "largest_blob_bytes": 123244,
+  "oversized_blob_findings": 0,
+  "approved_git_metadata_identity": {
+    "name": "Tim Brewer",
+    "email_role": "explicitly approved public author, committer, and tagger metadata",
+    "email_present_in_repository_file_content": false
+  },
+  "gitleaks": {
+    "status": "NOT_RUN",
+    "reason": "gitleaks is not installed; explicit regex and exact-token scans were used"
+  },
+  "governing_physics_change": false,
+  "scientific_configuration_change": false
+}

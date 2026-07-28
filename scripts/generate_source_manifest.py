@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable
@@ -15,10 +16,13 @@ PUBLIC_METADATA_TOP_LEVEL = {
     ".gitattributes",
     ".gitignore",
     "AGENTS.md",
+    "AUTHORS.md",
     "CITATION.cff",
     "CLAUDE.md",
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
+    "FINAL_PUBLICATION_REVIEW_SUMMARY.json",
+    "FINAL_PUBLICATION_REVIEW_SUMMARY.md",
     "NOTICE.md",
     "PUBLICATION_AUDIT.json",
     "PUBLICATION_AUDIT.md",
@@ -46,12 +50,34 @@ PUBLIC_DOCUMENTATION_PATHS = {
 }
 
 
+def content_bytes(path: Path) -> bytes:
+    if path.is_symlink():
+        return os.readlink(path).encode("utf-8")
+    return path.read_bytes()
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
+    digest.update(content_bytes(path))
     return digest.hexdigest()
+
+
+def git_mode(path: Path) -> str:
+    if path.is_symlink():
+        return "120000"
+    return "100755" if path.stat().st_mode & 0o111 else "100644"
+
+
+def source_metadata(path: Path) -> Dict[str, object]:
+    data = content_bytes(path)
+    metadata: Dict[str, object] = {
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "bytes": len(data),
+        "git_mode": git_mode(path),
+    }
+    if path.is_symlink():
+        metadata["symlink_target"] = os.readlink(path)
+    return metadata
 
 
 def excluded(relative: Path) -> bool:
@@ -115,7 +141,7 @@ def excluded(relative: Path) -> bool:
 
 def source_files(root: Path) -> Iterable[Path]:
     for path in sorted(root.rglob("*")):
-        if path.is_file() and not excluded(path.relative_to(root)):
+        if (path.is_file() or path.is_symlink()) and not excluded(path.relative_to(root)):
             yield path
 
 
@@ -125,7 +151,7 @@ def aggregate(entries: Dict[str, Dict[str, object]]) -> str:
         digest.update(
             (
                 f"{relative}\0{metadata['sha256']}\0{metadata['bytes']}\0"
-                f"{metadata['mode']}\n"
+                f"{metadata['git_mode']}\n"
             ).encode("utf-8")
         )
     return digest.hexdigest()
@@ -141,13 +167,8 @@ def main() -> None:
     total = 0
     for path in source_files(root):
         relative = path.relative_to(root).as_posix()
-        size = path.stat().st_size
-        total += size
-        files[relative] = {
-            "sha256": sha256(path),
-            "bytes": size,
-            "mode": format(path.stat().st_mode & 0o777, "04o"),
-        }
+        files[relative] = source_metadata(path)
+        total += int(files[relative]["bytes"])
 
     strategy = root / STRATEGY_RELATIVE
     if not strategy.is_file():
@@ -165,6 +186,7 @@ def main() -> None:
         "governing_physics_change": False,
         "scientific_configuration_change": False,
         "source_manifest_self_excluded": True,
+        "mode_contract": "canonical Git object modes: 100644, 100755, or 120000",
         "excluded_runtime_patterns": [
             "__pycache__/ and *.pyc",
             "qualification/ and qualification_runs/ runtime products",

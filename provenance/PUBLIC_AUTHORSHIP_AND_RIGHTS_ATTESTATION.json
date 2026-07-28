@@ -1,0 +1,18 @@
+{
+  "schema_version": "espresso.public.authorship_rights_attestation.v1",
+  "status": "HUMAN_CONFIRMATION_REQUIRED",
+  "owner": "Tim Brewer",
+  "confirmed": false,
+  "confirmation_date": null,
+  "required_statement": {
+    "entitled_to_publish_original_project_files_under_gpl_3_0_or_later": null,
+    "no_unacknowledged_third_party_source_restricted_data_paper_text_binary_or_confidential_material": null,
+    "openfoam_linked_or_derived_portions_gpl_compatible_and_notices_retained": null,
+    "puckworks_external_mit_dependency_not_vendored": true,
+    "ai_assistance_disclosed_where_applicable": true,
+    "automated_audit_claimed_as_legal_advice": false,
+    "uncertain_provenance_listed_explicitly": true
+  },
+  "uncertain_provenance": [],
+  "publication_blocked_pending_human_confirmation": true
+}

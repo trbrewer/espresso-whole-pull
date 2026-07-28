@@ -3,7 +3,7 @@
   "overall_disposition": "PASS_WITH_HUMAN_REVIEW_REQUIRED",
   "checks": {
     "source_verification": {"status": "PASS", "checked": 106, "total": 106},
-    "current_public_aggregate_source_sha256": "7aa09c0846608945a480cc54e610d62eb0becfc7e01a073f5ad0186315aebf2b",
+    "current_public_aggregate_source_sha256": "ad6f9b84e69b6178d77f867a085198908dcda4afe2360ec840824faadc793267",
     "archival_aggregate_source_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
     "scientific_inputs": {
       "status": "PASS",
@@ -19,14 +19,22 @@
     },
     "scientific_configuration_change": false,
     "static_validation": {"status": "PASS", "passed": 32, "total": 32},
-    "python_tests": {"status": "PASS", "passed": 36, "total": 36},
+    "python_tests": {"status": "PASS", "passed": 41, "total": 41},
     "shell_syntax": "PASS",
     "json_parsing": "PASS",
     "yaml_cff_parsing": "PASS",
     "markdown_local_links": "PASS",
     "private_public_boundary": "PASS",
     "generated_openfoam_product_scan": "PASS",
-    "large_file_scan": "PASS"
+    "large_file_scan": "PASS",
+    "git_mode_portability": "PASS",
+    "reachable_git_history_audit": {
+      "status": "PASS",
+      "commit_count": 3,
+      "tag_count": 1,
+      "blob_count": 132,
+      "total_reachable_blob_bytes": 1415116
+    }
   },
   "findings": {
     "private_home_path_token_occurrences": 0,
@@ -52,7 +60,8 @@
     "puckworks_material_vendored": false,
     "source_files_sampled_for_headers": 22,
     "files_with_spdx_header": 1,
-    "automated_audit_is_legal_advice": false
+    "automated_audit_is_legal_advice": false,
+    "human_rights_attestation": "HUMAN_CONFIRMATION_REQUIRED"
   },
   "tooling_limitations": [
     "gitleaks was not installed; explicit regex secret scanning was used.",

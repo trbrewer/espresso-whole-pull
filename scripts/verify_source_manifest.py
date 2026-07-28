@@ -7,15 +7,7 @@ import json
 from pathlib import Path
 from typing import Dict
 
-from generate_source_manifest import excluded
-
-
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+from generate_source_manifest import excluded, source_metadata
 
 
 def aggregate(entries: Dict[str, Dict[str, object]]) -> str:
@@ -24,7 +16,7 @@ def aggregate(entries: Dict[str, Dict[str, object]]) -> str:
         digest.update(
             (
                 f"{relative}\0{metadata['sha256']}\0{metadata['bytes']}\0"
-                f"{metadata['mode']}\n"
+                f"{metadata['git_mode']}\n"
             ).encode("utf-8")
         )
     return digest.hexdigest()
@@ -43,7 +35,7 @@ def main() -> None:
     actual_source_paths = {
         path.relative_to(root).as_posix()
         for path in root.rglob("*")
-        if path.is_file() and not excluded(path.relative_to(root))
+        if (path.is_file() or path.is_symlink()) and not excluded(path.relative_to(root))
     }
     for relative in sorted(actual_source_paths - expected_paths):
         failures.append({"path": relative, "issue": "unmanifested_source_file"})
@@ -53,14 +45,10 @@ def main() -> None:
     observed: Dict[str, Dict[str, object]] = {}
     for relative, expected in manifest["files"].items():
         path = root / relative
-        if not path.is_file():
+        if not path.is_file() and not path.is_symlink():
             failures.append({"path": relative, "issue": "missing"})
             continue
-        actual = {
-            "sha256": sha256(path),
-            "bytes": path.stat().st_size,
-            "mode": format(path.stat().st_mode & 0o777, "04o"),
-        }
+        actual = source_metadata(path)
         observed[relative] = actual
         if actual != expected:
             failures.append(

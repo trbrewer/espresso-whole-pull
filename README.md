@@ -1,6 +1,6 @@
 # Espresso Whole-Pull
 
-Multiscale simulation of espresso-puck wetting, porous flow, extraction, and evolving structure, built around OpenFOAM and integrated with Puckworks.
+OpenFOAM-based research solver for espresso-puck wetting, porous flow, extraction, and multiscale integration with Puckworks.
 
 > **Research software:** v0.1.4-public.1 is a sanitized public derivative of a numerically qualified bounded R0 calibration scenario. Physical validation is **NOT_ESTABLISHED**.
 
@@ -9,6 +9,8 @@ The approximately 40 g beverage endpoint at 30 s was used in the saturated-perme
 ## Current scope
 
 The current Foundation OpenFOAM 12 model represents initially dry sharp-front wetting, saturated Darcy flow, one-solute conservative transport and extraction, retained inventories, and cup accumulation.
+
+Evolving structure, fines migration, channeling, thermal coupling, and multispecies chemistry are roadmap capabilities, not implemented or validated capabilities of R0. Taste and transfer across coffees, grinders, baskets, machines, and recipes are not yet predicted.
 
 The frozen archival R0 baseline is `FROZEN / QUALIFIED` at the numerical and provenance levels. The public source is not byte-identical to that offline archive because host and path metadata were sanitized. The 19-file scientific-input bundle and governing physics are unchanged.
 

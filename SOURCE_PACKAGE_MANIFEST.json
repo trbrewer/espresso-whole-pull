@@ -1,6 +1,6 @@
 {
   "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
-  "generated_at_utc": "2026-07-28T12:00:45.595920+00:00",
+  "generated_at_utc": "2026-07-28T12:52:18.761273+00:00",
   "package": "espresso-whole-pull",
   "package_version": "0.1.4",
   "target": "OpenFOAM Foundation 12",
@@ -10,6 +10,7 @@
   "governing_physics_change": false,
   "scientific_configuration_change": false,
   "source_manifest_self_excluded": true,
+  "mode_contract": "canonical Git object modes: 100644, 100755, or 120000",
   "excluded_runtime_patterns": [
     "__pycache__/ and *.pyc",
     "qualification/ and qualification_runs/ runtime products",
@@ -20,541 +21,541 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 106,
-  "total_uncompressed_bytes_excluding_manifest": 988864,
-  "aggregate_source_sha256": "7aa09c0846608945a480cc54e610d62eb0becfc7e01a073f5ad0186315aebf2b",
-  "aggregate_sha256": "7aa09c0846608945a480cc54e610d62eb0becfc7e01a073f5ad0186315aebf2b",
+  "total_uncompressed_bytes_excluding_manifest": 992585,
+  "aggregate_source_sha256": "ad6f9b84e69b6178d77f867a085198908dcda4afe2360ec840824faadc793267",
+  "aggregate_sha256": "ad6f9b84e69b6178d77f867a085198908dcda4afe2360ec840824faadc793267",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md",
   "strategy_source_sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
   "files": {
     "Allclean": {
       "sha256": "0bcb5c9a56e6afd73ea47ab7748eab95466d809cda6c66e93f0225d4ff59341e",
       "bytes": 953,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "Allrun": {
       "sha256": "5a8583dda8d46e2e57f17071b75fe5455c578c36067c7591ffc0927706e61932",
       "bytes": 12738,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "Allverify": {
       "sha256": "23988135d9d04d232e0e3e1cb5e49d5ea804b9d669887ec2999d5251eaa3999e",
       "bytes": 11307,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "Allwmake": {
       "sha256": "e9d2fc873248e4407713bee8e4aff5faf4da27da9aedee93a86e3ae841d1c916",
       "bytes": 3446,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "LICENSE": {
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
       "bytes": 35149,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "PACKAGE_QA_STATUS.json": {
       "sha256": "6022d1a4410c810468c850bb1cc3b8296c4d48cd803384d4513ee7db9676fd86",
       "bytes": 4271,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "53940c3ff6039d26bc8dbb392bf8309a5bc1446be599bb44371279be64abc654",
-      "bytes": 2426,
-      "mode": "0664"
+      "sha256": "984eaa8b279520633eb23fdd475253b23bd50c831219e4522fd761ed60342521",
+      "bytes": 2671,
+      "git_mode": "100644"
     },
     "VERSION": {
       "sha256": "8a3dad16d348c163566a456fcf650d85d7aeeda5e53d01ee1fa8dc15212915a7",
       "bytes": 6,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_2/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_2.json": {
       "sha256": "449bbbd25eb9e3ec6ccd61aba1d7a9b38bea6007e65649bfb58f69f38f1de87f",
       "bytes": 58923,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_NUMERICAL_QUALIFICATION_V0_1_3.json": {
       "sha256": "e928fb6c6553c06c58fb1efb591c2903632074b6e1b7c17cca916b084abd0fc3",
       "bytes": 87161,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_REFERENCE_ACCEPTANCE_V0_1_3.json": {
       "sha256": "ca7a719f501c913e0db371051bdd16fc2337098e5b6a82a367ffcfb482efa0e1",
       "bytes": 12269,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_REFERENCE_CASE_MANIFEST_V0_1_3.json": {
       "sha256": "c3dc1350f1ad5aa26c4df46a80456b2061403063cca254ce90c818af0b1b46cd",
       "bytes": 4481,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_REFERENCE_FIELD_INDEX_V0_1_3.json": {
       "sha256": "0d6e8586ffb5ff666c9b70819c20862de3d9cdc98ff735c895f986712593b371",
       "bytes": 69258,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_3.json": {
       "sha256": "17be485a9cff074e364a76bec4742a95415072657c5031639859941dcdbc987b",
       "bytes": 96549,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/ESPRESSO_WHOLE_PULL_STAGE_TIMINGS_V0_1_3.json": {
       "sha256": "d0d6535365fc4d0337cefc0df4d73db6e008843c37c2dc4fd284569dc1e28073",
       "bytes": 5136,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/Make.files": {
       "sha256": "70aa84e2e2cbd37a9c25217fee498c234816cf41fb57b5f24c41a0e8495f7d83",
       "bytes": 73,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/Make.options": {
       "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
       "bytes": 142,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/espressoWholePullFoam.C": {
       "sha256": "605e2b8d97a699fd24387c358b86ec89405bada682109797cf77e0b2b968cb2f",
       "bytes": 41313,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/espresso_reference_math.py": {
       "sha256": "fb72e697da829a9ff17f8a22d39fce98ca25a49357c044051444122ae2f62af2",
       "bytes": 21794,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_0.orig/U": {
       "sha256": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
       "bytes": 482,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_0.orig/dissolvedConcentration": {
       "sha256": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
       "bytes": 520,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_0.orig/localExtractionRate": {
       "sha256": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
       "bytes": 495,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_0.orig/p": {
       "sha256": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
       "bytes": 523,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_0.orig/permeability": {
       "sha256": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
       "bytes": 493,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_0.orig/porosity": {
       "sha256": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
       "bytes": 484,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_0.orig/remainingExtractable": {
       "sha256": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
       "bytes": 495,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_0.orig/saturation": {
       "sha256": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
       "bytes": 507,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_0.orig/wetMask": {
       "sha256": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
       "bytes": 504,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_system/fvSchemes": {
       "sha256": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
       "bytes": 566,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_case_system/fvSolution": {
       "sha256": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0",
       "bytes": 483,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/fixture_layered_pressure.json": {
       "sha256": "cf79effc16cdecc29985f2b39c26108b6ad7722a641c8f9b8a534f3e87bd435a",
       "bytes": 3508,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_R0.json": {
       "sha256": "f390a4fd150345d8064ee695c3f2c491e75ff8a58b5ec73d675e843d12c8cc31",
       "bytes": 3858,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_0.orig/U": {
       "sha256": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
       "bytes": 482,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_0.orig/dissolvedConcentration": {
       "sha256": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
       "bytes": 520,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_0.orig/localExtractionRate": {
       "sha256": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
       "bytes": 495,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_0.orig/p": {
       "sha256": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
       "bytes": 523,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_0.orig/permeability": {
       "sha256": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
       "bytes": 493,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_0.orig/porosity": {
       "sha256": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
       "bytes": 484,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_0.orig/remainingExtractable": {
       "sha256": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
       "bytes": 495,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_0.orig/saturation": {
       "sha256": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
       "bytes": 507,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_0.orig/wetMask": {
       "sha256": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
       "bytes": 504,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_system/fvSchemes": {
       "sha256": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
       "bytes": 566,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "baseline_evidence/v0_1_3/source_contract/reference_case_system/fvSolution": {
       "sha256": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0",
       "bytes": 483,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/0.orig/U": {
       "sha256": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
       "bytes": 482,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/0.orig/dissolvedConcentration": {
       "sha256": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
       "bytes": 520,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/0.orig/localExtractionRate": {
       "sha256": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
       "bytes": 495,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/0.orig/p": {
       "sha256": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
       "bytes": 523,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/0.orig/permeability": {
       "sha256": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
       "bytes": 493,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/0.orig/porosity": {
       "sha256": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
       "bytes": 484,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/0.orig/remainingExtractable": {
       "sha256": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
       "bytes": 495,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/0.orig/saturation": {
       "sha256": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
       "bytes": 507,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/0.orig/wetMask": {
       "sha256": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
       "bytes": 504,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/system/fvSchemes": {
       "sha256": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
       "bytes": 566,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/fixture_layered_pressure_v0_1_4/system/fvSolution": {
       "sha256": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0",
       "bytes": 483,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/0.orig/U": {
       "sha256": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
       "bytes": 482,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/0.orig/dissolvedConcentration": {
       "sha256": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
       "bytes": 520,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/0.orig/localExtractionRate": {
       "sha256": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
       "bytes": 495,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/0.orig/p": {
       "sha256": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
       "bytes": 523,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/0.orig/permeability": {
       "sha256": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
       "bytes": 493,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/0.orig/porosity": {
       "sha256": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
       "bytes": 484,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/0.orig/remainingExtractable": {
       "sha256": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
       "bytes": 495,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/0.orig/saturation": {
       "sha256": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
       "bytes": 507,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/0.orig/wetMask": {
       "sha256": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
       "bytes": 504,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/system/fvSchemes": {
       "sha256": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
       "bytes": 566,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "cases/reference_R0_20g_58mm_9bar/system/fvSolution": {
       "sha256": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0",
       "bytes": 483,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "config/fixture_layered_pressure.json": {
       "sha256": "7db882f59da51d5e1501b54edebef465d2644cfe1dc5368deb0a46e6a05c512b",
       "bytes": 3569,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "config/reference_R0.json": {
       "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
       "bytes": 4149,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/ASSUMPTIONS_AND_CLAIM_CEILING.md": {
       "sha256": "d7c28a116727977483cfa39a0ba1b6c03d624582be3969f7969cd51852939c1f",
       "bytes": 4289,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/BASELINE_V0_1_2_RESULT.md": {
       "sha256": "b5ef65308ff98a61401a386fcce5de14d2074fef5322711d2687caab32ba2af4",
       "bytes": 1063,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/BASELINE_V0_1_3_QUALIFICATION.md": {
       "sha256": "e9db8c27616fec77d039bdd242d2e433bd1ad06408947d8608ba9ca005b26c32",
       "bytes": 1548,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
       "sha256": "9d8af51ff11dd7ac68c75ba727e6675b0067ed5102472c079444da8d1acfd3d6",
       "bytes": 3306,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
       "sha256": "af7090d5df003cfcbd3c34896eb5ce7a11ae56ec131002726775fc3b3d5df223",
       "bytes": 7256,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/MODEL_SPECIFICATION.md": {
       "sha256": "599ae4e947a0e0be1973f0f746e519ab9b648b0b6c92a0826a3b3d5c834af08c",
       "bytes": 4861,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/NUMERICAL_HARDENING_SPECIFICATION_V0_1_3.md": {
       "sha256": "05d6492546be73c04a1c43f24c79b429e45fe3f4f56b516896adeecb369967ad",
       "bytes": 5321,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/OPENFOAM12_COMPATIBILITY.md": {
       "sha256": "6a87e32eaf088ba53c4cf37815bf877cb22ab2919e17b4c0dfefe7ee40352e46",
       "bytes": 2600,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/PATCH_NOTES_V0_1_1.md": {
       "sha256": "5466887b877d5a1678a73ca41d9cb7751355cc5b576c100517338dfac8734d1a",
       "bytes": 2114,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/PATCH_NOTES_V0_1_2.md": {
       "sha256": "680ba0e48d5599ef790f44baeddac0cd47295094e90aaedb54ef41391d2bbd77",
       "bytes": 2202,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/PATCH_NOTES_V0_1_3.md": {
       "sha256": "30bcdb42c15a04a8b63cb949eb5b703a3e2cffebfb7bfceb24399f6c3c478297",
       "bytes": 2278,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/PATCH_NOTES_V0_1_4.md": {
       "sha256": "fb680962cf8bcaf569640c0f97c69fca82e75df1ea2111cdfc9db1f756894155",
       "bytes": 3417,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
       "sha256": "0f9abc9027a9413462589193d85907b65f9bf459b3db06343a2265d0e2023288",
       "bytes": 3737,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
       "sha256": "8c2ba60bff79d3eff9c31f11b47c9952f7c369a990ccd512decf6bcd0bc3dec6",
       "bytes": 6218,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": {
       "sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
       "bytes": 109397,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "scripts/artifact_utils.py": {
       "sha256": "bd4b59d62550118893ee9258b65daf90a7d418186c1289a4fca7b4ba40c84e3b",
       "bytes": 3652,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/clean_case.sh": {
       "sha256": "4e2b07e57e28c9b1062b508221e27fe6ed4540451c55808b203d3a177910c952",
       "bytes": 1326,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/espresso_reference_math.py": {
       "sha256": "c5331b8fc11bc4f04c939206e4b1e227cf46be16264b403b845af5294164f1d0",
       "bytes": 21794,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/finalize_reference_freeze.py": {
       "sha256": "f8591b58837c5f9890a300c8fe2493d48a5a3e9f7d2a87c9d2004369b794a435",
       "bytes": 16675,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/freeze_contract.py": {
       "sha256": "6a4f913490ba8d9641e0804badd90de560a891ea7d91b37cdedb0e7e16b0e49e",
       "bytes": 13841,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/generate_freeze_manifest.py": {
       "sha256": "bc8cfcb0b1ddd3708377d7bc628c5738e8e74e527808904199b8ac195cabc76e",
       "bytes": 16454,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "74f247b8b5ca581d45665513ecf17d78cb99f30ea99bf6ee6e02b51214ed44e1",
-      "bytes": 7125,
-      "mode": "0755"
+      "sha256": "328a418047b1e8c30b8dcd284931e3d37fc5b9bb125a7d68d34da31d78e077c1",
+      "bytes": 7769,
+      "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
       "sha256": "f543914bbf83cc0fb40878d10c36418867e8e4dec696d438dea6144bd4182ae0",
       "bytes": 3064,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/normalize_timestamps.py": {
       "sha256": "e544a7d7f7b5aadf96a9d6ce8ef89862f262ac094c1b40bdde4d56fc4934629e",
       "bytes": 3883,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/postprocess.py": {
       "sha256": "e0d8f0f4894918047eab3f813979aa1f185ff32ace95c4e0bb901625fbad461d",
       "bytes": 26662,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/postprocess_layered_fixture.py": {
       "sha256": "5061c32790e773d1a30e51449dafa90fe9a5a6163aef3ca5b58f00161815b400",
       "bytes": 6991,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
       "sha256": "4b34891a1d89c0bb5f2acdf7355bfa6225d980cfd552c314cbf5b0049c77e716",
       "bytes": 15081,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/run_qualification.py": {
       "sha256": "2dc1dc4e65fde24d5119c7f7abf8af54863b1b05372b6f5a8e88df81a597ab04",
       "bytes": 25215,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/static_validate.py": {
       "sha256": "4528586847118721a45c28b0debbef9ce7af5ee41875fd938db964a2b5394601",
       "bytes": 27709,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/verify_build_provenance.py": {
       "sha256": "2eba6f44c8ae2d29942edc550f12310cb315b843baaab652c71d1cb585df0285",
       "bytes": 9044,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/verify_freeze_manifest.py": {
       "sha256": "8202ae07d1bf45e7db5feeaaadc8ecba827ccac34ca410e6b4beae93c12717ae",
       "bytes": 8882,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/verify_no_physics_change.py": {
       "sha256": "e668fb673c0f478883104021552e9ae65c211735d37ee8e48a61206b9c1b54a3",
       "bytes": 9861,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/verify_source_manifest.py": {
-      "sha256": "dfe4a1bfee7ef3c6ec11be59da42669b6482f8bf2b96cd0feffe4023269667e3",
-      "bytes": 3328,
-      "mode": "0755"
+      "sha256": "3a8ecfc776f12055e53278ca569c11701332a140bcbc471a2f4055f85773d6bf",
+      "bytes": 3038,
+      "git_mode": "100755"
     },
     "scripts/write_build_provenance.py": {
       "sha256": "1ac0ac6a2a44f01a58b4c6edfb53d22c0a907dbe9d79c38369b7943f2c519d89",
       "bytes": 6031,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "scripts/write_run_status.py": {
       "sha256": "2c60884dba227acc1234ea6b040d5fa58c7c417a6c84c5dd1b2ca272e2e31221",
       "bytes": 17847,
-      "mode": "0755"
+      "git_mode": "100755"
     },
     "solver/espressoWholePullFoam/Make/files": {
       "sha256": "70aa84e2e2cbd37a9c25217fee498c234816cf41fb57b5f24c41a0e8495f7d83",
       "bytes": 73,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/Make/options": {
       "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
       "bytes": 142,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
       "sha256": "33412d78b8c0624ea6279acbb2c5d653c15a4753a38a228b58d27307110737f1",
       "bytes": 41313,
-      "mode": "0644"
+      "git_mode": "100644"
     },
     "tests/test_reference_case.py": {
-      "sha256": "e3399327057442e44a714d6a19ada7b73dc1e2a42be1cfc67e87bd189c194bad",
-      "bytes": 38577,
-      "mode": "0644"
+      "sha256": "fe98b1098610bc40c3659b1e90a597c8f8084fa4d756fa51ca9d259448d33403",
+      "bytes": 41699,
+      "git_mode": "100644"
     }
   }
 }
