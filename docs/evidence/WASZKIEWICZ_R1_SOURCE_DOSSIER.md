@@ -81,8 +81,14 @@ Key fitted quantities retained as fitted—not observations—include:
 - `Q_c = 1.8969919954879988 ± 0.1471316135226419 g/s`;
 - TDS sigmoid `k_t`, `l_t`, and `m_t`;
 - dissolved-mass sigmoid `k_m`, `l_m`, and `m_m`;
-- the 8.0 s first-drop offset;
 - brewer pressure-loss coefficients `a`, `b`, and `c`.
+
+For the static, TDS, and dissolved-mass fitted parameters, the reported
+one-sigma values are square roots of nonlinear least-squares covariance
+diagonals. They are not shot-to-shot experimental standard deviations or a
+complete measurement-uncertainty model. Off-diagonal covariance is not
+present here, so the fitted parameters must not automatically be treated as
+statistically independent.
 
 The derived `Phi_m ≈ 0.1220` is `k_m/m0`; it is not a direct porosity
 measurement. The source model also reports nominal Carman–Kozeny coefficient
@@ -139,12 +145,21 @@ Time is not a single interchangeable coordinate:
 - source trace zero is the sample after the last early out-of-tolerance `p2`;
 - processed traces use 1000 points over 0–100 s;
 - TDS values are twelve five-second fraction midpoints from 2.5–57.5 s;
-- the dissolved-mass fit carries an 8.0 s first-drop offset;
+- source dissolved-mass processing applies a fixed 8.0 s first-drop offset
+  before optimization;
 - the source equilibrium definition uses 110–120 s, while Puckworks records a
   100 s endpoint alternative because an ended shot contaminates the longer
   window.
 
-Mapping these coordinates to solver time is an issue #5 contract decision.
+The 8.0 s offset was not optimized with the sigmoid parameters, has no
+estimated uncertainty, is neither the source trace origin nor the solver time
+origin, and is excluded from future solver/source time mapping. Mapping the
+remaining coordinates to solver time is an issue #5 contract decision.
+
+The complete pressure, mass, mass-flow, TDS-fraction, and particle-size series
+remain in the exact locked CC-BY-4.0 dependency. They are referenced rather
+than duplicated in the dossier by design; they are not withheld because of a
+rights prohibition.
 
 The TDS fractions are direct observations with replicate information, but the
 first fraction has one replicate and no standard deviation. Their exact

@@ -1027,7 +1027,7 @@
       "symbol": "P_line(t)",
       "canonical_name": "line or pump-side pressure trace for 9 bar bin",
       "classification": "DIRECT_OBSERVATION",
-      "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
+      "value_status": "EXTERNAL_SERIES_NOT_EMBEDDED",
       "value": null,
       "admissible_range": [
         8.6663,
@@ -1052,7 +1052,7 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_TRACE",
-      "unresolved_ambiguity": "Values remain in the external CC-BY dataset; no full trace is copied.",
+      "unresolved_ambiguity": "The complete series remains in the exact locked external dependency. It is referenced rather than duplicated here; it is not withheld because of a rights prohibition.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
@@ -1071,6 +1071,7 @@
       "source_series_reference": {
         "artifact_id": "waszkiewicz-mean-traces",
         "selector": "9 bar rows, pressure__bar",
+        "record_count": 1000,
         "complete_series_copied": false
       }
     },
@@ -1079,7 +1080,7 @@
       "symbol": "P_basket(t)",
       "canonical_name": "derived basket or puck-inlet pressure trace for 9 bar bin",
       "classification": "DERIVED_VALUE",
-      "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
+      "value_status": "EXTERNAL_SERIES_NOT_EMBEDDED",
       "value": null,
       "admissible_range": [
         8.383076,
@@ -1104,7 +1105,7 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_TRACE",
-      "unresolved_ambiguity": "Derived from line pressure and smoothed flow using the fitted brewer quadratic; not a direct pressure observation.",
+      "unresolved_ambiguity": "Derived from line pressure and smoothed flow using the fitted brewer quadratic; not a direct pressure observation. The complete series remains in the exact locked external dependency and is not withheld because of a rights prohibition.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
@@ -1123,6 +1124,7 @@
       "source_series_reference": {
         "artifact_id": "waszkiewicz-mean-traces",
         "selector": "9 bar rows, basket_pressure__bar",
+        "record_count": 1000,
         "complete_series_copied": false
       }
     },
@@ -1131,7 +1133,7 @@
       "symbol": "m_cup(t)",
       "canonical_name": "collected mass trace for 9 bar bin",
       "classification": "DIRECT_OBSERVATION",
-      "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
+      "value_status": "EXTERNAL_SERIES_NOT_EMBEDDED",
       "value": null,
       "admissible_range": [
         -0.003094,
@@ -1156,7 +1158,7 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_TRACE",
-      "unresolved_ambiguity": "Alignment and aggregation are processed; full trace remains external.",
+      "unresolved_ambiguity": "Alignment and aggregation are processed. The complete series remains in the exact locked external dependency and is not withheld because of a rights prohibition.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
@@ -1175,6 +1177,7 @@
       "source_series_reference": {
         "artifact_id": "waszkiewicz-mean-traces",
         "selector": "9 bar rows, mass__g",
+        "record_count": 1000,
         "complete_series_copied": false
       }
     },
@@ -1183,7 +1186,7 @@
       "symbol": "Q_m(t)",
       "canonical_name": "mass-flow-rate trace for 9 bar bin",
       "classification": "DERIVED_VALUE",
-      "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
+      "value_status": "EXTERNAL_SERIES_NOT_EMBEDDED",
       "value": null,
       "admissible_range": [
         -0.009459,
@@ -1208,7 +1211,7 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_TRACE",
-      "unresolved_ambiguity": "Savitzky-Golay derivative, window 31 and polynomial order 1; not direct volumetric flow.",
+      "unresolved_ambiguity": "Savitzky-Golay derivative, window 31 and polynomial order 1; not direct volumetric flow. The complete series remains in the exact locked external dependency and is not withheld because of a rights prohibition.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
@@ -1227,6 +1230,7 @@
       "source_series_reference": {
         "artifact_id": "waszkiewicz-mean-traces",
         "selector": "9 bar rows, mass_flow_rate__g_per_s",
+        "record_count": 1000,
         "complete_series_copied": false
       }
     },
@@ -1287,7 +1291,7 @@
       "symbol": "TDS_i",
       "canonical_name": "five-second fraction TDS",
       "classification": "DIRECT_OBSERVATION",
-      "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
+      "value_status": "EXTERNAL_SERIES_NOT_EMBEDDED",
       "value": null,
       "admissible_range": null,
       "basis": {
@@ -1309,7 +1313,7 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_COMPARISON_DATA",
-      "unresolved_ambiguity": "Exact downstream TDS basis and protection decision belong to issues #4/#5.",
+      "unresolved_ambiguity": "Exact downstream TDS basis and protection decision belong to issues #4/#5. The complete series remains in the exact locked external dependency and is not withheld because of a rights prohibition.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
@@ -1328,6 +1332,7 @@
       "source_series_reference": {
         "artifact_id": "waszkiewicz-tds-fractions",
         "selector": "tds__percent and tds_std__percent columns",
+        "record_count": 12,
         "complete_series_copied": false
       }
     },
@@ -1402,11 +1407,11 @@
         "exact_location": "p_ref__bar row"
       },
       "uncertainty": {
-        "status": "REPORTED_STD",
+        "status": "SOURCE_FIT_COVARIANCE_STD",
         "value": 2.9758249059787327,
         "units": "bar",
-        "kind": "standard_deviation",
-        "note": null
+        "kind": "CURVE_FIT_COVARIANCE_1SIGMA_APPROXIMATION",
+        "note": "Square root of a fitted nonlinear least-squares covariance diagonal; not shot-to-shot experimental standard deviation or a complete measurement-uncertainty model. Off-diagonal covariance is not present in the dossier, so parameters must not automatically be treated as statistically independent."
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
@@ -1447,11 +1452,11 @@
         "exact_location": "q_ref__g_per_s row"
       },
       "uncertainty": {
-        "status": "REPORTED_STD",
+        "status": "SOURCE_FIT_COVARIANCE_STD",
         "value": 0.1471316135226419,
         "units": "g/s",
-        "kind": "standard_deviation",
-        "note": null
+        "kind": "CURVE_FIT_COVARIANCE_1SIGMA_APPROXIMATION",
+        "note": "Square root of a fitted nonlinear least-squares covariance diagonal; not shot-to-shot experimental standard deviation or a complete measurement-uncertainty model. Off-diagonal covariance is not present in the dossier, so parameters must not automatically be treated as statistically independent."
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
@@ -1490,11 +1495,11 @@
         "exact_location": "k__percent row"
       },
       "uncertainty": {
-        "status": "REPORTED_STD",
+        "status": "SOURCE_FIT_COVARIANCE_STD",
         "value": 1.2870667733176586,
         "units": "percent",
-        "kind": "standard_deviation",
-        "note": null
+        "kind": "CURVE_FIT_COVARIANCE_1SIGMA_APPROXIMATION",
+        "note": "Square root of a fitted nonlinear least-squares covariance diagonal; not shot-to-shot experimental standard deviation or a complete measurement-uncertainty model. Off-diagonal covariance is not present in the dossier, so parameters must not automatically be treated as statistically independent."
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
@@ -1533,11 +1538,11 @@
         "exact_location": "l__s row"
       },
       "uncertainty": {
-        "status": "REPORTED_STD",
+        "status": "SOURCE_FIT_COVARIANCE_STD",
         "value": 0.9085593064509806,
         "units": "s",
-        "kind": "standard_deviation",
-        "note": null
+        "kind": "CURVE_FIT_COVARIANCE_1SIGMA_APPROXIMATION",
+        "note": "Square root of a fitted nonlinear least-squares covariance diagonal; not shot-to-shot experimental standard deviation or a complete measurement-uncertainty model. Off-diagonal covariance is not present in the dossier, so parameters must not automatically be treated as statistically independent."
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
@@ -1576,11 +1581,11 @@
         "exact_location": "m__s row"
       },
       "uncertainty": {
-        "status": "REPORTED_STD",
+        "status": "SOURCE_FIT_COVARIANCE_STD",
         "value": 1.450916173104259,
         "units": "s",
-        "kind": "standard_deviation",
-        "note": null
+        "kind": "CURVE_FIT_COVARIANCE_1SIGMA_APPROXIMATION",
+        "note": "Square root of a fitted nonlinear least-squares covariance diagonal; not shot-to-shot experimental standard deviation or a complete measurement-uncertainty model. Off-diagonal covariance is not present in the dossier, so parameters must not automatically be treated as statistically independent."
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
@@ -1619,11 +1624,11 @@
         "exact_location": "k_solids__g row"
       },
       "uncertainty": {
-        "status": "REPORTED_STD",
+        "status": "SOURCE_FIT_COVARIANCE_STD",
         "value": 0.0007556810874470512,
         "units": "g",
-        "kind": "standard_deviation",
-        "note": null
+        "kind": "CURVE_FIT_COVARIANCE_1SIGMA_APPROXIMATION",
+        "note": "Square root of a fitted nonlinear least-squares covariance diagonal; not shot-to-shot experimental standard deviation or a complete measurement-uncertainty model. Off-diagonal covariance is not present in the dossier, so parameters must not automatically be treated as statistically independent."
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
@@ -1664,11 +1669,11 @@
         "exact_location": "l_solids__s row"
       },
       "uncertainty": {
-        "status": "REPORTED_STD",
+        "status": "SOURCE_FIT_COVARIANCE_STD",
         "value": 0.013966351323588139,
         "units": "s",
-        "kind": "standard_deviation",
-        "note": null
+        "kind": "CURVE_FIT_COVARIANCE_1SIGMA_APPROXIMATION",
+        "note": "Square root of a fitted nonlinear least-squares covariance diagonal; not shot-to-shot experimental standard deviation or a complete measurement-uncertainty model. Off-diagonal covariance is not present in the dossier, so parameters must not automatically be treated as statistically independent."
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
@@ -1707,11 +1712,11 @@
         "exact_location": "m_solids__s row"
       },
       "uncertainty": {
-        "status": "REPORTED_STD",
+        "status": "SOURCE_FIT_COVARIANCE_STD",
         "value": 0.024289147370283773,
         "units": "s",
-        "kind": "standard_deviation",
-        "note": null
+        "kind": "CURVE_FIT_COVARIANCE_1SIGMA_APPROXIMATION",
+        "note": "Square root of a fitted nonlinear least-squares covariance diagonal; not shot-to-shot experimental standard deviation or a complete measurement-uncertainty model. Off-diagonal covariance is not present in the dossier, so parameters must not automatically be treated as statistically independent."
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
@@ -1734,8 +1739,8 @@
     {
       "quantity_id": "first-drop-offset",
       "symbol": "t_offset",
-      "canonical_name": "first-drop time offset used by solids fit",
-      "classification": "FITTED_PARAMETER",
+      "canonical_name": "fixed first-drop offset used in source dissolved-mass processing",
+      "classification": "ENGINEERING_ASSUMPTION",
       "value_status": "KNOWN",
       "value": 8.0,
       "admissible_range": null,
@@ -1750,15 +1755,16 @@
         "exact_location": "first_drop_offset__s row"
       },
       "uncertainty": {
-        "status": "REPORTED_ZERO",
-        "value": 0.0,
+        "status": "NOT_ESTIMATED",
+        "value": null,
         "units": "s",
-        "kind": "reported std",
-        "note": null
+        "kind": null,
+        "note": "The source output table records std=0 because this value was fixed before optimization. That zero is not an uncertainty estimate."
       },
+      "source_recorded_std_field": 0.0,
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "proposed_r1_role": "CANDIDATE_TIME_MAPPING_PARAMETER",
-      "unresolved_ambiguity": "Relationship to the solver first-drip event is not frozen.",
+      "proposed_r1_role": "EXCLUDED_SOURCE_PROCESSING_ASSUMPTION",
+      "unresolved_ambiguity": "The value is part of source dissolved-mass processing and must not be interpreted as the solver first-drip time or solver/source time shift.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
@@ -1768,7 +1774,7 @@
       "unit": "s",
       "dimensional_form": "s",
       "gauge_or_absolute_basis": null,
-      "time_origin": "offset relative to source time origin",
+      "time_origin": "not a source trace origin or solver time origin",
       "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
       "role_status": "PROPOSED_NOT_FROZEN",
       "unresolved_ambiguity_references": [
@@ -1955,7 +1961,7 @@
       "symbol": "PSD",
       "canonical_name": "Mastersizer volume-density particle-size distribution",
       "classification": "DIRECT_OBSERVATION",
-      "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
+      "value_status": "EXTERNAL_SERIES_NOT_EMBEDDED",
       "value": null,
       "admissible_range": null,
       "basis": {
@@ -1977,7 +1983,7 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_CONTEXT",
-      "unresolved_ambiguity": "Full distribution remains external; no values are transcribed here.",
+      "unresolved_ambiguity": "The complete series remains in the exact locked external dependency. It is referenced rather than duplicated here; it is not withheld because of a rights prohibition.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
@@ -1996,6 +2002,8 @@
       "source_series_reference": {
         "artifact_id": "waszkiewicz-mastersizer-psd",
         "selector": "48 bins and three replicate rows",
+        "bin_count": 48,
+        "replicate_count": 3,
         "complete_series_copied": false
       }
     },
@@ -2178,7 +2186,7 @@
       "basis": {
         "material": "TDS times same-rig mass flow followed by fitted sigmoid",
         "spatial": "cumulative dissolved mass associated with the bed/beverage model",
-        "temporal": "source processed time with fitted 8 s offset"
+        "temporal": "source processed time with fixed 8 s first-drop offset"
       },
       "pressure_node": null,
       "source": {
@@ -2198,7 +2206,7 @@
       "unit": "g",
       "dimensional_form": "g",
       "gauge_or_absolute_basis": null,
-      "time_origin": "source processed time with fitted 8 s offset",
+      "time_origin": "source processed time with fixed 8 s first-drop offset",
       "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
       "role_status": "PROPOSED_NOT_FROZEN",
       "unresolved_ambiguity_references": [
@@ -2294,7 +2302,8 @@
     "SOURCE_REPORTED_PARAMETER": 12,
     "UNAVAILABLE": 5,
     "DERIVED_VALUE": 8,
-    "FITTED_PARAMETER": 12
+    "FITTED_PARAMETER": 11,
+    "ENGINEERING_ASSUMPTION": 1
   },
   "pressure_node_map": [
     {
@@ -2357,9 +2366,9 @@
     },
     {
       "node_id": "SOLIDS_FIRST_DROP_OFFSET",
-      "definition": "8.0 s fitted offset in the dissolved-mass sigmoid.",
-      "status": "FITTED_PARAMETER",
-      "solver_mapping_status": "ISSUE_5_DECISION_REQUIRED",
+      "definition": "Fixed 8.0 s source-processing assumption applied before dissolved-mass sigmoid optimization; it was not fitted and has no estimated uncertainty.",
+      "status": "ENGINEERING_ASSUMPTION",
+      "solver_mapping_status": "EXCLUDED_FROM_FUTURE_SOLVER_TIME_MAPPING",
       "future_r1_openfoam_time_origin_frozen": false
     }
   ],
@@ -2534,7 +2543,7 @@
     {
       "register_id": "time-origin-mapping",
       "status": "UNRESOLVED",
-      "description": "Source alignment, fitted first-drop offset, TDS midpoints, and solver time zero are not yet mapped.",
+      "description": "Source alignment, TDS midpoints, and solver time zero are not yet mapped. The fixed 8.0 s source-processing offset is excluded from future solver time mapping.",
       "downstream_issues": [
         5,
         6
@@ -2666,7 +2675,7 @@
       "decision_owner": "WP01R-003 / issue #5"
     },
     {
-      "proposed_role": "CANDIDATE_TIME_MAPPING_PARAMETER",
+      "proposed_role": "EXCLUDED_SOURCE_PROCESSING_ASSUMPTION",
       "quantity_ids": [
         "first-drop-offset"
       ],
@@ -2774,7 +2783,7 @@
       "status": "PASS",
       "checked": 106,
       "total": 106,
-      "aggregate_source_sha256": "fd4a59f08d8772b71e51fafbd4782e93cce9df0688481416cca1eb8521401ce0"
+      "aggregate_source_sha256": "275e9fa477ffb8e0afeb3c7d72aa6af5730107376068023f68a4c04c0a594790"
     },
     "scientific_inputs": {
       "status": "PASS",
