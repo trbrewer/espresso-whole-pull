@@ -51,6 +51,10 @@ claim limit. The exhaustive path classification and inventory are in the
   shot as the experimental unit exclude it.
 - Adjacent pressure-axis winner transitions were corrected from two to three.
 - Pressure-level mean-curve RMSE is not random-shot prediction error.
+- The deposited flow quantity is mass flow in g/s, derived from the source
+  scale trace after documented alignment, smoothing, and interpolation. Any
+  conversion to m3/s or mL/s requires a declared liquid-density assumption and
+  is not a directly deposited observable.
 - Basket/puck-inlet gauge pressure is distinct from line/pump-side pressure.
 - Source-curve reproduction, within-campaign holdout, and independent
   validation are distinct evidence classes.

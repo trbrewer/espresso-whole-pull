@@ -5530,12 +5530,13 @@
     },
     {
       "inventory_id": "waszkiewicz-flow-rate",
-      "name": "volumetric flow rate",
-      "unit": "mL/s",
-      "basis": "mass-derived liquid flow under source processing assumptions",
+      "name": "mass flow rate",
+      "unit": "g/s",
+      "basis": "mass derivative from the source scale trace after the documented source processing, alignment, smoothing, and interpolation",
       "pressure_node": null,
       "not_applicable_reason": "Flow is not a pressure quantity.",
-      "computational_role": "candidate calibration/reconstruction observable; NOT_AUTHORIZED_BY_WP01R_001"
+      "computational_role": "candidate source/reconstruction observable whose final R1 role remains unauthorized by WP01R-001",
+      "conversion_note": "Any conversion from mass flow in g/s to volumetric flow in m3/s or mL/s is a derived conversion requiring a declared liquid-density assumption. It is not a directly deposited Waszkiewicz observable."
     },
     {
       "inventory_id": "waszkiewicz-dose",
@@ -5712,14 +5713,15 @@
       "status": "UNAVAILABLE",
       "downstream_issues": [
         4,
-        7
+        5
       ]
     },
     {
       "id": "exact-downstream-tds-basis",
       "status": "UNRESOLVED",
       "downstream_issues": [
-        4
+        4,
+        5
       ]
     },
     {
@@ -5733,7 +5735,7 @@
       "id": "protected-comparison-selection",
       "status": "NOT_AUTHORIZED_BY_WP01R_001",
       "downstream_issues": [
-        7
+        5
       ]
     },
     {
