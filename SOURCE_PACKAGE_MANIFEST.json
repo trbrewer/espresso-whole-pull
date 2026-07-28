@@ -1,6 +1,6 @@
 {
   "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
-  "generated_at_utc": "2026-07-28T22:48:10.678959+00:00",
+  "generated_at_utc": "2026-07-28T23:25:04.138543+00:00",
   "package": "espresso-whole-pull",
   "package_version": "0.1.4",
   "target": "OpenFOAM Foundation 12",
@@ -23,10 +23,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 109,
-  "total_uncompressed_bytes_excluding_manifest": 1079292,
-  "aggregate_source_sha256": "5dedc82edd38c64bf6931fcf8b436df523b51bc3697b2c2c78437fd3d9c3ef7c",
-  "aggregate_sha256": "5dedc82edd38c64bf6931fcf8b436df523b51bc3697b2c2c78437fd3d9c3ef7c",
+  "file_count": 112,
+  "total_uncompressed_bytes_excluding_manifest": 1098191,
+  "aggregate_source_sha256": "19162dade1a31173fe44a70e99fff9edbecb25b60595fdd1e705f8ff936cd835",
+  "aggregate_sha256": "19162dade1a31173fe44a70e99fff9edbecb25b60595fdd1e705f8ff936cd835",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md",
   "strategy_source_sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
   "files": {
@@ -445,6 +445,11 @@
       "bytes": 109397,
       "git_mode": "100644"
     },
+    "scripts/analyze_r1.py": {
+      "sha256": "98d3d71f12cb11130471197ea24a6157bfc789f46de60b5a04bdbce25c04b221",
+      "bytes": 14005,
+      "git_mode": "100755"
+    },
     "scripts/artifact_utils.py": {
       "sha256": "bd4b59d62550118893ee9258b65daf90a7d418186c1289a4fca7b4ba40c84e3b",
       "bytes": 3652,
@@ -476,8 +481,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "260088959c76155e8deb25fddb922250c6ea0ce1212236b5628bc47e0005d790",
-      "bytes": 8183,
+      "sha256": "39b39d8132609fd38dfcf0793470169b63ac872a38636deed62e89c0bc124129",
+      "bytes": 8238,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -513,6 +518,11 @@
     "scripts/run_qualification.py": {
       "sha256": "2dc1dc4e65fde24d5119c7f7abf8af54863b1b05372b6f5a8e88df81a597ab04",
       "bytes": 25215,
+      "git_mode": "100755"
+    },
+    "scripts/run_r1.sh": {
+      "sha256": "1e46913d4e146b71b500b3d6b5fa60502659480701b40ed2adc420292b1db225",
+      "bytes": 848,
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
@@ -563,6 +573,11 @@
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
       "sha256": "33412d78b8c0624ea6279acbb2c5d653c15a4753a38a228b58d27307110737f1",
       "bytes": 41313,
+      "git_mode": "100644"
+    },
+    "tests/test_r1_analysis.py": {
+      "sha256": "96cea7bfc8d1d4e6d55906ba57309d4696dca58392b514acfe484ac6910691d1",
+      "bytes": 3991,
       "git_mode": "100644"
     },
     "tests/test_r1_bridge.py": {

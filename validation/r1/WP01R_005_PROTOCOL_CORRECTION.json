@@ -1,0 +1,40 @@
+{
+  "authorization": "CORRECTIVE_REPRODUCIBILITY_PROTOCOL",
+  "blinding": {
+    "historical_protected_access_occurred": true,
+    "historical_result_known": true,
+    "status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS"
+  },
+  "corrective_result_role": "GOVERNED_NONBLINDED_REPRODUCIBILITY_CONFIRMATION",
+  "historical_preliminary_evidence": {
+    "analyzer_path": "scripts/evaluate_r1.py",
+    "analyzer_sha256": "b1a8a7d7f51c822172bf381f314b03e84489d7594c82d5dff48ed2454ccd6583",
+    "branch": "wp01r/005-r1-execution-scorecard",
+    "commit": "e506a9f5945f7394b305c23c4712752ce3d3c51e",
+    "disposition": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+    "fitting_count": 0,
+    "post_result_adjustment_count": 0,
+    "pr": 16,
+    "protected_source_sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+    "result_artifact_sha256": "8bc561c902c6aecec8d39495ea7bf6a8fced0f3fdb261443ed3aacca6027dccd",
+    "scientific_input_change": false,
+    "solver_executable_sha256": "ada45a5440d08ae8da1a57d65cdf511748a340cd09a045121c59ea83a3d8d6d7",
+    "solver_rerun_after_protected_result": false,
+    "solver_trace_sha256": "beb633f894106a27751fb1e0ec54fd1cf7514a6ede0f795f49f4a7e2b1c5f0c7",
+    "tree": "8de066773d6e182984008e0a744131a8447a3906"
+  },
+  "issue": 7,
+  "predeclaration": {
+    "contract_frozen_before_historical_access": true,
+    "retuning_forbidden_before_historical_access": true,
+    "selectors_frozen_before_historical_access": true,
+    "thresholds_frozen_before_historical_access": true
+  },
+  "procedural_limitations": [
+    "protected source accessed before corrected analyzer freeze",
+    "execution performed in implementation worktree",
+    "full required R0 Allrun plus standard Allverify sequence not completed"
+  ],
+  "schema_version": "espresso.public.wp01r_005_protocol_correction.v1",
+  "task": "WP01R-005"
+}
