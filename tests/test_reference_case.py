@@ -280,6 +280,27 @@ class PackageContractTests(unittest.TestCase):
         ):
             self.assertTrue(excluded(Path(relative)), relative)
 
+    def test_source_manifest_excludes_only_the_approved_puckworks_report(self) -> None:
+        self.assertTrue(excluded(Path("docs/integration/PUCKWORKS_UPDATE_IMPACT.md")))
+        self.assertFalse(excluded(Path("docs/integration/arbitrary_solver_source.md")))
+
+    def test_puckworks_v2_lock_and_checkout_contract(self) -> None:
+        lock = json.loads(
+            (ROOT / "dependencies/puckworks.lock.json").read_text(encoding="utf-8")
+        )
+        selected = "fc61c4670ec7bf801e40bb391aab16048b8da26b"
+        self.assertEqual(lock["schema_version"], "espresso.public.puckworks_lock.v2")
+        self.assertEqual(lock["repository_url"], "https://github.com/trbrewer/puckworks.git")
+        self.assertEqual(lock["checkout_commit"], selected)
+        self.assertEqual(
+            lock["checkout_tree_sha"],
+            "1d553e44ee2f7480a5df521560801b478618cc84",
+        )
+        checkout = (ROOT / "tools/checkout_puckworks.sh").read_text(encoding="utf-8")
+        self.assertIn("dependencies/puckworks.lock.json", checkout)
+        self.assertNotIn(selected, checkout)
+        self.assertNotIn(lock["historical_reviewed_commit"], checkout)
+
     def test_source_manifest_is_acyclic_by_construction(self) -> None:
         text = (ROOT / "scripts/prepare_case.py").read_text(encoding="utf-8")
         self.assertIn('"manifest_role": "immutable_scientific_inputs_only"', text)

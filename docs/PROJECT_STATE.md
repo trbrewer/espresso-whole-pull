@@ -11,4 +11,8 @@
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
 
-First post-bootstrap scientific task: review current Puckworks `main` alignment, then prepare the WP-0.1R source/quantity/evidence dossier. R1 implementation, fitting, and new governing physics require separate reviewed authorization.
+WP01R-001 dependency review is complete. Puckworks is locked to reviewed
+`main` snapshot `fc61c4670ec7bf801e40bb391aab16048b8da26b` with recommendation
+`ADOPT_WITH_FOLLOWUP`. The next scientific task is issue #4, the governed
+source/quantity/evidence dossier. R1 implementation, fitting, and new governing
+physics require separate reviewed authorization.

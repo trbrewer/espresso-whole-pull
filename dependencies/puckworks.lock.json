@@ -1,11 +1,21 @@
 {
-  "schema_version": "espresso.public.puckworks_lock.v1",
+  "schema_version": "espresso.public.puckworks_lock.v2",
   "repository_url": "https://github.com/trbrewer/puckworks.git",
+  "reviewed_ref": "refs/heads/main",
   "historical_reviewed_commit": "352dacd51015d95a3b5a5b3e1a8fb331419d78b0",
-  "checkout_commit": "352dacd51015d95a3b5a5b3e1a8fb331419d78b0",
+  "previous_checkout_commit": "352dacd51015d95a3b5a5b3e1a8fb331419d78b0",
+  "checkout_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+  "checkout_tree_sha": "1d553e44ee2f7480a5df521560801b478618cc84",
+  "reviewed_main_resolved_at_utc": "2026-07-28T16:05:27Z",
+  "review_cutoff_utc": "2026-07-28T16:12:00Z",
+  "alignment_status": "REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF",
+  "adoption_recommendation": "ADOPT_WITH_FOLLOWUP",
   "dependency_role": "external public evidence/model/data dependency",
-  "license": "MIT",
+  "repository_code_license": "MIT",
+  "per_artifact_rights_review_required": true,
   "submodule": false,
-  "alignment_status": "FRESH_MAIN_REVIEW_REQUIRED",
-  "rights_restricted_material_vendored": false
+  "vendored": false,
+  "rights_restricted_material_vendored": false,
+  "impact_report_markdown": "docs/integration/PUCKWORKS_UPDATE_IMPACT.md",
+  "impact_report_json": "validation/integration/PUCKWORKS_UPDATE_IMPACT.json"
 }
