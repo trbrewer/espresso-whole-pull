@@ -26,7 +26,9 @@ from espresso_reference_math import (  # noqa: E402
     straight_sided_wedge_scale,
 )
 from generate_source_manifest import excluded  # noqa: E402
+from freeze_contract import verify_source_manifest as verify_freeze_source_manifest  # noqa: E402
 from prepare_case import render_control_dict  # noqa: E402
+from verify_source_manifest import verify_manifest as verify_shared_source_manifest  # noqa: E402
 from run_qualification import (  # noqa: E402
     PRIMARY_KEYS,
     aggregate_standard,
@@ -1251,6 +1253,33 @@ class PublicSourceManifestPortabilityTests(unittest.TestCase):
             first = self.verify(root)
             self.assertEqual(first.returncode, 0, first.stdout)
             readme.chmod(0o664)
+            second = self.verify(root)
+            self.assertEqual(second.returncode, 0, second.stdout)
+
+    def test_shared_and_terminal_verifiers_are_identical(self) -> None:
+        manifest = json.loads(
+            (ROOT / "SOURCE_PACKAGE_MANIFEST.json").read_text(encoding="utf-8")
+        )
+        shared = verify_shared_source_manifest(ROOT, manifest)
+        terminal = verify_freeze_source_manifest(ROOT, manifest)
+        for key in (
+            "status",
+            "checked_file_count",
+            "observed_source_file_count",
+            "observed_aggregate_source_sha256",
+            "failures",
+        ):
+            self.assertEqual(shared[key], terminal[key])
+
+    def test_executable_group_write_bits_do_not_change_git_mode(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td) / "repo"
+            self.copy_repository(root)
+            script = root / "Allrun"
+            script.chmod(0o755)
+            first = self.verify(root)
+            self.assertEqual(first.returncode, 0, first.stdout)
+            script.chmod(0o775)
             second = self.verify(root)
             self.assertEqual(second.returncode, 0, second.stdout)
 

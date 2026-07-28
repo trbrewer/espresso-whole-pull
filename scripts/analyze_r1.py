@@ -8,6 +8,7 @@ import csv
 import hashlib
 import json
 import math
+import re
 import statistics
 import subprocess
 from pathlib import Path
@@ -55,23 +56,46 @@ def pearson(a: list[float], b: list[float], epsilon: float) -> tuple[float | Non
     return covariance / (std_a * std_b), True
 
 
+def governed_shot_gate(gates: dict, prefix: str) -> tuple[int, float, str]:
+    matches = [key for key in gates if key.startswith(prefix)]
+    if len(matches) != 1:
+        raise ValueError(f"expected exactly one governed shot gate with prefix {prefix!r}")
+    key = matches[0]
+    suffix = key[len(prefix):]
+    if not re.fullmatch(r"\d+(?:_\d+)?", suffix):
+        raise ValueError(f"invalid governed threshold suffix in {key!r}")
+    return int(gates[key]), float(suffix.replace("_", ".")), key
+
+
 def aggregate(shots: list[dict], gates: dict) -> dict:
+    rmse_required, rmse_threshold, rmse_key = governed_shot_gate(
+        gates, "shots_required_at_or_below_rmse_"
+    )
+    r_required, r_threshold, r_key = governed_shot_gate(
+        gates, "shots_required_at_or_above_r_"
+    )
     median_rmse = statistics.median(item["normalized_shape_rmse"] for item in shots)
     defined = [item["pearson_r"] for item in shots if item["pearson_defined"]]
     median_r = statistics.median(defined) if len(defined) == len(shots) else None
-    rmse_count = sum(item["normalized_shape_rmse"] <= 0.20 for item in shots)
-    r_count = sum(item["pearson_defined"] and item["pearson_r"] >= 0.90 for item in shots)
+    rmse_count = sum(item["normalized_shape_rmse"] <= rmse_threshold for item in shots)
+    r_count = sum(
+        item["pearson_defined"] and item["pearson_r"] >= r_threshold for item in shots
+    )
     passed = (
         median_rmse <= gates["median_normalized_shape_rmse_max"]
-        and rmse_count >= gates["shots_required_at_or_below_rmse_0_20"]
+        and rmse_count >= rmse_required
         and median_r is not None and median_r >= gates["median_pearson_r_min"]
-        and r_count >= gates["shots_required_at_or_above_r_0_90"]
+        and r_count >= r_required
     )
     return {
         "median_normalized_shape_rmse": median_rmse,
         "median_pearson_r": median_r,
         "shots_at_or_below_rmse_0_20": rmse_count,
         "shots_at_or_above_pearson_0_90": r_count,
+        "shot_thresholds": {
+            "rmse": {"contract_key": rmse_key, "value": rmse_threshold, "required": rmse_required},
+            "pearson": {"contract_key": r_key, "value": r_threshold, "required": r_required},
+        },
         "status": "PASS" if passed else "FAIL",
     }
 
@@ -110,6 +134,62 @@ def trace_rows(path: Path, scenario: dict) -> list[dict[str, float]]:
     return rows
 
 
+def source_grid(contract: dict) -> list[float]:
+    mapping = contract["time_mapping_contract"]
+    protected = contract["protected_comparison_contract"]
+    count = protected["normalization_indices"]["last"] + 1
+    if count != 1000:
+        raise ValueError("governed protected sample count is not 1000")
+    source_end = mapping["solver_end_time_s"] - mapping["source_to_solver_offset_s"]
+    if source_end != 100.0:
+        raise ValueError("governed source support is not 0..100 s")
+    grid = [index * source_end / (count - 1) for index in range(count)]
+    for window, indices in (
+        (mapping["protected_source_window"], protected["protected_indices"]),
+        (mapping["late_normalization_window"], protected["normalization_indices"]),
+    ):
+        observed = [grid[indices["first"]], grid[indices["last"]]]
+        if any(abs(a - b) > 5e-6 for a, b in zip(observed, window["source_time_s"])):
+            raise ValueError("derived source grid disagrees with frozen window endpoints")
+    return grid
+
+
+def calibration_tolerance(contract: dict) -> float:
+    gates = [
+        item["gate"]
+        for item in contract["acceptance_gates"]
+        if item["status_family"] == "CALIBRATION_REPRODUCTION"
+        and "late-window mean" in item["gate"]
+    ]
+    if len(gates) != 1:
+        raise ValueError("expected one late-flow calibration acceptance gate")
+    match = re.search(r"within\s+([0-9]+(?:\.[0-9]+)?)%\s+relative", gates[0])
+    if not match:
+        raise ValueError("calibration tolerance missing from governed gate")
+    return float(match.group(1)) / 100.0
+
+
+def predicted_trace(contract: dict, rows: list[dict[str, float]]) -> dict:
+    times = [row["time_s"] for row in rows]
+    density = contract["solver_to_source_flow_mapping"]["primary_predicted_quantity"][
+        "liquid_density_kg_m3"
+    ]
+    flow = [1000.0 * density * row["outlet_flow_m3_s"] for row in rows]
+    grid = source_grid(contract)
+    offset = contract["time_mapping_contract"]["source_to_solver_offset_s"]
+    mapped = [time + offset for time in grid]
+    predicted = [interpolate(times, flow, time) for time in mapped]
+    late = contract["protected_comparison_contract"]["normalization_indices"]
+    late_mean = statistics.mean(predicted[late["first"]:late["last"] + 1])
+    return {
+        "source_grid": grid,
+        "mapped": mapped,
+        "predicted": predicted,
+        "density": density,
+        "late_mean": late_mean,
+    }
+
+
 def numerical_stage(root: Path, trace: Path, acceptance: Path, case_manifest: Path, output: Path) -> None:
     contract, scenario, lock = authorities(root)
     rows = trace_rows(trace, scenario)
@@ -117,9 +197,15 @@ def numerical_stage(root: Path, trace: Path, acceptance: Path, case_manifest: Pa
     manifest = read_json(case_manifest)
     gates = accepted["numerical_acceptance_gates"]
     parity = accepted["openfoam_b0_parity_gates"]
-    status = all(item["status"] == "PASS" for item in gates.values()) and all(
+    numerical_pass = all(item["status"] == "PASS" for item in gates.values()) and all(
         item["status"] == "PASS" for item in parity.values()
     )
+    prediction = predicted_trace(contract, rows)
+    target = contract["calibration_contract"]["equilibrium_mass_flow_g_per_s"]
+    tolerance = calibration_tolerance(contract)
+    error = abs(prediction["late_mean"] - target) / target
+    calibration_status = "PASS" if error <= tolerance else "FAIL"
+    status = numerical_pass and calibration_status == "PASS"
     result = {
         "stage": "NUMERICAL",
         "status": "PASS" if status else "FAIL",
@@ -136,6 +222,15 @@ def numerical_stage(root: Path, trace: Path, acceptance: Path, case_manifest: Pa
         "scenario_sha256": digest(root / "config/reconstruction_R1_waszkiewicz_9bar.json"),
         "lock": {"commit": lock["checkout_commit"], "tree": lock["checkout_tree_sha"]},
         "protected_source_opened": False,
+        "calibration_reproduction": {
+            "predicted_late_mean_g_per_s": prediction["late_mean"],
+            "target_g_per_s": target,
+            "relative_error": error,
+            "maximum_relative_error": tolerance,
+            "status": calibration_status,
+            "protected_source_opened": False,
+        },
+        "protected_release_authorized": status,
     }
     canonical_write(output, result)
     if not status:
@@ -145,44 +240,95 @@ def numerical_stage(root: Path, trace: Path, acceptance: Path, case_manifest: Pa
 def protected_stage(root: Path, trace: Path, numerical: Path, puckworks: Path, output: Path, reduced: Path) -> None:
     contract, scenario, lock = authorities(root)
     numerical_result = read_json(numerical)
-    if numerical_result["status"] != "PASS":
+    if (
+        numerical_result.get("status") != "PASS"
+        or numerical_result.get("calibration_reproduction", {}).get("status") != "PASS"
+        or numerical_result.get("protected_release_authorized") is not True
+    ):
         raise ValueError("protected analysis forbidden before numerical release")
     if digest(trace) != numerical_result["trace_sha256"]:
         raise ValueError("trace changed after numerical release")
+    contract_path = root / "validation/contracts/R1_CALIBRATION_AND_COMPARISON_CONTRACT.json"
+    scenario_path = root / "config/reconstruction_R1_waszkiewicz_9bar.json"
+    if digest(contract_path) != numerical_result["contract_sha256"]:
+        raise ValueError("contract changed after numerical release")
+    if digest(scenario_path) != numerical_result["scenario_sha256"]:
+        raise ValueError("scenario changed after numerical release")
     if subprocess.check_output(["git", "-C", str(puckworks), "rev-parse", "HEAD"], text=True).strip() != lock["checkout_commit"]:
         raise ValueError("Puckworks commit mismatch")
     if subprocess.check_output(["git", "-C", str(puckworks), "rev-parse", "HEAD^{tree}"], text=True).strip() != lock["checkout_tree_sha"]:
         raise ValueError("Puckworks tree mismatch")
     protected = contract["protected_comparison_contract"]
     source_info = contract["source_dependency"]["per_brew_trace"]
+    if protected["source_path"] != source_info["path"]:
+        raise ValueError("protected source paths disagree")
+    nodes = [
+        item for item in contract["pressure_node_contract"]
+        if item.get("node") == "REFERENCE_PRESSURE_BIN"
+        and item.get("role") == "SOURCE_GROUPING_LABEL_ONLY"
+    ]
+    if len(nodes) != 1:
+        raise ValueError("expected one governed reference pressure bin")
+    selector_match = re.fullmatch(
+        r"reference_pressure_round__bar == ([0-9]+(?:\.[0-9]+)?); "
+        r"shot_id in protected list; mass_flow_rate__g_per_s",
+        protected["source_selector"],
+    )
+    if not selector_match:
+        raise ValueError("protected source selector is malformed")
+    reference_pressure = float(selector_match.group(1))
+    if reference_pressure != nodes[0]["value_bar"]:
+        raise ValueError("protected selector and pressure node disagree")
     source = puckworks / source_info["path"]
     if digest(source) != source_info["sha256"]:
         raise ValueError("protected source hash mismatch")
     rows = trace_rows(trace, scenario)
-    times = [row["time_s"] for row in rows]
-    density = contract["solver_to_source_flow_mapping"]["primary_predicted_quantity"]["liquid_density_kg_m3"]
-    flow = [1000.0 * density * row["outlet_flow_m3_s"] for row in rows]
     with source.open(newline="", encoding="utf-8") as stream:
-        source_rows = list(csv.DictReader(stream))
+        reader = csv.DictReader(stream)
+        required = {
+            "reference_pressure_round__bar", "shot_id", "time_index",
+            "mass_flow_rate__g_per_s",
+        }
+        if reader.fieldnames is None or not required.issubset(reader.fieldnames):
+            raise ValueError("protected source fields are incomplete")
+        source_rows = list(reader)
     shots = protected["shot_ids"]
-    grouped = {shot: [row for row in source_rows if row["shot_id"] == shot and float(row["reference_pressure_round__bar"]) == 9.0] for shot in shots}
-    if set(row["shot_id"] for row in source_rows if float(row["reference_pressure_round__bar"]) == 9.0) != set(shots):
+    grouped = {
+        shot: [
+            row for row in source_rows
+            if row["shot_id"] == shot
+            and float(row["reference_pressure_round__bar"]) == reference_pressure
+        ]
+        for shot in shots
+    }
+    selected_shots = {
+        row["shot_id"] for row in source_rows
+        if float(row["reference_pressure_round__bar"]) == reference_pressure
+    }
+    if selected_shots != set(shots):
         raise ValueError("protected shot set mismatch")
     if any(len(values) != 1000 for values in grouped.values()):
         raise ValueError("protected shot row count mismatch")
     grids = [[int(row["time_index"]) for row in grouped[shot]] for shot in shots]
     if any(grid != list(range(1000)) for grid in grids):
         raise ValueError("protected source ordering mismatch")
-    offset = contract["time_mapping_contract"]["source_to_solver_offset_s"]
-    source_grid = [index * 100.0 / 999.0 for index in range(1000)]
-    mapped = [time + offset for time in source_grid]
-    predicted = [interpolate(times, flow, time) for time in mapped]
+    prediction = predicted_trace(contract, rows)
+    source_times = prediction["source_grid"]
+    mapped = prediction["mapped"]
+    predicted = prediction["predicted"]
+    density = prediction["density"]
     first, last = protected["protected_indices"]["first"], protected["protected_indices"]["last"]
     late_first, late_last = protected["normalization_indices"]["first"], protected["normalization_indices"]["last"]
-    pred_late = statistics.mean(predicted[late_first:late_last + 1])
+    pred_late = prediction["late_mean"]
     pred_norm_all = [value / pred_late for value in predicted]
     pred_norm = pred_norm_all[first:last + 1]
     epsilon = protected["pearson_degeneracy"]["normalized_standard_deviation_epsilon"]
+    _, rmse_threshold, _ = governed_shot_gate(
+        protected["gates"], "shots_required_at_or_below_rmse_"
+    )
+    _, r_threshold, _ = governed_shot_gate(
+        protected["gates"], "shots_required_at_or_above_r_"
+    )
     metrics = []
     for shot in shots:
         observed = [float(row["mass_flow_rate__g_per_s"]) for row in grouped[shot]]
@@ -197,16 +343,19 @@ def protected_stage(root: Path, trace: Path, numerical: Path, puckworks: Path, o
             "normalized_shape_rmse": rmse, "pearson_r": correlation,
             "pearson_defined": defined, "predicted_normalized_population_std": statistics.pstdev(pred_norm),
             "observed_normalized_population_std": statistics.pstdev(obs_norm),
-            "rmse_status": "PASS" if rmse <= 0.20 else "FAIL",
-            "pearson_status": "PASS" if defined and correlation >= 0.90 else "FAIL",
+            "rmse_status": "PASS" if rmse <= rmse_threshold else "FAIL",
+            "pearson_status": "PASS" if defined and correlation >= r_threshold else "FAIL",
         })
     summary = aggregate(metrics, protected["gates"])
-    target = contract["calibration_contract"]["equilibrium_mass_flow_g_per_s"]
-    calibration_error = abs(pred_late - target) / target
     result = {
         "stage": "PROTECTED", "status": "PASS", "shots": metrics, "aggregate": summary,
         "predicted_late_mean_g_per_s": pred_late,
-        "calibration_reproduction": {"target_g_per_s": target, "relative_error": calibration_error, "status": "PASS" if calibration_error <= 0.02 else "FAIL"},
+        "calibration_reproduction": numerical_result["calibration_reproduction"],
+        "source_time_grid": {
+            "kind": "GOVERNED_RECONSTRUCTION_FROM_LOCKED_TIME_INDEX",
+            "sample_count": len(source_times),
+            "support_s": [source_times[0], source_times[-1]],
+        },
         "source": {"path": source_info["path"], "sha256": source_info["sha256"], "commit": lock["checkout_commit"], "tree": lock["checkout_tree_sha"], "rights": "CC-BY-4.0_WITH_ATTRIBUTION"},
         "historical_protected_access_occurred": True,
         "blinding_status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS",
@@ -216,7 +365,7 @@ def protected_stage(root: Path, trace: Path, numerical: Path, puckworks: Path, o
     with reduced.open("w", newline="", encoding="utf-8") as stream:
         writer = csv.writer(stream)
         writer.writerow(["source_index","source_time_s","mapped_solver_time_s","outlet_flow_m3_s","predicted_flow_g_per_s","normalized_predicted_flow","protected_window","normalization_window"])
-        for index, (source_time, solver_time, value, normalized) in enumerate(zip(source_grid, mapped, predicted, pred_norm_all)):
+        for index, (source_time, solver_time, value, normalized) in enumerate(zip(source_times, mapped, predicted, pred_norm_all)):
             writer.writerow([index, f"{source_time:.12g}", f"{solver_time:.12g}", f"{value/(1000*density):.16g}", f"{value:.16g}", f"{normalized:.16g}", int(first <= index <= last), int(late_first <= index <= late_last)])
 
 

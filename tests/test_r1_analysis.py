@@ -3,6 +3,8 @@ from __future__ import annotations
 import importlib.util
 import json
 import math
+import csv
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -62,6 +64,67 @@ class R1AnalysisSyntheticTests(unittest.TestCase):
         shots[0]["pearson_defined"] = False
         shots[0]["pearson_r"] = None
         self.assertEqual(ANALYSIS.aggregate(shots, gates)["status"], "FAIL")
+
+    def test_thresholds_are_derived_and_ambiguous_keys_fail(self) -> None:
+        contract, _, _ = ANALYSIS.authorities(ROOT)
+        gates = contract["protected_comparison_contract"]["gates"]
+        required, threshold, key = ANALYSIS.governed_shot_gate(
+            gates, "shots_required_at_or_below_rmse_"
+        )
+        self.assertEqual((required, threshold, key), (4, 0.20, "shots_required_at_or_below_rmse_0_20"))
+        ambiguous = dict(gates)
+        ambiguous["shots_required_at_or_below_rmse_0_25"] = 4
+        with self.assertRaises(ValueError):
+            ANALYSIS.governed_shot_gate(
+                ambiguous, "shots_required_at_or_below_rmse_"
+            )
+
+    def test_governed_source_grid_matches_frozen_windows(self) -> None:
+        contract, _, _ = ANALYSIS.authorities(ROOT)
+        grid = ANALYSIS.source_grid(contract)
+        self.assertEqual(len(grid), 1000)
+        self.assertEqual(grid[0], 0.0)
+        self.assertEqual(grid[-1], 100.0)
+        self.assertAlmostEqual(grid[100], 10.01001001001001)
+        self.assertAlmostEqual(grid[899], 89.98998998998998)
+        self.assertAlmostEqual(grid[900], 90.09009009009009)
+
+    def test_numerical_stage_freezes_calibration_without_puckworks(self) -> None:
+        contract, scenario, _ = ANALYSIS.authorities(ROOT)
+        target = contract["calibration_contract"]["equilibrium_mass_flow_g_per_s"]
+        density = contract["solver_to_source_flow_mapping"]["primary_predicted_quantity"][
+            "liquid_density_kg_m3"
+        ]
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            trace = base / "trace.csv"
+            with trace.open("w", newline="", encoding="utf-8") as stream:
+                writer = csv.DictWriter(stream, fieldnames=sorted(ANALYSIS.REQUIRED_TRACE))
+                writer.writeheader()
+                for index in range(1031):
+                    row = {field: 0.0 for field in ANALYSIS.REQUIRED_TRACE}
+                    row.update(
+                        time_s=index / 10,
+                        outlet_flow_m3_s=target / (1000 * density),
+                        max_saturation=1.0,
+                    )
+                    writer.writerow(row)
+            acceptance = base / "acceptance.json"
+            acceptance.write_text(json.dumps({
+                "numerical_acceptance_gates": {"numerical": {"status": "PASS"}},
+                "openfoam_b0_parity_gates": {"parity": {"status": "PASS"}},
+            }), encoding="utf-8")
+            manifest = base / "manifest.json"
+            manifest.write_text(json.dumps({
+                "r1_scientific_input_aggregate_sha256":
+                    "ddc6ac9e5cfd4746d5e7548e1b78cbb4942092d134806a6e9526ef26657aa957"
+            }), encoding="utf-8")
+            output = base / "numerical.json"
+            ANALYSIS.numerical_stage(ROOT, trace, acceptance, manifest, output)
+            result = json.loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(result["calibration_reproduction"]["status"], "PASS")
+            self.assertTrue(result["protected_release_authorized"])
+            self.assertFalse(result["protected_source_opened"])
 
     def test_scientific_values_are_read_not_embedded_as_results(self) -> None:
         source = (ROOT / "scripts/analyze_r1.py").read_text(encoding="utf-8")

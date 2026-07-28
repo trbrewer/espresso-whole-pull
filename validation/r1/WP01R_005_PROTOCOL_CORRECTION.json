@@ -6,6 +6,45 @@
     "status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS"
   },
   "corrective_result_role": "GOVERNED_NONBLINDED_REPRODUCIBILITY_CONFIRMATION",
+  "implementation_correction": {
+    "analyzer_changed_after_historical_PR16_protected_access": true,
+    "analyzer_changed_before_corrective_protected_processing": true,
+    "change_reason": "PRE_EXECUTION_IMPLEMENTATION_AND_RELEASE_GATE_CORRECTION",
+    "corrected_analyzer_sha256": "34c27e381d0557a53a4a15cc2e47ac83b2e3daa55cbb600ae22fae0e444607cb",
+    "original_corrective_analyzer_sha256": "98d3d71f12cb11130471197ea24a6157bfc789f46de60b5a04bdbce25c04b221",
+    "scientific_formula_change": false,
+    "scientific_selector_change": false,
+    "scientific_threshold_change": false
+  },
+  "corrective_protocol_attempts": [
+    {
+      "attempt_id": "corrective_protocol_attempt_1",
+      "corrective_protected_processing_count": 0,
+      "corrective_r1_case_generated": false,
+      "corrective_r1_execution_count": 0,
+      "disposition": "STOPPED_AT_MANDATED_R0_RELEASE_GATE",
+      "execution_commit": "cd4ceaaa362d440990e57dab486ef26c831c66f8",
+      "execution_tree": "9a018fc54984e3347545a4eb25de0f58d1c4fe6a",
+      "failed_stage": "generate_terminal_freeze_manifest",
+      "failure_class": "SOURCE_MANIFEST_MODE_CONTRACT_VERIFIER_DEFECT",
+      "file_byte_count_mismatch_observed": false,
+      "file_content_mismatch_observed": false,
+      "freeze_finalization_status_sha256": "9dadeaa39f1543702aac0e25f987ed6bd79f2d227fac1cf8bb41c17e2d8617f2",
+      "freeze_manifest_log_sha256": "af16d329ff3ae5c83997afdacf5cf7b3e9c65ca6aef7f46beb386d05089f54e5",
+      "mode_contract_mismatch_observed": true,
+      "optimizer_iteration_count": 0,
+      "parameter_fitting_count": 0,
+      "post_result_adjustment_count": 0,
+      "puckworks_code_execution_count": 0,
+      "qualification_report_sha256": "34dc87de5374c654edd09980585e28cf69b3abf7bad6b51394ee734fae4dea76",
+      "r0_allrun_status": "PASS",
+      "r0_numerical_qualification_status": "PASS",
+      "r0_standard_allverify_status": "FAIL",
+      "reference_freeze_status": "NOT_FROZEN",
+      "scientific_input_change": false,
+      "solver_executable_sha256": "ada45a5440d08ae8da1a57d65cdf511748a340cd09a045121c59ea83a3d8d6d7"
+    }
+  ],
   "historical_preliminary_evidence": {
     "analyzer_path": "scripts/evaluate_r1.py",
     "analyzer_sha256": "b1a8a7d7f51c822172bf381f314b03e84489d7594c82d5dff48ed2454ccd6583",

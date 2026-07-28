@@ -5,7 +5,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
-from typing import Dict
+from typing import Any, Dict, Mapping
 
 from generate_source_manifest import excluded, source_metadata
 
@@ -22,14 +22,9 @@ def aggregate(entries: Dict[str, Dict[str, object]]) -> str:
     return digest.hexdigest()
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--root", type=Path, required=True)
-    args = parser.parse_args()
-    root = args.root.resolve()
-    manifest_path = root / "SOURCE_PACKAGE_MANIFEST.json"
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-
+def verify_manifest(root: Path, manifest: Mapping[str, Any]) -> dict[str, Any]:
+    """Verify source contents using the generator's semantic Git-mode contract."""
+    root = root.resolve()
     failures = []
     expected_paths = set(manifest["files"])
     actual_source_paths = {
@@ -76,12 +71,26 @@ def main() -> None:
         "schema_version": "espresso.whole_pull.source_manifest_verification.v0.1.4",
         "status": "PASS" if not failures else "FAIL",
         "checked_files": len(manifest["files"]),
+        "checked_file_count": len(manifest["files"]),
         "observed_source_file_count": len(actual_source_paths),
+        "recorded_aggregate_source_sha256": expected_aggregate,
+        "observed_aggregate_source_sha256": observed_aggregate,
         "aggregate_source_sha256": expected_aggregate,
         "failures": failures,
     }
+    return report
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", type=Path, required=True)
+    args = parser.parse_args()
+    root = args.root.resolve()
+    manifest_path = root / "SOURCE_PACKAGE_MANIFEST.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    report = verify_manifest(root, manifest)
     print(json.dumps(report, indent=2))
-    if failures:
+    if report["failures"]:
         raise SystemExit(1)
 
 
