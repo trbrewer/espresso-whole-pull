@@ -16,6 +16,11 @@ copied, and per-artifact rights review remains required. Future adopted inputs
 must record model IDs, units, pressure nodes, evidence roles, uncertainty, and
 rights status.
 
-WP01R-001 recommends `ADOPT_WITH_FOLLOWUP`. Issue #4, the governed
-source/quantity/evidence dossier, is next; this dependency review does not
+WP01R-001 recommends `ADOPT_WITH_FOLLOWUP`; that dependency review does not
 authorize calibration, protected comparisons, or R1 implementation.
+
+The issue #4 dossier is prepared from the exact locked commit:
+[Markdown](evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.md) and
+[JSON](../validation/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.json). Its
+disposition is `READY_FOR_WP01R_003_WITH_DECLARED_GAPS`; issue #5 must freeze
+the calibration/protected-comparison contract before implementation.

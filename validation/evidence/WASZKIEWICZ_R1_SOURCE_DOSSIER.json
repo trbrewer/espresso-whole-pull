@@ -1,15 +1,35 @@
 {
-  "schema_version": "espresso.wp01r.waszkiewicz_source_dossier.v1",
+  "schema_version": "espresso.public.waszkiewicz_r1_source_dossier.v1",
   "task": "WP01R-002",
   "github_issue": 4,
   "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
-  "dossier_status": "COMPLETE_WITH_REGISTERED_GAPS",
-  "scope": "Source-linked Waszkiewicz R1 evidence dossier; no role freezing, fitting, implementation, or execution.",
-  "puckworks_identity": {
+  "issue_declaration_note": "Conflicting generated SOURCE_SCENARIO_CHANGE_ONLY form text was not controlling and was not edited; the substantive NO_GOVERNING_PHYSICS_CHANGE declaration controls.",
+  "analysis_status": "COMPLETE",
+  "dossier_disposition": "READY_FOR_WP01R_003_WITH_DECLARED_GAPS",
+  "dependency_identity": {
     "repository_url": "https://github.com/trbrewer/puckworks.git",
     "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
     "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
     "alignment_status": "REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF"
+  },
+  "scenario_context": {
+    "dose": "18.50 +/- 0.05 g source form; constants table calls 18.5 g approximate",
+    "nominal_basket_hardware_diameter_mm": 58.0,
+    "modeled_bed_diameter_mm": 56.0,
+    "modeled_bed_radius_m": 0.028,
+    "reference_pressure_group_bar": 9.0,
+    "coffee": "single Brazilian light-medium roast",
+    "grinder": "Fiorenzato F64 at source setting 1.9",
+    "machine": "Sanremo Zoe",
+    "tamp": "20 kg reported load",
+    "preparation": "WDT",
+    "source_model_scope": [
+      "quasi-static",
+      "one-dimensional",
+      "fully saturated",
+      "does not model approximately the first 5-10 s",
+      "not transferable without separate evidence or recalibration"
+    ]
   },
   "primary_source": {
     "title": "Under pressure: Poroelastic regulation of flow in espresso brewing",
@@ -18,15 +38,6 @@
     "data_doi": "10.5281/zenodo.18046315",
     "journal_publication_date": "2026-06-23"
   },
-  "classification_vocabulary": [
-    "direct observation",
-    "source-reported parameter",
-    "digitized value",
-    "derived value",
-    "fitted parameter",
-    "engineering assumption",
-    "unavailable"
-  ],
   "source_artifacts": [
     {
       "artifact_id": "waszkiewicz-model-card",
@@ -39,7 +50,17 @@
         "RIGHTS_RECORD"
       ],
       "rights_status": "MIXED_BY_UNDERLYING_ARTIFACT",
-      "redistribution": "METADATA_AND_SHORT_FACTUAL_SUMMARY_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "SOURCE_CARD",
+      "source_relationship": "LOCKED_PUCKWORKS_METADATA",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "MIXED_BY_UNDERLYING_ARTIFACT",
+      "redistribution_treatment": "METADATA_AND_SHORT_FACTUAL_SUMMARY_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-journal-intake",
@@ -51,7 +72,17 @@
         "RIGHTS_RECORD"
       ],
       "rights_status": "AIP_REDISTRIBUTION_PROHIBITED",
-      "redistribution": "CITATION_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "SOURCE_IDENTITY",
+      "source_relationship": "LOCKED_PUCKWORKS_METADATA",
+      "rights_holder_or_source": "AIP Publishing / source authors",
+      "license_or_restriction": "AIP_REDISTRIBUTION_PROHIBITED",
+      "redistribution_treatment": "CITATION_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": "Required to establish the AIP article citation-only restriction."
     },
     {
       "artifact_id": "puckworks-rights-notes",
@@ -62,7 +93,17 @@
         "RIGHTS_RECORD"
       ],
       "rights_status": "SOME_OUTWARD_USE_NOT_REVIEWED",
-      "redistribution": "FOLLOW_PER_ARTIFACT_STATUS"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "RIGHTS_RECORD",
+      "source_relationship": "LOCKED_PUCKWORKS_METADATA",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "SOME_OUTWARD_USE_NOT_REVIEWED",
+      "redistribution_treatment": "FOLLOW_PER_ARTIFACT_STATUS",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": "Required to retain the upstream NOT_REVIEWED outward-use limitation."
     },
     {
       "artifact_id": "puckworks-data-manifest",
@@ -74,7 +115,17 @@
         "RIGHTS_RECORD"
       ],
       "rights_status": "PER_ROW_RIGHTS",
-      "redistribution": "METADATA_ONLY_IN_THIS_DOSSIER"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "DATA_MANIFEST",
+      "source_relationship": "LOCKED_PUCKWORKS_METADATA",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "PER_ROW_RIGHTS",
+      "redistribution_treatment": "METADATA_ONLY_IN_THIS_DOSSIER",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-data-provenance",
@@ -87,7 +138,17 @@
         "RIGHTS_RECORD"
       ],
       "rights_status": "CC-BY-4.0_DATA_GPLV3_CODE_NOT_INGESTED",
-      "redistribution": "ATTRIBUTED_DATA_FACTS_AND_METADATA"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "DATA_PROVENANCE",
+      "source_relationship": "LOCKED_PUCKWORKS_METADATA",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_DATA_GPLV3_CODE_NOT_INGESTED",
+      "redistribution_treatment": "ATTRIBUTED_DATA_FACTS_AND_METADATA",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-constants",
@@ -98,7 +159,17 @@
         "SOURCE_PARAMETERS"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "SOURCE_PARAMETERS",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "SCALAR_VALUES_COPIED_WITH_ATTRIBUTION",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-static-calibration",
@@ -109,7 +180,17 @@
         "FITTED_PARAMETERS"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "FITTED_PARAMETERS",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "SCALAR_VALUES_COPIED_WITH_ATTRIBUTION",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-tds-calibration",
@@ -120,7 +201,17 @@
         "FITTED_PARAMETERS"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "FITTED_PARAMETERS",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "SCALAR_VALUES_COPIED_WITH_ATTRIBUTION",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-solids-calibration",
@@ -131,7 +222,17 @@
         "FITTED_PARAMETERS"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "FITTED_PARAMETERS",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "SCALAR_VALUES_COPIED_WITH_ATTRIBUTION",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-mean-traces",
@@ -142,7 +243,17 @@
         "PROCESSED_MEAN_TRACES"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "PROCESSED_MEAN_TRACES",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-per-brew-traces",
@@ -153,7 +264,17 @@
         "PROCESSED_PER_BREW_TRACES"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "PROCESSED_PER_BREW_TRACES",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-tds-fractions",
@@ -164,7 +285,17 @@
         "PROCESSED_MEASUREMENTS"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "PROCESSED_MEASUREMENTS",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-tds-replicates",
@@ -175,7 +306,17 @@
         "MEASURED_REPLICATES"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "MEASURED_REPLICATES",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-brewer-points",
@@ -186,7 +327,17 @@
         "CALIBRATION_MEASUREMENTS"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "CALIBRATION_MEASUREMENTS",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-brewer-parameters",
@@ -197,7 +348,17 @@
         "FITTED_PARAMETERS"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "FITTED_PARAMETERS",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "SCALAR_VALUES_COPIED_WITH_ATTRIBUTION",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-mastersizer-psd",
@@ -208,7 +369,17 @@
         "MEASURED_DISTRIBUTION"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "MEASURED_DISTRIBUTION",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": null
     },
     {
       "artifact_id": "waszkiewicz-equilibrium-windows",
@@ -219,7 +390,17 @@
         "PROCESSED_PER_BREW_WINDOWS"
       ],
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
-      "redistribution": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY"
+      "repository_url": "https://github.com/trbrewer/puckworks.git",
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "artifact_type": "PROCESSED_PER_BREW_WINDOWS",
+      "source_relationship": "LOCKED_PUCKWORKS_DATA_RECORD",
+      "rights_holder_or_source": "Waszkiewicz et al. / Zenodo 10.5281/zenodo.18046315",
+      "license_or_restriction": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "redistribution_treatment": "NOT_VENDORED_METADATA_AND_SMALL_FACTS_ONLY",
+      "exact_part_used": "identity, rights, processing, units, selectors, compact scalar parameters, or summary statistics as applicable",
+      "use_treatment": "PARAPHRASED_OR_REFERENCED_NO_COMPLETE_SERIES_COPIED",
+      "additional_inspection_reason": "Required to describe the conflicting 110-120 s and 100 s equilibrium observables."
     }
   ],
   "quantity_inventory": [
@@ -227,11 +408,10 @@
       "quantity_id": "dose-dry",
       "symbol": "m0",
       "canonical_name": "dry coffee dose",
-      "classification": "direct observation",
+      "classification": "DIRECT_OBSERVATION",
       "value_status": "KNOWN",
       "value": 18.5,
       "admissible_range": null,
-      "units": "g",
       "basis": {
         "material": "dry coffee mass",
         "spatial": "whole prepared basket charge",
@@ -251,24 +431,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_PRESCRIBED_INPUT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "g",
+      "dimensional_form": "g",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "pre-brew",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "basket-nominal-diameter",
       "symbol": "D_basket",
       "canonical_name": "nominal basket diameter",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 58.0,
       "admissible_range": null,
-      "units": "mm",
       "basis": {
         "material": "geometric diameter",
         "spatial": "basket nominal",
@@ -288,24 +474,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_PRESCRIBED_INPUT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Puckworks provenance separately records a 56 mm bed/hydraulic diameter.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "mm",
+      "dimensional_form": "mm",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "time-invariant",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "basket-nominal-diameter"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "bed-hydraulic-diameter",
       "symbol": "D_bed",
       "canonical_name": "bed or hydraulic diameter",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 56.0,
       "admissible_range": null,
-      "units": "mm",
       "basis": {
         "material": "geometric diameter",
         "spatial": "coffee-bed flow area",
@@ -325,24 +519,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_PRESCRIBED_INPUT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Must not be silently substituted for the nominal 58 mm basket.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "mm",
+      "dimensional_form": "mm",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "time-invariant",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "bed-hydraulic-diameter"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "basket-radius",
       "symbol": "r_basket",
       "canonical_name": "hydraulic basket radius",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 0.028,
       "admissible_range": null,
-      "units": "m",
       "basis": {
         "material": "geometric radius",
         "spatial": "coffee-bed flow area",
@@ -362,24 +564,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_PRESCRIBED_INPUT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "m",
+      "dimensional_form": "m",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "time-invariant",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "initial-bed-height",
       "symbol": "h0",
       "canonical_name": "initial bed height",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 0.01,
       "admissible_range": null,
-      "units": "m",
       "basis": {
         "material": "geometric height",
         "spatial": "initial coffee bed",
@@ -399,24 +607,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_PRESCRIBED_INPUT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "m",
+      "dimensional_form": "m",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "pre-brew",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "nominal-water-viscosity",
       "symbol": "mu",
       "canonical_name": "nominal water dynamic viscosity",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 0.000315,
       "admissible_range": null,
-      "units": "Pa s",
       "basis": {
         "material": "pure-water property",
         "spatial": "fluid throughout rig/bed",
@@ -436,24 +650,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_ENGINEERING_ASSUMPTION",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Concentration-dependent liquor viscosity is not represented.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "Pa s",
+      "dimensional_form": "Pa s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "nominal at 90 degC",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "nominal-water-viscosity"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "measured-brew-temperature",
       "symbol": "T_brew",
       "canonical_name": "measured brew-water temperature",
-      "classification": "unavailable",
+      "classification": "UNAVAILABLE",
       "value_status": "UNAVAILABLE",
       "value": null,
       "admissible_range": null,
-      "units": "degC",
       "basis": {
         "material": "water temperature",
         "spatial": "basket inlet or bed",
@@ -473,24 +695,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "MISSING_SOURCE_INPUT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "90 degC is the viscosity reference, not an identified measured temperature trace.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "degC",
+      "dimensional_form": "degC",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "shot history",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "measured-brew-temperature"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "machine-model",
       "symbol": null,
       "canonical_name": "espresso machine model",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": "Sanremo Zoe",
       "admissible_range": null,
-      "units": null,
       "basis": {
         "material": "equipment identity",
         "spatial": "machine",
@@ -510,24 +740,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "SOURCE_CONTEXT_ONLY",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": null,
+      "dimensional_form": null,
+      "gauge_or_absolute_basis": null,
+      "time_origin": "campaign-wide",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "grinder-model",
       "symbol": null,
       "canonical_name": "grinder model",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": "Fiorenzato F64",
       "admissible_range": null,
-      "units": null,
       "basis": {
         "material": "equipment identity",
         "spatial": "grinder",
@@ -547,24 +783,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "SOURCE_CONTEXT_ONLY",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": null,
+      "dimensional_form": null,
+      "gauge_or_absolute_basis": null,
+      "time_origin": "campaign-wide",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "grinder-setting",
       "symbol": null,
       "canonical_name": "grinder setting",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 1.9,
       "admissible_range": null,
-      "units": "manufacturer setting",
       "basis": {
         "material": "device-specific setting",
         "spatial": "grinder",
@@ -584,24 +826,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "SOURCE_CONTEXT_ONLY",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Not transferable as a physical particle-size specification.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "manufacturer setting",
+      "dimensional_form": "manufacturer setting",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "campaign-wide",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "grinder-setting"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "coffee-context",
       "symbol": null,
       "canonical_name": "coffee identity and roast",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": "single Brazilian light-medium roast",
       "admissible_range": null,
-      "units": null,
       "basis": {
         "material": "coffee identity",
         "spatial": "campaign-wide coffee",
@@ -621,24 +871,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "SOURCE_CONTEXT_ONLY",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Variety, lot, age, moisture, and detailed roast metrics are unavailable.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": null,
+      "dimensional_form": null,
+      "gauge_or_absolute_basis": null,
+      "time_origin": "campaign-wide",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "coffee-context"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "tamp-load",
       "symbol": null,
       "canonical_name": "tamp load",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 20.0,
       "admissible_range": null,
-      "units": "kg",
       "basis": {
         "material": "reported mass-equivalent load; force conversion not supplied",
         "spatial": "whole puck",
@@ -658,24 +916,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_PRESCRIBED_INPUT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Source reports kg, not a force-time or stress distribution.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "kg",
+      "dimensional_form": "kg",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "pre-brew",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "tamp-load"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "wdt-used",
       "symbol": null,
       "canonical_name": "WDT preparation used",
-      "classification": "source-reported parameter",
+      "classification": "SOURCE_REPORTED_PARAMETER",
       "value_status": "KNOWN",
       "value": true,
       "admissible_range": null,
-      "units": "boolean",
       "basis": {
         "material": "preparation method",
         "spatial": "whole dose",
@@ -695,24 +961,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "SOURCE_CONTEXT_ONLY",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "boolean",
+      "dimensional_form": "boolean",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "pre-brew",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "reference-pressure-bin",
       "symbol": "P_ref",
       "canonical_name": "processed reference-pressure condition",
-      "classification": "derived value",
+      "classification": "DERIVED_VALUE",
       "value_status": "KNOWN",
       "value": 9.0,
       "admissible_range": null,
-      "units": "bar",
       "basis": {
         "material": "gauge-pressure bin derived from median line pressure",
         "spatial": "line/pump-side node used for condition assignment",
@@ -732,27 +1004,35 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "SOURCE_CONDITION_IDENTIFIER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "The nominal 9 bar bin is not the basket-pressure trace and is not a frozen solver boundary.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "bar",
+      "dimensional_form": "bar",
+      "gauge_or_absolute_basis": "GAUGE",
+      "time_origin": "shot-level median then rounded to 0.5 bar",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "reference-pressure-bin"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "line-pressure-trace-9bar",
       "symbol": "P_line(t)",
       "canonical_name": "line or pump-side pressure trace for 9 bar bin",
-      "classification": "direct observation",
+      "classification": "DIRECT_OBSERVATION",
       "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
       "value": null,
       "admissible_range": [
         8.6663,
         9.315005
       ],
-      "units": "bar",
       "basis": {
         "material": "gauge pressure",
         "spatial": "line/pump-side sensor node",
@@ -772,27 +1052,39 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_TRACE",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Values remain in the external CC-BY dataset; no full trace is copied.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
+      },
+      "unit": "bar",
+      "dimensional_form": "bar",
+      "gauge_or_absolute_basis": "GAUGE",
+      "time_origin": "processed 0-100 s mean trace",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "line-pressure-trace-9bar"
+      ],
+      "source_series_reference": {
+        "artifact_id": "waszkiewicz-mean-traces",
+        "selector": "9 bar rows, pressure__bar",
+        "complete_series_copied": false
       }
     },
     {
       "quantity_id": "basket-pressure-trace-9bar",
       "symbol": "P_basket(t)",
       "canonical_name": "derived basket or puck-inlet pressure trace for 9 bar bin",
-      "classification": "derived value",
+      "classification": "DERIVED_VALUE",
       "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
       "value": null,
       "admissible_range": [
         8.383076,
         9.031585
       ],
-      "units": "bar",
       "basis": {
         "material": "gauge pressure after brewer pressure-loss subtraction",
         "spatial": "basket/puck inlet",
@@ -812,27 +1104,39 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_TRACE",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Derived from line pressure and smoothed flow using the fitted brewer quadratic; not a direct pressure observation.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
+      },
+      "unit": "bar",
+      "dimensional_form": "bar",
+      "gauge_or_absolute_basis": "GAUGE",
+      "time_origin": "processed 0-100 s mean trace",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "basket-pressure-trace-9bar"
+      ],
+      "source_series_reference": {
+        "artifact_id": "waszkiewicz-mean-traces",
+        "selector": "9 bar rows, basket_pressure__bar",
+        "complete_series_copied": false
       }
     },
     {
       "quantity_id": "cup-mass-trace-9bar",
       "symbol": "m_cup(t)",
       "canonical_name": "collected mass trace for 9 bar bin",
-      "classification": "direct observation",
+      "classification": "DIRECT_OBSERVATION",
       "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
       "value": null,
       "admissible_range": [
         -0.003094,
         136.35122
       ],
-      "units": "g",
       "basis": {
         "material": "recorded cup/scale mass",
         "spatial": "collection scale",
@@ -852,27 +1156,39 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_TRACE",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Alignment and aggregation are processed; full trace remains external.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
+      },
+      "unit": "g",
+      "dimensional_form": "g",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "processed 0-100 s mean trace",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "cup-mass-trace-9bar"
+      ],
+      "source_series_reference": {
+        "artifact_id": "waszkiewicz-mean-traces",
+        "selector": "9 bar rows, mass__g",
+        "complete_series_copied": false
       }
     },
     {
       "quantity_id": "mass-flow-trace-9bar",
       "symbol": "Q_m(t)",
       "canonical_name": "mass-flow-rate trace for 9 bar bin",
-      "classification": "derived value",
+      "classification": "DERIVED_VALUE",
       "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
       "value": null,
       "admissible_range": [
         -0.009459,
         2.019789
       ],
-      "units": "g/s",
       "basis": {
         "material": "mass derivative",
         "spatial": "collection scale / inferred outlet flow",
@@ -892,27 +1208,39 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_TRACE",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Savitzky-Golay derivative, window 31 and polynomial order 1; not direct volumetric flow.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
+      },
+      "unit": "g/s",
+      "dimensional_form": "g/s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "processed 0-100 s mean trace",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "mass-flow-trace-9bar"
+      ],
+      "source_series_reference": {
+        "artifact_id": "waszkiewicz-mean-traces",
+        "selector": "9 bar rows, mass_flow_rate__g_per_s",
+        "complete_series_copied": false
       }
     },
     {
       "quantity_id": "trace-time-grid",
       "symbol": "t_trace",
       "canonical_name": "processed trace time",
-      "classification": "derived value",
+      "classification": "DERIVED_VALUE",
       "value_status": "KNOWN_RANGE",
       "value": null,
       "admissible_range": [
         0.0,
         100.0
       ],
-      "units": "s",
       "basis": {
         "material": "elapsed time after source alignment",
         "spatial": "all trace nodes",
@@ -932,24 +1260,36 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "SOURCE_TIME_COORDINATE",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Solver time-origin mapping is not frozen by WP01R-002.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
+      },
+      "unit": "s",
+      "dimensional_form": "s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "1000 points spanning 0-100 s inclusive",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "trace-time-grid"
+      ],
+      "source_series_reference": {
+        "artifact_id": "waszkiewicz-data-provenance",
+        "selector": "Raw per-brew reduction and common-grid interpolation",
+        "complete_series_copied": false
       }
     },
     {
       "quantity_id": "tds-fraction-values",
       "symbol": "TDS_i",
       "canonical_name": "five-second fraction TDS",
-      "classification": "direct observation",
+      "classification": "DIRECT_OBSERVATION",
       "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
       "value": null,
       "admissible_range": null,
-      "units": "percent",
       "basis": {
         "material": "source-reported TDS percentage; exact mass/volume basis unresolved",
         "spatial": "collected beverage fractions",
@@ -969,27 +1309,39 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_COMPARISON_DATA",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Exact downstream TDS basis and protection decision belong to issues #4/#5.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
+      },
+      "unit": "percent",
+      "dimensional_form": "percent",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "12 interval midpoints from 2.5 to 57.5 s",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "tds-fraction-values"
+      ],
+      "source_series_reference": {
+        "artifact_id": "waszkiewicz-tds-fractions",
+        "selector": "tds__percent and tds_std__percent columns",
+        "complete_series_copied": false
       }
     },
     {
       "quantity_id": "tds-fraction-time",
       "symbol": "t_TDS",
       "canonical_name": "TDS fraction midpoint time",
-      "classification": "derived value",
+      "classification": "DERIVED_VALUE",
       "value_status": "KNOWN_RANGE",
       "value": null,
       "admissible_range": [
         2.5,
         57.5
       ],
-      "units": "s",
       "basis": {
         "material": "elapsed midpoint of each collected five-second fraction",
         "spatial": "collection fractions",
@@ -1009,24 +1361,36 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "SOURCE_TIME_COORDINATE",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Alignment to pressure/first-drip/solver time remains unresolved.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
+      },
+      "unit": "s",
+      "dimensional_form": "s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "2.5, 7.5, ..., 57.5 s",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "tds-fraction-time"
+      ],
+      "source_series_reference": {
+        "artifact_id": "waszkiewicz-tds-fractions",
+        "selector": "time__s column",
+        "complete_series_copied": false
       }
     },
     {
       "quantity_id": "critical-pressure-fit",
       "symbol": "P_c",
       "canonical_name": "critical pressure fit",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 12.391550000000002,
       "admissible_range": null,
-      "units": "bar",
       "basis": {
         "material": "basket gauge-pressure fit parameter",
         "spatial": "bed pressure relation",
@@ -1046,24 +1410,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Weakly constrained near the measured range edge; issue #5 decides role and bounds.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "bar",
+      "dimensional_form": "bar",
+      "gauge_or_absolute_basis": "GAUGE",
+      "time_origin": "equilibrium fit",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "critical-pressure-fit"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "critical-flow-fit",
       "symbol": "Q_c",
       "canonical_name": "critical mass-flow fit",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 1.8969919954879988,
       "admissible_range": null,
-      "units": "g/s",
       "basis": {
         "material": "mass-flow rate",
         "spatial": "bed outlet",
@@ -1083,24 +1455,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "g/s",
+      "dimensional_form": "g/s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "equilibrium fit",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "tds-sigmoid-amplitude",
       "symbol": "k_t",
       "canonical_name": "TDS sigmoid amplitude",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 25.624173604005303,
       "admissible_range": null,
-      "units": "percent",
       "basis": {
         "material": "source TDS basis",
         "spatial": "collected beverage",
@@ -1120,24 +1498,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "percent",
+      "dimensional_form": "percent",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "Eq. 19 fit",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "tds-sigmoid-location",
       "symbol": "l_t",
       "canonical_name": "TDS sigmoid time location",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 20.855558619705484,
       "admissible_range": null,
-      "units": "s",
       "basis": {
         "material": "source trace time",
         "spatial": "collected beverage",
@@ -1157,24 +1541,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "s",
+      "dimensional_form": "s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "Eq. 19 fit",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "tds-sigmoid-scale",
       "symbol": "m_t",
       "canonical_name": "TDS sigmoid time scale",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 8.873330256359981,
       "admissible_range": null,
-      "units": "s",
       "basis": {
         "material": "source trace time",
         "spatial": "collected beverage",
@@ -1194,24 +1584,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "s",
+      "dimensional_form": "s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "Eq. 19 fit",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "solids-sigmoid-amplitude",
       "symbol": "k_m",
       "canonical_name": "dissolved-mass sigmoid amplitude",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 2.257390325360356,
       "admissible_range": null,
-      "units": "g",
       "basis": {
         "material": "dissolved-solids mass derived from TDS times flow",
         "spatial": "cumulative beverage/bed dissolution model",
@@ -1231,24 +1627,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Soft circularity: derived using TDS and flow from the same rig.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "g",
+      "dimensional_form": "g",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "Eq. 20 fit",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "solids-sigmoid-amplitude"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "solids-sigmoid-location",
       "symbol": "l_m",
       "canonical_name": "dissolved-mass sigmoid time location",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 19.833265422011824,
       "admissible_range": null,
-      "units": "s",
       "basis": {
         "material": "source trace time",
         "spatial": "dissolved-mass model",
@@ -1268,24 +1672,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "s",
+      "dimensional_form": "s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "Eq. 20 fit",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "solids-sigmoid-scale",
       "symbol": "m_m",
       "canonical_name": "dissolved-mass sigmoid time scale",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 9.341259347305948,
       "admissible_range": null,
-      "units": "s",
       "basis": {
         "material": "source trace time",
         "spatial": "dissolved-mass model",
@@ -1305,24 +1715,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_CALIBRATION_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "s",
+      "dimensional_form": "s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "Eq. 20 fit",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "first-drop-offset",
       "symbol": "t_offset",
       "canonical_name": "first-drop time offset used by solids fit",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 8.0,
       "admissible_range": null,
-      "units": "s",
       "basis": {
         "material": "source processing time",
         "spatial": "dissolved-mass model",
@@ -1342,24 +1758,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_TIME_MAPPING_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Relationship to the solver first-drip event is not frozen.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "s",
+      "dimensional_form": "s",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "offset relative to source time origin",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "first-drop-offset"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "brewer-quadratic-a",
       "symbol": "a",
       "canonical_name": "brewer pressure-loss quadratic coefficient",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 0.017184292098914252,
       "admissible_range": null,
-      "units": "bar/(g/s)^2",
       "basis": {
         "material": "delta-p fit using mass flow",
         "spatial": "line-to-basket adapter",
@@ -1379,24 +1803,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_MACHINE_ADAPTER_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "bar/(g/s)^2",
+      "dimensional_form": "bar/(g/s)^2",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "campaign calibration",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "brewer-quadratic-b",
       "symbol": "b",
       "canonical_name": "brewer pressure-loss linear coefficient",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 0.03670858658698296,
       "admissible_range": null,
-      "units": "bar/(g/s)",
       "basis": {
         "material": "delta-p fit using mass flow",
         "spatial": "line-to-basket adapter",
@@ -1416,24 +1846,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_MACHINE_ADAPTER_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "bar/(g/s)",
+      "dimensional_form": "bar/(g/s)",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "campaign calibration",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "brewer-quadratic-c",
       "symbol": "c",
       "canonical_name": "brewer pressure-loss intercept",
-      "classification": "fitted parameter",
+      "classification": "FITTED_PARAMETER",
       "value_status": "KNOWN",
       "value": 0.2831597837775055,
       "admissible_range": null,
-      "units": "bar",
       "basis": {
         "material": "delta-p fit using mass flow",
         "spatial": "line-to-basket adapter",
@@ -1453,24 +1889,30 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_MACHINE_ADAPTER_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": null,
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "bar",
+      "dimensional_form": "bar",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "campaign calibration",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [],
+      "source_series_reference": null
     },
     {
       "quantity_id": "stress-free-porosity-proxy",
       "symbol": "Phi_m",
       "canonical_name": "maximum dissolved-mass porosity proxy",
-      "classification": "derived value",
+      "classification": "DERIVED_VALUE",
       "value_status": "KNOWN",
       "value": 0.12202109866812735,
       "admissible_range": null,
-      "units": "dimensionless",
       "basis": {
         "material": "k_m divided by dry dose m0",
         "spatial": "bed model state",
@@ -1490,24 +1932,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_MODEL_STATE_PARAMETER",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "This proxy attributes porosity change to dissolution despite observed swelling.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "dimensionless",
+      "dimensional_form": "dimensionless",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "asymptotic fitted state",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "stress-free-porosity-proxy"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "particle-size-distribution",
       "symbol": "PSD",
       "canonical_name": "Mastersizer volume-density particle-size distribution",
-      "classification": "direct observation",
+      "classification": "DIRECT_OBSERVATION",
       "value_status": "RIGHTS_WITHHELD_FROM_DOSSIER",
       "value": null,
       "admissible_range": null,
-      "units": "um and volume percent",
       "basis": {
         "material": "volume-weighted particle-size distribution",
         "spatial": "coffee grounds sample",
@@ -1527,24 +1977,36 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "CANDIDATE_SOURCE_CONTEXT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Full distribution remains external; no values are transcribed here.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
+      },
+      "unit": "um and volume percent",
+      "dimensional_form": "um and volume percent",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "pre-brew",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "particle-size-distribution"
+      ],
+      "source_series_reference": {
+        "artifact_id": "waszkiewicz-mastersizer-psd",
+        "selector": "48 bins and three replicate rows",
+        "complete_series_copied": false
       }
     },
     {
       "quantity_id": "wet-bed-youngs-modulus",
       "symbol": "Y",
       "canonical_name": "wet coffee-bed Young modulus",
-      "classification": "unavailable",
+      "classification": "UNAVAILABLE",
       "value_status": "UNAVAILABLE",
       "value": null,
       "admissible_range": null,
-      "units": "bar",
       "basis": {
         "material": "wet-bed elastic modulus",
         "spatial": "coffee bed",
@@ -1564,24 +2026,32 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "MISSING_SOURCE_INPUT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "Approximately 400 bar is for whole roasted beans and is not admissible as the wet-bed value.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
-      }
+      },
+      "unit": "bar",
+      "dimensional_form": "bar",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "saturated model regime",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "wet-bed-youngs-modulus"
+      ],
+      "source_series_reference": null
     },
     {
       "quantity_id": "effective-pore-diameter",
       "symbol": "d_p",
       "canonical_name": "effective pore diameter",
-      "classification": "unavailable",
+      "classification": "UNAVAILABLE",
       "value_status": "UNAVAILABLE",
       "value": null,
       "admissible_range": null,
-      "units": "m",
       "basis": {
         "material": "effective Carman-Kozeny pore scale",
         "spatial": "coffee bed",
@@ -1601,16 +2071,231 @@
       },
       "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
       "proposed_r1_role": "MISSING_SOURCE_INPUT",
-      "role_authorization": "NOT_FROZEN_BY_WP01R_002",
       "unresolved_ambiguity": "A roughly 6 um discussion estimate is not a reported fitted input.",
       "null_semantics": {
         "value": "null means unavailable or unresolved, as stated by value_status",
         "admissible_range": "null means no source range is recorded",
         "pressure_node": "null means not applicable to a non-pressure quantity",
         "unresolved_ambiguity": "null means none identified at dossier scope"
+      },
+      "unit": "m",
+      "dimensional_form": "m",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "saturated model regime",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "effective-pore-diameter"
+      ],
+      "source_series_reference": null
+    },
+    {
+      "quantity_id": "modeled-bed-area",
+      "symbol": "A_bed",
+      "canonical_name": "modeled bed cross-sectional area",
+      "classification": "DERIVED_VALUE",
+      "value_status": "KNOWN",
+      "value": 0.002463008640414398,
+      "admissible_range": null,
+      "basis": {
+        "material": "geometric area derived from source radius",
+        "spatial": "coffee-bed flow area",
+        "temporal": "time-invariant"
+      },
+      "pressure_node": null,
+      "source": {
+        "artifact_id": "waszkiewicz-constants",
+        "exact_location": "derived as pi * r_basket__m^2"
+      },
+      "uncertainty": {
+        "status": "DERIVED_FROM_APPROXIMATE_RADIUS",
+        "value": null,
+        "units": null,
+        "kind": null,
+        "note": null
+      },
+      "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "proposed_r1_role": "CANDIDATE_PRESCRIBED_INPUT",
+      "unresolved_ambiguity": "Derived from the approximate 0.028 m radius, not from nominal 58 mm hardware diameter.",
+      "unit": "m2",
+      "dimensional_form": "m2",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "time-invariant",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "modeled-bed-area"
+      ],
+      "source_series_reference": null
+    },
+    {
+      "quantity_id": "carman-kozeny-coefficient",
+      "symbol": "kappa",
+      "canonical_name": "Carman-Kozeny coefficient",
+      "classification": "SOURCE_REPORTED_PARAMETER",
+      "value_status": "KNOWN",
+      "value": 150.0,
+      "admissible_range": null,
+      "basis": {
+        "material": "nominal literature closure coefficient",
+        "spatial": "saturated 1D bed model",
+        "temporal": "time-invariant saturated regime"
+      },
+      "pressure_node": null,
+      "source": {
+        "artifact_id": "waszkiewicz-model-card",
+        "exact_location": "Governing equations and Parameters: kappa = 150"
+      },
+      "uncertainty": {
+        "status": "NOT_REPORTED",
+        "value": null,
+        "units": null,
+        "kind": null,
+        "note": "Nominal literature value."
+      },
+      "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "proposed_r1_role": "CANDIDATE_MODEL_PARAMETER",
+      "unresolved_ambiguity": "Issue #5 must decide whether this source-model closure belongs in the R1 contract.",
+      "unit": "dimensionless",
+      "dimensional_form": "dimensionless",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "time-invariant saturated regime",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "carman-kozeny-coefficient"
+      ],
+      "source_series_reference": null
+    },
+    {
+      "quantity_id": "dissolved-mass-trajectory",
+      "symbol": "m_d(t)",
+      "canonical_name": "source-model dissolved-mass trajectory",
+      "classification": "DERIVED_VALUE",
+      "value_status": "SOURCE_SERIES_REFERENCE",
+      "value": null,
+      "admissible_range": null,
+      "basis": {
+        "material": "TDS times same-rig mass flow followed by fitted sigmoid",
+        "spatial": "cumulative dissolved mass associated with the bed/beverage model",
+        "temporal": "source processed time with fitted 8 s offset"
+      },
+      "pressure_node": null,
+      "source": {
+        "artifact_id": "waszkiewicz-solids-calibration",
+        "exact_location": "all fitted rows and Eq. 20 model column"
+      },
+      "uncertainty": {
+        "status": "DERIVED_AND_FITTED",
+        "value": null,
+        "units": null,
+        "kind": null,
+        "note": "Soft circularity with same-rig Q(t)."
+      },
+      "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "proposed_r1_role": "CANDIDATE_SOURCE_RECONSTRUCTION",
+      "unresolved_ambiguity": "Not independent validation and not a protected comparison by default.",
+      "unit": "g",
+      "dimensional_form": "g",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "source processed time with fitted 8 s offset",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "dissolved-mass-trajectory"
+      ],
+      "source_series_reference": {
+        "artifact_id": "waszkiewicz-solids-calibration",
+        "selector": "all fitted rows and Eq. 20 model column",
+        "complete_series_copied": false
       }
+    },
+    {
+      "quantity_id": "shot-matched-tds",
+      "symbol": "TDS_shot(t)",
+      "canonical_name": "shot-matched TDS trajectory",
+      "classification": "UNAVAILABLE",
+      "value_status": "UNAVAILABLE",
+      "value": null,
+      "admissible_range": null,
+      "basis": {
+        "material": "source TDS basis unresolved",
+        "spatial": "individual brew",
+        "temporal": "per-shot trace time"
+      },
+      "pressure_node": null,
+      "source": {
+        "artifact_id": "waszkiewicz-data-provenance",
+        "exact_location": "missing-data caveat: TDS fractions are not shot matched"
+      },
+      "uncertainty": {
+        "status": "UNAVAILABLE",
+        "value": null,
+        "units": null,
+        "kind": null,
+        "note": null
+      },
+      "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "proposed_r1_role": "MISSING_SOURCE_QUANTITY",
+      "unresolved_ambiguity": "Unavailable by source deposit design.",
+      "unit": "percent",
+      "dimensional_form": "percent",
+      "gauge_or_absolute_basis": null,
+      "time_origin": "per-shot trace time",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "shot-matched-tds"
+      ],
+      "source_series_reference": null
+    },
+    {
+      "quantity_id": "source-excluded-brew-identities",
+      "symbol": null,
+      "canonical_name": "identities and exclusion reasons for source-excluded brews",
+      "classification": "UNAVAILABLE",
+      "value_status": "UNAVAILABLE",
+      "value": null,
+      "admissible_range": null,
+      "basis": {
+        "material": "campaign inclusion/exclusion provenance",
+        "spatial": "source campaign",
+        "temporal": "campaign-wide"
+      },
+      "pressure_node": null,
+      "source": {
+        "artifact_id": "waszkiewicz-data-provenance",
+        "exact_location": "Not ingested / caveats"
+      },
+      "uncertainty": {
+        "status": "UNAVAILABLE",
+        "value": null,
+        "units": null,
+        "kind": null,
+        "note": null
+      },
+      "rights_status": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "proposed_r1_role": "MISSING_SOURCE_PROVENANCE",
+      "unresolved_ambiguity": "Excluded files exist upstream, but a complete governed identity/reason register is unavailable here.",
+      "unit": null,
+      "dimensional_form": null,
+      "gauge_or_absolute_basis": null,
+      "time_origin": "campaign-wide",
+      "processing_or_transformation": "See source artifact and exact location; processing is separately inventoried.",
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "unresolved_ambiguity_references": [
+        "source-excluded-brew-identities"
+      ],
+      "source_series_reference": null
     }
   ],
+  "quantity_classification_counts": {
+    "DIRECT_OBSERVATION": 5,
+    "SOURCE_REPORTED_PARAMETER": 12,
+    "UNAVAILABLE": 5,
+    "DERIVED_VALUE": 8,
+    "FITTED_PARAMETER": 12
+  },
   "pressure_node_map": [
     {
       "node_id": "REFERENCE_PRESSURE_BIN",
@@ -1641,36 +2326,41 @@
       "solver_mapping_status": "NOT_FROZEN_BY_WP01R_002"
     }
   ],
-  "time_node_map": [
+  "time_origin_map": [
     {
       "node_id": "SOURCE_TRACE_ZERO",
       "definition": "Sample after the last out-of-tolerance p2 value within the first 500 raw samples.",
       "status": "PROCESSING_DEFINED",
-      "solver_mapping_status": "NOT_FROZEN_BY_WP01R_002"
+      "solver_mapping_status": "NOT_FROZEN_BY_WP01R_002",
+      "future_r1_openfoam_time_origin_frozen": false
     },
     {
       "node_id": "PROCESSED_TRACE_GRID",
       "definition": "0-100 s inclusive, interpolated to 1000 points.",
       "status": "PROCESSING_DEFINED",
-      "solver_mapping_status": "NOT_FROZEN_BY_WP01R_002"
+      "solver_mapping_status": "NOT_FROZEN_BY_WP01R_002",
+      "future_r1_openfoam_time_origin_frozen": false
     },
     {
       "node_id": "TDS_FRACTION_MIDPOINT",
       "definition": "Midpoints 2.5-57.5 s of twelve five-second beverage fractions.",
       "status": "PROCESSING_DEFINED",
-      "solver_mapping_status": "UNRESOLVED"
+      "solver_mapping_status": "UNRESOLVED",
+      "future_r1_openfoam_time_origin_frozen": false
     },
     {
       "node_id": "SOURCE_EQUILIBRIUM_WINDOW",
       "definition": "Source long-run flow used 110-120 s; Puckworks also records 100 s endpoint and 90-100 s windows.",
       "status": "CONFLICT_RETAINED",
-      "solver_mapping_status": "ISSUE_5_DECISION_REQUIRED"
+      "solver_mapping_status": "ISSUE_5_DECISION_REQUIRED",
+      "future_r1_openfoam_time_origin_frozen": false
     },
     {
       "node_id": "SOLIDS_FIRST_DROP_OFFSET",
       "definition": "8.0 s fitted offset in the dissolved-mass sigmoid.",
       "status": "FITTED_PARAMETER",
-      "solver_mapping_status": "ISSUE_5_DECISION_REQUIRED"
+      "solver_mapping_status": "ISSUE_5_DECISION_REQUIRED",
+      "future_r1_openfoam_time_origin_frozen": false
     }
   ],
   "processing_and_digitization_inventory": [
@@ -1678,31 +2368,61 @@
       "processing_id": "formatted-source-files",
       "method": "Byte-exact repository pull from Zenodo-formatted data.",
       "digitized": false,
-      "code_executed_in_wp01r_002": false
+      "code_executed_in_wp01r_002": false,
+      "new_digitization_performed": false,
+      "machine_readable_locked_data_used": true
     },
     {
       "processing_id": "per-brew-reduction",
       "method": "Puckworks re-expression of documented source reduction: pressure-bin assignment, source time alignment, 100 s truncation, unit conversion, Savitzky-Golay mass derivative, brewer subtraction, and common-grid interpolation.",
       "digitized": false,
       "source_code_rights": "Original GPLv3 producer code not ingested; committed Puckworks outputs reviewed statically.",
-      "code_executed_in_wp01r_002": false
+      "code_executed_in_wp01r_002": false,
+      "new_digitization_performed": false,
+      "machine_readable_locked_data_used": true
     },
     {
       "processing_id": "figure-digitization",
       "method": "No figure digitization is used in this dossier.",
       "digitized": false,
       "digitized_quantity_count": 0,
-      "code_executed_in_wp01r_002": false
+      "code_executed_in_wp01r_002": false,
+      "new_digitization_performed": false,
+      "machine_readable_locked_data_used": true
     }
   ],
-  "rights_and_redistribution": {
-    "puckworks_code_license": "MIT",
-    "waszkiewicz_data": "CC-BY-4.0_WITH_ATTRIBUTION",
-    "waszkiewicz_article": "CITATION_ONLY",
-    "source_analysis_code": "GPLv3_NOT_INGESTED_OR_EXECUTED",
-    "rights_restricted_material_vendored": false,
-    "per_artifact_review_required": true
-  },
+  "rights_inventory": [
+    {
+      "rights_id": "puckworks-code",
+      "material": "Puckworks repository and independent reimplementation code",
+      "status": "MIT",
+      "treatment": "Referenced as external locked dependency; not vendored."
+    },
+    {
+      "rights_id": "waszkiewicz-data",
+      "material": "Waszkiewicz Zenodo deposited data",
+      "status": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "treatment": "Scalar values, selectors, hashes, and compact statistics only; no complete dataset copied."
+    },
+    {
+      "rights_id": "waszkiewicz-article",
+      "material": "AIP journal article",
+      "status": "CITATION_ONLY",
+      "treatment": "Minimal factual paraphrase; no article figures, tables, or long text."
+    },
+    {
+      "rights_id": "source-analysis-code",
+      "material": "Authors' analysis scripts",
+      "status": "GPLv3_NOT_COPIED",
+      "treatment": "Not copied, imported, or executed."
+    },
+    {
+      "rights_id": "blanket-clearance",
+      "material": "Third-party material referenced by Puckworks",
+      "status": "NO_BLANKET_CLEARANCE",
+      "treatment": "Per-artifact rights review remains required."
+    }
+  ],
   "missing_data_and_ambiguities": [
     {
       "register_id": "journal-preprint-reconciliation",
@@ -1846,23 +2566,255 @@
       ]
     }
   ],
-  "acceptance": {
-    "every_candidate_quantity_has_provenance": true,
-    "units_and_bases_explicit": true,
-    "pressure_nodes_explicit": true,
-    "time_nodes_explicit": true,
-    "digitized_distinct_from_reported": true,
-    "fitted_distinct_from_observed": true,
-    "rights_per_source_artifact": true,
-    "conflicts_retained": true,
-    "missing_data_registered": true,
-    "role_contract_frozen": false,
-    "role_contract_status": "NOT_AUTHORIZED_BY_WP01R_002"
+  "proposed_wp01r_003_roles": [
+    {
+      "proposed_role": "CANDIDATE_CALIBRATION_PARAMETER",
+      "quantity_ids": [
+        "critical-pressure-fit",
+        "critical-flow-fit",
+        "tds-sigmoid-amplitude",
+        "tds-sigmoid-location",
+        "tds-sigmoid-scale",
+        "solids-sigmoid-amplitude",
+        "solids-sigmoid-location",
+        "solids-sigmoid-scale"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_COMPARISON_DATA",
+      "quantity_ids": [
+        "tds-fraction-values"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_ENGINEERING_ASSUMPTION",
+      "quantity_ids": [
+        "nominal-water-viscosity"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_MACHINE_ADAPTER_PARAMETER",
+      "quantity_ids": [
+        "brewer-quadratic-a",
+        "brewer-quadratic-b",
+        "brewer-quadratic-c"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_MODEL_PARAMETER",
+      "quantity_ids": [
+        "carman-kozeny-coefficient"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_MODEL_STATE_PARAMETER",
+      "quantity_ids": [
+        "stress-free-porosity-proxy"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_PRESCRIBED_INPUT",
+      "quantity_ids": [
+        "dose-dry",
+        "basket-nominal-diameter",
+        "bed-hydraulic-diameter",
+        "basket-radius",
+        "initial-bed-height",
+        "tamp-load",
+        "modeled-bed-area"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_SOURCE_CONTEXT",
+      "quantity_ids": [
+        "particle-size-distribution"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_SOURCE_RECONSTRUCTION",
+      "quantity_ids": [
+        "dissolved-mass-trajectory"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_SOURCE_TRACE",
+      "quantity_ids": [
+        "line-pressure-trace-9bar",
+        "basket-pressure-trace-9bar",
+        "cup-mass-trace-9bar",
+        "mass-flow-trace-9bar"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "CANDIDATE_TIME_MAPPING_PARAMETER",
+      "quantity_ids": [
+        "first-drop-offset"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "MISSING_SOURCE_INPUT",
+      "quantity_ids": [
+        "measured-brew-temperature",
+        "wet-bed-youngs-modulus",
+        "effective-pore-diameter"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "MISSING_SOURCE_PROVENANCE",
+      "quantity_ids": [
+        "source-excluded-brew-identities"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "MISSING_SOURCE_QUANTITY",
+      "quantity_ids": [
+        "shot-matched-tds"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "SOURCE_CONDITION_IDENTIFIER",
+      "quantity_ids": [
+        "reference-pressure-bin"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "SOURCE_CONTEXT_ONLY",
+      "quantity_ids": [
+        "machine-model",
+        "grinder-model",
+        "grinder-setting",
+        "coffee-context",
+        "wdt-used"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    },
+    {
+      "proposed_role": "SOURCE_TIME_COORDINATE",
+      "quantity_ids": [
+        "trace-time-grid",
+        "tds-fraction-time"
+      ],
+      "role_status": "PROPOSED_NOT_FROZEN",
+      "decision_owner": "WP01R-003 / issue #5"
+    }
+  ],
+  "evidence_strength": [
+    {
+      "evidence_id": "equilibrium-fit",
+      "classification": "EQUILIBRIUM_CURVE_FIT_AND_REPRODUCTION",
+      "independent_validation": false
+    },
+    {
+      "evidence_id": "within-rig",
+      "classification": "WITHIN_RIG_EVIDENCE",
+      "independent_validation": false
+    },
+    {
+      "evidence_id": "nine-bar-reconstruction",
+      "classification": "POST_FIT_TIME_DEPENDENT_RECONSTRUCTION",
+      "soft_circularity": "m_d(t) derives from same-rig TDS(t) times Q(t)",
+      "independent_validation": false,
+      "protected_comparison_by_default": false
+    },
+    {
+      "evidence_id": "independent-validation",
+      "classification": "INDEPENDENT_VALIDATION",
+      "status": "NOT_ESTABLISHED"
+    }
+  ],
+  "experimental_unit": {
+    "nine_bar_distinct_shots": 5,
+    "aggregate_trace_role": "PRESSURE_LEVEL_MEAN_TRACE",
+    "aggregate_std_columns": "STANDARD_ERRORS_OF_THE_MEAN",
+    "shot_variability_source": "traces_per_brew.csv",
+    "thirteen_bar_records": 7,
+    "thirteen_bar_distinct_brews": 6,
+    "alias_relation": "12-8-6.txt is an exact prefix of 12-8-6_alt.txt",
+    "pressure_mean_rmse_is_random_shot_error": false
   },
-  "scoped_declarations": {
+  "verification": {
+    "status": "PASS",
+    "source_artifact_identity": {
+      "status": "PASS",
+      "checked": 17,
+      "total": 17
+    },
+    "source_manifest": {
+      "status": "PASS",
+      "checked": 106,
+      "total": 106,
+      "aggregate_source_sha256": "fd4a59f08d8772b71e51fafbd4782e93cce9df0688481416cca1eb8521401ce0"
+    },
+    "scientific_inputs": {
+      "status": "PASS",
+      "checked": 19,
+      "total": 19,
+      "aggregate_sha256": "d70399a76b0023d93985d76c1c83a9a42b7148b3d71d16d1b5f88275be1ebe7a"
+    },
+    "static_validation": {
+      "status": "PASS",
+      "passed": 32,
+      "total": 32
+    },
+    "python_tests": {
+      "status": "PASS",
+      "passed": 45,
+      "total": 45
+    },
+    "no_physics": {
+      "status": "PASS",
+      "passed": 28,
+      "total": 28
+    },
+    "shell_syntax": "PASS",
+    "structured_parsing": "PASS",
+    "markdown_links": {
+      "status": "PASS",
+      "checked": 6
+    },
+    "changed_path_allowlist": {
+      "status": "PASS",
+      "expected": 8,
+      "observed": 8
+    }
+  },
+  "authorization_boundaries": {
+    "calibration_contract_frozen": false,
+    "protected_comparison_contract_frozen": false,
+    "r1_implementation_authorized": false,
     "solver_repository_governing_physics_change": false,
     "solver_repository_scientific_configuration_change": false,
-    "scientific_input_change": false,
     "openfoam_execution_count": 0,
     "parameter_fitting_count": 0,
     "puckworks_code_execution_count": 0

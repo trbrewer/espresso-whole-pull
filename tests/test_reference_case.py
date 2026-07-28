@@ -288,6 +288,69 @@ class PackageContractTests(unittest.TestCase):
         self.assertTrue(excluded(Path("docs/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.md")))
         self.assertFalse(excluded(Path("docs/evidence/arbitrary_scenario_source.md")))
 
+    def test_waszkiewicz_dossier_contract_is_complete_but_not_frozen(self) -> None:
+        dossier = json.loads(
+            (
+                ROOT / "validation/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            dossier["schema_version"],
+            "espresso.public.waszkiewicz_r1_source_dossier.v1",
+        )
+        self.assertEqual(dossier["analysis_status"], "COMPLETE")
+        self.assertEqual(
+            dossier["dossier_disposition"],
+            "READY_FOR_WP01R_003_WITH_DECLARED_GAPS",
+        )
+        self.assertEqual(
+            dossier["dependency_identity"]["commit"],
+            "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+        )
+        self.assertEqual(
+            dossier["dependency_identity"]["tree"],
+            "1d553e44ee2f7480a5df521560801b478618cc84",
+        )
+        allowed = {
+            "DIRECT_OBSERVATION",
+            "SOURCE_REPORTED_PARAMETER",
+            "DIGITIZED_VALUE",
+            "DERIVED_VALUE",
+            "FITTED_PARAMETER",
+            "ENGINEERING_ASSUMPTION",
+            "UNAVAILABLE",
+        }
+        quantities = dossier["quantity_inventory"]
+        self.assertTrue(quantities)
+        self.assertTrue(all(item["classification"] in allowed for item in quantities))
+        self.assertTrue(
+            all(item["role_status"] == "PROPOSED_NOT_FROZEN" for item in quantities)
+        )
+        artifacts = dossier["source_artifacts"]
+        self.assertTrue(artifacts)
+        self.assertTrue(
+            all(
+                item["rights_status"]
+                and item["license_or_restriction"]
+                and item["redistribution_treatment"]
+                for item in artifacts
+            )
+        )
+        self.assertGreaterEqual(len(dossier["pressure_node_map"]), 3)
+        self.assertGreaterEqual(len(dossier["time_origin_map"]), 5)
+        gaps = {item["register_id"]: item for item in dossier["missing_data_and_ambiguities"]}
+        for required in (
+            "basket-versus-bed-diameter",
+            "reference-versus-basket-pressure",
+            "mass-to-volumetric-flow",
+            "time-origin-mapping",
+        ):
+            self.assertIn(required, gaps)
+        boundaries = dossier["authorization_boundaries"]
+        self.assertFalse(boundaries["calibration_contract_frozen"])
+        self.assertFalse(boundaries["protected_comparison_contract_frozen"])
+        self.assertFalse(boundaries["r1_implementation_authorized"])
+
     def test_puckworks_v2_lock_and_checkout_contract(self) -> None:
         lock = json.loads(
             (ROOT / "dependencies/puckworks.lock.json").read_text(encoding="utf-8")

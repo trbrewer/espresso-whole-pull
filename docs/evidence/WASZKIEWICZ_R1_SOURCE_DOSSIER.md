@@ -6,7 +6,12 @@ This WP01R-002 dossier records the source facts needed to define a distinct
 Waszkiewicz-linked R1 scenario. Change declaration:
 `NO_GOVERNING_PHYSICS_CHANGE`.
 
-Status: `COMPLETE_WITH_REGISTERED_GAPS`.
+Issue #4 contained conflicting generated form text; its substantive
+`NO_GOVERNING_PHYSICS_CHANGE` declaration controls. The issue was not edited.
+
+Analysis status: `COMPLETE`.
+
+Dossier disposition: `READY_FOR_WP01R_003_WITH_DECLARED_GAPS`.
 
 This is a source dossier only. It does not freeze prescribed or calibration
 inputs, choose protected comparisons, fit parameters, implement an R1 case, or
@@ -26,7 +31,7 @@ Primary source identifiers:
 - data DOI `10.5281/zenodo.18046315`
 
 The [machine-readable dossier](../../validation/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.json)
-contains 17 source-artifact records, 37 quantity records, four pressure nodes,
+contains 17 source-artifact records, 42 quantity records, four pressure nodes,
 five time nodes, and 16 registered missing-data or ambiguity records.
 
 ## Source condition
@@ -37,6 +42,8 @@ The source campaign reports:
 - nominal basket: 58 mm;
 - hydraulic bed diameter: 56 mm, represented by the separately recorded
   0.028 m radius;
+- derived modeled bed area: approximately `0.002463008640414398 m2`, based on
+  the 0.028 m radius rather than the nominal 58 mm hardware diameter;
 - approximate initial bed height: 0.010 m;
 - Sanremo Zoe machine;
 - Fiorenzato F64 grinder at device setting 1.9;
@@ -78,8 +85,9 @@ Key fitted quantities retained as fitted—not observations—include:
 - brewer pressure-loss coefficients `a`, `b`, and `c`.
 
 The derived `Phi_m ≈ 0.1220` is `k_m/m0`; it is not a direct porosity
-measurement. Wet-bed Young’s modulus and effective pore diameter are
-unavailable as source inputs.
+measurement. The source model also reports nominal Carman–Kozeny coefficient
+`kappa = 150`; its eventual use is an issue #5 decision. Wet-bed Young’s
+modulus and effective pore diameter are unavailable as source inputs.
 
 ## Pressure nodes
 
@@ -121,6 +129,11 @@ prefix of `12-8-6_alt.txt`; source-aggregate reproduction retains the alias,
 while shot-as-experimental-unit analyses exclude it. The 13 bar condition
 therefore contains seven records representing six brews.
 
+The aggregate `*_std` columns are standard errors of the pressure-level mean,
+not recovered shot-to-shot standard deviations. Per-shot variability must use
+the per-brew records. Pressure-level mean-curve RMSE is not random-shot
+prediction error.
+
 Time is not a single interchangeable coordinate:
 
 - source trace zero is the sample after the last early out-of-tolerance `p2`;
@@ -136,6 +149,21 @@ Mapping these coordinates to solver time is an issue #5 contract decision.
 The TDS fractions are direct observations with replicate information, but the
 first fraction has one replicate and no standard deviation. Their exact
 downstream mass/volume and wet/dry basis remains unresolved.
+
+## Evidence strength and source-model scope
+
+The equilibrium curve is a fitted/reproduced within-rig relationship. The
+9-bar time-dependent result is a post-fit reconstruction, not independent
+validation: its dissolved-mass trajectory derives from same-rig TDS(t) times
+Q(t), creating soft circularity. Issue #5 must decide whether any subset is a
+calibration input, protected comparison, plausibility check, or exclusion.
+
+The Waszkiewicz time-dependent component is quasi-static, one-dimensional, and
+fully saturated. It is specific to the recorded rig, coffee, grind, dose,
+tamp, and preparation. It excludes approximately the first 5–10 s of
+unsaturated wetting, air expulsion, and swelling and is not transferable
+without separate evidence or recalibration. This dossier does not use it to
+prescribe the initial unsaturated regime.
 
 ## Processing and digitization history
 
