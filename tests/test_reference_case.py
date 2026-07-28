@@ -284,6 +284,10 @@ class PackageContractTests(unittest.TestCase):
         self.assertTrue(excluded(Path("docs/integration/PUCKWORKS_UPDATE_IMPACT.md")))
         self.assertFalse(excluded(Path("docs/integration/arbitrary_solver_source.md")))
 
+    def test_source_manifest_excludes_only_the_approved_waszkiewicz_dossier(self) -> None:
+        self.assertTrue(excluded(Path("docs/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.md")))
+        self.assertFalse(excluded(Path("docs/evidence/arbitrary_scenario_source.md")))
+
     def test_puckworks_v2_lock_and_checkout_contract(self) -> None:
         lock = json.loads(
             (ROOT / "dependencies/puckworks.lock.json").read_text(encoding="utf-8")

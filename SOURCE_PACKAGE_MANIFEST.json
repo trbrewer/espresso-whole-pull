@@ -1,6 +1,6 @@
 {
   "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
-  "generated_at_utc": "2026-07-28T16:29:46.036236+00:00",
+  "generated_at_utc": "2026-07-28T17:00:20.747685+00:00",
   "package": "espresso-whole-pull",
   "package_version": "0.1.4",
   "target": "OpenFOAM Foundation 12",
@@ -21,9 +21,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 106,
-  "total_uncompressed_bytes_excluding_manifest": 993816,
-  "aggregate_source_sha256": "5e10b5d2ed6148111a0d53a8d5db9082eb81d6bf24bc47b65eb29c9db757e750",
-  "aggregate_sha256": "5e10b5d2ed6148111a0d53a8d5db9082eb81d6bf24bc47b65eb29c9db757e750",
+  "total_uncompressed_bytes_excluding_manifest": 994139,
+  "aggregate_source_sha256": "b40945e0963168eb6e2da1e990b1971d801a63f184ba95fcbeababc093c65084",
+  "aggregate_sha256": "b40945e0963168eb6e2da1e990b1971d801a63f184ba95fcbeababc093c65084",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md",
   "strategy_source_sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
   "files": {
@@ -468,8 +468,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "80e2331b493f42c65e925eb42b1c47ca70171305041c3c28e052837b51ddbea7",
-      "bytes": 7820,
+      "sha256": "2298bb2480d141cdac2b664e533ae99165d442be78ca2e306dd4a31d40fecf5b",
+      "bytes": 7874,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -553,8 +553,8 @@
       "git_mode": "100644"
     },
     "tests/test_reference_case.py": {
-      "sha256": "b3af92c3b1a1504bd119a26e963394834b0cb92ae0f1962411f1b1dbcb1923d0",
-      "bytes": 42856,
+      "sha256": "58d744a95936fa2f315451582305c09d2b2e23a458c1f3b21641208e8d024cf4",
+      "bytes": 43125,
       "git_mode": "100644"
     }
   }

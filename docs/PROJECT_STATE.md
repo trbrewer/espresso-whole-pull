@@ -13,6 +13,8 @@
 
 WP01R-001 dependency review is complete. Puckworks is locked to reviewed
 `main` snapshot `fc61c4670ec7bf801e40bb391aab16048b8da26b` with recommendation
-`ADOPT_WITH_FOLLOWUP`. The next scientific task is issue #4, the governed
-source/quantity/evidence dossier. R1 implementation, fitting, and new governing
-physics require separate reviewed authorization.
+`ADOPT_WITH_FOLLOWUP`. WP01R-002 has completed the governed Waszkiewicz
+source/quantity/evidence dossier with registered gaps. The next scientific
+task is issue #5, which must freeze prescribed, calibrated, excluded, and
+protected-comparison roles plus the validation contract. R1 implementation,
+fitting, and new governing physics require separate reviewed authorization.
