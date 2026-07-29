@@ -1,0 +1,60 @@
+{
+  "experimental_execution_authorized": false,
+  "fields": {
+    "commissioning_resources": {
+      "coffee_reserved_for_commissioning": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "equipment_change_criteria_before_preregistration": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "expected_repeatability_information": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "non_holdout_shots_available": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "personnel_availability": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "safe_pressure_conditions": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    }
+  },
+  "final_preregistration": false,
+  "schema_version": "espresso.public.wp_0_3c_stage0_input_template.v1",
+  "task": "WP-0.3C-0",
+  "template_status": "NONFINAL_INPUT_TEMPLATE",
+  "unresolved_value_policy": "UNRESOLVED_HUMAN_INPUT_ONLY"
+}

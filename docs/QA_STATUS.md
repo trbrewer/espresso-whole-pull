@@ -40,7 +40,7 @@ and source/holdout-fit counts remained zero.
 
 ## Current repository checks
 
-- Python tests: 171/171 PASS
+- Python tests: 199/199 PASS
 - active static gates: 34/34 PASS
 - source manifest: recorded in `PACKAGE_QA_STATUS.json` and
   `SOURCE_PACKAGE_MANIFEST.json`
@@ -59,3 +59,14 @@ validate espresso extraction or WP02 hydraulics, establish parameter
 transfer, or introduce runtime extraction physics.
 
 Physical validation remains `NOT_ESTABLISHED`.
+
+## WP-0.3C Stage-0 scaffold
+
+The current governance milestone is WP-0.3C Stage 0. Requirements,
+public/private intake templates, and readiness validation are present.
+Real-world human and apparatus inputs remain unresolved. Final
+preregistration, commissioning, holdout acquisition, model execution, and
+scoring are not authorized.
+
+Current Stage-0 checks comprise 199/199 Python tests, 34/34 active static
+gates, and 143/143 source-manifest entries.

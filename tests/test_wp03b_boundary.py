@@ -14,6 +14,12 @@ import wp03b_path_boundary as paths
 
 
 class TestBoundary(unittest.TestCase):
+    def test_wp03c_stage0_extension_is_independently_exact(self):
+        expected = verifier.G1_FINAL | verifier.WP03C_STAGE0
+        self.assertTrue(verifier.G1_FINAL <= expected)
+        self.assertEqual(expected, verifier.G1_FINAL | verifier.WP03C_STAGE0)
+        self.assertNotEqual(expected | {"solver/unauthorized.C"}, expected)
+
     def contract(self):
         value = json.loads((ROOT/verifier.P1_CONTRACT_PATH).read_text())
         value["_observed_sha256"] = verifier.sha(ROOT/verifier.P1_CONTRACT_PATH)

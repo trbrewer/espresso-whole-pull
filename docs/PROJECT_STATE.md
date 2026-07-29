@@ -3,7 +3,7 @@
 - Current released version: `v0.2.0`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 141/141 PASS (WP-0.3B-A1-P1 final verification)
+- Public source verification: 143/143 PASS (WP-0.3C Stage-0 scaffold)
 - Published v0.2.0 source verification: 131/131 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
@@ -74,3 +74,11 @@ was committed before the sole score-bearing analysis; neither solver was
 rerun, and no fitting or post-result adjustment occurred. These same-campaign
 results do not establish independent validation. Physical validation remains
 `NOT_ESTABLISHED`.
+
+WP-0.3C Stage 0 has begun as a protocol and input-intake scaffold. No final
+preregistration exists, no commissioning or holdout acquisition has occurred,
+and no model execution or scoring has occurred. Human, apparatus,
+instrumentation, calibration-resource, material, and custody inputs remain
+required. Readiness fails closed on incomplete or mismatched packages and a
+complete package still requires separate governed review. Physical validation
+remains `NOT_ESTABLISHED`.

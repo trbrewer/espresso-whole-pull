@@ -1,0 +1,200 @@
+{
+  "experimental_execution_authorized": false,
+  "fields": {
+    "basket_and_bed_geometry": {
+      "basket_depth": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "basket_manufacturer": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "basket_model": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "bed_area_calculation": {
+        "governing_rule_binding": "frozen_governing_requirements.bed_area_rule",
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "hole_open_area_metadata": {
+        "governing_rule_binding": "frozen_governing_requirements.open_area_rule",
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "initial_bed_depth_measurement": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "measured_inside_diameter_procedure": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "nominal_diameter": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "post_shot_bed_depth_measurement": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "puck_screen_paper_filter_plan": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    },
+    "machine_and_hydraulic_apparatus": {
+      "accessible_pressure_ports": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "basket_portafilter_compatibility": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "data_interface": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "machine_manufacturer": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "machine_model": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "outlet_configuration": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "preinfusion_capability": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "pressure_control_capability": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "pressure_program_capability": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "pump_type": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "safe_operating_limits": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "temperature_control_capability": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "valve_configuration": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    }
+  },
+  "final_preregistration": false,
+  "schema_version": "espresso.public.wp_0_3c_stage0_input_template.v1",
+  "task": "WP-0.3C-0",
+  "template_status": "NONFINAL_INPUT_TEMPLATE",
+  "unresolved_value_policy": "UNRESOLVED_HUMAN_INPUT_ONLY"
+}

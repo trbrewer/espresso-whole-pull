@@ -1,0 +1,112 @@
+{
+  "schema_version": "espresso.public.wp_0_3c_stage0_authority_input_contract.v1",
+  "task": "WP-0.3C-0",
+  "title": "AUTHORITY, HUMAN-INPUT, APPARATUS-INPUT, AND ACQUISITION-READINESS SCAFFOLD",
+  "baseline": {
+    "commit": "258b4b6526acea98346031ae5cc9c9e7b3ee64a9",
+    "tree": "2fd9ae4a2e0040602daa29a4b5b4a7bc0ff899b9"
+  },
+  "classification": [
+    "PROTOCOL_SCAFFOLD_AND_INPUT_INTAKE_ONLY",
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_EXPERIMENTAL_EXECUTION",
+    "NO_OPENFOAM_EXECUTION",
+    "NO_PUCKWORKS_CODE_EXECUTION",
+    "NO_PROTECTED_ACCESS",
+    "NO_HOLDOUT_SCORING",
+    "NO_MODEL_DATA_COMPARISON",
+    "NO_SCIENTIFIC_RESULT_CHANGE"
+  ],
+  "permitted_changed_paths": [
+    ".github/workflows/static-validation.yml",
+    "PACKAGE_QA_STATUS.json",
+    "SOURCE_PACKAGE_MANIFEST.json",
+    "docs/DEVELOPMENT_HISTORY.md",
+    "docs/PROJECT_STATE.md",
+    "docs/QA_STATUS.md",
+    "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md",
+    "scripts/generate_source_manifest.py",
+    "scripts/verify_wp03b_nonprotected_verification.py",
+    "scripts/verify_wp03c_stage0_scaffold.py",
+    "tests/test_wp03b_boundary.py",
+    "tests/test_wp03c_stage0.py",
+    "tools/campaign/wp03c/__init__.py",
+    "tools/campaign/wp03c/stage0.py",
+    "validation/campaign/wp03c/WP_0_3C_INPUT_REQUIREMENTS.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_ACQUISITION_READINESS_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_APPARATUS_INVENTORY_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_CALIBRATION_PLAN_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_CAMPAIGN_SCOPE_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_COMMISSIONING_PLAN_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_DATA_CUSTODY_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_MATERIAL_AND_COFFEE_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_PREPARATION_PROTOCOL_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_PRIVACY_AND_PUBLICATION_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_ROLE_ASSIGNMENT_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_SENSOR_INVENTORY_TEMPLATE.json",
+    "validation/contracts/WP_0_3C_STAGE0_AUTHORITY_AND_INPUT_INTAKE_CONTRACT.json"
+  ],
+  "immutable_scientific_identities": {
+    "wp02_result_sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+    "wp02_closure_contract_sha256": "2c898dd91e558ce62006dc81de9cff20bb633b52a89f6fa5a44c5edcda50d57a",
+    "historical_scientific_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+    "release_executable_sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
+    "normalized_solver_source_sha256": "97c685bf71df32156e6f697b37fe89e9933b556a02eaf3e7b3b79be0c05ee36f",
+    "retained_9bar_trace_sha256": "10f69738a35451e4eef132edf29be80a57c667b2cb91cb64914f083302e6b1d0",
+    "retained_8bar_trace_sha256": "eca75e708d4a12c3fe309ee2e1e6adb463dc974629d85eb1ab9866257ba0c7d0",
+    "wp03b_p1_contract_sha256": "d61d33527d6de64201018033da86e78810a3d57a477c17c46639fc90d2b92feb",
+    "wp03b_amended_result_sha256": "8af2ec832b191f96994f762eca85eacdc9bfa68ef316321b6b56894d649b6349",
+    "wp03a_holdout_contract_sha256": "50c9e3e45772b6f243dfe406a4aae3b9496cee3a1e28b41909ab39406d8e2de4"
+  },
+  "dependencies": {
+    "runtime_puckworks_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "runtime_puckworks_tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "reviewed_puckworks_commit": "bafafef3bc3c77599af8551d4e582aedb9b23f08",
+    "reviewed_puckworks_tree": "64ccf86aff4c90d1c513f1614b39e0823f64d6d7"
+  },
+  "public_private_information_boundary": {
+    "public": "PROTOCOL_EQUIPMENT_METADATA_ROLE_IDS_AND_NON_SENSITIVE_HASHES",
+    "private": "PERSONAL_OPERATIONAL_CREDENTIAL_KEY_CONDITION_MAP_AND_CONTROLLED_DATA",
+    "private_package_binding": "HASH_ONLY_WHERE_APPROPRIATE",
+    "credentials_in_repository": false
+  },
+  "required_input_categories": [
+    "governance_and_roles",
+    "campaign_scope",
+    "machine_and_hydraulic_apparatus",
+    "basket_and_bed_geometry",
+    "pressure_instrumentation",
+    "mass_and_flow_instrumentation",
+    "temperature_instrumentation",
+    "time_synchronization_and_logging",
+    "coffee_and_materials",
+    "preparation_controls",
+    "calibration_resources",
+    "commissioning_resources",
+    "data_custody_and_blinding"
+  ],
+  "allowed_unresolved_status": "UNRESOLVED_HUMAN_INPUT",
+  "independent_scaffold_identities": {
+    "canonical_requirement_metadata_aggregate_sha256": "844532b10a101ce6e4c60baceeb0d670eeb136943183cf2b9e7444f26cab1aab",
+    "template_filename_category_field_mapping_aggregate_sha256": "40942bbd9848efec54e560b834c44225b0b47c9c624c4228c922c6fd1fdb1a7a",
+    "complete_registry_aggregate_sha256": "1776a7b78a2d472ea1a09ecdfa529e117de59920bc35b28d701b5cedff83384c",
+    "complete_templates_aggregate_sha256": "f5caa1b5baa72c5840ace39bb6714a042685ceb7b6346a0d96cfb2edb62a3171"
+  },
+  "execution_counts": {
+    "experimental": 0,
+    "holdout_scoring": 0,
+    "openfoam": 0,
+    "protected_access": 0,
+    "puckworks_code": 0
+  },
+  "final_disposition": "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS",
+  "final_preregistration": "NOT_CREATED",
+  "commissioning": "NOT_AUTHORIZED",
+  "holdout_acquisition": "NOT_AUTHORIZED",
+  "holdout_scoring": "NOT_PERFORMED",
+  "new_governing_physics": "NOT_AUTHORIZED",
+  "wp02_result": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
+  "wp_0_3b": "NONPROTECTED_EXTRACTION_REFERENCE_AND_OBSERVABLE_VERIFICATION_PASS",
+  "physical_validation": "NOT_ESTABLISHED",
+  "claim_ceiling": "Input scaffold only; no experimental evidence, final preregistration, model execution, scoring, or physical validation."
+}

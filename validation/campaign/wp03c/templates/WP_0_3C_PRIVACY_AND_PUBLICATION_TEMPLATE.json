@@ -1,0 +1,174 @@
+{
+  "experimental_execution_authorized": false,
+  "fields": {
+    "data_custody_and_blinding": {
+      "access_control_method": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "backup_location_class": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "condition_map_custodian": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "data_custodian": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "data_release_policy": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "encryption_method": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "key_custodian": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "private_public_split": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "raw_data_storage_location_class": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "retention_period": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    },
+    "governance_and_roles": {
+      "acquisition_operator": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "calibration_reviewer": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "conflict_of_interest_and_independence_declaration": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "data_custodian": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "future_analysis_operator": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "permitted_role_overlaps": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "protocol_owner": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "repository_owner": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "safety_authority": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "scientific_reviewer": {
+        "input_classification": "PRIVATE_PERSONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    }
+  },
+  "final_preregistration": false,
+  "schema_version": "espresso.public.wp_0_3c_stage0_input_template.v1",
+  "task": "WP-0.3C-0",
+  "template_status": "NONFINAL_INPUT_TEMPLATE",
+  "unresolved_value_policy": "UNRESOLVED_HUMAN_INPUT_ONLY"
+}

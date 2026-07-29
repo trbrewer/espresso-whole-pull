@@ -1,7 +1,7 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "WP-0.3B-A1-P1",
+  "current_governance_milestone": "WP-0.3C-STAGE0",
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
     "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION"
@@ -26,16 +26,17 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 171,
+    "python_test_count": 199,
     "static_gate_count": 34,
-    "source_manifest_file_count": 141,
-    "source_manifest_aggregate_sha256": "82304253b8f2f1bffddd40a0a074d243e73b162c33612f041f37cc9356069cf3",
+    "source_manifest_file_count": 143,
+    "source_manifest_aggregate_sha256": "70fde457f296b04d075994b40b80ec9b307caae2ff441d5a78d867df51f1c4b9",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
     "wp_0_3a_evidence_review_boundary": "PASS",
     "wp_0_3b_historical_result": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",
     "wp_0_3b_a1_p1_boundary": "AMENDED_CANONICAL_RESULT_PRESENT_AND_VERIFIED",
+    "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS"
   },
@@ -44,6 +45,15 @@
     "commit_3a": "TRANSCRIPTION_AND_DERIVATION_CHECKPOINT",
     "p1_preexecution": "PASS",
     "amended_result": "NONPROTECTED_EXTRACTION_REFERENCE_AND_OBSERVABLE_VERIFICATION_PASS_AFTER_GOVERNED_AMENDMENT",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "wp_0_3c_stage0": {
+    "disposition": "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS",
+    "final_preregistration": "NOT_CREATED",
+    "commissioning": "NOT_AUTHORIZED",
+    "holdout_acquisition": "NOT_AUTHORIZED",
+    "holdout_scoring": "NOT_PERFORMED",
+    "experimental_execution_count": 0,
     "physical_validation": "NOT_ESTABLISHED"
   },
   "historical_baseline": {
