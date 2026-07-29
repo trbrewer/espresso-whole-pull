@@ -4,6 +4,7 @@ import argparse, ast, hashlib, json, subprocess
 from pathlib import Path
 
 BASELINE="7f26b643fde4c99263384c402547e9d6c606c99e"
+A1_BASELINE="78356b181fc1d61935721a4d6d7469a7420a5cae"
 FINAL=frozenset({
 ".github/workflows/static-validation.yml","PACKAGE_QA_STATUS.json","SOURCE_PACKAGE_MANIFEST.json",
 "docs/DEVELOPMENT_HISTORY.md","docs/PROJECT_STATE.md","docs/PUCKWORKS_INTEGRATION.md","docs/QA_STATUS.md",
@@ -23,6 +24,19 @@ FROZEN={
 "config/reconstruction_R1_waszkiewicz_9bar.json":"be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876",
 "config/reconstruction_WP02A_waszkiewicz_9bar.json":"81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e",
 "config/reconstruction_WP02A_waszkiewicz_8bar.json":"ac87cfdff2862401b33ac01fa31d87bf966e062cecd153ce59ab4a9518feb57e"}
+A1=frozenset({
+".github/workflows/static-validation.yml","SOURCE_PACKAGE_MANIFEST.json",
+"docs/verification/WP_0_3B_NONPROTECTED_EXTRACTION_REFERENCES.md",
+"scripts/generate_source_manifest.py","scripts/verify_wp03b_nonprotected_verification.py",
+"tests/test_wp03b_boundary.py","tests/test_wp03b_liang2021.py",
+"tests/test_wp03b_moroney2017.py","tests/test_wp03b_observables.py",
+"tools/reference/wp03b/canonical_run.py","tools/reference/wp03b/liang2021.py",
+"tools/reference/wp03b/moroney2017.py","tools/reference/wp03b/moroney2017_derivation.py",
+"tools/reference/wp03b/observables.py",
+"validation/amendments/WP_0_3B_A1_MORONEY_VERIFICATION_AMENDMENT.json",
+"validation/contracts/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_CONTRACT.json",
+"validation/evidence/MORONEY2016_EQUATIONS_87_97_GOVERNED_TRANSCRIPTION.json",
+"validation/evidence/MORONEY2016_SECOND_ORDER_COMPOSITE_DERIVATION.json"})
 
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def paths(root):
@@ -32,6 +46,10 @@ def paths(root):
  out=set(c.stdout.splitlines())|set(u.stdout.splitlines())
  out.discard("cases/reference_R0_20g_58mm_9bar/preflight/STATIC_VALIDATION_REPORT_V0_2_0.json")
  return out
+def paths_from(root,base):
+ c=subprocess.run(["git","diff","--name-only",base],cwd=root,text=True,capture_output=True)
+ u=subprocess.run(["git","ls-files","--others","--exclude-standard"],cwd=root,text=True,capture_output=True)
+ return set(c.stdout.splitlines())|set(u.stdout.splitlines()) if not c.returncode and not u.returncode else None
 def evaluate(contract, changed, hashes, imports, result):
  expected=FINAL if result else PRE
  return {
@@ -46,6 +64,23 @@ def evaluate(contract, changed, hashes, imports, result):
  and result["execution_counts"]=={"canonical_reference":1,"puckworks_code":0,"openfoam":0,"protected_access":0,"wp02_analyzer":0,"scientific_scores":0}
  and result["runtime_wp02_coupling"] is False and result["physical_validation"]=="NOT_ESTABLISHED")}
 def verify(root):
+ a1_path=root/"validation/contracts/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_CONTRACT.json"
+ if a1_path.exists():
+  a1=json.loads(a1_path.read_text())
+  amended=root/"validation/results/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json"
+  checks={
+   "a1_path_set_fixed_in_verifier":set(a1["fixed_changed_paths"])==A1,
+   "a1_repository_delta_exact":paths_from(root,A1_BASELINE)==A1 or
+      paths_from(root,A1_BASELINE)==A1|{amended.relative_to(root).as_posix()},
+   "original_contract_unchanged":sha(root/"validation/contracts/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_CONTRACT.json")=="4b05d9a8f7f91dc6e476c9942639524213541d3f887452d4fb369715bc9f89a6",
+   "original_result_unchanged":sha(root/"validation/results/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json")=="80d0a91d6456ff1219e74f0503f3e6846c9974b3ed868cff19f6f9da943cde90",
+   "original_commits_reachable":subprocess.run(["git","merge-base","--is-ancestor","d0180a84bed7a81b62ec43dee02e6150e89c3f21","HEAD"],cwd=root).returncode==0 and subprocess.run(["git","merge-base","--is-ancestor",A1_BASELINE,"HEAD"],cwd=root).returncode==0,
+   "frozen_hashes":{p:sha(root/p) for p in FROZEN}==FROZEN,
+   "no_amended_result_before_execution":not amended.exists(),
+   "physical_validation_not_established":"physical validation is established" in a1["claim_ceiling"]}
+  status="AMENDMENT_FROZEN_AWAITING_CANONICAL_EXECUTION" if all(checks.values()) else "FAIL"
+  return {"schema_version":"espresso.public.wp_0_3b_a1_boundary.v1","status":status,
+          "checks":checks,"changed_paths":sorted(paths_from(root,A1_BASELINE) or [])}
  contract=json.loads((root/"validation/contracts/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_CONTRACT.json").read_text())
  result_path=root/"validation/results/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json"
  result=json.loads(result_path.read_text()) if result_path.exists() else None
@@ -60,5 +95,5 @@ def main():
  p=argparse.ArgumentParser();p.add_argument("--root",type=Path,required=True);p.add_argument("--output",type=Path);a=p.parse_args()
  r=verify(a.root.resolve());s=json.dumps(r,indent=2,sort_keys=True)+"\n"
  if a.output:a.output.write_text(s)
- print(s,end="");return 0 if r["status"]=="PASS" else 1
+ print(s,end="");return 0 if r["status"] in {"PASS","AMENDMENT_FROZEN_AWAITING_CANONICAL_EXECUTION"} else 1
 if __name__=="__main__":raise SystemExit(main())

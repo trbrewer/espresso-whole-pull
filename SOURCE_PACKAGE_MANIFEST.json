@@ -13,6 +13,9 @@
   "qualified_R0_scientific_configuration_change": false,
   "new_R1_scientific_configuration_added": true,
   "historical_R1_change_declaration_preserved": true,
+  "wp_0_3b_a1_state": "AMENDMENT_FROZEN_AWAITING_CANONICAL_EXECUTION",
+  "wp_0_3b_a1_governing_physics_change": false,
+  "wp_0_3b_a1_protected_access": false,
   "source_manifest_self_excluded": true,
   "mode_contract": "canonical Git object modes: 100644, 100755, or 120000",
   "excluded_runtime_patterns": [
@@ -25,9 +28,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 140,
-  "total_uncompressed_bytes_excluding_manifest": 1299698,
-  "aggregate_source_sha256": "d86234b4b7e8043952c59df5ecd85fa249e038cb80b855d0395742862854ad7d",
-  "aggregate_sha256": "d86234b4b7e8043952c59df5ecd85fa249e038cb80b855d0395742862854ad7d",
+  "total_uncompressed_bytes_excluding_manifest": 1307297,
+  "aggregate_source_sha256": "9e036ed568769045e4346faccd2f1fcb549b9a3568f3caa0e80cd0b7664cc553",
+  "aggregate_sha256": "9e036ed568769045e4346faccd2f1fcb549b9a3568f3caa0e80cd0b7664cc553",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -507,8 +510,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "e722689dbd3bbd8e409642473d8fd6028a5d73aac39d8869e49b39cb10c80b8b",
-      "bytes": 8772,
+      "sha256": "1714d9e1069dcb35a01fae160c8832dbe82031d27022be94cce3fd85dc94fd9d",
+      "bytes": 8949,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -622,8 +625,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_wp03b_nonprotected_verification.py": {
-      "sha256": "bdf7374ee3d43f936a5d8b215521673f199b5f9e1f09391f7686e802cac6bdb9",
-      "bytes": 4978,
+      "sha256": "c4a678771d6fabff1816b67b4d5389dbf8306bca2c45e776c8f0b295d0b6b111",
+      "bytes": 7937,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
@@ -707,13 +710,13 @@
       "git_mode": "100644"
     },
     "tests/test_wp03b_boundary.py": {
-      "sha256": "1de45e0eb44ebc513636d4b532119a89e1c8c60440379d78bd57c1a50b061c06",
-      "bytes": 1338,
+      "sha256": "0cca1c902cffd12fefe46c415e4a6d8eba82a002b734f0d0e000aeacb9c45f61",
+      "bytes": 2767,
       "git_mode": "100644"
     },
     "tests/test_wp03b_liang2021.py": {
-      "sha256": "b5ff2fe7c4cf0f503ebb288c8650b5711f5a9961ef2ad0d0ea2f92fbf5d0e68b",
-      "bytes": 795,
+      "sha256": "6b3f86beb1ceb4dfa6dca38bab419225303942f92d869dc5a70541019ea25b20",
+      "bytes": 1077,
       "git_mode": "100644"
     },
     "tests/test_wp03b_matias2023.py": {
@@ -722,13 +725,13 @@
       "git_mode": "100644"
     },
     "tests/test_wp03b_moroney2017.py": {
-      "sha256": "0c25afc72792e710ed7aed2006199411653745ab3a8cfedc8fb3828c6edb53dd",
-      "bytes": 731,
+      "sha256": "e4b9e7f88c28dbc9f0237e4b2bf377eb409c401620553faad6651ff4a973fb58",
+      "bytes": 3092,
       "git_mode": "100644"
     },
     "tests/test_wp03b_observables.py": {
-      "sha256": "3d2e35b356c1c1798159f3215721bcc5f72b4c63e425a0f2edf4635df9847aff",
-      "bytes": 966,
+      "sha256": "dd19cbb9e6c47c5a874399676dc02b3fb5fedeb2db4956320db9b971e79fb69a",
+      "bytes": 1357,
       "git_mode": "100644"
     }
   }

@@ -7,6 +7,8 @@ METHODS = {
     "OVEN_DRYING_RETAINED_LIQUID_CORRECTED",
     "PSEUDOCOMPONENT_MODEL_OUTPUT", "OTHER_EXPLICIT",
 }
+EY_DEFINITIONS = {"BEVERAGE_TDS_TIMES_BEVERAGE_MASS_OVER_DRY_DOSE",
+                  "RETAINED_LIQUID_CORRECTED_MASS_OVER_DRY_DOSE"}
 
 
 @dataclass(frozen=True)
@@ -32,6 +34,14 @@ class TDSMeasurement:
             raise ValueError("complete TDS method identity required")
         if not math.isfinite(self.uncertainty) or self.uncertainty < 0:
             raise ValueError("invalid uncertainty")
+        if self.method_id == "REFRACTOMETRIC":
+            required = (self.instrument_make, self.instrument_model,
+                        self.sample_temperature_K, self.temperature_compensation,
+                        self.zeroing_medium, self.calibrant,
+                        self.calibration_standard, self.dilution_basis,
+                        self.filtration_or_centrifugation)
+            if any(x is None or x == "" for x in required):
+                raise ValueError("complete refractometric metadata or explicit UNAVAILABLE required")
 
 
 @dataclass(frozen=True)
@@ -47,10 +57,17 @@ class EYConvention:
     uncertainty_method: str
 
     def __post_init__(self):
+        if self.definition_id not in EY_DEFINITIONS:
+            raise ValueError("invalid EY definition")
         if self.tds_method_id not in METHODS:
             raise ValueError("invalid TDS method")
+        if self.mass_or_volume_basis not in {"MASS", "VOLUME"}:
+            raise ValueError("invalid mass/volume basis")
         if self.mass_or_volume_basis == "VOLUME" and self.density_kg_m3 is None:
             raise ValueError("density required for volume basis")
+        if self.density_kg_m3 is not None and (not math.isfinite(self.density_kg_m3)
+                                               or self.density_kg_m3 <= 0):
+            raise ValueError("invalid density")
 
 
 @dataclass(frozen=True)
@@ -62,7 +79,12 @@ class RetainedLiquidDryingObservation:
     dry_spent_grounds_kg: float
     volatile_loss_correction_kg: float
     retained_liquid_tds_mass_fraction: float
-    mass_uncertainty_kg: float
+    dry_dose_uncertainty_kg: float
+    beverage_uncertainty_kg: float = 0.0
+    wet_spent_uncertainty_kg: float = 0.0
+    dry_spent_uncertainty_kg: float = 0.0
+    volatile_loss_uncertainty_kg: float = 0.0
+    retained_liquid_tds_uncertainty: float = 0.0
 
     def __post_init__(self):
         vals = tuple(self.__dict__.values())
@@ -77,9 +99,17 @@ def drying_kernel(o: RetainedLiquidDryingObservation):
     retained = o.wet_spent_grounds_kg - o.dry_spent_grounds_kg
     oven = o.dry_dose_kg - o.dry_spent_grounds_kg + o.volatile_loss_correction_kg
     corrected = oven + retained * o.retained_liquid_tds_mass_fraction
-    if min(retained, oven, corrected) < -2 * o.mass_uncertainty_kg:
+    inventory_sigma = math.sqrt(o.dry_dose_uncertainty_kg**2+
+                                o.dry_spent_uncertainty_kg**2+
+                                o.volatile_loss_uncertainty_kg**2)
+    if min(retained, oven, corrected) < -2 * inventory_sigma:
         raise ValueError("negative physical inventory outside uncertainty")
-    sigma = math.sqrt(2*o.mass_uncertainty_kg**2)
+    retained_sigma = math.hypot(o.wet_spent_uncertainty_kg,
+                                o.dry_spent_uncertainty_kg)
+    sigma = math.sqrt(
+        inventory_sigma**2+
+        (o.retained_liquid_tds_mass_fraction*retained_sigma)**2+
+        (retained*o.retained_liquid_tds_uncertainty)**2)
     return {
         "role": "MEASUREMENT_KERNEL_NOT_EXTRACTION_PHYSICS",
         "units": "kg",
@@ -87,6 +117,8 @@ def drying_kernel(o: RetainedLiquidDryingObservation):
         "oven_dry_extracted_mass": oven,
         "retained_liquid_corrected_extracted_mass": corrected,
         "uncertainty_kg": sigma,
+        "water_balance_residual_kg": o.brew_water_kg-o.beverage_kg-retained,
+        "water_balance_zero_required": False,
         "correction_terms": {
             "volatile_loss_kg": o.volatile_loss_correction_kg,
             "retained_solids_kg": retained * o.retained_liquid_tds_mass_fraction,
@@ -96,6 +128,10 @@ def drying_kernel(o: RetainedLiquidDryingObservation):
 
 def assert_compatible(a: TDSMeasurement, b: TDSMeasurement):
     """Reject silent pooling of unlike measurement methods or bases."""
-    if a.method_id != b.method_id or a.reported_basis != b.reported_basis:
+    identity_a=(a.method_id,a.reported_basis,a.instrument_make,a.instrument_model,
+                a.calibrant,a.calibration_standard,a.temperature_compensation)
+    identity_b=(b.method_id,b.reported_basis,b.instrument_make,b.instrument_model,
+                b.calibrant,b.calibration_standard,b.temperature_compensation)
+    if identity_a != identity_b:
         raise ValueError("explicit conversion contract required")
     return True

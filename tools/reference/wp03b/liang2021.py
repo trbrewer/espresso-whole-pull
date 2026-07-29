@@ -59,3 +59,29 @@ def estimate(times_s, observations, amplitude=1.0):
 
 
 FIT_STATUS = "PROHIBITED_UNTIL_GOVERNED_DIGITIZATION_EXISTS"
+
+
+def endpoint_identifiability(K, tau_values, transient_times_s, amplitude=1.0):
+    """Generate the endpoint/transient identifiability conclusion."""
+    if len(tau_values) < 2 or len(set(tau_values)) != len(tau_values):
+        raise ValueError("at least two distinct tau values required")
+    for tau in tau_values:
+        rates_from_K_tau(K, tau)
+    endpoints = [amplitude*K for _ in tau_values]
+    transient_rows = [[transient(t, K, tau, amplitude) for t in transient_times_s]
+                      for tau in tau_values]
+    endpoint_objective = [sum((x-endpoints[0])**2 for x in [endpoint])
+                          for endpoint in endpoints]
+    transient_objective = [
+        sum((x-y)**2 for x, y in zip(row, transient_rows[0]))
+        for row in transient_rows
+    ]
+    return {
+        "tau_values_s": list(tau_values),
+        "analytic_infinite_time_endpoints": endpoints,
+        "endpoint_objective": endpoint_objective,
+        "transient_objective": transient_objective,
+        "endpoint_only_tau_identifiable": len(set(endpoint_objective)) > 1,
+        "transient_tau_information_demonstrated": any(x > 0 for x in transient_objective[1:]),
+        "fit_status": FIT_STATUS,
+    }

@@ -12,4 +12,9 @@ class TestLiang(unittest.TestCase):
    with self.assertRaises(ValueError):l.rates_from_K_tau(*x)
   with self.assertRaises(ValueError):l.estimate([0,1,2],[1,1,1])
  def test_fit_prohibited(self):self.assertEqual(l.FIT_STATUS,"PROHIBITED_UNTIL_GOVERNED_DIGITIZATION_EXISTS")
+ def test_endpoint_nonidentifiability_is_generated(self):
+  r=l.endpoint_identifiability(.7,[2,12],[.5,1,2,4,8])
+  self.assertFalse(r["endpoint_only_tau_identifiable"])
+  self.assertTrue(r["transient_tau_information_demonstrated"])
+  self.assertEqual(r["endpoint_objective"],[0,0])
 if __name__=="__main__":unittest.main()

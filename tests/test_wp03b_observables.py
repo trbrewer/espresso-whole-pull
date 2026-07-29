@@ -2,7 +2,8 @@ import unittest
 from tools.reference.wp03b.observables import *
 class TestObservables(unittest.TestCase):
  def tds(self,method="REFRACTOMETRIC",basis="MASS"):
-  return TDSMeasurement(method,"A","B",basis,.001,"synthetic")
+  return TDSMeasurement(method,"A","B",basis,.001,"synthetic",
+    589,293.15,"RECORDED","water","sucrose","ICUMSA","UNDILUTED","FILTERED","FRESH")
  def test_kernel(self):
   r=drying_kernel(RetainedLiquidDryingObservation(.018,.3,.25,.06,.016,.0002,.02,.0001))
   self.assertEqual(r["role"],"MEASUREMENT_KERNEL_NOT_EXTRACTION_PHYSICS");self.assertGreater(r["retained_liquid_mass"],0)
@@ -10,7 +11,10 @@ class TestObservables(unittest.TestCase):
   with self.assertRaises(ValueError):assert_compatible(self.tds(),self.tds("GRAVIMETRIC_DRY_DOWN"))
  def test_metadata_and_density(self):
   with self.assertRaises(ValueError):self.tds("UNKNOWN")
-  with self.assertRaises(ValueError):EYConvention("X","REFRACTOMETRIC","VOLUME",None,"dry",False,False,"none","rss")
+  with self.assertRaises(ValueError):EYConvention("BEVERAGE_TDS_TIMES_BEVERAGE_MASS_OVER_DRY_DOSE","REFRACTOMETRIC","VOLUME",None,"dry",False,False,"none","rss")
+  with self.assertRaises(ValueError):EYConvention("X","REFRACTOMETRIC","MASS",None,"dry",False,False,"none","rss")
+ def test_refractometric_metadata_required(self):
+  with self.assertRaises(ValueError):TDSMeasurement("REFRACTOMETRIC","A","B","MASS",.1,"scope")
  def test_negative_mass(self):
   with self.assertRaises(ValueError):RetainedLiquidDryingObservation(-1,1,1,1,1,0,0,0)
 if __name__=="__main__":unittest.main()
