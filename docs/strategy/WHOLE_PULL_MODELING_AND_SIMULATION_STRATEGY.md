@@ -5,7 +5,7 @@
 **Status:** Controlling public-development workflow; WP-0.1R is complete, R0 remains `FROZEN / QUALIFIED`, and physical validation remains not established
 **Supersedes:** strategy v1.4 and all earlier strategy versions
 **Repository:** `trbrewer/espresso-whole-pull`; Puckworks remains the external evidence/model/data dependency
-**Reviewed repository baseline:** inherited from Version 1.0, `main` at commit `d9ee264`; repository alignment must be refreshed before integration
+**Reviewed Puckworks dependency baseline:** repository `https://github.com/trbrewer/puckworks.git`; commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`; tree `1d553e44ee2f7480a5df521560801b478618cc84`; alignment status `REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF`. The dependency review, source dossier, calibration/comparison contract, deterministic R1 bridge, and governed WP-0.1R execution are complete.
 **OpenFOAM implementation baseline:** `espresso_puck_whole_pull_reference_v0_1_4_openfoam12`, terminal freeze manifest `PASS`
 **Execution baseline:** OpenFOAM Foundation 12 on the local Linux system; fresh 32-rank R0 reference run, exact-build reuse, standard ten-run qualification matrix, and terminal acyclic freeze finalization
 **Primary whole-puck platform:** OpenFOAM Foundation 12 on the local 64-CPU Linux system, with 128 logical CPUs reported by the run environment
@@ -142,13 +142,12 @@ WP-0.1H is therefore complete at the implementation, code-verification, numerica
 
 The immediate program sequence is:
 
-1. archive the complete post-`Allverify` v0.1.4 directory, including fields, solver executable, qualification cases and logs, and record an external archive checksum;
-2. issue the formal R0 reference specification and concise WP-0.1H result note;
-3. refresh the current Puckworks repository baseline before integration;
-4. construct a source-and-quantity dossier for the distinct WP-0.1R case;
-5. implement the Waszkiewicz-linked 18.5 g, 58 mm, 9 bar R1 reconstruction without altering frozen R0;
-6. register the frozen solver and R0/R1 contracts in Puckworks;
-7. use the R1 residuals and evidence gaps—not solver capability alone—to select the first WP-0.2 physics addition.
+1. merge the reviewed WP01R-006 decision and close issue #8;
+2. implement issue #18 as one optional, disabled-by-default saturated effective-permeability branch;
+3. verify the independent closed form, locked-Puckworks parity, disabled-branch regression, uniform-pressure fixture, and conservation;
+4. execute the unchanged 9-bar source-linked reconstruction;
+5. execute one predeclared 8-bar, no-retuning, same-campaign transfer comparison;
+6. use the resulting multi-pressure residual—not implementation convenience—to decide whether the next mechanism is machine/headspace coupling, fuller poroelasticity, or another ranked candidate.
 
 The model program continues to combine four capabilities:
 

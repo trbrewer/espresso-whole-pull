@@ -1311,11 +1311,43 @@ class WP01R006DecisionTests(unittest.TestCase):
             ROOT / "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md"
         ).read_text(encoding="utf-8")
         self.assertIn("**Strategy version:** 1.5", strategy)
+        current_header = strategy.split("---", 1)[0]
+        current_sequence = strategy.split(
+            "The immediate program sequence is:", 1
+        )[1].split("The model program continues", 1)[0]
+        self.assertIn(
+            "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+            current_header,
+        )
+        self.assertIn(
+            "1d553e44ee2f7480a5df521560801b478618cc84",
+            current_header,
+        )
+        self.assertNotIn(
+            "alignment must be refreshed before integration",
+            current_header,
+        )
+        self.assertIn("issue #18", current_sequence)
+        self.assertNotIn("construct a source-and-quantity dossier", current_sequence)
+        self.assertNotIn("implement the Waszkiewicz-linked", current_sequence)
+        self.assertIn("historical", strategy.lower())
         boundary = self.decision["authorization_boundaries"]
         self.assertFalse(boundary["governing_physics_change"])
         self.assertFalse(boundary["scientific_configuration_change"])
         self.assertTrue(boundary["future_physics_change_selected"])
         self.assertFalse(boundary["future_physics_change_implemented"])
+
+    def test_strategy_correction_does_not_change_decision_artifacts(self) -> None:
+        import hashlib
+
+        self.assertEqual(
+            hashlib.sha256(self.markdown_path.read_bytes()).hexdigest(),
+            "bfe57b2475733550ac46e62eb426559732a87a2d3a9a24fd272a17cbd963ac48",
+        )
+        self.assertEqual(
+            hashlib.sha256(self.json_path.read_bytes()).hexdigest(),
+            "4a2a4931a6d5f3f0417e33b6db9554073c0dd2d849c66b1040c276c0cccae790",
+        )
 
     def test_decision_documentation_exclusion_is_exact_path_only(self) -> None:
         self.assertTrue(
