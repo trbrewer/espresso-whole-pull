@@ -1,0 +1,703 @@
+{
+  "claim_ceiling": "Non-protected numerical verification of dimensionless references, synthetic identifiability, and measurement observables only. No experimental espresso extraction validation, WP02 hydraulic validation, runtime extraction coupling, parameter transfer, or physical validation is established.",
+  "component_gates": {
+    "liang": {
+      "degenerate_detection": "PASS",
+      "endpoint_nonidentifiability": "PASS",
+      "noise_free_recovery": "PASS",
+      "perturbed_recovery": "PASS",
+      "rate_roundtrip": "PASS",
+      "transient_identifiability": "PASS"
+    },
+    "matias": {
+      "front_gating_trend": "PASS",
+      "full_reference": "PASS",
+      "high_pe_limit": "PASS",
+      "low_pe_limit": "PASS",
+      "sh_pe_sweep": "PASS"
+    },
+    "moroney": {
+      "all_level_conservation": "PASS",
+      "all_state_equilibrium": "PASS",
+      "composite_convergence": "PASS",
+      "literal_derived_diagnostic": "PASS",
+      "reduced_system": "PASS",
+      "roundoff_guard": "PASS",
+      "trajectory_refinement": "PASS"
+    },
+    "observables": {
+      "compatibility": "PASS",
+      "corrected_extraction": "PASS",
+      "dimensional_consistency": "PASS",
+      "ey_vocabulary": "PASS",
+      "method_schema": "PASS",
+      "negative_inventory": "PASS",
+      "oven_dry": "PASS",
+      "retained_liquid": "PASS",
+      "uncertainty": "PASS",
+      "water_balance": "PASS"
+    }
+  },
+  "environment": {
+    "implementation": "CPython",
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "execution_counts": {
+    "amended_canonical": 1,
+    "openfoam": 0,
+    "protected_access": 0,
+    "puckworks_code": 0,
+    "scientific_scores": 0,
+    "source_or_holdout_fits": 0,
+    "wp02_analyzer": 0
+  },
+  "frozen_contract": {
+    "baseline": {
+      "commit": "32da9010e555887d7aab8231ee827df9bcaabfce",
+      "tree": "f1006bc3c1387644d852d59f9c1926c48ee7e0c8"
+    },
+    "claim_ceiling": "Non-protected numerical verification of dimensionless references, synthetic identifiability, and measurement observables only. No experimental espresso extraction validation, WP02 hydraulic validation, runtime extraction coupling, parameter transfer, or physical validation is established.",
+    "contract_status": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
+    "final_result_only_paths": [
+      "validation/results/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json"
+    ],
+    "gate_inventory": {
+      "liang": [
+        "rate_roundtrip",
+        "noise_free_recovery",
+        "perturbed_recovery",
+        "endpoint_nonidentifiability",
+        "transient_identifiability",
+        "degenerate_detection"
+      ],
+      "matias": [
+        "full_reference",
+        "low_pe_limit",
+        "high_pe_limit",
+        "sh_pe_sweep",
+        "front_gating_trend"
+      ],
+      "moroney": [
+        "trajectory_refinement",
+        "roundoff_guard",
+        "reduced_system",
+        "all_level_conservation",
+        "all_state_equilibrium",
+        "literal_derived_diagnostic",
+        "composite_convergence"
+      ],
+      "observables": [
+        "method_schema",
+        "compatibility",
+        "ey_vocabulary",
+        "retained_liquid",
+        "oven_dry",
+        "corrected_extraction",
+        "uncertainty",
+        "water_balance",
+        "negative_inventory",
+        "dimensional_consistency"
+      ]
+    },
+    "liang": {
+      "K_values": [
+        0.25,
+        0.7
+      ],
+      "noise_free_relative_tolerance": 0.003,
+      "noise_sigma": 0.0005,
+      "perturbed_K_absolute_tolerance": 0.01,
+      "perturbed_tau_relative_tolerance": 0.08,
+      "roundtrip_relative_tolerance": 1e-14,
+      "seeds": [
+        2304,
+        85787
+      ],
+      "tau_s_values": [
+        2.0,
+        12.0
+      ],
+      "times_s": [
+        0.0,
+        0.5,
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0,
+        64.0
+      ]
+    },
+    "matias": {
+      "high_pe_sequence": [
+        10.0,
+        30.0,
+        100.0,
+        300.0
+      ],
+      "limit_final_relative_tolerance": 0.01,
+      "low_pe_sequence": [
+        0.1,
+        0.03,
+        0.01,
+        0.003
+      ],
+      "sh_over_pe_sweep": [
+        0.01,
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ]
+    },
+    "moroney": {
+      "composite_end_time_dimensionless": 2.0,
+      "composite_epsilon_divisors": [
+        1,
+        2,
+        4
+      ],
+      "composite_ode_step": 0.00025,
+      "composite_ratio_maximum": 0.35,
+      "conservation_absolute_tolerance": 2e-11,
+      "end_time_dimensionless": 8.0,
+      "equilibrium_relative_tolerance": 0.002,
+      "equilibrium_zero_state_absolute_tolerance": 1e-10,
+      "observed_order_range": [
+        3.5,
+        4.5
+      ],
+      "reduced_full_absolute_tolerance": 2e-12,
+      "refinement_ratio_maximum": 0.35,
+      "roundoff_floor_multiplier": 4096,
+      "steps": [
+        0.002,
+        0.001,
+        0.0005
+      ],
+      "trajectory_state_scale": 1.0
+    },
+    "observable_uncertainty": {
+      "brew_water_uncertainty_frozen_zero": false,
+      "corrected_variance": "var_dose+var_volatile+tds^2*var_wet+(1+tds)^2*var_dry+retained^2*var_tds",
+      "covariance_contract_present": false,
+      "oven_variance": "var_dose+var_dry+var_volatile",
+      "retained_variance": "var_wet+var_dry",
+      "water_balance_variance": "var_brew+var_beverage+var_wet+var_dry"
+    },
+    "output_rules": {
+      "atomic_replace": true,
+      "flush_and_fsync": true,
+      "partial_result_after_failure": false,
+      "preflight_before_calculation": true,
+      "temporary_file_same_directory": true
+    },
+    "preexecution_paths": [
+      ".github/workflows/static-validation.yml",
+      "PACKAGE_QA_STATUS.json",
+      "SOURCE_PACKAGE_MANIFEST.json",
+      "docs/PROJECT_STATE.md",
+      "docs/verification/WP_0_3B_NONPROTECTED_EXTRACTION_REFERENCES.md",
+      "scripts/generate_source_manifest.py",
+      "scripts/verify_wp03b_nonprotected_verification.py",
+      "scripts/wp03b_path_boundary.py",
+      "tests/test_wp03b_boundary.py",
+      "tests/test_wp03b_moroney2017.py",
+      "tests/test_wp03b_observables.py",
+      "tools/reference/wp03b/canonical_run.py",
+      "tools/reference/wp03b/moroney2017.py",
+      "tools/reference/wp03b/observables.py",
+      "validation/amendments/WP_0_3B_A1_P1_PREEXECUTION_CORRECTION.json",
+      "validation/contracts/WP_0_3B_A1_P1_PREEXECUTION_CORRECTION_CONTRACT.json",
+      "validation/evidence/MORONEY2016_EQUATIONS_87_97_GOVERNED_TRANSCRIPTION.json"
+    ],
+    "preserved": {
+      "original_contract_sha256": "4b05d9a8f7f91dc6e476c9942639524213541d3f887452d4fb369715bc9f89a6",
+      "original_disposition": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",
+      "original_failed_result_sha256": "80d0a91d6456ff1219e74f0503f3e6846c9974b3ed868cff19f6f9da943cde90",
+      "wp02_contract_sha256": "2c898dd91e558ce62006dc81de9cff20bb633b52a89f6fa5a44c5edcda50d57a",
+      "wp02_result_sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859"
+    },
+    "python_compatibility_floor": "3.8",
+    "result": {
+      "atomic_write": true,
+      "manual_annotation": false,
+      "maximum_canonical_invocations": 1,
+      "path": "validation/results/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json",
+      "required_disposition": "NONPROTECTED_EXTRACTION_REFERENCE_AND_OBSERVABLE_VERIFICATION_PASS_AFTER_GOVERNED_AMENDMENT",
+      "schema_version": "espresso.public.wp_0_3b_a1_nonprotected_verification_result.v2"
+    },
+    "schema_version": "espresso.public.wp_0_3b_a1_p1_preexecution_contract.v1",
+    "states": {
+      "preexecution": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
+      "result_present": "AMENDED_CANONICAL_RESULT_PRESENT_AND_VERIFIED"
+    },
+    "superseded_execution_freeze_contract": {
+      "historical_role": "COMMIT_3A_TRANSCRIPTION_AND_DERIVATION_PREPARATION",
+      "path": "validation/contracts/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_CONTRACT.json",
+      "sha256": "49dd1e76d29404747a93e9bf275fe8a6b1d1e8e953a6de361de7285ecbd36201"
+    },
+    "task": "WP-0.3B-A1-P1"
+  },
+  "identity": {
+    "amendment_sha256": "494fa0b372f271ba330be0212de2fd10603d3fb0f9091e8dc03af8dd4400f659",
+    "derivation_sha256": "b7d23f272587dcb703c5c37a4eda59c46907da34d60f3c5a106b98c5b72c7c24",
+    "implementation_commit": "3d8e7ee9910a27747ef270454c7c08b8784c1e1d",
+    "implementation_tree": "4fc711be202c40bd1040468be8c5f32802dd333a",
+    "module_sha256": {
+      "canonical_run.py": "b01f39a33301fcfbc1ce6cd16549582aeed6b43c160e90713f5b4d8c44624f77",
+      "liang2021.py": "1a024b0189db6427106fd1d0c8f7c2b2c3ce0e2a8be294c45166b62ac0790c20",
+      "matias2023.py": "a2f34eb6a9f3982a186b4b756f3eb43df67c53fd8641a0579b37a0f30587c1d6",
+      "moroney2017.py": "f7db50e8146fdedf9d2619477a9b96ef1cc03a88348c13acc6cb6b0b954ee376",
+      "moroney2017_derivation.py": "70fe1de30600db68cb3332090f011760ce44f6eefb9815955df599b40117b0c4",
+      "observables.py": "38e02ab40a473cd99083e17f85553d0e672a13c74bf2d3c7e38b1cd19b221253",
+      "provenance.py": "b40241d090b188eaa7dbfb399e69f6cfaf920ad550a010fe3e397b8f0e28c178"
+    },
+    "original_contract_sha256": "4b05d9a8f7f91dc6e476c9942639524213541d3f887452d4fb369715bc9f89a6",
+    "original_failed_result_sha256": "80d0a91d6456ff1219e74f0503f3e6846c9974b3ed868cff19f6f9da943cde90",
+    "p1_contract_sha256": "d61d33527d6de64201018033da86e78810a3d57a477c17c46639fc90d2b92feb",
+    "transcription_sha256": "d03d3db9509fd1c673692bb17f71a409957d362b0712d66cd17975949aadb116"
+  },
+  "liang2021": {
+    "cases": [
+      {
+        "K": 0.25,
+        "noise_free": {
+          "K": 0.24998207539057873,
+          "sse": 4.5946290070319095e-09,
+          "tau_s": 1.9989172219656177
+        },
+        "perturbed": {
+          "K": 0.24992264336870393,
+          "sse": 1.549915133566879e-06,
+          "tau_s": 1.98378124355626
+        },
+        "rates_s-1": [
+          0.125,
+          0.375
+        ],
+        "seed": 2304,
+        "status": "PASS",
+        "tau_s": 2.0
+      },
+      {
+        "K": 0.7,
+        "noise_free": {
+          "K": 0.6999287286967774,
+          "sse": 1.2639821381957568e-08,
+          "tau_s": 11.995341904165594
+        },
+        "perturbed": {
+          "K": 0.6995563758248662,
+          "sse": 8.19852959096651e-07,
+          "tau_s": 11.949840709575952
+        },
+        "rates_s-1": [
+          0.05833333333333333,
+          0.025000000000000005
+        ],
+        "seed": 85787,
+        "status": "PASS",
+        "tau_s": 12.0
+      }
+    ],
+    "endpoint_identifiability": {
+      "analytic_infinite_time_endpoints": [
+        0.7,
+        0.7
+      ],
+      "endpoint_objective": [
+        0.0,
+        0.0
+      ],
+      "endpoint_only_tau_identifiable": false,
+      "fit_status": "PROHIBITED_UNTIL_GOVERNED_DIGITIZATION_EXISTS",
+      "tau_values_s": [
+        2.0,
+        12.0
+      ],
+      "transient_objective": [
+        0.0,
+        0.4619746421081335
+      ],
+      "transient_tau_information_demonstrated": true
+    },
+    "fit_status": "PROHIBITED_UNTIL_GOVERNED_DIGITIZATION_EXISTS",
+    "parameters": {
+      "K_values": [
+        0.25,
+        0.7
+      ],
+      "noise_free_relative_tolerance": 0.003,
+      "noise_sigma": 0.0005,
+      "perturbed_K_absolute_tolerance": 0.01,
+      "perturbed_tau_relative_tolerance": 0.08,
+      "roundtrip_relative_tolerance": 1e-14,
+      "seeds": [
+        2304,
+        85787
+      ],
+      "tau_s_values": [
+        2.0,
+        12.0
+      ],
+      "times_s": [
+        0.0,
+        0.5,
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0,
+        64.0
+      ]
+    }
+  },
+  "matias2023": {
+    "front_gating_errors": [
+      0.009900990099009901,
+      0.09090909090909091,
+      0.5,
+      0.9090909090909091,
+      0.9900990099009901
+    ],
+    "high_pe_relative_errors": [
+      0.102643208350691,
+      0.03379972238155205,
+      0.010047584748135907,
+      0.003338799396854881
+    ],
+    "low_pe_relative_errors": [
+      0.021663311381617454,
+      0.006559007035528548,
+      0.002192069702200687,
+      0.0006582235394189225
+    ],
+    "parameters": {
+      "high_pe_sequence": [
+        10.0,
+        30.0,
+        100.0,
+        300.0
+      ],
+      "limit_final_relative_tolerance": 0.01,
+      "low_pe_sequence": [
+        0.1,
+        0.03,
+        0.01,
+        0.003
+      ],
+      "sh_over_pe_sweep": [
+        0.01,
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ]
+    },
+    "status": "PASS",
+    "subgates": {
+      "front_gating_trend": "PASS",
+      "full_reference": "PASS",
+      "high_pe_limit": "PASS",
+      "low_pe_limit": "PASS",
+      "sh_pe_sweep": "PASS"
+    }
+  },
+  "moroney2017": {
+    "coarse": {
+      "composite_convergence": {
+        "points": [
+          {
+            "epsilon": 0.071,
+            "trajectory_linf_error": 0.000889911356959816
+          },
+          {
+            "epsilon": 0.0355,
+            "trajectory_linf_error": 0.00011621624051194601
+          },
+          {
+            "epsilon": 0.01775,
+            "trajectory_linf_error": 1.4845246979353077e-05
+          }
+        ],
+        "ratios": [
+          0.13059305244622668,
+          0.12773814497834418
+        ]
+      },
+      "conservation_by_step": {
+        "0.0005": 9.547918011776346e-15,
+        "0.001": 4.884981308350689e-15,
+        "0.002": 3.3306690738754696e-15
+      },
+      "endpoint_roundoff_diagnostic": {
+        "diagnostic_status": "ROUND_OFF_SATURATED_NOT_A_GATE",
+        "differences": [
+          4.6629367034256575e-15,
+          3.3306690738754696e-15
+        ],
+        "values": [
+          1.0324712849709854,
+          1.03247128497099,
+          1.0324712849709867
+        ]
+      },
+      "literal_derived_at_tau_0_1": {
+        "derived": [
+          0.5438576439920675,
+          0.45731199291388624,
+          0.26123883152381633
+        ],
+        "literal": [
+          0.539171383355672,
+          0.45731199291388624,
+          0.26123883152381633
+        ]
+      },
+      "numerical_equilibrium_by_step": {
+        "0.0005": {
+          "C_h_relative": 3.632660092560618e-05,
+          "C_v_relative": 0.00025710666659770726,
+          "Psi_s_absolute": 7.897432853402111e-43,
+          "finite_time_distance_not_discretization_error": true
+        },
+        "0.001": {
+          "C_h_relative": 3.632660092238038e-05,
+          "C_v_relative": 0.0002571066665994196,
+          "Psi_s_absolute": 7.897432984148665e-43,
+          "finite_time_distance_not_discretization_error": true
+        },
+        "0.002": {
+          "C_h_relative": 3.6326600926896505e-05,
+          "C_v_relative": 0.0002571066665994196,
+          "Psi_s_absolute": 7.897435098087352e-43,
+          "finite_time_distance_not_discretization_error": true
+        }
+      },
+      "parameters": {
+        "b1": 1.99,
+        "b2": 1.35,
+        "case_id": "COARSE_CIMBALI_20",
+        "diffusion_time_s": 270.493,
+        "epsilon": 0.071,
+        "gamma1": 0.5,
+        "source_card_sha256": "d4ad68ae4fd4c0a725fa10dff49a87f81d5c471a1648221ee9a9522c4c847586",
+        "surface_time_s": 19.389
+      },
+      "reduced_full_errors": {
+        "0.0005": 8.659739592076221e-15,
+        "0.001": 3.9968028886505635e-15,
+        "0.002": 2.4424906541753444e-15
+      },
+      "steps": [
+        0.002,
+        0.001,
+        0.0005
+      ],
+      "subgates": {
+        "all_level_conservation": "PASS",
+        "all_state_equilibrium": "PASS",
+        "composite_convergence": "PASS",
+        "literal_derived_diagnostic": "PASS",
+        "reduced_system": "PASS",
+        "roundoff_guard": "PASS",
+        "trajectory_refinement": "PASS"
+      },
+      "trajectory_refinement": {
+        "D_01": 1.6734320040789896e-09,
+        "D_12": 1.0335465816524447e-10,
+        "component_D_01": {
+          "C_h": 1.1519215581401454e-09,
+          "C_v": 1.6740608899112885e-11,
+          "Psi_s": 1.6734320040789896e-09
+        },
+        "component_D_12": {
+          "C_h": 7.114475675251697e-11,
+          "C_v": 1.0341727474383333e-12,
+          "Psi_s": 1.0335465816524447e-10
+        },
+        "observed_order": 4.017134614541697,
+        "refinement_ratio": 0.06176209007197039,
+        "roundoff_floor": 9.094947017729282e-13,
+        "trajectory_scale": 1.0324712849709867
+      }
+    },
+    "fine": {
+      "composite_convergence": {
+        "points": [
+          {
+            "epsilon": 0.028,
+            "trajectory_linf_error": 0.0008881182517180286
+          },
+          {
+            "epsilon": 0.014,
+            "trajectory_linf_error": 0.00011472210110152758
+          },
+          {
+            "epsilon": 0.007,
+            "trajectory_linf_error": 1.4581979238537102e-05
+          }
+        ],
+        "ratios": [
+          0.12917435361744042,
+          0.12710697501636792
+        ]
+      },
+      "conservation_by_step": {
+        "0.0005": 8.215650382226158e-15,
+        "0.001": 3.552713678800501e-15,
+        "0.002": 3.774758283725532e-15
+      },
+      "endpoint_roundoff_diagnostic": {
+        "diagnostic_status": "ROUND_OFF_SATURATED_NOT_A_GATE",
+        "differences": [
+          1.1102230246251565e-15,
+          3.3306690738754696e-15
+        ],
+        "values": [
+          1.0926248790498152,
+          1.092624879049814,
+          1.0926248790498108
+        ]
+      },
+      "literal_derived_at_tau_0_1": {
+        "derived": [
+          0.5940162614131667,
+          0.6395365886036638,
+          0.03511101786738852
+        ],
+        "literal": [
+          0.5879851074945212,
+          0.6395365886036638,
+          0.03511101786738852
+        ]
+      },
+      "numerical_equilibrium_by_step": {
+        "0.0005": {
+          "C_h_relative": 5.1011577335786474e-05,
+          "C_v_relative": 0.00034774614381923567,
+          "Psi_s_absolute": 5.035885494995776e-106,
+          "finite_time_distance_not_discretization_error": true
+        },
+        "0.001": {
+          "C_h_relative": 5.101157733273831e-05,
+          "C_v_relative": 0.00034774614382546945,
+          "Psi_s_absolute": 5.035893795042902e-106,
+          "finite_time_distance_not_discretization_error": true
+        },
+        "0.002": {
+          "C_h_relative": 5.1011577331722254e-05,
+          "C_v_relative": 0.000347746143861487,
+          "Psi_s_absolute": 5.036030120438403e-106,
+          "finite_time_distance_not_discretization_error": true
+        }
+      },
+      "parameters": {
+        "b1": 5.239,
+        "b2": 2.897,
+        "case_id": "FINE_JK_DRIP",
+        "diffusion_time_s": 42.231,
+        "epsilon": 0.028,
+        "gamma1": 0.7,
+        "source_card_sha256": "d4ad68ae4fd4c0a725fa10dff49a87f81d5c471a1648221ee9a9522c4c847586",
+        "surface_time_s": 1.184
+      },
+      "reduced_full_errors": {
+        "0.0005": 7.327471962526033e-15,
+        "0.001": 3.1086244689504383e-15,
+        "0.002": 3.552713678800501e-15
+      },
+      "steps": [
+        0.002,
+        0.001,
+        0.0005
+      ],
+      "subgates": {
+        "all_level_conservation": "PASS",
+        "all_state_equilibrium": "PASS",
+        "composite_convergence": "PASS",
+        "literal_derived_diagnostic": "PASS",
+        "reduced_system": "PASS",
+        "roundoff_guard": "PASS",
+        "trajectory_refinement": "PASS"
+      },
+      "trajectory_refinement": {
+        "D_01": 7.292169312833607e-08,
+        "D_12": 4.421719990155282e-09,
+        "component_D_01": {
+          "C_h": 4.054620555971056e-08,
+          "C_v": 2.2340640448703653e-10,
+          "Psi_s": 7.292169312833607e-08
+        },
+        "component_D_12": {
+          "C_h": 2.4585841695845545e-09,
+          "C_v": 1.3549494859432798e-11,
+          "Psi_s": 4.421719990155282e-09
+        },
+        "observed_order": 4.04366848584996,
+        "refinement_ratio": 0.060636551353428186,
+        "roundoff_floor": 9.094947017729282e-13,
+        "trajectory_scale": 1.0926248790498108
+      }
+    }
+  },
+  "observables": {
+    "corrected_extracted_uncertainty_kg": 0.00017437945291805455,
+    "correction_terms": {
+      "retained_solids_kg": 0.0008799999999999999,
+      "volatile_loss_kg": 0.0002
+    },
+    "oven_dry_extracted_mass": 0.0021999999999999984,
+    "oven_dry_uncertainty_kg": 0.00017320508075688773,
+    "retained_liquid_corrected_extracted_mass": 0.0030799999999999985,
+    "retained_liquid_mass": 0.044,
+    "retained_liquid_uncertainty_kg": 0.0001414213562373095,
+    "role": "MEASUREMENT_KERNEL_NOT_EXTRACTION_PHYSICS",
+    "uncertainty_kg": 0.00017437945291805455,
+    "units": "kg",
+    "water_balance_residual_kg": 0.0059999999999999915,
+    "water_balance_uncertainty_kg": 0.0002,
+    "water_balance_zero_required": false
+  },
+  "overall_disposition": "NONPROTECTED_EXTRACTION_REFERENCE_AND_OBSERVABLE_VERIFICATION_PASS_AFTER_GOVERNED_AMENDMENT",
+  "physical_validation": "NOT_ESTABLISHED",
+  "runtime_wp02_coupling": false,
+  "schema_version": "espresso.public.wp_0_3b_a1_nonprotected_verification_result.v2",
+  "source_identities": {
+    "liang2021": {
+      "audit_sha256": "29f84061cc4abcedc7c1e69d1e9b830f85dd1e26cad8a58b424ebe9811c127bb",
+      "card_sha256": "ce01610925432352981a8b2bb1873b83f946de9ba29208b48d59c3bc139bc19d",
+      "identifier": "doi:10.1038/s41598-021-85787-1"
+    },
+    "matias2023": {
+      "card_sha256": "49a459d2fe153d347409a965683b58a6d5b01855b2027558b9f3025871eddcf3",
+      "identifier": "arXiv:2304.03161v2"
+    },
+    "moroney2017": {
+      "card_sha256": "d4ad68ae4fd4c0a725fa10dff49a87f81d5c471a1648221ee9a9522c4c847586",
+      "identifier": "doi:10.1186/s13362-016-0024-6"
+    }
+  },
+  "symbolic_derivation": {
+    "complete_common_Ch": "(b1*epsilon*gamma1*t + b2 + epsilon**2*(-b1*b2*t + b1*b2 - b1*gamma1*t**2/2))/b2",
+    "deterministic_derivation_sha256": "9de94160945a8544bb5c35277f918383074b501cbddb19475b4e2e7f554c5362",
+    "equation_46_derived": "b1*(gamma1 + b2/b1) + (-b1*gamma1*tau - b1*gamma1 - b2)*exp(-tau)",
+    "equation_46_residual_after_simplification": "0",
+    "equation_80_derived_term": "-b1*(1 - exp(-t))",
+    "equation_80_printed_term": "b1*(1 - exp(-t))",
+    "outer_Ch2": "b1**2*gamma1 + b1*b2 - (b1**2*gamma1*(tau**2 + 2*tau + 2)/2 + b1*b2*(tau + 1) - b2)*exp(-tau)",
+    "outer_Ch2_initial": "b2",
+    "outer_Ch2_long_time": "b1**2*gamma1 + b1*b2",
+    "outer_Ch2_residual_after_simplification": "0",
+    "outer_Ch2_residual_before_simplification": "diff(Ch2,tau) - Cv2 + b1*Ch1",
+    "printed_common_missing_term": "b1*b2*epsilon**2",
+    "runtime_dependency": "PYTHON_STANDARD_LIBRARY_ONLY",
+    "status": "PASS",
+    "symbolic_freeze_tool": "SymPy 1.12"
+  },
+  "task": "WP-0.3B-A1-P1"
+}

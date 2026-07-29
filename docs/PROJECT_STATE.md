@@ -52,11 +52,18 @@ ratio gate; the result remains a governed verification failure without
 tolerance relaxation.
 
 WP-0.3B-A1-P1 preserves that failure and the subsequent transcription and
-derivation checkpoint. Its controlling state is
-`PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT`; no amended canonical
-invocation has occurred. The P1 boundary corrects generated-path handling,
-historical-runner reachability, observable uncertainty propagation, and
-Python 3.8 portability without changing a scientific threshold.
+derivation checkpoint. Commit 3B froze the state
+`PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT` before the amended invocation.
+The P1 boundary corrects generated-path handling, historical-runner
+reachability, observable uncertainty propagation, and Python 3.8 portability
+without changing a scientific threshold.
+
+The one P1-bound amended canonical invocation subsequently passed every
+Moroney, Matias, Liang, and observable subgate. Its disposition is
+`NONPROTECTED_EXTRACTION_REFERENCE_AND_OBSERVABLE_VERIFICATION_PASS_AFTER_GOVERNED_AMENDMENT`.
+The original governed FAIL remains unchanged and independently addressable.
+This mathematical and measurement verification does not establish physical
+validation.
 
 WP02-001 added the optional saturated dissolution-indexed effective-permeability
 closure. Its corrected uniform fixture, disabled R0 regression, and disabled

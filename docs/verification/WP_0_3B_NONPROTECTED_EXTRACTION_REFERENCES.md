@@ -56,3 +56,8 @@ The P1 boundary has two explicit states. Before execution it reports
 to block merge. After the one authorized execution it must validate the
 result’s complete contents and report
 `AMENDED_CANONICAL_RESULT_PRESENT_AND_VERIFIED`.
+
+The single amended invocation bound to Commit 3B produced that final verified
+state. All component subgates passed; execution counts remained zero for
+OpenFOAM, Puckworks, protected access, WP02 analysis, scientific scoring, and
+source/holdout fitting. The original canonical FAIL is retained.

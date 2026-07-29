@@ -35,15 +35,15 @@
     "release_integrity": "PASS",
     "wp_0_3a_evidence_review_boundary": "PASS",
     "wp_0_3b_historical_result": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",
-    "wp_0_3b_a1_p1_boundary": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
+    "wp_0_3b_a1_p1_boundary": "AMENDED_CANONICAL_RESULT_PRESENT_AND_VERIFIED",
     "shell_syntax": "PASS",
     "json_syntax": "PASS"
   },
   "wp_0_3b_amendment_state": {
     "original_result": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",
     "commit_3a": "TRANSCRIPTION_AND_DERIVATION_CHECKPOINT",
-    "p1_preexecution": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
-    "amended_result": "NOT_EXECUTED",
+    "p1_preexecution": "PASS",
+    "amended_result": "NONPROTECTED_EXTRACTION_REFERENCE_AND_OBSERVABLE_VERIFICATION_PASS_AFTER_GOVERNED_AMENDMENT",
     "physical_validation": "NOT_ESTABLISHED"
   },
   "historical_baseline": {
