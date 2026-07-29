@@ -38,8 +38,10 @@
     "docs/evidence/WP_0_3A_ALIGNMENT_AND_HOLDOUT_REVIEW.md",
     "docs/integration/PUCKWORKS_WP_0_3A_SOLVER_SUPPORT_TRIAGE.md",
     "docs/validation/WP_0_3A_FUTURE_HOLDOUT_EXECUTION_BRIEF.md",
+    ".github/workflows/static-validation.yml",
     "scripts/generate_source_manifest.py",
     "scripts/verify_release_finalization.py",
+    "scripts/verify_wp03_evidence_review.py",
     "tests/test_wp03_holdout_contract.py",
     "validation/contracts/WP_0_3A_INDEPENDENT_HOLDOUT_AND_MECHANISM_DISCRIMINATION_CONTRACT.json",
     "validation/contracts/WP_0_3A_NONPROTECTED_VERIFICATION_PACKAGE_SPEC.json",
@@ -47,10 +49,33 @@
     "validation/evidence/WP_0_3A_HOLDOUT_CANDIDATE_MATRIX.json",
     "validation/evidence/WP_0_3A_MECHANISM_DISCRIMINATION_MATRIX.json",
     "validation/evidence/WP_0_3A_PUCKWORKS_ALIGNMENT_REVIEW.json",
+    "validation/evidence/WP_0_3A_REVIEW_DISPOSITION.json",
     "validation/integration/WP_0_3A_PUCKWORKS_IDENTITY_AND_RIGHTS.json",
     "validation/integration/WP_0_3A_PUCKWORKS_SOLVER_SUPPORT_IMPACT_MATRIX.json"
   ],
   "artifacts": [
+    {
+      "artifact_id": "barbro2025",
+      "path": "docs/cards/barbro2025.md",
+      "git_blob": "922c7d35dc28d60ce18063d81ce96f9d7cc9e485",
+      "sha256": "17ee83ed2c789a04c0d8da346ad13bf60ae8c3028b2b334f5c1666421b215c77",
+      "upstream_delta": "ADDED",
+      "disposition": "DO_NOT_ADOPT",
+      "rationale": "Qualitative vendor CFD images provide no transferable equations, geometry, permeability, flow scale, code, or validation.",
+      "rights": "Vendor material; no solver-package redistribution basis established",
+      "solver_action": "Do not adopt."
+    },
+    {
+      "artifact_id": "moroney2016",
+      "path": "docs/cards/moroney2016.md",
+      "git_blob": "5f2771c70773ff4665c3f1c0bd13f9389890a4be",
+      "sha256": "68f07dbf0414e15b2d8d5f361541dfb498119f0b5a5ea675ba5f35affec1375a",
+      "upstream_delta": "MODIFIED",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "Adopt the explicit relationship to Moroney 2017 while retaining the constant-pressure, calibration-provider-only scope.",
+      "rights": "Source-card metadata; underlying article remains citation authority",
+      "solver_action": "No runtime or parameter change."
+    },
     {
       "artifact_id": "moroney2017",
       "path": "docs/cards/moroney2017.md",
@@ -61,6 +86,39 @@
       "rationale": "The dimensional three-ODE zero-flow system, conservation relation, and fine/coarse asymptotic composites are cheap non-protected extraction verification targets. They are not runtime physics or hydraulic validation.",
       "rights": "CC-BY-4.0 article; local independent re-expression permitted with attribution",
       "solver_action": "Specify a separate zero-flow reference package; do not connect it to WP02."
+    },
+    {
+      "artifact_id": "moroney2019_audit",
+      "path": "docs/cards/moroney2019_AUDIT.md",
+      "git_blob": "4d5c1d669e558c21b9a6fa9771cfd4c4e84c10b5",
+      "sha256": "1096fd6e2e168faa63292874ea16acfc9b41060c2bafe5cf6382803d1e408fd9",
+      "upstream_delta": "ADDED",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "The standing Moroney 2019 card survives audit; no runtime or parameter change follows.",
+      "rights": "Audit metadata only",
+      "solver_action": "Retain existing evidence scope."
+    },
+    {
+      "artifact_id": "nhan2012",
+      "path": "docs/cards/nhan2012.md",
+      "git_blob": "3e6bdc580023a259ab7bc6c4c6f017fe1854c7e6",
+      "sha256": "e59f0c48ae6f073db1345ca3d61e4af690ad89168aadec9edf790f1b8489abf0",
+      "upstream_delta": "ADDED",
+      "disposition": "NOT_SOLVER_RELEVANT",
+      "rationale": "No pressure, characterized espresso bed, hydraulic trace, or transferable transport model is available.",
+      "rights": "Citation metadata only",
+      "solver_action": "None."
+    },
+    {
+      "artifact_id": "pannusch2024",
+      "path": "docs/cards/pannusch2024.md",
+      "git_blob": "b304010ba1d922489e98b80c8c6b52eb7ac87f6f",
+      "sha256": "8b81dcf37520037cc9cc386af909c89d88027cc417593308036e1a15ed258ee6",
+      "upstream_delta": "MODIFIED",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "Reynolds number uses superficial Darcy velocity, not interstitial velocity divided again by porosity. The approximate alpha_l^-2 documentation discrepancy is recorded and the superseded formula is prohibited.",
+      "rights": "Source-card metadata only",
+      "solver_action": "Use corrected dimensional semantics in future verification only."
     },
     {
       "artifact_id": "liang2021",
@@ -204,6 +262,28 @@
       "rationale": "Refractometric TDS, gravimetric dry-down solids, retained-liquid-corrected oven drying, pseudo-component concentration, and EY derived on mass or volume bases are not interchangeable.",
       "rights": "Metadata-only synthesis; every measurement remains bound to its source rights",
       "solver_action": "Require explicit method, instrument, calibrant, temperature, dilution, density, retained-liquid and EY-convention fields."
+    },
+    {
+      "artifact_id": "toda2022",
+      "path": "docs/cards/toda2022.md",
+      "git_blob": "ad8fe997579424bc0bfa023f2ff48b5e1aebda68",
+      "sha256": "f27cde92571dc01bf4128d2533b7378da4ca9d7f20427db00694ad553047d805",
+      "upstream_delta": "ADDED",
+      "disposition": "NOT_SOLVER_RELEVANT",
+      "rationale": "Ethanolic oil extraction from industrial spent coffee grounds provides no espresso hydraulic time series.",
+      "rights": "Citation metadata only",
+      "solver_action": "None."
+    },
+    {
+      "artifact_id": "zhai2022",
+      "path": "docs/cards/zhai2022.md",
+      "git_blob": "4463de838858ec15442e8846fc7503bf1da91cb8",
+      "sha256": "25286dcd1c1e2d19cb1c6a9992cf6849cdd17eef2f7241a8b1e1fc7d2572c801",
+      "upstream_delta": "ADDED",
+      "disposition": "NOT_SOLVER_RELEVANT",
+      "rationale": "Endpoint-only cold-brew characterization has no hydraulic or kinetic time-series model.",
+      "rights": "Citation metadata only",
+      "solver_action": "None."
     }
   ],
   "mandatory_corrections": {
@@ -276,15 +356,18 @@
       "reason": "No current candidate meets the frozen WP-0.3A qualification requirements."
     }
   ],
+  "runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
+  "solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "final_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "lock_recommendation": {
     "advance_lock_now": false,
-    "recommendation": "RETAIN_EXISTING_LOCK_PENDING_ACQUISITION",
+    "recommendation": "RETAIN_EXISTING_LOCK",
     "reason": "Selected metadata and verification targets can be recorded without changing the runtime dependency. Data and rights gaps remain, and no new locked model is required by v0.2.0."
   },
   "claim_state": {
     "new_physics_validated": false,
     "wp02_independently_validated": false,
+    "scientific_result_changed": false,
     "physical_validation": "NOT_ESTABLISHED"
   }
 }

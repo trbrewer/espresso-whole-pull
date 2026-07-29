@@ -21,8 +21,9 @@ v0.2.0 are unchanged.
 The newer material improves evidence semantics—especially the Pannusch
 velocity convention, the Schmieder pressure-basis warning, and claim-binding
 audits—but it supplies no new independent hydraulic campaign. The adoption
-decision is therefore `NO_ADOPTION`; the existing Puckworks lock remains
-unchanged.
+runtime dependency lock disposition is therefore `RETAIN_EXISTING_LOCK`;
+the solver-support evidence disposition is
+`ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP`.
 
 ## Holdout decision
 

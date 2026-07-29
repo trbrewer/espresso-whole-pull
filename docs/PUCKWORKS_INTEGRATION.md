@@ -57,9 +57,9 @@ effective-permeability closure as the first WP-0.2 branch. See the
 [decision](decisions/WP01R_006_FIRST_WP02_PHYSICS_SELECTION.md) and its
 [machine-readable record](../validation/decisions/WP01R_006_FIRST_WP02_PHYSICS_SELECTION.json).
 The first branch is source-linked and softly circular, implements effective
-hydraulic resistance only, and is not independent validation. Issue #18 is
-the governed implementation task; machine/headspace coupling remains the
-runner-up.
+hydraulic resistance only, and is not independent validation. WP02-001
+completed the governed implementation under issue #18, and issue #18 is
+closed; machine/headspace coupling remains the runner-up.
 
 WP02-001 executed the locked branch once at 9 bar and once at the predeclared
 8-bar same-campaign group. The compact
@@ -79,10 +79,11 @@ task.
 WP-0.3A performed that moving-upstream review without importing or executing
 new Puckworks code. It resolved `main` at
 `bafafef3bc3c77599af8551d4e582aedb9b23f08`, tree
-`64ccf86aff4c90d1c513f1614b39e0823f64d6d7`. No model or dataset file was
-added relative to the adopted lock, the bound Waszkiewicz model and data
+`64ccf86aff4c90d1c513f1614b39e0823f64d6d7`. No model-implementation or
+dataset path was added. Several model-card and audit documents were added or
+revised and were separately triaged. The bound Waszkiewicz model and data
 identities remain unchanged, and no qualifying independent hydraulic holdout
-was found. The adoption disposition is `NO_ADOPTION`; the lock remains
+was found. The runtime dependency lock remains
 `fc61c4670ec7bf801e40bb391aab16048b8da26b`. See the
 [alignment and holdout review](evidence/WP_0_3A_ALIGNMENT_AND_HOLDOUT_REVIEW.md),
 [candidate matrix](../validation/evidence/WP_0_3A_HOLDOUT_CANDIDATE_MATRIX.json),
@@ -97,5 +98,6 @@ direct-target and in-sample. Moroney and Matias are specified as future
 non-protected verification targets; Vaca Guerra is specified as an inactive
 offline prior. See the [impact report](integration/PUCKWORKS_WP_0_3A_SOLVER_SUPPORT_TRIAGE.md)
 and [machine-readable matrix](../validation/integration/WP_0_3A_PUCKWORKS_SOLVER_SUPPORT_IMPACT_MATRIX.json).
-The disposition is `ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP`; the lock
-recommendation remains `RETAIN_EXISTING_LOCK_PENDING_ACQUISITION`.
+The solver-support evidence disposition is
+`ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP`; the runtime dependency lock
+disposition is `RETAIN_EXISTING_LOCK`.

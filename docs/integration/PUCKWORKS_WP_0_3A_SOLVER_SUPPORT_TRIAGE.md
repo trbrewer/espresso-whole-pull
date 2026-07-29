@@ -92,8 +92,9 @@ Maille remains blocked by redaction and rights. Perticarini is metadata-only.
 Ellero/Petracco is blocked by missing primary data and rights. Kusumaatmaja
 remains citation-only.
 
-The final disposition is `ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP`. The
-recommended lock action is `RETAIN_EXISTING_LOCK_PENDING_ACQUISITION`: the
+The solver-support evidence disposition is
+`ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP`. The runtime dependency lock
+disposition is `RETAIN_EXISTING_LOCK`: the
 selected corrections and specifications do not require a runtime dependency
 change, while data and rights gaps remain.
 

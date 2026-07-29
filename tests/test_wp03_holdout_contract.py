@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import copy
 import unittest
 from pathlib import Path
 
@@ -60,7 +61,10 @@ class WP03HoldoutContractTests(unittest.TestCase):
             self.alignment["adopted_historical_baseline"]["commit"],
             "fc61c4670ec7bf801e40bb391aab16048b8da26b",
         )
-        self.assertEqual(self.alignment["decision"]["disposition"], "NO_ADOPTION")
+        self.assertEqual(
+            self.alignment["decision"]["runtime_dependency_lock_disposition"],
+            "RETAIN_EXISTING_LOCK",
+        )
         self.assertFalse(
             self.alignment["review_method"]["new_puckworks_code_executed"]
         )
@@ -138,9 +142,17 @@ class WP03HoldoutContractTests(unittest.TestCase):
 
     def test_contract_freezes_access_and_invocation_limits(self) -> None:
         access = self.contract["future_blinded_access_plan"]
-        self.assertEqual(access["maximum_score_bearing_analyzer_invocations"], 1)
-        self.assertEqual(access["maximum_solver_invocations_per_frozen_branch"], 1)
-        self.assertFalse(access["result_dependent_reruns_allowed"])
+        self.assertEqual(
+            access["maximum_aggregate_score_bearing_analyzer_invocations"], 1
+        )
+        self.assertEqual(
+            access["maximum_solver_executions_per_branch_per_experimental_unit"], 1
+        )
+        self.assertEqual(access["result_dependent_reruns_per_experimental_unit"], 0)
+        self.assertEqual(
+            access["total_solver_execution_count_rule"],
+            "number_of_frozen_branches * number_of_predeclared_experimental_units",
+        )
         boundary = self.contract["authorization_boundary"]
         self.assertFalse(boundary["holdout_execution_authorized"])
         self.assertFalse(boundary["new_mechanism_authorized"])
@@ -214,27 +226,21 @@ class WP03HoldoutContractTests(unittest.TestCase):
 
     def test_every_solver_support_artifact_has_one_allowed_disposition(self) -> None:
         allowed = set(self.impact["allowed_dispositions"])
-        required_ids = {
-            "moroney2017",
-            "liang2021",
-            "liang2021_audit",
-            "schmieder2023",
-            "schmieder2023_audit",
-            "vacaguerra2023a",
-            "matias2023",
-            "maille2024",
-            "perticarini2024",
-            "ellero2019_jfe",
-            "kusumaatmaja2010",
-            "foster_evidence_selection_correction",
-            "paper_b2_late_window_access_correction",
-            "tds_and_ey_normalization_hazards",
-        }
-        observed_ids = {item["artifact_id"] for item in self.impact["artifacts"]}
-        self.assertEqual(observed_ids, required_ids)
+        changed = self.alignment["delta_inventory"]["all_changed_model_card_paths"]
+        represented = [
+            item["path"] for item in self.impact["artifacts"] if item["path"] in changed
+        ]
+        self.assertEqual(set(represented), set(changed))
+        self.assertEqual(len(represented), len(set(represented)))
         for artifact in self.impact["artifacts"]:
             self.assertIn(artifact["disposition"], allowed)
             self.assertIsInstance(artifact["disposition"], str)
+        unchanged_relevant = [
+            item for item in self.impact["artifacts"]
+            if item["upstream_delta"] == "UNCHANGED_BUT_NEWLY_RELEVANT"
+        ]
+        self.assertTrue(unchanged_relevant)
+        self.assertTrue(all(item["path"] not in changed for item in unchanged_relevant))
 
     def test_mandatory_pressure_and_access_corrections_are_exact(self) -> None:
         corrections = self.impact["mandatory_corrections"]
@@ -260,18 +266,87 @@ class WP03HoldoutContractTests(unittest.TestCase):
 
     def test_selected_evidence_does_not_advance_lock(self) -> None:
         self.assertEqual(
-            self.impact["final_disposition"],
+            self.impact["solver_support_evidence_disposition"],
             "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
         )
-        recommendation = self.impact["lock_recommendation"]
-        self.assertFalse(recommendation["advance_lock_now"])
         self.assertEqual(
-            recommendation["recommendation"],
-            "RETAIN_EXISTING_LOCK_PENDING_ACQUISITION",
+            self.impact["runtime_dependency_lock_disposition"],
+            "RETAIN_EXISTING_LOCK",
         )
-        self.assertIn(
-            "scripts/verify_release_finalization.py",
-            self.impact["allowed_repository_changed_paths"],
+
+    def test_future_holdout_geometry_pressure_and_machine_contract(self) -> None:
+        design = self.contract["required_new_experiment"]["minimum_design"]
+        self.assertEqual(
+            set(design["required_geometry"]),
+            {
+                "basket_inside_diameter_m",
+                "bed_cross_sectional_area_m2",
+                "bed_depth_m",
+                "dose_kg",
+            },
+        )
+        self.assertIn("pi * basket_inside_diameter_m^2 / 4", design["bed_area_rule"])
+        self.assertIn("must not substitute", design["open_area_rule"])
+        mapping = self.contract["predeclared_evaluation_template"]["physical_mapping"]
+        self.assertEqual(
+            mapping["bed_pressure_drop_equation"],
+            "delta_p_bed_pa(t) = p_basket_gauge_pa(t) - p_outlet_gauge_pa(t)",
+        )
+        self.assertEqual(
+            design["machine_headspace_discrimination"][
+                "status_when_pump_side_pressure_absent"
+            ],
+            "MACHINE_HEADSPACE_DISCRIMINATION_NOT_AVAILABLE",
+        )
+
+    def test_wp03_verifier_rejects_adversarial_boundaries(self) -> None:
+        import sys
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import verify_wp03_evidence_review as verifier
+
+        lock = json.loads((ROOT / "dependencies/puckworks.lock.json").read_text())
+        hashes = {
+            path: verifier.digest(ROOT / path) for path in verifier.FROZEN_HASHES
+        }
+
+        def checks(impact=None, paths=None, frozen=None, contract=None):
+            return verifier.evaluate(
+                impact or self.impact,
+                self.alignment,
+                contract or self.contract,
+                lock,
+                paths if paths is not None else set(verifier.EXPECTED_CHANGED_PATHS),
+                frozen or hashes,
+            )
+
+        for extra in (
+            "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+            "scripts/analyze_wp02.py",
+        ):
+            altered = copy.deepcopy(self.impact)
+            altered["allowed_repository_changed_paths"].append(extra)
+            self.assertFalse(checks(impact=altered)["record_path_set_exact"])
+        for paths in (
+            set(verifier.EXPECTED_CHANGED_PATHS) - {"README.md"},
+            set(verifier.EXPECTED_CHANGED_PATHS) | {"solver/unauthorized.C"},
+        ):
+            self.assertFalse(checks(paths=paths)["repository_path_set_exact"])
+        advanced = copy.deepcopy(lock)
+        advanced["checkout_commit"] = "0" * 40
+        self.assertFalse(
+            verifier.evaluate(
+                self.impact, self.alignment, self.contract, advanced,
+                set(verifier.EXPECTED_CHANGED_PATHS), hashes,
+            )["runtime_lock_retained"]
+        )
+        changed_hashes = dict(hashes)
+        changed_hashes[next(iter(changed_hashes))] = "0" * 64
+        self.assertFalse(checks(frozen=changed_hashes)["frozen_scientific_hashes"])
+        overstated = copy.deepcopy(self.contract)
+        overstated["claim_state"]["physical_validation"] = "ESTABLISHED"
+        self.assertFalse(
+            checks(contract=overstated)["physical_validation_not_established"]
         )
 
     def test_nonprotected_package_is_specification_only(self) -> None:

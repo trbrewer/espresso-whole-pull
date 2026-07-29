@@ -108,7 +108,9 @@
     "per_brew_trace_sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08"
   },
   "decision": {
-    "disposition": "NO_ADOPTION",
+    "runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
+    "solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
+    "supersedes_generic_disposition": "NO_ADOPTION",
     "reason": "The review improves evidence semantics but adds no qualifying independent hydraulic holdout and no changed model or dataset required by the frozen v0.2.0 branch.",
     "adopted_lock_after_review": {
       "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",

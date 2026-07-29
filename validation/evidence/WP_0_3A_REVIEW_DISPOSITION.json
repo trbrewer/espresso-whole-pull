@@ -1,0 +1,13 @@
+{
+  "schema_version": "espresso.public.wp_0_3a_review_disposition.v1",
+  "task": "WP-0.3A",
+  "review_disposition": "APPROVE_AFTER_BOUNDARY_AND_CONTRACT_CORRECTIONS",
+  "evidence_conclusion": "ACCEPTED_WITH_REQUIRED_PRE_MERGE_CORRECTIONS",
+  "runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
+  "solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
+  "holdout_disposition": "NO_QUALIFYING_INDEPENDENT_HYDRAULIC_HOLDOUT_AVAILABLE",
+  "holdout_execution_authorized": false,
+  "new_governing_physics_authorized": false,
+  "scientific_execution_required": false,
+  "physical_validation": "NOT_ESTABLISHED"
+}

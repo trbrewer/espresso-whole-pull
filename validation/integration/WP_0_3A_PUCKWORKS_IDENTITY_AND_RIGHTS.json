@@ -79,5 +79,7 @@
     "changed": false,
     "retained_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
     "retained_tree": "1d553e44ee2f7480a5df521560801b478618cc84"
-  }
+  },
+  "runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
+  "solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP"
 }
