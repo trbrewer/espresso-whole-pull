@@ -7,7 +7,7 @@ import json
 import subprocess
 from pathlib import Path
 
-from wp03b_path_boundary import changed_paths
+from wp03b_path_boundary import changed_paths, changed_paths_between
 
 BASELINE = "7f26b643fde4c99263384c402547e9d6c606c99e"
 P1_BASELINE = "32da9010e555887d7aab8231ee827df9bcaabfce"
@@ -216,7 +216,17 @@ def verify(root):
                               text=True, capture_output=True,
                               check=True).stdout.strip()
         expected = (parent, tree)
-    repository_paths = changed_paths(root, P1_BASELINE)
+    later_wp02 = (
+        root / "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json"
+    ).exists()
+    repository_paths = (
+        changed_paths_between(
+            root, P1_BASELINE,
+            "f43bf2166f60f984e4ca5ca7f30c791a68c6259e",
+        )
+        if later_wp02
+        else changed_paths(root, P1_BASELINE)
+    )
     stage0_present = (
         root / "validation/contracts/"
         "WP_0_3C_STAGE0_AUTHORITY_AND_INPUT_INTAKE_CONTRACT.json"
