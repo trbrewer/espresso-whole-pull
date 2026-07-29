@@ -3,7 +3,7 @@
 - Current released version: `v0.2.0`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 134/134 PASS (WP-0.3A branch)
+- Public source verification: 140/140 PASS (WP-0.3B pre-execution freeze)
 - Published v0.2.0 source verification: 131/131 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
@@ -42,6 +42,11 @@ advancing the dependency lock. The next evidence task is the specified
 independent pressure/flow campaign. Independent
 physical validation has not started. Machine/headspace coupling remains a
 later hypothesis subject to holdout evidence and a separate decision.
+
+WP-0.3B implements non-protected Moroney, Matias, and Liang mathematical
+references plus method-explicit TDS, EY, and retained-liquid measurement
+kernels. They are verification support only, are not connected to WP02, and
+do not establish physical validation.
 
 WP02-001 added the optional saturated dissolution-indexed effective-permeability
 closure. Its corrected uniform fixture, disabled R0 regression, and disabled

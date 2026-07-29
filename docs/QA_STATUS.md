@@ -99,3 +99,10 @@ release provenance: PASS
 reference freeze: FROZEN / QUALIFIED
 physical validation: NOT_ESTABLISHED
 ```
+## WP-0.3B development qualification
+
+The current branch adds only non-protected mathematical references and
+measurement kernels. Its dedicated fixed-path verifier rejects solver, case,
+configuration, trace, WP02-result, closure-contract, and dependency-lock
+changes. Canonical reference execution is distinct from OpenFOAM scientific
+execution and cannot establish physical validation.

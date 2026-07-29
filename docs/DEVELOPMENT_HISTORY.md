@@ -23,3 +23,9 @@
   contract specifies the independent instrumented campaign needed next.
 
 Exact archival runs and bytes remain offline. Public history begins with the sanitized derivative and must not be described as byte-identical to archival v0.1.4.
+## WP-0.3B — non-protected reference verification
+
+WP-0.3B independently implements flow-free Moroney kinetics, Matias transport
+limits, Liang synthetic identifiability, and explicit observable measurement
+kernels. The package performs no OpenFOAM or Puckworks execution, uses no
+protected source, and does not change the WP02 result or governing physics.

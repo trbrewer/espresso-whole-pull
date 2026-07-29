@@ -1,7 +1,7 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "WP-0.3A",
+  "current_governance_milestone": "WP-0.3B",
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
     "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION"
@@ -26,14 +26,15 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 142,
+    "python_test_count": 157,
     "static_gate_count": 34,
-    "source_manifest_file_count": 134,
-    "source_manifest_aggregate_sha256": "a9abb15d7b9f3c2ca7bc42791f603f769dabb382edf5f9b7a44ee2669997f18a",
+    "source_manifest_file_count": 140,
+    "source_manifest_aggregate_sha256": "071a9ec92df344270ac817c031d951c5852c23d8b82da0e2080ea9d7abc37f93",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
     "wp_0_3a_evidence_review_boundary": "PASS",
+    "wp_0_3b_nonprotected_verification_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS"
   },
