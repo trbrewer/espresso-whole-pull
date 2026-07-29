@@ -1,0 +1,1138 @@
+{
+  "deadline_vocabulary": [
+    "GENERATED_DURING_ACQUISITION",
+    "REQUIRED_BEFORE_COMMISSIONING",
+    "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+    "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+    "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+    "REQUIRED_ONLY_FOR_FUTURE_WP_0_3D"
+  ],
+  "input_classification_vocabulary": [
+    "DERIVED_NON_SCORE_BEARING_INPUT",
+    "MEASURED_COMMISSIONING_INPUT",
+    "MEASURED_HOLDOUT_INPUT",
+    "PRIVATE_OPERATIONAL_INPUT",
+    "PRIVATE_PERSONAL_INPUT",
+    "PROHIBITED_DURING_WP_0_3C",
+    "PUBLIC_EQUIPMENT_METADATA",
+    "PUBLIC_PROTOCOL_INPUT",
+    "SEALED_ACQUISITION_INPUT"
+  ],
+  "public_private_boundary": {
+    "private_campaign_custody_package": [
+      "names and contact details",
+      "private laboratory address",
+      "sensitive serial numbers",
+      "credentials",
+      "private storage paths",
+      "encryption keys",
+      "condition-code map",
+      "private raw data before authorized release"
+    ],
+    "public_binding": "HASH_PRIVATE_PACKAGE_WITHOUT_DISCLOSURE_WHERE_APPROPRIATE",
+    "public_repository_package": [
+      "role IDs",
+      "campaign design",
+      "equipment make/model",
+      "opaque equipment IDs",
+      "sensor specifications",
+      "calibration methods",
+      "protocol",
+      "uncertainty requirements",
+      "hashes",
+      "public-safe location classes",
+      "acquisition status",
+      "non-sensitive provenance"
+    ]
+  },
+  "readiness": {
+    "allowed_states": [
+      "AUTHORITY_NOT_ESTABLISHED",
+      "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS",
+      "HUMAN_INPUTS_PARTIALLY_COMPLETE",
+      "APPARATUS_NOT_AVAILABLE",
+      "APPARATUS_PROCUREMENT_REQUIRED",
+      "READY_FOR_CALIBRATION_PLANNING",
+      "READY_FOR_NONHOLDOUT_COMMISSIONING",
+      "READY_TO_FREEZE_FINAL_PREREGISTRATION",
+      "FINAL_PREREGISTRATION_FROZEN"
+    ],
+    "current_state": "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS"
+  },
+  "requirements": [
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "repository_owner",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__REPOSITORY_OWNER",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "protocol_owner",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__PROTOCOL_OWNER",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "acquisition_operator",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__ACQUISITION_OPERATOR",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "calibration_reviewer",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__CALIBRATION_REVIEWER",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "data_custodian",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__DATA_CUSTODIAN",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "future_analysis_operator",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__FUTURE_ANALYSIS_OPERATOR",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "scientific_reviewer",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__SCIENTIFIC_REVIEWER",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "safety_authority",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__SAFETY_AUTHORITY",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "permitted_role_overlaps",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__PERMITTED_ROLE_OVERLAPS",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "governance_and_roles",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "conflict_of_interest_and_independence_declaration",
+      "input_classification": "PRIVATE_PERSONAL_INPUT",
+      "requirement_id": "GOVERNANCE_AND_ROLES__CONFLICT_OF_INTEREST_AND_INDEPENDENCE_DECLARATION",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "campaign_location_class",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__CAMPAIGN_LOCATION_CLASS",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "intended_independence_dimensions",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__INTENDED_INDEPENDENCE_DIMENSIONS",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "coffee_material_scope",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__COFFEE_MATERIAL_SCOPE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "machine_scope",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__MACHINE_SCOPE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "basket_scope",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__BASKET_SCOPE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "target_scientific_question",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__TARGET_SCIENTIFIC_QUESTION",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "machine_headspace_discrimination_intended",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__MACHINE_HEADSPACE_DISCRIMINATION_INTENDED",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "bed_only_pressure_drop_measurable",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__BED_ONLY_PRESSURE_DROP_MEASURABLE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "public_data_release_level",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__PUBLIC_DATA_RELEASE_LEVEL",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "budget_procurement_constraints",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__BUDGET_PROCUREMENT_CONSTRAINTS",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "campaign_scope",
+      "deadline": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+      "field": "scheduling_constraints",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CAMPAIGN_SCOPE__SCHEDULING_CONSTRAINTS",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "machine_manufacturer",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__MACHINE_MANUFACTURER",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "machine_model",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__MACHINE_MODEL",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "pressure_control_capability",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__PRESSURE_CONTROL_CAPABILITY",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "accessible_pressure_ports",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__ACCESSIBLE_PRESSURE_PORTS",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "pump_type",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__PUMP_TYPE",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "valve_configuration",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__VALVE_CONFIGURATION",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "preinfusion_capability",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__PREINFUSION_CAPABILITY",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "pressure_program_capability",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__PRESSURE_PROGRAM_CAPABILITY",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "temperature_control_capability",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__TEMPERATURE_CONTROL_CAPABILITY",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "data_interface",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__DATA_INTERFACE",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "safe_operating_limits",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__SAFE_OPERATING_LIMITS",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "basket_portafilter_compatibility",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__BASKET_PORTAFILTER_COMPATIBILITY",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "machine_and_hydraulic_apparatus",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "outlet_configuration",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MACHINE_AND_HYDRAULIC_APPARATUS__OUTLET_CONFIGURATION",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "basket_manufacturer",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__BASKET_MANUFACTURER",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "basket_model",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__BASKET_MODEL",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "nominal_diameter",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__NOMINAL_DIAMETER",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "measured_inside_diameter_procedure",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__MEASURED_INSIDE_DIAMETER_PROCEDURE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "bed_area_calculation",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__BED_AREA_CALCULATION",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "basket_depth",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__BASKET_DEPTH",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "hole_open_area_metadata",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__HOLE_OPEN_AREA_METADATA",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "puck_screen_paper_filter_plan",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__PUCK_SCREEN_PAPER_FILTER_PLAN",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "initial_bed_depth_measurement",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__INITIAL_BED_DEPTH_MEASUREMENT",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "basket_and_bed_geometry",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "post_shot_bed_depth_measurement",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "BASKET_AND_BED_GEOMETRY__POST_SHOT_BED_DEPTH_MEASUREMENT",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "equipment_id",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__EQUIPMENT_ID",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "manufacturer",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__MANUFACTURER",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "model",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__MODEL",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "sensing_type",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__SENSING_TYPE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "range",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__RANGE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "resolution",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__RESOLUTION",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "stated_accuracy",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__STATED_ACCURACY",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "pressure_basis",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__PRESSURE_BASIS",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "sample_rate",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__SAMPLE_RATE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "timestamp_capability",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__TIMESTAMP_CAPABILITY",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "expected_sensor_location",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__EXPECTED_SENSOR_LOCATION",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "tubing_impulse_line_details",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__TUBING_IMPULSE_LINE_DETAILS",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "calibration_method",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__CALIBRATION_METHOD",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "calibration_reference_availability",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__CALIBRATION_REFERENCE_AVAILABILITY",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "pressure_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "procurement_status",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "PRESSURE_INSTRUMENTATION__PROCUREMENT_STATUS",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "scale_manufacturer_model",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__SCALE_MANUFACTURER_MODEL",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "range",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__RANGE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "resolution",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__RESOLUTION",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "dynamic_sample_rate",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__DYNAMIC_SAMPLE_RATE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "data_export_capability",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__DATA_EXPORT_CAPABILITY",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "dynamic_response_characterization_capability",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__DYNAMIC_RESPONSE_CHARACTERIZATION_CAPABILITY",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "direct_flow_meter",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__DIRECT_FLOW_METER",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "calibration_masses",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__CALIBRATION_MASSES",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "traceability_status",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__TRACEABILITY_STATUS",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "mass_and_flow_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "outlet_vessel_arrangement",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "MASS_AND_FLOW_INSTRUMENTATION__OUTLET_VESSEL_ARRANGEMENT",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "temperature_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "sensor_type",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "TEMPERATURE_INSTRUMENTATION__SENSOR_TYPE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "temperature_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "manufacturer_model",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "TEMPERATURE_INSTRUMENTATION__MANUFACTURER_MODEL",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "temperature_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "range",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "TEMPERATURE_INSTRUMENTATION__RANGE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "temperature_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "resolution",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "TEMPERATURE_INSTRUMENTATION__RESOLUTION",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "temperature_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "sample_rate",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "TEMPERATURE_INSTRUMENTATION__SAMPLE_RATE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "temperature_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "location",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "TEMPERATURE_INSTRUMENTATION__LOCATION",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "temperature_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "calibration_reference",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "TEMPERATURE_INSTRUMENTATION__CALIBRATION_REFERENCE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "temperature_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "expected_lag",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "TEMPERATURE_INSTRUMENTATION__EXPECTED_LAG",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "temperature_instrumentation",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "basket_inlet_temperature_directly_measurable",
+      "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+      "requirement_id": "TEMPERATURE_INSTRUMENTATION__BASKET_INLET_TEMPERATURE_DIRECTLY_MEASURABLE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "time_synchronization_and_logging",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "acquisition_computer_logger_class",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "TIME_SYNCHRONIZATION_AND_LOGGING__ACQUISITION_COMPUTER_LOGGER_CLASS",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "time_synchronization_and_logging",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "supported_channels",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "TIME_SYNCHRONIZATION_AND_LOGGING__SUPPORTED_CHANNELS",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "time_synchronization_and_logging",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "clock_source",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "TIME_SYNCHRONIZATION_AND_LOGGING__CLOCK_SOURCE",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "time_synchronization_and_logging",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "synchronization_mechanism",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "TIME_SYNCHRONIZATION_AND_LOGGING__SYNCHRONIZATION_MECHANISM",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "time_synchronization_and_logging",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "timestamp_resolution",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "TIME_SYNCHRONIZATION_AND_LOGGING__TIMESTAMP_RESOLUTION",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "time_synchronization_and_logging",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "file_format",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "TIME_SYNCHRONIZATION_AND_LOGGING__FILE_FORMAT",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "time_synchronization_and_logging",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "data_loss_handling",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "TIME_SYNCHRONIZATION_AND_LOGGING__DATA_LOSS_HANDLING",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "time_synchronization_and_logging",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "software_firmware_versions",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "TIME_SYNCHRONIZATION_AND_LOGGING__SOFTWARE_FIRMWARE_VERSIONS",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "time_synchronization_and_logging",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "credentials_hostnames_excluded_from_git",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "TIME_SYNCHRONIZATION_AND_LOGGING__CREDENTIALS_HOSTNAMES_EXCLUDED_FROM_GIT",
+      "responsible_role_id": "ROLE_ACQUISITION_OPERATOR"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "coffee_availability",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__COFFEE_AVAILABILITY",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "roaster",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__ROASTER",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "coffee_identity",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__COFFEE_IDENTITY",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "roast_date_lot",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__ROAST_DATE_LOT",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "intended_quantity",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__INTENDED_QUANTITY",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "storage_plan",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__STORAGE_PLAN",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "roast_age_window",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__ROAST_AGE_WINDOW",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "moisture_measurement_capability",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__MOISTURE_MEASUREMENT_CAPABILITY",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "water_recipe",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__WATER_RECIPE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "water_chemistry_measurement",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__WATER_CHEMISTRY_MEASUREMENT",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "grinder_manufacturer_model",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__GRINDER_MANUFACTURER_MODEL",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "burr_type",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__BURR_TYPE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "grinder_condition",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__GRINDER_CONDITION",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "coffee_and_materials",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "psd_measurement_capability",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COFFEE_AND_MATERIALS__PSD_MEASUREMENT_CAPABILITY",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "target_dose",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__TARGET_DOSE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "weighing_capability",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__WEIGHING_CAPABILITY",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "distribution_method",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__DISTRIBUTION_METHOD",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "tamp_device",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__TAMP_DEVICE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "tamp_force_stress_measurement",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__TAMP_FORCE_STRESS_MEASUREMENT",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "bed_depth_measurement",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__BED_DEPTH_MEASUREMENT",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "grinding_to_brewing_timing",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__GRINDING_TO_BREWING_TIMING",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "cleaning_procedure",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__CLEANING_PROCEDURE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "grinder_purge_procedure",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__GRINDER_PURGE_PROCEDURE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "preparation_controls",
+      "deadline": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+      "field": "operator_training_plan",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "PREPARATION_CONTROLS__OPERATOR_TRAINING_PLAN",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "calibration_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "pressure_reference",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CALIBRATION_RESOURCES__PRESSURE_REFERENCE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "calibration_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "traceable_masses",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CALIBRATION_RESOURCES__TRACEABLE_MASSES",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "calibration_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "temperature_reference",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CALIBRATION_RESOURCES__TEMPERATURE_REFERENCE",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "calibration_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "ascending_descending_pressure_calibration_capability",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CALIBRATION_RESOURCES__ASCENDING_DESCENDING_PRESSURE_CALIBRATION_CAPABILITY",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "calibration_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "scale_dynamic_response_test_capability",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CALIBRATION_RESOURCES__SCALE_DYNAMIC_RESPONSE_TEST_CAPABILITY",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "calibration_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "clock_offset_drift_capability",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CALIBRATION_RESOURCES__CLOCK_OFFSET_DRIFT_CAPABILITY",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "calibration_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "post_campaign_verification_capability",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "CALIBRATION_RESOURCES__POST_CAMPAIGN_VERIFICATION_CAPABILITY",
+      "responsible_role_id": "ROLE_CALIBRATION_REVIEWER"
+    },
+    {
+      "category": "commissioning_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "non_holdout_shots_available",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COMMISSIONING_RESOURCES__NON_HOLDOUT_SHOTS_AVAILABLE",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "commissioning_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "coffee_reserved_for_commissioning",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COMMISSIONING_RESOURCES__COFFEE_RESERVED_FOR_COMMISSIONING",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "commissioning_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "safe_pressure_conditions",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COMMISSIONING_RESOURCES__SAFE_PRESSURE_CONDITIONS",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "commissioning_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "personnel_availability",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COMMISSIONING_RESOURCES__PERSONNEL_AVAILABILITY",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "commissioning_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "equipment_change_criteria_before_preregistration",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COMMISSIONING_RESOURCES__EQUIPMENT_CHANGE_CRITERIA_BEFORE_PREREGISTRATION",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "commissioning_resources",
+      "deadline": "REQUIRED_BEFORE_COMMISSIONING",
+      "field": "expected_repeatability_information",
+      "input_classification": "PUBLIC_PROTOCOL_INPUT",
+      "requirement_id": "COMMISSIONING_RESOURCES__EXPECTED_REPEATABILITY_INFORMATION",
+      "responsible_role_id": "ROLE_PROTOCOL_OWNER"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "raw_data_storage_location_class",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__RAW_DATA_STORAGE_LOCATION_CLASS",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "backup_location_class",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__BACKUP_LOCATION_CLASS",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "data_custodian",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__DATA_CUSTODIAN",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "access_control_method",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__ACCESS_CONTROL_METHOD",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "encryption_method",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__ENCRYPTION_METHOD",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "key_custodian",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__KEY_CUSTODIAN",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "condition_map_custodian",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__CONDITION_MAP_CUSTODIAN",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "private_public_split",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__PRIVATE_PUBLIC_SPLIT",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "data_release_policy",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__DATA_RELEASE_POLICY",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    },
+    {
+      "category": "data_custody_and_blinding",
+      "deadline": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+      "field": "retention_period",
+      "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+      "requirement_id": "DATA_CUSTODY_AND_BLINDING__RETENTION_PERIOD",
+      "responsible_role_id": "ROLE_DATA_CUSTODIAN"
+    }
+  ],
+  "schema_version": "espresso.public.wp_0_3c_stage0_requirements.v1",
+  "task": "WP-0.3C-0"
+}

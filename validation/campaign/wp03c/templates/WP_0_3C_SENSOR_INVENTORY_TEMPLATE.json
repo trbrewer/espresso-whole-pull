@@ -1,0 +1,362 @@
+{
+  "experimental_execution_authorized": false,
+  "fields": {
+    "mass_and_flow_instrumentation": {
+      "calibration_masses": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "data_export_capability": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "direct_flow_meter": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "dynamic_response_characterization_capability": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "dynamic_sample_rate": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "outlet_vessel_arrangement": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "range": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "resolution": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "scale_manufacturer_model": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "traceability_status": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    },
+    "pressure_instrumentation": {
+      "calibration_method": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "calibration_reference_availability": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "equipment_id": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "expected_sensor_location": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "manufacturer": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "model": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "pressure_basis": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "procurement_status": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "range": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "resolution": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "sample_rate": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "sensing_type": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "stated_accuracy": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "timestamp_capability": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "tubing_impulse_line_details": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    },
+    "temperature_instrumentation": {
+      "basket_inlet_temperature_directly_measurable": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "calibration_reference": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "expected_lag": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "location": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "manufacturer_model": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "range": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "resolution": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "sample_rate": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "sensor_type": {
+        "input_classification": "PUBLIC_EQUIPMENT_METADATA",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_CALIBRATION_REVIEWER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    },
+    "time_synchronization_and_logging": {
+      "acquisition_computer_logger_class": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "clock_source": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "credentials_hostnames_excluded_from_git": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "data_loss_handling": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "file_format": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "software_firmware_versions": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "supported_channels": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "synchronization_mechanism": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "timestamp_resolution": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_COMMISSIONING",
+        "responsible_role_id": "ROLE_ACQUISITION_OPERATOR",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    }
+  },
+  "final_preregistration": false,
+  "schema_version": "espresso.public.wp_0_3c_stage0_input_template.v1",
+  "task": "WP-0.3C-0",
+  "template_status": "NONFINAL_INPUT_TEMPLATE",
+  "unresolved_value_policy": "UNRESOLVED_HUMAN_INPUT_ONLY"
+}

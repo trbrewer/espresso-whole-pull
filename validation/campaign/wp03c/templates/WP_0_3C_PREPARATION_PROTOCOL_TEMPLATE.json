@@ -1,0 +1,92 @@
+{
+  "experimental_execution_authorized": false,
+  "fields": {
+    "preparation_controls": {
+      "bed_depth_measurement": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "cleaning_procedure": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "distribution_method": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "grinder_purge_procedure": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "grinding_to_brewing_timing": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "operator_training_plan": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "tamp_device": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "tamp_force_stress_measurement": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "target_dose": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "weighing_capability": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    }
+  },
+  "final_preregistration": false,
+  "schema_version": "espresso.public.wp_0_3c_stage0_input_template.v1",
+  "task": "WP-0.3C-0",
+  "template_status": "NONFINAL_INPUT_TEMPLATE",
+  "unresolved_value_policy": "UNRESOLVED_HUMAN_INPUT_ONLY"
+}

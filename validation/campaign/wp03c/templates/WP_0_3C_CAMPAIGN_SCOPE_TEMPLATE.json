@@ -1,0 +1,100 @@
+{
+  "experimental_execution_authorized": false,
+  "fields": {
+    "campaign_scope": {
+      "basket_scope": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "bed_only_pressure_drop_measurable": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "budget_procurement_constraints": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "campaign_location_class": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "coffee_material_scope": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "intended_independence_dimensions": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "machine_headspace_discrimination_intended": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "machine_scope": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "public_data_release_level": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "scheduling_constraints": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "target_scientific_question": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_PROTOCOL_DESIGN",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    }
+  },
+  "final_preregistration": false,
+  "schema_version": "espresso.public.wp_0_3c_stage0_input_template.v1",
+  "task": "WP-0.3C-0",
+  "template_status": "NONFINAL_INPUT_TEMPLATE",
+  "unresolved_value_policy": "UNRESOLVED_HUMAN_INPUT_ONLY"
+}

@@ -1,0 +1,124 @@
+{
+  "experimental_execution_authorized": false,
+  "fields": {
+    "coffee_and_materials": {
+      "burr_type": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "coffee_availability": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "coffee_identity": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "grinder_condition": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "grinder_manufacturer_model": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "intended_quantity": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "moisture_measurement_capability": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "psd_measurement_capability": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "roast_age_window": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "roast_date_lot": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "roaster": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "storage_plan": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "water_chemistry_measurement": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "water_recipe": {
+        "input_classification": "PUBLIC_PROTOCOL_INPUT",
+        "private_value_required": false,
+        "public_repository_value_allowed": true,
+        "required_before": "REQUIRED_BEFORE_FINAL_PREREGISTRATION",
+        "responsible_role_id": "ROLE_PROTOCOL_OWNER",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    }
+  },
+  "final_preregistration": false,
+  "schema_version": "espresso.public.wp_0_3c_stage0_input_template.v1",
+  "task": "WP-0.3C-0",
+  "template_status": "NONFINAL_INPUT_TEMPLATE",
+  "unresolved_value_policy": "UNRESOLVED_HUMAN_INPUT_ONLY"
+}

@@ -35,6 +35,30 @@ P1_PRE = frozenset({
 })
 P1_FINAL = P1_PRE | {RESULT_PATH}
 G1_FINAL = P1_FINAL | {"docs/QA_STATUS.md", G1_PATH}
+WP03C_STAGE0 = frozenset({
+    ".github/workflows/static-validation.yml",
+    "PACKAGE_QA_STATUS.json", "SOURCE_PACKAGE_MANIFEST.json",
+    "docs/DEVELOPMENT_HISTORY.md", "docs/PROJECT_STATE.md", "docs/QA_STATUS.md",
+    "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md",
+    "scripts/generate_source_manifest.py",
+    "scripts/verify_wp03b_nonprotected_verification.py",
+    "scripts/verify_wp03c_stage0_scaffold.py",
+    "tests/test_wp03b_boundary.py", "tests/test_wp03c_stage0.py",
+    "tools/campaign/wp03c/__init__.py", "tools/campaign/wp03c/stage0.py",
+    "validation/contracts/WP_0_3C_STAGE0_AUTHORITY_AND_INPUT_INTAKE_CONTRACT.json",
+    "validation/campaign/wp03c/WP_0_3C_INPUT_REQUIREMENTS.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_ROLE_ASSIGNMENT_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_CAMPAIGN_SCOPE_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_APPARATUS_INVENTORY_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_SENSOR_INVENTORY_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_MATERIAL_AND_COFFEE_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_PREPARATION_PROTOCOL_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_CALIBRATION_PLAN_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_COMMISSIONING_PLAN_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_DATA_CUSTODY_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_PRIVACY_AND_PUBLICATION_TEMPLATE.json",
+    "validation/campaign/wp03c/templates/WP_0_3C_ACQUISITION_READINESS_TEMPLATE.json",
+})
 
 FROZEN = {
     "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json":
@@ -192,12 +216,24 @@ def verify(root):
                               text=True, capture_output=True,
                               check=True).stdout.strip()
         expected = (parent, tree)
+    repository_paths = changed_paths(root, P1_BASELINE)
+    stage0_present = (
+        root / "validation/contracts/"
+        "WP_0_3C_STAGE0_AUTHORITY_AND_INPUT_INTAKE_CONTRACT.json"
+    ).exists()
+    stage0_exact = repository_paths == G1_FINAL | WP03C_STAGE0
+    historical_paths = (
+        G1_FINAL if stage0_present and stage0_exact else repository_paths
+    )
     checks = evaluate_p1(
-        contract, changed_paths(root, P1_BASELINE),
+        contract, historical_paths,
         {path: sha(root/path) for path in FROZEN},
         (sha(root/"validation/contracts/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_CONTRACT.json"),
          sha(root/"validation/results/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json")),
         result, module_hashes, evidence_hashes, expected, governance)
+    checks["later_wp03c_stage0_boundary_exact"] = (
+        not stage0_present or stage0_exact
+    )
     checks["preserved_commits_reachable"] = all(_reachable(root, c) for c in
         ("d0180a84bed7a81b62ec43dee02e6150e89c3f21",
          "78356b181fc1d61935721a4d6d7469a7420a5cae", P1_BASELINE))
@@ -206,7 +242,7 @@ def verify(root):
              else "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT")
     return {"schema_version": "espresso.public.wp_0_3b_a1_p1_boundary.v1",
             "status": state if passed else "FAIL", "checks": checks,
-            "changed_paths": sorted(changed_paths(root, P1_BASELINE))}
+            "changed_paths": sorted(repository_paths)}
 
 
 def main():

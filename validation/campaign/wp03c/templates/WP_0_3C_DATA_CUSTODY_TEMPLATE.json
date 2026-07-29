@@ -1,0 +1,92 @@
+{
+  "experimental_execution_authorized": false,
+  "fields": {
+    "data_custody_and_blinding": {
+      "access_control_method": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "backup_location_class": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "condition_map_custodian": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "data_custodian": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "data_release_policy": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "encryption_method": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "key_custodian": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "private_public_split": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "raw_data_storage_location_class": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      },
+      "retention_period": {
+        "input_classification": "PRIVATE_OPERATIONAL_INPUT",
+        "private_value_required": true,
+        "public_repository_value_allowed": false,
+        "required_before": "REQUIRED_BEFORE_HOLDOUT_ACQUISITION",
+        "responsible_role_id": "ROLE_DATA_CUSTODIAN",
+        "status": "UNRESOLVED_HUMAN_INPUT"
+      }
+    }
+  },
+  "final_preregistration": false,
+  "schema_version": "espresso.public.wp_0_3c_stage0_input_template.v1",
+  "task": "WP-0.3C-0",
+  "template_status": "NONFINAL_INPUT_TEMPLATE",
+  "unresolved_value_policy": "UNRESOLVED_HUMAN_INPUT_ONLY"
+}
