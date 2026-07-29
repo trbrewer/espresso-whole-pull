@@ -1,7 +1,16 @@
-# Package QA status — v0.1.4
+# Package QA status — 0.2.0-dev.1
 
-**Package role:** WP-0.1F no-physics-change freeze finalization  
-**Target runtime:** OpenFOAM Foundation 12  
+**Active role:** WP-0.2A governing-physics development
+
+**Release qualification:** NOT_YET_FINALIZED
+
+**Historical baseline:** v0.1.4-public.1 remains immutable and independently
+checked by the baseline-integrity verifier.
+
+**Historical package role:** WP-0.1F no-physics-change freeze finalization
+
+**Target runtime:** OpenFOAM Foundation 12
+
 **Packaging runtime:** no Foundation-12 installation available; target `./Allrun` and standard `./Allverify` remain controlling
 
 ## Construction and archive QA

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static package gates for the no-physics-change v0.1.4 freeze release."""
+"""Static gates for the active package while preserving frozen baseline checks."""
 from __future__ import annotations
 
 import argparse
@@ -22,7 +22,8 @@ from espresso_reference_math import (  # noqa: E402
 )
 from prepare_case import render_control_dict  # noqa: E402
 
-PACKAGE_VERSION = "0.1.4"
+PACKAGE_VERSION = "0.2.0-dev.1"
+FROZEN_SCENARIO_VERSION = "0.1.4"
 
 
 def gate(status: bool, **details: object) -> Dict[str, object]:
@@ -126,6 +127,9 @@ def main() -> None:
         "scripts/static_validate.py",
         "scripts/verify_freeze_manifest.py",
         "scripts/verify_no_physics_change.py",
+        "scripts/verify_change_contract.py",
+        "scripts/verify_governing_physics_change.py",
+        "scripts/verify_v0_1_4_baseline_integrity.py",
         "scripts/verify_source_manifest.py",
         "scripts/write_build_provenance.py",
         "scripts/write_run_status.py",
@@ -175,9 +179,9 @@ def main() -> None:
     )
     version_ok = (
         version_file == PACKAGE_VERSION
-        and scenario.get("solver_version") == PACKAGE_VERSION
-        and fixture.get("solver_version") == PACKAGE_VERSION
-        and "espressoWholePullFoam v0.1.4" in cpp
+        and scenario.get("solver_version") == FROZEN_SCENARIO_VERSION
+        and fixture.get("solver_version") == FROZEN_SCENARIO_VERSION
+        and "espressoWholePullFoam v0.2.0-dev.1" in cpp
     )
     gates["version_identity_consistent"] = gate(
         version_ok,
@@ -547,7 +551,26 @@ def main() -> None:
         texts["allrun"],
         ("no_physics_change_verification", "verify_no_physics_change.py"),
     )
-    gates["qualified_v0_1_3_no_physics_change_contract"] = gate(no_physics_ok)
+    gates["historical_v0_1_4_no_physics_change_contract_present"] = gate(no_physics_ok)
+
+    active_manifest = json.loads(
+        (root / "SOURCE_PACKAGE_MANIFEST.json").read_text(encoding="utf-8")
+    )
+    active_run = json.loads(
+        (root / "validation/wp02/WP02_001_RUN_STATUS.json").read_text(encoding="utf-8")
+    )
+    gates["active_wp02_governing_change_metadata"] = gate(
+        active_manifest.get("governing_physics_change") is True
+        and active_manifest.get("package_version") == PACKAGE_VERSION
+        and active_run.get("overall_wp02_001_disposition")
+        == "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS"
+        and active_run.get("physical_validation") == "NOT_ESTABLISHED"
+    )
+    gates["classification_aware_validation_routing"] = gate(
+        (root / "scripts/verify_change_contract.py").is_file()
+        and (root / "scripts/verify_governing_physics_change.py").is_file()
+        and (root / "scripts/verify_v0_1_4_baseline_integrity.py").is_file()
+    )
 
     build_provenance_ok = (
         all_tokens(
@@ -726,7 +749,7 @@ def main() -> None:
 
     all_pass = all(item["status"] == "PASS" for item in gates.values())
     report = {
-        "schema_version": "espresso.whole_pull.static_validation.v0.1.4",
+        "schema_version": "espresso.whole_pull.static_validation.v0.2.0-dev.1",
         "status": "PASS" if all_pass else "FAIL",
         "gate_summary": {
             "pass": sum(item["status"] == "PASS" for item in gates.values()),
@@ -736,12 +759,12 @@ def main() -> None:
         "gates": gates,
         "limitations": [
             "This is a static/package mathematics check, not a wmake compilation.",
-            "./Allrun exercises compilation, mesh, layered fixture, reference solve, reconstruction, and acceptance on Foundation 12.",
-            "Standard ./Allverify exercises the complete matrix, finalizes acceptance/run status, and generates the terminal freeze manifest.",
-            "Smoke PROFILE verifies orchestration only and cannot qualify or freeze the reference.",
+            "Historical Allrun/Allverify gates remain scoped to the immutable v0.1.4 R0 baseline.",
+            "WP02 governing-change evidence is verified by verify_change_contract.py.",
+            "Physical validation is not established.",
         ],
     }
-    output = case / "preflight/STATIC_VALIDATION_REPORT_V0_1_4.json"
+    output = case / "preflight/STATIC_VALIDATION_REPORT_V0_2_0_DEV_1.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))

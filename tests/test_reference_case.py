@@ -123,11 +123,13 @@ class ReferenceMathematicsTests(unittest.TestCase):
 
 class PackageContractTests(unittest.TestCase):
     def test_versions_match_v014(self) -> None:
-        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "0.1.4")
+        self.assertEqual(
+            (ROOT / "VERSION").read_text(encoding="utf-8").strip(), "0.2.0-dev.1"
+        )
         self.assertEqual(REFERENCE["solver_version"], "0.1.4")
         self.assertEqual(LAYERED["solver_version"], "0.1.4")
         cpp = (ROOT / "solver/espressoWholePullFoam/espressoWholePullFoam.C").read_text(encoding="utf-8")
-        self.assertIn("espressoWholePullFoam v0.1.4", cpp)
+        self.assertIn("espressoWholePullFoam v0.2.0-dev.1", cpp)
 
     def test_reference_remains_explicit_calibration(self) -> None:
         self.assertEqual(REFERENCE["mode"], "calibration")

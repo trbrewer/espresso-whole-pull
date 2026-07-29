@@ -379,7 +379,6 @@ class WP02EffectivePermeabilityTests(unittest.TestCase):
 
     def test_frozen_implementation_hashes_remain_unchanged(self) -> None:
         expected = {
-            "solver/espressoWholePullFoam/espressoWholePullFoam.C": "f5498e3b3570899c3e8f1a03779a9b807d580aef77e901141e591fe243493fdc",
             "scripts/waszkiewicz_effective_permeability.py": "098fdf8c1a6fe761f603fb0719bc0f83fb41a99fceace3e990656788f76ec49b",
             "scripts/wp02_reference_math.py": "6c1001b18539093a949180720aa37f5466fac3954faf1b28b717a1d90fa187f9",
         }
@@ -387,6 +386,16 @@ class WP02EffectivePermeabilityTests(unittest.TestCase):
             self.assertEqual(
                 hashlib.sha256((ROOT / relative).read_bytes()).hexdigest(), digest
             )
+        solver = (
+            ROOT / "solver/espressoWholePullFoam/espressoWholePullFoam.C"
+        ).read_text()
+        normalized = solver.replace(
+            "v0.2.0-dev.1", "v<DISPLAY_VERSION>"
+        ).encode()
+        self.assertEqual(
+            hashlib.sha256(normalized).hexdigest(),
+            "97c685bf71df32156e6f697b37fe89e9933b556a02eaf3e7b3b79be0c05ee36f",
+        )
         amendment = json.loads(
             (ROOT / "validation/wp02/WP02_001_ANALYZER_ENDPOINT_AMENDMENT.json").read_text()
         )

@@ -24,6 +24,7 @@ PUBLIC_METADATA_TOP_LEVEL = {
     "FINAL_PUBLICATION_REVIEW_SUMMARY.json",
     "FINAL_PUBLICATION_REVIEW_SUMMARY.md",
     "NOTICE.md",
+    "PACKAGE_QA_STATUS.json",
     "PUBLICATION_AUDIT.json",
     "PUBLICATION_AUDIT.md",
     "SECURITY.md",
@@ -182,7 +183,7 @@ def main() -> None:
         raise SystemExit(f"Controlling strategy copy missing: {strategy}")
     aggregate_hash = aggregate(files)
     report = {
-        "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
+        "schema_version": "espresso.whole_pull.source_package_manifest.v0.2.0-dev.1",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "package": root.name,
         "package_version": (root / "VERSION").read_text(encoding="utf-8").strip(),

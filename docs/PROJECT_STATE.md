@@ -1,13 +1,17 @@
 # Project State
 
-- Public baseline: `v0.1.4-public.1`, sanitized derivative
+- Current development: `0.2.0-dev.1`, milestone `WP-0.2A`
+- Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 126/126 PASS
+- Public source verification: 129/129 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
 - Governed R1 scenario present: true
 - WP01R-005 R1 scenario change: false
 - Governing-physics change in WP01R-005: false
+- Governing-physics change in WP02-001: true
+- WP02 optional closure added: true
+- Release qualification: `NOT_YET_FINALIZED`
 - R0 claim ceiling: `NUMERICALLY_QUALIFIED_CALIBRATION_BASELINE`
 - Physical validation: `NOT_ESTABLISHED`
 - OpenFOAM target: Foundation 12

@@ -230,7 +230,7 @@ int main(int argc, char *argv[])
     #include "createTime.H"
     #include "createMesh.H"
 
-    Info<< "\nStarting espressoWholePullFoam v0.1.4\n" << endl;
+    Info<< "\nStarting espressoWholePullFoam v0.2.0-dev.1\n" << endl;
 
     if (runTime.value() > SMALL)
     {
