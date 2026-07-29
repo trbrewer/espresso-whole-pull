@@ -14,5 +14,8 @@
 - v0.2.0 / WP-0.2F: no-governing-physics release finalization of the accepted
   WP-0.2A source-linked multipressure reconstruction. The release build is
   distinct from the immutable executable that produced the scientific traces.
+- WP-0.2G: post-release provenance reconciliation records the published tag,
+  assets, final terminal manifest, and next WP-0.3A evidence-contract task
+  without changing the release or scientific records.
 
 Exact archival runs and bytes remain offline. Public history begins with the sanitized derivative and must not be described as byte-identical to archival v0.1.4.

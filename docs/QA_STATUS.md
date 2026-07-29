@@ -2,7 +2,12 @@
 
 **Active role:** WP-0.2F no-physics release finalization
 
-**Release qualification:** candidate gates pending
+**Release qualification:** PASS
+
+**Release disposition:** SOFTWARE_AND_SOURCE_LINKED_RECONSTRUCTION_RELEASE_PASS
+
+**Release gates:** 119/119 Python tests, 34/34 active static gates, 131/131
+source-manifest entries, and a passing OpenFOAM Foundation 12 build.
 
 **Historical baseline:** v0.1.4-public.1 remains immutable and independently
 checked by the baseline-integrity verifier.

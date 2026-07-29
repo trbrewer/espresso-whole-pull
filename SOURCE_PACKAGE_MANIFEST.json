@@ -24,12 +24,12 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 131,
-  "total_uncompressed_bytes_excluding_manifest": 1258236,
-  "aggregate_source_sha256": "4182c59cfef51251903331377a32951f2384806105ae8ee5d5c60c55172aca87",
-  "aggregate_sha256": "4182c59cfef51251903331377a32951f2384806105ae8ee5d5c60c55172aca87",
-  "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_3.md",
-  "strategy_source_sha256": "beb3922bf5b246a17760eb0e445d1d26791bcf8d03b38dea5149998d985bd7bc",
+  "file_count": 132,
+  "total_uncompressed_bytes_excluding_manifest": 1264005,
+  "aggregate_source_sha256": "90fd3023e9b97b1b42b0e1cfa25c7e76858ce40a00b0fec69881ab8bfeced651",
+  "aggregate_sha256": "90fd3023e9b97b1b42b0e1cfa25c7e76858ce40a00b0fec69881ab8bfeced651",
+  "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
+  "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
     "Allclean": {
       "sha256": "0bcb5c9a56e6afd73ea47ab7748eab95466d809cda6c66e93f0225d4ff59341e",
@@ -57,8 +57,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "adc13b51b4cd8e3a8bc1466d2f27feaf68dff512e942b117e31bca3bcc38f8fe",
-      "bytes": 3338,
+      "sha256": "2d75b385dd963e4c68bb683ca31659c68c24242bb1d13291ca7742e86ab63f3b",
+      "bytes": 3618,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -442,8 +442,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "6ad4fcadd92e45f3974811fc60f37e649a4fe41c32ca299d981f1bd89d8e6b4d",
-      "bytes": 3977,
+      "sha256": "c22334e9f9756c618428f421c6c7f231c181b0f2e9e5e23d1d6143bdc8775a7c",
+      "bytes": 4185,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -459,6 +459,11 @@
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_3.md": {
       "sha256": "beb3922bf5b246a17760eb0e445d1d26791bcf8d03b38dea5149998d985bd7bc",
       "bytes": 3680,
+      "git_mode": "100644"
+    },
+    "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md": {
+      "sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
+      "bytes": 2160,
       "git_mode": "100644"
     },
     "scripts/analyze_r1.py": {
@@ -502,7 +507,7 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "2107f4f660e5821e7a455a9d97c6901851b6680c204bd0dbd0512327d9fb7047",
+      "sha256": "3a890557d9b8c4884bd47257a13c4f049b82441f0220377a9ce21c02dab5a138",
       "bytes": 8508,
       "git_mode": "100755"
     },
@@ -587,8 +592,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_release_finalization.py": {
-      "sha256": "05a5e647cda4cdb7f1ec97ba66912abc74c42a3c45a15f975850ac486405c3f0",
-      "bytes": 5891,
+      "sha256": "e2fd389455a15641247dbcc7ee279c0502650694cebe4b5cb0d96cdb2fc1d012",
+      "bytes": 7886,
       "git_mode": "100755"
     },
     "scripts/verify_source_manifest.py": {
@@ -662,8 +667,8 @@
       "git_mode": "100644"
     },
     "tests/test_change_contract.py": {
-      "sha256": "ec8f656abc1c1938e68e7166a99d2b1756e24e655408247ef02d00b0611767b5",
-      "bytes": 6372,
+      "sha256": "08968615389dda13fe4adf4cc9c3fcfc237b00444fcf14cc24e11d3ba8432299",
+      "bytes": 7498,
       "git_mode": "100644"
     },
     "tests/test_r1_analysis.py": {

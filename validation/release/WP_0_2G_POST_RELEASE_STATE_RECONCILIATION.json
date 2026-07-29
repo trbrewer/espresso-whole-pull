@@ -1,0 +1,69 @@
+{
+  "schema_version": "espresso.public.wp_0_2g_post_release_state_reconciliation.v1",
+  "task": "WP-0.2G",
+  "classification": [
+    "POST_RELEASE_DOCUMENTATION_AND_PROVENANCE_ONLY",
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_SCIENTIFIC_RESULT_CHANGE"
+  ],
+  "release": {
+    "tag": "v0.2.0",
+    "tag_target": "6e6b35b0fc6747f805223ce7975a0865835f01f0",
+    "url": "https://github.com/trbrewer/espresso-whole-pull/releases/tag/v0.2.0",
+    "pull_request": 21,
+    "merge_method": "MERGE_COMMIT",
+    "merge_commit": "6e6b35b0fc6747f805223ce7975a0865835f01f0",
+    "merge_tree": "ab91b7a479da6af5928e5acc378317a07ba0e619",
+    "required_ci": {
+      "source_and_boundary": "PASS",
+      "inexpensive_checks": "PASS"
+    }
+  },
+  "published_assets": {
+    "count": 10,
+    "digests": {
+      "WP02_001_POST_MERGE_CLOSURE.json": "b10a9fcbbd01cae763ec104fbceae2550fe9582ac8b49307d25ae30c234f5e11",
+      "WP02_001_SCIENTIFIC_REVIEW.json": "50109d18900dc78e29b362c6dfc410bab63d2ff6b77bf5c6e1cc9bf13283dce1",
+      "WP02_001_VERIFICATION_AND_RESULTS.json": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+      "WP_0_2F_FINAL_TERMINAL_RELEASE_MANIFEST.json": "fe4c64af5cbb859793bdc0170ef1674b7584effce0f26a2b40836f3d247d3550",
+      "WP_0_2F_RELEASE_ARCHIVE_CHECKSUMS.json": "61d78349c48885e2caffccd73011b3e4c2bb7d2164e87388c57d0065bcedaa9c",
+      "WP_0_2F_RELEASE_BUILD_IDENTITY.json": "49b4a1a2368f731ed690643b305c4e8607cd3583033cc48a0553df109c76870b",
+      "WP_0_2F_RELEASE_QA_RECORD.json": "dc8fc029ebf695f1312ffdba5a4e59cf35c0fa1edf5036333575d2a55e2ec3b0",
+      "WP_0_2F_TERMINAL_RELEASE_MANIFEST.json": "4489c1f9ed858a730a9d2039ba4509ea166fa918a9289b7b3a98dccc9acccb5c",
+      "espresso-whole-pull-0.2.0-source.tar.gz": "1d82f925877a3fc913d29494a777741f4c45e8944c4dac5bdb69ebba5d7a7141",
+      "espressoWholePullFoam-v0.2.0": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b"
+    }
+  },
+  "immutable_identities": {
+    "final_published_terminal_manifest_sha256": "fe4c64af5cbb859793bdc0170ef1674b7584effce0f26a2b40836f3d247d3550",
+    "deterministic_source_archive_sha256": "1d82f925877a3fc913d29494a777741f4c45e8944c4dac5bdb69ebba5d7a7141",
+    "release_executable_sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
+    "historical_scientific_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+    "scientific_result_sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+    "candidate_tracked_terminal_manifest_sha256": "4489c1f9ed858a730a9d2039ba4509ea166fa918a9289b7b3a98dccc9acccb5c"
+  },
+  "tagged_tree_contains_prepublication_status_snapshot": true,
+  "final_publication_state_is_bound_by_release_asset_manifest": true,
+  "tag_changed": false,
+  "release_assets_changed": false,
+  "scientific_records_changed": false,
+  "protected_accesses_added": 0,
+  "analyzer_invocations_added": 0,
+  "governed_solver_executions_added": 0,
+  "score_recalculations_added": 0,
+  "fitting_or_retuning": false,
+  "physical_validation": "NOT_ESTABLISHED",
+  "allowed_post_release_changed_paths": [
+    "PACKAGE_QA_STATUS.json",
+    "README.md",
+    "SOURCE_PACKAGE_MANIFEST.json",
+    "docs/DEVELOPMENT_HISTORY.md",
+    "docs/PROJECT_STATE.md",
+    "docs/QA_STATUS.md",
+    "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
+    "scripts/generate_source_manifest.py",
+    "scripts/verify_release_finalization.py",
+    "tests/test_change_contract.py",
+    "validation/release/WP_0_2G_POST_RELEASE_STATE_RECONCILIATION.json"
+  ]
+}

@@ -40,6 +40,11 @@ baseline and retains its historical no-governing-physics release contract.
 Version 0.2.0 is a software and source-linked reconstruction release, not a
 physical-validation release.
 
+The published release and bounded assets are available at
+[v0.2.0](https://github.com/trbrewer/espresso-whole-pull/releases/tag/v0.2.0).
+The next scientific milestone is WP-0.3A independent holdout and
+mechanism-discrimination contracting; no additional mechanism is authorized.
+
 ## License
 
 The solver and repository code are licensed under GPL-3.0-or-later. See `LICENSE`, `NOTICE.md`, `THIRD_PARTY_NOTICES.md`, and `docs/LICENSING.md`. This licensing audit is informational and not legal advice.
