@@ -100,6 +100,48 @@
     "zero_nonzero_clipping_agreement": "EXACT",
     "overall_source_parity": "PASS"
   },
+  "pre_execution_corrections": [
+    {
+      "correction_id": "WP02_001_PRE_EXECUTION_UNIFORM_FIXTURE_COMPLETENESS",
+      "discovered_after_commit": "0e0212b81f8cc14d67f8785494b369f339dabbf0",
+      "discovered_before_any_openfoam_case_execution": true,
+      "commit_1_uniform_fixture_status": "MISSING_FROM_FROZEN_COMMIT",
+      "failure_class": "MANDATORY_VERIFICATION_INFRASTRUCTURE_OMISSION",
+      "solver_source_defect": false,
+      "closed_form_defect": false,
+      "scientific_contract_change": false,
+      "openfoam_compilation_count_before_discovery": 1,
+      "openfoam_case_execution_count_before_discovery": 0,
+      "scientific_score_calculation_count_before_discovery": 0,
+      "pre_fixture_compile_smoke_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+      "authorized_correction": "ADD_DETERMINISTIC_UNIFORM_PRESSURE_FIXTURE_AND_VERIFICATION_HARNESS"
+    }
+  ],
+  "uniform_pressure_fixture": {
+    "scenario_path": "config/fixture_WP02_001_uniform_pressure.json",
+    "role": "DETERMINISTIC_CODE_VERIFICATION_NOT_PHYSICAL_VALIDATION",
+    "protected_source_access_required": false,
+    "source_reference_pressure_bar": 9.0,
+    "basket_pressure_gauge_Pa": 870902.4190000001,
+    "fully_saturated_at_start": true,
+    "pressure_ramp_s": 0.0,
+    "time": {"start_s": 0.0, "end_s": 103.0, "delta_t_s": 1.0},
+    "mesh": {"axial_cells": 64, "radial_cells": 32, "azimuthal_cells": 1},
+    "execution": {"mpi_ranks": 1, "same_wp02_executable_as_all_later_cases": true},
+    "acceptance": {
+      "maximum_relative_darcy_flow_error": 1e-8,
+      "maximum_effective_permeability_relative_error": 1e-12,
+      "maximum_multiplier_relative_error": 1e-12,
+      "maximum_source_state_time_absolute_error_s": 1e-12,
+      "maximum_multiplier_field_spatial_cv": 1e-14,
+      "maximum_pressure_probe_absolute_error_Pa": 5.0,
+      "require_exact_source_support_status": true,
+      "require_monotonic_supported_multiplier": true,
+      "maximum_final_multiplier_distance_from_one": 2e-7,
+      "liquid_and_solute_conservation_use_existing_frozen_tolerances": true
+    },
+    "claim_ceiling": "One-dimensional constant-pressure code verification of the frozen optional closure; not physical validation."
+  },
   "source_dependency": {
     "repository": "https://github.com/trbrewer/puckworks.git",
     "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",

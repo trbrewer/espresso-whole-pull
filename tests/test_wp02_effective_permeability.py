@@ -153,6 +153,38 @@ class WP02EffectivePermeabilityTests(unittest.TestCase):
         for key in ("frozen_R0_configuration_change", "constant_R1_configuration_change", "wetting_physics_change", "pore_volume_storage_change", "mesh_motion_change", "chemistry_model_change"):
             self.assertFalse(boundary[key])
 
+    def test_uniform_fixture_is_canonical_and_contains_no_protected_data(self) -> None:
+        fixture = scenario(ROOT, "uniform_pressure_fixture")
+        committed = json.loads(
+            (ROOT / "config/fixture_WP02_001_uniform_pressure.json").read_text()
+        )
+        self.assertEqual(fixture, committed)
+        self.assertNotIn("flow_comparison_contract", fixture)
+        self.assertEqual(fixture["scenario_id"], "fixture_WP02_001_uniform_pressure")
+        self.assertEqual(fixture["geometry"]["axial_cells"], 64)
+        self.assertEqual(fixture["geometry"]["radial_cells"], 32)
+        self.assertEqual(fixture["parallel"]["default_subdomains"], 1)
+        self.assertEqual(fixture["wetting"]["initial_wet_front_m"], 0.01)
+        self.assertEqual(fixture["hydraulics"]["pressure_ramp_time_s"], 0.0)
+        self.assertEqual(fixture["time"]["delta_t_s"], 1.0)
+        self.assertEqual(fixture["effective_permeability_evolution"]["source_reference_pressure_bar"], 9.0)
+        self.assertEqual(fixture["hydraulics"]["target_inlet_pressure_gauge_Pa"], 870902.4190000001)
+        self.assertEqual(fixture["effective_permeability_evolution"]["minimum_effective_multiplier"], 1e-6)
+        self.assertFalse(fixture["effective_permeability_evolution"]["fixed_8s_offset_used"])
+
+    def test_uniform_fixture_two_directory_generation_is_identical(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            manifests = []
+            for name in ("a", "b"):
+                case = Path(td) / name
+                result = subprocess.run(
+                    [sys.executable, str(ROOT / "scripts/prepare_case.py"), "--root", str(ROOT), "--config", str(ROOT / "config/fixture_WP02_001_uniform_pressure.json"), "--case-dir", str(case), "--nprocs", "1"],
+                    capture_output=True, text=True,
+                )
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                manifests.append((case / "WP02_001_GENERATED_CASE_MANIFEST.json").read_bytes())
+            self.assertEqual(manifests[0], manifests[1])
+
     def test_historical_identities_unchanged(self) -> None:
         self.assertEqual(
             hashlib.sha256((ROOT / "config/reconstruction_R1_waszkiewicz_9bar.json").read_bytes()).hexdigest(),

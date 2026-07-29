@@ -15,6 +15,7 @@ LOCK = Path("dependencies/puckworks.lock.json")
 OUTPUTS = {
     "nine_bar_reconstruction": Path("config/reconstruction_WP02A_waszkiewicz_9bar.json"),
     "eight_bar_transfer": Path("config/reconstruction_WP02A_waszkiewicz_8bar.json"),
+    "uniform_pressure_fixture": Path("config/fixture_WP02_001_uniform_pressure.json"),
 }
 
 
@@ -46,14 +47,39 @@ def scenario(root: Path, pressure: str) -> dict:
     ):
         raise ValueError("Puckworks identity mismatch")
     cfg = copy.deepcopy(base)
-    choice = contract[pressure]
+    fixture = pressure == "uniform_pressure_fixture"
+    choice = contract["nine_bar_reconstruction"] if fixture else contract[pressure]
     is_eight = pressure == "eight_bar_transfer"
     cfg["schema_version"] = "espresso.whole_pull.reconstruction_scenario.wp02a.v1"
     cfg["scenario_id"] = (
+        "fixture_WP02_001_uniform_pressure"
+        if fixture
+        else
         "reconstruction_WP02A_waszkiewicz_18p5g_56mm_7p566bar"
         if is_eight
         else "reconstruction_WP02A_waszkiewicz_18p5g_56mm_8p709bar"
     )
+    if fixture:
+        cfg["mode"] = "verification_fixture"
+        cfg["fixture_role"] = "CLOSED_FORM_TO_OPENFOAM_EFFECTIVE_PERMEABILITY_VERIFICATION"
+        cfg["physical_validation_role"] = "NOT_APPLICABLE_CODE_VERIFICATION"
+        cfg["geometry"].update({"axial_cells": 64, "radial_cells": 32, "azimuthal_cells": 1, "axial_grading": 1.0, "radial_grading": 1.0})
+        cfg["wetting"]["initial_saturation"] = 1.0
+        cfg["wetting"]["initial_wet_front_m"] = cfg["coffee_bed"]["bed_depth_m"]
+        cfg["hydraulics"]["pressure_ramp_time_s"] = 0.0
+        cfg["coffee_bed"]["initial_extractable_fraction_dry_basis"] = 0.0
+        cfg["extraction"]["rate_constant_1_s"] = 0.0
+        cfg["liquid"]["effective_solute_diffusivity_m2_s"] = 0.0
+        cfg["time"].update({"start_s": 0.0, "end_s": 103.0, "delta_t_s": 1.0, "field_write_interval_s": 1.0})
+        cfg["output"].update({"write_format": "ascii", "write_compression": False})
+        cfg["parallel"]["default_subdomains"] = 1
+        half_width = 0.51 * cfg["coffee_bed"]["bed_depth_m"] / 64
+        cfg["verification"]["pressure_probes"] = [
+            {"name": "quarter_depth", "position_m": 0.0025, "half_width_m": half_width},
+            {"name": "three_quarter_depth", "position_m": 0.0075, "half_width_m": half_width}
+        ]
+        cfg["verification"]["fixture_contract"] = contract["uniform_pressure_fixture"]
+        cfg.pop("flow_comparison_contract", None)
     cfg["governance"] = {
         "task": "WP02-001",
         "issue": 18,
@@ -64,7 +90,7 @@ def scenario(root: Path, pressure: str) -> dict:
         "frozen_R0_configuration_change": False,
         "constant_R1_configuration_change": False,
     }
-    if is_eight:
+    if is_eight and not fixture:
         p_bar = choice["late_basket_pressure_bar"]
         permeability = choice["static_permeability_m2"]
         cfg["hydraulics"]["target_inlet_pressure_gauge_Pa"] = p_bar * 100000.0

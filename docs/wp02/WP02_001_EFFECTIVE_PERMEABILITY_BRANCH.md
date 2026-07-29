@@ -31,3 +31,10 @@ smoothing, shift, or scale may be selected from their scores.
 The implementation does not move the mesh, change porosity or storage, modify
 wetting, add solid mechanics, machine coupling, fines, channeling, thermal
 transport, or chemistry. Physical validation remains `NOT_ESTABLISHED`.
+
+Commit 1 omitted the mandatory uniform-pressure verification fixture. A
+separate pre-execution completeness correction adds the canonical
+`fixture_WP02_001_uniform_pressure` case, its serial runner, and its
+closed-form/OpenFOAM verifier without changing the frozen solver or closure.
+The fixture contains no protected observations and is code verification, not
+physical validation.

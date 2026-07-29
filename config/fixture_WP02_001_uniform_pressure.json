@@ -1,0 +1,203 @@
+{
+  "claim_ceiling": "WP-0.1R is a source-linked, within-campaign reconstruction test of the existing numerically qualified sharp-front wetting and uniform-Darcy architecture for one Waszkiewicz rig condition. Its static hydraulic scale is calibrated from the source equilibrium relation, while five normalized per-shot flow shapes are reserved for predeclared comparison. It may identify model-form residuals, but it does not establish independent physical validation, transfer, poroelastic validation, chemistry validation, or taste prediction.",
+  "coffee_bed": {
+    "bed_depth_m": 0.01,
+    "bed_depth_status": "APPROXIMATE_SOURCE_PARAMETER",
+    "dry_dose_kg": 0.0185,
+    "initial_extractable_fraction_dry_basis": 0.0,
+    "initial_porosity": 0.46349007886296223,
+    "particle_solid_density_kg_m3": 1400.0
+  },
+  "effective_permeability_evolution": {
+    "enabled": true,
+    "fixed_8s_offset_used": false,
+    "interface_mapping": "HYDRAULIC_EQUIVALENT_SHAPE_MULTIPLIER_ON_STATIC_BASKET_SCALE",
+    "maximum_effective_multiplier": 1.0,
+    "minimum_effective_multiplier": 1e-06,
+    "model": "waszkiewiczSaturatedDissolutionIndexed",
+    "source_parameters": {
+      "dose_g": 18.5,
+      "k_solids_g": 2.257390325360356,
+      "l_solids_s": 19.833265422011824,
+      "m_solids_s": 9.341259347305948,
+      "pc_bar": 12.391550000000002,
+      "qc_g_per_s": 1.8969919954879988
+    },
+    "source_reference_pressure_bar": 9.0,
+    "source_to_solver_offset_s": 3.0,
+    "source_validity_start_s": 10.01001001001001,
+    "upper_roundoff_tolerance": 1e-10
+  },
+  "execution_boundaries": {
+    "analytical_preflight_execution_count": 1,
+    "openfoam_execution_count": 0,
+    "optimizer_iteration_count": 0,
+    "parameter_fitting_count": 0,
+    "protected_comparison_execution_count": 0,
+    "puckworks_code_execution_count": 0,
+    "puckworks_reference_execution_count": 0,
+    "reduced_preflight_execution_count": 1,
+    "scientific_result_status": "NOT_RUN"
+  },
+  "extraction": {
+    "model": "single_effective_solute_first_order_with_capacity_ceiling",
+    "rate_constant_1_s": 0.0,
+    "saturation_concentration_kg_m3": 180.0,
+    "status": "INHERITED_R0_UNCALIBRATED_UNSCORED"
+  },
+  "fixture_role": "CLOSED_FORM_TO_OPENFOAM_EFFECTIVE_PERMEABILITY_VERIFICATION",
+  "geometry": {
+    "axial_cells": 64,
+    "axial_grading": 1.0,
+    "azimuthal_cells": 1,
+    "basket_diameter_m": 0.056,
+    "basket_radius_m": 0.028,
+    "hardware_basket_diameter_m": 0.058,
+    "hydraulic_bed_area_m2": 0.002463008640414398,
+    "radial_cells": 32,
+    "radial_grading": 1.0,
+    "wedge_angle_deg": 5.0
+  },
+  "governance": {
+    "base_R1_path": "config/reconstruction_R1_waszkiewicz_9bar.json",
+    "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+    "closure_contract_path": "validation/wp02/WP02_001_CLOSURE_CONTRACT.json",
+    "constant_R1_configuration_change": false,
+    "frozen_R0_configuration_change": false,
+    "issue": 18,
+    "puckworks_lock_path": "dependencies/puckworks.lock.json",
+    "task": "WP02-001"
+  },
+  "hydraulics": {
+    "front_pressure_gauge_Pa": 0.0,
+    "gravity_enabled": false,
+    "historically_calibrated_parameter_count": 1,
+    "outlet_pressure_gauge_Pa": 0.0,
+    "permeability_profile": {
+      "downstream_permeability_m2": 2.8642613245723525e-15,
+      "interface_position_m": 0.005,
+      "type": "uniform",
+      "upstream_permeability_m2": 2.8642613245723525e-15
+    },
+    "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+    "pressure_ramp_time_s": 0.0,
+    "runtime_adjustable_parameter_count": 0,
+    "saturated_permeability_m2": 2.8642613245723525e-15,
+    "target_inlet_pressure_gauge_Pa": 870902.4190000001,
+    "wetting_permeability_m2": 2.8642613245723525e-15
+  },
+  "liquid": {
+    "density_kg_m3": 965.0,
+    "dynamic_viscosity_Pa_s": 0.000315,
+    "effective_solute_diffusivity_m2_s": 0.0,
+    "temperature_K": 363.15
+  },
+  "mode": "verification_fixture",
+  "openfoam_distribution": "OpenFOAM Foundation",
+  "openfoam_version": "12",
+  "output": {
+    "live_stage_logging": true,
+    "reference_artifact_version": "0.1.4",
+    "write_compression": false,
+    "write_format": "ascii"
+  },
+  "parallel": {
+    "decomposition_method": "scotch",
+    "default_subdomains": 1
+  },
+  "physical_validation_role": "NOT_APPLICABLE_CODE_VERIFICATION",
+  "pressure_nodes": {
+    "inlet": "BASKET_OR_PUCK_INLET_GAUGE",
+    "outlet": "BASKET_BOTTOM_AMBIENT_GAUGE",
+    "reference_bin": "REFERENCE_PRESSURE_BIN_CONTEXT_ONLY"
+  },
+  "scenario_id": "fixture_WP02_001_uniform_pressure",
+  "schema_version": "espresso.whole_pull.reconstruction_scenario.wp02a.v1",
+  "solver": "espressoWholePullFoam",
+  "solver_version": "0.1.4",
+  "source_time_mapping": {
+    "solver_time_equals_source_time_plus_s": 3.0,
+    "source_fixed_8s_offset_used": false
+  },
+  "time": {
+    "delta_t_s": 1.0,
+    "end_s": 103.0,
+    "field_write_interval_s": 1.0,
+    "reduced_trace_maximum_interval_s": 0.1,
+    "start_s": 0.0,
+    "target_beverage_mass_kg": 0.04,
+    "target_beverage_mass_role": "UNSCORED_DIAGNOSTIC_NOT_TERMINATION"
+  },
+  "verification": {
+    "analytical_first_drip_absolute_tolerance_s": 1e-08,
+    "analytical_first_drip_s": 0.0,
+    "analytical_flow_relative_tolerance": 1e-08,
+    "b0_parity": {
+      "event_absolute_tolerance_s": 1e-08,
+      "hydraulic_relative_tolerance": 1e-08,
+      "inventory_relative_tolerance": 0.005
+    },
+    "bounded_state": {
+      "concentration_cap_absolute_tolerance_kg_m3": 1e-08,
+      "inventory_absolute_tolerance_kg": 1e-12,
+      "monotonic_mass_absolute_tolerance_kg": 1e-12,
+      "retained_water_absolute_tolerance_kg": 1e-12
+    },
+    "fixture_contract": {
+      "acceptance": {
+        "liquid_and_solute_conservation_use_existing_frozen_tolerances": true,
+        "maximum_effective_permeability_relative_error": 1e-12,
+        "maximum_final_multiplier_distance_from_one": 2e-07,
+        "maximum_multiplier_field_spatial_cv": 1e-14,
+        "maximum_multiplier_relative_error": 1e-12,
+        "maximum_pressure_probe_absolute_error_Pa": 5.0,
+        "maximum_relative_darcy_flow_error": 1e-08,
+        "maximum_source_state_time_absolute_error_s": 1e-12,
+        "require_exact_source_support_status": true,
+        "require_monotonic_supported_multiplier": true
+      },
+      "basket_pressure_gauge_Pa": 870902.4190000001,
+      "claim_ceiling": "One-dimensional constant-pressure code verification of the frozen optional closure; not physical validation.",
+      "execution": {
+        "mpi_ranks": 1,
+        "same_wp02_executable_as_all_later_cases": true
+      },
+      "fully_saturated_at_start": true,
+      "mesh": {
+        "axial_cells": 64,
+        "azimuthal_cells": 1,
+        "radial_cells": 32
+      },
+      "pressure_ramp_s": 0.0,
+      "protected_source_access_required": false,
+      "role": "DETERMINISTIC_CODE_VERIFICATION_NOT_PHYSICAL_VALIDATION",
+      "scenario_path": "config/fixture_WP02_001_uniform_pressure.json",
+      "source_reference_pressure_bar": 9.0,
+      "time": {
+        "delta_t_s": 1.0,
+        "end_s": 103.0,
+        "start_s": 0.0
+      }
+    },
+    "pressure_probes": [
+      {
+        "half_width_m": 7.96875e-05,
+        "name": "quarter_depth",
+        "position_m": 0.0025
+      },
+      {
+        "half_width_m": 7.96875e-05,
+        "name": "three_quarter_depth",
+        "position_m": 0.0075
+      }
+    ],
+    "retained_water_relative_tolerance": 1e-08,
+    "wedge_volume_relative_tolerance": 1e-08
+  },
+  "wetting": {
+    "front_smoothing_cells": 1.0,
+    "initial_saturation": 1.0,
+    "initial_wet_front_m": 0.01,
+    "model": "darcy_sharp_front_storage"
+  }
+}

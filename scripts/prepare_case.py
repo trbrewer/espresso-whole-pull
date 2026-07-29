@@ -34,6 +34,7 @@ WP02_TASK = "WP02-001"
 WP02_CONFIG_RELATIVES = {
     Path("config/reconstruction_WP02A_waszkiewicz_9bar.json"),
     Path("config/reconstruction_WP02A_waszkiewicz_8bar.json"),
+    Path("config/fixture_WP02_001_uniform_pressure.json"),
 }
 
 
@@ -348,6 +349,10 @@ def is_wp02_scenario(scenario: dict) -> bool:
     return scenario.get("governance", {}).get("task") == WP02_TASK
 
 
+def is_wp02_uniform_fixture(scenario: dict) -> bool:
+    return scenario.get("scenario_id") == "fixture_WP02_001_uniform_pressure"
+
+
 def validate_r1_scenario(scenario: dict, nprocs: int) -> None:
     required = [
         ("geometry", "hardware_basket_diameter_m"),
@@ -373,13 +378,18 @@ def validate_r1_scenario(scenario: dict, nprocs: int) -> None:
         ("output", "write_format"),
         ("output", "write_compression"),
         ("wetting", "initial_wet_front_m"),
-        ("flow_comparison_contract", "primary_predicted_quantity"),
-        ("flow_comparison_contract", "protected_shot_ids"),
-        ("flow_comparison_contract", "protected_indices"),
-        ("flow_comparison_contract", "normalization_indices"),
-        ("flow_comparison_contract", "gates"),
-        ("flow_comparison_contract", "pearson_degeneracy"),
     ]
+    if not is_wp02_uniform_fixture(scenario):
+        required.extend(
+            [
+                ("flow_comparison_contract", "primary_predicted_quantity"),
+                ("flow_comparison_contract", "protected_shot_ids"),
+                ("flow_comparison_contract", "protected_indices"),
+                ("flow_comparison_contract", "normalization_indices"),
+                ("flow_comparison_contract", "gates"),
+                ("flow_comparison_contract", "pearson_degeneracy"),
+            ]
+        )
     for section, key in required:
         if section not in scenario or key not in scenario[section]:
             raise SystemExit(f"incomplete R1 scientific configuration: /{section}/{key}")
@@ -429,6 +439,9 @@ def validate_r1_scenario(scenario: dict, nprocs: int) -> None:
             raise SystemExit("source fixed 8 s offset cannot enter WP02 mapping")
         if nprocs != scenario["parallel"]["default_subdomains"]:
             raise SystemExit("WP02 nprocs must equal frozen rank count")
+        if is_wp02_uniform_fixture(scenario):
+            if nprocs != 1 or "flow_comparison_contract" in scenario:
+                raise SystemExit("invalid WP02 uniform fixture")
         return
     if governance.get("change_scope") != "SOURCE_SCENARIO_CHANGE_ONLY":
         raise SystemExit("R1 change scope is not SOURCE_SCENARIO_CHANGE_ONLY")
@@ -643,6 +656,15 @@ def write_r1_manifest(
         "github_issue": 18 if wp02 else 6,
         "change_scope": "GOVERNING_PHYSICS_CHANGE" if wp02 else "SOURCE_SCENARIO_CHANGE_ONLY",
         "governing_physics_change": wp02,
+        "case_role": (
+            "UNIFORM_PRESSURE_VERIFICATION_FIXTURE"
+            if is_wp02_uniform_fixture(scenario)
+            else "SCIENTIFIC_RECONSTRUCTION"
+        ),
+        "protected_source_present": False if is_wp02_uniform_fixture(scenario) else None,
+        "physical_validation": (
+            "NOT_APPLICABLE" if is_wp02_uniform_fixture(scenario) else "NOT_ESTABLISHED"
+        ),
         "package_scientific_configuration_change": True,
         "scientific_configuration_change_scope": "NEW_R1_SCENARIO_ONLY",
         "qualified_R0_scientific_configuration_change": False,

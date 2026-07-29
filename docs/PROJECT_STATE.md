@@ -2,7 +2,7 @@
 
 - Public baseline: `v0.1.4-public.1`, sanitized derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 123/123 PASS
+- Public source verification: 126/126 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
 - Governed R1 scenario present: true
