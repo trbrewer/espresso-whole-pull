@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Dict, Iterable, List, Mapping, Sequence
 
@@ -14,6 +15,16 @@ DISPOSITION = "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS"
 PARTIAL = "HUMAN_INPUTS_PARTIALLY_COMPLETE"
 COMPLETE = "HUMAN_INPUTS_COMPLETE_AWAITING_GOVERNED_REVIEW"
 INPUT_STATUSES = {"UNRESOLVED_HUMAN_INPUT", "RESOLVED_HUMAN_INPUT"}
+PRIVATE_CLASSIFICATIONS = {
+    "PRIVATE_PERSONAL_INPUT", "PRIVATE_OPERATIONAL_INPUT",
+    "SEALED_ACQUISITION_INPUT", "MEASURED_HOLDOUT_INPUT",
+}
+FIELD_RULE_BINDINGS = {
+    ("basket_and_bed_geometry", "bed_area_calculation"):
+        "frozen_governing_requirements.bed_area_rule",
+    ("basket_and_bed_geometry", "hole_open_area_metadata"):
+        "frozen_governing_requirements.open_area_rule",
+}
 CLASSIFICATIONS = {
     "PUBLIC_PROTOCOL_INPUT", "PUBLIC_EQUIPMENT_METADATA",
     "PRIVATE_PERSONAL_INPUT", "PRIVATE_OPERATIONAL_INPUT",
@@ -145,32 +156,38 @@ TEMPLATES = {
 }
 
 
-def unresolved(role: str, deadline: str, classification: str) -> Dict[str, object]:
-    return {
+def unresolved(role: str, deadline: str, classification: str,
+               governing_rule_binding: str = None) -> Dict[str, object]:
+    value = {
         "status": "UNRESOLVED_HUMAN_INPUT",
         "required_before": deadline,
         "responsible_role_id": role,
         "input_classification": classification,
         "public_repository_value_allowed":
-            classification not in {"PRIVATE_PERSONAL_INPUT", "PRIVATE_OPERATIONAL_INPUT",
-                                   "SEALED_ACQUISITION_INPUT", "MEASURED_HOLDOUT_INPUT"},
-        "private_value_required":
-            classification in {"PRIVATE_PERSONAL_INPUT", "PRIVATE_OPERATIONAL_INPUT"},
+            classification not in PRIVATE_CLASSIFICATIONS,
+        "private_value_required": classification in PRIVATE_CLASSIFICATIONS,
     }
+    if governing_rule_binding is not None:
+        value["governing_rule_binding"] = governing_rule_binding
+    return value
 
 
 def requirement_entries() -> List[Dict[str, object]]:
     entries = []
     for category, (role, classification, deadline, fields) in CATEGORIES.items():
         for field in fields:
-            entries.append({
+            entry = {
                 "requirement_id": f"{category.upper()}__{field.upper()}",
                 "category": category,
                 "field": field,
                 "input_classification": classification,
                 "deadline": deadline,
                 "responsible_role_id": role,
-            })
+            }
+            binding = FIELD_RULE_BINDINGS.get((category, field))
+            if binding:
+                entry["governing_rule_binding"] = binding
+            entries.append(entry)
     return entries
 
 
@@ -194,17 +211,54 @@ def validate_input_records(records: Sequence[Mapping[str, object]]) -> None:
         raise ValueError("missing or additional requirement ID")
     for record in records:
         requirement_id = record["requirement_id"]
-        if record.get("status") not in INPUT_STATUSES:
+        status = record.get("status")
+        if status not in INPUT_STATUSES:
             raise ValueError("unknown input status")
-        for key in ("requirement_id", "category", "field",
-                    "input_classification", "deadline", "responsible_role_id"):
+        metadata_keys = set(expected[requirement_id])
+        allowed_keys = metadata_keys | {"status"}
+        if status == "RESOLVED_HUMAN_INPUT":
+            allowed_keys.add("resolution_binding")
+        if set(record) != allowed_keys:
+            raise ValueError("unknown or missing record keys")
+        for key in metadata_keys:
             if record.get(key) != expected[requirement_id].get(key):
                 raise ValueError("requirement metadata mismatch: " + key)
+        if status == "RESOLVED_HUMAN_INPUT":
+            binding = record.get("resolution_binding")
+            if not isinstance(binding, Mapping):
+                raise ValueError("resolved input requires resolution binding")
+            classification = record["input_classification"]
+            if classification in PRIVATE_CLASSIFICATIONS:
+                required = {"binding_type", "private_package_sha256",
+                            "custody_record_id", "custodian_role_id"}
+                if set(binding) != required or binding.get("binding_type") != \
+                        "PRIVATE_PACKAGE_DIGEST_AND_CUSTODY":
+                    raise ValueError("malformed private resolution binding")
+                if not re.fullmatch(r"[0-9a-f]{64}",
+                                    str(binding.get("private_package_sha256", ""))):
+                    raise ValueError("invalid private package digest")
+                if not all(isinstance(binding.get(key), str) and binding[key]
+                           for key in ("custody_record_id", "custodian_role_id")):
+                    raise ValueError("incomplete private custody binding")
+            else:
+                required = {"binding_type", "value", "evidence_sha256",
+                            "evidence_role_id"}
+                if set(binding) != required or binding.get("binding_type") != \
+                        "PUBLIC_VALUE_AND_EVIDENCE":
+                    raise ValueError("malformed public resolution binding")
+                if binding.get("value") is None or binding.get("value") == "":
+                    raise ValueError("public value absent")
+                if not re.fullmatch(r"[0-9a-f]{64}",
+                                    str(binding.get("evidence_sha256", ""))):
+                    raise ValueError("invalid public evidence digest")
+                if not isinstance(binding.get("evidence_role_id"), str) or \
+                        not binding["evidence_role_id"]:
+                    raise ValueError("public evidence role absent")
 
 
 def evaluate_readiness(package: Mapping[str, Mapping[str, object]],
                        authority_established: bool) -> str:
-    if not authority_established:
+    if authority_established is not True:
         return "AUTHORITY_NOT_ESTABLISHED"
     if not isinstance(package, Mapping) or not package:
         raise ValueError("complete governed input mapping required")
@@ -243,6 +297,9 @@ def wp03a_governing_requirements(source_root: Path) -> Dict[str, object]:
         "sample_size_adequacy_rule": design["sample_size_adequacy_rule"],
         "required_raw_channels": design["required_raw_channels"],
         "required_geometry": design["required_geometry"],
+        "optional_geometry": design["optional_geometry"],
+        "bed_area_rule": design["bed_area_rule"],
+        "open_area_rule": design["open_area_rule"],
         "required_timing": design["required_timing"],
         "required_uncertainty": design["required_uncertainty"],
         "required_metadata": design["required_metadata"],
@@ -259,7 +316,9 @@ def _template(categories: Iterable[str]) -> Dict[str, object]:
     for category in categories:
         role, classification, deadline, names = CATEGORIES[category]
         fields[category] = {
-            name: unresolved(role, deadline, classification) for name in names
+            name: unresolved(
+                role, deadline, classification,
+                FIELD_RULE_BINDINGS.get((category, name))) for name in names
         }
     return {
         "schema_version": "espresso.public.wp_0_3c_stage0_input_template.v1",

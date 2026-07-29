@@ -33,6 +33,26 @@ class Stage0Tests(unittest.TestCase):
             frozen if frozen is not None else verifier.FROZEN, text,
             regenerated, governing or self.governing)
 
+    def resolved_package(self):
+        package = stage0.input_package()
+        for record in package.values():
+            record["status"] = "RESOLVED_HUMAN_INPUT"
+            if record["input_classification"] in stage0.PRIVATE_CLASSIFICATIONS:
+                record["resolution_binding"] = {
+                    "binding_type": "PRIVATE_PACKAGE_DIGEST_AND_CUSTODY",
+                    "private_package_sha256": "a" * 64,
+                    "custody_record_id": "SYNTHETIC_CUSTODY",
+                    "custodian_role_id": "ROLE_DATA_CUSTODIAN",
+                }
+            else:
+                record["resolution_binding"] = {
+                    "binding_type": "PUBLIC_VALUE_AND_EVIDENCE",
+                    "value": "SYNTHETIC_TEST_VALUE",
+                    "evidence_sha256": "b" * 64,
+                    "evidence_role_id": "ROLE_PROTOCOL_OWNER",
+                }
+        return package
+
     def test_unresolved_inputs_accepted_and_block_readiness(self):
         self.assertEqual(stage0.evaluate_readiness(
             stage0.input_package(), authority_established=True),
@@ -41,8 +61,9 @@ class Stage0Tests(unittest.TestCase):
 
     def test_partial_readiness(self):
         package = stage0.input_package()
-        first = next(iter(package.values()))
-        first["status"] = "RESOLVED_HUMAN_INPUT"
+        resolved = self.resolved_package()
+        first_id = next(iter(package))
+        package[first_id] = resolved[first_id]
         self.assertEqual(stage0.evaluate_readiness(
             package, authority_established=True), stage0.PARTIAL)
 
@@ -50,11 +71,14 @@ class Stage0Tests(unittest.TestCase):
         self.assertEqual(stage0.evaluate_readiness(
             stage0.input_package(), authority_established=False),
                          "AUTHORITY_NOT_ESTABLISHED")
+        self.assertEqual(stage0.evaluate_readiness(
+            stage0.input_package(), authority_established=1),
+            "AUTHORITY_NOT_ESTABLISHED")
 
     def test_empty_mapping_and_one_verified_requirement_fail_closed(self):
         with self.assertRaises(ValueError):
             stage0.evaluate_readiness({}, authority_established=True)
-        one = stage0.input_package("RESOLVED_HUMAN_INPUT")
+        one = self.resolved_package()
         one = {next(iter(one)): next(iter(one.values()))}
         with self.assertRaises(ValueError):
             stage0.evaluate_readiness(one, authority_established=True)
@@ -64,7 +88,7 @@ class Stage0Tests(unittest.TestCase):
         package[next(iter(package))]["status"] = "VERIFIED"
         with self.assertRaises(ValueError):
             stage0.evaluate_readiness(package, authority_established=True)
-        records = list(stage0.input_package("RESOLVED_HUMAN_INPUT").values())[:-1]
+        records = list(self.resolved_package().values())[:-1]
         with self.assertRaises(ValueError):
             stage0.validate_input_records(records)
 
@@ -87,9 +111,23 @@ class Stage0Tests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 stage0.validate_input_records(records)
 
+    def test_status_only_resolved_unknown_keys_and_bad_bindings_rejected(self):
+        records = list(stage0.input_package().values())
+        records[0]["status"] = "RESOLVED_HUMAN_INPUT"
+        with self.assertRaises(ValueError):
+            stage0.validate_input_records(records)
+        for mutation in ("unknown_key", "bad_binding"):
+            records = list(self.resolved_package().values())
+            if mutation == "unknown_key":
+                records[0]["unexpected"] = True
+            else:
+                records[0]["resolution_binding"] = {"binding_type": "BAD"}
+            with self.assertRaises(ValueError):
+                stage0.validate_input_records(records)
+
     def test_complete_inputs_stop_awaiting_governed_review(self):
         self.assertEqual(stage0.evaluate_readiness(
-            stage0.input_package("RESOLVED_HUMAN_INPUT"),
+            self.resolved_package(),
             authority_established=True), stage0.COMPLETE)
         self.assertNotEqual(stage0.COMPLETE, "READY_FOR_CALIBRATION_PLANNING")
 
@@ -132,6 +170,42 @@ class Stage0Tests(unittest.TestCase):
             governing[key] = value
             self.assertFalse(self.evaluate(
                 governing=governing)["wp03a_governing_requirements_exact"])
+
+    def test_wp03a_geometry_rules_are_frozen(self):
+        for key in ("bed_area_rule", "open_area_rule"):
+            governing = copy.deepcopy(self.governing)
+            governing[key] = "MUTATED"
+            self.assertFalse(self.evaluate(
+                governing=governing)["wp03a_governing_requirements_exact"])
+        entries = {item["field"]: item for item in stage0.requirement_entries()}
+        self.assertEqual(
+            entries["bed_area_calculation"]["governing_rule_binding"],
+            "frozen_governing_requirements.bed_area_rule")
+        self.assertEqual(
+            entries["hole_open_area_metadata"]["governing_rule_binding"],
+            "frozen_governing_requirements.open_area_rule")
+
+    def test_contract_is_exact_not_partial(self):
+        for key in ("classification", "holdout_scoring",
+                    "new_governing_physics", "claim_ceiling",
+                    "required_input_categories", "dependencies",
+                    "public_private_information_boundary"):
+            contract = copy.deepcopy(self.contract)
+            contract[key] = "MUTATED"
+            self.assertFalse(self.evaluate(
+                contract=contract)["contract_identity_exact"])
+
+    def test_common_mode_mutation_hits_independent_identities(self):
+        registry = copy.deepcopy(self.registry)
+        registry["requirements"][0]["field"] = "common_mode_mutation"
+        templates = copy.deepcopy(self.templates)
+        fields = templates[
+            "WP_0_3C_ROLE_ASSIGNMENT_TEMPLATE.json"]["fields"][
+                "governance_and_roles"]
+        fields["common_mode_mutation"] = fields.pop("repository_owner")
+        checks = self.evaluate(registry=registry, templates=templates)
+        self.assertFalse(checks["independent_requirement_metadata_identity"])
+        self.assertFalse(checks["independent_template_mapping_identity"])
 
     def test_deterministic_regeneration_required(self):
         self.assertFalse(self.evaluate(

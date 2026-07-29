@@ -62,3 +62,9 @@ Readiness is evaluated only from a complete, exact registry mapping with
 explicit authority. A complete set of resolved human inputs stops at
 `HUMAN_INPUTS_COMPLETE_AWAITING_GOVERNED_REVIEW`; Stage 0 cannot emit
 `READY_FOR_CALIBRATION_PLANNING`.
+
+A resolved public input must bind a nonempty public value to an evidence
+digest and accountable evidence role. A resolved private input exposes no
+private value; it binds a nonempty private-package digest to a custody record
+and custodian role. Status-only resolution, unknown keys, and malformed
+bindings fail closed.

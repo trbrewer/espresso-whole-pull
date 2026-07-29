@@ -8,6 +8,7 @@
     "REQUIRED_ONLY_FOR_FUTURE_WP_0_3D"
   ],
   "frozen_governing_requirements": {
+    "bed_area_rule": "bed_cross_sectional_area_m2 = pi * basket_inside_diameter_m^2 / 4 unless a separately justified effective bed area is frozen",
     "independent_campaign": true,
     "machine_headspace_discrimination": {
       "bed_branch_only_minimum": [
@@ -26,6 +27,10 @@
     "minimum_independent_shots_per_group": 5,
     "minimum_pressure_groups": 2,
     "no_holdout_parameter_fitting": true,
+    "open_area_rule": "Basket or screen open area must not substitute for coffee-bed Darcy area and belongs only to a separately authorized outlet-resistance description.",
+    "optional_geometry": [
+      "basket_or_screen_open_area_m2_optional"
+    ],
     "preregistered_and_blinded": true,
     "required_geometry": [
       "basket_inside_diameter_m",
@@ -428,6 +433,7 @@
       "category": "basket_and_bed_geometry",
       "deadline": "REQUIRED_BEFORE_COMMISSIONING",
       "field": "bed_area_calculation",
+      "governing_rule_binding": "frozen_governing_requirements.bed_area_rule",
       "input_classification": "PUBLIC_EQUIPMENT_METADATA",
       "requirement_id": "BASKET_AND_BED_GEOMETRY__BED_AREA_CALCULATION",
       "responsible_role_id": "ROLE_PROTOCOL_OWNER"
@@ -444,6 +450,7 @@
       "category": "basket_and_bed_geometry",
       "deadline": "REQUIRED_BEFORE_COMMISSIONING",
       "field": "hole_open_area_metadata",
+      "governing_rule_binding": "frozen_governing_requirements.open_area_rule",
       "input_classification": "PUBLIC_EQUIPMENT_METADATA",
       "requirement_id": "BASKET_AND_BED_GEOMETRY__HOLE_OPEN_AREA_METADATA",
       "responsible_role_id": "ROLE_PROTOCOL_OWNER"

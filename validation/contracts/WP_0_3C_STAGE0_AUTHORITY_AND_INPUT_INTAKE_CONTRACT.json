@@ -86,6 +86,10 @@
     "data_custody_and_blinding"
   ],
   "allowed_unresolved_status": "UNRESOLVED_HUMAN_INPUT",
+  "independent_scaffold_identities": {
+    "canonical_requirement_metadata_aggregate_sha256": "844532b10a101ce6e4c60baceeb0d670eeb136943183cf2b9e7444f26cab1aab",
+    "template_filename_category_field_mapping_aggregate_sha256": "40942bbd9848efec54e560b834c44225b0b47c9c624c4228c922c6fd1fdb1a7a"
+  },
   "execution_counts": {
     "experimental": 0,
     "holdout_scoring": 0,

@@ -71,6 +71,61 @@ EXPECTED_TEMPLATE_CATEGORIES = {
         ["governance_and_roles", "data_custody_and_blinding"],
     "WP_0_3C_ACQUISITION_READINESS_TEMPLATE.json": list(stage0.CATEGORIES),
 }
+EXPECTED_REQUIREMENT_METADATA_AGGREGATE = \
+    "844532b10a101ce6e4c60baceeb0d670eeb136943183cf2b9e7444f26cab1aab"
+EXPECTED_TEMPLATE_MAPPING_AGGREGATE = \
+    "40942bbd9848efec54e560b834c44225b0b47c9c624c4228c922c6fd1fdb1a7a"
+EXPECTED_CONTRACT_CANONICAL_SHA256 = \
+    "305d85b9c58f165c1119f3c6e8623bfa9ae01eeaa356cc512fb1ea57aad6aff3"
+EXPECTED_CLASSIFICATION = [
+    "PROTOCOL_SCAFFOLD_AND_INPUT_INTAKE_ONLY",
+    "NO_GOVERNING_PHYSICS_CHANGE", "NO_EXPERIMENTAL_EXECUTION",
+    "NO_OPENFOAM_EXECUTION", "NO_PUCKWORKS_CODE_EXECUTION",
+    "NO_PROTECTED_ACCESS", "NO_HOLDOUT_SCORING",
+    "NO_MODEL_DATA_COMPARISON", "NO_SCIENTIFIC_RESULT_CHANGE",
+]
+EXPECTED_CATEGORIES = [
+    "governance_and_roles", "campaign_scope",
+    "machine_and_hydraulic_apparatus", "basket_and_bed_geometry",
+    "pressure_instrumentation", "mass_and_flow_instrumentation",
+    "temperature_instrumentation", "time_synchronization_and_logging",
+    "coffee_and_materials", "preparation_controls", "calibration_resources",
+    "commissioning_resources", "data_custody_and_blinding",
+]
+EXPECTED_IDENTITIES = {
+    "wp02_result_sha256":
+        "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+    "wp02_closure_contract_sha256":
+        "2c898dd91e558ce62006dc81de9cff20bb633b52a89f6fa5a44c5edcda50d57a",
+    "historical_scientific_executable_sha256":
+        "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+    "release_executable_sha256":
+        "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
+    "normalized_solver_source_sha256":
+        "97c685bf71df32156e6f697b37fe89e9933b556a02eaf3e7b3b79be0c05ee36f",
+    "retained_9bar_trace_sha256":
+        "10f69738a35451e4eef132edf29be80a57c667b2cb91cb64914f083302e6b1d0",
+    "retained_8bar_trace_sha256":
+        "eca75e708d4a12c3fe309ee2e1e6adb463dc974629d85eb1ab9866257ba0c7d0",
+    "wp03b_p1_contract_sha256":
+        "d61d33527d6de64201018033da86e78810a3d57a477c17c46639fc90d2b92feb",
+    "wp03b_amended_result_sha256":
+        "8af2ec832b191f96994f762eca85eacdc9bfa68ef316321b6b56894d649b6349",
+    "wp03a_holdout_contract_sha256":
+        "50c9e3e45772b6f243dfe406a4aae3b9496cee3a1e28b41909ab39406d8e2de4",
+}
+EXPECTED_DEPENDENCIES = {
+    "runtime_puckworks_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "runtime_puckworks_tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "reviewed_puckworks_commit": "bafafef3bc3c77599af8551d4e582aedb9b23f08",
+    "reviewed_puckworks_tree": "64ccf86aff4c90d1c513f1614b39e0823f64d6d7",
+}
+EXPECTED_INFORMATION_BOUNDARY = {
+    "public": "PROTOCOL_EQUIPMENT_METADATA_ROLE_IDS_AND_NON_SENSITIVE_HASHES",
+    "private": "PERSONAL_OPERATIONAL_CREDENTIAL_KEY_CONDITION_MAP_AND_CONTROLLED_DATA",
+    "private_package_binding": "HASH_ONLY_WHERE_APPROPRIATE",
+    "credentials_in_repository": False,
+}
 FORBIDDEN_PATTERNS = (
     r"-----BEGIN .*PRIVATE KEY-----", r"\b(password|api[_-]?key|secret)\s*[:=]\s*\S+",
     r"/home/[A-Za-z0-9_.-]+/", r"\b(model_prediction|model_residual|shot_score)\b",
@@ -79,6 +134,21 @@ FORBIDDEN_PATTERNS = (
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def canonical_aggregate(value: object) -> str:
+    data = json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
+    return hashlib.sha256(data).hexdigest()
+
+
+def template_mapping(templates: Dict[str, Dict[str, object]]) -> Dict[str, object]:
+    return {
+        name: {
+            category: sorted(fields)
+            for category, fields in template.get("fields", {}).items()
+        }
+        for name, template in templates.items()
+    }
 
 
 def changed_paths(root: Path) -> frozenset:
@@ -132,8 +202,9 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
                     value == stage0.unresolved(
                         stage0.CATEGORIES[category][0],
                         stage0.CATEGORIES[category][2],
-                        stage0.CATEGORIES[category][1])
-                    for value in template["fields"][category].values()
+                        stage0.CATEGORIES[category][1],
+                        stage0.FIELD_RULE_BINDINGS.get((category, field)))
+                    for field, value in template["fields"][category].items()
                 )
                 for category in EXPECTED_TEMPLATE_CATEGORIES[name]
             )
@@ -147,6 +218,30 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
             contract.get("baseline") == {"commit": BASELINE,
                                          "tree": "2fd9ae4a2e0040602daa29a4b5b4a7bc0ff899b9"},
         "frozen_hashes_exact": frozen == FROZEN,
+        "contract_identity_exact":
+            canonical_aggregate(contract) == EXPECTED_CONTRACT_CANONICAL_SHA256,
+        "contract_semantics_exact":
+            contract.get("classification") == EXPECTED_CLASSIFICATION
+            and contract.get("required_input_categories") == EXPECTED_CATEGORIES
+            and contract.get("allowed_unresolved_status") ==
+                "UNRESOLVED_HUMAN_INPUT"
+            and contract.get("independent_scaffold_identities") == {
+                "canonical_requirement_metadata_aggregate_sha256":
+                    EXPECTED_REQUIREMENT_METADATA_AGGREGATE,
+                "template_filename_category_field_mapping_aggregate_sha256":
+                    EXPECTED_TEMPLATE_MAPPING_AGGREGATE}
+            and contract.get("immutable_scientific_identities") ==
+                EXPECTED_IDENTITIES
+            and contract.get("dependencies") == EXPECTED_DEPENDENCIES
+            and contract.get("public_private_information_boundary") ==
+                EXPECTED_INFORMATION_BOUNDARY
+            and contract.get("final_disposition") ==
+                "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS"
+            and contract.get("holdout_scoring") == "NOT_PERFORMED"
+            and contract.get("new_governing_physics") == "NOT_AUTHORIZED"
+            and contract.get("claim_ceiling") ==
+                "Input scaffold only; no experimental evidence, final "
+                "preregistration, model execution, scoring, or physical validation.",
         "wp03a_governing_requirements_exact":
             expected_governing is not None and governing == expected_governing
             and governing.get("independent_campaign") is True
@@ -157,6 +252,11 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
             and governing.get("no_holdout_parameter_fitting") is True
             and bool(governing.get("required_raw_channels"))
             and bool(governing.get("required_geometry"))
+            and bool(governing.get("optional_geometry"))
+            and governing.get("bed_area_rule") ==
+                expected_governing.get("bed_area_rule")
+            and governing.get("open_area_rule") ==
+                expected_governing.get("open_area_rule")
             and bool(governing.get("required_timing"))
             and bool(governing.get("required_uncertainty"))
             and bool(governing.get("required_metadata"))
@@ -177,19 +277,18 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
             len(requirements) == len(expected_requirements) and
             all(item == expected_by_id.get(item.get("requirement_id"))
                 for item in requirements),
+        "independent_requirement_metadata_identity":
+            canonical_aggregate(requirements) ==
+                EXPECTED_REQUIREMENT_METADATA_AGGREGATE,
+        "independent_template_mapping_identity":
+            canonical_aggregate(template_mapping(templates)) ==
+                EXPECTED_TEMPLATE_MAPPING_AGGREGATE,
         "classifications_complete":
             set(registry.get("input_classification_vocabulary", [])) ==
                 stage0.CLASSIFICATIONS
             and set(registry.get("deadline_vocabulary", [])) == stage0.DEADLINES,
         "required_categories_complete":
-            {r.get("category") for r in requirements} == {
-                "governance_and_roles", "campaign_scope",
-                "machine_and_hydraulic_apparatus", "basket_and_bed_geometry",
-                "pressure_instrumentation", "mass_and_flow_instrumentation",
-                "temperature_instrumentation", "time_synchronization_and_logging",
-                "coffee_and_materials", "preparation_controls",
-                "calibration_resources", "commissioning_resources",
-                "data_custody_and_blinding"},
+            {r.get("category") for r in requirements} == set(EXPECTED_CATEGORIES),
         "templates_nonfinal":
             len(template_values) == 11 and all(
                 t.get("template_status") == "NONFINAL_INPUT_TEMPLATE"
@@ -216,7 +315,9 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
             contract.get("physical_validation") == "NOT_ESTABLISHED"
             and contract.get("final_preregistration") == "NOT_CREATED"
             and contract.get("commissioning") == "NOT_AUTHORIZED"
-            and contract.get("holdout_acquisition") == "NOT_AUTHORIZED",
+            and contract.get("holdout_acquisition") == "NOT_AUTHORIZED"
+            and contract.get("holdout_scoring") == "NOT_PERFORMED"
+            and contract.get("new_governing_physics") == "NOT_AUTHORIZED",
         "no_forbidden_content":
             not any(re.search(pattern, text, re.IGNORECASE)
                     for pattern in FORBIDDEN_PATTERNS),

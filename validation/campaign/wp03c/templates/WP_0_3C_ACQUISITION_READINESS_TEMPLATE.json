@@ -27,6 +27,7 @@
         "status": "UNRESOLVED_HUMAN_INPUT"
       },
       "bed_area_calculation": {
+        "governing_rule_binding": "frozen_governing_requirements.bed_area_rule",
         "input_classification": "PUBLIC_EQUIPMENT_METADATA",
         "private_value_required": false,
         "public_repository_value_allowed": true,
@@ -35,6 +36,7 @@
         "status": "UNRESOLVED_HUMAN_INPUT"
       },
       "hole_open_area_metadata": {
+        "governing_rule_binding": "frozen_governing_requirements.open_area_rule",
         "input_classification": "PUBLIC_EQUIPMENT_METADATA",
         "private_value_required": false,
         "public_repository_value_allowed": true,
