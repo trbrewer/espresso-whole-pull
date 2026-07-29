@@ -70,3 +70,8 @@ record the passing aggregate gates, one pre-score software failure, and the
 representation-only endpoint reconciliation. No additional Puckworks
 invocation, solver rerun, fitting, or post-result adjustment occurred.
 Physical validation remains `NOT_ESTABLISHED`.
+
+WP-0.2F packages the merged WP02-001 result without refreshing or executing
+Puckworks. The reviewed dependency remains the exact recorded commit and tree;
+alignment with any newer upstream state requires a separate dependency-review
+task.

@@ -9,11 +9,17 @@ import sys
 from pathlib import Path
 
 DEFAULT_DECLARATION = Path(
-    "validation/wp02/WP02_001_POST_RESULT_GOVERNANCE_AMENDMENT.json"
+    "validation/wp02/WP_0_2F_RELEASE_FINALIZATION_CONTRACT.json"
 )
 
 
 def selected_verifier(declaration: dict) -> str:
+    classifications = declaration.get("task_classification", [])
+    if (
+        "NO_GOVERNING_PHYSICS_CHANGE" in classifications
+        and "RELEASE_ENGINEERING_AND_DOCUMENTATION_ONLY" in classifications
+    ):
+        return "verify_release_finalization.py"
     value = declaration.get("change_declaration")
     if value == "GOVERNING_PHYSICS_CHANGE":
         return "verify_governing_physics_change.py"
@@ -40,7 +46,10 @@ def main() -> int:
         "--output",
         str(args.output),
     ]
-    if verifier == "verify_governing_physics_change.py":
+    if verifier in (
+        "verify_governing_physics_change.py",
+        "verify_release_finalization.py",
+    ):
         command.extend(["--declaration", str(declaration_path)])
     completed = subprocess.run(command, check=False)
     return completed.returncode

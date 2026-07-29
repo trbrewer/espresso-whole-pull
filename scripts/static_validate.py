@@ -22,7 +22,7 @@ from espresso_reference_math import (  # noqa: E402
 )
 from prepare_case import render_control_dict  # noqa: E402
 
-PACKAGE_VERSION = "0.2.0-dev.1"
+PACKAGE_VERSION = "0.2.0"
 FROZEN_SCENARIO_VERSION = "0.1.4"
 
 
@@ -129,6 +129,7 @@ def main() -> None:
         "scripts/verify_no_physics_change.py",
         "scripts/verify_change_contract.py",
         "scripts/verify_governing_physics_change.py",
+        "scripts/verify_release_finalization.py",
         "scripts/verify_v0_1_4_baseline_integrity.py",
         "scripts/verify_source_manifest.py",
         "scripts/write_build_provenance.py",
@@ -181,7 +182,7 @@ def main() -> None:
         version_file == PACKAGE_VERSION
         and scenario.get("solver_version") == FROZEN_SCENARIO_VERSION
         and fixture.get("solver_version") == FROZEN_SCENARIO_VERSION
-        and "espressoWholePullFoam v0.2.0-dev.1" in cpp
+        and "espressoWholePullFoam v0.2.0" in cpp
     )
     gates["version_identity_consistent"] = gate(
         version_ok,
@@ -570,6 +571,7 @@ def main() -> None:
         (root / "scripts/verify_change_contract.py").is_file()
         and (root / "scripts/verify_governing_physics_change.py").is_file()
         and (root / "scripts/verify_v0_1_4_baseline_integrity.py").is_file()
+        and (root / "scripts/verify_release_finalization.py").is_file()
     )
 
     build_provenance_ok = (
@@ -749,7 +751,7 @@ def main() -> None:
 
     all_pass = all(item["status"] == "PASS" for item in gates.values())
     report = {
-        "schema_version": "espresso.whole_pull.static_validation.v0.2.0-dev.1",
+        "schema_version": "espresso.whole_pull.static_validation.v0.2.0",
         "status": "PASS" if all_pass else "FAIL",
         "gate_summary": {
             "pass": sum(item["status"] == "PASS" for item in gates.values()),
@@ -764,7 +766,7 @@ def main() -> None:
             "Physical validation is not established.",
         ],
     }
-    output = case / "preflight/STATIC_VALIDATION_REPORT_V0_2_0_DEV_1.json"
+    output = case / "preflight/STATIC_VALIDATION_REPORT_V0_2_0.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))

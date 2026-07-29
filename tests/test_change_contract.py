@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from verify_change_contract import selected_verifier  # noqa: E402
 from verify_governing_physics_change import verify as verify_governing  # noqa: E402
+from verify_release_finalization import verify as verify_release  # noqa: E402
 from verify_v0_1_4_baseline_integrity import verify as verify_baseline  # noqa: E402
 
 
@@ -33,6 +34,36 @@ class ChangeContractRoutingTests(unittest.TestCase):
             "verify_governing_physics_change.py",
         )
         self.assertEqual(verify_governing(ROOT)["status"], "PASS")
+
+    def test_release_contract_selects_and_passes_release_verifier(self) -> None:
+        declaration = json.loads(
+            (
+                ROOT
+                / "validation/wp02/WP_0_2F_RELEASE_FINALIZATION_CONTRACT.json"
+            ).read_text()
+        )
+        self.assertEqual(
+            selected_verifier(declaration), "verify_release_finalization.py"
+        )
+        self.assertEqual(verify_release(ROOT)["status"], "PASS")
+
+    def test_release_finalization_fails_on_physics_or_result_change(self) -> None:
+        for relative in (
+            "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+            "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json",
+        ):
+            temporary, root = self.copy_root()
+            try:
+                path = root / relative
+                if path.suffix == ".json":
+                    value = json.loads(path.read_text())
+                    value["synthetic_forbidden_change"] = True
+                    path.write_text(json.dumps(value))
+                else:
+                    path.write_text(path.read_text() + "\nforbidden scientific change\n")
+                self.assertEqual(verify_release(root)["status"], "FAIL")
+            finally:
+                temporary.cleanup()
 
     def test_governing_change_fails_with_v0_1_4_active_version(self) -> None:
         temporary, root = self.copy_root()
