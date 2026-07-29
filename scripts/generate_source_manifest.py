@@ -184,7 +184,7 @@ def main() -> None:
     report = {
         "schema_version": "espresso.whole_pull.source_package_manifest.v0.2.0",
         "generated_at_utc": "NOT_RECORDED_DETERMINISTIC_SOURCE_MANIFEST",
-        "package": root.name,
+        "package": "espresso-whole-pull",
         "package_version": (root / "VERSION").read_text(encoding="utf-8").strip(),
         "target": "OpenFOAM Foundation 12",
         "derivation_role": "sanitized public derivative",

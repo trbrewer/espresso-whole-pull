@@ -16,7 +16,7 @@
     "python_test_count": 119,
     "static_gate_count": 34,
     "source_manifest_file_count": 131,
-    "source_manifest_aggregate_sha256": "0aa934c259c0a8fe5f64b786145a0e88d65b09260f07e1badba61370cfd3cad5",
+    "source_manifest_aggregate_sha256": "4182c59cfef51251903331377a32951f2384806105ae8ee5d5c60c55172aca87",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_finalization_contract": "PASS",
