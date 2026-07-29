@@ -5,7 +5,6 @@ import argparse
 import hashlib
 import json
 import os
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable
 
@@ -184,7 +183,7 @@ def main() -> None:
     aggregate_hash = aggregate(files)
     report = {
         "schema_version": "espresso.whole_pull.source_package_manifest.v0.2.0",
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_at_utc": "NOT_RECORDED_DETERMINISTIC_SOURCE_MANIFEST",
         "package": root.name,
         "package_version": (root / "VERSION").read_text(encoding="utf-8").strip(),
         "target": "OpenFOAM Foundation 12",
