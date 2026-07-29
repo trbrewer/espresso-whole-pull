@@ -169,7 +169,21 @@ def calibration_tolerance(contract: dict) -> float:
     return float(match.group(1)) / 100.0
 
 
-def predicted_trace(contract: dict, rows: list[dict[str, float]]) -> dict:
+def floating_endpoint_tolerance_s(
+    governed_endpoint_s: float,
+    observed_endpoint_s: float,
+    delta_t_s: float,
+) -> float:
+    magnitude = max(abs(governed_endpoint_s), abs(observed_endpoint_s), 1.0)
+    tolerance = max(1024.0 * math.ulp(magnitude), 1.0e-12)
+    if tolerance >= delta_t_s * 1.0e-6:
+        raise ValueError(
+            "floating endpoint tolerance is not negligible relative to timestep"
+        )
+    return tolerance
+
+
+def predicted_trace(contract: dict, scenario: dict, rows: list[dict[str, float]]) -> dict:
     times = [row["time_s"] for row in rows]
     density = contract["solver_to_source_flow_mapping"]["primary_predicted_quantity"][
         "liquid_density_kg_m3"
@@ -178,7 +192,43 @@ def predicted_trace(contract: dict, rows: list[dict[str, float]]) -> dict:
     grid = source_grid(contract)
     offset = contract["time_mapping_contract"]["source_to_solver_offset_s"]
     mapped = [time + offset for time in grid]
-    predicted = [interpolate(times, flow, time) for time in mapped]
+    governed_endpoint = contract["time_mapping_contract"]["solver_end_time_s"]
+    delta_t = scenario["time"]["delta_t_s"]
+    tolerance = floating_endpoint_tolerance_s(governed_endpoint, times[-1], delta_t)
+    predicted = []
+    effective_times = []
+    reconciled = []
+    for index, target in enumerate(mapped):
+        is_final = index == len(mapped) - 1
+        if (
+            is_final
+            and target == governed_endpoint
+            and target > times[-1]
+            and target - times[-1] <= tolerance
+        ):
+            predicted.append(flow[-1])
+            effective_times.append(times[-1])
+            reconciled.append(True)
+        else:
+            predicted.append(interpolate(times, flow, target))
+            effective_times.append(target)
+            reconciled.append(False)
+    count = sum(reconciled)
+    reconciliation = {
+        "status": "APPLIED" if count else "NOT_REQUIRED",
+        "kind": "FLOATING_POINT_REPRESENTATION_ONLY",
+        "reconciled_point_count": count,
+        "source_index": len(mapped) - 1 if count else None,
+        "governed_mapped_time_s": governed_endpoint,
+        "observed_trace_endpoint_s": times[-1],
+        "absolute_gap_s": abs(governed_endpoint - times[-1]),
+        "tolerance_s": tolerance,
+        "frozen_timestep_s": delta_t,
+        "gap_as_fraction_of_timestep": abs(governed_endpoint - times[-1]) / delta_t,
+        "interpolation_extrapolation_performed": False,
+        "scientific_time_mapping_changed": False,
+        "trace_modified": False,
+    }
     late = contract["protected_comparison_contract"]["normalization_indices"]
     late_mean = statistics.mean(predicted[late["first"]:late["last"] + 1])
     return {
@@ -187,6 +237,9 @@ def predicted_trace(contract: dict, rows: list[dict[str, float]]) -> dict:
         "predicted": predicted,
         "density": density,
         "late_mean": late_mean,
+        "effective_times": effective_times,
+        "reconciled": reconciled,
+        "floating_endpoint_reconciliation": reconciliation,
     }
 
 
@@ -200,7 +253,7 @@ def numerical_stage(root: Path, trace: Path, acceptance: Path, case_manifest: Pa
     numerical_pass = all(item["status"] == "PASS" for item in gates.values()) and all(
         item["status"] == "PASS" for item in parity.values()
     )
-    prediction = predicted_trace(contract, rows)
+    prediction = predicted_trace(contract, scenario, rows)
     target = contract["calibration_contract"]["equilibrium_mass_flow_g_per_s"]
     tolerance = calibration_tolerance(contract)
     error = abs(prediction["late_mean"] - target) / target
@@ -231,6 +284,9 @@ def numerical_stage(root: Path, trace: Path, acceptance: Path, case_manifest: Pa
             "protected_source_opened": False,
         },
         "protected_release_authorized": status,
+        "floating_endpoint_reconciliation": prediction[
+            "floating_endpoint_reconciliation"
+        ],
     }
     canonical_write(output, result)
     if not status:
@@ -312,7 +368,7 @@ def protected_stage(root: Path, trace: Path, numerical: Path, puckworks: Path, o
     grids = [[int(row["time_index"]) for row in grouped[shot]] for shot in shots]
     if any(grid != list(range(1000)) for grid in grids):
         raise ValueError("protected source ordering mismatch")
-    prediction = predicted_trace(contract, rows)
+    prediction = predicted_trace(contract, scenario, rows)
     source_times = prediction["source_grid"]
     mapped = prediction["mapped"]
     predicted = prediction["predicted"]
@@ -356,6 +412,9 @@ def protected_stage(root: Path, trace: Path, numerical: Path, puckworks: Path, o
             "sample_count": len(source_times),
             "support_s": [source_times[0], source_times[-1]],
         },
+        "floating_endpoint_reconciliation": numerical_result[
+            "floating_endpoint_reconciliation"
+        ],
         "source": {"path": source_info["path"], "sha256": source_info["sha256"], "commit": lock["checkout_commit"], "tree": lock["checkout_tree_sha"], "rights": "CC-BY-4.0_WITH_ATTRIBUTION"},
         "historical_protected_access_occurred": True,
         "blinding_status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS",
@@ -364,9 +423,9 @@ def protected_stage(root: Path, trace: Path, numerical: Path, puckworks: Path, o
     canonical_write(output, result)
     with reduced.open("w", newline="", encoding="utf-8") as stream:
         writer = csv.writer(stream)
-        writer.writerow(["source_index","source_time_s","mapped_solver_time_s","outlet_flow_m3_s","predicted_flow_g_per_s","normalized_predicted_flow","protected_window","normalization_window"])
-        for index, (source_time, solver_time, value, normalized) in enumerate(zip(source_times, mapped, predicted, pred_norm_all)):
-            writer.writerow([index, f"{source_time:.12g}", f"{solver_time:.12g}", f"{value/(1000*density):.16g}", f"{value:.16g}", f"{normalized:.16g}", int(first <= index <= last), int(late_first <= index <= late_last)])
+        writer.writerow(["source_index","source_time_s","mapped_solver_time_s","effective_solver_sample_time_s","floating_endpoint_reconciled","outlet_flow_m3_s","predicted_flow_g_per_s","normalized_predicted_flow","protected_window","normalization_window"])
+        for index, (source_time, solver_time, effective_time, was_reconciled, value, normalized) in enumerate(zip(source_times, mapped, prediction["effective_times"], prediction["reconciled"], predicted, pred_norm_all)):
+            writer.writerow([index, f"{source_time:.12g}", f"{solver_time:.12g}", f"{effective_time:.16g}", int(was_reconciled), f"{value/(1000*density):.16g}", f"{value:.16g}", f"{normalized:.16g}", int(first <= index <= last), int(late_first <= index <= late_last)])
 
 
 def finalize_stage(numerical: Path, protected: Path, output: Path) -> None:
@@ -376,6 +435,9 @@ def finalize_stage(numerical: Path, protected: Path, output: Path) -> None:
         "schema_version": "espresso.public.wp01r_005_execution_result.v1",
         "protocol": {"historical_protected_access_occurred": True, "historical_protected_result_known": True, "blinding_status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS", "corrective_result_role": "GOVERNED_NONBLINDED_REPRODUCIBILITY_CONFIRMATION"},
         "numerical": num, "protected": prot,
+        "floating_endpoint_reconciliation": num[
+            "floating_endpoint_reconciliation"
+        ],
         "overall_r1_physical_comparison": "SOURCE_LINKED_RECONSTRUCTION_PASS" if shape_pass else "SOURCE_LINKED_RECONSTRUCTION_FAIL",
         "physical_validation": "NOT_ESTABLISHED",
         "governing_physics_change": False,

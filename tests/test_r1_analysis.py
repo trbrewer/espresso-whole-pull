@@ -89,6 +89,40 @@ class R1AnalysisSyntheticTests(unittest.TestCase):
         self.assertAlmostEqual(grid[899], 89.98998998998998)
         self.assertAlmostEqual(grid[900], 90.09009009009009)
 
+    def test_floating_endpoint_reconciliation_is_tightly_bounded(self) -> None:
+        contract, scenario, _ = ANALYSIS.authorities(ROOT)
+        observed = 102.999999999997
+        tolerance = ANALYSIS.floating_endpoint_tolerance_s(
+            103.0, observed, scenario["time"]["delta_t_s"]
+        )
+        self.assertGreater(tolerance, 103.0 - observed)
+        self.assertLess(tolerance, scenario["time"]["delta_t_s"] * 1e-6)
+        rows = [
+            {"time_s": index / 10, "outlet_flow_m3_s": 1.0}
+            for index in range(1030)
+        ]
+        rows.append({"time_s": observed, "outlet_flow_m3_s": 2.0})
+        result = ANALYSIS.predicted_trace(contract, scenario, rows)
+        reconciliation = result["floating_endpoint_reconciliation"]
+        self.assertEqual(reconciliation["status"], "APPLIED")
+        self.assertEqual(reconciliation["source_index"], 999)
+        self.assertEqual(reconciliation["reconciled_point_count"], 1)
+        self.assertFalse(reconciliation["interpolation_extrapolation_performed"])
+        self.assertFalse(reconciliation["scientific_time_mapping_changed"])
+        self.assertEqual(result["mapped"][-1], 103.0)
+        self.assertEqual(result["effective_times"][-1], observed)
+        self.assertEqual(rows[-1]["time_s"], observed)
+
+    def test_floating_endpoint_reconciliation_rejects_material_gap(self) -> None:
+        contract, scenario, _ = ANALYSIS.authorities(ROOT)
+        rows = [
+            {"time_s": index / 10, "outlet_flow_m3_s": 1.0}
+            for index in range(1030)
+        ]
+        rows.append({"time_s": 102.99, "outlet_flow_m3_s": 1.0})
+        with self.assertRaises(ValueError):
+            ANALYSIS.predicted_trace(contract, scenario, rows)
+
     def test_numerical_stage_freezes_calibration_without_puckworks(self) -> None:
         contract, scenario, _ = ANALYSIS.authorities(ROOT)
         target = contract["calibration_contract"]["equilibrium_mass_flow_g_per_s"]
