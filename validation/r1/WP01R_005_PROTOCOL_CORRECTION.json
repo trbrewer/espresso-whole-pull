@@ -6,6 +6,23 @@
     "status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS"
   },
   "corrective_result_role": "GOVERNED_NONBLINDED_REPRODUCIBILITY_CONFIRMATION",
+  "corrective_protocol_summary": {
+    "additional_protected_processing_count": 0,
+    "additional_r0_execution_count_after_attempt_2": 0,
+    "additional_r1_execution_count_after_attempt_2": 0,
+    "blinding_status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS",
+    "corrective_attempt_1": "STOPPED_AT_R0_TERMINAL_FREEZE_GATE",
+    "corrective_attempt_2_central_r1_execution_count": 1,
+    "corrective_attempt_2_r0_release": "PASS",
+    "corrective_protected_processing_count": 1,
+    "endpoint_reconciliation": "FLOATING_POINT_REPRESENTATION_ONLY",
+    "environment_record_status": "COMPLETE_WITH_DECLARED_UNAVAILABLE_FIELDS",
+    "final_reproducibility": "PRELIMINARY_RESULT_EXACTLY_REPRODUCED",
+    "historical_preliminary_pr": 16,
+    "historical_preliminary_result": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+    "parameter_fitting_count": 0,
+    "post_result_adjustment_count": 0
+  },
   "implementation_correction": {
     "analyzer_changed_after_historical_PR16_protected_access": true,
     "analyzer_changed_before_corrective_protected_processing": true,
@@ -123,6 +140,11 @@
     "branch": "wp01r/005-r1-execution-scorecard",
     "commit": "e506a9f5945f7394b305c23c4712752ce3d3c51e",
     "disposition": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+    "procedural_limitations": [
+      "protected source accessed before corrected analyzer freeze",
+      "execution performed in implementation worktree",
+      "full required R0 Allrun plus standard Allverify sequence not completed"
+    ],
     "fitting_count": 0,
     "post_result_adjustment_count": 0,
     "pr": 16,
@@ -141,11 +163,6 @@
     "selectors_frozen_before_historical_access": true,
     "thresholds_frozen_before_historical_access": true
   },
-  "procedural_limitations": [
-    "protected source accessed before corrected analyzer freeze",
-    "execution performed in implementation worktree",
-    "full required R0 Allrun plus standard Allverify sequence not completed"
-  ],
   "schema_version": "espresso.public.wp01r_005_protocol_correction.v1",
   "task": "WP01R-005"
 }

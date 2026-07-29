@@ -61,3 +61,19 @@ The observed curves in the new figure derive from the Waszkiewicz deposited
 data under CC-BY-4.0, referenced through Puckworks commit
 `fc61c4670ec7bf801e40bb391aab16048b8da26b`. No complete protected source
 series is committed.
+
+## Environment and record lifecycle
+
+The [environment and provenance record](../../validation/r1/WP01R_005_ENVIRONMENT_AND_PROVENANCE.json)
+binds the exact executable and retained OpenFOAM environment identities. Exact
+compiler and MPI versions, OS distribution release, CPU model, artifact-bound
+logical-processor count, and physical memory were not retained; each is
+explicitly `UNAVAILABLE_FROM_RETAINED_EVIDENCE`. No present-machine value was
+substituted. This is a declared reproducibility-metadata limitation, not a
+scientific-result change, and no rerun was performed.
+
+The execution result preserves its nested case-local acceptance object
+verbatim. That object was captured before terminal R0 freeze binding, so its
+pending or `NOT_FROZEN` fields are not authoritative final status. The
+top-level R0 release gate and WP01R-003 source-linked analytical calibration
+records are authoritative; the nested legacy R0 permeability note is not.

@@ -2,10 +2,12 @@
 
 - Public baseline: `v0.1.4-public.1`, sanitized derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 106/106 PASS
+- Public source verification: 112/112 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
-- Governing-physics change: false
-- Scientific-configuration change: false
+- Frozen R0 scientific-configuration change: false
+- Governed R1 scenario present: true
+- WP01R-005 R1 scenario change: false
+- Governing-physics change in WP01R-005: false
 - R0 claim ceiling: `NUMERICALLY_QUALIFIED_CALIBRATION_BASELINE`
 - Physical validation: `NOT_ESTABLISHED`
 - OpenFOAM target: Foundation 12

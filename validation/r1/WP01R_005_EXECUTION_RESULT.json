@@ -6,6 +6,26 @@
     "commit": "5855dd6fcdab7894a37c7c49e98c717d4e0d2fe8",
     "tree": "83a581b5e746542aec66ed27745895f5d5c6d2e0"
   },
+  "embedded_acceptance_context": {
+    "authoritative_final_r0_release_pointer": "/r0_release_gate",
+    "authoritative_r1_calibration_pointer": "/numerical/calibration_reproduction",
+    "authoritative_r1_calibration_provenance": "WP01R-003 frozen source-linked analytical inversion",
+    "capture_stage": "R1_CASE_LOCAL_ACCEPTANCE_BEFORE_FINAL_R0_TERMINAL_FREEZE_BINDING",
+    "central_r1_permeability_m2": 2.8642613245723525e-15,
+    "explanation": "The nested acceptance object is retained verbatim as a case-local preterminal artifact. Its legacy R0 analytical note and preterminal freeze fields do not supersede the final WP01R-003 calibration contract or the top-level completed R0 release gate.",
+    "legacy_note": "The permeability is the declared R0 hydraulic calibration parameter.",
+    "permeability_fitted_to_openfoam_output": false,
+    "raw_acceptance_preserved": true,
+    "raw_analytical_note_is_r1_calibration_authority": false,
+    "raw_reference_freeze_status_is_final_authority": false,
+    "runtime_adjustable": false
+  },
+  "environment_provenance": {
+    "artifact_path": "validation/r1/WP01R_005_ENVIRONMENT_AND_PROVENANCE.json",
+    "artifact_sha256": "b64d4c03829557af19e7e754fd9fc2a50d9bbcd1315549f70c564ec577d8b958",
+    "environment_record_status": "COMPLETE_WITH_DECLARED_UNAVAILABLE_FIELDS",
+    "exact_machine_reconstruction_claimed": false
+  },
   "change_scope": "EXECUTION_INFRASTRUCTURE_CORRECTION_AND_ANALYSIS_ONLY",
   "counters": {
     "additional_r0_execution_count": 0,

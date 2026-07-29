@@ -182,6 +182,66 @@ class R1AnalysisSyntheticTests(unittest.TestCase):
             "FAIL",
         )
 
+    def test_final_environment_and_record_context(self) -> None:
+        environment = json.loads(
+            (ROOT / "validation/r1/WP01R_005_ENVIRONMENT_AND_PROVENANCE.json").read_text()
+        )
+        self.assertEqual(
+            environment["record_status"],
+            "COMPLETE_WITH_DECLARED_UNAVAILABLE_FIELDS",
+        )
+        self.assertEqual(environment["solver_build"]["openfoam_version"]["value"], "12")
+        self.assertEqual(
+            environment["solver_build"]["wm_options"]["value"],
+            "linux64GccDPInt32Opt",
+        )
+        self.assertEqual(environment["execution_contract"]["mpi_ranks"]["value"], 32)
+        unavailable = [
+            environment["solver_build"]["compiler_version"],
+            environment["solver_build"]["mpi_version"],
+            environment["platform"]["operating_system_distribution_and_version"],
+            environment["platform"]["cpu_model"],
+            environment["platform"]["logical_processor_count"],
+            environment["platform"]["physical_memory_bytes"],
+        ]
+        self.assertEqual(len(unavailable), 6)
+        for item in unavailable:
+            self.assertIsNone(item["value"])
+            self.assertEqual(item["status"], "UNAVAILABLE_FROM_RETAINED_EVIDENCE")
+            self.assertFalse(item["present_machine_observation_used"])
+            self.assertTrue(item["reason"])
+        self.assertFalse(
+            environment["completeness_assessment"]["exact_machine_reconstruction_claimed"]
+        )
+
+        protocol = json.loads(
+            (ROOT / "validation/r1/WP01R_005_PROTOCOL_CORRECTION.json").read_text()
+        )
+        summary = protocol["corrective_protocol_summary"]
+        self.assertEqual(summary["historical_preliminary_pr"], 16)
+        self.assertEqual(summary["corrective_attempt_2_central_r1_execution_count"], 1)
+        self.assertEqual(summary["additional_r1_execution_count_after_attempt_2"], 0)
+        self.assertEqual(summary["corrective_protected_processing_count"], 1)
+
+        result = json.loads(
+            (ROOT / "validation/r1/WP01R_005_EXECUTION_RESULT.json").read_text()
+        )
+        context = result["embedded_acceptance_context"]
+        self.assertFalse(context["raw_reference_freeze_status_is_final_authority"])
+        self.assertFalse(context["raw_analytical_note_is_r1_calibration_authority"])
+        self.assertEqual(context["authoritative_final_r0_release_pointer"], "/r0_release_gate")
+
+        status = json.loads(
+            (ROOT / "validation/r1/WP01R_005_RUN_STATUS.json").read_text()
+        )
+        self.assertEqual(status["workflow_execution_status"], "PASS")
+        self.assertEqual(status["protected_comparison_status"], "FAIL")
+
+        manifest = json.loads((ROOT / "SOURCE_PACKAGE_MANIFEST.json").read_text())
+        project_state = (ROOT / "docs/PROJECT_STATE.md").read_text()
+        count = len(manifest["files"])
+        self.assertIn(f"Public source verification: {count}/{count} PASS", project_state)
+
 
 if __name__ == "__main__":
     unittest.main()

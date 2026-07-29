@@ -8,9 +8,12 @@
   "physical_validation": "NOT_ESTABLISHED",
   "protected_data_opened": true,
   "protected_score_calculated": true,
+  "protected_comparison_status": "FAIL",
   "schema_version": "espresso.public.wp01r_005_run_status.v1",
   "scientific_input_changed": false,
   "stage": "COMPLETED",
   "status": "PASS",
   "task": "WP01R-005"
+  ,"workflow_completion_status": "COMPLETED"
+  ,"workflow_execution_status": "PASS"
 }
