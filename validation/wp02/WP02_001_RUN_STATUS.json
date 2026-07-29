@@ -1,0 +1,40 @@
+{
+  "schema_version": "espresso.public.wp02_001_run_status.v1",
+  "task": "WP02-001",
+  "workflow_execution_status": "PASS",
+  "workflow_completion_status": "COMPLETED",
+  "source_formula_verification": "PASS",
+  "source_puckworks_parity": "PASS",
+  "uniform_pressure_fixture": "PASS",
+  "r0_disabled_branch_regression": "PASS",
+  "constant_r1_disabled_branch_regression": "PASS",
+  "nine_bar_flow_shape_reconstruction": "PASS",
+  "eight_bar_no_retuning_transfer": "PASS",
+  "overall_wp02_001_disposition": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
+  "physical_validation": "NOT_ESTABLISHED",
+  "analysis_result_path": "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json",
+  "analysis_result_sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+  "analysis_invocations": {
+    "failed_pre_score_analyzer_invocations": 1,
+    "completed_score_bearing_analysis_invocations": 1
+  },
+  "execution_counts": {
+    "nine_bar_openfoam_executions": 1,
+    "eight_bar_openfoam_executions": 1,
+    "solver_reruns_for_endpoint_correction": 0,
+    "additional_puckworks_reference_invocations": 0
+  },
+  "adjustment_counts": {
+    "parameter_fitting": 0,
+    "optimizer_iterations": 0,
+    "post_result_adjustments": 0
+  },
+  "claim_ceiling": {
+    "nine_bar_role": "SOURCE_LINKED_RECONSTRUCTION_TEST",
+    "eight_bar_role": "PREDECLARED_NO_RETUNING_SAME_CAMPAIGN_COMPARISON",
+    "eight_bar_independent_validation": false,
+    "full_poroelastic_deformation_established": false,
+    "transfer_across_rigs_established": false,
+    "early_wetting_channeling_chemistry_taste_or_universal_permeability_law_established": false
+  }
+}

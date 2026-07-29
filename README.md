@@ -30,7 +30,7 @@ The current target is OpenFOAM Foundation 12 on 64-bit Linux. Full OpenFOAM exec
 
 See `docs/ONBOARDING.md` before running or changing the model.
 
-[Puckworks](https://github.com/trbrewer/puckworks) is the public evidence/model/data dependency. It is reviewed and locked at `fc61c4670ec7bf801e40bb391aab16048b8da26b`, checked out with `tools/checkout_puckworks.sh`, and is not a submodule. The governed, explicitly non-blinded R1 execution reproduced the preliminary protected-flow-shape failure without retuning. WP01R-006 selects a source-linked saturated dissolution-indexed effective-permeability branch as the next mechanism; issue #18 governs its future implementation. No new physics has yet been implemented, and physical validation remains **NOT_ESTABLISHED**.
+[Puckworks](https://github.com/trbrewer/puckworks) is the public evidence/model/data dependency. It is reviewed and locked at `fc61c4670ec7bf801e40bb391aab16048b8da26b`, checked out with `tools/checkout_puckworks.sh`, and is not a submodule. WP02-001 implements the optional source-linked saturated dissolution-indexed effective-permeability branch selected by WP01R-006. Its governed 9-bar reconstruction and predeclared 8-bar no-retuning same-campaign comparison passed their frozen flow-shape gates without fitting or post-result adjustment. Neither comparison is independent validation, and physical validation remains **NOT_ESTABLISHED**.
 
 ## License
 

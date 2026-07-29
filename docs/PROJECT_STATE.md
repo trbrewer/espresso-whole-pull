@@ -28,7 +28,12 @@ effective-permeability branch for WP-0.2A. No new physics is implemented by
 the decision; issue #18 is the next governed implementation task.
 Machine/headspace coupling remains the runner-up.
 
-WP02-001 fixture attempt 1 stopped before scientific execution because
-ten-digit ASCII field serialization did not satisfy the frozen multiplier
-round-trip gate. A fixture-only 17-digit serialization correction is recorded;
-the governing closure and scientific configurations remain unchanged.
+WP02-001 added the optional saturated dissolution-indexed effective-permeability
+closure. Its corrected uniform fixture, disabled R0 regression, and disabled
+constant-R1 regression passed. One governed 9-bar source-linked reconstruction
+and one predeclared 8-bar no-retuning same-campaign comparison both passed their
+frozen flow-shape gates. A retained-trace endpoint representation correction
+was committed before the sole score-bearing analysis; neither solver was
+rerun, and no fitting or post-result adjustment occurred. These same-campaign
+results do not establish independent validation. Physical validation remains
+`NOT_ESTABLISHED`.

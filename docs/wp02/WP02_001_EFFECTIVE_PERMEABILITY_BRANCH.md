@@ -45,3 +45,29 @@ round-tripped field failed the unchanged `1e-12` gate because of serialization
 rounding. The fixture-only field precision is therefore frozen at 17
 significant digits for double-precision round-trip code verification. This
 changes no solver calculation, scientific value, or acceptance tolerance.
+
+Both governed OpenFOAM executions then completed. The first analyzer invocation
+stopped before parsing protected rows because the recorded trace endpoints
+(`102.999999999997 s`) were representation-equivalent to, but slightly below,
+the governed `103.0 s` endpoint. The frozen analyzer correction reconciles only
+source index 999 within a `1.4551915228366852e-11 s` ULP-scale bound, selects
+the existing final trace sample, and changes no trace, source grid, mapping,
+selector, gate, or score formula. The failed invocation is retained as a
+`PRE_SCORE_SOFTWARE_FAILURE` in the
+[endpoint amendment](../../validation/wp02/WP02_001_ANALYZER_ENDPOINT_AMENDMENT.json).
+
+The one committed score-bearing analysis is recorded in the
+[result](../../validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json) and
+[run status](../../validation/wp02/WP02_001_RUN_STATUS.json). The five 9-bar
+normalized RMSE values were `0.0839666`, `0.0720130`, `0.129074`, `0.0812166`,
+and `0.103868`; Pearson values were `0.990718`, `0.991767`, `0.951082`,
+`0.989034`, and `0.965891`. The four 8-bar normalized RMSE values were
+`0.0811251`, `0.0626600`, `0.0637870`, and `0.143777`; Pearson values were
+`0.989670`, `0.989147`, `0.989170`, and `0.978228`. Both predeclared aggregate
+gates passed without fitting or post-result adjustment.
+
+The 9-bar outcome is a source-linked reconstruction test. The 8-bar outcome is
+a predeclared no-retuning same-campaign comparison, not independent
+validation. Neither establishes full poroelastic deformation, transfer across
+rigs, early wetting, channeling, chemistry, taste, or a universal permeability
+law. Physical validation remains `NOT_ESTABLISHED`.

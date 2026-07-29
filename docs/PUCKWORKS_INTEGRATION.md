@@ -60,3 +60,13 @@ The first branch is source-linked and softly circular, implements effective
 hydraulic resistance only, and is not independent validation. Issue #18 is
 the governed implementation task; machine/headspace coupling remains the
 runner-up.
+
+WP02-001 executed the locked branch once at 9 bar and once at the predeclared
+8-bar same-campaign group. The compact
+[analysis result](../validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json),
+[run status](../validation/wp02/WP02_001_RUN_STATUS.json), and
+[endpoint amendment](../validation/wp02/WP02_001_ANALYZER_ENDPOINT_AMENDMENT.json)
+record the passing aggregate gates, one pre-score software failure, and the
+representation-only endpoint reconciliation. No additional Puckworks
+invocation, solver rerun, fitting, or post-result adjustment occurred.
+Physical validation remains `NOT_ESTABLISHED`.
