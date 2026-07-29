@@ -1,0 +1,64 @@
+{
+  "schema_version": "espresso.public.wp02_001_analyzer_endpoint_amendment.v1",
+  "task": "WP02-001",
+  "baseline": {
+    "commit": "e2c5b73ef44e65bdcd1e9d7df910236d5be0ca0a",
+    "tree": "082027d22f450739cc945f3c50997eafb0d1c000"
+  },
+  "original_analyzer_sha256": "5f56eb172a851c822cc88301924ef0f2ec1a2d73890c92ad14f8d87e69bc7fd9",
+  "closure_contract_sha256": "2c898dd91e558ce62006dc81de9cff20bb633b52a89f6fa5a44c5edcda50d57a",
+  "scenario_configurations": {
+    "nine_bar_reconstruction": {
+      "path": "config/reconstruction_WP02A_waszkiewicz_9bar.json",
+      "sha256": "81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e"
+    },
+    "eight_bar_transfer": {
+      "path": "config/reconstruction_WP02A_waszkiewicz_8bar.json",
+      "sha256": "ac87cfdff2862401b33ac01fa31d87bf966e062cecd153ce59ab4a9518feb57e"
+    }
+  },
+  "retained_traces": {
+    "nine_bar_reconstruction": {
+      "sha256": "10f69738a35451e4eef132edf29be80a57c667b2cb91cb64914f083302e6b1d0",
+      "observed_endpoint_s": 102.999999999997,
+      "row_count": 5150
+    },
+    "eight_bar_transfer": {
+      "sha256": "eca75e708d4a12c3fe309ee2e1e6adb463dc974629d85eb1ab9866257ba0c7d0",
+      "observed_endpoint_s": 102.999999999997,
+      "row_count": 5150
+    }
+  },
+  "frozen_time_contract": {
+    "end_time_s": 103.0,
+    "delta_t_s": 0.02,
+    "source_to_solver_offset_s": 3.0,
+    "source_grid_point_count": 1000
+  },
+  "failed_invocation": {
+    "exception": "ValueError: interpolation target outside trace",
+    "failure_class": "FLOATING_POINT_FINAL_ENDPOINT_REPRESENTATION_MISMATCH",
+    "disposition": "PRE_SCORE_SOFTWARE_FAILURE",
+    "protected_source_identity_hash_checked": true,
+    "protected_source_rows_parsed": false,
+    "protected_source_values_scored": false,
+    "shot_scores_calculated": false,
+    "aggregate_metrics_calculated": false,
+    "result_dependent_adjustment_possible": false
+  },
+  "correction": {
+    "classification": "FLOATING_POINT_ENDPOINT_REPRESENTATION_ONLY",
+    "solver_rerun_required": false,
+    "scientific_input_change": false,
+    "scoring_contract_change": false,
+    "trace_modified": false,
+    "source_grid_modified": false,
+    "time_mapping_modified": false
+  },
+  "physical_validation": "NOT_ESTABLISHED",
+  "non_blocking_erratum": {
+    "executed_configuration": "config/reconstruction_WP02A_waszkiewicz_8bar.json",
+    "statement": "The inherited claim_ceiling text refers to five shot shapes although the frozen gate and contract correctly use four shots.",
+    "disposition": "RETAIN_EXECUTED_CONFIGURATION_AND_HASH; CORRECT_WORDING_ONLY_IN_A_FUTURE_CONFIGURATION_VERSION"
+  }
+}

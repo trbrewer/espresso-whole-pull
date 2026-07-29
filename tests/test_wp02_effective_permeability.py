@@ -27,6 +27,15 @@ from waszkiewicz_effective_permeability import (  # noqa: E402
 from wp02_contract_bridge import scenario  # noqa: E402
 from prepare_case import render_control_dict, validate_r1_scenario  # noqa: E402
 from verify_wp02_uniform_fixture import relative_error  # noqa: E402
+from analyze_wp02 import (  # noqa: E402
+    aggregate as wp02_aggregate,
+    atomic_write_json,
+    floating_endpoint_tolerance_s,
+    load_prediction,
+    score as wp02_score,
+    validate_time_contract,
+    verify_protected_identity,
+)
 
 
 class WP02EffectivePermeabilityTests(unittest.TestCase):
@@ -156,6 +165,134 @@ class WP02EffectivePermeabilityTests(unittest.TestCase):
         for key in ("frozen_R0_configuration_change", "constant_R1_configuration_change", "wetting_physics_change", "pore_volume_storage_change", "mesh_motion_change", "chemistry_model_change"):
             self.assertFalse(boundary[key])
 
+    @staticmethod
+    def _synthetic_trace(path: Path, endpoint: float, rows: int = 101) -> bytes:
+        lines = ["time_s,outlet_flow_m3_s"]
+        for index in range(rows):
+            time = endpoint * index / (rows - 1)
+            lines.append(f"{time:.17g},{(1.0 + time) * 1e-6:.17g}")
+        content = ("\n".join(lines) + "\n").encode()
+        path.write_bytes(content)
+        return content
+
+    def test_wp02_exact_endpoint_needs_no_reconciliation(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            trace = Path(td) / "trace.csv"
+            self._synthetic_trace(trace, 103.0, 1031)
+            predicted, audit = load_prediction(trace, 3.0, 965.0, 103.0, 0.02)
+            self.assertEqual(audit["status"], "NOT_REQUIRED")
+            self.assertEqual(audit["reconciled_point_count"], 0)
+            self.assertEqual(
+                predicted[-1], 1000.0 * 965.0 * (1.0 + 103.0) * 1e-6
+            )
+
+    def test_wp02_representation_endpoint_reconciles_final_point_only(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            trace = Path(td) / "trace.csv"
+            original = self._synthetic_trace(trace, 102.999999999997, 5150)
+            predicted, audit = load_prediction(trace, 3.0, 965.0, 103.0, 0.02)
+            self.assertEqual(trace.read_bytes(), original)
+            self.assertEqual(audit["status"], "APPLIED")
+            self.assertEqual(audit["reconciled_point_count"], 1)
+            self.assertEqual(audit["source_index"], 999)
+            self.assertEqual(audit["governed_mapped_time_s"], 103.0)
+            self.assertAlmostEqual(
+                audit["effective_solver_sample_time_s"],
+                float("102.999999999997"),
+                delta=2e-14,
+            )
+            self.assertAlmostEqual(
+                predicted[-1],
+                1000.0 * 965.0 * (1.0 + 102.999999999997) * 1e-6,
+                delta=2e-14,
+            )
+            for key in (
+                "interpolation_extrapolation_performed",
+                "scientific_time_mapping_changed",
+                "trace_modified",
+            ):
+                self.assertFalse(audit[key])
+
+    def test_wp02_material_and_nonfinal_coverage_failures(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            trace = Path(td) / "trace.csv"
+            self._synthetic_trace(trace, 102.99, 5150)
+            with self.assertRaisesRegex(ValueError, "outside trace"):
+                load_prediction(trace, 3.0, 965.0, 103.0, 0.02)
+            self._synthetic_trace(trace, 102.8, 5150)
+            with self.assertRaisesRegex(ValueError, "outside trace"):
+                load_prediction(trace, 3.0, 965.0, 103.0, 0.02)
+
+    def test_wp02_endpoint_and_offset_contract_fail_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            trace = Path(td) / "trace.csv"
+            self._synthetic_trace(trace, 103.0, 1031)
+            with self.assertRaisesRegex(ValueError, "mapped endpoint mismatch"):
+                load_prediction(trace, 3.0, 965.0, 102.0, 0.02)
+            with self.assertRaisesRegex(ValueError, "mapped endpoint mismatch"):
+                load_prediction(trace, 2.0, 965.0, 103.0, 0.02)
+        scenario = json.loads(
+            (ROOT / "config/reconstruction_WP02A_waszkiewicz_9bar.json").read_text()
+        )
+        edited = copy.deepcopy(scenario)
+        edited["effective_permeability_evolution"]["source_to_solver_offset_s"] = 2.0
+        with self.assertRaisesRegex(ValueError, "scenario offset mismatch"):
+            validate_time_contract(edited, self.contract, "synthetic")
+        edited = copy.deepcopy(scenario)
+        edited["time"]["end_s"] = 102.0
+        with self.assertRaisesRegex(ValueError, "frozen time contract mismatch"):
+            validate_time_contract(edited, self.contract, "synthetic")
+
+    def test_wp02_endpoint_tolerance_is_representation_only(self) -> None:
+        tolerance = floating_endpoint_tolerance_s(
+            103.0, 102.999999999997, 0.02
+        )
+        self.assertGreater(tolerance, 103.0 - 102.999999999997)
+        self.assertLess(tolerance, 0.02 * 1e-6)
+
+    def test_wp02_score_and_aggregate_are_scientifically_invariant(self) -> None:
+        predicted = [1.0 + index / 1000.0 for index in range(1000)]
+        observed = [1.1 + index / 1100.0 for index in range(1000)]
+        before = wp02_score(predicted, observed, self.contract)
+        after = wp02_score(list(predicted), list(observed), self.contract)
+        self.assertEqual(before, after)
+        gates = self.contract["nine_bar_reconstruction"]["gates"]
+        self.assertEqual(
+            wp02_aggregate([before] * 5, gates),
+            wp02_aggregate([after] * 5, gates),
+        )
+
+    def test_wp02_protected_hash_failure_precedes_parsing(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            source = Path(td) / "protected.csv"
+            source.write_text("protected,value\nnot,parsed\n")
+            with self.assertRaisesRegex(ValueError, "identity mismatch"):
+                verify_protected_identity(source, "0" * 64)
+
+    def test_wp02_failure_atomicity_leaves_no_partial_result(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            output = Path(td) / "result.json"
+            with self.assertRaises(TypeError):
+                atomic_write_json(output, {"bad": object()})
+            self.assertFalse(output.exists())
+
+    def test_source_manifest_cumulative_physics_declaration_is_truthful(self) -> None:
+        manifest = json.loads((ROOT / "SOURCE_PACKAGE_MANIFEST.json").read_text())
+        report = manifest
+        boundary = self.contract["authorization_boundaries"]
+        self.assertEqual(self.contract["change_declaration"], "GOVERNING_PHYSICS_CHANGE")
+        self.assertEqual(report["governing_physics_change"], boundary["governing_physics_change"])
+        self.assertEqual(
+            report["scientific_configuration_change"],
+            boundary["package_scientific_configuration_change"],
+        )
+        self.assertEqual(
+            report["scientific_configuration_change_scope"],
+            "R1_SCENARIO_AND_WP02_OPTIONAL_SATURATED_EFFECTIVE_PERMEABILITY_CLOSURE",
+        )
+        self.assertFalse(report["qualified_R0_scientific_configuration_change"])
+        self.assertTrue(report["new_R1_scientific_configuration_added"])
+
     def test_uniform_fixture_is_canonical_and_contains_no_protected_data(self) -> None:
         fixture = scenario(ROOT, "uniform_pressure_fixture")
         committed = json.loads(
@@ -245,12 +382,18 @@ class WP02EffectivePermeabilityTests(unittest.TestCase):
             "solver/espressoWholePullFoam/espressoWholePullFoam.C": "f5498e3b3570899c3e8f1a03779a9b807d580aef77e901141e591fe243493fdc",
             "scripts/waszkiewicz_effective_permeability.py": "098fdf8c1a6fe761f603fb0719bc0f83fb41a99fceace3e990656788f76ec49b",
             "scripts/wp02_reference_math.py": "6c1001b18539093a949180720aa37f5466fac3954faf1b28b717a1d90fa187f9",
-            "scripts/analyze_wp02.py": "5f56eb172a851c822cc88301924ef0f2ec1a2d73890c92ad14f8d87e69bc7fd9",
         }
         for relative, digest in expected.items():
             self.assertEqual(
                 hashlib.sha256((ROOT / relative).read_bytes()).hexdigest(), digest
             )
+        amendment = json.loads(
+            (ROOT / "validation/wp02/WP02_001_ANALYZER_ENDPOINT_AMENDMENT.json").read_text()
+        )
+        self.assertEqual(
+            amendment["original_analyzer_sha256"],
+            "5f56eb172a851c822cc88301924ef0f2ec1a2d73890c92ad14f8d87e69bc7fd9",
+        )
 
     def test_uniform_fixture_two_directory_generation_is_identical(self) -> None:
         with tempfile.TemporaryDirectory() as td:

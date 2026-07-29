@@ -1,17 +1,18 @@
 {
   "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
-  "generated_at_utc": "2026-07-29T13:13:27.418206+00:00",
+  "generated_at_utc": "2026-07-29T13:38:21.412522+00:00",
   "package": "espresso-whole-pull",
   "package_version": "0.1.4",
   "target": "OpenFOAM Foundation 12",
   "derivation_role": "sanitized public derivative",
   "archival_aggregate_source_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
   "byte_identical_to_archival_source": false,
-  "governing_physics_change": false,
+  "governing_physics_change": true,
   "scientific_configuration_change": true,
-  "scientific_configuration_change_scope": "NEW_R1_SCENARIO_ONLY",
+  "scientific_configuration_change_scope": "R1_SCENARIO_AND_WP02_OPTIONAL_SATURATED_EFFECTIVE_PERMEABILITY_CLOSURE",
   "qualified_R0_scientific_configuration_change": false,
   "new_R1_scientific_configuration_added": true,
+  "historical_R1_change_declaration_preserved": true,
   "source_manifest_self_excluded": true,
   "mode_contract": "canonical Git object modes: 100644, 100755, or 120000",
   "excluded_runtime_patterns": [
@@ -24,9 +25,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 126,
-  "total_uncompressed_bytes_excluding_manifest": 1219689,
-  "aggregate_source_sha256": "f8ecb6c5a1a6207ac00a3f69ea0fc870856100d21f1e8288d6c3fd7c38633fb4",
-  "aggregate_sha256": "f8ecb6c5a1a6207ac00a3f69ea0fc870856100d21f1e8288d6c3fd7c38633fb4",
+  "total_uncompressed_bytes_excluding_manifest": 1232757,
+  "aggregate_source_sha256": "497cc7c22adc4afea657a0bb0f684ee8045466abf417e4abe2e19da65014c44f",
+  "aggregate_sha256": "497cc7c22adc4afea657a0bb0f684ee8045466abf417e4abe2e19da65014c44f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md",
   "strategy_source_sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
   "files": {
@@ -466,8 +467,8 @@
       "git_mode": "100755"
     },
     "scripts/analyze_wp02.py": {
-      "sha256": "5f56eb172a851c822cc88301924ef0f2ec1a2d73890c92ad14f8d87e69bc7fd9",
-      "bytes": 6660,
+      "sha256": "78265cd798b7ad38089e062b2f08b78364cefd9239d06dd0f84e65f999f8eb92",
+      "bytes": 12765,
       "git_mode": "100755"
     },
     "scripts/artifact_utils.py": {
@@ -501,8 +502,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "49d6b1d36af07c715d12b359f0296c79827827f75295b4c35de963e72259b9a0",
-      "bytes": 8361,
+      "sha256": "01a87dc36a9a2600c4c258538bcb4623e07f9793d0dbc6c6fdc312e6f761b461",
+      "bytes": 8509,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -656,8 +657,8 @@
       "git_mode": "100644"
     },
     "tests/test_wp02_effective_permeability.py": {
-      "sha256": "761703d1df6d63aff3b9f3605d28a517374922360225bdc8d38b6df25e97c8c9",
-      "bytes": 13748,
+      "sha256": "0b5b49fab66512183dc047eaf48d5d2d3d1d5197cd0dba415712f4bb20d976cd",
+      "bytes": 20563,
       "git_mode": "100644"
     }
   }

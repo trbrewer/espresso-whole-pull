@@ -190,11 +190,15 @@ def main() -> None:
         "derivation_role": "sanitized public derivative",
         "archival_aggregate_source_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
         "byte_identical_to_archival_source": False,
-        "governing_physics_change": False,
+        "governing_physics_change": True,
         "scientific_configuration_change": True,
-        "scientific_configuration_change_scope": "NEW_R1_SCENARIO_ONLY",
+        "scientific_configuration_change_scope": (
+            "R1_SCENARIO_AND_WP02_OPTIONAL_SATURATED_"
+            "EFFECTIVE_PERMEABILITY_CLOSURE"
+        ),
         "qualified_R0_scientific_configuration_change": False,
         "new_R1_scientific_configuration_added": True,
+        "historical_R1_change_declaration_preserved": True,
         "source_manifest_self_excluded": True,
         "mode_contract": "canonical Git object modes: 100644, 100755, or 120000",
         "excluded_runtime_patterns": [
