@@ -60,6 +60,52 @@ scalar globalMaxValue(scalar value)
     return value;
 }
 
+scalar wp02Qhat(const scalar x)
+{
+    return x*(4.0 - 6.0*x + 4.0*sqr(x) - x*sqr(x));
+}
+
+scalar wp02PhiFactor(const scalar phi)
+{
+    if (phi == 0.0)
+    {
+        return 0.0;
+    }
+    if (phi < 0.0 || phi >= 1.0 || !std::isfinite(phi))
+    {
+        FatalErrorInFunction << "WP02 phi outside (0,1): " << phi
+            << exit(FatalError);
+    }
+    scalar result = 0.0;
+    if (phi <= 0.125)
+    {
+        scalar accumulator = 0.0;
+        for (label n = 24; n >= 4; --n)
+        {
+            const scalar coefficient =
+                scalar((n - 3)*(n - 2)*(2*n + 1))
+               /(6.0*scalar(n)*scalar(n - 1));
+            accumulator = coefficient + phi*accumulator;
+        }
+        result = sqr(phi)*sqr(phi)*accumulator;
+    }
+    else
+    {
+        const scalar oneMinusPhi = 1.0 - phi;
+        result =
+        (
+            phi*(phi*(11.0*phi - 15.0) + 6.0)
+          + 6.0*pow3(oneMinusPhi)*std::log1p(-phi)
+        )/(6.0*sqr(oneMinusPhi));
+    }
+    if (!std::isfinite(result) || result < 0.0)
+    {
+        FatalErrorInFunction << "Invalid WP02 phi factor " << result
+            << exit(FatalError);
+    }
+    return result;
+}
+
 scalar clamp01(const scalar value)
 {
     return Foam::max(0.0, Foam::min(1.0, value));
@@ -291,6 +337,63 @@ int main(int argc, char *argv[])
         FatalErrorInFunction
             << "Invalid non-positive or out-of-range model input in "
             << modelProperties.objectPath() << exit(FatalError);
+    }
+
+    const bool effectivePermeabilityEnabled =
+        modelProperties.found("effectivePermeabilityEvolution");
+    scalar sourceReferencePressureBar = 0.0;
+    scalar sourcePcBar = 0.0;
+    scalar sourceQcGPerS = 0.0;
+    scalar sourceKSolidsG = 0.0;
+    scalar sourceLSolidsS = 0.0;
+    scalar sourceMSolidsS = 0.0;
+    scalar sourceDoseG = 0.0;
+    scalar sourceToSolverOffsetS = 0.0;
+    scalar sourceValidityStartS = 0.0;
+    scalar minimumMultiplier = 1.0;
+    scalar maximumMultiplier = 1.0;
+    if (effectivePermeabilityEnabled)
+    {
+        const dictionary& closure =
+            modelProperties.subDict("effectivePermeabilityEvolution");
+        const Switch enabled(closure.lookup("enabled"));
+        word closureModel;
+        closure.lookup("model") >> closureModel;
+        if (!enabled || closureModel != "waszkiewiczSaturatedDissolutionIndexed")
+        {
+            FatalErrorInFunction << "Invalid enabled WP02 closure"
+                << exit(FatalError);
+        }
+        if (permeabilityProfile != "uniform")
+        {
+            FatalErrorInFunction << "WP02 closure requires uniform permeability"
+                << exit(FatalError);
+        }
+        sourceReferencePressureBar = readScalar(closure.lookup("sourceReferencePressureBar"));
+        sourcePcBar = readScalar(closure.lookup("sourcePcBar"));
+        sourceQcGPerS = readScalar(closure.lookup("sourceQcGPerS"));
+        sourceKSolidsG = readScalar(closure.lookup("sourceKSolidsG"));
+        sourceLSolidsS = readScalar(closure.lookup("sourceLSolidsS"));
+        sourceMSolidsS = readScalar(closure.lookup("sourceMSolidsS"));
+        sourceDoseG = readScalar(closure.lookup("sourceDoseG"));
+        sourceToSolverOffsetS = readScalar(closure.lookup("sourceToSolverOffsetS"));
+        sourceValidityStartS = readScalar(closure.lookup("sourceValidityStartS"));
+        minimumMultiplier = readScalar(closure.lookup("minimumMultiplier"));
+        maximumMultiplier = readScalar(closure.lookup("maximumMultiplier"));
+        const scalar phiM = sourceKSolidsG/sourceDoseG;
+        if
+        (
+            sourceReferencePressureBar <= 0.0 || sourcePcBar <= 0.0
+         || sourceQcGPerS <= 0.0 || sourceKSolidsG <= 0.0
+         || sourceMSolidsS <= 0.0 || sourceDoseG <= 0.0
+         || sourceValidityStartS < 0.0 || sourceValidityStartS > runTime.endTime().value()
+         || minimumMultiplier <= 0.0 || maximumMultiplier != 1.0
+         || phiM <= 0.0 || phiM >= 1.0 || saturatedPermeability <= 0.0
+        )
+        {
+            FatalErrorInFunction << "Invalid WP02 closure input"
+                << exit(FatalError);
+        }
     }
 
 
@@ -589,6 +692,20 @@ int main(int argc, char *argv[])
         permeability/dynamicViscosityCoefficient
     );
 
+    volScalarField effectivePermeabilityMultiplier
+    (
+        IOobject
+        (
+            "effectivePermeabilityMultiplier",
+            runTime.name(),
+            mesh,
+            IOobject::NO_READ,
+            effectivePermeabilityEnabled ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("one", dimless, 1.0)
+    );
+
     fileName caseRoot(runTime.path());
     const char* caseRootEnv = std::getenv("ESPRESSO_CASE_ROOT");
     if (caseRootEnv && caseRootEnv[0] != '\0')
@@ -639,7 +756,18 @@ int main(int argc, char *argv[])
               << "mesh_volume_relative_error,"
               << "continuum_analytical_outlet_flow_m3_s,"
               << "relative_outlet_flow_error,pressure_probe_1_Pa,"
-              << "pressure_probe_2_Pa\n";
+              << "pressure_probe_2_Pa";
+        if (effectivePermeabilityEnabled)
+        {
+            trace << ",effective_permeability_branch_active,source_time_s,"
+                  << "source_state_time_s,source_support_status,"
+                  << "source_dissolved_mass_g,source_phi_t,"
+                  << "source_static_flow_g_per_s,source_dynamic_flow_g_per_s,"
+                  << "effective_permeability_multiplier_raw,"
+                  << "effective_permeability_multiplier,"
+                  << "effective_permeability_m2";
+        }
+        trace << '\n';
     }
 
     scalar localInitialStoredWaterMass = 0.0;
@@ -705,6 +833,72 @@ int main(int argc, char *argv[])
         const scalar previousWetFront = wetFront;
         const bool saturatedAtStepStart =
             previousWetFront >= bedDepth - SMALL;
+
+        scalar sourceTimeS = timeValue - sourceToSolverOffsetS;
+        scalar sourceStateTimeS = sourceTimeS;
+        scalar sourceDissolvedMassG = 0.0;
+        scalar sourcePhiT = 0.0;
+        scalar sourceStaticFlowGPerS = 0.0;
+        scalar sourceDynamicFlowGPerS = 0.0;
+        scalar effectiveMultiplierRaw = 1.0;
+        scalar effectiveMultiplier = 1.0;
+        word sourceSupportStatus("UNSATURATED_BRANCH_INACTIVE");
+        if (effectivePermeabilityEnabled && saturatedAtStepStart)
+        {
+            sourceStateTimeS = Foam::max(sourceTimeS, sourceValidityStartS);
+            sourceSupportStatus =
+                sourceTimeS < sourceValidityStartS
+              ? "PRE_SOURCE_SUPPORT_SATURATED_HOLD"
+              : "SOURCE_SUPPORTED_SATURATED_STAGE";
+            sourceDissolvedMassG =
+                0.5*sourceKSolidsG
+               *(1.0 + Foam::tanh
+                (
+                    (sourceStateTimeS - sourceLSolidsS)/sourceMSolidsS
+                ));
+            sourcePhiT = sourceDissolvedMassG/sourceDoseG;
+            const scalar phiM = sourceKSolidsG/sourceDoseG;
+            const scalar qMaster = sourceQcGPerS/wp02PhiFactor(phiM);
+            const scalar pMaster = sourcePcBar/phiM;
+            sourceStaticFlowGPerS =
+                sourceQcGPerS*wp02Qhat(sourceReferencePressureBar/sourcePcBar);
+            sourceDynamicFlowGPerS = Foam::max
+            (
+                0.0,
+                wp02Qhat(sourceReferencePressureBar/(pMaster*sourcePhiT))
+               *qMaster*wp02PhiFactor(sourcePhiT)
+            );
+            effectiveMultiplierRaw =
+                sourceDynamicFlowGPerS/sourceStaticFlowGPerS;
+            if
+            (
+                !std::isfinite(effectiveMultiplierRaw)
+             || effectiveMultiplierRaw < 0.0
+             || effectiveMultiplierRaw > maximumMultiplier + 1.0e-10
+            )
+            {
+                FatalErrorInFunction << "Invalid WP02 multiplier "
+                    << effectiveMultiplierRaw << exit(FatalError);
+            }
+            effectiveMultiplier = Foam::min
+            (
+                maximumMultiplier,
+                Foam::max(minimumMultiplier, effectiveMultiplierRaw)
+            );
+            permeability =
+                dimensionedScalar
+                (
+                    "effectivePermeability",
+                    permeability.dimensions(),
+                    saturatedPermeability*effectiveMultiplier
+                );
+            permeability.correctBoundaryConditions();
+            hydraulicMobility = permeability/dynamicViscosityCoefficient;
+            hydraulicMobility.correctBoundaryConditions();
+            effectivePermeabilityMultiplier =
+                dimensionedScalar("multiplier", dimless, effectiveMultiplier);
+            effectivePermeabilityMultiplier.correctBoundaryConditions();
+        }
 
         if (!saturatedAtStepStart)
         {
@@ -880,11 +1074,15 @@ int main(int argc, char *argv[])
         const scalar pressureProbe2 =
             probe2Volume > VSMALL ? probe2WeightedPressure/probe2Volume : 0.0;
 
+        const scalar effectiveContinuumResistance =
+            effectivePermeabilityEnabled && saturatedAtStepStart
+          ? bedDepth/(saturatedPermeability*effectiveMultiplier)
+          : continuumResistance;
         const scalar continuumAnalyticalOutletFlow =
             saturatedAtStepStart
           ? fullCrossSectionArea
            *Foam::max(inletPressure - outletPressure, 0.0)
-           /(dynamicViscosity*continuumResistance)
+           /(dynamicViscosity*effectiveContinuumResistance)
           : 0.0;
 
         // Explicit source evaluated from the beginning-of-step inventories.
@@ -1201,7 +1399,22 @@ int main(int argc, char *argv[])
                   << continuumAnalyticalOutletFlow << ','
                   << relativeOutletFlowError << ','
                   << pressureProbe1 << ','
-                  << pressureProbe2 << '\n';
+                  << pressureProbe2;
+            if (effectivePermeabilityEnabled)
+            {
+                trace << ',' << (saturatedAtStepStart ? 1 : 0)
+                      << ',' << sourceTimeS
+                      << ',' << sourceStateTimeS
+                      << ',' << sourceSupportStatus
+                      << ',' << sourceDissolvedMassG
+                      << ',' << sourcePhiT
+                      << ',' << sourceStaticFlowGPerS
+                      << ',' << sourceDynamicFlowGPerS
+                      << ',' << effectiveMultiplierRaw
+                      << ',' << effectiveMultiplier
+                      << ',' << saturatedPermeability*effectiveMultiplier;
+            }
+            trace << '\n';
         }
 
         if (runTime.writeTime())

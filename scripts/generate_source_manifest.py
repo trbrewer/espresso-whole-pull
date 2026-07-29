@@ -50,6 +50,7 @@ PUBLIC_DOCUMENTATION_PATHS = {
     "docs/r1/WP01R_004_PUCKWORKS_BRIDGE_AND_CASE.md",
     "docs/r1/WP01R_005_R1_EXECUTION_AND_RESIDUALS.md",
     "docs/validation/R1_CALIBRATION_AND_COMPARISON_CONTRACT.md",
+    "docs/wp02/WP02_001_EFFECTIVE_PERMEABILITY_BRANCH.md",
     "docs/decisions/ADR-0001-PUBLIC_REPOSITORY_TRANSITION.md",
     "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md",
     "docs/strategy/history/espresso_puck_modeling_and_simulation_strategy_v1_3.md",

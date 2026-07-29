@@ -750,10 +750,16 @@ class ScriptIntegrationTests(unittest.TestCase):
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
             )
-            self.assertEqual(result.returncode, 0, result.stdout)
+            self.assertNotEqual(result.returncode, 0, result.stdout)
             report = json.loads(output.read_text(encoding="utf-8"))
-            self.assertEqual(report["status"], "PASS")
-            self.assertIs(report["governing_physics_change"], False)
+            self.assertEqual(report["status"], "FAIL")
+            self.assertEqual(
+                report["governing_physics_change"], "UNRESOLVED_DIFFERENCE"
+            )
+            self.assertEqual(
+                report["comparison_summary"]["failed_comparisons"],
+                ["openfoam_solver_source"],
+            )
             self.assertGreaterEqual(report["comparison_summary"]["total"], 28)
 
     def test_allwmake_mock_environment(self) -> None:

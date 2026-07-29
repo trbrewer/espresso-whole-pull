@@ -1,0 +1,267 @@
+{
+  "schema_version": "espresso.public.wp02_001_effective_permeability_contract.v1",
+  "task": "WP02-001",
+  "github_issue": 18,
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "contract_status": "FROZEN_BEFORE_SCIENTIFIC_EXECUTION",
+  "source_parity_protocol": {
+    "version": "WP02_001_SOURCE_PARITY_V2_DOMAIN_SEPARATED",
+    "stable_evaluation_version": "WP02_001_PHI_FACTOR_STABLE_SERIES_V2",
+    "protocol_sha256": "7d98efd0b5bbc06d739c261a37afb3b598d367309fef0ae368043a2ce86f77e2",
+    "authorities": {
+      "small_phi": "INDEPENDENT_ARBITRARY_PRECISION_CLOSED_FORM",
+      "operational_phi": "LOCKED_PUCKWORKS_ACTIVE_SOURCE_DOMAIN",
+      "dynamic_flow": "LOCKED_PUCKWORKS_COMPLETE_SOURCE_GRID"
+    },
+    "stable_evaluation": {
+      "series_first_order": 4,
+      "series_max_order": 24,
+      "series_switch": 0.125,
+      "coefficient": "((n-3)*(n-2)*(2*n+1))/(6*n*(n-1))",
+      "series_evaluation": "FIXED_ORDER_HORNER",
+      "direct_log_evaluation": "LOG1P_NEGATIVE_PHI"
+    },
+    "puckworks_attempt_1": {
+      "status": "FAIL",
+      "failure_class": "OFF_DOMAIN_RELATIVE_COMPARISON_TO_CANCELLATION_PRONE_FLOAT_REFERENCE",
+      "qhat_maximum_absolute_error": 0.0,
+      "phi_factor_maximum_absolute_error": 3.0754072248909137e-17,
+      "phi_factor_maximum_relative_error": 0.30580357422644056,
+      "relative_error_failure_phi": 0.0001,
+      "dynamic_flow_maximum_absolute_error_g_per_s": 2.4567015088905464e-12,
+      "dynamic_flow_maximum_relative_error": 7.257835007727563e-11,
+      "openfoam_execution_count": 0
+    },
+    "local_gate_a_attempt_1": {
+      "status": "FAIL",
+      "series_switch": 0.001,
+      "failure_class": "LOCAL_DIRECT_EXPRESSION_CANCELLATION_AND_PREMATURE_SERIES_SWITCH",
+      "scientific_equation_failure": false,
+      "failed_relative_errors": {
+        "0.001": 4.343438120508591e-07,
+        "0.01": 6.339222576362635e-10,
+        "0.013274242773430258": 2.860177372881737e-10
+      },
+      "switch_branch_absolute_error": 1.0882521929557158e-19,
+      "locked_puckworks_invocation_performed": false
+    },
+    "local_gate_a_v2": {
+      "status": "PASS",
+      "decimal_precision_digits": 100,
+      "scalar_maximum_relative_error": 4.2941404055752387e-16,
+      "dense_series_maximum_relative_error": 5.004760331746195e-16,
+      "dense_direct_maximum_relative_error": 1.8911033535542946e-13,
+      "series_truncation_absolute_error_at_switch": 4.8694487526057e-21,
+      "series_truncation_relative_error_at_switch": 5.952859617325126e-17,
+      "series_direct_absolute_difference_at_switch": 1.2739375526704677e-17,
+      "series_direct_relative_difference_at_switch": 1.5573778054914263e-13,
+      "operational_source_domain_crosses_numerical_switch": false
+    },
+    "domains": {
+      "complete_grid_indices": [0, 999],
+      "active_grid_indices": [100, 999],
+      "minimum_complete_grid_phi": 0.0017221958734026162,
+      "minimum_active_grid_phi": 0.013274242773430258,
+      "maximum_complete_grid_phi": 0.12202109438066745,
+      "phi_m": 0.12202109866812735
+    }
+  },
+  "source_parity_result": {
+    "cumulative_locked_puckworks_reference_execution_count": 2,
+    "corrected_protocol_locked_puckworks_execution_count": 1,
+    "raw_output_sha256": "aa2fae75065e6ef8ee8d2099c7ba2014c6efffcbfe366714151d8d44b5fb4fb6",
+    "protocol_sha256": "7d98efd0b5bbc06d739c261a37afb3b598d367309fef0ae368043a2ce86f77e2",
+    "operational_phi_factor": {
+      "point_count": 901,
+      "maximum_absolute_error": 7.681572392059799e-17,
+      "maximum_relative_error": 3.9973766308978175e-09,
+      "worst_relative_phi": 0.01405422029692631
+    },
+    "complete_grid_phi_factor": {
+      "point_count": 1000,
+      "maximum_absolute_error": 7.681572392059799e-17,
+      "maximum_relative_error_diagnostic": 1.9555615873391217e-05,
+      "relative_error_gate_applied": false
+    },
+    "off_domain_phi_1e_4": {
+      "acceptance_role": "DIAGNOSTIC_ONLY",
+      "local": 2.5005500866785733e-17,
+      "decimal": 2.500550086678573e-17,
+      "puckworks": 3.602078595971092e-17,
+      "local_puckworks_relative_error": 0.30580357422644056
+    },
+    "qhat_maximum_absolute_error": 0.0,
+    "static_flow_maximum_relative_error": 0.0,
+    "dissolved_mass_maximum_relative_error": 3.7580400348423365e-15,
+    "dynamic_8bar_maximum_absolute_error_g_per_s": 3.0098146197587994e-12,
+    "dynamic_8bar_maximum_relative_error": 5.941092511455606e-11,
+    "dynamic_9bar_maximum_absolute_error_g_per_s": 3.0409008644483038e-12,
+    "dynamic_9bar_maximum_relative_error": 3.8657319998282304e-11,
+    "zero_nonzero_clipping_agreement": "EXACT",
+    "overall_source_parity": "PASS"
+  },
+  "source_dependency": {
+    "repository": "https://github.com/trbrewer/puckworks.git",
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "model_path": "puckworks/models/waszkiewicz2025/poroelastic.py",
+    "model_git_blob": "5a29c83ddc2fec088f7b068c996d3982b610e69c",
+    "model_sha256": "7dcce1b91ead1043a7e62f47d09a84973b900e720e4af364f4415f2165e8aa8e",
+    "source_model_role": "SOURCE_LINKED_POST_FIT_RECONSTRUCTION",
+    "files": {
+      "static_calibration": ["puckworks/data/waszkiewicz2025/static_calibration.csv", "2a2fdd129cbfb7742196abb493409c76aab11e2bef9f74aafb3df996c6b21ce5"],
+      "solids_calibration": ["puckworks/data/waszkiewicz2025/solids_calibration.csv", "98cbdd42ea99dc454b7c150c86e07c78bca07e7987e5ac5a0f37b7008937e04d"],
+      "aggregate_traces": ["puckworks/data/waszkiewicz2025/traces_time_dependent.csv", "40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9"],
+      "per_brew_traces": ["puckworks/data/waszkiewicz2025/traces_per_brew.csv", "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08"]
+    },
+    "rights": {
+      "puckworks_reexpression": "MIT",
+      "deposited_data": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "journal_article": "CITATION_ONLY",
+      "external_analysis_code_copying": false,
+      "openfoam_runtime_import": false
+    }
+  },
+  "source_parameters": {
+    "pc_bar": 12.391550000000002,
+    "qc_g_per_s": 1.8969919954879988,
+    "k_solids_g": 2.257390325360356,
+    "l_solids_s": 19.833265422011824,
+    "m_solids_s": 9.341259347305948,
+    "dose_g": 18.5,
+    "fixed_first_drop_offset_s": 8.0,
+    "fixed_first_drop_offset_used_in_mapping": false,
+    "parameter_fitting_count": 0
+  },
+  "closed_form": {
+    "qhat": "x*(4 - 6*x + 4*x^2 - x^3)",
+    "phi_factor": "[phi*(phi*(11*phi - 15) + 6) - 6*(phi - 1)^3*log(1 - phi)]/[6*(phi - 1)^2]",
+    "dissolved_mass": "0.5*k_solids*(1 + tanh((t-l_solids)/m_solids))",
+    "phi_m": "k_solids/dose_g",
+    "q_master": "Q_c/F(phi_m)",
+    "p_master": "P_c/phi_m",
+    "phi_t": "m_d(t)/dose_g",
+    "q_dynamic": "max(0, qhat(P/(p_master*phi_t))*q_master*F(phi_t))",
+    "q_static": "Q_c*qhat(P/P_c)",
+    "phi_factor_series_threshold": 0.125,
+    "phi_factor_series_max_order": 24
+  },
+  "hydraulic_interface_mapping": {
+    "id": "HYDRAULIC_EQUIVALENT_SHAPE_MULTIPLIER_ON_STATIC_BASKET_SCALE",
+    "raw_multiplier": "q_dynamic(P_bin,t)/q_static(P_bin)",
+    "effective_permeability": "static_basket_calibrated_permeability*bounded_multiplier",
+    "dynamic_shape_pressure_node": "NOMINAL_REFERENCE_PRESSURE_BIN",
+    "absolute_scale_pressure_node": "CORRECTED_LATE_BASKET_OR_PUCK_INLET_GAUGE",
+    "porosity_storage_bed_depth_mesh_unchanged": true,
+    "verbatim_source_paper_permeability_equation_claimed": false
+  },
+  "time_mapping": {
+    "source_time_s": "solver_time_s - 3.0",
+    "source_to_solver_offset_s": 3.0,
+    "source_validity_start_index": 100,
+    "source_validity_start_s": 10.01001001001001,
+    "mapped_solver_validity_start_s": 13.01001001001001,
+    "unsaturated_status": "UNSATURATED_BRANCH_INACTIVE",
+    "pre_source_support_status": "PRE_SOURCE_SUPPORT_SATURATED_HOLD",
+    "source_supported_status": "SOURCE_SUPPORTED_SATURATED_STAGE",
+    "fixed_8s_offset_used": false
+  },
+  "numerical_regularization": {
+    "minimum_effective_multiplier": 1e-06,
+    "maximum_effective_multiplier": 1.0,
+    "upper_roundoff_tolerance": 1e-10,
+    "minimum_role": "NUMERICAL_ELLIPTIC_REGULARIZATION_NOT_FITTED_PHYSICS",
+    "maximum_role": "SOURCE_LONG_RUN_NORMALIZATION_AND_ROUNDOFF_BOUND",
+    "floor_sensitivity_values": [1e-08, 1e-06, 0.0001],
+    "maximum_normalized_rmse_difference": 0.0001,
+    "maximum_late_flow_relative_difference": 1e-08
+  },
+  "comparison_common": {
+    "protected_indices": [100, 899],
+    "normalization_indices": [900, 999],
+    "source_sample_count": 1000,
+    "source_support_s": [0.0, 100.0],
+    "primary_flow_formula": "1000*965*outlet_flow_m3_s",
+    "smoothing": false,
+    "shifting": false,
+    "scaling": false,
+    "pearson_epsilon": 1e-08,
+    "undefined_pearson": "FAIL"
+  },
+  "nine_bar_reconstruction": {
+    "reference_pressure_bin_bar": 9.0,
+    "scenario_path": "config/reconstruction_WP02A_waszkiewicz_9bar.json",
+    "shot_ids": ["9-1", "9-2", "9-3", "9-4", "9-5"],
+    "gates": {
+      "median_rmse_max": 0.15,
+      "shots_required_rmse": 4,
+      "shot_rmse_max": 0.2,
+      "median_pearson_min": 0.95,
+      "shots_required_pearson": 4,
+      "shot_pearson_min": 0.9
+    }
+  },
+  "eight_bar_transfer": {
+    "comparison_role": "PREDECLARED_NO_RETUNING_SAME_CAMPAIGN_TRANSFER",
+    "blinding_status": "NOT_CLAIMED",
+    "independent_validation": false,
+    "reference_pressure_bin_bar": 8.0,
+    "scenario_path": "config/reconstruction_WP02A_waszkiewicz_8bar.json",
+    "shot_ids": ["8-1", "8-1b", "8-2", "8-3"],
+    "late_window_indices": [900, 999],
+    "late_basket_pressure_bar": 7.56616724,
+    "late_line_pressure_bar": 7.97313332,
+    "late_observed_mass_flow_g_per_s": 1.81947048,
+    "static_target_g_per_s": 1.8533715559994717,
+    "static_permeability_m2": 3.2464136971534258e-15,
+    "gates": {
+      "median_rmse_max": 0.15,
+      "shots_required_rmse": 3,
+      "shot_rmse_max": 0.2,
+      "median_pearson_min": 0.95,
+      "shots_required_pearson": 3,
+      "shot_pearson_min": 0.9
+    }
+  },
+  "implementation_boundary": {
+    "optional": true,
+    "disabled_by_default": true,
+    "saturated_branch_only": true,
+    "wetting_change": false,
+    "pore_volume_storage_change": false,
+    "mesh_motion_change": false,
+    "chemistry_change": false,
+    "full_deformation": false,
+    "machine_coupling": false,
+    "generic_fitted_k_of_t": false
+  },
+  "verification_gates": [
+    "INDEPENDENT_CLOSED_FORM",
+    "LOCKED_PUCKWORKS_SCALAR_VECTOR_PARITY",
+    "REDUCED_FLOOR_SENSITIVITY",
+    "UNIFORM_PRESSURE_FIXTURE",
+    "R0_DISABLED_BRANCH_REGRESSION",
+    "CONSTANT_R1_DISABLED_BRANCH_REGRESSION",
+    "LIQUID_AND_SOLUTE_CONSERVATION"
+  ],
+  "execution_contract": {
+    "mpi_ranks": 32,
+    "scientific_cases": ["WP02A_9BAR", "WP02A_8BAR"],
+    "same_executable_required": true,
+    "parameter_fitting_count": 0,
+    "optimizer_iteration_count": 0,
+    "post_result_adjustment_count": 0
+  },
+  "claim_ceiling": "This source-linked same-campaign branch tests saturated dissolution-indexed effective resistance. It does not establish independent physical validation, full poroelastic deformation, transfer across rigs, early wetting, channeling, or a universal permeability law.",
+  "authorization_boundaries": {
+    "governing_physics_change": true,
+    "package_scientific_configuration_change": true,
+    "new_optional_closure_added": true,
+    "frozen_R0_configuration_change": false,
+    "constant_R1_configuration_change": false,
+    "wetting_physics_change": false,
+    "pore_volume_storage_change": false,
+    "mesh_motion_change": false,
+    "chemistry_model_change": false
+  }
+}
