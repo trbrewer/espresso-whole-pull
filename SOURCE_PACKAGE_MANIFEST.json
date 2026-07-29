@@ -13,8 +13,6 @@
   "qualified_R0_scientific_configuration_change": false,
   "new_R1_scientific_configuration_added": true,
   "historical_R1_change_declaration_preserved": true,
-  "wp_0_3b_a1_state": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
-  "wp_0_3b_a1_controlling_contract": "WP_0_3B_A1_P1_PREEXECUTION_CORRECTION_CONTRACT",
   "wp_0_3b_a1_governing_physics_change": false,
   "wp_0_3b_a1_protected_access": false,
   "source_manifest_self_excluded": true,
@@ -29,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 141,
-  "total_uncompressed_bytes_excluding_manifest": 1317618,
-  "aggregate_source_sha256": "708a190430d86d7e5dff8bfdf7dd1402e89bfc9ae1ba3c72c72e77c736572c84",
-  "aggregate_sha256": "708a190430d86d7e5dff8bfdf7dd1402e89bfc9ae1ba3c72c72e77c736572c84",
+  "total_uncompressed_bytes_excluding_manifest": 1318338,
+  "aggregate_source_sha256": "82304253b8f2f1bffddd40a0a074d243e73b162c33612f041f37cc9356069cf3",
+  "aggregate_sha256": "82304253b8f2f1bffddd40a0a074d243e73b162c33612f041f37cc9356069cf3",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -446,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "8b176714f770b8740dedba7a86c3fc17887d2b0c66c9f24a72e836077b90b878",
-      "bytes": 4793,
+      "sha256": "1babaea6d36864e11b2ded4f5b94483ec812533005b82a2934c690c6a3fdbe51",
+      "bytes": 2270,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -511,8 +509,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "e54c869756367f351c207d0e5ccf5aba8d24879d4d4eecc35f0ecd3d3556f449",
-      "bytes": 9054,
+      "sha256": "0a4d9581b30cda8428af59bbe3d09c053ffa1fe789388e5c2cf91ac98b70fe07",
+      "bytes": 8872,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -626,8 +624,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_wp03b_nonprotected_verification.py": {
-      "sha256": "19f20f32d9048224205685adc817ec075cac169226ada771cf494a4f7baf21b5",
-      "bytes": 9581,
+      "sha256": "5a550d9ca0115089a0120c5ffa03e40e6a4dda1926e8753d1c2e556e7099a178",
+      "bytes": 10805,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
@@ -716,8 +714,8 @@
       "git_mode": "100644"
     },
     "tests/test_wp03b_boundary.py": {
-      "sha256": "d5398714a7c56fe65b0ea749e78a324812f50f10c05756bc20587065d11d5685",
-      "bytes": 7688,
+      "sha256": "ce71cfe463a4801daabcb1cfb0069ee5197c9b1083f37bfa8e6f77bce451076f",
+      "bytes": 9889,
       "git_mode": "100644"
     },
     "tests/test_wp03b_liang2021.py": {

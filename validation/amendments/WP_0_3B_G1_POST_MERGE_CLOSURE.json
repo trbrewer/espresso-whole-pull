@@ -1,0 +1,38 @@
+{
+  "schema_version": "espresso.public.wp_0_3b_g1_post_merge_closure.v1",
+  "task": "WP-0.3B-G1",
+  "classification": [
+    "POST_MERGE_DOCUMENTATION_PROVENANCE_AND_VERIFIER_HARDENING_ONLY",
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_CANONICAL_REFERENCE_EXECUTION",
+    "NO_OPENFOAM_EXECUTION",
+    "NO_PUCKWORKS_EXECUTION",
+    "NO_PROTECTED_ACCESS",
+    "NO_SCIENTIFIC_RESULT_CHANGE"
+  ],
+  "pull_request": 24,
+  "merge_method": "MERGE_COMMIT",
+  "merge_commit": "20023996cd372ea375b774e9e854f990b7887691",
+  "merge_tree": "935acf8d54daa0e86ca3a1891e13ae56d0de9643",
+  "original_failed_result": {
+    "sha256": "80d0a91d6456ff1219e74f0503f3e6846c9974b3ed868cff19f6f9da943cde90",
+    "disposition": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL"
+  },
+  "amended_result": {
+    "sha256": "8af2ec832b191f96994f762eca85eacdc9bfa68ef316321b6b56894d649b6349",
+    "disposition": "NONPROTECTED_EXTRACTION_REFERENCE_AND_OBSERVABLE_VERIFICATION_PASS_AFTER_GOVERNED_AMENDMENT"
+  },
+  "p1_contract_sha256": "d61d33527d6de64201018033da86e78810a3d57a477c17c46639fc90d2b92feb",
+  "final_boundary_state": "AMENDED_CANONICAL_RESULT_PRESENT_AND_VERIFIED",
+  "contract_physical_validation": "NOT_ESTABLISHED",
+  "result_physical_validation": "NOT_ESTABLISHED",
+  "execution_counts_added": {
+    "canonical_reference": 0,
+    "openfoam": 0,
+    "puckworks": 0,
+    "protected_access": 0,
+    "scientific_scores": 0
+  },
+  "scientific_result_changed": false,
+  "physical_validation": "NOT_ESTABLISHED"
+}
