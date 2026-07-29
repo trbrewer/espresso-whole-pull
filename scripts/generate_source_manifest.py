@@ -49,6 +49,7 @@ PUBLIC_DOCUMENTATION_PATHS = {
     "docs/evidence/WP_0_3A_ALIGNMENT_AND_HOLDOUT_REVIEW.md",
     "docs/integration/PUCKWORKS_UPDATE_IMPACT.md",
     "docs/integration/PUCKWORKS_WP_0_3A_SOLVER_SUPPORT_TRIAGE.md",
+    "docs/verification/WP_0_3B_NONPROTECTED_EXTRACTION_REFERENCES.md",
     "docs/r1/WP01R_004_PUCKWORKS_BRIDGE_AND_CASE.md",
     "docs/r1/WP01R_005_R1_EXECUTION_AND_RESIDUALS.md",
     "docs/validation/R1_CALIBRATION_AND_COMPARISON_CONTRACT.md",
@@ -202,6 +203,11 @@ def main() -> None:
         "qualified_R0_scientific_configuration_change": False,
         "new_R1_scientific_configuration_added": True,
         "historical_R1_change_declaration_preserved": True,
+        "wp_0_3b_a1_state": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
+        "wp_0_3b_a1_controlling_contract":
+            "WP_0_3B_A1_P1_PREEXECUTION_CORRECTION_CONTRACT",
+        "wp_0_3b_a1_governing_physics_change": False,
+        "wp_0_3b_a1_protected_access": False,
         "source_manifest_self_excluded": True,
         "mode_contract": "canonical Git object modes: 100644, 100755, or 120000",
         "excluded_runtime_patterns": [

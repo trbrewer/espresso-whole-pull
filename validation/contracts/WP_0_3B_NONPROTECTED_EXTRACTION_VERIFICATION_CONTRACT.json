@@ -1,0 +1,108 @@
+{
+  "schema_version": "espresso.public.wp_0_3b_nonprotected_extraction_verification_contract.v1",
+  "task": "WP-0.3B",
+  "contract_status": "FROZEN_BEFORE_CANONICAL_EXECUTION",
+  "classification": [
+    "NONPROTECTED_REFERENCE_IMPLEMENTATION",
+    "EVIDENCE_AND_NUMERICAL_VERIFICATION_SUPPORT_ONLY",
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_OPENFOAM_EXECUTION",
+    "NO_RUNTIME_WP02_COUPLING",
+    "NO_PUCKWORKS_CODE_EXECUTION",
+    "NO_PROTECTED_SOURCE_ACCESS",
+    "NO_PHYSICAL_VALIDATION_CLAIM"
+  ],
+  "baseline_commit": "7f26b643fde4c99263384c402547e9d6c606c99e",
+  "permitted_changed_paths": [
+    ".github/workflows/static-validation.yml",
+    "PACKAGE_QA_STATUS.json",
+    "SOURCE_PACKAGE_MANIFEST.json",
+    "docs/DEVELOPMENT_HISTORY.md",
+    "docs/PROJECT_STATE.md",
+    "docs/PUCKWORKS_INTEGRATION.md",
+    "docs/QA_STATUS.md",
+    "docs/verification/WP_0_3B_NONPROTECTED_EXTRACTION_REFERENCES.md",
+    "scripts/generate_source_manifest.py",
+    "scripts/verify_wp03_evidence_review.py",
+    "scripts/verify_wp03b_nonprotected_verification.py",
+    "tests/test_wp03b_boundary.py",
+    "tests/test_wp03b_liang2021.py",
+    "tests/test_wp03b_matias2023.py",
+    "tests/test_wp03b_moroney2017.py",
+    "tests/test_wp03b_observables.py",
+    "tools/reference/wp03b/__init__.py",
+    "tools/reference/wp03b/canonical_run.py",
+    "tools/reference/wp03b/liang2021.py",
+    "tools/reference/wp03b/matias2023.py",
+    "tools/reference/wp03b/moroney2017.py",
+    "tools/reference/wp03b/observables.py",
+    "tools/reference/wp03b/provenance.py",
+    "validation/contracts/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_CONTRACT.json",
+    "validation/results/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json"
+  ],
+  "immutable_scientific_hashes": {
+    "wp02_result": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+    "wp02_closure_contract": "2c898dd91e558ce62006dc81de9cff20bb633b52a89f6fa5a44c5edcda50d57a",
+    "r0_configuration": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+    "constant_r1_configuration": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876",
+    "wp02_9bar_configuration": "81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e",
+    "wp02_8bar_configuration": "ac87cfdff2862401b33ac01fa31d87bf966e062cecd153ce59ab4a9518feb57e"
+  },
+  "executables": {
+    "historical_scientific": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+    "release": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b"
+  },
+  "puckworks": {
+    "runtime_lock_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "runtime_lock_tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "reviewed_evidence_commit": "bafafef3bc3c77599af8551d4e582aedb9b23f08",
+    "reviewed_evidence_tree": "64ccf86aff4c90d1c513f1614b39e0823f64d6d7",
+    "runtime_import_allowed": false,
+    "code_execution_allowed": false
+  },
+  "sources": {
+    "moroney2017": {"identifier": "doi:10.1186/s13362-016-0024-6", "card_sha256": "d4ad68ae4fd4c0a725fa10dff49a87f81d5c471a1648221ee9a9522c4c847586"},
+    "matias2023": {"identifier": "arXiv:2304.03161v2", "card_sha256": "49a459d2fe153d347409a965683b58a6d5b01855b2027558b9f3025871eddcf3"},
+    "liang2021": {"identifier": "doi:10.1038/s41598-021-85787-1", "card_sha256": "ce01610925432352981a8b2bb1873b83f946de9ba29208b48d59c3bc139bc19d", "audit_sha256": "29f84061cc4abcedc7c1e69d1e9b830f85dd1e26cad8a58b424ebe9811c127bb"}
+  },
+  "canonical": {
+    "moroney": {
+      "cases": ["fine", "coarse"],
+      "end_time_dimensionless": 8.0,
+      "steps": [0.002, 0.001, 0.0005],
+      "conservation_absolute_tolerance": 2e-11,
+      "refinement_ratio_maximum": 0.35,
+      "equilibrium_relative_tolerance": 0.002
+    },
+    "matias": {
+      "cs": 1.0,
+      "sh_xi": 1.0,
+      "low_pe_sequence": [0.1, 0.03, 0.01, 0.003],
+      "high_pe_sequence": [10.0, 30.0, 100.0, 300.0],
+      "limit_final_relative_tolerance": 0.01,
+      "sh_over_pe_sweep": [0.01, 0.1, 1.0, 10.0, 100.0]
+    },
+    "liang": {
+      "K_values": [0.25, 0.7],
+      "tau_s_values": [2.0, 12.0],
+      "amplitude": 1.0,
+      "times_s": [0.0, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0],
+      "noise_sigma": 0.0005,
+      "seeds": [2304, 85787],
+      "noise_free_relative_tolerance": 0.003,
+      "perturbed_K_absolute_tolerance": 0.01,
+      "perturbed_tau_relative_tolerance": 0.08,
+      "roundtrip_relative_tolerance": 1e-14,
+      "fit_status": "PROHIBITED_UNTIL_GOVERNED_DIGITIZATION_EXISTS"
+    }
+  },
+  "numerical_methods": {
+    "moroney_ode": "FIXED_STEP_CLASSICAL_RK4",
+    "matias": "STABLE_EXPONENTIAL_DELTA_SPLUS_SMINUS",
+    "liang_estimator": "DETERMINISTIC_BOUNDED_LOG_GRID_SYNTHETIC_ONLY",
+    "random_generator": "PYTHON_RANDOM_MT19937_FIXED_SEEDS",
+    "tolerance_basis": "IEEE_754_DOUBLE_PRECISION_PLUS_PREDECLARED_REFINEMENT_AND_SOURCE_PRECISION"
+  },
+  "result_schema": "espresso.public.wp_0_3b_nonprotected_extraction_verification_result.v1",
+  "claim_ceiling": "Numerical verification of independent equation re-expressions, synthetic identifiability behavior, and measurement kernels only. No experimental extraction validation, WP02 hydraulic validation, parameter transfer, multi-species validation, Vaca Guerra qualification, or physical validation is established."
+}

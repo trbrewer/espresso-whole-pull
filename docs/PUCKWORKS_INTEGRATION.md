@@ -101,3 +101,8 @@ and [machine-readable matrix](../validation/integration/WP_0_3A_PUCKWORKS_SOLVER
 The solver-support evidence disposition is
 `ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP`; the runtime dependency lock
 disposition is `RETAIN_EXISTING_LOCK`.
+
+WP-0.3B independently re-expresses the selected Moroney, Matias, and Liang
+references without importing or executing Puckworks. These are offline
+verification and observable-discipline tools only; the runtime dependency
+lock and WP02 branch remain unchanged.

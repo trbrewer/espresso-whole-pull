@@ -32,6 +32,10 @@ jobs:
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_release_finalization.py --root . --output /tmp/release-integrity.json
       - name: WP-0.3A evidence-review boundary
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_wp03_evidence_review.py --root . --output /tmp/wp03-evidence-review.json
+      - name: WP-0.3B non-protected verification boundary
+        run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_wp03b_nonprotected_verification.py --root . --output /tmp/wp03b-boundary.json
+      - name: WP-0.3B A1/P1 amended canonical result required for merge
+        run: test -f validation/results/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json
       - name: Shell syntax
         run: |
           find . -type f \( -name '*.sh' -o -name 'Allrun' -o -name 'Allverify' -o -name 'Allclean' -o -name 'Allwmake' \) -print0 |

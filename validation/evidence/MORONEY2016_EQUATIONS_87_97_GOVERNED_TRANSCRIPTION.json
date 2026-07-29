@@ -1,0 +1,83 @@
+{
+  "schema_version": "espresso.public.moroney2016_equations_87_97_transcription.v1",
+  "article": "Coffee extraction kinetics in a well mixed system",
+  "doi": "10.1186/s13362-016-0024-6",
+  "source_representation": "EUROPE_PMC_JATS_MATHML_PLUS_OFFICIAL_SPRINGER_PDF_VISUAL_CROSSCHECK",
+  "machine_readable_equation_source": "EUROPE_PMC_JATS_MATHML",
+  "visual_authority": "OFFICIAL_SPRINGER_PDF",
+  "official_article_landing_page": "SPRINGER",
+  "author_source_latex_obtained": false,
+  "ocr_equation_transcription_used": false,
+  "official_publisher_pdf_sha256": "7fa1bf674eaf8329a8d58e779d1b89a27a88c69340129c2d675744a658085286",
+  "review": {
+    "publisher_html": "Europe PMC publisher full-text JATS MathML",
+    "publisher_pdf_pages": {
+      "equations_87_94": "16 of 19",
+      "equations_95_97": "17 of 19"
+    },
+    "method": "Equation-by-equation MathML transcription followed by visual PDF crosscheck",
+    "reviewer": "OpenAI Codex acting as repository verification agent",
+    "review_date": "2026-07-29",
+    "independent_verification_status": "PASS"
+  },
+  "rights": {
+    "license": "CC-BY-4.0",
+    "attribution": "Moroney et al., Coffee extraction kinetics in a well mixed system, DOI 10.1186/s13362-016-0024-6"
+  },
+  "literal_publisher_transcription": {
+    "87": "c_h(t)=e^{-t}(e^t-1)+\\epsilon\\left(\\frac{b_1\\gamma_1t}{b_2}+b_2e^{-2t}[-e^t(t-1)-1]\\right)+\\epsilon^2\\left(\\frac{e^{-3t}[-b_1b_2e^{2t}(\\gamma_1t^2+2e^t(t-1)+2)]}{b_2}+\\frac{e^{-3t}[-b_1\\gamma_1e^{3t}t^2-b_2^3(e^t(e^t(t-2)t+4t-2)+2)]}{2b_2}\\right)",
+    "88": "c_v(t)=\\gamma_1-\\epsilon(\\gamma_1t)+\\epsilon^2\\left(b_2(t+e^{-t}-1)+\\frac{\\gamma_1t^2}{2}\\right)",
+    "89": "\\psi_s(t)=e^{-t}+\\epsilon b_2e^{-2t}[e^t(t-1)+1]+\\frac{1}{2}\\epsilon^2e^{-3t}\\left(b_1\\gamma_1e^{2t}t^2+b_2^2[e^t(e^t(t-2)t+4t-2)+2]\\right)",
+    "90": "K_1=\\gamma_1,\\quad K_2=\\frac{b_2}{b_1}+\\gamma_1,\\quad K_3=-b_1\\gamma_1-b_2",
+    "91": "K_4=-b_1\\gamma_1-b_2,\\quad K_5=b_1^2\\gamma_1+b_2b_1-b_2",
+    "92": "C_h(\\tau)=\\frac{b_2}{b_1}-\\gamma_1e^{-\\tau}+\\gamma_1+\\epsilon\\{e^{-\\tau}[b_1\\gamma_1(\\tau+1)+b_2]-(b_1\\gamma_1+b_2)\\}",
+    "93": "C_v(\\tau)=\\gamma_1e^{-\\tau}+\\epsilon\\{e^{-\\tau}[b_1\\gamma_1e^\\tau-b_1\\gamma_1\\tau+b_2e^\\tau]-e^{-\\tau}(b_1\\gamma_1+b_2)\\}+\\epsilon^2\\{e^{-\\tau}(b_1^2\\gamma_1+b_1b_2-b_2)-b_1e^{-\\tau}[-\\tfrac12b_1\\gamma_1\\tau^2-b_1\\gamma_1\\tau+b_1\\gamma_1e^\\tau-b_2\\tau+b_2e^\\tau]\\}",
+    "94": "\\Psi_s(\\tau)=0",
+    "95": "c_{h,comp}(t)=c_h(t)+\\frac{b_1}{b_2}C_h(\\epsilon t)-\\frac{\\epsilon^2(-b_1b_2t-\\tfrac12b_1\\gamma_1t^2)+b_1\\gamma_1t\\epsilon+b_2}{b_2}",
+    "96": "c_{v,comp}(t)=c_v(t)+C_v(\\epsilon t)-\\left[\\epsilon^2(b_2t-b_2+\\tfrac12\\gamma_1t^2)+\\gamma_1-\\gamma_1t\\epsilon\\right]",
+    "97": "\\psi_{s,comp}(t)=\\psi_s(t)"
+  },
+  "normalizations": [
+    {
+      "equation": 95,
+      "change": "The publisher HTML gamma token was normalized to subscripted gamma_1.",
+      "mathematical_effect": false
+    }
+  ],
+  "identified_source_inconsistencies": [
+    {
+      "equation": 80,
+      "literal": "+b_1 c_{h0}",
+      "derived": "-b_1 c_{h0}",
+      "basis": "order-epsilon-squared expansion of equation 59"
+    },
+    {
+      "equations": [84, 87],
+      "literal": "first fraction denominator b_2",
+      "derived": "first fraction denominator 2 b_2",
+      "basis": "corrected inner system, initial conditions, and overlap matching"
+    },
+    {
+      "equation": 46,
+      "literal": "-K_3 e^{-tau}",
+      "derived": "+K_3 e^{-tau}",
+      "basis": "direct integration of equation 43 and consistency with equations 47, 50, 90, and 93"
+    },
+    {
+      "equations": [92, 95],
+      "literal": "outer C_h is truncated before C_h2 and the printed common part omits +epsilon^2 b_1 b_2",
+      "derived": "outer C_h2 and the complete second-order common part are retained",
+      "basis": "equation 34 equilibrium expansion and second-order matching"
+    }
+  ],
+  "representation_policy": {
+    "literal_name": "LITERAL_PUBLISHER_TRANSCRIPTION",
+    "derived_name": "DERIVED_GOVERNING_ODE_CONSISTENT",
+    "author_correction_claimed": false,
+    "author_or_publisher_confirmation_recommended": true
+  },
+  "record_identity": {
+    "hash_basis": "canonical JSON excluding record_identity.record_sha256",
+    "record_sha256": "f8e3abb6e4be3742796ff62f6d6c707ad2bdb2eb5346655e1429dcc42d7b36ef"
+  }
+}

@@ -13,6 +13,10 @@
   "qualified_R0_scientific_configuration_change": false,
   "new_R1_scientific_configuration_added": true,
   "historical_R1_change_declaration_preserved": true,
+  "wp_0_3b_a1_state": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
+  "wp_0_3b_a1_controlling_contract": "WP_0_3B_A1_P1_PREEXECUTION_CORRECTION_CONTRACT",
+  "wp_0_3b_a1_governing_physics_change": false,
+  "wp_0_3b_a1_protected_access": false,
   "source_manifest_self_excluded": true,
   "mode_contract": "canonical Git object modes: 100644, 100755, or 120000",
   "excluded_runtime_patterns": [
@@ -24,10 +28,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 134,
-  "total_uncompressed_bytes_excluding_manifest": 1289866,
-  "aggregate_source_sha256": "a9abb15d7b9f3c2ca7bc42791f603f769dabb382edf5f9b7a44ee2669997f18a",
-  "aggregate_sha256": "a9abb15d7b9f3c2ca7bc42791f603f769dabb382edf5f9b7a44ee2669997f18a",
+  "file_count": 141,
+  "total_uncompressed_bytes_excluding_manifest": 1317618,
+  "aggregate_source_sha256": "708a190430d86d7e5dff8bfdf7dd1402e89bfc9ae1ba3c72c72e77c736572c84",
+  "aggregate_sha256": "708a190430d86d7e5dff8bfdf7dd1402e89bfc9ae1ba3c72c72e77c736572c84",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -442,8 +446,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "c22334e9f9756c618428f421c6c7f231c181b0f2e9e5e23d1d6143bdc8775a7c",
-      "bytes": 4185,
+      "sha256": "8b176714f770b8740dedba7a86c3fc17887d2b0c66c9f24a72e836077b90b878",
+      "bytes": 4793,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -507,8 +511,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "3e9ee918cbc6abadf3fa4f27ebaea175f3db2117f73fd5a82eabc57e03f5df94",
-      "bytes": 8701,
+      "sha256": "e54c869756367f351c207d0e5ccf5aba8d24879d4d4eecc35f0ecd3d3556f449",
+      "bytes": 9054,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -617,8 +621,13 @@
       "git_mode": "100755"
     },
     "scripts/verify_wp03_evidence_review.py": {
-      "sha256": "b7d763c46e642cc543b9e3f34188ffd31b91ab35894c99b06fd2e81179d96e97",
-      "bytes": 7602,
+      "sha256": "631b1d9ff157271863f88797b4ed9a9e05acdd89ca72a274fb822192aab05c95",
+      "bytes": 7294,
+      "git_mode": "100755"
+    },
+    "scripts/verify_wp03b_nonprotected_verification.py": {
+      "sha256": "19f20f32d9048224205685adc817ec075cac169226ada771cf494a4f7baf21b5",
+      "bytes": 9581,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
@@ -644,6 +653,11 @@
     "scripts/wp02_reference_math.py": {
       "sha256": "6c1001b18539093a949180720aa37f5466fac3954faf1b28b717a1d90fa187f9",
       "bytes": 1891,
+      "git_mode": "100755"
+    },
+    "scripts/wp03b_path_boundary.py": {
+      "sha256": "e7ec4bfc71c2d8091f20073207466a8fc48a9813dcef61a5874596c34a0db9d9",
+      "bytes": 1496,
       "git_mode": "100755"
     },
     "scripts/write_build_provenance.py": {
@@ -699,6 +713,31 @@
     "tests/test_wp03_holdout_contract.py": {
       "sha256": "d3afcf28b9c7a464cb2c475f812cc005ca0e892604aba82966ae40565a87bd10",
       "bytes": 17358,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03b_boundary.py": {
+      "sha256": "d5398714a7c56fe65b0ea749e78a324812f50f10c05756bc20587065d11d5685",
+      "bytes": 7688,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03b_liang2021.py": {
+      "sha256": "6b3f86beb1ceb4dfa6dca38bab419225303942f92d869dc5a70541019ea25b20",
+      "bytes": 1077,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03b_matias2023.py": {
+      "sha256": "107124d710f949b0858f2dc674c63498490f01084f2e16e2cf7b1c5304505d67",
+      "bytes": 653,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03b_moroney2017.py": {
+      "sha256": "90e501b947c5d8ddf04eaab169a45856a3af37a8ef2d805d74abecb9a5680acc",
+      "bytes": 3540,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03b_observables.py": {
+      "sha256": "90cef111fc1cc7323347c8db978acb10fb21643c45a98f68061d015ed57a4087",
+      "bytes": 3064,
       "git_mode": "100644"
     }
   }

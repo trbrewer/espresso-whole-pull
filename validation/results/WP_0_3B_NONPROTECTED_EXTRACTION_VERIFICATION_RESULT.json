@@ -1,0 +1,149 @@
+{
+  "claim_ceiling": "Numerical verification of independent equation re-expressions, synthetic identifiability behavior, and measurement kernels only. No experimental extraction validation, WP02 hydraulic validation, parameter transfer, multi-species validation, Vaca Guerra qualification, or physical validation is established.",
+  "contract_sha256": "4b05d9a8f7f91dc6e476c9942639524213541d3f887452d4fb369715bc9f89a6",
+  "environment": {
+    "implementation": "CPython",
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "execution_counts": {
+    "canonical_reference": 1,
+    "openfoam": 0,
+    "protected_access": 0,
+    "puckworks_code": 0,
+    "scientific_scores": 0,
+    "wp02_analyzer": 0
+  },
+  "execution_history": {
+    "failed_pre_output_infrastructure_invocations": 1,
+    "failure": "RESULT_DIRECTORY_MISSING_NO_ARTIFACT_WRITTEN",
+    "completed_canonical_reference_invocations": 1,
+    "implementation_changed_between_attempts": false
+  },
+  "gates": {
+    "liang": "PASS",
+    "matias": "PASS",
+    "moroney": "FAIL",
+    "observables": "PASS"
+  },
+  "implementation": {
+    "commit": "d0180a84bed7a81b62ec43dee02e6150e89c3f21",
+    "tree": "f12a2e9093274c5693e5bf8803ca6aa10d794a5e"
+  },
+  "liang2021": {
+    "cases": [
+      {
+        "noise_free": {
+          "K": 0.24998207539057873,
+          "sse": 4.5946290070319095e-09,
+          "tau_s": 1.9989172219656177
+        },
+        "perturbed": {
+          "K": 0.24992264336870393,
+          "sse": 1.549915133566879e-06,
+          "tau_s": 1.98378124355626
+        },
+        "status": "PASS",
+        "true_K": 0.25,
+        "true_tau_s": 2.0
+      },
+      {
+        "noise_free": {
+          "K": 0.6999287286967774,
+          "sse": 1.2639821381957568e-08,
+          "tau_s": 11.995341904165594
+        },
+        "perturbed": {
+          "K": 0.6995563758248662,
+          "sse": 8.19852959096651e-07,
+          "tau_s": 11.949840709575952
+        },
+        "status": "PASS",
+        "true_K": 0.7,
+        "true_tau_s": 12.0
+      }
+    ],
+    "endpoint_only_tau_identifiable": false,
+    "fit_status": "PROHIBITED_UNTIL_GOVERNED_DIGITIZATION_EXISTS",
+    "transient_tau_information_demonstrated": true
+  },
+  "matias2023": {
+    "front_gating_errors": [
+      0.009900990099009901,
+      0.09090909090909091,
+      0.5,
+      0.9090909090909091,
+      0.9900990099009901
+    ],
+    "high_pe_relative_errors": [
+      0.102643208350691,
+      0.03379972238155205,
+      0.010047584748135907,
+      0.003338799396854881
+    ],
+    "low_pe_relative_errors": [
+      0.021663311381617454,
+      0.006559007035528548,
+      0.002192069702200687,
+      0.0006582235394189225
+    ],
+    "status": "PASS"
+  },
+  "module_sha256": {
+    "canonical_run.py": "d45e33be96129f0e8e274eaba738f08375477109e73ca7a1e28c5a496e47f887",
+    "liang2021.py": "c028eea8a8995c3af49f410fa0b6c31971d3f5fd0c8d0af3a14050173df31fec",
+    "matias2023.py": "a2f34eb6a9f3982a186b4b756f3eb43df67c53fd8641a0579b37a0f30587c1d6",
+    "moroney2017.py": "67aa70cefd450de0d81fcf49e131e2e6afcc0828420c47d3e6cef527e18c58cb",
+    "observables.py": "c4b0949a58c2d344fdc1297dd3ed3ac319ea19c53f19a9607a76d462c69c05f0"
+  },
+  "moroney2017": {
+    "coarse": {
+      "conservation_residual": 9.547918011776346e-15,
+      "equilibrium_relative_error": 3.632660092560618e-05,
+      "refinement_ratio": 0.7142857142857143,
+      "status": "FAIL"
+    },
+    "fine": {
+      "conservation_residual": 8.215650382226158e-15,
+      "equilibrium_relative_error": 5.1011577335786474e-05,
+      "refinement_ratio": 3.0,
+      "status": "FAIL"
+    }
+  },
+  "observables": {
+    "kernel": {
+      "correction_terms": {
+        "retained_solids_kg": 0.0008799999999999999,
+        "volatile_loss_kg": 0.0002
+      },
+      "oven_dry_extracted_mass": 0.0021999999999999984,
+      "retained_liquid_corrected_extracted_mass": 0.0030799999999999985,
+      "retained_liquid_mass": 0.044,
+      "role": "MEASUREMENT_KERNEL_NOT_EXTRACTION_PHYSICS",
+      "uncertainty_kg": 0.0001414213562373095,
+      "units": "kg"
+    },
+    "status": "PASS"
+  },
+  "overall_disposition": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",
+  "physical_validation": "NOT_ESTABLISHED",
+  "runtime_wp02_coupling": false,
+  "schema_version": "espresso.public.wp_0_3b_nonprotected_extraction_verification_result.v1",
+  "source_identities": {
+    "liang2021": {
+      "audit_sha256": "29f84061cc4abcedc7c1e69d1e9b830f85dd1e26cad8a58b424ebe9811c127bb",
+      "card_sha256": "ce01610925432352981a8b2bb1873b83f946de9ba29208b48d59c3bc139bc19d",
+      "identifier": "doi:10.1038/s41598-021-85787-1"
+    },
+    "matias2023": {
+      "card_sha256": "49a459d2fe153d347409a965683b58a6d5b01855b2027558b9f3025871eddcf3",
+      "identifier": "arXiv:2304.03161v2"
+    },
+    "moroney2017": {
+      "card_sha256": "d4ad68ae4fd4c0a725fa10dff49a87f81d5c471a1648221ee9a9522c4c847586",
+      "identifier": "doi:10.1186/s13362-016-0024-6"
+    }
+  },
+  "source_or_holdout_fit": false,
+  "task": "WP-0.3B"
+}

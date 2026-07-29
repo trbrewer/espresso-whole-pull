@@ -3,7 +3,7 @@
 - Current released version: `v0.2.0`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 134/134 PASS (WP-0.3A branch)
+- Public source verification: 141/141 PASS (WP-0.3B-A1-P1 final verification)
 - Published v0.2.0 source verification: 131/131 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
@@ -42,6 +42,28 @@ advancing the dependency lock. The next evidence task is the specified
 independent pressure/flow campaign. Independent
 physical validation has not started. Machine/headspace coupling remains a
 later hypothesis subject to holdout evidence and a separate decision.
+
+WP-0.3B implements non-protected Moroney, Matias, and Liang mathematical
+references plus method-explicit TDS, EY, and retained-liquid measurement
+kernels. They are verification support only, are not connected to WP02, and
+do not establish physical validation. The canonical run passed Matias, Liang,
+and observable gates but failed the predeclared Moroney timestep-refinement
+ratio gate; the result remains a governed verification failure without
+tolerance relaxation.
+
+WP-0.3B-A1-P1 preserves that failure and the subsequent transcription and
+derivation checkpoint. Commit 3B froze the state
+`PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT` before the amended invocation.
+The P1 boundary corrects generated-path handling, historical-runner
+reachability, observable uncertainty propagation, and Python 3.8 portability
+without changing a scientific threshold.
+
+The one P1-bound amended canonical invocation subsequently passed every
+Moroney, Matias, Liang, and observable subgate. Its disposition is
+`NONPROTECTED_EXTRACTION_REFERENCE_AND_OBSERVABLE_VERIFICATION_PASS_AFTER_GOVERNED_AMENDMENT`.
+The original governed FAIL remains unchanged and independently addressable.
+This mathematical and measurement verification does not establish physical
+validation.
 
 WP02-001 added the optional saturated dissolution-indexed effective-permeability
 closure. Its corrected uniform fixture, disabled R0 regression, and disabled

@@ -1,0 +1,111 @@
+{
+  "schema_version": "espresso.public.wp_0_3b_a1_p1_preexecution_contract.v1",
+  "task": "WP-0.3B-A1-P1",
+  "contract_status": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
+  "baseline": {
+    "commit": "32da9010e555887d7aab8231ee827df9bcaabfce",
+    "tree": "f1006bc3c1387644d852d59f9c1926c48ee7e0c8"
+  },
+  "superseded_execution_freeze_contract": {
+    "path": "validation/contracts/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_CONTRACT.json",
+    "sha256": "49dd1e76d29404747a93e9bf275fe8a6b1d1e8e953a6de361de7285ecbd36201",
+    "historical_role": "COMMIT_3A_TRANSCRIPTION_AND_DERIVATION_PREPARATION"
+  },
+  "preserved": {
+    "original_contract_sha256": "4b05d9a8f7f91dc6e476c9942639524213541d3f887452d4fb369715bc9f89a6",
+    "original_failed_result_sha256": "80d0a91d6456ff1219e74f0503f3e6846c9974b3ed868cff19f6f9da943cde90",
+    "original_disposition": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",
+    "wp02_result_sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+    "wp02_contract_sha256": "2c898dd91e558ce62006dc81de9cff20bb633b52a89f6fa5a44c5edcda50d57a"
+  },
+  "states": {
+    "preexecution": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
+    "result_present": "AMENDED_CANONICAL_RESULT_PRESENT_AND_VERIFIED"
+  },
+  "python_compatibility_floor": "3.8",
+  "moroney": {
+    "end_time_dimensionless": 8.0,
+    "steps": [0.002, 0.001, 0.0005],
+    "trajectory_state_scale": 1.0,
+    "roundoff_floor_multiplier": 4096,
+    "refinement_ratio_maximum": 0.35,
+    "observed_order_range": [3.5, 4.5],
+    "reduced_full_absolute_tolerance": 2e-12,
+    "conservation_absolute_tolerance": 2e-11,
+    "equilibrium_relative_tolerance": 0.002,
+    "equilibrium_zero_state_absolute_tolerance": 1e-10,
+    "composite_epsilon_divisors": [1, 2, 4],
+    "composite_end_time_dimensionless": 2.0,
+    "composite_ode_step": 0.00025,
+    "composite_ratio_maximum": 0.35
+  },
+  "matias": {
+    "low_pe_sequence": [0.1, 0.03, 0.01, 0.003],
+    "high_pe_sequence": [10.0, 30.0, 100.0, 300.0],
+    "sh_over_pe_sweep": [0.01, 0.1, 1.0, 10.0, 100.0],
+    "limit_final_relative_tolerance": 0.01
+  },
+  "liang": {
+    "K_values": [0.25, 0.7],
+    "tau_s_values": [2.0, 12.0],
+    "times_s": [0.0, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0],
+    "noise_sigma": 0.0005,
+    "seeds": [2304, 85787],
+    "noise_free_relative_tolerance": 0.003,
+    "perturbed_K_absolute_tolerance": 0.01,
+    "perturbed_tau_relative_tolerance": 0.08,
+    "roundtrip_relative_tolerance": 1e-14
+  },
+  "observable_uncertainty": {
+    "covariance_contract_present": false,
+    "brew_water_uncertainty_frozen_zero": false,
+    "corrected_variance": "var_dose+var_volatile+tds^2*var_wet+(1+tds)^2*var_dry+retained^2*var_tds",
+    "retained_variance": "var_wet+var_dry",
+    "oven_variance": "var_dose+var_dry+var_volatile",
+    "water_balance_variance": "var_brew+var_beverage+var_wet+var_dry"
+  },
+  "gate_inventory": {
+    "moroney": ["trajectory_refinement", "roundoff_guard", "reduced_system", "all_level_conservation", "all_state_equilibrium", "literal_derived_diagnostic", "composite_convergence"],
+    "matias": ["full_reference", "low_pe_limit", "high_pe_limit", "sh_pe_sweep", "front_gating_trend"],
+    "liang": ["rate_roundtrip", "noise_free_recovery", "perturbed_recovery", "endpoint_nonidentifiability", "transient_identifiability", "degenerate_detection"],
+    "observables": ["method_schema", "compatibility", "ey_vocabulary", "retained_liquid", "oven_dry", "corrected_extraction", "uncertainty", "water_balance", "negative_inventory", "dimensional_consistency"]
+  },
+  "result": {
+    "path": "validation/results/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json",
+    "schema_version": "espresso.public.wp_0_3b_a1_nonprotected_verification_result.v2",
+    "atomic_write": true,
+    "manual_annotation": false,
+    "maximum_canonical_invocations": 1,
+    "required_disposition": "NONPROTECTED_EXTRACTION_REFERENCE_AND_OBSERVABLE_VERIFICATION_PASS_AFTER_GOVERNED_AMENDMENT"
+  },
+  "preexecution_paths": [
+    ".github/workflows/static-validation.yml",
+    "PACKAGE_QA_STATUS.json",
+    "SOURCE_PACKAGE_MANIFEST.json",
+    "docs/PROJECT_STATE.md",
+    "docs/verification/WP_0_3B_NONPROTECTED_EXTRACTION_REFERENCES.md",
+    "scripts/generate_source_manifest.py",
+    "scripts/verify_wp03b_nonprotected_verification.py",
+    "scripts/wp03b_path_boundary.py",
+    "tests/test_wp03b_boundary.py",
+    "tests/test_wp03b_moroney2017.py",
+    "tests/test_wp03b_observables.py",
+    "tools/reference/wp03b/canonical_run.py",
+    "tools/reference/wp03b/moroney2017.py",
+    "tools/reference/wp03b/observables.py",
+    "validation/amendments/WP_0_3B_A1_P1_PREEXECUTION_CORRECTION.json",
+    "validation/contracts/WP_0_3B_A1_P1_PREEXECUTION_CORRECTION_CONTRACT.json",
+    "validation/evidence/MORONEY2016_EQUATIONS_87_97_GOVERNED_TRANSCRIPTION.json"
+  ],
+  "final_result_only_paths": [
+    "validation/results/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json"
+  ],
+  "output_rules": {
+    "preflight_before_calculation": true,
+    "temporary_file_same_directory": true,
+    "flush_and_fsync": true,
+    "atomic_replace": true,
+    "partial_result_after_failure": false
+  },
+  "claim_ceiling": "Non-protected numerical verification of dimensionless references, synthetic identifiability, and measurement observables only. No experimental espresso extraction validation, WP02 hydraulic validation, runtime extraction coupling, parameter transfer, or physical validation is established."
+}

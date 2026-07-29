@@ -1,0 +1,68 @@
+{
+  "schema_version": "espresso.public.moroney2016_second_order_composite_derivation.v1",
+  "classification": "DERIVED_GOVERNING_ODE_CONSISTENT",
+  "governing_equations": [34, 43, 46, 47, 50, 51, 59, 80, 84, 87, 90, 92, 93, 95],
+  "expansion_order": 2,
+  "dimensionless_representation": "DIMENSIONLESS_EQUIVALENT_WITH_PHYSICAL_TIME_ADAPTER",
+  "time_mapping": {
+    "outer_time": "tau",
+    "physical_time": "time_s=tau*diffusion_time_s",
+    "inner_time": "t=tau/epsilon",
+    "printed_surface_and_diffusion_times_retained_separately": true
+  },
+  "symbolic_derivation": {
+    "equation_80": {
+      "residual_before_simplification": "coefficient(epsilon^2, equation_59) - (-b1*c_h0)",
+      "residual_after_simplification": "0",
+      "derived_term": "-b1*c_h0"
+    },
+    "equations_84_87": {
+      "derived_first_denominator": "2*b2",
+      "initial_condition_residuals": {"c_h0": "0", "c_h1": "0", "c_h2": "0"},
+      "overlap_residual_after_simplification": "0"
+    },
+    "equation_46": {
+      "derived_expression": "C_v1=b1*K2+exp(-tau)*(K3-b1*K1*tau)",
+      "differential_residual_before_simplification": "diff(C_v1,tau)+C_v1-b1*C_h0",
+      "differential_residual_after_simplification": "0",
+      "required_K3_sign": "PLUS"
+    },
+    "outer_Ch2": {
+      "expression": "b1^2*gamma1+b1*b2-exp(-tau)*(0.5*b1^2*gamma1*(tau^2+2*tau+2)+b1*b2*(tau+1)-b2)",
+      "differential_residual_before_simplification": "diff(C_h2,tau)-C_v2+b1*C_h1",
+      "differential_residual_after_simplification": "0",
+      "initial_value": "b2",
+      "long_time_value": "b1^2*gamma1+b1*b2",
+      "equation_34_equilibrium_expansion_residual": "0"
+    },
+    "common_part": {
+      "expression": "(b2+epsilon*b1*gamma1*t+epsilon^2*(-b1*b2*t+b1*b2-0.5*b1*gamma1*t^2))/b2",
+      "inner_outer_matching_residual": "0",
+      "publisher_equation_95_missing_numerator_term": "+epsilon^2*b1*b2"
+    }
+  },
+  "literal_versus_derived_differences": [
+    "equation_80 sign",
+    "equations_84 and 87 first denominator",
+    "equation_46 K3 sign",
+    "outer C_h2 omission",
+    "equation_95 common-part constant omission"
+  ],
+  "software": {
+    "python": "3.12.3",
+    "symbolic_library": "SymPy 1.12"
+  },
+  "verification": {
+    "symbolic_residuals": "PASS",
+    "initial_conditions": "PASS",
+    "matching": "PASS",
+    "equilibrium": "PASS",
+    "implementation_name": "governing_ode_consistent_second_order_composite",
+    "publisher_reproduction_name": "published_truncated_composite"
+  },
+  "deterministic_derivation_sha256": "9de94160945a8544bb5c35277f918383074b501cbddb19475b4e2e7f554c5362",
+  "record_identity": {
+    "hash_basis": "canonical JSON excluding record_identity.record_sha256",
+    "record_sha256": "430fd29f4cb2e0a7f7fb9a937657a09ebf23d5fec3a846ea7a7587a2139523b5"
+  }
+}

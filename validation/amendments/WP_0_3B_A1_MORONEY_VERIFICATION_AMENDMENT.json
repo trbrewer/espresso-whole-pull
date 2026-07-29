@@ -1,0 +1,67 @@
+{
+  "schema_version": "espresso.public.wp_0_3b_a1_moroney_amendment.v1",
+  "task": "WP-0.3B-A1",
+  "classification": [
+    "POST_CANONICAL_NONPROTECTED_VERIFICATION_METHOD_CORRECTION",
+    "SOURCE_TRANSCRIPTION_AND_ALGEBRAIC_DERIVATION",
+    "GOVERNING_ODE_CONSISTENT_COMPOSITE_COMPLETION",
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_OPENFOAM_EXECUTION",
+    "NO_PUCKWORKS_CODE_EXECUTION",
+    "NO_PROTECTED_ACCESS",
+    "NO_RUNTIME_WP02_COUPLING",
+    "NO_SCIENTIFIC_RESULT_CHANGE",
+    "NO_THRESHOLD_RELAXATION"
+  ],
+  "original": {
+    "implementation_commit": "d0180a84bed7a81b62ec43dee02e6150e89c3f21",
+    "implementation_tree": "f12a2e9093274c5693e5bf8803ca6aa10d794a5e",
+    "contract_sha256": "4b05d9a8f7f91dc6e476c9942639524213541d3f887452d4fb369715bc9f89a6",
+    "result_commit": "78356b181fc1d61935721a4d6d7469a7420a5cae",
+    "result_tree": "8423f0e54b49efa9716c3cf3d40063f1b5770c38",
+    "result_sha256": "80d0a91d6456ff1219e74f0503f3e6846c9974b3ed868cff19f6f9da943cde90",
+    "overall_disposition": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",
+    "execution_history_annotation_emitted_by_frozen_runner": false,
+    "historical_artifact_preserved_unchanged": true
+  },
+  "failure": {
+    "gate": "MORONEY_ENDPOINT_REFINEMENT_RATIO",
+    "classification": "ENDPOINT_DIFFERENCES_AT_ROUNDOFF_SCALE",
+    "verification_classification": "VERIFICATION_METRIC_ROUNDOFF_SATURATION",
+    "explanation": "The original ratio is mathematically defined but numerically non-diagnostic because both numerator and denominator are dominated by accumulated binary64 roundoff.",
+    "binary64_ulp_at_endpoint": 2.220446049250313e-16,
+    "fine": {
+      "C_h_at_tau_8": {"0.002": 1.0926248790498152, "0.001": 1.092624879049814, "0.0005": 1.0926248790498108},
+      "D_01": 1.1102230246251565e-15,
+      "D_12": 3.3306690738754696e-15,
+      "ratio": 3.0
+    },
+    "coarse": {
+      "C_h_at_tau_8": {"0.002": 1.0324712849709854, "0.001": 1.03247128497099, "0.0005": 1.0324712849709867},
+      "D_01": 4.6629367034256575e-15,
+      "D_12": 3.3306690738754696e-15,
+      "ratio": 0.7142857142857143
+    },
+    "threshold_changed": false,
+    "implementation_disproved": false,
+    "equations_disproved": false,
+    "protected_information_used": false,
+    "scientific_score_used": false
+  },
+  "execution_history": {
+    "original_failed_pre_output_infrastructure_invocations": 1,
+    "original_completed_canonical_invocations": 1,
+    "amended_completed_canonical_invocations_before_freeze": 0,
+    "openfoam_executions": 0,
+    "puckworks_code_executions": 0,
+    "protected_accesses": 0,
+    "wp02_analyzer_invocations": 0,
+    "scientific_scores": 0
+  },
+  "author_contact": {
+    "recommended": true,
+    "topics": ["equation 46 sign", "equation 80 sign", "equation 84/87 denominator", "outer Ch2 and equation 95 overlap constant"],
+    "required_before_claiming_author_intent": true,
+    "required_to_preserve_literal_publisher_record": false
+  }
+}

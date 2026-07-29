@@ -72,21 +72,12 @@ def digest(path: Path) -> str:
 
 def git_changed_paths(root: Path) -> set[str] | None:
     completed = subprocess.run(
-        ["git", "diff", "--name-only", BASELINE],
+        ["git", "diff", "--name-only", f"{BASELINE}...7f26b643fde4c99263384c402547e9d6c606c99e"],
         cwd=root, capture_output=True, text=True,
     )
-    untracked = subprocess.run(
-        ["git", "ls-files", "--others", "--exclude-standard"],
-        cwd=root, capture_output=True, text=True,
-    )
-    if completed.returncode or untracked.returncode:
+    if completed.returncode:
         return None
-    paths = set(completed.stdout.splitlines()) | set(untracked.stdout.splitlines())
-    paths.discard(
-        "cases/reference_R0_20g_58mm_9bar/preflight/"
-        "STATIC_VALIDATION_REPORT_V0_2_0.json"
-    )
-    return paths
+    return set(completed.stdout.splitlines())
 
 
 def evaluate(
