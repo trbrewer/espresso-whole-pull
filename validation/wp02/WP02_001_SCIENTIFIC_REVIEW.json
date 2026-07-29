@@ -1,0 +1,23 @@
+{
+  "schema_version": "espresso.public.wp02_001_scientific_review.v1",
+  "task": "WP02-001",
+  "prior_scientific_review_disposition": "APPROVE_WITH_REQUIRED_GOVERNANCE_CORRECTIONS",
+  "scientific_review_disposition": "APPROVE",
+  "merge_disposition": "APPROVE_AFTER_REQUIRED_CI_CHECKS_PASS",
+  "findings": {
+    "frozen_gates_predeclared": true,
+    "uniform_fixture": "PASS",
+    "r0_disabled_regression": "PASS",
+    "constant_r1_disabled_regression": "PASS",
+    "endpoint_reconciliation": "PRE_SCORE_FLOATING_POINT_REPRESENTATION_ONLY",
+    "nine_bar_aggregate": "PASS",
+    "eight_bar_aggregate": "PASS",
+    "parameter_fitting_count": 0,
+    "post_result_adjustment_count": 0,
+    "source_linked_and_same_campaign_inference_limit_recorded": true,
+    "physical_validation": "NOT_ESTABLISHED",
+    "scientific_rerun_requested": false
+  },
+  "governance_correction_status": "COMPLETE_LOCALLY; REQUIRED_CI_CHECKS_PENDING",
+  "approval_condition": "Required CI checks pass for the governance correction commit."
+}

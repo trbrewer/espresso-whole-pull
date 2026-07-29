@@ -24,6 +24,7 @@ PUBLIC_METADATA_TOP_LEVEL = {
     "FINAL_PUBLICATION_REVIEW_SUMMARY.json",
     "FINAL_PUBLICATION_REVIEW_SUMMARY.md",
     "NOTICE.md",
+    "PACKAGE_QA_STATUS.json",
     "PUBLICATION_AUDIT.json",
     "PUBLICATION_AUDIT.md",
     "SECURITY.md",
@@ -50,6 +51,7 @@ PUBLIC_DOCUMENTATION_PATHS = {
     "docs/r1/WP01R_004_PUCKWORKS_BRIDGE_AND_CASE.md",
     "docs/r1/WP01R_005_R1_EXECUTION_AND_RESIDUALS.md",
     "docs/validation/R1_CALIBRATION_AND_COMPARISON_CONTRACT.md",
+    "docs/wp02/WP02_001_EFFECTIVE_PERMEABILITY_BRANCH.md",
     "docs/decisions/ADR-0001-PUBLIC_REPOSITORY_TRANSITION.md",
     "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md",
     "docs/strategy/history/espresso_puck_modeling_and_simulation_strategy_v1_3.md",
@@ -181,7 +183,7 @@ def main() -> None:
         raise SystemExit(f"Controlling strategy copy missing: {strategy}")
     aggregate_hash = aggregate(files)
     report = {
-        "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
+        "schema_version": "espresso.whole_pull.source_package_manifest.v0.2.0-dev.1",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "package": root.name,
         "package_version": (root / "VERSION").read_text(encoding="utf-8").strip(),
@@ -189,11 +191,15 @@ def main() -> None:
         "derivation_role": "sanitized public derivative",
         "archival_aggregate_source_sha256": "182f14a036e1fc92db8f40f6025bda164ced32f108368e7aa674abd6b032508e",
         "byte_identical_to_archival_source": False,
-        "governing_physics_change": False,
+        "governing_physics_change": True,
         "scientific_configuration_change": True,
-        "scientific_configuration_change_scope": "NEW_R1_SCENARIO_ONLY",
+        "scientific_configuration_change_scope": (
+            "R1_SCENARIO_AND_WP02_OPTIONAL_SATURATED_"
+            "EFFECTIVE_PERMEABILITY_CLOSURE"
+        ),
         "qualified_R0_scientific_configuration_change": False,
         "new_R1_scientific_configuration_added": True,
+        "historical_R1_change_declaration_preserved": True,
         "source_manifest_self_excluded": True,
         "mode_contract": "canonical Git object modes: 100644, 100755, or 120000",
         "excluded_runtime_patterns": [

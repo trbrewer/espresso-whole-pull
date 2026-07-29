@@ -6,8 +6,7 @@ authors:
   - family-names: "Brewer"
     given-names: "Tim"
 repository-code: "https://github.com/trbrewer/espresso-whole-pull"
-version: "0.1.4-public.1"
-date-released: "2026-07-28"
+version: "0.2.0-dev.1"
 license: "GPL-3.0-or-later"
 keywords:
   - espresso

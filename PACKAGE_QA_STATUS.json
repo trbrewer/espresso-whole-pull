@@ -1,93 +1,36 @@
 {
-  "schema_version": "espresso.whole_pull.package_qa.v0.1.4",
-  "generated_at_utc": "2026-07-27T19:09:11.074268+00:00",
-  "package_version": "0.1.4",
-  "release_role": "WP-0.1F_NO_PHYSICS_CHANGE_FREEZE_FINALIZATION",
+  "schema_version": "espresso.whole_pull.package_qa.v0.2.0-dev.1",
+  "package_development_version": "0.2.0-dev.1",
+  "intended_future_release_version": "0.2.0",
+  "scientific_milestone": "WP-0.2A",
+  "release_role": "WP_0_2A_GOVERNING_PHYSICS_DEVELOPMENT",
   "target": "OpenFOAM Foundation 12",
-  "status": "CONSTRUCTION_AND_MOCK_LIFECYCLE_QA_PASS_TARGET_RUNTIME_PENDING",
-  "completed_checks": {
-    "shell_syntax": {
-      "status": "PASS",
-      "scope": "Allrun, Allverify, Allclean, Allwmake, clean_case.sh, openfoam_env.sh"
-    },
-    "python_bytecode_compilation": {
-      "status": "PASS",
-      "scope": "all scripts and tests"
-    },
-    "python_unit_and_integration_tests": {
-      "status": "PASS",
-      "count": 36
-    },
-    "static_package_gates": {
-      "status": "PASS",
-      "count": 32
-    },
-    "qualified_v0_1_3_no_physics_change_comparisons": {
-      "status": "PASS",
-      "pass": 28,
-      "fail": 0,
-      "total": 28,
-      "governing_physics_change": false
-    },
-    "analytical_reference_math": "PASS",
-    "b0_reduced_twin_mathematics_and_conservation": "PASS",
-    "layered_pressure_discrete_reference": "PASS",
-    "deterministic_case_generation": "PASS",
-    "mock_foundation12_allwmake_and_header_preflight": "PASS",
-    "future_timestamp_normalization": "PASS",
-    "exact_runtime_and_archived_build_provenance_verifier": "PASS",
-    "diagnostic_classification": "PASS",
-    "synthetic_freeze_finalization_and_terminal_manifest_verification": "PASS",
-    "qualification_csv_schema_projection": "PASS",
-    "qualification_runtime_source_manifest_exclusion": "PASS",
-    "clean_state_restoration": "PASS",
-    "absolute_reference_solver_path_binding": {
-      "status": "PASS",
-      "scope": "Allrun fixture/reference and Allverify matrix use the recorded absolute Allrun executable path; PATH lookup is not used"
-    },
-    "qualification_executable_cross_binding": {
-      "status": "PASS",
-      "scope": "terminal finalization compares qualification executable path, byte count, and SHA-256 with reference build provenance"
-    },
-    "portable_archived_executable_contract": {
-      "status": "PASS",
-      "scope": "terminal freeze requires a package-relative byte-identical executable copy under reference preflight"
-    }
+  "governing_physics_change": true,
+  "release_qualification": "NOT_YET_FINALIZED",
+  "current_evidence": {
+    "r0_frozen_regression": "PASS",
+    "constant_r1_frozen_regression": "PASS",
+    "wp02_uniform_fixture": "PASS",
+    "nine_bar_source_linked_reconstruction": "PASS",
+    "eight_bar_same_campaign_no_retuning_comparison": "PASS",
+    "overall_wp02_001_disposition": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
+    "physical_validation": "NOT_ESTABLISHED"
   },
-  "mocked_foundation12_lifecycle": {
-    "status": "PASS",
-    "scope": [
-      "fresh-package Allrun",
-      "ten-run standard Allverify matrix",
-      "9/9 aggregate qualification gates",
-      "post-qualification acceptance and run-status finalization",
-      "terminal freeze-manifest generation",
-      "read-only freeze-manifest verification",
-      "profile-isolated smoke replay without freeze-manifest mutation"
-    ],
-    "terminal_reference_freeze_status": "FROZEN / QUALIFIED",
-    "terminal_bound_artifact_count": 20,
-    "portable_archived_executable_bound": true,
-    "note": "This uses deterministic mock OpenFOAM commands and a synthetic solver-output generator to exercise orchestration and artifact contracts; it is not an OpenFOAM numerical result."
+  "current_repository_checks": {
+    "python_test_count": 117,
+    "static_gate_count": 34,
+    "source_manifest_file_count": 129,
+    "source_manifest_aggregate_sha256": "07e107673e836d0a7bc3f1848e91308bdbdbc46baa67799e2dc5cda6fbd88b69",
+    "historical_baseline_integrity": "PASS",
+    "active_change_contract": "PASS"
   },
-  "controlled_failure_lifecycle": {
-    "status": "PASS",
-    "injected_stage": "fixture_checkMesh",
-    "injected_exit_code": 17,
-    "observed_run_status": "FAIL",
-    "observed_failure_stage": "fixture_checkMesh",
-    "single_machine_readable_status_created": true
+  "historical_baseline": {
+    "package": "v0.1.4-public.1",
+    "role": "IMMUTABLE_SANITIZED_PUBLIC_R0_BASELINE",
+    "reference_status": "FROZEN / QUALIFIED",
+    "governing_physics_change": false,
+    "physical_validation": "NOT_ESTABLISHED",
+    "evidence_relabelled_as_v0_2_0": false
   },
-  "bundled_target_evidence": {
-    "v0_1_3_reference_execution": "PASS_HISTORICAL_EVIDENCE",
-    "v0_1_3_standard_qualification": "PASS_10_RUNS_9_OF_9_AGGREGATE_GATES",
-    "use_in_v0_1_4": "regression and no-governing-physics-change contract only"
-  },
-  "target_runtime_status": {
-    "v0_1_4_Allrun": "PENDING_TARGET_EXECUTION",
-    "v0_1_4_standard_Allverify": "PENDING_TARGET_EXECUTION",
-    "v0_1_4_terminal_freeze_manifest": "PENDING_TARGET_EXECUTION"
-  },
-  "archive_verification_note": "ZIP integrity, fixed timestamps, path safety, source-manifest verification after extraction, and executable permissions are checked by the delivery process after the final archive is created; the ZIP hash cannot be embedded in its own contents without circularity.",
-  "claim_ceiling": "No-governing-physics-change freeze-finalization source package. A target-system Allrun plus standard Allverify is required before FROZEN / QUALIFIED. Independent physical validation is not established."
+  "claim_ceiling": "WP02-001 is a source-linked multipressure reconstruction result. The 8-bar comparison is same-campaign and not independent validation. Physical validation remains NOT_ESTABLISHED."
 }

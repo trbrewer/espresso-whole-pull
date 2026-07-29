@@ -30,6 +30,12 @@ REFERENCE_CONFIG_RELATIVE = Path("config/reference_R0.json")
 R1_TASK = "WP01R-004"
 R1_MANIFEST_NAME = "WP01R_004_GENERATED_CASE_MANIFEST.json"
 R1_CONFIG_RELATIVE = Path("config/reconstruction_R1_waszkiewicz_9bar.json")
+WP02_TASK = "WP02-001"
+WP02_CONFIG_RELATIVES = {
+    Path("config/reconstruction_WP02A_waszkiewicz_9bar.json"),
+    Path("config/reconstruction_WP02A_waszkiewicz_8bar.json"),
+    Path("config/fixture_WP02_001_uniform_pressure.json"),
+}
 
 
 def sha256(path: Path) -> str:
@@ -156,6 +162,11 @@ def render_control_dict(scenario: dict) -> str:
     start_value = time_cfg["start_s"] if r1 else time_cfg.get("start_s", 0.0)
     compression = "on" if bool(compression_value) else "off"
     write_format = str(format_value)
+    write_precision = (
+        int(output_cfg["write_precision_digits"])
+        if is_wp02_uniform_fixture(scenario)
+        else 10
+    )
     return f'''FoamFile
 {{
     version     2.0;
@@ -176,7 +187,7 @@ writeControl    runTime;
 writeInterval   {float(time_cfg['field_write_interval_s']):.16g};
 purgeWrite      0;
 writeFormat     {write_format};
-writePrecision  10;
+writePrecision  {write_precision};
 writeCompression {compression};
 timeFormat      general;
 timePrecision   12;
@@ -216,6 +227,28 @@ def render_properties(scenario: dict) -> str:
         ]
     axial_dx = float(bed["bed_depth_m"]) / int(geometry["axial_cells"])
     smoothing = float(wetting["front_smoothing_cells"]) * axial_dx
+    closure = scenario.get("effective_permeability_evolution")
+    closure_dictionary = ""
+    if closure is not None:
+        source = closure["source_parameters"]
+        closure_dictionary = f'''
+effectivePermeabilityEvolution
+{{
+    enabled true;
+    model waszkiewiczSaturatedDissolutionIndexed;
+    sourceReferencePressureBar {float(closure["source_reference_pressure_bar"]):.16g};
+    sourcePcBar {float(source["pc_bar"]):.16g};
+    sourceQcGPerS {float(source["qc_g_per_s"]):.16g};
+    sourceKSolidsG {float(source["k_solids_g"]):.16g};
+    sourceLSolidsS {float(source["l_solids_s"]):.16g};
+    sourceMSolidsS {float(source["m_solids_s"]):.16g};
+    sourceDoseG {float(source["dose_g"]):.16g};
+    sourceToSolverOffsetS {float(closure["source_to_solver_offset_s"]):.16g};
+    sourceValidityStartS {float(closure["source_validity_start_s"]):.16g};
+    minimumMultiplier {float(closure["minimum_effective_multiplier"]):.16g};
+    maximumMultiplier {float(closure["maximum_effective_multiplier"]):.16g};
+}}
+'''
     return f'''FoamFile
 {{
     version     2.0;
@@ -270,6 +303,7 @@ extractionRateConstant     {float(extraction['rate_constant_1_s']):.16g};
 saturationConcentration    {float(extraction['saturation_concentration_kg_m3']):.16g};
 
 targetBeverageMass         {float(time_cfg['target_beverage_mass_kg']):.16g};
+{closure_dictionary}
 '''
 
 
@@ -313,7 +347,15 @@ def canonical_json(value: object) -> str:
 
 
 def is_r1_scenario(scenario: dict) -> bool:
-    return scenario.get("governance", {}).get("task") == R1_TASK
+    return scenario.get("governance", {}).get("task") in {R1_TASK, WP02_TASK}
+
+
+def is_wp02_scenario(scenario: dict) -> bool:
+    return scenario.get("governance", {}).get("task") == WP02_TASK
+
+
+def is_wp02_uniform_fixture(scenario: dict) -> bool:
+    return scenario.get("scenario_id") == "fixture_WP02_001_uniform_pressure"
 
 
 def validate_r1_scenario(scenario: dict, nprocs: int) -> None:
@@ -341,13 +383,18 @@ def validate_r1_scenario(scenario: dict, nprocs: int) -> None:
         ("output", "write_format"),
         ("output", "write_compression"),
         ("wetting", "initial_wet_front_m"),
-        ("flow_comparison_contract", "primary_predicted_quantity"),
-        ("flow_comparison_contract", "protected_shot_ids"),
-        ("flow_comparison_contract", "protected_indices"),
-        ("flow_comparison_contract", "normalization_indices"),
-        ("flow_comparison_contract", "gates"),
-        ("flow_comparison_contract", "pearson_degeneracy"),
     ]
+    if not is_wp02_uniform_fixture(scenario):
+        required.extend(
+            [
+                ("flow_comparison_contract", "primary_predicted_quantity"),
+                ("flow_comparison_contract", "protected_shot_ids"),
+                ("flow_comparison_contract", "protected_indices"),
+                ("flow_comparison_contract", "normalization_indices"),
+                ("flow_comparison_contract", "gates"),
+                ("flow_comparison_contract", "pearson_degeneracy"),
+            ]
+        )
     for section, key in required:
         if section not in scenario or key not in scenario[section]:
             raise SystemExit(f"incomplete R1 scientific configuration: /{section}/{key}")
@@ -374,6 +421,43 @@ def validate_r1_scenario(scenario: dict, nprocs: int) -> None:
                     f"/verification/pressure_probes/{index}/{key}"
                 )
     governance = scenario["governance"]
+    if is_wp02_scenario(scenario):
+        closure = scenario.get("effective_permeability_evolution")
+        if not isinstance(closure, dict) or closure.get("enabled") is not True:
+            raise SystemExit("WP02 requires enabled effective-permeability closure")
+        if closure.get("model") != "waszkiewiczSaturatedDissolutionIndexed":
+            raise SystemExit("unsupported WP02 closure model")
+        if profile["type"] != "uniform":
+            raise SystemExit("WP02 closure requires uniform permeability")
+        required_closure = (
+            "source_reference_pressure_bar",
+            "source_parameters",
+            "source_to_solver_offset_s",
+            "source_validity_start_s",
+            "minimum_effective_multiplier",
+            "maximum_effective_multiplier",
+            "fixed_8s_offset_used",
+        )
+        if any(key not in closure for key in required_closure):
+            raise SystemExit("incomplete WP02 closure configuration")
+        if closure["fixed_8s_offset_used"] is not False:
+            raise SystemExit("source fixed 8 s offset cannot enter WP02 mapping")
+        if nprocs != scenario["parallel"]["default_subdomains"]:
+            raise SystemExit("WP02 nprocs must equal frozen rank count")
+        if is_wp02_uniform_fixture(scenario):
+            if nprocs != 1 or "flow_comparison_contract" in scenario:
+                raise SystemExit("invalid WP02 uniform fixture")
+            output = scenario["output"]
+            precision = output.get("write_precision_digits")
+            if (
+                isinstance(precision, bool)
+                or not isinstance(precision, int)
+                or precision != 17
+                or output.get("write_format") != "ascii"
+                or output.get("write_compression") is not False
+            ):
+                raise SystemExit("invalid WP02 uniform fixture output serialization")
+        return
     if governance.get("change_scope") != "SOURCE_SCENARIO_CHANGE_ONLY":
         raise SystemExit("R1 change scope is not SOURCE_SCENARIO_CHANGE_ONLY")
     if governance.get("governing_physics_change") is not False:
@@ -393,6 +477,27 @@ def validate_r1_scenario(scenario: dict, nprocs: int) -> None:
 
 
 def require_canonical_r1(root: Path, config_path: Path, scenario: dict) -> None:
+    if is_wp02_scenario(scenario):
+        allowed = {(root / path).resolve() for path in WP02_CONFIG_RELATIVES}
+        if config_path not in allowed:
+            raise SystemExit("WP02 requires an exact canonical configuration")
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(root / "scripts/wp02_contract_bridge.py"),
+                "--root",
+                str(root),
+                "--check",
+            ],
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode:
+            raise SystemExit("canonical WP02 bridge check failed")
+        expected = json.loads(config_path.read_text(encoding="utf-8"))
+        if scenario != expected:
+            raise SystemExit("WP02 scenario differs from canonical bytes")
+        return
     canonical_path = (root / R1_CONFIG_RELATIVE).resolve()
     if config_path != canonical_path:
         raise SystemExit(f"R1 requires exact canonical config {R1_CONFIG_RELATIVE}")
@@ -438,7 +543,7 @@ def require_fresh_r1_target(root: Path, case: Path) -> None:
     forbidden = [
         root,
         root / REFERENCE_CASE_RELATIVE,
-        root / "cases/fixture_layered_pressure",
+        root / "cases/fixture_layered_pressure_v0_1_4",
         root / "config",
         root / "solver",
         root / "validation",
@@ -477,10 +582,15 @@ def write_r1_manifest(
     puckworks_lock = json.loads(
         (root / "dependencies/puckworks.lock.json").read_text(encoding="utf-8")
     )
-    provenance_source = root / "validation/r1/WP01R_004_INPUT_PROVENANCE.json"
+    wp02 = is_wp02_scenario(scenario)
+    provenance_source = (
+        root / "validation/wp02/WP02_001_CLOSURE_CONTRACT.json"
+        if wp02
+        else root / "validation/r1/WP01R_004_INPUT_PROVENANCE.json"
+    )
     governance_dir = case / "governance"
     governance_dir.mkdir(parents=True, exist_ok=True)
-    provenance_target = governance_dir / "WP01R_004_INPUT_PROVENANCE.json"
+    provenance_target = governance_dir / provenance_source.name
     shutil.copy2(provenance_source, provenance_target)
 
     governed_relatives = [
@@ -493,7 +603,7 @@ def write_r1_manifest(
         "system/decomposeParDict",
         "system/fvSchemes",
         "system/fvSolution",
-        "governance/WP01R_004_INPUT_PROVENANCE.json",
+        f"governance/{provenance_source.name}",
     ]
     governed_relatives.extend(
         f"0.orig/{path.name}" for path in sorted((case / "0.orig").iterdir())
@@ -519,6 +629,15 @@ def write_r1_manifest(
         "generated_case/constant/espressoModelProperties": case
         / "constant/espressoModelProperties",
     }
+    if wp02:
+        scientific_paths.update(
+            {
+                "validation/wp02/WP02_001_CLOSURE_CONTRACT.json": provenance_source,
+                "scripts/waszkiewicz_effective_permeability.py": root
+                / "scripts/waszkiewicz_effective_permeability.py",
+                "scripts/wp02_reference_math.py": root / "scripts/wp02_reference_math.py",
+            }
+        )
     scientific_paths.update(
         {
             f"generated_case/0.orig/{path.name}": path
@@ -543,18 +662,53 @@ def write_r1_manifest(
         }
     )
     manifest = {
-        "schema_version": "espresso.public.wp01r_004_generated_case_manifest.v1",
-        "task": "WP01R-004",
-        "github_issue": 6,
-        "change_scope": "SOURCE_SCENARIO_CHANGE_ONLY",
-        "governing_physics_change": False,
+        "schema_version": (
+            "espresso.public.wp02_001_generated_case_manifest.v1"
+            if wp02
+            else "espresso.public.wp01r_004_generated_case_manifest.v1"
+        ),
+        "task": "WP02-001" if wp02 else "WP01R-004",
+        "github_issue": 18 if wp02 else 6,
+        "change_scope": "GOVERNING_PHYSICS_CHANGE" if wp02 else "SOURCE_SCENARIO_CHANGE_ONLY",
+        "governing_physics_change": wp02,
+        "case_role": (
+            "UNIFORM_PRESSURE_VERIFICATION_FIXTURE"
+            if is_wp02_uniform_fixture(scenario)
+            else "SCIENTIFIC_RECONSTRUCTION"
+        ),
+        "protected_source_present": False if is_wp02_uniform_fixture(scenario) else None,
+        "physical_validation": (
+            "NOT_APPLICABLE" if is_wp02_uniform_fixture(scenario) else "NOT_ESTABLISHED"
+        ),
+        "fixture_output_serialization": (
+            {
+                "write_format": scenario["output"]["write_format"],
+                "write_precision_digits": scenario["output"][
+                    "write_precision_digits"
+                ],
+                "write_compression": scenario["output"]["write_compression"],
+            }
+            if is_wp02_uniform_fixture(scenario)
+            else None
+        ),
         "package_scientific_configuration_change": True,
         "scientific_configuration_change_scope": "NEW_R1_SCENARIO_ONLY",
         "qualified_R0_scientific_configuration_change": False,
         "new_R1_scientific_configuration_added": True,
         "bridge": {
-            "path": "scripts/r1_contract_bridge.py",
-            "sha256": sha256(root / "scripts/r1_contract_bridge.py"),
+            "path": (
+                "scripts/wp02_contract_bridge.py"
+                if wp02
+                else "scripts/r1_contract_bridge.py"
+            ),
+            "sha256": sha256(
+                root
+                / (
+                    "scripts/wp02_contract_bridge.py"
+                    if wp02
+                    else "scripts/r1_contract_bridge.py"
+                )
+            ),
         },
         "canonical_scenario": {
             "path": config_path.relative_to(root).as_posix(),
@@ -595,13 +749,21 @@ def write_r1_manifest(
             "cross_directory_byte_identity_result": "NOT_PERFORMED_IN_THIS_INVOCATION",
         },
         "generator_determinism_qualification": {
-            "qualification_kind": "WP01R_004_TWO_DIRECTORY_REPLAY",
+            "qualification_kind": (
+                "WP02_001_UNIFORM_FIXTURE_TWO_DIRECTORY_REPLAY"
+                if is_wp02_uniform_fixture(scenario)
+                else "WP01R_004_TWO_DIRECTORY_REPLAY"
+            ),
             "qualified_generator_path": "scripts/prepare_case.py",
             "qualified_generator_sha256": sha256(root / "scripts/prepare_case.py"),
             "replay_count": 2,
             "cross_directory_byte_identity_result": "PASS",
             "qualification_test": (
-                "tests/test_r1_bridge.py::R1BridgeTests::"
+                "tests/test_wp02_effective_permeability.py::"
+                "WP02EffectivePermeabilityTests::"
+                "test_uniform_fixture_two_directory_generation_is_identical"
+                if is_wp02_uniform_fixture(scenario)
+                else "tests/test_r1_bridge.py::R1BridgeTests::"
                 "test_two_generations_have_identical_governed_bytes"
             ),
         },
@@ -626,7 +788,9 @@ def write_r1_manifest(
             "logical_path_separator": "/",
         },
     }
-    output = case / R1_MANIFEST_NAME
+    output = case / (
+        "WP02_001_GENERATED_CASE_MANIFEST.json" if wp02 else R1_MANIFEST_NAME
+    )
     output.write_text(canonical_json(manifest), encoding="utf-8")
     return output
 
@@ -649,9 +813,9 @@ def main() -> None:
     )
     if r1:
         if args.config is None:
-            raise SystemExit("R1 generation requires explicit --config")
+            raise SystemExit("governed generation requires explicit --config")
         if args.case_dir is None:
-            raise SystemExit("R1 generation requires explicit --case-dir")
+            raise SystemExit("governed generation requires explicit --case-dir")
         case_candidate = (
             args.case_dir
             if args.case_dir.is_absolute()
@@ -693,16 +857,22 @@ def main() -> None:
     preflight_dir.mkdir(parents=True, exist_ok=True)
     preview = analytical_preview(scenario)
     if r1:
-        preview["notes"] = [
-            (
-                "The R1 uniform permeability is the frozen WP01R-003 "
-                "source-linked deterministic analytical inversion."
-            ),
-            (
-                "It was not fitted to OpenFOAM output, is not adjustable during "
-                "generation or execution, and does not establish physical validation."
-            ),
-        ]
+        if is_wp02_scenario(scenario):
+            preview["notes"] = [
+                "The base uniform permeability is the frozen source-linked deterministic analytical inversion.",
+                "The optional saturated multiplier was not fitted to OpenFOAM output and does not establish physical validation.",
+            ]
+        else:
+            preview["notes"] = [
+                (
+                    "The R1 uniform permeability is the frozen WP01R-003 "
+                    "source-linked deterministic analytical inversion."
+                ),
+                (
+                    "It was not fitted to OpenFOAM output, is not adjustable during "
+                    "generation or execution, and does not establish physical validation."
+                ),
+            ]
     (preflight_dir / "ANALYTICAL_PREFLIGHT_V0_1_4.json").write_text(
         canonical_json(preview) if r1 else json.dumps(preview, indent=2) + "\n",
         encoding="utf-8",
