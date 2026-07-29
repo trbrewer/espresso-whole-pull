@@ -12,6 +12,9 @@ from pathlib import Path
 DEFAULT_CONTRACT = Path(
     "validation/wp02/WP_0_2F_RELEASE_FINALIZATION_CONTRACT.json"
 )
+POST_RELEASE_RECORD = Path(
+    "validation/release/WP_0_2G_POST_RELEASE_STATE_RECONCILIATION.json"
+)
 
 
 def digest(path: Path) -> str:
@@ -77,6 +80,11 @@ def verify(root: Path, declaration_path: Path | None = None) -> dict:
     paths = changed_paths(root, contract["baseline"]["merge_commit"])
     allowed = set(contract["allowed_changed_paths"])
     prefixes = tuple(contract["allowed_changed_path_prefixes"])
+    post_release_record = None
+    post_release_path = root / POST_RELEASE_RECORD
+    if post_release_path.is_file():
+        post_release_record = json.loads(post_release_path.read_text())
+        allowed.update(post_release_record["allowed_post_release_changed_paths"])
     path_boundary = paths is None or all(
         path in allowed or path.startswith(prefixes) for path in paths
     )
@@ -115,6 +123,39 @@ def verify(root: Path, declaration_path: Path | None = None) -> dict:
         and contract["governed_scientific_solver_reruns_allowed"] is False
         and contract["scientific_score_recalculation_allowed"] is False
         and contract["governing_physics_change_allowed"] is False,
+        "post_release_state_reconciled": post_release_record is None
+        or (
+            post_release_record["classification"]
+            == [
+                "POST_RELEASE_DOCUMENTATION_AND_PROVENANCE_ONLY",
+                "NO_GOVERNING_PHYSICS_CHANGE",
+                "NO_SCIENTIFIC_RESULT_CHANGE",
+            ]
+            and post_release_record["release"]["tag"] == "v0.2.0"
+            and post_release_record["release"]["tag_target"]
+            == "6e6b35b0fc6747f805223ce7975a0865835f01f0"
+            and post_release_record["immutable_identities"][
+                "scientific_result_sha256"
+            ]
+            == immutable["scientific_result_sha256"]
+            and post_release_record[
+                "tagged_tree_contains_prepublication_status_snapshot"
+            ]
+            is True
+            and post_release_record[
+                "final_publication_state_is_bound_by_release_asset_manifest"
+            ]
+            is True
+            and post_release_record["tag_changed"] is False
+            and post_release_record["release_assets_changed"] is False
+            and post_release_record["scientific_records_changed"] is False
+            and post_release_record["protected_accesses_added"] == 0
+            and post_release_record["analyzer_invocations_added"] == 0
+            and post_release_record["governed_solver_executions_added"] == 0
+            and post_release_record["score_recalculations_added"] == 0
+            and post_release_record["fitting_or_retuning"] is False
+            and post_release_record["physical_validation"] == "NOT_ESTABLISHED"
+        ),
         "changed_path_boundary": path_boundary,
     }
     passed = all(checks.values())

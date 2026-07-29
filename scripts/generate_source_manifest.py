@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Dict, Iterable
 
 MANIFEST_NAME = "SOURCE_PACKAGE_MANIFEST.json"
-STRATEGY_RELATIVE = "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_3.md"
+STRATEGY_RELATIVE = "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md"
 PUBLIC_METADATA_TOP_LEVEL = {
     ".editorconfig",
     ".gitattributes",

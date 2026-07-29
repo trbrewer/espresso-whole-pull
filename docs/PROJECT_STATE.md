@@ -1,9 +1,10 @@
 # Project State
 
-- Current release candidate: `0.2.0`, milestone `WP-0.2F`
+- Current released version: `v0.2.0`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 131/131 PASS
+- Public source verification: 132/132 PASS (current main)
+- Published v0.2.0 source verification: 131/131 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
 - Governed R1 scenario present: true
@@ -11,7 +12,8 @@
 - Governing-physics change in WP01R-005: false
 - Governing-physics change in WP02-001: true
 - WP02 optional closure added: true
-- Release qualification: `FINALIZATION_IN_PROGRESS`
+- Release qualification: `PASS`
+- Release disposition: `SOFTWARE_AND_SOURCE_LINKED_RECONSTRUCTION_RELEASE_PASS`
 - R0 claim ceiling: `NUMERICALLY_QUALIFIED_CALIBRATION_BASELINE`
 - Physical validation: `NOT_ESTABLISHED`
 - OpenFOAM target: Foundation 12
@@ -27,12 +29,13 @@ passed; the protected flow-shape gate failed and exactly reproduced the
 preliminary PR #16 disposition. R0 remains frozen and unchanged. Physical
 validation is `NOT_ESTABLISHED`.
 
-WP01R-006 selected the Waszkiewicz saturated dissolution-indexed
+WP-0.2F successfully published v0.2.0. WP01R-006 selected the Waszkiewicz saturated dissolution-indexed
 effective-permeability branch for WP-0.2A. WP02-001 implemented and tested it,
 merged through PR #20, and is scientifically closed. WP-0.2F release
-finalization is the immediate task. Independent physical validation has not
-started. Machine/headspace coupling remains a later runner-up subject to
-holdout evidence and mechanism discrimination.
+finalization is complete. WP-0.3A independent holdout and
+mechanism-discrimination contracting is next. Independent physical validation
+has not started. Machine/headspace coupling remains a later runner-up subject
+to holdout evidence and mechanism discrimination.
 
 WP02-001 added the optional saturated dissolution-indexed effective-permeability
 closure. Its corrected uniform fixture, disabled R0 regression, and disabled

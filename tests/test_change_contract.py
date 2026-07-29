@@ -65,6 +65,34 @@ class ChangeContractRoutingTests(unittest.TestCase):
             finally:
                 temporary.cleanup()
 
+    def test_post_release_record_preserves_published_release_boundary(self) -> None:
+        report = verify_release(ROOT)
+        self.assertEqual(report["status"], "PASS")
+        self.assertEqual(
+            report["checks"]["post_release_state_reconciled"]["status"], "PASS"
+        )
+
+    def test_post_release_record_rejects_tag_or_scientific_identity_change(self) -> None:
+        for key_path, replacement in (
+            (("release", "tag_target"), "0" * 40),
+            (
+                ("immutable_identities", "scientific_result_sha256"),
+                "0" * 64,
+            ),
+        ):
+            temporary, root = self.copy_root()
+            try:
+                path = (
+                    root
+                    / "validation/release/WP_0_2G_POST_RELEASE_STATE_RECONCILIATION.json"
+                )
+                value = json.loads(path.read_text())
+                value[key_path[0]][key_path[1]] = replacement
+                path.write_text(json.dumps(value))
+                self.assertEqual(verify_release(root)["status"], "FAIL")
+            finally:
+                temporary.cleanup()
+
     def test_governing_change_fails_with_v0_1_4_active_version(self) -> None:
         temporary, root = self.copy_root()
         try:

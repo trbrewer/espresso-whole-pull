@@ -5,7 +5,7 @@
   "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION",
   "target": "OpenFOAM Foundation 12",
   "governing_physics_change_after_baseline": false,
-  "release_qualification": "PASS_PENDING_PR_MERGE_AND_POST_MERGE_TAG",
+  "release_qualification": "PASS",
   "scientific_result": {
     "sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
     "overall_disposition": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
@@ -30,5 +30,14 @@
   },
   "executed_scientific_solver_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
   "release_executable_sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
+  "final_disposition": "SOFTWARE_AND_SOURCE_LINKED_RECONSTRUCTION_RELEASE_PASS",
+  "published_release": {
+    "tag": "v0.2.0",
+    "merge_commit": "6e6b35b0fc6747f805223ce7975a0865835f01f0",
+    "url": "https://github.com/trbrewer/espresso-whole-pull/releases/tag/v0.2.0",
+    "asset_count": 10,
+    "final_terminal_manifest_sha256": "fe4c64af5cbb859793bdc0170ef1674b7584effce0f26a2b40836f3d247d3550"
+  },
+  "next_scientific_milestone": "WP-0.3A_INDEPENDENT_HOLDOUT_AND_MECHANISM_DISCRIMINATION_CONTRACT",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }
