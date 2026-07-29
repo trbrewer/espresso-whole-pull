@@ -157,8 +157,12 @@ def verify(root):
         "derivation": sha(root/"validation/evidence/MORONEY2016_SECOND_ORDER_COMPOSITE_DERIVATION.json")}
     expected = None
     if result is not None:
-        parent = subprocess.run(["git", "rev-parse", "HEAD^"], cwd=root,
-                                text=True, capture_output=True,
+        result_commit = subprocess.run(
+            ["git", "log", "--diff-filter=A", "--format=%H", "-1", "--",
+             RESULT_PATH], cwd=root, text=True, capture_output=True,
+            check=True).stdout.strip()
+        parent = subprocess.run(["git", "rev-parse", result_commit+"^"],
+                                cwd=root, text=True, capture_output=True,
                                 check=True).stdout.strip()
         tree = subprocess.run(["git", "rev-parse", parent+"^{tree}"], cwd=root,
                               text=True, capture_output=True,
