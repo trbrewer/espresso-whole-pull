@@ -106,3 +106,8 @@ measurement kernels. Its dedicated fixed-path verifier rejects solver, case,
 configuration, trace, WP02-result, closure-contract, and dependency-lock
 changes. Canonical reference execution is distinct from OpenFOAM scientific
 execution and cannot establish physical validation.
+
+The canonical WP-0.3B result is
+`NONPROTECTED_REFERENCE_VERIFICATION_FAIL`: Moroney conservation and
+equilibrium checks passed, but its predeclared refinement-ratio gate failed.
+No threshold was changed after execution.
