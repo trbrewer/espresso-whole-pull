@@ -1,0 +1,28 @@
+{
+  "schema_version": "espresso.public.wp_0_3b_a1_p1_preexecution_correction.v1",
+  "task": "WP-0.3B-A1-P1",
+  "classification": [
+    "PREEXECUTION_SOFTWARE_AND_GOVERNANCE_CORRECTION",
+    "NO_THRESHOLD_RELAXATION",
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_OPENFOAM_EXECUTION",
+    "NO_PUCKWORKS_CODE_EXECUTION",
+    "NO_PROTECTED_ACCESS",
+    "NO_RUNTIME_WP02_COUPLING",
+    "NO_SCIENTIFIC_RESULT_CHANGE"
+  ],
+  "baseline_commit": "32da9010e555887d7aab8231ee827df9bcaabfce",
+  "baseline_tree": "f1006bc3c1387644d852d59f9c1926c48ee7e0c8",
+  "reason": "Correct generated-path handling, restore historical runner reachability, complete amended-result gates, correct observable uncertainty, and retain Python 3.8 portability before canonical execution.",
+  "execution_counts_before_p1_freeze": {
+    "amended_canonical": 0,
+    "openfoam": 0,
+    "puckworks_code": 0,
+    "protected_access": 0,
+    "wp02_analyzer": 0,
+    "scientific_scores": 0
+  },
+  "threshold_changed": false,
+  "scientific_result_changed": false,
+  "physical_validation": "NOT_ESTABLISHED"
+}

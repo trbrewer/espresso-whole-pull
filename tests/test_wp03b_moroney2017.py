@@ -63,4 +63,13 @@ class TestMoroney(unittest.TestCase):
         with self.assertRaises(ValueError):m.derivative((-1,0,1),m.FINE)
         with self.assertRaises(ValueError):m.solve(m.FINE,-1,.1)
 
+    def test_portable_ulp(self):
+        self.assertEqual(m.portable_ulp(0.0), 2.0**-1074)
+        self.assertEqual(m.portable_ulp(1.0), 2.0**-52)
+        self.assertEqual(m.portable_ulp(-1.0), 2.0**-52)
+        with self.assertRaises(ValueError): m.portable_ulp(float("inf"))
+        if hasattr(math, "ulp"):
+            for value in (0.0, 1e-300, .125, 1.0, 1.092624879):
+                self.assertEqual(m.portable_ulp(value), math.ulp(value))
+
 if __name__=="__main__":unittest.main()

@@ -33,6 +33,17 @@ FINE = Parameters("FINE_JK_DRIP", 0.028, 5.239, 2.897, 0.70, 1.184, 42.231)
 COARSE = Parameters("COARSE_CIMBALI_20", 0.071, 1.99, 1.35, 0.50, 19.389, 270.493)
 
 
+def portable_ulp(value):
+    """Return binary64 ULP without requiring math.ulp (Python 3.8)."""
+    if not math.isfinite(value):
+        raise ValueError("ULP input must be finite")
+    value = abs(float(value))
+    if value == 0.0 or value < 2.0**-1022:
+        return 2.0**-1074
+    exponent = math.frexp(value)[1]
+    return 2.0**(exponent-53)
+
+
 def derivative(state, p: Parameters):
     """Return d(C_h,C_v,Psi_s)/d(tau), all dimensionless."""
     ch, cv, psi = state
@@ -140,7 +151,7 @@ def trajectory_refinement(traces):
             component12[j] = max(component12[j], abs(middle[j+1]-fine[j+1]))
             finest_scale = max(finest_scale, abs(fine[j+1]))
     d01, d12 = max(component01), max(component12)
-    floor = 4096.0 * math.ulp(finest_scale)
+    floor = 4096.0 * portable_ulp(finest_scale)
     ratio = d12/d01
     return {
         "D_01": d01, "D_12": d12, "refinement_ratio": ratio,

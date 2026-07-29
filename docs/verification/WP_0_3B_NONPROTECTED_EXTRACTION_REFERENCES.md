@@ -41,3 +41,18 @@ recommended before any claim about intended wording.
 This commit freezes transcription, derivation, implementation, tests, and the
 amended contract only. It contains no amended canonical result and authorizes
 no OpenFOAM, Puckworks, protected-data, or WP02 execution.
+
+### P1 pre-execution continuation
+
+WP-0.3B-A1-P1 supersedes the execution boundary prepared at Commit 3A while
+preserving Commit 3A as the transcription-and-derivation checkpoint. P1
+restores the independently callable historical result builder, separates the
+comprehensive amended builder, corrects the observable Jacobian uncertainties,
+retains Python 3.8 grammar, and recognizes only the exact untracked static
+validation report as generated infrastructure.
+
+The P1 boundary has two explicit states. Before execution it reports
+`PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT`; a separate CI gate continues
+to block merge. After the one authorized execution it must validate the
+result’s complete contents and report
+`AMENDED_CANONICAL_RESULT_PRESENT_AND_VERIFIED`.

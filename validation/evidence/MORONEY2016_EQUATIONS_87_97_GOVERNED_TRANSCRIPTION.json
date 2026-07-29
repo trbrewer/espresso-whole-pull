@@ -2,7 +2,10 @@
   "schema_version": "espresso.public.moroney2016_equations_87_97_transcription.v1",
   "article": "Coffee extraction kinetics in a well mixed system",
   "doi": "10.1186/s13362-016-0024-6",
-  "source_representation": "PUBLISHER_HTML_MACHINE_READABLE_TEX_PLUS_VISUAL_PDF_CROSSCHECK",
+  "source_representation": "EUROPE_PMC_JATS_MATHML_PLUS_OFFICIAL_SPRINGER_PDF_VISUAL_CROSSCHECK",
+  "machine_readable_equation_source": "EUROPE_PMC_JATS_MATHML",
+  "visual_authority": "OFFICIAL_SPRINGER_PDF",
+  "official_article_landing_page": "SPRINGER",
   "author_source_latex_obtained": false,
   "ocr_equation_transcription_used": false,
   "official_publisher_pdf_sha256": "7fa1bf674eaf8329a8d58e779d1b89a27a88c69340129c2d675744a658085286",
@@ -75,6 +78,6 @@
   },
   "record_identity": {
     "hash_basis": "canonical JSON excluding record_identity.record_sha256",
-    "record_sha256": "04fcd81c08e51f118c8bdffe174949fd471a0dcb59d3f2042e67d4936bd37300"
+    "record_sha256": "f8e3abb6e4be3742796ff62f6d6c707ad2bdb2eb5346655e1429dcc42d7b36ef"
   }
 }

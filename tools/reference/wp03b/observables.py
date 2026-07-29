@@ -1,6 +1,7 @@
 """Measurement schemas and mass-balance kernels; not extraction physics."""
 from dataclasses import dataclass
 import math
+from typing import Optional
 
 METHODS = {
     "REFRACTOMETRIC", "GRAVIMETRIC_DRY_DOWN",
@@ -19,15 +20,15 @@ class TDSMeasurement:
     reported_basis: str
     uncertainty: float
     source_scope: str
-    optical_wavelength_nm: float | None = None
-    sample_temperature_K: float | None = None
-    temperature_compensation: str | None = None
-    zeroing_medium: str | None = None
-    calibrant: str | None = None
-    calibration_standard: str | None = None
-    dilution_basis: str | None = None
-    filtration_or_centrifugation: str | None = None
-    freeze_thaw_status: str | None = None
+    optical_wavelength_nm: Optional[float] = None
+    sample_temperature_K: Optional[float] = None
+    temperature_compensation: Optional[str] = None
+    zeroing_medium: Optional[str] = None
+    calibrant: Optional[str] = None
+    calibration_standard: Optional[str] = None
+    dilution_basis: Optional[str] = None
+    filtration_or_centrifugation: Optional[str] = None
+    freeze_thaw_status: Optional[str] = None
 
     def __post_init__(self):
         if self.method_id not in METHODS or not self.reported_basis or not self.source_scope:
@@ -39,7 +40,8 @@ class TDSMeasurement:
                         self.sample_temperature_K, self.temperature_compensation,
                         self.zeroing_medium, self.calibrant,
                         self.calibration_standard, self.dilution_basis,
-                        self.filtration_or_centrifugation)
+                        self.filtration_or_centrifugation,
+                        self.optical_wavelength_nm, self.freeze_thaw_status)
             if any(x is None or x == "" for x in required):
                 raise ValueError("complete refractometric metadata or explicit UNAVAILABLE required")
 
@@ -49,7 +51,7 @@ class EYConvention:
     definition_id: str
     tds_method_id: str
     mass_or_volume_basis: str
-    density_kg_m3: float | None
+    density_kg_m3: Optional[float]
     dry_dose_basis: str
     retained_liquid_correction: bool
     volatile_loss_correction: bool
@@ -85,6 +87,7 @@ class RetainedLiquidDryingObservation:
     dry_spent_uncertainty_kg: float = 0.0
     volatile_loss_uncertainty_kg: float = 0.0
     retained_liquid_tds_uncertainty: float = 0.0
+    brew_water_uncertainty_kg: float = 0.0
 
     def __post_init__(self):
         vals = tuple(self.__dict__.values())
@@ -99,24 +102,36 @@ def drying_kernel(o: RetainedLiquidDryingObservation):
     retained = o.wet_spent_grounds_kg - o.dry_spent_grounds_kg
     oven = o.dry_dose_kg - o.dry_spent_grounds_kg + o.volatile_loss_correction_kg
     corrected = oven + retained * o.retained_liquid_tds_mass_fraction
-    inventory_sigma = math.sqrt(o.dry_dose_uncertainty_kg**2+
-                                o.dry_spent_uncertainty_kg**2+
-                                o.volatile_loss_uncertainty_kg**2)
-    if min(retained, oven, corrected) < -2 * inventory_sigma:
-        raise ValueError("negative physical inventory outside uncertainty")
     retained_sigma = math.hypot(o.wet_spent_uncertainty_kg,
                                 o.dry_spent_uncertainty_kg)
-    sigma = math.sqrt(
-        inventory_sigma**2+
-        (o.retained_liquid_tds_mass_fraction*retained_sigma)**2+
-        (retained*o.retained_liquid_tds_uncertainty)**2)
+    oven_sigma = math.sqrt(o.dry_dose_uncertainty_kg**2+
+                           o.dry_spent_uncertainty_kg**2+
+                           o.volatile_loss_uncertainty_kg**2)
+    corrected_sigma = math.sqrt(
+        o.dry_dose_uncertainty_kg**2+
+        o.volatile_loss_uncertainty_kg**2+
+        o.retained_liquid_tds_mass_fraction**2 *
+        o.wet_spent_uncertainty_kg**2+
+        (1+o.retained_liquid_tds_mass_fraction)**2 *
+        o.dry_spent_uncertainty_kg**2+
+        retained**2*o.retained_liquid_tds_uncertainty**2)
+    water_sigma = math.sqrt(o.brew_water_uncertainty_kg**2+
+                            o.beverage_uncertainty_kg**2+
+                            o.wet_spent_uncertainty_kg**2+
+                            o.dry_spent_uncertainty_kg**2)
+    if retained < -2*retained_sigma or oven < -2*oven_sigma or corrected < -2*corrected_sigma:
+        raise ValueError("negative physical inventory outside uncertainty")
     return {
         "role": "MEASUREMENT_KERNEL_NOT_EXTRACTION_PHYSICS",
         "units": "kg",
         "retained_liquid_mass": retained,
         "oven_dry_extracted_mass": oven,
         "retained_liquid_corrected_extracted_mass": corrected,
-        "uncertainty_kg": sigma,
+        "uncertainty_kg": corrected_sigma,
+        "retained_liquid_uncertainty_kg": retained_sigma,
+        "oven_dry_uncertainty_kg": oven_sigma,
+        "corrected_extracted_uncertainty_kg": corrected_sigma,
+        "water_balance_uncertainty_kg": water_sigma,
         "water_balance_residual_kg": o.brew_water_kg-o.beverage_kg-retained,
         "water_balance_zero_required": False,
         "correction_terms": {
@@ -129,9 +144,15 @@ def drying_kernel(o: RetainedLiquidDryingObservation):
 def assert_compatible(a: TDSMeasurement, b: TDSMeasurement):
     """Reject silent pooling of unlike measurement methods or bases."""
     identity_a=(a.method_id,a.reported_basis,a.instrument_make,a.instrument_model,
-                a.calibrant,a.calibration_standard,a.temperature_compensation)
+                a.optical_wavelength_nm,a.sample_temperature_K,
+                a.temperature_compensation,a.zeroing_medium,a.calibrant,
+                a.calibration_standard,a.dilution_basis,
+                a.filtration_or_centrifugation,a.freeze_thaw_status)
     identity_b=(b.method_id,b.reported_basis,b.instrument_make,b.instrument_model,
-                b.calibrant,b.calibration_standard,b.temperature_compensation)
+                b.optical_wavelength_nm,b.sample_temperature_K,
+                b.temperature_compensation,b.zeroing_medium,b.calibrant,
+                b.calibration_standard,b.dilution_basis,
+                b.filtration_or_centrifugation,b.freeze_thaw_status)
     if identity_a != identity_b:
         raise ValueError("explicit conversion contract required")
     return True

@@ -203,7 +203,9 @@ def main() -> None:
         "qualified_R0_scientific_configuration_change": False,
         "new_R1_scientific_configuration_added": True,
         "historical_R1_change_declaration_preserved": True,
-        "wp_0_3b_a1_state": "AMENDMENT_FROZEN_AWAITING_CANONICAL_EXECUTION",
+        "wp_0_3b_a1_state": "PREEXECUTION_FROZEN_AWAITING_CANONICAL_RESULT",
+        "wp_0_3b_a1_controlling_contract":
+            "WP_0_3B_A1_P1_PREEXECUTION_CORRECTION_CONTRACT",
         "wp_0_3b_a1_governing_physics_change": False,
         "wp_0_3b_a1_protected_access": False,
         "source_manifest_self_excluded": True,
