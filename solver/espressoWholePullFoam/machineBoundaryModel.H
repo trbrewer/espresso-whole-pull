@@ -29,6 +29,8 @@ struct MachineBoundaryState
     scalar residual;
     label iterations;
     bool converged;
+    bool bracketed;
+    bool fallbackUsed;
 };
 
 inline scalar machineRamp(const scalar t, const scalar rampTime)
@@ -129,6 +131,35 @@ inline MachineBoundaryState solveMachineBoundary
     MachineBoundaryState state;
     state.converged = false;
     state.iterations = 0;
+    state.bracketed = false;
+    state.fallbackUsed = false;
+
+    const auto residualAt = [&](const scalar pu)
+    {
+        const scalar qp = saturated
+          ? saturatedPuckFlow
+            (
+                pu, outletPressure, saturatedConductance,
+                p.upstreamResistance
+            )
+          : wettingPuckFlow
+            (
+                pu, outletPressure, frontPressure, oldFront, bedDepth, area,
+                porosity, wettingPermeability, viscosity, dt,
+                p.upstreamResistance
+            );
+        return p.compliance*(pu - previousUpstreamPressure)/dt
+             - (machineSupply(time, pu, outletPressure, p) - qp);
+    };
+    const scalar residualLo = residualAt(lo);
+    const scalar residualHi = residualAt(hi);
+    state.bracketed =
+        std::isfinite(residualLo) && std::isfinite(residualHi)
+     && residualLo <= 0.0 && residualHi >= 0.0;
+    if (!state.bracketed)
+    {
+        return state;
+    }
 
     for (label i = 1; i <= p.maximumIterations; ++i)
     {
@@ -152,6 +183,8 @@ inline MachineBoundaryState solveMachineBoundary
             qp,
             residual,
             i,
+            false,
+            true,
             false
         };
         const scalar scale = Foam::max(Foam::max(qs, qp), VSMALL);

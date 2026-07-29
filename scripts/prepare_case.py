@@ -250,6 +250,12 @@ def render_properties(scenario: dict) -> str:
         numeric = {key: machine[key] for key in required_machine}
         if any(isinstance(value, bool) for value in numeric.values()):
             raise SystemExit("machineBoundary values must be numeric")
+        maximum_iterations = machine["couplingMaximumIterations"]
+        if (
+            isinstance(maximum_iterations, bool)
+            or not isinstance(maximum_iterations, int)
+        ):
+            raise SystemExit("couplingMaximumIterations must be an integer")
         try:
             numeric = {key: float(value) for key, value in numeric.items()}
         except (TypeError, ValueError):
@@ -259,6 +265,8 @@ def render_properties(scenario: dict) -> str:
         if (
             numeric["initialUpstreamPressure"]
             < float(hydraulic["outlet_pressure_gauge_Pa"])
+            or numeric["initialUpstreamPressure"]
+            > numeric["shutoffPressure"]
             or numeric["upstreamCompliance"] <= 0
             or numeric["upstreamResistance"] < 0
             or numeric["freeFlowRate"] <= 0
@@ -267,7 +275,7 @@ def render_properties(scenario: dict) -> str:
             or numeric["supplyRampTime"] < 0
             or numeric["couplingRelativeTolerance"] <= 0
             or numeric["couplingAbsoluteTolerance"] <= 0
-            or int(machine["couplingMaximumIterations"]) < 1
+            or maximum_iterations < 1
         ):
             raise SystemExit("machineBoundary values outside physical domain")
         machine_dictionary = f'''
@@ -281,7 +289,7 @@ machineBoundary
     supplyRampTime {numeric["supplyRampTime"]:.16g};
     couplingRelativeTolerance {numeric["couplingRelativeTolerance"]:.16g};
     couplingAbsoluteTolerance {numeric["couplingAbsoluteTolerance"]:.16g};
-    couplingMaximumIterations {int(machine["couplingMaximumIterations"])};
+    couplingMaximumIterations {maximum_iterations};
 }}
 '''
     elif pressure_boundary_model != "prescribedPressure":

@@ -387,6 +387,7 @@ int main(int argc, char *argv[])
         if
         (
             initialUpstreamPressure < outletPressure
+         || initialUpstreamPressure > machineParameters.shutoffPressure
          || machineParameters.compliance <= 0.0
          || machineParameters.upstreamResistance < 0.0
          || machineParameters.freeFlowRate <= 0.0
@@ -825,7 +826,8 @@ int main(int argc, char *argv[])
               << "cumulativeSupplyM3,cumulativePuckIntakeM3,"
               << "cumulativePuckOutletM3,machineWaterBalanceResidualM3,"
               << "couplingResidualM3s,couplingIterations,"
-              << "couplingConverged,pressureBoundaryModel";
+              << "couplingConverged,couplingBracketed,couplingFallbackUsed,"
+              << "saturationTransitionStep,pressureBoundaryModel";
         if (effectivePermeabilityEnabled)
         {
             trace << ",effective_permeability_branch_active,source_time_s,"
@@ -922,9 +924,12 @@ int main(int argc, char *argv[])
                     Foam::max(minimumMultiplier, qDynamic/qStatic)
                 );
             }
+            const scalar couplingResistance =
+                effectivePermeabilityEnabled && saturatedAtStepStart
+              ? continuumResistance/multiplierForConductance
+              : continuumResistance;
             const scalar conductance =
-                fullCrossSectionArea*saturatedPermeability
-               *multiplierForConductance/(dynamicViscosity*bedDepth);
+                fullCrossSectionArea/(dynamicViscosity*couplingResistance);
             const MachineBoundaryState machineState = solveMachineBoundary
             (
                 timeValue, deltaT, upstreamPressure, outletPressure,
@@ -932,6 +937,11 @@ int main(int argc, char *argv[])
                 frontPressure, wetFront, bedDepth, fullCrossSectionArea,
                 initialPorosity, wettingPermeability, dynamicViscosity
             );
+            if (!machineState.bracketed)
+            {
+                FatalErrorInFunction << "Machine coupling bracket failure at t="
+                    << timeValue << exit(FatalError);
+            }
             if (!machineState.converged)
             {
                 FatalErrorInFunction << "Machine coupling failed at t="
@@ -975,6 +985,7 @@ int main(int argc, char *argv[])
         }
 
         const scalar previousWetFront = wetFront;
+        bool saturationTransitionStep = false;
         scalar sourceTimeS = timeValue - sourceToSolverOffsetS;
         scalar sourceStateTimeS = sourceTimeS;
         scalar sourceDissolvedMassG = 0.0;
@@ -1055,19 +1066,36 @@ int main(int argc, char *argv[])
 
             if (wetFront >= bedDepth - SMALL && firstDripTime < 0.0)
             {
+                saturationTransitionStep = true;
                 const scalar requiredIntegral =
                     (sqr(bedDepth) - sqr(previousWetFront))
                    *initialPorosity*dynamicViscosity
                    /(2.0*wettingPermeability);
-                firstDripTime = pressureIntegralCrossingTime
-                (
-                    stepStartTime,
-                    timeValue,
-                    requiredIntegral,
-                    targetInletPressure,
-                    pressureRampTime,
-                    frontPressure
-                );
+                if (lumpedMachine)
+                {
+                    const scalar coupledDrivingPressure =
+                        Foam::max(inletPressure - frontPressure, 0.0);
+                    if (coupledDrivingPressure <= VSMALL)
+                    {
+                        FatalErrorInFunction
+                            << "Zero coupled pressure at saturation crossing"
+                            << exit(FatalError);
+                    }
+                    firstDripTime = stepStartTime
+                      + requiredIntegral/coupledDrivingPressure;
+                }
+                else
+                {
+                    firstDripTime = pressureIntegralCrossingTime
+                    (
+                        stepStartTime,
+                        timeValue,
+                        requiredIntegral,
+                        targetInletPressure,
+                        pressureRampTime,
+                        frontPressure
+                    );
+                }
                 wetFront = bedDepth;
             }
         }
@@ -1560,6 +1588,8 @@ int main(int argc, char *argv[])
                   << machineWaterBalanceResidual << ',' << couplingResidual
                   << ',' << couplingIterations << ','
                   << (couplingConverged ? 1 : 0) << ','
+                  << 1 << ',' << 0 << ','
+                  << (saturationTransitionStep ? 1 : 0) << ','
                   << pressureBoundaryModel;
             if (effectivePermeabilityEnabled)
             {

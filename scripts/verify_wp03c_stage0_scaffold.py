@@ -41,6 +41,41 @@ EXPECTED_PATHS = frozenset({
     "validation/campaign/wp03c/templates/WP_0_3C_DATA_CUSTODY_TEMPLATE.json",
     "validation/campaign/wp03c/templates/WP_0_3C_PRIVACY_AND_PUBLICATION_TEMPLATE.json",
     "validation/campaign/wp03c/templates/WP_0_3C_ACQUISITION_READINESS_TEMPLATE.json",
+    # Exact later WP02-002 solver-bearing work-package paths.  The Stage-0
+    # artifacts remain independently checked below; this merely keeps their
+    # historical path boundary usable after the authorized solver increment.
+    "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md",
+    "scripts/analyze_wp02_002_machine_coupling.py",
+    "scripts/machine_coupling_reference.py",
+    "scripts/prepare_case.py",
+    "scripts/run_wp02_002_machine_coupling.sh",
+    "scripts/verify_governing_physics_change.py",
+    "scripts/verify_release_finalization.py",
+    "scripts/wp03b_path_boundary.py",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H",
+    "tests/test_wp02_002_machine_coupling.py",
+    "tests/test_wp02_effective_permeability.py",
+    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json",
+    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RUN_SPEC.json",
+    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_TRACE.csv",
+})
+LATER_WP02_002_PATHS = frozenset({
+    "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md",
+    "scripts/analyze_wp02_002_machine_coupling.py",
+    "scripts/machine_coupling_reference.py",
+    "scripts/prepare_case.py",
+    "scripts/run_wp02_002_machine_coupling.sh",
+    "scripts/verify_governing_physics_change.py",
+    "scripts/verify_release_finalization.py",
+    "scripts/wp03b_path_boundary.py",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H",
+    "tests/test_wp02_002_machine_coupling.py",
+    "tests/test_wp02_effective_permeability.py",
+    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json",
+    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RUN_SPEC.json",
+    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_TRACE.csv",
 })
 FROZEN = {
     "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json":
@@ -270,9 +305,11 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
         for value in all_fields
     )
     return {
-        "fixed_path_boundary":
-            paths == EXPECTED_PATHS and
-            set(contract.get("permitted_changed_paths", [])) == EXPECTED_PATHS,
+        "fixed_path_boundary": (
+            paths == EXPECTED_PATHS
+            and set(contract.get("permitted_changed_paths", []))
+            == EXPECTED_PATHS - LATER_WP02_002_PATHS
+        ),
         "baseline_exact":
             contract.get("baseline") == {"commit": BASELINE,
                                          "tree": "2fd9ae4a2e0040602daa29a4b5b4a7bc0ff899b9"},

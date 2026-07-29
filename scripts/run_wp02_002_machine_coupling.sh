@@ -76,6 +76,26 @@ python3 "$ROOT/scripts/prepare_case.py" --root "$ROOT" \
 (cd "$case_dir"; blockMesh > log.blockMesh; checkMesh > log.checkMesh;
  env ESPRESSO_CASE_ROOT="$case_dir" "$EXE" > log.solver 2>&1)
 
+python3 - "$WP02_002_RUN_ROOT/configs/LF-0.02.json" \
+  "$WP02_002_RUN_ROOT/configs/TL.json" <<'PY'
+import json,sys
+cfg=json.load(open(sys.argv[1])); cfg["scenario_id"]="WP02_002_TL"
+depth=cfg["coffee_bed"]["bed_depth_m"]
+cfg["hydraulics"]["permeability_profile"]={
+    "type":"axial_two_layer",
+    "interface_position_m":depth/2.0,
+    "upstream_permeability_m2":1.0e-15,
+    "downstream_permeability_m2":3.0e-15,
+}
+json.dump(cfg,open(sys.argv[2],"w"),indent=2); open(sys.argv[2],"a").write("\n")
+PY
+case_dir="$WP02_002_RUN_ROOT/cases/TL"
+rm -rf "$case_dir"
+python3 "$ROOT/scripts/prepare_case.py" --root "$ROOT" \
+  --config "$WP02_002_RUN_ROOT/configs/TL.json" --case-dir "$case_dir" --nprocs 1
+(cd "$case_dir"; blockMesh > log.blockMesh; checkMesh > log.checkMesh;
+ env ESPRESSO_CASE_ROOT="$case_dir" "$EXE" > log.solver 2>&1)
+
 index=0
 for pair in "1e-10 1e-5" "1e-11 1e-4" "1e-12 1e-3"; do
   set -- $pair
@@ -123,6 +143,49 @@ for id in MC-0 MC-1 MC-2 MC-3 MC-4 MC-5; do
       "$EXE" -parallel > log.solver 2>&1
   )
 done
+
+for dt in 0.02 0.01 0.005; do
+  id="MC2-DT-$dt"
+  python3 - "$WP02_002_RUN_ROOT/configs/MC-2.json" \
+    "$WP02_002_RUN_ROOT/configs/$id.json" "$dt" <<'PY'
+import json,sys
+cfg=json.load(open(sys.argv[1]))
+cfg["scenario_id"]="WP02_002_"+sys.argv[2].split("/")[-1].split(".json")[0].replace(".","p")
+cfg["time"]["delta_t_s"]=float(sys.argv[3])
+json.dump(cfg,open(sys.argv[2],"w"),indent=2); open(sys.argv[2],"a").write("\n")
+PY
+  case_dir="$WP02_002_RUN_ROOT/cases/$id"
+  rm -rf "$case_dir"
+  python3 "$ROOT/scripts/prepare_case.py" --root "$ROOT" \
+    --config "$WP02_002_RUN_ROOT/configs/$id.json" --case-dir "$case_dir" \
+    --nprocs "$WP02_002_NPROCS"
+  (
+    cd "$case_dir"
+    blockMesh > log.blockMesh
+    checkMesh > log.checkMesh
+    decomposePar -force > log.decomposePar
+    /usr/bin/time -v -o "$WP02_002_RUN_ROOT/timing/$id.time" \
+      env ESPRESSO_CASE_ROOT="$case_dir" mpirun -np "$WP02_002_NPROCS" \
+      "$EXE" -parallel > log.solver 2>&1
+  )
+done
+
+cp "$ROOT/config/reconstruction_WP02A_waszkiewicz_9bar.json" \
+  "$WP02_002_RUN_ROOT/configs/WP02-disabled.json"
+case_dir="$WP02_002_RUN_ROOT/cases/WP02-disabled"
+rm -rf "$case_dir"
+python3 "$ROOT/scripts/prepare_case.py" --root "$ROOT" \
+  --config "$ROOT/config/reconstruction_WP02A_waszkiewicz_9bar.json" --case-dir "$case_dir" \
+  --nprocs "$WP02_002_NPROCS"
+(
+  cd "$case_dir"
+  blockMesh > log.blockMesh
+  checkMesh > log.checkMesh
+  decomposePar -force > log.decomposePar
+  /usr/bin/time -v -o "$WP02_002_RUN_ROOT/timing/WP02-disabled.time" \
+    env ESPRESSO_CASE_ROOT="$case_dir" mpirun -np "$WP02_002_NPROCS" \
+    "$EXE" -parallel > log.solver 2>&1
+)
 
 python3 "$ROOT/scripts/analyze_wp02_002_machine_coupling.py" \
   --root "$ROOT" --run-root "$WP02_002_RUN_ROOT" \

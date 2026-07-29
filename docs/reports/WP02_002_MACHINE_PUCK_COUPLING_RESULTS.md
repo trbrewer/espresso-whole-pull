@@ -32,29 +32,44 @@ step from 0.80408 to 0.01461 to 0.0014805.
 The 100 s equilibrium fixture agreed with the independent equilibrium pressure
 to `4.07e-13` relative and equilibrium flow to `4.08e-13` relative, both below
 the `1e-8` gates.
+The saturated axial-two-layer fixture used the actual continuum series
+resistance and agreed with an independent operating-point calculation to
+`3.23e-13` relative.
 
 The 131,072-cell prescribed-pressure R0 control reproduced first drip
 `4.711696185 s`, final beverage `40.957867483 g`, TDS `11.689306389 %`, and
 EY `23.938453103 %`. A separate 103 s WP02 coupling-disabled run completed
-without protected analysis; its final trace remained numerically operational
-with the prior closure and configuration.
+without protected analysis; its frozen late-window predicted-flow mean agreed
+to `1.18e-16` relative. Both regressions passed their existing tolerances.
+
+The wetting-to-saturation step is explicitly flagged. Because this bounded
+correction does not internally split that step, the transition-only basket
+pressure is excluded from physical peak and rise metrics. First drip is
+interpolated from the actual coupled basket-pressure integral. Full MC-2
+runs at `dt = 0.02, 0.01, 0.005 s` gave a maximum fine-pair relative change
+of `4.20e-4` across first drip, sustained post-saturation pressure, cup mass,
+TDS, and EY; maximum absolute machine-water residual was `1.55e-18 m3`.
+This retains a first-order event-location limitation without a material
+unresolved sensitivity in the interpreted outputs.
 
 ## Executed synthetic shots
 
 All full shots used `dt=0.02 s`, 131,072 cells, and 32 MPI ranks.
 
-| case | C (m3/Pa) | R (Pa s/m3) | peak pu (kPa) | peak pb (kPa) | first drip (s) | cup (g) | TDS (%) | EY (%) | max machine balance (m3) | max coupling residual (m3/s) | runtime |
+| case | C (m3/Pa) | R (Pa s/m3) | peak pu (kPa) | sustained post-saturation peak pb (kPa) | first drip (s) | cup (g) | TDS (%) | EY (%) | max machine balance (m3) | max coupling residual (m3/s) | runtime |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| MC-0 | 0 | 0 | 900.000 | 900.000 | 4.71170 | 40.9579 | 11.6893 | 23.9385 | 0 | 0 | 5.24 s |
-| MC-1 | 1e-13 | 0 | 894.598 | 894.598 | 3.70757 | 41.9114 | 11.5953 | 24.2988 | 1.35e-18 | 6.26e-18 | 5.57 s |
-| MC-2 | 2e-11 | 2e11 | 961.516 | 845.274 | 8.90051 | 27.6357 | 13.7916 | 19.0570 | 1.55e-18 | 5.81e-18 | 30.56 s |
-| MC-3 | 5e-12 | 2e11 | 961.671 | 861.545 | 6.82578 | 30.7593 | 13.4609 | 20.7024 | 6.36e-18 | 4.99e-18 | 14.99 s |
-| MC-4 | 8e-11 | 2e11 | 858.220 | 645.529 | 14.14333 | 16.8182 | 14.6717 | 12.3376 | 2.23e-18 | 6.58e-18 | 27.01 s |
-| MC-5 | 2e-11 | 2e11 | 1184.502 | 1179.204 | 8.90051 | 3.2150 | 15.7015 | 2.5240 | 8.20e-19 | 5.81e-18 | 35.03 s |
+| MC-0 | 0 | 0 | 900.000 | 900.000 | 4.71170 | 40.9579 | 11.6893 | 23.9385 | 0 | 0 | 4.97 s |
+| MC-1 | 1e-13 | 0 | 894.598 | 887.180 | 3.70761 | 41.9114 | 11.5953 | 24.2988 | 1.35e-18 | 6.26e-18 | 5.37 s |
+| MC-2 | 2e-11 | 2e11 | 961.516 | 723.225 | 8.90055 | 27.6357 | 13.7916 | 19.0570 | 1.54e-18 | 5.81e-18 | 30.42 s |
+| MC-3 | 5e-12 | 2e11 | 961.671 | 723.342 | 6.82604 | 30.7593 | 13.4609 | 20.7024 | 6.44e-18 | 4.99e-18 | 14.82 s |
+| MC-4 | 8e-11 | 2e11 | 858.220 | 645.529 | 14.14538 | 16.8182 | 14.6717 | 12.3376 | 2.23e-18 | 6.58e-18 | 26.79 s |
+| MC-5 | 2e-11 | 2e11 | 1184.502 | 1179.204 | 8.90055 | 3.2150 | 15.7015 | 2.5240 | 8.20e-19 | 5.81e-18 | 34.97 s |
 
 Peak resident memory was 64.8 MB or less for every full-shot launcher.
 No coupled step failed, no bracket failed, and no prescribed-pressure fallback
-occurred.
+occurred. All computed analytical, refinement, equilibrium, prescribed-limit,
+regression, convergence, finite-state, conservation, and completion gates
+passed; the analyzer exits nonzero if any required gate fails.
 
 ## Interpretation
 
