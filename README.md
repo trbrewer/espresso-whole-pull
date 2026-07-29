@@ -35,6 +35,11 @@ See `docs/ONBOARDING.md` before running or changing the model.
 
 [Puckworks](https://github.com/trbrewer/puckworks) is the public evidence/model/data dependency. It is reviewed and locked at `fc61c4670ec7bf801e40bb391aab16048b8da26b`, checked out with `tools/checkout_puckworks.sh`, and is not a submodule. WP02-001 implements the optional source-linked saturated dissolution-indexed effective-permeability branch selected by WP01R-006. Its governed 9-bar reconstruction and predeclared 8-bar no-retuning same-campaign comparison passed their frozen flow-shape gates without fitting or post-result adjustment. Neither comparison is independent validation, and physical validation remains **NOT_ESTABLISHED**.
 
+WP-0.3A reviewed moving-upstream evidence without advancing the runtime
+dependency lock. Its lock disposition is `RETAIN_EXISTING_LOCK`; selected
+solver-support evidence is adopted with follow-up, and holdout execution is
+not authorized.
+
 The tagged `v0.1.4-public.1` package remains the immutable sanitized public R0
 baseline and retains its historical no-governing-physics release contract.
 Version 0.2.0 is a software and source-linked reconstruction release, not a
@@ -42,8 +47,11 @@ physical-validation release.
 
 The published release and bounded assets are available at
 [v0.2.0](https://github.com/trbrewer/espresso-whole-pull/releases/tag/v0.2.0).
-The next scientific milestone is WP-0.3A independent holdout and
-mechanism-discrimination contracting; no additional mechanism is authorized.
+WP-0.3A reviewed the moving Puckworks evidence baseline and found no presently
+qualifying independent hydraulic holdout. Its frozen contract authorizes no
+execution and no additional mechanism. The next evidence task is to acquire
+the independently instrumented pressure/flow campaign specified by that
+contract; physical validation remains **NOT_ESTABLISHED**.
 
 ## License
 

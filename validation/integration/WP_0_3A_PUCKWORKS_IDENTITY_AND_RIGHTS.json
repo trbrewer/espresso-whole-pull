@@ -1,0 +1,85 @@
+{
+  "schema_version": "espresso.public.wp_0_3a_puckworks_identity_and_rights.v1",
+  "task": "WP-0.3A",
+  "repository": "https://github.com/trbrewer/puckworks.git",
+  "old_identity": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "review_target": {
+    "ref": "refs/heads/main",
+    "commit": "bafafef3bc3c77599af8551d4e582aedb9b23f08",
+    "tree": "64ccf86aff4c90d1c513f1614b39e0823f64d6d7"
+  },
+  "review_controls": {
+    "metadata_and_git_blobs_only": true,
+    "new_code_imported": false,
+    "new_code_executed": false,
+    "protected_source_accessed": false,
+    "protected_analyzer_invoked": false,
+    "scientific_scores_recomputed": false
+  },
+  "rights_summary": [
+    {
+      "source": "Moroney 2017",
+      "status": "ADOPTABLE_WITH_ATTRIBUTION",
+      "basis": "CC-BY-4.0 open-access article",
+      "redistribution_boundary": "Independent equation re-expression and compact verification values only"
+    },
+    {
+      "source": "Liang 2021",
+      "status": "METADATA_ADOPTABLE_DIGITIZATION_REVIEW_REQUIRED",
+      "basis": "Open-access Scientific Reports article",
+      "redistribution_boundary": "Verify article license notice before distributing a new figure digitization"
+    },
+    {
+      "source": "Schmieder 2023",
+      "status": "ADOPTABLE_WITH_ATTRIBUTION",
+      "basis": "CC-BY article and supplements",
+      "redistribution_boundary": "Method metadata and source-scoped table reductions"
+    },
+    {
+      "source": "Vaca Guerra 2023a",
+      "status": "OFFLINE_PRIOR_ONLY_RIGHTS_REVIEW_REQUIRED",
+      "basis": "Journal article plus Puckworks digitization/transcription",
+      "redistribution_boundary": "Do not copy source tables or figures without a specific rights determination"
+    },
+    {
+      "source": "Matias 2023",
+      "status": "CITATION_AND_INDEPENDENT_EQUATION_REEXPRESSION",
+      "basis": "arXiv preprint",
+      "redistribution_boundary": "No figure or article-content copying"
+    },
+    {
+      "source": "Maille 2024",
+      "status": "DEFER_PENDING_RIGHTS",
+      "basis": "Redacted, sponsor-linked thesis",
+      "redistribution_boundary": "No adoption of redacted or proprietary material"
+    },
+    {
+      "source": "Perticarini 2024",
+      "status": "METADATA_ONLY",
+      "basis": "Deposited thesis with no explicit license",
+      "redistribution_boundary": "Citation and bounded factual metadata only"
+    },
+    {
+      "source": "Ellero 2019 JFE and Petracco 1993",
+      "status": "DEFER_PENDING_DATA_AND_RIGHTS",
+      "basis": "Accepted manuscript plus unavailable primary proceedings data",
+      "redistribution_boundary": "No digitization adoption until primary source and rights are reviewed"
+    },
+    {
+      "source": "Kusumaatmaja 2010",
+      "status": "DO_NOT_ADOPT",
+      "basis": "Springer chapter with unresolved bibliographic and redistribution details",
+      "redistribution_boundary": "Citation-only context"
+    }
+  ],
+  "lock": {
+    "changed": false,
+    "retained_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "retained_tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
+  "solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP"
+}

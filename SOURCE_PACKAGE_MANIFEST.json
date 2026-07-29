@@ -24,10 +24,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 132,
-  "total_uncompressed_bytes_excluding_manifest": 1264005,
-  "aggregate_source_sha256": "90fd3023e9b97b1b42b0e1cfa25c7e76858ce40a00b0fec69881ab8bfeced651",
-  "aggregate_sha256": "90fd3023e9b97b1b42b0e1cfa25c7e76858ce40a00b0fec69881ab8bfeced651",
+  "file_count": 134,
+  "total_uncompressed_bytes_excluding_manifest": 1289866,
+  "aggregate_source_sha256": "a9abb15d7b9f3c2ca7bc42791f603f769dabb382edf5f9b7a44ee2669997f18a",
+  "aggregate_sha256": "a9abb15d7b9f3c2ca7bc42791f603f769dabb382edf5f9b7a44ee2669997f18a",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -57,8 +57,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "2d75b385dd963e4c68bb683ca31659c68c24242bb1d13291ca7742e86ab63f3b",
-      "bytes": 3618,
+      "sha256": "4e88d88afa24e0c8e92646670e1638830f9260196c9b6d3e93da57e609164706",
+      "bytes": 4077,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -507,8 +507,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "3a890557d9b8c4884bd47257a13c4f049b82441f0220377a9ce21c02dab5a138",
-      "bytes": 8508,
+      "sha256": "3e9ee918cbc6abadf3fa4f27ebaea175f3db2117f73fd5a82eabc57e03f5df94",
+      "bytes": 8701,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -592,8 +592,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_release_finalization.py": {
-      "sha256": "e2fd389455a15641247dbcc7ee279c0502650694cebe4b5cb0d96cdb2fc1d012",
-      "bytes": 7886,
+      "sha256": "d2dab29dad4b93855623c8692f7d62125ef7c4d237d30f8be17ab70e89306112",
+      "bytes": 8135,
       "git_mode": "100755"
     },
     "scripts/verify_source_manifest.py": {
@@ -614,6 +614,11 @@
     "scripts/verify_wp02_uniform_fixture.py": {
       "sha256": "1fdeb2b21df20abe1855006513fdbac49eafd035ece91270a9f8eefd861cd1e7",
       "bytes": 14406,
+      "git_mode": "100755"
+    },
+    "scripts/verify_wp03_evidence_review.py": {
+      "sha256": "b7d763c46e642cc543b9e3f34188ffd31b91ab35894c99b06fd2e81179d96e97",
+      "bytes": 7602,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
@@ -689,6 +694,11 @@
     "tests/test_wp02_effective_permeability.py": {
       "sha256": "b39d82c1f81b456ccf7ad5d29ce2f741b87881a48abcaddfde96ca129257c301",
       "bytes": 20809,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03_holdout_contract.py": {
+      "sha256": "d3afcf28b9c7a464cb2c475f812cc005ca0e892604aba82966ae40565a87bd10",
+      "bytes": 17358,
       "git_mode": "100644"
     }
   }

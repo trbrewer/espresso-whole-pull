@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - name: Static package validation
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/static_validate.py --root .
       - name: Python tests
@@ -26,6 +28,10 @@ jobs:
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_governing_physics_change.py --root . --output /tmp/governing-change.json
       - name: Release-finalization boundary
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_change_contract.py --root . --output /tmp/change-contract.json
+      - name: Historical release integrity
+        run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_release_finalization.py --root . --output /tmp/release-integrity.json
+      - name: WP-0.3A evidence-review boundary
+        run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_wp03_evidence_review.py --root . --output /tmp/wp03-evidence-review.json
       - name: Shell syntax
         run: |
           find . -type f \( -name '*.sh' -o -name 'Allrun' -o -name 'Allverify' -o -name 'Allclean' -o -name 'Allwmake' \) -print0 |

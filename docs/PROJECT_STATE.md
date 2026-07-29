@@ -3,7 +3,7 @@
 - Current released version: `v0.2.0`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 132/132 PASS (current main)
+- Public source verification: 134/134 PASS (WP-0.3A branch)
 - Published v0.2.0 source verification: 131/131 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
@@ -32,10 +32,16 @@ validation is `NOT_ESTABLISHED`.
 WP-0.2F successfully published v0.2.0. WP01R-006 selected the Waszkiewicz saturated dissolution-indexed
 effective-permeability branch for WP-0.2A. WP02-001 implemented and tested it,
 merged through PR #20, and is scientifically closed. WP-0.2F release
-finalization is complete. WP-0.3A independent holdout and
-mechanism-discrimination contracting is next. Independent physical validation
-has not started. Machine/headspace coupling remains a later runner-up subject
-to holdout evidence and mechanism discrimination.
+finalization and WP-0.2G post-release reconciliation are complete. WP-0.3A
+reviewed moving-upstream Puckworks evidence and froze the independent-holdout
+and mechanism-discrimination contract without execution. No currently
+reviewed candidate qualifies as an independent hydraulic holdout. The
+solver-support triage adopts bounded evidence corrections, analytic
+verification targets, and an inactive Vaca Guerra prior specification without
+advancing the dependency lock. The next evidence task is the specified
+independent pressure/flow campaign. Independent
+physical validation has not started. Machine/headspace coupling remains a
+later hypothesis subject to holdout evidence and a separate decision.
 
 WP02-001 added the optional saturated dissolution-indexed effective-permeability
 closure. Its corrected uniform fixture, disabled R0 regression, and disabled

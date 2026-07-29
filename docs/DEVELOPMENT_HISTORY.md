@@ -17,5 +17,9 @@
 - WP-0.2G: post-release provenance reconciliation records the published tag,
   assets, final terminal manifest, and next WP-0.3A evidence-contract task
   without changing the release or scientific records.
+- WP-0.3A: moving-upstream Puckworks evidence review and independent-holdout
+  contract. No qualifying independent hydraulic holdout was identified, so no
+  holdout was opened or executed and no new mechanism was authorized. The
+  contract specifies the independent instrumented campaign needed next.
 
 Exact archival runs and bytes remain offline. Public history begins with the sanitized derivative and must not be described as byte-identical to archival v0.1.4.

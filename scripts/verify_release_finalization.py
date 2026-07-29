@@ -29,9 +29,9 @@ def normalized_solver_hash(path: Path) -> str:
     return hashlib.sha256(normalized.encode()).hexdigest()
 
 
-def changed_paths(root: Path, baseline: str) -> list[str] | None:
+def changed_paths(root: Path, baseline: str, endpoint: str) -> list[str] | None:
     completed = subprocess.run(
-        ["git", "diff", "--name-only", f"{baseline}...HEAD"],
+        ["git", "diff", "--name-only", f"{baseline}...{endpoint}"],
         cwd=root,
         capture_output=True,
         text=True,
@@ -77,7 +77,13 @@ def verify(root: Path, declaration_path: Path | None = None) -> dict:
         ),
     }
     expected = {key: immutable[key] for key in observed}
-    paths = changed_paths(root, contract["baseline"]["merge_commit"])
+    # This verifier preserves the completed release boundary. Later governed
+    # tasks have their own independent path verifiers and cannot extend it.
+    paths = changed_paths(
+        root,
+        contract["baseline"]["merge_commit"],
+        "6e6b35b0fc6747f805223ce7975a0865835f01f0",
+    )
     allowed = set(contract["allowed_changed_paths"])
     prefixes = tuple(contract["allowed_changed_path_prefixes"])
     post_release_record = None
