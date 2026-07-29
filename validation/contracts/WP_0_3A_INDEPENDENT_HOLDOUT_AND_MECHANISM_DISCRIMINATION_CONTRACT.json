@@ -1,0 +1,196 @@
+{
+  "schema_version": "espresso.public.wp_0_3a_independent_holdout_contract.v1",
+  "task": "WP-0.3A",
+  "contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
+  "classification": [
+    "EVIDENCE_REVIEW_AND_EXPERIMENT_DESIGN_ONLY",
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_HOLDOUT_EXECUTION",
+    "NO_MODEL_SELECTION_FROM_HOLDOUT_RESULTS"
+  ],
+  "input_state": {
+    "release": "v0.2.0",
+    "release_merge_commit": "6e6b35b0fc6747f805223ce7975a0865835f01f0",
+    "wp02_result_sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+    "wp02_disposition": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "puckworks_alignment": {
+    "review_path": "validation/evidence/WP_0_3A_PUCKWORKS_ALIGNMENT_REVIEW.json",
+    "reviewed_moving_upstream_commit": "bafafef3bc3c77599af8551d4e582aedb9b23f08",
+    "reviewed_moving_upstream_tree": "64ccf86aff4c90d1c513f1614b39e0823f64d6d7",
+    "adoption_disposition": "NO_ADOPTION",
+    "adopted_lock_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "adopted_lock_tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "new_code_executed": false
+  },
+  "qualification_decision": {
+    "matrix_path": "validation/evidence/WP_0_3A_HOLDOUT_CANDIDATE_MATRIX.json",
+    "disposition": "NO_QUALIFYING_INDEPENDENT_HYDRAULIC_HOLDOUT_AVAILABLE",
+    "holdout_execution_authorized": false,
+    "reason": "No reviewed candidate simultaneously provides independent time-resolved pressure and outlet flow or mass, exact hydraulic geometry, timing, preparation metadata, rights, and a measurement-uncertainty basis."
+  },
+  "frozen_existing_branches": {
+    "r0": {
+      "role": "NUMERICALLY_QUALIFIED_BASELINE_WHERE_SCIENTIFICALLY_MEANINGFUL",
+      "configuration_path": "config/reference_R0.json",
+      "configuration_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+    },
+    "constant_r1": {
+      "role": "CONSTANT_PERMEABILITY_CONTROL",
+      "configuration_path": "config/reconstruction_R1_waszkiewicz_9bar.json",
+      "configuration_sha256": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876",
+      "generated_input_aggregate": "ddc6ac9e5cfd4746d5e7548e1b78cbb4942092d134806a6e9526ef26657aa957"
+    },
+    "wp02_v0_2_0": {
+      "role": "FIXED_OPTIONAL_EFFECTIVE_PERMEABILITY_BRANCH",
+      "closure_contract_sha256": "2c898dd91e558ce62006dc81de9cff20bb633b52a89f6fa5a44c5edcda50d57a",
+      "historical_scientific_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+      "parameter_fitting_allowed": false,
+      "branch_modification_allowed": false
+    }
+  },
+  "minimum_hydraulic_holdout_requirements": {
+    "required": [
+      "time-resolved pressure at a physically identified node",
+      "time-resolved outlet flow or cumulative mass",
+      "basket hydraulic area or complete geometry",
+      "timing origin and first-drip definition",
+      "unambiguous units",
+      "dose, coffee, grinder, preparation, basket, machine, and temperature metadata",
+      "measurement resolution or uncertainty sufficient to set thresholds",
+      "independence from the Waszkiewicz campaign",
+      "no use in WP02 closure selection or parameter choice",
+      "rights permitting governed analysis and publication of derived metrics"
+    ],
+    "unknown_essential_quantities_may_be_fitted": false,
+    "endpoint_or_extraction_only_evidence_validates_wp02_hydraulics": false
+  },
+  "future_blinded_access_plan": {
+    "status": "TEMPLATE_FROZEN_DATASET_NOT_YET_IDENTIFIED",
+    "permitted_pre_contract_metadata": [
+      "rights",
+      "units",
+      "geometry",
+      "sampling cadence",
+      "uncertainty model",
+      "group labels without hydraulic values"
+    ],
+    "score_bearing_values_sealed_until": [
+      "persistent dataset identity and hashes are frozen",
+      "physical mappings and timing rules are frozen",
+      "thresholds are derived from measurement uncertainty",
+      "analyzer is committed",
+      "solver inputs are committed",
+      "independent reviewer approves execution"
+    ],
+    "access_log_required": true,
+    "failure_before_scoring_must_be_atomic": true,
+    "maximum_score_bearing_analyzer_invocations": 1,
+    "maximum_solver_invocations_per_frozen_branch": 1,
+    "result_dependent_reruns_allowed": false
+  },
+  "predeclared_evaluation_template": {
+    "status": "NON_EXECUTABLE_UNTIL_A_QUALIFYING_DATASET_AND_ITS_UNCERTAINTY_ARE_BOUND",
+    "physical_mapping": "Use measured basket-node pressure as the absolute Darcy boundary; do not substitute pump pressure without a separately verified transfer function.",
+    "timing_alignment": "Use the dataset's physical timing origin; no result-selected shift. If first drip is the source origin, map it once from metadata before values are opened.",
+    "interpolation": "Strict monotone time interpolation inside the observed support only; no extrapolation except a separately qualified floating-representation endpoint reconciliation.",
+    "normalization": "No amplitude scaling. When dimensionless shape is reported, normalize by a predeclared late-window mean that is fully inside each experiment.",
+    "comparison_interval": "Must be chosen from physical stage metadata and uncertainty before holdout values are opened.",
+    "excluded_rows": "Only instrument-invalid or source-declared exclusions frozen before scoring; every exclusion requires a reason and count.",
+    "groups": "Every experimental unit and alias rule must be frozen before scoring.",
+    "metrics": [
+      "absolute or relative flow error in physical units",
+      "uncertainty-standardized RMSE",
+      "Pearson correlation for nonconstant time-shape series",
+      "late-flow scale reproduction",
+      "liquid and solute conservation",
+      "numerical and reduced-reference parity"
+    ],
+    "threshold_rule": "Numerical values must be derived from the selected dataset's declared measurement uncertainty or resolution plus existing numerical-verification error, never from observed model performance.",
+    "aggregate_rule": "A hydraulic claim requires every numerical, conservation, identity, and uncertainty-derived metric gate to pass; undefined correlation fails any shape claim.",
+    "current_numeric_thresholds": null,
+    "numeric_thresholds_absent_reason": "No qualifying dataset provides the uncertainty basis needed to set non-arbitrary thresholds.",
+    "output_schema": "espresso.public.wp_0_3a_future_holdout_result.v1",
+    "claim_ceiling": "A future passing comparison could establish transfer only for the frozen branch, measured observables, apparatus, coffee, preparation, pressure range, and time interval of the independently governed holdout. It would not validate full poroelastic deformation or universal transfer."
+  },
+  "required_new_experiment": {
+    "minimum_design": {
+      "independent_campaign": true,
+      "pre_registered_and_blinded": true,
+      "minimum_pressure_groups": 2,
+      "minimum_independent_shots_per_group": 5,
+      "required_raw_channels": [
+        "basket-node gauge pressure",
+        "outlet mass from a calibrated scale",
+        "time",
+        "water temperature"
+      ],
+      "required_geometry": [
+        "basket inside diameter or measured open hydraulic area",
+        "bed depth",
+        "dose"
+      ],
+      "required_timing": [
+        "acquisition start",
+        "pump or valve actuation",
+        "first drip",
+        "endpoint"
+      ],
+      "required_uncertainty": [
+        "pressure calibration and resolution",
+        "scale calibration and resolution",
+        "timebase resolution",
+        "repeatability by experimental unit"
+      ],
+      "required_metadata": [
+        "coffee and roast",
+        "grinder and setting or PSD",
+        "distribution and tamp procedure",
+        "machine and basket",
+        "water composition",
+        "temperature profile"
+      ]
+    },
+    "wp02_parameters_fixed_before_campaign": true,
+    "no_holdout_parameter_fitting": true
+  },
+  "mechanism_discrimination": [
+    {
+      "residual_signature": "good imposed-pressure response but poor delivered-pressure response",
+      "later_hypothesis": "machine or headspace coupling"
+    },
+    {
+      "residual_signature": "systematic bed-height dependence or pressure-flow hysteresis",
+      "later_hypothesis": "explicit compaction or swelling"
+    },
+    {
+      "residual_signature": "reproducible radial or depth-dependent discrepancy",
+      "later_hypothesis": "bounded heterogeneity"
+    },
+    {
+      "residual_signature": "early-time or first-drip mismatch",
+      "later_hypothesis": "wetting refinement"
+    },
+    {
+      "residual_signature": "acceptable hydraulics but poor TDS or species evolution",
+      "later_hypothesis": "extraction and transport refinement"
+    },
+    {
+      "residual_signature": "irregular nonrepeatable deviations",
+      "later_hypothesis": "preparation variability or channeling evidence"
+    }
+  ],
+  "authorization_boundary": {
+    "new_mechanism_authorized": false,
+    "holdout_execution_authorized": false,
+    "protected_source_access_authorized": false,
+    "puckworks_lock_update_authorized": false,
+    "future_mechanism_decision_requires_separate_task": true
+  },
+  "claim_state": {
+    "wp02_result": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
+    "release": "SOFTWARE_AND_SOURCE_LINKED_RECONSTRUCTION_RELEASE_PASS",
+    "physical_validation": "NOT_ESTABLISHED"
+  }
+}

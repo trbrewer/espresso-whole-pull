@@ -42,8 +42,11 @@ physical-validation release.
 
 The published release and bounded assets are available at
 [v0.2.0](https://github.com/trbrewer/espresso-whole-pull/releases/tag/v0.2.0).
-The next scientific milestone is WP-0.3A independent holdout and
-mechanism-discrimination contracting; no additional mechanism is authorized.
+WP-0.3A reviewed the moving Puckworks evidence baseline and found no presently
+qualifying independent hydraulic holdout. Its frozen contract authorizes no
+execution and no additional mechanism. The next evidence task is to acquire
+the independently instrumented pressure/flow campaign specified by that
+contract; physical validation remains **NOT_ESTABLISHED**.
 
 ## License
 

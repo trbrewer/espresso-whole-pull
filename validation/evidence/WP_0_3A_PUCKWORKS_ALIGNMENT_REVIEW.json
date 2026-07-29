@@ -1,0 +1,119 @@
+{
+  "schema_version": "espresso.public.wp_0_3a_puckworks_alignment_review.v1",
+  "task": "WP-0.3A",
+  "review_utc": "2026-07-29",
+  "classification": [
+    "EVIDENCE_REVIEW_AND_EXPERIMENT_DESIGN_ONLY",
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_HOLDOUT_EXECUTION",
+    "NO_MODEL_SELECTION_FROM_HOLDOUT_RESULTS"
+  ],
+  "repository": "https://github.com/trbrewer/puckworks.git",
+  "adopted_historical_baseline": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "lock_changed": false
+  },
+  "moving_upstream_snapshot": {
+    "branch": "main",
+    "commit": "bafafef3bc3c77599af8551d4e582aedb9b23f08",
+    "tree": "64ccf86aff4c90d1c513f1614b39e0823f64d6d7",
+    "commits_after_locked_baseline": 18
+  },
+  "review_method": {
+    "git_metadata_and_blob_review_only": true,
+    "new_puckworks_code_imported": false,
+    "new_puckworks_code_executed": false,
+    "notebooks_executed": false,
+    "tests_executed": false,
+    "protected_source_accessed": false
+  },
+  "delta_inventory": {
+    "changed_paths": 85,
+    "documentation_paths": 57,
+    "model_card_paths": 12,
+    "puckworks_code_paths": 15,
+    "test_paths": 9,
+    "dataset_paths": 0,
+    "model_implementation_paths": 0,
+    "all_changed_model_card_paths": [
+      "docs/cards/barbro2025.md",
+      "docs/cards/liang2021.md",
+      "docs/cards/liang2021_AUDIT.md",
+      "docs/cards/moroney2016.md",
+      "docs/cards/moroney2017.md",
+      "docs/cards/moroney2019_AUDIT.md",
+      "docs/cards/nhan2012.md",
+      "docs/cards/pannusch2024.md",
+      "docs/cards/schmieder2023.md",
+      "docs/cards/schmieder2023_AUDIT.md",
+      "docs/cards/toda2022.md",
+      "docs/cards/zhai2022.md"
+    ],
+    "added_model_cards": [
+      "barbro2025",
+      "moroney2017",
+      "nhan2012",
+      "toda2022",
+      "zhai2022"
+    ],
+    "changed_or_audited_model_cards": [
+      "liang2021",
+      "moroney2016",
+      "moroney2019",
+      "pannusch2024",
+      "schmieder2023"
+    ],
+    "evidence_classification_changes": [
+      "Schmieder 9.3-bar prose value is now classified as an ambiguous maximum and not a Darcy pressure-flow point.",
+      "Pannusch Reynolds-number documentation is corrected to use superficial velocity, matching its implementation.",
+      "Liang transient kinetics are classified as recoverable but not yet fitted.",
+      "New claim-binding audits expose remaining manuscript-to-producer limitations."
+    ],
+    "uncertainty_changes": [
+      "Paper-A uncertainty and coverage documentation was expanded.",
+      "No new hydraulic measurement-uncertainty record sufficient for an independent WP02 holdout was added."
+    ],
+    "rights_changes": [
+      "No new dataset-rights record resolves the Gagne trace redistribution uncertainty.",
+      "No newly added dataset changes the adopted Waszkiewicz CC-BY-4.0 data or MIT local-re-expression rights."
+    ],
+    "units_and_mapping_changes": [
+      "Pannusch superficial-versus-interstitial velocity semantics were corrected.",
+      "Schmieder mean pressure points are distinguished from an ambiguous text-only maximum."
+    ],
+    "validation_role_changes": [
+      "No new dataset is promoted to an independently blinded hydraulic-validation role.",
+      "New cards are evidence intake, audit, or skip records rather than adopted runtime dependencies."
+    ],
+    "pressure_and_flow_changes": [
+      "The Waszkiewicz cross-pressure analysis code changed, but its bound model and source datasets did not.",
+      "No independent raw pressure-plus-flow campaign was added."
+    ],
+    "machine_or_headspace_changes": [
+      "No new machine/headspace dataset was added."
+    ],
+    "extraction_or_chemistry_changes": [
+      "Card and manuscript audits refined interpretation; no new tracked dataset was added."
+    ]
+  },
+  "locked_waszkiewicz_identity_check": {
+    "model_path": "puckworks/models/waszkiewicz2025/poroelastic.py",
+    "model_git_blob": "5a29c83ddc2fec088f7b068c996d3982b610e69c",
+    "model_sha256": "7dcce1b91ead1043a7e62f47d09a84973b900e720e4af364f4415f2165e8aa8e",
+    "unchanged_on_moving_upstream": true,
+    "static_calibration_sha256": "2a2fdd129cbfb7742196abb493409c76aab11e2bef9f74aafb3df996c6b21ce5",
+    "solids_calibration_sha256": "98cbdd42ea99dc454b7c150c86e07c78bca07e7987e5ac5a0f37b7008937e04d",
+    "aggregate_trace_sha256": "40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9",
+    "per_brew_trace_sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08"
+  },
+  "decision": {
+    "disposition": "NO_ADOPTION",
+    "reason": "The review improves evidence semantics but adds no qualifying independent hydraulic holdout and no changed model or dataset required by the frozen v0.2.0 branch.",
+    "adopted_lock_after_review": {
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+    },
+    "future_review_required_before_adoption": true
+  }
+}

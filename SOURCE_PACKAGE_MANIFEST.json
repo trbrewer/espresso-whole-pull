@@ -24,10 +24,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 132,
-  "total_uncompressed_bytes_excluding_manifest": 1264005,
-  "aggregate_source_sha256": "90fd3023e9b97b1b42b0e1cfa25c7e76858ce40a00b0fec69881ab8bfeced651",
-  "aggregate_sha256": "90fd3023e9b97b1b42b0e1cfa25c7e76858ce40a00b0fec69881ab8bfeced651",
+  "file_count": 133,
+  "total_uncompressed_bytes_excluding_manifest": 1272681,
+  "aggregate_source_sha256": "1074e6115540746537e27d500bb4090bb135bdb0a511958be9dabc7928ed86a5",
+  "aggregate_sha256": "1074e6115540746537e27d500bb4090bb135bdb0a511958be9dabc7928ed86a5",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -57,8 +57,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "2d75b385dd963e4c68bb683ca31659c68c24242bb1d13291ca7742e86ab63f3b",
-      "bytes": 3618,
+      "sha256": "ce4e9908133e3017a8a97008d575ec027ba9d147b71ca51b8b0922c8455818d5",
+      "bytes": 3838,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -507,8 +507,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "3a890557d9b8c4884bd47257a13c4f049b82441f0220377a9ce21c02dab5a138",
-      "bytes": 8508,
+      "sha256": "1aa35b6aabf194f9a8cef9e2ddf24ec466a1f4d0bd4f94d30a2aca8cdc3d4b4b",
+      "bytes": 8634,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -689,6 +689,11 @@
     "tests/test_wp02_effective_permeability.py": {
       "sha256": "b39d82c1f81b456ccf7ad5d29ce2f741b87881a48abcaddfde96ca129257c301",
       "bytes": 20809,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03_holdout_contract.py": {
+      "sha256": "300edc46d8b9a74671f84bee0f9bfb762e852722462ad8079db1c9b2282a6b23",
+      "bytes": 8330,
       "git_mode": "100644"
     }
   }

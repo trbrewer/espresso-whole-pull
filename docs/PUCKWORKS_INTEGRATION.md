@@ -75,3 +75,15 @@ WP-0.2F packages the merged WP02-001 result without refreshing or executing
 Puckworks. The reviewed dependency remains the exact recorded commit and tree;
 alignment with any newer upstream state requires a separate dependency-review
 task.
+
+WP-0.3A performed that moving-upstream review without importing or executing
+new Puckworks code. It resolved `main` at
+`bafafef3bc3c77599af8551d4e582aedb9b23f08`, tree
+`64ccf86aff4c90d1c513f1614b39e0823f64d6d7`. No model or dataset file was
+added relative to the adopted lock, the bound Waszkiewicz model and data
+identities remain unchanged, and no qualifying independent hydraulic holdout
+was found. The adoption disposition is `NO_ADOPTION`; the lock remains
+`fc61c4670ec7bf801e40bb391aab16048b8da26b`. See the
+[alignment and holdout review](evidence/WP_0_3A_ALIGNMENT_AND_HOLDOUT_REVIEW.md),
+[candidate matrix](../validation/evidence/WP_0_3A_HOLDOUT_CANDIDATE_MATRIX.json),
+and [frozen contract](../validation/contracts/WP_0_3A_INDEPENDENT_HOLDOUT_AND_MECHANISM_DISCRIMINATION_CONTRACT.json).

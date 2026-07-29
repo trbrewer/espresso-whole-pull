@@ -38,6 +38,7 @@
     "asset_count": 10,
     "final_terminal_manifest_sha256": "fe4c64af5cbb859793bdc0170ef1674b7584effce0f26a2b40836f3d247d3550"
   },
-  "next_scientific_milestone": "WP-0.3A_INDEPENDENT_HOLDOUT_AND_MECHANISM_DISCRIMINATION_CONTRACT",
+  "wp_0_3a_contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
+  "next_scientific_milestone": "INDEPENDENT_HYDRAULIC_CAMPAIGN_ACQUISITION_AND_PRE_REGISTRATION",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }
