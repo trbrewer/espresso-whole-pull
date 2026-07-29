@@ -12,3 +12,7 @@ reconstruction and 8-bar no-retuning same-campaign comparison. The latter is
 not independent validation. Neither result establishes full poroelastic
 deformation, cross-rig transfer, early wetting, channeling, chemistry, taste,
 or a universal permeability law.
+
+Version 0.2.0 may be described as reproducibly packaged and software-qualified
+within this declared scope. That release status does not raise the scientific
+claim ceiling.

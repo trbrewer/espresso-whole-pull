@@ -1,8 +1,8 @@
-# Package QA status — 0.2.0-dev.1
+# Package QA status — 0.2.0
 
-**Active role:** WP-0.2A governing-physics development
+**Active role:** WP-0.2F no-physics release finalization
 
-**Release qualification:** NOT_YET_FINALIZED
+**Release qualification:** candidate gates pending
 
 **Historical baseline:** v0.1.4-public.1 remains immutable and independently
 checked by the baseline-integrity verifier.

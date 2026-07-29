@@ -1,0 +1,53 @@
+{
+  "schema_version": "espresso.public.wp_0_2f_release_qa.v1",
+  "task": "WP-0.2F",
+  "release_version": "0.2.0",
+  "candidate_source_commit": "50024a691b8b776b0d14a50c8c96affae8b74b8d",
+  "candidate_source_tree": "f1088b81abea46fcd2426d7ad756488d438b0187",
+  "source_manifest": {
+    "file_count": 131,
+    "aggregate_source_sha256": "4182c59cfef51251903331377a32951f2384806105ae8ee5d5c60c55172aca87",
+    "manifest_file_sha256": "59e00b956c35e659e4428e8830dce08b4fce70334d0f34c4a9242596e3804175",
+    "deterministic_generation": "PASS",
+    "entry_verification": "PASS"
+  },
+  "verification": {
+    "python_tests": {
+      "status": "PASS",
+      "count": 119
+    },
+    "active_static_validation": {
+      "status": "PASS",
+      "gate_count": 34
+    },
+    "historical_v0_1_4_baseline_integrity": "PASS",
+    "active_governing_change_contract": "PASS",
+    "no_physics_release_finalization_contract": "PASS",
+    "shell_syntax": "PASS",
+    "json_syntax": "PASS",
+    "foundation12_build": "PASS"
+  },
+  "build_identity_path": "validation/wp02/WP_0_2F_RELEASE_BUILD_IDENTITY.json",
+  "release_executable_sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
+  "historical_scientific_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+  "scientific_result_sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+  "closure_contract_sha256": "2c898dd91e558ce62006dc81de9cff20bb633b52a89f6fa5a44c5edcda50d57a",
+  "frozen_configurations": {
+    "r0_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+    "constant_r1_sha256": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876",
+    "wp02_nine_bar_sha256": "81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e",
+    "wp02_eight_bar_sha256": "ac87cfdff2862401b33ac01fa31d87bf966e062cecd153ce59ab4a9518feb57e"
+  },
+  "release_verification_execution_counts": {
+    "protected_source_access": 0,
+    "governed_nine_bar_reruns": 0,
+    "governed_eight_bar_reruns": 0,
+    "score_bearing_analyzer_invocations": 0,
+    "non_protected_fixture_executions": 0,
+    "disabled_r0_regression_executions": 0,
+    "disabled_constant_r1_regression_executions": 0,
+    "release_builds": 1
+  },
+  "overall_disposition": "SOFTWARE_AND_SOURCE_LINKED_RECONSTRUCTION_RELEASE_PASS",
+  "physical_validation": "NOT_ESTABLISHED"
+}

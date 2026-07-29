@@ -5,12 +5,11 @@ import argparse
 import hashlib
 import json
 import os
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable
 
 MANIFEST_NAME = "SOURCE_PACKAGE_MANIFEST.json"
-STRATEGY_RELATIVE = "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md"
+STRATEGY_RELATIVE = "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_3.md"
 PUBLIC_METADATA_TOP_LEVEL = {
     ".editorconfig",
     ".gitattributes",
@@ -183,9 +182,9 @@ def main() -> None:
         raise SystemExit(f"Controlling strategy copy missing: {strategy}")
     aggregate_hash = aggregate(files)
     report = {
-        "schema_version": "espresso.whole_pull.source_package_manifest.v0.2.0-dev.1",
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
-        "package": root.name,
+        "schema_version": "espresso.whole_pull.source_package_manifest.v0.2.0",
+        "generated_at_utc": "NOT_RECORDED_DETERMINISTIC_SOURCE_MANIFEST",
+        "package": "espresso-whole-pull",
         "package_version": (root / "VERSION").read_text(encoding="utf-8").strip(),
         "target": "OpenFOAM Foundation 12",
         "derivation_role": "sanitized public derivative",

@@ -1,36 +1,34 @@
 {
-  "schema_version": "espresso.whole_pull.package_qa.v0.2.0-dev.1",
-  "package_development_version": "0.2.0-dev.1",
-  "intended_future_release_version": "0.2.0",
-  "scientific_milestone": "WP-0.2A",
-  "release_role": "WP_0_2A_GOVERNING_PHYSICS_DEVELOPMENT",
+  "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
+  "package_version": "0.2.0",
+  "scientific_milestone": "WP-0.2F",
+  "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION",
   "target": "OpenFOAM Foundation 12",
-  "governing_physics_change": true,
-  "release_qualification": "NOT_YET_FINALIZED",
-  "current_evidence": {
-    "r0_frozen_regression": "PASS",
-    "constant_r1_frozen_regression": "PASS",
-    "wp02_uniform_fixture": "PASS",
-    "nine_bar_source_linked_reconstruction": "PASS",
-    "eight_bar_same_campaign_no_retuning_comparison": "PASS",
-    "overall_wp02_001_disposition": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
-    "physical_validation": "NOT_ESTABLISHED"
+  "governing_physics_change_after_baseline": false,
+  "release_qualification": "PASS_PENDING_PR_MERGE_AND_POST_MERGE_TAG",
+  "scientific_result": {
+    "sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+    "overall_disposition": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
+    "physical_validation": "NOT_ESTABLISHED",
+    "changed_by_release_finalization": false
   },
   "current_repository_checks": {
-    "python_test_count": 117,
+    "python_test_count": 119,
     "static_gate_count": 34,
-    "source_manifest_file_count": 129,
-    "source_manifest_aggregate_sha256": "07e107673e836d0a7bc3f1848e91308bdbdbc46baa67799e2dc5cda6fbd88b69",
+    "source_manifest_file_count": 131,
+    "source_manifest_aggregate_sha256": "4182c59cfef51251903331377a32951f2384806105ae8ee5d5c60c55172aca87",
     "historical_baseline_integrity": "PASS",
-    "active_change_contract": "PASS"
+    "active_governing_change_contract": "PASS",
+    "release_finalization_contract": "PASS",
+    "foundation12_build": "PASS"
   },
   "historical_baseline": {
     "package": "v0.1.4-public.1",
-    "role": "IMMUTABLE_SANITIZED_PUBLIC_R0_BASELINE",
     "reference_status": "FROZEN / QUALIFIED",
     "governing_physics_change": false,
-    "physical_validation": "NOT_ESTABLISHED",
-    "evidence_relabelled_as_v0_2_0": false
+    "physical_validation": "NOT_ESTABLISHED"
   },
-  "claim_ceiling": "WP02-001 is a source-linked multipressure reconstruction result. The 8-bar comparison is same-campaign and not independent validation. Physical validation remains NOT_ESTABLISHED."
+  "executed_scientific_solver_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+  "release_executable_sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
+  "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }

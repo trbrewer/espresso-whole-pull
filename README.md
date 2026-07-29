@@ -2,7 +2,7 @@
 
 OpenFOAM-based research solver for espresso-puck wetting, porous flow, extraction, and multiscale integration with Puckworks.
 
-> **Research software:** current development is WP-0.2A / 0.2.0-dev.1. It
+> **Research software:** v0.2.0 finalizes WP-0.2A. It
 > adds one optional governing-physics closure while preserving the immutable
 > v0.1.4-public.1 R0 baseline and constant R1 control. Physical validation is
 > **NOT_ESTABLISHED**.
@@ -37,7 +37,8 @@ See `docs/ONBOARDING.md` before running or changing the model.
 
 The tagged `v0.1.4-public.1` package remains the immutable sanitized public R0
 baseline and retains its historical no-governing-physics release contract.
-The active `0.2.0-dev.1` line is not a finalized 0.2.0 release.
+Version 0.2.0 is a software and source-linked reconstruction release, not a
+physical-validation release.
 
 ## License
 

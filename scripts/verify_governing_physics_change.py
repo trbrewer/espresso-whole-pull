@@ -57,12 +57,19 @@ def verify(root: Path, declaration_path: Path | None = None) -> dict:
     checks = {
         "tracked_declaration": declaration.get("change_declaration")
         == "GOVERNING_PHYSICS_CHANGE",
-        "active_version": (root / "VERSION").read_text().strip() == "0.2.0-dev.1",
+        "active_version": (root / "VERSION").read_text().strip()
+        in ("0.2.0-dev.1", "0.2.0"),
         "not_v0_1_4_active": (root / "VERSION").read_text().strip() != "0.1.4",
-        "solver_display_version": "espressoWholePullFoam v0.2.0-dev.1" in solver,
+        "solver_display_version": any(
+            token in solver
+            for token in (
+                "espressoWholePullFoam v0.2.0-dev.1",
+                "espressoWholePullFoam v0.2.0",
+            )
+        ),
         "solver_banner_only_change": hashlib.sha256(
             re.sub(
-                r"v0\.(?:1\.4|2\.0-dev\.1)",
+                r"v0\.(?:1\.4|2\.0(?:-dev\.1)?)",
                 "v<DISPLAY_VERSION>",
                 solver,
             ).encode()

@@ -390,7 +390,7 @@ class WP02EffectivePermeabilityTests(unittest.TestCase):
             ROOT / "solver/espressoWholePullFoam/espressoWholePullFoam.C"
         ).read_text()
         normalized = solver.replace(
-            "v0.2.0-dev.1", "v<DISPLAY_VERSION>"
+            "v0.2.0", "v<DISPLAY_VERSION>"
         ).encode()
         self.assertEqual(
             hashlib.sha256(normalized).hexdigest(),

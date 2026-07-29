@@ -1,0 +1,27 @@
+{
+  "schema_version": "espresso.public.wp02_001_post_merge_closure.v1",
+  "task": "WP02-001",
+  "pull_request": 20,
+  "merge_method": "MERGE_COMMIT",
+  "merge_commit": "9a67c3ce3337ae5bd81cb3e0aace648c1656b1de",
+  "governance_correction_parent": "a414928ac203f4cfc17e2b67caf811ad2d3f69e7",
+  "scientific_result_commit": "2385044b122bb83b13625bf66920ff1bd8c38410",
+  "scientific_result_commit_reachable": true,
+  "required_ci_checks": {
+    "source_and_boundary": "PASS",
+    "inexpensive_checks": "PASS"
+  },
+  "issue_18": "CLOSED",
+  "feature_branch": "DELETED",
+  "v0_2_0_tag_existed_at_closure": false,
+  "result_sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
+  "frozen_configurations_unchanged": true,
+  "closure_contract_unchanged": true,
+  "solver_executions_added": 0,
+  "protected_accesses_added": 0,
+  "analyzer_invocations_added": 0,
+  "scores_recalculated": false,
+  "fitting_or_retuning": false,
+  "final_disposition": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
+  "physical_validation": "NOT_ESTABLISHED"
+}
