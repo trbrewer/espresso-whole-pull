@@ -90,6 +90,42 @@ class TestBoundary(unittest.TestCase):
                 ("freeze-commit", "freeze-tree"))
             self.assertFalse(got[gate], gate)
 
+    def test_structured_physical_validation_and_overclaims(self):
+        result = self._valid_result()
+        contract = self.contract()
+        evidence = {
+            "amendment": result["identity"]["amendment_sha256"],
+            "transcription": result["identity"]["transcription_sha256"],
+            "derivation": result["identity"]["derivation_sha256"]}
+        governance = {"contract_physical_validation": "NOT_ESTABLISHED",
+                      "result_physical_validation": "NOT_ESTABLISHED"}
+        base = (contract, set(verifier.G1_FINAL), verifier.FROZEN,
+                (verifier.ORIGINAL_CONTRACT, verifier.ORIGINAL_RESULT),
+                result, result["identity"]["module_sha256"], evidence,
+                ("freeze-commit", "freeze-tree"))
+        self.assertTrue(all(verifier.evaluate_p1(
+            *base, governance).values()))
+        for value, gate in (
+                ("ESTABLISHED", "contract_physical_validation"),
+                ("PHYSICALLY_VALIDATED", "contract_physical_validation")):
+            bad = dict(governance, contract_physical_validation=value)
+            self.assertFalse(verifier.evaluate_p1(*base, bad)[gate])
+        bad = copy.deepcopy(result); bad["physical_validation"] = "ESTABLISHED"
+        args = (contract, set(verifier.G1_FINAL), verifier.FROZEN,
+                (verifier.ORIGINAL_CONTRACT, verifier.ORIGINAL_RESULT), bad,
+                result["identity"]["module_sha256"], evidence,
+                ("freeze-commit", "freeze-tree"), governance)
+        self.assertFalse(verifier.evaluate_p1(*args)["physical_validation"])
+        for phrase in ("physical validation is established",
+                       "independently validated", "experimentally validated"):
+            bad = copy.deepcopy(result); bad["claim_ceiling"] = phrase
+            args = (contract, set(verifier.G1_FINAL), verifier.FROZEN,
+                    (verifier.ORIGINAL_CONTRACT, verifier.ORIGINAL_RESULT), bad,
+                    result["identity"]["module_sha256"], evidence,
+                    ("freeze-commit", "freeze-tree"), governance)
+            self.assertFalse(verifier.evaluate_p1(
+                *args)["affirmative_overclaims_absent"])
+
     def test_historical_builder_reconstructs_failure(self):
         from tools.reference.wp03b import canonical_run
         result = canonical_run.run(ROOT, "historical", "historical-tree")

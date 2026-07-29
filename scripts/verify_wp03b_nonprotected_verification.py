@@ -15,6 +15,7 @@ ORIGINAL_CONTRACT = "4b05d9a8f7f91dc6e476c9942639524213541d3f887452d4fb369715bc9
 ORIGINAL_RESULT = "80d0a91d6456ff1219e74f0503f3e6846c9974b3ed868cff19f6f9da943cde90"
 P1_CONTRACT_PATH = "validation/contracts/WP_0_3B_A1_P1_PREEXECUTION_CORRECTION_CONTRACT.json"
 RESULT_PATH = "validation/results/WP_0_3B_A1_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json"
+G1_PATH = "validation/amendments/WP_0_3B_G1_POST_MERGE_CLOSURE.json"
 
 P1_PRE = frozenset({
     ".github/workflows/static-validation.yml", "PACKAGE_QA_STATUS.json",
@@ -33,6 +34,7 @@ P1_PRE = frozenset({
     "validation/evidence/MORONEY2016_EQUATIONS_87_97_GOVERNED_TRANSCRIPTION.json",
 })
 P1_FINAL = P1_PRE | {RESULT_PATH}
+G1_FINAL = P1_FINAL | {"docs/QA_STATUS.md", G1_PATH}
 
 FROZEN = {
     "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json":
@@ -75,11 +77,25 @@ def _all_pass(value):
     return True
 
 
+def _affirmative_overclaim_absent(text, phrases):
+    for sentence in text.lower().replace("\n", " ").split("."):
+        for phrase in phrases:
+            if phrase in sentence and not sentence.strip().startswith(("no ", "not ")):
+                return False
+    return True
+
+
 def evaluate_p1(contract, repository_paths, frozen_hashes, original_hashes,
                 result, current_modules, evidence_hashes=None,
-                expected_implementation=None):
+                expected_implementation=None, governance=None):
     result_present = result is not None
-    expected = P1_FINAL if result_present else P1_PRE
+    expected = G1_FINAL if governance is not None else (
+        P1_FINAL if result_present else P1_PRE)
+    claim_text = " ".join((contract.get("claim_ceiling", ""),
+                           (result or {}).get("claim_ceiling", ""))).lower()
+    forbidden_claims = ("physical validation is established",
+                        "independently validated",
+                        "experimentally validated")
     checks = {
         "contract_path_sets_equal_independent_constants":
             set(contract["preexecution_paths"]) == P1_PRE and
@@ -91,8 +107,11 @@ def evaluate_p1(contract, repository_paths, frozen_hashes, original_hashes,
         "threshold_not_relaxed":
             contract["moroney"]["refinement_ratio_maximum"] == 0.35 and
             contract["moroney"]["composite_ratio_maximum"] == 0.35,
-        "physical_validation_bounded":
-            "physical validation is established" in contract["claim_ceiling"],
+        "contract_physical_validation":
+            governance is None or
+            governance.get("contract_physical_validation") == "NOT_ESTABLISHED",
+        "affirmative_overclaims_absent":
+            _affirmative_overclaim_absent(claim_text, forbidden_claims),
     }
     if not result_present:
         checks["preexecution_result_absent"] = True
@@ -136,7 +155,9 @@ def evaluate_p1(contract, repository_paths, frozen_hashes, original_hashes,
             result.get("overall_disposition") ==
             contract["result"]["required_disposition"],
         "physical_validation":
-            result.get("physical_validation") == "NOT_ESTABLISHED",
+            result.get("physical_validation") == "NOT_ESTABLISHED" and
+            (governance is None or
+             governance.get("result_physical_validation") == "NOT_ESTABLISHED"),
         "runtime_wp02_coupling":
             result.get("runtime_wp02_coupling") is False,
     })
@@ -149,6 +170,9 @@ def verify(root):
     contract["_observed_sha256"] = sha(contract_path)
     result_path = root / RESULT_PATH
     result = json.loads(result_path.read_text(encoding="utf-8")) if result_path.exists() else None
+    governance_path = root / G1_PATH
+    governance = (json.loads(governance_path.read_text(encoding="utf-8"))
+                  if governance_path.exists() else None)
     module_hashes = {name: sha(root / "tools/reference/wp03b" / name)
                      for name in MODULES}
     evidence_hashes = {
@@ -173,7 +197,7 @@ def verify(root):
         {path: sha(root/path) for path in FROZEN},
         (sha(root/"validation/contracts/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_CONTRACT.json"),
          sha(root/"validation/results/WP_0_3B_NONPROTECTED_EXTRACTION_VERIFICATION_RESULT.json")),
-        result, module_hashes, evidence_hashes, expected)
+        result, module_hashes, evidence_hashes, expected, governance)
     checks["preserved_commits_reachable"] = all(_reachable(root, c) for c in
         ("d0180a84bed7a81b62ec43dee02e6150e89c3f21",
          "78356b181fc1d61935721a4d6d7469a7420a5cae", P1_BASELINE))
