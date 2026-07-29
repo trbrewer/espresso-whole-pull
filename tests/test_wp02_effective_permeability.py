@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import copy
 import json
 import math
 import subprocess
@@ -24,6 +25,8 @@ from waszkiewicz_effective_permeability import (  # noqa: E402
     solids_sigmoid,
 )
 from wp02_contract_bridge import scenario  # noqa: E402
+from prepare_case import render_control_dict, validate_r1_scenario  # noqa: E402
+from verify_wp02_uniform_fixture import relative_error  # noqa: E402
 
 
 class WP02EffectivePermeabilityTests(unittest.TestCase):
@@ -171,6 +174,83 @@ class WP02EffectivePermeabilityTests(unittest.TestCase):
         self.assertEqual(fixture["hydraulics"]["target_inlet_pressure_gauge_Pa"], 870902.4190000001)
         self.assertEqual(fixture["effective_permeability_evolution"]["minimum_effective_multiplier"], 1e-6)
         self.assertFalse(fixture["effective_permeability_evolution"]["fixed_8s_offset_used"])
+        self.assertEqual(fixture["output"]["write_format"], "ascii")
+        self.assertFalse(fixture["output"]["write_compression"])
+        self.assertEqual(fixture["output"]["write_precision_digits"], 17)
+        control = render_control_dict(fixture)
+        self.assertIn("writeFormat     ascii;", control)
+        self.assertIn("writePrecision  17;", control)
+        self.assertIn("writeCompression off;", control)
+
+    def test_fixture_attempt_one_and_serialization_precision_are_governed(self) -> None:
+        attempt = self.contract["uniform_pressure_fixture_attempts"][0]
+        self.assertEqual(attempt["status"], "FAIL")
+        self.assertEqual(
+            attempt["failure_class"],
+            "ASCII_MULTIPLIER_FIELD_SERIALIZATION_PRECISION_INSUFFICIENT",
+        )
+        serialization = self.contract["fixture_output_serialization"]
+        self.assertEqual(serialization["field_write_precision_digits"], 17)
+        self.assertFalse(serialization["scientific_model_effect"])
+        self.assertFalse(serialization["acceptance_tolerance_change"])
+        state = closure_state(
+            21.0,
+            True,
+            p_bar=9.0,
+            source_to_solver_offset_s=3.0,
+            source_validity_start_s=10.01001001001001,
+            minimum=1e-6,
+            base_permeability_m2=2.8642613245723525e-15,
+            **self.kwargs,
+        )
+        exact = state["multiplier"]
+        ten_digit = float(f"{exact:.10g}")
+        seventeen_digit = float(f"{exact:.17g}")
+        self.assertGreater(relative_error(ten_digit, exact), 1e-12)
+        self.assertLessEqual(relative_error(seventeen_digit, exact), 1e-12)
+
+    def test_fixture_precision_is_fixture_only(self) -> None:
+        for name in ("nine_bar_reconstruction", "eight_bar_transfer"):
+            production = scenario(ROOT, name)
+            self.assertNotIn("write_precision_digits", production["output"])
+            self.assertIn("writePrecision  10;", render_control_dict(production))
+        self.assertEqual(
+            hashlib.sha256(
+                (ROOT / "config/reconstruction_WP02A_waszkiewicz_9bar.json").read_bytes()
+            ).hexdigest(),
+            "81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e",
+        )
+        self.assertEqual(
+            hashlib.sha256(
+                (ROOT / "config/reconstruction_WP02A_waszkiewicz_8bar.json").read_bytes()
+            ).hexdigest(),
+            "ac87cfdff2862401b33ac01fa31d87bf966e062cecd153ce59ab4a9518feb57e",
+        )
+
+    def test_fixture_serialization_fails_closed(self) -> None:
+        fixture = scenario(ROOT, "uniform_pressure_fixture")
+        for mutation in (
+            lambda value: value["output"].__setitem__("write_precision_digits", 10),
+            lambda value: value["output"].pop("write_precision_digits"),
+            lambda value: value["output"].__setitem__("write_format", "binary"),
+            lambda value: value["output"].__setitem__("write_compression", True),
+        ):
+            edited = copy.deepcopy(fixture)
+            mutation(edited)
+            with self.assertRaises(SystemExit):
+                validate_r1_scenario(edited, 1)
+
+    def test_frozen_implementation_hashes_remain_unchanged(self) -> None:
+        expected = {
+            "solver/espressoWholePullFoam/espressoWholePullFoam.C": "f5498e3b3570899c3e8f1a03779a9b807d580aef77e901141e591fe243493fdc",
+            "scripts/waszkiewicz_effective_permeability.py": "098fdf8c1a6fe761f603fb0719bc0f83fb41a99fceace3e990656788f76ec49b",
+            "scripts/wp02_reference_math.py": "6c1001b18539093a949180720aa37f5466fac3954faf1b28b717a1d90fa187f9",
+            "scripts/analyze_wp02.py": "5f56eb172a851c822cc88301924ef0f2ec1a2d73890c92ad14f8d87e69bc7fd9",
+        }
+        for relative, digest in expected.items():
+            self.assertEqual(
+                hashlib.sha256((ROOT / relative).read_bytes()).hexdigest(), digest
+            )
 
     def test_uniform_fixture_two_directory_generation_is_identical(self) -> None:
         with tempfile.TemporaryDirectory() as td:

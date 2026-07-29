@@ -162,6 +162,11 @@ def render_control_dict(scenario: dict) -> str:
     start_value = time_cfg["start_s"] if r1 else time_cfg.get("start_s", 0.0)
     compression = "on" if bool(compression_value) else "off"
     write_format = str(format_value)
+    write_precision = (
+        int(output_cfg["write_precision_digits"])
+        if is_wp02_uniform_fixture(scenario)
+        else 10
+    )
     return f'''FoamFile
 {{
     version     2.0;
@@ -182,7 +187,7 @@ writeControl    runTime;
 writeInterval   {float(time_cfg['field_write_interval_s']):.16g};
 purgeWrite      0;
 writeFormat     {write_format};
-writePrecision  10;
+writePrecision  {write_precision};
 writeCompression {compression};
 timeFormat      general;
 timePrecision   12;
@@ -442,6 +447,16 @@ def validate_r1_scenario(scenario: dict, nprocs: int) -> None:
         if is_wp02_uniform_fixture(scenario):
             if nprocs != 1 or "flow_comparison_contract" in scenario:
                 raise SystemExit("invalid WP02 uniform fixture")
+            output = scenario["output"]
+            precision = output.get("write_precision_digits")
+            if (
+                isinstance(precision, bool)
+                or not isinstance(precision, int)
+                or precision != 17
+                or output.get("write_format") != "ascii"
+                or output.get("write_compression") is not False
+            ):
+                raise SystemExit("invalid WP02 uniform fixture output serialization")
         return
     if governance.get("change_scope") != "SOURCE_SCENARIO_CHANGE_ONLY":
         raise SystemExit("R1 change scope is not SOURCE_SCENARIO_CHANGE_ONLY")
@@ -665,6 +680,17 @@ def write_r1_manifest(
         "physical_validation": (
             "NOT_APPLICABLE" if is_wp02_uniform_fixture(scenario) else "NOT_ESTABLISHED"
         ),
+        "fixture_output_serialization": (
+            {
+                "write_format": scenario["output"]["write_format"],
+                "write_precision_digits": scenario["output"][
+                    "write_precision_digits"
+                ],
+                "write_compression": scenario["output"]["write_compression"],
+            }
+            if is_wp02_uniform_fixture(scenario)
+            else None
+        ),
         "package_scientific_configuration_change": True,
         "scientific_configuration_change_scope": "NEW_R1_SCENARIO_ONLY",
         "qualified_R0_scientific_configuration_change": False,
@@ -723,13 +749,21 @@ def write_r1_manifest(
             "cross_directory_byte_identity_result": "NOT_PERFORMED_IN_THIS_INVOCATION",
         },
         "generator_determinism_qualification": {
-            "qualification_kind": "WP01R_004_TWO_DIRECTORY_REPLAY",
+            "qualification_kind": (
+                "WP02_001_UNIFORM_FIXTURE_TWO_DIRECTORY_REPLAY"
+                if is_wp02_uniform_fixture(scenario)
+                else "WP01R_004_TWO_DIRECTORY_REPLAY"
+            ),
             "qualified_generator_path": "scripts/prepare_case.py",
             "qualified_generator_sha256": sha256(root / "scripts/prepare_case.py"),
             "replay_count": 2,
             "cross_directory_byte_identity_result": "PASS",
             "qualification_test": (
-                "tests/test_r1_bridge.py::R1BridgeTests::"
+                "tests/test_wp02_effective_permeability.py::"
+                "WP02EffectivePermeabilityTests::"
+                "test_uniform_fixture_two_directory_generation_is_identical"
+                if is_wp02_uniform_fixture(scenario)
+                else "tests/test_r1_bridge.py::R1BridgeTests::"
                 "test_two_generations_have_identical_governed_bytes"
             ),
         },

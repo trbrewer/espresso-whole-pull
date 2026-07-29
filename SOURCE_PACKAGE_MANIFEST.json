@@ -1,6 +1,6 @@
 {
   "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
-  "generated_at_utc": "2026-07-29T12:26:49.112486+00:00",
+  "generated_at_utc": "2026-07-29T13:13:27.418206+00:00",
   "package": "espresso-whole-pull",
   "package_version": "0.1.4",
   "target": "OpenFOAM Foundation 12",
@@ -24,9 +24,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 126,
-  "total_uncompressed_bytes_excluding_manifest": 1206806,
-  "aggregate_source_sha256": "6bbeda2c215acca15d95176f7cd0b3af320718cf0172a19414fec5a8cd30b136",
-  "aggregate_sha256": "6bbeda2c215acca15d95176f7cd0b3af320718cf0172a19414fec5a8cd30b136",
+  "total_uncompressed_bytes_excluding_manifest": 1219689,
+  "aggregate_source_sha256": "f8ecb6c5a1a6207ac00a3f69ea0fc870856100d21f1e8288d6c3fd7c38633fb4",
+  "aggregate_sha256": "f8ecb6c5a1a6207ac00a3f69ea0fc870856100d21f1e8288d6c3fd7c38633fb4",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md",
   "strategy_source_sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
   "files": {
@@ -356,8 +356,8 @@
       "git_mode": "100644"
     },
     "config/fixture_WP02_001_uniform_pressure.json": {
-      "sha256": "91d52b74091e1a0c99efc5f0c10ea97a1f83875dd5bf34a9b279e6af42f8ec54",
-      "bytes": 7650,
+      "sha256": "30ef8b73b27603e895a7921c590fcddb395653cfe495477cdd0c992e08184d5f",
+      "bytes": 7684,
       "git_mode": "100644"
     },
     "config/fixture_layered_pressure.json": {
@@ -526,8 +526,8 @@
       "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
-      "sha256": "e90ba671a839aab933d9252106ecb1a40e9c9240b970e4f8e1243014092aa04e",
-      "bytes": 37468,
+      "sha256": "6c74f341f5a50f2d3fe887737b73481e99f174d34a657d4ac8676860334fe08a",
+      "bytes": 38919,
       "git_mode": "100755"
     },
     "scripts/r1_contract_bridge.py": {
@@ -586,8 +586,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_wp02_uniform_fixture.py": {
-      "sha256": "53621b2f44228cfbcd67c425cb873e193ccdac0420b6b36733e195668d1644bd",
-      "bytes": 7378,
+      "sha256": "1fdeb2b21df20abe1855006513fdbac49eafd035ece91270a9f8eefd861cd1e7",
+      "bytes": 14406,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
@@ -596,8 +596,8 @@
       "git_mode": "100755"
     },
     "scripts/wp02_contract_bridge.py": {
-      "sha256": "5821ba714313a9f87b0a5d944c4d3d7c19e29a867d8abbbb7738feddfd386aec",
-      "bytes": 7619,
+      "sha256": "0577183df324299d51f2dc706e46b23af279e40978ccdf286c7ede24ea343ce0",
+      "bytes": 7896,
       "git_mode": "100755"
     },
     "scripts/wp02_phi_decimal_reference.py": {
@@ -656,8 +656,8 @@
       "git_mode": "100644"
     },
     "tests/test_wp02_effective_permeability.py": {
-      "sha256": "ec3621bb8470b8d2f3272b86f1683a43f448c20afb06f0b0cf0098ac81215f5f",
-      "bytes": 9655,
+      "sha256": "761703d1df6d63aff3b9f3605d28a517374922360225bdc8d38b6df25e97c8c9",
+      "bytes": 13748,
       "git_mode": "100644"
     }
   }

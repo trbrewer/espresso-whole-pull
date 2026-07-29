@@ -27,3 +27,8 @@ WP01R-006 selects the Waszkiewicz saturated dissolution-indexed
 effective-permeability branch for WP-0.2A. No new physics is implemented by
 the decision; issue #18 is the next governed implementation task.
 Machine/headspace coupling remains the runner-up.
+
+WP02-001 fixture attempt 1 stopped before scientific execution because
+ten-digit ASCII field serialization did not satisfy the frozen multiplier
+round-trip gate. A fixture-only 17-digit serialization correction is recorded;
+the governing closure and scientific configurations remain unchanged.

@@ -38,3 +38,10 @@ separate pre-execution completeness correction adds the canonical
 closed-form/OpenFOAM verifier without changing the frozen solver or closure.
 The fixture contains no protected observations and is code verification, not
 physical validation.
+
+Fixture attempt 1 used ten-significant-digit ASCII field output. Its CSV trace
+matched the independent multiplier to `7.43e-15` relative error, while the
+round-tripped field failed the unchanged `1e-12` gate because of serialization
+rounding. The fixture-only field precision is therefore frozen at 17
+significant digits for double-precision round-trip code verification. This
+changes no solver calculation, scientific value, or acceptance tolerance.

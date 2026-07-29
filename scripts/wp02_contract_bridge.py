@@ -71,7 +71,16 @@ def scenario(root: Path, pressure: str) -> dict:
         cfg["extraction"]["rate_constant_1_s"] = 0.0
         cfg["liquid"]["effective_solute_diffusivity_m2_s"] = 0.0
         cfg["time"].update({"start_s": 0.0, "end_s": 103.0, "delta_t_s": 1.0, "field_write_interval_s": 1.0})
-        cfg["output"].update({"write_format": "ascii", "write_compression": False})
+        serialization = contract["fixture_output_serialization"]
+        cfg["output"].update(
+            {
+                "write_format": serialization["format"],
+                "write_compression": False,
+                "write_precision_digits": serialization[
+                    "field_write_precision_digits"
+                ],
+            }
+        )
         cfg["parallel"]["default_subdomains"] = 1
         half_width = 0.51 * cfg["coffee_bed"]["bed_depth_m"] / 64
         cfg["verification"]["pressure_probes"] = [

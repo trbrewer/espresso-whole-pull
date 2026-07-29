@@ -99,7 +99,8 @@
     "live_stage_logging": true,
     "reference_artifact_version": "0.1.4",
     "write_compression": false,
-    "write_format": "ascii"
+    "write_format": "ascii",
+    "write_precision_digits": 17
   },
   "parallel": {
     "decomposition_method": "scotch",

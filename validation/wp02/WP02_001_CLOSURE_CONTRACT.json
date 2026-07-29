@@ -115,8 +115,67 @@
       "scientific_score_calculation_count_before_discovery": 0,
       "pre_fixture_compile_smoke_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
       "authorized_correction": "ADD_DETERMINISTIC_UNIFORM_PRESSURE_FIXTURE_AND_VERIFICATION_HARNESS"
+    },
+    {
+      "correction_id": "WP02_001_PRE_SCIENTIFIC_EXECUTION_FIELD_SERIALIZATION",
+      "discovered_after_commit": "6b82bad8c7357577f07d882d277f06b09e19038d",
+      "correction_role": "PRE_SCIENTIFIC_EXECUTION_VERIFICATION_OUTPUT_SERIALIZATION_CORRECTION",
+      "governing_physics_change": false,
+      "scientific_contract_change": false,
+      "acceptance_gate_change": false,
+      "authorized_correction": "INCREASE_FIXTURE_ONLY_ASCII_FIELD_WRITE_PRECISION_TO_17"
     }
   ],
+  "uniform_pressure_fixture_attempts": [
+    {
+      "attempt_id": "uniform_pressure_fixture_attempt_1",
+      "execution_commit": "6b82bad8c7357577f07d882d277f06b09e19038d",
+      "executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+      "fixture_config_sha256": "91d52b74091e1a0c99efc5f0c10ea97a1f83875dd5bf34a9b279e6af42f8ec54",
+      "case_manifest_sha256": "33051dde96be35adc9634b17919002e4e895d2796f2d3cd7bf9415fa422f6b0d",
+      "trace_sha256": "09de08be177e75eea3b28d9e0781ac63a567baea7a5cc8ae817f4390c42de495",
+      "control_dict_sha256": "2ba57ec00c6288e267abf7bfb1af59953e28277061d5177e5f375ebec92d988f",
+      "worst_time_multiplier_field_sha256": "7751dd8b8e4ebe3e9fa207504817923a5bc8246a447a460763a5237c797cf242",
+      "fixture_result_sha256": "bfa658ad4cfdaf43e78e5010aa7d03e3966264e3d3a6f7963aeee3902a351ca7",
+      "status": "FAIL",
+      "failure_class": "ASCII_MULTIPLIER_FIELD_SERIALIZATION_PRECISION_INSUFFICIENT",
+      "control_dict": {"write_format": "ascii", "write_precision_digits": 10},
+      "multiplier_error_decomposition": {
+        "trace_relative": 7.422583357969946e-15,
+        "field_relative": 1.8035273751677119e-10,
+        "field_to_trace_relative": 1.803601601001305e-10,
+        "worst_solver_time_s": 21.0,
+        "expected_multiplier": 0.013087696017639597,
+        "trace_multiplier": 0.0130876960176395,
+        "field_multiplier": 0.01308769602
+      },
+      "maximum_errors": {
+        "source_state_time_absolute_s": 1.0658141036401503e-14,
+        "effective_permeability_relative": 5.26095520717774e-15,
+        "darcy_flow_relative": 3.613066041574008e-10,
+        "analytical_flow_relative": 5.049704097667445e-15,
+        "pressure_probe_absolute_Pa": 3.003515303134918e-08,
+        "multiplier_field_spatial_cv": 0.0,
+        "combined_multiplier_relative": 1.803601601001305e-10
+      },
+      "failed_gate": "WRITTEN_MULTIPLIER_FIELD_ROUND_TRIP_PARITY",
+      "solver_calculation_defect_identified": false,
+      "closure_formula_defect_identified": false,
+      "field_serialization_defect_identified": true,
+      "scientific_openfoam_execution_count": 0,
+      "protected_source_processing_count": 0,
+      "parameter_fitting_count": 0,
+      "post_result_adjustment_count": 0
+    }
+  ],
+  "fixture_output_serialization": {
+    "format": "ascii",
+    "field_write_precision_digits": 17,
+    "role": "DOUBLE_PRECISION_ROUND_TRIP_VERIFICATION_OUTPUT",
+    "scientific_model_effect": false,
+    "solver_computation_effect": false,
+    "acceptance_tolerance_change": false
+  },
   "uniform_pressure_fixture": {
     "scenario_path": "config/fixture_WP02_001_uniform_pressure.json",
     "role": "DETERMINISTIC_CODE_VERIFICATION_NOT_PHYSICAL_VALIDATION",
