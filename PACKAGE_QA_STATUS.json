@@ -1,13 +1,13 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "WP-0.3C-STAGE0",
+  "current_governance_milestone": "WP02-002",
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
     "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION"
   },
   "target": "OpenFOAM Foundation 12",
-  "governing_physics_change_after_v0_2_0_scientific_baseline": false,
+  "governing_physics_change_after_v0_2_0_scientific_baseline": true,
   "release_qualification": "PASS",
   "scientific_result": {
     "sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
@@ -26,10 +26,10 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 199,
+    "python_test_count": 203,
     "static_gate_count": 34,
-    "source_manifest_file_count": 143,
-    "source_manifest_aggregate_sha256": "70fde457f296b04d075994b40b80ec9b307caae2ff441d5a78d867df51f1c4b9",
+    "source_manifest_file_count": 149,
+    "source_manifest_aggregate_sha256": "6586f6dd73073d5bcec9790a88a19e68441291ed50bcda883bfc8960bc095cde",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",

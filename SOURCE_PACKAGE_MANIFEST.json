@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 143,
-  "total_uncompressed_bytes_excluding_manifest": 1359314,
-  "aggregate_source_sha256": "70fde457f296b04d075994b40b80ec9b307caae2ff441d5a78d867df51f1c4b9",
-  "aggregate_sha256": "70fde457f296b04d075994b40b80ec9b307caae2ff441d5a78d867df51f1c4b9",
+  "file_count": 149,
+  "total_uncompressed_bytes_excluding_manifest": 1396573,
+  "aggregate_source_sha256": "6586f6dd73073d5bcec9790a88a19e68441291ed50bcda883bfc8960bc095cde",
+  "aggregate_sha256": "6586f6dd73073d5bcec9790a88a19e68441291ed50bcda883bfc8960bc095cde",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -453,6 +453,11 @@
       "bytes": 6218,
       "git_mode": "100644"
     },
+    "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md": {
+      "sha256": "22b7ac1b9063a77638e07565b4971c64a799d8d5df8fd8502bc9c847a8306bb6",
+      "bytes": 4222,
+      "git_mode": "100644"
+    },
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": {
       "sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
       "bytes": 109397,
@@ -476,6 +481,11 @@
     "scripts/analyze_wp02.py": {
       "sha256": "78265cd798b7ad38089e062b2f08b78364cefd9239d06dd0f84e65f999f8eb92",
       "bytes": 12765,
+      "git_mode": "100755"
+    },
+    "scripts/analyze_wp02_002_machine_coupling.py": {
+      "sha256": "53e80fc89fa4d895c4d1cdb439c0b3fbde1e3cbbe62b28bf5f042332882b0ae3",
+      "bytes": 9283,
       "git_mode": "100755"
     },
     "scripts/artifact_utils.py": {
@@ -518,6 +528,11 @@
       "bytes": 3064,
       "git_mode": "100755"
     },
+    "scripts/machine_coupling_reference.py": {
+      "sha256": "4a46720c5c8ffc317d097b510a9767156088721424c0fd00d93f2c2e94dfa8ba",
+      "bytes": 960,
+      "git_mode": "100755"
+    },
     "scripts/normalize_timestamps.py": {
       "sha256": "e544a7d7f7b5aadf96a9d6ce8ef89862f262ac094c1b40bdde4d56fc4934629e",
       "bytes": 3883,
@@ -534,8 +549,8 @@
       "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
-      "sha256": "6c74f341f5a50f2d3fe887737b73481e99f174d34a657d4ac8676860334fe08a",
-      "bytes": 38919,
+      "sha256": "a8c7660994036d2e9c144b15f5bf927061c0efce97d6c2267b665761815c095f",
+      "bytes": 41739,
       "git_mode": "100755"
     },
     "scripts/r1_contract_bridge.py": {
@@ -556,6 +571,11 @@
     "scripts/run_wp02.sh": {
       "sha256": "ab36a0fd10dd1fd1620435a1478b3c598c573e7b971f70195f669a1dd9a1d291",
       "bytes": 1419,
+      "git_mode": "100755"
+    },
+    "scripts/run_wp02_002_machine_coupling.sh": {
+      "sha256": "6a1ffff4e722023bb31a65af9aed4feacf39cc56465518e0c6b71eb2b3c22555",
+      "bytes": 4868,
       "git_mode": "100755"
     },
     "scripts/run_wp02_uniform_fixture.sh": {
@@ -584,8 +604,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_governing_physics_change.py": {
-      "sha256": "0ec8d2e2c0357fd3cb6944d2cd1560bf3f9a4844cc63c7ef54f7d0cb73f55ac7",
-      "bytes": 7259,
+      "sha256": "ff9ef42cdb58cf005825550cb35feb8863aaf9483e5e9aa1d78c917b9b8b7fcc",
+      "bytes": 7632,
       "git_mode": "100755"
     },
     "scripts/verify_no_physics_change.py": {
@@ -594,8 +614,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_release_finalization.py": {
-      "sha256": "d2dab29dad4b93855623c8692f7d62125ef7c4d237d30f8be17ab70e89306112",
-      "bytes": 8135,
+      "sha256": "7262ddb4941c36ef3bb936bc6b0ac403155c1d5e871fcd6d5620b9f30e0c8ef0",
+      "bytes": 8487,
       "git_mode": "100755"
     },
     "scripts/verify_source_manifest.py": {
@@ -684,8 +704,13 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "8b95983cf95064a232493f630c39c620d64d1c72ad20f3c90d1a31d52e3cad5f",
-      "bytes": 49771,
+      "sha256": "8cceb6be544e04160532ebd7eae0d340de2615ee589180453ac0e06cec53a455",
+      "bytes": 56948,
+      "git_mode": "100644"
+    },
+    "solver/espressoWholePullFoam/machineBoundaryModel.H": {
+      "sha256": "6e2e2f1c5810baa05abf41b23f3aea25893fbb7b4faa9c18039e651183565fe9",
+      "bytes": 4437,
       "git_mode": "100644"
     },
     "tests/test_change_contract.py": {
@@ -708,9 +733,14 @@
       "bytes": 64870,
       "git_mode": "100644"
     },
+    "tests/test_wp02_002_machine_coupling.py": {
+      "sha256": "4ac2bbde618993d03c2f8fdb6fc22218d3c74a49d8e647d62e9d76b6ae3822a5",
+      "bytes": 2522,
+      "git_mode": "100644"
+    },
     "tests/test_wp02_effective_permeability.py": {
-      "sha256": "b39d82c1f81b456ccf7ad5d29ce2f741b87881a48abcaddfde96ca129257c301",
-      "bytes": 20809,
+      "sha256": "9fe8d908cadea44564d77da9154b3fbc415c33920fc70018623544f3d5fda447",
+      "bytes": 21054,
       "git_mode": "100644"
     },
     "tests/test_wp03_holdout_contract.py": {

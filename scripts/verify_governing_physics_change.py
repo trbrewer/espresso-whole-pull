@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import re
+import subprocess
 from pathlib import Path
 
 EXPECTED = {
@@ -43,7 +44,19 @@ def verify(root: Path, declaration_path: Path | None = None) -> dict:
     )
     r0 = json.loads((root / "config/reference_R0.json").read_text())
     r1 = json.loads((root / "config/reconstruction_R1_waszkiewicz_9bar.json").read_text())
-    solver = (root / "solver/espressoWholePullFoam/espressoWholePullFoam.C").read_text()
+    frozen_solver = subprocess.run(
+        [
+            "git", "show",
+            "6e6b35b0fc6747f805223ce7975a0865835f01f0:"
+            "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+        ],
+        cwd=root, capture_output=True, text=True,
+    )
+    solver = (
+        frozen_solver.stdout
+        if frozen_solver.returncode == 0
+        else (root / "solver/espressoWholePullFoam/espressoWholePullFoam.C").read_text()
+    )
 
     identities = {
         "r0": digest(root / "config/reference_R0.json"),

@@ -1,0 +1,72 @@
+{
+  "schema_version": "espresso.public.wp02_002.run_spec.v1",
+  "task": "WP02-002",
+  "classification": [
+    "GOVERNING_PHYSICS_CHANGE",
+    "NUMERICAL_VERIFICATION",
+    "SYNTHETIC_ENGINEERING_DEMONSTRATION",
+    "NO_PHYSICAL_VALIDATION_CLAIM"
+  ],
+  "base_scenario": "config/reference_R0.json",
+  "openfoam_target": "OpenFOAM Foundation 12",
+  "case_matrix": {
+    "MC-0": {
+      "pressureBoundaryModel": "prescribedPressure",
+      "purpose": "frozen R0 regression control"
+    },
+    "MC-1": {
+      "pressureBoundaryModel": "lumpedMachineCompliance",
+      "parameter_role": "SYNTHETIC_NUMERICAL_FIXTURE",
+      "machineBoundary": {
+        "initialUpstreamPressure": 0.0,
+        "upstreamCompliance": 1e-13,
+        "upstreamResistance": 0.0,
+        "freeFlowRate": 0.0001,
+        "shutoffPressure": 900000.0,
+        "supplyRampTime": 3.0,
+        "couplingRelativeTolerance": 1e-12,
+        "couplingAbsoluteTolerance": 1e-18,
+        "couplingMaximumIterations": 80
+      }
+    },
+    "MC-2": {
+      "pressureBoundaryModel": "lumpedMachineCompliance",
+      "parameter_role": "SYNTHETIC_ENGINEERING_DEMONSTRATION",
+      "machineBoundary": {
+        "initialUpstreamPressure": 0.0,
+        "upstreamCompliance": 2e-11,
+        "upstreamResistance": 200000000000.0,
+        "freeFlowRate": 6e-06,
+        "shutoffPressure": 1200000.0,
+        "supplyRampTime": 1.0,
+        "couplingRelativeTolerance": 1e-12,
+        "couplingAbsoluteTolerance": 1e-18,
+        "couplingMaximumIterations": 80
+      }
+    },
+    "MC-3": {
+      "inherits": "MC-2",
+      "upstreamCompliance": 5e-12,
+      "parameter_role": "SYNTHETIC_ENGINEERING_DEMONSTRATION"
+    },
+    "MC-4": {
+      "inherits": "MC-2",
+      "upstreamCompliance": 8e-11,
+      "parameter_role": "SYNTHETIC_ENGINEERING_DEMONSTRATION"
+    },
+    "MC-5": {
+      "inherits": "MC-2",
+      "effective_permeability_source": "config/reconstruction_WP02A_waszkiewicz_9bar.json",
+      "parameter_role": "SYNTHETIC_ENGINEERING_DEMONSTRATION"
+    }
+  },
+  "compliance_sensitivity_ratio": [0.25, 1.0, 4.0],
+  "acceptance": {
+    "backward_euler_relative_error_maximum": 1e-10,
+    "equilibrium_relative_error_maximum": 1e-8,
+    "coupling_failed_steps": 0,
+    "bracket_failures": 0,
+    "fallback_count": 0,
+    "physical_validation": "NOT_ESTABLISHED"
+  }
+}

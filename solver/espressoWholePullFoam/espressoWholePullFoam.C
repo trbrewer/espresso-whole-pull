@@ -31,6 +31,7 @@
 #include "PstreamReduceOps.H"
 #include "mathematicalConstants.H"
 #include "OSspecific.H"
+#include "machineBoundaryModel.H"
 
 #include <cmath>
 #include <cstdlib>
@@ -291,6 +292,12 @@ int main(int argc, char *argv[])
         readScalar(modelProperties.lookup("frontPressure"));
     const scalar pressureRampTime =
         readScalar(modelProperties.lookup("pressureRampTime"));
+    const word pressureBoundaryModel =
+        modelProperties.lookupOrDefault<word>
+        (
+            "pressureBoundaryModel",
+            "prescribedPressure"
+        );
     const scalar frontSmoothingLength =
         readScalar(modelProperties.lookup("frontSmoothingLength"));
     const scalar extractionRateConstant =
@@ -337,6 +344,62 @@ int main(int argc, char *argv[])
         FatalErrorInFunction
             << "Invalid non-positive or out-of-range model input in "
             << modelProperties.objectPath() << exit(FatalError);
+    }
+
+    const bool lumpedMachine =
+        pressureBoundaryModel == "lumpedMachineCompliance";
+    if (!lumpedMachine && pressureBoundaryModel != "prescribedPressure")
+    {
+        FatalErrorInFunction << "Unsupported pressureBoundaryModel="
+            << pressureBoundaryModel << exit(FatalError);
+    }
+    MachineBoundaryParameters machineParameters =
+    {
+        1.0, 0.0, 1.0, outletPressure + 1.0, 0.0, 1.0, 1.0, 1
+    };
+    scalar initialUpstreamPressure = outletPressure;
+    if (lumpedMachine)
+    {
+        if (!modelProperties.found("machineBoundary"))
+        {
+            FatalErrorInFunction << "Missing machineBoundary dictionary"
+                << exit(FatalError);
+        }
+        const dictionary& machine = modelProperties.subDict("machineBoundary");
+        initialUpstreamPressure =
+            readScalar(machine.lookup("initialUpstreamPressure"));
+        machineParameters.compliance =
+            readScalar(machine.lookup("upstreamCompliance"));
+        machineParameters.upstreamResistance =
+            readScalar(machine.lookup("upstreamResistance"));
+        machineParameters.freeFlowRate =
+            readScalar(machine.lookup("freeFlowRate"));
+        machineParameters.shutoffPressure =
+            readScalar(machine.lookup("shutoffPressure"));
+        machineParameters.supplyRampTime =
+            readScalar(machine.lookup("supplyRampTime"));
+        machineParameters.relativeTolerance =
+            readScalar(machine.lookup("couplingRelativeTolerance"));
+        machineParameters.absoluteTolerance =
+            readScalar(machine.lookup("couplingAbsoluteTolerance"));
+        machineParameters.maximumIterations =
+            readLabel(machine.lookup("couplingMaximumIterations"));
+        if
+        (
+            initialUpstreamPressure < outletPressure
+         || machineParameters.compliance <= 0.0
+         || machineParameters.upstreamResistance < 0.0
+         || machineParameters.freeFlowRate <= 0.0
+         || machineParameters.shutoffPressure <= outletPressure
+         || machineParameters.supplyRampTime < 0.0
+         || machineParameters.relativeTolerance <= 0.0
+         || machineParameters.absoluteTolerance <= 0.0
+         || machineParameters.maximumIterations < 1
+        )
+        {
+            FatalErrorInFunction << "Invalid machineBoundary input"
+                << exit(FatalError);
+        }
     }
 
     const bool effectivePermeabilityEnabled =
@@ -756,7 +819,13 @@ int main(int argc, char *argv[])
               << "mesh_volume_relative_error,"
               << "continuum_analytical_outlet_flow_m3_s,"
               << "relative_outlet_flow_error,pressure_probe_1_Pa,"
-              << "pressure_probe_2_Pa";
+              << "pressure_probe_2_Pa,"
+              << "upstreamPressurePa,basketPressurePa,outletPressurePa,"
+              << "supplyFlowM3s,puckFlowM3s,compliantStorageM3,"
+              << "cumulativeSupplyM3,cumulativePuckIntakeM3,"
+              << "cumulativePuckOutletM3,machineWaterBalanceResidualM3,"
+              << "couplingResidualM3s,couplingIterations,"
+              << "couplingConverged,pressureBoundaryModel";
         if (effectivePermeabilityEnabled)
         {
             trace << ",effective_permeability_branch_active,source_time_s,"
@@ -787,6 +856,10 @@ int main(int argc, char *argv[])
     scalar soluteBackDiffusionMass = 0.0;
     scalar previousStoredWaterMass = initialStoredWaterMass;
     scalar previousCupBeverageMass = 0.0;
+    scalar upstreamPressure = initialUpstreamPressure;
+    scalar cumulativeSupplyVolume = 0.0;
+    scalar cumulativePuckIntakeVolume = 0.0;
+    scalar cumulativePuckOutletVolume = 0.0;
 
     Info<< "Scenario: " << scenarioId << nl
         << "Mode: " << mode << nl
@@ -806,13 +879,79 @@ int main(int argc, char *argv[])
         const scalar timeValue = runTime.value();
         const scalar deltaT = runTime.deltaTValue();
         const scalar stepStartTime = timeValue - deltaT;
-        const scalar inletPressure = rampedPressure
+        scalar inletPressure = rampedPressure
         (
             timeValue,
             targetInletPressure,
             pressureRampTime
         );
-        const scalar wettingPressureIntegral =
+        scalar supplyFlow = 0.0;
+        scalar puckFlow = 0.0;
+        scalar couplingResidual = 0.0;
+        label couplingIterations = 0;
+        bool couplingConverged = true;
+        const bool saturatedAtStepStart =
+            wetFront >= bedDepth - SMALL;
+        if (lumpedMachine)
+        {
+            scalar multiplierForConductance = 1.0;
+            if (effectivePermeabilityEnabled && saturatedAtStepStart)
+            {
+                const scalar stateTime = Foam::max
+                (
+                    timeValue - sourceToSolverOffsetS,
+                    sourceValidityStartS
+                );
+                const scalar dm = 0.5*sourceKSolidsG
+                    *(1.0 + Foam::tanh((stateTime-sourceLSolidsS)/sourceMSolidsS));
+                const scalar phi = dm/sourceDoseG;
+                const scalar phiM = sourceKSolidsG/sourceDoseG;
+                const scalar qMaster = sourceQcGPerS/wp02PhiFactor(phiM);
+                const scalar pMaster = sourcePcBar/phiM;
+                const scalar qStatic = sourceQcGPerS
+                    *wp02Qhat(sourceReferencePressureBar/sourcePcBar);
+                const scalar qDynamic = Foam::max
+                (
+                    0.0,
+                    wp02Qhat(sourceReferencePressureBar/(pMaster*phi))
+                   *qMaster*wp02PhiFactor(phi)
+                );
+                multiplierForConductance = Foam::min
+                (
+                    maximumMultiplier,
+                    Foam::max(minimumMultiplier, qDynamic/qStatic)
+                );
+            }
+            const scalar conductance =
+                fullCrossSectionArea*saturatedPermeability
+               *multiplierForConductance/(dynamicViscosity*bedDepth);
+            const MachineBoundaryState machineState = solveMachineBoundary
+            (
+                timeValue, deltaT, upstreamPressure, outletPressure,
+                machineParameters, saturatedAtStepStart, conductance,
+                frontPressure, wetFront, bedDepth, fullCrossSectionArea,
+                initialPorosity, wettingPermeability, dynamicViscosity
+            );
+            if (!machineState.converged)
+            {
+                FatalErrorInFunction << "Machine coupling failed at t="
+                    << timeValue << " residual=" << machineState.residual
+                    << exit(FatalError);
+            }
+            upstreamPressure = machineState.upstreamPressure;
+            inletPressure = machineState.basketPressure;
+            supplyFlow = machineState.supplyFlow;
+            puckFlow = machineState.puckFlow;
+            couplingResidual = machineState.residual;
+            couplingIterations = machineState.iterations;
+            cumulativeSupplyVolume += supplyFlow*deltaT;
+            cumulativePuckIntakeVolume += puckFlow*deltaT;
+        }
+        else
+        {
+            upstreamPressure = inletPressure;
+        }
+        scalar wettingPressureIntegral =
             positiveDrivingPressureIntegral
             (
                 stepStartTime,
@@ -821,6 +960,11 @@ int main(int argc, char *argv[])
                 pressureRampTime,
                 frontPressure
             );
+        if (lumpedMachine)
+        {
+            wettingPressureIntegral =
+                Foam::max(inletPressure - frontPressure, 0.0)*deltaT;
+        }
         const scalar wettingStepAverageDrivingPressure =
             wettingPressureIntegral/Foam::max(deltaT, SMALL);
 
@@ -831,9 +975,6 @@ int main(int argc, char *argv[])
         }
 
         const scalar previousWetFront = wetFront;
-        const bool saturatedAtStepStart =
-            previousWetFront >= bedDepth - SMALL;
-
         scalar sourceTimeS = timeValue - sourceToSolverOffsetS;
         scalar sourceStateTimeS = sourceTimeS;
         scalar sourceDissolvedMassG = 0.0;
@@ -1241,6 +1382,7 @@ int main(int argc, char *argv[])
             cumulativeInletWaterMass +=
                 liquidDensity*inletVolumeFlow*deltaT;
             cupWaterMass += liquidDensity*outletVolumeFlow*deltaT;
+            cumulativePuckOutletVolume += outletVolumeFlow*deltaT;
             cupSoluteMass += Foam::max(outletSoluteRate, 0.0)*deltaT;
             soluteBackDiffusionMass +=
                 Foam::max(inletBackDiffusionRate, 0.0)*deltaT;
@@ -1358,6 +1500,16 @@ int main(int argc, char *argv[])
 
         if (Pstream::master())
         {
+            const scalar compliantStorage =
+                lumpedMachine
+              ? machineParameters.compliance
+               *(upstreamPressure - initialUpstreamPressure)
+              : 0.0;
+            const scalar machineWaterBalanceResidual =
+                lumpedMachine
+              ? cumulativeSupplyVolume - compliantStorage
+               - cumulativePuckIntakeVolume
+              : 0.0;
             trace << timeValue << ','
                   << inletPressure << ','
                   << wetFront << ','
@@ -1399,7 +1551,16 @@ int main(int argc, char *argv[])
                   << continuumAnalyticalOutletFlow << ','
                   << relativeOutletFlowError << ','
                   << pressureProbe1 << ','
-                  << pressureProbe2;
+                  << pressureProbe2 << ','
+                  << upstreamPressure << ',' << inletPressure << ','
+                  << outletPressure << ',' << supplyFlow << ',' << puckFlow
+                  << ',' << compliantStorage << ',' << cumulativeSupplyVolume
+                  << ',' << cumulativePuckIntakeVolume << ','
+                  << cumulativePuckOutletVolume << ','
+                  << machineWaterBalanceResidual << ',' << couplingResidual
+                  << ',' << couplingIterations << ','
+                  << (couplingConverged ? 1 : 0) << ','
+                  << pressureBoundaryModel;
             if (effectivePermeabilityEnabled)
             {
                 trace << ',' << (saturatedAtStepStart ? 1 : 0)
