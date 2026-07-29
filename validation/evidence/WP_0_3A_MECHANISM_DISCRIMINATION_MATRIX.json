@@ -1,0 +1,45 @@
+{
+  "schema_version": "espresso.public.wp_0_3a_mechanism_discrimination_matrix.v1",
+  "task": "WP-0.3A",
+  "status": "HYPOTHESES_ONLY_NO_IMPLEMENTATION_AUTHORITY",
+  "entries": [
+    {
+      "evidence_signature": "flow reverses and hydraulic resistance recovers under forcing reversal",
+      "candidate_interpretation": "filter-associated fines deposition and release",
+      "required_discriminator": "paired direct/reverse flow with pressure-node identity, dimensional timing and filter-state observation",
+      "source_lead": "Ellero 2019 JFE / Petracco 1993",
+      "current_status": "DEFER_PENDING_DATA"
+    },
+    {
+      "evidence_signature": "irreversible bed-height change or pressure-flow hysteresis",
+      "candidate_interpretation": "compaction or swelling",
+      "required_discriminator": "time-resolved bed height or strain paired with pressure and flow over loading/unloading",
+      "source_lead": "Vaca Guerra dry packing plus future wet measurement",
+      "current_status": "HYPOTHESIS_ONLY"
+    },
+    {
+      "evidence_signature": "early-time or first-drip discrepancy with later saturated hydraulics acceptable",
+      "candidate_interpretation": "wetting refinement",
+      "required_discriminator": "front position or saturation plus pressure, flow and first-drip timing",
+      "source_lead": "Foster CT and future independent wetting data",
+      "current_status": "HYPOTHESIS_ONLY"
+    },
+    {
+      "evidence_signature": "hydraulics acceptable but TDS or species traces poor",
+      "candidate_interpretation": "extraction or chemistry refinement",
+      "required_discriminator": "method-qualified TDS or named-species time series with explicit observation kernels",
+      "source_lead": "Schmieder, Perticarini and future independent chemistry",
+      "current_status": "HYPOTHESIS_ONLY"
+    },
+    {
+      "evidence_signature": "delivered-pressure response poor while imposed-pressure response is acceptable",
+      "candidate_interpretation": "machine or headspace coupling",
+      "required_discriminator": "simultaneous pump-side and basket-side pressure, delivered flow, and headspace state",
+      "source_lead": "Foster machine model and a future instrumented rig",
+      "current_status": "HYPOTHESIS_ONLY"
+    }
+  ],
+  "new_physics_authorized": false,
+  "future_separate_contract_required": true,
+  "physical_validation": "NOT_ESTABLISHED"
+}

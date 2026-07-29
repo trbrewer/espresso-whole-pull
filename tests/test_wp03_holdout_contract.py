@@ -28,6 +28,24 @@ class WP03HoldoutContractTests(unittest.TestCase):
                 / "validation/contracts/WP_0_3A_INDEPENDENT_HOLDOUT_AND_MECHANISM_DISCRIMINATION_CONTRACT.json"
             ).read_text()
         )
+        cls.impact = json.loads(
+            (
+                ROOT
+                / "validation/integration/WP_0_3A_PUCKWORKS_SOLVER_SUPPORT_IMPACT_MATRIX.json"
+            ).read_text()
+        )
+        cls.verification_spec = json.loads(
+            (
+                ROOT
+                / "validation/contracts/WP_0_3A_NONPROTECTED_VERIFICATION_PACKAGE_SPEC.json"
+            ).read_text()
+        )
+        cls.vaca_spec = json.loads(
+            (
+                ROOT
+                / "validation/contracts/WP_0_3A_VACA_GUERRA_OFFLINE_INITIALIZER_SPEC.json"
+            ).read_text()
+        )
 
     def test_alignment_records_exact_current_and_adopted_identities(self) -> None:
         self.assertEqual(
@@ -193,6 +211,140 @@ class WP03HoldoutContractTests(unittest.TestCase):
             self.assertEqual(
                 hashlib.sha256((ROOT / relative).read_bytes()).hexdigest(), digest
             )
+
+    def test_every_solver_support_artifact_has_one_allowed_disposition(self) -> None:
+        allowed = set(self.impact["allowed_dispositions"])
+        required_ids = {
+            "moroney2017",
+            "liang2021",
+            "liang2021_audit",
+            "schmieder2023",
+            "schmieder2023_audit",
+            "vacaguerra2023a",
+            "matias2023",
+            "maille2024",
+            "perticarini2024",
+            "ellero2019_jfe",
+            "kusumaatmaja2010",
+            "foster_evidence_selection_correction",
+            "paper_b2_late_window_access_correction",
+            "tds_and_ey_normalization_hazards",
+        }
+        observed_ids = {item["artifact_id"] for item in self.impact["artifacts"]}
+        self.assertEqual(observed_ids, required_ids)
+        for artifact in self.impact["artifacts"]:
+            self.assertIn(artifact["disposition"], allowed)
+            self.assertIsInstance(artifact["disposition"], str)
+
+    def test_mandatory_pressure_and_access_corrections_are_exact(self) -> None:
+        corrections = self.impact["mandatory_corrections"]
+        self.assertEqual(
+            corrections["schmieder_retired_pressure_triple_bar"], [9.3, 7.4, 3.8]
+        )
+        self.assertEqual(
+            corrections["schmieder_retired_role"],
+            "NOT_A_DARCY_PRESSURE_FLOW_DATUM",
+        )
+        self.assertEqual(
+            corrections["schmieder_table2_condition_mean_pressure_range_bar"],
+            [2.58, 8.433333333333334],
+        )
+        self.assertEqual(
+            corrections["paper_b2_late_window"]["access_class"],
+            "DIRECT_TARGET_IN_SAMPLE_SUBSET_FIT",
+        )
+        self.assertEqual(
+            corrections["foster_flow_curve"],
+            "NEGATIVE_DIRECT_EVIDENCE_EXPLORATORY_CAPACITY_ONLY",
+        )
+
+    def test_selected_evidence_does_not_advance_lock(self) -> None:
+        self.assertEqual(
+            self.impact["final_disposition"],
+            "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
+        )
+        recommendation = self.impact["lock_recommendation"]
+        self.assertFalse(recommendation["advance_lock_now"])
+        self.assertEqual(
+            recommendation["recommendation"],
+            "RETAIN_EXISTING_LOCK_PENDING_ACQUISITION",
+        )
+        self.assertIn(
+            "scripts/verify_release_finalization.py",
+            self.impact["allowed_repository_changed_paths"],
+        )
+
+    def test_nonprotected_package_is_specification_only(self) -> None:
+        self.assertEqual(
+            self.verification_spec["package_status"],
+            "SPECIFIED_NOT_IMPLEMENTED_NOT_EXECUTED",
+        )
+        self.assertFalse(self.verification_spec["runtime_wp02_connection_allowed"])
+        self.assertFalse(self.verification_spec["protected_data_required"])
+        self.assertEqual(
+            set(self.verification_spec["components"]),
+            {
+                "moroney2017_zero_flow",
+                "matias2023_analytic_limits",
+                "liang2021_planning",
+                "observables",
+            },
+        )
+
+    def test_observables_cannot_silently_merge_tds_or_ey_conventions(self) -> None:
+        observables = self.verification_spec["components"]["observables"]
+        self.assertFalse(
+            observables["tds_measurement_schema"]["silent_method_conversion_allowed"]
+        )
+        self.assertFalse(
+            observables["ey_convention"]["silent_convention_merge_allowed"]
+        )
+        required = observables["tds_measurement_schema"]["required_fields"]
+        for field in (
+            "method_id",
+            "instrument_model",
+            "calibrant_material",
+            "sample_temperature_C",
+            "measurement_uncertainty",
+        ):
+            self.assertIn(field, required)
+
+    def test_vaca_prior_is_inactive_bounded_and_distinct_from_wp02(self) -> None:
+        self.assertEqual(
+            self.vaca_spec["status"], "SPECIFIED_INACTIVE_NOT_IMPLEMENTED"
+        )
+        self.assertEqual(
+            self.vaca_spec["corrected_surface"]["beta_signs"]["dry_porosity_omega"],
+            "NEGATIVE_X3_BETA",
+        )
+        self.assertTrue(
+            self.vaca_spec["permeability_variants"]["viscosity_renormalized"][
+                "must_not_overwrite_published_variant"
+            ]
+        )
+        prohibitions = self.vaca_spec["prohibitions"]
+        self.assertIn("do not replace or alter WP02 calibrated permeability", prohibitions)
+        self.assertIn("do not treat dry porosity as wet dynamic porosity", prohibitions)
+        self.assertEqual(
+            self.vaca_spec["source_domain"]["extrapolation_default"], "REJECT"
+        )
+
+    def test_new_triage_document_alone_is_manifest_excluded(self) -> None:
+        import sys
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from generate_source_manifest import excluded
+
+        self.assertTrue(
+            excluded(
+                Path(
+                    "docs/integration/PUCKWORKS_WP_0_3A_SOLVER_SUPPORT_TRIAGE.md"
+                )
+            )
+        )
+        self.assertFalse(
+            excluded(Path("docs/integration/arbitrary_solver_support_triage.md"))
+        )
 
 
 if __name__ == "__main__":

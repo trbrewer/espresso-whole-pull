@@ -87,3 +87,15 @@ was found. The adoption disposition is `NO_ADOPTION`; the lock remains
 [alignment and holdout review](evidence/WP_0_3A_ALIGNMENT_AND_HOLDOUT_REVIEW.md),
 [candidate matrix](../validation/evidence/WP_0_3A_HOLDOUT_CANDIDATE_MATRIX.json),
 and [frozen contract](../validation/contracts/WP_0_3A_INDEPENDENT_HOLDOUT_AND_MECHANISM_DISCRIMINATION_CONTRACT.json).
+
+The solver-support triage then adopted selected evidence semantics and
+verification targets without advancing the dependency lock. It retires the
+Schmieder prose pressure triple as Darcy data, records method-qualified TDS/EY
+observables, downgrades Foster's direct flow-curve result to negative
+exploratory evidence, and classifies Paper B2's late-window constant as
+direct-target and in-sample. Moroney and Matias are specified as future
+non-protected verification targets; Vaca Guerra is specified as an inactive
+offline prior. See the [impact report](integration/PUCKWORKS_WP_0_3A_SOLVER_SUPPORT_TRIAGE.md)
+and [machine-readable matrix](../validation/integration/WP_0_3A_PUCKWORKS_SOLVER_SUPPORT_IMPACT_MATRIX.json).
+The disposition is `ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP`; the lock
+recommendation remains `RETAIN_EXISTING_LOCK_PENDING_ACQUISITION`.

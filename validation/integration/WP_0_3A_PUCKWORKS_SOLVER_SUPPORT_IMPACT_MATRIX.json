@@ -1,0 +1,290 @@
+{
+  "schema_version": "espresso.public.wp_0_3a_puckworks_solver_support_impact.v1",
+  "task": "WP-0.3A",
+  "classification": [
+    "EXTERNAL_DEPENDENCY_REVIEW",
+    "EVIDENCE_AND_VERIFICATION_SUPPORT_ONLY",
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_PROTECTED_ANALYSIS",
+    "NO_SCIENTIFIC_RESULT_CHANGE"
+  ],
+  "upstream": {
+    "repository": "https://github.com/trbrewer/puckworks.git",
+    "old_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "old_tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "review_target_ref": "refs/heads/main",
+    "review_target_commit": "bafafef3bc3c77599af8551d4e582aedb9b23f08",
+    "review_target_tree": "64ccf86aff4c90d1c513f1614b39e0823f64d6d7",
+    "new_code_executed": false,
+    "protected_source_accessed": false
+  },
+  "allowed_dispositions": [
+    "ADOPT",
+    "ADOPT_METADATA_ONLY",
+    "ADOPT_AS_VERIFICATION_TARGET",
+    "ADOPT_AS_OFFLINE_PRIOR",
+    "DEFER_PENDING_DATA",
+    "DEFER_PENDING_RIGHTS",
+    "DO_NOT_ADOPT",
+    "NOT_SOLVER_RELEVANT"
+  ],
+  "allowed_repository_changed_paths": [
+    "PACKAGE_QA_STATUS.json",
+    "README.md",
+    "SOURCE_PACKAGE_MANIFEST.json",
+    "docs/DEVELOPMENT_HISTORY.md",
+    "docs/PROJECT_STATE.md",
+    "docs/PUCKWORKS_INTEGRATION.md",
+    "docs/evidence/WP_0_3A_ALIGNMENT_AND_HOLDOUT_REVIEW.md",
+    "docs/integration/PUCKWORKS_WP_0_3A_SOLVER_SUPPORT_TRIAGE.md",
+    "docs/validation/WP_0_3A_FUTURE_HOLDOUT_EXECUTION_BRIEF.md",
+    "scripts/generate_source_manifest.py",
+    "scripts/verify_release_finalization.py",
+    "tests/test_wp03_holdout_contract.py",
+    "validation/contracts/WP_0_3A_INDEPENDENT_HOLDOUT_AND_MECHANISM_DISCRIMINATION_CONTRACT.json",
+    "validation/contracts/WP_0_3A_NONPROTECTED_VERIFICATION_PACKAGE_SPEC.json",
+    "validation/contracts/WP_0_3A_VACA_GUERRA_OFFLINE_INITIALIZER_SPEC.json",
+    "validation/evidence/WP_0_3A_HOLDOUT_CANDIDATE_MATRIX.json",
+    "validation/evidence/WP_0_3A_MECHANISM_DISCRIMINATION_MATRIX.json",
+    "validation/evidence/WP_0_3A_PUCKWORKS_ALIGNMENT_REVIEW.json",
+    "validation/integration/WP_0_3A_PUCKWORKS_IDENTITY_AND_RIGHTS.json",
+    "validation/integration/WP_0_3A_PUCKWORKS_SOLVER_SUPPORT_IMPACT_MATRIX.json"
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "moroney2017",
+      "path": "docs/cards/moroney2017.md",
+      "git_blob": "6faa73c5627039f8f189ae7fa30cc6953798c333",
+      "sha256": "d4ad68ae4fd4c0a725fa10dff49a87f81d5c471a1648221ee9a9522c4c847586",
+      "upstream_delta": "ADDED",
+      "disposition": "ADOPT_AS_VERIFICATION_TARGET",
+      "rationale": "The dimensional three-ODE zero-flow system, conservation relation, and fine/coarse asymptotic composites are cheap non-protected extraction verification targets. They are not runtime physics or hydraulic validation.",
+      "rights": "CC-BY-4.0 article; local independent re-expression permitted with attribution",
+      "solver_action": "Specify a separate zero-flow reference package; do not connect it to WP02."
+    },
+    {
+      "artifact_id": "liang2021",
+      "path": "docs/cards/liang2021.md",
+      "git_blob": "655f90138c7cfc323fb6cb02ee376c39d98d1414",
+      "sha256": "ce01610925432352981a8b2bb1873b83f946de9ba29208b48d59c3bc139bc19d",
+      "upstream_delta": "MODIFIED",
+      "disposition": "ADOPT_AS_VERIFICATION_TARGET",
+      "rationale": "The K/tau transformation and retained-liquid/oven-drying kernel support synthetic identifiability and observable verification. No transient parameter may be fit until the source figure is governed and digitized.",
+      "rights": "Scientific Reports open-access article, DOI 10.1038/s41598-021-85787-1; verify article-license notice before redistributing digitization",
+      "solver_action": "Adopt analytic planning and measurement-kernel semantics only."
+    },
+    {
+      "artifact_id": "liang2021_audit",
+      "path": "docs/cards/liang2021_AUDIT.md",
+      "git_blob": "b38e371196e71eb166831c72f3d485c75d0a3523",
+      "sha256": "29f84061cc4abcedc7c1e69d1e9b830f85dd1e26cad8a58b424ebe9811c127bb",
+      "upstream_delta": "ADDED",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "Adopt the audit's TDS method, VST instrument, instant-coffee gravimetric calibrant, distilled-water zero, and temperature-convention hazards. Do not merge refractometric and dry-down TDS.",
+      "rights": "Audit text is dependency metadata; source article remains the citation authority",
+      "solver_action": "Extend the observables-design schema."
+    },
+    {
+      "artifact_id": "schmieder2023",
+      "path": "docs/cards/schmieder2023.md",
+      "git_blob": "d7312b9e3a331ff272386be8eb717b0b62d7f994",
+      "sha256": "30a9d9b34b2e75892255aba231cfb8b217bd90bdfed125bad0fe4add56022da6",
+      "upstream_delta": "MODIFIED",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "Retire the 9.3/7.4/3.8-bar prose triple as Darcy data and adopt only reproducible Table 2 condition means with explicit source scope.",
+      "rights": "CC-BY article and supplements, DOI 10.3390/foods12152871",
+      "solver_action": "Pressure values remain observational metadata, not a permeability calibration."
+    },
+    {
+      "artifact_id": "schmieder2023_audit",
+      "path": "docs/cards/schmieder2023_AUDIT.md",
+      "git_blob": "f2a06db00a5c2001a87242a51332663e042cbbeb",
+      "sha256": "31979694a298b540d5ad9a4a77359db2ac872793dd9f461488e6d47bb6ae6826",
+      "upstream_delta": "ADDED",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "Adopt the DR6000-T, 589 nm, 20 C, DIN 10775 dried-sample calibration, dilution, centrifugation and freeze/thaw metadata as observables hazards.",
+      "rights": "CC-BY article and supplements",
+      "solver_action": "Preserve method-specific TDS and EY fields."
+    },
+    {
+      "artifact_id": "vacaguerra2023a",
+      "path": "docs/cards/vacaguerra2023a.md",
+      "git_blob": "701ac10446cc693e83382a4f217e211b46e512e5",
+      "sha256": "d2c5e0877578336210d96e15749ed8eea0fd7d910be636e07010b056639e7a30",
+      "upstream_delta": "UNCHANGED_BUT_NEWLY_RELEVANT",
+      "disposition": "ADOPT_AS_OFFLINE_PRIOR",
+      "rationale": "The corrected beta-sign dry packing surfaces can seed a material-scoped initial-state prior. The permeability law is post-fit and viscosity-basis dependent, so it cannot replace WP02 or represent wet dynamic porosity.",
+      "rights": "Journal article and digitized/transcribed evidence; redistribution review required for source-derived tables",
+      "solver_action": "Specify an inactive offline adapter with explicit extrapolation and viscosity flags."
+    },
+    {
+      "artifact_id": "matias2023",
+      "path": "docs/cards/matias2023.md",
+      "git_blob": "108da67e0e07d3f3dfc9c4dfa212e51cf4fb5c11",
+      "sha256": "49a459d2fe153d347409a965683b58a6d5b01855b2027558b9f3025871eddcf3",
+      "upstream_delta": "UNCHANGED_BUT_NEWLY_RELEVANT",
+      "disposition": "ADOPT_AS_VERIFICATION_TARGET",
+      "rationale": "The low-Pe and high-Pe analytic outlet limits and Sh/Pe front-gating trend are parameter-free extraction verification targets. The fitted espresso coefficient is not adopted.",
+      "rights": "arXiv preprint; local equation re-expression with citation only",
+      "solver_action": "Specify analytic-limit tests, not a runtime component."
+    },
+    {
+      "artifact_id": "maille2024",
+      "path": "docs/cards/maille2024.md",
+      "git_blob": "83c2250588623e19c38bc86d6a0c06947db3cac7",
+      "sha256": "7c3a0041201bdcc306c4e5e839048f782f96ce7d91caa9b2d2134d9e2db6bc93",
+      "upstream_delta": "UNCHANGED_BUT_NEWLY_RELEVANT",
+      "disposition": "DEFER_PENDING_RIGHTS",
+      "rationale": "The redacted, sponsor-linked thesis contains useful PSD and extraction priors, but source and redaction rights must be resolved before solver-package adoption.",
+      "rights": "Redacted thesis; proprietary sections unavailable; redistribution scope not established",
+      "solver_action": "Retain as evidence lead only."
+    },
+    {
+      "artifact_id": "perticarini2024",
+      "path": "docs/cards/perticarini2024.md",
+      "git_blob": "cd695241f7517749d35b1babddc02355341e89f1",
+      "sha256": "237b6951825261c208bce2527973c44fa6b8cf8df623b616569c36195f51a954",
+      "upstream_delta": "UNCHANGED_BUT_NEWLY_RELEVANT",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "Bed-height, dose, basket, TDS uncertainty and endpoint conventions aid experiment design. The interacting multi-species model is not adopted and endpoint evidence is not hydraulic validation.",
+      "rights": "Deposited thesis without explicit license; quoted metadata only",
+      "solver_action": "Use metadata in holdout and observables planning."
+    },
+    {
+      "artifact_id": "ellero2019_jfe",
+      "path": "docs/cards/ellero2019_jfe.md",
+      "git_blob": "0e6560edb9ade0ac856f193c4ff850d41b95a88e",
+      "sha256": "4143f861377bc6a83251f79dd34d11245126e4c7eeba44282680069b2a620472",
+      "upstream_delta": "UNCHANGED_BUT_NEWLY_RELEVANT",
+      "disposition": "DEFER_PENDING_DATA",
+      "rationale": "Flow-reversal recovery is a useful discriminator for filter-associated fines, but the primary Petracco transient and dimensional time anchor are not acquired. The fitted SPH fines mechanism is not adopted.",
+      "rights": "Accepted manuscript available for citation; underlying 1993 proceedings data and reuse rights unresolved",
+      "solver_action": "Record the discriminator and acquisition need only."
+    },
+    {
+      "artifact_id": "kusumaatmaja2010",
+      "path": "docs/cards/kusumaatmaja2010.md",
+      "git_blob": "3d7e9058736143a1911510cf32553146ecbc3bf7",
+      "sha256": "5fe60ae0adfd9223138bb03c390d7601dd12d0021e074da064c14feae9062ad9",
+      "upstream_delta": "UNCHANGED_BUT_NEWLY_RELEVANT",
+      "disposition": "DO_NOT_ADOPT",
+      "rationale": "The density-matched binary-fluid LB method is not a coffee liquid-gas validation source and would introduce an unauthorized wetting mechanism.",
+      "rights": "Springer book chapter; no verified DOI or redistribution right",
+      "solver_action": "Retain citation-only context outside the solver support package."
+    },
+    {
+      "artifact_id": "foster_evidence_selection_correction",
+      "path": "docs/public/generated/claims.json",
+      "git_blob": "11fdeb2014e7acf452663c369a86abd4cd8cf39e",
+      "sha256": "f7030b454963a91c9e2fd8ebb9c0ef64429f05f7b9fe08a57982a8923a4f64a9",
+      "upstream_delta": "MODIFIED",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "The direct normalized flow-curve gate is negative. Foster supports only exploratory structural capacity for a dip and recovery, not quantitative flow-curve reconstruction.",
+      "rights": "Generated Puckworks evidence metadata; Foster article remains citation authority",
+      "solver_action": "Downgrade the evidence claim; do not change the solver."
+    },
+    {
+      "artifact_id": "paper_b2_late_window_access_correction",
+      "path": "docs/PAPER_B2_TEMPORAL_DRAFT.md",
+      "git_blob": "0279d17f6eaa5fbacca8404b4bae549f1294c049",
+      "sha256": "c2fa8e8908702c407b565eab34bb2936c7029f79e1d982fd41fdfd5837607de1",
+      "upstream_delta": "MODIFIED",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "The 85-95 s level is estimated inside the scored 15-95 s interval and is therefore a one-parameter direct-target, in-sample subset fit.",
+      "rights": "Puckworks manuscript metadata",
+      "solver_action": "Correct access class only; do not recompute the historical result."
+    },
+    {
+      "artifact_id": "tds_and_ey_normalization_hazards",
+      "path": "MULTIPLE_REVIEWED_CARDS_AND_AUDITS",
+      "git_blob": null,
+      "sha256": null,
+      "upstream_delta": "NEWLY_RELEVANT_CROSS_ARTIFACT_SEMANTICS",
+      "disposition": "ADOPT_METADATA_ONLY",
+      "rationale": "Refractometric TDS, gravimetric dry-down solids, retained-liquid-corrected oven drying, pseudo-component concentration, and EY derived on mass or volume bases are not interchangeable.",
+      "rights": "Metadata-only synthesis; every measurement remains bound to its source rights",
+      "solver_action": "Require explicit method, instrument, calibrant, temperature, dilution, density, retained-liquid and EY-convention fields."
+    }
+  ],
+  "mandatory_corrections": {
+    "schmieder_retired_pressure_triple_bar": [
+      9.3,
+      7.4,
+      3.8
+    ],
+    "schmieder_retired_role": "NOT_A_DARCY_PRESSURE_FLOW_DATUM",
+    "schmieder_table2_condition_mean_pressure_range_bar": [
+      2.58,
+      8.433333333333334
+    ],
+    "schmieder_table2_reproducible_pressure_means_bar": {
+      "approximately_1_ml_per_s_by_grind_1_4_1_7_2_0": [
+        2.85,
+        2.7,
+        2.75
+      ],
+      "approximately_2_ml_per_s_by_grind_1_4_1_7_2_0": [
+        3.9,
+        3.4,
+        3.3
+      ],
+      "approximately_2_8_ml_per_s_by_grind_1_4_1_7_2_0": [
+        8.0,
+        5.3,
+        3.55
+      ]
+    },
+    "schmieder_scope": "Table 2 experiment-condition means on one DE1 Pro, one coffee, one grinder and the reported flow-temperature design; pressure is achieved maximum telemetry, not a fitted Darcy law.",
+    "foster_flow_curve": "NEGATIVE_DIRECT_EVIDENCE_EXPLORATORY_CAPACITY_ONLY",
+    "paper_b2_late_window": {
+      "window_s": [
+        85.0,
+        95.0
+      ],
+      "scored_window_s": [
+        15.0,
+        95.0
+      ],
+      "parameter_count": 1,
+      "access_class": "DIRECT_TARGET_IN_SAMPLE_SUBSET_FIT"
+    }
+  },
+  "adopted_corrections": [
+    "Schmieder pressure scope and Table 2 means",
+    "Liang and Schmieder measurement-method metadata",
+    "Foster negative direct flow-curve evidence",
+    "Paper B2 late-window direct-target access class",
+    "TDS and EY normalization hazards",
+    "Moroney and Matias non-protected verification targets",
+    "Vaca Guerra inactive offline-prior specification"
+  ],
+  "deferred_acquisitions": [
+    {
+      "item": "Liang transient Fig. 2 digitization",
+      "reason": "No fit or visual estimate is permitted before governed digitization."
+    },
+    {
+      "item": "Petracco 1993 direct/inverse discharge primary data",
+      "reason": "Needed to evaluate the Ellero flow-reversal discriminator and dimensional time basis."
+    },
+    {
+      "item": "Maille 2024 rights-cleared source subset",
+      "reason": "Redactions and redistribution rights block package adoption."
+    },
+    {
+      "item": "Independent hydraulic holdout campaign",
+      "reason": "No current candidate meets the frozen WP-0.3A qualification requirements."
+    }
+  ],
+  "final_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
+  "lock_recommendation": {
+    "advance_lock_now": false,
+    "recommendation": "RETAIN_EXISTING_LOCK_PENDING_ACQUISITION",
+    "reason": "Selected metadata and verification targets can be recorded without changing the runtime dependency. Data and rights gaps remain, and no new locked model is required by v0.2.0."
+  },
+  "claim_state": {
+    "new_physics_validated": false,
+    "wp02_independently_validated": false,
+    "physical_validation": "NOT_ESTABLISHED"
+  }
+}

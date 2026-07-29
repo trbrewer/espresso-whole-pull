@@ -35,8 +35,11 @@ merged through PR #20, and is scientifically closed. WP-0.2F release
 finalization and WP-0.2G post-release reconciliation are complete. WP-0.3A
 reviewed moving-upstream Puckworks evidence and froze the independent-holdout
 and mechanism-discrimination contract without execution. No currently
-reviewed candidate qualifies as an independent hydraulic holdout; the next
-evidence task is the specified independent pressure/flow campaign. Independent
+reviewed candidate qualifies as an independent hydraulic holdout. The
+solver-support triage adopts bounded evidence corrections, analytic
+verification targets, and an inactive Vaca Guerra prior specification without
+advancing the dependency lock. The next evidence task is the specified
+independent pressure/flow campaign. Independent
 physical validation has not started. Machine/headspace coupling remains a
 later hypothesis subject to holdout evidence and a separate decision.
 

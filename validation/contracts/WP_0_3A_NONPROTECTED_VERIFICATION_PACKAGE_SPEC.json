@@ -1,0 +1,160 @@
+{
+  "schema_version": "espresso.public.wp_0_3a_nonprotected_verification_package_spec.v1",
+  "task": "WP-0.3A",
+  "package_status": "SPECIFIED_NOT_IMPLEMENTED_NOT_EXECUTED",
+  "classification": "EVIDENCE_AND_VERIFICATION_SUPPORT_ONLY",
+  "runtime_wp02_connection_allowed": false,
+  "protected_data_required": false,
+  "components": {
+    "moroney2017_zero_flow": {
+      "source": {
+        "doi": "10.1186/s13362-016-0024-6",
+        "card_sha256": "d4ad68ae4fd4c0a725fa10dff49a87f81d5c471a1648221ee9a9522c4c847586"
+      },
+      "required_implementation": [
+        "independent dimensional three-ODE solution for intergranular concentration, intragranular concentration and remaining surface inventory",
+        "total-solute conservation check",
+        "published asymptotic composite comparison",
+        "fine published parameter case",
+        "coarse published parameter case",
+        "zero-flow limit interface for a future extraction solver"
+      ],
+      "gates": [
+        "finite and nonnegative states",
+        "conservation residual bounded by an independently frozen numerical tolerance",
+        "composite-versus-ODE convergence as epsilon decreases",
+        "published equilibrium values reproduced"
+      ],
+      "forbidden": [
+        "fit to WP02 or protected flow",
+        "claim of hydraulic validation",
+        "runtime coupling in WP-0.3A"
+      ]
+    },
+    "matias2023_analytic_limits": {
+      "source": {
+        "identifier": "arXiv:2304.03161v2",
+        "card_sha256": "49a459d2fe153d347409a965683b58a6d5b01855b2027558b9f3025871eddcf3"
+      },
+      "required_implementation": [
+        "low-Pe outlet reference Cs times one minus reciprocal cosh of sqrt Sh-xi",
+        "high-Pe outlet reference Cs times one minus exp of minus L-Sh-xi over Pe",
+        "full closed-form reference using Delta and S-plus/S-minus",
+        "deterministic Sh/Pe sweep",
+        "front-gating error trend"
+      ],
+      "threshold_basis": "Parameter-free analytic residuals scaled by double-precision roundoff and the chosen deterministic discretization; no source-data fit.",
+      "required_trends": [
+        "full solution approaches low-Pe limit",
+        "full solution approaches high-Pe limit",
+        "front-gating omission error increases with Sh/Pe over the declared sweep"
+      ],
+      "forbidden": [
+        "adopt fitted espresso kc as a transferable constant",
+        "runtime coupling in WP-0.3A"
+      ]
+    },
+    "liang2021_planning": {
+      "source": {
+        "doi": "10.1038/s41598-021-85787-1",
+        "card_sha256": "ce01610925432352981a8b2bb1873b83f946de9ba29208b48d59c3bc139bc19d",
+        "audit_sha256": "29f84061cc4abcedc7c1e69d1e9b830f85dd1e26cad8a58b424ebe9811c127bb"
+      },
+      "analytic_transformation": {
+        "tau": "1/(k_D+k_A)",
+        "K": "k_D/(k_D+k_A)",
+        "k_D": "K/tau",
+        "k_A": "(1-K)/tau"
+      },
+      "synthetic_identifiability_test": [
+        "generate exact synthetic transients from predeclared K and tau",
+        "recover K and tau from independently perturbed synthetic observations",
+        "show endpoints identify K-Emax but not tau",
+        "show transient samples identify tau under the declared noise model"
+      ],
+      "digitization_specification": [
+        "bind exact article and figure panel",
+        "record pixel-to-axis calibration and point uncertainty",
+        "retain every digitized point and exclusion reason",
+        "freeze digitization hash before any fit",
+        "do not use visually estimated anchors"
+      ],
+      "fit_status": "PROHIBITED_UNTIL_GOVERNED_DIGITIZATION_EXISTS"
+    },
+    "observables": {
+      "tds_measurement_schema": {
+        "required_fields": [
+          "method_id",
+          "instrument_make",
+          "instrument_model",
+          "optical_wavelength_nm",
+          "sample_temperature_C",
+          "temperature_compensation_method",
+          "zeroing_medium",
+          "calibrant_material",
+          "calibration_equation_or_standard",
+          "dilution_ratio_mass_or_volume_basis",
+          "filtration_or_centrifugation",
+          "freeze_thaw_status",
+          "reported_tds_basis",
+          "measurement_uncertainty",
+          "source_scope"
+        ],
+        "method_ids": [
+          "REFRACTOMETRIC",
+          "GRAVIMETRIC_DRY_DOWN",
+          "OVEN_DRYING_RETAINED_LIQUID_CORRECTED",
+          "PSEUDOCOMPONENT_MODEL_OUTPUT",
+          "OTHER_EXPLICIT"
+        ],
+        "silent_method_conversion_allowed": false
+      },
+      "retained_liquid_and_oven_drying_kernel": {
+        "required_inputs": [
+          "dry_dose_mass",
+          "brew_water_mass",
+          "beverage_mass",
+          "wet_spent_grounds_mass",
+          "dry_spent_grounds_mass",
+          "volatile_loss_correction",
+          "retained_liquid_tds_assumption"
+        ],
+        "outputs": [
+          "retained_liquid_mass",
+          "oven_dry_extracted_mass",
+          "retained_liquid_corrected_extracted_mass"
+        ],
+        "source_role": "MEASUREMENT_KERNEL_NOT_EXTRACTION_PHYSICS"
+      },
+      "ey_convention": {
+        "required_fields": [
+          "ey_definition_id",
+          "tds_method_id",
+          "beverage_mass_or_volume_basis",
+          "beverage_density_used",
+          "dry_dose_basis",
+          "retained_liquid_correction_applied",
+          "volatile_loss_correction_applied",
+          "filtration_status",
+          "uncertainty_propagation"
+        ],
+        "supported_definition_ids": [
+          "BEVERAGE_MASS_TIMES_TDS_OVER_DRY_DOSE",
+          "GRAVIMETRIC_DRY_DOWN",
+          "RETAINED_LIQUID_CORRECTED_MASS_BALANCE",
+          "SOURCE_SPECIFIC_EXPLICIT"
+        ],
+        "silent_convention_merge_allowed": false
+      }
+    }
+  },
+  "execution_contract": {
+    "future_separate_task_required": true,
+    "implementation_commit_before_execution_required": true,
+    "no_puckworks_runtime_import": true,
+    "no_protected_source": true,
+    "no_openfoam_required": true,
+    "deterministic_outputs_required": true
+  },
+  "claim_ceiling": "This package may verify independent equation re-expressions and measurement kernels. It cannot validate WP02 hydraulics, extraction physics, or physical transfer."
+}

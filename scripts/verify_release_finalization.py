@@ -15,6 +15,9 @@ DEFAULT_CONTRACT = Path(
 POST_RELEASE_RECORD = Path(
     "validation/release/WP_0_2G_POST_RELEASE_STATE_RECONCILIATION.json"
 )
+WP03_IMPACT_RECORD = Path(
+    "validation/integration/WP_0_3A_PUCKWORKS_SOLVER_SUPPORT_IMPACT_MATRIX.json"
+)
 
 
 def digest(path: Path) -> str:
@@ -85,6 +88,11 @@ def verify(root: Path, declaration_path: Path | None = None) -> dict:
     if post_release_path.is_file():
         post_release_record = json.loads(post_release_path.read_text())
         allowed.update(post_release_record["allowed_post_release_changed_paths"])
+    wp03_impact = None
+    wp03_impact_path = root / WP03_IMPACT_RECORD
+    if wp03_impact_path.is_file():
+        wp03_impact = json.loads(wp03_impact_path.read_text())
+        allowed.update(wp03_impact["allowed_repository_changed_paths"])
     path_boundary = paths is None or all(
         path in allowed or path.startswith(prefixes) for path in paths
     )
@@ -155,6 +163,28 @@ def verify(root: Path, declaration_path: Path | None = None) -> dict:
             and post_release_record["score_recalculations_added"] == 0
             and post_release_record["fitting_or_retuning"] is False
             and post_release_record["physical_validation"] == "NOT_ESTABLISHED"
+        ),
+        "wp03_evidence_review_boundary": wp03_impact is None
+        or (
+            wp03_impact["classification"]
+            == [
+                "EXTERNAL_DEPENDENCY_REVIEW",
+                "EVIDENCE_AND_VERIFICATION_SUPPORT_ONLY",
+                "NO_GOVERNING_PHYSICS_CHANGE",
+                "NO_PROTECTED_ANALYSIS",
+                "NO_SCIENTIFIC_RESULT_CHANGE",
+            ]
+            and wp03_impact["upstream"]["old_commit"]
+            == "fc61c4670ec7bf801e40bb391aab16048b8da26b"
+            and wp03_impact["upstream"]["old_tree"]
+            == "1d553e44ee2f7480a5df521560801b478618cc84"
+            and wp03_impact["upstream"]["new_code_executed"] is False
+            and wp03_impact["upstream"]["protected_source_accessed"] is False
+            and wp03_impact["lock_recommendation"]["advance_lock_now"] is False
+            and wp03_impact["claim_state"]["new_physics_validated"] is False
+            and wp03_impact["claim_state"]["wp02_independently_validated"] is False
+            and wp03_impact["claim_state"]["physical_validation"]
+            == "NOT_ESTABLISHED"
         ),
         "changed_path_boundary": path_boundary,
     }
