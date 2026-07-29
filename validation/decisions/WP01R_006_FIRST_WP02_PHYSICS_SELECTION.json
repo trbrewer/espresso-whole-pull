@@ -1,0 +1,239 @@
+{
+  "schema_version": "espresso.public.wp01r_006_first_wp02_physics_selection.v1",
+  "task": "WP01R-006",
+  "github_issue": 8,
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "decision_status": "SELECTED",
+  "input_residual": {
+    "wp01r_005_pr": 17,
+    "wp01r_005_merge_commit": "7f2c7a6c8881233574f28be74414f20b04bbf51a",
+    "execution_result_path": "validation/r1/WP01R_005_EXECUTION_RESULT.json",
+    "execution_result_sha256": "3a29c38d560c1003cb1c4730323b7241ac37a9ecb67933be9a17c6e37af07d5d",
+    "overall_disposition": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+    "primary_residual": "STRUCTURAL_MODEL_INADEQUACY",
+    "calibration_reproduction": "PASS",
+    "protected_flow_shape": "FAIL",
+    "predicted_normalized_std": 0.0
+  },
+  "selected_mechanism": {
+    "id": "WASZKIEWICZ_SATURATED_DISSOLUTION_INDEXED_EFFECTIVE_PERMEABILITY",
+    "name": "Waszkiewicz saturated dissolution-indexed poroelastic effective-permeability closure",
+    "program_slot": "WP-0.2A_SOURCE_LINKED_SATURATED_HYDRAULIC_EVOLUTION",
+    "evidence_role": "SOURCE_LINKED_POST_FIT_RECONSTRUCTION",
+    "governing_physics_change_required_for_future_implementation": true,
+    "implemented_in_this_task": false,
+    "selection_reason": "Directly introduces the missing saturated time-dependent hydraulic response using locked source-specific closed-form evidence without fitting to the protected 9-bar scores."
+  },
+  "ranked_candidates": [
+    {
+      "rank": 1,
+      "candidate": "Waszkiewicz saturated dissolution-indexed effective permeability",
+      "residual_addressed": "zero protected-window hydraulic dynamics",
+      "evidence_availability": "strong locked same-campaign model, parameters, data, and Puckworks re-expression",
+      "identifiability": "good for a bounded source-specific reconstruction",
+      "rights_data_availability": "MIT re-expression and CC-BY-4.0 data; article citation-only",
+      "numerical_conservation_risk": "low-to-moderate; algebraic resistance update must preserve conservation",
+      "verification_route": "independent closed form, Puckworks scalar/vector parity, reduced twin, uniform-pressure fixture",
+      "validation_opportunity": "9-bar reconstruction plus predeclared non-9-bar no-retuning same-campaign comparison",
+      "engineering_value": "direct test of evolving hydraulic resistance",
+      "computational_cost": "low",
+      "claim_ceiling_effect": "source-linked reconstruction only",
+      "disposition": "SELECTED"
+    },
+    {
+      "rank": 2,
+      "candidate": "Machine/headspace and measured basket-pressure coupling",
+      "residual_addressed": "possible boundary-history mismatch",
+      "evidence_availability": "strong pressure-node and brewer-loss context",
+      "identifiability": "moderate; boundary and puck resistance can confound",
+      "rights_data_availability": "available locked source metadata",
+      "numerical_conservation_risk": "moderate boundary-control complexity",
+      "verification_route": "prescribed-pressure fixture and machine/bed pressure-drop accounting",
+      "validation_opportunity": "line-versus-basket pressure histories",
+      "engineering_value": "high",
+      "computational_cost": "moderate",
+      "claim_ceiling_effect": "machine-specific boundary reconstruction",
+      "disposition": "RUNNER_UP"
+    },
+    {
+      "rank": 3,
+      "candidate": "Pressure-only poroelastic compaction",
+      "residual_addressed": "pressure-dependent equilibrium resistance",
+      "evidence_availability": "source equilibrium curve available",
+      "identifiability": "insufficient alone for persistent time trend at nearly steady pressure",
+      "rights_data_availability": "source-linked parameters available",
+      "numerical_conservation_risk": "moderate if storage is later activated",
+      "verification_route": "static pressure sweep",
+      "validation_opportunity": "multi-pressure equilibrium curve",
+      "engineering_value": "high for later full poroelasticity",
+      "computational_cost": "moderate",
+      "claim_ceiling_effect": "pressure-specific compaction only",
+      "disposition": "DEFER"
+    },
+    {
+      "rank": 4,
+      "candidate": "Bounded radial/depth heterogeneity",
+      "residual_addressed": "spatial flow and future channel initiation",
+      "evidence_availability": "limited source-specific spatial evidence",
+      "identifiability": "weak for coherent mean-flow rise",
+      "rights_data_availability": "partial",
+      "numerical_conservation_risk": "moderate spatial-discretization risk",
+      "verification_route": "layered and radial Darcy fixtures",
+      "validation_opportunity": "future spatial measurements",
+      "engineering_value": "high later",
+      "computational_cost": "moderate",
+      "claim_ceiling_effect": "bounded heterogeneity, not channel validation",
+      "disposition": "DEFER"
+    },
+    {
+      "rank": 5,
+      "candidate": "Improved wetting or gas displacement",
+      "residual_addressed": "first-drip and initial 5-10 s",
+      "evidence_availability": "source model explicitly excludes this interval",
+      "identifiability": "poor from saturated 10-90 s score",
+      "rights_data_availability": "insufficient direct evidence",
+      "numerical_conservation_risk": "high multiphase complexity",
+      "verification_route": "early-time front and gas-displacement fixtures",
+      "validation_opportunity": "requires separately evidenced early-shot data",
+      "engineering_value": "high but not for current residual",
+      "computational_cost": "high",
+      "claim_ceiling_effect": "early wetting only",
+      "disposition": "DEFER"
+    },
+    {
+      "rank": 6,
+      "candidate": "Thermal transport or concentration-dependent viscosity",
+      "residual_addressed": "time-varying fluid resistance",
+      "evidence_availability": "no measured transient temperature trace",
+      "identifiability": "weak",
+      "rights_data_availability": "property data would require a new review",
+      "numerical_conservation_risk": "high coupled-energy risk",
+      "verification_route": "energy and variable-property manufactured cases",
+      "validation_opportunity": "requires temperature/property measurements",
+      "engineering_value": "moderate",
+      "computational_cost": "high",
+      "claim_ceiling_effect": "thermal plausibility only",
+      "disposition": "DEFER"
+    },
+    {
+      "rank": 7,
+      "candidate": "Fines migration and clogging",
+      "residual_addressed": "history-dependent spatial resistance",
+      "evidence_availability": "insufficient source-specific transport/capture closure",
+      "identifiability": "weak against coherent source ramp",
+      "rights_data_availability": "requires new Taichi/measured evidence review",
+      "numerical_conservation_risk": "high particulate-transport risk",
+      "verification_route": "transport/capture conservation fixtures",
+      "validation_opportunity": "future fines measurements",
+      "engineering_value": "high",
+      "computational_cost": "high",
+      "claim_ceiling_effect": "fines-specific mechanism only",
+      "disposition": "DEFER"
+    },
+    {
+      "rank": 8,
+      "candidate": "Channel initiation or damage",
+      "residual_addressed": "delamination and intermittent flow",
+      "evidence_availability": "no identifying non-axisymmetric damage evidence here",
+      "identifiability": "poor for the mean 9-bar transient",
+      "rights_data_availability": "insufficient",
+      "numerical_conservation_risk": "high topology/damage risk",
+      "verification_route": "damage and non-axisymmetric benchmarks",
+      "validation_opportunity": "requires imaging or repeated on/off evidence",
+      "engineering_value": "high later",
+      "computational_cost": "very high",
+      "claim_ceiling_effect": "channel/damage hypotheses only",
+      "disposition": "DEFER"
+    },
+    {
+      "rank": 9,
+      "candidate": "Improved extraction closure",
+      "residual_addressed": "TDS/EY chemistry plausibility",
+      "evidence_availability": "shot-matched protected chemistry unavailable",
+      "identifiability": "not identified by hydraulic score",
+      "rights_data_availability": "partial",
+      "numerical_conservation_risk": "moderate solute-model risk",
+      "verification_route": "solute conservation and kinetic limits",
+      "validation_opportunity": "requires compatible shot chemistry",
+      "engineering_value": "high for cup prediction",
+      "computational_cost": "moderate",
+      "claim_ceiling_effect": "chemistry plausibility, not hydraulic validation",
+      "disposition": "DEFER"
+    },
+    {
+      "rank": 10,
+      "candidate": "Multispecies chemistry",
+      "residual_addressed": "mature cup-composition prediction",
+      "evidence_availability": "not connected to current protected residual",
+      "identifiability": "poor in current campaign",
+      "rights_data_availability": "requires new evidence review",
+      "numerical_conservation_risk": "high multispecies complexity",
+      "verification_route": "species conservation and limiting cases",
+      "validation_opportunity": "requires species-resolved measurements",
+      "engineering_value": "long-term",
+      "computational_cost": "high",
+      "claim_ceiling_effect": "no taste prediction without validation",
+      "disposition": "DEFER"
+    }
+  ],
+  "selected_scope": {
+    "allowed": [
+      "independent closed-form re-expression",
+      "bounded effective-permeability multiplier",
+      "locked empirical dissolved-mass sigmoid as first state driver",
+      "saturated-branch-only activation",
+      "constant-permeability regression control"
+    ],
+    "soft_circularity": "The empirical dissolved-mass driver is softly circular because it derives from same-rig TDS and flow and is not independent validation."
+  },
+  "deferred_scope": [
+    "mesh motion",
+    "bed-depth or pore-volume storage change",
+    "solid displacement or stress",
+    "sharp-front wetting changes",
+    "machine compliance",
+    "generic fitted K(t)",
+    "solver-predicted dissolved-mass coupling",
+    "swelling, fines, channeling, damage, thermal transport, or new chemistry"
+  ],
+  "verification_entry_contract": {
+    "required": [
+      "independent qhat, phi_factor, static-flow, dissolved-mass, and dynamic-flow calculations",
+      "scalar and vector parity against exact locked Puckworks",
+      "disabled-branch constant-permeability recovery",
+      "R0 and constant-R1 regression",
+      "one-dimensional uniform-pressure closed-form fixture",
+      "liquid and solute conservation",
+      "finite bounded permeability multiplier",
+      "no protected-score parameter selection"
+    ]
+  },
+  "validation_entry_contract": {
+    "source_specific_reconstruction": true,
+    "non_9_bar_same_campaign_comparison_frozen_before_execution": true,
+    "no_retuning": true,
+    "independent_validation_claim": false
+  },
+  "rights": {
+    "puckworks_code": "MIT",
+    "waszkiewicz_deposited_data": "CC-BY-4.0_WITH_ATTRIBUTION",
+    "journal_article": "CITATION_ONLY",
+    "gpl_source_code_copying_authorized": false
+  },
+  "claim_ceiling": "The first branch tests whether a source-linked, saturated, dissolution-indexed effective hydraulic resistance can reproduce the Waszkiewicz transient more faithfully than constant permeability. It does not establish independently validated poroelastic deformation, transfer across coffees or machines, early wetting physics, channeling, or a universal permeability law.",
+  "implementation_issue": {
+    "number": 18,
+    "url": "https://github.com/trbrewer/espresso-whole-pull/issues/18",
+    "title": "WP02-001: Implement the Waszkiewicz saturated poroelastic effective-permeability branch",
+    "change_declaration": "GOVERNING_PHYSICS_CHANGE"
+  },
+  "authorization_boundaries": {
+    "governing_physics_change": false,
+    "scientific_configuration_change": false,
+    "future_physics_change_selected": true,
+    "future_physics_change_implemented": false,
+    "openfoam_execution_count": 0,
+    "parameter_fitting_count": 0,
+    "protected_processing_count": 0
+  }
+}

@@ -1,24 +1,50 @@
 # Puckworks Whole-Pull Multiscale Modeling and Simulation Strategy
 
-**Strategy version:** 1.4
-**Date:** 27 July 2026
-**Status:** Controlling public-development workflow; scientific roadmap and claim ceiling unchanged from v1.3; R0 remains `FROZEN / QUALIFIED`; physical validation remains not established
-**Supersedes:** strategy v1.3 and all earlier strategy versions
+**Strategy version:** 1.5
+**Date:** 29 July 2026
+**Status:** Controlling public-development workflow; WP-0.1R is complete, R0 remains `FROZEN / QUALIFIED`, and physical validation remains not established
+**Supersedes:** strategy v1.4 and all earlier strategy versions
 **Repository:** `trbrewer/espresso-whole-pull`; Puckworks remains the external evidence/model/data dependency
-**Reviewed repository baseline:** inherited from Version 1.0, `main` at commit `d9ee264`; repository alignment must be refreshed before integration
+**Reviewed Puckworks dependency baseline:** repository `https://github.com/trbrewer/puckworks.git`; commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`; tree `1d553e44ee2f7480a5df521560801b478618cc84`; alignment status `REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF`. The dependency review, source dossier, calibration/comparison contract, deterministic R1 bridge, and governed WP-0.1R execution are complete.
 **OpenFOAM implementation baseline:** `espresso_puck_whole_pull_reference_v0_1_4_openfoam12`, terminal freeze manifest `PASS`
 **Execution baseline:** OpenFOAM Foundation 12 on the local Linux system; fresh 32-rank R0 reference run, exact-build reuse, standard ten-run qualification matrix, and terminal acyclic freeze finalization
 **Primary whole-puck platform:** OpenFOAM Foundation 12 on the local 64-CPU Linux system, with 128 logical CPUs reported by the run environment
 **Primary pore-scale platform:** Taichi/LBM on NVIDIA A100-SXM4-80GB-class GPU resources
 **Scientific and software backbone:** Puckworks models, data, model cards, contracts, validation gates, rights records, and public product layer
 **WP-0.1 disposition:** **IMPLEMENTATION PASS; BOUNDED CODE VERIFICATION PASS; NUMERICAL QUALIFICATION PASS; RELEASE PROVENANCE PASS; R0 FROZEN / QUALIFIED; PHYSICAL VALIDATION NOT ESTABLISHED**
-**Next controlling milestone:** preserve and register the frozen R0 baseline, then execute WP-0.1R as a distinct Waszkiewicz-linked 18.5 g / 58 mm / 9 bar reconstruction with formal Puckworks integration
+**Next controlling milestone:** issue #18, WP02-001, implementing the optional Waszkiewicz saturated dissolution-indexed effective-permeability branch
 
 ---
 
 ## Executive statement
 
-Version 1.4 records the transition to a clean public solver repository. It changes repository governance, public provenance, CI, licensing documentation, and dependency workflow only. It does not change governing physics, scientific configuration, calibration, numerical schemes, validation thresholds, the scientific roadmap, or the claim ceiling. Exact archival v0.1.4 bytes remain offline; public development begins from the sanitized derivative `v0.1.4-public.1`.
+Version 1.5 records completion of WP-0.1R and selects the first evidence-led
+WP-0.2 mechanism. WP-0.1R passed numerical, conservation, and calibration
+reproduction gates, but failed the five protected flow-shape comparisons with
+zero predicted protected-window variation. The governed corrective result
+exactly reproduced the preliminary result. The controlling residual is
+`STRUCTURAL_MODEL_INADEQUACY`; physical validation remains
+`NOT_ESTABLISHED`.
+
+### WP-0.2A — Source-linked saturated hydraulic evolution
+
+The selected first mechanism is the Waszkiewicz saturated
+dissolution-indexed effective-permeability closure. Its first implementation
+is an optional algebraic effective-permeability branch driven by the locked
+empirical dissolved-mass trajectory. It changes saturated hydraulic
+resistance only and preserves the constant-permeability branch as a regression
+control.
+
+The first branch excludes dynamic pore-volume storage, deforming mesh, a full
+stress/displacement solve, swelling, hysteresis, machine/headspace coupling,
+fines, and channeling. Full poroelastic deformation and solver-coupled
+dissolved mass remain later evolving-puck work. Machine/headspace coupling is
+the immediate runner-up if this branch leaves a coherent boundary-history
+residual. No mechanism may be hidden in an arbitrary fitted `K(t)`, and
+development remains one mechanism at a time. Issue #18 is the next milestone;
+this strategy decision implements no governing physics.
+
+Version 1.4 recorded the transition to a clean public solver repository. It changed repository governance, public provenance, CI, licensing documentation, and dependency workflow only. It did not change governing physics, scientific configuration, calibration, numerical schemes, validation thresholds, the scientific roadmap, or the claim ceiling. Exact archival v0.1.4 bytes remain offline; public development begins from the sanitized derivative `v0.1.4-public.1`.
 
 Version 1.0 established the program pivot: build a new, coupled, multiscale, whole-pull espresso simulation rather than indefinitely postponing integration behind pore-scale qualification or reducing the effort to an orchestration layer around existing models. Version 1.1 recorded the first successful end-to-end OpenFOAM execution. Version 1.2 recorded successful numerical hardening and the standard ten-run qualification campaign.
 
@@ -116,13 +142,12 @@ WP-0.1H is therefore complete at the implementation, code-verification, numerica
 
 The immediate program sequence is:
 
-1. archive the complete post-`Allverify` v0.1.4 directory, including fields, solver executable, qualification cases and logs, and record an external archive checksum;
-2. issue the formal R0 reference specification and concise WP-0.1H result note;
-3. refresh the current Puckworks repository baseline before integration;
-4. construct a source-and-quantity dossier for the distinct WP-0.1R case;
-5. implement the Waszkiewicz-linked 18.5 g, 58 mm, 9 bar R1 reconstruction without altering frozen R0;
-6. register the frozen solver and R0/R1 contracts in Puckworks;
-7. use the R1 residuals and evidence gaps—not solver capability alone—to select the first WP-0.2 physics addition.
+1. merge the reviewed WP01R-006 decision and close issue #8;
+2. implement issue #18 as one optional, disabled-by-default saturated effective-permeability branch;
+3. verify the independent closed form, locked-Puckworks parity, disabled-branch regression, uniform-pressure fixture, and conservation;
+4. execute the unchanged 9-bar source-linked reconstruction;
+5. execute one predeclared 8-bar, no-retuning, same-campaign transfer comparison;
+6. use the resulting multi-pressure residual—not implementation convenience—to decide whether the next mechanism is machine/headspace coupling, fuller poroelasticity, or another ranked candidate.
 
 The model program continues to combine four capabilities:
 

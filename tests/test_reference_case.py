@@ -1220,6 +1220,146 @@ class ScriptIntegrationTests(unittest.TestCase):
         self.assertTrue(all(item["status"] == "PASS" for item in gates.values()))
 
 
+class WP01R006DecisionTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.json_path = (
+            ROOT
+            / "validation/decisions/WP01R_006_FIRST_WP02_PHYSICS_SELECTION.json"
+        )
+        self.markdown_path = (
+            ROOT / "docs/decisions/WP01R_006_FIRST_WP02_PHYSICS_SELECTION.md"
+        )
+        self.decision = json.loads(self.json_path.read_text(encoding="utf-8"))
+
+    def test_decision_artifacts_exist_and_agree(self) -> None:
+        self.assertTrue(self.json_path.is_file())
+        self.assertTrue(self.markdown_path.is_file())
+        markdown = self.markdown_path.read_text(encoding="utf-8")
+        mechanism = self.decision["selected_mechanism"]
+        self.assertIn(mechanism["id"], markdown)
+        self.assertIn(self.decision["implementation_issue"]["url"], markdown)
+
+    def test_input_result_and_selection_are_exact(self) -> None:
+        residual = self.decision["input_residual"]
+        self.assertEqual(
+            residual["wp01r_005_merge_commit"],
+            "7f2c7a6c8881233574f28be74414f20b04bbf51a",
+        )
+        self.assertEqual(
+            residual["execution_result_sha256"],
+            "3a29c38d560c1003cb1c4730323b7241ac37a9ecb67933be9a17c6e37af07d5d",
+        )
+        self.assertEqual(residual["predicted_normalized_std"], 0.0)
+        self.assertEqual(residual["primary_residual"], "STRUCTURAL_MODEL_INADEQUACY")
+        self.assertEqual(
+            self.decision["selected_mechanism"]["id"],
+            "WASZKIEWICZ_SATURATED_DISSOLUTION_INDEXED_EFFECTIVE_PERMEABILITY",
+        )
+
+    def test_all_ranked_candidate_categories_are_assessed(self) -> None:
+        candidates = self.decision["ranked_candidates"]
+        self.assertEqual([item["rank"] for item in candidates], list(range(1, 11)))
+        required = {
+            "residual_addressed",
+            "evidence_availability",
+            "identifiability",
+            "rights_data_availability",
+            "numerical_conservation_risk",
+            "verification_route",
+            "validation_opportunity",
+            "engineering_value",
+            "computational_cost",
+            "claim_ceiling_effect",
+            "disposition",
+        }
+        for candidate in candidates:
+            self.assertTrue(required.issubset(candidate))
+        self.assertEqual(candidates[1]["disposition"], "RUNNER_UP")
+        self.assertIn("Machine/headspace", candidates[1]["candidate"])
+
+    def test_effective_permeability_scope_and_claim_ceiling(self) -> None:
+        allowed = " ".join(self.decision["selected_scope"]["allowed"])
+        deferred = " ".join(self.decision["deferred_scope"])
+        self.assertIn("effective-permeability", allowed)
+        self.assertIn("mesh motion", deferred)
+        self.assertIn("pore-volume storage", deferred)
+        self.assertIn("solid displacement", deferred)
+        self.assertIn("softly circular", self.decision["selected_scope"]["soft_circularity"])
+        self.assertFalse(
+            self.decision["validation_entry_contract"]["independent_validation_claim"]
+        )
+        self.assertIn("generic fitted K(t)", self.decision["deferred_scope"])
+
+    def test_future_issue_and_entry_contract_are_frozen(self) -> None:
+        issue = self.decision["implementation_issue"]
+        self.assertEqual(issue["number"], 18)
+        self.assertEqual(
+            issue["url"],
+            "https://github.com/trbrewer/espresso-whole-pull/issues/18",
+        )
+        self.assertEqual(issue["change_declaration"], "GOVERNING_PHYSICS_CHANGE")
+        required = self.decision["verification_entry_contract"]["required"]
+        self.assertTrue(required)
+        self.assertTrue(
+            self.decision["validation_entry_contract"][
+                "non_9_bar_same_campaign_comparison_frozen_before_execution"
+            ]
+        )
+
+    def test_strategy_and_authorization_boundary(self) -> None:
+        strategy = (
+            ROOT / "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("**Strategy version:** 1.5", strategy)
+        current_header = strategy.split("---", 1)[0]
+        current_sequence = strategy.split(
+            "The immediate program sequence is:", 1
+        )[1].split("The model program continues", 1)[0]
+        self.assertIn(
+            "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+            current_header,
+        )
+        self.assertIn(
+            "1d553e44ee2f7480a5df521560801b478618cc84",
+            current_header,
+        )
+        self.assertNotIn(
+            "alignment must be refreshed before integration",
+            current_header,
+        )
+        self.assertIn("issue #18", current_sequence)
+        self.assertNotIn("construct a source-and-quantity dossier", current_sequence)
+        self.assertNotIn("implement the Waszkiewicz-linked", current_sequence)
+        self.assertIn("historical", strategy.lower())
+        boundary = self.decision["authorization_boundaries"]
+        self.assertFalse(boundary["governing_physics_change"])
+        self.assertFalse(boundary["scientific_configuration_change"])
+        self.assertTrue(boundary["future_physics_change_selected"])
+        self.assertFalse(boundary["future_physics_change_implemented"])
+
+    def test_strategy_correction_does_not_change_decision_artifacts(self) -> None:
+        import hashlib
+
+        self.assertEqual(
+            hashlib.sha256(self.markdown_path.read_bytes()).hexdigest(),
+            "bfe57b2475733550ac46e62eb426559732a87a2d3a9a24fd272a17cbd963ac48",
+        )
+        self.assertEqual(
+            hashlib.sha256(self.json_path.read_bytes()).hexdigest(),
+            "4a2a4931a6d5f3f0417e33b6db9554073c0dd2d849c66b1040c276c0cccae790",
+        )
+
+    def test_decision_documentation_exclusion_is_exact_path_only(self) -> None:
+        self.assertTrue(
+            excluded(
+                Path("docs/decisions/WP01R_006_FIRST_WP02_PHYSICS_SELECTION.md")
+            )
+        )
+        self.assertFalse(
+            excluded(Path("docs/decisions/arbitrary-decision.md"))
+        )
+
+
 class PublicSourceManifestPortabilityTests(unittest.TestCase):
     def copy_repository(self, destination: Path) -> None:
         shutil.copytree(
