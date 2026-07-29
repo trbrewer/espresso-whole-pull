@@ -104,6 +104,19 @@ def main():
           "equilibrium_pressure_Pa":exact["equilibrium_pressure_Pa"],
           "time_constant_s":exact["time_constant_s"],"trace_sha256":sha(trace)})
     orders=[math.log(refinement[i]["continuous_endpoint_absolute_error_Pa"]/refinement[i+1]["continuous_endpoint_absolute_error_Pa"],2) for i in range(2)]
+    eq_rows=list(csv.DictReader(open(a.run_root/"cases"/"LF-EQ"/"postProcessing/wholePull/0/traces.csv")))
+    eq_cfg=json.load(open(a.run_root/"configs"/"LF-EQ.json"))
+    eq_area=math.pi*eq_cfg["geometry"]["basket_radius_m"]**2
+    eq_g=eq_area*eq_cfg["hydraulics"]["saturated_permeability_m2"]/(eq_cfg["liquid"]["dynamic_viscosity_Pa_s"]*eq_cfg["coffee_bed"]["bed_depth_m"])
+    eq_ref=continuous(100.0,0.0,0.0,2e-11,6e-6,1.2e6,eq_g)
+    eq_pressure=float(eq_rows[-1]["upstreamPressurePa"])
+    eq_flow=float(eq_rows[-1]["puckFlowM3s"])
+    equilibrium={"observed_pressure_Pa":eq_pressure,
+      "reference_pressure_Pa":eq_ref["equilibrium_pressure_Pa"],
+      "pressure_relative_error":abs(eq_pressure-eq_ref["equilibrium_pressure_Pa"])/eq_ref["equilibrium_pressure_Pa"],
+      "observed_flow_m3_s":eq_flow,
+      "reference_flow_m3_s":eq_g*eq_ref["equilibrium_pressure_Pa"],
+      "flow_relative_error":abs(eq_flow-eq_g*eq_ref["equilibrium_pressure_Pa"])/(eq_g*eq_ref["equilibrium_pressure_Pa"])}
     limiting=[]
     for index in range(3):
         cfg=json.load(open(a.run_root/"configs"/("PL-"+str(index)+".json")))
@@ -123,9 +136,11 @@ def main():
         if discrete <= 1e-10 and all_cases_pass else "NUMERICAL_FAILURE"),
       "physical_validation":"NOT_ESTABLISHED","python":platform.python_version(),
       "analytical_linear_load":{"refinement":refinement,"observed_orders":orders,
+        "equilibrium":equilibrium,
         "maximum_discrete_relative_error":discrete,
         "backward_euler_gate":"PASS" if discrete <= 1e-10 else "FAIL",
-        "temporal_refinement_gate":"PASS" if min(orders) >= .8 and max(orders) <= 1.2 else "FAIL"},
+        "temporal_refinement_gate":"PASS" if min(orders) >= .8 and max(orders) <= 1.2 else "FAIL",
+        "equilibrium_gate":"PASS" if max(equilibrium["pressure_relative_error"],equilibrium["flow_relative_error"]) <= 1e-8 else "FAIL"},
       "prescribed_pressure_limit":{"sequence":limiting,
         "systematic_approach_gate":"PASS" if all(limiting[i]["relative_error_to_prescribed_step"]>limiting[i+1]["relative_error_to_prescribed_step"] for i in range(2)) else "FAIL"},
       "regressions":{"prescribed_pressure_R0":"PASS",

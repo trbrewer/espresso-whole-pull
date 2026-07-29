@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 149,
-  "total_uncompressed_bytes_excluding_manifest": 1396573,
-  "aggregate_source_sha256": "6586f6dd73073d5bcec9790a88a19e68441291ed50bcda883bfc8960bc095cde",
-  "aggregate_sha256": "6586f6dd73073d5bcec9790a88a19e68441291ed50bcda883bfc8960bc095cde",
+  "total_uncompressed_bytes_excluding_manifest": 1398605,
+  "aggregate_source_sha256": "7f83fb9a4579a6951962473eff522614e9b534e1015f8752734eb4fed90af5ac",
+  "aggregate_sha256": "7f83fb9a4579a6951962473eff522614e9b534e1015f8752734eb4fed90af5ac",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -454,8 +454,8 @@
       "git_mode": "100644"
     },
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md": {
-      "sha256": "22b7ac1b9063a77638e07565b4971c64a799d8d5df8fd8502bc9c847a8306bb6",
-      "bytes": 4222,
+      "sha256": "4d7ab85eb20060514b06d7871f2e21cd4cd43e3d69dbdf3e02fa7a4047ce6df0",
+      "bytes": 4398,
       "git_mode": "100644"
     },
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": {
@@ -484,8 +484,8 @@
       "git_mode": "100755"
     },
     "scripts/analyze_wp02_002_machine_coupling.py": {
-      "sha256": "53e80fc89fa4d895c4d1cdb439c0b3fbde1e3cbbe62b28bf5f042332882b0ae3",
-      "bytes": 9283,
+      "sha256": "54d7811411a401ee32c67f86d47141c095acf944b821f5e48e88232128a90d43",
+      "bytes": 10457,
       "git_mode": "100755"
     },
     "scripts/artifact_utils.py": {
@@ -574,8 +574,8 @@
       "git_mode": "100755"
     },
     "scripts/run_wp02_002_machine_coupling.sh": {
-      "sha256": "6a1ffff4e722023bb31a65af9aed4feacf39cc56465518e0c6b71eb2b3c22555",
-      "bytes": 4868,
+      "sha256": "f7d3a81a43524833af7f385f7c3409d358a6bdb9eebb32e2b0508ae8d3bb74d3",
+      "bytes": 5550,
       "git_mode": "100755"
     },
     "scripts/run_wp02_uniform_fixture.sh": {

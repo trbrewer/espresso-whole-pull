@@ -62,6 +62,20 @@ PY
   )
 done
 
+python3 - "$WP02_002_RUN_ROOT/configs/LF-0.02.json" \
+  "$WP02_002_RUN_ROOT/configs/LF-EQ.json" <<'PY'
+import json,sys
+cfg=json.load(open(sys.argv[1])); cfg["scenario_id"]="WP02_002_LF_EQ"
+cfg["time"]["end_s"]=100.0; cfg["time"]["field_write_interval_s"]=100.0
+json.dump(cfg,open(sys.argv[2],"w"),indent=2); open(sys.argv[2],"a").write("\n")
+PY
+case_dir="$WP02_002_RUN_ROOT/cases/LF-EQ"
+rm -rf "$case_dir"
+python3 "$ROOT/scripts/prepare_case.py" --root "$ROOT" \
+  --config "$WP02_002_RUN_ROOT/configs/LF-EQ.json" --case-dir "$case_dir" --nprocs 1
+(cd "$case_dir"; blockMesh > log.blockMesh; checkMesh > log.checkMesh;
+ env ESPRESSO_CASE_ROOT="$case_dir" "$EXE" > log.solver 2>&1)
+
 index=0
 for pair in "1e-10 1e-5" "1e-11 1e-4" "1e-12 1e-3"; do
   set -- $pair

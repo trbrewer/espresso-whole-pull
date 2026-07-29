@@ -1,6 +1,15 @@
 {
   "analytical_linear_load": {
     "backward_euler_gate": "PASS",
+    "equilibrium": {
+      "flow_relative_error": 4.084298181489377e-13,
+      "observed_flow_m3_s": 1.48696935481733e-06,
+      "observed_pressure_Pa": 902606.129036045,
+      "pressure_relative_error": 4.071800081836213e-13,
+      "reference_flow_m3_s": 1.4869693548179373e-06,
+      "reference_pressure_Pa": 902606.1290364126
+    },
+    "equilibrium_gate": "PASS",
     "maximum_discrete_relative_error": 1.0240359594760537e-12,
     "observed_orders": [
       0.9952328432242143,

@@ -29,6 +29,9 @@ errors for `dt = 0.04, 0.02, 0.01 s` were respectively 2038.1395, 1022.4427,
 and 512.0695 Pa, giving observed orders 0.99523 and 0.99761. A production
 limit sequence reduced the relative difference from a prescribed 900 kPa
 step from 0.80408 to 0.01461 to 0.0014805.
+The 100 s equilibrium fixture agreed with the independent equilibrium pressure
+to `4.07e-13` relative and equilibrium flow to `4.08e-13` relative, both below
+the `1e-8` gates.
 
 The 131,072-cell prescribed-pressure R0 control reproduced first drip
 `4.711696185 s`, final beverage `40.957867483 g`, TDS `11.689306389 %`, and
