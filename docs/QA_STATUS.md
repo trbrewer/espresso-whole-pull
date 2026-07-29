@@ -40,7 +40,7 @@ and source/holdout-fit counts remained zero.
 
 ## Current repository checks
 
-- Python tests: 195/195 PASS
+- Python tests: 199/199 PASS
 - active static gates: 34/34 PASS
 - source manifest: recorded in `PACKAGE_QA_STATUS.json` and
   `SOURCE_PACKAGE_MANIFEST.json`
@@ -68,5 +68,5 @@ Real-world human and apparatus inputs remain unresolved. Final
 preregistration, commissioning, holdout acquisition, model execution, and
 scoring are not authorized.
 
-Current Stage-0 checks comprise 195/195 Python tests, 34/34 active static
+Current Stage-0 checks comprise 199/199 Python tests, 34/34 active static
 gates, and 143/143 source-manifest entries.

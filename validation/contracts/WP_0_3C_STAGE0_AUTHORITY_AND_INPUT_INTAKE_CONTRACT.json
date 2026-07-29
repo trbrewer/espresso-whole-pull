@@ -88,7 +88,9 @@
   "allowed_unresolved_status": "UNRESOLVED_HUMAN_INPUT",
   "independent_scaffold_identities": {
     "canonical_requirement_metadata_aggregate_sha256": "844532b10a101ce6e4c60baceeb0d670eeb136943183cf2b9e7444f26cab1aab",
-    "template_filename_category_field_mapping_aggregate_sha256": "40942bbd9848efec54e560b834c44225b0b47c9c624c4228c922c6fd1fdb1a7a"
+    "template_filename_category_field_mapping_aggregate_sha256": "40942bbd9848efec54e560b834c44225b0b47c9c624c4228c922c6fd1fdb1a7a",
+    "complete_registry_aggregate_sha256": "1776a7b78a2d472ea1a09ecdfa529e117de59920bc35b28d701b5cedff83384c",
+    "complete_templates_aggregate_sha256": "f5caa1b5baa72c5840ace39bb6714a042685ceb7b6346a0d96cfb2edb62a3171"
   },
   "execution_counts": {
     "experimental": 0,

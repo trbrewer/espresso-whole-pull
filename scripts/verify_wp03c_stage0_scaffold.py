@@ -75,8 +75,12 @@ EXPECTED_REQUIREMENT_METADATA_AGGREGATE = \
     "844532b10a101ce6e4c60baceeb0d670eeb136943183cf2b9e7444f26cab1aab"
 EXPECTED_TEMPLATE_MAPPING_AGGREGATE = \
     "40942bbd9848efec54e560b834c44225b0b47c9c624c4228c922c6fd1fdb1a7a"
+EXPECTED_COMPLETE_REGISTRY_AGGREGATE = \
+    "1776a7b78a2d472ea1a09ecdfa529e117de59920bc35b28d701b5cedff83384c"
+EXPECTED_COMPLETE_TEMPLATES_AGGREGATE = \
+    "f5caa1b5baa72c5840ace39bb6714a042685ceb7b6346a0d96cfb2edb62a3171"
 EXPECTED_CONTRACT_CANONICAL_SHA256 = \
-    "305d85b9c58f165c1119f3c6e8623bfa9ae01eeaa356cc512fb1ea57aad6aff3"
+    "9447b938cf91e0ae9d50af4b315b24393b5885dd333a89458d56413294a561fa"
 EXPECTED_CLASSIFICATION = [
     "PROTOCOL_SCAFFOLD_AND_INPUT_INTAKE_ONLY",
     "NO_GOVERNING_PHYSICS_CHANGE", "NO_EXPERIMENTAL_EXECUTION",
@@ -125,6 +129,54 @@ EXPECTED_INFORMATION_BOUNDARY = {
     "private": "PERSONAL_OPERATIONAL_CREDENTIAL_KEY_CONDITION_MAP_AND_CONTROLLED_DATA",
     "private_package_binding": "HASH_ONLY_WHERE_APPROPRIATE",
     "credentials_in_repository": False,
+}
+EXPECTED_REGISTRY_KEYS = {
+    "schema_version", "task", "input_classification_vocabulary",
+    "deadline_vocabulary", "requirements", "frozen_governing_requirements",
+    "public_private_boundary", "readiness",
+}
+EXPECTED_TEMPLATE_KEYS = {
+    "schema_version", "task", "template_status", "final_preregistration",
+    "experimental_execution_authorized", "unresolved_value_policy", "fields",
+}
+EXPECTED_PRIVATE_CLASSIFICATIONS = {
+    "PRIVATE_PERSONAL_INPUT", "PRIVATE_OPERATIONAL_INPUT",
+    "SEALED_ACQUISITION_INPUT", "MEASURED_HOLDOUT_INPUT",
+}
+EXPECTED_INPUT_STATUSES = {
+    "UNRESOLVED_HUMAN_INPUT", "RESOLVED_HUMAN_INPUT",
+}
+EXPECTED_READINESS = {
+    "current_state": "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS",
+    "stage0_evaluator_states": [
+        "AUTHORITY_NOT_ESTABLISHED",
+        "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS",
+        "HUMAN_INPUTS_PARTIALLY_COMPLETE",
+        "HUMAN_INPUTS_COMPLETE_AWAITING_GOVERNED_REVIEW",
+    ],
+    "future_governed_authorization_required_states": [
+        "APPARATUS_NOT_AVAILABLE", "APPARATUS_PROCUREMENT_REQUIRED",
+        "READY_FOR_CALIBRATION_PLANNING",
+        "READY_FOR_NONHOLDOUT_COMMISSIONING",
+        "READY_TO_FREEZE_FINAL_PREREGISTRATION",
+        "FINAL_PREREGISTRATION_FROZEN",
+    ],
+}
+EXPECTED_REGISTRY_INFORMATION_BOUNDARY = {
+    "public_repository_package": [
+        "role IDs", "campaign design", "equipment make/model",
+        "opaque equipment IDs", "sensor specifications",
+        "calibration methods", "protocol", "uncertainty requirements",
+        "hashes", "public-safe location classes", "acquisition status",
+        "non-sensitive provenance",
+    ],
+    "private_campaign_custody_package": [
+        "names and contact details", "private laboratory address",
+        "sensitive serial numbers", "credentials", "private storage paths",
+        "encryption keys", "condition-code map",
+        "private raw data before authorized release",
+    ],
+    "public_binding": "HASH_PRIVATE_PACKAGE_WITHOUT_DISCLOSURE_WHERE_APPROPRIATE",
 }
 FORBIDDEN_PATTERNS = (
     r"-----BEGIN .*PRIVATE KEY-----", r"\b(password|api[_-]?key|secret)\s*[:=]\s*\S+",
@@ -210,6 +262,13 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
             )
             for name, template in templates.items())
     governing = registry.get("frozen_governing_requirements", {})
+    privacy_semantics = all(
+        value.get("private_value_required") ==
+            (value.get("input_classification") in EXPECTED_PRIVATE_CLASSIFICATIONS)
+        and value.get("public_repository_value_allowed") ==
+            (value.get("input_classification") not in EXPECTED_PRIVATE_CLASSIFICATIONS)
+        for value in all_fields
+    )
     return {
         "fixed_path_boundary":
             paths == EXPECTED_PATHS and
@@ -229,7 +288,11 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
                 "canonical_requirement_metadata_aggregate_sha256":
                     EXPECTED_REQUIREMENT_METADATA_AGGREGATE,
                 "template_filename_category_field_mapping_aggregate_sha256":
-                    EXPECTED_TEMPLATE_MAPPING_AGGREGATE}
+                    EXPECTED_TEMPLATE_MAPPING_AGGREGATE,
+                "complete_registry_aggregate_sha256":
+                    EXPECTED_COMPLETE_REGISTRY_AGGREGATE,
+                "complete_templates_aggregate_sha256":
+                    EXPECTED_COMPLETE_TEMPLATES_AGGREGATE}
             and contract.get("immutable_scientific_identities") ==
                 EXPECTED_IDENTITIES
             and contract.get("dependencies") == EXPECTED_DEPENDENCIES
@@ -283,6 +346,22 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
         "independent_template_mapping_identity":
             canonical_aggregate(template_mapping(templates)) ==
                 EXPECTED_TEMPLATE_MAPPING_AGGREGATE,
+        "complete_registry_identity":
+            canonical_aggregate(registry) == EXPECTED_COMPLETE_REGISTRY_AGGREGATE,
+        "complete_templates_identity":
+            canonical_aggregate(templates) == EXPECTED_COMPLETE_TEMPLATES_AGGREGATE,
+        "registry_envelope_exact":
+            set(registry) == EXPECTED_REGISTRY_KEYS
+            and registry.get("readiness") == EXPECTED_READINESS
+            and registry.get("public_private_boundary") ==
+                EXPECTED_REGISTRY_INFORMATION_BOUNDARY,
+        "template_envelopes_exact":
+            all(set(template) == EXPECTED_TEMPLATE_KEYS
+                for template in template_values),
+        "privacy_vocabularies_exact":
+            stage0.PRIVATE_CLASSIFICATIONS == EXPECTED_PRIVATE_CLASSIFICATIONS
+            and stage0.INPUT_STATUSES == EXPECTED_INPUT_STATUSES,
+        "privacy_semantics_exact": privacy_semantics,
         "classifications_complete":
             set(registry.get("input_classification_vocabulary", [])) ==
                 stage0.CLASSIFICATIONS

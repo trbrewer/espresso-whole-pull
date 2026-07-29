@@ -207,6 +207,65 @@ class Stage0Tests(unittest.TestCase):
         self.assertFalse(checks["independent_requirement_metadata_identity"])
         self.assertFalse(checks["independent_template_mapping_identity"])
 
+    def test_extra_registry_and_template_envelope_keys_rejected(self):
+        registry = copy.deepcopy(self.registry)
+        registry["extra"] = True
+        self.assertFalse(self.evaluate(
+            registry=registry)["registry_envelope_exact"])
+        templates = copy.deepcopy(self.templates)
+        next(iter(templates.values()))["extra"] = True
+        self.assertFalse(self.evaluate(
+            templates=templates)["template_envelopes_exact"])
+
+    def test_readiness_and_registry_boundary_mutations_rejected(self):
+        registry = copy.deepcopy(self.registry)
+        registry["readiness"]["current_state"] = "READY_FOR_CALIBRATION_PLANNING"
+        self.assertFalse(self.evaluate(
+            registry=registry)["registry_envelope_exact"])
+        registry = copy.deepcopy(self.registry)
+        registry["public_private_boundary"]["public_binding"] = "MUTATED"
+        self.assertFalse(self.evaluate(
+            registry=registry)["registry_envelope_exact"])
+
+    def test_private_vocabulary_and_flags_are_independently_fixed(self):
+        original = set(stage0.PRIVATE_CLASSIFICATIONS)
+        try:
+            stage0.PRIVATE_CLASSIFICATIONS.remove("PRIVATE_PERSONAL_INPUT")
+            self.assertFalse(self.evaluate()["privacy_vocabularies_exact"])
+        finally:
+            stage0.PRIVATE_CLASSIFICATIONS.clear()
+            stage0.PRIVATE_CLASSIFICATIONS.update(original)
+        templates = copy.deepcopy(self.templates)
+        private_value = templates[
+            "WP_0_3C_ROLE_ASSIGNMENT_TEMPLATE.json"]["fields"][
+                "governance_and_roles"]["repository_owner"]
+        private_value["private_value_required"] = False
+        private_value["public_repository_value_allowed"] = True
+        self.assertFalse(self.evaluate(
+            templates=templates)["privacy_semantics_exact"])
+
+    def test_common_mode_template_mutation_hits_complete_identity(self):
+        original = stage0.unresolved
+
+        def mutated(*args, **kwargs):
+            value = original(*args, **kwargs)
+            value["common_mode_marker"] = True
+            return value
+
+        templates = copy.deepcopy(self.templates)
+        for template in templates.values():
+            for category in template["fields"].values():
+                for value in category.values():
+                    value["common_mode_marker"] = True
+        stage0.unresolved = mutated
+        try:
+            checks = self.evaluate(templates=templates)
+            self.assertTrue(checks["independent_requirement_metadata_identity"])
+            self.assertTrue(checks["independent_template_mapping_identity"])
+            self.assertFalse(checks["complete_templates_identity"])
+        finally:
+            stage0.unresolved = original
+
     def test_deterministic_regeneration_required(self):
         self.assertFalse(self.evaluate(
             regenerated=False)["deterministic_regeneration_byte_identical"])
