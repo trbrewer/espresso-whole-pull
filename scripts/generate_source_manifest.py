@@ -44,6 +44,7 @@ PUBLIC_DOCUMENTATION_PATHS = {
     "docs/ONBOARDING.md",
     "docs/PROJECT_STATE.md",
     "docs/PUCKWORKS_INTEGRATION.md",
+    "docs/decisions/WP01R_006_FIRST_WP02_PHYSICS_SELECTION.md",
     "docs/evidence/WASZKIEWICZ_R1_SOURCE_DOSSIER.md",
     "docs/integration/PUCKWORKS_UPDATE_IMPACT.md",
     "docs/r1/WP01R_004_PUCKWORKS_BRIDGE_AND_CASE.md",

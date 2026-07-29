@@ -1,6 +1,6 @@
 {
   "schema_version": "espresso.whole_pull.source_package_manifest.v0.1.4-public.1",
-  "generated_at_utc": "2026-07-29T01:27:14.731470+00:00",
+  "generated_at_utc": "2026-07-29T01:33:37.214965+00:00",
   "package": "espresso-whole-pull",
   "package_version": "0.1.4",
   "target": "OpenFOAM Foundation 12",
@@ -24,9 +24,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 112,
-  "total_uncompressed_bytes_excluding_manifest": 1113590,
-  "aggregate_source_sha256": "95494f754ec9c1e2544ec114430669bb5fc11949ee1012d08d205d0aad0576d5",
-  "aggregate_sha256": "95494f754ec9c1e2544ec114430669bb5fc11949ee1012d08d205d0aad0576d5",
+  "total_uncompressed_bytes_excluding_manifest": 1118556,
+  "aggregate_source_sha256": "ddd849e4cf5f5b8266ec37831cefea895a4bfac91d73ad3ebbbf89b908d8bb06",
+  "aggregate_sha256": "ddd849e4cf5f5b8266ec37831cefea895a4bfac91d73ad3ebbbf89b908d8bb06",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md",
   "strategy_source_sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
   "files": {
@@ -61,8 +61,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "10042b6a05d765a913e4480edb10b9465922243fbce978d8bcce27e19d7504a1",
-      "bytes": 2876,
+      "sha256": "a2fb492724f0b68d6feed300f95388c3b541fb4afce31aadacc15517bc6fd795",
+      "bytes": 3002,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -481,8 +481,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "39b39d8132609fd38dfcf0793470169b63ac872a38636deed62e89c0bc124129",
-      "bytes": 8238,
+      "sha256": "27bf6e28c5170069f2a69e2cd7acdba612f236657622f5058ec408763a440dfe",
+      "bytes": 8302,
       "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
@@ -586,8 +586,8 @@
       "git_mode": "100644"
     },
     "tests/test_reference_case.py": {
-      "sha256": "0e8ce81e6c2c723cb0ef1fbde03c2ef89fab9650e12452234a0ee9166e657861",
-      "bytes": 58544,
+      "sha256": "d93ec2b36ffe780aa163393681e5076bde9a6a85dd604ca26fa310c09db2c43a",
+      "bytes": 63320,
       "git_mode": "100644"
     }
   }

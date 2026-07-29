@@ -51,3 +51,12 @@ and [comparison figure](../validation/r1/WP01R_005_PROTECTED_FLOW_SHAPES.svg).
 The result is explicitly non-blinded because PR #16 had already accessed the
 protected data. No Puckworks code was executed and no complete source series
 was vendored.
+
+WP01R-006 selects the locked Waszkiewicz saturated dissolution-indexed
+effective-permeability closure as the first WP-0.2 branch. See the
+[decision](decisions/WP01R_006_FIRST_WP02_PHYSICS_SELECTION.md) and its
+[machine-readable record](../validation/decisions/WP01R_006_FIRST_WP02_PHYSICS_SELECTION.json).
+The first branch is source-linked and softly circular, implements effective
+hydraulic resistance only, and is not independent validation. Issue #18 is
+the governed implementation task; machine/headspace coupling remains the
+runner-up.

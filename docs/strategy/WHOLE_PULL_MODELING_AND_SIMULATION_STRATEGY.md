@@ -1,9 +1,9 @@
 # Puckworks Whole-Pull Multiscale Modeling and Simulation Strategy
 
-**Strategy version:** 1.4
-**Date:** 27 July 2026
-**Status:** Controlling public-development workflow; scientific roadmap and claim ceiling unchanged from v1.3; R0 remains `FROZEN / QUALIFIED`; physical validation remains not established
-**Supersedes:** strategy v1.3 and all earlier strategy versions
+**Strategy version:** 1.5
+**Date:** 29 July 2026
+**Status:** Controlling public-development workflow; WP-0.1R is complete, R0 remains `FROZEN / QUALIFIED`, and physical validation remains not established
+**Supersedes:** strategy v1.4 and all earlier strategy versions
 **Repository:** `trbrewer/espresso-whole-pull`; Puckworks remains the external evidence/model/data dependency
 **Reviewed repository baseline:** inherited from Version 1.0, `main` at commit `d9ee264`; repository alignment must be refreshed before integration
 **OpenFOAM implementation baseline:** `espresso_puck_whole_pull_reference_v0_1_4_openfoam12`, terminal freeze manifest `PASS`
@@ -12,13 +12,39 @@
 **Primary pore-scale platform:** Taichi/LBM on NVIDIA A100-SXM4-80GB-class GPU resources
 **Scientific and software backbone:** Puckworks models, data, model cards, contracts, validation gates, rights records, and public product layer
 **WP-0.1 disposition:** **IMPLEMENTATION PASS; BOUNDED CODE VERIFICATION PASS; NUMERICAL QUALIFICATION PASS; RELEASE PROVENANCE PASS; R0 FROZEN / QUALIFIED; PHYSICAL VALIDATION NOT ESTABLISHED**
-**Next controlling milestone:** preserve and register the frozen R0 baseline, then execute WP-0.1R as a distinct Waszkiewicz-linked 18.5 g / 58 mm / 9 bar reconstruction with formal Puckworks integration
+**Next controlling milestone:** issue #18, WP02-001, implementing the optional Waszkiewicz saturated dissolution-indexed effective-permeability branch
 
 ---
 
 ## Executive statement
 
-Version 1.4 records the transition to a clean public solver repository. It changes repository governance, public provenance, CI, licensing documentation, and dependency workflow only. It does not change governing physics, scientific configuration, calibration, numerical schemes, validation thresholds, the scientific roadmap, or the claim ceiling. Exact archival v0.1.4 bytes remain offline; public development begins from the sanitized derivative `v0.1.4-public.1`.
+Version 1.5 records completion of WP-0.1R and selects the first evidence-led
+WP-0.2 mechanism. WP-0.1R passed numerical, conservation, and calibration
+reproduction gates, but failed the five protected flow-shape comparisons with
+zero predicted protected-window variation. The governed corrective result
+exactly reproduced the preliminary result. The controlling residual is
+`STRUCTURAL_MODEL_INADEQUACY`; physical validation remains
+`NOT_ESTABLISHED`.
+
+### WP-0.2A — Source-linked saturated hydraulic evolution
+
+The selected first mechanism is the Waszkiewicz saturated
+dissolution-indexed effective-permeability closure. Its first implementation
+is an optional algebraic effective-permeability branch driven by the locked
+empirical dissolved-mass trajectory. It changes saturated hydraulic
+resistance only and preserves the constant-permeability branch as a regression
+control.
+
+The first branch excludes dynamic pore-volume storage, deforming mesh, a full
+stress/displacement solve, swelling, hysteresis, machine/headspace coupling,
+fines, and channeling. Full poroelastic deformation and solver-coupled
+dissolved mass remain later evolving-puck work. Machine/headspace coupling is
+the immediate runner-up if this branch leaves a coherent boundary-history
+residual. No mechanism may be hidden in an arbitrary fitted `K(t)`, and
+development remains one mechanism at a time. Issue #18 is the next milestone;
+this strategy decision implements no governing physics.
+
+Version 1.4 recorded the transition to a clean public solver repository. It changed repository governance, public provenance, CI, licensing documentation, and dependency workflow only. It did not change governing physics, scientific configuration, calibration, numerical schemes, validation thresholds, the scientific roadmap, or the claim ceiling. Exact archival v0.1.4 bytes remain offline; public development begins from the sanitized derivative `v0.1.4-public.1`.
 
 Version 1.0 established the program pivot: build a new, coupled, multiscale, whole-pull espresso simulation rather than indefinitely postponing integration behind pore-scale qualification or reducing the effort to an orchestration layer around existing models. Version 1.1 recorded the first successful end-to-end OpenFOAM execution. Version 1.2 recorded successful numerical hardening and the standard ten-run qualification campaign.
 
