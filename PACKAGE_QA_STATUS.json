@@ -5,7 +5,7 @@
   "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION",
   "target": "OpenFOAM Foundation 12",
   "governing_physics_change_after_baseline": false,
-  "release_qualification": "CANDIDATE_GATES_PENDING",
+  "release_qualification": "PASS_PENDING_PR_MERGE_AND_POST_MERGE_TAG",
   "scientific_result": {
     "sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
     "overall_disposition": "SOURCE_LINKED_MULTIPRESSURE_RECONSTRUCTION_PASS",
@@ -20,7 +20,7 @@
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_finalization_contract": "PASS",
-    "foundation12_build": "PENDING"
+    "foundation12_build": "PASS"
   },
   "historical_baseline": {
     "package": "v0.1.4-public.1",
@@ -29,6 +29,6 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "executed_scientific_solver_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
-  "release_executable_sha256": "PENDING_FRESH_BUILD",
+  "release_executable_sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }

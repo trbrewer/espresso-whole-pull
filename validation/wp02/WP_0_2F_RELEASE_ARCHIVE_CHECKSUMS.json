@@ -1,0 +1,17 @@
+{
+  "schema_version": "espresso.public.wp_0_2f_release_archive_checksums.v1",
+  "task": "WP-0.2F",
+  "release_version": "0.2.0",
+  "candidate_source_commit": "50024a691b8b776b0d14a50c8c96affae8b74b8d",
+  "artifacts": {
+    "espresso-whole-pull-0.2.0-source.tar.gz": {
+      "sha256": "1d82f925877a3fc913d29494a777741f4c45e8944c4dac5bdb69ebba5d7a7141",
+      "bytes": 513649,
+      "deterministic_second_generation_match": true
+    },
+    "espressoWholePullFoam-v0.2.0": {
+      "sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
+      "bytes": 698848
+    }
+  }
+}

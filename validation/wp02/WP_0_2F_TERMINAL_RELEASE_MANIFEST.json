@@ -1,0 +1,49 @@
+{
+  "schema_version": "espresso.public.wp_0_2f_terminal_release_manifest.v1",
+  "task": "WP-0.2F",
+  "release_version": "0.2.0",
+  "manifest_role": "TERMINAL_ACYCLIC_RELEASE_CANDIDATE_BINDING",
+  "candidate_source_commit": "50024a691b8b776b0d14a50c8c96affae8b74b8d",
+  "candidate_source_tree": "f1088b81abea46fcd2426d7ad756488d438b0187",
+  "release_merge_commit": "PENDING_RELEASE_FINALIZATION_PR_MERGE",
+  "release_tag": "PENDING_POST_MERGE_GATES",
+  "bound_artifacts": {
+    "source_package_manifest": {
+      "path": "SOURCE_PACKAGE_MANIFEST.json",
+      "sha256": "59e00b956c35e659e4428e8830dce08b4fce70334d0f34c4a9242596e3804175"
+    },
+    "release_contract": {
+      "path": "validation/wp02/WP_0_2F_RELEASE_FINALIZATION_CONTRACT.json",
+      "sha256": "77ec3bc4f55e1fc5d77010ca76e6bcbb43f322a0346d22286a0cc9bc8105fd85"
+    },
+    "post_merge_closure": {
+      "path": "validation/wp02/WP02_001_POST_MERGE_CLOSURE.json",
+      "sha256": "b10a9fcbbd01cae763ec104fbceae2550fe9582ac8b49307d25ae30c234f5e11"
+    },
+    "build_identity": {
+      "path": "validation/wp02/WP_0_2F_RELEASE_BUILD_IDENTITY.json",
+      "sha256": "49b4a1a2368f731ed690643b305c4e8607cd3583033cc48a0553df109c76870b"
+    },
+    "release_qa": {
+      "path": "validation/wp02/WP_0_2F_RELEASE_QA_RECORD.json",
+      "sha256": "dc8fc029ebf695f1312ffdba5a4e59cf35c0fa1edf5036333575d2a55e2ec3b0"
+    },
+    "archive_checksums": {
+      "path": "validation/wp02/WP_0_2F_RELEASE_ARCHIVE_CHECKSUMS.json",
+      "sha256": "61d78349c48885e2caffccd73011b3e4c2bb7d2164e87388c57d0065bcedaa9c"
+    },
+    "scientific_result": {
+      "path": "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json",
+      "sha256": "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859"
+    }
+  },
+  "release_executable_sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
+  "historical_scientific_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+  "source_archive_sha256": "1d82f925877a3fc913d29494a777741f4c45e8944c4dac5bdb69ebba5d7a7141",
+  "protected_source_access_count": 0,
+  "governed_scenario_rerun_count": 0,
+  "scoring_invocation_count": 0,
+  "overall_disposition": "SOFTWARE_AND_SOURCE_LINKED_RECONSTRUCTION_RELEASE_PASS",
+  "physical_validation": "NOT_ESTABLISHED",
+  "tag_creation_authorized_only_after": "RELEASE_PR_MERGED_AND_POST_MERGE_VERIFICATION_PASS"
+}
