@@ -1,0 +1,16 @@
+{
+  "additional_r1_execution_count": 0,
+  "blinding_status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS",
+  "central_r1_execution_count": 1,
+  "corrective_protected_processing_count": 1,
+  "last_completed_stage": "PROTECTED_ANALYSIS_COMPLETED",
+  "overall_r1_physical_comparison": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+  "physical_validation": "NOT_ESTABLISHED",
+  "protected_data_opened": true,
+  "protected_score_calculated": true,
+  "schema_version": "espresso.public.wp01r_005_run_status.v1",
+  "scientific_input_changed": false,
+  "stage": "COMPLETED",
+  "status": "PASS",
+  "task": "WP01R-005"
+}

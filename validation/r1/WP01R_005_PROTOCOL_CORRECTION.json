@@ -28,6 +28,25 @@
     "scientific_threshold_change": false,
     "scientific_time_mapping_change": false
   },
+  "final_governed_result": {
+    "additional_r0_execution_count": 0,
+    "additional_r1_execution_count": 0,
+    "analysis_commit": "5855dd6fcdab7894a37c7c49e98c717d4e0d2fe8",
+    "analysis_tree": "83a581b5e746542aec66ed27745895f5d5c6d2e0",
+    "analyzer_changes_after_protected_processing": 0,
+    "blinding_status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS",
+    "corrective_attempt_2_protected_processing_count": 1,
+    "governing_physics_change": false,
+    "overall_r1_physical_comparison": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+    "parameter_fitting_count": 0,
+    "post_result_adjustment_count": 0,
+    "protected_source_sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+    "puckworks_code_execution_count": 0,
+    "reproducibility_disposition": "PRELIMINARY_RESULT_EXACTLY_REPRODUCED",
+    "result_role": "GOVERNED_NONBLINDED_REPRODUCIBILITY_CONFIRMATION",
+    "scientific_contract_change": false,
+    "solver_change": false
+  },
   "corrective_protocol_attempts": [
     {
       "attempt_id": "corrective_protocol_attempt_1",

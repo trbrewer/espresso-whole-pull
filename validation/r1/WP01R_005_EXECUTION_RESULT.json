@@ -1,0 +1,675 @@
+{
+  "analysis_identity": {
+    "analyzer_changed_after_execution": true,
+    "analyzer_changed_before_protected_processing": true,
+    "analyzer_sha256": "e76d28b8a1c2804373005cc6d6e7e79f5ee79a6ca8d2a3b70a64438581cbcfa0",
+    "commit": "5855dd6fcdab7894a37c7c49e98c717d4e0d2fe8",
+    "tree": "83a581b5e746542aec66ed27745895f5d5c6d2e0"
+  },
+  "change_scope": "EXECUTION_INFRASTRUCTURE_CORRECTION_AND_ANALYSIS_ONLY",
+  "counters": {
+    "additional_r0_execution_count": 0,
+    "additional_r1_execution_count": 0,
+    "corrective_protected_processing_count": 1,
+    "optimizer_iteration_count": 0,
+    "parameter_fitting_count": 0,
+    "post_result_adjustment_count": 0,
+    "puckworks_code_execution_count": 0
+  },
+  "execution_identity": {
+    "additional_r1_execution_count": 0,
+    "central_r1_execution_count": 1,
+    "commit": "61e854f90e5f55e88ec6327c88766fb436b071de",
+    "solver_executable_sha256": "ada45a5440d08ae8da1a57d65cdf511748a340cd09a045121c59ea83a3d8d6d7",
+    "tree": "e45b514bb767c21d5da243a25d92f52e3283c7b1"
+  },
+  "floating_endpoint_reconciliation": {
+    "absolute_gap_s": 2.9984903449076228e-12,
+    "frozen_timestep_s": 0.02,
+    "gap_as_fraction_of_timestep": 1.4992451724538114e-10,
+    "governed_mapped_time_s": 103.0,
+    "interpolation_extrapolation_performed": false,
+    "kind": "FLOATING_POINT_REPRESENTATION_ONLY",
+    "observed_trace_endpoint_s": 102.999999999997,
+    "reconciled_point_count": 1,
+    "scientific_time_mapping_changed": false,
+    "source_index": 999,
+    "status": "APPLIED",
+    "tolerance_s": 1.4551915228366852e-11,
+    "trace_modified": false
+  },
+  "frozen_R1_scenario_change": false,
+  "governing_physics_change": false,
+  "numerical": {
+    "acceptance": {
+      "all_required_b0_parity_gates_pass": true,
+      "all_required_bounded_state_gates_pass": true,
+      "all_required_monotonicity_gates_pass": true,
+      "all_required_numerical_gates_pass": true,
+      "all_required_reference_gates_pass": true,
+      "analytical_reference": {
+        "first_drip_s": 4.426434882126959,
+        "initial_stored_water_mass_kg": 0.0,
+        "model": "closed_form_and_reduced_preflight_not_an_openfoam_result",
+        "nominal_cylinder_volume_m3": 2.4630086404143978e-05,
+        "notes": [
+          "The permeability is the declared R0 hydraulic calibration parameter.",
+          "The preview does not establish physical validation."
+        ],
+        "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+        "saturated_pore_water_mass_kg": 0.011016247665713227,
+        "steady_outlet_volume_flow_m3_s": 1.9504621065685833e-06,
+        "steady_outlet_water_mass_flow_kg_s": 0.001882195932838683,
+        "straight_sided_wedge_scale": 72.09146648398465,
+        "water_mass_at_end_kg_excluding_solute": 0.18553476335026972
+      },
+      "artifacts": {},
+      "b0_reduced_twin": {
+        "axial_cells": 256,
+        "claim_ceiling": "Code/numerical verification twin only; not physical validation.",
+        "delta_t_s": 0.02,
+        "model": "independent_1d_finite_volume_reduced_verification_twin",
+        "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+        "primary_outputs": {
+          "cumulative_tds_mass_fraction": 0.0271615272105381,
+          "cup_beverage_mass_at_end_kg": 0.19068862542890347,
+          "cup_solute_mass_at_end_kg": 0.005179394288327269,
+          "cup_water_mass_at_end_kg": 0.1855092311405762,
+          "extraction_yield_mass_fraction": 0.27996725882850104,
+          "first_drip_s": 4.426434882126959,
+          "max_concentration_kg_m3": 164.94190719420047,
+          "max_liquid_balance_residual_kg": 2.3869795029440866e-15,
+          "max_solute_balance_residual_kg": 1.713850466574093e-16,
+          "outlet_flow_final_m3_s": 1.9504621065685833e-06,
+          "remaining_extractable_mass_kg": 6.073020187656347e-09,
+          "retained_dissolved_solute_mass_kg": 2.1024310382719624e-09,
+          "retained_water_mass_kg": 0.011016247665713227,
+          "solute_backdiffusion_mass_kg": 5.975362213357894e-07,
+          "time_to_target_mass_s": 23.47469987159672
+        },
+        "scenario_id": "reconstruction_R1_waszkiewicz_18p5g_56mm_8p709bar",
+        "schema_version": "espresso.whole_pull.b0_reduced_twin.v0.1.4"
+      },
+      "calibration_and_validation": {
+        "calibration": null,
+        "claim_ceiling": "WP-0.1R is a source-linked, within-campaign reconstruction test of the existing numerically qualified sharp-front wetting and uniform-Darcy architecture for one Waszkiewicz rig condition. Its static hydraulic scale is calibrated from the source equilibrium relation, while five normalized per-shot flow shapes are reserved for predeclared comparison. It may identify model-form residuals, but it does not establish independent physical validation, transfer, poroelastic validation, chemistry validation, or taste prediction.",
+        "mode": "source_linked_reconstruction",
+        "physical_validation_status": "NOT_ESTABLISHED"
+      },
+      "execution_status": "COMPLETED",
+      "freeze_finalization_prerequisites": null,
+      "generated_at_utc": "2026-07-29T00:03:16.743885+00:00",
+      "numerical_acceptance_gates": {
+        "all_trace_values_finite": {
+          "details": "",
+          "limit": "true",
+          "metric": true,
+          "status": "PASS"
+        },
+        "analytical_uniform_darcy_flow": {
+          "details": "Uniform permeability, cylindrical area, and declared pressure nodes.",
+          "limit": "relative error <= 1e-08",
+          "metric": {
+            "actual": 1.95046210656871e-06,
+            "error": 6.492380712655758e-14,
+            "expected": 1.9504621065685833e-06
+          },
+          "status": "PASS"
+        },
+        "concentration_below_declared_capacity": {
+          "details": "",
+          "limit": "maximum concentration <= declared saturation concentration + tolerance",
+          "metric": {
+            "absolute_tolerance_kg_m3": 1e-08,
+            "declared_capacity_kg_m3": 180.0,
+            "maximum_kg_m3": 164.941907211466
+          },
+          "status": "PASS"
+        },
+        "concentration_iteration_limit": {
+          "details": "",
+          "limit": "< configured maxIter 2000",
+          "metric": 4.0,
+          "status": "PASS"
+        },
+        "concentration_linear_solver_residual": {
+          "details": "",
+          "limit": "maximum saturated-stage final residual <= 1e-7",
+          "metric": 9.86205896031622e-12,
+          "status": "PASS"
+        },
+        "concentration_nonnegative": {
+          "details": "",
+          "limit": ">= -1e-10 kg/m3",
+          "metric": 0.0,
+          "status": "PASS"
+        },
+        "cumulative_cup_solute_monotonic": {
+          "details": "",
+          "limit": "nondecreasing within configured absolute tolerance",
+          "metric": {
+            "first_violations": [],
+            "minimum_increment": 0.0,
+            "status": "PASS",
+            "tolerance": 1e-12,
+            "violation_count": 0
+          },
+          "status": "PASS"
+        },
+        "cumulative_cup_water_monotonic": {
+          "details": "",
+          "limit": "nondecreasing within configured absolute tolerance",
+          "metric": {
+            "first_violations": [],
+            "minimum_increment": 0.0,
+            "status": "PASS",
+            "tolerance": 1e-12,
+            "violation_count": 0
+          },
+          "status": "PASS"
+        },
+        "cumulative_inlet_water_monotonic": {
+          "details": "",
+          "limit": "nondecreasing within configured absolute tolerance",
+          "metric": {
+            "first_violations": [],
+            "minimum_increment": 2.0933687907100096e-05,
+            "status": "PASS",
+            "tolerance": 1e-12,
+            "violation_count": 0
+          },
+          "status": "PASS"
+        },
+        "estimated_saturated_pore_courant": {
+          "details": "Implicit upwind transport remains stable above this; this is a resolution gate.",
+          "limit": "<= 1.2 using maximum superficial velocity, porosity, and axial spacing",
+          "metric": 0.874784542665026,
+          "status": "PASS"
+        },
+        "exact_sharp_front_first_drip": {
+          "details": "The pressure ramp is integrated exactly within every time step.",
+          "limit": "absolute error <= 1e-08",
+          "metric": {
+            "actual": 4.42643488212695,
+            "error": 8.881784197001252e-15,
+            "expected": 4.426434882126959
+          },
+          "status": "PASS"
+        },
+        "final_paraview_field_set_present": {
+          "details": "",
+          "limit": "all required fields present at reconstructed final time",
+          "metric": {
+            "final_time_directory": "102.999999999997",
+            "missing_fields": [],
+            "required": true
+          },
+          "status": "PASS"
+        },
+        "liquid_conservation": {
+          "details": "",
+          "limit": "max absolute residual <= max(1e-9 kg, 1e-8 cumulative inlet water)",
+          "metric": 3.27515792264421e-15,
+          "status": "PASS"
+        },
+        "pressure_iteration_limit": {
+          "details": "",
+          "limit": "< configured maxIter 1000",
+          "metric": 0.0,
+          "status": "PASS"
+        },
+        "pressure_linear_solver_residual": {
+          "details": "",
+          "limit": "maximum saturated-stage final residual <= 1e-8",
+          "metric": 1.05088328871225e-14,
+          "status": "PASS"
+        },
+        "remaining_extractable_inventory_bounded": {
+          "details": "",
+          "limit": "0 <= remaining extractable <= initial extractable inventory (+/- tolerance)",
+          "metric": {
+            "absolute_tolerance_kg": 1e-12,
+            "initial_inventory_kg": 0.005180000000000001,
+            "maximum_kg": 0.00517992366661459,
+            "minimum_kg": 6.07302018827878e-09
+          },
+          "status": "PASS"
+        },
+        "retained_water_bounded_by_pore_capacity": {
+          "details": "",
+          "limit": "0 <= retained water <= saturated pore-water capacity (+/- tolerance)",
+          "metric": {
+            "absolute_tolerance_kg": 1e-12,
+            "maximum_kg": 0.0110162476657132,
+            "minimum_kg": 5.41124503707429e-05,
+            "saturated_pore_capacity_kg": 0.011016247665713227
+          },
+          "status": "PASS"
+        },
+        "retained_water_cylindrical_volume": {
+          "details": "",
+          "limit": "relative error <= 1e-08",
+          "metric": {
+            "actual": 0.0110162476657132,
+            "error": 2.5195126741762416e-15,
+            "expected": 0.011016247665713227
+          },
+          "status": "PASS"
+        },
+        "saturation_bounded": {
+          "details": "",
+          "limit": "0 <= saturation <= 1 (1e-10 tolerance)",
+          "metric": {
+            "max": 1.0,
+            "min": 0.0
+          },
+          "status": "PASS"
+        },
+        "simulation_reached_end_time": {
+          "details": "",
+          "limit": "|time - 103.0| <= 0.0202",
+          "metric": 102.999999999997,
+          "status": "PASS"
+        },
+        "solute_inventory_conservation": {
+          "details": "",
+          "limit": "max absolute residual <= max(1e-10 kg, 1e-8 initial extractable mass)",
+          "metric": 2.96758025257796e-13,
+          "status": "PASS"
+        },
+        "straight_sided_wedge_volume_equivalence": {
+          "details": "",
+          "limit": "relative volume error <= 1e-08",
+          "metric": {
+            "nominal_cylinder_volume_m3": 2.4630086404144e-05,
+            "raw_wedge_volume_m3": 3.4165051157082e-07,
+            "relative_error": 4.12682083215975e-16,
+            "scale": 72.0914664839846,
+            "scaled_volume_m3": 2.4630086404144e-05
+          },
+          "status": "PASS"
+        }
+      },
+      "openfoam_b0_parity_gates": {
+        "cumulative_tds": {
+          "details": "",
+          "limit": "relative error <= 0.005",
+          "metric": {
+            "actual": 0.0271615272120526,
+            "error": 5.575902705919855e-11,
+            "expected": 0.0271615272105381
+          },
+          "status": "PASS"
+        },
+        "cup_beverage_mass": {
+          "details": "",
+          "limit": "relative error <= 0.005",
+          "metric": {
+            "actual": 0.190688625429203,
+            "error": 1.5708234897080809e-12,
+            "expected": 0.19068862542890347
+          },
+          "status": "PASS"
+        },
+        "cup_solute_mass": {
+          "details": "",
+          "limit": "relative error <= 0.005",
+          "metric": {
+            "actual": 0.00517939428862418,
+            "error": 5.7325416218773796e-11,
+            "expected": 0.005179394288327269
+          },
+          "status": "PASS"
+        },
+        "cup_water_mass": {
+          "details": "",
+          "limit": "relative error <= 0.005",
+          "metric": {
+            "actual": 0.185509231140579,
+            "error": 1.5111448200948075e-14,
+            "expected": 0.1855092311405762
+          },
+          "status": "PASS"
+        },
+        "extraction_yield": {
+          "details": "",
+          "limit": "relative error <= 0.005",
+          "metric": {
+            "actual": 0.279967258844551,
+            "error": 5.732791478065388e-11,
+            "expected": 0.27996725882850104
+          },
+          "status": "PASS"
+        },
+        "final_outlet_flow": {
+          "details": "",
+          "limit": "relative error <= 1e-08",
+          "metric": {
+            "actual": 1.95046210656871e-06,
+            "error": 6.492380712655758e-14,
+            "expected": 1.9504621065685833e-06
+          },
+          "status": "PASS"
+        },
+        "first_drip": {
+          "details": "",
+          "limit": "absolute error <= 1e-08",
+          "metric": {
+            "actual": 4.42643488212695,
+            "error": 8.881784197001252e-15,
+            "expected": 4.426434882126959
+          },
+          "status": "PASS"
+        },
+        "remaining_extractable": {
+          "details": "",
+          "limit": "relative error <= 0.005",
+          "metric": {
+            "actual": 6.07302018827878e-09,
+            "error": 1.0249160045220546e-10,
+            "expected": 6.073020187656347e-09
+          },
+          "status": "PASS"
+        },
+        "retained_dissolved_solute": {
+          "details": "",
+          "limit": "relative error <= 0.005",
+          "metric": {
+            "actual": 2.10243103845013e-09,
+            "error": 8.474364660024981e-11,
+            "expected": 2.1024310382719624e-09
+          },
+          "status": "PASS"
+        },
+        "time_to_target_mass": {
+          "details": "",
+          "limit": "relative error <= 0.005",
+          "metric": {
+            "actual": 23.4746998715019,
+            "error": 4.0391730625801244e-12,
+            "expected": 23.47469987159672
+          },
+          "status": "PASS"
+        }
+      },
+      "outputs_finalized_at_utc": "2026-07-29T00:03:16.743885+00:00",
+      "package_version": "0.1.4",
+      "physical_plausibility_observations": {
+        "cup_mass_broad_plausibility": {
+          "details": "",
+          "limit": "15 to 80 g; plausibility only",
+          "metric": 0.190688625429203,
+          "status": "FAIL"
+        },
+        "extraction_yield_broad_plausibility": {
+          "details": "",
+          "limit": "0 to 35% dry-dose mass fraction; plausibility only",
+          "metric": 0.279967258844551,
+          "status": "PASS"
+        },
+        "first_drip_detected": {
+          "details": "",
+          "limit": "0 < first drip < 103.0 s",
+          "metric": 4.42643488212695,
+          "status": "PASS"
+        },
+        "tds_broad_plausibility": {
+          "details": "",
+          "limit": "0 to 20% mass fraction; plausibility only",
+          "metric": 0.0271615272120526,
+          "status": "PASS"
+        }
+      },
+      "primary_outputs": {
+        "cumulative_tds_mass_fraction": 0.0271615272120526,
+        "cup_beverage_mass_at_end_kg": 0.190688625429203,
+        "cup_solute_mass_at_end_kg": 0.00517939428862418,
+        "cup_water_mass_at_end_kg": 0.185509231140579,
+        "extraction_yield_mass_fraction": 0.279967258844551,
+        "first_drip_s": 4.42643488212695,
+        "max_concentration_final_residual": 9.86205896031622e-12,
+        "max_concentration_iterations": 4.0,
+        "max_estimated_saturated_pore_courant": 0.874784542665026,
+        "max_liquid_balance_residual_kg": 3.27515792264421e-15,
+        "max_pressure_final_residual": 1.05088328871225e-14,
+        "max_pressure_iterations": 0.0,
+        "max_solute_balance_residual_kg": 2.96758025257796e-13,
+        "maximum_concentration_kg_m3": 164.941907211466,
+        "maximum_remaining_extractable_mass_kg": 0.00517992366661459,
+        "maximum_retained_water_mass_kg": 0.0110162476657132,
+        "mesh_volume_relative_error": 4.12682083215975e-16,
+        "minimum_remaining_extractable_mass_kg": 6.07302018827878e-09,
+        "minimum_retained_water_mass_kg": 5.41124503707429e-05,
+        "outlet_flow_final_m3_s": 1.95046210656871e-06,
+        "remaining_extractable_mass_kg": 6.07302018827878e-09,
+        "retained_dissolved_solute_mass_kg": 2.10243103845013e-09,
+        "retained_water_mass_kg": 0.0110162476657132,
+        "scaled_mesh_volume_m3": 2.4630086404144e-05,
+        "straight_sided_wedge_scale": 72.0914664839846,
+        "time_to_40g_s": 23.4746998715019
+      },
+      "qualification_finalized_at_utc": null,
+      "qualification_report": null,
+      "reference_freeze_status": "NOT_FROZEN",
+      "reference_qualification_status": "PENDING_STANDARD_ALLVERIFY",
+      "release_provenance_status": "PENDING_TERMINAL_FREEZE_MANIFEST",
+      "scenario_id": "reconstruction_R1_waszkiewicz_18p5g_56mm_8p709bar",
+      "schema_version": "espresso.whole_pull.reference_acceptance.v0.1.4",
+      "status": "PASS"
+    },
+    "calibration_reproduction": {
+      "maximum_relative_error": 0.02,
+      "predicted_late_mean_g_per_s": 1.8821959328388052,
+      "protected_source_opened": false,
+      "relative_error": 6.464812795307743e-14,
+      "status": "PASS",
+      "target_g_per_s": 1.8821959328386835
+    },
+    "case_manifest_sha256": "0c62438016a81b444d42c8a1b1f8eb1a7d5ec1da8faa3f6b568fa6fa5dcd7fbb",
+    "contract_sha256": "1f15bf1f0d2f67ac131e891a9cec51aac78541e5c1e14ba420d8dbddbb843922",
+    "endpoint_s": 102.999999999997,
+    "floating_endpoint_reconciliation": {
+      "absolute_gap_s": 2.9984903449076228e-12,
+      "frozen_timestep_s": 0.02,
+      "gap_as_fraction_of_timestep": 1.4992451724538114e-10,
+      "governed_mapped_time_s": 103.0,
+      "interpolation_extrapolation_performed": false,
+      "kind": "FLOATING_POINT_REPRESENTATION_ONLY",
+      "observed_trace_endpoint_s": 102.999999999997,
+      "reconciled_point_count": 1,
+      "scientific_time_mapping_changed": false,
+      "source_index": 999,
+      "status": "APPLIED",
+      "tolerance_s": 1.4551915228366852e-11,
+      "trace_modified": false
+    },
+    "generated_r1_input_aggregate": "ddc6ac9e5cfd4746d5e7548e1b78cbb4942092d134806a6e9526ef26657aa957",
+    "lock": {
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+    },
+    "maximum_trace_interval_s": 0.020000000000102602,
+    "protected_release_authorized": true,
+    "protected_source_opened": false,
+    "scenario_sha256": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876",
+    "stage": "NUMERICAL",
+    "status": "PASS",
+    "trace_row_count": 5150,
+    "trace_sha256": "beb633f894106a27751fb1e0ec54fd1cf7514a6ede0f795f49f4a7e2b1c5f0c7"
+  },
+  "overall_r1_physical_comparison": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+  "physical_validation": "NOT_ESTABLISHED",
+  "post_protected_retuning_occurred": false,
+  "protected": {
+    "aggregate": {
+      "median_normalized_shape_rmse": 0.399249345465128,
+      "median_pearson_r": null,
+      "shot_thresholds": {
+        "pearson": {
+          "contract_key": "shots_required_at_or_above_r_0_90",
+          "required": 4,
+          "value": 0.9
+        },
+        "rmse": {
+          "contract_key": "shots_required_at_or_below_rmse_0_20",
+          "required": 4,
+          "value": 0.2
+        }
+      },
+      "shots_at_or_above_pearson_0_90": 0,
+      "shots_at_or_below_rmse_0_20": 0,
+      "status": "FAIL"
+    },
+    "blinding_status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS",
+    "calibration_reproduction": {
+      "maximum_relative_error": 0.02,
+      "predicted_late_mean_g_per_s": 1.8821959328388052,
+      "protected_source_opened": false,
+      "relative_error": 6.464812795307743e-14,
+      "status": "PASS",
+      "target_g_per_s": 1.8821959328386835
+    },
+    "corrective_protocol_protected_processing_count": 1,
+    "floating_endpoint_reconciliation": {
+      "absolute_gap_s": 2.9984903449076228e-12,
+      "frozen_timestep_s": 0.02,
+      "gap_as_fraction_of_timestep": 1.4992451724538114e-10,
+      "governed_mapped_time_s": 103.0,
+      "interpolation_extrapolation_performed": false,
+      "kind": "FLOATING_POINT_REPRESENTATION_ONLY",
+      "observed_trace_endpoint_s": 102.999999999997,
+      "reconciled_point_count": 1,
+      "scientific_time_mapping_changed": false,
+      "source_index": 999,
+      "status": "APPLIED",
+      "tolerance_s": 1.4551915228366852e-11,
+      "trace_modified": false
+    },
+    "historical_protected_access_occurred": true,
+    "predicted_late_mean_g_per_s": 1.8821959328388052,
+    "shots": [
+      {
+        "normalized_shape_rmse": 0.3809873383359685,
+        "observed_late_mean_g_per_s": 1.9935932,
+        "observed_normalized_population_std": 0.33989484086560967,
+        "pearson_defined": false,
+        "pearson_r": null,
+        "pearson_status": "FAIL",
+        "predicted_normalized_population_std": 0.0,
+        "rmse_status": "FAIL",
+        "shot_id": "9-1"
+      },
+      {
+        "normalized_shape_rmse": 0.3931333752645347,
+        "observed_late_mean_g_per_s": 1.8419079,
+        "observed_normalized_population_std": 0.3478706389844184,
+        "pearson_defined": false,
+        "pearson_r": null,
+        "pearson_status": "FAIL",
+        "predicted_normalized_population_std": 0.0,
+        "rmse_status": "FAIL",
+        "shot_id": "9-2"
+      },
+      {
+        "normalized_shape_rmse": 0.4809836650737017,
+        "observed_late_mean_g_per_s": 1.908161,
+        "observed_normalized_population_std": 0.39139488790731897,
+        "pearson_defined": false,
+        "pearson_r": null,
+        "pearson_status": "FAIL",
+        "predicted_normalized_population_std": 0.0,
+        "rmse_status": "FAIL",
+        "shot_id": "9-3"
+      },
+      {
+        "normalized_shape_rmse": 0.399249345465128,
+        "observed_late_mean_g_per_s": 1.8442842,
+        "observed_normalized_population_std": 0.35907810747234764,
+        "pearson_defined": false,
+        "pearson_r": null,
+        "pearson_status": "FAIL",
+        "predicted_normalized_population_std": 0.0,
+        "rmse_status": "FAIL",
+        "shot_id": "9-4"
+      },
+      {
+        "normalized_shape_rmse": 0.465988221877517,
+        "observed_late_mean_g_per_s": 1.7288328,
+        "observed_normalized_population_std": 0.39498315273591317,
+        "pearson_defined": false,
+        "pearson_r": null,
+        "pearson_status": "FAIL",
+        "predicted_normalized_population_std": 0.0,
+        "rmse_status": "FAIL",
+        "shot_id": "9-5"
+      }
+    ],
+    "source": {
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+      "rights": "CC-BY-4.0_WITH_ATTRIBUTION",
+      "sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+    },
+    "source_time_grid": {
+      "kind": "GOVERNED_RECONSTRUCTION_FROM_LOCKED_TIME_INDEX",
+      "sample_count": 1000,
+      "support_s": [
+        0.0,
+        100.0
+      ]
+    },
+    "stage": "PROTECTED",
+    "status": "PASS"
+  },
+  "protected_processing": {
+    "count": 1,
+    "puckworks_code_execution_count": 0,
+    "source_sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08"
+  },
+  "protocol": {
+    "blinding_status": "NOT_BLINDED_DUE_TO_PRIOR_PR16_ACCESS",
+    "corrective_result_role": "GOVERNED_NONBLINDED_REPRODUCIBILITY_CONFIRMATION",
+    "historical_protected_access_occurred": true,
+    "historical_protected_result_known": true
+  },
+  "r0_release_gate": {
+    "allrun": "PASS",
+    "freeze_finalization_sha256": "578396a09354695bc8b5ec53e316243ead630819500459ec23156068fff40128",
+    "freeze_manifest_sha256": "d81450c2220a4748e581903097412ceaaa61ce4059dbfe50bb4f2401a6f4e071",
+    "qualification_sha256": "983d32da71e408dcb5be71428ccf728382c2fc3af84bbb58b85765924dc23f29",
+    "reference_freeze_status": "FROZEN_QUALIFIED",
+    "standard_allverify": "PASS",
+    "terminal_freeze_generation": "PASS",
+    "terminal_freeze_read_only_verification": "PASS"
+  },
+  "reproducibility": {
+    "disposition": "PRELIMINARY_RESULT_EXACTLY_REPRODUCED",
+    "overall_disposition_match": true,
+    "preliminary_commit": "e506a9f5945f7394b305c23c4712752ce3d3c51e",
+    "preliminary_pr": 16,
+    "shot_metrics_and_gates_match": true,
+    "trace_hash_match": true
+  },
+  "residual_classification": {
+    "contributing": [
+      "DATA_OR_DIGITIZATION_UNCERTAINTY"
+    ],
+    "finding": "Numerical, conservation, calibration, pressure-node, time-mapping, and flow-basis checks pass, while the constant predicted protected-window flow has zero normalized variation and fails all five protected rising-flow shapes.",
+    "primary": "STRUCTURAL_MODEL_INADEQUACY"
+  },
+  "schema_version": "espresso.public.wp01r_005_execution_result.v1",
+  "scientific_contract_change": false,
+  "status_families": {
+    "CALIBRATION_REPRODUCTION": "PASS",
+    "CASE_GENERATION": "PASS",
+    "CHEMISTRY_PLAUSIBILITY": "REPORTED_UNSCORED",
+    "CONSERVATION": "PASS",
+    "CONTRACT_INTEGRITY": "PASS",
+    "NUMERICAL_VERIFICATION": "PASS",
+    "OVERALL_R1_PHYSICAL_COMPARISON": "SOURCE_LINKED_RECONSTRUCTION_FAIL",
+    "PROTECTED_FLOW_SHAPE_COMPARISON": "FAIL",
+    "R0_REGRESSION": "PASS",
+    "R1_EXECUTION": "PASS"
+  }
+}
