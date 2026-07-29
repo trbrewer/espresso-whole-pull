@@ -40,3 +40,14 @@ are the [canonical scenario](../config/reconstruction_R1_waszkiewicz_9bar.json),
 [input provenance](../validation/r1/WP01R_004_INPUT_PROVENANCE.json), and
 [generated-case manifest](../validation/r1/WP01R_004_GENERATED_CASE_MANIFEST.json).
 No Puckworks code or protected series is copied or executed.
+
+WP01R-005 used the same locked source for one corrective protected-processing
+pass after the full R0 and numerical release gates passed. See the
+[execution report](r1/WP01R_005_R1_EXECUTION_AND_RESIDUALS.md),
+[run status](../validation/r1/WP01R_005_RUN_STATUS.json),
+[machine-readable result](../validation/r1/WP01R_005_EXECUTION_RESULT.json),
+[environment and provenance](../validation/r1/WP01R_005_ENVIRONMENT_AND_PROVENANCE.json),
+and [comparison figure](../validation/r1/WP01R_005_PROTECTED_FLOW_SHAPES.svg).
+The result is explicitly non-blinded because PR #16 had already accessed the
+protected data. No Puckworks code was executed and no complete source series
+was vendored.

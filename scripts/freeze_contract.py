@@ -12,93 +12,11 @@ from artifact_utils import (
     sha256_file,
     verify_artifact_records,
 )
-from generate_source_manifest import excluded
+from verify_source_manifest import verify_manifest as _verify_source_manifest_shared
 
 
 def verify_source_manifest(root: Path, manifest: Mapping[str, Any]) -> Dict[str, Any]:
-    failures: List[Dict[str, Any]] = []
-    expected_files = manifest.get("files", {})
-    expected_paths = set(expected_files)
-    actual_paths = {
-        path.relative_to(root).as_posix()
-        for path in root.rglob("*")
-        if path.is_file() and not excluded(path.relative_to(root))
-    }
-    for relative in sorted(actual_paths - expected_paths):
-        failures.append({"path": relative, "issue": "unmanifested_source_file"})
-    for relative in sorted(expected_paths - actual_paths):
-        failures.append({"path": relative, "issue": "manifested_source_file_missing"})
-
-    observed_entries: Dict[str, Dict[str, Any]] = {}
-    for relative, metadata in expected_files.items():
-        path = root / relative
-        if not path.is_file():
-            continue
-        observed = {
-            "bytes": path.stat().st_size,
-            "sha256": sha256_file(path),
-            "mode": format(path.stat().st_mode & 0o777, "04o"),
-        }
-        observed_entries[relative] = observed
-        expected = {
-            "bytes": metadata.get("bytes"),
-            "sha256": metadata.get("sha256"),
-            "mode": metadata.get("mode"),
-        }
-        if observed != expected:
-            failures.append(
-                {
-                    "path": relative,
-                    "issue": "source_manifest_mismatch",
-                    "expected": expected,
-                    "observed": observed,
-                }
-            )
-
-    digest = hashlib.sha256()
-    for relative, metadata in sorted(observed_entries.items()):
-        digest.update(
-            (
-                f"{relative}\0{metadata['sha256']}\0{metadata['bytes']}\0"
-                f"{metadata['mode']}\n"
-            ).encode("utf-8")
-        )
-    observed_aggregate = (
-        digest.hexdigest() if len(observed_entries) == len(expected_files) else None
-    )
-    recorded_aggregate = manifest.get("aggregate_source_sha256")
-    if observed_aggregate != recorded_aggregate:
-        failures.append(
-            {
-                "path": "aggregate_source_sha256",
-                "issue": "aggregate_mismatch",
-                "expected": recorded_aggregate,
-                "observed": observed_aggregate,
-            }
-        )
-
-    strategy_path = manifest.get("strategy_source_path")
-    strategy_hash = manifest.get("strategy_source_sha256")
-    if strategy_path:
-        path = root / str(strategy_path)
-        if not path.is_file() or sha256_file(path) != strategy_hash:
-            failures.append(
-                {
-                    "path": strategy_path,
-                    "issue": "controlling_strategy_hash_mismatch_or_missing",
-                    "expected_sha256": strategy_hash,
-                    "observed_sha256": sha256_file(path) if path.is_file() else None,
-                }
-            )
-
-    return {
-        "status": "PASS" if not failures else "FAIL",
-        "checked_file_count": len(expected_files),
-        "observed_source_file_count": len(actual_paths),
-        "recorded_aggregate_source_sha256": recorded_aggregate,
-        "observed_aggregate_source_sha256": observed_aggregate,
-        "failures": failures,
-    }
+    return _verify_source_manifest_shared(root, manifest)
 
 
 def verify_case_manifest(root: Path, manifest: Mapping[str, Any]) -> Dict[str, Any]:

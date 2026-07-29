@@ -1,0 +1,162 @@
+{
+  "schema_version": "espresso.public.wp01r_005_environment_and_provenance.v1",
+  "task": "WP01R-005",
+  "record_status": "COMPLETE_WITH_DECLARED_UNAVAILABLE_FIELDS",
+  "record_definition": "Complete accounting of retained attempt-2 evidence, including explicit unavailable fields. No present-machine values are substituted.",
+  "execution_environment_reconstructability": "PARTIAL_FROM_RETAINED_EVIDENCE",
+  "execution_identity": {
+    "repository_commit": "61e854f90e5f55e88ec6327c88766fb436b071de",
+    "repository_tree": "e45b514bb767c21d5da243a25d92f52e3283c7b1",
+    "working_tree_clean_at_execution_start": true,
+    "central_r1_execution_count": 1,
+    "additional_r1_execution_count": 0
+  },
+  "solver_build": {
+    "solver_name": "espressoWholePullFoam",
+    "solver_source_sha256": "33412d78b8c0624ea6279acbb2c5d653c15a4753a38a228b58d27307110737f1",
+    "executable_sha256": "ada45a5440d08ae8da1a57d65cdf511748a340cd09a045121c59ea83a3d8d6d7",
+    "build_provenance_sha256": "655d6bad7ca781a11cdc04b5ecec85b1b5e6709fc65d3e7438c94219cd678bff",
+    "openfoam_distribution": {
+      "value": "OpenFOAM Foundation",
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "openfoam_version": {
+      "value": "12",
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "wm_options": {
+      "value": "linux64GccDPInt32Opt",
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "compiler_family": {
+      "value": "GCC",
+      "wm_compiler": "Gcc",
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "compiler_version": {
+      "value": null,
+      "status": "UNAVAILABLE_FROM_RETAINED_EVIDENCE",
+      "present_machine_observation_used": false,
+      "reason": "The exact compiler-version output was not retained with corrective attempt 2.",
+      "impact": "REPRODUCIBILITY_METADATA_LIMITATION_ONLY"
+    },
+    "mpi_family": {
+      "value": "OpenMPI",
+      "wm_mplib": "SYSTEMOPENMPI",
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "mpi_version": {
+      "value": null,
+      "status": "UNAVAILABLE_FROM_RETAINED_EVIDENCE",
+      "present_machine_observation_used": false,
+      "reason": "The exact OpenMPI-version output was not retained with corrective attempt 2.",
+      "impact": "REPRODUCIBILITY_METADATA_LIMITATION_ONLY"
+    }
+  },
+  "platform": {
+    "platform_string": {
+      "value": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "kernel": {
+      "value": "6.17.0-35-generic",
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "architecture": {
+      "value": "x86_64",
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "python_version": {
+      "value": "3.12.3",
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "operating_system_distribution_and_version": {
+      "value": null,
+      "status": "UNAVAILABLE_FROM_RETAINED_EVIDENCE",
+      "present_machine_observation_used": false,
+      "reason": "The retained platform string identifies the kernel, architecture and glibc version but not the distribution release.",
+      "impact": "REPRODUCIBILITY_METADATA_LIMITATION_ONLY"
+    },
+    "cpu_model": {
+      "value": null,
+      "status": "UNAVAILABLE_FROM_RETAINED_EVIDENCE",
+      "present_machine_observation_used": false,
+      "reason": "CPU-model output was not retained with corrective attempt 2.",
+      "impact": "PERFORMANCE_CONTEXT_UNAVAILABLE; SCIENTIFIC_RESULTS_UNCHANGED"
+    },
+    "logical_processor_count": {
+      "value": null,
+      "status": "UNAVAILABLE_FROM_RETAINED_EVIDENCE",
+      "present_machine_observation_used": false,
+      "reason": "No artifact-bound logical-processor inventory was retained for attempt 2.",
+      "impact": "HARDWARE_CAPACITY_CONTEXT_UNAVAILABLE; EXECUTION_RANK_COUNT_RETAINED"
+    },
+    "physical_memory_bytes": {
+      "value": null,
+      "status": "UNAVAILABLE_FROM_RETAINED_EVIDENCE",
+      "present_machine_observation_used": false,
+      "reason": "Physical-memory inventory was not retained with corrective attempt 2.",
+      "impact": "HARDWARE_CAPACITY_CONTEXT_UNAVAILABLE; SCIENTIFIC_RESULTS_UNCHANGED"
+    }
+  },
+  "execution_contract": {
+    "mpi_ranks": {
+      "value": 32,
+      "status": "EXACT_FROM_RETAINED_EVIDENCE"
+    },
+    "canonical_scenario_sha256": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876",
+    "generated_r1_scientific_input_aggregate": "ddc6ac9e5cfd4746d5e7548e1b78cbb4942092d134806a6e9526ef26657aa957",
+    "contract_sha256": "1f15bf1f0d2f67ac131e891a9cec51aac78541e5c1e14ba420d8dbddbb843922",
+    "puckworks_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "puckworks_tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "r0_release_gate": {
+    "allrun": "PASS",
+    "standard_allverify": "PASS",
+    "terminal_freeze_generation": "PASS",
+    "terminal_freeze_read_only_verification": "PASS",
+    "reference_freeze_status": "FROZEN_QUALIFIED",
+    "qualification_sha256": "983d32da71e408dcb5be71428ccf728382c2fc3af84bbb58b85765924dc23f29",
+    "freeze_finalization_sha256": "578396a09354695bc8b5ec53e316243ead630819500459ec23156068fff40128",
+    "freeze_manifest_sha256": "d81450c2220a4748e581903097412ceaaa61ce4059dbfe50bb4f2401a6f4e071",
+    "read_only_verification_sha256": "710f8a6943cfa7aa4885f612e15018a697f06ccee2f8825a2288ff4e877bbb17"
+  },
+  "r1_runtime_evidence": {
+    "trace_sha256": "beb633f894106a27751fb1e0ec54fd1cf7514a6ede0f795f49f4a7e2b1c5f0c7",
+    "trace_row_count": 5150,
+    "trace_endpoint_s": 102.999999999997,
+    "maximum_trace_interval_s": 0.020000000000102602,
+    "case_manifest_sha256": "0c62438016a81b444d42c8a1b1f8eb1a7d5ec1da8faa3f6b568fa6fa5dcd7fbb",
+    "logical_command_sequence": [
+      "$REPOSITORY/scripts/r1_contract_bridge.py --root $REPOSITORY --output $REPOSITORY/config/reconstruction_R1_waszkiewicz_9bar.json --check",
+      "$REPOSITORY/scripts/prepare_case.py --root $REPOSITORY --config $REPOSITORY/config/reconstruction_R1_waszkiewicz_9bar.json --case-dir $R1_CASE --nprocs 32",
+      "blockMesh",
+      "checkMesh -allGeometry -allTopology",
+      "decomposePar -force",
+      "ESPRESSO_CASE_ROOT=$R1_CASE mpirun -np 32 $SOLVER_EXECUTABLE -parallel",
+      "reconstructPar -latestTime"
+    ]
+  },
+  "analysis_identity": {
+    "endpoint_correction_commit": "5855dd6fcdab7894a37c7c49e98c717d4e0d2fe8",
+    "endpoint_correction_tree": "83a581b5e746542aec66ed27745895f5d5c6d2e0",
+    "final_analyzer_sha256": "e76d28b8a1c2804373005cc6d6e7e79f5ee79a6ca8d2a3b70a64438581cbcfa0",
+    "protected_processing_count": 1
+  },
+  "completeness_assessment": {
+    "all_retained_fields_recorded": true,
+    "all_material_unavailable_fields_declared": true,
+    "silent_omissions_known": false,
+    "post_execution_machine_inference_used": false,
+    "exact_machine_reconstruction_claimed": false,
+    "exact_binary_identity_retained": true,
+    "rerun_required": false,
+    "scientific_result_impact": "NONE_IDENTIFIED"
+  },
+  "privacy": {
+    "hostname_recorded": false,
+    "username_recorded": false,
+    "absolute_private_paths_recorded": false,
+    "credentials_recorded": false
+  }
+}
