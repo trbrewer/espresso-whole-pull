@@ -12,6 +12,14 @@ and accountable role ID. Complete protocol-design fields first, followed by
 apparatus and calibration-planning fields. Material, preparation, custody, and
 blinding inputs must be reviewed before any later final preregistration.
 
+The registry also machine-inherits the frozen WP-0.3A campaign requirements:
+independence, preregistration and blinding, at least two pressure groups, at
+least five independent shots per group, a pre-execution sample-size adequacy
+justification, required hydraulic channels, geometry, timing, uncertainty and
+metadata, machine/headspace discrimination requirements, fixed WP02
+parameters, and no holdout fitting. These are governing requirements rather
+than unresolved inputs.
+
 The templates are deliberately non-final. Completing one does not authorize an
 experiment. Commissioning and final preregistration require separate owner
 authorization and review.
@@ -49,3 +57,8 @@ The current state is
 `STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS`. No final preregistration
 exists; commissioning and acquisition are not authorized. Physical validation
 remains `NOT_ESTABLISHED`.
+
+Readiness is evaluated only from a complete, exact registry mapping with
+explicit authority. A complete set of resolved human inputs stops at
+`HUMAN_INPUTS_COMPLETE_AWAITING_GOVERNED_REVIEW`; Stage 0 cannot emit
+`READY_FOR_CALIBRATION_PLANNING`.

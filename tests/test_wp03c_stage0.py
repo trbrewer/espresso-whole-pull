@@ -20,42 +20,122 @@ class Stage0Tests(unittest.TestCase):
     def setUpClass(cls):
         cls.contract = json.loads((ROOT / "validation/contracts/WP_0_3C_STAGE0_AUTHORITY_AND_INPUT_INTAKE_CONTRACT.json").read_text())
         cls.registry = json.loads((ROOT / "validation/campaign/wp03c/WP_0_3C_INPUT_REQUIREMENTS.json").read_text())
-        cls.templates = [json.loads(p.read_text()) for p in sorted(
-            (ROOT / "validation/campaign/wp03c/templates").glob("*.json"))]
+        cls.templates = {p.name: json.loads(p.read_text()) for p in sorted(
+            (ROOT / "validation/campaign/wp03c/templates").glob("*.json"))}
+        cls.governing = stage0.wp03a_governing_requirements(ROOT)
 
     def evaluate(self, contract=None, registry=None, templates=None, paths=None,
-                 frozen=None, text=""):
+                 frozen=None, text="", governing=None, regenerated=True):
         return verifier.evaluate(
             contract or self.contract, registry or self.registry,
             templates or self.templates,
             paths if paths is not None else verifier.EXPECTED_PATHS,
-            frozen if frozen is not None else verifier.FROZEN, text)
+            frozen if frozen is not None else verifier.FROZEN, text,
+            regenerated, governing or self.governing)
 
     def test_unresolved_inputs_accepted_and_block_readiness(self):
         self.assertEqual(stage0.evaluate_readiness(
-            [{"status": "UNRESOLVED_HUMAN_INPUT"}]),
+            stage0.input_package(), authority_established=True),
             stage0.DISPOSITION)
         self.assertTrue(all(self.evaluate().values()))
 
     def test_partial_readiness(self):
-        self.assertEqual(stage0.evaluate_readiness([
-            {"status": "VERIFIED"}, {"status": "UNRESOLVED_HUMAN_INPUT"}]),
-            "HUMAN_INPUTS_PARTIALLY_COMPLETE")
+        package = stage0.input_package()
+        first = next(iter(package.values()))
+        first["status"] = "RESOLVED_HUMAN_INPUT"
+        self.assertEqual(stage0.evaluate_readiness(
+            package, authority_established=True), stage0.PARTIAL)
 
     def test_authority_absent(self):
-        self.assertEqual(stage0.evaluate_readiness([], authority=False),
+        self.assertEqual(stage0.evaluate_readiness(
+            stage0.input_package(), authority_established=False),
                          "AUTHORITY_NOT_ESTABLISHED")
 
-    def test_invented_identity_or_sensor_observation_rejected(self):
-        for field in ("verified human name", "fabricated sensor observed"):
-            checks = self.evaluate(text=field + " password=secret")
-            self.assertFalse(checks["no_forbidden_content"])
+    def test_empty_mapping_and_one_verified_requirement_fail_closed(self):
+        with self.assertRaises(ValueError):
+            stage0.evaluate_readiness({}, authority_established=True)
+        one = stage0.input_package("RESOLVED_HUMAN_INPUT")
+        one = {next(iter(one)): next(iter(one.values()))}
+        with self.assertRaises(ValueError):
+            stage0.evaluate_readiness(one, authority_established=True)
+
+    def test_unknown_status_and_incomplete_verified_subset_rejected(self):
+        package = stage0.input_package()
+        package[next(iter(package))]["status"] = "VERIFIED"
+        with self.assertRaises(ValueError):
+            stage0.evaluate_readiness(package, authority_established=True)
+        records = list(stage0.input_package("RESOLVED_HUMAN_INPUT").values())[:-1]
+        with self.assertRaises(ValueError):
+            stage0.validate_input_records(records)
+
+    def test_missing_additional_and_duplicate_requirement_rejected(self):
+        records = list(stage0.input_package().values())
+        with self.assertRaises(ValueError):
+            stage0.validate_input_records(records[:-1])
+        extra = copy.deepcopy(records[0])
+        extra["requirement_id"] = "ADDITIONAL_REQUIREMENT"
+        with self.assertRaises(ValueError):
+            stage0.validate_input_records(records + [extra])
+        with self.assertRaises(ValueError):
+            stage0.validate_input_records(records + [copy.deepcopy(records[0])])
+
+    def test_requirement_metadata_mismatch_rejected(self):
+        for key in ("category", "input_classification", "responsible_role_id",
+                    "deadline"):
+            records = list(stage0.input_package().values())
+            records[0][key] = "WRONG"
+            with self.assertRaises(ValueError):
+                stage0.validate_input_records(records)
+
+    def test_complete_inputs_stop_awaiting_governed_review(self):
+        self.assertEqual(stage0.evaluate_readiness(
+            stage0.input_package("RESOLVED_HUMAN_INPUT"),
+            authority_established=True), stage0.COMPLETE)
+        self.assertNotEqual(stage0.COMPLETE, "READY_FOR_CALIBRATION_PLANNING")
 
     def test_unaccountable_unresolved_value_rejected(self):
         templates = copy.deepcopy(self.templates)
-        first = next(iter(next(iter(templates[0]["fields"].values())).values()))
+        first_template = next(iter(templates.values()))
+        first = next(iter(next(iter(first_template["fields"].values())).values()))
         first.pop("responsible_role_id")
         self.assertFalse(self.evaluate(templates=templates)["unresolved_values_accountable"])
+
+    def test_invented_human_or_observed_sensor_rejected(self):
+        for template_name in (
+                "WP_0_3C_ROLE_ASSIGNMENT_TEMPLATE.json",
+                "WP_0_3C_SENSOR_INVENTORY_TEMPLATE.json"):
+            templates = copy.deepcopy(self.templates)
+            template = templates[template_name]
+            value = next(iter(next(iter(template["fields"].values())).values()))
+            value["status"] = "RESOLVED_HUMAN_INPUT"
+            value["value"] = "invented"
+            checks = self.evaluate(templates=templates)
+            self.assertFalse(checks["unresolved_values_accountable"])
+            self.assertFalse(checks["template_structure_exact"])
+
+    def test_template_registry_disagreement_rejected(self):
+        templates = copy.deepcopy(self.templates)
+        template = templates["WP_0_3C_ROLE_ASSIGNMENT_TEMPLATE.json"]
+        fields = template["fields"]["governance_and_roles"]
+        fields["renamed_field"] = fields.pop(next(iter(fields)))
+        self.assertFalse(self.evaluate(templates=templates)["template_structure_exact"])
+
+    def test_wp03a_campaign_floors_blinding_and_no_fit_are_frozen(self):
+        cases = [
+            ("minimum_pressure_groups", 3),
+            ("minimum_independent_shots_per_group", 6),
+            ("preregistered_and_blinded", False),
+            ("no_holdout_parameter_fitting", False),
+        ]
+        for key, value in cases:
+            governing = copy.deepcopy(self.governing)
+            governing[key] = value
+            self.assertFalse(self.evaluate(
+                governing=governing)["wp03a_governing_requirements_exact"])
+
+    def test_deterministic_regeneration_required(self):
+        self.assertFalse(self.evaluate(
+            regenerated=False)["deterministic_regeneration_byte_identical"])
 
     def test_final_or_experimental_authorization_rejected(self):
         for key, value in (("final_preregistration", "CREATED"),

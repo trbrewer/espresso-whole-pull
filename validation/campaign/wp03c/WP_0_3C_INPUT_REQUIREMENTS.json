@@ -7,6 +7,63 @@
     "REQUIRED_BEFORE_PROTOCOL_DESIGN",
     "REQUIRED_ONLY_FOR_FUTURE_WP_0_3D"
   ],
+  "frozen_governing_requirements": {
+    "independent_campaign": true,
+    "machine_headspace_discrimination": {
+      "bed_branch_only_minimum": [
+        "basket-side pressure",
+        "outlet mass or flow"
+      ],
+      "required_for_machine_or_headspace_discrimination": [
+        "pump-side pressure",
+        "basket-side pressure",
+        "outlet mass or flow",
+        "synchronized timebase",
+        "relevant headspace or valve-state metadata"
+      ],
+      "status_when_pump_side_pressure_absent": "MACHINE_HEADSPACE_DISCRIMINATION_NOT_AVAILABLE"
+    },
+    "minimum_independent_shots_per_group": 5,
+    "minimum_pressure_groups": 2,
+    "no_holdout_parameter_fitting": true,
+    "preregistered_and_blinded": true,
+    "required_geometry": [
+      "basket_inside_diameter_m",
+      "bed_cross_sectional_area_m2",
+      "bed_depth_m",
+      "dose_kg"
+    ],
+    "required_metadata": [
+      "coffee and roast",
+      "grinder and setting or PSD",
+      "distribution and tamp procedure",
+      "machine and basket",
+      "water composition",
+      "temperature profile"
+    ],
+    "required_raw_channels": [
+      "basket-node gauge pressure",
+      "outlet mass from a calibrated scale",
+      "time",
+      "water temperature"
+    ],
+    "required_timing": [
+      "acquisition start",
+      "pump or valve actuation",
+      "first drip",
+      "endpoint"
+    ],
+    "required_uncertainty": [
+      "pressure calibration and resolution",
+      "scale calibration and resolution",
+      "timebase resolution",
+      "repeatability by experimental unit"
+    ],
+    "sample_size_adequacy_rule": "Five independent shots per pressure group is a minimum floor, not proof of adequate discrimination; freeze a precision, repeatability, or power justification before execution.",
+    "source_contract_path": "validation/contracts/WP_0_3A_INDEPENDENT_HOLDOUT_AND_MECHANISM_DISCRIMINATION_CONTRACT.json",
+    "source_contract_sha256": "50c9e3e45772b6f243dfe406a4aae3b9496cee3a1e28b41909ab39406d8e2de4",
+    "wp02_parameters_fixed_before_campaign": true
+  },
   "input_classification_vocabulary": [
     "DERIVED_NON_SCORE_BEARING_INPUT",
     "MEASURED_COMMISSIONING_INPUT",
@@ -46,10 +103,8 @@
     ]
   },
   "readiness": {
-    "allowed_states": [
-      "AUTHORITY_NOT_ESTABLISHED",
-      "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS",
-      "HUMAN_INPUTS_PARTIALLY_COMPLETE",
+    "current_state": "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS",
+    "future_governed_authorization_required_states": [
       "APPARATUS_NOT_AVAILABLE",
       "APPARATUS_PROCUREMENT_REQUIRED",
       "READY_FOR_CALIBRATION_PLANNING",
@@ -57,7 +112,12 @@
       "READY_TO_FREEZE_FINAL_PREREGISTRATION",
       "FINAL_PREREGISTRATION_FROZEN"
     ],
-    "current_state": "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS"
+    "stage0_evaluator_states": [
+      "AUTHORITY_NOT_ESTABLISHED",
+      "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS",
+      "HUMAN_INPUTS_PARTIALLY_COMPLETE",
+      "HUMAN_INPUTS_COMPLETE_AWAITING_GOVERNED_REVIEW"
+    ]
   },
   "requirements": [
     {

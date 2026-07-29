@@ -79,4 +79,6 @@ WP-0.3C Stage 0 has begun as a protocol and input-intake scaffold. No final
 preregistration exists, no commissioning or holdout acquisition has occurred,
 and no model execution or scoring has occurred. Human, apparatus,
 instrumentation, calibration-resource, material, and custody inputs remain
-required. Physical validation remains `NOT_ESTABLISHED`.
+required. Readiness fails closed on incomplete or mismatched packages and a
+complete package still requires separate governed review. Physical validation
+remains `NOT_ESTABLISHED`.

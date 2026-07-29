@@ -35,4 +35,6 @@ protected source, and does not change the WP02 result or governing physics.
 WP-0.3C Stage 0 adds non-final human, apparatus, calibration, material, and
 custody intake templates plus a fixed readiness boundary. It contains no
 commissioning or holdout data, creates no final preregistration, and performs
-no model execution or scoring.
+no model execution or scoring. Review hardening binds the frozen WP-0.3A
+campaign requirements and requires exact deterministic registry/template
+regeneration before readiness can be reported.

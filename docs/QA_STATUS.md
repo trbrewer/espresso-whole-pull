@@ -68,5 +68,5 @@ Real-world human and apparatus inputs remain unresolved. Final
 preregistration, commissioning, holdout acquisition, model execution, and
 scoring are not authorized.
 
-Current Stage-0 checks comprise 183/183 Python tests, 34/34 active static
+Current Stage-0 checks comprise 191/191 Python tests, 34/34 active static
 gates, and 143/143 source-manifest entries.

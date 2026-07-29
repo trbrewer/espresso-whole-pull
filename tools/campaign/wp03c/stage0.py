@@ -3,13 +3,17 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
-from typing import Dict, Iterable, List, Mapping
+from typing import Dict, Iterable, List, Mapping, Sequence
 
 BASELINE_COMMIT = "258b4b6526acea98346031ae5cc9c9e7b3ee64a9"
 BASELINE_TREE = "2fd9ae4a2e0040602daa29a4b5b4a7bc0ff899b9"
 DISPOSITION = "STAGE0_SCAFFOLD_COMPLETE_AWAITING_HUMAN_INPUTS"
+PARTIAL = "HUMAN_INPUTS_PARTIALLY_COMPLETE"
+COMPLETE = "HUMAN_INPUTS_COMPLETE_AWAITING_GOVERNED_REVIEW"
+INPUT_STATUSES = {"UNRESOLVED_HUMAN_INPUT", "RESOLVED_HUMAN_INPUT"}
 CLASSIFICATIONS = {
     "PUBLIC_PROTOCOL_INPUT", "PUBLIC_EQUIPMENT_METADATA",
     "PRIVATE_PERSONAL_INPUT", "PRIVATE_OPERATIONAL_INPUT",
@@ -170,16 +174,84 @@ def requirement_entries() -> List[Dict[str, object]]:
     return entries
 
 
-def evaluate_readiness(values: Iterable[Mapping[str, object]],
-                       authority: bool = True) -> str:
-    if not authority:
+def input_package(status: str = "UNRESOLVED_HUMAN_INPUT") -> Dict[str, object]:
+    if status not in INPUT_STATUSES:
+        raise ValueError("unknown input status")
+    return {
+        entry["requirement_id"]: dict(entry, status=status)
+        for entry in requirement_entries()
+    }
+
+
+def validate_input_records(records: Sequence[Mapping[str, object]]) -> None:
+    if not records:
+        raise ValueError("input package is empty")
+    expected = {entry["requirement_id"]: entry for entry in requirement_entries()}
+    observed_ids = [record.get("requirement_id") for record in records]
+    if len(observed_ids) != len(set(observed_ids)):
+        raise ValueError("duplicate requirement ID")
+    if set(observed_ids) != set(expected):
+        raise ValueError("missing or additional requirement ID")
+    for record in records:
+        requirement_id = record["requirement_id"]
+        if record.get("status") not in INPUT_STATUSES:
+            raise ValueError("unknown input status")
+        for key in ("requirement_id", "category", "field",
+                    "input_classification", "deadline", "responsible_role_id"):
+            if record.get(key) != expected[requirement_id].get(key):
+                raise ValueError("requirement metadata mismatch: " + key)
+
+
+def evaluate_readiness(package: Mapping[str, Mapping[str, object]],
+                       authority_established: bool) -> str:
+    if not authority_established:
         return "AUTHORITY_NOT_ESTABLISHED"
-    values = list(values)
-    if not values or all(v.get("status") == "UNRESOLVED_HUMAN_INPUT" for v in values):
+    if not isinstance(package, Mapping) or not package:
+        raise ValueError("complete governed input mapping required")
+    records = list(package.values())
+    if any(key != record.get("requirement_id") for key, record in package.items()):
+        raise ValueError("mapping key and requirement ID differ")
+    validate_input_records(records)
+    statuses = {record["status"] for record in records}
+    if statuses == {"UNRESOLVED_HUMAN_INPUT"}:
         return DISPOSITION
-    if any(v.get("status") == "UNRESOLVED_HUMAN_INPUT" for v in values):
-        return "HUMAN_INPUTS_PARTIALLY_COMPLETE"
-    return "READY_FOR_CALIBRATION_PLANNING"
+    if statuses == INPUT_STATUSES:
+        return PARTIAL
+    if statuses == {"RESOLVED_HUMAN_INPUT"}:
+        return COMPLETE
+    raise ValueError("invalid readiness state")
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def wp03a_governing_requirements(source_root: Path) -> Dict[str, object]:
+    path = (source_root / "validation/contracts/"
+            "WP_0_3A_INDEPENDENT_HOLDOUT_AND_MECHANISM_DISCRIMINATION_CONTRACT.json")
+    source = json.loads(path.read_text(encoding="utf-8"))
+    design = source["required_new_experiment"]["minimum_design"]
+    machine = design["machine_headspace_discrimination"]
+    return {
+        "source_contract_path": path.relative_to(source_root).as_posix(),
+        "source_contract_sha256": sha256(path),
+        "independent_campaign": design["independent_campaign"],
+        "preregistered_and_blinded": design["pre_registered_and_blinded"],
+        "minimum_pressure_groups": design["minimum_pressure_groups"],
+        "minimum_independent_shots_per_group":
+            design["minimum_independent_shots_per_group"],
+        "sample_size_adequacy_rule": design["sample_size_adequacy_rule"],
+        "required_raw_channels": design["required_raw_channels"],
+        "required_geometry": design["required_geometry"],
+        "required_timing": design["required_timing"],
+        "required_uncertainty": design["required_uncertainty"],
+        "required_metadata": design["required_metadata"],
+        "machine_headspace_discrimination": machine,
+        "wp02_parameters_fixed_before_campaign":
+            source["required_new_experiment"]["wp02_parameters_fixed_before_campaign"],
+        "no_holdout_parameter_fitting":
+            source["required_new_experiment"]["no_holdout_parameter_fitting"],
+    }
 
 
 def _template(categories: Iterable[str]) -> Dict[str, object]:
@@ -200,8 +272,9 @@ def _template(categories: Iterable[str]) -> Dict[str, object]:
     }
 
 
-def write_scaffold(root: Path) -> None:
-    campaign = root / "validation/campaign/wp03c"
+def write_scaffold(source_root: Path, output_root: Path = None) -> None:
+    output_root = output_root or source_root
+    campaign = output_root / "validation/campaign/wp03c"
     templates = campaign / "templates"
     templates.mkdir(parents=True, exist_ok=True)
     registry = {
@@ -210,6 +283,8 @@ def write_scaffold(root: Path) -> None:
         "input_classification_vocabulary": sorted(CLASSIFICATIONS),
         "deadline_vocabulary": sorted(DEADLINES),
         "requirements": requirement_entries(),
+        "frozen_governing_requirements":
+            wp03a_governing_requirements(source_root),
         "public_private_boundary": {
             "public_repository_package": [
                 "role IDs", "campaign design", "equipment make/model",
@@ -225,10 +300,11 @@ def write_scaffold(root: Path) -> None:
             "public_binding": "HASH_PRIVATE_PACKAGE_WITHOUT_DISCLOSURE_WHERE_APPROPRIATE",
         },
         "readiness": {
-            "allowed_states": [
-                "AUTHORITY_NOT_ESTABLISHED", DISPOSITION,
-                "HUMAN_INPUTS_PARTIALLY_COMPLETE", "APPARATUS_NOT_AVAILABLE",
-                "APPARATUS_PROCUREMENT_REQUIRED", "READY_FOR_CALIBRATION_PLANNING",
+            "stage0_evaluator_states": [
+                "AUTHORITY_NOT_ESTABLISHED", DISPOSITION, PARTIAL, COMPLETE],
+            "future_governed_authorization_required_states": [
+                "APPARATUS_NOT_AVAILABLE", "APPARATUS_PROCUREMENT_REQUIRED",
+                "READY_FOR_CALIBRATION_PLANNING",
                 "READY_FOR_NONHOLDOUT_COMMISSIONING",
                 "READY_TO_FREEZE_FINAL_PREREGISTRATION",
                 "FINAL_PREREGISTRATION_FROZEN"],
@@ -246,10 +322,13 @@ def write_scaffold(root: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--output-root", type=Path)
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args()
     if args.write:
-        write_scaffold(args.root.resolve())
+        write_scaffold(
+            args.root.resolve(),
+            args.output_root.resolve() if args.output_root else None)
     print(json.dumps({"status": "PASS", "readiness": DISPOSITION}, sort_keys=True))
     return 0
 
