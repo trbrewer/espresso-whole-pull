@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 149,
-  "total_uncompressed_bytes_excluding_manifest": 1422121,
-  "aggregate_source_sha256": "a22aed1f3f5984617e86daf60ec58f516b0c0fbe3ff5d59de0420a8bbdd8b59c",
-  "aggregate_sha256": "a22aed1f3f5984617e86daf60ec58f516b0c0fbe3ff5d59de0420a8bbdd8b59c",
+  "file_count": 155,
+  "total_uncompressed_bytes_excluding_manifest": 1488097,
+  "aggregate_source_sha256": "47f27f59ed7223a9564e980fd8873f4b046b486881c416a59d262e64f67f06b7",
+  "aggregate_sha256": "47f27f59ed7223a9564e980fd8873f4b046b486881c416a59d262e64f67f06b7",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -458,6 +458,11 @@
       "bytes": 5473,
       "git_mode": "100644"
     },
+    "docs/reports/WP02_003_DARCY_FORCHHEIMER_RESULTS.md": {
+      "sha256": "102b1fa6058d4084f84acbfef680490aa4849fe493b18b303bdc629ce1a5ffcc",
+      "bytes": 5648,
+      "git_mode": "100644"
+    },
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": {
       "sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
       "bytes": 109397,
@@ -488,6 +493,11 @@
       "bytes": 20612,
       "git_mode": "100755"
     },
+    "scripts/analyze_wp02_003_darcy_forchheimer.py": {
+      "sha256": "2a0bf89c774743379d22222aba5434d137d407d21e0014df7df9548d41b5fda2",
+      "bytes": 19002,
+      "git_mode": "100755"
+    },
     "scripts/artifact_utils.py": {
       "sha256": "bd4b59d62550118893ee9258b65daf90a7d418186c1289a4fca7b4ba40c84e3b",
       "bytes": 3652,
@@ -506,6 +516,11 @@
     "scripts/finalize_reference_freeze.py": {
       "sha256": "f8591b58837c5f9890a300c8fe2493d48a5a3e9f7d2a87c9d2004369b794a435",
       "bytes": 16675,
+      "git_mode": "100755"
+    },
+    "scripts/forchheimer_reference.py": {
+      "sha256": "45d517cf6ce9a8a61aaecbde6d7602af7df4740d8be8d3b2cdbc60b946f2e6a5",
+      "bytes": 3991,
       "git_mode": "100755"
     },
     "scripts/freeze_contract.py": {
@@ -549,8 +564,8 @@
       "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
-      "sha256": "bee68f01c8d9e6021f009ae63f41202050c07f9893b06d7544231199eaf1462e",
-      "bytes": 42055,
+      "sha256": "46e757c4c476b9f097ea6ec824c1eb72520b560e3cc80ffb21ab7fa7efa21906",
+      "bytes": 45053,
       "git_mode": "100755"
     },
     "scripts/r1_contract_bridge.py": {
@@ -576,6 +591,11 @@
     "scripts/run_wp02_002_machine_coupling.sh": {
       "sha256": "e066af9f461e0bab7924305d0b02daefe8812020d46ee62df25df8244bd47eb7",
       "bytes": 8015,
+      "git_mode": "100755"
+    },
+    "scripts/run_wp02_003_darcy_forchheimer.sh": {
+      "sha256": "f2ad40c552ef8f90ce861815696972d1214ef27c7705e601aa5ab894247f1417",
+      "bytes": 5739,
       "git_mode": "100755"
     },
     "scripts/run_wp02_uniform_fixture.sh": {
@@ -704,13 +724,18 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "58347e1e12085ad9aec1efb5acf922e23e737d3cf02e8842a9253a73498144e4",
-      "bytes": 58351,
+      "sha256": "f3e6b7246ee198258c296194b1d0c594987d8585595f1d9eddbb74c16de85690",
+      "bytes": 78600,
+      "git_mode": "100644"
+    },
+    "solver/espressoWholePullFoam/forchheimerResistance.H": {
+      "sha256": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124",
+      "bytes": 1731,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/machineBoundaryModel.H": {
-      "sha256": "248e65f36f49dbfa4978c8e3d2eb2664b087f5c038b3acb15e23aaffcba6bf64",
-      "bytes": 5477,
+      "sha256": "dfa92167f7fefc0cf3ae1e6b64fe5195e8175e6bd5582215965eb3f54a41c301",
+      "bytes": 6598,
       "git_mode": "100644"
     },
     "tests/test_change_contract.py": {
@@ -736,6 +761,11 @@
     "tests/test_wp02_002_machine_coupling.py": {
       "sha256": "277dddbc50841fc2311feca87d370a010307ca67125326be1a971e6e613b73f9",
       "bytes": 7199,
+      "git_mode": "100644"
+    },
+    "tests/test_wp02_003_darcy_forchheimer.py": {
+      "sha256": "1d2a9f97e0c975ff2e97341fab0e24e5ae8455715b2828f7f760c88eca36856d",
+      "bytes": 5497,
       "git_mode": "100644"
     },
     "tests/test_wp02_effective_permeability.py": {

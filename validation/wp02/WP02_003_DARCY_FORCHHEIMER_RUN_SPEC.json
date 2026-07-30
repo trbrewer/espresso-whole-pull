@@ -1,0 +1,56 @@
+{
+  "schema_version": "espresso.public.wp02_003.run_spec.v1",
+  "task": "WP02-003",
+  "issue": 30,
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "base_commit": "682252d1a98c0615b9920718f64ccb2798fe16bd",
+  "base_tree": "80be6f52e3d4c35034c21f41ba44154def933e41",
+  "openfoam_target": "OpenFOAM Foundation 12",
+  "source_context": {
+    "puckworks_lock_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "model": "wadsworth2026CeramicsFit",
+    "gamma2": -1.71588,
+    "tau": -0.08093,
+    "unit_convention": "k numerical value in m2; k_I result in m",
+    "espresso_band_disposition": "SOURCE_RANGE_CONTEXT_ONLY",
+    "reason": "The locked 0.0161-0.0639 worked band uses the separately named Zhou closure, not the required ceramics-fit closure."
+  },
+  "nonlinear_controls": {
+    "nonlinearRelativeTolerance": 1e-10,
+    "nonlinearAbsoluteTolerance": 1e-12,
+    "nonlinearMaximumIterations": 80,
+    "nonlinearUnderRelaxation": 0.7,
+    "machineFluxRelativeTolerance": 1e-6
+  },
+  "case_matrix": {
+    "DF-0": {"pressureBoundaryModel": "prescribedPressure", "flowResistanceModel": "darcy"},
+    "DF-1": {"pressureBoundaryModel": "prescribedPressure", "flowResistanceModel": "darcyForchheimer", "inertialPermeabilityModel": "wadsworth2026CeramicsFit"},
+    "DF-2": {"inherits": "WP02-002 MC-2", "flowResistanceModel": "darcy"},
+    "DF-3": {"inherits": "WP02-002 MC-2", "flowResistanceModel": "darcyForchheimer", "inertialPermeabilityModel": "wadsworth2026CeramicsFit"},
+    "DF-4": {"inherits": "DF-2", "flowResistanceModel": "darcyForchheimer", "inertialPermeabilityModel": "constant", "constantInertialPermeabilityM": 1.5226066857142857e-10, "targetReferenceFo": 0.02, "label": "SYNTHETIC_LOW_INERTIA_FIXTURE"},
+    "DF-5": {"inherits": "DF-2", "flowResistanceModel": "darcyForchheimer", "inertialPermeabilityModel": "constant", "constantInertialPermeabilityM": 6.090426742857143e-12, "targetReferenceFo": 0.5, "label": "SYNTHETIC_HIGH_INERTIA_STRESS_FIXTURE"},
+    "DF-6": {"inherits": "WP02-002 MC-5", "flowResistanceModel": "darcyForchheimer", "inertialPermeabilityModel": "wadsworth2026CeramicsFit"}
+  },
+  "refinement": {"case": "DF-3", "delta_t_s": [0.02, 0.01, 0.005]},
+  "acceptance": {
+    "scalar_relative_flow_error": 1e-12,
+    "uniform_flow_relative_error": 1e-8,
+    "uniform_pressure_decomposition_relative_error": 1e-8,
+    "layered_flow_relative_error": 1e-8,
+    "layered_interface_pressure_relative_error": 1e-7,
+    "machine_state_relative_error": 1e-10,
+    "darcy_limit_finest_relative_error": 1e-6,
+    "machine_field_flux_relative_error": 1e-6,
+    "time_refinement_maximum_relative_change": 0.005,
+    "failed_nonlinear_timesteps": 0,
+    "machine_bracket_failures": 0,
+    "machine_fallback_count": 0
+  },
+  "claim_boundary": {
+    "PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "EXPERIMENTAL_COMMISSIONING": "NOT_AUTHORIZED",
+    "HOLDOUT_ACQUISITION": "NOT_PERFORMED",
+    "PROTECTED_SCORING": "NOT_PERFORMED",
+    "RESULT_CLASS": "NUMERICAL_VERIFICATION_AND_SYNTHETIC_MECHANISM_DIAGNOSTIC"
+  }
+}

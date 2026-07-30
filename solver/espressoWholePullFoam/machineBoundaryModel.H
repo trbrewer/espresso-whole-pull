@@ -3,6 +3,7 @@
 
 #include "scalar.H"
 #include "word.H"
+#include "forchheimerResistance.H"
 #include <cmath>
 
 namespace Foam
@@ -63,6 +64,23 @@ inline scalar saturatedPuckFlow
         /(1.0 + conductance*upstreamResistance);
 }
 
+inline scalar saturatedPuckFlow
+(
+    const scalar upstreamPressure,
+    const scalar outletPressure,
+    const scalar darcyResistance,
+    const scalar inertialResistance,
+    const scalar upstreamResistance
+)
+{
+    return stableSeriesFlow
+    (
+        upstreamPressure - outletPressure,
+        upstreamResistance + darcyResistance,
+        inertialResistance
+    );
+}
+
 inline scalar wettingPuckFlow
 (
     const scalar upstreamPressure,
@@ -117,6 +135,7 @@ inline MachineBoundaryState solveMachineBoundary
     const MachineBoundaryParameters& p,
     const bool saturated,
     const scalar saturatedConductance,
+    const scalar saturatedInertialResistance,
     const scalar frontPressure,
     const scalar oldFront,
     const scalar bedDepth,
@@ -137,10 +156,18 @@ inline MachineBoundaryState solveMachineBoundary
     const auto residualAt = [&](const scalar pu)
     {
         const scalar qp = saturated
-          ? saturatedPuckFlow
-            (
-                pu, outletPressure, saturatedConductance,
-                p.upstreamResistance
+          ? (
+                saturatedInertialResistance > 0.0
+              ? saturatedPuckFlow
+                (
+                    pu, outletPressure, 1.0/saturatedConductance,
+                    saturatedInertialResistance, p.upstreamResistance
+                )
+              : saturatedPuckFlow
+                (
+                    pu, outletPressure, saturatedConductance,
+                    p.upstreamResistance
+                )
             )
           : wettingPuckFlow
             (
@@ -165,7 +192,19 @@ inline MachineBoundaryState solveMachineBoundary
     {
         const scalar pu = 0.5*(lo + hi);
         const scalar qp = saturated
-          ? saturatedPuckFlow(pu, outletPressure, saturatedConductance, p.upstreamResistance)
+          ? (
+                saturatedInertialResistance > 0.0
+              ? saturatedPuckFlow
+                (
+                    pu, outletPressure, 1.0/saturatedConductance,
+                    saturatedInertialResistance, p.upstreamResistance
+                )
+              : saturatedPuckFlow
+                (
+                    pu, outletPressure, saturatedConductance,
+                    p.upstreamResistance
+                )
+            )
           : wettingPuckFlow
             (
                 pu, outletPressure, frontPressure, oldFront, bedDepth, area,
