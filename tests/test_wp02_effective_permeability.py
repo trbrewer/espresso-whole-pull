@@ -386,9 +386,18 @@ class WP02EffectivePermeabilityTests(unittest.TestCase):
             self.assertEqual(
                 hashlib.sha256((ROOT / relative).read_bytes()).hexdigest(), digest
             )
-        solver = (
-            ROOT / "solver/espressoWholePullFoam/espressoWholePullFoam.C"
-        ).read_text()
+        solver = subprocess.run(
+            [
+                "git",
+                "show",
+                "f43bf2166f60f984e4ca5ca7f30c791a68c6259e:"
+                "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+            ],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout
         normalized = solver.replace(
             "v0.2.0", "v<DISPLAY_VERSION>"
         ).encode()

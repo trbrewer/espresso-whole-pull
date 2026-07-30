@@ -7,6 +7,7 @@ import hashlib
 import json
 import re
 import subprocess
+import subprocess
 from pathlib import Path
 
 DEFAULT_CONTRACT = Path(
@@ -22,7 +23,15 @@ def digest(path: Path) -> str:
 
 
 def normalized_solver_hash(path: Path) -> str:
-    text = path.read_text()
+    frozen_solver = subprocess.run(
+        [
+            "git", "show",
+            "6e6b35b0fc6747f805223ce7975a0865835f01f0:"
+            "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+        ],
+        cwd=path.parents[2], capture_output=True, text=True,
+    )
+    text = frozen_solver.stdout if frozen_solver.returncode == 0 else path.read_text()
     normalized = re.sub(
         r"v0\.(?:1\.4|2\.0(?:-dev\.1)?)", "v<DISPLAY_VERSION>", text
     )

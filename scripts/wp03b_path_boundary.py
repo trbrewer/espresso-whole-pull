@@ -36,3 +36,8 @@ def changed_paths(root, baseline):
     untracked = _git(root, "ls-files", "--others", "--exclude-standard")
     ignored = {p for p in untracked if is_current_untracked_static_report(root, p)}
     return tracked | (untracked - ignored)
+
+
+def changed_paths_between(root, baseline, endpoint):
+    """Collect a closed historical boundary independent of later tasks."""
+    return _git(root, "diff", "--name-only", baseline, endpoint)

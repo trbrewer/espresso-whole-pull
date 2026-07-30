@@ -228,6 +228,72 @@ def render_properties(scenario: dict) -> str:
     axial_dx = float(bed["bed_depth_m"]) / int(geometry["axial_cells"])
     smoothing = float(wetting["front_smoothing_cells"]) * axial_dx
     closure = scenario.get("effective_permeability_evolution")
+    pressure_boundary_model = scenario.get(
+        "pressureBoundaryModel", "prescribedPressure"
+    )
+    machine_dictionary = ""
+    if pressure_boundary_model == "lumpedMachineCompliance":
+        machine = scenario.get("machineBoundary")
+        required_machine = {
+            "initialUpstreamPressure",
+            "upstreamCompliance",
+            "upstreamResistance",
+            "freeFlowRate",
+            "shutoffPressure",
+            "supplyRampTime",
+            "couplingRelativeTolerance",
+            "couplingAbsoluteTolerance",
+            "couplingMaximumIterations",
+        }
+        if not isinstance(machine, dict) or set(machine) != required_machine:
+            raise SystemExit("invalid lumpedMachineCompliance machineBoundary")
+        numeric = {key: machine[key] for key in required_machine}
+        if any(isinstance(value, bool) for value in numeric.values()):
+            raise SystemExit("machineBoundary values must be numeric")
+        maximum_iterations = machine["couplingMaximumIterations"]
+        if (
+            isinstance(maximum_iterations, bool)
+            or not isinstance(maximum_iterations, int)
+        ):
+            raise SystemExit("couplingMaximumIterations must be an integer")
+        try:
+            numeric = {key: float(value) for key, value in numeric.items()}
+        except (TypeError, ValueError):
+            raise SystemExit("machineBoundary values must be finite numbers")
+        if any(not math.isfinite(value) for value in numeric.values()):
+            raise SystemExit("machineBoundary values must be finite")
+        if (
+            numeric["initialUpstreamPressure"]
+            < float(hydraulic["outlet_pressure_gauge_Pa"])
+            or numeric["initialUpstreamPressure"]
+            > numeric["shutoffPressure"]
+            or numeric["upstreamCompliance"] <= 0
+            or numeric["upstreamResistance"] < 0
+            or numeric["freeFlowRate"] <= 0
+            or numeric["shutoffPressure"]
+            <= float(hydraulic["outlet_pressure_gauge_Pa"])
+            or numeric["supplyRampTime"] < 0
+            or numeric["couplingRelativeTolerance"] <= 0
+            or numeric["couplingAbsoluteTolerance"] <= 0
+            or maximum_iterations < 1
+        ):
+            raise SystemExit("machineBoundary values outside physical domain")
+        machine_dictionary = f'''
+machineBoundary
+{{
+    initialUpstreamPressure {numeric["initialUpstreamPressure"]:.16g};
+    upstreamCompliance {numeric["upstreamCompliance"]:.16g};
+    upstreamResistance {numeric["upstreamResistance"]:.16g};
+    freeFlowRate {numeric["freeFlowRate"]:.16g};
+    shutoffPressure {numeric["shutoffPressure"]:.16g};
+    supplyRampTime {numeric["supplyRampTime"]:.16g};
+    couplingRelativeTolerance {numeric["couplingRelativeTolerance"]:.16g};
+    couplingAbsoluteTolerance {numeric["couplingAbsoluteTolerance"]:.16g};
+    couplingMaximumIterations {maximum_iterations};
+}}
+'''
+    elif pressure_boundary_model != "prescribedPressure":
+        raise SystemExit("unsupported pressureBoundaryModel")
     closure_dictionary = ""
     if closure is not None:
         source = closure["source_parameters"]
@@ -262,6 +328,7 @@ mode                       {scenario['mode']};
 inletPatch                 inlet;
 outletPatch                outlet;
 pressureIntegrationMethod  exactPiecewiseLinearIntegral;
+pressureBoundaryModel      {pressure_boundary_model};
 
 // Geometry [SI]
 basketRadius               {float(geometry['basket_radius_m']):.16g};
@@ -303,6 +370,7 @@ extractionRateConstant     {float(extraction['rate_constant_1_s']):.16g};
 saturationConcentration    {float(extraction['saturation_concentration_kg_m3']):.16g};
 
 targetBeverageMass         {float(time_cfg['target_beverage_mass_kg']):.16g};
+{machine_dictionary}
 {closure_dictionary}
 '''
 
