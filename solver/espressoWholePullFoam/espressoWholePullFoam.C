@@ -312,6 +312,8 @@ int main(int argc, char *argv[])
     scalar constantInertialPermeability = GREAT;
     scalar layerInertialPermeabilityUpstream = GREAT;
     scalar layerInertialPermeabilityDownstream = GREAT;
+    scalar innerInertialPermeability = GREAT;
+    scalar outerInertialPermeability = GREAT;
     scalar nonlinearRelativeTolerance = 1.0e-10;
     scalar nonlinearAbsoluteTolerance = 1.0e-12;
     label nonlinearMaximumIterations = 1;
@@ -332,6 +334,14 @@ int main(int argc, char *argv[])
         layerInertialPermeabilityDownstream = readScalar
         (
             modelProperties.lookup("layerInertialPermeabilityDownstream")
+        );
+        innerInertialPermeability = readScalar
+        (
+            modelProperties.lookup("innerInertialPermeabilityM")
+        );
+        outerInertialPermeability = readScalar
+        (
+            modelProperties.lookup("outerInertialPermeabilityM")
         );
         nonlinearRelativeTolerance = readScalar
         (
@@ -362,6 +372,8 @@ int main(int argc, char *argv[])
          || constantInertialPermeability <= 0.0
          || layerInertialPermeabilityUpstream <= 0.0
          || layerInertialPermeabilityDownstream <= 0.0
+         || innerInertialPermeability <= 0.0
+         || outerInertialPermeability <= 0.0
          || nonlinearRelativeTolerance <= 0.0
          || nonlinearAbsoluteTolerance <= 0.0
          || nonlinearMaximumIterations < 1
@@ -393,6 +405,12 @@ int main(int argc, char *argv[])
         readScalar(modelProperties.lookup("layerPermeabilityUpstream"));
     const scalar layerPermeabilityDownstream =
         readScalar(modelProperties.lookup("layerPermeabilityDownstream"));
+    const scalar interfaceRadius =
+        readScalar(modelProperties.lookup("interfaceRadiusM"));
+    const scalar innerPermeability =
+        readScalar(modelProperties.lookup("innerPermeabilityM2"));
+    const scalar outerPermeability =
+        readScalar(modelProperties.lookup("outerPermeabilityM2"));
     const scalar pressureProbe1Position =
         readScalar(modelProperties.lookup("pressureProbe1Position"));
     const scalar pressureProbe1HalfWidth =
@@ -415,6 +433,11 @@ int main(int argc, char *argv[])
      || layerInterfacePosition <= 0 || layerInterfacePosition >= bedDepth
      || layerPermeabilityUpstream <= 0
      || layerPermeabilityDownstream <= 0
+     || interfaceRadius <= 0 || interfaceRadius >= basketRadius
+     || innerPermeability <= 0 || outerPermeability <= 0
+     || !std::isfinite(interfaceRadius)
+     || !std::isfinite(innerPermeability)
+     || !std::isfinite(outerPermeability)
      || pressureProbe1HalfWidth <= 0 || pressureProbe2HalfWidth <= 0
     )
     {
@@ -549,6 +572,7 @@ int main(int argc, char *argv[])
     (
         permeabilityProfile != "uniform"
      && permeabilityProfile != "axial_two_layer"
+     && permeabilityProfile != "radial_two_zone"
     )
     {
         FatalErrorInFunction
@@ -630,6 +654,19 @@ int main(int argc, char *argv[])
             IOobject::AUTO_WRITE
         ),
         mesh
+    );
+
+    volScalarField permeabilityZoneId
+    (
+        IOobject
+        (
+            "permeabilityZoneId", runTime.name(), mesh,
+            IOobject::NO_READ,
+            permeabilityProfile == "radial_two_zone"
+          ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("inner", dimless, 0.0)
     );
 
     volScalarField dissolvedConcentration
@@ -727,6 +764,76 @@ int main(int argc, char *argv[])
 
     const scalar fullCrossSectionArea =
         constant::mathematical::pi*sqr(basketRadius);
+    const bool radialTwoZone = permeabilityProfile == "radial_two_zone";
+    const scalar exactInnerArea =
+        constant::mathematical::pi*sqr(interfaceRadius);
+    const scalar exactOuterArea = fullCrossSectionArea - exactInnerArea;
+    const scalar innerAreaFraction = exactInnerArea/fullCrossSectionArea;
+    const scalar outerAreaFraction = exactOuterArea/fullCrossSectionArea;
+    scalar localInnerOutletArea = 0.0;
+    scalar localOuterOutletArea = 0.0;
+    const vectorField& outletCentres =
+        mesh.Cf().boundaryField()[outletPatchId];
+    const scalarField& outletAreas =
+        mesh.magSf().boundaryField()[outletPatchId];
+    forAll(outletCentres, facei)
+    {
+        const scalar radius = Foam::sqrt
+        (
+            sqr(outletCentres[facei].y()) + sqr(outletCentres[facei].z())
+        );
+        if (radius < interfaceRadius)
+        {
+            localInnerOutletArea += outletAreas[facei];
+        }
+        else
+        {
+            localOuterOutletArea += outletAreas[facei];
+        }
+    }
+    const scalar meshInnerArea =
+        sectorScale*globalSumValue(localInnerOutletArea);
+    const scalar meshOuterArea =
+        sectorScale*globalSumValue(localOuterOutletArea);
+    const scalar meshZoneAreaRelativeError = Foam::max
+    (
+        Foam::mag(meshInnerArea - exactInnerArea)
+       /Foam::max(exactInnerArea, VSMALL),
+        Foam::mag(meshOuterArea - exactOuterArea)
+       /Foam::max(exactOuterArea, VSMALL)
+    );
+    if (radialTwoZone && meshZoneAreaRelativeError > 1.0e-8)
+    {
+        FatalErrorInFunction << "Radial interface does not align with mesh: "
+            << meshZoneAreaRelativeError << exit(FatalError);
+    }
+    const scalar radialInnerDarcyResistance =
+        dynamicViscosity*bedDepth/(exactInnerArea*innerPermeability);
+    const scalar radialOuterDarcyResistance =
+        dynamicViscosity*bedDepth/(exactOuterArea*outerPermeability);
+    const scalar innerKI = darcyForchheimer
+      ? (
+            inertialPermeabilityModel == "wadsworth2026CeramicsFit"
+          ? wadsworth2026CeramicsInertialPermeability(innerPermeability)
+          : innerInertialPermeability
+        )
+      : GREAT;
+    const scalar outerKI = darcyForchheimer
+      ? (
+            inertialPermeabilityModel == "wadsworth2026CeramicsFit"
+          ? wadsworth2026CeramicsInertialPermeability(outerPermeability)
+          : outerInertialPermeability
+        )
+      : GREAT;
+    const scalar radialInnerInertialResistance = darcyForchheimer
+      ? liquidDensity*bedDepth/(sqr(exactInnerArea)*innerKI) : 0.0;
+    const scalar radialOuterInertialResistance = darcyForchheimer
+      ? liquidDensity*bedDepth/(sqr(exactOuterArea)*outerKI) : 0.0;
+    const RadialPuckParameters radialPuckParameters
+    {
+        radialInnerDarcyResistance, radialOuterDarcyResistance,
+        radialInnerInertialResistance, radialOuterInertialResistance
+    };
     scalar continuumResistance = bedDepth/saturatedPermeability;
     if (permeabilityProfile == "axial_two_layer")
     {
@@ -788,12 +895,22 @@ int main(int argc, char *argv[])
     );
     forAll(permeability, celli)
     {
+        const scalar radius = Foam::sqrt
+        (
+            sqr(mesh.C()[celli].y()) + sqr(mesh.C()[celli].z())
+        );
         if (permeabilityProfile == "axial_two_layer")
         {
             permeability[celli] =
                 mesh.C()[celli].x() < layerInterfacePosition
               ? layerPermeabilityUpstream
               : layerPermeabilityDownstream;
+        }
+        else if (radialTwoZone)
+        {
+            const bool inner = radius < interfaceRadius;
+            permeability[celli] = inner ? innerPermeability : outerPermeability;
+            permeabilityZoneId[celli] = inner ? 0.0 : 1.0;
         }
         else
         {
@@ -849,6 +966,7 @@ int main(int argc, char *argv[])
     wetMask.correctBoundaryConditions();
     porosity.correctBoundaryConditions();
     permeability.correctBoundaryConditions();
+    permeabilityZoneId.correctBoundaryConditions();
     dissolvedConcentration.correctBoundaryConditions();
     remainingExtractable.correctBoundaryConditions();
     localExtractionRate.correctBoundaryConditions();
@@ -893,6 +1011,17 @@ int main(int argc, char *argv[])
                 mesh.C()[celli].x() < layerInterfacePosition
               ? layerInertialPermeabilityUpstream
               : layerInertialPermeabilityDownstream;
+        }
+        else if (radialTwoZone)
+        {
+            const scalar radius = Foam::sqrt
+            (
+                sqr(mesh.C()[celli].y()) + sqr(mesh.C()[celli].z())
+            );
+            inertialPermeability[celli] =
+                radius < interfaceRadius
+              ? innerInertialPermeability
+              : outerInertialPermeability;
         }
     }
     inertialPermeability.correctBoundaryConditions();
@@ -1034,7 +1163,32 @@ int main(int argc, char *argv[])
               << "integratedInertialPressureFraction,"
               << "nonlinearIterations,nonlinearResidual,nonlinearConverged,"
               << "machinePuckFlowM3s,openFoamOutletFlowM3s,"
-              << "machineFluxRelativeDifference";
+              << "machineFluxRelativeDifference,"
+              << "permeabilityProfile,interfaceRadiusM,innerAreaM2,"
+              << "outerAreaM2,innerAreaFraction,outerAreaFraction,"
+              << "innerPermeabilityM2,outerPermeabilityM2,"
+              << "innerInertialPermeabilityM,outerInertialPermeabilityM,"
+              << "innerOutletFlowM3s,outerOutletFlowM3s,innerFlowFraction,"
+              << "outerFlowFraction,innerFocusingFactor,outerFocusingFactor,"
+              << "hydraulicMaldistributionIndex,"
+              << "effectiveHydraulicAreaFraction,innerCumulativeLiquidM3,"
+              << "outerCumulativeLiquidM3,innerSoluteFluxKgS,"
+              << "outerSoluteFluxKgS,innerCumulativeSoluteKg,"
+              << "outerCumulativeSoluteKg,innerInitialExtractableKg,"
+              << "outerInitialExtractableKg,innerRemainingExtractableKg,"
+              << "outerRemainingExtractableKg,innerExtractedSolidsKg,"
+              << "outerExtractedSolidsKg,innerRetainedLiquidKg,"
+              << "outerRetainedLiquidKg,innerMeanConcentrationKgM3,"
+              << "outerMeanConcentrationKgM3,innerExtractionFraction,"
+              << "outerExtractionFraction,extractionMaldistributionIndex,"
+              << "maximumRadialVelocityMS,radialToAxialVelocityRatio,"
+              << "machineTotalPuckFlowM3s,openFoamTotalOutletFlowM3s,"
+              << "machineInnerFlowM3s,openFoamInnerOutletFlowM3s,"
+              << "machineOuterFlowM3s,openFoamOuterOutletFlowM3s,"
+              << "totalFluxRelativeDifference,innerFluxRelativeDifference,"
+              << "outerFluxRelativeDifference,radialHeterogeneityActive,"
+              << "basketOperatingPointIterations,basketOperatingResidualPa,"
+              << "basketOperatingBracketed,basketOperatingConverged";
         if (effectivePermeabilityEnabled)
         {
             trace << ",effective_permeability_branch_active,source_time_s,"
@@ -1056,6 +1210,25 @@ int main(int argc, char *argv[])
     }
     const scalar initialStoredWaterMass =
         sectorScale*globalSumValue(localInitialStoredWaterMass);
+    scalar localInnerVolume = 0.0;
+    scalar localOuterVolume = 0.0;
+    forAll(mesh.V(), celli)
+    {
+        if (permeabilityZoneId[celli] < 0.5)
+        {
+            localInnerVolume += mesh.V()[celli];
+        }
+        else
+        {
+            localOuterVolume += mesh.V()[celli];
+        }
+    }
+    const scalar innerCellVolume = sectorScale*globalSumValue(localInnerVolume);
+    const scalar outerCellVolume = sectorScale*globalSumValue(localOuterVolume);
+    const scalar innerInitialExtractableMass =
+        initialExtractableDensity*innerCellVolume;
+    const scalar outerInitialExtractableMass =
+        initialExtractableDensity*outerCellVolume;
 
     scalar firstDripTime = wetFront >= bedDepth - SMALL ? 0.0 : -1.0;
     scalar timeToTargetMass = -1.0;
@@ -1069,6 +1242,10 @@ int main(int argc, char *argv[])
     scalar cumulativeSupplyVolume = 0.0;
     scalar cumulativePuckIntakeVolume = 0.0;
     scalar cumulativePuckOutletVolume = 0.0;
+    scalar innerCumulativeLiquid = 0.0;
+    scalar outerCumulativeLiquid = 0.0;
+    scalar innerCumulativeSolute = 0.0;
+    scalar outerCumulativeSolute = 0.0;
 
     Info<< "Scenario: " << scenarioId << nl
         << "Mode: " << mode << nl
@@ -1099,6 +1276,12 @@ int main(int argc, char *argv[])
         scalar couplingResidual = 0.0;
         label couplingIterations = 0;
         bool couplingConverged = true;
+        scalar machineInnerFlow = 0.0;
+        scalar machineOuterFlow = 0.0;
+        scalar basketOperatingResidual = 0.0;
+        label basketOperatingIterations = 0;
+        bool basketOperatingBracketed = true;
+        bool basketOperatingConverged = true;
         const bool saturatedAtStepStart =
             wetFront >= bedDepth - SMALL;
         scalar currentDarcyIntegral = continuumResistance;
@@ -1164,7 +1347,9 @@ int main(int argc, char *argv[])
                 machineParameters, saturatedAtStepStart, conductance,
                 inertialResistance,
                 frontPressure, wetFront, bedDepth, fullCrossSectionArea,
-                initialPorosity, wettingPermeability, dynamicViscosity
+                initialPorosity, wettingPermeability, dynamicViscosity,
+                radialTwoZone && saturatedAtStepStart
+              ? &radialPuckParameters : nullptr
             );
             if (!machineState.bracketed)
             {
@@ -1183,6 +1368,24 @@ int main(int argc, char *argv[])
             puckFlow = machineState.puckFlow;
             couplingResidual = machineState.residual;
             couplingIterations = machineState.iterations;
+            machineInnerFlow = machineState.innerPuckFlow;
+            machineOuterFlow = machineState.outerPuckFlow;
+            basketOperatingResidual = machineState.basketResidual;
+            basketOperatingIterations = machineState.basketIterations;
+            basketOperatingBracketed = machineState.basketBracketed;
+            basketOperatingConverged = machineState.basketConverged;
+            if
+            (
+                radialTwoZone && saturatedAtStepStart
+             && (
+                    !basketOperatingBracketed
+                 || !basketOperatingConverged
+                )
+            )
+            {
+                FatalErrorInFunction << "Radial basket operating point failed"
+                    << exit(FatalError);
+            }
             cumulativeSupplyVolume += supplyFlow*deltaT;
             cumulativePuckIntakeVolume += puckFlow*deltaT;
         }
@@ -1475,18 +1678,31 @@ int main(int argc, char *argv[])
                         sectorScale*globalSumValue(localOutlet);
 
                     scalar localPressureChange = 0.0;
-                    const scalar iterationSpeed =
+                    const volVectorField pressureGradient(fvc::grad(p));
+                    const scalar seriesSpeed =
                         iterationFlow/fullCrossSectionArea;
                     forAll(nonlinearMobility, celli)
                     {
-                        const scalar g =
-                            dynamicViscosity*iterationSpeed/permeability[celli]
-                          + liquidDensity*sqr(iterationSpeed)
-                           /inertialPermeability[celli];
+                        const scalar g = mag(pressureGradient[celli]);
+                        const scalar localSpeed = radialTwoZone
+                          ? stableForchheimerSpeed
+                            (
+                                g, permeability[celli],
+                                inertialPermeability[celli],
+                                dynamicViscosity, liquidDensity
+                            )
+                          : seriesSpeed;
                         const scalar targetMobility =
-                            g <= VSMALL
+                            !radialTwoZone
+                          ? 1.0/
+                            (
+                                dynamicViscosity/permeability[celli]
+                              + liquidDensity*seriesSpeed
+                               /inertialPermeability[celli]
+                            )
+                          : g <= VSMALL
                           ? permeability[celli]/dynamicViscosity
-                          : iterationSpeed/g;
+                          : localSpeed/g;
                         nonlinearMobility[celli] =
                             (1.0 - nonlinearUnderRelaxation)
                            *nonlinearMobility[celli]
@@ -1518,21 +1734,30 @@ int main(int argc, char *argv[])
                       ? GREAT
                       : Foam::mag(iterationFlow - previousFlow)
                        /Foam::max(Foam::mag(iterationFlow), VSMALL);
-                    const scalar rd =
-                        dynamicViscosity*currentDarcyIntegral
-                       /fullCrossSectionArea;
-                    const scalar ri =
-                        liquidDensity*currentInertialIntegral
-                       /sqr(fullCrossSectionArea);
-                    const scalar closure =
-                        Foam::mag
+                    const scalar expectedFlow = radialTwoZone
+                      ? stableSeriesFlow
                         (
-                            (inletPressure - outletPressure)
-                          - rd*iterationFlow
-                          - ri*sqr(iterationFlow)
+                            inletPressure - outletPressure,
+                            radialInnerDarcyResistance,
+                            radialInnerInertialResistance
                         )
-                       /Foam::max
-                        (Foam::mag(inletPressure - outletPressure), 1.0);
+                       + stableSeriesFlow
+                        (
+                            inletPressure - outletPressure,
+                            radialOuterDarcyResistance,
+                            radialOuterInertialResistance
+                        )
+                      : stableSeriesFlow
+                        (
+                            inletPressure - outletPressure,
+                            dynamicViscosity*currentDarcyIntegral
+                           /fullCrossSectionArea,
+                            liquidDensity*currentInertialIntegral
+                           /sqr(fullCrossSectionArea)
+                        );
+                    const scalar closure =
+                        Foam::mag(iterationFlow - expectedFlow)
+                       /Foam::max(Foam::mag(expectedFlow), VSMALL);
                     nonlinearResidual =
                         Foam::max(Foam::max(flowChange, pressureChange), closure);
                     nonlinearIterations = iteration;
@@ -1637,7 +1862,20 @@ int main(int argc, char *argv[])
         const scalar continuumAnalyticalOutletFlow =
             saturatedAtStepStart
           ? (
-                darcyForchheimer
+                radialTwoZone
+              ? stableSeriesFlow
+                (
+                    inletPressure - outletPressure,
+                    radialInnerDarcyResistance,
+                    radialInnerInertialResistance
+                )
+               + stableSeriesFlow
+                (
+                    inletPressure - outletPressure,
+                    radialOuterDarcyResistance,
+                    radialOuterInertialResistance
+                )
+              : darcyForchheimer
               ? stableSeriesFlow
                 (
                     inletPressure - outletPressure,
@@ -1754,6 +1992,10 @@ int main(int argc, char *argv[])
 
         scalar outletSoluteRate = 0.0;
         scalar inletBackDiffusionRate = 0.0;
+        scalar innerOutletFlow = 0.0;
+        scalar outerOutletFlow = 0.0;
+        scalar innerSoluteRate = 0.0;
+        scalar outerSoluteRate = 0.0;
 
         if (saturatedAtStepStart)
         {
@@ -1772,6 +2014,23 @@ int main(int argc, char *argv[])
                 localOutletVolumeFlow += positiveFlux;
                 localOutletAdvectiveSoluteRate +=
                     positiveFlux*outletConcentration[facei];
+                const scalar radius = Foam::sqrt
+                (
+                    sqr(outletCentres[facei].y())
+                  + sqr(outletCentres[facei].z())
+                );
+                if (radius < interfaceRadius)
+                {
+                    innerOutletFlow += positiveFlux;
+                    innerSoluteRate +=
+                        positiveFlux*outletConcentration[facei];
+                }
+                else
+                {
+                    outerOutletFlow += positiveFlux;
+                    outerSoluteRate +=
+                        positiveFlux*outletConcentration[facei];
+                }
             }
 
             const fvsPatchScalarField& inletFlux =
@@ -1802,6 +2061,14 @@ int main(int argc, char *argv[])
                 sectorScale*globalSumValue(localInletVolumeFlow);
             outletSoluteRate =
                 sectorScale*globalSumValue(localOutletAdvectiveSoluteRate);
+            innerOutletFlow =
+                sectorScale*globalSumValue(innerOutletFlow);
+            outerOutletFlow =
+                sectorScale*globalSumValue(outerOutletFlow);
+            innerSoluteRate =
+                sectorScale*globalSumValue(innerSoluteRate);
+            outerSoluteRate =
+                sectorScale*globalSumValue(outerSoluteRate);
             inletBackDiffusionRate =
                 sectorScale*globalSumValue(localInletBackDiffusionRate);
 
@@ -1897,6 +2164,10 @@ int main(int argc, char *argv[])
                 liquidDensity*inletVolumeFlow*deltaT;
             cupWaterMass += liquidDensity*outletVolumeFlow*deltaT;
             cumulativePuckOutletVolume += outletVolumeFlow*deltaT;
+            innerCumulativeLiquid += innerOutletFlow*deltaT;
+            outerCumulativeLiquid += outerOutletFlow*deltaT;
+            innerCumulativeSolute += Foam::max(innerSoluteRate, 0.0)*deltaT;
+            outerCumulativeSolute += Foam::max(outerSoluteRate, 0.0)*deltaT;
             cupSoluteMass += Foam::max(outletSoluteRate, 0.0)*deltaT;
             soluteBackDiffusionMass +=
                 Foam::max(inletBackDiffusionRate, 0.0)*deltaT;
@@ -1909,6 +2180,14 @@ int main(int argc, char *argv[])
         scalar localMinConcentration = GREAT;
         scalar localMaxConcentration = -GREAT;
         scalar localMaxVelocity = 0.0;
+        scalar localMaxRadialVelocity = 0.0;
+        scalar localMaxAxialVelocity = 0.0;
+        scalar localInnerRemainingMass = 0.0;
+        scalar localOuterRemainingMass = 0.0;
+        scalar localInnerRetainedLiquid = 0.0;
+        scalar localOuterRetainedLiquid = 0.0;
+        scalar localInnerConcentrationVolume = 0.0;
+        scalar localOuterConcentrationVolume = 0.0;
 
         forAll(mesh.V(), celli)
         {
@@ -1942,6 +2221,31 @@ int main(int argc, char *argv[])
                 localMaxVelocity,
                 mag(U[celli])
             );
+            localMaxAxialVelocity =
+                Foam::max(localMaxAxialVelocity, Foam::mag(U[celli].x()));
+            localMaxRadialVelocity = Foam::max
+            (
+                localMaxRadialVelocity,
+                Foam::sqrt(sqr(U[celli].y()) + sqr(U[celli].z()))
+            );
+            if (permeabilityZoneId[celli] < 0.5)
+            {
+                localInnerRemainingMass +=
+                    remainingExtractable[celli]*mesh.V()[celli];
+                localInnerRetainedLiquid +=
+                    liquidDensity*porosity[celli]*saturation[celli]*mesh.V()[celli];
+                localInnerConcentrationVolume +=
+                    dissolvedConcentration[celli]*mesh.V()[celli];
+            }
+            else
+            {
+                localOuterRemainingMass +=
+                    remainingExtractable[celli]*mesh.V()[celli];
+                localOuterRetainedLiquid +=
+                    liquidDensity*porosity[celli]*saturation[celli]*mesh.V()[celli];
+                localOuterConcentrationVolume +=
+                    dissolvedConcentration[celli]*mesh.V()[celli];
+            }
         }
 
         const scalar remainingMass =
@@ -1953,6 +2257,90 @@ int main(int argc, char *argv[])
         const scalar minConcentration = globalMinValue(localMinConcentration);
         const scalar maxConcentration = globalMaxValue(localMaxConcentration);
         const scalar maxVelocity = globalMaxValue(localMaxVelocity);
+        const scalar maxRadialVelocity =
+            globalMaxValue(localMaxRadialVelocity);
+        const scalar maxAxialVelocity = globalMaxValue(localMaxAxialVelocity);
+        const scalar radialToAxialVelocityRatio =
+            maxRadialVelocity/Foam::max(maxAxialVelocity, VSMALL);
+        const scalar innerRemainingMass =
+            sectorScale*globalSumValue(localInnerRemainingMass);
+        const scalar outerRemainingMass =
+            sectorScale*globalSumValue(localOuterRemainingMass);
+        const scalar innerRetainedLiquid =
+            sectorScale*globalSumValue(localInnerRetainedLiquid);
+        const scalar outerRetainedLiquid =
+            sectorScale*globalSumValue(localOuterRetainedLiquid);
+        const scalar innerMeanConcentration =
+            sectorScale*globalSumValue(localInnerConcentrationVolume)
+           /Foam::max(innerCellVolume, VSMALL);
+        const scalar outerMeanConcentration =
+            sectorScale*globalSumValue(localOuterConcentrationVolume)
+           /Foam::max(outerCellVolume, VSMALL);
+        const scalar innerExtractedMass =
+            Foam::max(innerInitialExtractableMass - innerRemainingMass, 0.0);
+        const scalar outerExtractedMass =
+            Foam::max(outerInitialExtractableMass - outerRemainingMass, 0.0);
+        const scalar innerExtractionFraction =
+            innerExtractedMass/Foam::max(innerInitialExtractableMass, VSMALL);
+        const scalar outerExtractionFraction =
+            outerExtractedMass/Foam::max(outerInitialExtractableMass, VSMALL);
+        const scalar totalExtractedMass =
+            innerExtractedMass + outerExtractedMass;
+        const scalar extractionMaldistribution =
+            totalExtractedMass > VSMALL
+          ? 0.5*
+            (
+                Foam::mag
+                (
+                    innerExtractedMass/totalExtractedMass - innerAreaFraction
+                )
+              + Foam::mag
+                (
+                    outerExtractedMass/totalExtractedMass - outerAreaFraction
+                )
+            )
+          : 0.0;
+        const scalar innerFlowFraction =
+            outletVolumeFlow > VSMALL
+          ? innerOutletFlow/outletVolumeFlow : innerAreaFraction;
+        const scalar outerFlowFraction =
+            outletVolumeFlow > VSMALL
+          ? outerOutletFlow/outletVolumeFlow : outerAreaFraction;
+        const scalar innerFocusing =
+            innerFlowFraction/innerAreaFraction;
+        const scalar outerFocusing =
+            outerFlowFraction/outerAreaFraction;
+        const scalar hydraulicMaldistribution = 0.5*
+        (
+            Foam::mag(innerFlowFraction-innerAreaFraction)
+          + Foam::mag(outerFlowFraction-outerAreaFraction)
+        );
+        const scalar effectiveHydraulicArea = 1.0/
+        (
+            sqr(innerFlowFraction)/innerAreaFraction
+          + sqr(outerFlowFraction)/outerAreaFraction
+        );
+        const scalar totalFluxRelativeDifference = lumpedMachine
+          ? Foam::mag(puckFlow-outletVolumeFlow)
+           /Foam::max(Foam::mag(puckFlow), VSMALL) : 0.0;
+        const scalar innerFluxRelativeDifference =
+            lumpedMachine && radialTwoZone && saturatedAtStepStart
+          ? Foam::mag(machineInnerFlow-innerOutletFlow)
+           /Foam::max(Foam::mag(machineInnerFlow), VSMALL) : 0.0;
+        const scalar outerFluxRelativeDifference =
+            lumpedMachine && radialTwoZone && saturatedAtStepStart
+          ? Foam::mag(machineOuterFlow-outerOutletFlow)
+           /Foam::max(Foam::mag(machineOuterFlow), VSMALL) : 0.0;
+        if
+        (
+            lumpedMachine && radialTwoZone && saturatedAtStepStart
+         && Foam::max(innerFluxRelativeDifference, outerFluxRelativeDifference)
+            > machineFluxRelativeTolerance
+        )
+        {
+            FatalErrorInFunction << "Radial machine/field zone flux mismatch"
+                << exit(FatalError);
+        }
 
         const scalar cupBeverageMass = cupWaterMass + cupSoluteMass;
         const scalar instantaneousTds =
@@ -2092,6 +2480,46 @@ int main(int argc, char *argv[])
                   << puckFlow << ','
                   << outletVolumeFlow << ','
                   << machineFluxRelativeDifference;
+            trace << ',' << permeabilityProfile
+                  << ',' << interfaceRadius
+                  << ',' << meshInnerArea << ',' << meshOuterArea
+                  << ',' << innerAreaFraction << ',' << outerAreaFraction
+                  << ',' << innerPermeability << ',' << outerPermeability
+                  << ',' << (darcyForchheimer ? innerKI : 0.0)
+                  << ',' << (darcyForchheimer ? outerKI : 0.0)
+                  << ',' << innerOutletFlow << ',' << outerOutletFlow
+                  << ',' << innerFlowFraction << ',' << outerFlowFraction
+                  << ',' << innerFocusing << ',' << outerFocusing
+                  << ',' << hydraulicMaldistribution
+                  << ',' << effectiveHydraulicArea
+                  << ',' << innerCumulativeLiquid
+                  << ',' << outerCumulativeLiquid
+                  << ',' << innerSoluteRate << ',' << outerSoluteRate
+                  << ',' << innerCumulativeSolute
+                  << ',' << outerCumulativeSolute
+                  << ',' << innerInitialExtractableMass
+                  << ',' << outerInitialExtractableMass
+                  << ',' << innerRemainingMass << ',' << outerRemainingMass
+                  << ',' << innerExtractedMass << ',' << outerExtractedMass
+                  << ',' << innerRetainedLiquid << ',' << outerRetainedLiquid
+                  << ',' << innerMeanConcentration
+                  << ',' << outerMeanConcentration
+                  << ',' << innerExtractionFraction
+                  << ',' << outerExtractionFraction
+                  << ',' << extractionMaldistribution
+                  << ',' << maxRadialVelocity
+                  << ',' << radialToAxialVelocityRatio
+                  << ',' << puckFlow << ',' << outletVolumeFlow
+                  << ',' << machineInnerFlow << ',' << innerOutletFlow
+                  << ',' << machineOuterFlow << ',' << outerOutletFlow
+                  << ',' << totalFluxRelativeDifference
+                  << ',' << innerFluxRelativeDifference
+                  << ',' << outerFluxRelativeDifference
+                  << ',' << (radialTwoZone && saturatedAtStepStart ? 1 : 0)
+                  << ',' << basketOperatingIterations
+                  << ',' << basketOperatingResidual
+                  << ',' << (basketOperatingBracketed ? 1 : 0)
+                  << ',' << (basketOperatingConverged ? 1 : 0);
             if (effectivePermeabilityEnabled)
             {
                 trace << ',' << (saturatedAtStepStart ? 1 : 0)

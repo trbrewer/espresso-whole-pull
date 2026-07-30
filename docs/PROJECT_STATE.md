@@ -3,7 +3,7 @@
 - Current released version: `v0.2.0`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 160/160 PASS (WP02-003 development branch)
+- Public source verification: 169/169 PASS (WP02-004 development branch)
 - Published v0.2.0 source verification: 131/131 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
@@ -32,6 +32,15 @@ path, and adds explicit R0, WP02-002 MC-2, WP02-002 MC-5, and
 coupling-disabled predecessor gates. All corrected adjudication gates pass;
 the identified source-closure inconsistency does not change the implemented
 ceramics equation.
+
+WP02-004 adds an optional saturated-only static radial two-zone permeability
+profile. Exact parallel Darcy and Darcy–Forchheimer fixtures, nested machine
+operating-point roots, matched-conductance full shots, zone-resolved flow and
+extraction accounting, timestep refinement, and 256/512/1024-cell radial
+refinement pass. Matched bulk Darcy flow conceals substantial synthetic
+spatial extraction maldistribution. This is a numerical verification and
+synthetic mechanism diagnostic, not physical validation or dynamic channel
+growth.
 
 WP01R-001 dependency review is complete. Puckworks is locked to reviewed
 `main` snapshot `fc61c4670ec7bf801e40bb391aab16048b8da26b` with recommendation

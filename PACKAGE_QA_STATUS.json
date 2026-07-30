@@ -1,7 +1,7 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "WP02-003_RESULT_ADJUDICATION_CORRECTION",
+  "current_governance_milestone": "WP02-004_RADIAL_HETEROGENEITY",
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
     "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION"
@@ -26,10 +26,10 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 214,
+    "python_test_count": 220,
     "static_gate_count": 34,
-    "source_manifest_file_count": 160,
-    "source_manifest_aggregate_sha256": "903a8584f6fbd41e597b5ae324e6d339b2d430ecb9464cac0705cb02219cc7d6",
+    "source_manifest_file_count": 169,
+    "source_manifest_aggregate_sha256": "eba41449bfca4fe2faa5dbc00f84ad8d0a97abf789aebc77abe2031508f1adb4",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -48,6 +48,17 @@
     "wp02_002_mc2_regression": "PASS",
     "wp02_002_mc5_regression": "PASS",
     "wp02_coupling_disabled_regression": "PASS",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "wp02_004_radial_heterogeneity": {
+    "disposition": "SOLVER_BEARING_WORK_PACKAGE_COMPLETE_PR_OPEN",
+    "profile": "radial_two_zone",
+    "matched_conductance": "PASS",
+    "parallel_path_references": "PASS",
+    "machine_operating_point": "PASS",
+    "zone_flow_transport_extraction_accounting": "PASS",
+    "timestep_refinement": "PASS",
+    "radial_mesh_refinement": "PASS",
     "physical_validation": "NOT_ESTABLISHED"
   },
   "wp_0_3b_amendment_state": {

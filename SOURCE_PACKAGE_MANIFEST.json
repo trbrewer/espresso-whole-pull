@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 160,
-  "total_uncompressed_bytes_excluding_manifest": 1516616,
-  "aggregate_source_sha256": "903a8584f6fbd41e597b5ae324e6d339b2d430ecb9464cac0705cb02219cc7d6",
-  "aggregate_sha256": "903a8584f6fbd41e597b5ae324e6d339b2d430ecb9464cac0705cb02219cc7d6",
+  "file_count": 169,
+  "total_uncompressed_bytes_excluding_manifest": 1590723,
+  "aggregate_source_sha256": "eba41449bfca4fe2faa5dbc00f84ad8d0a97abf789aebc77abe2031508f1adb4",
+  "aggregate_sha256": "eba41449bfca4fe2faa5dbc00f84ad8d0a97abf789aebc77abe2031508f1adb4",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -463,6 +463,11 @@
       "bytes": 7131,
       "git_mode": "100644"
     },
+    "docs/reports/WP02_004_RADIAL_HETEROGENEITY_RESULTS.md": {
+      "sha256": "bc9c59aa76d2f0fc462ff2bca93366ef616889694b37a493e51091a06f042c3c",
+      "bytes": 6836,
+      "git_mode": "100644"
+    },
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": {
       "sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
       "bytes": 109397,
@@ -496,6 +501,11 @@
     "scripts/analyze_wp02_003_darcy_forchheimer.py": {
       "sha256": "ae7c1db11cf6c8ca3fa4751f8dbeb964f3b5fe545cfa2db5d060ae6d1af7bfc4",
       "bytes": 28145,
+      "git_mode": "100755"
+    },
+    "scripts/analyze_wp02_004_radial_heterogeneity.py": {
+      "sha256": "be0e585ae0b911b13f157e009cc5afd80dde46d554d286dca94a17921b7df299",
+      "bytes": 17601,
       "git_mode": "100755"
     },
     "scripts/artifact_utils.py": {
@@ -564,13 +574,18 @@
       "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
-      "sha256": "46e757c4c476b9f097ea6ec824c1eb72520b560e3cc80ffb21ab7fa7efa21906",
-      "bytes": 45053,
+      "sha256": "e42104723e4df584118abaceb1fb0fc444f50964258c2c7a27084f70c70f3123",
+      "bytes": 47505,
       "git_mode": "100755"
     },
     "scripts/r1_contract_bridge.py": {
       "sha256": "811eaf4fd30082a3bd99a90579f6409a32e602a9057e5a59e57e179fd4ce4aec",
       "bytes": 27702,
+      "git_mode": "100755"
+    },
+    "scripts/radial_heterogeneity_reference.py": {
+      "sha256": "4b2df9ea9572c4e54725005d647ed1b4a7e0fc4e1c3e9f09989884755e096310",
+      "bytes": 5476,
       "git_mode": "100755"
     },
     "scripts/run_qualification.py": {
@@ -606,6 +621,16 @@
     "scripts/run_wp02_003_zero_inertia_fixture.sh": {
       "sha256": "d20e74c3d9b35a93a99c9fc3aa02ece1c836404034da0765baa886f7565bb0ef",
       "bytes": 433,
+      "git_mode": "100755"
+    },
+    "scripts/run_wp02_004_production_fixture.sh": {
+      "sha256": "9a645893a032ba67790cd64ed6f3432d4d3980f4028e0bf9744ef74679e5ba5a",
+      "bytes": 321,
+      "git_mode": "100755"
+    },
+    "scripts/run_wp02_004_radial_heterogeneity.sh": {
+      "sha256": "35461f4ca458723edb10013ad40ac368a5b922c25fa02371797f0a507018550c",
+      "bytes": 6722,
       "git_mode": "100755"
     },
     "scripts/run_wp02_uniform_fixture.sh": {
@@ -679,8 +704,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_wp03c_stage0_scaffold.py": {
-      "sha256": "35ac50a65269ca87929793cf474c1c2d2980604a4fd134e2c2fae089456e625f",
-      "bytes": 26901,
+      "sha256": "a135ab4716b794990d3c4d972413193a502abcbe996f756e7182c6c05dacc4f3",
+      "bytes": 28599,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
@@ -734,8 +759,8 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "f3e6b7246ee198258c296194b1d0c594987d8585595f1d9eddbb74c16de85690",
-      "bytes": 78600,
+      "sha256": "477916252fbf52e5bd4146e8179910f3f9046253083ab3218e54b191726b9633",
+      "bytes": 98170,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/forchheimerResistance.H": {
@@ -744,8 +769,8 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/machineBoundaryModel.H": {
-      "sha256": "dfa92167f7fefc0cf3ae1e6b64fe5195e8175e6bd5582215965eb3f54a41c301",
-      "bytes": 6598,
+      "sha256": "b5763058b81e42711318cf5de137a5fb307d4c9cc49aac0a0da5e1572d5e3e19",
+      "bytes": 10716,
       "git_mode": "100644"
     },
     "tests/fixtures/wp02_003_zero_inertia/Make/files": {
@@ -761,6 +786,21 @@
     "tests/fixtures/wp02_003_zero_inertia/wp02_003_zero_inertia_fixture.C": {
       "sha256": "806fd83e06be8b0a9c86db9a18216852ed82ab16d460c37220b7a4f73a08b580",
       "bytes": 4604,
+      "git_mode": "100644"
+    },
+    "tests/fixtures/wp02_004_radial/Make/files": {
+      "sha256": "1492a9d37203fc26193efa4d03f30cf6d3933bf02a0657426c14be35d3fec2b7",
+      "bytes": 74,
+      "git_mode": "100644"
+    },
+    "tests/fixtures/wp02_004_radial/Make/options": {
+      "sha256": "fdb057c30fad948f2dd4a50724f6e4ed4ccb91c44ed201a4596c9c1938d44f08",
+      "bytes": 73,
+      "git_mode": "100644"
+    },
+    "tests/fixtures/wp02_004_radial/wp02_004_radial_fixture.C": {
+      "sha256": "c3fe7bacea9ec47abad90340d3f936f084b28c457ef630161dbbe7ffd27160aa",
+      "bytes": 4387,
       "git_mode": "100644"
     },
     "tests/test_change_contract.py": {
@@ -791,6 +831,11 @@
     "tests/test_wp02_003_darcy_forchheimer.py": {
       "sha256": "dd29362c9b807eab0351b64f4c16482e70c2a9bab392a74c4202ef8003d1ebd6",
       "bytes": 8295,
+      "git_mode": "100644"
+    },
+    "tests/test_wp02_004_radial_heterogeneity.py": {
+      "sha256": "3e6586aede1839bb2f6e2eb05abb554145cbab9c2a7ea5d7e377559cc6708257",
+      "bytes": 4779,
       "git_mode": "100644"
     },
     "tests/test_wp02_effective_permeability.py": {

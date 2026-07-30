@@ -1,0 +1,30 @@
+{
+  "schema_version": "espresso.public.wp02_004.field_index.v1",
+  "selection": "Final 30 s processor-field checksum aggregates for the primary prescribed-pressure Darcy and machine-coupled Wadsworth cases; raw fields retained outside Git.",
+  "checksum_method": "lexicographically sorted per-file sha256sum records, then SHA-256 of those records",
+  "cases": {
+    "RH-2": {
+      "time_s": 30.0,
+      "processor_count": 32,
+      "fields": {
+        "permeability": "8f00f0bc75a40281679a94d83033542eca339ae3d1a6c0888e03be819e6091d9",
+        "permeabilityZoneId": "510ef16dd5431331a38ace1dce1b77738616e6671293a139154f6193eca77215",
+        "dissolvedConcentration": "e35894d95b5ad7b9af5b02da75a13b212a959b83fc7d9e659b59cf6eff521c84",
+        "remainingExtractable": "3b3a28463913349129b8fe17773a963ae9cfb2a00e7daeceeaf21132ef6853af",
+        "U": "b8f8bc5057f2e0afcf6095bcb10f2f3259a51943c450bbd6d59e092b24ce5fba"
+      }
+    },
+    "RH-8": {
+      "time_s": 30.0,
+      "processor_count": 32,
+      "fields": {
+        "permeability": "f2de67ff7266737345e056c72864be95285242d6a80f891f19e3234654fa261f",
+        "permeabilityZoneId": "9cd5db1e3d6d583f867bef5eec1fe979e09228a08729570f4d246a31379312e7",
+        "dissolvedConcentration": "1e2adefb3e5b50c19a67f16b4ce3be93a4f97be7b33df208605f8f6373bd6c71",
+        "remainingExtractable": "64b6c49fb24ffe6982089a81ceb0ec539fedccd97c54f7c010fc87681cc05396",
+        "U": "02a9b2b1a8f6bc76d4452a475708eabc2a95f9809ec44763a79a33a6aeb366c6"
+      }
+    }
+  },
+  "physical_validation": "NOT_ESTABLISHED"
+}
