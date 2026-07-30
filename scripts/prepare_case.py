@@ -368,6 +368,69 @@ machineBoundary
 '''
     elif pressure_boundary_model != "prescribedPressure":
         raise SystemExit("unsupported pressureBoundaryModel")
+    mechanics_model = scenario.get("bedMechanicsModel", "none")
+    mechanics_dictionary = "bedMechanicsModel none;\n"
+    if mechanics_model == "waszkiewiczQuasiStaticCompaction":
+        compaction = scenario.get("poroelasticCompaction")
+        required_compaction = {
+            "model", "stressFreePorosity", "criticalCompactionPressurePa",
+            "stressFreePermeabilityM2", "nonlinearRelativeTolerance",
+            "nonlinearAbsoluteTolerance", "nonlinearMaximumIterations",
+            "nonlinearUnderRelaxation", "machineFluxRelativeTolerance",
+        }
+        if not isinstance(compaction, dict) or set(compaction) != required_compaction:
+            raise SystemExit("invalid poroelasticCompaction dictionary")
+        if compaction["model"] != "waszkiewicz2025FinitePhi":
+            raise SystemExit("unsupported poroelastic compaction model")
+        maximum = compaction["nonlinearMaximumIterations"]
+        if isinstance(maximum, bool) or not isinstance(maximum, int) or maximum < 1:
+            raise SystemExit("invalid poroelastic nonlinearMaximumIterations")
+        values = {
+            key: float(compaction[key]) for key in required_compaction
+            if key not in {"model", "nonlinearMaximumIterations"}
+        }
+        if any(not math.isfinite(value) for value in values.values()):
+            raise SystemExit("poroelastic compaction values must be finite")
+        phi = values["stressFreePorosity"]
+        pc = values["criticalCompactionPressurePa"]
+        relaxation = values["nonlinearUnderRelaxation"]
+        if (
+            not 0.0 < phi < 1.0 or pc <= 0.0
+            or values["stressFreePermeabilityM2"] <= 0.0
+            or values["nonlinearRelativeTolerance"] <= 0.0
+            or values["nonlinearAbsoluteTolerance"] <= 0.0
+            or not 0.0 < relaxation <= 1.0
+            or values["machineFluxRelativeTolerance"] <= 0.0
+        ):
+            raise SystemExit("poroelastic compaction values outside domain")
+        if profile_type != "uniform" or flow_model != "darcy" or closure is not None:
+            raise SystemExit(
+                "compaction requires uniform Darcy with effective permeability disabled"
+            )
+        maximum_drop = (
+            float(scenario["machineBoundary"]["shutoffPressure"])
+            if pressure_boundary_model == "lumpedMachineCompliance"
+            else float(hydraulic["target_inlet_pressure_gauge_Pa"])
+        ) - float(hydraulic["outlet_pressure_gauge_Pa"])
+        if not 0.0 <= maximum_drop < pc:
+            raise SystemExit("maximum pressure drop must be below critical pressure")
+        mechanics_dictionary = f'''
+bedMechanicsModel waszkiewiczQuasiStaticCompaction;
+poroelasticCompaction
+{{
+    model waszkiewicz2025FinitePhi;
+    stressFreePorosity {phi:.16g};
+    criticalCompactionPressurePa {pc:.16g};
+    stressFreePermeabilityM2 {values["stressFreePermeabilityM2"]:.16g};
+    nonlinearRelativeTolerance {values["nonlinearRelativeTolerance"]:.16g};
+    nonlinearAbsoluteTolerance {values["nonlinearAbsoluteTolerance"]:.16g};
+    nonlinearMaximumIterations {maximum};
+    nonlinearUnderRelaxation {relaxation:.16g};
+    machineFluxRelativeTolerance {values["machineFluxRelativeTolerance"]:.16g};
+}}
+'''
+    elif mechanics_model != "none":
+        raise SystemExit("unsupported bedMechanicsModel")
     closure_dictionary = ""
     if closure is not None:
         source = closure["source_parameters"]
@@ -449,6 +512,7 @@ saturationConcentration    {float(extraction['saturation_concentration_kg_m3']):
 
 targetBeverageMass         {float(time_cfg['target_beverage_mass_kg']):.16g};
 {machine_dictionary}
+{mechanics_dictionary}
 {closure_dictionary}
 '''
 
@@ -977,7 +1041,11 @@ def main() -> None:
         case = resolve_path(root, args.case_dir, REFERENCE_CASE_RELATIVE)
 
     ensure_case_template(root, case)
-    if scenario.get("flowResistanceModel") == "darcyForchheimer":
+    if (
+        scenario.get("flowResistanceModel") == "darcyForchheimer"
+        or scenario.get("bedMechanicsModel")
+            == "waszkiewiczQuasiStaticCompaction"
+    ):
         schemes_path = case / "system/fvSchemes"
         schemes = schemes_path.read_text(encoding="utf-8")
         marker = "laplacianSchemes\n{\n"

@@ -3,7 +3,7 @@
 - Current released version: `v0.2.0`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 169/169 PASS (WP02-004 development branch)
+- Public source verification: 179/179 PASS (WP03-001 development branch)
 - Published v0.2.0 source verification: 131/131 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
@@ -46,6 +46,15 @@ inventories and uniform-profile symmetry, makes combined traces
 self-identifying, and requires finite monotonic traces to reach their
 configured end time. All corrected gates pass without changing aggregate
 radial-case hydraulic or cup results.
+
+WP03-001 adds an optional saturated-only finite-porosity quasi-static
+compaction branch. Exact constitutive, scalar pressure-flow, source
+reconstruction, 5/9/11-bar field, rigid-limit, matched-reference, nested
+machine, timestep, axial-mesh, bounded-state, and conservation gates pass.
+Mechanical porosity changes hydraulic permeability but remains deliberately
+uncoupled from transport storage on the fixed reference mesh. The
+source-linked and R0-compatibility results are numerical mechanism
+diagnostics, not physical validation or a complete transient Biot model.
 
 WP01R-001 dependency review is complete. Puckworks is locked to reviewed
 `main` snapshot `fc61c4670ec7bf801e40bb391aab16048b8da26b` with recommendation

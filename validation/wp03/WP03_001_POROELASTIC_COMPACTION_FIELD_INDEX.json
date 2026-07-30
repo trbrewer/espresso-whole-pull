@@ -1,0 +1,56 @@
+{
+  "schema_version": "espresso.public.wp03_001.field_index.v1",
+  "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
+  "entries": [
+    {
+      "case_id": "PROFILE-11BAR",
+      "time_s": 0.02,
+      "mesh": {"axial_cells": 8192, "radial_cells": 32},
+      "field": "effectiveMatrixStress",
+      "sha256": "5607e305b27164b18b21464455aaffaca692fe8d89be985a9689b3fe5199cec7"
+    },
+    {
+      "case_id": "PROFILE-11BAR",
+      "time_s": 0.02,
+      "mesh": {"axial_cells": 8192, "radial_cells": 32},
+      "field": "mechanicalPorosity",
+      "sha256": "786f7f71efc9781fa31f0eb7a205177ec17aa0bab59ceaa89668717eb8617155"
+    },
+    {
+      "case_id": "PROFILE-11BAR",
+      "time_s": 0.02,
+      "mesh": {"axial_cells": 8192, "radial_cells": 32},
+      "field": "permeability",
+      "sha256": "733c56dd727dc6a28888c0fbc70d43ed08fdbce2d02b95d098ce30026e29816a"
+    },
+    {
+      "case_id": "PROFILE-11BAR",
+      "time_s": 0.02,
+      "mesh": {"axial_cells": 8192, "radial_cells": 32},
+      "field": "compactionStrain",
+      "sha256": "1a34b43aed6bf320c6c2bd95e7bc6765543235d2eb3fdd1341a08d48b9cb5dcd"
+    },
+    {
+      "case_id": "PE-7",
+      "time_s": 30.0,
+      "mpi_rank": 0,
+      "field": "effectiveMatrixStress",
+      "sha256": "090fc68d5f2b26ac23fd31c9f523356ccc6353ba87eeb3eea3f0fbc43a545c83"
+    },
+    {
+      "case_id": "PE-7",
+      "time_s": 30.0,
+      "mpi_rank": 0,
+      "field": "mechanicalPorosity",
+      "sha256": "de0f44afbe08578d48c6f138355dd97675f8bada59cf0327739b1b97c25c2c38"
+    },
+    {
+      "case_id": "PE-7",
+      "time_s": 30.0,
+      "mpi_rank": 0,
+      "field": "permeability",
+      "sha256": "57f92bd9cf0c9935b4174cf4f58e315ce4ffd2998f607d8af47bd91695609b72"
+    }
+  ],
+  "retention_note": "Selected field identities only; full time and processor directories are not retained."
+}

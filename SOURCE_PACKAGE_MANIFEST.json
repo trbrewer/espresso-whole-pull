@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 169,
-  "total_uncompressed_bytes_excluding_manifest": 1603775,
-  "aggregate_source_sha256": "da09c6e18526bc62395a901045c65ee023829fa6c4a9979c5ffe89f4204c09be",
-  "aggregate_sha256": "da09c6e18526bc62395a901045c65ee023829fa6c4a9979c5ffe89f4204c09be",
+  "file_count": 179,
+  "total_uncompressed_bytes_excluding_manifest": 1709663,
+  "aggregate_source_sha256": "e756c82016f57d0c2bfaf06aa3dbbd9c446f669bc63dcd45810db705c2d502e8",
+  "aggregate_sha256": "e756c82016f57d0c2bfaf06aa3dbbd9c446f669bc63dcd45810db705c2d502e8",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -468,6 +468,11 @@
       "bytes": 7782,
       "git_mode": "100644"
     },
+    "docs/reports/WP03_001_POROELASTIC_COMPACTION_RESULTS.md": {
+      "sha256": "b4c5696adf4100ed6afb84ae811e77fd4aee8a88699b948aaab219b98661cd11",
+      "bytes": 7186,
+      "git_mode": "100644"
+    },
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": {
       "sha256": "587cafc008a6c4317dc798dfe54228b89515dc3c7ee5ee9cc5280e80b289ba59",
       "bytes": 109397,
@@ -506,6 +511,11 @@
     "scripts/analyze_wp02_004_radial_heterogeneity.py": {
       "sha256": "84f31ef3b816c27c1b3824bc57038011f66ba63a949027f928689e253f5651e1",
       "bytes": 27289,
+      "git_mode": "100755"
+    },
+    "scripts/analyze_wp03_001_poroelastic_compaction.py": {
+      "sha256": "36483eed2fd435a1487b481c5cc2796ab7d8cc4bc87c82f601fe0c4e3f53fa24",
+      "bytes": 28987,
       "git_mode": "100755"
     },
     "scripts/artifact_utils.py": {
@@ -563,6 +573,11 @@
       "bytes": 3883,
       "git_mode": "100755"
     },
+    "scripts/poroelastic_compaction_reference.py": {
+      "sha256": "1ab8f13b6e7d7aa0698156e16257d0ec668814ac920a83ae0cf52a09e88703d9",
+      "bytes": 5380,
+      "git_mode": "100755"
+    },
     "scripts/postprocess.py": {
       "sha256": "e0d8f0f4894918047eab3f813979aa1f185ff32ace95c4e0bb901625fbad461d",
       "bytes": 26662,
@@ -574,8 +589,8 @@
       "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
-      "sha256": "e42104723e4df584118abaceb1fb0fc444f50964258c2c7a27084f70c70f3123",
-      "bytes": 47505,
+      "sha256": "5786979098fdcbab4a59ea2824619f52569c7fa68c575ddcb9fb1e237133277c",
+      "bytes": 50971,
       "git_mode": "100755"
     },
     "scripts/r1_contract_bridge.py": {
@@ -636,6 +651,16 @@
     "scripts/run_wp02_uniform_fixture.sh": {
       "sha256": "e22bbe10d190fd968af0cf75dd4a55d42e9098f2274bbaeb48249fd67cde5c54",
       "bytes": 733,
+      "git_mode": "100755"
+    },
+    "scripts/run_wp03_001_poroelastic_compaction.sh": {
+      "sha256": "26ab704447a22b1b34a39a481fd2b09b879f6c1368483f91eb24bf2900ee3b64",
+      "bytes": 7857,
+      "git_mode": "100755"
+    },
+    "scripts/run_wp03_001_production_fixture.sh": {
+      "sha256": "9893a273308bba8cbc4da34246c01ea0dbd99a912c901496110a212f1a5fa467",
+      "bytes": 274,
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
@@ -704,8 +729,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_wp03c_stage0_scaffold.py": {
-      "sha256": "a135ab4716b794990d3c4d972413193a502abcbe996f756e7182c6c05dacc4f3",
-      "bytes": 28599,
+      "sha256": "f10eb4ca5984d7c02c2899f82afb8cf4fe768fed1f15b0da73fa4fa39d07e26d",
+      "bytes": 30613,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
@@ -759,8 +784,8 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "e043a0648d9bf9054034c32487d5ccaacc6e12ef07bcfb7012d318ae47fb7291",
-      "bytes": 98356,
+      "sha256": "f209887f222e446354dba34a6658e23fab309d473f53377e9c6d42caaee26a4f",
+      "bytes": 126321,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/forchheimerResistance.H": {
@@ -769,8 +794,13 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/machineBoundaryModel.H": {
-      "sha256": "b5763058b81e42711318cf5de137a5fb307d4c9cc49aac0a0da5e1572d5e3e19",
-      "bytes": 10716,
+      "sha256": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719",
+      "bytes": 13877,
+      "git_mode": "100644"
+    },
+    "solver/espressoWholePullFoam/poroelasticCompaction.H": {
+      "sha256": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6",
+      "bytes": 4225,
       "git_mode": "100644"
     },
     "tests/fixtures/wp02_003_zero_inertia/Make/files": {
@@ -801,6 +831,21 @@
     "tests/fixtures/wp02_004_radial/wp02_004_radial_fixture.C": {
       "sha256": "c3fe7bacea9ec47abad90340d3f936f084b28c457ef630161dbbe7ffd27160aa",
       "bytes": 4387,
+      "git_mode": "100644"
+    },
+    "tests/fixtures/wp03_001_poroelastic/Make/files": {
+      "sha256": "33bb5261ee169a3c79aa6f87053aad6cadc08e0553a3b821f8dcd1b2bd91ecdb",
+      "bytes": 84,
+      "git_mode": "100644"
+    },
+    "tests/fixtures/wp03_001_poroelastic/Make/options": {
+      "sha256": "fdb057c30fad948f2dd4a50724f6e4ed4ccb91c44ed201a4596c9c1938d44f08",
+      "bytes": 73,
+      "git_mode": "100644"
+    },
+    "tests/fixtures/wp03_001_poroelastic/wp03_001_poroelastic_fixture.C": {
+      "sha256": "3d57412406a5c053b8c6c09d293762a74058f063fd58300467bdf0bdf3806345",
+      "bytes": 5817,
       "git_mode": "100644"
     },
     "tests/test_change_contract.py": {
@@ -841,6 +886,11 @@
     "tests/test_wp02_effective_permeability.py": {
       "sha256": "9fe8d908cadea44564d77da9154b3fbc415c33920fc70018623544f3d5fda447",
       "bytes": 21054,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03_001_poroelastic_compaction.py": {
+      "sha256": "58f2991ca69c551b0161aa9984e86e539b4f709a3b16d4bdac3b5ff7ccf68503",
+      "bytes": 9399,
       "git_mode": "100644"
     },
     "tests/test_wp03_holdout_contract.py": {
