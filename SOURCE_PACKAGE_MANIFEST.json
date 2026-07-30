@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 169,
-  "total_uncompressed_bytes_excluding_manifest": 1590723,
-  "aggregate_source_sha256": "eba41449bfca4fe2faa5dbc00f84ad8d0a97abf789aebc77abe2031508f1adb4",
-  "aggregate_sha256": "eba41449bfca4fe2faa5dbc00f84ad8d0a97abf789aebc77abe2031508f1adb4",
+  "total_uncompressed_bytes_excluding_manifest": 1603775,
+  "aggregate_source_sha256": "da09c6e18526bc62395a901045c65ee023829fa6c4a9979c5ffe89f4204c09be",
+  "aggregate_sha256": "da09c6e18526bc62395a901045c65ee023829fa6c4a9979c5ffe89f4204c09be",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -464,8 +464,8 @@
       "git_mode": "100644"
     },
     "docs/reports/WP02_004_RADIAL_HETEROGENEITY_RESULTS.md": {
-      "sha256": "bc9c59aa76d2f0fc462ff2bca93366ef616889694b37a493e51091a06f042c3c",
-      "bytes": 6836,
+      "sha256": "8527bb0c796727347c36bfc2681032d8101a64867d25cb8e9848b9e2081047fc",
+      "bytes": 7782,
       "git_mode": "100644"
     },
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": {
@@ -504,8 +504,8 @@
       "git_mode": "100755"
     },
     "scripts/analyze_wp02_004_radial_heterogeneity.py": {
-      "sha256": "be0e585ae0b911b13f157e009cc5afd80dde46d554d286dca94a17921b7df299",
-      "bytes": 17601,
+      "sha256": "84f31ef3b816c27c1b3824bc57038011f66ba63a949027f928689e253f5651e1",
+      "bytes": 27289,
       "git_mode": "100755"
     },
     "scripts/artifact_utils.py": {
@@ -759,8 +759,8 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "477916252fbf52e5bd4146e8179910f3f9046253083ab3218e54b191726b9633",
-      "bytes": 98170,
+      "sha256": "e043a0648d9bf9054034c32487d5ccaacc6e12ef07bcfb7012d318ae47fb7291",
+      "bytes": 98356,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/forchheimerResistance.H": {
@@ -834,8 +834,8 @@
       "git_mode": "100644"
     },
     "tests/test_wp02_004_radial_heterogeneity.py": {
-      "sha256": "3e6586aede1839bb2f6e2eb05abb554145cbab9c2a7ea5d7e377559cc6708257",
-      "bytes": 4779,
+      "sha256": "4b935e51b97b6f5ec4673a4073eedca3737b4c4d5cd6573c7854f35ce74318c7",
+      "bytes": 7011,
       "git_mode": "100644"
     },
     "tests/test_wp02_effective_permeability.py": {

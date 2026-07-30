@@ -40,7 +40,12 @@ extraction accounting, timestep refinement, and 256/512/1024-cell radial
 refinement pass. Matched bulk Darcy flow conceals substantial synthetic
 spatial extraction maldistribution. This is a numerical verification and
 synthetic mechanism diagnostic, not physical validation or dynamic channel
-growth.
+growth. The bounded diagnostic correction applies the geometric inner/outer
+split independently of permeability assignment, verifies complete zone
+inventories and uniform-profile symmetry, makes combined traces
+self-identifying, and requires finite monotonic traces to reach their
+configured end time. All corrected gates pass without changing aggregate
+radial-case hydraulic or cup results.
 
 WP01R-001 dependency review is complete. Puckworks is locked to reviewed
 `main` snapshot `fc61c4670ec7bf801e40bb391aab16048b8da26b` with recommendation

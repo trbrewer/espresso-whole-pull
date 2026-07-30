@@ -54,7 +54,15 @@ class FailClosedTests(unittest.TestCase):
             "machine_reference_max_error": 0.0,
             "conductance_identity_error": 0.0, "matched_total_flow_error": 0.0,
             "heterogeneous_flow_share_changed": True,
-            "machine_hydraulic_error": 0.0, "zone_conservation_error": 0.0,
+            "machine_hydraulic_error": 0.0,
+            "zone_flow_consistency_error": 0.0,
+            "zone_liquid_consistency_error": 0.0,
+            "zone_solute_consistency_error": 0.0,
+            "zone_volume_consistency_error": 0.0,
+            "zone_extractable_inventory_consistency_gate_ratio": 0.0,
+            "zone_retained_liquid_consistency_error": 0.0,
+            "uniform_zone_symmetry_error": 0.0,
+            "uniform_extraction_maldistribution_error": 0.0,
             "wetting_isolation_error": 0.0, "maximum_radial_velocity_ratio": 0.0,
             "maximum_total_flux_mismatch": 0.0,
             "maximum_zone_flux_mismatch": 0.0,
@@ -74,8 +82,17 @@ class FailClosedTests(unittest.TestCase):
             "zone_flow": ("darcy_fixture_max_error", 1),
             "matched_conductance": ("conductance_identity_error", 1),
             "machine_basket_pressure": ("machine_reference_max_error", 1),
-            "zone_liquid_sum": ("zone_conservation_error", 1),
-            "zone_solute_sum": ("zone_conservation_error", 1),
+            "all_cells_inner": ("uniform_zone_symmetry_error", 1),
+            "outer_initial_inventory":
+                ("zone_extractable_inventory_consistency_gate_ratio", 2),
+            "remaining_solids_sum":
+                ("zone_extractable_inventory_consistency_gate_ratio", 2),
+            "retained_liquid_sum":
+                ("zone_retained_liquid_consistency_error", 1),
+            "uniform_extraction_maldistribution":
+                ("uniform_extraction_maldistribution_error", 1),
+            "zone_liquid_sum": ("zone_liquid_consistency_error", 1),
+            "zone_solute_sum": ("zone_solute_consistency_error", 1),
             "first_drip": ("wetting_isolation_error", 1),
             "radial_velocity": ("maximum_radial_velocity_ratio", 1),
             "total_flux": ("maximum_total_flux_mismatch", 1),
@@ -93,6 +110,30 @@ class FailClosedTests(unittest.TestCase):
                 result = analysis.adjudicate({"gate_inputs": inputs})
                 self.assertFalse(result["all_gates_pass"])
                 self.assertEqual(result["disposition"], "NUMERICAL_FAILURE")
+                self.assertNotEqual(analysis.result_exit_code(result), 0)
+
+    def test_truncated_trace_fails_completion_and_adjudication(self):
+        config = {"time": {"end_s": 30.0, "field_write_interval_s": 1.0}}
+        row = {
+            "time_s": "1.0", "cup_beverage_mass_kg": "0",
+            "cumulative_tds_mass_fraction": "0",
+            "extraction_yield_mass_fraction": "0",
+            "remaining_extractable_mass_kg": "0.0056",
+            "stored_water_mass_kg": "0", "innerInitialExtractableKg": "0.0014",
+            "outerInitialExtractableKg": "0.0042",
+            "innerRemainingExtractableKg": "0.0014",
+            "outerRemainingExtractableKg": "0.0042",
+            "innerRetainedLiquidKg": "0", "outerRetainedLiquidKg": "0",
+            "couplingConverged": "1", "couplingBracketed": "1",
+            "couplingFallbackUsed": "0", "nonlinearConverged": "1",
+        }
+        self.assertFalse(analysis.completion([row], config)["passed"])
+        inputs = self.passing()
+        inputs["all_cases_complete"] = False
+        result = analysis.adjudicate({"gate_inputs": inputs})
+        self.assertEqual(result["gates"]["case_completion"], "FAIL")
+        self.assertEqual(result["disposition"], "NUMERICAL_FAILURE")
+        self.assertNotEqual(analysis.result_exit_code(result), 0)
 
 
 if __name__ == "__main__":

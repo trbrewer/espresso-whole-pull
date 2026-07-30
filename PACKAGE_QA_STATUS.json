@@ -26,10 +26,10 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 220,
+    "python_test_count": 221,
     "static_gate_count": 34,
     "source_manifest_file_count": 169,
-    "source_manifest_aggregate_sha256": "eba41449bfca4fe2faa5dbc00f84ad8d0a97abf789aebc77abe2031508f1adb4",
+    "source_manifest_aggregate_sha256": "da09c6e18526bc62395a901045c65ee023829fa6c4a9979c5ffe89f4204c09be",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -51,12 +51,14 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "wp02_004_radial_heterogeneity": {
-    "disposition": "SOLVER_BEARING_WORK_PACKAGE_COMPLETE_PR_OPEN",
+    "disposition": "ZONE_DIAGNOSTIC_CORRECTION_COMPLETE_PR_READY_FOR_MERGE",
     "profile": "radial_two_zone",
     "matched_conductance": "PASS",
     "parallel_path_references": "PASS",
     "machine_operating_point": "PASS",
     "zone_flow_transport_extraction_accounting": "PASS",
+    "uniform_zone_symmetry": "PASS",
+    "case_completion": "PASS",
     "timestep_refinement": "PASS",
     "radial_mesh_refinement": "PASS",
     "physical_validation": "NOT_ESTABLISHED"

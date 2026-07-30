@@ -2,12 +2,14 @@
 
 ## Disposition and physics
 
-`SOLVER_BEARING_WORK_PACKAGE_COMPLETE_PR_OPEN`.
+`ZONE_DIAGNOSTIC_CORRECTION_COMPLETE_PR_READY_FOR_MERGE`.
 
-The optional `radial_two_zone` profile classifies cells and outlet faces by
-`sqrt(y^2+z^2) < interfaceRadiusM` (inner; equality is outer). It is active
-only after saturation. The existing scalar sharp-front wetting branch,
-transition treatment, and first-drip event remain unchanged.
+Cells and outlet faces are classified for diagnostics by
+`sqrt(y^2+z^2) < interfaceRadiusM` (inner; equality is outer) for every
+permeability profile. Permeability assignment remains profile-specific, and
+the optional `radial_two_zone` permeability is active only after saturation.
+The existing scalar sharp-front wetting branch, transition treatment, and
+first-drip event remain unchanged.
 
 Each saturated zone is an exact parallel hydraulic path. Darcy paths use
 `R_D=mu L/(A k)`; Darcy–Forchheimer paths additionally use
@@ -26,7 +28,7 @@ Contrasts 4 and 16 were constructed before execution so
 ## Verification
 
 Foundation OpenFOAM 12 built and executed the solver. Executable SHA-256:
-`6b2844328d33a630499d72fa00c7207025f73313a05779221a147483eb889200`.
+`e0c80da234f3229af6457e5f48700d252342c2b728b3644977142fcb1d1d555e`.
 
 | Gate quantity | Maximum error/result |
 |---|---:|
@@ -38,7 +40,14 @@ Foundation OpenFOAM 12 built and executed the solver. Executable SHA-256:
 | matched conductance | `1.11e-16` |
 | matched total flow | `6.71e-15` |
 | machine matched hydraulics | `4.78e-13` |
-| zone liquid/solute conservation | `8.54e-15` |
+| zone flow consistency | `8.12e-15` |
+| zone cumulative-liquid consistency | `2.74e-14` |
+| zone solute consistency | `8.54e-15` |
+| zone volume consistency | `2.56e-15` |
+| zone extractable-inventory gate ratio | `5.45e-2` |
+| zone retained-liquid consistency | `9.44e-15` |
+| uniform zone symmetry | `1.31e-11` |
+| uniform extraction-maldistribution absolute error | `1.35e-10` |
 | wetting isolation | `0` |
 | maximum radial/axial velocity ratio | `7.40e-10` |
 | total machine/field mismatch | `1.30e-11` |
@@ -48,6 +57,13 @@ Foundation OpenFOAM 12 built and executed the solver. Executable SHA-256:
 | maximum water residual | `1.92e-14 kg` |
 | maximum solute residual | `1.13e-11 kg` |
 | nonlinear failures / bracket failures / fallbacks | `0 / 0 / 0` |
+| complete cases | `18 / 18` |
+
+Near-zero extraction maldistribution uses a predeclared `1e-9` absolute
+tolerance. Extracted-inventory sums use `1e-10` relative error once total
+extracted mass is at least `1e-6 kg`, and the existing `1e-10 kg` absolute
+conservation tolerance below that scale. The combined trace is self-identifying
+by case, run class, configured end time, timestep, and radial cell count.
 
 The radial meshes used 256, 512, and 1024 radial cells with 256 axial cells
 (131,072; 262,144; and 524,288 total cells) on 32 MPI ranks. The first
@@ -63,15 +79,15 @@ All cases used 32 MPI ranks and `dt=0.02 s`.
 
 | Case | pressure / flow / profile | high zone, contrast | mean flow (mL/s) | inner / outer flow | M_Q / A_eff | first drip (s) | cup (g) | TDS | EY | inner / outer extraction | M_E | runtime / RSS |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| RH-0 | prescribed / Darcy / uniform | — | 1.48268 | .250 / .750 | 0 / 1.000 | 4.71170 | 40.9579 | 11.689% | 23.938% | — | — | 5.46 s / 66,904 kB |
-| RH-1 | prescribed / Darcy / equal radial | none, 1 | 1.48268 | .250 / .750 | 0 / 1.000 | 4.71170 | 40.9579 | 11.689% | 23.938% | .889 / .889 | 0 | 5.07 s / 66,848 kB |
-| RH-2 | prescribed / Darcy / radial | core, 4 | 1.48268 | .571 / .429 | .321 / .645 | 4.71170 | 40.1289 | 9.865% | 19.793% | .960 / .728 | .055 | 4.97 s / 66,824 kB |
-| RH-3 | prescribed / Darcy / radial | annulus, 4 | 1.48268 | .077 / .923 | .173 / .862 | 4.71170 | 40.4276 | 10.531% | 21.287% | .539 / .920 | .087 | 5.00 s / 66,944 kB |
-| RH-4 | prescribed / Darcy / radial | core, 16 | 1.48268 | .842 / .158 | .592 / .348 | 4.71170 | 38.5133 | 6.084% | 11.715% | .969 / .464 | .161 | 5.28 s / 66,868 kB |
-| RH-5 | machine / Darcy / uniform | — | 1.17118 | .250 / .750 | 0 / 1.000 | 8.90055 | 27.6357 | 13.792% | 19.057% | — | — | 30.61 s / 66,884 kB |
-| RH-6 | machine / Darcy / radial | core, 4 | 1.17118 | .571 / .429 | .321 / .645 | 8.90055 | 26.8534 | 11.280% | 15.145% | .913 / .584 | .093 | 31.76 s / 66,860 kB |
-| RH-7 | machine / Darcy / radial | annulus, 4 | 1.17118 | .077 / .923 | .173 / .862 | 8.90055 | 27.3449 | 12.875% | 17.603% | .455 / .818 | .094 | 31.23 s / 66,904 kB |
-| RH-8 | machine / Forchheimer / radial | core, 4 | .80263 | .586 / .414 | .336 / .624 | 8.90055 | 18.6698 | 12.547% | 11.713% | .871 / .488 | .123 | 65.28 s / 66,932 kB |
+| RH-0 | prescribed / Darcy / uniform | — | 1.48268 | .250 / .750 | 0 / 1.000 | 4.71170 | 40.9579 | 11.689% | 23.938% | .889 / .889 | 2.86e-13 | 4.98 s / 67,872 kB |
+| RH-1 | prescribed / Darcy / equal radial | none, 1 | 1.48268 | .250 / .750 | 0 / 1.000 | 4.71170 | 40.9579 | 11.689% | 23.938% | .889 / .889 | 2.86e-13 | 5.23 s / 66,964 kB |
+| RH-2 | prescribed / Darcy / radial | core, 4 | 1.48268 | .571 / .429 | .321 / .645 | 4.71170 | 40.1289 | 9.865% | 19.793% | .960 / .728 | .055 | 5.14 s / 66,916 kB |
+| RH-3 | prescribed / Darcy / radial | annulus, 4 | 1.48268 | .077 / .923 | .173 / .862 | 4.71170 | 40.4276 | 10.531% | 21.287% | .539 / .920 | .087 | 5.10 s / 66,904 kB |
+| RH-4 | prescribed / Darcy / radial | core, 16 | 1.48268 | .842 / .158 | .592 / .348 | 4.71170 | 38.5133 | 6.084% | 11.715% | .969 / .464 | .161 | 5.23 s / 66,864 kB |
+| RH-5 | machine / Darcy / uniform | — | 1.17118 | .250 / .750 | 0 / 1.000 | 8.90055 | 27.6357 | 13.792% | 19.057% | .760 / .760 | 3.23e-12 | 30.41 s / 66,892 kB |
+| RH-6 | machine / Darcy / radial | core, 4 | 1.17118 | .571 / .429 | .321 / .645 | 8.90055 | 26.8534 | 11.280% | 15.145% | .913 / .584 | .093 | 31.62 s / 65,744 kB |
+| RH-7 | machine / Darcy / radial | annulus, 4 | 1.17118 | .077 / .923 | .173 / .862 | 8.90055 | 27.3449 | 12.875% | 17.603% | .455 / .818 | .094 | 30.94 s / 66,860 kB |
+| RH-8 | machine / Forchheimer / radial | core, 4 | .80263 | .586 / .414 | .336 / .624 | 8.90055 | 18.6698 | 12.547% | 11.713% | .871 / .488 | .123 | 64.15 s / 67,936 kB |
 
 ## Interpretation
 
@@ -90,8 +106,9 @@ effective hydraulic area falls to 34.8%; outer extraction is only 46.4%.
 Thus nearly identical total cup-water trajectories conceal large differences
 in local depletion, TDS, and aggregate extraction yield.
 
-The high-flow zone depletes first. Low-flow zones retain substantially more
-extractable material at 30 s. This agrees qualitatively with the locked
+The high-flow zone depletes faster and is more depleted at the end of the
+simulated shot. Low-flow zones retain substantially more extractable material
+at 30 s. This agrees qualitatively with the locked
 Puckworks static-streamtube mechanism expectation: mean-preserving parallel
 heterogeneity can leave bulk flow nearly unchanged while lowering finite-time
 aggregate extraction. It is a `CROSS_MODEL_MECHANISM_COMPARISON`, not

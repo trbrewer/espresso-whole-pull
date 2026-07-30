@@ -662,8 +662,7 @@ int main(int argc, char *argv[])
         (
             "permeabilityZoneId", runTime.name(), mesh,
             IOobject::NO_READ,
-            permeabilityProfile == "radial_two_zone"
-          ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+            IOobject::AUTO_WRITE
         ),
         mesh,
         dimensionedScalar("inner", dimless, 0.0)
@@ -899,6 +898,8 @@ int main(int argc, char *argv[])
         (
             sqr(mesh.C()[celli].y()) + sqr(mesh.C()[celli].z())
         );
+        const bool innerDiagnosticZone = radius < interfaceRadius;
+        permeabilityZoneId[celli] = innerDiagnosticZone ? 0.0 : 1.0;
         if (permeabilityProfile == "axial_two_layer")
         {
             permeability[celli] =
@@ -908,9 +909,8 @@ int main(int argc, char *argv[])
         }
         else if (radialTwoZone)
         {
-            const bool inner = radius < interfaceRadius;
-            permeability[celli] = inner ? innerPermeability : outerPermeability;
-            permeabilityZoneId[celli] = inner ? 0.0 : 1.0;
+            permeability[celli] =
+                innerDiagnosticZone ? innerPermeability : outerPermeability;
         }
         else
         {
@@ -1166,6 +1166,7 @@ int main(int argc, char *argv[])
               << "machineFluxRelativeDifference,"
               << "permeabilityProfile,interfaceRadiusM,innerAreaM2,"
               << "outerAreaM2,innerAreaFraction,outerAreaFraction,"
+              << "innerCellVolumeM3,outerCellVolumeM3,"
               << "innerPermeabilityM2,outerPermeabilityM2,"
               << "innerInertialPermeabilityM,outerInertialPermeabilityM,"
               << "innerOutletFlowM3s,outerOutletFlowM3s,innerFlowFraction,"
@@ -1173,7 +1174,8 @@ int main(int argc, char *argv[])
               << "hydraulicMaldistributionIndex,"
               << "effectiveHydraulicAreaFraction,innerCumulativeLiquidM3,"
               << "outerCumulativeLiquidM3,innerSoluteFluxKgS,"
-              << "outerSoluteFluxKgS,innerCumulativeSoluteKg,"
+              << "outerSoluteFluxKgS,totalSoluteFluxKgS,"
+              << "innerCumulativeSoluteKg,"
               << "outerCumulativeSoluteKg,innerInitialExtractableKg,"
               << "outerInitialExtractableKg,innerRemainingExtractableKg,"
               << "outerRemainingExtractableKg,innerExtractedSolidsKg,"
@@ -2484,6 +2486,7 @@ int main(int argc, char *argv[])
                   << ',' << interfaceRadius
                   << ',' << meshInnerArea << ',' << meshOuterArea
                   << ',' << innerAreaFraction << ',' << outerAreaFraction
+                  << ',' << innerCellVolume << ',' << outerCellVolume
                   << ',' << innerPermeability << ',' << outerPermeability
                   << ',' << (darcyForchheimer ? innerKI : 0.0)
                   << ',' << (darcyForchheimer ? outerKI : 0.0)
@@ -2495,6 +2498,7 @@ int main(int argc, char *argv[])
                   << ',' << innerCumulativeLiquid
                   << ',' << outerCumulativeLiquid
                   << ',' << innerSoluteRate << ',' << outerSoluteRate
+                  << ',' << outletSoluteRate
                   << ',' << innerCumulativeSolute
                   << ',' << outerCumulativeSolute
                   << ',' << innerInitialExtractableMass
