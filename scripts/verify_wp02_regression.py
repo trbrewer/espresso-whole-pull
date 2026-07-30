@@ -17,6 +17,22 @@ def main() -> int:
     parser.add_argument("--results", type=Path, required=True)
     args = parser.parse_args()
     data = json.loads(args.results.read_text(encoding="utf-8"))
+    if "regressions" in data:
+        regression = data["regressions"].get("WP02_coupling_disabled", {})
+        relative_error = regression.get("relative_error")
+        passed = (
+            regression.get("status") == "PASS"
+            and isinstance(relative_error, (int, float))
+            and relative_error <= 1e-8
+        )
+        print(json.dumps({
+            "schema_version":
+                "espresso.public.wp02_coupling_disabled_regression.v1",
+            "status": "PASS" if passed else "FAIL",
+            "relative_error": relative_error,
+            "accepted_artifact": args.results.as_posix(),
+        }, indent=2))
+        return 0 if passed else 1
     gates = data["verification"]
     required = (
         "source_formula_verification",

@@ -3,7 +3,7 @@
 - Current released version: `v0.2.0`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
-- Public source verification: 149/149 PASS (WP02-002 development branch)
+- Public source verification: 160/160 PASS (WP02-003 development branch)
 - Published v0.2.0 source verification: 131/131 PASS
 - Scientific inputs: 19/19 byte-identical to archival baseline
 - Frozen R0 scientific-configuration change: false
@@ -18,6 +18,20 @@
 - Physical validation: `NOT_ESTABLISHED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
+
+WP02-003 adds an optional, disabled-by-default saturated Darcy–Forchheimer
+branch with constant and fixed Wadsworth-2026 ceramics-fit inertial
+permeability models. Foundation OpenFOAM 12 scalar, uniform, layered, machine,
+Darcy-limit, nonlinear, conservation, flux-consistency, wetting-isolation, and
+full-shot refinement gates pass. The source-linked branch is a synthetic
+mechanism diagnostic applied to a permeability calibrated under Darcy
+assumptions; it is not an improved prediction or physical validation.
+The bounded result-evidence correction reconstructs the published Fo band
+under both candidate source closures, exercises the production zero-inertia
+path, and adds explicit R0, WP02-002 MC-2, WP02-002 MC-5, and
+coupling-disabled predecessor gates. All corrected adjudication gates pass;
+the identified source-closure inconsistency does not change the implemented
+ceramics equation.
 
 WP01R-001 dependency review is complete. Puckworks is locked to reviewed
 `main` snapshot `fc61c4670ec7bf801e40bb391aab16048b8da26b` with recommendation

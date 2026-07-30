@@ -1,7 +1,7 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "WP02-002",
+  "current_governance_milestone": "WP02-003_RESULT_ADJUDICATION_CORRECTION",
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
     "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION"
@@ -26,10 +26,10 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 206,
+    "python_test_count": 214,
     "static_gate_count": 34,
-    "source_manifest_file_count": 149,
-    "source_manifest_aggregate_sha256": "a22aed1f3f5984617e86daf60ec58f516b0c0fbe3ff5d59de0420a8bbdd8b59c",
+    "source_manifest_file_count": 160,
+    "source_manifest_aggregate_sha256": "903a8584f6fbd41e597b5ae324e6d339b2d430ecb9464cac0705cb02219cc7d6",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -39,6 +39,16 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS"
+  },
+  "wp02_003_result_adjudication_correction": {
+    "disposition": "RESULT_ADJUDICATION_CORRECTION_COMPLETE_PR_READY_FOR_MERGE",
+    "source_closure_reconstruction": "PASS",
+    "production_zero_inertia_path": "PASS",
+    "r0_regression": "PASS",
+    "wp02_002_mc2_regression": "PASS",
+    "wp02_002_mc5_regression": "PASS",
+    "wp02_coupling_disabled_regression": "PASS",
+    "physical_validation": "NOT_ESTABLISHED"
   },
   "wp_0_3b_amendment_state": {
     "original_result": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",

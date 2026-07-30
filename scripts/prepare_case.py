@@ -231,6 +231,49 @@ def render_properties(scenario: dict) -> str:
     pressure_boundary_model = scenario.get(
         "pressureBoundaryModel", "prescribedPressure"
     )
+    flow_model = scenario.get("flowResistanceModel", "darcy")
+    flow_dictionary = ""
+    if flow_model == "darcyForchheimer":
+        model = scenario.get("inertialPermeabilityModel")
+        if model not in {"constant", "wadsworth2026CeramicsFit"}:
+            raise SystemExit("unsupported inertialPermeabilityModel")
+        constant_ki = float(scenario.get("constantInertialPermeabilityM", 1.0))
+        controls = scenario.get("nonlinearControls", {})
+        rel = float(controls.get("nonlinearRelativeTolerance", 1e-10))
+        absolute = float(controls.get("nonlinearAbsoluteTolerance", 1e-12))
+        maximum = controls.get("nonlinearMaximumIterations", 80)
+        relaxation = float(controls.get("nonlinearUnderRelaxation", 0.7))
+        flux_tol = float(controls.get("machineFluxRelativeTolerance", 1e-6))
+        values = (constant_ki, rel, absolute, relaxation, flux_tol)
+        if (
+            any(not math.isfinite(value) or value <= 0 for value in values)
+            or isinstance(maximum, bool) or not isinstance(maximum, int)
+            or maximum < 1 or relaxation > 1
+            or (model == "constant" and constant_ki <= 0)
+        ):
+            raise SystemExit("invalid Darcy-Forchheimer controls")
+        profile_upstream_ki = float(
+            profile.get("upstream_inertial_permeability_m", constant_ki)
+        )
+        profile_downstream_ki = float(
+            profile.get("downstream_inertial_permeability_m", constant_ki)
+        )
+        flow_dictionary = f'''
+flowResistanceModel darcyForchheimer;
+inertialPermeabilityModel {model};
+constantInertialPermeabilityM {constant_ki:.16g};
+layerInertialPermeabilityUpstream {profile_upstream_ki:.16g};
+layerInertialPermeabilityDownstream {profile_downstream_ki:.16g};
+nonlinearRelativeTolerance {rel:.16g};
+nonlinearAbsoluteTolerance {absolute:.16g};
+nonlinearMaximumIterations {maximum};
+nonlinearUnderRelaxation {relaxation:.16g};
+machineFluxRelativeTolerance {flux_tol:.16g};
+'''
+    elif flow_model == "darcy":
+        flow_dictionary = "flowResistanceModel darcy;\n"
+    else:
+        raise SystemExit("unsupported flowResistanceModel")
     machine_dictionary = ""
     if pressure_boundary_model == "lumpedMachineCompliance":
         machine = scenario.get("machineBoundary")
@@ -329,6 +372,7 @@ inletPatch                 inlet;
 outletPatch                outlet;
 pressureIntegrationMethod  exactPiecewiseLinearIntegral;
 pressureBoundaryModel      {pressure_boundary_model};
+{flow_dictionary}
 
 // Geometry [SI]
 basketRadius               {float(geometry['basket_radius_m']):.16g};
@@ -899,6 +943,25 @@ def main() -> None:
         case = resolve_path(root, args.case_dir, REFERENCE_CASE_RELATIVE)
 
     ensure_case_template(root, case)
+    if scenario.get("flowResistanceModel") == "darcyForchheimer":
+        schemes_path = case / "system/fvSchemes"
+        schemes = schemes_path.read_text(encoding="utf-8")
+        marker = "laplacianSchemes\n{\n"
+        if marker not in schemes:
+            raise SystemExit("unexpected fvSchemes laplacian dictionary")
+        schemes = schemes.replace(
+            marker,
+            marker
+            + "    laplacian(nonlinearMobility,p) Gauss harmonic corrected;\n",
+            1,
+        )
+        schemes_path.write_text(schemes, encoding="utf-8")
+        solution_path = case / "system/fvSolution"
+        solution = solution_path.read_text(encoding="utf-8")
+        solution = solution.replace(
+            "tolerance       1e-12;", "tolerance       1e-14;", 1
+        )
+        solution_path.write_text(solution, encoding="utf-8")
     zero = case / "0"
     if zero.exists():
         shutil.rmtree(zero)

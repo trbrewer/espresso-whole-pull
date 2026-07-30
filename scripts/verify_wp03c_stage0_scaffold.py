@@ -59,6 +59,26 @@ EXPECTED_PATHS = frozenset({
     "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json",
     "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RUN_SPEC.json",
     "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_TRACE.csv",
+    # Exact later WP02-003 solver-bearing work-package paths. Stage-0 content
+    # remains frozen and independently checked; these paths are outside its
+    # original permitted-change contract.
+    "docs/reports/WP02_003_DARCY_FORCHHEIMER_RESULTS.md",
+    "scripts/analyze_wp02_003_darcy_forchheimer.py",
+    "scripts/forchheimer_reference.py",
+    "scripts/run_wp02_003_darcy_forchheimer.sh",
+    "scripts/run_wp02_003_predecessor_regressions.sh",
+    "scripts/run_wp02_003_zero_inertia_fixture.sh",
+    "scripts/verify_wp02_regression.py",
+    "solver/espressoWholePullFoam/forchheimerResistance.H",
+    "tests/fixtures/wp02_003_zero_inertia/Make/files",
+    "tests/fixtures/wp02_003_zero_inertia/Make/options",
+    "tests/fixtures/wp02_003_zero_inertia/wp02_003_zero_inertia_fixture.C",
+    "tests/test_wp02_003_darcy_forchheimer.py",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_FIELD_INDEX.json",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RESULTS.json",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.json",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.sha256",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_TRACE.csv",
 })
 LATER_WP02_002_PATHS = frozenset({
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md",
@@ -76,6 +96,23 @@ LATER_WP02_002_PATHS = frozenset({
     "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json",
     "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RUN_SPEC.json",
     "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_TRACE.csv",
+    "docs/reports/WP02_003_DARCY_FORCHHEIMER_RESULTS.md",
+    "scripts/analyze_wp02_003_darcy_forchheimer.py",
+    "scripts/forchheimer_reference.py",
+    "scripts/run_wp02_003_darcy_forchheimer.sh",
+    "scripts/run_wp02_003_predecessor_regressions.sh",
+    "scripts/run_wp02_003_zero_inertia_fixture.sh",
+    "scripts/verify_wp02_regression.py",
+    "solver/espressoWholePullFoam/forchheimerResistance.H",
+    "tests/fixtures/wp02_003_zero_inertia/Make/files",
+    "tests/fixtures/wp02_003_zero_inertia/Make/options",
+    "tests/fixtures/wp02_003_zero_inertia/wp02_003_zero_inertia_fixture.C",
+    "tests/test_wp02_003_darcy_forchheimer.py",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_FIELD_INDEX.json",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RESULTS.json",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.json",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.sha256",
+    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_TRACE.csv",
 })
 FROZEN = {
     "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json":

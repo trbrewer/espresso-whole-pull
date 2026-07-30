@@ -1,0 +1,150 @@
+{
+  "schema_version": "espresso.public.wp02_003.field_index.v1",
+  "external_run_root_role": "LOCAL_EXTERNAL_GOVERNED_RUN_NOT_PORTABLE",
+  "selected_fields": [
+    {
+      "case": "DF-1",
+      "time_s": 30.0,
+      "field": "p",
+      "partition_file_count": 32,
+      "bytes": 1164547,
+      "aggregate_sha256": "0c276ebdb4553d59b759b9dd861bfae3b69bfebc117ddd6ce55e7187509955e8"
+    },
+    {
+      "case": "DF-1",
+      "time_s": 30.0,
+      "field": "U",
+      "partition_file_count": 32,
+      "bytes": 3383707,
+      "aggregate_sha256": "1eadccf6e05dedb7d6fb5252517e16021cbee6a6abbfd4b3fe3c4a2fb115413d"
+    },
+    {
+      "case": "DF-1",
+      "time_s": 30.0,
+      "field": "inertialPermeability",
+      "partition_file_count": 32,
+      "bytes": 58556,
+      "aggregate_sha256": "47a82db8d566cd0010806570983e5083668acfa18cbe2a2fd3f84f9e5708a99a"
+    },
+    {
+      "case": "DF-1",
+      "time_s": 30.0,
+      "field": "forchheimerNumber",
+      "partition_file_count": 32,
+      "bytes": 1169086,
+      "aggregate_sha256": "7802434a458b475500fefe36c00e5afa08d1dd38fe363404324a7e1f1890f58e"
+    },
+    {
+      "case": "DF-1",
+      "time_s": 30.0,
+      "field": "inertialPressureFraction",
+      "partition_file_count": 32,
+      "bytes": 1169306,
+      "aggregate_sha256": "44cbc8dd3f0aa6c1d1ef08431d5ce57223597fb5d1f867aadd7ac918914521b4"
+    },
+    {
+      "case": "DF-1",
+      "time_s": 30.0,
+      "field": "nonlinearMobility",
+      "partition_file_count": 32,
+      "bytes": 58914,
+      "aggregate_sha256": "86ace38cf15b89dd38b9fd5b8c5f5c0bd6d5be0230003ef542ac155942b8e633"
+    },
+    {
+      "case": "DF-3",
+      "time_s": 30.0,
+      "field": "p",
+      "partition_file_count": 32,
+      "bytes": 1167548,
+      "aggregate_sha256": "e087cefbf3225dcb2d0c44aeeb6419a9de7edb72384c78fdf602a6e483d5e8ca"
+    },
+    {
+      "case": "DF-3",
+      "time_s": 30.0,
+      "field": "U",
+      "partition_file_count": 32,
+      "bytes": 3383705,
+      "aggregate_sha256": "461f1f8af02fef8c65058e73d3889de11f6d02c927644d4e329d05ac5a1784f0"
+    },
+    {
+      "case": "DF-3",
+      "time_s": 30.0,
+      "field": "inertialPermeability",
+      "partition_file_count": 32,
+      "bytes": 58556,
+      "aggregate_sha256": "47a82db8d566cd0010806570983e5083668acfa18cbe2a2fd3f84f9e5708a99a"
+    },
+    {
+      "case": "DF-3",
+      "time_s": 30.0,
+      "field": "forchheimerNumber",
+      "partition_file_count": 32,
+      "bytes": 1169086,
+      "aggregate_sha256": "d70716afd6abf33556394fe484fbe37439107cc248a2a42d2bc902898ae10c37"
+    },
+    {
+      "case": "DF-3",
+      "time_s": 30.0,
+      "field": "inertialPressureFraction",
+      "partition_file_count": 32,
+      "bytes": 1169306,
+      "aggregate_sha256": "d4ab8d5bc9368f62e5ca7b246c9c906cf16d86c1e0ce9690b44636beb286560a"
+    },
+    {
+      "case": "DF-3",
+      "time_s": 30.0,
+      "field": "nonlinearMobility",
+      "partition_file_count": 32,
+      "bytes": 58914,
+      "aggregate_sha256": "6a081191730efb371f12ba0b391be29999a8e393b25c1256fee4ec54ef767ab9"
+    },
+    {
+      "case": "DF-6",
+      "time_s": 30.0,
+      "field": "p",
+      "partition_file_count": 32,
+      "bytes": 1167548,
+      "aggregate_sha256": "f3ea30cd1bd8ab1eeba13785641855576627a3087898687a43908d28f0000189"
+    },
+    {
+      "case": "DF-6",
+      "time_s": 30.0,
+      "field": "U",
+      "partition_file_count": 32,
+      "bytes": 3383690,
+      "aggregate_sha256": "779ef448330e4120c22375a922812246a3370bd8baead0d0b488e482f699e79f"
+    },
+    {
+      "case": "DF-6",
+      "time_s": 30.0,
+      "field": "inertialPermeability",
+      "partition_file_count": 32,
+      "bytes": 58978,
+      "aggregate_sha256": "b477f56a50bec9d9f8bc182fd6b03c732feebce9e45fdebf4575228e8b7d385c"
+    },
+    {
+      "case": "DF-6",
+      "time_s": 30.0,
+      "field": "forchheimerNumber",
+      "partition_file_count": 32,
+      "bytes": 1169086,
+      "aggregate_sha256": "594a8f77a72162ce0a5d69b7417cdcb8c41e0ca93d258084f622b96530aa4b57"
+    },
+    {
+      "case": "DF-6",
+      "time_s": 30.0,
+      "field": "inertialPressureFraction",
+      "partition_file_count": 32,
+      "bytes": 1169310,
+      "aggregate_sha256": "db9a54078cff280caf93ff9b706d0ffc746352ead2247cfb96ca9edff8e33382"
+    },
+    {
+      "case": "DF-6",
+      "time_s": 30.0,
+      "field": "nonlinearMobility",
+      "partition_file_count": 32,
+      "bytes": 58914,
+      "aggregate_sha256": "e96bc6bdd1e5766ee9e8f3fd30f8bdcaaf73820bf1862d69ad81c2d0df7cd751"
+    }
+  ]
+}

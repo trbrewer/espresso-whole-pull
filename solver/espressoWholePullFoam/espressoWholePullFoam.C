@@ -32,6 +32,7 @@
 #include "mathematicalConstants.H"
 #include "OSspecific.H"
 #include "machineBoundaryModel.H"
+#include "forchheimerResistance.H"
 
 #include <cmath>
 #include <cstdlib>
@@ -298,6 +299,82 @@ int main(int argc, char *argv[])
             "pressureBoundaryModel",
             "prescribedPressure"
         );
+    const word flowResistanceModel =
+        modelProperties.lookupOrDefault<word>("flowResistanceModel", "darcy");
+    const bool darcyForchheimer =
+        flowResistanceModel == "darcyForchheimer";
+    if (!darcyForchheimer && flowResistanceModel != "darcy")
+    {
+        FatalErrorInFunction << "Unsupported flowResistanceModel="
+            << flowResistanceModel << exit(FatalError);
+    }
+    word inertialPermeabilityModel("none");
+    scalar constantInertialPermeability = GREAT;
+    scalar layerInertialPermeabilityUpstream = GREAT;
+    scalar layerInertialPermeabilityDownstream = GREAT;
+    scalar nonlinearRelativeTolerance = 1.0e-10;
+    scalar nonlinearAbsoluteTolerance = 1.0e-12;
+    label nonlinearMaximumIterations = 1;
+    scalar nonlinearUnderRelaxation = 1.0;
+    scalar machineFluxRelativeTolerance = 1.0e-6;
+    if (darcyForchheimer)
+    {
+        modelProperties.lookup("inertialPermeabilityModel")
+            >> inertialPermeabilityModel;
+        constantInertialPermeability = readScalar
+        (
+            modelProperties.lookup("constantInertialPermeabilityM")
+        );
+        layerInertialPermeabilityUpstream = readScalar
+        (
+            modelProperties.lookup("layerInertialPermeabilityUpstream")
+        );
+        layerInertialPermeabilityDownstream = readScalar
+        (
+            modelProperties.lookup("layerInertialPermeabilityDownstream")
+        );
+        nonlinearRelativeTolerance = readScalar
+        (
+            modelProperties.lookup("nonlinearRelativeTolerance")
+        );
+        nonlinearAbsoluteTolerance = readScalar
+        (
+            modelProperties.lookup("nonlinearAbsoluteTolerance")
+        );
+        nonlinearMaximumIterations = readLabel
+        (
+            modelProperties.lookup("nonlinearMaximumIterations")
+        );
+        nonlinearUnderRelaxation = readScalar
+        (
+            modelProperties.lookup("nonlinearUnderRelaxation")
+        );
+        machineFluxRelativeTolerance = readScalar
+        (
+            modelProperties.lookup("machineFluxRelativeTolerance")
+        );
+        if
+        (
+            (
+                inertialPermeabilityModel != "constant"
+             && inertialPermeabilityModel != "wadsworth2026CeramicsFit"
+            )
+         || constantInertialPermeability <= 0.0
+         || layerInertialPermeabilityUpstream <= 0.0
+         || layerInertialPermeabilityDownstream <= 0.0
+         || nonlinearRelativeTolerance <= 0.0
+         || nonlinearAbsoluteTolerance <= 0.0
+         || nonlinearMaximumIterations < 1
+         || nonlinearUnderRelaxation <= 0.0
+         || nonlinearUnderRelaxation > 1.0
+         || machineFluxRelativeTolerance <= 0.0
+         || !std::isfinite(constantInertialPermeability)
+        )
+        {
+            FatalErrorInFunction << "Invalid Darcy-Forchheimer input"
+                << exit(FatalError);
+        }
+    }
     const scalar frontSmoothingLength =
         readScalar(modelProperties.lookup("frontSmoothingLength"));
     const scalar extractionRateConstant =
@@ -658,6 +735,42 @@ int main(int argc, char *argv[])
           + (bedDepth - layerInterfacePosition)
            /layerPermeabilityDownstream;
     }
+    scalar continuumInertialIntegral = 0.0;
+    if (darcyForchheimer)
+    {
+        if (inertialPermeabilityModel == "wadsworth2026CeramicsFit")
+        {
+            if (permeabilityProfile == "axial_two_layer")
+            {
+                continuumInertialIntegral =
+                    layerInterfacePosition
+                   /wadsworth2026CeramicsInertialPermeability
+                    (layerPermeabilityUpstream)
+                  + (bedDepth - layerInterfacePosition)
+                   /wadsworth2026CeramicsInertialPermeability
+                    (layerPermeabilityDownstream);
+            }
+            else
+            {
+                continuumInertialIntegral =
+                    bedDepth
+                   /wadsworth2026CeramicsInertialPermeability
+                    (saturatedPermeability);
+            }
+        }
+        else if (permeabilityProfile == "axial_two_layer")
+        {
+            continuumInertialIntegral =
+                layerInterfacePosition/layerInertialPermeabilityUpstream
+              + (bedDepth - layerInterfacePosition)
+               /layerInertialPermeabilityDownstream;
+        }
+        else
+        {
+            continuumInertialIntegral =
+                bedDepth/constantInertialPermeability;
+        }
+    }
 
     const scalar initialExtractableMass = dryDose*extractableFraction;
     const scalar initialExtractableDensity =
@@ -756,6 +869,91 @@ int main(int argc, char *argv[])
         permeability/dynamicViscosityCoefficient
     );
 
+    volScalarField inertialPermeability
+    (
+        IOobject
+        (
+            "inertialPermeability", runTime.name(), mesh,
+            IOobject::NO_READ,
+            darcyForchheimer ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("kI", dimLength, constantInertialPermeability)
+    );
+    forAll(inertialPermeability, celli)
+    {
+        if (inertialPermeabilityModel == "wadsworth2026CeramicsFit")
+        {
+            inertialPermeability[celli] =
+                wadsworth2026CeramicsInertialPermeability(permeability[celli]);
+        }
+        else if (permeabilityProfile == "axial_two_layer")
+        {
+            inertialPermeability[celli] =
+                mesh.C()[celli].x() < layerInterfacePosition
+              ? layerInertialPermeabilityUpstream
+              : layerInertialPermeabilityDownstream;
+        }
+    }
+    inertialPermeability.correctBoundaryConditions();
+
+    volScalarField nonlinearMobility
+    (
+        IOobject
+        (
+            "nonlinearMobility", runTime.name(), mesh,
+            IOobject::NO_READ,
+            darcyForchheimer ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        hydraulicMobility
+    );
+    volScalarField forchheimerNumber
+    (
+        IOobject
+        (
+            "forchheimerNumber", runTime.name(), mesh,
+            IOobject::NO_READ,
+            darcyForchheimer ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("zero", dimless, 0.0)
+    );
+    volScalarField inertialPressureFraction
+    (
+        IOobject
+        (
+            "inertialPressureFraction", runTime.name(), mesh,
+            IOobject::NO_READ,
+            darcyForchheimer ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("zero", dimless, 0.0)
+    );
+    volScalarField darcyDragMagnitude
+    (
+        IOobject
+        (
+            "darcyDragMagnitude", runTime.name(), mesh,
+            IOobject::NO_READ,
+            darcyForchheimer ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar
+        (
+            "zero", dimensionSet(1, -2, -2, 0, 0, 0, 0), 0.0
+        )
+    );
+    volScalarField inertialDragMagnitude
+    (
+        IOobject
+        (
+            "inertialDragMagnitude", runTime.name(), mesh,
+            IOobject::NO_READ,
+            darcyForchheimer ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        darcyDragMagnitude
+    );
+
     volScalarField effectivePermeabilityMultiplier
     (
         IOobject
@@ -827,7 +1025,16 @@ int main(int argc, char *argv[])
               << "cumulativePuckOutletM3,machineWaterBalanceResidualM3,"
               << "couplingResidualM3s,couplingIterations,"
               << "couplingConverged,couplingBracketed,couplingFallbackUsed,"
-              << "saturationTransitionStep,pressureBoundaryModel";
+              << "saturationTransitionStep,pressureBoundaryModel,"
+              << "flowResistanceModel,inertialPermeabilityModel,"
+              << "inertialPermeabilityMinM,inertialPermeabilityMaxM,"
+              << "fluxWeightedForchheimerNumber,maximumForchheimerNumber,"
+              << "integratedDarcyPressureDropPa,"
+              << "integratedInertialPressureDropPa,"
+              << "integratedInertialPressureFraction,"
+              << "nonlinearIterations,nonlinearResidual,nonlinearConverged,"
+              << "machinePuckFlowM3s,openFoamOutletFlowM3s,"
+              << "machineFluxRelativeDifference";
         if (effectivePermeabilityEnabled)
         {
             trace << ",effective_permeability_branch_active,source_time_s,"
@@ -894,6 +1101,8 @@ int main(int argc, char *argv[])
         bool couplingConverged = true;
         const bool saturatedAtStepStart =
             wetFront >= bedDepth - SMALL;
+        scalar currentDarcyIntegral = continuumResistance;
+        scalar currentInertialIntegral = continuumInertialIntegral;
         if (lumpedMachine)
         {
             scalar multiplierForConductance = 1.0;
@@ -928,12 +1137,32 @@ int main(int argc, char *argv[])
                 effectivePermeabilityEnabled && saturatedAtStepStart
               ? continuumResistance/multiplierForConductance
               : continuumResistance;
+            currentDarcyIntegral = couplingResistance;
+            if
+            (
+                darcyForchheimer
+             && inertialPermeabilityModel == "wadsworth2026CeramicsFit"
+             && effectivePermeabilityEnabled && saturatedAtStepStart
+            )
+            {
+                currentInertialIntegral =
+                    bedDepth/wadsworth2026CeramicsInertialPermeability
+                    (
+                        saturatedPermeability*multiplierForConductance
+                    );
+            }
             const scalar conductance =
                 fullCrossSectionArea/(dynamicViscosity*couplingResistance);
+            const scalar inertialResistance =
+                darcyForchheimer
+              ? liquidDensity*currentInertialIntegral
+               /sqr(fullCrossSectionArea)
+              : 0.0;
             const MachineBoundaryState machineState = solveMachineBoundary
             (
                 timeValue, deltaT, upstreamPressure, outletPressure,
                 machineParameters, saturatedAtStepStart, conductance,
+                inertialResistance,
                 frontPressure, wetFront, bedDepth, fullCrossSectionArea,
                 initialPorosity, wettingPermeability, dynamicViscosity
             );
@@ -1047,6 +1276,28 @@ int main(int argc, char *argv[])
             permeability.correctBoundaryConditions();
             hydraulicMobility = permeability/dynamicViscosityCoefficient;
             hydraulicMobility.correctBoundaryConditions();
+            currentDarcyIntegral =
+                bedDepth/(saturatedPermeability*effectiveMultiplier);
+            if
+            (
+                darcyForchheimer
+             && inertialPermeabilityModel == "wadsworth2026CeramicsFit"
+            )
+            {
+                inertialPermeability =
+                    dimensionedScalar
+                    (
+                        "effectiveInertialPermeability",
+                        inertialPermeability.dimensions(),
+                        wadsworth2026CeramicsInertialPermeability
+                        (
+                            saturatedPermeability*effectiveMultiplier
+                        )
+                    );
+                inertialPermeability.correctBoundaryConditions();
+                currentInertialIntegral =
+                    bedDepth/inertialPermeability[0];
+            }
             effectivePermeabilityMultiplier =
                 dimensionedScalar("multiplier", dimless, effectiveMultiplier);
             effectivePermeabilityMultiplier.correctBoundaryConditions();
@@ -1154,24 +1405,160 @@ int main(int argc, char *argv[])
         scalar concentrationInitialResidual = 0.0;
         scalar concentrationFinalResidual = 0.0;
         label concentrationIterations = 0;
+        label nonlinearIterations = 0;
+        scalar nonlinearResidual = 0.0;
+        bool nonlinearConverged = !darcyForchheimer;
+        scalar integratedDarcyPressureDrop = 0.0;
+        scalar integratedInertialPressureDrop = 0.0;
+        scalar fluxWeightedFo = 0.0;
+        scalar maximumFo = 0.0;
+        scalar inertialPermeabilityMin = 0.0;
+        scalar inertialPermeabilityMax = 0.0;
+        scalar integratedInertialFraction = 0.0;
+        scalar machineFluxRelativeDifference = 0.0;
 
         if (saturatedAtStepStart)
         {
-            fvScalarMatrix pressureEquation
-            (
-                fvm::laplacian(hydraulicMobility, p)
-            );
-            const SolverPerformance<scalar> pressurePerformance
-            (
-                pressureEquation.solve()
-            );
-            pressureInitialResidual = pressurePerformance.initialResidual();
-            pressureFinalResidual = pressurePerformance.finalResidual();
-            pressureIterations = pressurePerformance.nIterations();
+            if (!darcyForchheimer)
+            {
+                fvScalarMatrix pressureEquation
+                (
+                    fvm::laplacian(hydraulicMobility, p)
+                );
+                const SolverPerformance<scalar> pressurePerformance
+                (
+                    pressureEquation.solve()
+                );
+                pressureInitialResidual = pressurePerformance.initialResidual();
+                pressureFinalResidual = pressurePerformance.finalResidual();
+                pressureIterations = pressurePerformance.nIterations();
+                darcyFlux = -pressureEquation.flux();
+                U = -hydraulicMobility*fvc::grad(p);
+                U.correctBoundaryConditions();
+            }
+            else
+            {
+                scalar previousFlow = -1.0;
+                nonlinearMobility = hydraulicMobility;
+                for
+                (
+                    label iteration = 1;
+                    iteration <= nonlinearMaximumIterations;
+                    ++iteration
+                )
+                {
+                    scalarField previousPressure(p.primitiveField());
+                    fvScalarMatrix pressureEquation
+                    (
+                        fvm::laplacian(nonlinearMobility, p)
+                    );
+                    const SolverPerformance<scalar> performance
+                    (
+                        pressureEquation.solve()
+                    );
+                    if (iteration == 1)
+                    {
+                        pressureInitialResidual = performance.initialResidual();
+                    }
+                    pressureFinalResidual = performance.finalResidual();
+                    pressureIterations += performance.nIterations();
+                    darcyFlux = -pressureEquation.flux();
 
-            darcyFlux = -pressureEquation.flux();
-            U = -hydraulicMobility*fvc::grad(p);
-            U.correctBoundaryConditions();
+                    scalar localOutlet = 0.0;
+                    const fvsPatchScalarField& iterationOutlet =
+                        darcyFlux.boundaryField()[outletPatchId];
+                    forAll(iterationOutlet, facei)
+                    {
+                        localOutlet += Foam::max(iterationOutlet[facei], 0.0);
+                    }
+                    const scalar iterationFlow =
+                        sectorScale*globalSumValue(localOutlet);
+
+                    scalar localPressureChange = 0.0;
+                    const scalar iterationSpeed =
+                        iterationFlow/fullCrossSectionArea;
+                    forAll(nonlinearMobility, celli)
+                    {
+                        const scalar g =
+                            dynamicViscosity*iterationSpeed/permeability[celli]
+                          + liquidDensity*sqr(iterationSpeed)
+                           /inertialPermeability[celli];
+                        const scalar targetMobility =
+                            g <= VSMALL
+                          ? permeability[celli]/dynamicViscosity
+                          : iterationSpeed/g;
+                        nonlinearMobility[celli] =
+                            (1.0 - nonlinearUnderRelaxation)
+                           *nonlinearMobility[celli]
+                          + nonlinearUnderRelaxation*targetMobility;
+                        localPressureChange = Foam::max
+                        (
+                            localPressureChange,
+                            Foam::mag(p[celli] - previousPressure[celli])
+                           /Foam::max(Foam::mag(p[celli]), 1.0)
+                        );
+                    }
+                    forAll(nonlinearMobility.boundaryField(), patchi)
+                    {
+                        if
+                        (
+                            !nonlinearMobility.boundaryField()[patchi].coupled()
+                        )
+                        {
+                            nonlinearMobility.boundaryFieldRef()[patchi] ==
+                                nonlinearMobility.boundaryField()[patchi]
+                               .patchInternalField();
+                        }
+                    }
+                    nonlinearMobility.correctBoundaryConditions();
+                    const scalar pressureChange =
+                        globalMaxValue(localPressureChange);
+                    const scalar flowChange =
+                        previousFlow < 0.0
+                      ? GREAT
+                      : Foam::mag(iterationFlow - previousFlow)
+                       /Foam::max(Foam::mag(iterationFlow), VSMALL);
+                    const scalar rd =
+                        dynamicViscosity*currentDarcyIntegral
+                       /fullCrossSectionArea;
+                    const scalar ri =
+                        liquidDensity*currentInertialIntegral
+                       /sqr(fullCrossSectionArea);
+                    const scalar closure =
+                        Foam::mag
+                        (
+                            (inletPressure - outletPressure)
+                          - rd*iterationFlow
+                          - ri*sqr(iterationFlow)
+                        )
+                       /Foam::max
+                        (Foam::mag(inletPressure - outletPressure), 1.0);
+                    nonlinearResidual =
+                        Foam::max(Foam::max(flowChange, pressureChange), closure);
+                    nonlinearIterations = iteration;
+                    if
+                    (
+                        flowChange <= nonlinearRelativeTolerance
+                     && pressureChange <= nonlinearAbsoluteTolerance
+                     && closure <= nonlinearAbsoluteTolerance
+                    )
+                    {
+                        nonlinearConverged = true;
+                        break;
+                    }
+                    previousFlow = iterationFlow;
+                }
+                if (!nonlinearConverged)
+                {
+                    FatalErrorInFunction
+                        << "Forchheimer nonlinear solve failed at t="
+                        << timeValue << " residual=" << nonlinearResidual
+                        << exit(FatalError);
+                }
+                U = -nonlinearMobility*fvc::grad(p);
+                U.correctBoundaryConditions();
+                darcyFlux = fvc::flux(U);
+            }
         }
         else
         {
@@ -1249,9 +1636,20 @@ int main(int argc, char *argv[])
           : continuumResistance;
         const scalar continuumAnalyticalOutletFlow =
             saturatedAtStepStart
-          ? fullCrossSectionArea
-           *Foam::max(inletPressure - outletPressure, 0.0)
-           /(dynamicViscosity*effectiveContinuumResistance)
+          ? (
+                darcyForchheimer
+              ? stableSeriesFlow
+                (
+                    inletPressure - outletPressure,
+                    dynamicViscosity*effectiveContinuumResistance
+                   /fullCrossSectionArea,
+                    liquidDensity*currentInertialIntegral
+                   /sqr(fullCrossSectionArea)
+                )
+              : fullCrossSectionArea
+               *Foam::max(inletPressure - outletPressure, 0.0)
+               /(dynamicViscosity*effectiveContinuumResistance)
+            )
           : 0.0;
 
         // Explicit source evaluated from the beginning-of-step inventories.
@@ -1406,6 +1804,94 @@ int main(int argc, char *argv[])
                 sectorScale*globalSumValue(localOutletAdvectiveSoluteRate);
             inletBackDiffusionRate =
                 sectorScale*globalSumValue(localInletBackDiffusionRate);
+
+            if (darcyForchheimer)
+            {
+                scalar localMinKI = GREAT;
+                scalar localMaxKI = 0.0;
+                scalar localMaxFo = 0.0;
+                scalar localWeightedFo = 0.0;
+                scalar localVelocityWeight = 0.0;
+                forAll(permeability, celli)
+                {
+                    const scalar speed = mag(U[celli]);
+                    const scalar fo =
+                        liquidDensity*permeability[celli]*speed
+                       /(dynamicViscosity*inertialPermeability[celli]);
+                    if
+                    (
+                        !std::isfinite(fo)
+                     || !(permeability[celli] > 0.0)
+                     || !(inertialPermeability[celli] > 0.0)
+                    )
+                    {
+                        FatalErrorInFunction
+                            << "Invalid Forchheimer field state at t="
+                            << timeValue << exit(FatalError);
+                    }
+                    forchheimerNumber[celli] = fo;
+                    inertialPressureFraction[celli] = fo/(1.0 + fo);
+                    darcyDragMagnitude[celli] =
+                        dynamicViscosity*speed/permeability[celli];
+                    inertialDragMagnitude[celli] =
+                        liquidDensity*sqr(speed)/inertialPermeability[celli];
+                    localMinKI = Foam::min
+                    (
+                        localMinKI, inertialPermeability[celli]
+                    );
+                    localMaxKI = Foam::max
+                    (
+                        localMaxKI, inertialPermeability[celli]
+                    );
+                    localMaxFo = Foam::max(localMaxFo, fo);
+                    localWeightedFo += fo*speed*mesh.V()[celli];
+                    localVelocityWeight += speed*mesh.V()[celli];
+                }
+                forchheimerNumber.correctBoundaryConditions();
+                inertialPressureFraction.correctBoundaryConditions();
+                darcyDragMagnitude.correctBoundaryConditions();
+                inertialDragMagnitude.correctBoundaryConditions();
+                inertialPermeabilityMin = globalMinValue(localMinKI);
+                inertialPermeabilityMax = globalMaxValue(localMaxKI);
+                maximumFo = globalMaxValue(localMaxFo);
+                const scalar velocityWeight =
+                    globalSumValue(localVelocityWeight);
+                fluxWeightedFo =
+                    globalSumValue(localWeightedFo)
+                   /Foam::max(velocityWeight, VSMALL);
+                integratedDarcyPressureDrop =
+                    dynamicViscosity*currentDarcyIntegral
+                   /fullCrossSectionArea*outletVolumeFlow;
+                integratedInertialPressureDrop =
+                    liquidDensity*currentInertialIntegral
+                   /sqr(fullCrossSectionArea)*sqr(outletVolumeFlow);
+                integratedInertialFraction =
+                    integratedInertialPressureDrop
+                   /Foam::max
+                    (
+                        integratedDarcyPressureDrop
+                      + integratedInertialPressureDrop,
+                        VSMALL
+                    );
+            }
+            if (lumpedMachine)
+            {
+                machineFluxRelativeDifference =
+                    Foam::mag(puckFlow - outletVolumeFlow)
+                   /Foam::max(Foam::mag(puckFlow), VSMALL);
+                if
+                (
+                    saturatedAtStepStart
+                 && machineFluxRelativeDifference
+                    > machineFluxRelativeTolerance
+                )
+                {
+                    FatalErrorInFunction
+                        << "Machine/OpenFOAM flux mismatch at t=" << timeValue
+                        << ": " << machineFluxRelativeDifference
+                        << exit(FatalError);
+                }
+            }
 
             cumulativeInletWaterMass +=
                 liquidDensity*inletVolumeFlow*deltaT;
@@ -1590,7 +2076,22 @@ int main(int argc, char *argv[])
                   << (couplingConverged ? 1 : 0) << ','
                   << 1 << ',' << 0 << ','
                   << (saturationTransitionStep ? 1 : 0) << ','
-                  << pressureBoundaryModel;
+                  << pressureBoundaryModel << ','
+                  << flowResistanceModel << ','
+                  << inertialPermeabilityModel << ','
+                  << inertialPermeabilityMin << ','
+                  << inertialPermeabilityMax << ','
+                  << fluxWeightedFo << ','
+                  << maximumFo << ','
+                  << integratedDarcyPressureDrop << ','
+                  << integratedInertialPressureDrop << ','
+                  << integratedInertialFraction << ','
+                  << nonlinearIterations << ','
+                  << nonlinearResidual << ','
+                  << (nonlinearConverged ? 1 : 0) << ','
+                  << puckFlow << ','
+                  << outletVolumeFlow << ','
+                  << machineFluxRelativeDifference;
             if (effectivePermeabilityEnabled)
             {
                 trace << ',' << (saturatedAtStepStart ? 1 : 0)
