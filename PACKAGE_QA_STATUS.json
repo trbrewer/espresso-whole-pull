@@ -1,7 +1,7 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "WP02-004_RADIAL_HETEROGENEITY",
+  "current_governance_milestone": "WP03-001_POROELASTIC_COMPACTION",
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
     "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION"
@@ -26,10 +26,10 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 221,
+    "python_test_count": 228,
     "static_gate_count": 34,
-    "source_manifest_file_count": 169,
-    "source_manifest_aggregate_sha256": "da09c6e18526bc62395a901045c65ee023829fa6c4a9979c5ffe89f4204c09be",
+    "source_manifest_file_count": 179,
+    "source_manifest_aggregate_sha256": "09ff03726d9904d6e342db25a05bf24d1aa4ac79e1e44c50213ce6d5830bbb54",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -63,6 +63,20 @@
     "radial_mesh_refinement": "PASS",
     "physical_validation": "NOT_ESTABLISHED"
   },
+  "wp03_001_poroelastic_compaction": {
+    "disposition": "SOLVER_BEARING_WORK_PACKAGE_COMPLETE_PR_OPEN",
+    "constitutive_reference": "PASS",
+    "finite_phi_pressure_flow": "PASS",
+    "source_model_reconstruction": "PASS",
+    "openfoam_pressure_profiles": "PASS",
+    "rigid_limit": "PASS",
+    "matched_reference": "PASS",
+    "machine_operating_point": "PASS",
+    "timestep_refinement": "PASS",
+    "axial_mesh_refinement": "PASS",
+    "case_completion": "PASS",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
   "wp_0_3b_amendment_state": {
     "original_result": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",
     "commit_3a": "TRANSCRIPTION_AND_DERIVATION_CHECKPOINT",
@@ -85,7 +99,7 @@
     "governing_physics_change": false,
     "physical_validation": "NOT_ESTABLISHED"
   },
-  "executed_scientific_solver_executable_sha256": "39056c46c74c53a254e969d02f989ce720dfb567924a90c2f5f8d3b661469ba0",
+  "executed_scientific_solver_executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
   "release_executable_sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
   "final_disposition": "SOFTWARE_AND_SOURCE_LINKED_RECONSTRUCTION_RELEASE_PASS",
   "published_release": {

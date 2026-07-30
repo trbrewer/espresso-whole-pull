@@ -33,6 +33,7 @@
 #include "OSspecific.H"
 #include "machineBoundaryModel.H"
 #include "forchheimerResistance.H"
+#include "poroelasticCompaction.H"
 
 #include <cmath>
 #include <cstdlib>
@@ -308,6 +309,71 @@ int main(int argc, char *argv[])
         FatalErrorInFunction << "Unsupported flowResistanceModel="
             << flowResistanceModel << exit(FatalError);
     }
+    const word bedMechanicsModel =
+        modelProperties.lookupOrDefault<word>("bedMechanicsModel", "none");
+    const bool poroelasticCompaction =
+        bedMechanicsModel == "waszkiewiczQuasiStaticCompaction";
+    word poroelasticCompactionModel("none");
+    scalar stressFreePorosity = initialPorosity;
+    scalar criticalCompactionPressure = GREAT;
+    scalar stressFreePermeability = saturatedPermeability;
+    scalar poroelasticRelativeTolerance = 1.0e-10;
+    scalar poroelasticAbsoluteTolerance = 1.0e-10;
+    label poroelasticMaximumIterations = 1;
+    scalar poroelasticUnderRelaxation = 1.0;
+    scalar poroelasticMachineFluxTolerance = 1.0e-6;
+    if (poroelasticCompaction)
+    {
+        if (!modelProperties.found("poroelasticCompaction"))
+        {
+            FatalErrorInFunction << "Missing poroelasticCompaction dictionary"
+                << exit(FatalError);
+        }
+        const dictionary& compaction =
+            modelProperties.subDict("poroelasticCompaction");
+        compaction.lookup("model") >> poroelasticCompactionModel;
+        stressFreePorosity =
+            readScalar(compaction.lookup("stressFreePorosity"));
+        criticalCompactionPressure =
+            readScalar(compaction.lookup("criticalCompactionPressurePa"));
+        stressFreePermeability =
+            readScalar(compaction.lookup("stressFreePermeabilityM2"));
+        poroelasticRelativeTolerance =
+            readScalar(compaction.lookup("nonlinearRelativeTolerance"));
+        poroelasticAbsoluteTolerance =
+            readScalar(compaction.lookup("nonlinearAbsoluteTolerance"));
+        poroelasticMaximumIterations =
+            readLabel(compaction.lookup("nonlinearMaximumIterations"));
+        poroelasticUnderRelaxation =
+            readScalar(compaction.lookup("nonlinearUnderRelaxation"));
+        poroelasticMachineFluxTolerance =
+            readScalar(compaction.lookup("machineFluxRelativeTolerance"));
+        if
+        (
+            poroelasticCompactionModel != "waszkiewicz2025FinitePhi"
+         || stressFreePorosity <= 0.0 || stressFreePorosity >= 1.0
+         || criticalCompactionPressure <= 0.0
+         || stressFreePermeability <= 0.0
+         || poroelasticRelativeTolerance <= 0.0
+         || poroelasticAbsoluteTolerance <= 0.0
+         || poroelasticMaximumIterations < 1
+         || poroelasticUnderRelaxation <= 0.0
+         || poroelasticUnderRelaxation > 1.0
+         || poroelasticMachineFluxTolerance <= 0.0
+         || !std::isfinite(stressFreePorosity)
+         || !std::isfinite(criticalCompactionPressure)
+         || !std::isfinite(stressFreePermeability)
+        )
+        {
+            FatalErrorInFunction << "Invalid poroelastic compaction input"
+                << exit(FatalError);
+        }
+    }
+    else if (bedMechanicsModel != "none")
+    {
+        FatalErrorInFunction << "Unsupported bedMechanicsModel="
+            << bedMechanicsModel << exit(FatalError);
+    }
     word inertialPermeabilityModel("none");
     scalar constantInertialPermeability = GREAT;
     scalar layerInertialPermeabilityUpstream = GREAT;
@@ -560,6 +626,37 @@ int main(int argc, char *argv[])
         }
     }
 
+    if
+    (
+        poroelasticCompaction
+     && (
+            permeabilityProfile != "uniform"
+         || flowResistanceModel != "darcy"
+         || effectivePermeabilityEnabled
+        )
+    )
+    {
+        FatalErrorInFunction
+            << "Compaction requires uniform Darcy flow with WP02 evolution disabled"
+            << exit(FatalError);
+    }
+    const scalar maximumCompactionPressureDrop =
+        (lumpedMachine ? machineParameters.shutoffPressure : targetInletPressure)
+      - outletPressure;
+    if
+    (
+        poroelasticCompaction
+     && (
+            maximumCompactionPressureDrop < 0.0
+         || maximumCompactionPressureDrop >= criticalCompactionPressure
+        )
+    )
+    {
+        FatalErrorInFunction
+            << "Maximum pressure drop must remain below critical compaction pressure"
+            << exit(FatalError);
+    }
+
 
     if (pressureIntegrationMethod != "exactPiecewiseLinearIntegral")
     {
@@ -668,6 +765,66 @@ int main(int argc, char *argv[])
         dimensionedScalar("inner", dimless, 0.0)
     );
 
+    volScalarField effectiveMatrixStress
+    (
+        IOobject
+        (
+            "effectiveMatrixStress", runTime.name(), mesh,
+            IOobject::NO_READ,
+            poroelasticCompaction ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("zero", p.dimensions(), 0.0)
+    );
+
+    volScalarField normalizedEffectiveStress
+    (
+        IOobject
+        (
+            "normalizedEffectiveStress", runTime.name(), mesh,
+            IOobject::NO_READ,
+            poroelasticCompaction ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("zero", dimless, 0.0)
+    );
+
+    volScalarField compactionStrain
+    (
+        IOobject
+        (
+            "compactionStrain", runTime.name(), mesh,
+            IOobject::NO_READ,
+            poroelasticCompaction ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("zero", dimless, 0.0)
+    );
+
+    volScalarField mechanicalPorosity
+    (
+        IOobject
+        (
+            "mechanicalPorosity", runTime.name(), mesh,
+            IOobject::NO_READ,
+            poroelasticCompaction ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("stressFree", dimless, stressFreePorosity)
+    );
+
+    volScalarField compactionPermeabilityRatio
+    (
+        IOobject
+        (
+            "compactionPermeabilityRatio", runTime.name(), mesh,
+            IOobject::NO_READ,
+            poroelasticCompaction ? IOobject::AUTO_WRITE : IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("one", dimless, 1.0)
+    );
+
     volScalarField dissolvedConcentration
     (
         IOobject
@@ -763,6 +920,12 @@ int main(int argc, char *argv[])
 
     const scalar fullCrossSectionArea =
         constant::mathematical::pi*sqr(basketRadius);
+    const PoroelasticPuckParameters poroelasticPuckParameters
+    {
+        fullCrossSectionArea, bedDepth, dynamicViscosity,
+        stressFreePorosity, criticalCompactionPressure,
+        stressFreePermeability
+    };
     const bool radialTwoZone = permeabilityProfile == "radial_two_zone";
     const scalar exactInnerArea =
         constant::mathematical::pi*sqr(interfaceRadius);
@@ -914,7 +1077,10 @@ int main(int argc, char *argv[])
         }
         else
         {
-            permeability[celli] = saturatedPermeability;
+            permeability[celli] =
+                poroelasticCompaction
+              ? stressFreePermeability
+              : saturatedPermeability;
         }
     }
 
@@ -967,6 +1133,11 @@ int main(int argc, char *argv[])
     porosity.correctBoundaryConditions();
     permeability.correctBoundaryConditions();
     permeabilityZoneId.correctBoundaryConditions();
+    effectiveMatrixStress.correctBoundaryConditions();
+    normalizedEffectiveStress.correctBoundaryConditions();
+    compactionStrain.correctBoundaryConditions();
+    mechanicalPorosity.correctBoundaryConditions();
+    compactionPermeabilityRatio.correctBoundaryConditions();
     dissolvedConcentration.correctBoundaryConditions();
     remainingExtractable.correctBoundaryConditions();
     localExtractionRate.correctBoundaryConditions();
@@ -985,6 +1156,19 @@ int main(int argc, char *argv[])
             IOobject::AUTO_WRITE
         ),
         permeability/dynamicViscosityCoefficient
+    );
+
+    surfaceScalarField poroelasticFaceMobility
+    (
+        IOobject
+        (
+            "poroelasticFaceMobility",
+            runTime.name(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        fvc::interpolate(hydraulicMobility)
     );
 
     volScalarField inertialPermeability
@@ -1190,7 +1374,26 @@ int main(int argc, char *argv[])
               << "totalFluxRelativeDifference,innerFluxRelativeDifference,"
               << "outerFluxRelativeDifference,radialHeterogeneityActive,"
               << "basketOperatingPointIterations,basketOperatingResidualPa,"
-              << "basketOperatingBracketed,basketOperatingConverged";
+              << "basketOperatingBracketed,basketOperatingConverged,"
+              << "bedMechanicsModel,poroelasticCompactionModel,"
+              << "stressFreePorosity,criticalCompactionPressurePa,"
+              << "effectiveYoungModulusPa,stressFreePermeabilityM2,"
+              << "compactionActive,mechanicalPorosityCoupledToStorage,"
+              << "maximumEffectiveStressPa,"
+              << "maximumNormalizedEffectiveStress,"
+              << "minimumMechanicalPorosity,outletMechanicalPorosity,"
+              << "volumeWeightedMechanicalPorosity,"
+              << "maximumCompactionStrain,predictedBedHeightRatio,"
+              << "predictedBedHeightM,mechanicalPoreVolumeChangeM3,"
+              << "minimumCompactionPermeabilityM2,"
+              << "outletCompactionPermeabilityM2,"
+              << "volumeWeightedPermeabilityM2,"
+              << "minimumPermeabilityRatio,"
+              << "poroelasticExactScalarFlowM3s,"
+              << "poroelasticFlowClosureError,"
+              << "poroelasticNonlinearIterations,"
+              << "poroelasticNonlinearResidual,"
+              << "poroelasticNonlinearConverged";
         if (effectivePermeabilityEnabled)
         {
             trace << ",effective_permeability_branch_active,source_time_s,"
@@ -1351,7 +1554,9 @@ int main(int argc, char *argv[])
                 frontPressure, wetFront, bedDepth, fullCrossSectionArea,
                 initialPorosity, wettingPermeability, dynamicViscosity,
                 radialTwoZone && saturatedAtStepStart
-              ? &radialPuckParameters : nullptr
+              ? &radialPuckParameters : nullptr,
+                poroelasticCompaction && saturatedAtStepStart
+              ? &poroelasticPuckParameters : nullptr
             );
             if (!machineState.bracketed)
             {
@@ -1378,7 +1583,7 @@ int main(int argc, char *argv[])
             basketOperatingConverged = machineState.basketConverged;
             if
             (
-                radialTwoZone && saturatedAtStepStart
+                (radialTwoZone || poroelasticCompaction) && saturatedAtStepStart
              && (
                     !basketOperatingBracketed
                  || !basketOperatingConverged
@@ -1621,10 +1826,290 @@ int main(int argc, char *argv[])
         scalar inertialPermeabilityMax = 0.0;
         scalar integratedInertialFraction = 0.0;
         scalar machineFluxRelativeDifference = 0.0;
+        label poroelasticIterations = 0;
+        scalar poroelasticResidual = 0.0;
+        scalar poroelasticFlowClosureError = 0.0;
+        bool poroelasticConverged =
+            !poroelasticCompaction || !saturatedAtStepStart;
+        const scalar poroelasticExactFlow =
+            poroelasticCompaction && saturatedAtStepStart
+          ? poroelasticPuckFlow
+            (
+                inletPressure - outletPressure,
+                poroelasticPuckParameters
+            )
+          : 0.0;
 
         if (saturatedAtStepStart)
         {
-            if (!darcyForchheimer)
+            if (poroelasticCompaction)
+            {
+                label localInvalidInitialPressure = 0;
+                forAll(p, celli)
+                {
+                    const scalar sigma = inletPressure - p[celli];
+                    if
+                    (
+                        !std::isfinite(sigma)
+                     || sigma < 0.0
+                     || sigma >= criticalCompactionPressure
+                    )
+                    {
+                        localInvalidInitialPressure = 1;
+                    }
+                }
+                if (globalMaxValue(localInvalidInitialPressure))
+                {
+                    forAll(p, celli)
+                    {
+                        const scalar axialFraction = Foam::min
+                        (
+                            Foam::max(mesh.C()[celli].x()/bedDepth, 0.0),
+                            1.0
+                        );
+                        p[celli] =
+                            inletPressure
+                          - axialFraction*(inletPressure - outletPressure);
+                    }
+                    p.boundaryFieldRef()[inletPatchId] == inletPressure;
+                    p.boundaryFieldRef()[outletPatchId] == outletPressure;
+                    p.correctBoundaryConditions();
+                }
+                scalar previousFlow = -1.0;
+                for
+                (
+                    label iteration = 1;
+                    iteration <= poroelasticMaximumIterations;
+                    ++iteration
+                )
+                {
+                    scalarField previousPressure(p.primitiveField());
+                    const labelUList& owner = mesh.owner();
+                    const labelUList& neighbour = mesh.neighbour();
+                    forAll(neighbour, facei)
+                    {
+                        poroelasticFaceMobility[facei] =
+                            poroelasticSecantMobility
+                            (
+                                inletPressure - p[owner[facei]],
+                                inletPressure - p[neighbour[facei]],
+                                stressFreePorosity,
+                                criticalCompactionPressure,
+                                stressFreePermeability,
+                                dynamicViscosity
+                            );
+                    }
+                    forAll(p.boundaryField(), patchi)
+                    {
+                        const fvPatchScalarField& pressurePatch =
+                            p.boundaryField()[patchi];
+                        const scalarField internalPressure
+                        (
+                            pressurePatch.patchInternalField()
+                        );
+                        scalarField otherPressure(pressurePatch);
+                        if (pressurePatch.coupled())
+                        {
+                            otherPressure =
+                                pressurePatch.patchNeighbourField();
+                        }
+                        fvsPatchScalarField& mobilityPatch =
+                            poroelasticFaceMobility.boundaryFieldRef()[patchi];
+                        forAll(mobilityPatch, facei)
+                        {
+                            mobilityPatch[facei] =
+                                poroelasticSecantMobility
+                                (
+                                    inletPressure - internalPressure[facei],
+                                    inletPressure - otherPressure[facei],
+                                    stressFreePorosity,
+                                    criticalCompactionPressure,
+                                    stressFreePermeability,
+                                    dynamicViscosity
+                            );
+                        }
+                    }
+                    forAll(poroelasticFaceMobility, facei)
+                    {
+                        if
+                        (
+                            !std::isfinite(poroelasticFaceMobility[facei])
+                         || poroelasticFaceMobility[facei] <= 0.0
+                        )
+                        {
+                            FatalErrorInFunction
+                                << "Invalid internal poroelastic face mobility "
+                                << poroelasticFaceMobility[facei]
+                                << " on face " << facei
+                                << exit(FatalError);
+                        }
+                    }
+                    forAll(poroelasticFaceMobility.boundaryField(), patchi)
+                    {
+                        const fvsPatchScalarField& mobilityPatch =
+                            poroelasticFaceMobility.boundaryField()[patchi];
+                        forAll(mobilityPatch, facei)
+                        {
+                            if
+                            (
+                                !std::isfinite(mobilityPatch[facei])
+                             || mobilityPatch[facei] <= 0.0
+                            )
+                            {
+                                FatalErrorInFunction
+                                    << "Invalid boundary poroelastic face mobility "
+                                    << mobilityPatch[facei] << " on patch "
+                                    << patchi << " face " << facei
+                                    << exit(FatalError);
+                            }
+                        }
+                    }
+                    fvScalarMatrix pressureEquation
+                    (
+                        fvm::laplacian(poroelasticFaceMobility, p)
+                    );
+                    const SolverPerformance<scalar> performance
+                    (
+                        pressureEquation.solve()
+                    );
+                    if (iteration == 1)
+                    {
+                        pressureInitialResidual = performance.initialResidual();
+                    }
+                    pressureFinalResidual = performance.finalResidual();
+                    pressureIterations += performance.nIterations();
+                    darcyFlux = -pressureEquation.flux();
+
+                    scalar localPressureChange = 0.0;
+                    forAll(p, celli)
+                    {
+                        p[celli] =
+                            previousPressure[celli]
+                          + poroelasticUnderRelaxation
+                           *(p[celli] - previousPressure[celli]);
+                        localPressureChange = Foam::max
+                        (
+                            localPressureChange,
+                            Foam::mag(p[celli] - previousPressure[celli])
+                           /Foam::max
+                            (
+                                Foam::mag(inletPressure - outletPressure),
+                                1.0
+                            )
+                        );
+                    }
+                    p.boundaryFieldRef()[inletPatchId] == inletPressure;
+                    p.boundaryFieldRef()[outletPatchId] == outletPressure;
+                    p.correctBoundaryConditions();
+
+                    const scalar stressTolerance =
+                        1.0e-10*criticalCompactionPressure;
+                    forAll(permeability, celli)
+                    {
+                        scalar sigma = inletPressure - p[celli];
+                        if
+                        (
+                            sigma < -stressTolerance
+                         || sigma >= criticalCompactionPressure
+                         || !std::isfinite(sigma)
+                        )
+                        {
+                            FatalErrorInFunction
+                                << "Poroelastic stress outside domain at t="
+                                << timeValue << ": " << sigma
+                                << exit(FatalError);
+                        }
+                        if (sigma < 0.0)
+                        {
+                            sigma = 0.0;
+                        }
+                        const scalar ratio = poroelasticPermeabilityRatio
+                        (
+                            sigma, stressFreePorosity,
+                            criticalCompactionPressure
+                        );
+                        effectiveMatrixStress[celli] = sigma;
+                        normalizedEffectiveStress[celli] =
+                            sigma/criticalCompactionPressure;
+                        compactionStrain[celli] = poroelasticStrain
+                        (
+                            sigma, stressFreePorosity,
+                            criticalCompactionPressure
+                        );
+                        mechanicalPorosity[celli] =
+                            poroelasticMechanicalPorosity
+                            (
+                                sigma, stressFreePorosity,
+                                criticalCompactionPressure
+                            );
+                        compactionPermeabilityRatio[celli] = ratio;
+                        permeability[celli] = stressFreePermeability*ratio;
+                    }
+                    effectiveMatrixStress.correctBoundaryConditions();
+                    normalizedEffectiveStress.correctBoundaryConditions();
+                    compactionStrain.correctBoundaryConditions();
+                    mechanicalPorosity.correctBoundaryConditions();
+                    compactionPermeabilityRatio.correctBoundaryConditions();
+                    permeability.correctBoundaryConditions();
+                    hydraulicMobility =
+                        permeability/dynamicViscosityCoefficient;
+                    hydraulicMobility.correctBoundaryConditions();
+
+                    U = -hydraulicMobility*fvc::grad(p);
+                    U.correctBoundaryConditions();
+                    scalar localOutlet = 0.0;
+                    const fvsPatchScalarField& iterationOutlet =
+                        darcyFlux.boundaryField()[outletPatchId];
+                    forAll(iterationOutlet, facei)
+                    {
+                        localOutlet += Foam::max(iterationOutlet[facei], 0.0);
+                    }
+                    const scalar iterationFlow =
+                        sectorScale*globalSumValue(localOutlet);
+                    const scalar flowChange =
+                        previousFlow < 0.0
+                      ? GREAT
+                      : Foam::mag(iterationFlow - previousFlow)
+                       /Foam::max(Foam::mag(iterationFlow), VSMALL);
+                    const scalar pressureChange =
+                        globalMaxValue(localPressureChange);
+                    poroelasticFlowClosureError =
+                        Foam::mag(iterationFlow - poroelasticExactFlow)
+                       /Foam::max(Foam::mag(poroelasticExactFlow), VSMALL);
+                    poroelasticResidual = Foam::max
+                    (
+                        Foam::max(flowChange, pressureChange),
+                        Foam::max
+                        (
+                            poroelasticFlowClosureError,
+                            pressureFinalResidual
+                        )
+                    );
+                    poroelasticIterations = iteration;
+                    if
+                    (
+                        flowChange <= poroelasticRelativeTolerance
+                     && pressureChange <= poroelasticAbsoluteTolerance
+                     && poroelasticFlowClosureError
+                        <= poroelasticAbsoluteTolerance
+                     && pressureFinalResidual <= poroelasticAbsoluteTolerance
+                    )
+                    {
+                        poroelasticConverged = true;
+                        break;
+                    }
+                    previousFlow = iterationFlow;
+                }
+                if (!poroelasticConverged)
+                {
+                    FatalErrorInFunction
+                        << "Poroelastic nonlinear solve failed at t="
+                        << timeValue << " residual=" << poroelasticResidual
+                        << " closure=" << poroelasticFlowClosureError
+                        << exit(FatalError);
+                }
+            }
+            else if (!darcyForchheimer)
             {
                 fvScalarMatrix pressureEquation
                 (
@@ -1864,7 +2349,9 @@ int main(int argc, char *argv[])
         const scalar continuumAnalyticalOutletFlow =
             saturatedAtStepStart
           ? (
-                radialTwoZone
+                poroelasticCompaction
+              ? poroelasticExactFlow
+              : radialTwoZone
               ? stableSeriesFlow
                 (
                     inletPressure - outletPressure,
@@ -2152,7 +2639,11 @@ int main(int argc, char *argv[])
                 (
                     saturatedAtStepStart
                  && machineFluxRelativeDifference
-                    > machineFluxRelativeTolerance
+                    > (
+                        poroelasticCompaction
+                      ? poroelasticMachineFluxTolerance
+                      : machineFluxRelativeTolerance
+                    )
                 )
                 {
                     FatalErrorInFunction
@@ -2344,6 +2835,138 @@ int main(int argc, char *argv[])
                 << exit(FatalError);
         }
 
+        scalar localMaximumEffectiveStress = 0.0;
+        scalar localMaximumNormalizedStress = 0.0;
+        scalar localMinimumMechanicalPorosity = GREAT;
+        scalar localWeightedMechanicalPorosity = 0.0;
+        scalar localMaximumCompactionStrain = 0.0;
+        scalar localWeightedStretch = 0.0;
+        scalar localMechanicalPoreVolumeChange = 0.0;
+        scalar localMinimumCompactionPermeability = GREAT;
+        scalar localWeightedPermeability = 0.0;
+        scalar localMinimumPermeabilityRatio = GREAT;
+        scalar localReferenceVolume = 0.0;
+        forAll(mesh.V(), celli)
+        {
+            const scalar volume = mesh.V()[celli];
+            localMaximumEffectiveStress = Foam::max
+            (
+                localMaximumEffectiveStress, effectiveMatrixStress[celli]
+            );
+            localMaximumNormalizedStress = Foam::max
+            (
+                localMaximumNormalizedStress,
+                normalizedEffectiveStress[celli]
+            );
+            localMinimumMechanicalPorosity = Foam::min
+            (
+                localMinimumMechanicalPorosity, mechanicalPorosity[celli]
+            );
+            localWeightedMechanicalPorosity +=
+                mechanicalPorosity[celli]*volume;
+            localMaximumCompactionStrain = Foam::max
+            (
+                localMaximumCompactionStrain, compactionStrain[celli]
+            );
+            localWeightedStretch += (1.0-compactionStrain[celli])*volume;
+            localMechanicalPoreVolumeChange +=
+                (mechanicalPorosity[celli]-stressFreePorosity)*volume;
+            localMinimumCompactionPermeability = Foam::min
+            (
+                localMinimumCompactionPermeability, permeability[celli]
+            );
+            localWeightedPermeability += permeability[celli]*volume;
+            localMinimumPermeabilityRatio = Foam::min
+            (
+                localMinimumPermeabilityRatio,
+                compactionPermeabilityRatio[celli]
+            );
+            localReferenceVolume += volume;
+            if
+            (
+                poroelasticCompaction && saturatedAtStepStart
+             && (
+                    effectiveMatrixStress[celli] < 0.0
+                 || normalizedEffectiveStress[celli] < 0.0
+                 || normalizedEffectiveStress[celli] >= 1.0
+                 || compactionStrain[celli] < 0.0
+                 || compactionStrain[celli] >= stressFreePorosity
+                 || mechanicalPorosity[celli] <= 0.0
+                 || mechanicalPorosity[celli] > stressFreePorosity
+                 || permeability[celli] <= 0.0
+                 || permeability[celli] > stressFreePermeability
+                )
+            )
+            {
+                FatalErrorInFunction << "Invalid bounded compaction field state"
+                    << exit(FatalError);
+            }
+        }
+        const scalar referenceVolume =
+            globalSumValue(localReferenceVolume);
+        const scalar outletEffectiveStress =
+            poroelasticCompaction && saturatedAtStepStart
+          ? inletPressure - outletPressure : 0.0;
+        const scalar outletMechanicalPorosityValue =
+            poroelasticCompaction && saturatedAtStepStart
+          ? poroelasticMechanicalPorosity
+            (
+                outletEffectiveStress, stressFreePorosity,
+                criticalCompactionPressure
+            )
+          : stressFreePorosity;
+        const scalar outletPermeabilityRatio =
+            poroelasticCompaction && saturatedAtStepStart
+          ? poroelasticPermeabilityRatio
+            (
+                outletEffectiveStress, stressFreePorosity,
+                criticalCompactionPressure
+            )
+          : 1.0;
+        const scalar outletPermeabilityValue =
+            stressFreePermeability*outletPermeabilityRatio;
+        const scalar maximumEffectiveStress = Foam::max
+        (
+            globalMaxValue(localMaximumEffectiveStress),
+            outletEffectiveStress
+        );
+        const scalar maximumNormalizedEffectiveStress =
+            maximumEffectiveStress/criticalCompactionPressure;
+        const scalar minimumMechanicalPorosity = Foam::min
+        (
+            globalMinValue(localMinimumMechanicalPorosity),
+            outletMechanicalPorosityValue
+        );
+        const scalar volumeWeightedMechanicalPorosity =
+            globalSumValue(localWeightedMechanicalPorosity)
+           /Foam::max(referenceVolume, VSMALL);
+        const scalar maximumCompactionStrain =
+            globalMaxValue(localMaximumCompactionStrain);
+        const scalar predictedBedHeightRatio =
+            globalSumValue(localWeightedStretch)
+           /Foam::max(referenceVolume, VSMALL);
+        const scalar predictedBedHeight =
+            bedDepth*predictedBedHeightRatio;
+        const scalar mechanicalPoreVolumeChange =
+            sectorScale*globalSumValue(localMechanicalPoreVolumeChange);
+        const scalar minimumCompactionPermeability = Foam::min
+        (
+            globalMinValue(localMinimumCompactionPermeability),
+            outletPermeabilityValue
+        );
+        const scalar volumeWeightedPermeability =
+            globalSumValue(localWeightedPermeability)
+           /Foam::max(referenceVolume, VSMALL);
+        const scalar minimumPermeabilityRatio = Foam::min
+        (
+            globalMinValue(localMinimumPermeabilityRatio),
+            outletPermeabilityRatio
+        );
+        const scalar outletMechanicalPorosity =
+            outletMechanicalPorosityValue;
+        const scalar outletCompactionPermeability =
+            outletPermeabilityValue;
+
         const scalar cupBeverageMass = cupWaterMass + cupSoluteMass;
         const scalar instantaneousTds =
             outletVolumeFlow > VSMALL
@@ -2523,7 +3146,39 @@ int main(int argc, char *argv[])
                   << ',' << basketOperatingIterations
                   << ',' << basketOperatingResidual
                   << ',' << (basketOperatingBracketed ? 1 : 0)
-                  << ',' << (basketOperatingConverged ? 1 : 0);
+                  << ',' << (basketOperatingConverged ? 1 : 0)
+                  << ',' << bedMechanicsModel
+                  << ',' << poroelasticCompactionModel
+                  << ',' << stressFreePorosity
+                  << ',' << (poroelasticCompaction
+                                ? criticalCompactionPressure : 0.0)
+                  << ',' << (poroelasticCompaction
+                                ? criticalCompactionPressure/stressFreePorosity
+                                : 0.0)
+                  << ',' << (poroelasticCompaction
+                                ? stressFreePermeability
+                                : saturatedPermeability)
+                  << ',' << (poroelasticCompaction && saturatedAtStepStart
+                                ? 1 : 0)
+                  << ',' << 0
+                  << ',' << maximumEffectiveStress
+                  << ',' << maximumNormalizedEffectiveStress
+                  << ',' << minimumMechanicalPorosity
+                  << ',' << outletMechanicalPorosity
+                  << ',' << volumeWeightedMechanicalPorosity
+                  << ',' << maximumCompactionStrain
+                  << ',' << predictedBedHeightRatio
+                  << ',' << predictedBedHeight
+                  << ',' << mechanicalPoreVolumeChange
+                  << ',' << minimumCompactionPermeability
+                  << ',' << outletCompactionPermeability
+                  << ',' << volumeWeightedPermeability
+                  << ',' << minimumPermeabilityRatio
+                  << ',' << poroelasticExactFlow
+                  << ',' << poroelasticFlowClosureError
+                  << ',' << poroelasticIterations
+                  << ',' << poroelasticResidual
+                  << ',' << (poroelasticConverged ? 1 : 0);
             if (effectivePermeabilityEnabled)
             {
                 trace << ',' << (saturatedAtStepStart ? 1 : 0)

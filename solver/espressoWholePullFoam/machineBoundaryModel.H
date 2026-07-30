@@ -4,6 +4,7 @@
 #include "scalar.H"
 #include "word.H"
 #include "forchheimerResistance.H"
+#include "poroelasticCompaction.H"
 #include <cmath>
 
 namespace Foam
@@ -59,6 +60,72 @@ struct RadialPuckState
     bool bracketed;
     bool converged;
 };
+
+struct PoroelasticPuckState
+{
+    scalar basketPressure;
+    scalar flow;
+    scalar residual;
+    label iterations;
+    bool bracketed;
+    bool converged;
+};
+
+inline PoroelasticPuckState poroelasticSaturatedPuckState
+(
+    const scalar upstreamPressure,
+    const scalar outletPressure,
+    const scalar upstreamResistance,
+    const PoroelasticPuckParameters& puck,
+    const scalar relativeTolerance,
+    const scalar absoluteTolerance,
+    const label maximumIterations
+)
+{
+    scalar lo = outletPressure;
+    scalar hi = upstreamPressure;
+    PoroelasticPuckState state
+    {
+        outletPressure, 0.0, GREAT, 0, false, false
+    };
+    const auto evaluate = [&](const scalar basket, PoroelasticPuckState& target)
+    {
+        target.basketPressure = basket;
+        target.flow = poroelasticPuckFlow(basket - outletPressure, puck);
+        target.residual =
+            basket - (upstreamPressure - upstreamResistance*target.flow);
+    };
+    PoroelasticPuckState lowState(state), highState(state);
+    evaluate(lo, lowState);
+    evaluate(hi, highState);
+    state.bracketed =
+        std::isfinite(lowState.residual) && std::isfinite(highState.residual)
+     && lowState.residual <= 0.0 && highState.residual >= 0.0;
+    if (!state.bracketed)
+    {
+        return state;
+    }
+    for (label iteration = 1; iteration <= maximumIterations; ++iteration)
+    {
+        evaluate(0.5*(lo + hi), state);
+        state.iterations = iteration;
+        state.bracketed = true;
+        const scalar scale =
+            Foam::max(Foam::mag(upstreamPressure - outletPressure), 1.0);
+        if
+        (
+            Foam::mag(state.residual)
+         <= absoluteTolerance*scale + relativeTolerance*scale
+        )
+        {
+            state.converged = true;
+            break;
+        }
+        if (state.residual > 0.0) hi = state.basketPressure;
+        else lo = state.basketPressure;
+    }
+    return state;
+}
 
 inline scalar machineRamp(const scalar t, const scalar rampTime)
 {
@@ -238,7 +305,8 @@ inline MachineBoundaryState solveMachineBoundary
     const scalar porosity,
     const scalar wettingPermeability,
     const scalar viscosity,
-    const RadialPuckParameters* radial = nullptr
+    const RadialPuckParameters* radial = nullptr,
+    const PoroelasticPuckParameters* poroelastic = nullptr
 )
 {
     scalar lo = outletPressure;
@@ -255,7 +323,13 @@ inline MachineBoundaryState solveMachineBoundary
 
     const auto residualAt = [&](const scalar pu)
     {
-        const scalar qp = saturated && radial
+        const scalar qp = saturated && poroelastic
+          ? poroelasticSaturatedPuckState
+            (
+                pu, outletPressure, p.upstreamResistance, *poroelastic,
+                p.relativeTolerance, p.absoluteTolerance, p.maximumIterations
+            ).flow
+          : saturated && radial
           ? radialSaturatedPuckState
             (
                 pu, outletPressure, p.upstreamResistance, *radial,
@@ -297,7 +371,19 @@ inline MachineBoundaryState solveMachineBoundary
     for (label i = 1; i <= p.maximumIterations; ++i)
     {
         const scalar pu = 0.5*(lo + hi);
-        const RadialPuckState radialState = saturated && radial
+        const PoroelasticPuckState poroelasticState =
+            saturated && poroelastic
+          ? poroelasticSaturatedPuckState
+            (
+                pu, outletPressure, p.upstreamResistance, *poroelastic,
+                p.relativeTolerance, p.absoluteTolerance, p.maximumIterations
+            )
+          : PoroelasticPuckState
+            {
+                outletPressure, 0.0, 0.0, 0, true, true
+            };
+        const RadialPuckState radialState =
+            saturated && radial && !poroelastic
           ? radialSaturatedPuckState
             (
                 pu, outletPressure, p.upstreamResistance, *radial,
@@ -307,7 +393,9 @@ inline MachineBoundaryState solveMachineBoundary
             {
                 outletPressure, 0.0, 0.0, 0.0, 0.0, 0, true, true
             };
-        const scalar qp = saturated && radial
+        const scalar qp = saturated && poroelastic
+          ? poroelasticState.flow
+          : saturated && radial
           ? radialState.totalFlow
           : saturated
           ? (
@@ -333,7 +421,9 @@ inline MachineBoundaryState solveMachineBoundary
         const scalar residual =
             p.compliance*(pu - previousUpstreamPressure)/dt - (qs - qp);
         state.upstreamPressure = pu;
-        state.basketPressure = saturated && radial
+        state.basketPressure = saturated && poroelastic
+          ? poroelasticState.basketPressure
+          : saturated && radial
           ? radialState.basketPressure
           : Foam::max(outletPressure, pu - p.upstreamResistance*qp);
         state.supplyFlow = qs;
@@ -345,10 +435,18 @@ inline MachineBoundaryState solveMachineBoundary
         state.fallbackUsed = false;
         state.innerPuckFlow = saturated && radial ? radialState.innerFlow : 0.0;
         state.outerPuckFlow = saturated && radial ? radialState.outerFlow : 0.0;
-        state.basketResidual = saturated && radial ? radialState.residual : 0.0;
-        state.basketIterations = saturated && radial ? radialState.iterations : 0;
-        state.basketBracketed = !radial || radialState.bracketed;
-        state.basketConverged = !radial || radialState.converged;
+        state.basketResidual = saturated && poroelastic
+          ? poroelasticState.residual
+          : saturated && radial ? radialState.residual : 0.0;
+        state.basketIterations = saturated && poroelastic
+          ? poroelasticState.iterations
+          : saturated && radial ? radialState.iterations : 0;
+        state.basketBracketed = poroelastic
+          ? poroelasticState.bracketed
+          : !radial || radialState.bracketed;
+        state.basketConverged = poroelastic
+          ? poroelasticState.converged
+          : !radial || radialState.converged;
         const scalar scale = Foam::max(Foam::max(qs, qp), VSMALL);
         if
         (
