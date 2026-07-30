@@ -1,0 +1,57 @@
+{
+  "schema_version": "espresso.public.wp02_004.run_spec.v1",
+  "task": "WP02-004",
+  "issue": 32,
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "base_commit": "b8eb46bd13c2f49412a4f46d4ba86e8eed476e94",
+  "base_tree": "4b48e08a3302adfa328ddd486296534a1584ecd8",
+  "openfoam_target": "OpenFOAM Foundation 12",
+  "reference": {
+    "basket_radius_m": 0.029,
+    "interface_radius_fraction": 0.5,
+    "interface_radius_m": 0.0145,
+    "inner_area_fraction": 0.25,
+    "outer_area_fraction": 0.75,
+    "reference_permeability_m2": 1.77e-15,
+    "contrast_values": [4.0, 16.0],
+    "profile_status": "SYNTHETIC_ENGINEERING_DEMONSTRATION"
+  },
+  "matched_profiles": {
+    "c4_high_inner": {"inner_permeability_m2": 4.045714285714286e-15, "outer_permeability_m2": 1.0114285714285715e-15},
+    "c4_high_outer": {"inner_permeability_m2": 5.446153846153846e-16, "outer_permeability_m2": 2.1784615384615382e-15},
+    "c16_high_inner": {"inner_permeability_m2": 5.962105263157895e-15, "outer_permeability_m2": 3.7263157894736843e-16}
+  },
+  "case_matrix": {
+    "RH-0": {"pressure": "prescribedPressure", "flow": "darcy", "profile": "uniform"},
+    "RH-1": {"pressure": "prescribedPressure", "flow": "darcy", "profile": "radial_two_zone", "contrast": 1, "high_zone": "none"},
+    "RH-2": {"pressure": "prescribedPressure", "flow": "darcy", "profile": "radial_two_zone", "contrast": 4, "high_zone": "inner"},
+    "RH-3": {"pressure": "prescribedPressure", "flow": "darcy", "profile": "radial_two_zone", "contrast": 4, "high_zone": "outer"},
+    "RH-4": {"pressure": "prescribedPressure", "flow": "darcy", "profile": "radial_two_zone", "contrast": 16, "high_zone": "inner"},
+    "RH-5": {"pressure": "lumpedMachineCompliance", "flow": "darcy", "profile": "uniform"},
+    "RH-6": {"pressure": "lumpedMachineCompliance", "flow": "darcy", "profile": "radial_two_zone", "contrast": 4, "high_zone": "inner"},
+    "RH-7": {"pressure": "lumpedMachineCompliance", "flow": "darcy", "profile": "radial_two_zone", "contrast": 4, "high_zone": "outer"},
+    "RH-8": {"pressure": "lumpedMachineCompliance", "flow": "darcyForchheimer", "profile": "radial_two_zone", "contrast": 4, "high_zone": "inner", "inertial": "wadsworth2026CeramicsFit"}
+  },
+  "timestep_refinement": {"case": "RH-6", "delta_t_s": [0.02, 0.01, 0.005]},
+  "radial_mesh_refinement": {"case": "RH-6", "radial_cells": [256, 512, 1024], "axial_cells": 256},
+  "acceptance": {
+    "equal_zone_relative_error": 1e-10,
+    "zone_flow_relative_error": 1e-8,
+    "total_flow_relative_error": 1e-8,
+    "metric_absolute_error": 1e-10,
+    "machine_reference_relative_error": 1e-10,
+    "conductance_identity_relative_error": 1e-12,
+    "matched_total_flow_relative_error": 1e-7,
+    "machine_hydraulic_history_relative_error": 1e-6,
+    "radial_to_axial_velocity_ratio": 1e-6,
+    "machine_field_flux_relative_error": 1e-6,
+    "fine_pair_relative_change": 0.005
+  },
+  "claim_boundary": {
+    "PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "EXPERIMENTAL_COMMISSIONING": "NOT_AUTHORIZED",
+    "HOLDOUT_ACQUISITION": "NOT_PERFORMED",
+    "PROTECTED_SCORING": "NOT_PERFORMED",
+    "RESULT_CLASS": "NUMERICAL_VERIFICATION_AND_SYNTHETIC_SPATIAL_HETEROGENEITY_DIAGNOSTIC"
+  }
+}

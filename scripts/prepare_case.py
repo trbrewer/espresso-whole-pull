@@ -208,11 +208,31 @@ def render_properties(scenario: dict) -> str:
     extraction = scenario["extraction"]
     time_cfg = scenario["time"]
     r1 = is_r1_scenario(scenario)
+    closure = scenario.get("effective_permeability_evolution")
     profile = (
         hydraulic["permeability_profile"]
         if r1
         else hydraulic.get("permeability_profile", {"type": "uniform"})
     )
+    profile_type = profile.get("type", "uniform")
+    if profile_type not in {"uniform", "axial_two_layer", "radial_two_zone"}:
+        raise SystemExit("unsupported permeability profile")
+    radius = float(geometry["basket_radius_m"])
+    interface_radius = float(profile.get("interface_radius_m", 0.5*radius))
+    inner_k = float(profile.get(
+        "inner_permeability_m2", hydraulic["saturated_permeability_m2"]
+    ))
+    outer_k = float(profile.get(
+        "outer_permeability_m2", hydraulic["saturated_permeability_m2"]
+    ))
+    if (
+        not all(math.isfinite(x) for x in (interface_radius, inner_k, outer_k))
+        or not (0.0 < interface_radius < radius)
+        or inner_k <= 0.0 or outer_k <= 0.0
+    ):
+        raise SystemExit("invalid radial permeability profile")
+    if closure is not None and profile_type != "uniform":
+        raise SystemExit("effective permeability evolution requires uniform profile")
     probes = (
         scenario["verification"]["pressure_probes"]
         if r1
@@ -227,7 +247,6 @@ def render_properties(scenario: dict) -> str:
         ]
     axial_dx = float(bed["bed_depth_m"]) / int(geometry["axial_cells"])
     smoothing = float(wetting["front_smoothing_cells"]) * axial_dx
-    closure = scenario.get("effective_permeability_evolution")
     pressure_boundary_model = scenario.get(
         "pressureBoundaryModel", "prescribedPressure"
     )
@@ -258,12 +277,24 @@ def render_properties(scenario: dict) -> str:
         profile_downstream_ki = float(
             profile.get("downstream_inertial_permeability_m", constant_ki)
         )
+        inner_ki = float(profile.get(
+            "inner_inertial_permeability_m", constant_ki
+        ))
+        outer_ki = float(profile.get(
+            "outer_inertial_permeability_m", constant_ki
+        ))
+        if model == "constant" and profile_type == "radial_two_zone" and (
+            not all(math.isfinite(x) and x > 0.0 for x in (inner_ki, outer_ki))
+        ):
+            raise SystemExit("constant radial profile requires positive zone k_I")
         flow_dictionary = f'''
 flowResistanceModel darcyForchheimer;
 inertialPermeabilityModel {model};
 constantInertialPermeabilityM {constant_ki:.16g};
 layerInertialPermeabilityUpstream {profile_upstream_ki:.16g};
 layerInertialPermeabilityDownstream {profile_downstream_ki:.16g};
+innerInertialPermeabilityM {inner_ki:.16g};
+outerInertialPermeabilityM {outer_ki:.16g};
 nonlinearRelativeTolerance {rel:.16g};
 nonlinearAbsoluteTolerance {absolute:.16g};
 nonlinearMaximumIterations {maximum};
@@ -403,6 +434,9 @@ permeabilityProfile        {profile['type'] if r1 else profile.get('type', 'unif
 layerInterfacePosition     {float(profile['interface_position_m'] if r1 else profile.get('interface_position_m', 0.5*float(bed['bed_depth_m']))):.16g};
 layerPermeabilityUpstream  {float(profile['upstream_permeability_m2'] if r1 else profile.get('upstream_permeability_m2', hydraulic['saturated_permeability_m2'])):.16g};
 layerPermeabilityDownstream {float(profile['downstream_permeability_m2'] if r1 else profile.get('downstream_permeability_m2', hydraulic['saturated_permeability_m2'])):.16g};
+interfaceRadiusM            {interface_radius:.16g};
+innerPermeabilityM2        {inner_k:.16g};
+outerPermeabilityM2        {outer_k:.16g};
 
 pressureProbe1Position     {float(probes[0]['position_m']):.16g};
 pressureProbe1HalfWidth    {float(probes[0]['half_width_m']):.16g};
@@ -986,7 +1020,25 @@ def main() -> None:
 
     preflight_dir = case / "preflight"
     preflight_dir.mkdir(parents=True, exist_ok=True)
-    preview = analytical_preview(scenario)
+    preview_scenario = scenario
+    preview_profile = scenario["hydraulics"].get(
+        "permeability_profile", {"type": "uniform"}
+    )
+    if preview_profile.get("type") == "radial_two_zone":
+        preview_scenario = json.loads(json.dumps(scenario))
+        radius = float(scenario["geometry"]["basket_radius_m"])
+        interface = float(preview_profile["interface_radius_m"])
+        inner_fraction = (interface/radius)**2
+        equivalent = (
+            inner_fraction*float(preview_profile["inner_permeability_m2"])
+          + (1.0-inner_fraction)
+           *float(preview_profile["outer_permeability_m2"])
+        )
+        preview_scenario["hydraulics"]["saturated_permeability_m2"] = equivalent
+        preview_scenario["hydraulics"]["permeability_profile"] = {
+            "type": "uniform"
+        }
+    preview = analytical_preview(preview_scenario)
     if r1:
         if is_wp02_scenario(scenario):
             preview["notes"] = [

@@ -79,6 +79,21 @@ EXPECTED_PATHS = frozenset({
     "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.json",
     "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.sha256",
     "validation/wp02/WP02_003_DARCY_FORCHHEIMER_TRACE.csv",
+    # Exact later WP02-004 solver-bearing work-package paths.
+    "docs/reports/WP02_004_RADIAL_HETEROGENEITY_RESULTS.md",
+    "scripts/analyze_wp02_004_radial_heterogeneity.py",
+    "scripts/radial_heterogeneity_reference.py",
+    "scripts/run_wp02_004_production_fixture.sh",
+    "scripts/run_wp02_004_radial_heterogeneity.sh",
+    "tests/fixtures/wp02_004_radial/Make/files",
+    "tests/fixtures/wp02_004_radial/Make/options",
+    "tests/fixtures/wp02_004_radial/wp02_004_radial_fixture.C",
+    "tests/test_wp02_004_radial_heterogeneity.py",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_FIELD_INDEX.json",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RESULTS.json",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RUN_SPEC.json",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RUN_SPEC.sha256",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_TRACE.csv",
 })
 LATER_WP02_002_PATHS = frozenset({
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md",
@@ -113,6 +128,20 @@ LATER_WP02_002_PATHS = frozenset({
     "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.json",
     "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.sha256",
     "validation/wp02/WP02_003_DARCY_FORCHHEIMER_TRACE.csv",
+    "docs/reports/WP02_004_RADIAL_HETEROGENEITY_RESULTS.md",
+    "scripts/analyze_wp02_004_radial_heterogeneity.py",
+    "scripts/radial_heterogeneity_reference.py",
+    "scripts/run_wp02_004_production_fixture.sh",
+    "scripts/run_wp02_004_radial_heterogeneity.sh",
+    "tests/fixtures/wp02_004_radial/Make/files",
+    "tests/fixtures/wp02_004_radial/Make/options",
+    "tests/fixtures/wp02_004_radial/wp02_004_radial_fixture.C",
+    "tests/test_wp02_004_radial_heterogeneity.py",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_FIELD_INDEX.json",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RESULTS.json",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RUN_SPEC.json",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RUN_SPEC.sha256",
+    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_TRACE.csv",
 })
 FROZEN = {
     "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json":
