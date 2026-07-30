@@ -2,18 +2,27 @@
 
 OpenFOAM-based research solver for espresso-puck wetting, porous flow, extraction, and multiscale integration with Puckworks.
 
-> **Research software:** v0.2.0 finalizes WP-0.2A. It
-> adds one optional governing-physics closure while preserving the immutable
-> v0.1.4-public.1 R0 baseline and constant R1 control. Physical validation is
-> **NOT_ESTABLISHED**.
+> **Research software:** Hydraulic integration through static radial
+> heterogeneity and saturated quasi-static compaction are merged. The active
+> phase is source-specific validation and mechanism discrimination. Physical
+> validation is **NOT_ESTABLISHED**.
 
 The approximately 40 g beverage endpoint at 30 s was used in the saturated-permeability calibration. It is not an independent prediction or validation target. The software does not yet predict taste.
 
 ## Current scope
 
-The current Foundation OpenFOAM 12 model represents initially dry sharp-front wetting, saturated Darcy flow, one-solute conservative transport and extraction, retained inventories, and cup accumulation.
+The Foundation OpenFOAM 12 model represents initially dry sharp-front wetting,
+prescribed or machine-coupled pressure, Darcy and Darcy–Forchheimer saturated
+flow, static axial/radial permeability heterogeneity, optional evolving
+effective permeability, saturated quasi-static compaction, one-solute
+conservative transport and extraction, spatial diagnostics, retained
+inventories, and cup accumulation.
 
-Evolving structure, fines migration, channeling, thermal coupling, and multispecies chemistry are roadmap capabilities, not implemented or validated capabilities of R0. Taste and transfer across coffees, grinders, baskets, machines, and recipes are not yet predicted.
+The post-WP03-001 roadmap now confronts existing branches with evidence,
+uncertainty and identifiability analysis before choosing further governing
+physics. Fines migration, dynamic channeling, thermal coupling and multispecies
+chemistry remain evidence-selected candidates. Taste and transfer are not
+predicted.
 
 The frozen archival R0 baseline is `FROZEN / QUALIFIED` at the numerical and provenance levels. The public source is not byte-identical to that offline archive because host and path metadata were sanitized. The 19-file scientific-input bundle and governing physics are unchanged.
 
@@ -26,6 +35,13 @@ Full generated fields, uncleaned runs, processor directories, compiled executabl
 - Sanitization proof: `provenance/PUBLIC_SANITIZATION_REPORT.json`
 - Compact baseline summary: `validation/baselines/v0.1.4/PUBLIC_BASELINE_SUMMARY.json`
 - Claim ceiling: `docs/CLAIM_CEILING.md`
+- Controlling strategy:
+  `docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md`
+- Concise roadmap:
+  `docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md`
+- Validation action plan:
+  `docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md`
+- Current project state: `docs/PROJECT_STATE.md`
 
 ## Development
 
@@ -49,9 +65,10 @@ The published release and bounded assets are available at
 [v0.2.0](https://github.com/trbrewer/espresso-whole-pull/releases/tag/v0.2.0).
 WP-0.3A reviewed the moving Puckworks evidence baseline and found no presently
 qualifying independent hydraulic holdout. Its frozen contract authorizes no
-execution and no additional mechanism. The next evidence task is to acquire
-the independently instrumented pressure/flow campaign specified by that
-contract; physical validation remains **NOT_ESTABLISHED**.
+execution and no additional mechanism. The next implementation task is the
+validation-adapter framework and first admissible component comparisons.
+Experimental commissioning, protected scoring and holdout execution remain
+unauthorized; physical validation remains **NOT_ESTABLISHED**.
 
 ## License
 

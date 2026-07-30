@@ -1,7 +1,7 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "WP03-001_POROELASTIC_COMPACTION",
+  "current_governance_milestone": "POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION",
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
     "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION"
@@ -29,7 +29,7 @@
     "python_test_count": 230,
     "static_gate_count": 34,
     "source_manifest_file_count": 179,
-    "source_manifest_aggregate_sha256": "e756c82016f57d0c2bfaf06aa3dbbd9c446f669bc63dcd45810db705c2d502e8",
+    "source_manifest_aggregate_sha256": "07a47f00db329dbd424ede52e4b0e60581973aad78fefa874f34c169c0a38759",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -77,6 +77,17 @@
     "case_completion": "PASS",
     "physical_validation": "NOT_ESTABLISHED"
   },
+  "post_wp03_001_validation_pivot": {
+    "change": "STRATEGY_AND_ROADMAP_ALIGNMENT",
+    "governing_physics_change": false,
+    "model_execution": false,
+    "validation_execution": false,
+    "experimental_authorization": false,
+    "dependency_lock_change": false,
+    "claim_ceiling_expansion": false,
+    "active_phase": "POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
   "wp_0_3b_amendment_state": {
     "original_result": "NONPROTECTED_REFERENCE_VERIFICATION_FAIL",
     "commit_3a": "TRANSCRIPTION_AND_DERIVATION_CHECKPOINT",
@@ -112,6 +123,6 @@
   "wp_0_3a_contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
   "wp_0_3a_solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
-  "next_scientific_milestone": "INDEPENDENT_HYDRAULIC_CAMPAIGN_ACQUISITION_AND_PRE_REGISTRATION",
+  "next_scientific_milestone": "VAL_001_SOURCE_SPECIFIC_VALIDATION_ADAPTER_FRAMEWORK_AND_FIRST_COMPONENT_COMPARISONS",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }

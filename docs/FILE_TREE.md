@@ -1,5 +1,14 @@
 # Package file tree — v0.1.4
 
+This tree is the historical v0.1.4 package view. Current navigation:
+
+- [Project state](PROJECT_STATE.md)
+- [Claim ceiling](CLAIM_CEILING.md)
+- [Puckworks integration](PUCKWORKS_INTEGRATION.md)
+- [Controlling strategy](strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md)
+- [Concise roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)
+- [Post-WP03 validation plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md)
+
 ```text
 .
 ├── Allrun

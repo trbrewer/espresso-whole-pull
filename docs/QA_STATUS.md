@@ -40,7 +40,7 @@ and source/holdout-fit counts remained zero.
 
 ## Current repository checks
 
-- Python tests: 199/199 PASS
+- Python tests: 230/230 PASS at the merged WP03-001 baseline
 - active static gates: 34/34 PASS
 - source manifest: recorded in `PACKAGE_QA_STATUS.json` and
   `SOURCE_PACKAGE_MANIFEST.json`
@@ -62,11 +62,21 @@ Physical validation remains `NOT_ESTABLISHED`.
 
 ## WP-0.3C Stage-0 scaffold
 
-The current governance milestone is WP-0.3C Stage 0. Requirements,
+WP-0.3C Stage 0 remains a completed, frozen scaffold. Requirements,
 public/private intake templates, and readiness validation are present.
 Real-world human and apparatus inputs remain unresolved. Final
 preregistration, commissioning, holdout acquisition, model execution, and
 scoring are not authorized.
 
-Current Stage-0 checks comprise 199/199 Python tests, 34/34 active static
-gates, and 143/143 source-manifest entries.
+Its historical completion counts are retained in its result records.
+
+## Post-WP03-001 phase
+
+WP03-001 is merged and numerically verified for its tested cases. The active
+program phase is source-specific validation and mechanism discrimination.
+This documentation alignment performs no model or validation execution and
+authorizes no experiment, protected scoring or holdout opening.
+
+Current test and source-manifest identities are generated in
+`PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
+validation remains `NOT_ESTABLISHED`.

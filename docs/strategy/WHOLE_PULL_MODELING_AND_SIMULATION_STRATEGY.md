@@ -1,9 +1,9 @@
 # Puckworks Whole-Pull Multiscale Modeling and Simulation Strategy
 
-**Strategy version:** 1.5
-**Date:** 29 July 2026
-**Status:** Controlling public-development workflow; WP-0.1R is complete, R0 remains `FROZEN / QUALIFIED`, and physical validation remains not established
-**Supersedes:** strategy v1.4 and all earlier strategy versions
+**Strategy version:** 1.6
+**Date:** 30 July 2026
+**Status:** Controlling solver-development and validation workflow; WP03-001 complete; post-WP03-001 validation and mechanism discrimination active; physical validation not established
+**Supersedes:** strategy v1.5 and all earlier strategy versions
 **Repository:** `trbrewer/espresso-whole-pull`; Puckworks remains the external evidence/model/data dependency
 **Reviewed Puckworks dependency baseline:** repository `https://github.com/trbrewer/puckworks.git`; commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`; tree `1d553e44ee2f7480a5df521560801b478618cc84`; alignment status `REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF`. The dependency review, source dossier, calibration/comparison contract, deterministic R1 bridge, and governed WP-0.1R execution are complete.
 **OpenFOAM implementation baseline:** `espresso_puck_whole_pull_reference_v0_1_4_openfoam12`, terminal freeze manifest `PASS`
@@ -12,37 +12,61 @@
 **Primary pore-scale platform:** Taichi/LBM on NVIDIA A100-SXM4-80GB-class GPU resources
 **Scientific and software backbone:** Puckworks models, data, model cards, contracts, validation gates, rights records, and public product layer
 **WP-0.1 disposition:** **IMPLEMENTATION PASS; BOUNDED CODE VERIFICATION PASS; NUMERICAL QUALIFICATION PASS; RELEASE PROVENANCE PASS; R0 FROZEN / QUALIFIED; PHYSICAL VALIDATION NOT ESTABLISHED**
-**Next controlling milestone:** issue #18, WP02-001, implementing the optional Waszkiewicz saturated dissolution-indexed effective-permeability branch
+**Next controlling milestone:** Post-WP03-001 source-specific validation and mechanism discrimination
 
 ---
 
 ## Executive statement
 
-Version 1.5 records completion of WP-0.1R and selects the first evidence-led
-WP-0.2 mechanism. WP-0.1R passed numerical, conservation, and calibration
-reproduction gates, but failed the five protected flow-shape comparisons with
-zero predicted protected-window variation. The governed corrective result
-exactly reproduced the preliminary result. The controlling residual is
-`STRUCTURAL_MODEL_INADEQUACY`; physical validation remains
-`NOT_ESTABLISHED`.
+The program now has an executable modular whole-pull solver spanning initially
+dry wetting, first drip, prescribed or machine-coupled pressure, Darcy and
+Darcy–Forchheimer flow, evolving effective permeability, static axial and
+radial heterogeneity, conservative solute transport, spatial extraction
+diagnostics, cup accumulation, and saturated quasi-static compaction.
 
-### WP-0.2A — Source-linked saturated hydraulic evolution
+WP03-001 completes the planned first-generation extension sequence before a
+validation-led pivot. The limiting issue is no longer whether additional
+equations can be implemented. It is whether competing mechanisms can be
+identified from real espresso observations.
 
-The selected first mechanism is the Waszkiewicz saturated
-dissolution-indexed effective-permeability closure. Its first implementation
-is an optional algebraic effective-permeability branch driven by the locked
-empirical dissolved-mass trajectory. It changes saturated hydraulic
-resistance only and preserves the constant-permeability branch as a regression
-control.
+Compaction, swelling, dissolution-driven porosity, state-dependent
+permeability, concentration-dependent viscosity, fines, damage, and channeling
+can produce overlapping pressure, flow, cup-mass, TDS, extraction, and
+spatial-maldistribution signatures. Adding several such mechanisms without
+intervening data comparison would increase flexibility faster than physical
+identifiability.
 
-The first branch excludes dynamic pore-volume storage, deforming mesh, a full
-stress/displacement solve, swelling, hysteresis, machine/headspace coupling,
-fines, and channeling. Full poroelastic deformation and solver-coupled
-dissolved mass remain later evolving-puck work. Machine/headspace coupling is
-the immediate runner-up if this branch leaves a coherent boundary-history
-residual. No mechanism may be hidden in an arbitrary fitted `K(t)`, and
-development remains one mechanism at a time. Issue #18 is the next milestone;
-this strategy decision implements no governing physics.
+The next program tranche therefore develops source-specific validation
+adapters, uncertainty-aware comparisons, sensitivity and identifiability
+tools, residual decomposition, mechanism discrimination, ensemble execution,
+and experimental design. This is solver development directed at evidence, not
+a pause in solver development.
+
+The next governing-physics increment will be selected from observed residuals
+and information gaps rather than from implementation convenience. General
+physical validation remains `NOT_ESTABLISHED`.
+
+### Completed first-generation extension sequence
+
+WP02-001 through WP02-004 and WP03-001 are complete. They added optional
+dissolution-indexed effective permeability, machine/headspace compliance and
+an emergent basket-pressure operating point, saturated Darcy–Forchheimer
+resistance, static radial flow focusing with zone-resolved extraction, and
+saturated quasi-static compaction.
+
+WP03-001 changes mechanical porosity and permeability under effective stress,
+composes with the machine operating-point calculation, and is inactive during
+wetting. It uses a fixed reference mesh, does not solve solid displacement,
+and does not couple mechanical porosity to transport storage. Transient Biot
+storage, plasticity, hysteresis, swelling, fines, damage, and dynamic
+channeling remain outside that branch.
+
+### Historical Version 1.5 decision
+
+Version 1.5 selected WP02-001 under issue #18 as the first evidence-led WP-0.2
+mechanism and identified machine/headspace coupling as its runner-up. That
+sequence is now historical: WP02-001, machine coupling, Darcy–Forchheimer
+integration, radial heterogeneity, and WP03-001 have all been completed.
 
 Version 1.4 recorded the transition to a clean public solver repository. It changed repository governance, public provenance, CI, licensing documentation, and dependency workflow only. It did not change governing physics, scientific configuration, calibration, numerical schemes, validation thresholds, the scientific roadmap, or the claim ceiling. Exact archival v0.1.4 bytes remain offline; public development begins from the sanitized derivative `v0.1.4-public.1`.
 
@@ -138,7 +162,12 @@ terminal freeze manifest generated last.
 
 The terminal manifest—not intermediate preterminal status text—is the final authority. One benign diagnostic-classifier false positive remains in the finalized run status: the empty JSON member `"failed_comparisons": []` was listed as a detected issue. It does not represent a failed comparison, did not affect any gate, and does not justify mutating or regenerating the frozen baseline. The classifier should be corrected on the next development branch.
 
-WP-0.1H is therefore complete at the implementation, code-verification, numerical-qualification, and immutable-provenance levels. This materially changes the program’s critical path. The next task is not another R0 release and is not immediate addition of attractive multiphysics. It is to preserve and register the qualified baseline, then test the architecture against source-linked evidence.
+### Historical Version 1.5 immediate sequence
+
+The following paragraphs retain the Version 1.5 sequence for chronology. Every
+listed implementation item has since been completed or superseded.
+
+WP-0.1H was complete at the implementation, code-verification, numerical-qualification, and immutable-provenance levels. At that time, this changed the program’s critical path from another R0 release to preserving and registering the qualified baseline and testing the architecture against source-linked evidence.
 
 The immediate program sequence is:
 
@@ -159,6 +188,55 @@ The model program continues to combine four capabilities:
 The controlling development philosophy is now:
 
 > **Preserve the frozen whole-pull baseline, confront it with source-linked evidence, and extend it one mechanism at a time only when a named residual, experiment or engineering decision requires the added physics.**
+
+### Why the validation pivot occurs after WP03-001
+
+The solver now contains independently selectable hydraulic and structural
+hypotheses, and its analytical, regression, conservation, timestep, mesh, and
+MPI evidence is sufficiently mature for real-data confrontation. For the
+tested cases, discretization and solver uncertainty are generally smaller than
+unresolved uncertainty in real permeability, wetting, extraction, machine
+response, structural evolution, and transfer.
+
+The post-WP03-001 bottleneck is therefore an
+`EPISTEMIC_IDENTIFIABILITY_LIMIT`, not a computational or architectural block.
+Compaction, swelling, dissolution-driven porosity change, state-dependent
+permeability, concentration-dependent viscosity, fines deposition or release,
+and damage or channel formation can all contribute to declining flow, changing
+basket pressure, altered cup production, TDS, extraction yield, and spatial
+maldistribution. A model that can fit those observations with several
+alternative mechanisms is not necessarily better identified or more
+predictive.
+
+Unrestricted mechanism accumulation or fitting would promote equifinality
+rather than physical understanding. Validation and mechanism discrimination
+now have greater information value than another immediate physics branch.
+Future physics remains technically possible; evidence will determine which
+branch is load-bearing.
+
+### Program cadence after WP03-001
+
+> **After WP03-001, the program must not add two new evolving-puck
+> governing-physics mechanisms consecutively without an intervening comparison
+> against relevant real espresso evidence.**
+
+This is human program-development guidance. It is not a CI gate, a
+static-validation requirement, a merge blocker, or a new repository-governance
+framework. It does not prohibit numerical corrections, scientific bug fixes,
+source adapters, validation tooling, sensitivity or uncertainty analysis,
+identifiability work, or bounded improvements needed to compare an existing
+model with measured observables.
+
+The operating cadence is:
+
+```text
+verify implementation
+-> compare with evidence
+-> decompose residuals
+-> select one mechanism
+-> implement and verify
+-> return to evidence
+```
 
 ## 1. Why Version 1.3 is a milestone update
 
@@ -219,7 +297,7 @@ The v0.1.4 fresh-package run and terminal manifest establish that the bounded wh
 
 The project therefore has a **frozen and numerically qualified machine-to-cup computational spine** for the declared R0 equations.
 
-### 1.4 What remains unestablished
+### 1.4 What remains unestablished after WP03-001
 
 The completed freeze does not establish:
 
@@ -228,14 +306,14 @@ The completed freeze does not establish:
 - physical validation of first drip, flow, TDS or extraction yield for a protected real-coffee experiment;
 - transfer across coffees, grinders, baskets, machines or recipes;
 - validated swelling, compaction, fines migration, clogging or channeling;
-- full machine/headspace/basket coupling;
+- independent physical validation of machine/headspace/basket coupling;
 - engineering optimization or taste prediction.
 
 The approximately 40 g result remains a calibration-class endpoint because saturated permeability is the declared R0 hydraulic scale parameter. The extraction rate, extractable fraction, effective dispersion and concentration ceiling remain engineering assumptions for WP-0.1.
 
 Immutable provenance strengthens the evidence record; it does not transform a calibrated scenario into independent validation.
 
-### 1.5 Strategic consequence
+### 1.5 Historical strategic consequence at Version 1.3
 
 The program’s critical path has advanced:
 
@@ -259,7 +337,10 @@ The principal risks are now:
 - adding new physics before the first source-linked residual is understood;
 - integrating code into Puckworks without preserving the exact artifact, evidence and validity contracts.
 
-Version 1.3 therefore treats R0 as a protected baseline, WP-0.1R as the next scientific test, and Puckworks registration as a governed integration task rather than a code-copy exercise.
+Version 1.3 therefore treated R0 as a protected baseline and WP-0.1R as the
+next scientific test. That chronology is preserved here as historical context;
+the current active tranche is post-WP03-001 validation and mechanism
+discrimination.
 
 ## 2. Program mission, objectives, and definition of success
 
@@ -819,7 +900,9 @@ Optional inertial extension:
 + \rho_\ell\,\boldsymbol{\beta}_F |\mathbf{u}|\mathbf{u}.
 \]
 
-The executed reference shot uses Darcy flow and should use the Puckworks inertial model as a regime diagnostic before any Forchheimer branch is activated. Forchheimer physics should be activated only when the predicted regime and evidence justify it.
+The frozen R0 reference uses Darcy flow. The current solver also provides the
+completed optional WP02-003 Darcy–Forchheimer branch and its regime
+diagnostics; it remains disabled unless explicitly selected.
 
 ### 5.4 Wetting
 
@@ -953,7 +1036,11 @@ basket or outlet node
 ambient pressure
 ```
 
-R0 prescribes bed-top pressure directly and sets the declared outlet to ambient gauge pressure. Machine delivery, compliance and downstream resistance are intentionally not yet solved as separate coupled components. The machine-coupled mode must use explicit node names and prevent any pressure drop from being counted both in the machine model and porous bed.
+R0 prescribes bed-top pressure directly and sets the declared outlet to
+ambient gauge pressure. The completed WP02-002 branch optionally solves
+machine delivery, compliance, upstream resistance, and emergent basket
+pressure using explicit node names. The prescribed-pressure mode remains the
+frozen regression control.
 
 ### 6.4 Numerical progression and current status
 
@@ -971,10 +1058,11 @@ R0 prescribes bed-top pressure directly and sets the declared outlet to ambient 
 | Serial/rank-count equivalence | COMPLETE | 1/16/32/64 reference and 1/16 layered pass |
 | No-physics freeze finalization | COMPLETE | 28/28 comparison gates and terminal manifest pass |
 | Immutable R0 baseline | **FROZEN / QUALIFIED** | Exact executable, inputs, outputs and qualification bound |
-| Data-linked R1 reconstruction | **NEXT** | Source-specific hydraulic and extraction comparison |
-| Puckworks backend/scenario registration | **NEXT / PARALLEL** | Governed integration of frozen R0 and R1 contracts |
-| Spatial heterogeneity and alternative closures | LATER | Named residual or decision need |
-| Dynamic porosity/permeability | LATER | One mechanism at a time |
+| Data-linked R1 reconstruction | COMPLETE WITH STRUCTURAL RESIDUAL | Source-specific reconstruction; not independent validation |
+| Machine and hydraulic integration | COMPLETE THROUGH WP02-004 | Machine coupling, inertial flow, and static heterogeneity |
+| Quasi-static compaction | COMPLETE THROUGH WP03-001 | Saturated-only, fixed-mesh, no storage coupling |
+| Validation and mechanism discrimination | **ACTIVE** | Source adapters, comparisons, uncertainty, identifiability, residuals |
+| Next evolving-puck mechanism | NOT PRESELECTED | Selected from discriminating evidence |
 | Three-dimensional basket | LATER | Defined non-axisymmetric question |
 
 ### 6.5 Implemented field outputs
@@ -1302,7 +1390,9 @@ Required or relevant fixtures include:
 - Cameron or alternative extraction trajectories;
 - measured tamped-permeability ranges.
 
-**Current status:** not yet established. WP-0.1R is the first source-linked reconstruction milestone.
+**Current status:** source reconstruction is established case-by-case for
+WP01R/WP02/WP03 artifacts. Independent component validation remains to be
+assessed in the active post-WP03-001 tranche.
 
 #### Level V3 — coupled reference shot
 
@@ -1321,7 +1411,9 @@ Assess:
 
 #### Level V4 — independent and intervention holdouts
 
-**Current status:** not started.
+**Current status:** not authorized or started. The current plan prepares
+source-specific comparisons and future holdout requirements without opening
+protected observations.
 
 #### Level V5 — transfer and engineering decisions
 
@@ -1400,152 +1492,102 @@ These ceilings are controlling and must be carried into Puckworks cards, reports
 
 **Status:** **COMPLETE**
 
-Implemented physics:
-
-- initially dry sharp-front wetting;
-- prescribed bed-top pressure ramp to 9 bar;
-- uniform Darcy flow;
-- static porosity and permeability fields;
-- one representative solute;
-- fixed temperature;
-- explicit retained and cup inventories;
-- machine-readable conservation and acceptance reporting.
-
-Outcome:
-
-- a complete machine-to-cup 30 s calculation;
-- corrected first-drip and full-cylinder scaling;
-- all declared run-level gates passed;
-- a stable end-to-end computational spine.
+The reference implementation established dry-puck sharp-front wetting,
+prescribed pressure, uniform Darcy flow, conservative one-solute extraction,
+retained inventories, cup accumulation, and the complete machine-to-cup
+computational spine.
 
 ### Milestone WP-0.1H — Numerical hardening and qualification
 
 **Status:** **COMPLETE — FROZEN / QUALIFIED**
 
-Completed:
-
-- exact straight-sided-wedge scaling;
-- exact pressure-ramp integration;
-- analytical wedge-volume, Darcy-flow and first-drip gates;
-- layered heterogeneous-pressure fixture;
-- selected time-step and mesh qualification matrix;
-- 1/16/32/64-rank equivalence;
-- OpenFOAM/B0 parity;
-- explicit bounded-state and monotonic-inventory gates;
-- automatic timestamp normalization and clean Foundation 12 build;
-- live logging, stage timings and build provenance;
-- standard ten-run `Allverify` campaign with 9/9 aggregate gates passed;
-- terminal immutable release binding through v0.1.4.
-
-WP-0.1H is the protected R0 regression and calibration baseline for all future work.
-
-### Milestone WP-0.1F — Immutable freeze finalization
-
-**Status:** **COMPLETE**
-
-Version 0.1.4 completed with no governing-physics change:
-
-- the case-manifest/acceptance circular dependency was removed;
-- acceptance and run status were finalized after standard `Allverify`;
-- qualification path, hash and PASS status were bound;
-- bounded-state and monotonicity gates were added;
-- 32 ranks became the routine R0 default;
-- the exact compiled executable was archived and reused for qualification;
-- 28/28 no-physics-change comparisons passed;
-- a fresh-package `./Allrun` and standard `./Allverify` passed;
-- the terminal freeze manifest was generated last;
-- R0 was marked `FROZEN / QUALIFIED`.
-
-The complete post-qualification directory must now be archived externally and treated as read-only.
+WP-0.1H completed analytical, reduced-twin, conservation, mesh, timestep, MPI,
+bounded-state, and immutable-provenance qualification. R0 remains the protected
+`FROZEN / QUALIFIED` regression and calibration baseline.
 
 ### Milestone WP-0.1R — Source-linked reference qualification
 
-**Status:** **IMMEDIATE SCIENTIFIC CRITICAL PATH**
+**Status:** **COMPLETE WITH STRUCTURAL RESIDUAL; NOT INDEPENDENT PHYSICAL
+VALIDATION**
 
-Required work:
-
-- refresh the current Puckworks repository and source-data baseline;
-- implement R1 as a distinct Waszkiewicz-linked 18.5 g, 58 mm, 9 bar case;
-- reconstruct source-defined pressure and flow nodes;
-- compare with the relevant Q(t), permeability and poroelastic evidence;
-- compare first-drip and wetting behavior with Foster-informed evidence where compatible;
-- reconstruct one selected extraction source under its own assumptions;
-- state calibration inputs, protected comparison outputs and evidence ceilings before fitting;
-- quantify digitization and source uncertainty;
-- register reduced artifacts, cards, provenance and findings in Puckworks;
-- preserve frozen R0 unchanged as a regression control.
+WP-0.1R reconstructed the source-linked case and exposed structural residuals
+under its declared calibration/comparison contract. It did not establish
+cross-rig transfer or general physical validation.
 
 ### Milestone WP-0.2 — Machine and hydraulic integration
 
-Add only after R1 identifies the most load-bearing hydraulic residual:
+**Status:** **COMPLETE THROUGH WP02-004**
 
-- pump/headspace compliance;
-- explicit machine control profile;
-- measured pressure-node adapters;
-- Darcy/Forchheimer branch;
-- bounded radial/depth heterogeneity;
-- uncertainty in permeability and wetting;
-- a clear pump–bed operating-point solution rather than prescribed bed-top pressure where data support it.
+Completed capabilities are:
 
-### Milestone WP-0.3 — Evolving puck
+- optional dissolution-indexed effective permeability;
+- lumped machine/headspace compliance and upstream resistance;
+- emergent basket pressure;
+- saturated Darcy and Darcy–Forchheimer flow;
+- uniform, axial-layered, and radial two-zone permeability;
+- zone-resolved flow and extraction diagnostics.
 
-Add as separate branches:
+### Milestone WP-0.3 — Initial structural branch
 
-- poroelastic compaction;
+**Status:** **WP03-001 COMPLETE**
+
+WP03-001 implements saturated quasi-static effective stress, mechanical
+porosity, pressure-dependent permeability, the exact finite-porosity
+pressure-flow response, machine coupling, and fixed-reference-mesh deformation
+diagnostics. It does not couple mechanical porosity to transport storage or
+solve full solid mechanics.
+
+### Active milestone — Post-WP03-001 validation and mechanism discrimination
+
+**Status:** **ACTIVE NEXT PROGRAM TRANCHE**
+
+Required outcomes are:
+
+- source-specific validation adapters and evidence classification;
+- explicit calibration/comparison separation;
+- uncertainty-aware metrics and real-data component comparisons;
+- limited coupled comparisons;
+- sensitivity and practical-identifiability assessment;
+- a mechanism-comparison matrix and residual decomposition;
+- ranked next-physics recommendations;
+- targeted experimental requirements.
+
+This tranche is solver development. It builds executable comparison,
+uncertainty, ensemble, and discrimination capability rather than adding an
+immediate new governing equation.
+
+### Later governing-physics candidates
+
+The following remain candidates, not a predetermined queue:
+
+- transient poroelastic storage or fuller deformation;
 - swelling;
-- dissolution-driven porosity change;
+- dissolution-driven porosity;
 - concentration-dependent viscosity;
-- state-dependent permeability.
+- further state-dependent permeability;
+- fines migration and deposition;
+- damage and dynamic channeling;
+- thermal coupling;
+- multispecies chemistry.
 
-Use common observables to compare their effects, and do not hide them inside one generic fitted `K(t)`.
+Their order will be selected from evidence. Later equipment/recipe design and
+an evidence-qualified engineering platform remain program goals.
 
-### Milestone WP-0.4 — Fines and channeling
+### Residual-led decision framework
 
-Add:
+| Observed residual or discriminating evidence | Candidate next physics |
+|---|---|
+| Pressure/flow residual correlated with measured bed compression | Fuller poroelastic deformation or storage |
+| Flow decay correlated with measured particle or bed expansion | Swelling |
+| Flow changes correlated with concentration or viscosity measurements | Concentration-dependent viscosity |
+| Turbidity, captured fines, or deposition evidence | Fines transport |
+| Repeatable localized outlet-flow or extraction defects | Non-axisymmetric channeling or damage |
+| Temperature-correlated hydraulic or extraction residual | Energy equation |
+| Species-specific extraction disagreement | Multispecies chemistry |
+| No discriminating evidence | Retain the simpler model and request better data |
 
-- Eulerian mobile and bound fines inventories;
-- deposition and release;
-- local permeability feedback;
-- optional Lagrangian particles;
-- Taichi-derived capture/clogging closures;
-- non-axisymmetric 3D cases for localization;
-- channel diagnostics rather than an arbitrary binary “channel” flag.
-
-### Milestone WP-0.5 — Thermal and multispecies chemistry
-
-Add:
-
-- transient energy equation;
-- temperature-dependent viscosity and diffusivity;
-- multiple soluble species;
-- size-dependent intraparticle diffusion;
-- partition and equilibrium limits;
-- species-specific cup accumulation;
-- selected gas effects if evidence requires them.
-
-### Milestone WP-0.6 — Equipment and recipe design
-
-Add:
-
-- basket hole field and outlet geometry;
-- bottom paper/filter branches;
-- screen and plenum resistance;
-- pressure/flow/temperature profile design;
-- machine compliance and control;
-- grinder/PSD and dose/tamp sensitivity;
-- surrogate and robust optimization.
-
-### Milestone WP-1.0 — Evidence-qualified engineering platform
-
-A mature release requires:
-
-- protected holdout performance;
-- uncertainty calibration;
-- transfer-domain limits;
-- simple-baseline comparisons;
-- decision-ranking evidence;
-- extrapolation rejection;
-- public reproducibility.
+This table guides scientific investigation; it does not automatically
+authorize a mechanism.
 
 ## 11. Mechanism-specific development rules
 
@@ -1966,7 +2008,9 @@ It does not support:
 - taste prediction;
 - engineering optimization.
 
-Physical-validation claims require WP-0.1R and subsequent protected holdouts.
+Physical-validation claims require appropriately independent component,
+coupled, cross-condition or separately authorized holdout evidence. WP-0.1R
+alone is a source-linked reconstruction and cannot establish them.
 
 ### 14.6 Required frozen output set
 
@@ -2021,7 +2065,8 @@ New data should be requested because a named parameter, closure or competing mec
 
 ### 15.2 Use current Puckworks evidence first
 
-The next source-linked work should use and compare with the repository’s available:
+The active validation tranche should use and compare with the repository’s
+rights-reviewed evidence inventory:
 
 - 9-bar flow traces and pressure–flow calibration;
 - CT infiltration and first-drip evidence;
@@ -2033,11 +2078,15 @@ The next source-linked work should use and compare with the repository’s avail
 - fines and dynamic-flow signatures;
 - liquor property data.
 
-The repository baseline must be refreshed before integration so newer model cards, data, rights records and whole-pull-related work are not missed.
+The recorded dependency lock must not be advanced except by a separately
+authorized dependency review. Each adapter must preserve the applicable model
+card, data identity, rights status, pressure node, quantity definition and
+uncertainty.
 
-### 15.3 R1 as the first data-linked reconstruction
+### 15.3 Historical R1 reconstruction
 
-R1 should be built as a source-specific case rather than by relabelling R0. It must declare:
+R1 was built as a source-specific case rather than by relabelling R0. Its
+lessons remain controlling:
 
 - the 18.5 g dose and rig geometry;
 - coffee and grind descriptors where available;
@@ -2048,7 +2097,9 @@ R1 should be built as a source-specific case rather than by relabelling R0. It m
 - which observations are used for calibration;
 - which features remain comparison or holdout targets.
 
-R1 is the first opportunity to test whether the qualified baseline hydraulic architecture reproduces source-linked dynamics beyond the calibrated R0 endpoint.
+R1 demonstrated why source reconstruction, calibration and independent
+comparison must remain distinct. Its protected flow-shape residual is
+historical evidence, not authorization to reopen protected scoring.
 
 ### 15.4 Extraction evidence priority
 
@@ -2160,81 +2211,56 @@ Remaining operational task:
 
 ### Phase E — Data-linked R1 and Puckworks integration
 
-**Status:** immediate critical path.
+**Status:** complete with a structural residual; not independent physical
+validation.
 
-Implement:
+### Phase F — Hydraulic and first structural expansion
 
-- refreshed Puckworks repository and evidence review;
-- R1 18.5 g / 58 mm / 9 bar source-specific case;
-- Waszkiewicz-linked pressure and flow comparisons;
-- Foster-linked wetting comparison where compatible;
-- one selected extraction-source reconstruction;
-- predeclared calibration and holdout ledger;
-- component/backend card;
-- R0 and R1 scenario/state adapters;
-- source and data bindings;
-- validation and validity gates;
-- CLI/API entry point;
-- novice-facing local run guide;
-- immutable links to external R0 field artifacts.
+**Status:** complete through WP03-001.
 
-### Phase F — Hydraulic and machine expansion
+WP02-001 through WP02-004 added independently selectable effective-
+permeability evolution, machine compliance, inertial resistance and static
+radial heterogeneity. WP03-001 added saturated quasi-static compaction.
 
-Proceed to WP-0.2 only after R1 exposes the most important hydraulic residuals. Add machine pressure nodes, compliance, flow control, inertial diagnostics or bounded heterogeneity according to the evidence.
+### Phase G — Validation and mechanism discrimination
 
-### Phase G — Dynamic and multiscale upgrades
+**Status:** active next program tranche.
 
-Proceed in the milestone order defined in Section 10. Select each new physics branch by sensitivity, evidence and its ability to improve a named holdout or engineering decision.
+Implement source-specific adapters, rights- and evidence-aware comparison
+bundles, uncertainty propagation, sensitivity and identifiability analysis,
+residual decomposition, mechanism comparisons and experiment-design
+priorities. Compare existing branches before selecting one next
+governing-physics increment.
+
+### Phase H — Evidence-selected physics
+
+Resume governing-physics expansion only when the validation residuals and
+available measurements identify a load-bearing mechanism. Candidate work
+includes fuller poroelastic storage, swelling, viscosity, fines, localized
+damage, thermal coupling and multispecies chemistry; this list is not a queue.
 
 ## 17. Immediate next actions
 
-The following sequence is controlling.
+The following sequence is controlling:
 
-### Seal and preserve the frozen v0.1.4 baseline
+1. implement the common source-adapter and calibration/comparison ledger;
+2. inventory admissible evidence, definitions, rights, uncertainties and
+   circularity from the existing lock;
+3. perform one wetting or first-drip component comparison;
+4. perform one saturated hydraulic and one limited coupled pressure/flow
+   comparison;
+5. perform one aggregate extraction comparison while preserving the
+   one-solute limitation;
+6. propagate supported uncertainties and assess parameter sensitivity,
+   correlation, equifinality and practical identifiability;
+7. compare compatible existing mechanisms on common source-specific cases;
+8. decompose residuals by pressure, time, space, apparatus and observable;
+9. rank missing measurements by expected information value; and
+10. recommend either the simpler existing family, one evidence-supported next
+    mechanism, or additional data.
 
-1. **Do not run `./Allclean` on the only successful post-qualification directory.** Preserve the reconstructed fields, exact archived executable, fixture outputs, individual qualification cases, logs and terminal manifest.
-2. **Create a complete immutable external archive.** Package the entire post-`Allverify` directory as a versioned `tar.gz` or equivalent and calculate an external SHA-256.
-3. **Store at least two durable copies.** Keep one local archival copy and one independent backup; record the paths, archive size and checksum.
-4. **Record the terminal-manifest identity in Puckworks.** Bind the v0.1.4 terminal-manifest path, source aggregate, solver hash, field aggregate and controlling-artifact aggregate.
-5. **Treat v0.1.4 as read-only evidence.** Future work starts from a clean source package or new branch and never rewrites the frozen artifacts.
-
-### Complete the frozen-baseline documentation
-
-6. **Issue the formal R0 reference specification.** Document exact equations, units, nodes, inputs, calibration role, numerical settings, gates, artifacts and claim ceiling.
-7. **Publish a concise WP-0.1H result note.** Explain what passed, the frozen outputs, the qualification matrix, the calibration/validation distinction and the next scientific question.
-8. **Document the one residual classifier defect.** Record that `"failed_comparisons": []` is a benign false positive; fix the classifier in the next development version without regenerating v0.1.4.
-9. **Create a frozen-baseline regression fixture.** Store reduced scalar outputs and hashes that future branches can compare against without needing every full field file in routine CI.
-
-### Refresh Puckworks before source-linked implementation
-
-10. **Review current Puckworks `main`.** Refresh the inherited `d9ee264` baseline and identify all relevant model cards, data assets, rights records, source extractions, quantity definitions and recent whole-pull work.
-11. **Define registration IDs and repository paths before copying code.** Avoid creating parallel contracts or duplicate quantity semantics.
-12. **Create a rights-and-evidence ledger for WP-0.1R.** State what can be redistributed, what may be locally derived, and what must remain citation-only or private.
-
-### Build the WP-0.1R evidence dossier
-
-13. **Freeze the exact source corpus.** Record paper/version identifiers, supplementary files, tables, figures and any digitized traces used.
-14. **Define the physical apparatus and pressure nodes.** Resolve basket geometry, 18.5 g dose, coffee/grind descriptors, pressure measurement location, outlet resistance and ambient reference.
-15. **Extract the 9-bar hydraulic observations with uncertainty.** Preserve raw digitization points, transformations, units, interpolation policy and trace uncertainty.
-16. **Predeclare calibration and comparison roles.** Name the smallest permitted calibration set and reserve independent trace features, pressure levels or other runs for comparison/holdout.
-17. **Construct an R1 scenario contract.** Make every R0-to-R1 change explicit; do not edit R0 into a fictitious measured case.
-18. **Define R1 acceptance before running it.** Include execution, conservation, numerical regression, source-node consistency, calibration reporting and unforced comparison metrics.
-
-### Implement and evaluate R1
-
-19. **Create a separate versioned OpenFOAM case and reduced-twin configuration.** Reuse frozen R0 solver logic initially unless source evidence requires a declared new branch.
-20. **Run a source-equivalent hydraulic reconstruction first.** Compare Q(t), pressure behavior and selected permeability/poroelastic quantities before adding chemistry complexity.
-21. **Diagnose residuals by class.** Separate source uncertainty, node mismatch, calibration limitation, numerical error and model-form error.
-22. **Reconstruct one extraction source explicitly.** Use the same hydraulic history to compare at least one alternative closure and expose chemistry sensitivity.
-23. **Do not consume every source observation in fitting.** Preserve protected features or conditions for meaningful evaluation.
-
-### Integrate with Puckworks and select the next physics
-
-24. **Register the frozen R0 backend and scenario.** Add component cards, validity claims, reduced fixtures, terminal-manifest identity and external artifact links.
-25. **Register R1 as a distinct source-linked scenario.** Include its source ledger, calibration/holdout split and comparison report.
-26. **Use the R1 residual hierarchy to select WP-0.2.** Likely candidates include machine/headspace coupling, pressure-dependent permeability, poroelasticity or bounded heterogeneity.
-27. **Add no mechanism merely because OpenFOAM can solve it.** Fines, channeling, multispecies chemistry, dynamic geometry and heat transfer require a named residual, closure request, experiment or engineering decision.
-28. **Begin the formal literature/capability benchmark in parallel.** Compare the program with published espresso SPH, LBM, continuum and extraction models before making public superlative claims.
+No validation execution, protected access, holdout opening, fitting or
+experimental commissioning is authorized by this strategy update.
 
 ## 18. Program risks and controls
 
@@ -2250,7 +2276,7 @@ The following sequence is controlling.
 | Digitized traces are treated as exact data | Overconfident calibration and residual interpretation | Preserve raw points, digitization method and uncertainty bounds |
 | Puckworks integration uses a stale repository baseline | Duplicate contracts or missed evidence | Refresh current `main`, cards, data and rights before integration |
 | Integration becomes only a code dump | New solver loses evidence discipline | Require backend cards, scenario contracts, validity gates, reduced fixtures and immutable artifact links |
-| New physics is added before R1 identifies a load-bearing residual | Regression causes become difficult to identify | Keep R0 frozen and make WP-0.1R the next scientific gate |
+| New mechanisms accumulate without evidence comparison | Flexibility and equifinality increase faster than physical identification | Apply the post-WP03-001 cadence rule and select one next mechanism from residual evidence |
 | Bounded sensitivity is described as formal order of convergence | Numerical evidence is overstated | Report tested differences and thresholds; do not claim asymptotic order without a dedicated study |
 | All 64 ranks are used by default | Slower routine R0 runs and wasted resources | Use 32 ranks for the reference mesh and 64 for the fine mesh unless new scaling evidence changes the policy |
 | Retained dissolved solute sensitivity is ignored | Future in-puck chemistry claims may be under-resolved | Revisit mesh qualification when chemistry or retained-state detail becomes decision-critical |
@@ -2296,29 +2322,36 @@ The following sequence is controlling.
 
 ---
 
-## 20. Version 1.3 controlling summary
+## 20. Version 1.6 controlling summary
 
-The Puckworks modeling and simulation program now has a frozen, numerically qualified whole-process espresso reference solver.
+The program has a frozen, numerically qualified R0 and a modular Foundation
+OpenFOAM 12 whole-pull solver. WP01R and WP02-001 through WP02-004 added
+source-linked reconstruction, effective-permeability evolution, machine
+compliance, Darcy–Forchheimer resistance and static spatial heterogeneity.
+WP03-001 added saturated quasi-static compaction with pressure-dependent
+mechanical porosity and permeability on a fixed reference mesh.
 
-The v0.1.4 Foundation OpenFOAM 12 package completed a fresh 32-rank R0 run, exact-build reuse verification, a heterogeneous layered-pressure fixture, the standard ten-run time-step/mesh/MPI qualification campaign, post-qualification finalization and terminal provenance generation. All required run gates, bounded-state gates, monotonicity gates, OpenFOAM/B0 parity gates, 28 no-physics-change comparisons, ten individual qualification acceptances and nine aggregate qualification gates passed.
+Those branches are numerically verified for their tested domains. They do not
+establish physical validation. In particular, WP03-001 does not solve solid
+displacement, couple mechanical porosity to transport storage, or include
+transient Biot storage, plasticity, hysteresis, swelling, fines, damage or
+dynamic channeling.
 
-The frozen R0 result is approximately 40.958 g beverage at 30 s, first drip at 4.7117 s, final flow at 1.48268 mL/s, TDS at 11.689% and extraction yield at 23.938%. Liquid and solute balances close near machine precision, all expected fields are reconstructed, and rank-count differences are negligible across 1, 16, 32 and 64 ranks.
-
-The terminal manifest binds 106 source files, 19 scientific-input files, the exact compiled and portable solver executable, 339 reconstructed field files, all ten qualification acceptances and 20 controlling artifacts. The final disposition is:
+The active milestone is now:
 
 ```text
-WP-0.1 implementation             PASS
-WP-0.1 code verification          PASS
-WP-0.1 numerical qualification    PASS
-WP-0.1 release provenance         PASS
-WP-0.1H / R0 status               FROZEN / QUALIFIED
-physical validation               NOT ESTABLISHED
-next scientific milestone         WP-0.1R
+completed solver sequence          WP-0.1 through WP03-001
+active program tranche             source-specific validation and mechanism discrimination
+next governing physics             not preselected; residual-led
+physical validation                NOT ESTABLISHED
+experimental commissioning         NOT AUTHORIZED
+protected or holdout scoring       NOT AUTHORIZED
 ```
 
-The frozen result remains a bounded calibration scenario. Saturated permeability sets the R0 hydraulic scale, and the one-solute extraction closure remains an engineering assumption. Immutable provenance does not turn the approximately 40 g endpoint, first drip, TDS or extraction yield into independent real-coffee validation.
-
-The immediate operational action is to archive the complete post-`Allverify` directory and register its terminal-manifest and external archive identities. The immediate scientific action is WP-0.1R: a distinct source-linked 18.5 g, 58 mm, 9 bar reconstruction, followed by formal Puckworks registration and evidence-selected physics expansion.
+The frozen R0 remains a bounded calibration scenario, and source or post-fit
+reconstruction remains distinct from independent validation. The validation
+tranche will build executable adapters and comparisons, quantify uncertainty
+and identifiability, and determine which residuals justify one next mechanism.
 
 The defining architecture remains:
 
@@ -2334,7 +2367,9 @@ reduced verification and decision models.
 
 The controlling rule is now:
 
-> **Protect the frozen baseline, test it against source-linked evidence, and add new physics only when the evidence identifies a load-bearing residual or engineering need.**
+> **Protect the frozen baseline, compare the existing model family with
+> relevant real evidence, decompose residuals, and add one next mechanism only
+> when the evidence identifies a load-bearing residual or engineering need.**
 
 ## Appendix A — Controlling evidence from completed work
 
