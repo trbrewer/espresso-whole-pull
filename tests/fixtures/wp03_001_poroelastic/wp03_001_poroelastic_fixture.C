@@ -92,6 +92,37 @@ int main(int argc, char* argv[])
         << "{\n"
         << "  \"schema_version\": \"espresso.public.wp03_001.production_fixture.v1\",\n"
         << "  \"local_bounds_violation\": " << maxLocalBoundsViolation << ",\n"
+        << "  \"local_constitutive_values\": [\n";
+    bool firstLocalValue = true;
+    for (const scalar testPhi : {0.1, 0.4, 0.8})
+    {
+        for (const scalar x : {0.0, 0.1, 0.5, 0.8, 0.95})
+        {
+            const scalar sigma = x*pc;
+            const scalar e = poroelasticStrain(sigma, testPhi, pc);
+            const scalar mechanicalPhi =
+                poroelasticMechanicalPorosity(sigma, testPhi, pc);
+            const scalar ratio =
+                poroelasticPermeabilityRatio(sigma, testPhi, pc);
+            const bool boundsPass =
+                e >= 0.0 && e < testPhi
+             && mechanicalPhi > 0.0 && mechanicalPhi <= testPhi
+             && ratio > 0.0 && ratio <= 1.0;
+            if (!firstLocalValue)
+            {
+                out << ",\n";
+            }
+            firstLocalValue = false;
+            out << "    {\"stressFreePorosity\": " << testPhi
+                << ", \"normalizedEffectiveStress\": " << x
+                << ", \"productionCompactionStrain\": " << e
+                << ", \"productionMechanicalPorosity\": " << mechanicalPhi
+                << ", \"productionPermeabilityRatio\": " << ratio
+                << ", \"stateBoundsPass\": "
+                << (boundsPass ? "true" : "false") << "}";
+        }
+    }
+    out << "\n  ],\n"
         << "  \"scalar_flow_m3_s\": "
         << poroelasticPuckFlow(5.0e5, puck) << ",\n"
         << "  \"scalar_integral\": "

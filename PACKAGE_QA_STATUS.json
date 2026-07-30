@@ -26,10 +26,10 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 228,
+    "python_test_count": 230,
     "static_gate_count": 34,
     "source_manifest_file_count": 179,
-    "source_manifest_aggregate_sha256": "09ff03726d9904d6e342db25a05bf24d1aa4ac79e1e44c50213ce6d5830bbb54",
+    "source_manifest_aggregate_sha256": "e756c82016f57d0c2bfaf06aa3dbbd9c446f669bc63dcd45810db705c2d502e8",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -64,7 +64,7 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "wp03_001_poroelastic_compaction": {
-    "disposition": "SOLVER_BEARING_WORK_PACKAGE_COMPLETE_PR_OPEN",
+    "disposition": "RESULT_ADJUDICATION_CORRECTION_COMPLETE_PR_READY_FOR_MERGE",
     "constitutive_reference": "PASS",
     "finite_phi_pressure_flow": "PASS",
     "source_model_reconstruction": "PASS",

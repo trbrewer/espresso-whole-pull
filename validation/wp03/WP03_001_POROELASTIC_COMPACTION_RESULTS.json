@@ -17,7 +17,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 0.0,
       "maximum_nonlinear_residual": 0.0,
-      "mean_outlet_flow_m3_s": 1.4815038957275369e-06,
+      "mean_outlet_flow_m3_s": 1.48267597159441e-06,
       "mechanics_model": "none",
       "minimum_mechanical_porosity": 0.4,
       "minimum_permeability_ratio": 1.0,
@@ -51,7 +51,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 2.0,
       "maximum_nonlinear_residual": 2.31371083242093e-14,
-      "mean_outlet_flow_m3_s": 1.481503887060763e-06,
+      "mean_outlet_flow_m3_s": 1.4826759629207795e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.39999999892,
       "minimum_permeability_ratio": 0.9999999883,
@@ -85,7 +85,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 40.0,
       "maximum_nonlinear_residual": 3.34702154102976e-11,
-      "mean_outlet_flow_m3_s": 5.53192375082731e-07,
+      "mean_outlet_flow_m3_s": 5.536300272782078e-07,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.154309535861139,
       "minimum_permeability_ratio": 0.0288986765738952,
@@ -119,7 +119,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 40.0,
       "maximum_nonlinear_residual": 3.34803953008648e-11,
-      "mean_outlet_flow_m3_s": 1.4815038957277908e-06,
+      "mean_outlet_flow_m3_s": 1.4826759715946641e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.154309535861139,
       "minimum_permeability_ratio": 0.0288986765738952,
@@ -153,7 +153,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 16.0,
       "maximum_nonlinear_residual": 2.81632452920765e-11,
-      "mean_outlet_flow_m3_s": 1.2733639008761557e-06,
+      "mean_outlet_flow_m3_s": 1.2744858073967514e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.28452155838157,
       "minimum_permeability_ratio": 0.253089983948126,
@@ -187,7 +187,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 42.0,
       "maximum_nonlinear_residual": 3.28615204662934e-11,
-      "mean_outlet_flow_m3_s": 1.4923424959409884e-06,
+      "mean_outlet_flow_m3_s": 1.4934966664714917e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.0696510689415696,
       "minimum_permeability_ratio": 0.00219590809015979,
@@ -221,7 +221,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 0.0,
       "maximum_nonlinear_residual": 0.0,
-      "mean_outlet_flow_m3_s": 1.1700662518442099e-06,
+      "mean_outlet_flow_m3_s": 1.1711763716277434e-06,
       "mechanics_model": "none",
       "minimum_mechanical_porosity": 0.4,
       "minimum_permeability_ratio": 1.0,
@@ -255,7 +255,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 18.0,
       "maximum_nonlinear_residual": 9.99172387679735e-11,
-      "mean_outlet_flow_m3_s": 1.3876436812476348e-06,
+      "mean_outlet_flow_m3_s": 1.3889602312298432e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.243297233571201,
       "minimum_permeability_ratio": 0.141476203065379,
@@ -289,7 +289,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 18.0,
       "maximum_nonlinear_residual": 9.99619996330079e-11,
-      "mean_outlet_flow_m3_s": 1.3885502901524526e-06,
+      "mean_outlet_flow_m3_s": 1.3888795645869207e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.243297104368641,
       "minimum_permeability_ratio": 0.141475929361071,
@@ -323,7 +323,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 18.0,
       "maximum_nonlinear_residual": 9.99307106470337e-11,
-      "mean_outlet_flow_m3_s": 1.388189509420483e-06,
+      "mean_outlet_flow_m3_s": 1.3888477310939874e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.243297495133794,
       "minimum_permeability_ratio": 0.141476757164104,
@@ -357,7 +357,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 18.0,
       "maximum_nonlinear_residual": 9.99172387679735e-11,
-      "mean_outlet_flow_m3_s": 1.3876436812476348e-06,
+      "mean_outlet_flow_m3_s": 1.3889602312298432e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.243297233571201,
       "minimum_permeability_ratio": 0.141476203065379,
@@ -391,7 +391,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 18.0,
       "maximum_nonlinear_residual": 9.99832669936613e-11,
-      "mean_outlet_flow_m3_s": 1.3876436812476087e-06,
+      "mean_outlet_flow_m3_s": 1.388960231229817e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.243297233571201,
       "minimum_permeability_ratio": 0.141476203065379,
@@ -425,7 +425,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 18.0,
       "maximum_nonlinear_residual": 9.99172387679735e-11,
-      "mean_outlet_flow_m3_s": 1.3876436812476348e-06,
+      "mean_outlet_flow_m3_s": 1.3889602312298432e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.243297233571201,
       "minimum_permeability_ratio": 0.141476203065379,
@@ -459,7 +459,7 @@
       "maximum_machine_field_mismatch": 0.0,
       "maximum_nonlinear_iterations": 18.0,
       "maximum_nonlinear_residual": 9.99432926432942e-11,
-      "mean_outlet_flow_m3_s": 1.387643681247613e-06,
+      "mean_outlet_flow_m3_s": 1.3889602312298214e-06,
       "mechanics_model": "waszkiewiczQuasiStaticCompaction",
       "minimum_mechanical_porosity": 0.243297233571201,
       "minimum_permeability_ratio": 0.141476203065379,
@@ -499,7 +499,7 @@
     "matched_reference_identity": true,
     "nonlinear_convergence": true,
     "openfoam_pressure_profile_reference": true,
-    "predecessor_regressions": true,
+    "r0_regression": true,
     "rigid_bed_limit": true,
     "solute_conservation": true,
     "source_domain_classification": true,
@@ -507,14 +507,94 @@
     "timestep_refinement": true,
     "universal_limit_recovery": true,
     "water_conservation": true,
-    "wetting_isolation": true
+    "wetting_isolation": true,
+    "wp02_001_regression": true,
+    "wp02_002_mc2_regression": true,
+    "wp02_003_regression": true,
+    "wp02_004_regression": true
   },
   "predecessor_regressions": {
-    "r0": 0.0,
-    "wp02_001": 0.0,
-    "wp02_002_mc2": 0.0,
-    "wp02_003": 0.0,
-    "wp02_004": 0.0
+    "r0": {
+      "complete": true,
+      "maximum_relative_error": 0.0,
+      "metric_errors": {
+        "cup_mass_kg": 0.0,
+        "ey": 0.0,
+        "first_drip_s": 0.0,
+        "mean_total_flow_m3_s": 0.0,
+        "peak_basket_pressure_pa": 0.0,
+        "peak_upstream_pressure_pa": 0.0,
+        "solute_residual_kg": 0.0,
+        "tds": 0.0,
+        "water_residual_kg": 0.0
+      },
+      "tolerance": 1e-08
+    },
+    "wp02_001": {
+      "authoritative_result": {
+        "accepted_artifact": "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json",
+        "relative_error": 1.1797109753105952e-16,
+        "schema_version": "espresso.public.wp02_coupling_disabled_regression.v1",
+        "status": "PASS"
+      },
+      "complete": true,
+      "maximum_relative_error": 1.1797109753105952e-16,
+      "metric_errors": {
+        "authoritative_relative_error": 1.1797109753105952e-16
+      },
+      "tolerance": 1e-08
+    },
+    "wp02_002_mc2": {
+      "complete": true,
+      "maximum_relative_error": 0.0,
+      "metric_errors": {
+        "cup_mass_kg": 0.0,
+        "ey": 0.0,
+        "first_drip_s": 0.0,
+        "mean_total_flow_m3_s": 0.0,
+        "peak_basket_pressure_pa": 0.0,
+        "peak_upstream_pressure_pa": 0.0,
+        "solute_residual_kg": 0.0,
+        "tds": 0.0,
+        "water_residual_kg": 0.0
+      },
+      "tolerance": 1e-08
+    },
+    "wp02_003": {
+      "complete": true,
+      "maximum_relative_error": 6.572291668918398e-13,
+      "metric_errors": {
+        "layered_flow": 6.296074148149259e-13,
+        "layered_pressure_decomposition": 6.572291668918398e-13,
+        "uniform_flow": 2.4659084765795023e-13,
+        "uniform_pressure_decomposition": 2.539147519403034e-13
+      },
+      "tolerance": 1e-08
+    },
+    "wp02_004": {
+      "complete": true,
+      "maximum_relative_error": 0.0,
+      "metric_errors": {
+        "basket_inner_flow_m3_s": 0.0,
+        "basket_outer_flow_m3_s": 0.0,
+        "basket_pressure_pa": 0.0,
+        "basket_residual_pa": 0.0,
+        "darcy_inner_flow_m3_s": 0.0,
+        "darcy_outer_flow_m3_s": 0.0,
+        "equal_zone_relative_error": 0.0,
+        "fallback_count": 0.0,
+        "forchheimer_inner_flow_m3_s": 0.0,
+        "forchheimer_outer_flow_m3_s": 0.0,
+        "machine_basket_pressure_pa": 0.0,
+        "machine_inner_flow_m3_s": 0.0,
+        "machine_outer_flow_m3_s": 0.0,
+        "machine_residual_m3_s": 0.0,
+        "machine_total_flow_m3_s": 0.0,
+        "machine_upstream_pressure_pa": 0.0,
+        "maximum_identity_relative_error": 0.0
+      },
+      "tolerance": 1e-10
+    }
   },
   "production_fixture": {
     "basket_bracketed": true,
@@ -522,6 +602,128 @@
     "basket_iterations": 46,
     "fallback_count": 0,
     "local_bounds_violation": 0,
+    "local_constitutive_values": [
+      {
+        "normalizedEffectiveStress": 0,
+        "productionCompactionStrain": 0,
+        "productionMechanicalPorosity": 0.1,
+        "productionPermeabilityRatio": 1,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.1
+      },
+      {
+        "normalizedEffectiveStress": 0.1,
+        "productionCompactionStrain": 0.01,
+        "productionMechanicalPorosity": 0.09090909090909093,
+        "productionPermeabilityRatio": 0.7363636363636364,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.1
+      },
+      {
+        "normalizedEffectiveStress": 0.5,
+        "productionCompactionStrain": 0.05,
+        "productionMechanicalPorosity": 0.052631578947368425,
+        "productionPermeabilityRatio": 0.13157894736842105,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.1
+      },
+      {
+        "normalizedEffectiveStress": 0.8,
+        "productionCompactionStrain": 0.08,
+        "productionMechanicalPorosity": 0.02173913043478261,
+        "productionPermeabilityRatio": 0.008695652173913038,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.1
+      },
+      {
+        "normalizedEffectiveStress": 0.95,
+        "productionCompactionStrain": 0.095,
+        "productionMechanicalPorosity": 0.005524861878453044,
+        "productionPermeabilityRatio": 0.00013812154696132633,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.1
+      },
+      {
+        "normalizedEffectiveStress": 0,
+        "productionCompactionStrain": 0,
+        "productionMechanicalPorosity": 0.4,
+        "productionPermeabilityRatio": 1,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.4
+      },
+      {
+        "normalizedEffectiveStress": 0.1,
+        "productionCompactionStrain": 0.04,
+        "productionMechanicalPorosity": 0.37500000000000006,
+        "productionPermeabilityRatio": 0.7593750000000001,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.4
+      },
+      {
+        "normalizedEffectiveStress": 0.5,
+        "productionCompactionStrain": 0.2,
+        "productionMechanicalPorosity": 0.25,
+        "productionPermeabilityRatio": 0.15625,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.4
+      },
+      {
+        "normalizedEffectiveStress": 0.8,
+        "productionCompactionStrain": 0.32,
+        "productionMechanicalPorosity": 0.11764705882352945,
+        "productionPermeabilityRatio": 0.011764705882352934,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.4
+      },
+      {
+        "normalizedEffectiveStress": 0.95,
+        "productionCompactionStrain": 0.38,
+        "productionMechanicalPorosity": 0.03225806451612906,
+        "productionPermeabilityRatio": 0.000201612903225807,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.4
+      },
+      {
+        "normalizedEffectiveStress": 0,
+        "productionCompactionStrain": 0,
+        "productionMechanicalPorosity": 0.8,
+        "productionPermeabilityRatio": 1,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.8
+      },
+      {
+        "normalizedEffectiveStress": 0.1,
+        "productionCompactionStrain": 0.08,
+        "productionMechanicalPorosity": 0.782608695652174,
+        "productionPermeabilityRatio": 0.7923913043478262,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.8
+      },
+      {
+        "normalizedEffectiveStress": 0.5,
+        "productionCompactionStrain": 0.4,
+        "productionMechanicalPorosity": 0.6666666666666667,
+        "productionPermeabilityRatio": 0.20833333333333334,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.8
+      },
+      {
+        "normalizedEffectiveStress": 0.8,
+        "productionCompactionStrain": 0.64,
+        "productionMechanicalPorosity": 0.44444444444444453,
+        "productionPermeabilityRatio": 0.022222222222222216,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.8
+      },
+      {
+        "normalizedEffectiveStress": 0.95,
+        "productionCompactionStrain": 0.76,
+        "productionMechanicalPorosity": 0.16666666666666682,
+        "productionPermeabilityRatio": 0.0005208333333333347,
+        "stateBoundsPass": true,
+        "stressFreePorosity": 0.8
+      }
+    ],
     "machine_basket_pressure_pa": 447530.4214875521,
     "machine_bracketed": true,
     "machine_converged": true,
@@ -667,12 +869,17 @@
     }
   ],
   "verification": {
+    "allStateBoundsPass": true,
     "axial_mesh_refinement_change": 0.0005922357227212872,
     "machine_field_mismatch": 0.0,
     "machine_reference_error": 6.232958271391429e-13,
     "matched_analytical_error": 1.3602062427311718e-16,
-    "matched_openfoam_error": 1.7137864211608587e-13,
-    "maximum_balance_residual": 3.95919229539308e-13,
+    "matched_openfoam_error": 1.7138598658412908e-13,
+    "maximumCompactionStrainReferenceError": 0.0,
+    "maximumMechanicalPorosityReferenceError": 9.992007221626409e-16,
+    "maximumPermeabilityRatioReferenceError": 2.706168622523819e-15,
+    "maximumSoluteResidual": 3.95919229539308e-13,
+    "maximumWaterResidual": 3.28070903776734e-14,
     "maximum_source_openfoam_flow_error": 7.97527691668323e-11,
     "profile_errors": {
       "11": {

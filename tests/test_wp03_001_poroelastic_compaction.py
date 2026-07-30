@@ -20,7 +20,9 @@ SPEC.loader.exec_module(analyzer)
 
 
 REQUIRED_GATES = (
-  "predecessor_regressions", "local_constitutive_reference",
+  "r0_regression", "wp02_001_regression", "wp02_002_mc2_regression",
+  "wp02_003_regression", "wp02_004_regression",
+  "local_constitutive_reference",
   "exact_finite_phi_scalar_flow", "universal_limit_recovery",
   "source_model_parity", "source_domain_classification",
   "openfoam_pressure_profile_reference", "rigid_bed_limit",
@@ -52,6 +54,13 @@ CORRUPTIONS = [
   ("transport porosity", "fixed_transport_porosity_contract"),
   ("final trace time", "case_completion"),
 ]
+
+PREDECESSOR_GATES = {
+    "r0": "r0_regression",
+    "wp02_001": "wp02_001_regression",
+    "wp02_002_mc2": "wp02_002_mc2_regression",
+    "wp02_003": "wp02_003_regression",
+    "wp02_004": "wp02_004_regression"}
 
 
 class PoroelasticReferenceTests(unittest.TestCase):
@@ -133,6 +142,54 @@ class PoroelasticReferenceTests(unittest.TestCase):
             with self.subTest(corruption=corruption):
                 gates = {name: True for name in REQUIRED_GATES}
                 gates[gate] = False
+                passed, disposition = analyzer.adjudicate_gates(gates)
+                self.assertFalse(passed)
+                self.assertEqual(disposition, "NUMERICAL_FAILURE")
+
+    def test_production_fixture_value_corruption_exits_nonzero(self):
+        retained = json.loads(
+            (ROOT/"validation/wp03/WP03_001_POROELASTIC_COMPACTION_RESULTS.json")
+            .read_text())["production_fixture"]
+        self.assertIn("local_constitutive_values", retained)
+        with tempfile.TemporaryDirectory() as directory:
+            directory = pathlib.Path(directory)
+            fixture = directory/"fixture.json"
+            output = directory/"result.json"
+            fixture.write_text(json.dumps(retained))
+            baseline = subprocess.run([
+                sys.executable,
+                str(ROOT/"scripts/analyze_wp03_001_poroelastic_compaction.py"),
+                "--check-production-fixture", str(fixture),
+                "--output", str(output)], capture_output=True, text=True)
+            self.assertEqual(baseline.returncode, 0, baseline.stderr)
+            retained["local_constitutive_values"][7][
+                "productionMechanicalPorosity"] *= 1.01
+            fixture.write_text(json.dumps(retained))
+            corrupted = subprocess.run([
+                sys.executable,
+                str(ROOT/"scripts/analyze_wp03_001_poroelastic_compaction.py"),
+                "--check-production-fixture", str(fixture),
+                "--output", str(output)], capture_output=True, text=True)
+            result = json.loads(output.read_text())
+            self.assertNotEqual(corrupted.returncode, 0)
+            self.assertFalse(result["gates"]["local_constitutive_reference"])
+            self.assertFalse(result["all_gates_pass"])
+            self.assertEqual(result["disposition"], "NUMERICAL_FAILURE")
+
+    def test_each_numerical_predecessor_corruption_fails_its_gate(self):
+        retained = json.loads(
+            (ROOT/"validation/wp03/WP03_001_POROELASTIC_COMPACTION_RESULTS.json")
+            .read_text())["predecessor_regressions"]
+        for predecessor, gate in PREDECESSOR_GATES.items():
+            with self.subTest(predecessor=predecessor):
+                comparisons = json.loads(json.dumps(retained))
+                metric = next(iter(
+                    comparisons[predecessor]["metric_errors"]))
+                comparisons[predecessor]["metric_errors"][metric] = 1.0
+                comparisons[predecessor]["maximum_relative_error"] = max(
+                    comparisons[predecessor]["metric_errors"].values())
+                gates = analyzer.predecessor_gate_results(comparisons)
+                self.assertFalse(gates[gate])
                 passed, disposition = analyzer.adjudicate_gates(gates)
                 self.assertFalse(passed)
                 self.assertEqual(disposition, "NUMERICAL_FAILURE")

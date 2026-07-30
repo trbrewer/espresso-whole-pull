@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 179,
-  "total_uncompressed_bytes_excluding_manifest": 1694604,
-  "aggregate_source_sha256": "09ff03726d9904d6e342db25a05bf24d1aa4ac79e1e44c50213ce6d5830bbb54",
-  "aggregate_sha256": "09ff03726d9904d6e342db25a05bf24d1aa4ac79e1e44c50213ce6d5830bbb54",
+  "total_uncompressed_bytes_excluding_manifest": 1709663,
+  "aggregate_source_sha256": "e756c82016f57d0c2bfaf06aa3dbbd9c446f669bc63dcd45810db705c2d502e8",
+  "aggregate_sha256": "e756c82016f57d0c2bfaf06aa3dbbd9c446f669bc63dcd45810db705c2d502e8",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -469,8 +469,8 @@
       "git_mode": "100644"
     },
     "docs/reports/WP03_001_POROELASTIC_COMPACTION_RESULTS.md": {
-      "sha256": "a167710fefb2d975c1cbe8b5f310e932a5e7e92469f44455b2c710a90f99d6f3",
-      "bytes": 6497,
+      "sha256": "b4c5696adf4100ed6afb84ae811e77fd4aee8a88699b948aaab219b98661cd11",
+      "bytes": 7186,
       "git_mode": "100644"
     },
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_2.md": {
@@ -514,8 +514,8 @@
       "git_mode": "100755"
     },
     "scripts/analyze_wp03_001_poroelastic_compaction.py": {
-      "sha256": "f12a8e17168120ca8257c38054b1bbfcf54ab04738881070f0c5345d61fb01d0",
-      "bytes": 18919,
+      "sha256": "36483eed2fd435a1487b481c5cc2796ab7d8cc4bc87c82f601fe0c4e3f53fa24",
+      "bytes": 28987,
       "git_mode": "100755"
     },
     "scripts/artifact_utils.py": {
@@ -844,8 +844,8 @@
       "git_mode": "100644"
     },
     "tests/fixtures/wp03_001_poroelastic/wp03_001_poroelastic_fixture.C": {
-      "sha256": "6fa87be31f7748a08e3d363af3e763fa665b43e65a980a8a0602fd35b988e2f5",
-      "bytes": 4516,
+      "sha256": "3d57412406a5c053b8c6c09d293762a74058f063fd58300467bdf0bdf3806345",
+      "bytes": 5817,
       "git_mode": "100644"
     },
     "tests/test_change_contract.py": {
@@ -889,8 +889,8 @@
       "git_mode": "100644"
     },
     "tests/test_wp03_001_poroelastic_compaction.py": {
-      "sha256": "a15e80bda07f6cfd696e377b569480b8784c5c310da72e8e36a5c90a8ed24acf",
-      "bytes": 6398,
+      "sha256": "58f2991ca69c551b0161aa9984e86e539b4f709a3b16d4bdac3b5ff7ccf68503",
+      "bytes": 9399,
       "git_mode": "100644"
     },
     "tests/test_wp03_holdout_contract.py": {
