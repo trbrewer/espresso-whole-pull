@@ -366,7 +366,7 @@
     "PROTECTED_SCORING": "NOT_PERFORMED",
     "RESULT_CLASS": "NUMERICAL_VERIFICATION_AND_SYNTHETIC_MECHANISM_DIAGNOSTIC"
   },
-  "disposition": "SOLVER_BEARING_WORK_PACKAGE_COMPLETE",
+  "disposition": "RESULT_ADJUDICATION_CORRECTION_COMPLETE_PR_READY_FOR_MERGE",
   "fixtures": {
     "darcy_limit": {
       "relative_errors": [
@@ -394,7 +394,7 @@
     "all_cases_complete_and_finite": true,
     "darcy_limit_finest_relative_error": 3.0408015848033365e-10,
     "darcy_limit_monotonic": true,
-    "exact_darcy_path_relative_error": 0.0,
+    "exact_darcy_path_relative_error": 2.1175823681357506e-16,
     "failed_nonlinear_steps": 0,
     "fine_pair_machine_balance_absolute_change_m3": 2.7507394962083404e-19,
     "fine_pair_solute_balance_absolute_change_kg": 2.3135252910445433e-11,
@@ -406,13 +406,27 @@
     "maximum_fine_pair_relative_change": 0.00041922952999281783,
     "maximum_machine_flux_relative_difference": 4.9663594492437e-12,
     "maximum_machine_water_balance_residual_m3": 1.54498809579184e-18,
-    "maximum_regression_error": 1.882920333581792e-11,
     "maximum_solute_balance_residual_kg": 2.31684439750459e-11,
     "maximum_water_balance_residual_kg": 3.81118747672105e-15,
+    "production_zero_inertia_all_flows_nonnegative": true,
+    "production_zero_inertia_all_values_finite": true,
+    "production_zero_inertia_machine_bracketed": true,
+    "production_zero_inertia_machine_fallback_used": false,
+    "production_zero_inertia_maximum_relative_error": 2.1175823681357506e-16,
+    "production_zero_inertia_status": "PASS",
+    "r0_maximum_regression_error": 1.882920333581792e-11,
     "scalar_relative_error": 1.4704284296836627e-16,
+    "source_ceramics_result_retained": true,
+    "source_inconsistency_disposition_correct": true,
+    "source_reconstruction_deterministic": true,
+    "source_reconstruction_positive_finite": true,
+    "source_zhou_published_band_maximum_absolute_error": 9.422325930796838e-05,
     "uniform_decomposition_relative_error": 2.539147519403034e-13,
     "uniform_flow_relative_error": 2.4659084765795023e-13,
-    "wetting_maximum_absolute_difference": 0.0
+    "wetting_maximum_absolute_difference": 0.0,
+    "wp02_002_mc2_regression_status": "PASS",
+    "wp02_002_mc5_regression_status": "PASS",
+    "wp02_coupling_disabled_regression_status": "PASS"
   },
   "gates": {
     "bounded_state": "PASS",
@@ -423,10 +437,189 @@
     "nonlinear_convergence": "PASS",
     "openfoam_layered_reference": "PASS",
     "openfoam_uniform_reference": "PASS",
-    "regression_preservation": "PASS",
+    "production_zero_inertia_path": "PASS",
+    "r0_regression": "PASS",
     "scalar_uniform_reference": "PASS",
+    "source_closure_reconstruction": "PASS",
     "time_refinement": "PASS",
-    "wetting_branch_isolation": "PASS"
+    "wetting_branch_isolation": "PASS",
+    "wp02_002_mc2_regression": "PASS",
+    "wp02_002_mc5_regression": "PASS",
+    "wp02_coupling_disabled_regression": "PASS"
+  },
+  "predecessor_regressions": {
+    "r0": {
+      "errors": {
+        "final_cup_mass_kg": 5.007580682681263e-12,
+        "final_ey_fraction": 9.478434305004007e-12,
+        "final_tds_fraction": 1.882920333581792e-11,
+        "first_drip_s": 2.4505653595178525e-15
+      }
+    },
+    "wp02_002_mc2": {
+      "maximum_relative_error": 0.00036281862695568127,
+      "metrics": {
+        "final_cup_mass_kg": {
+          "acceptance": 0.005,
+          "accepted": 0.0276357121039942,
+          "comparison": "relative",
+          "current": 0.0276357121039942,
+          "error": 0.0,
+          "pass": true
+        },
+        "final_extraction_yield_fraction": {
+          "acceptance": 0.005,
+          "accepted": 0.190570405853418,
+          "comparison": "relative",
+          "current": 0.190570405853418,
+          "error": 0.0,
+          "pass": true
+        },
+        "final_tds_fraction": {
+          "acceptance": 0.005,
+          "accepted": 0.137916045105908,
+          "comparison": "relative",
+          "current": 0.137916045105908,
+          "error": 0.0,
+          "pass": true
+        },
+        "first_drip_s": {
+          "acceptance": 1e-08,
+          "accepted": 8.90054655524072,
+          "comparison": "absolute",
+          "current": 8.90054655524072,
+          "error": 0.0,
+          "pass": true
+        },
+        "maximum_machine_water_balance_residual_m3": {
+          "acceptance": 1e-12,
+          "accepted": 1.54498809579184e-18,
+          "comparison": "absolute",
+          "current": 1.54498809579184e-18,
+          "error": 0.0,
+          "pass": true
+        },
+        "peak_upstream_pressure_pa": {
+          "acceptance": 0.005,
+          "accepted": 961516.122737406,
+          "comparison": "relative",
+          "current": 961516.122737406,
+          "error": 0.0,
+          "pass": true
+        },
+        "post_saturation_mean_flow_m3_s": {
+          "acceptance": 0.005,
+          "accepted": 1.1716457291676432e-06,
+          "comparison": "relative",
+          "current": 1.171220634272908e-06,
+          "error": 0.00036281862695568127,
+          "pass": true
+        },
+        "sustained_basket_pressure_peak_pa": {
+          "acceptance": 0.005,
+          "accepted": 723225.287958425,
+          "comparison": "relative",
+          "current": 723225.287958425,
+          "error": 0.0,
+          "pass": true
+        }
+      },
+      "status": "PASS"
+    },
+    "wp02_002_mc5": {
+      "maximum_relative_error": 0.0038198908600423054,
+      "metrics": {
+        "final_cup_mass_kg": {
+          "acceptance": 0.005,
+          "accepted": 0.00321502061562552,
+          "comparison": "relative",
+          "current": 0.00321502061562552,
+          "error": 0.0,
+          "pass": true
+        },
+        "final_extraction_yield_fraction": {
+          "acceptance": 0.005,
+          "accepted": 0.0252402597265326,
+          "comparison": "relative",
+          "current": 0.0252402597265326,
+          "error": 0.0,
+          "pass": true
+        },
+        "final_tds_fraction": {
+          "acceptance": 0.005,
+          "accepted": 0.157014605778021,
+          "comparison": "relative",
+          "current": 0.157014605778021,
+          "error": 0.0,
+          "pass": true
+        },
+        "first_drip_s": {
+          "acceptance": 1e-08,
+          "accepted": 8.90054655524072,
+          "comparison": "absolute",
+          "current": 8.90054655524072,
+          "error": 0.0,
+          "pass": true
+        },
+        "maximum_machine_water_balance_residual_m3": {
+          "acceptance": 1e-12,
+          "accepted": 8.19927892942163e-19,
+          "comparison": "absolute",
+          "current": 8.19927892942163e-19,
+          "error": 0.0,
+          "pass": true
+        },
+        "peak_upstream_pressure_pa": {
+          "acceptance": 0.005,
+          "accepted": 1184502.12148748,
+          "comparison": "relative",
+          "current": 1184502.12148748,
+          "error": 0.0,
+          "pass": true
+        },
+        "post_saturation_mean_flow_m3_s": {
+          "acceptance": 0.005,
+          "accepted": 1.3353341191946513e-07,
+          "comparison": "relative",
+          "current": 1.330233288597637e-07,
+          "error": 0.0038198908600423054,
+          "pass": true
+        },
+        "sustained_basket_pressure_peak_pa": {
+          "acceptance": 0.005,
+          "accepted": 1179203.60117117,
+          "comparison": "relative",
+          "current": 1179203.60117117,
+          "error": 0.0,
+          "pass": true
+        }
+      },
+      "status": "PASS"
+    },
+    "wp02_coupling_disabled": {
+      "accepted_artifact": "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json",
+      "relative_error": 1.1797109753105952e-16,
+      "schema_version": "espresso.public.wp02_coupling_disabled_regression.v1",
+      "status": "PASS"
+    }
+  },
+  "production_zero_inertia_fixture": {
+    "all_flows_nonnegative": true,
+    "all_values_finite": true,
+    "case_count": 4,
+    "machine_bracketed": true,
+    "machine_converged": true,
+    "machine_fallback_used": false,
+    "machine_flow_relative_error": 0,
+    "maximum_relative_error": 2.1175823681357506e-16,
+    "maximum_saturated_puck_relative_error": 2.1175823681357506e-16,
+    "maximum_series_relative_error": 0,
+    "production_headers": [
+      "forchheimerResistance.H",
+      "machineBoundaryModel.H"
+    ],
+    "schema_version": "espresso.public.wp02_003.zero_inertia_fixture.v1",
+    "status": "PASS"
   },
   "refinement": {
     "cases": {
@@ -602,5 +795,139 @@
   },
   "run_spec_sha256": "32b8b9ff8e5636f6a783c9c4b0c38efa3cf8b16dedb05655156b33561341e7fe",
   "schema_version": "espresso.public.wp02_003.results.v1",
-  "source_range_disposition": "SOURCE_RANGE_CONTEXT_ONLY"
+  "source_reconstruction": {
+    "ceramics_fo_range": [
+      0.010663146973690743,
+      0.011843663314111309
+    ],
+    "combinations": [
+      {
+        "ceramics_fo": 0.010691287285901373,
+        "ceramics_inertial_permeability_m": 1.329500515154546e-06,
+        "connected_porosity": 0.3,
+        "grinder_setting": 1.0,
+        "mean_radius_m": 0.000145105,
+        "permeability_m2": 8.287122174831577e-12,
+        "superficial_velocity_m_s": 0.000536,
+        "zhou_fo": 0.059581700928590484,
+        "zhou_inertial_permeability_m": 2.385643869299215e-07
+      },
+      {
+        "ceramics_fo": 0.011449251683036168,
+        "ceramics_inertial_permeability_m": 1.329500515154546e-06,
+        "connected_porosity": 0.3,
+        "grinder_setting": 1.0,
+        "mean_radius_m": 0.000145105,
+        "permeability_m2": 8.287122174831577e-12,
+        "superficial_velocity_m_s": 0.000574,
+        "zhou_fo": 0.06380577674069203,
+        "zhou_inertial_permeability_m": 2.385643869299215e-07
+      },
+      {
+        "ceramics_fo": 0.011024646778696792,
+        "ceramics_inertial_permeability_m": 1.7085054153064953e-05,
+        "connected_porosity": 0.5,
+        "grinder_setting": 1.0,
+        "mean_radius_m": 0.000145105,
+        "permeability_m2": 1.0981616559727599e-10,
+        "superficial_velocity_m_s": 0.000536,
+        "zhou_fo": 0.016367472888881213,
+        "zhou_inertial_permeability_m": 1.15079883443951e-05
+      },
+      {
+        "ceramics_fo": 0.011806244871216339,
+        "ceramics_inertial_permeability_m": 1.7085054153064953e-05,
+        "connected_porosity": 0.5,
+        "grinder_setting": 1.0,
+        "mean_radius_m": 0.000145105,
+        "permeability_m2": 1.0981616559727599e-10,
+        "superficial_velocity_m_s": 0.000574,
+        "zhou_fo": 0.017527853429510847,
+        "zhou_inertial_permeability_m": 1.15079883443951e-05
+      },
+      {
+        "ceramics_fo": 0.010663146973690743,
+        "ceramics_inertial_permeability_m": 1.3709961637744327e-06,
+        "connected_porosity": 0.3,
+        "grinder_setting": 4.0,
+        "mean_radius_m": 0.00027561999999999997,
+        "permeability_m2": 8.523282179741697e-12,
+        "superficial_velocity_m_s": 0.000536,
+        "zhou_fo": 0.0587504685535047,
+        "zhou_inertial_permeability_m": 2.488343319573554e-07
+      },
+      {
+        "ceramics_fo": 0.011419116348691204,
+        "ceramics_inertial_permeability_m": 1.3709961637744327e-06,
+        "connected_porosity": 0.3,
+        "grinder_setting": 4.0,
+        "mean_radius_m": 0.00027561999999999997,
+        "permeability_m2": 8.523282179741697e-12,
+        "superficial_velocity_m_s": 0.000574,
+        "zhou_fo": 0.06291561371214868,
+        "zhou_inertial_permeability_m": 2.488343319573554e-07
+      },
+      {
+        "ceramics_fo": 0.011059588042445403,
+        "ceramics_inertial_permeability_m": 1.7516414701238254e-05,
+        "connected_porosity": 0.5,
+        "grinder_setting": 4.0,
+        "mean_radius_m": 0.00027561999999999997,
+        "permeability_m2": 1.1294562183787864e-10,
+        "superficial_velocity_m_s": 0.000536,
+        "zhou_fo": 0.01613912805898314,
+        "zhou_inertial_permeability_m": 1.2003395094724544e-05
+      },
+      {
+        "ceramics_fo": 0.011843663314111309,
+        "ceramics_inertial_permeability_m": 1.7516414701238254e-05,
+        "connected_porosity": 0.5,
+        "grinder_setting": 4.0,
+        "mean_radius_m": 0.00027561999999999997,
+        "permeability_m2": 1.1294562183787864e-10,
+        "superficial_velocity_m_s": 0.000574,
+        "zhou_fo": 0.01728331997361254,
+        "zhou_inertial_permeability_m": 1.2003395094724544e-05
+      }
+    ],
+    "disposition": "SOURCE_INTERNAL_CLOSURE_INCONSISTENCY_IDENTIFIED",
+    "implemented_solver_closure": "wadsworth2026CeramicsFit",
+    "published_fo_range": [
+      0.0161,
+      0.0639
+    ],
+    "source_comparison_status": "CONTEXT_ONLY_NOT_DIRECT_IMPLEMENTED_BRANCH_TARGET",
+    "source_constants": {
+      "ceramics_gamma2": -1.71588,
+      "ceramics_tau": -0.08093,
+      "connected_porosity_range": [
+        0.3,
+        0.5
+      ],
+      "density_kg_m3": 960.0,
+      "grind_beta_m_per_setting": 4.3505e-05,
+      "grind_intercept_m": 0.0001016,
+      "grinder_settings": [
+        1.0,
+        4.0
+      ],
+      "mean_radii_m": [
+        0.000145105,
+        0.00027561999999999997
+      ],
+      "percolation_exponent": 4.4,
+      "permeability_alpha_per_m": 4808.0,
+      "superficial_velocity_range_m_s": [
+        0.000536,
+        0.000574
+      ],
+      "viscosity_pa_s": 0.0003,
+      "zhou_exponent": 1.5,
+      "zhou_gamma1": 10000000000.0
+    },
+    "zhou_fo_range": [
+      0.01613912805898314,
+      0.06380577674069203
+    ]
+  }
 }

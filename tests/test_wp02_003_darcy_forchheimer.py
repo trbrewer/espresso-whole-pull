@@ -71,6 +71,29 @@ class ForchheimerReferenceTests(unittest.TestCase):
             spec["claim_boundary"]["PHYSICAL_VALIDATION"], "NOT_ESTABLISHED"
         )
 
+    def test_dual_closure_source_reconstruction(self):
+        result = REF.reconstruct_wadsworth2026_source_fo_range()
+        self.assertEqual(
+            result["disposition"],
+            "SOURCE_INTERNAL_CLOSURE_INCONSISTENCY_IDENTIFIED",
+        )
+        self.assertAlmostEqual(
+            result["source_constants"]["mean_radii_m"][0], 145.105e-6, places=15
+        )
+        self.assertAlmostEqual(
+            result["source_constants"]["mean_radii_m"][1], 275.620e-6, places=15
+        )
+        self.assertLess(
+            max(abs(a - b) for a, b in zip(
+                result["zhou_fo_range"], result["published_fo_range"]
+            )),
+            ANALYZER.SOURCE_PUBLISHED_BAND_ABSOLUTE_TOLERANCE,
+        )
+        self.assertAlmostEqual(result["zhou_fo_range"][0], .01613912805898314)
+        self.assertAlmostEqual(result["zhou_fo_range"][1], .06380577674069203)
+        self.assertAlmostEqual(result["ceramics_fo_range"][0], .010663146973690743)
+        self.assertAlmostEqual(result["ceramics_fo_range"][1], .011843663314111309)
+
 
 class FailClosedAnalyzerTests(unittest.TestCase):
     def passing(self):
@@ -91,7 +114,21 @@ class FailClosedAnalyzerTests(unittest.TestCase):
             "maximum_fine_pair_relative_change": 0.0,
             "fine_pair_machine_balance_absolute_change_m3": 0.0,
             "fine_pair_solute_balance_absolute_change_kg": 0.0,
-            "maximum_regression_error": 0.0,
+            "source_reconstruction_deterministic": True,
+            "source_reconstruction_positive_finite": True,
+            "source_zhou_published_band_maximum_absolute_error": 0.0,
+            "source_ceramics_result_retained": True,
+            "source_inconsistency_disposition_correct": True,
+            "production_zero_inertia_status": "PASS",
+            "production_zero_inertia_maximum_relative_error": 0.0,
+            "production_zero_inertia_all_values_finite": True,
+            "production_zero_inertia_all_flows_nonnegative": True,
+            "production_zero_inertia_machine_bracketed": True,
+            "production_zero_inertia_machine_fallback_used": False,
+            "r0_maximum_regression_error": 0.0,
+            "wp02_002_mc2_regression_status": "PASS",
+            "wp02_002_mc5_regression_status": "PASS",
+            "wp02_coupling_disabled_regression_status": "PASS",
             "maximum_water_balance_residual_kg": 0.0,
             "maximum_solute_balance_residual_kg": 0.0,
             "maximum_machine_water_balance_residual_m3": 0.0,
@@ -110,6 +147,12 @@ class FailClosedAnalyzerTests(unittest.TestCase):
             "refinement": ("maximum_fine_pair_relative_change", .01),
             "water": ("maximum_water_balance_residual_kg", 1e-3),
             "finite": ("all_cases_complete_and_finite", False),
+            "source": ("source_reconstruction_deterministic", False),
+            "r0": ("r0_maximum_regression_error", .01),
+            "mc2": ("wp02_002_mc2_regression_status", "FAIL"),
+            "mc5": ("wp02_002_mc5_regression_status", "FAIL"),
+            "coupling_disabled":
+                ("wp02_coupling_disabled_regression_status", "FAIL"),
         }
         self.assertTrue(ANALYZER.adjudicate(self.passing())["all_gates_pass"])
         for name, (key, value) in corruptions.items():
@@ -119,6 +162,17 @@ class FailClosedAnalyzerTests(unittest.TestCase):
                 self.assertFalse(
                     ANALYZER.adjudicate(candidate)["all_gates_pass"]
                 )
+
+    def test_corrupt_production_zero_inertia_fails_closed(self):
+        candidate = self.passing()
+        candidate["gate_inputs"][
+            "production_zero_inertia_maximum_relative_error"
+        ] = 1e-3
+        result = ANALYZER.adjudicate(candidate)
+        self.assertEqual(result["gates"]["production_zero_inertia_path"], "FAIL")
+        self.assertFalse(result["all_gates_pass"])
+        self.assertEqual(result["disposition"], "NUMERICAL_FAILURE")
+        self.assertNotEqual(ANALYZER.result_exit_code(result), 0)
 
 
 if __name__ == "__main__":

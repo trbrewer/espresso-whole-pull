@@ -1,0 +1,5 @@
+EXE_INC = \
+    -I../../../solver/espressoWholePullFoam
+
+EXE_LIBS = \
+    -lOpenFOAM

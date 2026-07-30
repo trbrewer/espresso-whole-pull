@@ -135,7 +135,17 @@ for dt in 0.02 0.01 0.005; do
   run_case "DF-3-DT-$dt" "$WP02_003_NPROCS"
 done
 
+"$ROOT/scripts/run_wp02_003_zero_inertia_fixture.sh" \
+  "$WP02_003_RUN_ROOT/WP02_003_ZERO_INERTIA_FIXTURE.json"
+WP02_003_REGRESSION_ROOT="$WP02_003_RUN_ROOT/predecessor-regressions" \
+  "$ROOT/scripts/run_wp02_003_predecessor_regressions.sh"
+
 python3 "$ROOT/scripts/analyze_wp02_003_darcy_forchheimer.py" \
   --root "$ROOT" --run-root "$WP02_003_RUN_ROOT" \
+  --zero-inertia-result \
+    "$WP02_003_RUN_ROOT/WP02_003_ZERO_INERTIA_FIXTURE.json" \
+  --regression-root "$WP02_003_RUN_ROOT/predecessor-regressions" \
+  --coupling-disabled-result \
+    "$WP02_003_RUN_ROOT/predecessor-regressions/WP02_COUPLING_DISABLED_REGRESSION.json" \
   --output "$WP02_003_RUN_ROOT/WP02_003_DARCY_FORCHHEIMER_RESULTS.json" \
   --trace-output "$WP02_003_RUN_ROOT/WP02_003_DARCY_FORCHHEIMER_TRACE.csv"

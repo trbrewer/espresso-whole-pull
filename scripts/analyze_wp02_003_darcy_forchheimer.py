@@ -16,6 +16,12 @@ sys.path.insert(0, str(SCRIPT_DIR))
 import forchheimer_reference as ref  # noqa: E402
 
 REQUIRED_GATE_KEYS = (
+    "source_closure_reconstruction",
+    "production_zero_inertia_path",
+    "r0_regression",
+    "wp02_002_mc2_regression",
+    "wp02_002_mc5_regression",
+    "wp02_coupling_disabled_regression",
     "scalar_uniform_reference",
     "openfoam_uniform_reference",
     "openfoam_layered_reference",
@@ -24,11 +30,14 @@ REQUIRED_GATE_KEYS = (
     "nonlinear_convergence",
     "machine_field_flux_consistency",
     "time_refinement",
-    "regression_preservation",
     "conservation",
     "bounded_state",
     "wetting_branch_isolation",
 )
+SOURCE_PUBLISHED_BAND_ABSOLUTE_TOLERANCE = 5e-4
+PREDECESSOR_RELATIVE_TOLERANCE = .005
+PREDECESSOR_FIRST_DRIP_ABSOLUTE_TOLERANCE_S = 1e-8
+PREDECESSOR_BALANCE_ABSOLUTE_TOLERANCE_M3 = 1e-12
 
 
 def relative(a, b, floor=1e-30):
@@ -57,6 +66,102 @@ def timing(path):
         elif text.startswith("Maximum resident set size"):
             result["peak_rss_kb"] = int(text.rsplit(": ", 1)[-1])
     return result
+
+
+def result_exit_code(result):
+    return 0 if result.get("all_gates_pass") else 1
+
+
+def time_weighted_post_saturation_mean(rows_, transition):
+    samples = [
+        (float(row["time_s"]), float(row["puckFlowM3s"]))
+        for row in rows_ if float(row["time_s"]) > transition
+    ]
+    if len(samples) < 2:
+        raise ValueError("trace has insufficient post-saturation rows")
+    integral = sum(
+        0.5 * (q0 + q1) * (t1 - t0)
+        for (t0, q0), (t1, q1) in zip(samples, samples[1:])
+    )
+    return integral / (samples[-1][0] - samples[0][0])
+
+
+def saturation_transition_time(rows_):
+    return next(
+        float(row["time_s"]) for row in rows_
+        if int(row["saturationTransitionStep"])
+    )
+
+
+def predecessor_comparison(
+    current, current_trace, accepted, accepted_trace
+):
+    values = {
+        "first_drip_s": {
+            "current": current["first_drip_s"],
+            "accepted": accepted["first_drip_s"],
+            "error": abs(current["first_drip_s"] - accepted["first_drip_s"]),
+            "acceptance": PREDECESSOR_FIRST_DRIP_ABSOLUTE_TOLERANCE_S,
+            "comparison": "absolute",
+        },
+        "peak_upstream_pressure_pa": {
+            "current": current["peak_upstream_pressure_pa"],
+            "accepted": accepted["peak_upstream_pressure_Pa"],
+        },
+        "sustained_basket_pressure_peak_pa": {
+            "current": current["sustained_peak_basket_pressure_pa"],
+            "accepted":
+                accepted["maximum_sustained_post_saturation_basket_pressure_Pa"],
+        },
+        "post_saturation_mean_flow_m3_s": {
+            "current": time_weighted_post_saturation_mean(
+                current_trace, saturation_transition_time(current_trace)
+            ),
+            "accepted": time_weighted_post_saturation_mean(
+                accepted_trace, accepted["transition_step_time_s"]
+            ),
+        },
+        "final_cup_mass_kg": {
+            "current": current["final_cup_mass_kg"],
+            "accepted": accepted["final_cup_mass_kg"],
+        },
+        "final_tds_fraction": {
+            "current": current["final_tds_fraction"],
+            "accepted": accepted["final_tds_fraction"],
+        },
+        "final_extraction_yield_fraction": {
+            "current": current["final_ey_fraction"],
+            "accepted": accepted["final_extraction_yield_fraction"],
+        },
+        "maximum_machine_water_balance_residual_m3": {
+            "current": current["maximum_machine_water_balance_residual_m3"],
+            "accepted": accepted["maximum_machine_water_balance_residual_m3"],
+            "error": abs(
+                current["maximum_machine_water_balance_residual_m3"]
+                - accepted["maximum_machine_water_balance_residual_m3"]
+            ),
+            "acceptance": PREDECESSOR_BALANCE_ABSOLUTE_TOLERANCE_M3,
+            "comparison": "absolute",
+        },
+    }
+    for value in values.values():
+        if "error" not in value:
+            value["error"] = relative(value["current"], value["accepted"], 1e-30)
+            value["acceptance"] = PREDECESSOR_RELATIVE_TOLERANCE
+            value["comparison"] = "relative"
+        value["pass"] = (
+            math.isfinite(value["error"])
+            and value["error"] <= value["acceptance"]
+        )
+    return {
+        "metrics": values,
+        "maximum_relative_error": max(
+            value["error"] for value in values.values()
+            if value["comparison"] == "relative"
+        ),
+        "status": "PASS" if all(value["pass"] for value in values.values())
+        else "FAIL",
+    }
 
 
 def summary(run_root, cid, ranks):
@@ -154,6 +259,27 @@ def summary(run_root, cid, ranks):
 def adjudicate(result):
     inputs = result["gate_inputs"]
     gates = {
+        "source_closure_reconstruction":
+            inputs["source_reconstruction_deterministic"]
+            and inputs["source_reconstruction_positive_finite"]
+            and inputs["source_zhou_published_band_maximum_absolute_error"]
+                <= SOURCE_PUBLISHED_BAND_ABSOLUTE_TOLERANCE
+            and inputs["source_ceramics_result_retained"]
+            and inputs["source_inconsistency_disposition_correct"],
+        "production_zero_inertia_path":
+            inputs["production_zero_inertia_status"] == "PASS"
+            and inputs["production_zero_inertia_maximum_relative_error"] <= 1e-12
+            and inputs["production_zero_inertia_all_values_finite"]
+            and inputs["production_zero_inertia_all_flows_nonnegative"]
+            and inputs["production_zero_inertia_machine_bracketed"]
+            and not inputs["production_zero_inertia_machine_fallback_used"],
+        "r0_regression": inputs["r0_maximum_regression_error"] <= .005,
+        "wp02_002_mc2_regression":
+            inputs["wp02_002_mc2_regression_status"] == "PASS",
+        "wp02_002_mc5_regression":
+            inputs["wp02_002_mc5_regression_status"] == "PASS",
+        "wp02_coupling_disabled_regression":
+            inputs["wp02_coupling_disabled_regression_status"] == "PASS",
         "scalar_uniform_reference": inputs["scalar_relative_error"] <= 1e-12,
         "openfoam_uniform_reference":
             inputs["uniform_flow_relative_error"] <= 1e-8
@@ -176,7 +302,6 @@ def adjudicate(result):
             inputs["maximum_fine_pair_relative_change"] <= .005
             and inputs["fine_pair_machine_balance_absolute_change_m3"] <= 1e-12
             and inputs["fine_pair_solute_balance_absolute_change_kg"] <= 1e-10,
-        "regression_preservation": inputs["maximum_regression_error"] <= .005,
         "conservation":
             inputs["maximum_water_balance_residual_kg"] <= 1e-10
             and inputs["maximum_solute_balance_residual_kg"] <= 1e-10
@@ -187,7 +312,7 @@ def adjudicate(result):
     result["gates"] = {key: "PASS" if value else "FAIL" for key, value in gates.items()}
     result["all_gates_pass"] = all(gates[key] for key in REQUIRED_GATE_KEYS)
     result["disposition"] = (
-        "SOLVER_BEARING_WORK_PACKAGE_COMPLETE"
+        "RESULT_ADJUDICATION_CORRECTION_COMPLETE_PR_READY_FOR_MERGE"
         if result["all_gates_pass"] else "NUMERICAL_FAILURE"
     )
     return result
@@ -199,6 +324,9 @@ def main():
     parser.add_argument("--run-root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--trace-output", type=Path)
+    parser.add_argument("--zero-inertia-result", type=Path, required=True)
+    parser.add_argument("--regression-root", type=Path, required=True)
+    parser.add_argument("--coupling-disabled-result", type=Path, required=True)
     args = parser.parse_args()
     spec = json.loads(
         (args.root / "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.json").read_text()
@@ -309,6 +437,58 @@ def main():
         key: relative(cases["DF-0"][key], value, 1e-12)
         for key, value in r0_expected.items()
     }
+    source_reconstruction = ref.reconstruct_wadsworth2026_source_fo_range()
+    source_reconstruction_repeat = ref.reconstruct_wadsworth2026_source_fo_range()
+    source_combinations = source_reconstruction["combinations"]
+    source_positive_finite = all(
+        math.isfinite(float(item[key])) and float(item[key]) > 0.0
+        for item in source_combinations
+        for key in (
+            "mean_radius_m", "permeability_m2", "superficial_velocity_m_s",
+            "zhou_inertial_permeability_m",
+            "ceramics_inertial_permeability_m", "zhou_fo", "ceramics_fo",
+        )
+    )
+    source_band_error = max(
+        abs(observed - published)
+        for observed, published in zip(
+            source_reconstruction["zhou_fo_range"],
+            source_reconstruction["published_fo_range"],
+        )
+    )
+    zero_inertia = json.loads(args.zero_inertia_result.read_text())
+    accepted_wp02_002 = json.loads(
+        (args.root / "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json")
+        .read_text()
+    )
+    accepted_trace_all = rows(
+        args.root
+        / "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_TRACE.csv"
+    )
+    accepted_traces = {
+        cid: [row for row in accepted_trace_all if row["case"] == cid]
+        for cid in ("MC-2", "MC-5")
+    }
+    df2_trace = rows(
+        args.run_root / "cases/DF-2/postProcessing/wholePull/0/traces.csv"
+    )
+    mc5_current = summary(args.regression_root, "MC-5-DARCY", 32)
+    mc5_trace = rows(
+        args.regression_root
+        / "cases/MC-5-DARCY/postProcessing/wholePull/0/traces.csv"
+    )
+    mc2_comparison = predecessor_comparison(
+        cases["DF-2"], df2_trace,
+        accepted_wp02_002["cases"]["MC-2"], accepted_traces["MC-2"],
+    )
+    mc5_comparison = predecessor_comparison(
+        mc5_current, mc5_trace,
+        accepted_wp02_002["cases"]["MC-5"], accepted_traces["MC-5"],
+    )
+    coupling_disabled = json.loads(args.coupling_disabled_result.read_text())
+    coupling_disabled["accepted_artifact"] = (
+        "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json"
+    )
     df0_rows = rows(args.run_root / "cases/DF-0/postProcessing/wholePull/0/traces.csv")
     df1_rows = rows(args.run_root / "cases/DF-1/postProcessing/wholePull/0/traces.csv")
     wetting_diff = max(
@@ -329,8 +509,8 @@ def main():
         "machine_maximum_relative_error": max(machine_errors),
         "darcy_limit_monotonic": limit_errors[0] > limit_errors[1] > limit_errors[2],
         "darcy_limit_finest_relative_error": limit_errors[-1],
-        "exact_darcy_path_relative_error": relative(cases["DF-0"]["post_saturation_mean_flow_m3_s"],
-                                                     cases["DF-0"]["post_saturation_mean_flow_m3_s"]),
+        "exact_darcy_path_relative_error":
+            zero_inertia["maximum_relative_error"],
         "failed_nonlinear_steps": sum(c["failed_nonlinear_steps"] for c in all_summaries),
         "machine_bracket_failures": sum(c["machine_bracket_failures"] for c in all_summaries),
         "machine_fallback_count": sum(c["machine_fallback_count"] for c in all_summaries),
@@ -345,7 +525,33 @@ def main():
             refinement["0.01"]["maximum_solute_balance_residual_kg"]
             - refinement["0.005"]["maximum_solute_balance_residual_kg"]
         ),
-        "maximum_regression_error": max(regression_errors.values()),
+        "source_reconstruction_deterministic":
+            source_reconstruction == source_reconstruction_repeat,
+        "source_reconstruction_positive_finite": source_positive_finite,
+        "source_zhou_published_band_maximum_absolute_error": source_band_error,
+        "source_ceramics_result_retained":
+            len(source_reconstruction["ceramics_fo_range"]) == 2
+            and source_reconstruction["ceramics_fo_range"]
+                != source_reconstruction["zhou_fo_range"],
+        "source_inconsistency_disposition_correct":
+            source_reconstruction["disposition"]
+                == "SOURCE_INTERNAL_CLOSURE_INCONSISTENCY_IDENTIFIED",
+        "production_zero_inertia_status": zero_inertia["status"],
+        "production_zero_inertia_maximum_relative_error":
+            zero_inertia["maximum_relative_error"],
+        "production_zero_inertia_all_values_finite":
+            zero_inertia["all_values_finite"],
+        "production_zero_inertia_all_flows_nonnegative":
+            zero_inertia["all_flows_nonnegative"],
+        "production_zero_inertia_machine_bracketed":
+            zero_inertia["machine_bracketed"],
+        "production_zero_inertia_machine_fallback_used":
+            zero_inertia["machine_fallback_used"],
+        "r0_maximum_regression_error": max(regression_errors.values()),
+        "wp02_002_mc2_regression_status": mc2_comparison["status"],
+        "wp02_002_mc5_regression_status": mc5_comparison["status"],
+        "wp02_coupling_disabled_regression_status":
+            coupling_disabled["status"],
         "maximum_water_balance_residual_kg":
             max(c["maximum_water_balance_residual_kg"] for c in all_summaries),
         "maximum_solute_balance_residual_kg":
@@ -358,7 +564,14 @@ def main():
     result = adjudicate({
         "schema_version": "espresso.public.wp02_003.results.v1",
         "run_spec_sha256": sha256(args.root / "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.json"),
-        "source_range_disposition": "SOURCE_RANGE_CONTEXT_ONLY",
+        "source_reconstruction": source_reconstruction,
+        "production_zero_inertia_fixture": zero_inertia,
+        "predecessor_regressions": {
+            "r0": {"errors": regression_errors},
+            "wp02_002_mc2": mc2_comparison,
+            "wp02_002_mc5": mc5_comparison,
+            "wp02_coupling_disabled": coupling_disabled,
+        },
         "cases": cases,
         "refinement": {"cases": refinement, "fine_pair_changes": fine_changes},
         "fixtures": {
@@ -383,7 +596,7 @@ def main():
                                      row["integratedInertialPressureFraction"]])
     print(json.dumps({"all_gates_pass": result["all_gates_pass"],
                       "disposition": result["disposition"], "gates": result["gates"]}, indent=2))
-    raise SystemExit(0 if result["all_gates_pass"] else 1)
+    raise SystemExit(result_exit_code(result))
 
 
 if __name__ == "__main__":

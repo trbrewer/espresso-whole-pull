@@ -2,8 +2,8 @@
 
 ## Disposition and scope
 
-`SOLVER_BEARING_WORK_PACKAGE_COMPLETE_PR_OPEN` after the branch pull request is
-opened. This work is a `GOVERNING_PHYSICS_CHANGE` with evidence roles
+`RESULT_ADJUDICATION_CORRECTION_COMPLETE_PR_READY_FOR_MERGE` with pull request
+#31 open and unmerged. This work is a `GOVERNING_PHYSICS_CHANGE` with evidence roles
 `CODE_VERIFICATION`, `NUMERICAL_QUALIFICATION`, and
 `SYNTHETIC_MECHANISM_DIAGNOSTIC`.
 
@@ -16,9 +16,19 @@ The optional saturated law is
 Darcy remains the default. The existing sharp-front wetting branch is
 unchanged, and paired cases have identical first-drip histories. The source
 model uses the fixed Wadsworth 2026 ceramics-fit coefficients with the
-documented implicit SI convention. The locked card's `0.0161–0.0639` worked
-espresso band uses the separately named Zhou closure, so its disposition here
-is `SOURCE_RANGE_CONTEXT_ONLY`, not source reproduction.
+documented implicit SI convention.
+
+The independent reconstruction identifies
+`SOURCE_INTERNAL_CLOSURE_INCONSISTENCY_IDENTIFIED`. From the paper's stated
+grinder settings, radius relation, permeability relation, flow endpoints,
+density, and viscosity, the Zhou best fit
+`k_I=1.0e10 k^(3/2)` gives `Fo=0.0161391–0.0638058`, closely reproducing the
+published `0.0161–0.0639`. Applying the ceramics equation named in the paper's
+prose, `k_I=exp(-1.71588 k^(-0.08093))` with strict SI permeability, instead
+gives `Fo=0.0106631–0.0118437`. The intended source calculation therefore
+cannot be established conclusively. WP02-003 continues to implement the named
+ceramics equation without changing its coefficients; the published band is
+contextual and is not a direct verification target for that solver branch.
 
 ## Verification
 
@@ -34,6 +44,12 @@ adjudication remains in the external governed run.
 
 | Gate | Result |
 |---|---:|
+| source reconstruction, Zhou / ceramics Fo | `0.0161391–0.0638058 / 0.0106631–0.0118437` |
+| production zero-inertia maximum relative error | `2.12e-16` |
+| R0 regression maximum relative error | `1.88e-11` |
+| WP02-002 MC-2 regression maximum relative error | `3.63e-4` |
+| WP02-002 MC-5 regression maximum relative error | `3.82e-3` |
+| WP02 coupling-disabled relative error | `1.18e-16` |
 | scalar positive-root relative error | `1.47e-16` |
 | uniform OpenFOAM flow relative error | `2.47e-13` |
 | uniform pressure-decomposition relative error | `2.54e-13` |
@@ -50,6 +66,14 @@ adjudication remains in the external governed run.
 Conservation residuals approaching zero use the predeclared absolute
 comparisons: the fine-pair changes were `2.75e-19 m3` for machine water and
 `2.31e-11 kg` for solute. No tolerance was relaxed.
+
+The MC-2 and MC-5 comparisons use the accepted WP02-002 artifact and its
+retained trace. Post-saturation mean flow is time-weighted so the comparison
+is independent of the different retained sampling intervals. The other
+listed predecessor observables reproduce exactly or within floating-point
+error. The production zero-inertia fixture compiles against and calls the
+actual resistance and machine-boundary headers; it is not a comparison of a
+retained value with itself.
 
 ## Executed cases
 

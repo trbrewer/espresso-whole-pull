@@ -10,6 +10,18 @@ import math
 
 GAMMA2 = -1.71588
 TAU = -0.08093
+ZHOU_GAMMA1 = 1.0e10
+ZHOU_EXPONENT = 1.5
+SOURCE_ALPHA_PER_M = 4808.0
+SOURCE_PERCOLATION_EXPONENT = 4.4
+SOURCE_GRIND_BETA_M_PER_SETTING = 4.3505e-5
+SOURCE_GRIND_INTERCEPT_M = 1.0160e-4
+SOURCE_GRINDER_SETTINGS = (1.0, 4.0)
+SOURCE_CONNECTED_POROSITIES = (0.3, 0.5)
+SOURCE_FLOW_RANGE_M_S = (5.36e-4, 5.74e-4)
+SOURCE_DENSITY_KG_M3 = 960.0
+SOURCE_VISCOSITY_PA_S = 3.0e-4
+PUBLISHED_FO_RANGE = (0.0161, 0.0639)
 
 
 def _positive_finite(name: str, value: float) -> float:
@@ -24,6 +36,91 @@ def wadsworth2026_ceramics_fit(k_m2: float) -> float:
     k = _positive_finite("k_m2", k_m2)
     value = math.exp(GAMMA2 * k**TAU)
     return _positive_finite("k_I_m", value)
+
+
+def wadsworth2026_zhou_best_fit(k_m2: float) -> float:
+    """Return Zhou best-fit k_I [m] with strict-SI k [m2]."""
+    k = _positive_finite("k_m2", k_m2)
+    return _positive_finite("k_I_m", ZHOU_GAMMA1 * k**ZHOU_EXPONENT)
+
+
+def wadsworth2026_source_permeability(
+    radius_m: float, connected_porosity: float
+) -> float:
+    radius = _positive_finite("radius_m", radius_m)
+    phi = float(connected_porosity)
+    if not math.isfinite(phi) or not 0.0 < phi < 1.0:
+        raise ValueError("connected_porosity must be finite and in (0,1)")
+    value = (
+        2.0 * radius**2 * math.exp(-2.0 * SOURCE_ALPHA_PER_M * radius)
+        / (9.0 * (1.0 - phi))
+        * phi**SOURCE_PERCOLATION_EXPONENT
+    )
+    return _positive_finite("k_m2", value)
+
+
+def reconstruct_wadsworth2026_source_fo_range() -> dict:
+    """Reconstruct the paper's espresso Fo range under both named closures."""
+    radii = [
+        SOURCE_GRIND_BETA_M_PER_SETTING * setting
+        + SOURCE_GRIND_INTERCEPT_M
+        for setting in SOURCE_GRINDER_SETTINGS
+    ]
+    combinations = []
+    for setting, radius in zip(SOURCE_GRINDER_SETTINGS, radii):
+        for phi in SOURCE_CONNECTED_POROSITIES:
+            permeability = wadsworth2026_source_permeability(radius, phi)
+            zhou_ki = wadsworth2026_zhou_best_fit(permeability)
+            ceramics_ki = wadsworth2026_ceramics_fit(permeability)
+            for velocity in SOURCE_FLOW_RANGE_M_S:
+                combinations.append({
+                    "grinder_setting": setting,
+                    "mean_radius_m": radius,
+                    "connected_porosity": phi,
+                    "permeability_m2": permeability,
+                    "superficial_velocity_m_s": velocity,
+                    "zhou_inertial_permeability_m": zhou_ki,
+                    "ceramics_inertial_permeability_m": ceramics_ki,
+                    "zhou_fo": forchheimer_number(
+                        permeability, velocity, zhou_ki,
+                        SOURCE_VISCOSITY_PA_S, SOURCE_DENSITY_KG_M3,
+                    ),
+                    "ceramics_fo": forchheimer_number(
+                        permeability, velocity, ceramics_ki,
+                        SOURCE_VISCOSITY_PA_S, SOURCE_DENSITY_KG_M3,
+                    ),
+                })
+    return {
+        "disposition": "SOURCE_INTERNAL_CLOSURE_INCONSISTENCY_IDENTIFIED",
+        "source_constants": {
+            "grind_beta_m_per_setting": SOURCE_GRIND_BETA_M_PER_SETTING,
+            "grind_intercept_m": SOURCE_GRIND_INTERCEPT_M,
+            "grinder_settings": list(SOURCE_GRINDER_SETTINGS),
+            "mean_radii_m": radii,
+            "permeability_alpha_per_m": SOURCE_ALPHA_PER_M,
+            "percolation_exponent": SOURCE_PERCOLATION_EXPONENT,
+            "connected_porosity_range": list(SOURCE_CONNECTED_POROSITIES),
+            "superficial_velocity_range_m_s": list(SOURCE_FLOW_RANGE_M_S),
+            "density_kg_m3": SOURCE_DENSITY_KG_M3,
+            "viscosity_pa_s": SOURCE_VISCOSITY_PA_S,
+            "zhou_gamma1": ZHOU_GAMMA1,
+            "zhou_exponent": ZHOU_EXPONENT,
+            "ceramics_gamma2": GAMMA2,
+            "ceramics_tau": TAU,
+        },
+        "combinations": combinations,
+        "zhou_fo_range": [
+            min(item["zhou_fo"] for item in combinations),
+            max(item["zhou_fo"] for item in combinations),
+        ],
+        "ceramics_fo_range": [
+            min(item["ceramics_fo"] for item in combinations),
+            max(item["ceramics_fo"] for item in combinations),
+        ],
+        "published_fo_range": list(PUBLISHED_FO_RANGE),
+        "implemented_solver_closure": "wadsworth2026CeramicsFit",
+        "source_comparison_status": "CONTEXT_ONLY_NOT_DIRECT_IMPLEMENTED_BRANCH_TARGET",
+    }
 
 
 def velocity_from_gradient(
@@ -116,4 +213,3 @@ def inertial_pressure_fraction(fo: float) -> float:
     if not math.isfinite(value) or value < 0.0:
         raise ValueError("Fo must be nonnegative and finite")
     return value / (1.0 + value)
-
