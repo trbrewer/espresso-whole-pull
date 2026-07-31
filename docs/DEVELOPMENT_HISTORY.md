@@ -3,7 +3,12 @@
 - VAL-001 (open candidate): `NO_GOVERNING_PHYSICS_CHANGE` source-adapter
   framework and two descriptive source-linked pressure-flow comparisons. No
   solver/configuration change, fit, protected access, holdout score, or
-  physical-validation claim.
+  physical-validation claim. Its original arithmetic is retained with
+  prospective governance invalidated; its first corrected invocation failed
+  after score exposure. A separately authorized one-token repair and single
+  replacement invocation produced a post-observation, non-independent V2
+  reproduction using three previously completed OpenFOAM artifacts without
+  rebuild or rerun. PR #38 remains open for independent re-adjudication.
 
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.

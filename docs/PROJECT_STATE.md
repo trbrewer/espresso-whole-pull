@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 185/185 PASS
+- Public source verification: 186/186 PASS
 - Active candidate: `VAL-001_SOURCE_SPECIFIC_VALIDATION_ADAPTERS`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
@@ -57,9 +57,12 @@ diagnostics are not improved predictions merely because they add complexity.
 The open VAL-001 correction candidate implements the source-specific adapter
 framework without changing governing physics. Three prospectively declared
 current-head OpenFOAM cases completed. The one authorized corrected real-data
-comparison invocation failed after in-memory score exposure, was invalidated,
-and was not retried. PR #38 is therefore not ready for re-adjudication and does
-not authorize a next-physics increment.
+comparison invocation failed after in-memory score exposure and remains
+invalidated. Under separate human-owner replacement authority, the minimal
+Python Boolean defect was repaired and exactly one replacement invocation
+produced the governed V2 bundle. The replacement reused the three verified
+OpenFOAM artifacts without rebuild or rerun. PR #38 remains open and awaits
+independent re-adjudication; it does not authorize a next-physics increment.
 
 See the concise
 [solver development and validation roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)
@@ -75,6 +78,9 @@ and calibration/comparison ledgers, synthetic adversarial tests, historical
 re-expression records, campaign provenance, and a fail-closed evidence-gap
 adapter. The initial PR arithmetic remains verified for ten in-domain points,
 but its prospective-governance status is invalidated. The corrected invocation
-produced no governed result. No protected or holdout data, retuning, physics,
-threshold, or scientific configuration change occurred. See the
+failed after score exposure and remains invalidated. The separately authorized
+replacement is `POST_OBSERVATION_REPRODUCTION`, `NOT_BLIND`, and
+`NOT_INDEPENDENT`; it produced one governed result without a new OpenFOAM run.
+No protected or holdout data, retuning, physics, threshold, or scientific
+configuration change occurred. See the
 [VAL-001 report](validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md).

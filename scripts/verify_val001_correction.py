@@ -16,6 +16,7 @@ from tools.validation.val001.framework import (  # noqa: E402
 
 LOCK = ("fc61c4670ec7bf801e40bb391aab16048b8da26b", "1d553e44ee2f7480a5df521560801b478618cc84")
 ORIGINAL_RESULT_SHA = "07086313d022555032bbb9ecc18d2564bb197d0381bd8d08e263cd95d02bd029"
+SECOND_RESULT_SHA = "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"
 
 
 def digest(path: Path) -> str:
@@ -54,12 +55,33 @@ def verify(root: Path) -> dict[str, object]:
     ledger = load_json(root / "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json")
     if ledger["actual_corrected"]["test_or_ci_real_data_invocations"] != 0:
         raise ContractError("CI/test real-data invocation count nonzero")
+    replacement = root / "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json"
+    if digest(replacement) != SECOND_RESULT_SHA:
+        raise ContractError("second-correction result bytes changed")
+    validate_record(
+        load_json(replacement),
+        load_json(root / "validation/val001/schemas/comparison_result.schema.json"),
+    )
+    replacement_events = [
+        event for event in ledger["events"]
+        if event["invocation_id"] == "VAL001-SECOND-CORRECTION-REPLACEMENT-001"
+    ]
+    if len(replacement_events) != 1 or replacement_events[0]["status"] != "COMPLETED":
+        raise ContractError("replacement invocation ledger event is not singular and complete")
+    if replacement_events[0]["output_sha256"] != SECOND_RESULT_SHA:
+        raise ContractError("replacement invocation output hash mismatch")
+    if ledger["historical"]["minimum_known_total_real_data_computations"] != 5:
+        raise ContractError("cumulative real-data accounting mismatch")
     gap = load_json(root / "validation/val001/adapters/GAGNE_DE1_EVIDENCE_GAP_ADAPTER.json")
     if gap["execution"] != {"executable": False, "disposition": "NOT_EXECUTABLE_IN_VAL001", "reason_codes": gap["execution"]["reason_codes"]}:
         raise ContractError("evidence-gap adapter is not fail-closed")
     checks.update({"status": "PASS", "validated_adapters": adapters, "all_val001_json_standard_and_finite": True,
-                   "original_result_sha256": ORIGINAL_RESULT_SHA, "test_or_ci_real_data_invocations": 0,
-                   "corrected_real_data_invocations_so_far": ledger["actual_corrected"]["real_data_comparison_invocations"]})
+                   "original_result_sha256": ORIGINAL_RESULT_SHA,
+                   "second_correction_result_sha256": SECOND_RESULT_SHA,
+                   "test_or_ci_real_data_invocations": 0,
+                   "first_corrected_real_data_invocations": ledger["actual_corrected"]["real_data_comparison_invocations"],
+                   "second_correction_real_data_invocations": ledger["historical"]["second_correction_real_data_comparison_invocations"],
+                   "minimum_known_total_real_data_computations": 5})
     return checks
 
 

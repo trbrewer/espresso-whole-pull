@@ -169,6 +169,12 @@ EXPECTED_PATHS = frozenset({
     "validation/val001/schemas/governance_records.schema.json",
     "validation/val001/schemas/invocation_ledger.schema.json",
     "validation/val001/schemas/preexecution_authority.schema.json",
+    "docs/validation/VAL_001_PR38_SECOND_CORRECTION_NOTE.md",
+    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_ARTIFACT_REUSE_ACTIVATION.json",
+    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json",
+    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_INVOCATION_AUTHORITY.json",
+    "validation/val001/corrections/VAL_001_PR38_SECOND_CORRECTION_DEFECT_AUTHORITY.json",
+    "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
 })
 LATER_WP02_002_PATHS = frozenset({
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md",
@@ -286,6 +292,12 @@ LATER_WP02_002_PATHS = frozenset({
     "validation/val001/schemas/governance_records.schema.json",
     "validation/val001/schemas/invocation_ledger.schema.json",
     "validation/val001/schemas/preexecution_authority.schema.json",
+    "docs/validation/VAL_001_PR38_SECOND_CORRECTION_NOTE.md",
+    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_ARTIFACT_REUSE_ACTIVATION.json",
+    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json",
+    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_INVOCATION_AUTHORITY.json",
+    "validation/val001/corrections/VAL_001_PR38_SECOND_CORRECTION_DEFECT_AUTHORITY.json",
+    "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
 })
 FROZEN = {
     "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json":

@@ -3,7 +3,7 @@
 **Change declaration:** `NO_GOVERNING_PHYSICS_CHANGE`
 **Issue:** #37
 **PR:** #38, open and unmerged
-**Correction status:** `VAL001_PR38_CORRECTION_EXECUTION_OR_VALIDATION_FAILED`
+**Correction status:** `VAL001_PR38_SECOND_CORRECTION_COMPLETE_READY_FOR_READJUDICATION`
 **Physical validation:** `NOT_ESTABLISHED`
 
 The additive correction preserves the original PR history and result bytes.
@@ -34,14 +34,23 @@ Foundation OpenFOAM 12 executable at 32 ranks: R1 9 bar, WP02-001 9 bar, and
 WP02-001 8 bar. All retained external traces were finite; no coupling
 fallback or non-converged operating-point step occurred.
 
-The one authorized corrected real-data invocation read the ten selected rows
+The first corrected real-data invocation read the ten selected rows
 and computed metrics in memory, then failed before result assembly because the
 frozen Python runner used `false` instead of `False`. The partial score
 exposure counts as one real-data comparison invocation and zero governed
-result-producing invocations. The failure is invalidated and the prospective
-rule prohibits a silent retry. No corrected result bundle exists.
+result-producing invocations. That failure remains invalidated.
 
-The original audit arithmetic remains:
+Fresh human-owner authority bound the one-token software repair, a second
+freeze, a separate replacement-invocation authority, and reuse of the three
+hash-verified OpenFOAM artifacts. No new solver build or case execution was
+performed. Exactly one replacement invocation produced
+`validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json`
+with SHA-256
+`7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5`.
+It is `POST_OBSERVATION_REPRODUCTION`, `NOT_BLIND`, `NOT_INDEPENDENT`, and
+`DESCRIPTIVE_COMPARISON_NO_UNCERTAINTY_GATE`.
+
+The retained V2 reproduction matches the previously audited arithmetic:
 
 | Comparison | n | RMSE (g/s) | MAE (g/s) | mean bias (g/s) | descriptive R² |
 |---|---:|---:|---:|---:|---:|
@@ -50,7 +59,14 @@ The original audit arithmetic remains:
 
 Those values remain post-fit same-campaign reconstruction statistics. The
 finite-porosity branch additionally has direct 9-bar matching circularity.
-They do not establish variant discrimination, physical equivalence, model
-correctness, rejection of either model, or a missing mechanism. No additional
-admissible component comparison exists at the locked evidence state, and no
-new physics is selected or authorized.
+Frozen rules fire because source uncertainty or an independent discrimination
+criterion is unavailable, the exercise is post-fit reconstruction, and the
+residual is not mechanism-unique. Thus variant discrimination is not
+established and additional data are required before new physics. This does not
+establish physical equivalence, model correctness, rejection of either model,
+or a missing mechanism. No additional admissible component comparison exists
+at the locked evidence state, and no new physics is selected or authorized.
+
+Accounting retains at least three pre-correction computations, one failed
+first-correction invocation, and one successful replacement: the minimum known
+total is five. The exact pre-correction local count is not reconstructable.

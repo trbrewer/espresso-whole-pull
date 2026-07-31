@@ -42,7 +42,7 @@ Full generated fields, uncleaned runs, processor directories, compiled executabl
 - Validation action plan:
   `docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md`
 - Current project state: `docs/PROJECT_STATE.md`
-- VAL-001 correction and retained execution-failure record:
+- VAL-001 correction, retained failure, and governed reproduction record:
   `docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md`
 
 ## Development
@@ -68,9 +68,12 @@ The published release and bounded assets are available at
 WP-0.3A reviewed the moving Puckworks evidence baseline and found no presently
 qualifying independent hydraulic holdout. VAL-001 then implemented the
 adapter framework and completed three bounded current-head OpenFOAM runs, but
-its single corrected real-data invocation failed after score exposure and was
-invalidated without retry. PR #38 therefore remains a correction candidate,
-not a completed governed result and not authorization for another mechanism.
+its first corrected real-data invocation failed after score exposure and was
+invalidated without retry under that authority. A separately authorized
+one-token Python Boolean repair and one replacement invocation produced the
+governed V2 bundle. That result is a post-observation, non-blind,
+non-independent descriptive reproduction, not authorization for another
+mechanism. PR #38 remains open and awaits independent re-adjudication.
 Experimental commissioning, protected scoring and holdout execution remain
 unauthorized; physical validation remains **NOT_ESTABLISHED**.
 

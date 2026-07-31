@@ -6,5 +6,6 @@
     {"run_id": "VAL001-OF-WP02-9BAR", "configuration": "config/reconstruction_WP02A_waszkiewicz_9bar.json", "configuration_sha256": "81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e", "status": "COMPLETED", "trace_sha256": "bedbe087c0e758dd54de9724a729d9d99ae199b6569713dfba47adcb57dda7a3", "log_sha256": "74e11d4fba56930d4ccb2a827073d6cec3cde6ab60913a5c77aa9d4b9011a1e9"},
     {"run_id": "VAL001-OF-WP02-8BAR", "configuration": "config/reconstruction_WP02A_waszkiewicz_8bar.json", "configuration_sha256": "ac87cfdff2862401b33ac01fa31d87bf966e062cecd153ce59ab4a9518feb57e", "status": "COMPLETED", "trace_sha256": "377429d0f0f48913c0072ca8043989127ab444de13a9a55b59d224812fef907c", "log_sha256": "8c8fac5579a2843516a7f7417ec048f4a7ca9dd9136e80525173ca4bd9a4f4fb"}
   ],
+  "second_correction_reuse": {"new_openfoam_builds": 0, "new_openfoam_case_executions": 0, "reused_completed_cases": 3, "integrity": "VERIFIED", "activation_sha256": "03e0ec4dac9366ed80f55d7121cc317d322377de63e64bc6502a09b3889a9295"},
   "generated_cases_committed": false, "full_runtime_artifacts_external": true, "host_paths_committed": false, "protected_or_holdout_scoring": false
 }
