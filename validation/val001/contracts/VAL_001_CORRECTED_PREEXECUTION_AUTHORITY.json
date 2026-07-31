@@ -1,0 +1,15 @@
+{
+  "schema_version": "espresso.val001.preexecution_authority.v1", "record_id": "VAL001-CORRECTED-PREEXECUTION-AUTHORITY-1", "task": "VAL-001", "status": "AUTHORIZED_FOR_SINGLE_CORRECTED_INVOCATION",
+  "human_authority": "Human-owner PR38 corrective implementation direction dated 31 July 2026", "issue": 37, "pull_request": 38,
+  "corrected_freeze": {"commit": "310e6e8d6510f79538b32c0f2ec97805192f5002", "tree": "092864cad0da259c1c0a346bb9a00f9596d0c3c9", "path": "validation/val001/contracts/VAL_001_CORRECTED_FREEZE.json", "sha256": "b326dcb1f68d7453b3ee511b45b8821cdcd408ff750aad9a0f91286bdeeb6004"},
+  "artifact_bindings": [{"path": "validation/val001/contracts/VAL_001_CORRECTED_FREEZE.json", "sha256": "b326dcb1f68d7453b3ee511b45b8821cdcd408ff750aad9a0f91286bdeeb6004", "scope": "All 30 nested schema, validator, analyzer, adapter, ledger, input, historical-artifact, and configuration hashes listed in the freeze are incorporated without alteration."}],
+  "selected_configurations": ["config/reconstruction_R1_waszkiewicz_9bar.json", "config/reconstruction_WP02A_waszkiewicz_9bar.json", "config/reconstruction_WP02A_waszkiewicz_8bar.json"],
+  "selected_comparisons": ["VAL001-CMP-001-universal-pressure-flow", "VAL001-CMP-002-finite-porosity-pressure-flow", "six historical governed result re-expressions with NEW_SCORE_BEARING_COMPARISON false"],
+  "planned_counts": {"openfoam_case_executions": 3, "real_data_comparison_invocations": 1, "governed_result_producing_invocations": 1, "test_or_ci_real_data_invocations": 0, "fits_or_retunes": 0, "protected_accesses": 0, "holdout_scores": 0},
+  "conditions": {"protected": false, "holdout": false, "fit_or_retune": false, "configuration_change": false, "solver_source_change": false, "governing_physics_change": false, "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE"},
+  "output_locations": {"external_runtime_artifact_id": "VAL001-PR38-CORRECTED-OPENFOAM-20260731", "reduced_result": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS.json", "execution_ledger": "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json"},
+  "stop_conditions": ["SOLVER_BUILD_REQUIRES_SOURCE_OR_CONFIGURATION_CHANGE", "LOCK_OR_HASH_MISMATCH", "RIGHTS_OR_HOLDOUT_STATE_CHANGES", "FROZEN_METHOD_OR_ARTIFACT_CHANGES", "DECLARED_EXECUTION_COUNT_CANNOT_BE_MET"],
+  "amendment_rules": ["STOP_BEFORE_SCORE_EXPOSURE", "RECORD_EXACT_DISCOVERY_AND_AFFECTED_ARTIFACTS", "OBTAIN_SEPARATE_HUMAN_AUTHORITY_FOR_ANY_RERUN"],
+  "invalidation_rules": ["COUNT_AND_RETAIN_EVERY_PARTIAL_OR_COMPLETE_SCORE_EXPOSURE", "NO_SILENT_RETRY", "PRESERVE_FAILED_EVENT_AND_OUTPUT_IDENTITIES"],
+  "claim_boundaries": {"physical_validation": "NOT_ESTABLISHED", "general_physical_validation": "NOT_ESTABLISHED", "general_whole_solver_physical_validation": "NOT_ESTABLISHED", "experimental_commissioning": "NOT_AUTHORIZED", "protected_or_holdout_scoring": "NOT_AUTHORIZED", "holdout_execution": "NOT_AUTHORIZED", "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"}
+}
