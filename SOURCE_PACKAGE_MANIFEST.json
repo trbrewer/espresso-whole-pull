@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 179,
-  "total_uncompressed_bytes_excluding_manifest": 1712307,
-  "aggregate_source_sha256": "07a47f00db329dbd424ede52e4b0e60581973aad78fefa874f34c169c0a38759",
-  "aggregate_sha256": "07a47f00db329dbd424ede52e4b0e60581973aad78fefa874f34c169c0a38759",
+  "file_count": 182,
+  "total_uncompressed_bytes_excluding_manifest": 1718742,
+  "aggregate_source_sha256": "167b01f4b0fb44d0dcffd13f7fbf138f5b1b95bc6ffa5111260b2ceec9c634a9",
+  "aggregate_sha256": "167b01f4b0fb44d0dcffd13f7fbf138f5b1b95bc6ffa5111260b2ceec9c634a9",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "435c1ab53d0c6928a2551a3e0f7df728d2bffd0a640c604048d8130712f20281",
-      "bytes": 4759,
+      "sha256": "8ccc299a8bae47885a41a23e3f16735f7b767179bf52dd457f46df1499411b0d",
+      "bytes": 4865,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "ba1a306c2d1023f578ab9221ce39f4d7f8eb60875f764e9adca459fd29e161f7",
-      "bytes": 3762,
+      "sha256": "9600266917bf7f345835490a6ab9340501efd7e8416346964043b46b97bd7046",
+      "bytes": 4057,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -486,6 +486,11 @@
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md": {
       "sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
       "bytes": 2160,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md": {
+      "sha256": "fe1f2ddf3c7b0b97bc6c4efdb56946a6a6ccffc35154a33c47edc0c86d32f7eb",
+      "bytes": 2330,
       "git_mode": "100644"
     },
     "scripts/analyze_r1.py": {
@@ -611,6 +616,11 @@
     "scripts/run_r1.sh": {
       "sha256": "1e46913d4e146b71b500b3d6b5fa60502659480701b40ed2adc420292b1db225",
       "bytes": 848,
+      "git_mode": "100755"
+    },
+    "scripts/run_val001_comparisons.py": {
+      "sha256": "27b8c70aff22ce8ea4ce0f749493f022334dbe84e7f7a99ff8f73ff48d6f883f",
+      "bytes": 1221,
       "git_mode": "100755"
     },
     "scripts/run_wp02.sh": {
@@ -866,6 +876,11 @@
     "tests/test_reference_case.py": {
       "sha256": "9647dfc42a133d5dd1da480a2bb2b75a09ca67122e95ceae16a5053708880e20",
       "bytes": 64822,
+      "git_mode": "100644"
+    },
+    "tests/test_val001_framework.py": {
+      "sha256": "3f1f9d201b68e0153d7a26f33f969e33a101bd04214c06f5cf9b30eedd5a4589",
+      "bytes": 2483,
       "git_mode": "100644"
     },
     "tests/test_wp02_002_machine_coupling.py": {

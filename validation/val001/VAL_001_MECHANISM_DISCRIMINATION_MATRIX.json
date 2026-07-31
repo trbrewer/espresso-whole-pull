@@ -1,0 +1,11 @@
+{
+  "schema_version":"espresso.val001.mechanism_discrimination_matrix.v1",
+  "task":"VAL-001",
+  "observed_signature":"NONMONOTONIC_PRESSURE_FLOW_RESIDUAL_WITH_LARGEST_MAGNITUDE_NEAR_1_TO_5_BAR",
+  "models_compared":["source universal pressure-flow curve","finite-porosity quasi-static compaction"],
+  "models_not_compared":["machine compliance","dissolution-indexed permeability","Darcy-Forchheimer","static radial heterogeneity","swelling","viscosity","fines","damage or channeling"],
+  "reason_not_compared":"No prospectively mapped, source-compatible unchanged configuration and admissible synchronized observations were available in VAL-001.",
+  "finding":{"discriminating_strength":"WEAK","confounders":["predecessor fit circularity","unreported source uncertainty","apparatus uncertainty outside retained mapping"],"result":"The two variants have nearly identical aggregate error and cannot be distinguished by this evidence."},
+  "missing_measurements":["pointwise flow uncertainty","independent deformation","synchronized upstream and basket pressure","replicate cross-condition flow"],
+  "decision":"ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS"
+}

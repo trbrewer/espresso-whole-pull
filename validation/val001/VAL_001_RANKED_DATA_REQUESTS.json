@@ -1,0 +1,10 @@
+{
+  "schema_version":"espresso.val001.ranked_data_requests.v1","task":"VAL-001","experimental_execution_authorized":false,
+  "requests":[
+    {"rank":1,"campaign":"EXP-004","need":"synchronized deformation, basket pressure, and flow with uncertainty","information_value":"separates quasi-static compaction from fixed-bed hydraulics"},
+    {"rank":2,"campaign":"EXP-001","need":"synchronized upstream pressure, basket pressure, flow, and cup chemistry","information_value":"separates machine dynamics from puck demand"},
+    {"rank":3,"campaign":"EXP-002","need":"physical first-drip definition and wetting progression with uncertainty","information_value":"tests initially dry wetting independently of saturated closures"},
+    {"rank":4,"campaign":"EXP-003","need":"replicated packing and permeability mapping","information_value":"reduces hydraulic input uncertainty"},
+    {"rank":5,"campaign":"EXP-006","need":"fraction-resolved and aggregate chemistry under mapped hydraulic histories","information_value":"tests the one-solute extraction limitation"}
+  ]
+}

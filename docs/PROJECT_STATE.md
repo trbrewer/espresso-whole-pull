@@ -1,14 +1,14 @@
 # Project State
 
 - Current released version: `v0.2.0`
-- Current merged `main`: `f475eef5c7a93f833a51ce03485c557ce0620b8d`
-- Current merged tree: `493934e1d9e30461c9ca289dcc82ad43084eaf4b`
+- Current merged `main` at VAL-001 branch start: `34bd440f87d7b4ba6a955e54f40122d28f760ae3`
+- Current merged tree at VAL-001 branch start: `6d18e29b99ea5ec24d6cef7615deb541cf4737ff`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 179/179 PASS
-- Active phase: `POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION`
+- Public source verification: 182/182 PASS
+- Active candidate: `VAL-001_SOURCE_SPECIFIC_VALIDATION_ADAPTERS`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -67,3 +67,15 @@ and the
 [post-WP03-001 validation and mechanism-discrimination plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md).
 
 General whole-solver physical validation remains `NOT_ESTABLISHED`.
+
+## Open VAL-001 candidate
+
+VAL-001 adds source adapters, semantic validation, evidence/rights and
+calibration/comparison ledgers, uncertainty-aware metrics, reduced results,
+and templates. Its first two source-linked, post-fit pressure-flow comparisons
+used an unchanged retained WP03-001 sweep. Both have approximately `0.2464
+g/s` RMSE over ten points and are not distinguishable given unreported source
+uncertainty. No protected or holdout data, retuning, physics, or scientific
+configuration change occurred. The bounded disposition is
+`ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS`; see the
+[VAL-001 report](validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md).

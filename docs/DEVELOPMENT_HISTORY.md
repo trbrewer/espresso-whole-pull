@@ -1,5 +1,10 @@
 # Development History
 
+- VAL-001 (open candidate): `NO_GOVERNING_PHYSICS_CHANGE` source-adapter
+  framework and two descriptive source-linked pressure-flow comparisons. No
+  solver/configuration change, fit, protected access, holdout score, or
+  physical-validation claim.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.

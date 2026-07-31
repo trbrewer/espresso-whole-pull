@@ -8,6 +8,11 @@ This tree is the historical v0.1.4 package view. Current navigation:
 - [Controlling strategy](strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md)
 - [Concise roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)
 - [Post-WP03 validation plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md)
+- [VAL-001 source adapters and comparisons](validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md)
+
+VAL-001 framework code is under `tools/validation/val001/`, governed records
+are under `validation/val001/`, and `scripts/run_val001_comparisons.py` is its
+single analyzer entry point.
 
 ```text
 .

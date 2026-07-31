@@ -42,6 +42,8 @@ Full generated fields, uncleaned runs, processor directories, compiled executabl
 - Validation action plan:
   `docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md`
 - Current project state: `docs/PROJECT_STATE.md`
+- VAL-001 source-adapter result:
+  `docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md`
 
 ## Development
 

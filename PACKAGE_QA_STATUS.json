@@ -26,10 +26,10 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 230,
+    "python_test_count": 236,
     "static_gate_count": 34,
-    "source_manifest_file_count": 179,
-    "source_manifest_aggregate_sha256": "07a47f00db329dbd424ede52e4b0e60581973aad78fefa874f34c169c0a38759",
+    "source_manifest_file_count": 182,
+    "source_manifest_aggregate_sha256": "167b01f4b0fb44d0dcffd13f7fbf138f5b1b95bc6ffa5111260b2ceec9c634a9",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -104,6 +104,19 @@
     "experimental_execution_count": 0,
     "physical_validation": "NOT_ESTABLISHED"
   },
+  "val_001": {
+    "status": "OPEN_PR_CANDIDATE",
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "adapter_semantic_tests": "PASS",
+    "component_comparison_count": 2,
+    "completed_score_bearing_invocations": 1,
+    "fresh_openfoam_runs": 0,
+    "protected_accesses": 0,
+    "holdout_scores": 0,
+    "fits_or_retunes": 0,
+    "decision": "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
   "historical_baseline": {
     "package": "v0.1.4-public.1",
     "reference_status": "FROZEN / QUALIFIED",
@@ -123,6 +136,6 @@
   "wp_0_3a_contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
   "wp_0_3a_solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
-  "next_scientific_milestone": "VAL_001_SOURCE_SPECIFIC_VALIDATION_ADAPTER_FRAMEWORK_AND_FIRST_COMPONENT_COMPARISONS",
+  "next_scientific_milestone": "VAL_001_REVIEW_AND_ADDITIONAL_DATA_PLANNING",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }
