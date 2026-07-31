@@ -1,0 +1,46 @@
+{
+  "schema_version": "espresso.val001.second_correction_defect_authority.v1",
+  "task": "VAL-001",
+  "status": "AUTHORIZED_MINIMAL_REPAIR_BEFORE_SECOND_FREEZE",
+  "failed_invocation": {
+    "invocation_id": "VAL001-CORRECTED-REAL-001",
+    "producing_commit": "30e596a3f72c8dbe7f827e03ade3570cec7e4092",
+    "producing_tree": "18ffae5dc3895ef7c70bc348ee864492cf04e081",
+    "source_path": "scripts/run_val001_corrected_comparison.py",
+    "source_line": 57,
+    "invalid_expression": "gate_bearing: false",
+    "exception_type": "NameError",
+    "exception_message": "name 'false' is not defined",
+    "failure_point": "RESULT_ASSEMBLY_AFTER_PER_BRANCH_METRICS",
+    "source_rows_read": true,
+    "metrics_computed_in_memory": true,
+    "corrected_result_bundle_written": false,
+    "score_exposure_occurred": true,
+    "permanently_counted": true,
+    "status": "FAILED_INVALIDATED_AFTER_SCORE_EXPOSURE"
+  },
+  "bound_failed_state": {
+    "failure_artifact": "validation/val001/results/VAL_001_CORRECTED_EXECUTION_FAILURE.json",
+    "failure_artifact_sha256": "529dc254d46ac65bf1c1fa1d98eb4bf799dfe5712302e729b4c72fc49b154919",
+    "invocation_ledger_sha256": "25a9df34e0dfbd755fcdf9cfaf8a7a6ac30bfa3d57bee5ac147324cb57ad0b67",
+    "first_authority_permitted_retry": false
+  },
+  "human_owner_authority": "Second narrowly bounded PR38 correction and one replacement invocation, 31 July 2026",
+  "permitted_repair": "Replace lowercase JSON-style false with uppercase Python False in the result-assembly Boolean and add non-scientific append-only replacement-invocation plumbing plus synthetic regression protection.",
+  "prohibited_changes": [
+    "METRIC_FORMULA", "INPUT_ARTIFACT", "SELECTED_ROWS", "ROW_FILTER",
+    "OBSERVATION_COLUMN", "PREDICTION_COLUMNS", "RESIDUAL_SIGN", "SUPPORT",
+    "WEIGHTING", "MODEL_BRANCH", "EVIDENCE_CLASS", "RIGHTS_STATUS",
+    "CALIBRATION_OR_CIRCULARITY_CLASSIFICATION", "UNCERTAINTY_STATUS",
+    "THRESHOLD", "INTERPRETATION_RULE", "SCHEMA", "ADAPTER", "SOLVER",
+    "SCIENTIFIC_CONFIGURATION", "FITTING_OR_RETUNING", "OPENFOAM_EXECUTION"
+  ],
+  "required_sequence": [
+    "MINIMAL_REPAIR_AND_SYNTHETIC_TESTS",
+    "SECOND_CORRECTION_FREEZE",
+    "REPLACEMENT_INVOCATION_AUTHORITY",
+    "HASH_VERIFIED_ARTIFACT_REUSE_ACTIVATION",
+    "ONE_REPLACEMENT_REAL_DATA_INVOCATION",
+    "NO_FURTHER_RETRY"
+  ]
+}

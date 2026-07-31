@@ -1,4 +1,8 @@
 import copy
+import ast
+import csv
+import hashlib
+import importlib.util
 import json
 import math
 import tempfile
@@ -144,6 +148,76 @@ class Val001SyntheticFrameworkTests(unittest.TestCase):
         ledger["events"].append({"status": "COMPLETED"})
         with self.assertRaisesRegex(ContractError, "second"):
             assert_invocation_available(ledger)
+
+    def _run_synthetic_top_level(self, directory):
+        root = Path(directory)
+        source = root / "synthetic.csv"
+        pressures = ["1.0", "2.0", "3.5", "4.0", "5.0", "6.0", "7.0", "8.0", "9.0", "11.0"]
+        with source.open("w", newline="", encoding="utf-8") as stream:
+            writer = csv.writer(stream)
+            writer.writerow(["nominal_pressure_bar", "domain_status", "measured_mass_flow_g_s", "universal_curve_flow_g_s", "finite_phi_flow_g_s"])
+            for index, pressure in enumerate(pressures, 1):
+                writer.writerow([pressure, "IN_DOMAIN", index, index + 0.25, index - 0.5])
+            writer.writerow(["13.0", "OUTSIDE_LOCAL_CONSTITUTIVE_DOMAIN", 11, 11.25, 10.5])
+        adapter = copy.deepcopy(self.adapter)
+        adapter["source"]["local_reduced_input"] = "synthetic.csv"
+        adapter["source"]["local_reduced_input_sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+        spec = copy.deepcopy(self.spec)
+        spec["adapter"] = "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json"
+        spec["input"]["path"] = "synthetic.csv"
+        spec["input"]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+        spec["input"]["selected_row_ids"] = pressures
+        spec["output"] = "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json"
+        (root / "validation/val001/results").mkdir(parents=True, exist_ok=True)
+        paths = {
+            "adapter": root / spec["adapter"],
+            "spec": root / "validation/val001/contracts/VAL_001_CORRECTED_RUN_SPEC.json",
+            "ledger": root / "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json",
+            "authority": root / "authority.json",
+            "activation": root / "activation.json",
+        }
+        for key in ("adapter", "spec", "ledger"):
+            paths[key].parent.mkdir(parents=True, exist_ok=True)
+        paths["adapter"].write_bytes(canonical_json(adapter))
+        paths["spec"].write_bytes(canonical_json(spec))
+        ledger = {"actual_corrected": {"real_data_comparison_invocations": 1, "governed_result_producing_invocations": 0, "test_or_ci_real_data_invocations": 0}, "events": [{"invocation_id": "VAL001-CORRECTED-REAL-001", "status": "FAILED"}], "historical": {"minimum_known_precorrection_real_data_computations": 3}}
+        paths["ledger"].write_bytes(canonical_json(ledger))
+        paths["authority"].write_bytes(canonical_json({"status": "AUTHORIZED_FOR_ONE_SECOND_CORRECTION_REPLACEMENT_INVOCATION"}))
+        paths["activation"].write_bytes(canonical_json({"status": "ACTIVE_FOR_HASH_VERIFIED_ARTIFACT_REUSE", "actual_openfoam_case_executions": 0}))
+        runner_path = ROOT / "scripts/run_val001_corrected_comparison.py"
+        module_spec = importlib.util.spec_from_file_location("val001_synthetic_runner", runner_path)
+        runner = importlib.util.module_from_spec(module_spec)
+        module_spec.loader.exec_module(runner)
+        argv = [str(runner_path), "--root", str(root), "--authority", str(paths["authority"]), "--activation", str(paths["activation"]), "--ledger", str(paths["ledger"]), "--invocation-id", "VAL001-SECOND-CORRECTION-REPLACEMENT-001"]
+        opened = []
+        original_open = Path.open
+        def guarded(path, *args, **kwargs):
+            opened.append(str(path))
+            if str(path).endswith(GOVERNED_REAL_SOURCE):
+                raise AssertionError("synthetic runner opened governed real source")
+            return original_open(path, *args, **kwargs)
+        with mock.patch.object(runner, "git", side_effect=["f" * 40, "e" * 40]), mock.patch.object(Path, "open", guarded), mock.patch.object(__import__("sys"), "argv", argv), mock.patch.dict(__import__("os").environ, {"VAL001_REAL_DATA_EXECUTION": "AUTHORIZED_SINGLE_INVOCATION"}):
+            runner.main()
+        result_path = root / spec["output"]
+        result = load_json(result_path)
+        validate_record(result, load_json(ROOT / "validation/val001/schemas/comparison_result.schema.json"))
+        self.assertIs(result["comparisons"][0]["metrics"]["gate_bearing"], False)
+        self.assertEqual(2, len(result["comparisons"]))
+        self.assertFalse(any(path.endswith(GOVERNED_REAL_SOURCE) for path in opened))
+        return result_path.read_bytes()
+
+    def test_exact_top_level_result_assembly_is_synthetic_and_deterministic(self):
+        with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
+            self.assertEqual(self._run_synthetic_top_level(first), self._run_synthetic_top_level(second))
+
+    def test_python_ast_rejects_bare_json_value_identifiers(self):
+        forbidden = []
+        for path in sorted((ROOT / "scripts").glob("*.py")) + sorted((ROOT / "tools/validation/val001").glob("*.py")):
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load) and node.id in {"true", "false", "null"}:
+                    forbidden.append((str(path.relative_to(ROOT)), node.lineno, node.id))
+        self.assertEqual([], forbidden)
 
 
 if __name__ == "__main__":
