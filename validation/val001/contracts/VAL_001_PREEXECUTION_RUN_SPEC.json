@@ -1,0 +1,46 @@
+{
+  "schema_version": "espresso.val001.comparison_run.v1",
+  "contract_id": "VAL-001-PREEXECUTION-1",
+  "task": "VAL-001",
+  "issue": 37,
+  "status": "PREEXECUTION_FROZEN_AWAITING_SINGLE_ANALYZER_INVOCATION",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "baseline_commit": "34bd440f87d7b4ba6a955e54f40122d28f760ae3",
+  "baseline_tree": "6d18e29b99ea5ec24d6cef7615deb541cf4737ff",
+  "adapter": "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json",
+  "input": {
+    "path": "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv",
+    "sha256": "0a789ed20039ff5ea21b7e1773f2f62f74a4122775e2cb3fa12ff6c24c53a831",
+    "rows": 9,
+    "rights_status": "REDUCED_NUMERIC_RECORD_ALREADY_GOVERNED_IN_REPOSITORY"
+  },
+  "comparisons": [
+    {
+      "comparison_id": "VAL001-CMP-001-universal-pressure-flow",
+      "observation_column": "measured_mass_flow_g_s",
+      "prediction_column": "universal_curve_flow_g_s",
+      "row_filter": {"domain_status": "IN_DOMAIN"},
+      "evidence_role": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON",
+      "calibration_status": "PREVIOUSLY_FITTED_NO_VAL001_RETUNING",
+      "metrics": ["RMSE", "MAE", "MEAN_BIAS", "MAXIMUM_ABSOLUTE_ERROR", "DESCRIPTIVE_R_SQUARED"],
+      "threshold": null
+    },
+    {
+      "comparison_id": "VAL001-CMP-002-finite-porosity-pressure-flow",
+      "observation_column": "measured_mass_flow_g_s",
+      "prediction_column": "finite_phi_flow_g_s",
+      "row_filter": {"domain_status": "IN_DOMAIN"},
+      "evidence_role": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON",
+      "calibration_status": "PREVIOUSLY_MATCHED_AT_9_BAR_NO_VAL001_RETUNING",
+      "metrics": ["RMSE", "MAE", "MEAN_BIAS", "MAXIMUM_ABSOLUTE_ERROR", "DESCRIPTIVE_R_SQUARED"],
+      "threshold": null
+    }
+  ],
+  "maximum_completed_score_bearing_invocations": 1,
+  "fresh_openfoam_execution_count": 0,
+  "protected_access_count": 0,
+  "holdout_score_count": 0,
+  "fit_or_retune_count": 0,
+  "output": "validation/val001/results/VAL_001_FIRST_COMPONENT_COMPARISONS.json",
+  "claim_boundary": "Descriptive source-linked post-fit component comparison; physical validation not established."
+}

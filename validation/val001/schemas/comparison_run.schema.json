@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/trbrewer/espresso-whole-pull/validation/val001/schemas/comparison_run.schema.json",
+  "title": "VAL-001 comparison run",
+  "type": "object",
+  "required": ["schema_version", "contract_id", "change_declaration", "input", "comparisons", "maximum_completed_score_bearing_invocations"],
+  "properties": {
+    "schema_version": {"const": "espresso.val001.comparison_run.v1"},
+    "contract_id": {"type": "string"},
+    "change_declaration": {"const": "NO_GOVERNING_PHYSICS_CHANGE"},
+    "input": {"type": "object"},
+    "comparisons": {"type": "array", "minItems": 1},
+    "maximum_completed_score_bearing_invocations": {"const": 1}
+  }
+}

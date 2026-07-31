@@ -1,0 +1,39 @@
+{
+  "schema_version": "espresso.val001.evidence_rights_inventory.v1",
+  "puckworks": {
+    "repository": "https://github.com/trbrewer/puckworks.git",
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "access_mode": "READ_ONLY_EXTERNAL_CHECKOUT",
+    "dependency_lock_advanced": false
+  },
+  "selected": [
+    {
+      "adapter_id": "waszkiewicz2025.pressure_flow.source_sweep.v1",
+      "evidence_level": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON",
+      "rights": "PUBLIC_CC_BY_CONTEXT_REDUCED_RECORD_ALREADY_GOVERNED",
+      "protected": false,
+      "holdout": false,
+      "uncertainty": "SOURCE_UNCERTAINTY_NOT_REPORTED",
+      "disposition": "ADMISSIBLE_WITH_CIRCULARITY_AND_UNCERTAINTY_LIMITS"
+    }
+  ],
+  "not_selected": [
+    {"candidate": "Foster infiltration", "reason": "TIMING_DEFINITION_AND_UNCERTAINTY_RECONCILIATION_INCOMPLETE", "disposition": "SOURCE_SCENARIO_CHANGE_REQUIRED_SEPARATE_AUTHORITY_IF_CONFIGURATION_CHANGE_NEEDED"},
+    {"candidate": "Gagne DE1", "reason": "APPARATUS_PRESSURE_NODE_UNCERTAINTY_AND_RIGHTS_GAPS", "disposition": "UNAVAILABLE"},
+    {"candidate": "aggregate extraction sources", "reason": "UNCHANGED_SOURCE_SPECIFIC_CONFIGURATION_AND_METHOD_MAPPING_NOT_YET_AVAILABLE", "disposition": "SOURCE_SCENARIO_CHANGE_REQUIRED_SEPARATE_AUTHORITY"},
+    {"candidate": "Vaca Guerra", "reason": "RESTRICTED_OFFLINE_MATERIAL", "disposition": "PROHIBITED_WITHOUT_SEPARATE_AUTHORITY"}
+  ],
+  "campaigns": {
+    "EXP-001": "Synchronized whole-shot telemetry and cup chemistry",
+    "EXP-002": "Initially dry puck infiltration and physical first drip",
+    "EXP-003": "Grinder-specific particle-size, packing, and permeability map",
+    "EXP-004": "Poroelastic deformation, pressure, and flow",
+    "EXP-005": "Time-dependent bed-mechanism discrimination (kappa(t))",
+    "EXP-006": "Species-resolved fractional extraction",
+    "EXP-007": "Spatial flow/channeling and local extraction",
+    "EXP-008": "Cross-machine, cross-grinder, cross-coffee replication",
+    "EXP-009": "Bottom filter-paper mechanism study"
+  },
+  "campaign_status": "PLANNED_NOT_COMPLETED"
+}

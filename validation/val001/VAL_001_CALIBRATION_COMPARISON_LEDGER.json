@@ -1,0 +1,13 @@
+{
+  "schema_version": "espresso.val001.calibration_comparison_ledger.v1",
+  "task": "VAL-001",
+  "prescribed": ["basket_pressure_bar", "source geometry and material definitions inherited unchanged from WP03-001"],
+  "calibrated": ["stress_free_permeability_m2: predecessor source-linked fit; fixed during VAL-001"],
+  "predicted_and_compared": ["universal_curve_flow_g_s", "finite_phi_flow_g_s"],
+  "predicted_unscored": ["openfoam_flow_g_s"],
+  "contextual": ["nominal_pressure_bar", "domain_status"],
+  "excluded": ["protected per-shot flow traces", "deformation observations", "aggregate chemistry"],
+  "unavailable": ["source pointwise flow uncertainty", "independent apparatus transfer", "independent deformation series"],
+  "overlap_check": "PASS",
+  "retuning": "PROHIBITED_AND_NOT_PERFORMED"
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/trbrewer/espresso-whole-pull/validation/val001/schemas/comparison_result.schema.json",
+  "title": "VAL-001 reduced comparison result",
+  "type": "object",
+  "required": ["schema_version", "task", "change_declaration", "adapter_id", "contract_id", "input", "execution_counts", "comparisons", "decision", "claim_boundary"]
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": "espresso.val001.source_adapter.v1",
+  "adapter_id": "waszkiewicz2025.pressure_flow.source_sweep.v1",
+  "source": {
+    "citation": "Waszkiewicz et al. (2025), source-linked pressure-flow and poroelastic material recorded by the locked Puckworks dependency",
+    "artifact_paths": [
+      "docs/cards/waszkiewicz2025.md",
+      "docs/research/intake/waszkiewicz2025_poroelastic.yml"
+    ],
+    "dependency_repository": "https://github.com/trbrewer/puckworks.git",
+    "dependency_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "dependency_tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "local_reduced_input": "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv"
+  },
+  "evidence": {
+    "level": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON",
+    "holdout_status": "NOT_HOLDOUT",
+    "known_circularity": "The pressure-flow closure is source-linked and fitted; these points do not constitute independent validation.",
+    "protected": false
+  },
+  "rights": {
+    "access_status": "PUBLIC",
+    "comparison_allowed": true,
+    "redistribution_status": "REDUCED_NUMERIC_RECORD_ALREADY_GOVERNED_IN_REPOSITORY",
+    "license_context": "CC-BY source material; retain citation and artifact-specific review"
+  },
+  "quantities": [
+    {
+      "name": "basket_pressure_bar",
+      "role": "prescribed",
+      "unit": "bar gauge",
+      "definition": "Pressure at the basket/bed-top node used by the retained source sweep.",
+      "pressure_quantity": true,
+      "pressure_node": "BASKET_BED_TOP_GAUGE",
+      "uncertainty": "SOURCE_UNCERTAINTY_NOT_REPORTED"
+    },
+    {
+      "name": "measured_mass_flow_g_s",
+      "role": "contextual",
+      "unit": "g/s",
+      "definition": "Source-recorded mass-flow observation in the governed retained sweep.",
+      "pressure_quantity": false,
+      "uncertainty": "SOURCE_UNCERTAINTY_NOT_REPORTED"
+    },
+    {
+      "name": "universal_curve_flow_g_s",
+      "role": "predicted_and_compared",
+      "unit": "g/s",
+      "definition": "Source-linked universal pressure-flow curve prediction retained by WP03-001.",
+      "pressure_quantity": false,
+      "uncertainty": "SOURCE_UNCERTAINTY_NOT_REPORTED"
+    },
+    {
+      "name": "finite_phi_flow_g_s",
+      "role": "predicted_and_compared",
+      "unit": "g/s",
+      "definition": "Finite-porosity quasi-static pressure-flow prediction retained by WP03-001.",
+      "pressure_quantity": false,
+      "uncertainty": "SOURCE_UNCERTAINTY_NOT_REPORTED"
+    },
+    {
+      "name": "stress_free_permeability_m2",
+      "role": "calibrated",
+      "unit": "m^2",
+      "definition": "Previously fitted source-linked closure parameter; not refitted by VAL-001.",
+      "pressure_quantity": false,
+      "uncertainty": "SOURCE_UNCERTAINTY_NOT_REPORTED"
+    }
+  ],
+  "solver_mapping": {
+    "configuration_change": false,
+    "source_scenario_change_status": "NOT_REQUIRED",
+    "input_role": "RETAINED_PREDECESSOR_REDUCED_RESULT",
+    "openfoam_execution_required": false,
+    "fitting_or_retuning_allowed": false
+  },
+  "claim_ceiling": "Source-linked, post-fit component comparison only. No independent holdout, transfer, whole-solver physical validation, or parameter identification is established."
+}

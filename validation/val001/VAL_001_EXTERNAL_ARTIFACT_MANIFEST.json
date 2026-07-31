@@ -1,0 +1,9 @@
+{
+  "schema_version": "espresso.val001.external_artifact_manifest.v1",
+  "task": "VAL-001",
+  "fresh_openfoam_runs": 0,
+  "generated_cases": 0,
+  "full_runtime_artifacts": [],
+  "reason": "First comparisons consume an already-governed reduced predecessor sweep; fresh OpenFOAM execution is unnecessary and was not performed.",
+  "host_paths_committed": false
+}
