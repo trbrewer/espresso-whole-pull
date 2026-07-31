@@ -1,0 +1,70 @@
+"""Deterministic exhaustive inventory for VAL-001 machine-readable records."""
+from __future__ import annotations
+import hashlib, json, subprocess
+from pathlib import Path
+from typing import Any
+from .framework import ContractError, canonical_json, load_json, sha256
+
+INVENTORY_PATH = "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json"
+REGISTRY_PATH = "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json"
+
+DEEP = {
+ "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json": "source_adapter.schema.json",
+ "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json": "comparison_result.schema.json",
+ "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json": "invocation_ledger.schema.json",
+ "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json": "invocation_summary.schema.json",
+ "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json": "postresult_execution_lock.schema.json",
+}
+
+def structure(value: Any) -> Any:
+    if isinstance(value, dict): return {key: structure(value[key]) for key in sorted(value)}
+    if isinstance(value, list): return [structure(item) for item in value]
+    if value is None: return "null"
+    if isinstance(value, bool): return "boolean"
+    if isinstance(value, int): return "integer"
+    if isinstance(value, float): return "number"
+    return "string"
+
+def record_class(path: str) -> str:
+    name=Path(path).name
+    if "/schemas/" in path: return "SCHEMA"
+    if path.endswith(".jsonl"): return "INVOCATION_JOURNAL"
+    for token,klass in [("ADAPTER","SOURCE_ADAPTER"),("RESULT","RESULT_OR_REEXPRESSION"),("FREEZE","FREEZE"),("AUTHORITY","AUTHORITY"),("ACTIVATION","ACTIVATION"),("LOCK","EXECUTION_LOCK"),("CORRECTION","CORRECTION"),("AMENDMENT","AMENDMENT_INVALIDATION"),("INVENTORY","EVIDENCE_OR_RECORD_INVENTORY"),("LEDGER","LEDGER"),("CAMPAIGN","CAMPAIGN_PROVENANCE"),("ACCESS_LOG","SOURCE_ACCESS_LOG"),("MANIFEST","EXTERNAL_ARTIFACT_MANIFEST"),("MECHANISM","MECHANISM_DISCRIMINATION"),("RANKED","RANKED_REQUESTS"),("SENSITIVITY","SENSITIVITY_IDENTIFIABILITY")]:
+        if token in name: return klass
+    return "GOVERNANCE_RECORD"
+
+def git_value(root: Path, args: list[str], fallback: str) -> str:
+    result=subprocess.run(["git",*args],cwd=root,text=True,capture_output=True)
+    return result.stdout.strip() if result.returncode==0 and result.stdout.strip() else fallback
+
+def discover(root: Path) -> list[Path]:
+    base=root/"validation/val001"
+    return sorted(path for path in base.rglob("*") if path.is_file() and path.suffix in {".json",".jsonl"} and path.relative_to(root).as_posix()!=INVENTORY_PATH)
+
+def build_inventory(root: Path) -> dict[str,Any]:
+    records=[]
+    for path in discover(root):
+        rel=path.relative_to(root).as_posix(); data=path.read_bytes()
+        if path.suffix==".json": value=load_json(path); record_id=value.get("record_id",value.get("adapter_id",value.get("task",rel)))
+        else: value=[json.loads(line) for line in path.read_text().splitlines()]; record_id="VAL001-INVOCATION-JOURNAL"
+        schema_name=DEEP.get(rel)
+        tracked=git_value(root,["ls-files","--error-unmatch",rel],"")
+        blob=git_value(root,["hash-object",rel],hashlib.sha1(data).hexdigest())
+        producing=git_value(root,["log","-1","--format=%H","--",rel],"PENDING_COMPLETION_COMMIT") if tracked else "PENDING_COMPLETION_COMMIT"
+        treatment="CURRENT_DEEP_SCHEMA" if schema_name else "IMMUTABLE_HISTORICAL_SIDECAR"
+        records.append({"path":rel,"sha256":hashlib.sha256(data).hexdigest(),"git_blob":blob,"producing_commit":producing,"record_id":record_id,"record_class":record_class(rel),"schema_id":schema_name or "espresso.val001.exact_structure_sidecar.v1","schema_version":value.get("schema_version","JSONL_V3") if isinstance(value,dict) else "JSONL_V3","schema_path":f"validation/val001/schemas/{schema_name}" if schema_name else "validation/val001/schemas/exact_structure_sidecar.schema.json","semantic_validator":"VALIDATE_DEEP_AND_CROSS_RECORD" if schema_name else "VALIDATE_EXACT_HASH_AND_STRUCTURE_SIGNATURE","treatment":treatment,"current":treatment=="CURRENT_DEEP_SCHEMA","executable":False,"audit_only":treatment!="CURRENT_DEEP_SCHEMA","mutability":"IMMUTABLE_AFTER_COMPLETION_FREEZE","governing":rel.endswith("POSTRESULT_EXECUTION_LOCK.json") or rel.endswith("INVOCATION_SUMMARY_V2.json"),"superseded":("historical/" in rel or "FIRST_COMPONENT" in rel or "EXECUTION_FAILURE" in rel),"claim_ceiling":"NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS","puckworks_lock_applicable":"val001" in rel,"source_access_role":"NO_SOURCE_ACCESS" if "ACCESS_LOG" not in rel else "SOURCE_ACCESS_AUDIT","static_validation":"REQUIRED","structure_signature_sha256":hashlib.sha256(canonical_json(structure(value))).hexdigest()})
+    paths=[r["path"] for r in records]; ids=[str(r["record_id"]) for r in records]
+    if len(paths)!=len(set(paths)): raise ContractError("duplicate inventory path")
+    # Duplicate generic task IDs are allowed only when the path itself is the fallback ID.
+    duplicates={item for item in ids if ids.count(item)>1 and item not in {"VAL-001"}}
+    if duplicates: raise ContractError(f"duplicate record IDs: {sorted(duplicates)}")
+    return {"schema_version":"espresso.val001.governed_record_inventory.v1","record_id":"VAL001-GOVERNED-RECORD-INVENTORY-1","scope":"ALL_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_EXCEPT_SELF","record_count":len(records),"records":records,"closure":{"inventory_self":"BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH","completion_freeze":"BINDS_INVENTORY","final_lock":"BINDS_COMPLETION_FREEZE"}}
+
+def verify_inventory(root: Path, inventory: dict[str,Any]) -> None:
+    expected=build_inventory(root); observed={r["path"]:r for r in inventory["records"]}; actual={r["path"]:r for r in expected["records"]}
+    if set(observed)!=set(actual): raise ContractError(f"inventory coverage mismatch missing={sorted(set(actual)-set(observed))} extra={sorted(set(observed)-set(actual))}")
+    for path,item in observed.items():
+        for key in ("sha256","git_blob","record_class","schema_path","treatment","structure_signature_sha256"):
+            if item[key]!=actual[path][key]: raise ContractError(f"inventory mismatch {path}:{key}")
+
+def inventory_bytes(root: Path) -> bytes: return canonical_json(build_inventory(root))

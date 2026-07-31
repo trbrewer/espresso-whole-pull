@@ -18,29 +18,46 @@ V2_PATH = "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.
 EXPECTED_V2_SHA256 = "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"
 
 
-def atomic_write(path: Path, data: bytes, validator: Callable[[Path], None] | None = None) -> None:
+def atomic_write(path: Path, data: bytes, validator: Callable[[Path], None] | None = None,
+                 fault: Callable[[str], None] | None = None) -> None:
+    def hit(stage: str) -> None:
+        if fault: fault(stage)
+    hit("before_mkdir")
     path.parent.mkdir(parents=True, exist_ok=True)
+    if path.is_symlink(): raise ContractError("governed destination may not be a symlink")
+    hit("before_temp_create")
     descriptor, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
     temp_path = Path(temporary)
     try:
         with os.fdopen(descriptor, "wb") as stream:
-            stream.write(data); stream.flush(); os.fsync(stream.fileno())
+            hit("before_write"); written = stream.write(data)
+            if written != len(data): raise OSError("short write")
+            hit("before_flush"); stream.flush(); hit("before_file_fsync"); os.fsync(stream.fileno())
         if validator:
+            hit("before_validation")
             validator(temp_path)
+        hit("before_replace")
         os.replace(temp_path, path)
+        hit("after_replace")
         directory = os.open(path.parent, os.O_DIRECTORY)
-        try: os.fsync(directory)
+        try: hit("before_directory_fsync"); os.fsync(directory)
         finally: os.close(directory)
     finally:
         if temp_path.exists(): temp_path.unlink()
 
 
-def append_event(path: Path, event: dict[str, Any], event_schema: dict[str, Any]) -> None:
+def append_event(path: Path, event: dict[str, Any], event_schema: dict[str, Any], fault: Callable[[str], None] | None = None) -> None:
     validate_record(event, event_schema)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("ab") as stream:
-        stream.write(json.dumps(event, sort_keys=True, separators=(",", ":"), allow_nan=False).encode() + b"\n")
-        stream.flush(); os.fsync(stream.fileno())
+        data = json.dumps(event, sort_keys=True, separators=(",", ":"), allow_nan=False).encode() + b"\n"
+        if fault: fault("journal_before_write")
+        written = stream.write(data)
+        if written != len(data): raise OSError("short journal write")
+        if fault: fault("journal_before_flush")
+        stream.flush()
+        if fault: fault("journal_before_fsync")
+        os.fsync(stream.fileno())
 
 
 @contextmanager
@@ -62,20 +79,24 @@ def synthetic_transaction(root: Path, authority_id: str, operation: Callable[[],
         events = [json.loads(line) for line in prior]
         if any(event["authority_id"] == authority_id for event in events):
             raise ContractError("authority consumed or manual reconciliation required")
-        started = {"event_id": f"{authority_id}-STARTED", "authority_id": authority_id, "status": "STARTED", "source_opened": false_value(), "score_exposed": false_value(), "output_sha256": None, "failure_reason": None}
+        def event(status: str, sequence: int, output: str | None = None, failure: str | None = None) -> dict[str, Any]:
+            return {"sequence": sequence, "event_id": f"EVT-{sequence:04d}", "event_type": "INVOCATION_STARTED" if status == "STARTED" else "INVOCATION_TERMINAL", "authority_id": authority_id, "invocation_id": authority_id, "execution_role": "TEST_OR_CI_INVOCATION", "status": status, "source_opened": status != "STARTED", "score_exposed": status != "STARTED", "test_or_ci": True, "minimum_known_count": None, "output_sha256": output, "failure_reason": failure, "invalidation_status": "VALID" if status == "COMPLETED" else ("MANUAL_RECONCILIATION_REQUIRED" if status == "STARTED" else "INVALIDATED_NO_RERUN_AUTHORIZED")}
+        started = event("STARTED", len(events) + 1)
         append_event(journal, started, event_schema)
         if fail_stage == "after_started":
             raise ContractError("synthetic interruption after STARTED")
         try:
             result = operation()
             if fail_stage == "assembly": raise RuntimeError("synthetic assembly failure")
-            atomic_write(result_path, canonical_json(result), lambda p: load_json(p))
+            def injected(stage: str) -> None:
+                if fail_stage == stage: raise OSError(f"synthetic {stage} failure")
+            atomic_write(result_path, canonical_json(result), lambda p: load_json(p), injected)
             if fail_stage == "completion": raise RuntimeError("synthetic completion failure")
-            completed = {"event_id": f"{authority_id}-COMPLETED", "authority_id": authority_id, "status": "COMPLETED", "source_opened": true_value(), "score_exposed": true_value(), "output_sha256": sha256(result_path), "failure_reason": None}
+            completed = event("COMPLETED", len(events) + 2, sha256(result_path))
             append_event(journal, completed, event_schema)
             return result
         except Exception as exc:
-            failed = {"event_id": f"{authority_id}-FAILED", "authority_id": authority_id, "status": "FAILED", "source_opened": true_value(), "score_exposed": true_value(), "output_sha256": sha256(result_path) if result_path.exists() else None, "failure_reason": type(exc).__name__}
+            failed = event("FAILED", len(events) + 2, None, type(exc).__name__)
             append_event(journal, failed, event_schema)
             raise
 
