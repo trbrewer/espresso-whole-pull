@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 188,
-  "total_uncompressed_bytes_excluding_manifest": 1755913,
-  "aggregate_source_sha256": "104f872dfdb7c91d9b5760af77bca932f70ed08a62ebc6634829f13c8226768d",
-  "aggregate_sha256": "104f872dfdb7c91d9b5760af77bca932f70ed08a62ebc6634829f13c8226768d",
+  "file_count": 192,
+  "total_uncompressed_bytes_excluding_manifest": 1765342,
+  "aggregate_source_sha256": "a511f339f3eaa3ef2fb3b0c10656ef778f6108e1e9f7a1e2b46cb7e7cf2a09fc",
+  "aggregate_sha256": "a511f339f3eaa3ef2fb3b0c10656ef778f6108e1e9f7a1e2b46cb7e7cf2a09fc",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -498,6 +498,11 @@
       "bytes": 844,
       "git_mode": "100644"
     },
+    "docs/validation/VAL_001_PR38_HARDENING_COMPLETION_NOTE.md": {
+      "sha256": "62da4767fbf374e6bbcf6303daa90ceb8bb0bffec54119193345a4f47054c01f",
+      "bytes": 500,
+      "git_mode": "100644"
+    },
     "docs/validation/VAL_001_PR38_SECOND_CORRECTION_NOTE.md": {
       "sha256": "63a11c52557372cad0f65dabeb46e3dfa131d4a00df67ba7af32dab2f9444888",
       "bytes": 1047,
@@ -743,9 +748,19 @@
       "bytes": 5399,
       "git_mode": "100755"
     },
+    "scripts/verify_val001_governed_inventory.py": {
+      "sha256": "1100e7392a52773b629139e37e765392181f7c439043744e7f2b85e68f1e4cc2",
+      "bytes": 689,
+      "git_mode": "100755"
+    },
     "scripts/verify_val001_hardening.py": {
-      "sha256": "edf761f7e61c5e7fa93f08fcd97d2cad82e5e0d42dd7925d7f35b2cda7dcddee",
-      "bytes": 3433,
+      "sha256": "453e60e109ad5e5d73a0f4ff9500cbd27aa67d01f951d7afecd17c83d80738d7",
+      "bytes": 3381,
+      "git_mode": "100755"
+    },
+    "scripts/verify_val001_invocation_journal.py": {
+      "sha256": "ef9aecec288d73bed6b0f2702ac19d21117fab8da64710b3afc8e49b974c21fa",
+      "bytes": 719,
       "git_mode": "100755"
     },
     "scripts/verify_wp02_regression.py": {
@@ -906,6 +921,11 @@
     "tests/test_reference_case.py": {
       "sha256": "9647dfc42a133d5dd1da480a2bb2b75a09ca67122e95ceae16a5053708880e20",
       "bytes": 64822,
+      "git_mode": "100644"
+    },
+    "tests/test_val001_completion.py": {
+      "sha256": "ae13fda9987d33a72578c691b92d696620f11e8cbb98eb3e0c1eb70a4fb6a480",
+      "bytes": 7573,
       "git_mode": "100644"
     },
     "tests/test_val001_framework.py": {
