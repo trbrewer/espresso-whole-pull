@@ -73,3 +73,10 @@ tranche. The program will now build source-specific adapters, compare existing
 mechanisms with admissible real evidence, quantify uncertainty and
 identifiability, decompose residuals, and select one next physics increment
 from information value rather than implementation convenience.
+
+- VAL-001 final hardening (open PR #38): preserved all adverse history and V2
+  bytes; corrected source provenance; added deep critical schemas, canonical
+  consumed-state enforcement, atomic synthetic transaction machinery, an
+  append-only invocation journal, reproducible selected-row identity, truthful
+  policy/evaluation separation, standalone historical re-expressions, and
+  OpenFOAM qualification provenance. New comparisons and OpenFOAM runs: zero.

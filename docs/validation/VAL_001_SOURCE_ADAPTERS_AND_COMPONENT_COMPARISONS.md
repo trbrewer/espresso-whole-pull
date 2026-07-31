@@ -3,6 +3,19 @@
 **Change declaration:** `NO_GOVERNING_PHYSICS_CHANGE`
 **Issue:** #37
 **PR:** #38, open and unmerged
+
+## Post-result hardening and corrected interpretation
+
+The retained V2 result remains byte-identical at SHA-256
+`7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5`.
+This cycle performed no comparison and no OpenFOAM execution. The corrected
+scientific evaluation is `POST_FIT_SOURCE_RECONSTRUCTION_ONLY`,
+`QUANTITATIVE_VARIANT_DISCRIMINATION_NOT_ASSESSED`, and
+`MECHANISM_UNIQUENESS_NOT_ASSESSED`. The unchanged policy decision
+`ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS` is conservative guidance based on
+insufficient independent uncertainty-characterized evidence, not proof of a
+statistical or mechanism-uniqueness test. The three current-head OpenFOAM runs
+are framework-qualification artifacts and did not generate the V2 sweep.
 **Correction status:** `VAL001_PR38_SECOND_CORRECTION_COMPLETE_READY_FOR_READJUDICATION`
 **Physical validation:** `NOT_ESTABLISHED`
 

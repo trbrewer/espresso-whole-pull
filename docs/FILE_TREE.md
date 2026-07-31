@@ -102,3 +102,8 @@ and ordinary tests use synthetic fixtures only.
 ```
 
 Generated case dictionaries, meshes, time directories, processor directories, logs, reports, traces, preflight records, qualification runs, and build products are excluded from the source-package manifest and removed by `./Allclean`.
+
+VAL-001 post-result controls include `tools/validation/val001/invocation.py`,
+`source_identity.py`, the governed schema registry, the invocation event
+journal, the post-result execution lock, the hardening freeze, and standalone
+historical re-expressions under `validation/val001/results/historical/`.

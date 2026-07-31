@@ -77,6 +77,13 @@ mechanism. PR #38 remains open and awaits independent re-adjudication.
 Experimental commissioning, protected scoring and holdout execution remain
 unauthorized; physical validation remains **NOT_ESTABLISHED**.
 
+The final additive hardening preserves V2 byte-for-byte, marks its replacement
+authority consumed, removes caller-selected governed identities, and deeply
+validates the retained V2 result and invocation history. It also corrects the
+source citation to Waszkiewicz, N. et al., *Physics of Fluids* 38, 063113
+(2026), DOI 10.1063/5.0319611. No comparison or OpenFOAM execution occurred in
+this hardening cycle. PR #38 remains open for independent read-adjudication.
+
 ## License
 
 The solver and repository code are licensed under GPL-3.0-or-later. See `LICENSE`, `NOTICE.md`, `THIRD_PARTY_NOTICES.md`, and `docs/LICENSING.md`. This licensing audit is informational and not legal advice.

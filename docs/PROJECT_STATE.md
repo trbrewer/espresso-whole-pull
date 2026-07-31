@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 186/186 PASS
+- Public source verification: 188/188 PASS
 - Active candidate: `VAL-001_SOURCE_SPECIFIC_VALIDATION_ADAPTERS`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
@@ -84,3 +84,13 @@ replacement is `POST_OBSERVATION_REPRODUCTION`, `NOT_BLIND`, and
 No protected or holdout data, retuning, physics, threshold, or scientific
 configuration change occurred. See the
 [VAL-001 report](validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md).
+
+Final post-result hardening consumes all remaining real-data execution
+authority. The original result remains arithmetic-correct but prospectively
+invalidated; the first corrected invocation remains failed after score
+exposure; and V2 remains the successful post-observation, non-blind,
+non-independent descriptive reproduction. V2 was not rewritten. Quantitative
+discrimination and mechanism uniqueness were not assessed;
+`ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS` is a conservative evidence-policy
+decision. Three earlier current-head OpenFOAM runs qualify the framework but
+did not produce the V2 pressure-sweep columns.

@@ -93,3 +93,11 @@ The second cycle performed zero new OpenFOAM builds and executions, and tests
 perform zero real-data comparison invocations. The result is post-observation,
 not blind, not independent, and not physical validation. PR #38 remains open
 pending independent re-adjudication.
+
+## VAL-001 post-result framework hardening
+
+The candidate now has canonical consumed-authority enforcement, deep retained
+V2 and invocation-ledger schemas, a durable append-only event journal,
+synthetic transaction/concurrency tests, and a versioned raw-string selected-
+row identity. The production runner accepts no alternate governed identities.
+This cycle performed zero governed comparisons and zero OpenFOAM work.
