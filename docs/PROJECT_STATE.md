@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 182/182 PASS
+- Public source verification: 185/185 PASS
 - Active candidate: `VAL-001_SOURCE_SPECIFIC_VALIDATION_ADAPTERS`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
@@ -54,12 +54,12 @@ diagnostics are not improved predictions merely because they add complexity.
 
 ## Active next program phase
 
-No governing physics changes and no validation executions occur in this
-documentation alignment task. The next recommended implementation is a
-source-specific validation adapter framework with first component
-comparisons. It will preserve evidence definitions and rights, separate
-calibration from comparison, quantify uncertainty and identifiability, compare
-existing mechanisms, and recommend one next physics increment from residuals.
+The open VAL-001 correction candidate implements the source-specific adapter
+framework without changing governing physics. Three prospectively declared
+current-head OpenFOAM cases completed. The one authorized corrected real-data
+comparison invocation failed after in-memory score exposure, was invalidated,
+and was not retried. PR #38 is therefore not ready for re-adjudication and does
+not authorize a next-physics increment.
 
 See the concise
 [solver development and validation roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)
@@ -70,12 +70,11 @@ General whole-solver physical validation remains `NOT_ESTABLISHED`.
 
 ## Open VAL-001 candidate
 
-VAL-001 adds source adapters, semantic validation, evidence/rights and
-calibration/comparison ledgers, uncertainty-aware metrics, reduced results,
-and templates. Its first two source-linked, post-fit pressure-flow comparisons
-used an unchanged retained WP03-001 sweep. Both have approximately `0.2464
-g/s` RMSE over ten points and are not distinguishable given unreported source
-uncertainty. No protected or holdout data, retuning, physics, or scientific
-configuration change occurred. The bounded disposition is
-`ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS`; see the
+VAL-001 adds enforced source adapters, semantic validation, evidence/rights
+and calibration/comparison ledgers, synthetic adversarial tests, historical
+re-expression records, campaign provenance, and a fail-closed evidence-gap
+adapter. The initial PR arithmetic remains verified for ten in-domain points,
+but its prospective-governance status is invalidated. The corrected invocation
+produced no governed result. No protected or holdout data, retuning, physics,
+threshold, or scientific configuration change occurred. See the
 [VAL-001 report](validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md).

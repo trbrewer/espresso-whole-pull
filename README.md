@@ -42,7 +42,7 @@ Full generated fields, uncleaned runs, processor directories, compiled executabl
 - Validation action plan:
   `docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md`
 - Current project state: `docs/PROJECT_STATE.md`
-- VAL-001 source-adapter result:
+- VAL-001 correction and retained execution-failure record:
   `docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md`
 
 ## Development
@@ -66,9 +66,11 @@ physical-validation release.
 The published release and bounded assets are available at
 [v0.2.0](https://github.com/trbrewer/espresso-whole-pull/releases/tag/v0.2.0).
 WP-0.3A reviewed the moving Puckworks evidence baseline and found no presently
-qualifying independent hydraulic holdout. Its frozen contract authorizes no
-execution and no additional mechanism. The next implementation task is the
-validation-adapter framework and first admissible component comparisons.
+qualifying independent hydraulic holdout. VAL-001 then implemented the
+adapter framework and completed three bounded current-head OpenFOAM runs, but
+its single corrected real-data invocation failed after score exposure and was
+invalidated without retry. PR #38 therefore remains a correction candidate,
+not a completed governed result and not authorization for another mechanism.
 Experimental commissioning, protected scoring and holdout execution remain
 unauthorized; physical validation remains **NOT_ESTABLISHED**.
 

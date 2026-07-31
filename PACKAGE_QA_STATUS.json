@@ -26,10 +26,10 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 236,
-    "static_gate_count": 34,
-    "source_manifest_file_count": 182,
-    "source_manifest_aggregate_sha256": "44cb2dcb4fd25b46a9c8a9b67990818a49f74072d2db391becbaf04a59db487a",
+    "python_test_count": 240,
+    "static_gate_count": 35,
+    "source_manifest_file_count": 185,
+    "source_manifest_aggregate_sha256": "98370f584407e6b3493d3c88a3816854ed33ae347445c00781df0f73e194a101",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -105,16 +105,21 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "val_001": {
-    "status": "OPEN_PR_CANDIDATE",
+    "status": "CORRECTED_EXECUTION_FAILED_INVALIDATED_NO_RERUN_AUTHORIZED",
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
-    "adapter_semantic_tests": "PASS",
-    "component_comparison_count": 2,
-    "completed_score_bearing_invocations": 1,
-    "fresh_openfoam_runs": 0,
+    "adapter_semantic_tests": "PASS_SYNTHETIC_ONLY",
+    "historical_reexpression_count": 6,
+    "corrected_governed_result_count": 0,
+    "minimum_known_precorrection_real_data_computations": 3,
+    "exact_precorrection_local_count": "NOT_RECONSTRUCTABLE_FROM_COMMITTED_EVIDENCE",
+    "corrected_real_data_comparison_invocations": 1,
+    "corrected_governed_result_producing_invocations": 0,
+    "corrected_test_or_ci_real_data_invocations": 0,
+    "fresh_openfoam_runs": 3,
     "protected_accesses": 0,
     "holdout_scores": 0,
     "fits_or_retunes": 0,
-    "decision": "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS",
+    "decision": "CORRECTED_EXECUTION_FAILED_NO_GOVERNED_RESULT_NO_RERUN_AUTHORIZED",
     "physical_validation": "NOT_ESTABLISHED"
   },
   "historical_baseline": {

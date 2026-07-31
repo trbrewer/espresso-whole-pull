@@ -752,6 +752,7 @@ def main() -> None:
 
     try:
         val001_details = verify_val001_correction(root)
+        val001_details = {key: value for key, value in val001_details.items() if key != "status"}
         gates["val001_corrected_contracts_fail_closed"] = gate(True, **val001_details)
     except (ValueError, OSError, KeyError) as exc:
         gates["val001_corrected_contracts_fail_closed"] = gate(False, error=str(exc))
