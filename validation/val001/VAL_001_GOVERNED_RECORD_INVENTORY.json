@@ -6,7 +6,7 @@
     "inventory_self": "BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH",
     "registry_self": "BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH"
   },
-  "record_count": 65,
+  "record_count": 64,
   "record_id": "VAL001-GOVERNED-RECORD-INVENTORY-1",
   "records": [
     {
@@ -506,31 +506,6 @@
       "source_access_role": "NO_SOURCE_ACCESS",
       "static_validation": "REQUIRED",
       "structure_signature_sha256": "c9aa638583a01d006c2aa02deb36f26d7784ff9711f5d260dbefe65582c1903f",
-      "superseded": false,
-      "treatment": "IMMUTABLE_HISTORICAL_SIDECAR"
-    },
-    {
-      "artifact_record_id": "VAL001-FINAL-HARDENING-COMPLETION-FREEZE-1",
-      "audit_only": true,
-      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
-      "current": false,
-      "executable": false,
-      "git_blob": "062b742aafc5511d0f74626dcab58b43405cdea0",
-      "governing": false,
-      "mutability": "IMMUTABLE_AFTER_COMPLETION_FREEZE",
-      "path": "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json",
-      "producing_commit": "69a6313f8bb7f625d5abb394835f96973f5b6a8e",
-      "puckworks_lock_applicable": true,
-      "record_class": "FREEZE",
-      "record_id": "INV-7458A25E0734772A2A4C",
-      "schema_id": "espresso.val001.exact_structure_sidecar.v1",
-      "schema_path": "validation/val001/schemas/exact_structure_sidecar.schema.json",
-      "schema_version": "espresso.val001.final_hardening_completion_freeze.v1",
-      "semantic_validator": "VALIDATE_EXACT_HASH_AND_STRUCTURE_SIGNATURE",
-      "sha256": "ccbd274e32e38fe30763a4c73b7b41b0dbefb2fa907d447fe867463c512ec124",
-      "source_access_role": "NO_SOURCE_ACCESS",
-      "static_validation": "REQUIRED",
-      "structure_signature_sha256": "3a71302bbcf356790a309ff735da092b49b4a9a4748f735d21d0964ad9db4d28",
       "superseded": false,
       "treatment": "IMMUTABLE_HISTORICAL_SIDECAR"
     },

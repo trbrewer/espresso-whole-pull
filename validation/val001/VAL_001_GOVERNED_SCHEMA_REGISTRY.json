@@ -5,7 +5,7 @@
     "registry_self": "BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH"
   },
   "coverage": "EXPLICIT_ONE_RECORD_ONE_TREATMENT_NO_PREFIX_OR_CATCH_ALL",
-  "record_count": 65,
+  "record_count": 64,
   "record_id": "VAL001-GOVERNED-SCHEMA-REGISTRY-2",
   "records": [
     {
@@ -386,25 +386,6 @@
       "sha256": "af6f58df14935dcf3295f9c3209f435e7bf6275f8656b6135b1cf3e2ed1b39d7",
       "static_validation": "REQUIRED",
       "structure_signature_sha256": "c9aa638583a01d006c2aa02deb36f26d7784ff9711f5d260dbefe65582c1903f",
-      "treatment": "IMMUTABLE_HISTORICAL_SIDECAR"
-    },
-    {
-      "artifact_record_id": "VAL001-FINAL-HARDENING-COMPLETION-FREEZE-1",
-      "audit_only": true,
-      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
-      "current": false,
-      "executable": false,
-      "path": "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json",
-      "puckworks_lock_applicable": true,
-      "record_class": "FREEZE",
-      "record_id": "INV-7458A25E0734772A2A4C",
-      "schema_id": "espresso.val001.exact_structure_sidecar.v1",
-      "schema_path": "validation/val001/schemas/exact_structure_sidecar.schema.json",
-      "schema_version": "espresso.val001.final_hardening_completion_freeze.v1",
-      "semantic_validator": "VALIDATE_EXACT_HASH_AND_STRUCTURE_SIGNATURE",
-      "sha256": "ccbd274e32e38fe30763a4c73b7b41b0dbefb2fa907d447fe867463c512ec124",
-      "static_validation": "REQUIRED",
-      "structure_signature_sha256": "3a71302bbcf356790a309ff735da092b49b4a9a4748f735d21d0964ad9db4d28",
       "treatment": "IMMUTABLE_HISTORICAL_SIDECAR"
     },
     {
