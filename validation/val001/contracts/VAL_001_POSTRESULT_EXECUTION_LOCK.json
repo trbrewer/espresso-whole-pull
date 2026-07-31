@@ -1,6 +1,6 @@
 {
   "schema_version": "espresso.val001.postresult_execution_lock.v1",
-  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-2-FREEZE-44D123828ABAAA3D-TREE-B5E91AB30A4BE1F1",
+  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-3-FREEZE-CDDFDFB0B6ED4A98-TREE-1AB64C7E34330494",
   "task": "VAL-001",
   "issue": 37,
   "pull_request": 38,
@@ -14,9 +14,9 @@
   "alternate_activation_allowed": false,
   "further_retry_authorized": false,
   "bindings": [
-    {"path": "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json", "sha256": "ac97da2def3cac634f7f182ae69d6ea36d101333f2643cc4dd9278f7e051a613"},
-    {"path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json", "sha256": "f4cbf00dda0d9429d7e365d6ffeddb6160479cab3381e001478167b397f52a9e"},
-    {"path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json", "sha256": "c38fc92934ec075fa1f15522dd858c206f5d0adb5e1c5bc5bfad11d82a33c341"},
+    {"path": "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json", "sha256": "f4f68add79396d05d123cd5901343143fb3164e7ad5c2afe3f55c22410eb9cf6"},
+    {"path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json", "sha256": "e1efd8a0e23dc0eaaa507175ff0b29e937d0ec718d4c78cc375a9056bc44cfbb"},
+    {"path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json", "sha256": "17e459c0636df66e2853796c095e3eddd2651299243add3c6ced44fe1a04b93e"},
     {"path": "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl", "sha256": "f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730"},
     {"path": "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json", "sha256": "01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8"},
     {"path": "scripts/run_val001_corrected_comparison.py", "sha256": "a39fafb4b5492ad939137bc3221597572d21d973c0e4a81e444dc434c19fa66f"},
