@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 182,
-  "total_uncompressed_bytes_excluding_manifest": 1718742,
-  "aggregate_source_sha256": "167b01f4b0fb44d0dcffd13f7fbf138f5b1b95bc6ffa5111260b2ceec9c634a9",
-  "aggregate_sha256": "167b01f4b0fb44d0dcffd13f7fbf138f5b1b95bc6ffa5111260b2ceec9c634a9",
+  "total_uncompressed_bytes_excluding_manifest": 1721249,
+  "aggregate_source_sha256": "44cb2dcb4fd25b46a9c8a9b67990818a49f74072d2db391becbaf04a59db487a",
+  "aggregate_sha256": "44cb2dcb4fd25b46a9c8a9b67990818a49f74072d2db391becbaf04a59db487a",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -739,8 +739,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_wp03c_stage0_scaffold.py": {
-      "sha256": "be8170866834c70519d3212a631aac2498d501a382476a48ca11266857fa75ca",
-      "bytes": 31547,
+      "sha256": "712d7e1f6a6a68f0657a43da87cb336c2acab4772da91eeac187dfa2b8082c76",
+      "bytes": 34054,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
