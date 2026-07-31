@@ -9,6 +9,14 @@
     {"path": "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json", "schema_id": "espresso.val001.invocation_ledger.v1", "schema_path": "validation/val001/schemas/invocation_ledger.schema.json", "semantic_validator": "validate_invocation_history", "executable": false, "audit_only": false, "legacy_validation": true, "claim_ceiling": "NOT_APPLICABLE", "required_dependency_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "required_dependency_tree": "1d553e44ee2f7480a5df521560801b478618cc84"},
     {"path": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json", "schema_id": "espresso.val001.postresult_execution_lock.v1", "schema_path": "validation/val001/schemas/postresult_execution_lock.schema.json", "semantic_validator": "verify_consumed_state_bindings", "executable": false, "audit_only": false, "legacy_validation": false, "claim_ceiling": "NO_FURTHER_EXECUTION", "required_dependency_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "required_dependency_tree": "1d553e44ee2f7480a5df521560801b478618cc84"}
   ],
+  "standalone_historical_records": [
+    "validation/val001/results/historical/WP01R_R1_WASZKIEWICZ_9BAR.json",
+    "validation/val001/results/historical/WP02_001_WASZKIEWICZ_9BAR.json",
+    "validation/val001/results/historical/WP02_001_WASZKIEWICZ_8BAR_NO_RETUNING.json",
+    "validation/val001/results/historical/WP_0_3B_MORONEY_VERIFICATION.json",
+    "validation/val001/results/historical/WP_0_3B_MATIAS_VERIFICATION.json",
+    "validation/val001/results/historical/WP_0_3B_LIANG_VERIFICATION.json"
+  ],
   "legacy_record_scopes": [
     {"path_prefix": "validation/val001/amendments/", "classification": "FROZEN_LEGACY_AUDIT_RECORD", "legacy_schema": "amendment_invalidation.schema.json"},
     {"path_prefix": "validation/val001/contracts/VAL_001_", "classification": "FROZEN_OR_POSTRESULT_GOVERNANCE_RECORD", "legacy_schema": "governance_records.schema.json"},

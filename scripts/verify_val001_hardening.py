@@ -25,6 +25,13 @@ def verify(root: Path) -> dict[str, object]:
         schema = load_json(schema_path); lint_schema(schema)
         validate_record(load_json(record_path), schema)
         validated.append(entry["path"])
+    historical_schema = load_json(root / "validation/val001/schemas/historical_reexpression.schema.json")
+    lint_schema(historical_schema)
+    for relative in registry["standalone_historical_records"]:
+        record = load_json(root / relative); validate_record(record, historical_schema)
+        if sha256(root / record["original_artifact_path"]) != record["original_artifact_sha256"]:
+            raise ContractError(f"historical artifact mismatch: {relative}")
+        validated.append(relative)
     adapter = load_json(root / "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json")
     validate_adapter(adapter, root, expected_dependency=EXPECTED_LOCK)
     journal_schema = load_json(root / "validation/val001/schemas/invocation_event.schema.json")
