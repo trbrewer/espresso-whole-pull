@@ -1,9 +1,8 @@
 {
-  "schema_version": "espresso.val001.source_adapter.v3",
-  "adapter_id": "waszkiewicz2025.pressure_flow.source_sweep.v3",
+  "schema_version": "espresso.val001.source_adapter.v2",
+  "adapter_id": "waszkiewicz2025.pressure_flow.source_sweep.v2",
   "source": {
-    "publication_citation": "Waszkiewicz, N.; Myck, M.; Białas, K.; Puciata-Mroczyńska, M.; Dzikowski, M.; Szymczak, P.; Lisicki, M. (2026), Under pressure: Poroelastic regulation of flow in espresso brewing, Physics of Fluids 38, 063113, DOI 10.1063/5.0319611",
-    "publication": {"title": "Under pressure: Poroelastic regulation of flow in espresso brewing", "journal": "Physics of Fluids", "volume": "38", "article_number": "063113", "year": 2026, "published_date": "2026-06-23", "doi": "10.1063/5.0319611", "rights": "AIP_ARTICLE_CITATION_ONLY_REDISTRIBUTION_PROHIBITED"},
+    "publication_citation": "Waszkiewicz, R. et al. (2025), Under pressure: poroelastic regulation of flow in espresso, DOI 10.1017/jfm.2025.10366 (citation-only article)",
     "dataset_identity": "Waszkiewicz et al. public deposited data, Zenodo 10.5281/zenodo.18046315, CC-BY-4.0",
     "artifact_paths": ["docs/cards/waszkiewicz2025.md", "docs/research/intake/waszkiewicz2025_poroelastic.yml", "puckworks/data/MANIFEST.csv", "puckworks/data/waszkiewicz2025/static_calibration.csv"],
     "artifact_sha256": {
@@ -19,22 +18,14 @@
     "local_reduced_input_sha256": "0a789ed20039ff5ea21b7e1773f2f62f74a4122775e2cb3fa12ff6c24c53a831"
   },
   "evidence": {"level": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON", "protected": false, "holdout_status": "NOT_HOLDOUT", "circularity": "The same campaign influenced predecessor closure development; the finite-porosity branch also has direct 9-bar matching circularity."},
-  "rights": {"access_status": "PUBLIC", "comparison_allowed": true, "redistribution_status": "CC_BY_4_0_REDUCED_DATA", "analysis_permission": "PERMITTED", "derived_publication_permission": "PERMITTED_WITH_ATTRIBUTION", "journal_rights": "CITATION_ONLY_DO_NOT_REDISTRIBUTE_ARTICLE", "dataset_rights": "CC-BY-4.0 deposited numeric data with attribution", "code_rights": "GPLV3_EXTERNAL_NOT_INGESTED", "local_reduced_input_rights": "CC_BY_4_0_DERIVED_REDUCED_NUMERIC_RECORD"},
+  "rights": {"access_status": "PUBLIC", "comparison_allowed": true, "redistribution_status": "CC_BY_4_0_REDUCED_DATA", "analysis_permission": "PERMITTED", "derived_publication_permission": "PERMITTED_WITH_ATTRIBUTION", "journal_rights": "CITATION_ONLY_DO_NOT_REDISTRIBUTE_ARTICLE", "dataset_rights": "CC-BY-4.0 deposited numeric data with attribution"},
   "mappings": {
-    "apparatus": {"value": "Sanremo Zoe espresso machine", "unavailable_reason": null, "provenance": "locked model card rig context"},
-    "coffee": {"value": "single Brazilian light-medium roast", "unavailable_reason": null, "provenance": "locked model card rig context"},
-    "grinder": {"value": "Fiorenzato F64 at setting 1.9", "unavailable_reason": null, "provenance": "locked model card rig context"},
-    "basket": {"value": "58 mm basket", "unavailable_reason": null, "provenance": "locked model card rig context"},
-    "dose": {"value": "18.50 ± 0.05 g", "unavailable_reason": null, "provenance": "locked model card parameter table"},
-    "bed_depth": {"value": null, "unavailable_reason": "NOT_REPORTED_IN_LOCKED_PUBLIC_METADATA"},
-    "water": {"value": null, "unavailable_reason": "NOT_REPORTED_IN_LOCKED_PUBLIC_METADATA"},
-    "temperature": {"value": null, "unavailable_reason": "NOT_REPORTED_IN_LOCKED_PUBLIC_METADATA"},
+    "apparatus": {"value": "Waszkiewicz source rig as documented by the locked source card", "unavailable_reason": null},
     "pressure_node": {"value": "BASKET_BED_TOP", "unavailable_reason": null},
     "pressure_basis": {"value": "GAUGE", "unavailable_reason": null},
     "outlet_reference": {"value": "ATMOSPHERIC", "unavailable_reason": null},
     "hydraulic_area": {"value": "PI_TIMES_0.029_M_SQUARED", "unavailable_reason": null},
     "time_origin": {"value": null, "unavailable_reason": "NOT_APPLICABLE_TO_STATIC_PRESSURE_FLOW_SWEEP"},
-    "averaging_basis": {"value": "mean flow over t=110–120 s", "unavailable_reason": null, "provenance": "locked model card calibration section"},
     "time_unit": {"value": "s", "unavailable_reason": null},
     "coordinate_origin": {"value": null, "unavailable_reason": "NOT_APPLICABLE_TO_AGGREGATE_STATIC_SWEEP"},
     "positive_coordinate_direction": {"value": null, "unavailable_reason": "NOT_APPLICABLE_TO_AGGREGATE_STATIC_SWEEP"},

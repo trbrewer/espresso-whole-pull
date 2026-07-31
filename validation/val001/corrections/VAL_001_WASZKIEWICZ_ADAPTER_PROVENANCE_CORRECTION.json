@@ -1,0 +1,17 @@
+{
+  "schema_version": "espresso.val001.adapter_provenance_correction.v1",
+  "record_id": "VAL_001_WASZKIEWICZ_ADAPTER_PROVENANCE_CORRECTION",
+  "task": "VAL-001",
+  "original_path": "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json",
+  "original_commit": "d6e28495c733493f7a41c218652806c01c04c6fd",
+  "original_git_blob": "03e93040513fe6830a9aaf2a0a60cc0ec123a0cb",
+  "original_sha256": "6d0e9da956711f63c7b40aa967583de04df36e2f718eee1c9c860c4321887308",
+  "historical_copy": "validation/val001/adapters/historical/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER_V1_INVALID_CITATION.json",
+  "v2_result_sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5",
+  "incorrect_citation": "Waszkiewicz, R. et al. (2025), DOI 10.1017/jfm.2025.10366",
+  "corrected_citation": "Waszkiewicz, N. et al. (2026), Physics of Fluids 38, 063113, DOI 10.1063/5.0319611",
+  "locked_support": ["docs/cards/waszkiewicz2025.md", "docs/research/intake/waszkiewicz2025_poroelastic.yml"],
+  "unchanged": ["DATASET_IDENTITY", "NUMERICAL_SOURCE_BYTES", "PUCKWORKS_COMMIT_AND_TREE", "RIGHTS_BASIS", "METRICS", "SCIENTIFIC_RESULT"],
+  "v2_adapter_binding_status": "PRESERVED_BY_BYTE_IDENTICAL_HISTORICAL_COPY",
+  "scientific_impact": "NONE"
+}
