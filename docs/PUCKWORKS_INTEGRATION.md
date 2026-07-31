@@ -59,7 +59,8 @@ effective-permeability closure as the first WP-0.2 branch. See the
 The first branch is source-linked and softly circular, implements effective
 hydraulic resistance only, and is not independent validation. WP02-001
 completed the governed implementation under issue #18, and issue #18 is
-closed; machine/headspace coupling remains the runner-up.
+closed. Machine/headspace coupling, Darcy–Forchheimer resistance, static
+radial heterogeneity, and quasi-static compaction have since been completed.
 
 WP02-001 executed the locked branch once at 9 bar and once at the predeclared
 8-bar same-campaign group. The compact
@@ -106,3 +107,29 @@ WP-0.3B independently re-expresses the selected Moroney, Matias, and Liang
 references without importing or executing Puckworks. These are offline
 verification and observable-discipline tools only; the runtime dependency
 lock and WP02 branch remain unchanged.
+
+## Puckworks role in the post-WP03-001 validation tranche
+
+Puckworks supplies evidence identities, source definitions, rights and
+redistribution status, model cards, data manifests, exact experimental
+campaign definitions, evidence levels, source uncertainties, known
+circularity, validation ceilings, and model-to-measurement mappings.
+
+Espresso-whole-pull supplies source adapters, executable source-specific cases,
+whole-shot and component predictions, common comparison metrics, uncertainty
+propagation, residual decomposition, sensitivity and identifiability analysis,
+mechanism-discrimination results, and experimental-design priorities.
+
+The dependency lock remains unchanged unless a separate dependency review
+authorizes advancement. Evidence classes and quantity definitions must be
+preserved. Source and post-fit reconstruction are not independent validation,
+and within-apparatus evidence is not universal transfer. Protected or holdout
+observations are not opened by this plan; missing source values remain
+unresolved.
+
+The retained EXP-001 through EXP-009 campaign identities are used exactly as
+named in Puckworks. Their inclusion is planning only and authorizes neither
+commissioning nor acquisition.
+
+The active phase and adapter requirements are detailed in the
+[Post-WP03-001 Validation and Mechanism-Discrimination Plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md).

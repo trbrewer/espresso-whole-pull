@@ -58,7 +58,9 @@ PUBLIC_DOCUMENTATION_PATHS = {
     "docs/wp02/WP02_001_EFFECTIVE_PERMEABILITY_BRANCH.md",
     "docs/decisions/ADR-0001-PUBLIC_REPOSITORY_TRANSITION.md",
     "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md",
+    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md",
     "docs/strategy/history/espresso_puck_modeling_and_simulation_strategy_v1_3.md",
+    "docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md",
 }
 
 

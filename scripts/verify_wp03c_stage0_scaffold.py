@@ -111,6 +111,17 @@ EXPECTED_PATHS = frozenset({
     "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.sha256",
     "validation/wp03/WP03_001_POROELASTIC_COMPACTION_TRACE.csv",
     "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv",
+    # Exact later post-WP03-001 documentation-alignment paths. This preserves
+    # the frozen Stage-0 artifact checks while allowing current navigation,
+    # strategy, roadmap, and validation planning to evolve.
+    "README.md",
+    "docs/FILE_TREE.md",
+    "docs/ONBOARDING.md",
+    "docs/PUCKWORKS_INTEGRATION.md",
+    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md",
+    "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md",
+    "docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md",
+    "tests/test_reference_case.py",
 })
 LATER_WP02_002_PATHS = frozenset({
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md",
@@ -175,6 +186,14 @@ LATER_WP02_002_PATHS = frozenset({
     "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.sha256",
     "validation/wp03/WP03_001_POROELASTIC_COMPACTION_TRACE.csv",
     "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv",
+    "README.md",
+    "docs/FILE_TREE.md",
+    "docs/ONBOARDING.md",
+    "docs/PUCKWORKS_INTEGRATION.md",
+    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md",
+    "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md",
+    "docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md",
+    "tests/test_reference_case.py",
 })
 FROZEN = {
     "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json":

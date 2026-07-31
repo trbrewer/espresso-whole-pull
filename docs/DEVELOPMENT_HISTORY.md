@@ -38,3 +38,28 @@ commissioning or holdout data, creates no final preregistration, and performs
 no model execution or scoring. Review hardening binds the frozen WP-0.3A
 campaign requirements and requires exact deterministic registry/template
 regeneration before readiness can be reported.
+
+## WP02 and WP03 first-generation solver extensions
+
+- **WP02-002:** lumped upstream resistance and compliance made basket pressure
+  emergent and changed synthetic wetting, pressure, flow and cup histories.
+- **WP02-003:** saturated Darcy–Forchheimer resistance added nonlinear regime
+  diagnostics and exposed a compatibility concern when added to permeability
+  previously calibrated under Darcy assumptions.
+- **WP02-004:** static radial two-zone permeability showed that matched bulk
+  Darcy conductance can conceal substantial synthetic extraction
+  maldistribution.
+- **WP03-001:** saturated quasi-static compaction added pressure-dependent
+  mechanical porosity and permeability. It uses a fixed mesh and does not
+  couple mechanical porosity to transport storage.
+
+These work packages are numerically verified for their tested cases and do not
+establish physical validation.
+
+## Post-WP03-001 validation pivot
+
+Completion of WP03-001 triggered the planned validation-led development
+tranche. The program will now build source-specific adapters, compare existing
+mechanisms with admissible real evidence, quantify uncertainty and
+identifiability, decompose residuals, and select one next physics increment
+from information value rather than implementation convenience.

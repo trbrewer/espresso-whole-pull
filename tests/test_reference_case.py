@@ -1318,11 +1318,8 @@ class WP01R006DecisionTests(unittest.TestCase):
         strategy = (
             ROOT / "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md"
         ).read_text(encoding="utf-8")
-        self.assertIn("**Strategy version:** 1.5", strategy)
+        self.assertIn("**Strategy version:** 1.6", strategy)
         current_header = strategy.split("---", 1)[0]
-        current_sequence = strategy.split(
-            "The immediate program sequence is:", 1
-        )[1].split("The model program continues", 1)[0]
         self.assertIn(
             "fc61c4670ec7bf801e40bb391aab16048b8da26b",
             current_header,
@@ -1335,9 +1332,13 @@ class WP01R006DecisionTests(unittest.TestCase):
             "alignment must be refreshed before integration",
             current_header,
         )
-        self.assertIn("issue #18", current_sequence)
-        self.assertNotIn("construct a source-and-quantity dossier", current_sequence)
-        self.assertNotIn("implement the Waszkiewicz-linked", current_sequence)
+        self.assertIn(
+            "Post-WP03-001 source-specific validation and mechanism discrimination",
+            current_header,
+        )
+        self.assertIn("issue #18", strategy)
+        self.assertIn("ACTIVE NEXT PROGRAM TRANCHE", strategy)
+        self.assertIn("EPISTEMIC_IDENTIFIABILITY_LIMIT", strategy)
         self.assertIn("historical", strategy.lower())
         boundary = self.decision["authorization_boundaries"]
         self.assertFalse(boundary["governing_physics_change"])
