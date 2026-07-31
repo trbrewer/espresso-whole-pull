@@ -1,15 +1,5 @@
 {
-  "schema_version": "espresso.val001.source_access_log.v1",
-  "task": "VAL-001",
-  "entries": [
-    {
-      "source": "Puckworks locked public dependency",
-      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
-      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
-      "access": "READ_ONLY_METADATA_AND_RIGHTS_REVIEW",
-      "protected_access": false,
-      "puckworks_code_executed": false,
-      "restricted_material_copied": false
-    }
-  ]
+  "schema_version": "espresso.val001.source_access_log.v2", "task": "VAL-001",
+  "entries": [{"timestamp": "2026-07-31T16:53:10-05:00", "actor_role": "AUTHORIZED_IMPLEMENTATION_AGENT", "repository": "https://github.com/trbrewer/puckworks.git", "path": "LOCKED_PUBLIC_METADATA_AND_RIGHTS_RECORDS", "artifact_identity": "commit fc61c4670ec7bf801e40bb391aab16048b8da26b tree 1d553e44ee2f7480a5df521560801b478618cc84", "artifact_sha256": null, "access_purpose": "VAL001_SOURCE_PROVENANCE_AND_RIGHTS_BINDING", "rights_basis": "PUBLIC_REPOSITORY_METADATA_AND_CC_BY_DATA_RECORDS", "content_read": true, "data_copied": false, "scoring_occurred": false, "protected": false, "holdout": false, "puckworks_code_executed": false}],
+  "protected_access_count": 0, "holdout_access_count": 0, "restricted_material_copied": false, "newer_puckworks_state_used": false
 }

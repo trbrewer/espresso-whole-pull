@@ -1,0 +1,20 @@
+{
+  "schema_version": "espresso.val001.comparison_run.v2", "contract_id": "VAL-001-CORRECTED-RUN-1", "task": "VAL-001", "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "adapter": "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json",
+  "input": {
+    "path": "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv", "sha256": "0a789ed20039ff5ea21b7e1773f2f62f74a4122775e2cb3fa12ff6c24c53a831",
+    "header_rows": 1, "total_data_rows": 11, "selected_data_rows": 10, "excluded_data_rows": 1,
+    "filter": {"field": "domain_status", "value": "IN_DOMAIN"}, "row_id_column": "nominal_pressure_bar",
+    "selected_row_ids": ["1.0", "2.0", "3.5", "4.0", "5.0", "6.0", "7.0", "8.0", "9.0", "11.0"],
+    "selected_row_canonical_sha256": "d2d5e295ffae3ff16403e268ccfd75c34b073ab2456939f6c509e33f7fca9634",
+    "selected_support_bar": [1.0, 11.0], "excluded_rows": [{"row_id": "13.0", "reason": "OUTSIDE_LOCAL_CONSTITUTIVE_DOMAIN"}], "missing_data_behavior": "REJECT"
+  },
+  "comparisons": [
+    {"comparison_id": "VAL001-CMP-001-universal-pressure-flow", "observation_column": "measured_mass_flow_g_s", "prediction_column": "universal_curve_flow_g_s", "metrics": ["RMSE", "MAE", "MEAN_BIAS", "MAXIMUM_ABSOLUTE_ERROR", "DESCRIPTIVE_R_SQUARED"], "residual_sign": "PREDICTION_MINUS_OBSERVATION", "weighting": "EQUAL_SELECTED_CONDITION", "interpolation": "NONE", "time_shift": "NONE", "threshold": null, "uncertainty_status": "SOURCE_UNCERTAINTY_NOT_REPORTED", "classification": "POST_FIT_SOURCE_RECONSTRUCTION"},
+    {"comparison_id": "VAL001-CMP-002-finite-porosity-pressure-flow", "observation_column": "measured_mass_flow_g_s", "prediction_column": "finite_phi_flow_g_s", "metrics": ["RMSE", "MAE", "MEAN_BIAS", "MAXIMUM_ABSOLUTE_ERROR", "DESCRIPTIVE_R_SQUARED"], "residual_sign": "PREDICTION_MINUS_OBSERVATION", "weighting": "EQUAL_SELECTED_CONDITION", "interpolation": "NONE", "time_shift": "NONE", "threshold": null, "uncertainty_status": "SOURCE_UNCERTAINTY_NOT_REPORTED", "classification": "POST_FIT_SOURCE_RECONSTRUCTION_WITH_9BAR_MATCHING_CIRCULARITY"}
+  ],
+  "planned_counts": {"openfoam_case_executions": 3, "real_data_comparison_invocations": 1, "governed_result_producing_invocations": 1, "test_or_ci_real_data_invocations": 0, "fit_or_retune_count": 0, "protected_access_count": 0, "holdout_score_count": 0},
+  "interpretation_rules": ["EVIDENCE_NOT_EXECUTABLE_IF_ESSENTIAL_GUARDS_FAIL", "EXECUTION_NOT_AUTHORIZED_IF_PROTECTED_OR_HOLDOUT", "VARIANT_DISCRIMINATION_NOT_ESTABLISHED_WITHOUT_UNCERTAINTY_OR_INDEPENDENT_CRITERION", "POST_FIT_SOURCE_RECONSTRUCTION_ONLY", "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS_IF_VARIANTS_NOT_DISCRIMINATED_AND_RESIDUAL_NOT_MECHANISM_UNIQUE"],
+  "output": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS.json",
+  "claim_boundaries": {"physical_validation": "NOT_ESTABLISHED", "general_physical_validation": "NOT_ESTABLISHED", "general_whole_solver_physical_validation": "NOT_ESTABLISHED", "experimental_commissioning": "NOT_AUTHORIZED", "protected_or_holdout_scoring": "NOT_AUTHORIZED", "holdout_execution": "NOT_AUTHORIZED", "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"}
+}

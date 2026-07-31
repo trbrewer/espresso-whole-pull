@@ -1,18 +1,98 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/trbrewer/espresso-whole-pull/validation/val001/schemas/source_adapter.schema.json",
-  "title": "VAL-001 source adapter",
+  "$id": "espresso.val001.source_adapter.v2",
   "type": "object",
-  "required": ["schema_version", "adapter_id", "source", "evidence", "rights", "quantities", "solver_mapping", "claim_ceiling"],
+  "required": ["schema_version", "adapter_id", "source", "evidence", "rights", "mappings", "quantities", "solver_mapping", "execution", "claim_ceiling"],
   "properties": {
-    "schema_version": {"const": "espresso.val001.source_adapter.v1"},
+    "schema_version": {"const": "espresso.val001.source_adapter.v2"},
     "adapter_id": {"type": "string", "minLength": 1},
-    "source": {"type": "object"},
-    "evidence": {"type": "object"},
-    "rights": {"type": "object"},
-    "quantities": {"type": "array", "minItems": 1},
-    "solver_mapping": {"type": "object"},
-    "claim_ceiling": {"type": "string", "minLength": 1}
+    "source": {
+      "type": "object",
+      "required": ["publication_citation", "dataset_identity", "artifact_paths", "artifact_sha256", "dependency_repository", "dependency_commit", "dependency_tree", "local_reduced_input", "local_reduced_input_sha256"],
+      "properties": {
+        "publication_citation": {"type": "string", "minLength": 1},
+        "dataset_identity": {"type": "string", "minLength": 1},
+        "artifact_paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "artifact_sha256": {"type": "object"},
+        "dependency_repository": {"const": "https://github.com/trbrewer/puckworks.git"},
+        "dependency_commit": {"type": "string", "pattern": "[0-9a-f]{40}"},
+        "dependency_tree": {"type": "string", "pattern": "[0-9a-f]{40}"},
+        "local_reduced_input": {"type": "string", "minLength": 1},
+        "local_reduced_input_sha256": {"type": "string", "pattern": "[0-9a-f]{64}"}
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["level", "protected", "holdout_status", "circularity"],
+      "properties": {
+        "level": {"enum": ["SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON", "HISTORICAL_GOVERNED_RESULT_REEXPRESSION", "PLANNING_EVIDENCE_GAP"]},
+        "protected": {"type": "boolean"},
+        "holdout_status": {"enum": ["NOT_HOLDOUT", "INDEPENDENT_HOLDOUT", "UNKNOWN"]},
+        "circularity": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "rights": {
+      "type": "object",
+      "required": ["access_status", "comparison_allowed", "redistribution_status", "analysis_permission", "derived_publication_permission", "journal_rights", "dataset_rights"],
+      "properties": {
+        "access_status": {"enum": ["PUBLIC", "RESTRICTED", "UNKNOWN"]},
+        "comparison_allowed": {"type": "boolean"},
+        "redistribution_status": {"enum": ["CC_BY_4_0_REDUCED_DATA", "GOVERNED_DERIVED_RECORD", "PROHIBITED", "UNKNOWN"]},
+        "analysis_permission": {"enum": ["PERMITTED", "PROHIBITED", "UNKNOWN"]},
+        "derived_publication_permission": {"enum": ["PERMITTED_WITH_ATTRIBUTION", "PROHIBITED", "UNKNOWN"]},
+        "journal_rights": {"type": "string", "minLength": 1},
+        "dataset_rights": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "mappings": {
+      "type": "object",
+      "required": ["apparatus", "pressure_node", "pressure_basis", "outlet_reference", "hydraulic_area", "time_origin", "time_unit", "coordinate_origin", "positive_coordinate_direction", "sign_convention", "conversion_rules", "interpolation_rules", "missing_data_behavior", "uncertainty_status"],
+      "properties": {
+        "apparatus": {"type": "object"}, "pressure_node": {"type": "object"}, "pressure_basis": {"type": "object"},
+        "outlet_reference": {"type": "object"}, "hydraulic_area": {"type": "object"}, "time_origin": {"type": "object"},
+        "time_unit": {"type": "object"}, "coordinate_origin": {"type": "object"}, "positive_coordinate_direction": {"type": "object"},
+        "sign_convention": {"type": "object"}, "conversion_rules": {"type": "array"}, "interpolation_rules": {"type": "array"},
+        "missing_data_behavior": {"enum": ["REJECT", "NOT_APPLICABLE"]},
+        "uncertainty_status": {"enum": ["SOURCE_UNCERTAINTY_NOT_REPORTED", "GOVERNED_POINTWISE_UNCERTAINTY"]}
+      },
+      "additionalProperties": false
+    },
+    "quantities": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "unit", "source_role", "model_role", "comparison_role", "calibration_influence", "score_bearing", "availability", "value"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1}, "unit": {"type": "string", "minLength": 1},
+          "source_role": {"enum": ["PRESCRIBED", "OBSERVED", "UNRESTRICTED_CALIBRATION", "CONTEXTUAL", "UNAVAILABLE"]},
+          "model_role": {"enum": ["INPUT", "PREDICTION", "PARAMETER", "NONE"]},
+          "comparison_role": {"enum": ["SCORE_BEARING_OBSERVATION", "PREDICTED_AND_COMPARED", "INDEPENDENT_COMPARISON", "UNSCORED", "NONE"]},
+          "calibration_influence": {"enum": ["NONE", "CAMPAIGN_INFLUENCED_PREDECESSOR", "DIRECT_9BAR_MATCH", "UNKNOWN"]},
+          "score_bearing": {"type": "boolean"}, "availability": {"enum": ["AVAILABLE", "UNAVAILABLE"]},
+          "value": {"anyOf": [{"type": "number"}, {"type": "string"}, {"type": "null"}]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "solver_mapping": {
+      "type": "object",
+      "required": ["configuration_change", "solver_source_change", "fitting_or_retuning_allowed", "fit_or_retune_count", "declared_configurations", "declared_model_branches"],
+      "properties": {
+        "configuration_change": {"const": false}, "solver_source_change": {"const": false},
+        "fitting_or_retuning_allowed": {"const": false}, "fit_or_retune_count": {"const": 0},
+        "declared_configurations": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "declared_model_branches": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+      }, "additionalProperties": false
+    },
+    "execution": {
+      "type": "object", "required": ["executable", "disposition", "reason_codes"],
+      "properties": {"executable": {"type": "boolean"}, "disposition": {"enum": ["EXECUTABLE", "NOT_EXECUTABLE_IN_VAL001"]}, "reason_codes": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}},
+      "additionalProperties": false
+    },
+    "claim_ceiling": {"enum": ["POST_OBSERVATION_REPRODUCTION", "POST_FIT_SOURCE_RECONSTRUCTION", "PREDECLARED_NO_RETUNING_SAME_CAMPAIGN_COMPARISON", "HISTORICAL_GOVERNED_RESULT_REEXPRESSED_NO_NEW_SCORE", "NOT_EXECUTABLE_IN_VAL001"]}
   },
   "additionalProperties": false
 }

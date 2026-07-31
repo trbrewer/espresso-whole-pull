@@ -1,11 +1,12 @@
 {
-  "schema_version":"espresso.val001.mechanism_discrimination_matrix.v1",
-  "task":"VAL-001",
-  "observed_signature":"NONMONOTONIC_PRESSURE_FLOW_RESIDUAL_WITH_LARGEST_MAGNITUDE_NEAR_1_TO_5_BAR",
-  "models_compared":["source universal pressure-flow curve","finite-porosity quasi-static compaction"],
-  "models_not_compared":["machine compliance","dissolution-indexed permeability","Darcy-Forchheimer","static radial heterogeneity","swelling","viscosity","fines","damage or channeling"],
-  "reason_not_compared":"No prospectively mapped, source-compatible unchanged configuration and admissible synchronized observations were available in VAL-001.",
-  "finding":{"discriminating_strength":"WEAK","confounders":["predecessor fit circularity","unreported source uncertainty","apparatus uncertainty outside retained mapping"],"result":"The two variants have nearly identical aggregate error and cannot be distinguished by this evidence."},
-  "missing_measurements":["pointwise flow uncertainty","independent deformation","synchronized upstream and basket pressure","replicate cross-condition flow"],
-  "decision":"ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS"
+  "schema_version": "espresso.val001.mechanism_discrimination_matrix.v2", "task": "VAL-001", "status": "PROSPECTIVE_RULES_NO_CORRECTED_RESULT_YET",
+  "rules": [
+    {"order": 1, "condition": "rights provenance or essential mappings incomplete", "outcome": "EVIDENCE_NOT_EXECUTABLE"},
+    {"order": 2, "condition": "protected or holdout evidence", "outcome": "EXECUTION_NOT_AUTHORIZED"},
+    {"order": 3, "condition": "source uncertainty or independent discrimination criterion unavailable", "outcome": "VARIANT_DISCRIMINATION_NOT_ESTABLISHED"},
+    {"order": 4, "condition": "comparison is post-fit", "outcome": "POST_FIT_SOURCE_RECONSTRUCTION_ONLY"},
+    {"order": 5, "condition": "variants not discriminated and residual is not mechanism-unique", "outcome": "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS"}
+  ],
+  "candidate_explanations_to_report_without_attribution": ["source uncertainty", "apparatus uncertainty", "source-fit circularity", "pressure-node mapping", "parameter uncertainty", "observation-operator error", "data aggregation", "boundary-condition mismatch", "numerical error", "model-form error", "omitted physics"],
+  "new_physics_authorized": false
 }

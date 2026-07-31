@@ -1,0 +1,12 @@
+{
+  "schema_version": "espresso.val001.invocation_ledger.v1", "record_id": "VAL001-INVOCATION-ACCOUNTING-1", "task": "VAL-001", "status": "PREEXECUTION_ZERO_CORRECTED_INVOCATIONS",
+  "definitions": {
+    "REAL_DATA_COMPARISON_INVOCATION": "Any completed execution computing residuals or comparison metrics from a governed real observation and model prediction, whether retained, written, tested, in-memory, manual, or discarded.",
+    "GOVERNED_RESULT_PRODUCING_INVOCATION": "A REAL_DATA_COMPARISON_INVOCATION producing the retained corrected result bundle."
+  },
+  "historical": {"minimum_known_precorrection_real_data_computations": 3, "exact_precorrection_local_count": "NOT_RECONSTRUCTABLE_FROM_COMMITTED_EVIDENCE"},
+  "planned_corrected": {"real_data_comparison_invocations": 1, "governed_result_producing_invocations": 1, "test_or_ci_real_data_invocations": 0},
+  "actual_corrected": {"real_data_comparison_invocations": 0, "governed_result_producing_invocations": 0, "test_or_ci_real_data_invocations": 0},
+  "events": [], "second_invocation_disposition": "REFUSE_UNLESS_SEPARATELY_RECORDED_FAILURE_INVALIDATION_AUTHORIZES_FULL_RERUN", "artifact_bindings": [],
+  "claim_boundaries": {"physical_validation": "NOT_ESTABLISHED", "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"}
+}

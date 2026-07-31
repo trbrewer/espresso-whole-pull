@@ -1,7 +1,10 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/trbrewer/espresso-whole-pull/validation/val001/schemas/comparison_result.schema.json",
-  "title": "VAL-001 reduced comparison result",
-  "type": "object",
-  "required": ["schema_version", "task", "change_declaration", "adapter_id", "contract_id", "input", "execution_counts", "comparisons", "decision", "claim_boundary"]
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "espresso.val001.comparison_result.v2", "type": "object",
+  "required": ["schema_version", "task", "classification", "input", "execution_counts", "comparisons", "interpretation", "claim_boundaries"],
+  "properties": {
+    "schema_version": {"const": "espresso.val001.comparison_result.v2"}, "task": {"const": "VAL-001"}, "classification": {"const": "POST_OBSERVATION_REPRODUCTION"},
+    "input": {"type": "object"}, "execution_counts": {"type": "object"},
+    "comparisons": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["comparison_id", "classification", "metrics", "residual_table", "uncertainty_disposition"], "properties": {"comparison_id": {"type": "string"}, "classification": {"type": "string"}, "metrics": {"type": "object"}, "residual_table": {"type": "array", "minItems": 1}, "uncertainty_disposition": {"const": "DESCRIPTIVE_COMPARISON_NO_UNCERTAINTY_GATE"}}, "additionalProperties": false}},
+    "interpretation": {"type": "object"}, "claim_boundaries": {"type": "object"}
+  }, "additionalProperties": false
 }

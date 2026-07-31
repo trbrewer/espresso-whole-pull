@@ -1,9 +1,10 @@
 {
-  "schema_version": "espresso.val001.external_artifact_manifest.v1",
-  "task": "VAL-001",
-  "fresh_openfoam_runs": 0,
-  "generated_cases": 0,
-  "full_runtime_artifacts": [],
-  "reason": "First comparisons consume an already-governed reduced predecessor sweep; fresh OpenFOAM execution is unnecessary and was not performed.",
-  "host_paths_committed": false
+  "schema_version": "espresso.val001.external_artifact_manifest.v2", "task": "VAL-001", "status": "PREEXECUTION_PLANNED",
+  "external_runtime_artifact_id": "VAL001-PR38-CORRECTED-OPENFOAM-20260731", "planned_openfoam_case_executions": 3, "actual_openfoam_case_executions": 0, "planned_rank_count_per_case": 32,
+  "cases": [
+    {"run_id": "VAL001-OF-R1-9BAR", "configuration": "config/reconstruction_R1_waszkiewicz_9bar.json", "configuration_sha256": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876", "status": "PLANNED"},
+    {"run_id": "VAL001-OF-WP02-9BAR", "configuration": "config/reconstruction_WP02A_waszkiewicz_9bar.json", "configuration_sha256": "81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e", "status": "PLANNED"},
+    {"run_id": "VAL001-OF-WP02-8BAR", "configuration": "config/reconstruction_WP02A_waszkiewicz_8bar.json", "configuration_sha256": "ac87cfdff2862401b33ac01fa31d87bf966e062cecd153ce59ab4a9518feb57e", "status": "PLANNED"}
+  ],
+  "generated_cases_committed": false, "full_runtime_artifacts_external": true, "host_paths_committed": false
 }

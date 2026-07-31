@@ -1,13 +1,13 @@
 {
-  "schema_version": "espresso.val001.calibration_comparison_ledger.v1",
-  "task": "VAL-001",
-  "prescribed": ["basket_pressure_bar", "source geometry and material definitions inherited unchanged from WP03-001"],
-  "calibrated": ["stress_free_permeability_m2: predecessor source-linked fit; fixed during VAL-001"],
-  "predicted_and_compared": ["universal_curve_flow_g_s", "finite_phi_flow_g_s"],
-  "predicted_unscored": ["openfoam_flow_g_s"],
-  "contextual": ["nominal_pressure_bar", "domain_status"],
-  "excluded": ["protected per-shot flow traces", "deformation observations", "aggregate chemistry"],
-  "unavailable": ["source pointwise flow uncertainty", "independent apparatus transfer", "independent deformation series"],
-  "overlap_check": "PASS",
-  "retuning": "PROHIBITED_AND_NOT_PERFORMED"
+  "schema_version": "espresso.val001.calibration_comparison_ledger.v2", "record_id": "VAL001-CALIBRATION-COMPARISON-LEDGER-2", "task": "VAL-001", "status": "CORRECTED_PREEXECUTION",
+  "quantities": [
+    {"id": "basket_pressure_bar", "source_role": "PRESCRIBED_CONDITION", "model_role": "INPUT", "principal_comparison_role": "CONDITION", "calibration_influence": "CAMPAIGN_INFLUENCED_PREDECESSOR", "model_branch_influence": "BOTH", "score_bearing": false, "holdout": false, "circularity": "SOFT_SOURCE_CAMPAIGN_CIRCULARITY", "unit": "bar_gauge"},
+    {"id": "measured_mass_flow_g_s", "source_role": "OBSERVATION", "model_role": "NONE", "principal_comparison_role": "SCORE_BEARING_OBSERVATION", "calibration_influence": "CAMPAIGN_INFLUENCED_PREDECESSOR", "model_branch_influence": "BOTH", "score_bearing": true, "holdout": false, "circularity": "SAME_CAMPAIGN_POST_FIT", "unit": "g/s"},
+    {"id": "universal_curve_flow_g_s", "source_role": "SOURCE_LINKED_DERIVED_CURVE", "model_role": "PREDICTION", "principal_comparison_role": "PREDICTED_AND_COMPARED", "calibration_influence": "CAMPAIGN_INFLUENCED_PREDECESSOR", "model_branch_influence": "UNIVERSAL", "score_bearing": true, "holdout": false, "circularity": "POST_FIT_SOURCE_RECONSTRUCTION", "unit": "g/s"},
+    {"id": "finite_phi_flow_g_s", "source_role": "SOURCE_LINKED_DERIVED_CURVE", "model_role": "PREDICTION", "principal_comparison_role": "PREDICTED_AND_COMPARED", "calibration_influence": "DIRECT_9BAR_MATCH", "model_branch_influence": "FINITE_POROSITY", "score_bearing": true, "holdout": false, "circularity": "POST_FIT_SOURCE_RECONSTRUCTION_WITH_9BAR_MATCHING_CIRCULARITY", "unit": "g/s"},
+    {"id": "stress_free_permeability_m2", "source_role": "CALIBRATION_INPUT", "model_role": "PARAMETER", "principal_comparison_role": "NONE", "calibration_influence": "PREDECESSOR_FIT_FIXED_IN_VAL001", "model_branch_influence": "FINITE_POROSITY", "score_bearing": false, "holdout": false, "circularity": "CALIBRATED_NOT_VALIDATED", "unit": "m^2"}
+  ],
+  "classifications": {"universal": "POST_FIT_SOURCE_RECONSTRUCTION", "finite_porosity": "POST_FIT_SOURCE_RECONSTRUCTION_WITH_9BAR_MATCHING_CIRCULARITY", "statistics": "DESCRIPTIVE_RECONSTRUCTION_NOT_INDEPENDENT_VALIDATION"},
+  "retuning": "PROHIBITED_AND_NOT_PERFORMED", "artifact_bindings": [],
+  "claim_boundaries": {"physical_validation": "NOT_ESTABLISHED", "independent_validation": "NOT_ESTABLISHED"}
 }

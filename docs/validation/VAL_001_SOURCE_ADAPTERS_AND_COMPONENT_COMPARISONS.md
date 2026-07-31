@@ -1,7 +1,14 @@
 # VAL-001 source adapters and first component comparisons
 
-**Change declaration:** `NO_GOVERNING_PHYSICS_CHANGE`  
-**Issue:** #37  
+> Correction status (31 July 2026): the initial ten-row arithmetic is retained
+> as correct audit evidence, but its prospective-governance status is
+> invalidated. The corrected cycle is additive and classifies any recomputation
+> as `POST_OBSERVATION_REPRODUCTION`, `NOT_BLIND`, `NOT_INDEPENDENT`, and
+> `NOT_PHYSICAL_VALIDATION`. The original result is not a current-head solver
+> comparison.
+
+**Change declaration:** `NO_GOVERNING_PHYSICS_CHANGE`
+**Issue:** #37
 **Physical validation:** `NOT_ESTABLISHED`
 
 VAL-001 adds a fail-closed source-adapter framework and performs two bounded,
