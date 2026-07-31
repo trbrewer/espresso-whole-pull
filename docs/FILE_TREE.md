@@ -107,3 +107,7 @@ VAL-001 post-result controls include `tools/validation/val001/invocation.py`,
 `source_identity.py`, the governed schema registry, the invocation event
 journal, the post-result execution lock, the hardening freeze, and standalone
 historical re-expressions under `validation/val001/results/historical/`.
+The completion layer adds
+`validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json`, the deterministic
+`VAL_001_INVOCATION_SUMMARY_V2.json`, and non-writing inventory and journal
+verification scripts under `scripts/`.

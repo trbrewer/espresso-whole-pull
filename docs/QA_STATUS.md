@@ -101,3 +101,8 @@ V2 and invocation-ledger schemas, a durable append-only event journal,
 synthetic transaction/concurrency tests, and a versioned raw-string selected-
 row identity. The production runner accepts no alternate governed identities.
 This cycle performed zero governed comparisons and zero OpenFOAM work.
+
+Final completion adds exhaustive 64-record inventory coverage, removes prefix
+legacy catch-alls, validates immutable records by exact hash plus nested
+structure signature, and verifies byte-identical journal-to-summary
+regeneration. All failure injection remains synthetic; V2 is unchanged.

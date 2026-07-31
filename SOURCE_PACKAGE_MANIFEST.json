@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 192,
-  "total_uncompressed_bytes_excluding_manifest": 1765342,
-  "aggregate_source_sha256": "a511f339f3eaa3ef2fb3b0c10656ef778f6108e1e9f7a1e2b46cb7e7cf2a09fc",
-  "aggregate_sha256": "a511f339f3eaa3ef2fb3b0c10656ef778f6108e1e9f7a1e2b46cb7e7cf2a09fc",
+  "total_uncompressed_bytes_excluding_manifest": 1766691,
+  "aggregate_source_sha256": "49d0ee2695ecabede53f8ecc7fb6688594895671b864e90d8ffc30c2928acd28",
+  "aggregate_sha256": "49d0ee2695ecabede53f8ecc7fb6688594895671b864e90d8ffc30c2928acd28",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "f824e4f90e9ff3b2a07eed96be603120784a4411b51327ca86e9f0b3aaf2271c",
-      "bytes": 5729,
+      "sha256": "a5101e3b56d79770e42a8084bffee33ae6370dd16304475b9dfad97d69dc1dd6",
+      "bytes": 6120,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "5d2b7b6527fc98b4aa94b72a0ea230034367b0948a5ae05cbb9d17a992aeb415",
-      "bytes": 4456,
+      "sha256": "0c255d0d12b3c355450251f8e95c47eebe808e1d9c7860746d2a25c458d34a48",
+      "bytes": 4675,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -444,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "6c8f0a68b211b6c2951d40731f7f3a1aa77a36ac51ddce434890413d733f2072",
-      "bytes": 4386,
+      "sha256": "bd2f292f6d2a8f5c1a10c14ce46bb80b99468c61bc3810b6bcc1653c5ff2b8f0",
+      "bytes": 4678,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -509,8 +509,8 @@
       "git_mode": "100644"
     },
     "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md": {
-      "sha256": "6e8c2dce833c3a19aa09183ffb0cf7bd8e829e065c9ee38ae80e86e9bab8f7ea",
-      "bytes": 4862,
+      "sha256": "ebd7ebbf498bc3d7095052f2a50a2f1880ce7fc3ad821aa78baf112aca8b644b",
+      "bytes": 5309,
       "git_mode": "100644"
     },
     "scripts/analyze_r1.py": {

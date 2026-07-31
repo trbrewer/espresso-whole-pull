@@ -80,3 +80,10 @@ from information value rather than implementation convenience.
   append-only invocation journal, reproducible selected-row identity, truthful
   policy/evaluation separation, standalone historical re-expressions, and
   OpenFOAM qualification provenance. New comparisons and OpenFOAM runs: zero.
+
+- VAL-001 hardening completion: added the deterministic governed-record
+  inventory and explicit registry projection, completed synthetic atomic-write
+  and journal failure tests, introduced strict journal-to-summary derivation,
+  froze the completed implementation, and bound a versioned consumed lock.
+  No retained result, scientific method, source, configuration, or solver was
+  changed.

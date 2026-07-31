@@ -26,10 +26,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 246,
+    "python_test_count": 254,
+    "val001_synthetic_test_count": 24,
     "static_gate_count": 36,
-    "source_manifest_file_count": 188,
-    "source_manifest_aggregate_sha256": "104f872dfdb7c91d9b5760af77bca932f70ed08a62ebc6634829f13c8226768d",
+    "source_manifest_file_count": 192,
+    "source_manifest_aggregate_sha256": "49d0ee2695ecabede53f8ecc7fb6688594895671b864e90d8ffc30c2928acd28",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -49,6 +50,10 @@
     "new_openfoam_builds": 0,
     "new_openfoam_case_executions": 0,
     "source_identity_verifications": 1,
+    "governed_record_inventory_count": 64,
+    "invocation_journal_event_count": 4,
+    "journal_summary_regeneration": "BYTE_FOR_BYTE_PASS",
+    "completion_status": "COMPLETE_AWAITING_FINAL_READJUDICATION",
     "physical_validation": "NOT_ESTABLISHED",
     "readjudication": "REQUIRED_BEFORE_MERGE"
   },
@@ -117,7 +122,7 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "val_001": {
-    "status": "SECOND_CORRECTION_COMPLETE_AWAITING_INDEPENDENT_READJUDICATION",
+    "status": "FINAL_HARDENING_COMPLETION_COMPLETE_AWAITING_INDEPENDENT_READJUDICATION",
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
     "adapter_semantic_tests": "PASS_SYNTHETIC_ONLY",
     "historical_reexpression_count": 6,

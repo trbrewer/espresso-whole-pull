@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 188/188 PASS
+- Public source verification: 192/192 PASS
 - Active candidate: `VAL-001_SOURCE_SPECIFIC_VALIDATION_ADAPTERS`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
@@ -94,3 +94,9 @@ discrimination and mechanism uniqueness were not assessed;
 `ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS` is a conservative evidence-policy
 decision. Three earlier current-head OpenFOAM runs qualify the framework but
 did not produce the V2 pressure-sweep columns.
+
+The remaining registry, schema-treatment, synthetic transaction, and
+journal-to-summary gaps are closed on the open PR #38 candidate. The summary
+ledger is byte-derived from the four-event journal and the production runner
+refuses the final consumed authority before source access. Independent
+read-only re-adjudication is still required before merge.
