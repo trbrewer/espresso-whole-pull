@@ -1,16 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "espresso.val001.source_adapter.v2",
+  "$id": "espresso.val001.source_adapter.v3",
   "type": "object",
   "required": ["schema_version", "adapter_id", "source", "evidence", "rights", "mappings", "quantities", "solver_mapping", "execution", "claim_ceiling"],
   "properties": {
-    "schema_version": {"const": "espresso.val001.source_adapter.v2"},
+    "schema_version": {"const": "espresso.val001.source_adapter.v3"},
     "adapter_id": {"type": "string", "minLength": 1},
     "source": {
       "type": "object",
-      "required": ["publication_citation", "dataset_identity", "artifact_paths", "artifact_sha256", "dependency_repository", "dependency_commit", "dependency_tree", "local_reduced_input", "local_reduced_input_sha256"],
+      "required": ["publication_citation", "publication", "dataset_identity", "artifact_paths", "artifact_sha256", "dependency_repository", "dependency_commit", "dependency_tree", "local_reduced_input", "local_reduced_input_sha256"],
       "properties": {
         "publication_citation": {"type": "string", "minLength": 1},
+        "publication": {"type": "object", "required": ["title", "journal", "volume", "article_number", "year", "published_date", "doi", "rights"], "properties": {"title": {"type": "string", "minLength": 1}, "journal": {"const": "Physics of Fluids"}, "volume": {"const": "38"}, "article_number": {"const": "063113"}, "year": {"const": 2026}, "published_date": {"const": "2026-06-23"}, "doi": {"const": "10.1063/5.0319611"}, "rights": {"const": "AIP_ARTICLE_CITATION_ONLY_REDISTRIBUTION_PROHIBITED"}}, "additionalProperties": false},
         "dataset_identity": {"type": "string", "minLength": 1},
         "artifact_paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
         "artifact_sha256": {"type": "object"},
@@ -35,7 +36,7 @@
     },
     "rights": {
       "type": "object",
-      "required": ["access_status", "comparison_allowed", "redistribution_status", "analysis_permission", "derived_publication_permission", "journal_rights", "dataset_rights"],
+      "required": ["access_status", "comparison_allowed", "redistribution_status", "analysis_permission", "derived_publication_permission", "journal_rights", "dataset_rights", "code_rights", "local_reduced_input_rights"],
       "properties": {
         "access_status": {"enum": ["PUBLIC", "RESTRICTED", "UNKNOWN"]},
         "comparison_allowed": {"type": "boolean"},
@@ -43,17 +44,19 @@
         "analysis_permission": {"enum": ["PERMITTED", "PROHIBITED", "UNKNOWN"]},
         "derived_publication_permission": {"enum": ["PERMITTED_WITH_ATTRIBUTION", "PROHIBITED", "UNKNOWN"]},
         "journal_rights": {"type": "string", "minLength": 1},
-        "dataset_rights": {"type": "string", "minLength": 1}
+        "dataset_rights": {"type": "string", "minLength": 1},
+        "code_rights": {"type": "string", "minLength": 1},
+        "local_reduced_input_rights": {"type": "string", "minLength": 1}
       },
       "additionalProperties": false
     },
     "mappings": {
       "type": "object",
-      "required": ["apparatus", "pressure_node", "pressure_basis", "outlet_reference", "hydraulic_area", "time_origin", "time_unit", "coordinate_origin", "positive_coordinate_direction", "sign_convention", "conversion_rules", "interpolation_rules", "missing_data_behavior", "uncertainty_status"],
+      "required": ["apparatus", "coffee", "grinder", "basket", "dose", "bed_depth", "water", "temperature", "pressure_node", "pressure_basis", "outlet_reference", "hydraulic_area", "time_origin", "time_unit", "averaging_basis", "coordinate_origin", "positive_coordinate_direction", "sign_convention", "conversion_rules", "interpolation_rules", "missing_data_behavior", "uncertainty_status"],
       "properties": {
-        "apparatus": {"type": "object"}, "pressure_node": {"type": "object"}, "pressure_basis": {"type": "object"},
+        "apparatus": {"type": "object"}, "coffee": {"type": "object"}, "grinder": {"type": "object"}, "basket": {"type": "object"}, "dose": {"type": "object"}, "bed_depth": {"type": "object"}, "water": {"type": "object"}, "temperature": {"type": "object"}, "pressure_node": {"type": "object"}, "pressure_basis": {"type": "object"},
         "outlet_reference": {"type": "object"}, "hydraulic_area": {"type": "object"}, "time_origin": {"type": "object"},
-        "time_unit": {"type": "object"}, "coordinate_origin": {"type": "object"}, "positive_coordinate_direction": {"type": "object"},
+        "time_unit": {"type": "object"}, "averaging_basis": {"type": "object"}, "coordinate_origin": {"type": "object"}, "positive_coordinate_direction": {"type": "object"},
         "sign_convention": {"type": "object"}, "conversion_rules": {"type": "array"}, "interpolation_rules": {"type": "array"},
         "missing_data_behavior": {"enum": ["REJECT", "NOT_APPLICABLE"]},
         "uncertainty_status": {"enum": ["SOURCE_UNCERTAINTY_NOT_REPORTED", "GOVERNED_POINTWISE_UNCERTAINTY"]}

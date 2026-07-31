@@ -1,0 +1,20 @@
+{
+  "schema_version": "espresso.val001.governed_schema_registry.v1",
+  "record_id": "VAL001-GOVERNED-SCHEMA-REGISTRY-1",
+  "task": "VAL-001",
+  "additional_properties_policy": "FALSE_FOR_ALL_CURRENT_GOVERNED_OBJECTS",
+  "records": [
+    {"path": "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json", "schema_id": "espresso.val001.source_adapter.v3", "schema_path": "validation/val001/schemas/source_adapter.schema.json", "semantic_validator": "validate_adapter", "executable": false, "audit_only": false, "legacy_validation": false, "claim_ceiling": "POST_OBSERVATION_REPRODUCTION", "required_dependency_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "required_dependency_tree": "1d553e44ee2f7480a5df521560801b478618cc84"},
+    {"path": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json", "schema_id": "espresso.val001.comparison_result.v2", "schema_path": "validation/val001/schemas/comparison_result.schema.json", "semantic_validator": "validate_v2_lineage", "executable": false, "audit_only": true, "legacy_validation": true, "claim_ceiling": "POST_OBSERVATION_REPRODUCTION", "required_dependency_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "required_dependency_tree": "1d553e44ee2f7480a5df521560801b478618cc84"},
+    {"path": "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json", "schema_id": "espresso.val001.invocation_ledger.v1", "schema_path": "validation/val001/schemas/invocation_ledger.schema.json", "semantic_validator": "validate_invocation_history", "executable": false, "audit_only": false, "legacy_validation": true, "claim_ceiling": "NOT_APPLICABLE", "required_dependency_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "required_dependency_tree": "1d553e44ee2f7480a5df521560801b478618cc84"},
+    {"path": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json", "schema_id": "espresso.val001.postresult_execution_lock.v1", "schema_path": "validation/val001/schemas/postresult_execution_lock.schema.json", "semantic_validator": "verify_consumed_state_bindings", "executable": false, "audit_only": false, "legacy_validation": false, "claim_ceiling": "NO_FURTHER_EXECUTION", "required_dependency_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "required_dependency_tree": "1d553e44ee2f7480a5df521560801b478618cc84"}
+  ],
+  "legacy_record_scopes": [
+    {"path_prefix": "validation/val001/amendments/", "classification": "FROZEN_LEGACY_AUDIT_RECORD", "legacy_schema": "amendment_invalidation.schema.json"},
+    {"path_prefix": "validation/val001/contracts/VAL_001_", "classification": "FROZEN_OR_POSTRESULT_GOVERNANCE_RECORD", "legacy_schema": "governance_records.schema.json"},
+    {"path_prefix": "validation/val001/corrections/", "classification": "ADDITIVE_CORRECTION_AND_AUDIT_RECORD", "legacy_schema": "DOCUMENTED_RECORD_SPECIFIC_VALIDATION"},
+    {"path_prefix": "validation/val001/results/", "classification": "FROZEN_RESULT_OR_COMPANION_PROVENANCE", "legacy_schema": "comparison_result.schema.json_WHERE_REGISTERED"},
+    {"path_prefix": "validation/val001/adapters/historical/", "classification": "FROZEN_LEGACY_ADAPTER", "legacy_schema": "source_adapter.v2"},
+    {"path_prefix": "validation/val001/VAL_001_", "classification": "GOVERNANCE_INVENTORY_OR_LEDGER", "legacy_schema": "RECORD_SPECIFIC_SCHEMA_WHERE_AVAILABLE"}
+  ]
+}

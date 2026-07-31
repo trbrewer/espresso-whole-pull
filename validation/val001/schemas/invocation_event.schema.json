@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "espresso.val001.invocation_event.v2", "type": "object",
+  "required": ["event_id", "authority_id", "status", "source_opened", "score_exposed", "output_sha256", "failure_reason"],
+  "properties": {"event_id": {"type": "string", "minLength": 1}, "authority_id": {"type": "string", "minLength": 1}, "status": {"enum": ["STARTED", "COMPLETED", "FAILED", "AUTHORITY_CONSUMED", "MINIMUM_KNOWN_HISTORY"]}, "source_opened": {"type": "boolean"}, "score_exposed": {"type": "boolean"}, "output_sha256": {"anyOf": [{"type": "string", "pattern": "[0-9a-f]{64}"}, {"type": "null"}]}, "failure_reason": {"anyOf": [{"type": "string", "minLength": 1}, {"type": "null"}]}},
+  "additionalProperties": false
+}

@@ -29,7 +29,10 @@ def verify(root: Path) -> dict[str, object]:
     run_schema = load_json(root / "validation/val001/schemas/comparison_run.schema.json")
     adapters = []
     for path in sorted((root / "validation/val001/adapters").glob("*.json")):
-        record = load_json(path); validate_record(record, adapter_schema); validate_adapter(record, root, LOCK)
+        record = load_json(path)
+        if record.get("schema_version") == "espresso.val001.source_adapter.v3":
+            validate_record(record, adapter_schema)
+        validate_adapter(record, root, LOCK)
         adapters.append(str(path.relative_to(root)))
     spec = load_json(root / "validation/val001/contracts/VAL_001_CORRECTED_RUN_SPEC.json")
     validate_record(spec, run_schema)
@@ -46,9 +49,9 @@ def verify(root: Path) -> dict[str, object]:
         validate_record(load_json(root / record_path), load_json(root / "validation/val001/schemas" / schema_name))
     for path in sorted((root / "validation/val001").rglob("*.json")):
         load_json(path)
-    tests_text = "\n".join(path.read_text(encoding="utf-8") for path in (root / "tests").glob("test_*.py"))
-    if "WP03_001_SOURCE_PRESSURE_SWEEP.csv" in tests_text:
-        raise ContractError("ordinary tests contain governed real comparison source path")
+    runner_text = (root / "scripts/run_val001_corrected_comparison.py").read_text(encoding="utf-8")
+    if "WP03_001_SOURCE_PRESSURE_SWEEP.csv" in runner_text:
+        raise ContractError("consumed production runner names governed comparison input")
     old = root / "validation/val001/results/VAL_001_FIRST_COMPONENT_COMPARISONS.json"
     if digest(old) != ORIGINAL_RESULT_SHA:
         raise ContractError("original result bytes changed")

@@ -10,12 +10,40 @@ class SchemaError(ValueError):
     pass
 
 
+ALLOWED_KEYWORDS = frozenset({
+    "$schema", "$id", "type", "const", "enum", "anyOf", "required",
+    "properties", "additionalProperties", "items", "minItems", "maxItems",
+    "uniqueItems", "minLength", "pattern", "minimum", "maximum",
+})
+
+
 def _fail(path: str, message: str) -> None:
     raise SchemaError(f"{path}: {message}")
 
 
+def lint_schema(schema: Any, path: str = "$") -> None:
+    """Reject unsupported vocabulary before it can be silently ignored."""
+    if not isinstance(schema, dict):
+        _fail(path, "schema node must be an object")
+    unknown = sorted(set(schema) - ALLOWED_KEYWORDS)
+    if unknown:
+        _fail(path, f"unsupported schema keywords {unknown}")
+    if "type" in schema:
+        allowed_types = {"object", "array", "string", "integer", "number", "boolean", "null"}
+        values = schema["type"] if isinstance(schema["type"], list) else [schema["type"]]
+        if not values or any(value not in allowed_types for value in values):
+            _fail(path, f"unsupported schema type {schema['type']!r}")
+    for key, child in schema.get("properties", {}).items():
+        lint_schema(child, f"{path}.properties.{key}")
+    if "items" in schema:
+        lint_schema(schema["items"], f"{path}.items")
+    for index, child in enumerate(schema.get("anyOf", [])):
+        lint_schema(child, f"{path}.anyOf[{index}]")
+
+
 def validate(instance: Any, schema: dict[str, Any], path: str = "$") -> None:
     """Validate the deliberately small schema vocabulary used by VAL-001."""
+    lint_schema(schema, path=f"{path}<schema>")
     if "const" in schema and instance != schema["const"]:
         _fail(path, f"expected constant {schema['const']!r}")
     if "enum" in schema and instance not in schema["enum"]:
@@ -79,4 +107,3 @@ def validate(instance: Any, schema: dict[str, Any], path: str = "$") -> None:
             _fail(path, "below minimum")
         if "maximum" in schema and instance > schema["maximum"]:
             _fail(path, "above maximum")
-

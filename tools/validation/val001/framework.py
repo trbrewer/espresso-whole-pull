@@ -5,7 +5,6 @@ import csv
 import hashlib
 import json
 import math
-import os
 import re
 from pathlib import Path
 from typing import Any
@@ -209,18 +208,53 @@ def read_selected_rows(root: Path, spec: dict[str, Any]) -> list[dict[str, str]]
     return selected
 
 
-def assert_real_execution_context() -> None:
-    if os.environ.get("VAL001_REAL_DATA_EXECUTION") != "AUTHORIZED_SINGLE_INVOCATION":
-        raise ContractError("governed real comparison requires explicit activation context")
+class SyntheticComparisonPermit:
+    """Permit for synthetic fixtures; never authorizes the governed source."""
+
+    def assert_source(self, path: Path) -> None:
+        if path.resolve() == Path(GOVERNED_REAL_SOURCE).resolve() or path.as_posix().endswith(GOVERNED_REAL_SOURCE):
+            raise ContractError("synthetic permit refuses governed real source")
 
 
-def interpretation_rules(comparisons: list[dict[str, Any]]) -> tuple[list[str], str]:
-    fired = ["SOURCE_UNCERTAINTY_OR_INDEPENDENT_DISCRIMINATION_CRITERION_UNAVAILABLE",
-             "POST_FIT_SOURCE_RECONSTRUCTION_ONLY",
-             "VARIANTS_NOT_DISCRIMINATED_AND_RESIDUAL_NOT_MECHANISM_UNIQUE"]
-    if not comparisons:
-        return ["EVIDENCE_NOT_EXECUTABLE"], "EVIDENCE_NOT_EXECUTABLE"
-    return fired, "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS"
+class GovernedComparisonPermit:
+    """Opaque production permit; construction is intentionally unavailable after consumption."""
+
+    def __init__(self, _token: object) -> None:
+        if _token is not _GOVERNED_PERMIT_TOKEN:
+            raise ContractError("direct governed comparison permit construction denied")
+
+
+_GOVERNED_PERMIT_TOKEN = object()
+
+
+def interpretation_rules(evaluation: dict[str, Any]) -> dict[str, Any]:
+    """Separate evidence evaluation from the conservative no-new-physics policy."""
+    if not evaluation.get("comparisons") or not evaluation.get("evidence_complete", True):
+        return {"scientific_evaluation": ["EVIDENCE_NOT_EXECUTABLE"], "policy_decision": "EVIDENCE_NOT_EXECUTABLE"}
+    if evaluation.get("protected") or evaluation.get("holdout"):
+        return {"scientific_evaluation": ["EXECUTION_NOT_AUTHORIZED"], "policy_decision": "EXECUTION_NOT_AUTHORIZED"}
+    findings: list[str] = []
+    if evaluation.get("post_fit"):
+        findings.append("POST_FIT_SOURCE_RECONSTRUCTION_ONLY")
+    criterion = evaluation.get("criterion")
+    if not evaluation.get("source_uncertainty_available") and criterion is None:
+        findings.append("QUANTITATIVE_VARIANT_DISCRIMINATION_NOT_ASSESSED")
+    elif criterion is not None:
+        required = {"identity", "provenance", "direction", "threshold", "predeclared", "value"}
+        if not required.issubset(criterion) or criterion["predeclared"] is not True:
+            raise ContractError("independent discrimination criterion incomplete or not predeclared")
+        met = criterion["value"] >= criterion["threshold"] if criterion["direction"] == "GREATER_OR_EQUAL" else criterion["value"] <= criterion["threshold"]
+        findings.append("PREDECLARED_VARIANT_DISCRIMINATION_CRITERION_MET" if met else "PREDECLARED_VARIANT_DISCRIMINATION_CRITERION_NOT_MET")
+    if evaluation.get("mechanism_uniqueness_assessed") is not True:
+        findings.append("MECHANISM_UNIQUENESS_NOT_ASSESSED")
+    else:
+        findings.append("MECHANISM_UNIQUENESS_ASSESSED")
+    return {
+        "scientific_evaluation": findings,
+        "policy_decision": "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS",
+        "policy_basis": "INSUFFICIENT_INDEPENDENT_UNCERTAINTY_CHARACTERIZED_EVIDENCE",
+        "decision_type": "CONSERVATIVE_POLICY_DECISION",
+    }
 
 
 def assert_invocation_available(ledger: dict[str, Any]) -> None:
