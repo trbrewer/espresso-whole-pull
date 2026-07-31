@@ -15,6 +15,6 @@
   ],
   "planned_counts": {"openfoam_case_executions": 3, "real_data_comparison_invocations": 1, "governed_result_producing_invocations": 1, "test_or_ci_real_data_invocations": 0, "fit_or_retune_count": 0, "protected_access_count": 0, "holdout_score_count": 0},
   "interpretation_rules": ["EVIDENCE_NOT_EXECUTABLE_IF_ESSENTIAL_GUARDS_FAIL", "EXECUTION_NOT_AUTHORIZED_IF_PROTECTED_OR_HOLDOUT", "VARIANT_DISCRIMINATION_NOT_ESTABLISHED_WITHOUT_UNCERTAINTY_OR_INDEPENDENT_CRITERION", "POST_FIT_SOURCE_RECONSTRUCTION_ONLY", "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS_IF_VARIANTS_NOT_DISCRIMINATED_AND_RESIDUAL_NOT_MECHANISM_UNIQUE"],
-  "output": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS.json",
+  "output": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
   "claim_boundaries": {"physical_validation": "NOT_ESTABLISHED", "general_physical_validation": "NOT_ESTABLISHED", "general_whole_solver_physical_validation": "NOT_ESTABLISHED", "experimental_commissioning": "NOT_AUTHORIZED", "protected_or_holdout_scoring": "NOT_AUTHORIZED", "holdout_execution": "NOT_AUTHORIZED", "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"}
 }
