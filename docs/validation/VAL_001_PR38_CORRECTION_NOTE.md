@@ -30,3 +30,17 @@ real-data comparison invocation.
 
 Physical validation remains `NOT_ESTABLISHED`. Protected or holdout scoring,
 experimental commissioning, and new governing physics remain unauthorized.
+
+## Corrected execution outcome
+
+The three prospectively declared current-head OpenFOAM cases completed, but
+the one authorized corrected real-data invocation failed after computing
+metrics in memory and before writing a result. The frozen runner used the JSON
+literal `false` in Python source, causing the retained `NameError` recorded in
+`VAL_001_CORRECTED_EXECUTION_FAILURE.json`.
+
+The partial score exposure counts as one corrected real-data comparison
+invocation. It produced zero governed result bundles and is invalidated. The
+prospective rule prohibits a silent retry, so this cycle stops with
+`VAL001_PR38_CORRECTION_EXECUTION_OR_VALIDATION_FAILED`; PR #38 is not ready
+for re-adjudication.
