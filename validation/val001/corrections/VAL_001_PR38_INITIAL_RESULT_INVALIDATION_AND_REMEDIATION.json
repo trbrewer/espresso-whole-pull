@@ -1,0 +1,74 @@
+{
+  "schema_version": "espresso.val001.initial_result_invalidation.v1",
+  "task": "VAL-001",
+  "issue": 37,
+  "pull_request": 38,
+  "recorded_at_utc": "2026-07-31T21:42:03Z",
+  "authority": {
+    "kind": "HUMAN_OWNER_CORRECTION_DIRECTION",
+    "date": "2026-07-31",
+    "controlling_adjudication": "PR38_CHANGES_REQUIRED_NOT_READY_FOR_MERGE",
+    "additive_history_only": true
+  },
+  "historical_commits": {
+    "authorized_base": "34bd440f87d7b4ba6a955e54f40122d28f760ae3",
+    "nominal_preexecution_freeze": "6e51d91478b838eb0b394974e8c130b93e1dd962",
+    "results_commit": "5f648e4e80579caf83487d2953db3fbc0d4e02eb",
+    "candidate_before_correction": "0fb619884d1854a57eff30426ed93a16f97cb3c3"
+  },
+  "original_result": {
+    "path": "validation/val001/results/VAL_001_FIRST_COMPONENT_COMPARISONS.json",
+    "git_blob": "1b53612143b02e42a0a6f4825abb080af4366e0d",
+    "sha256": "07086313d022555032bbb9ecc18d2564bb197d0381bd8d08e263cd95d02bd029",
+    "producing_commit": "5f648e4e80579caf83487d2953db3fbc0d4e02eb",
+    "arithmetic_status": "VERIFIED_CORRECT_FOR_TEN_IN_DOMAIN_ROWS",
+    "prospective_governance_status": "INVALIDATED",
+    "invalidation_reason": "INCOMPLETE_PREEXECUTION_AUTHORITY_AND_AMBIGUOUS_REAL_DATA_INVOCATION_ACCOUNTING",
+    "retention_status": ["SUPERSEDED_FOR_GOVERNANCE", "RETAINED_FOR_AUDIT"],
+    "blind_status": "NOT_BLIND",
+    "independence_status": "NOT_INDEPENDENT",
+    "physical_validation": "NOT_ESTABLISHED",
+    "current_head_solver_comparison": false
+  },
+  "invocation_accounting": {
+    "minimum_known_precorrection_real_data_computations": 3,
+    "known_events": [
+      "RETAINED_OUTPUT_PRODUCING_EXECUTION",
+      "GITHUB_CI_TEST_EXECUTION_AT_5f648e4e80579caf83487d2953db3fbc0d4e02eb",
+      "GITHUB_CI_TEST_EXECUTION_AT_0fb619884d1854a57eff30426ed93a16f97cb3c3"
+    ],
+    "exact_precorrection_local_real_data_computation_count": "NOT_RECONSTRUCTABLE_FROM_COMMITTED_EVIDENCE",
+    "corrected_score_computed": false
+  },
+  "blocking_findings": [
+    "CRITICAL_SCIENTIFIC_AND_RIGHTS_STATES_NOT_FAIL_CLOSED",
+    "SCHEMAS_SHALLOW_AND_NOT_ENFORCED",
+    "REAL_DATA_INVOCATION_COUNT_PROSPECTIVELY_UNDEFINED",
+    "PREEXECUTION_FREEZE_INCOMPLETE",
+    "ROW_COUNT_AMENDMENT_INCOMPLETE_AND_RERUN_RULE_NOT_FOLLOWED",
+    "MANDATORY_VAL001_SCOPE_OMITTED_WITHOUT_PROSPECTIVE_NARROWING"
+  ],
+  "correction_sequence": [
+    "INVALIDATE_AND_BIND_REMEDIATION",
+    "IMPLEMENT_DEEP_SCHEMAS_VALIDATORS_SYNTHETIC_TESTS_AND_MISSING_SCOPE",
+    "FREEZE_CORRECTED_FRAMEWORK_AND_METHODS",
+    "BIND_CORRECTED_PREEXECUTION_AUTHORITY",
+    "BUILD_AND_ACTIVATE_UNCHANGED_SOLVER",
+    "EXECUTE_BOUNDED_CURRENT_HEAD_MATRIX",
+    "PERFORM_ONE_CORRECTED_REAL_DATA_COMPARISON_INVOCATION",
+    "RECONCILE_REPORTS_QA_MANIFEST_AND_BOUNDARIES"
+  ],
+  "history_policy": {
+    "amend": false,
+    "rebase": false,
+    "squash": false,
+    "force_push": false,
+    "original_result_bytes_changed": false
+  },
+  "claim_boundary": {
+    "physical_validation": "NOT_ESTABLISHED",
+    "protected_or_holdout_scoring": "NOT_AUTHORIZED",
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"
+  }
+}
