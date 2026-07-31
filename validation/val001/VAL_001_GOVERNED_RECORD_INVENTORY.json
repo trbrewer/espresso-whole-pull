@@ -1,5 +1,6 @@
 {
   "closure": {
+    "canonical_consumed_lock": "BINDS_COMPLETION_FREEZE_INVENTORY_AND_REGISTRY_AS_CHAIN_TERMINUS",
     "completion_freeze": "BINDS_INVENTORY_AND_REGISTRY",
     "final_lock": "BINDS_COMPLETION_FREEZE",
     "inventory_self": "BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH",
@@ -509,29 +510,29 @@
       "treatment": "IMMUTABLE_HISTORICAL_SIDECAR"
     },
     {
-      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-1",
-      "audit_only": false,
+      "artifact_record_id": "VAL001-FINAL-HARDENING-COMPLETION-FREEZE-1",
+      "audit_only": true,
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
-      "current": true,
+      "current": false,
       "executable": false,
-      "git_blob": "b0a1735c89bd9ab3ce45e3b23bae272082235096",
-      "governing": true,
+      "git_blob": "062b742aafc5511d0f74626dcab58b43405cdea0",
+      "governing": false,
       "mutability": "IMMUTABLE_AFTER_COMPLETION_FREEZE",
-      "path": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
-      "producing_commit": "1df3f16818e69651834a3e2c6d97c32654e002cb",
+      "path": "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json",
+      "producing_commit": "69a6313f8bb7f625d5abb394835f96973f5b6a8e",
       "puckworks_lock_applicable": true,
-      "record_class": "RESULT_OR_REEXPRESSION",
-      "record_id": "INV-E4311D8B1DCE89061011",
-      "schema_id": "postresult_execution_lock.schema.json",
-      "schema_path": "validation/val001/schemas/postresult_execution_lock.schema.json",
-      "schema_version": "espresso.val001.postresult_execution_lock.v1",
-      "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
-      "sha256": "915e378194fc277c11874da79a1801bf1375a3230286d1db508df71fd0a0983e",
+      "record_class": "FREEZE",
+      "record_id": "INV-7458A25E0734772A2A4C",
+      "schema_id": "espresso.val001.exact_structure_sidecar.v1",
+      "schema_path": "validation/val001/schemas/exact_structure_sidecar.schema.json",
+      "schema_version": "espresso.val001.final_hardening_completion_freeze.v1",
+      "semantic_validator": "VALIDATE_EXACT_HASH_AND_STRUCTURE_SIGNATURE",
+      "sha256": "ccbd274e32e38fe30763a4c73b7b41b0dbefb2fa907d447fe867463c512ec124",
       "source_access_role": "NO_SOURCE_ACCESS",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "f6095b203ddedfad61ede6e0bb4fe36a2b63360c0e63fcde32d91c3e2de88bfb",
+      "structure_signature_sha256": "3a71302bbcf356790a309ff735da092b49b4a9a4748f735d21d0964ad9db4d28",
       "superseded": false,
-      "treatment": "CURRENT_DEEP_SCHEMA"
+      "treatment": "IMMUTABLE_HISTORICAL_SIDECAR"
     },
     {
       "artifact_record_id": "VAL001-POSTRESULT-FRAMEWORK-HARDENING-FREEZE-1",
@@ -1635,5 +1636,5 @@
     }
   ],
   "schema_version": "espresso.val001.governed_record_inventory.v1",
-  "scope": "ALL_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_WITH_SELF_REFERENTIAL_CLOSURE"
+  "scope": "ALL_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_WITH_DIRECTED_CLOSURE"
 }

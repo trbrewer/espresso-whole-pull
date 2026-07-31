@@ -39,7 +39,10 @@ def git_value(root: Path, args: list[str], fallback: str) -> str:
 
 def discover(root: Path) -> list[Path]:
     base=root/"validation/val001"
-    self_bound={INVENTORY_PATH,REGISTRY_PATH}
+    # These three canonical closure records form a directed binding chain:
+    # inventory/registry -> completion freeze -> final consumed lock. Including
+    # their own mutable successor bytes would require an impossible hash cycle.
+    self_bound={INVENTORY_PATH,REGISTRY_PATH,"validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json"}
     return sorted(path for path in base.rglob("*") if path.is_file() and path.suffix in {".json",".jsonl"} and path.relative_to(root).as_posix() not in self_bound)
 
 def build_inventory(root: Path) -> dict[str,Any]:
@@ -61,7 +64,7 @@ def build_inventory(root: Path) -> dict[str,Any]:
     if len(paths)!=len(set(paths)): raise ContractError("duplicate inventory path")
     duplicates={item for item in ids if ids.count(item)>1 and item not in {"VAL-001"}}
     if duplicates: raise ContractError(f"duplicate record IDs: {sorted(duplicates)}")
-    return {"schema_version":"espresso.val001.governed_record_inventory.v1","record_id":"VAL001-GOVERNED-RECORD-INVENTORY-1","scope":"ALL_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_WITH_SELF_REFERENTIAL_CLOSURE","record_count":len(records),"records":records,"closure":{"inventory_self":"BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH","registry_self":"BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH","completion_freeze":"BINDS_INVENTORY_AND_REGISTRY","final_lock":"BINDS_COMPLETION_FREEZE"}}
+    return {"schema_version":"espresso.val001.governed_record_inventory.v1","record_id":"VAL001-GOVERNED-RECORD-INVENTORY-1","scope":"ALL_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_WITH_DIRECTED_CLOSURE","record_count":len(records),"records":records,"closure":{"inventory_self":"BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH","registry_self":"BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH","canonical_consumed_lock":"BINDS_COMPLETION_FREEZE_INVENTORY_AND_REGISTRY_AS_CHAIN_TERMINUS","completion_freeze":"BINDS_INVENTORY_AND_REGISTRY","final_lock":"BINDS_COMPLETION_FREEZE"}}
 
 def verify_inventory(root: Path, inventory: dict[str,Any]) -> None:
     expected=build_inventory(root); observed={r["path"]:r for r in inventory["records"]}; actual={r["path"]:r for r in expected["records"]}
