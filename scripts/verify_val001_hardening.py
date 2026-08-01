@@ -31,7 +31,11 @@ def verify(root: Path) -> dict[str, object]:
                 validate_record(json.loads(line, parse_constant=lambda value: (_ for _ in ()).throw(ValueError(value))), schema)
         else:
             validate_record(load_json(record_path), schema)
-        if sha256(record_path) != entry["sha256"]:
+        # Administrative records participate in the acyclic freeze/lock/Git-tree
+        # closure and therefore are not required to carry a self-current hash in
+        # the registry. Ordinary records remain directly hash-bound here.
+        if (entry.get("binding_class") == "ORDINARY_HASH_BOUND_RECORD"
+                and sha256(record_path) != entry["sha256"]):
             raise ContractError(f"governed record hash mismatch: {entry['path']}")
         validated.append(entry["path"])
     adapter = load_json(root / "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json")

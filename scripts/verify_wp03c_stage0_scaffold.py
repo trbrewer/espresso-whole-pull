@@ -650,7 +650,24 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
         "fixed_path_boundary": (
             paths == EXPECTED_PATHS
             and set(contract.get("permitted_changed_paths", []))
-            == EXPECTED_PATHS - LATER_WP02_002_PATHS
+            == EXPECTED_PATHS - LATER_WP02_002_PATHS - frozenset({
+                "docs/validation/VAL_001_PR38_ADMINISTRATIVE_SEMANTIC_REMEDIATION_NOTE.md",
+                "scripts/generate_val001_administrative_freeze.py",
+                "scripts/verify_val001_administrative_closure.py",
+                "scripts/verify_val001_external_artifacts.py",
+                "tests/test_val001_administrative_semantics.py",
+                "tools/validation/val001/administrative.py",
+                "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json",
+                "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
+                "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+                "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V3.json",
+                "validation/val001/corrections/VAL_001_PR38_ADMINISTRATIVE_CLOSURE_AND_SEMANTIC_REMEDIATION_PLAN.json",
+                "validation/val001/schemas/administrative_closure_freeze.schema.json",
+                "validation/val001/schemas/administrative_closure_specification.schema.json",
+                "validation/val001/schemas/canonical_consumed_lock.schema.json",
+                "validation/val001/schemas/governed_record_inventory.schema.json",
+                "validation/val001/schemas/governed_schema_registry.schema.json",
+            })
         ),
         "baseline_exact":
             contract.get("baseline") == {"commit": BASELINE,
