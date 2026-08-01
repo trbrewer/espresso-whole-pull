@@ -28,7 +28,7 @@
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
       "sha256": null,
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "7789341f82b4daba3268df34dfd1cf867cc680d631f74a42122769e17ca9777d",
+      "structure_signature_sha256": "9a08a1a39f3da2cb60dae6b764280b325af4397088f42dc03756107b4cc004ab",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -97,7 +97,7 @@
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
       "sha256": null,
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "93c5c8b0b26f80af42db3b514239022d1231c101e965dbefffeb8c6e6d05cde9",
+      "structure_signature_sha256": "e81d5f8f1f0c2431a41f8aafbb70618e3f114295da05eba029b72018c51b163c",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -166,7 +166,7 @@
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
       "sha256": null,
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "33605420fe1fb1cf016b9a5fae4d5a3027c87eec0a843fb2637154bf4aafe995",
+      "structure_signature_sha256": "8213ff83a0b3b748f84c95cf80c9963071313f697e3eb4b41fa30078429798eb",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -189,7 +189,7 @@
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
       "sha256": null,
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "dd03f0bd3227d9d9088c586fe5cd9411947d005a2a579936d47eb4c52ca4eb61",
+      "structure_signature_sha256": "2bbb8d8770e4b0dffcb5a0d36c450fef1c1f681c573e54521fbd80fbdd4cf7fc",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -511,7 +511,7 @@
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
       "sha256": null,
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "2d753070ea7d7f9519818afbdbed99f27d511192a12da3ce483fb51a4184948e",
+      "structure_signature_sha256": "51e15dea2ab9104a4d3e72d9566a4e7785b238a4cf1c768ef184a19f66c37c5c",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -653,7 +653,7 @@
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
-      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-6-FREEZE-B49D9BFE50798C5F-TREE-1BBABFEE7F186BF9",
+      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-7-ADMINISTRATIVE-CLOSURE",
       "audit_only": false,
       "binder": "FINAL_GIT_HEAD_TREE",
       "binding_class": "BOUND_BY_FINAL_GIT_TREE",
@@ -667,12 +667,12 @@
       "schema_id": "espresso.val001.canonical_consumed_lock.v2",
       "schema_origin": "EXPLICIT_CLASS_OR_VERSION_SEMANTICS",
       "schema_path": "validation/val001/schemas/canonical_consumed_lock.schema.json",
-      "schema_version": "espresso.val001.postresult_execution_lock.v1",
+      "schema_version": "espresso.val001.postresult_execution_lock.v2",
       "semantic_profile": "VAL001_EXPLICIT_PROFILE_V1",
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
       "sha256": null,
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "39c8d877ae56cc30fd1210a3e801d50900fabf132574c624a8d5778f8eb36bd2",
+      "structure_signature_sha256": "58b4c75e8fcce76923c6e113e5cd15df37a23f362b588d0393a97f94a36b8eb3",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {

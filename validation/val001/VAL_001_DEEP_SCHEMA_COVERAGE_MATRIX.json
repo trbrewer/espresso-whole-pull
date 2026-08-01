@@ -625,7 +625,7 @@
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
-      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-6-FREEZE-B49D9BFE50798C5F-TREE-1BBABFEE7F186BF9",
+      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-7-ADMINISTRATIVE-CLOSURE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "coverage_status": "DEEP_SCHEMA_AND_SEMANTIC_VALIDATION",
       "executable": false,
@@ -639,7 +639,7 @@
       "schema_id": "canonical_consumed_lock.v2",
       "schema_origin": "EXPLICIT_CLASS_OR_VERSION_SEMANTICS",
       "schema_path": "validation/val001/schemas/canonical_consumed_lock.schema.json",
-      "schema_version": "espresso.val001.postresult_execution_lock.v1",
+      "schema_version": "espresso.val001.postresult_execution_lock.v2",
       "semantic_profile": "VAL001_EXPLICIT_PROFILE_V1",
       "semantic_validator": "validate_governed_cross_record",
       "sha256": null,
