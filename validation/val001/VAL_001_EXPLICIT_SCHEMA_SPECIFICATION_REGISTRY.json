@@ -8136,7 +8136,7 @@
                 "type": "string"
               },
               "path": {
-                "const": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json"
+                "const": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json"
               },
               "sha256": {
                 "pattern": "^[0-9a-f]{64}$",
