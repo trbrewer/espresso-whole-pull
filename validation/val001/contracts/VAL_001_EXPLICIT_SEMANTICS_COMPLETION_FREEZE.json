@@ -93,8 +93,8 @@
     "new_real_data_comparison_invocations": 0
   },
   "implementation": {
-    "commit": "9a5eca35d1b32ae12b8061449e9fc0e59e5161f7",
-    "tree": "6c63bec9570b4bb72d3de4980990d24fe4487c20"
+    "commit": "66b7ed3e6afdc51a47dfb60493a7a2c1593f2c6e",
+    "tree": "1f2b98a7b7281afe1115f761a102dcfe3f951844"
   },
   "ordinary_record_bindings": [
     {
