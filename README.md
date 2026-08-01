@@ -89,9 +89,9 @@ uses explicit per-record schema treatment, derives the invocation summary
 deterministically from the four-event append-only journal, and binds the final
 consumed state. It performed no new comparison and no OpenFOAM work; V2 is
 unchanged and remains post-observation, non-blind, non-independent, and
-descriptive. Four current records have direct deep schemas; 60 immutable
-records use exact-hash and nested-structure sidecars, so class-specific deep
-schema completion remains outstanding.
+descriptive. The prior 4/60 schema gap is closed: every governed record now
+uses a direct class-, version-, or record-specific deep schema, with no
+sidecar-primary or generic catch-all validation.
 
 ## License
 

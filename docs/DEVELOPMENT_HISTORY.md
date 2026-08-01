@@ -87,3 +87,9 @@ from information value rather than implementation convenience.
   froze the completed implementation, and bound a versioned consumed lock.
   No retained result, scientific method, source, configuration, or solver was
   changed.
+
+- VAL-001 deep-schema completion: classified governed records by actual nested
+  shape and purpose, added 45 closed schema families plus semantic claim and
+  authority invariants, replaced all 60 primary sidecar treatments with direct
+  immutable-historical deep validation, and added synthetic family mutation
+  tests. No solver, comparison, result, or invocation event changed.

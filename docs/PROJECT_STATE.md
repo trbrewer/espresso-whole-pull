@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 192/192 PASS
+- Public source verification: 196/196 PASS
 - Active candidate: `VAL-001_SOURCE_SPECIFIC_VALIDATION_ADAPTERS`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
@@ -99,6 +99,6 @@ The registry, synthetic transaction, and journal-to-summary gaps are closed on
 the open PR #38 candidate. The summary
 ledger is byte-derived from the four-event journal and the production runner
 refuses the final consumed authority before source access. Independent
-read-only re-adjudication is still required before merge. Deep class-specific
-schemas remain incomplete for 60 records currently protected by immutable
-exact-hash and nested-structure sidecars, so PR #38 is not yet ready.
+read-only re-adjudication is still required before merge. The former 4/60
+deep-schema gap is closed through 45 taxonomy-derived schema families and
+direct validation of current and immutable historical records.

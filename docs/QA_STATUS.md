@@ -102,9 +102,9 @@ synthetic transaction/concurrency tests, and a versioned raw-string selected-
 row identity. The production runner accepts no alternate governed identities.
 This cycle performed zero governed comparisons and zero OpenFOAM work.
 
-The completion cycle adds exhaustive 64-record inventory coverage, removes prefix
+The deep-schema completion cycle provides exhaustive governed-record inventory coverage, removes prefix
 legacy catch-alls, validates immutable records by exact hash plus nested
 structure signature, and verifies byte-identical journal-to-summary
-regeneration. Four records use direct deep schemas; 60 remain immutable
-sidecars rather than class-specific deep schemas. All failure injection remains
-synthetic; V2 is unchanged.
+regeneration. All records now validate directly through 45 closed structural
+families; sidecar-primary and generic catch-all counts are zero. All mutation
+testing remains synthetic; V2 and the invocation journal are unchanged.

@@ -111,3 +111,7 @@ The completion layer adds
 `validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json`, the deterministic
 `VAL_001_INVOCATION_SUMMARY_V2.json`, and non-writing inventory and journal
 verification scripts under `scripts/`.
+The final schema taxonomy is recorded in
+`validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json`; generated closed
+families live in `validation/val001/schemas/deep_record_families.schema.json`
+and are checked by `scripts/verify_val001_deep_schema_coverage.py`.

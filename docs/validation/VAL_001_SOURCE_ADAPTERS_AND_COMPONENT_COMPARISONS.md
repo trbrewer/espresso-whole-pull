@@ -89,5 +89,6 @@ governed records, applies an explicit deep-schema or immutable exact-hash and
 structure-signature treatment to each, and deterministically derives the
 summary ledger from four journal events. Quantitative variant discrimination
 was not assessed and mechanism uniqueness was not assessed. Additional data
-remain required before new physics as a conservative policy decision. Deep
-class-specific schema work remains for 60 immutable sidecar-treated records.
+remain required before new physics as a conservative policy decision. The
+former 4/60 schema gap is closed without changing any result or scientific
+classification; all governed records now receive direct deep validation.
