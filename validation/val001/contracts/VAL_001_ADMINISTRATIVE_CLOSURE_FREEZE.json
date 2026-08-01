@@ -53,6 +53,10 @@
       "sha256": "a9903b26c4f56ea9cf77245d3de34797f45613d7d4bc286cb5a70943e0952e67"
     },
     {
+      "path": "scripts/static_validate.py",
+      "sha256": "dcb1cf1594a230e85ad328e24d48dcbf3c61823b24a1728c0c76e045d6cac5c0"
+    },
+    {
       "path": "scripts/verify_val001_administrative_closure.py",
       "sha256": "69429a0cac9872e87e1c3a3275ab37a7343c2c7b0286b33fe0aedd14f12a5497"
     },
@@ -61,16 +65,24 @@
       "sha256": "1e3d74507f707284e79d2cfee1923c91511e83c4c61e84ae271739bb2aa9327b"
     },
     {
+      "path": "scripts/verify_val001_external_artifacts.py",
+      "sha256": "6d55fc7bff54558b86bf4a9761044918460655025db1ab2e77efa5c3f4038a34"
+    },
+    {
+      "path": "scripts/verify_wp03c_stage0_scaffold.py",
+      "sha256": "78a2bed58ab2f5c5136d143ed954d497f0d0311586a82da3963f2ee8f52aeac1"
+    },
+    {
       "path": "scripts/generate_val001_administrative_freeze.py",
-      "sha256": "4ee03624d55ae438083d4a9c6c28ffc07e21f2a5b159519429d8dd0b9c3c41ef"
+      "sha256": "1c4b6b875882508011d587ffbbd2af3d58df221575dedb12ff1d47fa1a3f440f"
     },
     {
       "path": "tests/test_val001_administrative_semantics.py",
       "sha256": "85a6dd04c5fa941d6d19a5263fe0f06c3f81ac5316602314172268d34af7571a"
     }
   ],
-  "implementation_commit": "a74d6dfd3e67766391287e372eb420f6b1552380",
-  "implementation_tree": "84ce1200d21366ef0e5f9e458b60473de2291310",
+  "implementation_commit": "c433963e9437e01bbeaa158445a9a252699a5f78",
+  "implementation_tree": "7a96cf5b0012c1f11c976a625a2cbbb76d54f9b1",
   "ordinary_record_bindings": [
     {
       "path": "validation/val001/VAL_001_CALIBRATION_COMPARISON_LEDGER.json",
