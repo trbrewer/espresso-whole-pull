@@ -92,8 +92,9 @@ unchanged and remains post-observation, non-blind, non-independent, and
 descriptive. The prior 4/60 schema gap is closed: every governed record now
 uses a direct class-, version-, or record-specific deep schema, with no
 sidecar-primary or generic catch-all validation. The final administrative
-remediation directly enumerates 86 records through 50 schema families with
-zero enumeration exclusions.
+remediation directly enumerates 105 records through 68 registry-referenced
+governing schema families with zero enumeration exclusions or unreferenced
+current normative contracts.
 
 ## License
 
@@ -108,11 +109,12 @@ the checked-out HEAD as its expected root. This correction performed no new
 OpenFOAM execution or governed comparison and does not change the retained V2
 result or its descriptive, post-observation claim boundary.
 
-PR #38 now uses zero-exclusion enumeration and an acyclic 86-record binding
-graph terminating in the canonical lock at the reviewed Git head/tree. Schema
-documents receive recursive keyword-value validation and explicit semantic
-profiles fail closed for historical, campaign, protected/holdout, fitting,
-identifiability, claim, and consumed-authority escalation. The retained V2
-result and four-event invocation journal are unchanged. No comparison or
-OpenFOAM execution occurred; the prior OpenFOAM bytes are restored read-only
-in the external audit store. Physical validation remains not established.
+PR #38 now uses zero-exclusion enumeration and an acyclic 105-record binding
+graph terminating in the canonical lock at the externally supplied reviewed
+Git head/tree. Sixty-eight normative contracts generate 68 referenced schema
+families without governed record instances; all 48 prior inferred families
+have explicit transition provenance. Immutable assignments anchor 18
+executable profiles. The 340-entry mutation inventory executes one-to-one
+(204 structural, 23 schema-document, 87 semantic, 15 root/graph, and 11
+freeze/lock cases). No comparison or OpenFOAM execution occurred; physical
+validation remains not established.

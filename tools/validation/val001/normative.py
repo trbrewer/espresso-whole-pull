@@ -85,6 +85,7 @@ def generated_explicit_registry(root: Path) -> dict[str, Any]:
             "current_referenced_specifications": len({b["specification_id"] for b in normative["record_bindings"]}),
             "current_unreferenced_specifications": 0,
             "instance_inferred_governing_schemas": 0,
+            "instance_derived_governing_schemas": 0,
             "copied_inferred_governing_schemas": 0,
             "structural_signature_governing_schemas": 0,
             "filename_selected_governing_schemas": 0,

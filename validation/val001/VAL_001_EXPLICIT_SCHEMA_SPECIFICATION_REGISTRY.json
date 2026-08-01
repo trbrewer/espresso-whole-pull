@@ -10,6 +10,7 @@
     "current_referenced_specifications": 68,
     "current_unreferenced_specifications": 0,
     "filename_selected_governing_schemas": 0,
+    "instance_derived_governing_schemas": 0,
     "instance_inferred_governing_schemas": 0,
     "structural_signature_governing_schemas": 0
   },
@@ -13515,6 +13516,10 @@
                 "minimum": 0,
                 "type": "integer"
               },
+              "instance_derived_governing_schemas": {
+                "minimum": 0,
+                "type": "integer"
+              },
               "instance_inferred_governing_schemas": {
                 "minimum": 0,
                 "type": "integer"
@@ -13529,6 +13534,7 @@
               "current_referenced_specifications",
               "current_unreferenced_specifications",
               "instance_inferred_governing_schemas",
+              "instance_derived_governing_schemas",
               "copied_inferred_governing_schemas",
               "structural_signature_governing_schemas",
               "filename_selected_governing_schemas"

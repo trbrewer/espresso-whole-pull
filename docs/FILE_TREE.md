@@ -122,3 +122,7 @@ machine-readable mutation inventory, and an external candidate-root protocol.
 profile registry, administrative freeze and canonical-lock schemas,
 `tools/validation/val001/administrative.py`, and non-writing administrative
 and external-artifact verifiers. Full OpenFOAM products remain outside Git.
+The successor provenance layer adds the normative contract registry,
+schema-provenance transition matrix, immutable profile-assignment registry,
+schema-taxonomy specification, mutation execution coverage, successor freeze,
+and historical V4 consumed lock under `validation/val001/`.

@@ -108,3 +108,14 @@ stable read-only copy of the already-created OpenFOAM evidence. The original
 result, failed invocation, V2, journal, and derived summary were not changed.
 No comparison, OpenFOAM execution, fit, protected access, or scientific
 method change occurred.
+
+## 2026-08-01 — VAL-001 normative schema provenance correction
+
+An additive correction replaced relabeled inferred schema sources with 68
+normative class/version/record contracts, documented all 48 prior-family
+transitions, anchored semantic profiles in an immutable path/ID registry, and
+closed the historical-adapter and EXP campaign bypasses. A 340-entry mutation
+inventory now executes one-to-one, and schema-family counts come only from the
+68 unique schema IDs referenced by 105 governed registrations. No solver,
+comparison, OpenFOAM, fitting, protected-data, result, journal, or claim-boundary
+change occurred.

@@ -164,9 +164,9 @@
       "schema_version": "espresso.val001.explicit_schema_specification_registry.v2",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "86d239f0f27c9f8b30a57eeabb5068a515ae7cfa819e5c6863d4029df35e0151",
+      "sha256": "7c4389dc0b6bfc06f58bcfd2fffa324eab7bed013acb3d0cbc86c2e12e5fe035",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "eadba4288be012863decf9a7138aec9fbbd85f9eee7a12354a8bef936ebf168f",
+      "structure_signature_sha256": "e9a33bcd30beaa2355e6306753e4b5a0ca9ee09eb9c189540ccd6c27f243f0bd",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -440,9 +440,9 @@
       "schema_version": "espresso.val001.normative_schema_contract_registry.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "6450bc4cb2af9bd79fa68611d200bc2200ee23102530685b18a506a3d38cbf6e",
+      "sha256": "4898f409ca7efb6ab3b0b071c1fcf4f3c80da51edab92d1472574a840f7051fe",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "0a3a9f022be02ac234ca49deead7e52ab8729f2583a37ab2233321739a0e9bc5",
+      "structure_signature_sha256": "864f4ac33f63a8d85ad3ae36a27a920242187a2c4e2e393d2eaf9730ab335a31",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -860,7 +860,7 @@
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
-      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-8-EXPLICIT-SEMANTICS",
+      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-9-SCHEMA-PROVENANCE",
       "audit_only": false,
       "binder": "FINAL_GIT_HEAD_TREE",
       "binding_class": "BOUND_BY_FINAL_GIT_TREE",
@@ -874,7 +874,7 @@
       "schema_id": "canonical_consumed_lock.v2",
       "schema_origin": "NORMATIVE_VERSION_CONTRACT",
       "schema_path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
-      "schema_version": "espresso.val001.postresult_execution_lock.v2",
+      "schema_version": "espresso.val001.postresult_execution_lock.v3",
       "semantic_profile": "PROFILE-CONSUMED-LOCK",
       "semantic_validator": "validate_profile_dispatch",
       "sha256": null,

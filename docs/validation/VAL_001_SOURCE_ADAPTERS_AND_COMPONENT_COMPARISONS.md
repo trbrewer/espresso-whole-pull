@@ -84,14 +84,14 @@ Accounting retains at least three pre-correction computations, one failed
 first-correction invocation, and one successful replacement: the minimum known
 total is five. The exact pre-correction local count is not reconstructable.
 
-The hardening completion cycle does not add a comparison. It inventories 64
-governed records, applies an explicit deep-schema or immutable exact-hash and
-structure-signature treatment to each, and deterministically derives the
+The current correction cycle does not add a comparison. It inventories 105
+governed records, applies one of 68 registry-referenced normative contracts
+and an immutable semantic-profile assignment to each, and deterministically derives the
 summary ledger from four journal events. Quantitative variant discrimination
 was not assessed and mechanism uniqueness was not assessed. Additional data
 remain required before new physics as a conservative policy decision. The
-former 4/60 schema gap is closed without changing any result or scientific
-classification; all governed records now receive direct deep validation.
+former schema gap is closed without changing any result or scientific
+classification; all governed records receive direct deep validation.
 ## Final administrative-closure correction
 
 All governed JSON/JSONL records, including inventory, registry, prior freezes,
@@ -99,7 +99,9 @@ the administrative freeze, and canonical lock, are now independently
 enumerated. The finite graph terminates only at the canonical lock's exact Git
 blob in the reviewed head/tree. Explicit semantic profiles reject authority or
 claim escalation through named executable invariants. Governing schemas now
-come only from checked-in explicit class/version/record specifications. The
+come only from 68 checked-in normative class/version/record contracts and
+regenerate without record instances. All 48 former inferred families have
+transition provenance, and 340 declared mutations execute one-to-one. The
 candidate root is supplied externally as a full commit and tree, so any later
 commit necessarily requires a new review root.
 claim escalation independently of immutable hashes. This framework hardening

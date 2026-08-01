@@ -105,15 +105,17 @@ This cycle performed zero governed comparisons and zero OpenFOAM work.
 The deep-schema completion cycle provides exhaustive governed-record inventory coverage, removes prefix
 legacy catch-alls, validates immutable records by exact hash plus nested
 structure signature, and verifies byte-identical journal-to-summary
-regeneration. The final administrative remediation directly enumerates 86
-records through 50 closed structural families; sidecar-primary, generic
+regeneration. The current normative remediation directly enumerates 105
+records through 68 referenced schema families; sidecar-primary, generic
 catch-all, and enumeration-exclusion counts are zero. All mutation
 testing remains synthetic; V2 and the invocation journal are unchanged.
-## VAL-001 final administrative and semantic closure
+## VAL-001 schema provenance and semantic enforcement
 
-- Governed records: 86/86 directly enumerated and validated.
-- Binding graph: 80 ordinary, 4 administrative-freeze bound, 1 canonical-lock
-  bound, 1 final-Git-tree bound; zero cycles and orphans.
+- Governed records: 105/105 directly enumerated and validated.
+- Normative contracts/schema families: 68/68 current and referenced; zero
+  inferred, copied-inferred, signature-selected, filename-selected, or unused.
+- Mutation inventory: 340 declared and 340 executed; zero missing, unexpected,
+  duplicate, or placeholder cases.
 - Schema documents: recursive AST and keyword-value validation enabled.
 - Semantic escalation: historical, campaign, identifiability, execution,
   fitting, configuration, claim, dependency, and consumed-state boundaries
