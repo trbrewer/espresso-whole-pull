@@ -104,10 +104,14 @@ deep-schema gap is closed through 45 taxonomy-derived schema families and
 direct validation of current and immutable historical records.
 ## VAL-001 PR #38 administrative remediation
 
-The final candidate directly enumerates and validates 86 governed JSON/JSONL
+The final candidate directly enumerates and validates all governed JSON/JSONL
 records with no exclusions, cycles, or orphans. The administrative freeze is
 bound by a canonical consumed lock containing the complete freeze commit and
 tree. Recursive schema-AST validation and explicit semantic profiles replace
+instance-derived governing schemas; named profile invariants execute for every
+registered record. Final candidate closure additionally requires externally
+supplied exact head and tree identities. No comparison or OpenFOAM execution
+occurred in this correction.
 observed-instance authorization semantics. V2 remains descriptive,
 post-observation, non-blind, and non-independent. No new scoring, solver run,
 fit, protected access, experiment, or physics change occurred.

@@ -418,6 +418,21 @@ LATER_WP02_002_PATHS = frozenset({
     "validation/val001/schemas/invocation_event.schema.json",
     "validation/val001/schemas/invocation_summary.schema.json",
     "validation/val001/schemas/postresult_execution_lock.schema.json",
+    "docs/validation/VAL_001_PR38_EXPLICIT_SEMANTICS_ROOT_PINNING_NOTE.md",
+    "tests/test_val001_explicit_semantics_and_root.py",
+    "tools/validation/val001/explicit_semantics.py",
+    "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
+    "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
+    "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
+    "validation/val001/corrections/VAL_001_PR38_EXPLICIT_SEMANTICS_AND_ROOT_PINNING_PLAN.json",
+    "validation/val001/schemas/explicit_schema_specification_registry.schema.json",
+    "validation/val001/schemas/explicit_semantics_remediation_plan.schema.json",
+    "validation/val001/schemas/external_candidate_root_protocol.schema.json",
+    "validation/val001/schemas/mutation_inventory.schema.json",
+    "validation/val001/schemas/semantic_profile_registry.schema.json",
+    "scripts/generate_val001_explicit_semantics_freeze.py",
+    "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+    "validation/val001/schemas/explicit_semantics_completion_freeze.schema.json",
 })
 FROZEN = {
     "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json":

@@ -95,6 +95,12 @@ from information value rather than implementation convenience.
   tests. No solver, comparison, result, or invocation event changed.
 ## 2026-07-31 — VAL-001 administrative closure and semantic enforcement
 
+A final additive correction made explicit schema specifications and executable
+semantic-profile dispatch authoritative and required externally supplied Git
+head/tree identities for candidate closure. It added stale-root, graph,
+schema-document, and semantic-escalation mutations without changing scientific
+results, invocation accounting, OpenFOAM artifacts, or governing physics.
+
 PR #38 received an additive zero-exclusion administrative binding graph,
 recursive schema-document validation, explicit semantic profiles and
 escalation mutations, a full-commit/tree successor consumed lock, and a

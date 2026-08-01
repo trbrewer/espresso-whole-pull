@@ -98,6 +98,10 @@ All governed JSON/JSONL records, including inventory, registry, prior freezes,
 the administrative freeze, and canonical lock, are now independently
 enumerated. The finite graph terminates only at the canonical lock's exact Git
 blob in the reviewed head/tree. Explicit semantic profiles reject authority or
+claim escalation through named executable invariants. Governing schemas now
+come only from checked-in explicit class/version/record specifications. The
+candidate root is supplied externally as a full commit and tree, so any later
+commit necessarily requires a new review root.
 claim escalation independently of immutable hashes. This framework hardening
 does not modify V2 arithmetic or interpretation and created no comparison or
 OpenFOAM execution. Quantitative discrimination and mechanism uniqueness

@@ -100,6 +100,14 @@ zero enumeration exclusions.
 The solver and repository code are licensed under GPL-3.0-or-later. See `LICENSE`, `NOTICE.md`, `THIRD_PARTY_NOTICES.md`, and `docs/LICENSING.md`. This licensing audit is informational and not legal advice.
 ### VAL-001 final administrative closure
 
+The final explicit-semantics correction replaces instance-derived governing
+schema construction with reviewed class/version/record specifications and
+mandatory executable semantic profiles. Candidate closure now requires a
+reviewer- or CI-supplied full Git head and tree; the verifier never substitutes
+the checked-out HEAD as its expected root. This correction performed no new
+OpenFOAM execution or governed comparison and does not change the retained V2
+result or its descriptive, post-observation claim boundary.
+
 PR #38 now uses zero-exclusion enumeration and an acyclic 86-record binding
 graph terminating in the canonical lock at the reviewed Git head/tree. Schema
 documents receive recursive keyword-value validation and explicit semantic

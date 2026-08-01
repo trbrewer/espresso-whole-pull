@@ -116,6 +116,8 @@ The final schema taxonomy is recorded in
 families live in `validation/val001/schemas/deep_record_families.schema.json`
 and are checked by `scripts/verify_val001_deep_schema_coverage.py`.
 VAL-001 administrative closure adds
+explicit schema specifications, an executable semantic-profile registry, a
+machine-readable mutation inventory, and an external candidate-root protocol.
 `VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json`, the explicit semantic
 profile registry, administrative freeze and canonical-lock schemas,
 `tools/validation/val001/administrative.py`, and non-writing administrative

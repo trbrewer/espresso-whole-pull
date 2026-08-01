@@ -121,3 +121,7 @@ testing remains synthetic; V2 and the invocation journal are unchanged.
 - External artifacts: seven prior OpenFOAM files restored read-only and
   hash-verified; zero builds and zero executions in this cycle.
 - Physical validation: not established.
+VAL-001 explicit-semantics QA verifies zero instance-derived governing schemas,
+complete executable-profile dispatch, and externally pinned candidate roots.
+All cases are synthetic; governed comparison and OpenFOAM execution counts are
+zero for this correction.

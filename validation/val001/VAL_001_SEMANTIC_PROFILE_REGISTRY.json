@@ -48,7 +48,8 @@
         "VAL001-SCHEMA-SPEC-032",
         "VAL001-SCHEMA-SPEC-033",
         "VAL001-SCHEMA-SPEC-034",
-        "VAL001-SCHEMA-SPEC-046"
+        "VAL001-SCHEMA-SPEC-046",
+        "VAL001-SCHEMA-SPEC-062"
       ],
       "campaign": "NOT_APPLICABLE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
