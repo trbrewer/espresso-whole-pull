@@ -1,0 +1,539 @@
+{
+  "schema_version": "espresso.val001.deep_schema_completion_freeze.v1",
+  "record_id": "VAL001-DEEP-SCHEMA-COMPLETION-FREEZE-1",
+  "implementation_commit": "a0810272599d856c1ee09a23acbaeeb92e0a0f53",
+  "implementation_tree": "19f61ce2260c1b4dfb87a73308f96c6d8d458a07",
+  "inventory": {
+    "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
+    "sha256": "24ac1759842a8c25bb30f85d836bad2f3b3778898bc4a4dad83a9e6067dbafe4",
+    "record_count": 71
+  },
+  "registry": {
+    "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
+    "sha256": "30fff95d78ee29370eccacedfeb2d19a869b7f55729125c01bd2fa5e9c0f223e"
+  },
+  "coverage_matrix": {
+    "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
+    "sha256": "025f49252a8b916d7d37b24398ee4577f7e3a665081c6b44e1117639e6258a45"
+  },
+  "implementation_bindings": [
+    {
+      "path": "tools/validation/val001/schema.py",
+      "sha256": "3ec7617b508ac0a81abc3d42de26cfea26f6dab634bbe737e3df4f71b8be1e0e"
+    },
+    {
+      "path": "tools/validation/val001/deep_schema.py",
+      "sha256": "9029f66f82867bc4a494ddefeafff3825f5158782548a89c07a7a8b098ed2874"
+    },
+    {
+      "path": "tools/validation/val001/inventory.py",
+      "sha256": "9afc6abef23ebcb7b2c5e32d7a0de98a1d092ef10e20da041570e49161e45772"
+    },
+    {
+      "path": "scripts/verify_val001_deep_schema_coverage.py",
+      "sha256": "6346b41ddaa1e21fbb7d774a8e0b5ed0f3a590d53f49b9f2bf6644e4d2350ae1"
+    },
+    {
+      "path": "scripts/verify_val001_hardening.py",
+      "sha256": "c1826ff8ae8561efb9d44a6701eff1ed5058568ba7f199643908deddbe468a20"
+    },
+    {
+      "path": "scripts/static_validate.py",
+      "sha256": "a42999c19ead37369750c27c7e2228df8430eed2be524a12bdc062302081dbbf"
+    },
+    {
+      "path": "tests/test_val001_deep_schema.py",
+      "sha256": "68e92c73c7f2f60861beb5f089f0745472e22bf16944cf6fd9dc725c49e76885"
+    }
+  ],
+  "schemas": [
+    {
+      "path": "validation/val001/schemas/coverage_matrix.schema.json",
+      "sha256": "4cfcbd09148e665c98c609acf0af72816d5cbd0202e5065428c9cc63ed27ca4b"
+    },
+    {
+      "path": "validation/val001/schemas/deep_invocation_event_families.schema.json",
+      "sha256": "6b4038a429fed796b25b4c5db1c88c31b6c4a1325b65aef5cdfb65aea81c65db"
+    },
+    {
+      "path": "validation/val001/schemas/deep_record_families.schema.json",
+      "sha256": "109c557407619525a2278f8f63cfcc9adfecd381f044a8040118de166bf1a676"
+    },
+    {
+      "path": "validation/val001/schemas/schema_document.schema.json",
+      "sha256": "5d33b6fb05c9e08cd9c3761b5717f0af26695b7db0eecfcd1b186a98ab3c4c78"
+    }
+  ],
+  "governed_records": [
+    {
+      "path": "validation/val001/VAL_001_CALIBRATION_COMPARISON_LEDGER.json",
+      "sha256": "a9b4fb8befc7e591096e09dc895c4098c025ea13c4c44adb302baca64fd8de6e",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "ledger.v28"
+    },
+    {
+      "path": "validation/val001/VAL_001_CAMPAIGN_PROVENANCE.json",
+      "sha256": "b0b6bc8b9727bf1ebfe085516358e5a475305dcb6ee7116c79367a52998864fe",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "campaign_provenance.v7"
+    },
+    {
+      "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
+      "sha256": "025f49252a8b916d7d37b24398ee4577f7e3a665081c6b44e1117639e6258a45",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.deep_schema_coverage_matrix.v1"
+    },
+    {
+      "path": "validation/val001/VAL_001_EVIDENCE_AND_RIGHTS_INVENTORY.json",
+      "sha256": "deb4e4754a2cb8a268afe34bc1f6ee8c1eb1de0bd9147b8e7145b95bd992e60a",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "evidence_or_record_inventory.v10"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXTERNAL_ARTIFACT_MANIFEST.json",
+      "sha256": "52fb6eb6482bf43eda11bd9d9523d66b0f43766c37c50f3844c257df4d69059e",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "external_artifact_manifest.v11"
+    },
+    {
+      "path": "validation/val001/VAL_001_HISTORICAL_ADAPTERS.json",
+      "sha256": "926dcfb30f43794e190a1eafcfdf92a0f820c43b1fe8604f35d1ab3b66063081",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "source_adapter.v42"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json",
+      "sha256": "7b72580035b44d47e506c1bc4d5cdbe29715be76f4752d6dcc949de098e56369",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v14"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl",
+      "sha256": "f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.deep_invocation_event_families.v1"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json",
+      "sha256": "01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v26"
+    },
+    {
+      "path": "validation/val001/VAL_001_MECHANISM_DISCRIMINATION_MATRIX.json",
+      "sha256": "13c6a8f1793e8939c8ec09464d5aca2381159c0feeeebbc75de7297893153dbc",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "mechanism_discrimination.v29"
+    },
+    {
+      "path": "validation/val001/VAL_001_RANKED_DATA_REQUESTS.json",
+      "sha256": "cc832ba0d9cb84866ee69668fdd64e63d96e3d5e287c9268e9837f0f8fc2d04f",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "ranked_requests.v30"
+    },
+    {
+      "path": "validation/val001/VAL_001_SOURCE_ACCESS_LOG.json",
+      "sha256": "18521c6f96ddaa92e87a51d769bdb846cf3ad49fb33136e4f3ebfaed1b20a4db",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "source_access_log.v38"
+    },
+    {
+      "path": "validation/val001/adapters/GAGNE_DE1_EVIDENCE_GAP_ADAPTER.json",
+      "sha256": "c1ee43bfd72de12e8adf58211c8be778f14de97673f84bf0f4db57622da3acaf",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "source_adapter.v39"
+    },
+    {
+      "path": "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json",
+      "sha256": "eddc9e24544769f62022f49b30eb572370aa4b213fa388d997bdd34c42d47c9c",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "source_adapter.v40"
+    },
+    {
+      "path": "validation/val001/adapters/historical/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER_V1_INVALID_CITATION.json",
+      "sha256": "6d0e9da956711f63c7b40aa967583de04df36e2f718eee1c9c860c4321887308",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "source_adapter.v41"
+    },
+    {
+      "path": "validation/val001/amendments/VAL_001_CORRECTED_ROW_COUNT_INVALIDATION.json",
+      "sha256": "4fcb024f299d0ce232509f69abd06c2c0b91f3141e0abb3d1ebde4d4c630b2d6",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v19"
+    },
+    {
+      "path": "validation/val001/amendments/VAL_001_INPUT_ROW_COUNT_AMENDMENT.json",
+      "sha256": "11e5de3c266d339f05f317078997cb0ca093897c2534bbfd83b165186ef4dd8a",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "amendment_invalidation.v3"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_CORRECTED_EXECUTION_ACTIVATION.json",
+      "sha256": "722419bbb272b83465eebb3a4b3d156afebd4543288be900b27a528fbb30a404",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "activation.v1"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_CORRECTED_FREEZE.json",
+      "sha256": "b326dcb1f68d7453b3ee511b45b8821cdcd408ff750aad9a0f91286bdeeb6004",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "freeze.v12"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_CORRECTED_PREEXECUTION_AUTHORITY.json",
+      "sha256": "1ee58ad04ee660a39570349d0e7036d6746910c449150fcfb5a0758eab7c307c",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "authority.v4"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_CORRECTED_RUN_SPEC.json",
+      "sha256": "af6f58df14935dcf3295f9c3209f435e7bf6275f8656b6135b1cf3e2ed1b39d7",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v16"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_POSTRESULT_FRAMEWORK_HARDENING_FREEZE.json",
+      "sha256": "c04bc05b00360afb67a699117601869fc283a0fdcbe74a48237964fc067179b2",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "result_or_reexpression.v35"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_PREEXECUTION_RUN_SPEC.json",
+      "sha256": "4e36e11f18b91957af67e45798daef0e64d1d1a0a9825961252753e47d0e2d7b",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "governance_record.v15"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_ARTIFACT_REUSE_ACTIVATION.json",
+      "sha256": "03e0ec4dac9366ed80f55d7121cc317d322377de63e64bc6502a09b3889a9295",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "activation.v2"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json",
+      "sha256": "8d0608507d3567f63815b884b3a7a0429108b4359371f8837ca8c5e3654df3f4",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "freeze.v13"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_INVOCATION_AUTHORITY.json",
+      "sha256": "4e0e7fffeb0c7f100ba449341edc7f058aa51f57b4560a0cc53e1051a6ce9758",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "authority.v6"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SELECTED_ROW_CANONICALIZATION_SPEC.json",
+      "sha256": "9603353866217388684bb15fb96525f5509d9de531b14b673b879eeb95764fc8",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v23"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SENSITIVITY_AND_IDENTIFIABILITY_METHODS.json",
+      "sha256": "c2465d260ff1ccca9ff16744ca7bbda15476d980d62a53aec5dcd21fb38d10c7",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "sensitivity_identifiability.v37"
+    },
+    {
+      "path": "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V1.json",
+      "sha256": "915e378194fc277c11874da79a1801bf1375a3230286d1db508df71fd0a0983e",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "result_or_reexpression.v32"
+    },
+    {
+      "path": "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V2.json",
+      "sha256": "f7ea782382225f815cd413e7eb04f3d9898630793b0b7366bdb761bed54a2e2d",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "result_or_reexpression.v31"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_POSTRESULT_LOCK_VERSIONING_RECORD.json",
+      "sha256": "4327450d48120e435c771a81b7506781fa2bcbb75f7b2939a9b2b979af5f6966",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "result_or_reexpression.v34"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_DEEP_SCHEMA_COMPLETION_PLAN.json",
+      "sha256": "f9fc0b0742e6d36e9095f26d0f531ac3cece2067015594e36a69d31bd529d5ad",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v22"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_FINAL_HARDENING_PLAN.json",
+      "sha256": "508555668588a254ebf90c3293164c2491f528fd6eec8ea57c8fa8d803e20a30",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v18"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_HARDENING_COMPLETION_PLAN.json",
+      "sha256": "20678b426adca9fc5e9d9ab8e2eecbb08cb066edc49bdd8a98328d14c7c89506",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v21"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_INITIAL_RESULT_INVALIDATION_AND_REMEDIATION.json",
+      "sha256": "b0013c35dc5016333f85ff345199123f9209908f64521f882b95d6530470a458",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "result_or_reexpression.v33"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_SECOND_CORRECTION_DEFECT_AUTHORITY.json",
+      "sha256": "3203953dff8838e2e17885181157b4a39c0a54c46312d7c9d74c2228268099f3",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "authority.v5"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_SELECTED_ROW_IDENTITY_CORRECTION.json",
+      "sha256": "8c1633d4daa5173dbdac189731f8e845d00631f595edf55683ffa9d3143506ba",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "correction.v9"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_V2_INTERPRETATION_CORRECTION.json",
+      "sha256": "74356b3c95bfd961d8816ac1dc6bc3ac7f9eb59151928369d062375b2ee715eb",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "correction.v8"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_WASZKIEWICZ_ADAPTER_PROVENANCE_CORRECTION.json",
+      "sha256": "0aa94ce0c55dd85fcef531423fde0117ee4173c8a2879db00c7f374bcbb32cb0",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "source_adapter.v43"
+    },
+    {
+      "path": "validation/val001/historical/VAL_001_INVOCATION_EVENTS_V1.jsonl",
+      "sha256": "bb8bac4fabcf86b08ea9088adfd188180399d039428fecccac6cc41b28583237",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.deep_invocation_event_families.v1"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
+      "sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v24"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_CORRECTED_EXECUTION_FAILURE.json",
+      "sha256": "529dc254d46ac65bf1c1fa1d98eb4bf799dfe5712302e729b4c72fc49b154919",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "governance_record.v25"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_FIRST_COMPONENT_COMPARISONS.json",
+      "sha256": "07086313d022555032bbb9ecc18d2564bb197d0381bd8d08e263cd95d02bd029",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "governance_record.v17"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_HISTORICAL_RESULT_REEXPRESSIONS.json",
+      "sha256": "93c2f6da9f1bf1ff870299af0defa100bdc22c874b1039357e3f06cb88e520fe",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "result_or_reexpression.v36"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_V2_FRAMEWORK_QUALIFICATION_PROVENANCE.json",
+      "sha256": "d35a6d2c15fdbad1cc93b4277f57ba38b3a0623a48f04823317432e88286bb23",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "governance_record.v27"
+    },
+    {
+      "path": "validation/val001/results/historical/WP01R_R1_WASZKIEWICZ_9BAR.json",
+      "sha256": "a5f633c689329d179b28385fb0de52314c8f8e57179a2018106b14cfca8ccc5e",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "governance_record.v20"
+    },
+    {
+      "path": "validation/val001/results/historical/WP02_001_WASZKIEWICZ_8BAR_NO_RETUNING.json",
+      "sha256": "ced434f437ab45262d3284a3c8db7a2809ead2be6402317ef2d70b7e04925bb9",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "governance_record.v20"
+    },
+    {
+      "path": "validation/val001/results/historical/WP02_001_WASZKIEWICZ_9BAR.json",
+      "sha256": "eee88d50f0adcea5e6845e53e66f2dadb2d5e0d002499e0b7edebc66a21221fc",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "governance_record.v20"
+    },
+    {
+      "path": "validation/val001/results/historical/WP_0_3B_LIANG_VERIFICATION.json",
+      "sha256": "4910976e63d14ae2fb532f8faae1be0f461f246f3b4c3c299cbd32ac2f661b55",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "governance_record.v20"
+    },
+    {
+      "path": "validation/val001/results/historical/WP_0_3B_MATIAS_VERIFICATION.json",
+      "sha256": "2935fbfe64be0029603dcf0e3511223940ce6027e4413693434dee5785b877d0",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "governance_record.v20"
+    },
+    {
+      "path": "validation/val001/results/historical/WP_0_3B_MORONEY_VERIFICATION.json",
+      "sha256": "22595ec7860dfb5e8ad6e191aaa20c2f4dccc79c960718ef9200aaf1dd84ca0a",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA",
+      "schema_id": "governance_record.v20"
+    },
+    {
+      "path": "validation/val001/schemas/amendment_invalidation.schema.json",
+      "sha256": "e372a0302da25c96ed1da2194f95101253592e9a0d39101d5fb723f1e7de362e",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/calibration_comparison_ledger.schema.json",
+      "sha256": "25ca57f0513aea7fd0a1864d6ccca1ac8704c2316fabbe3ecc5dbfde48c09464",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/campaign_provenance.schema.json",
+      "sha256": "8352f6cd76ed431f496299c921244109ad2b2a205a76d84226e02e97c8a73ad8",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/comparison_result.schema.json",
+      "sha256": "60e00cccd1a647b797b762959995b989b263dbb9570a4d9ec82a1cd71b839df1",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/comparison_run.schema.json",
+      "sha256": "79964ab401150c96c46950f72242f9b65d26fd52e9a5f571dd5af72b018c0b59",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/coverage_matrix.schema.json",
+      "sha256": "4cfcbd09148e665c98c609acf0af72816d5cbd0202e5065428c9cc63ed27ca4b",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/deep_invocation_event_families.schema.json",
+      "sha256": "6b4038a429fed796b25b4c5db1c88c31b6c4a1325b65aef5cdfb65aea81c65db",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/deep_record_families.schema.json",
+      "sha256": "109c557407619525a2278f8f63cfcc9adfecd381f044a8040118de166bf1a676",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/evidence_rights_inventory.schema.json",
+      "sha256": "5793d365b41f343c2f5095d5c41a3269008ce64d68788791ca6c2aec6a33e4b2",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/exact_structure_sidecar.schema.json",
+      "sha256": "ad1d5e7fad286b0d65ba1f394646a4e9a823f277b0e10d3d25ffe2c68ea71299",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/execution_activation.schema.json",
+      "sha256": "2a18d11230ca28430d5dadc9055698210513796b55db2efd65b685c617ab75a7",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/governance_records.schema.json",
+      "sha256": "a3c43c82f77944f6c44803a8b10a706fbedb2a18f9a87d5b905bf44b78850579",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/historical_reexpression.schema.json",
+      "sha256": "616d0e01245cc49b58666da8920ad475e7c136524265cb543009ab358f0fab38",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/invocation_event.schema.json",
+      "sha256": "8e64e3b4960bb8f5c30fc3cd593cb8084c9879ecc4b0522b21b97a5cc01593e8",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/invocation_ledger.schema.json",
+      "sha256": "d5c35bd5277830a00d5c4a3595027aef28de6321bb69370986c4a9680d5fd190",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/invocation_summary.schema.json",
+      "sha256": "7db50bcf29e7b5356805c8677c48efe12df7dbb8deabf7a7a78bf29bb396d9a4",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/postresult_execution_lock.schema.json",
+      "sha256": "6a637d4ea09aca363227369659c3dd2d34dfadd0684602429e834f15483657d0",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/preexecution_authority.schema.json",
+      "sha256": "14b899aa2de3ff882aa0415be1318630fa6c6270a4291c33cca8ea211ea9e90f",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/schema_document.schema.json",
+      "sha256": "5d33b6fb05c9e08cd9c3761b5717f0af26695b7db0eecfcd1b186a98ab3c4c78",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    },
+    {
+      "path": "validation/val001/schemas/source_adapter.schema.json",
+      "sha256": "be78cd2cd983916e3b301cb05db31777c1731c709c13b13e6c75cf62b086b67a",
+      "treatment": "CURRENT_DEEP_SCHEMA",
+      "schema_id": "espresso.val001.schema_document.v1"
+    }
+  ],
+  "treatment_counts": {
+    "CURRENT_DEEP_SCHEMA": 49,
+    "IMMUTABLE_HISTORICAL_DEEP_SCHEMA": 22
+  },
+  "schema_family_count": 45,
+  "mutation_test_families": 43,
+  "immutable_lineage": {
+    "original_result": "07086313d022555032bbb9ecc18d2564bb197d0381bd8d08e263cd95d02bd029",
+    "failure_artifact": "529dc254d46ac65bf1c1fa1d98eb4bf799dfe5712302e729b4c72fc49b154919",
+    "v2_result": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5",
+    "invocation_journal": "f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730",
+    "invocation_summary": "01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8",
+    "historical_consumed_lock_v2": "f7ea782382225f815cd413e7eb04f3d9898630793b0b7366bdb761bed54a2e2d"
+  },
+  "puckworks_lock": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "source_manifest": {
+    "count": 196,
+    "aggregate": "56bdea873ce3cb29d1e83bb3f8fa93daea68595733e428b066e06e450a0326c7",
+    "sha256": "353c975e2d525a993f0d5eec1439708f8cec18b34bd629d945c34070739571f4"
+  },
+  "IMMUTABLE_HISTORICAL_SIDECAR_AS_PRIMARY_VALIDATION": 0,
+  "GENERIC_CATCH_ALL_SCHEMAS": 0,
+  "UNREGISTERED_GOVERNED_RECORDS": 0,
+  "NEW_OPENFOAM_BUILDS": 0,
+  "NEW_OPENFOAM_CASE_EXECUTIONS": 0,
+  "NEW_REAL_DATA_COMPARISON_INVOCATIONS": 0,
+  "NEW_GOVERNED_RESULT_PRODUCING_INVOCATIONS": 0,
+  "INVOCATION_JOURNAL_CHANGED": false,
+  "INVOCATION_SUMMARY_CHANGED": false,
+  "V2_RESULT_CHANGED": false,
+  "V2_ARITHMETIC_CHANGED": false,
+  "EXECUTION_AUTHORITY": "CONSUMED",
+  "PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+  "claim_boundaries": {
+    "GENERAL_PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "EXPERIMENTAL_COMMISSIONING": "NOT_AUTHORIZED",
+    "PROTECTED_OR_HOLDOUT_SCORING": "NOT_AUTHORIZED",
+    "HOLDOUT_EXECUTION": "NOT_AUTHORIZED",
+    "NEW_GOVERNING_PHYSICS": "NOT_AUTHORIZED_BY_VAL001"
+  }
+}
