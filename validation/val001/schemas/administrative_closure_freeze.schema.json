@@ -1,1 +1,211 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"espresso.val001.administrative_closure_freeze.v1","type":"object","required":["schema_version","record_id","status","implementation_commit","implementation_tree","administrative_bindings","ordinary_record_bindings","counts","terminal_external_root_type","execution_counts","preservation","execution_authority","claim_boundaries","puckworks_lock"],"properties":{"schema_version":{"const":"espresso.val001.administrative_closure_freeze.v1"},"record_id":{"type":"string","pattern":"^VAL001-ADMINISTRATIVE-CLOSURE-FREEZE-.+$"},"status":{"enum":["PENDING_FINALIZATION","FROZEN"]},"implementation_commit":{"type":"string","pattern":"^[0-9a-f]{40}$"},"implementation_tree":{"type":"string","pattern":"^[0-9a-f]{40}$"},"administrative_bindings":{"type":"array","items":{"type":"object","required":["path","sha256"],"properties":{"path":{"type":"string","pattern":"^(?!/)(?!.*\\.\\.).+$"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false}},"ordinary_record_bindings":{"type":"array","items":{"type":"object","required":["path","sha256"],"properties":{"path":{"type":"string","pattern":"^(?!/)(?!.*\\.\\.).+$"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false}},"counts":{"type":"object","required":["independent_enumeration_exclusions","unregistered_governed_records","unbound_governed_records","binding_graph_cycles","terminal_external_roots"],"properties":{"independent_enumeration_exclusions":{"const":0},"unregistered_governed_records":{"const":0},"unbound_governed_records":{"const":0},"binding_graph_cycles":{"const":0},"terminal_external_roots":{"const":1}},"additionalProperties":false},"terminal_external_root_type":{"const":"FINAL_GIT_HEAD_TREE"},"execution_counts":{"type":"object","required":["new_openfoam_builds","new_openfoam_case_executions","new_real_data_comparison_invocations","new_governed_result_producing_invocations"],"properties":{"new_openfoam_builds":{"const":0},"new_openfoam_case_executions":{"const":0},"new_real_data_comparison_invocations":{"const":0},"new_governed_result_producing_invocations":{"const":0}},"additionalProperties":false},"preservation":{"type":"object","required":["v2_result_changed","invocation_journal_changed","invocation_summary_changed"],"properties":{"v2_result_changed":{"const":false},"invocation_journal_changed":{"const":false},"invocation_summary_changed":{"const":false}},"additionalProperties":false},"execution_authority":{"const":"CONSUMED"},"claim_boundaries":{"type":"object","required":["physical_validation","new_governing_physics"],"properties":{"physical_validation":{"const":"NOT_ESTABLISHED"},"new_governing_physics":{"const":"NOT_AUTHORIZED_BY_VAL001"}},"additionalProperties":false},"puckworks_lock":{"type":"object","required":["commit","tree"],"properties":{"commit":{"const":"fc61c4670ec7bf801e40bb391aab16048b8da26b"},"tree":{"const":"1d553e44ee2f7480a5df521560801b478618cc84"}},"additionalProperties":false}},"additionalProperties":false}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "espresso.val001.administrative_closure_freeze.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_id",
+    "status",
+    "implementation_commit",
+    "implementation_tree",
+    "implementation_bindings",
+    "administrative_bindings",
+    "ordinary_record_bindings",
+    "counts",
+    "terminal_external_root_type",
+    "execution_counts",
+    "preservation",
+    "execution_authority",
+    "claim_boundaries",
+    "puckworks_lock"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "espresso.val001.administrative_closure_freeze.v1"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^VAL001-ADMINISTRATIVE-CLOSURE-FREEZE-.+$"
+    },
+    "status": {
+      "enum": [
+        "PENDING_FINALIZATION",
+        "FROZEN"
+      ]
+    },
+    "implementation_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "implementation_tree": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "implementation_bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^(?!/)(?!.*\\.\\.).+$"},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "administrative_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\.\\.).+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "ordinary_record_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\.\\.).+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "independent_enumeration_exclusions",
+        "unregistered_governed_records",
+        "unbound_governed_records",
+        "binding_graph_cycles",
+        "terminal_external_roots"
+      ],
+      "properties": {
+        "independent_enumeration_exclusions": {
+          "const": 0
+        },
+        "unregistered_governed_records": {
+          "const": 0
+        },
+        "unbound_governed_records": {
+          "const": 0
+        },
+        "binding_graph_cycles": {
+          "const": 0
+        },
+        "terminal_external_roots": {
+          "const": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "terminal_external_root_type": {
+      "const": "FINAL_GIT_HEAD_TREE"
+    },
+    "execution_counts": {
+      "type": "object",
+      "required": [
+        "new_openfoam_builds",
+        "new_openfoam_case_executions",
+        "new_real_data_comparison_invocations",
+        "new_governed_result_producing_invocations"
+      ],
+      "properties": {
+        "new_openfoam_builds": {
+          "const": 0
+        },
+        "new_openfoam_case_executions": {
+          "const": 0
+        },
+        "new_real_data_comparison_invocations": {
+          "const": 0
+        },
+        "new_governed_result_producing_invocations": {
+          "const": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "preservation": {
+      "type": "object",
+      "required": [
+        "v2_result_changed",
+        "invocation_journal_changed",
+        "invocation_summary_changed"
+      ],
+      "properties": {
+        "v2_result_changed": {
+          "const": false
+        },
+        "invocation_journal_changed": {
+          "const": false
+        },
+        "invocation_summary_changed": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "execution_authority": {
+      "const": "CONSUMED"
+    },
+    "claim_boundaries": {
+      "type": "object",
+      "required": [
+        "physical_validation",
+        "new_governing_physics"
+      ],
+      "properties": {
+        "physical_validation": {
+          "const": "NOT_ESTABLISHED"
+        },
+        "new_governing_physics": {
+          "const": "NOT_AUTHORIZED_BY_VAL001"
+        }
+      },
+      "additionalProperties": false
+    },
+    "puckworks_lock": {
+      "type": "object",
+      "required": [
+        "commit",
+        "tree"
+      ],
+      "properties": {
+        "commit": {
+          "const": "fc61c4670ec7bf801e40bb391aab16048b8da26b"
+        },
+        "tree": {
+          "const": "1d553e44ee2f7480a5df521560801b478618cc84"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
