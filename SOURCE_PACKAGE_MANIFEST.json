@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 225,
-  "total_uncompressed_bytes_excluding_manifest": 1923346,
-  "aggregate_source_sha256": "80624fef2f7d46301c60a94be8b9a7624c5b8e90070b8b5cc14cb498f0a70667",
-  "aggregate_sha256": "80624fef2f7d46301c60a94be8b9a7624c5b8e90070b8b5cc14cb498f0a70667",
+  "total_uncompressed_bytes_excluding_manifest": 1927301,
+  "aggregate_source_sha256": "43fae3edf7dfbd6575dd42a07db87a79c7fea8c0ec3eca1ed64f5899dee5d1bf",
+  "aggregate_sha256": "43fae3edf7dfbd6575dd42a07db87a79c7fea8c0ec3eca1ed64f5899dee5d1bf",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "0c2a5a5dbf80ef8575aded0abf60b937cdfc115ae61a5c6cf6f6de5ccb48f389",
-      "bytes": 7153,
+      "sha256": "ec004074933f9757f1ed1a0eb41de1c698c44ee18b4aad875728a9714fb3f196",
+      "bytes": 7416,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -554,8 +554,8 @@
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_CORRECTION_ADDENDUM.md": {
-      "sha256": "5f104afeb4623ca2ae530172d4288025f4678301e47bffd98d1d85f9598d50b2",
-      "bytes": 2590,
+      "sha256": "3e24f85e7a2a007cdad5a6750fbe5bb8a7ab3d13cc42d3b5512ffc6d0aad9656",
+      "bytes": 5961,
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_HYDRAULIC_COMPACTION_IDENTIFIABILITY_RESULTS.md": {
@@ -569,8 +569,8 @@
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_REVIEW_DISPOSITION.md": {
-      "sha256": "a29a8b436eea31a7f0875bae49a1177d12e919d06634fd5bc5a89d630017fd1e",
-      "bytes": 2118,
+      "sha256": "f5d2e5b3f5264cb87781579fa29d153c7019fd01c5c0a71416f2c00b1b9f2adc",
+      "bytes": 2439,
       "git_mode": "100644"
     },
     "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md": {

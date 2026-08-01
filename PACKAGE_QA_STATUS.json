@@ -30,7 +30,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 225,
-    "source_manifest_aggregate_sha256": "80624fef2f7d46301c60a94be8b9a7624c5b8e90070b8b5cc14cb498f0a70667",
+    "source_manifest_aggregate_sha256": "43fae3edf7dfbd6575dd42a07db87a79c7fea8c0ec3eca1ed64f5899dee5d1bf",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -51,6 +51,8 @@
     "failed_openfoam_case_count": 0,
     "rank_count": 32,
     "validation_framework_disposition": "PINNED_FRAMEWORK_USED_UNCHANGED",
+    "independent_review_correction_status": "CORRECTION_FROZEN_NOT_YET_EXECUTED",
+    "new_openfoam_launches_authorized": 0,
     "physical_validation": "NOT_ESTABLISHED"
   },
   "val_infra_002": {

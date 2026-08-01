@@ -64,6 +64,11 @@ claim ceiling. Current candidate counts and source identities are recorded in
 `PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
 validation remains `NOT_ESTABLISHED`.
 
+Independent review froze a bounded correction of the primary correlation
+method before retained-trace access. The freeze changes no result bundle,
+protocol, reducer, execution record, report, trace, or scientific input and
+authorizes zero new OpenFOAM launches.
+
 ## Merged VAL-INFRA-002 repair
 
 VAL-INFRA-002 adds deterministic frozen-scope tests for authentic Stage-0 and

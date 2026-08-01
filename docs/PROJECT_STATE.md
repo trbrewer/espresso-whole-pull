@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: pending deterministic post-integration regeneration
+- Public source verification: 225/225 PASS
 - Active candidate: `VAL-CASE-001_HYDRAULIC_COMPACTION_IDENTIFIABILITY`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
@@ -15,6 +15,10 @@
 
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).
+
+VAL-CASE-001 has a prospectively frozen independent-review correction pending
+analysis-only reduction of its 47 immutable retained traces. No new scientific
+case or OpenFOAM launch is authorized.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

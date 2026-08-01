@@ -150,3 +150,9 @@ mode/type/object comparison, required Stage-0 ancestry, and added non-following
 worktree and real-Git adversarial tests. The superseded head used path and
 followed-target byte equality and was not fully fail-closed for object-type
 replacement.
+
+VAL-CASE-001 independent review then classified the reducer's substitution of
+uncentered cosine for the protocol-required centered correlation as a
+result-affecting method defect. A prospective correction freeze records the
+bounded reanalysis method before any retained trace access; it authorizes zero
+new OpenFOAM launches and leaves the case pending exact-head review.
