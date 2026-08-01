@@ -28,8 +28,8 @@
   ],
   "file_count": 213,
   "total_uncompressed_bytes_excluding_manifest": 1859278,
-  "aggregate_source_sha256": "598080a95a7a1eb5597e79a62d649a6758ccd2b7631ccf38696ef9df91c25441",
-  "aggregate_sha256": "598080a95a7a1eb5597e79a62d649a6758ccd2b7631ccf38696ef9df91c25441",
+  "aggregate_source_sha256": "48a505245f2754b28248776a688f0f793dcbf6814c4f30d250dfe80b1856406b",
+  "aggregate_sha256": "48a505245f2754b28248776a688f0f793dcbf6814c4f30d250dfe80b1856406b",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -621,27 +621,27 @@
     "scripts/generate_val001_mutation_inventory.py": {
       "sha256": "a40c87ef0580403a047c91262d77051fbeac77751a180e621a819fabe04d11fa",
       "bytes": 5386,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/generate_val001_normative_schemas.py": {
       "sha256": "b203d1a8bd98a98d5f19afd53452e0f9d0e68612effd3f4a822455f0d4208283",
       "bytes": 726,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/generate_val001_provenance_records.py": {
       "sha256": "6621dadbcb0dc15f8af8ea4dab4f2b39e641c61da586ddda8b6c4b03b3120ca7",
       "bytes": 3788,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/generate_val001_schema_provenance_freeze.py": {
       "sha256": "78477b80ef74e883c2e99599794d61f1030558f0381d4286a9fe198097918a68",
       "bytes": 4858,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/generate_val001_successor_consumed_lock.py": {
       "sha256": "068b318abac9f9962f7548956446893f56ee5e2cbed4adfb06fc04b66256ac4f",
       "bytes": 3128,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
       "sha256": "f543914bbf83cc0fb40878d10c36418867e8e4dec696d438dea6144bd4182ae0",
@@ -691,7 +691,7 @@
     "scripts/reconcile_val001_normative_administration.py": {
       "sha256": "ee37486a83923758f2ac0f8aef4eeb1ae2797b919a4bd1f129955f635b9629f9",
       "bytes": 21304,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/run_qualification.py": {
       "sha256": "2dc1dc4e65fde24d5119c7f7abf8af54863b1b05372b6f5a8e88df81a597ab04",
@@ -846,7 +846,7 @@
     "scripts/verify_val001_normative_schemas.py": {
       "sha256": "10ac398510397e94d79dc37d236ffe77b4fe4af34495d035bbc06c2480ea9994",
       "bytes": 611,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/verify_wp02_regression.py": {
       "sha256": "cfe56c67f8c64983993a8ef95a35cb8cbf4be1312eea98aee6819f8fd8721d18",
