@@ -164,7 +164,7 @@
       "schema_version": "espresso.val001.explicit_schema_specification_registry.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "927fb5f7e891f177688984a62a7b16de14d12c917d89a1ff27f5227f13d87ace",
+      "sha256": "4b6ff6af9991a41f66cf79da5f49ab9aa843056235af37cbe95606f07178fb60",
       "static_validation": "REQUIRED",
       "structure_signature_sha256": "55fc9cb8a07a848768d633d63dbbd6f734108f6bbf831f6cb17dd4baf02c7742",
       "treatment": "CURRENT_DEEP_SCHEMA"
@@ -745,7 +745,7 @@
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
-      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-7-ADMINISTRATIVE-CLOSURE",
+      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-8-EXPLICIT-SEMANTICS",
       "audit_only": false,
       "binder": "FINAL_GIT_HEAD_TREE",
       "binding_class": "BOUND_BY_FINAL_GIT_TREE",
@@ -1659,7 +1659,7 @@
       "schema_version": "JSONL_V3",
       "semantic_profile": "PROFILE-SCHEMA-DOCUMENT",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "5571335ef429b47c42bc4588cbbb04df1a1b03767cd1341d13b453e4b3d1e140",
+      "sha256": "8a46305616a88986e53a7432d85b4992b8ceb40d7d18e38271ecdaa6f2339c8b",
       "static_validation": "REQUIRED",
       "structure_signature_sha256": "18d83ec302539784dc0c6cece379687124680c45f274c8d3502384eaf96c4541",
       "treatment": "CURRENT_DEEP_SCHEMA"
