@@ -65,10 +65,10 @@
     "protected_or_holdout_scoring": "NOT_AUTHORIZED"
   },
   "freeze_binding": {
-    "commit": "966615e21fd56c3dd3f02933093ff5c5374d6ad2",
+    "commit": "12aaeae7960182976284083ca53d06b5521c69f6",
     "path": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
-    "sha256": "08ef32abfc46d30c2511e66db60e929b821a73fc8b2f2699dd4c63598fd33242",
-    "tree": "b88ff074ef29718895b987d1d22429717b614a29"
+    "sha256": "3eb002993bb348096e2c1d03154df9a16fc179fefb7734fd2fd750d35d43dc98",
+    "tree": "81bc3eb91f09a193aece2d794fa39ce4a0f941d6"
   },
   "further_retry_authorized": false,
   "issue": 37,
