@@ -84,9 +84,10 @@ Accounting retains at least three pre-correction computations, one failed
 first-correction invocation, and one successful replacement: the minimum known
 total is five. The exact pre-correction local count is not reconstructable.
 
-Final framework completion does not add a comparison. It inventories 64
+The hardening completion cycle does not add a comparison. It inventories 64
 governed records, applies an explicit deep-schema or immutable exact-hash and
 structure-signature treatment to each, and deterministically derives the
 summary ledger from four journal events. Quantitative variant discrimination
 was not assessed and mechanism uniqueness was not assessed. Additional data
-remain required before new physics as a conservative policy decision.
+remain required before new physics as a conservative policy decision. Deep
+class-specific schema work remains for 60 immutable sidecar-treated records.

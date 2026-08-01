@@ -84,12 +84,14 @@ source citation to Waszkiewicz, N. et al., *Physics of Fluids* 38, 063113
 (2026), DOI 10.1063/5.0319611. No comparison or OpenFOAM execution occurred in
 this hardening cycle. PR #38 remains open for independent read-adjudication.
 
-The final completion layer inventories 64 governed machine-readable records,
+The completion layer inventories 64 governed machine-readable records,
 uses explicit per-record schema treatment, derives the invocation summary
 deterministically from the four-event append-only journal, and binds the final
 consumed state. It performed no new comparison and no OpenFOAM work; V2 is
 unchanged and remains post-observation, non-blind, non-independent, and
-descriptive.
+descriptive. Four current records have direct deep schemas; 60 immutable
+records use exact-hash and nested-structure sidecars, so class-specific deep
+schema completion remains outstanding.
 
 ## License
 

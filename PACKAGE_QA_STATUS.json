@@ -30,7 +30,7 @@
     "val001_synthetic_test_count": 24,
     "static_gate_count": 36,
     "source_manifest_file_count": 192,
-    "source_manifest_aggregate_sha256": "5ce73158cf0097f35ba41abd08dd7dce87ae456613317b32270e1fa7c8060a87",
+    "source_manifest_aggregate_sha256": "3a4c0356042cfd4b3c48f893ee33755f527681cb95e5b22b978dd70a2edaa4d6",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -53,7 +53,7 @@
     "governed_record_inventory_count": 64,
     "invocation_journal_event_count": 4,
     "journal_summary_regeneration": "BYTE_FOR_BYTE_PASS",
-    "completion_status": "COMPLETE_AWAITING_FINAL_READJUDICATION",
+    "completion_status": "PARTIAL_DEEP_SCHEMA_COVERAGE_REMAINS",
     "physical_validation": "NOT_ESTABLISHED",
     "readjudication": "REQUIRED_BEFORE_MERGE"
   },
@@ -122,7 +122,7 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "val_001": {
-    "status": "FINAL_HARDENING_COMPLETION_COMPLETE_AWAITING_INDEPENDENT_READJUDICATION",
+    "status": "FINAL_HARDENING_COMPLETION_PARTIAL_NOT_READY_FOR_READJUDICATION",
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
     "adapter_semantic_tests": "PASS_SYNTHETIC_ONLY",
     "historical_reexpression_count": 6,

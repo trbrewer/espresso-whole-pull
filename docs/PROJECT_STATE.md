@@ -95,8 +95,10 @@ discrimination and mechanism uniqueness were not assessed;
 decision. Three earlier current-head OpenFOAM runs qualify the framework but
 did not produce the V2 pressure-sweep columns.
 
-The remaining registry, schema-treatment, synthetic transaction, and
-journal-to-summary gaps are closed on the open PR #38 candidate. The summary
+The registry, synthetic transaction, and journal-to-summary gaps are closed on
+the open PR #38 candidate. The summary
 ledger is byte-derived from the four-event journal and the production runner
 refuses the final consumed authority before source access. Independent
-read-only re-adjudication is still required before merge.
+read-only re-adjudication is still required before merge. Deep class-specific
+schemas remain incomplete for 60 records currently protected by immutable
+exact-hash and nested-structure sidecars, so PR #38 is not yet ready.
