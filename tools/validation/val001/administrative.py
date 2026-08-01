@@ -6,7 +6,7 @@ from typing import Any
 from .framework import ContractError, load_json, sha256, validate_record
 from .inventory import (ADMIN_CLOSURE_PATH, ADMIN_FREEZE_PATH, CANONICAL_LOCK_PATH,
     INVENTORY_PATH, REGISTRY_PATH, build_inventory, discover, verify_inventory, verify_registry)
-from .deep_schema import semantic_validate
+from .explicit_semantics import validate_profile_dispatch,explicit_schema_for
 from .schema import lint_schema
 
 def _git(root:Path,*args:str)->str:
@@ -37,31 +37,34 @@ def validate_binding_graph(inventory:dict[str,Any], freeze:dict[str,Any],
     if freeze_path!=ADMIN_FREEZE_PATH or lock_path!=CANONICAL_LOCK_PATH:
         raise ContractError("administrative binder identity mismatch")
     ordinary=set(_binding_map(freeze["ordinary_record_bindings"]));admin=set(_binding_map(freeze["administrative_bindings"]))
-    graph:dict[str,str]={}
-    for entry in inventory["records"]:
-        path,kind=entry["path"],entry["binding_class"]
-        if kind=="ORDINARY_HASH_BOUND_RECORD":
-            if path not in ordinary: raise ContractError(f"orphan ordinary record: {path}")
-            graph[path]=freeze_path
-        elif kind=="BOUND_BY_ADMINISTRATIVE_FREEZE":
-            if path not in admin: raise ContractError(f"orphan administrative record: {path}")
-            graph[path]=freeze_path
-        elif kind=="BOUND_BY_CANONICAL_LOCK":
-            if path!=freeze_path: raise ContractError("non-freeze canonical-lock binding")
-            graph[path]=lock_path
-        elif kind=="BOUND_BY_FINAL_GIT_TREE":
-            if path!=lock_path: raise ContractError("noncanonical terminal record")
-            graph[path]="FINAL_GIT_HEAD_TREE"
-    expected_ordinary={e["path"] for e in inventory["records"] if e["binding_class"]=="ORDINARY_HASH_BOUND_RECORD"}
-    expected_admin={e["path"] for e in inventory["records"] if e["binding_class"]=="BOUND_BY_ADMINISTRATIVE_FREEZE"}
-    if ordinary!=expected_ordinary or admin!=expected_admin: raise ContractError("binding set has orphan or extra record")
-    roots=0
+    graph:dict[str,str]={entry["path"]:entry.get("binder","") for entry in inventory["records"]}
+    # Traverse the declared graph before enforcing class-specific binder rules,
+    # so a genuine malicious cycle is detected as a cycle rather than hidden by
+    # a policy precheck.
     for start in graph:
         seen=set();node=start
         while node in graph:
             if node in seen: raise ContractError(f"administrative binding cycle at {node}")
             seen.add(node);node=graph[node]
         if node!="FINAL_GIT_HEAD_TREE": raise ContractError(f"orphan binding terminus: {node}")
+    for entry in inventory["records"]:
+        path,kind=entry["path"],entry["binding_class"]
+        if kind=="ORDINARY_HASH_BOUND_RECORD":
+            if path not in ordinary: raise ContractError(f"orphan ordinary record: {path}")
+            if entry.get("binder")!=freeze_path: raise ContractError(f"ordinary binder mismatch: {path}")
+        elif kind=="BOUND_BY_ADMINISTRATIVE_FREEZE":
+            if path not in admin: raise ContractError(f"orphan administrative record: {path}")
+            if entry.get("binder")!=freeze_path: raise ContractError(f"administrative binder mismatch: {path}")
+        elif kind=="BOUND_BY_CANONICAL_LOCK":
+            if path!=freeze_path: raise ContractError("non-freeze canonical-lock binding")
+            if entry.get("binder")!=lock_path: raise ContractError("freeze binder mismatch")
+        elif kind=="BOUND_BY_FINAL_GIT_TREE":
+            if path!=lock_path: raise ContractError("noncanonical terminal record")
+            if entry.get("binder")!="FINAL_GIT_HEAD_TREE": raise ContractError("terminal binder mismatch")
+    expected_ordinary={e["path"] for e in inventory["records"] if e["binding_class"]=="ORDINARY_HASH_BOUND_RECORD"}
+    expected_admin={e["path"] for e in inventory["records"] if e["binding_class"]=="BOUND_BY_ADMINISTRATIVE_FREEZE"}
+    if ordinary!=expected_ordinary or admin!=expected_admin: raise ContractError("binding set has orphan or extra record")
+    roots=0
     roots=len({target for target in graph.values() if target=="FINAL_GIT_HEAD_TREE"})
     if roots!=1: raise ContractError("terminal external root count is not one")
     return {"cycles":0,"orphans":0,"terminal_external_roots":roots}
@@ -71,17 +74,32 @@ def validate_all_records(root:Path, inventory:dict[str,Any])->int:
     for entry in inventory["records"]:
         path=root/entry["path"]
         if not path.exists(): raise ContractError(f"registered record missing: {entry['path']}")
-        schema=load_json(root/entry["schema_path"]);lint_schema(schema)
+        schema=explicit_schema_for(root,entry["path"]);lint_schema(schema)
         if path.suffix==".jsonl":
             lines=path.read_text(encoding="utf-8").splitlines()
             if not lines: raise ContractError("empty governed JSONL")
-            for line in lines: validate_record(json.loads(line),schema)
+            for line in lines:
+                event=json.loads(line);validate_record(event,schema)
+                validate_profile_dispatch(root,entry["path"],event,entry)
         else:
-            value=load_json(path);validate_record(value,schema);semantic_validate(entry["path"],value)
+            value=load_json(path);validate_record(value,schema);validate_profile_dispatch(root,entry["path"],value,entry)
         count+=1
     return count
 
-def verify_closure(root:Path, *, require_clean:bool=True)->dict[str,Any]:
+def verify_closure(root:Path, *, require_clean:bool=True,
+                   expected_head:str|None=None, expected_tree:str|None=None,
+                   require_external_root:bool=True)->dict[str,Any]:
+    if require_external_root and (not expected_head or not expected_tree):
+        raise ContractError("VAL001_EXPECTED_ROOT_ARGUMENT_REQUIRED")
+    for label,value in (("head",expected_head),("tree",expected_tree)):
+        if value is not None and __import__("re").fullmatch(r"[0-9a-f]{40}",value) is None:
+            raise ContractError(f"VAL001_EXPECTED_{label.upper()}_MALFORMED")
+    observed_head=_git(root,"rev-parse","HEAD")
+    observed_tree=_git(root,"rev-parse","HEAD^{tree}")
+    if expected_head is not None and observed_head!=expected_head:
+        raise ContractError("VAL001_EXPECTED_HEAD_MISMATCH")
+    if expected_tree is not None and observed_tree!=expected_tree:
+        raise ContractError("VAL001_EXPECTED_TREE_MISMATCH")
     enumerated=enumerate_governed(root)
     inventory=load_json(root/INVENTORY_PATH);registry=load_json(root/REGISTRY_PATH)
     registered=[r["path"] for r in inventory["records"]]
@@ -120,8 +138,12 @@ def verify_closure(root:Path, *, require_clean:bool=True)->dict[str,Any]:
             if rel!=CANONICAL_LOCK_PATH: raise ContractError("noncanonical final Git-tree terminal")
             tracked_blob=_git(root,"rev-parse",f"HEAD:{rel}")
             working_blob=_git(root,"hash-object",rel)
-            if tracked_blob!=working_blob: raise ContractError("canonical lock working bytes differ from HEAD")
+            if tracked_blob!=working_blob: raise ContractError("VAL001_CANONICAL_LOCK_BLOB_MISMATCH")
         else: raise ContractError(f"unknown binding class: {kind}")
     if classes.get("BOUND_BY_FINAL_GIT_TREE")!=1: raise ContractError("terminal external root count is not one")
-    if require_clean and _git(root,"status","--porcelain"): raise ContractError("administrative closure requires clean working tree")
-    return {"enumerated":len(enumerated),"registered":len(registered),"validated":validated,"binding_classes":classes,**graph_result,"head":_git(root,"rev-parse","HEAD"),"tree":_git(root,"rev-parse","HEAD^{tree}")}
+    if require_clean and _git(root,"status","--porcelain"): raise ContractError("VAL001_WORKING_TREE_NOT_CLEAN")
+    return {"enumerated":len(enumerated),"registered":len(registered),"validated":validated,"binding_classes":classes,**graph_result,
+        "expected_head":expected_head,"observed_head":observed_head,
+        "expected_tree":expected_tree,"observed_tree":observed_tree,
+        "lock_blob":_git(root,"rev-parse",f"HEAD:{CANONICAL_LOCK_PATH}"),
+        "external_root_verified":require_external_root}

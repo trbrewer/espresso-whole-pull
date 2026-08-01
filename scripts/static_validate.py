@@ -771,7 +771,7 @@ def main() -> None:
     except Exception as exc:
         gates["val001_complete_deep_schema_coverage"] = gate(False, error=str(exc))
     try:
-        closure_details = verify_val001_administrative_closure(root, require_clean=False)
+        closure_details = verify_val001_administrative_closure(root, require_clean=False, require_external_root=False)
         gates["val001_zero_exclusion_administrative_closure"] = gate(True, **closure_details)
     except Exception as exc:
         gates["val001_zero_exclusion_administrative_closure"] = gate(False, error=str(exc))
