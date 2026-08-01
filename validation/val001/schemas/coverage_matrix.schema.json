@@ -89,6 +89,12 @@
           "semantic_validator": {
             "type": "string"
           },
+          "semantic_profile": {
+            "const": "VAL001_EXPLICIT_PROFILE_V1"
+          },
+          "schema_origin": {
+            "const": "EXPLICIT_CLASS_OR_VERSION_SEMANTICS"
+          },
           "sha256": {
             "pattern": "^[0-9a-f]{64}$",
             "type": "string"
@@ -116,13 +122,15 @@
           "schema_path",
           "schema_version",
           "semantic_validator",
+          "semantic_profile",
+          "schema_origin",
           "sha256",
           "structural_family",
           "treatment"
         ],
         "type": "object"
       },
-      "minItems": 69,
+      "minItems": 1,
       "type": "array"
     },
     "schema_version": {

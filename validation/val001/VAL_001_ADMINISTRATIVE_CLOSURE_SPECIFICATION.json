@@ -1,0 +1,30 @@
+{
+  "schema_version": "espresso.val001.administrative_closure_specification.v1",
+  "record_id": "VAL001-ADMINISTRATIVE-CLOSURE-SPECIFICATION-1",
+  "enumeration_roots": ["validation/val001"],
+  "included_extensions": [".json", ".jsonl"],
+  "outside_root_records": [],
+  "excluded_paths": [],
+  "binding_classes": ["ORDINARY_HASH_BOUND_RECORD", "BOUND_BY_ADMINISTRATIVE_FREEZE", "BOUND_BY_CANONICAL_LOCK", "BOUND_BY_FINAL_GIT_TREE"],
+  "valid_edges": [
+    "ORDINARY_HASH_BOUND_RECORD->ADMINISTRATIVE_FREEZE",
+    "BOUND_BY_ADMINISTRATIVE_FREEZE->ADMINISTRATIVE_FREEZE",
+    "BOUND_BY_CANONICAL_LOCK->CANONICAL_LOCK",
+    "BOUND_BY_FINAL_GIT_TREE->FINAL_GIT_HEAD_TREE"
+  ],
+  "canonical_lock": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
+  "administrative_freeze": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+  "terminal_external_root": "FINAL_GIT_HEAD_TREE",
+  "rules": {
+    "cycle_detection": "REQUIRED",
+    "orphan_detection": "REQUIRED",
+    "duplicate_path_detection": "REQUIRED",
+    "duplicate_record_id_detection": "REQUIRED",
+    "missing_binder_detection": "REQUIRED",
+    "multiple_binders": "PROHIBITED",
+    "terminal_root_count": 1,
+    "clean_worktree": "REQUIRED",
+    "canonical_lock_git_blob_match": "REQUIRED"
+  },
+  "error_disposition": "FAIL_CLOSED_NO_EXECUTION_AUTHORITY"
+}

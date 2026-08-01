@@ -2173,6 +2173,520 @@
     {
       "additionalProperties": false,
       "properties": {
+        "EXECUTION_AUTHORITY": {
+          "enum": [
+            "CONSUMED"
+          ],
+          "type": "string"
+        },
+        "EXPERIMENTAL_COMMISSIONING": {
+          "type": "string"
+        },
+        "GENERAL_PHYSICAL_VALIDATION": {
+          "enum": [
+            "NOT_ESTABLISHED"
+          ],
+          "type": "string"
+        },
+        "GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION": {
+          "enum": [
+            "NOT_ESTABLISHED"
+          ],
+          "type": "string"
+        },
+        "HOLDOUT_EXECUTION": {
+          "type": "string"
+        },
+        "NEW_GOVERNED_RESULT_PRODUCING_INVOCATIONS": {
+          "type": "integer"
+        },
+        "NEW_GOVERNING_PHYSICS": {
+          "type": "string"
+        },
+        "NEW_OPENFOAM_BUILDS": {
+          "type": "integer"
+        },
+        "NEW_OPENFOAM_CASE_EXECUTIONS": {
+          "type": "integer"
+        },
+        "NEW_REAL_DATA_COMPARISON_INVOCATIONS": {
+          "type": "integer"
+        },
+        "PHYSICAL_VALIDATION": {
+          "enum": [
+            "NOT_ESTABLISHED"
+          ],
+          "type": "string"
+        },
+        "PROTECTED_OR_HOLDOUT_SCORING": {
+          "type": "string"
+        },
+        "V2_ARITHMETIC_CHANGED": {
+          "type": "boolean"
+        },
+        "V2_RESULT_CHANGED": {
+          "type": "boolean"
+        },
+        "bindings": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "type": "object"
+          },
+          "maxItems": 14,
+          "minItems": 14,
+          "type": "array"
+        },
+        "implementation_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "implementation_tree": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "next_binding": {
+          "type": "string"
+        },
+        "puckworks_lock": {
+          "additionalProperties": false,
+          "properties": {
+            "commit": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "tree": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "commit",
+            "tree"
+          ],
+          "type": "object"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "source_manifest": {
+          "additionalProperties": false,
+          "properties": {
+            "aggregate": {
+              "type": "string"
+            },
+            "count": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "aggregate",
+            "count"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "EXECUTION_AUTHORITY",
+        "EXPERIMENTAL_COMMISSIONING",
+        "GENERAL_PHYSICAL_VALIDATION",
+        "GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION",
+        "HOLDOUT_EXECUTION",
+        "NEW_GOVERNED_RESULT_PRODUCING_INVOCATIONS",
+        "NEW_GOVERNING_PHYSICS",
+        "NEW_OPENFOAM_BUILDS",
+        "NEW_OPENFOAM_CASE_EXECUTIONS",
+        "NEW_REAL_DATA_COMPARISON_INVOCATIONS",
+        "PHYSICAL_VALIDATION",
+        "PROTECTED_OR_HOLDOUT_SCORING",
+        "V2_ARITHMETIC_CHANGED",
+        "V2_RESULT_CHANGED",
+        "bindings",
+        "implementation_commit",
+        "implementation_tree",
+        "next_binding",
+        "puckworks_lock",
+        "record_id",
+        "schema_version",
+        "source_manifest"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "EXECUTION_AUTHORITY": {
+          "enum": [
+            "CONSUMED"
+          ],
+          "type": "string"
+        },
+        "GENERIC_CATCH_ALL_SCHEMAS": {
+          "type": "integer"
+        },
+        "IMMUTABLE_HISTORICAL_SIDECAR_AS_PRIMARY_VALIDATION": {
+          "type": "integer"
+        },
+        "INVOCATION_JOURNAL_CHANGED": {
+          "type": "boolean"
+        },
+        "INVOCATION_SUMMARY_CHANGED": {
+          "type": "boolean"
+        },
+        "NEW_GOVERNED_RESULT_PRODUCING_INVOCATIONS": {
+          "type": "integer"
+        },
+        "NEW_OPENFOAM_BUILDS": {
+          "type": "integer"
+        },
+        "NEW_OPENFOAM_CASE_EXECUTIONS": {
+          "type": "integer"
+        },
+        "NEW_REAL_DATA_COMPARISON_INVOCATIONS": {
+          "type": "integer"
+        },
+        "PHYSICAL_VALIDATION": {
+          "enum": [
+            "NOT_ESTABLISHED"
+          ],
+          "type": "string"
+        },
+        "UNREGISTERED_GOVERNED_RECORDS": {
+          "type": "integer"
+        },
+        "V2_ARITHMETIC_CHANGED": {
+          "type": "boolean"
+        },
+        "V2_RESULT_CHANGED": {
+          "type": "boolean"
+        },
+        "claim_boundaries": {
+          "additionalProperties": false,
+          "properties": {
+            "EXPERIMENTAL_COMMISSIONING": {
+              "type": "string"
+            },
+            "GENERAL_PHYSICAL_VALIDATION": {
+              "enum": [
+                "NOT_ESTABLISHED"
+              ],
+              "type": "string"
+            },
+            "GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION": {
+              "enum": [
+                "NOT_ESTABLISHED"
+              ],
+              "type": "string"
+            },
+            "HOLDOUT_EXECUTION": {
+              "type": "string"
+            },
+            "NEW_GOVERNING_PHYSICS": {
+              "type": "string"
+            },
+            "PROTECTED_OR_HOLDOUT_SCORING": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "EXPERIMENTAL_COMMISSIONING",
+            "GENERAL_PHYSICAL_VALIDATION",
+            "GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION",
+            "HOLDOUT_EXECUTION",
+            "NEW_GOVERNING_PHYSICS",
+            "PROTECTED_OR_HOLDOUT_SCORING"
+          ],
+          "type": "object"
+        },
+        "coverage_matrix": {
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "governed_records": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "schema_id": {
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "treatment": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "schema_id",
+              "sha256",
+              "treatment"
+            ],
+            "type": "object"
+          },
+          "maxItems": 71,
+          "minItems": 71,
+          "type": "array"
+        },
+        "immutable_lineage": {
+          "additionalProperties": false,
+          "properties": {
+            "failure_artifact": {
+              "type": "string"
+            },
+            "historical_consumed_lock_v2": {
+              "type": "string"
+            },
+            "invocation_journal": {
+              "type": "string"
+            },
+            "invocation_summary": {
+              "type": "string"
+            },
+            "original_result": {
+              "type": "string"
+            },
+            "v2_result": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "failure_artifact",
+            "historical_consumed_lock_v2",
+            "invocation_journal",
+            "invocation_summary",
+            "original_result",
+            "v2_result"
+          ],
+          "type": "object"
+        },
+        "implementation_bindings": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "type": "object"
+          },
+          "maxItems": 7,
+          "minItems": 7,
+          "type": "array"
+        },
+        "implementation_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "implementation_tree": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "inventory": {
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "record_count": {
+              "type": "integer"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "record_count",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "mutation_test_families": {
+          "type": "integer"
+        },
+        "puckworks_lock": {
+          "additionalProperties": false,
+          "properties": {
+            "commit": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "tree": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "commit",
+            "tree"
+          ],
+          "type": "object"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "registry": {
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "schema_family_count": {
+          "type": "integer"
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "schemas": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "type": "object"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        "source_manifest": {
+          "additionalProperties": false,
+          "properties": {
+            "aggregate": {
+              "type": "string"
+            },
+            "count": {
+              "type": "integer"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "aggregate",
+            "count",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "treatment_counts": {
+          "additionalProperties": false,
+          "properties": {
+            "CURRENT_DEEP_SCHEMA": {
+              "type": "integer"
+            },
+            "IMMUTABLE_HISTORICAL_DEEP_SCHEMA": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "CURRENT_DEEP_SCHEMA",
+            "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "EXECUTION_AUTHORITY",
+        "GENERIC_CATCH_ALL_SCHEMAS",
+        "IMMUTABLE_HISTORICAL_SIDECAR_AS_PRIMARY_VALIDATION",
+        "INVOCATION_JOURNAL_CHANGED",
+        "INVOCATION_SUMMARY_CHANGED",
+        "NEW_GOVERNED_RESULT_PRODUCING_INVOCATIONS",
+        "NEW_OPENFOAM_BUILDS",
+        "NEW_OPENFOAM_CASE_EXECUTIONS",
+        "NEW_REAL_DATA_COMPARISON_INVOCATIONS",
+        "PHYSICAL_VALIDATION",
+        "UNREGISTERED_GOVERNED_RECORDS",
+        "V2_ARITHMETIC_CHANGED",
+        "V2_RESULT_CHANGED",
+        "claim_boundaries",
+        "coverage_matrix",
+        "governed_records",
+        "immutable_lineage",
+        "implementation_bindings",
+        "implementation_commit",
+        "implementation_tree",
+        "inventory",
+        "mutation_test_families",
+        "puckworks_lock",
+        "record_id",
+        "registry",
+        "schema_family_count",
+        "schema_version",
+        "schemas",
+        "source_manifest",
+        "treatment_counts"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
         "amendment_procedure": {
           "type": "string"
         },
@@ -3848,6 +4362,133 @@
     {
       "additionalProperties": false,
       "properties": {
+        "additive_sequence": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        },
+        "adjudication_disposition": {
+          "enum": [
+            "PR38_FINAL_DEEP_SCHEMA_READJUDICATION_CHANGES_REQUIRED_NOT_READY_FOR_MERGE"
+          ],
+          "type": "string"
+        },
+        "blocking_findings": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 6,
+          "type": "array"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "change_declaration": {
+          "type": "string"
+        },
+        "closure_design": {
+          "type": "string"
+        },
+        "formerly_excluded_records": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "human_owner_authority": {
+          "enum": [
+            "Final additive administrative-closure and semantic-enforcement correction authority dated 31 July 2026"
+          ],
+          "type": "string"
+        },
+        "issue": {
+          "type": "integer"
+        },
+        "material_findings": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        },
+        "prohibited_actions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "type": "array"
+        },
+        "pull_request": {
+          "type": "integer"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "required_corrections": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 7,
+          "minItems": 7,
+          "type": "array"
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "starting_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "starting_tree": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "stop_conditions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "task": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "additive_sequence",
+        "adjudication_disposition",
+        "blocking_findings",
+        "branch",
+        "change_declaration",
+        "closure_design",
+        "formerly_excluded_records",
+        "human_owner_authority",
+        "issue",
+        "material_findings",
+        "prohibited_actions",
+        "pull_request",
+        "record_id",
+        "required_corrections",
+        "schema_version",
+        "starting_commit",
+        "starting_tree",
+        "stop_conditions",
+        "task"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
         "affected_artifacts": {
           "items": {
             "type": "string"
@@ -5191,6 +5832,191 @@
         "claim_boundaries": {
           "additionalProperties": false,
           "properties": {
+            "experimental_commissioning": {
+              "type": "string"
+            },
+            "general_physical_validation": {
+              "enum": [
+                "NOT_ESTABLISHED"
+              ],
+              "type": "string"
+            },
+            "general_whole_solver_physical_validation": {
+              "enum": [
+                "NOT_ESTABLISHED"
+              ],
+              "type": "string"
+            },
+            "holdout_execution": {
+              "type": "string"
+            },
+            "new_governing_physics": {
+              "type": "string"
+            },
+            "physical_validation": {
+              "enum": [
+                "NOT_ESTABLISHED"
+              ],
+              "type": "string"
+            },
+            "protected_or_holdout_scoring": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "experimental_commissioning",
+            "general_physical_validation",
+            "general_whole_solver_physical_validation",
+            "holdout_execution",
+            "new_governing_physics",
+            "physical_validation",
+            "protected_or_holdout_scoring"
+          ],
+          "type": "object"
+        },
+        "profiles": {
+          "items": {
+            "anyOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "applies_to": {
+                    "type": "string"
+                  },
+                  "profile_id": {
+                    "type": "string"
+                  },
+                  "rules": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 5,
+                    "minItems": 5,
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "applies_to",
+                  "profile_id",
+                  "rules"
+                ],
+                "type": "object"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "applies_to": {
+                    "type": "string"
+                  },
+                  "profile_id": {
+                    "type": "string"
+                  },
+                  "rules": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 4,
+                    "minItems": 4,
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "applies_to",
+                  "profile_id",
+                  "rules"
+                ],
+                "type": "object"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "applies_to": {
+                    "type": "string"
+                  },
+                  "profile_id": {
+                    "type": "string"
+                  },
+                  "rules": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 3,
+                    "minItems": 3,
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "applies_to",
+                  "profile_id",
+                  "rules"
+                ],
+                "type": "object"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "applies_to": {
+                    "type": "string"
+                  },
+                  "profile_id": {
+                    "type": "string"
+                  },
+                  "rules": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "applies_to",
+                  "profile_id",
+                  "rules"
+                ],
+                "type": "object"
+              }
+            ]
+          },
+          "maxItems": 12,
+          "minItems": 12,
+          "type": "array"
+        },
+        "prohibited_schema_origins": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "schema_origin": {
+          "type": "string"
+        },
+        "schema_version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_boundaries",
+        "profiles",
+        "prohibited_schema_origins",
+        "record_id",
+        "schema_origin",
+        "schema_version"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "claim_boundaries": {
+          "additionalProperties": false,
+          "properties": {
             "new_governing_physics": {
               "type": "string"
             },
@@ -5759,6 +6585,116 @@
         "requests",
         "schema_version",
         "status",
+        "task"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "alternate_activation_allowed": {
+          "type": "boolean"
+        },
+        "alternate_authority_allowed": {
+          "type": "boolean"
+        },
+        "alternate_invocation_id_allowed": {
+          "type": "boolean"
+        },
+        "alternate_ledger_allowed": {
+          "type": "boolean"
+        },
+        "authority_status": {
+          "enum": [
+            "CONSUMED"
+          ],
+          "type": "string"
+        },
+        "bindings": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "type": "object"
+          },
+          "maxItems": 14,
+          "minItems": 14,
+          "type": "array"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "claim_boundaries": {
+          "additionalProperties": false,
+          "properties": {
+            "new_governing_physics": {
+              "type": "string"
+            },
+            "physical_validation": {
+              "enum": [
+                "NOT_ESTABLISHED"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "new_governing_physics",
+            "physical_validation"
+          ],
+          "type": "object"
+        },
+        "further_retry_authorized": {
+          "type": "boolean"
+        },
+        "issue": {
+          "type": "integer"
+        },
+        "pull_request": {
+          "type": "integer"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "remaining_governed_result_producing_invocations": {
+          "type": "integer"
+        },
+        "remaining_real_data_comparison_invocations": {
+          "type": "integer"
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "task": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "alternate_activation_allowed",
+        "alternate_authority_allowed",
+        "alternate_invocation_id_allowed",
+        "alternate_ledger_allowed",
+        "authority_status",
+        "bindings",
+        "branch",
+        "claim_boundaries",
+        "further_retry_authorized",
+        "issue",
+        "pull_request",
+        "record_id",
+        "remaining_governed_result_producing_invocations",
+        "remaining_real_data_comparison_invocations",
+        "schema_version",
         "task"
       ],
       "type": "object"

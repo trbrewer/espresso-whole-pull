@@ -11,6 +11,10 @@ REGISTRY_PATH = "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json"
 COVERAGE_PATH = "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json"
 FAMILY_SCHEMA_PATH = "validation/val001/schemas/deep_record_families.schema.json"
 SCHEMA_DOCUMENT_PATH = "validation/val001/schemas/schema_document.schema.json"
+ADMIN_FREEZE_PATH = "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json"
+CANONICAL_LOCK_PATH = "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json"
+ADMIN_CLOSURE_PATH = "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json"
+ADMIN_BOUND = {INVENTORY_PATH, REGISTRY_PATH, COVERAGE_PATH, ADMIN_CLOSURE_PATH}
 
 def structure(value: Any) -> Any:
     if isinstance(value, dict): return {key: structure(value[key]) for key in sorted(value)}
@@ -35,14 +39,9 @@ def git_value(root: Path, args: list[str], fallback: str) -> str:
 
 def discover(root: Path) -> list[Path]:
     base=root/"validation/val001"
-    # These three canonical closure records form a directed binding chain:
-    # inventory/registry -> completion freeze -> final consumed lock. Including
-    # their own mutable successor bytes would require an impossible hash cycle.
-    self_bound={INVENTORY_PATH,REGISTRY_PATH,
-        "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json",
-        "validation/val001/contracts/VAL_001_DEEP_SCHEMA_COMPLETION_FREEZE.json",
-        "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json"}
-    return sorted(path for path in base.rglob("*") if path.is_file() and path.suffix in {".json",".jsonl"} and path.relative_to(root).as_posix() not in self_bound)
+    # Enumeration is deliberately unconditional: administrative closure is a
+    # binding relationship, never a reason to omit a governed record.
+    return sorted(path for path in base.rglob("*") if path.is_file() and path.suffix in {".json",".jsonl"})
 
 def build_inventory(root: Path) -> dict[str,Any]:
     coverage_path=root/COVERAGE_PATH
@@ -55,8 +54,18 @@ def build_inventory(root: Path) -> dict[str,Any]:
         # The inventory identity is path-derived and therefore unique even when
         # immutable historical generations legitimately retain one artifact ID.
         record_id="INV-"+hashlib.sha256(rel.encode("utf-8")).hexdigest()[:20].upper()
-        if rel==COVERAGE_PATH:
+        if rel==INVENTORY_PATH:
+            schema_id="espresso.val001.governed_record_inventory.v3";schema_path="validation/val001/schemas/governed_record_inventory.schema.json";treatment="CURRENT_DEEP_SCHEMA"
+        elif rel==REGISTRY_PATH:
+            schema_id="espresso.val001.governed_schema_registry.v3";schema_path="validation/val001/schemas/governed_schema_registry.schema.json";treatment="CURRENT_DEEP_SCHEMA"
+        elif rel==COVERAGE_PATH:
             schema_id="espresso.val001.deep_schema_coverage_matrix.v1";schema_path="validation/val001/schemas/coverage_matrix.schema.json";treatment="CURRENT_DEEP_SCHEMA"
+        elif rel==ADMIN_CLOSURE_PATH:
+            schema_id="espresso.val001.administrative_closure_specification.v1";schema_path="validation/val001/schemas/administrative_closure_specification.schema.json";treatment="CURRENT_DEEP_SCHEMA"
+        elif rel==ADMIN_FREEZE_PATH:
+            schema_id="espresso.val001.administrative_closure_freeze.v1";schema_path="validation/val001/schemas/administrative_closure_freeze.schema.json";treatment="CURRENT_DEEP_SCHEMA"
+        elif rel==CANONICAL_LOCK_PATH:
+            schema_id="espresso.val001.canonical_consumed_lock.v2";schema_path="validation/val001/schemas/canonical_consumed_lock.schema.json";treatment="CURRENT_DEEP_SCHEMA"
         elif "/schemas/" in rel:
             schema_id="espresso.val001.schema_document.v1";schema_path=SCHEMA_DOCUMENT_PATH;treatment="CURRENT_DEEP_SCHEMA"
         elif path.suffix==".jsonl":
@@ -68,18 +77,26 @@ def build_inventory(root: Path) -> dict[str,Any]:
         tracked=git_value(root,["ls-files","--error-unmatch",rel],"")
         blob=git_value(root,["hash-object",rel],hashlib.sha1(data).hexdigest())
         producing=git_value(root,["log","-1","--format=%H","--",rel],"PENDING_COMPLETION_COMMIT") if tracked else "PENDING_COMPLETION_COMMIT"
-        records.append({"path":rel,"sha256":hashlib.sha256(data).hexdigest(),"git_blob":blob,"producing_commit":producing,"record_id":record_id,"artifact_record_id":artifact_record_id,"record_class":record_class(rel),"schema_id":schema_id,"schema_version":value.get("schema_version","JSONL_V3") if isinstance(value,dict) else "JSONL_V3","schema_path":schema_path,"semantic_validator":"VALIDATE_DEEP_AND_CROSS_RECORD","treatment":treatment,"current":treatment=="CURRENT_DEEP_SCHEMA","executable":False,"audit_only":treatment!="CURRENT_DEEP_SCHEMA","mutability":"IMMUTABLE_AFTER_DEEP_SCHEMA_FREEZE","governing":rel.endswith("INVOCATION_SUMMARY_V2.json"),"superseded":("historical/" in rel or "FIRST_COMPONENT" in rel or "EXECUTION_FAILURE" in rel),"claim_ceiling":"NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS","puckworks_lock_applicable":rel.startswith("validation/val001/"),"source_access_role":"NO_SOURCE_ACCESS" if "ACCESS_LOG" not in rel else "SOURCE_ACCESS_AUDIT","static_validation":"REQUIRED","structure_signature_sha256":hashlib.sha256(canonical_json(structure(value))).hexdigest()})
+        if rel in ADMIN_BOUND:
+            binding_class="BOUND_BY_ADMINISTRATIVE_FREEZE"; bound_sha=None; bound_blob=None; binder=ADMIN_FREEZE_PATH; producing="BOUND_BY_BINDER"
+        elif rel==ADMIN_FREEZE_PATH:
+            binding_class="BOUND_BY_CANONICAL_LOCK"; bound_sha=None; bound_blob=None; binder=CANONICAL_LOCK_PATH; producing="BOUND_BY_BINDER"
+        elif rel==CANONICAL_LOCK_PATH:
+            binding_class="BOUND_BY_FINAL_GIT_TREE"; bound_sha=None; bound_blob=None; binder="FINAL_GIT_HEAD_TREE"; producing="BOUND_BY_FINAL_GIT_TREE"
+        else:
+            binding_class="ORDINARY_HASH_BOUND_RECORD"; bound_sha=hashlib.sha256(data).hexdigest(); bound_blob=blob; binder=ADMIN_FREEZE_PATH
+        records.append({"path":rel,"sha256":bound_sha,"git_blob":bound_blob,"producing_commit":producing,"record_id":record_id,"artifact_record_id":artifact_record_id,"record_class":record_class(rel),"schema_id":schema_id,"schema_version":value.get("schema_version","JSONL_V3") if isinstance(value,dict) else "JSONL_V3","schema_path":schema_path,"semantic_validator":"VALIDATE_DEEP_AND_CROSS_RECORD","semantic_profile":"VAL001_EXPLICIT_PROFILE_V1","schema_origin":"EXPLICIT_CLASS_OR_VERSION_SEMANTICS","binding_class":binding_class,"binder":binder,"treatment":treatment,"current":treatment=="CURRENT_DEEP_SCHEMA","executable":False,"audit_only":treatment!="CURRENT_DEEP_SCHEMA","mutability":"IMMUTABLE_AFTER_ADMINISTRATIVE_FREEZE","governing":rel.endswith("INVOCATION_SUMMARY_V2.json"),"superseded":("historical/" in rel or "FIRST_COMPONENT" in rel or "EXECUTION_FAILURE" in rel),"claim_ceiling":"NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS","puckworks_lock_applicable":rel.startswith("validation/val001/"),"source_access_role":"NO_SOURCE_ACCESS" if "ACCESS_LOG" not in rel else "SOURCE_ACCESS_AUDIT","static_validation":"REQUIRED","structure_signature_sha256":hashlib.sha256(canonical_json(structure(value))).hexdigest()})
     paths=[r["path"] for r in records]; ids=[str(r["record_id"]) for r in records]
     if len(paths)!=len(set(paths)): raise ContractError("duplicate inventory path")
     duplicates={item for item in ids if ids.count(item)>1 and item not in {"VAL-001"}}
     if duplicates: raise ContractError(f"duplicate record IDs: {sorted(duplicates)}")
-    return {"schema_version":"espresso.val001.governed_record_inventory.v2","record_id":"VAL001-GOVERNED-RECORD-INVENTORY-2","scope":"ALL_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_WITH_DIRECTED_CLOSURE","record_count":len(records),"records":records,"closure":{"inventory_self":"BOUND_BY_DEEP_SCHEMA_FREEZE_AVOID_SELF_HASH","registry_self":"BOUND_BY_DEEP_SCHEMA_FREEZE_AVOID_SELF_HASH","canonical_consumed_lock":"BINDS_DEEP_SCHEMA_FREEZE_INVENTORY_AND_REGISTRY_AS_CHAIN_TERMINUS","deep_schema_freeze":"BINDS_INVENTORY_REGISTRY_AND_COVERAGE","sidecar_primary_validation_count":0}}
+    return {"schema_version":"espresso.val001.governed_record_inventory.v3","record_id":"VAL001-GOVERNED-RECORD-INVENTORY-3","scope":"EVERY_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_ZERO_EXCLUSIONS","record_count":len(records),"records":records,"closure":{"enumeration_exclusions":0,"administrative_freeze":ADMIN_FREEZE_PATH,"canonical_lock":CANONICAL_LOCK_PATH,"terminal_external_root":"FINAL_GIT_HEAD_TREE","sidecar_primary_validation_count":0}}
 
 def verify_inventory(root: Path, inventory: dict[str,Any]) -> None:
     expected=build_inventory(root); observed={r["path"]:r for r in inventory["records"]}; actual={r["path"]:r for r in expected["records"]}
     if set(observed)!=set(actual): raise ContractError(f"inventory coverage mismatch missing={sorted(set(actual)-set(observed))} extra={sorted(set(observed)-set(actual))}")
     for path,item in observed.items():
-        for key in ("sha256","git_blob","record_class","schema_path","treatment","structure_signature_sha256"):
+        for key in ("sha256","git_blob","record_class","schema_path","treatment","structure_signature_sha256","binding_class","binder"):
             if item[key]!=actual[path][key]: raise ContractError(f"inventory mismatch {path}:{key}")
 
 def inventory_bytes(root: Path) -> bytes: return canonical_json(build_inventory(root))
@@ -90,20 +107,20 @@ def build_registry(inventory: dict[str, Any]) -> dict[str, Any]:
     for item in inventory["records"]:
         records.append({key:item[key] for key in (
             "path","sha256","record_id","artifact_record_id","record_class",
-            "schema_id","schema_version","schema_path","semantic_validator",
+            "schema_id","schema_version","schema_path","semantic_validator","semantic_profile","schema_origin","binding_class","binder",
             "treatment","current","executable","audit_only","claim_ceiling",
             "puckworks_lock_applicable","static_validation","structure_signature_sha256"
         )})
     return {
-        "schema_version":"espresso.val001.governed_schema_registry.v2",
-        "record_id":"VAL001-GOVERNED-SCHEMA-REGISTRY-2",
+        "schema_version":"espresso.val001.governed_schema_registry.v3",
+        "record_id":"VAL001-GOVERNED-SCHEMA-REGISTRY-3",
         "coverage":"EXPLICIT_ONE_RECORD_ONE_TREATMENT_NO_PREFIX_OR_CATCH_ALL",
         "record_count":len(records),
         "records":records,
         "closure":{
-            "registry_self":"BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH",
-            "inventory":"EXHAUSTIVE_EXCEPT_INVENTORY_SELF",
-            "final_lock":"BINDS_COMPLETION_FREEZE_REGISTRY_AND_INVENTORY"
+            "enumeration_exclusions":0,
+            "administrative_records":"DIRECTLY_REGISTERED_AND_VALIDATED",
+            "final_lock":"SOLE_FINAL_GIT_TREE_TERMINAL"
         }
     }
 

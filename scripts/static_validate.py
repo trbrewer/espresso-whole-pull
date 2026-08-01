@@ -24,6 +24,7 @@ from prepare_case import render_control_dict  # noqa: E402
 from verify_val001_correction import verify as verify_val001_correction  # noqa: E402
 from verify_val001_hardening import verify as verify_val001_hardening  # noqa: E402
 from verify_val001_deep_schema_coverage import verify as verify_val001_deep_schema_coverage  # noqa: E402
+from tools.validation.val001.administrative import verify_closure as verify_val001_administrative_closure  # noqa: E402
 
 PACKAGE_VERSION = "0.2.0"
 FROZEN_SCENARIO_VERSION = "0.1.4"
@@ -769,6 +770,11 @@ def main() -> None:
         gates["val001_complete_deep_schema_coverage"] = gate(True, **deep_schema_details)
     except Exception as exc:
         gates["val001_complete_deep_schema_coverage"] = gate(False, error=str(exc))
+    try:
+        closure_details = verify_val001_administrative_closure(root, require_clean=False)
+        gates["val001_zero_exclusion_administrative_closure"] = gate(True, **closure_details)
+    except Exception as exc:
+        gates["val001_zero_exclusion_administrative_closure"] = gate(False, error=str(exc))
 
     all_pass = all(item["status"] == "PASS" for item in gates.values())
     report = {
