@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 196,
-  "total_uncompressed_bytes_excluding_manifest": 1778157,
-  "aggregate_source_sha256": "7e566397894a7d6d472ca62f40e5a2bf6d0989df5c308b7b23144d7766398a90",
-  "aggregate_sha256": "7e566397894a7d6d472ca62f40e5a2bf6d0989df5c308b7b23144d7766398a90",
+  "total_uncompressed_bytes_excluding_manifest": 1779764,
+  "aggregate_source_sha256": "15fe85ae7091e6752aaa0464a157002ef3bf57f0e700a3decba1d6a840be4774",
+  "aggregate_sha256": "15fe85ae7091e6752aaa0464a157002ef3bf57f0e700a3decba1d6a840be4774",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -944,8 +944,8 @@
       "git_mode": "100644"
     },
     "tests/test_val001_deep_schema.py": {
-      "sha256": "68e92c73c7f2f60861beb5f089f0745472e22bf16944cf6fd9dc725c49e76885",
-      "bytes": 2561,
+      "sha256": "29fba07a3bffac1f842f7fae38357f2eec1faaeb9dc0f72a7bd7844993463f52",
+      "bytes": 4168,
       "git_mode": "100644"
     },
     "tests/test_val001_framework.py": {
