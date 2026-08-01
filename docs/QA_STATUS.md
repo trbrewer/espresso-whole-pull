@@ -105,8 +105,9 @@ This cycle performed zero governed comparisons and zero OpenFOAM work.
 The deep-schema completion cycle provides exhaustive governed-record inventory coverage, removes prefix
 legacy catch-alls, validates immutable records by exact hash plus nested
 structure signature, and verifies byte-identical journal-to-summary
-regeneration. All records now validate directly through 45 closed structural
-families; sidecar-primary and generic catch-all counts are zero. All mutation
+regeneration. The final administrative remediation directly enumerates 86
+records through 50 closed structural families; sidecar-primary, generic
+catch-all, and enumeration-exclusion counts are zero. All mutation
 testing remains synthetic; V2 and the invocation journal are unchanged.
 ## VAL-001 final administrative and semantic closure
 
