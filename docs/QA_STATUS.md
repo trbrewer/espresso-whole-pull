@@ -53,6 +53,17 @@ and source/holdout-fit counts remained zero.
 - shell syntax: PASS
 - JSON syntax: PASS
 
+## VAL-CASE-001 candidate
+
+VAL-CASE-001 executed the unchanged merged solver for 47 valid cases and two
+invalidated completed endpoints. The exact-repeat feature vector was
+byte-for-byte numerically identical. Case-specific tests cover deterministic
+input derivation, bounds, finite differences, normalization, Jacobians, SVD,
+serialization, run accounting, immutable framework/baseline paths, and the
+claim ceiling. Current candidate counts and source identities are recorded in
+`PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
+validation remains `NOT_ESTABLISHED`.
+
 WP-0.3B verifies independently re-expressed mathematics, synthetic
 identifiability, and measurement bookkeeping. It does not experimentally
 validate espresso extraction or WP02 hydraulics, establish parameter

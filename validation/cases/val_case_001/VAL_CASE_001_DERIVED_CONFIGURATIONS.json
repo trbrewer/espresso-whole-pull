@@ -1,0 +1,790 @@
+{
+  "case_id": "VAL-CASE-001",
+  "count": 47,
+  "records": [
+    {
+      "case_id": "A-BASE",
+      "change": null,
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "f54b361f5e276a667bad067b7f72ad73b4c0f5f5591577a38c79d61de8be7f51",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-Cu-MINUS",
+      "change": {
+        "baseline_value": 2e-11,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "Cu",
+        "perturbed_value": 1.9e-11,
+        "units": "m3/Pa"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "915807d6e6cd9c20d3df80dd8f9b9d8851a0c48e1be16567dc4b855c993bca55",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-Cu-PLUS",
+      "change": {
+        "baseline_value": 2e-11,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "Cu",
+        "perturbed_value": 2.1e-11,
+        "units": "m3/Pa"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "3351fd3f658000287f229fc7f1f2e0f36304dd01a225c0a343c05819eb9a9f2a",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-Qfree-MINUS",
+      "change": {
+        "baseline_value": 6e-06,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "Qfree",
+        "perturbed_value": 5.7e-06,
+        "units": "m3/s"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "60a541a5aa9f6bba7e2ffb2ce1f6065f683b83762dad48c8dbc843ce94777537",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-Qfree-PLUS",
+      "change": {
+        "baseline_value": 6e-06,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "Qfree",
+        "perturbed_value": 6.300000000000001e-06,
+        "units": "m3/s"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "00aab131a3cf5577feefb2127c8410824d7654b6d83e4ceb1ab1168c6641b493",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-REPEAT",
+      "change": null,
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "38cde8bad030f3f26115ea541f17833f26629dc46bcd29ffb67c5c1c1c6c58f5",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-Ru-MINUS",
+      "change": {
+        "baseline_value": 200000000000.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "Ru",
+        "perturbed_value": 190000000000.0,
+        "units": "Pa s/m3"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "2edb56fcd03a75d7dc5a834ca82d814fee7b50647b144b40959e2b5947e53546",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-Ru-PLUS",
+      "change": {
+        "baseline_value": 200000000000.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "Ru",
+        "perturbed_value": 210000000000.0,
+        "units": "Pa s/m3"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "2accc9f8b7047290497cec53e43faf517ecfc689e823f0130fc1af4eb30b4828",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-UNIVERSAL",
+      "change": null,
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "8aac27f8a55ae657f72db9f25c3a3b47ce824ecee6ec7ec622af04a16d0f2793",
+      "execute": true,
+      "model_form_branch": "universal",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-k0-MINUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "k0",
+        "perturbed_value": 4.5032233141202694e-15,
+        "units": "m2"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "1c82b298e474651702f9fb33639ae9fdae92dd858356c128ee6a2c6e79c13ce9",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-k0-PLUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "k0",
+        "perturbed_value": 4.977246820869771e-15,
+        "units": "m2"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "2e55cb7326bdec5c1a2df38687af68437222587a3ed5b3147f79653b236d09fe",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-pc-MINUS",
+      "change": {
+        "baseline_value": 1239155.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.025,
+        "parameter": "pc",
+        "perturbed_value": 1208176.125,
+        "units": "Pa"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "87cf473f88163cde9ff68d6ff1673d38009202c7ffbcf7e0f74715158afd442b",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-pc-PLUS",
+      "change": {
+        "baseline_value": 1239155.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.025,
+        "parameter": "pc",
+        "perturbed_value": 1270133.875,
+        "units": "Pa"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "25ed38c305025d8c5958baa233c40895547bb19fa3fa520c7f5f388c10945db1",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-phi0-MINUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "phi0",
+        "perturbed_value": 0.38,
+        "units": "1"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "bc7cabde0882eded9ec568da3cbe710d45f19990f8102fc97c9d952ea866183d",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-phi0-PLUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "phi0",
+        "perturbed_value": 0.42000000000000004,
+        "units": "1"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "b6656a6924230ed3630ff6f7364907d30eeb9bbb20e84942f81b1fac2530ca82",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-pshut-MINUS",
+      "change": {
+        "baseline_value": 1200000.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.025,
+        "parameter": "pshut",
+        "perturbed_value": 1170000.0,
+        "units": "Pa gauge"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "64b67c9738881cd2696da48d775363f122ca59582f8fb41d8dbe6f3800249a53",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "A-pshut-PLUS",
+      "change": {
+        "baseline_value": 1200000.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.025,
+        "parameter": "pshut",
+        "perturbed_value": 1230000.0,
+        "units": "Pa gauge"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "0dc3c5f2929aa577c7579206925c9f817def78bcb9d20936d11950f78ef4b09a",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "A"
+    },
+    {
+      "case_id": "B-k0-MINUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.025,
+        "parameter": "k0",
+        "perturbed_value": 4.621729190807645e-15,
+        "units": "m2"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "0bd1f7fb1ad84f027b16da07d29f82b9a605df11f954e02c952d34f6e1af64ad",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "B"
+    },
+    {
+      "case_id": "B-k0-PLUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.025,
+        "parameter": "k0",
+        "perturbed_value": 4.858740944182396e-15,
+        "units": "m2"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "8ef3ca8f57815d9ca751fe506dd4a1ca51cd554d08d37fcdc4229584de96687c",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "B"
+    },
+    {
+      "case_id": "B-phi0-MINUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.025,
+        "parameter": "phi0",
+        "perturbed_value": 0.39,
+        "units": "1"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "1640b785de7ad99d65cc5a7e46ccff6383d7ca2fb1125d62263a110328541f2c",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "B"
+    },
+    {
+      "case_id": "B-phi0-PLUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.025,
+        "parameter": "phi0",
+        "perturbed_value": 0.41,
+        "units": "1"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "37ae0003b898260ed162da24709fc39d2ae2c56989019050b7a456ec3ef0fe72",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "B"
+    },
+    {
+      "case_id": "B-pshut-MINUS",
+      "change": {
+        "baseline_value": 1200000.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.0125,
+        "parameter": "pshut",
+        "perturbed_value": 1185000.0,
+        "units": "Pa gauge"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "468e906527bca891e55627936185f9b9762a087e78569a803a85eab52a1b6e4b",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "B"
+    },
+    {
+      "case_id": "B-pshut-PLUS",
+      "change": {
+        "baseline_value": 1200000.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.0125,
+        "parameter": "pshut",
+        "perturbed_value": 1215000.0,
+        "units": "Pa gauge"
+      },
+      "condition": "MACHINE_MID",
+      "derived_configuration_sha256": "eced9b6986f2749e89f427ceccb8efef62a6dbac5b44a411df75f34e2b4ea917",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "B"
+    },
+    {
+      "case_id": "C-HIGH-FINITE",
+      "change": null,
+      "condition": "HIGH",
+      "derived_configuration_sha256": "42f430991ea54e00372d9b5cca878b43e0e5f755072df7814583eb54bd717c7d",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-HIGH-UNIVERSAL",
+      "change": null,
+      "condition": "HIGH",
+      "derived_configuration_sha256": "db9a8d074a4b85d2ec1cb6c37d616dde2c16cbf37d155f77a7feee6ac11f8d5f",
+      "execute": true,
+      "model_form_branch": "universal",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-HIGH-k0-MINUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "k0",
+        "perturbed_value": 4.5032233141202694e-15,
+        "units": "m2"
+      },
+      "condition": "HIGH",
+      "derived_configuration_sha256": "c780b1eb3e0d63b1ddca5befc964e128ea9023cbec63639db73cdc7e3ae12974",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-HIGH-k0-PLUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "k0",
+        "perturbed_value": 4.977246820869771e-15,
+        "units": "m2"
+      },
+      "condition": "HIGH",
+      "derived_configuration_sha256": "274a93bf4a52666067ff6cfbbb174ff0b76b94a714bdeefe94d51267a92a0515",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-HIGH-pc-MINUS",
+      "change": {
+        "baseline_value": 1239155.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.025,
+        "parameter": "pc",
+        "perturbed_value": 1208176.125,
+        "units": "Pa"
+      },
+      "condition": "HIGH",
+      "derived_configuration_sha256": "43de812bbf5a283d81f797cdebeb25934857161ea9f73821321fb99946a93160",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-HIGH-pc-PLUS",
+      "change": {
+        "baseline_value": 1239155.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.025,
+        "parameter": "pc",
+        "perturbed_value": 1270133.875,
+        "units": "Pa"
+      },
+      "condition": "HIGH",
+      "derived_configuration_sha256": "95980cbeaa4e333fb051ad07eb93df6a0a7a74b7bc7e75f130ba50bb06f660be",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-HIGH-phi0-MINUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "phi0",
+        "perturbed_value": 0.38,
+        "units": "1"
+      },
+      "condition": "HIGH",
+      "derived_configuration_sha256": "388ad18ead0f29cbd74f3f2acec8ec6d6960d2b05115057fad3db24d64e89789",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-HIGH-phi0-PLUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "phi0",
+        "perturbed_value": 0.42000000000000004,
+        "units": "1"
+      },
+      "condition": "HIGH",
+      "derived_configuration_sha256": "71da664784e1db4d3ae24d8297f3b604a635bf885a3f92ef4c009356e71d9ec3",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-LOW-FINITE",
+      "change": null,
+      "condition": "LOW",
+      "derived_configuration_sha256": "f669181f77da7f27d9ae2cdf713f946f50e8074e8cc05941065856fda29123f0",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-LOW-UNIVERSAL",
+      "change": null,
+      "condition": "LOW",
+      "derived_configuration_sha256": "f214915bdc0971279dcca5eae80208d6b306a96c38762a452fa8f3410ca1694e",
+      "execute": true,
+      "model_form_branch": "universal",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-LOW-k0-MINUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "k0",
+        "perturbed_value": 4.5032233141202694e-15,
+        "units": "m2"
+      },
+      "condition": "LOW",
+      "derived_configuration_sha256": "b4be9c42f65641ea513e980fbc03b2b5691b8fcc693a6ea09cd6226a546abb7d",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-LOW-k0-PLUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "k0",
+        "perturbed_value": 4.977246820869771e-15,
+        "units": "m2"
+      },
+      "condition": "LOW",
+      "derived_configuration_sha256": "738430e85dc26630b8d410e7437a7db39b24901576d8665033ff4311ab6634af",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-LOW-pc-MINUS",
+      "change": {
+        "baseline_value": 1239155.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.025,
+        "parameter": "pc",
+        "perturbed_value": 1208176.125,
+        "units": "Pa"
+      },
+      "condition": "LOW",
+      "derived_configuration_sha256": "040e72f5dab47044cd97f62d2e85a61e129ba9443b1ba07ce840c9cc17ba4fb9",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-LOW-pc-PLUS",
+      "change": {
+        "baseline_value": 1239155.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.025,
+        "parameter": "pc",
+        "perturbed_value": 1270133.875,
+        "units": "Pa"
+      },
+      "condition": "LOW",
+      "derived_configuration_sha256": "5c555a85535a7730a7420a0a9a6d3df3f73cee2b2e82995b8d1d9af02d048ea3",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-LOW-phi0-MINUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "phi0",
+        "perturbed_value": 0.38,
+        "units": "1"
+      },
+      "condition": "LOW",
+      "derived_configuration_sha256": "791167e022b63893bde2a333434c7d59ad87d9093854364f6388e5a3d3df6440",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-LOW-phi0-PLUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "phi0",
+        "perturbed_value": 0.42000000000000004,
+        "units": "1"
+      },
+      "condition": "LOW",
+      "derived_configuration_sha256": "8eeab704eef7d0bcf69402238c3ca4a26313713f4d63f29692db6881e60f1264",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-MID-FINITE",
+      "change": null,
+      "condition": "MID",
+      "derived_configuration_sha256": "570232295afe08deb2bc4db9af8e224702116ad3d5a22c4be7158fe308e4bf79",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-MID-UNIVERSAL",
+      "change": null,
+      "condition": "MID",
+      "derived_configuration_sha256": "c730f330a38b1e84b9ce07322e481a011d88bdc6d4738f8c7e3528ca0fcb5f37",
+      "execute": true,
+      "model_form_branch": "universal",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-MID-k0-MINUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "k0",
+        "perturbed_value": 4.5032233141202694e-15,
+        "units": "m2"
+      },
+      "condition": "MID",
+      "derived_configuration_sha256": "0da298147e5253352a967426199f020de8923f29cc7b85a2e6c905280c6fda8a",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-MID-k0-PLUS",
+      "change": {
+        "baseline_value": 4.74023506749502e-15,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "k0",
+        "perturbed_value": 4.977246820869771e-15,
+        "units": "m2"
+      },
+      "condition": "MID",
+      "derived_configuration_sha256": "f2c61febe413be5ed4ac64add3e4a93be4c3342046bdf2403b20dc686ffdbbb3",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-MID-pc-MINUS",
+      "change": {
+        "baseline_value": 1239155.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.025,
+        "parameter": "pc",
+        "perturbed_value": 1208176.125,
+        "units": "Pa"
+      },
+      "condition": "MID",
+      "derived_configuration_sha256": "0b94fb8ccc3f78e15c9e63fc12629e1e810ec20fa197c34bc9975115796aa7f4",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-MID-pc-PLUS",
+      "change": {
+        "baseline_value": 1239155.0,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.025,
+        "parameter": "pc",
+        "perturbed_value": 1270133.875,
+        "units": "Pa"
+      },
+      "condition": "MID",
+      "derived_configuration_sha256": "31e024466cf7be08b3cdb6dea5abbc50b6c274b9b5e7d52bf87dd65041be909c",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-MID-phi0-MINUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": -0.05,
+        "parameter": "phi0",
+        "perturbed_value": 0.38,
+        "units": "1"
+      },
+      "condition": "MID",
+      "derived_configuration_sha256": "9ec876de78bc141475d7029212dc53251b134d6b769a5b0be088e3c281a91cf3",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    },
+    {
+      "case_id": "C-MID-phi0-PLUS",
+      "change": {
+        "baseline_value": 0.4,
+        "basis": "LOCAL_DERIVATIVE_PROBE_NOT_UNCERTAINTY_INTERVAL",
+        "fraction": 0.05,
+        "parameter": "phi0",
+        "perturbed_value": 0.42000000000000004,
+        "units": "1"
+      },
+      "condition": "MID",
+      "derived_configuration_sha256": "aa48ef5f19b62da49a731c07a284c6e90e550b925740d853f545202cd58cbfbb",
+      "execute": true,
+      "model_form_branch": "finite",
+      "parent_configuration": "config/reference_R0.json",
+      "parent_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+      "stage": "C"
+    }
+  ],
+  "schema_version": "VAL_CASE_001_DERIVED_CONFIGURATIONS_V1"
+}

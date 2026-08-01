@@ -7,8 +7,8 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 218/218 PASS
-- Active candidate: `VAL-OPS-001_VALIDATION_OPERATING_STANDARD_V1`
+- Public source verification: 224/224 PASS
+- Active candidate: `VAL-CASE-001_HYDRAULIC_COMPACTION_IDENTIFIABILITY`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -67,6 +67,18 @@ and the
 [post-WP03-001 validation and mechanism-discrimination plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md).
 
 General whole-solver physical validation remains `NOT_ESTABLISHED`.
+
+## Open VAL-CASE-001 validation-support case
+
+VAL-CASE-001 applies the merged Validation Operating Standard v1 without
+changing the solver or reusable validation framework. Its prospectively
+frozen local campaign completed 47 valid Foundation OpenFOAM 12 cases, with
+two completed probe endpoints transparently invalidated under one bounded
+correction. The result screens hydraulic and compaction sensitivities,
+practical identifiability, existing model-form separation, and future
+measurement information value. It performs no fitting or external-data
+scoring and establishes no physical validation. See the
+[case report](validation/cases/VAL_CASE_001_HYDRAULIC_COMPACTION_IDENTIFIABILITY_RESULTS.md).
 
 ## Merged VAL-001 framework
 

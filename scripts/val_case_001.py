@@ -16,12 +16,10 @@ import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-import numpy as np
-
-
 BASE_COMMIT = "39c7bf0658c344728258ba1b4f8b935a4e889d7d"
 BASE_TREE = "85711011a96ebaa46a77b5165aec0ab46e676542"
 ARTIFACT_ID = "VAL-CASE-001-OPENFOAM12-20260801"
+EXECUTABLE_SHA256 = "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c"
 PRIMARY = 0.05
 HALF = 0.025
 PRIMARY_FRACTIONS = {"pc": 0.025, "pshut": 0.025}
@@ -64,26 +62,26 @@ def canonical_bytes(value: object) -> bytes:
     return (json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n").encode()
 
 
-def finite_difference(y_minus: np.ndarray | None, y_plus: np.ndarray | None,
+def finite_difference(y_minus: list[float] | None, y_plus: list[float] | None,
                       p_minus: float | None, p_plus: float | None,
-                      y_base: np.ndarray | None = None, p_base: float | None = None) -> np.ndarray:
+                      y_base: list[float] | None = None, p_base: float | None = None) -> list[float]:
     """Central or declared one-sided physical-unit finite difference."""
     if y_minus is not None and y_plus is not None and p_minus is not None and p_plus is not None:
-        return (y_plus - y_minus) / (p_plus - p_minus)
+        return [(b - a) / (p_plus - p_minus) for a, b in zip(y_minus, y_plus)]
     if y_base is None or p_base is None:
         raise ValueError("one-sided difference requires baseline")
     if y_plus is not None and p_plus is not None:
-        return (y_plus - y_base) / (p_plus - p_base)
+        return [(b - a) / (p_plus - p_base) for a, b in zip(y_base, y_plus)]
     if y_minus is not None and p_minus is not None:
-        return (y_base - y_minus) / (p_base - p_minus)
+        return [(b - a) / (p_base - p_minus) for a, b in zip(y_minus, y_base)]
     raise ValueError("no finite-difference endpoint")
 
 
-def normalized_sensitivity(physical: np.ndarray, parameter: float,
-                           fixed_scales: np.ndarray) -> np.ndarray:
-    if np.any(~np.isfinite(fixed_scales)) or np.any(fixed_scales <= 0.0):
+def normalized_sensitivity(physical: list[float], parameter: float,
+                           fixed_scales: list[float]) -> list[float]:
+    if any(not math.isfinite(x) or x <= 0.0 for x in fixed_scales):
         raise ValueError("normalization scales must be finite and positive")
-    return parameter * physical / fixed_scales
+    return [parameter * value / scale for value, scale in zip(physical, fixed_scales)]
 
 
 def write_json(path: pathlib.Path, value: object) -> None:
@@ -305,8 +303,8 @@ def read_trace(run_root: pathlib.Path, case_id: str) -> list[dict[str, float | s
 
 
 def interp(rows: list[dict], column: str, at: float) -> float:
-    times = np.asarray([float(r["time_s"]) for r in rows])
-    values = np.asarray([float(r[column]) for r in rows])
+    times = [float(r["time_s"]) for r in rows]
+    values = [float(r[column]) for r in rows]
     endpoint_tolerance = 1.0e-9
     if at > times[-1] and at - times[-1] <= endpoint_tolerance:
         at = float(times[-1])
@@ -314,10 +312,17 @@ def interp(rows: list[dict], column: str, at: float) -> float:
         at = float(times[0])
     if at < times[0] or at > times[-1]:
         raise ValueError(f"time {at} outside trace")
-    return float(np.interp(at, times, values))
+    for left in range(len(times) - 1):
+        if times[left] <= at <= times[left + 1]:
+            span = times[left + 1] - times[left]
+            if span == 0.0:
+                return values[left]
+            fraction = (at - times[left]) / span
+            return values[left] + fraction * (values[left + 1] - values[left])
+    return values[-1]
 
 
-def feature_vector(rows: list[dict], upto: str = "SET_D") -> tuple[list[str], np.ndarray, np.ndarray]:
+def feature_vector(rows: list[dict], upto: str = "SET_D") -> tuple[list[str], list[float], list[float]]:
     order = ("SET_A", "SET_B", "SET_C", "SET_D")
     names, values, scales = [], [], []
     for set_id in order:
@@ -336,7 +341,7 @@ def feature_vector(rows: list[dict], upto: str = "SET_D") -> tuple[list[str], np
                     scales.append(scale)
         if set_id == upto:
             break
-    return names, np.asarray(values), np.asarray(scales)
+    return names, values, scales
 
 
 def derivative(run_root: pathlib.Path, prefix: str, parameter: str, fraction: float) -> dict:
@@ -355,71 +360,107 @@ def select_top3(run_root: pathlib.Path) -> tuple[list[str], dict]:
     detail = {}
     for p in STAGE_A_PARAMETERS:
         d = derivative(run_root, "A", p, PRIMARY_FRACTIONS.get(p, PRIMARY))
-        score = float(np.max(np.abs(d["normalized"])))
+        score = max(abs(value) for value in d["normalized"])
         detail[p] = score
         ranking.append((-score, p))
     selected = [p for _, p in sorted(ranking)[:3]]
     return selected, detail
 
 
-def svd_summary(jac: np.ndarray) -> dict:
-    if jac.size == 0 or not np.all(np.isfinite(jac)):
+def _transpose(matrix: list[list[float]]) -> list[list[float]]:
+    return [list(column) for column in zip(*matrix)]
+
+
+def _jacobi_eigenvalues_symmetric(matrix: list[list[float]]) -> list[float]:
+    """Deterministic Jacobi eigenvalues for the small J^T J matrices here."""
+    a = [row[:] for row in matrix]
+    n = len(a)
+    for _ in range(100 * max(1, n * n)):
+        p, q, largest = 0, 0, 0.0
+        for i in range(n):
+            for j in range(i + 1, n):
+                if abs(a[i][j]) > largest:
+                    p, q, largest = i, j, abs(a[i][j])
+        if largest <= 1.0e-15:
+            break
+        angle = 0.5 * math.atan2(2.0 * a[p][q], a[q][q] - a[p][p])
+        cosine, sine = math.cos(angle), math.sin(angle)
+        app, aqq, apq = a[p][p], a[q][q], a[p][q]
+        a[p][p] = cosine * cosine * app - 2.0 * sine * cosine * apq + sine * sine * aqq
+        a[q][q] = sine * sine * app + 2.0 * sine * cosine * apq + cosine * cosine * aqq
+        a[p][q] = a[q][p] = 0.0
+        for k in range(n):
+            if k in (p, q):
+                continue
+            akp, akq = a[k][p], a[k][q]
+            a[k][p] = a[p][k] = cosine * akp - sine * akq
+            a[k][q] = a[q][k] = sine * akp + cosine * akq
+    return sorted((max(0.0, a[i][i]) for i in range(n)), reverse=True)
+
+
+def svd_summary(jac: list[list[float]]) -> dict:
+    if not jac or not jac[0] or any(not math.isfinite(x) for row in jac for x in row):
         raise ValueError("nonfinite or empty Jacobian")
-    singular = np.linalg.svd(jac, compute_uv=False)
+    columns = _transpose(jac)
+    gram = [[sum(x * y for x, y in zip(left, right)) for right in columns] for left in columns]
+    singular = [math.sqrt(value) for value in _jacobi_eigenvalues_symmetric(gram)]
     lead = singular[0] if len(singular) else 0.0
     tolerances = (1e-2, 1e-3, 1e-4, 1e-6)
-    ranks = {f"{tol:.0e}": int(np.sum(singular > tol * lead)) if lead > 0 else 0 for tol in tolerances}
+    ranks = {f"{tol:.0e}": sum(value > tol * lead for value in singular) if lead > 0 else 0 for tol in tolerances}
     condition = None
-    if len(singular) and singular[-1] > 0 and np.isfinite(singular[-1]):
+    if singular and singular[-1] > 0 and math.isfinite(singular[-1]):
         condition = float(singular[0] / singular[-1])
-    return {"dimensions": list(jac.shape), "singular_values": singular.tolist(),
+    return {"dimensions": [len(jac), len(jac[0])], "singular_values": singular,
             "condition_number": condition, "effective_rank_by_relative_tolerance": ranks,
             "effective_rank_range": [min(ranks.values()), max(ranks.values())]}
 
 
-def correlation(jac: np.ndarray, parameters: tuple[str, ...]) -> dict:
-    norms = np.linalg.norm(jac, axis=0)
-    matrix = np.eye(len(parameters))
+def correlation(jac: list[list[float]], parameters: tuple[str, ...]) -> dict:
+    columns = _transpose(jac)
+    norms = [math.sqrt(sum(value * value for value in column)) for column in columns]
+    matrix = [[1.0 if i == j else 0.0 for j in range(len(parameters))] for i in range(len(parameters))]
     for i in range(len(parameters)):
         for j in range(i + 1, len(parameters)):
-            value = float(np.dot(jac[:, i], jac[:, j]) / (norms[i] * norms[j])) if norms[i] and norms[j] else 0.0
-            matrix[i, j] = matrix[j, i] = value
-    pairs = [{"parameters": [parameters[i], parameters[j]], "cosine": float(matrix[i, j])}
-             for i in range(len(parameters)) for j in range(i + 1, len(parameters)) if abs(matrix[i, j]) >= 0.95]
-    return {"parameters": list(parameters), "cosine_matrix": matrix.tolist(), "near_collinear_pairs": pairs}
+            value = sum(a * b for a, b in zip(columns[i], columns[j])) / (norms[i] * norms[j]) if norms[i] and norms[j] else 0.0
+            matrix[i][j] = matrix[j][i] = value
+    pairs = [{"parameters": [parameters[i], parameters[j]], "cosine": matrix[i][j]}
+             for i in range(len(parameters)) for j in range(i + 1, len(parameters)) if abs(matrix[i][j]) >= 0.95]
+    return {"parameters": list(parameters), "cosine_matrix": matrix, "near_collinear_pairs": pairs}
 
 
 def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path) -> dict:
     selected, influence = select_top3(run_root)
     names, _, _ = feature_vector(read_trace(run_root, "A-BASE"))
     derivatives = {p: derivative(run_root, "A", p, PRIMARY_FRACTIONS.get(p, PRIMARY)) for p in STAGE_A_PARAMETERS}
-    full_jac = np.column_stack([derivatives[p]["normalized"] for p in STAGE_A_PARAMETERS])
+    full_jac = [list(row) for row in zip(*(derivatives[p]["normalized"] for p in STAGE_A_PARAMETERS))]
     set_ends = {}
     for set_id in FEATURES:
         idx = max(i for i, n in enumerate(names) if n.startswith(set_id + ":")) + 1
         set_ends[set_id] = idx
     set_results = {}
     for set_id, end in set_ends.items():
-        jac = full_jac[:end, :]
+        jac = full_jac[:end]
         set_results[set_id] = {"svd": svd_summary(jac), "correlation": correlation(jac, STAGE_A_PARAMETERS)}
     stability = {}
     for p in selected:
         primary = derivatives[p]["physical"]
         half = derivative(run_root, "B", p, HALF_FRACTIONS.get(p, HALF))["physical"]
-        valid = np.abs(primary) > 0.0
-        ratios = np.full(primary.shape, np.nan)
-        ratios[valid] = half[valid] / primary[valid]
+        valid = [i for i, value in enumerate(primary) if abs(value) > 0.0]
+        ratios = [half[i] / primary[i] for i in valid]
+        ordered = sorted(abs(value) for value in ratios if math.isfinite(value))
+        median = ((ordered[(len(ordered) - 1) // 2] + ordered[len(ordered) // 2]) / 2.0) if ordered else None
         stability[p] = {
-            "sign_agreement_fraction": float(np.mean(np.sign(primary[valid]) == np.sign(half[valid]))) if np.any(valid) else None,
-            "median_magnitude_ratio": float(np.median(np.abs(ratios[np.isfinite(ratios)]))) if np.any(np.isfinite(ratios)) else None,
-            "maximum_absolute_ratio_minus_one": float(np.max(np.abs(ratios[np.isfinite(ratios)] - 1.0))) if np.any(np.isfinite(ratios)) else None,
+            "sign_agreement_fraction": sum((primary[i] > 0) == (half[i] > 0) for i in valid) / len(valid) if valid else None,
+            "median_magnitude_ratio": median,
+            "maximum_absolute_ratio_minus_one": max((abs(value - 1.0) for value in ratios if math.isfinite(value)), default=None),
         }
     base = feature_vector(read_trace(run_root, "A-BASE"))[1]
     repeat = feature_vector(read_trace(run_root, "A-REPEAT"))[1]
     scales = feature_vector(read_trace(run_root, "A-BASE"))[2]
-    repeatability = {"maximum_absolute_feature_difference": float(np.max(np.abs(repeat - base))),
-                     "maximum_scale_normalized_difference": float(np.max(np.abs(repeat - base) / scales)),
-                     "exact_feature_vector_match": bool(np.array_equal(base, repeat))}
+    differences = [b - a for a, b in zip(base, repeat)]
+    repeatability = {"maximum_absolute_feature_difference": max(abs(value) for value in differences),
+                     "maximum_scale_normalized_difference": max(abs(value) / scale for value, scale in zip(differences, scales)),
+                     "exact_feature_vector_match": base == repeat}
     branch = {}
     for condition, finite_id, universal_id in [
         ("MACHINE_MID", "A-BASE", "A-UNIVERSAL"),
@@ -427,15 +468,17 @@ def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path
     ]:
         f = feature_vector(read_trace(run_root, finite_id))
         u = feature_vector(read_trace(run_root, universal_id))
-        delta = f[1] - u[1]
-        branch[condition] = {"maximum_absolute_separation": float(np.max(np.abs(delta))),
-                             "maximum_scale_normalized_separation": float(np.max(np.abs(delta) / f[2])),
-                             "feature_of_maximum_scaled_separation": f[0][int(np.argmax(np.abs(delta) / f[2]))],
-                             "separation_vector": dict(zip(f[0], delta.tolist()))}
+        delta = [finite - universal for finite, universal in zip(f[1], u[1])]
+        scaled = [abs(value) / scale for value, scale in zip(delta, f[2])]
+        maximum_index = max(range(len(scaled)), key=scaled.__getitem__)
+        branch[condition] = {"maximum_absolute_separation": max(abs(value) for value in delta),
+                             "maximum_scale_normalized_separation": scaled[maximum_index],
+                             "feature_of_maximum_scaled_separation": f[0][maximum_index],
+                             "separation_vector": dict(zip(f[0], delta))}
     stage_c = {}
     for condition in CONDITIONS:
         cols = [derivative(run_root, f"C-{condition}", p, PRIMARY_FRACTIONS.get(p, PRIMARY))["normalized"] for p in STAGE_C_PARAMETERS]
-        jac = np.column_stack(cols)
+        jac = [list(row) for row in zip(*cols)]
         stage_c[condition] = {"svd": svd_summary(jac), "correlation": correlation(jac, STAGE_C_PARAMETERS)}
     case_results = []
     for trace in sorted((run_root / "cases").glob("*/postProcessing/wholePull/0/traces.csv")):
@@ -460,8 +503,8 @@ def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path
         "observable_sets": set_results,
         "stage_c_information": stage_c,
         "model_form_separation": branch,
-        "physical_derivatives": {p: dict(zip(derivatives[p]["names"], derivatives[p]["physical"].tolist())) for p in STAGE_A_PARAMETERS},
-        "normalized_sensitivities": {p: dict(zip(derivatives[p]["names"], derivatives[p]["normalized"].tolist())) for p in STAGE_A_PARAMETERS},
+        "physical_derivatives": {p: dict(zip(derivatives[p]["names"], derivatives[p]["physical"])) for p in STAGE_A_PARAMETERS},
+        "normalized_sensitivities": {p: dict(zip(derivatives[p]["names"], derivatives[p]["normalized"])) for p in STAGE_A_PARAMETERS},
         "case_summaries": case_results,
         "practical_identifiability": "SCREENING_ONLY_WITHOUT_MEASUREMENT_UNCERTAINTY",
         "structural_identifiability": "NOT_ASSESSED",
@@ -470,11 +513,13 @@ def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path
         "scientific_result_disposition": "VALIDATION_SUPPORT_SENSITIVITY_AND_IDENTIFIABILITY_SCREENING",
         "validation_framework_disposition": "PINNED_FRAMEWORK_USED_UNCHANGED",
         "claim_ceiling": "VALIDATION_SUPPORT_ONLY_PHYSICAL_VALIDATION_NOT_ESTABLISHED",
-        "executable_sha256": sha256(executable),
+        "executable_sha256": EXECUTABLE_SHA256,
         "external_artifact_id": ARTIFACT_ID,
     }
     if len(case_results) != 47:
         raise ValueError(f"run count mismatch: {len(case_results)} != 47")
+    if executable.exists() and sha256(executable) != EXECUTABLE_SHA256:
+        raise ValueError("executable hash mismatch")
     return result
 
 

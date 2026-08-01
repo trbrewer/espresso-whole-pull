@@ -126,3 +126,9 @@ The successor provenance layer adds the normative contract registry,
 schema-provenance transition matrix, immutable profile-assignment registry,
 schema-taxonomy specification, mutation execution coverage, successor freeze,
 and historical V4 consumed lock under `validation/val001/`.
+
+VAL-CASE-001 case-specific artifacts are under
+`validation/cases/val_case_001/`, with the frozen protocol, bounded correction
+addendum, scientific report, and review disposition under
+`docs/validation/cases/`. Complete generated OpenFOAM cases, meshes, fields,
+processor directories, executables, traces, and logs remain outside Git.

@@ -1,0 +1,1785 @@
+{
+  "actual_openfoam_case_executions": 47,
+  "case_id": "VAL-CASE-001",
+  "case_summaries": [
+    {
+      "case_id": "A-BASE",
+      "final_basket_pressure_pa": 641530.020600069,
+      "final_bed_height_ratio": 0.92633853018269,
+      "final_cup_mass_kg": 0.0324557052928224,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "cac6341946035233b69e1a4b406f0dbc524ee52da854bb8aed72957f4921c707"
+    },
+    {
+      "case_id": "A-Cu-MINUS",
+      "final_basket_pressure_pa": 641589.971727363,
+      "final_bed_height_ratio": 0.926334953183924,
+      "final_cup_mass_kg": 0.0326803510760004,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.7790730183621,
+      "rows": 1500,
+      "trace_sha256": "e77c98ea1e480165bec4ccfce17caed53bfeded44bf3189981b0208b32697f70"
+    },
+    {
+      "case_id": "A-Cu-PLUS",
+      "final_basket_pressure_pa": 641444.607467254,
+      "final_bed_height_ratio": 0.926343627522256,
+      "final_cup_mass_kg": 0.0322546016857928,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 9.02013334381272,
+      "rows": 1500,
+      "trace_sha256": "38c8ba1b0d900f207c8f3c61d2b73071936f8639391feca12f7d9c0468756eee"
+    },
+    {
+      "case_id": "A-Qfree-MINUS",
+      "final_basket_pressure_pa": 629838.298745619,
+      "final_bed_height_ratio": 0.927048795148135,
+      "final_cup_mass_kg": 0.0320111777075258,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 9.08437250775387,
+      "rows": 1500,
+      "trace_sha256": "f9a1a219bc023f81e2d602d3ec7f9c02bb15b70af5fd5b6ea19757d69f148ec5"
+    },
+    {
+      "case_id": "A-Qfree-PLUS",
+      "final_basket_pressure_pa": 652314.141435203,
+      "final_bed_height_ratio": 0.925705735231454,
+      "final_cup_mass_kg": 0.032877024412941,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.72950305360164,
+      "rows": 1500,
+      "trace_sha256": "7f181ad447ed80b450205a2ebdae048415a3d8ef7c5470d6eef9a0eebe575cf7"
+    },
+    {
+      "case_id": "A-REPEAT",
+      "final_basket_pressure_pa": 641530.020600069,
+      "final_bed_height_ratio": 0.92633853018269,
+      "final_cup_mass_kg": 0.0324557052928224,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "cac6341946035233b69e1a4b406f0dbc524ee52da854bb8aed72957f4921c707"
+    },
+    {
+      "case_id": "A-Ru-MINUS",
+      "final_basket_pressure_pa": 652802.86024915,
+      "final_bed_height_ratio": 0.92567756424336,
+      "final_cup_mass_kg": 0.0327505685725221,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.80477560136874,
+      "rows": 1500,
+      "trace_sha256": "28d80448afb7b19ef5b8ede5071ad88fe8d90fcae98c32471d6021c10d9b4337"
+    },
+    {
+      "case_id": "A-Ru-PLUS",
+      "final_basket_pressure_pa": 630479.739811837,
+      "final_bed_height_ratio": 0.927009173340147,
+      "final_cup_mass_kg": 0.0321818932662855,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.99411305368271,
+      "rows": 1500,
+      "trace_sha256": "0f75f6b354cc9a3b3ed3776760992ee71d43a2de1caa3cc3aada6512496fac6d"
+    },
+    {
+      "case_id": "A-UNIVERSAL",
+      "final_basket_pressure_pa": 723225.287958425,
+      "final_bed_height_ratio": 1.0,
+      "final_cup_mass_kg": 0.0276357121039942,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "c6840e7721003c3bad8f73af57789dc11ea172cdd5ca72f690e087c933580e6f"
+    },
+    {
+      "case_id": "A-k0-MINUS",
+      "final_basket_pressure_pa": 664272.494492157,
+      "final_bed_height_ratio": 0.925028989650969,
+      "final_cup_mass_kg": 0.0312016071714852,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "f4312d2188f75d3b9a09a38b007bd1f69030ff823bafa7ff5c7f6c2f8688a6aa"
+    },
+    {
+      "case_id": "A-k0-PLUS",
+      "final_basket_pressure_pa": 619685.231774306,
+      "final_bed_height_ratio": 0.927686092481611,
+      "final_cup_mass_kg": 0.0336565974667555,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "68f18058bbc19c3ab5cd7b1fade2255e19645087adfd2ab76333e41476b090bd"
+    },
+    {
+      "case_id": "A-pc-MINUS",
+      "final_basket_pressure_pa": 649745.754610258,
+      "final_bed_height_ratio": 0.924911004373321,
+      "final_cup_mass_kg": 0.0320094925064964,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "1ac41436e52fbf69b8564b701c5b0fe16b3d5676cdae882bbedb1dfb8828df3e"
+    },
+    {
+      "case_id": "A-pc-PLUS",
+      "final_basket_pressure_pa": 633842.208512194,
+      "final_bed_height_ratio": 0.927769236902264,
+      "final_cup_mass_kg": 0.0328733641953299,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "24a395fa9969af70d860e94a5c534d4f23defedcbf1a5633a1e67641c898916a"
+    },
+    {
+      "case_id": "A-phi0-MINUS",
+      "final_basket_pressure_pa": 643381.300753928,
+      "final_bed_height_ratio": 0.930084609838013,
+      "final_cup_mass_kg": 0.0323547234056409,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "825c94c75a1beb357d8799940f929b09b9f5a4d374dceb0ac50134d6af63c0d3"
+    },
+    {
+      "case_id": "A-phi0-PLUS",
+      "final_basket_pressure_pa": 639666.44887349,
+      "final_bed_height_ratio": 0.922586583703801,
+      "final_cup_mass_kg": 0.0325573402074451,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "3e9443dc7bdec4e3a82fd306c5621b618ec0263c14f5b19b0e5687da5d4f20a2"
+    },
+    {
+      "case_id": "A-pshut-MINUS",
+      "final_basket_pressure_pa": 623261.006142078,
+      "final_bed_height_ratio": 0.927459467083357,
+      "final_cup_mass_kg": 0.0321225119677759,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.963817258284,
+      "rows": 1500,
+      "trace_sha256": "30af64735a87ab8a1b6da905bf1628db83b79475e0e042b330207b0f76fc3a21"
+    },
+    {
+      "case_id": "A-pshut-PLUS",
+      "final_basket_pressure_pa": 660006.362599794,
+      "final_bed_height_ratio": 0.925267415180459,
+      "final_cup_mass_kg": 0.0327713840903759,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.84026301658489,
+      "rows": 1500,
+      "trace_sha256": "ca91b3d3d98fef397329bbfef8b5bbdcf469d086971ea0cee1b4fb30d18651d2"
+    },
+    {
+      "case_id": "B-k0-MINUS",
+      "final_basket_pressure_pa": 652790.100410957,
+      "final_bed_height_ratio": 0.925678299195584,
+      "final_cup_mass_kg": 0.0318353486060304,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "a422b6365d39b40d22c2551cacf515c4987b6ea87918da06005fb7fddb47bf25"
+    },
+    {
+      "case_id": "B-k0-PLUS",
+      "final_basket_pressure_pa": 630494.536758974,
+      "final_bed_height_ratio": 0.927008260230596,
+      "final_cup_mass_kg": 0.0330627553257228,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "9750418f76c226cf356ab30a5c922988952133f70e4fe5ac496c9038e4613a88"
+    },
+    {
+      "case_id": "B-phi0-MINUS",
+      "final_basket_pressure_pa": 642457.196784711,
+      "final_bed_height_ratio": 0.928212312015309,
+      "final_cup_mass_kg": 0.0324051328005678,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "dbf27a28de4ea26c6c6517fb49fffc0e1aa9d99ab5849bb9fb4d764e780ce479"
+    },
+    {
+      "case_id": "B-phi0-PLUS",
+      "final_basket_pressure_pa": 640599.771443144,
+      "final_bed_height_ratio": 0.924463281541733,
+      "final_cup_mass_kg": 0.032506441045281,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.90054655524072,
+      "rows": 1500,
+      "trace_sha256": "acf14ee2d0523f2d1983b53d0e64774cfa43e42c930fa14c798a4e43c2218dfc"
+    },
+    {
+      "case_id": "B-pshut-MINUS",
+      "final_basket_pressure_pa": 632368.189625208,
+      "final_bed_height_ratio": 0.926892965463814,
+      "final_cup_mass_kg": 0.0323035450062272,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.930875104661,
+      "rows": 1500,
+      "trace_sha256": "cef2e9144288b7663478933f548157aef3bd5bfdaf23287d0a74d3cce923d1be"
+    },
+    {
+      "case_id": "B-pshut-PLUS",
+      "final_basket_pressure_pa": 650740.28301723,
+      "final_bed_height_ratio": 0.925796754350264,
+      "final_cup_mass_kg": 0.0326280020021432,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 8.86866883730975,
+      "rows": 1500,
+      "trace_sha256": "f4f16c776c397679c820f9838c1488947b3f48a167cf887357196a2deff0bec4"
+    },
+    {
+      "case_id": "C-HIGH-FINITE",
+      "final_basket_pressure_pa": 1100000.0,
+      "final_bed_height_ratio": 0.915017209082396,
+      "final_cup_mass_kg": 0.042113269442581,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.12775142428062,
+      "rows": 1500,
+      "trace_sha256": "881d56c803a065c750cb43a7e6c32182e7e81e45462cf97580a930d37bd3180a"
+    },
+    {
+      "case_id": "C-HIGH-UNIVERSAL",
+      "final_basket_pressure_pa": 1100000.0,
+      "final_bed_height_ratio": 1.0,
+      "final_cup_mass_kg": 0.0502807721241563,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.12775142428062,
+      "rows": 1500,
+      "trace_sha256": "79aff692e7a76a548a095dc98ab1eeda7ea6adedd40e7a9fde596a847ce81ece"
+    },
+    {
+      "case_id": "C-HIGH-k0-MINUS",
+      "final_basket_pressure_pa": 1100000.0,
+      "final_bed_height_ratio": 0.915017209082383,
+      "final_cup_mass_kg": 0.0401753258752318,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.12775142428062,
+      "rows": 1500,
+      "trace_sha256": "6ecd9a3d93f132640db2e1db361f95bc8504f93bd03a25a4507ab157588a4507"
+    },
+    {
+      "case_id": "C-HIGH-k0-PLUS",
+      "final_basket_pressure_pa": 1100000.0,
+      "final_bed_height_ratio": 0.915017209082397,
+      "final_cup_mass_kg": 0.0440402590427573,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.12775142428062,
+      "rows": 1500,
+      "trace_sha256": "7967f67f3621da7ad736c6c450c9b4094f80c14dee70cdd90a83713db5bf23c7"
+    },
+    {
+      "case_id": "C-HIGH-pc-MINUS",
+      "final_basket_pressure_pa": 1100000.0,
+      "final_bed_height_ratio": 0.91498226941565,
+      "final_cup_mass_kg": 0.0411509116056163,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.12775142428062,
+      "rows": 1500,
+      "trace_sha256": "ba1bf51426962943959bb6006fb5c07286aa6988edc2baec1d53148f91ecef42"
+    },
+    {
+      "case_id": "C-HIGH-pc-PLUS",
+      "final_basket_pressure_pa": 1100000.0,
+      "final_bed_height_ratio": 0.915075741240119,
+      "final_cup_mass_kg": 0.0430689431277463,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.12775142428062,
+      "rows": 1500,
+      "trace_sha256": "5b952ffb92dbb926a436e3c853f5914b3cae3ef8aafc5f0b6762cfa486f9904a"
+    },
+    {
+      "case_id": "C-HIGH-phi0-MINUS",
+      "final_basket_pressure_pa": 1100000.0,
+      "final_bed_height_ratio": 0.919550174956616,
+      "final_cup_mass_kg": 0.0419226992040418,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.12775142428062,
+      "rows": 1500,
+      "trace_sha256": "71cc7d1708ccf5192cd0d0cd83e6b6df318a9eb7e0e6fbf63f9ff96a08c961c9"
+    },
+    {
+      "case_id": "C-HIGH-phi0-PLUS",
+      "final_basket_pressure_pa": 1100000.0,
+      "final_bed_height_ratio": 0.910447727559871,
+      "final_cup_mass_kg": 0.0423071857128569,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.12775142428062,
+      "rows": 1500,
+      "trace_sha256": "7d6d3f9f77a1ed353d9006c5365976daa9f6ce33614e3277a920d47847dc65ce"
+    },
+    {
+      "case_id": "C-LOW-FINITE",
+      "final_basket_pressure_pa": 500000.0,
+      "final_bed_height_ratio": 0.936641538003958,
+      "final_cup_mass_kg": 0.0321727562223814,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 7.2810531334174,
+      "rows": 1500,
+      "trace_sha256": "9a731a201b7a2f0398eb52d23ad339a7b2439b3a80459bea2b11139780da3ba8"
+    },
+    {
+      "case_id": "C-LOW-UNIVERSAL",
+      "final_basket_pressure_pa": 500000.0,
+      "final_bed_height_ratio": 1.0,
+      "final_cup_mass_kg": 0.0211564929004219,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 7.2810531334174,
+      "rows": 1500,
+      "trace_sha256": "220f97009a260d09c033cb62fb5b41312595e714b8a617164b1fce5b9b262a64"
+    },
+    {
+      "case_id": "C-LOW-k0-MINUS",
+      "final_basket_pressure_pa": 500000.0,
+      "final_bed_height_ratio": 0.936641538003958,
+      "final_cup_mass_kg": 0.0306617171262916,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 7.2810531334174,
+      "rows": 1500,
+      "trace_sha256": "81525b55a006ba4d1c4fadf6730b3dad8e96197eeb2f5912307c3c5ed2a023ab"
+    },
+    {
+      "case_id": "C-LOW-k0-PLUS",
+      "final_basket_pressure_pa": 500000.0,
+      "final_bed_height_ratio": 0.936641538003958,
+      "final_cup_mass_kg": 0.0336709150360619,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 7.2810531334174,
+      "rows": 1500,
+      "trace_sha256": "045dd70c13717b85aeca785c1e005227b15e196db213e53ba76863155da83db8"
+    },
+    {
+      "case_id": "C-LOW-pc-MINUS",
+      "final_basket_pressure_pa": 500000.0,
+      "final_bed_height_ratio": 0.935555384099545,
+      "final_cup_mass_kg": 0.0317418563962768,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 7.2810531334174,
+      "rows": 1500,
+      "trace_sha256": "f38d5d6ad575ca9331a968bd1cfec4b84e652492fc415eb26623161eb311cf2e"
+    },
+    {
+      "case_id": "C-LOW-pc-PLUS",
+      "final_basket_pressure_pa": 500000.0,
+      "final_bed_height_ratio": 0.937702664752965,
+      "final_cup_mass_kg": 0.0325875029889754,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 7.2810531334174,
+      "rows": 1500,
+      "trace_sha256": "4f0380e4db58ed59403840258e3930797e16832315e04f2e4d5d928af833ee69"
+    },
+    {
+      "case_id": "C-LOW-phi0-MINUS",
+      "final_basket_pressure_pa": 500000.0,
+      "final_bed_height_ratio": 0.939916912993812,
+      "final_cup_mass_kg": 0.0320678767315528,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 7.2810531334174,
+      "rows": 1500,
+      "trace_sha256": "10a13f163aede9e40c8ee0d985644b83dc741964be001f9b99bcb7ed70508987"
+    },
+    {
+      "case_id": "C-LOW-phi0-PLUS",
+      "final_basket_pressure_pa": 500000.0,
+      "final_bed_height_ratio": 0.933353685090566,
+      "final_cup_mass_kg": 0.0322787119586599,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 7.2810531334174,
+      "rows": 1500,
+      "trace_sha256": "f144ae5216ab0af3c62daf0aa9c5f9532112af653123a240a33440c5dfa56895"
+    },
+    {
+      "case_id": "C-MID-FINITE",
+      "final_basket_pressure_pa": 900000.0,
+      "final_bed_height_ratio": 0.916657004707897,
+      "final_cup_mass_kg": 0.0409578674828014,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.71169618523188,
+      "rows": 1500,
+      "trace_sha256": "50204cca918cc27cd9f24036cff2943e9061f82da0281a3460d24de672447a94"
+    },
+    {
+      "case_id": "C-MID-UNIVERSAL",
+      "final_basket_pressure_pa": 900000.0,
+      "final_bed_height_ratio": 1.0,
+      "final_cup_mass_kg": 0.0409578674827949,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.71169618523188,
+      "rows": 1500,
+      "trace_sha256": "4bc18c0916417135050c59aeb59fe35d78a83a00cafeb7527e66e98a00877e1f"
+    },
+    {
+      "case_id": "C-MID-k0-MINUS",
+      "final_basket_pressure_pa": 900000.0,
+      "final_bed_height_ratio": 0.916657004707906,
+      "final_cup_mass_kg": 0.0390708223579999,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.71169618523188,
+      "rows": 1500,
+      "trace_sha256": "f40e4c618f2a714bd67449aacc5792461c4ef463e21ee755535e132127ed6d44"
+    },
+    {
+      "case_id": "C-MID-k0-PLUS",
+      "final_basket_pressure_pa": 900000.0,
+      "final_bed_height_ratio": 0.916657004707897,
+      "final_cup_mass_kg": 0.0428336158565094,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.71169618523188,
+      "rows": 1500,
+      "trace_sha256": "aeb23faf18a8560581bf402337c708d5f288eebcdcd7a0d8fdd006a66af94860"
+    },
+    {
+      "case_id": "C-MID-pc-MINUS",
+      "final_basket_pressure_pa": 900000.0,
+      "final_bed_height_ratio": 0.916278787683567,
+      "final_cup_mass_kg": 0.040082113872319,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.71169618523188,
+      "rows": 1500,
+      "trace_sha256": "e39a9d170ddf76d86d4c071d317bc26b77031b62de90f7c968060c8d6b589cd9"
+    },
+    {
+      "case_id": "C-MID-pc-PLUS",
+      "final_basket_pressure_pa": 900000.0,
+      "final_bed_height_ratio": 0.917078451541537,
+      "final_cup_mass_kg": 0.0418174910382392,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.71169618523188,
+      "rows": 1500,
+      "trace_sha256": "a078705435783fdbafa933baeb4dde5d8ee5b53ef19669ce831d932a33e26f01"
+    },
+    {
+      "case_id": "C-MID-phi0-MINUS",
+      "final_basket_pressure_pa": 900000.0,
+      "final_bed_height_ratio": 0.92108242984253,
+      "final_cup_mass_kg": 0.0407770571127487,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.71169618523188,
+      "rows": 1500,
+      "trace_sha256": "d8199d4876f9690c2c80b02eb68c8e94c0f15b117872980a4136a54c20058fd9"
+    },
+    {
+      "case_id": "C-MID-phi0-PLUS",
+      "final_basket_pressure_pa": 900000.0,
+      "final_bed_height_ratio": 0.912198989577708,
+      "final_cup_mass_kg": 0.0411416762800954,
+      "final_time_s": 29.9999999999994,
+      "first_drip_s": 4.71169618523188,
+      "rows": 1500,
+      "trace_sha256": "fcd1c313542adf2d979ed49e65fec088d49c41622a632205c88f1fb5d71c56ca"
+    }
+  ],
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_ceiling": "VALIDATION_SUPPORT_ONLY_PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+  "derivative_stability": {
+    "k0": {
+      "maximum_absolute_ratio_minus_one": 0.001064993854978269,
+      "median_magnitude_ratio": 1.0000939900606682,
+      "sign_agreement_fraction": 1.0
+    },
+    "phi0": {
+      "maximum_absolute_ratio_minus_one": 2.3073182517707735e-05,
+      "median_magnitude_ratio": 0.999998010975264,
+      "sign_agreement_fraction": 1.0
+    },
+    "pshut": {
+      "maximum_absolute_ratio_minus_one": 0.006946689903868597,
+      "median_magnitude_ratio": 1.0001167618630982,
+      "sign_agreement_fraction": 1.0
+    }
+  },
+  "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
+  "experimental_variant_discrimination": "NOT_ASSESSED",
+  "external_artifact_id": "VAL-CASE-001-OPENFOAM12-20260801",
+  "independent_dataset_disposition": "NO_ADDITIONAL_ADMISSIBLE_INDEPENDENT_DATASET_AT_LOCKED_EVIDENCE_STATE",
+  "model_form_separation": {
+    "HIGH": {
+      "feature_of_maximum_scaled_separation": "SET_C:deformation@30s",
+      "maximum_absolute_separation": 0.08498279091760397,
+      "maximum_scale_normalized_separation": 0.8498279091760397,
+      "separation_vector": {
+        "SET_A:cup_beverage_mass_kg@10s": -0.002064690981287809,
+        "SET_A:cup_beverage_mass_kg@15s": -0.0037094546016493667,
+        "SET_A:cup_beverage_mass_kg@20s": -0.005264644135089792,
+        "SET_A:cup_beverage_mass_kg@25s": -0.00673393048687531,
+        "SET_A:cup_beverage_mass_kg@30s": -0.008167502681575296,
+        "SET_A:outlet_flow_m3_s@10s": -3.1866285436606006e-07,
+        "SET_A:outlet_flow_m3_s@15s": -3.1866285436612e-07,
+        "SET_A:outlet_flow_m3_s@20s": -3.1866285436620003e-07,
+        "SET_A:outlet_flow_m3_s@25s": -3.1866285436625996e-07,
+        "SET_A:outlet_flow_m3_s@30s": -3.1866285436629003e-07,
+        "SET_B:basketPressurePa@10s": 0.0,
+        "SET_B:basketPressurePa@15s": 0.0,
+        "SET_B:basketPressurePa@20s": 0.0,
+        "SET_B:basketPressurePa@25s": 0.0,
+        "SET_B:basketPressurePa@30s": 0.0,
+        "SET_C:deformation@10s": 0.08498279091759697,
+        "SET_C:deformation@15s": 0.08498279091759897,
+        "SET_C:deformation@20s": 0.08498279091760097,
+        "SET_C:deformation@25s": 0.08498279091760197,
+        "SET_C:deformation@30s": 0.08498279091760397,
+        "SET_C:volumeWeightedMechanicalPorosity@10s": -0.05967354296020805,
+        "SET_C:volumeWeightedMechanicalPorosity@15s": -0.059673542960210046,
+        "SET_C:volumeWeightedMechanicalPorosity@20s": -0.059673542960211046,
+        "SET_C:volumeWeightedMechanicalPorosity@25s": -0.059673542960212045,
+        "SET_C:volumeWeightedMechanicalPorosity@30s": -0.05967354296021404,
+        "SET_D:first_drip_s": 0.0
+      }
+    },
+    "LOW": {
+      "feature_of_maximum_scaled_separation": "SET_C:deformation@10s",
+      "maximum_absolute_separation": 0.063358461996043,
+      "maximum_scale_normalized_separation": 0.63358461996043,
+      "separation_vector": {
+        "SET_A:cup_beverage_mass_kg@10s": 0.001344902599484932,
+        "SET_A:cup_beverage_mass_kg@15s": 0.003918521011987501,
+        "SET_A:cup_beverage_mass_kg@20s": 0.006388981613622445,
+        "SET_A:cup_beverage_mass_kg@25s": 0.008771300563920986,
+        "SET_A:cup_beverage_mass_kg@30s": 0.011016263321959503,
+        "SET_A:outlet_flow_m3_s@10s": 4.5077693428887695e-07,
+        "SET_A:outlet_flow_m3_s@15s": 4.50776934288737e-07,
+        "SET_A:outlet_flow_m3_s@20s": 4.507769342887069e-07,
+        "SET_A:outlet_flow_m3_s@25s": 4.5077693428869695e-07,
+        "SET_A:outlet_flow_m3_s@30s": 4.50776934288687e-07,
+        "SET_B:basketPressurePa@10s": 0.0,
+        "SET_B:basketPressurePa@15s": 0.0,
+        "SET_B:basketPressurePa@20s": 0.0,
+        "SET_B:basketPressurePa@25s": 0.0,
+        "SET_B:basketPressurePa@30s": 0.0,
+        "SET_C:deformation@10s": 0.063358461996043,
+        "SET_C:deformation@15s": 0.063358461996043,
+        "SET_C:deformation@20s": 0.063358461996042,
+        "SET_C:deformation@25s": 0.063358461996042,
+        "SET_C:deformation@30s": 0.063358461996042,
+        "SET_C:volumeWeightedMechanicalPorosity@10s": -0.04204269177863201,
+        "SET_C:volumeWeightedMechanicalPorosity@15s": -0.04204269177863201,
+        "SET_C:volumeWeightedMechanicalPorosity@20s": -0.04204269177863201,
+        "SET_C:volumeWeightedMechanicalPorosity@25s": -0.042042691778631014,
+        "SET_C:volumeWeightedMechanicalPorosity@30s": -0.042042691778631014,
+        "SET_D:first_drip_s": 0.0
+      }
+    },
+    "MACHINE_MID": {
+      "feature_of_maximum_scaled_separation": "SET_C:deformation@30s",
+      "maximum_absolute_separation": 81802.9436501289,
+      "maximum_scale_normalized_separation": 0.7366146981731003,
+      "separation_vector": {
+        "SET_A:cup_beverage_mass_kg@10s": 0.0003231871453056765,
+        "SET_A:cup_beverage_mass_kg@15s": 0.0016780297440854202,
+        "SET_A:cup_beverage_mass_kg@20s": 0.0028051913025842635,
+        "SET_A:cup_beverage_mass_kg@25s": 0.0038514869988634792,
+        "SET_A:cup_beverage_mass_kg@30s": 0.004819993188828201,
+        "SET_A:outlet_flow_m3_s@10s": 2.6998631932753746e-07,
+        "SET_A:outlet_flow_m3_s@15s": 2.1735746489747915e-07,
+        "SET_A:outlet_flow_m3_s@20s": 2.066507120591498e-07,
+        "SET_A:outlet_flow_m3_s@25s": 2.0456803723244967e-07,
+        "SET_A:outlet_flow_m3_s@30s": 2.0417747293329003e-07,
+        "SET_B:basketPressurePa@10s": -67297.5797016127,
+        "SET_B:basketPressurePa@15s": -80360.09587688313,
+        "SET_B:basketPressurePa@20s": -81802.9436501289,
+        "SET_B:basketPressurePa@25s": -81781.354923671,
+        "SET_B:basketPressurePa@30s": -81695.26735835604,
+        "SET_C:deformation@10s": 0.07085903193522214,
+        "SET_C:deformation@15s": 0.07300009985797995,
+        "SET_C:deformation@20s": 0.07350570404323198,
+        "SET_C:deformation@25s": 0.07363037544367002,
+        "SET_C:deformation@30s": 0.07366146981731003,
+        "SET_C:volumeWeightedMechanicalPorosity@10s": -0.0477836660381501,
+        "SET_C:volumeWeightedMechanicalPorosity@15s": -0.04947391401337309,
+        "SET_C:volumeWeightedMechanicalPorosity@20s": -0.04987696839492001,
+        "SET_C:volumeWeightedMechanicalPorosity@25s": -0.04997659515813102,
+        "SET_C:volumeWeightedMechanicalPorosity@30s": -0.05000145825130603,
+        "SET_D:first_drip_s": 0.0
+      }
+    },
+    "MID": {
+      "feature_of_maximum_scaled_separation": "SET_C:deformation@30s",
+      "maximum_absolute_separation": 0.08334299529210298,
+      "maximum_scale_normalized_separation": 0.8334299529210298,
+      "separation_vector": {
+        "SET_A:cup_beverage_mass_kg@10s": 2.130240428499519e-15,
+        "SET_A:cup_beverage_mass_kg@15s": 3.899658373995862e-15,
+        "SET_A:cup_beverage_mass_kg@20s": 4.7982451345518484e-15,
+        "SET_A:cup_beverage_mass_kg@25s": 5.398459457239824e-15,
+        "SET_A:cup_beverage_mass_kg@30s": 6.494804694057166e-15,
+        "SET_A:outlet_flow_m3_s@10s": 4.0996394647108136e-19,
+        "SET_A:outlet_flow_m3_s@15s": 2.6999175193730823e-19,
+        "SET_A:outlet_flow_m3_s@20s": 1.8994713842177685e-19,
+        "SET_A:outlet_flow_m3_s@25s": 1.4992483166401116e-19,
+        "SET_A:outlet_flow_m3_s@30s": 1.2006692027329707e-19,
+        "SET_B:basketPressurePa@10s": 0.0,
+        "SET_B:basketPressurePa@15s": 0.0,
+        "SET_B:basketPressurePa@20s": 0.0,
+        "SET_B:basketPressurePa@25s": 0.0,
+        "SET_B:basketPressurePa@30s": 0.0,
+        "SET_C:deformation@10s": 0.08334299529209899,
+        "SET_C:deformation@15s": 0.08334299529209999,
+        "SET_C:deformation@20s": 0.08334299529210099,
+        "SET_C:deformation@25s": 0.08334299529210198,
+        "SET_C:deformation@30s": 0.08334299529210298,
+        "SET_C:volumeWeightedMechanicalPorosity@10s": -0.05814306634723104,
+        "SET_C:volumeWeightedMechanicalPorosity@15s": -0.05814306634723304,
+        "SET_C:volumeWeightedMechanicalPorosity@20s": -0.05814306634723404,
+        "SET_C:volumeWeightedMechanicalPorosity@25s": -0.05814306634723404,
+        "SET_C:volumeWeightedMechanicalPorosity@30s": -0.05814306634723504,
+        "SET_D:first_drip_s": 0.0
+      }
+    }
+  },
+  "normalized_sensitivities": {
+    "Cu": {
+      "SET_A:cup_beverage_mass_kg@10s": -0.09791713739231087,
+      "SET_A:cup_beverage_mass_kg@15s": -0.11012237623972282,
+      "SET_A:cup_beverage_mass_kg@20s": -0.11023815738082575,
+      "SET_A:cup_beverage_mass_kg@25s": -0.10897805708602432,
+      "SET_A:cup_beverage_mass_kg@30s": -0.10643734755189962,
+      "SET_A:outlet_flow_m3_s@10s": -0.060214608966398034,
+      "SET_A:outlet_flow_m3_s@15s": -0.019826542138467167,
+      "SET_A:outlet_flow_m3_s@20s": -0.006421318935732641,
+      "SET_A:outlet_flow_m3_s@25s": -0.0020038400539333745,
+      "SET_A:outlet_flow_m3_s@30s": -0.0006049310452678088,
+      "SET_B:basketPressurePa@10s": -0.13197890440209692,
+      "SET_B:basketPressurePa@15s": -0.05031847124386502,
+      "SET_B:basketPressurePa@20s": -0.016934883126688918,
+      "SET_B:basketPressurePa@25s": -0.005336853846665731,
+      "SET_B:basketPressurePa@30s": -0.0016151584456545404,
+      "SET_C:deformation@10s": -0.08066444188109535,
+      "SET_C:deformation@15s": -0.027952183124302366,
+      "SET_C:deformation@20s": -0.00917025228029944,
+      "SET_C:deformation@25s": -0.002871006497595641,
+      "SET_C:deformation@30s": -0.0008674338331959854,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.015795924321147795,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.005559370609049819,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.0018310540887758744,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.0005738356760001674,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.00017342032512523978,
+      "SET_D:first_drip_s": 0.24106032545062034
+    },
+    "Qfree": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.13803923770102877,
+      "SET_A:cup_beverage_mass_kg@15s": 0.1706587525034054,
+      "SET_A:cup_beverage_mass_kg@20s": 0.1881066157698267,
+      "SET_A:cup_beverage_mass_kg@25s": 0.20361229002455147,
+      "SET_A:cup_beverage_mass_kg@30s": 0.2164616763538001,
+      "SET_A:outlet_flow_m3_s@10s": 0.1428260222259975,
+      "SET_A:outlet_flow_m3_s@15s": 0.10994705129639933,
+      "SET_A:outlet_flow_m3_s@20s": 0.09864127248999964,
+      "SET_A:outlet_flow_m3_s@25s": 0.09492101873913357,
+      "SET_A:outlet_flow_m3_s@30s": 0.09374890874913344,
+      "SET_B:basketPressurePa@10s": 0.31258636582964305,
+      "SET_B:basketPressurePa@15s": 0.2784900692330203,
+      "SET_B:basketPressurePa@20s": 0.25957891408743217,
+      "SET_B:basketPressurePa@25s": 0.25223073816078856,
+      "SET_B:basketPressurePa@30s": 0.24973158543982188,
+      "SET_C:deformation@10s": 0.19119501485339552,
+      "SET_C:deformation@15s": 0.15487510579289515,
+      "SET_C:deformation@20s": 0.1407427146409954,
+      "SET_C:deformation@25s": 0.1358737395397045,
+      "SET_C:deformation@30s": 0.1343059916680931,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": -0.03743325646395062,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": -0.030795694969923352,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": -0.028095515049675286,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": -0.027150444819774806,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": -0.026843910966001205,
+      "SET_D:first_drip_s": -0.3548694541522289
+    },
+    "Ru": {
+      "SET_A:cup_beverage_mass_kg@10s": -0.07051609570759844,
+      "SET_A:cup_beverage_mass_kg@15s": -0.0944478585926181,
+      "SET_A:cup_beverage_mass_kg@20s": -0.11151296577285169,
+      "SET_A:cup_beverage_mass_kg@25s": -0.12770213865017677,
+      "SET_A:cup_beverage_mass_kg@30s": -0.1421688265591508,
+      "SET_A:outlet_flow_m3_s@10s": -0.10041046686379952,
+      "SET_A:outlet_flow_m3_s@15s": -0.09447505111240119,
+      "SET_A:outlet_flow_m3_s@20s": -0.09315813485893254,
+      "SET_A:outlet_flow_m3_s@25s": -0.09290876745900037,
+      "SET_A:outlet_flow_m3_s@30s": -0.09286928320300082,
+      "SET_B:basketPressurePa@10s": -0.22021202249537972,
+      "SET_B:basketPressurePa@15s": -0.2399499951894007,
+      "SET_B:basketPressurePa@20s": -0.2458174480682006,
+      "SET_B:basketPressurePa@25s": -0.24753908626819934,
+      "SET_B:basketPressurePa@30s": -0.24803467152569983,
+      "SET_C:deformation@10s": -0.13453052841849722,
+      "SET_C:deformation@15s": -0.13320932455879175,
+      "SET_C:deformation@20s": -0.13304184915839956,
+      "SET_C:deformation@25s": -0.13311086136339464,
+      "SET_C:deformation@30s": -0.13316090967869787,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.026345544485474603,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.026495253726599444,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.02656567755709993,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.026605547221175696,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.026622092623450333,
+      "SET_D:first_drip_s": 0.18933745231396948
+    },
+    "k0": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.033241327673371464,
+      "SET_A:cup_beverage_mass_kg@15s": 0.19505945950234174,
+      "SET_A:cup_beverage_mass_kg@20s": 0.34289192488668363,
+      "SET_A:cup_beverage_mass_kg@25s": 0.48312968722328525,
+      "SET_A:cup_beverage_mass_kg@30s": 0.613747573817575,
+      "SET_A:outlet_flow_m3_s@10s": 0.766232626596799,
+      "SET_A:outlet_flow_m3_s@15s": 0.7498785880649336,
+      "SET_A:outlet_flow_m3_s@20s": 0.7462400687582662,
+      "SET_A:outlet_flow_m3_s@25s": 0.7451269383806667,
+      "SET_A:outlet_flow_m3_s@30s": 0.7447765717822005,
+      "SET_B:basketPressurePa@10s": -0.31605837740409465,
+      "SET_B:basketPressurePa@15s": -0.4465434817202366,
+      "SET_B:basketPressurePa@20s": -0.4827623598774782,
+      "SET_B:basketPressurePa@25s": -0.4927056118479105,
+      "SET_B:basketPressurePa@30s": -0.4954140301983445,
+      "SET_C:deformation@10s": -0.19281808458360153,
+      "SET_C:deformation@15s": -0.2476513694667061,
+      "SET_C:deformation@20s": -0.26103047359340453,
+      "SET_C:deformation@25s": -0.2646891401796971,
+      "SET_C:deformation@30s": -0.26571028306420236,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.03776755396630168,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.049259810529275784,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.05212261445652487,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.05290465776914975,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.05312174580590082,
+      "SET_D:first_drip_s": 0.0
+    },
+    "pc": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.02197015168852259,
+      "SET_A:cup_beverage_mass_kg@15s": 0.133667649773744,
+      "SET_A:cup_beverage_mass_kg@20s": 0.23855199005795757,
+      "SET_A:cup_beverage_mass_kg@25s": 0.33860653966085763,
+      "SET_A:cup_beverage_mass_kg@30s": 0.43193584441674965,
+      "SET_A:outlet_flow_m3_s@10s": 0.5122812316127996,
+      "SET_A:outlet_flow_m3_s@15s": 0.5277296337814658,
+      "SET_A:outlet_flow_m3_s@20s": 0.5311419548043995,
+      "SET_A:outlet_flow_m3_s@25s": 0.531632702763733,
+      "SET_A:outlet_flow_m3_s@30s": 0.5316464479605354,
+      "SET_B:basketPressurePa@10s": -0.21086218477644855,
+      "SET_B:basketPressurePa@15s": -0.31169969877724585,
+      "SET_B:basketPressurePa@20s": -0.34202196395277923,
+      "SET_B:basketPressurePa@25s": -0.35087815380724563,
+      "SET_B:basketPressurePa@30s": -0.3534121355125344,
+      "SET_C:deformation@10s": -0.5334775396816038,
+      "SET_C:deformation@15s": -0.561228513760792,
+      "SET_C:deformation@20s": -0.5685603348955848,
+      "SET_C:deformation@25s": -0.5709032670283998,
+      "SET_C:deformation@30s": -0.5716465057886033,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.1045072358387994,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.11165018938630034,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.11354840294034996,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.11412735959775155,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.11430383818319956,
+      "SET_D:first_drip_s": 0.0
+    },
+    "phi0": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.002626725615730353,
+      "SET_A:cup_beverage_mass_kg@15s": 0.015809182492355293,
+      "SET_A:cup_beverage_mass_kg@20s": 0.028078816018500964,
+      "SET_A:cup_beverage_mass_kg@25s": 0.03976206248442606,
+      "SET_A:cup_beverage_mass_kg@30s": 0.050654200451050485,
+      "SET_A:outlet_flow_m3_s@10s": 0.06104290361700072,
+      "SET_A:outlet_flow_m3_s@15s": 0.06190744017853256,
+      "SET_A:outlet_flow_m3_s@20s": 0.06208077227206714,
+      "SET_A:outlet_flow_m3_s@25s": 0.062088431376399224,
+      "SET_A:outlet_flow_m3_s@30s": 0.06207961481940017,
+      "SET_B:basketPressurePa@10s": -0.025141444102934698,
+      "SET_B:basketPressurePa@15s": -0.036656568881711475,
+      "SET_B:basketPressurePa@20s": -0.040034246804844555,
+      "SET_B:basketPressurePa@25s": -0.04100287628174471,
+      "SET_B:basketPressurePa@30s": -0.041276132004867114,
+      "SET_C:deformation@10s": 0.724619055724706,
+      "SET_C:deformation@15s": 0.7440213056031034,
+      "SET_C:deformation@20s": 0.7485045980732067,
+      "SET_C:deformation@25s": 0.7495560433322993,
+      "SET_C:deformation@30s": 0.7498026134212014,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.9423471309257488,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.9400960954274747,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.9395699352865735,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.9394501325766238,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.9394233319428991,
+      "SET_D:first_drip_s": 0.0
+    },
+    "pshut": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.09826614519359668,
+      "SET_A:cup_beverage_mass_kg@15s": 0.16047920935841758,
+      "SET_A:cup_beverage_mass_kg@20s": 0.21723850224640398,
+      "SET_A:cup_beverage_mass_kg@25s": 0.2728213738597534,
+      "SET_A:cup_beverage_mass_kg@30s": 0.3244360613000007,
+      "SET_A:outlet_flow_m3_s@10s": 0.25158279315773757,
+      "SET_A:outlet_flow_m3_s@15s": 0.28812037321919937,
+      "SET_A:outlet_flow_m3_s@20s": 0.3002495818353351,
+      "SET_A:outlet_flow_m3_s@25s": 0.3044883913772006,
+      "SET_A:outlet_flow_m3_s@30s": 0.305890473289466,
+      "SET_B:basketPressurePa@10s": 0.5521337740133206,
+      "SET_B:basketPressurePa@15s": 0.7314914065616697,
+      "SET_B:basketPressurePa@20s": 0.7918471982399985,
+      "SET_B:basketPressurePa@25s": 0.8108340018803099,
+      "SET_B:basketPressurePa@30s": 0.8165634768381352,
+      "SET_C:deformation@10s": 0.3371341916486026,
+      "SET_C:deformation@15s": 0.40611696031278566,
+      "SET_C:deformation@20s": 0.4286125094524085,
+      "SET_C:deformation@25s": 0.43605071585000044,
+      "SET_C:deformation@30s": 0.43841038057961246,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": -0.06602639851295276,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": -0.08077066780395048,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": -0.08557679169064747,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": -0.08714723607720076,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": -0.08764047727385094,
+      "SET_D:first_drip_s": -0.24710848339821823
+    }
+  },
+  "numerical_repeatability": {
+    "exact_feature_vector_match": true,
+    "maximum_absolute_feature_difference": 0.0,
+    "maximum_scale_normalized_difference": 0.0
+  },
+  "observable_sets": {
+    "SET_A": {
+      "correlation": {
+        "cosine_matrix": [
+          [
+            1.0,
+            -0.9232994749590999,
+            0.8303552858870751,
+            -0.5304162848771868,
+            -0.5240944348816682,
+            -0.5260548444805296,
+            -0.6796585313420813
+          ],
+          [
+            -0.9232994749590999,
+            1.0,
+            -0.9806855530468461,
+            0.8114357558012424,
+            0.8082329320082151,
+            0.8092546009626984,
+            0.9092616227436926
+          ],
+          [
+            0.8303552858870751,
+            -0.9806855530468461,
+            1.0,
+            -0.9069744934561905,
+            -0.9055691821309808,
+            -0.906046063957262,
+            -0.9730994356270132
+          ],
+          [
+            -0.5304162848771868,
+            0.8114357558012424,
+            -0.9069744934561905,
+            1.0,
+            0.999750689704653,
+            0.999879728637727,
+            0.9750381480575919
+          ],
+          [
+            -0.5240944348816682,
+            0.8082329320082151,
+            -0.9055691821309808,
+            0.999750689704653,
+            1.0,
+            0.9999767311878551,
+            0.9757472573139261
+          ],
+          [
+            -0.5260548444805296,
+            0.8092546009626984,
+            -0.906046063957262,
+            0.999879728637727,
+            0.9999767311878551,
+            1.0,
+            0.9755814772967013
+          ],
+          [
+            -0.6796585313420813,
+            0.9092616227436926,
+            -0.9730994356270132,
+            0.9750381480575919,
+            0.9757472573139261,
+            0.9755814772967013,
+            1.0
+          ]
+        ],
+        "near_collinear_pairs": [
+          {
+            "cosine": -0.9806855530468461,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ]
+          },
+          {
+            "cosine": -0.9730994356270132,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ]
+          },
+          {
+            "cosine": 0.999750689704653,
+            "parameters": [
+              "k0",
+              "pc"
+            ]
+          },
+          {
+            "cosine": 0.999879728637727,
+            "parameters": [
+              "k0",
+              "phi0"
+            ]
+          },
+          {
+            "cosine": 0.9750381480575919,
+            "parameters": [
+              "k0",
+              "pshut"
+            ]
+          },
+          {
+            "cosine": 0.9999767311878551,
+            "parameters": [
+              "pc",
+              "phi0"
+            ]
+          },
+          {
+            "cosine": 0.9757472573139261,
+            "parameters": [
+              "pc",
+              "pshut"
+            ]
+          },
+          {
+            "cosine": 0.9755814772967013,
+            "parameters": [
+              "phi0",
+              "pshut"
+            ]
+          }
+        ],
+        "parameters": [
+          "Cu",
+          "Qfree",
+          "Ru",
+          "k0",
+          "pc",
+          "phi0",
+          "pshut"
+        ]
+      },
+      "svd": {
+        "condition_number": 398232.7899884074,
+        "dimensions": [
+          10,
+          7
+        ],
+        "effective_rank_by_relative_tolerance": {
+          "1e-02": 3,
+          "1e-03": 4,
+          "1e-04": 4,
+          "1e-06": 7
+        },
+        "effective_rank_range": [
+          3,
+          7
+        ],
+        "singular_values": [
+          2.509548130546381,
+          0.39330615290653365,
+          0.07403471448066683,
+          0.0026073435209201367,
+          0.0002024097579258158,
+          3.76834362148792e-05,
+          6.301711445256515e-06
+        ]
+      }
+    },
+    "SET_B": {
+      "correlation": {
+        "cosine_matrix": [
+          [
+            1.0,
+            -0.7749777932769039,
+            0.6364580675008298,
+            -0.28172623507310696,
+            -0.2800002128879556,
+            -0.2805393221529629,
+            -0.5034666849146983
+          ],
+          [
+            -0.7749777932769039,
+            1.0,
+            -0.980691992162987,
+            0.08611407774716816,
+            0.08458228626599881,
+            0.08504700179822872,
+            0.9362203396632164
+          ],
+          [
+            0.6364580675008298,
+            -0.980691992162987,
+            1.0,
+            -0.017299699518945427,
+            -0.015953068111796895,
+            -0.0163568773129347,
+            -0.9868508775369841
+          ],
+          [
+            -0.28172623507310696,
+            0.08611407774716816,
+            -0.017299699518945427,
+            1.0,
+            0.9997642494945206,
+            0.9998862130428372,
+            -0.039967912985443256
+          ],
+          [
+            -0.2800002128879556,
+            0.08458228626599881,
+            -0.015953068111796895,
+            0.9997642494945206,
+            1.0,
+            0.9999780213240321,
+            -0.04110066440662926
+          ],
+          [
+            -0.2805393221529629,
+            0.08504700179822872,
+            -0.0163568773129347,
+            0.9998862130428372,
+            0.9999780213240321,
+            1.0,
+            -0.04076563635333129
+          ],
+          [
+            -0.5034666849146983,
+            0.9362203396632164,
+            -0.9868508775369841,
+            -0.039967912985443256,
+            -0.04110066440662926,
+            -0.04076563635333129,
+            1.0
+          ]
+        ],
+        "near_collinear_pairs": [
+          {
+            "cosine": -0.980691992162987,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ]
+          },
+          {
+            "cosine": -0.9868508775369841,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ]
+          },
+          {
+            "cosine": 0.9997642494945206,
+            "parameters": [
+              "k0",
+              "pc"
+            ]
+          },
+          {
+            "cosine": 0.9998862130428372,
+            "parameters": [
+              "k0",
+              "phi0"
+            ]
+          },
+          {
+            "cosine": 0.9999780213240321,
+            "parameters": [
+              "pc",
+              "phi0"
+            ]
+          }
+        ],
+        "parameters": [
+          "Cu",
+          "Qfree",
+          "Ru",
+          "k0",
+          "pc",
+          "phi0",
+          "pshut"
+        ]
+      },
+      "svd": {
+        "condition_number": 141580.91596068002,
+        "dimensions": [
+          15,
+          7
+        ],
+        "effective_rank_by_relative_tolerance": {
+          "1e-02": 4,
+          "1e-03": 4,
+          "1e-04": 6,
+          "1e-06": 7
+        },
+        "effective_rank_range": [
+          4,
+          7
+        ],
+        "singular_values": [
+          2.6314314886438543,
+          2.1041067671140783,
+          0.33029245870381363,
+          0.02672575186442923,
+          0.002357938671618775,
+          0.0008521957845435835,
+          1.8586060633868604e-05
+        ]
+      }
+    },
+    "SET_C": {
+      "correlation": {
+        "cosine_matrix": [
+          [
+            1.0,
+            -0.7639661215917753,
+            0.6290109765708101,
+            -0.21987441674855784,
+            -0.08772894820861805,
+            -0.10047074392680161,
+            -0.5036325673482106
+          ],
+          [
+            -0.7639661215917753,
+            1.0,
+            -0.9821538656693222,
+            -0.02529320222379203,
+            -0.2030981263034432,
+            0.1892840806849301,
+            0.942204276709222
+          ],
+          [
+            0.6290109765708101,
+            -0.9821538656693222,
+            1.0,
+            0.09493552049509905,
+            0.27029353730185074,
+            -0.19843159178073094,
+            -0.9883884282060894
+          ],
+          [
+            -0.21987441674855784,
+            -0.02529320222379203,
+            0.09493552049509905,
+            1.0,
+            0.901216205626838,
+            -0.05153174302803353,
+            -0.14891095179844574
+          ],
+          [
+            -0.08772894820861805,
+            -0.2030981263034432,
+            0.27029353730185074,
+            0.901216205626838,
+            1.0,
+            -0.2438538755804301,
+            -0.3180245904974949
+          ],
+          [
+            -0.10047074392680161,
+            0.1892840806849301,
+            -0.19843159178073094,
+            -0.05153174302803353,
+            -0.2438538755804301,
+            1.0,
+            0.20101940634915144
+          ],
+          [
+            -0.5036325673482106,
+            0.942204276709222,
+            -0.9883884282060894,
+            -0.14891095179844574,
+            -0.3180245904974949,
+            0.20101940634915144,
+            1.0
+          ]
+        ],
+        "near_collinear_pairs": [
+          {
+            "cosine": -0.9821538656693222,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ]
+          },
+          {
+            "cosine": -0.9883884282060894,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ]
+          }
+        ],
+        "parameters": [
+          "Cu",
+          "Qfree",
+          "Ru",
+          "k0",
+          "pc",
+          "phi0",
+          "pshut"
+        ]
+      },
+      "svd": {
+        "condition_number": 3318.3708731188394,
+        "dimensions": [
+          25,
+          7
+        ],
+        "effective_rank_by_relative_tolerance": {
+          "1e-02": 5,
+          "1e-03": 5,
+          "1e-04": 7,
+          "1e-06": 7
+        },
+        "effective_rank_range": [
+          5,
+          7
+        ],
+        "singular_values": [
+          3.1470465084928905,
+          2.58964807134625,
+          2.1625857998398654,
+          0.543040749392462,
+          0.34558871522159335,
+          0.0026440510371925634,
+          0.0009483709412911624
+        ]
+      }
+    },
+    "SET_D": {
+      "correlation": {
+        "cosine_matrix": [
+          [
+            1.0,
+            -0.7905623777477246,
+            0.6364652291577013,
+            -0.1710473058756384,
+            -0.06824714061912777,
+            -0.07815938899182226,
+            -0.46296623611339
+          ],
+          [
+            -0.7905623777477246,
+            1.0,
+            -0.9754887979511634,
+            -0.02333945393376592,
+            -0.18741001321036846,
+            0.17466301982852808,
+            0.9087126252152192
+          ],
+          [
+            0.6364652291577013,
+            -0.9754887979511634,
+            1.0,
+            0.0916398032506547,
+            0.260910209888656,
+            -0.19154297500732778,
+            -0.9781728551589612
+          ],
+          [
+            -0.1710473058756384,
+            -0.02333945393376592,
+            0.0916398032506547,
+            1.0,
+            0.901216205626838,
+            -0.05153174302803353,
+            -0.14787768807309645
+          ],
+          [
+            -0.06824714061912777,
+            -0.18741001321036846,
+            0.260910209888656,
+            0.901216205626838,
+            1.0,
+            -0.2438538755804301,
+            -0.3158178805868974
+          ],
+          [
+            -0.07815938899182226,
+            0.17466301982852808,
+            -0.19154297500732778,
+            -0.05153174302803353,
+            -0.2438538755804301,
+            1.0,
+            0.19962457233484088
+          ],
+          [
+            -0.46296623611339,
+            0.9087126252152192,
+            -0.9781728551589612,
+            -0.14787768807309645,
+            -0.3158178805868974,
+            0.19962457233484088,
+            1.0
+          ]
+        ],
+        "near_collinear_pairs": [
+          {
+            "cosine": -0.9754887979511634,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ]
+          },
+          {
+            "cosine": -0.9781728551589612,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ]
+          }
+        ],
+        "parameters": [
+          "Cu",
+          "Qfree",
+          "Ru",
+          "k0",
+          "pc",
+          "phi0",
+          "pshut"
+        ]
+      },
+      "svd": {
+        "condition_number": 1637.4996205750965,
+        "dimensions": [
+          26,
+          7
+        ],
+        "effective_rank_by_relative_tolerance": {
+          "1e-02": 5,
+          "1e-03": 6,
+          "1e-04": 7,
+          "1e-06": 7
+        },
+        "effective_rank_range": [
+          5,
+          7
+        ],
+        "singular_values": [
+          3.1511335697385285,
+          2.5907570729416327,
+          2.1962293294842197,
+          0.5438654023309908,
+          0.47036743069058806,
+          0.010748918821416036,
+          0.0019243568243587366
+        ]
+      }
+    }
+  },
+  "physical_derivatives": {
+    "Cu": {
+      "SET_A:cup_beverage_mass_kg@10s": -195834274.78462175,
+      "SET_A:cup_beverage_mass_kg@15s": -220244752.47944564,
+      "SET_A:cup_beverage_mass_kg@20s": -220476314.76165152,
+      "SET_A:cup_beverage_mass_kg@25s": -217956114.17204866,
+      "SET_A:cup_beverage_mass_kg@30s": -212874695.10379928,
+      "SET_A:outlet_flow_m3_s@10s": -4516.0956724798525,
+      "SET_A:outlet_flow_m3_s@15s": -1486.9906603850377,
+      "SET_A:outlet_flow_m3_s@20s": -481.5989201799481,
+      "SET_A:outlet_flow_m3_s@25s": -150.28800404500308,
+      "SET_A:outlet_flow_m3_s@30s": -45.36982839508566,
+      "SET_B:basketPressurePa@10s": -5939050698094362.0,
+      "SET_B:basketPressurePa@15s": -2264331205973926.0,
+      "SET_B:basketPressurePa@20s": -762069740701001.2,
+      "SET_B:basketPressurePa@25s": -240158423099957.94,
+      "SET_B:basketPressurePa@30s": -72682130054454.33,
+      "SET_C:deformation@10s": -403322209.4054768,
+      "SET_C:deformation@15s": -139760915.62151185,
+      "SET_C:deformation@20s": -45851261.40149721,
+      "SET_C:deformation@25s": -14355032.487978207,
+      "SET_C:deformation@30s": -4337169.165979927,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 315918486.42295593,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 111187412.18099639,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 36621081.77551749,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 11476713.520003349,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 3468406.502504796,
+      "SET_D:first_drip_s": 120530162725.31017
+    },
+    "Qfree": {
+      "SET_A:cup_beverage_mass_kg@10s": 920.2615846735251,
+      "SET_A:cup_beverage_mass_kg@15s": 1137.7250166893693,
+      "SET_A:cup_beverage_mass_kg@20s": 1254.044105132178,
+      "SET_A:cup_beverage_mass_kg@25s": 1357.4152668303432,
+      "SET_A:cup_beverage_mass_kg@30s": 1443.0778423586673,
+      "SET_A:outlet_flow_m3_s@10s": 0.035706505556499374,
+      "SET_A:outlet_flow_m3_s@15s": 0.02748676282409983,
+      "SET_A:outlet_flow_m3_s@20s": 0.02466031812249991,
+      "SET_A:outlet_flow_m3_s@25s": 0.023730254684783392,
+      "SET_A:outlet_flow_m3_s@30s": 0.02343722718728336,
+      "SET_B:basketPressurePa@10s": 46887954874.44646,
+      "SET_B:basketPressurePa@15s": 41773510384.95304,
+      "SET_B:basketPressurePa@20s": 38936837113.11482,
+      "SET_B:basketPressurePa@25s": 37834610724.11828,
+      "SET_B:basketPressurePa@30s": 37459737815.97328,
+      "SET_C:deformation@10s": 3186.5835808899255,
+      "SET_C:deformation@15s": 2581.2517632149193,
+      "SET_C:deformation@20s": 2345.7119106832565,
+      "SET_C:deformation@25s": 2264.5623256617414,
+      "SET_C:deformation@30s": 2238.433194468218,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": -2495.5504309300413,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": -2053.0463313282235,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": -1873.034336645019,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": -1810.0296546516538,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": -1789.5940644000802,
+      "SET_D:first_drip_s": -591449.0902537148
+    },
+    "Ru": {
+      "SET_A:cup_beverage_mass_kg@10s": -1.4103219141519687e-14,
+      "SET_A:cup_beverage_mass_kg@15s": -1.8889571718523622e-14,
+      "SET_A:cup_beverage_mass_kg@20s": -2.2302593154570337e-14,
+      "SET_A:cup_beverage_mass_kg@25s": -2.5540427730035355e-14,
+      "SET_A:cup_beverage_mass_kg@30s": -2.843376531183016e-14,
+      "SET_A:outlet_flow_m3_s@10s": -7.530785014784964e-19,
+      "SET_A:outlet_flow_m3_s@15s": -7.08562883343009e-19,
+      "SET_A:outlet_flow_m3_s@20s": -6.98686011441994e-19,
+      "SET_A:outlet_flow_m3_s@25s": -6.968157559425028e-19,
+      "SET_A:outlet_flow_m3_s@30s": -6.965196240225062e-19,
+      "SET_B:basketPressurePa@10s": -9.909541012292088e-07,
+      "SET_B:basketPressurePa@15s": -1.0797749783523031e-06,
+      "SET_B:basketPressurePa@20s": -1.1061785163069028e-06,
+      "SET_B:basketPressurePa@25s": -1.113925888206897e-06,
+      "SET_B:basketPressurePa@30s": -1.1161560218656493e-06,
+      "SET_C:deformation@10s": -6.72652642092486e-14,
+      "SET_C:deformation@15s": -6.660466227939587e-14,
+      "SET_C:deformation@20s": -6.652092457919978e-14,
+      "SET_C:deformation@25s": -6.655543068169733e-14,
+      "SET_C:deformation@30s": -6.658045483934894e-14,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 5.2691088970949207e-14,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 5.2990507453198886e-14,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 5.3131355114199864e-14,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 5.321109444235139e-14,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 5.3244185246900664e-14,
+      "SET_D:first_drip_s": 9.466872615698474e-12
+    },
+    "k0": {
+      "SET_A:cup_beverage_mass_kg@10s": 280503622289.24536,
+      "SET_A:cup_beverage_mass_kg@15s": 1645989759789.8748,
+      "SET_A:cup_beverage_mass_kg@20s": 2893459248364.9556,
+      "SET_A:cup_beverage_mass_kg@25s": 4076841594090.779,
+      "SET_A:cup_beverage_mass_kg@30s": 5179047579527.825,
+      "SET_A:outlet_flow_m3_s@10s": 242466654.8240555,
+      "SET_A:outlet_flow_m3_s@15s": 237291582.8184468,
+      "SET_A:outlet_flow_m3_s@20s": 236140209.7573456,
+      "SET_A:outlet_flow_m3_s@25s": 235787970.7770788,
+      "SET_A:outlet_flow_m3_s@30s": 235677100.7695336,
+      "SET_B:basketPressurePa@10s": -6.0008108377208455e+19,
+      "SET_B:basketPressurePa@15s": -8.478253247482755e+19,
+      "SET_B:basketPressurePa@20s": -9.165919362714955e+19,
+      "SET_B:basketPressurePa@25s": -9.35470592384468e+19,
+      "SET_B:basketPressurePa@30s": -9.406129038535882e+19,
+      "SET_C:deformation@10s": -4067690353708.4785,
+      "SET_C:deformation@15s": -5224453343356.611,
+      "SET_C:deformation@20s": -5506698926881.409,
+      "SET_C:deformation@25s": -5583882157970.115,
+      "SET_C:deformation@30s": -5605424188480.532,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 3186977306276.076,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 4156739893940.083,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 4398314742991.772,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 4464306686554.871,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 4482625443634.215,
+      "SET_D:first_drip_s": 0.0
+    },
+    "pc": {
+      "SET_A:cup_beverage_mass_kg@10s": 7.091978546194008e-10,
+      "SET_A:cup_beverage_mass_kg@15s": 4.314799997538452e-09,
+      "SET_A:cup_beverage_mass_kg@20s": 7.700472985476637e-09,
+      "SET_A:cup_beverage_mass_kg@25s": 1.0930240031662146e-08,
+      "SET_A:cup_beverage_mass_kg@30s": 1.3942915758456357e-08,
+      "SET_A:outlet_flow_m3_s@10s": 6.201176183925332e-13,
+      "SET_A:outlet_flow_m3_s@15s": 6.388179450288291e-13,
+      "SET_A:outlet_flow_m3_s@20s": 6.429485675372324e-13,
+      "SET_A:outlet_flow_m3_s@25s": 6.435426190796143e-13,
+      "SET_A:outlet_flow_m3_s@30s": 6.435592576722065e-13,
+      "SET_B:basketPressurePa@10s": -0.1531494980844234,
+      "SET_B:basketPressurePa@15s": -0.22638792475478958,
+      "SET_B:basketPressurePa@20s": -0.24841102812602242,
+      "SET_B:basketPressurePa@25s": -0.254843291135105,
+      "SET_B:basketPressurePa@30s": -0.25668372557208824,
+      "SET_C:deformation@10s": -4.305171989634903e-08,
+      "SET_C:deformation@15s": -4.5291227793197136e-08,
+      "SET_C:deformation@20s": -4.588290689184039e-08,
+      "SET_C:deformation@25s": -4.607198187703716e-08,
+      "SET_C:deformation@30s": -4.6131961359846294e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 3.373500033129008e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 3.604075015193429e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 3.665349466058724e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 3.684038222748617e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 3.6897349623961346e-08,
+      "SET_D:first_drip_s": 0.0
+    },
+    "phi0": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.0002626725615730353,
+      "SET_A:cup_beverage_mass_kg@15s": 0.001580918249235529,
+      "SET_A:cup_beverage_mass_kg@20s": 0.0028078816018500966,
+      "SET_A:cup_beverage_mass_kg@25s": 0.003976206248442606,
+      "SET_A:cup_beverage_mass_kg@30s": 0.005065420045105048,
+      "SET_A:outlet_flow_m3_s@10s": 2.2891088856375267e-07,
+      "SET_A:outlet_flow_m3_s@15s": 2.3215290066949707e-07,
+      "SET_A:outlet_flow_m3_s@20s": 2.3280289602025175e-07,
+      "SET_A:outlet_flow_m3_s@25s": 2.328316176614971e-07,
+      "SET_A:outlet_flow_m3_s@30s": 2.3279855557275062e-07,
+      "SET_B:basketPressurePa@10s": -56568.24923160306,
+      "SET_B:basketPressurePa@15s": -82477.27998385082,
+      "SET_B:basketPressurePa@20s": -90077.05531090025,
+      "SET_B:basketPressurePa@25s": -92256.4716339256,
+      "SET_B:basketPressurePa@30s": -92871.297010951,
+      "SET_C:deformation@10s": 0.18115476393117652,
+      "SET_C:deformation@15s": 0.18600532640077588,
+      "SET_C:deformation@20s": 0.1871261495183017,
+      "SET_C:deformation@25s": 0.18738901083307485,
+      "SET_C:deformation@30s": 0.18745065335530037,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.9423471309257488,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.9400960954274747,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.9395699352865735,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.9394501325766238,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.9394233319428991,
+      "SET_D:first_drip_s": 0.0
+    },
+    "pshut": {
+      "SET_A:cup_beverage_mass_kg@10s": 3.2755381731198895e-09,
+      "SET_A:cup_beverage_mass_kg@15s": 5.349306978613919e-09,
+      "SET_A:cup_beverage_mass_kg@20s": 7.241283408213466e-09,
+      "SET_A:cup_beverage_mass_kg@25s": 9.094045795325113e-09,
+      "SET_A:cup_beverage_mass_kg@30s": 1.081453537666669e-08,
+      "SET_A:outlet_flow_m3_s@10s": 3.1447849144717197e-13,
+      "SET_A:outlet_flow_m3_s@15s": 3.601504665239992e-13,
+      "SET_A:outlet_flow_m3_s@20s": 3.7531197729416894e-13,
+      "SET_A:outlet_flow_m3_s@25s": 3.806104892215007e-13,
+      "SET_A:outlet_flow_m3_s@30s": 3.823630916118325e-13,
+      "SET_B:basketPressurePa@10s": 0.41410033050999046,
+      "SET_B:basketPressurePa@15s": 0.5486185549212522,
+      "SET_B:basketPressurePa@20s": 0.5938853986799989,
+      "SET_B:basketPressurePa@25s": 0.6081255014102324,
+      "SET_B:basketPressurePa@30s": 0.6124226076286015,
+      "SET_C:deformation@10s": 2.8094515970716882e-08,
+      "SET_C:deformation@15s": 3.384308002606547e-08,
+      "SET_C:deformation@20s": 3.571770912103404e-08,
+      "SET_C:deformation@25s": 3.63375596541667e-08,
+      "SET_C:deformation@30s": 3.653419838163437e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": -2.200879950431759e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": -2.692355593465016e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": -2.8525597230215823e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": -2.9049078692400253e-08,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": -2.9213492424616977e-08,
+      "SET_D:first_drip_s": -2.0592373616518186e-06
+    }
+  },
+  "planned_openfoam_case_executions": 47,
+  "practical_identifiability": "SCREENING_ONLY_WITHOUT_MEASUREMENT_UNCERTAINTY",
+  "schema_version": "espresso.validation.val_case_001.results.v1",
+  "scientific_result_disposition": "VALIDATION_SUPPORT_SENSITIVITY_AND_IDENTIFIABILITY_SCREENING",
+  "selected_derivative_stability_parameters": [
+    "phi0",
+    "pshut",
+    "k0"
+  ],
+  "sensitivity_ranking": [
+    {
+      "maximum_absolute_normalized_sensitivity": 0.9423471309257488,
+      "parameter": "phi0"
+    },
+    {
+      "maximum_absolute_normalized_sensitivity": 0.8165634768381352,
+      "parameter": "pshut"
+    },
+    {
+      "maximum_absolute_normalized_sensitivity": 0.766232626596799,
+      "parameter": "k0"
+    },
+    {
+      "maximum_absolute_normalized_sensitivity": 0.5716465057886033,
+      "parameter": "pc"
+    },
+    {
+      "maximum_absolute_normalized_sensitivity": 0.3548694541522289,
+      "parameter": "Qfree"
+    },
+    {
+      "maximum_absolute_normalized_sensitivity": 0.24803467152569983,
+      "parameter": "Ru"
+    },
+    {
+      "maximum_absolute_normalized_sensitivity": 0.24106032545062034,
+      "parameter": "Cu"
+    }
+  ],
+  "stage_c_information": {
+    "HIGH": {
+      "correlation": {
+        "cosine_matrix": [
+          [
+            1.0,
+            0.9998690302630074,
+            0.09211738239280212
+          ],
+          [
+            0.9998690302630074,
+            1.0,
+            0.08375177408583281
+          ],
+          [
+            0.09211738239280212,
+            0.08375177408583281,
+            1.0
+          ]
+        ],
+        "near_collinear_pairs": [
+          {
+            "cosine": 0.9998690302630074,
+            "parameters": [
+              "k0",
+              "pc"
+            ]
+          }
+        ],
+        "parameters": [
+          "k0",
+          "pc",
+          "phi0"
+        ]
+      },
+      "svd": {
+        "condition_number": 145.3350474956364,
+        "dimensions": [
+          26,
+          3
+        ],
+        "effective_rank_by_relative_tolerance": {
+          "1e-02": 2,
+          "1e-03": 3,
+          "1e-04": 3,
+          "1e-06": 3
+        },
+        "effective_rank_range": [
+          2,
+          3
+        ],
+        "singular_values": [
+          3.794175191385983,
+          2.866326452144559,
+          0.026106402115428497
+        ]
+      }
+    },
+    "LOW": {
+      "correlation": {
+        "cosine_matrix": [
+          [
+            1.0,
+            0.7841012199217039,
+            0.05950760123617853
+          ],
+          [
+            0.7841012199217039,
+            1.0,
+            -0.20574764607505147
+          ],
+          [
+            0.05950760123617853,
+            -0.20574764607505147,
+            1.0
+          ]
+        ],
+        "near_collinear_pairs": [],
+        "parameters": [
+          "k0",
+          "pc",
+          "phi0"
+        ]
+      },
+      "svd": {
+        "condition_number": 3.486502812823602,
+        "dimensions": [
+          26,
+          3
+        ],
+        "effective_rank_by_relative_tolerance": {
+          "1e-02": 3,
+          "1e-03": 3,
+          "1e-04": 3,
+          "1e-06": 3
+        },
+        "effective_rank_range": [
+          3,
+          3
+        ],
+        "singular_values": [
+          2.629440374860606,
+          2.5502837238219476,
+          0.7541770410135163
+        ]
+      }
+    },
+    "MID": {
+      "correlation": {
+        "cosine_matrix": [
+          [
+            1.0,
+            0.9888275081455802,
+            0.0891901641507226
+          ],
+          [
+            0.9888275081455802,
+            1.0,
+            0.010896501673059111
+          ],
+          [
+            0.0891901641507226,
+            0.010896501673059111,
+            1.0
+          ]
+        ],
+        "near_collinear_pairs": [
+          {
+            "cosine": 0.9888275081455802,
+            "parameters": [
+              "k0",
+              "pc"
+            ]
+          }
+        ],
+        "parameters": [
+          "k0",
+          "pc",
+          "phi0"
+        ]
+      },
+      "svd": {
+        "condition_number": 15.762777651095847,
+        "dimensions": [
+          26,
+          3
+        ],
+        "effective_rank_by_relative_tolerance": {
+          "1e-02": 3,
+          "1e-03": 3,
+          "1e-04": 3,
+          "1e-06": 3
+        },
+        "effective_rank_range": [
+          3,
+          3
+        ],
+        "singular_values": [
+          3.604394306757714,
+          2.8575651820804273,
+          0.2286649210272361
+        ]
+      }
+    }
+  },
+  "structural_identifiability": "NOT_ASSESSED",
+  "validation_framework_disposition": "PINNED_FRAMEWORK_USED_UNCHANGED"
+}

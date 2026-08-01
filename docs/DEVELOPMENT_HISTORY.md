@@ -119,3 +119,17 @@ inventory now executes one-to-one, and schema-family counts come only from the
 68 unique schema IDs referenced by 105 governed registrations. No solver,
 comparison, OpenFOAM, fitting, protected-data, result, journal, or claim-boundary
 change occurred.
+
+## 2026-08-01 — VAL-CASE-001 sensitivity and identifiability screening
+
+The first case under Validation Operating Standard v1 prospectively froze and
+executed a 47-case local hydraulic/compaction sensitivity campaign using the
+unchanged Foundation OpenFOAM 12 solver. One bounded correction replaced four
+inadmissible pressure probes; the two already completed superseded endpoints
+remain invalidated in external artifacts. Reduced results quantify numerical
+repeatability, derivative stability, normalized Jacobians, practical-rank
+ranges, parameter confounding, existing universal/finite-porosity separation,
+and the minimum useful independent measurement package. No fitting, external
+data scoring, protected access, framework change, solver change, experiment,
+or governing-physics change occurred. Physical validation remains not
+established.

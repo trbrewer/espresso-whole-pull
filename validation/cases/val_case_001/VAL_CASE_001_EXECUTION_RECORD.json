@@ -1,0 +1,33 @@
+{
+  "schema_version": "espresso.validation.val_case_001.execution_record.v1",
+  "case_id": "VAL-CASE-001",
+  "protocol": {"commit": "b5ffc581b79adfc9807face27777a0ae9dc582f8", "tree": "85827508b6b5c23eaca020c8e36ae20b54023aa0", "path": "docs/validation/cases/VAL_CASE_001_PROTOCOL.md", "frozen_sha256": "9c9fc26dc4b6fca6743e3c74e57448da2b38cdd5030bc75cb6096e09ffacd89d", "current_sha256": "11e2523f93dc288bc19f21657c998228382c76cb33a767e68effe33fb6a09bc8", "post_freeze_change": "METADATA_ONLY_PUBLIC_PATH_REDACTION_NO_METHOD_CHANGE"},
+  "bounded_correction": {"pressure_probe_commit": "78227bec238e8223902fb619f12311a24fbbb683", "endpoint_assembly_commit": "d3e7454a3ec9aaebf401e61658774e59f3e3761f", "addendum_path": "docs/validation/cases/VAL_CASE_001_CORRECTION_ADDENDUM.md", "scientific_inputs_changed": false, "affected_matrix_rerun_complete": true},
+  "source": {"base_commit": "39c7bf0658c344728258ba1b4f8b935a4e889d7d", "base_tree": "85711011a96ebaa46a77b5165aec0ab46e676542", "solver_source_changed": false},
+  "build": {"status": "PASS", "command": "source scripts/lib/openfoam_env.sh; load_openfoam12; ./Allwmake", "distribution": "OpenFOAM Foundation", "version": "12", "compiler_profile": "linux64GccDPInt32Opt; GCC; DP; Int32; SYSTEMOPENMPI", "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c", "build_count": 1},
+  "execution": {
+    "rank_count_per_case": 32,
+    "maximum_concurrent_cases": 4,
+    "planned_valid_openfoam_runs": 47,
+    "actual_valid_openfoam_runs": 47,
+    "completed_valid_openfoam_runs": 47,
+    "failed_openfoam_runs": 0,
+    "invalidated_completed_openfoam_runs": 2,
+    "total_openfoam_launches_including_invalidated": 49,
+    "failed_preparation_attempts_not_launched": 2,
+    "invalidated_case_ids": ["A-pc-PLUS-original-5pct", "A-pshut-MINUS-original-5pct"],
+    "failed_preparation_case_ids": ["A-pc-MINUS-original-5pct", "A-pshut-PLUS-original-5pct"],
+    "result_dependent_reruns": 0,
+    "fit_or_retune_count": 0,
+    "protected_or_holdout_access_count": 0,
+    "external_dataset_score_count": 0,
+    "experimental_commissioning_count": 0,
+    "sum_case_wall_seconds_including_invalidated": 11261.136550950,
+    "minimum_case_wall_seconds": 25.854426146,
+    "maximum_case_wall_seconds": 712.752768278
+  },
+  "external_artifact": {"logical_id": "VAL-CASE-001-OPENFOAM12-20260801", "public_location_descriptor": "EXTERNAL_RUNTIME_ROOT/VAL-CASE-001-OPENFOAM12-20260801", "file_count": 856193, "total_bytes": 26087704396, "aggregate_sha256": "a1a9814ad043c1b33186ea5783f26eafc6cb4006d910984cbe23c4c37a9ae6b8", "contains_complete_successful_and_invalidated_products": true, "committed_to_git": false},
+  "analysis": {"path": "scripts/val_case_001.py", "sha256": "d787240c2d37591d4004150c7f5aaf80da85385784bc0af1baa7a13e786b7923", "runtime_dependency": "PYTHON_STANDARD_LIBRARY_ONLY"},
+  "results": {"path": "validation/cases/val_case_001/VAL_CASE_001_RESULTS.json", "sha256": "61ab136645811608e4ed9e35f2ab034f925f56bcd3519c4fc6ae71263b09dd4c"},
+  "dispositions": {"scientific_result": "VALIDATION_SUPPORT_SENSITIVITY_AND_IDENTIFIABILITY_SCREENING", "validation_framework": "PINNED_FRAMEWORK_USED_UNCHANGED", "claim_ceiling": "VALIDATION_SUPPORT_ONLY_PHYSICAL_VALIDATION_NOT_ESTABLISHED", "structural_identifiability": "NOT_ASSESSED"}
+}

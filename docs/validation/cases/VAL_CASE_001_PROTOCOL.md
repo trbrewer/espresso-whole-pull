@@ -11,7 +11,8 @@
 - Validation-framework pin: merge commit `a3e632d9deb3c4ac7c34fed079e4ed85bd370a30`, tree `3de55debf9272fb6bdac928a415996fd9e1fb8e9`
 - Operating-standard pin: merge commit `39c7bf0658c344728258ba1b4f8b935a4e889d7d`, tree `85711011a96ebaa46a77b5165aec0ab46e676542`
 - Puckworks lock: commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`, tree `1d553e44ee2f7480a5df521560801b478618cc84`
-- Human-owner authority: `/home/tim/espresso-development/AGENTS.md`, SHA-256 `224fb9f5e7a428a48cd244276daebd3fd21a5ea2e634f194ede0333cd9227c3d`
+- Human-owner authority: parent workspace `AGENTS.md`, SHA-256
+  `224fb9f5e7a428a48cd244276daebd3fd21a5ea2e634f194ede0333cd9227c3d`
 - External artifact logical identity: `VAL-CASE-001-OPENFOAM12-20260801`
 - External artifact location recorded publicly as: `EXTERNAL_RUNTIME_ROOT/VAL-CASE-001-OPENFOAM12-20260801`; the host path is excluded from Git.
 
@@ -173,4 +174,3 @@ Required case statements are:
 `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`
 
 `PROTECTED_OR_HOLDOUT_SCORING: NOT_AUTHORIZED`
-

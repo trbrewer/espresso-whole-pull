@@ -1,12 +1,10 @@
 import hashlib
 import importlib.util
 import json
+import math
 import pathlib
 import tempfile
 import unittest
-
-import numpy as np
-
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("val_case_001", ROOT / "scripts/val_case_001.py")
@@ -44,16 +42,16 @@ class ValCase001Tests(unittest.TestCase):
         self.assertEqual(MOD.HALF_FRACTIONS["pshut"], 0.0125)
 
     def test_central_and_one_sided_finite_difference(self):
-        minus, base, plus = np.array([1.0]), np.array([2.0]), np.array([5.0])
+        minus, base, plus = [1.0], [2.0], [5.0]
         self.assertAlmostEqual(MOD.finite_difference(minus, plus, 1.0, 3.0)[0], 2.0)
         self.assertAlmostEqual(MOD.finite_difference(None, plus, None, 3.0, base, 2.0)[0], 3.0)
         self.assertAlmostEqual(MOD.finite_difference(minus, None, 1.0, None, base, 2.0)[0], 1.0)
 
     def test_fixed_scale_normalization_handles_zero_observable(self):
-        result = MOD.normalized_sensitivity(np.array([0.0, 2.0]), 3.0, np.array([1.0, 4.0]))
-        np.testing.assert_allclose(result, [0.0, 1.5])
+        result = MOD.normalized_sensitivity([0.0, 2.0], 3.0, [1.0, 4.0])
+        self.assertEqual(result, [0.0, 1.5])
         with self.assertRaises(ValueError):
-            MOD.normalized_sensitivity(np.array([1.0]), 1.0, np.array([0.0]))
+            MOD.normalized_sensitivity([1.0], 1.0, [0.0])
 
     def test_nominal_endpoint_roundoff_clamps_only_within_tolerance(self):
         rows = [{"time_s": "0", "x": "1"}, {"time_s": "29.9999999999994", "x": "2"}]
@@ -62,10 +60,10 @@ class ValCase001Tests(unittest.TestCase):
             MOD.interp(rows, "x", 30.000001)
 
     def test_jacobian_dimensions_and_finite_svd(self):
-        jac = np.array([[1.0, 0.0], [0.0, 2.0], [1.0, 1.0]])
+        jac = [[1.0, 0.0], [0.0, 2.0], [1.0, 1.0]]
         result = MOD.svd_summary(jac)
         self.assertEqual(result["dimensions"], [3, 2])
-        self.assertTrue(all(np.isfinite(result["singular_values"])))
+        self.assertTrue(all(math.isfinite(value) for value in result["singular_values"]))
 
     def test_deterministic_serialization(self):
         value = {"b": [2, 1], "a": 1}
