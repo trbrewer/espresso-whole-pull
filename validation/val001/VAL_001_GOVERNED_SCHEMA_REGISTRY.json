@@ -164,9 +164,9 @@
       "schema_version": "espresso.val001.explicit_schema_specification_registry.v2",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "7c4389dc0b6bfc06f58bcfd2fffa324eab7bed013acb3d0cbc86c2e12e5fe035",
+      "sha256": "bde53f864ca22af2ff57b211dfd1a8f7d907d52f051a366db6e5e57406a063a6",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "e9a33bcd30beaa2355e6306753e4b5a0ca9ee09eb9c189540ccd6c27f243f0bd",
+      "structure_signature_sha256": "5fb87af4cddb43d681ed52a39b2cfdfc64b33c8ba37748ec69aa668ba27b1a1d",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -440,9 +440,9 @@
       "schema_version": "espresso.val001.normative_schema_contract_registry.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "4898f409ca7efb6ab3b0b071c1fcf4f3c80da51edab92d1472574a840f7051fe",
+      "sha256": "dc7fc69f1366f1fedcfab3c9a4bf88bcd68a8bdf3721a12359931352fb159bf2",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "864f4ac33f63a8d85ad3ae36a27a920242187a2c4e2e393d2eaf9730ab335a31",
+      "structure_signature_sha256": "55f316ca058471f2f04956f2dcd4ae19f1edc88ae000eb541a12d425d1df923a",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {

@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 213,
-  "total_uncompressed_bytes_excluding_manifest": 1858785,
-  "aggregate_source_sha256": "52c624f6e224ea48df95cfe657f1c56207ff025f83483ad503a5be7c53b9352f",
-  "aggregate_sha256": "52c624f6e224ea48df95cfe657f1c56207ff025f83483ad503a5be7c53b9352f",
+  "total_uncompressed_bytes_excluding_manifest": 1859278,
+  "aggregate_source_sha256": "598080a95a7a1eb5597e79a62d649a6758ccd2b7631ccf38696ef9df91c25441",
+  "aggregate_sha256": "598080a95a7a1eb5597e79a62d649a6758ccd2b7631ccf38696ef9df91c25441",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -634,8 +634,8 @@
       "git_mode": "100644"
     },
     "scripts/generate_val001_schema_provenance_freeze.py": {
-      "sha256": "28e870f6ba43fbda97eebe02a6aec580cd408872763ff3f30c3581ba8de596b4",
-      "bytes": 4379,
+      "sha256": "78477b80ef74e883c2e99599794d61f1030558f0381d4286a9fe198097918a68",
+      "bytes": 4858,
       "git_mode": "100644"
     },
     "scripts/generate_val001_successor_consumed_lock.py": {
@@ -689,8 +689,8 @@
       "git_mode": "100755"
     },
     "scripts/reconcile_val001_normative_administration.py": {
-      "sha256": "0d778dd98156b467645b4597b6aa874fd92141e056624e1c9108f564cd6d32b6",
-      "bytes": 21157,
+      "sha256": "ee37486a83923758f2ac0f8aef4eeb1ae2797b919a4bd1f129955f635b9629f9",
+      "bytes": 21304,
       "git_mode": "100644"
     },
     "scripts/run_qualification.py": {
@@ -1019,8 +1019,8 @@
       "git_mode": "100644"
     },
     "tests/test_val001_deep_schema.py": {
-      "sha256": "7a7b3f0367feeb4d1a958d809f3fc7d6e857667b5b026d2e9e32dad185987a8e",
-      "bytes": 4520,
+      "sha256": "0d9ecb5f01b5c8cddb53c9e5d1f505fcb2806a2d45cbcff467cbddd137084d53",
+      "bytes": 4387,
       "git_mode": "100644"
     },
     "tests/test_val001_explicit_semantics_and_root.py": {

@@ -17208,6 +17208,10 @@
         "additionalProperties": false,
         "description": "Explicit record-level administrative contract; deeper normative invariants execute in the named validators.",
         "properties": {
+          "administrative_bindings": {
+            "items": {},
+            "type": "array"
+          },
           "bindings": {
             "items": {},
             "type": "array"
@@ -17223,6 +17227,10 @@
           },
           "implementation": {
             "type": "object"
+          },
+          "ordinary_record_bindings": {
+            "items": {},
+            "type": "array"
           },
           "preserved_lineage": {
             "type": "object"
@@ -17246,6 +17254,8 @@
           "status",
           "implementation",
           "bindings",
+          "ordinary_record_bindings",
+          "administrative_bindings",
           "computed_counts",
           "preserved_lineage",
           "puckworks_lock",
@@ -17277,6 +17287,8 @@
         "status",
         "implementation",
         "bindings",
+        "ordinary_record_bindings",
+        "administrative_bindings",
         "computed_counts",
         "preserved_lineage",
         "puckworks_lock",

@@ -4,7 +4,8 @@ from __future__ import annotations
 import argparse,subprocess,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from tools.validation.val001.framework import canonical_json,sha256
+from tools.validation.val001.framework import canonical_json,sha256,load_json
+from tools.validation.val001.inventory import INVENTORY_PATH
 from tools.validation.val001.mutations import execute_inventory
 from tools.validation.val001.normative import taxonomy_counts,verify_generated_registry
 
@@ -15,6 +16,9 @@ def git(root,*args):return subprocess.check_output(["git",*args],cwd=root,text=T
 def main():
  p=argparse.ArgumentParser();p.add_argument("--root",required=True,type=Path);p.add_argument("--implementation-commit",required=True);a=p.parse_args();root=a.root.resolve();commit=git(root,"rev-parse",a.implementation_commit);taxonomy=taxonomy_counts(root);provenance=verify_generated_registry(root);mutations=execute_inventory(root)
  counts={"instance_inferred_governing_schemas":provenance["instance_inferred"],"copied_inferred_governing_schemas":provenance["copied_inferred"],"structural_signature_governing_schemas":provenance["structural_signature"],"filename_selected_governing_schemas":provenance["filename_selected"],"governing_schemas_reproducible_without_record_instances":provenance["governing_schemas_reproducible_without_record_instances"],"records_without_immutable_profile_assignment":0,"records_without_executed_profile":0,"unexecuted_required_invariants":0,"declared_mutation_count":mutations["declared_count"],"executed_mutation_count":mutations["executed_count"],"missing_mutation_count":0,"unexpected_mutation_count":0,**taxonomy,"semantic_profile_count":18}
- value={"schema_version":"espresso.val001.schema_provenance_semantic_completion_freeze.v1","record_id":"VAL001-SCHEMA-PROVENANCE-SEMANTIC-COMPLETION-FREEZE-1","status":"FROZEN","implementation":{"commit":commit,"tree":git(root,"rev-parse",commit+"^{tree}")},"bindings":[{"path":path,"sha256":sha256(root/path)} for path in PATHS],"computed_counts":counts,"preserved_lineage":LINEAGE,"puckworks_lock":{"commit":"fc61c4670ec7bf801e40bb391aab16048b8da26b","tree":"1d553e44ee2f7480a5df521560801b478618cc84"},"execution":{"new_openfoam_builds":0,"new_openfoam_case_executions":0,"new_real_data_comparison_invocations":0,"new_governed_result_producing_invocations":0,"new_invocation_journal_events":0,"execution_authority":"CONSUMED"},"claim_boundaries":{"physical_validation":"NOT_ESTABLISHED","general_physical_validation":"NOT_ESTABLISHED","general_whole_solver_physical_validation":"NOT_ESTABLISHED","new_governing_physics":"NOT_AUTHORIZED_BY_VAL001"}}
+ inventory=load_json(root/INVENTORY_PATH)
+ ordinary=[{"path":x["path"],"sha256":x["sha256"]} for x in inventory["records"] if x["binding_class"]=="ORDINARY_HASH_BOUND_RECORD"]
+ administrative=[{"path":x["path"],"sha256":sha256(root/x["path"])} for x in inventory["records"] if x["binding_class"]=="BOUND_BY_ADMINISTRATIVE_FREEZE"]
+ value={"schema_version":"espresso.val001.schema_provenance_semantic_completion_freeze.v1","record_id":"VAL001-SCHEMA-PROVENANCE-SEMANTIC-COMPLETION-FREEZE-1","status":"FROZEN","implementation":{"commit":commit,"tree":git(root,"rev-parse",commit+"^{tree}")},"bindings":[{"path":path,"sha256":sha256(root/path)} for path in PATHS],"ordinary_record_bindings":ordinary,"administrative_bindings":administrative,"computed_counts":counts,"preserved_lineage":LINEAGE,"puckworks_lock":{"commit":"fc61c4670ec7bf801e40bb391aab16048b8da26b","tree":"1d553e44ee2f7480a5df521560801b478618cc84"},"execution":{"new_openfoam_builds":0,"new_openfoam_case_executions":0,"new_real_data_comparison_invocations":0,"new_governed_result_producing_invocations":0,"new_invocation_journal_events":0,"execution_authority":"CONSUMED"},"claim_boundaries":{"physical_validation":"NOT_ESTABLISHED","general_physical_validation":"NOT_ESTABLISHED","general_whole_solver_physical_validation":"NOT_ESTABLISHED","new_governing_physics":"NOT_AUTHORIZED_BY_VAL001"}}
  (root/OUTPUT).write_bytes(canonical_json(value))
 if __name__=="__main__":main()
