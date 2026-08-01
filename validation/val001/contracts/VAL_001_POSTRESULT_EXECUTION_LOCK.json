@@ -1,42 +1,85 @@
 {
-  "schema_version": "espresso.val001.postresult_execution_lock.v2",
-  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-7-ADMINISTRATIVE-CLOSURE",
-  "task": "VAL-001",
-  "issue": 37,
-  "pull_request": 38,
-  "branch": "validation/val-001-source-adapters",
-  "authority_status": "CONSUMED",
-  "remaining_real_data_comparison_invocations": 0,
-  "remaining_governed_result_producing_invocations": 0,
+  "alternate_activation_allowed": false,
+  "alternate_authority_allowed": false,
   "alternate_invocation_id_allowed": false,
   "alternate_ledger_allowed": false,
-  "alternate_authority_allowed": false,
-  "alternate_activation_allowed": false,
-  "further_retry_authorized": false,
-  "freeze_binding": {
-    "path": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
-    "sha256": "4a0c98d73d0ed096b14c02d66b9b309bd42644a657c705a3d891ef30b20eb7cd",
-    "commit": "128e6e4da66aa56d216e3f5d84c0f4e9a3b78173",
-    "tree": "5be7bb6a140945ea6bbe4f4296eeedd5d662f170"
-  },
+  "authority_status": "CONSUMED",
   "bindings": [
-    {"path":"validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json","sha256":"55ad40bc3ed38fe15038a34fd1b00f63598f6725a6e6fb1be396d2d848b5bcb9"},
-    {"path":"validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json","sha256":"0fd43b3cbdb721ff1a1ec1d8ebab85196bbefae38e0f01142d80c10c32b9b773"},
-    {"path":"validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json","sha256":"ca7be65d121f5682ad55458922d78de4eee75efae5d2fc3598821a936ea1b3c5"},
-    {"path":"validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json","sha256":"38ac18e1573979929b1796d07be63f6408fe8e89c4cb0a37d6ed1accbf453436"},
-    {"path":"validation/val001/VAL_001_INVOCATION_EVENTS.jsonl","sha256":"f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730"},
-    {"path":"validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json","sha256":"01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8"},
-    {"path":"validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json","sha256":"7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"},
-    {"path":"scripts/run_val001_corrected_comparison.py","sha256":"a39fafb4b5492ad939137bc3221597572d21d973c0e4a81e444dc434c19fa66f"}
+    {
+      "path": "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json",
+      "sha256": "84ade8065c686b090cf16ab227bd702b9e505181af893e60720f670daee13f59"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
+      "sha256": "eb4104710e43450b584eb2e7ad2ca5d0c384509b1d1e8adfb4e7fcb864a741c2"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
+      "sha256": "1dd698be9b2ebf6338799223da0015628240b7937edf7a8722c39de306e2c853"
+    },
+    {
+      "path": "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
+      "sha256": "8e44249a5883b6951f4f1e3bac00fbe017c99de32207b96a7f7d257abe80c1bd"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
+      "sha256": "5b5367d4b037ad0e9ae77ab5057389059827370aae3b0a502e48d361f105aaf7"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
+      "sha256": "e74fc27175eb6b56607a658f1bd79cde16e1613df718e348ecf3381c1ff51351"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
+      "sha256": "6b8646410406cf57dbe93e04ba2a2180cda17bb8b91d980606bdaa012ba9f186"
+    },
+    {
+      "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
+      "sha256": "0207f83e96742a081e375ec0772e4343ea7116ed3ba1401763095bdfa16cf6e2"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl",
+      "sha256": "f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json",
+      "sha256": "01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
+      "sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"
+    },
+    {
+      "path": "scripts/run_val001_corrected_comparison.py",
+      "sha256": "a39fafb4b5492ad939137bc3221597572d21d973c0e4a81e444dc434c19fa66f"
+    }
   ],
-  "puckworks_lock": {"commit":"fc61c4670ec7bf801e40bb391aab16048b8da26b","tree":"1d553e44ee2f7480a5df521560801b478618cc84"},
+  "branch": "validation/val-001-source-adapters",
   "claim_boundaries": {
-    "physical_validation": "NOT_ESTABLISHED",
+    "experimental_commissioning": "NOT_AUTHORIZED",
     "general_physical_validation": "NOT_ESTABLISHED",
     "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
-    "experimental_commissioning": "NOT_AUTHORIZED",
-    "protected_or_holdout_scoring": "NOT_AUTHORIZED",
     "holdout_execution": "NOT_AUTHORIZED",
-    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"
-  }
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001",
+    "physical_validation": "NOT_ESTABLISHED",
+    "protected_or_holdout_scoring": "NOT_AUTHORIZED"
+  },
+  "freeze_binding": {
+    "commit": "88a2c419f573d4ee7b7fd9c3c912f656530d2429",
+    "path": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+    "sha256": "25a1843585fe5a70d9a2f34833b43fe37a6c5e1f2ed3dc336974606a9373fa47",
+    "tree": "b7fc6ef061ea37b43fcf7ca72a06e0f171097fc4"
+  },
+  "further_retry_authorized": false,
+  "issue": 37,
+  "puckworks_lock": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "pull_request": 38,
+  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-8-EXPLICIT-SEMANTICS",
+  "remaining_governed_result_producing_invocations": 0,
+  "remaining_real_data_comparison_invocations": 0,
+  "schema_version": "espresso.val001.postresult_execution_lock.v2",
+  "task": "VAL-001"
 }
