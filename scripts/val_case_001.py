@@ -20,6 +20,11 @@ BASE_COMMIT = "39c7bf0658c344728258ba1b4f8b935a4e889d7d"
 BASE_TREE = "85711011a96ebaa46a77b5165aec0ab46e676542"
 ARTIFACT_ID = "VAL-CASE-001-OPENFOAM12-20260801"
 EXECUTABLE_SHA256 = "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c"
+SUPERSEDED_RESULT_SHA256 = "61ab136645811608e4ed9e35f2ab034f925f56bcd3519c4fc6ae71263b09dd4c"
+SUPERSEDED_COMMIT = "a573df5b0b40d2e8db596821fff2262477a3860e"
+SUPERSEDED_TREE = "cf389fca0d513ebefc46472be6358fba4343c04e"
+CORRECTION_FREEZE_COMMIT = "0b4ccdf193737fbdd4a960d1ce11673303ec0203"
+CORRECTION_FREEZE_TREE = "ec79f6ccdc07739389103933d6bced5dd2bfc8b1"
 PRIMARY = 0.05
 HALF = 0.025
 PRIMARY_FRACTIONS = {"pc": 0.025, "pshut": 0.025}
@@ -415,17 +420,92 @@ def svd_summary(jac: list[list[float]]) -> dict:
             "effective_rank_range": [min(ranks.values()), max(ranks.values())]}
 
 
+def is_near_collinear(value: float | None, threshold: float = 0.95) -> bool:
+    return value is not None and math.isfinite(value) and abs(value) >= threshold
+
+
+def _association(left: list[float], right: list[float]) -> dict:
+    centered_left = [value - sum(left) / len(left) for value in left]
+    centered_right = [value - sum(right) / len(right) for value in right]
+    centered_norms = [math.sqrt(sum(value * value for value in column))
+                      for column in (centered_left, centered_right)]
+    norms = [math.sqrt(sum(value * value for value in column))
+             for column in (left, right)]
+    centered = None
+    if all(math.isfinite(value) and value > 0.0 for value in centered_norms):
+        centered = sum(a * b for a, b in zip(centered_left, centered_right)) / (
+            centered_norms[0] * centered_norms[1])
+    cosine = None
+    if all(math.isfinite(value) and value > 0.0 for value in norms):
+        cosine = sum(a * b for a, b in zip(left, right)) / (norms[0] * norms[1])
+    if centered is not None and math.isfinite(centered):
+        method, primary, reason = "CENTERED_PEARSON", centered, None
+    elif cosine is not None and math.isfinite(cosine):
+        method, primary = "UNCENTERED_COSINE_FALLBACK_ZERO_CENTERED_NORM", cosine
+        reason = "CENTERED_CORRELATION_UNDEFINED_ZERO_CENTERED_NORM"
+    else:
+        method, primary = "UNDEFINED", None
+        reason = "CENTERED_AND_COSINE_UNDEFINED_ZERO_NORM"
+    return {"centered_correlation": centered, "cosine_similarity": cosine,
+            "primary_method": method, "primary_value": primary,
+            "defined": primary is not None, "undefined_reason": reason,
+            "primary_near_collinear": is_near_collinear(primary),
+            "supplemental_cosine_near_collinear": is_near_collinear(cosine)}
+
+
 def correlation(jac: list[list[float]], parameters: tuple[str, ...]) -> dict:
     columns = _transpose(jac)
-    norms = [math.sqrt(sum(value * value for value in column)) for column in columns]
-    matrix = [[1.0 if i == j else 0.0 for j in range(len(parameters))] for i in range(len(parameters))]
+    size = len(parameters)
+    centered = [[1.0 if i == j else None for j in range(size)] for i in range(size)]
+    cosine = [[1.0 if i == j else None for j in range(size)] for i in range(size)]
+    primary = [[1.0 if i == j else None for j in range(size)] for i in range(size)]
+    methods = [["IDENTITY" if i == j else None for j in range(size)] for i in range(size)]
+    diagnostics = []
     for i in range(len(parameters)):
         for j in range(i + 1, len(parameters)):
-            value = sum(a * b for a, b in zip(columns[i], columns[j])) / (norms[i] * norms[j]) if norms[i] and norms[j] else 0.0
-            matrix[i][j] = matrix[j][i] = value
-    pairs = [{"parameters": [parameters[i], parameters[j]], "cosine": matrix[i][j]}
-             for i in range(len(parameters)) for j in range(i + 1, len(parameters)) if abs(matrix[i][j]) >= 0.95]
-    return {"parameters": list(parameters), "cosine_matrix": matrix, "near_collinear_pairs": pairs}
+            item = _association(columns[i], columns[j])
+            item["parameters"] = [parameters[i], parameters[j]]
+            diagnostics.append(item)
+            for matrix, key in ((centered, "centered_correlation"),
+                                (cosine, "cosine_similarity"),
+                                (primary, "primary_value"),
+                                (methods, "primary_method")):
+                matrix[i][j] = matrix[j][i] = item[key]
+    return {
+        "parameters": list(parameters), "threshold_abs": 0.95,
+        "centered_correlation_matrix": centered,
+        "cosine_similarity_matrix": cosine,
+        "primary_matrix": primary,
+        "primary_method_by_pair": methods,
+        "pair_diagnostics": diagnostics,
+        "primary_near_collinear_pairs": [item for item in diagnostics
+                                           if item["primary_near_collinear"]],
+        "supplemental_cosine_near_collinear_pairs": [item for item in diagnostics
+                                                       if item["supplemental_cosine_near_collinear"]],
+    }
+
+
+def logarithmic_sensitivity(physical: list[float], parameter: float,
+                            baseline_outputs: list[float]) -> list[dict]:
+    records = []
+    for derivative_value, output in zip(physical, baseline_outputs):
+        if math.isfinite(output) and output > 0.0:
+            records.append({"value": parameter * derivative_value / output,
+                            "disposition": "DEFINED_POSITIVE_BASELINE",
+                            "baseline_output": output})
+        else:
+            records.append({"value": None,
+                            "disposition": "UNDEFINED_NONPOSITIVE_OR_NONFINITE_BASELINE",
+                            "baseline_output": output})
+    return records
+
+
+def exact_repeatability_relative(value: float, denominator: float) -> dict:
+    if denominator == 0.0:
+        return {"value": None, "disposition": "UNDEFINED_ZERO_DENOMINATOR",
+                "denominator": 0.0}
+    return {"value": value / denominator, "disposition": "DEFINED",
+            "denominator": denominator}
 
 
 def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path) -> dict:
@@ -471,15 +551,35 @@ def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path
         delta = [finite - universal for finite, universal in zip(f[1], u[1])]
         scaled = [abs(value) / scale for value, scale in zip(delta, f[2])]
         maximum_index = max(range(len(scaled)), key=scaled.__getitem__)
+        repeatability_denominator = repeatability["maximum_scale_normalized_difference"]
+        relative_repeatability = exact_repeatability_relative(
+            scaled[maximum_index], repeatability_denominator)
         branch[condition] = {"maximum_absolute_separation": max(abs(value) for value in delta),
                              "maximum_scale_normalized_separation": scaled[maximum_index],
                              "feature_of_maximum_scaled_separation": f[0][maximum_index],
-                             "separation_vector": dict(zip(f[0], delta))}
+                             "separation_vector": dict(zip(f[0], delta)),
+                             "relative_to_maximum_exact_repeatability": relative_repeatability}
     stage_c = {}
+    baseline_vectors = {"MACHINE_MID": dict(zip(names, base))}
+    local_log = {"MACHINE_MID": {}}
+    for p in STAGE_A_PARAMETERS:
+        records = logarithmic_sensitivity(derivatives[p]["physical"], PARAMETERS[p][2], base)
+        local_log["MACHINE_MID"][p] = dict(zip(names, records))
     for condition in CONDITIONS:
-        cols = [derivative(run_root, f"C-{condition}", p, PRIMARY_FRACTIONS.get(p, PRIMARY))["normalized"] for p in STAGE_C_PARAMETERS]
+        condition_derivatives = {p: derivative(run_root, f"C-{condition}", p,
+                                                PRIMARY_FRACTIONS.get(p, PRIMARY))
+                                 for p in STAGE_C_PARAMETERS}
+        cols = [condition_derivatives[p]["normalized"] for p in STAGE_C_PARAMETERS]
         jac = [list(row) for row in zip(*cols)]
         stage_c[condition] = {"svd": svd_summary(jac), "correlation": correlation(jac, STAGE_C_PARAMETERS)}
+        condition_names, condition_base, _ = feature_vector(
+            read_trace(run_root, f"C-{condition}-FINITE"))
+        baseline_vectors[condition] = dict(zip(condition_names, condition_base))
+        local_log[condition] = {}
+        for p in STAGE_C_PARAMETERS:
+            records = logarithmic_sensitivity(condition_derivatives[p]["physical"],
+                                                PARAMETERS[p][2], condition_base)
+            local_log[condition][p] = dict(zip(condition_names, records))
     case_results = []
     for trace in sorted((run_root / "cases").glob("*/postProcessing/wholePull/0/traces.csv")):
         cid = trace.parents[3].name
@@ -491,7 +591,7 @@ def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path
                              "final_basket_pressure_pa": float(last["basketPressurePa"]),
                              "final_bed_height_ratio": float(last["predictedBedHeightRatio"])})
     result = {
-        "schema_version": "espresso.validation.val_case_001.results.v1",
+        "schema_version": "espresso.validation.val_case_001.results.v2",
         "case_id": "VAL-CASE-001",
         "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
         "planned_openfoam_case_executions": 47,
@@ -505,6 +605,8 @@ def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path
         "model_form_separation": branch,
         "physical_derivatives": {p: dict(zip(derivatives[p]["names"], derivatives[p]["physical"])) for p in STAGE_A_PARAMETERS},
         "normalized_sensitivities": {p: dict(zip(derivatives[p]["names"], derivatives[p]["normalized"])) for p in STAGE_A_PARAMETERS},
+        "baseline_feature_vectors": baseline_vectors,
+        "local_logarithmic_sensitivities": local_log,
         "case_summaries": case_results,
         "practical_identifiability": "SCREENING_ONLY_WITHOUT_MEASUREMENT_UNCERTAINTY",
         "structural_identifiability": "NOT_ASSESSED",
@@ -515,6 +617,28 @@ def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path
         "claim_ceiling": "VALIDATION_SUPPORT_ONLY_PHYSICAL_VALIDATION_NOT_ESTABLISHED",
         "executable_sha256": EXECUTABLE_SHA256,
         "external_artifact_id": ARTIFACT_ID,
+        "review_status": "CORRECTED_PENDING_EXACT_HEAD_INDEPENDENT_REVIEW",
+        "correction_provenance": {
+            "superseded_result_sha256": SUPERSEDED_RESULT_SHA256,
+            "superseded_commit": SUPERSEDED_COMMIT,
+            "superseded_tree": SUPERSEDED_TREE,
+            "correction_freeze_commit": CORRECTION_FREEZE_COMMIT,
+            "correction_freeze_tree": CORRECTION_FREEZE_TREE,
+            "retained_artifact_identity": ARTIFACT_ID,
+            "new_openfoam_launches": 0,
+            "execution_statement": "ANALYSIS_ONLY_FROM_47_IMMUTABLE_RETAINED_TRACES",
+            "old_versus_corrected_comparison": {
+                "status": "PASS_ONLY_DECLARED_FIELDS_DIFFER",
+                "allowed_fields": [
+                    "schema_version", "correction_provenance", "review_status",
+                    "observable_sets.*.correlation",
+                    "stage_c_information.*.correlation",
+                    "baseline_feature_vectors", "local_logarithmic_sensitivities",
+                    "model_form_separation.*.relative_to_maximum_exact_repeatability",
+                ],
+                "unchanged_field_comparison": "BYTE_EQUIVALENT_CANONICAL_VALUES",
+            },
+        },
     }
     if len(case_results) != 47:
         raise ValueError(f"run count mismatch: {len(case_results)} != 47")

@@ -1,5 +1,119 @@
 {
   "actual_openfoam_case_executions": 47,
+  "baseline_feature_vectors": {
+    "HIGH": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.009664227026350235,
+      "SET_A:cup_beverage_mass_kg@15s": 0.018053761691237933,
+      "SET_A:cup_beverage_mass_kg@20s": 0.026293310082655487,
+      "SET_A:cup_beverage_mass_kg@25s": 0.03432537418991684,
+      "SET_A:cup_beverage_mass_kg@30s": 0.042113269442581,
+      "SET_A:outlet_flow_m3_s@10s": 1.49349666647155e-06,
+      "SET_A:outlet_flow_m3_s@15s": 1.49349666647149e-06,
+      "SET_A:outlet_flow_m3_s@20s": 1.49349666647141e-06,
+      "SET_A:outlet_flow_m3_s@25s": 1.49349666647135e-06,
+      "SET_A:outlet_flow_m3_s@30s": 1.49349666647132e-06,
+      "SET_B:basketPressurePa@10s": 1100000.0,
+      "SET_B:basketPressurePa@15s": 1100000.0,
+      "SET_B:basketPressurePa@20s": 1100000.0,
+      "SET_B:basketPressurePa@25s": 1100000.0,
+      "SET_B:basketPressurePa@30s": 1100000.0,
+      "SET_C:deformation@10s": 0.08498279091759697,
+      "SET_C:deformation@15s": 0.08498279091759897,
+      "SET_C:deformation@20s": 0.08498279091760097,
+      "SET_C:deformation@25s": 0.08498279091760197,
+      "SET_C:deformation@30s": 0.08498279091760397,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.340326457039791,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.340326457039789,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.340326457039788,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.340326457039787,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.340326457039785,
+      "SET_D:first_drip_s": 4.12775142428062
+    },
+    "LOW": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.003739246235461314,
+      "SET_A:cup_beverage_mass_kg@15s": 0.01100072533449609,
+      "SET_A:cup_beverage_mass_kg@20s": 0.018181111878724326,
+      "SET_A:cup_beverage_mass_kg@25s": 0.02525693313158626,
+      "SET_A:cup_beverage_mass_kg@30s": 0.0321727562223814,
+      "SET_A:outlet_flow_m3_s@10s": 1.27448580739688e-06,
+      "SET_A:outlet_flow_m3_s@15s": 1.27448580739674e-06,
+      "SET_A:outlet_flow_m3_s@20s": 1.27448580739671e-06,
+      "SET_A:outlet_flow_m3_s@25s": 1.2744858073967e-06,
+      "SET_A:outlet_flow_m3_s@30s": 1.27448580739669e-06,
+      "SET_B:basketPressurePa@10s": 500000.0,
+      "SET_B:basketPressurePa@15s": 500000.0,
+      "SET_B:basketPressurePa@20s": 500000.0,
+      "SET_B:basketPressurePa@25s": 500000.0,
+      "SET_B:basketPressurePa@30s": 500000.0,
+      "SET_C:deformation@10s": 0.063358461996043,
+      "SET_C:deformation@15s": 0.063358461996043,
+      "SET_C:deformation@20s": 0.063358461996042,
+      "SET_C:deformation@25s": 0.063358461996042,
+      "SET_C:deformation@30s": 0.063358461996042,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.357957308221367,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.357957308221367,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.357957308221367,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.357957308221368,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.357957308221368,
+      "SET_D:first_drip_s": 7.2810531334174
+    },
+    "MACHINE_MID": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.0015270795466547891,
+      "SET_A:cup_beverage_mass_kg@15s": 0.00932782742306575,
+      "SET_A:cup_beverage_mass_kg@20s": 0.017174758810903964,
+      "SET_A:cup_beverage_mass_kg@25s": 0.024904266380852413,
+      "SET_A:cup_beverage_mass_kg@30s": 0.0324557052928224,
+      "SET_A:outlet_flow_m3_s@10s": 1.365287995562211e-06,
+      "SET_A:outlet_flow_m3_s@15s": 1.3886552363734805e-06,
+      "SET_A:outlet_flow_m3_s@20s": 1.3939990219255201e-06,
+      "SET_A:outlet_flow_m3_s@25s": 1.39530625525404e-06,
+      "SET_A:outlet_flow_m3_s@30s": 1.39563164682864e-06,
+      "SET_B:basketPressurePa@10s": 597562.1249797175,
+      "SET_B:basketPressurePa@15s": 630630.0425799356,
+      "SET_B:basketPressurePa@20s": 638930.0414087733,
+      "SET_B:basketPressurePa@25s": 641009.3402442061,
+      "SET_B:basketPressurePa@30s": 641530.020600069,
+      "SET_C:deformation@10s": 0.07085903193522214,
+      "SET_C:deformation@15s": 0.07300009985797995,
+      "SET_C:deformation@20s": 0.07350570404323198,
+      "SET_C:deformation@25s": 0.07363037544367002,
+      "SET_C:deformation@30s": 0.07366146981731003,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.3522163339618489,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.35052608598662593,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.350123031605079,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.350023404841868,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.349998541748693,
+      "SET_D:first_drip_s": 8.90054655524072
+    },
+    "MID": {
+      "SET_A:cup_beverage_mass_kg@10s": 0.008638075094687704,
+      "SET_A:cup_beverage_mass_kg@15s": 0.01698988842278343,
+      "SET_A:cup_beverage_mass_kg@20s": 0.025191626581787085,
+      "SET_A:cup_beverage_mass_kg@25s": 0.03319510378333233,
+      "SET_A:cup_beverage_mass_kg@30s": 0.0409578674828014,
+      "SET_A:outlet_flow_m3_s@10s": 1.48267597159482e-06,
+      "SET_A:outlet_flow_m3_s@15s": 1.48267597159468e-06,
+      "SET_A:outlet_flow_m3_s@20s": 1.4826759715946e-06,
+      "SET_A:outlet_flow_m3_s@25s": 1.48267597159456e-06,
+      "SET_A:outlet_flow_m3_s@30s": 1.48267597159453e-06,
+      "SET_B:basketPressurePa@10s": 900000.0,
+      "SET_B:basketPressurePa@15s": 900000.0,
+      "SET_B:basketPressurePa@20s": 900000.0,
+      "SET_B:basketPressurePa@25s": 900000.0,
+      "SET_B:basketPressurePa@30s": 900000.0,
+      "SET_C:deformation@10s": 0.08334299529209899,
+      "SET_C:deformation@15s": 0.08334299529209999,
+      "SET_C:deformation@20s": 0.08334299529210099,
+      "SET_C:deformation@25s": 0.08334299529210198,
+      "SET_C:deformation@30s": 0.08334299529210298,
+      "SET_C:volumeWeightedMechanicalPorosity@10s": 0.341856933652768,
+      "SET_C:volumeWeightedMechanicalPorosity@15s": 0.341856933652766,
+      "SET_C:volumeWeightedMechanicalPorosity@20s": 0.341856933652765,
+      "SET_C:volumeWeightedMechanicalPorosity@25s": 0.341856933652765,
+      "SET_C:volumeWeightedMechanicalPorosity@30s": 0.341856933652764,
+      "SET_D:first_drip_s": 4.71169618523188
+    }
+  },
   "case_id": "VAL-CASE-001",
   "case_summaries": [
     {
@@ -475,6 +589,30 @@
   ],
   "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
   "claim_ceiling": "VALIDATION_SUPPORT_ONLY_PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+  "correction_provenance": {
+    "correction_freeze_commit": "0b4ccdf193737fbdd4a960d1ce11673303ec0203",
+    "correction_freeze_tree": "ec79f6ccdc07739389103933d6bced5dd2bfc8b1",
+    "execution_statement": "ANALYSIS_ONLY_FROM_47_IMMUTABLE_RETAINED_TRACES",
+    "new_openfoam_launches": 0,
+    "old_versus_corrected_comparison": {
+      "allowed_fields": [
+        "schema_version",
+        "correction_provenance",
+        "review_status",
+        "observable_sets.*.correlation",
+        "stage_c_information.*.correlation",
+        "baseline_feature_vectors",
+        "local_logarithmic_sensitivities",
+        "model_form_separation.*.relative_to_maximum_exact_repeatability"
+      ],
+      "status": "PASS_ONLY_DECLARED_FIELDS_DIFFER",
+      "unchanged_field_comparison": "BYTE_EQUIVALENT_CANONICAL_VALUES"
+    },
+    "retained_artifact_identity": "VAL-CASE-001-OPENFOAM12-20260801",
+    "superseded_commit": "a573df5b0b40d2e8db596821fff2262477a3860e",
+    "superseded_result_sha256": "61ab136645811608e4ed9e35f2ab034f925f56bcd3519c4fc6ae71263b09dd4c",
+    "superseded_tree": "cf389fca0d513ebefc46472be6358fba4343c04e"
+  },
   "derivative_stability": {
     "k0": {
       "maximum_absolute_ratio_minus_one": 0.001064993854978269,
@@ -496,11 +634,2138 @@
   "experimental_variant_discrimination": "NOT_ASSESSED",
   "external_artifact_id": "VAL-CASE-001-OPENFOAM12-20260801",
   "independent_dataset_disposition": "NO_ADDITIONAL_ADMISSIBLE_INDEPENDENT_DATASET_AT_LOCKED_EVIDENCE_STATE",
+  "local_logarithmic_sensitivities": {
+    "HIGH": {
+      "k0": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.009664227026350235,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0095136541439955
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.018053761691237933,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9741174387477702
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.026293310082655487,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9516044240443716
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.03432537418991684,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9316439352135724
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.042113269442581,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9177471183506938
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.49349666647155e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0000000000054592
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.49349666647149e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0000000000046272
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.49349666647141e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0000000000040117
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.49349666647135e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0000000000035838
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.49349666647132e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0000000000030664
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.08498279091759697,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -2.4691134450693332e-12
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.08498279091759897,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -2.233959783634106e-12
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.08498279091760097,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -1.9988061221988904e-12
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.08498279091760197,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -1.763652460763706e-12
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.08498279091760397,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -1.646075630046087e-12
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.340326457039791,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 4.697610551251688e-13
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.340326457039789,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 4.1104092323452517e-13
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.340326457039788,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 3.523207913438797e-13
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.340326457039787,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 3.2296072539855735e-13
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.340326457039785,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 2.9360065945323567e-13
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 4.12775142428062,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      },
+      "pc": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.009664227026350235,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0023212012500977
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.018053761691237933,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9669698703286302
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.026293310082655487,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9445745635639682
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.03432537418991684,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9247065384667061
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.042113269442581,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9108917676150147
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.49349666647155e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.992656796836073
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.49349666647149e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9926567968371849
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.49349666647141e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9926567968379044
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.49349666647135e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.992656796838347
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.49349666647132e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9926567968387696
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.08498279091759697,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.021997824137994094
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.08498279091759897,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.021997824137993578
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.08498279091760097,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.021997824138228216
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.08498279091760197,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.021997824138227956
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.08498279091760397,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.02199782413822744
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.340326457039791,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.005370602535984236
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.340326457039789,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.005370602535984267
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.340326457039788,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0053706025359842825
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.340326457039787,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0053706025360430185
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.340326457039785,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.00537060253604305
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 4.12775142428062,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      },
+      "phi0": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.009664227026350235,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.1004740127530339
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.018053761691237933,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09692295273379328
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.026293310082655487,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09467634109309497
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.03432537418991684,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09268317928433842
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.042113269442581,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09129818556104488
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.49349666647155e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09949869400591013
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.49349666647149e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09949869400524347
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.49349666647141e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09949869400471427
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.49349666647135e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0994986940041823
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.49349666647132e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0994986940038497
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 1100000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.08498279091759697,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0710930175928273
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.08498279091759897,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0710930175930373
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.08498279091760097,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0710930175931297
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.08498279091760197,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0710930175933522
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.08498279091760397,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0710930175934446
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.340326457039791,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0714158922621664
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.340326457039789,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.071415892262114
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.340326457039788,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0714158922620878
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.340326457039787,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0714158922620616
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.340326457039785,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0714158922620385
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 4.12775142428062,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      }
+    },
+    "LOW": {
+      "k0": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.003739246235461314,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0220503514732535
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.01100072533449609,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0009666165533504
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.018181111878724326,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9768855997631403
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.02525693313158626,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.956270310913381
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0321727562223814,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9353248720657986
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.27448580739688e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9999999999998588
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.27448580739674e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9999999999998905
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.27448580739671e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9999999999999141
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.2744858073967e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.999999999999922
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.27448580739669e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9999999999999297
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.063358461996043,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.063358461996043,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.063358461996042,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.577059623424984e-13
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.063358461996042,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.063358461996042,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.357957308221367,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.357957308221367,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.357957308221367,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.357957308221368,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.357957308221368,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 7.2810531334174,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      },
+      "pc": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.003739246235461314,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5744897338108813
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.01100072533449609,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5626763169923007
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.018181111878724326,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5491256317122841
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.02525693313158626,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5375113471554602
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0321727562223814,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5256911076274602
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.27448580739688e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5620916711173047
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.27448580739674e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5620916711156418
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.27448580739671e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5620916711148675
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.2744858073967e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5620916711140876
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.27448580739669e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5620916711136235
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.063358461996043,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.6778196899915822
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.063358461996043,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.6778196899909512
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.063358461996042,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.6778196899906467
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.063358461996042,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.6778196899903313
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.063358461996042,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.6778196899900159
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.357957308221367,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.08987206311392316
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.357957308221367,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.08987206311386733
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.357957308221367,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0898720631138115
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.357957308221368,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.08987206311375542
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.357957308221368,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0898720631136996
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 7.2810531334174,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      },
+      "phi0": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.003739246235461314,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.07162004497138343
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.01100072533449609,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.07014545469045276
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.018181111878724326,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0684555076065212
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.02525693313158626,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06700654828418423
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0321727562223814,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06553222411216139
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.27448580739688e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.07007388717573164
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.27448580739674e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.07007388717644382
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.27448580739671e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.07007388717660332
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.2744858073967e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.07007388717668361
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.27448580739669e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.07007388717668415
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 500000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.063358461996043,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0358881349826363
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.063358461996043,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0358881349826363
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.063358461996042,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0358881349826525
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.063358461996042,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0358881349826525
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.063358461996042,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0358881349828104
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.357957308221367,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0611645976076365
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.357957308221367,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0611645976076365
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.357957308221367,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0611645976076365
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.357957308221368,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0611645976076056
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.357957308221368,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0611645976076056
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 7.2810531334174,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      }
+    },
+    "MACHINE_MID": {
+      "Cu": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.0015270795466547891,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -2.564820872804106
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.00932782742306575,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.47223161941188324
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.017174758810903964,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.25674458336110645
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.024904266380852413,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.17503516131647523
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0324557052928224,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.13117859752742864
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.365287995562211e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.06615594200138225
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.3886552363734805e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.02141626836432581
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.3939990219255201e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.006909601981136532
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.39530625525404e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.0021541937976568525
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.39563164682864e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.000650169097242552
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 597562.1249797175,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.19877600837890938
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 630630.0425799356,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.07181171378104494
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 638930.0414087733,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.023854559695478332
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 641009.3402442061,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.007493133345247808
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 641530.020600069,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.0022658995750960967
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.07085903193522214,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.11383791124162848
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.07300009985797995,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.03829060943571681
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.07350570404323198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.012475565535575318
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.07363037544367002,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.0038992148013588064
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.07366146981731003,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.0011775950647568308
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.3522163339618489,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.017938889027058882
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.35052608598662593,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.00634403067994424
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.350123031605079,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.002091897902724903
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.350023404841868,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0006557683492730005
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.349998541748693,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.00019819548305405178
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 8.90054655524072,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.27083766592814673
+        }
+      },
+      "Qfree": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.0015270795466547891,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 3.6157707174696085
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.00932782742306575,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.7318263718361784
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.017174758810903964,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.438100162781677
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.024904266380852413,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.3270319822487898
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0324557052928224,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.2667779663400761
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.365287995562211e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.1569185651931078
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.3886552363734805e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.11876279484265265
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.3939990219255201e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.10614204630547074
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.39530625525404e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.1020432092041165
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.39563164682864e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.10075965491556836
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 597562.1249797175,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.4707924372821112
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 630630.0425799356,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.39744548370124344
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 638930.0414087733,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.36564413556698516
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 641009.3402442061,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.3541409619058379
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 641530.020600069,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.3503474813004184
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.07085903193522214,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.26982448056612185
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.07300009985797995,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.21215738895453728
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.07350570404323198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.19147182721795078
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.07363037544367002,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.1845348997896296
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.07366146981731003,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.18232868825613893
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.3522163339618489,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.04251166439998809
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.35052608598662593,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.035142257539255824
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.350123031605079,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.03209787704724961
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.350023404841868,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.031027004987898694
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.349998541748693,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.03067888321120578
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 8.90054655524072,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.39870523899824856
+        }
+      },
+      "Ru": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.0015270795466547891,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -1.8470837583299586
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.00932782742306575,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.4050154631251795
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.017174758810903964,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.2597136111211157
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.024904266380852413,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.20510885435815973
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0324557052928224,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.17521582141133324
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.365287995562211e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.1103178968725037
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.3886552363734805e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.10205022309114602
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.3939990219255201e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.10024196580524201
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.39530625525404e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.099879973062349
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.39563164682864e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.09981424906854766
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 597562.1249797175,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.33166563267805627
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 630630.0425799356,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.3424432410276223
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 638930.0414087733,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.34625966682295795
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 641009.3402442061,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.3475537151401018
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 641530.020600069,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.34796688729285924
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.07085903193522214,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.18985657120108873
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.07300009985797995,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.18247827717763057
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.07350570404323198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.18099527225826137
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.07363037544367002,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.1807825378606543
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.07366146981731003,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.18077416865147294
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.3522163339618489,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.029919730512359802
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.35052608598662593,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.030234843894169236
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.350123031605079,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.030350105716055453
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.350023404841868,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.030404306515669065
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.349998541748693,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.03042537547778197
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 8.90054655524072,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.212725646833998
+        }
+      },
+      "k0": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.0015270795466547891,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8707163355357541
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.00932782742306575,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8364625572724506
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.017174758810903964,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.7985950281152999
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.024904266380852413,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.7759789906435283
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0324557052928224,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.7564125546250948
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.365287995562211e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8418362599181201
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.3886552363734805e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8100051421221727
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.3939990219255201e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8029848554636975
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.39530625525404e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8010359040263207
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.39563164682864e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8004725747025638
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 597562.1249797175,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.476021701799357
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 630630.0425799356,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.6372819345936431
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 638930.0414087733,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.6800214354168327
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 641009.3402442061,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.6917762703647711
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 641530.020600069,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.6950144387030454
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.07085903193522214,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.2721150421020031
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.07300009985797995,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.33924798726098493
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.07350570404323198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.35511594234901944
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.07363037544367002,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.35948362151459373
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.07366146981731003,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.3607181389717015
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.3522163339618489,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.04289131459802493
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.35052608598662593,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.05621243325229182
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.350123031605079,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.05954777007108351
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.350023404841868,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06045842310807848
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.349998541748693,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.060710819582835245
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 8.90054655524072,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      },
+      "pc": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.0015270795466547891,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5754815258091897
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.00932782742306575,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5731994974229996
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.017174758810903964,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5555874005205941
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.024904266380852413,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5438530643427336
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0324557052928224,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5323388791212281
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.365287995562211e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5628276597442516
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.3886552363734805e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5700439028620768
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.3939990219255201e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5715304814963972
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.39530625525404e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5715225966649236
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.39563164682864e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5714041192408693
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 597562.1249797175,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.31758365928102467
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 630630.0425799356,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.4448404134884879
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 638930.0414087733,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.48177382124464085
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 641009.3402442061,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.4926454555345699
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 641530.020600069,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.4958005264722709
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.07085903193522214,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.7528716172262951
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.07300009985797995,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.7688051315719422
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.07350570404323198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.7734914484475779
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.07363037544367002,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.7753637864649516
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.07366146981731003,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.7760454783299336
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.3522163339618489,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.11868528033696396
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.35052608598662593,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.12740870805325485
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.350123031605079,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.12972400292526517
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.350023404841868,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.13042254662863073
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.349998541748693,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.13063350219930042
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 8.90054655524072,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      },
+      "phi0": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.0015270795466547891,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06880389751757049
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.00932782742306575,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06779363200164926
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.017174758810903964,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06539554081114478
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.024904266380852413,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06386385670046806
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0324557052928224,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06242871630000004
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.365287995562211e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06706596390148135
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.3886552363734805e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06687128513648129
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.3939990219255201e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0668014517538708
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.39530625525404e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06674710065543454
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.39563164682864e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.06672206268803085
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 597562.1249797175,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.037866020530349445
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 630630.0425799356,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.052314209228873775
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 638930.0414087733,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.0563924370263072
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 641009.3402442061,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.057569502247052144
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 641530.020600069,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.05790612693328479
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.07085903193522214,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.022620597452048
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.07300009985797995,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.019205873759872
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.07350570404323198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0182945770208225
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.07363037544367002,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.01799839918749
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.07366146981731003,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0179034104000488
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.3522163339618489,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0701912887751779
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.35052608598662593,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.072783034428249
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.350123031605079,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0734168854636912
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.350023404841868,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.07358550266208
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.349998541748693,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.073631138289058
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 8.90054655524072,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      },
+      "pshut": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.0015270795466547891,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 2.5739627096403166
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.00932782742306575,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.6881740070001139
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.017174758810903964,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5059483038759949
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.024904266380852413,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.4381921871338663
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0324557052928224,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.3998508839945006
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.365287995562211e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.27640629007450385
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.3886552363734805e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.31122235995555886
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.3939990219255201e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.3230808384147243
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.39530625525404e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.32733501003523036
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.39563164682864e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.3287656244947104
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 597562.1249797175,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8315794723918538
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 630630.0425799356,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0439437093929036
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 638930.0414087733,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.1153998594973764
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 641009.3402442061,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.1384398882772362
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 641530.020600069,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.145553762966401
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.07085903193522214,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.4757815375699794
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.07300009985797995,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5563238421630615
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.07350570404323198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5831010192084173
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.07363037544367002,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5922157984697437
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.07366146981731003,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.5951691999452724
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.3522163339618489,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.07498391431228123
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.35052608598662593,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.09217079245512384
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.350123031605079,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.09776768046173408
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.350023404841868,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.09959018153837083
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.349998541748693,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.1001609627697007
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 8.90054655524072,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.27763293171329867
+        }
+      }
+    },
+    "MID": {
+      "k0": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.008638075094687704,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0137626593768565
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.01698988842278343,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9769284762655398
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.025191626581787085,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9541405349575615
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.03319510378333233,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9336482012544057
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0409578674828014,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9186985870515678
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.48267597159482e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9999999999967494
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.48267597159468e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9999999999969794
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.4826759715946e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9999999999973705
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.48267597159456e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9999999999976675
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.48267597159453e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9999999999980234
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.08334299529209899,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 2.1580233510797046e-12
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.08334299529209999,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.7983527925663988e-12
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.08334299529210099,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.5585724202241934e-12
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.08334299529210198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.3187920478819942e-12
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.08334299529210298,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0790116755398004e-12
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.341856933652768,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -3.815959032908144e-13
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.341856933652766,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -3.215148461769433e-13
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.341856933652765,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -2.6305760141749986e-13
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.341856933652765,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -2.6305760141749986e-13
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.341856933652764,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -2.0460035665805605e-13
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 4.71169618523188,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      },
+      "pc": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.008638075094687704,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9352724036436542
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.01698988842278343,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9012371169235592
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.025191626581787085,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8801747664975659
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.03319510378333233,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8612165488756525
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0409578674828014,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.8473962501338264
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.48267597159482e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9224982106929125
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.48267597159468e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9224982106911115
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.4826759715946e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9224982106904901
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.48267597159456e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9224982106902434
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.48267597159453e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.9224982106898566
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.08334299529209899,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.1918970766938205
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.08334299529209999,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.19189707669357842
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.08334299529210099,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.19189707669333633
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.08334299529210198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.19189707669333403
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.08334299529210298,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": -0.19189707669309194
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.341856933652768,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.042317245178048905
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.341856933652766,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.042317245177990695
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.341856933652765,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.04231724517799082
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.341856933652765,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0423172451778739
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.341856933652764,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.042317245177874024
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 4.71169618523188,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      },
+      "phi0": {
+        "SET_A:cup_beverage_mass_kg@10s": {
+          "baseline_output": 0.008638075094687704,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09826330161816028
+        },
+        "SET_A:cup_beverage_mass_kg@15s": {
+          "baseline_output": 0.01698988842278343,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09468313540275264
+        },
+        "SET_A:cup_beverage_mass_kg@20s": {
+          "baseline_output": 0.025191626581787085,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0924683595336855
+        },
+        "SET_A:cup_beverage_mass_kg@25s": {
+          "baseline_output": 0.03319510378333233,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09047501484779275
+        },
+        "SET_A:cup_beverage_mass_kg@30s": {
+          "baseline_output": 0.0409578674828014,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.08902298624307266
+        },
+        "SET_A:outlet_flow_m3_s@10s": {
+          "baseline_output": 1.48267597159482e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09691895034700748
+        },
+        "SET_A:outlet_flow_m3_s@15s": {
+          "baseline_output": 1.48267597159468e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09691895034647677
+        },
+        "SET_A:outlet_flow_m3_s@20s": {
+          "baseline_output": 1.4826759715946e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09691895034627919
+        },
+        "SET_A:outlet_flow_m3_s@25s": {
+          "baseline_output": 1.48267597159456e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09691895034614756
+        },
+        "SET_A:outlet_flow_m3_s@30s": {
+          "baseline_output": 1.48267597159453e-06,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.09691895034615093
+        },
+        "SET_B:basketPressurePa@10s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@15s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@20s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@25s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_B:basketPressurePa@30s": {
+          "baseline_output": 900000.0,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        },
+        "SET_C:deformation@10s": {
+          "baseline_output": 0.08334299529209899,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0658892488431082
+        },
+        "SET_C:deformation@15s": {
+          "baseline_output": 0.08334299529209999,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0658892488429756
+        },
+        "SET_C:deformation@20s": {
+          "baseline_output": 0.08334299529210099,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0658892488429628
+        },
+        "SET_C:deformation@25s": {
+          "baseline_output": 0.08334299529210198,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.06588924884295
+        },
+        "SET_C:deformation@30s": {
+          "baseline_output": 0.08334299529210298,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0658892488429372
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@10s": {
+          "baseline_output": 0.341856933652768,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0720018188375058
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@15s": {
+          "baseline_output": 0.341856933652766,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0720018188374827
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@20s": {
+          "baseline_output": 0.341856933652765,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.072001818837486
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@25s": {
+          "baseline_output": 0.341856933652765,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.072001818837486
+        },
+        "SET_C:volumeWeightedMechanicalPorosity@30s": {
+          "baseline_output": 0.341856933652764,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 1.0720018188374891
+        },
+        "SET_D:first_drip_s": {
+          "baseline_output": 4.71169618523188,
+          "disposition": "DEFINED_POSITIVE_BASELINE",
+          "value": 0.0
+        }
+      }
+    }
+  },
   "model_form_separation": {
     "HIGH": {
       "feature_of_maximum_scaled_separation": "SET_C:deformation@30s",
       "maximum_absolute_separation": 0.08498279091760397,
       "maximum_scale_normalized_separation": 0.8498279091760397,
+      "relative_to_maximum_exact_repeatability": {
+        "denominator": 0.0,
+        "disposition": "UNDEFINED_ZERO_DENOMINATOR",
+        "value": null
+      },
       "separation_vector": {
         "SET_A:cup_beverage_mass_kg@10s": -0.002064690981287809,
         "SET_A:cup_beverage_mass_kg@15s": -0.0037094546016493667,
@@ -534,6 +2799,11 @@
       "feature_of_maximum_scaled_separation": "SET_C:deformation@10s",
       "maximum_absolute_separation": 0.063358461996043,
       "maximum_scale_normalized_separation": 0.63358461996043,
+      "relative_to_maximum_exact_repeatability": {
+        "denominator": 0.0,
+        "disposition": "UNDEFINED_ZERO_DENOMINATOR",
+        "value": null
+      },
       "separation_vector": {
         "SET_A:cup_beverage_mass_kg@10s": 0.001344902599484932,
         "SET_A:cup_beverage_mass_kg@15s": 0.003918521011987501,
@@ -567,6 +2837,11 @@
       "feature_of_maximum_scaled_separation": "SET_C:deformation@30s",
       "maximum_absolute_separation": 81802.9436501289,
       "maximum_scale_normalized_separation": 0.7366146981731003,
+      "relative_to_maximum_exact_repeatability": {
+        "denominator": 0.0,
+        "disposition": "UNDEFINED_ZERO_DENOMINATOR",
+        "value": null
+      },
       "separation_vector": {
         "SET_A:cup_beverage_mass_kg@10s": 0.0003231871453056765,
         "SET_A:cup_beverage_mass_kg@15s": 0.0016780297440854202,
@@ -600,6 +2875,11 @@
       "feature_of_maximum_scaled_separation": "SET_C:deformation@30s",
       "maximum_absolute_separation": 0.08334299529210298,
       "maximum_scale_normalized_separation": 0.8334299529210298,
+      "relative_to_maximum_exact_repeatability": {
+        "denominator": 0.0,
+        "disposition": "UNDEFINED_ZERO_DENOMINATOR",
+        "value": null
+      },
       "separation_vector": {
         "SET_A:cup_beverage_mass_kg@10s": 2.130240428499519e-15,
         "SET_A:cup_beverage_mass_kg@15s": 3.899658373995862e-15,
@@ -836,7 +3116,72 @@
   "observable_sets": {
     "SET_A": {
       "correlation": {
-        "cosine_matrix": [
+        "centered_correlation_matrix": [
+          [
+            1.0,
+            -0.9168801969197798,
+            0.42511989847451415,
+            0.7437271578519937,
+            0.7603042248255105,
+            0.7554952224802054,
+            0.5505247690338977
+          ],
+          [
+            -0.9168801969197798,
+            1.0,
+            -0.7510065044413317,
+            -0.44512089105160096,
+            -0.45934767183546554,
+            -0.45517962908330795,
+            -0.171549863601004
+          ],
+          [
+            0.42511989847451415,
+            -0.7510065044413317,
+            1.0,
+            -0.21829577766354283,
+            -0.2137528650728544,
+            -0.2151545115603263,
+            -0.5214655798964293
+          ],
+          [
+            0.7437271578519937,
+            -0.44512089105160096,
+            -0.21829577766354283,
+            1.0,
+            0.99864393953842,
+            0.99934327597773,
+            0.9058965764031205
+          ],
+          [
+            0.7603042248255105,
+            -0.45934767183546554,
+            -0.2137528650728544,
+            0.99864393953842,
+            1.0,
+            0.9998744993660713,
+            0.916830232004195
+          ],
+          [
+            0.7554952224802054,
+            -0.45517962908330795,
+            -0.2151545115603263,
+            0.99934327597773,
+            0.9998744993660713,
+            1.0,
+            0.9137459619580319
+          ],
+          [
+            0.5505247690338977,
+            -0.171549863601004,
+            -0.5214655798964293,
+            0.9058965764031205,
+            0.916830232004195,
+            0.9137459619580319,
+            1.0
+          ]
+        ],
+        "cosine_similarity_matrix": [
           [
             1.0,
             -0.9232994749590999,
@@ -901,62 +3246,300 @@
             1.0
           ]
         ],
-        "near_collinear_pairs": [
+        "pair_diagnostics": [
           {
-            "cosine": -0.9806855530468461,
+            "centered_correlation": -0.9168801969197798,
+            "cosine_similarity": -0.9232994749590999,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "Qfree"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.9168801969197798,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.42511989847451415,
+            "cosine_similarity": 0.8303552858870751,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.42511989847451415,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.7437271578519937,
+            "cosine_similarity": -0.5304162848771868,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.7437271578519937,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.7603042248255105,
+            "cosine_similarity": -0.5240944348816682,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.7603042248255105,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.7554952224802054,
+            "cosine_similarity": -0.5260548444805296,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.7554952224802054,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.5505247690338977,
+            "cosine_similarity": -0.6796585313420813,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.5505247690338977,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.7510065044413317,
+            "cosine_similarity": -0.9806855530468461,
+            "defined": true,
             "parameters": [
               "Qfree",
               "Ru"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.7510065044413317,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": -0.9730994356270132,
+            "centered_correlation": -0.44512089105160096,
+            "cosine_similarity": 0.8114357558012424,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.44512089105160096,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.45934767183546554,
+            "cosine_similarity": 0.8082329320082151,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.45934767183546554,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.45517962908330795,
+            "cosine_similarity": 0.8092546009626984,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.45517962908330795,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.171549863601004,
+            "cosine_similarity": 0.9092616227436926,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.171549863601004,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.21829577766354283,
+            "cosine_similarity": -0.9069744934561905,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.21829577766354283,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.2137528650728544,
+            "cosine_similarity": -0.9055691821309808,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.2137528650728544,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.2151545115603263,
+            "cosine_similarity": -0.906046063957262,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.2151545115603263,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.5214655798964293,
+            "cosine_similarity": -0.9730994356270132,
+            "defined": true,
             "parameters": [
               "Ru",
               "pshut"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.5214655798964293,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": 0.999750689704653,
+            "centered_correlation": 0.99864393953842,
+            "cosine_similarity": 0.999750689704653,
+            "defined": true,
             "parameters": [
               "k0",
               "pc"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.99864393953842,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": 0.999879728637727,
+            "centered_correlation": 0.99934327597773,
+            "cosine_similarity": 0.999879728637727,
+            "defined": true,
             "parameters": [
               "k0",
               "phi0"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.99934327597773,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": 0.9750381480575919,
+            "centered_correlation": 0.9058965764031205,
+            "cosine_similarity": 0.9750381480575919,
+            "defined": true,
             "parameters": [
               "k0",
               "pshut"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.9058965764031205,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": 0.9999767311878551,
+            "centered_correlation": 0.9998744993660713,
+            "cosine_similarity": 0.9999767311878551,
+            "defined": true,
             "parameters": [
               "pc",
               "phi0"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9998744993660713,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": 0.9757472573139261,
+            "centered_correlation": 0.916830232004195,
+            "cosine_similarity": 0.9757472573139261,
+            "defined": true,
             "parameters": [
               "pc",
               "pshut"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.916830232004195,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": 0.9755814772967013,
+            "centered_correlation": 0.9137459619580319,
+            "cosine_similarity": 0.9755814772967013,
+            "defined": true,
             "parameters": [
               "phi0",
               "pshut"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.9137459619580319,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           }
         ],
         "parameters": [
@@ -967,7 +3550,296 @@
           "pc",
           "phi0",
           "pshut"
-        ]
+        ],
+        "primary_matrix": [
+          [
+            1.0,
+            -0.9168801969197798,
+            0.42511989847451415,
+            0.7437271578519937,
+            0.7603042248255105,
+            0.7554952224802054,
+            0.5505247690338977
+          ],
+          [
+            -0.9168801969197798,
+            1.0,
+            -0.7510065044413317,
+            -0.44512089105160096,
+            -0.45934767183546554,
+            -0.45517962908330795,
+            -0.171549863601004
+          ],
+          [
+            0.42511989847451415,
+            -0.7510065044413317,
+            1.0,
+            -0.21829577766354283,
+            -0.2137528650728544,
+            -0.2151545115603263,
+            -0.5214655798964293
+          ],
+          [
+            0.7437271578519937,
+            -0.44512089105160096,
+            -0.21829577766354283,
+            1.0,
+            0.99864393953842,
+            0.99934327597773,
+            0.9058965764031205
+          ],
+          [
+            0.7603042248255105,
+            -0.45934767183546554,
+            -0.2137528650728544,
+            0.99864393953842,
+            1.0,
+            0.9998744993660713,
+            0.916830232004195
+          ],
+          [
+            0.7554952224802054,
+            -0.45517962908330795,
+            -0.2151545115603263,
+            0.99934327597773,
+            0.9998744993660713,
+            1.0,
+            0.9137459619580319
+          ],
+          [
+            0.5505247690338977,
+            -0.171549863601004,
+            -0.5214655798964293,
+            0.9058965764031205,
+            0.916830232004195,
+            0.9137459619580319,
+            1.0
+          ]
+        ],
+        "primary_method_by_pair": [
+          [
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY"
+          ]
+        ],
+        "primary_near_collinear_pairs": [
+          {
+            "centered_correlation": 0.99864393953842,
+            "cosine_similarity": 0.999750689704653,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.99864393953842,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.99934327597773,
+            "cosine_similarity": 0.999879728637727,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.99934327597773,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9998744993660713,
+            "cosine_similarity": 0.9999767311878551,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9998744993660713,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "supplemental_cosine_near_collinear_pairs": [
+          {
+            "centered_correlation": -0.7510065044413317,
+            "cosine_similarity": -0.9806855530468461,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.7510065044413317,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.5214655798964293,
+            "cosine_similarity": -0.9730994356270132,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.5214655798964293,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.99864393953842,
+            "cosine_similarity": 0.999750689704653,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.99864393953842,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.99934327597773,
+            "cosine_similarity": 0.999879728637727,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.99934327597773,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9058965764031205,
+            "cosine_similarity": 0.9750381480575919,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.9058965764031205,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9998744993660713,
+            "cosine_similarity": 0.9999767311878551,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9998744993660713,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.916830232004195,
+            "cosine_similarity": 0.9757472573139261,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.916830232004195,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9137459619580319,
+            "cosine_similarity": 0.9755814772967013,
+            "defined": true,
+            "parameters": [
+              "phi0",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.9137459619580319,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "threshold_abs": 0.95
       },
       "svd": {
         "condition_number": 398232.7899884074,
@@ -998,7 +3870,72 @@
     },
     "SET_B": {
       "correlation": {
-        "cosine_matrix": [
+        "centered_correlation_matrix": [
+          [
+            1.0,
+            -0.31277264922684395,
+            -0.16971784015671953,
+            0.009763543000749449,
+            0.010851334885406214,
+            0.010517423937944453,
+            0.428117204388785
+          ],
+          [
+            -0.31277264922684395,
+            1.0,
+            -0.8829056531458824,
+            -0.8401606814418026,
+            -0.8402823082364627,
+            -0.8403014183224634,
+            0.7244674357519557
+          ],
+          [
+            -0.16971784015671953,
+            -0.8829056531458824,
+            1.0,
+            0.8681340393765836,
+            0.86775081923226,
+            0.8679269696369619,
+            -0.9632316875121998
+          ],
+          [
+            0.009763543000749449,
+            -0.8401606814418026,
+            0.8681340393765836,
+            1.0,
+            0.9997251371053972,
+            0.9998672893145785,
+            -0.7924353772331295
+          ],
+          [
+            0.010851334885406214,
+            -0.8402823082364627,
+            0.86775081923226,
+            0.9997251371053972,
+            1.0,
+            0.999974394684616,
+            -0.7917575641478702
+          ],
+          [
+            0.010517423937944453,
+            -0.8403014183224634,
+            0.8679269696369619,
+            0.9998672893145785,
+            0.999974394684616,
+            1.0,
+            -0.7920192549790638
+          ],
+          [
+            0.428117204388785,
+            0.7244674357519557,
+            -0.9632316875121998,
+            -0.7924353772331295,
+            -0.7917575641478702,
+            -0.7920192549790638,
+            1.0
+          ]
+        ],
+        "cosine_similarity_matrix": [
           [
             1.0,
             -0.7749777932769039,
@@ -1063,41 +4000,300 @@
             1.0
           ]
         ],
-        "near_collinear_pairs": [
+        "pair_diagnostics": [
           {
-            "cosine": -0.980691992162987,
+            "centered_correlation": -0.31277264922684395,
+            "cosine_similarity": -0.7749777932769039,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "Qfree"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.31277264922684395,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.16971784015671953,
+            "cosine_similarity": 0.6364580675008298,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.16971784015671953,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.009763543000749449,
+            "cosine_similarity": -0.28172623507310696,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.009763543000749449,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.010851334885406214,
+            "cosine_similarity": -0.2800002128879556,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.010851334885406214,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.010517423937944453,
+            "cosine_similarity": -0.2805393221529629,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.010517423937944453,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.428117204388785,
+            "cosine_similarity": -0.5034666849146983,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.428117204388785,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.8829056531458824,
+            "cosine_similarity": -0.980691992162987,
+            "defined": true,
             "parameters": [
               "Qfree",
               "Ru"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.8829056531458824,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": -0.9868508775369841,
+            "centered_correlation": -0.8401606814418026,
+            "cosine_similarity": 0.08611407774716816,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.8401606814418026,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.8402823082364627,
+            "cosine_similarity": 0.08458228626599881,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.8402823082364627,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.8403014183224634,
+            "cosine_similarity": 0.08504700179822872,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.8403014183224634,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.7244674357519557,
+            "cosine_similarity": 0.9362203396632164,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.7244674357519557,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.8681340393765836,
+            "cosine_similarity": -0.017299699518945427,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.8681340393765836,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.86775081923226,
+            "cosine_similarity": -0.015953068111796895,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.86775081923226,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.8679269696369619,
+            "cosine_similarity": -0.0163568773129347,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.8679269696369619,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9632316875121998,
+            "cosine_similarity": -0.9868508775369841,
+            "defined": true,
             "parameters": [
               "Ru",
               "pshut"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9632316875121998,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": 0.9997642494945206,
+            "centered_correlation": 0.9997251371053972,
+            "cosine_similarity": 0.9997642494945206,
+            "defined": true,
             "parameters": [
               "k0",
               "pc"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9997251371053972,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": 0.9998862130428372,
+            "centered_correlation": 0.9998672893145785,
+            "cosine_similarity": 0.9998862130428372,
+            "defined": true,
             "parameters": [
               "k0",
               "phi0"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9998672893145785,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": 0.9999780213240321,
+            "centered_correlation": -0.7924353772331295,
+            "cosine_similarity": -0.039967912985443256,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.7924353772331295,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.999974394684616,
+            "cosine_similarity": 0.9999780213240321,
+            "defined": true,
             "parameters": [
               "pc",
               "phi0"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.999974394684616,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.7917575641478702,
+            "cosine_similarity": -0.04110066440662926,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.7917575641478702,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.7920192549790638,
+            "cosine_similarity": -0.04076563635333129,
+            "defined": true,
+            "parameters": [
+              "phi0",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.7920192549790638,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
           }
         ],
         "parameters": [
@@ -1108,7 +4304,268 @@
           "pc",
           "phi0",
           "pshut"
-        ]
+        ],
+        "primary_matrix": [
+          [
+            1.0,
+            -0.31277264922684395,
+            -0.16971784015671953,
+            0.009763543000749449,
+            0.010851334885406214,
+            0.010517423937944453,
+            0.428117204388785
+          ],
+          [
+            -0.31277264922684395,
+            1.0,
+            -0.8829056531458824,
+            -0.8401606814418026,
+            -0.8402823082364627,
+            -0.8403014183224634,
+            0.7244674357519557
+          ],
+          [
+            -0.16971784015671953,
+            -0.8829056531458824,
+            1.0,
+            0.8681340393765836,
+            0.86775081923226,
+            0.8679269696369619,
+            -0.9632316875121998
+          ],
+          [
+            0.009763543000749449,
+            -0.8401606814418026,
+            0.8681340393765836,
+            1.0,
+            0.9997251371053972,
+            0.9998672893145785,
+            -0.7924353772331295
+          ],
+          [
+            0.010851334885406214,
+            -0.8402823082364627,
+            0.86775081923226,
+            0.9997251371053972,
+            1.0,
+            0.999974394684616,
+            -0.7917575641478702
+          ],
+          [
+            0.010517423937944453,
+            -0.8403014183224634,
+            0.8679269696369619,
+            0.9998672893145785,
+            0.999974394684616,
+            1.0,
+            -0.7920192549790638
+          ],
+          [
+            0.428117204388785,
+            0.7244674357519557,
+            -0.9632316875121998,
+            -0.7924353772331295,
+            -0.7917575641478702,
+            -0.7920192549790638,
+            1.0
+          ]
+        ],
+        "primary_method_by_pair": [
+          [
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY"
+          ]
+        ],
+        "primary_near_collinear_pairs": [
+          {
+            "centered_correlation": -0.9632316875121998,
+            "cosine_similarity": -0.9868508775369841,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9632316875121998,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9997251371053972,
+            "cosine_similarity": 0.9997642494945206,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9997251371053972,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9998672893145785,
+            "cosine_similarity": 0.9998862130428372,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9998672893145785,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.999974394684616,
+            "cosine_similarity": 0.9999780213240321,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.999974394684616,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "supplemental_cosine_near_collinear_pairs": [
+          {
+            "centered_correlation": -0.8829056531458824,
+            "cosine_similarity": -0.980691992162987,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.8829056531458824,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9632316875121998,
+            "cosine_similarity": -0.9868508775369841,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9632316875121998,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9997251371053972,
+            "cosine_similarity": 0.9997642494945206,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9997251371053972,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9998672893145785,
+            "cosine_similarity": 0.9998862130428372,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9998672893145785,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.999974394684616,
+            "cosine_similarity": 0.9999780213240321,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.999974394684616,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "threshold_abs": 0.95
       },
       "svd": {
         "condition_number": 141580.91596068002,
@@ -1139,7 +4596,72 @@
     },
     "SET_C": {
       "correlation": {
-        "cosine_matrix": [
+        "centered_correlation_matrix": [
+          [
+            1.0,
+            -0.5679942556069975,
+            0.28967626364777693,
+            -0.12591009873797954,
+            -0.11330932394051473,
+            0.5029095045751573,
+            -0.06901277626408776
+          ],
+          [
+            -0.5679942556069975,
+            1.0,
+            -0.9522541036921676,
+            -0.31709915453759313,
+            -0.3392662472597545,
+            -0.728386720971806,
+            0.860263015660481
+          ],
+          [
+            0.28967626364777693,
+            -0.9522541036921676,
+            1.0,
+            0.4160440459957454,
+            0.4365833009147989,
+            0.6610941626913773,
+            -0.9748127684142935
+          ],
+          [
+            -0.12591009873797954,
+            -0.31709915453759313,
+            0.4160440459957454,
+            1.0,
+            0.9198360445718391,
+            -0.24026935357814255,
+            -0.46340548482414357
+          ],
+          [
+            -0.11330932394051473,
+            -0.3392662472597545,
+            0.4365833009147989,
+            0.9198360445718391,
+            1.0,
+            -0.3180752491281326,
+            -0.4820275697612014
+          ],
+          [
+            0.5029095045751573,
+            -0.728386720971806,
+            0.6610941626913773,
+            -0.24026935357814255,
+            -0.3180752491281326,
+            1.0,
+            -0.5708789842073266
+          ],
+          [
+            -0.06901277626408776,
+            0.860263015660481,
+            -0.9748127684142935,
+            -0.46340548482414357,
+            -0.4820275697612014,
+            -0.5708789842073266,
+            1.0
+          ]
+        ],
+        "cosine_similarity_matrix": [
           [
             1.0,
             -0.7639661215917753,
@@ -1204,20 +4726,300 @@
             1.0
           ]
         ],
-        "near_collinear_pairs": [
+        "pair_diagnostics": [
           {
-            "cosine": -0.9821538656693222,
+            "centered_correlation": -0.5679942556069975,
+            "cosine_similarity": -0.7639661215917753,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "Qfree"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.5679942556069975,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.28967626364777693,
+            "cosine_similarity": 0.6290109765708101,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.28967626364777693,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.12591009873797954,
+            "cosine_similarity": -0.21987441674855784,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.12591009873797954,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.11330932394051473,
+            "cosine_similarity": -0.08772894820861805,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.11330932394051473,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.5029095045751573,
+            "cosine_similarity": -0.10047074392680161,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.5029095045751573,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.06901277626408776,
+            "cosine_similarity": -0.5036325673482106,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.06901277626408776,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9522541036921676,
+            "cosine_similarity": -0.9821538656693222,
+            "defined": true,
             "parameters": [
               "Qfree",
               "Ru"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9522541036921676,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": -0.9883884282060894,
+            "centered_correlation": -0.31709915453759313,
+            "cosine_similarity": -0.02529320222379203,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.31709915453759313,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.3392662472597545,
+            "cosine_similarity": -0.2030981263034432,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.3392662472597545,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.728386720971806,
+            "cosine_similarity": 0.1892840806849301,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.728386720971806,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.860263015660481,
+            "cosine_similarity": 0.942204276709222,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.860263015660481,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.4160440459957454,
+            "cosine_similarity": 0.09493552049509905,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.4160440459957454,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.4365833009147989,
+            "cosine_similarity": 0.27029353730185074,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.4365833009147989,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.6610941626913773,
+            "cosine_similarity": -0.19843159178073094,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.6610941626913773,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9748127684142935,
+            "cosine_similarity": -0.9883884282060894,
+            "defined": true,
             "parameters": [
               "Ru",
               "pshut"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9748127684142935,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9198360445718391,
+            "cosine_similarity": 0.901216205626838,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.9198360445718391,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.24026935357814255,
+            "cosine_similarity": -0.05153174302803353,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.24026935357814255,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.46340548482414357,
+            "cosine_similarity": -0.14891095179844574,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.46340548482414357,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.3180752491281326,
+            "cosine_similarity": -0.2438538755804301,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.3180752491281326,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.4820275697612014,
+            "cosine_similarity": -0.3180245904974949,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.4820275697612014,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.5708789842073266,
+            "cosine_similarity": 0.20101940634915144,
+            "defined": true,
+            "parameters": [
+              "phi0",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.5708789842073266,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
           }
         ],
         "parameters": [
@@ -1228,7 +5030,198 @@
           "pc",
           "phi0",
           "pshut"
-        ]
+        ],
+        "primary_matrix": [
+          [
+            1.0,
+            -0.5679942556069975,
+            0.28967626364777693,
+            -0.12591009873797954,
+            -0.11330932394051473,
+            0.5029095045751573,
+            -0.06901277626408776
+          ],
+          [
+            -0.5679942556069975,
+            1.0,
+            -0.9522541036921676,
+            -0.31709915453759313,
+            -0.3392662472597545,
+            -0.728386720971806,
+            0.860263015660481
+          ],
+          [
+            0.28967626364777693,
+            -0.9522541036921676,
+            1.0,
+            0.4160440459957454,
+            0.4365833009147989,
+            0.6610941626913773,
+            -0.9748127684142935
+          ],
+          [
+            -0.12591009873797954,
+            -0.31709915453759313,
+            0.4160440459957454,
+            1.0,
+            0.9198360445718391,
+            -0.24026935357814255,
+            -0.46340548482414357
+          ],
+          [
+            -0.11330932394051473,
+            -0.3392662472597545,
+            0.4365833009147989,
+            0.9198360445718391,
+            1.0,
+            -0.3180752491281326,
+            -0.4820275697612014
+          ],
+          [
+            0.5029095045751573,
+            -0.728386720971806,
+            0.6610941626913773,
+            -0.24026935357814255,
+            -0.3180752491281326,
+            1.0,
+            -0.5708789842073266
+          ],
+          [
+            -0.06901277626408776,
+            0.860263015660481,
+            -0.9748127684142935,
+            -0.46340548482414357,
+            -0.4820275697612014,
+            -0.5708789842073266,
+            1.0
+          ]
+        ],
+        "primary_method_by_pair": [
+          [
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY"
+          ]
+        ],
+        "primary_near_collinear_pairs": [
+          {
+            "centered_correlation": -0.9522541036921676,
+            "cosine_similarity": -0.9821538656693222,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9522541036921676,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9748127684142935,
+            "cosine_similarity": -0.9883884282060894,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9748127684142935,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "supplemental_cosine_near_collinear_pairs": [
+          {
+            "centered_correlation": -0.9522541036921676,
+            "cosine_similarity": -0.9821538656693222,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9522541036921676,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9748127684142935,
+            "cosine_similarity": -0.9883884282060894,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9748127684142935,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "threshold_abs": 0.95
       },
       "svd": {
         "condition_number": 3318.3708731188394,
@@ -1259,7 +5252,72 @@
     },
     "SET_D": {
       "correlation": {
-        "cosine_matrix": [
+        "centered_correlation_matrix": [
+          [
+            1.0,
+            -0.7915239324711917,
+            0.5833348364522367,
+            -0.11200861956846901,
+            -0.07351275963600937,
+            0.19864545612564766,
+            -0.3246540043251216
+          ],
+          [
+            -0.7915239324711917,
+            1.0,
+            -0.9580924168083029,
+            -0.20186454439093177,
+            -0.24569249985545288,
+            -0.4067373252218679,
+            0.8348823007973165
+          ],
+          [
+            0.5833348364522367,
+            -0.9580924168083029,
+            1.0,
+            0.3211757596991569,
+            0.3609438772336129,
+            0.4465906863979811,
+            -0.9573958657715448
+          ],
+          [
+            -0.11200861956846901,
+            -0.20186454439093177,
+            0.3211757596991569,
+            1.0,
+            0.9190989856586955,
+            -0.23033852457406695,
+            -0.41487846654771554
+          ],
+          [
+            -0.07351275963600937,
+            -0.24569249985545288,
+            0.3609438772336129,
+            0.9190989856586955,
+            1.0,
+            -0.3138326286424789,
+            -0.4474064825624963
+          ],
+          [
+            0.19864545612564766,
+            -0.4067373252218679,
+            0.4465906863979811,
+            -0.23033852457406695,
+            -0.3138326286424789,
+            1.0,
+            -0.4614769600962337
+          ],
+          [
+            -0.3246540043251216,
+            0.8348823007973165,
+            -0.9573958657715448,
+            -0.41487846654771554,
+            -0.4474064825624963,
+            -0.4614769600962337,
+            1.0
+          ]
+        ],
+        "cosine_similarity_matrix": [
           [
             1.0,
             -0.7905623777477246,
@@ -1324,20 +5382,300 @@
             1.0
           ]
         ],
-        "near_collinear_pairs": [
+        "pair_diagnostics": [
           {
-            "cosine": -0.9754887979511634,
+            "centered_correlation": -0.7915239324711917,
+            "cosine_similarity": -0.7905623777477246,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "Qfree"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.7915239324711917,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.5833348364522367,
+            "cosine_similarity": 0.6364652291577013,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.5833348364522367,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.11200861956846901,
+            "cosine_similarity": -0.1710473058756384,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.11200861956846901,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.07351275963600937,
+            "cosine_similarity": -0.06824714061912777,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.07351275963600937,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.19864545612564766,
+            "cosine_similarity": -0.07815938899182226,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.19864545612564766,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.3246540043251216,
+            "cosine_similarity": -0.46296623611339,
+            "defined": true,
+            "parameters": [
+              "Cu",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.3246540043251216,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9580924168083029,
+            "cosine_similarity": -0.9754887979511634,
+            "defined": true,
             "parameters": [
               "Qfree",
               "Ru"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9580924168083029,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
           },
           {
-            "cosine": -0.9781728551589612,
+            "centered_correlation": -0.20186454439093177,
+            "cosine_similarity": -0.02333945393376592,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.20186454439093177,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.24569249985545288,
+            "cosine_similarity": -0.18741001321036846,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.24569249985545288,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.4067373252218679,
+            "cosine_similarity": 0.17466301982852808,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.4067373252218679,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.8348823007973165,
+            "cosine_similarity": 0.9087126252152192,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.8348823007973165,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.3211757596991569,
+            "cosine_similarity": 0.0916398032506547,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "k0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.3211757596991569,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.3609438772336129,
+            "cosine_similarity": 0.260910209888656,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.3609438772336129,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.4465906863979811,
+            "cosine_similarity": -0.19154297500732778,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.4465906863979811,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9573958657715448,
+            "cosine_similarity": -0.9781728551589612,
+            "defined": true,
             "parameters": [
               "Ru",
               "pshut"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9573958657715448,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": 0.9190989856586955,
+            "cosine_similarity": 0.901216205626838,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.9190989856586955,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.23033852457406695,
+            "cosine_similarity": -0.05153174302803353,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.23033852457406695,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.41487846654771554,
+            "cosine_similarity": -0.14787768807309645,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.41487846654771554,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.3138326286424789,
+            "cosine_similarity": -0.2438538755804301,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.3138326286424789,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.4474064825624963,
+            "cosine_similarity": -0.3158178805868974,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.4474064825624963,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.4614769600962337,
+            "cosine_similarity": 0.19962457233484088,
+            "defined": true,
+            "parameters": [
+              "phi0",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.4614769600962337,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
           }
         ],
         "parameters": [
@@ -1348,7 +5686,198 @@
           "pc",
           "phi0",
           "pshut"
-        ]
+        ],
+        "primary_matrix": [
+          [
+            1.0,
+            -0.7915239324711917,
+            0.5833348364522367,
+            -0.11200861956846901,
+            -0.07351275963600937,
+            0.19864545612564766,
+            -0.3246540043251216
+          ],
+          [
+            -0.7915239324711917,
+            1.0,
+            -0.9580924168083029,
+            -0.20186454439093177,
+            -0.24569249985545288,
+            -0.4067373252218679,
+            0.8348823007973165
+          ],
+          [
+            0.5833348364522367,
+            -0.9580924168083029,
+            1.0,
+            0.3211757596991569,
+            0.3609438772336129,
+            0.4465906863979811,
+            -0.9573958657715448
+          ],
+          [
+            -0.11200861956846901,
+            -0.20186454439093177,
+            0.3211757596991569,
+            1.0,
+            0.9190989856586955,
+            -0.23033852457406695,
+            -0.41487846654771554
+          ],
+          [
+            -0.07351275963600937,
+            -0.24569249985545288,
+            0.3609438772336129,
+            0.9190989856586955,
+            1.0,
+            -0.3138326286424789,
+            -0.4474064825624963
+          ],
+          [
+            0.19864545612564766,
+            -0.4067373252218679,
+            0.4465906863979811,
+            -0.23033852457406695,
+            -0.3138326286424789,
+            1.0,
+            -0.4614769600962337
+          ],
+          [
+            -0.3246540043251216,
+            0.8348823007973165,
+            -0.9573958657715448,
+            -0.41487846654771554,
+            -0.4474064825624963,
+            -0.4614769600962337,
+            1.0
+          ]
+        ],
+        "primary_method_by_pair": [
+          [
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY"
+          ]
+        ],
+        "primary_near_collinear_pairs": [
+          {
+            "centered_correlation": -0.9580924168083029,
+            "cosine_similarity": -0.9754887979511634,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9580924168083029,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9573958657715448,
+            "cosine_similarity": -0.9781728551589612,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9573958657715448,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "supplemental_cosine_near_collinear_pairs": [
+          {
+            "centered_correlation": -0.9580924168083029,
+            "cosine_similarity": -0.9754887979511634,
+            "defined": true,
+            "parameters": [
+              "Qfree",
+              "Ru"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9580924168083029,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.9573958657715448,
+            "cosine_similarity": -0.9781728551589612,
+            "defined": true,
+            "parameters": [
+              "Ru",
+              "pshut"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": -0.9573958657715448,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "threshold_abs": 0.95
       },
       "svd": {
         "condition_number": 1637.4996205750965,
@@ -1578,7 +6107,8 @@
   },
   "planned_openfoam_case_executions": 47,
   "practical_identifiability": "SCREENING_ONLY_WITHOUT_MEASUREMENT_UNCERTAINTY",
-  "schema_version": "espresso.validation.val_case_001.results.v1",
+  "review_status": "CORRECTED_PENDING_EXACT_HEAD_INDEPENDENT_REVIEW",
+  "schema_version": "espresso.validation.val_case_001.results.v2",
   "scientific_result_disposition": "VALIDATION_SUPPORT_SENSITIVITY_AND_IDENTIFIABILITY_SCREENING",
   "selected_derivative_stability_parameters": [
     "phi0",
@@ -1618,7 +6148,24 @@
   "stage_c_information": {
     "HIGH": {
       "correlation": {
-        "cosine_matrix": [
+        "centered_correlation_matrix": [
+          [
+            1.0,
+            0.9998326616169959,
+            -0.5082793434309976
+          ],
+          [
+            0.9998326616169959,
+            1.0,
+            -0.5138916383161514
+          ],
+          [
+            -0.5082793434309976,
+            -0.5138916383161514,
+            1.0
+          ]
+        ],
+        "cosine_similarity_matrix": [
           [
             1.0,
             0.9998690302630074,
@@ -1635,20 +6182,122 @@
             1.0
           ]
         ],
-        "near_collinear_pairs": [
+        "pair_diagnostics": [
           {
-            "cosine": 0.9998690302630074,
+            "centered_correlation": 0.9998326616169959,
+            "cosine_similarity": 0.9998690302630074,
+            "defined": true,
             "parameters": [
               "k0",
               "pc"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9998326616169959,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.5082793434309976,
+            "cosine_similarity": 0.09211738239280212,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.5082793434309976,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.5138916383161514,
+            "cosine_similarity": 0.08375177408583281,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.5138916383161514,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
           }
         ],
         "parameters": [
           "k0",
           "pc",
           "phi0"
-        ]
+        ],
+        "primary_matrix": [
+          [
+            1.0,
+            0.9998326616169959,
+            -0.5082793434309976
+          ],
+          [
+            0.9998326616169959,
+            1.0,
+            -0.5138916383161514
+          ],
+          [
+            -0.5082793434309976,
+            -0.5138916383161514,
+            1.0
+          ]
+        ],
+        "primary_method_by_pair": [
+          [
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY"
+          ]
+        ],
+        "primary_near_collinear_pairs": [
+          {
+            "centered_correlation": 0.9998326616169959,
+            "cosine_similarity": 0.9998690302630074,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9998326616169959,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "supplemental_cosine_near_collinear_pairs": [
+          {
+            "centered_correlation": 0.9998326616169959,
+            "cosine_similarity": 0.9998690302630074,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9998326616169959,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "threshold_abs": 0.95
       },
       "svd": {
         "condition_number": 145.3350474956364,
@@ -1675,7 +6324,24 @@
     },
     "LOW": {
       "correlation": {
-        "cosine_matrix": [
+        "centered_correlation_matrix": [
+          [
+            1.0,
+            0.8168856278877157,
+            -0.49277674066712945
+          ],
+          [
+            0.8168856278877157,
+            1.0,
+            -0.47662465654018843
+          ],
+          [
+            -0.49277674066712945,
+            -0.47662465654018843,
+            1.0
+          ]
+        ],
+        "cosine_similarity_matrix": [
           [
             1.0,
             0.7841012199217039,
@@ -1692,12 +6358,92 @@
             1.0
           ]
         ],
-        "near_collinear_pairs": [],
+        "pair_diagnostics": [
+          {
+            "centered_correlation": 0.8168856278877157,
+            "cosine_similarity": 0.7841012199217039,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": 0.8168856278877157,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.49277674066712945,
+            "cosine_similarity": 0.05950760123617853,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.49277674066712945,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.47662465654018843,
+            "cosine_similarity": -0.20574764607505147,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.47662465654018843,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          }
+        ],
         "parameters": [
           "k0",
           "pc",
           "phi0"
-        ]
+        ],
+        "primary_matrix": [
+          [
+            1.0,
+            0.8168856278877157,
+            -0.49277674066712945
+          ],
+          [
+            0.8168856278877157,
+            1.0,
+            -0.47662465654018843
+          ],
+          [
+            -0.49277674066712945,
+            -0.47662465654018843,
+            1.0
+          ]
+        ],
+        "primary_method_by_pair": [
+          [
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY"
+          ]
+        ],
+        "primary_near_collinear_pairs": [],
+        "supplemental_cosine_near_collinear_pairs": [],
+        "threshold_abs": 0.95
       },
       "svd": {
         "condition_number": 3.486502812823602,
@@ -1724,7 +6470,24 @@
     },
     "MID": {
       "correlation": {
-        "cosine_matrix": [
+        "centered_correlation_matrix": [
+          [
+            1.0,
+            0.9870265321271766,
+            -0.5060718493827756
+          ],
+          [
+            0.9870265321271766,
+            1.0,
+            -0.548469890051119
+          ],
+          [
+            -0.5060718493827756,
+            -0.548469890051119,
+            1.0
+          ]
+        ],
+        "cosine_similarity_matrix": [
           [
             1.0,
             0.9888275081455802,
@@ -1741,20 +6504,122 @@
             1.0
           ]
         ],
-        "near_collinear_pairs": [
+        "pair_diagnostics": [
           {
-            "cosine": 0.9888275081455802,
+            "centered_correlation": 0.9870265321271766,
+            "cosine_similarity": 0.9888275081455802,
+            "defined": true,
             "parameters": [
               "k0",
               "pc"
-            ]
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9870265321271766,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.5060718493827756,
+            "cosine_similarity": 0.0891901641507226,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.5060718493827756,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
+          },
+          {
+            "centered_correlation": -0.548469890051119,
+            "cosine_similarity": 0.010896501673059111,
+            "defined": true,
+            "parameters": [
+              "pc",
+              "phi0"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": false,
+            "primary_value": -0.548469890051119,
+            "supplemental_cosine_near_collinear": false,
+            "undefined_reason": null
           }
         ],
         "parameters": [
           "k0",
           "pc",
           "phi0"
-        ]
+        ],
+        "primary_matrix": [
+          [
+            1.0,
+            0.9870265321271766,
+            -0.5060718493827756
+          ],
+          [
+            0.9870265321271766,
+            1.0,
+            -0.548469890051119
+          ],
+          [
+            -0.5060718493827756,
+            -0.548469890051119,
+            1.0
+          ]
+        ],
+        "primary_method_by_pair": [
+          [
+            "IDENTITY",
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "IDENTITY",
+            "CENTERED_PEARSON"
+          ],
+          [
+            "CENTERED_PEARSON",
+            "CENTERED_PEARSON",
+            "IDENTITY"
+          ]
+        ],
+        "primary_near_collinear_pairs": [
+          {
+            "centered_correlation": 0.9870265321271766,
+            "cosine_similarity": 0.9888275081455802,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9870265321271766,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "supplemental_cosine_near_collinear_pairs": [
+          {
+            "centered_correlation": 0.9870265321271766,
+            "cosine_similarity": 0.9888275081455802,
+            "defined": true,
+            "parameters": [
+              "k0",
+              "pc"
+            ],
+            "primary_method": "CENTERED_PEARSON",
+            "primary_near_collinear": true,
+            "primary_value": 0.9870265321271766,
+            "supplemental_cosine_near_collinear": true,
+            "undefined_reason": null
+          }
+        ],
+        "threshold_abs": 0.95
       },
       "svd": {
         "condition_number": 15.762777651095847,

@@ -69,6 +69,12 @@ method before retained-trace access. The freeze changes no result bundle,
 protocol, reducer, execution record, report, trace, or scientific input and
 authorizes zero new OpenFOAM launches.
 
+The resulting v2 reduction reproduced the frozen centered correlations,
+retained the superseded cosines as supplemental diagnostics, matched a direct
+double-precision SVD reference, and changed only prospectively allowed fields.
+Two independent analysis-only outputs were byte-identical; all 47 retained
+trace identities and metadata were unchanged.
+
 ## Merged VAL-INFRA-002 repair
 
 VAL-INFRA-002 adds deterministic frozen-scope tests for authentic Stage-0 and

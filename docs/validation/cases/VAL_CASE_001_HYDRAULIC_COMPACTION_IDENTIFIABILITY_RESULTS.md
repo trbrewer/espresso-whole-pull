@@ -93,21 +93,33 @@ and the conservative lower rank. Deformation breaks the nearly exact
 information but no saturated-compaction information under the unchanged
 wetting-isolation contract.
 
-SET_A has near-collinear `k0`/`pc`/`phi0` sensitivities (cosines 0.99975,
-0.99988, and 0.99998), plus machine-side `Qfree`/`Ru` (-0.98069) and
-`Ru`/`pshut` (-0.97310) confounding. Pressure removes several cross-group
-near-collinearities but retains the two machine pairs and compaction triple.
-Adding deformation removes the compaction-triple near-collinearity; adding
-first drip reduces but does not eliminate `Qfree`/`Ru` and `Ru`/`pshut`
-confounding.
+Under the corrected frozen primary method, SET_A flags the centered
+`k0`/`pc`/`phi0` triple (0.99864, 0.99934, and 0.99987) but does not flag
+`Qfree`/`Ru` (-0.75101) or `Ru`/`pshut` (-0.52147). SET_B flags the compaction
+triple and `Ru`/`pshut` (-0.96323), but not `Qfree`/`Ru` (-0.88291). SET_C and
+SET_D retain material machine-side confounding: their centered `Qfree`/`Ru`
+values are -0.95225 and -0.95809 and their `Ru`/`pshut` values are -0.97481
+and -0.95740. Deformation removes compaction-triple threshold collinearity in
+the richer sets. The separately retained uncentered cosine remains useful as a
+supplemental directional diagnostic, but it is not the primary classification.
 
 The prescribed-pressure condition screen for `k0`, `pc`, and `phi0` was most
 well conditioned at 5 bar: condition number 3.49 and rank 3 at every declared
 tolerance. The 9-bar condition has condition number 15.8 and rank 3. At 11 bar,
-`k0` and `pc` become nearly collinear (cosine 0.99987), the condition number
+`k0` and `pc` become nearly collinear (centered correlation 0.99983), the condition number
 rises to 145, and rank ranges 2--3. Thus low plus middle pressure is more
 informative for separating these local compaction parameters than high
 pressure alone.
+
+At the prescribed-pressure conditions, the corrected centered primary method
+flags no pair at LOW, flags only `k0`/`pc` at MID (0.98703), and flags only
+`k0`/`pc` at HIGH (0.99983). Those conclusions were recomputed from the v2
+output rather than copied from the superseded cosine classification.
+
+The v2 bundle also retains Stage-A and each prescribed-pressure baseline
+feature vector, supplies local logarithmic sensitivities only for positive
+finite baseline outputs, and records branch separation relative to exact zero
+repeatability as explicitly undefined rather than finite or infinite.
 
 Supported screening categories are:
 
@@ -179,6 +191,10 @@ dataset compatible with an unchanged current configuration:
 No VAL-CASE-002 was started. No framework, operating-standard, solver source,
 baseline configuration, Puckworks lock, governing equation, constitutive
 physics, calibration, or claim ceiling changed.
+
+This corrected result remains
+`CORRECTED_PENDING_EXACT_HEAD_INDEPENDENT_REVIEW`; it is not approved or
+merge-ready. Physical validation remains `NOT_ESTABLISHED`.
 
 ```text
 PHYSICAL_VALIDATION: NOT_ESTABLISHED

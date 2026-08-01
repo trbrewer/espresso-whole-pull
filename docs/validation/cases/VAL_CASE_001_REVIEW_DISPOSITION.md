@@ -6,7 +6,7 @@
 - Branch: `validation/val-case-001-hydraulic-identifiability`
 - Base: `39c7bf0658c344728258ba1b4f8b935a4e889d7d` / `85711011a96ebaa46a77b5165aec0ab46e676542`
 - Protocol: `b5ffc581b79adfc9807face27777a0ae9dc582f8` / `85827508b6b5c23eaca020c8e36ae20b54023aa0`
-- Candidate commit/tree: `UNRESOLVED_PENDING_FINAL_CASE_COMMIT`
+- Candidate commit/tree: `CORRECTED_RESULT_COMMIT_PENDING_CURRENT_COMMIT`
 - Evidence class: `EXPLORATORY`
 - Independent reviewer: `UNRESOLVED_HUMAN_INPUT`
 - Human-owner disposition: `UNRESOLVED_PENDING_CORRECTED_EXACT_HEAD_REVIEW`
@@ -31,7 +31,7 @@
 
 | Finding | Materiality basis | Classification | Action |
 |---|---|---|---|
-| `FROZEN_PROTOCOL_CENTERED_CORRELATION_REPLACED_BY_UNCENTERED_COSINE` | Correlation and derived near-collinearity interpretation can change | `RESULT_AFFECTING_METHOD_OR_DATA_DEFECT` | `CORRECTION_FROZEN_NOT_YET_EXECUTED` |
+| `FROZEN_PROTOCOL_CENTERED_CORRELATION_REPLACED_BY_UNCENTERED_COSINE` | Correlation and derived near-collinearity interpretation changed | `RESULT_AFFECTING_METHOD_OR_DATA_DEFECT` | `CORRECTED_PENDING_EXACT_HEAD_INDEPENDENT_REVIEW` |
 
 No more than one further correction cycle is permitted unless an unresolved
 material blocker or a newly introduced material defect is demonstrated. Any
@@ -51,7 +51,7 @@ CLAIM_CEILING:
   VALIDATION_SUPPORT_ONLY_PHYSICAL_VALIDATION_NOT_ESTABLISHED
 ```
 
-`CORRECTION_STATUS: CORRECTION_FROZEN_NOT_YET_EXECUTED`
+`CORRECTION_STATUS: CORRECTED_PENDING_EXACT_HEAD_INDEPENDENT_REVIEW`
 
 `HUMAN_OWNER_DISPOSITION: UNRESOLVED_PENDING_CORRECTED_EXACT_HEAD_REVIEW`
 

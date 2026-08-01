@@ -16,9 +16,9 @@
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).
 
-VAL-CASE-001 has a prospectively frozen independent-review correction pending
-analysis-only reduction of its 47 immutable retained traces. No new scientific
-case or OpenFOAM launch is authorized.
+VAL-CASE-001 has completed the prospectively frozen analysis-only correction
+from its 47 immutable retained traces and is pending exact-head independent
+review. No new scientific case or OpenFOAM launch occurred.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

@@ -156,3 +156,10 @@ uncentered cosine for the protocol-required centered correlation as a
 result-affecting method defect. A prospective correction freeze records the
 bounded reanalysis method before any retained trace access; it authorizes zero
 new OpenFOAM launches and leaves the case pending exact-head review.
+
+The analysis-only correction produced a v2 bundle with centered primary
+correlations, supplemental cosines, baseline vectors, local logarithmic
+sensitivities, and explicit zero-denominator records. Core derivative, SVD,
+rank, stability, repeatability, separation, and case-summary arithmetic was
+unchanged. The corrected candidate remains unapproved pending exact-head
+independent review.

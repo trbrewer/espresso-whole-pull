@@ -104,3 +104,19 @@ numbers SET_A `398232.727`, SET_B `141580.914`, SET_C `3318.371`, and SET_D
 Review status remains `CORRECTED_PENDING_EXACT_HEAD_INDEPENDENT_REVIEW` after
 execution. Physical validation remains `NOT_ESTABLISHED`; the claim ceiling
 remains `VALIDATION_SUPPORT_ONLY_PHYSICAL_VALIDATION_NOT_ESTABLISHED`.
+
+## Corrected analysis result
+
+- Corrected result SHA-256: `bb7bba7481a56ac8729758a6d5cd36e7d046b889256a7c1d1c8ed7cff998375a`
+- Corrected result commit: `CORRECTED_RESULT_COMMIT_PENDING_CURRENT_COMMIT`
+- Allowed-field comparison: `PASS_ONLY_DECLARED_FIELDS_DIFFER`
+- Two independent analysis-only reductions: `BYTE_IDENTICAL`
+- Valid retained cases: 47
+- New OpenFOAM launches: 0
+- External trace immutability: all 47 trace hashes, sizes, timestamps, and
+  modes unchanged across analysis; inventory identity unchanged.
+
+The corrected primary classifications are: SET_A compaction triple only;
+SET_B compaction triple plus `Ru`/`pshut`; SET_C and SET_D `Qfree`/`Ru` plus
+`Ru`/`pshut`. LOW flags no compaction pair, while MID and HIGH flag only
+`k0`/`pc`. Supplemental cosine is retained but does not determine these flags.
