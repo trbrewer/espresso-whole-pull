@@ -2,27 +2,27 @@
   "bindings": [
     {
       "path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
-      "sha256": "fd7ba6a6af5f8f0cedb27c6bf6bfd0440a20dd565e4c82fcc30a9923f022a359"
+      "sha256": "6450bc4cb2af9bd79fa68611d200bc2200ee23102530685b18a506a3d38cbf6e"
     },
     {
       "path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
-      "sha256": "920e48eb77ff53807088642c4a5d0ce8f4aee8d0fcda3dac20ea88dae77a452c"
+      "sha256": "86d239f0f27c9f8b30a57eeabb5068a515ae7cfa819e5c6863d4029df35e0151"
     },
     {
       "path": "validation/val001/VAL_001_SCHEMA_PROVENANCE_TRANSITION_MATRIX.json",
-      "sha256": "430db1ccefedd2c7453627666307df24532d7fc17d4aeedfea3474b8985e7f04"
+      "sha256": "83ea7943c38823a89e2b28e22186b9cb50d5f319f833f2257e42ce51315eeb65"
     },
     {
       "path": "validation/val001/VAL_001_SCHEMA_TAXONOMY_AND_COUNTING_SPECIFICATION.json",
-      "sha256": "2953dc6d42f06d538d9bd8a24df016f654af68786141c98accf5781103249f57"
+      "sha256": "7b1e07f74f4180f216af9a762aaea76fcb81500c6d0a66fa8d0e522c0227240b"
     },
     {
       "path": "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
-      "sha256": "572908e5358a6b56b8f8a8d1f2b6633c94f1372559dced78f7866598d97e692c"
+      "sha256": "d2df26e314f87dd110501b778dd7acd3a377d0988351ceb4ed197cd50c3d10c9"
     },
     {
       "path": "validation/val001/VAL_001_IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY.json",
-      "sha256": "6aac0efa0eb1e567ac7af5ab2de81e5d5bbd65012898928ce6f08e3f1efb9c00"
+      "sha256": "a141ea17c04145e23a5dcdf19f911f6408e5efd58cf8afb2f0000a331f02a9ac"
     },
     {
       "path": "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
@@ -34,15 +34,15 @@
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
-      "sha256": "e669b4b029967dd8b99d3dbc5759dba6b2b4545f94c29c5f2be1f235838d4975"
+      "sha256": "3c01b6301543e75d7573e2e979053eb1b6a31e84d4dc1f552dc15a5a7ac3f0ff"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
-      "sha256": "7f0c4203fc530da0fa457b2b25e03de52ce11cd9be92b46cee2437414d72b47c"
+      "sha256": "e0a7b63492ad91e46853b09cfa1655490b24813128d1ab5fa4c6829085d4709b"
     },
     {
       "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
-      "sha256": "4c8c4538d5e53993ae9cf6be6af00a591d822b01d78e278ee40467c019e02219"
+      "sha256": "57fb6d5f88cf0e714c31809b13915de4b57a5aa04ba21df2e978e5b5b3b6b62f"
     },
     {
       "path": "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
@@ -136,7 +136,7 @@
         "schema_id": "campaign_provenance.v7"
       },
       {
-        "record_count": 1,
+        "record_count": 2,
         "schema_id": "canonical_consumed_lock.v2"
       },
       {
@@ -387,8 +387,8 @@
     "new_real_data_comparison_invocations": 0
   },
   "implementation": {
-    "commit": "57860523df1ab92062d458c1e103341c6a895f42",
-    "tree": "61f9b2f00f490598cc8ee469d2612f22e6f7a7ba"
+    "commit": "0b5e2862770046328783e970aad0fca8602b2050",
+    "tree": "08ff90ffd66350144ab2c89ebff0ec88ec0e7cf6"
   },
   "preserved_lineage": {
     "failed_invocation_sha256": "529dc254d46ac65bf1c1fa1d98eb4bf799dfe5712302e729b4c72fc49b154919",
