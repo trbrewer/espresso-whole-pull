@@ -6,6 +6,14 @@ the [concise roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md),
 the [post-WP03 validation plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md),
 [Puckworks integration](PUCKWORKS_INTEGRATION.md), and `CONTRIBUTING.md`.
 
+For validation work, also read the
+[Validation Operating Standard v1](validation/VALIDATION_OPERATING_STANDARD_V1.md)
+and use its
+[review checklist](validation/VALIDATION_REVIEW_CHECKLIST_V1.md). New cases may
+start from the concise templates in `docs/validation/templates/`; reusable
+nonmaterial improvements belong in the
+[validation infrastructure backlog](validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md).
+
 ## Governed issues and pull requests
 
 Choose the **Evidence or governance task** issue form for no-physics evidence

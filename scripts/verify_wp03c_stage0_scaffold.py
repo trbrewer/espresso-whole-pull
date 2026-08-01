@@ -277,6 +277,13 @@ EXPECTED_PATHS = frozenset({
     "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
     "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V4.json",
     "validation/val001/corrections/VAL_001_PR38_SCHEMA_PROVENANCE_AND_SEMANTIC_ENFORCEMENT_PLAN.json",
+    # Exact later VAL-OPS-001 documentation paths. The operating standard is
+    # human-reviewed guidance and does not change Stage-0 readiness semantics.
+    "docs/validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md",
+    "docs/validation/VALIDATION_OPERATING_STANDARD_V1.md",
+    "docs/validation/VALIDATION_REVIEW_CHECKLIST_V1.md",
+    "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md",
+    "docs/validation/templates/VALIDATION_CASE_RESULT_TEMPLATE.md",
 })
 LATER_WP02_002_PATHS = frozenset({
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md",
@@ -735,6 +742,11 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
                 "validation/val001/schemas/canonical_consumed_lock.schema.json",
                 "validation/val001/schemas/governed_record_inventory.schema.json",
                 "validation/val001/schemas/governed_schema_registry.schema.json",
+                "docs/validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md",
+                "docs/validation/VALIDATION_OPERATING_STANDARD_V1.md",
+                "docs/validation/VALIDATION_REVIEW_CHECKLIST_V1.md",
+                "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md",
+                "docs/validation/templates/VALIDATION_CASE_RESULT_TEMPLATE.md",
             })
         ),
         "baseline_exact":
