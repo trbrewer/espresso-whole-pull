@@ -1,14 +1,14 @@
 # Project State
 
 - Current released version: `v0.2.0`
-- Current merged `main`: `f475eef5c7a93f833a51ce03485c557ce0620b8d`
-- Current merged tree: `493934e1d9e30461c9ca289dcc82ad43084eaf4b`
+- Current merged `main` at VAL-001 branch start: `34bd440f87d7b4ba6a955e54f40122d28f760ae3`
+- Current merged tree at VAL-001 branch start: `6d18e29b99ea5ec24d6cef7615deb541cf4737ff`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 179/179 PASS
-- Active phase: `POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION`
+- Public source verification: 213/213 PASS
+- Active candidate: `VAL-001_SOURCE_SPECIFIC_VALIDATION_ADAPTERS`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -54,12 +54,15 @@ diagnostics are not improved predictions merely because they add complexity.
 
 ## Active next program phase
 
-No governing physics changes and no validation executions occur in this
-documentation alignment task. The next recommended implementation is a
-source-specific validation adapter framework with first component
-comparisons. It will preserve evidence definitions and rights, separate
-calibration from comparison, quantify uncertainty and identifiability, compare
-existing mechanisms, and recommend one next physics increment from residuals.
+The open VAL-001 correction candidate implements the source-specific adapter
+framework without changing governing physics. Three prospectively declared
+current-head OpenFOAM cases completed. The one authorized corrected real-data
+comparison invocation failed after in-memory score exposure and remains
+invalidated. Under separate human-owner replacement authority, the minimal
+Python Boolean defect was repaired and exactly one replacement invocation
+produced the governed V2 bundle. The replacement reused the three verified
+OpenFOAM artifacts without rebuild or rerun. PR #38 remains open and awaits
+independent re-adjudication; it does not authorize a next-physics increment.
 
 See the concise
 [solver development and validation roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)
@@ -67,3 +70,49 @@ and the
 [post-WP03-001 validation and mechanism-discrimination plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md).
 
 General whole-solver physical validation remains `NOT_ESTABLISHED`.
+
+## Open VAL-001 candidate
+
+VAL-001 adds enforced source adapters, semantic validation, evidence/rights
+and calibration/comparison ledgers, synthetic adversarial tests, historical
+re-expression records, campaign provenance, and a fail-closed evidence-gap
+adapter. The initial PR arithmetic remains verified for ten in-domain points,
+but its prospective-governance status is invalidated. The corrected invocation
+failed after score exposure and remains invalidated. The separately authorized
+replacement is `POST_OBSERVATION_REPRODUCTION`, `NOT_BLIND`, and
+`NOT_INDEPENDENT`; it produced one governed result without a new OpenFOAM run.
+No protected or holdout data, retuning, physics, threshold, or scientific
+configuration change occurred. See the
+[VAL-001 report](validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md).
+
+Final post-result hardening consumes all remaining real-data execution
+authority. The original result remains arithmetic-correct but prospectively
+invalidated; the first corrected invocation remains failed after score
+exposure; and V2 remains the successful post-observation, non-blind,
+non-independent descriptive reproduction. V2 was not rewritten. Quantitative
+discrimination and mechanism uniqueness were not assessed;
+`ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS` is a conservative evidence-policy
+decision. Three earlier current-head OpenFOAM runs qualify the framework but
+did not produce the V2 pressure-sweep columns.
+
+The registry, synthetic transaction, and journal-to-summary gaps are closed on
+the open PR #38 candidate. The summary
+ledger is byte-derived from the four-event journal and the production runner
+refuses the final consumed authority before source access. Independent
+read-only re-adjudication is still required before merge. The former
+deep-schema gap is closed through 68 registry-referenced normative schema
+families and direct validation of 105 current and immutable historical records.
+## VAL-001 PR #38 administrative remediation
+
+The final candidate directly enumerates and validates all governed JSON/JSONL
+records with no exclusions, cycles, or orphans. The administrative freeze is
+bound by a canonical consumed lock containing the complete freeze commit and
+tree. Recursive schema-AST validation remains active. Sixty-eight normative
+contracts regenerate governing schemas without governed instances, all 48
+earlier inferred families have transition provenance, and immutable registry
+assignments select 18 executable profiles. The 340-entry mutation inventory
+executes one-to-one. Final candidate closure additionally requires externally
+supplied exact head and tree identities. No comparison or OpenFOAM execution
+occurred in this correction. V2 remains descriptive,
+post-observation, non-blind, and non-independent. No new scoring, solver run,
+fit, protected access, experiment, or physics change occurred.

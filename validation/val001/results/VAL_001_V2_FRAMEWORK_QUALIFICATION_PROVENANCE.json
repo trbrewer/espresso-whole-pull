@@ -1,0 +1,18 @@
+{
+  "schema_version": "espresso.val001.v2_framework_qualification_provenance.v1",
+  "record_id": "VAL001-V2-FRAMEWORK-QUALIFICATION-PROVENANCE-1",
+  "v2_result": {"path": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json", "sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"},
+  "reuse_activation_sha256": "03e0ec4dac9366ed80f55d7121cc317d322377de63e64bc6502a09b3889a9295",
+  "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
+  "foundation_openfoam_version": "12",
+  "rank_count": 32,
+  "metric_input_artifacts": [],
+  "framework_qualification_artifacts": [
+    {"run_id": "VAL001-OF-R1-9BAR", "configuration_sha256": "be275c0302f30dc4dcab120469b0bc62d444e401a80e082a337d9225c659b876", "trace_sha256": "89c405675cfa2663109f9150d6d3f8cec6cb76bbcb89b2989e11226815c10385", "log_sha256": "af4632577a1ec70c9d6eeded012584fec6d6e57862f8a696b3d3de0d2f1a3650", "status": "COMPLETED_NUMERICAL_AND_CONSERVATION_GATES_PASS"},
+    {"run_id": "VAL001-OF-WP02-9BAR", "configuration_sha256": "81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e", "trace_sha256": "bedbe087c0e758dd54de9724a729d9d99ae199b6569713dfba47adcb57dda7a3", "log_sha256": "74e11d4fba56930d4ccb2a827073d6cec3cde6ab60913a5c77aa9d4b9011a1e9", "status": "COMPLETED_NUMERICAL_AND_CONSERVATION_GATES_PASS"},
+    {"run_id": "VAL001-OF-WP02-8BAR", "configuration_sha256": "ac87cfdff2862401b33ac01fa31d87bf966e062cecd153ce59ab4a9518feb57e", "trace_sha256": "377429d0f0f48913c0072ca8043989127ab444de13a9a55b59d224812fef907c", "log_sha256": "8c8fac5579a2843516a7f7417ec048f4a7ca9dd9136e80525173ca4bd9a4f4fb", "status": "COMPLETED_NUMERICAL_AND_CONSERVATION_GATES_PASS"}
+  ],
+  "legacy_empty_field_explanation": "V2 input.reused_openfoam_artifacts is empty because the historical runner requested reused_openfoam_artifacts while activation stored runs.",
+  "scientific_role": "CURRENT_HEAD_FRAMEWORK_QUALIFICATION_NOT_V2_METRIC_INPUT",
+  "traces_produced_v2_pressure_sweep_predictions": false
+}

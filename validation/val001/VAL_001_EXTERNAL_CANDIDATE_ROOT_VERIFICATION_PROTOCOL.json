@@ -1,0 +1,29 @@
+{
+  "schema_version": "espresso.val001.external_candidate_root_protocol.v1",
+  "record_id": "VAL001-EXTERNAL-CANDIDATE-ROOT-PROTOCOL-1",
+  "external_root_type": "REVIEWER_OR_CI_SUPPLIED_GIT_COMMIT_AND_TREE",
+  "required_commit_pattern": "^[0-9a-f]{40}$",
+  "required_tree_pattern": "^[0-9a-f]{40}$",
+  "default_to_current_head": false,
+  "clean_working_tree_required": true,
+  "canonical_lock_path": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
+  "checks": [
+    "EXPECTED_HEAD_EQUALS_OBSERVED_HEAD",
+    "EXPECTED_TREE_EQUALS_OBSERVED_TREE",
+    "CANONICAL_LOCK_GIT_BLOB_EQUALS_WORKING_BYTES",
+    "CANONICAL_LOCK_STRUCTURAL_AND_SEMANTIC_VALIDATION",
+    "SINGLE_TERMINAL_EXTERNAL_ROOT",
+    "EVERY_GOVERNED_RECORD_REACHES_EXTERNAL_ROOT"
+  ],
+  "dispositions": {
+    "missing_argument": "VAL001_EXPECTED_ROOT_ARGUMENT_REQUIRED",
+    "stale_head": "VAL001_EXPECTED_HEAD_MISMATCH",
+    "stale_tree": "VAL001_EXPECTED_TREE_MISMATCH",
+    "changed_lock": "VAL001_CANONICAL_LOCK_BLOB_MISMATCH",
+    "dirty_worktree": "VAL001_WORKING_TREE_NOT_CLEAN"
+  },
+  "terminal_external_roots": 1,
+  "later_commit_requires_new_review_root": true,
+  "terminal_root_self_embedded": false,
+  "error_disposition": "FAIL_CLOSED_NO_EXECUTION_AUTHORITY"
+}

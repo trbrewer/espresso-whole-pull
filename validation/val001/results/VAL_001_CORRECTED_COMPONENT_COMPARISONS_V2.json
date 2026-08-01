@@ -1,0 +1,255 @@
+{
+  "claim_boundaries": {
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "general_physical_validation": "NOT_ESTABLISHED",
+    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
+    "holdout_execution": "NOT_AUTHORIZED",
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001",
+    "physical_validation": "NOT_ESTABLISHED",
+    "protected_or_holdout_scoring": "NOT_AUTHORIZED"
+  },
+  "classification": "POST_OBSERVATION_REPRODUCTION",
+  "comparisons": [
+    {
+      "classification": "POST_FIT_SOURCE_RECONSTRUCTION",
+      "comparison_id": "VAL001-CMP-001-universal-pressure-flow",
+      "metrics": {
+        "gate_bearing": false,
+        "mae": 0.20563131369433885,
+        "maximum_absolute_error": 0.47206795511572075,
+        "mean_bias": 0.0060561883560362965,
+        "n": 10,
+        "pressure_conditions_bar": [
+          1.0,
+          2.0,
+          3.5,
+          4.0,
+          5.0,
+          6.0,
+          7.0,
+          8.0,
+          9.0,
+          11.0
+        ],
+        "r_squared_descriptive": 0.858266151908603,
+        "rmse": 0.24638179985112704,
+        "sample_count": 10,
+        "support_bar": [
+          1.0,
+          11.0
+        ],
+        "uncertainty_status": "SOURCE_UNCERTAINTY_NOT_REPORTED",
+        "units": "g/s except dimensionless r_squared_descriptive",
+        "weighting": "EQUAL_SELECTED_CONDITION"
+      },
+      "residual_table": [
+        {
+          "nominal_pressure_bar": 1.0,
+          "observation_g_s": 0.108605,
+          "prediction_g_s": 0.42330031693506204,
+          "residual_g_s": 0.31469531693506203
+        },
+        {
+          "nominal_pressure_bar": 2.0,
+          "observation_g_s": 0.413504,
+          "prediction_g_s": 0.7605151656932021,
+          "residual_g_s": 0.3470111656932021
+        },
+        {
+          "nominal_pressure_bar": 3.5,
+          "observation_g_s": 1.079496,
+          "prediction_g_s": 1.297969778998175,
+          "residual_g_s": 0.218473778998175
+        },
+        {
+          "nominal_pressure_bar": 4.0,
+          "observation_g_s": 1.642029,
+          "prediction_g_s": 1.4350061322397394,
+          "residual_g_s": -0.20702286776026058
+        },
+        {
+          "nominal_pressure_bar": 5.0,
+          "observation_g_s": 2.057772,
+          "prediction_g_s": 1.5857040448842792,
+          "residual_g_s": -0.47206795511572075
+        },
+        {
+          "nominal_pressure_bar": 6.0,
+          "observation_g_s": 1.93775,
+          "prediction_g_s": 1.724339703940764,
+          "residual_g_s": -0.21341029605923612
+        },
+        {
+          "nominal_pressure_bar": 7.0,
+          "observation_g_s": 1.920566,
+          "prediction_g_s": 1.8151914922437047,
+          "residual_g_s": -0.10537450775629531
+        },
+        {
+          "nominal_pressure_bar": 8.0,
+          "observation_g_s": 1.850565,
+          "prediction_g_s": 1.8522285584611409,
+          "residual_g_s": 0.0016635584611408571
+        },
+        {
+          "nominal_pressure_bar": 9.0,
+          "observation_g_s": 1.824924,
+          "prediction_g_s": 1.8823223600789738,
+          "residual_g_s": 0.05739836007897381
+        },
+        {
+          "nominal_pressure_bar": 11.0,
+          "observation_g_s": 1.776579,
+          "prediction_g_s": 1.8957743300853218,
+          "residual_g_s": 0.1191953300853219
+        }
+      ],
+      "uncertainty_disposition": "DESCRIPTIVE_COMPARISON_NO_UNCERTAINTY_GATE"
+    },
+    {
+      "classification": "POST_FIT_SOURCE_RECONSTRUCTION_WITH_9BAR_MATCHING_CIRCULARITY",
+      "comparison_id": "VAL001-CMP-002-finite-porosity-pressure-flow",
+      "metrics": {
+        "gate_bearing": false,
+        "mae": 0.20551618312556222,
+        "maximum_absolute_error": 0.4837381413677808,
+        "mean_bias": -0.002008407772178039,
+        "n": 10,
+        "pressure_conditions_bar": [
+          1.0,
+          2.0,
+          3.5,
+          4.0,
+          5.0,
+          6.0,
+          7.0,
+          8.0,
+          9.0,
+          11.0
+        ],
+        "r_squared_descriptive": 0.8582226546336489,
+        "rmse": 0.24641960350537478,
+        "sample_count": 10,
+        "support_bar": [
+          1.0,
+          11.0
+        ],
+        "uncertainty_status": "SOURCE_UNCERTAINTY_NOT_REPORTED",
+        "units": "g/s except dimensionless r_squared_descriptive",
+        "weighting": "EQUAL_SELECTED_CONDITION"
+      },
+      "residual_table": [
+        {
+          "nominal_pressure_bar": 1.0,
+          "observation_g_s": 0.108605,
+          "prediction_g_s": 0.4142948457437804,
+          "residual_g_s": 0.3056898457437804
+        },
+        {
+          "nominal_pressure_bar": 2.0,
+          "observation_g_s": 0.413504,
+          "prediction_g_s": 0.7467829557886448,
+          "residual_g_s": 0.33327895578864486
+        },
+        {
+          "nominal_pressure_bar": 3.5,
+          "observation_g_s": 1.079496,
+          "prediction_g_s": 1.282688133899152,
+          "residual_g_s": 0.20319213389915203
+        },
+        {
+          "nominal_pressure_bar": 4.0,
+          "observation_g_s": 1.642029,
+          "prediction_g_s": 1.4209315067085981,
+          "residual_g_s": -0.22109749329140183
+        },
+        {
+          "nominal_pressure_bar": 5.0,
+          "observation_g_s": 2.057772,
+          "prediction_g_s": 1.5740338586322191,
+          "residual_g_s": -0.4837381413677808
+        },
+        {
+          "nominal_pressure_bar": 6.0,
+          "observation_g_s": 1.93775,
+          "prediction_g_s": 1.7162385645108658,
+          "residual_g_s": -0.22151143548913432
+        },
+        {
+          "nominal_pressure_bar": 7.0,
+          "observation_g_s": 1.920566,
+          "prediction_g_s": 1.8105091201912666,
+          "residual_g_s": -0.11005687980873335
+        },
+        {
+          "nominal_pressure_bar": 8.0,
+          "observation_g_s": 1.850565,
+          "prediction_g_s": 1.849345995468349,
+          "residual_g_s": -0.0012190045316509135
+        },
+        {
+          "nominal_pressure_bar": 9.0,
+          "observation_g_s": 1.824924,
+          "prediction_g_s": 1.8812178950060552,
+          "residual_g_s": 0.056293895006055195
+        },
+        {
+          "nominal_pressure_bar": 11.0,
+          "observation_g_s": 1.776579,
+          "prediction_g_s": 1.8956630463292883,
+          "residual_g_s": 0.11908404632928837
+        }
+      ],
+      "uncertainty_disposition": "DESCRIPTIVE_COMPARISON_NO_UNCERTAINTY_GATE"
+    }
+  ],
+  "execution_counts": {
+    "first_corrected_cycle_real_data_invocations": 1,
+    "fit_or_retune_count": 0,
+    "holdout_score_count": 0,
+    "minimum_known_precorrection_real_data_computations": 3,
+    "minimum_known_total_real_data_computations": 5,
+    "new_openfoam_builds": 0,
+    "new_openfoam_case_executions": 0,
+    "protected_access_count": 0,
+    "second_correction_governed_result_producing_invocations": 1,
+    "second_correction_real_data_comparison_invocations": 1,
+    "second_correction_test_or_ci_real_data_invocations": 0
+  },
+  "input": {
+    "activation_record_sha256": "03e0ec4dac9366ed80f55d7121cc317d322377de63e64bc6502a09b3889a9295",
+    "adapter_sha256": "6d0e9da956711f63c7b40aa967583de04df36e2f718eee1c9c860c4321887308",
+    "authority_record_sha256": "4e0e7fffeb0c7f100ba449341edc7f058aa51f57b4560a0cc53e1051a6ce9758",
+    "evidence_level": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON",
+    "invocation_id": "VAL001-SECOND-CORRECTION-REPLACEMENT-001",
+    "path": "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv",
+    "reused_openfoam_artifacts": [],
+    "rights_status": "PUBLIC",
+    "runner_sha256": "529240d3aebedfee849087def7e915701f2688078992ebe5e0579d5ae698cec2",
+    "second_freeze": {
+      "bound_hash_inventory": "INCORPORATED_IN_FULL_WITHOUT_MODIFICATION",
+      "commit": "a2660734f129fbc144bc8da8cde90cb3d5f5833d",
+      "path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json",
+      "sha256": "8d0608507d3567f63815b884b3a7a0429108b4359371f8837ca8c5e3654df3f4",
+      "tree": "936af74fd63ba8b48ca8b6f5144a2b7be7c33b9b"
+    },
+    "selected_row_canonical_sha256": "d2d5e295ffae3ff16403e268ccfd75c34b073ab2456939f6c509e33f7fca9634",
+    "sha256": "0a789ed20039ff5ea21b7e1773f2f62f74a4122775e2cb3fa12ff6c24c53a831"
+  },
+  "interpretation": {
+    "blind_status": "NOT_BLIND",
+    "decision": "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS",
+    "independence_status": "NOT_INDEPENDENT",
+    "mechanism_identification": "NOT_ESTABLISHED",
+    "model_correctness": "NOT_ESTABLISHED",
+    "physical_equivalence": "NOT_ESTABLISHED",
+    "rules_fired": [
+      "SOURCE_UNCERTAINTY_OR_INDEPENDENT_DISCRIMINATION_CRITERION_UNAVAILABLE",
+      "POST_FIT_SOURCE_RECONSTRUCTION_ONLY",
+      "VARIANTS_NOT_DISCRIMINATED_AND_RESIDUAL_NOT_MECHANISM_UNIQUE"
+    ],
+    "variant_discrimination": "NOT_ESTABLISHED"
+  },
+  "schema_version": "espresso.val001.comparison_result.v2",
+  "task": "VAL-001"
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "espresso.val001.lock_versioning_record.v1",
+  "record_id": "VAL001-POSTRESULT-LOCK-VERSIONING-1",
+  "prior_path": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
+  "historical_copy": "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V1.json",
+  "prior_sha256": "915e378194fc277c11874da79a1801bf1375a3230286d1db508df71fd0a0983e",
+  "producing_commit": "1df3f16818e69651834a3e2c6d97c32654e002cb",
+  "prior_freeze": "c4085b273a10310d84381185f26b171a44e98169",
+  "retained_v2_sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5",
+  "authority_status": "CONSUMED",
+  "successor_reason": "BIND_FINAL_COMPLETION_FREEZE_INVENTORY_REGISTRY_AND_JOURNAL_DERIVED_SUMMARY",
+  "scientific_change": false
+}

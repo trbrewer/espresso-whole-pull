@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "espresso.val001.comparison_result.v2",
+  "type": "object",
+  "required": ["schema_version", "task", "classification", "input", "execution_counts", "comparisons", "interpretation", "claim_boundaries"],
+  "properties": {
+    "schema_version": {"const": "espresso.val001.comparison_result.v2"},
+    "task": {"const": "VAL-001"},
+    "classification": {"const": "POST_OBSERVATION_REPRODUCTION"},
+    "input": {
+      "type": "object",
+      "required": ["path", "sha256", "selected_row_canonical_sha256", "invocation_id", "authority_record_sha256", "adapter_sha256", "runner_sha256", "second_freeze", "activation_record_sha256", "reused_openfoam_artifacts", "evidence_level", "rights_status"],
+      "properties": {
+        "path": {"const": "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv"},
+        "sha256": {"type": "string", "pattern": "[0-9a-f]{64}"},
+        "selected_row_canonical_sha256": {"type": "string", "pattern": "[0-9a-f]{64}"},
+        "invocation_id": {"const": "VAL001-SECOND-CORRECTION-REPLACEMENT-001"},
+        "authority_record_sha256": {"type": "string", "pattern": "[0-9a-f]{64}"},
+        "adapter_sha256": {"type": "string", "pattern": "[0-9a-f]{64}"},
+        "runner_sha256": {"type": "string", "pattern": "[0-9a-f]{64}"},
+        "second_freeze": {"type": "object", "required": ["commit", "tree", "path", "sha256", "bound_hash_inventory"], "properties": {"commit": {"type": "string", "pattern": "[0-9a-f]{40}"}, "tree": {"type": "string", "pattern": "[0-9a-f]{40}"}, "path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "[0-9a-f]{64}"}, "bound_hash_inventory": {"type": "string", "minLength": 1}}, "additionalProperties": false},
+        "activation_record_sha256": {"type": "string", "pattern": "[0-9a-f]{64}"},
+        "reused_openfoam_artifacts": {"type": "array", "items": {"type": "string"}},
+        "evidence_level": {"const": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON"},
+        "rights_status": {"const": "PUBLIC"}
+      }, "additionalProperties": false
+    },
+    "execution_counts": {"type": "object", "required": ["second_correction_real_data_comparison_invocations", "second_correction_governed_result_producing_invocations", "second_correction_test_or_ci_real_data_invocations", "first_corrected_cycle_real_data_invocations", "minimum_known_precorrection_real_data_computations", "minimum_known_total_real_data_computations", "new_openfoam_builds", "new_openfoam_case_executions", "fit_or_retune_count", "protected_access_count", "holdout_score_count"], "properties": {"second_correction_real_data_comparison_invocations": {"const": 1}, "second_correction_governed_result_producing_invocations": {"const": 1}, "second_correction_test_or_ci_real_data_invocations": {"const": 0}, "first_corrected_cycle_real_data_invocations": {"const": 1}, "minimum_known_precorrection_real_data_computations": {"const": 3}, "minimum_known_total_real_data_computations": {"const": 5}, "new_openfoam_builds": {"const": 0}, "new_openfoam_case_executions": {"const": 0}, "fit_or_retune_count": {"const": 0}, "protected_access_count": {"const": 0}, "holdout_score_count": {"const": 0}}, "additionalProperties": false},
+    "comparisons": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "object", "required": ["comparison_id", "classification", "metrics", "residual_table", "uncertainty_disposition"], "properties": {"comparison_id": {"type": "string", "minLength": 1}, "classification": {"enum": ["POST_FIT_SOURCE_RECONSTRUCTION", "POST_FIT_SOURCE_RECONSTRUCTION_WITH_9BAR_MATCHING_CIRCULARITY"]}, "metrics": {"type": "object", "required": ["n", "rmse", "mae", "mean_bias", "maximum_absolute_error", "r_squared_descriptive", "units", "sample_count", "pressure_conditions_bar", "support_bar", "weighting", "uncertainty_status", "gate_bearing"], "properties": {"n": {"type": "integer", "minimum": 1}, "rmse": {"type": "number", "minimum": 0}, "mae": {"type": "number", "minimum": 0}, "mean_bias": {"type": "number"}, "maximum_absolute_error": {"type": "number", "minimum": 0}, "r_squared_descriptive": {"anyOf": [{"type": "number"}, {"type": "null"}]}, "units": {"const": "g/s except dimensionless r_squared_descriptive"}, "sample_count": {"type": "integer", "minimum": 1}, "pressure_conditions_bar": {"type": "array", "minItems": 10, "maxItems": 10, "items": {"type": "number"}}, "support_bar": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}}, "weighting": {"const": "EQUAL_SELECTED_CONDITION"}, "uncertainty_status": {"const": "SOURCE_UNCERTAINTY_NOT_REPORTED"}, "gate_bearing": {"const": false}}, "additionalProperties": false}, "residual_table": {"type": "array", "minItems": 10, "maxItems": 10, "items": {"type": "object", "required": ["nominal_pressure_bar", "observation_g_s", "prediction_g_s", "residual_g_s"], "properties": {"nominal_pressure_bar": {"type": "number"}, "observation_g_s": {"type": "number"}, "prediction_g_s": {"type": "number"}, "residual_g_s": {"type": "number"}}, "additionalProperties": false}}, "uncertainty_disposition": {"const": "DESCRIPTIVE_COMPARISON_NO_UNCERTAINTY_GATE"}}, "additionalProperties": false}},
+    "interpretation": {"type": "object", "required": ["rules_fired", "decision", "variant_discrimination", "physical_equivalence", "model_correctness", "mechanism_identification", "blind_status", "independence_status"], "properties": {"rules_fired": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "decision": {"const": "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS"}, "variant_discrimination": {"const": "NOT_ESTABLISHED"}, "physical_equivalence": {"const": "NOT_ESTABLISHED"}, "model_correctness": {"const": "NOT_ESTABLISHED"}, "mechanism_identification": {"const": "NOT_ESTABLISHED"}, "blind_status": {"const": "NOT_BLIND"}, "independence_status": {"const": "NOT_INDEPENDENT"}}, "additionalProperties": false},
+    "claim_boundaries": {"type": "object", "required": ["physical_validation", "general_physical_validation", "general_whole_solver_physical_validation", "experimental_commissioning", "protected_or_holdout_scoring", "holdout_execution", "new_governing_physics"], "properties": {"physical_validation": {"const": "NOT_ESTABLISHED"}, "general_physical_validation": {"const": "NOT_ESTABLISHED"}, "general_whole_solver_physical_validation": {"const": "NOT_ESTABLISHED"}, "experimental_commissioning": {"const": "NOT_AUTHORIZED"}, "protected_or_holdout_scoring": {"const": "NOT_AUTHORIZED"}, "holdout_execution": {"const": "NOT_AUTHORIZED"}, "new_governing_physics": {"const": "NOT_AUTHORIZED_BY_VAL001"}}, "additionalProperties": false}
+  }, "additionalProperties": false
+}

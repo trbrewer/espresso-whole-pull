@@ -1,0 +1,651 @@
+{
+  "claim_boundaries": {
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "general_physical_validation": "NOT_ESTABLISHED",
+    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
+    "holdout_execution": "NOT_AUTHORIZED",
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001",
+    "physical_validation": "NOT_ESTABLISHED",
+    "protected_or_holdout_scoring": "NOT_AUTHORIZED"
+  },
+  "counts": {
+    "profiles": 18,
+    "records_without_executable_profile": 0,
+    "unknown_invariants": 0
+  },
+  "invariant_catalog": [
+    "INV-GLOBAL-CLAIMS",
+    "INV-METADATA-STATE",
+    "INV-PUCKWORKS-LOCK",
+    "INV-CAMPAIGN-PLANNING",
+    "INV-SENSITIVITY-PROSPECTIVE",
+    "INV-CONSUMED-LOCK",
+    "INV-HISTORICAL-REEXPRESSION",
+    "INV-EVIDENCE-GAP",
+    "INV-V2-DESCRIPTIVE",
+    "INV-FAILED-INVOCATION",
+    "INV-OPENFOAM-QUALIFICATION",
+    "INV-RIGHTS-ACCESS",
+    "INV-CURRENT-ADAPTER",
+    "INV-AUTHORITY-FREEZE-ACTIVATION",
+    "INV-EXTERNAL-ROOT",
+    "INV-INVALIDATED-RESULT",
+    "INV-COMPARISON-RUN"
+  ],
+  "profiles": [
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-022",
+        "VAL001-SCHEMA-SPEC-023",
+        "VAL001-SCHEMA-SPEC-024",
+        "VAL001-SCHEMA-SPEC-025",
+        "VAL001-SCHEMA-SPEC-027",
+        "VAL001-SCHEMA-SPEC-028",
+        "VAL001-SCHEMA-SPEC-030",
+        "VAL001-SCHEMA-SPEC-032",
+        "VAL001-SCHEMA-SPEC-033",
+        "VAL001-SCHEMA-SPEC-034",
+        "VAL001-SCHEMA-SPEC-046",
+        "VAL001-SCHEMA-SPEC-062"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-AUTHORITY-FREEZE-ACTIVATION",
+        "INV-PUCKWORKS-LOCK"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-AUTHORITY-FREEZE-ACTIVATION-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-003"
+      ],
+      "campaign": "PLANNING_ONLY",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-CAMPAIGN-PLANNING",
+        "INV-PUCKWORKS-LOCK"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-CAMPAIGN-PLANNING",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-CAMPAIGN-PLANNING-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-026",
+        "VAL001-SCHEMA-SPEC-031"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-COMPARISON-RUN"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-COMPARISON-RUN",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-COMPARISON-RUN-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-029"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-CONSUMED-LOCK",
+        "INV-PUCKWORKS-LOCK"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-CONSUMED-LOCK",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-CONSUMED-LOCK-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-020",
+        "VAL001-SCHEMA-SPEC-021",
+        "VAL001-SCHEMA-SPEC-041",
+        "VAL001-SCHEMA-SPEC-042",
+        "VAL001-SCHEMA-SPEC-043",
+        "VAL001-SCHEMA-SPEC-044",
+        "VAL001-SCHEMA-SPEC-045",
+        "VAL001-SCHEMA-SPEC-047",
+        "VAL001-SCHEMA-SPEC-048",
+        "VAL001-SCHEMA-SPEC-049",
+        "VAL001-SCHEMA-SPEC-058"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-CORRECTION-LINEAGE",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-CORRECTION-LINEAGE-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-018"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-CURRENT-ADAPTER",
+        "INV-PUCKWORKS-LOCK"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-CURRENT-ADAPTER",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-CURRENT-ADAPTER-BASELINE"
+      ],
+      "rights": "PUBLIC_RIGHTS_REQUIRED",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-001",
+        "VAL001-SCHEMA-SPEC-002",
+        "VAL001-SCHEMA-SPEC-004",
+        "VAL001-SCHEMA-SPEC-007",
+        "VAL001-SCHEMA-SPEC-008",
+        "VAL001-SCHEMA-SPEC-010",
+        "VAL001-SCHEMA-SPEC-011",
+        "VAL001-SCHEMA-SPEC-012",
+        "VAL001-SCHEMA-SPEC-013",
+        "VAL001-SCHEMA-SPEC-014",
+        "VAL001-SCHEMA-SPEC-035",
+        "VAL001-SCHEMA-SPEC-040",
+        "VAL001-SCHEMA-SPEC-059",
+        "VAL001-SCHEMA-SPEC-060",
+        "VAL001-SCHEMA-SPEC-061",
+        "VAL001-SCHEMA-SPEC-063",
+        "VAL001-SCHEMA-SPEC-064",
+        "VAL001-SCHEMA-SPEC-065",
+        "VAL001-SCHEMA-SPEC-066",
+        "VAL001-SCHEMA-SPEC-067",
+        "VAL001-SCHEMA-SPEC-068",
+        "VAL001-SCHEMA-SPEC-069"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-CURRENT-GOVERNANCE-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-017"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-EVIDENCE-GAP"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-EVIDENCE-GAP",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-EVIDENCE-GAP-BASELINE"
+      ],
+      "rights": "EVIDENCE_GAP_FAIL_CLOSED",
+      "score_bearing": "PROHIBITED",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-057"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-EXTERNAL-ROOT"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-EXTERNAL-ROOT",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-EXTERNAL-ROOT-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-051"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-FAILED-INVOCATION"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-FAILED-INVOCATION",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-FAILED-INVOCATION-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "HISTORICAL_AUDIT_ONLY"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-009",
+        "VAL001-SCHEMA-SPEC-011",
+        "VAL001-SCHEMA-SPEC-019",
+        "VAL001-SCHEMA-SPEC-029",
+        "VAL001-SCHEMA-SPEC-037",
+        "VAL001-SCHEMA-SPEC-038",
+        "VAL001-SCHEMA-SPEC-039"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "HISTORICAL_AUDIT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-METADATA-STATE"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-HISTORICAL-AUDIT",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-HISTORICAL-AUDIT-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "PROHIBITED",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-053",
+        "VAL001-SCHEMA-SPEC-055"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-HISTORICAL-REEXPRESSION"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-HISTORICAL-REEXPRESSION",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-HISTORICAL-REEXPRESSION-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "PROHIBITED",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-052"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-INVALIDATED-RESULT"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-INVALIDATED-RESULT",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-INVALIDATED-RESULT-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-006",
+        "VAL001-SCHEMA-SPEC-054"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-OPENFOAM-QUALIFICATION"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-OPENFOAM-QUALIFICATION",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-OPENFOAM-QUALIFICATION-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-005",
+        "VAL001-SCHEMA-SPEC-016"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-RIGHTS-ACCESS",
+        "INV-PUCKWORKS-LOCK"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-RIGHTS-ACCESS",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-RIGHTS-ACCESS-BASELINE"
+      ],
+      "rights": "PUBLIC_RIGHTS_REQUIRED",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-056"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-SCHEMA-DOCUMENT",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-SCHEMA-DOCUMENT-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-036"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_ASSESSED",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-SENSITIVITY-PROSPECTIVE"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-SENSITIVITY-PROSPECTIVE",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-SENSITIVITY-PROSPECTIVE-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "NOT_APPLICABLE",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    },
+    {
+      "allowed_states": [
+        "CURRENT_BOUNDED_OR_CONSUMED"
+      ],
+      "applies_to_specification_ids": [
+        "VAL001-SCHEMA-SPEC-050"
+      ],
+      "campaign": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "execution": "NONEXECUTABLE_OR_CONSUMED",
+      "experiment": "NOT_AUTHORIZED",
+      "governance": "CURRENT",
+      "identifiability": "NOT_APPLICABLE",
+      "invariant_ids": [
+        "INV-GLOBAL-CLAIMS",
+        "INV-V2-DESCRIPTIVE"
+      ],
+      "method_changes": "FITTING_RETUNING_CONFIGURATION_SOLVER_PHYSICS_PROHIBITED",
+      "profile_id": "PROFILE-V2-DESCRIPTIVE",
+      "required_cross_record_bindings": [],
+      "required_mutation_test_ids": [
+        "MUT-V2-DESCRIPTIVE-BASELINE"
+      ],
+      "rights": "NOT_APPLICABLE",
+      "score_bearing": "EXISTING_RETAINED_ONLY",
+      "validator_function_ids": [
+        "validate_profile_dispatch"
+      ],
+      "version": "v1"
+    }
+  ],
+  "record_id": "VAL001-SEMANTIC-PROFILE-REGISTRY-2",
+  "schema_version": "espresso.val001.semantic_profile_registry.v2"
+}

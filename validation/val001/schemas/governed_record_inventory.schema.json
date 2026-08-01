@@ -1,0 +1,206 @@
+{
+  "$id": "espresso.val001.governed_record_inventory.v3",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "closure": {
+      "additionalProperties": false,
+      "properties": {
+        "administrative_freeze": {
+          "type": "string"
+        },
+        "canonical_lock": {
+          "type": "string"
+        },
+        "enumeration_exclusions": {
+          "const": 0
+        },
+        "sidecar_primary_validation_count": {
+          "const": 0
+        },
+        "terminal_external_root": {
+          "const": "FINAL_GIT_HEAD_TREE"
+        }
+      },
+      "required": [
+        "enumeration_exclusions",
+        "administrative_freeze",
+        "canonical_lock",
+        "terminal_external_root",
+        "sidecar_primary_validation_count"
+      ],
+      "type": "object"
+    },
+    "record_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "record_id": {
+      "const": "VAL001-GOVERNED-RECORD-INVENTORY-3"
+    },
+    "records": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_record_id": {
+            "type": "string"
+          },
+          "audit_only": {
+            "type": "boolean"
+          },
+          "binder": {
+            "type": "string"
+          },
+          "binding_class": {
+            "enum": [
+              "ORDINARY_HASH_BOUND_RECORD",
+              "BOUND_BY_ADMINISTRATIVE_FREEZE",
+              "BOUND_BY_CANONICAL_LOCK",
+              "BOUND_BY_FINAL_GIT_TREE"
+            ]
+          },
+          "claim_ceiling": {
+            "const": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS"
+          },
+          "current": {
+            "type": "boolean"
+          },
+          "executable": {
+            "const": false
+          },
+          "git_blob": {
+            "pattern": "^[0-9a-f]{40}$",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "governing": {
+            "type": "boolean"
+          },
+          "mutability": {
+            "const": "IMMUTABLE_AFTER_ADMINISTRATIVE_FREEZE"
+          },
+          "path": {
+            "pattern": "^(?!/)(?!.*\\.\\.).+$",
+            "type": "string"
+          },
+          "producing_commit": {
+            "pattern": "^([0-9a-f]{40}|PENDING_[A-Z_]+|BOUND_BY_BINDER|BOUND_BY_FINAL_GIT_TREE)$",
+            "type": "string"
+          },
+          "puckworks_lock_applicable": {
+            "const": true
+          },
+          "record_class": {
+            "type": "string"
+          },
+          "record_id": {
+            "pattern": "^INV-[0-9A-F]{20}$",
+            "type": "string"
+          },
+          "schema_id": {
+            "type": "string"
+          },
+          "schema_origin": {
+            "enum": [
+              "EXPLICIT_CLASS_SEMANTICS",
+              "EXPLICIT_VERSION_SEMANTICS",
+              "EXPLICIT_RECORD_SEMANTICS"
+            ]
+          },
+          "schema_path": {
+            "pattern": "^(?!/)(?!.*\\.\\.).+\\.json$",
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "semantic_profile": {
+            "pattern": "^PROFILE-.+$",
+            "type": "string"
+          },
+          "semantic_validator": {
+            "const": "validate_profile_dispatch"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_access_role": {
+            "enum": [
+              "NO_SOURCE_ACCESS",
+              "SOURCE_ACCESS_AUDIT"
+            ]
+          },
+          "static_validation": {
+            "const": "REQUIRED"
+          },
+          "structure_signature_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "superseded": {
+            "type": "boolean"
+          },
+          "treatment": {
+            "enum": [
+              "CURRENT_DEEP_SCHEMA",
+              "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "git_blob",
+          "producing_commit",
+          "record_id",
+          "artifact_record_id",
+          "record_class",
+          "schema_id",
+          "schema_version",
+          "schema_path",
+          "semantic_validator",
+          "semantic_profile",
+          "schema_origin",
+          "binding_class",
+          "binder",
+          "treatment",
+          "current",
+          "executable",
+          "audit_only",
+          "mutability",
+          "governing",
+          "superseded",
+          "claim_ceiling",
+          "puckworks_lock_applicable",
+          "source_access_role",
+          "static_validation",
+          "structure_signature_sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "espresso.val001.governed_record_inventory.v3"
+    },
+    "scope": {
+      "const": "EVERY_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_ZERO_EXCLUSIONS"
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "scope",
+    "record_count",
+    "records",
+    "closure"
+  ],
+  "type": "object"
+}

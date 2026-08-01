@@ -42,6 +42,8 @@ Full generated fields, uncleaned runs, processor directories, compiled executabl
 - Validation action plan:
   `docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md`
 - Current project state: `docs/PROJECT_STATE.md`
+- VAL-001 correction, retained failure, and governed reproduction record:
+  `docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md`
 
 ## Development
 
@@ -64,12 +66,55 @@ physical-validation release.
 The published release and bounded assets are available at
 [v0.2.0](https://github.com/trbrewer/espresso-whole-pull/releases/tag/v0.2.0).
 WP-0.3A reviewed the moving Puckworks evidence baseline and found no presently
-qualifying independent hydraulic holdout. Its frozen contract authorizes no
-execution and no additional mechanism. The next implementation task is the
-validation-adapter framework and first admissible component comparisons.
+qualifying independent hydraulic holdout. VAL-001 then implemented the
+adapter framework and completed three bounded current-head OpenFOAM runs, but
+its first corrected real-data invocation failed after score exposure and was
+invalidated without retry under that authority. A separately authorized
+one-token Python Boolean repair and one replacement invocation produced the
+governed V2 bundle. That result is a post-observation, non-blind,
+non-independent descriptive reproduction, not authorization for another
+mechanism. PR #38 remains open and awaits independent re-adjudication.
 Experimental commissioning, protected scoring and holdout execution remain
 unauthorized; physical validation remains **NOT_ESTABLISHED**.
+
+The final additive hardening preserves V2 byte-for-byte, marks its replacement
+authority consumed, removes caller-selected governed identities, and deeply
+validates the retained V2 result and invocation history. It also corrects the
+source citation to Waszkiewicz, N. et al., *Physics of Fluids* 38, 063113
+(2026), DOI 10.1063/5.0319611. No comparison or OpenFOAM execution occurred in
+this hardening cycle. PR #38 remains open for independent read-adjudication.
+
+The earlier completion layer initially inventoried 64 governed machine-readable records;
+uses explicit per-record schema treatment, derives the invocation summary
+deterministically from the four-event append-only journal, and binds the final
+consumed state. It performed no new comparison and no OpenFOAM work; V2 is
+unchanged and remains post-observation, non-blind, non-independent, and
+descriptive. The prior 4/60 schema gap is closed: every governed record now
+uses a direct class-, version-, or record-specific deep schema, with no
+sidecar-primary or generic catch-all validation. The final administrative
+remediation directly enumerates 105 records through 68 registry-referenced
+governing schema families with zero enumeration exclusions or unreferenced
+current normative contracts.
 
 ## License
 
 The solver and repository code are licensed under GPL-3.0-or-later. See `LICENSE`, `NOTICE.md`, `THIRD_PARTY_NOTICES.md`, and `docs/LICENSING.md`. This licensing audit is informational and not legal advice.
+### VAL-001 final administrative closure
+
+The final explicit-semantics correction replaces instance-derived governing
+schema construction with reviewed class/version/record specifications and
+mandatory executable semantic profiles. Candidate closure now requires a
+reviewer- or CI-supplied full Git head and tree; the verifier never substitutes
+the checked-out HEAD as its expected root. This correction performed no new
+OpenFOAM execution or governed comparison and does not change the retained V2
+result or its descriptive, post-observation claim boundary.
+
+PR #38 now uses zero-exclusion enumeration and an acyclic 105-record binding
+graph terminating in the canonical lock at the externally supplied reviewed
+Git head/tree. Sixty-eight normative contracts generate 68 referenced schema
+families without governed record instances; all 48 prior inferred families
+have explicit transition provenance. Immutable assignments anchor 18
+executable profiles. The 340-entry mutation inventory executes one-to-one
+(204 structural, 23 schema-document, 87 semantic, 15 root/graph, and 11
+freeze/lock cases). No comparison or OpenFOAM execution occurred; physical
+validation remains not established.

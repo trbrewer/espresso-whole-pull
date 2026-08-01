@@ -1,0 +1,101 @@
+{
+  "alternate_activation_allowed": false,
+  "alternate_authority_allowed": false,
+  "alternate_invocation_id_allowed": false,
+  "alternate_ledger_allowed": false,
+  "authority_status": "CONSUMED",
+  "bindings": [
+    {
+      "path": "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json",
+      "sha256": "8fc6fa3e7e850687d9a5f295a9b7e88632892824a5b5a49f17701d8683c584f4"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
+      "sha256": "eb4104710e43450b584eb2e7ad2ca5d0c384509b1d1e8adfb4e7fcb864a741c2"
+    },
+    {
+      "path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "sha256": "dc7fc69f1366f1fedcfab3c9a4bf88bcd68a8bdf3721a12359931352fb159bf2"
+    },
+    {
+      "path": "validation/val001/VAL_001_SCHEMA_PROVENANCE_TRANSITION_MATRIX.json",
+      "sha256": "83ea7943c38823a89e2b28e22186b9cb50d5f319f833f2257e42ce51315eeb65"
+    },
+    {
+      "path": "validation/val001/VAL_001_SCHEMA_TAXONOMY_AND_COUNTING_SPECIFICATION.json",
+      "sha256": "7b1e07f74f4180f216af9a762aaea76fcb81500c6d0a66fa8d0e522c0227240b"
+    },
+    {
+      "path": "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
+      "sha256": "d2df26e314f87dd110501b778dd7acd3a377d0988351ceb4ed197cd50c3d10c9"
+    },
+    {
+      "path": "validation/val001/VAL_001_IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY.json",
+      "sha256": "a141ea17c04145e23a5dcdf19f911f6408e5efd58cf8afb2f0000a331f02a9ac"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
+      "sha256": "91090cd1d05c5e990e38ce1e9ed0760f0bd359724d41327b0d418383d2495968"
+    },
+    {
+      "path": "validation/val001/VAL_001_MUTATION_EXECUTION_COVERAGE.json",
+      "sha256": "5af61cce27d41a3137e51f92a4723e26f01dfa3f4ead5ea39c2e241aaffccefb"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
+      "sha256": "b930e2e7813a54831c821d4072e2fc859c2d81e5d2ec9114b2f991d2b42f37c5"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
+      "sha256": "bac243a944bad1af633b7d4c9f49d83a2bd6b3a5342bbb112e0b496d64b1b203"
+    },
+    {
+      "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
+      "sha256": "776689d168907223a1eeceb4edfef5833414f7d5b5fb6ad031fafb0e341078ea"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl",
+      "sha256": "f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json",
+      "sha256": "01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
+      "sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"
+    },
+    {
+      "path": "scripts/run_val001_corrected_comparison.py",
+      "sha256": "a39fafb4b5492ad939137bc3221597572d21d973c0e4a81e444dc434c19fa66f"
+    }
+  ],
+  "branch": "validation/val-001-source-adapters",
+  "claim_boundaries": {
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "general_physical_validation": "NOT_ESTABLISHED",
+    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
+    "holdout_execution": "NOT_AUTHORIZED",
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001",
+    "physical_validation": "NOT_ESTABLISHED",
+    "protected_or_holdout_scoring": "NOT_AUTHORIZED"
+  },
+  "freeze_binding": {
+    "commit": "7a40f6b568a0d5648c63430e57baae22602adef1",
+    "path": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
+    "sha256": "734be5dd364ae40bf0abec95678bcbf4b7162ddc8a8c973bebaee9bf36140304",
+    "tree": "f6cbbb9f0a171d0c45e9c916b50b30783379a8e2"
+  },
+  "further_retry_authorized": false,
+  "issue": 37,
+  "puckworks_lock": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "pull_request": 38,
+  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-9-SCHEMA-PROVENANCE",
+  "remaining_governed_result_producing_invocations": 0,
+  "remaining_real_data_comparison_invocations": 0,
+  "schema_version": "espresso.val001.postresult_execution_lock.v3",
+  "task": "VAL-001"
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "espresso.val001.second_correction_invocation_authority.v1",
+  "record_id": "VAL001-SECOND-CORRECTION-INVOCATION-AUTHORITY-1",
+  "task": "VAL-001",
+  "status": "AUTHORIZED_FOR_ONE_SECOND_CORRECTION_REPLACEMENT_INVOCATION",
+  "human_owner_instruction": "Second narrowly bounded PR38 correction authority dated 31 July 2026",
+  "issue": 37,
+  "pull_request": 38,
+  "branch": "validation/val-001-source-adapters",
+  "second_freeze": {
+    "commit": "a2660734f129fbc144bc8da8cde90cb3d5f5833d",
+    "tree": "936af74fd63ba8b48ca8b6f5144a2b7be7c33b9b",
+    "path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json",
+    "sha256": "8d0608507d3567f63815b884b3a7a0429108b4359371f8837ca8c5e3654df3f4",
+    "bound_hash_inventory": "INCORPORATED_IN_FULL_WITHOUT_MODIFICATION"
+  },
+  "failed_first_corrected_invocation": {
+    "invocation_id": "VAL001-CORRECTED-REAL-001",
+    "status": "FAILED_INVALIDATED_AFTER_SCORE_EXPOSURE",
+    "failure_artifact_sha256": "529dc254d46ac65bf1c1fa1d98eb4bf799dfe5712302e729b4c72fc49b154919",
+    "permanently_counted": true
+  },
+  "replacement_invocation": {
+    "definition": "One completed execution computing both frozen comparison branches and all frozen metrics from the ten governed real observations, producing the retained V2 result.",
+    "invocation_id": "VAL001-SECOND-CORRECTION-REPLACEMENT-001",
+    "input_path": "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv",
+    "input_sha256": "0a789ed20039ff5ea21b7e1773f2f62f74a4122775e2cb3fa12ff6c24c53a831",
+    "selected_row_sha256": "d2d5e295ffae3ff16403e268ccfd75c34b073ab2456939f6c509e33f7fca9634",
+    "selected_pressures_bar": [1, 2, 3.5, 4, 5, 6, 7, 8, 9, 11],
+    "branches": ["universal_curve_flow_g_s", "finite_phi_flow_g_s"],
+    "metrics": ["RMSE", "MAE", "MEAN_BIAS", "MAXIMUM_ABSOLUTE_ERROR", "DESCRIPTIVE_R_SQUARED"],
+    "output": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json"
+  },
+  "prospective_counts": {
+    "second_correction_planned_real_data_comparison_invocations": 1,
+    "second_correction_planned_governed_result_producing_invocations": 1,
+    "second_correction_planned_test_or_ci_real_data_invocations": 0,
+    "second_correction_planned_new_openfoam_builds": 0,
+    "second_correction_planned_new_openfoam_case_executions": 0
+  },
+  "historical_accounting": {
+    "minimum_known_precorrection_real_data_computations": 3,
+    "exact_precorrection_local_real_data_computation_count": "NOT_RECONSTRUCTABLE_FROM_COMMITTED_EVIDENCE",
+    "first_corrected_cycle_real_data_invocations": 1,
+    "first_corrected_cycle_governed_results": 0,
+    "first_corrected_cycle_status": "FAILED_INVALIDATED_AFTER_SCORE_EXPOSURE",
+    "minimum_known_total_real_data_computations_after_success": 5
+  },
+  "openfoam_reuse": {
+    "external_artifact_id": "VAL001-PR38-CORRECTED-OPENFOAM-20260731",
+    "completed_cases_reused": 3,
+    "new_builds": 0,
+    "new_case_executions": 0
+  },
+  "conditions": {
+    "fit_or_retune": false,
+    "configuration_change": false,
+    "solver_source_change": false,
+    "governing_physics_change": false,
+    "protected_access": false,
+    "holdout_access_or_scoring": false,
+    "experimental_commissioning": false,
+    "test_or_ci_real_data_computation": false
+  },
+  "stop_conditions": [
+    "BOUND_HASH_MISMATCH", "ARTIFACT_REUSE_MISMATCH", "WORKTREE_NOT_CLEAN",
+    "REPLACEMENT_EVENT_ALREADY_EXISTS", "SOURCE_READ_OR_SCORE_EXPOSURE_FAILURE"
+  ],
+  "further_retry": "NOT_AUTHORIZED",
+  "claim_boundaries": {
+    "physical_validation": "NOT_ESTABLISHED",
+    "general_physical_validation": "NOT_ESTABLISHED",
+    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "protected_or_holdout_scoring": "NOT_AUTHORIZED",
+    "holdout_execution": "NOT_AUTHORIZED",
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"
+  }
+}

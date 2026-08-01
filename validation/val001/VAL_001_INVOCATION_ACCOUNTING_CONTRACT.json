@@ -1,0 +1,70 @@
+{
+  "actual_corrected": {
+    "governed_result_producing_invocations": 0,
+    "real_data_comparison_invocations": 1,
+    "test_or_ci_real_data_invocations": 0
+  },
+  "artifact_bindings": [],
+  "claim_boundaries": {
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "definitions": {
+    "GOVERNED_RESULT_PRODUCING_INVOCATION": "A REAL_DATA_COMPARISON_INVOCATION producing the retained corrected result bundle.",
+    "REAL_DATA_COMPARISON_INVOCATION": "Any completed execution computing residuals or comparison metrics from a governed real observation and model prediction, whether retained, written, tested, in-memory, manual, or discarded."
+  },
+  "events": [
+    {
+      "adapter_sha256": "6d0e9da956711f63c7b40aa967583de04df36e2f718eee1c9c860c4321887308",
+      "analyzer_sha256": "5cfbaa254fed40191463901e16cef59f95c2a5348a2f856906831c9a8cc08b0d",
+      "authority_record_sha256": "1ee58ad04ee660a39570349d0e7036d6746910c449150fcfb5a0758eab7c307c",
+      "command": "scripts/run_val001_corrected_comparison.py",
+      "commit": "30e596a3f72c8dbe7f827e03ade3570cec7e4092",
+      "completion_timestamp": "2026-07-31T22:03:15+00:00",
+      "exception_status": "FAILED_AFTER_SCORE_EXPOSURE_NAMEERROR_PYTHON_FALSE_LITERAL",
+      "execution_role": "GOVERNED_RESULT_PRODUCING_INVOCATION",
+      "input_sha256": "0a789ed20039ff5ea21b7e1773f2f62f74a4122775e2cb3fa12ff6c24c53a831",
+      "invalidation_status": "INVALIDATED_NO_RERUN_AUTHORIZED",
+      "invocation_id": "VAL001-CORRECTED-REAL-001",
+      "output_sha256": null,
+      "start_timestamp": "2026-07-31T22:02:58.822432+00:00",
+      "status": "FAILED",
+      "tree": "18ffae5dc3895ef7c70bc348ee864492cf04e081"
+    },
+    {
+      "adapter_sha256": "6d0e9da956711f63c7b40aa967583de04df36e2f718eee1c9c860c4321887308",
+      "analyzer_sha256": "529240d3aebedfee849087def7e915701f2688078992ebe5e0579d5ae698cec2",
+      "authority_record_sha256": "4e0e7fffeb0c7f100ba449341edc7f058aa51f57b4560a0cc53e1051a6ce9758",
+      "command": "scripts/run_val001_corrected_comparison.py",
+      "commit": "1e4a4ff5c3e7f9790a6e3879e76cb2faf2962554",
+      "completion_timestamp": "2026-07-31T22:35:58.814998+00:00",
+      "exception_status": "NONE",
+      "execution_role": "GOVERNED_RESULT_PRODUCING_INVOCATION",
+      "input_sha256": "0a789ed20039ff5ea21b7e1773f2f62f74a4122775e2cb3fa12ff6c24c53a831",
+      "invalidation_status": "VALID",
+      "invocation_id": "VAL001-SECOND-CORRECTION-REPLACEMENT-001",
+      "output_sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5",
+      "start_timestamp": "2026-07-31T22:35:58.807259+00:00",
+      "status": "COMPLETED",
+      "tree": "1f8492bbab482b48f56641431013482a20b7b47a"
+    }
+  ],
+  "historical": {
+    "exact_precorrection_local_count": "NOT_RECONSTRUCTABLE_FROM_COMMITTED_EVIDENCE",
+    "minimum_known_precorrection_real_data_computations": 3,
+    "minimum_known_total_real_data_computations": 5,
+    "second_correction_governed_result_producing_invocations": 1,
+    "second_correction_real_data_comparison_invocations": 1,
+    "second_correction_test_or_ci_real_data_invocations": 0
+  },
+  "planned_corrected": {
+    "governed_result_producing_invocations": 1,
+    "real_data_comparison_invocations": 1,
+    "test_or_ci_real_data_invocations": 0
+  },
+  "record_id": "VAL001-INVOCATION-ACCOUNTING-1",
+  "schema_version": "espresso.val001.invocation_ledger.v1",
+  "second_invocation_disposition": "REFUSE_UNLESS_SEPARATELY_RECORDED_FAILURE_INVALIDATION_AUTHORIZES_FULL_RERUN",
+  "status": "SECOND_CORRECTION_REPLACEMENT_INVOCATION_COMPLETED",
+  "task": "VAL-001"
+}

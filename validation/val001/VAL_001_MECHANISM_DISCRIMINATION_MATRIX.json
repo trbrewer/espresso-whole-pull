@@ -1,0 +1,13 @@
+{
+  "schema_version": "espresso.val001.mechanism_discrimination_matrix.v3", "task": "VAL-001", "status": "V2_RESULT_RETAINED_INTERPRETATION_CORRECTED_NO_MECHANISM_SELECTED",
+  "rules": [
+    {"order": 1, "condition": "rights provenance or essential mappings incomplete", "outcome": "EVIDENCE_NOT_EXECUTABLE"},
+    {"order": 2, "condition": "protected or holdout evidence", "outcome": "EXECUTION_NOT_AUTHORIZED"},
+    {"order": 3, "condition": "source uncertainty and independent discrimination criterion unavailable", "outcome": "QUANTITATIVE_VARIANT_DISCRIMINATION_NOT_ASSESSED"},
+    {"order": 4, "condition": "comparison is post-fit", "outcome": "POST_FIT_SOURCE_RECONSTRUCTION_ONLY"},
+    {"order": 5, "condition": "mechanism-uniqueness assessment was not performed", "outcome": "MECHANISM_UNIQUENESS_NOT_ASSESSED"},
+    {"order": 6, "condition": "independent uncertainty-characterized evidence remains insufficient", "outcome": "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS", "decision_type": "CONSERVATIVE_POLICY_DECISION"}
+  ],
+  "candidate_explanations_to_report_without_attribution": ["source uncertainty", "apparatus uncertainty", "source-fit circularity", "pressure-node mapping", "parameter uncertainty", "observation-operator error", "data aggregation", "boundary-condition mismatch", "numerical error", "model-form error", "omitted physics"],
+  "new_physics_authorized": false
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": "espresso.val001.amendment_invalidation.v1", "record_id": "VAL001-ROW-COUNT-INVALIDATION-1", "task": "VAL-001", "status": "ORIGINAL_PROSPECTIVE_GOVERNANCE_INVALIDATED_RERUN_REQUIRED",
+  "original_freeze_commit": "6e51d91478b838eb0b394974e8c130b93e1dd962", "original_result_commit": "5f648e4e80579caf83487d2953db3fbc0d4e02eb", "discovery_timestamp": "2026-07-31T00:00:00Z", "discovery_source": "INDEPENDENT_PR38_ADJUDICATION", "observer_role": "INDEPENDENT_REVIEWER",
+  "affected_artifacts": ["validation/val001/contracts/VAL_001_PREEXECUTION_RUN_SPEC.json", "validation/val001/amendments/VAL_001_INPUT_ROW_COUNT_AMENDMENT.json", "validation/val001/results/VAL_001_FIRST_COMPONENT_COMPARISONS.json"],
+  "row_count_meanings": {"header_rows": "CSV header records", "total_data_rows": "all non-header CSV records", "selected_data_rows": "records selected by the prospectively bound filter", "excluded_data_rows": "non-selected data records"},
+  "erroneous_value": {"field": "input.rows", "value": 9, "meaning_claimed": "AMBIGUOUS"}, "correct_values": {"header_rows": 1, "total_data_rows": 11, "selected_data_rows": 10, "excluded_data_rows": 1},
+  "arithmetic_impact": "NONE_BECAUSE_INPUT_HASH_AND_IN_DOMAIN_FILTER_SELECTED_THE_SAME_TEN_ROWS", "prospective_governance_impact": "MATERIAL_AMBIGUITY_IN_FROZEN_SUPPORT_ACCOUNTING", "disposition": "INVALIDATE_ORIGINAL_PROSPECTIVE_GOVERNANCE_AND_REQUIRE_CORRECTED_POST_OBSERVATION_REPRODUCTION", "replacement_contract": "validation/val001/contracts/VAL_001_CORRECTED_RUN_SPEC.json", "replacement_result": "PENDING_PREEXECUTION_AUTHORITY_AND_SINGLE_GOVERNED_INVOCATION", "artifact_bindings": [],
+  "claim_boundaries": {"original_arithmetic": "VERIFIED_CORRECT_FOR_TEN_IN_DOMAIN_ROWS", "original_prospective_governance": "INVALIDATED"}
+}

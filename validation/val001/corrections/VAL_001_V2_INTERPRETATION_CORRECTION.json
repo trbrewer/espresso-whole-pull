@@ -1,0 +1,18 @@
+{
+  "schema_version": "espresso.val001.v2_interpretation_correction.v1",
+  "record_id": "VAL001-V2-INTERPRETATION-CORRECTION-1",
+  "v2_path": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
+  "v2_sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5",
+  "earlier_engine_sha256": "347744f3a47ffe34a1be08063febcc0cee2f9bbaeb7aab201426e341c9478126",
+  "earlier_wording": ["SOURCE_UNCERTAINTY_OR_INDEPENDENT_DISCRIMINATION_CRITERION_UNAVAILABLE", "POST_FIT_SOURCE_RECONSTRUCTION_ONLY", "VARIANTS_NOT_DISCRIMINATED_AND_RESIDUAL_NOT_MECHANISM_UNIQUE"],
+  "review_finding": "EARLIER_ENGINE_RETURNED_CONSTANT_SUBSTANTIVE_FINDINGS_FOR_EVERY_NONEMPTY_COMPARISON",
+  "scientific_evaluation": ["POST_FIT_SOURCE_RECONSTRUCTION_ONLY", "QUANTITATIVE_VARIANT_DISCRIMINATION_NOT_ASSESSED", "MECHANISM_UNIQUENESS_NOT_ASSESSED"],
+  "policy_decision": "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS",
+  "policy_basis": "INSUFFICIENT_INDEPENDENT_UNCERTAINTY_CHARACTERIZED_EVIDENCE",
+  "arithmetic_changed": false,
+  "residuals_changed": false,
+  "source_reread_for_metric_calculation": false,
+  "new_comparison_invocation": false,
+  "branch_preference_established": false,
+  "mechanism_established": false
+}

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 179,
-  "total_uncompressed_bytes_excluding_manifest": 1712307,
-  "aggregate_source_sha256": "07a47f00db329dbd424ede52e4b0e60581973aad78fefa874f34c169c0a38759",
-  "aggregate_sha256": "07a47f00db329dbd424ede52e4b0e60581973aad78fefa874f34c169c0a38759",
+  "file_count": 213,
+  "total_uncompressed_bytes_excluding_manifest": 1859278,
+  "aggregate_source_sha256": "48a505245f2754b28248776a688f0f793dcbf6814c4f30d250dfe80b1856406b",
+  "aggregate_sha256": "48a505245f2754b28248776a688f0f793dcbf6814c4f30d250dfe80b1856406b",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "435c1ab53d0c6928a2551a3e0f7df728d2bffd0a640c604048d8130712f20281",
-      "bytes": 4759,
+      "sha256": "36e2d1a778dc125588f219ee7deaf7d1d04ef13027437817ea65cf899c2bfc39",
+      "bytes": 7711,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "ba1a306c2d1023f578ab9221ce39f4d7f8eb60875f764e9adca459fd29e161f7",
-      "bytes": 3762,
+      "sha256": "c12f95e8ca18cf3b1969ddc0b94cbf0a1b64ad345d49e41a45a01d61dc47d6b6",
+      "bytes": 5708,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -444,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "99265da599b394941c18ec970a22a62ef52bd4412b62cde64aa505d6290a8f57",
-      "bytes": 3191,
+      "sha256": "474c891de23d3c264e9573c8aba4d408e19af0365ac309a7397dc0262baf342b",
+      "bytes": 5998,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -486,6 +486,51 @@
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md": {
       "sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
       "bytes": 2160,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_PR38_ADMINISTRATIVE_SEMANTIC_REMEDIATION_NOTE.md": {
+      "sha256": "bbff29fc148719c1174804ddd40966f62e73c6b7560ec97d11ac0bfed93d7b73",
+      "bytes": 649,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_PR38_CORRECTION_NOTE.md": {
+      "sha256": "72fd66a2eda9acb85bd048619fa5a873edf5e4b523fea2dec4478b70df7554f2",
+      "bytes": 2373,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_PR38_DEEP_SCHEMA_COMPLETION_NOTE.md": {
+      "sha256": "3fbd4d5d1e2c042786a522063d8b6a2e39314767e677ab5f5bc82e213de67e51",
+      "bytes": 477,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_PR38_EXPLICIT_SEMANTICS_ROOT_PINNING_NOTE.md": {
+      "sha256": "2d6515da4c4fd7412f44e1e0554f0ddbd47b416ab5245726ea332918534fcf2c",
+      "bytes": 506,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_PR38_FINAL_HARDENING_NOTE.md": {
+      "sha256": "0e25b1e21c94d87fd3514f63453ceda721a0b4a4fcb764db8d32ac5ff4e3766a",
+      "bytes": 844,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_PR38_HARDENING_COMPLETION_NOTE.md": {
+      "sha256": "62da4767fbf374e6bbcf6303daa90ceb8bb0bffec54119193345a4f47054c01f",
+      "bytes": 500,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_PR38_SCHEMA_PROVENANCE_SEMANTIC_ENFORCEMENT_NOTE.md": {
+      "sha256": "9420db20f8386f823a7c71e2429c1cf10d14654d3c9cf688bd836638b05ef094",
+      "bytes": 644,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_PR38_SECOND_CORRECTION_NOTE.md": {
+      "sha256": "63a11c52557372cad0f65dabeb46e3dfa131d4a00df67ba7af32dab2f9444888",
+      "bytes": 1047,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md": {
+      "sha256": "249c20cd6a321a6bb01c7d25ed68e931458e1ffff57c71dff5bab604bea33737",
+      "bytes": 6546,
       "git_mode": "100644"
     },
     "scripts/analyze_r1.py": {
@@ -558,6 +603,46 @@
       "bytes": 9086,
       "git_mode": "100755"
     },
+    "scripts/generate_val001_administrative_freeze.py": {
+      "sha256": "d8dce2bc88c39357d0e7c709e21f3832aa892d9050425c80f0587749afd1c790",
+      "bytes": 2970,
+      "git_mode": "100755"
+    },
+    "scripts/generate_val001_deep_schema_coverage.py": {
+      "sha256": "a860d59f7587960217494ea4cabee5d26077b870f697be1620a7ea1188f34092",
+      "bytes": 1180,
+      "git_mode": "100755"
+    },
+    "scripts/generate_val001_explicit_semantics_freeze.py": {
+      "sha256": "337ff86663e61cae7ad5779d876e728ac1b4135a844ac01bb2d39d1ae1de673d",
+      "bytes": 3509,
+      "git_mode": "100755"
+    },
+    "scripts/generate_val001_mutation_inventory.py": {
+      "sha256": "a40c87ef0580403a047c91262d77051fbeac77751a180e621a819fabe04d11fa",
+      "bytes": 5386,
+      "git_mode": "100755"
+    },
+    "scripts/generate_val001_normative_schemas.py": {
+      "sha256": "b203d1a8bd98a98d5f19afd53452e0f9d0e68612effd3f4a822455f0d4208283",
+      "bytes": 726,
+      "git_mode": "100755"
+    },
+    "scripts/generate_val001_provenance_records.py": {
+      "sha256": "6621dadbcb0dc15f8af8ea4dab4f2b39e641c61da586ddda8b6c4b03b3120ca7",
+      "bytes": 3788,
+      "git_mode": "100755"
+    },
+    "scripts/generate_val001_schema_provenance_freeze.py": {
+      "sha256": "78477b80ef74e883c2e99599794d61f1030558f0381d4286a9fe198097918a68",
+      "bytes": 4858,
+      "git_mode": "100755"
+    },
+    "scripts/generate_val001_successor_consumed_lock.py": {
+      "sha256": "068b318abac9f9962f7548956446893f56ee5e2cbed4adfb06fc04b66256ac4f",
+      "bytes": 3128,
+      "git_mode": "100755"
+    },
     "scripts/lib/openfoam_env.sh": {
       "sha256": "f543914bbf83cc0fb40878d10c36418867e8e4dec696d438dea6144bd4182ae0",
       "bytes": 3064,
@@ -603,6 +688,11 @@
       "bytes": 5476,
       "git_mode": "100755"
     },
+    "scripts/reconcile_val001_normative_administration.py": {
+      "sha256": "ee37486a83923758f2ac0f8aef4eeb1ae2797b919a4bd1f129955f635b9629f9",
+      "bytes": 21304,
+      "git_mode": "100755"
+    },
     "scripts/run_qualification.py": {
       "sha256": "2dc1dc4e65fde24d5119c7f7abf8af54863b1b05372b6f5a8e88df81a597ab04",
       "bytes": 25215,
@@ -611,6 +701,16 @@
     "scripts/run_r1.sh": {
       "sha256": "1e46913d4e146b71b500b3d6b5fa60502659480701b40ed2adc420292b1db225",
       "bytes": 848,
+      "git_mode": "100755"
+    },
+    "scripts/run_val001_comparisons.py": {
+      "sha256": "804d9b9f36170dd1d0a40919ef0285fd9066eeab4fbb96bada71d59b10323265",
+      "bytes": 464,
+      "git_mode": "100755"
+    },
+    "scripts/run_val001_corrected_comparison.py": {
+      "sha256": "a39fafb4b5492ad939137bc3221597572d21d973c0e4a81e444dc434c19fa66f",
+      "bytes": 844,
       "git_mode": "100755"
     },
     "scripts/run_wp02.sh": {
@@ -664,8 +764,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "b1cfcf16e860ecf1b53fb6e9cb3df13d843005010558a6cfcf3637c7fdfaa9b8",
-      "bytes": 28826,
+      "sha256": "161d865ddea9484828a303390dd4eea4cd5885b66e39cdd5fc32ffcc4ecf1c61",
+      "bytes": 30529,
       "git_mode": "100755"
     },
     "scripts/verify_build_provenance.py": {
@@ -708,6 +808,46 @@
       "bytes": 2655,
       "git_mode": "100755"
     },
+    "scripts/verify_val001_administrative_closure.py": {
+      "sha256": "0355185121b898ab7d66b9d7cb5006e13a9f271bb66e8790824b31ee3c76b35d",
+      "bytes": 607,
+      "git_mode": "100755"
+    },
+    "scripts/verify_val001_correction.py": {
+      "sha256": "c17e697a2815318dafdccfbf5a3dc510c06a08957861f4844a5d9aedf6c5fa0a",
+      "bytes": 5399,
+      "git_mode": "100755"
+    },
+    "scripts/verify_val001_deep_schema_coverage.py": {
+      "sha256": "8ec46c24a29303e8cd5d628b394e3c52f62edfcc433f417f33e5691142b221fc",
+      "bytes": 3457,
+      "git_mode": "100755"
+    },
+    "scripts/verify_val001_external_artifacts.py": {
+      "sha256": "6d55fc7bff54558b86bf4a9761044918460655025db1ab2e77efa5c3f4038a34",
+      "bytes": 1920,
+      "git_mode": "100755"
+    },
+    "scripts/verify_val001_governed_inventory.py": {
+      "sha256": "1100e7392a52773b629139e37e765392181f7c439043744e7f2b85e68f1e4cc2",
+      "bytes": 689,
+      "git_mode": "100755"
+    },
+    "scripts/verify_val001_hardening.py": {
+      "sha256": "9a4d17f59121dbea81fe3c22f91de16486da9ae1cceb86b867fbb1caf6556cb4",
+      "bytes": 4116,
+      "git_mode": "100755"
+    },
+    "scripts/verify_val001_invocation_journal.py": {
+      "sha256": "ef9aecec288d73bed6b0f2702ac19d21117fab8da64710b3afc8e49b974c21fa",
+      "bytes": 719,
+      "git_mode": "100755"
+    },
+    "scripts/verify_val001_normative_schemas.py": {
+      "sha256": "10ac398510397e94d79dc37d236ffe77b4fe4af34495d035bbc06c2480ea9994",
+      "bytes": 611,
+      "git_mode": "100755"
+    },
     "scripts/verify_wp02_regression.py": {
       "sha256": "cfe56c67f8c64983993a8ef95a35cb8cbf4be1312eea98aee6819f8fd8721d18",
       "bytes": 3168,
@@ -729,8 +869,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_wp03c_stage0_scaffold.py": {
-      "sha256": "be8170866834c70519d3212a631aac2498d501a382476a48ca11266857fa75ca",
-      "bytes": 31547,
+      "sha256": "ccd2bb435b225d825665f8c23ad7c29b989985cb20d471e9786af32e7ac46404",
+      "bytes": 52791,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
@@ -866,6 +1006,36 @@
     "tests/test_reference_case.py": {
       "sha256": "9647dfc42a133d5dd1da480a2bb2b75a09ca67122e95ceae16a5053708880e20",
       "bytes": 64822,
+      "git_mode": "100644"
+    },
+    "tests/test_val001_administrative_semantics.py": {
+      "sha256": "538aeb760e89fa248b09a31980a2358dcce63594d43e7b01d3580ec115387e7c",
+      "bytes": 6243,
+      "git_mode": "100644"
+    },
+    "tests/test_val001_completion.py": {
+      "sha256": "ae13fda9987d33a72578c691b92d696620f11e8cbb98eb3e0c1eb70a4fb6a480",
+      "bytes": 7573,
+      "git_mode": "100644"
+    },
+    "tests/test_val001_deep_schema.py": {
+      "sha256": "0d9ecb5f01b5c8cddb53c9e5d1f505fcb2806a2d45cbcff467cbddd137084d53",
+      "bytes": 4387,
+      "git_mode": "100644"
+    },
+    "tests/test_val001_explicit_semantics_and_root.py": {
+      "sha256": "0233a4f2f13df34869271a9c56805aa6d52eca06ca5b97f7ccea2b5350585f1b",
+      "bytes": 5602,
+      "git_mode": "100644"
+    },
+    "tests/test_val001_framework.py": {
+      "sha256": "e99c7cffa1fd3b7f69684c30550e9591dff17846fb8cdd49a4cf451f453b6d39",
+      "bytes": 10195,
+      "git_mode": "100644"
+    },
+    "tests/test_val001_normative_mutations.py": {
+      "sha256": "5af33a6ee41ea5307f3857893d92d48ea464fde54f7f8a932047be7a21a7f9f3",
+      "bytes": 3058,
       "git_mode": "100644"
     },
     "tests/test_wp02_002_machine_coupling.py": {

@@ -1,0 +1,5 @@
+{
+  "schema_version": "espresso.val001.historical_result_reexpressions.v1", "task": "VAL-001", "new_score_bearing_comparison": false,
+  "records": ["WP01R_R1_WASZKIEWICZ_9BAR", "WP02_001_WASZKIEWICZ_9BAR", "WP02_001_WASZKIEWICZ_8BAR_NO_RETUNING", "WP_0_3B_MORONEY_VERIFICATION", "WP_0_3B_MATIAS_VERIFICATION", "WP_0_3B_LIANG_VERIFICATION"],
+  "disposition": "HISTORICAL_GOVERNED_RESULT_REEXPRESSED_NO_NEW_SCORE", "physical_validation": "NOT_ESTABLISHED"
+}

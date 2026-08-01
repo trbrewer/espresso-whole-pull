@@ -1,0 +1,25 @@
+{
+  "schema_version": "espresso.val001.postresult_execution_lock.v1",
+  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-1",
+  "task": "VAL-001",
+  "issue": 37,
+  "pull_request": 38,
+  "branch": "validation/val-001-source-adapters",
+  "authority_status": "CONSUMED",
+  "remaining_real_data_comparison_invocations": 0,
+  "remaining_governed_result_producing_invocations": 0,
+  "alternate_invocation_id_allowed": false,
+  "alternate_ledger_allowed": false,
+  "alternate_authority_allowed": false,
+  "alternate_activation_allowed": false,
+  "further_retry_authorized": false,
+  "bindings": [
+    {"path": "validation/val001/contracts/VAL_001_POSTRESULT_FRAMEWORK_HARDENING_FREEZE.json", "sha256": "c04bc05b00360afb67a699117601869fc283a0fdcbe74a48237964fc067179b2"},
+    {"path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json", "sha256": "8d0608507d3567f63815b884b3a7a0429108b4359371f8837ca8c5e3654df3f4"},
+    {"path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_INVOCATION_AUTHORITY.json", "sha256": "4e0e7fffeb0c7f100ba449341edc7f058aa51f57b4560a0cc53e1051a6ce9758"},
+    {"path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_ARTIFACT_REUSE_ACTIVATION.json", "sha256": "03e0ec4dac9366ed80f55d7121cc317d322377de63e64bc6502a09b3889a9295"},
+    {"path": "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json", "sha256": "7b72580035b44d47e506c1bc4d5cdbe29715be76f4752d6dcc949de098e56369"},
+    {"path": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json", "sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"}
+  ],
+  "claim_boundaries": {"physical_validation": "NOT_ESTABLISHED", "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"}
+}

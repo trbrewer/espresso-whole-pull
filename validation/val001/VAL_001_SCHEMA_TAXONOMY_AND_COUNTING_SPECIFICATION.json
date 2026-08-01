@@ -1,0 +1,300 @@
+{
+  "count_formulas": {
+    "all_counts": "computed from registered entries",
+    "governing_schema_family_count": "count(unique schema_id values referenced by immutable governed-record assignments)",
+    "prohibited_arithmetic": "NO_CONSTANT_OFFSETS_OR_PLUS_TWO"
+  },
+  "counts": {
+    "administrative_meta_schema_families": 14,
+    "current_normative_specifications": 68,
+    "current_referenced_specifications": 68,
+    "current_unreferenced_specifications": 0,
+    "governing_schema_families": 68,
+    "schema_assignments": [
+      {
+        "record_count": 1,
+        "schema_id": "activation.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "activation.v2"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "administrative_closure_freeze.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "administrative_closure_specification.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "amendment_invalidation.v3"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "authority.v4"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "authority.v5"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "authority.v6"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "campaign_provenance.v7"
+      },
+      {
+        "record_count": 2,
+        "schema_id": "canonical_consumed_lock.v2"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "correction.v8"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "correction.v9"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "correction_plan.v1"
+      },
+      {
+        "record_count": 2,
+        "schema_id": "deep_invocation_event_families.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "deep_schema_coverage_matrix.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.explicit_mutation_inventory.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.explicit_schema_specification_registry.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.explicit_semantics_completion_freeze.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.explicit_semantics_root_pinning_plan.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.external_candidate_root_protocol.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.semantic_profile_registry.v2"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "evidence_or_record_inventory.v10"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "external_artifact_manifest.v11"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "freeze.v12"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "freeze.v13"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "freeze.v14"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "freeze.v15"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v16"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v17"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v18"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v19"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v20"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v21"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v22"
+      },
+      {
+        "record_count": 6,
+        "schema_id": "governance_record.v23"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v24"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v25"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v26"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v27"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v28"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v30"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v31"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governed_record_inventory.v3"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governed_schema_registry.v3"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "immutable_profile_assignment_registry.v1"
+      },
+      {
+        "record_count": 31,
+        "schema_id": "json_schema_document.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "ledger.v32"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "mechanism_discrimination.v33"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "mutation_execution_coverage.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "normative_schema_contract_registry.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "ranked_requests.v34"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v35"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v36"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v37"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v38"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v39"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v40"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v41"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "schema_provenance_completion_freeze.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "schema_provenance_transition_matrix.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "schema_taxonomy_counting.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "sensitivity_identifiability.v42"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_access_log.v43"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v44"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v45"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v46"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v47"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v48"
+      }
+    ],
+    "schema_documents": 25
+  },
+  "definitions": {
+    "administrative_meta_schema_family": "A referenced governing family for schema documents, invocation events, inventories, registries, or administration.",
+    "governing_schema_family": "A unique schema_id referenced by one or more governed record registrations.",
+    "normative_contract_count": "The number of current checked-in normative contracts.",
+    "normative_schema_specification": "A checked-in normative contract from which a governing schema is produced.",
+    "schema_document_count": "The number of governed records whose record class is SCHEMA.",
+    "semantic_profile_count": "The number of executable semantic profiles; it is not a schema-family count."
+  },
+  "record_id": "VAL001-SCHEMA-TAXONOMY-COUNTING-1",
+  "schema_version": "espresso.val001.schema_taxonomy_counting.v1",
+  "val001_schema_spec_015_disposition": "OBSOLETE_REMOVED"
+}

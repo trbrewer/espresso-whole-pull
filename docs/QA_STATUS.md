@@ -40,8 +40,8 @@ and source/holdout-fit counts remained zero.
 
 ## Current repository checks
 
-- Python tests: 230/230 PASS at the merged WP03-001 baseline
-- active static gates: 34/34 PASS
+- Python and active-static-gate totals for the open candidate are generated in
+  `PACKAGE_QA_STATUS.json`; the merged WP03-001 baseline remains 230 tests.
 - source manifest: recorded in `PACKAGE_QA_STATUS.json` and
   `SOURCE_PACKAGE_MANIFEST.json`
 - historical v0.1.4 integrity: PASS
@@ -80,3 +80,50 @@ authorizes no experiment, protected scoring or holdout opening.
 Current test and source-manifest identities are generated in
 `PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
 validation remains `NOT_ESTABLISHED`.
+
+## Open VAL-001 second correction
+
+The original result remains audit-retained with prospective governance
+invalidated. The first corrected invocation remains failed and invalidated
+after score exposure. A separately authorized one-token Python Boolean repair
+passed synthetic end-to-end testing; one replacement invocation then retained
+the canonical V2 bundle with SHA-256
+`7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5`.
+The second cycle performed zero new OpenFOAM builds and executions, and tests
+perform zero real-data comparison invocations. The result is post-observation,
+not blind, not independent, and not physical validation. PR #38 remains open
+pending independent re-adjudication.
+
+## VAL-001 post-result framework hardening
+
+The candidate now has canonical consumed-authority enforcement, deep retained
+V2 and invocation-ledger schemas, a durable append-only event journal,
+synthetic transaction/concurrency tests, and a versioned raw-string selected-
+row identity. The production runner accepts no alternate governed identities.
+This cycle performed zero governed comparisons and zero OpenFOAM work.
+
+The deep-schema completion cycle provides exhaustive governed-record inventory coverage, removes prefix
+legacy catch-alls, validates immutable records by exact hash plus nested
+structure signature, and verifies byte-identical journal-to-summary
+regeneration. The current normative remediation directly enumerates 105
+records through 68 referenced schema families; sidecar-primary, generic
+catch-all, and enumeration-exclusion counts are zero. All mutation
+testing remains synthetic; V2 and the invocation journal are unchanged.
+## VAL-001 schema provenance and semantic enforcement
+
+- Governed records: 105/105 directly enumerated and validated.
+- Normative contracts/schema families: 68/68 current and referenced; zero
+  inferred, copied-inferred, signature-selected, filename-selected, or unused.
+- Mutation inventory: 340 declared and 340 executed; zero missing, unexpected,
+  duplicate, or placeholder cases.
+- Schema documents: recursive AST and keyword-value validation enabled.
+- Semantic escalation: historical, campaign, identifiability, execution,
+  fitting, configuration, claim, dependency, and consumed-state boundaries
+  fail closed under synthetic mutation.
+- External artifacts: seven prior OpenFOAM files restored read-only and
+  hash-verified; zero builds and zero executions in this cycle.
+- Physical validation: not established.
+VAL-001 explicit-semantics QA verifies zero instance-derived governing schemas,
+complete executable-profile dispatch, and externally pinned candidate roots.
+All cases are synthetic; governed comparison and OpenFOAM execution counts are
+zero for this correction.

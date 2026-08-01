@@ -8,6 +8,12 @@ This tree is the historical v0.1.4 package view. Current navigation:
 - [Controlling strategy](strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md)
 - [Concise roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)
 - [Post-WP03 validation plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md)
+- [VAL-001 source adapters and comparisons](validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md)
+
+VAL-001 framework code is under `tools/validation/val001/`, governed records
+are under `validation/val001/`. The original analyzer is retained for audit;
+`scripts/run_val001_corrected_comparison.py` is the corrected governed runner,
+and ordinary tests use synthetic fixtures only.
 
 ```text
 .
@@ -96,3 +102,27 @@ This tree is the historical v0.1.4 package view. Current navigation:
 ```
 
 Generated case dictionaries, meshes, time directories, processor directories, logs, reports, traces, preflight records, qualification runs, and build products are excluded from the source-package manifest and removed by `./Allclean`.
+
+VAL-001 post-result controls include `tools/validation/val001/invocation.py`,
+`source_identity.py`, the governed schema registry, the invocation event
+journal, the post-result execution lock, the hardening freeze, and standalone
+historical re-expressions under `validation/val001/results/historical/`.
+The completion layer adds
+`validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json`, the deterministic
+`VAL_001_INVOCATION_SUMMARY_V2.json`, and non-writing inventory and journal
+verification scripts under `scripts/`.
+The final schema taxonomy is recorded in
+`validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json`; generated closed
+families live in `validation/val001/schemas/deep_record_families.schema.json`
+and are checked by `scripts/verify_val001_deep_schema_coverage.py`.
+VAL-001 administrative closure adds
+explicit schema specifications, an executable semantic-profile registry, a
+machine-readable mutation inventory, and an external candidate-root protocol.
+`VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json`, the explicit semantic
+profile registry, administrative freeze and canonical-lock schemas,
+`tools/validation/val001/administrative.py`, and non-writing administrative
+and external-artifact verifiers. Full OpenFOAM products remain outside Git.
+The successor provenance layer adds the normative contract registry,
+schema-provenance transition matrix, immutable profile-assignment registry,
+schema-taxonomy specification, mutation execution coverage, successor freeze,
+and historical V4 consumed lock under `validation/val001/`.

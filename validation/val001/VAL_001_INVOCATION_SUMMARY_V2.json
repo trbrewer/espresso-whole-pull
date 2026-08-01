@@ -1,0 +1,32 @@
+{
+  "claim_boundaries": {
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "consumed_authorities": [
+    "VAL001-SECOND-CORRECTION-INVOCATION-AUTHORITY-1"
+  ],
+  "counts": {
+    "completed_invocations": 1,
+    "exact_reconstructed_invocations": 2,
+    "failed_invocations": 1,
+    "governed_results": 1,
+    "historical_minimum_known": 3,
+    "minimum_known_cumulative_total": 5,
+    "test_or_ci_invocations": 0
+  },
+  "event_ids": [
+    "EVT-0001",
+    "EVT-0002",
+    "EVT-0003",
+    "EVT-0004"
+  ],
+  "exact_precorrection_local_count": "NOT_RECONSTRUCTABLE_FROM_COMMITTED_EVIDENCE",
+  "output_hashes": [
+    "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"
+  ],
+  "record_id": "VAL001-INVOCATION-SUMMARY-V2",
+  "remaining_real_data_invocations": 0,
+  "schema_version": "espresso.val001.invocation_summary.v2",
+  "source_of_truth": "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl"
+}

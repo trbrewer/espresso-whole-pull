@@ -1,5 +1,15 @@
 # Development History
 
+- VAL-001 (open candidate): `NO_GOVERNING_PHYSICS_CHANGE` source-adapter
+  framework and two descriptive source-linked pressure-flow comparisons. No
+  solver/configuration change, fit, protected access, holdout score, or
+  physical-validation claim. Its original arithmetic is retained with
+  prospective governance invalidated; its first corrected invocation failed
+  after score exposure. A separately authorized one-token repair and single
+  replacement invocation produced a post-observation, non-independent V2
+  reproduction using three previously completed OpenFOAM artifacts without
+  rebuild or rerun. PR #38 remains open for independent re-adjudication.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.
@@ -63,3 +73,49 @@ tranche. The program will now build source-specific adapters, compare existing
 mechanisms with admissible real evidence, quantify uncertainty and
 identifiability, decompose residuals, and select one next physics increment
 from information value rather than implementation convenience.
+
+- VAL-001 final hardening (open PR #38): preserved all adverse history and V2
+  bytes; corrected source provenance; added deep critical schemas, canonical
+  consumed-state enforcement, atomic synthetic transaction machinery, an
+  append-only invocation journal, reproducible selected-row identity, truthful
+  policy/evaluation separation, standalone historical re-expressions, and
+  OpenFOAM qualification provenance. New comparisons and OpenFOAM runs: zero.
+
+- VAL-001 hardening completion: added the deterministic governed-record
+  inventory and explicit registry projection, completed synthetic atomic-write
+  and journal failure tests, introduced strict journal-to-summary derivation,
+  froze the completed implementation, and bound a versioned consumed lock.
+  No retained result, scientific method, source, configuration, or solver was
+  changed.
+
+- VAL-001 deep-schema completion: classified governed records by actual nested
+  shape and purpose, added 45 closed schema families plus semantic claim and
+  authority invariants, replaced all 60 primary sidecar treatments with direct
+  immutable-historical deep validation, and added synthetic family mutation
+  tests. No solver, comparison, result, or invocation event changed.
+## 2026-07-31 — VAL-001 administrative closure and semantic enforcement
+
+A final additive correction made explicit schema specifications and executable
+semantic-profile dispatch authoritative and required externally supplied Git
+head/tree identities for candidate closure. It added stale-root, graph,
+schema-document, and semantic-escalation mutations without changing scientific
+results, invocation accounting, OpenFOAM artifacts, or governing physics.
+
+PR #38 received an additive zero-exclusion administrative binding graph,
+recursive schema-document validation, explicit semantic profiles and
+escalation mutations, a full-commit/tree successor consumed lock, and a
+stable read-only copy of the already-created OpenFOAM evidence. The original
+result, failed invocation, V2, journal, and derived summary were not changed.
+No comparison, OpenFOAM execution, fit, protected access, or scientific
+method change occurred.
+
+## 2026-08-01 — VAL-001 normative schema provenance correction
+
+An additive correction replaced relabeled inferred schema sources with 68
+normative class/version/record contracts, documented all 48 prior-family
+transitions, anchored semantic profiles in an immutable path/ID registry, and
+closed the historical-adapter and EXP campaign bypasses. A 340-entry mutation
+inventory now executes one-to-one, and schema-family counts come only from the
+68 unique schema IDs referenced by 105 governed registrations. No solver,
+comparison, OpenFOAM, fitting, protected-data, result, journal, or claim-boundary
+change occurred.

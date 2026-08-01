@@ -1,0 +1,92 @@
+{
+  "adapter_id": "waszkiewicz2025.pressure_flow.source_sweep.v1",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_boundary": {
+    "physical_validation": "NOT_ESTABLISHED",
+    "result_class": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON",
+    "whole_solver_validation": "NOT_ESTABLISHED"
+  },
+  "comparisons": [
+    {
+      "calibration_status": "PREVIOUSLY_FITTED_NO_VAL001_RETUNING",
+      "comparison_id": "VAL001-CMP-001-universal-pressure-flow",
+      "evidence_role": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON",
+      "holdout_status": "NOT_HOLDOUT",
+      "metrics": {
+        "mae_g_per_s": 0.20563131369433885,
+        "maximum_absolute_error_g_per_s": 0.47206795511572075,
+        "mean_bias_g_per_s": 0.0060561883560362965,
+        "n": 10,
+        "observed_range_g_per_s": [
+          0.108605,
+          2.057772
+        ],
+        "r_squared_descriptive": 0.858266151908603,
+        "residuals_g_per_s": [
+          0.31469531693506203,
+          0.3470111656932021,
+          0.218473778998175,
+          -0.20702286776026058,
+          -0.47206795511572075,
+          -0.21341029605923612,
+          -0.10537450775629531,
+          0.0016635584611408571,
+          0.05739836007897381,
+          0.1191953300853219
+        ],
+        "rmse_g_per_s": 0.24638179985112704,
+        "uncertainty_normalized_metrics": "UNAVAILABLE",
+        "uncertainty_status": "SOURCE_UNCERTAINTY_NOT_REPORTED"
+      },
+      "threshold": null
+    },
+    {
+      "calibration_status": "PREVIOUSLY_MATCHED_AT_9_BAR_NO_VAL001_RETUNING",
+      "comparison_id": "VAL001-CMP-002-finite-porosity-pressure-flow",
+      "evidence_role": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON",
+      "holdout_status": "NOT_HOLDOUT",
+      "metrics": {
+        "mae_g_per_s": 0.20551618312556222,
+        "maximum_absolute_error_g_per_s": 0.4837381413677808,
+        "mean_bias_g_per_s": -0.002008407772178039,
+        "n": 10,
+        "observed_range_g_per_s": [
+          0.108605,
+          2.057772
+        ],
+        "r_squared_descriptive": 0.8582226546336489,
+        "residuals_g_per_s": [
+          0.3056898457437804,
+          0.33327895578864486,
+          0.20319213389915203,
+          -0.22109749329140183,
+          -0.4837381413677808,
+          -0.22151143548913432,
+          -0.11005687980873335,
+          -0.0012190045316509135,
+          0.056293895006055195,
+          0.11908404632928837
+        ],
+        "rmse_g_per_s": 0.24641960350537478,
+        "uncertainty_normalized_metrics": "UNAVAILABLE",
+        "uncertainty_status": "SOURCE_UNCERTAINTY_NOT_REPORTED"
+      },
+      "threshold": null
+    }
+  ],
+  "contract_id": "VAL-001-PREEXECUTION-1",
+  "decision": "ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS",
+  "execution_counts": {
+    "completed_score_bearing_invocations": 1,
+    "fits_or_retunes": 0,
+    "holdout_scores": 0,
+    "openfoam": 0,
+    "protected_access": 0
+  },
+  "input": {
+    "path": "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv",
+    "sha256": "0a789ed20039ff5ea21b7e1773f2f62f74a4122775e2cb3fa12ff6c24c53a831"
+  },
+  "schema_version": "espresso.val001.comparison_result.v1",
+  "task": "VAL-001"
+}

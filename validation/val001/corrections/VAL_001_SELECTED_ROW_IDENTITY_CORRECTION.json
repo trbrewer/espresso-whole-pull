@@ -1,0 +1,11 @@
+{
+  "schema_version": "espresso.val001.selected_row_identity_correction.v1",
+  "record_id": "VAL001-SELECTED-ROW-IDENTITY-CORRECTION-1",
+  "legacy_hash": "d2d5e295ffae3ff16403e268ccfd75c34b073ab2456939f6c509e33f7fca9634",
+  "legacy_status": "LEGACY_RECORDED_IDENTITY_ALGORITHM_UNSPECIFIED",
+  "v2_hash": "37dd7ff3c1b088c0cd8558154d2af2a2ca6b6e98a11aebda78dfdb9015877c0b",
+  "source_bytes_changed": false,
+  "selected_rows_changed": false,
+  "comparison_computed": false,
+  "disposition": "TRANSPARENT_V2_RAW_STRING_IDENTITY_GOVERNS_FUTURE_VERIFICATION"
+}

@@ -1,0 +1,873 @@
+{
+  "entries": [
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.administrative_closure_specification.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "0954fb8f049dff9085ef57fbc9b9e711fcbfe2eef06ed14a543917a8b97b58e7",
+      "new_governing_schema_id": "administrative_closure_specification.v1",
+      "new_governing_schema_sha256": "9b62047e97b917facb47bc00de7d7a6f0f310e7650bc13d38ea510588f0e2287",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-001",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-001",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-001",
+      "previous_schema_sha256": "fe53b3d45a87e2363c719e8bf994a71f829be2489d131a928dd449ba93a9756f",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.calibration_comparison_ledger.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "deec6c523a7d152add88710d741ab90febf5df967d78c97175da3bb42986acc4",
+      "new_governing_schema_id": "ledger.v32",
+      "new_governing_schema_sha256": "c079b30bed69d5878c06fd9ef1aaae65d2b3499e23337497e4c66385202d418d",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-002",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-002",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-002",
+      "previous_schema_sha256": "91e4cd906dc614210eaaa75d324eed0e5e1b4eb845d95646dd517adfc0f3c3db",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.campaign_provenance.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "1abfcd0c182d5eb7d1ac3914779230b1e4cecc669faebc8745669cb848997916",
+      "new_governing_schema_id": "campaign_provenance.v7",
+      "new_governing_schema_sha256": "a93f0c16effd0d1729a0b725f8b690f63d20cb0d8f7fa6895b819136bf740c23",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-003",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-003",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-003",
+      "previous_schema_sha256": "8b0d64080431bb161cb68f6e54b2f8e0b13a452c573c76796a2a3014ce82227f",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CAMPAIGN-PLANNING"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.deep_schema_coverage_matrix.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "6a769cbb67014eec6c3ceef6f14727b04576a6cdd24d4a48b94e8daa172bfc14",
+      "new_governing_schema_id": "deep_schema_coverage_matrix.v1",
+      "new_governing_schema_sha256": "f7542b55a5ec1328610e495e5de07081a73830cf2c7828eb7f4145f4ecb33a0d",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-004",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-004",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-004",
+      "previous_schema_sha256": "3a2725fd30ffee5d0b74d4c8756fdd51b08f542f18685c55267f888780ef7789",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.evidence_rights_inventory.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "cd3838758801eabedc4ab4ba665a5ee4c4d903aa96d92c2e483ebcf67e157c39",
+      "new_governing_schema_id": "evidence_or_record_inventory.v10",
+      "new_governing_schema_sha256": "b582f869053c5a9a1471a9af1ec99ae1fd3119bc67d3adab0d77925e40e78da1",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-005",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-005",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-005",
+      "previous_schema_sha256": "1cb7df47d5c3df6b6b1da4065b6ce0cbdce28dcc2a6ed6c7fdcd6573cb6c36ab",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-RIGHTS-ACCESS"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.external_artifact_manifest.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "7b56866a7025a751d680467056a27078984dcc0aa2c1ba852dc30e7d32f9e705",
+      "new_governing_schema_id": "external_artifact_manifest.v11",
+      "new_governing_schema_sha256": "ca218bffb2094ffabca925dd8efab924809bcec33292ca8e378354ad737283f2",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-006",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-006",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-006",
+      "previous_schema_sha256": "120ce7926a773f3050e57d5a1eab5997d58e506f0a10503466edb7bca55410cd",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-OPENFOAM-QUALIFICATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.governed_record_inventory.v3"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "0bfa65823d4c287f012fcd702e0e38110940bae2218ba3f29e31abd12217f12c",
+      "new_governing_schema_id": "governed_record_inventory.v3",
+      "new_governing_schema_sha256": "3f3558fbaf8beba0cc71c62f0838efcea30d3653ccea5b1f65cbbcc7759c88f4",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-007",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-007",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-007",
+      "previous_schema_sha256": "a9c8150f73d7bfa1801b4e13e7cc6aa58271d44eb25b18ae24d52b0c463ac30d",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.governed_schema_registry.v3"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "aa1ea75da07da5d180e14d8dd6f2ef6eb85053d5bf24cd69d9da1b63175f2c65",
+      "new_governing_schema_id": "governed_schema_registry.v3",
+      "new_governing_schema_sha256": "6f3557a7ba5488beb17d37597774cd0cc190a25fdb20bd94211a00051273b368",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-008",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-008",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-008",
+      "previous_schema_sha256": "b48146d34d6c36fe243165678a77006a7a1929dfcb7956a2decb85855bb220c6",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.historical_adapters.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "ae71bcafe6cf914783e78b8d137d642e93df22aedda8b68d38401709424d044f",
+      "new_governing_schema_id": "source_adapter.v47",
+      "new_governing_schema_sha256": "ae79a524938f19300cb1580ed0ac565144916a4094d02c241a38f984de79e423",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-009",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-009",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-009",
+      "previous_schema_sha256": "965046824a444548d15dc89662ec275ebfb02997cbb2189e68e33b480f9dc33e",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.invocation_ledger.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "db15738bb22442c9dbb69c4dac22194dac3dac49f9b3b87e2c653d2949e1801d",
+      "new_governing_schema_id": "governance_record.v16",
+      "new_governing_schema_sha256": "5ea4a201214b96b26ea12aba98548b81b0c4cf72580cac9c6a2e7a0cbd84c5b8",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-010",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-010",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-010",
+      "previous_schema_sha256": "688dbf6e5e82605c1cb05e3ecc427546d6067d9851336acd3fd7e4b5285059e3",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:JSONL_V3"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "519a98d576fbbdacce5c9446d7877f6d7ad89859e15d11c25d7073b46ed7a146",
+      "new_governing_schema_id": "deep_invocation_event_families.v1",
+      "new_governing_schema_sha256": "bd6da448baf630d9413344f155f7256fa36ba35603279d92ff8aa0544b7c9b5b",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-011",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-011",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-011",
+      "previous_schema_sha256": "6b4038a429fed796b25b4c5db1c88c31b6c4a1325b65aef5cdfb65aea81c65db",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.invocation_summary.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "10a05e9d235d9fd13c0a5adbac5aaffb9c2eaf40ca405db611a97b3aedf7332b",
+      "new_governing_schema_id": "governance_record.v30",
+      "new_governing_schema_sha256": "54764e036a44442ee4e274193618e2cd91230e932aa449fa15916598ed3dbf94",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-012",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-012",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-012",
+      "previous_schema_sha256": "16c5a09567097352f7f9b02e99c030aa925a3bbf4208da722799486bb62a68e8",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.mechanism_discrimination_matrix.v3"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "2bde5b68933caa12dd67c7e0ba6525ada1949c9a633f980d2defc2924b97e903",
+      "new_governing_schema_id": "mechanism_discrimination.v33",
+      "new_governing_schema_sha256": "8460b65729c85fc01930bd6a5dc2073dc4611c2f9ffd3e8b270cbaf56ba52831",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-013",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-013",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-013",
+      "previous_schema_sha256": "c2dc5bf6035a505f3f7a0497bc06dd97cb88a4dbfde399ed36b91aebceecda82",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.ranked_data_requests.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "104a0e303cd9620cdab5deae460f365f56f6ad1e924b9ade0c7dbb3e0d06802b",
+      "new_governing_schema_id": "ranked_requests.v34",
+      "new_governing_schema_sha256": "ccd9846ef1db6113d2d1304ab25ce5f98bd4336916720f3be37dd1561470bb2e",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-014",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-014",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-014",
+      "previous_schema_sha256": "ba370b62539cb9d4e8b0aff90c01dc0fb23bdfa2f6ea6a4d19f88e6d2b54183c",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.source_access_log.v3"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "8dca43805d3e3a65663ebb19002716c688ae8f71a2e7b97943846581158d5ba9",
+      "new_governing_schema_id": "source_access_log.v43",
+      "new_governing_schema_sha256": "1d4450fe4a283d66c2ee7fbe7b7ee1b9319b2addaca6d216a618c2e0e88f0704",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-016",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-015",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-016",
+      "previous_schema_sha256": "589cddd38ab335c7eeb5765a88968572bc83882e59cdd075f767bddb77f5e79a",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-RIGHTS-ACCESS"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.source_adapter.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "cec341d336939fe73affed7cfded7558cea7fca3ff134e41d72a1c63fd24b93c",
+      "new_governing_schema_id": "source_adapter.v44",
+      "new_governing_schema_sha256": "976a00b924ca9bb43e440bfc7f33804ea978af2d25cdb6a1260cff811482e26a",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-017",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-016",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-017",
+      "previous_schema_sha256": "04fe556eb7f306bb999b7add21390236bb438cbc0afa70ea08ac4b8b09e60bc9",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-EVIDENCE-GAP"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.source_adapter.v3"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "1fa9a2c3fdf36b071ba871fcd064aee9360b56afd89774d6014d8cf3e1b0e4ed",
+      "new_governing_schema_id": "source_adapter.v45",
+      "new_governing_schema_sha256": "bebea265f30308cd307745d69ab3742119adfa982c9ad677fd255fb5759f2287",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-018",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-017",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-018",
+      "previous_schema_sha256": "e127cd5590f04873acd15a6ff8f1b7ddd30808f202005842934e7f563c67117d",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-ADAPTER"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.source_adapter.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "8761916c89e25de9b916c089f9ca9c044b1079bd015996cceb42962b1a51814b",
+      "new_governing_schema_id": "source_adapter.v46",
+      "new_governing_schema_sha256": "801537d4aa0619428705d9437a3e891449dc46aa96ce63faaff693944f4fb1a4",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-019",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-018",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-019",
+      "previous_schema_sha256": "fba81b9540f2b3cbe8842ff1841e88d030969eb422284322a1160e95c720d8b1",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.amendment_invalidation.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "3eb214e85ce6ef08adbd3c50f15c6b96098b6d8f54375cbd9bf08701aada2cad",
+      "new_governing_schema_id": "governance_record.v22",
+      "new_governing_schema_sha256": "22f413fe9e075dbfec44c4aaf7536cf596741711209be7ecfbbfaed3ebab8d53",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-020",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-019",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-020",
+      "previous_schema_sha256": "e16d9d6ca025b46bab7894ee5e2411107df48794b3fa7ba50bc6bf68f0dcf866",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.preexecution_amendment.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "add7345540a8becf5e7b1b8df933acd3f8f7036498c4c44208d06aea9c06ed77",
+      "new_governing_schema_id": "amendment_invalidation.v3",
+      "new_governing_schema_sha256": "498be1a263b3508a9094bff68b7ccd5e21b9ec7b332d5cf40e25e2ae621be286",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-021",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-020",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-021",
+      "previous_schema_sha256": "2dddef05d37630631e4e6b68335ee35dc5ed2405c571ab545ff9a7fc857ffab4",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.administrative_closure_freeze.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "cabd4af74359f7e7044cc4a36c5fdf75a9eae3d0393b921cbdc107814081691c",
+      "new_governing_schema_id": "administrative_closure_freeze.v1",
+      "new_governing_schema_sha256": "d34ee9c8dd703b31fe6d1f2ab72dc3b17bcfdd4919a469e9e71e5cc3362f5b6c",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-022",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-021",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-022",
+      "previous_schema_sha256": "929357440835c4c7e05f2ae972bf1d913fe25fcc792c09fa438d8e15fcce7899",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.execution_activation.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "0035a72fc3fa13b0065d3e0fa5880a3a58899e294c712eb3a23234b373e68619",
+      "new_governing_schema_id": "activation.v1",
+      "new_governing_schema_sha256": "cec65819bcd6093aa4907436d59cafe74d1e526bd9cec799b188186a4ba12cf9",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-023",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-022",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-023",
+      "previous_schema_sha256": "0b7894fb3df618b3fa40c3b4ebaaca5955194e3ed4f9f684823999a5a2eec6eb",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.corrected_freeze.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "178ee1ca9058c259b3940f88f250b2dace5b3d366a81389ae47988d275ba59d0",
+      "new_governing_schema_id": "freeze.v14",
+      "new_governing_schema_sha256": "222281644d36e4f7c1d408af7b171887f99a89002acdee1527668d0c66f74d46",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-024",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-023",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-024",
+      "previous_schema_sha256": "e7bdd15ec5ba33987ac35fa1f392a8dd4877f0f729cb702b91ce8a8f435034c6",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.preexecution_authority.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "775c91bfad9e3bab2f34f6d57e0e2057c18bce48f46a2819aa7ee00d499e6b14",
+      "new_governing_schema_id": "authority.v4",
+      "new_governing_schema_sha256": "4915d5255f76e5c47cce55287877e891e7df995d42f952b5fe80e1cef9aadc3f",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-025",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-024",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-025",
+      "previous_schema_sha256": "66fd2571df2963ff7058c37090ee93ebfb991f5a0d4ad0230c87f9deb21acba3",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.comparison_run.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "690f5b7016094f5a1562b3bc27d3a240ac5ee9cafcad3a2e18a94cc51ea501e9",
+      "new_governing_schema_id": "governance_record.v18",
+      "new_governing_schema_sha256": "3030be15b594f531a01ba6938df7ecc7bbff1e43e186ca626f5228d35fa92d4b",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-026",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-025",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-026",
+      "previous_schema_sha256": "5f40f2cd591cfc60a0e77c805b812ac7d484a676fdb8dac25d63a0a5dfb88bb2",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-COMPARISON-RUN"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.deep_schema_completion_freeze.v3"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "fa51aecd3e8b7ffd80fe902456e8aeb8204760f766dd296599e35c693d90dc37",
+      "new_governing_schema_id": "freeze.v13",
+      "new_governing_schema_sha256": "7f4ad168f514ab4889102ac57c3100f9df13266d3d73fa62b3a7c11ff9ac4651",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-027",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-026",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-027",
+      "previous_schema_sha256": "d01b185ed6cad73e8be73ca8ca630812989316d1775bc6ae9581688e715fb510",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.final_hardening_completion_freeze.v3"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "ba46ece38971678cf6413be4cc6e264bd136138f1621c511175e58524537d1c9",
+      "new_governing_schema_id": "freeze.v12",
+      "new_governing_schema_sha256": "b9fd36e4de2b9777d2617819960f13f5df32a96e9c95aba43afed339715fd901",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-028",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-027",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-028",
+      "previous_schema_sha256": "f35c5598faf7b879c231243fdc2b78286615efc3464cbb36ad7854a700bbbd3a",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.postresult_execution_lock.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "50b0526e6870942f59f44052a59147424f8e4bea11b9515ce40f8432245b0e13",
+      "new_governing_schema_id": "canonical_consumed_lock.v2",
+      "new_governing_schema_sha256": "0cdb3f029603c0a350610605203ba5159fa4baebc286abe56faea7517168f3a7",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-029",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-028",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-029",
+      "previous_schema_sha256": "01df16f59f23cec6941899dae45f0d385af4851522712b641aa8f966fc50b5da",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CONSUMED-LOCK"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.postresult_framework_hardening_freeze.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "6a6f4a5e82ebb7088176e64aa34ab00b86a4fbc3232f49f7f1aa52eb96d6bc34",
+      "new_governing_schema_id": "result_or_reexpression.v40",
+      "new_governing_schema_sha256": "62e397947990d427dbf7752c444ee27adb34670cb4ad54b33966f75068947cba",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-030",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-029",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-030",
+      "previous_schema_sha256": "b533e33d5bbea3d48e5e4eaf48a0dc0fc66686394c6b04ee24b48e093b21a32d",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.comparison_run.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "88beb319b895770220c4c9ad2ff018870e9a7ee31506cdd2ee8b98b1f85de536",
+      "new_governing_schema_id": "governance_record.v17",
+      "new_governing_schema_sha256": "0fcda3b9e4c8e39b833043f80733bd08574c2c73fd6003d7c27a44a4878eefd7",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-031",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-030",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-031",
+      "previous_schema_sha256": "fbe741686805b1b5719a2c756c6befd6f092c97bdc88fba20d38f49f46cee86e",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-COMPARISON-RUN"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.second_correction_artifact_reuse_activation.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "419bd7b25ea3c0b18129ed7239eaf9ea02f1fb17329e89bacc82daa1a82ab2ef",
+      "new_governing_schema_id": "activation.v2",
+      "new_governing_schema_sha256": "28a4b46a84c2f7824a0da58765937c7f9aafcc2e69224c93f5296e3de7252858",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-032",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-031",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-032",
+      "previous_schema_sha256": "65af51aa192fd82c1e302ff6be5ad835c3f5500e2fc886802b641b539c8a364c",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.second_correction_freeze.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "571742e789d37ae8e86b30684bac42197417a2bda6fa12d66fbc7147d523c2ec",
+      "new_governing_schema_id": "freeze.v15",
+      "new_governing_schema_sha256": "e979b7188fc4a8272bcc9307bae7b6a8319245a0ce76efcfb3ebb463961dff84",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-033",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-032",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-033",
+      "previous_schema_sha256": "4007840ea2989914ae57284c47d4139ab10366b2fe7cbe646790fcc15ec8b0b8",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.second_correction_invocation_authority.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "f5ce972609ce7049449d1feeaf2f2ceb5d80e61d268d69978b3eaa0532508b93",
+      "new_governing_schema_id": "authority.v6",
+      "new_governing_schema_sha256": "a7003c4b9f49b8229bdb15286fce0292ebf943abfb51093c049017c7b252739a",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-034",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-033",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-034",
+      "previous_schema_sha256": "897f181a34a40e9cb4c406cd4484908ebac28d09f0cca7f9e3671193e8f9169c",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.selected_row_canonicalization.v2"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "f0366847349bbd5c92e05fc16069bed5e552fc736778e42ca088e09bae4bb258",
+      "new_governing_schema_id": "governance_record.v26",
+      "new_governing_schema_sha256": "962c9a0e236b1e15b0f12bf9249a0a9cc1948088a95f62c6b0111c688f53dcc1",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-035",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-034",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-035",
+      "previous_schema_sha256": "0877415e24051a3b637653c5ee5fb17b063e1017d3388e73e1e7843f515dfb9b",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.sensitivity_identifiability_methods.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "588e16b861fcc98b000a07884fa6d524c3b6defb1427be76eacc9c0d8704290f",
+      "new_governing_schema_id": "sensitivity_identifiability.v42",
+      "new_governing_schema_sha256": "45d9e47645f00c0b470ae629eb72cb890449f6582cd42abf82a792767fa591f2",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-036",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-035",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-036",
+      "previous_schema_sha256": "7ae49e442d8ca4bf98a3c28f32f6581551c826778738a56d6840c12cddef4232",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-SENSITIVITY-PROSPECTIVE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.postresult_execution_lock.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "75074b22ed078d19005352c4a99db7c461e9c97b3ba062cff76f3a4816a62448",
+      "new_governing_schema_id": "result_or_reexpression.v37",
+      "new_governing_schema_sha256": "1777d85b5a5dbc548bfe228292c8e04fb8e4bacc67fad412cb0c5de6df06f72d",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-037",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-036",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-037",
+      "previous_schema_sha256": "b57129bddb0a28a90fc1afca711680931a333382ac4fd0989740e42b4f8294ac",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.postresult_execution_lock.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "03ce01fdc440af5e66227e1a613e81740713846d2b6abf3c04f0d4a68fe829fe",
+      "new_governing_schema_id": "result_or_reexpression.v36",
+      "new_governing_schema_sha256": "4b98fa268c0a63819ef0aa010a9a77d52c031e831f4ef73de0d5a0c8f5c055e7",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-038",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-037",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-038",
+      "previous_schema_sha256": "7d874ad401a1ba886c1f352aceb3e2fdd8074e924427240a12f7218d0b5da92b",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.postresult_execution_lock.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "59867b254463dd7e0e4f23f1cc73be4f30ffddee372ba4ef5f5ef779269b2e6f",
+      "new_governing_schema_id": "result_or_reexpression.v35",
+      "new_governing_schema_sha256": "1029266533aa9ea92c65416ebb72d97d7bbe54087c2fc60fff76ffc9b71bffc9",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-039",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-038",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-039",
+      "previous_schema_sha256": "428ed8286717272b1af2bb63c82e08be8d5aa75164ae90a683680d8aeb84aa20",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.lock_versioning_record.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "04d88b600085e5dd7c69af26e95474dd395f9d8c84a7715f9892d0a2a0e02862",
+      "new_governing_schema_id": "result_or_reexpression.v39",
+      "new_governing_schema_sha256": "265b40d9a4052f60044c84d1f68a4c1c1070f83129e28a8669e9742f55829685",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-040",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-039",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-040",
+      "previous_schema_sha256": "9ee1b443bfe8cf63b5d7af8b277941f4bdff114a49c404be1ea0001fc8b16a87",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.administrative_semantic_remediation_plan.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "2d1b8c78c52a42c3a25f835ec9155f4799b6a7c91922ddf456161334feb7ecf3",
+      "new_governing_schema_id": "governance_record.v21",
+      "new_governing_schema_sha256": "afe728ef219673431bf2207791e5b8f7aae3a4f9364162e8cd8aa1810411b420",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-041",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-040",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-041",
+      "previous_schema_sha256": "36e952b6db695a17188f27fd92ceab3da37c176d39833860966984c19cb7cad8",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.deep_schema_completion_plan.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "53a0a7164d245e81cb8b29706b911d6c714960581f0ecf3a9d36bf691fc423b7",
+      "new_governing_schema_id": "governance_record.v25",
+      "new_governing_schema_sha256": "ad1903e0026d23f6a813be6701e3ab63d5056bc1a01d6c6f3609f88e355e1ba2",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-042",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-041",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-042",
+      "previous_schema_sha256": "a1071a61c6432ba63063e2e79dbebe253b022483d60507c0c8cee5891da1538e",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.final_hardening_plan.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "5238220e9b28fdbc29e6bd4d04d34fc5a6b639982c0e66c2b8d90ecded8821cf",
+      "new_governing_schema_id": "governance_record.v20",
+      "new_governing_schema_sha256": "9e551093faa639deca7b3ddafdb5a4e110c3c3e4503358facd948f1125832ca4",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-043",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-042",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-043",
+      "previous_schema_sha256": "7cc505f8ef694ecfd72e76b08ea2dd733790f2981f651b6936a10f4927cf3532",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.hardening_completion_plan.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "3750b7c66ff67b1addcb72414ce8006b3bf71fee5154bb4b40bfd982c1de0b43",
+      "new_governing_schema_id": "governance_record.v24",
+      "new_governing_schema_sha256": "faa951e3966be3c913841c6eb8c87a26eca42febe025d5f966bb1abc93ae14a4",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-044",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-043",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-044",
+      "previous_schema_sha256": "8ecea2d294682cdee6c2235205aa5037de06c077d37f0a42f57402b436aac342",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.initial_result_invalidation.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "a774f6a434745b5f4cd6d581b7732b184a31ae7bb856bca013286ca510edb48d",
+      "new_governing_schema_id": "result_or_reexpression.v38",
+      "new_governing_schema_sha256": "320536554131851d610242140c11a38240249f1c04a7f447588574cf4742b97c",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-045",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-044",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-045",
+      "previous_schema_sha256": "df956f639e744e4b26793fb90f8fe63d6c40fbb0db350cfbef5de0057505d87d",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.second_correction_defect_authority.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "a879428442c9cd72c1e058f2c8412962fdc16cb707e8d4ff1378c5bfee79f1fc",
+      "new_governing_schema_id": "authority.v5",
+      "new_governing_schema_sha256": "b1096eda5a878457c4f22ee4a86fd2273c274a308e66a7170c83f3dcd4f8d916",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-046",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-045",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-046",
+      "previous_schema_sha256": "0973e7251ccd4e3c34f4fecea9843f5a3a294b7ad8fbfb48b535c0ee946b4cd1",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.selected_row_identity_correction.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "cec25f5c831aedee87c64adb81deb33f7e9a20e77b3709f3faaf944b26760164",
+      "new_governing_schema_id": "correction.v9",
+      "new_governing_schema_sha256": "95e3e31faad1bff399b49c1ae1c5b70659a841a5040d703bf4227469e54ed575",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-047",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-046",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-047",
+      "previous_schema_sha256": "220ffb038bf7feb95b661c6842fcca7f56edd023057a2d29af719243e1f3d1e3",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.v2_interpretation_correction.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "3925cbb355960a815e2faf210710c957d74ee396422ba798950efbb919dc6f25",
+      "new_governing_schema_id": "correction.v8",
+      "new_governing_schema_sha256": "4e25f930242e5ec9e01101a3a9b96ca6447ca0aa08f2807359777502921209d3",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-048",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-047",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-048",
+      "previous_schema_sha256": "e150c62b67323a718d2fcd57931b7fcb265b57096736dadf4d10b133e3cef03e",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    },
+    {
+      "authoritative_source_references": [
+        "workspace-authority:AGENTS.md#VAL-001",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
+        "schema-version:espresso.val001.adapter_provenance_correction.v1"
+      ],
+      "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
+      "new_contract_sha256": "07880c7656887e3baad895a4d46750881b40dd489d265e556a633789aa1e5195",
+      "new_governing_schema_id": "source_adapter.v48",
+      "new_governing_schema_sha256": "de27363c3e17a570e54df381c14170fb19d656bce4f603cd9a5b3652ce32f1cb",
+      "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-049",
+      "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-048",
+      "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-049",
+      "previous_schema_sha256": "c04cca8ca88aa0939eb015930bd0b619181d16a9bd8a1f9bda742e625b5d0f4d",
+      "reviewer_disposition": "NORMATIVE_SOURCE_REPLACED",
+      "schema_bytes_identical": false,
+      "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE"
+    }
+  ],
+  "final_disposition": "ALL_PRIOR_INFERRED_FAMILIES_HAVE_NORMATIVE_TRANSITIONS",
+  "prior_inferred_family_count": 48,
+  "record_id": "VAL001-SCHEMA-PROVENANCE-TRANSITION-MATRIX-1",
+  "schema_version": "espresso.val001.schema_provenance_transition_matrix.v1",
+  "transition_count": 48
+}

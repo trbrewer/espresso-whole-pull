@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "espresso.val001.governance_record.v1", "type": "object",
+  "required": ["schema_version", "record_id", "task", "status", "artifact_bindings", "claim_boundaries"],
+  "properties": {
+    "schema_version": {"enum": ["espresso.val001.preexecution_authority.v1", "espresso.val001.execution_activation.v1", "espresso.val001.invocation_ledger.v1", "espresso.val001.evidence_rights_inventory.v2", "espresso.val001.calibration_comparison_ledger.v2", "espresso.val001.campaign_provenance.v1", "espresso.val001.amendment_invalidation.v1"]},
+    "record_id": {"type": "string", "minLength": 1}, "task": {"const": "VAL-001"}, "status": {"type": "string", "minLength": 1},
+    "artifact_bindings": {"type": "array", "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "[0-9a-f]{64}"}}, "additionalProperties": false}},
+    "claim_boundaries": {"type": "object"}
+  }, "additionalProperties": false
+}

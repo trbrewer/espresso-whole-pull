@@ -1,0 +1,365 @@
+{
+  "$id": "espresso.val001.deep_invocation_event_families.v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "anyOf": [
+    {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "enum": [
+            "HISTORICAL-PRECORRECTION-MINIMUM"
+          ],
+          "type": "string"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "execution_role": {
+          "enum": [
+            "HISTORICAL_SUMMARY"
+          ],
+          "type": "string"
+        },
+        "failure_reason": {
+          "type": "null"
+        },
+        "invalidation_status": {
+          "enum": [
+            "HISTORICAL_COUNT_ONLY"
+          ],
+          "type": "string"
+        },
+        "invocation_id": {
+          "type": "null"
+        },
+        "minimum_known_count": {
+          "type": "integer"
+        },
+        "output_sha256": {
+          "type": "null"
+        },
+        "score_exposed": {
+          "type": "boolean"
+        },
+        "sequence": {
+          "type": "integer"
+        },
+        "source_opened": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "MINIMUM_KNOWN_HISTORY"
+          ],
+          "type": "string"
+        },
+        "test_or_ci": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "authority_id",
+        "event_id",
+        "event_type",
+        "execution_role",
+        "failure_reason",
+        "invalidation_status",
+        "invocation_id",
+        "minimum_known_count",
+        "output_sha256",
+        "score_exposed",
+        "sequence",
+        "source_opened",
+        "status",
+        "test_or_ci"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "enum": [
+            "VAL001-SECOND-CORRECTION-INVOCATION-AUTHORITY-1"
+          ],
+          "type": "string"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "execution_role": {
+          "enum": [
+            "AUTHORITY_CONTROL",
+            "GOVERNED_RESULT_PRODUCING_INVOCATION"
+          ],
+          "type": "string"
+        },
+        "failure_reason": {
+          "type": "null"
+        },
+        "invalidation_status": {
+          "enum": [
+            "VALID"
+          ],
+          "type": "string"
+        },
+        "invocation_id": {
+          "type": "string"
+        },
+        "minimum_known_count": {
+          "type": "null"
+        },
+        "output_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "score_exposed": {
+          "type": "boolean"
+        },
+        "sequence": {
+          "type": "integer"
+        },
+        "source_opened": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "AUTHORITY_CONSUMED",
+            "COMPLETED"
+          ],
+          "type": "string"
+        },
+        "test_or_ci": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "authority_id",
+        "event_id",
+        "event_type",
+        "execution_role",
+        "failure_reason",
+        "invalidation_status",
+        "invocation_id",
+        "minimum_known_count",
+        "output_sha256",
+        "score_exposed",
+        "sequence",
+        "source_opened",
+        "status",
+        "test_or_ci"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "enum": [
+            "VAL001-FIRST-CORRECTED-AUTHORITY"
+          ],
+          "type": "string"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "execution_role": {
+          "enum": [
+            "GOVERNED_RESULT_PRODUCING_INVOCATION"
+          ],
+          "type": "string"
+        },
+        "failure_reason": {
+          "type": "string"
+        },
+        "invalidation_status": {
+          "enum": [
+            "INVALIDATED_NO_RERUN_AUTHORIZED"
+          ],
+          "type": "string"
+        },
+        "invocation_id": {
+          "type": "string"
+        },
+        "minimum_known_count": {
+          "type": "null"
+        },
+        "output_sha256": {
+          "type": "null"
+        },
+        "score_exposed": {
+          "type": "boolean"
+        },
+        "sequence": {
+          "type": "integer"
+        },
+        "source_opened": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "FAILED_INVALIDATED_AFTER_SCORE_EXPOSURE"
+          ],
+          "type": "string"
+        },
+        "test_or_ci": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "authority_id",
+        "event_id",
+        "event_type",
+        "execution_role",
+        "failure_reason",
+        "invalidation_status",
+        "invocation_id",
+        "minimum_known_count",
+        "output_sha256",
+        "score_exposed",
+        "sequence",
+        "source_opened",
+        "status",
+        "test_or_ci"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "enum": [
+            "HISTORICAL-PRECORRECTION-MINIMUM"
+          ],
+          "type": "string"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "failure_reason": {
+          "type": "null"
+        },
+        "output_sha256": {
+          "type": "null"
+        },
+        "score_exposed": {
+          "type": "boolean"
+        },
+        "source_opened": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "MINIMUM_KNOWN_HISTORY"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "authority_id",
+        "event_id",
+        "failure_reason",
+        "output_sha256",
+        "score_exposed",
+        "source_opened",
+        "status"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "enum": [
+            "VAL001-SECOND-CORRECTION-INVOCATION-AUTHORITY-1"
+          ],
+          "type": "string"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "failure_reason": {
+          "type": "null"
+        },
+        "output_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "score_exposed": {
+          "type": "boolean"
+        },
+        "source_opened": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "AUTHORITY_CONSUMED",
+            "COMPLETED"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "authority_id",
+        "event_id",
+        "failure_reason",
+        "output_sha256",
+        "score_exposed",
+        "source_opened",
+        "status"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "enum": [
+            "VAL001-FIRST-CORRECTED-AUTHORITY"
+          ],
+          "type": "string"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "failure_reason": {
+          "type": "string"
+        },
+        "output_sha256": {
+          "type": "null"
+        },
+        "score_exposed": {
+          "type": "boolean"
+        },
+        "source_opened": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "FAILED"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "authority_id",
+        "event_id",
+        "failure_reason",
+        "output_sha256",
+        "score_exposed",
+        "source_opened",
+        "status"
+      ],
+      "type": "object"
+    }
+  ]
+}

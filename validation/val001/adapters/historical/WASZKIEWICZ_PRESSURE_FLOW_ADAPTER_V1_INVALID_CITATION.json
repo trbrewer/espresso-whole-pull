@@ -1,0 +1,45 @@
+{
+  "schema_version": "espresso.val001.source_adapter.v2",
+  "adapter_id": "waszkiewicz2025.pressure_flow.source_sweep.v2",
+  "source": {
+    "publication_citation": "Waszkiewicz, R. et al. (2025), Under pressure: poroelastic regulation of flow in espresso, DOI 10.1017/jfm.2025.10366 (citation-only article)",
+    "dataset_identity": "Waszkiewicz et al. public deposited data, Zenodo 10.5281/zenodo.18046315, CC-BY-4.0",
+    "artifact_paths": ["docs/cards/waszkiewicz2025.md", "docs/research/intake/waszkiewicz2025_poroelastic.yml", "puckworks/data/MANIFEST.csv", "puckworks/data/waszkiewicz2025/static_calibration.csv"],
+    "artifact_sha256": {
+      "docs/cards/waszkiewicz2025.md": "fa5708aeedc3d069fdf22d50aabf02d44db430399fb21be1ec37c5ebd1279698",
+      "docs/research/intake/waszkiewicz2025_poroelastic.yml": "2f9af2389e8d08083b7a975bca843229fdda62b7e4a47405cc6f3bb579892ecf",
+      "puckworks/data/MANIFEST.csv": "05525a91064c2cae28776bd71465be7e121804151a62c1f7c61cd63981f00d32",
+      "puckworks/data/waszkiewicz2025/static_calibration.csv": "2a2fdd129cbfb7742196abb493409c76aab11e2bef9f74aafb3df996c6b21ce5"
+    },
+    "dependency_repository": "https://github.com/trbrewer/puckworks.git",
+    "dependency_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "dependency_tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "local_reduced_input": "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv",
+    "local_reduced_input_sha256": "0a789ed20039ff5ea21b7e1773f2f62f74a4122775e2cb3fa12ff6c24c53a831"
+  },
+  "evidence": {"level": "SOURCE_LINKED_POST_FIT_COMPONENT_COMPARISON", "protected": false, "holdout_status": "NOT_HOLDOUT", "circularity": "The same campaign influenced predecessor closure development; the finite-porosity branch also has direct 9-bar matching circularity."},
+  "rights": {"access_status": "PUBLIC", "comparison_allowed": true, "redistribution_status": "CC_BY_4_0_REDUCED_DATA", "analysis_permission": "PERMITTED", "derived_publication_permission": "PERMITTED_WITH_ATTRIBUTION", "journal_rights": "CITATION_ONLY_DO_NOT_REDISTRIBUTE_ARTICLE", "dataset_rights": "CC-BY-4.0 deposited numeric data with attribution"},
+  "mappings": {
+    "apparatus": {"value": "Waszkiewicz source rig as documented by the locked source card", "unavailable_reason": null},
+    "pressure_node": {"value": "BASKET_BED_TOP", "unavailable_reason": null},
+    "pressure_basis": {"value": "GAUGE", "unavailable_reason": null},
+    "outlet_reference": {"value": "ATMOSPHERIC", "unavailable_reason": null},
+    "hydraulic_area": {"value": "PI_TIMES_0.029_M_SQUARED", "unavailable_reason": null},
+    "time_origin": {"value": null, "unavailable_reason": "NOT_APPLICABLE_TO_STATIC_PRESSURE_FLOW_SWEEP"},
+    "time_unit": {"value": "s", "unavailable_reason": null},
+    "coordinate_origin": {"value": null, "unavailable_reason": "NOT_APPLICABLE_TO_AGGREGATE_STATIC_SWEEP"},
+    "positive_coordinate_direction": {"value": null, "unavailable_reason": "NOT_APPLICABLE_TO_AGGREGATE_STATIC_SWEEP"},
+    "sign_convention": {"value": "POSITIVE_FLOW_TOWARD_OUTLET", "unavailable_reason": null},
+    "conversion_rules": [], "interpolation_rules": [], "missing_data_behavior": "REJECT", "uncertainty_status": "SOURCE_UNCERTAINTY_NOT_REPORTED"
+  },
+  "quantities": [
+    {"id": "basket_pressure_bar", "unit": "bar_gauge", "source_role": "PRESCRIBED", "model_role": "INPUT", "comparison_role": "UNSCORED", "calibration_influence": "CAMPAIGN_INFLUENCED_PREDECESSOR", "score_bearing": false, "availability": "AVAILABLE", "value": "COLUMN"},
+    {"id": "measured_mass_flow_g_s", "unit": "g/s", "source_role": "OBSERVED", "model_role": "NONE", "comparison_role": "SCORE_BEARING_OBSERVATION", "calibration_influence": "CAMPAIGN_INFLUENCED_PREDECESSOR", "score_bearing": true, "availability": "AVAILABLE", "value": "COLUMN"},
+    {"id": "universal_curve_flow_g_s", "unit": "g/s", "source_role": "CONTEXTUAL", "model_role": "PREDICTION", "comparison_role": "PREDICTED_AND_COMPARED", "calibration_influence": "CAMPAIGN_INFLUENCED_PREDECESSOR", "score_bearing": true, "availability": "AVAILABLE", "value": "COLUMN"},
+    {"id": "finite_phi_flow_g_s", "unit": "g/s", "source_role": "CONTEXTUAL", "model_role": "PREDICTION", "comparison_role": "PREDICTED_AND_COMPARED", "calibration_influence": "DIRECT_9BAR_MATCH", "score_bearing": true, "availability": "AVAILABLE", "value": "COLUMN"},
+    {"id": "stress_free_permeability_m2", "unit": "m^2", "source_role": "UNRESTRICTED_CALIBRATION", "model_role": "PARAMETER", "comparison_role": "NONE", "calibration_influence": "CAMPAIGN_INFLUENCED_PREDECESSOR", "score_bearing": false, "availability": "AVAILABLE", "value": "PREDECESSOR_FIT"}
+  ],
+  "solver_mapping": {"configuration_change": false, "solver_source_change": false, "fitting_or_retuning_allowed": false, "fit_or_retune_count": 0, "declared_configurations": ["config/reconstruction_R1_waszkiewicz_9bar.json", "config/reconstruction_WP02A_waszkiewicz_9bar.json", "config/reconstruction_WP02A_waszkiewicz_8bar.json"], "declared_model_branches": ["universal_pressure_flow", "finite_porosity_quasistatic"]},
+  "execution": {"executable": true, "disposition": "EXECUTABLE", "reason_codes": []},
+  "claim_ceiling": "POST_OBSERVATION_REPRODUCTION"
+}
