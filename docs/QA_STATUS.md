@@ -53,6 +53,11 @@ and source/holdout-fit counts remained zero.
 - shell syntax: PASS
 - JSON syntax: PASS
 
+VAL-INFRA-002 adds deterministic frozen-scope tests for authentic Stage-0 and
+current repository states, unrelated future paths, and protected-scope
+mutation, deletion, addition, replacement, rename, contract, identity, and
+semantic failures. It performs no OpenFOAM or scientific execution.
+
 WP-0.3B verifies independently re-expressed mathematics, synthetic
 identifiability, and measurement bookkeeping. It does not experimentally
 validate espresso extraction or WP02 hydraulics, establish parameter

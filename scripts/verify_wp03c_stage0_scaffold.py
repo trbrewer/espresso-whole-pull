@@ -17,483 +17,14 @@ sys.path.insert(0, str(ROOT_MODULE))
 import stage0  # noqa: E402
 
 BASELINE = "258b4b6526acea98346031ae5cc9c9e7b3ee64a9"
-EXPECTED_PATHS = frozenset({
-    ".github/workflows/static-validation.yml",
-    "PACKAGE_QA_STATUS.json", "SOURCE_PACKAGE_MANIFEST.json",
-    "docs/DEVELOPMENT_HISTORY.md", "docs/PROJECT_STATE.md", "docs/QA_STATUS.md",
-    "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md",
-    "scripts/generate_source_manifest.py",
-    "scripts/verify_wp03b_nonprotected_verification.py",
-    "scripts/verify_wp03c_stage0_scaffold.py",
-    "tests/test_wp03b_boundary.py",
-    "tests/test_wp03c_stage0.py",
-    "tools/campaign/wp03c/__init__.py", "tools/campaign/wp03c/stage0.py",
-    "validation/contracts/WP_0_3C_STAGE0_AUTHORITY_AND_INPUT_INTAKE_CONTRACT.json",
-    "validation/campaign/wp03c/WP_0_3C_INPUT_REQUIREMENTS.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_ROLE_ASSIGNMENT_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_CAMPAIGN_SCOPE_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_APPARATUS_INVENTORY_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_SENSOR_INVENTORY_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_MATERIAL_AND_COFFEE_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_PREPARATION_PROTOCOL_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_CALIBRATION_PLAN_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_COMMISSIONING_PLAN_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_DATA_CUSTODY_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_PRIVACY_AND_PUBLICATION_TEMPLATE.json",
-    "validation/campaign/wp03c/templates/WP_0_3C_ACQUISITION_READINESS_TEMPLATE.json",
-    # Exact later WP02-002 solver-bearing work-package paths.  The Stage-0
-    # artifacts remain independently checked below; this merely keeps their
-    # historical path boundary usable after the authorized solver increment.
-    "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md",
-    "scripts/analyze_wp02_002_machine_coupling.py",
-    "scripts/machine_coupling_reference.py",
-    "scripts/prepare_case.py",
-    "scripts/run_wp02_002_machine_coupling.sh",
-    "scripts/verify_governing_physics_change.py",
-    "scripts/verify_release_finalization.py",
-    "scripts/wp03b_path_boundary.py",
-    "solver/espressoWholePullFoam/espressoWholePullFoam.C",
-    "solver/espressoWholePullFoam/machineBoundaryModel.H",
-    "tests/test_wp02_002_machine_coupling.py",
-    "tests/test_wp02_effective_permeability.py",
-    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json",
-    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RUN_SPEC.json",
-    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_TRACE.csv",
-    # Exact later WP02-003 solver-bearing work-package paths. Stage-0 content
-    # remains frozen and independently checked; these paths are outside its
-    # original permitted-change contract.
-    "docs/reports/WP02_003_DARCY_FORCHHEIMER_RESULTS.md",
-    "scripts/analyze_wp02_003_darcy_forchheimer.py",
-    "scripts/forchheimer_reference.py",
-    "scripts/run_wp02_003_darcy_forchheimer.sh",
-    "scripts/run_wp02_003_predecessor_regressions.sh",
-    "scripts/run_wp02_003_zero_inertia_fixture.sh",
-    "scripts/verify_wp02_regression.py",
-    "solver/espressoWholePullFoam/forchheimerResistance.H",
-    "tests/fixtures/wp02_003_zero_inertia/Make/files",
-    "tests/fixtures/wp02_003_zero_inertia/Make/options",
-    "tests/fixtures/wp02_003_zero_inertia/wp02_003_zero_inertia_fixture.C",
-    "tests/test_wp02_003_darcy_forchheimer.py",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_FIELD_INDEX.json",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RESULTS.json",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.json",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.sha256",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_TRACE.csv",
-    # Exact later WP02-004 solver-bearing work-package paths.
-    "docs/reports/WP02_004_RADIAL_HETEROGENEITY_RESULTS.md",
-    "scripts/analyze_wp02_004_radial_heterogeneity.py",
-    "scripts/radial_heterogeneity_reference.py",
-    "scripts/run_wp02_004_production_fixture.sh",
-    "scripts/run_wp02_004_radial_heterogeneity.sh",
-    "tests/fixtures/wp02_004_radial/Make/files",
-    "tests/fixtures/wp02_004_radial/Make/options",
-    "tests/fixtures/wp02_004_radial/wp02_004_radial_fixture.C",
-    "tests/test_wp02_004_radial_heterogeneity.py",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_FIELD_INDEX.json",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RESULTS.json",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RUN_SPEC.json",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RUN_SPEC.sha256",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_TRACE.csv",
-    # Exact later WP03-001 solver-bearing work-package paths.
-    "docs/reports/WP03_001_POROELASTIC_COMPACTION_RESULTS.md",
-    "scripts/analyze_wp03_001_poroelastic_compaction.py",
-    "scripts/poroelastic_compaction_reference.py",
-    "scripts/run_wp03_001_poroelastic_compaction.sh",
-    "scripts/run_wp03_001_production_fixture.sh",
-    "solver/espressoWholePullFoam/poroelasticCompaction.H",
-    "tests/fixtures/wp03_001_poroelastic/Make/files",
-    "tests/fixtures/wp03_001_poroelastic/Make/options",
-    "tests/fixtures/wp03_001_poroelastic/wp03_001_poroelastic_fixture.C",
-    "tests/test_wp03_001_poroelastic_compaction.py",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_FIELD_INDEX.json",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RESULTS.json",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.json",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.sha256",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_TRACE.csv",
-    "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv",
-    # Exact later post-WP03-001 documentation-alignment paths. This preserves
-    # the frozen Stage-0 artifact checks while allowing current navigation,
-    # strategy, roadmap, and validation planning to evolve.
-    "README.md",
-    "docs/FILE_TREE.md",
-    "docs/ONBOARDING.md",
-    "docs/PUCKWORKS_INTEGRATION.md",
-    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md",
-    "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md",
-    "docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md",
-    "tests/test_reference_case.py",
-    # Exact later VAL-001 no-governing-physics validation-framework paths.
-    # Stage-0 artifacts and their original permitted path contract stay frozen.
-    "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
-    "scripts/run_val001_comparisons.py",
-    "scripts/static_validate.py",
-    "tests/test_val001_framework.py",
-    "tools/validation/val001/__init__.py",
-    "tools/validation/val001/framework.py",
-    "validation/val001/VAL_001_CALIBRATION_COMPARISON_LEDGER.json",
-    "validation/val001/VAL_001_EVIDENCE_AND_RIGHTS_INVENTORY.json",
-    "validation/val001/VAL_001_EXTERNAL_ARTIFACT_MANIFEST.json",
-    "validation/val001/VAL_001_MECHANISM_DISCRIMINATION_MATRIX.json",
-    "validation/val001/VAL_001_RANKED_DATA_REQUESTS.json",
-    "validation/val001/VAL_001_SOURCE_ACCESS_LOG.json",
-    "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json",
-    "validation/val001/amendments/VAL_001_INPUT_ROW_COUNT_AMENDMENT.json",
-    "validation/val001/contracts/VAL_001_PREEXECUTION_RUN_SPEC.json",
-    "validation/val001/results/VAL_001_FIRST_COMPONENT_COMPARISONS.json",
-    "validation/val001/schemas/comparison_result.schema.json",
-    "validation/val001/schemas/comparison_run.schema.json",
-    "validation/val001/schemas/source_adapter.schema.json",
-    "validation/val001/templates/VAL_001_COMPARISON_REPORT_TEMPLATE.md",
-    "docs/validation/VAL_001_PR38_CORRECTION_NOTE.md",
-    "scripts/run_val001_corrected_comparison.py",
-    "scripts/verify_val001_correction.py",
-    "tools/validation/val001/schema.py",
-    "validation/val001/VAL_001_CAMPAIGN_PROVENANCE.json",
-    "validation/val001/VAL_001_HISTORICAL_ADAPTERS.json",
-    "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json",
-    "validation/val001/adapters/GAGNE_DE1_EVIDENCE_GAP_ADAPTER.json",
-    "validation/val001/amendments/VAL_001_CORRECTED_ROW_COUNT_INVALIDATION.json",
-    "validation/val001/contracts/VAL_001_CORRECTED_EXECUTION_ACTIVATION.json",
-    "validation/val001/contracts/VAL_001_CORRECTED_FREEZE.json",
-    "validation/val001/contracts/VAL_001_CORRECTED_PREEXECUTION_AUTHORITY.json",
-    "validation/val001/contracts/VAL_001_CORRECTED_RUN_SPEC.json",
-    "validation/val001/contracts/VAL_001_SENSITIVITY_AND_IDENTIFIABILITY_METHODS.json",
-    "validation/val001/corrections/VAL_001_PR38_INITIAL_RESULT_INVALIDATION_AND_REMEDIATION.json",
-    "validation/val001/results/VAL_001_CORRECTED_EXECUTION_FAILURE.json",
-    "validation/val001/results/VAL_001_HISTORICAL_RESULT_REEXPRESSIONS.json",
-    "validation/val001/schemas/amendment_invalidation.schema.json",
-    "validation/val001/schemas/calibration_comparison_ledger.schema.json",
-    "validation/val001/schemas/campaign_provenance.schema.json",
-    "validation/val001/schemas/evidence_rights_inventory.schema.json",
-    "validation/val001/schemas/execution_activation.schema.json",
-    "validation/val001/schemas/governance_records.schema.json",
-    "validation/val001/schemas/invocation_ledger.schema.json",
-    "validation/val001/schemas/preexecution_authority.schema.json",
-    "docs/validation/VAL_001_PR38_SECOND_CORRECTION_NOTE.md",
-    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_ARTIFACT_REUSE_ACTIVATION.json",
-    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json",
-    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_INVOCATION_AUTHORITY.json",
-    "validation/val001/corrections/VAL_001_PR38_SECOND_CORRECTION_DEFECT_AUTHORITY.json",
-    "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
-    "docs/validation/VAL_001_PR38_FINAL_HARDENING_NOTE.md",
-    "docs/validation/VAL_001_PR38_HARDENING_COMPLETION_NOTE.md",
-    "docs/validation/VAL_001_PR38_DEEP_SCHEMA_COMPLETION_NOTE.md",
-    "scripts/generate_val001_deep_schema_coverage.py",
-    "scripts/verify_val001_deep_schema_coverage.py",
-    "tests/test_val001_deep_schema.py",
-    "tools/validation/val001/deep_schema.py",
-    "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
-    "scripts/verify_val001_hardening.py",
-    "scripts/verify_val001_governed_inventory.py",
-    "scripts/verify_val001_invocation_journal.py",
-    "tests/test_val001_completion.py",
-    "tools/validation/val001/inventory.py",
-    "tools/validation/val001/invocation.py",
-    "tools/validation/val001/journal.py",
-    "tools/validation/val001/source_identity.py",
-    "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
-    "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl",
-    "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
-    "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json",
-    "validation/val001/adapters/historical/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER_V1_INVALID_CITATION.json",
-    "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
-    "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json",
-    "validation/val001/contracts/VAL_001_DEEP_SCHEMA_COMPLETION_FREEZE.json",
-    "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V1.json",
-    "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V2.json",
-    "validation/val001/contracts/VAL_001_POSTRESULT_FRAMEWORK_HARDENING_FREEZE.json",
-    "validation/val001/contracts/VAL_001_SELECTED_ROW_CANONICALIZATION_SPEC.json",
-    "validation/val001/corrections/VAL_001_PR38_FINAL_HARDENING_PLAN.json",
-    "validation/val001/corrections/VAL_001_POSTRESULT_LOCK_VERSIONING_RECORD.json",
-    "validation/val001/corrections/VAL_001_PR38_HARDENING_COMPLETION_PLAN.json",
-    "validation/val001/corrections/VAL_001_PR38_DEEP_SCHEMA_COMPLETION_PLAN.json",
-    "validation/val001/corrections/VAL_001_SELECTED_ROW_IDENTITY_CORRECTION.json",
-    "validation/val001/corrections/VAL_001_V2_INTERPRETATION_CORRECTION.json",
-    "validation/val001/corrections/VAL_001_WASZKIEWICZ_ADAPTER_PROVENANCE_CORRECTION.json",
-    "validation/val001/results/VAL_001_V2_FRAMEWORK_QUALIFICATION_PROVENANCE.json",
-    "validation/val001/historical/VAL_001_INVOCATION_EVENTS_V1.jsonl",
-    "validation/val001/results/historical/WP01R_R1_WASZKIEWICZ_9BAR.json",
-    "validation/val001/results/historical/WP02_001_WASZKIEWICZ_8BAR_NO_RETUNING.json",
-    "validation/val001/results/historical/WP02_001_WASZKIEWICZ_9BAR.json",
-    "validation/val001/results/historical/WP_0_3B_LIANG_VERIFICATION.json",
-    "validation/val001/results/historical/WP_0_3B_MATIAS_VERIFICATION.json",
-    "validation/val001/results/historical/WP_0_3B_MORONEY_VERIFICATION.json",
-    "validation/val001/schemas/historical_reexpression.schema.json",
-    "validation/val001/schemas/exact_structure_sidecar.schema.json",
-    "validation/val001/schemas/coverage_matrix.schema.json",
-    "validation/val001/schemas/deep_invocation_event_families.schema.json",
-    "validation/val001/schemas/deep_record_families.schema.json",
-    "validation/val001/schemas/schema_document.schema.json",
-    "validation/val001/schemas/invocation_event.schema.json",
-    "validation/val001/schemas/invocation_summary.schema.json",
-    "validation/val001/schemas/postresult_execution_lock.schema.json",
-    "docs/validation/VAL_001_PR38_ADMINISTRATIVE_SEMANTIC_REMEDIATION_NOTE.md",
-    "scripts/generate_val001_administrative_freeze.py",
-    "scripts/verify_val001_administrative_closure.py",
-    "scripts/verify_val001_external_artifacts.py",
-    "tests/test_val001_administrative_semantics.py",
-    "tools/validation/val001/administrative.py",
-    "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json",
-    "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
-    "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
-    "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V3.json",
-    "validation/val001/corrections/VAL_001_PR38_ADMINISTRATIVE_CLOSURE_AND_SEMANTIC_REMEDIATION_PLAN.json",
-    "validation/val001/schemas/administrative_closure_freeze.schema.json",
-    "validation/val001/schemas/administrative_closure_specification.schema.json",
-    "validation/val001/schemas/canonical_consumed_lock.schema.json",
-    "validation/val001/schemas/governed_record_inventory.schema.json",
-    "validation/val001/schemas/governed_schema_registry.schema.json",
-    "docs/validation/VAL_001_PR38_EXPLICIT_SEMANTICS_ROOT_PINNING_NOTE.md",
-    "scripts/generate_val001_explicit_semantics_freeze.py",
-    "tests/test_val001_explicit_semantics_and_root.py",
-    "tools/validation/val001/explicit_semantics.py",
-    "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
-    "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
-    "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
-    "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
-    "validation/val001/corrections/VAL_001_PR38_EXPLICIT_SEMANTICS_AND_ROOT_PINNING_PLAN.json",
-    "validation/val001/schemas/explicit_schema_specification_registry.schema.json",
-    "validation/val001/schemas/explicit_semantics_completion_freeze.schema.json",
-    "validation/val001/schemas/explicit_semantics_remediation_plan.schema.json",
-    "validation/val001/schemas/external_candidate_root_protocol.schema.json",
-    "validation/val001/schemas/mutation_inventory.schema.json",
-    "validation/val001/schemas/semantic_profile_registry.schema.json",
-    "docs/validation/VAL_001_PR38_SCHEMA_PROVENANCE_SEMANTIC_ENFORCEMENT_NOTE.md",
-    "scripts/generate_val001_mutation_inventory.py",
-    "scripts/generate_val001_normative_schemas.py",
-    "scripts/generate_val001_provenance_records.py",
-    "scripts/generate_val001_schema_provenance_freeze.py",
-    "scripts/generate_val001_successor_consumed_lock.py",
-    "scripts/reconcile_val001_normative_administration.py",
-    "scripts/verify_val001_normative_schemas.py",
-    "tests/test_val001_normative_mutations.py",
-    "tools/validation/val001/mutations.py",
-    "tools/validation/val001/normative.py",
-    "validation/val001/VAL_001_IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY.json",
-    "validation/val001/VAL_001_MUTATION_EXECUTION_COVERAGE.json",
-    "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
-    "validation/val001/VAL_001_SCHEMA_PROVENANCE_TRANSITION_MATRIX.json",
-    "validation/val001/VAL_001_SCHEMA_TAXONOMY_AND_COUNTING_SPECIFICATION.json",
-    "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
-    "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V4.json",
-    "validation/val001/corrections/VAL_001_PR38_SCHEMA_PROVENANCE_AND_SEMANTIC_ENFORCEMENT_PLAN.json",
-    # Exact later VAL-OPS-001 documentation paths. The operating standard is
-    # human-reviewed guidance and does not change Stage-0 readiness semantics.
-    "docs/validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md",
-    "docs/validation/VALIDATION_OPERATING_STANDARD_V1.md",
-    "docs/validation/VALIDATION_REVIEW_CHECKLIST_V1.md",
-    "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md",
-    "docs/validation/templates/VALIDATION_CASE_RESULT_TEMPLATE.md",
-})
-LATER_WP02_002_PATHS = frozenset({
-    "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md",
-    "scripts/analyze_wp02_002_machine_coupling.py",
-    "scripts/machine_coupling_reference.py",
-    "scripts/prepare_case.py",
-    "scripts/run_wp02_002_machine_coupling.sh",
-    "scripts/verify_governing_physics_change.py",
-    "scripts/verify_release_finalization.py",
-    "scripts/wp03b_path_boundary.py",
-    "solver/espressoWholePullFoam/espressoWholePullFoam.C",
-    "solver/espressoWholePullFoam/machineBoundaryModel.H",
-    "tests/test_wp02_002_machine_coupling.py",
-    "tests/test_wp02_effective_permeability.py",
-    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json",
-    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RUN_SPEC.json",
-    "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_TRACE.csv",
-    "docs/reports/WP02_003_DARCY_FORCHHEIMER_RESULTS.md",
-    "scripts/analyze_wp02_003_darcy_forchheimer.py",
-    "scripts/forchheimer_reference.py",
-    "scripts/run_wp02_003_darcy_forchheimer.sh",
-    "scripts/run_wp02_003_predecessor_regressions.sh",
-    "scripts/run_wp02_003_zero_inertia_fixture.sh",
-    "scripts/verify_wp02_regression.py",
-    "solver/espressoWholePullFoam/forchheimerResistance.H",
-    "tests/fixtures/wp02_003_zero_inertia/Make/files",
-    "tests/fixtures/wp02_003_zero_inertia/Make/options",
-    "tests/fixtures/wp02_003_zero_inertia/wp02_003_zero_inertia_fixture.C",
-    "tests/test_wp02_003_darcy_forchheimer.py",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_FIELD_INDEX.json",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RESULTS.json",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.json",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_RUN_SPEC.sha256",
-    "validation/wp02/WP02_003_DARCY_FORCHHEIMER_TRACE.csv",
-    "docs/reports/WP02_004_RADIAL_HETEROGENEITY_RESULTS.md",
-    "scripts/analyze_wp02_004_radial_heterogeneity.py",
-    "scripts/radial_heterogeneity_reference.py",
-    "scripts/run_wp02_004_production_fixture.sh",
-    "scripts/run_wp02_004_radial_heterogeneity.sh",
-    "tests/fixtures/wp02_004_radial/Make/files",
-    "tests/fixtures/wp02_004_radial/Make/options",
-    "tests/fixtures/wp02_004_radial/wp02_004_radial_fixture.C",
-    "tests/test_wp02_004_radial_heterogeneity.py",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_FIELD_INDEX.json",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RESULTS.json",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RUN_SPEC.json",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_RUN_SPEC.sha256",
-    "validation/wp02/WP02_004_RADIAL_HETEROGENEITY_TRACE.csv",
-    "docs/reports/WP03_001_POROELASTIC_COMPACTION_RESULTS.md",
-    "scripts/analyze_wp03_001_poroelastic_compaction.py",
-    "scripts/poroelastic_compaction_reference.py",
-    "scripts/run_wp03_001_poroelastic_compaction.sh",
-    "scripts/run_wp03_001_production_fixture.sh",
-    "solver/espressoWholePullFoam/poroelasticCompaction.H",
-    "tests/fixtures/wp03_001_poroelastic/Make/files",
-    "tests/fixtures/wp03_001_poroelastic/Make/options",
-    "tests/fixtures/wp03_001_poroelastic/wp03_001_poroelastic_fixture.C",
-    "tests/test_wp03_001_poroelastic_compaction.py",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_FIELD_INDEX.json",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RESULTS.json",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.json",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.sha256",
-    "validation/wp03/WP03_001_POROELASTIC_COMPACTION_TRACE.csv",
-    "validation/wp03/WP03_001_SOURCE_PRESSURE_SWEEP.csv",
-    "README.md",
-    "docs/FILE_TREE.md",
-    "docs/ONBOARDING.md",
-    "docs/PUCKWORKS_INTEGRATION.md",
-    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md",
-    "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md",
-    "docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md",
-    "tests/test_reference_case.py",
-    "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md",
-    "scripts/run_val001_comparisons.py",
-    "scripts/static_validate.py",
-    "tests/test_val001_framework.py",
-    "tools/validation/val001/__init__.py",
-    "tools/validation/val001/framework.py",
-    "validation/val001/VAL_001_CALIBRATION_COMPARISON_LEDGER.json",
-    "validation/val001/VAL_001_EVIDENCE_AND_RIGHTS_INVENTORY.json",
-    "validation/val001/VAL_001_EXTERNAL_ARTIFACT_MANIFEST.json",
-    "validation/val001/VAL_001_MECHANISM_DISCRIMINATION_MATRIX.json",
-    "validation/val001/VAL_001_RANKED_DATA_REQUESTS.json",
-    "validation/val001/VAL_001_SOURCE_ACCESS_LOG.json",
-    "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json",
-    "validation/val001/amendments/VAL_001_INPUT_ROW_COUNT_AMENDMENT.json",
-    "validation/val001/contracts/VAL_001_PREEXECUTION_RUN_SPEC.json",
-    "validation/val001/results/VAL_001_FIRST_COMPONENT_COMPARISONS.json",
-    "validation/val001/schemas/comparison_result.schema.json",
-    "validation/val001/schemas/comparison_run.schema.json",
-    "validation/val001/schemas/source_adapter.schema.json",
-    "validation/val001/templates/VAL_001_COMPARISON_REPORT_TEMPLATE.md",
-    "docs/validation/VAL_001_PR38_CORRECTION_NOTE.md",
-    "scripts/run_val001_corrected_comparison.py",
-    "scripts/verify_val001_correction.py",
-    "tools/validation/val001/schema.py",
-    "validation/val001/VAL_001_CAMPAIGN_PROVENANCE.json",
-    "validation/val001/VAL_001_HISTORICAL_ADAPTERS.json",
-    "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json",
-    "validation/val001/adapters/GAGNE_DE1_EVIDENCE_GAP_ADAPTER.json",
-    "validation/val001/amendments/VAL_001_CORRECTED_ROW_COUNT_INVALIDATION.json",
-    "validation/val001/contracts/VAL_001_CORRECTED_EXECUTION_ACTIVATION.json",
-    "validation/val001/contracts/VAL_001_CORRECTED_FREEZE.json",
-    "validation/val001/contracts/VAL_001_CORRECTED_PREEXECUTION_AUTHORITY.json",
-    "validation/val001/contracts/VAL_001_CORRECTED_RUN_SPEC.json",
-    "validation/val001/contracts/VAL_001_SENSITIVITY_AND_IDENTIFIABILITY_METHODS.json",
-    "validation/val001/corrections/VAL_001_PR38_INITIAL_RESULT_INVALIDATION_AND_REMEDIATION.json",
-    "validation/val001/results/VAL_001_CORRECTED_EXECUTION_FAILURE.json",
-    "validation/val001/results/VAL_001_HISTORICAL_RESULT_REEXPRESSIONS.json",
-    "validation/val001/schemas/amendment_invalidation.schema.json",
-    "validation/val001/schemas/calibration_comparison_ledger.schema.json",
-    "validation/val001/schemas/campaign_provenance.schema.json",
-    "validation/val001/schemas/evidence_rights_inventory.schema.json",
-    "validation/val001/schemas/execution_activation.schema.json",
-    "validation/val001/schemas/governance_records.schema.json",
-    "validation/val001/schemas/invocation_ledger.schema.json",
-    "validation/val001/schemas/preexecution_authority.schema.json",
-    "docs/validation/VAL_001_PR38_SECOND_CORRECTION_NOTE.md",
-    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_ARTIFACT_REUSE_ACTIVATION.json",
-    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json",
-    "validation/val001/contracts/VAL_001_SECOND_CORRECTION_INVOCATION_AUTHORITY.json",
-    "validation/val001/corrections/VAL_001_PR38_SECOND_CORRECTION_DEFECT_AUTHORITY.json",
-    "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
-    "docs/validation/VAL_001_PR38_FINAL_HARDENING_NOTE.md",
-    "docs/validation/VAL_001_PR38_HARDENING_COMPLETION_NOTE.md",
-    "docs/validation/VAL_001_PR38_DEEP_SCHEMA_COMPLETION_NOTE.md",
-    "scripts/generate_val001_deep_schema_coverage.py",
-    "scripts/verify_val001_deep_schema_coverage.py",
-    "tests/test_val001_deep_schema.py",
-    "tools/validation/val001/deep_schema.py",
-    "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
-    "scripts/verify_val001_hardening.py",
-    "scripts/verify_val001_governed_inventory.py",
-    "scripts/verify_val001_invocation_journal.py",
-    "tests/test_val001_completion.py",
-    "tools/validation/val001/inventory.py",
-    "tools/validation/val001/invocation.py",
-    "tools/validation/val001/journal.py",
-    "tools/validation/val001/source_identity.py",
-    "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
-    "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl",
-    "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
-    "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json",
-    "validation/val001/adapters/historical/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER_V1_INVALID_CITATION.json",
-    "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
-    "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json",
-    "validation/val001/contracts/VAL_001_DEEP_SCHEMA_COMPLETION_FREEZE.json",
-    "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V1.json",
-    "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V2.json",
-    "validation/val001/contracts/VAL_001_POSTRESULT_FRAMEWORK_HARDENING_FREEZE.json",
-    "validation/val001/contracts/VAL_001_SELECTED_ROW_CANONICALIZATION_SPEC.json",
-    "validation/val001/corrections/VAL_001_PR38_FINAL_HARDENING_PLAN.json",
-    "validation/val001/corrections/VAL_001_POSTRESULT_LOCK_VERSIONING_RECORD.json",
-    "validation/val001/corrections/VAL_001_PR38_HARDENING_COMPLETION_PLAN.json",
-    "validation/val001/corrections/VAL_001_PR38_DEEP_SCHEMA_COMPLETION_PLAN.json",
-    "validation/val001/corrections/VAL_001_SELECTED_ROW_IDENTITY_CORRECTION.json",
-    "validation/val001/corrections/VAL_001_V2_INTERPRETATION_CORRECTION.json",
-    "validation/val001/corrections/VAL_001_WASZKIEWICZ_ADAPTER_PROVENANCE_CORRECTION.json",
-    "validation/val001/results/VAL_001_V2_FRAMEWORK_QUALIFICATION_PROVENANCE.json",
-    "validation/val001/historical/VAL_001_INVOCATION_EVENTS_V1.jsonl",
-    "validation/val001/results/historical/WP01R_R1_WASZKIEWICZ_9BAR.json",
-    "validation/val001/results/historical/WP02_001_WASZKIEWICZ_8BAR_NO_RETUNING.json",
-    "validation/val001/results/historical/WP02_001_WASZKIEWICZ_9BAR.json",
-    "validation/val001/results/historical/WP_0_3B_LIANG_VERIFICATION.json",
-    "validation/val001/results/historical/WP_0_3B_MATIAS_VERIFICATION.json",
-    "validation/val001/results/historical/WP_0_3B_MORONEY_VERIFICATION.json",
-    "validation/val001/schemas/historical_reexpression.schema.json",
-    "validation/val001/schemas/exact_structure_sidecar.schema.json",
-    "validation/val001/schemas/coverage_matrix.schema.json",
-    "validation/val001/schemas/deep_invocation_event_families.schema.json",
-    "validation/val001/schemas/deep_record_families.schema.json",
-    "validation/val001/schemas/schema_document.schema.json",
-    "validation/val001/schemas/invocation_event.schema.json",
-    "validation/val001/schemas/invocation_summary.schema.json",
-    "validation/val001/schemas/postresult_execution_lock.schema.json",
-    "docs/validation/VAL_001_PR38_EXPLICIT_SEMANTICS_ROOT_PINNING_NOTE.md",
-    "tests/test_val001_explicit_semantics_and_root.py",
-    "tools/validation/val001/explicit_semantics.py",
-    "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
-    "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
-    "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
-    "validation/val001/corrections/VAL_001_PR38_EXPLICIT_SEMANTICS_AND_ROOT_PINNING_PLAN.json",
-    "validation/val001/schemas/explicit_schema_specification_registry.schema.json",
-    "validation/val001/schemas/explicit_semantics_remediation_plan.schema.json",
-    "validation/val001/schemas/external_candidate_root_protocol.schema.json",
-    "validation/val001/schemas/mutation_inventory.schema.json",
-    "validation/val001/schemas/semantic_profile_registry.schema.json",
-    "scripts/generate_val001_explicit_semantics_freeze.py",
-    "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
-    "validation/val001/schemas/explicit_semantics_completion_freeze.schema.json",
-    "docs/validation/VAL_001_PR38_SCHEMA_PROVENANCE_SEMANTIC_ENFORCEMENT_NOTE.md",
-    "scripts/generate_val001_mutation_inventory.py",
-    "scripts/generate_val001_normative_schemas.py",
-    "scripts/generate_val001_provenance_records.py",
-    "scripts/generate_val001_schema_provenance_freeze.py",
-    "scripts/generate_val001_successor_consumed_lock.py",
-    "scripts/reconcile_val001_normative_administration.py",
-    "scripts/verify_val001_normative_schemas.py",
-    "tests/test_val001_normative_mutations.py",
-    "tools/validation/val001/mutations.py",
-    "tools/validation/val001/normative.py",
-    "validation/val001/VAL_001_IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY.json",
-    "validation/val001/VAL_001_MUTATION_EXECUTION_COVERAGE.json",
-    "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
-    "validation/val001/VAL_001_SCHEMA_PROVENANCE_TRANSITION_MATRIX.json",
-    "validation/val001/VAL_001_SCHEMA_TAXONOMY_AND_COUNTING_SPECIFICATION.json",
-    "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
-    "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V4.json",
-    "validation/val001/corrections/VAL_001_PR38_SCHEMA_PROVENANCE_AND_SEMANTIC_ENFORCEMENT_PLAN.json",
-})
+STAGE0_FREEZE_COMMIT = "f43bf2166f60f984e4ca5ca7f30c791a68c6259e"
+STAGE0_FREEZE_TREE = "6b812f61bb4e0630d80dc0fb4a0922d63554a704"
+STAGE0_CONTRACT_PATH = \
+    "validation/contracts/WP_0_3C_STAGE0_AUTHORITY_AND_INPUT_INTAKE_CONTRACT.json"
+STAGE0_CONTRACT_SHA256 = \
+    "88aee87865e5ea1cd9542432bad36809773cc62c8b24a3be30e043296ef3c613"
+# Later work-package paths are intentionally absent. The protected scope is
+# derived from the pinned historical Stage-0 contract below.
 FROZEN = {
     "validation/wp02/WP02_001_VERIFICATION_AND_RESULTS.json":
         "75a79e9972176668a8bfdb574ea16cbf39373a9ea11078009bc7b997c2f76859",
@@ -675,6 +206,72 @@ def changed_paths(root: Path) -> frozenset:
     return frozenset(paths)
 
 
+def _git(root: Path, *arguments: str) -> bytes:
+    return subprocess.run(
+        ["git", *arguments], cwd=root, check=True,
+        stdout=subprocess.PIPE).stdout
+
+
+def _protected_stage0_path(path: str) -> bool:
+    return (
+        path == STAGE0_CONTRACT_PATH
+        or path == "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md"
+        or path.startswith("validation/campaign/wp03c/")
+        or path.startswith("tools/campaign/wp03c/")
+    )
+
+
+def historical_stage0_scope(history_root: Path) -> Dict[str, bytes]:
+    """Return the protected Stage-0 bytes from the pinned public history."""
+    observed_tree = _git(
+        history_root, "rev-parse", STAGE0_FREEZE_COMMIT + "^{tree}"
+    ).decode().strip()
+    if observed_tree != STAGE0_FREEZE_TREE:
+        raise ValueError("historical Stage-0 tree mismatch")
+    historical_contract = _git(
+        history_root, "show", STAGE0_FREEZE_COMMIT + ":" + STAGE0_CONTRACT_PATH)
+    if hashlib.sha256(historical_contract).hexdigest() != STAGE0_CONTRACT_SHA256:
+        raise ValueError("historical Stage-0 contract mismatch")
+    contract = json.loads(historical_contract.decode())
+    permitted = contract.get("permitted_changed_paths", [])
+    if len(permitted) != len(set(permitted)):
+        raise ValueError("historical Stage-0 permitted path contract is not unique")
+    protected = sorted(path for path in permitted if _protected_stage0_path(path))
+    if not protected or STAGE0_CONTRACT_PATH not in protected:
+        raise ValueError("historical Stage-0 protected scope is empty or incomplete")
+    return {
+        path: _git(history_root, "show", STAGE0_FREEZE_COMMIT + ":" + path)
+        for path in protected
+    }
+
+
+def frozen_stage0_scope_integrity(candidate_root: Path,
+                                  history_root: Path = None) -> bool:
+    """Compare only frozen Stage-0 artifacts; ignore unrelated later work."""
+    history = history_root or candidate_root
+    try:
+        expected = historical_stage0_scope(history)
+    except (ValueError, subprocess.CalledProcessError, json.JSONDecodeError):
+        return False
+    actual = set()
+    for prefix in ("validation/campaign/wp03c", "tools/campaign/wp03c"):
+        directory = candidate_root / prefix
+        if directory.is_dir():
+            actual.update(
+                path.relative_to(candidate_root).as_posix()
+                for path in directory.rglob("*") if path.is_file())
+    for path in (
+        STAGE0_CONTRACT_PATH,
+        "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md",
+    ):
+        if (candidate_root / path).is_file():
+            actual.add(path)
+    if actual != set(expected):
+        return False
+    return all((candidate_root / path).read_bytes() == content
+               for path, content in expected.items())
+
+
 def evaluate(contract: Dict[str, object], registry: Dict[str, object],
              templates: Dict[str, Dict[str, object]], paths: frozenset,
              frozen: Dict[str, str], text: str,
@@ -722,33 +319,8 @@ def evaluate(contract: Dict[str, object], registry: Dict[str, object],
         for value in all_fields
     )
     return {
-        "fixed_path_boundary": (
-            paths == EXPECTED_PATHS
-            and set(contract.get("permitted_changed_paths", []))
-            == EXPECTED_PATHS - LATER_WP02_002_PATHS - frozenset({
-                "docs/validation/VAL_001_PR38_ADMINISTRATIVE_SEMANTIC_REMEDIATION_NOTE.md",
-                "scripts/generate_val001_administrative_freeze.py",
-                "scripts/verify_val001_administrative_closure.py",
-                "scripts/verify_val001_external_artifacts.py",
-                "tests/test_val001_administrative_semantics.py",
-                "tools/validation/val001/administrative.py",
-                "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json",
-                "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
-                "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
-                "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V3.json",
-                "validation/val001/corrections/VAL_001_PR38_ADMINISTRATIVE_CLOSURE_AND_SEMANTIC_REMEDIATION_PLAN.json",
-                "validation/val001/schemas/administrative_closure_freeze.schema.json",
-                "validation/val001/schemas/administrative_closure_specification.schema.json",
-                "validation/val001/schemas/canonical_consumed_lock.schema.json",
-                "validation/val001/schemas/governed_record_inventory.schema.json",
-                "validation/val001/schemas/governed_schema_registry.schema.json",
-                "docs/validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md",
-                "docs/validation/VALIDATION_OPERATING_STANDARD_V1.md",
-                "docs/validation/VALIDATION_REVIEW_CHECKLIST_V1.md",
-                "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md",
-                "docs/validation/templates/VALIDATION_CASE_RESULT_TEMPLATE.md",
-            })
-        ),
+        "original_permitted_path_contract":
+            canonical_aggregate(contract) == EXPECTED_CONTRACT_CANONICAL_SHA256,
         "baseline_exact":
             contract.get("baseline") == {"commit": BASELINE,
                                          "tree": "2fd9ae4a2e0040602daa29a4b5b4a7bc0ff899b9"},
@@ -902,14 +474,17 @@ def verify(root: Path) -> Dict[str, object]:
             (root / path).read_bytes() for path in generated_paths)
     paths = changed_paths(root)
     frozen = {path: sha(root / path) for path in FROZEN}
+    scope = historical_stage0_scope(root)
     text = "\n".join(
         (root / path).read_text(errors="replace")
-        for path in paths
-        if (root / path).is_file() and Path(path).suffix in {".json", ".md"}
-    )
+        for path in sorted(scope)
+        if (root / path).is_file() and Path(path).suffix in {".json", ".md"})
     checks = evaluate(
         contract, registry, templates, paths, frozen, text,
         regenerated_identical, stage0.wp03a_governing_requirements(root))
+    checks["historical_stage0_identity"] = bool(scope)
+    checks["frozen_stage0_scope_integrity"] = \
+        frozen_stage0_scope_integrity(root)
     return {
         "schema_version": "espresso.public.wp_0_3c_stage0_boundary.v1",
         "status": "PASS" if all(checks.values()) else "FAIL",

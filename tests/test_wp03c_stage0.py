@@ -2,6 +2,7 @@ import copy
 import importlib.util
 import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -29,7 +30,7 @@ class Stage0Tests(unittest.TestCase):
         return verifier.evaluate(
             contract or self.contract, registry or self.registry,
             templates or self.templates,
-            paths if paths is not None else verifier.EXPECTED_PATHS,
+            paths if paths is not None else frozenset(),
             frozen if frozen is not None else verifier.FROZEN, text,
             regenerated, governing or self.governing)
 
@@ -311,7 +312,95 @@ class Stage0Tests(unittest.TestCase):
     def test_contract_cannot_enlarge_boundary(self):
         contract = copy.deepcopy(self.contract)
         contract["permitted_changed_paths"].append("solver/unauthorized.C")
-        self.assertFalse(self.evaluate(contract=contract)["fixed_path_boundary"])
+        self.assertFalse(self.evaluate(
+            contract=contract)["original_permitted_path_contract"])
+
+
+class Stage0FrozenScopeTests(unittest.TestCase):
+    def write_frozen_scope(self, root):
+        scope = verifier.historical_stage0_scope(ROOT)
+        for path, content in scope.items():
+            target = root / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(content)
+        return scope
+
+    def test_authentic_frozen_stage0_snapshot_passes(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = Path(name)
+            self.write_frozen_scope(candidate)
+            self.assertTrue(verifier.frozen_stage0_scope_integrity(
+                candidate, ROOT))
+
+    def test_current_main_stage0_scope_passes(self):
+        self.assertTrue(verifier.frozen_stage0_scope_integrity(ROOT))
+        self.assertEqual(verifier.verify(ROOT)["status"], "PASS")
+
+    def test_unrelated_future_path_does_not_require_enumeration(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = Path(name)
+            self.write_frozen_scope(candidate)
+            future = candidate / "future/work/package/not_enumerated.txt"
+            future.parent.mkdir(parents=True)
+            future.write_text("authorized unrelated future work\n")
+            self.assertFalse(hasattr(verifier, "EXPECTED_PATHS"))
+            self.assertTrue(verifier.frozen_stage0_scope_integrity(
+                candidate, ROOT))
+
+    def test_protected_mutation_and_replacement_fail(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = Path(name)
+            scope = self.write_frozen_scope(candidate)
+            path = next(path for path in scope if "templates/" in path)
+            (candidate / path).write_text("replacement\n")
+            self.assertFalse(verifier.frozen_stage0_scope_integrity(
+                candidate, ROOT))
+
+    def test_protected_deletion_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = Path(name)
+            scope = self.write_frozen_scope(candidate)
+            path = next(path for path in scope if "templates/" in path)
+            (candidate / path).unlink()
+            self.assertFalse(verifier.frozen_stage0_scope_integrity(
+                candidate, ROOT))
+
+    def test_protected_rename_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = Path(name)
+            scope = self.write_frozen_scope(candidate)
+            path = next(path for path in scope if "templates/" in path)
+            source = candidate / path
+            source.rename(source.with_name("RENAMED_STAGE0_ARTIFACT.json"))
+            self.assertFalse(verifier.frozen_stage0_scope_integrity(
+                candidate, ROOT))
+
+    def test_protected_addition_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = Path(name)
+            self.write_frozen_scope(candidate)
+            addition = candidate / "validation/campaign/wp03c/UNAUTHORIZED.json"
+            addition.write_text("{}\n")
+            self.assertFalse(verifier.frozen_stage0_scope_integrity(
+                candidate, ROOT))
+
+    def test_permitted_path_contract_mutation_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = Path(name)
+            self.write_frozen_scope(candidate)
+            contract_path = candidate / verifier.STAGE0_CONTRACT_PATH
+            contract = json.loads(contract_path.read_text())
+            contract["permitted_changed_paths"].append("future/unrelated.txt")
+            contract_path.write_text(json.dumps(contract, indent=2) + "\n")
+            self.assertFalse(verifier.frozen_stage0_scope_integrity(
+                candidate, ROOT))
+
+    def test_historical_tree_and_contract_identities_are_exact(self):
+        scope = verifier.historical_stage0_scope(ROOT)
+        self.assertIn(verifier.STAGE0_CONTRACT_PATH, scope)
+        self.assertEqual(
+            verifier.sha(ROOT / verifier.STAGE0_CONTRACT_PATH),
+            verifier.STAGE0_CONTRACT_SHA256)
 
 
 if __name__ == "__main__":

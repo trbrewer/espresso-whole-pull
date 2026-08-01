@@ -119,3 +119,13 @@ inventory now executes one-to-one, and schema-family counts come only from the
 68 unique schema IDs referenced by 105 governed registrations. No solver,
 comparison, OpenFOAM, fitting, protected-data, result, journal, or claim-boundary
 change occurred.
+
+## 2026-08-01 — VAL-INFRA-002 Stage-0 verifier scope repair
+
+The WP-0.3C verifier was scoped to the frozen Stage-0 merge identity and
+protected artifacts derived from its original permitted-path contract.
+Unrelated authorized later repository paths no longer require historical
+allowlist entries, while protected Stage-0 artifacts and semantics remain
+fail-closed. No solver, configuration, scientific result, evidence, framework,
+operating standard, dependency lock, or claim ceiling changed, and no
+scientific execution occurred.

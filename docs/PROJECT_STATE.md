@@ -7,14 +7,19 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 218/218 PASS
-- Active candidate: `VAL-OPS-001_VALIDATION_OPERATING_STANDARD_V1`
+- Public source verification: 219/219 PASS
+- Active candidate: `VAL-INFRA-002_STAGE0_VERIFIER_SCOPE_REPAIR`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
 
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).
+
+VAL-INFRA-002 is an open reusable-infrastructure candidate that repairs the
+legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,
+framework pin, operating standard, solver, configuration, dependency, or claim
+ceiling and performs no scientific execution.
 
 ## Completed sequence
 

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 218,
-  "total_uncompressed_bytes_excluding_manifest": 1871668,
-  "aggregate_source_sha256": "ffd525e1dfdfb69d988eddf8c304427d2312740c2623d159f6eebd9c355711ca",
-  "aggregate_sha256": "ffd525e1dfdfb69d988eddf8c304427d2312740c2623d159f6eebd9c355711ca",
+  "file_count": 219,
+  "total_uncompressed_bytes_excluding_manifest": 1849821,
+  "aggregate_source_sha256": "c994b174ad2c9945e50dda592ae87afec391442276f1b21eac02ebd2a72287ab",
+  "aggregate_sha256": "c994b174ad2c9945e50dda592ae87afec391442276f1b21eac02ebd2a72287ab",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "474c891de23d3c264e9573c8aba4d408e19af0365ac309a7397dc0262baf342b",
-      "bytes": 5998,
+      "sha256": "512cb464d8b49ee87dd8bd81a1f677f4051cdee5a38b6323a1919b27e3efd4c9",
+      "bytes": 6291,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -489,8 +489,8 @@
       "git_mode": "100644"
     },
     "docs/validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md": {
-      "sha256": "e194edb2be568b4ab0750093848c75836a75d15eecbb90067c6f9d1257e940e6",
-      "bytes": 1293,
+      "sha256": "545b91f281c8e4ea34770b5a53883d62b75baae45f38ddcec87a4f42dbd37e21",
+      "bytes": 2374,
       "git_mode": "100644"
     },
     "docs/validation/VALIDATION_OPERATING_STANDARD_V1.md": {
@@ -546,6 +546,11 @@
     "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md": {
       "sha256": "249c20cd6a321a6bb01c7d25ed68e931458e1ffff57c71dff5bab604bea33737",
       "bytes": 6546,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_INFRA_002_STAGE0_VERIFIER_SCOPE_REPAIR.md": {
+      "sha256": "1433f05b33773a51072572dfd388197cb87a82f45de445bd939fefcdf18d560c",
+      "bytes": 1688,
       "git_mode": "100644"
     },
     "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md": {
@@ -894,8 +899,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_wp03c_stage0_scaffold.py": {
-      "sha256": "ab1eff8503e71bfb5f7aae629ac65eef9f5d72ef71ea79efc3e9d50585045b40",
-      "bytes": 53635,
+      "sha256": "eaa66bbcbcec1dbaec7d4d0b58ac5d270187ef942c87e4f23d6b4c5aa3578e01",
+      "bytes": 24679,
       "git_mode": "100755"
     },
     "scripts/waszkiewicz_effective_permeability.py": {
@@ -1119,8 +1124,8 @@
       "git_mode": "100644"
     },
     "tests/test_wp03c_stage0.py": {
-      "sha256": "a8f4a66866adbc9ccb1d8c2e58b7f56959b409e85ecb921e74660de30c110201",
-      "bytes": 15158,
+      "sha256": "1dc3937915bf72213846291d0153f7d20ad52d592a3958447ef74cf31020538b",
+      "bytes": 19205,
       "git_mode": "100644"
     }
   }
