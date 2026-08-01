@@ -6,15 +6,15 @@
     },
     {
       "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
-      "sha256": "170014f42132e19d5d818ba7e185314018a9f9fbcc43f16ff1bcf192a1b24363"
+      "sha256": "38ac18e1573979929b1796d07be63f6408fe8e89c4cb0a37d6ed1accbf453436"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
-      "sha256": "1cf849c4416aec5c384fc8d950c5325ba72afede5d43a350c6c7987bfa92f7f7"
+      "sha256": "0fd43b3cbdb721ff1a1ec1d8ebab85196bbefae38e0f01142d80c10c32b9b773"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
-      "sha256": "7f51581518f7adcd93fe542be9f0416f11a3287b961da5899f7d279301c497ba"
+      "sha256": "ca7be65d121f5682ad55458922d78de4eee75efae5d2fc3598821a936ea1b3c5"
     }
   ],
   "claim_boundaries": {
@@ -35,8 +35,42 @@
     "new_openfoam_case_executions": 0,
     "new_real_data_comparison_invocations": 0
   },
-  "implementation_commit": "3c8dee364382c49aa445769bb8f0c74105d7754b",
-  "implementation_tree": "ac475d3355df82d6657f2f2d12884d4d487ff172",
+  "implementation_bindings": [
+    {
+      "path": "tools/validation/val001/schema.py",
+      "sha256": "94c5e1672d4f58d4196759176870b76ca2e22b5c58ad22e6e764a68747361caa"
+    },
+    {
+      "path": "tools/validation/val001/deep_schema.py",
+      "sha256": "d54e1a38f0161c3df628be1e966220eb05b3a30bc911210d7c26eca1289747d1"
+    },
+    {
+      "path": "tools/validation/val001/inventory.py",
+      "sha256": "31f043b1888834c94428d7882f0295586b4fc32ed79826dd9d994d578ce8c9d9"
+    },
+    {
+      "path": "tools/validation/val001/administrative.py",
+      "sha256": "4dd97a49e7fdb5ca7d878600291be9d0cfe1e422b4d4b58c995afcea5491e390"
+    },
+    {
+      "path": "scripts/verify_val001_administrative_closure.py",
+      "sha256": "69429a0cac9872e87e1c3a3275ab37a7343c2c7b0286b33fe0aedd14f12a5497"
+    },
+    {
+      "path": "scripts/verify_val001_deep_schema_coverage.py",
+      "sha256": "1e3d74507f707284e79d2cfee1923c91511e83c4c61e84ae271739bb2aa9327b"
+    },
+    {
+      "path": "scripts/generate_val001_administrative_freeze.py",
+      "sha256": "4ee03624d55ae438083d4a9c6c28ffc07e21f2a5b159519429d8dd0b9c3c41ef"
+    },
+    {
+      "path": "tests/test_val001_administrative_semantics.py",
+      "sha256": "85a6dd04c5fa941d6d19a5263fe0f06c3f81ac5316602314172268d34af7571a"
+    }
+  ],
+  "implementation_commit": "e01d772de7e29af72cdd6ea92cec2b2facafce39",
+  "implementation_tree": "deb9c33b815dce1085f62355059240ba7e7c9b44",
   "ordinary_record_bindings": [
     {
       "path": "validation/val001/VAL_001_CALIBRATION_COMPARISON_LEDGER.json",
@@ -260,7 +294,7 @@
     },
     {
       "path": "validation/val001/schemas/administrative_closure_freeze.schema.json",
-      "sha256": "d6897e4e2fda369f0306ed8716310ae464e6d2baa8d7cddb425f1eb376033f27"
+      "sha256": "10c2172d688ba420e053ac95a08562099c257dbf1da8ea4e29a240ecde3958df"
     },
     {
       "path": "validation/val001/schemas/administrative_closure_specification.schema.json",
