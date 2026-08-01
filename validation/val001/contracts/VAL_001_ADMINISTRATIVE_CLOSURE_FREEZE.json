@@ -85,7 +85,7 @@
       "sha256": "538aeb760e89fa248b09a31980a2358dcce63594d43e7b01d3580ec115387e7c"
     }
   ],
-  "implementation_commit": "HEAD",
+  "implementation_commit": "f8f2b6d050e84d055d9b18141db3bda0e2057581",
   "implementation_tree": "9af56640193e99084d81ca0c69b43de23d87c1c5",
   "ordinary_record_bindings": [
     {
