@@ -69,7 +69,7 @@ def verify_closure(root:Path, *, require_clean:bool=True)->dict[str,Any]:
             if rel!=fb.get("path") or sha256(root/rel)!=fb.get("sha256"): raise ContractError("canonical lock freeze binding mismatch")
             commit=fb.get("commit","");tree=fb.get("tree","")
             if _git(root,"rev-parse",f"{commit}^{{tree}}")!=tree: raise ContractError("freeze commit/tree mismatch")
-            blob=_git(root,"show",f"{commit}:{rel}").encode()
+            blob=subprocess.check_output(["git","show",f"{commit}:{rel}"],cwd=root)
             import hashlib
             if hashlib.sha256(blob).hexdigest()!=fb.get("sha256"): raise ContractError("freeze bytes at commit mismatch")
         elif kind=="BOUND_BY_FINAL_GIT_TREE":
