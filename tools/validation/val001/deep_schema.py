@@ -15,6 +15,7 @@ from .schema import lint_schema
 FAMILY_SCHEMA_PATH = "validation/val001/schemas/deep_record_families.schema.json"
 COVERAGE_PATH = "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json"
 SCHEMA_DOCUMENT_PATH = "validation/val001/schemas/schema_document.schema.json"
+SPEC_REGISTRY = "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json"
 EXPLICIT_SCHEMAS = {
     INVENTORY_PATH:("governed_record_inventory.v3","validation/val001/schemas/governed_record_inventory.schema.json"),
     REGISTRY_PATH:("governed_schema_registry.v3","validation/val001/schemas/governed_schema_registry.schema.json"),
@@ -55,24 +56,24 @@ def _scalar_schema(key: str, values: list[Any]) -> dict[str, Any]:
     return out
 
 
-def infer_schema(values: list[Any], key: str = "") -> dict[str, Any]:
+def scaffold_non_governing_schema(values: list[Any], key: str = "") -> dict[str, Any]:
     value=values[0]
     if isinstance(value, dict):
         keys=sorted(value)
         if not all(isinstance(v,dict) and sorted(v)==keys for v in values):
             raise ContractError("shape-family object mismatch")
-        return {"type":"object","required":keys,"properties":{k:infer_schema([v[k] for v in values],k) for k in keys},"additionalProperties":False}
+        return {"type":"object","required":keys,"properties":{k:scaffold_non_governing_schema([v[k] for v in values],k) for k in keys},"additionalProperties":False}
     if isinstance(value,list):
         if not value:
             return {"type":"array","maxItems":0,"items":{"type":"null"}}
         items=[item for v in values for item in v]
         shapes={json.dumps(structure(item),sort_keys=True) for item in items}
         if len(shapes)==1:
-            item_schema=infer_schema(items,key)
+            item_schema=scaffold_non_governing_schema(items,key)
         else:
             grouped=defaultdict(list)
             for item in items: grouped[json.dumps(structure(item),sort_keys=True)].append(item)
-            item_schema={"anyOf":[infer_schema(group) for _,group in sorted(grouped.items())]}
+            item_schema={"anyOf":[scaffold_non_governing_schema(group) for _,group in sorted(grouped.items())]}
         return {"type":"array","minItems":min(len(v) for v in values),"maxItems":max(len(v) for v in values),"items":item_schema}
     return _scalar_schema(key,values)
 
@@ -83,19 +84,13 @@ def governed_json_paths(root: Path) -> list[Path]:
     return [p for p in discover(root) if p.suffix==".json" and p.relative_to(root).as_posix() not in set(EXPLICIT_SCHEMAS)|{FAMILY_SCHEMA_PATH} and "/schemas/" not in p.relative_to(root).as_posix()]
 
 
-def build_family_schema(root: Path) -> tuple[dict[str,Any],dict[str,str]]:
-    grouped: dict[tuple[str,str],list[tuple[str,Any]]]=defaultdict(list)
-    for path in governed_json_paths(root):
-        rel=path.relative_to(root).as_posix(); value=load_json(path)
-        sig=json.dumps(structure(value),sort_keys=True,separators=(",",":"))
-        grouped[(record_class(rel),sig)].append((rel,value))
-    branches=[]; mapping={}
-    for index,((klass,_),members) in enumerate(sorted(grouped.items()),1):
-        family=f"{klass.lower()}.v{index}"
-        branch=infer_schema([value for _,value in members])
-        branches.append(branch)
-        for rel,_ in members: mapping[rel]=family
-    schema={"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"espresso.val001.deep_record_families.v1","anyOf":branches}
+def load_explicit_family_schema(root: Path) -> tuple[dict[str,Any],dict[str,str]]:
+    """Load reviewed specifications; governed instances never shape schemas."""
+    from .explicit_semantics import load_policy
+    _,_,specs,bindings,_=load_policy(root)
+    ordered=sorted(specs.values(),key=lambda item:item["specification_id"])
+    schema={"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"espresso.val001.explicit_record_families.v2","anyOf":[item["schema"] for item in ordered]}
+    mapping={path:binding["specification_id"] for path,binding in bindings.items()}
     lint_schema(schema)
     return schema,mapping
 
@@ -106,20 +101,17 @@ def historical(path: str) -> bool:
 
 
 def build_coverage(root: Path, mapping: dict[str,str]) -> dict[str,Any]:
+    from .explicit_semantics import load_policy
+    _,_,specs,bindings,_=load_policy(root)
     records=[]
     for path in discover(root):
         rel=path.relative_to(root).as_posix()
         data=path.read_bytes(); value=load_json(path) if path.suffix==".json" else None
-        if rel in EXPLICIT_SCHEMAS:
-            family,schema_path=EXPLICIT_SCHEMAS[rel]
-        elif "/schemas/" in rel:
-            family="json_schema_document.v1"; schema_path=SCHEMA_DOCUMENT_PATH
-        elif path.suffix==".jsonl":
-            family="deep_invocation_event_families.v1"; schema_path="validation/val001/schemas/deep_invocation_event_families.schema.json"
-        else:
-            family=mapping[rel]; schema_path=FAMILY_SCHEMA_PATH
+        if rel not in bindings: raise ContractError(f"explicit specification omits {rel}")
+        binding=bindings[rel]; specification=specs[binding["specification_id"]]
+        family=binding["specification_id"]; schema_path=SPEC_REGISTRY
         administratively_bound=rel in set(EXPLICIT_SCHEMAS)
-        records.append({"path":rel,"sha256":None if administratively_bound else hashlib.sha256(data).hexdigest(),"git_blob":None if administratively_bound else _git(root,["hash-object",rel]),"producing_commit":"BOUND_BY_ADMINISTRATIVE_GRAPH" if administratively_bound else _git(root,["log","-1","--format=%H","--",rel]),"artifact_record_id":(value or {}).get("record_id",(value or {}).get("adapter_id",rel)),"record_class":record_class(rel),"structural_family":family,"schema_version":(value or {}).get("schema_version","JSONL_V3"),"schema_id":family,"schema_path":schema_path,"semantic_validator":"validate_governed_cross_record","semantic_profile":"VAL001_EXPLICIT_PROFILE_V1","schema_origin":"EXPLICIT_CLASS_OR_VERSION_SEMANTICS","treatment":"IMMUTABLE_HISTORICAL_DEEP_SCHEMA" if historical(rel) else "CURRENT_DEEP_SCHEMA","governing_status":"AUDIT_OR_SUPERSEDED" if historical(rel) else "CURRENT_GOVERNED","executable":False,"claim_ceiling":"NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS","puckworks_lock_applicable":True,"mutation_test_family":family,"coverage_status":"DEEP_SCHEMA_AND_SEMANTIC_VALIDATION"})
+        records.append({"path":rel,"sha256":None if administratively_bound else hashlib.sha256(data).hexdigest(),"git_blob":None if administratively_bound else _git(root,["hash-object",rel]),"producing_commit":"BOUND_BY_ADMINISTRATIVE_GRAPH" if administratively_bound else _git(root,["log","-1","--format=%H","--",rel]),"artifact_record_id":(value or {}).get("record_id",(value or {}).get("adapter_id",rel)),"record_class":record_class(rel),"structural_family":family,"schema_version":(value or {}).get("schema_version","JSONL_V3"),"schema_id":specification["schema_id"],"schema_path":schema_path,"semantic_validator":"validate_profile_dispatch","semantic_profile":binding["semantic_profile_id"],"schema_origin":specification["origin"],"treatment":"IMMUTABLE_HISTORICAL_DEEP_SCHEMA" if historical(rel) else "CURRENT_DEEP_SCHEMA","governing_status":"AUDIT_OR_SUPERSEDED" if historical(rel) else "CURRENT_GOVERNED","executable":False,"claim_ceiling":"NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS","puckworks_lock_applicable":True,"mutation_test_family":family,"coverage_status":"DEEP_SCHEMA_AND_SEMANTIC_VALIDATION"})
     return {"schema_version":"espresso.val001.deep_schema_coverage_matrix.v1","record_id":"VAL001-DEEP-SCHEMA-COVERAGE-MATRIX-1","scope":"ALL_GOVERNED_RECORDS_WITH_ACYCLIC_ADMINISTRATIVE_CLOSURE","record_count":len(records),"records":records,"closure":{"matrix_self":"BOUND_BY_DEEP_SCHEMA_FREEZE","inventory_registry":"GENERATED_FROM_THIS_MATRIX","freeze":"BINDS_MATRIX_INVENTORY_REGISTRY","successor_lock":"BINDS_FREEZE"}}
 
 
@@ -130,10 +122,10 @@ def _git(root:Path,args:list[str])->str:
 
 
 def validate_family_records(root:Path,schema:dict[str,Any],mapping:dict[str,str])->int:
-    from .framework import validate_record
+    from .explicit_semantics import validate_profile_dispatch
     count=0
     for path in governed_json_paths(root):
-        value=load_json(path);validate_record(value,schema);semantic_validate(path.relative_to(root).as_posix(),value);count+=1
+        rel=path.relative_to(root).as_posix();value=load_json(path);validate_profile_dispatch(root,rel,value);count+=1
     return count
 
 

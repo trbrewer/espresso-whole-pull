@@ -14,6 +14,7 @@ SCHEMA_DOCUMENT_PATH = "validation/val001/schemas/schema_document.schema.json"
 ADMIN_FREEZE_PATH = "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json"
 CANONICAL_LOCK_PATH = "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json"
 ADMIN_CLOSURE_PATH = "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json"
+SPEC_REGISTRY = "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json"
 ADMIN_BOUND = {INVENTORY_PATH, REGISTRY_PATH, COVERAGE_PATH, ADMIN_CLOSURE_PATH}
 
 def structure(value: Any) -> Any:
@@ -44,8 +45,8 @@ def discover(root: Path) -> list[Path]:
     return sorted(path for path in base.rglob("*") if path.is_file() and path.suffix in {".json",".jsonl"})
 
 def build_inventory(root: Path) -> dict[str,Any]:
-    coverage_path=root/COVERAGE_PATH
-    coverage_by_path={r["path"]:r for r in load_json(coverage_path)["records"]} if coverage_path.exists() else {}
+    from .explicit_semantics import load_policy
+    _,_,specs,bindings,_=load_policy(root)
     records=[]
     for path in discover(root):
         rel=path.relative_to(root).as_posix(); data=path.read_bytes()
@@ -54,26 +55,11 @@ def build_inventory(root: Path) -> dict[str,Any]:
         # The inventory identity is path-derived and therefore unique even when
         # immutable historical generations legitimately retain one artifact ID.
         record_id="INV-"+hashlib.sha256(rel.encode("utf-8")).hexdigest()[:20].upper()
-        if rel==INVENTORY_PATH:
-            schema_id="espresso.val001.governed_record_inventory.v3";schema_path="validation/val001/schemas/governed_record_inventory.schema.json";treatment="CURRENT_DEEP_SCHEMA"
-        elif rel==REGISTRY_PATH:
-            schema_id="espresso.val001.governed_schema_registry.v3";schema_path="validation/val001/schemas/governed_schema_registry.schema.json";treatment="CURRENT_DEEP_SCHEMA"
-        elif rel==COVERAGE_PATH:
-            schema_id="espresso.val001.deep_schema_coverage_matrix.v1";schema_path="validation/val001/schemas/coverage_matrix.schema.json";treatment="CURRENT_DEEP_SCHEMA"
-        elif rel==ADMIN_CLOSURE_PATH:
-            schema_id="espresso.val001.administrative_closure_specification.v1";schema_path="validation/val001/schemas/administrative_closure_specification.schema.json";treatment="CURRENT_DEEP_SCHEMA"
-        elif rel==ADMIN_FREEZE_PATH:
-            schema_id="espresso.val001.administrative_closure_freeze.v1";schema_path="validation/val001/schemas/administrative_closure_freeze.schema.json";treatment="CURRENT_DEEP_SCHEMA"
-        elif rel==CANONICAL_LOCK_PATH:
-            schema_id="espresso.val001.canonical_consumed_lock.v2";schema_path="validation/val001/schemas/canonical_consumed_lock.schema.json";treatment="CURRENT_DEEP_SCHEMA"
-        elif "/schemas/" in rel:
-            schema_id="espresso.val001.schema_document.v1";schema_path=SCHEMA_DOCUMENT_PATH;treatment="CURRENT_DEEP_SCHEMA"
-        elif path.suffix==".jsonl":
-            schema_id="espresso.val001.deep_invocation_event_families.v1";schema_path="validation/val001/schemas/deep_invocation_event_families.schema.json";treatment="IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
-        else:
-            item=coverage_by_path.get(rel)
-            if item is None: raise ContractError(f"coverage matrix omits {rel}")
-            schema_id=item["schema_id"];schema_path=item["schema_path"];treatment=item["treatment"]
+        binding=bindings.get(rel)
+        if binding is None: raise ContractError(f"explicit schema registry omits {rel}")
+        specification=specs[binding["specification_id"]]
+        schema_id=specification["schema_id"];schema_path=SPEC_REGISTRY
+        treatment=binding["treatment"]
         tracked=git_value(root,["ls-files","--error-unmatch",rel],"")
         blob=git_value(root,["hash-object",rel],hashlib.sha1(data).hexdigest())
         producing=git_value(root,["log","-1","--format=%H","--",rel],"PENDING_COMPLETION_COMMIT") if tracked else "PENDING_COMPLETION_COMMIT"
@@ -86,7 +72,7 @@ def build_inventory(root: Path) -> dict[str,Any]:
         else:
             binding_class="ORDINARY_HASH_BOUND_RECORD"; bound_sha=hashlib.sha256(data).hexdigest(); bound_blob=blob; binder=ADMIN_FREEZE_PATH
         signature=hashlib.sha256(canonical_json({"binding_class":binding_class,"schema_id":schema_id})).hexdigest() if binding_class!="ORDINARY_HASH_BOUND_RECORD" else hashlib.sha256(canonical_json(structure(value))).hexdigest()
-        records.append({"path":rel,"sha256":bound_sha,"git_blob":bound_blob,"producing_commit":producing,"record_id":record_id,"artifact_record_id":artifact_record_id,"record_class":record_class(rel),"schema_id":schema_id,"schema_version":value.get("schema_version","JSONL_V3") if isinstance(value,dict) else "JSONL_V3","schema_path":schema_path,"semantic_validator":"VALIDATE_DEEP_AND_CROSS_RECORD","semantic_profile":"VAL001_EXPLICIT_PROFILE_V1","schema_origin":"EXPLICIT_CLASS_OR_VERSION_SEMANTICS","binding_class":binding_class,"binder":binder,"treatment":treatment,"current":treatment=="CURRENT_DEEP_SCHEMA","executable":False,"audit_only":treatment!="CURRENT_DEEP_SCHEMA","mutability":"IMMUTABLE_AFTER_ADMINISTRATIVE_FREEZE","governing":rel.endswith("INVOCATION_SUMMARY_V2.json"),"superseded":("historical/" in rel or "FIRST_COMPONENT" in rel or "EXECUTION_FAILURE" in rel),"claim_ceiling":"NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS","puckworks_lock_applicable":rel.startswith("validation/val001/"),"source_access_role":"NO_SOURCE_ACCESS" if "ACCESS_LOG" not in rel else "SOURCE_ACCESS_AUDIT","static_validation":"REQUIRED","structure_signature_sha256":signature})
+        records.append({"path":rel,"sha256":bound_sha,"git_blob":bound_blob,"producing_commit":producing,"record_id":record_id,"artifact_record_id":artifact_record_id,"record_class":binding["record_class"],"schema_id":schema_id,"schema_version":value.get("schema_version","JSONL_V3") if isinstance(value,dict) else "JSONL_V3","schema_path":schema_path,"semantic_validator":"validate_profile_dispatch","semantic_profile":binding["semantic_profile_id"],"schema_origin":specification["origin"],"binding_class":binding_class,"binder":binder,"treatment":treatment,"current":binding["current"],"executable":False,"audit_only":binding["audit_only"],"mutability":"IMMUTABLE_AFTER_ADMINISTRATIVE_FREEZE","governing":rel.endswith("INVOCATION_SUMMARY_V2.json"),"superseded":("historical/" in rel or "FIRST_COMPONENT" in rel or "EXECUTION_FAILURE" in rel),"claim_ceiling":"NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS","puckworks_lock_applicable":rel.startswith("validation/val001/"),"source_access_role":"NO_SOURCE_ACCESS" if "ACCESS_LOG" not in rel else "SOURCE_ACCESS_AUDIT","static_validation":"REQUIRED","structure_signature_sha256":signature})
     paths=[r["path"] for r in records]; ids=[str(r["record_id"]) for r in records]
     if len(paths)!=len(set(paths)): raise ContractError("duplicate inventory path")
     duplicates={item for item in ids if ids.count(item)>1 and item not in {"VAL-001"}}

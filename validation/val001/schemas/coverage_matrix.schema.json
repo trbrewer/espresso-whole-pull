@@ -90,10 +90,11 @@
             "type": "string"
           },
           "semantic_profile": {
-            "const": "VAL001_EXPLICIT_PROFILE_V1"
+            "type": "string",
+            "pattern": "^PROFILE-.+$"
           },
           "schema_origin": {
-            "const": "EXPLICIT_CLASS_OR_VERSION_SEMANTICS"
+            "enum": ["EXPLICIT_CLASS_SEMANTICS", "EXPLICIT_VERSION_SEMANTICS", "EXPLICIT_RECORD_SEMANTICS"]
           },
           "sha256": {
             "pattern": "^[0-9a-f]{64}$",

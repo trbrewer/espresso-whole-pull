@@ -1,7 +1,8 @@
 from __future__ import annotations
 import copy,json,tempfile,unittest
 from pathlib import Path
-from tools.validation.val001.deep_schema import build_family_schema,governed_json_paths,semantic_validate
+from tools.validation.val001.deep_schema import load_explicit_family_schema,governed_json_paths
+from tools.validation.val001.explicit_semantics import explicit_schema_for,validate_profile_dispatch
 from tools.validation.val001.framework import ContractError,load_json,validate_record
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -41,7 +42,7 @@ def find_slot(value,predicate):
 class DeepSchemaCoverageTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.schema,cls.mapping=build_family_schema(ROOT)
+  cls.schema,cls.mapping=load_explicit_family_schema(ROOT)
   cls.by_family={}
   for path in governed_json_paths(ROOT):cls.by_family.setdefault(cls.mapping[path.relative_to(ROOT).as_posix()],path)
 
@@ -50,13 +51,13 @@ class DeepSchemaCoverageTests(unittest.TestCase):
    value=load_json(path)
    with self.subTest(family=family,mutation='required'):
     changed=copy.deepcopy(value);obj=first_object(changed);obj.pop(next(iter(obj)))
-    with self.assertRaises(ContractError):validate_record(changed,self.schema)
+    with self.assertRaises(ContractError):validate_record(changed,explicit_schema_for(ROOT,path.relative_to(ROOT).as_posix()))
    with self.subTest(family=family,mutation='wrong_type'):
     changed=copy.deepcopy(value);obj,key,old=first_scalar_slot(changed);obj[key]=0 if isinstance(old,str) else "WRONG_TYPE"
-    with self.assertRaises(ContractError):validate_record(changed,self.schema)
+    with self.assertRaises(ContractError):validate_record(changed,explicit_schema_for(ROOT,path.relative_to(ROOT).as_posix()))
    with self.subTest(family=family,mutation='unknown'):
     changed=copy.deepcopy(value);first_object(changed)['UNREGISTERED_NESTED_FIELD']=True
-    with self.assertRaises(ContractError):validate_record(changed,self.schema)
+    with self.assertRaises(ContractError):validate_record(changed,explicit_schema_for(ROOT,path.relative_to(ROOT).as_posix()))
 
  def test_claim_and_authority_escalations_fail_semantically(self):
   cases=[
@@ -65,7 +66,7 @@ class DeepSchemaCoverageTests(unittest.TestCase):
   ]
   for rel,key,bad in cases:
    value=load_json(ROOT/rel);value[key]=bad
-   with self.assertRaises(ContractError):semantic_validate(rel,value)
+   with self.assertRaises(ContractError):validate_profile_dispatch(ROOT,rel,value)
 
  def test_applicable_family_enums_hashes_and_claims_reject_mutations(self):
   exercised={"enum":0,"hash":0}
@@ -75,13 +76,13 @@ class DeepSchemaCoverageTests(unittest.TestCase):
    if slot:
     changed=copy.deepcopy(value);target=find_slot(changed,lambda k,v:isinstance(v,str) and any(t in k.lower() for t in ('status','role','classification','disposition')));target[0][target[1]]='INVALID_UNDECLARED_ENUM'
     with self.subTest(family=family,mutation='enum'):
-     with self.assertRaises(ContractError):validate_record(changed,self.schema)
+     with self.assertRaises(ContractError):validate_record(changed,explicit_schema_for(ROOT,path.relative_to(ROOT).as_posix()))
     exercised['enum']+=1
    slot=find_slot(value,lambda k,v:isinstance(v,str) and (k.lower().endswith('sha256') or k.lower()=='sha256'))
    if slot:
     changed=copy.deepcopy(value);target=find_slot(changed,lambda k,v:isinstance(v,str) and (k.lower().endswith('sha256') or k.lower()=='sha256'));target[0][target[1]]='bad-hash'
     with self.subTest(family=family,mutation='hash'):
-     with self.assertRaises(ContractError):validate_record(changed,self.schema)
+     with self.assertRaises(ContractError):validate_record(changed,explicit_schema_for(ROOT,path.relative_to(ROOT).as_posix()))
     exercised['hash']+=1
   self.assertGreater(exercised['enum'],0);self.assertGreater(exercised['hash'],0)
 
