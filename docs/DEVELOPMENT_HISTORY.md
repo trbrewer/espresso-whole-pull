@@ -93,3 +93,12 @@ from information value rather than implementation convenience.
   authority invariants, replaced all 60 primary sidecar treatments with direct
   immutable-historical deep validation, and added synthetic family mutation
   tests. No solver, comparison, result, or invocation event changed.
+## 2026-07-31 — VAL-001 administrative closure and semantic enforcement
+
+PR #38 received an additive zero-exclusion administrative binding graph,
+recursive schema-document validation, explicit semantic profiles and
+escalation mutations, a full-commit/tree successor consumed lock, and a
+stable read-only copy of the already-created OpenFOAM evidence. The original
+result, failed invocation, V2, journal, and derived summary were not changed.
+No comparison, OpenFOAM execution, fit, protected access, or scientific
+method change occurred.

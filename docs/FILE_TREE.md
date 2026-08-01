@@ -115,3 +115,8 @@ The final schema taxonomy is recorded in
 `validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json`; generated closed
 families live in `validation/val001/schemas/deep_record_families.schema.json`
 and are checked by `scripts/verify_val001_deep_schema_coverage.py`.
+VAL-001 administrative closure adds
+`VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json`, the explicit semantic
+profile registry, administrative freeze and canonical-lock schemas,
+`tools/validation/val001/administrative.py`, and non-writing administrative
+and external-artifact verifiers. Full OpenFOAM products remain outside Git.

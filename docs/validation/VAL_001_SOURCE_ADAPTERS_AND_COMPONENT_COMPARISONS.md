@@ -92,3 +92,13 @@ was not assessed and mechanism uniqueness was not assessed. Additional data
 remain required before new physics as a conservative policy decision. The
 former 4/60 schema gap is closed without changing any result or scientific
 classification; all governed records now receive direct deep validation.
+## Final administrative-closure correction
+
+All governed JSON/JSONL records, including inventory, registry, prior freezes,
+the administrative freeze, and canonical lock, are now independently
+enumerated. The finite graph terminates only at the canonical lock's exact Git
+blob in the reviewed head/tree. Explicit semantic profiles reject authority or
+claim escalation independently of immutable hashes. This framework hardening
+does not modify V2 arithmetic or interpretation and created no comparison or
+OpenFOAM execution. Quantitative discrimination and mechanism uniqueness
+remain not assessed; additional evidence remains required before new physics.

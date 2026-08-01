@@ -108,3 +108,15 @@ structure signature, and verifies byte-identical journal-to-summary
 regeneration. All records now validate directly through 45 closed structural
 families; sidecar-primary and generic catch-all counts are zero. All mutation
 testing remains synthetic; V2 and the invocation journal are unchanged.
+## VAL-001 final administrative and semantic closure
+
+- Governed records: 86/86 directly enumerated and validated.
+- Binding graph: 80 ordinary, 4 administrative-freeze bound, 1 canonical-lock
+  bound, 1 final-Git-tree bound; zero cycles and orphans.
+- Schema documents: recursive AST and keyword-value validation enabled.
+- Semantic escalation: historical, campaign, identifiability, execution,
+  fitting, configuration, claim, dependency, and consumed-state boundaries
+  fail closed under synthetic mutation.
+- External artifacts: seven prior OpenFOAM files restored read-only and
+  hash-verified; zero builds and zero executions in this cycle.
+- Physical validation: not established.

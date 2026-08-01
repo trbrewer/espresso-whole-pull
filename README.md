@@ -96,3 +96,13 @@ sidecar-primary or generic catch-all validation.
 ## License
 
 The solver and repository code are licensed under GPL-3.0-or-later. See `LICENSE`, `NOTICE.md`, `THIRD_PARTY_NOTICES.md`, and `docs/LICENSING.md`. This licensing audit is informational and not legal advice.
+### VAL-001 final administrative closure
+
+PR #38 now uses zero-exclusion enumeration and an acyclic 86-record binding
+graph terminating in the canonical lock at the reviewed Git head/tree. Schema
+documents receive recursive keyword-value validation and explicit semantic
+profiles fail closed for historical, campaign, protected/holdout, fitting,
+identifiability, claim, and consumed-authority escalation. The retained V2
+result and four-event invocation journal are unchanged. No comparison or
+OpenFOAM execution occurred; the prior OpenFOAM bytes are restored read-only
+in the external audit store. Physical validation remains not established.
