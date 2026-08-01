@@ -21,7 +21,7 @@ EXPLICIT_SCHEMAS = {
     REGISTRY_PATH:("governed_schema_registry.v3","validation/val001/schemas/governed_schema_registry.schema.json"),
     COVERAGE_PATH:("deep_schema_coverage_matrix.v1","validation/val001/schemas/coverage_matrix.schema.json"),
     ADMIN_CLOSURE_PATH:("administrative_closure_specification.v1","validation/val001/schemas/administrative_closure_specification.schema.json"),
-    ADMIN_FREEZE_PATH:("administrative_closure_freeze.v1","validation/val001/schemas/administrative_closure_freeze.schema.json"),
+    ADMIN_FREEZE_PATH:("explicit_semantics_completion_freeze.v1","validation/val001/schemas/explicit_semantics_completion_freeze.schema.json"),
     CANONICAL_LOCK_PATH:("canonical_consumed_lock.v2","validation/val001/schemas/canonical_consumed_lock.schema.json"),
 }
 
