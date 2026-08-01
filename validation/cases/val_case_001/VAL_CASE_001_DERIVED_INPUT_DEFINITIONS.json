@@ -6,6 +6,7 @@
   "serialization": "UTF-8 JSON, sort_keys=true, indent=2, trailing newline",
   "primary_fraction": 0.05,
   "half_fraction": 0.025,
+  "bounded_correction": {"parameters": ["pc", "pshut"], "primary_fraction": 0.025, "half_fraction": 0.0125, "reason": "PRESERVE_STRICT_PSHUT_BELOW_PC_ADMISSIBILITY"},
   "stage_a_parameters": ["Cu", "Qfree", "Ru", "k0", "pc", "phi0", "pshut"],
   "stage_b_selection": {"count": 3, "rule": "descending maximum absolute fixed-scale normalized sensitivity across SET_A through SET_D; parameter-ID tie break"},
   "stage_c_parameters": ["k0", "pc", "phi0"],

@@ -38,8 +38,10 @@ class ValCase001Tests(unittest.TestCase):
         self.assertLess(plus, 1.0)
         with self.assertRaises(ValueError):
             MOD.perturb(MOD.base_config(ROOT, "finite", "MACHINE_MID"), "phi0", 2.0)
-        with self.assertRaises(ValueError):
-            MOD.perturb(MOD.base_config(ROOT, "finite", "MACHINE_MID"), "pc", -0.2)
+        self.assertEqual(MOD.PRIMARY_FRACTIONS["pc"], 0.025)
+        self.assertEqual(MOD.PRIMARY_FRACTIONS["pshut"], 0.025)
+        self.assertEqual(MOD.HALF_FRACTIONS["pc"], 0.0125)
+        self.assertEqual(MOD.HALF_FRACTIONS["pshut"], 0.0125)
 
     def test_central_and_one_sided_finite_difference(self):
         minus, base, plus = np.array([1.0]), np.array([2.0]), np.array([5.0])

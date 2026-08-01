@@ -24,6 +24,8 @@ BASE_TREE = "85711011a96ebaa46a77b5165aec0ab46e676542"
 ARTIFACT_ID = "VAL-CASE-001-OPENFOAM12-20260801"
 PRIMARY = 0.05
 HALF = 0.025
+PRIMARY_FRACTIONS = {"pc": 0.025, "pshut": 0.025}
+HALF_FRACTIONS = {"pc": 0.0125, "pshut": 0.0125}
 COMMON_TIMES = (10.0, 15.0, 20.0, 25.0, 30.0)
 PARAMETERS = {
     "Cu": ("machineBoundary", "upstreamCompliance", 2.0e-11, "m3/Pa"),
@@ -216,10 +218,11 @@ def generate_stage_a(root: pathlib.Path, run_root: pathlib.Path) -> list[dict]:
     records.append(case_record(root, out, "A-REPEAT", copy.deepcopy(finite), "A", "MACHINE_MID", "finite"))
     records.append(case_record(root, out, "A-UNIVERSAL", base_config(root, "universal", "MACHINE_MID"), "A", "MACHINE_MID", "universal"))
     for p in STAGE_A_PARAMETERS:
+        step = PRIMARY_FRACTIONS.get(p, PRIMARY)
         for sign, label in ((-1.0, "MINUS"), (1.0, "PLUS")):
             cfg = copy.deepcopy(finite)
-            perturb(cfg, p, sign * PRIMARY)
-            records.append(case_record(root, out, f"A-{p}-{label}", cfg, "A", "MACHINE_MID", "finite", p, sign * PRIMARY))
+            perturb(cfg, p, sign * step)
+            records.append(case_record(root, out, f"A-{p}-{label}", cfg, "A", "MACHINE_MID", "finite", p, sign * step))
     return records
 
 
@@ -227,19 +230,21 @@ def generate_rest(root: pathlib.Path, run_root: pathlib.Path, selected: list[str
     out, records = run_root / "configs", []
     finite = base_config(root, "finite", "MACHINE_MID")
     for p in selected:
+        step = HALF_FRACTIONS.get(p, HALF)
         for sign, label in ((-1.0, "MINUS"), (1.0, "PLUS")):
             cfg = copy.deepcopy(finite)
-            perturb(cfg, p, sign * HALF)
-            records.append(case_record(root, out, f"B-{p}-{label}", cfg, "B", "MACHINE_MID", "finite", p, sign * HALF))
+            perturb(cfg, p, sign * step)
+            records.append(case_record(root, out, f"B-{p}-{label}", cfg, "B", "MACHINE_MID", "finite", p, sign * step))
     for condition in CONDITIONS:
         finite_c = base_config(root, "finite", condition)
         records.append(case_record(root, out, f"C-{condition}-FINITE", copy.deepcopy(finite_c), "C", condition, "finite"))
         records.append(case_record(root, out, f"C-{condition}-UNIVERSAL", base_config(root, "universal", condition), "C", condition, "universal"))
         for p in STAGE_C_PARAMETERS:
+            step = PRIMARY_FRACTIONS.get(p, PRIMARY)
             for sign, label in ((-1.0, "MINUS"), (1.0, "PLUS")):
                 cfg = copy.deepcopy(finite_c)
-                perturb(cfg, p, sign * PRIMARY)
-                records.append(case_record(root, out, f"C-{condition}-{p}-{label}", cfg, "C", condition, "finite", p, sign * PRIMARY))
+                perturb(cfg, p, sign * step)
+                records.append(case_record(root, out, f"C-{condition}-{p}-{label}", cfg, "C", condition, "finite", p, sign * step))
     return records
 
 
@@ -344,7 +349,7 @@ def select_top3(run_root: pathlib.Path) -> tuple[list[str], dict]:
     ranking = []
     detail = {}
     for p in STAGE_A_PARAMETERS:
-        d = derivative(run_root, "A", p, PRIMARY)
+        d = derivative(run_root, "A", p, PRIMARY_FRACTIONS.get(p, PRIMARY))
         score = float(np.max(np.abs(d["normalized"])))
         detail[p] = score
         ranking.append((-score, p))
@@ -382,7 +387,7 @@ def correlation(jac: np.ndarray, parameters: tuple[str, ...]) -> dict:
 def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path) -> dict:
     selected, influence = select_top3(run_root)
     names, _, _ = feature_vector(read_trace(run_root, "A-BASE"))
-    derivatives = {p: derivative(run_root, "A", p, PRIMARY) for p in STAGE_A_PARAMETERS}
+    derivatives = {p: derivative(run_root, "A", p, PRIMARY_FRACTIONS.get(p, PRIMARY)) for p in STAGE_A_PARAMETERS}
     full_jac = np.column_stack([derivatives[p]["normalized"] for p in STAGE_A_PARAMETERS])
     set_ends = {}
     for set_id in FEATURES:
@@ -395,7 +400,7 @@ def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path
     stability = {}
     for p in selected:
         primary = derivatives[p]["physical"]
-        half = derivative(run_root, "B", p, HALF)["physical"]
+        half = derivative(run_root, "B", p, HALF_FRACTIONS.get(p, HALF))["physical"]
         valid = np.abs(primary) > 0.0
         ratios = np.full(primary.shape, np.nan)
         ratios[valid] = half[valid] / primary[valid]
@@ -424,7 +429,7 @@ def analyze(root: pathlib.Path, run_root: pathlib.Path, executable: pathlib.Path
                              "separation_vector": dict(zip(f[0], delta.tolist()))}
     stage_c = {}
     for condition in CONDITIONS:
-        cols = [derivative(run_root, f"C-{condition}", p, PRIMARY)["normalized"] for p in STAGE_C_PARAMETERS]
+        cols = [derivative(run_root, f"C-{condition}", p, PRIMARY_FRACTIONS.get(p, PRIMARY))["normalized"] for p in STAGE_C_PARAMETERS]
         jac = np.column_stack(cols)
         stage_c[condition] = {"svd": svd_summary(jac), "correlation": correlation(jac, STAGE_C_PARAMETERS)}
     case_results = []
