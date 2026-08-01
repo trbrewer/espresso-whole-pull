@@ -2,11 +2,11 @@
   "bindings": [
     {
       "path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
-      "sha256": "6450bc4cb2af9bd79fa68611d200bc2200ee23102530685b18a506a3d38cbf6e"
+      "sha256": "4898f409ca7efb6ab3b0b071c1fcf4f3c80da51edab92d1472574a840f7051fe"
     },
     {
       "path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
-      "sha256": "86d239f0f27c9f8b30a57eeabb5068a515ae7cfa819e5c6863d4029df35e0151"
+      "sha256": "7c4389dc0b6bfc06f58bcfd2fffa324eab7bed013acb3d0cbc86c2e12e5fe035"
     },
     {
       "path": "validation/val001/VAL_001_SCHEMA_PROVENANCE_TRANSITION_MATRIX.json",
@@ -34,15 +34,15 @@
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
-      "sha256": "3c01b6301543e75d7573e2e979053eb1b6a31e84d4dc1f552dc15a5a7ac3f0ff"
+      "sha256": "a29cf280abe961f4065bab5beb301431d7994620d9e32c7de5a04ec08e0113b5"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
-      "sha256": "e0a7b63492ad91e46853b09cfa1655490b24813128d1ab5fa4c6829085d4709b"
+      "sha256": "698e7ecd41104536efe110f8814a650d1540906d926885ebc49e2f16d97aa5aa"
     },
     {
       "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
-      "sha256": "57fb6d5f88cf0e714c31809b13915de4b57a5aa04ba21df2e978e5b5b3b6b62f"
+      "sha256": "1d4a33fd1c3129b9bde2ca0205deaed80ea3289de34cd6176c9236d6429d9f64"
     },
     {
       "path": "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
@@ -50,7 +50,7 @@
     },
     {
       "path": "tools/validation/val001/normative.py",
-      "sha256": "80280de7b8e8411946c6d2afb76d159348cc324ff1c4bfe4ce363be44ecceb9a"
+      "sha256": "12a6c7ace78cccccdb224df6bbb44649f101cb28968813d961c751865511c7f1"
     },
     {
       "path": "tools/validation/val001/mutations.py",
@@ -387,8 +387,8 @@
     "new_real_data_comparison_invocations": 0
   },
   "implementation": {
-    "commit": "0b5e2862770046328783e970aad0fca8602b2050",
-    "tree": "08ff90ffd66350144ab2c89ebff0ec88ec0e7cf6"
+    "commit": "f769a43b1c275fd9b3e919bdc8546028a61d87fc",
+    "tree": "41de7f8fd2b9a3ccde0e70dafd9fb79bac9f7188"
   },
   "preserved_lineage": {
     "failed_invocation_sha256": "529dc254d46ac65bf1c1fa1d98eb4bf799dfe5712302e729b4c72fc49b154919",
