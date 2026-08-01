@@ -6,11 +6,11 @@
     },
     {
       "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
-      "sha256": "0e04dfdc65079240ad06bf9932264b45bf17b00346d03a8796dfddfbad8ef5c0"
+      "sha256": "776689d168907223a1eeceb4edfef5833414f7d5b5fb6ad031fafb0e341078ea"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
-      "sha256": "f3f4aa82b84f6bf811580f7494f1b72bd4ca439cdb689e3ba0ade1aa0d674f8c"
+      "sha256": "b930e2e7813a54831c821d4072e2fc859c2d81e5d2ec9114b2f991d2b42f37c5"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
@@ -52,7 +52,7 @@
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
-      "sha256": "f3f4aa82b84f6bf811580f7494f1b72bd4ca439cdb689e3ba0ade1aa0d674f8c"
+      "sha256": "b930e2e7813a54831c821d4072e2fc859c2d81e5d2ec9114b2f991d2b42f37c5"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
@@ -60,7 +60,7 @@
     },
     {
       "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
-      "sha256": "0e04dfdc65079240ad06bf9932264b45bf17b00346d03a8796dfddfbad8ef5c0"
+      "sha256": "776689d168907223a1eeceb4edfef5833414f7d5b5fb6ad031fafb0e341078ea"
     },
     {
       "path": "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
@@ -405,8 +405,8 @@
     "new_real_data_comparison_invocations": 0
   },
   "implementation": {
-    "commit": "f55b0388ab14dbc3ba6bed82e680ddba5aa5d71d",
-    "tree": "f9951fd524152fc4934ec0d495aea03b9fdaa517"
+    "commit": "32c1e78a7d6881c3a883da50eab1afa902ce40b6",
+    "tree": "f4e3b3c697dcbcce60a88d4377c783e188bb606d"
   },
   "ordinary_record_bindings": [
     {
