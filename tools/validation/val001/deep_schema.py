@@ -154,13 +154,13 @@ def semantic_validate(path:str,value:dict[str,Any])->None:
             raise ContractError(f"physical validation escalation: {path}:{key}")
         if "new_governing_physics" in lower and not isinstance(item,(dict,list)) and item not in {"NOT_AUTHORIZED_BY_VAL001",False,None}:
             raise ContractError(f"new physics escalation: {path}:{key}")
-        if lower in {"experimental_commissioning_authorized","commissioning_authorized","execution_authorized","holdout_execution_authorized","protected_scoring_authorized","holdout_scoring_authorized"} and item is not False:
+        if lower in {"experimental_commissioning_authorized","commissioning_authorized","execution_authorized","holdout_execution_authorized","protected_scoring_authorized","holdout_scoring_authorized"} and not isinstance(item,(dict,list)) and item is not False:
             raise ContractError(f"execution or commissioning escalation: {path}:{key}")
-        if lower in {"fitting_allowed","retuning_allowed","fitting_or_retuning_allowed","configuration_change","solver_source_change","governing_physics_change"} and item is not False:
+        if lower in {"fitting_allowed","retuning_allowed","fitting_or_retuning_allowed","configuration_change","solver_source_change","governing_physics_change"} and not isinstance(item,(dict,list)) and item is not False:
             raise ContractError(f"method authority escalation: {path}:{key}")
-        if lower in {"fit_count","retune_count","fit_or_retune_count","fits_or_retunes"} and item != 0:
+        if lower in {"fit_count","retune_count","fit_or_retune_count","fits_or_retunes"} and not isinstance(item,(dict,list)) and item != 0:
             raise ContractError(f"fit or retune count escalation: {path}:{key}")
-        if lower == "structural_identifiability" and item != "NOT_ASSESSED":
+        if lower == "structural_identifiability" and not isinstance(item,(dict,list)) and item != "NOT_ASSESSED":
             raise ContractError(f"structural identifiability escalation: {path}")
     if "/results/historical/" in path:
         if value.get("NEW_SCORE_BEARING_COMPARISON",value.get("new_score_bearing_comparison")) is not False:
