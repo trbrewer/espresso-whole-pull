@@ -6,8 +6,8 @@
   ],
   "counts": {
     "copied_inferred_governing_schemas": 0,
-    "current_normative_specifications": 61,
-    "current_referenced_specifications": 61,
+    "current_normative_specifications": 67,
+    "current_referenced_specifications": 67,
     "current_unreferenced_specifications": 0,
     "filename_selected_governing_schemas": 0,
     "instance_inferred_governing_schemas": 0,
@@ -131,6 +131,19 @@
     {
       "audit_only": false,
       "current": true,
+      "executable": false,
+      "path": "validation/val001/VAL_001_IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY.json",
+      "record_class": "IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY",
+      "record_version": "espresso.val001.immutable_profile_assignment_registry.v1",
+      "schema_id": "immutable_profile_assignment_registry.v1",
+      "schema_version": "espresso.val001.immutable_profile_assignment_registry.v1",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-064",
+      "treatment": "CURRENT_DEEP_SCHEMA"
+    },
+    {
+      "audit_only": false,
+      "current": true,
       "path": "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json",
       "record_class": "GOVERNANCE_RECORD",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
@@ -167,10 +180,62 @@
     {
       "audit_only": false,
       "current": true,
+      "executable": false,
+      "path": "validation/val001/VAL_001_MUTATION_EXECUTION_COVERAGE.json",
+      "record_class": "MUTATION_EXECUTION_COVERAGE",
+      "record_version": "espresso.val001.mutation_execution_coverage.v1",
+      "schema_id": "mutation_execution_coverage.v1",
+      "schema_version": "espresso.val001.mutation_execution_coverage.v1",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-067",
+      "treatment": "CURRENT_DEEP_SCHEMA"
+    },
+    {
+      "audit_only": false,
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "record_class": "NORMATIVE_SCHEMA_CONTRACT_REGISTRY",
+      "record_version": "espresso.val001.normative_schema_contract_registry.v1",
+      "schema_id": "normative_schema_contract_registry.v1",
+      "schema_version": "espresso.val001.normative_schema_contract_registry.v1",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-063",
+      "treatment": "CURRENT_DEEP_SCHEMA"
+    },
+    {
+      "audit_only": false,
+      "current": true,
       "path": "validation/val001/VAL_001_RANKED_DATA_REQUESTS.json",
       "record_class": "RANKED_REQUESTS",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-014",
+      "treatment": "CURRENT_DEEP_SCHEMA"
+    },
+    {
+      "audit_only": false,
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/VAL_001_SCHEMA_PROVENANCE_TRANSITION_MATRIX.json",
+      "record_class": "SCHEMA_PROVENANCE_TRANSITION_MATRIX",
+      "record_version": "espresso.val001.schema_provenance_transition_matrix.v1",
+      "schema_id": "schema_provenance_transition_matrix.v1",
+      "schema_version": "espresso.val001.schema_provenance_transition_matrix.v1",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-065",
+      "treatment": "CURRENT_DEEP_SCHEMA"
+    },
+    {
+      "audit_only": false,
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/VAL_001_SCHEMA_TAXONOMY_AND_COUNTING_SPECIFICATION.json",
+      "record_class": "SCHEMA_TAXONOMY_COUNTING",
+      "record_version": "espresso.val001.schema_taxonomy_counting.v1",
+      "schema_id": "schema_taxonomy_counting.v1",
+      "schema_version": "espresso.val001.schema_taxonomy_counting.v1",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-066",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -469,6 +534,19 @@
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-045",
       "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+    },
+    {
+      "audit_only": false,
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/corrections/VAL_001_PR38_SCHEMA_PROVENANCE_AND_SEMANTIC_ENFORCEMENT_PLAN.json",
+      "record_class": "CORRECTION_PLAN",
+      "record_version": "espresso.val001.schema_provenance_semantic_enforcement_plan.v1",
+      "schema_id": "correction_plan.v1",
+      "schema_version": "espresso.val001.schema_provenance_semantic_enforcement_plan.v1",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-068",
+      "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "audit_only": true,
@@ -14199,6 +14277,553 @@
       "scope": "RECORD_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-062"
+    },
+    {
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-063",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
+      "record_class": "NORMATIVE_SCHEMA_CONTRACT_REGISTRY",
+      "record_version": "espresso.val001.normative_schema_contract_registry.v1",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "description": "Explicit record-level administrative contract; deeper normative invariants execute in the named validators.",
+        "properties": {
+          "allowed_origins": {
+            "type": "string"
+          },
+          "contracts": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": false
+          },
+          "counts": {
+            "type": "object"
+          },
+          "prohibited_origins": {
+            "type": "string"
+          },
+          "record_bindings": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": false
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "record_id",
+          "allowed_origins",
+          "prohibited_origins",
+          "contracts",
+          "record_bindings",
+          "counts"
+        ],
+        "title": "Normative NORMATIVE_SCHEMA_CONTRACT_REGISTRY contract",
+        "type": "object"
+      },
+      "schema_id": "normative_schema_contract_registry.v1",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "schema_version": "espresso.val001.normative_schema_contract_registry.v1",
+      "scope": "EXPLICIT_RECORD_SEMANTICS",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-063"
+    },
+    {
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-064",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
+      "record_class": "IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY",
+      "record_version": "espresso.val001.immutable_profile_assignment_registry.v1",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "description": "Explicit record-level administrative contract; deeper normative invariants execute in the named validators.",
+        "properties": {
+          "assignment_key": {
+            "type": "string"
+          },
+          "assignments": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": false
+          },
+          "counts": {
+            "type": "object"
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "record_id",
+          "assignment_key",
+          "assignments",
+          "counts"
+        ],
+        "title": "Normative IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY contract",
+        "type": "object"
+      },
+      "schema_id": "immutable_profile_assignment_registry.v1",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "schema_version": "espresso.val001.immutable_profile_assignment_registry.v1",
+      "scope": "EXPLICIT_RECORD_SEMANTICS",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-064"
+    },
+    {
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-065",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
+      "record_class": "SCHEMA_PROVENANCE_TRANSITION_MATRIX",
+      "record_version": "espresso.val001.schema_provenance_transition_matrix.v1",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "description": "Explicit record-level administrative contract; deeper normative invariants execute in the named validators.",
+        "properties": {
+          "entries": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "authoritative_source_references": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "independent_derivation_explanation": {
+                  "type": "string"
+                },
+                "new_contract_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "new_governing_schema_id": {
+                  "type": "string"
+                },
+                "new_governing_schema_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "new_normative_contract_id": {
+                  "type": "string"
+                },
+                "no_instance_generation_test_id": {
+                  "type": "string"
+                },
+                "previous_inferred_schema_id": {
+                  "type": "string"
+                },
+                "previous_schema_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "reviewer_disposition": {
+                  "const": "NORMATIVE_SOURCE_REPLACED",
+                  "type": "string"
+                },
+                "schema_bytes_identical": {
+                  "type": "boolean"
+                },
+                "semantic_profile_id": {
+                  "pattern": "^PROFILE-.+$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "previous_inferred_schema_id",
+                "previous_schema_sha256",
+                "new_normative_contract_id",
+                "new_contract_sha256",
+                "new_governing_schema_id",
+                "new_governing_schema_sha256",
+                "authoritative_source_references",
+                "schema_bytes_identical",
+                "independent_derivation_explanation",
+                "no_instance_generation_test_id",
+                "semantic_profile_id",
+                "reviewer_disposition"
+              ],
+              "type": "object"
+            },
+            "maxItems": 48,
+            "minItems": 48,
+            "type": "array"
+          },
+          "final_disposition": {
+            "const": "ALL_PRIOR_INFERRED_FAMILIES_HAVE_NORMATIVE_TRANSITIONS",
+            "type": "string"
+          },
+          "prior_inferred_family_count": {
+            "const": 48,
+            "type": "integer"
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "transition_count": {
+            "const": 48,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "schema_version",
+          "record_id",
+          "prior_inferred_family_count",
+          "transition_count",
+          "entries",
+          "final_disposition"
+        ],
+        "title": "Normative SCHEMA_PROVENANCE_TRANSITION_MATRIX contract",
+        "type": "object"
+      },
+      "schema_id": "schema_provenance_transition_matrix.v1",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "schema_version": "espresso.val001.schema_provenance_transition_matrix.v1",
+      "scope": "EXPLICIT_RECORD_SEMANTICS",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-065"
+    },
+    {
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-066",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
+      "record_class": "SCHEMA_TAXONOMY_COUNTING",
+      "record_version": "espresso.val001.schema_taxonomy_counting.v1",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "description": "Explicit record-level administrative contract; deeper normative invariants execute in the named validators.",
+        "properties": {
+          "count_formulas": {
+            "additionalProperties": false,
+            "properties": {
+              "all_counts": {
+                "type": "string"
+              },
+              "governing_schema_family_count": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "prohibited_arithmetic": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "governing_schema_family_count",
+              "prohibited_arithmetic",
+              "all_counts"
+            ],
+            "type": "object"
+          },
+          "counts": {
+            "additionalProperties": false,
+            "properties": {
+              "administrative_meta_schema_families": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "current_normative_specifications": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "current_referenced_specifications": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "current_unreferenced_specifications": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "governing_schema_families": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "schema_assignments": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "record_count": {
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    "schema_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "schema_id",
+                    "record_count"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              "schema_documents": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "current_normative_specifications",
+              "current_referenced_specifications",
+              "current_unreferenced_specifications",
+              "governing_schema_families",
+              "schema_documents",
+              "administrative_meta_schema_families",
+              "schema_assignments"
+            ],
+            "type": "object"
+          },
+          "definitions": {
+            "additionalProperties": false,
+            "properties": {
+              "administrative_meta_schema_family": {
+                "type": "string"
+              },
+              "governing_schema_family": {
+                "type": "string"
+              },
+              "normative_contract_count": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "normative_schema_specification": {
+                "type": "string"
+              },
+              "schema_document_count": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "semantic_profile_count": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "normative_schema_specification",
+              "governing_schema_family",
+              "administrative_meta_schema_family",
+              "schema_document_count",
+              "normative_contract_count",
+              "semantic_profile_count"
+            ],
+            "type": "object"
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "val001_schema_spec_015_disposition": {
+            "enum": [
+              "OBSOLETE_REMOVED"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "record_id",
+          "definitions",
+          "count_formulas",
+          "val001_schema_spec_015_disposition",
+          "counts"
+        ],
+        "title": "Normative SCHEMA_TAXONOMY_COUNTING contract",
+        "type": "object"
+      },
+      "schema_id": "schema_taxonomy_counting.v1",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "schema_version": "espresso.val001.schema_taxonomy_counting.v1",
+      "scope": "EXPLICIT_RECORD_SEMANTICS",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-066"
+    },
+    {
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-067",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
+      "record_class": "MUTATION_EXECUTION_COVERAGE",
+      "record_version": "espresso.val001.mutation_execution_coverage.v1",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "description": "Explicit record-level administrative contract; deeper normative invariants execute in the named validators.",
+        "properties": {
+          "category_counts": {
+            "type": "string"
+          },
+          "declared_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "declared_mutation_ids": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": true
+          },
+          "duplicate_ids": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": true
+          },
+          "executed_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "executed_mutation_ids": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": true
+          },
+          "final_status": {
+            "type": "string"
+          },
+          "immutable_hash_checking_disabled_for_all_structural_and_semantic_tests": {
+            "type": "boolean"
+          },
+          "missing_ids": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": true
+          },
+          "placeholder_ids": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": true
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "unexpected_ids": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "schema_version",
+          "record_id",
+          "declared_mutation_ids",
+          "executed_mutation_ids",
+          "missing_ids",
+          "unexpected_ids",
+          "duplicate_ids",
+          "placeholder_ids",
+          "category_counts",
+          "declared_count",
+          "executed_count",
+          "immutable_hash_checking_disabled_for_all_structural_and_semantic_tests",
+          "final_status"
+        ],
+        "title": "Normative MUTATION_EXECUTION_COVERAGE contract",
+        "type": "object"
+      },
+      "schema_id": "mutation_execution_coverage.v1",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "schema_version": "espresso.val001.mutation_execution_coverage.v1",
+      "scope": "EXPLICIT_RECORD_SEMANTICS",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-067"
+    },
+    {
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-068",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
+      "record_class": "CORRECTION_PLAN",
+      "record_version": "espresso.val001.schema_provenance_semantic_enforcement_plan.v1",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "description": "Explicit record-level administrative contract; deeper normative invariants execute in the named validators.",
+        "properties": {
+          "authority": {
+            "type": "object"
+          },
+          "blocking_findings": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": false
+          },
+          "change_declaration": {
+            "type": "string"
+          },
+          "controlling_adjudication": {
+            "type": "string"
+          },
+          "designs": {
+            "type": "object"
+          },
+          "intended_additive_commit_sequence": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": false
+          },
+          "prohibited_actions": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": false
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "stale_documentation_finding": {
+            "type": "string"
+          },
+          "starting_identity": {
+            "type": "object"
+          },
+          "stop_conditions": {
+            "items": {},
+            "type": "array",
+            "uniqueItems": false
+          },
+          "task": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "record_id",
+          "task",
+          "authority",
+          "controlling_adjudication",
+          "starting_identity",
+          "blocking_findings",
+          "stale_documentation_finding",
+          "designs",
+          "prohibited_actions",
+          "intended_additive_commit_sequence",
+          "stop_conditions",
+          "change_declaration"
+        ],
+        "title": "Normative CORRECTION_PLAN contract",
+        "type": "object"
+      },
+      "schema_id": "correction_plan.v1",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "schema_version": "espresso.val001.schema_provenance_semantic_enforcement_plan.v1",
+      "scope": "EXPLICIT_RECORD_SEMANTICS",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-068"
     }
   ]
 }

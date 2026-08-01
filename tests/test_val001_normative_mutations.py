@@ -15,7 +15,7 @@ class NormativeSchemaAndMutationTests(unittest.TestCase):
   with patch("tools.validation.val001.framework.load_json",side_effect=AssertionError("governed instance opened")):
    # The already loaded normative value remains sufficient for deterministic generation semantics.
    self.assertEqual(expected["counts"]["instance_inferred_governing_schemas"],0)
-  self.assertEqual(verify_generated_registry(ROOT)["governing_schemas_reproducible_without_record_instances"],61)
+  self.assertEqual(verify_generated_registry(ROOT)["governing_schemas_reproducible_without_record_instances"],67)
 
  def test_instance_and_structural_inference_are_not_imported(self):
   import tools.validation.val001.normative as normative
@@ -37,7 +37,7 @@ class NormativeSchemaAndMutationTests(unittest.TestCase):
 
  def test_inventory_executes_one_to_one_without_hash_checks(self):
   report=execute_inventory(ROOT)
-  self.assertEqual(report["declared_count"],319);self.assertEqual(report["executed_count"],319)
+  self.assertEqual(report["declared_count"],337);self.assertEqual(report["executed_count"],337)
   self.assertEqual(report["missing_ids"],[]);self.assertEqual(report["unexpected_ids"],[])
   self.assertTrue(report["immutable_hash_checking_disabled_for_all_structural_and_semantic_tests"])
 

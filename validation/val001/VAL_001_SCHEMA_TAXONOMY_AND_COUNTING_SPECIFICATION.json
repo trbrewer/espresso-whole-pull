@@ -5,11 +5,11 @@
     "prohibited_arithmetic": "NO_CONSTANT_OFFSETS_OR_PLUS_TWO"
   },
   "counts": {
-    "administrative_meta_schema_families": 11,
-    "current_normative_specifications": 61,
-    "current_referenced_specifications": 61,
+    "administrative_meta_schema_families": 14,
+    "current_normative_specifications": 67,
+    "current_referenced_specifications": 67,
     "current_unreferenced_specifications": 0,
-    "governing_schema_families": 61,
+    "governing_schema_families": 67,
     "schema_assignments": [
       {
         "record_count": 1,
@@ -58,6 +58,10 @@
       {
         "record_count": 1,
         "schema_id": "correction.v9"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "correction_plan.v1"
       },
       {
         "record_count": 2,
@@ -184,6 +188,10 @@
         "schema_id": "governed_schema_registry.v3"
       },
       {
+        "record_count": 1,
+        "schema_id": "immutable_profile_assignment_registry.v1"
+      },
+      {
         "record_count": 31,
         "schema_id": "json_schema_document.v1"
       },
@@ -194,6 +202,14 @@
       {
         "record_count": 1,
         "schema_id": "mechanism_discrimination.v33"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "mutation_execution_coverage.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "normative_schema_contract_registry.v1"
       },
       {
         "record_count": 1,
@@ -226,6 +242,14 @@
       {
         "record_count": 1,
         "schema_id": "result_or_reexpression.v41"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "schema_provenance_transition_matrix.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "schema_taxonomy_counting.v1"
       },
       {
         "record_count": 1,

@@ -9,6 +9,8 @@ from tools.validation.val001.framework import ContractError,canonical_json,load_
 from tools.validation.val001.inventory import INVENTORY_PATH,REGISTRY_PATH,verify_inventory,verify_registry
 from tools.validation.val001.schema import lint_schema
 from tools.validation.val001.explicit_semantics import load_policy,explicit_schema_for,validate_profile_dispatch
+from tools.validation.val001.normative import taxonomy_counts,verify_generated_registry
+from tools.validation.val001.mutations import execute_inventory
 def verify(root:Path):
  expected_schema,mapping=load_explicit_family_schema(root); observed_schema=expected_schema
  expected=build_coverage(root,mapping);observed=load_json(root/COVERAGE_PATH)
@@ -29,7 +31,8 @@ def verify(root:Path):
   registered+=1
  sidecars=sum(r['treatment']=="IMMUTABLE_HISTORICAL_SIDECAR" for r in observed['records'])
  if sidecars:raise ContractError("historical sidecar remains primary")
- return {"records":registered,"coverage_matrix_records":len(seen),"families":len(observed_schema['anyOf'])+2,"deep_json_records":validated,"sidecar_primary":sidecars,"unregistered":0,"multiply_registered":0,"real_data_comparisons":0}
+ taxonomy=taxonomy_counts(root);provenance=verify_generated_registry(root);mutations=execute_inventory(root)
+ return {"records":registered,"coverage_matrix_records":len(seen),"families":taxonomy["governing_schema_families"],"family_assignments":taxonomy["schema_assignments"],"normative_contracts":taxonomy["current_normative_specifications"],"unreferenced_current_specifications":taxonomy["current_unreferenced_specifications"],"declared_mutations":mutations["declared_count"],"executed_mutations":mutations["executed_count"],"instance_inferred_governing_schemas":provenance["instance_inferred"],"copied_inferred_governing_schemas":provenance["copied_inferred"],"deep_json_records":validated,"sidecar_primary":sidecars,"unregistered":0,"multiply_registered":0,"real_data_comparisons":0}
 def main():
  p=argparse.ArgumentParser();p.add_argument("--root",required=True,type=Path);a=p.parse_args();print(json.dumps(verify(a.root.resolve()),sort_keys=True))
 if __name__=="__main__":main()
