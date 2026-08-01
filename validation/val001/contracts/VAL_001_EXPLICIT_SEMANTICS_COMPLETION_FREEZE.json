@@ -1,0 +1,95 @@
+{
+  "bindings": [
+    {
+      "path": "scripts/verify_val001_administrative_closure.py",
+      "sha256": "0355185121b898ab7d66b9d7cb5006e13a9f271bb66e8790824b31ee3c76b35d"
+    },
+    {
+      "path": "scripts/verify_val001_deep_schema_coverage.py",
+      "sha256": "a0b9f6b3fe3f8b2fb990fc8009b40b1a627a5dea2e3f774045238a6fe36641a6"
+    },
+    {
+      "path": "tests/test_val001_explicit_semantics_and_root.py",
+      "sha256": "a6f03e39c2aaa3dcaa1198196a6030305d246ad085d52fb04b5ecc7fcc38a3ea"
+    },
+    {
+      "path": "tools/validation/val001/administrative.py",
+      "sha256": "34b0c8b3574a2a571ba6112e268a0f1bf00523728ccb08e42b7e08150a2f50a8"
+    },
+    {
+      "path": "tools/validation/val001/deep_schema.py",
+      "sha256": "ef7da3db2beba05ba7299e242a761cf22d0f70b04a93bfe119b92f08e51e3736"
+    },
+    {
+      "path": "tools/validation/val001/explicit_semantics.py",
+      "sha256": "f8f1af88e824f232323957ea24546c92a796dc18c48fd8e8239687aa794a1ff9"
+    },
+    {
+      "path": "tools/validation/val001/schema.py",
+      "sha256": "94c5e1672d4f58d4196759176870b76ca2e22b5c58ad22e6e764a68747361caa"
+    },
+    {
+      "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
+      "sha256": "0d5ea3104ed817acc925472cc901cc9de4fbffb096786ff97d3c57372e34eb0c"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
+      "sha256": "5b5367d4b037ad0e9ae77ab5057389059827370aae3b0a502e48d361f105aaf7"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
+      "sha256": "927fb5f7e891f177688984a62a7b16de14d12c917d89a1ff27f5227f13d87ace"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
+      "sha256": "eb4104710e43450b584eb2e7ad2ca5d0c384509b1d1e8adfb4e7fcb864a741c2"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
+      "sha256": "9aa72e6d987cca187cb2c68ffd32ee7cb37a716df9a33d4cfac614a6efbb6158"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
+      "sha256": "dc201036ecdf451178c0ea1267eb57202c91c00a86e604dcb25b12bd4878984c"
+    },
+    {
+      "path": "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
+      "sha256": "8e44249a5883b6951f4f1e3bac00fbe017c99de32207b96a7f7d257abe80c1bd"
+    }
+  ],
+  "claim_boundaries": {
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "counts": {
+    "expected_root_must_be_externally_supplied": true,
+    "instance_derived_governing_schemas": 0,
+    "records_without_executable_semantic_profiles": 0,
+    "terminal_root_self_embedded": false
+  },
+  "execution": {
+    "execution_authority": "CONSUMED",
+    "new_governed_result_producing_invocations": 0,
+    "new_openfoam_builds": 0,
+    "new_openfoam_case_executions": 0,
+    "new_real_data_comparison_invocations": 0
+  },
+  "implementation": {
+    "commit": "dcb6ff1",
+    "tree": "a2ff6b1b1fc3c32825c76799dda2b30fc7a43439"
+  },
+  "preserved_lineage": {
+    "failed_invocation_sha256": "529dc254d46ac65bf1c1fa1d98eb4bf799dfe5712302e729b4c72fc49b154919",
+    "invocation_journal_sha256": "f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730",
+    "invocation_summary_sha256": "01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8",
+    "original_result_sha256": "07086313d022555032bbb9ecc18d2564bb197d0381bd8d08e263cd95d02bd029",
+    "v2_result_sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"
+  },
+  "puckworks_lock": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "record_id": "VAL001-EXPLICIT-SEMANTICS-COMPLETION-FREEZE-1",
+  "schema_version": "espresso.val001.explicit_semantics_completion_freeze.v1",
+  "status": "FROZEN"
+}

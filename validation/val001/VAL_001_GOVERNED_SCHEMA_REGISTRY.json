@@ -5,13 +5,13 @@
     "final_lock": "SOLE_FINAL_GIT_TREE_TERMINAL"
   },
   "coverage": "EXPLICIT_ONE_RECORD_ONE_TREATMENT_NO_PREFIX_OR_CATCH_ALL",
-  "record_count": 95,
+  "record_count": 97,
   "record_id": "VAL001-GOVERNED-SCHEMA-REGISTRY-3",
   "records": [
     {
       "artifact_record_id": "VAL001-ADMINISTRATIVE-CLOSURE-SPECIFICATION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "BOUND_BY_ADMINISTRATIVE_FREEZE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -34,7 +34,7 @@
     {
       "artifact_record_id": "VAL001-CALIBRATION-COMPARISON-LEDGER-2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -57,7 +57,7 @@
     {
       "artifact_record_id": "VAL001-EXP001-EXP009-PROVENANCE",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -80,7 +80,7 @@
     {
       "artifact_record_id": "VAL001-DEEP-SCHEMA-COVERAGE-MATRIX-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "BOUND_BY_ADMINISTRATIVE_FREEZE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -103,7 +103,7 @@
     {
       "artifact_record_id": "VAL001-EVIDENCE-RIGHTS-2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -126,7 +126,7 @@
     {
       "artifact_record_id": "VAL001-EXPLICIT-MUTATION-INVENTORY-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -149,7 +149,7 @@
     {
       "artifact_record_id": "VAL001-EXPLICIT-SCHEMA-SPECIFICATION-REGISTRY-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -164,15 +164,15 @@
       "schema_version": "espresso.val001.explicit_schema_specification_registry.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "31dc3c7b32ed30e3ca4300aa88382ca1b7e0299e92ca72792849495d9c3f7f6c",
+      "sha256": "927fb5f7e891f177688984a62a7b16de14d12c917d89a1ff27f5227f13d87ace",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "19895eb27a461b5cdc9e39f47bd92d303c07b6119a006693665cd275ebfd9112",
+      "structure_signature_sha256": "55fc9cb8a07a848768d633d63dbbd6f734108f6bbf831f6cb17dd4baf02c7742",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -195,7 +195,7 @@
     {
       "artifact_record_id": "VAL001-EXTERNAL-CANDIDATE-ROOT-PROTOCOL-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -218,7 +218,7 @@
     {
       "artifact_record_id": "VAL001-GOVERNED-RECORD-INVENTORY-3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "BOUND_BY_ADMINISTRATIVE_FREEZE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -241,7 +241,7 @@
     {
       "artifact_record_id": "VAL001-GOVERNED-SCHEMA-REGISTRY-3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "BOUND_BY_ADMINISTRATIVE_FREEZE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -264,7 +264,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -287,7 +287,7 @@
     {
       "artifact_record_id": "VAL001-INVOCATION-ACCOUNTING-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -310,7 +310,7 @@
     {
       "artifact_record_id": "VAL001-INVOCATION-JOURNAL",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -333,7 +333,7 @@
     {
       "artifact_record_id": "VAL001-INVOCATION-SUMMARY-V2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -356,7 +356,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -379,7 +379,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -402,7 +402,7 @@
     {
       "artifact_record_id": "VAL001-SEMANTIC-PROFILE-REGISTRY-2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -417,15 +417,15 @@
       "schema_version": "espresso.val001.semantic_profile_registry.v2",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "8e8a5e34e0d4b7fe6cf42c9cb84fe324218daa68a05cbc0bb7aad315d214bfa0",
+      "sha256": "8e44249a5883b6951f4f1e3bac00fbe017c99de32207b96a7f7d257abe80c1bd",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "57b2aeb5c8313357eb38774ff27a8ef304e9266a83ff15c653ddc64bf3f52331",
+      "structure_signature_sha256": "ac9bd5c2d7b1703da0092db0c3bb82f777e2dd922ed2e41fff6a85edf2875fcb",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -448,7 +448,7 @@
     {
       "artifact_record_id": "gagne.de1.evidence_gap.v1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -471,7 +471,7 @@
     {
       "artifact_record_id": "waszkiewicz2025.pressure_flow.source_sweep.v3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -494,7 +494,7 @@
     {
       "artifact_record_id": "waszkiewicz2025.pressure_flow.source_sweep.v2",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -517,7 +517,7 @@
     {
       "artifact_record_id": "VAL001-ROW-COUNT-INVALIDATION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -540,7 +540,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -563,8 +563,8 @@
     {
       "artifact_record_id": "VAL001-ADMINISTRATIVE-CLOSURE-FREEZE-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
-      "binding_class": "BOUND_BY_CANONICAL_LOCK",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
       "executable": false,
@@ -578,15 +578,15 @@
       "schema_version": "espresso.val001.administrative_closure_freeze.v1",
       "semantic_profile": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": null,
+      "sha256": "4a0c98d73d0ed096b14c02d66b9b309bd42644a657c705a3d891ef30b20eb7cd",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "339c22d7073191944c35fc3ef3dbd1ff6decab8852ce8962702be59627580a45",
+      "structure_signature_sha256": "78b802ab666b6840a824b2b47514b81c804cbdf4508806c9021876e569dc49c4",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL001-CORRECTED-EXECUTION-ACTIVATION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -609,7 +609,7 @@
     {
       "artifact_record_id": "VAL001-CORRECTED-FREEZE-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -632,7 +632,7 @@
     {
       "artifact_record_id": "VAL001-CORRECTED-PREEXECUTION-AUTHORITY-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -655,7 +655,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -678,7 +678,7 @@
     {
       "artifact_record_id": "VAL001-DEEP-SCHEMA-COMPLETION-FREEZE-3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -699,9 +699,32 @@
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
+      "artifact_record_id": "VAL001-EXPLICIT-SEMANTICS-COMPLETION-FREEZE-1",
+      "audit_only": false,
+      "binder": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
+      "binding_class": "BOUND_BY_CANONICAL_LOCK",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "puckworks_lock_applicable": true,
+      "record_class": "EXPLICIT_SEMANTICS_FREEZE",
+      "record_id": "INV-BF995BB62576690DEA8D",
+      "schema_id": "espresso.val001.explicit_semantics_completion_freeze.v1",
+      "schema_origin": "EXPLICIT_RECORD_SEMANTICS",
+      "schema_path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
+      "schema_version": "espresso.val001.explicit_semantics_completion_freeze.v1",
+      "semantic_profile": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
+      "semantic_validator": "validate_profile_dispatch",
+      "sha256": null,
+      "static_validation": "REQUIRED",
+      "structure_signature_sha256": "c4bc33ccb3af4e6f005c227e410efc30061e171ee63f26fcb641041bf03dca03",
+      "treatment": "CURRENT_DEEP_SCHEMA"
+    },
+    {
       "artifact_record_id": "VAL001-FINAL-HARDENING-COMPLETION-FREEZE-3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -747,7 +770,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-FRAMEWORK-HARDENING-FREEZE-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -770,7 +793,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -793,7 +816,7 @@
     {
       "artifact_record_id": "VAL001-SECOND-CORRECTION-ARTIFACT-REUSE-ACTIVATION-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -816,7 +839,7 @@
     {
       "artifact_record_id": "VAL001-SECOND-CORRECTION-FREEZE-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -839,7 +862,7 @@
     {
       "artifact_record_id": "VAL001-SECOND-CORRECTION-INVOCATION-AUTHORITY-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -862,7 +885,7 @@
     {
       "artifact_record_id": "VAL001-SELECTED-ROW-CANONICALIZATION-V2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -885,7 +908,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -908,7 +931,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -931,7 +954,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-3-FREEZE-CDDFDFB0B6ED4A98-TREE-1AB64C7E34330494",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -954,7 +977,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-6-FREEZE-B49D9BFE50798C5F-TREE-1BBABFEE7F186BF9",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -977,7 +1000,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-LOCK-VERSIONING-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1000,7 +1023,7 @@
     {
       "artifact_record_id": "VAL001-PR38-ADMINISTRATIVE-SEMANTIC-REMEDIATION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1023,7 +1046,7 @@
     {
       "artifact_record_id": "VAL001-PR38-DEEP-SCHEMA-COMPLETION-PLAN-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1046,7 +1069,7 @@
     {
       "artifact_record_id": "VAL001-PR38-EXPLICIT-SEMANTICS-ROOT-PINNING-PLAN-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1069,7 +1092,7 @@
     {
       "artifact_record_id": "VAL_001_PR38_FINAL_HARDENING_PLAN",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1092,7 +1115,7 @@
     {
       "artifact_record_id": "VAL001-PR38-HARDENING-COMPLETION-PLAN",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1115,7 +1138,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1138,7 +1161,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1161,7 +1184,7 @@
     {
       "artifact_record_id": "VAL001-SELECTED-ROW-IDENTITY-CORRECTION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1184,7 +1207,7 @@
     {
       "artifact_record_id": "VAL001-V2-INTERPRETATION-CORRECTION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1207,7 +1230,7 @@
     {
       "artifact_record_id": "VAL_001_WASZKIEWICZ_ADAPTER_PROVENANCE_CORRECTION",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1230,7 +1253,7 @@
     {
       "artifact_record_id": "VAL001-INVOCATION-JOURNAL",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1253,7 +1276,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1276,7 +1299,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1299,7 +1322,7 @@
     {
       "artifact_record_id": "waszkiewicz2025.pressure_flow.source_sweep.v1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1322,7 +1345,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1345,7 +1368,7 @@
     {
       "artifact_record_id": "VAL001-V2-FRAMEWORK-QUALIFICATION-PROVENANCE-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1368,7 +1391,7 @@
     {
       "artifact_record_id": "WP01R_R1_WASZKIEWICZ_9BAR",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1391,7 +1414,7 @@
     {
       "artifact_record_id": "WP02_001_WASZKIEWICZ_8BAR_NO_RETUNING",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1414,7 +1437,7 @@
     {
       "artifact_record_id": "WP02_001_WASZKIEWICZ_9BAR",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1437,7 +1460,7 @@
     {
       "artifact_record_id": "WP_0_3B_LIANG_VERIFICATION",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1460,7 +1483,7 @@
     {
       "artifact_record_id": "WP_0_3B_MATIAS_VERIFICATION",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1483,7 +1506,7 @@
     {
       "artifact_record_id": "WP_0_3B_MORONEY_VERIFICATION",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1506,7 +1529,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/administrative_closure_freeze.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1529,7 +1552,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/administrative_closure_specification.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1552,7 +1575,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/amendment_invalidation.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1575,7 +1598,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/calibration_comparison_ledger.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1598,7 +1621,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/campaign_provenance.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1621,7 +1644,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/canonical_consumed_lock.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1644,7 +1667,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/comparison_result.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1667,7 +1690,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/comparison_run.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1690,7 +1713,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/coverage_matrix.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1713,7 +1736,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/deep_invocation_event_families.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1736,7 +1759,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/deep_record_families.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1759,7 +1782,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/evidence_rights_inventory.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1782,7 +1805,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/exact_structure_sidecar.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1805,7 +1828,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/execution_activation.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1828,7 +1851,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/explicit_schema_specification_registry.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1849,9 +1872,32 @@
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
+      "artifact_record_id": "validation/val001/schemas/explicit_semantics_completion_freeze.schema.json",
+      "audit_only": false,
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binding_class": "ORDINARY_HASH_BOUND_RECORD",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/schemas/explicit_semantics_completion_freeze.schema.json",
+      "puckworks_lock_applicable": true,
+      "record_class": "SCHEMA_DOCUMENT",
+      "record_id": "INV-C9356023DBFC1A019230",
+      "schema_id": "json_schema_document.v1",
+      "schema_origin": "EXPLICIT_VERSION_SEMANTICS",
+      "schema_path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
+      "schema_version": "JSONL_V3",
+      "semantic_profile": "PROFILE-SCHEMA-DOCUMENT",
+      "semantic_validator": "validate_profile_dispatch",
+      "sha256": "5ced262921be1920418440e3f9dd6ddde1df3e472e9143b264d6c1b67cac2696",
+      "static_validation": "REQUIRED",
+      "structure_signature_sha256": "4eb8c4c53ca81d860a7d14c98397c73dd8f6ef3223d332b6c1939bcf0381a6a6",
+      "treatment": "CURRENT_DEEP_SCHEMA"
+    },
+    {
       "artifact_record_id": "validation/val001/schemas/explicit_semantics_remediation_plan.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1874,7 +1920,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/external_candidate_root_protocol.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1897,7 +1943,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/governance_records.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1920,7 +1966,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/governed_record_inventory.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1943,7 +1989,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/governed_schema_registry.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1966,7 +2012,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/historical_reexpression.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1989,7 +2035,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/invocation_event.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2012,7 +2058,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/invocation_ledger.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2035,7 +2081,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/invocation_summary.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2058,7 +2104,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/mutation_inventory.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2081,7 +2127,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/postresult_execution_lock.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2104,7 +2150,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/preexecution_authority.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2127,7 +2173,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/schema_document.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2150,7 +2196,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/semantic_profile_registry.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2173,7 +2219,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/source_adapter.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
