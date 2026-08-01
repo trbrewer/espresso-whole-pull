@@ -60,7 +60,7 @@
       "schema_path": "validation/val001/schemas/coverage_matrix.schema.json",
       "schema_version": "espresso.val001.deep_schema_coverage_matrix.v1",
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
-      "sha256": "25e9ba2389a7e5e207a675d16671e681ffca7cc55edfbe449136bd8a23852848",
+      "sha256": "025f49252a8b916d7d37b24398ee4577f7e3a665081c6b44e1117639e6258a45",
       "static_validation": "REQUIRED",
       "structure_signature_sha256": "5b8b3351653dcb5fbd068889fb2688d6a2e7e07f866100ac74514b1af8de3405",
       "treatment": "CURRENT_DEEP_SCHEMA"
