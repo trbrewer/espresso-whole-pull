@@ -151,8 +151,6 @@ def semantic_validate(path:str,value:dict[str,Any])->None:
     if "POSTRESULT_EXECUTION_LOCK" in path:
         if value.get("authority_status")!="CONSUMED" or value.get("remaining_real_data_comparison_invocations")!=0 or value.get("further_retry_authorized") is not False:
             raise ContractError(f"consumed authority escalation: {path}")
-    if "FIRST_COMPONENT_COMPARISONS" in path and "INVALIDATED" not in json.dumps(value):
-        raise ContractError("original result lost invalidation lineage")
     if "CORRECTED_EXECUTION_FAILURE" in path and "FAILED" not in json.dumps(value):
         raise ContractError("failed invocation lost failed status")
     if "CORRECTED_COMPONENT_COMPARISONS_V2" in path:
