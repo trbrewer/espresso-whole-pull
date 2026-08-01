@@ -19,7 +19,7 @@ class ExplicitSemanticPolicyTests(unittest.TestCase):
   self.assertTrue({s['origin'] for s in specs['specifications']} <= set(specs['allowed_origins']))
   self.assertEqual(0,specs['counts']['instance_derived_governing_schemas'])
   self.assertEqual(len(bindings),len(specs['record_bindings']))
- self.assertTrue(all(p['invariant_ids'] and p['validator_function_ids'] for p in profiles['profiles']))
+  self.assertTrue(all(p['invariant_ids'] and p['validator_function_ids'] for p in profiles['profiles']))
   governing='\n'.join((ROOT/p).read_text() for p in ['scripts/static_validate.py','scripts/verify_val001_deep_schema_coverage.py','tools/validation/val001/administrative.py','tools/validation/val001/inventory.py'])
   self.assertNotIn('scaffold_non_governing_schema',governing)
 

@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 201/201 PASS
+- Public source verification: 204/204 PASS
 - Active candidate: `VAL-001_SOURCE_SPECIFIC_VALIDATION_ADAPTERS`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
@@ -111,7 +111,6 @@ tree. Recursive schema-AST validation and explicit semantic profiles replace
 instance-derived governing schemas; named profile invariants execute for every
 registered record. Final candidate closure additionally requires externally
 supplied exact head and tree identities. No comparison or OpenFOAM execution
-occurred in this correction.
-observed-instance authorization semantics. V2 remains descriptive,
+occurred in this correction. V2 remains descriptive,
 post-observation, non-blind, and non-independent. No new scoring, solver run,
 fit, protected access, experiment, or physics change occurred.
