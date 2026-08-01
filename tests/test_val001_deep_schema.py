@@ -26,6 +26,18 @@ def first_scalar_slot(value):
    if found:return found
  return None
 
+def find_slot(value,predicate):
+ if isinstance(value,dict):
+  for key,item in value.items():
+   if not isinstance(item,(dict,list)) and predicate(key,item):return value,key,item
+   found=find_slot(item,predicate)
+   if found:return found
+ if isinstance(value,list):
+  for item in value:
+   found=find_slot(item,predicate)
+   if found:return found
+ return None
+
 class DeepSchemaCoverageTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
@@ -54,6 +66,24 @@ class DeepSchemaCoverageTests(unittest.TestCase):
   for rel,key,bad in cases:
    value=load_json(ROOT/rel);value[key]=bad
    with self.assertRaises(ContractError):semantic_validate(rel,value)
+
+ def test_applicable_family_enums_hashes_and_claims_reject_mutations(self):
+  exercised={"enum":0,"hash":0}
+  for family,path in self.by_family.items():
+   value=load_json(path)
+   slot=find_slot(value,lambda k,v:isinstance(v,str) and any(t in k.lower() for t in ('status','role','classification','disposition')))
+   if slot:
+    changed=copy.deepcopy(value);target=find_slot(changed,lambda k,v:isinstance(v,str) and any(t in k.lower() for t in ('status','role','classification','disposition')));target[0][target[1]]='INVALID_UNDECLARED_ENUM'
+    with self.subTest(family=family,mutation='enum'):
+     with self.assertRaises(ContractError):validate_record(changed,self.schema)
+    exercised['enum']+=1
+   slot=find_slot(value,lambda k,v:isinstance(v,str) and (k.lower().endswith('sha256') or k.lower()=='sha256'))
+   if slot:
+    changed=copy.deepcopy(value);target=find_slot(changed,lambda k,v:isinstance(v,str) and (k.lower().endswith('sha256') or k.lower()=='sha256'));target[0][target[1]]='bad-hash'
+    with self.subTest(family=family,mutation='hash'):
+     with self.assertRaises(ContractError):validate_record(changed,self.schema)
+    exercised['hash']+=1
+  self.assertGreater(exercised['enum'],0);self.assertGreater(exercised['hash'],0)
 
  def test_no_governed_source_is_opened(self):
   self.assertNotIn('WP03_001_SOURCE_PRESSURE_SWEEP.csv',json.dumps(sorted(self.mapping)))
