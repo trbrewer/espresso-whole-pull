@@ -43,7 +43,7 @@
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
-      "sha256": "f3f4aa82b84f6bf811580f7494f1b72bd4ca439cdb689e3ba0ade1aa0d674f8c"
+      "sha256": "b930e2e7813a54831c821d4072e2fc859c2d81e5d2ec9114b2f991d2b42f37c5"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
@@ -51,7 +51,7 @@
     },
     {
       "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
-      "sha256": "0e04dfdc65079240ad06bf9932264b45bf17b00346d03a8796dfddfbad8ef5c0"
+      "sha256": "776689d168907223a1eeceb4edfef5833414f7d5b5fb6ad031fafb0e341078ea"
     },
     {
       "path": "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl",
@@ -81,10 +81,10 @@
     "protected_or_holdout_scoring": "NOT_AUTHORIZED"
   },
   "freeze_binding": {
-    "commit": "0e9ece342950b0baf35f72dd3da6ad2404f55e88",
+    "commit": "7a40f6b568a0d5648c63430e57baae22602adef1",
     "path": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
-    "sha256": "f571f5d1c921898b3bdd88c55cf9d4df3020fded26f91af404d507308157b0a8",
-    "tree": "dbae297a2931b8560731bffebd52e1764285ae95"
+    "sha256": "734be5dd364ae40bf0abec95678bcbf4b7162ddc8a8c973bebaee9bf36140304",
+    "tree": "f6cbbb9f0a171d0c45e9c916b50b30783379a8e2"
   },
   "further_retry_authorized": false,
   "issue": 37,
