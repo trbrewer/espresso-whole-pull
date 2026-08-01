@@ -5,7 +5,7 @@
     "final_lock": "SOLE_FINAL_GIT_TREE_TERMINAL"
   },
   "coverage": "EXPLICIT_ONE_RECORD_ONE_TREATMENT_NO_PREFIX_OR_CATCH_ALL",
-  "record_count": 85,
+  "record_count": 86,
   "record_id": "VAL001-GOVERNED-SCHEMA-REGISTRY-3",
   "records": [
     {
@@ -97,7 +97,7 @@
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
       "sha256": null,
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "57fc0a76bf068840956ab94886e0add7ddc69617763ab7f8dfe2dd227733376e",
+      "structure_signature_sha256": "93c5c8b0b26f80af42db3b514239022d1231c101e965dbefffeb8c6e6d05cde9",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -166,7 +166,7 @@
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
       "sha256": null,
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "f4e6b7bf322fbd9fd2c1dd3a18ad5039afeadbd21c0be61e22f9a4152861f679",
+      "structure_signature_sha256": "33605420fe1fb1cf016b9a5fae4d5a3027c87eec0a843fb2637154bf4aafe995",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -189,7 +189,7 @@
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
       "sha256": null,
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "11610fc7a34b3ba2e50207291c25e4a617032ab0178ea674e6d920a3fe440034",
+      "structure_signature_sha256": "dd03f0bd3227d9d9088c586fe5cd9411947d005a2a579936d47eb4c52ca4eb61",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -490,6 +490,29 @@
       "static_validation": "REQUIRED",
       "structure_signature_sha256": "86fc0fee4708cefca05daf2af8b40873741daca5458ba3f0491933610346807d",
       "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+    },
+    {
+      "artifact_record_id": "VAL001-ADMINISTRATIVE-CLOSURE-FREEZE-1",
+      "audit_only": false,
+      "binder": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
+      "binding_class": "BOUND_BY_CANONICAL_LOCK",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+      "puckworks_lock_applicable": true,
+      "record_class": "FREEZE",
+      "record_id": "INV-A9912785E92F2431F070",
+      "schema_id": "espresso.val001.administrative_closure_freeze.v1",
+      "schema_origin": "EXPLICIT_CLASS_OR_VERSION_SEMANTICS",
+      "schema_path": "validation/val001/schemas/administrative_closure_freeze.schema.json",
+      "schema_version": "espresso.val001.administrative_closure_freeze.v1",
+      "semantic_profile": "VAL001_EXPLICIT_PROFILE_V1",
+      "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
+      "sha256": null,
+      "static_validation": "REQUIRED",
+      "structure_signature_sha256": "2d753070ea7d7f9519818afbdbed99f27d511192a12da3ce483fb51a4184948e",
+      "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL001-CORRECTED-EXECUTION-ACTIVATION-1",
@@ -1590,9 +1613,9 @@
       "schema_version": "JSONL_V3",
       "semantic_profile": "VAL001_EXPLICIT_PROFILE_V1",
       "semantic_validator": "VALIDATE_DEEP_AND_CROSS_RECORD",
-      "sha256": "ccb129484ed97d1134201ed593caac3d3071376879a80fb28c9d2086032c253b",
+      "sha256": "81c42d319a071834e91efb97d6d67a8d2d5723289aa16ee1a9621f6176d3c60b",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "84ecf6bcff33cb84826f673efcc9cf4a78e7af342b60f4d531d9a1926b5d2393",
+      "structure_signature_sha256": "4fc8b4a48a95c5ec9f3e6d6c6e8cc15571402877e4f9048bdfa303b20e6638ed",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {

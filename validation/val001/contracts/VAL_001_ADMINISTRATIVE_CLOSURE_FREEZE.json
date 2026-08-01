@@ -1,0 +1,375 @@
+{
+  "administrative_bindings": [
+    {
+      "path": "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json",
+      "sha256": "55ad40bc3ed38fe15038a34fd1b00f63598f6725a6e6fb1be396d2d848b5bcb9"
+    },
+    {
+      "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
+      "sha256": "1922daddc84079809a2cacca048eea9be13947bba9046a4112cdfe2fdc5cba88"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
+      "sha256": "437ec3e37272073ea7aa8095fd9b2af7672f5cee301cbf387e29baaf3d351fae"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
+      "sha256": "183084e39f228d27ba67ad11e45e00a9fa9170ccd764a5a1731859b41f6dcc94"
+    }
+  ],
+  "claim_boundaries": {
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "counts": {
+    "binding_graph_cycles": 0,
+    "independent_enumeration_exclusions": 0,
+    "terminal_external_roots": 1,
+    "unbound_governed_records": 0,
+    "unregistered_governed_records": 0
+  },
+  "execution_authority": "CONSUMED",
+  "execution_counts": {
+    "new_governed_result_producing_invocations": 0,
+    "new_openfoam_builds": 0,
+    "new_openfoam_case_executions": 0,
+    "new_real_data_comparison_invocations": 0
+  },
+  "implementation_commit": "dddfd15dc4cbebd9e8649e25d947a348668793de",
+  "implementation_tree": "587a545ec3ac46bc73856f28445812f0c0b5a078",
+  "ordinary_record_bindings": [
+    {
+      "path": "validation/val001/VAL_001_CALIBRATION_COMPARISON_LEDGER.json",
+      "sha256": "a9b4fb8befc7e591096e09dc895c4098c025ea13c4c44adb302baca64fd8de6e"
+    },
+    {
+      "path": "validation/val001/VAL_001_CAMPAIGN_PROVENANCE.json",
+      "sha256": "b0b6bc8b9727bf1ebfe085516358e5a475305dcb6ee7116c79367a52998864fe"
+    },
+    {
+      "path": "validation/val001/VAL_001_EVIDENCE_AND_RIGHTS_INVENTORY.json",
+      "sha256": "deb4e4754a2cb8a268afe34bc1f6ee8c1eb1de0bd9147b8e7145b95bd992e60a"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXTERNAL_ARTIFACT_MANIFEST.json",
+      "sha256": "52fb6eb6482bf43eda11bd9d9523d66b0f43766c37c50f3844c257df4d69059e"
+    },
+    {
+      "path": "validation/val001/VAL_001_HISTORICAL_ADAPTERS.json",
+      "sha256": "926dcfb30f43794e190a1eafcfdf92a0f820c43b1fe8604f35d1ab3b66063081"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json",
+      "sha256": "7b72580035b44d47e506c1bc4d5cdbe29715be76f4752d6dcc949de098e56369"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl",
+      "sha256": "f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730"
+    },
+    {
+      "path": "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json",
+      "sha256": "01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8"
+    },
+    {
+      "path": "validation/val001/VAL_001_MECHANISM_DISCRIMINATION_MATRIX.json",
+      "sha256": "13c6a8f1793e8939c8ec09464d5aca2381159c0feeeebbc75de7297893153dbc"
+    },
+    {
+      "path": "validation/val001/VAL_001_RANKED_DATA_REQUESTS.json",
+      "sha256": "cc832ba0d9cb84866ee69668fdd64e63d96e3d5e287c9268e9837f0f8fc2d04f"
+    },
+    {
+      "path": "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
+      "sha256": "9a37abf2738dbbe942d6eec31ef15e717223891e18824dacc3d246404480e551"
+    },
+    {
+      "path": "validation/val001/VAL_001_SOURCE_ACCESS_LOG.json",
+      "sha256": "18521c6f96ddaa92e87a51d769bdb846cf3ad49fb33136e4f3ebfaed1b20a4db"
+    },
+    {
+      "path": "validation/val001/adapters/GAGNE_DE1_EVIDENCE_GAP_ADAPTER.json",
+      "sha256": "c1ee43bfd72de12e8adf58211c8be778f14de97673f84bf0f4db57622da3acaf"
+    },
+    {
+      "path": "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json",
+      "sha256": "eddc9e24544769f62022f49b30eb572370aa4b213fa388d997bdd34c42d47c9c"
+    },
+    {
+      "path": "validation/val001/adapters/historical/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER_V1_INVALID_CITATION.json",
+      "sha256": "6d0e9da956711f63c7b40aa967583de04df36e2f718eee1c9c860c4321887308"
+    },
+    {
+      "path": "validation/val001/amendments/VAL_001_CORRECTED_ROW_COUNT_INVALIDATION.json",
+      "sha256": "4fcb024f299d0ce232509f69abd06c2c0b91f3141e0abb3d1ebde4d4c630b2d6"
+    },
+    {
+      "path": "validation/val001/amendments/VAL_001_INPUT_ROW_COUNT_AMENDMENT.json",
+      "sha256": "11e5de3c266d339f05f317078997cb0ca093897c2534bbfd83b165186ef4dd8a"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_CORRECTED_EXECUTION_ACTIVATION.json",
+      "sha256": "722419bbb272b83465eebb3a4b3d156afebd4543288be900b27a528fbb30a404"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_CORRECTED_FREEZE.json",
+      "sha256": "b326dcb1f68d7453b3ee511b45b8821cdcd408ff750aad9a0f91286bdeeb6004"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_CORRECTED_PREEXECUTION_AUTHORITY.json",
+      "sha256": "1ee58ad04ee660a39570349d0e7036d6746910c449150fcfb5a0758eab7c307c"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_CORRECTED_RUN_SPEC.json",
+      "sha256": "af6f58df14935dcf3295f9c3209f435e7bf6275f8656b6135b1cf3e2ed1b39d7"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_DEEP_SCHEMA_COMPLETION_FREEZE.json",
+      "sha256": "fcf9741e35e56b195dda4c8158974b932f45cc55e490bc75fb72ebe007a02523"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json",
+      "sha256": "f4f68add79396d05d123cd5901343143fb3164e7ad5c2afe3f55c22410eb9cf6"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_POSTRESULT_FRAMEWORK_HARDENING_FREEZE.json",
+      "sha256": "c04bc05b00360afb67a699117601869fc283a0fdcbe74a48237964fc067179b2"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_PREEXECUTION_RUN_SPEC.json",
+      "sha256": "4e36e11f18b91957af67e45798daef0e64d1d1a0a9825961252753e47d0e2d7b"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_ARTIFACT_REUSE_ACTIVATION.json",
+      "sha256": "03e0ec4dac9366ed80f55d7121cc317d322377de63e64bc6502a09b3889a9295"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json",
+      "sha256": "8d0608507d3567f63815b884b3a7a0429108b4359371f8837ca8c5e3654df3f4"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_INVOCATION_AUTHORITY.json",
+      "sha256": "4e0e7fffeb0c7f100ba449341edc7f058aa51f57b4560a0cc53e1051a6ce9758"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SELECTED_ROW_CANONICALIZATION_SPEC.json",
+      "sha256": "9603353866217388684bb15fb96525f5509d9de531b14b673b879eeb95764fc8"
+    },
+    {
+      "path": "validation/val001/contracts/VAL_001_SENSITIVITY_AND_IDENTIFIABILITY_METHODS.json",
+      "sha256": "c2465d260ff1ccca9ff16744ca7bbda15476d980d62a53aec5dcd21fb38d10c7"
+    },
+    {
+      "path": "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V1.json",
+      "sha256": "915e378194fc277c11874da79a1801bf1375a3230286d1db508df71fd0a0983e"
+    },
+    {
+      "path": "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V2.json",
+      "sha256": "f7ea782382225f815cd413e7eb04f3d9898630793b0b7366bdb761bed54a2e2d"
+    },
+    {
+      "path": "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V3.json",
+      "sha256": "10385d7ead176173d13be555c008b0cf1c067d4266ccb00a3bc705eb5197e998"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_POSTRESULT_LOCK_VERSIONING_RECORD.json",
+      "sha256": "4327450d48120e435c771a81b7506781fa2bcbb75f7b2939a9b2b979af5f6966"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_ADMINISTRATIVE_CLOSURE_AND_SEMANTIC_REMEDIATION_PLAN.json",
+      "sha256": "26434e31e25a73b3e0390f73a2b07747a5d8167d1c651e8cbc85f246b973a12b"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_DEEP_SCHEMA_COMPLETION_PLAN.json",
+      "sha256": "f9fc0b0742e6d36e9095f26d0f531ac3cece2067015594e36a69d31bd529d5ad"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_FINAL_HARDENING_PLAN.json",
+      "sha256": "508555668588a254ebf90c3293164c2491f528fd6eec8ea57c8fa8d803e20a30"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_HARDENING_COMPLETION_PLAN.json",
+      "sha256": "20678b426adca9fc5e9d9ab8e2eecbb08cb066edc49bdd8a98328d14c7c89506"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_INITIAL_RESULT_INVALIDATION_AND_REMEDIATION.json",
+      "sha256": "b0013c35dc5016333f85ff345199123f9209908f64521f882b95d6530470a458"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_PR38_SECOND_CORRECTION_DEFECT_AUTHORITY.json",
+      "sha256": "3203953dff8838e2e17885181157b4a39c0a54c46312d7c9d74c2228268099f3"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_SELECTED_ROW_IDENTITY_CORRECTION.json",
+      "sha256": "8c1633d4daa5173dbdac189731f8e845d00631f595edf55683ffa9d3143506ba"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_V2_INTERPRETATION_CORRECTION.json",
+      "sha256": "74356b3c95bfd961d8816ac1dc6bc3ac7f9eb59151928369d062375b2ee715eb"
+    },
+    {
+      "path": "validation/val001/corrections/VAL_001_WASZKIEWICZ_ADAPTER_PROVENANCE_CORRECTION.json",
+      "sha256": "0aa94ce0c55dd85fcef531423fde0117ee4173c8a2879db00c7f374bcbb32cb0"
+    },
+    {
+      "path": "validation/val001/historical/VAL_001_INVOCATION_EVENTS_V1.jsonl",
+      "sha256": "bb8bac4fabcf86b08ea9088adfd188180399d039428fecccac6cc41b28583237"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json",
+      "sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_CORRECTED_EXECUTION_FAILURE.json",
+      "sha256": "529dc254d46ac65bf1c1fa1d98eb4bf799dfe5712302e729b4c72fc49b154919"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_FIRST_COMPONENT_COMPARISONS.json",
+      "sha256": "07086313d022555032bbb9ecc18d2564bb197d0381bd8d08e263cd95d02bd029"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_HISTORICAL_RESULT_REEXPRESSIONS.json",
+      "sha256": "93c2f6da9f1bf1ff870299af0defa100bdc22c874b1039357e3f06cb88e520fe"
+    },
+    {
+      "path": "validation/val001/results/VAL_001_V2_FRAMEWORK_QUALIFICATION_PROVENANCE.json",
+      "sha256": "d35a6d2c15fdbad1cc93b4277f57ba38b3a0623a48f04823317432e88286bb23"
+    },
+    {
+      "path": "validation/val001/results/historical/WP01R_R1_WASZKIEWICZ_9BAR.json",
+      "sha256": "a5f633c689329d179b28385fb0de52314c8f8e57179a2018106b14cfca8ccc5e"
+    },
+    {
+      "path": "validation/val001/results/historical/WP02_001_WASZKIEWICZ_8BAR_NO_RETUNING.json",
+      "sha256": "ced434f437ab45262d3284a3c8db7a2809ead2be6402317ef2d70b7e04925bb9"
+    },
+    {
+      "path": "validation/val001/results/historical/WP02_001_WASZKIEWICZ_9BAR.json",
+      "sha256": "eee88d50f0adcea5e6845e53e66f2dadb2d5e0d002499e0b7edebc66a21221fc"
+    },
+    {
+      "path": "validation/val001/results/historical/WP_0_3B_LIANG_VERIFICATION.json",
+      "sha256": "4910976e63d14ae2fb532f8faae1be0f461f246f3b4c3c299cbd32ac2f661b55"
+    },
+    {
+      "path": "validation/val001/results/historical/WP_0_3B_MATIAS_VERIFICATION.json",
+      "sha256": "2935fbfe64be0029603dcf0e3511223940ce6027e4413693434dee5785b877d0"
+    },
+    {
+      "path": "validation/val001/results/historical/WP_0_3B_MORONEY_VERIFICATION.json",
+      "sha256": "22595ec7860dfb5e8ad6e191aaa20c2f4dccc79c960718ef9200aaf1dd84ca0a"
+    },
+    {
+      "path": "validation/val001/schemas/administrative_closure_freeze.schema.json",
+      "sha256": "d6897e4e2fda369f0306ed8716310ae464e6d2baa8d7cddb425f1eb376033f27"
+    },
+    {
+      "path": "validation/val001/schemas/administrative_closure_specification.schema.json",
+      "sha256": "f7dbfe3d77dc0116b239939b1d4c3531760e7e2fc15753eabba53ba02ea7f08b"
+    },
+    {
+      "path": "validation/val001/schemas/amendment_invalidation.schema.json",
+      "sha256": "e372a0302da25c96ed1da2194f95101253592e9a0d39101d5fb723f1e7de362e"
+    },
+    {
+      "path": "validation/val001/schemas/calibration_comparison_ledger.schema.json",
+      "sha256": "25ca57f0513aea7fd0a1864d6ccca1ac8704c2316fabbe3ecc5dbfde48c09464"
+    },
+    {
+      "path": "validation/val001/schemas/campaign_provenance.schema.json",
+      "sha256": "8352f6cd76ed431f496299c921244109ad2b2a205a76d84226e02e97c8a73ad8"
+    },
+    {
+      "path": "validation/val001/schemas/canonical_consumed_lock.schema.json",
+      "sha256": "5571335ef429b47c42bc4588cbbb04df1a1b03767cd1341d13b453e4b3d1e140"
+    },
+    {
+      "path": "validation/val001/schemas/comparison_result.schema.json",
+      "sha256": "60e00cccd1a647b797b762959995b989b263dbb9570a4d9ec82a1cd71b839df1"
+    },
+    {
+      "path": "validation/val001/schemas/comparison_run.schema.json",
+      "sha256": "79964ab401150c96c46950f72242f9b65d26fd52e9a5f571dd5af72b018c0b59"
+    },
+    {
+      "path": "validation/val001/schemas/coverage_matrix.schema.json",
+      "sha256": "81c42d319a071834e91efb97d6d67a8d2d5723289aa16ee1a9621f6176d3c60b"
+    },
+    {
+      "path": "validation/val001/schemas/deep_invocation_event_families.schema.json",
+      "sha256": "6b4038a429fed796b25b4c5db1c88c31b6c4a1325b65aef5cdfb65aea81c65db"
+    },
+    {
+      "path": "validation/val001/schemas/deep_record_families.schema.json",
+      "sha256": "474caa13af8ede037fb4581d3082def2a63b4cec56677c6a8fbe0f1e47d972e8"
+    },
+    {
+      "path": "validation/val001/schemas/evidence_rights_inventory.schema.json",
+      "sha256": "5793d365b41f343c2f5095d5c41a3269008ce64d68788791ca6c2aec6a33e4b2"
+    },
+    {
+      "path": "validation/val001/schemas/exact_structure_sidecar.schema.json",
+      "sha256": "ad1d5e7fad286b0d65ba1f394646a4e9a823f277b0e10d3d25ffe2c68ea71299"
+    },
+    {
+      "path": "validation/val001/schemas/execution_activation.schema.json",
+      "sha256": "2a18d11230ca28430d5dadc9055698210513796b55db2efd65b685c617ab75a7"
+    },
+    {
+      "path": "validation/val001/schemas/governance_records.schema.json",
+      "sha256": "a3c43c82f77944f6c44803a8b10a706fbedb2a18f9a87d5b905bf44b78850579"
+    },
+    {
+      "path": "validation/val001/schemas/governed_record_inventory.schema.json",
+      "sha256": "46f405ae08fd8a424ee4ef33cbab98b62ea64e5e813edec2c15dd0d21de5ed02"
+    },
+    {
+      "path": "validation/val001/schemas/governed_schema_registry.schema.json",
+      "sha256": "887e37a5ec31e473f686150b43b48691c097ce6a28fef137eb8bfe2ba422d776"
+    },
+    {
+      "path": "validation/val001/schemas/historical_reexpression.schema.json",
+      "sha256": "616d0e01245cc49b58666da8920ad475e7c136524265cb543009ab358f0fab38"
+    },
+    {
+      "path": "validation/val001/schemas/invocation_event.schema.json",
+      "sha256": "8e64e3b4960bb8f5c30fc3cd593cb8084c9879ecc4b0522b21b97a5cc01593e8"
+    },
+    {
+      "path": "validation/val001/schemas/invocation_ledger.schema.json",
+      "sha256": "d5c35bd5277830a00d5c4a3595027aef28de6321bb69370986c4a9680d5fd190"
+    },
+    {
+      "path": "validation/val001/schemas/invocation_summary.schema.json",
+      "sha256": "7db50bcf29e7b5356805c8677c48efe12df7dbb8deabf7a7a78bf29bb396d9a4"
+    },
+    {
+      "path": "validation/val001/schemas/postresult_execution_lock.schema.json",
+      "sha256": "6a637d4ea09aca363227369659c3dd2d34dfadd0684602429e834f15483657d0"
+    },
+    {
+      "path": "validation/val001/schemas/preexecution_authority.schema.json",
+      "sha256": "14b899aa2de3ff882aa0415be1318630fa6c6270a4291c33cca8ea211ea9e90f"
+    },
+    {
+      "path": "validation/val001/schemas/schema_document.schema.json",
+      "sha256": "bdbffa52502e21eff99ee905cb39cf6c3bba0efbae3832c8d9a7bf5b5855da60"
+    },
+    {
+      "path": "validation/val001/schemas/source_adapter.schema.json",
+      "sha256": "be78cd2cd983916e3b301cb05db31777c1731c709c13b13e6c75cf62b086b67a"
+    }
+  ],
+  "preservation": {
+    "invocation_journal_changed": false,
+    "invocation_summary_changed": false,
+    "v2_result_changed": false
+  },
+  "puckworks_lock": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "record_id": "VAL001-ADMINISTRATIVE-CLOSURE-FREEZE-1",
+  "schema_version": "espresso.val001.administrative_closure_freeze.v1",
+  "status": "FROZEN",
+  "terminal_external_root_type": "FINAL_GIT_HEAD_TREE"
+}
