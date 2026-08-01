@@ -7,35 +7,51 @@
   "bindings": [
     {
       "path": "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json",
-      "sha256": "84ade8065c686b090cf16ab227bd702b9e505181af893e60720f670daee13f59"
+      "sha256": "8fc6fa3e7e850687d9a5f295a9b7e88632892824a5b5a49f17701d8683c584f4"
     },
     {
       "path": "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
       "sha256": "eb4104710e43450b584eb2e7ad2ca5d0c384509b1d1e8adfb4e7fcb864a741c2"
     },
     {
-      "path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
-      "sha256": "1dd698be9b2ebf6338799223da0015628240b7937edf7a8722c39de306e2c853"
+      "path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "sha256": "4898f409ca7efb6ab3b0b071c1fcf4f3c80da51edab92d1472574a840f7051fe"
+    },
+    {
+      "path": "validation/val001/VAL_001_SCHEMA_PROVENANCE_TRANSITION_MATRIX.json",
+      "sha256": "83ea7943c38823a89e2b28e22186b9cb50d5f319f833f2257e42ce51315eeb65"
+    },
+    {
+      "path": "validation/val001/VAL_001_SCHEMA_TAXONOMY_AND_COUNTING_SPECIFICATION.json",
+      "sha256": "7b1e07f74f4180f216af9a762aaea76fcb81500c6d0a66fa8d0e522c0227240b"
     },
     {
       "path": "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
-      "sha256": "8e44249a5883b6951f4f1e3bac00fbe017c99de32207b96a7f7d257abe80c1bd"
+      "sha256": "d2df26e314f87dd110501b778dd7acd3a377d0988351ceb4ed197cd50c3d10c9"
+    },
+    {
+      "path": "validation/val001/VAL_001_IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY.json",
+      "sha256": "a141ea17c04145e23a5dcdf19f911f6408e5efd58cf8afb2f0000a331f02a9ac"
     },
     {
       "path": "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
-      "sha256": "5b5367d4b037ad0e9ae77ab5057389059827370aae3b0a502e48d361f105aaf7"
+      "sha256": "91090cd1d05c5e990e38ce1e9ed0760f0bd359724d41327b0d418383d2495968"
+    },
+    {
+      "path": "validation/val001/VAL_001_MUTATION_EXECUTION_COVERAGE.json",
+      "sha256": "5af61cce27d41a3137e51f92a4723e26f01dfa3f4ead5ea39c2e241aaffccefb"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
-      "sha256": "e74fc27175eb6b56607a658f1bd79cde16e1613df718e348ecf3381c1ff51351"
+      "sha256": "a29cf280abe961f4065bab5beb301431d7994620d9e32c7de5a04ec08e0113b5"
     },
     {
       "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
-      "sha256": "6b8646410406cf57dbe93e04ba2a2180cda17bb8b91d980606bdaa012ba9f186"
+      "sha256": "698e7ecd41104536efe110f8814a650d1540906d926885ebc49e2f16d97aa5aa"
     },
     {
       "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
-      "sha256": "0207f83e96742a081e375ec0772e4343ea7116ed3ba1401763095bdfa16cf6e2"
+      "sha256": "1d4a33fd1c3129b9bde2ca0205deaed80ea3289de34cd6176c9236d6429d9f64"
     },
     {
       "path": "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl",
@@ -65,10 +81,10 @@
     "protected_or_holdout_scoring": "NOT_AUTHORIZED"
   },
   "freeze_binding": {
-    "commit": "12aaeae7960182976284083ca53d06b5521c69f6",
-    "path": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
-    "sha256": "3eb002993bb348096e2c1d03154df9a16fc179fefb7734fd2fd750d35d43dc98",
-    "tree": "81bc3eb91f09a193aece2d794fa39ce4a0f941d6"
+    "commit": "5fc671304f1d4942d775f937f330d903b45eefdd",
+    "path": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
+    "sha256": "7feec1728469e62744330ea22596f52927bc431c47de6e58b54003ca4b143def",
+    "tree": "dc6e9ee72bbf406cc0736ce5c044428a9535d255"
   },
   "further_retry_authorized": false,
   "issue": 37,
@@ -77,9 +93,9 @@
     "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
   },
   "pull_request": 38,
-  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-8-EXPLICIT-SEMANTICS",
+  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-9-SCHEMA-PROVENANCE",
   "remaining_governed_result_producing_invocations": 0,
   "remaining_real_data_comparison_invocations": 0,
-  "schema_version": "espresso.val001.postresult_execution_lock.v2",
+  "schema_version": "espresso.val001.postresult_execution_lock.v3",
   "task": "VAL-001"
 }
