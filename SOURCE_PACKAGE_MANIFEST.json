@@ -28,8 +28,8 @@
   ],
   "file_count": 196,
   "total_uncompressed_bytes_excluding_manifest": 1778157,
-  "aggregate_source_sha256": "56bdea873ce3cb29d1e83bb3f8fa93daea68595733e428b066e06e450a0326c7",
-  "aggregate_sha256": "56bdea873ce3cb29d1e83bb3f8fa93daea68595733e428b066e06e450a0326c7",
+  "aggregate_source_sha256": "7e566397894a7d6d472ca62f40e5a2bf6d0989df5c308b7b23144d7766398a90",
+  "aggregate_sha256": "7e566397894a7d6d472ca62f40e5a2bf6d0989df5c308b7b23144d7766398a90",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -591,7 +591,7 @@
     "scripts/generate_val001_deep_schema_coverage.py": {
       "sha256": "0da7f1668d386a19aa02201032446fc16f1e78efaba7af09ecebc2caeeff7aa1",
       "bytes": 889,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/lib/openfoam_env.sh": {
       "sha256": "f543914bbf83cc0fb40878d10c36418867e8e4dec696d438dea6144bd4182ae0",
@@ -761,7 +761,7 @@
     "scripts/verify_val001_deep_schema_coverage.py": {
       "sha256": "6346b41ddaa1e21fbb7d774a8e0b5ed0f3a590d53f49b9f2bf6644e4d2350ae1",
       "bytes": 2578,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/verify_val001_governed_inventory.py": {
       "sha256": "1100e7392a52773b629139e37e765392181f7c439043744e7f2b85e68f1e4cc2",
