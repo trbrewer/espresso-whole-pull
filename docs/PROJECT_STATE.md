@@ -7,8 +7,8 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 213/213 PASS
-- Active candidate: `VAL-001_SOURCE_SPECIFIC_VALIDATION_ADAPTERS`
+- Public source verification: 218/218 PASS
+- Active candidate: `VAL-OPS-001_VALIDATION_OPERATING_STANDARD_V1`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -54,15 +54,12 @@ diagnostics are not improved predictions merely because they add complexity.
 
 ## Active next program phase
 
-The open VAL-001 correction candidate implements the source-specific adapter
-framework without changing governing physics. Three prospectively declared
-current-head OpenFOAM cases completed. The one authorized corrected real-data
-comparison invocation failed after in-memory score exposure and remains
-invalidated. Under separate human-owner replacement authority, the minimal
-Python Boolean defect was repaired and exactly one replacement invocation
-produced the governed V2 bundle. The replacement reused the three verified
-OpenFOAM artifacts without rebuild or rerun. PR #38 remains open and awaits
-independent re-adjudication; it does not authorize a next-physics increment.
+VAL-001 and PR #38 are merged. The source-specific adapter framework was added
+without changing governing physics. Its governed V2 comparison remains a
+post-observation, non-blind, non-independent descriptive reconstruction; it is
+not physical validation and does not authorize a next-physics increment.
+VAL-OPS-001 now proposes a concise prospective operating standard for
+proportionate validation cases and reusable infrastructure work.
 
 See the concise
 [solver development and validation roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)
@@ -71,7 +68,7 @@ and the
 
 General whole-solver physical validation remains `NOT_ESTABLISHED`.
 
-## Open VAL-001 candidate
+## Merged VAL-001 framework
 
 VAL-001 adds enforced source adapters, semantic validation, evidence/rights
 and calibration/comparison ledgers, synthetic adversarial tests, historical
@@ -95,16 +92,15 @@ discrimination and mechanism uniqueness were not assessed;
 decision. Three earlier current-head OpenFOAM runs qualify the framework but
 did not produce the V2 pressure-sweep columns.
 
-The registry, synthetic transaction, and journal-to-summary gaps are closed on
-the open PR #38 candidate. The summary
+The registry, synthetic transaction, and journal-to-summary gaps were closed by
+PR #38. The summary
 ledger is byte-derived from the four-event journal and the production runner
-refuses the final consumed authority before source access. Independent
-read-only re-adjudication is still required before merge. The former
+refuses the final consumed authority before source access. The former
 deep-schema gap is closed through 68 registry-referenced normative schema
 families and direct validation of 105 current and immutable historical records.
 ## VAL-001 PR #38 administrative remediation
 
-The final candidate directly enumerates and validates all governed JSON/JSONL
+The merged candidate directly enumerates and validates all governed JSON/JSONL
 records with no exclusions, cycles, or orphans. The administrative freeze is
 bound by a canonical consumed lock containing the complete freeze commit and
 tree. Recursive schema-AST validation remains active. Sixty-eight normative
