@@ -26,11 +26,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 298,
+    "python_test_count": 315,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 224,
-    "source_manifest_aggregate_sha256": "287f8504b0b95f1a50c7f6a91acae4454f3f4fcced2f28f05ebce29bd9fdcc87",
+    "source_manifest_file_count": 225,
+    "source_manifest_aggregate_sha256": "80624fef2f7d46301c60a94be8b9a7624c5b8e90070b8b5cc14cb498f0a70667",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -51,6 +51,20 @@
     "failed_openfoam_case_count": 0,
     "rank_count": 32,
     "validation_framework_disposition": "PINNED_FRAMEWORK_USED_UNCHANGED",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "val_infra_002": {
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "historical_stage0_commit": "f43bf2166f60f984e4ca5ca7f30c791a68c6259e",
+    "historical_stage0_tree": "6b812f61bb4e0630d80dc0fb4a0922d63554a704",
+    "protected_scope_source": "ORIGINAL_STAGE0_PERMITTED_CHANGED_PATHS_CONTRACT",
+    "unrelated_post_stage0_paths_require_enumeration": false,
+    "focused_test_count": 45,
+    "wp_0_3c_stage0_boundary": "PASS",
+    "historical_stage0_ancestor_of_head": "PASS",
+    "frozen_stage0_git_tree_integrity": "PASS",
+    "frozen_stage0_worktree_integrity": "PASS",
+    "scientific_execution_count": 0,
     "physical_validation": "NOT_ESTABLISHED"
   },
   "val001_postresult_framework_hardening": {

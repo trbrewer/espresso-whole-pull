@@ -64,6 +64,17 @@ claim ceiling. Current candidate counts and source identities are recorded in
 `PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
 validation remains `NOT_ESTABLISHED`.
 
+## Merged VAL-INFRA-002 repair
+
+VAL-INFRA-002 adds deterministic frozen-scope tests for authentic Stage-0 and
+current repository states, unrelated future paths, and protected-scope
+mutation, deletion, addition, replacement, rename, contract, identity, and
+semantic failures. It performs no OpenFOAM or scientific execution.
+The exact-head correction additionally covers file and directory symbolic
+links, gitlinks, executable-mode changes, tracked deletion with untracked
+replacement, and an equal-tree non-ancestor candidate using real temporary Git
+repositories.
+
 WP-0.3B verifies independently re-expressed mathematics, synthetic
 identifiability, and measurement bookkeeping. It does not experimentally
 validate espresso extraction or WP02 hydraulics, establish parameter

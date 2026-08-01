@@ -133,3 +133,20 @@ and the minimum useful independent measurement package. No fitting, external
 data scoring, protected access, framework change, solver change, experiment,
 or governing-physics change occurred. Physical validation remains not
 established.
+
+## 2026-08-01 — VAL-INFRA-002 Stage-0 verifier scope repair
+
+The WP-0.3C verifier was scoped to the frozen Stage-0 merge identity and
+protected artifacts derived from its original permitted-path contract.
+Unrelated authorized later repository paths no longer require historical
+allowlist entries, while protected Stage-0 artifacts and semantics remain
+fail-closed. No solver, configuration, scientific result, evidence, framework,
+operating standard, dependency lock, or claim ceiling changed, and no
+scientific execution occurred.
+
+Independent exact-head review then identified a symbolic-link substitution
+gap in the first repair. A bounded correction added NUL-delimited Git-tree
+mode/type/object comparison, required Stage-0 ancestry, and added non-following
+worktree and real-Git adversarial tests. The superseded head used path and
+followed-target byte equality and was not fully fail-closed for object-type
+replacement.

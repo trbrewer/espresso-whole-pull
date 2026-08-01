@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 224/224 PASS
+- Public source verification: pending deterministic post-integration regeneration
 - Active candidate: `VAL-CASE-001_HYDRAULIC_COMPACTION_IDENTIFIABILITY`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
@@ -15,6 +15,13 @@
 
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).
+
+VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
+legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,
+framework pin, operating standard, solver, configuration, dependency, or claim
+ceiling and performs no scientific execution. Its exact-head correction binds
+protected Git modes and object types, rejects symbolic-link substitution, and
+requires the pinned Stage-0 merge to be an ancestor of the candidate.
 
 ## Completed sequence
 
