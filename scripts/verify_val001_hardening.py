@@ -26,10 +26,13 @@ def verify(root: Path) -> dict[str, object]:
     for entry in registry["records"]:
         record_path, schema_path = root / entry["path"], root / entry["schema_path"]
         schema = load_json(schema_path); lint_schema(schema)
-        if entry["treatment"] == "CURRENT_DEEP_SCHEMA":
+        if record_path.suffix == ".jsonl":
+            for line in record_path.read_text(encoding="utf-8").splitlines():
+                validate_record(json.loads(line, parse_constant=lambda value: (_ for _ in ()).throw(ValueError(value))), schema)
+        else:
             validate_record(load_json(record_path), schema)
-        elif sha256(record_path) != entry["sha256"]:
-            raise ContractError(f"immutable historical hash mismatch: {entry['path']}")
+        if sha256(record_path) != entry["sha256"]:
+            raise ContractError(f"governed record hash mismatch: {entry['path']}")
         validated.append(entry["path"])
     adapter = load_json(root / "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json")
     validate_adapter(adapter, root, expected_dependency=EXPECTED_LOCK)

@@ -8,13 +8,9 @@ from .framework import ContractError, canonical_json, load_json, sha256
 INVENTORY_PATH = "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json"
 REGISTRY_PATH = "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json"
 
-DEEP = {
- "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json": "source_adapter.schema.json",
- "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json": "comparison_result.schema.json",
- "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json": "invocation_ledger.schema.json",
- "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json": "invocation_summary.schema.json",
- "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json": "postresult_execution_lock.schema.json",
-}
+COVERAGE_PATH = "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json"
+FAMILY_SCHEMA_PATH = "validation/val001/schemas/deep_record_families.schema.json"
+SCHEMA_DOCUMENT_PATH = "validation/val001/schemas/schema_document.schema.json"
 
 def structure(value: Any) -> Any:
     if isinstance(value, dict): return {key: structure(value[key]) for key in sorted(value)}
@@ -48,6 +44,8 @@ def discover(root: Path) -> list[Path]:
     return sorted(path for path in base.rglob("*") if path.is_file() and path.suffix in {".json",".jsonl"} and path.relative_to(root).as_posix() not in self_bound)
 
 def build_inventory(root: Path) -> dict[str,Any]:
+    coverage_path=root/COVERAGE_PATH
+    coverage_by_path={r["path"]:r for r in load_json(coverage_path)["records"]} if coverage_path.exists() else {}
     records=[]
     for path in discover(root):
         rel=path.relative_to(root).as_posix(); data=path.read_bytes()
@@ -56,17 +54,25 @@ def build_inventory(root: Path) -> dict[str,Any]:
         # The inventory identity is path-derived and therefore unique even when
         # immutable historical generations legitimately retain one artifact ID.
         record_id="INV-"+hashlib.sha256(rel.encode("utf-8")).hexdigest()[:20].upper()
-        schema_name=DEEP.get(rel)
+        if rel==COVERAGE_PATH:
+            schema_id="espresso.val001.deep_schema_coverage_matrix.v1";schema_path="validation/val001/schemas/coverage_matrix.schema.json";treatment="CURRENT_DEEP_SCHEMA"
+        elif "/schemas/" in rel:
+            schema_id="espresso.val001.schema_document.v1";schema_path=SCHEMA_DOCUMENT_PATH;treatment="CURRENT_DEEP_SCHEMA"
+        elif path.suffix==".jsonl":
+            schema_id="espresso.val001.deep_invocation_event_families.v1";schema_path="validation/val001/schemas/deep_invocation_event_families.schema.json";treatment="IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+        else:
+            item=coverage_by_path.get(rel)
+            if item is None: raise ContractError(f"coverage matrix omits {rel}")
+            schema_id=item["schema_id"];schema_path=item["schema_path"];treatment=item["treatment"]
         tracked=git_value(root,["ls-files","--error-unmatch",rel],"")
         blob=git_value(root,["hash-object",rel],hashlib.sha1(data).hexdigest())
         producing=git_value(root,["log","-1","--format=%H","--",rel],"PENDING_COMPLETION_COMMIT") if tracked else "PENDING_COMPLETION_COMMIT"
-        treatment="CURRENT_DEEP_SCHEMA" if schema_name else "IMMUTABLE_HISTORICAL_SIDECAR"
-        records.append({"path":rel,"sha256":hashlib.sha256(data).hexdigest(),"git_blob":blob,"producing_commit":producing,"record_id":record_id,"artifact_record_id":artifact_record_id,"record_class":record_class(rel),"schema_id":schema_name or "espresso.val001.exact_structure_sidecar.v1","schema_version":value.get("schema_version","JSONL_V3") if isinstance(value,dict) else "JSONL_V3","schema_path":f"validation/val001/schemas/{schema_name}" if schema_name else "validation/val001/schemas/exact_structure_sidecar.schema.json","semantic_validator":"VALIDATE_DEEP_AND_CROSS_RECORD" if schema_name else "VALIDATE_EXACT_HASH_AND_STRUCTURE_SIGNATURE","treatment":treatment,"current":treatment=="CURRENT_DEEP_SCHEMA","executable":False,"audit_only":treatment!="CURRENT_DEEP_SCHEMA","mutability":"IMMUTABLE_AFTER_COMPLETION_FREEZE","governing":rel.endswith("POSTRESULT_EXECUTION_LOCK.json") or rel.endswith("INVOCATION_SUMMARY_V2.json"),"superseded":("historical/" in rel or "FIRST_COMPONENT" in rel or "EXECUTION_FAILURE" in rel),"claim_ceiling":"NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS","puckworks_lock_applicable":rel.startswith("validation/val001/"),"source_access_role":"NO_SOURCE_ACCESS" if "ACCESS_LOG" not in rel else "SOURCE_ACCESS_AUDIT","static_validation":"REQUIRED","structure_signature_sha256":hashlib.sha256(canonical_json(structure(value))).hexdigest()})
+        records.append({"path":rel,"sha256":hashlib.sha256(data).hexdigest(),"git_blob":blob,"producing_commit":producing,"record_id":record_id,"artifact_record_id":artifact_record_id,"record_class":record_class(rel),"schema_id":schema_id,"schema_version":value.get("schema_version","JSONL_V3") if isinstance(value,dict) else "JSONL_V3","schema_path":schema_path,"semantic_validator":"VALIDATE_DEEP_AND_CROSS_RECORD","treatment":treatment,"current":treatment=="CURRENT_DEEP_SCHEMA","executable":False,"audit_only":treatment!="CURRENT_DEEP_SCHEMA","mutability":"IMMUTABLE_AFTER_DEEP_SCHEMA_FREEZE","governing":rel.endswith("INVOCATION_SUMMARY_V2.json"),"superseded":("historical/" in rel or "FIRST_COMPONENT" in rel or "EXECUTION_FAILURE" in rel),"claim_ceiling":"NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS","puckworks_lock_applicable":rel.startswith("validation/val001/"),"source_access_role":"NO_SOURCE_ACCESS" if "ACCESS_LOG" not in rel else "SOURCE_ACCESS_AUDIT","static_validation":"REQUIRED","structure_signature_sha256":hashlib.sha256(canonical_json(structure(value))).hexdigest()})
     paths=[r["path"] for r in records]; ids=[str(r["record_id"]) for r in records]
     if len(paths)!=len(set(paths)): raise ContractError("duplicate inventory path")
     duplicates={item for item in ids if ids.count(item)>1 and item not in {"VAL-001"}}
     if duplicates: raise ContractError(f"duplicate record IDs: {sorted(duplicates)}")
-    return {"schema_version":"espresso.val001.governed_record_inventory.v1","record_id":"VAL001-GOVERNED-RECORD-INVENTORY-1","scope":"ALL_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_WITH_DIRECTED_CLOSURE","record_count":len(records),"records":records,"closure":{"inventory_self":"BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH","registry_self":"BOUND_BY_COMPLETION_FREEZE_AVOID_SELF_HASH","canonical_consumed_lock":"BINDS_COMPLETION_FREEZE_INVENTORY_AND_REGISTRY_AS_CHAIN_TERMINUS","completion_freeze":"BINDS_INVENTORY_AND_REGISTRY","final_lock":"BINDS_COMPLETION_FREEZE"}}
+    return {"schema_version":"espresso.val001.governed_record_inventory.v2","record_id":"VAL001-GOVERNED-RECORD-INVENTORY-2","scope":"ALL_JSON_AND_JSONL_UNDER_VALIDATION_VAL001_WITH_DIRECTED_CLOSURE","record_count":len(records),"records":records,"closure":{"inventory_self":"BOUND_BY_DEEP_SCHEMA_FREEZE_AVOID_SELF_HASH","registry_self":"BOUND_BY_DEEP_SCHEMA_FREEZE_AVOID_SELF_HASH","canonical_consumed_lock":"BINDS_DEEP_SCHEMA_FREEZE_INVENTORY_AND_REGISTRY_AS_CHAIN_TERMINUS","deep_schema_freeze":"BINDS_INVENTORY_REGISTRY_AND_COVERAGE","sidecar_primary_validation_count":0}}
 
 def verify_inventory(root: Path, inventory: dict[str,Any]) -> None:
     expected=build_inventory(root); observed={r["path"]:r for r in inventory["records"]}; actual={r["path"]:r for r in expected["records"]}

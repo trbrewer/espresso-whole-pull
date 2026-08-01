@@ -1,0 +1,144 @@
+{
+  "$id": "espresso.val001.deep_schema_coverage_matrix.v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "closure": {
+      "additionalProperties": false,
+      "properties": {
+        "freeze": {
+          "type": "string"
+        },
+        "inventory_registry": {
+          "type": "string"
+        },
+        "matrix_self": {
+          "type": "string"
+        },
+        "successor_lock": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "freeze",
+        "inventory_registry",
+        "matrix_self",
+        "successor_lock"
+      ],
+      "type": "object"
+    },
+    "record_count": {
+      "type": "integer"
+    },
+    "record_id": {
+      "type": "string"
+    },
+    "records": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_record_id": {
+            "type": "string"
+          },
+          "claim_ceiling": {
+            "type": "string"
+          },
+          "coverage_status": {
+            "enum": [
+              "DEEP_SCHEMA_AND_SEMANTIC_VALIDATION"
+            ],
+            "type": "string"
+          },
+          "executable": {
+            "type": "boolean"
+          },
+          "git_blob": {
+            "type": "string"
+          },
+          "governing_status": {
+            "enum": [
+              "AUDIT_OR_SUPERSEDED",
+              "CURRENT_GOVERNED"
+            ],
+            "type": "string"
+          },
+          "mutation_test_family": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "producing_commit": {
+            "type": "string"
+          },
+          "puckworks_lock_applicable": {
+            "type": "boolean"
+          },
+          "record_class": {
+            "type": "string"
+          },
+          "schema_id": {
+            "type": "string"
+          },
+          "schema_path": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "semantic_validator": {
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "structural_family": {
+            "type": "string"
+          },
+          "treatment": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifact_record_id",
+          "claim_ceiling",
+          "coverage_status",
+          "executable",
+          "git_blob",
+          "governing_status",
+          "mutation_test_family",
+          "path",
+          "producing_commit",
+          "puckworks_lock_applicable",
+          "record_class",
+          "schema_id",
+          "schema_path",
+          "schema_version",
+          "semantic_validator",
+          "sha256",
+          "structural_family",
+          "treatment"
+        ],
+        "type": "object"
+      },
+      "minItems": 69,
+      "type": "array"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "closure",
+    "record_count",
+    "record_id",
+    "records",
+    "schema_version",
+    "scope"
+  ],
+  "type": "object"
+}
