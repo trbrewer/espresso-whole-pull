@@ -1,8 +1,8 @@
 {
-  "schema_version": "espresso.val001.deep_schema_completion_freeze.v2",
-  "record_id": "VAL001-DEEP-SCHEMA-COMPLETION-FREEZE-2",
-  "implementation_commit": "d8c82132790e23d44d1e4103357628301a2b957b",
-  "implementation_tree": "d907189105cdba96dd58bb1feb3ebb5ce0441191",
+  "schema_version": "espresso.val001.deep_schema_completion_freeze.v3",
+  "record_id": "VAL001-DEEP-SCHEMA-COMPLETION-FREEZE-3",
+  "implementation_commit": "a89e0266317acd776e79537ab93f9d48a9efd959",
+  "implementation_tree": "612ffcacddd16e8bb140abc4127c856450c51568",
   "inventory": {
     "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
     "sha256": "24ac1759842a8c25bb30f85d836bad2f3b3778898bc4a4dad83a9e6067dbafe4",
@@ -43,7 +43,7 @@
     },
     {
       "path": "tests/test_val001_deep_schema.py",
-      "sha256": "68e92c73c7f2f60861beb5f089f0745472e22bf16944cf6fd9dc725c49e76885"
+      "sha256": "29fba07a3bffac1f842f7fae38357f2eec1faaeb9dc0f72a7bd7844993463f52"
     }
   ],
   "schemas": [
