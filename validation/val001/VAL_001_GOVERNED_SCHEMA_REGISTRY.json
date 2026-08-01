@@ -5,13 +5,13 @@
     "final_lock": "SOLE_FINAL_GIT_TREE_TERMINAL"
   },
   "coverage": "EXPLICIT_ONE_RECORD_ONE_TREATMENT_NO_PREFIX_OR_CATCH_ALL",
-  "record_count": 103,
+  "record_count": 104,
   "record_id": "VAL001-GOVERNED-SCHEMA-REGISTRY-3",
   "records": [
     {
       "artifact_record_id": "VAL001-ADMINISTRATIVE-CLOSURE-SPECIFICATION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "BOUND_BY_ADMINISTRATIVE_FREEZE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -34,7 +34,7 @@
     {
       "artifact_record_id": "VAL001-CALIBRATION-COMPARISON-LEDGER-2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -57,7 +57,7 @@
     {
       "artifact_record_id": "VAL001-EXP001-EXP009-PROVENANCE",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -80,7 +80,7 @@
     {
       "artifact_record_id": "VAL001-DEEP-SCHEMA-COVERAGE-MATRIX-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "BOUND_BY_ADMINISTRATIVE_FREEZE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -103,7 +103,7 @@
     {
       "artifact_record_id": "VAL001-EVIDENCE-RIGHTS-2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -126,7 +126,7 @@
     {
       "artifact_record_id": "VAL001-EXPLICIT-MUTATION-INVENTORY-2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -141,15 +141,15 @@
       "schema_version": "espresso.val001.explicit_mutation_inventory.v2",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "640720148c8093997628d986c216934b8c69b785cc1789e4958373103f643cee",
+      "sha256": "91090cd1d05c5e990e38ce1e9ed0760f0bd359724d41327b0d418383d2495968",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "949e2b8c6da13983d635327469bee2b521018af33fe645995e3df9d758961e47",
+      "structure_signature_sha256": "76e321c442e6422970321655d9e492234328804002aeb60346b7e881cfc3ee5b",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL001-EXPLICIT-SCHEMA-SPECIFICATION-REGISTRY-2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -164,15 +164,15 @@
       "schema_version": "espresso.val001.explicit_schema_specification_registry.v2",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "b18bc5c6d79f5e77ba8a5a719522f91f552f8097647f6d785d540b4f19a01b4b",
+      "sha256": "920e48eb77ff53807088642c4a5d0ce8f4aee8d0fcda3dac20ea88dae77a452c",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "fd8c1e7fe7c496bcafd3c7330c8bfc2131fe91280acf8d209f6999a548a5a604",
+      "structure_signature_sha256": "835d1e4915c32f8220df128cb53429ddd69e30a77a2f45fc861841b7e369c4b0",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -195,7 +195,7 @@
     {
       "artifact_record_id": "VAL001-EXTERNAL-CANDIDATE-ROOT-PROTOCOL-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -218,7 +218,7 @@
     {
       "artifact_record_id": "VAL001-GOVERNED-RECORD-INVENTORY-3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "BOUND_BY_ADMINISTRATIVE_FREEZE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -241,7 +241,7 @@
     {
       "artifact_record_id": "VAL001-GOVERNED-SCHEMA-REGISTRY-3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "BOUND_BY_ADMINISTRATIVE_FREEZE",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -264,7 +264,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -287,7 +287,7 @@
     {
       "artifact_record_id": "VAL001-IMMUTABLE-PROFILE-ASSIGNMENT-REGISTRY-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -302,15 +302,15 @@
       "schema_version": "espresso.val001.immutable_profile_assignment_registry.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "8c8d2bc5466031eb1867c9a283fe4fc8d57c4101430256e1d51cd07d315c00ed",
+      "sha256": "6aac0efa0eb1e567ac7af5ab2de81e5d5bbd65012898928ce6f08e3f1efb9c00",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "e243b71e6648cf0f20c2d775c99f92ec17050152a36efb1ba6bb72d247bcc09c",
+      "structure_signature_sha256": "5d6597258186ddad69f254213370ddca02b37528addb8578e55e5241db2ee56f",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL001-INVOCATION-ACCOUNTING-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -333,7 +333,7 @@
     {
       "artifact_record_id": "VAL001-INVOCATION-JOURNAL",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -356,7 +356,7 @@
     {
       "artifact_record_id": "VAL001-INVOCATION-SUMMARY-V2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -379,7 +379,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -402,7 +402,7 @@
     {
       "artifact_record_id": "VAL001-MUTATION-EXECUTION-COVERAGE-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -417,15 +417,15 @@
       "schema_version": "espresso.val001.mutation_execution_coverage.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "0b2cdc22d5a008cf0acd3950d971edbc782b8e38aff1cb5631e031b6c958de02",
+      "sha256": "5af61cce27d41a3137e51f92a4723e26f01dfa3f4ead5ea39c2e241aaffccefb",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "37105936391cedcb2846c12f9e5191c504acb5cb7476382b86b50b6d276ebe28",
+      "structure_signature_sha256": "f2204c45be0ab0aed436df93918a2005a9d68bb09fec3917d25ec9cb3ab5db46",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL001-NORMATIVE-SCHEMA-CONTRACT-REGISTRY-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -440,15 +440,15 @@
       "schema_version": "espresso.val001.normative_schema_contract_registry.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "beca875d760431d903f8955023a78c3700543ae961a8b3631b3d7286a39a6df5",
+      "sha256": "fd7ba6a6af5f8f0cedb27c6bf6bfd0440a20dd565e4c82fcc30a9923f022a359",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "b44f352359b93740c6b62a0197015eef5ebf394a1dd99acde722b154bd442114",
+      "structure_signature_sha256": "1f32db39342e1e08720e02a6919ef452eca86c8b756a2f2a95f688004d2b4743",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -471,7 +471,7 @@
     {
       "artifact_record_id": "VAL001-SCHEMA-PROVENANCE-TRANSITION-MATRIX-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -494,7 +494,7 @@
     {
       "artifact_record_id": "VAL001-SCHEMA-TAXONOMY-COUNTING-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -509,15 +509,15 @@
       "schema_version": "espresso.val001.schema_taxonomy_counting.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "4d30dbe838d38fbe633dd88ce2528f297777c163d6f3f002703aae758abdb2f5",
+      "sha256": "2953dc6d42f06d538d9bd8a24df016f654af68786141c98accf5781103249f57",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "9ffc38d75a51504e8f882f2fcae0962bc2a38740da97e38550edfe2fbe030648",
+      "structure_signature_sha256": "ae5ccc3e4751256d60225b2a77a5d6e1af34ec79b3ed23316504d4ec497998a8",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL001-SEMANTIC-PROFILE-REGISTRY-2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -532,15 +532,15 @@
       "schema_version": "espresso.val001.semantic_profile_registry.v2",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "f90ffdafd959833f5bbf5ea72aa1ac0cdb8cd1c58f0c94cc7c0eb12a428a8872",
+      "sha256": "572908e5358a6b56b8f8a8d1f2b6633c94f1372559dced78f7866598d97e692c",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "0967ea918b4075a78dbf3ff28e05a0f588189ab061843da8542bff066ee5ed1f",
+      "structure_signature_sha256": "6db1322cf578368c2aa1de68049599b82c4000209bdd277cf846810d08cbc31a",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -563,7 +563,7 @@
     {
       "artifact_record_id": "gagne.de1.evidence_gap.v1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -586,7 +586,7 @@
     {
       "artifact_record_id": "waszkiewicz2025.pressure_flow.source_sweep.v3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -609,7 +609,7 @@
     {
       "artifact_record_id": "waszkiewicz2025.pressure_flow.source_sweep.v2",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -632,7 +632,7 @@
     {
       "artifact_record_id": "VAL001-ROW-COUNT-INVALIDATION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -655,7 +655,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -678,7 +678,7 @@
     {
       "artifact_record_id": "VAL001-ADMINISTRATIVE-CLOSURE-FREEZE-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -701,7 +701,7 @@
     {
       "artifact_record_id": "VAL001-CORRECTED-EXECUTION-ACTIVATION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -724,7 +724,7 @@
     {
       "artifact_record_id": "VAL001-CORRECTED-FREEZE-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -747,7 +747,7 @@
     {
       "artifact_record_id": "VAL001-CORRECTED-PREEXECUTION-AUTHORITY-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -770,7 +770,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -793,7 +793,7 @@
     {
       "artifact_record_id": "VAL001-DEEP-SCHEMA-COMPLETION-FREEZE-3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -816,8 +816,8 @@
     {
       "artifact_record_id": "VAL001-EXPLICIT-SEMANTICS-COMPLETION-FREEZE-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
-      "binding_class": "BOUND_BY_CANONICAL_LOCK",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
+      "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
       "executable": false,
@@ -831,15 +831,15 @@
       "schema_version": "espresso.val001.explicit_semantics_completion_freeze.v1",
       "semantic_profile": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": null,
+      "sha256": "3eb002993bb348096e2c1d03154df9a16fc179fefb7734fd2fd750d35d43dc98",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "c4bc33ccb3af4e6f005c227e410efc30061e171ee63f26fcb641041bf03dca03",
+      "structure_signature_sha256": "e789c12697bcd0bf64549ec9447cb33056f882b525eba92c84dc5e00ca1a16ac",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "artifact_record_id": "VAL001-FINAL-HARDENING-COMPLETION-FREEZE-3",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -885,7 +885,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-FRAMEWORK-HARDENING-FREEZE-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -908,7 +908,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -929,9 +929,32 @@
       "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
     },
     {
+      "artifact_record_id": "VAL001-SCHEMA-PROVENANCE-SEMANTIC-COMPLETION-FREEZE-1",
+      "audit_only": false,
+      "binder": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
+      "binding_class": "BOUND_BY_CANONICAL_LOCK",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
+      "puckworks_lock_applicable": true,
+      "record_class": "SCHEMA_PROVENANCE_COMPLETION_FREEZE",
+      "record_id": "INV-7556D82947644BECFA2F",
+      "schema_id": "schema_provenance_completion_freeze.v1",
+      "schema_origin": "NORMATIVE_RECORD_CONTRACT",
+      "schema_path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
+      "schema_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
+      "semantic_validator": "validate_profile_dispatch",
+      "sha256": null,
+      "static_validation": "REQUIRED",
+      "structure_signature_sha256": "ac7296996e7e0d8fd42dc0e12571b5cea5c91038595ab8b854997657fe98ed88",
+      "treatment": "CURRENT_DEEP_SCHEMA"
+    },
+    {
       "artifact_record_id": "VAL001-SECOND-CORRECTION-ARTIFACT-REUSE-ACTIVATION-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -954,7 +977,7 @@
     {
       "artifact_record_id": "VAL001-SECOND-CORRECTION-FREEZE-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -977,7 +1000,7 @@
     {
       "artifact_record_id": "VAL001-SECOND-CORRECTION-INVOCATION-AUTHORITY-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1000,7 +1023,7 @@
     {
       "artifact_record_id": "VAL001-SELECTED-ROW-CANONICALIZATION-V2",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1023,7 +1046,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1046,7 +1069,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1069,7 +1092,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-3-FREEZE-CDDFDFB0B6ED4A98-TREE-1AB64C7E34330494",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1092,7 +1115,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-6-FREEZE-B49D9BFE50798C5F-TREE-1BBABFEE7F186BF9",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1115,7 +1138,7 @@
     {
       "artifact_record_id": "VAL001-POSTRESULT-LOCK-VERSIONING-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1138,7 +1161,7 @@
     {
       "artifact_record_id": "VAL001-PR38-ADMINISTRATIVE-SEMANTIC-REMEDIATION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1161,7 +1184,7 @@
     {
       "artifact_record_id": "VAL001-PR38-DEEP-SCHEMA-COMPLETION-PLAN-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1184,7 +1207,7 @@
     {
       "artifact_record_id": "VAL001-PR38-EXPLICIT-SEMANTICS-ROOT-PINNING-PLAN-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1207,7 +1230,7 @@
     {
       "artifact_record_id": "VAL_001_PR38_FINAL_HARDENING_PLAN",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1230,7 +1253,7 @@
     {
       "artifact_record_id": "VAL001-PR38-HARDENING-COMPLETION-PLAN",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1253,7 +1276,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1276,7 +1299,7 @@
     {
       "artifact_record_id": "VAL001-PR38-SCHEMA-PROVENANCE-SEMANTIC-ENFORCEMENT-PLAN-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1299,7 +1322,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1322,7 +1345,7 @@
     {
       "artifact_record_id": "VAL001-SELECTED-ROW-IDENTITY-CORRECTION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1345,7 +1368,7 @@
     {
       "artifact_record_id": "VAL001-V2-INTERPRETATION-CORRECTION-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1368,7 +1391,7 @@
     {
       "artifact_record_id": "VAL_001_WASZKIEWICZ_ADAPTER_PROVENANCE_CORRECTION",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1391,7 +1414,7 @@
     {
       "artifact_record_id": "VAL001-INVOCATION-JOURNAL",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1414,7 +1437,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1437,7 +1460,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1460,7 +1483,7 @@
     {
       "artifact_record_id": "waszkiewicz2025.pressure_flow.source_sweep.v1",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1483,7 +1506,7 @@
     {
       "artifact_record_id": "VAL-001",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1506,7 +1529,7 @@
     {
       "artifact_record_id": "VAL001-V2-FRAMEWORK-QUALIFICATION-PROVENANCE-1",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1529,7 +1552,7 @@
     {
       "artifact_record_id": "WP01R_R1_WASZKIEWICZ_9BAR",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1552,7 +1575,7 @@
     {
       "artifact_record_id": "WP02_001_WASZKIEWICZ_8BAR_NO_RETUNING",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1575,7 +1598,7 @@
     {
       "artifact_record_id": "WP02_001_WASZKIEWICZ_9BAR",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1598,7 +1621,7 @@
     {
       "artifact_record_id": "WP_0_3B_LIANG_VERIFICATION",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1621,7 +1644,7 @@
     {
       "artifact_record_id": "WP_0_3B_MATIAS_VERIFICATION",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1644,7 +1667,7 @@
     {
       "artifact_record_id": "WP_0_3B_MORONEY_VERIFICATION",
       "audit_only": true,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": false,
@@ -1667,7 +1690,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/administrative_closure_freeze.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1690,7 +1713,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/administrative_closure_specification.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1713,7 +1736,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/amendment_invalidation.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1736,7 +1759,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/calibration_comparison_ledger.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1759,7 +1782,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/campaign_provenance.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1782,7 +1805,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/canonical_consumed_lock.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1805,7 +1828,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/comparison_result.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1828,7 +1851,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/comparison_run.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1851,7 +1874,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/coverage_matrix.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1874,7 +1897,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/deep_invocation_event_families.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1897,7 +1920,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/deep_record_families.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1920,7 +1943,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/evidence_rights_inventory.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1943,7 +1966,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/exact_structure_sidecar.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1966,7 +1989,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/execution_activation.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -1989,7 +2012,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/explicit_schema_specification_registry.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2012,7 +2035,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/explicit_semantics_completion_freeze.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2035,7 +2058,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/explicit_semantics_remediation_plan.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2058,7 +2081,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/external_candidate_root_protocol.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2081,7 +2104,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/governance_records.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2104,7 +2127,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/governed_record_inventory.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2127,7 +2150,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/governed_schema_registry.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2150,7 +2173,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/historical_reexpression.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2173,7 +2196,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/invocation_event.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2196,7 +2219,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/invocation_ledger.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2219,7 +2242,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/invocation_summary.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2242,7 +2265,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/mutation_inventory.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2265,7 +2288,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/postresult_execution_lock.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2288,7 +2311,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/preexecution_authority.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2311,7 +2334,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/schema_document.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2334,7 +2357,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/semantic_profile_registry.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,
@@ -2357,7 +2380,7 @@
     {
       "artifact_record_id": "validation/val001/schemas/source_adapter.schema.json",
       "audit_only": false,
-      "binder": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
       "binding_class": "ORDINARY_HASH_BOUND_RECORD",
       "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
       "current": true,

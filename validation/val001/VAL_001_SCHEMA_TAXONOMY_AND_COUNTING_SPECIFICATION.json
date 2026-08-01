@@ -6,10 +6,10 @@
   },
   "counts": {
     "administrative_meta_schema_families": 14,
-    "current_normative_specifications": 67,
-    "current_referenced_specifications": 67,
+    "current_normative_specifications": 68,
+    "current_referenced_specifications": 68,
     "current_unreferenced_specifications": 0,
-    "governing_schema_families": 67,
+    "governing_schema_families": 68,
     "schema_assignments": [
       {
         "record_count": 1,
@@ -242,6 +242,10 @@
       {
         "record_count": 1,
         "schema_id": "result_or_reexpression.v41"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "schema_provenance_completion_freeze.v1"
       },
       {
         "record_count": 1,

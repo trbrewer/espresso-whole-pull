@@ -1,0 +1,30 @@
+{
+  "schema_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+  "record_id": "VAL001-SCHEMA-PROVENANCE-SEMANTIC-COMPLETION-FREEZE-1",
+  "status": "PENDING_IMPLEMENTATION_FREEZE",
+  "implementation": {
+    "commit": "PENDING_IMPLEMENTATION_COMMIT",
+    "tree": "PENDING_IMPLEMENTATION_TREE"
+  },
+  "bindings": [],
+  "computed_counts": {},
+  "preserved_lineage": {},
+  "puckworks_lock": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "execution": {
+    "new_openfoam_builds": 0,
+    "new_openfoam_case_executions": 0,
+    "new_real_data_comparison_invocations": 0,
+    "new_governed_result_producing_invocations": 0,
+    "new_invocation_journal_events": 0,
+    "execution_authority": "CONSUMED"
+  },
+  "claim_boundaries": {
+    "physical_validation": "NOT_ESTABLISHED",
+    "general_physical_validation": "NOT_ESTABLISHED",
+    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"
+  }
+}

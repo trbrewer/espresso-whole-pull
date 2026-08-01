@@ -17205,12 +17205,121 @@
       "specification_id": "VAL001-SCHEMA-SPEC-068",
       "status": "CURRENT",
       "version": "v1"
+    },
+    {
+      "allowed_enum_domain": "DECLARED_BY_NORMATIVE_CONTRACT_AND_INVARIANTS",
+      "authoritative_source_references": [
+        "human-owner correction authority dated 2026-08-01",
+        "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md"
+      ],
+      "campaign_status": "NOT_APPLICABLE",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "dependency_lock_requirements": "PUCKWORKS_EXACT_IF_APPLICABLE",
+      "evidence_role_restrictions": "ADMINISTRATIVE_ONLY",
+      "execution_status": "NONEXECUTABLE_ADMINISTRATION",
+      "fitting_retuning_restrictions": "PROHIBITED",
+      "governing_audit_status": "CURRENT_GOVERNING_ADMINISTRATION",
+      "governing_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "description": "Explicit record-level administrative contract; deeper normative invariants execute in the named validators.",
+        "properties": {
+          "bindings": {
+            "items": {},
+            "type": "array"
+          },
+          "claim_boundaries": {
+            "type": "object"
+          },
+          "computed_counts": {
+            "type": "object"
+          },
+          "execution": {
+            "type": "object"
+          },
+          "implementation": {
+            "type": "object"
+          },
+          "preserved_lineage": {
+            "type": "object"
+          },
+          "puckworks_lock": {
+            "type": "object"
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "record_id",
+          "status",
+          "implementation",
+          "bindings",
+          "computed_counts",
+          "preserved_lineage",
+          "puckworks_lock",
+          "execution",
+          "claim_boundaries"
+        ],
+        "title": "Normative SCHEMA_PROVENANCE_COMPLETION_FREEZE contract",
+        "type": "object"
+      },
+      "identifiability_status": "NOT_APPLICABLE",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-069",
+      "null_and_unavailable_reason_semantics": "NULL_ONLY_WHERE_SCHEMA_PERMITS; unavailable values require explicit reason fields",
+      "optional_fields": [],
+      "origin": "NORMATIVE_RECORD_CONTRACT",
+      "physical_validation_status": "NOT_ESTABLISHED",
+      "prohibited_enum_values": [
+        "INSTANCE_INFERENCE",
+        "CURRENT_VALIDATION",
+        "PHYSICAL_VALIDATION_ESTABLISHED"
+      ],
+      "prohibited_fields": [],
+      "protected_holdout_status": "NO_ACCESS_OR_SCORING_AUTHORIZED",
+      "record_class": "SCHEMA_PROVENANCE_COMPLETION_FREEZE",
+      "record_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "required_cross_record_bindings": [],
+      "required_fields": [
+        "schema_version",
+        "record_id",
+        "status",
+        "implementation",
+        "bindings",
+        "computed_counts",
+        "preserved_lineage",
+        "puckworks_lock",
+        "execution",
+        "claim_boundaries"
+      ],
+      "required_mutation_ids": [
+        "MUT-STRUCTURAL-202",
+        "MUT-STRUCTURAL-203",
+        "MUT-STRUCTURAL-204"
+      ],
+      "rights_requirements": "NO_RIGHTS_ESCALATION",
+      "schema_id": "schema_provenance_completion_freeze.v1",
+      "schema_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "scope": "EXPLICIT_RECORD_SEMANTICS",
+      "score_bearing_rules": "NON_SCORE_BEARING",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "solver_configuration_restrictions": "PROHIBITED",
+      "specification_id": "VAL001-SCHEMA-SPEC-069",
+      "status": "CURRENT",
+      "version": "v1"
     }
   ],
   "counts": {
     "copied_inferred_governing_schemas": 0,
-    "current_normative_contracts": 67,
-    "current_referenced_contracts": 67,
+    "current_normative_contracts": 68,
+    "current_referenced_contracts": 68,
     "current_unreferenced_contracts": 0,
     "filename_selected_governing_schemas": 0,
     "instance_inferred_governing_schemas": 0,
@@ -17606,6 +17715,19 @@
       "semantic_profile_id": "PROFILE-COMPARISON-RUN",
       "specification_id": "VAL001-SCHEMA-SPEC-031",
       "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+    },
+    {
+      "audit_only": false,
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
+      "record_class": "SCHEMA_PROVENANCE_COMPLETION_FREEZE",
+      "record_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "schema_id": "schema_provenance_completion_freeze.v1",
+      "schema_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-069",
+      "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "audit_only": true,

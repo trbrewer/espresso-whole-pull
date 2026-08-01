@@ -608,6 +608,22 @@
       "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
     },
     {
+      "audit_only": false,
+      "current": true,
+      "executable": false,
+      "governing": true,
+      "historical": false,
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-069",
+      "path": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
+      "record_class": "SCHEMA_PROVENANCE_COMPLETION_FREEZE",
+      "record_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "schema_id": "schema_provenance_completion_freeze.v1",
+      "schema_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-069",
+      "treatment": "CURRENT_DEEP_SCHEMA"
+    },
+    {
       "audit_only": true,
       "current": false,
       "executable": false,
@@ -1556,7 +1572,7 @@
   ],
   "counts": {
     "duplicate_assignments": 0,
-    "governed_records": 103,
+    "governed_records": 104,
     "records_without_assignment": 0
   },
   "record_id": "VAL001-IMMUTABLE-PROFILE-ASSIGNMENT-REGISTRY-1",

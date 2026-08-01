@@ -6,8 +6,8 @@
   ],
   "counts": {
     "copied_inferred_governing_schemas": 0,
-    "current_normative_specifications": 67,
-    "current_referenced_specifications": 67,
+    "current_normative_specifications": 68,
+    "current_referenced_specifications": 68,
     "current_unreferenced_specifications": 0,
     "filename_selected_governing_schemas": 0,
     "instance_inferred_governing_schemas": 0,
@@ -403,6 +403,19 @@
       "semantic_profile_id": "PROFILE-COMPARISON-RUN",
       "specification_id": "VAL001-SCHEMA-SPEC-031",
       "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+    },
+    {
+      "audit_only": false,
+      "current": true,
+      "executable": false,
+      "path": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
+      "record_class": "SCHEMA_PROVENANCE_COMPLETION_FREEZE",
+      "record_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "schema_id": "schema_provenance_completion_freeze.v1",
+      "schema_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-069",
+      "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
       "audit_only": true,
@@ -14868,6 +14881,70 @@
       "scope": "EXPLICIT_RECORD_SEMANTICS",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-068"
+    },
+    {
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-069",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
+      "record_class": "SCHEMA_PROVENANCE_COMPLETION_FREEZE",
+      "record_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false,
+        "description": "Explicit record-level administrative contract; deeper normative invariants execute in the named validators.",
+        "properties": {
+          "bindings": {
+            "items": {},
+            "type": "array"
+          },
+          "claim_boundaries": {
+            "type": "object"
+          },
+          "computed_counts": {
+            "type": "object"
+          },
+          "execution": {
+            "type": "object"
+          },
+          "implementation": {
+            "type": "object"
+          },
+          "preserved_lineage": {
+            "type": "object"
+          },
+          "puckworks_lock": {
+            "type": "object"
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "record_id",
+          "status",
+          "implementation",
+          "bindings",
+          "computed_counts",
+          "preserved_lineage",
+          "puckworks_lock",
+          "execution",
+          "claim_boundaries"
+        ],
+        "title": "Normative SCHEMA_PROVENANCE_COMPLETION_FREEZE contract",
+        "type": "object"
+      },
+      "schema_id": "schema_provenance_completion_freeze.v1",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "schema_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+      "scope": "EXPLICIT_RECORD_SEMANTICS",
+      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
+      "specification_id": "VAL001-SCHEMA-SPEC-069"
     }
   ]
 }

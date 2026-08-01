@@ -4,9 +4,9 @@
     "FREEZE_LOCK": 11,
     "SCHEMA_DOCUMENT": 23,
     "SEMANTIC_PROFILE": 87,
-    "STRUCTURAL_SCHEMA": 201
+    "STRUCTURAL_SCHEMA": 204
   },
-  "declared_count": 337,
+  "declared_count": 340,
   "declared_mutation_ids": [
     "MUT-STRUCTURAL-001",
     "MUT-STRUCTURAL-002",
@@ -209,6 +209,9 @@
     "MUT-STRUCTURAL-199",
     "MUT-STRUCTURAL-200",
     "MUT-STRUCTURAL-201",
+    "MUT-STRUCTURAL-202",
+    "MUT-STRUCTURAL-203",
+    "MUT-STRUCTURAL-204",
     "MUT-SCHEMA-DOCUMENT-001",
     "MUT-SCHEMA-DOCUMENT-002",
     "MUT-SCHEMA-DOCUMENT-003",
@@ -347,7 +350,7 @@
     "MUT-FREEZE_LOCK-011"
   ],
   "duplicate_ids": [],
-  "executed_count": 337,
+  "executed_count": 340,
   "executed_mutation_ids": [
     "MUT-STRUCTURAL-001",
     "MUT-STRUCTURAL-002",
@@ -550,6 +553,9 @@
     "MUT-STRUCTURAL-199",
     "MUT-STRUCTURAL-200",
     "MUT-STRUCTURAL-201",
+    "MUT-STRUCTURAL-202",
+    "MUT-STRUCTURAL-203",
+    "MUT-STRUCTURAL-204",
     "MUT-SCHEMA-DOCUMENT-001",
     "MUT-SCHEMA-DOCUMENT-002",
     "MUT-SCHEMA-DOCUMENT-003",

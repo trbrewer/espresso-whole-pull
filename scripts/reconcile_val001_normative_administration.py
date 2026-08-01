@@ -14,13 +14,15 @@ DECLARATIONS=[
  (66,"validation/val001/VAL_001_SCHEMA_TAXONOMY_AND_COUNTING_SPECIFICATION.json","SCHEMA_TAXONOMY_COUNTING","espresso.val001.schema_taxonomy_counting.v1",["schema_version","record_id","definitions","count_formulas","val001_schema_spec_015_disposition","counts"]),
  (67,"validation/val001/VAL_001_MUTATION_EXECUTION_COVERAGE.json","MUTATION_EXECUTION_COVERAGE","espresso.val001.mutation_execution_coverage.v1",["schema_version","record_id","declared_mutation_ids","executed_mutation_ids","missing_ids","unexpected_ids","duplicate_ids","placeholder_ids","category_counts","declared_count","executed_count","immutable_hash_checking_disabled_for_all_structural_and_semantic_tests","final_status"]),
  (68,"validation/val001/corrections/VAL_001_PR38_SCHEMA_PROVENANCE_AND_SEMANTIC_ENFORCEMENT_PLAN.json","CORRECTION_PLAN","espresso.val001.schema_provenance_semantic_enforcement_plan.v1",["schema_version","record_id","controlling_adjudication","starting_head","starting_tree","change_declaration","blocking_findings","nonblocking_finding","design","prohibited_actions","intended_commit_sequence","stop_conditions"]),
+ (69,"validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json","SCHEMA_PROVENANCE_COMPLETION_FREEZE","espresso.val001.schema_provenance_semantic_completion_freeze.v1",["schema_version","record_id","status","implementation","bindings","computed_counts","preserved_lineage","puckworks_lock","execution","claim_boundaries"]),
 ]
 
 def primitive(key):
  if key.endswith("_count") or key.endswith("count"):return {"type":"integer","minimum":0}
  if key.startswith("is_") or key.endswith("_disabled_for_all_structural_and_semantic_tests"):return {"type":"boolean"}
  if key in {"allowed_origins","prohibited_origins","contracts","record_bindings","assignments","entries","declared_mutation_ids","executed_mutation_ids","missing_ids","unexpected_ids","duplicate_ids","placeholder_ids","blocking_findings","prohibited_actions","intended_additive_commit_sequence","intended_commit_sequence","stop_conditions"}:return {"type":"array","items":{},"uniqueItems":key.endswith("_ids") or key.endswith("_origins")}
- if key in {"counts","category_counts","definitions","count_formulas","authority","starting_identity","design","designs"}:return {"type":"object"}
+ if key in {"counts","category_counts","computed_counts","definitions","count_formulas","authority","starting_identity","implementation","preserved_lineage","puckworks_lock","execution","claim_boundaries","design","designs"}:return {"type":"object"}
+ if key=="bindings":return {"type":"array","items":{}}
  return {"type":"string"}
 
 def closed(keys,overrides=None):
