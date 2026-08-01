@@ -53,7 +53,7 @@
             "type": "boolean"
           },
           "git_blob": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "governing_status": {
             "enum": [
@@ -97,7 +97,7 @@
           },
           "sha256": {
             "pattern": "^[0-9a-f]{64}$",
-            "type": "string"
+            "type": ["string", "null"]
           },
           "structural_family": {
             "type": "string"
