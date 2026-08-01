@@ -15,9 +15,9 @@
   "further_retry_authorized": false,
   "freeze_binding": {
     "path": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
-    "sha256": "7856e26386be65de05535f4227e17e4c6a892405685ac943ae531adc99ced1b5",
-    "commit": "ff757da776fe588a676caa00e9b621041661b813",
-    "tree": "5cc08cdc24569740289f85b5a550539014b5b6e4"
+    "sha256": "c93fd1a94565e38b74ec92b6358086489fb1046c81a7d724d223fc890db40d82",
+    "commit": "fb26f3ca47f6483b8f19d2a2c7fea387d9b88ca8",
+    "tree": "7a889dd3d4918dfd79c4e75d048c565743797c70"
   },
   "bindings": [
     {"path":"validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json","sha256":"55ad40bc3ed38fe15038a34fd1b00f63598f6725a6e6fb1be396d2d848b5bcb9"},
