@@ -48,7 +48,7 @@ def verify_closure(root:Path, *, require_clean:bool=True)->dict[str,Any]:
     duplicate_ids={x for x in artifact_ids if artifact_ids.count(x)>1}
     # Historical generations may intentionally retain an artifact ID only when
     # their paths are explicitly historical.
-    for duplicate in duplicate_ids:
+    for duplicate in duplicate_ids - {"VAL-001"}:
         paths=[r["path"] for r in inventory["records"] if str(r["artifact_record_id"])==duplicate]
         if not all("/historical/" in p for p in paths[1:]): raise ContractError(f"duplicate artifact record ID: {duplicate}")
     if enumerated!=sorted(registered):

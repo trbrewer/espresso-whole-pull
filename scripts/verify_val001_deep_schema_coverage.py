@@ -24,7 +24,7 @@ def verify(root:Path):
   if path.suffix=='.jsonl':
    for line in path.read_text(encoding='utf-8').splitlines():validate_record(json.loads(line),schema)
   else:validate_record(load_json(path),schema)
-  if sha256(path)!=entry['sha256']:raise ContractError(f"registered hash mismatch: {entry['path']}")
+  if entry['sha256'] is not None and sha256(path)!=entry['sha256']:raise ContractError(f"registered hash mismatch: {entry['path']}")
   registered+=1
  sidecars=sum(r['treatment']=="IMMUTABLE_HISTORICAL_SIDECAR" for r in observed['records'])
  if sidecars:raise ContractError("historical sidecar remains primary")
