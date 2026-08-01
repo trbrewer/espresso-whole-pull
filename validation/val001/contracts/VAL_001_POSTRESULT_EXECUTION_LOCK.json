@@ -1,6 +1,6 @@
 {
-  "schema_version": "espresso.val001.postresult_execution_lock.v1",
-  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-6-FREEZE-B49D9BFE50798C5F-TREE-1BBABFEE7F186BF9",
+  "schema_version": "espresso.val001.postresult_execution_lock.v2",
+  "record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-7-ADMINISTRATIVE-CLOSURE",
   "task": "VAL-001",
   "issue": 37,
   "pull_request": 38,
@@ -13,21 +13,30 @@
   "alternate_authority_allowed": false,
   "alternate_activation_allowed": false,
   "further_retry_authorized": false,
+  "freeze_binding": {
+    "path": "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+    "sha256": "02a3fcd70e6a830f146a2a7a178b70d6326ce4d4270c0c370e1e7ea4b9ef30be",
+    "commit": "325715fc7fe9a84e20ddb7416e2d8f1fb7e20e84",
+    "tree": "a4c2642a5ce48f787ab4bacbeb88b0f79a158590"
+  },
   "bindings": [
-    {"path": "validation/val001/contracts/VAL_001_DEEP_SCHEMA_COMPLETION_FREEZE.json", "sha256": "fcf9741e35e56b195dda4c8158974b932f45cc55e490bc75fb72ebe007a02523"},
-    {"path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json", "sha256": "025f49252a8b916d7d37b24398ee4577f7e3a665081c6b44e1117639e6258a45"},
-    {"path": "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json", "sha256": "f4f68add79396d05d123cd5901343143fb3164e7ad5c2afe3f55c22410eb9cf6"},
-    {"path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json", "sha256": "24ac1759842a8c25bb30f85d836bad2f3b3778898bc4a4dad83a9e6067dbafe4"},
-    {"path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json", "sha256": "30fff95d78ee29370eccacedfeb2d19a869b7f55729125c01bd2fa5e9c0f223e"},
-    {"path": "validation/val001/VAL_001_INVOCATION_EVENTS.jsonl", "sha256": "f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730"},
-    {"path": "validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json", "sha256": "01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8"},
-    {"path": "scripts/run_val001_corrected_comparison.py", "sha256": "a39fafb4b5492ad939137bc3221597572d21d973c0e4a81e444dc434c19fa66f"},
-    {"path": "validation/val001/contracts/VAL_001_POSTRESULT_FRAMEWORK_HARDENING_FREEZE.json", "sha256": "c04bc05b00360afb67a699117601869fc283a0fdcbe74a48237964fc067179b2"},
-    {"path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_FREEZE.json", "sha256": "8d0608507d3567f63815b884b3a7a0429108b4359371f8837ca8c5e3654df3f4"},
-    {"path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_INVOCATION_AUTHORITY.json", "sha256": "4e0e7fffeb0c7f100ba449341edc7f058aa51f57b4560a0cc53e1051a6ce9758"},
-    {"path": "validation/val001/contracts/VAL_001_SECOND_CORRECTION_ARTIFACT_REUSE_ACTIVATION.json", "sha256": "03e0ec4dac9366ed80f55d7121cc317d322377de63e64bc6502a09b3889a9295"},
-    {"path": "validation/val001/VAL_001_INVOCATION_ACCOUNTING_CONTRACT.json", "sha256": "7b72580035b44d47e506c1bc4d5cdbe29715be76f4752d6dcc949de098e56369"},
-    {"path": "validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json", "sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"}
+    {"path":"validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json","sha256":"55ad40bc3ed38fe15038a34fd1b00f63598f6725a6e6fb1be396d2d848b5bcb9"},
+    {"path":"validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json","sha256":"1cf849c4416aec5c384fc8d950c5325ba72afede5d43a350c6c7987bfa92f7f7"},
+    {"path":"validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json","sha256":"7f51581518f7adcd93fe542be9f0416f11a3287b961da5899f7d279301c497ba"},
+    {"path":"validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json","sha256":"170014f42132e19d5d818ba7e185314018a9f9fbcc43f16ff1bcf192a1b24363"},
+    {"path":"validation/val001/VAL_001_INVOCATION_EVENTS.jsonl","sha256":"f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730"},
+    {"path":"validation/val001/VAL_001_INVOCATION_SUMMARY_V2.json","sha256":"01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8"},
+    {"path":"validation/val001/results/VAL_001_CORRECTED_COMPONENT_COMPARISONS_V2.json","sha256":"7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"},
+    {"path":"scripts/run_val001_corrected_comparison.py","sha256":"a39fafb4b5492ad939137bc3221597572d21d973c0e4a81e444dc434c19fa66f"}
   ],
-  "claim_boundaries": {"physical_validation": "NOT_ESTABLISHED", "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"}
+  "puckworks_lock": {"commit":"fc61c4670ec7bf801e40bb391aab16048b8da26b","tree":"1d553e44ee2f7480a5df521560801b478618cc84"},
+  "claim_boundaries": {
+    "physical_validation": "NOT_ESTABLISHED",
+    "general_physical_validation": "NOT_ESTABLISHED",
+    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "protected_or_holdout_scoring": "NOT_AUTHORIZED",
+    "holdout_execution": "NOT_AUTHORIZED",
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"
+  }
 }
