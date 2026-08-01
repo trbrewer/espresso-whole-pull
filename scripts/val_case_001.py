@@ -307,6 +307,11 @@ def read_trace(run_root: pathlib.Path, case_id: str) -> list[dict[str, float | s
 def interp(rows: list[dict], column: str, at: float) -> float:
     times = np.asarray([float(r["time_s"]) for r in rows])
     values = np.asarray([float(r[column]) for r in rows])
+    endpoint_tolerance = 1.0e-9
+    if at > times[-1] and at - times[-1] <= endpoint_tolerance:
+        at = float(times[-1])
+    if at < times[0] and times[0] - at <= endpoint_tolerance:
+        at = float(times[0])
     if at < times[0] or at > times[-1]:
         raise ValueError(f"time {at} outside trace")
     return float(np.interp(at, times, values))

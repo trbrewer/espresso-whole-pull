@@ -35,6 +35,17 @@ The replacement is the largest simple symmetric protocol-listed half-step
 that preserves strict `p_shut < p_c` in both corrected endpoint pairs. This is
 the single bounded correction cycle authorized for VAL-CASE-001.
 
+## Representation-only endpoint assembly correction
+
+After the replacement runs completed, the predeclared selector stopped before
+derivative calculation because OpenFOAM serialized the nominal 30 s endpoint
+as `29.9999999999994`. The reducer now maps a requested endpoint to the
+retained endpoint only when their physical-time difference is at most
+`1e-9 s`; larger out-of-support requests still fail. A focused test covers
+both behaviors. This is a
+`SOFTWARE_ASSEMBLY_DEFECT_WITH_UNCHANGED_ARITHMETIC`: it preserves the frozen
+30 s feature, changes no run or scientific method, and requires no rerun.
+
 `NO_GOVERNING_PHYSICS_CHANGE`
 
 `PHYSICAL_VALIDATION: NOT_ESTABLISHED`

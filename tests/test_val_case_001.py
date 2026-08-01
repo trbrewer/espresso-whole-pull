@@ -55,6 +55,12 @@ class ValCase001Tests(unittest.TestCase):
         with self.assertRaises(ValueError):
             MOD.normalized_sensitivity(np.array([1.0]), 1.0, np.array([0.0]))
 
+    def test_nominal_endpoint_roundoff_clamps_only_within_tolerance(self):
+        rows = [{"time_s": "0", "x": "1"}, {"time_s": "29.9999999999994", "x": "2"}]
+        self.assertEqual(MOD.interp(rows, "x", 30.0), 2.0)
+        with self.assertRaises(ValueError):
+            MOD.interp(rows, "x", 30.000001)
+
     def test_jacobian_dimensions_and_finite_svd(self):
         jac = np.array([[1.0, 0.0], [0.0, 2.0], [1.0, 1.0]])
         result = MOD.svd_summary(jac)
