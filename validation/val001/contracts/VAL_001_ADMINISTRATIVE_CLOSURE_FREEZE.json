@@ -69,20 +69,24 @@
       "sha256": "6d55fc7bff54558b86bf4a9761044918460655025db1ab2e77efa5c3f4038a34"
     },
     {
+      "path": "scripts/verify_val001_hardening.py",
+      "sha256": "1eca0ef8c43354c8d19fd9c8dddf1cfafde7a4961fa586275e576ee327c79a9d"
+    },
+    {
       "path": "scripts/verify_wp03c_stage0_scaffold.py",
-      "sha256": "78a2bed58ab2f5c5136d143ed954d497f0d0311586a82da3963f2ee8f52aeac1"
+      "sha256": "94ba6febc73f2fa8298fad5aa17015298af7dab16625647847b97b32ae77d5ec"
     },
     {
       "path": "scripts/generate_val001_administrative_freeze.py",
-      "sha256": "1c4b6b875882508011d587ffbbd2af3d58df221575dedb12ff1d47fa1a3f440f"
+      "sha256": "d8dce2bc88c39357d0e7c709e21f3832aa892d9050425c80f0587749afd1c790"
     },
     {
       "path": "tests/test_val001_administrative_semantics.py",
       "sha256": "85a6dd04c5fa941d6d19a5263fe0f06c3f81ac5316602314172268d34af7571a"
     }
   ],
-  "implementation_commit": "c433963e9437e01bbeaa158445a9a252699a5f78",
-  "implementation_tree": "7a96cf5b0012c1f11c976a625a2cbbb76d54f9b1",
+  "implementation_commit": "62b066786d26019df5b008b9fc3727bfecea0033",
+  "implementation_tree": "f5260941d72e69b33917671ab2c70e7aeb0e7245",
   "ordinary_record_bindings": [
     {
       "path": "validation/val001/VAL_001_CALIBRATION_COMPARISON_LEDGER.json",
