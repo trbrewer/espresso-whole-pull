@@ -493,9 +493,9 @@
         "schema-version:espresso.val001.postresult_execution_lock.v2"
       ],
       "independent_derivation_explanation": "The normative contract is the sole generator input; governed instances and prior inferred schemas are unavailable to generation and verification.",
-      "new_contract_sha256": "21bda909f1bce8bb4d1c694346e50615cfe6b33c5c94be427c19a294295a2de2",
+      "new_contract_sha256": "50b0526e6870942f59f44052a59147424f8e4bea11b9515ce40f8432245b0e13",
       "new_governing_schema_id": "canonical_consumed_lock.v2",
-      "new_governing_schema_sha256": "080a755f5f23dd3a232a008c9a4b5c6dbf3cdd6fdecfb568785782b50880a791",
+      "new_governing_schema_sha256": "0cdb3f029603c0a350610605203ba5159fa4baebc286abe56faea7517168f3a7",
       "new_normative_contract_id": "VAL001-NORMATIVE-CONTRACT-029",
       "no_instance_generation_test_id": "MUT-SCHEMA-PROVENANCE-028",
       "previous_inferred_schema_id": "VAL001-SCHEMA-SPEC-029",

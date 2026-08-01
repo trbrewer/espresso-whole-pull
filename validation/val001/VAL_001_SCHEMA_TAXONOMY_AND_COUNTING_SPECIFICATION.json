@@ -48,7 +48,7 @@
         "schema_id": "campaign_provenance.v7"
       },
       {
-        "record_count": 1,
+        "record_count": 2,
         "schema_id": "canonical_consumed_lock.v2"
       },
       {

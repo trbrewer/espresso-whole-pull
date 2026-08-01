@@ -5,7 +5,7 @@
     "final_lock": "SOLE_FINAL_GIT_TREE_TERMINAL"
   },
   "coverage": "EXPLICIT_ONE_RECORD_ONE_TREATMENT_NO_PREFIX_OR_CATCH_ALL",
-  "record_count": 104,
+  "record_count": 105,
   "record_id": "VAL001-GOVERNED-SCHEMA-REGISTRY-3",
   "records": [
     {
@@ -164,9 +164,9 @@
       "schema_version": "espresso.val001.explicit_schema_specification_registry.v2",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "920e48eb77ff53807088642c4a5d0ce8f4aee8d0fcda3dac20ea88dae77a452c",
+      "sha256": "86d239f0f27c9f8b30a57eeabb5068a515ae7cfa819e5c6863d4029df35e0151",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "835d1e4915c32f8220df128cb53429ddd69e30a77a2f45fc861841b7e369c4b0",
+      "structure_signature_sha256": "eadba4288be012863decf9a7138aec9fbbd85f9eee7a12354a8bef936ebf168f",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -302,9 +302,9 @@
       "schema_version": "espresso.val001.immutable_profile_assignment_registry.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "6aac0efa0eb1e567ac7af5ab2de81e5d5bbd65012898928ce6f08e3f1efb9c00",
+      "sha256": "a141ea17c04145e23a5dcdf19f911f6408e5efd58cf8afb2f0000a331f02a9ac",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "5d6597258186ddad69f254213370ddca02b37528addb8578e55e5241db2ee56f",
+      "structure_signature_sha256": "f901f76914d66584fdc4d847bb0732d17e9ffcf5bf4da3fdb000b06dac38bed7",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -440,9 +440,9 @@
       "schema_version": "espresso.val001.normative_schema_contract_registry.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "fd7ba6a6af5f8f0cedb27c6bf6bfd0440a20dd565e4c82fcc30a9923f022a359",
+      "sha256": "6450bc4cb2af9bd79fa68611d200bc2200ee23102530685b18a506a3d38cbf6e",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "1f32db39342e1e08720e02a6919ef452eca86c8b756a2f2a95f688004d2b4743",
+      "structure_signature_sha256": "0a3a9f022be02ac234ca49deead7e52ab8729f2583a37ab2233321739a0e9bc5",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -486,7 +486,7 @@
       "schema_version": "espresso.val001.schema_provenance_transition_matrix.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "430db1ccefedd2c7453627666307df24532d7fc17d4aeedfea3474b8985e7f04",
+      "sha256": "83ea7943c38823a89e2b28e22186b9cb50d5f319f833f2257e42ce51315eeb65",
       "static_validation": "REQUIRED",
       "structure_signature_sha256": "1812ff956395ed6bab5999a9a08366c9a1291cf8df28144a66af70a204d1e0eb",
       "treatment": "CURRENT_DEEP_SCHEMA"
@@ -509,7 +509,7 @@
       "schema_version": "espresso.val001.schema_taxonomy_counting.v1",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "2953dc6d42f06d538d9bd8a24df016f654af68786141c98accf5781103249f57",
+      "sha256": "7b1e07f74f4180f216af9a762aaea76fcb81500c6d0a66fa8d0e522c0227240b",
       "static_validation": "REQUIRED",
       "structure_signature_sha256": "ae5ccc3e4751256d60225b2a77a5d6e1af34ec79b3ed23316504d4ec497998a8",
       "treatment": "CURRENT_DEEP_SCHEMA"
@@ -532,9 +532,9 @@
       "schema_version": "espresso.val001.semantic_profile_registry.v2",
       "semantic_profile": "PROFILE-CURRENT-GOVERNANCE",
       "semantic_validator": "validate_profile_dispatch",
-      "sha256": "572908e5358a6b56b8f8a8d1f2b6633c94f1372559dced78f7866598d97e692c",
+      "sha256": "d2df26e314f87dd110501b778dd7acd3a377d0988351ceb4ed197cd50c3d10c9",
       "static_validation": "REQUIRED",
-      "structure_signature_sha256": "6db1322cf578368c2aa1de68049599b82c4000209bdd277cf846810d08cbc31a",
+      "structure_signature_sha256": "8b5d426d2655ce6282c6f6093835c71354f8b6b8b220a2e65c32470594f66d15",
       "treatment": "CURRENT_DEEP_SCHEMA"
     },
     {
@@ -1133,6 +1133,29 @@
       "sha256": "10385d7ead176173d13be555c008b0cf1c067d4266ccb00a3bc705eb5197e998",
       "static_validation": "REQUIRED",
       "structure_signature_sha256": "39c8d877ae56cc30fd1210a3e801d50900fabf132574c624a8d5778f8eb36bd2",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+    },
+    {
+      "artifact_record_id": "VAL001-POSTRESULT-EXECUTION-LOCK-8-EXPLICIT-SEMANTICS",
+      "audit_only": true,
+      "binder": "validation/val001/contracts/VAL_001_SCHEMA_PROVENANCE_AND_SEMANTIC_COMPLETION_FREEZE.json",
+      "binding_class": "ORDINARY_HASH_BOUND_RECORD",
+      "claim_ceiling": "NO_PHYSICAL_VALIDATION_OR_NEW_PHYSICS",
+      "current": false,
+      "executable": false,
+      "path": "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V4.json",
+      "puckworks_lock_applicable": true,
+      "record_class": "EXECUTION_LOCK",
+      "record_id": "INV-7F312FB07D51FC2D7645",
+      "schema_id": "canonical_consumed_lock.v2",
+      "schema_origin": "NORMATIVE_VERSION_CONTRACT",
+      "schema_path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
+      "schema_version": "espresso.val001.postresult_execution_lock.v2",
+      "semantic_profile": "PROFILE-HISTORICAL-AUDIT",
+      "semantic_validator": "validate_profile_dispatch",
+      "sha256": "9fe9adb77f9ed14a6e9743bd5b8a28b87fdd85a3888df8ad088ad30fb3c6ca91",
+      "static_validation": "REQUIRED",
+      "structure_signature_sha256": "6c3e5faaf5c13e4590b5d497e8f3ec85cd3d801d9812dc9eebebf9e68070b5fc",
       "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
     },
     {

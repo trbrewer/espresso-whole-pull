@@ -8370,32 +8370,33 @@
       "fitting_retuning_restrictions": "PROHIBITED_BY_VAL001",
       "governing_audit_status": "IMMUTABLE_REGISTRY_ASSIGNMENT",
       "governing_schema": {
-        "$id": "espresso.val001.canonical_consumed_lock.v2",
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
-        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-029; governed instances are validation targets, never schema inputs.",
         "properties": {
           "alternate_activation_allowed": {
-            "const": false
+            "const": false,
+            "type": "boolean"
           },
           "alternate_authority_allowed": {
-            "const": false
+            "const": false,
+            "type": "boolean"
           },
           "alternate_invocation_id_allowed": {
-            "const": false
+            "const": false,
+            "type": "boolean"
           },
           "alternate_ledger_allowed": {
-            "const": false
+            "const": false,
+            "type": "boolean"
           },
           "authority_status": {
-            "const": "CONSUMED"
+            "const": "CONSUMED",
+            "type": "string"
           },
           "bindings": {
             "items": {
               "additionalProperties": false,
               "properties": {
                 "path": {
-                  "pattern": "^(?!/)(?!.*\\.\\.).+$",
                   "type": "string"
                 },
                 "sha256": {
@@ -8409,46 +8410,14 @@
               ],
               "type": "object"
             },
-            "minItems": 7,
+            "minItems": 1,
             "type": "array"
           },
           "branch": {
-            "const": "validation/val-001-source-adapters"
+            "const": "validation/val-001-source-adapters",
+            "type": "string"
           },
           "claim_boundaries": {
-            "additionalProperties": false,
-            "properties": {
-              "experimental_commissioning": {
-                "const": "NOT_AUTHORIZED"
-              },
-              "general_physical_validation": {
-                "const": "NOT_ESTABLISHED"
-              },
-              "general_whole_solver_physical_validation": {
-                "const": "NOT_ESTABLISHED"
-              },
-              "holdout_execution": {
-                "const": "NOT_AUTHORIZED"
-              },
-              "new_governing_physics": {
-                "const": "NOT_AUTHORIZED_BY_VAL001"
-              },
-              "physical_validation": {
-                "const": "NOT_ESTABLISHED"
-              },
-              "protected_or_holdout_scoring": {
-                "const": "NOT_AUTHORIZED"
-              }
-            },
-            "required": [
-              "physical_validation",
-              "general_physical_validation",
-              "general_whole_solver_physical_validation",
-              "experimental_commissioning",
-              "protected_or_holdout_scoring",
-              "holdout_execution",
-              "new_governing_physics"
-            ],
             "type": "object"
           },
           "freeze_binding": {
@@ -8459,7 +8428,7 @@
                 "type": "string"
               },
               "path": {
-                "const": "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json"
+                "type": "string"
               },
               "sha256": {
                 "pattern": "^[0-9a-f]{64}$",
@@ -8471,27 +8440,31 @@
               }
             },
             "required": [
+              "commit",
               "path",
               "sha256",
-              "commit",
               "tree"
             ],
             "type": "object"
           },
           "further_retry_authorized": {
-            "const": false
+            "const": false,
+            "type": "boolean"
           },
           "issue": {
-            "const": 37
+            "const": 37,
+            "type": "integer"
           },
           "puckworks_lock": {
             "additionalProperties": false,
             "properties": {
               "commit": {
-                "const": "fc61c4670ec7bf801e40bb391aab16048b8da26b"
+                "const": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+                "type": "string"
               },
               "tree": {
-                "const": "1d553e44ee2f7480a5df521560801b478618cc84"
+                "const": "1d553e44ee2f7480a5df521560801b478618cc84",
+                "type": "string"
               }
             },
             "required": [
@@ -8501,46 +8474,52 @@
             "type": "object"
           },
           "pull_request": {
-            "const": 38
+            "const": 38,
+            "type": "integer"
           },
           "record_id": {
-            "pattern": "^VAL001-POSTRESULT-EXECUTION-LOCK-.+$",
             "type": "string"
           },
           "remaining_governed_result_producing_invocations": {
-            "const": 0
+            "const": 0,
+            "type": "integer"
           },
           "remaining_real_data_comparison_invocations": {
-            "const": 0
+            "const": 0,
+            "type": "integer"
           },
           "schema_version": {
-            "const": "espresso.val001.postresult_execution_lock.v2"
+            "enum": [
+              "espresso.val001.postresult_execution_lock.v2",
+              "espresso.val001.postresult_execution_lock.v3"
+            ],
+            "type": "string"
           },
           "task": {
-            "const": "VAL-001"
+            "const": "VAL-001",
+            "type": "string"
           }
         },
         "required": [
-          "schema_version",
-          "record_id",
-          "task",
-          "issue",
-          "pull_request",
-          "branch",
-          "authority_status",
-          "remaining_real_data_comparison_invocations",
-          "remaining_governed_result_producing_invocations",
+          "alternate_activation_allowed",
+          "alternate_authority_allowed",
           "alternate_invocation_id_allowed",
           "alternate_ledger_allowed",
-          "alternate_authority_allowed",
-          "alternate_activation_allowed",
-          "further_retry_authorized",
-          "freeze_binding",
+          "authority_status",
           "bindings",
+          "branch",
+          "claim_boundaries",
+          "freeze_binding",
+          "further_retry_authorized",
+          "issue",
           "puckworks_lock",
-          "claim_boundaries"
+          "pull_request",
+          "record_id",
+          "remaining_governed_result_producing_invocations",
+          "remaining_real_data_comparison_invocations",
+          "schema_version",
+          "task"
         ],
-        "title": "Normative contract for RESULT_OR_REEXPRESSION espresso.val001.postresult_execution_lock.v2",
         "type": "object"
       },
       "identifiability_status": "NOT_ASSESSED_WHERE_APPLICABLE",
@@ -8562,24 +8541,24 @@
       "record_version": "espresso.val001.postresult_execution_lock.v2",
       "required_cross_record_bindings": [],
       "required_fields": [
-        "schema_version",
-        "record_id",
-        "task",
-        "issue",
-        "pull_request",
-        "branch",
-        "authority_status",
-        "remaining_real_data_comparison_invocations",
-        "remaining_governed_result_producing_invocations",
+        "alternate_activation_allowed",
+        "alternate_authority_allowed",
         "alternate_invocation_id_allowed",
         "alternate_ledger_allowed",
-        "alternate_authority_allowed",
-        "alternate_activation_allowed",
-        "further_retry_authorized",
-        "freeze_binding",
+        "authority_status",
         "bindings",
+        "branch",
+        "claim_boundaries",
+        "freeze_binding",
+        "further_retry_authorized",
+        "issue",
         "puckworks_lock",
-        "claim_boundaries"
+        "pull_request",
+        "record_id",
+        "remaining_governed_result_producing_invocations",
+        "remaining_real_data_comparison_invocations",
+        "schema_version",
+        "task"
       ],
       "required_mutation_ids": [
         "MUT-NORMATIVE-PROVENANCE-029"
@@ -17799,6 +17778,17 @@
       "record_class": "RESULT_OR_REEXPRESSION",
       "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT",
       "specification_id": "VAL001-SCHEMA-SPEC-039",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+    },
+    {
+      "audit_only": true,
+      "current": false,
+      "executable": false,
+      "path": "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V4.json",
+      "record_class": "EXECUTION_LOCK",
+      "record_version": "espresso.val001.postresult_execution_lock.v2",
+      "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT",
+      "specification_id": "VAL001-SCHEMA-SPEC-029",
       "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
     },
     {

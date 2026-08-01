@@ -744,6 +744,22 @@
       "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
     },
     {
+      "audit_only": true,
+      "current": false,
+      "executable": false,
+      "governing": false,
+      "historical": true,
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-029",
+      "path": "validation/val001/contracts/historical/VAL_001_POSTRESULT_EXECUTION_LOCK_V4.json",
+      "record_class": "EXECUTION_LOCK",
+      "record_version": "espresso.val001.postresult_execution_lock.v2",
+      "schema_id": "canonical_consumed_lock.v2",
+      "schema_version": "espresso.val001.postresult_execution_lock.v2",
+      "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT",
+      "specification_id": "VAL001-SCHEMA-SPEC-029",
+      "treatment": "IMMUTABLE_HISTORICAL_DEEP_SCHEMA"
+    },
+    {
       "audit_only": false,
       "current": true,
       "executable": false,
@@ -1572,7 +1588,7 @@
   ],
   "counts": {
     "duplicate_assignments": 0,
-    "governed_records": 104,
+    "governed_records": 105,
     "records_without_assignment": 0
   },
   "record_id": "VAL001-IMMUTABLE-PROFILE-ASSIGNMENT-REGISTRY-1",
