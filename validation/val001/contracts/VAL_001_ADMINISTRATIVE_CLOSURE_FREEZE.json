@@ -50,7 +50,7 @@
     },
     {
       "path": "tools/validation/val001/administrative.py",
-      "sha256": "a9903b26c4f56ea9cf77245d3de34797f45613d7d4bc286cb5a70943e0952e67"
+      "sha256": "5b9905454b60f3a12d07c0504b61a1f7d85fd139ff53d0f4e656b9de79355dc6"
     },
     {
       "path": "scripts/static_validate.py",
@@ -82,11 +82,11 @@
     },
     {
       "path": "tests/test_val001_administrative_semantics.py",
-      "sha256": "85a6dd04c5fa941d6d19a5263fe0f06c3f81ac5316602314172268d34af7571a"
+      "sha256": "538aeb760e89fa248b09a31980a2358dcce63594d43e7b01d3580ec115387e7c"
     }
   ],
-  "implementation_commit": "62b066786d26019df5b008b9fc3727bfecea0033",
-  "implementation_tree": "f5260941d72e69b33917671ab2c70e7aeb0e7245",
+  "implementation_commit": "HEAD",
+  "implementation_tree": "9af56640193e99084d81ca0c69b43de23d87c1c5",
   "ordinary_record_bindings": [
     {
       "path": "validation/val001/VAL_001_CALIBRATION_COMPARISON_LEDGER.json",
