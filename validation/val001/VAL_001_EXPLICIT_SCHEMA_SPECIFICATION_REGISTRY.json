@@ -1,19 +1,23 @@
 {
   "allowed_origins": [
-    "EXPLICIT_CLASS_SEMANTICS",
-    "EXPLICIT_VERSION_SEMANTICS",
-    "EXPLICIT_RECORD_SEMANTICS"
+    "NORMATIVE_CLASS_CONTRACT",
+    "NORMATIVE_RECORD_CONTRACT",
+    "NORMATIVE_VERSION_CONTRACT"
   ],
   "counts": {
-    "filename_only_governing_schemas": 0,
-    "instance_derived_governing_schemas": 0,
-    "records_without_explicit_specification": 0,
-    "structural_signature_only_governing_schemas": 0
+    "copied_inferred_governing_schemas": 0,
+    "current_normative_specifications": 61,
+    "current_referenced_specifications": 61,
+    "current_unreferenced_specifications": 0,
+    "filename_selected_governing_schemas": 0,
+    "instance_inferred_governing_schemas": 0,
+    "structural_signature_governing_schemas": 0
   },
   "prohibited_origins": [
-    "INSTANCE_DERIVED_SEMANTICS",
-    "FILENAME_ONLY_SEMANTICS",
-    "STRUCTURAL_SIGNATURE_ONLY_SEMANTICS"
+    "INSTANCE_INFERENCE",
+    "STRUCTURAL_SIGNATURE_INFERENCE",
+    "FILENAME_INFERENCE",
+    "COPIED_INFERRED_SCHEMA_WITH_RELABELLED_ORIGIN"
   ],
   "record_bindings": [
     {
@@ -890,17 +894,19 @@
       "treatment": "CURRENT_DEEP_SCHEMA"
     }
   ],
-  "record_id": "VAL001-EXPLICIT-SCHEMA-SPECIFICATION-REGISTRY-1",
-  "schema_version": "espresso.val001.explicit_schema_specification_registry.v1",
+  "record_id": "VAL001-EXPLICIT-SCHEMA-SPECIFICATION-REGISTRY-2",
+  "schema_version": "espresso.val001.explicit_schema_specification_registry.v2",
   "specifications": [
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-001",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.administrative_closure_specification.v1",
       "schema": {
         "$id": "espresso.val001.administrative_closure_specification.v1",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-001; governed instances are validation targets, never schema inputs.",
         "properties": {
           "administrative_freeze": {
             "pattern": "^(?!/)(?!.*\\.\\.).+\\.json$",
@@ -1036,21 +1042,24 @@
           "rules",
           "error_disposition"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.administrative_closure_specification.v1",
         "type": "object"
       },
       "schema_id": "administrative_closure_specification.v1",
-      "schema_path": "validation/val001/schemas/administrative_closure_specification.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.administrative_closure_specification.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-001"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-002",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "LEDGER",
       "record_version": "espresso.val001.calibration_comparison_ledger.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-002; governed instances are validation targets, never schema inputs.",
         "properties": {
           "artifact_bindings": {
             "items": {
@@ -1202,21 +1211,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for LEDGER espresso.val001.calibration_comparison_ledger.v2",
         "type": "object"
       },
       "schema_id": "ledger.v32",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.calibration_comparison_ledger.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-002"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-003",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "CAMPAIGN_PROVENANCE",
       "record_version": "espresso.val001.campaign_provenance.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-003; governed instances are validation targets, never schema inputs.",
         "properties": {
           "artifact_bindings": {
             "items": {
@@ -1437,23 +1449,26 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for CAMPAIGN_PROVENANCE espresso.val001.campaign_provenance.v1",
         "type": "object"
       },
       "schema_id": "campaign_provenance.v7",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.campaign_provenance.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CAMPAIGN-PLANNING",
       "specification_id": "VAL001-SCHEMA-SPEC-003"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-004",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.deep_schema_coverage_matrix.v1",
       "schema": {
         "$id": "espresso.val001.deep_schema_coverage_matrix.v1",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-004; governed instances are validation targets, never schema inputs.",
         "properties": {
           "closure": {
             "additionalProperties": false,
@@ -1611,21 +1626,24 @@
           "schema_version",
           "scope"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.deep_schema_coverage_matrix.v1",
         "type": "object"
       },
       "schema_id": "deep_schema_coverage_matrix.v1",
-      "schema_path": "validation/val001/schemas/coverage_matrix.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.deep_schema_coverage_matrix.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-004"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-005",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "EVIDENCE_OR_RECORD_INVENTORY",
       "record_version": "espresso.val001.evidence_rights_inventory.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-005; governed instances are validation targets, never schema inputs.",
         "properties": {
           "additional_comparison_audit": {
             "additionalProperties": false,
@@ -1865,21 +1883,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for EVIDENCE_OR_RECORD_INVENTORY espresso.val001.evidence_rights_inventory.v2",
         "type": "object"
       },
       "schema_id": "evidence_or_record_inventory.v10",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.evidence_rights_inventory.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-RIGHTS-ACCESS",
       "specification_id": "VAL001-SCHEMA-SPEC-005"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-006",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "EXTERNAL_ARTIFACT_MANIFEST",
       "record_version": "espresso.val001.external_artifact_manifest.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-006; governed instances are validation targets, never schema inputs.",
         "properties": {
           "actual_openfoam_case_executions": {
             "type": "integer"
@@ -2010,23 +2031,26 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for EXTERNAL_ARTIFACT_MANIFEST espresso.val001.external_artifact_manifest.v2",
         "type": "object"
       },
       "schema_id": "external_artifact_manifest.v11",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.external_artifact_manifest.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-OPENFOAM-QUALIFICATION",
       "specification_id": "VAL001-SCHEMA-SPEC-006"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-007",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "EVIDENCE_OR_RECORD_INVENTORY",
       "record_version": "espresso.val001.governed_record_inventory.v3",
       "schema": {
         "$id": "espresso.val001.governed_record_inventory.v3",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-007; governed instances are validation targets, never schema inputs.",
         "properties": {
           "closure": {
             "additionalProperties": false,
@@ -2227,23 +2251,26 @@
           "records",
           "closure"
         ],
+        "title": "Normative contract for EVIDENCE_OR_RECORD_INVENTORY espresso.val001.governed_record_inventory.v3",
         "type": "object"
       },
       "schema_id": "governed_record_inventory.v3",
-      "schema_path": "validation/val001/schemas/governed_record_inventory.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.governed_record_inventory.v3",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-007"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-008",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.governed_schema_registry.v3",
       "schema": {
         "$id": "espresso.val001.governed_schema_registry.v3",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-008; governed instances are validation targets, never schema inputs.",
         "properties": {
           "closure": {
             "additionalProperties": false,
@@ -2404,21 +2431,24 @@
           "records",
           "closure"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.governed_schema_registry.v3",
         "type": "object"
       },
       "schema_id": "governed_schema_registry.v3",
-      "schema_path": "validation/val001/schemas/governed_schema_registry.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.governed_schema_registry.v3",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-008"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-009",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "SOURCE_ADAPTER",
       "record_version": "espresso.val001.historical_adapters.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-009; governed instances are validation targets, never schema inputs.",
         "properties": {
           "adapters": {
             "items": {
@@ -2508,21 +2538,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for SOURCE_ADAPTER espresso.val001.historical_adapters.v1",
         "type": "object"
       },
       "schema_id": "source_adapter.v47",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.historical_adapters.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT",
       "specification_id": "VAL001-SCHEMA-SPEC-009"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-010",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.invocation_ledger.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-010; governed instances are validation targets, never schema inputs.",
         "properties": {
           "actual_corrected": {
             "additionalProperties": false,
@@ -2862,17 +2895,19 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.invocation_ledger.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v16",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.invocation_ledger.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-010"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-011",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "INVOCATION_JOURNAL",
       "record_version": "JSONL_V3",
       "schema": {
@@ -3238,21 +3273,25 @@
             ],
             "type": "object"
           }
-        ]
+        ],
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-011; governed instances are validation targets, never schema inputs.",
+        "title": "Normative contract for INVOCATION_JOURNAL JSONL_V3"
       },
       "schema_id": "deep_invocation_event_families.v1",
-      "schema_path": "validation/val001/schemas/deep_invocation_event_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "JSONL_V3",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-011"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-012",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.invocation_summary.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-012; governed instances are validation targets, never schema inputs.",
         "properties": {
           "claim_boundaries": {
             "additionalProperties": false,
@@ -3361,21 +3400,24 @@
           "schema_version",
           "source_of_truth"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.invocation_summary.v2",
         "type": "object"
       },
       "schema_id": "governance_record.v30",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.invocation_summary.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-012"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-013",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "MECHANISM_DISCRIMINATION",
       "record_version": "espresso.val001.mechanism_discrimination_matrix.v3",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-013; governed instances are validation targets, never schema inputs.",
         "properties": {
           "candidate_explanations_to_report_without_attribution": {
             "items": {
@@ -3462,21 +3504,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for MECHANISM_DISCRIMINATION espresso.val001.mechanism_discrimination_matrix.v3",
         "type": "object"
       },
       "schema_id": "mechanism_discrimination.v33",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.mechanism_discrimination_matrix.v3",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-013"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-014",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "RANKED_REQUESTS",
       "record_version": "espresso.val001.ranked_data_requests.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-014; governed instances are validation targets, never schema inputs.",
         "properties": {
           "budget_authorized": {
             "type": "boolean"
@@ -3579,217 +3624,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for RANKED_REQUESTS espresso.val001.ranked_data_requests.v2",
         "type": "object"
       },
       "schema_id": "ranked_requests.v34",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.ranked_data_requests.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-014"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
-      "record_class": "GOVERNANCE_RECORD",
-      "record_version": "espresso.val001.semantic_profile_registry.v1",
-      "schema": {
-        "additionalProperties": false,
-        "properties": {
-          "claim_boundaries": {
-            "additionalProperties": false,
-            "properties": {
-              "experimental_commissioning": {
-                "type": "string"
-              },
-              "general_physical_validation": {
-                "enum": [
-                  "NOT_ESTABLISHED"
-                ],
-                "type": "string"
-              },
-              "general_whole_solver_physical_validation": {
-                "enum": [
-                  "NOT_ESTABLISHED"
-                ],
-                "type": "string"
-              },
-              "holdout_execution": {
-                "type": "string"
-              },
-              "new_governing_physics": {
-                "type": "string"
-              },
-              "physical_validation": {
-                "enum": [
-                  "NOT_ESTABLISHED"
-                ],
-                "type": "string"
-              },
-              "protected_or_holdout_scoring": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "experimental_commissioning",
-              "general_physical_validation",
-              "general_whole_solver_physical_validation",
-              "holdout_execution",
-              "new_governing_physics",
-              "physical_validation",
-              "protected_or_holdout_scoring"
-            ],
-            "type": "object"
-          },
-          "profiles": {
-            "items": {
-              "anyOf": [
-                {
-                  "additionalProperties": false,
-                  "properties": {
-                    "applies_to": {
-                      "type": "string"
-                    },
-                    "profile_id": {
-                      "type": "string"
-                    },
-                    "rules": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "maxItems": 5,
-                      "minItems": 5,
-                      "type": "array"
-                    }
-                  },
-                  "required": [
-                    "applies_to",
-                    "profile_id",
-                    "rules"
-                  ],
-                  "type": "object"
-                },
-                {
-                  "additionalProperties": false,
-                  "properties": {
-                    "applies_to": {
-                      "type": "string"
-                    },
-                    "profile_id": {
-                      "type": "string"
-                    },
-                    "rules": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "maxItems": 4,
-                      "minItems": 4,
-                      "type": "array"
-                    }
-                  },
-                  "required": [
-                    "applies_to",
-                    "profile_id",
-                    "rules"
-                  ],
-                  "type": "object"
-                },
-                {
-                  "additionalProperties": false,
-                  "properties": {
-                    "applies_to": {
-                      "type": "string"
-                    },
-                    "profile_id": {
-                      "type": "string"
-                    },
-                    "rules": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "maxItems": 3,
-                      "minItems": 3,
-                      "type": "array"
-                    }
-                  },
-                  "required": [
-                    "applies_to",
-                    "profile_id",
-                    "rules"
-                  ],
-                  "type": "object"
-                },
-                {
-                  "additionalProperties": false,
-                  "properties": {
-                    "applies_to": {
-                      "type": "string"
-                    },
-                    "profile_id": {
-                      "type": "string"
-                    },
-                    "rules": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "maxItems": 2,
-                      "minItems": 2,
-                      "type": "array"
-                    }
-                  },
-                  "required": [
-                    "applies_to",
-                    "profile_id",
-                    "rules"
-                  ],
-                  "type": "object"
-                }
-              ]
-            },
-            "maxItems": 12,
-            "minItems": 12,
-            "type": "array"
-          },
-          "prohibited_schema_origins": {
-            "items": {
-              "type": "string"
-            },
-            "maxItems": 3,
-            "minItems": 3,
-            "type": "array"
-          },
-          "record_id": {
-            "type": "string"
-          },
-          "schema_origin": {
-            "type": "string"
-          },
-          "schema_version": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "claim_boundaries",
-          "profiles",
-          "prohibited_schema_origins",
-          "record_id",
-          "schema_origin",
-          "schema_version"
-        ],
-        "type": "object"
-      },
-      "schema_id": "governance_record.v29",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
-      "schema_version": "espresso.val001.semantic_profile_registry.v1",
-      "scope": "VERSION_SPECIFIC",
-      "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
-      "specification_id": "VAL001-SCHEMA-SPEC-015"
-    },
-    {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-016",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "SOURCE_ACCESS_LOG",
       "record_version": "espresso.val001.source_access_log.v3",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-016; governed instances are validation targets, never schema inputs.",
         "properties": {
           "entries": {
             "items": {
@@ -4071,21 +3923,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for SOURCE_ACCESS_LOG espresso.val001.source_access_log.v3",
         "type": "object"
       },
       "schema_id": "source_access_log.v43",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.source_access_log.v3",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-RIGHTS-ACCESS",
       "specification_id": "VAL001-SCHEMA-SPEC-016"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-017",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "SOURCE_ADAPTER",
       "record_version": "espresso.val001.source_adapter.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-017; governed instances are validation targets, never schema inputs.",
         "properties": {
           "adapter_id": {
             "type": "string"
@@ -4573,21 +4428,24 @@
           "solver_mapping",
           "source"
         ],
+        "title": "Normative contract for SOURCE_ADAPTER espresso.val001.source_adapter.v2",
         "type": "object"
       },
       "schema_id": "source_adapter.v44",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.source_adapter.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-EVIDENCE-GAP",
       "specification_id": "VAL001-SCHEMA-SPEC-017"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-018",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "SOURCE_ADAPTER",
       "record_version": "espresso.val001.source_adapter.v3",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-018; governed instances are validation targets, never schema inputs.",
         "properties": {
           "adapter_id": {
             "type": "string"
@@ -5304,21 +5162,24 @@
           "solver_mapping",
           "source"
         ],
+        "title": "Normative contract for SOURCE_ADAPTER espresso.val001.source_adapter.v3",
         "type": "object"
       },
       "schema_id": "source_adapter.v45",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.source_adapter.v3",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-ADAPTER",
       "specification_id": "VAL001-SCHEMA-SPEC-018"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-019",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "SOURCE_ADAPTER",
       "record_version": "espresso.val001.source_adapter.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-019; governed instances are validation targets, never schema inputs.",
         "properties": {
           "adapter_id": {
             "type": "string"
@@ -5825,21 +5686,24 @@
           "solver_mapping",
           "source"
         ],
+        "title": "Normative contract for SOURCE_ADAPTER espresso.val001.source_adapter.v2",
         "type": "object"
       },
       "schema_id": "source_adapter.v46",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.source_adapter.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT",
       "specification_id": "VAL001-SCHEMA-SPEC-019"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-020",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.amendment_invalidation.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-020; governed instances are validation targets, never schema inputs.",
         "properties": {
           "affected_artifacts": {
             "items": {
@@ -6016,21 +5880,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.amendment_invalidation.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v22",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.amendment_invalidation.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-020"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-021",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "AMENDMENT_INVALIDATION",
       "record_version": "espresso.val001.preexecution_amendment.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-021; governed instances are validation targets, never schema inputs.",
         "properties": {
           "affected_contract": {
             "type": "string"
@@ -6127,23 +5994,26 @@
           "scientific_mapping_changed",
           "task"
         ],
+        "title": "Normative contract for AMENDMENT_INVALIDATION espresso.val001.preexecution_amendment.v1",
         "type": "object"
       },
       "schema_id": "amendment_invalidation.v3",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.preexecution_amendment.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-021"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-022",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "FREEZE",
       "record_version": "espresso.val001.administrative_closure_freeze.v1",
       "schema": {
         "$id": "espresso.val001.administrative_closure_freeze.v1",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-022; governed instances are validation targets, never schema inputs.",
         "properties": {
           "administrative_bindings": {
             "items": {
@@ -6358,21 +6228,24 @@
           "claim_boundaries",
           "puckworks_lock"
         ],
+        "title": "Normative contract for FREEZE espresso.val001.administrative_closure_freeze.v1",
         "type": "object"
       },
       "schema_id": "administrative_closure_freeze.v1",
-      "schema_path": "validation/val001/schemas/administrative_closure_freeze.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.administrative_closure_freeze.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-022"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-023",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "ACTIVATION",
       "record_version": "espresso.val001.execution_activation.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-023; governed instances are validation targets, never schema inputs.",
         "properties": {
           "actual_openfoam_case_executions": {
             "type": "integer"
@@ -6672,21 +6545,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for ACTIVATION espresso.val001.execution_activation.v1",
         "type": "object"
       },
       "schema_id": "activation.v1",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.execution_activation.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-023"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-024",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "FREEZE",
       "record_version": "espresso.val001.corrected_freeze.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-024; governed instances are validation targets, never schema inputs.",
         "properties": {
           "amendment_procedure": {
             "type": "string"
@@ -6890,21 +6766,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for FREEZE espresso.val001.corrected_freeze.v1",
         "type": "object"
       },
       "schema_id": "freeze.v14",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.corrected_freeze.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-024"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-025",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "AUTHORITY",
       "record_version": "espresso.val001.preexecution_authority.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-025; governed instances are validation targets, never schema inputs.",
         "properties": {
           "amendment_rules": {
             "items": {
@@ -7189,21 +7068,24 @@
           "stop_conditions",
           "task"
         ],
+        "title": "Normative contract for AUTHORITY espresso.val001.preexecution_authority.v1",
         "type": "object"
       },
       "schema_id": "authority.v4",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.preexecution_authority.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-025"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-026",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.comparison_run.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-026; governed instances are validation targets, never schema inputs.",
         "properties": {
           "adapter": {
             "type": "string"
@@ -7498,21 +7380,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.comparison_run.v2",
         "type": "object"
       },
       "schema_id": "governance_record.v18",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.comparison_run.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-COMPARISON-RUN",
       "specification_id": "VAL001-SCHEMA-SPEC-026"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-027",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "FREEZE",
       "record_version": "espresso.val001.deep_schema_completion_freeze.v3",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-027; governed instances are validation targets, never schema inputs.",
         "properties": {
           "EXECUTION_AUTHORITY": {
             "enum": [
@@ -7866,21 +7751,24 @@
           "source_manifest",
           "treatment_counts"
         ],
+        "title": "Normative contract for FREEZE espresso.val001.deep_schema_completion_freeze.v3",
         "type": "object"
       },
       "schema_id": "freeze.v13",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.deep_schema_completion_freeze.v3",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-027"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-028",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "FREEZE",
       "record_version": "espresso.val001.final_hardening_completion_freeze.v3",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-028; governed instances are validation targets, never schema inputs.",
         "properties": {
           "EXECUTION_AUTHORITY": {
             "enum": [
@@ -8034,23 +7922,26 @@
           "schema_version",
           "source_manifest"
         ],
+        "title": "Normative contract for FREEZE espresso.val001.final_hardening_completion_freeze.v3",
         "type": "object"
       },
       "schema_id": "freeze.v12",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.final_hardening_completion_freeze.v3",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-028"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-029",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "RESULT_OR_REEXPRESSION",
       "record_version": "espresso.val001.postresult_execution_lock.v2",
       "schema": {
         "$id": "espresso.val001.canonical_consumed_lock.v2",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-029; governed instances are validation targets, never schema inputs.",
         "properties": {
           "alternate_activation_allowed": {
             "const": false
@@ -8217,21 +8108,24 @@
           "puckworks_lock",
           "claim_boundaries"
         ],
+        "title": "Normative contract for RESULT_OR_REEXPRESSION espresso.val001.postresult_execution_lock.v2",
         "type": "object"
       },
       "schema_id": "canonical_consumed_lock.v2",
-      "schema_path": "validation/val001/schemas/canonical_consumed_lock.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.postresult_execution_lock.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CONSUMED-LOCK",
       "specification_id": "VAL001-SCHEMA-SPEC-029"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-030",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "RESULT_OR_REEXPRESSION",
       "record_version": "espresso.val001.postresult_framework_hardening_freeze.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-030; governed instances are validation targets, never schema inputs.",
         "properties": {
           "bindings": {
             "additionalProperties": false,
@@ -8807,21 +8701,24 @@
           "v2_arithmetic_changed",
           "v2_result_status"
         ],
+        "title": "Normative contract for RESULT_OR_REEXPRESSION espresso.val001.postresult_framework_hardening_freeze.v1",
         "type": "object"
       },
       "schema_id": "result_or_reexpression.v40",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.postresult_framework_hardening_freeze.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-030"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-031",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.comparison_run.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-031; governed instances are validation targets, never schema inputs.",
         "properties": {
           "adapter": {
             "type": "string"
@@ -8994,21 +8891,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.comparison_run.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v17",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.comparison_run.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-COMPARISON-RUN",
       "specification_id": "VAL001-SCHEMA-SPEC-031"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-032",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "ACTIVATION",
       "record_version": "espresso.val001.second_correction_artifact_reuse_activation.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-032; governed instances are validation targets, never schema inputs.",
         "properties": {
           "artifact_integrity": {
             "type": "string"
@@ -9231,21 +9131,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for ACTIVATION espresso.val001.second_correction_artifact_reuse_activation.v1",
         "type": "object"
       },
       "schema_id": "activation.v2",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.second_correction_artifact_reuse_activation.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-032"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-033",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "FREEZE",
       "record_version": "espresso.val001.second_correction_freeze.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-033; governed instances are validation targets, never schema inputs.",
         "properties": {
           "artifact_bindings": {
             "items": {
@@ -9530,21 +9433,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for FREEZE espresso.val001.second_correction_freeze.v1",
         "type": "object"
       },
       "schema_id": "freeze.v15",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.second_correction_freeze.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-033"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-034",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "AUTHORITY",
       "record_version": "espresso.val001.second_correction_invocation_authority.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-034; governed instances are validation targets, never schema inputs.",
         "properties": {
           "branch": {
             "type": "string"
@@ -9904,21 +9810,24 @@
           "stop_conditions",
           "task"
         ],
+        "title": "Normative contract for AUTHORITY espresso.val001.second_correction_invocation_authority.v1",
         "type": "object"
       },
       "schema_id": "authority.v6",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.second_correction_invocation_authority.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-034"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-035",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.selected_row_canonicalization.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-035; governed instances are validation targets, never schema inputs.",
         "properties": {
           "canonical_encoding": {
             "type": "string"
@@ -10033,21 +9942,24 @@
           "source_sha256",
           "terminal_newline"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.selected_row_canonicalization.v2",
         "type": "object"
       },
       "schema_id": "governance_record.v26",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.selected_row_canonicalization.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-035"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-036",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "SENSITIVITY_IDENTIFIABILITY",
       "record_version": "espresso.val001.sensitivity_identifiability_methods.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-036; governed instances are validation targets, never schema inputs.",
         "properties": {
           "absolute_perturbation": {
             "type": "string"
@@ -10127,21 +10039,24 @@
           "structural_identifiability",
           "task"
         ],
+        "title": "Normative contract for SENSITIVITY_IDENTIFIABILITY espresso.val001.sensitivity_identifiability_methods.v1",
         "type": "object"
       },
       "schema_id": "sensitivity_identifiability.v42",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.sensitivity_identifiability_methods.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-SENSITIVITY-PROSPECTIVE",
       "specification_id": "VAL001-SCHEMA-SPEC-036"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-037",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "RESULT_OR_REEXPRESSION",
       "record_version": "espresso.val001.postresult_execution_lock.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-037; governed instances are validation targets, never schema inputs.",
         "properties": {
           "alternate_activation_allowed": {
             "type": "boolean"
@@ -10248,21 +10163,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for RESULT_OR_REEXPRESSION espresso.val001.postresult_execution_lock.v1",
         "type": "object"
       },
       "schema_id": "result_or_reexpression.v37",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.postresult_execution_lock.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT",
       "specification_id": "VAL001-SCHEMA-SPEC-037"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-038",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "RESULT_OR_REEXPRESSION",
       "record_version": "espresso.val001.postresult_execution_lock.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-038; governed instances are validation targets, never schema inputs.",
         "properties": {
           "alternate_activation_allowed": {
             "type": "boolean"
@@ -10369,21 +10287,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for RESULT_OR_REEXPRESSION espresso.val001.postresult_execution_lock.v1",
         "type": "object"
       },
       "schema_id": "result_or_reexpression.v36",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.postresult_execution_lock.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT",
       "specification_id": "VAL001-SCHEMA-SPEC-038"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-039",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "RESULT_OR_REEXPRESSION",
       "record_version": "espresso.val001.postresult_execution_lock.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-039; governed instances are validation targets, never schema inputs.",
         "properties": {
           "alternate_activation_allowed": {
             "type": "boolean"
@@ -10490,21 +10411,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for RESULT_OR_REEXPRESSION espresso.val001.postresult_execution_lock.v1",
         "type": "object"
       },
       "schema_id": "result_or_reexpression.v35",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.postresult_execution_lock.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-HISTORICAL-AUDIT",
       "specification_id": "VAL001-SCHEMA-SPEC-039"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-040",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "RESULT_OR_REEXPRESSION",
       "record_version": "espresso.val001.lock_versioning_record.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-040; governed instances are validation targets, never schema inputs.",
         "properties": {
           "authority_status": {
             "enum": [
@@ -10559,21 +10483,24 @@
           "scientific_change",
           "successor_reason"
         ],
+        "title": "Normative contract for RESULT_OR_REEXPRESSION espresso.val001.lock_versioning_record.v1",
         "type": "object"
       },
       "schema_id": "result_or_reexpression.v39",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.lock_versioning_record.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-040"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-041",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.administrative_semantic_remediation_plan.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-041; governed instances are validation targets, never schema inputs.",
         "properties": {
           "additive_sequence": {
             "items": {
@@ -10697,21 +10624,24 @@
           "stop_conditions",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.administrative_semantic_remediation_plan.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v21",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.administrative_semantic_remediation_plan.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-041"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-042",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.deep_schema_completion_plan.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-042; governed instances are validation targets, never schema inputs.",
         "properties": {
           "authority_date": {
             "enum": [
@@ -10873,21 +10803,24 @@
           "starting_tree",
           "target"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.deep_schema_completion_plan.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v25",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.deep_schema_completion_plan.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-042"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-043",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.final_hardening_plan.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-043; governed instances are validation targets, never schema inputs.",
         "properties": {
           "additional_findings": {
             "items": {
@@ -11035,21 +10968,24 @@
           "stop_conditions",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.final_hardening_plan.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v20",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.final_hardening_plan.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-043"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-044",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.hardening_completion_plan.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-044; governed instances are validation targets, never schema inputs.",
         "properties": {
           "authority_date": {
             "enum": [
@@ -11168,21 +11104,24 @@
           "starting_tree",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.hardening_completion_plan.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v24",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.hardening_completion_plan.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-044"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-045",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "RESULT_OR_REEXPRESSION",
       "record_version": "espresso.val001.initial_result_invalidation.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-045; governed instances are validation targets, never schema inputs.",
         "properties": {
           "authority": {
             "additionalProperties": false,
@@ -11452,21 +11391,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for RESULT_OR_REEXPRESSION espresso.val001.initial_result_invalidation.v1",
         "type": "object"
       },
       "schema_id": "result_or_reexpression.v38",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.initial_result_invalidation.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-045"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-046",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "AUTHORITY",
       "record_version": "espresso.val001.second_correction_defect_authority.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-046; governed instances are validation targets, never schema inputs.",
         "properties": {
           "bound_failed_state": {
             "additionalProperties": false,
@@ -11616,21 +11558,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for AUTHORITY espresso.val001.second_correction_defect_authority.v1",
         "type": "object"
       },
       "schema_id": "authority.v5",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.second_correction_defect_authority.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
       "specification_id": "VAL001-SCHEMA-SPEC-046"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-047",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "CORRECTION",
       "record_version": "espresso.val001.selected_row_identity_correction.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-047; governed instances are validation targets, never schema inputs.",
         "properties": {
           "comparison_computed": {
             "type": "boolean"
@@ -11677,21 +11622,24 @@
           "source_bytes_changed",
           "v2_hash"
         ],
+        "title": "Normative contract for CORRECTION espresso.val001.selected_row_identity_correction.v1",
         "type": "object"
       },
       "schema_id": "correction.v9",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.selected_row_identity_correction.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-047"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-048",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "CORRECTION",
       "record_version": "espresso.val001.v2_interpretation_correction.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-048; governed instances are validation targets, never schema inputs.",
         "properties": {
           "arithmetic_changed": {
             "type": "boolean"
@@ -11772,21 +11720,24 @@
           "v2_path",
           "v2_sha256"
         ],
+        "title": "Normative contract for CORRECTION espresso.val001.v2_interpretation_correction.v1",
         "type": "object"
       },
       "schema_id": "correction.v8",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.v2_interpretation_correction.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-048"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-049",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "SOURCE_ADAPTER",
       "record_version": "espresso.val001.adapter_provenance_correction.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-049; governed instances are validation targets, never schema inputs.",
         "properties": {
           "corrected_citation": {
             "type": "string"
@@ -11867,21 +11818,24 @@
           "v2_adapter_binding_status",
           "v2_result_sha256"
         ],
+        "title": "Normative contract for SOURCE_ADAPTER espresso.val001.adapter_provenance_correction.v1",
         "type": "object"
       },
       "schema_id": "source_adapter.v48",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.adapter_provenance_correction.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-049"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-050",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.comparison_result.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-050; governed instances are validation targets, never schema inputs.",
         "properties": {
           "claim_boundaries": {
             "additionalProperties": false,
@@ -12290,21 +12244,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.comparison_result.v2",
         "type": "object"
       },
       "schema_id": "governance_record.v27",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.comparison_result.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-V2-DESCRIPTIVE",
       "specification_id": "VAL001-SCHEMA-SPEC-050"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-051",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.corrected_execution_failure.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-051; governed instances are validation targets, never schema inputs.",
         "properties": {
           "claim_boundaries": {
             "additionalProperties": false,
@@ -12533,21 +12490,24 @@
           "status",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.corrected_execution_failure.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v28",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.corrected_execution_failure.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-FAILED-INVOCATION",
       "specification_id": "VAL001-SCHEMA-SPEC-051"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-052",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.comparison_result.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-052; governed instances are validation targets, never schema inputs.",
         "properties": {
           "adapter_id": {
             "type": "string"
@@ -12756,21 +12716,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.comparison_result.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v19",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.comparison_result.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-INVALIDATED-RESULT",
       "specification_id": "VAL001-SCHEMA-SPEC-052"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-053",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "RESULT_OR_REEXPRESSION",
       "record_version": "espresso.val001.historical_result_reexpressions.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-053; governed instances are validation targets, never schema inputs.",
         "properties": {
           "disposition": {
             "enum": [
@@ -12810,21 +12773,24 @@
           "schema_version",
           "task"
         ],
+        "title": "Normative contract for RESULT_OR_REEXPRESSION espresso.val001.historical_result_reexpressions.v1",
         "type": "object"
       },
       "schema_id": "result_or_reexpression.v41",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.historical_result_reexpressions.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-HISTORICAL-REEXPRESSION",
       "specification_id": "VAL001-SCHEMA-SPEC-053"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-054",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.v2_framework_qualification_provenance.v1",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-054; governed instances are validation targets, never schema inputs.",
         "properties": {
           "executable_sha256": {
             "pattern": "^[0-9a-f]{64}$",
@@ -12936,21 +12902,24 @@
           "traces_produced_v2_pressure_sweep_predictions",
           "v2_result"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.v2_framework_qualification_provenance.v1",
         "type": "object"
       },
       "schema_id": "governance_record.v31",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.v2_framework_qualification_provenance.v1",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-OPENFOAM-QUALIFICATION",
       "specification_id": "VAL001-SCHEMA-SPEC-054"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-055",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "GOVERNANCE_RECORD",
       "record_version": "espresso.val001.historical_reexpression.v2",
       "schema": {
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-055; governed instances are validation targets, never schema inputs.",
         "properties": {
           "analyzer_rerun": {
             "type": "boolean"
@@ -13058,23 +13027,26 @@
           "source_observations_reopened",
           "source_work_package"
         ],
+        "title": "Normative contract for GOVERNANCE_RECORD espresso.val001.historical_reexpression.v2",
         "type": "object"
       },
       "schema_id": "governance_record.v23",
-      "schema_path": "validation/val001/schemas/deep_record_families.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.historical_reexpression.v2",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-HISTORICAL-REEXPRESSION",
       "specification_id": "VAL001-SCHEMA-SPEC-055"
     },
     {
-      "origin": "EXPLICIT_VERSION_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-056",
+      "origin": "NORMATIVE_VERSION_CONTRACT",
       "record_class": "SCHEMA",
       "record_version": "JSONL_V3",
       "schema": {
         "$id": "espresso.val001.schema_document.v1",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-056; governed instances are validation targets, never schema inputs.",
         "properties": {
           "$id": {
             "pattern": "^espresso\\.val001\\..+$",
@@ -13153,23 +13125,26 @@
           "$schema",
           "$id"
         ],
+        "title": "Normative contract for SCHEMA JSONL_V3",
         "type": "object"
       },
       "schema_id": "json_schema_document.v1",
-      "schema_path": "validation/val001/schemas/schema_document.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "JSONL_V3",
       "scope": "VERSION_SPECIFIC",
       "semantic_profile_id": "PROFILE-SCHEMA-DOCUMENT",
       "specification_id": "VAL001-SCHEMA-SPEC-056"
     },
     {
-      "origin": "EXPLICIT_RECORD_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-057",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
       "record_class": "EXPLICIT_GOVERNANCE",
       "record_version": "espresso.val001.external_candidate_root_protocol.v1",
       "schema": {
         "$id": "espresso.val001.external_candidate_root_protocol.v1",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-057; governed instances are validation targets, never schema inputs.",
         "properties": {
           "canonical_lock_path": {
             "const": "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json"
@@ -13261,23 +13236,26 @@
           "terminal_root_self_embedded",
           "error_disposition"
         ],
+        "title": "Normative contract for EXPLICIT_GOVERNANCE espresso.val001.external_candidate_root_protocol.v1",
         "type": "object"
       },
       "schema_id": "espresso.val001.external_candidate_root_protocol.v1",
-      "schema_path": "validation/val001/schemas/external_candidate_root_protocol.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.external_candidate_root_protocol.v1",
       "scope": "RECORD_SPECIFIC",
       "semantic_profile_id": "PROFILE-EXTERNAL-ROOT",
       "specification_id": "VAL001-SCHEMA-SPEC-057"
     },
     {
-      "origin": "EXPLICIT_RECORD_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-058",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
       "record_class": "EXPLICIT_GOVERNANCE",
       "record_version": "espresso.val001.explicit_semantics_root_pinning_plan.v1",
       "schema": {
         "$id": "espresso.val001.explicit_semantics_root_pinning_plan.v1",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-058; governed instances are validation targets, never schema inputs.",
         "properties": {
           "authority_date": {
             "const": "2026-07-31"
@@ -13403,23 +13381,26 @@
           "stop_conditions",
           "change_declaration"
         ],
+        "title": "Normative contract for EXPLICIT_GOVERNANCE espresso.val001.explicit_semantics_root_pinning_plan.v1",
         "type": "object"
       },
       "schema_id": "espresso.val001.explicit_semantics_root_pinning_plan.v1",
-      "schema_path": "validation/val001/schemas/explicit_semantics_remediation_plan.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.explicit_semantics_root_pinning_plan.v1",
       "scope": "RECORD_SPECIFIC",
       "semantic_profile_id": "PROFILE-CORRECTION-LINEAGE",
       "specification_id": "VAL001-SCHEMA-SPEC-058"
     },
     {
-      "origin": "EXPLICIT_RECORD_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-059",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
       "record_class": "SCHEMA_ADMINISTRATION",
       "record_version": "v1",
       "schema": {
         "$id": "espresso.val001.explicit_schema_specification_registry.v1",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-059; governed instances are validation targets, never schema inputs.",
         "properties": {
           "allowed_origins": {
             "const": [
@@ -13589,23 +13570,26 @@
           "record_bindings",
           "counts"
         ],
+        "title": "Normative contract for SCHEMA_ADMINISTRATION v1",
         "type": "object"
       },
       "schema_id": "espresso.val001.explicit_schema_specification_registry.v1",
-      "schema_path": "validation/val001/schemas/explicit_schema_specification_registry.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "espresso.val001.explicit_schema_specification_registry.v1",
       "scope": "RECORD_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-059"
     },
     {
-      "origin": "EXPLICIT_RECORD_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-060",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
       "record_class": "SEMANTIC_PROFILE_REGISTRY",
       "record_version": "v2",
       "schema": {
         "$id": "espresso.val001.semantic_profile_registry.v2",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-060; governed instances are validation targets, never schema inputs.",
         "properties": {
           "claim_boundaries": {
             "additionalProperties": false,
@@ -13824,23 +13808,26 @@
           "counts",
           "claim_boundaries"
         ],
+        "title": "Normative contract for SEMANTIC_PROFILE_REGISTRY v2",
         "type": "object"
       },
       "schema_id": "espresso.val001.semantic_profile_registry.v2",
-      "schema_path": "validation/val001/schemas/semantic_profile_registry.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "v1",
       "scope": "RECORD_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-060"
     },
     {
-      "origin": "EXPLICIT_RECORD_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-061",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
       "record_class": "MUTATION_INVENTORY",
       "record_version": "v1",
       "schema": {
         "$id": "espresso.val001.explicit_mutation_inventory.v1",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-061; governed instances are validation targets, never schema inputs.",
         "properties": {
           "baseline_structural_cases": {
             "const": 202
@@ -13964,23 +13951,26 @@
           "mutations",
           "counts"
         ],
+        "title": "Normative contract for MUTATION_INVENTORY v1",
         "type": "object"
       },
       "schema_id": "espresso.val001.explicit_mutation_inventory.v1",
-      "schema_path": "validation/val001/schemas/mutation_inventory.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "v1",
       "scope": "RECORD_SPECIFIC",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-061"
     },
     {
-      "origin": "EXPLICIT_RECORD_SEMANTICS",
+      "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-062",
+      "origin": "NORMATIVE_RECORD_CONTRACT",
       "record_class": "EXPLICIT_SEMANTICS_FREEZE",
       "record_version": "v1",
       "schema": {
         "$id": "espresso.val001.explicit_semantics_completion_freeze.v1",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
+        "description": "Generated only from VAL001-NORMATIVE-CONTRACT-062; governed instances are validation targets, never schema inputs.",
         "properties": {
           "administrative_bindings": {
             "items": {
@@ -14200,10 +14190,11 @@
           "ordinary_record_bindings",
           "administrative_bindings"
         ],
+        "title": "Normative contract for EXPLICIT_SEMANTICS_FREEZE v1",
         "type": "object"
       },
       "schema_id": "espresso.val001.explicit_semantics_completion_freeze.v1",
-      "schema_path": "validation/val001/schemas/explicit_semantics_completion_freeze.schema.json",
+      "schema_path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
       "schema_version": "v1",
       "scope": "RECORD_SPECIFIC",
       "semantic_profile_id": "PROFILE-AUTHORITY-FREEZE-ACTIVATION",
