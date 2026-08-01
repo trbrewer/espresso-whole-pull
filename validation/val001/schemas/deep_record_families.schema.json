@@ -5802,6 +5802,116 @@
             ],
             "type": "object"
           },
+          "maxItems": 12,
+          "minItems": 12,
+          "type": "array"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "claim_boundaries": {
+          "additionalProperties": false,
+          "properties": {
+            "new_governing_physics": {
+              "type": "string"
+            },
+            "physical_validation": {
+              "enum": [
+                "NOT_ESTABLISHED"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "new_governing_physics",
+            "physical_validation"
+          ],
+          "type": "object"
+        },
+        "further_retry_authorized": {
+          "type": "boolean"
+        },
+        "issue": {
+          "type": "integer"
+        },
+        "pull_request": {
+          "type": "integer"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "remaining_governed_result_producing_invocations": {
+          "type": "integer"
+        },
+        "remaining_real_data_comparison_invocations": {
+          "type": "integer"
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "task": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "alternate_activation_allowed",
+        "alternate_authority_allowed",
+        "alternate_invocation_id_allowed",
+        "alternate_ledger_allowed",
+        "authority_status",
+        "bindings",
+        "branch",
+        "claim_boundaries",
+        "further_retry_authorized",
+        "issue",
+        "pull_request",
+        "record_id",
+        "remaining_governed_result_producing_invocations",
+        "remaining_real_data_comparison_invocations",
+        "schema_version",
+        "task"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "alternate_activation_allowed": {
+          "type": "boolean"
+        },
+        "alternate_authority_allowed": {
+          "type": "boolean"
+        },
+        "alternate_invocation_id_allowed": {
+          "type": "boolean"
+        },
+        "alternate_ledger_allowed": {
+          "type": "boolean"
+        },
+        "authority_status": {
+          "enum": [
+            "CONSUMED"
+          ],
+          "type": "string"
+        },
+        "bindings": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "type": "object"
+          },
           "maxItems": 6,
           "minItems": 6,
           "type": "array"
