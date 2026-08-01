@@ -6,7 +6,7 @@
 - Branch: `validation/val-case-001-hydraulic-identifiability`
 - Base: `39c7bf0658c344728258ba1b4f8b935a4e889d7d` / `85711011a96ebaa46a77b5165aec0ab46e676542`
 - Protocol: `b5ffc581b79adfc9807face27777a0ae9dc582f8` / `85827508b6b5c23eaca020c8e36ae20b54023aa0`
-- Candidate commit/tree: `CORRECTED_RESULT_COMMIT_PENDING_CURRENT_COMMIT`
+- Corrected result commit/tree: `cb8118a429d73e5ff17801960f3d41008d8d3d66` / `b616fdb5bef1cbf477d6e8be7f18318194982d68`
 - Evidence class: `EXPLORATORY`
 - Independent reviewer: `UNRESOLVED_HUMAN_INPUT`
 - Human-owner disposition: `UNRESOLVED_PENDING_CORRECTED_EXACT_HEAD_REVIEW`

@@ -108,7 +108,8 @@ remains `VALIDATION_SUPPORT_ONLY_PHYSICAL_VALIDATION_NOT_ESTABLISHED`.
 ## Corrected analysis result
 
 - Corrected result SHA-256: `bb7bba7481a56ac8729758a6d5cd36e7d046b889256a7c1d1c8ed7cff998375a`
-- Corrected result commit: `CORRECTED_RESULT_COMMIT_PENDING_CURRENT_COMMIT`
+- Corrected result commit/tree: `cb8118a429d73e5ff17801960f3d41008d8d3d66` /
+  `b616fdb5bef1cbf477d6e8be7f18318194982d68`
 - Allowed-field comparison: `PASS_ONLY_DECLARED_FIELDS_DIFFER`
 - Two independent analysis-only reductions: `BYTE_IDENTICAL`
 - Valid retained cases: 47
