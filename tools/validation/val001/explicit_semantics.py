@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any,Callable
 from .framework import ContractError,load_json,validate_record
 from .schema import lint_schema
+from .normative import ASSIGNMENT_REGISTRY,generated_explicit_registry,load_normative_registry
 
 SPEC_REGISTRY="validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json"
 PROFILE_REGISTRY="validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json"
@@ -17,7 +18,10 @@ def _walk(value:Any):
   for item in value:yield from _walk(item)
 
 def load_policy(root:Path):
+ load_normative_registry(root)
  specs=load_json(root/SPEC_REGISTRY);profiles=load_json(root/PROFILE_REGISTRY)
+ if specs!=generated_explicit_registry(root):raise ContractError("VAL001_EXPLICIT_REGISTRY_NOT_NORMATIVELY_REPRODUCIBLE")
+ assignments=load_json(root/ASSIGNMENT_REGISTRY)["assignments"]
  spec_by_id={s["specification_id"]:s for s in specs["specifications"]}
  bindings={b["path"]:b for b in specs["record_bindings"]}
  profile_by_id={p["profile_id"]:p for p in profiles["profiles"]}
@@ -34,6 +38,16 @@ def load_policy(root:Path):
   if binding["semantic_profile_id"] not in profile_by_id:raise ContractError(f"VAL001_MISSING_SEMANTIC_PROFILE:{path}")
   profile=profile_by_id[binding["semantic_profile_id"]]
   if binding["specification_id"] not in profile["applies_to_specification_ids"]:raise ContractError(f"VAL001_PROFILE_SCOPE_MISMATCH:{path}")
+ assigned={a["path"]:a for a in assignments}
+ if len(assigned)!=len(assignments):raise ContractError("VAL001_DUPLICATE_IMMUTABLE_PROFILE_ASSIGNMENT")
+ if set(assigned)!=set(bindings):raise ContractError("VAL001_IMMUTABLE_PROFILE_ASSIGNMENT_COVERAGE_MISMATCH")
+ for path,binding in bindings.items():
+  assignment=assigned[path]
+  for key in ("specification_id","semantic_profile_id"):
+   if assignment[key]!=binding[key]:raise ContractError(f"VAL001_IMMUTABLE_PROFILE_ASSIGNMENT_MISMATCH:{path}:{key}")
+  spec=spec_by_id[binding["specification_id"]]
+  for key in ("schema_id","schema_version"):
+   if assignment[key]!=spec[key]:raise ContractError(f"VAL001_IMMUTABLE_PROFILE_ASSIGNMENT_MISMATCH:{path}:{key}")
  return specs,profiles,spec_by_id,bindings,profile_by_id
 
 def explicit_schema_for(root:Path,path:str):
@@ -54,8 +68,13 @@ def _global_claims(path,value,metadata):
    if k in {"independent_validation","transfer_validation","holdout_validation","physical_equivalence","model_correctness","mechanism_identity"} and item not in {False,None,"NOT_ESTABLISHED","NOT_ASSESSED","NOT_CLAIMED"}:raise ContractError("INV-GLOBAL-CLAIMS:CLAIM_CEILING_ESCALATION")
 
 def _metadata(path,value,metadata):
- if metadata and metadata.get("treatment")=="IMMUTABLE_HISTORICAL_DEEP_SCHEMA":
-  if metadata.get("current") is not False or metadata.get("executable") is not False or metadata.get("audit_only") is not True:raise ContractError("INV-METADATA-STATE:HISTORICAL_AUTHORITY_ESCALATION")
+ if not metadata:raise ContractError("INV-IMMUTABLE-PROFILE-ASSIGNMENT:MISSING")
+ for key in ("current","historical","audit_only","governing","executable","semantic_profile_id","record_class","schema_id","schema_version"):
+  if key in value and value[key]!=metadata[key]:raise ContractError(f"INV-IMMUTABLE-PROFILE-ASSIGNMENT:RECORD_MISMATCH:{key}")
+  if key in metadata.get("record_declared",{}) and metadata["record_declared"][key]!=metadata[key]:raise ContractError(f"INV-IMMUTABLE-PROFILE-ASSIGNMENT:DECLARED_MISMATCH:{key}")
+ if metadata["historical"]:
+  required={"current":False,"historical":True,"audit_only":True,"governing":False,"executable":False}
+  if any(metadata[k] is not v for k,v in required.items()):raise ContractError("INV-IMMUTABLE-PROFILE-ASSIGNMENT:HISTORICAL_AUTHORITY_ESCALATION")
 
 def _puckworks(path,value,metadata):
  for key,item in _walk(value):
@@ -66,7 +85,17 @@ def _campaign(path,value,metadata):
  if value.get("status")!="PLANNING_RECORDS_ONLY":raise ContractError("INV-CAMPAIGN-PLANNING:STATUS")
  if [c.get("id") for c in value.get("campaigns",[])]!=[f"EXP-{i:03d}" for i in range(1,10)]:raise ContractError("INV-CAMPAIGN-PLANNING:IDENTITIES")
  for c in value["campaigns"]:
-  if c.get("proposed_status")!="PLANNED" or c.get("execution_authorized") is not False or c.get("commissioning_authorized") is not False or c.get("data_accessed") is not False:raise ContractError("INV-CAMPAIGN-PLANNING:AUTHORITY")
+  required={"proposed_status":"PLANNED","evidence_level":"PLANNING_ONLY","rights_state":"NOT_ESTABLISHED","redistribution_state":"NOT_AUTHORIZED","holdout_requirement":"MUST_BE_DEFINED_BEFORE_EXECUTION","prohibited_role":"CURRENT_VALIDATION","data_exist":"NOT_ESTABLISHED","data_accessed":False,"execution_authorized":False,"commissioning_authorized":False}
+  for key,expected in required.items():
+   if c.get(key)!=expected:raise ContractError(f"INV-CAMPAIGN-PLANNING:{c.get('id')}:{key}")
+  if not c.get("missing_information"):raise ContractError(f"INV-CAMPAIGN-PLANNING:{c.get('id')}:missing_information")
+  permitted=str(c.get("permitted_role",""));prohibited=str(c.get("prohibited_role",""))
+  if permitted==prohibited or "CURRENT_VALIDATION" in permitted:raise ContractError(f"INV-CAMPAIGN-PLANNING:{c.get('id')}:ROLE_ESCALATION")
+ common=value.get("common_provenance",{})
+ expected={"proposed_status":"PLANNED","current_evidence_level":"PLANNING_ONLY","rights_state":"NOT_ESTABLISHED","redistribution_state":"NOT_AUTHORIZED","holdout_requirement":"MUST_BE_DEFINED_BEFORE_ANY_FUTURE_EXECUTION","permitted_evidence_role":"FUTURE_INFORMATION_GAP_PLANNING","prohibited_evidence_role":"COMPLETED_EXPERIMENT_OR_CURRENT_VALIDATION","data_exist":"NOT_ESTABLISHED","data_accessed":False,"execution_authorized":False,"experimental_commissioning_authorized":False}
+ for key,wanted in expected.items():
+  if common.get(key)!=wanted:raise ContractError(f"INV-CAMPAIGN-PLANNING:COMMON:{key}")
+ if not common.get("known_missing_information") or value.get("artifact_bindings")!=[]:raise ContractError("INV-CAMPAIGN-PLANNING:UNBOUND_EVIDENCE")
 
 def _sensitivity(path,value,metadata):
  if value.get("structural_identifiability")!="NOT_ASSESSED":raise ContractError("INV-SENSITIVITY-PROSPECTIVE:STRUCTURAL_IDENTIFIABILITY")
@@ -126,6 +155,7 @@ def _comparison_run(path,value,metadata):
 
 INVARIANTS:dict[str,Callable]= {
  "INV-GLOBAL-CLAIMS":_global_claims,"INV-METADATA-STATE":_metadata,"INV-PUCKWORKS-LOCK":_puckworks,
+ "INV-IMMUTABLE-PROFILE-ASSIGNMENT":_metadata,
  "INV-CAMPAIGN-PLANNING":_campaign,"INV-SENSITIVITY-PROSPECTIVE":_sensitivity,"INV-CONSUMED-LOCK":_consumed,
  "INV-HISTORICAL-REEXPRESSION":_reexpression,"INV-EVIDENCE-GAP":_evidence_gap,"INV-V2-DESCRIPTIVE":_v2,
  "INV-FAILED-INVOCATION":_failed,"INV-OPENFOAM-QUALIFICATION":_qualification,"INV-RIGHTS-ACCESS":_rights,
@@ -145,10 +175,17 @@ def execute_profile_invariants(root:Path,path:str,value:dict[str,Any],metadata:d
  _,profiles,specs,bindings,profile_by_id=load_policy(root)
  binding=bindings.get(path)
  if not binding:raise ContractError(f"VAL001_RECORD_WITHOUT_EXECUTABLE_SEMANTIC_PROFILE:{path}")
- profile=profile_by_id[binding["semantic_profile_id"]];executed=[]
+ assignments={a["path"]:a for a in load_json(root/ASSIGNMENT_REGISTRY)["assignments"]}
+ assignment=assignments.get(path)
+ if not assignment:raise ContractError(f"VAL001_RECORD_WITHOUT_IMMUTABLE_PROFILE_ASSIGNMENT:{path}")
+ if binding["semantic_profile_id"]!=assignment["semantic_profile_id"]:raise ContractError(f"VAL001_IMMUTABLE_PROFILE_ASSIGNMENT_MISMATCH:{path}")
+ effective=dict(assignment)
+ if metadata:effective["record_declared"]=metadata
+ profile=profile_by_id[assignment["semantic_profile_id"]];executed=[]
+ _metadata(path,value,effective);executed.append("INV-IMMUTABLE-PROFILE-ASSIGNMENT")
  for invariant_id in profile["invariant_ids"]:
   invariant=INVARIANTS.get(invariant_id)
   if invariant is None:raise ContractError(f"VAL001_UNKNOWN_INVARIANT:{invariant_id}")
-  invariant(path,value,metadata);executed.append(invariant_id)
+  invariant(path,value,effective);executed.append(invariant_id)
  if set(profile["invariant_ids"])-set(executed):raise ContractError("VAL001_REQUIRED_INVARIANT_NOT_EXECUTED")
  return executed
