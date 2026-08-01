@@ -14,6 +14,7 @@ from tools.validation.val001.framework import ContractError, load_json, sha256, 
 from tools.validation.val001.schema import lint_schema
 from tools.validation.val001.source_identity import selected_row_identity
 from tools.validation.val001.inventory import verify_inventory, verify_registry
+from tools.validation.val001.explicit_semantics import explicit_schema_for, validate_profile_dispatch
 
 EXPECTED_LOCK = ("fc61c4670ec7bf801e40bb391aab16048b8da26b", "1d553e44ee2f7480a5df521560801b478618cc84")
 
@@ -24,13 +25,13 @@ def verify(root: Path) -> dict[str, object]:
     verify_inventory(root, inventory); verify_registry(inventory, registry)
     validated = []
     for entry in registry["records"]:
-        record_path, schema_path = root / entry["path"], root / entry["schema_path"]
-        schema = load_json(schema_path); lint_schema(schema)
+        record_path = root / entry["path"]
+        schema = explicit_schema_for(root, entry["path"]); lint_schema(schema)
         if record_path.suffix == ".jsonl":
             for line in record_path.read_text(encoding="utf-8").splitlines():
-                validate_record(json.loads(line, parse_constant=lambda value: (_ for _ in ()).throw(ValueError(value))), schema)
+                value=json.loads(line, parse_constant=lambda value: (_ for _ in ()).throw(ValueError(value)));validate_record(value,schema);validate_profile_dispatch(root,entry["path"],value,entry)
         else:
-            validate_record(load_json(record_path), schema)
+            value=load_json(record_path);validate_record(value, schema);validate_profile_dispatch(root,entry["path"],value,entry)
         # Administrative records participate in the acyclic freeze/lock/Git-tree
         # closure and therefore are not required to carry a self-current hash in
         # the registry. Ordinary records remain directly hash-bound here.

@@ -13982,6 +13982,27 @@
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
         "properties": {
+          "administrative_bindings": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "pattern": "^(?!/)(?!.*\\.\\.).+$",
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
           "bindings": {
             "items": {
               "additionalProperties": false,
@@ -14090,6 +14111,27 @@
             ],
             "type": "object"
           },
+          "ordinary_record_bindings": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "pattern": "^(?!/)(?!.*\\.\\.).+$",
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
           "preserved_lineage": {
             "additionalProperties": false,
             "properties": {
@@ -14154,7 +14196,9 @@
           "preserved_lineage",
           "puckworks_lock",
           "execution",
-          "claim_boundaries"
+          "claim_boundaries",
+          "ordinary_record_bindings",
+          "administrative_bindings"
         ],
         "type": "object"
       },
