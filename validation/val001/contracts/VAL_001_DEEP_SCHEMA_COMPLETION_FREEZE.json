@@ -1,8 +1,8 @@
 {
-  "schema_version": "espresso.val001.deep_schema_completion_freeze.v1",
-  "record_id": "VAL001-DEEP-SCHEMA-COMPLETION-FREEZE-1",
-  "implementation_commit": "a0810272599d856c1ee09a23acbaeeb92e0a0f53",
-  "implementation_tree": "19f61ce2260c1b4dfb87a73308f96c6d8d458a07",
+  "schema_version": "espresso.val001.deep_schema_completion_freeze.v2",
+  "record_id": "VAL001-DEEP-SCHEMA-COMPLETION-FREEZE-2",
+  "implementation_commit": "d8c82132790e23d44d1e4103357628301a2b957b",
+  "implementation_tree": "d907189105cdba96dd58bb1feb3ebb5ce0441191",
   "inventory": {
     "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
     "sha256": "24ac1759842a8c25bb30f85d836bad2f3b3778898bc4a4dad83a9e6067dbafe4",
@@ -23,11 +23,11 @@
     },
     {
       "path": "tools/validation/val001/deep_schema.py",
-      "sha256": "9029f66f82867bc4a494ddefeafff3825f5158782548a89c07a7a8b098ed2874"
+      "sha256": "6802e3a12bca439fbbe984acad1b98684c1cba6dca656474ce5ed47c44ecc555"
     },
     {
       "path": "tools/validation/val001/inventory.py",
-      "sha256": "9afc6abef23ebcb7b2c5e32d7a0de98a1d092ef10e20da041570e49161e45772"
+      "sha256": "81c157d661a080f0a55223fb68d6d4df19d162fee229d55caf1348cd5c2e663a"
     },
     {
       "path": "scripts/verify_val001_deep_schema_coverage.py",
