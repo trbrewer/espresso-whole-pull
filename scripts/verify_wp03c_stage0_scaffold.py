@@ -430,6 +430,7 @@ LATER_WP02_002_PATHS = frozenset({
     "validation/val001/schemas/external_candidate_root_protocol.schema.json",
     "validation/val001/schemas/mutation_inventory.schema.json",
     "validation/val001/schemas/semantic_profile_registry.schema.json",
+    ".github/workflows/static-validation.yml",
     "scripts/generate_val001_explicit_semantics_freeze.py",
     "validation/val001/contracts/VAL_001_EXPLICIT_SEMANTICS_COMPLETION_FREEZE.json",
     "validation/val001/schemas/explicit_semantics_completion_freeze.schema.json",
