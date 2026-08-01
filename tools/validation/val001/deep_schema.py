@@ -150,9 +150,9 @@ def semantic_validate(path:str,value:dict[str,Any])->None:
     """Cross-family claim, authority, and immutable-lineage invariants."""
     for key,item in _walk(value):
         lower=key.lower()
-        if "physical_validation" in lower and item not in {"NOT_ESTABLISHED",False,None}:
+        if "physical_validation" in lower and not isinstance(item,(dict,list)) and item not in {"NOT_ESTABLISHED",False,None}:
             raise ContractError(f"physical validation escalation: {path}:{key}")
-        if "new_governing_physics" in lower and item not in {"NOT_AUTHORIZED_BY_VAL001",False,None}:
+        if "new_governing_physics" in lower and not isinstance(item,(dict,list)) and item not in {"NOT_AUTHORIZED_BY_VAL001",False,None}:
             raise ContractError(f"new physics escalation: {path}:{key}")
         if lower in {"experimental_commissioning_authorized","commissioning_authorized","execution_authorized","holdout_execution_authorized","protected_scoring_authorized","holdout_scoring_authorized"} and item is not False:
             raise ContractError(f"execution or commissioning escalation: {path}:{key}")
