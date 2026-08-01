@@ -24,6 +24,48 @@ def _binding_map(items:list[dict[str,Any]])->dict[str,str]:
         out[item["path"]]=item["sha256"]
     return out
 
+def validate_binding_graph(inventory:dict[str,Any], freeze:dict[str,Any],
+                           lock:dict[str,Any], specification:dict[str,Any])->dict[str,int]:
+    """Build and traverse the finite record→freeze→lock→Git-tree graph."""
+    expected_edges={"ORDINARY_HASH_BOUND_RECORD->ADMINISTRATIVE_FREEZE",
+        "BOUND_BY_ADMINISTRATIVE_FREEZE->ADMINISTRATIVE_FREEZE",
+        "BOUND_BY_CANONICAL_LOCK->CANONICAL_LOCK",
+        "BOUND_BY_FINAL_GIT_TREE->FINAL_GIT_HEAD_TREE"}
+    if set(specification.get("valid_edges",[]))!=expected_edges:
+        raise ContractError("administrative binding edge policy mismatch")
+    freeze_path=specification.get("administrative_freeze");lock_path=specification.get("canonical_lock")
+    if freeze_path!=ADMIN_FREEZE_PATH or lock_path!=CANONICAL_LOCK_PATH:
+        raise ContractError("administrative binder identity mismatch")
+    ordinary=set(_binding_map(freeze["ordinary_record_bindings"]));admin=set(_binding_map(freeze["administrative_bindings"]))
+    graph:dict[str,str]={}
+    for entry in inventory["records"]:
+        path,kind=entry["path"],entry["binding_class"]
+        if kind=="ORDINARY_HASH_BOUND_RECORD":
+            if path not in ordinary: raise ContractError(f"orphan ordinary record: {path}")
+            graph[path]=freeze_path
+        elif kind=="BOUND_BY_ADMINISTRATIVE_FREEZE":
+            if path not in admin: raise ContractError(f"orphan administrative record: {path}")
+            graph[path]=freeze_path
+        elif kind=="BOUND_BY_CANONICAL_LOCK":
+            if path!=freeze_path: raise ContractError("non-freeze canonical-lock binding")
+            graph[path]=lock_path
+        elif kind=="BOUND_BY_FINAL_GIT_TREE":
+            if path!=lock_path: raise ContractError("noncanonical terminal record")
+            graph[path]="FINAL_GIT_HEAD_TREE"
+    expected_ordinary={e["path"] for e in inventory["records"] if e["binding_class"]=="ORDINARY_HASH_BOUND_RECORD"}
+    expected_admin={e["path"] for e in inventory["records"] if e["binding_class"]=="BOUND_BY_ADMINISTRATIVE_FREEZE"}
+    if ordinary!=expected_ordinary or admin!=expected_admin: raise ContractError("binding set has orphan or extra record")
+    roots=0
+    for start in graph:
+        seen=set();node=start
+        while node in graph:
+            if node in seen: raise ContractError(f"administrative binding cycle at {node}")
+            seen.add(node);node=graph[node]
+        if node!="FINAL_GIT_HEAD_TREE": raise ContractError(f"orphan binding terminus: {node}")
+    roots=len({target for target in graph.values() if target=="FINAL_GIT_HEAD_TREE"})
+    if roots!=1: raise ContractError("terminal external root count is not one")
+    return {"cycles":0,"orphans":0,"terminal_external_roots":roots}
+
 def validate_all_records(root:Path, inventory:dict[str,Any])->int:
     count=0
     for entry in inventory["records"]:
@@ -56,6 +98,8 @@ def verify_closure(root:Path, *, require_clean:bool=True)->dict[str,Any]:
     verify_inventory(root,inventory);verify_registry(inventory,registry)
     validated=validate_all_records(root,inventory)
     freeze=load_json(root/ADMIN_FREEZE_PATH);lock=load_json(root/CANONICAL_LOCK_PATH)
+    specification=load_json(root/ADMIN_CLOSURE_PATH)
+    graph_result=validate_binding_graph(inventory,freeze,lock,specification)
     admin=_binding_map(freeze["administrative_bindings"]);ordinary=_binding_map(freeze["ordinary_record_bindings"])
     classes={}
     for entry in inventory["records"]:
@@ -80,4 +124,4 @@ def verify_closure(root:Path, *, require_clean:bool=True)->dict[str,Any]:
         else: raise ContractError(f"unknown binding class: {kind}")
     if classes.get("BOUND_BY_FINAL_GIT_TREE")!=1: raise ContractError("terminal external root count is not one")
     if require_clean and _git(root,"status","--porcelain"): raise ContractError("administrative closure requires clean working tree")
-    return {"enumerated":len(enumerated),"registered":len(registered),"validated":validated,"binding_classes":classes,"cycles":0,"orphans":0,"terminal_external_roots":1,"head":_git(root,"rev-parse","HEAD"),"tree":_git(root,"rev-parse","HEAD^{tree}")}
+    return {"enumerated":len(enumerated),"registered":len(registered),"validated":validated,"binding_classes":classes,**graph_result,"head":_git(root,"rev-parse","HEAD"),"tree":_git(root,"rev-parse","HEAD^{tree}")}

@@ -4,6 +4,7 @@ from pathlib import Path
 from tools.validation.val001.deep_schema import semantic_validate
 from tools.validation.val001.framework import ContractError,load_json
 from tools.validation.val001.schema import SchemaError,lint_schema
+from tools.validation.val001.administrative import validate_binding_graph
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -58,3 +59,32 @@ class ExplicitSemanticEscalationTests(unittest.TestCase):
   rel="validation/val001/VAL_001_CAMPAIGN_PROVENANCE.json"
   for key,value in (("physical_validation","ESTABLISHED"),("general_physical_validation","ESTABLISHED"),("general_whole_solver_physical_validation","ESTABLISHED"),("new_governing_physics","AUTHORIZED")):
    with self.subTest(key=key):self.assert_semantic_rejects(rel,lambda d,k=key,v=value:d.setdefault("claim_boundaries",{}).update({k:v}),"physical validation|new physics")
+
+class AdministrativeBindingMutationTests(unittest.TestCase):
+ def records(self):
+  return tuple(load_json(ROOT/p) for p in (
+   "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
+   "validation/val001/contracts/VAL_001_ADMINISTRATIVE_CLOSURE_FREEZE.json",
+   "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json",
+   "validation/val001/VAL_001_ADMINISTRATIVE_CLOSURE_SPECIFICATION.json"))
+ def reject(self,mutate,reason):
+  values=[copy.deepcopy(v) for v in self.records()];mutate(*values)
+  with self.assertRaisesRegex(ContractError,reason):validate_binding_graph(*values)
+ def test_orphan_ordinary_record(self):
+  self.reject(lambda i,f,l,s:f["ordinary_record_bindings"].pop(),"orphan|binding set")
+ def test_orphan_administrative_record(self):
+  self.reject(lambda i,f,l,s:f["administrative_bindings"].pop(),"orphan|binding set")
+ def test_duplicate_binding_path(self):
+  self.reject(lambda i,f,l,s:f["ordinary_record_bindings"].append(copy.deepcopy(f["ordinary_record_bindings"][0])),"duplicate binding")
+ def test_binding_cycle_policy(self):
+  self.reject(lambda i,f,l,s:s["valid_edges"].append("CANONICAL_LOCK->ADMINISTRATIVE_FREEZE"),"edge policy")
+ def test_two_terminal_records(self):
+  def mutate(i,f,l,s):
+   candidate=next(x for x in i["records"] if x["binding_class"]=="ORDINARY_HASH_BOUND_RECORD")
+   candidate["binding_class"]="BOUND_BY_FINAL_GIT_TREE"
+  self.reject(mutate,"noncanonical terminal")
+ def test_no_terminal_record(self):
+  def mutate(i,f,l,s):
+   candidate=next(x for x in i["records"] if x["binding_class"]=="BOUND_BY_FINAL_GIT_TREE")
+   candidate["binding_class"]="ORDINARY_HASH_BOUND_RECORD"
+  self.reject(mutate,"orphan|binding set|terminal")
