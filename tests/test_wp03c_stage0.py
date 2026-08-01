@@ -1,6 +1,8 @@
 import copy
 import importlib.util
 import json
+import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -317,87 +319,206 @@ class Stage0Tests(unittest.TestCase):
 
 
 class Stage0FrozenScopeTests(unittest.TestCase):
-    def write_frozen_scope(self, root):
-        scope = verifier.historical_stage0_scope(ROOT)
-        for path, content in scope.items():
-            target = root / path
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(content)
-        return scope
+    def git(self, root, *args, input_text=None):
+        return subprocess.run(
+            ["git", *args], cwd=root, check=True, text=True,
+            input=input_text, stdout=subprocess.PIPE).stdout.strip()
+
+    def clone_at_stage0(self, parent):
+        candidate = parent / "candidate"
+        subprocess.run(
+            ["git", "clone", "-q", "--no-hardlinks", str(ROOT), str(candidate)],
+            check=True)
+        self.git(candidate, "config", "user.name", "VAL-INFRA synthetic")
+        self.git(candidate, "config", "user.email", "val-infra@example.invalid")
+        self.git(candidate, "checkout", "-q", "-b", "fixture",
+                 verifier.STAGE0_FREEZE_COMMIT)
+        return candidate
+
+    def commit_all(self, root, message="synthetic mutation"):
+        self.git(root, "add", "-A")
+        self.git(root, "commit", "-q", "-m", message)
+
+    def assert_scope_fails(self, candidate):
+        self.assertFalse(verifier.frozen_stage0_scope_integrity(
+            candidate, candidate))
 
     def test_authentic_frozen_stage0_snapshot_passes(self):
         with tempfile.TemporaryDirectory() as name:
-            candidate = Path(name)
-            self.write_frozen_scope(candidate)
+            candidate = self.clone_at_stage0(Path(name))
+            self.assertTrue(verifier.historical_stage0_ancestor_of_head(candidate))
             self.assertTrue(verifier.frozen_stage0_scope_integrity(
-                candidate, ROOT))
+                candidate, candidate))
 
     def test_current_main_stage0_scope_passes(self):
+        self.assertTrue(verifier.historical_stage0_ancestor_of_head(ROOT))
         self.assertTrue(verifier.frozen_stage0_scope_integrity(ROOT))
         self.assertEqual(verifier.verify(ROOT)["status"], "PASS")
 
     def test_unrelated_future_path_does_not_require_enumeration(self):
         with tempfile.TemporaryDirectory() as name:
-            candidate = Path(name)
-            self.write_frozen_scope(candidate)
+            candidate = self.clone_at_stage0(Path(name))
             future = candidate / "future/work/package/not_enumerated.txt"
             future.parent.mkdir(parents=True)
             future.write_text("authorized unrelated future work\n")
             self.assertFalse(hasattr(verifier, "EXPECTED_PATHS"))
             self.assertTrue(verifier.frozen_stage0_scope_integrity(
-                candidate, ROOT))
+                candidate, candidate))
+
+    def test_unrelated_symlink_outside_scope_is_not_stage0_input(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = self.clone_at_stage0(Path(name))
+            target = candidate / "future-target.txt"
+            target.write_text("unrelated\n")
+            (candidate / "future-link").symlink_to(target)
+            self.assertTrue(verifier.frozen_stage0_scope_integrity(
+                candidate, candidate))
 
     def test_protected_mutation_and_replacement_fail(self):
         with tempfile.TemporaryDirectory() as name:
-            candidate = Path(name)
-            scope = self.write_frozen_scope(candidate)
+            candidate = self.clone_at_stage0(Path(name))
+            scope = verifier.historical_stage0_scope(candidate)
             path = next(path for path in scope if "templates/" in path)
             (candidate / path).write_text("replacement\n")
-            self.assertFalse(verifier.frozen_stage0_scope_integrity(
-                candidate, ROOT))
+            self.assert_scope_fails(candidate)
 
     def test_protected_deletion_fails(self):
         with tempfile.TemporaryDirectory() as name:
-            candidate = Path(name)
-            scope = self.write_frozen_scope(candidate)
+            candidate = self.clone_at_stage0(Path(name))
+            scope = verifier.historical_stage0_scope(candidate)
             path = next(path for path in scope if "templates/" in path)
             (candidate / path).unlink()
-            self.assertFalse(verifier.frozen_stage0_scope_integrity(
-                candidate, ROOT))
+            self.assert_scope_fails(candidate)
 
     def test_protected_rename_fails(self):
         with tempfile.TemporaryDirectory() as name:
-            candidate = Path(name)
-            scope = self.write_frozen_scope(candidate)
+            candidate = self.clone_at_stage0(Path(name))
+            scope = verifier.historical_stage0_scope(candidate)
             path = next(path for path in scope if "templates/" in path)
             source = candidate / path
             source.rename(source.with_name("RENAMED_STAGE0_ARTIFACT.json"))
-            self.assertFalse(verifier.frozen_stage0_scope_integrity(
-                candidate, ROOT))
+            self.assert_scope_fails(candidate)
 
     def test_protected_addition_fails(self):
         with tempfile.TemporaryDirectory() as name:
-            candidate = Path(name)
-            self.write_frozen_scope(candidate)
+            candidate = self.clone_at_stage0(Path(name))
             addition = candidate / "validation/campaign/wp03c/UNAUTHORIZED.json"
             addition.write_text("{}\n")
-            self.assertFalse(verifier.frozen_stage0_scope_integrity(
-                candidate, ROOT))
+            self.assert_scope_fails(candidate)
 
     def test_permitted_path_contract_mutation_fails(self):
         with tempfile.TemporaryDirectory() as name:
-            candidate = Path(name)
-            self.write_frozen_scope(candidate)
+            candidate = self.clone_at_stage0(Path(name))
             contract_path = candidate / verifier.STAGE0_CONTRACT_PATH
             contract = json.loads(contract_path.read_text())
             contract["permitted_changed_paths"].append("future/unrelated.txt")
             contract_path.write_text(json.dumps(contract, indent=2) + "\n")
-            self.assertFalse(verifier.frozen_stage0_scope_integrity(
-                candidate, ROOT))
+            self.assert_scope_fails(candidate)
+
+    def test_each_top_level_regular_file_symlink_replacement_fails(self):
+        protected = (
+            verifier.STAGE0_CONTRACT_PATH,
+            "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md",
+        )
+        for relative in protected:
+            with self.subTest(relative=relative), tempfile.TemporaryDirectory() as name:
+                candidate = self.clone_at_stage0(Path(name))
+                source = candidate / relative
+                copy = candidate / "outside-protected-copy"
+                copy.write_bytes(source.read_bytes())
+                source.unlink()
+                source.symlink_to(os.path.relpath(copy, source.parent))
+                self.assert_scope_fails(candidate)
+
+    def test_template_file_symlink_to_identical_copy_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = self.clone_at_stage0(Path(name))
+            relative = next(
+                path for path in verifier.historical_stage0_scope(candidate)
+                if "templates/" in path)
+            source = candidate / relative
+            copy = candidate / "identical-template-copy"
+            copy.write_bytes(source.read_bytes())
+            source.unlink()
+            source.symlink_to(os.path.relpath(copy, source.parent))
+            self.assert_scope_fails(candidate)
+
+    def test_protected_directory_symlink_to_identical_tree_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = self.clone_at_stage0(Path(name))
+            directory = candidate / "validation/campaign/wp03c/templates"
+            copy = candidate / "identical-templates-outside-scope"
+            directory.rename(copy)
+            directory.symlink_to(os.path.relpath(copy, directory.parent),
+                                 target_is_directory=True)
+            self.assert_scope_fails(candidate)
+
+    def test_broken_and_directory_symlink_additions_fail(self):
+        for target, is_directory in (("missing-target", False),
+                                     ("../../../docs", True)):
+            with self.subTest(target=target), tempfile.TemporaryDirectory() as name:
+                candidate = self.clone_at_stage0(Path(name))
+                addition = candidate / "validation/campaign/wp03c/ADDED_LINK"
+                addition.symlink_to(target, target_is_directory=is_directory)
+                self.assert_scope_fails(candidate)
+
+    def test_identical_bytes_with_executable_git_mode_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = self.clone_at_stage0(Path(name))
+            relative = "validation/campaign/wp03c/WP_0_3C_INPUT_REQUIREMENTS.json"
+            (candidate / relative).chmod(0o755)
+            self.commit_all(candidate, "change protected mode")
+            self.assertFalse(verifier.frozen_stage0_git_tree_integrity(
+                candidate, candidate))
+
+    def test_blob_replaced_by_gitlink_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = self.clone_at_stage0(Path(name))
+            relative = "tools/campaign/wp03c/stage0.py"
+            object_id = self.git(candidate, "rev-parse", "HEAD")
+            self.git(candidate, "update-index", "--add", "--cacheinfo",
+                     "160000," + object_id + "," + relative)
+            self.git(candidate, "commit", "-q", "-m", "replace blob by gitlink")
+            self.assertFalse(verifier.frozen_stage0_git_tree_integrity(
+                candidate, candidate))
+
+    def test_tracked_deletion_with_identical_untracked_replacement_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = self.clone_at_stage0(Path(name))
+            relative = "tools/campaign/wp03c/stage0.py"
+            content = (candidate / relative).read_bytes()
+            self.git(candidate, "rm", "--cached", relative)
+            self.git(candidate, "commit", "-q", "-m", "delete tracked artifact")
+            (candidate / relative).write_bytes(content)
+            self.assertFalse(verifier.frozen_stage0_git_tree_integrity(
+                candidate, candidate))
+            self.assertFalse(verifier.frozen_stage0_worktree_integrity(
+                candidate, candidate))
+
+    def test_equal_tree_without_stage0_ancestry_fails(self):
+        with tempfile.TemporaryDirectory() as name:
+            candidate = self.clone_at_stage0(Path(name))
+            tree = self.git(candidate, "rev-parse", "HEAD^{tree}")
+            commit = self.git(candidate, "commit-tree", tree,
+                              input_text="synthetic non-ancestor\n")
+            self.git(candidate, "checkout", "-q", "--detach", commit)
+            self.assertTrue(verifier.frozen_stage0_git_tree_integrity(
+                candidate, candidate))
+            self.assertFalse(verifier.historical_stage0_ancestor_of_head(candidate))
 
     def test_historical_tree_and_contract_identities_are_exact(self):
         scope = verifier.historical_stage0_scope(ROOT)
+        paths = sorted(scope)
+        aggregate = verifier.hashlib.sha256(
+            ("\n".join(paths) + "\n").encode()).hexdigest()
+        self.assertEqual(len(paths), verifier.STAGE0_PROTECTED_PATH_COUNT)
+        self.assertEqual(aggregate, verifier.STAGE0_PROTECTED_PATH_AGGREGATE)
         self.assertIn(verifier.STAGE0_CONTRACT_PATH, scope)
+        self.assertIn(
+            "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md", scope)
+        self.assertIn("validation/campaign/wp03c/WP_0_3C_INPUT_REQUIREMENTS.json", scope)
+        self.assertIn("tools/campaign/wp03c/stage0.py", scope)
+        self.assertEqual(11, sum("templates/" in path for path in scope))
         self.assertEqual(
             verifier.sha(ROOT / verifier.STAGE0_CONTRACT_PATH),
             verifier.STAGE0_CONTRACT_SHA256)

@@ -19,7 +19,9 @@ The exact source-manifest count and aggregate are generated in
 VAL-INFRA-002 is an open reusable-infrastructure candidate that repairs the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,
 framework pin, operating standard, solver, configuration, dependency, or claim
-ceiling and performs no scientific execution.
+ceiling and performs no scientific execution. Its exact-head correction binds
+protected Git modes and object types, rejects symbolic-link substitution, and
+requires the pinned Stage-0 merge to be an ancestor of the candidate.
 
 ## Completed sequence
 

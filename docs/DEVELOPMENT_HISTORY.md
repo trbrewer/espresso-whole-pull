@@ -129,3 +129,10 @@ allowlist entries, while protected Stage-0 artifacts and semantics remain
 fail-closed. No solver, configuration, scientific result, evidence, framework,
 operating standard, dependency lock, or claim ceiling changed, and no
 scientific execution occurred.
+
+Independent exact-head review then identified a symbolic-link substitution
+gap in the first repair. A bounded correction added NUL-delimited Git-tree
+mode/type/object comparison, required Stage-0 ancestry, and added non-following
+worktree and real-Git adversarial tests. The superseded head used path and
+followed-target byte equality and was not fully fail-closed for object-type
+replacement.

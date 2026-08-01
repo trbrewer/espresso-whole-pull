@@ -26,11 +26,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 297,
+    "python_test_count": 306,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 219,
-    "source_manifest_aggregate_sha256": "c994b174ad2c9945e50dda592ae87afec391442276f1b21eac02ebd2a72287ab",
+    "source_manifest_aggregate_sha256": "88b831aee6013c69f428ed10234cb0eed48055aea568079a3489a22d36d35abf",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -47,8 +47,11 @@
     "historical_stage0_tree": "6b812f61bb4e0630d80dc0fb4a0922d63554a704",
     "protected_scope_source": "ORIGINAL_STAGE0_PERMITTED_CHANGED_PATHS_CONTRACT",
     "unrelated_post_stage0_paths_require_enumeration": false,
-    "focused_test_count": 36,
+    "focused_test_count": 45,
     "wp_0_3c_stage0_boundary": "PASS",
+    "historical_stage0_ancestor_of_head": "PASS",
+    "frozen_stage0_git_tree_integrity": "PASS",
+    "frozen_stage0_worktree_integrity": "PASS",
     "scientific_execution_count": 0,
     "physical_validation": "NOT_ESTABLISHED"
   },

@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import re
+import stat
 import subprocess
 import sys
 import tempfile
@@ -23,6 +24,9 @@ STAGE0_CONTRACT_PATH = \
     "validation/contracts/WP_0_3C_STAGE0_AUTHORITY_AND_INPUT_INTAKE_CONTRACT.json"
 STAGE0_CONTRACT_SHA256 = \
     "88aee87865e5ea1cd9542432bad36809773cc62c8b24a3be30e043296ef3c613"
+STAGE0_PROTECTED_PATH_COUNT = 16
+STAGE0_PROTECTED_PATH_AGGREGATE = \
+    "8f21a12285d93cc5ee24730c892d6da6db7cdad9948b2c76dd60bc0c1e5dce7c"
 # Later work-package paths are intentionally absent. The protected scope is
 # derived from the pinned historical Stage-0 contract below.
 FROZEN = {
@@ -221,8 +225,27 @@ def _protected_stage0_path(path: str) -> bool:
     )
 
 
-def historical_stage0_scope(history_root: Path) -> Dict[str, bytes]:
-    """Return the protected Stage-0 bytes from the pinned public history."""
+def _tree_entries(root: Path, revision: str) -> Dict[str, Dict[str, str]]:
+    """Read exact recursive Git-tree entries using an unambiguous NUL format."""
+    raw = _git(root, "ls-tree", "-rz", "--full-tree", revision)
+    entries = {}
+    for record in raw.split(b"\0"):
+        if not record:
+            continue
+        metadata, encoded_path = record.split(b"\t", 1)
+        mode, object_type, object_id = metadata.decode("ascii").split(" ")
+        path = encoded_path.decode("utf-8", "surrogateescape")
+        entries[path] = {
+            "path": path,
+            "mode": mode,
+            "object_type": object_type,
+            "object_id": object_id,
+        }
+    return entries
+
+
+def historical_stage0_scope(history_root: Path) -> Dict[str, Dict[str, str]]:
+    """Return protected Stage-0 Git entries from the pinned public history."""
     observed_tree = _git(
         history_root, "rev-parse", STAGE0_FREEZE_COMMIT + "^{tree}"
     ).decode().strip()
@@ -237,39 +260,98 @@ def historical_stage0_scope(history_root: Path) -> Dict[str, bytes]:
     if len(permitted) != len(set(permitted)):
         raise ValueError("historical Stage-0 permitted path contract is not unique")
     protected = sorted(path for path in permitted if _protected_stage0_path(path))
-    if not protected or STAGE0_CONTRACT_PATH not in protected:
+    path_aggregate = hashlib.sha256(
+        ("\n".join(protected) + "\n").encode()).hexdigest()
+    if (len(protected) != STAGE0_PROTECTED_PATH_COUNT
+            or path_aggregate != STAGE0_PROTECTED_PATH_AGGREGATE
+            or STAGE0_CONTRACT_PATH not in protected
+            or "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md"
+            not in protected
+            or not any(path.startswith("validation/campaign/wp03c/templates/")
+                       for path in protected)
+            or "tools/campaign/wp03c/stage0.py" not in protected):
         raise ValueError("historical Stage-0 protected scope is empty or incomplete")
-    return {
-        path: _git(history_root, "show", STAGE0_FREEZE_COMMIT + ":" + path)
-        for path in protected
+    tree = _tree_entries(history_root, STAGE0_FREEZE_COMMIT)
+    scope = {path: dict(tree[path]) for path in protected}
+    for path, entry in scope.items():
+        if entry["object_type"] != "blob":
+            raise ValueError("historical protected entry is not a blob: " + path)
+        content = _git(history_root, "cat-file", "blob", entry["object_id"])
+        entry["content_sha256"] = hashlib.sha256(content).hexdigest()
+    return scope
+
+
+def historical_stage0_ancestor_of_head(candidate_root: Path) -> bool:
+    result = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", STAGE0_FREEZE_COMMIT, "HEAD"],
+        cwd=candidate_root, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return result.returncode == 0
+
+
+def frozen_stage0_git_tree_integrity(candidate_root: Path,
+                                     history_root: Path = None) -> bool:
+    history = history_root or candidate_root
+    try:
+        expected = historical_stage0_scope(history)
+        candidate_tree = _tree_entries(candidate_root, "HEAD")
+    except (KeyError, ValueError, subprocess.CalledProcessError,
+            json.JSONDecodeError):
+        return False
+    actual = {path: candidate_tree[path] for path in candidate_tree
+              if _protected_stage0_path(path)}
+    return actual == {
+        path: {key: value for key, value in entry.items()
+               if key != "content_sha256"}
+        for path, entry in expected.items()
     }
+
+
+def frozen_stage0_worktree_integrity(candidate_root: Path,
+                                     history_root: Path = None) -> bool:
+    history = history_root or candidate_root
+    try:
+        expected = historical_stage0_scope(history)
+    except (KeyError, ValueError, subprocess.CalledProcessError,
+            json.JSONDecodeError):
+        return False
+    for path, entry in expected.items():
+        target = candidate_root / path
+        current = candidate_root
+        for component in Path(path).parts:
+            current = current / component
+            try:
+                if stat.S_ISLNK(current.lstat().st_mode):
+                    return False
+            except FileNotFoundError:
+                return False
+        try:
+            metadata = target.lstat()
+        except FileNotFoundError:
+            return False
+        if entry["object_type"] != "blob" or not stat.S_ISREG(metadata.st_mode):
+            return False
+        if hashlib.sha256(target.read_bytes()).hexdigest() != entry["content_sha256"]:
+            return False
+    pathspecs = sorted({
+        STAGE0_CONTRACT_PATH,
+        "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md",
+        "validation/campaign/wp03c",
+        "tools/campaign/wp03c",
+    })
+    try:
+        status = _git(
+            candidate_root, "status", "--porcelain=v1", "-z",
+            "--untracked-files=all", "--", *pathspecs)
+    except subprocess.CalledProcessError:
+        return False
+    return status == b""
 
 
 def frozen_stage0_scope_integrity(candidate_root: Path,
                                   history_root: Path = None) -> bool:
-    """Compare only frozen Stage-0 artifacts; ignore unrelated later work."""
-    history = history_root or candidate_root
-    try:
-        expected = historical_stage0_scope(history)
-    except (ValueError, subprocess.CalledProcessError, json.JSONDecodeError):
-        return False
-    actual = set()
-    for prefix in ("validation/campaign/wp03c", "tools/campaign/wp03c"):
-        directory = candidate_root / prefix
-        if directory.is_dir():
-            actual.update(
-                path.relative_to(candidate_root).as_posix()
-                for path in directory.rglob("*") if path.is_file())
-    for path in (
-        STAGE0_CONTRACT_PATH,
-        "docs/reports/WP_0_3C_HUMAN_AND_APPARATUS_INPUT_GUIDE.md",
-    ):
-        if (candidate_root / path).is_file():
-            actual.add(path)
-    if actual != set(expected):
-        return False
-    return all((candidate_root / path).read_bytes() == content
-               for path, content in expected.items())
+    """Compatibility aggregate for callers of the first corrected head."""
+    return (frozen_stage0_git_tree_integrity(candidate_root, history_root)
+            and frozen_stage0_worktree_integrity(candidate_root, history_root))
 
 
 def evaluate(contract: Dict[str, object], registry: Dict[str, object],
@@ -483,8 +565,12 @@ def verify(root: Path) -> Dict[str, object]:
         contract, registry, templates, paths, frozen, text,
         regenerated_identical, stage0.wp03a_governing_requirements(root))
     checks["historical_stage0_identity"] = bool(scope)
-    checks["frozen_stage0_scope_integrity"] = \
-        frozen_stage0_scope_integrity(root)
+    checks["historical_stage0_ancestor_of_head"] = \
+        historical_stage0_ancestor_of_head(root)
+    checks["frozen_stage0_git_tree_integrity"] = \
+        frozen_stage0_git_tree_integrity(root)
+    checks["frozen_stage0_worktree_integrity"] = \
+        frozen_stage0_worktree_integrity(root)
     return {
         "schema_version": "espresso.public.wp_0_3c_stage0_boundary.v1",
         "status": "PASS" if all(checks.values()) else "FAIL",

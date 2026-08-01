@@ -29,6 +29,24 @@ replacement, and rename remain failures. Existing canonical aggregate,
 registry, template, privacy, unresolved-input, execution, holdout, dependency,
 scientific-identity, and claim-ceiling checks remain active.
 
+## Exact-head review correction
+
+The first PR head, `af021af6aa5a04f361d5f5050f6733accf2e0dfa`,
+compared protected path names and followed-target bytes. It did not distinguish
+a regular file from a symbolic link to an identical external copy and did not
+require the pinned Stage-0 merge to be an ancestor of candidate `HEAD`. That
+head was therefore not fully fail-closed for Git object replacement.
+
+The corrected verifier reads recursive NUL-delimited entries from the pinned
+and candidate Git trees. Each protected entry binds path, Git mode, Git object
+type, object identity, and content SHA-256. It separately requires the pinned
+merge to be an ancestor of `HEAD` and rejects any protected staged, unstaged,
+or untracked worktree state. `lstat()` checks every protected path component,
+so neither a protected file nor an intermediate protected directory may be a
+symbolic link. The protected scope remains 16 paths with canonical path
+aggregate
+`8f21a12285d93cc5ee24730c892d6da6db7cdad9948b2c76dd60bc0c1e5dce7c`.
+
 ## Boundaries
 
 No workflow, branch protection, validation framework, operating standard,

@@ -28,6 +28,12 @@ enumeration. Mutation, deletion, addition, replacement, or rename inside the
 protected scope remains fail-closed. Governed scientific execution and scoring
 are prohibited.
 
+Exact-head review found that the first repair followed symbolic-link targets
+and compared bytes without binding Git mode or object type. The bounded review
+correction adds exact Git-tree entry comparison, ancestry enforcement, and
+non-following protected-worktree checks. This remains infrastructure-only and
+does not change the materiality disposition for VAL-CASE-001.
+
 ### VAL-INFRA-001 — Unify schema-document count semantics
 
 **Source:** Final proportional adjudication of PR #38 / VAL-001
