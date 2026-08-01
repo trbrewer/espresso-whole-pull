@@ -1,30 +1,407 @@
 {
-  "schema_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
-  "record_id": "VAL001-SCHEMA-PROVENANCE-SEMANTIC-COMPLETION-FREEZE-1",
-  "status": "PENDING_IMPLEMENTATION_FREEZE",
-  "implementation": {
-    "commit": "PENDING_IMPLEMENTATION_COMMIT",
-    "tree": "PENDING_IMPLEMENTATION_TREE"
+  "bindings": [
+    {
+      "path": "validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json",
+      "sha256": "fd7ba6a6af5f8f0cedb27c6bf6bfd0440a20dd565e4c82fcc30a9923f022a359"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
+      "sha256": "920e48eb77ff53807088642c4a5d0ce8f4aee8d0fcda3dac20ea88dae77a452c"
+    },
+    {
+      "path": "validation/val001/VAL_001_SCHEMA_PROVENANCE_TRANSITION_MATRIX.json",
+      "sha256": "430db1ccefedd2c7453627666307df24532d7fc17d4aeedfea3474b8985e7f04"
+    },
+    {
+      "path": "validation/val001/VAL_001_SCHEMA_TAXONOMY_AND_COUNTING_SPECIFICATION.json",
+      "sha256": "2953dc6d42f06d538d9bd8a24df016f654af68786141c98accf5781103249f57"
+    },
+    {
+      "path": "validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json",
+      "sha256": "572908e5358a6b56b8f8a8d1f2b6633c94f1372559dced78f7866598d97e692c"
+    },
+    {
+      "path": "validation/val001/VAL_001_IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY.json",
+      "sha256": "6aac0efa0eb1e567ac7af5ab2de81e5d5bbd65012898928ce6f08e3f1efb9c00"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
+      "sha256": "91090cd1d05c5e990e38ce1e9ed0760f0bd359724d41327b0d418383d2495968"
+    },
+    {
+      "path": "validation/val001/VAL_001_MUTATION_EXECUTION_COVERAGE.json",
+      "sha256": "5af61cce27d41a3137e51f92a4723e26f01dfa3f4ead5ea39c2e241aaffccefb"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_RECORD_INVENTORY.json",
+      "sha256": "e669b4b029967dd8b99d3dbc5759dba6b2b4545f94c29c5f2be1f235838d4975"
+    },
+    {
+      "path": "validation/val001/VAL_001_GOVERNED_SCHEMA_REGISTRY.json",
+      "sha256": "7f0c4203fc530da0fa457b2b25e03de52ce11cd9be92b46cee2437414d72b47c"
+    },
+    {
+      "path": "validation/val001/VAL_001_DEEP_SCHEMA_COVERAGE_MATRIX.json",
+      "sha256": "4c8c4538d5e53993ae9cf6be6af00a591d822b01d78e278ee40467c019e02219"
+    },
+    {
+      "path": "validation/val001/VAL_001_EXTERNAL_CANDIDATE_ROOT_VERIFICATION_PROTOCOL.json",
+      "sha256": "eb4104710e43450b584eb2e7ad2ca5d0c384509b1d1e8adfb4e7fcb864a741c2"
+    },
+    {
+      "path": "tools/validation/val001/normative.py",
+      "sha256": "80280de7b8e8411946c6d2afb76d159348cc324ff1c4bfe4ce363be44ecceb9a"
+    },
+    {
+      "path": "tools/validation/val001/mutations.py",
+      "sha256": "3b5521afce3814aa43fee17e09f5f28146282fcfc1a4ea40282a12e26df1b4b7"
+    },
+    {
+      "path": "tools/validation/val001/explicit_semantics.py",
+      "sha256": "a8a325d754d9a0467c13e72d2f9f27a3862a8b8aec4cb144c4be366805fa2fa1"
+    },
+    {
+      "path": "tools/validation/val001/administrative.py",
+      "sha256": "34b0c8b3574a2a571ba6112e268a0f1bf00523728ccb08e42b7e08150a2f50a8"
+    },
+    {
+      "path": "scripts/verify_val001_normative_schemas.py",
+      "sha256": "10ac398510397e94d79dc37d236ffe77b4fe4af34495d035bbc06c2480ea9994"
+    },
+    {
+      "path": "scripts/verify_val001_deep_schema_coverage.py",
+      "sha256": "8ec46c24a29303e8cd5d628b394e3c52f62edfcc433f417f33e5691142b221fc"
+    },
+    {
+      "path": "scripts/verify_val001_administrative_closure.py",
+      "sha256": "0355185121b898ab7d66b9d7cb5006e13a9f271bb66e8790824b31ee3c76b35d"
+    }
+  ],
+  "claim_boundaries": {
+    "general_physical_validation": "NOT_ESTABLISHED",
+    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
+    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001",
+    "physical_validation": "NOT_ESTABLISHED"
   },
-  "bindings": [],
-  "computed_counts": {},
-  "preserved_lineage": {},
+  "computed_counts": {
+    "administrative_meta_schema_families": 14,
+    "copied_inferred_governing_schemas": 0,
+    "current_normative_specifications": 68,
+    "current_referenced_specifications": 68,
+    "current_unreferenced_specifications": 0,
+    "declared_mutation_count": 340,
+    "executed_mutation_count": 340,
+    "filename_selected_governing_schemas": 0,
+    "governing_schema_families": 68,
+    "governing_schemas_reproducible_without_record_instances": 68,
+    "instance_inferred_governing_schemas": 0,
+    "missing_mutation_count": 0,
+    "records_without_executed_profile": 0,
+    "records_without_immutable_profile_assignment": 0,
+    "schema_assignments": [
+      {
+        "record_count": 1,
+        "schema_id": "activation.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "activation.v2"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "administrative_closure_freeze.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "administrative_closure_specification.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "amendment_invalidation.v3"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "authority.v4"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "authority.v5"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "authority.v6"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "campaign_provenance.v7"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "canonical_consumed_lock.v2"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "correction.v8"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "correction.v9"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "correction_plan.v1"
+      },
+      {
+        "record_count": 2,
+        "schema_id": "deep_invocation_event_families.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "deep_schema_coverage_matrix.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.explicit_mutation_inventory.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.explicit_schema_specification_registry.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.explicit_semantics_completion_freeze.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.explicit_semantics_root_pinning_plan.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.external_candidate_root_protocol.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "espresso.val001.semantic_profile_registry.v2"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "evidence_or_record_inventory.v10"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "external_artifact_manifest.v11"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "freeze.v12"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "freeze.v13"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "freeze.v14"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "freeze.v15"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v16"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v17"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v18"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v19"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v20"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v21"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v22"
+      },
+      {
+        "record_count": 6,
+        "schema_id": "governance_record.v23"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v24"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v25"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v26"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v27"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v28"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v30"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governance_record.v31"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governed_record_inventory.v3"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "governed_schema_registry.v3"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "immutable_profile_assignment_registry.v1"
+      },
+      {
+        "record_count": 31,
+        "schema_id": "json_schema_document.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "ledger.v32"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "mechanism_discrimination.v33"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "mutation_execution_coverage.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "normative_schema_contract_registry.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "ranked_requests.v34"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v35"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v36"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v37"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v38"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v39"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v40"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "result_or_reexpression.v41"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "schema_provenance_completion_freeze.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "schema_provenance_transition_matrix.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "schema_taxonomy_counting.v1"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "sensitivity_identifiability.v42"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_access_log.v43"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v44"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v45"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v46"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v47"
+      },
+      {
+        "record_count": 1,
+        "schema_id": "source_adapter.v48"
+      }
+    ],
+    "schema_documents": 25,
+    "semantic_profile_count": 18,
+    "structural_signature_governing_schemas": 0,
+    "unexecuted_required_invariants": 0,
+    "unexpected_mutation_count": 0
+  },
+  "execution": {
+    "execution_authority": "CONSUMED",
+    "new_governed_result_producing_invocations": 0,
+    "new_invocation_journal_events": 0,
+    "new_openfoam_builds": 0,
+    "new_openfoam_case_executions": 0,
+    "new_real_data_comparison_invocations": 0
+  },
+  "implementation": {
+    "commit": "57860523df1ab92062d458c1e103341c6a895f42",
+    "tree": "61f9b2f00f490598cc8ee469d2612f22e6f7a7ba"
+  },
+  "preserved_lineage": {
+    "failed_invocation_sha256": "529dc254d46ac65bf1c1fa1d98eb4bf799dfe5712302e729b4c72fc49b154919",
+    "invocation_journal_sha256": "f66ee8a29bab276e650d3d5c01fab5b0b78480453da0841b096e103512591730",
+    "invocation_summary_sha256": "01855ee4769ff9b12d97b98cf80530079ff906ca76d0c5710ea2c43efd766ea8",
+    "original_result_sha256": "07086313d022555032bbb9ecc18d2564bb197d0381bd8d08e263cd95d02bd029",
+    "v2_result_sha256": "7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5"
+  },
   "puckworks_lock": {
     "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
     "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
   },
-  "execution": {
-    "new_openfoam_builds": 0,
-    "new_openfoam_case_executions": 0,
-    "new_real_data_comparison_invocations": 0,
-    "new_governed_result_producing_invocations": 0,
-    "new_invocation_journal_events": 0,
-    "execution_authority": "CONSUMED"
-  },
-  "claim_boundaries": {
-    "physical_validation": "NOT_ESTABLISHED",
-    "general_physical_validation": "NOT_ESTABLISHED",
-    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
-    "new_governing_physics": "NOT_AUTHORIZED_BY_VAL001"
-  }
+  "record_id": "VAL001-SCHEMA-PROVENANCE-SEMANTIC-COMPLETION-FREEZE-1",
+  "schema_version": "espresso.val001.schema_provenance_semantic_completion_freeze.v1",
+  "status": "FROZEN"
 }
