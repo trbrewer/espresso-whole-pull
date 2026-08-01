@@ -40,6 +40,7 @@ def discover(root: Path) -> list[Path]:
     # their own mutable successor bytes would require an impossible hash cycle.
     self_bound={INVENTORY_PATH,REGISTRY_PATH,
         "validation/val001/contracts/VAL_001_FINAL_HARDENING_COMPLETION_FREEZE.json",
+        "validation/val001/contracts/VAL_001_DEEP_SCHEMA_COMPLETION_FREEZE.json",
         "validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json"}
     return sorted(path for path in base.rglob("*") if path.is_file() and path.suffix in {".json",".jsonl"} and path.relative_to(root).as_posix() not in self_bound)
 

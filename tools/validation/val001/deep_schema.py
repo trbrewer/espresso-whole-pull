@@ -102,7 +102,7 @@ def build_coverage(root: Path, mapping: dict[str,str]) -> dict[str,Any]:
     records=[]
     for path in discover(root):
         rel=path.relative_to(root).as_posix()
-        if rel in {COVERAGE_PATH}: continue
+        if rel in {COVERAGE_PATH,"validation/val001/contracts/VAL_001_DEEP_SCHEMA_COMPLETION_FREEZE.json","validation/val001/contracts/VAL_001_POSTRESULT_EXECUTION_LOCK.json"}: continue
         data=path.read_bytes(); value=load_json(path) if path.suffix==".json" else None
         if "/schemas/" in rel:
             family="json_schema_document.v1"; schema_path=SCHEMA_DOCUMENT_PATH
