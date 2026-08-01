@@ -1,0 +1,16 @@
+{
+  "schema_version": "espresso.validation.val_case_001.derived_input_definitions.v1",
+  "case_id": "VAL-CASE-001",
+  "parent_paths": ["config/reference_R0.json", "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RUN_SPEC.json", "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.json"],
+  "generator": "scripts/val_case_001.py",
+  "serialization": "UTF-8 JSON, sort_keys=true, indent=2, trailing newline",
+  "primary_fraction": 0.05,
+  "half_fraction": 0.025,
+  "stage_a_parameters": ["Cu", "Qfree", "Ru", "k0", "pc", "phi0", "pshut"],
+  "stage_b_selection": {"count": 3, "rule": "descending maximum absolute fixed-scale normalized sensitivity across SET_A through SET_D; parameter-ID tie break"},
+  "stage_c_parameters": ["k0", "pc", "phi0"],
+  "stage_c_conditions": [{"id": "LOW", "parent": "PE-4", "pressure_Pa": 500000.0}, {"id": "MID", "parent": "PE-3", "pressure_Pa": 900000.0}, {"id": "HIGH", "parent": "PE-5", "pressure_Pa": 1100000.0}],
+  "planned_counts": {"stage_a": 17, "stage_b": 6, "stage_c": 24, "total": 47},
+  "runtime_products": "EXTERNAL_ONLY",
+  "baseline_files_modified": false
+}
