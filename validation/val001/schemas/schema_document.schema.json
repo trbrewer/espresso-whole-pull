@@ -6,6 +6,8 @@
   "properties": {
     "$schema": {"const": "https://json-schema.org/draft/2020-12/schema"},
     "$id": {"type": "string", "pattern": "^espresso\\.val001\\..+$"},
+    "title": {"type": "string"},
+    "description": {"type": "string"},
     "type": {"enum": ["object", "array", "string", "integer", "number", "boolean", "null"]},
     "required": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "properties": {"type": "object"},
