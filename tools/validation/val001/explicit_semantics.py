@@ -69,8 +69,9 @@ def _global_claims(path,value,metadata):
 
 def _metadata(path,value,metadata):
  if not metadata:raise ContractError("INV-IMMUTABLE-PROFILE-ASSIGNMENT:MISSING")
- for key in ("current","historical","audit_only","governing","executable","semantic_profile_id","record_class","schema_id","schema_version"):
-  if key in value and value[key]!=metadata[key]:raise ContractError(f"INV-IMMUTABLE-PROFILE-ASSIGNMENT:RECORD_MISMATCH:{key}")
+ record_keys=("current","historical","audit_only","governing","executable","semantic_profile_id") if metadata["historical"] else ("semantic_profile_id",)
+ for key in (*record_keys,"record_class","schema_id"):
+  if key in value and key in metadata and isinstance(value[key],type(metadata[key])) and value[key]!=metadata[key]:raise ContractError(f"INV-IMMUTABLE-PROFILE-ASSIGNMENT:RECORD_MISMATCH:{key}")
   if key in metadata.get("record_declared",{}) and metadata["record_declared"][key]!=metadata[key]:raise ContractError(f"INV-IMMUTABLE-PROFILE-ASSIGNMENT:DECLARED_MISMATCH:{key}")
  if metadata["historical"]:
   required={"current":False,"historical":True,"audit_only":True,"governing":False,"executable":False}

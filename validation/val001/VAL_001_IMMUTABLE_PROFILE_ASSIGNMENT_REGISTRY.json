@@ -84,8 +84,9 @@
       "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-061",
       "path": "validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json",
       "record_class": "MUTATION_INVENTORY",
+      "record_version": "espresso.val001.explicit_mutation_inventory.v2",
       "schema_id": "espresso.val001.explicit_mutation_inventory.v1",
-      "schema_version": "v1",
+      "schema_version": "espresso.val001.explicit_mutation_inventory.v2",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-061",
       "treatment": "CURRENT_DEEP_SCHEMA"
@@ -99,8 +100,9 @@
       "normative_contract_id": "VAL001-NORMATIVE-CONTRACT-059",
       "path": "validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json",
       "record_class": "FRAMEWORK_ADMINISTRATION",
+      "record_version": "espresso.val001.explicit_schema_specification_registry.v2",
       "schema_id": "espresso.val001.explicit_schema_specification_registry.v1",
-      "schema_version": "espresso.val001.explicit_schema_specification_registry.v1",
+      "schema_version": "espresso.val001.explicit_schema_specification_registry.v2",
       "semantic_profile_id": "PROFILE-CURRENT-GOVERNANCE",
       "specification_id": "VAL001-SCHEMA-SPEC-059",
       "treatment": "CURRENT_DEEP_SCHEMA"

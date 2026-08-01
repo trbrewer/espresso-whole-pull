@@ -9,18 +9,18 @@ from tools.validation.val001.normative import ASSIGNMENT_REGISTRY,NORMATIVE_REGI
 
 DECLARATIONS=[
  (63,"validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json","NORMATIVE_SCHEMA_CONTRACT_REGISTRY","espresso.val001.normative_schema_contract_registry.v1",["schema_version","record_id","allowed_origins","prohibited_origins","contracts","record_bindings","counts"]),
- (64,"validation/val001/VAL_001_IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY.json","IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY","espresso.val001.immutable_profile_assignment_registry.v1",["schema_version","record_id","assignment_key","assignments","counts"]),
+ (64,"validation/val001/VAL_001_IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY.json","IMMUTABLE_PROFILE_ASSIGNMENT_REGISTRY","espresso.val001.immutable_profile_assignment_registry.v1",["schema_version","record_id","assignments","counts"]),
  (65,"validation/val001/VAL_001_SCHEMA_PROVENANCE_TRANSITION_MATRIX.json","SCHEMA_PROVENANCE_TRANSITION_MATRIX","espresso.val001.schema_provenance_transition_matrix.v1",["schema_version","record_id","prior_inferred_family_count","transition_count","entries","final_disposition"]),
  (66,"validation/val001/VAL_001_SCHEMA_TAXONOMY_AND_COUNTING_SPECIFICATION.json","SCHEMA_TAXONOMY_COUNTING","espresso.val001.schema_taxonomy_counting.v1",["schema_version","record_id","definitions","count_formulas","val001_schema_spec_015_disposition","counts"]),
  (67,"validation/val001/VAL_001_MUTATION_EXECUTION_COVERAGE.json","MUTATION_EXECUTION_COVERAGE","espresso.val001.mutation_execution_coverage.v1",["schema_version","record_id","declared_mutation_ids","executed_mutation_ids","missing_ids","unexpected_ids","duplicate_ids","placeholder_ids","category_counts","declared_count","executed_count","immutable_hash_checking_disabled_for_all_structural_and_semantic_tests","final_status"]),
- (68,"validation/val001/corrections/VAL_001_PR38_SCHEMA_PROVENANCE_AND_SEMANTIC_ENFORCEMENT_PLAN.json","CORRECTION_PLAN","espresso.val001.schema_provenance_semantic_enforcement_plan.v1",["schema_version","record_id","task","authority","controlling_adjudication","starting_identity","blocking_findings","stale_documentation_finding","designs","prohibited_actions","intended_additive_commit_sequence","stop_conditions","change_declaration"]),
+ (68,"validation/val001/corrections/VAL_001_PR38_SCHEMA_PROVENANCE_AND_SEMANTIC_ENFORCEMENT_PLAN.json","CORRECTION_PLAN","espresso.val001.schema_provenance_semantic_enforcement_plan.v1",["schema_version","record_id","controlling_adjudication","starting_head","starting_tree","change_declaration","blocking_findings","nonblocking_finding","design","prohibited_actions","intended_commit_sequence","stop_conditions"]),
 ]
 
 def primitive(key):
  if key.endswith("_count") or key.endswith("count"):return {"type":"integer","minimum":0}
  if key.startswith("is_") or key.endswith("_disabled_for_all_structural_and_semantic_tests"):return {"type":"boolean"}
- if key in {"contracts","record_bindings","assignments","entries","declared_mutation_ids","executed_mutation_ids","missing_ids","unexpected_ids","duplicate_ids","placeholder_ids","blocking_findings","prohibited_actions","intended_additive_commit_sequence","stop_conditions"}:return {"type":"array","items":{},"uniqueItems":key.endswith("_ids")}
- if key in {"counts","definitions","count_formulas","authority","starting_identity","designs"}:return {"type":"object"}
+ if key in {"allowed_origins","prohibited_origins","contracts","record_bindings","assignments","entries","declared_mutation_ids","executed_mutation_ids","missing_ids","unexpected_ids","duplicate_ids","placeholder_ids","blocking_findings","prohibited_actions","intended_additive_commit_sequence","intended_commit_sequence","stop_conditions"}:return {"type":"array","items":{},"uniqueItems":key.endswith("_ids") or key.endswith("_origins")}
+ if key in {"counts","category_counts","definitions","count_formulas","authority","starting_identity","design","designs"}:return {"type":"object"}
  return {"type":"string"}
 
 def closed(keys,overrides=None):
@@ -37,11 +37,40 @@ def declared_schema(cls,keys):
   countkeys=["current_normative_specifications","current_referenced_specifications","current_unreferenced_specifications","governing_schema_families","schema_documents","administrative_meta_schema_families","schema_assignments"]
   assignment=closed(["schema_id","record_count"],{"record_count":{"type":"integer","minimum":1}})
   counts=closed(countkeys,{**{k:{"type":"integer","minimum":0} for k in countkeys[:-1]},"schema_assignments":{"type":"array","items":assignment,"minItems":1}})
-  return closed(keys,{"definitions":closed(defkeys),"count_formulas":closed(formulakeys),"val001_schema_spec_015_disposition":{"type":"string","enum":["OBSOLETE_REMOVED"]},"counts":counts})
+  return closed(keys,{"definitions":closed(defkeys,{k:{"type":"string"} for k in defkeys}),"count_formulas":closed(formulakeys,{k:{"type":"string"} for k in formulakeys}),"val001_schema_spec_015_disposition":{"type":"string","enum":["OBSOLETE_REMOVED"]},"counts":counts})
  return closed(keys)
+
+def mutation_inventory_schema():
+ keys=["mutation_id","category","target_path_or_fixture_id","target_record_class","target_schema_id","target_normative_contract_id","target_semantic_profile_id","json_pointer","original_value","mutated_value","mutation_operation","precondition","expected_validation_layer","expected_invariant_id","expected_error_code","test_module","test_method_or_generated_test_id","immutable_hash_checking_disabled","expected_source_open_status","expected_scoring_status","execution_status"]
+ props={k:{} for k in keys};props.update({"mutation_id":{"type":"string","pattern":"^MUT-.+$"},"category":{"type":"string","enum":["STRUCTURAL_SCHEMA","SCHEMA_DOCUMENT","SEMANTIC_PROFILE","ADMINISTRATIVE_ROOT_GRAPH","FREEZE_LOCK"]},"target_path_or_fixture_id":{"type":"string"},"target_record_class":{"type":"string"},"target_schema_id":{"type":"string"},"target_normative_contract_id":{"type":"string"},"target_semantic_profile_id":{"type":"string","pattern":"^PROFILE-.+$"},"json_pointer":{"type":"string"},"mutation_operation":{"type":"string"},"precondition":{"type":"string","const":"SYNTHETIC_BASELINE_VALID"},"expected_validation_layer":{"type":"string"},"expected_invariant_id":{"type":"string"},"expected_error_code":{"type":"string"},"test_module":{"type":"string"},"test_method_or_generated_test_id":{"type":"string"},"immutable_hash_checking_disabled":{"type":"boolean","const":True},"expected_source_open_status":{"type":"string","const":"NOT_OPENED"},"expected_scoring_status":{"type":"string","const":"NOT_INVOKED"},"execution_status":{"type":"string","const":"EXECUTED_SYNTHETICALLY"}})
+ item=closed(keys,props);top=["schema_version","record_id","mutations","category_counts","total","count_source","scalar_baseline_counts_prohibited","placeholder_values_prohibited"]
+ return closed(top,{"schema_version":{"type":"string","const":"espresso.val001.explicit_mutation_inventory.v2"},"record_id":{"type":"string","const":"VAL001-EXPLICIT-MUTATION-INVENTORY-2"},"mutations":{"type":"array","items":item,"minItems":1},"category_counts":{"type":"object"},"total":{"type":"integer","minimum":1},"count_source":{"type":"string","const":"LEN_OF_MUTATIONS_ARRAY_ONLY"},"scalar_baseline_counts_prohibited":{"type":"boolean","const":True},"placeholder_values_prohibited":{"type":"boolean","const":True}})
+
+def explicit_registry_schema():
+ spec_keys=["specification_id","normative_contract_id","origin","record_class","record_version","schema","schema_id","schema_path","schema_version","scope","semantic_profile_id"]
+ spec=closed(spec_keys,{"specification_id":{"type":"string","pattern":"^VAL001-SCHEMA-SPEC-.+$"},"normative_contract_id":{"type":"string"},"origin":{"type":"string","enum":["NORMATIVE_CLASS_CONTRACT","NORMATIVE_VERSION_CONTRACT","NORMATIVE_RECORD_CONTRACT"]},"record_class":{"type":"string"},"record_version":{"type":"string"},"schema":{"type":"object"},"schema_id":{"type":"string"},"schema_path":{"type":"string","const":"validation/val001/VAL_001_NORMATIVE_SCHEMA_CONTRACT_REGISTRY.json"},"schema_version":{"type":"string"},"scope":{"type":"string"},"semantic_profile_id":{"type":"string","pattern":"^PROFILE-.+$"}})
+ binding_keys=["path","specification_id","semantic_profile_id","record_class","current","audit_only","treatment"]
+ binding_props={"path":{"type":"string"},"specification_id":{"type":"string","pattern":"^VAL001-SCHEMA-SPEC-.+$"},"semantic_profile_id":{"type":"string","pattern":"^PROFILE-.+$"},"record_class":{"type":"string"},"record_version":{"type":"string"},"current":{"type":"boolean"},"historical":{"type":"boolean"},"audit_only":{"type":"boolean"},"governing":{"type":"boolean"},"executable":{"type":"boolean"},"treatment":{"type":"string"},"schema_id":{"type":"string"},"schema_version":{"type":"string"}}
+ binding={"type":"object","required":binding_keys,"properties":binding_props,"additionalProperties":False}
+ countkeys=["current_normative_specifications","current_referenced_specifications","current_unreferenced_specifications","instance_inferred_governing_schemas","copied_inferred_governing_schemas","structural_signature_governing_schemas","filename_selected_governing_schemas"]
+ return closed(["schema_version","record_id","allowed_origins","prohibited_origins","specifications","record_bindings","counts"],{"schema_version":{"type":"string","const":"espresso.val001.explicit_schema_specification_registry.v2"},"record_id":{"type":"string","const":"VAL001-EXPLICIT-SCHEMA-SPECIFICATION-REGISTRY-2"},"allowed_origins":{"type":"array","const":["NORMATIVE_CLASS_CONTRACT","NORMATIVE_RECORD_CONTRACT","NORMATIVE_VERSION_CONTRACT"]},"prohibited_origins":{"type":"array","const":["INSTANCE_INFERENCE","STRUCTURAL_SIGNATURE_INFERENCE","FILENAME_INFERENCE","COPIED_INFERRED_SCHEMA_WITH_RELABELLED_ORIGIN"]},"specifications":{"type":"array","items":spec,"minItems":1},"record_bindings":{"type":"array","items":binding,"minItems":1},"counts":closed(countkeys,{k:{"type":"integer","minimum":0} for k in countkeys})})
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument("--root",required=True);a=ap.parse_args();root=Path(a.root).resolve();reg=load_json(root/NORMATIVE_REGISTRY);assign=load_json(root/ASSIGNMENT_REGISTRY);profiles=load_json(root/"validation/val001/VAL_001_SEMANTIC_PROFILE_REGISTRY.json")
+ mutation_contract=next(c for c in reg["contracts"] if c["specification_id"]=="VAL001-SCHEMA-SPEC-061")
+ mutation_contract["schema_version"]="espresso.val001.explicit_mutation_inventory.v2";mutation_contract["record_version"]="espresso.val001.explicit_mutation_inventory.v2";mutation_contract["governing_schema"]=mutation_inventory_schema();mutation_contract["required_fields"]=mutation_contract["governing_schema"]["required"]
+ for collection in (reg["record_bindings"],assign["assignments"]):
+  target=next(x for x in collection if x["path"]=="validation/val001/VAL_001_EXPLICIT_MUTATION_INVENTORY.json");target["record_version"]="espresso.val001.explicit_mutation_inventory.v2";target["schema_version"]="espresso.val001.explicit_mutation_inventory.v2"
+ explicit_contract=next(c for c in reg["contracts"] if c["specification_id"]=="VAL001-SCHEMA-SPEC-059");explicit_contract["schema_version"]="espresso.val001.explicit_schema_specification_registry.v2";explicit_contract["record_version"]="espresso.val001.explicit_schema_specification_registry.v2";explicit_contract["governing_schema"]=explicit_registry_schema();explicit_contract["required_fields"]=explicit_contract["governing_schema"]["required"]
+ for collection in (reg["record_bindings"],assign["assignments"]):
+  target=next(x for x in collection if x["path"]=="validation/val001/VAL_001_EXPLICIT_SCHEMA_SPECIFICATION_REGISTRY.json");target["record_version"]="espresso.val001.explicit_schema_specification_registry.v2";target["schema_version"]="espresso.val001.explicit_schema_specification_registry.v2"
+ def replace_origin(node):
+  if isinstance(node,dict):
+   if isinstance(node.get("enum"),list) and set(node["enum"])=={"EXPLICIT_CLASS_SEMANTICS","EXPLICIT_VERSION_SEMANTICS","EXPLICIT_RECORD_SEMANTICS"}:node["enum"]=["NORMATIVE_CLASS_CONTRACT","NORMATIVE_VERSION_CONTRACT","NORMATIVE_RECORD_CONTRACT"]
+   for value in node.values():replace_origin(value)
+  elif isinstance(node,list):
+   for value in node:replace_origin(value)
+ for contract in reg["contracts"]:replace_origin(contract["governing_schema"])
  reg["contracts"]=[c for c in reg["contracts"] if c["specification_id"] not in {f"VAL001-SCHEMA-SPEC-{n:03d}" for n,*_ in DECLARATIONS}]
  reg["record_bindings"]=[b for b in reg["record_bindings"] if b["path"] not in {p for _,p,*_ in DECLARATIONS}]
  assign["assignments"]=[x for x in assign["assignments"] if x["path"] not in {p for _,p,*_ in DECLARATIONS}]

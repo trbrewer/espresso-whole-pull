@@ -51,7 +51,7 @@ def _structural(root:Path,entry:dict[str,Any])->str:
  else:raise ContractError("VAL001_UNKNOWN_STRUCTURAL_MUTATION_OPERATION")
  try:validate_record(value,schema)
  except ContractError:return entry["expected_error_code"]
- raise ContractError("VAL001_MUTATION_ACCEPTED")
+ raise ContractError(f"VAL001_MUTATION_ACCEPTED:{entry['mutation_id']}")
 
 def _schema_document(entry:dict[str,Any])->str:
  schema={"type":"object","properties":{"nested":{"type":"object","properties":{"deep":{"type":"object","required":["x"],"properties":{"x":{"type":"string"}},"additionalProperties":False}},"additionalProperties":False}},"additionalProperties":False}
@@ -61,7 +61,7 @@ def _schema_document(entry:dict[str,Any])->str:
  changes[op]()
  try:lint_schema(schema)
  except Exception:return entry["expected_error_code"]
- raise ContractError("VAL001_MUTATION_ACCEPTED")
+ raise ContractError(f"VAL001_MUTATION_ACCEPTED:{entry['mutation_id']}")
 
 def _semantic(root:Path,entry:dict[str,Any])->str:
  path=entry["target_path_or_fixture_id"];value=copy.deepcopy(load_json(root/path));pointer=entry["json_pointer"]
@@ -73,7 +73,7 @@ def _semantic(root:Path,entry:dict[str,Any])->str:
  except ContractError as exc:
   if entry["expected_invariant_id"] not in str(exc):raise ContractError(f"VAL001_WRONG_MUTATION_INVARIANT:{entry['mutation_id']}:{exc}")
   return entry["expected_error_code"]
- raise ContractError("VAL001_MUTATION_ACCEPTED")
+ raise ContractError(f"VAL001_MUTATION_ACCEPTED:{entry['mutation_id']}")
 
 def execute_inventory(root:Path)->dict[str,Any]:
  inventory=load_json(root/MUTATION_INVENTORY);entries=inventory["mutations"]
