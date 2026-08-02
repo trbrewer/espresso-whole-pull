@@ -206,3 +206,17 @@ PROTECTED_OR_HOLDOUT_SCORING: NOT_AUTHORIZED
 HOLDOUT_EXECUTION: NOT_AUTHORIZED
 NEW_GOVERNING_PHYSICS: NOT_AUTHORIZED
 ```
+
+## Post-merge administrative disposition
+
+The earlier `CORRECTED_PENDING_EXACT_HEAD_INDEPENDENT_REVIEW` statement records
+the artifact state when the corrected exact head was generated. It is
+superseded only for review and merge status: independent exact-head review was
+`APPROVED`, the human owner recorded
+`ACCEPT_CORRECTED_RESULT_AND_AUTHORIZE_EXACT_HEAD_MERGE`, and PR #42 merged the
+approved head `a9b02e48d460cb072529ebcdb3660418c88af9d7` as
+`c2c3136e5aae74306f37f8389f945139a9d9009f`. No scientific result, method,
+interpretation, evidence, or claim ceiling is changed by this administrative
+closure. Physical validation remains `NOT_ESTABLISHED`, structural
+identifiability remains `NOT_ASSESSED`, and the next scientific gate is
+`ADDITIONAL_INDEPENDENT_DATA_REQUIRED`.

@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 225,
-  "total_uncompressed_bytes_excluding_manifest": 1941738,
-  "aggregate_source_sha256": "d36dd6ca14e4b8555b1c2d1cb6d0d95b66211a0e8a299d49bbbe64dae099a635",
-  "aggregate_sha256": "d36dd6ca14e4b8555b1c2d1cb6d0d95b66211a0e8a299d49bbbe64dae099a635",
+  "total_uncompressed_bytes_excluding_manifest": 1943810,
+  "aggregate_source_sha256": "38012831244266d74cf7374d07737c5c159354f5382763b16255deb4c18866cf",
+  "aggregate_sha256": "38012831244266d74cf7374d07737c5c159354f5382763b16255deb4c18866cf",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "326a8f2bab0eb61ccc36c2c228893fa5e21a263d0379777fa0d063f44a1b87ac",
-      "bytes": 7767,
+      "sha256": "5bfb6c856795016e575fb45c7cbd23a383358c8f8a3af821800cc1db7848ccb2",
+      "bytes": 8083,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -559,8 +559,8 @@
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_HYDRAULIC_COMPACTION_IDENTIFIABILITY_RESULTS.md": {
-      "sha256": "fe422164fe0ec05e392a33d57d881417275ddeb9c2279f7e915bc9c7c5153441",
-      "bytes": 11695,
+      "sha256": "dcb7a6615da740681b7268256f137fe87276bc694d43c012b0878023eeb2ff26",
+      "bytes": 12474,
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_PROTOCOL.md": {
@@ -569,8 +569,8 @@
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_REVIEW_DISPOSITION.md": {
-      "sha256": "6340c16d980249be378c38201f21f03badcc96b0aa2bd403817ce04dac803415",
-      "bytes": 2518,
+      "sha256": "875eb7adb13a949f1f3f73d937e21e289f7db795faf460401be6a6049e74b885",
+      "bytes": 3495,
       "git_mode": "100644"
     },
     "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md": {

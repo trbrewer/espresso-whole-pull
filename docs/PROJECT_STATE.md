@@ -8,7 +8,7 @@
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
 - Public source verification: 225/225 PASS
-- Active candidate: `VAL-CASE-001_HYDRAULIC_COMPACTION_IDENTIFIABILITY`
+- Active validation case: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -16,9 +16,16 @@
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).
 
-VAL-CASE-001 has completed the prospectively frozen analysis-only correction
-from its 47 immutable retained traces and is pending exact-head independent
-review. No new scientific case or OpenFOAM launch occurred.
+VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2
+result remains validation-support sensitivity and practical-identifiability
+screening; it does not establish physical validation. VAL-CASE-002 is
+`NOT_STARTED`.
+
+The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
+admissible independent dataset or the synchronized pressure, flow/mass,
+deformation, machine-side pressure, timing, and preparation measurement
+package identified by VAL-CASE-001. No acquisition, commissioning, or new
+governing physics is authorized by the administrative closure.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,
@@ -79,7 +86,7 @@ and the
 
 General whole-solver physical validation remains `NOT_ESTABLISHED`.
 
-## Open VAL-CASE-001 validation-support case
+## Completed VAL-CASE-001 validation-support case
 
 VAL-CASE-001 applies the merged Validation Operating Standard v1 without
 changing the solver or reusable validation framework. Its prospectively
@@ -88,7 +95,9 @@ two completed probe endpoints transparently invalidated under one bounded
 correction. The result screens hydraulic and compaction sensitivities,
 practical identifiability, existing model-form separation, and future
 measurement information value. It performs no fitting or external-data
-scoring and establishes no physical validation. See the
+scoring and establishes no physical validation. Independent exact-head review
+approved the corrected result, and PR #42 merged as
+`c2c3136e5aae74306f37f8389f945139a9d9009f`. See the
 [case report](validation/cases/VAL_CASE_001_HYDRAULIC_COMPACTION_IDENTIFIABILITY_RESULTS.md).
 
 ## Merged VAL-001 framework

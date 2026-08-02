@@ -163,3 +163,13 @@ sensitivities, and explicit zero-denominator records. Core derivative, SVD,
 rank, stability, repeatability, separation, and case-summary arithmetic was
 unchanged. The corrected candidate remains unapproved pending exact-head
 independent review.
+
+Independent exact-head review subsequently approved corrected head
+`a9b02e48d460cb072529ebcdb3660418c88af9d7` and the human owner accepted the
+corrected result for exact-head merge. PR #42 merged as
+`c2c3136e5aae74306f37f8389f945139a9d9009f`, and issue #41 closed
+automatically. This post-merge alignment changes administrative status only;
+the v2 result SHA-256 remains
+`bb7bba7481a56ac8729758a6d5cd36e7d046b889256a7c1d1c8ed7cff998375a`.
+The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`; VAL-CASE-002
+remains not started and no new physics or experimental work is authorized.
