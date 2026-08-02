@@ -53,6 +53,30 @@ and source/holdout-fit counts remained zero.
 - shell syntax: PASS
 - JSON syntax: PASS
 
+## VAL-CASE-001 candidate
+
+VAL-CASE-001 executed the unchanged merged solver for 47 valid cases and two
+invalidated completed endpoints. The exact-repeat feature vector was
+byte-for-byte numerically identical. Case-specific tests cover deterministic
+input derivation, bounds, finite differences, normalization, Jacobians, SVD,
+serialization, run accounting, immutable framework/baseline paths, and the
+claim ceiling. Current candidate counts and source identities are recorded in
+`PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
+validation remains `NOT_ESTABLISHED`.
+
+Independent review froze a bounded correction of the primary correlation
+method before retained-trace access. The freeze changes no result bundle,
+protocol, reducer, execution record, report, trace, or scientific input and
+authorizes zero new OpenFOAM launches.
+
+The resulting v2 reduction reproduced the frozen centered correlations,
+retained the superseded cosines as supplemental diagnostics, matched a direct
+double-precision SVD reference, and changed only prospectively allowed fields.
+Two independent analysis-only outputs were byte-identical; all 47 retained
+trace identities and metadata were unchanged.
+
+## Merged VAL-INFRA-002 repair
+
 VAL-INFRA-002 adds deterministic frozen-scope tests for authentic Stage-0 and
 current repository states, unrelated future paths, and protected-scope
 mutation, deletion, addition, replacement, rename, contract, identity, and

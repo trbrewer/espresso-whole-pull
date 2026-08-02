@@ -1,0 +1,30 @@
+{
+  "schema_version": "espresso.validation.val_case_001.evidence_inputs.v1",
+  "case_id": "VAL-CASE-001",
+  "case_class": "EXPLORATORY",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "scientific_purpose": "VALIDATION_DESIGN_AND_PRACTICAL_IDENTIFIABILITY",
+  "claim_ceiling": "VALIDATION_SUPPORT_ONLY",
+  "base": {"commit": "39c7bf0658c344728258ba1b4f8b935a4e889d7d", "tree": "85711011a96ebaa46a77b5165aec0ab46e676542"},
+  "framework": {"commit": "a3e632d9deb3c4ac7c34fed079e4ed85bd370a30", "tree": "3de55debf9272fb6bdac928a415996fd9e1fb8e9", "use": "PINNED_UNCHANGED"},
+  "operating_standard": {"commit": "39c7bf0658c344728258ba1b4f8b935a4e889d7d", "tree": "85711011a96ebaa46a77b5165aec0ab46e676542", "path": "docs/validation/VALIDATION_OPERATING_STANDARD_V1.md", "sha256": "1655e033a29570f71412ea065298f18c6227c40d7567c682ee6340ae6cf3bcc0"},
+  "puckworks": {"commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "tree": "1d553e44ee2f7480a5df521560801b478618cc84", "access": "READ_ONLY_LOCKED_RECORD_INVENTORY_ONLY", "dependency_advanced": false},
+  "parents": [
+    {"path": "config/reference_R0.json", "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286", "role": "BASE_SCENARIO"},
+    {"path": "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RUN_SPEC.json", "sha256": "6a9128a1f98ca8b3f87b45592e8d21dda3d77f7325aef43230cdef94402461d4", "role": "MACHINE_PARENT"},
+    {"path": "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.json", "sha256": "dc687f13c8881c481d5674a226c0236d0f0a3d1e53458a9ea5558b02dfcb3456", "role": "COMPACTION_AND_CONDITION_PARENT"}
+  ],
+  "solver_sources": [
+    {"path": "solver/espressoWholePullFoam/espressoWholePullFoam.C", "sha256": "f209887f222e446354dba34a6658e23fab309d473f53377e9c6d42caaee26a4f"},
+    {"path": "solver/espressoWholePullFoam/machineBoundaryModel.H", "sha256": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719"},
+    {"path": "solver/espressoWholePullFoam/poroelasticCompaction.H", "sha256": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6"},
+    {"path": "solver/espressoWholePullFoam/forchheimerResistance.H", "sha256": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124"}
+  ],
+  "evidence_role": "MODEL_INTERNAL_NUMERICAL_SENSITIVITY_AND_VALIDATION_DESIGN",
+  "external_dataset_scoring": false,
+  "protected_or_holdout_access": false,
+  "measurement_uncertainty": "UNAVAILABLE_NOT_INVENTED",
+  "independent_dataset_disposition": "NO_ADDITIONAL_ADMISSIBLE_INDEPENDENT_DATASET_AT_LOCKED_EVIDENCE_STATE",
+  "planned_openfoam_case_executions": 47,
+  "external_artifact_id": "VAL-CASE-001-OPENFOAM12-20260801"
+}

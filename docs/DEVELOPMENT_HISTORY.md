@@ -120,6 +120,20 @@ inventory now executes one-to-one, and schema-family counts come only from the
 comparison, OpenFOAM, fitting, protected-data, result, journal, or claim-boundary
 change occurred.
 
+## 2026-08-01 — VAL-CASE-001 sensitivity and identifiability screening
+
+The first case under Validation Operating Standard v1 prospectively froze and
+executed a 47-case local hydraulic/compaction sensitivity campaign using the
+unchanged Foundation OpenFOAM 12 solver. One bounded correction replaced four
+inadmissible pressure probes; the two already completed superseded endpoints
+remain invalidated in external artifacts. Reduced results quantify numerical
+repeatability, derivative stability, normalized Jacobians, practical-rank
+ranges, parameter confounding, existing universal/finite-porosity separation,
+and the minimum useful independent measurement package. No fitting, external
+data scoring, protected access, framework change, solver change, experiment,
+or governing-physics change occurred. Physical validation remains not
+established.
+
 ## 2026-08-01 — VAL-INFRA-002 Stage-0 verifier scope repair
 
 The WP-0.3C verifier was scoped to the frozen Stage-0 merge identity and
@@ -136,3 +150,16 @@ mode/type/object comparison, required Stage-0 ancestry, and added non-following
 worktree and real-Git adversarial tests. The superseded head used path and
 followed-target byte equality and was not fully fail-closed for object-type
 replacement.
+
+VAL-CASE-001 independent review then classified the reducer's substitution of
+uncentered cosine for the protocol-required centered correlation as a
+result-affecting method defect. A prospective correction freeze records the
+bounded reanalysis method before any retained trace access; it authorizes zero
+new OpenFOAM launches and leaves the case pending exact-head review.
+
+The analysis-only correction produced a v2 bundle with centered primary
+correlations, supplemental cosines, baseline vectors, local logarithmic
+sensitivities, and explicit zero-denominator records. Core derivative, SVD,
+rank, stability, repeatability, separation, and case-summary arithmetic was
+unchanged. The corrected candidate remains unapproved pending exact-head
+independent review.

@@ -26,11 +26,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 306,
+    "python_test_count": 324,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 219,
-    "source_manifest_aggregate_sha256": "88b831aee6013c69f428ed10234cb0eed48055aea568079a3489a22d36d35abf",
+    "source_manifest_file_count": 225,
+    "source_manifest_aggregate_sha256": "d36dd6ca14e4b8555b1c2d1cb6d0d95b66211a0e8a299d49bbbe64dae099a635",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -40,6 +40,20 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS"
+  },
+  "val_case_001": {
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "case_class": "EXPLORATORY",
+    "scientific_purpose": "VALIDATION_DESIGN_AND_PRACTICAL_IDENTIFIABILITY",
+    "planned_valid_openfoam_case_count": 47,
+    "completed_valid_openfoam_case_count": 47,
+    "invalidated_completed_openfoam_case_count": 2,
+    "failed_openfoam_case_count": 0,
+    "rank_count": 32,
+    "validation_framework_disposition": "PINNED_FRAMEWORK_USED_UNCHANGED",
+    "independent_review_correction_status": "CORRECTED_PENDING_EXACT_HEAD_INDEPENDENT_REVIEW",
+    "new_openfoam_launches_authorized": 0,
+    "physical_validation": "NOT_ESTABLISHED"
   },
   "val_infra_002": {
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
