@@ -1,0 +1,153 @@
+{
+  "schema_version": "espresso.validation.val_corpus_001.final_analysis_correction_addendum.v1",
+  "task": "VAL-CORPUS-001-FINAL-ANALYSIS-AND-PROVENANCE-CLOSURE",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "status": "PROSPECTIVE_FROZEN_BEFORE_FINAL_REDUCTION",
+  "authority_sha256": "de609a238f311e5cd95f9139c9c654198e468feb02416385958eea47852877ba",
+  "starting_identity": {
+    "commit": "9f7d0e49606100e32deebb5ce5e7f952dec4a6b3",
+    "tree": "9fcc072bc9837932fc38ef0eb274368a27474fca",
+    "v2_result_sha256": "676e7604f08f60c579193c297e97834b7a433620911e626083e840fe936c77e9",
+    "v2_overlay_sha256": "fef495e5d0d47babe0e86e736d5f09f488319fcae1a70d3410744a4161137842",
+    "r1_artifact_aggregate_sha256": "c939258b5bddcfd1a052dae37bdb6822ea9667834af233800f2529fd7c52c854",
+    "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c"
+  },
+  "ordering": {
+    "family_key": [
+      "branch",
+      "pressure_node_scenario"
+    ],
+    "scenarios": [
+      "MEASURED_TERMINAL_BASKET_PRESSURE",
+      "NOMINAL_PRESSURE"
+    ],
+    "rule": "Each ordering object contains exactly the three 5/9/11-bar IDs from its own branch and pressure-node scenario; measured IDs are prohibited in nominal ordering objects.",
+    "statistics": [
+      "source_flow_order",
+      "model_flow_order",
+      "flow_spearman",
+      "source_mass_order",
+      "model_mass_order",
+      "mass_spearman"
+    ]
+  },
+  "comparison_roles": {
+    "required_fields": [
+      "parameter_provenance",
+      "comparison_mode",
+      "anchor_role",
+      "pressure_node_scenario",
+      "closure_provenance"
+    ],
+    "static_and_darcy_forchheimer_9_bar": "ANCHOR_CONDITION_RECONSTRUCTION",
+    "static_and_darcy_forchheimer_5_and_11_bar": "ONE_ANCHOR_TRANSFER",
+    "dissolution_indexed_9_bar": "POST_FIT_SOURCE_RECONSTRUCTION",
+    "dissolution_indexed_5_and_11_bar": "POST_FIT_CROSS_CONDITION_TRANSFER",
+    "nominal_pressure_secondary_role": "PRESSURE_NODE_ASSUMPTION_SENSITIVITY",
+    "executed_configuration_governance_label": "PRESERVED_AND_SUPERSEDED_FOR_ANALYSIS_BY_PRECISE_ROLE_FIELDS"
+  },
+  "median_absolute_log_ratio": {
+    "eligibility": "Both source and model values must be finite and strictly positive.",
+    "transform": "abs(log(model/source))",
+    "median": "Odd count uses the central sorted value; even count uses the arithmetic mean of the two central sorted values.",
+    "zero_floor": "PROHIBITED",
+    "required_metadata": [
+      "eligible_sample_count",
+      "excluded_nonpositive_count",
+      "excluded_nonfinite_count",
+      "value",
+      "undefined_reason"
+    ],
+    "undefined_reason_when_empty": "NO_FINITE_STRICTLY_POSITIVE_PAIRS"
+  },
+  "density_sensitivity": {
+    "densities_kg_m3": [
+      965.0,
+      997.0,
+      1000.0
+    ],
+    "primary_density_kg_m3": 965.0,
+    "flow_conversion": "model_outlet_flow_m3_s * density_kg_m3 * 1000 gives model_mass_flow_g_s; source mass-flow observations remain unchanged",
+    "accumulated_cup_mass": "NOT_RESCALED",
+    "required_metrics": [
+      "flow_rmse_g_s",
+      "flow_mae_g_s",
+      "flow_signed_bias_g_s",
+      "flow_relative_endpoint_error",
+      "flow_median_absolute_log_ratio",
+      "condition_ordering",
+      "flow_spearman"
+    ]
+  },
+  "final_bundle": {
+    "schema_version": "espresso.validation.val_corpus_001.results.v3",
+    "composition": "SELF_CONTAINED",
+    "required_content": [
+      "original_completed_results",
+      "original_fatal_compaction_identities_and_statuses",
+      "historical_overlap_views",
+      "all_r1_waszkiewicz_rows",
+      "all_foster_shifts",
+      "all_de1_assumptions",
+      "wadsworth_and_roman_component_results",
+      "mo_descriptive_result",
+      "comparison_roles",
+      "metric_units_and_uncertainty_provenance",
+      "external_bundle_and_overlay_identities",
+      "claim_ceiling"
+    ]
+  },
+  "reproducibility": {
+    "analysis_invocations": 2,
+    "input_policy": "Same retained read-only inputs and same committed analyzer identity.",
+    "temporary_output_roots": [
+      "/tmp/val-corpus-001-final-analysis-a",
+      "/tmp/val-corpus-001-final-analysis-b"
+    ],
+    "byte_identical_required": [
+      "V3 compact result bundle",
+      "final overlays",
+      "deterministic compact comparison table"
+    ],
+    "failure_policy": "Stop without publishing a final bundle if any byte comparison differs."
+  },
+  "execution_ledger": {
+    "terminology": "Separate historical completed and fatal trace identity lists.",
+    "fatal_as_completed": "PROHIBITED",
+    "fatal_trace_preservation": "REQUIRED"
+  },
+  "metric_units": {
+    "pressure": "bar",
+    "flow": "g/s",
+    "mass": "g",
+    "wetting_front": "mm",
+    "time": "s",
+    "density": "kg/m3"
+  },
+  "uncertainty": {
+    "waszkiewicz": "Source per-sample standard-deviation columns where positive and available.",
+    "foster": "Digitized source s_err_mm where positive and available.",
+    "de1": "SOURCE_UNCERTAINTY_NOT_REPORTED",
+    "component_and_mechanism_rows": "As retained in the V1 evidence record; unavailable uncertainty is explicit."
+  },
+  "package_identity": {
+    "package_qa_source_file_count_must_equal_manifest": true,
+    "package_qa_source_aggregate_must_equal_manifest": true,
+    "final_result_overlay_and_reproducibility_hashes_must_be_current": true,
+    "status": "PENDING_EXACT_HEAD_REVIEW"
+  },
+  "execution_boundary": {
+    "new_openfoam_launches": 0,
+    "case_preparation": "PROHIBITED",
+    "scientific_configuration_changes": 0,
+    "solver_source_changes": 0,
+    "external_artifact_writes": 0,
+    "protected_or_holdout_access": 0,
+    "experimental_activity": 0
+  },
+  "claim_ceiling": {
+    "PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "EXPERIMENTAL_COMMISSIONING": "NOT_AUTHORIZED",
+    "PROTECTED_OR_HOLDOUT_SCORING": "NOT_PERFORMED"
+  }
+}
