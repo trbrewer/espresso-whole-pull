@@ -1,0 +1,18 @@
+{
+  "schema_version":"espresso.validation.val_corpus_001.post_freeze_reducer_amendment.v1",
+  "finding_class":"RESULT_AFFECTING_SOFTWARE_ASSEMBLY_DEFECT",
+  "openfoam_rerun_required":false,
+  "scientific_method_changed":false,
+  "frozen_protocol_changed":false,
+  "first_reduction":{
+    "bundle_sha256":"bbf7ba5e1a326975d45870597f2ef88c190c7db5e6f26c4f82ea2b008cdd4f80",
+    "overlays_sha256":"fef495e5d0d47babe0e86e736d5f09f488319fcae1a70d3410744a4161137842",
+    "independent_reductions_byte_identical":true,
+    "disposition":"INVALIDATED_LABEL_ROUTING; retained externally"
+  },
+  "defect":"The reducer allowed nonzero single-axis uncertainty coverage to produce PARTIAL after source/model flow and mass ordering both failed with Spearman -1.0.",
+  "frozen_rule":"FAILING means declared primary direction/order is wrong or no primary quantitative axis is captured.",
+  "correction":"Route every measured Waszkiewicz family with flow_spearman != 1 or mass_spearman != 1 directly to FAILING before considering coverage.",
+  "affected_fields":["waszkiewicz_rows[].label"],
+  "unaffected_fields":"all numerical metrics, overlays, execution records, configurations, traces, source evidence, anchor, and claim ceilings"
+}

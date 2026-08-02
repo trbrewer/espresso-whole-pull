@@ -1,0 +1,16 @@
+{
+  "schema_version": "espresso.validation.val_corpus_001.external_artifacts.v1",
+  "root_descriptor": "runtime-artifacts/VAL-CORPUS-001-2026-08-02 (external to Git; complete local successful and failed products)",
+  "file_count": 73211,
+  "total_bytes": 386751324,
+  "build_provenance_sha256": "d9ce6e6f880b0b9a51bf8211f95675b8b21abc0f6471acbcad7f8ff41b827360",
+  "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
+  "retained_attempt_sets": [
+    "campaign (failed pre-execution preparation)",
+    "campaign-v2 (13 complete; 3 preparation failures)",
+    "compaction-correction (3 preparation failures)",
+    "compaction-correction-2 (3 solver-fatal partial traces)",
+    "consolidated (read-only links and reduced analysis)"
+  ],
+  "raw_products_committed": false
+}

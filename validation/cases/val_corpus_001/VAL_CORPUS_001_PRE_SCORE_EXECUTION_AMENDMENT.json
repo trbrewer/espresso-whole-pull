@@ -1,0 +1,31 @@
+{
+  "schema_version": "espresso.validation.val_corpus_001.amendment.v1",
+  "task": "VAL-CORPUS-001",
+  "stage": "PRE_SCORE_EXECUTION",
+  "score_exposed_before_correction": false,
+  "scientific_method_changed": false,
+  "protocol_changed": false,
+  "defects": [
+    {
+      "defect": "Generator emitted the poroelastic submodel name where prepare_case expected the existing outer bed-mechanics selector.",
+      "affected_attempts": ["WASZ-5-COMPACT", "WASZ-9-COMPACT", "WASZ-11-COMPACT"],
+      "disposition": "FAILED_ATTEMPTS_RETAINED; rerun only the three prospectively declared compaction configurations with the existing selector waszkiewiczQuasiStaticCompaction."
+    },
+    {
+      "defect": "Reducer and execution-record convenience flag referenced an obsolete trace directory.",
+      "affected_attempts": ["all completed campaign-v2 attempts"],
+      "disposition": "ARITHMETIC_UNCHANGED; point to solver-produced postProcessing/wholePull/0/traces.csv before first scoring."
+    },
+    {
+      "defect": "The first correction retained the Waszkiewicz base config's dissolution-indexed effective-permeability closure, but the merged compaction branch explicitly rejects that prohibited composition.",
+      "affected_attempts": ["WASZ-5-COMPACT-correction-1", "WASZ-9-COMPACT-correction-1", "WASZ-11-COMPACT-correction-1"],
+      "disposition": "FAILED_ATTEMPTS_RETAINED; final compaction-only attempt disables effective_permeability_evolution exactly as required by the existing current compaction branch; no fitted parameter or observed score changes."
+    }
+  ],
+  "claim_ceiling_changed": false
+  ,"first_score_invocation_failure": {
+    "result_exposed": false,
+    "failure": "Reducer encountered a truncated compaction trace after Open MPI returned success despite FOAM FATAL ERROR.",
+    "disposition": "Retain and classify all three compaction runs as FAILED; require both absence of FOAM FATAL ERROR and terminal End marker; exclude failed traces from scoring. No rerun and no parameter change."
+  }
+}

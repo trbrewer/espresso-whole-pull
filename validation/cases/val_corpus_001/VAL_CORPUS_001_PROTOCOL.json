@@ -1,0 +1,62 @@
+{
+  "schema_version": "espresso.validation.val_corpus_001.protocol.v1",
+  "task": "VAL-CORPUS-001",
+  "issue": 49,
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+  "base_commit": "f9bd8d5413b93d3a9986559920335d4140527f5e",
+  "base_tree": "0e560265b0788609c74d26023d826615899e8580",
+  "runtime_puckworks": {"commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "tree": "1d553e44ee2f7480a5df521560801b478618cc84"},
+  "evidence_snapshot": {"commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e", "tree": "44d6539096648777f78c4db83f0985d5bd16e352"},
+  "source_families": ["waszkiewicz2025", "foster2025_2", "wadsworth2026", "romancorrochano2017", "mo2023", "de1_fixtureA"],
+  "comparison_modes": ["ZERO_RETUNING", "SOURCE_RECONSTRUCTION", "ONE_ANCHOR_TRANSFER"],
+  "anchor": {
+    "source": "waszkiewicz2025",
+    "condition": "9_bar_Darcy_static",
+    "nuisance_parameters": ["uniform_saturated_permeability_m2"],
+    "bounds_m2": [1e-16, 1e-12],
+    "objective": "match terminal source mass_flow_rate_g_s at the 9-bar nominal group",
+    "objective_outputs": ["mass_flow_rate_g_s"],
+    "non_anchor_outputs": ["5_bar_flow_and_mass", "11_bar_flow_and_mass"],
+    "replacement_anchor": "PROHIBITED"
+  },
+  "assumption_ensemble": {
+    "levels": ["LOW", "BASE", "HIGH"],
+    "density_kg_m3": [965.0, 997.0, 1000.0],
+    "foster_time_shift_s": [0.0, 0.796, 1.0],
+    "de1_bed_depth_m": [0.0075, 0.009, 0.0105],
+    "rule": "Only prospectively listed nuisance assumptions vary; scientific closures and solver source remain unchanged. Conclusions are robust only when direction/status is unchanged across levels."
+  },
+  "run_matrix": [
+    {"id":"WASZ-5-DARCY","family":"waszkiewicz2025","pressure_bar":5,"branch":"darcy_static","mode":"ONE_ANCHOR_TRANSFER"},
+    {"id":"WASZ-9-DARCY","family":"waszkiewicz2025","pressure_bar":9,"branch":"darcy_static","mode":"SOURCE_RECONSTRUCTION_ANCHOR"},
+    {"id":"WASZ-11-DARCY","family":"waszkiewicz2025","pressure_bar":11,"branch":"darcy_static","mode":"ONE_ANCHOR_TRANSFER"},
+    {"id":"WASZ-5-DF","family":"waszkiewicz2025","pressure_bar":5,"branch":"darcy_forchheimer_static","mode":"ZERO_RETUNING"},
+    {"id":"WASZ-9-DF","family":"waszkiewicz2025","pressure_bar":9,"branch":"darcy_forchheimer_static","mode":"ZERO_RETUNING"},
+    {"id":"WASZ-11-DF","family":"waszkiewicz2025","pressure_bar":11,"branch":"darcy_forchheimer_static","mode":"ZERO_RETUNING"},
+    {"id":"WASZ-5-COMPACT","family":"waszkiewicz2025","pressure_bar":5,"branch":"finite_porosity_compaction","mode":"SOURCE_RECONSTRUCTION"},
+    {"id":"WASZ-9-COMPACT","family":"waszkiewicz2025","pressure_bar":9,"branch":"finite_porosity_compaction","mode":"SOURCE_RECONSTRUCTION"},
+    {"id":"WASZ-11-COMPACT","family":"waszkiewicz2025","pressure_bar":11,"branch":"finite_porosity_compaction","mode":"SOURCE_RECONSTRUCTION"},
+    {"id":"FOSTER-WETTING","family":"foster2025_2","branch":"darcy_static_wetting","mode":"SOURCE_RECONSTRUCTION"},
+    {"id":"WADS-PERM","family":"wadsworth2026","branch":"darcy_static_saturated","mode":"ZERO_RETUNING"},
+    {"id":"ROMAN-PERM","family":"romancorrochano2017","branch":"darcy_static_saturated","mode":"ZERO_RETUNING"},
+    {"id":"MO-DF-LOW","family":"mo2023","branch":"darcy_forchheimer_static","mode":"SOURCE_RECONSTRUCTION"},
+    {"id":"MO-DF-HIGH","family":"mo2023","branch":"darcy_forchheimer_static","mode":"SOURCE_RECONSTRUCTION"},
+    {"id":"DE1-MACHINE-LOW","family":"de1_fixtureA","branch":"machine_coupled","mode":"SOURCE_RECONSTRUCTION","assumption":"LOW"},
+    {"id":"DE1-MACHINE-HIGH","family":"de1_fixtureA","branch":"machine_coupled","mode":"SOURCE_RECONSTRUCTION","assumption":"HIGH"}
+  ],
+  "planned_openfoam_run_count": 16,
+  "planned_score_bearing_invocation_count": 1,
+  "metrics": ["rmse", "mae", "signed_bias", "relative_endpoint_error", "spearman_order", "first_drip_error_s", "front_rmse_mm", "pressure_rmse_bar", "delivered_mass_rmse_g"],
+  "result_labels": ["WORKING", "PARTIAL", "FAILING", "NOT_COMPARABLE", "INVALIDATED_EXECUTION"],
+  "interpretation_axes": ["direction", "ordering", "scale", "shape", "timing", "residual_signature"],
+  "stop_conditions": ["identity_mismatch", "rights_failure", "protected_or_holdout_required", "solver_source_change_required", "material_solver_defect", "post_result_protocol_change"],
+  "failure_policy": "Retain every attempted run and failure. Never overwrite or silently rerun with changed parameters.",
+  "claim_ceiling": {
+    "PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "EXPERIMENTAL_COMMISSIONING": "NOT_AUTHORIZED",
+    "PROTECTED_OR_HOLDOUT_SCORING": "NOT_AUTHORIZED",
+    "RESULT_CLASS": "EXISTING_PUBLIC_EVIDENCE_RECONSTRUCTION_AND_COMPONENT_COMPARISON"
+  }
+}

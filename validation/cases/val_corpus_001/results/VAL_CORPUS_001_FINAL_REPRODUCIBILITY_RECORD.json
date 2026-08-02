@@ -1,0 +1,56 @@
+{
+  "schema_version": "espresso.validation.val_corpus_001.final_reproducibility.v1",
+  "task": "VAL-CORPUS-001-FINAL-ANALYSIS-AND-PROVENANCE-CLOSURE",
+  "status": "PASS_BYTE_IDENTICAL",
+  "analysis_addendum_sha256": "1cdf5fc931cfefb6242196910045de3f645f9028bb3adfa53e1b41bd9c8a5360",
+  "analyzer_sha256": "13e4fee043f0e3152744738548f0beeeb7de819c86da07f236fcfc95503d7542",
+  "retained_input_identities": {
+    "v2_result_sha256": "676e7604f08f60c579193c297e97834b7a433620911e626083e840fe936c77e9",
+    "v2_overlay_sha256": "fef495e5d0d47babe0e86e736d5f09f488319fcae1a70d3410744a4161137842",
+    "r1_execution_record_sha256": "56e2148a010848773693380c58fdc7c191a3e3e19143ad430ac99ae9c29e0532",
+    "r1_artifact_aggregate_sha256": "c939258b5bddcfd1a052dae37bdb6822ea9667834af233800f2529fd7c52c854"
+  },
+  "invocations": [
+    {
+      "id": "FINAL_REDUCTION_A",
+      "input_policy": "SAME_RETAINED_READ_ONLY_INPUTS",
+      "output_root_role": "AUTHORIZED_TEMPORARY_ANALYSIS_ROOT_A",
+      "openfoam_launches": 0
+    },
+    {
+      "id": "FINAL_REDUCTION_B",
+      "input_policy": "SAME_RETAINED_READ_ONLY_INPUTS",
+      "output_root_role": "AUTHORIZED_TEMPORARY_ANALYSIS_ROOT_B",
+      "openfoam_launches": 0
+    }
+  ],
+  "artifacts": {
+    "result_bundle_v3": {
+      "path": "VAL_CORPUS_001_RESULT_BUNDLE_V3.json",
+      "invocation_a_sha256": "a8a8a4beda9c329021e28c12afaaa46cb230518eb72326fa7bfb09bbd45e8f7e",
+      "invocation_b_sha256": "a8a8a4beda9c329021e28c12afaaa46cb230518eb72326fa7bfb09bbd45e8f7e",
+      "invocation_a_bytes": 207898,
+      "invocation_b_bytes": 207898
+    },
+    "overlays_v3": {
+      "path": "VAL_CORPUS_001_OVERLAYS_V3.json",
+      "invocation_a_sha256": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e",
+      "invocation_b_sha256": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e",
+      "invocation_a_bytes": 2491336,
+      "invocation_b_bytes": 2491336
+    },
+    "comparison_table_v3": {
+      "path": "VAL_CORPUS_001_COMPARISON_TABLE_V3.json",
+      "invocation_a_sha256": "611cf0b6461eeaec68749cb0edbb25a8e23c94e592f1f17f4b2967739d64b6c7",
+      "invocation_b_sha256": "611cf0b6461eeaec68749cb0edbb25a8e23c94e592f1f17f4b2967739d64b6c7",
+      "invocation_a_bytes": 10377,
+      "invocation_b_bytes": 10377
+    }
+  },
+  "ledger_double_reduction": {
+    "invocation_a_sha256": "ad528efccd05b8867f54f1089e6caf74399355a274b622aae742acf6513d4df4",
+    "invocation_b_sha256": "ad528efccd05b8867f54f1089e6caf74399355a274b622aae742acf6513d4df4",
+    "bytes": 16893
+  },
+  "claim_boundary": "PHYSICAL_VALIDATION_NOT_ESTABLISHED"
+}

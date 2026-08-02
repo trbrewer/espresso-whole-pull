@@ -1,0 +1,29 @@
+{
+  "schema_version": "espresso.validation.val_corpus_001.external_artifacts.v2",
+  "task": "VAL-CORPUS-001",
+  "root_descriptor": "runtime-artifacts/VAL-CORPUS-001-R1-2026-08-02 (external to Git; original and correction successful, failed, and invalidated products)",
+  "canonical_file_ledger_sha256": "ad7f50efe642b5061229a485e57005b45b1e380bf0482950c646a6c87c2374fa",
+  "file_count_excluding_canonical_ledger": 374174,
+  "total_bytes_excluding_canonical_ledger": 2014763287,
+  "artifact_aggregate_sha256": "c939258b5bddcfd1a052dae37bdb6822ea9667834af233800f2529fd7c52c854",
+  "complete_execution_ledger_sha256": "488c4d03328feaf3b51530e83eb88027d1ef656be09ffa4767a3260308e09245",
+  "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
+  "corrected_result_bundle_sha256": "676e7604f08f60c579193c297e97834b7a433620911e626083e840fe936c77e9",
+  "corrected_overlay_sha256": "fef495e5d0d47babe0e86e736d5f09f488319fcae1a70d3410744a4161137842",
+  "superseded_result_bundle_sha256": "3b105206c3a859d04006b0ec615224334599d17ad605a9d69fb99df6f228ea14",
+  "historical_attempt_sets": [
+    "campaign",
+    "campaign-v2",
+    "compaction-correction",
+    "compaction-correction-2",
+    "consolidated"
+  ],
+  "correction_campaign": {
+    "declared": 13,
+    "launched": 13,
+    "completed": 13,
+    "failed": 0,
+    "compaction_reruns": 0
+  },
+  "raw_products_committed": false
+}

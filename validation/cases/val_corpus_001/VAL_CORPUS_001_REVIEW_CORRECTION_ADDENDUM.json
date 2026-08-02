@@ -1,0 +1,17 @@
+{
+  "schema_version":"espresso.validation.val_corpus_001.review_correction_addendum.v1",
+  "review_finding_class":"RESULT_AFFECTING_METHOD_OR_DATA_DEFECT",
+  "original_protocol_preserved_sha256":"69c227c31300835b28f700386c86209e1b2a8c785ca9318d209d00b8324c6484",
+  "superseded_result_disposition":"SUPERSEDED_BY_PROSPECTIVE_EXACT_HEAD_CORRECTION; RETAINED_IN_GIT_HISTORY",
+  "findings":[
+    "Branches labelled static inherited dissolution-indexed effective permeability.",
+    "The primary conversion used 997 rather than source-consistent 965 kg/m3.",
+    "Nearest-neighbor matching and endpoint reuse did not implement the source-to-solver 3 s mapping or prohibit extrapolation.",
+    "Original 30 s Waszkiewicz runs were compared beyond their aligned overlap.",
+    "Direction labels tested positive flow rather than source/model condition ordering.",
+    "Structured metrics, three-shift Foster sensitivity, base DE1 assumption and complete trace provenance were incomplete."
+  ],
+  "correction":"Freeze and execute the exact 13-run matrix, rescore historical overlaps, generate v2 directly from the committed reducer and preserve all adverse lineage.",
+  "compaction_disposition":"SEPARATE_NUMERICAL_ROBUSTNESS_FINDING; NOT_A_PHYSICAL_MODEL_VERDICT; NO_RERUN",
+  "result_exposure_before_freeze":"PROHIBITED"
+}

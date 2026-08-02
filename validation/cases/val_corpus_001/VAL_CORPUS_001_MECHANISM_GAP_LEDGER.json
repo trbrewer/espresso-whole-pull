@@ -1,0 +1,14 @@
+{
+  "schema_version": "espresso.validation.val_corpus_001.mechanism_gap_ledger.v2",
+  "task": "VAL-CORPUS-001",
+  "decision": "ADDITIONAL_DATA_AND_NUMERICAL_ROBUSTNESS_REQUIRED_BEFORE_NEW_PHYSICS",
+  "entries": [
+    {"source":"waszkiewicz2025","observed":"The independently calculated measured-pressure Darcy-static, Darcy-Forchheimer-static and dissolution-indexed families and nominal-pressure Darcy family all reverse the source 5 > 9 > 11 bar flow and mass ordering; each has Spearman -1. Changing flow-conversion density from 965 to 997 or 1000 kg/m3 does not change ordering.","gap":"pressure-node agreement, density conversion and selected local scale agreement do not explain cross-condition resistance behavior","later_physics_candidate":"state-dependent resistance only after timing, mass-definition, and source-condition metadata are reconciled","status":"FAILING_ORDERING_ROBUST_TO_DECLARED_DENSITY_SENSITIVITY"},
+    {"source":"waszkiewicz2025","observed":"The original three finite-porosity compaction cases terminate with a poroelastic nonlinear-solve fatal error and were not rerun.","gap":"numerical robustness at source-linked pressure conditions","later_physics_candidate":"none until separately authorized solver-defect diagnosis or correction","status":"INVALIDATED_NUMERICAL_EXECUTION_NOT_PHYSICAL_MODEL_VERDICT"},
+    {"source":"foster2025_2","observed":"Frozen shifts 0, 0.796, and 1.0 s give front RMSE 2.820, 3.889, and 4.153 mm; late agreement is close while early and middle residuals dominate.","gap":"headspace, first-drip, pressure-node, and time-origin mismatch","later_physics_candidate":"source-specific headspace or wetting coupling only after metadata reconciliation","status":"PARTIAL_ASSUMPTION_SENSITIVE"},
+    {"source":"mo2023","observed":"The current Forchheimer branch produces the expected stronger inertial fraction at high gradient, 0.99702 versus 0.99593, but the assumed coefficient dominates.","gap":"published inertial-permeability units are internally inconsistent","later_physics_candidate":"no new physics; resolve source coefficient dimensions first","status":"DESCRIPTIVE_ASSUMPTION_DOMINATED"},
+    {"source":"de1_fixtureA","observed":"Low, base, and high bed-depth assumptions give pressure RMSE 2.121, 2.442, and 2.693 bar and scale-mass RMSE 3.726, 4.501, and 6.006 g.","gap":"bed geometry, basket-top versus telemetry mapping, supply curve, and resistance metadata","later_physics_candidate":"machine control or dynamic resistance only after apparatus metadata","status":"DESCRIPTIVE_ASSUMPTION_DOMINATED"},
+    {"source":"wadsworth2026_and_romancorrochano2017","observed":"Exact saturated single-point Darcy fixtures preserve the supplied permeability scale.","gap":"single-point reconstruction does not test transfer or whole-shot prediction","later_physics_candidate":"none justified","status":"COMPONENT_RECONSTRUCTION_ONLY"}
+  ],
+  "claim_boundary": "PHYSICAL_VALIDATION_NOT_ESTABLISHED"
+}
