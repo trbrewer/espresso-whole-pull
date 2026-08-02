@@ -99,6 +99,13 @@ transfer, or introduce runtime extraction physics.
 
 Physical validation remains `NOT_ESTABLISHED`.
 
+## VAL-DATA-001 planning candidate
+
+VAL-DATA-001 adds only an append-only campaign-reference erratum and a
+non-commissioning synchronized hydraulic-compaction measurement plan. It
+changes no result, code, configuration, framework, standard, dependency, or
+physics and performs no scientific or experimental execution.
+
 ## WP-0.3C Stage-0 scaffold
 
 WP-0.3C Stage 0 remains a completed, frozen scaffold. Requirements,

@@ -29,8 +29,8 @@
     "python_test_count": 324,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 225,
-    "source_manifest_aggregate_sha256": "38012831244266d74cf7374d07737c5c159354f5382763b16255deb4c18866cf",
+    "source_manifest_file_count": 226,
+    "source_manifest_aggregate_sha256": "9fb273d9187c5946352b3f7104247dc483cfa38e417c22fd262fa3fe53b8ff5a",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -66,6 +66,18 @@
     "val_case_002": "NOT_STARTED",
     "new_openfoam_launches_authorized": 0,
     "physical_validation": "NOT_ESTABLISHED"
+  },
+  "val_data_001": {
+    "task_class": "EXPERIMENTAL_DESIGN_AND_DATA_REQUEST_PLANNING",
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "active_validation_case": "NONE",
+    "active_data_planning_task": "VAL-DATA-001",
+    "val_case_002": "NOT_STARTED",
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "physical_validation": "NOT_ESTABLISHED",
+    "governing_physics_change": "NONE",
+    "next_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
+    "machine_mode_campaign_gap": "PUCKWORKS_MACHINE_MODE_CAMPAIGN_GAP"
   },
   "val_infra_002": {
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",

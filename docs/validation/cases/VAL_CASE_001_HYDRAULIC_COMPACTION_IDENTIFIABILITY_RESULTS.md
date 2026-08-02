@@ -220,3 +220,26 @@ interpretation, evidence, or claim ceiling is changed by this administrative
 closure. Physical validation remains `NOT_ESTABLISHED`, structural
 identifiability remains `NOT_ASSESSED`, and the next scientific gate is
 `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`.
+
+## Post-closure campaign cross-reference erratum
+
+The earlier campaign-ID mapping is superseded only for campaign references.
+No numerical result, scientific method, or interpretation changes, and the v2
+result SHA-256 remains
+`bb7bba7481a56ac8729758a6d5cd36e7d046b889256a7c1d1c8ed7cff998375a`.
+
+- EXP-001: Synchronized whole-shot telemetry and cup chemistry. This supplies
+  complementary whole-shot basket-pressure, flow/mass, temperature, and
+  cup-chemistry planning.
+- EXP-002: Initially dry puck infiltration and physical first drip.
+- EXP-003: Grinder-specific particle-size, packing, and permeability map,
+  including PSD, fines fraction, packing, porosity, permeability, and
+  pressure-flow input characterization.
+- EXP-004: Poroelastic deformation, pressure, and flow. This is the principal
+  existing campaign for deformation/pressure/flow.
+- EXP-005: Time-dependent bed-mechanism discrimination (`kappa(t)`), deferred
+  beyond the minimum initial measurement package.
+
+No current Puckworks campaign completely covers separate upstream
+machine-side pressure and machine response:
+`PUCKWORKS_MACHINE_MODE_CAMPAIGN_GAP`.

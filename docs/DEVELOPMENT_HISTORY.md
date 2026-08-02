@@ -173,3 +173,13 @@ the v2 result SHA-256 remains
 `bb7bba7481a56ac8729758a6d5cd36e7d046b889256a7c1d1c8ed7cff998375a`.
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`; VAL-CASE-002
 remains not started and no new physics or experimental work is authorized.
+
+## 2026-08-01 — VAL-DATA-001 synchronized measurement planning
+
+A documentation-only task corrected the campaign cross-reference by
+append-only erratum and specified a future synchronized pressure, flow/mass,
+deformation, timing, metadata, calibration, uncertainty, replication, holdout,
+rights, and deposit package. The plan records a separate upstream
+machine-pressure campaign gap and leaves sensors, pilot, feasibility,
+replication, and commissioning unresolved. No result, experiment, data,
+OpenFOAM, fit, Puckworks state, solver, framework, or physics changed.

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 225,
-  "total_uncompressed_bytes_excluding_manifest": 1943810,
-  "aggregate_source_sha256": "38012831244266d74cf7374d07737c5c159354f5382763b16255deb4c18866cf",
-  "aggregate_sha256": "38012831244266d74cf7374d07737c5c159354f5382763b16255deb4c18866cf",
+  "file_count": 226,
+  "total_uncompressed_bytes_excluding_manifest": 1957470,
+  "aggregate_source_sha256": "9fb273d9187c5946352b3f7104247dc483cfa38e417c22fd262fa3fe53b8ff5a",
+  "aggregate_sha256": "9fb273d9187c5946352b3f7104247dc483cfa38e417c22fd262fa3fe53b8ff5a",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "5bfb6c856795016e575fb45c7cbd23a383358c8f8a3af821800cc1db7848ccb2",
-      "bytes": 8083,
+      "sha256": "d729311d3ecaa12a7c54734eaa4acf6f6c2fa76b95f742d7ee3f03259565805d",
+      "bytes": 8402,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -548,6 +548,11 @@
       "bytes": 6546,
       "git_mode": "100644"
     },
+    "docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md": {
+      "sha256": "33cd97c6ea672102c4a2808de243c4ffb9a714f3f1c776d6fc86ba0746bfe143",
+      "bytes": 12209,
+      "git_mode": "100644"
+    },
     "docs/validation/VAL_INFRA_002_STAGE0_VERIFIER_SCOPE_REPAIR.md": {
       "sha256": "ca9c24beeacadd8188024e1eec632338b16b05d141aaafd5fc166e81fdd59c60",
       "bytes": 2707,
@@ -559,8 +564,8 @@
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_HYDRAULIC_COMPACTION_IDENTIFIABILITY_RESULTS.md": {
-      "sha256": "dcb7a6615da740681b7268256f137fe87276bc694d43c012b0878023eeb2ff26",
-      "bytes": 12474,
+      "sha256": "b06a2049270ed62a8ae447b6ab6ea82237d47454267849a8615241102d6078ce",
+      "bytes": 13606,
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_PROTOCOL.md": {

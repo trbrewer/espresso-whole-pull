@@ -7,8 +7,9 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 225/225 PASS
+- Public source verification: 226/226 PASS
 - Active validation case: `NONE`
+- Active data-planning task: `VAL-DATA-001`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -26,6 +27,10 @@ admissible independent dataset or the synchronized pressure, flow/mass,
 deformation, machine-side pressure, timing, and preparation measurement
 package identified by VAL-CASE-001. No acquisition, commissioning, or new
 governing physics is authorized by the administrative closure.
+
+VAL-DATA-001 is an active non-commissioning planning task for the synchronized
+measurement package. `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`,
+`GOVERNING_PHYSICS_CHANGE: NONE`, and VAL-CASE-002 remains `NOT_STARTED`.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,
