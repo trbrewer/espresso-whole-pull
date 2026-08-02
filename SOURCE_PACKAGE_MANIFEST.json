@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 238,
-  "total_uncompressed_bytes_excluding_manifest": 2203409,
-  "aggregate_source_sha256": "acb8e5494f76c3a188fcd5b1a716d0a8f2dc126109e0f88db87677757740ce4b",
-  "aggregate_sha256": "acb8e5494f76c3a188fcd5b1a716d0a8f2dc126109e0f88db87677757740ce4b",
+  "file_count": 239,
+  "total_uncompressed_bytes_excluding_manifest": 2208763,
+  "aggregate_source_sha256": "bcfe2608ea125c7d1684c24a5c0278d5845611559d0e510836ec5825db5c1a31",
+  "aggregate_sha256": "bcfe2608ea125c7d1684c24a5c0278d5845611559d0e510836ec5825db5c1a31",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -606,6 +606,11 @@
     "docs/wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md": {
       "sha256": "d3c89cb655172f704e7e5d2910722c88e93927412734210739952d32aea4cb03",
       "bytes": 1494,
+      "git_mode": "100644"
+    },
+    "docs/wp03/WP03_002_EXACT_HEAD_REVIEW_CORRECTION_PROTOCOL.md": {
+      "sha256": "8baedb015977b63e2cb4318db57024bd431f9d7adbccc52fbb55c4c7c703c671",
+      "bytes": 5354,
       "git_mode": "100644"
     },
     "docs/wp03/WP03_002_REPRODUCTION_AND_DIAGNOSIS.md": {
