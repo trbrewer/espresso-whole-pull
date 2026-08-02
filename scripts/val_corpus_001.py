@@ -111,7 +111,7 @@ def prepare(root: Path, snapshot: Path, run_root: Path) -> None:
                 cfg["poroelasticCompaction"] = {
                     "model":"waszkiewicz2025FinitePhi",
                     "stressFreePorosity":comp_ref["stress_free_porosity"],
-                    "criticalCompactionPressurePa":comp_ref["critical_pressure_pa"],
+                    "criticalCompactionPressurePa":comp_ref["critical_compaction_pressure_pa"],
                     "stressFreePermeabilityM2":anchor_k,
                     "nonlinearRelativeTolerance":1e-9,"nonlinearAbsoluteTolerance":1e-13,
                     "nonlinearMaximumIterations":100,"nonlinearUnderRelaxation":0.7,
