@@ -1,6 +1,6 @@
 # Development History
 
-- VAL-CORPUS-001 (open candidate): exact-head review correction preserved the
+- VAL-CORPUS-001 (complete, approved, and merged as PR #50): exact-head review correction preserved the
   original 16-condition history and executed a frozen 13-case correction
   matrix with the unchanged Foundation OpenFOAM 12 executable. All correction
   runs completed. Static branches no longer inherit dissolution-indexed
@@ -14,7 +14,7 @@
   splits completed and fatal trace identities, and produces a byte-identical
   self-contained V3 bundle without launching OpenFOAM.
 
-- VAL-001 (open candidate): `NO_GOVERNING_PHYSICS_CHANGE` source-adapter
+- VAL-001 (complete and merged as PR #38): `NO_GOVERNING_PHYSICS_CHANGE` source-adapter
   framework and two descriptive source-linked pressure-flow comparisons. No
   solver/configuration change, fit, protected access, holdout score, or
   physical-validation claim. Its original arithmetic is retained with
@@ -22,7 +22,13 @@
   after score exposure. A separately authorized one-token repair and single
   replacement invocation produced a post-observation, non-independent V2
   reproduction using three previously completed OpenFOAM artifacts without
-  rebuild or rerun. PR #38 remains open for independent re-adjudication.
+  rebuild or rerun. Its retained result remains descriptive, post-observation,
+  non-blind, and non-independent.
+
+- WP03-002 (active): prospectively frozen numerical diagnosis and
+  equation-preserving robustness work for the three source-linked
+  finite-porosity failures. No governing-physics change or physical-input
+  retuning is authorized.
 
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.

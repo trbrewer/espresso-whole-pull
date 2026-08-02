@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 230,
-  "total_uncompressed_bytes_excluding_manifest": 2129748,
-  "aggregate_source_sha256": "ad01a566cccc24fa8683eef5025f825065c0c4a455b00eccce15018014a9b751",
-  "aggregate_sha256": "ad01a566cccc24fa8683eef5025f825065c0c4a455b00eccce15018014a9b751",
+  "file_count": 232,
+  "total_uncompressed_bytes_excluding_manifest": 2177333,
+  "aggregate_source_sha256": "cb222a205e3956313fd387f83daa623286fbf23c9a893c0a3da7502828919423",
+  "aggregate_sha256": "cb222a205e3956313fd387f83daa623286fbf23c9a893c0a3da7502828919423",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "0d409bcec91c061ca388e79f53f48d51015431faa9f3102b8195be68948aa196",
-      "bytes": 6765,
+      "sha256": "62a930884a14a0c7784a912090535821224ac5ffae757dab5896c449c1f38713",
+      "bytes": 6906,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -443,9 +443,14 @@
       "bytes": 3417,
       "git_mode": "100644"
     },
+    "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
+      "sha256": "3b1cb5af67f7127c71f15b66d15620bf4ca9646ccc0832c61c508fe86ee7193d",
+      "bytes": 45531,
+      "git_mode": "100644"
+    },
     "docs/QA_STATUS.md": {
-      "sha256": "1290fd4b5ecc3bbb340e730c4e8ef44a8ca786fb49361098676aa23b2968b428",
-      "bytes": 11287,
+      "sha256": "18fde1363a83f7e17e13ac5d38a0b3573e68508ee43fdcace2a8d627fca5b79d",
+      "bytes": 11706,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -596,6 +601,11 @@
     "docs/validation/templates/VALIDATION_CASE_RESULT_TEMPLATE.md": {
       "sha256": "9c4fcfd2591e460f644fdf25c7e9327659db66d476e33bddb03d6e912c79c167",
       "bytes": 1143,
+      "git_mode": "100644"
+    },
+    "docs/wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md": {
+      "sha256": "d3c89cb655172f704e7e5d2910722c88e93927412734210739952d32aea4cb03",
+      "bytes": 1494,
       "git_mode": "100644"
     },
     "scripts/analyze_r1.py": {

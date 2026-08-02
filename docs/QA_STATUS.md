@@ -40,7 +40,7 @@ and source/holdout-fit counts remained zero.
 
 ## Current repository checks
 
-- Python and active-static-gate totals for the open candidate are generated in
+- Python and active-static-gate totals for the current development head are generated in
   `PACKAGE_QA_STATUS.json`; the merged WP03-001 baseline remains 230 tests.
 - source manifest: recorded in `PACKAGE_QA_STATUS.json` and
   `SOURCE_PACKAGE_MANIFEST.json`
@@ -168,7 +168,7 @@ Current test and source-manifest identities are generated in
 `PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
 validation remains `NOT_ESTABLISHED`.
 
-## Open VAL-001 second correction
+## Merged VAL-001 result and retained correction history
 
 The original result remains audit-retained with prospective governance
 invalidated. The first corrected invocation remains failed and invalidated
@@ -178,8 +178,16 @@ the canonical V2 bundle with SHA-256
 `7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5`.
 The second cycle performed zero new OpenFOAM builds and executions, and tests
 perform zero real-data comparison invocations. The result is post-observation,
-not blind, not independent, and not physical validation. PR #38 remains open
-pending independent re-adjudication.
+not blind, not independent, and not physical validation. PR #38 is merged;
+the adverse invocation history and scientific limitations remain retained.
+
+## Active WP03-002 numerical task
+
+WP03-002 prospectively freezes unchanged reproduction and numerical diagnosis
+of `WASZ-5-COMPACT`, `WASZ-9-COMPACT`, and `WASZ-11-COMPACT`. It authorizes
+only equation-preserving solver correction after demonstrated diagnosis.
+Physical inputs may not be retuned, and physical validation remains
+`NOT_ESTABLISHED`.
 
 ## VAL-001 post-result framework hardening
 

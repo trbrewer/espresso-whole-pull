@@ -1,15 +1,16 @@
 # Project State
 
 - Current released version: `v0.2.0`
-- Current merged `main` at VAL-001 branch start: `34bd440f87d7b4ba6a955e54f40122d28f760ae3`
-- Current merged tree at VAL-001 branch start: `6d18e29b99ea5ec24d6cef7615deb541cf4737ff`
+- Current merged `main`: `bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1`
+- Current merged tree: `c1d3fdc88dabaea410c4b6236e31ce1376e5eaea`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 230/230 PASS
-- Active validation case: `VAL-CORPUS-001` (open candidate; 13 completed and 3 failed existing-evidence OpenFOAM comparisons)
-- Active data-planning task: `VAL-DATA-001`
+- Public source verification: 232/232 PASS
+- Active validation case: `NONE`
+- Active data-planning task: `NONE`
+- Active solver task: `WP03-002` finite-porosity nonlinear robustness
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -28,11 +29,10 @@ deformation, machine-side pressure, timing, and preparation measurement
 package identified by VAL-CASE-001. No acquisition, commissioning, or new
 governing physics is authorized by the administrative closure.
 
-VAL-DATA-001 is an active non-commissioning planning task for the synchronized
-measurement package. `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`,
+VAL-DATA-001 is a complete, approved, and merged non-commissioning plan for
+the synchronized measurement package. `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`,
 `GOVERNING_PHYSICS_CHANGE: NONE`, and VAL-CASE-002 remains `NOT_STARTED`.
-Its exact-head review correction status is
-`VAL_DATA_001_REVIEW_STATUS: CORRECTED_PENDING_EXACT_HEAD_REVIEW`; the future
+Its final status is `COMPLETE_APPROVED_AND_MERGED`; the future
 evidence route still requires prospective human-owner selection.
 The final schema correction restores exact frozen VAL-CASE-001 parameter
 classifications, makes partition rules route-conditional, closes all declared
@@ -116,11 +116,11 @@ diagnostics are not improved predictions merely because they add complexity.
 
 ## Active next program phase
 
-VAL-001 and PR #38 are merged. The source-specific adapter framework was added
+VAL-001 and PR #38 are complete and merged. The source-specific adapter framework was added
 without changing governing physics. Its governed V2 comparison remains a
 post-observation, non-blind, non-independent descriptive reconstruction; it is
 not physical validation and does not authorize a next-physics increment.
-VAL-OPS-001 now proposes a concise prospective operating standard for
+VAL-OPS-001 provides a merged concise prospective operating standard for
 proportionate validation cases and reusable infrastructure work.
 
 See the concise
@@ -130,10 +130,11 @@ and the
 
 General whole-solver physical validation remains `NOT_ESTABLISHED`.
 
-## Open VAL-CORPUS-001 candidate
+## Completed VAL-CORPUS-001 comparison campaign
 
-VAL-CORPUS-001 executes the unchanged merged solver against a separately
-authorized read-only Puckworks evidence snapshot without advancing the runtime
+VAL-CORPUS-001 is complete, approved, and merged. It executed the unchanged
+merged solver against a separately authorized read-only Puckworks evidence
+snapshot without advancing the runtime
 dependency lock. Exact-head review correction preserved the original attempt
 history and added 13 prospectively frozen correction runs; all completed. The
 corrected static branches exclude dissolution-indexed permeability evolution,
@@ -143,9 +144,14 @@ nominal ordering, assigns precise anchor/transfer/post-fit roles, corrects
 median-log arithmetic, and evaluates 965/997/1000 kg/m3 flow conversion. All
 tested Waszkiewicz families reverse the source condition ordering at every
 density. The original three finite-porosity compaction runs remain invalidated
-as a separate numerical-robustness finding and were not rerun. The candidate
-establishes neither independent nor general physical validation. See the
+as a separate numerical-robustness finding and were not rerun. The completed
+campaign establishes neither independent nor general physical validation. See the
 [comparison atlas](validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md).
+
+WP03-002 is the active numerical task. It prospectively freezes unchanged
+reproduction, diagnosis, and equation-preserving correction of the three
+finite-porosity failures before source-linked re-comparison. New governing
+physics is `NOT_YET_JUSTIFIED`; VAL-CASE-002 is `NOT_STARTED`.
 
 ## Completed VAL-CASE-001 validation-support case
 
