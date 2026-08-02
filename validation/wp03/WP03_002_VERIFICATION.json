@@ -1,0 +1,89 @@
+{
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "conservation_and_convergence": {
+    "mpi_dt_0005": {
+      "all_active_compaction_steps_converged": true,
+      "maximum_continuous_flow_closure_error": 4.50720783305632e-13,
+      "maximum_discrete_nonlinear_residual": 2.27310914350108e-13,
+      "maximum_liquid_balance_residual_kg": 5.88765147746528e-15,
+      "maximum_solute_balance_residual_kg": 3.99038540239448e-12
+    },
+    "mpi_dt_001": {
+      "all_active_compaction_steps_converged": true,
+      "maximum_continuous_flow_closure_error": 4.50720783305632e-13,
+      "maximum_discrete_nonlinear_residual": 2.27310914350108e-13,
+      "maximum_liquid_balance_residual_kg": 1.59594559789866e-15,
+      "maximum_solute_balance_residual_kg": 2.64145107018885e-17
+    },
+    "mpi_dt_002": {
+      "all_active_compaction_steps_converged": true,
+      "maximum_continuous_flow_closure_error": 4.50720783305632e-13,
+      "maximum_discrete_nonlinear_residual": 2.27310914350108e-13,
+      "maximum_liquid_balance_residual_kg": 3.18148285494146e-15,
+      "maximum_solute_balance_residual_kg": 3.73660537868236e-16
+    },
+    "serial_dt_002": {
+      "all_active_compaction_steps_converged": true,
+      "maximum_continuous_flow_closure_error": 7.63254535511236e-13,
+      "maximum_discrete_nonlinear_residual": 4.05108560227852e-14,
+      "maximum_liquid_balance_residual_kg": 2.24473217791399e-15,
+      "maximum_solute_balance_residual_kg": 6.1103218279801e-15
+    }
+  },
+  "external_artifacts": {
+    "aggregate_sha256": "e2670ba15e12d1ac8cfb7874ba994adce38907ac4bf8e594c7ff399eacbb2520",
+    "file_count": 50607,
+    "total_bytes": 347496537
+  },
+  "physical_validation": "NOT_ESTABLISHED",
+  "resources": {
+    "mpi_dt_0005": {
+      "elapsed_wall_clock": "0:07.58",
+      "maximum_resident_set_kbytes": 60672
+    },
+    "mpi_dt_001": {
+      "elapsed_wall_clock": "0:04.51",
+      "maximum_resident_set_kbytes": 60704
+    },
+    "serial_dt_002": {
+      "elapsed_wall_clock": "0:10.34",
+      "maximum_resident_set_kbytes": 56280
+    }
+  },
+  "schema_version": "espresso.wp03_002.verification.v1",
+  "serial_mpi_final_relative_differences": {
+    "cup_beverage_mass_kg": 1.4237318489293214e-13,
+    "cup_solute_mass_kg": 8.350581954049416e-13,
+    "cup_water_mass_kg": 3.434944534963903e-14,
+    "minimumMechanicalPorosity": 0.0,
+    "outlet_flow_m3_s": 1.980530738892864e-14,
+    "volumeWeightedPermeabilityM2": 1.2620052196877912e-14
+  },
+  "task": "WP03-002",
+  "timestep_refinement": {
+    "cup_beverage_mass_kg": {
+      "dt_0p01_vs_0p005_relative": 0.0001457751945781715,
+      "dt_0p02_vs_0p005_relative": 8.615155026150361e-05
+    },
+    "cup_solute_mass_kg": {
+      "dt_0p01_vs_0p005_relative": 0.0001501124819636546,
+      "dt_0p02_vs_0p005_relative": 0.0005694618200618595
+    },
+    "cup_water_mass_kg": {
+      "dt_0p01_vs_0p005_relative": 0.00019481784533738634,
+      "dt_0p02_vs_0p005_relative": 0.00019481784529152982
+    },
+    "minimumMechanicalPorosity": {
+      "dt_0p01_vs_0p005_relative": 0.0,
+      "dt_0p02_vs_0p005_relative": 0.0
+    },
+    "outlet_flow_m3_s": {
+      "dt_0p01_vs_0p005_relative": 0.0,
+      "dt_0p02_vs_0p005_relative": 2.7007237348539128e-15
+    },
+    "volumeWeightedPermeabilityM2": {
+      "dt_0p01_vs_0p005_relative": 0.0,
+      "dt_0p02_vs_0p005_relative": 0.0
+    }
+  }
+}

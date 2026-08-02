@@ -7,10 +7,10 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 232/232 PASS
+- Public source verification: 238/238 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
-- Active solver task: `WP03-002` finite-porosity nonlinear robustness
+- Active solver task: `WP03-002` result complete; exact-head review pending
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -148,10 +148,11 @@ as a separate numerical-robustness finding and were not rerun. The completed
 campaign establishes neither independent nor general physical validation. See the
 [comparison atlas](validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md).
 
-WP03-002 is the active numerical task. It prospectively freezes unchanged
-reproduction, diagnosis, and equation-preserving correction of the three
-finite-porosity failures before source-linked re-comparison. New governing
-physics is `NOT_YET_JUSTIFIED`; VAL-CASE-002 is `NOT_STARTED`.
+WP03-002 reproduced all three finite-porosity failures, diagnosed and corrected
+an equation-extrinsic convergence-gate defect, and completed the unchanged
+source-linked reruns. The recovered branch still reverses the source 5/9/11
+bar flow and mass ordering with Spearman `-1.0`. New governing physics is
+`NOT_YET_JUSTIFIED`; VAL-CASE-002 is `NOT_STARTED`.
 
 ## Completed VAL-CASE-001 validation-support case
 

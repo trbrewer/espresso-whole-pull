@@ -183,11 +183,12 @@ the adverse invocation history and scientific limitations remain retained.
 
 ## Active WP03-002 numerical task
 
-WP03-002 prospectively freezes unchanged reproduction and numerical diagnosis
-of `WASZ-5-COMPACT`, `WASZ-9-COMPACT`, and `WASZ-11-COMPACT`. It authorizes
-only equation-preserving solver correction after demonstrated diagnosis.
-Physical inputs may not be retuned, and physical validation remains
-`NOT_ESTABLISHED`.
+WP03-002 reproduced all three frozen failures, committed the diagnosis before
+source modification, and applied an equation-preserving correction to the
+nonlinear convergence gate. All three unchanged corrected cases complete.
+Serial/MPI repeatability, timestep refinement, conservation, independent
+scalar/derivative tests, and predecessor checks pass. Cross-pressure ordering
+remains reversed; physical validation remains `NOT_ESTABLISHED`.
 
 ## VAL-001 post-result framework hardening
 

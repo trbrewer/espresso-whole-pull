@@ -1,5 +1,6 @@
 import importlib.util
 import math
+import re
 import unittest
 from pathlib import Path
 
@@ -13,6 +14,16 @@ SPEC.loader.exec_module(REF)
 
 
 class WP03002ReferenceTests(unittest.TestCase):
+    def test_continuous_closure_is_diagnostic_not_convergence_gate(self):
+        source = (ROOT / "solver/espressoWholePullFoam/espressoWholePullFoam.C").read_text()
+        match = re.search(r"if\s*\(\s*flowChange.*?\)\s*\{", source, re.DOTALL)
+        self.assertIsNotNone(match)
+        convergence = match.group(0)
+        self.assertIn("flowChange <= poroelasticRelativeTolerance", convergence)
+        self.assertIn("pressureChange <= poroelasticAbsoluteTolerance", convergence)
+        self.assertIn("pressureFinalResidual <= poroelasticAbsoluteTolerance", convergence)
+        self.assertNotIn("poroelasticFlowClosureError", convergence)
+
     def test_integral_derivative_matches_permeability_ratio(self):
         for phi in (0.2, 0.4, 0.7):
             for x in (0.01, 0.2, 0.5, 0.85):

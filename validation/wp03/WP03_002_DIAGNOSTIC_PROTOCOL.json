@@ -6,7 +6,7 @@
   "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
   "issue": 51,
   "branch": "solver/wp03-002-finite-porosity-nonlinear-robustness",
-  "authority": {"path": "/home/tim/espresso-development/AGENTS.md", "sha256_at_task_start": "379de48dbce8a11c0266aefcb7316a0a94cf8abd2fda486cabff451c57d88ed1", "issued": "2026-08-02", "status": "ACTIVE"},
+  "authority": {"path": "<WORKSPACE_ROOT>/AGENTS.md", "sha256_at_task_start": "379de48dbce8a11c0266aefcb7316a0a94cf8abd2fda486cabff451c57d88ed1", "issued": "2026-08-02", "status": "ACTIVE"},
   "starting_identity": {"commit": "bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1", "tree": "c1d3fdc88dabaea410c4b6236e31ce1376e5eaea", "remote": "https://github.com/trbrewer/espresso-whole-pull.git", "working_tree_at_start": "CLEAN"},
   "dependencies": {"runtime_puckworks_lock_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "runtime_puckworks_lock_tree": "1d553e44ee2f7480a5df521560801b478618cc84", "val_corpus_evidence_snapshot_commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e", "val_corpus_evidence_snapshot_tree": "44d6539096648777f78c4db83f0985d5bd16e352", "accepted_val_corpus_v3_sha256": "a8a8a4beda9c329021e28c12afaaa46cb230518eb72326fa7bfb09bbd45e8f7e", "accepted_executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c"},
   "unchanged_reproduction_matrix": [

@@ -1,0 +1,945 @@
+{
+  "accepted_v3_baselines": [
+    {
+      "branch": "DARCY_STATIC",
+      "flow_rmse_g_s": 0.9086893358908377,
+      "id": "R1-WASZ-5-DARCY-STATIC-MEASURED",
+      "mass_rmse_g": 26.391997239551145,
+      "pressure_bar": 5,
+      "pressure_rmse_bar": 0.12538212621440906
+    },
+    {
+      "branch": "DARCY_STATIC",
+      "flow_rmse_g_s": 0.8629838633185137,
+      "id": "R1-WASZ-9-DARCY-STATIC-MEASURED",
+      "mass_rmse_g": 45.7507211932927,
+      "pressure_bar": 9,
+      "pressure_rmse_bar": 0.11530466415660871
+    },
+    {
+      "branch": "DARCY_STATIC",
+      "flow_rmse_g_s": 1.1358935537401793,
+      "id": "R1-WASZ-11-DARCY-STATIC-MEASURED",
+      "mass_rmse_g": 70.31118734367107,
+      "pressure_bar": 11,
+      "pressure_rmse_bar": 0.12646481681225172
+    },
+    {
+      "branch": "DARCY_FORCHHEIMER_STATIC",
+      "flow_rmse_g_s": 1.1184129907144145,
+      "id": "R1-WASZ-5-DF-STATIC-MEASURED",
+      "mass_rmse_g": 39.915164385190785,
+      "pressure_bar": 5,
+      "pressure_rmse_bar": 0.12538212621440906
+    },
+    {
+      "branch": "DARCY_FORCHHEIMER_STATIC",
+      "flow_rmse_g_s": 0.7976736644838869,
+      "id": "R1-WASZ-9-DF-STATIC-MEASURED",
+      "mass_rmse_g": 17.215298924755324,
+      "pressure_bar": 9,
+      "pressure_rmse_bar": 0.11530466415660871
+    },
+    {
+      "branch": "DARCY_FORCHHEIMER_STATIC",
+      "flow_rmse_g_s": 0.7209077662292064,
+      "id": "R1-WASZ-11-DF-STATIC-MEASURED",
+      "mass_rmse_g": 22.534609224029577,
+      "pressure_bar": 11,
+      "pressure_rmse_bar": 0.12646481681225172
+    },
+    {
+      "branch": "DARCY_DISSOLUTION_INDEXED",
+      "flow_rmse_g_s": 0.9486874646089378,
+      "id": "R1-WASZ-5-DARCY-DISSOLUTION-MEASURED",
+      "mass_rmse_g": 42.87898628818524,
+      "pressure_bar": 5,
+      "pressure_rmse_bar": 0.12538212621440906
+    },
+    {
+      "branch": "DARCY_DISSOLUTION_INDEXED",
+      "flow_rmse_g_s": 0.11950894577795607,
+      "id": "R1-WASZ-9-DARCY-DISSOLUTION-MEASURED",
+      "mass_rmse_g": 1.5566335564514004,
+      "pressure_bar": 9,
+      "pressure_rmse_bar": 0.11530466415660871
+    },
+    {
+      "branch": "DARCY_DISSOLUTION_INDEXED",
+      "flow_rmse_g_s": 0.34810061781771234,
+      "id": "R1-WASZ-11-DARCY-DISSOLUTION-MEASURED",
+      "mass_rmse_g": 17.55401003484364,
+      "pressure_bar": 11,
+      "pressure_rmse_bar": 0.12646481681225172
+    }
+  ],
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "corrected_compaction": [
+    {
+      "config_sha256": "66e677d7d4d3a992027e4622600b1f046fd6ad9a8b8022881f3083280787f328",
+      "duration_s": 3.146543,
+      "endpoint": {
+        "model_flow_g_s": 0.5853541853587553,
+        "model_mass_g": 15.956580521107659,
+        "model_pressure_bar": 5.0,
+        "source_flow_g_s": 1.598666,
+        "source_mass_g": 12.970263,
+        "source_pressure_bar": 4.62477
+      },
+      "id": "WASZ-5-COMPACT",
+      "metrics": {
+        "alignment_rule": "solver_time=source_time+3.0s",
+        "flow": {
+          "early": {
+            "mae": 0.3825761853822019,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 225,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 45,
+              "undefined_reason": null,
+              "value": 0.7850291589483113
+            },
+            "relative_endpoint_error": -0.6338483552169399,
+            "rmse": 0.4716781789381368,
+            "sample_count": 270,
+            "signed_bias": 0.02059369634367788,
+            "source_uncertainty_coverage": 0.1037037037037037
+          },
+          "full": {
+            "mae": 0.3825761853822019,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 225,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 45,
+              "undefined_reason": null,
+              "value": 0.7850291589483113
+            },
+            "relative_endpoint_error": -0.6338483552169399,
+            "rmse": 0.4716781789381368,
+            "sample_count": 270,
+            "signed_bias": 0.02059369634367788,
+            "source_uncertainty_coverage": 0.1037037037037037
+          },
+          "late": null,
+          "middle": null
+        },
+        "interpolation_rule": "linear within domain; no extrapolation",
+        "mass": {
+          "early": {
+            "mae": 4.092169274108294,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 210,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 60,
+              "undefined_reason": null,
+              "value": 1.4397614840895427
+            },
+            "relative_endpoint_error": 0.230243405327067,
+            "rmse": 4.761346939908202,
+            "sample_count": 270,
+            "signed_bias": 4.091636059293479,
+            "source_uncertainty_coverage": 0.11481481481481481
+          },
+          "full": {
+            "mae": 4.092169274108294,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 210,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 60,
+              "undefined_reason": null,
+              "value": 1.4397614840895427
+            },
+            "relative_endpoint_error": 0.230243405327067,
+            "rmse": 4.761346939908202,
+            "sample_count": 270,
+            "signed_bias": 4.091636059293479,
+            "source_uncertainty_coverage": 0.11481481481481481
+          },
+          "late": null,
+          "middle": null
+        },
+        "model_window_s": [
+          3.0,
+          29.926927
+        ],
+        "pressure": {
+          "early": {
+            "mae": 0.28746567037037035,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 270,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.05540563860835738
+            },
+            "relative_endpoint_error": 0.08113484562475544,
+            "rmse": 0.3063150408986546,
+            "sample_count": 270,
+            "signed_bias": 0.28746567037037035,
+            "source_uncertainty_coverage": 0.0
+          },
+          "full": {
+            "mae": 0.28746567037037035,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 270,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.05540563860835738
+            },
+            "relative_endpoint_error": 0.08113484562475544,
+            "rmse": 0.3063150408986546,
+            "sample_count": 270,
+            "signed_bias": 0.28746567037037035,
+            "source_uncertainty_coverage": 0.0
+          },
+          "late": null,
+          "middle": null
+        },
+        "source_window_s": [
+          0.0,
+          26.926927
+        ]
+      },
+      "pressure_bar": 5,
+      "trace_sha256": "6ece670f6906aa91b9fad7b26e24dbdf8375e1b87c29b1b9a61ad46745d52e86",
+      "valid_overlap_thirds": {
+        "flow": {
+          "early": {
+            "mae": 0.3443753516468564,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 45,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 45,
+              "undefined_reason": null,
+              "value": 4.24350932609889
+            },
+            "relative_endpoint_error": 12.557711299565845,
+            "rmse": 0.44190947907721423,
+            "sample_count": 90,
+            "signed_bias": 0.33779317386907864,
+            "source_uncertainty_coverage": 0.12222222222222222
+          },
+          "late": {
+            "mae": 0.5382258257523559,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.6612394142977818
+            },
+            "relative_endpoint_error": -0.6338483552169399,
+            "rmse": 0.6098930451536333,
+            "sample_count": 90,
+            "signed_bias": -0.5382258257523559,
+            "source_uncertainty_coverage": 0.022222222222222223
+          },
+          "middle": {
+            "mae": 0.26512737874739334,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.6024668533078856
+            },
+            "relative_endpoint_error": -0.06199402706111407,
+            "rmse": 0.31652393153460645,
+            "sample_count": 90,
+            "signed_bias": 0.2622137409143108,
+            "source_uncertainty_coverage": 0.16666666666666666
+          }
+        },
+        "mass": {
+          "early": {
+            "mae": 1.0251238335573443,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 30,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 60,
+              "undefined_reason": null,
+              "value": 5.138355822827265
+            },
+            "relative_endpoint_error": 159.78432895957062,
+            "rmse": 1.5370231465835935,
+            "sample_count": 90,
+            "signed_bias": 1.0235241891128999,
+            "source_uncertainty_coverage": 0.34444444444444444
+          },
+          "late": {
+            "mae": 5.639251314003527,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.6281556853523502
+            },
+            "relative_endpoint_error": 0.230243405327067,
+            "rmse": 5.760522856888793,
+            "sample_count": 90,
+            "signed_bias": 5.639251314003527,
+            "source_uncertainty_coverage": 0.0
+          },
+          "middle": {
+            "mae": 5.61213267476401,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 2.1105088293613843
+            },
+            "relative_endpoint_error": 2.32849058626375,
+            "rmse": 5.697825050723094,
+            "sample_count": 90,
+            "signed_bias": 5.61213267476401,
+            "source_uncertainty_coverage": 0.0
+          }
+        },
+        "pressure": {
+          "early": {
+            "mae": 0.27565486666666666,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.04294185520042505
+            },
+            "relative_endpoint_error": 0.04790058357583501,
+            "rmse": 0.3210488480926228,
+            "sample_count": 90,
+            "signed_bias": 0.27565486666666666,
+            "source_uncertainty_coverage": 0.0
+          },
+          "late": {
+            "mae": 0.34115145555555554,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.07078069161388
+            },
+            "relative_endpoint_error": 0.08113484562475544,
+            "rmse": 0.3424327757386518,
+            "sample_count": 90,
+            "signed_bias": 0.34115145555555554,
+            "source_uncertainty_coverage": 0.0
+          },
+          "middle": {
+            "mae": 0.24559068888888885,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.048101552523401286
+            },
+            "relative_endpoint_error": 0.06496159216017872,
+            "rmse": 0.24729363938556032,
+            "sample_count": 90,
+            "signed_bias": 0.24559068888888885,
+            "source_uncertainty_coverage": 0.0
+          }
+        }
+      }
+    },
+    {
+      "config_sha256": "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5",
+      "duration_s": 3.431695,
+      "endpoint": {
+        "model_flow_g_s": 0.6809731269405028,
+        "model_mass_g": 20.313852248476433,
+        "model_pressure_bar": 9.0,
+        "source_flow_g_s": 0.739666,
+        "source_mass_g": 5.022265,
+        "source_pressure_bar": 8.836711
+      },
+      "id": "WASZ-9-COMPACT",
+      "metrics": {
+        "alignment_rule": "solver_time=source_time+3.0s",
+        "flow": {
+          "early": {
+            "mae": 0.4591981896735132,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 222,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 48,
+              "undefined_reason": null,
+              "value": 1.4066554558137239
+            },
+            "relative_endpoint_error": -0.07935050828278874,
+            "rmse": 0.5166311766108407,
+            "sample_count": 270,
+            "signed_bias": 0.457190790728806,
+            "source_uncertainty_coverage": 0.13333333333333333
+          },
+          "full": {
+            "mae": 0.4591981896735132,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 222,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 48,
+              "undefined_reason": null,
+              "value": 1.4066554558137239
+            },
+            "relative_endpoint_error": -0.07935050828278874,
+            "rmse": 0.5166311766108407,
+            "sample_count": 270,
+            "signed_bias": 0.457190790728806,
+            "source_uncertainty_coverage": 0.13333333333333333
+          },
+          "late": null,
+          "middle": null
+        },
+        "interpolation_rule": "linear within domain; no extrapolation",
+        "mass": {
+          "early": {
+            "mae": 8.585374721715521,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 252,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 18,
+              "undefined_reason": null,
+              "value": 3.5679674768245233
+            },
+            "relative_endpoint_error": 3.044759137257081,
+            "rmse": 9.964731235106468,
+            "sample_count": 270,
+            "signed_bias": 8.583596269863667,
+            "source_uncertainty_coverage": 0.05555555555555555
+          },
+          "full": {
+            "mae": 8.585374721715521,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 252,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 18,
+              "undefined_reason": null,
+              "value": 3.5679674768245233
+            },
+            "relative_endpoint_error": 3.044759137257081,
+            "rmse": 9.964731235106468,
+            "sample_count": 270,
+            "signed_bias": 8.583596269863667,
+            "source_uncertainty_coverage": 0.05555555555555555
+          },
+          "late": null,
+          "middle": null
+        },
+        "model_window_s": [
+          3.0,
+          29.926927
+        ],
+        "pressure": {
+          "early": {
+            "mae": 0.08735424444444444,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 270,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.010712735477762473
+            },
+            "relative_endpoint_error": 0.018478481416898288,
+            "rmse": 0.11303470990062527,
+            "sample_count": 270,
+            "signed_bias": 0.08434811851851849,
+            "source_uncertainty_coverage": 0.10740740740740741
+          },
+          "full": {
+            "mae": 0.08735424444444444,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 270,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.010712735477762473
+            },
+            "relative_endpoint_error": 0.018478481416898288,
+            "rmse": 0.11303470990062527,
+            "sample_count": 270,
+            "signed_bias": 0.08434811851851849,
+            "source_uncertainty_coverage": 0.10740740740740741
+          },
+          "late": null,
+          "middle": null
+        },
+        "source_window_s": [
+          0.0,
+          26.926927
+        ]
+      },
+      "pressure_bar": 9,
+      "trace_sha256": "bb3a5d2214b3eaf0cec2d76be0c90f56b2454cfa1982b2770841b499ed1db30a",
+      "valid_overlap_thirds": {
+        "flow": {
+          "early": {
+            "mae": 0.572510596083168,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 42,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 48,
+              "undefined_reason": null,
+              "value": 4.024179953091112
+            },
+            "relative_endpoint_error": 48.23171825770225,
+            "rmse": 0.6224092911983746,
+            "sample_count": 90,
+            "signed_bias": 0.5713158627498346,
+            "source_uncertainty_coverage": 0.15555555555555556
+          },
+          "late": {
+            "mae": 0.22097129044129554,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.44939023913625953
+            },
+            "relative_endpoint_error": -0.07935050828278874,
+            "rmse": 0.25633297739951205,
+            "sample_count": 90,
+            "signed_bias": 0.21614382694050732,
+            "source_uncertainty_coverage": 0.24444444444444444
+          },
+          "middle": {
+            "mae": 0.5841126824960761,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 2.16100640681348
+            },
+            "relative_endpoint_error": 1.597617143196952,
+            "rmse": 0.5895959606937137,
+            "sample_count": 90,
+            "signed_bias": 0.5841126824960761,
+            "source_uncertainty_coverage": 0.0
+          }
+        },
+        "mass": {
+          "early": {
+            "mae": 2.4202628122108836,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 72,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 18,
+              "undefined_reason": null,
+              "value": 4.972487144377958
+            },
+            "relative_endpoint_error": 110.73385223004615,
+            "rmse": 3.0587375413675195,
+            "sample_count": 90,
+            "signed_bias": 2.414927456655328,
+            "source_uncertainty_coverage": 0.16666666666666666
+          },
+          "late": {
+            "mae": 14.107998529618937,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 1.9154980385648797
+            },
+            "relative_endpoint_error": 3.044759137257081,
+            "rmse": 14.138137353587863,
+            "sample_count": 90,
+            "signed_bias": 14.107998529618937,
+            "source_uncertainty_coverage": 0.0
+          },
+          "middle": {
+            "mae": 9.22786282331674,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 4.233780717903411
+            },
+            "relative_endpoint_error": 13.891363682416378,
+            "rmse": 9.41513688630346,
+            "sample_count": 90,
+            "signed_bias": 9.22786282331674,
+            "source_uncertainty_coverage": 0.0
+          }
+        },
+        "pressure": {
+          "early": {
+            "mae": 0.044768277777777796,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.0024321776316546043
+            },
+            "relative_endpoint_error": 0.00342849217364803,
+            "rmse": 0.11105297802895693,
+            "sample_count": 90,
+            "signed_bias": 0.035749899999999966,
+            "source_uncertainty_coverage": 0.32222222222222224
+          },
+          "late": {
+            "mae": 0.1311660666666667,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.015041333893523155
+            },
+            "relative_endpoint_error": 0.018478481416898288,
+            "rmse": 0.13250037299620457,
+            "sample_count": 90,
+            "signed_bias": 0.1311660666666667,
+            "source_uncertainty_coverage": 0.0
+          },
+          "middle": {
+            "mae": 0.08612838888888882,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.010113469160192422
+            },
+            "relative_endpoint_error": 0.017720089885038284,
+            "rmse": 0.09187722325866302,
+            "sample_count": 90,
+            "signed_bias": 0.08612838888888882,
+            "source_uncertainty_coverage": 0.0
+          }
+        }
+      }
+    },
+    {
+      "config_sha256": "8502dee4af576ac90cbac1f0c1d89e282ef1578e3c65a6034dcae9cc303b205f",
+      "duration_s": 3.362558,
+      "endpoint": {
+        "model_flow_g_s": 0.6859429265236632,
+        "model_mass_g": 20.86573711136818,
+        "model_pressure_bar": 11.0,
+        "source_flow_g_s": 0.663059,
+        "source_mass_g": 4.645474,
+        "source_pressure_bar": 10.577998
+      },
+      "id": "WASZ-11-COMPACT",
+      "metrics": {
+        "alignment_rule": "solver_time=source_time+3.0s",
+        "flow": {
+          "early": {
+            "mae": 0.49063381045433413,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 238,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 32,
+              "undefined_reason": null,
+              "value": 1.720475797202417
+            },
+            "relative_endpoint_error": 0.03451265501812542,
+            "rmse": 0.5354024757359944,
+            "sample_count": 270,
+            "signed_bias": 0.49063381045433413,
+            "source_uncertainty_coverage": 0.022222222222222223
+          },
+          "full": {
+            "mae": 0.49063381045433413,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 238,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 32,
+              "undefined_reason": null,
+              "value": 1.720475797202417
+            },
+            "relative_endpoint_error": 0.03451265501812542,
+            "rmse": 0.5354024757359944,
+            "sample_count": 270,
+            "signed_bias": 0.49063381045433413,
+            "source_uncertainty_coverage": 0.022222222222222223
+          },
+          "late": null,
+          "middle": null
+        },
+        "interpolation_rule": "linear within domain; no extrapolation",
+        "mass": {
+          "early": {
+            "mae": 9.10477347487231,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 255,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 15,
+              "undefined_reason": null,
+              "value": 3.708034165987165
+            },
+            "relative_endpoint_error": 3.4916271431867187,
+            "rmse": 10.491557540313455,
+            "sample_count": 270,
+            "signed_bias": 9.104454023020459,
+            "source_uncertainty_coverage": 0.03333333333333333
+          },
+          "full": {
+            "mae": 9.10477347487231,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 255,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 15,
+              "undefined_reason": null,
+              "value": 3.708034165987165
+            },
+            "relative_endpoint_error": 3.4916271431867187,
+            "rmse": 10.491557540313455,
+            "sample_count": 270,
+            "signed_bias": 9.104454023020459,
+            "source_uncertainty_coverage": 0.03333333333333333
+          },
+          "late": null,
+          "middle": null
+        },
+        "model_window_s": [
+          3.0,
+          29.926927
+        ],
+        "pressure": {
+          "early": {
+            "mae": 0.3547863814814814,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 270,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.03178989565343486
+            },
+            "relative_endpoint_error": 0.039894316485974086,
+            "rmse": 0.3591420009845429,
+            "sample_count": 270,
+            "signed_bias": 0.3547863814814814,
+            "source_uncertainty_coverage": 0.0
+          },
+          "full": {
+            "mae": 0.3547863814814814,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 270,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.03178989565343486
+            },
+            "relative_endpoint_error": 0.039894316485974086,
+            "rmse": 0.3591420009845429,
+            "sample_count": 270,
+            "signed_bias": 0.3547863814814814,
+            "source_uncertainty_coverage": 0.0
+          },
+          "late": null,
+          "middle": null
+        },
+        "source_window_s": [
+          0.0,
+          26.926927
+        ]
+      },
+      "pressure_bar": 11,
+      "trace_sha256": "139f438a098ca0ac98868b98f831633d9e992a22f09355ee7e8df49f42144fbc",
+      "valid_overlap_thirds": {
+        "flow": {
+          "early": {
+            "mae": 0.6166722116490353,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 58,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 32,
+              "undefined_reason": null,
+              "value": 5.208317329479593
+            },
+            "relative_endpoint_error": 45.4919971888051,
+            "rmse": 0.6479703214271886,
+            "sample_count": 90,
+            "signed_bias": 0.6166722116490353,
+            "source_uncertainty_coverage": 0.0
+          },
+          "late": {
+            "mae": 0.2607125709680995,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.5077000705589156
+            },
+            "relative_endpoint_error": 0.03451265501812542,
+            "rmse": 0.28722903684002304,
+            "sample_count": 90,
+            "signed_bias": 0.2607125709680995,
+            "source_uncertainty_coverage": 0.06666666666666667
+          },
+          "middle": {
+            "mae": 0.5945166487458675,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 2.157378983508824
+            },
+            "relative_endpoint_error": 2.0926609761342867,
+            "rmse": 0.5979978060312553,
+            "sample_count": 90,
+            "signed_bias": 0.5945166487458675,
+            "source_uncertainty_coverage": 0.0
+          }
+        },
+        "mass": {
+          "early": {
+            "mae": 2.7861142715632075,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 75,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 15,
+              "undefined_reason": null,
+              "value": 5.6096615036565245
+            },
+            "relative_endpoint_error": 347.11011626319475,
+            "rmse": 3.408216558018995,
+            "sample_count": 90,
+            "signed_bias": 2.785155916007652,
+            "source_uncertainty_coverage": 0.1
+          },
+          "late": {
+            "mae": 14.830317552493444,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 2.0194995020233693
+            },
+            "relative_endpoint_error": 3.4916271431867187,
+            "rmse": 14.865176972238608,
+            "sample_count": 90,
+            "signed_bias": 14.830317552493444,
+            "source_uncertainty_coverage": 0.0
+          },
+          "middle": {
+            "mae": 9.69788860056028,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 3.9159119093815082
+            },
+            "relative_endpoint_error": 15.453329928595787,
+            "rmse": 9.88073440300854,
+            "sample_count": 90,
+            "signed_bias": 9.69788860056028,
+            "source_uncertainty_coverage": 0.0
+          }
+        },
+        "pressure": {
+          "early": {
+            "mae": 0.320430811111111,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.028804348342705975
+            },
+            "relative_endpoint_error": 0.031053648720771824,
+            "rmse": 0.32894296160173747,
+            "sample_count": 90,
+            "signed_bias": 0.320430811111111,
+            "source_uncertainty_coverage": 0.0
+          },
+          "late": {
+            "mae": 0.3995976222222222,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.03688807613746948
+            },
+            "relative_endpoint_error": 0.039894316485974086,
+            "rmse": 0.3998565096504828,
+            "sample_count": 90,
+            "signed_bias": 0.3995976222222222,
+            "source_uncertainty_coverage": 0.0
+          },
+          "middle": {
+            "mae": 0.344330711111111,
+            "median_absolute_log_ratio": {
+              "eligible_sample_count": 90,
+              "excluded_nonfinite_count": 0,
+              "excluded_nonpositive_count": 0,
+              "undefined_reason": null,
+              "value": 0.03154705295834915
+            },
+            "relative_endpoint_error": 0.03688902374730382,
+            "rmse": 0.3447611206565432,
+            "sample_count": 90,
+            "signed_bias": 0.344330711111111,
+            "source_uncertainty_coverage": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "evidence_snapshot": {
+    "commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e",
+    "tree": "44d6539096648777f78c4db83f0985d5bd16e352"
+  },
+  "executable_sha256": "ac55fd72bca56cd234f44ecb269c1c422336a9d433f317c7e078343a2d695b8d",
+  "metric_contract": {
+    "alignment": "solver_time=source_time+3.0s",
+    "density_kg_m3": 965.0,
+    "interpolation": "linear within domain; no extrapolation",
+    "model_time_window_s": [
+      3.0,
+      30.0
+    ],
+    "source_time_window_s": [
+      0.0,
+      27.0
+    ]
+  },
+  "ordering": {
+    "flow": {
+      "model_order": [
+        "WASZ-11-COMPACT",
+        "WASZ-9-COMPACT",
+        "WASZ-5-COMPACT"
+      ],
+      "source_order": [
+        "WASZ-5-COMPACT",
+        "WASZ-9-COMPACT",
+        "WASZ-11-COMPACT"
+      ],
+      "spearman": -1.0
+    },
+    "mass": {
+      "model_order": [
+        "WASZ-11-COMPACT",
+        "WASZ-9-COMPACT",
+        "WASZ-5-COMPACT"
+      ],
+      "source_order": [
+        "WASZ-5-COMPACT",
+        "WASZ-9-COMPACT",
+        "WASZ-11-COMPACT"
+      ],
+      "spearman": -1.0
+    }
+  },
+  "physical_validation": "NOT_ESTABLISHED",
+  "schema_version": "espresso.wp03_002.corrected_comparison.v1",
+  "scientific_interpretation": "The numerical defect is corrected and all three cases complete. Finite-porosity compaction remains a source-linked reconstruction and does not establish physical validation.",
+  "task": "WP03-002"
+}

@@ -885,7 +885,7 @@ WP03-002 is complete when:
 Append manually to:
 
 ```text
-/home/tim/espresso-development/AGENTS.md
+<WORKSPACE_ROOT>/AGENTS.md
 ```
 
 ```markdown
@@ -906,11 +906,11 @@ rule that ordinarily restricts writes to `solver-private/`.
 
 For WP03-002 only, automated repository work is authorized in:
 
-`/home/tim/espresso-development/espresso-whole-pull`
+`<WORKSPACE_ROOT>/espresso-whole-pull`
 
 OpenFOAM build and execution artifacts are authorized under:
 
-`/home/tim/espresso-development/runtime-artifacts/WP03-002-*`
+`<WORKSPACE_ROOT>/runtime-artifacts/WP03-002-*`
 
 Temporary diagnostic outputs are authorized under:
 
@@ -927,7 +927,7 @@ new governing physics.
 ### Authorized starting identity
 
 Repository:
-`/home/tim/espresso-development/espresso-whole-pull`
+`<WORKSPACE_ROOT>/espresso-whole-pull`
 
 Remote:
 `trbrewer/espresso-whole-pull`
@@ -1209,7 +1209,7 @@ WP03_002_FINITE_POROSITY_ROBUSTNESS_AUTHORITY_INSTALLED_RESUME
 I have manually installed the fresh WP03-002 finite-porosity nonlinear
 robustness exception in:
 
-  /home/tim/espresso-development/AGENTS.md
+  <WORKSPACE_ROOT>/AGENTS.md
 
 This task authorizes code, OpenFOAM execution, and results for numerical
 diagnosis and correction of the existing finite-porosity equations.
@@ -1226,7 +1226,7 @@ VAL-CORPUS-002, VAL-CASE-002, or merge.
 2. Verify:
 
    Repository:
-     /home/tim/espresso-development/espresso-whole-pull
+     <WORKSPACE_ROOT>/espresso-whole-pull
 
    Remote:
      trbrewer/espresso-whole-pull
