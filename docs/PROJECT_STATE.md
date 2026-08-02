@@ -40,6 +40,9 @@ foreign keys, and assigns measured pressure to one authoritative signal table.
 The referential-integrity correction binds complete pressure-sample keys,
 global resource keys, table-specific null rules, and cross-table campaign and
 route invariants; status remains `CORRECTED_PENDING_EXACT_HEAD_REVIEW`.
+The template-interoperability correction separates local campaign instances
+from catalog IDs, adds deterministic Puckworks exports, and represents
+processing lineage as an acyclic multi-input/multi-output edge graph.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

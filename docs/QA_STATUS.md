@@ -118,6 +118,9 @@ authority for measured pressure.
 The referential-integrity correction additionally verifies exact locked versus
 future-template parents, complete signal-sample references, globally unique
 resource keys, table-specific nullability, and composite consistency keys.
+The template-interface correction further records noncontradictory source-file
+nullability, local/catalog campaign namespaces, field-level compatibility
+exports, and multi-file processing lineage.
 
 ## WP-0.3C Stage-0 scaffold
 

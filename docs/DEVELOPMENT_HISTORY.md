@@ -202,3 +202,8 @@ A subsequent referential-integrity correction replaced incomplete signal and
 resource references with exact candidate keys, distinguished locked templates
 from future instances, and added deterministic cross-table invariants. The
 accepted plan content and all scientific boundaries remain unchanged.
+
+The final template-interoperability correction separated local campaign
+instances from Puckworks catalog IDs, defined deterministic field-level export
+bindings, removed generic source-file nullability, and replaced one-to-one
+lineage with an acyclic multi-input/multi-output edge graph.

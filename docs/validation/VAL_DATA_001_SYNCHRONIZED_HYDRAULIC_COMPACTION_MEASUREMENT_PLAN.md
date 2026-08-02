@@ -183,56 +183,153 @@ Numeric zero is never a missing-value code.
 | File/table | Primary key | Exact required fields |
 |---|---|---|
 | `val_data_001_evidence_routes.csv` | `route_id` | `route_id`, `selected_route`, `calibration_evidence_class`, `scoring_evidence_class`, `prospective_freeze_resource_id`, `human_owner_disposition_resource_id`, `rights_policy_resource_id`, `access_policy_resource_id` |
-| `val_data_001_campaigns.csv` | `campaign_id` | `campaign_id`, `puckworks_campaign_id`, `site_id`, `apparatus_id`, `route_id`, `schema_version` |
-| `val_data_001_evidence_partitions.csv` | `evidence_partition_id` | `evidence_partition_id`, `campaign_id`, `route_id`, `analysis_role`, `evidence_class`, `sealed_status`, `partition_manifest_sha256`, `seal_timestamp_utc`, `custodian_resource_id`, `access_policy_resource_id`, `rights_resource_id` |
-| `val_data_001_replicates.csv` | `replicate_id` | `replicate_id`, `campaign_id`, `route_id`, `condition_id`, `block_id`, `replicate_sequence`, `randomization_sequence`, `evidence_partition_id` |
-| `val_data_001_blocks.csv` | `block_id` | `block_id`, `campaign_id`, `block_type`, `block_label`, `session_start_utc`, `coffee_lot_resource_id`, `grinder_state_resource_id`, `operator_role_resource_id`, `apparatus_state_resource_id`, `calibration_set_id` |
+| `val_data_001_sites.csv` | `site_id` | `site_id`, `site_privacy_status`, `rights_resource_id` |
+| `val_data_001_apparatus.csv` | `apparatus_id` | `apparatus_id`, `site_id`, `machine_make_model_resource_id`, `grinder_make_model_resource_id`, `burr_geometry_resource_id`, `burr_wear_state_resource_id`, `basket_geometry_resource_id` |
+| `val_data_001_apparatus_signals.csv` | (`apparatus_id`, `signal_id`) | `apparatus_id`, `signal_id`, `observable_code`, `sensor_resource_id`, `native_unit`, `native_sample_interval_s`, `calibration_applicability`, `uncertainty_resource_id`, `clock_resource_id`, `synchronization_method`, `offset_drift_resource_id`, `prescribed_or_measured` |
+| `val_data_001_campaigns.csv` | `campaign_instance_id` | `campaign_instance_id`, `puckworks_campaign_id`, `campaign_mapping_status`, `site_id`, `apparatus_id`, `route_id`, `contributor_resource_id`, `external_repository_resource_id`, `timezone`, `deviations_resource_id`, `schema_version` |
+| `val_data_001_evidence_partitions.csv` | `evidence_partition_id` | `evidence_partition_id`, `campaign_instance_id`, `route_id`, `analysis_role`, `evidence_class`, `sealed_status`, `partition_manifest_sha256`, `seal_timestamp_utc`, `custodian_resource_id`, `access_policy_resource_id`, `rights_resource_id` |
+| `val_data_001_replicates.csv` | `replicate_id` | `replicate_id`, `campaign_instance_id`, `route_id`, `condition_id`, `block_id`, `replicate_sequence`, `randomization_sequence`, `evidence_partition_id` |
+| `val_data_001_blocks.csv` | `block_id` | `block_id`, `campaign_instance_id`, `block_type`, `block_label`, `session_start_utc`, `coffee_lot_resource_id`, `grinder_state_resource_id`, `operator_role_resource_id`, `apparatus_state_resource_id`, `calibration_set_id` |
 | `val_data_001_resources.csv` | `resource_id` (globally unique) | `resource_id`, `resource_type`, `definition`, `resource_provenance_mode`, `source_file_id`, `rights_resource_id` |
-| `val_data_001_conditions.csv` | `condition_id` | `condition_id`, `campaign_id`, `apparatus_id`, `control_mode`, `prescribed_node`, `prescribed_pressure_pa_gauge`, `command_program_resource_id`, `initial_hydraulic_state_resource_id`, `ambient_reference_pa`, `zeroing_basis`, `ramp_definition`, `plateau_definition`, `termination_rule`, `control_tolerance_pa`, `missing_value_state` |
-| `val_data_001_shots.csv` | `shot_id` | `shot_id`, `campaign_id`, `route_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`, `coffee_lot_resource_id`, `grinder_resource_id`, `basket_resource_id`, `dose_g`, `dry_bed_depth_mm`, `preparation_protocol_resource_id`, `brew_temperature_c`, `raw_or_processed`, `inclusion_status`, `exclusion_reason`, `t0_event_code`, `t0_uncertainty_s` |
+| `val_data_001_conditions.csv` | `condition_id` | `condition_id`, `campaign_instance_id`, `apparatus_id`, `control_mode`, `prescribed_node`, `prescribed_pressure_pa_gauge`, `command_program_resource_id`, `initial_hydraulic_state_resource_id`, `ambient_reference_pa`, `zeroing_basis`, `ramp_definition`, `plateau_definition`, `termination_rule`, `control_tolerance_pa`, `missing_value_state` |
+| `val_data_001_shots.csv` | `shot_id` | `shot_id`, `campaign_instance_id`, `route_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`, `coffee_lot_resource_id`, `grinder_resource_id`, `basket_resource_id`, `dose_g`, `dry_bed_depth_mm`, `preparation_protocol_resource_id`, `target_beverage_g`, `brew_temperature_c`, `raw_or_processed`, `inclusion_status`, `exclusion_reason`, `t0_event_code`, `t0_uncertainty_s` |
 | `val_data_001_signals.csv` | (`shot_id`, `signal_id`, `sample_index`) | `shot_id`, `signal_id`, `sample_index`, `sensor_resource_id`, `clock_resource_id`, `calibration_id`, `source_file_id`, `processing_id`, `native_timestamp`, `elapsed_time_s`, `native_value`, `native_unit`, `canonical_value`, `canonical_unit`, `physical_node`, `raw_or_processed`, `quality_flags`, `missing_value_state`, `clock_offset_s`, `clock_drift_s_per_s`, `sensor_latency_s`, `resampling_interval_s` |
 | `val_data_001_controls.csv` | (`shot_id`, `control_sample_index`) | `shot_id`, `control_sample_index`, `command_program_resource_id`, `clock_resource_id`, `source_file_id`, `processing_id`, `raw_or_processed`, `native_timestamp`, `elapsed_time_s`, `commanded_pressure_value`, `commanded_pressure_unit`, `prescribed_node`, `basket_pressure_signal_id`, `basket_pressure_sample_index`, `upstream_pressure_signal_id`, `upstream_pressure_sample_index`, `upstream_pressure_availability`, `control_deviation_pa`, `control_status`, `control_phase` |
 | `val_data_001_flow_conversions.csv` | `conversion_id` | `conversion_id`, `shot_id`, `density_source_resource_id`, `calibration_id`, `calibration_applicability`, `source_file_id`, `native_mass_flow_g_s`, `native_volume_flow_ml_s`, `canonical_mass_flow_kg_s`, `canonical_volume_flow_m3_s`, `density_kg_m3`, `density_temperature_c`, `conversion_formula`, `processing_id` |
 | `val_data_001_deformation.csv` | (`shot_id`, `location_id`, `sample_index`) | `shot_id`, `location_id`, `sample_index`, `sensor_resource_id`, `calibration_id`, `reference_state_resource_id`, `fixture_compliance_resource_id`, `source_file_id`, `processing_id`, `raw_or_processed`, `native_timestamp`, `elapsed_time_s`, `native_displacement_value`, `native_displacement_unit`, `canonical_displacement_m`, `compression_sign`, `spatial_basis`, `axial_coordinate_m`, `radial_coordinate_m`, `coffee_bed_displacement_m`, `quality_flags`, `missing_value_state` |
+| `val_data_001_chemistry.csv` | (`shot_id`, `fraction_id`, `species`) | `shot_id`, `fraction_id`, `species`, `mass_mg`, `reference_basis`, `analytical_method_resource_id`, `detection_limit_mg`, `recovery_pct`, `measurement_status`, `source_file_id`, `processing_id` |
 | `val_data_001_calibrations.csv` | `calibration_id` | `calibration_id`, `calibration_set_id`, `apparatus_id`, `sensor_resource_id`, `source_file_id`, `observable_code`, `native_unit`, `canonical_unit`, `calibration_method`, `reference_resource_id`, `calibration_timestamp_utc`, `offset`, `scale`, `range_min`, `range_max`, `resolution`, `bandwidth_hz`, `latency_s`, `drift_per_s`, `uncertainty_resource_id`, `valid_from_utc`, `valid_to_utc` |
-| `val_data_001_files.csv` | `source_file_id` | `source_file_id`, `parent_source_file_id`, `processing_id`, `relative_filename`, `file_role`, `raw_or_processed`, `sha256`, `byte_count`, `media_type`, `rights_resource_id`, `creator_software_resource_id` |
-| `val_data_001_processing_lineage.csv` | `processing_id` | `processing_id`, `input_source_file_id`, `output_source_file_id`, `software_commit`, `software_tree`, `operation_resource_id`, `parameter_record`, `synchronization_method`, `resampling_method`, `operator_role_resource_id`, `processing_timestamp_utc` |
+| `val_data_001_files.csv` | `source_file_id` | `source_file_id`, `parent_source_file_id`, `relative_filename`, `file_role`, `raw_or_processed`, `sha256`, `byte_count`, `media_type`, `rights_resource_id`, `creator_software_resource_id`, `campaign_instance_id` |
+| `val_data_001_processing_operations.csv` | `processing_id` | `processing_id`, `software_commit`, `software_tree`, `operation_resource_id`, `parameter_record`, `synchronization_method`, `resampling_method`, `operator_role_resource_id`, `processing_timestamp_utc` |
+| `val_data_001_processing_file_edges.csv` | (`processing_id`, `edge_role`, `source_file_id`) | `processing_id`, `edge_role`, `source_file_id`, `edge_sequence`, `channel_or_output_role` |
 
 The locked Puckworks bindings distinguish immutable schemas from future data.
-`campaigns.puckworks_campaign_id` references actual catalog values in locked
+`campaign_instance_id` is the authoritative local identifier for one
+acquisition/submission instance. It is never exported as a Puckworks
+`campaign_id`. `puckworks_campaign_id` is the distinct `EXP-NNN` catalog
+identity and references actual values in locked
 `docs/data_requests/experimental_campaigns.yml` at
 `$.campaigns[*].campaign_id`. By contrast, locked
 `docs/data_requests/templates/campaign_metadata.yml` and
 `docs/data_requests/templates/apparatus.yml` are schemas/templates whose
 repository placeholder values are not parent data. `campaigns.site_id`
-references `$.site_id` in the future submitted `campaign_metadata.yml`
-instance conforming to that locked template. `campaigns.apparatus_id`,
-`conditions.apparatus_id`, `shots.apparatus_id`, and
-`calibrations.apparatus_id` reference `$.apparatus_id` in the future submitted
-`apparatus.yml` instance conforming to its locked template. The local
-`campaign_id`, `shot_id`, and `replicate_id` values also populate the
-same-named columns in a future submitted `shot_metadata.csv` instance; this is
-an equality/export binding, not another foreign-key parent.
+references the authoritative local site row and deterministically exports to
+`$.site_id` in the future submitted `campaign_metadata.yml` instance.
+Apparatus references resolve to the authoritative local apparatus row and
+deterministically export to `$.apparatus_id` in the future submitted
+`apparatus.yml` instance. Local `shot_id` and `replicate_id` values populate
+the same-named columns in a future submitted `shot_metadata.csv` instance; its
+`campaign_id` receives `puckworks_campaign_id`, not
+`campaign_instance_id`. These are deterministic export bindings, not
+additional foreign-key parents.
+
+`campaign_mapping_status` is frozen before commissioning. When it is
+`LOCKED_PUCKWORKS_CAMPAIGN`, `puckworks_campaign_id` is `NOT NULL` and resolves
+to the locked catalog. For
+`PUCKWORKS_MACHINE_MODE_CAMPAIGN_GAP_LOCAL_EXTENSION` or
+`FUTURE_PUCKWORKS_CAMPAIGN_PENDING`, `puckworks_campaign_id` is null. Thus the
+machine-mode gap remains representable under a local
+`campaign_instance_id` without inventing an EXP identifier. Such a local
+extension must not claim Puckworks submission compatibility until a valid
+catalog campaign is prospectively selected or created under separate
+authority.
+
+### Deterministic Puckworks compatibility exports
+
+The normalized VAL-DATA-001 tables are authoritative. Locked Puckworks
+templates define compatibility presentations only. Each exported file is an
+`OUTPUT` edge of a processing operation whose input edges identify every
+normalized source file. A duplicated value must equal its declared source and
+unit conversion exactly; disagreement invalidates the export and blocks
+commissioning readiness. Export is prohibited unless
+`campaign_mapping_status=LOCKED_PUCKWORKS_CAMPAIGN`.
+
+| Locked template and field | Authoritative normalized source or exact rule |
+|---|---|
+| `campaign_metadata.yml.campaign_id` | `campaigns.puckworks_campaign_id` |
+| `.site_id` | `campaigns.site_id` |
+| `.contributor` | `resources.definition` for `campaigns.contributor_resource_id` |
+| `.dataset_status` | `proposal_only` before acquisition; otherwise `pilot_collected` for pilot-only partitions, `holdout_reserved` for unopened Route-B scoring partitions, and `controlled_dataset` for other controlled acquired partitions |
+| `.evidence_level_claimed` | `feasibility_pilot` for pilot evidence; `controlled_replicated` for controlled comparison/calibration; `holdout_independent` only for an authorized opened Route-B score; no upgrade is implied |
+| `.external_repository`, `.doi` | exact `external_repository` and `doi` members of the `EXTERNAL_REPOSITORY` resource referenced by `campaigns.external_repository_resource_id` |
+| `.data_license` | exact `license` member of the `RIGHTS` resource referenced through the selected route and partitions |
+| `.timezone` | `campaigns.timezone` |
+| `.replicate_count` | count of distinct `replicates.replicate_id` for `campaign_instance_id` |
+| `.exclusions_recorded` | boolean existence of excluded shots for the instance, reconciled with exported `exclusions.csv` |
+| `.deviations_from_protocol` | `resources.definition` for `campaigns.deviations_resource_id` |
+| `.declaration.*` | literal `true` only after the corresponding rights and no-upgrade assertions are verified; otherwise export is prohibited |
+
+| `apparatus.yml` field | Authoritative normalized source |
+|---|---|
+| `apparatus_id` | `apparatus.apparatus_id` |
+| `machine_make_model`, `grinder_make_model`, `burr_geometry`, `burr_wear_state`, `basket_geometry` | `resources.definition` from the correspondingly named apparatus resource field |
+| `signals[].observable` | `apparatus_signals.observable_code` |
+| `signals[].instrument` | `resources.definition` for `apparatus_signals.sensor_resource_id` |
+| `signals[].native_unit` | `apparatus_signals.native_unit` |
+| `signals[].native_sampling_rate` | reciprocal of `apparatus_signals.native_sample_interval_s`, with the operation and conversion retained |
+| `signals[].calibration` | calibration IDs linked to the signal; `NOT_APPLICABLE` only when `calibration_applicability=NOT_APPLICABLE` |
+| `signals[].uncertainty` | `resources.definition` for `apparatus_signals.uncertainty_resource_id` |
+| `signals[].clock_source` | `resources.definition` for `apparatus_signals.clock_resource_id` |
+| `signals[].synchronization_method` | `apparatus_signals.synchronization_method` |
+| `signals[].offset_drift_estimate` | `resources.definition` for `apparatus_signals.offset_drift_resource_id` |
+| `signals[].prescribed_or_measured` | `apparatus_signals.prescribed_or_measured` |
+
+| `shot_metadata.csv` field | Authoritative normalized source |
+|---|---|
+| `campaign_id` | `campaigns.puckworks_campaign_id`, never `campaign_instance_id` |
+| `site_id`, `apparatus_id` | campaign and shot local authoritative IDs |
+| `coffee_lot_id`, `grinder_id`, `basket_id` | exact resource IDs from the shot |
+| `shot_id`, `replicate_id`, `dose_g`, `target_beverage_g`, `brew_temperature_c`, `raw_or_processed`, `exclusion_reason` | same-named authoritative shot fields |
+| `achieved_beverage_g` | authoritative final `DELIVERED_MASS_G` signal sample for the shot |
+| `grinder_setting` | exact `grinder_setting` member of `resources.definition` for `shots.grinder_resource_id` |
+| `included` | `true` only for `inclusion_status=INCLUDED`; otherwise `false` |
+
+| `shot_timeseries.csv` field | Authoritative normalized source/conversion |
+|---|---|
+| `shot_id` | `signals.shot_id` |
+| `elapsed_s` | selected `signals.elapsed_time_s` synchronized timebase |
+| `pressure_bar` | basket-top `signals.canonical_value` in Pa gauge divided by exactly `100000` |
+| `pressure_source` | basket signal ID, source-file ID, calibration ID, and processing ID serialized deterministically |
+| `beverage_mass_g` | `DELIVERED_MASS_G` authoritative canonical observation converted to g if needed |
+| `flow_g_s` | authoritative mass-flow signal, or authoritative volume flow converted by the referenced flow-conversion/density record |
+| `flow_source` | signal/conversion/source-file/processing identifiers serialized deterministically |
+| `temperature_c` | authoritative temperature signal converted to degrees Celsius |
+| `raw_or_processed` | authoritative exported signal row state |
+
+Separate upstream pressure remains only in the normalized extension because
+the locked `shot_timeseries.csv` has no upstream-pressure column.
+
+| Remaining locked template | Exact field-level export rule |
+|---|---|
+| `calibration.csv` | `apparatus_id`, `observable`, `unit`, `calibration_datetime_utc`, `calibration_method`, `offset`, and `scale` come from same-named calibration fields (with `observable_code` and `native_unit` name mapping); `instrument` is the sensor resource definition; `notes` deterministically records range, resolution, bandwidth, latency, drift, uncertainty resource, validity interval, and calibration ID |
+| `exclusions.csv` | `campaign_id=campaigns.puckworks_campaign_id`; `shot_id` and `replicate_id` from the shot; `exclusion_reason` from the shot; `recorded_by` from the applicable operator-role resource |
+| `file_manifest.csv` | `filename=files.relative_filename`, `role=files.file_role`, `raw_or_processed`, `sha256`, and `bytes=byte_count`; `license` from the rights resource; `notes` deterministically records `source_file_id`, `parent_source_file_id`, `campaign_instance_id`, and producing processing edge if any |
+| `chemistry_measurements.csv` | when applicable, `campaign_id=campaigns.puckworks_campaign_id`; `shot_id`, `fraction_id`, `species`, `mass_mg`, `reference_basis`, `detection_limit_mg`, `recovery_pct`, and `measurement_status` from chemistry; `analytical_method` from its resource. When no chemistry is acquired, the file is declared `NOT_APPLICABLE` and is not fabricated |
 
 ### Primary and candidate keys
 
 | Table | Unique key used by references |
 |---|---|
 | evidence routes | (`route_id`) |
-| campaigns | (`campaign_id`); candidate (`campaign_id`, `route_id`); candidate (`campaign_id`, `apparatus_id`) |
-| evidence partitions | (`evidence_partition_id`); candidate (`evidence_partition_id`, `campaign_id`, `route_id`) |
-| conditions | (`condition_id`); candidate (`condition_id`, `campaign_id`, `apparatus_id`) |
-| blocks | (`block_id`); candidate (`block_id`, `campaign_id`) |
-| replicates | (`replicate_id`); candidate (`replicate_id`, `campaign_id`, `route_id`, `condition_id`, `block_id`, `evidence_partition_id`) |
-| shots | (`shot_id`); candidate (`shot_id`, `campaign_id`, `route_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`) |
+| sites | (`site_id`) |
+| apparatus | (`apparatus_id`); candidate (`apparatus_id`, `site_id`) |
+| apparatus signals | (`apparatus_id`, `signal_id`) |
+| campaigns | (`campaign_instance_id`); candidate (`campaign_instance_id`, `route_id`); candidate (`campaign_instance_id`, `apparatus_id`) |
+| evidence partitions | (`evidence_partition_id`); candidate (`evidence_partition_id`, `campaign_instance_id`, `route_id`) |
+| conditions | (`condition_id`); candidate (`condition_id`, `campaign_instance_id`, `apparatus_id`) |
+| blocks | (`block_id`); candidate (`block_id`, `campaign_instance_id`) |
+| replicates | (`replicate_id`); candidate (`replicate_id`, `campaign_instance_id`, `route_id`, `condition_id`, `block_id`, `evidence_partition_id`) |
+| shots | (`shot_id`); candidate (`shot_id`, `campaign_instance_id`, `route_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`) |
 | resources | (`resource_id`) globally unique |
 | signals | (`shot_id`, `signal_id`, `sample_index`) |
 | controls | (`shot_id`, `control_sample_index`) |
 | flow conversions | (`conversion_id`) |
 | deformation | (`shot_id`, `location_id`, `sample_index`) |
+| chemistry | (`shot_id`, `fraction_id`, `species`) |
 | calibrations | (`calibration_id`) |
 | files | (`source_file_id`) |
-| processing lineage | (`processing_id`) |
+| processing operations | (`processing_id`) |
+| processing file edges | (`processing_id`, `edge_role`, `source_file_id`) |
 
 ### Foreign-key resolution matrix
 
@@ -241,28 +338,36 @@ exactly one parent; `NULLABLE` states the sole permitted null condition.
 
 | Child field | Exact parent | Cardinality/null rule |
 |---|---|---|
-| `campaigns.puckworks_campaign_id` | locked catalog `docs/data_requests/experimental_campaigns.yml` `$.campaigns[*].campaign_id` | many-to-one, `NOT NULL` |
-| `campaigns.site_id` | future submitted `campaign_metadata.yml` `$.site_id`, conforming to locked `docs/data_requests/templates/campaign_metadata.yml` | many-to-one, `NOT NULL`; template placeholder is never a parent value |
-| `campaigns.apparatus_id`, `conditions.apparatus_id`, `shots.apparatus_id`, `calibrations.apparatus_id` | future submitted `apparatus.yml` `$.apparatus_id`, conforming to locked `docs/data_requests/templates/apparatus.yml` | many-to-one, `NOT NULL`; template placeholder is never a parent value |
+| `campaigns.puckworks_campaign_id` | locked catalog `docs/data_requests/experimental_campaigns.yml` `$.campaigns[*].campaign_id` | many-to-one; `NOT NULL` only for `campaign_mapping_status=LOCKED_PUCKWORKS_CAMPAIGN`, otherwise null |
+| `campaigns.site_id` | `val_data_001_sites.csv.site_id` | many-to-one, `NOT NULL`; exported to the future template instance |
+| `campaigns.apparatus_id`, `conditions.apparatus_id`, `shots.apparatus_id`, `calibrations.apparatus_id`, `apparatus_signals.apparatus_id` | `val_data_001_apparatus.csv.apparatus_id` | many-to-one, `NOT NULL`; exported to the future template instance |
+| `apparatus.site_id` | `val_data_001_sites.csv.site_id` | many-to-one, `NOT NULL` |
 | `campaigns.route_id`, `evidence_partitions.route_id` | `val_data_001_evidence_routes.csv.route_id` | many-to-one, `NOT NULL` |
-| `evidence_partitions.campaign_id`, `replicates.campaign_id`, `blocks.campaign_id`, `conditions.campaign_id`, `shots.campaign_id` | `val_data_001_campaigns.csv.campaign_id` | many-to-one, `NOT NULL` |
-| `evidence_partitions.(campaign_id, route_id)` | `val_data_001_campaigns.csv.(campaign_id, route_id)` | many-to-one, both `NOT NULL` |
-| `replicates.(condition_id, campaign_id)` | `val_data_001_conditions.csv.(condition_id, campaign_id)` | many-to-one, both `NOT NULL` |
-| `replicates.(block_id, campaign_id)` | `val_data_001_blocks.csv.(block_id, campaign_id)` | many-to-one, both `NOT NULL` |
-| `replicates.(evidence_partition_id, campaign_id, route_id)` | `val_data_001_evidence_partitions.csv.(evidence_partition_id, campaign_id, route_id)` | many-to-one, all `NOT NULL` |
-| `shots.(replicate_id, campaign_id, route_id, condition_id, block_id, evidence_partition_id)` | corresponding six fields of the replicate candidate key | many-to-one, all `NOT NULL` |
-| `shots.(condition_id, campaign_id, apparatus_id)` | condition candidate key | many-to-one, all `NOT NULL` |
-| `signals.shot_id`, `controls.shot_id`, `flow_conversions.shot_id`, `deformation.shot_id` | `val_data_001_shots.csv.shot_id` | many-to-one, `NOT NULL` |
-| every `source_file_id`, `input_source_file_id`, `output_source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
+| `evidence_partitions.campaign_instance_id`, `replicates.campaign_instance_id`, `blocks.campaign_instance_id`, `conditions.campaign_instance_id`, `shots.campaign_instance_id`, `files.campaign_instance_id` | `val_data_001_campaigns.csv.campaign_instance_id` | many-to-one, `NOT NULL` |
+| `evidence_partitions.(campaign_instance_id, route_id)` | `val_data_001_campaigns.csv.(campaign_instance_id, route_id)` | many-to-one, both `NOT NULL` |
+| `replicates.(condition_id, campaign_instance_id)` | `val_data_001_conditions.csv.(condition_id, campaign_instance_id)` | many-to-one, both `NOT NULL` |
+| `replicates.(block_id, campaign_instance_id)` | `val_data_001_blocks.csv.(block_id, campaign_instance_id)` | many-to-one, both `NOT NULL` |
+| `replicates.(evidence_partition_id, campaign_instance_id, route_id)` | `val_data_001_evidence_partitions.csv.(evidence_partition_id, campaign_instance_id, route_id)` | many-to-one, all `NOT NULL` |
+| `shots.(replicate_id, campaign_instance_id, route_id, condition_id, block_id, evidence_partition_id)` | corresponding six fields of the replicate candidate key | many-to-one, all `NOT NULL` |
+| `shots.(condition_id, campaign_instance_id, apparatus_id)` | condition candidate key | many-to-one, all `NOT NULL` |
+| `signals.shot_id`, `controls.shot_id`, `flow_conversions.shot_id`, `deformation.shot_id`, `chemistry.shot_id` | `val_data_001_shots.csv.shot_id` | many-to-one, `NOT NULL` |
+| `signals.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
+| `controls.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
+| `flow_conversions.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
+| `deformation.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
+| `chemistry.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
+| `calibrations.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
 | `files.parent_source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one; null only for an instrument-native root file |
 | `signals.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | many-to-one; null only when `signals.missing_value_state=NOT_APPLICABLE` and the signal definition requires no calibration |
 | `flow_conversions.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | many-to-one; `NOT NULL` when `flow_conversions.calibration_applicability=APPLICABLE`; null when it is `NOT_APPLICABLE` or `UNKNOWN_PENDING_REVIEW`, with `UNKNOWN_PENDING_REVIEW` blocking readiness |
 | `deformation.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | many-to-one; null only when `deformation.missing_value_state=NOT_APPLICABLE` and the declared deformation method requires no calibration |
-| `signals.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only when `signals.raw_or_processed=RAW_NATIVE` |
-| `controls.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only when `controls.raw_or_processed=RAW_NATIVE` and `controls.control_deviation_pa` is empty |
-| `flow_conversions.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one, `NOT NULL` |
-| `deformation.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only when the deformation row is raw and `coffee_bed_displacement_m` is empty; otherwise `NOT NULL` |
-| `files.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only for a declared native/root input file |
+| `signals.processing_id` | `val_data_001_processing_operations.csv.processing_id` | many-to-one; null only when `signals.raw_or_processed=RAW_NATIVE` |
+| `controls.processing_id` | `val_data_001_processing_operations.csv.processing_id` | many-to-one; null only when `controls.raw_or_processed=RAW_NATIVE` and `controls.control_deviation_pa` is empty |
+| `flow_conversions.processing_id` | `val_data_001_processing_operations.csv.processing_id` | many-to-one, `NOT NULL` |
+| `deformation.processing_id` | `val_data_001_processing_operations.csv.processing_id` | many-to-one; null only when `deformation.raw_or_processed=RAW_NATIVE` and `coffee_bed_displacement_m` is empty; otherwise `NOT NULL` |
+| `chemistry.processing_id` | `val_data_001_processing_operations.csv.processing_id` | many-to-one; null only for a directly reported native chemistry measurement, otherwise `NOT NULL` |
+| `processing_file_edges.processing_id` | `val_data_001_processing_operations.csv.processing_id` | many-to-one, `NOT NULL` |
+| `processing_file_edges.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
 | `controls.(shot_id, basket_pressure_signal_id, basket_pressure_sample_index)` | `val_data_001_signals.csv.(shot_id, signal_id, sample_index)` | many-to-one, complete reference `NOT NULL` |
 | `controls.(shot_id, upstream_pressure_signal_id, upstream_pressure_sample_index)` | `val_data_001_signals.csv.(shot_id, signal_id, sample_index)` | many-to-one; signal ID and sample index are both present or both absent, and both may be absent only when `controls.upstream_pressure_availability=NOT_MEASURED` |
 
@@ -279,9 +384,22 @@ reference below resolves to one complete parent key. The required parent
 | `evidence_routes.rights_policy_resource_id`, `evidence_partitions.rights_resource_id`, `resources.rights_resource_id`, `files.rights_resource_id` | `RIGHTS` |
 | `evidence_routes.access_policy_resource_id`, `evidence_partitions.access_policy_resource_id` | `ACCESS_POLICY` |
 | `evidence_partitions.custodian_resource_id` | `CUSTODIAN` |
+| `campaigns.contributor_resource_id` | `CONTRIBUTOR` |
+| `campaigns.external_repository_resource_id` | `EXTERNAL_REPOSITORY` |
+| `campaigns.deviations_resource_id` | `DEVIATION_RECORD` |
+| `sites.rights_resource_id` | `RIGHTS` |
+| `apparatus.machine_make_model_resource_id` | `MACHINE_MODEL` |
+| `apparatus.grinder_make_model_resource_id` | `GRINDER_MODEL` |
+| `apparatus.burr_geometry_resource_id` | `BURR_GEOMETRY` |
+| `apparatus.burr_wear_state_resource_id` | `BURR_WEAR_STATE` |
+| `apparatus.basket_geometry_resource_id` | `BASKET_GEOMETRY` |
+| `apparatus_signals.sensor_resource_id` | `SENSOR` |
+| `apparatus_signals.uncertainty_resource_id` | `UNCERTAINTY` |
+| `apparatus_signals.clock_resource_id` | `CLOCK` |
+| `apparatus_signals.offset_drift_resource_id` | `OFFSET_DRIFT` |
 | `blocks.coffee_lot_resource_id`, `shots.coffee_lot_resource_id` | `COFFEE_LOT` |
 | `blocks.grinder_state_resource_id` | `GRINDER_STATE` |
-| `blocks.operator_role_resource_id`, `processing_lineage.operator_role_resource_id` | `OPERATOR_ROLE` |
+| `blocks.operator_role_resource_id`, `processing_operations.operator_role_resource_id` | `OPERATOR_ROLE` |
 | `blocks.apparatus_state_resource_id` | `APPARATUS_STATE` |
 | `blocks.calibration_set_id`, `calibrations.calibration_set_id` | `CALIBRATION_SET` |
 | `conditions.command_program_resource_id`, `controls.command_program_resource_id` | `COMMAND_PROGRAM` |
@@ -297,7 +415,8 @@ reference below resolves to one complete parent key. The required parent
 | `calibrations.reference_resource_id` | `REFERENCE_STANDARD` |
 | `calibrations.uncertainty_resource_id` | `UNCERTAINTY` |
 | `files.creator_software_resource_id` | `SOFTWARE` |
-| `processing_lineage.operation_resource_id` | `OPERATION` |
+| `processing_operations.operation_resource_id` | `OPERATION` |
+| `chemistry.analytical_method_resource_id` | `ANALYTICAL_METHOD` |
 
 `resources.source_file_id` references `files.source_file_id`; it is `NOT NULL`
 when `resources.resource_provenance_mode=SOURCE_FILE_BOUND` and null only when
@@ -323,10 +442,12 @@ as `PUBLIC_DOMAIN` in `resources.definition`.
 | `control_phase` | `PRE_SHOT`; `RAMP`; `PLATEAU`; `TERMINATION`; `POST_SHOT` |
 | `block_type` | `SESSION`; `COFFEE_LOT`; `GRINDER_STATE`; `OPERATOR_STATE`; `APPARATUS_CALIBRATION_STATE` |
 | `location_id` | `UPPER_BED`; `MID_BED`; `LOWER_BED`; `BULK_EQUIVALENT` |
-| `resource_type` | `ACCESS_POLICY`; `APPARATUS_STATE`; `CALIBRATION_SET`; `COMMAND_PROGRAM`; `CUSTODIAN`; `DENSITY_SOURCE`; `FIXTURE_COMPLIANCE`; `FREEZE_IDENTITY`; `GRINDER`; `GRINDER_STATE`; `HUMAN_DISPOSITION`; `HYDRAULIC_INITIAL_STATE`; `OPERATION`; `OPERATOR_ROLE`; `PREPARATION_PROTOCOL`; `REFERENCE_STATE`; `REFERENCE_STANDARD`; `RIGHTS`; `SENSOR`; `SOFTWARE`; `UNCERTAINTY`; `COFFEE_LOT`; `BASKET`; `CLOCK` |
+| `resource_type` | `ACCESS_POLICY`; `ANALYTICAL_METHOD`; `APPARATUS_STATE`; `BASKET`; `BASKET_GEOMETRY`; `BURR_GEOMETRY`; `BURR_WEAR_STATE`; `CALIBRATION_SET`; `CLOCK`; `COFFEE_LOT`; `COMMAND_PROGRAM`; `CONTRIBUTOR`; `CUSTODIAN`; `DENSITY_SOURCE`; `DEVIATION_RECORD`; `EXTERNAL_REPOSITORY`; `FIXTURE_COMPLIANCE`; `FREEZE_IDENTITY`; `GRINDER`; `GRINDER_MODEL`; `GRINDER_STATE`; `HUMAN_DISPOSITION`; `HYDRAULIC_INITIAL_STATE`; `MACHINE_MODEL`; `OFFSET_DRIFT`; `OPERATION`; `OPERATOR_ROLE`; `PREPARATION_PROTOCOL`; `REFERENCE_STATE`; `REFERENCE_STANDARD`; `RIGHTS`; `SENSOR`; `SOFTWARE`; `UNCERTAINTY` |
 | `upstream_pressure_availability` | `MEASURED`; `NOT_MEASURED`; `SENSOR_FAILURE` |
 | `calibration_applicability` | `APPLICABLE`; `NOT_APPLICABLE`; `UNKNOWN_PENDING_REVIEW` |
 | `resource_provenance_mode` | `INLINE_DECLARATION`; `SOURCE_FILE_BOUND` |
+| `campaign_mapping_status` | `LOCKED_PUCKWORKS_CAMPAIGN`; `PUCKWORKS_MACHINE_MODE_CAMPAIGN_GAP_LOCAL_EXTENSION`; `FUTURE_PUCKWORKS_CAMPAIGN_PENDING` |
+| `edge_role` | `INPUT`; `OUTPUT` |
 
 ### Route-conditional partition representation
 
@@ -349,7 +470,7 @@ as `PUBLIC_DOMAIN` in `resources.definition`.
   `calibration_evidence_class=RECONSTRUCTION_OR_CALIBRATION` and
   `scoring_evidence_class=HOLDOUT_OR_TRANSFER`.
 - `SEPARATE_CHARACTERIZATION_THEN_INDEPENDENT_VALIDATION`: two distinct
-  `campaign_id` values are required. The first has a `CHARACTERIZATION`
+  `campaign_instance_id` values are required. The first has a `CHARACTERIZATION`
   partition with `evidence_class=CHARACTERIZATION`; the later campaign has a
   wholly untouched `COMPARISON` partition with
   `evidence_class=INDEPENDENT_COMPONENT_VALIDATION`. The later campaign is not
@@ -385,20 +506,47 @@ If duplicated presentation values are exported later, they must be byte- and
 value-derived from that signal row; conflicts resolve in favor of the signal
 table and invalidate the export.
 
+### Processing operation and edge-graph invariants
+
+1. Every `processing_operations.processing_id` has at least one `INPUT` and
+   one `OUTPUT` row in `processing_file_edges`; multiple inputs and outputs are
+   permitted and ordered independently by `edge_sequence` within each role.
+2. Every edge resolves to one operation and one
+   `files.source_file_id`. The edge primary key prevents duplicate file/role
+   membership in an operation.
+3. Every processed or derived signal, control value, flow conversion,
+   deformation value, chemistry value, or compatibility export references its
+   producing operation. The output file containing that value has exactly one
+   `OUTPUT` edge for that operation.
+4. Each output file has exactly one producing operation across the entire edge
+   table. Native/root files have `raw_or_processed=RAW_NATIVE`, have no
+   `OUTPUT` edge, and may appear only as inputs.
+5. The directed graph from input files through operations to output files is
+   acyclic. A deterministic topological sort over files and operations must
+   include every node; a cycle or orphan processed file invalidates the
+   submission.
+6. Synchronization may consume multiple channel files, and one operation may
+   emit synchronized signals, controls, conversions, and compatibility exports
+   as separate output files without losing shared provenance.
+7. Every compatibility export field above is recomputed from its authoritative
+   normalized source during verification. Exported/local disagreement,
+   missing input edges, or ambiguous producing operations invalidate the
+   export.
+
 ### Cross-table relational invariants
 
-1. `evidence_partitions.(campaign_id, route_id)` must match the campaign
+1. `evidence_partitions.(campaign_instance_id, route_id)` must match the campaign
    candidate key; existence of each identifier separately is insufficient.
-2. A replicate's (`condition_id`, `campaign_id`) and (`block_id`,
-   `campaign_id`) must match the corresponding condition and block candidate
+2. A replicate's (`condition_id`, `campaign_instance_id`) and (`block_id`,
+   `campaign_instance_id`) must match the corresponding condition and block candidate
    keys.
-3. A replicate's (`evidence_partition_id`, `campaign_id`, `route_id`) must
-   match one partition candidate key, and its (`campaign_id`, `route_id`) must
+3. A replicate's (`evidence_partition_id`, `campaign_instance_id`, `route_id`) must
+   match one partition candidate key, and its (`campaign_instance_id`, `route_id`) must
    match its campaign.
 4. A shot's duplicated campaign, route, condition, block, and partition fields
    must exactly equal those inherited through the complete replicate candidate
-   key. Its (`condition_id`, `campaign_id`, `apparatus_id`) must also match the
-   condition candidate key, and its apparatus must equal the campaign's
+   key. Its (`condition_id`, `campaign_instance_id`, `apparatus_id`) must also match the
+   condition candidate key, and its apparatus must equal the campaign instance's
    apparatus. Any mismatch rejects the row.
 5. Every referenced pressure sample has the same `shot_id` as the control row.
    For `control_mode=PRESCRIBED_BASKET_PRESSURE`, the condition and every
@@ -410,6 +558,12 @@ table and invalidate the export.
 7. Route-specific partition roles, evidence classes, and sealing states must
    satisfy the selected route rules below. Ordinary replicates and blocks do
    not acquire holdout status independently of their partition.
+8. Every local row carries or inherits exactly one `campaign_instance_id`.
+   `puckworks_campaign_id` is never used as a local relational key.
+9. `campaign_mapping_status=LOCKED_PUCKWORKS_CAMPAIGN` requires a catalog-valid
+   non-null `puckworks_campaign_id`. Both gap/pending statuses require it to be
+   null and prohibit compatibility export. The mapping status and selected
+   route are frozen before commissioning.
 
 ## Timebase, timing, calibration, and latency
 
