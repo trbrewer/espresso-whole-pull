@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 226,
-  "total_uncompressed_bytes_excluding_manifest": 2051430,
-  "aggregate_source_sha256": "1cba84ad8a7d314ba5a9f2d0111c79559959214bbc75cac52f6bf131ec9a6544",
-  "aggregate_sha256": "1cba84ad8a7d314ba5a9f2d0111c79559959214bbc75cac52f6bf131ec9a6544",
+  "file_count": 229,
+  "total_uncompressed_bytes_excluding_manifest": 2071635,
+  "aggregate_source_sha256": "996ed96c63b6ee5f0548b4d8eb833bdb26629c80d04d00480664c544ede094da",
+  "aggregate_sha256": "996ed96c63b6ee5f0548b4d8eb833bdb26629c80d04d00480664c544ede094da",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -548,6 +548,11 @@
       "bytes": 6546,
       "git_mode": "100644"
     },
+    "docs/validation/VAL_CORPUS_001_PROTOCOL.md": {
+      "sha256": "3322c0b99aac3a946e9f5145548a3e7915d5da00117c7748faf19de9969f71b7",
+      "bytes": 1548,
+      "git_mode": "100644"
+    },
     "docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md": {
       "sha256": "978d0711787a6604f088720327d4689102729646d4df57f96a6e121e119c5fc5",
       "bytes": 103284,
@@ -828,6 +833,11 @@
       "bytes": 35970,
       "git_mode": "100755"
     },
+    "scripts/val_corpus_001.py": {
+      "sha256": "985d6f4da7f229a6c1cdd2d8b816356f51f981bdde1e2125d5bd74113cdbd798",
+      "bytes": 17420,
+      "git_mode": "100644"
+    },
     "scripts/verify_build_provenance.py": {
       "sha256": "2eba6f44c8ae2d29942edc550f12310cb315b843baaab652c71d1cb585df0285",
       "bytes": 9044,
@@ -1101,6 +1111,11 @@
     "tests/test_val_case_001.py": {
       "sha256": "011a269c9a6a2a8c6544db1ad8b98671ae8ef03fe647eb9412d7f4ae0a931a32",
       "bytes": 9920,
+      "git_mode": "100644"
+    },
+    "tests/test_val_corpus_001.py": {
+      "sha256": "77e4b7879788c06679797ee7980ff746f845c904a3b5b744157ebaf2f5b117a9",
+      "bytes": 1237,
       "git_mode": "100644"
     },
     "tests/test_wp02_002_machine_coupling.py": {
