@@ -7,8 +7,9 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 225/225 PASS
+- Public source verification: 226/226 PASS
 - Active validation case: `NONE`
+- Active data-planning task: `VAL-DATA-001`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -26,6 +27,49 @@ admissible independent dataset or the synchronized pressure, flow/mass,
 deformation, machine-side pressure, timing, and preparation measurement
 package identified by VAL-CASE-001. No acquisition, commissioning, or new
 governing physics is authorized by the administrative closure.
+
+VAL-DATA-001 is an active non-commissioning planning task for the synchronized
+measurement package. `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`,
+`GOVERNING_PHYSICS_CHANGE: NONE`, and VAL-CASE-002 remains `NOT_STARTED`.
+Its exact-head review correction status is
+`VAL_DATA_001_REVIEW_STATUS: CORRECTED_PENDING_EXACT_HEAD_REVIEW`; the future
+evidence route still requires prospective human-owner selection.
+The final schema correction restores exact frozen VAL-CASE-001 parameter
+classifications, makes partition rules route-conditional, closes all declared
+foreign keys, and assigns measured pressure to one authoritative signal table.
+The referential-integrity correction binds complete pressure-sample keys,
+global resource keys, table-specific null rules, and cross-table campaign and
+route invariants; status remains `CORRECTED_PENDING_EXACT_HEAD_REVIEW`.
+The template-interoperability correction separates local campaign instances
+from catalog IDs, adds deterministic Puckworks exports, and represents
+processing lineage as an acyclic multi-input/multi-output edge graph.
+The implementation-contract closure binds samples and deformation to the
+shot apparatus and signal registry, makes calibration applicability
+registry-controlled, adds fraction parents and partition-isolated
+compatibility packages, types resource payloads with terminal rights, and
+separates row-value processing from file assembly and exact synchronized
+exports. Commissioning remains unauthorized.
+The final machine-contract closure completes all field/reference bindings,
+makes package identities and summaries partition-specific, adds registered
+basket-top temperature, records exact or two-source interpolated export
+provenance, adds package-level fraction/chemistry disposition, and enforces
+one export grid and one `COMPATIBILITY_EXPORT` operation per time-series
+package.
+The final export-contract reconciliation separates fixed unit conversion from
+flow/density conversion, enforces the three-layer processing graph, separates
+time-indexed samples from record/literal provenance, freezes package-mode
+nullability and scalar encodings, and binds terminal mass to a realized shot
+event. The task remains non-commissioning.
+The compatibility-serialization closure reconciles typed resource members,
+defines a sealed metadata envelope distinct from a Puckworks submission,
+freezes row and nested-field ordering, maps local provenance to Puckworks
+`raw`/`processed`, and removes recursive manifest dependencies. Review remains
+pending and commissioning remains unauthorized.
+The state-and-serialization consistency correction makes package-operation
+references mode-conditional, gives full and sealed exports disjoint graph
+branches, removes unreachable status values, makes row provenance mapping
+total, and freezes the apparatus calibration scalar and YAML emitter. Package
+QA now binds the current source-manifest identity exactly.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

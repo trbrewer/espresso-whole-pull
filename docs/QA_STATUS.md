@@ -99,6 +99,54 @@ transfer, or introduce runtime extraction physics.
 
 Physical validation remains `NOT_ESTABLISHED`.
 
+## VAL-DATA-001 planning candidate
+
+VAL-DATA-001 adds only an append-only campaign-reference erratum and a
+non-commissioning synchronized hydraulic-compaction measurement plan. It
+changes no result, code, configuration, framework, standard, dependency, or
+physics and performs no scientific or experimental execution.
+The bounded planning correction records
+`VAL_DATA_001_REVIEW_STATUS: CORRECTED_PENDING_EXACT_HEAD_REVIEW`, makes the
+future evidence route prospective, fixes prescribed pressure at the basket-top
+node, and adds parameter-role, data-schema, timing, and deformation contracts.
+`EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`, VAL-CASE-002 remains
+`NOT_STARTED`, and physical validation remains `NOT_ESTABLISHED`.
+The final evidence/schema correction preserves that status while separating
+frozen parameter classifications from future roles, closing route/partition/
+replicate/block parents and foreign keys, and making the signal table the sole
+authority for measured pressure.
+The referential-integrity correction additionally verifies exact locked versus
+future-template parents, complete signal-sample references, globally unique
+resource keys, table-specific nullability, and composite consistency keys.
+The template-interface correction further records noncontradictory source-file
+nullability, local/catalog campaign namespaces, field-level compatibility
+exports, and multi-file processing lineage.
+The implementation-contract closure adds exact apparatus/signal/calibration
+bindings, a fraction parent and deterministic chemistry presentation,
+partition-specific compatibility packages, typed canonical resources with
+terminal rights, distinct row-value and file-assembly operations, and exact
+synchronized-time-series and terminal-mass selection rules. The deterministic
+schema/export audit is required before commissioning readiness; commissioning
+is not authorized here.
+The final machine-contract audit additionally covers every identifier and
+resource field, package/partition identity and summary reconciliation,
+registered temperature export, exact and two-sample source provenance,
+fraction/chemistry package state, and exactly-one-grid/export-operation
+cardinality. No scientific or experimental execution is part of this check.
+The final export-contract audit additionally verifies conversion-domain
+separation, mutually exclusive processing scopes, record/sample/literal
+provenance, package content-mode nullability, byte-reproducible Puckworks
+scalars, realized termination-event linkage, edge ordering, filenames, row
+keys, row state, and campaign/site/apparatus consistency.
+The compatibility-serialization audit additionally verifies closed typed
+resource-member mappings, sealed-envelope schemas and non-submission status,
+canonical YAML/CSV ordering and field paths, exact `raw`/`processed` mappings,
+and nonrecursive file/package manifests. It performs no evidence validation.
+The state-and-serialization audit additionally verifies all four package
+modes, disjoint full/sealed operation branches, reachable status values,
+total row-state mapping, byte-deterministic apparatus calibration YAML, and
+exact equality between package-QA and source-manifest identities.
+
 ## WP-0.3C Stage-0 scaffold
 
 WP-0.3C Stage 0 remains a completed, frozen scaffold. Requirements,

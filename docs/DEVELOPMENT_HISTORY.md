@@ -173,3 +173,75 @@ the v2 result SHA-256 remains
 `bb7bba7481a56ac8729758a6d5cd36e7d046b889256a7c1d1c8ed7cff998375a`.
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`; VAL-CASE-002
 remains not started and no new physics or experimental work is authorized.
+
+## 2026-08-01 — VAL-DATA-001 synchronized measurement planning
+
+A documentation-only task corrected the campaign cross-reference by
+append-only erratum and specified a future synchronized pressure, flow/mass,
+deformation, timing, metadata, calibration, uncertainty, replication, holdout,
+rights, and deposit package. The plan records a separate upstream
+machine-pressure campaign gap and leaves sensors, pilot, feasibility,
+replication, and commissioning unresolved. No result, experiment, data,
+OpenFOAM, fit, Puckworks state, solver, framework, or physics changed.
+
+Independent exact-head review required a bounded documentation correction.
+The corrected plan replaces the unconditional evidence-class statement with a
+prospective human-owner route decision, binds prescribed targets to measured
+basket-top pressure, and adds parameter/evidence-role, normalized submission
+schema, timing, and deformation-compliance contracts. Status is
+`CORRECTED_PENDING_EXACT_HEAD_REVIEW`; the accepted erratum and all scientific
+artifacts remain unchanged.
+
+A final bounded evidence/schema correction then restored the frozen
+VAL-CASE-001 parameter classifications exactly, made replication and access
+rules conditional on the selected route, closed the normalized foreign-key
+graph, and designated the signal table as the sole measured-pressure source.
+No scientific artifact, code, dependency, experiment, or claim changed.
+
+A subsequent referential-integrity correction replaced incomplete signal and
+resource references with exact candidate keys, distinguished locked templates
+from future instances, and added deterministic cross-table invariants. The
+accepted plan content and all scientific boundaries remain unchanged.
+
+The final template-interoperability correction separated local campaign
+instances from Puckworks catalog IDs, defined deterministic field-level export
+bindings, removed generic source-file nullability, and replaced one-to-one
+lineage with an acyclic multi-input/multi-output edge graph.
+
+The implementation-contract closure then bound samples and deformation to the
+shot apparatus and registered channel, replaced missingness-driven calibration
+rules with registry applicability and validity rules, added fraction parents,
+partition-isolated compatibility packages, typed canonical resource payloads
+and terminal rights, separated row-value operations from file assembly, and
+froze reproducible synchronized-time-series and terminal delivered-mass export
+rules. This was documentation and schema-contract work only; no acquisition,
+scientific execution, scoring, or governing-physics change occurred.
+
+The final machine-contract closure completed omitted foreign-key and resource
+bindings, scoped every compatibility identity and summary to one evidence
+partition, added registered basket-top temperature and reproducible exact or
+two-sample interpolation sources, introduced package-level fraction/chemistry
+status, and required exactly one grid and one compatibility-export operation
+for each time-series package. It changed no accepted science, evidence route,
+measurement target, result, dependency, or commissioning boundary.
+
+The final export-contract reconciliation separated flow/density conversion
+from fixed unit scaling, enforced row-value to normalized-assembly to
+compatibility-export layering, divided time-indexed and record/literal source
+provenance, froze package content modes and scalar encodings, and introduced
+the realized per-shot termination event used for terminal delivered mass. No
+scientific result, evidence route, experiment, dependency, or physics changed.
+
+The compatibility-serialization closure then reconciled exported typed
+resource members with their closed schemas, defined the metadata-only sealed
+envelope as distinct from a Puckworks submission, froze deterministic YAML and
+CSV serialization, mapped local provenance to Puckworks `raw`/`processed`, and
+made manifests explicitly nonrecursive. No evidence or scientific execution
+occurred.
+
+The state-and-serialization consistency correction then made export-operation
+foreign keys conditional on package mode, added the disjoint sealed-envelope
+graph branch, removed unreachable stored status, completed time-series
+row-state mapping, froze the apparatus calibration scalar and YAML emitter,
+and synchronized package QA with the current source manifest. It changed no
+accepted scientific or experimental-design content.
