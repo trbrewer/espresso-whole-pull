@@ -279,15 +279,259 @@ def analyze(root: Path, snapshot: Path, run_root: Path, output: Path) -> None:
                   "claim_ceiling":protocol["claim_ceiling"]})
 
 
+def correction_protocol(root: Path):
+    return load(root / "validation/cases/val_corpus_001/VAL_CORPUS_001_REVIEW_CORRECTION_PROTOCOL.json")
+
+
+def prepare_r1(root: Path, snapshot: Path, run_root: Path) -> None:
+    protocol = correction_protocol(root)
+    if subprocess.check_output(["git", "-C", str(snapshot), "rev-parse", "HEAD"], text=True).strip() != SNAPSHOT_COMMIT:
+        raise RuntimeError("evidence snapshot commit mismatch")
+    if subprocess.check_output(["git", "-C", str(snapshot), "rev-parse", "HEAD^{tree}"], text=True).strip() != SNAPSHOT_TREE:
+        raise RuntimeError("evidence snapshot tree mismatch")
+    configs = run_root / "configs"
+    configs.mkdir(parents=True, exist_ok=False)
+    base = load(root / "config/reconstruction_WP02A_waszkiewicz_9bar.json")
+    reference = load(root / "config/reference_R0.json")
+    machine = load(root / "validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RUN_SPEC.json")["case_matrix"]["MC-2"]["machineBoundary"]
+    anchor_k = float(protocol["anchor"]["resulting_permeability_m2"])
+    terminal = {bar: source_terminal(snapshot, float(bar)) for bar in (5, 9, 11)}
+    records = []
+    for item in protocol["correction_matrix"]:
+        cid = item["id"]
+        if cid.startswith("R1-WASZ"):
+            cfg = copy.deepcopy(base)
+            bar = int(item["source_group_bar"])
+            cfg["scenario_id"] = cid.replace("-", "_")
+            cfg["liquid"]["density_kg_m3"] = 965.0
+            cfg["hydraulics"]["saturated_permeability_m2"] = anchor_k
+            cfg["hydraulics"]["wetting_permeability_m2"] = anchor_k
+            profile = cfg["hydraulics"].get("permeability_profile", {})
+            profile["upstream_permeability_m2"] = anchor_k
+            profile["downstream_permeability_m2"] = anchor_k
+            cfg["hydraulics"]["target_inlet_pressure_gauge_Pa"] = (
+                float(terminal[bar]["basket_pressure__bar"]) * 1e5
+                if item["pressure"] == "MEASURED_TERMINAL_BASKET" else bar * 1e5
+            )
+            cfg["time"].update({"end_s":103.0,"delta_t_s":0.02,"field_write_interval_s":1.0})
+            cfg["geometry"].update({"axial_cells":128,"radial_cells":64})
+            if "DISSOLUTION_INDEXED" in item["branch"]:
+                closure = cfg.get("effective_permeability_evolution")
+                if not isinstance(closure, dict) or closure.get("enabled") is not True:
+                    raise RuntimeError(f"{cid}: dissolution-indexed closure absent or disabled")
+            else:
+                cfg.pop("effective_permeability_evolution", None)
+                if "effective_permeability_evolution" in cfg:
+                    raise RuntimeError(f"{cid}: static branch inherited dissolution closure")
+            if item["branch"] == "DARCY_FORCHHEIMER_STATIC":
+                cfg["flowResistanceModel"] = "darcyForchheimer"
+                cfg["inertialPermeabilityModel"] = "wadsworth2026CeramicsFit"
+                cfg["nonlinearControls"] = {"relativeTolerance":1e-9,"absoluteTolerance":1e-13,"maximumIterations":80,"underRelaxation":0.8,"machineFluxRelativeTolerance":1e-8}
+            else:
+                cfg["flowResistanceModel"] = "darcy"
+                cfg.pop("inertialPermeabilityModel", None)
+                cfg.pop("constantInertialPermeabilityM", None)
+                cfg.pop("nonlinearControls", None)
+            cfg["governance"] = governance("SOURCE_ANCHORED_RECONSTRUCTION")
+            cfg["claim_ceiling"] = "Review-corrected source-anchored reconstruction; physical validation NOT_ESTABLISHED."
+        else:
+            cfg = copy.deepcopy(reference)
+            cfg["scenario_id"] = cid.replace("-", "_")
+            cfg["coffee_bed"].update({"dry_dose_kg":0.018,"bed_depth_m":0.009})
+            cfg["pressureBoundaryModel"] = "lumpedMachineCompliance"
+            cfg["machineBoundary"] = copy.deepcopy(machine)
+            cfg["time"].update({"end_s":25.0,"delta_t_s":0.02,"field_write_interval_s":1.0})
+            cfg["geometry"].update({"axial_cells":128,"radial_cells":64})
+            cfg["governance"] = governance("GENERIC_MACHINE_FIXTURE_OVERLAY_AGAINST_DE1_TRACE")
+            cfg["claim_ceiling"] = "Descriptive generic-machine overlay; physical validation NOT_ESTABLISHED."
+        path = configs / f"{cid}.json"
+        dump(path, cfg)
+        records.append({"id":cid,"sha256":sha256(path),"branch":item["branch"],"closure_present":"effective_permeability_evolution" in cfg})
+    dump(run_root / "R1_PREPARATION_RECORD.json", {
+        "schema_version":"espresso.validation.val_corpus_001.r1_preparation.v1",
+        "protocol_sha256":sha256(root / "validation/cases/val_corpus_001/VAL_CORPUS_001_REVIEW_CORRECTION_PROTOCOL.json"),
+        "source_snapshot":{"commit":SNAPSHOT_COMMIT,"tree":SNAPSHOT_TREE},
+        "anchor":protocol["anchor"],"configs":records})
+
+
+def run_r1(root: Path, run_root: Path, executable: Path, ranks: int) -> None:
+    attempts = []
+    for config in sorted((run_root / "configs").glob("*.json")):
+        cid, case = config.stem, run_root / "cases" / config.stem
+        started = datetime.now(timezone.utc).isoformat(); t0 = time.monotonic()
+        status, reason, classification, launched = "FAILED", "", "PRE_LAUNCH_FAILURE", False
+        try:
+            subprocess.run(["python3",str(root/"scripts/prepare_case.py"),"--root",str(root),"--config",str(config),"--case-dir",str(case),"--nprocs",str(ranks)],check=True)
+            with (case/"log.blockMesh").open("w") as log: subprocess.run(["blockMesh"],cwd=case,stdout=log,stderr=subprocess.STDOUT,check=True)
+            with (case/"log.checkMesh").open("w") as log: subprocess.run(["checkMesh"],cwd=case,stdout=log,stderr=subprocess.STDOUT,check=True)
+            env = dict(os.environ, ESPRESSO_CASE_ROOT=str(case)); launched = True
+            with (case/"log.decomposePar").open("w") as log: subprocess.run(["decomposePar","-force"],cwd=case,stdout=log,stderr=subprocess.STDOUT,check=True)
+            with (case/"log.solver").open("w") as log: subprocess.run(["mpirun","-np",str(ranks),str(executable),"-parallel"],cwd=case,env=env,stdout=log,stderr=subprocess.STDOUT,check=True)
+            solver_text=(case/"log.solver").read_text(errors="replace")
+            if "FOAM FATAL ERROR" in solver_text or "\nEnd\n" not in solver_text:
+                reason="solver log contains FOAM FATAL ERROR or lacks terminal End marker"; classification="SOLVER_FAILURE"
+            else: status, classification = "COMPLETED", "COMPLETED"
+        except Exception as exc:
+            reason=f"{type(exc).__name__}: {exc}"; classification="SOLVER_FAILURE" if launched else "PRE_LAUNCH_FAILURE"
+        trace=case/"postProcessing/wholePull/0/traces.csv"
+        attempts.append({"id":cid,"status":status,"failure_reason":reason,"failure_classification":classification,
+            "openfoam_launched":launched,"started_utc":started,"duration_s":round(time.monotonic()-t0,6),
+            "config_path":f"configs/{config.name}","config_sha256":sha256(config),
+            "trace_path":f"cases/{cid}/postProcessing/wholePull/0/traces.csv","trace_present":trace.is_file(),
+            "trace_size":trace.stat().st_size if trace.is_file() else 0,"trace_sha256":sha256(trace) if trace.is_file() else None})
+        dump(run_root/"R1_EXECUTION_RECORD.json", {"schema_version":"espresso.validation.val_corpus_001.r1_execution.v1","task":TASK,
+            "executable_sha256":sha256(executable),"ranks":ranks,"attempts":attempts})
+
+
+def linear_value(rows, time_key: str, value_key: str, target: float):
+    points=[(float(r[time_key]),float(r[value_key])) for r in rows if r.get(time_key) not in (None,"") and r.get(value_key) not in (None,"")]
+    if not points or target < points[0][0]-1e-12 or target > points[-1][0]+1e-12: return None
+    if target <= points[0][0]+1e-12: return points[0][1]
+    for (t0,v0),(t1,v1) in zip(points,points[1:]):
+        if t0-1e-12 <= target <= t1+1e-12:
+            if abs(t1-t0)<1e-15: return v1
+            f=(target-t0)/(t1-t0); return v0+f*(v1-v0)
+    return points[-1][1] if abs(target-points[-1][0])<1e-9 else None
+
+
+def metric(observed, modeled, sigma=None):
+    pairs=[(float(o),float(m)) for o,m in zip(observed,modeled) if o is not None and m is not None]
+    residual=[m-o for o,m in pairs]; n=len(pairs)
+    result={"sample_count":n,"rmse":math.sqrt(sum(x*x for x in residual)/n),"mae":sum(abs(x) for x in residual)/n,
+            "signed_bias":sum(residual)/n,"relative_endpoint_error":residual[-1]/pairs[-1][0] if pairs[-1][0] else None,
+            "median_absolute_log_ratio":sorted(abs(math.log(max(abs(m),1e-30)/max(abs(o),1e-30))) for o,m in pairs)[n//2]}
+    if sigma is not None:
+        valid=[(abs(m-o),float(s)) for (o,m),s in zip(pairs,sigma) if s is not None and float(s)>0]
+        result["source_uncertainty_coverage"] = sum(e<=s for e,s in valid)/len(valid) if valid else None
+    else: result["source_uncertainty_coverage"] = None
+    return result
+
+
+def spearman3(source, model):
+    def ranks(values):
+        order=sorted(range(len(values)),key=lambda i:values[i]); out=[0]*len(values)
+        for rank,i in enumerate(order,1): out[i]=rank
+        return out
+    a,b=ranks(source),ranks(model); n=len(a)
+    return 1-6*sum((x-y)**2 for x,y in zip(a,b))/(n*(n*n-1))
+
+
+def windows_metrics(source_rows, model_rows, density, solver_end=103.0):
+    selected=[r for r in source_rows if 0 <= float(r["time__s"]) <= min(100.0,solver_end-3.0)]
+    modeled={"pressure":[],"flow":[],"mass":[]}; observed={"pressure":[],"flow":[],"mass":[]}; sigma={"pressure":[],"flow":[],"mass":[]}
+    overlay=[]
+    for row in selected:
+        ts=float(row["time__s"]); tm=ts+3.0
+        values={"pressure":linear_value(model_rows,"time_s","inlet_pressure_Pa",tm),
+                "flow":linear_value(model_rows,"time_s","outlet_flow_m3_s",tm),
+                "mass":linear_value(model_rows,"time_s","cup_beverage_mass_kg",tm)}
+        if any(v is None for v in values.values()): continue
+        modp=values["pressure"]/1e5; modf=values["flow"]*density*1000; modm=values["mass"]*1000
+        obs=[float(row["basket_pressure__bar"]),float(row["mass_flow_rate__g_per_s"]),float(row["mass__g"])]
+        for key,m,o,skey in (("pressure",modp,obs[0],"basket_pressure_std__bar"),("flow",modf,obs[1],"mass_flow_rate_std__g_per_s"),("mass",modm,obs[2],"mass_std__g")):
+            modeled[key].append(m); observed[key].append(o); sigma[key].append(float(row[skey]))
+        overlay.append([ts,tm,obs[0],modp,obs[1],modf,obs[2],modm])
+    result={}
+    bounds={"early":(0,100/3),"middle":(100/3,200/3),"late":(200/3,100.0000001)}
+    times=[x[0] for x in overlay]
+    for key in ("pressure","flow","mass"):
+        result[key]={"full":metric(observed[key],modeled[key],sigma[key])}
+        for label,(lo,hi) in bounds.items():
+            idx=[i for i,t in enumerate(times) if lo<=t<hi]
+            result[key][label]=metric([observed[key][i] for i in idx],[modeled[key][i] for i in idx],[sigma[key][i] for i in idx]) if idx else None
+    result["source_window_s"]=[times[0],times[-1]]; result["model_window_s"]=[times[0]+3,times[-1]+3]
+    result["alignment_rule"]="solver_time=source_time+3.0s"; result["interpolation_rule"]="linear within domain; no extrapolation"
+    return result,overlay
+
+
+def analyze_r1(root: Path, snapshot: Path, original_root: Path, run_root: Path, output: Path, overlays_output: Path) -> None:
+    protocol=correction_protocol(root); evidence=read_csv(snapshot/"puckworks/data/waszkiewicz2025/traces_time_dependent.csv")
+    execution=load(run_root/"R1_EXECUTION_RECORD.json"); attempts={x["id"]:x for x in execution["attempts"]}
+    rows=[]; overlays={}; groups={bar:[r for r in evidence if float(r["reference_pressure_round__bar"])==bar] for bar in (5,9,11)}
+    wasz={}
+    for item in protocol["correction_matrix"]:
+        cid=item["id"]; attempt=attempts[cid]
+        if not cid.startswith("R1-WASZ"): continue
+        trace=run_root/attempt["trace_path"]
+        if attempt["status"]!="COMPLETED" or not trace.is_file():
+            rows.append({"id":cid,"label":"INVALIDATED_EXECUTION","failure":attempt["failure_reason"]}); continue
+        metrics,overlay=windows_metrics(groups[int(item["source_group_bar"])],read_csv(trace),965.0)
+        wasz[cid]=metrics; overlays[cid]=overlay
+    families={}
+    for branch in ("DARCY_STATIC","DARCY_FORCHHEIMER_STATIC","DARCY_DISSOLUTION_INDEXED"):
+        ids=[x["id"] for x in protocol["correction_matrix"] if x.get("branch")==branch and x.get("pressure")=="MEASURED_TERMINAL_BASKET"]
+        src_flow=[float(source_terminal(snapshot,b)["mass_flow_rate__g_per_s"]) for b in (5,9,11)]
+        src_mass=[float(source_terminal(snapshot,b)["mass__g"]) for b in (5,9,11)]
+        mod_flow=[overlays[i][-1][5] for i in ids]; mod_mass=[overlays[i][-1][7] for i in ids]
+        families[branch]={"ids":ids,"flow_spearman":spearman3(src_flow,mod_flow),"mass_spearman":spearman3(src_mass,mod_mass),
+            "source_flow_order":[ids[i] for i in sorted(range(3),key=lambda j:src_flow[j],reverse=True)],
+            "model_flow_order":[ids[i] for i in sorted(range(3),key=lambda j:mod_flow[j],reverse=True)],
+            "source_mass_order":[ids[i] for i in sorted(range(3),key=lambda j:src_mass[j],reverse=True)],
+            "model_mass_order":[ids[i] for i in sorted(range(3),key=lambda j:mod_mass[j],reverse=True)]}
+    for cid,metrics in wasz.items():
+        branch=next(x["branch"] for x in protocol["correction_matrix"] if x["id"]==cid)
+        order=families.get(branch); cover=[metrics[k]["full"]["source_uncertainty_coverage"] for k in ("pressure","flow","mass")]
+        correct=order is not None and order["flow_spearman"]==1 and order["mass_spearman"]==1
+        label="WORKING" if correct and all(x is not None and x>=.68 for x in cover) else ("PARTIAL" if correct or any(x and x>0 for x in cover) else "FAILING")
+        rows.append({"id":cid,"source":"waszkiewicz2025","branch":branch,"comparison_mode":"SOURCE_ANCHORED_RECONSTRUCTION",
+            "metrics":metrics,"ordering":order,"label":label,"density_kg_m3":965.0})
+    # Historical 30 s traces: valid aligned overlap only, source 0..27 s.
+    historical=[]
+    old_cases=original_root/"consolidated/cases"
+    for bar in (5,9,11):
+        for suffix,branch in (("DARCY","DISSOLUTION_INDEXED_DARCY_30S"),("DF","DISSOLUTION_INDEXED_DARCY_FORCHHEIMER_30S")):
+            cid=f"WASZ-{bar}-{suffix}"; trace=old_cases/cid/"postProcessing/wholePull/0/traces.csv"
+            m,o=windows_metrics(groups[bar],read_csv(trace),965.0,30.0); overlays[f"HISTORICAL-{cid}"]=o
+            historical.append({"id":cid,"branch":branch,"valid_overlap_source_s":[0,27],"metrics":m,"label":"DESCRIPTIVE_ONLY"})
+    # Foster frozen shift sensitivity using retained trace.
+    foster_source=read_csv(snapshot/"puckworks/data/foster2025_2/fig6_front_position.csv")
+    foster_model=read_csv(old_cases/"FOSTER-WETTING/postProcessing/wholePull/0/traces.csv")
+    foster=[]
+    for shift in (0.0,.796,1.0):
+        obs=[]; mod=[]; sig=[]; overlay=[]
+        for r in foster_source:
+            t=float(r["t_s"]); v=linear_value(foster_model,"time_s","wet_front_m",t+shift)
+            if v is None: continue
+            obs.append(float(r["s_mm"])); mod.append(v*1000); sig.append(float(r["s_err_mm"])); overlay.append([t,t+shift,obs[-1],mod[-1]])
+        mm=metric(obs,mod,sig); mm["early_middle_late"]={}
+        for label,lo,hi in (("early",0,8/3),("middle",8/3,16/3),("late",16/3,8.0001)):
+            ii=[i for i,x in enumerate(overlay) if lo<=x[0]<hi]; mm["early_middle_late"][label]=metric([obs[i] for i in ii],[mod[i] for i in ii],[sig[i] for i in ii]) if ii else None
+        key=f"FOSTER-SHIFT-{shift}"; overlays[key]=overlay; foster.append({"shift_s":shift,"metrics":mm,"model_first_drip_s":float(foster_model[-1]["first_drip_s"]),"first_drip_error":"NOT_SCORED_NO_ADMISSIBLE_OBSERVED_EVENT","label":"PARTIAL"})
+    # DE1 low/base/high descriptive overlays.
+    de1=load(snapshot/"puckworks/data/de1_fixtureA.json"); de1_results=[]
+    de1_paths={"LOW":old_cases/"DE1-MACHINE-LOW/postProcessing/wholePull/0/traces.csv","BASE":run_root/attempts["R1-DE1-MACHINE-BASE-9MM"]["trace_path"],"HIGH":old_cases/"DE1-MACHINE-HIGH/postProcessing/wholePull/0/traces.csv"}
+    for level,path in de1_paths.items():
+        model=read_csv(path); op=[];mp=[];om=[];mm=[];overlay=[]
+        for i,t in enumerate(de1["elapsed_s"]):
+            pv=linear_value(model,"time_s","basketPressurePa",float(t)); mv=linear_value(model,"time_s","cup_beverage_mass_kg",float(t))
+            if pv is None or mv is None: continue
+            op.append(float(de1["pressure_bar"][i]));mp.append(pv/1e5);om.append(float(de1["weight_g"][i]));mm.append(mv*1000);overlay.append([float(t),op[-1],mp[-1],om[-1],mm[-1]])
+        overlays[f"DE1-{level}"]=overlay; de1_results.append({"assumption":level,"bed_depth_m":{"LOW":.0075,"BASE":.009,"HIGH":.0105}[level],"pressure":metric(op,mp),"mass":metric(om,mm),"label":"DESCRIPTIVE_ONLY"})
+    overlay_bytes=(json.dumps(overlays,indent=2,sort_keys=True)+"\n").encode(); overlays_output.parent.mkdir(parents=True,exist_ok=True); overlays_output.write_bytes(overlay_bytes)
+    result={"schema_version":"espresso.validation.val_corpus_001.results.v2","task":"VAL-CORPUS-001-EXACT-HEAD-REVIEW-CORRECTION",
+        "protocol_sha256":sha256(root/"validation/cases/val_corpus_001/VAL_CORPUS_001_REVIEW_CORRECTION_PROTOCOL.json"),
+        "superseded_result_sha256":protocol["superseded"]["result_bundle_sha256"],
+        "execution":{"attempted":len(execution["attempts"]),"launched":sum(x["openfoam_launched"] for x in execution["attempts"]),"completed":sum(x["status"]=="COMPLETED" for x in execution["attempts"]),"failed":sum(x["status"]!="COMPLETED" for x in execution["attempts"])},
+        "waszkiewicz_rows":rows,"waszkiewicz_family_ordering":families,"historical_overlap_only":historical,"foster_shift_sensitivity":foster,"de1_assumption_sensitivity":de1_results,
+        "retained_dispositions":{"compaction":"INVALIDATED_NUMERICAL_EXECUTION_POROELASTIC_NONLINEAR_FAILURE; separate numerical-robustness finding, not physical-model verdict","wadsworth_roman":"COMPONENT_EQUATION_RECONSTRUCTION","mo":"DESCRIPTIVE_ONLY_QUALITATIVE_MECHANISM_DIAGNOSTIC_UNRESOLVED_COEFFICIENT_UNITS"},
+        "mass_conversion_sensitivity_kg_m3":[965.0,997.0,1000.0],"overlays":{"path":overlays_output.name,"sha256":hashlib.sha256(overlay_bytes).hexdigest(),"bytes":len(overlay_bytes)},
+        "claim_ceiling":protocol["claim_ceiling"]}
+    output.parent.mkdir(parents=True,exist_ok=True); output.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
+
+
 def main():
-    parser=argparse.ArgumentParser(); parser.add_argument("command",choices=["prepare","run","analyze"])
+    parser=argparse.ArgumentParser(); parser.add_argument("command",choices=["prepare","run","analyze","prepare-r1","run-r1","analyze-r1"])
     parser.add_argument("--root",type=Path,required=True); parser.add_argument("--snapshot",type=Path)
     parser.add_argument("--run-root",type=Path,required=True); parser.add_argument("--executable",type=Path)
     parser.add_argument("--ranks",type=int,default=16); parser.add_argument("--output",type=Path)
+    parser.add_argument("--original-root",type=Path); parser.add_argument("--overlays-output",type=Path)
     args=parser.parse_args(); root=args.root.resolve(); run_root=args.run_root.resolve()
     if args.command=="prepare": prepare(root,args.snapshot.resolve(),run_root)
     elif args.command=="run": run(root,run_root,args.executable.resolve(),args.ranks)
-    else: analyze(root,args.snapshot.resolve(),run_root,args.output.resolve())
+    elif args.command=="analyze": analyze(root,args.snapshot.resolve(),run_root,args.output.resolve())
+    elif args.command=="prepare-r1": prepare_r1(root,args.snapshot.resolve(),run_root)
+    elif args.command=="run-r1": run_r1(root,run_root,args.executable.resolve(),args.ranks)
+    else: analyze_r1(root,args.snapshot.resolve(),args.original_root.resolve(),run_root,args.output.resolve(),args.overlays_output.resolve())
 
 
 if __name__ == "__main__": main()

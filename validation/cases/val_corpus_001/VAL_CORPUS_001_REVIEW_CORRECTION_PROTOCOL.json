@@ -1,0 +1,74 @@
+{
+  "schema_version": "espresso.validation.val_corpus_001.review_correction_protocol.v1",
+  "task": "VAL-CORPUS-001-EXACT-HEAD-REVIEW-CORRECTION",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "reviewed_head": "7d4120d51c419ed3bbb8d5131bbac5d50b74914a",
+  "reviewed_tree": "b90d5f799c6d2a97df2a9073916d18df847f925f",
+  "evidence_snapshot": {"commit":"9c52c94edb27b461b6e7a4d471d29f3cef9d053e","tree":"44d6539096648777f78c4db83f0985d5bd16e352"},
+  "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
+  "superseded": {
+    "protocol_sha256":"69c227c31300835b28f700386c86209e1b2a8c785ca9318d209d00b8324c6484",
+    "result_bundle_sha256":"3b105206c3a859d04006b0ec615224334599d17ad605a9d69fb99df6f228ea14",
+    "atlas_sha256":"97af81abb594d13ac1a90be36e164e02d401e87f472169dbc5c7095bdd97f7bc",
+    "execution_record_sha256":"fae71349a212795299e6f189d6c75cf1ddce7b8ed265cd7f8a362c6a2de5fe80",
+    "external_artifact_manifest_sha256":"39f876f7d80e04e2dadb3caf897395c461e1bbfccdcc089a09262ab64da4eabb"
+  },
+  "affected_fields": ["branch_identity","comparison_mode","density","source_model_time_mapping","score_window","interpolation","metrics","ordering_tests","result_label","assumption_sensitivity","execution_provenance","artifact_aggregate","atlas_interpretation"],
+  "unaffected_fields": ["evidence_bytes","rights","source_rows","runtime_dependency_lock","solver_source","governing_equations","original_protocol_bytes","original_execution_attempts","compaction_failure_traces","claim_ceiling"],
+  "branch_contract": {
+    "STATIC":"effective_permeability_evolution MUST be absent",
+    "DISSOLUTION_INDEXED":"effective_permeability_evolution.enabled MUST equal true",
+    "historical_darcy":"DISSOLUTION_INDEXED_DARCY_30S",
+    "historical_darcy_forchheimer":"DISSOLUTION_INDEXED_DARCY_FORCHHEIMER_30S",
+    "historical_compaction":"INVALIDATED_NUMERICAL_EXECUTION_POROELASTIC_NONLINEAR_FAILURE"
+  },
+  "anchor": {
+    "classification":"SOURCE_ANCHORED_RECONSTRUCTION",
+    "formula":"k = (mass_flow_g_s / density_kg_m3 / 1000) * viscosity_Pa_s * bed_depth_m / (pi * basket_radius_m^2 * basket_pressure_Pa)",
+    "source_file":"puckworks/data/waszkiewicz2025/traces_time_dependent.csv",
+    "source_file_sha256":"40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9",
+    "source_row":{"reference_pressure_round_bar":9.0,"time_s":100.0,"basket_pressure_bar":8.716916,"mass_flow_g_s":1.824924},
+    "density_kg_m3":965.0,"viscosity_Pa_s":0.000315,"bed_depth_m":0.01,"basket_radius_m":0.028,
+    "resulting_permeability_m2":2.7745926203619628e-15,
+    "bounds_m2":[1e-16,1e-12],"replacement_anchor":"PROHIBITED"
+  },
+  "mapping": {
+    "source_density_kg_m3":965.0,"solver_density_kg_m3":965.0,"primary_mass_conversion_density_kg_m3":965.0,
+    "mass_conversion_sensitivities_kg_m3":[997.0,1000.0],
+    "solver_time_equals_source_time_plus_s":3.0,"source_window_s":[0.0,100.0],"solver_window_s":[3.0,103.0],
+    "interpolation":"LINEAR_WITHIN_DOMAIN_ONLY","extrapolation":"PROHIBITED",
+    "measured_pressure_node":"terminal measured basket_pressure__bar for each group",
+    "nominal_pressure_node":"separate assumption sensitivity only"
+  },
+  "correction_matrix": [
+    {"id":"R1-WASZ-5-DARCY-STATIC-MEASURED","branch":"DARCY_STATIC","pressure":"MEASURED_TERMINAL_BASKET","source_group_bar":5},
+    {"id":"R1-WASZ-9-DARCY-STATIC-MEASURED","branch":"DARCY_STATIC","pressure":"MEASURED_TERMINAL_BASKET","source_group_bar":9},
+    {"id":"R1-WASZ-11-DARCY-STATIC-MEASURED","branch":"DARCY_STATIC","pressure":"MEASURED_TERMINAL_BASKET","source_group_bar":11},
+    {"id":"R1-WASZ-5-DF-STATIC-MEASURED","branch":"DARCY_FORCHHEIMER_STATIC","pressure":"MEASURED_TERMINAL_BASKET","source_group_bar":5},
+    {"id":"R1-WASZ-9-DF-STATIC-MEASURED","branch":"DARCY_FORCHHEIMER_STATIC","pressure":"MEASURED_TERMINAL_BASKET","source_group_bar":9},
+    {"id":"R1-WASZ-11-DF-STATIC-MEASURED","branch":"DARCY_FORCHHEIMER_STATIC","pressure":"MEASURED_TERMINAL_BASKET","source_group_bar":11},
+    {"id":"R1-WASZ-5-DARCY-DISSOLUTION-MEASURED","branch":"DARCY_DISSOLUTION_INDEXED","pressure":"MEASURED_TERMINAL_BASKET","source_group_bar":5},
+    {"id":"R1-WASZ-9-DARCY-DISSOLUTION-MEASURED","branch":"DARCY_DISSOLUTION_INDEXED","pressure":"MEASURED_TERMINAL_BASKET","source_group_bar":9},
+    {"id":"R1-WASZ-11-DARCY-DISSOLUTION-MEASURED","branch":"DARCY_DISSOLUTION_INDEXED","pressure":"MEASURED_TERMINAL_BASKET","source_group_bar":11},
+    {"id":"R1-WASZ-5-DARCY-STATIC-NOMINAL","branch":"DARCY_STATIC","pressure":"NOMINAL","source_group_bar":5},
+    {"id":"R1-WASZ-9-DARCY-STATIC-NOMINAL","branch":"DARCY_STATIC","pressure":"NOMINAL","source_group_bar":9},
+    {"id":"R1-WASZ-11-DARCY-STATIC-NOMINAL","branch":"DARCY_STATIC","pressure":"NOMINAL","source_group_bar":11},
+    {"id":"R1-DE1-MACHINE-BASE-9MM","branch":"GENERIC_MACHINE_FIXTURE_OVERLAY_AGAINST_DE1_TRACE","bed_depth_m":0.009}
+  ],
+  "planned_new_openfoam_launches":13,
+  "waszkiewicz_windows":{"early_source_s":[0,33.3333333333],"middle_source_s":[33.3333333333,66.6666666667],"late_source_s":[66.6666666667,100]},
+  "metrics": ["rmse","mae","signed_bias","relative_endpoint_error","sample_count","source_window","model_window","uncertainty_coverage","median_absolute_log_ratio","spearman_condition_ordering"],
+  "primary_outputs":{"waszkiewicz":["basket_pressure","mass_flow","delivered_mass"],"foster":["wetting_front"],"de1":["pressure","scale_mass"]},
+  "label_rules": {
+    "WORKING":"all declared primary outputs have uncertainty coverage >= 0.68 and correct condition ordering where applicable",
+    "PARTIAL":"at least one declared direction/order or quantitative primary axis is captured and at least one primary axis is not",
+    "FAILING":"declared primary direction/order is wrong or no primary quantitative axis is captured",
+    "DESCRIPTIVE_ONLY":"no defensible quantitative gate exists",
+    "INVALIDATED_EXECUTION":"OpenFOAM launch failed or trace is incomplete"
+  },
+  "assumption_sensitivities":{"foster_time_shift_s":[0.0,0.796,1.0],"de1_bed_depth_m":[0.0075,0.009,0.0105],"pressure_node":["MEASURED_TERMINAL_BASKET","NOMINAL"],"mass_conversion_density_kg_m3":[965.0,997.0,1000.0]},
+  "reproducibility":{"independent_reductions":2,"required_relation":"BYTE_IDENTICAL","overlay_output":"separate deterministic JSON with SHA-256 bound by compact bundle"},
+  "provenance":{"retain_all_historical_attempt_sets":true,"record_config_and_trace_sha256":true,"canonical_external_file_ledger":true,"aggregate_algorithm":"SHA256 over sorted lines: sha256 two spaces relative_path newline"},
+  "solver_source_changes":0,
+  "claim_ceiling":{"PHYSICAL_VALIDATION":"NOT_ESTABLISHED","GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION":"NOT_ESTABLISHED","PROTECTED_OR_HOLDOUT_SCORING":"NOT_PERFORMED","EXPERIMENTAL_COMMISSIONING":"NOT_AUTHORIZED"}
+}
