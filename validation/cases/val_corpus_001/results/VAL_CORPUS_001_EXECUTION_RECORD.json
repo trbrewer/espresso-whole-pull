@@ -1,0 +1,151 @@
+{
+  "task": "VAL-CORPUS-001",
+  "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
+  "ranks": 16,
+  "attempts": [
+    {
+      "config_sha256": "4263eaa4a8108adac12769f32c30ec82e492205f0178b2fb7481f3d960794e7b",
+      "duration_s": 3.722758,
+      "failure_reason": "",
+      "id": "DE1-MACHINE-HIGH",
+      "started_utc": "2026-08-02T19:09:10.218819+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "243fcfdd98e8aeda40d12ba5a9730a82d9155fa071c7bd10be5576301f17571b",
+      "duration_s": 4.025251,
+      "failure_reason": "",
+      "id": "DE1-MACHINE-LOW",
+      "started_utc": "2026-08-02T19:09:13.944042+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "76b6c363d6e2375e0ca03baed94995467119ea0b07266a0399fe2c3107c2f89c",
+      "duration_s": 1.840489,
+      "failure_reason": "",
+      "id": "FOSTER-WETTING",
+      "started_utc": "2026-08-02T19:09:17.970326+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "a3eba1f5928faf135369b894054db8c300441f7f8d815992fa05093d1d9e6e00",
+      "duration_s": 1.228566,
+      "failure_reason": "",
+      "id": "MO-DF-HIGH",
+      "started_utc": "2026-08-02T19:09:19.812044+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "0eb9d67ccf40fc0339128a3a6d871ad5ce03b78c6d442bed78cc87d58b3c7090",
+      "duration_s": 1.319879,
+      "failure_reason": "",
+      "id": "MO-DF-LOW",
+      "started_utc": "2026-08-02T19:09:21.042365+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "8dc0f34105628bf04d7fffb647a33b3b22a141bff94432729a14c81e2d4fa06b",
+      "duration_s": 1.23349,
+      "failure_reason": "",
+      "id": "ROMAN-PERM",
+      "started_utc": "2026-08-02T19:09:22.364175+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "af8c29437763a199ce0538d169daf385c704947c6e51128b350d31e63e74336f",
+      "duration_s": 1.053259,
+      "failure_reason": "",
+      "id": "WADS-PERM",
+      "started_utc": "2026-08-02T19:09:23.599298+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "2bc208137c476305bc381fa52d1c42e32a4189fde9fb62f445cd96efe19f1d11",
+      "duration_s": 2.417296,
+      "failure_reason": "",
+      "id": "WASZ-11-DARCY",
+      "started_utc": "2026-08-02T19:09:24.701212+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "29b00ba199d669cd5d29a8adcd8df748f065da400e411ebf37a17f6feb1b6085",
+      "duration_s": 9.90479,
+      "failure_reason": "",
+      "id": "WASZ-11-DF",
+      "started_utc": "2026-08-02T19:09:27.120050+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "ede83b7df9379a22361c770a3f2324ee1e2c45850f550d36d11afe3078b7a817",
+      "duration_s": 2.449378,
+      "failure_reason": "",
+      "id": "WASZ-5-DARCY",
+      "started_utc": "2026-08-02T19:09:37.074220+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "6c58c3341b613816528ab416d4f92316650206ae77e17d6acbdea41020ecee93",
+      "duration_s": 8.684785,
+      "failure_reason": "",
+      "id": "WASZ-5-DF",
+      "started_utc": "2026-08-02T19:09:39.525490+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "c135d0ec6e38f16f2da6ec3921f6b59c610abc24438daa331c3234790a2754d1",
+      "duration_s": 2.414242,
+      "failure_reason": "",
+      "id": "WASZ-9-DARCY",
+      "started_utc": "2026-08-02T19:09:48.259448+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "a84160b19cf0ed2e7baaf77c6d00f68cacc5468978ab3dbe8432a84c9a5f6092",
+      "duration_s": 9.353723,
+      "failure_reason": "",
+      "id": "WASZ-9-DF",
+      "started_utc": "2026-08-02T19:09:50.675406+00:00",
+      "status": "COMPLETED",
+      "trace_present": false
+    },
+    {
+      "config_sha256": "8502dee4af576ac90cbac1f0c1d89e282ef1578e3c65a6034dcae9cc303b205f",
+      "duration_s": 1.742655,
+      "failure_reason": "FOAM FATAL ERROR: poroelastic nonlinear solve failed; retained without rerun",
+      "id": "WASZ-11-COMPACT",
+      "started_utc": "2026-08-02T19:11:38.481124+00:00",
+      "status": "FAILED",
+      "trace_present": true
+    },
+    {
+      "config_sha256": "66e677d7d4d3a992027e4622600b1f046fd6ad9a8b8022881f3083280787f328",
+      "duration_s": 1.488048,
+      "failure_reason": "FOAM FATAL ERROR: poroelastic nonlinear solve failed; retained without rerun",
+      "id": "WASZ-5-COMPACT",
+      "started_utc": "2026-08-02T19:11:40.225893+00:00",
+      "status": "FAILED",
+      "trace_present": true
+    },
+    {
+      "config_sha256": "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5",
+      "duration_s": 1.600827,
+      "failure_reason": "FOAM FATAL ERROR: poroelastic nonlinear solve failed; retained without rerun",
+      "id": "WASZ-9-COMPACT",
+      "started_utc": "2026-08-02T19:11:41.715478+00:00",
+      "status": "FAILED",
+      "trace_present": true
+    }
+  ]
+}

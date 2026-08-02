@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 229,
-  "total_uncompressed_bytes_excluding_manifest": 2072053,
-  "aggregate_source_sha256": "de95fa0377002448a23207e7df5a7012b81efc0f38914214b9791250f70efd33",
-  "aggregate_sha256": "de95fa0377002448a23207e7df5a7012b81efc0f38914214b9791250f70efd33",
+  "file_count": 230,
+  "total_uncompressed_bytes_excluding_manifest": 2078004,
+  "aggregate_source_sha256": "964c72fbe7ffda11d2f559e773c580b78308c3353c00ee26c5c81b455b502bc8",
+  "aggregate_sha256": "964c72fbe7ffda11d2f559e773c580b78308c3353c00ee26c5c81b455b502bc8",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "223c4f4f09b920c04a3e277d943f57c637cb17e1d7199b3d2d28008ae4e228e1",
-      "bytes": 6043,
+      "sha256": "e0921031122025b140b58ff08d99bfe62f4b1237fd212b62ae2fb502fe51bc06",
+      "bytes": 6396,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -546,6 +546,11 @@
     "docs/validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md": {
       "sha256": "249c20cd6a321a6bb01c7d25ed68e931458e1ffff57c71dff5bab604bea33737",
       "bytes": 6546,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md": {
+      "sha256": "97af81abb594d13ac1a90be36e164e02d401e87f472169dbc5c7095bdd97f7bc",
+      "bytes": 5598,
       "git_mode": "100644"
     },
     "docs/validation/VAL_CORPUS_001_PROTOCOL.md": {
@@ -836,7 +841,7 @@
     "scripts/val_corpus_001.py": {
       "sha256": "c5e8f3ba810e039281baa4e3858fcc2a947bd0a75fa311b82bad66d61b7babb0",
       "bytes": 17838,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/verify_build_provenance.py": {
       "sha256": "2eba6f44c8ae2d29942edc550f12310cb315b843baaab652c71d1cb585df0285",

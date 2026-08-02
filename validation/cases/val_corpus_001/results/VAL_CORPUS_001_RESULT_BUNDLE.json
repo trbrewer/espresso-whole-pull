@@ -1,0 +1,334 @@
+{
+  "claim_ceiling": {
+    "EXPERIMENTAL_COMMISSIONING": "NOT_AUTHORIZED",
+    "GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "PROTECTED_OR_HOLDOUT_SCORING": "NOT_AUTHORIZED",
+    "RESULT_CLASS": "EXISTING_PUBLIC_EVIDENCE_RECONSTRUCTION_AND_COMPONENT_COMPARISON"
+  },
+  "execution_summary": {
+    "attempted": 16,
+    "completed": 13,
+    "failed": 3
+  },
+  "protocol_sha256": "69c227c31300835b28f700386c86209e1b2a8c785ca9318d209d00b8324c6484",
+  "rows": [
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_static",
+      "calibration_inputs": [],
+      "claim_label": "WORKING",
+      "comparison_mode": "ONE_ANCHOR_TRANSFER",
+      "comparison_outputs": [
+        "pressure",
+        "flow",
+        "delivered_mass"
+      ],
+      "condition": "WASZ-5-DARCY",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "flow_rmse_g_s=1.32217;mass_rmse_g=77.5998",
+      "scale_result": "PASS",
+      "shape_result": "PASS",
+      "source": "waszkiewicz2025",
+      "timing_result": "PARTIAL_WETTING_ORIGIN_DIFFERS"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_static",
+      "calibration_inputs": [
+        "9_bar_terminal_flow"
+      ],
+      "claim_label": "WORKING",
+      "comparison_mode": "SOURCE_RECONSTRUCTION_ANCHOR",
+      "comparison_outputs": [
+        "pressure",
+        "flow",
+        "delivered_mass"
+      ],
+      "condition": "WASZ-9-DARCY",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "flow_rmse_g_s=0.876261;mass_rmse_g=64.3933",
+      "scale_result": "PASS",
+      "shape_result": "PASS",
+      "source": "waszkiewicz2025",
+      "timing_result": "PARTIAL_WETTING_ORIGIN_DIFFERS"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_static",
+      "calibration_inputs": [],
+      "claim_label": "WORKING",
+      "comparison_mode": "ONE_ANCHOR_TRANSFER",
+      "comparison_outputs": [
+        "pressure",
+        "flow",
+        "delivered_mass"
+      ],
+      "condition": "WASZ-11-DARCY",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "flow_rmse_g_s=0.648644;mass_rmse_g=59.0537",
+      "scale_result": "PASS",
+      "shape_result": "PASS",
+      "source": "waszkiewicz2025",
+      "timing_result": "PARTIAL_WETTING_ORIGIN_DIFFERS"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_forchheimer_static",
+      "calibration_inputs": [],
+      "claim_label": "WORKING",
+      "comparison_mode": "ZERO_RETUNING",
+      "comparison_outputs": [
+        "pressure",
+        "flow",
+        "delivered_mass"
+      ],
+      "condition": "WASZ-5-DF",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "flow_rmse_g_s=1.44805;mass_rmse_g=78.1427",
+      "scale_result": "PASS",
+      "shape_result": "PASS",
+      "source": "waszkiewicz2025",
+      "timing_result": "PARTIAL_WETTING_ORIGIN_DIFFERS"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_forchheimer_static",
+      "calibration_inputs": [],
+      "claim_label": "WORKING",
+      "comparison_mode": "ZERO_RETUNING",
+      "comparison_outputs": [
+        "pressure",
+        "flow",
+        "delivered_mass"
+      ],
+      "condition": "WASZ-9-DF",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "flow_rmse_g_s=1.16979;mass_rmse_g=65.5796",
+      "scale_result": "PASS",
+      "shape_result": "PASS",
+      "source": "waszkiewicz2025",
+      "timing_result": "PARTIAL_WETTING_ORIGIN_DIFFERS"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_forchheimer_static",
+      "calibration_inputs": [],
+      "claim_label": "WORKING",
+      "comparison_mode": "ZERO_RETUNING",
+      "comparison_outputs": [
+        "pressure",
+        "flow",
+        "delivered_mass"
+      ],
+      "condition": "WASZ-11-DF",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "flow_rmse_g_s=1.02803;mass_rmse_g=60.5911",
+      "scale_result": "PASS",
+      "shape_result": "PASS",
+      "source": "waszkiewicz2025",
+      "timing_result": "PARTIAL_WETTING_ORIGIN_DIFFERS"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "finite_porosity_compaction",
+      "calibration_inputs": [],
+      "claim_label": "INVALIDATED_EXECUTION",
+      "comparison_mode": "SOURCE_RECONSTRUCTION",
+      "comparison_outputs": [],
+      "condition": "WASZ-5-COMPACT",
+      "direction_result": "UNASSESSED",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "FOAM FATAL ERROR: poroelastic nonlinear solve failed; retained without rerun",
+      "residual_signature": "UNASSESSED",
+      "scale_result": "UNASSESSED",
+      "shape_result": "UNASSESSED",
+      "source": "waszkiewicz2025",
+      "timing_result": "UNASSESSED"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "finite_porosity_compaction",
+      "calibration_inputs": [],
+      "claim_label": "INVALIDATED_EXECUTION",
+      "comparison_mode": "SOURCE_RECONSTRUCTION",
+      "comparison_outputs": [],
+      "condition": "WASZ-9-COMPACT",
+      "direction_result": "UNASSESSED",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "FOAM FATAL ERROR: poroelastic nonlinear solve failed; retained without rerun",
+      "residual_signature": "UNASSESSED",
+      "scale_result": "UNASSESSED",
+      "shape_result": "UNASSESSED",
+      "source": "waszkiewicz2025",
+      "timing_result": "UNASSESSED"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "finite_porosity_compaction",
+      "calibration_inputs": [],
+      "claim_label": "INVALIDATED_EXECUTION",
+      "comparison_mode": "SOURCE_RECONSTRUCTION",
+      "comparison_outputs": [],
+      "condition": "WASZ-11-COMPACT",
+      "direction_result": "UNASSESSED",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "FOAM FATAL ERROR: poroelastic nonlinear solve failed; retained without rerun",
+      "residual_signature": "UNASSESSED",
+      "scale_result": "UNASSESSED",
+      "shape_result": "UNASSESSED",
+      "source": "waszkiewicz2025",
+      "timing_result": "UNASSESSED"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_static_wetting",
+      "calibration_inputs": [],
+      "claim_label": "WORKING",
+      "comparison_mode": "SOURCE_RECONSTRUCTION",
+      "comparison_outputs": [
+        "wetting_front",
+        "first_drip"
+      ],
+      "condition": "FOSTER-WETTING",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "front_rmse_mm=2.65878",
+      "scale_result": "PASS",
+      "shape_result": "PASS",
+      "source": "foster2025_2",
+      "timing_result": "first_drip_s=5.43505"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_static_saturated",
+      "calibration_inputs": [],
+      "claim_label": "PARTIAL",
+      "comparison_mode": "ZERO_RETUNING",
+      "comparison_outputs": [
+        "permeability_gradient_response"
+      ],
+      "condition": "WADS-PERM",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "outlet_flow_m3_s=0.00200462534;inertial_fraction=0",
+      "scale_result": "SOURCE_RECONSTRUCTION",
+      "shape_result": "SINGLE_POINT_NOT_ASSESSED",
+      "source": "wadsworth2026",
+      "timing_result": "SATURATED_STEADY_FIXTURE"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_static_saturated",
+      "calibration_inputs": [],
+      "claim_label": "PARTIAL",
+      "comparison_mode": "ZERO_RETUNING",
+      "comparison_outputs": [
+        "permeability_gradient_response"
+      ],
+      "condition": "ROMAN-PERM",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "outlet_flow_m3_s=4.10990132e-06;inertial_fraction=0",
+      "scale_result": "SOURCE_RECONSTRUCTION",
+      "shape_result": "SINGLE_POINT_NOT_ASSESSED",
+      "source": "romancorrochano2017",
+      "timing_result": "SATURATED_STEADY_FIXTURE"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_forchheimer_static",
+      "calibration_inputs": [],
+      "claim_label": "PARTIAL",
+      "comparison_mode": "SOURCE_RECONSTRUCTION",
+      "comparison_outputs": [
+        "permeability_gradient_response"
+      ],
+      "condition": "MO-DF-LOW",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "outlet_flow_m3_s=8.84120631e-08;inertial_fraction=0.995930168",
+      "scale_result": "SOURCE_RECONSTRUCTION",
+      "shape_result": "SINGLE_POINT_NOT_ASSESSED",
+      "source": "mo2023",
+      "timing_result": "SATURATED_STEADY_FIXTURE"
+    },
+    {
+      "assumptions": "BASE",
+      "branch": "darcy_forchheimer_static",
+      "calibration_inputs": [],
+      "claim_label": "PARTIAL",
+      "comparison_mode": "SOURCE_RECONSTRUCTION",
+      "comparison_outputs": [
+        "permeability_gradient_response"
+      ],
+      "condition": "MO-DF-HIGH",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "outlet_flow_m3_s=2.50203482e-07;inertial_fraction=0.997016967",
+      "scale_result": "SOURCE_RECONSTRUCTION",
+      "shape_result": "SINGLE_POINT_NOT_ASSESSED",
+      "source": "mo2023",
+      "timing_result": "SATURATED_STEADY_FIXTURE"
+    },
+    {
+      "assumptions": "LOW",
+      "branch": "machine_coupled",
+      "calibration_inputs": [],
+      "claim_label": "PARTIAL",
+      "comparison_mode": "SOURCE_RECONSTRUCTION",
+      "comparison_outputs": [
+        "pressure",
+        "scale_mass"
+      ],
+      "condition": "DE1-MACHINE-LOW",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "pressure_rmse_bar=2.12037;mass_rmse_g=3.7255291869771145",
+      "scale_result": "FAIL",
+      "shape_result": "FAIL",
+      "source": "de1_fixtureA",
+      "timing_result": "DIRECT_RECORDED_TIME"
+    },
+    {
+      "assumptions": "HIGH",
+      "branch": "machine_coupled",
+      "calibration_inputs": [],
+      "claim_label": "PARTIAL",
+      "comparison_mode": "SOURCE_RECONSTRUCTION",
+      "comparison_outputs": [
+        "pressure",
+        "scale_mass"
+      ],
+      "condition": "DE1-MACHINE-HIGH",
+      "direction_result": "PASS",
+      "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+      "failure_reason": "",
+      "residual_signature": "pressure_rmse_bar=2.6922;mass_rmse_g=6.006200885157831",
+      "scale_result": "FAIL",
+      "shape_result": "FAIL",
+      "source": "de1_fixtureA",
+      "timing_result": "DIRECT_RECORDED_TIME"
+    }
+  ],
+  "schema_version": "espresso.validation.val_corpus_001.results.v1",
+  "task": "VAL-CORPUS-001"
+}

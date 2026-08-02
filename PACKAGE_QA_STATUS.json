@@ -26,11 +26,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 324,
+    "python_test_count": 326,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 226,
-    "source_manifest_aggregate_sha256": "1cba84ad8a7d314ba5a9f2d0111c79559959214bbc75cac52f6bf131ec9a6544",
+    "source_manifest_file_count": 230,
+    "source_manifest_aggregate_sha256": "964c72fbe7ffda11d2f559e773c580b78308c3353c00ee26c5c81b455b502bc8",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -40,6 +40,21 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS"
+  },
+  "val_corpus_001": {
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "evidence_snapshot_commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e",
+    "evidence_snapshot_tree": "44d6539096648777f78c4db83f0985d5bd16e352",
+    "runtime_dependency_lock_advanced": false,
+    "planned_openfoam_case_count": 16,
+    "completed_openfoam_case_count": 13,
+    "failed_openfoam_case_count": 3,
+    "rank_count": 16,
+    "executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
+    "scientific_result_disposition": "ADDITIONAL_DATA_AND_NUMERICAL_ROBUSTNESS_REQUIRED_BEFORE_NEW_PHYSICS",
+    "physical_validation": "NOT_ESTABLISHED",
+    "protected_or_holdout_scoring": "NOT_PERFORMED",
+    "experimental_commissioning": "NOT_AUTHORIZED"
   },
   "val_case_001": {
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
