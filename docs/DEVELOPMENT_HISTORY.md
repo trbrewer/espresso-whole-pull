@@ -183,3 +183,11 @@ rights, and deposit package. The plan records a separate upstream
 machine-pressure campaign gap and leaves sensors, pilot, feasibility,
 replication, and commissioning unresolved. No result, experiment, data,
 OpenFOAM, fit, Puckworks state, solver, framework, or physics changed.
+
+Independent exact-head review required a bounded documentation correction.
+The corrected plan replaces the unconditional evidence-class statement with a
+prospective human-owner route decision, binds prescribed targets to measured
+basket-top pressure, and adds parameter/evidence-role, normalized submission
+schema, timing, and deformation-compliance contracts. Status is
+`CORRECTED_PENDING_EXACT_HEAD_REVIEW`; the accepted erratum and all scientific
+artifacts remain unchanged.

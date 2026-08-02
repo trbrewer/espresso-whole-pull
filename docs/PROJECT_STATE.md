@@ -31,6 +31,9 @@ governing physics is authorized by the administrative closure.
 VAL-DATA-001 is an active non-commissioning planning task for the synchronized
 measurement package. `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`,
 `GOVERNING_PHYSICS_CHANGE: NONE`, and VAL-CASE-002 remains `NOT_STARTED`.
+Its exact-head review correction status is
+`VAL_DATA_001_REVIEW_STATUS: CORRECTED_PENDING_EXACT_HEAD_REVIEW`; the future
+evidence route still requires prospective human-owner selection.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

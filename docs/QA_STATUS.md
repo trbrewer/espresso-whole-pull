@@ -105,6 +105,12 @@ VAL-DATA-001 adds only an append-only campaign-reference erratum and a
 non-commissioning synchronized hydraulic-compaction measurement plan. It
 changes no result, code, configuration, framework, standard, dependency, or
 physics and performs no scientific or experimental execution.
+The bounded planning correction records
+`VAL_DATA_001_REVIEW_STATUS: CORRECTED_PENDING_EXACT_HEAD_REVIEW`, makes the
+future evidence route prospective, fixes prescribed pressure at the basket-top
+node, and adds parameter-role, data-schema, timing, and deformation contracts.
+`EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`, VAL-CASE-002 remains
+`NOT_STARTED`, and physical validation remains `NOT_ESTABLISHED`.
 
 ## WP-0.3C Stage-0 scaffold
 
