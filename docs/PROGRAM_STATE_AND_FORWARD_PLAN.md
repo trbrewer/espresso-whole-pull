@@ -13,17 +13,22 @@
 REPOSITORY:
   trbrewer/espresso-whole-pull
 
-CURRENT_MERGED_MAIN:
+MERGED_BASE_MAIN:
   bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1
 
-CURRENT_MERGED_TREE:
+MERGED_BASE_TREE:
   c1d3fdc88dabaea410c4b6236e31ce1376e5eaea
+
+WP03_002_CANDIDATE:
+  solver/wp03-002-finite-porosity-nonlinear-robustness
+  RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+  exact head and tree are recorded by the open PR and exact-head report
 
 OPENFOAM_TARGET:
   Foundation OpenFOAM 12
 
-CURRENT_EXECUTABLE_SHA256:
-  0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c
+LATEST_EXECUTED_WP03_002_CANDIDATE_EXECUTABLE_SHA256:
+  e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6
 
 RUNTIME_PUCKWORKS_LOCK:
   fc61c4670ec7bf801e40bb391aab16048b8da26b
@@ -37,9 +42,17 @@ LATEST_READ_ONLY_PUCKWORKS_EVIDENCE_SNAPSHOT:
 LATEST_EVIDENCE_TREE:
   44d6539096648777f78c4db83f0985d5bd16e352
 
-CURRENT_SOURCE_MANIFEST:
-  230 files
-  ad01a566cccc24fa8683eef5025f825065c0c4a455b00eccce15018014a9b751
+WP03_002_OUTCOME:
+  NUMERICAL_DEFECT_CORRECTED_AND_ALL_THREE_CASES_COMPLETE
+
+CROSS_PRESSURE_ORDERING:
+  STILL_REVERSED
+
+FLOW_SPEARMAN:
+  -1.0
+
+MASS_SPEARMAN:
+  -1.0
 
 VAL_001:
   COMPLETE_AND_MERGED
@@ -78,14 +91,12 @@ EXPERIMENTAL_COMMISSIONING:
 VAL_CASE_002:
   NOT_STARTED
 
-NEXT_TECHNICAL_TASK:
-  WP03_002_FINITE_POROSITY_NONLINEAR_ROBUSTNESS_AND_CORPUS_RECOMPARISON
-
-NEXT_COMPARISON_TRANCHE_AFTER_WP03_002:
+NEXT_SCIENTIFIC_TASK_AFTER_APPROVED_WP03_002_MERGE:
   VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY
 ```
 
-This block is the controlling conversation-handoff summary until the repository's current-state records are aligned in the next substantive pull request.
+WP03-002 remains an open, unmerged candidate pending exact-head review. The
+next scientific task is named for sequencing only and has not started.
 
 ---
 
@@ -103,11 +114,16 @@ The decisive result is that the Puckworks corpus is demonstrably useful. It expo
 - the solver does **not** reproduce the observed Waszkiewicz cross-pressure ordering;
 - the generic machine fixture does **not** reproduce the selected DE1 shot;
 - the current wetting model is only partly successful;
-- the finite-porosity compaction branch fails numerically in all three source-linked pressure cases.
+- the finite-porosity compaction branch originally failed numerically in all
+  three source-linked pressure cases; WP03-002 corrected that numerical defect
+  without changing physics, and the completed cases still reverse the source
+  cross-pressure ordering.
 
 This is not a failed validation program. It is the desired transition from internal verification to externally anchored diagnosis.
 
-The immediate next task is **not** another planning or governance cycle. It is a code, execution, and results cycle focused on the finite-porosity nonlinear failure. Administrative lag should be corrected inside that substantive pull request.
+WP03-002 is result-complete and awaiting exact-head review. After an approved
+merge, the next scientific task is
+`VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY`; it is not begun here.
 
 ---
 
@@ -118,13 +134,13 @@ The immediate next task is **not** another planning or governance cycle. It is a
 | Current `main` | `bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1` |
 | Current tree | `c1d3fdc88dabaea410c4b6236e31ce1376e5eaea` |
 | OpenFOAM | Foundation 12 |
-| Current solver executable | `0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c` |
+| Latest executed WP03-002 candidate executable | `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6` |
 | Runtime Puckworks lock | `fc61c4670ec7bf801e40bb391aab16048b8da26b` |
 | Read-only evidence snapshot used by VAL-CORPUS-001 | `9c52c94edb27b461b6e7a4d471d29f3cef9d053e` |
-| Current Python suite | `341/341 PASS` |
+| Current Python suite | `351/351 PASS` |
 | Current static gates | `38/38 PASS` |
-| Current source manifest | `230/230 PASS` |
-| Current source aggregate | `ad01a566cccc24fa8683eef5025f825065c0c4a455b00eccce15018014a9b751` |
+| Current static gates | `38/38 PASS` |
+| Current source manifest | `240/240 PASS`; exact aggregate is recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
 | Physical validation | `NOT_ESTABLISHED` |
 | Experimental commissioning | `NOT_AUTHORIZED` |
 | Governing-physics selection | `NOT_YET_JUSTIFIED` |
@@ -468,20 +484,21 @@ A new mechanism should be selected only after:
 
 ---
 
-# 9. Administrative lag to correct in the next substantive PR
+# 9. Administrative reconciliation completed by WP03-002
 
-The merged repository contains current-status documents that still describe completed work as open, active, or pending.
+The WP03-002 candidate reconciles earlier current-looking status lag while
+preserving explicitly time-scoped historical candidate states.
 
-## 9.1 Known stale current-state entries
+## 9.1 Reconciled current-state entries
 
-| File | Stale state | Required current state |
+| File | Historical lag corrected | Current state |
 |---|---|---|
 | `docs/PROJECT_STATE.md` | VAL-CORPUS-001 shown as open candidate; VAL-DATA-001 shown as active/pending | Both complete, approved, and merged; no active validation or data-planning task |
 | `docs/QA_STATUS.md` | VAL-DATA-001 described as candidate; VAL-001 described as open | VAL-DATA-001 and VAL-001 merged; retain their scientific limitations |
 | `docs/DEVELOPMENT_HISTORY.md` | VAL-CORPUS-001 and VAL-001 labelled open candidates | Record approved/merged final states and merge identities |
 | `PACKAGE_QA_STATUS.json` | VAL-CORPUS review pending; VAL-DATA active/pending | Both complete/approved/merged; no active data-planning task |
-| `docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md` | Does not record completion of the first hydraulic/wetting corpus comparison | Mark achieved exits and identify remaining extraction comparison and numerical diagnosis |
-| `docs/FILE_TREE.md` | No canonical program-handoff link | Link `docs/PROGRAM_STATE_AND_FORWARD_PLAN.md` |
+| `docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md` | Earlier next-step text | WP03-002 candidate complete pending review; post-merge VAL-CORPUS-002 named but not started |
+| `docs/FILE_TREE.md` | Earlier navigation state | Program handoff and WP03-002 correction records linked |
 
 ## 9.2 Required canonical status after alignment
 
@@ -508,8 +525,7 @@ ACTIVE_DATA_PLANNING_TASK:
   NONE
 
 ACTIVE_SOLVER_TASK:
-  WP03_002_FINITE_POROSITY_NONLINEAR_ROBUSTNESS
-  # only after the next branch and issue are created
+  WP03_002_RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW
 
 PHYSICAL_VALIDATION:
   NOT_ESTABLISHED
@@ -524,15 +540,11 @@ VAL_CASE_002:
   NOT_STARTED
 ```
 
-## 9.3 How to correct it
+## 9.3 Reconciliation boundary
 
-Do not create a standalone documentation-only cycle.
-
-The next substantive numerical PR should:
-
-1. add this document as `docs/PROGRAM_STATE_AND_FORWARD_PLAN.md`;
-2. align current-state records in its first prospective diagnostic-freeze commit;
-3. identify WP03-002 as the active numerical task;
+This reconciliation is part of the substantive WP03-002 numerical pull
+request, not a standalone documentation cycle. It changes no historical
+scientific result or immutable campaign execution count.
 4. update the same records at the end with the actual WP03-002 result;
 5. preserve historical task-specific “pending” language where it accurately describes the state at the time an artifact was produced.
 

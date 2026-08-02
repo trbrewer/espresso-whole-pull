@@ -1,0 +1,93 @@
+{
+  "schema_version": "espresso.wp03_002.protocol_compliance.v1",
+  "task": "WP03-002",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "status": "PASS",
+  "protocol_sha256": "d6be6302ee13002ae1cb2037434a1ba5a68107898a4f218ce77ec4044bec5022",
+  "review_correction_protocol_status": "PROSPECTIVELY_FROZEN_IN_COMMIT_317d815aec7e0977b825af5ec2bf705f828128a9",
+  "items": [
+    {
+      "requirement": "independent scalar residual agreement",
+      "disposition": "PASS",
+      "evidence": "scripts/wp03_002_reference.py independently evaluates the exact scalar flow; tests/test_wp03_002_reference.py and validation/wp03/WP03_002_REPRODUCTION_AND_DIAGNOSIS.json bind the evaluator and retained exact-flow identity. The retained comparable 11-bar row has zero relative difference."
+    },
+    {
+      "requirement": "analytical and finite-difference derivative agreement",
+      "disposition": "PASS",
+      "evidence": "tests/test_wp03_002_reference.py::test_integral_derivative_matches_permeability_ratio checks centered finite differences across phi={0.2,0.4,0.7} and x={0.01,0.2,0.5,0.85}."
+    },
+    {
+      "requirement": "endpoint behavior",
+      "disposition": "PASS",
+      "evidence": "tests/test_wp03_002_reference.py::test_integral_is_monotone_and_positive verifies the exact zero endpoint and positive monotone interior behavior."
+    },
+    {
+      "requirement": "near-limit behavior",
+      "disposition": "PASS",
+      "evidence": "tests/test_wp03_002_reference.py::test_integral_is_finite_near_declared_limit evaluates nextafter(1,0) and requires a finite positive result."
+    },
+    {
+      "requirement": "zero stress",
+      "disposition": "PASS",
+      "evidence": "tests/test_wp03_001_poroelastic_compaction.py::test_reference_constitutive_bounds_and_identity includes normalized stress x=0 and the production fixture independently exercises the exact constitutive implementation."
+    },
+    {
+      "requirement": "high admissible stress",
+      "disposition": "PASS",
+      "evidence": "tests/test_wp03_001_poroelastic_compaction.py exercises x=0.95 and tests/test_wp03_002_reference.py exercises the representable limit below x=1."
+    },
+    {
+      "requirement": "invalid domain",
+      "disposition": "PASS",
+      "evidence": "tests/test_wp03_002_reference.py::test_declared_domain_fails_closed and WP03-001 configuration rejection tests reject out-of-domain stress/porosity and invalid controls."
+    },
+    {
+      "requirement": "bracket applicability",
+      "disposition": "NOT_APPLICABLE_WITH_EVIDENCE",
+      "evidence": "solver/espressoWholePullFoam/espressoWholePullFoam.C SHA-256 a292021a19740e4dd8869a2fa63aaeaa95ea3843016734768b492ca2d2f38dd7 implements the poroelastic field solve as a bounded Picard iteration over an OpenFOAM pressure equation; it contains no scalar bracketed-root path. Machine operating-point brackets are separately regression tested."
+    },
+    {
+      "requirement": "no-root applicability",
+      "disposition": "NOT_APPLICABLE_WITH_EVIDENCE",
+      "evidence": "The exact production source identified for bracket applicability has no scalar root function or bracket/no-root return state. Invalid constitutive domains and nonlinear exhaustion instead fail closed and are tested."
+    },
+    {
+      "requirement": "predecessor WP03-001 regression",
+      "disposition": "PASS",
+      "evidence": "The rebuilt Foundation 12 WP03-001 production fixture and independent analyzer returned LOCAL_CONSTITUTIVE_FIXTURE_PASS; retained predecessor result SHA-256 is ed12ebcb0d9e8af4a0bcd7d2d3b78a372636922ca990165905a106479a4e73da."
+    },
+    {
+      "requirement": "machine-coupling regression",
+      "disposition": "PASS",
+      "evidence": "scripts/verify_wp02_regression.py returned PASS with relative error 1.1797109753105952e-16 against retained result SHA-256 e71451e21cdecfb0d52b5dcd81b2a81c00147c7223d5fa1b050679bdfb19ff91."
+    },
+    {
+      "requirement": "serial/MPI repeatability",
+      "disposition": "PASS",
+      "evidence": "validation/wp03/WP03_002_VERIFICATION.json reports maximum selected-field final relative difference 8.350581954049416e-13."
+    },
+    {
+      "requirement": "timestep refinement",
+      "disposition": "PASS",
+      "evidence": "validation/wp03/WP03_002_VERIFICATION.json reports maximum final relative change 5.694618200618595e-4 for dt=0.02 versus 0.005 and 1.9481784533738634e-4 for dt=0.01 versus 0.005."
+    },
+    {
+      "requirement": "conservation",
+      "disposition": "PASS",
+      "evidence": "validation/wp03/WP03_002_VERIFICATION.json reports maximum liquid residual 5.88765147746528e-15 kg and maximum solute residual 3.99038540239448e-12 kg."
+    },
+    {
+      "requirement": "full repository checks",
+      "disposition": "PASS",
+      "evidence": "Exact final Python, static, source, boundary, syntax, secret, dependency, release, Stage-0, and WP03-focused counts are recorded in PACKAGE_QA_STATUS.json and the exact-head PR checks."
+    }
+  ],
+  "summary": {
+    "pass": 13,
+    "fail": 0,
+    "not_applicable_with_evidence": 2,
+    "required_item_count": 15,
+    "all_items_adjudicated": true
+  },
+  "physical_validation": "NOT_ESTABLISHED"
+}

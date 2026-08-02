@@ -2086,12 +2086,27 @@ int main(int argc, char *argv[])
                         pressureFinalResidual
                     );
                     poroelasticIterations = iteration;
-                    if
-                    (
+                    const bool poroelasticIterationConverged =
                         flowChange <= poroelasticRelativeTolerance
                      && pressureChange <= poroelasticAbsoluteTolerance
-                     && pressureFinalResidual <= poroelasticAbsoluteTolerance
-                    )
+                     && pressureFinalResidual <= poroelasticAbsoluteTolerance;
+                    Info<< "WP03_002_POROELASTIC_ITERATION"
+                        << " time=" << timeValue
+                        << " iteration=" << iteration
+                        << " iterationFlow=" << iterationFlow
+                        << " flowChange=" << flowChange
+                        << " pressureChange=" << pressureChange
+                        << " pressureFinalResidual=" << pressureFinalResidual
+                        << " combinedResidual=" << poroelasticResidual
+                        << " poroelasticFlowClosureError="
+                        << poroelasticFlowClosureError
+                        << " nonlinearRelativeTolerance="
+                        << poroelasticRelativeTolerance
+                        << " nonlinearAbsoluteTolerance="
+                        << poroelasticAbsoluteTolerance
+                        << " converged=" << poroelasticIterationConverged
+                        << nl;
+                    if (poroelasticIterationConverged)
                     {
                         poroelasticConverged = true;
                         break;

@@ -38,4 +38,22 @@ Complete logs and traces remain outside Git. Their hashes and reduced failure
 states are recorded in
 `validation/wp03/WP03_002_REPRODUCTION_AND_DIAGNOSIS.json`.
 
+## Exact-head-review diagnostic closure
+
+The original retained logs lacked the component-wise iteration history. A
+telemetry-only executable built from exact merged base
+`bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1` preserved the original four-term
+gate and reproduced the same failure times and terminal closure/fatal values
+for all three cases. Its SHA-256 is
+`12c16d835c550a846fdb11f34a5930d1f7c481bceee83bd00726b5a17ff6ae22`;
+the exact diagnostic source diff is retained externally with SHA-256
+`927ab626563e11f0321fa324b4cc9cd00a74d56cf0f2456d658d957c9d25c2a4`.
+
+Independent gate reduction shows iterations for which the three retained
+components are within their frozen mixed relative/absolute tolerances while
+the continuous closure ratio remains above one. The corrected solver reports
+convergence exactly when the independently reconstructed retained gate does,
+with maximum accepted retained-gate ratio `0.8588275788`. This closes the
+evidence gap without tolerance or physical-input changes.
+
 `PHYSICAL_VALIDATION: NOT_ESTABLISHED`.

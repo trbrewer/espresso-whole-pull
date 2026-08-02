@@ -28,8 +28,12 @@ three corrected source-linked runs.
 
 - accepted predecessor executable SHA-256:
   `0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c`;
-- corrected executable SHA-256:
+- accepted pre-review corrected executable SHA-256:
   `ac55fd72bca56cd234f44ecb269c1c422336a9d433f317c7e078343a2d695b8d`;
+- exact-head-review telemetry-only corrected executable SHA-256:
+  `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6`;
+- telemetry-only exact-base predecessor executable SHA-256:
+  `12c16d835c550a846fdb11f34a5930d1f7c481bceee83bd00726b5a17ff6ae22`;
 - unchanged reproduction: 3 attempted, 3 reproduced failures;
 - corrected rerun: 3 attempted, 3 completed;
 - corrected 16-rank durations: 3.15–3.43 s per case.
@@ -75,6 +79,29 @@ The external reproduction and corrected run roots contain 50,607 files,
 `e2670ba15e12d1ac8cfb7874ba994adce38907ac4bf8e594c7ff399eacbb2520`.
 Complete cases, fields, processor directories, logs, executables, and traces
 remain outside Git.
+
+## Exact-head-review convergence evidence
+
+The append-only correction protocol was frozen and pushed before the retained
+logs were inspected. Those logs did not contain all per-iteration components,
+so exact-base and corrected telemetry-only builds were used on the unchanged
+matrix. The predecessor reproduced the accepted fatal signatures at 6.62 s,
+4.36 s, and 5.30 s; the corrected cases all completed.
+
+An independent fail-closed reducer reconstructs the predecessor four-term and
+retained three-term gates from raw flow change, pressure change, final linear
+residual, continuous closure, and their frozen tolerances. Across every
+solver-accepted corrected iteration, the maximum retained-gate ratio is
+`0.8588275788`. No corrected state is accepted above one. Continuous closure
+ratios at otherwise converged corrected iterations reach `8.354781336`,
+demonstrating a stable representation/discretization floor separate from the
+successive-iteration Picard gate. The verification record identifies each
+component and tolerance; it does not rely on the combined residual alone.
+
+All 15 original required-verification items are explicitly adjudicated:
+13 `PASS`, zero `FAIL`, and two
+`NOT_APPLICABLE_WITH_EVIDENCE` for scalar-bracket/no-root behavior absent from
+the exact Picard production path.
 
 ## Claim boundary
 

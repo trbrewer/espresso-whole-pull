@@ -12,8 +12,14 @@ This tree is the historical v0.1.4 package view. Current navigation:
 - [VAL-CORPUS-001 protocol](validation/VAL_CORPUS_001_PROTOCOL.md)
 - [VAL-CORPUS-001 comparison atlas](validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md)
 - [WP03-002 diagnostic protocol](wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md)
+- [WP03-002 exact-head-review correction protocol](wp03/WP03_002_EXACT_HEAD_REVIEW_CORRECTION_PROTOCOL.md)
 - [WP03-002 reproduction and diagnosis](wp03/WP03_002_REPRODUCTION_AND_DIAGNOSIS.md)
 - [WP03-002 results](wp03/WP03_002_RESULTS.md)
+
+Machine-readable WP03-002 exact-head evidence is in
+`validation/wp03/WP03_002_GATE_EVIDENCE.json`,
+`validation/wp03/WP03_002_PROTOCOL_COMPLIANCE.json`, and
+`validation/wp03/WP03_002_VERIFICATION.json`.
 
 VAL-CORPUS-001 machine-readable records, reduced results, and figures are
 under `validation/cases/val_corpus_001/`. The preserved original records sit

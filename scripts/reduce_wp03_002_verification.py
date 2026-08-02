@@ -73,10 +73,16 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--corrected-root", type=Path, required=True)
     parser.add_argument("--reproduction-root", type=Path, required=True)
+    parser.add_argument("--review-root", type=Path)
+    parser.add_argument("--gate-evidence", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    rerun = args.corrected_root / "rerun/cases/WASZ-9-COMPACT/postProcessing/wholePull/0/traces.csv"
-    verification = args.corrected_root / "verification"
+    if args.review_root:
+        rerun = args.review_root / "corrected-runs-v2/cases/WASZ-9-COMPACT/postProcessing/wholePull/0/traces.csv"
+        verification = args.review_root / "verification-runs"
+    else:
+        rerun = args.corrected_root / "rerun/cases/WASZ-9-COMPACT/postProcessing/wholePull/0/traces.csv"
+        verification = args.corrected_root / "verification"
     paths = {
         "mpi_dt_002": rerun,
         "serial_dt_002": verification / "cases/SERIAL-DT-002/postProcessing/wholePull/0/traces.csv",
@@ -126,9 +132,25 @@ def main():
         "resources": resources,
         "external_artifacts": artifact_inventory(
             [args.reproduction_root, args.corrected_root]
+            + (
+                [
+                    args.review_root / "predecessor-build",
+                    args.review_root / "corrected-build",
+                    args.review_root / "predecessor-runs-v2",
+                    args.review_root / "corrected-runs-v2",
+                    args.review_root / "verification-runs",
+                    args.review_root / "gate-histories",
+                ]
+                if args.review_root else []
+            )
         ),
         "physical_validation": "NOT_ESTABLISHED",
     }
+    if args.gate_evidence:
+        gate = json.loads(args.gate_evidence.read_text())
+        if gate.get("status") != "PASS":
+            raise RuntimeError("WP03-002 gate evidence did not pass")
+        result["component_wise_nonlinear_convergence"] = gate
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
 

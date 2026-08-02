@@ -1,0 +1,209 @@
+{
+  "cases": {
+    "WASZ-11-COMPACT": {
+      "corrected": {
+        "accepted_component_maxima": {
+          "closure_ratio": 8.354781336,
+          "flowChange": 1.60407631e-12,
+          "flow_ratio": 0.00160407631,
+          "linear_ratio": 0.08992878843,
+          "poroelasticFlowClosureError": 8.354781336e-13,
+          "pressureChange": 8.588275788e-14,
+          "pressureFinalResidual": 8.992878843e-15,
+          "pressure_ratio": 0.8588275787999999
+        },
+        "accepted_iteration_count": 1309,
+        "component_maxima": {
+          "closure_ratio": 8916327756000.0,
+          "flowChange": 4503599627000000.0,
+          "flow_ratio": 4.503599627e+24,
+          "linear_ratio": 0.09882743826,
+          "poroelasticFlowClosureError": 0.8916327756,
+          "pressureChange": 0.4482351225,
+          "pressureFinalResidual": 9.882743826e-15,
+          "pressure_ratio": 4482351225000.0
+        },
+        "history_rows": 2659,
+        "history_sha256": "4564b3e73fa4bf6f05438ed8ab52418f1155d236c6dc0b4aec68ebb24dc4dc3c",
+        "iteration_count": 2659,
+        "log_sha256": "c49a29ddf7c3bfa48950c820a67adc253a09f6b3e23eb817720a9445f2406d01",
+        "maximum_accepted_predecessor_gate_ratio": 8.354781336,
+        "maximum_accepted_retained_gate_ratio": 0.8588275787999999,
+        "maximum_closure_ratio_at_retained_gate_pass": 8.354781336,
+        "minimum_closure_ratio_at_retained_gate_pass": 0.21449251419999998,
+        "retained_gate_passing_iteration_count": 1309
+      },
+      "predecessor": {
+        "accepted_component_maxima": {
+          "closure_ratio": 0.9994755351,
+          "flowChange": 1.654869329e-13,
+          "flow_ratio": 0.0001654869329,
+          "linear_ratio": 0.05014310731,
+          "poroelasticFlowClosureError": 9.994755351e-14,
+          "pressureChange": 2.233057537e-14,
+          "pressureFinalResidual": 5.014310731e-15,
+          "pressure_ratio": 0.2233057537
+        },
+        "accepted_iteration_count": 73,
+        "component_maxima": {
+          "closure_ratio": 8916327756000.0,
+          "flowChange": 4503599627000000.0,
+          "flow_ratio": 4.503599627e+24,
+          "linear_ratio": 0.09882743826,
+          "poroelasticFlowClosureError": 0.8916327756,
+          "pressureChange": 0.4482351225,
+          "pressureFinalResidual": 9.882743826e-15,
+          "pressure_ratio": 4482351225000.0
+        },
+        "history_rows": 340,
+        "history_sha256": "4997e7b3278b2bc6e2c146ce393c9ba8ce36123d0374c0144401c71d8d9e5a0d",
+        "iteration_count": 340,
+        "log_sha256": "5cad3f4789923ebec5eed696254dfdb80301abc45bf814a4ffa82a2ff59e243f",
+        "maximum_accepted_predecessor_gate_ratio": 0.9994755351,
+        "maximum_accepted_retained_gate_ratio": 0.2233057537,
+        "maximum_closure_ratio_at_retained_gate_pass": 8.354781336,
+        "minimum_closure_ratio_at_retained_gate_pass": 0.2204506396,
+        "retained_gate_passing_iteration_count": 224
+      }
+    },
+    "WASZ-5-COMPACT": {
+      "corrected": {
+        "accepted_component_maxima": {
+          "closure_ratio": 7.477705620999999,
+          "flowChange": 1.993356634e-13,
+          "flow_ratio": 0.0001993356634,
+          "linear_ratio": 0.09964687639999999,
+          "poroelasticFlowClosureError": 7.477705621e-13,
+          "pressureChange": 1.337321009e-14,
+          "pressureFinalResidual": 9.96468764e-15,
+          "pressure_ratio": 0.1337321009
+        },
+        "accepted_iteration_count": 1170,
+        "component_maxima": {
+          "closure_ratio": 1417020400000.0,
+          "flowChange": 4503599627000000.0,
+          "flow_ratio": 4.503599627e+24,
+          "linear_ratio": 0.09964687639999999,
+          "poroelasticFlowClosureError": 0.14170204,
+          "pressureChange": 0.1190707709,
+          "pressureFinalResidual": 9.96468764e-15,
+          "pressure_ratio": 1190707709000.0
+        },
+        "history_rows": 2364,
+        "history_sha256": "c9980cd334e10a529f2cebeecf9a86ea8641ee7d8b2da4947aa78b5ebc1ddcaf",
+        "iteration_count": 2364,
+        "log_sha256": "1036fcc79a9d0b70e64618dc8e5291e00119031873068acfd40c59761aee8218",
+        "maximum_accepted_predecessor_gate_ratio": 7.477705620999999,
+        "maximum_accepted_retained_gate_ratio": 0.1337321009,
+        "maximum_closure_ratio_at_retained_gate_pass": 7.477705620999999,
+        "minimum_closure_ratio_at_retained_gate_pass": 6.494991274,
+        "retained_gate_passing_iteration_count": 1170
+      },
+      "predecessor": {
+        "accepted_component_maxima": {
+          "closure_ratio": null,
+          "flowChange": null,
+          "flow_ratio": null,
+          "linear_ratio": null,
+          "poroelasticFlowClosureError": null,
+          "pressureChange": null,
+          "pressureFinalResidual": null,
+          "pressure_ratio": null
+        },
+        "accepted_iteration_count": 0,
+        "component_maxima": {
+          "closure_ratio": 1417020400000.0,
+          "flowChange": 4503599627000000.0,
+          "flow_ratio": 4.503599627e+24,
+          "linear_ratio": 0.09964687639999999,
+          "poroelasticFlowClosureError": 0.14170204,
+          "pressureChange": 0.1190707709,
+          "pressureFinalResidual": 9.96468764e-15,
+          "pressure_ratio": 1190707709000.0
+        },
+        "history_rows": 100,
+        "history_sha256": "62217133d8d7b8fe13effd4069b43506326db69514e230128f471196bea01c48",
+        "iteration_count": 100,
+        "log_sha256": "d698fa4a6f23a05661be349199daa1f6e6fb0ec5ee5c4cbcf0493ede0422035a",
+        "maximum_accepted_predecessor_gate_ratio": null,
+        "maximum_accepted_retained_gate_ratio": null,
+        "maximum_closure_ratio_at_retained_gate_pass": 7.510870049,
+        "minimum_closure_ratio_at_retained_gate_pass": 6.494991274,
+        "retained_gate_passing_iteration_count": 75
+      }
+    },
+    "WASZ-9-COMPACT": {
+      "corrected": {
+        "accepted_component_maxima": {
+          "closure_ratio": 4.507207833,
+          "flowChange": 2.273109144e-13,
+          "flow_ratio": 0.0002273109144,
+          "linear_ratio": 0.09684277679999999,
+          "poroelasticFlowClosureError": 4.507207833e-13,
+          "pressureChange": 5.769025948e-14,
+          "pressureFinalResidual": 9.68427768e-15,
+          "pressure_ratio": 0.5769025948000001
+        },
+        "accepted_iteration_count": 1283,
+        "component_maxima": {
+          "closure_ratio": 5918393143000.0,
+          "flowChange": 4503599627000000.0,
+          "flow_ratio": 4.503599627e+24,
+          "linear_ratio": 0.09966237383999998,
+          "poroelasticFlowClosureError": 0.5918393143,
+          "pressureChange": 0.2909880182,
+          "pressureFinalResidual": 9.966237384e-15,
+          "pressure_ratio": 2909880181999.9995
+        },
+        "history_rows": 2599,
+        "history_sha256": "f3711f7c11810afca092af802a832f344a519de6f74e34adebaef5c13b8fc0d7",
+        "iteration_count": 2599,
+        "log_sha256": "a46e6185f718752aa058df5b4b002f087b02528fe688dc886ae9915efc3ebe29",
+        "maximum_accepted_predecessor_gate_ratio": 4.507207833,
+        "maximum_accepted_retained_gate_ratio": 0.5769025948000001,
+        "maximum_closure_ratio_at_retained_gate_pass": 4.507207833,
+        "minimum_closure_ratio_at_retained_gate_pass": 0.2850763942,
+        "retained_gate_passing_iteration_count": 1283
+      },
+      "predecessor": {
+        "accepted_component_maxima": {
+          "closure_ratio": null,
+          "flowChange": null,
+          "flow_ratio": null,
+          "linear_ratio": null,
+          "poroelasticFlowClosureError": null,
+          "pressureChange": null,
+          "pressureFinalResidual": null,
+          "pressure_ratio": null
+        },
+        "accepted_iteration_count": 0,
+        "component_maxima": {
+          "closure_ratio": 5918393143000.0,
+          "flowChange": 4503599627000000.0,
+          "flow_ratio": 4.503599627e+24,
+          "linear_ratio": 0.09966237383999998,
+          "poroelasticFlowClosureError": 0.5918393143,
+          "pressureChange": 0.2909880182,
+          "pressureFinalResidual": 9.966237384e-15,
+          "pressure_ratio": 2909880181999.9995
+        },
+        "history_rows": 100,
+        "history_sha256": "bcb1220ae61548c581bd9a30d6f138bbaa794091d951949eaad73fe5a95cc385",
+        "iteration_count": 100,
+        "log_sha256": "b23281a0cc74b68710482535a7d9fb9cc80608abf9b8c475e799b3acdbfc2d4f",
+        "maximum_accepted_predecessor_gate_ratio": null,
+        "maximum_accepted_retained_gate_ratio": null,
+        "maximum_closure_ratio_at_retained_gate_pass": 4.628740400999999,
+        "minimum_closure_ratio_at_retained_gate_pass": 2.8207559009999996,
+        "retained_gate_passing_iteration_count": 66
+      }
+    }
+  },
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "independent_reduction": "PASS_FAIL_CLOSED",
+  "maximum_accepted_retained_gate_ratio": 0.8588275787999999,
+  "physical_validation": "NOT_ESTABLISHED",
+  "schema_version": "espresso.wp03_002.gate_evidence.v1",
+  "status": "PASS",
+  "task": "WP03-002"
+}

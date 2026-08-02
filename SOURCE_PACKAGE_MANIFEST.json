@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 239,
-  "total_uncompressed_bytes_excluding_manifest": 2208763,
-  "aggregate_source_sha256": "bcfe2608ea125c7d1684c24a5c0278d5845611559d0e510836ec5825db5c1a31",
-  "aggregate_sha256": "bcfe2608ea125c7d1684c24a5c0278d5845611559d0e510836ec5825db5c1a31",
+  "file_count": 240,
+  "total_uncompressed_bytes_excluding_manifest": 2225689,
+  "aggregate_source_sha256": "cae982776cbe47bd096621d117d2e9b78b8b4ad63ee46f615c0d22bcaf9f0945",
+  "aggregate_sha256": "cae982776cbe47bd096621d117d2e9b78b8b4ad63ee46f615c0d22bcaf9f0945",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "f4041359cb049bf78cf3af5d2c944c9ce600d4eecd85f8fe5693e542cdac18aa",
-      "bytes": 7038,
+      "sha256": "fc44d1565565a8df42a539e5677c29f1aa0dc49cee22eda253e640289b36585e",
+      "bytes": 7348,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -444,13 +444,13 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "9c2fe3101cc19604ed61b323b152b19ef282f23a0d9f1fdf46307fc6634ce693",
-      "bytes": 45447,
+      "sha256": "6f97a38be447b8eaa78776993f17844ed1fdfbdf2d556280c53889aac99d1424",
+      "bytes": 45665,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "790100190e15b15e0a319a928bae89779e8f1aeddbafcf8e9800ed5c0d4fe24b",
-      "bytes": 11834,
+      "sha256": "a7eb559c673b0e2607854c5cd091c1dd71c662492749a21dc6442cac47f48f45",
+      "bytes": 12193,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -614,13 +614,13 @@
       "git_mode": "100644"
     },
     "docs/wp03/WP03_002_REPRODUCTION_AND_DIAGNOSIS.md": {
-      "sha256": "004a36995970741fc7c246372fad0c459aae35044eff59fc1219f37ac3e01b64",
-      "bytes": 2041,
+      "sha256": "e3e39463f3fb6bb7383c7c21f84cc02794a66f7109f61e0f342cd7f5bd440bb4",
+      "bytes": 3042,
       "git_mode": "100644"
     },
     "docs/wp03/WP03_002_RESULTS.md": {
-      "sha256": "781e6814b9742312673659e02a450db85a426d2f3823763d6b8ee472259277a6",
-      "bytes": 3517,
+      "sha256": "20ed2a130676a8de48d208205b095a812c2ea2a6be0afd8f50a2af4c86149beb",
+      "bytes": 5103,
       "git_mode": "100644"
     },
     "scripts/analyze_r1.py": {
@@ -788,9 +788,14 @@
       "bytes": 21304,
       "git_mode": "100755"
     },
+    "scripts/reduce_wp03_002_gate_evidence.py": {
+      "sha256": "524d67be85a98d78b8c30ae33ba6a34b0f13c275a6b2593a241fe51297a843ad",
+      "bytes": 8318,
+      "git_mode": "100755"
+    },
     "scripts/reduce_wp03_002_verification.py": {
-      "sha256": "25bca6373b79e58931ee7edf99f8a15c6e00a2c860bc932fbc4f4ac5dd364224",
-      "bytes": 4969,
+      "sha256": "43091ad17fd9d1ade5b9a7487d4f5a069b616ae6f26bf5e2505dae74329867ee",
+      "bytes": 6019,
       "git_mode": "100755"
     },
     "scripts/run_qualification.py": {
@@ -1039,8 +1044,8 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "45015e0d51d828ab1f616c17c1a42b78d8b418f2ab9b104c60099363695f0931",
-      "bytes": 126367,
+      "sha256": "a292021a19740e4dd8869a2fa63aaeaa95ea3843016734768b492ca2d2f38dd7",
+      "bytes": 127360,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/forchheimerResistance.H": {
@@ -1189,8 +1194,8 @@
       "git_mode": "100644"
     },
     "tests/test_wp03_002_reference.py": {
-      "sha256": "f137e3cac0d2a0c231169a20da0c7efdade2221103ddabf93c518aea25b840cc",
-      "bytes": 2299,
+      "sha256": "8d846dc1dd17e93b6bddcc3ccad13ed2ddbfc0f7fb9756786c41971ed1d507d1",
+      "bytes": 5390,
       "git_mode": "100644"
     },
     "tests/test_wp03_holdout_contract.py": {

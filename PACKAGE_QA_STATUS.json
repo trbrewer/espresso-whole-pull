@@ -26,11 +26,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 346,
+    "python_test_count": 351,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 238,
-    "source_manifest_aggregate_sha256": "acb8e5494f76c3a188fcd5b1a716d0a8f2dc126109e0f88db87677757740ce4b",
+    "source_manifest_file_count": 240,
+    "source_manifest_aggregate_sha256": "cae982776cbe47bd096621d117d2e9b78b8b4ad63ee46f615c0d22bcaf9f0945",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -42,7 +42,7 @@
     "json_syntax": "PASS"
   },
   "wp03_002": {
-    "status": "NUMERICAL_DEFECT_CORRECTED_ALL_THREE_CASES_COMPLETE",
+    "status": "RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
     "issue": 51,
     "branch": "solver/wp03-002-finite-porosity-nonlinear-robustness",
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
@@ -50,7 +50,15 @@
     "completed_unchanged_reproduction_count": 3,
     "diagnosis_category": "IMPLEMENTATION_DEFECT",
     "corrected_completed_case_count": 3,
-    "corrected_executable_sha256": "ac55fd72bca56cd234f44ecb269c1c422336a9d433f317c7e078343a2d695b8d",
+    "accepted_pre_review_corrected_executable_sha256": "ac55fd72bca56cd234f44ecb269c1c422336a9d433f317c7e078343a2d695b8d",
+    "corrected_executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+    "diagnostic_predecessor_executable_sha256": "12c16d835c550a846fdb11f34a5930d1f7c481bceee83bd00726b5a17ff6ae22",
+    "maximum_accepted_retained_gate_ratio": 0.8588275788,
+    "protocol_compliance": "PASS_13_PASS_2_NOT_APPLICABLE_WITH_EVIDENCE_0_FAIL",
+    "external_artifact_file_count": 101211,
+    "external_artifact_total_bytes": 705520867,
+    "external_artifact_aggregate_sha256": "c7b187cb05e358e56a6e9c238aa3fbce55e9e17cef8623d64c7e90fd310e19c8",
+    "outcome": "NUMERICAL_DEFECT_CORRECTED_AND_ALL_THREE_CASES_COMPLETE",
     "flow_ordering_spearman": -1.0,
     "mass_ordering_spearman": -1.0,
     "cross_pressure_ordering": "STILL_REVERSED",
@@ -192,7 +200,7 @@
     "source_identity_verifications": 1,
     "invocation_journal_event_count": 4,
     "journal_summary_regeneration": "BYTE_FOR_BYTE_PASS",
-    "completion_status": "NORMATIVE_SCHEMA_PROVENANCE_AND_SEMANTIC_ENFORCEMENT_COMPLETE_AWAITING_FINAL_READJUDICATION",
+    "completion_status": "COMPLETE_APPROVED_AND_MERGED_PR_38",
     "governed_record_inventory_count": 105,
     "deep_schema_family_count": 68,
     "independent_enumeration_exclusion_count": 0,
@@ -202,7 +210,7 @@
     "immutable_historical_sidecar_primary_count": 0,
     "generic_catch_all_schema_count": 0,
     "physical_validation": "NOT_ESTABLISHED",
-    "readjudication": "REQUIRED_BEFORE_MERGE",
+    "readjudication": "COMPLETE_APPROVED_AND_MERGED",
     "explicit_schema_specification_count": 68,
     "normative_contract_count": 68,
     "current_unreferenced_specification_count": 0,
@@ -277,7 +285,7 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "val_001": {
-    "status": "ADMINISTRATIVE_CLOSURE_AND_SEMANTIC_REMEDIATION_COMPLETE_AWAITING_FINAL_READJUDICATION",
+    "status": "COMPLETE_APPROVED_AND_MERGED_PR_38",
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
     "adapter_semantic_tests": "PASS_SYNTHETIC_ONLY",
     "historical_reexpression_count": 6,
@@ -306,7 +314,7 @@
     "governing_physics_change": false,
     "physical_validation": "NOT_ESTABLISHED"
   },
-  "executed_scientific_solver_executable_sha256": "0b9a8dd28aae6a2853e287a590162b0088116be9268a6012c037bada9699549c",
+  "latest_executed_wp03_002_candidate_solver_executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
   "release_executable_sha256": "5af892d6382cbc47fa2e6b505fccacf7390bb42bc8d7177106620a43fb26c97b",
   "final_disposition": "SOFTWARE_AND_SOURCE_LINKED_RECONSTRUCTION_RELEASE_PASS",
   "published_release": {
@@ -319,6 +327,6 @@
   "wp_0_3a_contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
   "wp_0_3a_solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
-  "next_scientific_milestone": "VAL_001_REVIEW_AND_ADDITIONAL_DATA_PLANNING",
+  "next_scientific_milestone_after_approved_wp03_002_merge": "VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY_NOT_STARTED",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }

@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 238/238 PASS
+- Public source verification: 240/240 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `WP03-002` result complete; exact-head review pending
@@ -37,9 +37,11 @@ evidence route still requires prospective human-owner selection.
 The final schema correction restores exact frozen VAL-CASE-001 parameter
 classifications, makes partition rules route-conditional, closes all declared
 foreign keys, and assigns measured pressure to one authoritative signal table.
-The referential-integrity correction binds complete pressure-sample keys,
+The historical referential-integrity candidate correction bound complete pressure-sample keys,
 global resource keys, table-specific null rules, and cross-table campaign and
-route invariants; status remains `CORRECTED_PENDING_EXACT_HEAD_REVIEW`.
+route invariants; its then-current status was
+`CORRECTED_PENDING_EXACT_HEAD_REVIEW`. Exact-head approval and PR #48 merge
+subsequently closed that candidate state.
 The template-interoperability correction separates local campaign instances
 from catalog IDs, adds deterministic Puckworks exports, and represents
 processing lineage as an acyclic multi-input/multi-output edge graph.
@@ -60,11 +62,11 @@ flow/density conversion, enforces the three-layer processing graph, separates
 time-indexed samples from record/literal provenance, freezes package-mode
 nullability and scalar encodings, and binds terminal mass to a realized shot
 event. The task remains non-commissioning.
-The compatibility-serialization closure reconciles typed resource members,
+The historical compatibility-serialization closure reconciled typed resource members,
 defines a sealed metadata envelope distinct from a Puckworks submission,
 freezes row and nested-field ordering, maps local provenance to Puckworks
-`raw`/`processed`, and removes recursive manifest dependencies. Review remains
-pending and commissioning remains unauthorized.
+`raw`/`processed`, and removed recursive manifest dependencies. PR #48 was
+subsequently approved and merged; commissioning remains unauthorized.
 The state-and-serialization consistency correction makes package-operation
 references mode-conditional, gives full and sealed exports disjoint graph
 branches, removes unreachable status values, makes row provenance mapping

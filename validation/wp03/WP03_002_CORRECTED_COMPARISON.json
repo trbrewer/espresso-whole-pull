@@ -77,7 +77,7 @@
   "corrected_compaction": [
     {
       "config_sha256": "66e677d7d4d3a992027e4622600b1f046fd6ad9a8b8022881f3083280787f328",
-      "duration_s": 3.146543,
+      "duration_s": null,
       "endpoint": {
         "model_flow_g_s": 0.5853541853587553,
         "model_mass_g": 15.956580521107659,
@@ -349,7 +349,7 @@
     },
     {
       "config_sha256": "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5",
-      "duration_s": 3.431695,
+      "duration_s": null,
       "endpoint": {
         "model_flow_g_s": 0.6809731269405028,
         "model_mass_g": 20.313852248476433,
@@ -621,7 +621,7 @@
     },
     {
       "config_sha256": "8502dee4af576ac90cbac1f0c1d89e282ef1578e3c65a6034dcae9cc303b205f",
-      "duration_s": 3.362558,
+      "duration_s": null,
       "endpoint": {
         "model_flow_g_s": 0.6859429265236632,
         "model_mass_g": 20.86573711136818,
@@ -896,7 +896,7 @@
     "commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e",
     "tree": "44d6539096648777f78c4db83f0985d5bd16e352"
   },
-  "executable_sha256": "ac55fd72bca56cd234f44ecb269c1c422336a9d433f317c7e078343a2d695b8d",
+  "executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
   "metric_contract": {
     "alignment": "solver_time=source_time+3.0s",
     "density_kg_m3": 965.0,
