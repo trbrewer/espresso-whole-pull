@@ -53,7 +53,7 @@ and source/holdout-fit counts remained zero.
 - shell syntax: PASS
 - JSON syntax: PASS
 
-## VAL-CASE-001 candidate
+## Merged VAL-CASE-001
 
 VAL-CASE-001 executed the unchanged merged solver for 47 valid cases and two
 invalidated completed endpoints. The exact-repeat feature vector was
@@ -74,6 +74,12 @@ retained the superseded cosines as supplemental diagnostics, matched a direct
 double-precision SVD reference, and changed only prospectively allowed fields.
 Two independent analysis-only outputs were byte-identical; all 47 retained
 trace identities and metadata were unchanged.
+
+Independent exact-head review approved the corrected result at
+`a9b02e48d460cb072529ebcdb3660418c88af9d7`; PR #42 merged it as
+`c2c3136e5aae74306f37f8389f945139a9d9009f`. The final disposition remains
+validation support only. Physical validation is `NOT_ESTABLISHED`, and
+structural identifiability is `NOT_ASSESSED`.
 
 ## Merged VAL-INFRA-002 repair
 
