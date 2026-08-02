@@ -198,15 +198,16 @@ Numeric zero is never a missing-value code.
 | `val_data_001_controls.csv` | (`shot_id`, `control_sample_index`) | `shot_id`, `control_sample_index`, `command_program_resource_id`, `clock_resource_id`, `source_file_id`, `value_processing_id`, `raw_or_processed`, `native_timestamp`, `elapsed_time_s`, `commanded_pressure_value`, `commanded_pressure_unit`, `prescribed_node`, `basket_pressure_signal_id`, `basket_pressure_sample_index`, `upstream_pressure_signal_id`, `upstream_pressure_sample_index`, `upstream_pressure_availability`, `control_deviation_pa`, `control_status`, `control_phase` |
 | `val_data_001_flow_conversions.csv` | `conversion_id` | `conversion_id`, `shot_id`, `density_source_resource_id`, `calibration_id`, `calibration_applicability`, `source_file_id`, `native_mass_flow_g_s`, `native_volume_flow_ml_s`, `canonical_mass_flow_kg_s`, `canonical_volume_flow_m3_s`, `density_kg_m3`, `density_temperature_c`, `conversion_formula`, `value_processing_id` |
 | `val_data_001_deformation.csv` | (`shot_id`, `location_id`, `sample_index`) | `shot_id`, `apparatus_id`, `signal_id`, `location_id`, `sample_index`, `sensor_resource_id`, `clock_resource_id`, `calibration_id`, `reference_state_resource_id`, `fixture_compliance_resource_id`, `source_file_id`, `value_processing_id`, `raw_or_processed`, `native_timestamp`, `elapsed_time_s`, `native_displacement_value`, `native_displacement_unit`, `canonical_displacement_m`, `compression_sign`, `spatial_basis`, `axial_coordinate_m`, `radial_coordinate_m`, `coffee_bed_displacement_m`, `quality_flags`, `missing_value_state` |
-| `val_data_001_fractions.csv` | (`shot_id`, `fraction_id`) | `shot_id`, `fraction_id`, `evidence_partition_id`, `fraction_start_s`, `fraction_end_s`, `fraction_mass_g`, `fraction_tds_pct`, `raw_or_processed`, `source_file_id`, `value_processing_id`, `fraction_state` |
+| `val_data_001_fractions.csv` | (`shot_id`, `fraction_id`) | `shot_id`, `fraction_id`, `evidence_partition_id`, `fraction_start_s`, `fraction_end_s`, `fraction_mass_g`, `fraction_tds_pct`, `raw_or_processed`, `source_file_id`, `value_processing_id` |
 | `val_data_001_chemistry.csv` | (`shot_id`, `fraction_id`, `species`) | `shot_id`, `fraction_id`, `evidence_partition_id`, `species`, `mass_mg`, `reference_basis`, `analytical_method_resource_id`, `detection_limit_mg`, `recovery_pct`, `measurement_status`, `source_file_id`, `value_processing_id` |
-| `val_data_001_calibrations.csv` | `calibration_id` | `calibration_id`, `calibration_set_id`, `apparatus_id`, `sensor_resource_id`, `source_file_id`, `observable_code`, `native_unit`, `canonical_unit`, `calibration_method`, `reference_resource_id`, `calibration_timestamp_utc`, `offset`, `scale`, `range_min`, `range_max`, `resolution`, `bandwidth_hz`, `latency_s`, `drift_per_s`, `uncertainty_resource_id`, `valid_from_utc`, `valid_to_utc` |
+| `val_data_001_calibrations.csv` | `calibration_id` | `calibration_id`, `campaign_instance_id`, `evidence_partition_id`, `calibration_set_id`, `apparatus_id`, `sensor_resource_id`, `source_file_id`, `observable_code`, `native_unit`, `canonical_unit`, `calibration_method`, `reference_resource_id`, `calibration_timestamp_utc`, `offset`, `scale`, `range_min`, `range_max`, `resolution`, `bandwidth_hz`, `latency_s`, `drift_per_s`, `uncertainty_resource_id`, `valid_from_utc`, `valid_to_utc` |
 | `val_data_001_files.csv` | `source_file_id` | `source_file_id`, `relative_filename`, `file_role`, `raw_or_processed`, `sha256`, `byte_count`, `media_type`, `rights_resource_id`, `creator_software_resource_id`, `campaign_instance_id`, `evidence_partition_id` |
 | `val_data_001_processing_operations.csv` | `processing_id` | `processing_id`, `operation_scope`, `software_commit`, `software_tree`, `operation_resource_id`, `parameter_record_json_canonical`, `synchronization_method`, `resampling_method`, `operator_role_resource_id`, `processing_timestamp_utc` |
 | `val_data_001_processing_file_edges.csv` | (`processing_id`, `edge_role`, `source_file_id`) | `processing_id`, `edge_role`, `source_file_id`, `edge_sequence`, `channel_or_output_role` |
-| `val_data_001_compatibility_packages.csv` | `compatibility_package_id` | `compatibility_package_id`, `campaign_instance_id`, `route_id`, `evidence_partition_id`, `puckworks_campaign_id`, `access_policy_resource_id`, `rights_resource_id`, `package_access_status`, `package_evidence_class`, `package_manifest_sha256`, `assembly_processing_id`, `export_status` |
+| `val_data_001_compatibility_packages.csv` | `compatibility_package_id` | `compatibility_package_id`, `campaign_instance_id`, `route_id`, `evidence_partition_id`, `puckworks_campaign_id`, `access_policy_resource_id`, `rights_resource_id`, `package_access_status`, `package_evidence_class`, `package_dataset_status`, `package_evidence_level_claimed`, `replicate_count`, `excluded_shot_count`, `exclusions_recorded`, `fraction_chemistry_status`, `package_manifest_sha256`, `export_grid_id`, `export_processing_id`, `export_status` |
 | `val_data_001_export_grids.csv` | `export_grid_id` | `export_grid_id`, `compatibility_package_id`, `grid_start_s`, `grid_end_s`, `resampling_interval_s`, `alignment_tolerance_s`, `basket_pressure_rule`, `delivered_mass_rule`, `flow_rule`, `temperature_rule`, `missing_value_rule`, `grid_freeze_resource_id` |
-| `val_data_001_export_source_rows.csv` | (`compatibility_package_id`, `export_filename`, `export_row_key`, `export_field`) | `compatibility_package_id`, `export_filename`, `export_row_key`, `export_field`, `source_table`, `source_key_json_canonical`, `conversion_id`, `value_processing_id`, `export_processing_id` |
+| `val_data_001_export_source_rows.csv` | (`compatibility_package_id`, `export_filename`, `export_row_key`, `export_field`) | `compatibility_package_id`, `export_filename`, `export_row_key`, `export_field`, `exported_row_state`, `source_mode`, `source_count`, `interpolation_formula`, `conversion_id`, `export_processing_id`, `missing_value_state` |
+| `val_data_001_export_source_samples.csv` | (`compatibility_package_id`, `export_filename`, `export_row_key`, `export_field`, `source_ordinal`) | `compatibility_package_id`, `export_filename`, `export_row_key`, `export_field`, `source_ordinal`, `source_table`, `source_key_json_canonical`, `source_elapsed_time_s`, `source_raw_or_processed`, `source_value_processing_id`, `interpolation_weight_decimal` |
 
 The locked Puckworks bindings distinguish immutable schemas from future data.
 `campaign_instance_id` is the authoritative local identifier for one
@@ -317,6 +318,35 @@ use the same one-partition-per-package rule, with their route-specific access
 states. This prevents compatibility presentation from becoming an access
 side channel.
 
+Every package identity and summary is derived solely from its one
+`evidence_partition_id`. `package_evidence_class`, access policy, terminal
+rights, sealing-derived access status, dataset status, and claimed evidence
+level equal or are deterministically derived from that partition and its
+route. `puckworks_campaign_id` exactly equals the parent campaign mapping.
+`replicate_count` counts distinct package-partition replicates;
+`excluded_shot_count` counts excluded shots in that partition; and
+`exclusions_recorded` is exactly `excluded_shot_count > 0`. Exported shots,
+fractions, chemistry, calibrations, files, exclusions, and all counts are
+restricted to the same partition. A calibration package cannot query, count,
+summarize, infer status from, or otherwise depend on a sealed-scoring
+partition. Any mismatch blocks package assembly.
+
+The exact package-state mapping is: partition `evidence_class` copies to
+`package_evidence_class`; partition `access_policy_resource_id` and
+`rights_resource_id` copy byte-for-byte to the package; `UNSEALED_CALIBRATION`
+maps to `CALIBRATION_ACCESS`; `SEALED_UNACCESSED` maps to
+`SEALED_UNACCESSED`; `AUTHORIZED_OPENED` maps to `AUTHORIZED_OPENED`;
+`CLOSED_AFTER_SCORING` maps to `CLOSED_AFTER_SCORING`; and
+`NOT_APPLICABLE` maps to `OPEN_AUTHORIZED` only when the partition access
+policy authorizes ordinary access. `PUBLIC_METADATA_ONLY` describes only a
+metadata/checksum presentation and grants no observation access.
+
+`fraction_chemistry_status` is package-level and exactly `PRESENT` or
+`NOT_APPLICABLE_NO_FRACTIONATED_CHEMISTRY`. `PRESENT` requires at least one
+fraction row in the package partition and complete reconciliation of all
+applicable fraction and chemistry exports. The not-applicable state requires
+zero fraction and zero chemistry rows and prohibits fabricated empty rows.
+
 #### Row-value and file-assembly lineage
 
 `operation_scope` is exactly `ROW_VALUE`, `NORMALIZED_FILE_ASSEMBLY`, or
@@ -328,22 +358,49 @@ schema and is not authoritative. All actual dependencies use
 `processing_file_edges`; every processed or derived file has exactly one
 output producer, every producer has at least one input and one output, native
 files have no output producer, and the bipartite file-operation graph is
-acyclic. Compatibility packages reference their single assembly operation,
-and every export source row references its export operation.
+acyclic. Every compatibility package references exactly one
+`export_processing_id`, whose operation scope is `COMPATIBILITY_EXPORT`;
+`NORMALIZED_FILE_ASSEMBLY` is not accepted for package export. Every export
+source row references that same export operation.
 
 #### Exact synchronized-time-series and terminal-mass export
 
-Every `shot_timeseries.csv` package uses one frozen `export_grid_id`. Its grid
+Every package that produces `shot_timeseries.csv` has one required
+`export_grid_id`, and `export_grids.compatibility_package_id` is unique. Thus
+the package and grid reference each other one-to-one; zero or multiple active
+grids fail export readiness. Its grid
 start, end, interval, alignment tolerance, per-observable selection or
 interpolation rule, and missing-value behavior are explicit. Export rows are
 ordered by `(shot_id, elapsed_s)`; each field records a complete canonical
-source key in `val_data_001_export_source_rows.csv`. Exact samples are used
-when present. Otherwise interpolation is allowed only by the frozen rule,
-within tolerance, between two quality-eligible samples; extrapolation is
-prohibited. Missing values remain empty with an explicit quality disposition.
+source set through `val_data_001_export_source_rows.csv` and its child
+`val_data_001_export_source_samples.csv`. `source_mode=EXACT_SAMPLE` requires
+`source_count=1`, ordinal 1, weight exactly 1, and the complete source primary
+key. `source_mode=LINEAR_INTERPOLATION` requires exactly two samples ordered
+by time and then source key, ordinals 1 and 2, both complete primary keys, the
+frozen formula, and explicit finite weights summing exactly to 1. Otherwise
+interpolation is allowed only by the frozen rule, within tolerance, between
+two quality-eligible samples; extrapolation is prohibited. Missing values use
+`source_mode=MISSING`, `source_count=0`, no child rows, an empty exported value,
+and an explicit missing state.
+
+`exported_row_state` is frozen for the complete output row. An output row may
+use exact and interpolated values only from compatible
+`PROCESSED_SYNCHRONIZED` or `DERIVED` states declared by the export contract;
+raw-native and synchronized values are never silently combined. Every child
+retains its source `raw_or_processed` state and value-processing identity.
+`conversion_id` is non-null and resolves whenever flow, density, mass/volume,
+or unit conversion participates; it is null only when no conversion is used.
 Pressure is the basket-top Pa-gauge value divided by exactly 100000; upstream
 pressure is not substituted. Conversions and processing identities are
 retained.
+
+Temperature is represented as a registered signal with observable/node code
+`T_MACHINE_UPSTREAM_RU_C` or `T_BASKET_BED_TOP_C`, canonical unit `degC`, and
+the same apparatus, sensor, clock, calibration, quality, and source rules as
+other signals. `shot_timeseries.csv.temperature_c` uses only
+`T_BASKET_BED_TOP_C`; the upstream temperature is retained separately and is
+not substituted. An absent basket-top temperature exports an empty value with
+the frozen missing state.
 
 `achieved_beverage_g` uses the last quality-eligible `DELIVERED_MASS_G` sample
 at or before the prospectively frozen termination event. Ties resolve by the
@@ -367,13 +424,13 @@ commissioning readiness. Export is prohibited unless
 | `campaign_metadata.yml.campaign_id` | `campaigns.puckworks_campaign_id` |
 | `.site_id` | `campaigns.site_id` |
 | `.contributor` | typed canonical payload for `campaigns.contributor_resource_id` |
-| `.dataset_status` | `proposal_only` before acquisition; otherwise `pilot_collected` for pilot-only partitions, `holdout_reserved` for unopened Route-B scoring partitions, and `controlled_dataset` for other controlled acquired partitions |
-| `.evidence_level_claimed` | `feasibility_pilot` for pilot evidence; `controlled_replicated` for controlled comparison/calibration; `holdout_independent` only for an authorized opened Route-B score; no upgrade is implied |
+| `.dataset_status` | `compatibility_packages.package_dataset_status`, derived only from the package partition: `proposal_only` before acquisition; `pilot_collected` for pilot-only partitions; `holdout_reserved` for unopened Route-B scoring partitions; `controlled_dataset` for other controlled acquired partitions |
+| `.evidence_level_claimed` | `compatibility_packages.package_evidence_level_claimed`, derived only from its partition: `feasibility_pilot` for pilot evidence; `controlled_replicated` for controlled comparison/calibration; `holdout_independent` only for an authorized opened Route-B score; no upgrade is implied |
 | `.external_repository`, `.doi` | exact `external_repository` and `doi` members of the `EXTERNAL_REPOSITORY` resource referenced by `campaigns.external_repository_resource_id` |
 | `.data_license` | exact `license` member of the `RIGHTS` resource referenced through the selected route and partitions |
 | `.timezone` | `campaigns.timezone` |
-| `.replicate_count` | count of distinct `replicates.replicate_id` for `campaign_instance_id` |
-| `.exclusions_recorded` | boolean existence of excluded shots for the instance, reconciled with exported `exclusions.csv` |
+| `.replicate_count` | `compatibility_packages.replicate_count`, the count of distinct replicates represented in that package's one evidence partition |
+| `.exclusions_recorded` | `compatibility_packages.exclusions_recorded`, exactly whether `excluded_shot_count > 0` within that package partition and reconciled with its exported `exclusions.csv` |
 | `.deviations_from_protocol` | typed canonical payload for `campaigns.deviations_resource_id` |
 | `.declaration.*` | literal `true` only after the corresponding rights and no-upgrade assertions are verified; otherwise export is prohibited |
 
@@ -411,7 +468,7 @@ commissioning readiness. Export is prohibited unless
 | `beverage_mass_g` | `DELIVERED_MASS_G` authoritative canonical observation converted to g if needed |
 | `flow_g_s` | authoritative mass-flow signal, or authoritative volume flow converted by the referenced flow-conversion/density record |
 | `flow_source` | signal/conversion/source-file/processing identifiers serialized deterministically |
-| `temperature_c` | authoritative temperature signal converted to degrees Celsius |
+| `temperature_c` | authoritative registered `T_BASKET_BED_TOP_C` signal in `degC`; machine-upstream temperature is never substituted |
 | `raw_or_processed` | authoritative exported signal row state |
 
 Separate upstream pressure remains only in the normalized extension because
@@ -438,22 +495,23 @@ the locked `shot_timeseries.csv` has no upstream-pressure column.
 | conditions | (`condition_id`); candidate (`condition_id`, `campaign_instance_id`, `apparatus_id`) |
 | blocks | (`block_id`); candidate (`block_id`, `campaign_instance_id`) |
 | replicates | (`replicate_id`); candidate (`replicate_id`, `campaign_instance_id`, `route_id`, `condition_id`, `block_id`, `evidence_partition_id`) |
-| shots | (`shot_id`); candidate (`shot_id`, `campaign_instance_id`, `route_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`) |
+| shots | (`shot_id`); candidate (`shot_id`, `apparatus_id`); candidate (`shot_id`, `evidence_partition_id`); candidate (`shot_id`, `campaign_instance_id`, `route_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`) |
 | resources | (`resource_id`) globally unique |
 | resource type schemas | (`payload_schema_id`); candidate (`payload_schema_id`, `resource_type`) |
 | signals | (`shot_id`, `signal_id`, `sample_index`) |
 | controls | (`shot_id`, `control_sample_index`) |
 | flow conversions | (`conversion_id`) |
 | deformation | (`shot_id`, `location_id`, `sample_index`) |
-| fractions | (`shot_id`, `fraction_id`) |
+| fractions | (`shot_id`, `fraction_id`); candidate (`shot_id`, `fraction_id`, `evidence_partition_id`) |
 | chemistry | (`shot_id`, `fraction_id`, `species`) |
 | calibrations | (`calibration_id`) |
 | files | (`source_file_id`) |
 | processing operations | (`processing_id`) |
 | processing file edges | (`processing_id`, `edge_role`, `source_file_id`) |
 | compatibility packages | (`compatibility_package_id`); candidate (`compatibility_package_id`, `campaign_instance_id`, `route_id`, `evidence_partition_id`) |
-| export grids | (`export_grid_id`); candidate (`export_grid_id`, `compatibility_package_id`) |
+| export grids | (`export_grid_id`); unique candidate (`compatibility_package_id`); candidate (`export_grid_id`, `compatibility_package_id`) |
 | export source rows | (`compatibility_package_id`, `export_filename`, `export_row_key`, `export_field`) |
+| export source samples | (`compatibility_package_id`, `export_filename`, `export_row_key`, `export_field`, `source_ordinal`) |
 
 ### Foreign-key resolution matrix
 
@@ -481,8 +539,10 @@ exactly one parent; `NULLABLE` states the sole permitted null condition.
 | `controls.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
 | `flow_conversions.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
 | `deformation.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
+| `fractions.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
 | `chemistry.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
 | `calibrations.source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
+| `calibrations.(evidence_partition_id, campaign_instance_id)` | `val_data_001_evidence_partitions.csv.(evidence_partition_id, campaign_instance_id)` | many-to-one, both `NOT NULL`; exported only in the matching package partition |
 | `signals.calibration_id`, `deformation.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | governed by the referenced registry row's `calibration_applicability`; `APPLICABLE` requires a validity-covering calibration, `NOT_APPLICABLE` requires null, and `UNKNOWN_PENDING_REVIEW` requires null and blocks readiness |
 | `flow_conversions.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | many-to-one; `NOT NULL` when `flow_conversions.calibration_applicability=APPLICABLE`; null when it is `NOT_APPLICABLE` or `UNKNOWN_PENDING_REVIEW`, with `UNKNOWN_PENDING_REVIEW` blocking readiness |
 | `signals.value_processing_id`, `controls.value_processing_id`, `flow_conversions.value_processing_id`, `deformation.value_processing_id`, `fractions.value_processing_id`, `chemistry.value_processing_id` | `val_data_001_processing_operations.csv.processing_id` | parent must have `operation_scope=ROW_VALUE`; null only for a directly reported raw native value |
@@ -491,12 +551,55 @@ exactly one parent; `NULLABLE` states the sole permitted null condition.
 | `controls.(shot_id, basket_pressure_signal_id, basket_pressure_sample_index)` | `val_data_001_signals.csv.(shot_id, signal_id, sample_index)` | many-to-one, complete reference `NOT NULL` |
 | `controls.(shot_id, upstream_pressure_signal_id, upstream_pressure_sample_index)` | `val_data_001_signals.csv.(shot_id, signal_id, sample_index)` | many-to-one; signal ID and sample index are both present or both absent, and both may be absent only when `controls.upstream_pressure_availability=NOT_MEASURED` |
 | `chemistry.(shot_id, fraction_id)` | `val_data_001_fractions.csv.(shot_id, fraction_id)` | many-to-one, both `NOT NULL`; partition must agree |
+| `fractions.(shot_id, evidence_partition_id)` | `val_data_001_shots.csv.(shot_id, evidence_partition_id)` | many-to-one, both `NOT NULL` |
+| `chemistry.(shot_id, fraction_id, evidence_partition_id)` | `val_data_001_fractions.csv.(shot_id, fraction_id, evidence_partition_id)` | many-to-one, all `NOT NULL`; this also binds the shot partition |
 | `files.(evidence_partition_id, campaign_instance_id)` | `val_data_001_evidence_partitions.csv.(evidence_partition_id, campaign_instance_id)` | many-to-one, both `NOT NULL`; partition route must agree with campaign |
 | `compatibility_packages.(evidence_partition_id, campaign_instance_id, route_id)` | `val_data_001_evidence_partitions.csv.(evidence_partition_id, campaign_instance_id, route_id)` | many-to-one, all `NOT NULL`; one partition per package |
-| `compatibility_packages.assembly_processing_id` | `val_data_001_processing_operations.csv.processing_id` | many-to-one, `NOT NULL`; parent scope is `NORMALIZED_FILE_ASSEMBLY` or `COMPATIBILITY_EXPORT` as applicable |
+| `compatibility_packages.puckworks_campaign_id` | `val_data_001_campaigns.csv.puckworks_campaign_id` through the package `campaign_instance_id` | exact equality; `NOT NULL` for an exportable locked mapping, otherwise package export prohibited |
+| `compatibility_packages.export_processing_id` | `val_data_001_processing_operations.csv.processing_id` | many-to-one, `NOT NULL`; parent scope must be exactly `COMPATIBILITY_EXPORT` |
+| `compatibility_packages.export_grid_id`, `export_grids.(export_grid_id, compatibility_package_id)` | reciprocal package/grid keys | exactly one grid for each package producing `shot_timeseries.csv`; zero or multiple grids fail |
 | `export_grids.compatibility_package_id`, `export_source_rows.compatibility_package_id` | `val_data_001_compatibility_packages.csv.compatibility_package_id` | many-to-one, `NOT NULL` |
-| `export_source_rows.value_processing_id`, `export_source_rows.export_processing_id` | `val_data_001_processing_operations.csv.processing_id` | value ID nullable only for raw source; export ID `NOT NULL` with scope `COMPATIBILITY_EXPORT` |
+| `export_source_rows.export_processing_id` | `val_data_001_processing_operations.csv.processing_id` | `NOT NULL`, equals its package export operation, scope exactly `COMPATIBILITY_EXPORT` |
+| `export_source_rows.conversion_id` | `val_data_001_flow_conversions.csv.conversion_id` | nullable only when no flow, density, mass/volume, or unit conversion participates in the exported value |
+| `export_source_samples.(compatibility_package_id, export_filename, export_row_key, export_field)` | complete `val_data_001_export_source_rows.csv` primary key | many-to-one, all `NOT NULL` |
+| `export_source_samples.source_value_processing_id` | `val_data_001_processing_operations.csv.processing_id` | nullable only for a directly reported raw-native source sample; otherwise parent scope `ROW_VALUE` |
 | `resources.(payload_schema_id, resource_type)` | `val_data_001_resource_type_schemas.csv.(payload_schema_id, resource_type)` | many-to-one, both `NOT NULL` |
+
+`export_source_samples.source_table` is a controlled external-table binding,
+not a free-form name. Its canonical source-key object has exactly the members
+below and no others:
+
+| `source_table` | Exact `source_key_json_canonical` members |
+|---|---|
+| `val_data_001_signals.csv` | `shot_id`, `signal_id`, `sample_index` |
+| `val_data_001_deformation.csv` | `shot_id`, `location_id`, `sample_index` |
+| `val_data_001_flow_conversions.csv` | `conversion_id` |
+| `val_data_001_shots.csv` | `shot_id` |
+| `val_data_001_fractions.csv` | `shot_id`, `fraction_id` |
+| `val_data_001_chemistry.csv` | `shot_id`, `fraction_id`, `species` |
+
+Every key object resolves to exactly one authoritative row in the same package
+partition. `EXACT_SAMPLE` permits one child with ordinal 1 and weight 1.
+`LINEAR_INTERPOLATION` permits two children with ordinals 1 and 2, strictly
+ordered source times bracketing the export time, and the frozen weights.
+Other cardinalities, incomplete keys, duplicate keys, or cross-partition keys
+are invalid.
+
+### Complete field-coverage classification
+
+The commissioning-readiness audit enumerates every required field in every
+exact table above. Key columns are classified in the primary/candidate-key
+table; relational identifiers are classified in the foreign-key matrix;
+`*_resource_id` columns are classified in the resource-reference matrix;
+Puckworks catalog/template fields and `source_table` keys are controlled
+external bindings. The remaining fields are expressly non-relational scalar,
+measurement, status, enumeration, canonical-payload, checksum, timestamp,
+unit, count, formula, quality, or provenance attributes governed by their
+table and controlled-enumeration rules. A field ending in `_id`, `_ids`, or
+`_key` that is not found in one of those five classes is an audit failure.
+The same fail-closed audit rejects a declared reference whose target table,
+candidate key, resource type, cardinality, null rule, or package partition is
+missing or ambiguous.
 
 ### Resource-reference matrix
 
@@ -535,7 +638,7 @@ reference below resolves to one complete parent key. The required parent
 | `shots.basket_resource_id` | `BASKET` |
 | `shots.preparation_protocol_resource_id` | `PREPARATION_PROTOCOL` |
 | `signals.sensor_resource_id`, `deformation.sensor_resource_id`, `calibrations.sensor_resource_id` | `SENSOR` |
-| `signals.clock_resource_id`, `controls.clock_resource_id` | `CLOCK` |
+| `signals.clock_resource_id`, `controls.clock_resource_id`, `deformation.clock_resource_id` | `CLOCK` |
 | `flow_conversions.density_source_resource_id` | `DENSITY_SOURCE` |
 | `deformation.reference_state_resource_id` | `REFERENCE_STATE` |
 | `deformation.fixture_compliance_resource_id` | `FIXTURE_COMPLIANCE` |
@@ -567,7 +670,7 @@ null rights reference.
 | `inclusion_status` | `INCLUDED`; `EXCLUDED_PREDECLARED_RULE`; `FAILED_RETAINED`; `PENDING_QC` |
 | `missing_value_state` | `PRESENT`; `NOT_MEASURED`; `NOT_APPLICABLE`; `BELOW_DETECTION`; `SENSOR_FAILURE`; `MISSING_UNKNOWN` |
 | `sealed_status` | `NOT_APPLICABLE`; `UNSEALED_CALIBRATION`; `SEALED_UNACCESSED`; `AUTHORIZED_OPENED`; `CLOSED_AFTER_SCORING` |
-| `physical_node`/signal code | `P_MACHINE_UPSTREAM_RU_PA_GAUGE`; `P_BASKET_BED_TOP_PA_GAUGE`; `OUTLET_MASS_FLOW_G_S`; `OUTLET_VOLUME_FLOW_ML_S`; `DELIVERED_MASS_G`; `DEFORMATION_UPPER_M`; `DEFORMATION_MID_M`; `DEFORMATION_LOWER_M`; `BED_HEIGHT_BULK_M`; `FIRST_DRIP_EVENT_S` |
+| `physical_node`/signal code | `P_MACHINE_UPSTREAM_RU_PA_GAUGE`; `P_BASKET_BED_TOP_PA_GAUGE`; `T_MACHINE_UPSTREAM_RU_C`; `T_BASKET_BED_TOP_C`; `OUTLET_MASS_FLOW_G_S`; `OUTLET_VOLUME_FLOW_ML_S`; `DELIVERED_MASS_G`; `DEFORMATION_UPPER_M`; `DEFORMATION_MID_M`; `DEFORMATION_LOWER_M`; `BED_HEIGHT_BULK_M`; `FIRST_DRIP_EVENT_S` |
 | `control_status` | `PENDING_FEASIBILITY`; `WITHIN_FROZEN_TOLERANCE`; `OUTSIDE_FROZEN_TOLERANCE`; `CONTROL_FAILURE` |
 | `control_phase` | `PRE_SHOT`; `RAMP`; `PLATEAU`; `TERMINATION`; `POST_SHOT` |
 | `block_type` | `SESSION`; `COFFEE_LOT`; `GRINDER_STATE`; `OPERATOR_STATE`; `APPARATUS_CALIBRATION_STATE` |
@@ -579,9 +682,11 @@ null rights reference.
 | `campaign_mapping_status` | `LOCKED_PUCKWORKS_CAMPAIGN`; `PUCKWORKS_MACHINE_MODE_CAMPAIGN_GAP_LOCAL_EXTENSION`; `FUTURE_PUCKWORKS_CAMPAIGN_PENDING` |
 | `edge_role` | `INPUT`; `OUTPUT` |
 | `operation_scope` | `ROW_VALUE`; `NORMALIZED_FILE_ASSEMBLY`; `COMPATIBILITY_EXPORT` |
-| `fraction_state` | `PRESENT`; `NOT_APPLICABLE_NO_FRACTIONATED_CHEMISTRY` |
-| `package_access_status` | `OPEN_AUTHORIZED`; `CALIBRATION_ACCESS`; `SEALED_UNACCESSED`; `AUTHORIZED_OPENED`; `PUBLIC_METADATA_ONLY` |
+| `package_access_status` | `OPEN_AUTHORIZED`; `CALIBRATION_ACCESS`; `SEALED_UNACCESSED`; `AUTHORIZED_OPENED`; `CLOSED_AFTER_SCORING`; `PUBLIC_METADATA_ONLY` |
 | `export_status` | `NOT_GENERATED`; `GENERATED_VERIFIED`; `PROHIBITED_SEALED`; `NOT_APPLICABLE` |
+| `fraction_chemistry_status` | `PRESENT`; `NOT_APPLICABLE_NO_FRACTIONATED_CHEMISTRY` |
+| `source_mode` | `EXACT_SAMPLE`; `LINEAR_INTERPOLATION`; `MISSING` |
+| `exported_row_state` | `PROCESSED_SYNCHRONIZED`; `DERIVED_WITH_SYNCHRONIZED_SOURCES`; `MISSING_DECLARED` |
 
 ### Route-conditional partition representation
 
@@ -724,6 +829,25 @@ table and invalidate the export.
 14. Every synchronized export row has one frozen grid position and complete
     source-key records. Every achieved-mass value has one exact terminal
     delivered-mass source key selected by the frozen termination rule.
+15. Package campaign, route, partition, Puckworks campaign, evidence class,
+    access policy, terminal rights, access status, dataset status, and evidence
+    level reconcile to one parent partition and campaign. Package counts and
+    exclusion summaries use only rows in that partition.
+16. Package shots, files, calibrations, fractions, chemistry, exclusions,
+    source samples, grids, and processing inputs share the package partition.
+    A Route-B calibration package has no edge, key, count, status, checksum,
+    or derived dependency on a sealed-scoring partition.
+17. A time-series-producing package has exactly one reciprocal package/grid
+    pair and exactly one export operation of scope `COMPATIBILITY_EXPORT`.
+    A normalized-file assembly operation cannot satisfy that reference.
+18. Temperature export resolves only to registered
+    `T_BASKET_BED_TOP_C` samples. Exact exports retain one source; interpolated
+    exports retain two ordered, bracketing sources and frozen weights; missing
+    exports retain no source and an explicit missing state.
+19. `fraction_chemistry_status=PRESENT` is equivalent to a nonempty,
+    reconciled package fraction set. The not-applicable state is equivalent to
+    zero fraction and chemistry rows and emits neither fraction nor chemistry
+    data files.
 
 ## Timebase, timing, calibration, and latency
 

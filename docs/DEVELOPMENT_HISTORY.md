@@ -216,3 +216,11 @@ and terminal rights, separated row-value operations from file assembly, and
 froze reproducible synchronized-time-series and terminal delivered-mass export
 rules. This was documentation and schema-contract work only; no acquisition,
 scientific execution, scoring, or governing-physics change occurred.
+
+The final machine-contract closure completed omitted foreign-key and resource
+bindings, scoped every compatibility identity and summary to one evidence
+partition, added registered basket-top temperature and reproducible exact or
+two-sample interpolation sources, introduced package-level fraction/chemistry
+status, and required exactly one grid and one compatibility-export operation
+for each time-series package. It changed no accepted science, evidence route,
+measurement target, result, dependency, or commissioning boundary.

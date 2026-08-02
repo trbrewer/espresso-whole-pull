@@ -30,7 +30,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 226,
-    "source_manifest_aggregate_sha256": "3af2bf2fd5fed31de21382a0104bc85b5f6c08315038594fc92e888a8008dbb8",
+    "source_manifest_aggregate_sha256": "24287ab1d23ab3b50cbe7b3a723f4cbdc1f2e71c0b26ee9347e2882897ed1032",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -93,7 +93,14 @@
     "compatibility_package_isolation": "ONE_EVIDENCE_PARTITION_PER_PACKAGE",
     "resource_payload_contract": "TYPE_SPECIFIC_CANONICAL_JSON_TERMINAL_RIGHTS",
     "synchronized_export_contract": "EXACT_GRID_SOURCE_KEYS_AND_TERMINAL_MASS_RULE",
-    "implementation_contract_audit": "PASS"
+    "implementation_contract_audit": "PASS",
+    "complete_key_and_resource_coverage": "PASS",
+    "package_partition_isolation": "PASS",
+    "temperature_export_contract": "REGISTERED_BASKET_TOP_SIGNAL",
+    "export_source_cardinality": "EXACT_ONE_OR_INTERPOLATED_TWO_ORDERED",
+    "fraction_chemistry_package_state": "EXPLICIT",
+    "time_series_grid_cardinality": "EXACTLY_ONE_PER_EXPORTING_PACKAGE",
+    "compatibility_export_operation_scope": "REQUIRED"
   },
   "val_infra_002": {
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",

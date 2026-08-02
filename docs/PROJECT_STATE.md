@@ -49,6 +49,12 @@ registry-controlled, adds fraction parents and partition-isolated
 compatibility packages, types resource payloads with terminal rights, and
 separates row-value processing from file assembly and exact synchronized
 exports. Commissioning remains unauthorized.
+The final machine-contract closure completes all field/reference bindings,
+makes package identities and summaries partition-specific, adds registered
+basket-top temperature, records exact or two-source interpolated export
+provenance, adds package-level fraction/chemistry disposition, and enforces
+one export grid and one `COMPATIBILITY_EXPORT` operation per time-series
+package.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

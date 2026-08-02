@@ -128,6 +128,11 @@ terminal rights, distinct row-value and file-assembly operations, and exact
 synchronized-time-series and terminal-mass selection rules. The deterministic
 schema/export audit is required before commissioning readiness; commissioning
 is not authorized here.
+The final machine-contract audit additionally covers every identifier and
+resource field, package/partition identity and summary reconciliation,
+registered temperature export, exact and two-sample source provenance,
+fraction/chemistry package state, and exactly-one-grid/export-operation
+cardinality. No scientific or experimental execution is part of this check.
 
 ## WP-0.3C Stage-0 scaffold
 
