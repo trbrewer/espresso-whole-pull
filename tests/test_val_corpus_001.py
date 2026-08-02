@@ -45,6 +45,11 @@ class ValCorpus001Test(unittest.TestCase):
         p = json.loads((ROOT / "validation/cases/val_corpus_001/VAL_CORPUS_001_REVIEW_CORRECTION_PROTOCOL.json").read_text())
         self.assertEqual(set(p["label_rules"]), {"WORKING","PARTIAL","FAILING","DESCRIPTIVE_ONLY","INVALIDATED_EXECUTION"})
 
+    def test_wrong_order_is_failing_rule(self):
+        text = (ROOT / "scripts/val_corpus_001.py").read_text()
+        self.assertIn('if wrong_order:', text)
+        self.assertIn('label = "FAILING"', text)
+
 
 if __name__ == "__main__":
     unittest.main()

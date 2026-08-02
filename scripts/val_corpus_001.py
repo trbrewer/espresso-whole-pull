@@ -472,7 +472,15 @@ def analyze_r1(root: Path, snapshot: Path, original_root: Path, run_root: Path, 
         branch=next(x["branch"] for x in protocol["correction_matrix"] if x["id"]==cid)
         order=families.get(branch); cover=[metrics[k]["full"]["source_uncertainty_coverage"] for k in ("pressure","flow","mass")]
         correct=order is not None and order["flow_spearman"]==1 and order["mass_spearman"]==1
-        label="WORKING" if correct and all(x is not None and x>=.68 for x in cover) else ("PARTIAL" if correct or any(x and x>0 for x in cover) else "FAILING")
+        wrong_order = order is not None and (order["flow_spearman"] != 1 or order["mass_spearman"] != 1)
+        if wrong_order:
+            label = "FAILING"
+        elif correct and all(x is not None and x >= .68 for x in cover):
+            label = "WORKING"
+        elif correct or any(x is not None and x > 0 for x in cover):
+            label = "PARTIAL"
+        else:
+            label = "FAILING"
         rows.append({"id":cid,"source":"waszkiewicz2025","branch":branch,"comparison_mode":"SOURCE_ANCHORED_RECONSTRUCTION",
             "metrics":metrics,"ordering":order,"label":label,"density_kg_m3":965.0})
     # Historical 30 s traces: valid aligned overlap only, source 0..27 s.
