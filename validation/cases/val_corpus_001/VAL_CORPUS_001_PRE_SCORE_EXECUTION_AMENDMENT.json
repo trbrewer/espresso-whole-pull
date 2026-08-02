@@ -23,4 +23,9 @@
     }
   ],
   "claim_ceiling_changed": false
+  ,"first_score_invocation_failure": {
+    "result_exposed": false,
+    "failure": "Reducer encountered a truncated compaction trace after Open MPI returned success despite FOAM FATAL ERROR.",
+    "disposition": "Retain and classify all three compaction runs as FAILED; require both absence of FOAM FATAL ERROR and terminal End marker; exclude failed traces from scoring. No rerun and no parameter change."
+  }
 }

@@ -178,7 +178,12 @@ def run(root: Path, run_root: Path, executable: Path, ranks: int) -> None:
                 else:
                     command = [str(executable)]
                 subprocess.run(command, cwd=case, env=env, stdout=log, stderr=subprocess.STDOUT, check=True)
-            status = "COMPLETED"
+            solver_text = (case / "log.solver").read_text(errors="replace")
+            if "FOAM FATAL ERROR" in solver_text or "End\n" not in solver_text:
+                status = "FAILED"
+                reason = "solver log contains FOAM FATAL ERROR or lacks terminal End marker"
+            else:
+                status = "COMPLETED"
         except Exception as exc:
             reason = f"{type(exc).__name__}: {exc}"
         attempts.append({"id":cid,"status":status,"failure_reason":reason,"started_utc":started,
@@ -212,7 +217,7 @@ def analyze(root: Path, snapshot: Path, run_root: Path, output: Path) -> None:
                "comparison_outputs":[],"assumptions":spec.get("assumption","BASE"),"direction_result":"UNASSESSED",
                "scale_result":"UNASSESSED","shape_result":"UNASSESSED","timing_result":"UNASSESSED",
                "residual_signature":"UNASSESSED","claim_label":"NOT_COMPARABLE","failure_reason":attempt.get("failure_reason","")}
-        if not trace_path.is_file():
+        if attempt.get("status") != "COMPLETED" or not trace_path.is_file():
             row["claim_label"] = "INVALIDATED_EXECUTION"
             rows_out.append(row); continue
         trace = read_csv(trace_path)
