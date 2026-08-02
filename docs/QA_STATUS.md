@@ -111,6 +111,10 @@ future evidence route prospective, fixes prescribed pressure at the basket-top
 node, and adds parameter-role, data-schema, timing, and deformation contracts.
 `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`, VAL-CASE-002 remains
 `NOT_STARTED`, and physical validation remains `NOT_ESTABLISHED`.
+The final evidence/schema correction preserves that status while separating
+frozen parameter classifications from future roles, closing route/partition/
+replicate/block parents and foreign keys, and making the signal table the sole
+authority for measured pressure.
 
 ## WP-0.3C Stage-0 scaffold
 

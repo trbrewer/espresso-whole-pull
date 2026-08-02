@@ -34,6 +34,9 @@ measurement package. `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`,
 Its exact-head review correction status is
 `VAL_DATA_001_REVIEW_STATUS: CORRECTED_PENDING_EXACT_HEAD_REVIEW`; the future
 evidence route still requires prospective human-owner selection.
+The final schema correction restores exact frozen VAL-CASE-001 parameter
+classifications, makes partition rules route-conditional, closes all declared
+foreign keys, and assigns measured pressure to one authoritative signal table.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

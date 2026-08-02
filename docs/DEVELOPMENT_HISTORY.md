@@ -191,3 +191,9 @@ basket-top pressure, and adds parameter/evidence-role, normalized submission
 schema, timing, and deformation-compliance contracts. Status is
 `CORRECTED_PENDING_EXACT_HEAD_REVIEW`; the accepted erratum and all scientific
 artifacts remain unchanged.
+
+A final bounded evidence/schema correction then restored the frozen
+VAL-CASE-001 parameter classifications exactly, made replication and access
+rules conditional on the selected route, closed the normalized foreign-key
+graph, and designated the signal table as the sole measured-pressure source.
+No scientific artifact, code, dependency, experiment, or claim changed.

@@ -103,23 +103,26 @@ pilot decisions.
 
 ## Parameter and evidence-role ledger
 
-Every final role must be frozen before commissioning. `Unused outputs` below
-must remain unused for fitting if they will support an independent comparison.
+The frozen protocol classification is historical fact and is not a proposed
+future evidence role. Every prospective role must be frozen before
+commissioning.
 
-| Item; definition and units | Current status and preferred independent source | Campaign/gap and future role | Permitted calibration evidence; unused comparison outputs; holdout restriction | Circularity consequence and unresolved disposition |
-|---|---|---|---|---|
-| `k0`, reference intrinsic permeability (m2) | uncertain model input; independent constant-head/pressure-flow characterization bound to the compared coffee, grinder, packing, and shot | EXP-003; measured input, calibration quantity, or withheld comparison input | Separate characterization may calibrate it; comparison-shot flow/pressure must remain unused if independently scored; sealed records require separate access authority | Fitting from the scored pressure-flow response destroys independence for that response; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| `pc`, compaction pressure scale (Pa) | uncertain model input; independent mechanical pressure/deformation characterization | EXP-004; calibration quantity or withheld compaction parameter | Calibration subset may fit it; withheld pressure/deformation outputs remain untouched; holdout identities sealed prospectively | Fitting and scoring the same deformation curve is circular; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| `phi0`, stress-free/reference porosity (1) | uncertain model input; independent geometry, dose, density, and packing characterization bound to each compared shot | EXP-003; measured input or calibration quantity | Characterization may supply it; compared-shot deformation/flow outputs remain unused for fitting; sealed partitions require separate authority | Inferring it from the scored hydraulic response removes independence; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| `Cu`, machine/upstream compliance (m3/Pa) | uncertain machine input; independent volume-pressure or transient hydraulic characterization | machine-mode campaign gap | Separate machine characterization or declared calibration subset; withheld upstream/basket transient outputs remain unused; no holdout access here | Inferring `Cu` from the same scored transient confounds machine and puck response; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| `Ru`, upstream hydraulic resistance (Pa s/m3) | uncertain machine input; independent line-resistance characterization | machine-mode campaign gap | Separate machine characterization or calibration subset; withheld pressure-drop/flow outputs remain unused; telemetry role must be declared | Telemetry-derived `Ru` cannot independently validate that same pressure-drop response; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| `Qfree`, free-flow supply parameter (m3/s) | uncertain machine input; independent no-puck free-flow characterization | machine-mode campaign gap | Characterization may prescribe it; scored machine/puck flow remains unused; any sealed comparison is separately controlled | Derivation from scored coupled flow creates circular machine-boundary evidence; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| `pshut`, shutoff-pressure supply parameter (Pa gauge) | uncertain machine input; independent safe shutoff/supply-curve characterization | machine-mode campaign gap | Characterization may prescribe it; scored upstream/basket pressures remain unused; sealed access requires separate authority | Derivation from the scored coupled pressure response destroys independence; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| universal/finite-porosity model-form switch (categorical) | existing model-form switch; no fitting source | EXP-004 plus EXP-001 telemetry; future withheld model-form comparison | Calibration/model selection must use only a declared subset; all discriminator outputs in a sealed subset remain untouched | Choosing the branch on scored outputs invalidates independent discrimination; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| viscosity, dynamic viscosity (Pa s) | measured/source-derived input; traceable temperature-dependent fluid property | EXP-001 temperature metadata | Independently prescribed or calculated before comparison; scored flow is not a property-fitting source; sealed output access prohibited | Back-calculating viscosity from scored flow makes hydraulic comparison circular; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| density, fluid density (kg/m3) | measured/source-derived input; traceable gravimetric/volumetric or temperature-dependent property | EXP-001 | Independently prescribed for mass/volume conversion; scored mass and flow remain unused for fitting; provenance travels with partition | Estimating density to reconcile scored mass and volume flow compromises that comparison; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| wetting/first-drip inputs, including dry-bed and inlet/timing quantities (declared native units) | uncertain/measured inputs; independent preparation metadata and physical marker characterization | EXP-002 | Pilot/characterization may define detection and inputs; withheld first-drip timing remains unused; ordinary replicates are not holdouts | Tuning wetting inputs to scored first drip prevents an independent timing claim; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
-| downstream extraction/dissolution quantities used in a comparison (quantity-specific SI units) | existing inputs/outputs; independent chemistry, dose, and material characterization | EXP-001 and EXP-003 | Only explicitly declared calibration quantities may be fitted; cup chemistry and extraction outputs intended for comparison remain unused and separately partitioned | Fitting against the same chemistry/extraction response precludes independent scoring; `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING` |
+| Item; definition and units | `CURRENT_VAL_CASE_001_CLASSIFICATION` | Preferred source and campaign/gap | `PROSPECTIVE_VAL_DATA_001_ROLE`; calibration/comparison restriction |
+|---|---|---|---|
+| `k0`, reference intrinsic permeability (m2) | `CALIBRATED_PREVIOUSLY` | independent constant-head/pressure-flow characterization bound to the compared material and shot; EXP-003 | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; if recalibrated, the same pressure/flow observations cannot support an independent fitted-response comparison |
+| `pc`, compaction pressure scale (Pa) | `SOURCE_DERIVED` | independent mechanical pressure/deformation characterization; EXP-004 | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; a fitted deformation curve cannot independently validate `pc` |
+| `phi0`, stress-free/reference porosity (1) | `FIXED_PREDECESSOR_VALUE` | independently measured geometry, dose, density, and packing bound to the shot; EXP-003 | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; hydraulic inference from scored outputs destroys independence |
+| `Cu`, upstream compliance (m3/Pa) | `UNCERTAIN_MODEL_INPUT` | independent volume-pressure or transient characterization; machine-mode campaign gap | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; telemetry must be assigned to characterization, calibration, or untouched comparison before access |
+| `Ru`, upstream resistance (Pa s/m3) | `UNCERTAIN_MODEL_INPUT` | independent line-resistance characterization; machine-mode campaign gap | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; telemetry-derived `Ru` cannot validate the same pressure-drop response |
+| `Qfree`, free-flow supply parameter (m3/s) | `UNCERTAIN_MODEL_INPUT` | independent no-puck free-flow characterization; machine-mode campaign gap | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; coupled-shot scored flow cannot also determine `Qfree` |
+| `pshut`, shutoff-pressure supply parameter (Pa gauge) | `UNCERTAIN_MODEL_INPUT` | independent safe supply-curve characterization; machine-mode campaign gap | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; scored coupled pressure cannot also determine `pshut` |
+| mechanics branch, universal/finite-porosity switch (categorical) | `MODEL_FORM_SWITCH` | EXP-004 deformation plus EXP-001 telemetry | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; model selection and untouched model-form comparison must use route-permitted separate evidence |
+| viscosity, dynamic viscosity (Pa s) | `SOURCE_MEASURED`; `NOT_VARIED` | traceable temperature-dependent fluid property; EXP-001 metadata | independently prescribed input; scored flow must not be used to back-calculate it |
+| density, fluid density (kg/m3) | `SOURCE_MEASURED`; `NOT_VARIED` | traceable gravimetric/volumetric or temperature-dependent property; EXP-001 | independently prescribed conversion input; scored mass/flow must not tune it |
+| wetting permeability (m2) | `CALIBRATED_PREVIOUSLY`; `NOT_VARIED` | independently characterized dry-bed/wetting input; EXP-002 and EXP-003 | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; first-drip comparison observations must remain unused if the response is claimed independent |
+| extraction constants (quantity-specific SI units) | `FIXED_PREDECESSOR_VALUE`; `NOT_VARIED` | independent chemistry/material sources; EXP-001 and EXP-003 | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; scored chemistry/extraction cannot both fit and validate the same constants |
+| additional future wetting/timing inputs (field-specific units) | not part of the frozen varied-parameter inventory; listed separately | preparation metadata and physical marker characterization; EXP-002 | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; pilot evidence is non-validation by default |
+| additional future chemistry/dissolution quantities (field-specific units) | not part of the frozen varied-parameter inventory; listed separately | independent chemistry, dose, and material characterization; EXP-001 and EXP-003 | `ROLE_FREEZE_REQUIRED_BEFORE_COMMISSIONING`; comparison outputs intended for scoring remain unused for fitting |
 
 When `k0`, `phi0`, PSD, or packing are supplied through EXP-003-style
 characterization, their identifiers and provenance must bind to the exact
@@ -170,33 +173,132 @@ This plan is a read-only extension of the templates under
 unchanged. A future submission must supply those templates plus the following
 normalized VAL-DATA-001 extension files.
 
-Common identifiers are non-empty strings. Primary keys are unique; foreign
-keys must resolve within the same checksum-bound submission. Missing values
-must be empty only when `missing_value_state` is one of `NOT_MEASURED`,
-`NOT_APPLICABLE`, `BELOW_DETECTION`, `SENSOR_FAILURE`, or `MISSING_UNKNOWN`;
-numeric zero is never a missing-value code.
+Common identifiers are non-empty strings. Primary keys are unique. Each
+foreign key resolves through the matrix below; there are no implied parents.
+Numeric zero is never a missing-value code.
 
-| File/table | Primary key and foreign keys | Required fields and canonical units |
+### Exact normalized tables
+
+| File/table | Primary key | Exact required fields |
 |---|---|---|
-| `val_data_001_campaign.csv` | PK `campaign_id`; FK `puckworks_campaign_id` to the locked campaign identity | `campaign_id`, `puckworks_campaign_id`, `site_id`, `apparatus_id`, `evidence_partition_id`, `analysis_role`, `rights_id`, `schema_version`; analysis role is one of `PILOT_NON_VALIDATION`, `CHARACTERIZATION`, `CALIBRATION`, `COMPARISON`, `SEALED_HOLDOUT`, or `TRANSFER` |
-| `val_data_001_conditions.csv` | PK `condition_id`; FK `campaign_id`, `apparatus_id` | `control_mode`, `prescribed_node`, `prescribed_pressure_pa_gauge`, `command_program_id`, `initial_hydraulic_state_id`, `ambient_reference_pa`, `zeroing_basis`, `ramp_definition`, `plateau_definition`, `termination_rule`, `control_tolerance_pa`, `missing_value_state` |
-| `val_data_001_shots.csv` | PK `shot_id`; FK `campaign_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id` | coffee/grinder/basket/dose/preparation/temperature identifiers, randomized order, `raw_or_processed`, `inclusion_status`, `exclusion_reason`, `t0_event_code`, `t0_uncertainty_s`; this extends locked `shot_metadata.csv` rather than changing it |
-| `val_data_001_signals.csv` | composite PK (`shot_id`, `signal_id`, `sample_index`); FK `shot_id`, `sensor_id`, `clock_id`, `calibration_id`, `source_file_id`, optional `parent_processing_id` | `native_timestamp`, `elapsed_time_s`, `native_value`, `native_unit`, `canonical_value`, `canonical_unit`, `physical_node`, `raw_or_processed`, `quality_flags`, `missing_value_state`, `clock_offset_s`, `clock_drift_s_per_s`, `sensor_latency_s`, `resampling_interval_s` |
-| `val_data_001_controls.csv` | composite PK (`shot_id`, `control_sample_index`); FK `shot_id`, `command_program_id`, `clock_id`, `source_file_id` | `native_timestamp`, `elapsed_time_s`, commanded/setpoint value and unit, `prescribed_node`, achieved basket-top pressure in Pa gauge, measured upstream pressure in Pa gauge, ambient reference in Pa, `control_deviation_pa`, `control_status`, ramp/plateau/termination state |
-| `val_data_001_flow_conversion.csv` | PK `conversion_id`; FK `shot_id`, `density_source_id`, optional `calibration_id` | native mass flow in g/s, native volume flow in mL/s when measured, canonical mass flow in kg/s, canonical volume flow in m3/s, density in kg/m3, temperature basis, conversion formula, density provenance, uncertainty record ID |
-| `val_data_001_deformation.csv` | composite PK (`shot_id`, `location_id`, `sample_index`); FK `shot_id`, `sensor_id`, `calibration_id`, `reference_state_id`, `source_file_id` | native/canonical displacement and units, compression sign, `spatial_basis`, axial/radial coordinates, reference state, fixture-compliance correction ID, coffee-bed-only value, quality/missing flags, timing fields |
-| `val_data_001_calibrations.csv` | PK `calibration_id`; FK `apparatus_id`, `sensor_id`, `source_file_id` | observable, native/canonical units, method, reference identity, timestamp, offset, scale, range, resolution, bandwidth, latency, drift, uncertainty-record ID, validity interval; extends locked `calibration.csv` |
-| `val_data_001_files.csv` | PK `source_file_id`; optional FK `parent_source_file_id`, `processing_id` | relative filename, role, `raw_or_processed`, SHA-256, byte count, media type, license/rights ID, creator software identity, transformation identity; extends locked `file_manifest.csv` |
-| `val_data_001_processing_lineage.csv` | PK `processing_id`; FKs to input `source_file_id` values and output `source_file_id` | software commit/tree, command or deterministic operation ID, parameters, input/output hashes, synchronization method, resampling method, operator role, timestamp |
+| `val_data_001_evidence_routes.csv` | `route_id` | `route_id`, `selected_route`, `calibration_evidence_class`, `scoring_evidence_class`, `prospective_freeze_resource_id`, `human_owner_disposition_resource_id`, `rights_policy_resource_id`, `access_policy_resource_id` |
+| `val_data_001_campaigns.csv` | `campaign_id` | `campaign_id`, `puckworks_campaign_id`, `site_id`, `apparatus_id`, `route_id`, `schema_version` |
+| `val_data_001_evidence_partitions.csv` | `evidence_partition_id` | `evidence_partition_id`, `campaign_id`, `route_id`, `analysis_role`, `evidence_class`, `sealed_status`, `partition_manifest_sha256`, `seal_timestamp_utc`, `custodian_resource_id`, `access_policy_resource_id`, `rights_resource_id` |
+| `val_data_001_replicates.csv` | `replicate_id` | `replicate_id`, `campaign_id`, `condition_id`, `block_id`, `replicate_sequence`, `randomization_sequence`, `evidence_partition_id` |
+| `val_data_001_blocks.csv` | `block_id` | `block_id`, `campaign_id`, `block_type`, `block_label`, `session_start_utc`, `coffee_lot_resource_id`, `grinder_state_resource_id`, `operator_role_resource_id`, `apparatus_state_resource_id`, `calibration_set_id` |
+| `val_data_001_resources.csv` | (`resource_type`, `resource_id`) | `resource_type`, `resource_id`, `definition`, `source_file_id`, `rights_resource_id` |
+| `val_data_001_conditions.csv` | `condition_id` | `condition_id`, `campaign_id`, `apparatus_id`, `control_mode`, `prescribed_node`, `prescribed_pressure_pa_gauge`, `command_program_resource_id`, `initial_hydraulic_state_resource_id`, `ambient_reference_pa`, `zeroing_basis`, `ramp_definition`, `plateau_definition`, `termination_rule`, `control_tolerance_pa`, `missing_value_state` |
+| `val_data_001_shots.csv` | `shot_id` | `shot_id`, `campaign_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`, `coffee_lot_resource_id`, `grinder_resource_id`, `basket_resource_id`, `dose_g`, `dry_bed_depth_mm`, `preparation_protocol_resource_id`, `brew_temperature_c`, `raw_or_processed`, `inclusion_status`, `exclusion_reason`, `t0_event_code`, `t0_uncertainty_s` |
+| `val_data_001_signals.csv` | (`shot_id`, `signal_id`, `sample_index`) | `shot_id`, `signal_id`, `sample_index`, `sensor_resource_id`, `clock_resource_id`, `calibration_id`, `source_file_id`, `processing_id`, `native_timestamp`, `elapsed_time_s`, `native_value`, `native_unit`, `canonical_value`, `canonical_unit`, `physical_node`, `raw_or_processed`, `quality_flags`, `missing_value_state`, `clock_offset_s`, `clock_drift_s_per_s`, `sensor_latency_s`, `resampling_interval_s` |
+| `val_data_001_controls.csv` | (`shot_id`, `control_sample_index`) | `shot_id`, `control_sample_index`, `command_program_resource_id`, `clock_resource_id`, `source_file_id`, `processing_id`, `native_timestamp`, `elapsed_time_s`, `commanded_pressure_value`, `commanded_pressure_unit`, `prescribed_node`, `basket_pressure_signal_id`, `upstream_pressure_signal_id`, `control_deviation_pa`, `control_status`, `control_phase` |
+| `val_data_001_flow_conversions.csv` | `conversion_id` | `conversion_id`, `shot_id`, `density_source_resource_id`, `calibration_id`, `source_file_id`, `native_mass_flow_g_s`, `native_volume_flow_ml_s`, `canonical_mass_flow_kg_s`, `canonical_volume_flow_m3_s`, `density_kg_m3`, `density_temperature_c`, `conversion_formula`, `processing_id` |
+| `val_data_001_deformation.csv` | (`shot_id`, `location_id`, `sample_index`) | `shot_id`, `location_id`, `sample_index`, `sensor_resource_id`, `calibration_id`, `reference_state_resource_id`, `fixture_compliance_resource_id`, `source_file_id`, `processing_id`, `native_timestamp`, `elapsed_time_s`, `native_displacement_value`, `native_displacement_unit`, `canonical_displacement_m`, `compression_sign`, `spatial_basis`, `axial_coordinate_m`, `radial_coordinate_m`, `coffee_bed_displacement_m`, `quality_flags`, `missing_value_state` |
+| `val_data_001_calibrations.csv` | `calibration_id` | `calibration_id`, `calibration_set_id`, `apparatus_id`, `sensor_resource_id`, `source_file_id`, `observable_code`, `native_unit`, `canonical_unit`, `calibration_method`, `reference_resource_id`, `calibration_timestamp_utc`, `offset`, `scale`, `range_min`, `range_max`, `resolution`, `bandwidth_hz`, `latency_s`, `drift_per_s`, `uncertainty_resource_id`, `valid_from_utc`, `valid_to_utc` |
+| `val_data_001_files.csv` | `source_file_id` | `source_file_id`, `parent_source_file_id`, `processing_id`, `relative_filename`, `file_role`, `raw_or_processed`, `sha256`, `byte_count`, `media_type`, `rights_resource_id`, `creator_software_resource_id` |
+| `val_data_001_processing_lineage.csv` | `processing_id` | `processing_id`, `input_source_file_id`, `output_source_file_id`, `software_commit`, `software_tree`, `operation_resource_id`, `parameter_record`, `synchronization_method`, `resampling_method`, `operator_role_resource_id`, `processing_timestamp_utc` |
 
-The signal registry must include `P_MACHINE_UPSTREAM_RU_PA_GAUGE`,
-`P_BASKET_BED_TOP_PA_GAUGE`, commanded pressure as a separate control signal,
-`OUTLET_MASS_FLOW_G_S`, `OUTLET_VOLUME_FLOW_ML_S`, `DELIVERED_MASS_G`, and
-location-specific `DEFORMATION_MM` or `BED_HEIGHT_MM`. It must preserve native
-bar versus canonical Pa, native g/s or mL/s versus canonical SI, and density
-and conversion provenance. A processed value never replaces its raw parent.
-Evidence partition, analysis role, calibration links, quality flags, inclusion
-status, exclusion rationale, checksums, and processing lineage are mandatory.
+The locked Puckworks bindings are exact: `campaigns.puckworks_campaign_id`
+references `docs/data_requests/experimental_campaigns.yml` campaign key
+`$.campaigns[*].campaign_id`; `campaigns.site_id` references
+`docs/data_requests/templates/campaign_metadata.yml` key `$.site_id`; and
+`campaigns.apparatus_id`, `conditions.apparatus_id`, and
+`calibrations.apparatus_id` reference
+`docs/data_requests/templates/apparatus.yml` key `$.apparatus_id`, all at the
+locked commit and tree above. The local `campaign_id`, `shot_id`, and
+`replicate_id` values also populate the same-named columns in locked
+`shot_metadata.csv`; this is an equality/export binding, not an additional
+foreign-key parent.
+
+### Foreign-key resolution matrix
+
+Cardinality is child-to-parent. `NOT NULL` means every child row requires
+exactly one parent; `NULLABLE` states the sole permitted null condition.
+
+| Child field | Exact parent | Cardinality/null rule |
+|---|---|---|
+| `campaigns.puckworks_campaign_id` | locked `experimental_campaigns.yml` `$.campaigns[*].id` | many-to-one, `NOT NULL` |
+| `campaigns.site_id` | locked `campaign_metadata.yml` `$.site_id` | many-to-one, `NOT NULL` |
+| `campaigns.apparatus_id`, `conditions.apparatus_id`, `calibrations.apparatus_id` | locked `apparatus.yml` `$.apparatus_id` | many-to-one, `NOT NULL` |
+| `campaigns.route_id`, `evidence_partitions.route_id` | `val_data_001_evidence_routes.csv.route_id` | many-to-one, `NOT NULL` |
+| `evidence_partitions.campaign_id`, `replicates.campaign_id`, `blocks.campaign_id`, `conditions.campaign_id`, `shots.campaign_id` | `val_data_001_campaigns.csv.campaign_id` | many-to-one, `NOT NULL` |
+| `replicates.condition_id` | `val_data_001_conditions.csv.condition_id` | many-to-one, `NOT NULL` |
+| `replicates.block_id`, `shots.block_id` | `val_data_001_blocks.csv.block_id` | many-to-one, `NOT NULL` |
+| `replicates.evidence_partition_id`, `shots.evidence_partition_id` | `val_data_001_evidence_partitions.csv.evidence_partition_id` | many-to-one, `NOT NULL` |
+| `shots.condition_id` | `val_data_001_conditions.csv.condition_id` | many-to-one, `NOT NULL` |
+| `shots.replicate_id` | `val_data_001_replicates.csv.replicate_id` | one-to-one within a condition, `NOT NULL` |
+| `shots.apparatus_id` | locked `apparatus.yml` `$.apparatus_id` | many-to-one, `NOT NULL` |
+| `signals.shot_id`, `controls.shot_id`, `flow_conversions.shot_id`, `deformation.shot_id` | `val_data_001_shots.csv.shot_id` | many-to-one, `NOT NULL` |
+| every field ending `_resource_id` | `val_data_001_resources.csv.resource_id`, paired with the field-implied `resource_type` | many-to-one; `NOT NULL` except `resources.rights_resource_id`, which may be null only for a public-domain resource documented as `PUBLIC_DOMAIN` |
+| `signals.calibration_id`, `flow_conversions.calibration_id`, `deformation.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | many-to-one; null only when `missing_value_state=NOT_APPLICABLE` and the signal definition proves no calibration applies |
+| `calibrations.calibration_set_id`, `blocks.calibration_set_id` | `val_data_001_resources.csv.resource_id` with `resource_type=CALIBRATION_SET` | many-to-one, `NOT NULL` |
+| every `source_file_id`, `input_source_file_id`, `output_source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
+| `files.parent_source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one; null only for an instrument-native root file |
+| every `processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only when `raw_or_processed=RAW_NATIVE` |
+| `controls.basket_pressure_signal_id`, `controls.upstream_pressure_signal_id` | `val_data_001_signals.csv.signal_id` within the same `shot_id` | many-to-one; basket reference `NOT NULL`; upstream reference null only for prescribed mode when upstream pressure is `NOT_MEASURED` |
+
+### Controlled enumerations
+
+| Field | Permitted values |
+|---|---|
+| `selected_route` | `INDEPENDENT_COMPONENT_VALIDATION`; `CALIBRATION_THEN_HOLDOUT_OR_TRANSFER`; `SEPARATE_CHARACTERIZATION_THEN_INDEPENDENT_VALIDATION` |
+| `evidence_class` | `NOT_APPLICABLE`; `PILOT_NON_VALIDATION`; `CHARACTERIZATION`; `RECONSTRUCTION_OR_CALIBRATION`; `INDEPENDENT_COMPONENT_VALIDATION`; `HOLDOUT_OR_TRANSFER` |
+| `analysis_role` | `PILOT_NON_VALIDATION`; `CHARACTERIZATION`; `CALIBRATION`; `COMPARISON`; `SEALED_SCORING`; `TRANSFER` |
+| `control_mode` | `PRESCRIBED_BASKET_PRESSURE`; `MACHINE_COUPLED` |
+| `prescribed_node` | `P_BASKET_BED_TOP_PA_GAUGE`; `NOT_APPLICABLE_MACHINE_COUPLED` |
+| `raw_or_processed` | `RAW_NATIVE`; `PROCESSED_SYNCHRONIZED`; `DERIVED` |
+| `inclusion_status` | `INCLUDED`; `EXCLUDED_PREDECLARED_RULE`; `FAILED_RETAINED`; `PENDING_QC` |
+| `missing_value_state` | `PRESENT`; `NOT_MEASURED`; `NOT_APPLICABLE`; `BELOW_DETECTION`; `SENSOR_FAILURE`; `MISSING_UNKNOWN` |
+| `sealed_status` | `NOT_APPLICABLE`; `UNSEALED_CALIBRATION`; `SEALED_UNACCESSED`; `AUTHORIZED_OPENED`; `CLOSED_AFTER_SCORING` |
+| `physical_node`/signal code | `P_MACHINE_UPSTREAM_RU_PA_GAUGE`; `P_BASKET_BED_TOP_PA_GAUGE`; `OUTLET_MASS_FLOW_G_S`; `OUTLET_VOLUME_FLOW_ML_S`; `DELIVERED_MASS_G`; `DEFORMATION_UPPER_M`; `DEFORMATION_MID_M`; `DEFORMATION_LOWER_M`; `BED_HEIGHT_BULK_M`; `FIRST_DRIP_EVENT_S` |
+| `control_status` | `PENDING_FEASIBILITY`; `WITHIN_FROZEN_TOLERANCE`; `OUTSIDE_FROZEN_TOLERANCE`; `CONTROL_FAILURE` |
+| `control_phase` | `PRE_SHOT`; `RAMP`; `PLATEAU`; `TERMINATION`; `POST_SHOT` |
+| `block_type` | `SESSION`; `COFFEE_LOT`; `GRINDER_STATE`; `OPERATOR_STATE`; `APPARATUS_CALIBRATION_STATE` |
+| `location_id` | `UPPER_BED`; `MID_BED`; `LOWER_BED`; `BULK_EQUIVALENT` |
+| `resource_type` | `ACCESS_POLICY`; `APPARATUS_STATE`; `CALIBRATION_SET`; `COMMAND_PROGRAM`; `CUSTODIAN`; `DENSITY_SOURCE`; `FIXTURE_COMPLIANCE`; `FREEZE_IDENTITY`; `GRINDER`; `GRINDER_STATE`; `HUMAN_DISPOSITION`; `HYDRAULIC_INITIAL_STATE`; `OPERATION`; `OPERATOR_ROLE`; `PREPARATION_PROTOCOL`; `REFERENCE_STATE`; `REFERENCE_STANDARD`; `RIGHTS`; `SENSOR`; `SOFTWARE`; `UNCERTAINTY`; `COFFEE_LOT`; `BASKET`; `CLOCK` |
+
+### Route-conditional partition representation
+
+- `INDEPENDENT_COMPONENT_VALIDATION`: one or more partitions may represent
+  acquisition logistics, but every scored partition has
+  `analysis_role=COMPARISON`,
+  `evidence_class=INDEPENDENT_COMPONENT_VALIDATION`, and
+  `sealed_status=NOT_APPLICABLE`. No `CALIBRATION` or `SEALED_SCORING`
+  partition is required or permitted within that scored dataset.
+  Its route record uses `calibration_evidence_class=NOT_APPLICABLE` and
+  `scoring_evidence_class=INDEPENDENT_COMPONENT_VALIDATION`.
+- `CALIBRATION_THEN_HOLDOUT_OR_TRANSFER`: at least one partition has
+  `analysis_role=CALIBRATION`,
+  `evidence_class=RECONSTRUCTION_OR_CALIBRATION`, and
+  `sealed_status=UNSEALED_CALIBRATION`; at least one disjoint partition has
+  `analysis_role=SEALED_SCORING`, `evidence_class=HOLDOUT_OR_TRANSFER`, and
+  `sealed_status=SEALED_UNACCESSED` before fitting. Both partition manifests
+  and their route freeze identity are fixed before calibration access.
+  Its route record uses
+  `calibration_evidence_class=RECONSTRUCTION_OR_CALIBRATION` and
+  `scoring_evidence_class=HOLDOUT_OR_TRANSFER`.
+- `SEPARATE_CHARACTERIZATION_THEN_INDEPENDENT_VALIDATION`: two distinct
+  `campaign_id` values are required. The first has a `CHARACTERIZATION`
+  partition with `evidence_class=CHARACTERIZATION`; the later campaign has a
+  wholly untouched `COMPARISON` partition with
+  `evidence_class=INDEPENDENT_COMPONENT_VALIDATION`. The later campaign is not
+  a holdout subset of the first.
+  Its route record uses `calibration_evidence_class=CHARACTERIZATION` and
+  `scoring_evidence_class=INDEPENDENT_COMPONENT_VALIDATION`.
+
+Every replicate belongs to exactly one condition, block, and evidence
+partition. Blocks encode acquisition structure only; neither a block nor an
+ordinary replicate becomes holdout evidence unless Route B prospectively
+assigns its enclosing partition to `SEALED_SCORING`.
+
+Measured pressure samples have one source of truth:
+`val_data_001_signals.csv`. `val_data_001_controls.csv` contains command and
+state records plus `basket_pressure_signal_id` and
+`upstream_pressure_signal_id`; it contains no independently authoritative
+measured-pressure value. `control_deviation_pa` is derived from the referenced
+basket signal and commanded pressure and therefore requires `processing_id`.
+If duplicated presentation values are exported later, they must be byte- and
+value-derived from that signal row; conflicts resolve in favor of the signal
+table and invalidate the export.
 
 ## Timebase, timing, calibration, and latency
 
@@ -263,9 +365,23 @@ missingness/failure modes, and deformation-reference stability. They remain
 Final replicates are `DESIGN_CALCULATION_REQUIRED`. The later calculation must
 use pilot estimates of within-condition and between-block variance, the
 smallest predeclared discrimination contrast, desired interval width or power,
-multiple-condition structure, anticipated exclusions, and independent holdout
-allocation. It must document assumptions and sensitivity to them; this plan
-does not invent a replicate count or power value.
+multiple-condition structure, and anticipated exclusions. It must document
+assumptions and sensitivity to them; this plan does not invent a replicate
+count or power value. Partition and access rules depend on the selected route:
+
+- `INDEPENDENT_COMPONENT_VALIDATION`: calculate replication for the complete
+  independent comparison dataset. No within-dataset calibration/holdout split
+  is required. Freeze evidence identity, rights, protocol, and access policy
+  before outcome access; the entire scored dataset remains unused for fitting
+  and model selection.
+- `CALIBRATION_THEN_HOLDOUT_OR_TRANSFER`: calculate calibration and scoring
+  replication separately. Freeze partition membership and manifest hashes
+  before fitting; seal the scoring partition. Opening or scoring it requires
+  separate authority and leakage controls.
+- `SEPARATE_CHARACTERIZATION_THEN_INDEPENDENT_VALIDATION`: calculate the
+  characterization campaign and later independent campaign separately.
+  Characterization is non-validation evidence; the later campaign remains
+  wholly untouched and is not an ordinary holdout subset of the earlier one.
 
 Randomize condition order within feasible thermal/preparation blocks. Predefine
 blocks for day/session, coffee batch, grinder state, operator or automation
@@ -299,7 +415,7 @@ or documented preparation failure may exclude a run only under a preregistered
 rule. Preserve the run, raw files, flags, and rationale. Scientific disagreement
 is never an exclusion reason.
 
-## Preregistered analysis, fitting separation, and holdout
+## Route-conditional preregistration, partitioning, and access
 
 Before access to comparison outcomes, preregister time origin, filtering and
 resampling, feature definitions, uncertainty propagation, missingness,
@@ -307,12 +423,18 @@ exclusions, parameter/model-form metrics, thresholds, and interpretation.
 Separate prescribed quantities, independently measured inputs, calibration
 quantities, comparison outputs, contextual metadata, and excluded quantities.
 
-Allocate holdout units or blocks before fitting and seal their identities and
-files. Calibration and model selection must not use holdout observations.
-Holdout access and scoring require separate authority; they are not authorized
-here. Downstream decisions must distinguish inadequate measurement information,
-parameter confounding, model-form discrimination, and persistent structured
-residuals.
+For `INDEPENDENT_COMPONENT_VALIDATION`, preregister the complete comparison and
+freeze the complete dataset identity before outcome access; there is no
+required within-dataset holdout allocation. For
+`CALIBRATION_THEN_HOLDOUT_OR_TRANSFER`, preregister calibration and scoring
+roles, freeze and seal scoring units or blocks before fitting, and prohibit
+calibration/model selection from using them. For
+`SEPARATE_CHARACTERIZATION_THEN_INDEPENDENT_VALIDATION`, preregister the later
+campaign independently and keep it wholly inaccessible during characterization
+and model selection. Holdout access and scoring, when Route B is selected,
+require separate authority and are not authorized here. Downstream decisions
+must distinguish inadequate measurement information, parameter confounding,
+model-form discrimination, and persistent structured residuals.
 
 ## Rights, privacy, and deposit
 
@@ -337,7 +459,8 @@ and citation metadata. Rights must permit the intended independent comparison.
 - [ ] Apparatus and node feasibility: `APPARATUS_FEASIBILITY_REQUIRED`.
 - [ ] Sensors and calibration chain: `SENSOR_SELECTION_REQUIRED`.
 - [ ] Pilot protocol and evidence: `PILOT_REQUIRED`.
-- [ ] Replication and holdout calculation: `DESIGN_CALCULATION_REQUIRED`.
+- [ ] Route-appropriate replication and partition calculation:
+      `DESIGN_CALCULATION_REQUIRED`.
 - [ ] Randomization, blocks, exclusions, and preregistered analysis frozen.
 - [ ] Rights, privacy, custody, and deposit plan accepted.
 - [ ] Safety and operational review accepted by responsible humans.

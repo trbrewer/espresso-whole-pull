@@ -30,7 +30,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 226,
-    "source_manifest_aggregate_sha256": "77cdb78efee5b7addd0e10f955106051e120dab95f7d37c52bde5a22994bb7dd",
+    "source_manifest_aggregate_sha256": "1d7d29e811e9025a6723613606f56b80d0db7feb31944348f729493fb2a1aab6",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -79,7 +79,11 @@
     "next_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
     "machine_mode_campaign_gap": "PUCKWORKS_MACHINE_MODE_CAMPAIGN_GAP",
     "review_status": "CORRECTED_PENDING_EXACT_HEAD_REVIEW",
-    "future_evidence_route": "HUMAN_OWNER_PROSPECTIVE_SELECTION_REQUIRED"
+    "future_evidence_route": "HUMAN_OWNER_PROSPECTIVE_SELECTION_REQUIRED",
+    "parameter_classification_binding": "EXACT_FROZEN_VAL_CASE_001_PROTOCOL",
+    "partition_rules": "ROUTE_CONDITIONAL",
+    "foreign_key_graph": "CLOSED_BY_DECLARED_PARENT_MATRIX",
+    "measured_pressure_source_of_truth": "val_data_001_signals.csv"
   },
   "val_infra_002": {
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
