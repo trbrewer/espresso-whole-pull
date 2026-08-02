@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "case_id": "WASZ-11-COMPACT",
+      "closure_to_tolerance_ratio": 1.090336947,
+      "config_sha256": "8502dee4af576ac90cbac1f0c1d89e282ef1578e3c65a6034dcae9cc303b205f",
+      "configured_absolute_tolerance": 1e-13,
+      "failure_time_s": 5.3,
+      "independent_exact_scalar_flow_m3_s": 7.1082168551677e-07,
+      "independent_scalar_relative_difference": 0.0,
+      "last_completed_continuous_flow_closure_error": 9.99475535123897e-14,
+      "last_completed_nonlinear_iterations": 12,
+      "last_completed_time_s": 5.21999999999998,
+      "log_sha256": "16f29602ce899028b6d0b5e572b084df9a769999f870eb289e3782841f89825d",
+      "reported_continuous_flow_closure_error": 1.090336947e-13,
+      "reported_nonlinear_residual": 1.090336947e-13,
+      "retained_exact_scalar_flow_m3_s": 7.1082168551677e-07,
+      "trace_sha256": "61138c39756b191f843527d17720808b17d1213f26ead9cc5f1563c30553db2f"
+    },
+    {
+      "case_id": "WASZ-5-COMPACT",
+      "closure_to_tolerance_ratio": 6.802198601,
+      "config_sha256": "66e677d7d4d3a992027e4622600b1f046fd6ad9a8b8022881f3083280787f328",
+      "configured_absolute_tolerance": 1e-13,
+      "failure_time_s": 6.62,
+      "independent_exact_scalar_flow_m3_s": 6.065846480405738e-07,
+      "independent_scalar_relative_difference": null,
+      "last_completed_continuous_flow_closure_error": null,
+      "last_completed_nonlinear_iterations": null,
+      "last_completed_time_s": null,
+      "log_sha256": "1d83c48886084e7d2f9fc2053377192a24db4d6f786c49ed1b47bc6395d73f73",
+      "reported_continuous_flow_closure_error": 6.802198601e-13,
+      "reported_nonlinear_residual": 6.802198601e-13,
+      "retained_exact_scalar_flow_m3_s": null,
+      "trace_sha256": "5a82503375af954c44d19c1ae6678e7f63fc1006459022646c0b435368564bcb"
+    },
+    {
+      "case_id": "WASZ-9-COMPACT",
+      "closure_to_tolerance_ratio": 2.8207559009999996,
+      "config_sha256": "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5",
+      "configured_absolute_tolerance": 1e-13,
+      "failure_time_s": 4.36,
+      "independent_exact_scalar_flow_m3_s": 7.056716341352149e-07,
+      "independent_scalar_relative_difference": null,
+      "last_completed_continuous_flow_closure_error": null,
+      "last_completed_nonlinear_iterations": null,
+      "last_completed_time_s": null,
+      "log_sha256": "9b714c1db2c2c4eacb93a3a8b13d0467c99d0257670ecf23aa6be63b095e4a44",
+      "reported_continuous_flow_closure_error": 2.820755901e-13,
+      "reported_nonlinear_residual": 2.820755901e-13,
+      "retained_exact_scalar_flow_m3_s": null,
+      "trace_sha256": "f6cd7f9a1e02a6985e50847170371232dfffd56ab24f3a433bc94f1fe7340920"
+    }
+  ],
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "diagnosis": "The nonlinear acceptance test incorrectly promotes the relative continuous analytical flow-closure comparison to an iteration convergence gate at the configured absolute tolerance. The reported maximum residual equals that closure term at every failure, just above 1e-13, although the analytical scalar evaluator is independently reproduced. This diagnostic is a mesh/reference comparison, not a residual of the discretized nonlinear equation.",
+  "diagnosis_category": "IMPLEMENTATION_DEFECT",
+  "physical_validation": "NOT_ESTABLISHED",
+  "proposed_equation_preserving_correction": "Retain and report analytical flow closure, but remove it from the nonlinear fixed-point acceptance conjunction. Continue requiring flow change, pressure change, and linear pressure residual to meet their frozen controls.",
+  "reproduction_status": "ALL_THREE_FROZEN_FAILURES_REPRODUCED",
+  "schema_version": "espresso.wp03_002.reproduction_and_diagnosis.v1",
+  "task": "WP03-002"
+}

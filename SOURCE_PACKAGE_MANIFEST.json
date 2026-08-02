@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 232,
-  "total_uncompressed_bytes_excluding_manifest": 2177333,
-  "aggregate_source_sha256": "cb222a205e3956313fd387f83daa623286fbf23c9a893c0a3da7502828919423",
-  "aggregate_sha256": "cb222a205e3956313fd387f83daa623286fbf23c9a893c0a3da7502828919423",
+  "file_count": 235,
+  "total_uncompressed_bytes_excluding_manifest": 2187480,
+  "aggregate_source_sha256": "a012fb14cbba94ef078dc338614822b18dd7a7292db9938128c11ea284aa3925",
+  "aggregate_sha256": "a012fb14cbba94ef078dc338614822b18dd7a7292db9938128c11ea284aa3925",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -608,6 +608,11 @@
       "bytes": 1494,
       "git_mode": "100644"
     },
+    "docs/wp03/WP03_002_REPRODUCTION_AND_DIAGNOSIS.md": {
+      "sha256": "004a36995970741fc7c246372fad0c459aae35044eff59fc1219f37ac3e01b64",
+      "bytes": 2041,
+      "git_mode": "100644"
+    },
     "scripts/analyze_r1.py": {
       "sha256": "e76d28b8a1c2804373005cc6d6e7e79f5ee79a6ca8d2a3b70a64438581cbcfa0",
       "bytes": 22712,
@@ -983,6 +988,11 @@
       "bytes": 1891,
       "git_mode": "100755"
     },
+    "scripts/wp03_002_reference.py": {
+      "sha256": "8e972f0860df10654fdd6ebb393f2549bb63ebead43b510f4dbc38b5f196e799",
+      "bytes": 6465,
+      "git_mode": "100644"
+    },
     "scripts/wp03b_path_boundary.py": {
       "sha256": "02a4218a0fb06843a6ca99dcb435ba8680b05570ebd85c05635b848a3c7c5909",
       "bytes": 1691,
@@ -1156,6 +1166,11 @@
     "tests/test_wp03_001_poroelastic_compaction.py": {
       "sha256": "58f2991ca69c551b0161aa9984e86e539b4f709a3b16d4bdac3b5ff7ccf68503",
       "bytes": 9399,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03_002_reference.py": {
+      "sha256": "a07738aeb1fab1be723dc8c7b0823ca4f0cd492fedd6f1cfbced28d83581e420",
+      "bytes": 1641,
       "git_mode": "100644"
     },
     "tests/test_wp03_holdout_contract.py": {
