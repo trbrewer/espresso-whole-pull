@@ -1,0 +1,21 @@
+{
+  "schema_version": "espresso.validation.val_corpus_001.amendment.v1",
+  "task": "VAL-CORPUS-001",
+  "stage": "PRE_SCORE_EXECUTION",
+  "score_exposed_before_correction": false,
+  "scientific_method_changed": false,
+  "protocol_changed": false,
+  "defects": [
+    {
+      "defect": "Generator emitted the poroelastic submodel name where prepare_case expected the existing outer bed-mechanics selector.",
+      "affected_attempts": ["WASZ-5-COMPACT", "WASZ-9-COMPACT", "WASZ-11-COMPACT"],
+      "disposition": "FAILED_ATTEMPTS_RETAINED; rerun only the three prospectively declared compaction configurations with the existing selector waszkiewiczQuasiStaticCompaction."
+    },
+    {
+      "defect": "Reducer and execution-record convenience flag referenced an obsolete trace directory.",
+      "affected_attempts": ["all completed campaign-v2 attempts"],
+      "disposition": "ARITHMETIC_UNCHANGED; point to solver-produced postProcessing/wholePull/0/traces.csv before first scoring."
+    }
+  ],
+  "claim_ceiling_changed": false
+}

@@ -107,7 +107,7 @@ def prepare(root: Path, snapshot: Path, run_root: Path) -> None:
                 cfg["inertialPermeabilityModel"] = "wadsworth2026CeramicsFit"
                 cfg["nonlinearControls"] = {"relativeTolerance":1e-9,"absoluteTolerance":1e-13,"maximumIterations":80,"underRelaxation":0.8,"machineFluxRelativeTolerance":1e-8}
             elif item["branch"] == "finite_porosity_compaction":
-                cfg["bedMechanicsModel"] = "waszkiewicz2025FinitePhi"
+                cfg["bedMechanicsModel"] = "waszkiewiczQuasiStaticCompaction"
                 cfg["poroelasticCompaction"] = {
                     "model":"waszkiewicz2025FinitePhi",
                     "stressFreePorosity":comp_ref["stress_free_porosity"],
@@ -182,7 +182,7 @@ def run(root: Path, run_root: Path, executable: Path, ranks: int) -> None:
             reason = f"{type(exc).__name__}: {exc}"
         attempts.append({"id":cid,"status":status,"failure_reason":reason,"started_utc":started,
                          "duration_s":round(time.monotonic()-t0,6),"config_sha256":sha256(config),
-                         "trace_present":(case/"postProcessing/espressoWholePull/traces.csv").is_file()})
+                         "trace_present":(case/"postProcessing/wholePull/0/traces.csv").is_file()})
         dump(run_root / "EXECUTION_RECORD.json", {"task":TASK,"executable_sha256":sha256(executable),"ranks":ranks,"attempts":attempts})
 
 
@@ -205,7 +205,7 @@ def analyze(root: Path, snapshot: Path, run_root: Path, output: Path) -> None:
     for spec in protocol["run_matrix"]:
         cid, family = spec["id"], spec["family"]
         attempt = by_id.get(cid, {})
-        trace_path = run_root / "cases" / cid / "postProcessing/espressoWholePull/traces.csv"
+        trace_path = run_root / "cases" / cid / "postProcessing/wholePull/0/traces.csv"
         row = {"source":family,"condition":cid,"branch":spec["branch"],"evidence_class":protocol["evidence_class"],
                "comparison_mode":spec["mode"],"calibration_inputs":["9_bar_terminal_flow"] if cid=="WASZ-9-DARCY" else [],
                "comparison_outputs":[],"assumptions":spec.get("assumption","BASE"),"direction_result":"UNASSESSED",
