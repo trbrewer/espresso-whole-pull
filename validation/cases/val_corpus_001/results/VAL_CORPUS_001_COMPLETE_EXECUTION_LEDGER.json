@@ -1,0 +1,379 @@
+{
+  "compaction_disposition": "INVALIDATED_NUMERICAL_EXECUTION_POROELASTIC_NONLINEAR_FAILURE; separate numerical robustness finding; no correction rerun",
+  "correction_accounting": {
+    "attempted": 13,
+    "completed": 13,
+    "declared": 13,
+    "failed": 0,
+    "launched": 13
+  },
+  "correction_attempts": [
+    {
+      "config_path": "configs/R1-DE1-MACHINE-BASE-9MM.json",
+      "config_sha256": "f51eacd76b802733ce4f1aec8fbe7cd3cc2922556c4d7cf76911d2faf5aa70f2",
+      "duration_s": 3.970253,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-DE1-MACHINE-BASE-9MM",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:49:30.854656+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-DE1-MACHINE-BASE-9MM/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "6662e0b8f5b31962ac9e2d109b0d5fd80709364439a3656050b353e78a53fd1e",
+      "trace_size": 2102656
+    },
+    {
+      "config_path": "configs/R1-WASZ-11-DARCY-DISSOLUTION-MEASURED.json",
+      "config_sha256": "af52121993a5907a23f89d89c1f9c855ed20a3d01134cb7753bfe5f144b0f023",
+      "duration_s": 5.05432,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-11-DARCY-DISSOLUTION-MEASURED",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:49:34.831247+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-11-DARCY-DISSOLUTION-MEASURED/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "a92aa0c4cab1851c9cead51e39a97d351acbc97be6d230623e7437a502590eda",
+      "trace_size": 10214624
+    },
+    {
+      "config_path": "configs/R1-WASZ-11-DARCY-STATIC-MEASURED.json",
+      "config_sha256": "c38f82148efb861940bf24a8439a1a5047282132c8b0e358dac44e53da8b082e",
+      "duration_s": 4.968718,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-11-DARCY-STATIC-MEASURED",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:49:39.900341+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-11-DARCY-STATIC-MEASURED/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "6dc63d43f1d7b8bcb6a7fb2a1cf55f813effd1e4296c4c93c102fa3aaa17a3c0",
+      "trace_size": 9302684
+    },
+    {
+      "config_path": "configs/R1-WASZ-11-DARCY-STATIC-NOMINAL.json",
+      "config_sha256": "fd8b92a10a523c090d8484468c0369fb7eb81199865bd4a4e5582fd49026040b",
+      "duration_s": 5.014617,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-11-DARCY-STATIC-NOMINAL",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:49:44.875803+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-11-DARCY-STATIC-NOMINAL/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "f90ac8fa7bf451228c24dbe15f46a1884f3ecd5ed758ff8be84e95ba2727b930",
+      "trace_size": 9239110
+    },
+    {
+      "config_path": "configs/R1-WASZ-11-DF-STATIC-MEASURED.json",
+      "config_sha256": "0bf1ebdd8ed36448d0b58c91814457c3a5dc9d81dc4587e01bda4d65e84e215d",
+      "duration_s": 11.275908,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-11-DF-STATIC-MEASURED",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:49:49.896884+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-11-DF-STATIC-MEASURED/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "e0137c3b45f687380ed147884695e62d613e460c6dd4f32dfcc83d679e7942ab",
+      "trace_size": 10033040
+    },
+    {
+      "config_path": "configs/R1-WASZ-5-DARCY-DISSOLUTION-MEASURED.json",
+      "config_sha256": "3a63a07cf6f2108f312cdc02d62c99b65318d80eb209589a330df6e47111318c",
+      "duration_s": 5.065322,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-5-DARCY-DISSOLUTION-MEASURED",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:50:01.185892+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-5-DARCY-DISSOLUTION-MEASURED/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "a407c2dcf3ad94020132a192c7aaa8c3f5560178c51d6f80ef62722aacfdc42f",
+      "trace_size": 10019577
+    },
+    {
+      "config_path": "configs/R1-WASZ-5-DARCY-STATIC-MEASURED.json",
+      "config_sha256": "6600b2c455e88ea856c8bad17f503c9a18574f3f611192716b40b8f13f8b6234",
+      "duration_s": 5.133065,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-5-DARCY-STATIC-MEASURED",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:50:06.265034+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-5-DARCY-STATIC-MEASURED/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "60f3d72a42e43eeee599e790894e1e01335798941e0cad5e40f0094a33afc075",
+      "trace_size": 9102281
+    },
+    {
+      "config_path": "configs/R1-WASZ-5-DARCY-STATIC-NOMINAL.json",
+      "config_sha256": "7f39b0bffbb8e9607f32a2b9dc49a3ff0f34c93140fec15833dcec14912b9d73",
+      "duration_s": 4.973741,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-5-DARCY-STATIC-NOMINAL",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:50:11.410215+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-5-DARCY-STATIC-NOMINAL/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "ce5be2453f89bfd7a33bbb27daa3e6b247b5d89521a8f879866020f285c79e23",
+      "trace_size": 9104647
+    },
+    {
+      "config_path": "configs/R1-WASZ-5-DF-STATIC-MEASURED.json",
+      "config_sha256": "1e8716f52f7aab7083ec6249ab4690d2072ea8cc76881e0539d38e30c91e66c2",
+      "duration_s": 16.540882,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-5-DF-STATIC-MEASURED",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:50:16.390290+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-5-DF-STATIC-MEASURED/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "b47680deacb71f883654d19f622ea08b462d8f2e6a4471dd9ff0eccf531d0698",
+      "trace_size": 9827505
+    },
+    {
+      "config_path": "configs/R1-WASZ-9-DARCY-DISSOLUTION-MEASURED.json",
+      "config_sha256": "cedfd65f5c92794cea242fb8d15a9f634b6574eaf0215bcf0f6f066439b84b23",
+      "duration_s": 5.083331,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-9-DARCY-DISSOLUTION-MEASURED",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:50:32.944046+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-9-DARCY-DISSOLUTION-MEASURED/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "c7bb739a401d11cade58ed8f6ade0d6ec88534fd926ccb61b319f34e2ef9aa36",
+      "trace_size": 10164932
+    },
+    {
+      "config_path": "configs/R1-WASZ-9-DARCY-STATIC-MEASURED.json",
+      "config_sha256": "73aa71856c81e04b5604e8153a7785e850f945a601830e3068c989696348353f",
+      "duration_s": 4.983007,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-9-DARCY-STATIC-MEASURED",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:50:38.040456+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-9-DARCY-STATIC-MEASURED/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "90643f03359567260959f424f66aac989d75a8292cfd8e837032038e0c0d5c6a",
+      "trace_size": 9258284
+    },
+    {
+      "config_path": "configs/R1-WASZ-9-DARCY-STATIC-NOMINAL.json",
+      "config_sha256": "f413984258acf71cc66505af0f35a1d95e68359f8c06f7d744006249b0f8938c",
+      "duration_s": 4.946553,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-9-DARCY-STATIC-NOMINAL",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:50:43.035088+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-9-DARCY-STATIC-NOMINAL/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "bab4e6800d2b9410c55d2f37a76c388a48e39d004ef143fb0eca6063f45a903a",
+      "trace_size": 9208539
+    },
+    {
+      "config_path": "configs/R1-WASZ-9-DF-STATIC-MEASURED.json",
+      "config_sha256": "2e83bf1bc67bf684f8399c6527d3ec6038d5b4ebc2188da5615c03f2e384bcf4",
+      "duration_s": 13.538678,
+      "failure_classification": "COMPLETED",
+      "failure_reason": "",
+      "id": "R1-WASZ-9-DF-STATIC-MEASURED",
+      "openfoam_launched": true,
+      "started_utc": "2026-08-02T19:50:47.993345+00:00",
+      "status": "COMPLETED",
+      "trace_path": "cases/R1-WASZ-9-DF-STATIC-MEASURED/postProcessing/wholePull/0/traces.csv",
+      "trace_present": true,
+      "trace_sha256": "704ae3b24da28d675511cda9e670515fda1b567bb9e2c1645958d1bd4fa9bfd1",
+      "trace_size": 9958889
+    }
+  ],
+  "correction_execution_record_sha256": "56e2148a010848773693380c58fdc7c191a3e3e19143ad430ac99ae9c29e0532",
+  "historical_accounting": {
+    "aborted_preparation_attempt_sets": 1,
+    "completed_unique_openfoam_launches": 13,
+    "declared_conditions": 16,
+    "derived_views_not_launches": 1,
+    "fatal_unique_openfoam_launches": 3,
+    "prelaunch_case_failures": 6
+  },
+  "historical_attempt_sets": [
+    {
+      "file_count": 6,
+      "id": "campaign",
+      "kind": "PREPARATION_ABORTED_KEY_ERROR",
+      "records": []
+    },
+    {
+      "file_count": 67842,
+      "id": "campaign-v2",
+      "kind": "ORIGINAL_16_CONDITION_ATTEMPTS",
+      "records": [
+        {
+          "path": "EXECUTION_RECORD.json",
+          "sha256": "aec2cba13c068fd02a83422745d52ee34106ea6dbed223c3622b7d7859554865"
+        },
+        {
+          "path": "PREPARATION_RECORD.json",
+          "sha256": "bcbd275f10d16b7e8b0a3f95b281a83561fdfdd307f1e866423e5d9a9208d869"
+        }
+      ]
+    },
+    {
+      "file_count": 87,
+      "id": "compaction-correction",
+      "kind": "COMPACTION_PRELAUNCH_CORRECTION_ATTEMPTS",
+      "records": [
+        {
+          "path": "EXECUTION_RECORD.json",
+          "sha256": "cbcc990448d20e3bd2524f57a771540a74019bc2c4c8c58cb77e97bede58488e"
+        },
+        {
+          "path": "PREPARATION_RECORD.json",
+          "sha256": "000ed51f81909cfa456ba94d591431e6e8504bf751e7a4766e98bc2b4c901c8c"
+        }
+      ]
+    },
+    {
+      "file_count": 5271,
+      "id": "compaction-correction-2",
+      "kind": "COMPACTION_FATAL_OPENFOAM_ATTEMPTS",
+      "records": [
+        {
+          "path": "EXECUTION_RECORD.json",
+          "sha256": "875ebeb4a9a45bd4002541fa7f071abb5ee7c8bf0bab81f299d0623b2a955e35"
+        },
+        {
+          "path": "PREPARATION_RECORD.json",
+          "sha256": "1c3309d887e6c3054c01511ec6afaf4c99558ccbc104b387ea5c47636eb67071"
+        }
+      ]
+    },
+    {
+      "file_count": 2,
+      "id": "consolidated",
+      "kind": "DERIVED_ORIGINAL_EXECUTION_VIEW",
+      "records": [
+        {
+          "path": "EXECUTION_RECORD.json",
+          "sha256": "fae71349a212795299e6f189d6c75cf1ddce7b8ed265cd7f8a362c6a2de5fe80"
+        }
+      ]
+    }
+  ],
+  "historical_completed_trace_identities": [
+    {
+      "bytes": 2093016,
+      "id": "DE1-MACHINE-HIGH",
+      "path": "consolidated/cases/DE1-MACHINE-HIGH/postProcessing/wholePull/0/traces.csv",
+      "sha256": "2a8b926a333f19f4b27253d8952010508ff49c415be3041ef92e151f8482f598"
+    },
+    {
+      "bytes": 2166112,
+      "id": "DE1-MACHINE-LOW",
+      "path": "consolidated/cases/DE1-MACHINE-LOW/postProcessing/wholePull/0/traces.csv",
+      "sha256": "8b7c16e5d67a9fbed3834c8390b43736313fc8932fd5f061e4470cfe135fce1e"
+    },
+    {
+      "bytes": 971201,
+      "id": "FOSTER-WETTING",
+      "path": "consolidated/cases/FOSTER-WETTING/postProcessing/wholePull/0/traces.csv",
+      "sha256": "c78d7ce200067324fbffba0c946eb7da9f66b160ead8a789ee4d180bfd4bc1ee"
+    },
+    {
+      "bytes": 5505,
+      "id": "MO-DF-HIGH",
+      "path": "consolidated/cases/MO-DF-HIGH/postProcessing/wholePull/0/traces.csv",
+      "sha256": "27ea3b7ed4a8b9d29a65b5f77315e9f5b4addcee271ca6e682c6e0efdcfd65c8"
+    },
+    {
+      "bytes": 5506,
+      "id": "MO-DF-LOW",
+      "path": "consolidated/cases/MO-DF-LOW/postProcessing/wholePull/0/traces.csv",
+      "sha256": "4b030b8356284133df3d4e60dd17db465c2eec2611661caa08f6e2a796b78db3"
+    },
+    {
+      "bytes": 5383,
+      "id": "ROMAN-PERM",
+      "path": "consolidated/cases/ROMAN-PERM/postProcessing/wholePull/0/traces.csv",
+      "sha256": "f6d336b6b108ac33dd195d63051130afeec688213f0daa9f05c7117f671364fb"
+    },
+    {
+      "bytes": 5368,
+      "id": "WADS-PERM",
+      "path": "consolidated/cases/WADS-PERM/postProcessing/wholePull/0/traces.csv",
+      "sha256": "a3d4a7ce90d11c01cd793a6db5e08635e2cdde09f86b6fcbbb8436c48a172a7c"
+    },
+    {
+      "bytes": 360782,
+      "id": "WASZ-11-COMPACT",
+      "path": "consolidated/cases/WASZ-11-COMPACT/postProcessing/wholePull/0/traces.csv",
+      "sha256": "61138c39756b191f843527d17720808b17d1213f26ead9cc5f1563c30553db2f"
+    },
+    {
+      "bytes": 2822099,
+      "id": "WASZ-11-DARCY",
+      "path": "consolidated/cases/WASZ-11-DARCY/postProcessing/wholePull/0/traces.csv",
+      "sha256": "b9461f6d69d3091238da4ed068500d2a65a18ecfbfa7306f812c5f89ea2c3b1c"
+    },
+    {
+      "bytes": 3025045,
+      "id": "WASZ-11-DF",
+      "path": "consolidated/cases/WASZ-11-DF/postProcessing/wholePull/0/traces.csv",
+      "sha256": "9cd17cb2e10b837ec870c5d6b53e1005147dd8167ce05a37d132e9890d6858f2"
+    },
+    {
+      "bytes": 368968,
+      "id": "WASZ-5-COMPACT",
+      "path": "consolidated/cases/WASZ-5-COMPACT/postProcessing/wholePull/0/traces.csv",
+      "sha256": "5a82503375af954c44d19c1ae6678e7f63fc1006459022646c0b435368564bcb"
+    },
+    {
+      "bytes": 2715213,
+      "id": "WASZ-5-DARCY",
+      "path": "consolidated/cases/WASZ-5-DARCY/postProcessing/wholePull/0/traces.csv",
+      "sha256": "d5b8a2cf69b9e2be9553cc28c361535be48ea8d7f8da2acfeba64c57449c848d"
+    },
+    {
+      "bytes": 2910739,
+      "id": "WASZ-5-DF",
+      "path": "consolidated/cases/WASZ-5-DF/postProcessing/wholePull/0/traces.csv",
+      "sha256": "dcecc61b80bffc6dd54ed2fb8d712117512dd9cadac59ea22d080dba70e4e744"
+    },
+    {
+      "bytes": 237750,
+      "id": "WASZ-9-COMPACT",
+      "path": "consolidated/cases/WASZ-9-COMPACT/postProcessing/wholePull/0/traces.csv",
+      "sha256": "f6cd7f9a1e02a6985e50847170371232dfffd56ab24f3a433bc94f1fe7340920"
+    },
+    {
+      "bytes": 2792057,
+      "id": "WASZ-9-DARCY",
+      "path": "consolidated/cases/WASZ-9-DARCY/postProcessing/wholePull/0/traces.csv",
+      "sha256": "da99c5de0a60acfc4a0f17142d9f62a7869ac015ca50e28d89d4e77b1c6610dc"
+    },
+    {
+      "bytes": 2998065,
+      "id": "WASZ-9-DF",
+      "path": "consolidated/cases/WASZ-9-DF/postProcessing/wholePull/0/traces.csv",
+      "sha256": "d9dc3dd85ecdcb7a81a7825991cf15dd3dd2a1cff892e3932d69e1744cafbeee"
+    }
+  ],
+  "schema_version": "espresso.validation.val_corpus_001.complete_execution_ledger.v1"
+}

@@ -134,12 +134,15 @@ General whole-solver physical validation remains `NOT_ESTABLISHED`.
 
 VAL-CORPUS-001 executes the unchanged merged solver against a separately
 authorized read-only Puckworks evidence snapshot without advancing the runtime
-dependency lock. The prospectively frozen 16-condition tranche completed 13
-OpenFOAM runs; three Waszkiewicz finite-porosity compaction runs terminated in
-the nonlinear solver and remain invalidated. Component reconstructions and
-directional signatures are mixed with large mass, timing, machine, and
-metadata residuals. The candidate establishes neither independent nor general
-physical validation. See the [comparison atlas](validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md).
+dependency lock. Exact-head review correction preserved the original attempt
+history and added 13 prospectively frozen correction runs; all completed. The
+corrected static branches exclude dissolution-indexed permeability evolution,
+use 965 kg/m3 for Waszkiewicz mass, and use the frozen +3 s alignment without
+extrapolation. All tested Waszkiewicz families reverse the source condition
+ordering. The original three finite-porosity compaction runs remain invalidated
+as a separate numerical-robustness finding and were not rerun. The candidate
+establishes neither independent nor general physical validation. See the
+[comparison atlas](validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md).
 
 ## Completed VAL-CASE-001 validation-support case
 

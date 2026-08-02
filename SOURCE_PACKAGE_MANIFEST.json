@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 230,
-  "total_uncompressed_bytes_excluding_manifest": 2098986,
-  "aggregate_source_sha256": "2d562248de84cd73d9c6764a57257e316f5d069d7a34670113eeee9d1afb62c1",
-  "aggregate_sha256": "2d562248de84cd73d9c6764a57257e316f5d069d7a34670113eeee9d1afb62c1",
+  "total_uncompressed_bytes_excluding_manifest": 2102448,
+  "aggregate_source_sha256": "3a7e58508405fff905088071d6d386451095c660aa1c451c4061b9a424a0341d",
+  "aggregate_sha256": "3a7e58508405fff905088071d6d386451095c660aa1c451c4061b9a424a0341d",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "e0921031122025b140b58ff08d99bfe62f4b1237fd212b62ae2fb502fe51bc06",
-      "bytes": 6396,
+      "sha256": "11e6fb3527dffc190bab9145570cb0e2a641e3497d2291f657ebf8fc45ed725f",
+      "bytes": 6626,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -549,8 +549,8 @@
       "git_mode": "100644"
     },
     "docs/validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md": {
-      "sha256": "97af81abb594d13ac1a90be36e164e02d401e87f472169dbc5c7095bdd97f7bc",
-      "bytes": 5598,
+      "sha256": "b277e2d4775c6937af850d3f80776731c29526ba22eb8df76a3e3dc69b5a4774",
+      "bytes": 8830,
       "git_mode": "100644"
     },
     "docs/validation/VAL_CORPUS_001_PROTOCOL.md": {

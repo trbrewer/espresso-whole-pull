@@ -1,0 +1,110 @@
+{
+  "anchor": {
+    "basket_radius_m": 0.028,
+    "bed_depth_m": 0.01,
+    "bounds_m2": [
+      1e-16,
+      1e-12
+    ],
+    "classification": "SOURCE_ANCHORED_RECONSTRUCTION",
+    "density_kg_m3": 965.0,
+    "formula": "k = (mass_flow_g_s / density_kg_m3 / 1000) * viscosity_Pa_s * bed_depth_m / (pi * basket_radius_m^2 * basket_pressure_Pa)",
+    "replacement_anchor": "PROHIBITED",
+    "resulting_permeability_m2": 2.774592620361963e-15,
+    "source_file": "puckworks/data/waszkiewicz2025/traces_time_dependent.csv",
+    "source_file_sha256": "40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9",
+    "source_row": {
+      "basket_pressure_bar": 8.716916,
+      "mass_flow_g_s": 1.824924,
+      "reference_pressure_round_bar": 9.0,
+      "time_s": 100.0
+    },
+    "viscosity_Pa_s": 0.000315
+  },
+  "configs": [
+    {
+      "branch": "DARCY_STATIC",
+      "closure_present": false,
+      "id": "R1-WASZ-5-DARCY-STATIC-MEASURED",
+      "sha256": "6600b2c455e88ea856c8bad17f503c9a18574f3f611192716b40b8f13f8b6234"
+    },
+    {
+      "branch": "DARCY_STATIC",
+      "closure_present": false,
+      "id": "R1-WASZ-9-DARCY-STATIC-MEASURED",
+      "sha256": "73aa71856c81e04b5604e8153a7785e850f945a601830e3068c989696348353f"
+    },
+    {
+      "branch": "DARCY_STATIC",
+      "closure_present": false,
+      "id": "R1-WASZ-11-DARCY-STATIC-MEASURED",
+      "sha256": "c38f82148efb861940bf24a8439a1a5047282132c8b0e358dac44e53da8b082e"
+    },
+    {
+      "branch": "DARCY_FORCHHEIMER_STATIC",
+      "closure_present": false,
+      "id": "R1-WASZ-5-DF-STATIC-MEASURED",
+      "sha256": "1e8716f52f7aab7083ec6249ab4690d2072ea8cc76881e0539d38e30c91e66c2"
+    },
+    {
+      "branch": "DARCY_FORCHHEIMER_STATIC",
+      "closure_present": false,
+      "id": "R1-WASZ-9-DF-STATIC-MEASURED",
+      "sha256": "2e83bf1bc67bf684f8399c6527d3ec6038d5b4ebc2188da5615c03f2e384bcf4"
+    },
+    {
+      "branch": "DARCY_FORCHHEIMER_STATIC",
+      "closure_present": false,
+      "id": "R1-WASZ-11-DF-STATIC-MEASURED",
+      "sha256": "0bf1ebdd8ed36448d0b58c91814457c3a5dc9d81dc4587e01bda4d65e84e215d"
+    },
+    {
+      "branch": "DARCY_DISSOLUTION_INDEXED",
+      "closure_present": true,
+      "id": "R1-WASZ-5-DARCY-DISSOLUTION-MEASURED",
+      "sha256": "3a63a07cf6f2108f312cdc02d62c99b65318d80eb209589a330df6e47111318c"
+    },
+    {
+      "branch": "DARCY_DISSOLUTION_INDEXED",
+      "closure_present": true,
+      "id": "R1-WASZ-9-DARCY-DISSOLUTION-MEASURED",
+      "sha256": "cedfd65f5c92794cea242fb8d15a9f634b6574eaf0215bcf0f6f066439b84b23"
+    },
+    {
+      "branch": "DARCY_DISSOLUTION_INDEXED",
+      "closure_present": true,
+      "id": "R1-WASZ-11-DARCY-DISSOLUTION-MEASURED",
+      "sha256": "af52121993a5907a23f89d89c1f9c855ed20a3d01134cb7753bfe5f144b0f023"
+    },
+    {
+      "branch": "DARCY_STATIC",
+      "closure_present": false,
+      "id": "R1-WASZ-5-DARCY-STATIC-NOMINAL",
+      "sha256": "7f39b0bffbb8e9607f32a2b9dc49a3ff0f34c93140fec15833dcec14912b9d73"
+    },
+    {
+      "branch": "DARCY_STATIC",
+      "closure_present": false,
+      "id": "R1-WASZ-9-DARCY-STATIC-NOMINAL",
+      "sha256": "f413984258acf71cc66505af0f35a1d95e68359f8c06f7d744006249b0f8938c"
+    },
+    {
+      "branch": "DARCY_STATIC",
+      "closure_present": false,
+      "id": "R1-WASZ-11-DARCY-STATIC-NOMINAL",
+      "sha256": "fd8b92a10a523c090d8484468c0369fb7eb81199865bd4a4e5582fd49026040b"
+    },
+    {
+      "branch": "GENERIC_MACHINE_FIXTURE_OVERLAY_AGAINST_DE1_TRACE",
+      "closure_present": false,
+      "id": "R1-DE1-MACHINE-BASE-9MM",
+      "sha256": "f51eacd76b802733ce4f1aec8fbe7cd3cc2922556c4d7cf76911d2faf5aa70f2"
+    }
+  ],
+  "protocol_sha256": "80b9692603d8168f63113ff43cc2c42045c2fe65eb093d577479d49248c34639",
+  "schema_version": "espresso.validation.val_corpus_001.r1_preparation.v1",
+  "source_snapshot": {
+    "commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e",
+    "tree": "44d6539096648777f78c4db83f0985d5bd16e352"
+  }
+}

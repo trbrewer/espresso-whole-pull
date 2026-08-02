@@ -12,7 +12,10 @@ This tree is the historical v0.1.4 package view. Current navigation:
 - [VAL-CORPUS-001 comparison atlas](validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md)
 
 VAL-CORPUS-001 machine-readable records, reduced results, and figures are
-under `validation/cases/val_corpus_001/`. Complete successful and failed
+under `validation/cases/val_corpus_001/`. The preserved original records sit
+beside the prospective review-correction protocol/addendum, corrected v2
+bundle and overlays, complete execution ledger, v2 external-artifact manifest,
+and three corrected figures. Complete successful, failed, and invalidated
 runtime products remain outside Git.
 - [VAL-001 source adapters and comparisons](validation/VAL_001_SOURCE_ADAPTERS_AND_COMPONENT_COMPARISONS.md)
 

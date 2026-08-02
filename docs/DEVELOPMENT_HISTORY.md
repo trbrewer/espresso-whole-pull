@@ -1,11 +1,14 @@
 # Development History
 
-- VAL-CORPUS-001 (open candidate): the unchanged Foundation OpenFOAM 12
-  solver was built and used for a frozen 16-condition comparison tranche
-  spanning Waszkiewicz, Foster, Wadsworth, Roman-Corrochano, Mo, and the fixed
-  public DE1 fixture. Thirteen runs completed and three compaction runs failed
-  transparently. Results remain reconstruction, component-comparison, and
-  exploratory mechanism diagnostics; physical validation is not established.
+- VAL-CORPUS-001 (open candidate): exact-head review correction preserved the
+  original 16-condition history and executed a frozen 13-case correction
+  matrix with the unchanged Foundation OpenFOAM 12 executable. All correction
+  runs completed. Static branches no longer inherit dissolution-indexed
+  permeability evolution; Waszkiewicz uses 965 kg/m3 and a frozen +3 s time
+  mapping without extrapolation. Every tested branch family reverses the
+  source condition ordering. The original three compaction failures remain a
+  separate numerical-robustness finding and were not rerun. Physical
+  validation is not established.
 
 - VAL-001 (open candidate): `NO_GOVERNING_PHYSICS_CHANGE` source-adapter
   framework and two descriptive source-linked pressure-flow comparisons. No
