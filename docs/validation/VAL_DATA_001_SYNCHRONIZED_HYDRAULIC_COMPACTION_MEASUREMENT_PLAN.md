@@ -427,11 +427,19 @@ two quality-eligible samples; extrapolation is prohibited. Missing values use
 `time_source_mode=MISSING`, `source_count=0`, no child rows, an empty exported value,
 and an explicit missing state.
 
-`exported_row_state` is frozen for the complete output row. An output row may
-use exact and interpolated values only from compatible
-`PROCESSED_SYNCHRONIZED` or `DERIVED` states declared by the export contract;
+`exported_row_state` is frozen for the complete output row. Its total mapping
+is `RAW_NATIVE -> raw`, `PROCESSED_SYNCHRONIZED -> processed`, and
+`DERIVED_WITH_SYNCHRONIZED_SOURCES -> processed`. `RAW_NATIVE` is permitted
+only where the specific locked-template contract prospectively allows a
+raw-native compatibility row. An output row may use exact and interpolated
+values only from compatible states declared by the export contract;
 raw-native and synchronized values are never silently combined. Every child
 retains its source `raw_or_processed` state and value-processing identity.
+`MISSING_DECLARED` is not a row provenance state: missingness remains solely
+in `missing_value_state`, while the complete row retains its actual raw,
+processed, or derived provenance. Every field sharing one
+`shot_timeseries.csv` row key has that same state and therefore the same one
+Puckworks `raw` or `processed` scalar.
 `flow_conversion_id` is non-null only when flow/density or mass-flow/
 volume-flow conversion participates. Fixed scale/offset conversions use no
 flow row. `unit_conversion_mode` is `NONE`, `FIXED_SCALE_OFFSET`, or
@@ -637,10 +645,26 @@ no leading dot. The sole sequence form is
 `signals[signal_id=<canonical-id>].<member>`; indices and wildcards are
 prohibited, so every nested value has one stable path.
 
-The compatibility mapping is frozen: `RAW_NATIVE -> raw`,
-`PROCESSED_SYNCHRONIZED -> processed`, and `DERIVED -> processed`. It applies
-to every Puckworks `raw_or_processed` field. Missingness never changes row
-provenance, and `MISSING_DECLARED` is never emitted there.
+Both YAML files use one byte-deterministic emitter profile: UTF-8 without BOM;
+LF line endings with exactly one final LF; no document marker, anchors,
+aliases, tags, comments, trailing whitespace, or trailing blank lines;
+two-space indentation; block-style `signals`; one space after every mapping
+colon; the frozen key and sequence order above; and double-quoted YAML 1.2
+strings with JSON escaping. For `apparatus.yml`, applicability `APPLICABLE`
+emits the exact bytes `calibration: "see calibration.csv"`,
+`NOT_APPLICABLE` emits `calibration: "NOT_APPLICABLE"`, and
+`UNKNOWN_PENDING_REVIEW` prohibits export. Calibration identifiers and
+validity intervals remain solely in the normalized calibration table and
+`calibration.csv`.
+
+The normalized compatibility mapping is frozen: `RAW_NATIVE -> raw`,
+`PROCESSED_SYNCHRONIZED -> processed`, and `DERIVED -> processed`. The
+time-series exported-row mapping is `RAW_NATIVE -> raw`,
+`PROCESSED_SYNCHRONIZED -> processed`, and
+`DERIVED_WITH_SYNCHRONIZED_SOURCES -> processed`. These mappings are total for
+every Puckworks `raw_or_processed` field. Missingness never changes row
+provenance, and `MISSING_DECLARED` is neither a valid `exported_row_state` nor
+emitted into `raw_or_processed`.
 
 The deterministic audit fails unless every resource member exists with its
 declared type, every file has the closed schema and source contract, all YAML
@@ -683,7 +707,7 @@ commissioning readiness. Export is prohibited unless
 | `signals[].instrument` | `SENSOR.display_text` for `apparatus_signals.sensor_resource_id` |
 | `signals[].native_unit` | `apparatus_signals.native_unit` |
 | `signals[].native_sampling_rate` | reciprocal of `apparatus_signals.native_sample_interval_s`, with the operation and conversion retained |
-| `signals[].calibration` | calibration IDs linked to the signal; `NOT_APPLICABLE` only when `calibration_applicability=NOT_APPLICABLE` |
+| `signals[].calibration` | `APPLICABLE`: exact YAML string `"see calibration.csv"`; `NOT_APPLICABLE`: exact YAML string `"NOT_APPLICABLE"`; `UNKNOWN_PENDING_REVIEW`: export prohibited. Actual IDs and validity remain in normalized calibrations and `calibration.csv` and are never serialized as a variable list here |
 | `signals[].uncertainty` | `UNCERTAINTY.display_text` for `apparatus_signals.uncertainty_resource_id` |
 | `signals[].clock_source` | `CLOCK.display_text` for `apparatus_signals.clock_resource_id` |
 | `signals[].synchronization_method` | `apparatus_signals.synchronization_method` |
@@ -802,7 +826,7 @@ exactly one parent; `NULLABLE` states the sole permitted null condition.
 | `files.(evidence_partition_id, campaign_instance_id)` | `val_data_001_evidence_partitions.csv.(evidence_partition_id, campaign_instance_id)` | many-to-one, both `NOT NULL`; partition route must agree with campaign |
 | `compatibility_packages.(evidence_partition_id, campaign_instance_id, route_id)` | `val_data_001_evidence_partitions.csv.(evidence_partition_id, campaign_instance_id, route_id)` | many-to-one, all `NOT NULL`; one partition per package |
 | `compatibility_packages.puckworks_campaign_id` | `val_data_001_campaigns.csv.puckworks_campaign_id` through the package `campaign_instance_id` | exact equality; `NOT NULL` for an exportable locked mapping, otherwise package export prohibited |
-| `compatibility_packages.export_processing_id` | `val_data_001_processing_operations.csv.processing_id` | required for `FULL_COMPATIBILITY_EXPORT` and `METADATA_CHECKSUM_ONLY`, null for `NOT_GENERATED` and `NOT_APPLICABLE`; non-null parent scope exactly `COMPATIBILITY_EXPORT` |
+| `compatibility_packages.export_processing_id` | `val_data_001_processing_operations.csv.processing_id` | `FULL_COMPATIBILITY_EXPORT`: required with parent scope exactly `COMPATIBILITY_EXPORT`; `METADATA_CHECKSUM_ONLY`: required with parent scope exactly `SEALED_METADATA_ASSEMBLY`; `NOT_GENERATED` and `NOT_APPLICABLE`: null |
 | `compatibility_packages.export_grid_id`, `export_grids.(export_grid_id, compatibility_package_id)` | reciprocal package/grid keys | exactly one for `FULL_COMPATIBILITY_EXPORT`; null/no row for all other modes |
 | `export_grids.compatibility_package_id`, `export_source_rows.compatibility_package_id` | `val_data_001_compatibility_packages.csv.compatibility_package_id` | many-to-one, `NOT NULL` |
 | `export_source_rows.export_processing_id` | `val_data_001_processing_operations.csv.processing_id` | `NOT NULL`, equals its package export operation, scope exactly `COMPATIBILITY_EXPORT` |
@@ -927,13 +951,13 @@ null rights reference.
 | `edge_role` | `INPUT`; `OUTPUT` |
 | `operation_scope` | `ROW_VALUE`; `NORMALIZED_FILE_ASSEMBLY`; `COMPATIBILITY_EXPORT`; `SEALED_METADATA_ASSEMBLY` |
 | `package_access_status` | `OPEN_AUTHORIZED`; `CALIBRATION_ACCESS`; `SEALED_UNACCESSED`; `AUTHORIZED_OPENED`; `CLOSED_AFTER_SCORING`; `PUBLIC_METADATA_ONLY` |
-| `export_status` | `NOT_GENERATED`; `GENERATED_VERIFIED`; `PROHIBITED_SEALED`; `NOT_APPLICABLE` |
+| `export_status` | `NOT_GENERATED`; `GENERATED_VERIFIED`; `NOT_APPLICABLE` |
 | `fraction_chemistry_status` | `PRESENT`; `NOT_APPLICABLE_NO_FRACTIONATED_CHEMISTRY` |
 | `package_content_mode` | `FULL_COMPATIBILITY_EXPORT`; `METADATA_CHECKSUM_ONLY`; `NOT_GENERATED`; `NOT_APPLICABLE` |
 | `provenance_class` | `NORMALIZED_RECORD`; `TIME_INDEXED_SAMPLES`; `FROZEN_LITERAL` |
 | `time_source_mode` | `EXACT_SAMPLE`; `LINEAR_INTERPOLATION`; `MISSING`; null for non-time provenance |
 | `unit_conversion_mode` | `NONE`; `FIXED_SCALE_OFFSET`; `FLOW_DENSITY_CONVERSION` |
-| `exported_row_state` | `PROCESSED_SYNCHRONIZED`; `DERIVED_WITH_SYNCHRONIZED_SOURCES`; `MISSING_DECLARED`; null only for non-time compatibility filenames |
+| `exported_row_state` | `RAW_NATIVE` only where the template prospectively permits raw-native presentation; `PROCESSED_SYNCHRONIZED`; `DERIVED_WITH_SYNCHRONIZED_SOURCES`; null only for non-time compatibility filenames |
 | `event_status` | `OBSERVED`; `DERIVED`; `MISSING`; `AMBIGUOUS_RETAINED` |
 
 ### Route-conditional partition representation
@@ -1015,11 +1039,15 @@ table and invalidate the export.
 6. Synchronization is a `ROW_VALUE` operation and may consume multiple native
    channel files, but it emits only row-value artifacts. A distinct
    `NORMALIZED_FILE_ASSEMBLY` operation consumes those artifacts and emits
-   complete authoritative normalized tables. A third, distinct
-   `COMPATIBILITY_EXPORT` operation consumes verified normalized tables and
-   emits only Puckworks compatibility files. Edges between layer outputs and
-   subsequent layer inputs preserve shared provenance; one operation never
-   spans layers.
+   complete authoritative normalized tables. From that layer exactly one of
+   two export branches is permitted per generated package:
+   `NORMALIZED_FILE_ASSEMBLY -> COMPATIBILITY_EXPORT` for full Puckworks
+   presentation, or
+   `NORMALIZED_FILE_ASSEMBLY -> SEALED_METADATA_ASSEMBLY` for the sealed
+   metadata envelope. The sealed branch consumes only package, partition,
+   terminal-rights, access-policy, seal, and checksum inputs and emits only
+   `package_manifest.json`, `rights_access.json`, and `seal_identity.json`.
+   Edges preserve provenance; no operation or package spans or mixes branches.
 7. Every compatibility export field above is recomputed from its authoritative
    normalized source during verification. Exported/local disagreement,
    missing input edges, or ambiguous producing operations invalidate the
@@ -1029,8 +1057,10 @@ table and invalidate the export.
    `NORMALIZED_FILE_ASSEMBLY` consumes row-value artifacts and produces only
    complete authoritative normalized submission tables.
    `COMPATIBILITY_EXPORT` consumes verified normalized files and produces only
-   the partition-specific Puckworks presentation. Scope mixing invalidates the
-   graph.
+   the partition-specific Puckworks presentation.
+   `SEALED_METADATA_ASSEMBLY` consumes only the restricted normalized metadata
+   inputs above and produces only the three sealed-envelope JSON files. Scope
+   or output mixing invalidates the graph.
 9. No file-to-file parent column supplies provenance. Reachability, complete
    input multiplicity, the unique producer, software identity, parameters,
    and output identity are reconstructed exclusively from operation rows and

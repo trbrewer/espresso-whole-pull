@@ -238,3 +238,10 @@ envelope as distinct from a Puckworks submission, froze deterministic YAML and
 CSV serialization, mapped local provenance to Puckworks `raw`/`processed`, and
 made manifests explicitly nonrecursive. No evidence or scientific execution
 occurred.
+
+The state-and-serialization consistency correction then made export-operation
+foreign keys conditional on package mode, added the disjoint sealed-envelope
+graph branch, removed unreachable stored status, completed time-series
+row-state mapping, froze the apparatus calibration scalar and YAML emitter,
+and synchronized package QA with the current source manifest. It changed no
+accepted scientific or experimental-design content.

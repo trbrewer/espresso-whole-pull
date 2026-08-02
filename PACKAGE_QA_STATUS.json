@@ -30,7 +30,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 226,
-    "source_manifest_aggregate_sha256": "3c88b62caf1cb65ac9c31d8c98e43e328ae709ab8794c45e8601c1f6f5cd11b6",
+    "source_manifest_aggregate_sha256": "1cba84ad8a7d314ba5a9f2d0111c79559959214bbc75cac52f6bf131ec9a6544",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -113,7 +113,12 @@
     "serialization_order": "CSV_YAML_PATH_ORDER_FROZEN",
     "raw_processed_mapping": "LOCAL_TO_PUCKWORKS_FROZEN",
     "manifest_behavior": "NONRECURSIVE",
-    "compatibility_serialization_audit": "PASS"
+    "compatibility_serialization_audit": "PASS",
+    "package_operation_scope": "MODE_CONDITIONAL_AND_NONCONTRADICTORY",
+    "exported_row_state_mapping": "TOTAL_TO_PUCKWORKS_RAW_OR_PROCESSED",
+    "apparatus_calibration_scalar": "EXACT_AND_BYTE_DETERMINISTIC",
+    "source_aggregate_binding": "PACKAGE_QA_EQUALS_SOURCE_MANIFEST",
+    "state_and_serialization_audit": "PASS"
   },
   "val_infra_002": {
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",

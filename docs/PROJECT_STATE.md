@@ -65,6 +65,11 @@ defines a sealed metadata envelope distinct from a Puckworks submission,
 freezes row and nested-field ordering, maps local provenance to Puckworks
 `raw`/`processed`, and removes recursive manifest dependencies. Review remains
 pending and commissioning remains unauthorized.
+The state-and-serialization consistency correction makes package-operation
+references mode-conditional, gives full and sealed exports disjoint graph
+branches, removes unreachable status values, makes row provenance mapping
+total, and freezes the apparatus calibration scalar and YAML emitter. Package
+QA now binds the current source-manifest identity exactly.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

@@ -142,6 +142,10 @@ The compatibility-serialization audit additionally verifies closed typed
 resource-member mappings, sealed-envelope schemas and non-submission status,
 canonical YAML/CSV ordering and field paths, exact `raw`/`processed` mappings,
 and nonrecursive file/package manifests. It performs no evidence validation.
+The state-and-serialization audit additionally verifies all four package
+modes, disjoint full/sealed operation branches, reachable status values,
+total row-state mapping, byte-deterministic apparatus calibration YAML, and
+exact equality between package-QA and source-manifest identities.
 
 ## WP-0.3C Stage-0 scaffold
 
