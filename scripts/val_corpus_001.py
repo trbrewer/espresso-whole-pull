@@ -107,6 +107,7 @@ def prepare(root: Path, snapshot: Path, run_root: Path) -> None:
                 cfg["inertialPermeabilityModel"] = "wadsworth2026CeramicsFit"
                 cfg["nonlinearControls"] = {"relativeTolerance":1e-9,"absoluteTolerance":1e-13,"maximumIterations":80,"underRelaxation":0.8,"machineFluxRelativeTolerance":1e-8}
             elif item["branch"] == "finite_porosity_compaction":
+                cfg.pop("effective_permeability_evolution", None)
                 cfg["bedMechanicsModel"] = "waszkiewiczQuasiStaticCompaction"
                 cfg["poroelasticCompaction"] = {
                     "model":"waszkiewicz2025FinitePhi",

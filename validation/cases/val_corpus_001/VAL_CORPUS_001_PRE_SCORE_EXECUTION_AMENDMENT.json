@@ -15,6 +15,11 @@
       "defect": "Reducer and execution-record convenience flag referenced an obsolete trace directory.",
       "affected_attempts": ["all completed campaign-v2 attempts"],
       "disposition": "ARITHMETIC_UNCHANGED; point to solver-produced postProcessing/wholePull/0/traces.csv before first scoring."
+    },
+    {
+      "defect": "The first correction retained the Waszkiewicz base config's dissolution-indexed effective-permeability closure, but the merged compaction branch explicitly rejects that prohibited composition.",
+      "affected_attempts": ["WASZ-5-COMPACT-correction-1", "WASZ-9-COMPACT-correction-1", "WASZ-11-COMPACT-correction-1"],
+      "disposition": "FAILED_ATTEMPTS_RETAINED; final compaction-only attempt disables effective_permeability_evolution exactly as required by the existing current compaction branch; no fitted parameter or observed score changes."
     }
   ],
   "claim_ceiling_changed": false
