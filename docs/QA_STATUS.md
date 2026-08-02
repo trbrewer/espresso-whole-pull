@@ -138,6 +138,10 @@ separation, mutually exclusive processing scopes, record/sample/literal
 provenance, package content-mode nullability, byte-reproducible Puckworks
 scalars, realized termination-event linkage, edge ordering, filenames, row
 keys, row state, and campaign/site/apparatus consistency.
+The compatibility-serialization audit additionally verifies closed typed
+resource-member mappings, sealed-envelope schemas and non-submission status,
+canonical YAML/CSV ordering and field paths, exact `raw`/`processed` mappings,
+and nonrecursive file/package manifests. It performs no evidence validation.
 
 ## WP-0.3C Stage-0 scaffold
 

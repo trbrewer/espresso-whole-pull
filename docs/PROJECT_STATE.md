@@ -60,6 +60,11 @@ flow/density conversion, enforces the three-layer processing graph, separates
 time-indexed samples from record/literal provenance, freezes package-mode
 nullability and scalar encodings, and binds terminal mass to a realized shot
 event. The task remains non-commissioning.
+The compatibility-serialization closure reconciles typed resource members,
+defines a sealed metadata envelope distinct from a Puckworks submission,
+freezes row and nested-field ordering, maps local provenance to Puckworks
+`raw`/`processed`, and removes recursive manifest dependencies. Review remains
+pending and commissioning remains unauthorized.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

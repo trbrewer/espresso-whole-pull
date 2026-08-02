@@ -287,7 +287,7 @@ chemistry rows.
 sorted object keys, no insignificant whitespace, JSON `null` only where the
 type schema permits it, finite base-10 numbers, and no duplicate keys.
 Required payload members are: `CONTRIBUTOR{contact,role}`;
-`EXTERNAL_REPOSITORY{repository,doi}`; `RIGHTS{license,access_class,
+`EXTERNAL_REPOSITORY{external_repository,doi}`; `RIGHTS{license,access_class,
 redistribution_status}`;
 `SENSOR{display_text,manufacturer,model,serial_or_asset_id}`;
 `CLOCK{display_text,clock_id,clock_basis}`;
@@ -296,8 +296,14 @@ redistribution_status}`;
 `GRINDER{display_text,identity,definition,grinder_setting}`; machine, grinder
 model, burr, basket, and grinder-setting resources
 `{display_text,identity,definition}`; command, preparation, reference, density, and
-operation resources `{method,version,parameters}`; and all remaining
-enumerated types `{definition,status}`. Unresolved real-world values use the
+operation resources `{method,version,parameters}`;
+`DEVIATION_RECORD{display_text,definition,status}`;
+`OPERATOR_ROLE{display_text,definition,status}`;
+`ANALYTICAL_METHOD{display_text,definition,status}`; and all remaining
+enumerated types `{definition,status}`. `exclusions.csv.recorded_by` is
+exactly `OPERATOR_ROLE.display_text`, and
+`chemistry_measurements.csv.analytical_method` is exactly
+`ANALYTICAL_METHOD.display_text`. Unresolved real-world values use the
 applicable controlled unresolved disposition, not invented values.
 Every used `payload_schema_id` resolves to
 `val_data_001_resource_type_schemas.csv`; the schema row's `resource_type`
@@ -359,7 +365,7 @@ zero fraction and zero chemistry rows and prohibits fabricated empty rows.
 | Content mode | Files and observations | `export_processing_id` | `export_grid_id` |
 |---|---|---|---|
 | `FULL_COMPATIBILITY_EXPORT` | Complete partition-authorized compatibility files, including `shot_timeseries.csv` | required; scope exactly `COMPATIBILITY_EXPORT` | required; exactly one reciprocal grid |
-| `METADATA_CHECKSUM_ONLY` | Only rights/access metadata, seal identity, and checksum manifest; no observations or time-series sources | required; scope exactly `COMPATIBILITY_EXPORT` | null |
+| `METADATA_CHECKSUM_ONLY` | Only rights/access metadata, seal identity, and checksum manifest; no observations or time-series sources | required; scope exactly `SEALED_METADATA_ASSEMBLY` | null |
 | `NOT_GENERATED` | No compatibility files | null | null |
 | `NOT_APPLICABLE` | No compatibility files | null | null |
 
@@ -382,8 +388,8 @@ empty file set.
 #### Row-value and file-assembly lineage
 
 `operation_scope` is exactly one of `ROW_VALUE`,
-`NORMALIZED_FILE_ASSEMBLY`, or
-`COMPATIBILITY_EXPORT`. A row's `value_processing_id` references only a
+`NORMALIZED_FILE_ASSEMBLY`, `COMPATIBILITY_EXPORT`, or
+`SEALED_METADATA_ASSEMBLY`. A row's `value_processing_id` references only a
 `ROW_VALUE` operation and is null only for a directly reported raw native
 value. File assembly and compatibility export operations never masquerade as
 row-value transformations. `parent_source_file_id` is not part of the files
@@ -392,10 +398,12 @@ schema and is not authoritative. All actual dependencies use
 output producer, every producer has at least one input and one output, native
 files have no output producer, and the bipartite file-operation graph is
 acyclic. A generated compatibility package references exactly one
-`export_processing_id`, whose operation scope is `COMPATIBILITY_EXPORT`;
+`export_processing_id`: full mode requires `COMPATIBILITY_EXPORT`, while
+metadata-only mode requires `SEALED_METADATA_ASSEMBLY`;
 non-generated and not-applicable modes reference none.
-`NORMALIZED_FILE_ASSEMBLY` is never accepted for package export. Every export
-source row references the package's same export operation.
+`NORMALIZED_FILE_ASSEMBLY` is never accepted for package export. Full-export
+source rows reference the package's same `COMPATIBILITY_EXPORT` operation;
+sealed-envelope files reference only its `SEALED_METADATA_ASSEMBLY` operation.
 
 #### Exact synchronized-time-series and terminal-mass export
 
@@ -560,6 +568,88 @@ scale `1`, offset `-273.15`; and a value already in its target unit uses mode
 frozen in that row, with presentation scale `1` and offset `0`. No other conversion is admissible without a prospectively
 amended contract.
 
+#### Compatibility serialization closure
+
+This subsection is normative and supersedes less-specific serialization and
+manifest prose. Every resource export expression is checked against the
+closed member maps in `val_data_001_resource_type_schemas.csv`. In particular,
+`EXTERNAL_REPOSITORY.external_repository`, `DEVIATION_RECORD.display_text`,
+`OPERATOR_ROLE.display_text`, and `ANALYTICAL_METHOD.display_text` are required
+UTF-8 strings. No alias or undeclared generic member is accepted.
+
+The metadata-only files form a prospectively defined
+`SEALED_METADATA_ENVELOPE`, not a filled Puckworks submission. One
+`SEALED_METADATA_ASSEMBLY` operation (a fourth operation scope) emits them and
+may consume only the named package, partition, terminal-rights, access-policy,
+and seal records.
+
+| File / object key | Required members in canonical order | Optional | Source |
+|---|---|---|---|
+| `package_manifest.json` / `compatibility_package_id` | `schema_version`, `envelope_type`, `compatibility_package_id`, `campaign_instance_id`, `evidence_partition_id`, `package_content_mode`, `files` | none | package row; frozen `SEALED_METADATA_ENVELOPE`; sorted file descriptors |
+| `rights_access.json` / `compatibility_package_id` | `schema_version`, `compatibility_package_id`, `evidence_partition_id`, `access_policy_resource_id`, `rights_resource_id`, `package_access_status` | none | exact package and partition |
+| `seal_identity.json` / `evidence_partition_id` | `schema_version`, `compatibility_package_id`, `evidence_partition_id`, `sealed_status`, `partition_manifest_sha256`, `seal_timestamp_utc`, `custodian_resource_id` | none | exact package and partition |
+
+These are closed (`additionalProperties=false`) UTF-8 JSON schemas with LF
+termination, no BOM or insignificant whitespace, and members in displayed
+order. `files` has exactly two objects ordered by `filename`, for
+`rights_access.json` and `seal_identity.json`; each has members in order
+`filename`, `sha256`, `bytes`. Hashes are lowercase 64-hex and byte counts are
+unsigned decimals. Filenames are package-relative basenames; absolute, `.` or
+`..` paths, duplicates, and normalization collisions fail. Field provenance
+is the source above; file provenance is the unique assembly output edge.
+
+`package_manifest.json` never lists or hashes itself. Its externally computed
+hash is stored only in `compatibility_packages.package_manifest_sha256` and
+the normalized file registry. The other envelope files contain no self-hash.
+The envelope contains no observations, counts, exclusions, time grids, or
+presentation exports. The locked Puckworks `validate-submission` command
+applies only to `FULL_COMPATIBILITY_EXPORT`; an envelope is
+`SEALED_METADATA_ENVELOPE_SCHEMA_VALID_ONLY`, never a successful Puckworks
+submission. Observation access and later full export require separate
+authority.
+
+For a full export, `file_manifest.csv` lists every other emitted compatibility
+file exactly once and never itself. Its checksum remains in the normalized
+file registry and enclosing canonical package-manifest calculation. That
+calculation hashes an ordered descriptor containing `file_manifest.csv` and
+all files it lists, but never its own resulting hash. Duplicate filenames or
+conflicting file rows invalidate assembly.
+
+Serialization ordering is exact:
+
+| File | Order |
+|---|---|
+| `campaign_metadata.yml` | locked keys: `campaign_id`, `site_id`, `contributor`, `dataset_status`, `evidence_level_claimed`, `external_repository`, `doi`, `data_license`, `timezone`, `replicate_count`, `exclusions_recorded`, `deviations_from_protocol`, `declaration`; declaration keys: `no_private_or_unlicensed_third_party_data`, `submission_does_not_authorize_a_model_or_evidence_upgrade` |
+| `apparatus.yml` | locked keys: `apparatus_id`, `machine_make_model`, `grinder_make_model`, `burr_geometry`, `burr_wear_state`, `basket_geometry`, `signals`; signals ascending `signal_id`; signal keys: `observable`, `instrument`, `native_unit`, `native_sampling_rate`, `calibration`, `uncertainty`, `clock_source`, `synchronization_method`, `offset_drift_estimate`, `prescribed_or_measured` |
+| `shot_metadata.csv` | ascending `shot_id` |
+| `shot_timeseries.csv` | ascending `shot_id`, then numeric `elapsed_s` |
+| `calibration.csv` | ascending source `calibration_id` |
+| `exclusions.csv` | ascending `shot_id` |
+| `file_manifest.csv` | ascending `filename` |
+| `fraction_metadata.csv` | ascending `shot_id`, then `fraction_id` |
+| `chemistry_measurements.csv` | ascending `shot_id`, then `fraction_id`, then `species` |
+
+CSV headers remain the exact locked headers. Identifier sorts compare NFC
+strings by Unicode code point; elapsed time compares its finite decimal value.
+Duplicate keys, normalized collisions, numeric-time ties within a shot, and
+filename collisions fail export. Canonical YAML paths are dot-separated with
+no leading dot. The sole sequence form is
+`signals[signal_id=<canonical-id>].<member>`; indices and wildcards are
+prohibited, so every nested value has one stable path.
+
+The compatibility mapping is frozen: `RAW_NATIVE -> raw`,
+`PROCESSED_SYNCHRONIZED -> processed`, and `DERIVED -> processed`. It applies
+to every Puckworks `raw_or_processed` field. Missingness never changes row
+provenance, and `MISSING_DECLARED` is never emitted there.
+
+The deterministic audit fails unless every resource member exists with its
+declared type, every file has the closed schema and source contract, all YAML
+paths/sequences and CSV rows are uniquely ordered, every compatibility state
+is `raw` or `processed`, both manifests are nonrecursive, the envelope cannot
+be mistaken for a submission, and each full package is structurally eligible
+for the locked validator. It neither validates evidence nor authorizes access
+or commissioning.
+
 ### Deterministic Puckworks compatibility exports
 
 The normalized VAL-DATA-001 tables are authoritative. Locked Puckworks
@@ -628,10 +718,10 @@ the locked `shot_timeseries.csv` has no upstream-pressure column.
 | Remaining locked template | Exact field-level export rule |
 |---|---|
 | `calibration.csv` | scalar fields come from the calibration row; `instrument=SENSOR.display_text`; `notes` uses the exact canonical-JSON member set defined above |
-| `exclusions.csv` | `campaign_id=campaigns.puckworks_campaign_id`; `shot_id` and `replicate_id` from the shot; `exclusion_reason` from the shot; `recorded_by` from the applicable operator-role resource |
+| `exclusions.csv` | `campaign_id=campaigns.puckworks_campaign_id`; `shot_id` and `replicate_id` from the shot; `exclusion_reason` from the shot; `recorded_by=OPERATOR_ROLE.display_text` from the applicable operator-role resource |
 | `file_manifest.csv` | scalar fields come from the partition file row; `license=RIGHTS.license`; `notes` uses the exact canonical-JSON member set defined above |
 | `fraction_metadata.csv` | exact locked header; campaign mapping plus authoritative fraction-parent values, or package disposition `NOT_APPLICABLE_NO_FRACTIONATED_CHEMISTRY` |
-| `chemistry_measurements.csv` | when applicable, `campaign_id=campaigns.puckworks_campaign_id`; `shot_id`, `fraction_id`, `species`, `mass_mg`, `reference_basis`, `detection_limit_mg`, `recovery_pct`, and `measurement_status` from chemistry; `analytical_method` from its resource. When no chemistry is acquired, the file is declared `NOT_APPLICABLE` and is not fabricated |
+| `chemistry_measurements.csv` | when applicable, `campaign_id=campaigns.puckworks_campaign_id`; `shot_id`, `fraction_id`, `species`, `mass_mg`, `reference_basis`, `detection_limit_mg`, `recovery_pct`, and `measurement_status` from chemistry; `analytical_method=ANALYTICAL_METHOD.display_text`. When no chemistry is acquired, the file is declared `NOT_APPLICABLE` and is not fabricated |
 
 ### Primary and candidate keys
 
@@ -835,7 +925,7 @@ null rights reference.
 | `resource_provenance_mode` | `INLINE_DECLARATION`; `SOURCE_FILE_BOUND` |
 | `campaign_mapping_status` | `LOCKED_PUCKWORKS_CAMPAIGN`; `PUCKWORKS_MACHINE_MODE_CAMPAIGN_GAP_LOCAL_EXTENSION`; `FUTURE_PUCKWORKS_CAMPAIGN_PENDING` |
 | `edge_role` | `INPUT`; `OUTPUT` |
-| `operation_scope` | `ROW_VALUE`; `NORMALIZED_FILE_ASSEMBLY`; `COMPATIBILITY_EXPORT` |
+| `operation_scope` | `ROW_VALUE`; `NORMALIZED_FILE_ASSEMBLY`; `COMPATIBILITY_EXPORT`; `SEALED_METADATA_ASSEMBLY` |
 | `package_access_status` | `OPEN_AUTHORIZED`; `CALIBRATION_ACCESS`; `SEALED_UNACCESSED`; `AUTHORIZED_OPENED`; `CLOSED_AFTER_SCORING`; `PUBLIC_METADATA_ONLY` |
 | `export_status` | `NOT_GENERATED`; `GENERATED_VERIFIED`; `PROHIBITED_SEALED`; `NOT_APPLICABLE` |
 | `fraction_chemistry_status` | `PRESENT`; `NOT_APPLICABLE_NO_FRACTIONATED_CHEMISTRY` |

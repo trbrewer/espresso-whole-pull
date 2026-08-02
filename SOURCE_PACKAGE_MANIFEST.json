@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 226,
-  "total_uncompressed_bytes_excluding_manifest": 2042226,
-  "aggregate_source_sha256": "3c88b62caf1cb65ac9c31d8c98e43e328ae709ab8794c45e8601c1f6f5cd11b6",
-  "aggregate_sha256": "3c88b62caf1cb65ac9c31d8c98e43e328ae709ab8794c45e8601c1f6f5cd11b6",
+  "total_uncompressed_bytes_excluding_manifest": 2048897,
+  "aggregate_source_sha256": "94971ef9a5141a012f03f88d360f85cd05357c7344f515cb57f21793cb1773d3",
+  "aggregate_sha256": "94971ef9a5141a012f03f88d360f85cd05357c7344f515cb57f21793cb1773d3",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "0329c43b2dd865a16130107779c162c3faadcfb70e7dbb79fc30f19a4ad7e9bc",
-      "bytes": 10693,
+      "sha256": "73eb066ce092b5860acc198b8afaf391815091c1ebfa91007315c1469cc1b363",
+      "bytes": 10999,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -549,8 +549,8 @@
       "git_mode": "100644"
     },
     "docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md": {
-      "sha256": "a8207f4fcd574a35bbdc45601fa686ae8a041ed3a33ee224d2b472431e4bbeb8",
-      "bytes": 94674,
+      "sha256": "7dc95b3197891de1e458586ac239267daaeab7b57858ed8dc4611792b6429faf",
+      "bytes": 101039,
       "git_mode": "100644"
     },
     "docs/validation/VAL_INFRA_002_STAGE0_VERIFIER_SCOPE_REPAIR.md": {

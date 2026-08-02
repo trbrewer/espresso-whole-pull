@@ -107,7 +107,13 @@
     "package_content_matrix": "EXACT_NULLABILITY_AND_MUTUALLY_EXCLUSIVE_FILE_SETS",
     "scalar_export_encoding": "CANONICAL_AND_BYTE_REPRODUCIBLE",
     "terminal_mass_event_binding": "REALIZED_PER_SHOT_EVENT_REQUIRED",
-    "final_export_contract_audit": "PASS"
+    "final_export_contract_audit": "PASS",
+    "typed_resource_export_members": "CLOSED_AND_RECONCILED",
+    "sealed_metadata_envelope": "SCHEMA_VALID_ONLY_NOT_PUCKWORKS_SUBMISSION",
+    "serialization_order": "CSV_YAML_PATH_ORDER_FROZEN",
+    "raw_processed_mapping": "LOCAL_TO_PUCKWORKS_FROZEN",
+    "manifest_behavior": "NONRECURSIVE",
+    "compatibility_serialization_audit": "PASS"
   },
   "val_infra_002": {
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",

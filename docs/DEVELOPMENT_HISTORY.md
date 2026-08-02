@@ -231,3 +231,10 @@ compatibility-export layering, divided time-indexed and record/literal source
 provenance, froze package content modes and scalar encodings, and introduced
 the realized per-shot termination event used for terminal delivered mass. No
 scientific result, evidence route, experiment, dependency, or physics changed.
+
+The compatibility-serialization closure then reconciled exported typed
+resource members with their closed schemas, defined the metadata-only sealed
+envelope as distinct from a Puckworks submission, froze deterministic YAML and
+CSV serialization, mapped local provenance to Puckworks `raw`/`processed`, and
+made manifests explicitly nonrecursive. No evidence or scientific execution
+occurred.
