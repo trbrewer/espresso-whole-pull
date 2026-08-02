@@ -30,7 +30,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 226,
-    "source_manifest_aggregate_sha256": "24287ab1d23ab3b50cbe7b3a723f4cbdc1f2e71c0b26ee9347e2882897ed1032",
+    "source_manifest_aggregate_sha256": "3c88b62caf1cb65ac9c31d8c98e43e328ae709ab8794c45e8601c1f6f5cd11b6",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -100,7 +100,14 @@
     "export_source_cardinality": "EXACT_ONE_OR_INTERPOLATED_TWO_ORDERED",
     "fraction_chemistry_package_state": "EXPLICIT",
     "time_series_grid_cardinality": "EXACTLY_ONE_PER_EXPORTING_PACKAGE",
-    "compatibility_export_operation_scope": "REQUIRED"
+    "compatibility_export_operation_scope": "REQUIRED",
+    "conversion_domain_model": "FLOW_DENSITY_SEPARATE_FROM_FIXED_SCALE_OFFSET",
+    "processing_scope_graph": "ROW_VALUE_TO_NORMALIZED_FILE_ASSEMBLY_TO_COMPATIBILITY_EXPORT",
+    "export_provenance_classes": "NORMALIZED_RECORD_TIME_INDEXED_SAMPLES_FROZEN_LITERAL",
+    "package_content_matrix": "EXACT_NULLABILITY_AND_MUTUALLY_EXCLUSIVE_FILE_SETS",
+    "scalar_export_encoding": "CANONICAL_AND_BYTE_REPRODUCIBLE",
+    "terminal_mass_event_binding": "REALIZED_PER_SHOT_EVENT_REQUIRED",
+    "final_export_contract_audit": "PASS"
   },
   "val_infra_002": {
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",

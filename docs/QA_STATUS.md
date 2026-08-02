@@ -133,6 +133,11 @@ resource field, package/partition identity and summary reconciliation,
 registered temperature export, exact and two-sample source provenance,
 fraction/chemistry package state, and exactly-one-grid/export-operation
 cardinality. No scientific or experimental execution is part of this check.
+The final export-contract audit additionally verifies conversion-domain
+separation, mutually exclusive processing scopes, record/sample/literal
+provenance, package content-mode nullability, byte-reproducible Puckworks
+scalars, realized termination-event linkage, edge ordering, filenames, row
+keys, row state, and campaign/site/apparatus consistency.
 
 ## WP-0.3C Stage-0 scaffold
 

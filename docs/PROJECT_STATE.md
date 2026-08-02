@@ -55,6 +55,11 @@ basket-top temperature, records exact or two-source interpolated export
 provenance, adds package-level fraction/chemistry disposition, and enforces
 one export grid and one `COMPATIBILITY_EXPORT` operation per time-series
 package.
+The final export-contract reconciliation separates fixed unit conversion from
+flow/density conversion, enforces the three-layer processing graph, separates
+time-indexed samples from record/literal provenance, freezes package-mode
+nullability and scalar encodings, and binds terminal mass to a realized shot
+event. The task remains non-commissioning.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

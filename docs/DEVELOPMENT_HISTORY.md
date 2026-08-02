@@ -224,3 +224,10 @@ two-sample interpolation sources, introduced package-level fraction/chemistry
 status, and required exactly one grid and one compatibility-export operation
 for each time-series package. It changed no accepted science, evidence route,
 measurement target, result, dependency, or commissioning boundary.
+
+The final export-contract reconciliation separated flow/density conversion
+from fixed unit scaling, enforced row-value to normalized-assembly to
+compatibility-export layering, divided time-indexed and record/literal source
+provenance, froze package content modes and scalar encodings, and introduced
+the realized per-shot termination event used for terminal delivered mass. No
+scientific result, evidence route, experiment, dependency, or physics changed.
