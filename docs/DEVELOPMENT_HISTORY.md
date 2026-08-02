@@ -207,3 +207,12 @@ The final template-interoperability correction separated local campaign
 instances from Puckworks catalog IDs, defined deterministic field-level export
 bindings, removed generic source-file nullability, and replaced one-to-one
 lineage with an acyclic multi-input/multi-output edge graph.
+
+The implementation-contract closure then bound samples and deformation to the
+shot apparatus and registered channel, replaced missingness-driven calibration
+rules with registry applicability and validity rules, added fraction parents,
+partition-isolated compatibility packages, typed canonical resource payloads
+and terminal rights, separated row-value operations from file assembly, and
+froze reproducible synchronized-time-series and terminal delivered-mass export
+rules. This was documentation and schema-contract work only; no acquisition,
+scientific execution, scoring, or governing-physics change occurred.

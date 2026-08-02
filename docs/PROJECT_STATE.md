@@ -43,6 +43,12 @@ route invariants; status remains `CORRECTED_PENDING_EXACT_HEAD_REVIEW`.
 The template-interoperability correction separates local campaign instances
 from catalog IDs, adds deterministic Puckworks exports, and represents
 processing lineage as an acyclic multi-input/multi-output edge graph.
+The implementation-contract closure binds samples and deformation to the
+shot apparatus and signal registry, makes calibration applicability
+registry-controlled, adds fraction parents and partition-isolated
+compatibility packages, types resource payloads with terminal rights, and
+separates row-value processing from file assembly and exact synchronized
+exports. Commissioning remains unauthorized.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

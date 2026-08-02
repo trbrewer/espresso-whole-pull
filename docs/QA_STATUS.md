@@ -121,6 +121,13 @@ resource keys, table-specific nullability, and composite consistency keys.
 The template-interface correction further records noncontradictory source-file
 nullability, local/catalog campaign namespaces, field-level compatibility
 exports, and multi-file processing lineage.
+The implementation-contract closure adds exact apparatus/signal/calibration
+bindings, a fraction parent and deterministic chemistry presentation,
+partition-specific compatibility packages, typed canonical resources with
+terminal rights, distinct row-value and file-assembly operations, and exact
+synchronized-time-series and terminal-mass selection rules. The deterministic
+schema/export audit is required before commissioning readiness; commissioning
+is not authorized here.
 
 ## WP-0.3C Stage-0 scaffold
 
