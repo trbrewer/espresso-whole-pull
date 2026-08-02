@@ -197,3 +197,8 @@ VAL-CASE-001 parameter classifications exactly, made replication and access
 rules conditional on the selected route, closed the normalized foreign-key
 graph, and designated the signal table as the sole measured-pressure source.
 No scientific artifact, code, dependency, experiment, or claim changed.
+
+A subsequent referential-integrity correction replaced incomplete signal and
+resource references with exact candidate keys, distinguished locked templates
+from future instances, and added deterministic cross-table invariants. The
+accepted plan content and all scientific boundaries remain unchanged.

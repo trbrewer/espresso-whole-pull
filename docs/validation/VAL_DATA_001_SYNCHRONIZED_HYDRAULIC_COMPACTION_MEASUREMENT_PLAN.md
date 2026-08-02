@@ -17,7 +17,8 @@ The future package should determine whether synchronized pressure, flow/mass,
 and deformation distinguish hydraulic resistance from compaction response;
 whether the existing universal and finite-porosity branches produce resolvable
 differences; which machine-side parameters remain practically confounded; and
-whether an independently held-out dataset can support a bounded component
+whether a prospectively protected comparison dataset under the selected
+evidence route can support a bounded component
 comparison. Results may support parameter/model-form discrimination or show
 that additional data are required. A governing-physics increment would be
 considered only after reproducible, uncertainty-aware residual structure
@@ -184,30 +185,54 @@ Numeric zero is never a missing-value code.
 | `val_data_001_evidence_routes.csv` | `route_id` | `route_id`, `selected_route`, `calibration_evidence_class`, `scoring_evidence_class`, `prospective_freeze_resource_id`, `human_owner_disposition_resource_id`, `rights_policy_resource_id`, `access_policy_resource_id` |
 | `val_data_001_campaigns.csv` | `campaign_id` | `campaign_id`, `puckworks_campaign_id`, `site_id`, `apparatus_id`, `route_id`, `schema_version` |
 | `val_data_001_evidence_partitions.csv` | `evidence_partition_id` | `evidence_partition_id`, `campaign_id`, `route_id`, `analysis_role`, `evidence_class`, `sealed_status`, `partition_manifest_sha256`, `seal_timestamp_utc`, `custodian_resource_id`, `access_policy_resource_id`, `rights_resource_id` |
-| `val_data_001_replicates.csv` | `replicate_id` | `replicate_id`, `campaign_id`, `condition_id`, `block_id`, `replicate_sequence`, `randomization_sequence`, `evidence_partition_id` |
+| `val_data_001_replicates.csv` | `replicate_id` | `replicate_id`, `campaign_id`, `route_id`, `condition_id`, `block_id`, `replicate_sequence`, `randomization_sequence`, `evidence_partition_id` |
 | `val_data_001_blocks.csv` | `block_id` | `block_id`, `campaign_id`, `block_type`, `block_label`, `session_start_utc`, `coffee_lot_resource_id`, `grinder_state_resource_id`, `operator_role_resource_id`, `apparatus_state_resource_id`, `calibration_set_id` |
-| `val_data_001_resources.csv` | (`resource_type`, `resource_id`) | `resource_type`, `resource_id`, `definition`, `source_file_id`, `rights_resource_id` |
+| `val_data_001_resources.csv` | `resource_id` (globally unique) | `resource_id`, `resource_type`, `definition`, `resource_provenance_mode`, `source_file_id`, `rights_resource_id` |
 | `val_data_001_conditions.csv` | `condition_id` | `condition_id`, `campaign_id`, `apparatus_id`, `control_mode`, `prescribed_node`, `prescribed_pressure_pa_gauge`, `command_program_resource_id`, `initial_hydraulic_state_resource_id`, `ambient_reference_pa`, `zeroing_basis`, `ramp_definition`, `plateau_definition`, `termination_rule`, `control_tolerance_pa`, `missing_value_state` |
-| `val_data_001_shots.csv` | `shot_id` | `shot_id`, `campaign_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`, `coffee_lot_resource_id`, `grinder_resource_id`, `basket_resource_id`, `dose_g`, `dry_bed_depth_mm`, `preparation_protocol_resource_id`, `brew_temperature_c`, `raw_or_processed`, `inclusion_status`, `exclusion_reason`, `t0_event_code`, `t0_uncertainty_s` |
+| `val_data_001_shots.csv` | `shot_id` | `shot_id`, `campaign_id`, `route_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`, `coffee_lot_resource_id`, `grinder_resource_id`, `basket_resource_id`, `dose_g`, `dry_bed_depth_mm`, `preparation_protocol_resource_id`, `brew_temperature_c`, `raw_or_processed`, `inclusion_status`, `exclusion_reason`, `t0_event_code`, `t0_uncertainty_s` |
 | `val_data_001_signals.csv` | (`shot_id`, `signal_id`, `sample_index`) | `shot_id`, `signal_id`, `sample_index`, `sensor_resource_id`, `clock_resource_id`, `calibration_id`, `source_file_id`, `processing_id`, `native_timestamp`, `elapsed_time_s`, `native_value`, `native_unit`, `canonical_value`, `canonical_unit`, `physical_node`, `raw_or_processed`, `quality_flags`, `missing_value_state`, `clock_offset_s`, `clock_drift_s_per_s`, `sensor_latency_s`, `resampling_interval_s` |
-| `val_data_001_controls.csv` | (`shot_id`, `control_sample_index`) | `shot_id`, `control_sample_index`, `command_program_resource_id`, `clock_resource_id`, `source_file_id`, `processing_id`, `native_timestamp`, `elapsed_time_s`, `commanded_pressure_value`, `commanded_pressure_unit`, `prescribed_node`, `basket_pressure_signal_id`, `upstream_pressure_signal_id`, `control_deviation_pa`, `control_status`, `control_phase` |
-| `val_data_001_flow_conversions.csv` | `conversion_id` | `conversion_id`, `shot_id`, `density_source_resource_id`, `calibration_id`, `source_file_id`, `native_mass_flow_g_s`, `native_volume_flow_ml_s`, `canonical_mass_flow_kg_s`, `canonical_volume_flow_m3_s`, `density_kg_m3`, `density_temperature_c`, `conversion_formula`, `processing_id` |
-| `val_data_001_deformation.csv` | (`shot_id`, `location_id`, `sample_index`) | `shot_id`, `location_id`, `sample_index`, `sensor_resource_id`, `calibration_id`, `reference_state_resource_id`, `fixture_compliance_resource_id`, `source_file_id`, `processing_id`, `native_timestamp`, `elapsed_time_s`, `native_displacement_value`, `native_displacement_unit`, `canonical_displacement_m`, `compression_sign`, `spatial_basis`, `axial_coordinate_m`, `radial_coordinate_m`, `coffee_bed_displacement_m`, `quality_flags`, `missing_value_state` |
+| `val_data_001_controls.csv` | (`shot_id`, `control_sample_index`) | `shot_id`, `control_sample_index`, `command_program_resource_id`, `clock_resource_id`, `source_file_id`, `processing_id`, `raw_or_processed`, `native_timestamp`, `elapsed_time_s`, `commanded_pressure_value`, `commanded_pressure_unit`, `prescribed_node`, `basket_pressure_signal_id`, `basket_pressure_sample_index`, `upstream_pressure_signal_id`, `upstream_pressure_sample_index`, `upstream_pressure_availability`, `control_deviation_pa`, `control_status`, `control_phase` |
+| `val_data_001_flow_conversions.csv` | `conversion_id` | `conversion_id`, `shot_id`, `density_source_resource_id`, `calibration_id`, `calibration_applicability`, `source_file_id`, `native_mass_flow_g_s`, `native_volume_flow_ml_s`, `canonical_mass_flow_kg_s`, `canonical_volume_flow_m3_s`, `density_kg_m3`, `density_temperature_c`, `conversion_formula`, `processing_id` |
+| `val_data_001_deformation.csv` | (`shot_id`, `location_id`, `sample_index`) | `shot_id`, `location_id`, `sample_index`, `sensor_resource_id`, `calibration_id`, `reference_state_resource_id`, `fixture_compliance_resource_id`, `source_file_id`, `processing_id`, `raw_or_processed`, `native_timestamp`, `elapsed_time_s`, `native_displacement_value`, `native_displacement_unit`, `canonical_displacement_m`, `compression_sign`, `spatial_basis`, `axial_coordinate_m`, `radial_coordinate_m`, `coffee_bed_displacement_m`, `quality_flags`, `missing_value_state` |
 | `val_data_001_calibrations.csv` | `calibration_id` | `calibration_id`, `calibration_set_id`, `apparatus_id`, `sensor_resource_id`, `source_file_id`, `observable_code`, `native_unit`, `canonical_unit`, `calibration_method`, `reference_resource_id`, `calibration_timestamp_utc`, `offset`, `scale`, `range_min`, `range_max`, `resolution`, `bandwidth_hz`, `latency_s`, `drift_per_s`, `uncertainty_resource_id`, `valid_from_utc`, `valid_to_utc` |
 | `val_data_001_files.csv` | `source_file_id` | `source_file_id`, `parent_source_file_id`, `processing_id`, `relative_filename`, `file_role`, `raw_or_processed`, `sha256`, `byte_count`, `media_type`, `rights_resource_id`, `creator_software_resource_id` |
 | `val_data_001_processing_lineage.csv` | `processing_id` | `processing_id`, `input_source_file_id`, `output_source_file_id`, `software_commit`, `software_tree`, `operation_resource_id`, `parameter_record`, `synchronization_method`, `resampling_method`, `operator_role_resource_id`, `processing_timestamp_utc` |
 
-The locked Puckworks bindings are exact: `campaigns.puckworks_campaign_id`
-references `docs/data_requests/experimental_campaigns.yml` campaign key
-`$.campaigns[*].campaign_id`; `campaigns.site_id` references
-`docs/data_requests/templates/campaign_metadata.yml` key `$.site_id`; and
-`campaigns.apparatus_id`, `conditions.apparatus_id`, and
-`calibrations.apparatus_id` reference
-`docs/data_requests/templates/apparatus.yml` key `$.apparatus_id`, all at the
-locked commit and tree above. The local `campaign_id`, `shot_id`, and
-`replicate_id` values also populate the same-named columns in locked
-`shot_metadata.csv`; this is an equality/export binding, not an additional
-foreign-key parent.
+The locked Puckworks bindings distinguish immutable schemas from future data.
+`campaigns.puckworks_campaign_id` references actual catalog values in locked
+`docs/data_requests/experimental_campaigns.yml` at
+`$.campaigns[*].campaign_id`. By contrast, locked
+`docs/data_requests/templates/campaign_metadata.yml` and
+`docs/data_requests/templates/apparatus.yml` are schemas/templates whose
+repository placeholder values are not parent data. `campaigns.site_id`
+references `$.site_id` in the future submitted `campaign_metadata.yml`
+instance conforming to that locked template. `campaigns.apparatus_id`,
+`conditions.apparatus_id`, `shots.apparatus_id`, and
+`calibrations.apparatus_id` reference `$.apparatus_id` in the future submitted
+`apparatus.yml` instance conforming to its locked template. The local
+`campaign_id`, `shot_id`, and `replicate_id` values also populate the
+same-named columns in a future submitted `shot_metadata.csv` instance; this is
+an equality/export binding, not another foreign-key parent.
+
+### Primary and candidate keys
+
+| Table | Unique key used by references |
+|---|---|
+| evidence routes | (`route_id`) |
+| campaigns | (`campaign_id`); candidate (`campaign_id`, `route_id`); candidate (`campaign_id`, `apparatus_id`) |
+| evidence partitions | (`evidence_partition_id`); candidate (`evidence_partition_id`, `campaign_id`, `route_id`) |
+| conditions | (`condition_id`); candidate (`condition_id`, `campaign_id`, `apparatus_id`) |
+| blocks | (`block_id`); candidate (`block_id`, `campaign_id`) |
+| replicates | (`replicate_id`); candidate (`replicate_id`, `campaign_id`, `route_id`, `condition_id`, `block_id`, `evidence_partition_id`) |
+| shots | (`shot_id`); candidate (`shot_id`, `campaign_id`, `route_id`, `condition_id`, `apparatus_id`, `replicate_id`, `block_id`, `evidence_partition_id`) |
+| resources | (`resource_id`) globally unique |
+| signals | (`shot_id`, `signal_id`, `sample_index`) |
+| controls | (`shot_id`, `control_sample_index`) |
+| flow conversions | (`conversion_id`) |
+| deformation | (`shot_id`, `location_id`, `sample_index`) |
+| calibrations | (`calibration_id`) |
+| files | (`source_file_id`) |
+| processing lineage | (`processing_id`) |
 
 ### Foreign-key resolution matrix
 
@@ -216,25 +241,69 @@ exactly one parent; `NULLABLE` states the sole permitted null condition.
 
 | Child field | Exact parent | Cardinality/null rule |
 |---|---|---|
-| `campaigns.puckworks_campaign_id` | locked `experimental_campaigns.yml` `$.campaigns[*].id` | many-to-one, `NOT NULL` |
-| `campaigns.site_id` | locked `campaign_metadata.yml` `$.site_id` | many-to-one, `NOT NULL` |
-| `campaigns.apparatus_id`, `conditions.apparatus_id`, `calibrations.apparatus_id` | locked `apparatus.yml` `$.apparatus_id` | many-to-one, `NOT NULL` |
+| `campaigns.puckworks_campaign_id` | locked catalog `docs/data_requests/experimental_campaigns.yml` `$.campaigns[*].campaign_id` | many-to-one, `NOT NULL` |
+| `campaigns.site_id` | future submitted `campaign_metadata.yml` `$.site_id`, conforming to locked `docs/data_requests/templates/campaign_metadata.yml` | many-to-one, `NOT NULL`; template placeholder is never a parent value |
+| `campaigns.apparatus_id`, `conditions.apparatus_id`, `shots.apparatus_id`, `calibrations.apparatus_id` | future submitted `apparatus.yml` `$.apparatus_id`, conforming to locked `docs/data_requests/templates/apparatus.yml` | many-to-one, `NOT NULL`; template placeholder is never a parent value |
 | `campaigns.route_id`, `evidence_partitions.route_id` | `val_data_001_evidence_routes.csv.route_id` | many-to-one, `NOT NULL` |
 | `evidence_partitions.campaign_id`, `replicates.campaign_id`, `blocks.campaign_id`, `conditions.campaign_id`, `shots.campaign_id` | `val_data_001_campaigns.csv.campaign_id` | many-to-one, `NOT NULL` |
-| `replicates.condition_id` | `val_data_001_conditions.csv.condition_id` | many-to-one, `NOT NULL` |
-| `replicates.block_id`, `shots.block_id` | `val_data_001_blocks.csv.block_id` | many-to-one, `NOT NULL` |
-| `replicates.evidence_partition_id`, `shots.evidence_partition_id` | `val_data_001_evidence_partitions.csv.evidence_partition_id` | many-to-one, `NOT NULL` |
-| `shots.condition_id` | `val_data_001_conditions.csv.condition_id` | many-to-one, `NOT NULL` |
-| `shots.replicate_id` | `val_data_001_replicates.csv.replicate_id` | one-to-one within a condition, `NOT NULL` |
-| `shots.apparatus_id` | locked `apparatus.yml` `$.apparatus_id` | many-to-one, `NOT NULL` |
+| `evidence_partitions.(campaign_id, route_id)` | `val_data_001_campaigns.csv.(campaign_id, route_id)` | many-to-one, both `NOT NULL` |
+| `replicates.(condition_id, campaign_id)` | `val_data_001_conditions.csv.(condition_id, campaign_id)` | many-to-one, both `NOT NULL` |
+| `replicates.(block_id, campaign_id)` | `val_data_001_blocks.csv.(block_id, campaign_id)` | many-to-one, both `NOT NULL` |
+| `replicates.(evidence_partition_id, campaign_id, route_id)` | `val_data_001_evidence_partitions.csv.(evidence_partition_id, campaign_id, route_id)` | many-to-one, all `NOT NULL` |
+| `shots.(replicate_id, campaign_id, route_id, condition_id, block_id, evidence_partition_id)` | corresponding six fields of the replicate candidate key | many-to-one, all `NOT NULL` |
+| `shots.(condition_id, campaign_id, apparatus_id)` | condition candidate key | many-to-one, all `NOT NULL` |
 | `signals.shot_id`, `controls.shot_id`, `flow_conversions.shot_id`, `deformation.shot_id` | `val_data_001_shots.csv.shot_id` | many-to-one, `NOT NULL` |
-| every field ending `_resource_id` | `val_data_001_resources.csv.resource_id`, paired with the field-implied `resource_type` | many-to-one; `NOT NULL` except `resources.rights_resource_id`, which may be null only for a public-domain resource documented as `PUBLIC_DOMAIN` |
-| `signals.calibration_id`, `flow_conversions.calibration_id`, `deformation.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | many-to-one; null only when `missing_value_state=NOT_APPLICABLE` and the signal definition proves no calibration applies |
-| `calibrations.calibration_set_id`, `blocks.calibration_set_id` | `val_data_001_resources.csv.resource_id` with `resource_type=CALIBRATION_SET` | many-to-one, `NOT NULL` |
 | every `source_file_id`, `input_source_file_id`, `output_source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one, `NOT NULL` |
 | `files.parent_source_file_id` | `val_data_001_files.csv.source_file_id` | many-to-one; null only for an instrument-native root file |
-| every `processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only when `raw_or_processed=RAW_NATIVE` |
-| `controls.basket_pressure_signal_id`, `controls.upstream_pressure_signal_id` | `val_data_001_signals.csv.signal_id` within the same `shot_id` | many-to-one; basket reference `NOT NULL`; upstream reference null only for prescribed mode when upstream pressure is `NOT_MEASURED` |
+| `signals.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | many-to-one; null only when `signals.missing_value_state=NOT_APPLICABLE` and the signal definition requires no calibration |
+| `flow_conversions.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | many-to-one; `NOT NULL` when `flow_conversions.calibration_applicability=APPLICABLE`; null when it is `NOT_APPLICABLE` or `UNKNOWN_PENDING_REVIEW`, with `UNKNOWN_PENDING_REVIEW` blocking readiness |
+| `deformation.calibration_id` | `val_data_001_calibrations.csv.calibration_id` | many-to-one; null only when `deformation.missing_value_state=NOT_APPLICABLE` and the declared deformation method requires no calibration |
+| `signals.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only when `signals.raw_or_processed=RAW_NATIVE` |
+| `controls.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only when `controls.raw_or_processed=RAW_NATIVE` and `controls.control_deviation_pa` is empty |
+| `flow_conversions.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one, `NOT NULL` |
+| `deformation.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only when the deformation row is raw and `coffee_bed_displacement_m` is empty; otherwise `NOT NULL` |
+| `files.processing_id` | `val_data_001_processing_lineage.csv.processing_id` | many-to-one; null only for a declared native/root input file |
+| `controls.(shot_id, basket_pressure_signal_id, basket_pressure_sample_index)` | `val_data_001_signals.csv.(shot_id, signal_id, sample_index)` | many-to-one, complete reference `NOT NULL` |
+| `controls.(shot_id, upstream_pressure_signal_id, upstream_pressure_sample_index)` | `val_data_001_signals.csv.(shot_id, signal_id, sample_index)` | many-to-one; signal ID and sample index are both present or both absent, and both may be absent only when `controls.upstream_pressure_availability=NOT_MEASURED` |
+
+### Resource-reference matrix
+
+`val_data_001_resources.csv.resource_id` is globally unique, so every child
+reference below resolves to one complete parent key. The required parent
+`resource_type` is additionally checked.
+
+| Resource-reference field | Required `resource_type` |
+|---|---|
+| `evidence_routes.prospective_freeze_resource_id` | `FREEZE_IDENTITY` |
+| `evidence_routes.human_owner_disposition_resource_id` | `HUMAN_DISPOSITION` |
+| `evidence_routes.rights_policy_resource_id`, `evidence_partitions.rights_resource_id`, `resources.rights_resource_id`, `files.rights_resource_id` | `RIGHTS` |
+| `evidence_routes.access_policy_resource_id`, `evidence_partitions.access_policy_resource_id` | `ACCESS_POLICY` |
+| `evidence_partitions.custodian_resource_id` | `CUSTODIAN` |
+| `blocks.coffee_lot_resource_id`, `shots.coffee_lot_resource_id` | `COFFEE_LOT` |
+| `blocks.grinder_state_resource_id` | `GRINDER_STATE` |
+| `blocks.operator_role_resource_id`, `processing_lineage.operator_role_resource_id` | `OPERATOR_ROLE` |
+| `blocks.apparatus_state_resource_id` | `APPARATUS_STATE` |
+| `blocks.calibration_set_id`, `calibrations.calibration_set_id` | `CALIBRATION_SET` |
+| `conditions.command_program_resource_id`, `controls.command_program_resource_id` | `COMMAND_PROGRAM` |
+| `conditions.initial_hydraulic_state_resource_id` | `HYDRAULIC_INITIAL_STATE` |
+| `shots.grinder_resource_id` | `GRINDER` |
+| `shots.basket_resource_id` | `BASKET` |
+| `shots.preparation_protocol_resource_id` | `PREPARATION_PROTOCOL` |
+| `signals.sensor_resource_id`, `deformation.sensor_resource_id`, `calibrations.sensor_resource_id` | `SENSOR` |
+| `signals.clock_resource_id`, `controls.clock_resource_id` | `CLOCK` |
+| `flow_conversions.density_source_resource_id` | `DENSITY_SOURCE` |
+| `deformation.reference_state_resource_id` | `REFERENCE_STATE` |
+| `deformation.fixture_compliance_resource_id` | `FIXTURE_COMPLIANCE` |
+| `calibrations.reference_resource_id` | `REFERENCE_STANDARD` |
+| `calibrations.uncertainty_resource_id` | `UNCERTAINTY` |
+| `files.creator_software_resource_id` | `SOFTWARE` |
+| `processing_lineage.operation_resource_id` | `OPERATION` |
+
+`resources.source_file_id` references `files.source_file_id`; it is `NOT NULL`
+when `resources.resource_provenance_mode=SOURCE_FILE_BOUND` and null only when
+that field is `INLINE_DECLARATION`. `resources.rights_resource_id` references a globally unique resource
+of type `RIGHTS`; it may be null only when the resource itself is documented
+as `PUBLIC_DOMAIN` in `resources.definition`.
 
 ### Controlled enumerations
 
@@ -255,6 +324,9 @@ exactly one parent; `NULLABLE` states the sole permitted null condition.
 | `block_type` | `SESSION`; `COFFEE_LOT`; `GRINDER_STATE`; `OPERATOR_STATE`; `APPARATUS_CALIBRATION_STATE` |
 | `location_id` | `UPPER_BED`; `MID_BED`; `LOWER_BED`; `BULK_EQUIVALENT` |
 | `resource_type` | `ACCESS_POLICY`; `APPARATUS_STATE`; `CALIBRATION_SET`; `COMMAND_PROGRAM`; `CUSTODIAN`; `DENSITY_SOURCE`; `FIXTURE_COMPLIANCE`; `FREEZE_IDENTITY`; `GRINDER`; `GRINDER_STATE`; `HUMAN_DISPOSITION`; `HYDRAULIC_INITIAL_STATE`; `OPERATION`; `OPERATOR_ROLE`; `PREPARATION_PROTOCOL`; `REFERENCE_STATE`; `REFERENCE_STANDARD`; `RIGHTS`; `SENSOR`; `SOFTWARE`; `UNCERTAINTY`; `COFFEE_LOT`; `BASKET`; `CLOCK` |
+| `upstream_pressure_availability` | `MEASURED`; `NOT_MEASURED`; `SENSOR_FAILURE` |
+| `calibration_applicability` | `APPLICABLE`; `NOT_APPLICABLE`; `UNKNOWN_PENDING_REVIEW` |
+| `resource_provenance_mode` | `INLINE_DECLARATION`; `SOURCE_FILE_BOUND` |
 
 ### Route-conditional partition representation
 
@@ -292,13 +364,52 @@ assigns its enclosing partition to `SEALED_SCORING`.
 
 Measured pressure samples have one source of truth:
 `val_data_001_signals.csv`. `val_data_001_controls.csv` contains command and
-state records plus `basket_pressure_signal_id` and
-`upstream_pressure_signal_id`; it contains no independently authoritative
-measured-pressure value. `control_deviation_pa` is derived from the referenced
-basket signal and commanded pressure and therefore requires `processing_id`.
+state records plus the complete basket reference
+(`shot_id`, `basket_pressure_signal_id`, `basket_pressure_sample_index`) and
+complete upstream reference (`shot_id`, `upstream_pressure_signal_id`,
+`upstream_pressure_sample_index`); it contains no independently authoritative
+measured-pressure value. The basket reference is always present and resolves
+to `physical_node=P_BASKET_BED_TOP_PA_GAUGE`. Upstream ID and index are both
+present or both absent; a present reference resolves to
+`physical_node=P_MACHINE_UPSTREAM_RU_PA_GAUGE`, and absence is allowed only
+for `upstream_pressure_availability=NOT_MEASURED`. `SENSOR_FAILURE` retains a
+referenced signal sample whose `missing_value_state=SENSOR_FAILURE`.
+
+A control reference with `raw_or_processed=PROCESSED_SYNCHRONIZED` points to a
+signal row with the same state and mandatory `processing_id`.
+`control_deviation_pa` identifies the exact basket sample above and is derived
+from that sample and `commanded_pressure_value`; any populated deviation
+therefore requires the control row's `processing_id` to identify the deriving
+operation.
 If duplicated presentation values are exported later, they must be byte- and
 value-derived from that signal row; conflicts resolve in favor of the signal
 table and invalidate the export.
+
+### Cross-table relational invariants
+
+1. `evidence_partitions.(campaign_id, route_id)` must match the campaign
+   candidate key; existence of each identifier separately is insufficient.
+2. A replicate's (`condition_id`, `campaign_id`) and (`block_id`,
+   `campaign_id`) must match the corresponding condition and block candidate
+   keys.
+3. A replicate's (`evidence_partition_id`, `campaign_id`, `route_id`) must
+   match one partition candidate key, and its (`campaign_id`, `route_id`) must
+   match its campaign.
+4. A shot's duplicated campaign, route, condition, block, and partition fields
+   must exactly equal those inherited through the complete replicate candidate
+   key. Its (`condition_id`, `campaign_id`, `apparatus_id`) must also match the
+   condition candidate key, and its apparatus must equal the campaign's
+   apparatus. Any mismatch rejects the row.
+5. Every referenced pressure sample has the same `shot_id` as the control row.
+   For `control_mode=PRESCRIBED_BASKET_PRESSURE`, the condition and every
+   control row use `prescribed_node=P_BASKET_BED_TOP_PA_GAUGE`, and the basket
+   reference resolves to that physical node.
+6. For `control_mode=MACHINE_COUPLED`, the condition and every control row use
+   `prescribed_node=NOT_APPLICABLE_MACHINE_COUPLED`; basket pressure remains a
+   measured signal, never a prescribed value.
+7. Route-specific partition roles, evidence classes, and sealing states must
+   satisfy the selected route rules below. Ordinary replicates and blocks do
+   not acquire holdout status independently of their partition.
 
 ## Timebase, timing, calibration, and latency
 

@@ -37,6 +37,9 @@ evidence route still requires prospective human-owner selection.
 The final schema correction restores exact frozen VAL-CASE-001 parameter
 classifications, makes partition rules route-conditional, closes all declared
 foreign keys, and assigns measured pressure to one authoritative signal table.
+The referential-integrity correction binds complete pressure-sample keys,
+global resource keys, table-specific null rules, and cross-table campaign and
+route invariants; status remains `CORRECTED_PENDING_EXACT_HEAD_REVIEW`.
 
 VAL-INFRA-002 is a merged reusable-infrastructure repair that scopes the
 legacy WP-0.3C Stage-0 verifier scope. It changes no scientific result,

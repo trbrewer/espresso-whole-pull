@@ -115,6 +115,9 @@ The final evidence/schema correction preserves that status while separating
 frozen parameter classifications from future roles, closing route/partition/
 replicate/block parents and foreign keys, and making the signal table the sole
 authority for measured pressure.
+The referential-integrity correction additionally verifies exact locked versus
+future-template parents, complete signal-sample references, globally unique
+resource keys, table-specific nullability, and composite consistency keys.
 
 ## WP-0.3C Stage-0 scaffold
 

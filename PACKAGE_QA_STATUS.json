@@ -30,7 +30,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 226,
-    "source_manifest_aggregate_sha256": "1d7d29e811e9025a6723613606f56b80d0db7feb31944348f729493fb2a1aab6",
+    "source_manifest_aggregate_sha256": "a342fc7a23576f276bdd7b38d7f0e0c7c2fea3f458c82a74a9eaa64e06f03f54",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -82,7 +82,7 @@
     "future_evidence_route": "HUMAN_OWNER_PROSPECTIVE_SELECTION_REQUIRED",
     "parameter_classification_binding": "EXACT_FROZEN_VAL_CASE_001_PROTOCOL",
     "partition_rules": "ROUTE_CONDITIONAL",
-    "foreign_key_graph": "CLOSED_BY_DECLARED_PARENT_MATRIX",
+    "foreign_key_graph": "CLOSED_BY_EXACT_CANDIDATE_KEYS_AND_CROSS_TABLE_INVARIANTS",
     "measured_pressure_source_of_truth": "val_data_001_signals.csv"
   },
   "val_infra_002": {
