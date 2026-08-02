@@ -1,4 +1,4 @@
-# VAL-CORPUS-001 existing-evidence comparison atlas — corrected v2
+# VAL-CORPUS-001 existing-evidence comparison atlas — final v3
 
 **Change declaration:** `NO_GOVERNING_PHYSICS_CHANGE`  
 **Scientific disposition:** `ADDITIONAL_DATA_AND_NUMERICAL_ROBUSTNESS_REQUIRED_BEFORE_NEW_PHYSICS`  
@@ -12,14 +12,18 @@ All 13 correction cases completed. Static branches were generated without
 `effective_permeability_evolution`; dissolution-indexed branches explicitly
 retain it. Waszkiewicz mass uses `965 kg/m3`, and every corrected comparison
 uses `solver time = source time + 3 s`, linear interpolation inside the common
-domain, and no extrapolation.
+domain, and no extrapolation. Final analysis closure recalculates measured and
+nominal ordering independently, corrects median-log-ratio arithmetic, and
+binds a self-contained V3 bundle produced byte-identically twice.
 
 ## Plain result summary
 
 - **Direction:** every corrected Waszkiewicz branch produces positive flow and
   accumulated mass in the expected within-run direction. Foster's front moves
   downward, and the Mo diagnostic preserves the low-to-high gradient direction.
-- **Source condition ordering:** all three Waszkiewicz branch families fail.
+- **Source condition ordering:** all three measured-pressure Waszkiewicz branch
+  families fail, and the independently calculated nominal-pressure Darcy
+  family also fails.
   The source orders terminal flow and mass as 5 > 9 > 11 bar, while every model
   family orders them 11 > 9 > 5 bar (`Spearman = -1` for flow and mass).
 - **Flow scale:** dissolution-indexed Darcy is locally closest at 9 bar
@@ -69,7 +73,10 @@ Pressure, flow, and mass entries are full-window RMSE in bar, g/s, and g.
 | 11 bar / Darcy static, nominal pressure | 0.518 | 1.234 | 77.335 | captured | failed | failing |
 
 Measured-pressure traces reduce pressure RMSE relative to the nominal-pressure
-assumption, but do not repair flow or mass ordering. Static and
+assumption, but do not repair flow or mass ordering. The measured Darcy,
+Darcy–Forchheimer and dissolution-indexed families and the separate nominal
+Darcy family each have flow and mass `Spearman = -1`; no nominal row inherits
+measured ordering IDs. Static and
 dissolution-indexed comparisons are condition-dependent: dissolution improves
 9- and 11-bar flow and mass scale but worsens 5-bar accumulated mass. The
 Darcy–Forchheimer static branch improves 9- and 11-bar mass scale relative to
@@ -81,6 +88,42 @@ overlap. Darcy flow/mass RMSE is `0.593/4.159`, `0.122/0.962`, and
 `0.114/0.725` at 5, 9, and 11 bar; Darcy–Forchheimer values are
 `0.632/4.323`, `0.185/1.305`, and `0.149/1.135`. These are historical
 descriptive overlap views, not corrected full-window transfers.
+
+## Final comparison roles
+
+| Conditions | Parameter provenance | Comparison mode | Anchor role | Pressure-node scenario | Closure provenance |
+|---|---|---|---|---|---|
+| 9-bar Darcy static | 9-bar terminal-flow-derived permeability | source reconstruction | anchor-condition reconstruction | measured terminal basket | static constant permeability |
+| 5/11-bar Darcy static | same 9-bar anchor | cross-condition transfer | one-anchor transfer | measured terminal basket | static constant permeability |
+| 9-bar Darcy–Forchheimer | same 9-bar anchor | source reconstruction | anchor-condition reconstruction | measured terminal basket | static permeability plus locked Wadsworth inertial closure |
+| 5/11-bar Darcy–Forchheimer | same 9-bar anchor | cross-condition transfer | one-anchor transfer | measured terminal basket | static permeability plus locked Wadsworth inertial closure |
+| 9-bar dissolution-indexed Darcy | same anchor plus locked post-fit closure | post-fit reconstruction | post-fit source reconstruction | measured terminal basket | dissolution-indexed effective permeability |
+| 5/11-bar dissolution-indexed Darcy | same anchor plus locked post-fit closure | post-fit transfer | post-fit cross-condition transfer | measured terminal basket | dissolution-indexed effective permeability |
+| 5/9/11-bar nominal Darcy | applicable anchor/transfer role above | pressure-node sensitivity | applicable anchor or transfer role | nominal pressure | static constant permeability |
+
+The broad `SOURCE_ANCHORED_RECONSTRUCTION` label in the immutable executed
+configurations is preserved as execution history; these precise analysis roles
+supersede it for interpretation.
+
+## Density and median-log sensitivity
+
+The primary comparison remains `965 kg/m3`. At 997 and 1000 kg/m3 only model
+volumetric flow is converted to g/s; source observations remain fixed and
+accumulated cup mass is not rescaled. Ordering remains `Spearman = -1` for
+every measured and nominal family at all three densities. Representative
+measured-pressure flow RMSE values are:
+
+| Density | 5/9/11-bar Darcy static | 5/9/11-bar D–F static | 5/9/11-bar dissolution-indexed |
+|---:|---|---|---|
+| 965 kg/m3 | 0.909 / 0.863 / 1.136 | 1.118 / 0.798 / 0.721 | 0.949 / 0.120 / 0.348 |
+| 997 kg/m3 | 0.887 / 0.895 / 1.192 | 1.100 / 0.785 / 0.719 | 0.924 / 0.105 / 0.404 |
+| 1000 kg/m3 | 0.885 / 0.898 / 1.198 | 1.099 / 0.784 / 0.719 | 0.922 / 0.105 / 0.409 |
+
+Median absolute log ratio is now calculated as `median(abs(log(model/source)))`
+only for finite, strictly positive pairs. Odd counts use the central sorted
+value; even counts use the mean of the two central values. Nonpositive and
+nonfinite exclusions are counted separately, an empty eligible set yields
+`null` with an explicit reason, and no artificial positive floor is used.
 
 ## Other source and assumption results
 

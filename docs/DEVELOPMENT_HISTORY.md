@@ -8,7 +8,11 @@
   mapping without extrapolation. Every tested branch family reverses the
   source condition ordering. The original three compaction failures remain a
   separate numerical-robustness finding and were not rerun. Physical
-  validation is not established.
+  validation is not established. Final trace-only analysis closure separately
+  calculates measured and nominal ordering, assigns precise comparison roles,
+  corrects median-log handling, evaluates 965/997/1000 kg/m3 flow conversion,
+  splits completed and fatal trace identities, and produces a byte-identical
+  self-contained V3 bundle without launching OpenFOAM.
 
 - VAL-001 (open candidate): `NO_GOVERNING_PHYSICS_CHANGE` source-adapter
   framework and two descriptive source-linked pressure-flow comparisons. No
