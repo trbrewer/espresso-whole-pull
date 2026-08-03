@@ -134,10 +134,9 @@ def infrastructure_snapshot(run_root: Path, executable: Path) -> dict:
     def output(command: list[str]) -> str:
         return subprocess.run(command, text=True, stdout=subprocess.PIPE,
                               stderr=subprocess.STDOUT, check=False).stdout.strip()
-    stale = output(["ps", "-eo", "pid=,args="])
+    stale = output(["ps", "-eo", "comm=,args="])
     relevant = [line.strip() for line in stale.splitlines()
-                if ("mpirun" in line or "espressoWholePullFoam" in line)
-                and "val_corpus_002_b1_recovery.py" not in line]
+                if line.strip().split(maxsplit=1)[0] in {"mpirun", "espressoWholePullFoam"}]
     if relevant:
         raise b1.InfrastructureFailure("stale or active calibration process detected: " + " | ".join(relevant))
     stat = os.statvfs(run_root.parent)
