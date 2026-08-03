@@ -93,6 +93,15 @@
   before sensitivities or governed scoring. No refit, solver change, protected
   access, new physics, or merge occurred.
 
+- VAL-CORPUS-002 Stage B2 controlled recovery: preserved the partial root and
+  both failed preparation attempts, corrected only structured Waszkiewicz P2
+  placeholder normalization, and content-verified the other 44 production
+  dispositions. Corrected Waszkiewicz P2 passed on its first corrected attempt;
+  the final production inventory is 27 pass and 18 immutable typed target-
+  coverage failures. All nine sensitivity identities passed with one exact
+  baseline reuse. Frozen metrics were calculated without refit, protected
+  scoring, solver changes, new physics, VAL-CASE-002, or merge.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.

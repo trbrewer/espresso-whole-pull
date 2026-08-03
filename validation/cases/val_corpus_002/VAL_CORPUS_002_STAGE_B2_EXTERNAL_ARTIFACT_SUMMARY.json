@@ -1,0 +1,20 @@
+{
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "combined": {
+    "aggregate_sha256": "dfd5404159b989b9e3fd6902355e3610c9685684b955b870797ef315676e6452",
+    "file_count": 2293,
+    "total_bytes": 1509152297
+  },
+  "original": {
+    "aggregate_sha256": "db510fb5b0431152b39a7513d99cf2604702573948fe3f2f3d326bb4bfade999",
+    "file_count": 1909,
+    "total_bytes": 1260323825
+  },
+  "raw_execution_products_committed": false,
+  "recovery": {
+    "aggregate_sha256": "d1849c435a4843a80c70334ff86f4ddf5005baa540025b7c1efc6ac0d767eb09",
+    "file_count": 384,
+    "total_bytes": 248828472
+  },
+  "schema_version": "espresso.val_corpus_002.b2_external_summary.v1"
+}

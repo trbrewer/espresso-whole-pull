@@ -1,4 +1,4 @@
-# Package QA status — immutable baseline and VAL-CORPUS-002 Stage-B2 incomplete result
+# Package QA status — immutable baseline and VAL-CORPUS-002 Stage-B2 result candidate
 
 Historical sections below describe immutable merged or released evidence.
 Explicit current-check sections distinguish the merged WP03-002 state from the
@@ -65,12 +65,14 @@ and source/holdout-fit counts remained zero.
 
 ## VAL-CORPUS-002 Stage B2 current disposition
 
-Stage B2 stopped after the Waszkiewicz P2 identity failed `prepare_case` on
-both permitted attempts. Of 45 production identities, 26 passed, 18 have
-typed target-coverage failures, and one has the terminal infrastructure
-failure. Predecessor parity passed 1,500/1,500 states. Sensitivity execution
-and governed scoring were not performed. The current suite is 418/418 PASS,
-static validation is 38/38 PASS, and source verification is 260/260 PASS.
+Stage B2 recovery preserved both historical Waszkiewicz P2 preparation
+failures, corrected only the structured-placeholder normalization, and
+content-verified the other 44 terminal dispositions. Of 45 production
+identities, 27 passed and 18 retain typed target-coverage failures.
+Predecessor parity passed 1,500/1,500 states. The nine sensitivity identities
+passed with one verified baseline reuse and eight fresh executions. Frozen
+governed reductions are complete pending exact-head review; current exact
+qualification counts are recorded in `PACKAGE_QA_STATUS.json`.
 
 ## VAL-CORPUS-002 Stage B1 calibration disposition
 
@@ -78,8 +80,8 @@ Stage B1 is complete as an exact frozen calibration candidate pending final
 pre-B2 review. The P2 rate is `0.3439597024835067 s^-1` and is restricted to
 the local Experiment-7/H1 reconstruction role. OpenFOAM was executed for B1
 calibration only; the pre-B2 closure revalidated immutable artifacts without
-OpenFOAM or optimizer execution. Stage B2 is `NOT_STARTED`; transfer or
-production scoring is `NOT_PERFORMED`. Physical validation is not established,
+OpenFOAM or optimizer execution. Stage B2 is complete pending review; the B1
+calibration remained closed and was not refit. Physical validation is not established,
 and new governing physics is not yet justified.
 
 ## Merged VAL-CASE-001

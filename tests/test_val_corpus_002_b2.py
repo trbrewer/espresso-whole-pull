@@ -97,6 +97,58 @@ class StageB2ProspectiveTests(unittest.TestCase):
         self.assertEqual(changed, [recovery.WASZ_P2_ID])
         self.assertEqual(sum(key.startswith("SCHM_") for key in new), 14)
 
+    def test_every_p2_template_has_one_semantic_rate_path(self):
+        inventory = b0.build_configuration_inventory(ROOT)
+        for row in inventory["typed_p2_templates"]:
+            value = b0._materialize_p2_rate(row["template"], b2.RATE, row["canonical_sha256"])
+            found = []
+            for path in b0.APPROVED_RATE_PATHS:
+                current = value
+                for key in path:
+                    if not isinstance(current, dict) or key not in current:
+                        break
+                    current = current[key]
+                else:
+                    found.append(current)
+            self.assertEqual(found, [b2.RATE])
+
+    def test_zero_or_multiple_semantic_rate_paths_fail(self):
+        empty = {"chemistry": {"unrelated": b0.TYPED_PLACEHOLDER}}
+        with self.assertRaises(ValueError):
+            b0._materialize_p2_rate(empty, b2.RATE, b0.canonical_sha256(empty))
+        duplicate = {"chemistry": {"extractionRateConstant_s_inverse": b0.TYPED_PLACEHOLDER},
+                     "extraction": {"rate_constant_1_s": b0.TYPED_PLACEHOLDER}}
+        with self.assertRaises(ValueError):
+            b0._materialize_p2_rate(duplicate, b2.RATE, b0.canonical_sha256(duplicate))
+
+    def test_non_scalar_and_nonfinite_rates_fail(self):
+        for value in ({"value": b2.RATE}, [b2.RATE], "0.343", True, float("inf")):
+            config = {"extraction": {"rate_constant_1_s": value}}
+            with self.assertRaises(ValueError):
+                b0._materialize_p2_rate(config, b2.RATE, b0.canonical_sha256(config))
+
+    def test_corrected_inventory_preserves_declared_44(self):
+        record = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_CORRECTED_CONFIGURATION_INVENTORY.json").read_text())
+        self.assertEqual(record["unchanged_numeric_count"], 30)
+        self.assertEqual(record["unchanged_schmieder_p2_count"], 14)
+        self.assertEqual(record["changed_configuration_ids"], [recovery.WASZ_P2_ID])
+
+    def test_typed_failures_remain_unavailable(self):
+        result_path = ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_RESULT.json"
+        if not result_path.exists():
+            self.skipTest("final B2 result is generated after controlled execution")
+        result = json.loads(result_path.read_text())
+        failures = [row for row in result["availability_matrix"] if row["status"] == "TYPED_NUMERICAL_CASE_FAILURE"]
+        self.assertEqual(len(failures), 18)
+        self.assertTrue(all(row["unavailable_disposition"] ==
+                            "UNAVAILABLE_TYPED_TARGET_COVERAGE_FAILURE" for row in failures))
+        self.assertTrue(all(not any(row["target_availability"].values()) for row in failures))
+
+    def test_result_keeps_protected_scoring_and_refit_outside_scope(self):
+        text = (ROOT / "docs/validation/VAL_CORPUS_002_STAGE_B2_RESULT.md").read_text()
+        self.assertIn("protected scoring was not performed", text)
+        self.assertIn("Calibration is closed with no refit", text)
+
 
 if __name__ == "__main__":
     unittest.main()
