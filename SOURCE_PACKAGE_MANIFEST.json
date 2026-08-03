@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 243,
-  "total_uncompressed_bytes_excluding_manifest": 2304817,
-  "aggregate_source_sha256": "94707afb0e8db48786d3b4d36be300338de2b2a7a23586e42f1f942d7b2312fc",
-  "aggregate_sha256": "94707afb0e8db48786d3b4d36be300338de2b2a7a23586e42f1f942d7b2312fc",
+  "file_count": 244,
+  "total_uncompressed_bytes_excluding_manifest": 2315949,
+  "aggregate_source_sha256": "bfef1fdeb60e9b30e1c9e507b3b1724f93f1356de669b229c80f1ae62379ce1b",
+  "aggregate_sha256": "bfef1fdeb60e9b30e1c9e507b3b1724f93f1356de669b229c80f1ae62379ce1b",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -566,6 +566,11 @@
     "docs/validation/VAL_CORPUS_002_AGGREGATE_EXTRACTION_AND_CUP_CHEMISTRY_PROTOCOL.md": {
       "sha256": "e30e4fb70e97d4e394b6528e6ec1bcbfaf49d9035cf2fa1181aad1c50d9d359f",
       "bytes": 12243,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B0_EXECUTION_TOOLING_PROTOCOL.md": {
+      "sha256": "2fdeab95e5d27ed554a02a9a0754d0629fd86ef8afdc5be4e64998e648a9e515",
+      "bytes": 11132,
       "git_mode": "100644"
     },
     "docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md": {
