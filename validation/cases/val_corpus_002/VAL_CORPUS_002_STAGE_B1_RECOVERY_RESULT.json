@@ -1,0 +1,49 @@
+{
+  "attempt_1": {
+    "cache_aggregate_sha256": "5b42c436b7f7b29bff9c5f38b39541be785dbcf4e1c2052ee3d064768a9e340f",
+    "cache_count": 20,
+    "evaluation_20": "POST_END_MPI_FINALIZATION_INFRASTRUCTURE_FAILURE",
+    "evaluation_20_log_sha256": "fbd2d475b384160ab5ae39e09f57ed51e543434563df8f377677af09e1e1299c",
+    "evaluation_20_objective": null,
+    "evaluation_21": "BLOCKMESH_PRE_SOLVER_INFRASTRUCTURE_FAILURE",
+    "status": "INFRASTRUCTURE_INTERRUPTED"
+  },
+  "attempt_2": {
+    "cache_reuse_count": 20,
+    "execution_root": "<VAL_CORPUS_002_RUNTIME_ROOT>",
+    "infrastructure_attempt_count": 0,
+    "mpi_smoke": "PASS",
+    "new_execution_count": 26,
+    "status": "COMPLETE",
+    "typed_numerical_failure_count": 0
+  },
+  "authorization_id": "VAL-CORPUS-002-B1-CALIBRATION-2026-08-03",
+  "calibration_artifact_aggregate_sha256": "23ea9ab1587d8948fab87f1555ce376b4647ed4d1462fdafb6d558e1151edd16",
+  "calibration_manifest_sha256": "53d473be8b1cd8299e621af739ab3ff9fb7061932e91a0bfc4e44cf022ded218",
+  "cumulative_external_artifacts": {
+    "aggregate_sha256": "a07427d5c3c8f279ece3a4796475a8b56ec785ab1a8b83d6cdd243fc34819e47",
+    "bytes": 45921664624,
+    "files": 894665
+  },
+  "external_attempt_inventories": [
+    {"attempt": 1, "aggregate_sha256": "82a1cba3ec688e18f4a6554d4bc1c100f1de447c70bffffe8d10c70aa17065a2", "bytes": 20447681299, "files": 399756},
+    {"attempt": 2, "aggregate_sha256": "e8d27f2b56d0ff1e8cc4fe3512f7803454cfd0ad123a49bec3ebe48a8f485340", "bytes": 25473983325, "files": 494909}
+  ],
+  "final_log_interval_width": 7.687140035628204e-9,
+  "governed_validator": "PASS",
+  "interrupted_interval_used": false,
+  "model_cup_solute_masses_g": [2.782144673131987, 4.227214080217558, 4.334636376028199],
+  "objective": 0.003931989579189616,
+  "p2_freeze_barrier": "PASS",
+  "profile": "EWP_CALIBRATION_STAGE_V1",
+  "schema_version": "espresso.val_corpus_002.b1_recovery_result.v1",
+  "selected_log_k": -1.0672307724139207,
+  "selected_log_k_hex": "-0x1.11360930cd77cp+0",
+  "selected_rate_hex": "0x1.6036f8e53bf4ep-2",
+  "selected_rate_s_inverse": 0.3439597024835067,
+  "source_cup_solute_masses_g": [2.9240100000000004, 3.8761999999999994, 4.187098333333333],
+  "stage_b2": "NOT_STARTED",
+  "status": "VAL_CORPUS_002_STAGE_B1_CALIBRATION_COMPLETE_PENDING_REVIEW",
+  "total_objective_bearing_evaluations": 46,
+  "transfer_result_access": "NOT_PERFORMED"
+}

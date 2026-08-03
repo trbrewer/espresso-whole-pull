@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 254,
-  "total_uncompressed_bytes_excluding_manifest": 2466650,
-  "aggregate_source_sha256": "eae87cf61ba0ce3796a0d52e170dae158a1d323c78531ca7141447671c4bcdb6",
-  "aggregate_sha256": "eae87cf61ba0ce3796a0d52e170dae158a1d323c78531ca7141447671c4bcdb6",
+  "file_count": 255,
+  "total_uncompressed_bytes_excluding_manifest": 2468091,
+  "aggregate_source_sha256": "c29dd800a445209cc8ba7ea06ebf6b32b9f3230fc63b760bb4a0c06a0c1fe5b9",
+  "aggregate_sha256": "c29dd800a445209cc8ba7ea06ebf6b32b9f3230fc63b760bb4a0c06a0c1fe5b9",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -596,6 +596,11 @@
     "docs/validation/VAL_CORPUS_002_STAGE_B1_INFRASTRUCTURE_RECOVERY_PROTOCOL.md": {
       "sha256": "50b9a37b3f3eba44c8cfb851359edb268db9c6c460852e6816f86831667e96bc",
       "bytes": 2766,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B1_RECOVERY_RESULT.md": {
+      "sha256": "0e341332953010811b0bce0b3cb2cae15e10a2b63e933e267274dcd1377920c7",
+      "bytes": 1441,
       "git_mode": "100644"
     },
     "docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md": {
