@@ -52,6 +52,40 @@ binds a self-contained V3 bundle produced byte-identically twice.
 
 ![Foster time-shift sensitivity](../../validation/cases/val_corpus_001/figures/VAL_CORPUS_001_R1_FOSTER_SHIFTS.svg)
 
+## Puckworks BASE temporal-fraction cross-validation — supporting extraction evidence
+
+Puckworks commit `21869fe19feec2dce6af8f4a41f63299473e31c2`
+adds source-specific, leave-one-experiment-out evidence for its current
+two-grain BASE extraction solver. The held-out unit is an entire experiment,
+but all five folds remain within one published machine/coffee/grinder campaign.
+The principal observations are raw extraction fractions.
+
+| Solute | All-fraction MAPE | Late-fraction MAPE | Mean signed late residual | Derived cumulative MAPE | Failed fits |
+|---|---:|---:|---:|---:|---:|
+| caffeine | 6.7737230080% | 9.9561926972% | +1.5553653243% | 2.2230231547% | 0 |
+| trigonelline | 10.2987913451% | 15.1588544555% | -3.4686832418% | 3.1662156396% | 0 |
+| 5-CQA | 7.1964086177% | 10.0164567164% | +1.3445947506% | 2.8110375983% | 0 |
+
+This is `CROSS_REPOSITORY_SUPPORTING_EXTRACTION_EVIDENCE`, not an
+espressoWholePullFoam execution or direct validation. BASE's approximately
+6.8%, 10.3%, and 7.2% all-fraction MAPE supports extraction-component behavior
+within the source campaign; it does not repair the Waszkiewicz, Foster, DE1,
+or whole-solver transfer findings in this atlas.
+
+The persistent authority is
+[`VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md`](VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md).
+See the exact [matched-data manifest](../../validation/external/puckworks_base_temporal_cv/PAPER_A_TEMPORAL_MATCHED_DATA_MANIFEST_V1.json),
+[held-out late-fraction figure](../evidence/puckworks_base_temporal_cv/figures/temporal_heldout_late.png),
+[observed-versus-predicted figure](../evidence/puckworks_base_temporal_cv/figures/temporal_observed_vs_predicted.png),
+and [parameter-stability figure](../evidence/puckworks_base_temporal_cv/figures/temporal_parameter_stability.png).
+
+`cup_masses.csv` contains post-fit quantities derived from each replicate's
+fitted source kinetics, not independent cup measurements. Its cumulative
+metric is secondary and may be used only for source-lineage reconstruction or
+as a derived metric with the mandatory caveat in the persistent authority.
+
+`GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION: NOT_ESTABLISHED`
+
 ## Corrected Waszkiewicz full-window metrics
 
 All values below use measured source pressure unless the row says nominal.

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 240,
-  "total_uncompressed_bytes_excluding_manifest": 2228345,
-  "aggregate_source_sha256": "481a80a5eccd1d964ea906ce1413c9e2ad3625e20a0967be782278e76229af2b",
-  "aggregate_sha256": "481a80a5eccd1d964ea906ce1413c9e2ad3625e20a0967be782278e76229af2b",
+  "file_count": 248,
+  "total_uncompressed_bytes_excluding_manifest": 2616906,
+  "aggregate_source_sha256": "865e49138c47848ff6d20cb2012dfa7bc9328d8151e2e103bc5ebaa42d94253f",
+  "aggregate_sha256": "865e49138c47848ff6d20cb2012dfa7bc9328d8151e2e103bc5ebaa42d94253f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,18 +444,43 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "3ac0d3cd549f30507971984b36df95807d4b58e1c9ba3bbb40f1bb40efdd3f67",
-      "bytes": 47042,
+      "sha256": "b894907cff02691dc272b8293a68288ca8ef94ba135b8dd16b8a2e12abe923ff",
+      "bytes": 47262,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "26f17bed485c7fc535d9e42bc5165ce9cf4a804202cb83465daa4ad77d810c9f",
-      "bytes": 12469,
+      "sha256": "a5ae0f2ecf5fc94c95392f496d16d19e097fbd6144f178380a6522e7c4ac920e",
+      "bytes": 12461,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
       "sha256": "8c2ba60bff79d3eff9c31f11b47c9952f7c369a990ccd512decf6bcd0bc3dec6",
       "bytes": 6218,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png": {
+      "sha256": "9336facc0d5a09b216904759c3942c70768d56f2f533d512a33096ce1822e778",
+      "bytes": 47554,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_heldout_late.png": {
+      "sha256": "55945eceb05ebc4d449c944a293911dfad6c60b418f808f570397b36c23013dd",
+      "bytes": 45948,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_integrated_vs_raw.png": {
+      "sha256": "69ec515c72bbb59c4873396974ea02c6d1b4b8878c1c45da94aa0812255e7717",
+      "bytes": 73243,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_observed_vs_predicted.png": {
+      "sha256": "4248022df4149fb9b9de5ad3caa6fd69c9e7198bacc4acbd0b412d1991994dbb",
+      "bytes": 137996,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_parameter_stability.png": {
+      "sha256": "2ccd5f82eff60945f83851c42e00520cea9cdfa11197d8f948d2f5239cedf126",
+      "bytes": 61813,
       "git_mode": "100644"
     },
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md": {
@@ -554,8 +579,8 @@
       "git_mode": "100644"
     },
     "docs/validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md": {
-      "sha256": "7c4b814be815de943121deaacd37ec5357bc48ec9ce507ee7cb574e1b5fc0b37",
-      "bytes": 12129,
+      "sha256": "7a541c9653be1b4abc3831201c1217880eff4fd5f86b1fe584a9efc42e0318bc",
+      "bytes": 14340,
       "git_mode": "100644"
     },
     "docs/validation/VAL_CORPUS_001_PROTOCOL.md": {
@@ -571,6 +596,11 @@
     "docs/validation/VAL_INFRA_002_STAGE0_VERIFIER_SCOPE_REPAIR.md": {
       "sha256": "ca9c24beeacadd8188024e1eec632338b16b05d141aaafd5fc166e81fdd59c60",
       "bytes": 2707,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md": {
+      "sha256": "e1a6264ce143929c634f33381fbfeceefb018d03972a7e49e182b8b102a091b2",
+      "bytes": 10737,
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_CORRECTION_ADDENDUM.md": {
@@ -908,6 +938,11 @@
       "bytes": 9861,
       "git_mode": "100755"
     },
+    "scripts/verify_puckworks_base_temporal_cv.py": {
+      "sha256": "44e6b834e12a3e39fe4b9af12c9a4220c89347e608825384067379316db465ea",
+      "bytes": 6846,
+      "git_mode": "100755"
+    },
     "scripts/verify_release_finalization.py": {
       "sha256": "7262ddb4941c36ef3bb936bc6b0ac403155c1d5e871fcd6d5620b9f30e0c8ef0",
       "bytes": 8487,
@@ -1111,6 +1146,11 @@
     "tests/test_change_contract.py": {
       "sha256": "08968615389dda13fe4adf4cc9c3fcfc237b00444fcf14cc24e11d3ba8432299",
       "bytes": 7498,
+      "git_mode": "100644"
+    },
+    "tests/test_puckworks_base_temporal_cv.py": {
+      "sha256": "398a5decbc24b4a3de55ba4442479ceebb3a336a7b7e3a48f1d43b14d11521c5",
+      "bytes": 2001,
       "git_mode": "100644"
     },
     "tests/test_r1_analysis.py": {

@@ -14,6 +14,10 @@ start from the concise templates in `docs/validation/templates/`; reusable
 nonmaterial improvements belong in the
 [validation infrastructure backlog](validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md).
 
+The persistent authority for imported Puckworks BASE temporal-fraction
+cross-validation and the mandatory `cup_masses.csv` lineage caveat is
+[VAL-PUCKWORKS-001](validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md).
+
 ## Governed issues and pull requests
 
 Choose the **Evidence or governance task** issue form for no-physics evidence

@@ -44,9 +44,9 @@ and source/holdout-fit counts remained zero.
 
 ## Current repository checks
 
-- current WP03-002 candidate Python suite: 351/351 PASS;
+- current repository Python suite: 355/355 PASS;
 - current active static gates: 38/38 PASS;
-- current source manifest: 240/240 PASS (exact aggregate in
+- current source manifest: 248/248 PASS (exact aggregate in
   `SOURCE_PACKAGE_MANIFEST.json` and `PACKAGE_QA_STATUS.json`);
 - the merged WP03-001 baseline's 230-test count remains historical.
 - source manifest: recorded in `PACKAGE_QA_STATUS.json` and

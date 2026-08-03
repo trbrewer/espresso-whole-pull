@@ -7,7 +7,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 240/240 PASS
+- Public source verification: 248/248 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `WP03-002` result complete; exact-head review pending

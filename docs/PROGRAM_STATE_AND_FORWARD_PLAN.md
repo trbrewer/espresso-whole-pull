@@ -137,9 +137,9 @@ merge, the next scientific task is
 | Latest executed WP03-002 candidate executable | `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6` |
 | Runtime Puckworks lock | `fc61c4670ec7bf801e40bb391aab16048b8da26b` |
 | Read-only evidence snapshot used by VAL-CORPUS-001 | `9c52c94edb27b461b6e7a4d471d29f3cef9d053e` |
-| Current Python suite | `351/351 PASS` |
+| Current Python suite | `355/355 PASS` |
 | Current static gates | `38/38 PASS` |
-| Current source manifest | `240/240 PASS`; exact aggregate is recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
+| Current source manifest | `248/248 PASS`; exact aggregate is recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
 | Physical validation | `NOT_ESTABLISHED` |
 | Experimental commissioning | `NOT_AUTHORIZED` |
 | Governing-physics selection | `NOT_YET_JUSTIFIED` |
@@ -610,7 +610,9 @@ cases without retuning; the scientific transfer failure remains.
 Candidate evidence:
 
 - Waszkiewicz TDS fractions;
-- Schmieder cup masses and kinetics;
+- Schmieder raw fractions, kinetics, and post-fit derived cup targets (the
+  latter are not independent measurements and require the
+  [VAL-PUCKWORKS-001 lineage caveat](validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md));
 - Pannusch kinetics;
 - Mo fixed-flow yield/strength;
 - Roman-Corrochano extraction conditions;

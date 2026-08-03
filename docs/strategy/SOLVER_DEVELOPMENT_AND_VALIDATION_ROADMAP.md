@@ -52,6 +52,13 @@ standard reports.
 
 ### Workstream 2 — Component comparisons
 
+Puckworks BASE supplies cross-repository supporting extraction evidence from
+five-fold leave-one-experiment-out raw-fraction comparisons within one source
+campaign. This is stronger than a same-data fit but is not direct validation
+of espressoWholePullFoam and does not change
+`GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION: NOT_ESTABLISHED`. See the persistent
+[VAL-PUCKWORKS-001 authority](../validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md).
+
 Compare wetting and first drip, steady pressure–flow behavior, permeability,
 machine pressure nodes and delivery, quasi-static compaction, aggregate
 extraction and cup chemistry, and spatial maldistribution where evidence
