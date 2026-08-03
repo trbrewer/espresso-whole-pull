@@ -28,8 +28,8 @@
   ],
   "file_count": 263,
   "total_uncompressed_bytes_excluding_manifest": 2579064,
-  "aggregate_source_sha256": "383794392757197afd53bfb7eea5b894e9017e481e385b9b55a4e0f0b0e53123",
-  "aggregate_sha256": "383794392757197afd53bfb7eea5b894e9017e481e385b9b55a4e0f0b0e53123",
+  "aggregate_source_sha256": "500df10a63e8ad38f0af047b99dd2530f37e11cf4703344cb2f6f0936f5644db",
+  "aggregate_sha256": "500df10a63e8ad38f0af047b99dd2530f37e11cf4703344cb2f6f0936f5644db",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -971,7 +971,7 @@
     "scripts/val_corpus_002_b2_recovery.py": {
       "sha256": "2536fa2cbdfd9596130f144c32f6a5b2712773f269c49cd6b099f6644a3b78e8",
       "bytes": 30654,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/val_corpus_002_protocol.py": {
       "sha256": "0834daf19b20574c2d4c1a5720ec45ecc217bc0d79295a6a47d4957be34698c4",
