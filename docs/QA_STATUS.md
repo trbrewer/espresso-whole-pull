@@ -46,7 +46,7 @@ and source/holdout-fit counts remained zero.
 ## Current repository checks
 
 - merged WP03-002 baseline Python suite: 351/351 PASS;
-- current VAL-CORPUS-002 Stage-A Python suite: 365/365 PASS;
+- current VAL-CORPUS-002 Stage-A Python suite: 369/369 PASS;
 - current active static gates: 38/38 PASS;
 - current source manifest: 243/243 PASS (exact aggregate in
   `SOURCE_PACKAGE_MANIFEST.json` and `PACKAGE_QA_STATUS.json`);

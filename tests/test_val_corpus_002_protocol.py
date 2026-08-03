@@ -31,6 +31,7 @@ class ValCorpus002ProtocolTests(unittest.TestCase):
             "run_matrix": load("VAL_CORPUS_002_FUTURE_RUN_MATRIX.json"),
             "sensitivity": load("VAL_CORPUS_002_SENSITIVITY_MATRIX.json"),
             "waszkiewicz": load("VAL_CORPUS_002_WASZKIEWICZ_COHORT.json"),
+            "wasz_production": load("VAL_CORPUS_002_WASZKIEWICZ_PRODUCTION_CONTRACT.json"),
         }
 
     def test_exact_source_hashes_and_generated_records(self):
@@ -95,7 +96,7 @@ class ValCorpus002ProtocolTests(unittest.TestCase):
                 MODULE.select_schmieder([invalid])
 
     def test_exact_axis_metadata_and_replicate_counts(self):
-        runs = self.records["run_matrix"]["final_production_run_inventory"]
+        runs = self.records["run_matrix"]["schmieder_production_run_inventory"]
         conditions = {run["experiment"]: run["source_aggregation"] for run in runs if run["parameterization"] == "P0" and run["hydraulic_role"].startswith("H0")}
         expected = {
             1: ("LOW_FLOW_AXIS", 1.0, 1.7, 89.0, 3),
@@ -154,10 +155,14 @@ class ValCorpus002ProtocolTests(unittest.TestCase):
 
     def test_run_matrix_unique_complete_and_not_executed(self):
         matrix = self.records["run_matrix"]
-        runs = matrix["final_production_run_inventory"]
+        runs = matrix["schmieder_production_run_inventory"]
         ids = [run["run_id"] for run in runs]
         self.assertEqual(len(ids), 42)
         self.assertEqual(len(set(ids)), 42)
+        expected_ids = {f"SCHM_EXP{exp}_{parameterization}_{mode}" for exp in range(1, 8) for parameterization in ("P0", "P1", "P2_FIXED_AFTER_EXP7_CALIBRATION") for mode in ("H0", "H1")}
+        self.assertEqual(set(ids), expected_ids)
+        self.assertEqual(matrix["future_openfoam_run_count"], 45)
+        self.assertEqual(len(matrix["waszkiewicz_production_run_inventory"]), 3)
         self.assertEqual(matrix["stage_a_execution"], "NOT_AUTHORIZED")
         required = {"source_aggregation", "base_configuration", "solver", "geometry", "boundary_conditions", "hydraulics", "chemistry", "controls", "observation_operators", "gates", "artifacts"}
         self.assertTrue(all(required <= set(run) for run in runs))
@@ -178,18 +183,85 @@ class ValCorpus002ProtocolTests(unittest.TestCase):
         claims = load("VAL_CORPUS_002_RIGHTS_AND_CLAIM_CEILING.json")
         self.assertEqual(claims["physical_validation"], "NOT_ESTABLISHED")
         self.assertEqual(claims["new_governing_physics"], "NOT_YET_JUSTIFIED")
-        self.assertEqual(MODULE.interpolate_fixed_mass([(10.0, 1.0), (30.0, 5.0)], 20.0), 3.0)
+        self.assertAlmostEqual(MODULE.interpolate_fixed_mass([(0.0, 0.0, 0.0), (10.0, 0.01, 0.001), (30.0, 0.03, 0.005)], 0.02), 0.003)
         with self.assertRaises(ValueError):
-            MODULE.interpolate_fixed_mass([(10.0, 1.0), (30.0, 5.0)], 40.0)
+            MODULE.interpolate_fixed_mass([(0.0, 0.0, 0.0), (30.0, 0.03, 0.005)], 0.04)
         with self.assertRaises(ValueError):
-            MODULE.interpolate_fixed_mass([(10.0, 1.0), (10.0, 2.0)], 10.0)
+            MODULE.interpolate_fixed_mass([(0.0, 0.01, 0.001), (1.0, 0.01, 0.002)], 0.01)
+
+    def test_time_ordered_plateau_safe_fixed_mass_operator(self):
+        zero_plateau = [(0.0, 0.0, 0.0), (1.0, 0.0, 0.0), (2.0, 0.02, 0.002)]
+        self.assertEqual(MODULE.interpolate_fixed_mass(zero_plateau, 0.02), 0.002)
+        nonzero_plateau = [(0.0, 0.0, 0.0), (1.0, 0.01, 0.001), (2.0, 0.01, 0.001), (3.0, 0.03, 0.005)]
+        self.assertAlmostEqual(MODULE.interpolate_fixed_mass(nonzero_plateau, 0.02), 0.003)
+        for invalid in (
+            [(0.0, 0.01, 0.001), (1.0, 0.01, 0.002)],
+            [(0.0, 0.02, 0.001), (1.0, 0.01, 0.002)],
+            [(0.0, 0.01, 0.002), (1.0, 0.02, 0.001)],
+        ):
+            with self.assertRaises(ValueError):
+                MODULE.interpolate_fixed_mass(invalid, 0.01)
+        self.assertEqual(MODULE.interpolate_fixed_mass([(0.0, 0.0, 0.0), (1.0, 0.02, 0.002)], 0.02), 0.002)
 
     def test_waszkiewicz_interval_operator_integrates_not_midpoint_samples(self):
         samples = [(0.0, 0.0, 2.0), (2.5, 1.0, 2.0), (5.0, 0.0, 2.0)]
         self.assertEqual(MODULE.interval_tds(samples, 0.0, 5.0), 0.25)
         self.assertNotEqual(MODULE.interval_tds(samples, 0.0, 5.0), 1.0 / 2.0)
+        self.assertEqual(MODULE.interval_tds([(-1.0, 0.2, 1.0), (2.5, 0.2, 1.0), (6.0, 0.2, 1.0)], 0.0, 5.0), 0.2)
         with self.assertRaises(ValueError):
             MODULE.interval_tds(samples[1:], 0.0, 5.0)
+        self.assertEqual(MODULE.interpolate_rate_endpoint([(0.0, 0.0), (10.0, 2.0)], 5.0), 1.0)
+        with self.assertRaises(ValueError):
+            MODULE.interpolate_rate_endpoint([(0.0, 0.0), (10.0, 2.0)], 11.0)
+
+    def test_waszkiewicz_production_templates_and_parity(self):
+        contract = self.records["wasz_production"]
+        self.assertEqual(contract["accepted_30s_reconstruction"]["configuration_sha256"], "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5")
+        self.assertEqual(MODULE.object_sha256(MODULE.reconstruct_accepted_wasz_p0(ROOT)), "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5")
+        templates = {item["parameterization"]: item for item in contract["production_templates"]}
+        self.assertEqual(set(templates), {"P0", "P1", "P2_FIXED_AFTER_EXP7_CALIBRATION"})
+        self.assertFalse(any("5_COMPACT" in item["id"] or "11_COMPACT" in item["id"] for item in contract["production_templates"]))
+        for item in templates.values():
+            cfg = item["configuration"]
+            self.assertEqual(cfg["bedMechanicsModel"], "waszkiewiczQuasiStaticCompaction")
+            self.assertEqual(cfg["poroelasticCompaction"]["model"], "waszkiewicz2025FinitePhi")
+            self.assertNotIn("effective_permeability_evolution", cfg)
+            self.assertEqual(cfg["time"]["end_s"], 63.0)
+            self.assertEqual(cfg["geometry"]["axial_cells"], 128)
+            self.assertEqual(cfg["geometry"]["radial_cells"], 64)
+        self.assertEqual(templates["P0"]["configuration_sha256"], "a5f47a3d759ee6647a4fc53478028b4070ff0dd0b18c1aa321284bf0ddee6c03")
+        self.assertEqual(templates["P1"]["configuration_sha256"], "e34928ab4b62b4170117c93d3a346e7190f7ff797cb5f63312ed1a6761720742")
+        p0 = templates["P0"]["configuration"]
+        p1 = templates["P1"]["configuration"]
+        self.assertEqual((p0["coffee_bed"]["initial_extractable_fraction_dry_basis"], p0["extraction"]["rate_constant_1_s"]), (0.28, 0.15))
+        self.assertEqual((p1["coffee_bed"]["initial_extractable_fraction_dry_basis"], p1["extraction"]["rate_constant_1_s"]), (0.216896244235, 0.11446486815650324))
+        p2_rate = templates["P2_FIXED_AFTER_EXP7_CALIBRATION"]["configuration"]["extraction"]["rate_constant_1_s"]
+        self.assertEqual(p2_rate["type"], "CALIBRATED_SCALAR_S_INVERSE")
+        self.assertEqual(contract["p2_materialization"]["template_sha256"], "40cd2cbed05838fff8102d70a8d3f5b168e8c51a0d3260e48e66749d26a91119")
+        self.assertEqual(contract["predecessor_parity"]["failure"], "STOP_BEFORE_WASZKIEWICZ_SCORING")
+
+    def test_trace_mass_rates_initial_boundary_and_source_clock(self):
+        water, solute, beverage = MODULE.mass_rates(2e-6, 965.0, 1e-4)
+        self.assertAlmostEqual(water, 0.00193)
+        self.assertEqual(solute, 1e-4)
+        self.assertEqual(beverage, water + solute)
+        self.assertEqual(MODULE.mass_rates(-1e-18, 965.0, -1e-16), (0.0, 0.0, 0.0))
+        with self.assertRaises(ValueError):
+            MODULE.mass_rates(-1e-6, 965.0, 0.0)
+        inserted = MODULE.ensure_initial_boundary_sample([{"time_s": 1.0}], simulation_start_time_s=0.0, initial_cup_water_kg=0.0, initial_cup_solute_kg=0.0, initial_outlet_flow_m3_s=0.0, initial_solute_flux_kg_s=0.0)
+        self.assertEqual(inserted[0]["time_s"], 0.0)
+        reduced20 = MODULE.reduced_source_clock(20.0, 1.0, 2.0, 20.0, 0.216896244235, 0.11446486815650324)
+        reduced40 = MODULE.reduced_source_clock(40.0, 1.0, 2.0, 20.0, 0.216896244235, 0.11446486815650324)
+        self.assertEqual(reduced20["time_s"], 10.0)
+        self.assertGreater(reduced40["cup_solute_mass_g"], reduced20["cup_solute_mass_g"])
+        limitations = set(self.records["wasz_production"]["reduced_source_clock"]["limitations"])
+        self.assertEqual(len(limitations), 7)
+
+    def test_stage_b_ordering_is_calibration_before_transfer(self):
+        gate = load("VAL_CORPUS_002_STAGE_B_AUTHORIZATION_REQUIREMENTS.json")
+        self.assertEqual([item["stage"] for item in gate["required_ordering"]], ["B0", "B1", "B2"])
+        self.assertIn("before transfer scoring", gate["required_ordering"][1]["requirement"])
+        self.assertEqual(set(gate["ordering_prohibitions"].values()) - {"issue #53 existing branch and draft PR #54"}, {"PROHIBITED"})
 
     def test_species_semantics_and_fail_closed_unresolved_mappings(self):
         ledger = load("VAL_CORPUS_002_CALIBRATION_COMPARISON_LEDGER.json")

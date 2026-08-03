@@ -28,11 +28,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 365,
+    "python_test_count": 369,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 243,
-    "source_manifest_aggregate_sha256": "116b6387d08004f1794946119ae2997968e32430bd44b1d57b16ee9a9ef745a9",
+    "source_manifest_aggregate_sha256": "94707afb0e8db48786d3b4d36be300338de2b2a7a23586e42f1f942d7b2312fc",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -68,7 +68,7 @@
     "cross_pressure_ordering": "STILL_REVERSED",
     "physical_input_retuning_authorized": false,
     "governing_physics_change_authorized": false,
-    "active_validation_case": "VAL_CORPUS_002_CORRECTED_PROTOCOL_PENDING_REVIEW",
+    "active_validation_case": "VAL_CORPUS_002_FINAL_PROTOCOL_PENDING_REVIEW",
     "active_data_planning_task": "NONE",
     "val_case_002": "NOT_STARTED",
     "new_governing_physics": "NOT_YET_JUSTIFIED",
@@ -331,12 +331,15 @@
   "wp_0_3a_contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
   "wp_0_3a_solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
-  "active_validation_case": "VAL_CORPUS_002_CORRECTED_PROTOCOL_PENDING_REVIEW",
+  "active_validation_case": "VAL_CORPUS_002_FINAL_PROTOCOL_PENDING_REVIEW",
   "active_data_planning_task": "NONE",
   "active_solver_task": "NONE",
   "val_corpus_002": {
     "stage": "A_PROTOCOL_FREEZE",
-    "status": "CORRECTED_PROTOCOL_PENDING_INDEPENDENT_REVIEW",
+    "status": "FINAL_PREEXECUTION_PROTOCOL_PENDING_INDEPENDENT_REVIEW",
+    "future_production_run_count": 45,
+    "maximum_optimizer_evaluations": 128,
+    "sensitivity_identity_count": 9,
     "issue": 53,
     "change_declaration": "SOURCE_SCENARIO_CHANGE_ONLY",
     "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
@@ -347,6 +350,6 @@
     "new_governing_physics": "NOT_YET_JUSTIFIED",
     "val_case_002": "NOT_STARTED"
   },
-  "next_scientific_milestone_after_approved_wp03_002_merge": "VAL_CORPUS_002_STAGE_A_CORRECTED_PROTOCOL_PENDING_REVIEW",
+  "next_scientific_milestone_after_approved_wp03_002_merge": "VAL_CORPUS_002_STAGE_A_FINAL_PROTOCOL_PENDING_REVIEW",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }

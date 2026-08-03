@@ -8,6 +8,7 @@ not run the solver, fit a parameter, or evaluate model-versus-source metrics.
 from __future__ import annotations
 
 import argparse
+import copy
 import csv
 import hashlib
 import json
@@ -36,6 +37,9 @@ BASE_CONFIG = "config/reference_R0.json"
 BASE_CONFIG_SHA256 = "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
 SOLVER_COMMIT = "0a5c146078da5d5f88b344b20e7b81042bf27ddb"
 SOLVER_EXECUTABLE_SHA256 = "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+ACCEPTED_WASZ_P0_SHA256 = "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5"
+MASS_ABSOLUTE_TOLERANCE_KG = 1e-12
+RATE_NONNEGATIVITY_TOLERANCE_KG_S = 1e-15
 
 
 def sha256(path: Path) -> str:
@@ -121,23 +125,116 @@ def select_schmieder(rows: list[dict[str, str]]) -> tuple[list[dict], list[dict]
     return anchor, transfer
 
 
-def interpolate_fixed_mass(points: list[tuple[float, float]], target_mass: float) -> float:
-    """Linearly interpolate cumulative solute mass; fail closed on ambiguity."""
-    if not points or not math.isfinite(target_mass):
+def interpolate_fixed_mass(samples: list[tuple[float, float, float]],
+                           target_mass_kg: float) -> float:
+    """Time-ordered, plateau-safe cumulative-mass observation operator."""
+    if not samples or not math.isfinite(target_mass_kg):
         raise ValueError("missing or invalid fixed-mass observation")
-    ordered = sorted(points)
-    masses = [point[0] for point in ordered]
-    if len(set(masses)) != len(masses):
-        raise ValueError("duplicate cumulative beverage mass is ambiguous")
-    if target_mass < masses[0] or target_mass > masses[-1]:
+    reduced: list[tuple[float, float, float]] = []
+    previous_time = None
+    for time_s, beverage_kg, solute_kg in samples:
+        if not all(math.isfinite(value) for value in (time_s, beverage_kg, solute_kg)):
+            raise ValueError("fixed-mass sample is nonfinite")
+        if beverage_kg < 0 or solute_kg < 0:
+            raise ValueError("cumulative masses must be nonnegative")
+        if previous_time is not None and time_s <= previous_time:
+            raise ValueError("sample time must be strictly increasing")
+        previous_time = time_s
+        if reduced:
+            _, previous_beverage, previous_solute = reduced[-1]
+            if beverage_kg < previous_beverage - MASS_ABSOLUTE_TOLERANCE_KG:
+                raise ValueError("cumulative beverage mass decreased")
+            if solute_kg < previous_solute - MASS_ABSOLUTE_TOLERANCE_KG:
+                raise ValueError("cumulative solute mass decreased")
+            if abs(beverage_kg - previous_beverage) <= MASS_ABSOLUTE_TOLERANCE_KG:
+                if abs(solute_kg - previous_solute) > MASS_ABSOLUTE_TOLERANCE_KG:
+                    raise ValueError("equal-beverage plateau changed solute mass")
+                reduced[-1] = (time_s, beverage_kg, solute_kg)
+                continue
+        reduced.append((time_s, beverage_kg, solute_kg))
+    masses = [point[1] for point in reduced]
+    if target_mass_kg < masses[0] - MASS_ABSOLUTE_TOLERANCE_KG or target_mass_kg > masses[-1] + MASS_ABSOLUTE_TOLERANCE_KG:
         raise ValueError("fixed-mass extrapolation is prohibited")
-    for mass, solute in ordered:
-        if mass == target_mass:
+    for _, mass, solute in reduced:
+        if abs(mass - target_mass_kg) <= MASS_ABSOLUTE_TOLERANCE_KG:
             return solute
-    for (m0, s0), (m1, s1) in zip(ordered, ordered[1:]):
-        if m0 < target_mass < m1:
-            return s0 + (s1 - s0) * (target_mass - m0) / (m1 - m0)
+    for (_, m0, s0), (_, m1, s1) in zip(reduced, reduced[1:]):
+        if m1 > m0 + MASS_ABSOLUTE_TOLERANCE_KG and m0 < target_mass_kg < m1:
+            return s0 + (s1 - s0) * (target_mass_kg - m0) / (m1 - m0)
     raise ValueError("target mass not bracketed")
+
+
+def mass_rates(outlet_flow_m3_s: float, liquid_density_kg_m3: float,
+               total_solute_flux_kg_s: float) -> tuple[float, float, float]:
+    values = (outlet_flow_m3_s, liquid_density_kg_m3, total_solute_flux_kg_s)
+    if not all(math.isfinite(value) for value in values) or liquid_density_kg_m3 <= 0:
+        raise ValueError("invalid primary trace field")
+    water = liquid_density_kg_m3 * outlet_flow_m3_s
+    rates = [water, total_solute_flux_kg_s]
+    for index, value in enumerate(rates):
+        if value < -RATE_NONNEGATIVITY_TOLERANCE_KG_S:
+            raise ValueError("materially negative mass rate")
+        if value < 0:
+            rates[index] = 0.0
+    return rates[0], rates[1], rates[0] + rates[1]
+
+
+def interpolate_rate_endpoint(samples: list[tuple[float, float]], target_time: float) -> float:
+    if not samples or not math.isfinite(target_time):
+        raise ValueError("missing interval endpoint")
+    previous = None
+    for time_s, value in samples:
+        if not math.isfinite(time_s) or not math.isfinite(value):
+            raise ValueError("nonfinite rate sample")
+        if previous is not None and time_s <= previous[0]:
+            raise ValueError("rate times must be strictly increasing")
+        if time_s == target_time:
+            return value
+        if previous is not None and previous[0] < target_time < time_s:
+            return previous[1] + (value - previous[1]) * (target_time - previous[0]) / (time_s - previous[0])
+        previous = (time_s, value)
+    raise ValueError("endpoint outside trace; extrapolation prohibited")
+
+
+def ensure_initial_boundary_sample(samples: list[dict[str, float]], *,
+                                   simulation_start_time_s: float,
+                                   initial_cup_water_kg: float,
+                                   initial_cup_solute_kg: float,
+                                   initial_outlet_flow_m3_s: float,
+                                   initial_solute_flux_kg_s: float) -> list[dict[str, float]]:
+    checks = (simulation_start_time_s, initial_cup_water_kg,
+              initial_cup_solute_kg, initial_outlet_flow_m3_s,
+              initial_solute_flux_kg_s)
+    if any(not math.isfinite(value) for value in checks) or any(value != 0.0 for value in checks):
+        raise ValueError("initial boundary insertion requires exact zero state")
+    boundary = {"time_s": 0.0, "water_mass_rate_kg_s": 0.0,
+                "solute_mass_rate_kg_s": 0.0, "cup_water_mass_kg": 0.0,
+                "cup_solute_mass_kg": 0.0, "cup_beverage_mass_kg": 0.0}
+    if not samples:
+        return [boundary]
+    if float(samples[0]["time_s"]) < 0:
+        raise ValueError("trace begins before zero")
+    if float(samples[0]["time_s"]) == 0.0:
+        for key, value in boundary.items():
+            if float(samples[0].get(key, math.nan)) != value:
+                raise ValueError("present zero-time boundary sample is inconsistent")
+        return samples
+    return [boundary, *samples]
+
+
+def reduced_source_clock(beverage_mass_g: float, density_g_ml: float,
+                         flow_ml_s: float, dose_g: float,
+                         extractable_fraction: float, rate_s_inverse: float) -> dict[str, float]:
+    values = (beverage_mass_g, density_g_ml, flow_ml_s, dose_g,
+              extractable_fraction, rate_s_inverse)
+    if any(not math.isfinite(value) or value <= 0 for value in values):
+        raise ValueError("reduced source-clock inputs must be finite and positive")
+    time_s = beverage_mass_g / (density_g_ml * flow_ml_s)
+    inventory_g = dose_g * extractable_fraction
+    solute_g = inventory_g * (1.0 - math.exp(-rate_s_inverse * time_s))
+    return {"time_s": time_s, "cup_solute_mass_g": solute_g,
+            "tds_fraction": solute_g / beverage_mass_g,
+            "extraction_yield_fraction": solute_g / dose_g}
 
 
 def interval_tds(samples: list[tuple[float, float, float]], start: float,
@@ -148,9 +245,16 @@ def interval_tds(samples: list[tuple[float, float, float]], start: float,
     by_time = {time: (solute_rate, beverage_rate) for time, solute_rate, beverage_rate in samples}
     if len(by_time) != len(samples):
         raise ValueError("duplicate interval time is ambiguous")
-    if start not in by_time or end not in by_time:
-        raise ValueError("interval endpoints missing; extrapolation prohibited")
-    interval = sorted((time, *rates) for time, rates in by_time.items() if start <= time <= end)
+    solute_series = [(time, rates[0]) for time, rates in sorted(by_time.items())]
+    beverage_series = [(time, rates[1]) for time, rates in sorted(by_time.items())]
+    start_rates = (interpolate_rate_endpoint(solute_series, start),
+                   interpolate_rate_endpoint(beverage_series, start))
+    end_rates = (interpolate_rate_endpoint(solute_series, end),
+                 interpolate_rate_endpoint(beverage_series, end))
+    interval_map = {time: rates for time, rates in by_time.items() if start < time < end}
+    interval_map[start] = start_rates
+    interval_map[end] = end_rates
+    interval = sorted((time, *rates) for time, rates in interval_map.items())
     solute_mass = 0.0
     beverage_mass = 0.0
     for (t0, s0, b0), (t1, s1, b1) in zip(interval, interval[1:]):
@@ -169,6 +273,76 @@ def normalized_log_secant(y_low: float, y_high: float, p_low: float,
     if denominator == 0:
         raise ValueError("log-secant parameter range is zero")
     return (math.log(y_high) - math.log(y_low)) / denominator
+
+
+def canonical_json_bytes(value: object) -> bytes:
+    return (json.dumps(value, indent=2, sort_keys=True) + "\n").encode()
+
+
+def object_sha256(value: object) -> str:
+    return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
+
+
+def reconstruct_accepted_wasz_p0(root: Path) -> dict[str, object]:
+    """Reproduce the accepted 30-second configuration from pinned inputs."""
+    cfg = json.loads((root / "config/reconstruction_WP02A_waszkiewicz_9bar.json").read_text())
+    wp03 = json.loads((root / "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.json").read_text())
+    # Exact terminal 9-bar anchor row from the pinned evidence snapshot.
+    basket_pressure_bar = 8.716916
+    mass_flow_g_s = 1.824924
+    q_anchor_m3_s = mass_flow_g_s / 997.0 / 1e3
+    area_m2 = math.pi * float(cfg["geometry"]["basket_radius_m"]) ** 2
+    anchor_k = q_anchor_m3_s * float(cfg["liquid"]["dynamic_viscosity_Pa_s"]) * float(cfg["coffee_bed"]["bed_depth_m"]) / (area_m2 * basket_pressure_bar * 1e5)
+    reference = wp03["reference"]
+    cfg["scenario_id"] = "VAL_CORPUS_001_WASZ_9_COMPACT"
+    cfg["governance"] = {"task": "VAL-CORPUS-001", "change_scope": "NO_GOVERNING_PHYSICS_CHANGE", "evidence_role": "SOURCE_RECONSTRUCTION"}
+    cfg["claim_ceiling"] = "Physical validation NOT_ESTABLISHED; existing-public-evidence reconstruction/component comparison."
+    cfg["hydraulics"]["target_inlet_pressure_gauge_Pa"] = 900000.0
+    cfg["hydraulics"]["saturated_permeability_m2"] = anchor_k
+    cfg["time"].update({"end_s": 30.0, "delta_t_s": 0.02, "field_write_interval_s": 1.0})
+    cfg["geometry"].update({"axial_cells": 128, "radial_cells": 64})
+    cfg.pop("effective_permeability_evolution", None)
+    cfg["bedMechanicsModel"] = "waszkiewiczQuasiStaticCompaction"
+    cfg["poroelasticCompaction"] = {
+        "model": "waszkiewicz2025FinitePhi",
+        "stressFreePorosity": reference["stress_free_porosity"],
+        "criticalCompactionPressurePa": reference["critical_compaction_pressure_pa"],
+        "stressFreePermeabilityM2": anchor_k,
+        "nonlinearRelativeTolerance": 1e-9,
+        "nonlinearAbsoluteTolerance": 1e-13,
+        "nonlinearMaximumIterations": 100,
+        "nonlinearUnderRelaxation": 0.7,
+        "machineFluxRelativeTolerance": 1e-8,
+    }
+    if object_sha256(cfg) != ACCEPTED_WASZ_P0_SHA256:
+        raise ValueError("accepted 30-second WASZ-9-COMPACT reconstruction hash mismatch")
+    return cfg
+
+
+def prospective_wasz_templates(root: Path) -> dict[str, object]:
+    accepted = reconstruct_accepted_wasz_p0(root)
+    chemistry = {
+        "P0": {"extractable_fraction": 0.28, "rate_s_inverse": 0.15},
+        "P1": {"extractable_fraction": 0.216896244235, "rate_s_inverse": 0.11446486815650324},
+        "P2_FIXED_AFTER_EXP7_CALIBRATION": {"extractable_fraction": 0.216896244235, "rate_s_inverse": {"type": "CALIBRATED_SCALAR_S_INVERSE", "token": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION", "status": "UNRESOLVED"}},
+    }
+    templates = []
+    for parameterization, values in chemistry.items():
+        cfg = copy.deepcopy(accepted)
+        case_id = f"WASZ_9_COMPACT_{parameterization}_CHEMISTRY"
+        cfg["scenario_id"] = f"VAL_CORPUS_002_{case_id}"
+        cfg["governance"] = {"task": "VAL-CORPUS-002", "change_scope": "SOURCE_SCENARIO_CHANGE_ONLY", "evidence_role": "CROSS_SOURCE_NONHOLDOUT_CHEMISTRY_COMPARISON"}
+        cfg["time"]["end_s"] = 63.0
+        cfg["coffee_bed"]["initial_extractable_fraction_dry_basis"] = values["extractable_fraction"]
+        cfg["extraction"]["rate_constant_1_s"] = values["rate_s_inverse"]
+        cfg["extraction"]["saturation_concentration_kg_m3"] = 180.0
+        cfg["liquid"]["effective_solute_diffusivity_m2_s"] = 1e-9
+        templates.append({"id": case_id, "parameterization": parameterization,
+                          "configuration": cfg, "configuration_sha256": object_sha256(cfg)})
+    return {
+        "accepted_30s_reconstruction": {"configuration": accepted, "configuration_sha256": object_sha256(accepted), "required_sha256": ACCEPTED_WASZ_P0_SHA256, "status": "PASS"},
+        "production_templates": templates,
+    }
 
 
 def summarize(records: list[dict]) -> list[dict]:
@@ -341,18 +515,47 @@ def build(snapshot: Path) -> dict[str, object]:
                     "hydraulics": {"mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC" if hydraulic.startswith("H0") else "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK", "uniform_saturated_coefficient_m2": coefficient, "dynamic_viscosity_Pa_s": 0.000315, "compaction": "DISABLED", "darcy_forchheimer": "DISABLED", "physical_permeability_inference": "PROHIBITED" if hydraulic.startswith("H1") else "NOT_APPLICABLE", "permeability_validation": "PROHIBITED" if hydraulic.startswith("H1") else "NOT_CLAIMED", "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC" if hydraulic.startswith("H0") else "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY"},
                     "chemistry": parameter_values[parameterization],
                     "controls": {"delta_t_s": 0.02, "end_time_s": 90.0, "mpi_ranks": 16, "field_write_interval_s": 1.0, "reduced_trace_maximum_interval_s": 0.1},
-                    "observation_operators": {"targets_g": [20.0, 40.0, 60.0], "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS", "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS", "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE", "duplicate_mass": "FAIL_CLOSED", "extrapolation": "PROHIBITED", "missing_target": "INCOMPLETE_FAIL_CLOSED"},
+                    "observation_operators": {"fixed_mass_operator_id": "TIME_ORDERED_PLATEAU_SAFE_CUMULATIVE_MASS_V1", "input_fields": ["time_s", "cumulative_beverage_mass_kg", "cumulative_solute_mass_kg"], "targets_kg": [0.020, 0.040, 0.060], "mass_absolute_tolerance_kg": 1e-12, "time": "FINITE_STRICTLY_INCREASING", "cumulative_masses": "FINITE_NONNEGATIVE_NONDECREASING", "plateau": "EQUAL_BEVERAGE_REQUIRES_SOLUTE_UNCHANGED_WITHIN_1E-12_KG_AND_RETAINS_LAST_TIME_ORDERED_SAMPLE", "inconsistent_plateau": "FAIL", "cup_solute_mass": "FIRST_ADJACENT_STRICTLY_INCREASING_MASS_PAIR_BRACKETING_TARGET_LINEAR_INTERPOLATION_OUTPUT_KG", "reporting_conversion": "KG_TO_G_ONLY_AFTER_OBSERVATION", "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS", "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_0.020_KG_DRY_DOSE", "mass_sorting": "PROHIBITED", "extrapolation": "PROHIBITED", "missing_target": "INCOMPLETE_FAIL_CLOSED"},
                     "gates": {"completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL", "liquid_balance_relative_absolute_max": 1e-8, "solute_balance_relative_absolute_max": 1e-8, "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1"},
                     "artifacts": {"retain": ["exact input manifest", "executable hash", "complete solver log", "reduced trace", "case/result manifest"], "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE", "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT"},
                 })
+
+    wasz_templates = prospective_wasz_templates(Path.cwd())
+    wasz_production = []
+    for template in wasz_templates["production_templates"]:
+        wasz_production.append({
+            **template,
+            "future_openfoam": True,
+            "mpi_ranks": 16,
+            "executable_sha256_required": SOLVER_EXECUTABLE_SHA256,
+            "same_run_supplies_clock_presentations": ["SOURCE_REPORTED_CLOCK", "EXISTING_FIXED_PLUS_3_SECOND_MAPPING"],
+            "declared_differences_from_accepted_30s_p0": ["end_time_extension_to_63_s", "chemistry_parameterization", "scenario_and_governance_identifiers"],
+        })
+
+    wasz_contract = {
+        "schema_version": 1,
+        **wasz_templates,
+        "accepted_bindings": [
+            {"path": "validation/wp03/WP03_002_EXACT_HEAD_REVIEW_CORRECTION_PROTOCOL.json", "sha256": "5385db9a1dfcc58821278a45bc371ee1e6b0ecc9ec9b85e077cf0ac610cf5539"},
+            {"path": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json", "sha256": "6a6c6bd62dd6ffda209c79e24e9fc9506f74fdc421de9ff56400c15162f0600e"},
+            {"path": "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.json", "sha256": "dc687f13c8881c481d5674a226c0236d0f0a3d1e53458a9ea5558b02dfcb3456"},
+            {"path": "config/reconstruction_WP02A_waszkiewicz_9bar.json", "sha256": "81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e"},
+        ],
+        "production_execution": {"count": 3, "mpi_ranks": 16, "executable_sha256": SOLVER_EXECUTABLE_SHA256, "no_separate_clock_runs": True},
+        "p2_materialization": {"template_sha256": next(item["configuration_sha256"] for item in wasz_production if item["parameterization"].startswith("P2")), "typed_placeholder": {"type": "CALIBRATED_SCALAR_S_INVERSE", "token": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION", "status": "UNRESOLVED"}, "rule": "replace only extraction.rate_constant_1_s typed placeholder with the finite frozen global P2 k within approved bounds; canonical JSON sort_keys=True indent=2 newline; record exact materialized configuration SHA-256 before execution", "preexecution_requirement": "MATERIALIZED_HASH_RECORDED_AFTER_AUTHORIZED_CALIBRATION_BEFORE_EXECUTION"},
+        "predecessor_parity": {"reference": "ACCEPTED_30_SECOND_CORRECTED_P0_TRACE", "role": "NUMERICAL_VERIFICATION_NOT_SOURCE_SCORING", "new_case": "WASZ_9_COMPACT_P0_CHEMISTRY", "common_time_domain_s": [0.0, 30.0], "fields": ["time", "inlet_pressure", "outlet_flow", "cup_water_mass", "cup_solute_mass", "cup_beverage_mass", "remaining_extractable_mass", "dissolved_mass", "compaction_porosity", "compaction_permeability"], "time_matching": "EXACT_DECLARED_GRID_OR_DETERMINISTIC_LINEAR_INTERPOLATION", "relative_tolerance": 1e-10, "absolute_tolerance_native_si": 1e-12, "failure": "STOP_BEFORE_WASZKIEWICZ_SCORING"},
+        "observation_operator": {"primary_trace_fields": {"water_volume_rate": "outlet_flow_m3_s", "liquid_density": "exact case liquid density", "solute_mass_rate": "totalSoluteFluxKgS"}, "water_mass_rate_formula": "liquid_density_kg_m3 * outlet_flow_m3_s", "beverage_mass_rate_formula": "water_mass_rate_kg_s + totalSoluteFluxKgS", "cumulative_mass_finite_difference_primary": "PROHIBITED", "nonnegativity": {"tolerance_kg_s": 1e-15, "minus_tolerance_through_zero": "SET_TO_ZERO", "below_minus_tolerance": "FAIL"}, "initial_boundary_sample": {"time_s": 0.0, "water_mass_rate_kg_s": 0.0, "solute_mass_rate_kg_s": 0.0, "cup_water_mass_kg": 0.0, "cup_solute_mass_kg": 0.0, "cup_beverage_mass_kg": 0.0, "insertion_checks": ["simulation_start_time_is_zero", "initial_cup_inventory_is_zero", "initial_outlet_flux_is_zero"]}, "endpoint_handling": {"exact": "USE", "absent_but_bracketed": "LINEARLY_INTERPOLATE_EACH_MASS_RATE_IN_TIME", "outside_trace": "FAIL_NO_EXTRAPOLATION"}, "intervals": {"SOURCE_REPORTED_CLOCK": [[5.0*i,5.0*(i+1)] for i in range(12)], "EXISTING_FIXED_PLUS_3_SECOND_MAPPING": [[3.0+5.0*i,8.0+5.0*i] for i in range(12)]}, "interval_tds": "TRAPEZOIDAL_INTEGRAL_SOLUTE_MASS_RATE_DIVIDED_BY_TRAPEZOIDAL_INTEGRAL_BEVERAGE_MASS_RATE", "midpoint_sampling": "PROHIBITED", "clock_optimization": "PROHIBITED", "same_openfoam_run": True},
+        "reduced_source_clock": {"status": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION", "equations": {"time": "t(M)=M/(rho*Q)", "solute_mass": "Msolute(M)=M0*(1-exp(-k*t(M)))", "tds": "TDS(M)=Msolute(M)/M", "extraction_yield": "EY(M)=Msolute(M)/dose"}, "inputs": {"rho_g_ml": 1.0, "Q": "source mean measured flow for experiment", "M0": "dose*extractableFraction for P0/P1/fixed P2", "k": "extractionRateConstant for P0/P1/fixed P2"}, "limitations": ["NO_WETTING", "NO_PRESSURE_SOLUTION", "NO_SPATIAL_TRANSPORT", "NO_DISPERSION", "NO_SATURATION_CONCENTRATION_CEILING", "NO_FINITE_VOLUME_EFFECTS", "NO_PHYSICAL_VALIDATION_CLAIM"]},
+    }
 
     return {
         "evidence": {"schema_version": 1, "snapshot": {"repository": "trbrewer/puckworks", "commit": SNAPSHOT_COMMIT, "tree": SNAPSHOT_TREE}, "files": evidence},
         "cohort": {"schema_version": 1, "selection_basis": "METADATA_ONLY_NO_TDS_MASS_OR_CONCENTRATION", "anchor_records": anchor, "axis_transfer_records": transfer, "summaries": summarize(anchor + transfer), "exp7_source_fit": {"c0_g_per_g": float(fit["c0"]), "c0_se_g_per_g": float(fit["c0_se"]), "lambda_g_beverage": float(fit["lambda_g"]), "lambda_se_g_beverage": float(fit["lambda_se"])}, "partition_disjoint": True},
         "parameters": {"schema_version": 2, "source_semantics": {"c0": "FITTED_OUTLET_TDS_CONCENTRATION_G_PER_G_BEVERAGE", "lambda": "FITTED_BEVERAGE_MASS_DECAY_SCALE_G"}, "parameterizations": parameters, "density_convention": "rho=1.0 g/mL is the reduced source-mapping convention; it is not a new solver property", "mapping_dimension_check": "(g/mL)*(mL/s)/g = 1/s", "p1_mapping_verified": all((math.isclose(p1_inventory_g, 4.3379248847, rel_tol=0, abs_tol=1e-12), math.isclose(p1_fraction, 0.216896244235, rel_tol=0, abs_tol=1e-12), math.isclose(p1_k, 0.11446486815650324, rel_tol=0, abs_tol=5e-16)))},
-        "run_matrix": {"schema_version": 2, "calibration_evaluation_inventory": {"anchor": "SCHMIEDER_EXP7", "hydraulic_mode": "H1_ONLY", "maximum_optimizer_evaluations": 128, "evaluation_identity": "solver_commit+executable+case_inputs+log_k", "h0_calibration": "PROHIBITED", "separate_mode_specific_k": "PROHIBITED"}, "final_production_run_inventory": run_matrix, "future_openfoam_run_count": len(run_matrix), "reused_exact_evaluations": [{"source": "FINAL_SUCCESSFUL_P2_OPTIMIZER_EVALUATION", "target": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1", "reuse_count": 1, "condition": "REUSE_ONLY_IF_CASE_AND_EXECUTABLE_IDENTITIES_MATCH_EXACTLY"}], "stage_a_execution": "NOT_AUTHORIZED"},
+        "run_matrix": {"schema_version": 3, "calibration_evaluation_inventory": {"anchor": "SCHMIEDER_EXP7", "hydraulic_mode": "H1_ONLY", "maximum_optimizer_evaluations": 128, "evaluation_identity": "solver_commit+executable+case_inputs+log_k", "h0_calibration": "PROHIBITED", "separate_mode_specific_k": "PROHIBITED"}, "schmieder_production_run_inventory": run_matrix, "waszkiewicz_production_run_inventory": wasz_production, "final_production_run_inventory": run_matrix + wasz_production, "schmieder_production_run_count": len(run_matrix), "waszkiewicz_production_run_count": len(wasz_production), "future_openfoam_run_count": len(run_matrix) + len(wasz_production), "reused_exact_evaluations": [{"source": "FINAL_SUCCESSFUL_P2_OPTIMIZER_EVALUATION", "target": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1", "reuse_count": 1, "maximum": 1, "condition": "REUSE_ONLY_IF_CASE_AND_EXECUTABLE_IDENTITIES_MATCH_EXACTLY"}], "stage_a_execution": "NOT_AUTHORIZED"},
         "sensitivity": {"schema_version": 2, "analysis_name": "FINITE_RANGE_ONE_AT_A_TIME_SENSITIVITY", "claim": "NOT_STRUCTURAL_IDENTIFIABILITY", "baseline": "exact reuse of production SCHM_EXP7_P1_H1 only when all identities match", "baseline_reuse_count": 1, "future_runs": sensitivity, "future_run_count": len(sensitivity), "new_future_execution_count_if_reuse_valid": len(sensitivity) - 1, "outputs": ["cup_solute_mass_g_at_20g", "cup_solute_mass_g_at_40g", "cup_solute_mass_g_at_60g"], "analysis": {"normalized_sensitivity_formula": "[ln(y_high)-ln(y_low)]/[ln(p_high)-ln(p_low)]", "nonpositive_or_missing_output": "FAIL_CLOSED", "matrix_shape": [3, 4], "rank_ceiling": 3, "jacobian": "FINITE_RANGE_LOG_SECANTS", "singular_values": True, "numerical_rank_tolerance": {"relative_to_largest_singular_value": 1e-8, "absolute": 1e-12}, "parameter_output_correlation": True, "equifinality_warning": True}},
         "waszkiewicz": {"schema_version": 2, "point_count": len(wasz), "times_s": times, "collection_intervals_s": [[5.0 * i, 5.0 * (i + 1)] for i in range(12)], "observation_operator": "INTEGRATED_OUTLET_SOLUTE_MASS_OVER_INTERVAL_DIVIDED_BY_INTEGRATED_BEVERAGE_MASS_OVER_INTERVAL", "integration_rule": "PIECEWISE_LINEAR_TRAPEZOIDAL_INTEGRATION_REQUIRING_BOTH_INTERVAL_ENDPOINTS", "midpoint_point_sampling": "PROHIBITED", "extrapolation": "PROHIBITED", "role": {"comparison": "CROSS_SOURCE_CHEMISTRY_PARAMETERIZATION_NONHOLDOUT", "hydraulics": "SAME_SOURCE_WASZKIEWICZ_HYDRAULIC_CONDITIONING", "circularity": "TDS_AND_DISSOLVED_MASS_SOFT_CIRCULARITY", "claim": "NO_INDEPENDENT_WHOLE_SOLVER_CHEMISTRY_VALIDATION"}, "chemistry_calibration": "NONE", "optimized_time_shift": "PROHIBITED", "clock_mapping": {"status": "AMBIGUOUS", "presentations": [{"id": "SOURCE_REPORTED_CLOCK", "model_intervals_s": [[5.0 * i, 5.0 * (i + 1)] for i in range(12)]}, {"id": "EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS", "model_intervals_s": [[3.0 + 5.0 * i, 8.0 + 5.0 * i] for i in range(12)]}], "operator_identical_for_both_presentations": True, "optimization": "PROHIBITED"}, "unsupported_chemistry": {"5_bar": "UNAVAILABLE_NOT_INFERRED", "11_bar": "UNAVAILABLE_NOT_INFERRED"}},
+        "wasz_production": wasz_contract,
     }
 
 
@@ -364,6 +567,7 @@ def write_records(records: dict[str, object]) -> None:
         "run_matrix": "VAL_CORPUS_002_FUTURE_RUN_MATRIX.json",
         "sensitivity": "VAL_CORPUS_002_SENSITIVITY_MATRIX.json",
         "waszkiewicz": "VAL_CORPUS_002_WASZKIEWICZ_COHORT.json",
+        "wasz_production": "VAL_CORPUS_002_WASZKIEWICZ_PRODUCTION_CONTRACT.json",
     }
     for key, filename in mapping.items():
         dump(CASE_DIR / filename, records[key])
@@ -377,6 +581,7 @@ def verify(records: dict[str, object]) -> None:
         "run_matrix": "VAL_CORPUS_002_FUTURE_RUN_MATRIX.json",
         "sensitivity": "VAL_CORPUS_002_SENSITIVITY_MATRIX.json",
         "waszkiewicz": "VAL_CORPUS_002_WASZKIEWICZ_COHORT.json",
+        "wasz_production": "VAL_CORPUS_002_WASZKIEWICZ_PRODUCTION_CONTRACT.json",
     }
     for key, filename in expected.items():
         actual = json.loads((CASE_DIR / filename).read_text())

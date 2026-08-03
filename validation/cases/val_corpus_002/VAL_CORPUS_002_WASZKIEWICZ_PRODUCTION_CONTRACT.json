@@ -1,0 +1,1087 @@
+{
+  "accepted_30s_reconstruction": {
+    "configuration": {
+      "bedMechanicsModel": "waszkiewiczQuasiStaticCompaction",
+      "claim_ceiling": "Physical validation NOT_ESTABLISHED; existing-public-evidence reconstruction/component comparison.",
+      "coffee_bed": {
+        "bed_depth_m": 0.01,
+        "bed_depth_status": "APPROXIMATE_SOURCE_PARAMETER",
+        "dry_dose_kg": 0.0185,
+        "initial_extractable_fraction_dry_basis": 0.28,
+        "initial_porosity": 0.46349007886296223,
+        "particle_solid_density_kg_m3": 1400.0
+      },
+      "execution_boundaries": {
+        "analytical_preflight_execution_count": 1,
+        "openfoam_execution_count": 0,
+        "optimizer_iteration_count": 0,
+        "parameter_fitting_count": 0,
+        "protected_comparison_execution_count": 0,
+        "puckworks_code_execution_count": 0,
+        "puckworks_reference_execution_count": 0,
+        "reduced_preflight_execution_count": 1,
+        "scientific_result_status": "NOT_RUN"
+      },
+      "extraction": {
+        "model": "single_effective_solute_first_order_with_capacity_ceiling",
+        "rate_constant_1_s": 0.15,
+        "saturation_concentration_kg_m3": 180.0,
+        "status": "INHERITED_R0_UNCALIBRATED_UNSCORED"
+      },
+      "flow_comparison_contract": {
+        "gates": {
+          "median_normalized_shape_rmse_max": 0.15,
+          "median_pearson_r_min": 0.95,
+          "shot_count": 5,
+          "shots_required_at_or_above_r_0_90": 4,
+          "shots_required_at_or_below_rmse_0_20": 4
+        },
+        "normalization_indices": {
+          "first": 900,
+          "inclusive": true,
+          "last": 999
+        },
+        "pearson_degeneracy": {
+          "jitter_or_regularization_allowed": false,
+          "nonfinite_value_disposition": "FAIL",
+          "normalized_standard_deviation_epsilon": 1e-08,
+          "standard_deviation_definition": "population standard deviation of the finite normalized protected-window vector",
+          "undefined_disposition": "FAIL",
+          "undefined_if_observed_std_at_or_below_epsilon": true,
+          "undefined_if_predicted_std_at_or_below_epsilon": true
+        },
+        "primary_predicted_quantity": {
+          "basis": "HYDRAULIC_EQUIVALENT_LIQUID_MASS_FLOW",
+          "formula": "q_pred_g_per_s = 1000 * liquid_density_kg_m3 * outlet_flow_m3_s",
+          "includes_solute_mass_flux": false,
+          "liquid_density_kg_m3": 965.0,
+          "quantity_id": "hydraulic-equivalent-outlet-mass-flow",
+          "solver_native_field": "outlet_flow_m3_s",
+          "unit": "g/s",
+          "used_for_calibration_reproduction": true,
+          "used_for_protected_shape_comparison": true
+        },
+        "protected_indices": {
+          "first": 100,
+          "inclusive": true,
+          "last": 899
+        },
+        "protected_series_embedded": false,
+        "protected_shot_ids": [
+          "9-1",
+          "9-2",
+          "9-3",
+          "9-4",
+          "9-5"
+        ],
+        "secondary_unscored_diagnostic": {
+          "comparison_role": "UNSCORED_DIAGNOSTIC",
+          "formula": "1000 * finite_difference(cup_beverage_mass_kg, time_s)",
+          "includes_solute_mass_flux": true,
+          "may_replace_primary_quantity": false,
+          "quantity_id": "predicted-total-beverage-mass-flow",
+          "unit": "g/s"
+        },
+        "source_path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+        "source_selector": "reference_pressure_round__bar == 9.0; shot_id in protected list; mass_flow_rate__g_per_s"
+      },
+      "geometry": {
+        "axial_cells": 128,
+        "axial_grading": 1.0,
+        "azimuthal_cells": 1,
+        "basket_diameter_m": 0.056,
+        "basket_radius_m": 0.028,
+        "hardware_basket_diameter_m": 0.058,
+        "hydraulic_bed_area_m2": 0.002463008640414398,
+        "radial_cells": 64,
+        "radial_grading": 1.0,
+        "wedge_angle_deg": 5.0
+      },
+      "governance": {
+        "change_scope": "NO_GOVERNING_PHYSICS_CHANGE",
+        "evidence_role": "SOURCE_RECONSTRUCTION",
+        "task": "VAL-CORPUS-001"
+      },
+      "hydraulics": {
+        "front_pressure_gauge_Pa": 0.0,
+        "gravity_enabled": false,
+        "historically_calibrated_parameter_count": 1,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "permeability_profile": {
+          "downstream_permeability_m2": 2.8642613245723525e-15,
+          "interface_position_m": 0.005,
+          "type": "uniform",
+          "upstream_permeability_m2": 2.8642613245723525e-15
+        },
+        "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+        "pressure_ramp_time_s": 3.0,
+        "runtime_adjustable_parameter_count": 0,
+        "saturated_permeability_m2": 2.685538494131689e-15,
+        "target_inlet_pressure_gauge_Pa": 900000.0,
+        "wetting_permeability_m2": 2.8642613245723525e-15
+      },
+      "liquid": {
+        "density_kg_m3": 965.0,
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "effective_solute_diffusivity_m2_s": 1e-09,
+        "temperature_K": 363.15
+      },
+      "mode": "source_linked_reconstruction",
+      "openfoam_distribution": "OpenFOAM Foundation",
+      "openfoam_version": "12",
+      "output": {
+        "live_stage_logging": true,
+        "reference_artifact_version": "0.1.4",
+        "write_compression": false,
+        "write_format": "binary"
+      },
+      "parallel": {
+        "decomposition_method": "scotch",
+        "default_subdomains": 32
+      },
+      "poroelasticCompaction": {
+        "criticalCompactionPressurePa": 1239155.0,
+        "machineFluxRelativeTolerance": 1e-08,
+        "model": "waszkiewicz2025FinitePhi",
+        "nonlinearAbsoluteTolerance": 1e-13,
+        "nonlinearMaximumIterations": 100,
+        "nonlinearRelativeTolerance": 1e-09,
+        "nonlinearUnderRelaxation": 0.7,
+        "stressFreePermeabilityM2": 2.685538494131689e-15,
+        "stressFreePorosity": 0.4
+      },
+      "pressure_nodes": {
+        "inlet": "BASKET_OR_PUCK_INLET_GAUGE",
+        "outlet": "BASKET_BOTTOM_AMBIENT_GAUGE",
+        "reference_bin": "REFERENCE_PRESSURE_BIN_CONTEXT_ONLY"
+      },
+      "scenario_id": "VAL_CORPUS_001_WASZ_9_COMPACT",
+      "schema_version": "espresso.whole_pull.reconstruction_scenario.wp02a.v1",
+      "solver": "espressoWholePullFoam",
+      "solver_version": "0.1.4",
+      "source_time_mapping": {
+        "solver_time_equals_source_time_plus_s": 3.0,
+        "source_fixed_8s_offset_used": false
+      },
+      "time": {
+        "delta_t_s": 0.02,
+        "end_s": 30.0,
+        "field_write_interval_s": 1.0,
+        "reduced_trace_maximum_interval_s": 0.1,
+        "start_s": 0.0,
+        "target_beverage_mass_kg": 0.04,
+        "target_beverage_mass_role": "UNSCORED_DIAGNOSTIC_NOT_TERMINATION"
+      },
+      "verification": {
+        "analytical_first_drip_absolute_tolerance_s": 1e-08,
+        "analytical_first_drip_s": 4.426434882126959,
+        "analytical_flow_relative_tolerance": 1e-08,
+        "b0_parity": {
+          "event_absolute_tolerance_s": 1e-08,
+          "hydraulic_relative_tolerance": 1e-08,
+          "inventory_relative_tolerance": 0.005
+        },
+        "bounded_state": {
+          "concentration_cap_absolute_tolerance_kg_m3": 1e-08,
+          "inventory_absolute_tolerance_kg": 1e-12,
+          "monotonic_mass_absolute_tolerance_kg": 1e-12,
+          "retained_water_absolute_tolerance_kg": 1e-12
+        },
+        "pressure_probes": [
+          {
+            "half_width_m": 1.7952918192111726e-05,
+            "name": "quarter_depth",
+            "position_m": 0.002252915224108138
+          },
+          {
+            "half_width_m": 1.7952918192111726e-05,
+            "name": "three_quarter_depth",
+            "position_m": 0.006758745672324415
+          }
+        ],
+        "retained_water_relative_tolerance": 1e-08,
+        "wedge_volume_relative_tolerance": 1e-08
+      },
+      "wetting": {
+        "front_smoothing_cells": 1.0,
+        "initial_saturation": 0.0,
+        "initial_wet_front_m": 0.0,
+        "model": "darcy_sharp_front_storage"
+      }
+    },
+    "configuration_sha256": "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5",
+    "required_sha256": "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5",
+    "status": "PASS"
+  },
+  "accepted_bindings": [
+    {
+      "path": "validation/wp03/WP03_002_EXACT_HEAD_REVIEW_CORRECTION_PROTOCOL.json",
+      "sha256": "5385db9a1dfcc58821278a45bc371ee1e6b0ecc9ec9b85e077cf0ac610cf5539"
+    },
+    {
+      "path": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "sha256": "6a6c6bd62dd6ffda209c79e24e9fc9506f74fdc421de9ff56400c15162f0600e"
+    },
+    {
+      "path": "validation/wp03/WP03_001_POROELASTIC_COMPACTION_RUN_SPEC.json",
+      "sha256": "dc687f13c8881c481d5674a226c0236d0f0a3d1e53458a9ea5558b02dfcb3456"
+    },
+    {
+      "path": "config/reconstruction_WP02A_waszkiewicz_9bar.json",
+      "sha256": "81a9089061d762aaf785a7764cebb8e0947e4f3c14bb833d58a204d2c816407e"
+    }
+  ],
+  "observation_operator": {
+    "beverage_mass_rate_formula": "water_mass_rate_kg_s + totalSoluteFluxKgS",
+    "clock_optimization": "PROHIBITED",
+    "cumulative_mass_finite_difference_primary": "PROHIBITED",
+    "endpoint_handling": {
+      "absent_but_bracketed": "LINEARLY_INTERPOLATE_EACH_MASS_RATE_IN_TIME",
+      "exact": "USE",
+      "outside_trace": "FAIL_NO_EXTRAPOLATION"
+    },
+    "initial_boundary_sample": {
+      "cup_beverage_mass_kg": 0.0,
+      "cup_solute_mass_kg": 0.0,
+      "cup_water_mass_kg": 0.0,
+      "insertion_checks": [
+        "simulation_start_time_is_zero",
+        "initial_cup_inventory_is_zero",
+        "initial_outlet_flux_is_zero"
+      ],
+      "solute_mass_rate_kg_s": 0.0,
+      "time_s": 0.0,
+      "water_mass_rate_kg_s": 0.0
+    },
+    "interval_tds": "TRAPEZOIDAL_INTEGRAL_SOLUTE_MASS_RATE_DIVIDED_BY_TRAPEZOIDAL_INTEGRAL_BEVERAGE_MASS_RATE",
+    "intervals": {
+      "EXISTING_FIXED_PLUS_3_SECOND_MAPPING": [
+        [
+          3.0,
+          8.0
+        ],
+        [
+          8.0,
+          13.0
+        ],
+        [
+          13.0,
+          18.0
+        ],
+        [
+          18.0,
+          23.0
+        ],
+        [
+          23.0,
+          28.0
+        ],
+        [
+          28.0,
+          33.0
+        ],
+        [
+          33.0,
+          38.0
+        ],
+        [
+          38.0,
+          43.0
+        ],
+        [
+          43.0,
+          48.0
+        ],
+        [
+          48.0,
+          53.0
+        ],
+        [
+          53.0,
+          58.0
+        ],
+        [
+          58.0,
+          63.0
+        ]
+      ],
+      "SOURCE_REPORTED_CLOCK": [
+        [
+          0.0,
+          5.0
+        ],
+        [
+          5.0,
+          10.0
+        ],
+        [
+          10.0,
+          15.0
+        ],
+        [
+          15.0,
+          20.0
+        ],
+        [
+          20.0,
+          25.0
+        ],
+        [
+          25.0,
+          30.0
+        ],
+        [
+          30.0,
+          35.0
+        ],
+        [
+          35.0,
+          40.0
+        ],
+        [
+          40.0,
+          45.0
+        ],
+        [
+          45.0,
+          50.0
+        ],
+        [
+          50.0,
+          55.0
+        ],
+        [
+          55.0,
+          60.0
+        ]
+      ]
+    },
+    "midpoint_sampling": "PROHIBITED",
+    "nonnegativity": {
+      "below_minus_tolerance": "FAIL",
+      "minus_tolerance_through_zero": "SET_TO_ZERO",
+      "tolerance_kg_s": 1e-15
+    },
+    "primary_trace_fields": {
+      "liquid_density": "exact case liquid density",
+      "solute_mass_rate": "totalSoluteFluxKgS",
+      "water_volume_rate": "outlet_flow_m3_s"
+    },
+    "same_openfoam_run": true,
+    "water_mass_rate_formula": "liquid_density_kg_m3 * outlet_flow_m3_s"
+  },
+  "p2_materialization": {
+    "preexecution_requirement": "MATERIALIZED_HASH_RECORDED_AFTER_AUTHORIZED_CALIBRATION_BEFORE_EXECUTION",
+    "rule": "replace only extraction.rate_constant_1_s typed placeholder with the finite frozen global P2 k within approved bounds; canonical JSON sort_keys=True indent=2 newline; record exact materialized configuration SHA-256 before execution",
+    "template_sha256": "40cd2cbed05838fff8102d70a8d3f5b168e8c51a0d3260e48e66749d26a91119",
+    "typed_placeholder": {
+      "status": "UNRESOLVED",
+      "token": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+      "type": "CALIBRATED_SCALAR_S_INVERSE"
+    }
+  },
+  "predecessor_parity": {
+    "absolute_tolerance_native_si": 1e-12,
+    "common_time_domain_s": [
+      0.0,
+      30.0
+    ],
+    "failure": "STOP_BEFORE_WASZKIEWICZ_SCORING",
+    "fields": [
+      "time",
+      "inlet_pressure",
+      "outlet_flow",
+      "cup_water_mass",
+      "cup_solute_mass",
+      "cup_beverage_mass",
+      "remaining_extractable_mass",
+      "dissolved_mass",
+      "compaction_porosity",
+      "compaction_permeability"
+    ],
+    "new_case": "WASZ_9_COMPACT_P0_CHEMISTRY",
+    "reference": "ACCEPTED_30_SECOND_CORRECTED_P0_TRACE",
+    "relative_tolerance": 1e-10,
+    "role": "NUMERICAL_VERIFICATION_NOT_SOURCE_SCORING",
+    "time_matching": "EXACT_DECLARED_GRID_OR_DETERMINISTIC_LINEAR_INTERPOLATION"
+  },
+  "production_execution": {
+    "count": 3,
+    "executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+    "mpi_ranks": 16,
+    "no_separate_clock_runs": true
+  },
+  "production_templates": [
+    {
+      "configuration": {
+        "bedMechanicsModel": "waszkiewiczQuasiStaticCompaction",
+        "claim_ceiling": "Physical validation NOT_ESTABLISHED; existing-public-evidence reconstruction/component comparison.",
+        "coffee_bed": {
+          "bed_depth_m": 0.01,
+          "bed_depth_status": "APPROXIMATE_SOURCE_PARAMETER",
+          "dry_dose_kg": 0.0185,
+          "initial_extractable_fraction_dry_basis": 0.28,
+          "initial_porosity": 0.46349007886296223,
+          "particle_solid_density_kg_m3": 1400.0
+        },
+        "execution_boundaries": {
+          "analytical_preflight_execution_count": 1,
+          "openfoam_execution_count": 0,
+          "optimizer_iteration_count": 0,
+          "parameter_fitting_count": 0,
+          "protected_comparison_execution_count": 0,
+          "puckworks_code_execution_count": 0,
+          "puckworks_reference_execution_count": 0,
+          "reduced_preflight_execution_count": 1,
+          "scientific_result_status": "NOT_RUN"
+        },
+        "extraction": {
+          "model": "single_effective_solute_first_order_with_capacity_ceiling",
+          "rate_constant_1_s": 0.15,
+          "saturation_concentration_kg_m3": 180.0,
+          "status": "INHERITED_R0_UNCALIBRATED_UNSCORED"
+        },
+        "flow_comparison_contract": {
+          "gates": {
+            "median_normalized_shape_rmse_max": 0.15,
+            "median_pearson_r_min": 0.95,
+            "shot_count": 5,
+            "shots_required_at_or_above_r_0_90": 4,
+            "shots_required_at_or_below_rmse_0_20": 4
+          },
+          "normalization_indices": {
+            "first": 900,
+            "inclusive": true,
+            "last": 999
+          },
+          "pearson_degeneracy": {
+            "jitter_or_regularization_allowed": false,
+            "nonfinite_value_disposition": "FAIL",
+            "normalized_standard_deviation_epsilon": 1e-08,
+            "standard_deviation_definition": "population standard deviation of the finite normalized protected-window vector",
+            "undefined_disposition": "FAIL",
+            "undefined_if_observed_std_at_or_below_epsilon": true,
+            "undefined_if_predicted_std_at_or_below_epsilon": true
+          },
+          "primary_predicted_quantity": {
+            "basis": "HYDRAULIC_EQUIVALENT_LIQUID_MASS_FLOW",
+            "formula": "q_pred_g_per_s = 1000 * liquid_density_kg_m3 * outlet_flow_m3_s",
+            "includes_solute_mass_flux": false,
+            "liquid_density_kg_m3": 965.0,
+            "quantity_id": "hydraulic-equivalent-outlet-mass-flow",
+            "solver_native_field": "outlet_flow_m3_s",
+            "unit": "g/s",
+            "used_for_calibration_reproduction": true,
+            "used_for_protected_shape_comparison": true
+          },
+          "protected_indices": {
+            "first": 100,
+            "inclusive": true,
+            "last": 899
+          },
+          "protected_series_embedded": false,
+          "protected_shot_ids": [
+            "9-1",
+            "9-2",
+            "9-3",
+            "9-4",
+            "9-5"
+          ],
+          "secondary_unscored_diagnostic": {
+            "comparison_role": "UNSCORED_DIAGNOSTIC",
+            "formula": "1000 * finite_difference(cup_beverage_mass_kg, time_s)",
+            "includes_solute_mass_flux": true,
+            "may_replace_primary_quantity": false,
+            "quantity_id": "predicted-total-beverage-mass-flow",
+            "unit": "g/s"
+          },
+          "source_path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+          "source_selector": "reference_pressure_round__bar == 9.0; shot_id in protected list; mass_flow_rate__g_per_s"
+        },
+        "geometry": {
+          "axial_cells": 128,
+          "axial_grading": 1.0,
+          "azimuthal_cells": 1,
+          "basket_diameter_m": 0.056,
+          "basket_radius_m": 0.028,
+          "hardware_basket_diameter_m": 0.058,
+          "hydraulic_bed_area_m2": 0.002463008640414398,
+          "radial_cells": 64,
+          "radial_grading": 1.0,
+          "wedge_angle_deg": 5.0
+        },
+        "governance": {
+          "change_scope": "SOURCE_SCENARIO_CHANGE_ONLY",
+          "evidence_role": "CROSS_SOURCE_NONHOLDOUT_CHEMISTRY_COMPARISON",
+          "task": "VAL-CORPUS-002"
+        },
+        "hydraulics": {
+          "front_pressure_gauge_Pa": 0.0,
+          "gravity_enabled": false,
+          "historically_calibrated_parameter_count": 1,
+          "outlet_pressure_gauge_Pa": 0.0,
+          "permeability_profile": {
+            "downstream_permeability_m2": 2.8642613245723525e-15,
+            "interface_position_m": 0.005,
+            "type": "uniform",
+            "upstream_permeability_m2": 2.8642613245723525e-15
+          },
+          "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+          "pressure_ramp_time_s": 3.0,
+          "runtime_adjustable_parameter_count": 0,
+          "saturated_permeability_m2": 2.685538494131689e-15,
+          "target_inlet_pressure_gauge_Pa": 900000.0,
+          "wetting_permeability_m2": 2.8642613245723525e-15
+        },
+        "liquid": {
+          "density_kg_m3": 965.0,
+          "dynamic_viscosity_Pa_s": 0.000315,
+          "effective_solute_diffusivity_m2_s": 1e-09,
+          "temperature_K": 363.15
+        },
+        "mode": "source_linked_reconstruction",
+        "openfoam_distribution": "OpenFOAM Foundation",
+        "openfoam_version": "12",
+        "output": {
+          "live_stage_logging": true,
+          "reference_artifact_version": "0.1.4",
+          "write_compression": false,
+          "write_format": "binary"
+        },
+        "parallel": {
+          "decomposition_method": "scotch",
+          "default_subdomains": 32
+        },
+        "poroelasticCompaction": {
+          "criticalCompactionPressurePa": 1239155.0,
+          "machineFluxRelativeTolerance": 1e-08,
+          "model": "waszkiewicz2025FinitePhi",
+          "nonlinearAbsoluteTolerance": 1e-13,
+          "nonlinearMaximumIterations": 100,
+          "nonlinearRelativeTolerance": 1e-09,
+          "nonlinearUnderRelaxation": 0.7,
+          "stressFreePermeabilityM2": 2.685538494131689e-15,
+          "stressFreePorosity": 0.4
+        },
+        "pressure_nodes": {
+          "inlet": "BASKET_OR_PUCK_INLET_GAUGE",
+          "outlet": "BASKET_BOTTOM_AMBIENT_GAUGE",
+          "reference_bin": "REFERENCE_PRESSURE_BIN_CONTEXT_ONLY"
+        },
+        "scenario_id": "VAL_CORPUS_002_WASZ_9_COMPACT_P0_CHEMISTRY",
+        "schema_version": "espresso.whole_pull.reconstruction_scenario.wp02a.v1",
+        "solver": "espressoWholePullFoam",
+        "solver_version": "0.1.4",
+        "source_time_mapping": {
+          "solver_time_equals_source_time_plus_s": 3.0,
+          "source_fixed_8s_offset_used": false
+        },
+        "time": {
+          "delta_t_s": 0.02,
+          "end_s": 63.0,
+          "field_write_interval_s": 1.0,
+          "reduced_trace_maximum_interval_s": 0.1,
+          "start_s": 0.0,
+          "target_beverage_mass_kg": 0.04,
+          "target_beverage_mass_role": "UNSCORED_DIAGNOSTIC_NOT_TERMINATION"
+        },
+        "verification": {
+          "analytical_first_drip_absolute_tolerance_s": 1e-08,
+          "analytical_first_drip_s": 4.426434882126959,
+          "analytical_flow_relative_tolerance": 1e-08,
+          "b0_parity": {
+            "event_absolute_tolerance_s": 1e-08,
+            "hydraulic_relative_tolerance": 1e-08,
+            "inventory_relative_tolerance": 0.005
+          },
+          "bounded_state": {
+            "concentration_cap_absolute_tolerance_kg_m3": 1e-08,
+            "inventory_absolute_tolerance_kg": 1e-12,
+            "monotonic_mass_absolute_tolerance_kg": 1e-12,
+            "retained_water_absolute_tolerance_kg": 1e-12
+          },
+          "pressure_probes": [
+            {
+              "half_width_m": 1.7952918192111726e-05,
+              "name": "quarter_depth",
+              "position_m": 0.002252915224108138
+            },
+            {
+              "half_width_m": 1.7952918192111726e-05,
+              "name": "three_quarter_depth",
+              "position_m": 0.006758745672324415
+            }
+          ],
+          "retained_water_relative_tolerance": 1e-08,
+          "wedge_volume_relative_tolerance": 1e-08
+        },
+        "wetting": {
+          "front_smoothing_cells": 1.0,
+          "initial_saturation": 0.0,
+          "initial_wet_front_m": 0.0,
+          "model": "darcy_sharp_front_storage"
+        }
+      },
+      "configuration_sha256": "a5f47a3d759ee6647a4fc53478028b4070ff0dd0b18c1aa321284bf0ddee6c03",
+      "id": "WASZ_9_COMPACT_P0_CHEMISTRY",
+      "parameterization": "P0"
+    },
+    {
+      "configuration": {
+        "bedMechanicsModel": "waszkiewiczQuasiStaticCompaction",
+        "claim_ceiling": "Physical validation NOT_ESTABLISHED; existing-public-evidence reconstruction/component comparison.",
+        "coffee_bed": {
+          "bed_depth_m": 0.01,
+          "bed_depth_status": "APPROXIMATE_SOURCE_PARAMETER",
+          "dry_dose_kg": 0.0185,
+          "initial_extractable_fraction_dry_basis": 0.216896244235,
+          "initial_porosity": 0.46349007886296223,
+          "particle_solid_density_kg_m3": 1400.0
+        },
+        "execution_boundaries": {
+          "analytical_preflight_execution_count": 1,
+          "openfoam_execution_count": 0,
+          "optimizer_iteration_count": 0,
+          "parameter_fitting_count": 0,
+          "protected_comparison_execution_count": 0,
+          "puckworks_code_execution_count": 0,
+          "puckworks_reference_execution_count": 0,
+          "reduced_preflight_execution_count": 1,
+          "scientific_result_status": "NOT_RUN"
+        },
+        "extraction": {
+          "model": "single_effective_solute_first_order_with_capacity_ceiling",
+          "rate_constant_1_s": 0.11446486815650324,
+          "saturation_concentration_kg_m3": 180.0,
+          "status": "INHERITED_R0_UNCALIBRATED_UNSCORED"
+        },
+        "flow_comparison_contract": {
+          "gates": {
+            "median_normalized_shape_rmse_max": 0.15,
+            "median_pearson_r_min": 0.95,
+            "shot_count": 5,
+            "shots_required_at_or_above_r_0_90": 4,
+            "shots_required_at_or_below_rmse_0_20": 4
+          },
+          "normalization_indices": {
+            "first": 900,
+            "inclusive": true,
+            "last": 999
+          },
+          "pearson_degeneracy": {
+            "jitter_or_regularization_allowed": false,
+            "nonfinite_value_disposition": "FAIL",
+            "normalized_standard_deviation_epsilon": 1e-08,
+            "standard_deviation_definition": "population standard deviation of the finite normalized protected-window vector",
+            "undefined_disposition": "FAIL",
+            "undefined_if_observed_std_at_or_below_epsilon": true,
+            "undefined_if_predicted_std_at_or_below_epsilon": true
+          },
+          "primary_predicted_quantity": {
+            "basis": "HYDRAULIC_EQUIVALENT_LIQUID_MASS_FLOW",
+            "formula": "q_pred_g_per_s = 1000 * liquid_density_kg_m3 * outlet_flow_m3_s",
+            "includes_solute_mass_flux": false,
+            "liquid_density_kg_m3": 965.0,
+            "quantity_id": "hydraulic-equivalent-outlet-mass-flow",
+            "solver_native_field": "outlet_flow_m3_s",
+            "unit": "g/s",
+            "used_for_calibration_reproduction": true,
+            "used_for_protected_shape_comparison": true
+          },
+          "protected_indices": {
+            "first": 100,
+            "inclusive": true,
+            "last": 899
+          },
+          "protected_series_embedded": false,
+          "protected_shot_ids": [
+            "9-1",
+            "9-2",
+            "9-3",
+            "9-4",
+            "9-5"
+          ],
+          "secondary_unscored_diagnostic": {
+            "comparison_role": "UNSCORED_DIAGNOSTIC",
+            "formula": "1000 * finite_difference(cup_beverage_mass_kg, time_s)",
+            "includes_solute_mass_flux": true,
+            "may_replace_primary_quantity": false,
+            "quantity_id": "predicted-total-beverage-mass-flow",
+            "unit": "g/s"
+          },
+          "source_path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+          "source_selector": "reference_pressure_round__bar == 9.0; shot_id in protected list; mass_flow_rate__g_per_s"
+        },
+        "geometry": {
+          "axial_cells": 128,
+          "axial_grading": 1.0,
+          "azimuthal_cells": 1,
+          "basket_diameter_m": 0.056,
+          "basket_radius_m": 0.028,
+          "hardware_basket_diameter_m": 0.058,
+          "hydraulic_bed_area_m2": 0.002463008640414398,
+          "radial_cells": 64,
+          "radial_grading": 1.0,
+          "wedge_angle_deg": 5.0
+        },
+        "governance": {
+          "change_scope": "SOURCE_SCENARIO_CHANGE_ONLY",
+          "evidence_role": "CROSS_SOURCE_NONHOLDOUT_CHEMISTRY_COMPARISON",
+          "task": "VAL-CORPUS-002"
+        },
+        "hydraulics": {
+          "front_pressure_gauge_Pa": 0.0,
+          "gravity_enabled": false,
+          "historically_calibrated_parameter_count": 1,
+          "outlet_pressure_gauge_Pa": 0.0,
+          "permeability_profile": {
+            "downstream_permeability_m2": 2.8642613245723525e-15,
+            "interface_position_m": 0.005,
+            "type": "uniform",
+            "upstream_permeability_m2": 2.8642613245723525e-15
+          },
+          "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+          "pressure_ramp_time_s": 3.0,
+          "runtime_adjustable_parameter_count": 0,
+          "saturated_permeability_m2": 2.685538494131689e-15,
+          "target_inlet_pressure_gauge_Pa": 900000.0,
+          "wetting_permeability_m2": 2.8642613245723525e-15
+        },
+        "liquid": {
+          "density_kg_m3": 965.0,
+          "dynamic_viscosity_Pa_s": 0.000315,
+          "effective_solute_diffusivity_m2_s": 1e-09,
+          "temperature_K": 363.15
+        },
+        "mode": "source_linked_reconstruction",
+        "openfoam_distribution": "OpenFOAM Foundation",
+        "openfoam_version": "12",
+        "output": {
+          "live_stage_logging": true,
+          "reference_artifact_version": "0.1.4",
+          "write_compression": false,
+          "write_format": "binary"
+        },
+        "parallel": {
+          "decomposition_method": "scotch",
+          "default_subdomains": 32
+        },
+        "poroelasticCompaction": {
+          "criticalCompactionPressurePa": 1239155.0,
+          "machineFluxRelativeTolerance": 1e-08,
+          "model": "waszkiewicz2025FinitePhi",
+          "nonlinearAbsoluteTolerance": 1e-13,
+          "nonlinearMaximumIterations": 100,
+          "nonlinearRelativeTolerance": 1e-09,
+          "nonlinearUnderRelaxation": 0.7,
+          "stressFreePermeabilityM2": 2.685538494131689e-15,
+          "stressFreePorosity": 0.4
+        },
+        "pressure_nodes": {
+          "inlet": "BASKET_OR_PUCK_INLET_GAUGE",
+          "outlet": "BASKET_BOTTOM_AMBIENT_GAUGE",
+          "reference_bin": "REFERENCE_PRESSURE_BIN_CONTEXT_ONLY"
+        },
+        "scenario_id": "VAL_CORPUS_002_WASZ_9_COMPACT_P1_CHEMISTRY",
+        "schema_version": "espresso.whole_pull.reconstruction_scenario.wp02a.v1",
+        "solver": "espressoWholePullFoam",
+        "solver_version": "0.1.4",
+        "source_time_mapping": {
+          "solver_time_equals_source_time_plus_s": 3.0,
+          "source_fixed_8s_offset_used": false
+        },
+        "time": {
+          "delta_t_s": 0.02,
+          "end_s": 63.0,
+          "field_write_interval_s": 1.0,
+          "reduced_trace_maximum_interval_s": 0.1,
+          "start_s": 0.0,
+          "target_beverage_mass_kg": 0.04,
+          "target_beverage_mass_role": "UNSCORED_DIAGNOSTIC_NOT_TERMINATION"
+        },
+        "verification": {
+          "analytical_first_drip_absolute_tolerance_s": 1e-08,
+          "analytical_first_drip_s": 4.426434882126959,
+          "analytical_flow_relative_tolerance": 1e-08,
+          "b0_parity": {
+            "event_absolute_tolerance_s": 1e-08,
+            "hydraulic_relative_tolerance": 1e-08,
+            "inventory_relative_tolerance": 0.005
+          },
+          "bounded_state": {
+            "concentration_cap_absolute_tolerance_kg_m3": 1e-08,
+            "inventory_absolute_tolerance_kg": 1e-12,
+            "monotonic_mass_absolute_tolerance_kg": 1e-12,
+            "retained_water_absolute_tolerance_kg": 1e-12
+          },
+          "pressure_probes": [
+            {
+              "half_width_m": 1.7952918192111726e-05,
+              "name": "quarter_depth",
+              "position_m": 0.002252915224108138
+            },
+            {
+              "half_width_m": 1.7952918192111726e-05,
+              "name": "three_quarter_depth",
+              "position_m": 0.006758745672324415
+            }
+          ],
+          "retained_water_relative_tolerance": 1e-08,
+          "wedge_volume_relative_tolerance": 1e-08
+        },
+        "wetting": {
+          "front_smoothing_cells": 1.0,
+          "initial_saturation": 0.0,
+          "initial_wet_front_m": 0.0,
+          "model": "darcy_sharp_front_storage"
+        }
+      },
+      "configuration_sha256": "e34928ab4b62b4170117c93d3a346e7190f7ff797cb5f63312ed1a6761720742",
+      "id": "WASZ_9_COMPACT_P1_CHEMISTRY",
+      "parameterization": "P1"
+    },
+    {
+      "configuration": {
+        "bedMechanicsModel": "waszkiewiczQuasiStaticCompaction",
+        "claim_ceiling": "Physical validation NOT_ESTABLISHED; existing-public-evidence reconstruction/component comparison.",
+        "coffee_bed": {
+          "bed_depth_m": 0.01,
+          "bed_depth_status": "APPROXIMATE_SOURCE_PARAMETER",
+          "dry_dose_kg": 0.0185,
+          "initial_extractable_fraction_dry_basis": 0.216896244235,
+          "initial_porosity": 0.46349007886296223,
+          "particle_solid_density_kg_m3": 1400.0
+        },
+        "execution_boundaries": {
+          "analytical_preflight_execution_count": 1,
+          "openfoam_execution_count": 0,
+          "optimizer_iteration_count": 0,
+          "parameter_fitting_count": 0,
+          "protected_comparison_execution_count": 0,
+          "puckworks_code_execution_count": 0,
+          "puckworks_reference_execution_count": 0,
+          "reduced_preflight_execution_count": 1,
+          "scientific_result_status": "NOT_RUN"
+        },
+        "extraction": {
+          "model": "single_effective_solute_first_order_with_capacity_ceiling",
+          "rate_constant_1_s": {
+            "status": "UNRESOLVED",
+            "token": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+            "type": "CALIBRATED_SCALAR_S_INVERSE"
+          },
+          "saturation_concentration_kg_m3": 180.0,
+          "status": "INHERITED_R0_UNCALIBRATED_UNSCORED"
+        },
+        "flow_comparison_contract": {
+          "gates": {
+            "median_normalized_shape_rmse_max": 0.15,
+            "median_pearson_r_min": 0.95,
+            "shot_count": 5,
+            "shots_required_at_or_above_r_0_90": 4,
+            "shots_required_at_or_below_rmse_0_20": 4
+          },
+          "normalization_indices": {
+            "first": 900,
+            "inclusive": true,
+            "last": 999
+          },
+          "pearson_degeneracy": {
+            "jitter_or_regularization_allowed": false,
+            "nonfinite_value_disposition": "FAIL",
+            "normalized_standard_deviation_epsilon": 1e-08,
+            "standard_deviation_definition": "population standard deviation of the finite normalized protected-window vector",
+            "undefined_disposition": "FAIL",
+            "undefined_if_observed_std_at_or_below_epsilon": true,
+            "undefined_if_predicted_std_at_or_below_epsilon": true
+          },
+          "primary_predicted_quantity": {
+            "basis": "HYDRAULIC_EQUIVALENT_LIQUID_MASS_FLOW",
+            "formula": "q_pred_g_per_s = 1000 * liquid_density_kg_m3 * outlet_flow_m3_s",
+            "includes_solute_mass_flux": false,
+            "liquid_density_kg_m3": 965.0,
+            "quantity_id": "hydraulic-equivalent-outlet-mass-flow",
+            "solver_native_field": "outlet_flow_m3_s",
+            "unit": "g/s",
+            "used_for_calibration_reproduction": true,
+            "used_for_protected_shape_comparison": true
+          },
+          "protected_indices": {
+            "first": 100,
+            "inclusive": true,
+            "last": 899
+          },
+          "protected_series_embedded": false,
+          "protected_shot_ids": [
+            "9-1",
+            "9-2",
+            "9-3",
+            "9-4",
+            "9-5"
+          ],
+          "secondary_unscored_diagnostic": {
+            "comparison_role": "UNSCORED_DIAGNOSTIC",
+            "formula": "1000 * finite_difference(cup_beverage_mass_kg, time_s)",
+            "includes_solute_mass_flux": true,
+            "may_replace_primary_quantity": false,
+            "quantity_id": "predicted-total-beverage-mass-flow",
+            "unit": "g/s"
+          },
+          "source_path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+          "source_selector": "reference_pressure_round__bar == 9.0; shot_id in protected list; mass_flow_rate__g_per_s"
+        },
+        "geometry": {
+          "axial_cells": 128,
+          "axial_grading": 1.0,
+          "azimuthal_cells": 1,
+          "basket_diameter_m": 0.056,
+          "basket_radius_m": 0.028,
+          "hardware_basket_diameter_m": 0.058,
+          "hydraulic_bed_area_m2": 0.002463008640414398,
+          "radial_cells": 64,
+          "radial_grading": 1.0,
+          "wedge_angle_deg": 5.0
+        },
+        "governance": {
+          "change_scope": "SOURCE_SCENARIO_CHANGE_ONLY",
+          "evidence_role": "CROSS_SOURCE_NONHOLDOUT_CHEMISTRY_COMPARISON",
+          "task": "VAL-CORPUS-002"
+        },
+        "hydraulics": {
+          "front_pressure_gauge_Pa": 0.0,
+          "gravity_enabled": false,
+          "historically_calibrated_parameter_count": 1,
+          "outlet_pressure_gauge_Pa": 0.0,
+          "permeability_profile": {
+            "downstream_permeability_m2": 2.8642613245723525e-15,
+            "interface_position_m": 0.005,
+            "type": "uniform",
+            "upstream_permeability_m2": 2.8642613245723525e-15
+          },
+          "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+          "pressure_ramp_time_s": 3.0,
+          "runtime_adjustable_parameter_count": 0,
+          "saturated_permeability_m2": 2.685538494131689e-15,
+          "target_inlet_pressure_gauge_Pa": 900000.0,
+          "wetting_permeability_m2": 2.8642613245723525e-15
+        },
+        "liquid": {
+          "density_kg_m3": 965.0,
+          "dynamic_viscosity_Pa_s": 0.000315,
+          "effective_solute_diffusivity_m2_s": 1e-09,
+          "temperature_K": 363.15
+        },
+        "mode": "source_linked_reconstruction",
+        "openfoam_distribution": "OpenFOAM Foundation",
+        "openfoam_version": "12",
+        "output": {
+          "live_stage_logging": true,
+          "reference_artifact_version": "0.1.4",
+          "write_compression": false,
+          "write_format": "binary"
+        },
+        "parallel": {
+          "decomposition_method": "scotch",
+          "default_subdomains": 32
+        },
+        "poroelasticCompaction": {
+          "criticalCompactionPressurePa": 1239155.0,
+          "machineFluxRelativeTolerance": 1e-08,
+          "model": "waszkiewicz2025FinitePhi",
+          "nonlinearAbsoluteTolerance": 1e-13,
+          "nonlinearMaximumIterations": 100,
+          "nonlinearRelativeTolerance": 1e-09,
+          "nonlinearUnderRelaxation": 0.7,
+          "stressFreePermeabilityM2": 2.685538494131689e-15,
+          "stressFreePorosity": 0.4
+        },
+        "pressure_nodes": {
+          "inlet": "BASKET_OR_PUCK_INLET_GAUGE",
+          "outlet": "BASKET_BOTTOM_AMBIENT_GAUGE",
+          "reference_bin": "REFERENCE_PRESSURE_BIN_CONTEXT_ONLY"
+        },
+        "scenario_id": "VAL_CORPUS_002_WASZ_9_COMPACT_P2_FIXED_AFTER_EXP7_CALIBRATION_CHEMISTRY",
+        "schema_version": "espresso.whole_pull.reconstruction_scenario.wp02a.v1",
+        "solver": "espressoWholePullFoam",
+        "solver_version": "0.1.4",
+        "source_time_mapping": {
+          "solver_time_equals_source_time_plus_s": 3.0,
+          "source_fixed_8s_offset_used": false
+        },
+        "time": {
+          "delta_t_s": 0.02,
+          "end_s": 63.0,
+          "field_write_interval_s": 1.0,
+          "reduced_trace_maximum_interval_s": 0.1,
+          "start_s": 0.0,
+          "target_beverage_mass_kg": 0.04,
+          "target_beverage_mass_role": "UNSCORED_DIAGNOSTIC_NOT_TERMINATION"
+        },
+        "verification": {
+          "analytical_first_drip_absolute_tolerance_s": 1e-08,
+          "analytical_first_drip_s": 4.426434882126959,
+          "analytical_flow_relative_tolerance": 1e-08,
+          "b0_parity": {
+            "event_absolute_tolerance_s": 1e-08,
+            "hydraulic_relative_tolerance": 1e-08,
+            "inventory_relative_tolerance": 0.005
+          },
+          "bounded_state": {
+            "concentration_cap_absolute_tolerance_kg_m3": 1e-08,
+            "inventory_absolute_tolerance_kg": 1e-12,
+            "monotonic_mass_absolute_tolerance_kg": 1e-12,
+            "retained_water_absolute_tolerance_kg": 1e-12
+          },
+          "pressure_probes": [
+            {
+              "half_width_m": 1.7952918192111726e-05,
+              "name": "quarter_depth",
+              "position_m": 0.002252915224108138
+            },
+            {
+              "half_width_m": 1.7952918192111726e-05,
+              "name": "three_quarter_depth",
+              "position_m": 0.006758745672324415
+            }
+          ],
+          "retained_water_relative_tolerance": 1e-08,
+          "wedge_volume_relative_tolerance": 1e-08
+        },
+        "wetting": {
+          "front_smoothing_cells": 1.0,
+          "initial_saturation": 0.0,
+          "initial_wet_front_m": 0.0,
+          "model": "darcy_sharp_front_storage"
+        }
+      },
+      "configuration_sha256": "40cd2cbed05838fff8102d70a8d3f5b168e8c51a0d3260e48e66749d26a91119",
+      "id": "WASZ_9_COMPACT_P2_FIXED_AFTER_EXP7_CALIBRATION_CHEMISTRY",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION"
+    }
+  ],
+  "reduced_source_clock": {
+    "equations": {
+      "extraction_yield": "EY(M)=Msolute(M)/dose",
+      "solute_mass": "Msolute(M)=M0*(1-exp(-k*t(M)))",
+      "tds": "TDS(M)=Msolute(M)/M",
+      "time": "t(M)=M/(rho*Q)"
+    },
+    "inputs": {
+      "M0": "dose*extractableFraction for P0/P1/fixed P2",
+      "Q": "source mean measured flow for experiment",
+      "k": "extractionRateConstant for P0/P1/fixed P2",
+      "rho_g_ml": 1.0
+    },
+    "limitations": [
+      "NO_WETTING",
+      "NO_PRESSURE_SOLUTION",
+      "NO_SPATIAL_TRANSPORT",
+      "NO_DISPERSION",
+      "NO_SATURATION_CONCENTRATION_CEILING",
+      "NO_FINITE_VOLUME_EFFECTS",
+      "NO_PHYSICAL_VALIDATION_CLAIM"
+    ],
+    "status": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION"
+  },
+  "schema_version": 1
+}
