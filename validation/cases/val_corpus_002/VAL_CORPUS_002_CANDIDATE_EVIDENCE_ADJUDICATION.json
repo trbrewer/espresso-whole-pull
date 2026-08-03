@@ -1,7 +1,7 @@
 {
   "allowed_treatments": [
     "MANDATORY_PRIMARY",
-    "SECONDARY_IF_FULLY_MAPPED_BEFORE_PROTOCOL_REVIEW",
+    "EXCLUDED_FROM_STAGE_B_WITH_REASON",
     "CONTEXT_OR_PRIOR_ONLY",
     "SOURCE_ONLY_LIMITATION_AUDIT",
     "EXCLUDED_WITH_REASON",
@@ -14,7 +14,7 @@
     {"candidate": "Mo fixed-flow yield and strength", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "useful mechanism context but no fully mapped aggregate chemistry cohort", "path": "docs/cards/mo2023.md", "sha256": "d4fc280261843b159f07746735fb05cffcba4401138755c0951febdee10f5364"},
     {"candidate": "Roman-Corrochano extraction conditions", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "conditions inform limitations; they are not a complete mapped score cohort", "path": "docs/cards/romancorrochano2017_extraction.md", "sha256": "0ff2a8ba7de4b581eec6af0be3d06a985c62de2d6cd4484e9c7e62bf05591bc3"},
     {"candidate": "Angeloni total-solids and multi-species evidence", "treatment": "SOURCE_ONLY_LIMITATION_AUDIT", "reason": "species evidence diagnoses representation limits without model scoring", "path": "puckworks/data/angeloni2023/bioactives.csv", "sha256": "780ba72d13f87f695cd41c16a18b003871f87ed80149e9c3bf0b76d2d2f2866a"},
-    {"candidate": "Egidi pressure temperature TDS and EY", "treatment": "SECONDARY_IF_FULLY_MAPPED_BEFORE_PROTOCOL_REVIEW", "reason": "eligible only if geometry, clocks, conditions, units, and uncertainty are resolved before review", "path": "docs/cards/egidi2024.md", "sha256": "df43ed5a10b4d16a10d73431552f2cff948216e8a0efef9fa48b61549fe0b670"},
+    {"candidate": "Egidi pressure temperature TDS and EY", "treatment": "EXCLUDED_FROM_STAGE_B_WITH_REASON", "reason": "geometry, source-to-solver clock, condition mapping, and uncertainty are not fully resolved at the Stage-A review gate", "path": "docs/cards/egidi2024.md", "sha256": "df43ed5a10b4d16a10d73431552f2cff948216e8a0efef9fa48b61549fe0b670"},
     {"candidate": "Smrke fines flow and EY", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "digitized yield trends are contextual and do not define the mandatory cohort", "path": "puckworks/data/smrke2024/41598_2024_55831_Fig5_HTML_panel_b_yield.csv", "sha256": "cbbc15d448b0ecd0e568c1438a1427ef26e481a05602c39023e063a759a8eded"},
     {"candidate": "Liang brew-ratio trends", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "brew-ratio trend context without condition-complete transfer mapping", "path": "puckworks/data/liang2021/liang_fig3_tds_vs_rbrew.csv", "sha256": "5cc12ff8231a8498d995414f5879ac5511e945dd66894f1ad35b9bf61dbae4cf"},
     {"candidate": "Fasano transient or reversal signatures", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "mechanism/signature context; no governed aggregate chemistry observations at the pin", "path": "docs/cards/fasano2000_partII.md", "sha256": "6386d756541f84c223b4376d16e238c94d68eb2de7e09e55445130a3ddf6bde6"},

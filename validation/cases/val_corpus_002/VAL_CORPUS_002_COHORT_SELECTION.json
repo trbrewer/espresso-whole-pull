@@ -15,7 +15,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.00014777100000000002,
+      "tds_fraction": 0.147771,
       "tds_mass_g": 2.95542,
       "tds_mass_units": "g"
     },
@@ -34,7 +34,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.740250000000001e-05,
+      "tds_fraction": 0.0974025,
       "tds_mass_g": 3.8961,
       "tds_mass_units": "g"
     },
@@ -53,7 +53,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.992516666666667e-05,
+      "tds_fraction": 0.06992516666666666,
       "tds_mass_g": 4.19551,
       "tds_mass_units": "g"
     },
@@ -72,7 +72,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.00014477,
+      "tds_fraction": 0.14477,
       "tds_mass_g": 2.8954,
       "tds_mass_units": "g"
     },
@@ -91,7 +91,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.7193e-05,
+      "tds_fraction": 0.097193,
       "tds_mass_g": 3.88772,
       "tds_mass_units": "g"
     },
@@ -110,7 +110,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 7.04635e-05,
+      "tds_fraction": 0.0704635,
       "tds_mass_g": 4.22781,
       "tds_mass_units": "g"
     },
@@ -129,7 +129,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.000147508,
+      "tds_fraction": 0.147508,
       "tds_mass_g": 2.95016,
       "tds_mass_units": "g"
     },
@@ -148,7 +148,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.78115e-05,
+      "tds_fraction": 0.0978115,
       "tds_mass_g": 3.91246,
       "tds_mass_units": "g"
     },
@@ -167,7 +167,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 7.043900000000001e-05,
+      "tds_fraction": 0.070439,
       "tds_mass_g": 4.22634,
       "tds_mass_units": "g"
     },
@@ -186,7 +186,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.0001468585,
+      "tds_fraction": 0.1468585,
       "tds_mass_g": 2.93717,
       "tds_mass_units": "g"
     },
@@ -205,7 +205,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.642025e-05,
+      "tds_fraction": 0.09642025,
       "tds_mass_g": 3.85681,
       "tds_mass_units": "g"
     },
@@ -224,7 +224,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.907916666666667e-05,
+      "tds_fraction": 0.06907916666666666,
       "tds_mass_g": 4.14475,
       "tds_mass_units": "g"
     },
@@ -243,7 +243,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.0001488985,
+      "tds_fraction": 0.1488985,
       "tds_mass_g": 2.97797,
       "tds_mass_units": "g"
     },
@@ -262,7 +262,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.701825e-05,
+      "tds_fraction": 0.09701825,
       "tds_mass_g": 3.88073,
       "tds_mass_units": "g"
     },
@@ -281,7 +281,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.924e-05,
+      "tds_fraction": 0.06924,
       "tds_mass_g": 4.1544,
       "tds_mass_units": "g"
     },
@@ -300,7 +300,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.000141397,
+      "tds_fraction": 0.141397,
       "tds_mass_g": 2.82794,
       "tds_mass_units": "g"
     },
@@ -319,7 +319,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.558449999999999e-05,
+      "tds_fraction": 0.09558449999999999,
       "tds_mass_g": 3.82338,
       "tds_mass_units": "g"
     },
@@ -338,7 +338,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.9563e-05,
+      "tds_fraction": 0.069563,
       "tds_mass_g": 4.17378,
       "tds_mass_units": "g"
     }
@@ -359,7 +359,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 1.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.0001601415,
+      "tds_fraction": 0.1601415,
       "tds_mass_g": 3.20283,
       "tds_mass_units": "g"
     },
@@ -378,7 +378,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 1.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.00010236825000000001,
+      "tds_fraction": 0.10236825000000001,
       "tds_mass_g": 4.09473,
       "tds_mass_units": "g"
     },
@@ -397,7 +397,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 1.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 7.238499999999999e-05,
+      "tds_fraction": 0.07238499999999999,
       "tds_mass_g": 4.3431,
       "tds_mass_units": "g"
     },
@@ -416,7 +416,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 1.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.00015886899999999999,
+      "tds_fraction": 0.15886899999999998,
       "tds_mass_g": 3.17738,
       "tds_mass_units": "g"
     },
@@ -435,7 +435,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 1.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.00010176050000000001,
+      "tds_fraction": 0.1017605,
       "tds_mass_g": 4.07042,
       "tds_mass_units": "g"
     },
@@ -454,7 +454,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 1.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 7.20235e-05,
+      "tds_fraction": 0.0720235,
       "tds_mass_g": 4.32141,
       "tds_mass_units": "g"
     },
@@ -473,7 +473,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 1.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.000161111,
+      "tds_fraction": 0.161111,
       "tds_mass_g": 3.22222,
       "tds_mass_units": "g"
     },
@@ -492,7 +492,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 1.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.0001030845,
+      "tds_fraction": 0.1030845,
       "tds_mass_g": 4.12338,
       "tds_mass_units": "g"
     },
@@ -511,7 +511,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 1.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 7.292333333333333e-05,
+      "tds_fraction": 0.07292333333333333,
       "tds_mass_g": 4.3754,
       "tds_mass_units": "g"
     },
@@ -530,7 +530,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 3.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.000140956,
+      "tds_fraction": 0.140956,
       "tds_mass_g": 2.81912,
       "tds_mass_units": "g"
     },
@@ -549,7 +549,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 3.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.37515e-05,
+      "tds_fraction": 0.0937515,
       "tds_mass_g": 3.75006,
       "tds_mass_units": "g"
     },
@@ -568,7 +568,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 3.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.762466666666667e-05,
+      "tds_fraction": 0.06762466666666667,
       "tds_mass_g": 4.05748,
       "tds_mass_units": "g"
     },
@@ -587,7 +587,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 3.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.00014447899999999998,
+      "tds_fraction": 0.144479,
       "tds_mass_g": 2.88958,
       "tds_mass_units": "g"
     },
@@ -606,7 +606,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 3.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.570625000000001e-05,
+      "tds_fraction": 0.09570625,
       "tds_mass_g": 3.82825,
       "tds_mass_units": "g"
     },
@@ -625,7 +625,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 3.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.888616666666666e-05,
+      "tds_fraction": 0.06888616666666666,
       "tds_mass_g": 4.13317,
       "tds_mass_units": "g"
     },
@@ -644,7 +644,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 3.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.0001457825,
+      "tds_fraction": 0.14578249999999998,
       "tds_mass_g": 2.91565,
       "tds_mass_units": "g"
     },
@@ -663,7 +663,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 3.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.646875000000001e-05,
+      "tds_fraction": 0.09646875,
       "tds_mass_g": 3.85875,
       "tds_mass_units": "g"
     },
@@ -682,7 +682,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 3.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.939683333333333e-05,
+      "tds_fraction": 0.06939683333333332,
       "tds_mass_g": 4.16381,
       "tds_mass_units": "g"
     },
@@ -701,7 +701,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.0001406445,
+      "tds_fraction": 0.1406445,
       "tds_mass_g": 2.81289,
       "tds_mass_units": "g"
     },
@@ -720,7 +720,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 8.871675e-05,
+      "tds_fraction": 0.08871675,
       "tds_mass_g": 3.54867,
       "tds_mass_units": "g"
     },
@@ -739,7 +739,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.235233333333334e-05,
+      "tds_fraction": 0.062352333333333336,
       "tds_mass_g": 3.74114,
       "tds_mass_units": "g"
     },
@@ -758,7 +758,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.00013717299999999998,
+      "tds_fraction": 0.137173,
       "tds_mass_g": 2.74346,
       "tds_mass_units": "g"
     },
@@ -777,7 +777,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.107350000000001e-05,
+      "tds_fraction": 0.0910735,
       "tds_mass_g": 3.64294,
       "tds_mass_units": "g"
     },
@@ -796,7 +796,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.563066666666668e-05,
+      "tds_fraction": 0.06563066666666667,
       "tds_mass_g": 3.93784,
       "tds_mass_units": "g"
     },
@@ -815,7 +815,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.000144039,
+      "tds_fraction": 0.144039,
       "tds_mass_g": 2.88078,
       "tds_mass_units": "g"
     },
@@ -834,7 +834,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.421725e-05,
+      "tds_fraction": 0.09421725,
       "tds_mass_g": 3.76869,
       "tds_mass_units": "g"
     },
@@ -853,7 +853,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 6.737266666666667e-05,
+      "tds_fraction": 0.06737266666666668,
       "tds_mass_g": 4.04236,
       "tds_mass_units": "g"
     },
@@ -872,7 +872,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.00014972749999999998,
+      "tds_fraction": 0.14972749999999999,
       "tds_mass_g": 2.99455,
       "tds_mass_units": "g"
     },
@@ -891,7 +891,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.8373e-05,
+      "tds_fraction": 0.098373,
       "tds_mass_g": 3.93492,
       "tds_mass_units": "g"
     },
@@ -910,7 +910,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 7.050366666666667e-05,
+      "tds_fraction": 0.07050366666666667,
       "tds_mass_g": 4.23022,
       "tds_mass_units": "g"
     },
@@ -929,7 +929,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.000149631,
+      "tds_fraction": 0.14963100000000001,
       "tds_mass_g": 2.99262,
       "tds_mass_units": "g"
     },
@@ -948,7 +948,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.824725e-05,
+      "tds_fraction": 0.09824725,
       "tds_mass_g": 3.92989,
       "tds_mass_units": "g"
     },
@@ -967,7 +967,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 7.039049999999999e-05,
+      "tds_fraction": 0.0703905,
       "tds_mass_g": 4.22343,
       "tds_mass_units": "g"
     },
@@ -986,7 +986,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 0.00014829699999999998,
+      "tds_fraction": 0.14829699999999998,
       "tds_mass_g": 2.96594,
       "tds_mass_units": "g"
     },
@@ -1005,7 +1005,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 9.770925e-05,
+      "tds_fraction": 0.09770925,
       "tds_mass_g": 3.90837,
       "tds_mass_units": "g"
     },
@@ -1024,7 +1024,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 89.0,
-      "tds_fraction": 7.013066666666666e-05,
+      "tds_fraction": 0.07013066666666666,
       "tds_mass_g": 4.20784,
       "tds_mass_units": "g"
     },
@@ -1043,7 +1043,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 80.0,
-      "tds_fraction": 0.0001484965,
+      "tds_fraction": 0.1484965,
       "tds_mass_g": 2.96993,
       "tds_mass_units": "g"
     },
@@ -1062,7 +1062,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 80.0,
-      "tds_fraction": 9.664675000000001e-05,
+      "tds_fraction": 0.09664675,
       "tds_mass_g": 3.86587,
       "tds_mass_units": "g"
     },
@@ -1081,7 +1081,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 80.0,
-      "tds_fraction": 6.893583333333333e-05,
+      "tds_fraction": 0.06893583333333334,
       "tds_mass_g": 4.13615,
       "tds_mass_units": "g"
     },
@@ -1100,7 +1100,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 80.0,
-      "tds_fraction": 0.00014726300000000002,
+      "tds_fraction": 0.147263,
       "tds_mass_g": 2.94526,
       "tds_mass_units": "g"
     },
@@ -1119,7 +1119,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 80.0,
-      "tds_fraction": 9.813724999999999e-05,
+      "tds_fraction": 0.09813725,
       "tds_mass_g": 3.92549,
       "tds_mass_units": "g"
     },
@@ -1138,7 +1138,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 80.0,
-      "tds_fraction": 7.086216666666667e-05,
+      "tds_fraction": 0.07086216666666667,
       "tds_mass_g": 4.25173,
       "tds_mass_units": "g"
     },
@@ -1157,7 +1157,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 80.0,
-      "tds_fraction": 0.0001522715,
+      "tds_fraction": 0.1522715,
       "tds_mass_g": 3.04543,
       "tds_mass_units": "g"
     },
@@ -1176,7 +1176,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 80.0,
-      "tds_fraction": 0.0001025715,
+      "tds_fraction": 0.1025715,
       "tds_mass_g": 4.10286,
       "tds_mass_units": "g"
     },
@@ -1195,7 +1195,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 80.0,
-      "tds_fraction": 7.450033333333333e-05,
+      "tds_fraction": 0.07450033333333334,
       "tds_mass_g": 4.47002,
       "tds_mass_units": "g"
     },
@@ -1214,7 +1214,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 98.0,
-      "tds_fraction": 0.00014835950000000002,
+      "tds_fraction": 0.1483595,
       "tds_mass_g": 2.96719,
       "tds_mass_units": "g"
     },
@@ -1233,7 +1233,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 98.0,
-      "tds_fraction": 9.838125000000001e-05,
+      "tds_fraction": 0.09838125,
       "tds_mass_g": 3.93525,
       "tds_mass_units": "g"
     },
@@ -1252,7 +1252,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 98.0,
-      "tds_fraction": 7.085133333333334e-05,
+      "tds_fraction": 0.07085133333333334,
       "tds_mass_g": 4.25108,
       "tds_mass_units": "g"
     },
@@ -1271,7 +1271,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 98.0,
-      "tds_fraction": 0.00015455449999999998,
+      "tds_fraction": 0.15455449999999998,
       "tds_mass_g": 3.09109,
       "tds_mass_units": "g"
     },
@@ -1290,7 +1290,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 98.0,
-      "tds_fraction": 0.00010199549999999998,
+      "tds_fraction": 0.10199549999999999,
       "tds_mass_g": 4.07982,
       "tds_mass_units": "g"
     },
@@ -1309,7 +1309,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 98.0,
-      "tds_fraction": 7.326800000000002e-05,
+      "tds_fraction": 0.07326800000000001,
       "tds_mass_g": 4.39608,
       "tds_mass_units": "g"
     },
@@ -1328,7 +1328,7 @@
       "target_beverage_mass_g": 20.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 98.0,
-      "tds_fraction": 0.0001550465,
+      "tds_fraction": 0.1550465,
       "tds_mass_g": 3.10093,
       "tds_mass_units": "g"
     },
@@ -1347,7 +1347,7 @@
       "target_beverage_mass_g": 40.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 98.0,
-      "tds_fraction": 0.00010037875,
+      "tds_fraction": 0.10037875,
       "tds_mass_g": 4.01515,
       "tds_mass_units": "g"
     },
@@ -1366,7 +1366,7 @@
       "target_beverage_mass_g": 60.0,
       "target_flow_ml_s": 2.0,
       "target_temperature_C": 98.0,
-      "tds_fraction": 7.14115e-05,
+      "tds_fraction": 0.0714115,
       "tds_mass_g": 4.28469,
       "tds_mass_units": "g"
     }

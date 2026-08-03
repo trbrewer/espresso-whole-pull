@@ -28,11 +28,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 362,
+    "python_test_count": 365,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 243,
-    "source_manifest_aggregate_sha256": "455a4503afa3f86e24a2073591dd41848362a42a268f1bf76594a2ab06ffa148",
+    "source_manifest_aggregate_sha256": "116b6387d08004f1794946119ae2997968e32430bd44b1d57b16ee9a9ef745a9",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -68,7 +68,7 @@
     "cross_pressure_ordering": "STILL_REVERSED",
     "physical_input_retuning_authorized": false,
     "governing_physics_change_authorized": false,
-    "active_validation_case": "VAL_CORPUS_002_PROTOCOL_FROZEN_PENDING_REVIEW",
+    "active_validation_case": "VAL_CORPUS_002_CORRECTED_PROTOCOL_PENDING_REVIEW",
     "active_data_planning_task": "NONE",
     "val_case_002": "NOT_STARTED",
     "new_governing_physics": "NOT_YET_JUSTIFIED",
@@ -331,12 +331,12 @@
   "wp_0_3a_contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
   "wp_0_3a_solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
-  "active_validation_case": "VAL_CORPUS_002_PROTOCOL_FROZEN_PENDING_REVIEW",
+  "active_validation_case": "VAL_CORPUS_002_CORRECTED_PROTOCOL_PENDING_REVIEW",
   "active_data_planning_task": "NONE",
   "active_solver_task": "NONE",
   "val_corpus_002": {
     "stage": "A_PROTOCOL_FREEZE",
-    "status": "FROZEN_PENDING_INDEPENDENT_REVIEW",
+    "status": "CORRECTED_PROTOCOL_PENDING_INDEPENDENT_REVIEW",
     "issue": 53,
     "change_declaration": "SOURCE_SCENARIO_CHANGE_ONLY",
     "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
@@ -347,6 +347,6 @@
     "new_governing_physics": "NOT_YET_JUSTIFIED",
     "val_case_002": "NOT_STARTED"
   },
-  "next_scientific_milestone_after_approved_wp03_002_merge": "VAL_CORPUS_002_STAGE_A_PROTOCOL_FROZEN_PENDING_REVIEW",
+  "next_scientific_milestone_after_approved_wp03_002_merge": "VAL_CORPUS_002_STAGE_A_CORRECTED_PROTOCOL_PENDING_REVIEW",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }

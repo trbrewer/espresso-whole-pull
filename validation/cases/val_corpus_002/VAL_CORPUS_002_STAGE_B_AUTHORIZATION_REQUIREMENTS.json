@@ -1,5 +1,6 @@
 {
   "authorization_status": "NONE",
+  "conditional_evidence_treatments_remaining": 0,
   "prerequisites": ["independent review approval of exact Stage-A head", "separate explicit human-owner Stage-B execution authorization", "unchanged frozen protocol or prospectively reviewed amendment", "verified runtime and evidence locks", "clean exact-head identity"],
   "prohibited_until_authorized": ["OpenFOAM build or execution", "optimizer invocation", "parameter fitting", "governed scoring", "model-versus-source metric calculation", "post-observation protocol edits"],
   "schema_version": 1

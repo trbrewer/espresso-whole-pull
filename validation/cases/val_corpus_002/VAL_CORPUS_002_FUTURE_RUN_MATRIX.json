@@ -1,301 +1,4919 @@
 {
-  "future_openfoam_run_count": 42,
-  "future_openfoam_runs": [
+  "calibration_evaluation_inventory": {
+    "anchor": "SCHMIEDER_EXP7",
+    "evaluation_identity": "solver_commit+executable+case_inputs+log_k",
+    "h0_calibration": "PROHIBITED",
+    "hydraulic_mode": "H1_ONLY",
+    "maximum_optimizer_evaluations": 128,
+    "separate_mode_specific_k": "PROHIBITED"
+  },
+  "final_production_run_inventory": [
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 266666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 1,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP1_P0_H0"
+      "run_id": "SCHM_EXP1_P0_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 1,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 3.980657465334891e-15,
+        "mean_measured_flow_ml_s": 0.9879933333333333,
+        "mean_measured_temperature_C": 87.30185999999999,
+        "mean_unique_replicate_maximum_pressure_bar": 2.6666666666666665,
+        "replicate_count": 3,
+        "target_flow_ml_s": 1.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.55,
+            "measured_flow_ml_s": 1.09218,
+            "measured_temperature_C": 87.17789,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 2.76,
+            "measured_flow_ml_s": 0.95542,
+            "measured_temperature_C": 87.48639,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.69,
+            "measured_flow_ml_s": 0.91638,
+            "measured_temperature_C": 87.2413,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 266666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 1,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 3.980657465334891e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP1_P0_H1"
+      "run_id": "SCHM_EXP1_P0_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 1,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 3.980657465334891e-15,
+        "mean_measured_flow_ml_s": 0.9879933333333333,
+        "mean_measured_temperature_C": 87.30185999999999,
+        "mean_unique_replicate_maximum_pressure_bar": 2.6666666666666665,
+        "replicate_count": 3,
+        "target_flow_ml_s": 1.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.55,
+            "measured_flow_ml_s": 1.09218,
+            "measured_temperature_C": 87.17789,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 2.76,
+            "measured_flow_ml_s": 0.95542,
+            "measured_temperature_C": 87.48639,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.69,
+            "measured_flow_ml_s": 0.91638,
+            "measured_temperature_C": 87.2413,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 266666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 1,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP1_P1_H0"
+      "run_id": "SCHM_EXP1_P1_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 1,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 3.980657465334891e-15,
+        "mean_measured_flow_ml_s": 0.9879933333333333,
+        "mean_measured_temperature_C": 87.30185999999999,
+        "mean_unique_replicate_maximum_pressure_bar": 2.6666666666666665,
+        "replicate_count": 3,
+        "target_flow_ml_s": 1.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.55,
+            "measured_flow_ml_s": 1.09218,
+            "measured_temperature_C": 87.17789,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 2.76,
+            "measured_flow_ml_s": 0.95542,
+            "measured_temperature_C": 87.48639,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.69,
+            "measured_flow_ml_s": 0.91638,
+            "measured_temperature_C": 87.2413,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 266666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 1,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 3.980657465334891e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP1_P1_H1"
+      "run_id": "SCHM_EXP1_P1_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 1,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 3.980657465334891e-15,
+        "mean_measured_flow_ml_s": 0.9879933333333333,
+        "mean_measured_temperature_C": 87.30185999999999,
+        "mean_unique_replicate_maximum_pressure_bar": 2.6666666666666665,
+        "replicate_count": 3,
+        "target_flow_ml_s": 1.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.55,
+            "measured_flow_ml_s": 1.09218,
+            "measured_temperature_C": 87.17789,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 2.76,
+            "measured_flow_ml_s": 0.95542,
+            "measured_temperature_C": 87.48639,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.69,
+            "measured_flow_ml_s": 0.91638,
+            "measured_temperature_C": 87.2413,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 266666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 1,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 1,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 3.980657465334891e-15,
+        "mean_measured_flow_ml_s": 0.9879933333333333,
+        "mean_measured_temperature_C": 87.30185999999999,
+        "mean_unique_replicate_maximum_pressure_bar": 2.6666666666666665,
+        "replicate_count": 3,
+        "target_flow_ml_s": 1.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.55,
+            "measured_flow_ml_s": 1.09218,
+            "measured_temperature_C": 87.17789,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 2.76,
+            "measured_flow_ml_s": 0.95542,
+            "measured_temperature_C": 87.48639,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.69,
+            "measured_flow_ml_s": 0.91638,
+            "measured_temperature_C": 87.2413,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 266666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 1,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 3.980657465334891e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 1,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 3.980657465334891e-15,
+        "mean_measured_flow_ml_s": 0.9879933333333333,
+        "mean_measured_temperature_C": 87.30185999999999,
+        "mean_unique_replicate_maximum_pressure_bar": 2.6666666666666665,
+        "replicate_count": 3,
+        "target_flow_ml_s": 1.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.55,
+            "measured_flow_ml_s": 1.09218,
+            "measured_temperature_C": 87.17789,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 2.76,
+            "measured_flow_ml_s": 0.95542,
+            "measured_temperature_C": 87.48639,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.69,
+            "measured_flow_ml_s": 0.91638,
+            "measured_temperature_C": 87.2413,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 531666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 2,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP2_P0_H0"
+      "run_id": "SCHM_EXP2_P0_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 2,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.743539807144926e-15,
+        "mean_measured_flow_ml_s": 2.842166666666667,
+        "mean_measured_temperature_C": 88.22680000000001,
+        "mean_unique_replicate_maximum_pressure_bar": 5.316666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 3.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 7.39,
+            "measured_flow_ml_s": 2.80839,
+            "measured_temperature_C": 88.10432,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.8,
+            "measured_flow_ml_s": 2.87666,
+            "measured_temperature_C": 88.66184,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.76,
+            "measured_flow_ml_s": 2.84145,
+            "measured_temperature_C": 87.91424,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 531666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 2,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.743539807144926e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP2_P0_H1"
+      "run_id": "SCHM_EXP2_P0_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 2,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.743539807144926e-15,
+        "mean_measured_flow_ml_s": 2.842166666666667,
+        "mean_measured_temperature_C": 88.22680000000001,
+        "mean_unique_replicate_maximum_pressure_bar": 5.316666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 3.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 7.39,
+            "measured_flow_ml_s": 2.80839,
+            "measured_temperature_C": 88.10432,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.8,
+            "measured_flow_ml_s": 2.87666,
+            "measured_temperature_C": 88.66184,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.76,
+            "measured_flow_ml_s": 2.84145,
+            "measured_temperature_C": 87.91424,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 531666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 2,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP2_P1_H0"
+      "run_id": "SCHM_EXP2_P1_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 2,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.743539807144926e-15,
+        "mean_measured_flow_ml_s": 2.842166666666667,
+        "mean_measured_temperature_C": 88.22680000000001,
+        "mean_unique_replicate_maximum_pressure_bar": 5.316666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 3.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 7.39,
+            "measured_flow_ml_s": 2.80839,
+            "measured_temperature_C": 88.10432,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.8,
+            "measured_flow_ml_s": 2.87666,
+            "measured_temperature_C": 88.66184,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.76,
+            "measured_flow_ml_s": 2.84145,
+            "measured_temperature_C": 87.91424,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 531666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 2,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.743539807144926e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP2_P1_H1"
+      "run_id": "SCHM_EXP2_P1_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 2,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.743539807144926e-15,
+        "mean_measured_flow_ml_s": 2.842166666666667,
+        "mean_measured_temperature_C": 88.22680000000001,
+        "mean_unique_replicate_maximum_pressure_bar": 5.316666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 3.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 7.39,
+            "measured_flow_ml_s": 2.80839,
+            "measured_temperature_C": 88.10432,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.8,
+            "measured_flow_ml_s": 2.87666,
+            "measured_temperature_C": 88.66184,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.76,
+            "measured_flow_ml_s": 2.84145,
+            "measured_temperature_C": 87.91424,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 531666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 2,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 2,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.743539807144926e-15,
+        "mean_measured_flow_ml_s": 2.842166666666667,
+        "mean_measured_temperature_C": 88.22680000000001,
+        "mean_unique_replicate_maximum_pressure_bar": 5.316666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 3.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 7.39,
+            "measured_flow_ml_s": 2.80839,
+            "measured_temperature_C": 88.10432,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.8,
+            "measured_flow_ml_s": 2.87666,
+            "measured_temperature_C": 88.66184,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.76,
+            "measured_flow_ml_s": 2.84145,
+            "measured_temperature_C": 87.91424,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 531666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 2,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.743539807144926e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_FLOW_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 2,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.743539807144926e-15,
+        "mean_measured_flow_ml_s": 2.842166666666667,
+        "mean_measured_temperature_C": 88.22680000000001,
+        "mean_unique_replicate_maximum_pressure_bar": 5.316666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 3.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 7.39,
+            "measured_flow_ml_s": 2.80839,
+            "measured_temperature_C": 88.10432,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.8,
+            "measured_flow_ml_s": 2.87666,
+            "measured_temperature_C": 88.66184,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.76,
+            "measured_flow_ml_s": 2.84145,
+            "measured_temperature_C": 87.91424,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 390666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 3,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP3_P0_H0"
+      "run_id": "SCHM_EXP3_P0_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "FINE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 3,
+        "grinder_setting": 1.4,
+        "h1_effective_darcy_coefficient_m2": 5.283588250627104e-15,
+        "mean_measured_flow_ml_s": 1.92117,
+        "mean_measured_temperature_C": 88.49462,
+        "mean_unique_replicate_maximum_pressure_bar": 3.9066666666666663,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.98,
+            "measured_flow_ml_s": 1.91536,
+            "measured_temperature_C": 88.55693,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.06,
+            "measured_flow_ml_s": 1.9189,
+            "measured_temperature_C": 88.41006,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.68,
+            "measured_flow_ml_s": 1.92925,
+            "measured_temperature_C": 88.51687,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 390666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 3,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.283588250627104e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP3_P0_H1"
+      "run_id": "SCHM_EXP3_P0_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "FINE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 3,
+        "grinder_setting": 1.4,
+        "h1_effective_darcy_coefficient_m2": 5.283588250627104e-15,
+        "mean_measured_flow_ml_s": 1.92117,
+        "mean_measured_temperature_C": 88.49462,
+        "mean_unique_replicate_maximum_pressure_bar": 3.9066666666666663,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.98,
+            "measured_flow_ml_s": 1.91536,
+            "measured_temperature_C": 88.55693,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.06,
+            "measured_flow_ml_s": 1.9189,
+            "measured_temperature_C": 88.41006,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.68,
+            "measured_flow_ml_s": 1.92925,
+            "measured_temperature_C": 88.51687,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 390666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 3,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP3_P1_H0"
+      "run_id": "SCHM_EXP3_P1_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "FINE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 3,
+        "grinder_setting": 1.4,
+        "h1_effective_darcy_coefficient_m2": 5.283588250627104e-15,
+        "mean_measured_flow_ml_s": 1.92117,
+        "mean_measured_temperature_C": 88.49462,
+        "mean_unique_replicate_maximum_pressure_bar": 3.9066666666666663,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.98,
+            "measured_flow_ml_s": 1.91536,
+            "measured_temperature_C": 88.55693,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.06,
+            "measured_flow_ml_s": 1.9189,
+            "measured_temperature_C": 88.41006,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.68,
+            "measured_flow_ml_s": 1.92925,
+            "measured_temperature_C": 88.51687,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 390666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 3,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.283588250627104e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP3_P1_H1"
+      "run_id": "SCHM_EXP3_P1_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "FINE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 3,
+        "grinder_setting": 1.4,
+        "h1_effective_darcy_coefficient_m2": 5.283588250627104e-15,
+        "mean_measured_flow_ml_s": 1.92117,
+        "mean_measured_temperature_C": 88.49462,
+        "mean_unique_replicate_maximum_pressure_bar": 3.9066666666666663,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.98,
+            "measured_flow_ml_s": 1.91536,
+            "measured_temperature_C": 88.55693,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.06,
+            "measured_flow_ml_s": 1.9189,
+            "measured_temperature_C": 88.41006,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.68,
+            "measured_flow_ml_s": 1.92925,
+            "measured_temperature_C": 88.51687,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 390666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 3,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "FINE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 3,
+        "grinder_setting": 1.4,
+        "h1_effective_darcy_coefficient_m2": 5.283588250627104e-15,
+        "mean_measured_flow_ml_s": 1.92117,
+        "mean_measured_temperature_C": 88.49462,
+        "mean_unique_replicate_maximum_pressure_bar": 3.9066666666666663,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.98,
+            "measured_flow_ml_s": 1.91536,
+            "measured_temperature_C": 88.55693,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.06,
+            "measured_flow_ml_s": 1.9189,
+            "measured_temperature_C": 88.41006,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.68,
+            "measured_flow_ml_s": 1.92925,
+            "measured_temperature_C": 88.51687,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 390666.6666666666,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 3,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.283588250627104e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "FINE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 3,
+        "grinder_setting": 1.4,
+        "h1_effective_darcy_coefficient_m2": 5.283588250627104e-15,
+        "mean_measured_flow_ml_s": 1.92117,
+        "mean_measured_temperature_C": 88.49462,
+        "mean_unique_replicate_maximum_pressure_bar": 3.9066666666666663,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.98,
+            "measured_flow_ml_s": 1.91536,
+            "measured_temperature_C": 88.55693,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 4.06,
+            "measured_flow_ml_s": 1.9189,
+            "measured_temperature_C": 88.41006,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.68,
+            "measured_flow_ml_s": 1.92925,
+            "measured_temperature_C": 88.51687,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 333333.3333333334,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 4,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP4_P0_H0"
+      "run_id": "SCHM_EXP4_P0_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "COARSE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 4,
+        "grinder_setting": 2.0,
+        "h1_effective_darcy_coefficient_m2": 6.432151968946009e-15,
+        "mean_measured_flow_ml_s": 1.9955633333333334,
+        "mean_measured_temperature_C": 88.61766666666666,
+        "mean_unique_replicate_maximum_pressure_bar": 3.3333333333333335,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.45,
+            "measured_flow_ml_s": 1.99666,
+            "measured_temperature_C": 88.49475,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.32,
+            "measured_flow_ml_s": 2.00027,
+            "measured_temperature_C": 88.66719,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.23,
+            "measured_flow_ml_s": 1.98976,
+            "measured_temperature_C": 88.69106,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 333333.3333333334,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 4,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 6.432151968946009e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP4_P0_H1"
+      "run_id": "SCHM_EXP4_P0_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "COARSE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 4,
+        "grinder_setting": 2.0,
+        "h1_effective_darcy_coefficient_m2": 6.432151968946009e-15,
+        "mean_measured_flow_ml_s": 1.9955633333333334,
+        "mean_measured_temperature_C": 88.61766666666666,
+        "mean_unique_replicate_maximum_pressure_bar": 3.3333333333333335,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.45,
+            "measured_flow_ml_s": 1.99666,
+            "measured_temperature_C": 88.49475,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.32,
+            "measured_flow_ml_s": 2.00027,
+            "measured_temperature_C": 88.66719,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.23,
+            "measured_flow_ml_s": 1.98976,
+            "measured_temperature_C": 88.69106,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 333333.3333333334,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 4,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP4_P1_H0"
+      "run_id": "SCHM_EXP4_P1_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "COARSE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 4,
+        "grinder_setting": 2.0,
+        "h1_effective_darcy_coefficient_m2": 6.432151968946009e-15,
+        "mean_measured_flow_ml_s": 1.9955633333333334,
+        "mean_measured_temperature_C": 88.61766666666666,
+        "mean_unique_replicate_maximum_pressure_bar": 3.3333333333333335,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.45,
+            "measured_flow_ml_s": 1.99666,
+            "measured_temperature_C": 88.49475,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.32,
+            "measured_flow_ml_s": 2.00027,
+            "measured_temperature_C": 88.66719,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.23,
+            "measured_flow_ml_s": 1.98976,
+            "measured_temperature_C": 88.69106,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 333333.3333333334,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 4,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 6.432151968946009e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP4_P1_H1"
+      "run_id": "SCHM_EXP4_P1_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "COARSE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 4,
+        "grinder_setting": 2.0,
+        "h1_effective_darcy_coefficient_m2": 6.432151968946009e-15,
+        "mean_measured_flow_ml_s": 1.9955633333333334,
+        "mean_measured_temperature_C": 88.61766666666666,
+        "mean_unique_replicate_maximum_pressure_bar": 3.3333333333333335,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.45,
+            "measured_flow_ml_s": 1.99666,
+            "measured_temperature_C": 88.49475,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.32,
+            "measured_flow_ml_s": 2.00027,
+            "measured_temperature_C": 88.66719,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.23,
+            "measured_flow_ml_s": 1.98976,
+            "measured_temperature_C": 88.69106,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 333333.3333333334,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 4,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "COARSE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 4,
+        "grinder_setting": 2.0,
+        "h1_effective_darcy_coefficient_m2": 6.432151968946009e-15,
+        "mean_measured_flow_ml_s": 1.9955633333333334,
+        "mean_measured_temperature_C": 88.61766666666666,
+        "mean_unique_replicate_maximum_pressure_bar": 3.3333333333333335,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.45,
+            "measured_flow_ml_s": 1.99666,
+            "measured_temperature_C": 88.49475,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.32,
+            "measured_flow_ml_s": 2.00027,
+            "measured_temperature_C": 88.66719,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.23,
+            "measured_flow_ml_s": 1.98976,
+            "measured_temperature_C": 88.69106,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 333333.3333333334,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 4,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 6.432151968946009e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "COARSE_GRIND_SETTING_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 4,
+        "grinder_setting": 2.0,
+        "h1_effective_darcy_coefficient_m2": 6.432151968946009e-15,
+        "mean_measured_flow_ml_s": 1.9955633333333334,
+        "mean_measured_temperature_C": 88.61766666666666,
+        "mean_unique_replicate_maximum_pressure_bar": 3.3333333333333335,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.45,
+            "measured_flow_ml_s": 1.99666,
+            "measured_temperature_C": 88.49475,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.32,
+            "measured_flow_ml_s": 2.00027,
+            "measured_temperature_C": 88.66719,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.23,
+            "measured_flow_ml_s": 1.98976,
+            "measured_temperature_C": 88.69106,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 355666.6666666667,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 5,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP5_P0_H0"
+      "run_id": "SCHM_EXP5_P0_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 5,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.843343533941292e-15,
+        "mean_measured_flow_ml_s": 1.93435,
+        "mean_measured_temperature_C": 79.15145,
+        "mean_unique_replicate_maximum_pressure_bar": 3.5566666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 80.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.58,
+            "measured_flow_ml_s": 1.92502,
+            "measured_temperature_C": 79.21331,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.82,
+            "measured_flow_ml_s": 1.92435,
+            "measured_temperature_C": 79.18766,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.95368,
+            "measured_temperature_C": 79.05338,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 355666.6666666667,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 5,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.843343533941292e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP5_P0_H1"
+      "run_id": "SCHM_EXP5_P0_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 5,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.843343533941292e-15,
+        "mean_measured_flow_ml_s": 1.93435,
+        "mean_measured_temperature_C": 79.15145,
+        "mean_unique_replicate_maximum_pressure_bar": 3.5566666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 80.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.58,
+            "measured_flow_ml_s": 1.92502,
+            "measured_temperature_C": 79.21331,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.82,
+            "measured_flow_ml_s": 1.92435,
+            "measured_temperature_C": 79.18766,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.95368,
+            "measured_temperature_C": 79.05338,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 355666.6666666667,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 5,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP5_P1_H0"
+      "run_id": "SCHM_EXP5_P1_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 5,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.843343533941292e-15,
+        "mean_measured_flow_ml_s": 1.93435,
+        "mean_measured_temperature_C": 79.15145,
+        "mean_unique_replicate_maximum_pressure_bar": 3.5566666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 80.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.58,
+            "measured_flow_ml_s": 1.92502,
+            "measured_temperature_C": 79.21331,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.82,
+            "measured_flow_ml_s": 1.92435,
+            "measured_temperature_C": 79.18766,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.95368,
+            "measured_temperature_C": 79.05338,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 355666.6666666667,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 5,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.843343533941292e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP5_P1_H1"
+      "run_id": "SCHM_EXP5_P1_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 5,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.843343533941292e-15,
+        "mean_measured_flow_ml_s": 1.93435,
+        "mean_measured_temperature_C": 79.15145,
+        "mean_unique_replicate_maximum_pressure_bar": 3.5566666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 80.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.58,
+            "measured_flow_ml_s": 1.92502,
+            "measured_temperature_C": 79.21331,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.82,
+            "measured_flow_ml_s": 1.92435,
+            "measured_temperature_C": 79.18766,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.95368,
+            "measured_temperature_C": 79.05338,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 355666.6666666667,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 5,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 5,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.843343533941292e-15,
+        "mean_measured_flow_ml_s": 1.93435,
+        "mean_measured_temperature_C": 79.15145,
+        "mean_unique_replicate_maximum_pressure_bar": 3.5566666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 80.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.58,
+            "measured_flow_ml_s": 1.92502,
+            "measured_temperature_C": 79.21331,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.82,
+            "measured_flow_ml_s": 1.92435,
+            "measured_temperature_C": 79.18766,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.95368,
+            "measured_temperature_C": 79.05338,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 355666.6666666667,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 5,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.843343533941292e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOW_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 5,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.843343533941292e-15,
+        "mean_measured_flow_ml_s": 1.93435,
+        "mean_measured_temperature_C": 79.15145,
+        "mean_unique_replicate_maximum_pressure_bar": 3.5566666666666666,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 80.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.58,
+            "measured_flow_ml_s": 1.92502,
+            "measured_temperature_C": 79.21331,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.82,
+            "measured_flow_ml_s": 1.92435,
+            "measured_temperature_C": 79.18766,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.95368,
+            "measured_temperature_C": 79.05338,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 299000.0,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 6,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP6_P0_H0"
+      "run_id": "SCHM_EXP6_P0_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 6,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 6.820710710461955e-15,
+        "mean_measured_flow_ml_s": 1.8981533333333331,
+        "mean_measured_temperature_C": 96.74837333333333,
+        "mean_unique_replicate_maximum_pressure_bar": 2.9899999999999998,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 98.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.92,
+            "measured_flow_ml_s": 1.91529,
+            "measured_temperature_C": 96.54342,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.15,
+            "measured_flow_ml_s": 1.90649,
+            "measured_temperature_C": 96.78679,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.9,
+            "measured_flow_ml_s": 1.87268,
+            "measured_temperature_C": 96.91491,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 299000.0,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 6,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 6.820710710461955e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP6_P0_H1"
+      "run_id": "SCHM_EXP6_P0_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 6,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 6.820710710461955e-15,
+        "mean_measured_flow_ml_s": 1.8981533333333331,
+        "mean_measured_temperature_C": 96.74837333333333,
+        "mean_unique_replicate_maximum_pressure_bar": 2.9899999999999998,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 98.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.92,
+            "measured_flow_ml_s": 1.91529,
+            "measured_temperature_C": 96.54342,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.15,
+            "measured_flow_ml_s": 1.90649,
+            "measured_temperature_C": 96.78679,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.9,
+            "measured_flow_ml_s": 1.87268,
+            "measured_temperature_C": 96.91491,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 299000.0,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 6,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP6_P1_H0"
+      "run_id": "SCHM_EXP6_P1_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 6,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 6.820710710461955e-15,
+        "mean_measured_flow_ml_s": 1.8981533333333331,
+        "mean_measured_temperature_C": 96.74837333333333,
+        "mean_unique_replicate_maximum_pressure_bar": 2.9899999999999998,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 98.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.92,
+            "measured_flow_ml_s": 1.91529,
+            "measured_temperature_C": 96.54342,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.15,
+            "measured_flow_ml_s": 1.90649,
+            "measured_temperature_C": 96.78679,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.9,
+            "measured_flow_ml_s": 1.87268,
+            "measured_temperature_C": 96.91491,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 299000.0,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 6,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 6.820710710461955e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP6_P1_H1"
+      "run_id": "SCHM_EXP6_P1_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 6,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 6.820710710461955e-15,
+        "mean_measured_flow_ml_s": 1.8981533333333331,
+        "mean_measured_temperature_C": 96.74837333333333,
+        "mean_unique_replicate_maximum_pressure_bar": 2.9899999999999998,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 98.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.92,
+            "measured_flow_ml_s": 1.91529,
+            "measured_temperature_C": 96.54342,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.15,
+            "measured_flow_ml_s": 1.90649,
+            "measured_temperature_C": 96.78679,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.9,
+            "measured_flow_ml_s": 1.87268,
+            "measured_temperature_C": 96.91491,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 299000.0,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 6,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 6,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 6.820710710461955e-15,
+        "mean_measured_flow_ml_s": 1.8981533333333331,
+        "mean_measured_temperature_C": 96.74837333333333,
+        "mean_unique_replicate_maximum_pressure_bar": 2.9899999999999998,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 98.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.92,
+            "measured_flow_ml_s": 1.91529,
+            "measured_temperature_C": 96.54342,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.15,
+            "measured_flow_ml_s": 1.90649,
+            "measured_temperature_C": 96.78679,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.9,
+            "measured_flow_ml_s": 1.87268,
+            "measured_temperature_C": 96.91491,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 299000.0,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 6,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 6.820710710461955e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "HIGH_TEMPERATURE_AXIS",
+        "doe_role": "DoE Axis Point",
+        "dry_dose_g": 20.0,
+        "experiment": 6,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 6.820710710461955e-15,
+        "mean_measured_flow_ml_s": 1.8981533333333331,
+        "mean_measured_temperature_C": 96.74837333333333,
+        "mean_unique_replicate_maximum_pressure_bar": 2.9899999999999998,
+        "replicate_count": 3,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 98.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 2.92,
+            "measured_flow_ml_s": 1.91529,
+            "measured_temperature_C": 96.54342,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.15,
+            "measured_flow_ml_s": 1.90649,
+            "measured_temperature_C": 96.78679,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 2.9,
+            "measured_flow_ml_s": 1.87268,
+            "measured_temperature_C": 96.91491,
+            "replicate": 3
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 340833.3333333333,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 7,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP7_P0_H0"
+      "run_id": "SCHM_EXP7_P0_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOCAL_RECONSTRUCTION_ANCHOR",
+        "doe_role": "DoE Central Point",
+        "dry_dose_g": 20.0,
+        "experiment": 7,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.99276290640711e-15,
+        "mean_measured_flow_ml_s": 1.9010766666666667,
+        "mean_measured_temperature_C": 88.25792833333333,
+        "mean_unique_replicate_maximum_pressure_bar": 3.408333333333333,
+        "replicate_count": 6,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.25,
+            "measured_flow_ml_s": 1.98645,
+            "measured_temperature_C": 87.86077,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.85036,
+            "measured_temperature_C": 87.60414,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.05,
+            "measured_flow_ml_s": 1.885,
+            "measured_temperature_C": 88.22282,
+            "replicate": 3
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.91416,
+            "measured_temperature_C": 88.48127,
+            "replicate": 4
+          },
+          {
+            "maximum_pressure_bar": 4.48,
+            "measured_flow_ml_s": 1.90884,
+            "measured_temperature_C": 88.63043,
+            "replicate": 5
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.86165,
+            "measured_temperature_C": 88.74814,
+            "replicate": 6
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 340833.3333333333,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.28,
+        "extractionRateConstant_s_inverse": 0.15,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 7,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.99276290640711e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P0",
-      "run_id": "SCHM_EXP7_P0_H1"
+      "run_id": "SCHM_EXP7_P0_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOCAL_RECONSTRUCTION_ANCHOR",
+        "doe_role": "DoE Central Point",
+        "dry_dose_g": 20.0,
+        "experiment": 7,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.99276290640711e-15,
+        "mean_measured_flow_ml_s": 1.9010766666666667,
+        "mean_measured_temperature_C": 88.25792833333333,
+        "mean_unique_replicate_maximum_pressure_bar": 3.408333333333333,
+        "replicate_count": 6,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.25,
+            "measured_flow_ml_s": 1.98645,
+            "measured_temperature_C": 87.86077,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.85036,
+            "measured_temperature_C": 87.60414,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.05,
+            "measured_flow_ml_s": 1.885,
+            "measured_temperature_C": 88.22282,
+            "replicate": 3
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.91416,
+            "measured_temperature_C": 88.48127,
+            "replicate": 4
+          },
+          {
+            "maximum_pressure_bar": 4.48,
+            "measured_flow_ml_s": 1.90884,
+            "measured_temperature_C": 88.63043,
+            "replicate": 5
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.86165,
+            "measured_temperature_C": 88.74814,
+            "replicate": 6
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 340833.3333333333,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 7,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP7_P1_H0"
+      "run_id": "SCHM_EXP7_P1_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOCAL_RECONSTRUCTION_ANCHOR",
+        "doe_role": "DoE Central Point",
+        "dry_dose_g": 20.0,
+        "experiment": 7,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.99276290640711e-15,
+        "mean_measured_flow_ml_s": 1.9010766666666667,
+        "mean_measured_temperature_C": 88.25792833333333,
+        "mean_unique_replicate_maximum_pressure_bar": 3.408333333333333,
+        "replicate_count": 6,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.25,
+            "measured_flow_ml_s": 1.98645,
+            "measured_temperature_C": 87.86077,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.85036,
+            "measured_temperature_C": 87.60414,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.05,
+            "measured_flow_ml_s": 1.885,
+            "measured_temperature_C": 88.22282,
+            "replicate": 3
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.91416,
+            "measured_temperature_C": 88.48127,
+            "replicate": 4
+          },
+          {
+            "maximum_pressure_bar": 4.48,
+            "measured_flow_ml_s": 1.90884,
+            "measured_temperature_C": 88.63043,
+            "replicate": 5
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.86165,
+            "measured_temperature_C": 88.74814,
+            "replicate": 6
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 340833.3333333333,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": 0.11446486815650324,
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 7,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.99276290640711e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P1",
-      "run_id": "SCHM_EXP7_P1_H1"
+      "run_id": "SCHM_EXP7_P1_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOCAL_RECONSTRUCTION_ANCHOR",
+        "doe_role": "DoE Central Point",
+        "dry_dose_g": 20.0,
+        "experiment": 7,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.99276290640711e-15,
+        "mean_measured_flow_ml_s": 1.9010766666666667,
+        "mean_measured_temperature_C": 88.25792833333333,
+        "mean_unique_replicate_maximum_pressure_bar": 3.408333333333333,
+        "replicate_count": 6,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.25,
+            "measured_flow_ml_s": 1.98645,
+            "measured_temperature_C": 87.86077,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.85036,
+            "measured_temperature_C": 87.60414,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.05,
+            "measured_flow_ml_s": 1.885,
+            "measured_temperature_C": 88.22282,
+            "replicate": 3
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.91416,
+            "measured_temperature_C": 88.48127,
+            "replicate": 4
+          },
+          {
+            "maximum_pressure_bar": 4.48,
+            "measured_flow_ml_s": 1.90884,
+            "measured_temperature_C": 88.63043,
+            "replicate": 5
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.86165,
+            "measured_temperature_C": 88.74814,
+            "replicate": 6
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 340833.3333333333,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 7,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "hydraulics": {
+        "claim": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "LIMITED_NATIVE_COUPLED_DIAGNOSTIC",
+        "permeability_validation": "NOT_CLAIMED",
+        "physical_permeability_inference": "NOT_APPLICABLE",
+        "uniform_saturated_coefficient_m2": 1.77e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOCAL_RECONSTRUCTION_ANCHOR",
+        "doe_role": "DoE Central Point",
+        "dry_dose_g": 20.0,
+        "experiment": 7,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.99276290640711e-15,
+        "mean_measured_flow_ml_s": 1.9010766666666667,
+        "mean_measured_temperature_C": 88.25792833333333,
+        "mean_unique_replicate_maximum_pressure_bar": 3.408333333333333,
+        "replicate_count": 6,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.25,
+            "measured_flow_ml_s": 1.98645,
+            "measured_temperature_C": 87.86077,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.85036,
+            "measured_temperature_C": 87.60414,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.05,
+            "measured_flow_ml_s": 1.885,
+            "measured_temperature_C": 88.22282,
+            "replicate": 3
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.91416,
+            "measured_temperature_C": 88.48127,
+            "replicate": 4
+          },
+          {
+            "maximum_pressure_bar": 4.48,
+            "measured_flow_ml_s": 1.90884,
+            "measured_temperature_C": 88.63043,
+            "replicate": 5
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.86165,
+            "measured_temperature_C": 88.74814,
+            "replicate": 6
+          }
+        ]
+      }
     },
     {
+      "artifacts": {
+        "identity": "SHA256_EACH_FILE_PLUS_SORTED_PATH_SIZE_SHA256_AGGREGATE",
+        "location": "AUTHORIZED_EXTERNAL_RUNTIME_PATH_NOT_GIT",
+        "retain": [
+          "exact input manifest",
+          "executable hash",
+          "complete solver log",
+          "reduced trace",
+          "case/result manifest"
+        ]
+      },
+      "base_configuration": {
+        "path": "config/reference_R0.json",
+        "sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+      },
+      "boundary_conditions": {
+        "inlet_pressure_gauge_Pa": 340833.3333333333,
+        "outlet_pressure_gauge_Pa": 0.0,
+        "pressure_ramp_time_s": 3.0
+      },
+      "chemistry": {
+        "effectiveSoluteDiffusivity_m2_s": 1e-09,
+        "extractableFraction": 0.216896244235,
+        "extractionRateConstant_s_inverse": "EXACT_GLOBAL_P2_K_FROM_AUTHORIZED_CALIBRATION",
+        "saturationConcentration_kg_m3": 180.0
+      },
+      "controls": {
+        "delta_t_s": 0.02,
+        "end_time_s": 90.0,
+        "field_write_interval_s": 1.0,
+        "mpi_ranks": 16,
+        "reduced_trace_maximum_interval_s": 0.1
+      },
       "experiment": 7,
       "future_openfoam": true,
+      "gates": {
+        "boundedness": "FINITE_NONNEGATIVE_MASSES_AND_0_LE_TDS_LE_1",
+        "completion": "ALL_TARGETS_BRACKETED_AND_FINAL_TIME_REACHED_WITHOUT_FATAL",
+        "liquid_balance_relative_absolute_max": 1e-08,
+        "solute_balance_relative_absolute_max": 1e-08
+      },
+      "geometry": {
+        "basket_diameter_m": 0.058,
+        "basket_radius_m": 0.029,
+        "bed_depth_m": 0.009011660896432553,
+        "dry_dose_kg": 0.02
+      },
       "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "hydraulics": {
+        "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY",
+        "compaction": "DISABLED",
+        "darcy_forchheimer": "DISABLED",
+        "dynamic_viscosity_Pa_s": 0.000315,
+        "mode": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
+        "permeability_validation": "PROHIBITED",
+        "physical_permeability_inference": "PROHIBITED",
+        "uniform_saturated_coefficient_m2": 5.99276290640711e-15
+      },
+      "observation_operators": {
+        "cumulative_tds": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_TARGET_MASS",
+        "cup_solute_mass": "LINEAR_INTERPOLATION_AGAINST_CUMULATIVE_BEVERAGE_MASS",
+        "duplicate_mass": "FAIL_CLOSED",
+        "extraction_yield": "INTERPOLATED_CUP_SOLUTE_MASS_DIVIDED_BY_20_G_DRY_DOSE",
+        "extrapolation": "PROHIBITED",
+        "missing_target": "INCOMPLETE_FAIL_CLOSED",
+        "targets_g": [
+          20.0,
+          40.0,
+          60.0
+        ]
+      },
       "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
-      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "solver": {
+        "commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256_required": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6"
+      },
+      "source_aggregation": {
+        "aggregation": "ARITHMETIC_MEAN_OF_UNIQUE_REPLICATE_METADATA",
+        "axis_role": "LOCAL_RECONSTRUCTION_ANCHOR",
+        "doe_role": "DoE Central Point",
+        "dry_dose_g": 20.0,
+        "experiment": 7,
+        "grinder_setting": 1.7,
+        "h1_effective_darcy_coefficient_m2": 5.99276290640711e-15,
+        "mean_measured_flow_ml_s": 1.9010766666666667,
+        "mean_measured_temperature_C": 88.25792833333333,
+        "mean_unique_replicate_maximum_pressure_bar": 3.408333333333333,
+        "replicate_count": 6,
+        "target_flow_ml_s": 2.0,
+        "target_temperature_C": 89.0,
+        "unique_replicates": [
+          {
+            "maximum_pressure_bar": 3.25,
+            "measured_flow_ml_s": 1.98645,
+            "measured_temperature_C": 87.86077,
+            "replicate": 1
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.85036,
+            "measured_temperature_C": 87.60414,
+            "replicate": 2
+          },
+          {
+            "maximum_pressure_bar": 3.05,
+            "measured_flow_ml_s": 1.885,
+            "measured_temperature_C": 88.22282,
+            "replicate": 3
+          },
+          {
+            "maximum_pressure_bar": 3.27,
+            "measured_flow_ml_s": 1.91416,
+            "measured_temperature_C": 88.48127,
+            "replicate": 4
+          },
+          {
+            "maximum_pressure_bar": 4.48,
+            "measured_flow_ml_s": 1.90884,
+            "measured_temperature_C": 88.63043,
+            "replicate": 5
+          },
+          {
+            "maximum_pressure_bar": 3.2,
+            "measured_flow_ml_s": 1.86165,
+            "measured_temperature_C": 88.74814,
+            "replicate": 6
+          }
+        ]
+      }
     }
   ],
-  "schema_version": 1,
+  "future_openfoam_run_count": 42,
+  "reused_exact_evaluations": [
+    {
+      "condition": "REUSE_ONLY_IF_CASE_AND_EXECUTABLE_IDENTITIES_MATCH_EXACTLY",
+      "reuse_count": 1,
+      "source": "FINAL_SUCCESSFUL_P2_OPTIMIZER_EVALUATION",
+      "target": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+    }
+  ],
+  "schema_version": 2,
   "stage_a_execution": "NOT_AUTHORIZED"
 }

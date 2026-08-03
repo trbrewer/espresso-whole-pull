@@ -1,23 +1,31 @@
 {
   "analysis": {
-    "claim": "PRACTICAL_LOCAL_SENSITIVITY_NOT_STRUCTURAL_IDENTIFIABILITY",
     "equifinality_warning": true,
-    "jacobian": true,
-    "normalized_sensitivities": true,
+    "jacobian": "FINITE_RANGE_LOG_SECANTS",
+    "matrix_shape": [
+      3,
+      4
+    ],
+    "nonpositive_or_missing_output": "FAIL_CLOSED",
+    "normalized_sensitivity_formula": "[ln(y_high)-ln(y_low)]/[ln(p_high)-ln(p_low)]",
     "numerical_rank_tolerance": {
       "absolute": 1e-12,
       "relative_to_largest_singular_value": 1e-08
     },
     "parameter_output_correlation": true,
+    "rank_ceiling": 3,
     "singular_values": true
   },
-  "baseline": "P1 at Schmieder Exp-7 representative condition in H1",
+  "analysis_name": "FINITE_RANGE_ONE_AT_A_TIME_SENSITIVITY",
+  "baseline": "exact reuse of production SCHM_EXP7_P1_H1 only when all identities match",
+  "baseline_reuse_count": 1,
+  "claim": "NOT_STRUCTURAL_IDENTIFIABILITY",
   "future_run_count": 9,
   "future_runs": [
     {
       "absolute_parameters": {
         "effectiveSoluteDiffusivity": 1e-09,
-        "extractableFraction": 0.24827,
+        "extractableFraction": 0.216896244235,
         "extractionRateConstant": 0.11446486815650324,
         "saturationConcentration": 180.0
       },
@@ -28,7 +36,7 @@
     {
       "absolute_parameters": {
         "effectiveSoluteDiffusivity": 1e-09,
-        "extractableFraction": 0.19861600000000001,
+        "extractableFraction": 0.173516995388,
         "extractionRateConstant": 0.11446486815650324,
         "saturationConcentration": 180.0
       },
@@ -39,7 +47,7 @@
     {
       "absolute_parameters": {
         "effectiveSoluteDiffusivity": 1e-09,
-        "extractableFraction": 0.29792399999999997,
+        "extractableFraction": 0.260275493082,
         "extractionRateConstant": 0.11446486815650324,
         "saturationConcentration": 180.0
       },
@@ -50,7 +58,7 @@
     {
       "absolute_parameters": {
         "effectiveSoluteDiffusivity": 1e-09,
-        "extractableFraction": 0.24827,
+        "extractableFraction": 0.216896244235,
         "extractionRateConstant": 0.05723243407825162,
         "saturationConcentration": 180.0
       },
@@ -61,7 +69,7 @@
     {
       "absolute_parameters": {
         "effectiveSoluteDiffusivity": 1e-09,
-        "extractableFraction": 0.24827,
+        "extractableFraction": 0.216896244235,
         "extractionRateConstant": 0.22892973631300648,
         "saturationConcentration": 180.0
       },
@@ -72,7 +80,7 @@
     {
       "absolute_parameters": {
         "effectiveSoluteDiffusivity": 1.0000000000000002e-10,
-        "extractableFraction": 0.24827,
+        "extractableFraction": 0.216896244235,
         "extractionRateConstant": 0.11446486815650324,
         "saturationConcentration": 180.0
       },
@@ -83,7 +91,7 @@
     {
       "absolute_parameters": {
         "effectiveSoluteDiffusivity": 1e-08,
-        "extractableFraction": 0.24827,
+        "extractableFraction": 0.216896244235,
         "extractionRateConstant": 0.11446486815650324,
         "saturationConcentration": 180.0
       },
@@ -94,7 +102,7 @@
     {
       "absolute_parameters": {
         "effectiveSoluteDiffusivity": 1e-09,
-        "extractableFraction": 0.24827,
+        "extractableFraction": 0.216896244235,
         "extractionRateConstant": 0.11446486815650324,
         "saturationConcentration": 90.0
       },
@@ -105,7 +113,7 @@
     {
       "absolute_parameters": {
         "effectiveSoluteDiffusivity": 1e-09,
-        "extractableFraction": 0.24827,
+        "extractableFraction": 0.216896244235,
         "extractionRateConstant": 0.11446486815650324,
         "saturationConcentration": 360.0
       },
@@ -114,10 +122,11 @@
       "run_id": "SENS_saturationConcentration_2X"
     }
   ],
+  "new_future_execution_count_if_reuse_valid": 8,
   "outputs": [
     "cup_solute_mass_g_at_20g",
     "cup_solute_mass_g_at_40g",
     "cup_solute_mass_g_at_60g"
   ],
-  "schema_version": 1
+  "schema_version": 2
 }

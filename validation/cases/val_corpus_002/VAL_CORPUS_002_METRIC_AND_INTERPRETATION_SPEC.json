@@ -5,6 +5,7 @@
   "metrics": {
     "aggregate": ["absolute_error", "relative_error", "rmse_20_40_60_g", "standardized_residual_where_source_sd_exists", "count_inside_replicate_range", "count_inside_one_source_sd_descriptive", "count_inside_two_source_sd_descriptive", "native_to_source_conditioned_error_ratio"],
     "relative_error_denominator": "absolute source replicate mean; fail closed if zero",
+    "native_to_source_conditioned_error_ratio_zero_denominator": "UNDEFINED_WITH_PAIRED_ERRORS_REPORTED_NO_EPSILON_FLOOR",
     "waszkiewicz": ["full_series_unweighted_rmse", "mae", "residual_bias", "mean_residual_2.5_to_17.5_s", "mean_residual_22.5_to_37.5_s", "mean_residual_42.5_to_57.5_s"],
     "waszkiewicz_uncertainty": "secondary only where supplied; no SD invented at 2.5 s"
   },
@@ -19,6 +20,7 @@
   "source_uncertainty": {"replicate_means": true, "sample_standard_deviations": true, "ranges": true, "counts": true, "fabricated_floor": false, "replace_missing": false},
   "species_limitation_audit": {"normalized_progression": ["TDS", "caffeine", "trigonelline", "5-CQA"], "openfoam_species_scoring": "PROHIBITED", "interpretation": "divergence exposes aggregate information loss but cannot uniquely attribute an aggregate residual to missing multispecies physics"},
   "target_beverage_masses_g": [20, 40, 60],
+  "fixed_mass_operator": {"cup_solute_mass": "deterministic linear interpolation of cumulative cup-solute mass against cumulative beverage mass", "cumulative_tds": "cup solute mass at target divided by target mass", "extraction_yield": "cup solute mass at target divided by 20 g dry dose", "duplicate_mass": "FAIL_CLOSED", "extrapolation": "PROHIBITED", "missing_target": "FAIL_CLOSED_INCOMPLETE"},
   "universal_binary_physical_validation_threshold": "PROHIBITED",
   "required_stage_b_dispositions": ["SCIENTIFIC_RESULT_DISPOSITION", "VALIDATION_FRAMEWORK_DISPOSITION", "CLAIM_CEILING"],
   "schema_version": 1

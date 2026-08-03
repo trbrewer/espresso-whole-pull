@@ -1,17 +1,181 @@
 {
   "chemistry_calibration": "NONE",
   "clock_mapping": {
+    "operator_identical_for_both_presentations": true,
     "optimization": "PROHIBITED",
     "presentations": [
-      "SOURCE_REPORTED_CLOCK",
-      "EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS"
+      {
+        "id": "SOURCE_REPORTED_CLOCK",
+        "model_intervals_s": [
+          [
+            0.0,
+            5.0
+          ],
+          [
+            5.0,
+            10.0
+          ],
+          [
+            10.0,
+            15.0
+          ],
+          [
+            15.0,
+            20.0
+          ],
+          [
+            20.0,
+            25.0
+          ],
+          [
+            25.0,
+            30.0
+          ],
+          [
+            30.0,
+            35.0
+          ],
+          [
+            35.0,
+            40.0
+          ],
+          [
+            40.0,
+            45.0
+          ],
+          [
+            45.0,
+            50.0
+          ],
+          [
+            50.0,
+            55.0
+          ],
+          [
+            55.0,
+            60.0
+          ]
+        ]
+      },
+      {
+        "id": "EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS",
+        "model_intervals_s": [
+          [
+            3.0,
+            8.0
+          ],
+          [
+            8.0,
+            13.0
+          ],
+          [
+            13.0,
+            18.0
+          ],
+          [
+            18.0,
+            23.0
+          ],
+          [
+            23.0,
+            28.0
+          ],
+          [
+            28.0,
+            33.0
+          ],
+          [
+            33.0,
+            38.0
+          ],
+          [
+            38.0,
+            43.0
+          ],
+          [
+            43.0,
+            48.0
+          ],
+          [
+            48.0,
+            53.0
+          ],
+          [
+            53.0,
+            58.0
+          ],
+          [
+            58.0,
+            63.0
+          ]
+        ]
+      }
     ],
     "status": "AMBIGUOUS"
   },
+  "collection_intervals_s": [
+    [
+      0.0,
+      5.0
+    ],
+    [
+      5.0,
+      10.0
+    ],
+    [
+      10.0,
+      15.0
+    ],
+    [
+      15.0,
+      20.0
+    ],
+    [
+      20.0,
+      25.0
+    ],
+    [
+      25.0,
+      30.0
+    ],
+    [
+      30.0,
+      35.0
+    ],
+    [
+      35.0,
+      40.0
+    ],
+    [
+      40.0,
+      45.0
+    ],
+    [
+      45.0,
+      50.0
+    ],
+    [
+      50.0,
+      55.0
+    ],
+    [
+      55.0,
+      60.0
+    ]
+  ],
+  "extrapolation": "PROHIBITED",
+  "integration_rule": "PIECEWISE_LINEAR_TRAPEZOIDAL_INTEGRATION_REQUIRING_BOTH_INTERVAL_ENDPOINTS",
+  "midpoint_point_sampling": "PROHIBITED",
+  "observation_operator": "INTEGRATED_OUTLET_SOLUTE_MASS_OVER_INTERVAL_DIVIDED_BY_INTEGRATED_BEVERAGE_MASS_OVER_INTERVAL",
   "optimized_time_shift": "PROHIBITED",
   "point_count": 12,
-  "role": "CROSS_SOURCE_NONHOLDOUT_COMPARISON",
-  "schema_version": 1,
+  "role": {
+    "circularity": "TDS_AND_DISSOLVED_MASS_SOFT_CIRCULARITY",
+    "claim": "NO_INDEPENDENT_WHOLE_SOLVER_CHEMISTRY_VALIDATION",
+    "comparison": "CROSS_SOURCE_CHEMISTRY_PARAMETERIZATION_NONHOLDOUT",
+    "hydraulics": "SAME_SOURCE_WASZKIEWICZ_HYDRAULIC_CONDITIONING"
+  },
+  "schema_version": 2,
   "times_s": [
     2.5,
     7.5,

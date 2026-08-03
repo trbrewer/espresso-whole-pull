@@ -66,15 +66,15 @@
       "units": "mixed/declared in source"
     },
     {
-      "admissibility": "ADMISSIBLE_PUBLIC",
-      "circularity": "CROSS_SOURCE_NOT_CALIBRATION",
+      "admissibility": "ADMISSIBLE_PUBLIC_NONHOLDOUT",
+      "circularity": "CROSS_SOURCE_CHEMISTRY_WITH_SAME_SOURCE_HYDRAULIC_CONDITIONING_AND_TDS_DISSOLVED_MASS_SOFT_CIRCULARITY",
       "commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e",
-      "intended_role": "MANDATORY_PRIMARY",
+      "intended_role": "MANDATORY_PRIMARY_NO_INDEPENDENT_WHOLE_SOLVER_CHEMISTRY_VALIDATION",
       "path": "puckworks/data/waszkiewicz2025/tds_fractions.csv",
       "repository": "trbrewer/puckworks",
       "rights": "CC-BY-4.0",
       "sha256": "f22ee533f4c3e4c4c2587192a9aefa9af43bf8d47dd4456a611bfd92fb673847",
-      "source_definition": "9-bar mean TDS-fraction series",
+      "source_definition": "9-bar mean TDS fraction for twelve five-second collected fractions",
       "tree": "44d6539096648777f78c4db83f0985d5bd16e352",
       "units": "s; dimensionless fraction"
     },

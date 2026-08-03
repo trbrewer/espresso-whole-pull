@@ -8,7 +8,7 @@
       "purpose": "FULL_COUPLED_DIAGNOSTIC"
     },
     "H1_SOURCE_CONDITIONED_DARCY_MODE": {
-      "flow_model": "UNIFORM_SATURATED_DARCY_CONDITIONING",
+      "flow_model": "FLOW_CONDITIONED_EFFECTIVE_DARCY_CLOCK",
       "permeability_formula": "k = mu * L * Q / (A * delta_p)",
       "flow_input": "source mean measured volumetric flow by experiment",
       "pressure_input": "source mean replicate maximum pressure treated as gauge pressure drop to zero-gauge outlet",
@@ -17,7 +17,9 @@
       "ramp_time": "merged predecessor fixed 3.0 s; source ramp history unavailable",
       "compaction": "DISABLED",
       "darcy_forchheimer": "DISABLED",
-      "claim": "CHEMISTRY_COMPONENT_COMPARISON_ONLY"
+      "physical_permeability_inference": "PROHIBITED",
+      "permeability_validation": "PROHIBITED",
+      "claim": "CHEMISTRY_COMPONENT_DIAGNOSTIC_ONLY"
     },
     "SOURCE_CLOCK_REFERENCE": {
       "hydraulic_clock": "source measured beverage flow",

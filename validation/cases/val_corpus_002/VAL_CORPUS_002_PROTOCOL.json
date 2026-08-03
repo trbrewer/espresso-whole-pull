@@ -9,7 +9,7 @@
   },
   "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
   "issue": 53,
-  "protocol_status": "FROZEN_PENDING_INDEPENDENT_REVIEW",
+  "protocol_status": "CORRECTED_FROZEN_PENDING_INDEPENDENT_REVIEW",
   "schema_version": 1,
   "stage": "A_PROTOCOL_FREEZE",
   "stage_a_actions": {
