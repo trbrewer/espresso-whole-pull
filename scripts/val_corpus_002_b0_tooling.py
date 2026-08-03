@@ -658,6 +658,14 @@ class Evaluation:
     cache_hit: bool
 
 
+class TypedNumericalEvaluationFailure(Exception):
+    """Affirmative model-output failure eligible for optimizer accounting."""
+
+
+class OptimizerEvaluationLimit(Exception):
+    """Internal control signal for the frozen evaluation ceiling."""
+
+
 def golden_section_log_k(objective: Callable[[float], float], *,
                          max_evaluations: int = MAX_EVALUATIONS) -> dict:
     """Exact frozen golden-section mechanics in x=log(k), synthetic in B0."""
@@ -681,13 +689,14 @@ def golden_section_log_k(objective: Callable[[float], float], *,
             trace.append(trace_row(prior, True))
             return prior
         if evaluations >= max_evaluations:
-            raise RuntimeError("evaluation limit exhausted")
+            raise OptimizerEvaluationLimit("evaluation limit exhausted")
         rate = math.exp(log_k)
         try:
             value = float(objective(rate))
-            if not math.isfinite(value): raise ValueError("NONFINITE_OBJECTIVE")
+            if not math.isfinite(value):
+                raise TypedNumericalEvaluationFailure("NONFINITE_OBJECTIVE")
             status, reason = "PASS", None
-        except Exception as exc:  # typed failed synthetic/model evaluation
+        except TypedNumericalEvaluationFailure as exc:
             value, status, reason = None, "FAILED_EVALUATION", str(exc)
         item = Evaluation(len(trace), log_k, rate, value, status, reason, False)
         cache[key] = item; evaluations += 1
@@ -718,7 +727,7 @@ def golden_section_log_k(objective: Callable[[float], float], *,
         context.update(active_log_lower=a, active_log_upper=b,
                        decision="EVALUATE_FROZEN_BOUNDARIES_FOR_FINAL_SELECTION")
         evaluate(LOG_K_LOWER); evaluate(LOG_K_UPPER)
-    except RuntimeError:
+    except OptimizerEvaluationLimit:
         exhausted = True
     valid = [item for item in cache.values() if item.objective is not None]
     if not valid:

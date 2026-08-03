@@ -5,11 +5,13 @@ import math
 from pathlib import Path
 import sys
 import unittest
+from unittest import mock
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 import val_corpus_002_b0_tooling as b0
 import val_corpus_002_b1_calibration as b1
+import val_corpus_002_b1_recovery as recovery
 
 
 class StageB1DryRunTests(unittest.TestCase):
@@ -39,6 +41,37 @@ class StageB1DryRunTests(unittest.TestCase):
             [2.9240100000000004,3.8761999999999994,4.187098333333333])
         self.assertEqual(math.log(b0.K_LOWER),b0.LOG_K_LOWER)
         self.assertEqual(math.log(b0.K_UPPER),b0.LOG_K_UPPER)
+
+    def test_infrastructure_and_unknown_exceptions_escape_optimizer(self):
+        with self.assertRaises(b1.InfrastructureFailure):
+            b0.golden_section_log_k(lambda _rate: (_ for _ in ()).throw(
+                b1.InfrastructureFailure("blockMesh")))
+        with self.assertRaises(RuntimeError):
+            b0.golden_section_log_k(lambda _rate: (_ for _ in ()).throw(RuntimeError("unknown")))
+
+    def test_only_affirmative_typed_failure_becomes_failed_evaluation(self):
+        result=b0.golden_section_log_k(
+            lambda rate: (_ for _ in ()).throw(b0.TypedNumericalEvaluationFailure("TDS_BOUND"))
+            if rate < .1 else (rate-.3)**2)
+        self.assertTrue(any(row["evaluation_status"]=="FAILED_EVALUATION" for row in result["trace"]))
+
+    def test_post_end_nonzero_is_infrastructure_not_objective(self):
+        self.assertTrue(issubclass(b1.InfrastructureFailure,Exception))
+        self.assertFalse(issubclass(b1.InfrastructureFailure,b0.TypedNumericalEvaluationFailure))
+
+    def test_recovery_constants_freeze_original_bounds_and_full_cache(self):
+        self.assertEqual(recovery.ATTEMPT1_COUNT,20)
+        self.assertEqual([b0.LOG_K_LOWER,b0.LOG_K_UPPER],
+                         [-4.470072424390813,0.13509776159727813])
+
+    def test_failed_cache_record_is_rejected(self):
+        with mock.patch.object(recovery.b1,"exact_template",return_value={}), \
+             mock.patch.object(recovery,"_regular_below") as regular:
+            executable=mock.Mock(); executable.__fspath__=lambda _self: "/tmp/executable"
+            records=[mock.Mock()]
+            regular.side_effect=records
+            with self.assertRaises((b1.InfrastructureFailure,TypeError,AttributeError)):
+                recovery.verify_attempt1_cache(ROOT,Path("/attempt1"))
 
 
 if __name__=="__main__": unittest.main()

@@ -38,7 +38,7 @@ INPUT_PATHS = (
 )
 
 
-class InfrastructureFailure(BaseException):
+class InfrastructureFailure(Exception):
     """An orchestration failure that must escape optimizer scoring."""
 
 
@@ -188,7 +188,7 @@ def reduce_evaluation(rows: list[dict[str, float]], materialized: dict) -> tuple
                     "liquid_gate": 1e-8, "solute_gate": 1e-8,
                     "target_mass_brackets": {"20_g": "PASS", "40_g": "PASS", "60_g": "PASS"}}
     if not bounded or liquid_relative > 1e-8 or solute_relative > 1e-8:
-        raise ValueError("NUMERICAL_ADMISSIBILITY_GATE_FAILED")
+        raise b0.TypedNumericalEvaluationFailure("NUMERICAL_ADMISSIBILITY_GATE_FAILED")
     return model_g, verification
 
 
@@ -225,11 +225,11 @@ def execute(root: Path, run_root: Path) -> dict:
         if code != 0 or not trace.is_file():
             record.update(status="VALID_EXECUTION_WITH_TYPED_NUMERICAL_FAILURE", objective=None)
             evaluations[key] = record; dump(evaluation / "evaluation.json", record)
-            raise ValueError("SOLVER_FATAL_OR_TRACE_ABSENT")
+            raise InfrastructureFailure("SOLVER_NONZERO_EXIT_OR_TRACE_ABSENT")
         rows = _trace_rows(trace)
         try:
             model, verification = reduce_evaluation(rows, materialized)
-        except ValueError as exc:
+        except b0.TypedNumericalEvaluationFailure as exc:
             record.update(status="VALID_EXECUTION_WITH_TYPED_NUMERICAL_FAILURE", objective=None,
                           failure_reason=str(exc), trace_path=trace.relative_to(run_root).as_posix(),
                           trace_sha256=sha256(trace), trace_bytes=trace.stat().st_size)

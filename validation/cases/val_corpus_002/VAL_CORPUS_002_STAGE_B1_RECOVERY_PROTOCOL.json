@@ -1,0 +1,21 @@
+{
+  "attempt_1": "IMMUTABLE_INFRASTRUCTURE_INTERRUPTED",
+  "attempt_1_required_pass_cache_count": 20,
+  "attempt_2": "CONTROLLED_DETERMINISTIC_REPLAY_AND_CONTINUATION",
+  "authorization_id": "VAL-CORPUS-002-B1-CALIBRATION-2026-08-03",
+  "best_completed_diagnostic": "NOT_SELECTED_NOT_FROZEN",
+  "evaluation_20": "NOT_CACHE_ELIGIBLE",
+  "evaluation_20_corrected_classification": "POST_END_MPI_FINALIZATION_INFRASTRUCTURE_FAILURE",
+  "evaluation_21": "NOT_CACHE_ELIGIBLE",
+  "evaluation_21_classification": "BLOCKMESH_PRE_SOLVER_INFRASTRUCTURE_FAILURE",
+  "interrupted_active_interval": "DISCARD_FOR_RESUME",
+  "maximum_objective_bearing_evaluations": 128,
+  "optimizer_log_k_bounds": [
+    -4.470072424390813,
+    0.13509776159727813
+  ],
+  "profile": "EWP_CALIBRATION_STAGE_V1",
+  "schema_version": "espresso.val_corpus_002.b1_recovery_protocol.v1",
+  "stage_b2": "NOT_AUTHORIZED",
+  "successful_attempt_1_evaluations": "ELIGIBLE_ONLY_AFTER_COMPLETE_CONTENT_VERIFICATION"
+}
