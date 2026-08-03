@@ -1,0 +1,32 @@
+{
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "canonical_internal_placeholder": {
+    "type": "P2_EXTRACTION_RATE_S_INVERSE",
+    "value": "UNMATERIALIZED"
+  },
+  "defect": "STRUCTURED_WASZKIEWICZ_P2_PLACEHOLDER_WAS_RECURSIVELY_NESTED_RATHER_THAN_COLLAPSED_TO_THE_REQUIRED_SCALAR",
+  "fixed_rate_hex": "0x1.6036f8e53bf4ep-2",
+  "fixed_rate_s_inverse": 0.3439597024835067,
+  "original_b2_attempt": "IMMUTABLE_PARTIAL_EXECUTION",
+  "original_invalid_configuration_hash": "7e7a8977cc45641c6e22b90922a5b370e9e0e81179ad0e1022c371c863c79dbc",
+  "original_materialized_aggregate": "21e16604072de4b4b5e86561f41b0fd5a28c1c4c486b1e4964b6ef8844279c47",
+  "original_partial_aggregate": "db510fb5b0431152b39a7513d99cf2604702573948fe3f2f3d326bb4bfade999",
+  "preservation": {
+    "disposition": "HISTORICAL_SUPERSEDED_FOR_EXECUTION_NOT_DELETED_NOT_REWRITTEN",
+    "scientific_score_for_failed_attempts": "NONE",
+    "wasz_p2_attempt_1": "PREPARE_CASE_MATERIALIZATION_INFRASTRUCTURE_FAILURE",
+    "wasz_p2_attempt_2": "IDENTICAL_PREPARE_CASE_MATERIALIZATION_INFRASTRUCTURE_FAILURE"
+  },
+  "profile": "EWP_PRODUCTION_AND_SCORING_STAGE_V1",
+  "schema_version": "espresso.val_corpus_002.b2_materialization_recovery_protocol.v1",
+  "source_placeholder_forms": {
+    "schmieder": "chemistry.extractionRateConstant_s_inverse",
+    "waszkiewicz": "extraction.rate_constant_1_s structured status/token/type object"
+  },
+  "unchanged_members": {
+    "numeric_p0_p1": 30,
+    "schmieder_p2": 14,
+    "source_run_matrix": true,
+    "scientific_protocol": true
+  }
+}
