@@ -1,4 +1,8 @@
-# Package QA status — current main
+# Package QA status — immutable merged/release baseline and current unmerged WP03-002 candidate
+
+Historical sections below describe immutable merged or released evidence.
+Explicit current-check and WP03-002 sections describe the open, unmerged
+candidate qualification; they do not redefine the merged baseline.
 
 ## Immutable v0.2.0 release snapshot
 

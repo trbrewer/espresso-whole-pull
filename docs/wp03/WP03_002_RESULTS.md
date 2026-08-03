@@ -36,7 +36,9 @@ three corrected source-linked runs.
   `12c16d835c550a846fdb11f34a5930d1f7c481bceee83bd00726b5a17ff6ae22`;
 - unchanged reproduction: 3 attempted, 3 reproduced failures;
 - corrected rerun: 3 attempted, 3 completed;
-- corrected 16-rank durations: 3.15–3.43 s per case.
+- corrected 16-rank source-linked comparison-case durations: 3.15–3.43 s per
+  case. These are distinct from the repeatability/refinement qualification
+  timings below.
 
 ## Source-linked comparison
 
@@ -63,6 +65,8 @@ early/middle/late residuals over thirds of the valid overlap.
 
 ## Verification and resources
 
+### Accepted pre-review run/resource subset
+
 - maximum serial/16-rank final relative difference across selected hydraulic,
   cup, porosity, and permeability outputs: `8.36e-13`;
 - largest 0.02 s versus 0.005 s final relative difference: `5.70e-4`;
@@ -74,9 +78,28 @@ early/middle/late residuals over thirds of the valid overlap.
 - 16-rank 0.01 s: 4.51 s wall time, 60,704 kB maximum RSS;
 - 16-rank 0.005 s: 7.58 s wall time, 60,672 kB maximum RSS.
 
-The external reproduction and corrected run roots contain 50,607 files,
+The accepted pre-review reproduction and corrected run subset contains 50,607 files,
 347,496,537 bytes, with aggregate SHA-256
 `e2670ba15e12d1ac8cfb7874ba994adce38907ac4bf8e594c7ff399eacbb2520`.
+
+### Exact-head-review telemetry and qualification runs
+
+The final telemetry-qualified repeatability/refinement resource measurements
+are:
+
+- serial `dt=0.02`: 10.99 s wall time, 56,348 kB maximum RSS;
+- 16-rank MPI `dt=0.01`: 4.61 s wall time, 60,704 kB maximum RSS;
+- 16-rank MPI `dt=0.005`: 7.68 s wall time, 60,764 kB maximum RSS.
+
+The earlier 10.34 s / 56,280 kB, 4.51 s / 60,704 kB, and 7.58 s /
+60,672 kB values above belong to the accepted pre-review subset, not the final
+telemetry-qualified measurements.
+
+### Final combined external-artifact inventory
+
+The final combined retained inventory contains 101,211 files and 705,520,867
+bytes, with aggregate SHA-256
+`c7b187cb05e358e56a6e9c238aa3fbce55e9e17cef8623d64c7e90fd310e19c8`.
 Complete cases, fields, processor directories, logs, executables, and traces
 remain outside Git.
 

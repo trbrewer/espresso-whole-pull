@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 240,
-  "total_uncompressed_bytes_excluding_manifest": 2225689,
-  "aggregate_source_sha256": "cae982776cbe47bd096621d117d2e9b78b8b4ad63ee46f615c0d22bcaf9f0945",
-  "aggregate_sha256": "cae982776cbe47bd096621d117d2e9b78b8b4ad63ee46f615c0d22bcaf9f0945",
+  "total_uncompressed_bytes_excluding_manifest": 2228345,
+  "aggregate_source_sha256": "481a80a5eccd1d964ea906ce1413c9e2ad3625e20a0967be782278e76229af2b",
+  "aggregate_sha256": "481a80a5eccd1d964ea906ce1413c9e2ad3625e20a0967be782278e76229af2b",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "36e2d1a778dc125588f219ee7deaf7d1d04ef13027437817ea65cf899c2bfc39",
-      "bytes": 7711,
+      "sha256": "441232cb701e2211092e69924e33303acbb821b6a98035b8b7ea1774c44907dd",
+      "bytes": 7801,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -444,13 +444,13 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "6f97a38be447b8eaa78776993f17844ed1fdfbdf2d556280c53889aac99d1424",
-      "bytes": 45665,
+      "sha256": "3ac0d3cd549f30507971984b36df95807d4b58e1c9ba3bbb40f1bb40efdd3f67",
+      "bytes": 47042,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "a7eb559c673b0e2607854c5cd091c1dd71c662492749a21dc6442cac47f48f45",
-      "bytes": 12193,
+      "sha256": "26f17bed485c7fc535d9e42bc5165ce9cf4a804202cb83465daa4ad77d810c9f",
+      "bytes": 12469,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -619,8 +619,8 @@
       "git_mode": "100644"
     },
     "docs/wp03/WP03_002_RESULTS.md": {
-      "sha256": "20ed2a130676a8de48d208205b095a812c2ea2a6be0afd8f50a2af4c86149beb",
-      "bytes": 5103,
+      "sha256": "ebed23ba4b0b70fbbb2ac37dee92753fcda31aebfa927eacfb6408e929b1e464",
+      "bytes": 6016,
       "git_mode": "100644"
     },
     "scripts/analyze_r1.py": {

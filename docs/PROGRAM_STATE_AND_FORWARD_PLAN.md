@@ -127,7 +127,7 @@ merge, the next scientific task is
 
 ---
 
-# 2. Canonical merged state
+# 2. Canonical merged base and current unmerged candidate
 
 | Item | Canonical state |
 |---|---|
@@ -138,7 +138,6 @@ merge, the next scientific task is
 | Runtime Puckworks lock | `fc61c4670ec7bf801e40bb391aab16048b8da26b` |
 | Read-only evidence snapshot used by VAL-CORPUS-001 | `9c52c94edb27b461b6e7a4d471d29f3cef9d053e` |
 | Current Python suite | `351/351 PASS` |
-| Current static gates | `38/38 PASS` |
 | Current static gates | `38/38 PASS` |
 | Current source manifest | `240/240 PASS`; exact aggregate is recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
 | Physical validation | `NOT_ESTABLISHED` |
@@ -413,6 +412,11 @@ WASZ-11-COMPACT
 
 These failures are evidence of a numerical-robustness problem. They are not evidence that the physical formulation is false.
 
+**Later closure:** WP03-002 subsequently corrected the equation-extrinsic
+convergence defect and recovered all three cases without physical or numerical
+retuning. The corrected model still orders flow and mass as
+`11 bar > 9 bar > 5 bar`, opposite the source ordering.
+
 ---
 
 # 7. Current working / partial / failing / unassessed map
@@ -429,7 +433,7 @@ These failures are evidence of a numerical-robustness problem. They are not evid
 | Waszkiewicz local scales | Partial | Different branches work at different pressures |
 | Waszkiewicz cross-pressure transfer | Failing | Source ordering is reversed by every tested family |
 | Generic DE1 machine fixture | Failing/descriptive | Not a source-informed DE1 reconstruction |
-| Finite-porosity source-linked execution | Failing numerically | Nonlinear solver failure at 5/9/11 bar |
+| Finite-porosity source-linked execution | `NUMERICALLY_RECOVERED_SCIENTIFIC_TRANSFER_FAILURE_REMAINS` | 3/3 corrected cases complete; model ordering remains opposite source |
 | Aggregate extraction transfer | Not yet adequately assessed | Required next corpus tranche |
 | Species-resolved chemistry | Not represented | Current solver is one-solute |
 | Population Visualizer transfer | Not yet executed as a frozen cohort | Available future comparison |
@@ -448,7 +452,8 @@ The correct interpretation is:
 - it can reproduce selected local source behavior;
 - it does not transfer correctly across the tested pressure conditions;
 - some current mechanisms improve selected conditions but are not generally predictive;
-- one implemented compaction branch is not numerically robust in the source-linked cases.
+- the source-linked finite-porosity convergence defect is corrected, while
+  cross-pressure scientific transfer remains unsuccessful.
 
 ## 8.2 The cross-pressure reversal is the most important external result
 
@@ -476,11 +481,18 @@ It does not yet identify one unique missing mechanism. Potential explanations re
 
 A new mechanism should be selected only after:
 
-1. the finite-porosity implementation can complete the source-linked cases;
-2. source comparability and assumptions are audited;
-3. the corrected compaction branch is compared with the existing atlas;
-4. at least one aggregate extraction/chemistry tranche is completed;
-5. repeated residual signatures are separated from numerical and metadata effects.
+Completed prerequisites:
+
+- the finite-porosity implementation completes the source-linked cases;
+- the corrected compaction branch is compared through the accepted atlas
+  metrics.
+
+Outstanding prerequisites:
+
+- source comparability and assumptions are audited;
+- the VAL-CORPUS-002 extraction/chemistry tranche is completed;
+- repeated residual signatures are separated from numerical, metadata,
+  mapping, and identifiability effects.
 
 ---
 
@@ -488,6 +500,13 @@ A new mechanism should be selected only after:
 
 The WP03-002 candidate reconciles earlier current-looking status lag while
 preserving explicitly time-scoped historical candidate states.
+
+The dated scope records
+`docs/validation/VAL_001_PR38_FINAL_HARDENING_NOTE.md` and
+`docs/validation/VAL_001_PR38_HARDENING_COMPLETION_NOTE.md` preserve PR #38's
+open state at issuance and are immutable historical candidate records. Their
+actual closure is: independently approved and subsequently merged as PR #38.
+They are not current-status authorities.
 
 ## 9.1 Reconciled current-state entries
 
@@ -545,22 +564,20 @@ VAL_CASE_002:
 This reconciliation is part of the substantive WP03-002 numerical pull
 request, not a standalone documentation cycle. It changes no historical
 scientific result or immutable campaign execution count.
-4. update the same records at the end with the actual WP03-002 result;
-5. preserve historical task-specific “pending” language where it accurately describes the state at the time an artifact was produced.
 
 ---
 
 # 10. Forward program plan
 
-## Phase 1 — WP03-002 finite-porosity nonlinear robustness and corpus re-comparison
+## Phase 1 — WP03-002 finite-porosity nonlinear robustness and corpus re-comparison — `RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
 
-**Priority:** immediate  
-**Work type:** solver code, numerical diagnosis, OpenFOAM execution, comparison  
+**Status:** `RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
+**Historical work type:** solver code, numerical diagnosis, OpenFOAM execution, comparison
 **Governing-physics change:** none
 
 ### Objective
 
-Determine why the finite-porosity branch fails in:
+Historical executed objective: determine why the finite-porosity branch failed in:
 
 ```text
 WASZ-5-COMPACT
@@ -568,7 +585,8 @@ WASZ-9-COMPACT
 WASZ-11-COMPACT
 ```
 
-Then, if the cause is numerical or implementation-related, apply the smallest defensible correction and rerun the same source-linked cases without retuning physical parameters.
+This objective was completed. The bounded correction recovered all three
+cases without retuning; the scientific transfer failure remains.
 
 ### Required outcomes
 
@@ -587,7 +605,7 @@ Then, if the cause is numerical or implementation-related, apply the smallest de
 
 ## Phase 2 — VAL-CORPUS-002 extraction and cup-chemistry comparison
 
-**Start only after WP03-002 closes.**
+**Named next scientific task after an approved WP03-002 merge; not started.**
 
 Candidate evidence:
 
@@ -681,7 +699,10 @@ No experiment is required before continuing corpus comparison and numerical diag
 
 ---
 
-# 11. WP03-002 detailed execution plan
+# 11. WP03-002 detailed execution plan — `HISTORICAL_EXECUTED_AND_CONSUMED`
+
+`NOT_CURRENT_AUTHORITY`. This section preserves the executed plan for
+provenance. It does not authorize current or future work.
 
 ## 11.1 Proposed identifier
 
@@ -892,7 +913,11 @@ WP03-002 is complete when:
 
 ---
 
-# 13. Fresh human-owner authority exception for WP03-002
+# 13. Human-owner authority template for WP03-002 — `HISTORICAL_EXECUTED_AND_CONSUMED`
+
+`NOT_CURRENT_AUTHORITY`. The embedded template below records the authority
+used for the completed work; it is expired and grants no present write or
+execution authority.
 
 Append manually to:
 
@@ -907,7 +932,8 @@ Append manually to:
 
 Issued by: Tim Brewer
 Issued: 2026-08-02
-Status: ACTIVE
+Status at issuance: ACTIVE
+Current status: HISTORICAL_EXECUTED_AND_CONSUMED_NOT_CURRENT_AUTHORITY
 Task identifier: WP03-002
 Task title: Finite-porosity nonlinear robustness and source-linked re-comparison
 Task class: NUMERICAL_SOLVER_DIAGNOSIS_CORRECTION_AND_EXECUTION
@@ -1213,7 +1239,10 @@ experimental commissioning.
 
 ---
 
-# 14. Resume block for WP03-002
+# 14. Resume block for WP03-002 — `HISTORICAL_EXECUTED_AND_CONSUMED`
+
+`NOT_CURRENT_AUTHORITY`. This consumed resume block is retained only as
+execution provenance and must not be used to resume work.
 
 ```text
 WP03_002_FINITE_POROSITY_ROBUSTNESS_AUTHORITY_INSTALLED_RESUME
@@ -1407,13 +1436,14 @@ terminal flow and mass as 5 > 9 > 11 bar, while all tested solver families
 order them 11 > 9 > 5 with Spearman -1. Selected local agreement exists,
 especially dissolution-indexed Darcy at 9 bar, but cross-pressure transfer
 fails. Foster wetting is partial. The generic DE1 machine overlay fails.
-The finite-porosity branch fails numerically in WASZ-5/9/11-COMPACT.
+The finite-porosity source-linked numerical defect was corrected by WP03-002;
+all three 5/9/11-bar cases complete, but their model ordering remains opposite
+the source ordering.
 
-The immediate next task is WP03-002: reproduce, diagnose, and harden the
-finite-porosity nonlinear solve without changing governing physics or
-retuning physical inputs; rerun the same three source-linked cases; update
-the corpus comparison; and correct current administrative lag in the same
-substantive PR.
+WP03-002 is `RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW`. After an approved
+merge, the named next scientific task is
+`VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY`; it is not started or authorized
+by this historical bootstrap.
 
 Use the attached PROGRAM_STATE_AND_FORWARD_PLAN as the persistent controlling
 handoff.
