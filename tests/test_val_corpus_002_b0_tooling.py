@@ -42,7 +42,11 @@ class ConfigurationTests(unittest.TestCase):
 
 class ReferenceAndParityTests(unittest.TestCase):
     def test_direct_reference_binding(self):
-        binding = b0.bind_reference(ROOT, ROOT.parent / ".wp03-002-exact-head-review")
+        review_root = ROOT.parent / ".wp03-002-exact-head-review"
+        trace = review_root / "corrected-runs-v2/cases/WASZ-9-COMPACT/postProcessing/wholePull/0/traces.csv"
+        if not trace.is_file():
+            self.skipTest("read-only retained WP03-002 artifact is not present in portable CI")
+        binding = b0.bind_reference(ROOT, review_root)
         self.assertEqual(binding["sha256"], b0.REFERENCE["sha256"])
         self.assertEqual(binding["first_timestamp_s"], 0.02)
         self.assertEqual(binding["final_timestamp_s"], 29.9999999999994)
