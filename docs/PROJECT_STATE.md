@@ -7,8 +7,8 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 256/256 PASS
-- Active validation case: `VAL_CORPUS_002_STAGE_B1_PRE_B2_CLOSURE_PENDING_REVIEW`
+- Public source verification: 259/259 PASS
+- Active validation case: `VAL_CORPUS_002_STAGE_B2_PROSPECTIVE_ACTIVATION`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
@@ -35,8 +35,10 @@ complete cache, replayed the optimizer from its original bounds, and completed
 independent exact-head review. Its exact-head semantic correction now parses
 and independently reduces the retained trace, validates the closed numerical
 record, and deterministically reproduces the strengthened governed bundle
-without solver or optimizer execution. Stage B2, transfer scoring, protected
-scoring, and VAL-CASE-002 have not started.
+without solver or optimizer execution. Stage B2 is prospectively activated
+for the exact fixed 45-case production and nine-identity sensitivity
+inventory; no B2 model result has yet been accessed. Protected scoring and
+VAL-CASE-002 remain unauthorized and have not started.
 
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
 admissible independent dataset or the synchronized pressure, flow/mass,

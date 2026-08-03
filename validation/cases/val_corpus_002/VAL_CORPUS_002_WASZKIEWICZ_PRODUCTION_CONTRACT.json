@@ -381,27 +381,31 @@
     }
   },
   "predecessor_parity": {
-    "absolute_tolerance_native_si": 1e-12,
     "common_time_domain_s": [
-      0.0,
-      30.0
+      0.02,
+      29.9999999999994
     ],
+    "comparison_tolerance": "FIELD_SPECIFIC_ABSOLUTE_PLUS_1E-10_TIMES_ABS_REFERENCE",
     "failure": "STOP_BEFORE_WASZKIEWICZ_SCORING",
-    "fields": [
-      "time",
-      "inlet_pressure",
-      "outlet_flow",
-      "cup_water_mass",
-      "cup_solute_mass",
-      "cup_beverage_mass",
-      "remaining_extractable_mass",
-      "dissolved_mass",
-      "compaction_porosity",
-      "compaction_permeability"
-    ],
+    "final_timestamp_accepted_as_30s_tolerance_s": 1e-12,
+    "field_absolute_tolerances": {
+      "cup_beverage_mass_kg": 1e-12,
+      "cup_solute_mass_kg": 1e-12,
+      "cup_water_mass_kg": 1e-12,
+      "dissolved_in_puck_mass_kg": 1e-12,
+      "inlet_pressure_Pa": 1e-06,
+      "outlet_flow_m3_s": 1e-16,
+      "remaining_extractable_mass_kg": 1e-12,
+      "time_s": 1e-12,
+      "volumeWeightedMechanicalPorosity": 1e-12,
+      "volumeWeightedPermeabilityM2": 1e-25
+    },
+    "initial_state": "CHECKED_SEPARATELY_BY_EXACT_IDENTITIES",
     "new_case": "WASZ_9_COMPACT_P0_CHEMISTRY",
-    "reference": "ACCEPTED_30_SECOND_CORRECTED_P0_TRACE",
-    "relative_tolerance": 1e-10,
+    "parity_t0_insertion": "PROHIBITED",
+    "reference": "DIRECT_CONTENT_ADDRESS",
+    "reference_sha256": "bb3a5d2214b3eaf0cec2d76be0c90f56b2454cfa1982b2770841b499ed1db30a",
+    "retained_reference_states": 1500,
     "role": "NUMERICAL_VERIFICATION_NOT_SOURCE_SCORING",
     "time_matching": "EXACT_DECLARED_GRID_OR_DETERMINISTIC_LINEAR_INTERPOLATION"
   },
