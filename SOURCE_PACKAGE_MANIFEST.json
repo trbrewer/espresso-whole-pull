@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 263,
-  "total_uncompressed_bytes_excluding_manifest": 2579064,
-  "aggregate_source_sha256": "500df10a63e8ad38f0af047b99dd2530f37e11cf4703344cb2f6f0936f5644db",
-  "aggregate_sha256": "500df10a63e8ad38f0af047b99dd2530f37e11cf4703344cb2f6f0936f5644db",
+  "file_count": 264,
+  "total_uncompressed_bytes_excluding_manifest": 2580510,
+  "aggregate_source_sha256": "e5abe003ced0ae9a7636838d6a301e5e0e9b273eea0a3e88d101a96983a1c9aa",
+  "aggregate_sha256": "e5abe003ced0ae9a7636838d6a301e5e0e9b273eea0a3e88d101a96983a1c9aa",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -611,6 +611,11 @@
     "docs/validation/VAL_CORPUS_002_STAGE_B2_ACTIVATION.md": {
       "sha256": "c3f44d1175e6348904cb6bb03326de9fca4c1af2226361f9068a9b36d2b7d49d",
       "bytes": 1031,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B2_EXACT_HEAD_ANALYSIS_CORRECTION.md": {
+      "sha256": "220067065509f6c87829765b0ebad4e0b09b1b1d2dc4a0b8a1e55d54f409e2c8",
+      "bytes": 1446,
       "git_mode": "100644"
     },
     "docs/validation/VAL_CORPUS_002_STAGE_B2_MATERIALIZATION_RECOVERY_PROTOCOL.md": {

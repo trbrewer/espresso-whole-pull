@@ -1,0 +1,35 @@
+{
+  "schema_version": "espresso.val_corpus_002.b2_exact_head_analysis_correction.v1",
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "profile": "EWP_PRODUCTION_AND_SCORING_STAGE_V1",
+  "starting_head": "2fb9f20c08ef30af75b21232be25d600be8e8a34",
+  "starting_tree": "4c63cb40be8e5e1b7447720ab02f7b09a2d13324",
+  "findings": [
+    "SCIENTIFIC_DISPOSITION_OVERSTATED",
+    "SOURCE_ONLY_NORMALIZED_SPECIES_AUDIT_INCOMPLETE",
+    "MANDATORY_RESULT_OUTPUT_SUMMARY_INCOMPLETE",
+    "REDUCED_SOURCE_CLOCK_NOT_EVALUATED",
+    "DETERMINISTIC_FIGURES_MISSING",
+    "HUMAN_READABLE_RESULT_INSUFFICIENT",
+    "CURRENT_STATE_RECORDS_INCONSISTENT"
+  ],
+  "boundaries": {
+    "openfoam_rerun": "PROHIBITED",
+    "sensitivity_rerun": "PROHIBITED",
+    "refit": "PROHIBITED",
+    "scientific_inputs": "UNCHANGED",
+    "numerical_results": "UNCHANGED",
+    "protected_scoring": "PROHIBITED",
+    "new_governing_physics": "NOT_AUTHORIZED",
+    "val_case_002": "NOT_STARTED",
+    "merge": "NOT_AUTHORIZED"
+  },
+  "immutable_counts": {
+    "production_identities": 45,
+    "production_pass": 27,
+    "typed_target_coverage_failures": 18,
+    "sensitivity_identities": 9,
+    "sensitivity_pass": 9,
+    "predecessor_parity_states": 1500
+  }
+}
