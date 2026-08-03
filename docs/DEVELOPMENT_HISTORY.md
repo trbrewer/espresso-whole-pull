@@ -45,6 +45,14 @@
   metrics/sensitivity tooling, and fail-closed result/protected-score
   barriers. OpenFOAM, fitting, governed scoring, and Stage B1 were not run.
 
+- VAL-CORPUS-002 Stage B0 exact-head correction: replaced the calibration
+  objective with the exact Experiment-7/H1 relative-MSE contract, implemented
+  exact log-k golden-section mechanics and a closed calibration-manifest gate,
+  completed production reducers, and hardened raw interval, artifact, parity,
+  optimizer-trace, and protected-action controls. All qualification remained
+  synthetic; OpenFOAM, calibration, model-result access, and scoring were not
+  performed.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.

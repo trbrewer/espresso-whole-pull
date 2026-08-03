@@ -1,0 +1,53 @@
+{
+  "objective_identity": "EXP7_H1_EQUAL_WEIGHT_MEAN_SQUARED_RELATIVE_ERROR_20_40_60_G_V1",
+  "replicate_statistics": [
+    {
+      "brew_ratio": "1/1",
+      "experiment": 7,
+      "replicate_count": 6,
+      "replicate_mean_tds_mass_g": 2.9240100000000004,
+      "replicate_range_tds_mass_g": [
+        2.82794,
+        2.97797
+      ],
+      "replicate_sample_sd_tds_mass_g": 0.054411864147444956,
+      "target_beverage_mass_g": 20.0
+    },
+    {
+      "brew_ratio": "1/2",
+      "experiment": 7,
+      "replicate_count": 6,
+      "replicate_mean_tds_mass_g": 3.8761999999999994,
+      "replicate_range_tds_mass_g": [
+        3.82338,
+        3.91246
+      ],
+      "replicate_sample_sd_tds_mass_g": 0.03171735613193513,
+      "target_beverage_mass_g": 40.0
+    },
+    {
+      "brew_ratio": "1/3",
+      "experiment": 7,
+      "replicate_count": 6,
+      "replicate_mean_tds_mass_g": 4.187098333333333,
+      "replicate_range_tds_mass_g": [
+        4.14475,
+        4.22781
+      ],
+      "replicate_sample_sd_tds_mass_g": 0.03551913479614431,
+      "target_beverage_mass_g": 60.0
+    }
+  ],
+  "source_cohort_path": "validation/cases/val_corpus_002/VAL_CORPUS_002_COHORT_SELECTION.json",
+  "source_cohort_sha256": "4fd5c0e4971b9f976c0f4da707ab5f9a43e1d5131e06e3ea4c64675bc5b0b054",
+  "source_observations_g": [
+    2.9240100000000004,
+    3.8761999999999994,
+    4.187098333333333
+  ],
+  "target_masses_g": [
+    20.0,
+    40.0,
+    60.0
+  ]
+}

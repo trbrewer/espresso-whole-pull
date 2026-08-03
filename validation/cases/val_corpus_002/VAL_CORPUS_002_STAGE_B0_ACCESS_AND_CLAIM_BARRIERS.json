@@ -2,9 +2,11 @@
   "claim_ceiling": "PHYSICAL_VALIDATION_NOT_ESTABLISHED",
   "initial_state": "B0_SYNTHETIC_ONLY",
   "model_result_access": "PROHIBITED",
-  "normal_end_state": "VAL_CORPUS_002_STAGE_B0_TOOLING_COMPLETE_PENDING_REVIEW",
+  "normal_end_state": "VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW",
   "p2_mode_specific_rates": "PROHIBITED",
   "post_transfer_refit_path": "ABSENT",
+  "production_materialization": "EXACT_CALIBRATION_MANIFEST_ONLY_NO_RAW_RATE",
+  "protected_action_policy": "EXACT_ACTION_AND_CASE_ALLOWLIST",
   "protected_scoring": "PROHIBITED",
   "schema_version": 1,
   "transfer_result_access": "PROHIBITED"

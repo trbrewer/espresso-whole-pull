@@ -8,7 +8,7 @@
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
 - Public source verification: 248/248 PASS
-- Active validation case: `VAL_CORPUS_002_STAGE_B0_TOOLING_COMPLETE_PENDING_REVIEW`
+- Active validation case: `VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
@@ -27,9 +27,9 @@ WP03-002 is `COMPLETE_APPROVED_AND_MERGED` at merge commit
 `0a5c146078da5d5f88b344b20e7b81042bf27ddb`; its approved head was
 `78dc278212976a569bf21dda139a98c35756db14` and its executed solver SHA-256 was
 `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6`.
-VAL-CORPUS-002 Stage A is exact-head approved. Stage B0 prospective tooling is
-complete pending review. OpenFOAM, calibration, governed scoring, Stage B1,
-and VAL-CASE-002 have not started.
+VAL-CORPUS-002 Stage A is exact-head approved. Stage B0 corrected prospective
+tooling is complete pending review. OpenFOAM, calibration, governed scoring,
+Stage B1, and VAL-CASE-002 have not started.
 
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
 admissible independent dataset or the synchronized pressure, flow/mass,

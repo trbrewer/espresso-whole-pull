@@ -1,6 +1,6 @@
 # VAL-CORPUS-002 Stage B0 Execution Tooling Report
 
-**Disposition:** `VAL_CORPUS_002_STAGE_B0_TOOLING_COMPLETE_PENDING_REVIEW`
+**Disposition:** `VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW`
 
 **Change declaration:** `SOURCE_SCENARIO_CHANGE_ONLY`
 
@@ -13,6 +13,16 @@ tooling protocol. OpenFOAM was not built, prepared, decomposed, or run. The
 optimizer was not invoked against the solver. P2 was not fitted or
 materialized for execution. No transfer model result or protected flow series
 was loaded, and no governed model-versus-source score was calculated.
+
+The exact-head correction binds the Experiment-7/H1 objective directly to the
+cohort record as equal-weight mean squared relative error, moves the frozen
+golden-section search to exact log-k coordinates and bounds, requires a closed
+calibration manifest before P2 materialization, completes all frozen production
+reducers, accepts only raw interval trace fields, rejects artifact symlinks
+before resolution, requires all 1,500 predecessor states, records the final
+optimizer selection, and replaces protected-action substring filtering with an
+exact action/case allowlist. The correction is governed by authorization
+`VAL-CORPUS-002-B0-CORRECTION-2026-08-03` under `EWP_TOOLING_STAGE_V1`.
 
 ## Direct predecessor reference
 

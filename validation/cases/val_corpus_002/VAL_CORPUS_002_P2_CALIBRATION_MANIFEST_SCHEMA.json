@@ -1,0 +1,147 @@
+{
+  "$id": "espresso.val_corpus_002.p2_calibration_manifest.v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authorization_id": {
+      "type": "string"
+    },
+    "calibration_artifact_aggregate_sha256": {
+      "type": "string"
+    },
+    "calibration_artifact_manifest_path": {
+      "type": "string"
+    },
+    "calibration_artifact_manifest_sha256": {
+      "type": "string"
+    },
+    "calibration_case_id": {
+      "type": "string"
+    },
+    "calibration_configuration_sha256": {
+      "type": "string"
+    },
+    "conservation_disposition": {
+      "type": "string"
+    },
+    "executable_sha256": {
+      "type": "string"
+    },
+    "log_k_bounds": {
+      "items": {
+        "type": "number"
+      },
+      "type": "array"
+    },
+    "log_k_interval_tolerance": {
+      "type": "number"
+    },
+    "maximum_evaluations": {
+      "type": "integer"
+    },
+    "numerical_completion": {
+      "type": "string"
+    },
+    "objective_identity": {
+      "type": "string"
+    },
+    "optimizer_algorithm": {
+      "type": "string"
+    },
+    "optimizer_status": {
+      "type": "string"
+    },
+    "optimizer_trace_sha256": {
+      "type": "string"
+    },
+    "record_class": {
+      "type": "string"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "selected_log_k": {
+      "type": "number"
+    },
+    "selected_log_k_hex": {
+      "type": "string"
+    },
+    "selected_objective": {
+      "type": "number"
+    },
+    "selected_rate_hex": {
+      "type": "string"
+    },
+    "selected_rate_s_inverse": {
+      "type": "number"
+    },
+    "solver_commit": {
+      "type": "string"
+    },
+    "source_cohort_path": {
+      "type": "string"
+    },
+    "source_cohort_sha256": {
+      "type": "string"
+    },
+    "source_observations_g": {
+      "items": {
+        "type": "number"
+      },
+      "type": "array"
+    },
+    "stage": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "target_masses_g": {
+      "items": {
+        "type": "number"
+      },
+      "type": "array"
+    },
+    "task": {
+      "type": "string"
+    },
+    "template_sha256": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "authorization_id",
+    "calibration_artifact_aggregate_sha256",
+    "calibration_artifact_manifest_path",
+    "calibration_artifact_manifest_sha256",
+    "calibration_case_id",
+    "calibration_configuration_sha256",
+    "conservation_disposition",
+    "executable_sha256",
+    "log_k_bounds",
+    "log_k_interval_tolerance",
+    "maximum_evaluations",
+    "numerical_completion",
+    "objective_identity",
+    "optimizer_algorithm",
+    "optimizer_status",
+    "optimizer_trace_sha256",
+    "record_class",
+    "schema_version",
+    "selected_log_k",
+    "selected_log_k_hex",
+    "selected_objective",
+    "selected_rate_hex",
+    "selected_rate_s_inverse",
+    "solver_commit",
+    "source_cohort_path",
+    "source_cohort_sha256",
+    "source_observations_g",
+    "stage",
+    "status",
+    "target_masses_g",
+    "task",
+    "template_sha256"
+  ],
+  "type": "object"
+}

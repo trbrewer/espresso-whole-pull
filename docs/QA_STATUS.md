@@ -49,8 +49,8 @@ and source/holdout-fit counts remained zero.
 - current VAL-CORPUS-002 Stage-B0 Python suite: final count recorded in
   `PACKAGE_QA_STATUS.json` after repository-wide qualification;
 - current active static gates: 38/38 PASS;
-- current source manifest: 243/243 PASS (exact aggregate in
-  `SOURCE_PACKAGE_MANIFEST.json` and `PACKAGE_QA_STATUS.json`);
+- current source manifest: final corrected count recorded in
+  `SOURCE_PACKAGE_MANIFEST.json` and `PACKAGE_QA_STATUS.json`;
 - the merged WP03-001 baseline's 230-test count remains historical.
 - source manifest: recorded in `PACKAGE_QA_STATUS.json` and
   `SOURCE_PACKAGE_MANIFEST.json`

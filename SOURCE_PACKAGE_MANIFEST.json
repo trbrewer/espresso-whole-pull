@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 248,
-  "total_uncompressed_bytes_excluding_manifest": 2358248,
-  "aggregate_source_sha256": "78c9bd00fccd513eb6e6cb6d1dbe7b903453009fd5897e32fdc4f8d0e6b15089",
-  "aggregate_sha256": "78c9bd00fccd513eb6e6cb6d1dbe7b903453009fd5897e32fdc4f8d0e6b15089",
+  "total_uncompressed_bytes_excluding_manifest": 2388286,
+  "aggregate_source_sha256": "ec7f913ce8bfc5d74edd9f3ce217a64ad2cf522a21467fd1fc5a3a29ca2d777b",
+  "aggregate_sha256": "ec7f913ce8bfc5d74edd9f3ce217a64ad2cf522a21467fd1fc5a3a29ca2d777b",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,12 +444,12 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "bc55c0b8201ee30bf106097ff5ababd3f53801329dd13a60694eddc4027a853e",
-      "bytes": 47177,
+      "sha256": "f4f3a35c2a077c1fa46849b0eeeed2511c21fd7cad9c4b3710c17b73dd20e849",
+      "bytes": 47201,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "fc5862f1c73a027987ff6b1781ec0786b88ef756afb5273709eea5fd61d94a23",
+      "sha256": "4462455662beee50a40f0f9f292544976a2a4eb0e0f225f6979d021d53274fbe",
       "bytes": 12647,
       "git_mode": "100644"
     },
@@ -579,8 +579,8 @@
       "git_mode": "100644"
     },
     "docs/validation/VAL_CORPUS_002_STAGE_B0_EXECUTION_TOOLING_REPORT.md": {
-      "sha256": "e79e0a2314550d9300ae90de9f907e0ae7094a642d4307f26b8be9fc8ca7a3a8",
-      "bytes": 3798,
+      "sha256": "d75886f01b63d01583b0ef4e1f6b4a25815de93822594d465a3247e911f80133",
+      "bytes": 4489,
       "git_mode": "100644"
     },
     "docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md": {
@@ -904,8 +904,8 @@
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_b0_tooling.py": {
-      "sha256": "645e3273a94e7dcc918e7f05398e4f41a3f3417f8d65bdc90a8194441ea3355a",
-      "bytes": 23832,
+      "sha256": "a3f8bf7ee8ea014b6cd5d57bd6241ad6857baac79ad83f04914b0e71e568c9be",
+      "bytes": 49518,
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_protocol.py": {
@@ -1199,8 +1199,8 @@
       "git_mode": "100644"
     },
     "tests/test_val_corpus_002_b0_tooling.py": {
-      "sha256": "613c79d4a7846f6829ffb8992f376d233d15e504cb53fecb6a179ca892c06bd2",
-      "bytes": 8871,
+      "sha256": "4a43bcabc4b6f487065256e11a3a622753e3040a84f16a80bce1e78fbd98f0b8",
+      "bytes": 12508,
       "git_mode": "100644"
     },
     "tests/test_val_corpus_002_protocol.py": {

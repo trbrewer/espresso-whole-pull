@@ -1,0 +1,114 @@
+{
+  "artifact_symlinks": "REJECTED_BEFORE_RESOLUTION",
+  "authorization_id": "VAL-CORPUS-002-B0-CORRECTION-2026-08-03",
+  "calibration": "NOT_EXECUTED",
+  "calibration_source_binding": {
+    "objective_identity": "EXP7_H1_EQUAL_WEIGHT_MEAN_SQUARED_RELATIVE_ERROR_20_40_60_G_V1",
+    "replicate_statistics": [
+      {
+        "brew_ratio": "1/1",
+        "experiment": 7,
+        "replicate_count": 6,
+        "replicate_mean_tds_mass_g": 2.9240100000000004,
+        "replicate_range_tds_mass_g": [
+          2.82794,
+          2.97797
+        ],
+        "replicate_sample_sd_tds_mass_g": 0.054411864147444956,
+        "target_beverage_mass_g": 20.0
+      },
+      {
+        "brew_ratio": "1/2",
+        "experiment": 7,
+        "replicate_count": 6,
+        "replicate_mean_tds_mass_g": 3.8761999999999994,
+        "replicate_range_tds_mass_g": [
+          3.82338,
+          3.91246
+        ],
+        "replicate_sample_sd_tds_mass_g": 0.03171735613193513,
+        "target_beverage_mass_g": 40.0
+      },
+      {
+        "brew_ratio": "1/3",
+        "experiment": 7,
+        "replicate_count": 6,
+        "replicate_mean_tds_mass_g": 4.187098333333333,
+        "replicate_range_tds_mass_g": [
+          4.14475,
+          4.22781
+        ],
+        "replicate_sample_sd_tds_mass_g": 0.03551913479614431,
+        "target_beverage_mass_g": 60.0
+      }
+    ],
+    "source_cohort_path": "validation/cases/val_corpus_002/VAL_CORPUS_002_COHORT_SELECTION.json",
+    "source_cohort_sha256": "4fd5c0e4971b9f976c0f4da707ab5f9a43e1d5131e06e3ea4c64675bc5b0b054",
+    "source_observations_g": [
+      2.9240100000000004,
+      3.8761999999999994,
+      4.187098333333333
+    ],
+    "target_masses_g": [
+      20.0,
+      40.0,
+      60.0
+    ]
+  },
+  "disposition": "VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW",
+  "governed_scoring": "NOT_PERFORMED",
+  "interval_input": [
+    "time_s",
+    "outlet_flow_m3_s",
+    "totalSoluteFluxKgS",
+    "liquid_density_kg_m3"
+  ],
+  "model_result_access": "NOT_PERFORMED",
+  "objective": {
+    "formula": "mean(((model_i-source_i)/source_i)^2)",
+    "identity": "EXP7_H1_EQUAL_WEIGHT_MEAN_SQUARED_RELATIVE_ERROR_20_40_60_G_V1",
+    "zero_source_denominator": "FAIL_CLOSED"
+  },
+  "openfoam": "NOT_BUILT_NOT_RUN",
+  "optimizer": {
+    "algorithm": "GOLDEN_SECTION_LOG_K_V1",
+    "k_bounds_s_inverse": [
+      0.011446486815650324,
+      1.1446486815650323
+    ],
+    "log_k_bounds": [
+      -4.470072424390813,
+      0.13509776159727813
+    ],
+    "log_k_interval_tolerance": 1e-08,
+    "maximum_evaluations": 128,
+    "nonconverged_manifest": "PROHIBITED"
+  },
+  "p2_materialization": {
+    "identical_manifest_bound_rate": "REQUIRED",
+    "input": "EXACT_CALIBRATION_MANIFEST_ONLY",
+    "raw_rate": "PROHIBITED",
+    "template_count": 15
+  },
+  "parity": {
+    "final_timestamp_s": 29.9999999999994,
+    "first_timestamp_s": 0.02,
+    "reference_sha256": "bb3a5d2214b3eaf0cec2d76be0c90f56b2454cfa1982b2770841b499ed1db30a",
+    "required_rows": 1500
+  },
+  "profile": "EWP_TOOLING_STAGE_V1",
+  "protected_action_control": "EXACT_ACTION_AND_CASE_ALLOWLIST",
+  "reducers": [
+    "SCHMIEDER_THREE_MASS_AND_RESIDUALS",
+    "REPLICATE_STATISTICS",
+    "OBSERVED_RANGE_AND_SD_COUNTS",
+    "PAIRED_H0_H1_ERROR_RATIO",
+    "ALL_THREE_AXIS_CONTRASTS_ALL_BREW_RATIOS",
+    "WASZKIEWICZ_FULL_SERIES_AND_WINDOWS",
+    "SUPPLIED_UNCERTAINTY_SECONDARY_METRICS",
+    "COMPLETE_3_BY_4_SENSITIVITY_SVD_RANK_CORRELATION",
+    "SOURCE_ONLY_SPECIES_LIMITATION_AUDIT"
+  ],
+  "schema_version": 1,
+  "stage_b1": "NOT_STARTED"
+}

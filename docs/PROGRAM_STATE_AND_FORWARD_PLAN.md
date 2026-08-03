@@ -75,7 +75,7 @@ VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
 ACTIVE_VALIDATION_CASE:
-  VAL_CORPUS_002_STAGE_B0_TOOLING_COMPLETE_PENDING_REVIEW
+  VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW
 
 ACTIVE_DATA_PLANNING_TASK:
   NONE
@@ -99,13 +99,13 @@ VAL_CASE_002:
   NOT_STARTED
 
 CURRENT_SCIENTIFIC_TASK:
-  VAL_CORPUS_002_STAGE_B0_TOOLING_EXACT_HEAD_REVIEW
+  VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_EXACT_HEAD_REVIEW
 ```
 
 WP03-002 is complete, approved, and merged. VAL-CORPUS-002 Stage A is
-exact-head approved and Stage B0 prospective tooling is complete pending
-review. OpenFOAM execution, calibration, governed scoring, and Stage B1 have
-not started.
+exact-head approved and Stage B0 corrected prospective tooling is complete
+pending review. OpenFOAM execution, calibration, governed scoring, and Stage
+B1 have not started.
 
 ---
 
@@ -148,7 +148,7 @@ protocol has been frozen here.
 | Read-only evidence snapshot used by VAL-CORPUS-001 | `9c52c94edb27b461b6e7a4d471d29f3cef9d053e` |
 | Current Python suite | `369/369 PASS` |
 | Current static gates | `38/38 PASS` |
-| Current source manifest | `243/243 PASS`; exact aggregate is recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
+| Current source manifest | current exact count and aggregate are recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
 | Physical validation | `NOT_ESTABLISHED` |
 | Experimental commissioning | `NOT_AUTHORIZED` |
 | Governing-physics selection | `NOT_YET_JUSTIFIED` |
