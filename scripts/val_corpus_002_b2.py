@@ -184,7 +184,13 @@ def execute_case(root: Path, run_root: Path, executable: Path, run_id: str,
                   "final_time_s": rows[-1]["time_s"], "wall_seconds": time.time() - started,
                   "executable_sha256": _sha(executable), "solver_commit": SOLVER_COMMIT}
         if run_id.startswith("SCHM_") or run_id.startswith("SENS_"):
-            model, gates = b1.reduce_evaluation(rows, configuration)
+            try:
+                model, gates = b1.reduce_evaluation(rows, configuration)
+            except ValueError as exc:
+                if str(exc) != "fixed-mass extrapolation is prohibited":
+                    raise
+                raise b0.TypedNumericalEvaluationFailure(
+                    "REQUIRED_TARGET_BEVERAGE_MASS_NOT_REACHED_NO_EXTRAPOLATION") from exc
             record.update(model_cup_solute_masses_g=model, numerical_gates=gates)
         _dump(target / "execution-record.json", record)
         _cleanup_processors(case)

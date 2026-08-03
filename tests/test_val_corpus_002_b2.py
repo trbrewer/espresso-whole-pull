@@ -50,6 +50,11 @@ class StageB2ProspectiveTests(unittest.TestCase):
         self.assertEqual(b2.B1_MANIFEST_SHA256,
                          "554ce1c35979fa8961973b8cdd663a7a0ba817f6369667ea10808a06f644cbbc")
 
+    def test_missing_target_is_typed_not_infrastructure(self):
+        text = (ROOT / "scripts/val_corpus_002_b2.py").read_text()
+        self.assertIn("REQUIRED_TARGET_BEVERAGE_MASS_NOT_REACHED_NO_EXTRAPOLATION", text)
+        self.assertIn("raise b0.TypedNumericalEvaluationFailure", text)
+
     def test_refuses_reused_runtime_root(self):
         with tempfile.TemporaryDirectory() as temp:
             with self.assertRaises(b2.InfrastructureFailure):
