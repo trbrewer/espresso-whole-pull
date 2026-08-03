@@ -1,0 +1,13 @@
+{
+  "fail_closed": true,
+  "mappings": [
+    {"field": "Schmieder pressure history and exact basket pressure node", "status": "UNRESOLVED", "stage_b_effect": "H0/H1 pressure mapping remains a limited diagnostic"},
+    {"field": "Schmieder ramp-time history", "status": "UNRESOLVED", "stage_b_effect": "retain fixed merged 3 s ramp and declare limitation"},
+    {"field": "temperature-dependent density and viscosity relation", "status": "UNRESOLVED", "stage_b_effect": "retain merged values; temperature-axis hydraulic attribution is limited"},
+    {"field": "Waszkiewicz TDS source-to-solver time zero", "status": "UNRESOLVED", "stage_b_effect": "present source clock and fixed existing +3 s mapping without optimization"},
+    {"field": "Waszkiewicz 5-bar chemistry", "status": "UNAVAILABLE", "stage_b_effect": "exclude; do not infer"},
+    {"field": "Waszkiewicz 11-bar chemistry", "status": "UNAVAILABLE", "stage_b_effect": "exclude; do not infer"},
+    {"field": "P2 extractionRateConstant", "status": "UNRESOLVED_UNTIL_SEPARATELY_AUTHORIZED_STAGE_B_CALIBRATION", "stage_b_effect": "no P2 transfer case may execute before a valid calibration result"}
+  ],
+  "schema_version": 1
+}

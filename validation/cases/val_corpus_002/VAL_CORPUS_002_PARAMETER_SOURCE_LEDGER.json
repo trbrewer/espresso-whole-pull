@@ -1,0 +1,103 @@
+{
+  "density_convention": "rho=1.0 g/mL is the source direct-mapping convention; it is not a new solver property",
+  "mapping_dimension_check": "(g/mL)*(mL/s)/g = 1/s",
+  "p1_mapping_verified": true,
+  "parameterizations": {
+    "P0_MERGED_PREDECESSOR_ZERO_RETUNING": {
+      "effectiveSoluteDiffusivity": {
+        "class": "FIXED_PREDECESSOR_VALUE",
+        "unit": "m^2/s",
+        "value": 1e-09
+      },
+      "extractableFraction": {
+        "class": "FIXED_PREDECESSOR_VALUE",
+        "unit": "g/g dry dose",
+        "value": 0.28
+      },
+      "extractionRateConstant": {
+        "class": "FIXED_PREDECESSOR_VALUE",
+        "unit": "s^-1",
+        "value": 0.15
+      },
+      "fitting": "NONE",
+      "saturationConcentration": {
+        "class": "FIXED_PREDECESSOR_VALUE",
+        "unit": "kg/m^3",
+        "value": 180.0
+      }
+    },
+    "P1_SCHMIEDER_EXP7_DIRECT_SOURCE_MAPPING": {
+      "effectiveSoluteDiffusivity": {
+        "class": "FIXED_PREDECESSOR_VALUE",
+        "unit": "m^2/s",
+        "value": 1e-09
+      },
+      "extractableFraction": {
+        "class": "SOURCE_FITTED",
+        "unit": "g/g dry dose",
+        "value": 0.24827
+      },
+      "extractionRateConstant": {
+        "class": "SOURCE_DERIVED",
+        "formula": "rho_g_per_ml * Q_target_ml_per_s / lambda_g",
+        "inputs": {
+          "Q_target_ml_per_s": 2.0,
+          "lambda_g": 17.47261,
+          "rho_g_per_ml": 1.0
+        },
+        "unit": "s^-1",
+        "value": 0.11446486815650324
+      },
+      "fitting": "NONE",
+      "initial_extractable_mass_for_20g_dose_g": {
+        "class": "SOURCE_DERIVED",
+        "value": 4.9654
+      },
+      "saturationConcentration": {
+        "class": "FIXED_PREDECESSOR_VALUE",
+        "unit": "kg/m^3",
+        "value": 180.0
+      }
+    },
+    "P2_SCHMIEDER_EXP7_ONE_SCALAR_RECONSTRUCTION": {
+      "effectiveSoluteDiffusivity": {
+        "class": "FIXED_PREDECESSOR_VALUE",
+        "unit": "m^2/s",
+        "value": 1e-09
+      },
+      "extractableFraction": {
+        "class": "SOURCE_FITTED",
+        "unit": "g/g dry dose",
+        "value": 0.24827
+      },
+      "extractionRateConstant": {
+        "class": "CALIBRATED_IN_THIS_CASE",
+        "linear_bounds_s_inverse": [
+          0.011446486815650324,
+          1.1446486815650323
+        ],
+        "log_bounds": [
+          -4.470072424390813,
+          0.13509776159727813
+        ],
+        "unit": "s^-1",
+        "value": "UNRESOLVED_UNTIL_STAGE_B"
+      },
+      "objective": "equal-weight mean squared relative error at 20, 40, 60 g",
+      "optimizer": {
+        "algorithm": "bounded golden-section search in log(k)",
+        "failure": "FAIL_CLOSED_NO_PARAMETER",
+        "maximum_evaluations": 128,
+        "stopping_tolerance_log_k": 1e-08,
+        "tie_break": "lower k"
+      },
+      "saturationConcentration": {
+        "class": "FIXED_PREDECESSOR_VALUE",
+        "unit": "kg/m^3",
+        "value": 180.0
+      },
+      "stage_a_execution": "PROHIBITED_NOT_INVOKED"
+    }
+  },
+  "schema_version": 1
+}

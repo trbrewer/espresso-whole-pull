@@ -1,0 +1,33 @@
+{
+  "chemistry_calibration": "NONE",
+  "clock_mapping": {
+    "optimization": "PROHIBITED",
+    "presentations": [
+      "SOURCE_REPORTED_CLOCK",
+      "EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS"
+    ],
+    "status": "AMBIGUOUS"
+  },
+  "optimized_time_shift": "PROHIBITED",
+  "point_count": 12,
+  "role": "CROSS_SOURCE_NONHOLDOUT_COMPARISON",
+  "schema_version": 1,
+  "times_s": [
+    2.5,
+    7.5,
+    12.5,
+    17.5,
+    22.5,
+    27.5,
+    32.5,
+    37.5,
+    42.5,
+    47.5,
+    52.5,
+    57.5
+  ],
+  "unsupported_chemistry": {
+    "11_bar": "UNAVAILABLE_NOT_INFERRED",
+    "5_bar": "UNAVAILABLE_NOT_INFERRED"
+  }
+}

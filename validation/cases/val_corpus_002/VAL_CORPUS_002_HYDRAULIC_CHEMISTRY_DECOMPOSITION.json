@@ -1,0 +1,37 @@
+{
+  "geometry_source": "exact merged case geometry; no geometry inference from missing source fields",
+  "modes": {
+    "H0_NATIVE_COUPLED_MODE": {
+      "solver": "exact merged solver at main 0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+      "hydraulic_fit_to_tds_or_cup_solute": "PROHIBITED",
+      "boundary_mapping": "source maximum pressure used only as a declared pressure-scale diagnostic; its time history is unavailable",
+      "purpose": "FULL_COUPLED_DIAGNOSTIC"
+    },
+    "H1_SOURCE_CONDITIONED_DARCY_MODE": {
+      "flow_model": "UNIFORM_SATURATED_DARCY_CONDITIONING",
+      "permeability_formula": "k = mu * L * Q / (A * delta_p)",
+      "flow_input": "source mean measured volumetric flow by experiment",
+      "pressure_input": "source mean replicate maximum pressure treated as gauge pressure drop to zero-gauge outlet",
+      "pressure_node_limitation": "maximum pressure is not a time-resolved basket-face trace; chemistry-only diagnostic claim",
+      "temperature_viscosity": "merged predecessor viscosity 0.000315 Pa s fixed; no new temperature-property relation",
+      "ramp_time": "merged predecessor fixed 3.0 s; source ramp history unavailable",
+      "compaction": "DISABLED",
+      "darcy_forchheimer": "DISABLED",
+      "claim": "CHEMISTRY_COMPONENT_COMPARISON_ONLY"
+    },
+    "SOURCE_CLOCK_REFERENCE": {
+      "hydraulic_clock": "source measured beverage flow",
+      "chemistry_law": "same declared aggregate inventory law",
+      "purpose": "separate source-clock mapping from finite-volume transport and wetting",
+      "status": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION"
+    }
+  },
+  "schmieder_source_pressure_history": "UNAVAILABLE_NOT_INFERRED",
+  "temperature_axis_mapping": "LIMITED_BY_FIXED_PREDECESSOR_VISCOSITY_NO_NEW_RELATION",
+  "waszkiewicz_case": {
+    "configuration": "config/reconstruction_WP02A_waszkiewicz_9bar.json",
+    "wp03_002_corrected_executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+    "production_change_in_stage_a": "NONE"
+  },
+  "schema_version": 1
+}

@@ -1,0 +1,16 @@
+{
+  "merged_framework_commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+  "merged_framework_tree": "12fdbc542270e2765e2071d83c21812951f892e8",
+  "direct_identities": [
+    {"role": "OPERATING_STANDARD", "path": "docs/validation/VALIDATION_OPERATING_STANDARD_V1.md", "sha256": "1655e033a29570f71412ea065298f18c6227c40d7567c682ee6340ae6cf3bcc0"},
+    {"role": "METRIC_AND_SEMANTIC_UTILITY", "path": "tools/validation/val001/framework.py", "sha256": "347744f3a47ffe34a1be08063febcc0cee2f9bbaeb7aab201426e341c9478126"},
+    {"role": "CALIBRATION_COMPARISON_LEDGER_SCHEMA", "path": "validation/val001/schemas/calibration_comparison_ledger.schema.json", "sha256": "25ca57f0513aea7fd0a1864d6ccca1ac8704c2316fabbe3ecc5dbfde48c09464"},
+    {"role": "EVIDENCE_RIGHTS_SCHEMA", "path": "validation/val001/schemas/evidence_rights_inventory.schema.json", "sha256": "5793d365b41f343c2f5095d5c41a3269008ce64d68788791ca6c2aec6a33e4b2"},
+    {"role": "SOURCE_ADAPTER_SCHEMA", "path": "validation/val001/schemas/source_adapter.schema.json", "sha256": "be78cd2cd983916e3b301cb05db31777c1731c709c13b13e6c75cf62b086b67a"},
+    {"role": "COMPARISON_RUN_SCHEMA", "path": "validation/val001/schemas/comparison_run.schema.json", "sha256": "79964ab401150c96c46950f72242f9b65d26fd52e9a5f571dd5af72b018c0b59"},
+    {"role": "COMPARISON_RESULT_SCHEMA", "path": "validation/val001/schemas/comparison_result.schema.json", "sha256": "60e00cccd1a647b797b762959995b989b263dbb9570a4d9ec82a1cd71b839df1"},
+    {"role": "WASZKIEWICZ_ADAPTER_IDENTITY_REFERENCE", "path": "validation/val001/adapters/WASZKIEWICZ_PRESSURE_FLOW_ADAPTER.json", "sha256": "eddc9e24544769f62022f49b30eb572370aa4b213fa388d997bdd34c42d47c9c"}
+  ],
+  "modification": "NONE",
+  "schema_version": 1
+}

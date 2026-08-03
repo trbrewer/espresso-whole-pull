@@ -1,0 +1,17 @@
+{
+  "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+  "partitions": [
+    {"id": "SCHMIEDER_EXP7", "role": "SOURCE_RECONSTRUCTION_AND_CALIBRATION_ONLY", "experiments": [7]},
+    {"id": "SCHMIEDER_EXP1_TO_EXP6", "role": "WITHIN_CAMPAIGN_OUT_OF_FIT_COMPARISON", "experiments": [1, 2, 3, 4, 5, 6]},
+    {"id": "WASZKIEWICZ_9BAR_TDS", "role": "CROSS_SOURCE_NONHOLDOUT_COMPARISON", "pressure_bar": 9, "sample_count": 12},
+    {"id": "SCHMIEDER_SPECIES", "role": "SOURCE_ONLY_ONE_SOLUTE_LIMITATION_AUDIT", "species": ["TDS", "caffeine", "trigonelline", "5-CQA"]}
+  ],
+  "rules": {
+    "calibration_comparison_overlap": "PROHIBITED_FAIL_CLOSED",
+    "data_public_and_already_observable": true,
+    "holdout_or_independence_claim": "NONE",
+    "post_transfer_refit": "PROHIBITED",
+    "transfer_role": "FIXED_PARAMETER_COMPARISON_NOT_SEALED_HOLDOUT"
+  },
+  "schema_version": 1
+}

@@ -1,7 +1,9 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "WP03_002_FINITE_POROSITY_NONLINEAR_ROBUSTNESS",
+  "current_governance_milestone": "VAL_CORPUS_002_STAGE_A_PROTOCOL_FREEZE",
+  "canonical_main": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+  "canonical_tree": "12fdbc542270e2765e2071d83c21812951f892e8",
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
     "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION"
@@ -26,11 +28,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 351,
+    "python_test_count": 362,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 240,
-    "source_manifest_aggregate_sha256": "481a80a5eccd1d964ea906ce1413c9e2ad3625e20a0967be782278e76229af2b",
+    "source_manifest_file_count": 243,
+    "source_manifest_aggregate_sha256": "455a4503afa3f86e24a2073591dd41848362a42a268f1bf76594a2ab06ffa148",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -42,7 +44,9 @@
     "json_syntax": "PASS"
   },
   "wp03_002": {
-    "status": "RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+    "status": "COMPLETE_APPROVED_AND_MERGED",
+    "merge_commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+    "approved_head": "78dc278212976a569bf21dda139a98c35756db14",
     "issue": 51,
     "branch": "solver/wp03-002-finite-porosity-nonlinear-robustness",
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
@@ -64,7 +68,7 @@
     "cross_pressure_ordering": "STILL_REVERSED",
     "physical_input_retuning_authorized": false,
     "governing_physics_change_authorized": false,
-    "active_validation_case": "NONE",
+    "active_validation_case": "VAL_CORPUS_002_PROTOCOL_FROZEN_PENDING_REVIEW",
     "active_data_planning_task": "NONE",
     "val_case_002": "NOT_STARTED",
     "new_governing_physics": "NOT_YET_JUSTIFIED",
@@ -327,6 +331,22 @@
   "wp_0_3a_contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
   "wp_0_3a_solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
-  "next_scientific_milestone_after_approved_wp03_002_merge": "VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY_NOT_STARTED",
+  "active_validation_case": "VAL_CORPUS_002_PROTOCOL_FROZEN_PENDING_REVIEW",
+  "active_data_planning_task": "NONE",
+  "active_solver_task": "NONE",
+  "val_corpus_002": {
+    "stage": "A_PROTOCOL_FREEZE",
+    "status": "FROZEN_PENDING_INDEPENDENT_REVIEW",
+    "issue": 53,
+    "change_declaration": "SOURCE_SCENARIO_CHANGE_ONLY",
+    "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+    "openfoam": "NOT_RUN",
+    "calibration": "NOT_EXECUTED",
+    "governed_scoring": "NOT_PERFORMED",
+    "physical_validation": "NOT_ESTABLISHED",
+    "new_governing_physics": "NOT_YET_JUSTIFIED",
+    "val_case_002": "NOT_STARTED"
+  },
+  "next_scientific_milestone_after_approved_wp03_002_merge": "VAL_CORPUS_002_STAGE_A_PROTOCOL_FROZEN_PENDING_REVIEW",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }

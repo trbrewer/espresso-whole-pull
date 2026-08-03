@@ -1,0 +1,21 @@
+{
+  "active_data_planning_task": "NONE",
+  "active_solver_task": "NONE",
+  "change_declaration": "SOURCE_SCENARIO_CHANGE_ONLY",
+  "claim_boundary": {
+    "new_governing_physics": "NOT_YET_JUSTIFIED",
+    "physical_validation": "NOT_ESTABLISHED",
+    "val_case_002": "NOT_STARTED"
+  },
+  "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+  "issue": 53,
+  "protocol_status": "FROZEN_PENDING_INDEPENDENT_REVIEW",
+  "schema_version": 1,
+  "stage": "A_PROTOCOL_FREEZE",
+  "stage_a_actions": {
+    "calibration_execution": "NOT_AUTHORIZED",
+    "governed_scoring": "NOT_AUTHORIZED",
+    "openfoam_execution": "NOT_AUTHORIZED"
+  },
+  "task": "VAL-CORPUS-002 AGGREGATE_EXTRACTION_AND_CUP_CHEMISTRY"
+}

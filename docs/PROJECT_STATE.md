@@ -1,16 +1,16 @@
 # Project State
 
 - Current released version: `v0.2.0`
-- Current merged `main`: `bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1`
-- Current merged tree: `c1d3fdc88dabaea410c4b6236e31ce1376e5eaea`
+- Current merged `main`: `0a5c146078da5d5f88b344b20e7b81042bf27ddb`
+- Current merged tree: `12fdbc542270e2765e2071d83c21812951f892e8`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 240/240 PASS
-- Active validation case: `NONE`
+- Public source verification: 243/243 PASS
+- Active validation case: `VAL_CORPUS_002_PROTOCOL_FROZEN_PENDING_REVIEW`
 - Active data-planning task: `NONE`
-- Active solver task: `WP03-002` result complete; exact-head review pending
+- Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -22,6 +22,13 @@ VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2
 result remains validation-support sensitivity and practical-identifiability
 screening; it does not establish physical validation. VAL-CASE-002 is
 `NOT_STARTED`.
+
+WP03-002 is `COMPLETE_APPROVED_AND_MERGED` at merge commit
+`0a5c146078da5d5f88b344b20e7b81042bf27ddb`; its approved head was
+`78dc278212976a569bf21dda139a98c35756db14` and its executed solver SHA-256 was
+`e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6`.
+VAL-CORPUS-002 Stage A is the active protocol-only validation case. OpenFOAM,
+calibration, governed scoring, and VAL-CASE-002 have not started.
 
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
 admissible independent dataset or the synchronized pressure, flow/mass,

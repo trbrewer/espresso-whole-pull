@@ -1,0 +1,301 @@
+{
+  "future_openfoam_run_count": 42,
+  "future_openfoam_runs": [
+    {
+      "experiment": 1,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP1_P0_H0"
+    },
+    {
+      "experiment": 1,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP1_P0_H1"
+    },
+    {
+      "experiment": 1,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP1_P1_H0"
+    },
+    {
+      "experiment": 1,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP1_P1_H1"
+    },
+    {
+      "experiment": 1,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+    },
+    {
+      "experiment": 1,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+    },
+    {
+      "experiment": 2,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP2_P0_H0"
+    },
+    {
+      "experiment": 2,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP2_P0_H1"
+    },
+    {
+      "experiment": 2,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP2_P1_H0"
+    },
+    {
+      "experiment": 2,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP2_P1_H1"
+    },
+    {
+      "experiment": 2,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+    },
+    {
+      "experiment": 2,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+    },
+    {
+      "experiment": 3,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP3_P0_H0"
+    },
+    {
+      "experiment": 3,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP3_P0_H1"
+    },
+    {
+      "experiment": 3,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP3_P1_H0"
+    },
+    {
+      "experiment": 3,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP3_P1_H1"
+    },
+    {
+      "experiment": 3,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+    },
+    {
+      "experiment": 3,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+    },
+    {
+      "experiment": 4,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP4_P0_H0"
+    },
+    {
+      "experiment": 4,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP4_P0_H1"
+    },
+    {
+      "experiment": 4,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP4_P1_H0"
+    },
+    {
+      "experiment": 4,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP4_P1_H1"
+    },
+    {
+      "experiment": 4,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+    },
+    {
+      "experiment": 4,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+    },
+    {
+      "experiment": 5,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP5_P0_H0"
+    },
+    {
+      "experiment": 5,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP5_P0_H1"
+    },
+    {
+      "experiment": 5,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP5_P1_H0"
+    },
+    {
+      "experiment": 5,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP5_P1_H1"
+    },
+    {
+      "experiment": 5,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+    },
+    {
+      "experiment": 5,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+    },
+    {
+      "experiment": 6,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP6_P0_H0"
+    },
+    {
+      "experiment": 6,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP6_P0_H1"
+    },
+    {
+      "experiment": 6,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP6_P1_H0"
+    },
+    {
+      "experiment": 6,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP6_P1_H1"
+    },
+    {
+      "experiment": 6,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+    },
+    {
+      "experiment": 6,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+    },
+    {
+      "experiment": 7,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP7_P0_H0"
+    },
+    {
+      "experiment": 7,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP7_P0_H1"
+    },
+    {
+      "experiment": 7,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP7_P1_H0"
+    },
+    {
+      "experiment": 7,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP7_P1_H1"
+    },
+    {
+      "experiment": 7,
+      "future_openfoam": true,
+      "hydraulic_role": "H0_NATIVE_COUPLED_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+    },
+    {
+      "experiment": 7,
+      "future_openfoam": true,
+      "hydraulic_role": "H1_SOURCE_CONDITIONED_DARCY_MODE",
+      "parameterization": "P2_FIXED_AFTER_EXP7_CALIBRATION",
+      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+    }
+  ],
+  "schema_version": 1,
+  "stage_a_execution": "NOT_AUTHORIZED"
+}

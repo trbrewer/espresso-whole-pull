@@ -1,0 +1,26 @@
+{
+  "allowed_treatments": [
+    "MANDATORY_PRIMARY",
+    "SECONDARY_IF_FULLY_MAPPED_BEFORE_PROTOCOL_REVIEW",
+    "CONTEXT_OR_PRIOR_ONLY",
+    "SOURCE_ONLY_LIMITATION_AUDIT",
+    "EXCLUDED_WITH_REASON",
+    "UNAVAILABLE_AT_PINNED_SNAPSHOT"
+  ],
+  "candidates": [
+    {"candidate": "Waszkiewicz TDS fractions", "treatment": "MANDATORY_PRIMARY", "reason": "twelve-point public 9-bar time-shape cohort; no chemistry fitting", "path": "puckworks/data/waszkiewicz2025/tds_fractions.csv"},
+    {"candidate": "Schmieder cup masses and kinetics", "treatment": "MANDATORY_PRIMARY", "reason": "metadata-complete local reconstruction and fixed transfer cohort", "path": "puckworks/data/schmieder2023/cup_masses.csv"},
+    {"candidate": "Pannusch kinetics", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "card supports context; not mapped into a mandatory Stage-B comparison", "path": "docs/cards/pannusch2024.md", "sha256": "8b81dcf37520037cc9cc386af909c89d88027cc417593308036e1a15ed258ee6"},
+    {"candidate": "Mo fixed-flow yield and strength", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "useful mechanism context but no fully mapped aggregate chemistry cohort", "path": "docs/cards/mo2023.md", "sha256": "d4fc280261843b159f07746735fb05cffcba4401138755c0951febdee10f5364"},
+    {"candidate": "Roman-Corrochano extraction conditions", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "conditions inform limitations; they are not a complete mapped score cohort", "path": "docs/cards/romancorrochano2017_extraction.md", "sha256": "0ff2a8ba7de4b581eec6af0be3d06a985c62de2d6cd4484e9c7e62bf05591bc3"},
+    {"candidate": "Angeloni total-solids and multi-species evidence", "treatment": "SOURCE_ONLY_LIMITATION_AUDIT", "reason": "species evidence diagnoses representation limits without model scoring", "path": "puckworks/data/angeloni2023/bioactives.csv", "sha256": "780ba72d13f87f695cd41c16a18b003871f87ed80149e9c3bf0b76d2d2f2866a"},
+    {"candidate": "Egidi pressure temperature TDS and EY", "treatment": "SECONDARY_IF_FULLY_MAPPED_BEFORE_PROTOCOL_REVIEW", "reason": "eligible only if geometry, clocks, conditions, units, and uncertainty are resolved before review", "path": "docs/cards/egidi2024.md", "sha256": "df43ed5a10b4d16a10d73431552f2cff948216e8a0efef9fa48b61549fe0b670"},
+    {"candidate": "Smrke fines flow and EY", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "digitized yield trends are contextual and do not define the mandatory cohort", "path": "puckworks/data/smrke2024/41598_2024_55831_Fig5_HTML_panel_b_yield.csv", "sha256": "cbbc15d448b0ecd0e568c1438a1427ef26e481a05602c39023e063a759a8eded"},
+    {"candidate": "Liang brew-ratio trends", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "brew-ratio trend context without condition-complete transfer mapping", "path": "puckworks/data/liang2021/liang_fig3_tds_vs_rbrew.csv", "sha256": "5cc12ff8231a8498d995414f5879ac5511e945dd66894f1ad35b9bf61dbae4cf"},
+    {"candidate": "Fasano transient or reversal signatures", "treatment": "CONTEXT_OR_PRIOR_ONLY", "reason": "mechanism/signature context; no governed aggregate chemistry observations at the pin", "path": "docs/cards/fasano2000_partII.md", "sha256": "6386d756541f84c223b4376d16e238c94d68eb2de7e09e55445130a3ddf6bde6"},
+    {"candidate": "Ribes spatial or radial extraction evidence", "treatment": "SOURCE_ONLY_LIMITATION_AUDIT", "reason": "spatial evidence may expose aggregation loss but is not separately scored", "path": "docs/cards/ribes2020.md", "sha256": "4d4ff396bfd43d5d8a1c3c696ad699b883cd3e30595bfd517ce9e5e19e84963a"}
+  ],
+  "schema_version": 1,
+  "snapshot_commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e",
+  "snapshot_tree": "44d6539096648777f78c4db83f0985d5bd16e352"
+}

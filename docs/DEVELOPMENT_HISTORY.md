@@ -25,12 +25,19 @@
   rebuild or rerun. Its retained result remains descriptive, post-observation,
   non-blind, and non-independent.
 
-- WP03-002: reproduced the three source-linked finite-porosity failures,
+- WP03-002 (complete, approved, and merged as PR #52): reproduced the three source-linked finite-porosity failures,
   demonstrated that a continuous analytical closure diagnostic incorrectly
   gated discrete nonlinear convergence, and applied an equation-preserving
   correction. All three unchanged cases then completed, but flow and mass
   ordering remained reversed with Spearman `-1.0`. Physical validation was
   not established.
+
+- VAL-CORPUS-002 Stage A: froze the aggregate-extraction and cup-chemistry
+  reconstruction protocol, public evidence identities, cohort partitions,
+  parameter mappings, future run matrix, sensitivity design, metrics, and
+  claim boundary. No OpenFOAM run, optimizer invocation, fitting, or governed
+  scoring occurred. Independent review and separate Stage-B authority remain
+  required.
 
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
