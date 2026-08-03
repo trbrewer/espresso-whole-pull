@@ -61,6 +61,12 @@
   No OpenFOAM build/run, calibration, model-result access, governed scoring, or
   Stage B1 action occurred.
 
+- VAL-CORPUS-002 Stage B1 activation: bound the exact Experiment-7/H1 typed
+  template, source vector, relative-MSE objective, log-k optimizer, executable
+  identity, closed external bundle, and case-local orchestration before any
+  calibration model-result access. H0, transfer, production, sensitivity,
+  protected scoring, refitting, and Stage B2 remain prohibited.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.

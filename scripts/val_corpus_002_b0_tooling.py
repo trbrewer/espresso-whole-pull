@@ -331,16 +331,29 @@ def _verify_governed_contents(manifest: dict, root: Path) -> None:
            for manifest_key, row_key in zip(selected_fields, row_fields)):
         raise ValueError("optimizer selected row disagrees with calibration manifest")
 
+    reduction_keys = {"target_masses_g", "source_cup_solute_masses_g",
+                      "model_cup_solute_masses_g", "signed_residuals_g",
+                      "relative_residuals", "objective_identity", "reconstructed_objective"}
     if (not isinstance(reduction, dict)
-            or set(reduction) != {"target_masses_g", "model_cup_solute_masses_g"}
+            or set(reduction) != reduction_keys
             or reduction["target_masses_g"] != TARGET_MASSES_G
+            or reduction["source_cup_solute_masses_g"] != SOURCE_SOLUTE_MASSES_G
+            or reduction["objective_identity"] != OBJECTIVE_ID
             or not isinstance(reduction["model_cup_solute_masses_g"], list)
             or len(reduction["model_cup_solute_masses_g"]) != 3):
         raise ValueError("retained calibration reduction vector mismatch")
+    residuals = [model-source for source, model in zip(
+        SOURCE_SOLUTE_MASSES_G, reduction["model_cup_solute_masses_g"])]
+    if (reduction["signed_residuals_g"] != residuals
+            or reduction["relative_residuals"] != [value/source for value, source in zip(
+                residuals, SOURCE_SOLUTE_MASSES_G)]):
+        raise ValueError("retained calibration residual vector mismatch")
     recomputed = calibration_objective(SOURCE_SOLUTE_MASSES_G,
                                        reduction["model_cup_solute_masses_g"])
-    if not math.isclose(recomputed, manifest["selected_objective"], rel_tol=0.0,
-                        abs_tol=OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE):
+    if (not math.isclose(recomputed, reduction["reconstructed_objective"], rel_tol=0.0,
+                         abs_tol=OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE)
+            or not math.isclose(recomputed, manifest["selected_objective"], rel_tol=0.0,
+                                abs_tol=OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE)):
         raise ValueError("selected objective does not reconstruct")
 
 

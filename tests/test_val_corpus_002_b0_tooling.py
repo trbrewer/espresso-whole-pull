@@ -73,7 +73,11 @@ def governed_fixture(root: Path, *, authorization_id="B1-TEST-AUTHORIZATION"):
     paths["CALIBRATION_CONFIGURATION"].write_bytes(b0.canonical_bytes(configuration))
     paths["CALIBRATION_REDUCTION"].write_text(json.dumps({
         "target_masses_g": b0.TARGET_MASSES_G,
-        "model_cup_solute_masses_g": b0.SOURCE_SOLUTE_MASSES_G}, sort_keys=True) + "\n")
+        "source_cup_solute_masses_g": b0.SOURCE_SOLUTE_MASSES_G,
+        "model_cup_solute_masses_g": b0.SOURCE_SOLUTE_MASSES_G,
+        "signed_residuals_g": [0.,0.,0.], "relative_residuals": [0.,0.,0.],
+        "objective_identity": b0.OBJECTIVE_ID, "reconstructed_objective": 0.0},
+        sort_keys=True) + "\n")
     paths["RETAINED_MODEL_OUTPUT_TRACE"].write_text("{}\n")
     paths["NUMERICAL_VERIFICATION"].write_text("{}\n")
     rows = [{"role": role, "path": path.relative_to(root).as_posix(),
@@ -284,7 +288,11 @@ class GovernedManifestContentTests(unittest.TestCase):
             root=Path(directory); manifest, artifact, paths=governed_fixture(root)
             paths["CALIBRATION_REDUCTION"].write_text(json.dumps({
                 "target_masses_g":b0.TARGET_MASSES_G,
-                "model_cup_solute_masses_g":[1.,1.,1.]},sort_keys=True)+"\n")
+                "source_cup_solute_masses_g":b0.SOURCE_SOLUTE_MASSES_G,
+                "model_cup_solute_masses_g":[1.,1.,1.],
+                "signed_residuals_g":[0.,0.,0.], "relative_residuals":[0.,0.,0.],
+                "objective_identity":b0.OBJECTIVE_ID, "reconstructed_objective":0.0},
+                sort_keys=True)+"\n")
             record=json.loads(artifact.read_text())
             row=next(row for row in record["files"] if row["role"]=="CALIBRATION_REDUCTION")
             row["bytes"]=paths["CALIBRATION_REDUCTION"].stat().st_size
