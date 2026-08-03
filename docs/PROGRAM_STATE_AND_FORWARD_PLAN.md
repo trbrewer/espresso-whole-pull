@@ -75,7 +75,7 @@ VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
 ACTIVE_VALIDATION_CASE:
-  VAL_CORPUS_002_STAGE_B1_CALIBRATION_ACTIVATED_PREEXECUTION
+  VAL_CORPUS_002_STAGE_B1_CALIBRATION_NOT_FROZEN_INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE
 
 ACTIVE_DATA_PLANNING_TASK:
   NONE
@@ -99,13 +99,14 @@ VAL_CASE_002:
   NOT_STARTED
 
 CURRENT_SCIENTIFIC_TASK:
-  VAL_CORPUS_002_STAGE_B1_EXP7_H1_CALIBRATION
+  VAL_CORPUS_002_STAGE_B1_CALIBRATION_FAILURE_PENDING_REVIEW
 ```
 
 WP03-002 is complete, approved, and merged. VAL-CORPUS-002 Stage A and final
-Stage-B0 tooling are exact-head approved. Stage B1 is activated only for the
-Experiment-7/H1 calibration; its activation commit precedes any model-result
-access. Stage B2 and transfer or protected scoring are not authorized.
+Stage-B0 tooling are exact-head approved. Stage B1 attempted only the
+Experiment-7/H1 calibration and stopped before convergence on an
+infrastructure/orchestration failure. No P2 candidate was frozen. Stage B2 and
+transfer or protected scoring are not authorized.
 
 ---
 

@@ -67,6 +67,13 @@
   calibration model-result access. H0, transfer, production, sensitivity,
   protected scoring, refitting, and Stage B2 remain prohibited.
 
+- VAL-CORPUS-002 Stage B1 execution: twenty evaluations passed before one
+  completed solver run failed during MPI finalization and the next fresh case
+  failed in `blockMesh`. The stage stopped as
+  `INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE`; the log-k tolerance was not met,
+  no final selection marker or governed manifest was created, and P2 was not
+  frozen. No transfer, protected, production, or sensitivity access occurred.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.

@@ -7,8 +7,8 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 251/251 PASS
-- Active validation case: `VAL_CORPUS_002_STAGE_B1_CALIBRATION_ACTIVATED_PREEXECUTION`
+- Public source verification: 252/252 PASS
+- Active validation case: `VAL_CORPUS_002_STAGE_B1_CALIBRATION_NOT_FROZEN_INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
@@ -28,9 +28,10 @@ WP03-002 is `COMPLETE_APPROVED_AND_MERGED` at merge commit
 `78dc278212976a569bf21dda139a98c35756db14` and its executed solver SHA-256 was
 `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6`.
 VAL-CORPUS-002 Stage A and the final Stage-B0 tooling are exact-head approved.
-Stage B1 is activated only for the Experiment-7/H1 calibration; no calibration
-execution or model-result access has occurred in the activation commit. Stage
-B2, transfer scoring, protected scoring, and VAL-CASE-002 have not started.
+Stage B1 executed only the Experiment-7/H1 calibration and stopped on an
+infrastructure/orchestration failure before convergence. No P2 candidate was
+frozen. Stage B2, transfer scoring, protected scoring, and VAL-CASE-002 have
+not started.
 
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
 admissible independent dataset or the synchronized pressure, flow/mass,

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 251,
-  "total_uncompressed_bytes_excluding_manifest": 2441681,
-  "aggregate_source_sha256": "f68fa1fe6f0fdec1a387bd30f41debc1d1e895a5817f1a51a7ac4f375c936692",
-  "aggregate_sha256": "f68fa1fe6f0fdec1a387bd30f41debc1d1e895a5817f1a51a7ac4f375c936692",
+  "file_count": 252,
+  "total_uncompressed_bytes_excluding_manifest": 2443390,
+  "aggregate_source_sha256": "7abf7236c88f49320bda8de3d11b2078e9ce7303616acbcff2bd24d2ef9c4950",
+  "aggregate_sha256": "7abf7236c88f49320bda8de3d11b2078e9ce7303616acbcff2bd24d2ef9c4950",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "d452c320f24e532876a7e942e7b5befbcfbc6aedc29621043afdb8dd5f24314e",
-      "bytes": 47246,
+      "sha256": "ddb7753208b21dcf8917c90a4497bac8bc2b83e440095f9003cb253336b5976f",
+      "bytes": 47328,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
@@ -586,6 +586,11 @@
     "docs/validation/VAL_CORPUS_002_STAGE_B1_CALIBRATION_ACTIVATION.md": {
       "sha256": "cc1ca0d79c82d5d1ac7487292eec93d4612a51350aaa61dc1a82232d6dc519b2",
       "bytes": 1053,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B1_CALIBRATION_RESULT.md": {
+      "sha256": "ced828b3e510fb6f861fc72a084137093e13ac7faebe2ba85f5aa479f2a42603",
+      "bytes": 1627,
       "git_mode": "100644"
     },
     "docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md": {

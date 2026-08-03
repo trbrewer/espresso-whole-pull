@@ -1,0 +1,98 @@
+{
+  "authorization_id": "VAL-CORPUS-002-B1-CALIBRATION-2026-08-03",
+  "best_completed_evaluation_diagnostic_only": {
+    "configuration_sha256": "37c40e1c24473365642871b1dda9c702a83fcbc039ffd18d91b8f254bf36669a",
+    "log_k": -1.0672477379285445,
+    "log_k_hex": "-0x1.113725d322116p+0",
+    "maximum_liquid_balance_relative_residual": 1.0121216918848481e-13,
+    "maximum_solute_balance_relative_residual": 8.681407802674117e-11,
+    "model_cup_solute_masses_g": [
+      2.7821365737253676,
+      4.22720844512753,
+      4.33463605150242
+    ],
+    "objective": 0.00393198959100366,
+    "rate_hex": "0x1.60357149c25c4p-2",
+    "rate_s_inverse": 0.3439538670796447,
+    "relative_residuals": [
+      -0.04852015768572365,
+      0.09055478177790884,
+      0.035236267797807475
+    ],
+    "sequence": 17,
+    "signed_residuals_g": [
+      -0.14187342627463284,
+      0.35100844512753016,
+      0.14753771816908667
+    ],
+    "status": "PASS_NOT_SELECTED_NOT_FROZEN",
+    "trace_bytes": 8077585,
+    "trace_sha256": "b6f1e1b0b75038ade9122896d73643faf45633399042eac608d2f4a5d03c0d66"
+  },
+  "calibration_case_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+  "calibration_manifest": "NOT_CREATED",
+  "calibration_template_sha256": "2e688b4f9e756aa9bc3890f4eb8a05b9191f28208c1fc4a431d9a84fa3b710b8",
+  "execution_accounting": {
+    "cache_hits": 0,
+    "completed_evaluation_records": 21,
+    "infrastructure_failure_count": 1,
+    "optimizer_evaluation_attempts": 22,
+    "pass_count": 20,
+    "prepared_case_count": 22,
+    "typed_numerical_failure_count": 1,
+    "uncached_evaluations": 22
+  },
+  "external_failure_bundle": {
+    "aggregate_sha256": "f26189411fb33f67e5ca14d8426a376e0949362decbcfb5d983db38c8a29d6c9",
+    "file_count": 5,
+    "files": [
+      {"bytes": 2739, "path": "<VAL_CORPUS_002_RUNTIME_ROOT>/runtime/B1_RUNTIME_ACTIVATION.json", "sha256": "14a438f4946f68a6bb47a37ca551b6601ac37adb392528b7d07af0b9ed97c77b"},
+      {"bytes": 419, "path": "<VAL_CORPUS_002_RUNTIME_ROOT>/evaluations/eval-020/evaluation.json", "sha256": "17d3596acb18950f970ff8ee8a9285087d387014dcc4407d3172abcbb2de83c4"},
+      {"bytes": 1073464, "path": "<VAL_CORPUS_002_RUNTIME_ROOT>/evaluations/eval-020/log.solver", "sha256": "fbd2d475b384160ab5ae39e09f57ed51e543434563df8f377677af09e1e1299c"},
+      {"bytes": 2694, "path": "<VAL_CORPUS_002_RUNTIME_ROOT>/evaluations/eval-021/log.blockMesh", "sha256": "3a7e31d17a67ad0a13d9d1c46c34ce7a998e56de80bc18165a5b2661a7e44f30"},
+      {"bytes": 3924, "path": "<VAL_CORPUS_002_RUNTIME_ROOT>/evaluations/eval-021/calibration-configuration.json", "sha256": "7a2775969414f63dcc58d1df147749bb8e5a63df09c8570b5bc0cc2034b40f2b"}
+    ],
+    "total_bytes": 1083240
+  },
+  "failed_evaluations": [
+    {
+      "configuration_sha256": "9461b9aae36ffc90e993a544992c475f7f3f124200118c7e7ccb8db6cfe6a60f",
+      "disposition": "VALID_EXECUTION_WITH_TYPED_NUMERICAL_FAILURE",
+      "log_k": -1.0671314545614026,
+      "log_k_hex": "-0x1.112f86e9dfc74p+0",
+      "objective": null,
+      "rate_hex": "0x1.603fed89b6efbp-2",
+      "rate_s_inverse": 0.34399386551898176,
+      "reason": "MPI_FINALIZE_SEGMENTATION_FAULT_AFTER_END_EXIT_139",
+      "sequence": 20
+    },
+    {
+      "configuration_sha256": "7a2775969414f63dcc58d1df147749bb8e5a63df09c8570b5bc0cc2034b40f2b",
+      "disposition": "INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE",
+      "log_k": -1.0673196050017646,
+      "log_k_hex": "-0x1.113bdb8ddcba4p+0",
+      "objective": null,
+      "rate_hex": "0x1.602ef67c8ee57p-2",
+      "rate_s_inverse": 0.34392914901011323,
+      "reason": "BLOCKMESH_SEGMENTATION_FAULT_EXIT_139",
+      "sequence": 21
+    }
+  ],
+  "failure_stage": {
+    "active_log_interval_width": 0.00030443380750400095,
+    "active_log_lower": -1.0674358883689066,
+    "active_log_upper": -1.0671314545614026,
+    "required_log_interval_width": 1e-08
+  },
+  "final_disposition": "VAL_CORPUS_002_STAGE_B1_CALIBRATION_NOT_FROZEN_INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE",
+  "governed_artifact_manifest": "NOT_CREATED",
+  "governed_validator": "NOT_INVOKED_NO_CONVERGED_CALIBRATION",
+  "objective_identity": "EXP7_H1_EQUAL_WEIGHT_MEAN_SQUARED_RELATIVE_ERROR_20_40_60_G_V1",
+  "openfoam": {"build_disposition": "EXACT_EXECUTABLE_REUSED_NO_REBUILD", "distribution": "OpenFOAM Foundation", "executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6", "version": "12"},
+  "p2_freeze": "PROHIBITED_NOT_PERFORMED",
+  "profile": "EWP_CALIBRATION_STAGE_V1",
+  "schema_version": "espresso.val_corpus_002.stage_b1_execution_failure.v1",
+  "source_observations_g": [2.9240100000000004, 3.8761999999999994, 4.187098333333333],
+  "stage_b2": "NOT_STARTED_NOT_AUTHORIZED",
+  "transfer_result_access": "NOT_PERFORMED"
+}
