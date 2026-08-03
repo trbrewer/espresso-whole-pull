@@ -117,24 +117,37 @@ def dump(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
 
 
-def _replace_token(value: object) -> tuple[object, int]:
+SCHMIEDER_RATE_PATH = ("chemistry", "extractionRateConstant_s_inverse")
+WASZKIEWICZ_RATE_PATH = ("extraction", "rate_constant_1_s")
+APPROVED_RATE_PATHS = {SCHMIEDER_RATE_PATH, WASZKIEWICZ_RATE_PATH}
+WASZKIEWICZ_SOURCE_PLACEHOLDER = {
+    "status": "UNRESOLVED", "token": PLACEHOLDER_TOKEN,
+    "type": "CALIBRATED_SCALAR_S_INVERSE",
+}
+
+
+def _replace_token(value: object, path: tuple[str, ...] = ()) -> tuple[object, int]:
     count = 0
     if isinstance(value, dict):
+        if path == WASZKIEWICZ_RATE_PATH and value == WASZKIEWICZ_SOURCE_PLACEHOLDER:
+            return copy.deepcopy(TYPED_PLACEHOLDER), 1
         result = {}
         for key, item in value.items():
-            replaced, found = _replace_token(item)
+            replaced, found = _replace_token(item, path + (key,))
             result[key] = replaced
             count += found
         return result, count
     if isinstance(value, list):
         result = []
         for item in value:
-            replaced, found = _replace_token(item)
+            replaced, found = _replace_token(item, path + (str(len(result)),))
             result.append(replaced)
             count += found
         return result, count
-    if value == PLACEHOLDER_TOKEN:
+    if value == PLACEHOLDER_TOKEN and path == SCHMIEDER_RATE_PATH:
         return copy.deepcopy(TYPED_PLACEHOLDER), 1
+    if value == PLACEHOLDER_TOKEN:
+        raise ValueError(f"calibration token at unapproved semantic path: {path}")
     return value, 0
 
 
@@ -178,6 +191,18 @@ def _materialize_p2_rate(template: dict, rate: float, approved_hash: str,
     check, reverse_count = _replace_numeric_rate(materialized, rate)
     if reverse_count != 1 or check != template:
         raise ValueError("materialization changed a non-rate field")
+    def forbidden(value: object) -> bool:
+        if value == TYPED_PLACEHOLDER or value == PLACEHOLDER_TOKEN:
+            return True
+        if isinstance(value, dict):
+            if value.get("status") == "UNRESOLVED":
+                return True
+            return any(forbidden(item) for item in value.values())
+        if isinstance(value, list):
+            return any(forbidden(item) for item in value)
+        return False
+    if forbidden(materialized):
+        raise ValueError("materialized P2 configuration retains unresolved placeholder")
     return materialized
 
 
@@ -654,20 +679,22 @@ def materialize_p2_synthetic(template: dict, calibration_manifest: dict, approve
     return _materialize_p2_rate(template, rate, approved_hash)
 
 
-def _replace_numeric_rate(value: object, rate: float) -> tuple[object, int]:
+def _replace_numeric_rate(value: object, rate: float,
+                          path: tuple[str, ...] = ()) -> tuple[object, int]:
     if isinstance(value, dict):
         result, count = {}, 0
         for key, item in value.items():
-            if key in {"extractionRateConstant_s_inverse", "rate_constant_1_s", "token"} and item == rate:
+            item_path = path + (key,)
+            if item_path in APPROVED_RATE_PATHS and type(item) is float and item == rate and item.hex() == rate.hex():
                 result[key], found = copy.deepcopy(TYPED_PLACEHOLDER), 1
             else:
-                result[key], found = _replace_numeric_rate(item, rate)
+                result[key], found = _replace_numeric_rate(item, rate, item_path)
             count += found
         return result, count
     if isinstance(value, list):
         result, count = [], 0
         for item in value:
-            replaced, found = _replace_numeric_rate(item, rate)
+            replaced, found = _replace_numeric_rate(item, rate, path + (str(len(result)),))
             result.append(replaced); count += found
         return result, count
     return value, 0

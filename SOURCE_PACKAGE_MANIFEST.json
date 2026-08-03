@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 261,
-  "total_uncompressed_bytes_excluding_manifest": 2540205,
-  "aggregate_source_sha256": "0c9c6c9530f4b0df9b3171186a4d8dcacd7d2089517137d9ad0214a7f182d165",
-  "aggregate_sha256": "0c9c6c9530f4b0df9b3171186a4d8dcacd7d2089517137d9ad0214a7f182d165",
+  "file_count": 262,
+  "total_uncompressed_bytes_excluding_manifest": 2555797,
+  "aggregate_source_sha256": "9ccd5c1ebfa21697d95f44debf7cb7f832bc40ad3b33c80061273bff50b6f58c",
+  "aggregate_sha256": "9ccd5c1ebfa21697d95f44debf7cb7f832bc40ad3b33c80061273bff50b6f58c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -944,8 +944,8 @@
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_b0_tooling.py": {
-      "sha256": "d781bbb11db466dc7fc32bb96f32f82726d485d9c10d38586f6b1afa698f37cb",
-      "bytes": 80068,
+      "sha256": "00de56031fa5510246e61837700b965802c047b89708958f6ed12add1026c9de",
+      "bytes": 81464,
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_b1_calibration.py": {
@@ -962,6 +962,11 @@
       "sha256": "ec524cc0efb9b35070be9f6a2ede1ba6a849b5deae5c354405739add7008519d",
       "bytes": 19546,
       "git_mode": "100755"
+    },
+    "scripts/val_corpus_002_b2_recovery.py": {
+      "sha256": "bf348072e8a89300f7e8dda3619c70b433244e563e57b36330de5f954409a156",
+      "bytes": 12056,
+      "git_mode": "100644"
     },
     "scripts/val_corpus_002_protocol.py": {
       "sha256": "0834daf19b20574c2d4c1a5720ec45ecc217bc0d79295a6a47d4957be34698c4",
@@ -1264,8 +1269,8 @@
       "git_mode": "100644"
     },
     "tests/test_val_corpus_002_b2.py": {
-      "sha256": "6557caf3fbd0826703ea33be534673cf63e18f117bc30d2b86c358515f6ad54b",
-      "bytes": 2745,
+      "sha256": "4f339ec6aceb6b4fb55002e3d7a713966b7cad49ea3917c584d23e1b5215d205",
+      "bytes": 4885,
       "git_mode": "100644"
     },
     "tests/test_val_corpus_002_protocol.py": {

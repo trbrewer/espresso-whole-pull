@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import val_corpus_002_b0_tooling as b0
 import val_corpus_002_b2 as b2
+import val_corpus_002_b2_recovery as recovery
 
 
 class StageB2ProspectiveTests(unittest.TestCase):
@@ -59,6 +60,42 @@ class StageB2ProspectiveTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             with self.assertRaises(b2.InfrastructureFailure):
                 b2.initialize(ROOT, Path(temp), Path(temp) / "missing", Path(temp))
+
+    def test_structured_waszkiewicz_placeholder_collapses_to_scalar(self):
+        inventory = b0.build_configuration_inventory(ROOT)
+        row = next(row for row in inventory["typed_p2_templates"]
+                   if row["id"] == recovery.WASZ_P2_ID)
+        self.assertEqual(row["template"]["extraction"]["rate_constant_1_s"],
+                         b0.TYPED_PLACEHOLDER)
+        value = b0._materialize_p2_rate(row["template"], b2.RATE, row["canonical_sha256"])
+        self.assertIs(type(value["extraction"]["rate_constant_1_s"]), float)
+        self.assertEqual(value["extraction"]["rate_constant_1_s"].hex(), b2.RATE_HEX)
+        self.assertNotIn(b0.PLACEHOLDER_TOKEN, json.dumps(value))
+        self.assertNotIn("UNMATERIALIZED", json.dumps(value))
+        self.assertNotIn("UNRESOLVED", json.dumps(value))
+
+    def test_token_is_not_reverse_materialization_rate_key(self):
+        value, count = b0._replace_numeric_rate({"token": b2.RATE}, b2.RATE)
+        self.assertEqual(count, 0)
+        self.assertEqual(value, {"token": b2.RATE})
+
+    def test_nested_numeric_token_object_is_rejected(self):
+        bad = {"extraction": {"rate_constant_1_s": {
+            "status": "UNRESOLVED", "token": b2.RATE,
+            "type": "CALIBRATED_SCALAR_S_INVERSE"}}}
+        with self.assertRaises(ValueError):
+            b0._materialize_p2_rate(bad, b2.RATE, b0.canonical_sha256(bad))
+
+    def test_only_waszkiewicz_p2_hash_changes(self):
+        old = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_CONFIGURATION_INVENTORY.json").read_text())
+        inventory = b0.build_configuration_inventory(ROOT)
+        new = {}
+        for row in inventory["typed_p2_templates"]:
+            value = b0._materialize_p2_rate(row["template"], b2.RATE, row["canonical_sha256"])
+            new[row["id"]] = b0.canonical_sha256(value)
+        changed = [key for key in new if new[key] != old["materialized_p2_configuration_sha256"][key]]
+        self.assertEqual(changed, [recovery.WASZ_P2_ID])
+        self.assertEqual(sum(key.startswith("SCHM_") for key in new), 14)
 
 
 if __name__ == "__main__":
