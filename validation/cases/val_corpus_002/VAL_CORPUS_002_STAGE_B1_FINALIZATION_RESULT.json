@@ -1,0 +1,54 @@
+{
+  "authorization_id": "VAL-CORPUS-002-B1-CALIBRATION-2026-08-03",
+  "byte_identity_disposition": {
+    "calibration_configuration": "BYTE_IDENTICAL",
+    "calibration_manifest": "SUPERSEDED_BY_STRENGTHENED_ARTIFACT_BINDING",
+    "calibration_reduction": "BYTE_IDENTICAL",
+    "numerical_verification": "SUPERSEDED_BY_CLOSED_SEQUENCE_BINDING",
+    "optimizer_trace": "BYTE_IDENTICAL",
+    "retained_model_output_trace": "BYTE_IDENTICAL"
+  },
+  "finalizer": "DETERMINISTIC_FINALIZE_ONLY_PASS",
+  "governed_validator": "PASS",
+  "model_cup_solute_masses_g": [2.782144673131987, 4.227214080217558, 4.334636376028199],
+  "objective": 0.003931989579189616,
+  "openfoam_rerun": "NOT_PERFORMED",
+  "optimizer_rerun": "NOT_PERFORMED",
+  "original_bundle": {
+    "artifact_aggregate_sha256": "23ea9ab1587d8948fab87f1555ce376b4647ed4d1462fdafb6d558e1151edd16",
+    "artifact_manifest_sha256": "babb39cad424d9929e379a80a1d13b95c84a0a59912ff410a16857bf908dd4fe",
+    "calibration_manifest_sha256": "53d473be8b1cd8299e621af739ab3ff9fb7061932e91a0bfc4e44cf022ded218",
+    "numerical_verification_sha256": "a7b6c7de1bf3f79b4d71e02eff1d0ca3d14e67ef305721d123ded6a192b21db7"
+  },
+  "p2_freeze_barrier": "PASS",
+  "profile": "EWP_CALIBRATION_STAGE_V1",
+  "schema_version": "espresso.val_corpus_002.b1_strengthened_finalization.v1",
+  "selected_evaluation_provenance": {
+    "attempt": 2,
+    "attempt_evaluation_sequence": 5,
+    "evaluation_record_sha256": "2c99be6239eebc6816ffa4fdd726f44933ad34aa35e119ab02b519b50375d607",
+    "optimizer_sequence": 25,
+    "status": "EXECUTED_ATTEMPT_2_ZERO_EXIT_PASS"
+  },
+  "selected_rate_hex": "0x1.6036f8e53bf4ep-2",
+  "selected_rate_s_inverse": 0.3439597024835067,
+  "stage_b2": "NOT_STARTED",
+  "strengthened_bundle": {
+    "artifact_aggregate_sha256": "0ad09fdf9ca56b8aad8890101ef85db0ca2c90d3dc32a3c03a36574c70277208",
+    "artifact_manifest_sha256": "357d10d8fa5b18245d639dfdc62f25d4afa151aa11c76bf10f13f637ce5885a8",
+    "calibration_manifest_sha256": "554ce1c35979fa8961973b8cdd663a7a0ba817f6369667ea10808a06f644cbbc",
+    "numerical_verification_sha256": "49a7e83b3baabe9c92d1e8d7931e981468836e0e09e4768aa6659fde179001ca",
+    "recovery_provenance_sha256": "c8ccf5a6443c66fec08bacf1c497d85b2ed0e0e215f778df54f464f347a07727"
+  },
+  "trace_semantics": {
+    "configured_capacity_kg_m3": 180.0,
+    "maximum_concentration_kg_m3": 177.909739457668,
+    "maximum_liquid_balance_relative_residual": 1.0140569150050877e-13,
+    "maximum_saturation": 1.0,
+    "maximum_solute_balance_relative_residual": 1.7794712945888162e-11,
+    "minimum_concentration_kg_m3": 0.0,
+    "minimum_saturation": 0.0,
+    "status": "PASS"
+  },
+  "transfer_result_access": "NOT_PERFORMED"
+}

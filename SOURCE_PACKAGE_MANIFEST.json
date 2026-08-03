@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 255,
-  "total_uncompressed_bytes_excluding_manifest": 2468091,
-  "aggregate_source_sha256": "c29dd800a445209cc8ba7ea06ebf6b32b9f3230fc63b760bb4a0c06a0c1fe5b9",
-  "aggregate_sha256": "c29dd800a445209cc8ba7ea06ebf6b32b9f3230fc63b760bb4a0c06a0c1fe5b9",
+  "file_count": 256,
+  "total_uncompressed_bytes_excluding_manifest": 2508658,
+  "aggregate_source_sha256": "3e853ce146fac417093eb76a09a7009cd41f276fd589e3ecb2167abd01991637",
+  "aggregate_sha256": "3e853ce146fac417093eb76a09a7009cd41f276fd589e3ecb2167abd01991637",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -593,6 +593,11 @@
       "bytes": 1627,
       "git_mode": "100644"
     },
+    "docs/validation/VAL_CORPUS_002_STAGE_B1_EXACT_HEAD_SEMANTIC_CORRECTION.md": {
+      "sha256": "35984842729e621b7bbd9216a6c8327b83a6a26b80c36ea2411b0d4eda21b23b",
+      "bytes": 1873,
+      "git_mode": "100644"
+    },
     "docs/validation/VAL_CORPUS_002_STAGE_B1_INFRASTRUCTURE_RECOVERY_PROTOCOL.md": {
       "sha256": "50b9a37b3f3eba44c8cfb851359edb268db9c6c460852e6816f86831667e96bc",
       "bytes": 2766,
@@ -924,8 +929,8 @@
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_b0_tooling.py": {
-      "sha256": "df66d89c63c0cd97ba13598ba0a69de7359b579c6f40d9a78c65b2dd90879a37",
-      "bytes": 62888,
+      "sha256": "3b9cfef9bffdbb6793cf4b9c8b9b0e7c6dadbd252b6043019f20d2d6e9063b29",
+      "bytes": 79155,
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_b1_calibration.py": {
@@ -934,8 +939,8 @@
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_b1_recovery.py": {
-      "sha256": "952e6690947ebb6103a1b3da936aa29feb88fe7413b8f1fb8437537cd21755ce",
-      "bytes": 18285,
+      "sha256": "1a8c6cf15de8b07073c05eeb72876ff369fdfc05e4d08672004e3180c8e57363",
+      "bytes": 30600,
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_protocol.py": {
@@ -1229,8 +1234,8 @@
       "git_mode": "100644"
     },
     "tests/test_val_corpus_002_b0_tooling.py": {
-      "sha256": "46dc8b20d3bdf7c29f2aec63b0ed26ea4ba16bdf57046972f299e4ba2f840f98",
-      "bytes": 25922,
+      "sha256": "6fbd305052fcb698698eb5e01cd0331eaed7f40d1ac13f1906da9ddfb086819a",
+      "bytes": 36034,
       "git_mode": "100644"
     },
     "tests/test_val_corpus_002_b1_calibration.py": {

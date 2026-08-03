@@ -7,8 +7,8 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 255/255 PASS
-- Active validation case: `VAL_CORPUS_002_STAGE_B1_CALIBRATION_COMPLETE_PENDING_REVIEW`
+- Public source verification: 256/256 PASS
+- Active validation case: `VAL_CORPUS_002_STAGE_B1_FINAL_CALIBRATION_CANDIDATE_PENDING_REVIEW`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
@@ -32,8 +32,11 @@ Stage B1 attempt 1 stopped on an infrastructure failure and remains immutable.
 The bounded attempt-2 recovery verified all 20 passing evaluations as a
 complete cache, replayed the optimizer from its original bounds, and completed
 26 fresh evaluations. The exact P2 rate is a frozen candidate pending
-independent exact-head review. Stage B2, transfer scoring, protected scoring,
-and VAL-CASE-002 have not started.
+independent exact-head review. Its exact-head semantic correction now parses
+and independently reduces the retained trace, validates the closed numerical
+record, and deterministically reproduces the strengthened governed bundle
+without solver or optimizer execution. Stage B2, transfer scoring, protected
+scoring, and VAL-CASE-002 have not started.
 
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
 admissible independent dataset or the synchronized pressure, flow/mass,

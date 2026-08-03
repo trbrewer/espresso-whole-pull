@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import copy
+import csv
 import hashlib
+import inspect
 import json
 import math
 import os
@@ -14,6 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import val_corpus_002_b0_tooling as b0
+import val_corpus_002_b1_recovery as recovery
 
 
 def synthetic_manifest(*, rate=.1, optimizer_status="PASS", **changes):
@@ -60,14 +63,15 @@ def governed_fixture(root: Path, *, authorization_id="B1-TEST-AUTHORIZATION"):
         "OPTIMIZER_TRACE": artifacts / "optimizer.json",
         "CALIBRATION_CONFIGURATION": artifacts / "configuration.json",
         "CALIBRATION_REDUCTION": artifacts / "reduction.json",
-        "RETAINED_MODEL_OUTPUT_TRACE": artifacts / "model-trace.json",
+        "RETAINED_MODEL_OUTPUT_TRACE": artifacts / "model-trace.csv",
         "NUMERICAL_VERIFICATION": artifacts / "verification.json",
     }
     optimizer = {"status": "PASS", "evaluations": 42,
                  "final_log_interval_width": 9e-9,
-                 "trace": [{"log_k": log_k, "log_k_hex": log_k.hex(),
+                 "trace": [{"sequence": 0, "log_k": log_k, "log_k_hex": log_k.hex(),
                             "rate_s_inverse": rate, "rate_hex": rate.hex(),
                             "objective": objective,
+                            "recovery_evaluation_class": "EXECUTED_ATTEMPT_2",
                             "final_selection_status": "SELECTED_FINAL"}]}
     paths["OPTIMIZER_TRACE"].write_text(json.dumps(optimizer, sort_keys=True) + "\n")
     paths["CALIBRATION_CONFIGURATION"].write_bytes(b0.canonical_bytes(configuration))
@@ -78,8 +82,54 @@ def governed_fixture(root: Path, *, authorization_id="B1-TEST-AUTHORIZATION"):
         "signed_residuals_g": [0.,0.,0.], "relative_residuals": [0.,0.,0.],
         "objective_identity": b0.OBJECTIVE_ID, "reconstructed_objective": 0.0},
         sort_keys=True) + "\n")
-    paths["RETAINED_MODEL_OUTPUT_TRACE"].write_text("{}\n")
-    paths["NUMERICAL_VERIFICATION"].write_text("{}\n")
+    fields=sorted(b0.TRACE_REQUIRED_FIELDS)
+    trace_rows=[]
+    for time_s, beverage_kg, solute_g in zip((.02,45.,90.),(.02,.04,.06),b0.SOURCE_SOLUTE_MASSES_G):
+        solute_kg=solute_g/1000.; water=beverage_kg-solute_kg
+        trace_rows.append({"time_s":time_s,"cup_water_mass_kg":water,
+            "cup_solute_mass_kg":solute_kg,"cup_beverage_mass_kg":beverage_kg,
+            "cumulative_inlet_water_mass_kg":water,"liquid_balance_residual_kg":0.,
+            "solute_balance_residual_kg":0.,"remaining_extractable_mass_kg":.001,
+            "dissolved_in_puck_mass_kg":0.,"min_saturation":0.,"max_saturation":1.,
+            "min_concentration_kg_m3":0.,"max_concentration_kg_m3":100.})
+    with paths["RETAINED_MODEL_OUTPUT_TRACE"].open("w",newline="") as stream:
+        writer=csv.DictWriter(stream,fieldnames=fields); writer.writeheader(); writer.writerows(trace_rows)
+    trace_path=paths["RETAINED_MODEL_OUTPUT_TRACE"]
+    with trace_path.open("rb") as trace_stream:
+        trace_header_sha256=hashlib.sha256(trace_stream.readline()).hexdigest()
+    numerical={"schema_version":"espresso.val_corpus_002.b1_numerical_verification.v1",
+        "task":"VAL-CORPUS-002","authorization_id":authorization_id,
+        "calibration_case_id":b0.CALIBRATION_CASE_ID,
+        "solver_commit":"0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+        "executable_sha256":b0.REFERENCE["executable_sha256"],
+        "calibration_configuration_sha256":b0.canonical_sha256(configuration),
+        "openfoam_distribution":"OpenFOAM Foundation","openfoam_version":"12","mpi_ranks":16,
+        "delta_t_s":.02,"end_time_s":90.,"first_solver_timestamp_s":.02,
+        "final_solver_timestamp_s":90.,"completion_disposition":"PASS","fatal_event_count":0,
+        "target_mass_brackets":{"20_g":"PASS","40_g":"PASS","60_g":"PASS"},
+        "boundedness":{"finite":True,"nonnegative":True,"tds_0_to_1":True},
+        "maximum_liquid_balance_relative_residual":0.,
+        "maximum_solute_balance_relative_residual":0.,"liquid_balance_gate":1e-8,
+        "solute_balance_gate":1e-8,"trace_path":trace_path.relative_to(root).as_posix(),
+        "trace_sha256":b0.file_sha256(trace_path),"trace_bytes":trace_path.stat().st_size,
+        "trace_header_sha256":trace_header_sha256,
+        "selected_evaluation_sequence":0,"overall_status":"PASS"}
+    paths["NUMERICAL_VERIFICATION"].write_text(json.dumps(numerical,sort_keys=True)+"\n")
+    selected_evaluation={"sequence":5,"rate_s_inverse":rate,"rate_hex":rate.hex(),
+        "objective":objective,"configuration_sha256":b0.canonical_sha256(configuration),
+        "trace_sha256":b0.file_sha256(trace_path),"solver_exit_code":0,"status":"PASS",
+        "cache_status":"EXECUTED_ATTEMPT_2"}
+    selected_path=root/"governed/selected-evaluation.json"; selected_path.parent.mkdir()
+    selected_path.write_text(json.dumps(selected_evaluation,sort_keys=True)+"\n")
+    provenance={"schema_version":"espresso.val_corpus_002.b1_selected_recovery_provenance.v1",
+        "optimizer_sequence":0,"attempt_evaluation_sequence":5,
+        "recovery_evaluation_class":"EXECUTED_ATTEMPT_2","rate_s_inverse":rate,
+        "rate_hex":rate.hex(),"log_k":log_k,"log_k_hex":log_k.hex(),"objective":objective,
+        "configuration_sha256":b0.canonical_sha256(configuration),
+        "trace_sha256":b0.file_sha256(trace_path),"solver_exit_code":0,
+        "evaluation_status":"PASS","evaluation_record_sha256":b0.file_sha256(selected_path)}
+    provenance_path=root/"governed/recovery-provenance.json"
+    provenance_path.write_text(json.dumps(provenance,sort_keys=True)+"\n")
     rows = [{"role": role, "path": path.relative_to(root).as_posix(),
              "bytes": path.stat().st_size, "sha256": b0.file_sha256(path)}
             for role, path in paths.items()]
@@ -305,6 +355,101 @@ class GovernedManifestContentTests(unittest.TestCase):
             manifest["calibration_artifact_manifest_sha256"]=b0.file_sha256(artifact)
             manifest["calibration_artifact_aggregate_sha256"]=digest.hexdigest()
             with self.assertRaises(ValueError): self.validate(manifest,root)
+
+    def test_closed_numerical_verification_adversarial_mutations(self):
+        mutations=(
+            lambda value: {},
+            lambda value: {key:item for key,item in value.items() if key!="task"},
+            lambda value: value|{"unexpected":True},
+            lambda value: value|{"authorization_id":"WRONG"},
+            lambda value: value|{"calibration_case_id":"WRONG"},
+            lambda value: value|{"solver_commit":"f"*40},
+            lambda value: value|{"executable_sha256":"f"*64},
+            lambda value: value|{"calibration_configuration_sha256":"f"*64},
+            lambda value: value|{"openfoam_version":"11"},
+            lambda value: value|{"mpi_ranks":15},
+            lambda value: value|{"delta_t_s":.01},
+            lambda value: value|{"end_time_s":89.},
+            lambda value: value|{"fatal_event_count":1},
+            lambda value: value|{"completion_disposition":"FAIL"},
+            lambda value: value|{"target_mass_brackets":{"20_g":"PASS","40_g":"PASS"}},
+            lambda value: value|{"target_mass_brackets":{"20_g":"PASS","40_g":"FAIL","60_g":"PASS"}},
+            lambda value: value|{"maximum_liquid_balance_relative_residual":2e-8},
+            lambda value: value|{"maximum_solute_balance_relative_residual":2e-8},
+            lambda value: value|{"selected_evaluation_sequence":1},
+            lambda value: value|{"trace_sha256":"f"*64},
+            lambda value: value|{"trace_bytes":1},
+            lambda value: value|{"trace_header_sha256":"f"*64},
+        )
+        for index,mutate in enumerate(mutations):
+            with self.subTest(index=index), tempfile.TemporaryDirectory() as directory:
+                root=Path(directory); manifest,artifact,paths=governed_fixture(root)
+                numerical=json.loads(paths["NUMERICAL_VERIFICATION"].read_text())
+                paths["NUMERICAL_VERIFICATION"].write_text(json.dumps(mutate(numerical),sort_keys=True)+"\n")
+                refresh_artifact_member(manifest,artifact,paths["NUMERICAL_VERIFICATION"],"NUMERICAL_VERIFICATION")
+                with self.assertRaises(ValueError): self.validate(manifest,root)
+
+    def test_semantically_invalid_hash_correct_traces_are_rejected(self):
+        def mutate_rows(rows, case):
+            if case=="nonmonotone_time": rows[1]["time_s"]=rows[0]["time_s"]
+            elif case=="decreasing_mass": rows[1]["cumulative_inlet_water_mass_kg"]=-1
+            elif case=="extrapolation": rows[-1]["cup_beverage_mass_kg"]=.05
+            elif case=="model_vector": rows[0]["cup_solute_mass_kg"]+=1e-6
+            elif case=="liquid_gate": rows[1]["liquid_balance_residual_kg"]=1.
+            elif case=="solute_gate": rows[1]["solute_balance_residual_kg"]=1.
+            elif case=="saturation_low": rows[1]["min_saturation"]=-1e-3
+            elif case=="saturation_high": rows[1]["max_saturation"]=1.1
+            elif case=="negative_concentration": rows[1]["min_concentration_kg_m3"]=-1e-3
+        cases=("nonmonotone_time","decreasing_mass","extrapolation","model_vector",
+               "liquid_gate","solute_gate","saturation_low","saturation_high","negative_concentration")
+        for case in cases:
+            with self.subTest(case=case), tempfile.TemporaryDirectory() as directory:
+                root=Path(directory); manifest,artifact,paths=governed_fixture(root)
+                trace=paths["RETAINED_MODEL_OUTPUT_TRACE"]
+                with trace.open(newline="") as stream:
+                    reader=csv.DictReader(stream); fields=reader.fieldnames; rows=list(reader)
+                for row in rows:
+                    for key in fields: row[key]=float(row[key])
+                mutate_rows(rows,case)
+                with trace.open("w",newline="") as stream:
+                    writer=csv.DictWriter(stream,fieldnames=fields); writer.writeheader(); writer.writerows(rows)
+                numerical=json.loads(paths["NUMERICAL_VERIFICATION"].read_text())
+                numerical["trace_sha256"]=b0.file_sha256(trace); numerical["trace_bytes"]=trace.stat().st_size
+                with trace.open("rb") as stream:
+                    numerical["trace_header_sha256"]=hashlib.sha256(stream.readline()).hexdigest()
+                paths["NUMERICAL_VERIFICATION"].write_text(json.dumps(numerical,sort_keys=True)+"\n")
+                provenance=root/"governed/recovery-provenance.json"
+                provenance_record=json.loads(provenance.read_text()); provenance_record["trace_sha256"]=b0.file_sha256(trace)
+                provenance.write_text(json.dumps(provenance_record,sort_keys=True)+"\n")
+                refresh_artifact_member(manifest,artifact,trace,"RETAINED_MODEL_OUTPUT_TRACE")
+                refresh_artifact_member(manifest,artifact,paths["NUMERICAL_VERIFICATION"],"NUMERICAL_VERIFICATION")
+                with self.assertRaises(ValueError): self.validate(manifest,root)
+
+    def test_selected_infrastructure_provenance_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest,_,_=governed_fixture(root)
+            path=root/"governed/recovery-provenance.json"; value=json.loads(path.read_text())
+            value["recovery_evaluation_class"]="INFRASTRUCTURE_FAILURE_NO_OBJECTIVE"
+            value["evaluation_status"]="FAIL"
+            path.write_text(json.dumps(value,sort_keys=True)+"\n")
+            with self.assertRaises(ValueError): self.validate(manifest,root)
+
+    def test_finalize_only_has_no_execution_path_and_freezes_selection(self):
+        source=inspect.getsource(recovery.finalize_only)
+        for prohibited in ("subprocess.run", "blockMesh", "checkMesh", "decomposePar", "mpirun",
+                           "golden_section_log_k"):
+            self.assertNotIn(prohibited,source)
+        self.assertIn("0.3439597024835067",source)
+        self.assertIn("0.003931989579189616",source)
+
+    def test_finalize_only_rejects_altered_replay_artifact_before_execution(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); attempt2=root/"attempt2"; attempt2.mkdir()
+            replay=attempt2/"replay.json"; replay.write_text("{}\n")
+            selected=attempt2/"selected.json"; selected.write_text("{}\n")
+            with self.assertRaises(recovery.b1.InfrastructureFailure):
+                recovery.finalize_only(ROOT,root/"attempt1",attempt2,replay,selected,
+                    recovery.APPROVED_RECOVERY_HEAD,root/"final")
 
 
 class OptimizerTests(unittest.TestCase):

@@ -1,7 +1,7 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "VAL_CORPUS_002_STAGE_B1_CALIBRATION_COMPLETE_PENDING_REVIEW",
+  "current_governance_milestone": "VAL_CORPUS_002_STAGE_B1_FINAL_CALIBRATION_CANDIDATE_PENDING_REVIEW",
   "canonical_main": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
   "canonical_tree": "12fdbc542270e2765e2071d83c21812951f892e8",
   "release_scope": {
@@ -28,11 +28,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 403,
+    "python_test_count": 408,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 255,
-    "source_manifest_aggregate_sha256": "c29dd800a445209cc8ba7ea06ebf6b32b9f3230fc63b760bb4a0c06a0c1fe5b9",
+    "source_manifest_file_count": 256,
+    "source_manifest_aggregate_sha256": "3e853ce146fac417093eb76a09a7009cd41f276fd589e3ecb2167abd01991637",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",

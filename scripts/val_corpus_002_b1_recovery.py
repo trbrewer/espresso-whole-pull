@@ -21,6 +21,9 @@ import val_corpus_002_b1_calibration as b1
 
 ATTEMPT1_COUNT = 20
 RECOVERY_SCHEMA = "espresso.val_corpus_002.b1_attempt1_cache.v1"
+APPROVED_RECOVERY_HEAD = "0acfeb1f98d775abe18504d17f2d48fc1935c1e0"
+REPLAY_RESULT_SHA256 = "666f4033298ecbbe7de42d4915512a934eafbdf89f64c272fb6b7b25b9a64158"
+SELECTED_EVALUATION_SHA256 = "2c99be6239eebc6816ffa4fdd726f44933ad34aa35e119ab02b519b50375d607"
 
 
 def _regular_below(path: Path, root: Path) -> Path:
@@ -282,18 +285,173 @@ def replay(repo: Path, attempt1: Path, attempt2: Path) -> dict:
     return result
 
 
+def finalize_only(repo: Path, attempt1: Path, attempt2: Path, replay_path: Path,
+                  selected_evaluation_path: Path, approved_head: str,
+                  verification_root: Path) -> dict:
+    """Reconstruct a governed bundle using immutable artifacts only."""
+    if approved_head != APPROVED_RECOVERY_HEAD:
+        raise b1.InfrastructureFailure("approved recovery head mismatch")
+    if verification_root.exists():
+        raise b1.InfrastructureFailure("finalize-only verification root must be new and clean")
+    _regular_below(replay_path, attempt2); _regular_below(selected_evaluation_path, attempt2)
+    if b1.sha256(replay_path) != REPLAY_RESULT_SHA256:
+        raise b1.InfrastructureFailure("optimizer replay result identity mismatch")
+    if b1.sha256(selected_evaluation_path) != SELECTED_EVALUATION_SHA256:
+        raise b1.InfrastructureFailure("selected evaluation record identity mismatch")
+    verify_attempt1_cache(repo, attempt1)
+    replay_record = json.loads(replay_path.read_text()); selected = json.loads(selected_evaluation_path.read_text())
+    optimizer = replay_record.get("optimizer")
+    if (replay_record.get("status") != "PASS" or not isinstance(optimizer, dict)
+            or optimizer.get("selected_rate_s_inverse") != 0.3439597024835067
+            or optimizer.get("selected_rate_hex") != "0x1.6036f8e53bf4ep-2"
+            or optimizer.get("selected_log_k") != -1.0672307724139207
+            or optimizer.get("selected_log_k_hex") != "-0x1.11360930cd77cp+0"
+            or optimizer.get("selected_objective") != 0.003931989579189616):
+        raise b1.InfrastructureFailure("immutable optimizer selection mismatch")
+    selected_rows = [row for row in optimizer["trace"]
+                     if row.get("final_selection_status") == "SELECTED_FINAL"]
+    if len(selected_rows) != 1: raise b1.InfrastructureFailure("unique optimizer selection absent")
+    selected_row = selected_rows[0]
+    if (selected.get("status") != "PASS" or selected.get("solver_exit_code") != 0
+            or selected.get("cache_status") != "EXECUTED_ATTEMPT_2"
+            or selected.get("rate_s_inverse") != optimizer["selected_rate_s_inverse"]
+            or selected.get("rate_hex") != optimizer["selected_rate_hex"]
+            or selected.get("objective") != optimizer["selected_objective"]):
+        raise b1.InfrastructureFailure("selected attempt-2 evaluation mismatch")
+    configuration_source = _regular_below(attempt2 / selected["configuration_path"], attempt2)
+    trace_source = _regular_below(attempt2 / selected["trace_path"], attempt2)
+    if (b1.sha256(configuration_source) != selected["configuration_sha256"]
+            or b1.sha256(trace_source) != selected["trace_sha256"]
+            or trace_source.stat().st_size != selected["trace_bytes"]):
+        raise b1.InfrastructureFailure("selected configuration or trace identity mismatch")
+    template = b1.exact_template(repo)
+    materialized = b0._materialize_p2_rate(template, optimizer["selected_rate_s_inverse"],
+                                            b0.EXP7_H1_TEMPLATE_SHA256)
+    if configuration_source.read_bytes() != b0.canonical_bytes(materialized):
+        raise b1.InfrastructureFailure("selected configuration cannot be reconstructed")
+    parsed = b1._trace_rows(trace_source)
+    model, verification = b1.reduce_evaluation(parsed, materialized)
+    objective = b0.calibration_objective(b0.SOURCE_SOLUTE_MASSES_G, model)
+    if model != selected["model_cup_solute_masses_g"] or objective != optimizer["selected_objective"]:
+        raise b1.InfrastructureFailure("selected trace objective cannot be reconstructed")
+
+    verification_root.mkdir(parents=True)
+    for relative in b1.INPUT_PATHS:
+        source = _regular_below(attempt2 / relative, attempt2)
+        target = verification_root / relative; target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        if b1.sha256(target) != b1.sha256(source): raise b1.InfrastructureFailure("frozen input copy mismatch")
+    governed = verification_root / "governed"; governed.mkdir()
+    configuration_path = governed / "calibration-configuration.json"; shutil.copy2(configuration_source, configuration_path)
+    trace_path = governed / "retained-model-output-trace.csv"; shutil.copy2(trace_source, trace_path)
+    optimizer_path = governed / "optimizer-trace.json"
+    b1.dump(optimizer_path, {"status": "PASS", "evaluations": optimizer["evaluations"],
+        "final_log_interval_width": optimizer["final_log_interval_width"], "trace": optimizer["trace"]})
+    residuals = [value-source for source, value in zip(b0.SOURCE_SOLUTE_MASSES_G, model)]
+    reduction = {"target_masses_g": b0.TARGET_MASSES_G,
+        "source_cup_solute_masses_g": b0.SOURCE_SOLUTE_MASSES_G,
+        "model_cup_solute_masses_g": model, "signed_residuals_g": residuals,
+        "relative_residuals": [value/source for value, source in zip(residuals,b0.SOURCE_SOLUTE_MASSES_G)],
+        "objective_identity": b0.OBJECTIVE_ID, "reconstructed_objective": objective}
+    reduction_path = governed / "calibration-reduction.json"; b1.dump(reduction_path, reduction)
+    with trace_path.open("rb") as trace_stream:
+        trace_header_sha256 = hashlib.sha256(trace_stream.readline()).hexdigest()
+    numerical = {"schema_version": "espresso.val_corpus_002.b1_numerical_verification.v1",
+        "task": "VAL-CORPUS-002", "authorization_id": b1.AUTHORIZATION_ID,
+        "calibration_case_id": b0.CALIBRATION_CASE_ID, "solver_commit": b1.SOLVER_COMMIT,
+        "executable_sha256": b1.EXECUTABLE_SHA256,
+        "calibration_configuration_sha256": b1.sha256(configuration_path),
+        "openfoam_distribution": "OpenFOAM Foundation", "openfoam_version": "12",
+        "mpi_ranks": 16, "delta_t_s": .02, "end_time_s": 90.0,
+        "first_solver_timestamp_s": selected["first_timestamp_s"],
+        "final_solver_timestamp_s": selected["final_timestamp_s"],
+        "completion_disposition": "PASS", "fatal_event_count": 0,
+        "target_mass_brackets": verification["target_mass_brackets"],
+        "boundedness": {key: verification[key] for key in ("finite","nonnegative","tds_0_to_1")},
+        "maximum_liquid_balance_relative_residual": verification["maximum_liquid_balance_relative_residual"],
+        "maximum_solute_balance_relative_residual": verification["maximum_solute_balance_relative_residual"],
+        "liquid_balance_gate": verification["liquid_gate"], "solute_balance_gate": verification["solute_gate"],
+        "trace_path": trace_path.relative_to(verification_root).as_posix(),
+        "trace_sha256": b1.sha256(trace_path), "trace_bytes": trace_path.stat().st_size,
+        "trace_header_sha256": trace_header_sha256,
+        "selected_evaluation_sequence": selected_row["sequence"], "overall_status": "PASS"}
+    numerical_path = governed / "numerical-verification.json"; b1.dump(numerical_path, numerical)
+    provenance = {"schema_version": "espresso.val_corpus_002.b1_selected_recovery_provenance.v1",
+        "optimizer_sequence": selected_row["sequence"], "attempt_evaluation_sequence": selected["sequence"],
+        "recovery_evaluation_class": selected["cache_status"], "rate_s_inverse": selected["rate_s_inverse"],
+        "rate_hex": selected["rate_hex"], "log_k": selected_row["log_k"],
+        "log_k_hex": selected_row["log_k_hex"], "objective": selected["objective"],
+        "configuration_sha256": selected["configuration_sha256"], "trace_sha256": selected["trace_sha256"],
+        "solver_exit_code": selected["solver_exit_code"], "evaluation_status": selected["status"],
+        "evaluation_record_sha256": b1.sha256(selected_evaluation_path)}
+    b1.dump(governed / "recovery-provenance.json", provenance)
+    shutil.copy2(selected_evaluation_path, governed / "selected-evaluation.json")
+    roles = {"OPTIMIZER_TRACE": optimizer_path, "CALIBRATION_CONFIGURATION": configuration_path,
+             "CALIBRATION_REDUCTION": reduction_path, "RETAINED_MODEL_OUTPUT_TRACE": trace_path,
+             "NUMERICAL_VERIFICATION": numerical_path}
+    rows = [{"role": role, "path": path.relative_to(verification_root).as_posix(),
+             "bytes": path.stat().st_size, "sha256": b1.sha256(path)} for role,path in roles.items()]
+    digest=hashlib.sha256()
+    for row in sorted(rows,key=lambda item:item["path"]):
+        digest.update(f"{row['path']}\0{row['sha256']}\0{row['bytes']}\n".encode())
+    artifact={"schema_version":"espresso.val_corpus_002.calibration_artifacts.v1",
+              "aggregate_sha256":digest.hexdigest(),"files":rows}
+    artifact_path=governed/"calibration-artifact-manifest.json"; b1.dump(artifact_path,artifact)
+    manifest={"schema_version":"espresso.val_corpus_002.p2_calibration_manifest.v1",
+        "status":b0.CALIBRATION_APPROVED_STATUS,"record_class":b0.GOVERNED_RECORD_CLASS,
+        "task":"VAL-CORPUS-002","stage":"B1_CALIBRATION","authorization_id":b1.AUTHORIZATION_ID,
+        "calibration_case_id":b0.CALIBRATION_CASE_ID,"template_sha256":b0.EXP7_H1_TEMPLATE_SHA256,
+        "source_cohort_path":b0.COHORT_PATH.as_posix(),"source_cohort_sha256":b0.COHORT_SHA256,
+        "target_masses_g":b0.TARGET_MASSES_G,"source_observations_g":b0.SOURCE_SOLUTE_MASSES_G,
+        "objective_identity":b0.OBJECTIVE_ID,"optimizer_algorithm":"GOLDEN_SECTION_LOG_K_V1",
+        "log_k_bounds":[b0.LOG_K_LOWER,b0.LOG_K_UPPER],"log_k_interval_tolerance":b0.LOG_K_TOLERANCE,
+        "maximum_evaluations":b0.MAX_EVALUATIONS,"optimizer_status":"PASS",
+        "optimizer_trace_sha256":b1.sha256(optimizer_path),"selected_log_k":optimizer["selected_log_k"],
+        "selected_log_k_hex":optimizer["selected_log_k_hex"],
+        "selected_rate_s_inverse":optimizer["selected_rate_s_inverse"],
+        "selected_rate_hex":optimizer["selected_rate_hex"],"selected_objective":optimizer["selected_objective"],
+        "solver_commit":b1.SOLVER_COMMIT,"executable_sha256":b1.EXECUTABLE_SHA256,
+        "calibration_configuration_sha256":b1.sha256(configuration_path),
+        "calibration_artifact_manifest_path":artifact_path.relative_to(verification_root).as_posix(),
+        "calibration_artifact_manifest_sha256":b1.sha256(artifact_path),
+        "calibration_artifact_aggregate_sha256":artifact["aggregate_sha256"],
+        "numerical_completion":"PASS","conservation_disposition":"PASS"}
+    manifest_path=governed/"calibration-manifest.json"; b1.dump(manifest_path,manifest)
+    b0.validate_governed_calibration_manifest(manifest,expected_template_sha256=b0.EXP7_H1_TEMPLATE_SHA256,
+        root=verification_root,expected_b1_authorization_id=b1.AUTHORIZATION_ID)
+    barrier=b0.AccessBarrier(); barrier.authorize_b1("SEPARATE_HUMAN_OWNER_B1_AUTHORITY")
+    barrier.freeze_p2(manifest,root=verification_root,expected_b1_authorization_id=b1.AUTHORIZATION_ID)
+    return {"status":"PASS","selected_rate_s_inverse":manifest["selected_rate_s_inverse"],
+            "selected_objective":manifest["selected_objective"],
+            "calibration_manifest_sha256":b1.sha256(manifest_path),
+            "artifact_manifest_sha256":b1.sha256(artifact_path),
+            "artifact_aggregate_sha256":artifact["aggregate_sha256"],
+            "governed_validator":"PASS","p2_freeze_barrier":"PASS"}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path(".")); parser.add_argument("--attempt1-root", type=Path, required=True)
     parser.add_argument("--attempt2-root", type=Path, required=True); parser.add_argument("--executable", type=Path)
-    modes = parser.add_mutually_exclusive_group(required=True); modes.add_argument("--initialize", action="store_true"); modes.add_argument("--replay", action="store_true")
+    parser.add_argument("--optimizer-replay-result", type=Path)
+    parser.add_argument("--selected-evaluation", type=Path); parser.add_argument("--approved-head")
+    parser.add_argument("--verification-root", type=Path)
+    modes = parser.add_mutually_exclusive_group(required=True); modes.add_argument("--initialize", action="store_true"); modes.add_argument("--replay", action="store_true"); modes.add_argument("--finalize-only", action="store_true")
     args = parser.parse_args()
     try:
         if args.initialize:
             if args.executable is None: raise b1.InfrastructureFailure("--executable required")
             result = initialize(args.root.resolve(), args.attempt1_root.resolve(), args.attempt2_root.resolve(), args.executable.resolve())
-        else:
+        elif args.replay:
             result = replay(args.root.resolve(), args.attempt1_root.resolve(), args.attempt2_root.resolve())
+        else:
+            if not all((args.optimizer_replay_result, args.selected_evaluation,
+                        args.approved_head, args.verification_root)):
+                raise b1.InfrastructureFailure("finalize-only inputs are mandatory")
+            result = finalize_only(args.root.resolve(), args.attempt1_root.resolve(),
+                args.attempt2_root.resolve(), args.optimizer_replay_result.resolve(),
+                args.selected_evaluation.resolve(), args.approved_head,
+                args.verification_root.resolve())
     except b1.InfrastructureFailure as exc:
         print(json.dumps({"status": "INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE", "reason": str(exc)}, indent=2))
         raise SystemExit(2)

@@ -48,6 +48,24 @@ ARTIFACT_ROLES = {
     "OPTIMIZER_TRACE", "CALIBRATION_CONFIGURATION", "CALIBRATION_REDUCTION",
     "RETAINED_MODEL_OUTPUT_TRACE", "NUMERICAL_VERIFICATION",
 }
+NUMERICAL_VERIFICATION_KEYS = {
+    "schema_version", "task", "authorization_id", "calibration_case_id", "solver_commit",
+    "executable_sha256", "calibration_configuration_sha256", "openfoam_distribution",
+    "openfoam_version", "mpi_ranks", "delta_t_s", "end_time_s", "first_solver_timestamp_s",
+    "final_solver_timestamp_s", "completion_disposition", "fatal_event_count",
+    "target_mass_brackets", "boundedness", "maximum_liquid_balance_relative_residual",
+    "maximum_solute_balance_relative_residual", "liquid_balance_gate", "solute_balance_gate",
+    "trace_path", "trace_sha256", "trace_bytes", "trace_header_sha256",
+    "selected_evaluation_sequence", "overall_status",
+}
+TRACE_REQUIRED_FIELDS = {
+    "time_s", "cup_water_mass_kg", "cup_solute_mass_kg", "cup_beverage_mass_kg",
+    "cumulative_inlet_water_mass_kg", "liquid_balance_residual_kg",
+    "solute_balance_residual_kg", "remaining_extractable_mass_kg",
+    "dissolved_in_puck_mass_kg", "min_saturation", "max_saturation",
+    "min_concentration_kg_m3", "max_concentration_kg_m3",
+}
+MODEL_VECTOR_ABSOLUTE_TOLERANCE_G = 1e-12
 OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE = 1e-15
 REFERENCE = {
     "binding_class": "DIRECT_CONTENT_ADDRESS",
@@ -265,7 +283,140 @@ def _artifact_manifest_record(value: object) -> list[dict]:
     return files
 
 
-def _verify_governed_contents(manifest: dict, root: Path) -> None:
+def numerical_verification_schema() -> dict:
+    """Closed machine-readable contract for selected B1 numerical evidence."""
+    properties = {key: {} for key in sorted(NUMERICAL_VERIFICATION_KEYS)}
+    return {"$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "espresso.val_corpus_002.b1_numerical_verification.v1",
+            "type": "object", "additionalProperties": False,
+            "required": sorted(NUMERICAL_VERIFICATION_KEYS), "properties": properties}
+
+
+def _finite_number(value: object, label: str) -> float:
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+        raise ValueError(f"numerical verification {label} must be finite")
+    return float(value)
+
+
+def _validate_numerical_record(record: object, manifest: dict, trace_row: dict) -> dict:
+    if not isinstance(record, dict) or set(record) != NUMERICAL_VERIFICATION_KEYS:
+        raise ValueError("closed numerical-verification record required")
+    exact = {
+        "schema_version": "espresso.val_corpus_002.b1_numerical_verification.v1",
+        "task": "VAL-CORPUS-002", "authorization_id": manifest["authorization_id"],
+        "calibration_case_id": CALIBRATION_CASE_ID, "solver_commit": manifest["solver_commit"],
+        "executable_sha256": manifest["executable_sha256"],
+        "calibration_configuration_sha256": manifest["calibration_configuration_sha256"],
+        "openfoam_distribution": "OpenFOAM Foundation", "openfoam_version": "12",
+        "mpi_ranks": 16, "delta_t_s": 0.02, "end_time_s": 90.0,
+        "completion_disposition": "PASS", "fatal_event_count": 0,
+        "target_mass_brackets": {"20_g": "PASS", "40_g": "PASS", "60_g": "PASS"},
+        "overall_status": "PASS",
+    }
+    for key, expected in exact.items():
+        if record.get(key) != expected:
+            raise ValueError(f"numerical verification identity/disposition mismatch: {key}")
+    if manifest["authorization_id"] == "VAL-CORPUS-002-B1-CALIBRATION-2026-08-03":
+        frozen = {"calibration_configuration_sha256":
+                  "d3234d976c554ad87704d9c6c00032a08b99d52c6fc61c32846e2470dff99573"}
+        if any(record[key] != value for key,value in frozen.items()):
+            raise ValueError("selected B1 numerical identity differs from frozen result")
+        if (manifest["selected_rate_s_inverse"] != 0.3439597024835067
+                or manifest["selected_log_k"] != -1.0672307724139207
+                or manifest["selected_objective"] != 0.003931989579189616):
+            raise ValueError("selected B1 scientific values differ from frozen result")
+    if record["selected_evaluation_sequence"] != trace_row.get("sequence"):
+        raise ValueError("numerical verification selected sequence mismatch")
+    if not isinstance(record["trace_path"], str) or not isinstance(record["trace_bytes"], int):
+        raise ValueError("numerical verification trace identity type mismatch")
+    for key in ("trace_sha256", "trace_header_sha256"):
+        if not _valid_sha256(record[key]): raise ValueError(f"malformed {key}")
+    if set(record["boundedness"]) != {"finite", "nonnegative", "tds_0_to_1"} or any(
+            not isinstance(value, bool) for value in record["boundedness"].values()):
+        raise ValueError("numerical verification boundedness contract mismatch")
+    for key in ("first_solver_timestamp_s", "final_solver_timestamp_s",
+                "maximum_liquid_balance_relative_residual",
+                "maximum_solute_balance_relative_residual", "liquid_balance_gate", "solute_balance_gate"):
+        _finite_number(record[key], key)
+    if record["liquid_balance_gate"] != 1e-8 or record["solute_balance_gate"] != 1e-8:
+        raise ValueError("numerical conservation gate mismatch")
+    if (record["maximum_liquid_balance_relative_residual"] < 0
+            or record["maximum_solute_balance_relative_residual"] < 0
+            or record["maximum_liquid_balance_relative_residual"] > record["liquid_balance_gate"]
+            or record["maximum_solute_balance_relative_residual"] > record["solute_balance_gate"]):
+        raise ValueError("numerical conservation disposition fails")
+    return record
+
+
+def _parse_semantic_trace(path: Path) -> tuple[list[dict[str, float]], str]:
+    try:
+        with path.open("rb") as raw: header = raw.readline()
+        with path.open(newline="", encoding="utf-8") as stream:
+            reader = csv.DictReader(stream)
+            if set(TRACE_REQUIRED_FIELDS) - set(reader.fieldnames or []):
+                raise ValueError("retained trace required columns absent")
+            rows = []
+            for raw_row in reader:
+                row = {key: float(raw_row[key]) for key in TRACE_REQUIRED_FIELDS}
+                if any(not math.isfinite(value) for value in row.values()):
+                    raise ValueError("retained trace contains nonfinite value")
+                rows.append(row)
+    except (OSError, UnicodeError, csv.Error, KeyError, TypeError, ValueError) as exc:
+        if isinstance(exc, ValueError) and str(exc).startswith("retained trace"):
+            raise
+        raise ValueError("retained trace is not valid closed CSV") from exc
+    if not rows: raise ValueError("retained trace is empty")
+    if any(b["time_s"] <= a["time_s"] for a, b in zip(rows, rows[1:])):
+        raise ValueError("retained trace time is not strictly increasing")
+    return rows, hashlib.sha256(header).hexdigest()
+
+
+def _semantic_trace_reduction(rows: list[dict[str, float]], configuration: dict) -> dict:
+    samples = [(row["time_s"], row["cup_beverage_mass_kg"], row["cup_solute_mass_kg"])
+               for row in rows]
+    try:
+        model = [1000.0 * fixed_mass(samples, target)["cup_solute_mass_kg"]
+                 for target in (0.020, 0.040, 0.060)]
+    except ValueError as exc:
+        raise ValueError("retained trace target requires extrapolation or invalid bracketing") from exc
+    cumulative = ("cup_water_mass_kg", "cup_solute_mass_kg", "cup_beverage_mass_kg",
+                  "cumulative_inlet_water_mass_kg")
+    if any(b[key] < a[key] - 1e-15 for key in cumulative for a, b in zip(rows, rows[1:])):
+        raise ValueError("retained trace cumulative mass decreases")
+    extractable = (configuration["geometry"]["dry_dose_kg"]
+                   * configuration["chemistry"]["extractableFraction"])
+    liquid = max(abs(row["liquid_balance_residual_kg"])
+                 / max(abs(row["cumulative_inlet_water_mass_kg"]), 1e-30) for row in rows)
+    solute = max(abs(row["solute_balance_residual_kg"]) / extractable for row in rows)
+    finite = all(math.isfinite(value) for row in rows for value in row.values())
+    nonnegative = all(row[key] >= -1e-12 for row in rows for key in
+                      ("cup_water_mass_kg", "cup_solute_mass_kg", "cup_beverage_mass_kg",
+                       "remaining_extractable_mass_kg", "dissolved_in_puck_mass_kg"))
+    tds_values = [row["cup_solute_mass_kg"] / row["cup_beverage_mass_kg"]
+                  for row in rows if row["cup_beverage_mass_kg"] > 0]
+    tds_ok = bool(tds_values) and all(0 <= value <= 1 for value in tds_values)
+    minimum_saturation = min(row["min_saturation"] for row in rows)
+    maximum_saturation = max(row["max_saturation"] for row in rows)
+    minimum_concentration = min(row["min_concentration_kg_m3"] for row in rows)
+    maximum_concentration = max(row["max_concentration_kg_m3"] for row in rows)
+    if minimum_saturation < -1e-12 or maximum_saturation > 1 + 1e-12:
+        raise ValueError("retained trace saturation bounds fail")
+    if minimum_concentration < -1e-12:
+        raise ValueError("retained trace concentration is materially negative")
+    residuals = [value-source for source, value in zip(SOURCE_SOLUTE_MASSES_G, model)]
+    return {"model_cup_solute_masses_g": model, "signed_residuals_g": residuals,
+            "relative_residuals": [value/source for value, source in zip(residuals, SOURCE_SOLUTE_MASSES_G)],
+            "objective": calibration_objective(SOURCE_SOLUTE_MASSES_G, model),
+            "maximum_liquid_balance_relative_residual": liquid,
+            "maximum_solute_balance_relative_residual": solute,
+            "boundedness": {"finite": finite, "nonnegative": nonnegative, "tds_0_to_1": tds_ok},
+            "minimum_saturation": minimum_saturation, "maximum_saturation": maximum_saturation,
+            "minimum_concentration_kg_m3": minimum_concentration,
+            "maximum_concentration_kg_m3": maximum_concentration,
+            "configured_capacity_kg_m3": configuration["chemistry"]["saturationConcentration_kg_m3"]}
+
+
+def _verify_governed_contents(manifest: dict, root: Path) -> dict:
     cohort = _confined_regular_file(root, manifest["source_cohort_path"], "source cohort")
     if file_sha256(cohort) != manifest["source_cohort_sha256"]:
         raise ValueError("source cohort content identity mismatch")
@@ -355,6 +506,98 @@ def _verify_governed_contents(manifest: dict, root: Path) -> None:
             or not math.isclose(recomputed, manifest["selected_objective"], rel_tol=0.0,
                                 abs_tol=OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE)):
         raise ValueError("selected objective does not reconstruct")
+
+    try:
+        numerical = json.loads(members["NUMERICAL_VERIFICATION"].read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise ValueError("numerical verification is not valid JSON") from exc
+    numerical = _validate_numerical_record(numerical, manifest, selected_row)
+    retained_trace = members["RETAINED_MODEL_OUTPUT_TRACE"]
+    trace_member = next(row for row in files if row["role"] == "RETAINED_MODEL_OUTPUT_TRACE")
+    if (numerical["trace_path"] != trace_member["path"]
+            or numerical["trace_sha256"] != trace_member["sha256"]
+            or numerical["trace_bytes"] != trace_member["bytes"]):
+        raise ValueError("numerical verification and trace artifact identity disagree")
+    trace_rows, header_sha256 = _parse_semantic_trace(retained_trace)
+    if header_sha256 != numerical["trace_header_sha256"]:
+        raise ValueError("retained trace header identity mismatch")
+    if (trace_rows[0]["time_s"] != numerical["first_solver_timestamp_s"]
+            or trace_rows[-1]["time_s"] != numerical["final_solver_timestamp_s"]):
+        raise ValueError("retained trace terminal timestamps mismatch")
+    semantic = _semantic_trace_reduction(trace_rows, configuration)
+    if any(not math.isclose(actual, expected, rel_tol=0.0,
+                            abs_tol=MODEL_VECTOR_ABSOLUTE_TOLERANCE_G)
+           for actual, expected in zip(semantic["model_cup_solute_masses_g"],
+                                       reduction["model_cup_solute_masses_g"])):
+        raise ValueError("retained trace model vector mismatch")
+    if manifest["authorization_id"] == "VAL-CORPUS-002-B1-CALIBRATION-2026-08-03":
+        frozen_model = [2.782144673131987, 4.227214080217558, 4.334636376028199]
+        if any(not math.isclose(actual, expected, rel_tol=0.0,
+                                abs_tol=MODEL_VECTOR_ABSOLUTE_TOLERANCE_G)
+               for actual,expected in zip(semantic["model_cup_solute_masses_g"], frozen_model)):
+            raise ValueError("retained trace differs from frozen B1 model vector")
+    if (not math.isclose(semantic["objective"], manifest["selected_objective"], rel_tol=0.0,
+                         abs_tol=OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE)
+            or semantic["boundedness"] != numerical["boundedness"]):
+        raise ValueError("retained trace objective or boundedness mismatch")
+    for key in ("maximum_liquid_balance_relative_residual",
+                "maximum_solute_balance_relative_residual"):
+        if not math.isclose(semantic[key], numerical[key], rel_tol=0.0, abs_tol=1e-15):
+            raise ValueError(f"retained trace {key} mismatch")
+    if (semantic["maximum_liquid_balance_relative_residual"] > numerical["liquid_balance_gate"]
+            or semantic["maximum_solute_balance_relative_residual"] > numerical["solute_balance_gate"]):
+        raise ValueError("retained trace conservation gate fails")
+    if manifest["numerical_completion"] != numerical["completion_disposition"]:
+        raise ValueError("manifest numerical completion is not derived from numerical verification")
+    if manifest["conservation_disposition"] != "PASS":
+        raise ValueError("manifest conservation disposition mismatch")
+
+    provenance_path = _confined_regular_file(root, "governed/recovery-provenance.json",
+                                              "selected recovery provenance")
+    try:
+        provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise ValueError("selected recovery provenance is not valid JSON") from exc
+    provenance_keys = {"schema_version", "optimizer_sequence", "attempt_evaluation_sequence",
+                       "recovery_evaluation_class", "rate_s_inverse", "rate_hex", "log_k",
+                       "log_k_hex", "objective", "configuration_sha256", "trace_sha256",
+                       "solver_exit_code", "evaluation_status", "evaluation_record_sha256"}
+    if not isinstance(provenance, dict) or set(provenance) != provenance_keys:
+        raise ValueError("closed selected recovery provenance required")
+    expected_provenance = {
+        "schema_version": "espresso.val_corpus_002.b1_selected_recovery_provenance.v1",
+        "optimizer_sequence": selected_row.get("sequence"),
+        "recovery_evaluation_class": "EXECUTED_ATTEMPT_2",
+        "rate_s_inverse": manifest["selected_rate_s_inverse"], "rate_hex": manifest["selected_rate_hex"],
+        "log_k": manifest["selected_log_k"], "log_k_hex": manifest["selected_log_k_hex"],
+        "objective": manifest["selected_objective"],
+        "configuration_sha256": manifest["calibration_configuration_sha256"],
+        "trace_sha256": numerical["trace_sha256"], "solver_exit_code": 0,
+        "evaluation_status": "PASS",
+    }
+    for key, expected in expected_provenance.items():
+        if provenance.get(key) != expected:
+            raise ValueError(f"selected recovery provenance mismatch: {key}")
+    if (not isinstance(provenance["attempt_evaluation_sequence"], int)
+            or not _valid_sha256(provenance["evaluation_record_sha256"])):
+        raise ValueError("selected recovery provenance evaluation identity invalid")
+    selected_evaluation_path = _confined_regular_file(root, "governed/selected-evaluation.json",
+                                                       "selected evaluation record")
+    if file_sha256(selected_evaluation_path) != provenance["evaluation_record_sha256"]:
+        raise ValueError("selected evaluation record content identity mismatch")
+    try:
+        selected_evaluation = json.loads(selected_evaluation_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise ValueError("selected evaluation record is not valid JSON") from exc
+    selected_expected = {"sequence": provenance["attempt_evaluation_sequence"],
+        "rate_s_inverse": manifest["selected_rate_s_inverse"], "rate_hex": manifest["selected_rate_hex"],
+        "objective": manifest["selected_objective"], "configuration_sha256": manifest["calibration_configuration_sha256"],
+        "trace_sha256": numerical["trace_sha256"], "solver_exit_code": 0, "status": "PASS",
+        "cache_status": "EXECUTED_ATTEMPT_2"}
+    if not isinstance(selected_evaluation, dict) or any(
+            selected_evaluation.get(key) != value for key,value in selected_expected.items()):
+        raise ValueError("selected evaluation record disagrees with optimizer provenance")
+    return semantic
 
 
 def validate_governed_calibration_manifest(manifest: dict, *, expected_template_sha256: str,
