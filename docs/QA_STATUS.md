@@ -1,4 +1,8 @@
-# Package QA status — current main
+# Package QA status — immutable merged/release baseline and current unmerged WP03-002 candidate
+
+Historical sections below describe immutable merged or released evidence.
+Explicit current-check and WP03-002 sections describe the open, unmerged
+candidate qualification; they do not redefine the merged baseline.
 
 ## Immutable v0.2.0 release snapshot
 
@@ -40,8 +44,11 @@ and source/holdout-fit counts remained zero.
 
 ## Current repository checks
 
-- Python and active-static-gate totals for the open candidate are generated in
-  `PACKAGE_QA_STATUS.json`; the merged WP03-001 baseline remains 230 tests.
+- current WP03-002 candidate Python suite: 351/351 PASS;
+- current active static gates: 38/38 PASS;
+- current source manifest: 240/240 PASS (exact aggregate in
+  `SOURCE_PACKAGE_MANIFEST.json` and `PACKAGE_QA_STATUS.json`);
+- the merged WP03-001 baseline's 230-test count remains historical.
 - source manifest: recorded in `PACKAGE_QA_STATUS.json` and
   `SOURCE_PACKAGE_MANIFEST.json`
 - historical v0.1.4 integrity: PASS
@@ -99,14 +106,15 @@ transfer, or introduce runtime extraction physics.
 
 Physical validation remains `NOT_ESTABLISHED`.
 
-## VAL-DATA-001 planning candidate
+## Merged VAL-DATA-001 planning record
 
-VAL-DATA-001 adds only an append-only campaign-reference erratum and a
+VAL-DATA-001, merged in PR #48, adds only an append-only campaign-reference erratum and a
 non-commissioning synchronized hydraulic-compaction measurement plan. It
 changes no result, code, configuration, framework, standard, dependency, or
 physics and performs no scientific or experimental execution.
-The bounded planning correction records
-`VAL_DATA_001_REVIEW_STATUS: CORRECTED_PENDING_EXACT_HEAD_REVIEW`, makes the
+The historical bounded planning candidate recorded
+`VAL_DATA_001_REVIEW_STATUS: CORRECTED_PENDING_EXACT_HEAD_REVIEW`; subsequent
+exact-head approval and merge closed that candidate state. The record makes the
 future evidence route prospective, fixes prescribed pressure at the basket-top
 node, and adds parameter-role, data-schema, timing, and deformation contracts.
 `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`, VAL-CASE-002 remains
@@ -168,7 +176,7 @@ Current test and source-manifest identities are generated in
 `PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
 validation remains `NOT_ESTABLISHED`.
 
-## Open VAL-001 second correction
+## Merged VAL-001 result and retained correction history
 
 The original result remains audit-retained with prospective governance
 invalidated. The first corrected invocation remains failed and invalidated
@@ -178,16 +186,27 @@ the canonical V2 bundle with SHA-256
 `7968e3b99045da9500442932c536bf920d559ebe660d2bad01f954f36b3f75b5`.
 The second cycle performed zero new OpenFOAM builds and executions, and tests
 perform zero real-data comparison invocations. The result is post-observation,
-not blind, not independent, and not physical validation. PR #38 remains open
-pending independent re-adjudication.
+not blind, not independent, and not physical validation. PR #38 is merged;
+the adverse invocation history and scientific limitations remain retained.
+
+## Active WP03-002 numerical task
+
+WP03-002 reproduced all three frozen failures, committed the diagnosis before
+source modification, and applied an equation-preserving correction to the
+nonlinear convergence gate. All three unchanged corrected cases complete.
+Serial/MPI repeatability, timestep refinement, conservation, independent
+scalar/derivative tests, and predecessor checks pass. Cross-pressure ordering
+remains reversed. The result is complete pending exact-head review of PR #52;
+physical validation remains `NOT_ESTABLISHED`.
 
 ## VAL-001 post-result framework hardening
 
-The candidate now has canonical consumed-authority enforcement, deep retained
+The historical PR #38 candidate added canonical consumed-authority enforcement, deep retained
 V2 and invocation-ledger schemas, a durable append-only event journal,
 synthetic transaction/concurrency tests, and a versioned raw-string selected-
 row identity. The production runner accepts no alternate governed identities.
-This cycle performed zero governed comparisons and zero OpenFOAM work.
+That cycle performed zero governed comparisons and zero OpenFOAM work and was
+subsequently approved and merged.
 
 The deep-schema completion cycle provides exhaustive governed-record inventory coverage, removes prefix
 legacy catch-alls, validates immutable records by exact hash plus nested

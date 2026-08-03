@@ -1,6 +1,6 @@
 # Development History
 
-- VAL-CORPUS-001 (open candidate): exact-head review correction preserved the
+- VAL-CORPUS-001 (complete, approved, and merged as PR #50): exact-head review correction preserved the
   original 16-condition history and executed a frozen 13-case correction
   matrix with the unchanged Foundation OpenFOAM 12 executable. All correction
   runs completed. Static branches no longer inherit dissolution-indexed
@@ -14,7 +14,7 @@
   splits completed and fatal trace identities, and produces a byte-identical
   self-contained V3 bundle without launching OpenFOAM.
 
-- VAL-001 (open candidate): `NO_GOVERNING_PHYSICS_CHANGE` source-adapter
+- VAL-001 (complete and merged as PR #38): `NO_GOVERNING_PHYSICS_CHANGE` source-adapter
   framework and two descriptive source-linked pressure-flow comparisons. No
   solver/configuration change, fit, protected access, holdout score, or
   physical-validation claim. Its original arithmetic is retained with
@@ -22,7 +22,15 @@
   after score exposure. A separately authorized one-token repair and single
   replacement invocation produced a post-observation, non-independent V2
   reproduction using three previously completed OpenFOAM artifacts without
-  rebuild or rerun. PR #38 remains open for independent re-adjudication.
+  rebuild or rerun. Its retained result remains descriptive, post-observation,
+  non-blind, and non-independent.
+
+- WP03-002: reproduced the three source-linked finite-porosity failures,
+  demonstrated that a continuous analytical closure diagnostic incorrectly
+  gated discrete nonlinear convergence, and applied an equation-preserving
+  correction. All three unchanged cases then completed, but flow and mass
+  ordering remained reversed with Spearman `-1.0`. Physical validation was
+  not established.
 
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
@@ -88,7 +96,8 @@ mechanisms with admissible real evidence, quantify uncertainty and
 identifiability, decompose residuals, and select one next physics increment
 from information value rather than implementation convenience.
 
-- VAL-001 final hardening (open PR #38): preserved all adverse history and V2
+- VAL-001 final hardening (historical open-candidate state for PR #38,
+  subsequently approved and merged): preserved all adverse history and V2
   bytes; corrected source provenance; added deep critical schemas, canonical
   consumed-state enforcement, atomic synthetic transaction machinery, an
   append-only invocation journal, reproducible selected-row identity, truthful
@@ -202,9 +211,9 @@ Independent exact-head review required a bounded documentation correction.
 The corrected plan replaces the unconditional evidence-class statement with a
 prospective human-owner route decision, binds prescribed targets to measured
 basket-top pressure, and adds parameter/evidence-role, normalized submission
-schema, timing, and deformation-compliance contracts. Status is
-`CORRECTED_PENDING_EXACT_HEAD_REVIEW`; the accepted erratum and all scientific
-artifacts remain unchanged.
+schema, timing, and deformation-compliance contracts. At that historical
+candidate point, status was `CORRECTED_PENDING_EXACT_HEAD_REVIEW`; the accepted
+erratum and all scientific artifacts remained unchanged.
 
 A final bounded evidence/schema correction then restored the frozen
 VAL-CASE-001 parameter classifications exactly, made replication and access
@@ -259,3 +268,8 @@ graph branch, removed unreachable stored status, completed time-series
 row-state mapping, froze the apparatus calibration scalar and YAML emitter,
 and synchronized package QA with the current source manifest. It changed no
 accepted scientific or experimental-design content.
+
+Independent exact-head review subsequently approved VAL-DATA-001 and PR #48
+merged as `f9bd8d5413b93d3a9986559920335d4140527f5e`. Its current state is
+`COMPLETE_APPROVED_AND_MERGED`; experimental commissioning remains
+unauthorized.

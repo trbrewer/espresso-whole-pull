@@ -3,6 +3,7 @@
 This tree is the historical v0.1.4 package view. Current navigation:
 
 - [Project state](PROJECT_STATE.md)
+- [Program state and forward plan](PROGRAM_STATE_AND_FORWARD_PLAN.md)
 - [Claim ceiling](CLAIM_CEILING.md)
 - [Puckworks integration](PUCKWORKS_INTEGRATION.md)
 - [Controlling strategy](strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md)
@@ -10,6 +11,15 @@ This tree is the historical v0.1.4 package view. Current navigation:
 - [Post-WP03 validation plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md)
 - [VAL-CORPUS-001 protocol](validation/VAL_CORPUS_001_PROTOCOL.md)
 - [VAL-CORPUS-001 comparison atlas](validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md)
+- [WP03-002 diagnostic protocol](wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md)
+- [WP03-002 exact-head-review correction protocol](wp03/WP03_002_EXACT_HEAD_REVIEW_CORRECTION_PROTOCOL.md)
+- [WP03-002 reproduction and diagnosis](wp03/WP03_002_REPRODUCTION_AND_DIAGNOSIS.md)
+- [WP03-002 results](wp03/WP03_002_RESULTS.md)
+
+Machine-readable WP03-002 exact-head evidence is in
+`validation/wp03/WP03_002_GATE_EVIDENCE.json`,
+`validation/wp03/WP03_002_PROTOCOL_COMPLIANCE.json`, and
+`validation/wp03/WP03_002_VERIFICATION.json`.
 
 VAL-CORPUS-001 machine-readable records, reduced results, and figures are
 under `validation/cases/val_corpus_001/`. The preserved original records sit

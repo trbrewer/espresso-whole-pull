@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 230,
-  "total_uncompressed_bytes_excluding_manifest": 2129748,
-  "aggregate_source_sha256": "ad01a566cccc24fa8683eef5025f825065c0c4a455b00eccce15018014a9b751",
-  "aggregate_sha256": "ad01a566cccc24fa8683eef5025f825065c0c4a455b00eccce15018014a9b751",
+  "file_count": 240,
+  "total_uncompressed_bytes_excluding_manifest": 2228345,
+  "aggregate_source_sha256": "481a80a5eccd1d964ea906ce1413c9e2ad3625e20a0967be782278e76229af2b",
+  "aggregate_sha256": "481a80a5eccd1d964ea906ce1413c9e2ad3625e20a0967be782278e76229af2b",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "36e2d1a778dc125588f219ee7deaf7d1d04ef13027437817ea65cf899c2bfc39",
-      "bytes": 7711,
+      "sha256": "441232cb701e2211092e69924e33303acbb821b6a98035b8b7ea1774c44907dd",
+      "bytes": 7801,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "0d409bcec91c061ca388e79f53f48d51015431faa9f3102b8195be68948aa196",
-      "bytes": 6765,
+      "sha256": "fc44d1565565a8df42a539e5677c29f1aa0dc49cee22eda253e640289b36585e",
+      "bytes": 7348,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -443,9 +443,14 @@
       "bytes": 3417,
       "git_mode": "100644"
     },
+    "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
+      "sha256": "3ac0d3cd549f30507971984b36df95807d4b58e1c9ba3bbb40f1bb40efdd3f67",
+      "bytes": 47042,
+      "git_mode": "100644"
+    },
     "docs/QA_STATUS.md": {
-      "sha256": "1290fd4b5ecc3bbb340e730c4e8ef44a8ca786fb49361098676aa23b2968b428",
-      "bytes": 11287,
+      "sha256": "26f17bed485c7fc535d9e42bc5165ce9cf4a804202cb83465daa4ad77d810c9f",
+      "bytes": 12469,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -598,6 +603,26 @@
       "bytes": 1143,
       "git_mode": "100644"
     },
+    "docs/wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md": {
+      "sha256": "d3c89cb655172f704e7e5d2910722c88e93927412734210739952d32aea4cb03",
+      "bytes": 1494,
+      "git_mode": "100644"
+    },
+    "docs/wp03/WP03_002_EXACT_HEAD_REVIEW_CORRECTION_PROTOCOL.md": {
+      "sha256": "8baedb015977b63e2cb4318db57024bd431f9d7adbccc52fbb55c4c7c703c671",
+      "bytes": 5354,
+      "git_mode": "100644"
+    },
+    "docs/wp03/WP03_002_REPRODUCTION_AND_DIAGNOSIS.md": {
+      "sha256": "e3e39463f3fb6bb7383c7c21f84cc02794a66f7109f61e0f342cd7f5bd440bb4",
+      "bytes": 3042,
+      "git_mode": "100644"
+    },
+    "docs/wp03/WP03_002_RESULTS.md": {
+      "sha256": "ebed23ba4b0b70fbbb2ac37dee92753fcda31aebfa927eacfb6408e929b1e464",
+      "bytes": 6016,
+      "git_mode": "100644"
+    },
     "scripts/analyze_r1.py": {
       "sha256": "e76d28b8a1c2804373005cc6d6e7e79f5ee79a6ca8d2a3b70a64438581cbcfa0",
       "bytes": 22712,
@@ -626,6 +651,11 @@
     "scripts/analyze_wp03_001_poroelastic_compaction.py": {
       "sha256": "36483eed2fd435a1487b481c5cc2796ab7d8cc4bc87c82f601fe0c4e3f53fa24",
       "bytes": 28987,
+      "git_mode": "100755"
+    },
+    "scripts/analyze_wp03_002.py": {
+      "sha256": "2b10a93dff27bd5c5b024efd3360c66fa24923b395541d7f47a7e0db0c0f790b",
+      "bytes": 6563,
       "git_mode": "100755"
     },
     "scripts/artifact_utils.py": {
@@ -756,6 +786,16 @@
     "scripts/reconcile_val001_normative_administration.py": {
       "sha256": "ee37486a83923758f2ac0f8aef4eeb1ae2797b919a4bd1f129955f635b9629f9",
       "bytes": 21304,
+      "git_mode": "100755"
+    },
+    "scripts/reduce_wp03_002_gate_evidence.py": {
+      "sha256": "524d67be85a98d78b8c30ae33ba6a34b0f13c275a6b2593a241fe51297a843ad",
+      "bytes": 8318,
+      "git_mode": "100755"
+    },
+    "scripts/reduce_wp03_002_verification.py": {
+      "sha256": "43091ad17fd9d1ade5b9a7487d4f5a069b616ae6f26bf5e2505dae74329867ee",
+      "bytes": 6019,
       "git_mode": "100755"
     },
     "scripts/run_qualification.py": {
@@ -973,6 +1013,11 @@
       "bytes": 1891,
       "git_mode": "100755"
     },
+    "scripts/wp03_002_reference.py": {
+      "sha256": "8e972f0860df10654fdd6ebb393f2549bb63ebead43b510f4dbc38b5f196e799",
+      "bytes": 6465,
+      "git_mode": "100755"
+    },
     "scripts/wp03b_path_boundary.py": {
       "sha256": "02a4218a0fb06843a6ca99dcb435ba8680b05570ebd85c05635b848a3c7c5909",
       "bytes": 1691,
@@ -999,8 +1044,8 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "f209887f222e446354dba34a6658e23fab309d473f53377e9c6d42caaee26a4f",
-      "bytes": 126321,
+      "sha256": "a292021a19740e4dd8869a2fa63aaeaa95ea3843016734768b492ca2d2f38dd7",
+      "bytes": 127360,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/forchheimerResistance.H": {
@@ -1146,6 +1191,11 @@
     "tests/test_wp03_001_poroelastic_compaction.py": {
       "sha256": "58f2991ca69c551b0161aa9984e86e539b4f709a3b16d4bdac3b5ff7ccf68503",
       "bytes": 9399,
+      "git_mode": "100644"
+    },
+    "tests/test_wp03_002_reference.py": {
+      "sha256": "8d846dc1dd17e93b6bddcc3ccad13ed2ddbfc0f7fb9756786c41971ed1d507d1",
+      "bytes": 5390,
       "git_mode": "100644"
     },
     "tests/test_wp03_holdout_contract.py": {

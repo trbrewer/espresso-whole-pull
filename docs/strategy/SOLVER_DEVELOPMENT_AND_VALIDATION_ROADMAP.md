@@ -34,6 +34,15 @@ PHYSICAL_VALIDATION:
 POST-WP03-001 VALIDATION AND MECHANISM DISCRIMINATION
 ```
 
+The first hydraulic/wetting corpus tranche, VAL-CORPUS-001, is complete,
+approved, and merged. It satisfied the wetting, saturated-hydraulic, and
+limited coupled pressure/flow exits, exposed reversed Waszkiewicz
+cross-pressure ordering, and retained three finite-porosity numerical
+failures. WP03-002 reproduced and corrected the numerical convergence-gate
+defect; all three unchanged cases completed, but cross-pressure ordering
+remained reversed. The aggregate extraction exit remains for VAL-CORPUS-002
+after exact-head review closes WP03-002.
+
 ### Workstream 1 — Validation-case framework
 
 Develop a common source-adapter schema, preserve source definitions, classify

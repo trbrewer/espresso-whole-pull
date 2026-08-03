@@ -2076,24 +2076,37 @@ int main(int argc, char *argv[])
                     poroelasticFlowClosureError =
                         Foam::mag(iterationFlow - poroelasticExactFlow)
                        /Foam::max(Foam::mag(poroelasticExactFlow), VSMALL);
+                    // The exact scalar-flow comparison is a continuous
+                    // verification diagnostic.  It is not a residual of the
+                    // discretized Picard equation and therefore must not gate
+                    // nonlinear convergence at the iteration tolerance.
                     poroelasticResidual = Foam::max
                     (
                         Foam::max(flowChange, pressureChange),
-                        Foam::max
-                        (
-                            poroelasticFlowClosureError,
-                            pressureFinalResidual
-                        )
+                        pressureFinalResidual
                     );
                     poroelasticIterations = iteration;
-                    if
-                    (
+                    const bool poroelasticIterationConverged =
                         flowChange <= poroelasticRelativeTolerance
                      && pressureChange <= poroelasticAbsoluteTolerance
-                     && poroelasticFlowClosureError
-                        <= poroelasticAbsoluteTolerance
-                     && pressureFinalResidual <= poroelasticAbsoluteTolerance
-                    )
+                     && pressureFinalResidual <= poroelasticAbsoluteTolerance;
+                    Info<< "WP03_002_POROELASTIC_ITERATION"
+                        << " time=" << timeValue
+                        << " iteration=" << iteration
+                        << " iterationFlow=" << iterationFlow
+                        << " flowChange=" << flowChange
+                        << " pressureChange=" << pressureChange
+                        << " pressureFinalResidual=" << pressureFinalResidual
+                        << " combinedResidual=" << poroelasticResidual
+                        << " poroelasticFlowClosureError="
+                        << poroelasticFlowClosureError
+                        << " nonlinearRelativeTolerance="
+                        << poroelasticRelativeTolerance
+                        << " nonlinearAbsoluteTolerance="
+                        << poroelasticAbsoluteTolerance
+                        << " converged=" << poroelasticIterationConverged
+                        << nl;
+                    if (poroelasticIterationConverged)
                     {
                         poroelasticConverged = true;
                         break;

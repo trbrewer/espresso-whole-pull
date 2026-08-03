@@ -73,7 +73,7 @@ invalidated without retry under that authority. A separately authorized
 one-token Python Boolean repair and one replacement invocation produced the
 governed V2 bundle. That result is a post-observation, non-blind,
 non-independent descriptive reproduction, not authorization for another
-mechanism. PR #38 remains open and awaits independent re-adjudication.
+mechanism. PR #38 was subsequently independently approved and merged.
 Experimental commissioning, protected scoring and holdout execution remain
 unauthorized; physical validation remains **NOT_ESTABLISHED**.
 
@@ -82,7 +82,9 @@ authority consumed, removes caller-selected governed identities, and deeply
 validates the retained V2 result and invocation history. It also corrects the
 source citation to Waszkiewicz, N. et al., *Physics of Fluids* 38, 063113
 (2026), DOI 10.1063/5.0319611. No comparison or OpenFOAM execution occurred in
-this hardening cycle. PR #38 remains open for independent read-adjudication.
+this hardening cycle. PR #38 was subsequently independently approved and
+merged; the adverse invocation history and descriptive claim boundary remain
+unchanged.
 
 The earlier completion layer initially inventoried 64 governed machine-readable records;
 uses explicit per-record schema treatment, derives the invocation summary
@@ -109,7 +111,7 @@ the checked-out HEAD as its expected root. This correction performed no new
 OpenFOAM execution or governed comparison and does not change the retained V2
 result or its descriptive, post-observation claim boundary.
 
-PR #38 now uses zero-exclusion enumeration and an acyclic 105-record binding
+The merged PR #38 uses zero-exclusion enumeration and an acyclic 105-record binding
 graph terminating in the canonical lock at the externally supplied reviewed
 Git head/tree. Sixty-eight normative contracts generate 68 referenced schema
 families without governed record instances; all 48 prior inferred families

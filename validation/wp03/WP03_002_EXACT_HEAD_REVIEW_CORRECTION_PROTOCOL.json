@@ -1,0 +1,57 @@
+{
+  "schema_version": "espresso.wp03_002.exact_head_review_correction_protocol.v1",
+  "task": "WP03-002",
+  "status": "PROSPECTIVELY_FROZEN_BEFORE_ADDITIONAL_DIAGNOSTIC_ACCESS_OR_EXECUTION",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "issue": 51,
+  "pull_request": 52,
+  "reviewed_identity": {
+    "commit": "cb7decead725d215c590994ff4504762cec59b4a",
+    "tree": "e951506f1076554507a9403e9a28240c5259ed08",
+    "parent_main": "bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1",
+    "parent_tree": "c1d3fdc88dabaea410c4b6236e31ce1376e5eaea"
+  },
+  "authority": {
+    "identifier": "EWP-WP03-002-EXACT-HEAD-REVIEW-CORRECTION-2026-08-02",
+    "path": "<WORKSPACE_ROOT>/AGENTS.md",
+    "sha256": "6b168490d840d8f598db8322ba5ff399b63878dd9ae25b95415da99c1963e380"
+  },
+  "review_findings": [
+    "REQUIRED_END_STATE_ADMINISTRATIVE_RECONCILIATION_INCOMPLETE",
+    "FROZEN_DIAGNOSTIC_PROTOCOL_NOT_FULLY_EVIDENCED"
+  ],
+  "original_protocol_policy": "PRESERVE_BYTE_FOR_BYTE",
+  "unchanged_execution_matrix": [
+    {"id": "WASZ-5-COMPACT", "pressure_bar": 5, "config_sha256": "66e677d7d4d3a992027e4622600b1f046fd6ad9a8b8022881f3083280787f328", "reproduction_ranks": 16},
+    {"id": "WASZ-9-COMPACT", "pressure_bar": 9, "config_sha256": "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5", "reproduction_ranks": 16},
+    {"id": "WASZ-11-COMPACT", "pressure_bar": 11, "config_sha256": "8502dee4af576ac90cbac1f0c1d89e282ef1578e3c65a6034dcae9cc303b205f", "reproduction_ranks": 16}
+  ],
+  "frozen_inputs": ["constitutive equations", "source-linked physical parameters", "configuration files", "timesteps", "nonlinear tolerances", "initialization", "evidence mappings", "Puckworks locks and snapshots"],
+  "required_iteration_components": ["iteration", "iterationFlow", "flowChange", "pressureChange", "pressureFinalResidual", "poroelasticFlowClosureError", "nonlinearRelativeTolerance", "nonlinearAbsoluteTolerance", "solverConverged"],
+  "independent_gate_reduction": {
+    "flow_ratio": "flowChange / nonlinearRelativeTolerance",
+    "pressure_ratio": "pressureChange / nonlinearAbsoluteTolerance",
+    "linear_ratio": "pressureFinalResidual / nonlinearAbsoluteTolerance",
+    "closure_ratio": "poroelasticFlowClosureError / nonlinearAbsoluteTolerance",
+    "retained_gate_ratio": "max(flow_ratio, pressure_ratio, linear_ratio)",
+    "predecessor_gate_ratio": "max(flow_ratio, pressure_ratio, linear_ratio, closure_ratio)",
+    "independent_convergence": "retained_gate_ratio <= 1"
+  },
+  "fail_closed_conditions": ["missing component", "missing tolerance", "nonfinite value", "solver convergence with retained_gate_ratio greater than one", "unreconstructable combined residual", "independent and solver gate disagreement"],
+  "behavioral_test_matrix": ["all retained components pass", "flowChange alone fails", "pressureChange alone fails", "pressureFinalResidual alone fails", "closure alone exceeds tolerance while retained components pass", "missing component", "nonfinite component", "inconsistent solver convergence flag", "mixed relative and absolute tolerances"],
+  "required_demonstrations": ["closure is not the discrete Picard residual", "closure has a representation or discretization floor distinct from successive-iteration convergence", "retained gate converges under frozen controls", "no corrected step accepted with retained_gate_ratio greater than one", "predecessor failure attributable to equation-extrinsic closure veto"],
+  "protocol_compliance_items": ["independent scalar residual agreement", "analytical and finite-difference derivative agreement", "endpoint behavior", "near-limit behavior", "zero stress", "high admissible stress", "invalid domain", "bracket applicability", "no-root applicability", "predecessor WP03-001 regression", "machine-coupling regression", "serial/MPI repeatability", "timestep refinement", "conservation", "full repository checks"],
+  "compliance_dispositions": ["PASS", "FAIL", "NOT_APPLICABLE_WITH_EVIDENCE"],
+  "acceptance": ["all required raw components retained", "independent gate agrees with solver gate", "maximum accepted retained_gate_ratio no greater than one", "all three corrected cases complete", "comparison metrics unchanged within declared tolerance", "administrative records reconciled", "full qualification passes"],
+  "prohibited": ["physical retuning", "numerical tolerance retuning", "timestep change", "initialization change", "source-linked input change", "governing-physics change", "new validation case", "data-planning task", "experiment", "protected scoring", "merge"],
+  "required_final_state": {
+    "candidate_status": "RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+    "physical_validation": "NOT_ESTABLISHED",
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "val_case_002": "NOT_STARTED",
+    "new_governing_physics": "NOT_YET_JUSTIFIED",
+    "next_post_merge_scientific_task": "VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY",
+    "pull_request_state": "OPEN_UNMERGED",
+    "issue_state": "OPEN"
+  }
+}
