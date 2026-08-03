@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="394" viewBox="0 0 1200 394">
+<rect width="1200" height="100%" fill="white"/>
+<text x="24" y="34" font-family="monospace" font-size="20">schmieder h1 axis contrasts</text>
+<text x="24" y="64" font-family="monospace" font-size="13">P1_H1/FLOW_HIGH_MINUS_LOW/1/1 source=-0.326026666667 model=-0.799585156565</text>
+<text x="24" y="82" font-family="monospace" font-size="13">P1_H1/FLOW_HIGH_MINUS_LOW/1/2 source=-0.283823333333 model=-1.05113216651</text>
+<text x="24" y="100" font-family="monospace" font-size="13">P1_H1/FLOW_HIGH_MINUS_LOW/1/3 source=-0.228483333333 model=-0.638806119827</text>
+<text x="24" y="118" font-family="monospace" font-size="13">P1_H1/GRIND_COARSE_MINUS_FINE/1/1 source=0.171993333333 model=-0.0286284787496</text>
+<text x="24" y="136" font-family="monospace" font-size="13">P1_H1/GRIND_COARSE_MINUS_FINE/1/2 source=0.27096 model=-0.0409197400447</text>
+<text x="24" y="154" font-family="monospace" font-size="13">P1_H1/GRIND_COARSE_MINUS_FINE/1/3 source=0.313383333333 model=-0.0283895834081</text>
+<text x="24" y="172" font-family="monospace" font-size="13">P1_H1/TEMPERATURE_HIGH_MINUS_LOW/1/1 source=0.0661966666667 model=0.0141314087774</text>
+<text x="24" y="190" font-family="monospace" font-size="13">P1_H1/TEMPERATURE_HIGH_MINUS_LOW/1/2 source=0.0453333333333 model=0.0201385879528</text>
+<text x="24" y="208" font-family="monospace" font-size="13">P1_H1/TEMPERATURE_HIGH_MINUS_LOW/1/3 source=0.02465 model=0.0136955553905</text>
+<text x="24" y="226" font-family="monospace" font-size="13">P2_H1/FLOW_HIGH_MINUS_LOW/1/1 source=-0.326026666667 model=-0.433399733685</text>
+<text x="24" y="244" font-family="monospace" font-size="13">P2_H1/FLOW_HIGH_MINUS_LOW/1/2 source=-0.283823333333 model=-0.292789647157</text>
+<text x="24" y="262" font-family="monospace" font-size="13">P2_H1/FLOW_HIGH_MINUS_LOW/1/3 source=-0.228483333333 model=-0.0270260983066</text>
+<text x="24" y="280" font-family="monospace" font-size="13">P2_H1/GRIND_COARSE_MINUS_FINE/1/1 source=0.171993333333 model=-0.0165530061491</text>
+<text x="24" y="298" font-family="monospace" font-size="13">P2_H1/GRIND_COARSE_MINUS_FINE/1/2 source=0.27096 model=-0.0130637894089</text>
+<text x="24" y="316" font-family="monospace" font-size="13">P2_H1/GRIND_COARSE_MINUS_FINE/1/3 source=0.313383333333 model=-0.000836919625653</text>
+<text x="24" y="334" font-family="monospace" font-size="13">P2_H1/TEMPERATURE_HIGH_MINUS_LOW/1/1 source=0.0661966666667 model=0.00799503062723</text>
+<text x="24" y="352" font-family="monospace" font-size="13">P2_H1/TEMPERATURE_HIGH_MINUS_LOW/1/2 source=0.0453333333333 model=0.00620002763003</text>
+<text x="24" y="370" font-family="monospace" font-size="13">P2_H1/TEMPERATURE_HIGH_MINUS_LOW/1/3 source=0.02465 model=0.000364280895756</text>
+</svg>

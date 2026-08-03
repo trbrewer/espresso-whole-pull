@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="448" viewBox="0 0 1200 448">
+<rect width="1200" height="100%" fill="white"/>
+<text x="24" y="34" font-family="monospace" font-size="20">schmieder h1 source model</text>
+<text x="24" y="64" font-family="monospace" font-size="13">SCHM_EXP1_P0_H1 | 20g source=3.20081 model=2.87898394808, 40g source=4.09617666667 model=5.08154326898, 60g source=4.34663666667 model=5.56899723764</text>
+<text x="24" y="82" font-family="monospace" font-size="13">SCHM_EXP1_P1_H1 | 20g source=3.20081 model=2.51793433569, 40g source=4.09617666667 model=4.00052091415, 60g source=4.34663666667 model=4.30207108647</text>
+<text x="24" y="100" font-family="monospace" font-size="13">SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H1 | 20g source=3.20081 model=3.00193812705, 40g source=4.09617666667 model=4.3293580278, 60g source=4.34663666667 model=4.33691908767</text>
+<text x="24" y="118" font-family="monospace" font-size="13">SCHM_EXP2_P0_H1 | 20g source=2.87478333333 model=2.23522527025, 40g source=3.81235333333 model=3.95500690615, 60g source=4.11815333333 model=4.92450329839</text>
+<text x="24" y="136" font-family="monospace" font-size="13">SCHM_EXP2_P1_H1 | 20g source=2.87478333333 model=1.71834917913, 40g source=3.81235333333 model=2.94938874765, 60g source=4.11815333333 model=3.66326496665</text>
+<text x="24" y="154" font-family="monospace" font-size="13">SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H1 | 20g source=2.87478333333 model=2.56853839337, 40g source=3.81235333333 model=4.03656838064, 60g source=4.11815333333 model=4.30989298936</text>
+<text x="24" y="172" font-family="monospace" font-size="13">SCHM_EXP3_P0_H1 | 20g source=2.81237666667 model=2.51811664956, 40g source=3.65343333333 model=4.4423558666, 60g source=3.90711333333 model=5.30019233893</text>
+<text x="24" y="190" font-family="monospace" font-size="13">SCHM_EXP3_P1_H1 | 20g source=2.81237666667 model=2.02587127584, 40g source=3.65343333333 model=3.39896781252, 60g source=3.90711333333 model=4.0218577195</text>
+<text x="24" y="208" font-family="monospace" font-size="13">SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H1 | 20g source=2.81237666667 model=2.77564428466, 40g source=3.65343333333 model=4.22346601636, 60g source=3.90711333333 model=4.33442807206</text>
+<text x="24" y="226" font-family="monospace" font-size="13">SCHM_EXP4_P0_H1 | 20g source=2.98437 model=2.4937845865, 40g source=3.92439333333 model=4.39883903046, 60g source=4.22049666667 model=5.27143444293</text>
+<text x="24" y="244" font-family="monospace" font-size="13">SCHM_EXP4_P1_H1 | 20g source=2.98437 model=1.99724279709, 40g source=3.92439333333 model=3.35804807247, 60g source=4.22049666667 model=3.99346813609</text>
+<text x="24" y="262" font-family="monospace" font-size="13">SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H1 | 20g source=2.98437 model=2.75909127851, 40g source=3.92439333333 model=4.21040222695, 60g source=4.22049666667 model=4.33359115243</text>
+<text x="24" y="280" font-family="monospace" font-size="13">SCHM_EXP5_P0_H1 | 20g source=2.98687333333 model=2.51563987937, 40g source=3.96474 model=4.43563987015, 60g source=4.28596666667 model=5.29548376603</text>
+<text x="24" y="298" font-family="monospace" font-size="13">SCHM_EXP5_P1_H1 | 20g source=2.98687333333 model=2.02235481856, 40g source=3.96474 model=3.39250080939, 60g source=4.28596666667 model=4.01718208626</text>
+<text x="24" y="316" font-family="monospace" font-size="13">SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H1 | 20g source=2.98687333333 model=2.77441700483, 40g source=3.96474 model=4.22145285865, 60g source=4.28596666667 model=4.33429869321</text>
+<text x="24" y="334" font-family="monospace" font-size="13">SCHM_EXP6_P0_H1 | 20g source=3.05307 model=2.52751423957, 40g source=4.01007333333 model=4.45701424062, 60g source=4.31061666667 model=5.30929935018</text>
+<text x="24" y="352" font-family="monospace" font-size="13">SCHM_EXP6_P1_H1 | 20g source=3.05307 model=2.03648622734, 40g source=4.01007333333 model=3.41263939734, 60g source=4.31061666667 model=4.03087764165</text>
+<text x="24" y="370" font-family="monospace" font-size="13">SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H1 | 20g source=3.05307 model=2.78241203546, 40g source=4.01007333333 model=4.22765288628, 60g source=4.31061666667 model=4.33466297411</text>
+<text x="24" y="388" font-family="monospace" font-size="13">SCHM_EXP7_P0_H1 | 20g source=2.92401 model=2.52696526122, 40g source=3.8762 model=4.45551392567, 60g source=4.18709833333 model=5.30826344548</text>
+<text x="24" y="406" font-family="monospace" font-size="13">SCHM_EXP7_P1_H1 | 20g source=2.92401 model=2.03569755399, 40g source=3.8762 model=3.41119240044, 60g source=4.18709833333 model=4.02984609334</text>
+<text x="24" y="424" font-family="monospace" font-size="13">SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1 | 20g source=2.92401 model=2.78214467313, 40g source=3.8762 model=4.22721408022, 60g source=4.18709833333 model=4.33463637603</text>
+</svg>

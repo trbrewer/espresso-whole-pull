@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="124" viewBox="0 0 1200 124">
+<rect width="1200" height="100%" fill="white"/>
+<text x="24" y="34" font-family="monospace" font-size="20">sensitivity matrix and singular values</text>
+<text x="24" y="64" font-family="monospace" font-size="13">matrix [[-0.00020477941226442888,0.5802106752216308,0.40773786875590723,0.3579100996665372],[-0.00022668882225069568,0.790884557214618,0.32504416716032386,0.19874784932535522],[-0.00023192355395433323,0.9219301888039442,0.1916947520283758,0.08416785409625514]]</text>
+<text x="24" y="82" font-family="monospace" font-size="13">singular_values [1.4794976052244018,0.3254758935853393,0.024204180352591087]</text>
+<text x="24" y="100" font-family="monospace" font-size="13">rank 3 | NOT_STRUCTURAL_IDENTIFIABILITY</text>
+</svg>

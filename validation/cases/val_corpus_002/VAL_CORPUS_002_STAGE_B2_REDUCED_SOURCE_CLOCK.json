@@ -1,0 +1,750 @@
+{
+  "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+  "omissions": [
+    "NO_WETTING",
+    "NO_PRESSURE_SOLUTION",
+    "NO_SPATIAL_TRANSPORT",
+    "NO_DISPERSION",
+    "NO_SATURATION_CEILING",
+    "NO_FINITE_VOLUME_EFFECTS"
+  ],
+  "rows": [
+    {
+      "dose_g": 20.0,
+      "experiment": 1,
+      "extractable_mass_g": 5.6000000000000005,
+      "parameterization": "P0",
+      "rate_s_inverse": 0.15,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 0.9879933333333333,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.26655870254471625,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.331174050894325,
+          "tds_fraction": 0.26655870254471625,
+          "time_s": 20.243051572547724
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.27935475543828064,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.587095108765613,
+          "tds_fraction": 0.13967737771914032,
+          "time_s": 40.48610314509545
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.27996902527112333,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.599380505422467,
+          "tds_fraction": 0.09332300842370778,
+          "time_s": 60.72915471764317
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 1,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P1",
+      "rate_s_inverse": 0.11446486815650324,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 0.9879933333333333,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.1955195585815503,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.9103911716310056,
+          "tds_fraction": 0.1955195585815503,
+          "time_s": 20.243051572547724
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.21478941803734902,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.295788360746981,
+          "tds_fraction": 0.10739470901867451,
+          "time_s": 40.48610314509545
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.21668860135251267,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.333772027050253,
+          "tds_fraction": 0.0722295337841709,
+          "time_s": 60.72915471764317
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 1,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P2",
+      "rate_s_inverse": 0.3439597024835067,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 0.9879933333333333,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.21669096310926328,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.333819262185266,
+          "tds_fraction": 0.21669096310926328,
+          "time_s": 20.243051572547724
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.2168960499469858,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.337920998939716,
+          "tds_fraction": 0.1084480249734929,
+          "time_s": 40.48610314509545
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.2168962440511164,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.337924881022328,
+          "tds_fraction": 0.0722987480170388,
+          "time_s": 60.72915471764317
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 2,
+      "extractable_mass_g": 5.6000000000000005,
+      "parameterization": "P0",
+      "rate_s_inverse": 0.15,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 2.842166666666667,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.18255804646704663,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.6511609293409326,
+          "tds_fraction": 0.18255804646704663,
+          "time_s": 7.036885005570866
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.24608952032743486,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.9217904065486975,
+          "tds_fraction": 0.12304476016371743,
+          "time_s": 14.073770011141733
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.2681989164838062,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.363978329676125,
+          "tds_fraction": 0.08939963882793542,
+          "time_s": 21.1106550167126
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 2,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P1",
+      "rate_s_inverse": 0.11446486815650324,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 2.842166666666667,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.11997071075073291,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 2.3994142150146582,
+          "tds_fraction": 0.11997071075073291,
+          "time_s": 7.036885005570866
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.17358263558149525,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.471652711629905,
+          "tds_fraction": 0.08679131779074763,
+          "time_s": 14.073770011141733
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.19754047050698142,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.9508094101396285,
+          "tds_fraction": 0.06584682350232714,
+          "time_s": 21.1106550167126
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 2,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P2",
+      "rate_s_inverse": 0.3439597024835067,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 2.842166666666667,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.1976172864851444,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.952345729702888,
+          "tds_fraction": 0.1976172864851444,
+          "time_s": 7.036885005570866
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.21518262206864286,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.303652441372857,
+          "tds_fraction": 0.10759131103432143,
+          "time_s": 14.073770011141733
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.21674392786151492,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.334878557230298,
+          "tds_fraction": 0.0722479759538383,
+          "time_s": 21.1106550167126
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 3,
+      "extractable_mass_g": 5.6000000000000005,
+      "parameterization": "P0",
+      "rate_s_inverse": 0.15,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.92117,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.22125293632679632,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.4250587265359265,
+          "tds_fraction": 0.22125293632679632,
+          "time_s": 10.410322876164004
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.26767422324920204,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.3534844649840405,
+          "tds_fraction": 0.13383711162460102,
+          "time_s": 20.82064575232801
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.27741391717285424,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.548278343457085,
+          "tds_fraction": 0.09247130572428475,
+          "time_s": 31.23096862849201
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 3,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P1",
+      "rate_s_inverse": 0.11446486815650324,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.92117,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.15101835491506874,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.020367098301375,
+          "tds_fraction": 0.15101835491506874,
+          "time_s": 10.410322876164004
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.1968871550202187,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.937743100404374,
+          "tds_fraction": 0.09844357751010935,
+          "time_s": 20.82064575232801
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.21081888420816702,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.216377684163341,
+          "tds_fraction": 0.07027296140272235,
+          "time_s": 31.23096862849201
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 3,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P2",
+      "rate_s_inverse": 0.3439597024835067,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.92117,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.21085453146591923,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.217090629318385,
+          "tds_fraction": 0.21085453146591923,
+          "time_s": 10.410322876164004
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.2167279504348339,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.334559008696678,
+          "tds_fraction": 0.10836397521741695,
+          "time_s": 20.82064575232801
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.21689155635852247,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.33783112717045,
+          "tds_fraction": 0.07229718545284083,
+          "time_s": 31.23096862849201
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 4,
+      "extractable_mass_g": 5.6000000000000005,
+      "parameterization": "P0",
+      "rate_s_inverse": 0.15,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.9955633333333334,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.21773156069270164,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.354631213854033,
+          "tds_fraction": 0.21773156069270164,
+          "time_s": 10.022232652768057
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.26615229095083326,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.323045819016665,
+          "tds_fraction": 0.13307614547541663,
+          "time_s": 20.044465305536114
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.276920445605453,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.53840891210906,
+          "tds_fraction": 0.09230681520181766,
+          "time_s": 30.06669795830417
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 4,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P1",
+      "rate_s_inverse": 0.11446486815650324,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.9955633333333334,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.14802590723666562,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 2.9605181447333124,
+          "tds_fraction": 0.14802590723666562,
+          "time_s": 10.022232652768057
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.19502807710747186,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.900561542149437,
+          "tds_fraction": 0.09751403855373593,
+          "time_s": 20.044465305536114
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.2099525184691588,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.199050369383176,
+          "tds_fraction": 0.06998417282305294,
+          "time_s": 30.06669795830417
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 4,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P2",
+      "rate_s_inverse": 0.3439597024835067,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.9955633333333334,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.20999173341135452,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.199834668227091,
+          "tds_fraction": 0.20999173341135452,
+          "time_s": 10.022232652768057
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.2166764512649466,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.333529025298932,
+          "tds_fraction": 0.1083382256324733,
+          "time_s": 20.044465305536114
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.2168892475119998,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.337784950239996,
+          "tds_fraction": 0.07229641583733327,
+          "time_s": 30.06669795830417
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 5,
+      "extractable_mass_g": 5.6000000000000005,
+      "parameterization": "P0",
+      "rate_s_inverse": 0.15,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.93435,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.2206245388400132,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.412490776800264,
+          "tds_fraction": 0.2206245388400132,
+          "time_s": 10.339390492930441
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.2674091236144247,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.348182472288494,
+          "tds_fraction": 0.13370456180721235,
+          "time_s": 20.678780985860882
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.2773300389578503,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.546600779157006,
+          "tds_fraction": 0.09244334631928344,
+          "time_s": 31.018171478791324
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 5,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P1",
+      "rate_s_inverse": 0.11446486815650324,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.93435,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.15048129750949302,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.0096259501898603,
+          "tds_fraction": 0.15048129750949302,
+          "time_s": 10.339390492930441
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.19655958435363843,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.9311916870727686,
+          "tds_fraction": 0.09827979217681922,
+          "time_s": 20.678780985860882
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.21066903551887312,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.2133807103774625,
+          "tds_fraction": 0.07022301183962437,
+          "time_s": 31.018171478791324
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 5,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P2",
+      "rate_s_inverse": 0.3439597024835067,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.93435,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.21070531357576625,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.214106271515325,
+          "tds_fraction": 0.21070531357576625,
+          "time_s": 10.339390492930441
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.21671953475548542,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.334390695109708,
+          "tds_fraction": 0.10835976737774271,
+          "time_s": 20.678780985860882
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.216891200366498,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.33782400732996,
+          "tds_fraction": 0.07229706678883267,
+          "time_s": 31.018171478791324
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 6,
+      "extractable_mass_g": 5.6000000000000005,
+      "parameterization": "P0",
+      "rate_s_inverse": 0.15,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.8981533333333331,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.22235484994845217,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.447096998969044,
+          "tds_fraction": 0.22235484994845217,
+          "time_s": 10.536556583064945
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.26813227384119476,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.362645476823896,
+          "tds_fraction": 0.13406613692059738,
+          "time_s": 21.07311316612989
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.2775567255171607,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.551134510343214,
+          "tds_fraction": 0.09251890850572024,
+          "time_s": 31.609669749194836
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 6,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P1",
+      "rate_s_inverse": 0.11446486815650324,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.8981533333333331,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.15196340183567034,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.039268036713407,
+          "tds_fraction": 0.15196340183567034,
+          "time_s": 10.536556583064945
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.1974571154620371,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.9491423092407416,
+          "tds_fraction": 0.09872855773101855,
+          "time_s": 21.07311316612989
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.21107669724631412,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.221533944926282,
+          "tds_fraction": 0.0703588990821047,
+          "time_s": 31.609669749194836
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 6,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P2",
+      "rate_s_inverse": 0.3439597024835067,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.8981533333333331,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.21111124496464323,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.222224899292865,
+          "tds_fraction": 0.21111124496464323,
+          "time_s": 10.536556583064945
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.21674194826424192,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.334838965284838,
+          "tds_fraction": 0.10837097413212096,
+          "time_s": 21.07311316612989
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.21689212889366988,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.337842577873397,
+          "tds_fraction": 0.07229737629788996,
+          "time_s": 31.609669749194836
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 7,
+      "extractable_mass_g": 5.6000000000000005,
+      "parameterization": "P0",
+      "rate_s_inverse": 0.15,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.9010766666666667,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.22221458172566413,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.444291634513283,
+          "tds_fraction": 0.22221458172566413,
+          "time_s": 10.520354255395626
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.2680744479816431,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.361488959632862,
+          "tds_fraction": 0.13403722399082155,
+          "time_s": 21.04070851079125
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.2775388463873818,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 5.550776927747636,
+          "tds_fraction": 0.09251294879579393,
+          "time_s": 31.56106276618688
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 7,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P1",
+      "rate_s_inverse": 0.11446486815650324,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.9010766666666667,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.15184286582311016,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.036857316462203,
+          "tds_fraction": 0.15184286582311016,
+          "time_s": 10.520354255395626
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.19738487806207833,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 3.947697561241567,
+          "tds_fraction": 0.09869243903103916,
+          "time_s": 21.04070851079125
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.21104422825631483,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.220884565126297,
+          "tds_fraction": 0.07034807608543828,
+          "time_s": 31.56106276618688
+        }
+      ]
+    },
+    {
+      "dose_g": 20.0,
+      "experiment": 7,
+      "extractable_mass_g": 4.3379248847000005,
+      "parameterization": "P2",
+      "rate_s_inverse": 0.3439597024835067,
+      "rho_g_ml": 1.0,
+      "source_mean_measured_flow_ml_s": 1.9010766666666667,
+      "targets": [
+        {
+          "beverage_mass_g": 20.0,
+          "extraction_yield_fraction": 0.21107891546402313,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.221578309280463,
+          "tds_fraction": 0.21107891546402313,
+          "time_s": 10.520354255395626
+        },
+        {
+          "beverage_mass_g": 40.0,
+          "extraction_yield_fraction": 0.21674021887758088,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.334804377551618,
+          "tds_fraction": 0.10837010943879044,
+          "time_s": 21.04070851079125
+        },
+        {
+          "beverage_mass_g": 60.0,
+          "extraction_yield_fraction": 0.21689205951154428,
+          "label": "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION",
+          "solute_mass_g": 4.337841190230885,
+          "tds_fraction": 0.07229735317051475,
+          "time_s": 31.56106276618688
+        }
+      ]
+    }
+  ],
+  "schema_version": "espresso.val_corpus_002.b2_reduced_source_clock.v1",
+  "status": "PASS"
+}

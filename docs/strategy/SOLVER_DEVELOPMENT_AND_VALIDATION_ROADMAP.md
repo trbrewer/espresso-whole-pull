@@ -50,9 +50,13 @@ final pre-B2 review. Its local reconstruction P2 rate is
 Stage B2 retains 27 passing and 18 immutable typed-failed production
 identities. The corrected Waszkiewicz P2 case passed, predecessor parity
 remains 1,500/1,500, and all nine sensitivity identities passed. Frozen
-governed reductions are complete pending exact-head review. This result is not
-physical validation; protected scoring was not performed and new governing
-physics remains unauthorized.
+governed reductions and deterministic reporting are complete pending final
+exact-head review. The scientific disposition is local reconstruction only,
+partial directional transfer with grind-sign reversal, hydraulic target-
+coverage mismatch, and cross-source time-shape failure. The fail-closed
+framework is operational, but this result is not physical validation;
+protected scoring was not performed and new governing physics remains
+unauthorized.
 
 ### Workstream 1 — Validation-case framework
 

@@ -130,6 +130,10 @@ VAL-CORPUS-002 Stage B0 adds
 report under `docs/validation/`, and direct-reference, deterministic
 configuration-inventory, and access-barrier records under
 `validation/cases/val_corpus_002/`. Complete solver products remain external.
+Stage B2 final reporting adds `scripts/val_corpus_002_b2_reporting.py`, the
+closed final-result schema and portable result/audit/summary records under the
+same case directory, five deterministic SVG figures under its `figures/`
+subdirectory, and the substantive result report under `docs/validation/`.
 
 VAL-001 post-result controls include `tools/validation/val001/invocation.py`,
 `source_identity.py`, the governed schema registry, the invocation event

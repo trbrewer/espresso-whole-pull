@@ -1,0 +1,48 @@
+{
+  "aggregate_sha256": "c308bad69c457843d5daad947417c78df90ec2009c72034b61698f546999a440",
+  "figure_count": 5,
+  "figures": [
+    {
+      "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
+      "figure_bytes": 5193,
+      "figure_path": "validation/cases/val_corpus_002/figures/production_availability_matrix.svg",
+      "figure_sha256": "a896679483c841826a371a05da57550d679b756fd92d99d4d217ee3bdcef3f5e",
+      "generation_script_sha256": "8482ff1d943c07d8dbba2a33889203d1b21412f5ccfb2ddf7c2d2617b23c2d44",
+      "source_result_sha256": "721a903c93f48100572de6a45f9f70c4ebd3398d2b38b5c7c4710f5ce9043e76"
+    },
+    {
+      "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
+      "figure_bytes": 4985,
+      "figure_path": "validation/cases/val_corpus_002/figures/schmieder_h1_source_model.svg",
+      "figure_sha256": "a8d631794fb278a4c46a5e23d6d9a962162c806c63d9c546289f1aa037a936bc",
+      "generation_script_sha256": "8482ff1d943c07d8dbba2a33889203d1b21412f5ccfb2ddf7c2d2617b23c2d44",
+      "source_result_sha256": "721a903c93f48100572de6a45f9f70c4ebd3398d2b38b5c7c4710f5ce9043e76"
+    },
+    {
+      "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
+      "figure_bytes": 2835,
+      "figure_path": "validation/cases/val_corpus_002/figures/schmieder_h1_axis_contrasts.svg",
+      "figure_sha256": "89fe05e5761edb560e3175d5ccd28fc7296849f31bc0082f265b5dda5e05d320",
+      "generation_script_sha256": "8482ff1d943c07d8dbba2a33889203d1b21412f5ccfb2ddf7c2d2617b23c2d44",
+      "source_result_sha256": "721a903c93f48100572de6a45f9f70c4ebd3398d2b38b5c7c4710f5ce9043e76"
+    },
+    {
+      "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
+      "figure_bytes": 2217,
+      "figure_path": "validation/cases/val_corpus_002/figures/waszkiewicz_both_clocks.svg",
+      "figure_sha256": "bbeb298353ed8f95cf60b6efafdee31ee33953189454a74f89cd1c793bff7b84",
+      "generation_script_sha256": "8482ff1d943c07d8dbba2a33889203d1b21412f5ccfb2ddf7c2d2617b23c2d44",
+      "source_result_sha256": "721a903c93f48100572de6a45f9f70c4ebd3398d2b38b5c7c4710f5ce9043e76"
+    },
+    {
+      "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
+      "figure_bytes": 827,
+      "figure_path": "validation/cases/val_corpus_002/figures/sensitivity_matrix_and_singular_values.svg",
+      "figure_sha256": "37a606a0c8e3616b1ac62bdbdc21cd1f9939f3d50a7417ebc306a3c174d4ab88",
+      "generation_script_sha256": "8482ff1d943c07d8dbba2a33889203d1b21412f5ccfb2ddf7c2d2617b23c2d44",
+      "source_result_sha256": "721a903c93f48100572de6a45f9f70c4ebd3398d2b38b5c7c4710f5ce9043e76"
+    }
+  ],
+  "schema_version": "espresso.val_corpus_002.b2_figure_manifest.v1",
+  "scientific_disposition": "LOCAL_RECONSTRUCTION_ONLY_WITH_PARTIAL_AXIS_DIRECTION_TRANSFER,HYDRAULIC_TARGET_COVERAGE_MISMATCH,AND_CROSS_SOURCE_TIME_SHAPE_TRANSFER_FAILURE"
+}

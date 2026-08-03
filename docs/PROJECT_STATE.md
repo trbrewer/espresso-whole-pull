@@ -7,8 +7,8 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 264/264 PASS
-- Active validation case: `VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_REVIEW`
+- Public source verification: 265/265 PASS
+- Active validation case: `VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
@@ -39,9 +39,12 @@ without solver or optimizer execution. Stage B2 now has all 45 terminal
 production dispositions: 27 pass and 18 immutable typed target-coverage
 failures. The corrected Waszkiewicz P2 case passed, predecessor parity remains
 1,500/1,500, and the nine-identity sensitivity inventory passed with one exact
-baseline reuse. Frozen governed reductions are complete pending exact-head
-review. Calibration remains closed with no refit. Protected scoring and
-VAL-CASE-002 remain unauthorized and have not started.
+baseline reuse. Frozen governed reductions and deterministic reporting are
+complete pending final exact-head review. The result is local reconstruction
+only with partial directional transfer, grind-sign reversal, and cross-source
+time-shape failure. The fail-closed framework is operational. Calibration
+remains closed with no refit. Protected scoring and VAL-CASE-002 remain
+unauthorized and have not started.
 
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
 admissible independent dataset or the synchronized pressure, flow/mass,

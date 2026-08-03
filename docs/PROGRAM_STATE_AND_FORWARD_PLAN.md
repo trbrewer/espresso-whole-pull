@@ -75,7 +75,7 @@ VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
 ACTIVE_VALIDATION_CASE:
-  VAL_CORPUS_002_STAGE_B2_RESULT_INCOMPLETE_INFRASTRUCTURE_FAILURE
+  VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW
 
 ACTIVE_DATA_PLANNING_TASK:
   NONE
@@ -99,7 +99,7 @@ VAL_CASE_002:
   NOT_STARTED
 
 CURRENT_SCIENTIFIC_TASK:
-  VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_REVIEW
+  VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW
 ```
 
 WP03-002 is complete, approved, and merged. VAL-CORPUS-002 Stage A and final
@@ -109,7 +109,11 @@ local reconstruction rate is `0.3439597024835067 s^-1`. OpenFOAM was executed
 for B1 calibration and for the authorized fixed-parameter B2 matrix. Stage B2
 retains 27 passing and 18 immutable typed-failed production identities. The
 corrected Waszkiewicz P2 case passed and all nine sensitivity identities
-passed. Frozen governed reductions are complete pending exact-head review.
+passed. Final reporting classifies the result as local reconstruction only,
+partial directional axis transfer with grind-sign reversal, hydraulic target-
+coverage mismatch, and cross-source time-shape failure. The fail-closed
+comparison framework is operational. Frozen governed reductions are complete
+pending final exact-head review.
 Calibration remains closed with no refit. Protected scoring remains prohibited.
 
 ---
@@ -151,7 +155,7 @@ protocol has been frozen here.
 | Latest executed WP03-002 candidate executable | `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6` |
 | Runtime Puckworks lock | `fc61c4670ec7bf801e40bb391aab16048b8da26b` |
 | Read-only evidence snapshot used by VAL-CORPUS-001 | `9c52c94edb27b461b6e7a4d471d29f3cef9d053e` |
-| Current Python suite | `409/409 PASS` at the approved B1 head; B2 activation qualification pending |
+| Current Python suite | `438/438 PASS` for the final Stage-B2 candidate |
 | Current static gates | `38/38 PASS` |
 | Current source manifest | current exact count and aggregate are recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
 | Physical validation | `NOT_ESTABLISHED` |

@@ -1,7 +1,7 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_REVIEW",
+  "current_governance_milestone": "VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW",
   "canonical_main": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
   "canonical_tree": "12fdbc542270e2765e2071d83c21812951f892e8",
   "release_scope": {
@@ -28,11 +28,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 428,
+    "python_test_count": 438,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 264,
-    "source_manifest_aggregate_sha256": "e5abe003ced0ae9a7636838d6a301e5e0e9b273eea0a3e88d101a96983a1c9aa",
+    "source_manifest_file_count": 265,
+    "source_manifest_aggregate_sha256": "dcc63c4636f7ecdb05e323f982eff4d880adb1624c7437e2344906229810dfd3",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -331,7 +331,7 @@
   "wp_0_3a_contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
   "wp_0_3a_solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
-  "active_validation_case": "VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_REVIEW",
+  "active_validation_case": "VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW",
   "active_data_planning_task": "NONE",
   "active_solver_task": "NONE",
   "val_corpus_002": {
@@ -352,7 +352,9 @@
     "sensitivity_identity_counts": {"pass": 9, "baseline_reuse": 1, "fresh_execution": 8},
     "governed_scoring": "FROZEN_PROSPECTIVE_METRICS_COMPLETE",
     "physical_validation": "NOT_ESTABLISHED",
-    "new_governing_physics": "NOT_YET_JUSTIFIED",
+    "scientific_result_disposition": "LOCAL_RECONSTRUCTION_ONLY_WITH_PARTIAL_AXIS_DIRECTION_TRANSFER,HYDRAULIC_TARGET_COVERAGE_MISMATCH,AND_CROSS_SOURCE_TIME_SHAPE_TRANSFER_FAILURE",
+    "validation_framework_disposition": "FRAMEWORK_OPERATIONAL_FOR_FAIL_CLOSED_FIXED_PARAMETER_AGGREGATE_CHEMISTRY_COMPARISON_WITH_TYPED_AVAILABILITY",
+    "new_governing_physics": "NOT_AUTHORIZED",
     "val_case_002": "NOT_STARTED"
   },
   "next_scientific_milestone_after_approved_wp03_002_merge": "VAL_CORPUS_002_STAGE_B2_RESULT_EXACT_HEAD_REVIEW",

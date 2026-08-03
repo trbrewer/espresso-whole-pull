@@ -71,8 +71,13 @@ content-verified the other 44 terminal dispositions. Of 45 production
 identities, 27 passed and 18 retain typed target-coverage failures.
 Predecessor parity passed 1,500/1,500 states. The nine sensitivity identities
 passed with one verified baseline reuse and eight fresh executions. Frozen
-governed reductions are complete pending exact-head review; current exact
-qualification counts are recorded in `PACKAGE_QA_STATUS.json`.
+governed reductions, the complete numerical summary, source-only species
+audit, reduced diagnostic, and deterministic figures are complete pending
+final exact-head review. The scientific result is local reconstruction only
+with partial axis-direction transfer, grind-sign reversal, hydraulic target-
+coverage mismatch, and cross-source time-shape failure. The comparison
+framework remains operational and fail closed; current exact qualification
+counts are recorded in `PACKAGE_QA_STATUS.json`.
 
 ## VAL-CORPUS-002 Stage B1 calibration disposition
 

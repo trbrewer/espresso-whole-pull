@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "espresso.val_corpus_002.b2_final_result.schema.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "authorization_id",
+    "base_result_sha256",
+    "base_result",
+    "interpretation",
+    "normalized_species_audit",
+    "reduced_source_clock",
+    "per_case_numerical_summary",
+    "immutable_numerical_artifacts",
+    "openfoam_rerun",
+    "sensitivity_rerun",
+    "calibration",
+    "protected_scoring",
+    "new_governing_physics",
+    "val_case_002"
+  ],
+  "properties": {
+    "schema_version": {"const": "espresso.val_corpus_002.b2_final_result.v1"},
+    "status": {"const": "PASS"},
+    "authorization_id": {"const": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03"},
+    "base_result_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "base_result": {"type": "object"},
+    "interpretation": {"type": "object"},
+    "normalized_species_audit": {"type": "object"},
+    "reduced_source_clock": {"type": "object"},
+    "per_case_numerical_summary": {"type": "object"},
+    "immutable_numerical_artifacts": {"const": true},
+    "openfoam_rerun": {"const": "NOT_PERFORMED"},
+    "sensitivity_rerun": {"const": "NOT_PERFORMED"},
+    "calibration": {"const": "CLOSED_NO_REFIT"},
+    "protected_scoring": {"const": "NOT_PERFORMED"},
+    "new_governing_physics": {"const": "NOT_AUTHORIZED"},
+    "val_case_002": {"const": "NOT_STARTED"}
+  }
+}

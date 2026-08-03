@@ -10,6 +10,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import val_corpus_002_b0_tooling as b0
 import val_corpus_002_b2 as b2
 import val_corpus_002_b2_recovery as recovery
+import val_corpus_002_b2_reporting as reporting
 
 
 class StageB2ProspectiveTests(unittest.TestCase):
@@ -148,6 +149,107 @@ class StageB2ProspectiveTests(unittest.TestCase):
         text = (ROOT / "docs/validation/VAL_CORPUS_002_STAGE_B2_RESULT.md").read_text()
         self.assertIn("protected scoring was not performed", text)
         self.assertIn("Calibration is closed with no refit", text)
+
+    def test_final_result_exact_inventory_and_dispositions(self):
+        result = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json").read_text())
+        cases = result["per_case_numerical_summary"]["cases"]
+        self.assertEqual(len(cases), 45)
+        self.assertEqual(sum(row["status"] == "PASS" for row in cases), 27)
+        failures = [row for row in cases if row["status"] == "TYPED_NUMERICAL_CASE_FAILURE"]
+        self.assertEqual(len(failures), 18)
+        self.assertTrue(all(row["typed_failure_reason"] == reporting.TARGET_FAILURE for row in failures))
+        self.assertEqual(result["interpretation"]["scientific_result_disposition"], reporting.FINAL_SCIENTIFIC)
+        self.assertEqual(result["interpretation"]["validation_framework_disposition"], reporting.FINAL_FRAMEWORK)
+        self.assertNotEqual(result["interpretation"]["validation_framework_disposition"],
+                            "SOURCE_SPECIFIC_AGGREGATE_CHEMISTRY_SUPPORT_WITH_LIMITATIONS")
+
+    def test_hydraulic_coverage_and_axis_interpretation(self):
+        result = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json").read_text())
+        interpreted = result["interpretation"]
+        self.assertEqual(interpreted["h0_target_coverage"]["failure_count"], 18)
+        self.assertEqual(interpreted["h1_target_coverage"]["pass"], 21)
+        self.assertEqual(interpreted["p2_h1_axis_signs"], {
+            "flow": {"matches": 3, "total": 3},
+            "grind": {"matches": 0, "total": 3},
+            "temperature": {"matches": 3, "total": 3}})
+
+    def test_exact_waszkiewicz_interpretation(self):
+        value = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json").read_text())["interpretation"]["waszkiewicz"]
+        self.assertEqual(value["fixed_plus_3_s"]["rmse"], 0.06682489539009928)
+        self.assertEqual(value["source_clock"]["rmse"], 0.08603049216615972)
+        self.assertEqual(value["fixed_plus_3_s"]["window_mean_residual"], {
+            "early": -0.08072143166849205, "middle": 0.06597320745689621,
+            "late": -0.0037413913634276215})
+
+    def test_normalized_species_audit_is_complete(self):
+        audit = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_NORMALIZED_SPECIES_AUDIT.json").read_text())
+        self.assertEqual(audit["replicate_triplets_per_component"], 24)
+        self.assertEqual(len(audit["records"]), 96)
+        means = {name: [audit["summary"][name][ratio]["mean"] for ratio in ("1/1", "1/2", "1/3")]
+                 for name in ("TDS", "trigonelline", "5-CQA", "caffeine")}
+        expected = {"TDS": [0.7080462873561918, 0.9300451013015908, 1.0],
+                    "trigonelline": [0.7356657104905614, 0.9419107120748139, 1.0],
+                    "5-CQA": [0.6599169162836315, 0.9071458316027874, 1.0],
+                    "caffeine": [0.6338657391825547, 0.8929750022861945, 1.0]}
+        for name in expected:
+            for actual, target in zip(means[name], expected[name]):
+                self.assertAlmostEqual(actual, target, places=15)
+
+    def test_reduced_source_clock_grid_is_closed(self):
+        value = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_REDUCED_SOURCE_CLOCK.json").read_text())
+        self.assertEqual(len(value["rows"]), 21)
+        self.assertTrue(all(len(row["targets"]) == 3 for row in value["rows"]))
+        self.assertTrue(all(target["label"] == "DIAGNOSTIC_NOT_OPENFOAM_NOT_VALIDATION"
+                            for row in value["rows"] for target in row["targets"]))
+
+    def test_mandatory_summary_and_unavailable_operator(self):
+        value = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_PER_CASE_NUMERICAL_SUMMARY.json").read_text())
+        self.assertEqual(value["reduction_status"], "PASS")
+        self.assertEqual(value["production_matrix_disposition"],
+                         "COMPLETE_WITH_18_TYPED_NUMERICAL_CASE_FAILURES")
+        self.assertEqual(len(value["cases"]), 45)
+        self.assertTrue(all(row["mean_outlet_flow_over_declared_intervals"] == reporting.UNAVAILABLE
+                            and row["source_conditioned_hydraulic_residual"] == reporting.UNAVAILABLE
+                            for row in value["cases"]))
+
+    def test_deterministic_figure_manifest_and_repeatability(self):
+        result_path = ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json"
+        result = json.loads(result_path.read_text())
+        script_sha = reporting.sha256(ROOT / "scripts/val_corpus_002_b2_reporting.py")
+        with tempfile.TemporaryDirectory() as one, tempfile.TemporaryDirectory() as two:
+            first = reporting.figures(result, Path(one), reporting.sha256(result_path), script_sha)
+            second = reporting.figures(result, Path(two), reporting.sha256(result_path), script_sha)
+            self.assertEqual([Path(one, Path(row["figure_path"]).name).read_bytes() for row in first["figures"]],
+                             [Path(two, Path(row["figure_path"]).name).read_bytes() for row in second["figures"]])
+            self.assertEqual(first["aggregate_sha256"], second["aggregate_sha256"])
+        manifest = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FIGURE_MANIFEST.json").read_text())
+        self.assertEqual(manifest["figure_count"], 5)
+        for row in manifest["figures"]:
+            self.assertEqual(reporting.sha256(ROOT / row["figure_path"]), row["figure_sha256"])
+
+    def test_claim_and_execution_boundaries_unchanged(self):
+        result = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json").read_text())
+        self.assertEqual(result["base_result_sha256"], reporting.BASE_RESULT_SHA256)
+        self.assertEqual(result["base_result"]["claim_ceiling"]["physical_validation"], "NOT_ESTABLISHED")
+        self.assertEqual(result["openfoam_rerun"], "NOT_PERFORMED")
+        self.assertEqual(result["sensitivity_rerun"], "NOT_PERFORMED")
+        self.assertEqual(result["calibration"], "CLOSED_NO_REFIT")
+        self.assertEqual(result["protected_scoring"], "NOT_PERFORMED")
+        self.assertEqual(result["new_governing_physics"], "NOT_AUTHORIZED")
+
+    def test_final_report_manifest_hash_consistency(self):
+        manifest = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_REPORT_MANIFEST.json").read_text())
+        for member in manifest["members"].values():
+            self.assertEqual(reporting.sha256(ROOT / member["path"]), member["sha256"])
+        self.assertEqual(manifest["immutable_inputs"]["base_b2_result_sha256"],
+                         reporting.BASE_RESULT_SHA256)
+
+    def test_final_result_closed_schema_top_level(self):
+        schema = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT_SCHEMA.json").read_text())
+        result = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json").read_text())
+        self.assertFalse(schema["additionalProperties"])
+        self.assertEqual(set(result), set(schema["required"]))
+        self.assertEqual(set(schema["properties"]), set(schema["required"]))
 
 
 if __name__ == "__main__":

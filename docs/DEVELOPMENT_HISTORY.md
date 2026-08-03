@@ -102,6 +102,17 @@
   baseline reuse. Frozen metrics were calculated without refit, protected
   scoring, solver changes, new physics, VAL-CASE-002, or merge.
 
+- VAL-CORPUS-002 Stage B2 final analysis correction: preserved every numerical
+  and external artifact, replaced the overstated disposition with a frozen-
+  rule interpretation, completed the 24-triplet-per-component normalized
+  source audit, added the 21-row reduced source-clock diagnostic and closed
+  45-case numerical summary, and generated five deterministic figures. The
+  result is local reconstruction only with partial directional transfer,
+  grind-sign reversal, hydraulic target-coverage mismatch, and cross-source
+  time-shape failure. Physical validation remains not established; no
+  OpenFOAM or sensitivity rerun, refit, protected scoring, or new physics
+  occurred.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.
