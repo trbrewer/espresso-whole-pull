@@ -1,8 +1,8 @@
-# Package QA status — immutable baseline and current VAL-CORPUS-002 Stage-A candidate
+# Package QA status — immutable baseline and VAL-CORPUS-002 Stage-B0 tooling candidate
 
 Historical sections below describe immutable merged or released evidence.
 Explicit current-check sections distinguish the merged WP03-002 state from the
-open, protocol-only VAL-CORPUS-002 Stage-A candidate; they do not redefine the
+open, prospective VAL-CORPUS-002 Stage-B0 tooling candidate; they do not redefine the
 immutable release baseline.
 
 ## Immutable v0.2.0 release snapshot
@@ -46,7 +46,8 @@ and source/holdout-fit counts remained zero.
 ## Current repository checks
 
 - merged WP03-002 baseline Python suite: 351/351 PASS;
-- current VAL-CORPUS-002 Stage-A Python suite: 369/369 PASS;
+- current VAL-CORPUS-002 Stage-B0 Python suite: final count recorded in
+  `PACKAGE_QA_STATUS.json` after repository-wide qualification;
 - current active static gates: 38/38 PASS;
 - current source manifest: 243/243 PASS (exact aggregate in
   `SOURCE_PACKAGE_MANIFEST.json` and `PACKAGE_QA_STATUS.json`);

@@ -17,9 +17,8 @@ model-versus-source scoring; transfer-result access; or protected scoring.
 The implementation is limited to `scripts/val_corpus_002_*.py`,
 `tests/test_val_corpus_002_*.py`, and records below
 `validation/cases/val_corpus_002/`. The canonical external tooling workspace is
-`<VAL_CORPUS_002_RUNTIME_ROOT>/`, resolving at execution time to
-`/home/tim/espresso-development/.val-corpus-002-runtime/`; absolute host paths
-must not be committed in generated portable records.
+`<VAL_CORPUS_002_RUNTIME_ROOT>/`; its owner-supplied host resolution remains
+external because absolute host paths must not be committed in portable records.
 
 The tool suite will provide deterministic configuration materialization,
 runtime/executable identity verification, external-artifact inventories,
@@ -56,8 +55,7 @@ template receives an exact canonical hash.
 The reference binding class is `DIRECT_CONTENT_ADDRESS`. The normalized path
 is
 `<WP03_002_REVIEW_ROOT>/corrected-runs-v2/cases/WASZ-9-COMPACT/postProcessing/wholePull/0/traces.csv`,
-where `<WP03_002_REVIEW_ROOT>` resolves read-only to
-`/home/tim/espresso-development/.wp03-002-exact-head-review`.
+where `<WP03_002_REVIEW_ROOT>` is the owner-supplied read-only review root.
 
 Frozen trace identity:
 

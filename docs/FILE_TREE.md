@@ -124,6 +124,13 @@ and ordinary tests use synthetic fixtures only.
 
 Generated case dictionaries, meshes, time directories, processor directories, logs, reports, traces, preflight records, qualification runs, and build products are excluded from the source-package manifest and removed by `./Allclean`.
 
+VAL-CORPUS-002 Stage B0 adds
+`scripts/val_corpus_002_b0_tooling.py`,
+`tests/test_val_corpus_002_b0_tooling.py`, its append-only tooling protocol and
+report under `docs/validation/`, and direct-reference, deterministic
+configuration-inventory, and access-barrier records under
+`validation/cases/val_corpus_002/`. Complete solver products remain external.
+
 VAL-001 post-result controls include `tools/validation/val001/invocation.py`,
 `source_identity.py`, the governed schema registry, the invocation event
 journal, the post-result execution lock, the hardening freeze, and standalone

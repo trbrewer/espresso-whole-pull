@@ -172,9 +172,12 @@ hash, solver/executable identity, geometry, boundaries, hydraulic coefficient,
 chemistry, timestep, 90 s end time, 16 ranks, write controls, observation
 operators, completion/conservation gates, and external artifact identities.
 
-Before Waszkiewicz scoring, the 63-second P0 run must match the accepted P0
-trace over 0–30 s for pressure, flow, cup masses, inventories, porosity, and
-permeability using relative `1e-10` and native-SI absolute `1e-12` tolerances.
+Before Waszkiewicz scoring, the 63-second P0 run must match every accepted P0
+trace state over `[0.02, 29.9999999999994] s`, inclusive, for pressure, flow,
+cup masses, inventories, porosity, and permeability. The final retained
+timestamp is accepted as 30 seconds under the frozen `1e-12 s` tolerance; no
+`t=0` parity row may be inserted. Initial state is checked separately by exact
+case, field, configuration, mesh, executable, timestep and control identities.
 Failure is `STOP_BEFORE_WASZKIEWICZ_SCORING`; this is numerical parity, not
 source scoring.
 
@@ -200,3 +203,8 @@ Experiment-7 H1 calibration and exact P2/optimizer-trace freeze; then B2 P2
 template materialization followed by fixed-parameter production, sensitivity,
 and Waszkiewicz execution. Transfer observations in calibration, post-transfer
 refitting, and mode-specific P2 rates are prohibited.
+
+The approved Stage A exact head is `94539ab12e05a9a84f116f0a852c864ccbedfd55`.
+Stage B0 is governed by the append-only
+[`VAL_CORPUS_002_STAGE_B0_EXECUTION_TOOLING_PROTOCOL.md`](VAL_CORPUS_002_STAGE_B0_EXECUTION_TOOLING_PROTOCOL.md).
+Its tooling is prospective and synthetic-only; it grants no B1 or B2 authority.

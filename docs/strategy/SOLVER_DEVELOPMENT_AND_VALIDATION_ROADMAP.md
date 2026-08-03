@@ -43,6 +43,10 @@ defect; all three unchanged cases completed, but cross-pressure ordering
 remained reversed. The aggregate extraction exit remains for VAL-CORPUS-002
 after exact-head review closes WP03-002.
 
+VAL-CORPUS-002 Stage A is exact-head approved and its Stage B0 prospective
+tooling is complete pending review. No OpenFOAM execution, calibration,
+governed scoring, or Stage B1 work has begun.
+
 ### Workstream 1 — Validation-case framework
 
 Develop a common source-adapter schema, preserve source definitions, classify

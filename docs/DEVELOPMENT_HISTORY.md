@@ -39,6 +39,12 @@
   scoring occurred. Independent review and separate Stage-B authority remain
   required.
 
+- VAL-CORPUS-002 Stage B0: added the prospective case-local tooling contract,
+  direct-content predecessor binding, deterministic configuration and typed
+  P2 inventory, parity and chemistry reducers, synthetic optimizer mechanics,
+  metrics/sensitivity tooling, and fail-closed result/protected-score
+  barriers. OpenFOAM, fitting, governed scoring, and Stage B1 were not run.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.
