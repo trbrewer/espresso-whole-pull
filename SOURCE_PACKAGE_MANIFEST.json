@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 247,
-  "total_uncompressed_bytes_excluding_manifest": 2353386,
-  "aggregate_source_sha256": "7bdf49271971456a7f769204eaa2f43c299e9ea7ced580af9b43d585d8069757",
-  "aggregate_sha256": "7bdf49271971456a7f769204eaa2f43c299e9ea7ced580af9b43d585d8069757",
+  "file_count": 248,
+  "total_uncompressed_bytes_excluding_manifest": 2358248,
+  "aggregate_source_sha256": "78c9bd00fccd513eb6e6cb6d1dbe7b903453009fd5897e32fdc4f8d0e6b15089",
+  "aggregate_sha256": "78c9bd00fccd513eb6e6cb6d1dbe7b903453009fd5897e32fdc4f8d0e6b15089",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -566,6 +566,11 @@
     "docs/validation/VAL_CORPUS_002_AGGREGATE_EXTRACTION_AND_CUP_CHEMISTRY_PROTOCOL.md": {
       "sha256": "ced522778c14f4c7d0f3604713d0e28097d8df0d1199cb18e84a7f2e60821a26",
       "bytes": 12786,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B0_EXACT_HEAD_REVIEW_CORRECTION.md": {
+      "sha256": "e57cf889e3e09c907a5364ed1699a54eb28d8e33229a043fd40d4025c11a5cb1",
+      "bytes": 4862,
       "git_mode": "100644"
     },
     "docs/validation/VAL_CORPUS_002_STAGE_B0_EXECUTION_TOOLING_PROTOCOL.md": {
