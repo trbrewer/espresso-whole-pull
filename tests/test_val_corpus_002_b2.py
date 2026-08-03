@@ -40,6 +40,16 @@ class StageB2ProspectiveTests(unittest.TestCase):
         self.assertNotIn("historical_shape_scorer(", text)
         self.assertNotIn("golden_section_log_k(", text)
 
+    def test_closed_matrix_driver_and_one_retry(self):
+        text = (ROOT / "scripts/val_corpus_002_b2.py").read_text()
+        self.assertIn("for attempt in (1, 2):", text)
+        self.assertIn("production_planned\": 45", text)
+        self.assertIn("sensitivity_planned\": 9", text)
+
+    def test_b1_anchor_hash_is_immutable(self):
+        self.assertEqual(b2.B1_MANIFEST_SHA256,
+                         "554ce1c35979fa8961973b8cdd663a7a0ba817f6369667ea10808a06f644cbbc")
+
     def test_refuses_reused_runtime_root(self):
         with tempfile.TemporaryDirectory() as temp:
             with self.assertRaises(b2.InfrastructureFailure):

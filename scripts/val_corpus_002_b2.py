@@ -228,6 +228,119 @@ def initialize(root: Path, run_root: Path, executable: Path, b1_root: Path) -> d
     return preflight
 
 
+def _configuration_maps(root: Path, b1_root: Path) -> tuple[dict[str, dict], list[str], list[dict]]:
+    _, materialized = verify_b1(root, b1_root)
+    inventory = b0.build_configuration_inventory(root)
+    configs = {row["id"]: row["configuration"] for row in inventory["numeric_configurations"]}
+    configs.update(materialized["configurations"])
+    matrix = json.loads((root / b0.RUN_MATRIX).read_text())
+    order = [row.get("id", row.get("run_id")) for row in matrix["final_production_run_inventory"]]
+    sensitivity = json.loads((root / b0.SENSITIVITY_MATRIX).read_text())["future_runs"]
+    if len(configs) != 45 or len(order) != 45 or len(set(order)) != 45 or len(sensitivity) != 9:
+        raise InfrastructureFailure("closed B2 matrix identity mismatch")
+    return configs, order, sensitivity
+
+
+def _load_record(run_root: Path, run_id: str) -> dict | None:
+    for attempt in (2, 1):
+        path = run_root / "executions" / run_id / f"attempt-{attempt}/execution-record.json"
+        if path.is_file():
+            return json.loads(path.read_text())
+    path = run_root / "reuses" / run_id / "execution-record.json"
+    return json.loads(path.read_text()) if path.is_file() else None
+
+
+def _run_with_one_infrastructure_retry(root: Path, run_root: Path, executable: Path,
+                                       run_id: str, config: dict, scenario: dict) -> dict:
+    for attempt in (1, 2):
+        try:
+            return execute_case(root, run_root, executable, run_id, config, scenario, attempt)
+        except InfrastructureFailure as exc:
+            failed = run_root / "executions" / run_id / f"attempt-{attempt}"
+            _dump(failed / "infrastructure-failure.json", {
+                "run_id": run_id, "attempt": attempt,
+                "status": "INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE",
+                "failure_reason": str(exc), "objective": None})
+            if attempt == 2:
+                raise
+    raise AssertionError("unreachable")
+
+
+def _reuse_b1_anchor(run_root: Path, b1_root: Path, configuration: dict) -> dict:
+    source_config = b1_root / "governed/calibration-configuration.json"
+    source_trace = b1_root / "governed/retained-model-output-trace.csv"
+    expected = b0.canonical_sha256(configuration)
+    if (_sha(source_config) != expected or expected !=
+            "d3234d976c554ad87704d9c6c00032a08b99d52c6fc61c32846e2470dff99573"):
+        raise InfrastructureFailure("B1 anchor configuration is not exact production identity")
+    target = run_root / "reuses" / b0.CALIBRATION_CASE_ID
+    target.mkdir(parents=True, exist_ok=False)
+    shutil.copy2(source_config, target / "production-configuration.json")
+    shutil.copy2(source_trace, target / "retained-model-output-trace.csv")
+    rows = b1._trace_rows(target / "retained-model-output-trace.csv")
+    model, gates = b1.reduce_evaluation(rows, configuration)
+    record = {"run_id": b0.CALIBRATION_CASE_ID, "status": "PASS",
+              "execution_class": "REUSED_EXACT_B1_CALIBRATION_ANCHOR",
+              "configuration_sha256": _sha(target / "production-configuration.json"),
+              "trace_sha256": _sha(target / "retained-model-output-trace.csv"),
+              "trace_bytes": (target / "retained-model-output-trace.csv").stat().st_size,
+              "model_cup_solute_masses_g": model, "numerical_gates": gates,
+              "solver_exit_code": 0, "executable_sha256": EXECUTABLE_SHA256,
+              "solver_commit": SOLVER_COMMIT}
+    _dump(target / "execution-record.json", record)
+    return record
+
+
+def execute_matrix(root: Path, run_root: Path, b1_root: Path) -> dict:
+    executable = run_root / "runtime/executable/espressoWholePullFoam"
+    if _sha(executable) != EXECUTABLE_SHA256:
+        raise InfrastructureFailure("runtime executable identity mismatch")
+    configs, order, sensitivity = _configuration_maps(root, b1_root)
+    records: list[dict] = []
+    for run_id in order:
+        record = _load_record(run_root, run_id)
+        if record is None:
+            if run_id == b0.CALIBRATION_CASE_ID:
+                record = _reuse_b1_anchor(run_root, b1_root, configs[run_id])
+            else:
+                record = _run_with_one_infrastructure_retry(
+                    root, run_root, executable, run_id, configs[run_id],
+                    solver_scenario(root, configs[run_id]))
+        records.append(record)
+        _dump(run_root / "runtime/B2_EXECUTION_PROGRESS.json", {
+            "production_completed": len(records), "production_planned": 45,
+            "last_run_id": run_id, "records": records})
+    baseline = configs["SCHM_EXP7_P1_H1"]
+    sensitivity_records = []
+    baseline_record = next(row for row in records if row["run_id"] == "SCHM_EXP7_P1_H1")
+    sensitivity_records.append({**baseline_record, "run_id": "SENS_BASELINE",
+                                "execution_class": "REUSED_EXACT_B2_PRODUCTION_BASELINE"})
+    for row in sensitivity[1:]:
+        run_id = row["run_id"]
+        record = _load_record(run_root, run_id)
+        if record is None:
+            config = sensitivity_scenario(root, baseline, row)
+            record = _run_with_one_infrastructure_retry(root, run_root, executable,
+                                                        run_id, config, config)
+        sensitivity_records.append(record)
+        _dump(run_root / "runtime/B2_EXECUTION_PROGRESS.json", {
+            "production_completed": 45, "production_planned": 45,
+            "sensitivity_completed": len(sensitivity_records), "sensitivity_planned": 9,
+            "last_run_id": run_id, "records": records,
+            "sensitivity_records": sensitivity_records})
+    summary = {"status": "EXECUTION_COMPLETE_PENDING_REDUCTION",
+               "production": records, "sensitivity": sensitivity_records,
+               "counts": {"production_planned": 45, "production_pass": sum(r["status"] == "PASS" for r in records),
+                          "production_fresh": sum(r.get("execution_class") == "FRESH_B2" for r in records),
+                          "production_reused": sum(r.get("execution_class", "").startswith("REUSED") for r in records),
+                          "sensitivity_planned": 9,
+                          "sensitivity_pass": sum(r["status"] == "PASS" for r in sensitivity_records),
+                          "sensitivity_fresh": sum(r.get("execution_class") == "FRESH_B2" for r in sensitivity_records),
+                          "sensitivity_reused": sum(r.get("execution_class", "").startswith("REUSED") for r in sensitivity_records)}}
+    _dump(run_root / "runtime/B2_EXECUTION_SUMMARY.json", summary)
+    return summary
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path.cwd())
@@ -235,7 +348,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--run-root", type=Path)
     parser.add_argument("--executable", type=Path)
-    parser.add_argument("command", choices=("prospective-inventory", "initialize"))
+    parser.add_argument("command", choices=("prospective-inventory", "initialize", "execute"))
     args = parser.parse_args()
     root = args.root.resolve()
     if args.command == "prospective-inventory":
@@ -243,10 +356,14 @@ def main() -> None:
         if not args.output:
             raise SystemExit("--output required")
         _dump(args.output, value)
-    else:
+    elif args.command == "initialize":
         if not args.run_root or not args.executable:
             raise SystemExit("--run-root and --executable required")
         initialize(root, args.run_root.resolve(), args.executable.resolve(), args.b1_root.resolve())
+    else:
+        if not args.run_root:
+            raise SystemExit("--run-root required")
+        execute_matrix(root, args.run_root.resolve(), args.b1_root.resolve())
 
 
 if __name__ == "__main__":
