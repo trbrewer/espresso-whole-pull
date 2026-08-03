@@ -75,7 +75,7 @@ VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
 ACTIVE_VALIDATION_CASE:
-  VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW
+  VAL_CORPUS_002_STAGE_B0_FINAL_TOOLING_PENDING_REVIEW
 
 ACTIVE_DATA_PLANNING_TASK:
   NONE
@@ -99,11 +99,11 @@ VAL_CASE_002:
   NOT_STARTED
 
 CURRENT_SCIENTIFIC_TASK:
-  VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_EXACT_HEAD_REVIEW
+  VAL_CORPUS_002_STAGE_B0_FINAL_TOOLING_EXACT_HEAD_REVIEW
 ```
 
 WP03-002 is complete, approved, and merged. VAL-CORPUS-002 Stage A is
-exact-head approved and Stage B0 corrected prospective tooling is complete
+exact-head approved and Stage B0 final prospective tooling is complete
 pending review. OpenFOAM execution, calibration, governed scoring, and Stage
 B1 have not started.
 

@@ -42,6 +42,13 @@ CALIBRATION_CASE_ID = "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
 EXP7_H1_TEMPLATE_SHA256 = "2e688b4f9e756aa9bc3890f4eb8a05b9191f28208c1fc4a431d9a84fa3b710b8"
 CALIBRATION_APPROVED_STATUS = "P2_CALIBRATION_FROZEN_APPROVED_FOR_B2_REVIEW"
 SYNTHETIC_CALIBRATION_STATUS = "SYNTHETIC_B0_TEST_ONLY"
+GOVERNED_RECORD_CLASS = "GOVERNED_B1_CALIBRATION"
+SYNTHETIC_RECORD_CLASS = "SYNTHETIC_B0_TEST_FIXTURE"
+ARTIFACT_ROLES = {
+    "OPTIMIZER_TRACE", "CALIBRATION_CONFIGURATION", "CALIBRATION_REDUCTION",
+    "RETAINED_MODEL_OUTPUT_TRACE", "NUMERICAL_VERIFICATION",
+}
+OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE = 1e-15
 REFERENCE = {
     "binding_class": "DIRECT_CONTENT_ADDRESS",
     "normalized_path": "<WP03_002_REVIEW_ROOT>/corrected-runs-v2/cases/WASZ-9-COMPACT/postProcessing/wholePull/0/traces.csv",
@@ -172,15 +179,17 @@ CALIBRATION_MANIFEST_KEYS = {
 }
 
 
-def validate_calibration_manifest(manifest: dict, *, expected_template_sha256: str,
-                                  root: Path | None = None,
-                                  allow_synthetic: bool = False) -> float:
+def _validate_manifest_envelope(manifest: dict, *, expected_template_sha256: str,
+                                allow_synthetic: bool) -> float:
     if not isinstance(manifest, dict) or set(manifest) != CALIBRATION_MANIFEST_KEYS:
         raise ValueError("complete exact calibration manifest required")
-    allowed_status = {CALIBRATION_APPROVED_STATUS}
-    if allow_synthetic: allowed_status.add(SYNTHETIC_CALIBRATION_STATUS)
-    if manifest["status"] not in allowed_status:
-        raise ValueError("calibration manifest is not frozen and approved")
+    pairing = (manifest["status"], manifest["record_class"])
+    governed_pair = (CALIBRATION_APPROVED_STATUS, GOVERNED_RECORD_CLASS)
+    synthetic_pair = (SYNTHETIC_CALIBRATION_STATUS, SYNTHETIC_RECORD_CLASS)
+    if pairing == synthetic_pair and not allow_synthetic:
+        raise ValueError("synthetic calibration manifest requires explicit synthetic path")
+    if pairing not in ({governed_pair, synthetic_pair} if allow_synthetic else {governed_pair}):
+        raise ValueError("invalid exact status/record-class pairing")
     expected = {
         "schema_version": "espresso.val_corpus_002.p2_calibration_manifest.v1",
         "task": "VAL-CORPUS-002", "stage": "B1_CALIBRATION",
@@ -198,12 +207,8 @@ def validate_calibration_manifest(manifest: dict, *, expected_template_sha256: s
     }
     for key, value in expected.items():
         if manifest[key] != value: raise ValueError(f"calibration manifest mismatch: {key}")
-    if manifest["record_class"] not in {"GOVERNED_B1_CALIBRATION", "SYNTHETIC_B0_TEST_FIXTURE"}:
-        raise ValueError("invalid calibration manifest record class")
     if not isinstance(manifest["authorization_id"], str) or not manifest["authorization_id"].strip():
         raise ValueError("calibration authorization identity absent")
-    if manifest["status"] == SYNTHETIC_CALIBRATION_STATUS and manifest["record_class"] != "SYNTHETIC_B0_TEST_FIXTURE":
-        raise ValueError("synthetic status requires synthetic record class")
     hash_keys = [key for key in manifest if key.endswith("_sha256")]
     if any(not _valid_sha256(manifest[key]) for key in hash_keys):
         raise ValueError("malformed lowercase SHA-256 in calibration manifest")
@@ -211,36 +216,173 @@ def validate_calibration_manifest(manifest: dict, *, expected_template_sha256: s
     if any(not isinstance(v, (int, float)) or not math.isfinite(v) for v in values):
         raise ValueError("nonfinite selected calibration value")
     log_k, rate = float(values[0]), float(values[1])
+    if manifest["selected_objective"] < 0:
+        raise ValueError("selected objective must be nonnegative")
     if not LOG_K_LOWER <= log_k <= LOG_K_UPPER or not K_LOWER <= rate <= K_UPPER:
         raise ValueError("selected calibration rate outside frozen bounds")
     if log_k.hex() != manifest["selected_log_k_hex"] or rate.hex() != manifest["selected_rate_hex"]:
         raise ValueError("selected floating-point identity mismatch")
     if not math.isclose(math.exp(log_k), rate, rel_tol=1e-15, abs_tol=0.0):
         raise ValueError("selected log-k and rate disagree")
-    if root is not None:
-        cohort = root / manifest["source_cohort_path"]
-        if not cohort.is_file() or file_sha256(cohort) != manifest["source_cohort_sha256"]:
-            raise ValueError("source cohort content identity mismatch")
-        artifact_rel = Path(manifest["calibration_artifact_manifest_path"])
-        if artifact_rel.is_absolute() or ".." in artifact_rel.parts:
-            raise ValueError("invalid calibration artifact manifest path")
-        artifact = root / artifact_rel
-        if artifact.is_file():
-            if file_sha256(artifact) != manifest["calibration_artifact_manifest_sha256"]:
-                raise ValueError("calibration artifact manifest content mismatch")
-            artifact_record = json.loads(artifact.read_text())
-            if artifact_record.get("aggregate_sha256") != manifest["calibration_artifact_aggregate_sha256"]:
-                raise ValueError("calibration artifact aggregate mismatch")
     return rate
 
 
+def _confined_regular_file(root: Path, relative: str, label: str) -> Path:
+    rel = Path(relative)
+    if rel.is_absolute() or ".." in rel.parts:
+        raise ValueError(f"invalid {label} path")
+    original = root / rel
+    try:
+        original.lstat()
+    except FileNotFoundError as exc:
+        raise ValueError(f"missing {label}") from exc
+    if original.is_symlink() or not original.is_file():
+        raise ValueError(f"{label} must be a nonsymlink regular file")
+    resolved, resolved_root = original.resolve(), root.resolve()
+    if resolved_root not in resolved.parents:
+        raise ValueError(f"{label} escapes authorized root")
+    return resolved
+
+
+def _artifact_manifest_record(value: object) -> list[dict]:
+    if not isinstance(value, dict) or set(value) != {"schema_version", "aggregate_sha256", "files"}:
+        raise ValueError("closed calibration artifact manifest required")
+    if value["schema_version"] != "espresso.val_corpus_002.calibration_artifacts.v1":
+        raise ValueError("calibration artifact manifest schema mismatch")
+    if not _valid_sha256(value["aggregate_sha256"]) or not isinstance(value["files"], list):
+        raise ValueError("invalid calibration artifact manifest envelope")
+    files = value["files"]
+    if len(files) != len(ARTIFACT_ROLES):
+        raise ValueError("calibration artifact manifest member count mismatch")
+    for row in files:
+        if (not isinstance(row, dict) or set(row) != {"role", "path", "bytes", "sha256"}
+                or row["role"] not in ARTIFACT_ROLES or not isinstance(row["path"], str)
+                or not isinstance(row["bytes"], int) or row["bytes"] < 0
+                or not _valid_sha256(row["sha256"])):
+            raise ValueError("invalid calibration artifact member")
+    if {row["role"] for row in files} != ARTIFACT_ROLES or len({row["path"] for row in files}) != len(files):
+        raise ValueError("calibration artifact roles and paths must be exact and unique")
+    return files
+
+
+def _verify_governed_contents(manifest: dict, root: Path) -> None:
+    cohort = _confined_regular_file(root, manifest["source_cohort_path"], "source cohort")
+    if file_sha256(cohort) != manifest["source_cohort_sha256"]:
+        raise ValueError("source cohort content identity mismatch")
+    artifact = _confined_regular_file(root, manifest["calibration_artifact_manifest_path"],
+                                      "calibration artifact manifest")
+    if file_sha256(artifact) != manifest["calibration_artifact_manifest_sha256"]:
+        raise ValueError("calibration artifact manifest content mismatch")
+    try:
+        artifact_record = json.loads(artifact.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise ValueError("calibration artifact manifest is not valid JSON") from exc
+    files = _artifact_manifest_record(artifact_record)
+    if artifact_record["aggregate_sha256"] != manifest["calibration_artifact_aggregate_sha256"]:
+        raise ValueError("calibration artifact aggregate mismatch")
+    digest = hashlib.sha256(); members = {}
+    for row in sorted(files, key=lambda item: item["path"]):
+        member = _confined_regular_file(root, row["path"], f"calibration artifact {row['role']}")
+        if member.stat().st_size != row["bytes"] or file_sha256(member) != row["sha256"]:
+            raise ValueError(f"calibration artifact content mismatch: {row['role']}")
+        digest.update(f"{row['path']}\0{row['sha256']}\0{row['bytes']}\n".encode())
+        members[row["role"]] = member
+    if digest.hexdigest() != artifact_record["aggregate_sha256"]:
+        raise ValueError("calibration artifact manifest aggregate does not verify")
+
+    inventory = build_configuration_inventory(root)
+    template_row = next(row for row in inventory["typed_p2_templates"]
+                        if row["id"] == CALIBRATION_CASE_ID)
+    configuration = _materialize_p2_rate(template_row["template"],
+                                         manifest["selected_rate_s_inverse"],
+                                         EXP7_H1_TEMPLATE_SHA256)
+    if canonical_sha256(configuration) != manifest["calibration_configuration_sha256"]:
+        raise ValueError("calibration configuration cannot be reconstructed")
+    config_path = members["CALIBRATION_CONFIGURATION"]
+    if file_sha256(config_path) != manifest["calibration_configuration_sha256"]:
+        raise ValueError("retained calibration configuration identity mismatch")
+
+    try:
+        optimizer = json.loads(members["OPTIMIZER_TRACE"].read_text(encoding="utf-8"))
+        reduction = json.loads(members["CALIBRATION_REDUCTION"].read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise ValueError("calibration result artifacts are not valid JSON") from exc
+    if file_sha256(members["OPTIMIZER_TRACE"]) != manifest["optimizer_trace_sha256"]:
+        raise ValueError("optimizer trace identity mismatch")
+    if (not isinstance(optimizer, dict)
+            or set(optimizer) != {"status", "evaluations", "final_log_interval_width", "trace"}
+            or optimizer["status"] != "PASS"
+            or not isinstance(optimizer["evaluations"], int) or not 0 < optimizer["evaluations"] <= MAX_EVALUATIONS
+            or not isinstance(optimizer["final_log_interval_width"], (int, float))
+            or not math.isfinite(optimizer["final_log_interval_width"])
+            or optimizer["final_log_interval_width"] < 0
+            or optimizer["final_log_interval_width"] > LOG_K_TOLERANCE
+            or not isinstance(optimizer["trace"], list)):
+        raise ValueError("optimizer trace closed contract mismatch")
+    selected = [row for row in optimizer["trace"] if isinstance(row, dict)
+                and row.get("final_selection_status") == "SELECTED_FINAL"]
+    if len(selected) != 1:
+        raise ValueError("optimizer trace requires exactly one selected final row")
+    selected_row = selected[0]
+    selected_fields = ("selected_log_k", "selected_log_k_hex", "selected_rate_s_inverse",
+                       "selected_rate_hex", "selected_objective")
+    row_fields = ("log_k", "log_k_hex", "rate_s_inverse", "rate_hex", "objective")
+    if any(selected_row.get(row_key) != manifest[manifest_key]
+           for manifest_key, row_key in zip(selected_fields, row_fields)):
+        raise ValueError("optimizer selected row disagrees with calibration manifest")
+
+    if (not isinstance(reduction, dict)
+            or set(reduction) != {"target_masses_g", "model_cup_solute_masses_g"}
+            or reduction["target_masses_g"] != TARGET_MASSES_G
+            or not isinstance(reduction["model_cup_solute_masses_g"], list)
+            or len(reduction["model_cup_solute_masses_g"]) != 3):
+        raise ValueError("retained calibration reduction vector mismatch")
+    recomputed = calibration_objective(SOURCE_SOLUTE_MASSES_G,
+                                       reduction["model_cup_solute_masses_g"])
+    if not math.isclose(recomputed, manifest["selected_objective"], rel_tol=0.0,
+                        abs_tol=OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE):
+        raise ValueError("selected objective does not reconstruct")
+
+
+def validate_governed_calibration_manifest(manifest: dict, *, expected_template_sha256: str,
+                                            root: Path,
+                                            expected_b1_authorization_id: str) -> float:
+    if root is None:
+        raise ValueError("governed verification root is mandatory")
+    if not isinstance(expected_b1_authorization_id, str) or not expected_b1_authorization_id:
+        raise ValueError("expected B1 authorization identity is mandatory")
+    rate = _validate_manifest_envelope(manifest, expected_template_sha256=expected_template_sha256,
+                                       allow_synthetic=False)
+    if manifest["authorization_id"] != expected_b1_authorization_id:
+        raise ValueError("B1 authorization identity mismatch")
+    _verify_governed_contents(manifest, Path(root))
+    return rate
+
+
+def validate_synthetic_calibration_manifest(manifest: dict, *,
+                                             expected_template_sha256: str,
+                                             allow_synthetic: bool) -> float:
+    if not allow_synthetic:
+        raise ValueError("synthetic calibration validation requires allow_synthetic=true")
+    return _validate_manifest_envelope(manifest, expected_template_sha256=expected_template_sha256,
+                                       allow_synthetic=True)
+
+
 def materialize_p2(template: dict, calibration_manifest: dict, approved_hash: str,
-                   *, root: Path | None = None, allow_synthetic: bool = False) -> dict:
+                   *, root: Path, expected_b1_authorization_id: str) -> dict:
     if isinstance(calibration_manifest, (int, float)):
         raise TypeError("raw-rate P2 materialization is prohibited")
-    rate = validate_calibration_manifest(calibration_manifest,
-                                         expected_template_sha256=EXP7_H1_TEMPLATE_SHA256,
-                                         root=root, allow_synthetic=allow_synthetic)
+    rate = validate_governed_calibration_manifest(
+        calibration_manifest, expected_template_sha256=EXP7_H1_TEMPLATE_SHA256,
+        root=root, expected_b1_authorization_id=expected_b1_authorization_id)
+    return _materialize_p2_rate(template, rate, approved_hash)
+
+
+def materialize_p2_synthetic(template: dict, calibration_manifest: dict, approved_hash: str,
+                             *, allow_synthetic: bool) -> dict:
+    rate = validate_synthetic_calibration_manifest(
+        calibration_manifest, expected_template_sha256=EXP7_H1_TEMPLATE_SHA256,
+        allow_synthetic=allow_synthetic)
     return _materialize_p2_rate(template, rate, approved_hash)
 
 
@@ -780,14 +922,16 @@ class AccessBarrier:
         if self.state == "B0_SYNTHETIC_ONLY": raise PermissionError("model-result access prohibited in B0")
         if case != "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1":
             raise PermissionError("transfer result inaccessible before exact P2 freeze")
-    def freeze_p2(self, manifest: dict) -> None:
+    def freeze_p2(self, manifest: dict, *, root: Path,
+                  expected_b1_authorization_id: str) -> None:
         if self.state != "B1_EXP7_H1_ONLY":
             raise PermissionError("exact B1 P2 manifest required")
         if manifest.get("optimizer_status") != "PASS":
             raise PermissionError("nonconverged optimizer cannot freeze P2")
         try:
-            rate = validate_calibration_manifest(manifest,
-                expected_template_sha256=EXP7_H1_TEMPLATE_SHA256)
+            rate = validate_governed_calibration_manifest(
+                manifest, expected_template_sha256=EXP7_H1_TEMPLATE_SHA256,
+                root=root, expected_b1_authorization_id=expected_b1_authorization_id)
         except ValueError as exc:
             raise PermissionError("invalid exact P2 freeze") from exc
         self.p2_rate = rate; self.state = "P2_FROZEN_TRANSFER_MAY_FOLLOW_SEPARATE_B2_AUTHORITY"
@@ -800,16 +944,34 @@ class AccessBarrier:
             raise PermissionError("action/case pair is not on the exact B1 allowlist")
 
 
-def materialize_all_p2(inventory: dict, manifest: dict, *, allow_synthetic: bool = False) -> dict:
+def materialize_all_p2(inventory: dict, manifest: dict, *, root: Path,
+                       expected_b1_authorization_id: str) -> dict:
     templates = inventory.get("typed_p2_templates")
     if not isinstance(templates, list) or len(templates) != 15:
         raise ValueError("all 15 P2 templates required")
-    rate = validate_calibration_manifest(manifest, expected_template_sha256=EXP7_H1_TEMPLATE_SHA256,
-                                         allow_synthetic=allow_synthetic)
+    rate = validate_governed_calibration_manifest(
+        manifest, expected_template_sha256=EXP7_H1_TEMPLATE_SHA256, root=root,
+        expected_b1_authorization_id=expected_b1_authorization_id)
     results = {}
     for row in templates:
-        results[row["id"]] = materialize_p2(row["template"], manifest, row["canonical_sha256"],
-                                             allow_synthetic=allow_synthetic)
+        results[row["id"]] = materialize_p2(
+            row["template"], manifest, row["canonical_sha256"], root=root,
+            expected_b1_authorization_id=expected_b1_authorization_id)
+    return {"manifest_bound_rate_s_inverse": rate, "materialized_count": len(results),
+            "identical_rate_all_templates": True, "configurations": results}
+
+
+def materialize_all_p2_synthetic(inventory: dict, manifest: dict, *,
+                                 allow_synthetic: bool) -> dict:
+    templates = inventory.get("typed_p2_templates")
+    if not isinstance(templates, list) or len(templates) != 15:
+        raise ValueError("all 15 P2 templates required")
+    rate = validate_synthetic_calibration_manifest(
+        manifest, expected_template_sha256=EXP7_H1_TEMPLATE_SHA256,
+        allow_synthetic=allow_synthetic)
+    results = {row["id"]: materialize_p2_synthetic(
+        row["template"], manifest, row["canonical_sha256"], allow_synthetic=allow_synthetic)
+        for row in templates}
     return {"manifest_bound_rate_s_inverse": rate, "materialized_count": len(results),
             "identical_rate_all_templates": True, "configurations": results}
 
@@ -830,10 +992,36 @@ def calibration_manifest_schema() -> dict:
     properties["maximum_evaluations"] = {"type": "integer"}
     for key in ("target_masses_g", "source_observations_g", "log_k_bounds"):
         properties[key] = {"type": "array", "items": {"type": "number"}}
+    properties["status"] = {"enum": [CALIBRATION_APPROVED_STATUS, SYNTHETIC_CALIBRATION_STATUS]}
+    properties["record_class"] = {"enum": [GOVERNED_RECORD_CLASS, SYNTHETIC_RECORD_CLASS]}
     return {"$schema": "https://json-schema.org/draft/2020-12/schema",
             "$id": "espresso.val_corpus_002.p2_calibration_manifest.v1",
             "type": "object", "additionalProperties": False,
-            "required": sorted(CALIBRATION_MANIFEST_KEYS), "properties": properties}
+            "required": sorted(CALIBRATION_MANIFEST_KEYS), "properties": properties,
+            "oneOf": [
+                {"properties": {"status": {"const": CALIBRATION_APPROVED_STATUS},
+                                "record_class": {"const": GOVERNED_RECORD_CLASS}}},
+                {"properties": {"status": {"const": SYNTHETIC_CALIBRATION_STATUS},
+                                "record_class": {"const": SYNTHETIC_RECORD_CLASS}}},
+            ]}
+
+
+def calibration_artifact_manifest_schema() -> dict:
+    return {"$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "espresso.val_corpus_002.calibration_artifacts.v1",
+            "type": "object", "additionalProperties": False,
+            "required": ["schema_version", "aggregate_sha256", "files"],
+            "properties": {
+                "schema_version": {"const": "espresso.val_corpus_002.calibration_artifacts.v1"},
+                "aggregate_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "files": {"type": "array", "minItems": 5, "maxItems": 5,
+                          "items": {"type": "object", "additionalProperties": False,
+                                    "required": ["role", "path", "bytes", "sha256"],
+                                    "properties": {
+                                        "role": {"enum": sorted(ARTIFACT_ROLES)},
+                                        "path": {"type": "string", "minLength": 1},
+                                        "bytes": {"type": "integer", "minimum": 0},
+                                        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}}}}
 
 
 def generate(root: Path, review_root: Path) -> None:
@@ -845,10 +1033,12 @@ def generate(root: Path, review_root: Path) -> None:
     dump(root / CASE_DIR / "VAL_CORPUS_002_EXP7_H1_CALIBRATION_SOURCE_BINDING.json", source_binding)
     dump(root / CASE_DIR / "VAL_CORPUS_002_P2_CALIBRATION_MANIFEST_SCHEMA.json",
          calibration_manifest_schema())
+    dump(root / CASE_DIR / "VAL_CORPUS_002_CALIBRATION_ARTIFACT_MANIFEST_SCHEMA.json",
+         calibration_artifact_manifest_schema())
     dump(root / CASE_DIR / "VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_QUALIFICATION.json", {
         "schema_version": 1, "authorization_id": AUTHORIZATION_ID,
         "profile": "EWP_TOOLING_STAGE_V1",
-        "disposition": "VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW",
+        "disposition": "VAL_CORPUS_002_STAGE_B0_FINAL_TOOLING_PENDING_REVIEW",
         "calibration_source_binding": source_binding,
         "objective": {"identity": OBJECTIVE_ID,
             "formula": "mean(((model_i-source_i)/source_i)^2)",
@@ -860,7 +1050,21 @@ def generate(root: Path, review_root: Path) -> None:
             "nonconverged_manifest": "PROHIBITED"},
         "p2_materialization": {"input": "EXACT_CALIBRATION_MANIFEST_ONLY",
             "raw_rate": "PROHIBITED", "template_count": 15,
-            "identical_manifest_bound_rate": "REQUIRED"},
+            "identical_manifest_bound_rate": "REQUIRED",
+            "governed_content_verification": "MANDATORY",
+            "status_record_class_pairing": "EXACT_FAIL_CLOSED",
+            "synthetic_path": "SEPARATE_NONPRODUCTION_ONLY"},
+        "governed_artifact_manifest": {
+            "schema_path": (CASE_DIR / "VAL_CORPUS_002_CALIBRATION_ARTIFACT_MANIFEST_SCHEMA.json").as_posix(),
+            "schema_sha256": "e224be9d68f0a5f2978545f8a323acce0f1620793a1ab2416b541514b31f0436",
+            "required_roles": sorted(ARTIFACT_ROLES),
+            "content_verification": "ALL_MEMBERS_MANDATORY_FAIL_CLOSED"},
+        "governed_reconstruction": {
+            "calibration_template_sha256": EXP7_H1_TEMPLATE_SHA256,
+            "configuration": "ONE_TYPED_PLACEHOLDER_RECONSTRUCTED_AND_HASH_VERIFIED",
+            "optimizer_trace": "UNIQUE_SELECTED_FINAL_ROW_VERIFIED",
+            "objective": "EXACT_THREE_MASS_RELATIVE_MSE_RECOMPUTED",
+            "objective_serialization_absolute_tolerance": OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE},
         "reducers": ["SCHMIEDER_THREE_MASS_AND_RESIDUALS", "REPLICATE_STATISTICS",
             "OBSERVED_RANGE_AND_SD_COUNTS", "PAIRED_H0_H1_ERROR_RATIO",
             "ALL_THREE_AXIS_CONTRASTS_ALL_BREW_RATIOS", "WASZKIEWICZ_FULL_SERIES_AND_WINDOWS",
@@ -883,7 +1087,7 @@ def generate(root: Path, review_root: Path) -> None:
         "claim_ceiling": "PHYSICAL_VALIDATION_NOT_ESTABLISHED",
         "protected_action_policy": "EXACT_ACTION_AND_CASE_ALLOWLIST",
         "production_materialization": "EXACT_CALIBRATION_MANIFEST_ONLY_NO_RAW_RATE",
-        "normal_end_state": "VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW"})
+        "normal_end_state": "VAL_CORPUS_002_STAGE_B0_FINAL_TOOLING_PENDING_REVIEW"})
 
 
 def main() -> None:

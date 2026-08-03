@@ -2,6 +2,28 @@
   "$id": "espresso.val_corpus_002.p2_calibration_manifest.v1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": {
+        "record_class": {
+          "const": "GOVERNED_B1_CALIBRATION"
+        },
+        "status": {
+          "const": "P2_CALIBRATION_FROZEN_APPROVED_FOR_B2_REVIEW"
+        }
+      }
+    },
+    {
+      "properties": {
+        "record_class": {
+          "const": "SYNTHETIC_B0_TEST_FIXTURE"
+        },
+        "status": {
+          "const": "SYNTHETIC_B0_TEST_ONLY"
+        }
+      }
+    }
+  ],
   "properties": {
     "authorization_id": {
       "type": "string"
@@ -55,7 +77,10 @@
       "type": "string"
     },
     "record_class": {
-      "type": "string"
+      "enum": [
+        "GOVERNED_B1_CALIBRATION",
+        "SYNTHETIC_B0_TEST_FIXTURE"
+      ]
     },
     "schema_version": {
       "type": "string"
@@ -94,7 +119,10 @@
       "type": "string"
     },
     "status": {
-      "type": "string"
+      "enum": [
+        "P2_CALIBRATION_FROZEN_APPROVED_FOR_B2_REVIEW",
+        "SYNTHETIC_B0_TEST_ONLY"
+      ]
     },
     "target_masses_g": {
       "items": {

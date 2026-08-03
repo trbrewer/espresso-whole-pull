@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import copy
+import hashlib
+import json
 import math
 import os
+import shutil
 import sys
 import tempfile
 import unittest
@@ -39,11 +42,90 @@ def synthetic_manifest(*, rate=.1, optimizer_status="PASS", **changes):
     value.update(changes); return value
 
 
+def governed_fixture(root: Path, *, authorization_id="B1-TEST-AUTHORIZATION"):
+    for relative in (b0.RUN_MATRIX, b0.SENSITIVITY_MATRIX):
+        target=root/relative; target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(ROOT/relative,target)
+    cohort = root / b0.COHORT_PATH
+    cohort.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(ROOT / b0.COHORT_PATH, cohort)
+    rate = .1; log_k = math.log(rate); objective = 0.0
+    inventory = b0.build_configuration_inventory(ROOT)
+    template = next(row for row in inventory["typed_p2_templates"]
+                    if row["id"] == b0.CALIBRATION_CASE_ID)
+    configuration = b0._materialize_p2_rate(template["template"], rate,
+                                             b0.EXP7_H1_TEMPLATE_SHA256)
+    artifacts = root / "runtime"; artifacts.mkdir()
+    paths = {
+        "OPTIMIZER_TRACE": artifacts / "optimizer.json",
+        "CALIBRATION_CONFIGURATION": artifacts / "configuration.json",
+        "CALIBRATION_REDUCTION": artifacts / "reduction.json",
+        "RETAINED_MODEL_OUTPUT_TRACE": artifacts / "model-trace.json",
+        "NUMERICAL_VERIFICATION": artifacts / "verification.json",
+    }
+    optimizer = {"status": "PASS", "evaluations": 42,
+                 "final_log_interval_width": 9e-9,
+                 "trace": [{"log_k": log_k, "log_k_hex": log_k.hex(),
+                            "rate_s_inverse": rate, "rate_hex": rate.hex(),
+                            "objective": objective,
+                            "final_selection_status": "SELECTED_FINAL"}]}
+    paths["OPTIMIZER_TRACE"].write_text(json.dumps(optimizer, sort_keys=True) + "\n")
+    paths["CALIBRATION_CONFIGURATION"].write_bytes(b0.canonical_bytes(configuration))
+    paths["CALIBRATION_REDUCTION"].write_text(json.dumps({
+        "target_masses_g": b0.TARGET_MASSES_G,
+        "model_cup_solute_masses_g": b0.SOURCE_SOLUTE_MASSES_G}, sort_keys=True) + "\n")
+    paths["RETAINED_MODEL_OUTPUT_TRACE"].write_text("{}\n")
+    paths["NUMERICAL_VERIFICATION"].write_text("{}\n")
+    rows = [{"role": role, "path": path.relative_to(root).as_posix(),
+             "bytes": path.stat().st_size, "sha256": b0.file_sha256(path)}
+            for role, path in paths.items()]
+    digest = hashlib.sha256()
+    for row in sorted(rows, key=lambda item: item["path"]):
+        digest.update(f"{row['path']}\0{row['sha256']}\0{row['bytes']}\n".encode())
+    artifact_record = {"schema_version": "espresso.val_corpus_002.calibration_artifacts.v1",
+                       "aggregate_sha256": digest.hexdigest(), "files": rows}
+    artifact_path = root / "runtime" / "artifact-manifest.json"
+    artifact_path.write_text(json.dumps(artifact_record, sort_keys=True) + "\n")
+    manifest = synthetic_manifest(
+        status=b0.CALIBRATION_APPROVED_STATUS, record_class=b0.GOVERNED_RECORD_CLASS,
+        authorization_id=authorization_id, selected_objective=objective,
+        optimizer_trace_sha256=b0.file_sha256(paths["OPTIMIZER_TRACE"]),
+        calibration_configuration_sha256=b0.canonical_sha256(configuration),
+        calibration_artifact_manifest_path=artifact_path.relative_to(root).as_posix(),
+        calibration_artifact_manifest_sha256=b0.file_sha256(artifact_path),
+        calibration_artifact_aggregate_sha256=digest.hexdigest())
+    return manifest, artifact_path, paths
+
+
+def rewrite_artifact_manifest(manifest, artifact_path, mutate):
+    record = json.loads(artifact_path.read_text())
+    mutate(record)
+    artifact_path.write_text(json.dumps(record, sort_keys=True) + "\n")
+    manifest["calibration_artifact_manifest_sha256"] = b0.file_sha256(artifact_path)
+
+
+def refresh_artifact_member(manifest, artifact_path, member_path, role):
+    record=json.loads(artifact_path.read_text())
+    row=next(row for row in record["files"] if row["role"]==role)
+    row["bytes"]=member_path.stat().st_size; row["sha256"]=b0.file_sha256(member_path)
+    digest=hashlib.sha256()
+    for item in sorted(record["files"],key=lambda value:value["path"]):
+        digest.update(f"{item['path']}\0{item['sha256']}\0{item['bytes']}\n".encode())
+    record["aggregate_sha256"]=digest.hexdigest()
+    artifact_path.write_text(json.dumps(record,sort_keys=True)+"\n")
+    manifest["calibration_artifact_manifest_sha256"]=b0.file_sha256(artifact_path)
+    manifest["calibration_artifact_aggregate_sha256"]=digest.hexdigest()
+    if role=="OPTIMIZER_TRACE": manifest["optimizer_trace_sha256"]=row["sha256"]
+
+
 class CalibrationAndConfigurationTests(unittest.TestCase):
     def test_calibration_manifest_schema_is_closed_and_complete(self):
         schema=b0.calibration_manifest_schema()
         self.assertFalse(schema["additionalProperties"])
         self.assertEqual(set(schema["required"]),b0.CALIBRATION_MANIFEST_KEYS)
+        artifact_schema=b0.calibration_artifact_manifest_schema()
+        self.assertFalse(artifact_schema["additionalProperties"])
+        self.assertEqual(artifact_schema["properties"]["files"]["minItems"],5)
 
     def test_exact_source_vector_binding(self):
         binding = b0.bind_calibration_source(ROOT)
@@ -74,23 +156,147 @@ class CalibrationAndConfigurationTests(unittest.TestCase):
         inventory = b0.build_configuration_inventory(ROOT)
         self.assertEqual(inventory["counts"]["final_production_identities"], 45)
         self.assertEqual(len(inventory["numeric_configurations"]), 30)
-        result = b0.materialize_all_p2(inventory, synthetic_manifest(), allow_synthetic=True)
+        result = b0.materialize_all_p2_synthetic(inventory, synthetic_manifest(), allow_synthetic=True)
         self.assertEqual(result["materialized_count"], 15)
         self.assertEqual(result["manifest_bound_rate_s_inverse"], .1)
 
     def test_raw_rate_and_malformed_manifest_refused(self):
         inventory = b0.build_configuration_inventory(ROOT); row = inventory["typed_p2_templates"][0]
         with self.assertRaises(TypeError): b0.materialize_p2(row["template"], .1, row["canonical_sha256"])
-        with self.assertRaises(ValueError): b0.materialize_p2(row["template"], {}, row["canonical_sha256"])
-        with self.assertRaises(ValueError): b0.materialize_p2(row["template"], synthetic_manifest(rate=2.0), row["canonical_sha256"], allow_synthetic=True)
+        with self.assertRaises(ValueError): b0.materialize_p2_synthetic(
+            row["template"], {}, row["canonical_sha256"], allow_synthetic=True)
+        with self.assertRaises(ValueError): b0.materialize_p2_synthetic(
+            row["template"], synthetic_manifest(rate=2.0), row["canonical_sha256"],
+            allow_synthetic=True)
 
     def test_wrong_manifest_identities_and_nonconvergence_refused(self):
         for change in ({"template_sha256":"f"*64}, {"source_cohort_sha256":"f"*64},
                        {"executable_sha256":"f"*64}, {"calibration_artifact_aggregate_sha256":"BAD"},
                        {"optimizer_status":"NONCONVERGED_EVALUATION_LIMIT"}):
             with self.assertRaises(ValueError):
-                b0.validate_calibration_manifest(synthetic_manifest(**change),
+                b0.validate_synthetic_calibration_manifest(synthetic_manifest(**change),
                     expected_template_sha256=b0.EXP7_H1_TEMPLATE_SHA256, allow_synthetic=True)
+
+
+class GovernedManifestContentTests(unittest.TestCase):
+    def validate(self, manifest, root, authorization="B1-TEST-AUTHORIZATION"):
+        return b0.validate_governed_calibration_manifest(
+            manifest, expected_template_sha256=b0.EXP7_H1_TEMPLATE_SHA256,
+            root=root, expected_b1_authorization_id=authorization)
+
+    def test_exact_status_record_class_pairing_and_synthetic_separation(self):
+        with self.assertRaises(ValueError):
+            b0.validate_synthetic_calibration_manifest(
+                synthetic_manifest(status=b0.CALIBRATION_APPROVED_STATUS),
+                expected_template_sha256=b0.EXP7_H1_TEMPLATE_SHA256, allow_synthetic=True)
+        with self.assertRaises(ValueError):
+            b0.validate_synthetic_calibration_manifest(
+                synthetic_manifest(record_class=b0.GOVERNED_RECORD_CLASS),
+                expected_template_sha256=b0.EXP7_H1_TEMPLATE_SHA256, allow_synthetic=True)
+        with self.assertRaises(ValueError):
+            b0.validate_synthetic_calibration_manifest(
+                synthetic_manifest(), expected_template_sha256=b0.EXP7_H1_TEMPLATE_SHA256,
+                allow_synthetic=False)
+        barrier=b0.AccessBarrier(); barrier.authorize_b1("SEPARATE_HUMAN_OWNER_B1_AUTHORITY")
+        with self.assertRaises(PermissionError):
+            barrier.freeze_p2(synthetic_manifest(), root=ROOT,
+                              expected_b1_authorization_id="B1-TEST-AUTHORIZATION")
+
+    def test_governed_fixture_reconstructs_configuration_trace_and_objective(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest, _, _=governed_fixture(root)
+            self.assertEqual(self.validate(manifest, root), .1)
+            inventory=b0.build_configuration_inventory(ROOT)
+            result=b0.materialize_all_p2(inventory, manifest, root=root,
+                expected_b1_authorization_id="B1-TEST-AUTHORIZATION")
+            self.assertEqual(result["materialized_count"],15)
+            self.assertTrue(result["identical_rate_all_templates"])
+
+    def test_missing_root_wrong_authorization_and_unverified_bulk_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest, _, _=governed_fixture(root)
+            with self.assertRaises(ValueError): self.validate(manifest, None)
+            with self.assertRaises(ValueError): self.validate(manifest, root, "WRONG-B1")
+            inventory=b0.build_configuration_inventory(ROOT)
+            with self.assertRaises(TypeError): b0.materialize_all_p2(inventory, manifest)
+
+    def test_missing_symlinked_outside_and_wrong_artifact_manifest_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest, artifact, _=governed_fixture(root)
+            missing=copy.deepcopy(manifest); missing["calibration_artifact_manifest_path"]="runtime/missing.json"
+            with self.assertRaises(ValueError): self.validate(missing, root)
+            link=root/"runtime/link.json"; link.symlink_to(artifact)
+            linked=copy.deepcopy(manifest); linked["calibration_artifact_manifest_path"]="runtime/link.json"
+            with self.assertRaises(ValueError): self.validate(linked, root)
+            outside=copy.deepcopy(manifest); outside["calibration_artifact_manifest_path"]="../outside.json"
+            with self.assertRaises(ValueError): self.validate(outside, root)
+            wrong=copy.deepcopy(manifest); wrong["calibration_artifact_manifest_sha256"]="f"*64
+            with self.assertRaises(ValueError): self.validate(wrong, root)
+
+    def test_wrong_aggregate_and_missing_optimizer_member_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest, artifact, _=governed_fixture(root)
+            wrong=copy.deepcopy(manifest); wrong["calibration_artifact_aggregate_sha256"]="f"*64
+            with self.assertRaises(ValueError): self.validate(wrong, root)
+            rewrite_artifact_manifest(manifest, artifact,
+                lambda record: record.update(files=[row for row in record["files"]
+                                                    if row["role"]!="OPTIMIZER_TRACE"]))
+            with self.assertRaises(ValueError): self.validate(manifest, root)
+
+    def test_optimizer_hash_and_final_selection_cardinality_rejected(self):
+        for selection_count in (0,2):
+            with tempfile.TemporaryDirectory() as directory:
+                root=Path(directory); manifest, artifact, paths=governed_fixture(root)
+                if selection_count == 0:
+                    optimizer=json.loads(paths["OPTIMIZER_TRACE"].read_text())
+                    optimizer["trace"][0]["final_selection_status"]="NOT_FINAL"
+                    paths["OPTIMIZER_TRACE"].write_text(json.dumps(optimizer,sort_keys=True)+"\n")
+                else:
+                    optimizer=json.loads(paths["OPTIMIZER_TRACE"].read_text())
+                    optimizer["trace"].append(copy.deepcopy(optimizer["trace"][0]))
+                    paths["OPTIMIZER_TRACE"].write_text(json.dumps(optimizer,sort_keys=True)+"\n")
+                refresh_artifact_member(manifest,artifact,paths["OPTIMIZER_TRACE"],"OPTIMIZER_TRACE")
+                with self.assertRaises(ValueError): self.validate(manifest,root)
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest, _, _=governed_fixture(root)
+            manifest["optimizer_trace_sha256"]="f"*64
+            with self.assertRaises(ValueError): self.validate(manifest,root)
+
+    def test_selected_row_negative_objective_and_configuration_hash_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest, artifact, paths=governed_fixture(root)
+            optimizer=json.loads(paths["OPTIMIZER_TRACE"].read_text())
+            optimizer["trace"][0]["objective"]=1.0
+            paths["OPTIMIZER_TRACE"].write_text(json.dumps(optimizer,sort_keys=True)+"\n")
+            refresh_artifact_member(manifest,artifact,paths["OPTIMIZER_TRACE"],"OPTIMIZER_TRACE")
+            with self.assertRaises(ValueError): self.validate(manifest,root)
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest, _, _=governed_fixture(root)
+            manifest["selected_objective"]=-1.0
+            with self.assertRaises(ValueError): self.validate(manifest,root)
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest, _, _=governed_fixture(root)
+            manifest["calibration_configuration_sha256"]="f"*64
+            with self.assertRaises(ValueError): self.validate(manifest,root)
+
+    def test_retained_model_vector_objective_mismatch_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest, artifact, paths=governed_fixture(root)
+            paths["CALIBRATION_REDUCTION"].write_text(json.dumps({
+                "target_masses_g":b0.TARGET_MASSES_G,
+                "model_cup_solute_masses_g":[1.,1.,1.]},sort_keys=True)+"\n")
+            record=json.loads(artifact.read_text())
+            row=next(row for row in record["files"] if row["role"]=="CALIBRATION_REDUCTION")
+            row["bytes"]=paths["CALIBRATION_REDUCTION"].stat().st_size
+            row["sha256"]=b0.file_sha256(paths["CALIBRATION_REDUCTION"])
+            digest=hashlib.sha256()
+            for item in sorted(record["files"],key=lambda value:value["path"]):
+                digest.update(f"{item['path']}\0{item['sha256']}\0{item['bytes']}\n".encode())
+            record["aggregate_sha256"]=digest.hexdigest()
+            artifact.write_text(json.dumps(record,sort_keys=True)+"\n")
+            manifest["calibration_artifact_manifest_sha256"]=b0.file_sha256(artifact)
+            manifest["calibration_artifact_aggregate_sha256"]=digest.hexdigest()
+            with self.assertRaises(ValueError): self.validate(manifest,root)
 
 
 class OptimizerTests(unittest.TestCase):
@@ -117,7 +323,9 @@ class OptimizerTests(unittest.TestCase):
         limited = b0.golden_section_log_k(lambda k:(k-.2)**2, max_evaluations=2)
         self.assertEqual(limited["status"], "NONCONVERGED_EVALUATION_LIMIT")
         barrier = b0.AccessBarrier(); barrier.authorize_b1("SEPARATE_HUMAN_OWNER_B1_AUTHORITY")
-        with self.assertRaises(PermissionError): barrier.freeze_p2(synthetic_manifest(optimizer_status="NONCONVERGED_EVALUATION_LIMIT"))
+        with self.assertRaises(PermissionError): barrier.freeze_p2(
+            synthetic_manifest(optimizer_status="NONCONVERGED_EVALUATION_LIMIT"),
+            root=ROOT, expected_b1_authorization_id="B1-TEST-AUTHORIZATION")
 
 
 class ReferenceArtifactAndIntervalTests(unittest.TestCase):

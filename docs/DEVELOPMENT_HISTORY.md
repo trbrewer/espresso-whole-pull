@@ -53,6 +53,14 @@
   synthetic; OpenFOAM, calibration, model-result access, and scoring were not
   performed.
 
+- VAL-CORPUS-002 Stage B0 governed-gate completion: separated synthetic and
+  governed manifest paths; made the verification root and expected B1
+  authorization mandatory; content-verified the source cohort, closed artifact
+  manifest and all five retained members; reconstructed the typed calibration
+  configuration, unique selected optimizer row, and exact three-mass objective.
+  No OpenFOAM build/run, calibration, model-result access, governed scoring, or
+  Stage B1 action occurred.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.

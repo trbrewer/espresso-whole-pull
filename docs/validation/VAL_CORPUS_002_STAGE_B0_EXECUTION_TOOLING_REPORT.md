@@ -1,6 +1,6 @@
 # VAL-CORPUS-002 Stage B0 Execution Tooling Report
 
-**Disposition:** `VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW`
+**Disposition:** `VAL_CORPUS_002_STAGE_B0_FINAL_TOOLING_PENDING_REVIEW`
 
 **Change declaration:** `SOURCE_SCENARIO_CHANGE_ONLY`
 
@@ -23,6 +23,16 @@ before resolution, requires all 1,500 predecessor states, records the final
 optimizer selection, and replaces protected-action substring filtering with an
 exact action/case allowlist. The correction is governed by authorization
 `VAL-CORPUS-002-B0-CORRECTION-2026-08-03` under `EWP_TOOLING_STAGE_V1`.
+
+The bounded continuation closes the governed P2 gate. Governed and synthetic
+status/record-class pairs are exact and disjoint. Governed validation requires
+an authorized verification root and expected B1 authorization,
+content-verifies the source cohort and closed calibration-artifact manifest,
+reconstructs the one-placeholder calibration configuration, binds all five
+required retained artifacts, verifies the unique selected optimizer row, and
+recomputes the three-mass relative-MSE objective. Synthetic fixtures use a
+separate nonproduction path and cannot enter governed freeze or bulk
+materialization.
 
 ## Direct predecessor reference
 

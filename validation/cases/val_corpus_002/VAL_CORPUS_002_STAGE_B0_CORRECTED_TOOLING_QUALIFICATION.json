@@ -55,7 +55,26 @@
       60.0
     ]
   },
-  "disposition": "VAL_CORPUS_002_STAGE_B0_CORRECTED_TOOLING_PENDING_REVIEW",
+  "disposition": "VAL_CORPUS_002_STAGE_B0_FINAL_TOOLING_PENDING_REVIEW",
+  "governed_artifact_manifest": {
+    "content_verification": "ALL_MEMBERS_MANDATORY_FAIL_CLOSED",
+    "required_roles": [
+      "CALIBRATION_CONFIGURATION",
+      "CALIBRATION_REDUCTION",
+      "NUMERICAL_VERIFICATION",
+      "OPTIMIZER_TRACE",
+      "RETAINED_MODEL_OUTPUT_TRACE"
+    ],
+    "schema_path": "validation/cases/val_corpus_002/VAL_CORPUS_002_CALIBRATION_ARTIFACT_MANIFEST_SCHEMA.json",
+    "schema_sha256": "e224be9d68f0a5f2978545f8a323acce0f1620793a1ab2416b541514b31f0436"
+  },
+  "governed_reconstruction": {
+    "calibration_template_sha256": "2e688b4f9e756aa9bc3890f4eb8a05b9191f28208c1fc4a431d9a84fa3b710b8",
+    "configuration": "ONE_TYPED_PLACEHOLDER_RECONSTRUCTED_AND_HASH_VERIFIED",
+    "objective": "EXACT_THREE_MASS_RELATIVE_MSE_RECOMPUTED",
+    "objective_serialization_absolute_tolerance": 1e-15,
+    "optimizer_trace": "UNIQUE_SELECTED_FINAL_ROW_VERIFIED"
+  },
   "governed_scoring": "NOT_PERFORMED",
   "interval_input": [
     "time_s",
@@ -85,9 +104,12 @@
     "nonconverged_manifest": "PROHIBITED"
   },
   "p2_materialization": {
+    "governed_content_verification": "MANDATORY",
     "identical_manifest_bound_rate": "REQUIRED",
     "input": "EXACT_CALIBRATION_MANIFEST_ONLY",
     "raw_rate": "PROHIBITED",
+    "status_record_class_pairing": "EXACT_FAIL_CLOSED",
+    "synthetic_path": "SEPARATE_NONPRODUCTION_ONLY",
     "template_count": 15
   },
   "parity": {
