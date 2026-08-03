@@ -84,6 +84,15 @@
   the optimizer. Stage B2 and transfer/production scoring have not started;
   physical validation is not established and new physics is not justified.
 
+- VAL-CORPUS-002 Stage B2 partial execution: materialized the fixed B1 rate
+  and attempted the frozen production matrix. Twenty-six identities passed
+  and eighteen Schmieder H0 identities retained typed 60 g coverage failures.
+  Waszkiewicz P0/P1 completed and predecessor parity passed all 1,500 states.
+  Waszkiewicz P2 preparation failed twice because its typed placeholder object
+  was not reduced to the scalar required by `prepare_case`; the stage stopped
+  before sensitivities or governed scoring. No refit, solver change, protected
+  access, new physics, or merge occurred.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.

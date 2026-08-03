@@ -1,0 +1,42 @@
+{
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "b1_anchor_reuse": "PASS_EXACT",
+  "calibration": "CLOSED_NO_REFIT",
+  "external_artifact_aggregate_sha256": "db510fb5b0431152b39a7513d99cf2604702573948fe3f2f3d326bb4bfade999",
+  "external_artifact_file_count": 1909,
+  "external_artifact_total_bytes": 1260323825,
+  "failure": {
+    "attempt_1": "INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE_NO_OBJECTIVE",
+    "attempt_2": "INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE_NO_OBJECTIVE",
+    "case_id": "WASZ_9_COMPACT_P2_FIXED_AFTER_EXP7_CALIBRATION_CHEMISTRY",
+    "exact_cause": "MANIFEST_MATERIALIZATION_REPLACED_TYPED_TOKEN_BUT_RETAINED_PLACEHOLDER_OBJECT_REJECTED_BY_PREPARE_CASE",
+    "openfoam_started": false,
+    "third_attempt": "PROHIBITED"
+  },
+  "governed_metrics": "NOT_CALCULATED_AFTER_TERMINAL_INFRASTRUCTURE_FAILURE",
+  "governing_physics_change": "NO_GOVERNING_PHYSICS_CHANGE",
+  "predecessor_parity": {
+    "compared_reference_states": 1500,
+    "domain_s": [0.02, 29.9999999999994],
+    "status": "PASS"
+  },
+  "production": {
+    "fresh_openfoam_attempts": 44,
+    "identity_infrastructure_failed": 1,
+    "identity_passed": 26,
+    "identity_typed_failed": 18,
+    "planned_identities": 45,
+    "reused_identities": 1,
+    "terminal_identity_dispositions": 45
+  },
+  "profile": "EWP_PRODUCTION_AND_SCORING_STAGE_V1",
+  "protected_scoring": "NOT_PERFORMED",
+  "p2_rate_hex": "0x1.6036f8e53bf4ep-2",
+  "p2_rate_s_inverse": 0.3439597024835067,
+  "schema_version": "espresso.val_corpus_002.b2_partial_result.v1",
+  "sensitivity": {
+    "executed_identities": 0,
+    "planned_identities": 9
+  },
+  "stage_b2_disposition": "RESULT_INCOMPLETE_REPEATED_P2_WASZKIEWICZ_MATERIALIZATION_INFRASTRUCTURE_FAILURE"
+}

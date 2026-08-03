@@ -1,4 +1,4 @@
-# Package QA status — immutable baseline and VAL-CORPUS-002 Stage-B1 frozen candidate
+# Package QA status — immutable baseline and VAL-CORPUS-002 Stage-B2 incomplete result
 
 Historical sections below describe immutable merged or released evidence.
 Explicit current-check sections distinguish the merged WP03-002 state from the
@@ -63,7 +63,16 @@ and source/holdout-fit counts remained zero.
 - shell syntax: PASS
 - JSON syntax: PASS
 
-## VAL-CORPUS-002 Stage B1 current disposition
+## VAL-CORPUS-002 Stage B2 current disposition
+
+Stage B2 stopped after the Waszkiewicz P2 identity failed `prepare_case` on
+both permitted attempts. Of 45 production identities, 26 passed, 18 have
+typed target-coverage failures, and one has the terminal infrastructure
+failure. Predecessor parity passed 1,500/1,500 states. Sensitivity execution
+and governed scoring were not performed. The current suite is 418/418 PASS,
+static validation is 38/38 PASS, and source verification is 260/260 PASS.
+
+## VAL-CORPUS-002 Stage B1 calibration disposition
 
 Stage B1 is complete as an exact frozen calibration candidate pending final
 pre-B2 review. The P2 rate is `0.3439597024835067 s^-1` and is restricted to

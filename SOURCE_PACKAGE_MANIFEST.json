@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 259,
-  "total_uncompressed_bytes_excluding_manifest": 2536209,
-  "aggregate_source_sha256": "16d10d1d31067129b0dcfaf29352b1a0a13f650a348f21f0d33a725ed4934f25",
-  "aggregate_sha256": "16d10d1d31067129b0dcfaf29352b1a0a13f650a348f21f0d33a725ed4934f25",
+  "file_count": 260,
+  "total_uncompressed_bytes_excluding_manifest": 2538085,
+  "aggregate_source_sha256": "88914cd6f7d5c80cb3cc78803d4f1446bb709bccaddc55cd100bd74029108dfb",
+  "aggregate_sha256": "88914cd6f7d5c80cb3cc78803d4f1446bb709bccaddc55cd100bd74029108dfb",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,13 +444,13 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "0d4934d9a3c04abb565d9a90fa22e3dfe27623958dfc9c8173f306d9f08ed6c7",
-      "bytes": 47629,
+      "sha256": "fcf4d14ef639024fa8e6e6448dfa506d04191ea733e701e48e790a92de1eafe7",
+      "bytes": 47691,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "7014b4220356b87c61eb244ca44f1b2cfc1a06c1ee2bd908318c3c0b860a9883",
-      "bytes": 13194,
+      "sha256": "d61361707eb4b20959c22931c01816367edc6d2bf202fc1ebe38ca31176a45a4",
+      "bytes": 13696,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -611,6 +611,11 @@
     "docs/validation/VAL_CORPUS_002_STAGE_B2_ACTIVATION.md": {
       "sha256": "c3f44d1175e6348904cb6bb03326de9fca4c1af2226361f9068a9b36d2b7d49d",
       "bytes": 1031,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B2_PARTIAL_RESULT.md": {
+      "sha256": "8426403a9ee17243d7d6a016ca1d4b6e2544f70415932d95e9ebcb024260f560",
+      "bytes": 1312,
       "git_mode": "100644"
     },
     "docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md": {

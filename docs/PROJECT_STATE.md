@@ -7,8 +7,8 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 259/259 PASS
-- Active validation case: `VAL_CORPUS_002_STAGE_B2_PROSPECTIVE_ACTIVATION`
+- Public source verification: 260/260 PASS
+- Active validation case: `VAL_CORPUS_002_STAGE_B2_RESULT_INCOMPLETE_INFRASTRUCTURE_FAILURE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
@@ -37,8 +37,11 @@ and independently reduces the retained trace, validates the closed numerical
 record, and deterministically reproduces the strengthened governed bundle
 without solver or optimizer execution. Stage B2 is prospectively activated
 for the exact fixed 45-case production and nine-identity sensitivity
-inventory; no B2 model result has yet been accessed. Protected scoring and
-VAL-CASE-002 remain unauthorized and have not started.
+inventory. The fixed matrix reached 44 terminal production dispositions, but
+the Waszkiewicz P2 preparation failed on both permitted attempts; Stage B2 is
+therefore incomplete and sensitivity execution and governed scoring did not
+begin. Protected scoring and VAL-CASE-002 remain unauthorized and have not
+started.
 
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
 admissible independent dataset or the synchronized pressure, flow/mass,

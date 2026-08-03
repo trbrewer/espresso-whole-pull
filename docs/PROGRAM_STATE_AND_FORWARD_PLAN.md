@@ -75,7 +75,7 @@ VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
 ACTIVE_VALIDATION_CASE:
-  VAL_CORPUS_002_STAGE_B2_PROSPECTIVE_ACTIVATION
+  VAL_CORPUS_002_STAGE_B2_RESULT_INCOMPLETE_INFRASTRUCTURE_FAILURE
 
 ACTIVE_DATA_PLANNING_TASK:
   NONE
@@ -99,17 +99,18 @@ VAL_CASE_002:
   NOT_STARTED
 
 CURRENT_SCIENTIFIC_TASK:
-  VAL_CORPUS_002_STAGE_B2_FIXED_PARAMETER_PRODUCTION_SENSITIVITY_AND_SCORING
+  VAL_CORPUS_002_STAGE_B2_STOPPED_REPEATED_WASZKIEWICZ_P2_PREPARATION_FAILURE
 ```
 
 WP03-002 is complete, approved, and merged. VAL-CORPUS-002 Stage A and final
 Stage-B0 tooling are exact-head approved. Stage B1 is complete as an exact
 frozen Experiment-7/H1 calibration candidate pending final pre-B2 review. Its
 local reconstruction rate is `0.3439597024835067 s^-1`. OpenFOAM was executed
-for B1 calibration only. Stage B2 is prospectively authorized from the exact
-frozen candidate: 42 Schmieder production identities terminate at 90 s and
-three Waszkiewicz production identities terminate at 63 s. Calibration is
-closed with no refit. Protected scoring remains prohibited.
+for B1 calibration only. Stage B2 retained 26 passing, 18 typed-failed, and
+one infrastructure-failed production identity. The last Waszkiewicz P2 case
+failed preparation twice, so the stage stopped before sensitivity execution
+or governed scoring. Calibration remains closed with no refit. Protected
+scoring remains prohibited.
 
 ---
 

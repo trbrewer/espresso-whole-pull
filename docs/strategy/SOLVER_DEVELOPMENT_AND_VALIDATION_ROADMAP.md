@@ -47,9 +47,11 @@ VAL-CORPUS-002 Stage A and Stage B0 are exact-head approved. Stage B1 is
 complete as an exact frozen Experiment-7/H1 calibration candidate pending
 final pre-B2 review. Its local reconstruction P2 rate is
 `0.3439597024835067 s^-1`. OpenFOAM was executed for B1 calibration only.
-Stage B2 has not started, and transfer, production, sensitivity and protected
-scoring were not performed. Physical validation remains unestablished and new
-governing physics is not yet justified.
+Stage B2 retained 26 passing and 18 typed-failed production identities before
+the final Waszkiewicz P2 identity failed preparation on both permitted
+attempts. The stage stopped before sensitivity execution or governed scoring.
+The partial matrix is evidence, not physical validation; protected scoring
+was not performed and new governing physics remains unauthorized.
 
 ### Workstream 1 — Validation-case framework
 
