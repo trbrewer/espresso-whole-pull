@@ -32,7 +32,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 263,
-    "source_manifest_aggregate_sha256": "473679d1a81260b47663fb09e1e11d55690497190b4d6d2edb69a267ddd7afdc",
+    "source_manifest_aggregate_sha256": "383794392757197afd53bfb7eea5b894e9017e481e385b9b55a4e0f0b0e53123",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",

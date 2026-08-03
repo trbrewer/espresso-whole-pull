@@ -131,7 +131,8 @@ def _record_location(original_root: Path, run_id: str) -> tuple[Path, Path, Path
     raise ValueError(f"terminal record missing: {run_id}")
 
 
-def verify_partial_cache(repo: Path, b1_root: Path, original_root: Path) -> dict:
+def verify_partial_cache(repo: Path, b1_root: Path, original_root: Path,
+                         reference_root: Path) -> dict:
     configs, hashes = configuration_maps(repo, b1_root)
     ids = sorted(set(configs) - {WASZ_P2_ID})
     if len(ids) != 44:
@@ -162,7 +163,7 @@ def verify_partial_cache(repo: Path, b1_root: Path, original_root: Path) -> dict
                 if model != record["model_cup_solute_masses_g"] or gates != record["numerical_gates"]:
                     raise ValueError(f"cache reduction mismatch: {run_id}")
             elif run_id == "WASZ_9_COMPACT_P0_CHEMISTRY":
-                reference = Path("/home/tim/espresso-development/.wp03-002-exact-head-review") / b2.REFERENCE_TRACE
+                reference = reference_root / b2.REFERENCE_TRACE
                 parity = b0.compare_bound_predecessor_parity(reference, b0._read_parity_csv(trace_path))
                 if parity["status"] != "PASS" or parity["compared_reference_states"] != 1500:
                     raise ValueError("cached predecessor parity mismatch")
@@ -219,9 +220,10 @@ def _trace_for(original_root: Path, recovery_root: Path, run_id: str) -> Path:
 
 
 def frozen_results(repo: Path, b1_root: Path, original_root: Path,
-                   recovery_root: Path, puckworks_root: Path) -> dict:
+                   recovery_root: Path, puckworks_root: Path,
+                   reference_root: Path) -> dict:
     configs, hashes = configuration_maps(repo, b1_root)
-    cache = verify_partial_cache(repo, b1_root, original_root)
+    cache = verify_partial_cache(repo, b1_root, original_root, reference_root)
     summaries, axis_roles = _source_summaries(repo)
     cache_by_id = {row["run_id"]: row for row in cache["identities"]}
     availability, schmieder = [], {}
@@ -476,6 +478,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--recovery-root", type=Path)
     parser.add_argument("--puckworks-root", type=Path)
+    parser.add_argument("--reference-root", type=Path)
     args = parser.parse_args()
     root, b1_root = args.root.resolve(), args.b1_root.resolve()
     if args.command == "inventory":
@@ -486,12 +489,16 @@ def main() -> None:
     elif args.command == "cache":
         if not args.original_root:
             raise SystemExit("--original-root required")
-        _dump(args.output, verify_partial_cache(root, b1_root, args.original_root.resolve()))
+        if not args.reference_root:
+            raise SystemExit("cache requires --reference-root")
+        _dump(args.output, verify_partial_cache(root, b1_root, args.original_root.resolve(),
+                                                args.reference_root.resolve()))
     elif args.command == "analyze":
-        if not args.original_root or not args.recovery_root or not args.puckworks_root:
-            raise SystemExit("analyze requires --original-root, --recovery-root and --puckworks-root")
+        if not args.original_root or not args.recovery_root or not args.puckworks_root or not args.reference_root:
+            raise SystemExit("analyze requires --original-root, --recovery-root, --puckworks-root and --reference-root")
         _dump(args.output, frozen_results(root, b1_root, args.original_root.resolve(),
-                                         args.recovery_root.resolve(), args.puckworks_root.resolve()))
+                                         args.recovery_root.resolve(), args.puckworks_root.resolve(),
+                                         args.reference_root.resolve()))
     elif args.command == "bundle":
         if not args.original_root or not args.recovery_root:
             raise SystemExit("bundle requires --original-root and --recovery-root")
