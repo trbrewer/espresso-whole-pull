@@ -66,6 +66,7 @@ TRACE_REQUIRED_FIELDS = {
     "min_concentration_kg_m3", "max_concentration_kg_m3",
 }
 MODEL_VECTOR_ABSOLUTE_TOLERANCE_G = 1e-12
+TERMINAL_TIME_SERIALIZATION_TOLERANCE_S = 1e-9
 OBJECTIVE_SERIALIZATION_ABSOLUTE_TOLERANCE = 1e-15
 REFERENCE = {
     "binding_class": "DIRECT_CONTENT_ADDRESS",
@@ -334,12 +335,19 @@ def _validate_numerical_record(record: object, manifest: dict, trace_row: dict) 
     if set(record["boundedness"]) != {"finite", "nonnegative", "tds_0_to_1"} or any(
             not isinstance(value, bool) for value in record["boundedness"].values()):
         raise ValueError("numerical verification boundedness contract mismatch")
+    if record["boundedness"] != {"finite": True, "nonnegative": True, "tds_0_to_1": True}:
+        raise ValueError("numerical verification boundedness must pass every gate")
     for key in ("first_solver_timestamp_s", "final_solver_timestamp_s",
                 "maximum_liquid_balance_relative_residual",
                 "maximum_solute_balance_relative_residual", "liquid_balance_gate", "solute_balance_gate"):
         _finite_number(record[key], key)
     if record["liquid_balance_gate"] != 1e-8 or record["solute_balance_gate"] != 1e-8:
         raise ValueError("numerical conservation gate mismatch")
+    if abs(record["final_solver_timestamp_s"] - record["end_time_s"]) > TERMINAL_TIME_SERIALIZATION_TOLERANCE_S:
+        raise ValueError("numerical verification did not reach terminal time")
+    if (record["first_solver_timestamp_s"] <= 0
+            or record["first_solver_timestamp_s"] > record["delta_t_s"] + 1e-12):
+        raise ValueError("numerical verification first timestamp is outside first step")
     if (record["maximum_liquid_balance_relative_residual"] < 0
             or record["maximum_solute_balance_relative_residual"] < 0
             or record["maximum_liquid_balance_relative_residual"] > record["liquid_balance_gate"]
@@ -391,10 +399,14 @@ def _semantic_trace_reduction(rows: list[dict[str, float]], configuration: dict)
     finite = all(math.isfinite(value) for row in rows for value in row.values())
     nonnegative = all(row[key] >= -1e-12 for row in rows for key in
                       ("cup_water_mass_kg", "cup_solute_mass_kg", "cup_beverage_mass_kg",
-                       "remaining_extractable_mass_kg", "dissolved_in_puck_mass_kg"))
+                       "cumulative_inlet_water_mass_kg", "remaining_extractable_mass_kg",
+                       "dissolved_in_puck_mass_kg"))
     tds_values = [row["cup_solute_mass_kg"] / row["cup_beverage_mass_kg"]
                   for row in rows if row["cup_beverage_mass_kg"] > 0]
     tds_ok = bool(tds_values) and all(0 <= value <= 1 for value in tds_values)
+    if not finite: raise ValueError("retained trace finite gate fails")
+    if not nonnegative: raise ValueError("retained trace nonnegative gate fails")
+    if not tds_ok: raise ValueError("retained trace TDS gate fails")
     minimum_saturation = min(row["min_saturation"] for row in rows)
     maximum_saturation = max(row["max_saturation"] for row in rows)
     minimum_concentration = min(row["min_concentration_kg_m3"] for row in rows)

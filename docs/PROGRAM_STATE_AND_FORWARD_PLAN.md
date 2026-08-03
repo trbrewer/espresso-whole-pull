@@ -75,7 +75,7 @@ VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
 ACTIVE_VALIDATION_CASE:
-  VAL_CORPUS_002_STAGE_B1_CALIBRATION_NOT_FROZEN_INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE
+  VAL_CORPUS_002_STAGE_B1_PRE_B2_CLOSURE_PENDING_REVIEW
 
 ACTIVE_DATA_PLANNING_TASK:
   NONE
@@ -99,14 +99,15 @@ VAL_CASE_002:
   NOT_STARTED
 
 CURRENT_SCIENTIFIC_TASK:
-  VAL_CORPUS_002_STAGE_B1_CALIBRATION_FAILURE_PENDING_REVIEW
+  VAL_CORPUS_002_STAGE_B1_COMPLETE_EXACT_FROZEN_CANDIDATE_PENDING_FINAL_PRE_B2_REVIEW
 ```
 
 WP03-002 is complete, approved, and merged. VAL-CORPUS-002 Stage A and final
-Stage-B0 tooling are exact-head approved. Stage B1 attempted only the
-Experiment-7/H1 calibration and stopped before convergence on an
-infrastructure/orchestration failure. No P2 candidate was frozen. Stage B2 and
-transfer or protected scoring are not authorized.
+Stage-B0 tooling are exact-head approved. Stage B1 is complete as an exact
+frozen Experiment-7/H1 calibration candidate pending final pre-B2 review. Its
+local reconstruction rate is `0.3439597024835067 s^-1`. OpenFOAM was executed
+for B1 calibration only. Stage B2 has not started; transfer, production,
+sensitivity and protected scoring were not performed and remain unauthorized.
 
 ---
 

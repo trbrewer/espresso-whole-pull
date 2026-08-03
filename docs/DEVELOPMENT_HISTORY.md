@@ -74,6 +74,16 @@
   no final selection marker or governed manifest was created, and P2 was not
   frozen. No transfer, protected, production, or sensitivity access occurred.
 
+- VAL-CORPUS-002 Stage B1 recovery and pre-B2 closure: preserved the interrupted
+  first attempt, content-verified all 20 passing evaluations, replayed the
+  optimizer from its original bounds, and completed 26 fresh evaluations. The
+  exact local Experiment-7/H1 P2 candidate is `0.3439597024835067 s^-1`.
+  Exact-head correction semantically reduced the retained trace, bound the
+  zero-exit attempt-2 selection, and made boundedness and 90-second completion
+  fail closed. Finalize-only revalidation passed without rerunning OpenFOAM or
+  the optimizer. Stage B2 and transfer/production scoring have not started;
+  physical validation is not established and new physics is not justified.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.

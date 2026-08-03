@@ -1,8 +1,8 @@
-# Package QA status — immutable baseline and VAL-CORPUS-002 Stage-B0 tooling candidate
+# Package QA status — immutable baseline and VAL-CORPUS-002 Stage-B1 frozen candidate
 
 Historical sections below describe immutable merged or released evidence.
 Explicit current-check sections distinguish the merged WP03-002 state from the
-open, prospective VAL-CORPUS-002 Stage-B0 tooling candidate; they do not redefine the
+open VAL-CORPUS-002 Stage-B1 calibration candidate; they do not redefine the
 immutable release baseline.
 
 ## Immutable v0.2.0 release snapshot
@@ -46,7 +46,7 @@ and source/holdout-fit counts remained zero.
 ## Current repository checks
 
 - merged WP03-002 baseline Python suite: 351/351 PASS;
-- current VAL-CORPUS-002 Stage-B0 Python suite: final count recorded in
+- current VAL-CORPUS-002 Stage-B0/B1 Python suite: final count recorded in
   `PACKAGE_QA_STATUS.json` after repository-wide qualification;
 - current active static gates: 38/38 PASS;
 - current source manifest: final corrected count recorded in
@@ -62,6 +62,16 @@ and source/holdout-fit counts remained zero.
   `AMENDED_CANONICAL_RESULT_PRESENT_AND_VERIFIED`
 - shell syntax: PASS
 - JSON syntax: PASS
+
+## VAL-CORPUS-002 Stage B1 current disposition
+
+Stage B1 is complete as an exact frozen calibration candidate pending final
+pre-B2 review. The P2 rate is `0.3439597024835067 s^-1` and is restricted to
+the local Experiment-7/H1 reconstruction role. OpenFOAM was executed for B1
+calibration only; the pre-B2 closure revalidated immutable artifacts without
+OpenFOAM or optimizer execution. Stage B2 is `NOT_STARTED`; transfer or
+production scoring is `NOT_PERFORMED`. Physical validation is not established,
+and new governing physics is not yet justified.
 
 ## Merged VAL-CASE-001
 

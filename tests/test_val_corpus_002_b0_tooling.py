@@ -376,6 +376,11 @@ class GovernedManifestContentTests(unittest.TestCase):
             lambda value: value|{"target_mass_brackets":{"20_g":"PASS","40_g":"FAIL","60_g":"PASS"}},
             lambda value: value|{"maximum_liquid_balance_relative_residual":2e-8},
             lambda value: value|{"maximum_solute_balance_relative_residual":2e-8},
+            lambda value: value|{"boundedness":{"finite":False,"nonnegative":True,"tds_0_to_1":True}},
+            lambda value: value|{"boundedness":{"finite":True,"nonnegative":False,"tds_0_to_1":True}},
+            lambda value: value|{"boundedness":{"finite":True,"nonnegative":True,"tds_0_to_1":False}},
+            lambda value: value|{"final_solver_timestamp_s":89.},
+            lambda value: value|{"first_solver_timestamp_s":.020000000002},
             lambda value: value|{"selected_evaluation_sequence":1},
             lambda value: value|{"trace_sha256":"f"*64},
             lambda value: value|{"trace_bytes":1},
@@ -400,8 +405,11 @@ class GovernedManifestContentTests(unittest.TestCase):
             elif case=="saturation_low": rows[1]["min_saturation"]=-1e-3
             elif case=="saturation_high": rows[1]["max_saturation"]=1.1
             elif case=="negative_concentration": rows[1]["min_concentration_kg_m3"]=-1e-3
+            elif case=="negative_cumulative": rows[0]["cumulative_inlet_water_mass_kg"]=-1e-3
+            elif case=="tds_above_one": rows[1]["cup_solute_mass_kg"]=.05
         cases=("nonmonotone_time","decreasing_mass","extrapolation","model_vector",
-               "liquid_gate","solute_gate","saturation_low","saturation_high","negative_concentration")
+               "liquid_gate","solute_gate","saturation_low","saturation_high","negative_concentration",
+               "negative_cumulative","tds_above_one")
         for case in cases:
             with self.subTest(case=case), tempfile.TemporaryDirectory() as directory:
                 root=Path(directory); manifest,artifact,paths=governed_fixture(root)
@@ -424,6 +432,25 @@ class GovernedManifestContentTests(unittest.TestCase):
                 refresh_artifact_member(manifest,artifact,trace,"RETAINED_MODEL_OUTPUT_TRACE")
                 refresh_artifact_member(manifest,artifact,paths["NUMERICAL_VERIFICATION"],"NUMERICAL_VERIFICATION")
                 with self.assertRaises(ValueError): self.validate(manifest,root)
+
+    def test_equally_early_trace_and_numerical_record_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest,artifact,paths=governed_fixture(root)
+            trace=paths["RETAINED_MODEL_OUTPUT_TRACE"]
+            with trace.open(newline="") as stream:
+                reader=csv.DictReader(stream); fields=reader.fieldnames; rows=list(reader)
+            rows[-1]["time_s"]="89.0"
+            with trace.open("w",newline="") as stream:
+                writer=csv.DictWriter(stream,fieldnames=fields); writer.writeheader(); writer.writerows(rows)
+            numerical=json.loads(paths["NUMERICAL_VERIFICATION"].read_text())
+            numerical["final_solver_timestamp_s"]=89.0
+            numerical["trace_sha256"]=b0.file_sha256(trace); numerical["trace_bytes"]=trace.stat().st_size
+            with trace.open("rb") as stream:
+                numerical["trace_header_sha256"]=hashlib.sha256(stream.readline()).hexdigest()
+            paths["NUMERICAL_VERIFICATION"].write_text(json.dumps(numerical,sort_keys=True)+"\n")
+            refresh_artifact_member(manifest,artifact,trace,"RETAINED_MODEL_OUTPUT_TRACE")
+            refresh_artifact_member(manifest,artifact,paths["NUMERICAL_VERIFICATION"],"NUMERICAL_VERIFICATION")
+            with self.assertRaises(ValueError): self.validate(manifest,root)
 
     def test_selected_infrastructure_provenance_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

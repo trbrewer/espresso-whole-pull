@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 256,
-  "total_uncompressed_bytes_excluding_manifest": 2508658,
-  "aggregate_source_sha256": "3e853ce146fac417093eb76a09a7009cd41f276fd589e3ecb2167abd01991637",
-  "aggregate_sha256": "3e853ce146fac417093eb76a09a7009cd41f276fd589e3ecb2167abd01991637",
+  "total_uncompressed_bytes_excluding_manifest": 2512272,
+  "aggregate_source_sha256": "ca75e59907972d65d8c905d0af2abee710ccfbbe65d291130faf40f3926da468",
+  "aggregate_sha256": "ca75e59907972d65d8c905d0af2abee710ccfbbe65d291130faf40f3926da468",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,13 +444,13 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "ddb7753208b21dcf8917c90a4497bac8bc2b83e440095f9003cb253336b5976f",
-      "bytes": 47328,
+      "sha256": "7b16f008f7de7c94c71ce6f6f5170a7079a8e45a0bc4adc678365c0df0e4f131",
+      "bytes": 47438,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "4462455662beee50a40f0f9f292544976a2a4eb0e0f225f6979d021d53274fbe",
-      "bytes": 12647,
+      "sha256": "7014b4220356b87c61eb244ca44f1b2cfc1a06c1ee2bd908318c3c0b860a9883",
+      "bytes": 13194,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -929,8 +929,8 @@
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_b0_tooling.py": {
-      "sha256": "3b9cfef9bffdbb6793cf4b9c8b9b0e7c6dadbd252b6043019f20d2d6e9063b29",
-      "bytes": 79155,
+      "sha256": "d781bbb11db466dc7fc32bb96f32f82726d485d9c10d38586f6b1afa698f37cb",
+      "bytes": 80068,
       "git_mode": "100755"
     },
     "scripts/val_corpus_002_b1_calibration.py": {
@@ -1234,8 +1234,8 @@
       "git_mode": "100644"
     },
     "tests/test_val_corpus_002_b0_tooling.py": {
-      "sha256": "6fbd305052fcb698698eb5e01cd0331eaed7f40d1ac13f1906da9ddfb086819a",
-      "bytes": 36034,
+      "sha256": "e7c0cf6c1a4a172ff87652fd605620cd1c6d0953f44d1592e690a150fec9956b",
+      "bytes": 38078,
       "git_mode": "100644"
     },
     "tests/test_val_corpus_002_b1_calibration.py": {

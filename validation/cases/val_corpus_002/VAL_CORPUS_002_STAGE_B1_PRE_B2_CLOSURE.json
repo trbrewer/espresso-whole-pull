@@ -1,0 +1,25 @@
+{
+  "authorization_id": "VAL-CORPUS-002-B1-CALIBRATION-2026-08-03",
+  "boundedness": "EXACT_TRUE_TRUE_TRUE_FAIL_CLOSED",
+  "calibration": "EXP7_H1_COMPLETE_P2_FROZEN_CANDIDATE",
+  "existing_strengthened_bundle": {
+    "artifact_aggregate_sha256": "0ad09fdf9ca56b8aad8890101ef85db0ca2c90d3dc32a3c03a36574c70277208",
+    "artifact_manifest_sha256": "357d10d8fa5b18245d639dfdc62f25d4afa151aa11c76bf10f13f637ce5885a8",
+    "calibration_manifest_sha256": "554ce1c35979fa8961973b8cdd663a7a0ba817f6369667ea10808a06f644cbbc",
+    "governed_validator": "PASS",
+    "p2_freeze_barrier": "PASS"
+  },
+  "model_cup_solute_masses_g": [2.782144673131987, 4.227214080217558, 4.334636376028199],
+  "objective": 0.003931989579189616,
+  "openfoam": "EXECUTED_FOR_B1_CALIBRATION_ONLY_NO_CLOSURE_RERUN",
+  "optimizer_rerun": "NOT_PERFORMED",
+  "p2_rate_role": "LOCAL_EXPERIMENT_7_H1_RECONSTRUCTION",
+  "p2_rate_s_inverse": 0.3439597024835067,
+  "physical_validation": "NOT_ESTABLISHED",
+  "profile": "EWP_CALIBRATION_STAGE_V1",
+  "schema_version": "espresso.val_corpus_002.b1_pre_b2_closure.v1",
+  "stage_b1": "COMPLETE_EXACT_FROZEN_CALIBRATION_CANDIDATE_PENDING_FINAL_PRE_B2_REVIEW",
+  "stage_b2": "NOT_STARTED",
+  "terminal_time_serialization_tolerance_s": 1e-9,
+  "transfer_or_production_scoring": "NOT_PERFORMED"
+}
