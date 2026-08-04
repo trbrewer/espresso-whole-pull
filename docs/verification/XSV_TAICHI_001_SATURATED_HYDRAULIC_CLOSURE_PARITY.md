@@ -1,0 +1,213 @@
+# XSV-TAICHI-001 saturated hydraulic closure parity
+
+## 1. Identity and status
+
+- Task: `XSV-TAICHI-001`
+- Authorization: `XSV-TAICHI-001-CROSS-SOLVER-EXECUTION-2026-08-04`
+- Profile: `EWP_XSV_TAICHI_001_CROSS_SOLVER_EXECUTION_STAGE_V1`
+- Change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
+- Evidence class: `SIMULATED_SYNTHETIC_REFERENCE`
+- Current status: `G0_PROTOCOL_FREEZE_PENDING_EXACT_HEAD_CI`
+- Issue: [#58](https://github.com/trbrewer/espresso-whole-pull/issues/58)
+- Branch: `verification/xsv-taichi-001-saturated-hydraulic-closure-parity`
+- Pull request: `BOOTSTRAP_PENDING`
+
+### Human-owner staged authorization and task-specific capability profile
+
+The human owner authorized this task-specific, nonreusable profile. It permits
+only the prospectively gated synthetic NumPy, Taichi CPU/CUDA and unchanged-
+source Foundation OpenFOAM 12 executions declared here. It grants no physics
+change, calibration, protected scoring, dependency advance, or merge. It does
+not replace independent physical data. Retained numerical execution remains
+prohibited until the protocol-first commit and both required exact-head CI
+checks pass.
+
+## 2. Why the task is being conducted now
+
+VAL-CORPUS-002 is complete, approved and merged, while the scientific gate
+remains `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`. This parallel computational-
+verification task qualifies a closure interface before any later morphology
+work is considered. It neither satisfies nor weakens that evidence gate.
+
+## 3. Scientific questions
+
+The governed order is: locked NumPy/Taichi backend parity; exact quantity and
+reference-volume semantics; analytical channel verification; transfer of one
+frozen M0 closure to the continuum gross-area Darcy convention; exact uniform,
+series and parallel OpenFOAM composition; and a reusable fail-closed contract.
+
+## 4. Non-purposes and claim ceiling
+
+The work does not represent real coffee morphology, infer real-coffee
+permeability, test fines, identify mechanisms, run a full basket, use physical
+data, validate espressoWholePullFoam, or establish transfer.
+
+```text
+PHYSICAL_VALIDATION: NOT_ESTABLISHED
+GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION: NOT_ESTABLISHED
+DIRECT_VALIDATION_OF_ESPRESSO_WHOLE_PULL_FOAM: NO
+INDEPENDENT_PHYSICAL_DATA: NO
+NEW_GOVERNING_PHYSICS: NOT_YET_JUSTIFIED
+```
+
+## 5. Repository and model architecture
+
+Puckworks is a detached, read-only runtime dependency. Its locked D3Q19 TRT
+NumPy reference, Taichi implementation and pack generator produce the three
+fixed synthetic masks and LBM results. The repository-local runner performs
+visible reductions and creates cases for the unchanged current
+`espressoWholePullFoam`. Raw products stay outside Git.
+
+## 6. Locked source identities
+
+| Source | Identity |
+|---|---|
+| espresso-whole-pull start | commit `0dc98b649312108067310a90b9a8f79e636c4adb`; tree `0e981087e27c7e04bdcd0acec2da2ec59c3953d7` |
+| Puckworks | commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`; tree `1d553e44ee2f7480a5df521560801b478618cc84` |
+| `lb_reference.py` | `9a60371d7777d3d91fe7df2ea529db498268f12b08ab6c461ec511190a0a989f` |
+| `lb_taichi.py` | `c0c52eaae0d6f5753eac3b41501db6645251efe56812c152b83ad2a521d9663f` |
+| `pack_generator.py` | `864416314c889793684fef0a143cab48f99056b72f715adf1a522298c7d9512b` |
+| `espressoWholePullFoam.C` | `a292021a19740e4dd8869a2fa63aaeaa95ea3843016734768b492ca2d2f38dd7` |
+
+## 7. Quantity and reference-volume contract
+
+The mask convention is `solid == 1`, `fluid == 0`. Define
+
+```text
+phi_gross = N_fluid / N_total
+q_box_lu = sum_fluid(u_x_with_half_force_correction) / N_total
+u_void_lu = q_box_lu / phi_gross
+nu_lu = (tau_plus - 0.5) / 3
+K_gross_lu = nu_lu * q_box_lu / g_lu
+K_void_lu = nu_lu * u_void_lu / g_lu
+K_void_lu = K_gross_lu / phi_gross
+k_puckworks_returned = nu_lu * q_box_lu / (g_lu * phi_gross)
+k_puckworks_returned == K_void_lu
+```
+
+Connected porosity is a diagnostic and never replaces gross porosity in these
+definitions.
+
+## 8. Prospective permeability-adapter hypothesis
+
+The immutable primary adapter is
+
+```text
+K_EWP_lu = K_gross_lu
+K_EWP_lu = phi_gross * k_puckworks_returned
+K_EWP_SI = K_EWP_lu * delta_x_m^2
+G_SI = delta_p_Pa / bed_length_m
+q_Darcy_SI = K_EWP_SI * G_SI / mu_SI
+```
+
+The diagnostic alternate is `K_ALT_lu = k_puckworks_returned`. It cannot be
+substituted after exposure. Failure of the primary mapping requires
+`REFERENCE_VOLUME_ADAPTER_REJECTED_REQUIRES_SEPARATE_CORRECTION`.
+
+## 9. Fixed geometry definitions and hashes
+
+- `CH33`: `33 x 33 x 33`, flow `+x`, solid walls `z=0,32`, periodic x/y,
+  fluid width `h=31`, `phi=31/33`.
+- `SP32`: exact locked `lb_reference.sphere_case(L=32, c_nom=0.08)` mask.
+- `M0A`: exact locked `make_pack(L=40, voxel_um=30.0, gs=1.3,
+  phis_target=0.55, hetero_amp=0.0, hetero_len=8.0, seed=42)` mask.
+
+Payload and configuration hashes, counts, gross porosity and x-connected
+porosity are populated only in the separately committed geometry freeze.
+
+## 10. Fixed case matrix
+
+The authoritative matrix is
+`verification/cases/xsv_taichi_001/XSV_TAICHI_001_CASE_MATRIX.csv`.
+It contains exactly 19 retained LBM runs and eight retained OpenFOAM runs.
+LBM uses float64, `tau_plus=1.2`, `nu_lu=(tau_plus-0.5)/3`, check interval
+200, relative convergence tolerance `1e-6`, minimum 1500 steps, force levels
+`5e-7`, `1e-6`, `2e-6`, and fixed maxima CH33 40000, SP32 30000, M0A
+50000. Each Taichi run uses a fresh process.
+
+OpenFOAM uses unchanged source, Foundation 12, prescribed pressure, saturated
+Darcy only, zero extraction, constant viscosity `1e-3 Pa s`, density metadata
+`1000 kg/m3`, and no machine, wetting, chemistry, compaction, Forchheimer or
+dissolution-indexed permeability branch. Uniform target superficial velocities
+are `2.5e-4`, `5e-4`, and `1e-3 m/s`. The engineered composition contrast is
+`K_B=0.4*K_A` with equal axial lengths and equal radial areas.
+
+## 11. Acceptance gates
+
+- **G0:** exact authority, protocol-first commit, draft PR, source-and-boundary
+  and inexpensive-checks PASS before retained execution.
+- **G1:** duplicate mask/config hashes, valid porosity and x-through
+  connectivity, geometry-freeze commit and exact-head CI PASS.
+- **G2:** finite positive results; convergence before maximum; Mach `<=0.05`;
+  `Re_L<=0.10`; backend q and K parity `<=0.25%`; mid-force velocity L2
+  `<=2%`; channel K errors `<=0.75%`; force fit `R2>=0.9999`, q/g deviation
+  `<=1%`, normalized intercept `<=0.5%`.
+- **G3:** returned-k identity relative tolerance `1e-12`; primary channel
+  error `<=0.75%` and at least five times closer than the alternate.
+- **G4:** uniform Q and q errors `<=0.50%`; Q/delta-p deviation `<=0.50%`;
+  flux imbalance `<=1e-6`; alternate-porosity flow difference `<=1e-6`.
+- **G5:** series/parallel total and share errors `<=1%`; serial/MPI metrics
+  `<=1e-8`; flux imbalance `<=1e-6`.
+- **G6:** complete matrices, evidence, schemas, deterministic reduction,
+  repository qualification, source parity, protected parity and unchanged
+  claim ceiling.
+
+Every numerical or infrastructure failure uses the exact typed dispositions
+from the human directive. No failed or unfavorable row may be omitted.
+
+## 12. Runtime and artifact policy
+
+Complete evidence lives under a content-addressed logical
+`EXTERNAL_EVIDENCE_ROOT`; committed records contain no host, username or
+absolute path. The acyclic order is protocol, geometry, execution, raw
+retention, reduction, self-excluding manifest, archive, archive hash,
+committed result/artifact manifest, then source-manifest regeneration.
+CUDA uses one exact bundle, actual CUDA float64, one primary attempt and at
+most one identical infrastructure retry.
+
+## 13. Execution chronology
+
+1. Startup identities and read-only dependency: PASS.
+2. Issue #58: OPEN.
+3. Branch: CREATED_FROM_EXACT_START.
+4. Protocol-first commit and PR: PENDING.
+5. G1 through G6: NOT_STARTED.
+
+## 14. Numerical results
+
+`NOT_YET_GENERATED_PROSPECTIVE_PROTOCOL_ONLY`
+
+## 15. Typed failures, if any
+
+`NONE_AT_PROTOCOL_FREEZE`
+
+## 16. Limitations
+
+The three fixtures are synthetic methods controls. M0A is one overlapping-
+sphere mask with no fines or representativeness claim. The engineered second
+closure is not a second morphology. Reynolds and Mach are numerical-regime
+diagnostics. Any later morphology, anisotropy, fines, RVE or full-basket work
+requires fresh authority.
+
+## 17. Scientific interpretation
+
+Pending execution. “Cross-solver agreement” may be used only for the frozen
+synthetic saturated-Darcy fixtures and declared closure contract. It must not
+be abbreviated to a validation claim.
+
+## 18. Forward decision ladder
+
+Pass permits only recommending
+`XSV-TAICHI-002_SYNTHETIC_MORPHOLOGY_AND_REQUIRED_PERMEABILITY_COLLAPSE_SCREEN`
+with `AUTHORIZATION: NOT_GRANTED`. Adapter, backend, OpenFOAM, or
+infrastructure failure maps to the exact separately unauthorized correction
+class in the human directive. In all outcomes the independent-data gate and
+human-owner decision remain unchanged.
+
+## 19. Standing instructions for future Taichi/OpenFOAM work
+
+Preserve the exact quantity/reference-volume contract, separate backend
+parity from physical validation, bind every closure to geometry/source/unit
+hashes, retain failures, and require fresh human authority for every added
+geometry, run, threshold, mechanism, physical datum, XSV stage or merge.
+

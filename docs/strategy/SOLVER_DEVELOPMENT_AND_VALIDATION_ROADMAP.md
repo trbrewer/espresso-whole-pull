@@ -92,6 +92,20 @@ No validation case, data-planning task, solver task, or mechanism-selection
 task is active. Additional fitting or reuse of the same post-fit-derived
 cup-mass evidence is not a route to independent physical validation.
 
+## Parallel cross-solver closure-verification ladder
+
+- `XSV-TAICHI-001`: saturated hydraulic closure parity; authorized as a
+  temporary no-physics synthetic verification task.
+- `XSV-TAICHI-002`: synthetic morphology and required-permeability-collapse
+  screen; candidate only, not authorized.
+- `XSV-TAICHI-003`: optional same-geometry pore-scale OpenFOAM/Taichi
+  comparison; future possibility, not authorized.
+
+This ladder distinguishes backend parity, analytical verification and closure
+interface qualification from physical validation. It requires explicit unit,
+reference-volume and provenance contracts. No stage substitutes for
+independent physical data or changes the current scientific gate.
+
 ## Next human-owner decision
 
 The human owner may separately choose one of two evidence routes:

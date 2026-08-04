@@ -1,5 +1,13 @@
 # Development History
 
+- XSV-TAICHI-001 G0 protocol freeze (prospective): human-authorized,
+  task-specific `NO_GOVERNING_PHYSICS_CHANGE` cross-solver verification. It
+  freezes three synthetic geometries, 19 LBM and eight unchanged-source
+  OpenFOAM runs, the gross-area Darcy adapter, analytical gates, evidence
+  retention and the unchanged physical-validation ceiling before numerical
+  result generation. Strategy v1.6 is preserved byte-identically and strategy
+  v1.7 establishes the durable gated XSV ladder.
+
 - VAL-CORPUS-001 (complete, approved, and merged as PR #50): exact-head review correction preserved the
   original 16-condition history and executed a frozen 13-case correction
   matrix with the unchanged Foundation OpenFOAM 12 executable. All correction

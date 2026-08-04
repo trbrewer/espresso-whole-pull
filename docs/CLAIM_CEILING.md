@@ -16,3 +16,10 @@ or a universal permeability law.
 Version 0.2.0 may be described as reproducibly packaged and software-qualified
 within this declared scope. That release status does not raise the scientific
 claim ceiling.
+
+XSV-TAICHI-001 may establish only backend parity, analytical verification,
+reference-volume compatibility and closure consumption for its exact frozen
+synthetic saturated-Darcy fixtures. It uses no independent physical data and
+does not directly validate espressoWholePullFoam, represent real coffee, or
+authorize mechanism selection. `PHYSICAL_VALIDATION` and
+`GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION` remain `NOT_ESTABLISHED`.

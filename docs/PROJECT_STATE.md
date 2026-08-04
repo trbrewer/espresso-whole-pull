@@ -13,12 +13,28 @@
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
+- Active cross-solver verification task: `XSV-TAICHI-001`
+- Cross-solver work class:
+  `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
+- Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
+- Cross-solver evidence class: `SIMULATED_SYNTHETIC_REFERENCE`
+- Current scientific gate: `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`
+- Human-owner independent-data route decision: `STILL_REQUIRED`
+- Controlling strategy version: `1.7`
+- Prior strategy snapshot:
+  `docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
 
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).
+
+XSV-TAICHI-001 is a temporary no-physics computational-verification task. It
+does not activate a validation, data-planning, solver-development or
+mechanism-selection task and does not satisfy the additional-independent-data
+gate. Its live protocol is
+[XSV-TAICHI-001 saturated hydraulic closure parity](verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md).
 
 VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2
 result remains validation-support sensitivity and practical-identifiability

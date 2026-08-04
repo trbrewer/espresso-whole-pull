@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 273,
-  "total_uncompressed_bytes_excluding_manifest": 3072550,
-  "aggregate_source_sha256": "85cfc4da91928b068b22ec528bee86a65457229629d0722380fff475606ac307",
-  "aggregate_sha256": "85cfc4da91928b068b22ec528bee86a65457229629d0722380fff475606ac307",
+  "file_count": 278,
+  "total_uncompressed_bytes_excluding_manifest": 3218718,
+  "aggregate_source_sha256": "46e7c2b19b6862688919e157abb05b608cb006c5db22920aab453922e84946dd",
+  "aggregate_sha256": "46e7c2b19b6862688919e157abb05b608cb006c5db22920aab453922e84946dd",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "412d5610b0521914a20ae8ce0be8033bde05afc37b12242626dd3ef083b9bd95",
-      "bytes": 8391,
+      "sha256": "1e3918f7cfc5817f846c9cd0d5b5f616ad7ba6f7bfcd7b5f853563d809fc2047",
+      "bytes": 8610,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -444,13 +444,13 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "45114ceedcbaca0861777468063c65f3c1d84b626f7f2aeb32ec8e3323a616b0",
-      "bytes": 45587,
+      "sha256": "b66f4b1d10070ab302ef786afb03d6176f003b9b4ff254e0787a34c827024a2d",
+      "bytes": 45929,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "5ae460fcc5e491928a7889dd154ab651c2a8c79a9d1892d6238ad4b5ac352c9e",
-      "bytes": 14917,
+      "sha256": "e1abcbb7a12c4a852f7dcb72d6d86b4a353aa2f4a4adf3a6356791a7ffc8936d",
+      "bytes": 15240,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -516,6 +516,11 @@
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md": {
       "sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
       "bytes": 2160,
+      "git_mode": "100644"
+    },
+    "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md": {
+      "sha256": "5f8bc4bfbe8089d7ff6ff44955230f059a84df96c3903bfe064448abf8aef703",
+      "bytes": 123447,
       "git_mode": "100644"
     },
     "docs/validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md": {
@@ -706,6 +711,11 @@
     "docs/validation/templates/VALIDATION_CASE_RESULT_TEMPLATE.md": {
       "sha256": "9c4fcfd2591e460f644fdf25c7e9327659db66d476e33bddb03d6e912c79c167",
       "bytes": 1143,
+      "git_mode": "100644"
+    },
+    "docs/verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md": {
+      "sha256": "dedac6b8a0e3ac63a81f76421d9598d4976fd659743b5904c51fb2a6f3346513",
+      "bytes": 9305,
       "git_mode": "100644"
     },
     "docs/wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md": {
@@ -1396,6 +1406,21 @@
     "tests/test_wp03c_stage0.py": {
       "sha256": "e3f9cbbfa538acc320b01ca2180efa251138a4849cceaade1fdae00580d848f0",
       "bytes": 25759,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_taichi_001/XSV_TAICHI_001_CASE_MATRIX.csv": {
+      "sha256": "0d398a9e0fe356532ef6f1357f2c2da10327e9d1d47c17ac12efab2931bd05a7",
+      "bytes": 2518,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL.json": {
+      "sha256": "0a30204c15ea6fbe496647571c6fb061c38e180548a47d0cd57219e901d457ba",
+      "bytes": 5517,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_taichi_001/XSV_TAICHI_001_STAGE_AUTHORIZATION.json": {
+      "sha256": "7a253d29c542d5ad8ddb963f2604f63a49140495303b255d102ddf533777a9a9",
+      "bytes": 4497,
       "git_mode": "100644"
     }
   }
