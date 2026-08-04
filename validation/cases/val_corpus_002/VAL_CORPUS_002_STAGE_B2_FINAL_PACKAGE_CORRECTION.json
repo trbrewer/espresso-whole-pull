@@ -56,12 +56,31 @@
       "puckworks_lineage_authority_sha256": "8c988890b7b31479ff694ae6fc45fdd431e2ebd721e47e9d7e049939b421b0c9"
     },
     "closure": {
-      "status": "CORRECTION_AUTHORIZED_IN_PROGRESS",
-      "correction_commit": null,
-      "correction_head": null,
-      "correction_tree": null,
-      "changed_generated_hashes": null,
-      "qualification": null,
+      "status": "VAL_CORPUS_002_STAGE_B2_FIGURE_SEMANTICS_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+      "correction_commit": "8cd8b5431cdaceda7242f975d90f09f142ee8850",
+      "correction_head": "8cd8b5431cdaceda7242f975d90f09f142ee8850",
+      "correction_tree": "ff881ce3c5d7e2e8da9aa5a5ffff128de1ba1dc9",
+      "changed_generated_hashes": {
+        "production_availability_matrix_svg": "c243c06a9fd46eafe27e1934e8c3be40e2b9589fa33309e47996a0bdbb204872",
+        "schmieder_h1_axis_contrasts_svg": "0292810de091bede23ba284f2d25720516f106e87c77bb55595ca20c0cd8723c",
+        "schmieder_h1_source_model_svg": "d35aa0f9d005c70e0476b16f3a6bb3120e483c39a5e1b8f5b9be7908db31e394",
+        "sensitivity_matrix_and_singular_values_svg": "ea3bbabaa222d97fd90038724c45c2837d47ececcfab99f3f55671f8e4ee7dba",
+        "waszkiewicz_both_clocks_svg": "8f4b7bce271bfe97557b8adae37e0f528d77534d30f784f464caa582ae1ce8fa",
+        "figure_aggregate_sha256": "f755c6aea99134671edf0e23868d3e10a5c1b66063b93516bf5b450887b2faec",
+        "reporting_reducer_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
+        "figure_manifest_sha256": "7dfff8c964e30a8a5179acff6540fa33eb558a889ca8b34a5bb287bd96eebee8",
+        "final_report_manifest_sha256": "4a7fa7235ad2f2faddaec16f058846f3f30f4c986d5ac3adf442c0c5d4e00ab6"
+      },
+      "qualification": {
+        "python_tests": "445/445 PASS",
+        "focused_stage_b2_tests": "36/36 PASS",
+        "static_gates": "38/38 PASS",
+        "source_manifest": "272/272 PASS",
+        "source_aggregate_sha256": "ddb4ecf93b521284883994726bab938bb15bc766ac8e0aaf93998540f7c601d9",
+        "deterministic_repeat_generation": "PASS",
+        "semantic_and_geometric_svg_tests": "PASS",
+        "syntax_whitespace_secret_local_path_links_and_boundaries": "PASS"
+      },
       "merge_status": "NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW"
     }
   }

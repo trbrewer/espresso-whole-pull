@@ -70,3 +70,30 @@ and qualification. Until then:
 review_status: CORRECTION_AUTHORIZED_IN_PROGRESS
 merge_status: NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW
 ```
+
+### Figure-semantics correction closure
+
+The reporting implementation commit is
+`8cd8b5431cdaceda7242f975d90f09f142ee8850`, tree
+`ff881ce3c5d7e2e8da9aa5a5ffff128de1ba1dc9`. It replaces the overlay and
+anonymous-cell figures with seven experiment small multiples, six frozen-axis
+contrast panels, a governed 45-run availability matrix, two quantitatively
+labeled fixed-clock panels, and a fully labeled sensitivity/singular-value
+diagnostic. Every plotted primitive is bounded by its declared plot rectangle;
+all layout bands are explicit and non-overlapping; and repeated generation is
+byte-identical.
+
+```text
+reporting reducer: 50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2
+figure manifest: 7dfff8c964e30a8a5179acff6540fa33eb558a889ca8b34a5bb287bd96eebee8
+figure aggregate: f755c6aea99134671edf0e23868d3e10a5c1b66063b93516bf5b450887b2faec
+final report manifest: 4a7fa7235ad2f2faddaec16f058846f3f30f4c986d5ac3adf442c0c5d4e00ab6
+Python: 445/445 PASS
+focused Stage B2: 36/36 PASS
+static gates: 38/38 PASS
+source manifest: 272/272 PASS
+review_status: VAL_CORPUS_002_STAGE_B2_FIGURE_SEMANTICS_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+merge_status: NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW
+```
+
+All scientific and numerical identities listed above remain unchanged.
