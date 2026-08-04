@@ -1,8 +1,8 @@
-# Package QA status — immutable baseline and VAL-CORPUS-002 Stage-B2 result candidate
+# Package QA status — immutable baseline and merged VAL-CORPUS-002 result
 
 Historical sections below describe immutable merged or released evidence.
 Explicit current-check sections distinguish the merged WP03-002 state from the
-open VAL-CORPUS-002 Stage-B1 calibration candidate; they do not redefine the
+merged VAL-CORPUS-002 package; they do not redefine the
 immutable release baseline.
 
 ## Immutable v0.2.0 release snapshot
@@ -46,7 +46,7 @@ and source/holdout-fit counts remained zero.
 ## Current repository checks
 
 - merged WP03-002 baseline Python suite: 351/351 PASS;
-- current VAL-CORPUS-002 Stage-B0/B1 Python suite: final count recorded in
+- current merged VAL-CORPUS-002 Python suite: final count recorded in
   `PACKAGE_QA_STATUS.json` after repository-wide qualification;
 - current active static gates: 38/38 PASS;
 - current source manifest: final corrected count recorded in
@@ -63,7 +63,7 @@ and source/holdout-fit counts remained zero.
 - shell syntax: PASS
 - JSON syntax: PASS
 
-## VAL-CORPUS-002 Stage B2 final reporting and lineage disposition
+## Merged VAL-CORPUS-002 Stage B2 disposition
 
 Stage B2 recovery preserved both historical Waszkiewicz P2 preparation
 failures, corrected only the structured-placeholder normalization, and
@@ -72,8 +72,9 @@ identities, 27 passed and 18 retain typed target-coverage failures.
 Predecessor parity passed 1,500/1,500 states. The nine sensitivity identities
 passed with one verified baseline reuse and eight fresh executions. Frozen
 governed reductions, the complete numerical summary, source-only species
-audit, reduced diagnostic, and deterministic figures are complete pending
-final exact-head review. The scientific result is local reconstruction only
+audit, reduced diagnostic, and deterministic figures are complete, approved,
+and merged in PR #54 as `5c77b16513f932a822782fb97e9f8b97ceda0654`.
+Issue #53 closed through the PR linkage. The scientific result is local reconstruction only
 with partial axis-direction transfer, grind-sign reversal, hydraulic target-
 coverage mismatch, and cross-source time-shape failure. The comparison
 framework remains operational and fail closed; current exact qualification
@@ -83,16 +84,16 @@ The final package correction leaves the numerical campaign unchanged and
 complete: 27 production PASS, 18 immutable typed target-coverage failures,
 9/9 sensitivity PASS, and 1500/1500 predecessor parity PASS. It carries the
 mandatory post-fit-derived `cup_masses.csv` lineage caveat. Physical
-validation remains not established; merge and any next mechanism are not
-authorized.
+validation remains not established. No validation case, data-planning task,
+solver task, or next mechanism is active or authorized.
 
 ## VAL-CORPUS-002 Stage B1 calibration disposition
 
-Stage B1 is complete as an exact frozen calibration candidate pending final
-pre-B2 review. The P2 rate is `0.3439597024835067 s^-1` and is restricted to
+Stage B1 is complete and incorporated into the approved merged Stage B2
+package. The P2 rate is `0.3439597024835067 s^-1` and is restricted to
 the local Experiment-7/H1 reconstruction role. OpenFOAM was executed for B1
 calibration only; the pre-B2 closure revalidated immutable artifacts without
-OpenFOAM or optimizer execution. Stage B2 is complete pending review; the B1
+OpenFOAM or optimizer execution. Stage B2 is complete, approved, and merged; the B1
 calibration remained closed and was not refit. Physical validation is not established,
 and new governing physics is not yet justified.
 

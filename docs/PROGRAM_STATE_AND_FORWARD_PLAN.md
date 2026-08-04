@@ -14,10 +14,10 @@ REPOSITORY:
   trbrewer/espresso-whole-pull
 
 CANONICAL_MAIN:
-  0a5c146078da5d5f88b344b20e7b81042bf27ddb
+  5c77b16513f932a822782fb97e9f8b97ceda0654
 
 CANONICAL_TREE:
-  12fdbc542270e2765e2071d83c21812951f892e8
+  76741f99f58672fd6f1fd021279517a255b045b6
 
 WP03_002:
   COMPLETE_APPROVED_AND_MERGED
@@ -74,8 +74,29 @@ VAL_DATA_001:
 VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
+VAL_CORPUS_002:
+  COMPLETE_APPROVED_AND_MERGED
+
+VAL_CORPUS_002_MERGE_COMMIT:
+  5c77b16513f932a822782fb97e9f8b97ceda0654
+
+VAL_CORPUS_002_MERGE_TREE:
+  76741f99f58672fd6f1fd021279517a255b045b6
+
+VAL_CORPUS_002_APPROVED_HEAD:
+  ffe899a847a1dee4dc07303991bd7b7a5f17d64b
+
+VAL_CORPUS_002_APPROVED_TREE:
+  76741f99f58672fd6f1fd021279517a255b045b6
+
+PR_54:
+  MERGED
+
+ISSUE_53:
+  CLOSED_BY_PR_LINKAGE
+
 ACTIVE_VALIDATION_CASE:
-  VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+  NONE
 
 ACTIVE_DATA_PLANNING_TASK:
   NONE
@@ -98,23 +119,20 @@ EXPERIMENTAL_COMMISSIONING:
 VAL_CASE_002:
   NOT_STARTED
 
-CURRENT_SCIENTIFIC_TASK:
-  VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+CURRENT_SCIENTIFIC_GATE:
+  ADDITIONAL_INDEPENDENT_DATA_REQUIRED
 ```
 
-WP03-002 is complete, approved, and merged. VAL-CORPUS-002 Stage A and final
-Stage-B0 tooling are exact-head approved. Stage B1 is complete as an exact
-frozen Experiment-7/H1 calibration candidate pending final pre-B2 review. Its
-local reconstruction rate is `0.3439597024835067 s^-1`. OpenFOAM was executed
-for B1 calibration and for the authorized fixed-parameter B2 matrix. Stage B2
-retains 27 passing and 18 immutable typed-failed production identities. The
-corrected Waszkiewicz P2 case passed and all nine sensitivity identities
-passed. Final reporting classifies the result as local reconstruction only,
-partial directional axis transfer with grind-sign reversal, hydraulic target-
-coverage mismatch, and cross-source time-shape failure. The fail-closed
-comparison framework is operational. Frozen governed reductions are complete
-pending final exact-head review.
-Calibration remains closed with no refit. Protected scoring remains prohibited.
+WP03-002 and VAL-CORPUS-002 are complete, approved, and merged.
+VAL-CORPUS-002 retains 27 passing and 18 immutable typed-failed production
+identities, 1,500/1,500 predecessor-parity states, and 9/9 passing sensitivity
+identities. Its local Experiment-7/H1 reconstruction rate remains
+`0.3439597024835067 s^-1`; calibration is closed with no refit. Final reporting
+classifies the result as local reconstruction only, partial directional axis
+transfer with grind-sign reversal, hydraulic target-coverage mismatch, and
+cross-source time-shape failure. The fail-closed comparison framework is
+operational. No validation case, data-planning task, or solver task is active.
+Protected scoring remains prohibited.
 
 ---
 
@@ -139,23 +157,25 @@ The decisive result is that the Puckworks corpus is demonstrably useful. It expo
 
 This is not a failed validation program. It is the desired transition from internal verification to externally anchored diagnosis.
 
-WP03-002 is complete, approved, and merged. The next scientific task entered
-Stage A as `VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY`; only its prospective
-protocol has been frozen here.
+VAL-CORPUS-002 is complete, approved, and merged. The next scientific gate is
+additional independent data, not further fitting or reuse of the same
+dependent cup-mass evidence. A future human-owner decision must choose between
+qualifying an admissible independent dataset or authorizing and commissioning
+the synchronized measurement package defined by VAL-DATA-001.
 
 ---
 
-# 2. Canonical merged state and active fixed-parameter Stage B2 candidate
+# 2. Canonical merged state and completed VAL-CORPUS-002 package
 
 | Item | Canonical state |
 |---|---|
-| Current `main` | `0a5c146078da5d5f88b344b20e7b81042bf27ddb` |
-| Current tree | `12fdbc542270e2765e2071d83c21812951f892e8` |
+| Current `main` | `5c77b16513f932a822782fb97e9f8b97ceda0654` |
+| Current tree | `76741f99f58672fd6f1fd021279517a255b045b6` |
 | OpenFOAM | Foundation 12 |
 | Latest executed WP03-002 candidate executable | `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6` |
 | Runtime Puckworks lock | `fc61c4670ec7bf801e40bb391aab16048b8da26b` |
 | Read-only evidence snapshot used by VAL-CORPUS-001 | `9c52c94edb27b461b6e7a4d471d29f3cef9d053e` |
-| Current Python suite | `448/448 PASS` for the Stage-B2 sensitivity-colour-key-corrected package candidate |
+| Current Python suite | `448/448 PASS` at the merged VAL-CORPUS-002 package |
 | Current static gates | `38/38 PASS` |
 | Current source manifest | current exact count and aggregate are recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
 | Physical validation | `NOT_ESTABLISHED` |
