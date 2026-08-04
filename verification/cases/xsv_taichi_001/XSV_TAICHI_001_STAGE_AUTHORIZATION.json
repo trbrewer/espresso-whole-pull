@@ -38,6 +38,38 @@
     "merge_authority": "NOT_GRANTED",
     "physical_validation": "NOT_ESTABLISHED"
   },
+  "g1_entrypoint_runtime_boundary_continuation": {
+    "protocol": "HUMAN_OWNER_STAGE_CONTINUATION_V1",
+    "assertion": "I_PERSONALLY_DIRECT_THIS_CONTINUATION",
+    "continuation_id": "XSV-TAICHI-001-G1-ENTRYPOINT-AND-SCIENTIFIC-RUNTIME-BOUNDARY-CORRECTION-2026-08-04",
+    "active_authorization_id": "XSV-TAICHI-001-CROSS-SOLVER-EXECUTION-2026-08-04",
+    "reviewed_head": "f0060aa21fddfbc368f4f8a92a46bf32aeaa04fd",
+    "reviewed_tree": "582c338a218b6072300dbc64cddc1c487c0440ce",
+    "corrected_defects": [
+      "XSV_ENTRY_POINT_NOT_EXECUTABLE",
+      "DEPENDENCY_BEARING_SCIENTIFIC_RUNTIME_IN_STANDARD_LIBRARY_ONLY_SCRIPT_ROOT"
+    ],
+    "portable_entrypoint": {
+      "path": "scripts/xsv_taichi_001.py",
+      "required_git_mode": "100755",
+      "dependency_policy": "STANDARD_LIBRARY_ONLY"
+    },
+    "scientific_runtime": {
+      "path": "verification/cases/xsv_taichi_001/xsv_taichi_001_runtime.py",
+      "required_git_mode": "100644",
+      "dependency_policy": "TASK_SPECIFIC_NUMPY_AND_LOCKED_PUCKWORKS_RUNTIME"
+    },
+    "static_validator_changed": false,
+    "geometry_regenerated": false,
+    "geometry_manifest_changed": false,
+    "retained_numerical_execution": "NONE",
+    "scientific_inputs_changed": false,
+    "thresholds_changed": false,
+    "run_matrix_changed": false,
+    "capability_escalation": false,
+    "merge_authority": "NOT_GRANTED",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
   "repository": "trbrewer/espresso-whole-pull",
   "remote": "https://github.com/trbrewer/espresso-whole-pull.git",
   "task": "XSV-TAICHI-001",
