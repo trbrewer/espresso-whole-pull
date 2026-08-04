@@ -15,6 +15,29 @@
     "additional_authorized_path": "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md",
     "capability_escalation": false
   },
+  "g0_ci_consistency_continuation": {
+    "protocol": "HUMAN_OWNER_STAGE_CONTINUATION_V1",
+    "assertion": "I_PERSONALLY_DIRECT_THIS_CONTINUATION",
+    "continuation_id": "XSV-TAICHI-001-G0-CI-RECORD-AND-HISTORICAL-STRATEGY-TEST-CORRECTION-2026-08-04",
+    "active_authorization_id": "XSV-TAICHI-001-CROSS-SOLVER-EXECUTION-2026-08-04",
+    "reviewed_head": "744c63103697a81f0a692167bfa330db3a680406",
+    "reviewed_tree": "640384aaffc56406d176a618687938ededc990d0",
+    "corrected_defects": [
+      "PROJECT_STATE_SOURCE_MANIFEST_COUNT_STALE",
+      "HISTORICAL_STRATEGY_TEST_BOUND_TO_MUTABLE_CANONICAL_STRATEGY"
+    ],
+    "allowed_substantive_paths": [
+      "docs/PROJECT_STATE.md",
+      "tests/test_reference_case.py"
+    ],
+    "retained_numerical_execution": "NONE",
+    "scientific_inputs_changed": false,
+    "thresholds_changed": false,
+    "run_matrix_changed": false,
+    "capability_escalation": false,
+    "merge_authority": "NOT_GRANTED",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
   "repository": "trbrewer/espresso-whole-pull",
   "remote": "https://github.com/trbrewer/espresso-whole-pull.git",
   "task": "XSV-TAICHI-001",
