@@ -8,7 +8,7 @@
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
 - Public source verification: 272/272 PASS
-- Active validation case: `VAL_CORPUS_002_STAGE_B2_FINAL_REPORTING_AND_LINEAGE_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
+- Active validation case: `VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`

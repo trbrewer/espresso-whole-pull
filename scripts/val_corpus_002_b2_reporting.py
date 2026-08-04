@@ -424,6 +424,27 @@ SENSITIVITY_OUTPUT_LABELS = (
     "cup solute mass at 40 g",
     "cup solute mass at 60 g",
 )
+SENSITIVITY_NEUTRAL_RGB = (240, 240, 248)
+SENSITIVITY_NEGATIVE_RGB = (190, 75, 45)
+SENSITIVITY_POSITIVE_RGB = (55, 90, 220)
+
+
+def _sensitivity_normalized_magnitude(value: float, maximum_absolute_value: float) -> float:
+    if not math.isfinite(maximum_absolute_value) or maximum_absolute_value <= 0:
+        raise ValueError("sensitivity maximum absolute value must be finite and positive")
+    if not math.isfinite(value):
+        raise ValueError("sensitivity elasticity must be finite")
+    return min(abs(value) / maximum_absolute_value, 1.0)
+
+
+def _sensitivity_fill(value: float, maximum_absolute_value: float) -> str:
+    """Return the deterministic neutral-centred signed-elasticity RGB fill."""
+    magnitude = _sensitivity_normalized_magnitude(value, maximum_absolute_value)
+    endpoint = (SENSITIVITY_NEGATIVE_RGB if value < 0 else
+                SENSITIVITY_POSITIVE_RGB if value > 0 else SENSITIVITY_NEUTRAL_RGB)
+    channels = tuple(round(neutral + magnitude * (target - neutral))
+                     for neutral, target in zip(SENSITIVITY_NEUTRAL_RGB, endpoint))
+    return f"rgb({channels[0]},{channels[1]},{channels[2]})"
 
 
 def _text(x: float, y: float, value: object, size: int = 12, **attrs: object) -> str:
@@ -670,10 +691,11 @@ def figures(final: dict, base: dict, output: Path, source_sha: str, script_sha: 
     matrix_rect = (250, 190, 560, 330)
     for r, row in enumerate(matrix):
         for c, value in enumerate(row):
-            intensity = int(235 - 170 * abs(value) / maximum)
-            color = f"rgb({intensity},{intensity},{255 if value >= 0 else 135})"
+            normalized = _sensitivity_normalized_magnitude(value, maximum)
+            color = _sensitivity_fill(value, maximum)
+            sign_class = "negative" if value < 0 else "positive" if value > 0 else "zero"
             x, y = matrix_rect[0] + c * 140, matrix_rect[1] + r * 110
-            matrix_body.append(f'<rect x="{x:.3f}" y="{y:.3f}" width="140" height="110" fill="{color}" stroke="#222" data-role="data" data-panel-ref="sensitivity-matrix"/>')
+            matrix_body.append(f'<rect x="{x:.3f}" y="{y:.3f}" width="140" height="110" fill="{color}" stroke="#222" data-role="data" data-panel-ref="sensitivity-matrix" data-elasticity-value="{repr(value)}" data-normalized-magnitude="{repr(normalized)}" data-sign-class="{sign_class}" data-fill-rgb="{color}"/>')
             matrix_body.append(_text(x + 70, y + 60, repr(value), 10, text_anchor="middle"))
     for r, label in enumerate(SENSITIVITY_OUTPUT_LABELS):
         matrix_body.append(_text(238, matrix_rect[1] + r * 110 + 58, label, 10, text_anchor="end"))
@@ -692,10 +714,14 @@ def figures(final: dict, base: dict, output: Path, source_sha: str, script_sha: 
                               _text(x + 21, y - 7, repr(value), 8, text_anchor="middle")])
     singular_body.append(_text(1010, 535, f"matrix rank = {base['sensitivity']['rank']}", 11, text_anchor="middle"))
     singular_panel = _panel("singular-values", singular_rect, singular_body)
-    bands = {"legend": [_text(300, 91, "Signed elasticity key:", 12),
-                         '<rect x="455" y="78" width="35" height="18" fill="rgb(65,65,255)" stroke="#222"/>', _text(498, 92, "positive / stronger", 11),
-                         '<rect x="660" y="78" width="35" height="18" fill="rgb(65,65,135)" stroke="#222"/>', _text(703, 92, "negative / stronger", 11),
-                         '<rect x="860" y="78" width="35" height="18" fill="rgb(235,235,255)" stroke="#222"/>', _text(903, 92, "near zero", 11)],
+    negative_fill = _sensitivity_fill(-maximum, maximum)
+    neutral_fill = _sensitivity_fill(0.0, maximum)
+    positive_fill = _sensitivity_fill(maximum, maximum)
+    bands = {"legend": [_text(205, 91, "Signed elasticity key:", 12),
+                         f'<rect x="350" y="78" width="35" height="18" fill="{negative_fill}" stroke="#222" data-scale-role="negative-endpoint" data-scale-value="{repr(-maximum)}" data-fill-rgb="{negative_fill}"/>', _text(393, 92, "negative / stronger", 11),
+                         f'<rect x="570" y="78" width="35" height="18" fill="{neutral_fill}" stroke="#222" data-scale-role="neutral" data-scale-value="0.0" data-fill-rgb="{neutral_fill}"/>', _text(613, 92, "near zero", 11),
+                         f'<rect x="735" y="78" width="35" height="18" fill="{positive_fill}" stroke="#222" data-scale-role="positive-endpoint" data-scale-value="{repr(maximum)}" data-fill-rgb="{positive_fill}"/>', _text(778, 92, "positive / stronger", 11),
+                         _text(925, 92, "magnitude normalized by matrix max |elasticity|", 10)],
              "plot": [matrix_panel, singular_panel],
              "lower-label": [_text(640, 688, "Every 3 × 4 matrix cell and all three singular values are labeled numerically.", 11, text_anchor="middle")],
              "axis-title": [_text(640, 723, "Finite-range log-secant sensitivity diagnostic", 12, text_anchor="middle")],

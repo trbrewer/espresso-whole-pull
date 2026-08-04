@@ -1,5 +1,5 @@
 {
-  "aggregate_sha256": "f755c6aea99134671edf0e23868d3e10a5c1b66063b93516bf5b450887b2faec",
+  "aggregate_sha256": "77e080b59fd94e27030d280f3f2054c71a67d57d3a5be1de4c17ef31ab068330",
   "figure_count": 5,
   "figures": [
     {
@@ -7,7 +7,7 @@
       "figure_bytes": 18919,
       "figure_path": "validation/cases/val_corpus_002/figures/production_availability_matrix.svg",
       "figure_sha256": "c243c06a9fd46eafe27e1934e8c3be40e2b9589fa33309e47996a0bdbb204872",
-      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
+      "generation_script_sha256": "12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb",
       "source_lineage": null,
       "source_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb"
     },
@@ -16,7 +16,7 @@
       "figure_bytes": 29098,
       "figure_path": "validation/cases/val_corpus_002/figures/schmieder_h1_source_model.svg",
       "figure_sha256": "d35aa0f9d005c70e0476b16f3a6bb3120e483c39a5e1b8f5b9be7908db31e394",
-      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
+      "generation_script_sha256": "12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb",
       "source_lineage": {
         "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
         "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
@@ -32,7 +32,7 @@
       "figure_bytes": 20949,
       "figure_path": "validation/cases/val_corpus_002/figures/schmieder_h1_axis_contrasts.svg",
       "figure_sha256": "0292810de091bede23ba284f2d25720516f106e87c77bb55595ca20c0cd8723c",
-      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
+      "generation_script_sha256": "12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb",
       "source_lineage": {
         "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
         "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
@@ -48,16 +48,16 @@
       "figure_bytes": 22131,
       "figure_path": "validation/cases/val_corpus_002/figures/waszkiewicz_both_clocks.svg",
       "figure_sha256": "8f4b7bce271bfe97557b8adae37e0f528d77534d30f784f464caa582ae1ce8fa",
-      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
+      "generation_script_sha256": "12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb",
       "source_lineage": null,
       "source_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb"
     },
     {
       "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
-      "figure_bytes": 8012,
+      "figure_bytes": 10244,
       "figure_path": "validation/cases/val_corpus_002/figures/sensitivity_matrix_and_singular_values.svg",
-      "figure_sha256": "ea3bbabaa222d97fd90038724c45c2837d47ececcfab99f3f55671f8e4ee7dba",
-      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
+      "figure_sha256": "5ba16412f89040ce7e62069e9af9df71197656b8daefc82e8efe06c9f1ef1197",
+      "generation_script_sha256": "12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb",
       "source_lineage": null,
       "source_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb"
     }

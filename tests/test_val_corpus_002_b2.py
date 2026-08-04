@@ -281,6 +281,93 @@ class StageB2ProspectiveTests(unittest.TestCase):
                       "not structural-identifiability proof", "Signed elasticity key"):
             self.assertIn(label, sensitivity)
 
+    def test_sensitivity_colour_helper_is_continuous_neutral_centered_and_closed(self):
+        maximum = 2.0
+        values = (-maximum, -0.5 * maximum, -1e-12, 0.0,
+                  1e-12, 0.5 * maximum, maximum)
+        fills = [reporting._sensitivity_fill(value, maximum) for value in values]
+        neutral = reporting._sensitivity_fill(0.0, maximum)
+        self.assertEqual(neutral, "rgb(240,240,248)")
+        self.assertEqual(fills[2], neutral)
+        self.assertEqual(fills[4], neutral)
+        self.assertNotEqual(fills[0], fills[-1])
+
+        def rgb(fill):
+            return tuple(map(int, fill.removeprefix("rgb(").removesuffix(")").split(",")))
+
+        def distance(fill):
+            return sum((actual - center) ** 2 for actual, center in
+                       zip(rgb(fill), reporting.SENSITIVITY_NEUTRAL_RGB)) ** 0.5
+
+        self.assertLess(distance(fills[2]), distance(fills[1]))
+        self.assertLess(distance(fills[1]), distance(fills[0]))
+        self.assertLess(distance(fills[4]), distance(fills[5]))
+        self.assertLess(distance(fills[5]), distance(fills[6]))
+        self.assertEqual(reporting._sensitivity_fill(-0.0, maximum), neutral)
+        for bad_maximum in (0.0, -1.0, float("inf"), float("nan")):
+            with self.assertRaises(ValueError):
+                reporting._sensitivity_fill(0.0, bad_maximum)
+        for bad_value in (float("inf"), float("-inf"), float("nan")):
+            with self.assertRaises(ValueError):
+                reporting._sensitivity_fill(bad_value, maximum)
+
+    def test_sensitivity_svg_cells_and_legend_share_authoritative_mapping(self):
+        figure = ROOT / "validation/cases/val_corpus_002/figures/sensitivity_matrix_and_singular_values.svg"
+        svg = ET.parse(figure).getroot()
+        base = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_RESULT.json").read_text())
+        governed = [value for row in base["sensitivity"]["matrix"] for value in row]
+        maximum = max(abs(value) for value in governed)
+        cells = [node for node in svg.iter() if "data-elasticity-value" in node.attrib]
+        self.assertEqual(len(cells), 12)
+        self.assertEqual([float(node.attrib["data-elasticity-value"]) for node in cells], governed)
+        for node, value in zip(cells, governed):
+            normalized = reporting._sensitivity_normalized_magnitude(value, maximum)
+            expected = reporting._sensitivity_fill(value, maximum)
+            self.assertEqual(float(node.attrib["data-normalized-magnitude"]), normalized)
+            self.assertEqual(node.attrib["fill"], expected)
+            self.assertEqual(node.attrib["data-fill-rgb"], expected)
+            self.assertEqual(node.attrib["data-sign-class"],
+                             "negative" if value < 0 else "positive" if value > 0 else "zero")
+        legend = {node.attrib["data-scale-role"]: node for node in svg.iter()
+                  if "data-scale-role" in node.attrib}
+        self.assertEqual(set(legend), {"negative-endpoint", "neutral", "positive-endpoint"})
+        for role, value in (("negative-endpoint", -maximum), ("neutral", 0.0),
+                            ("positive-endpoint", maximum)):
+            self.assertEqual(float(legend[role].attrib["data-scale-value"]), value)
+            self.assertEqual(legend[role].attrib["fill"], reporting._sensitivity_fill(value, maximum))
+            self.assertEqual(legend[role].attrib["data-fill-rgb"], legend[role].attrib["fill"])
+
+        neutral_rgb = reporting.SENSITIVITY_NEUTRAL_RGB
+        negative_rgb = reporting.SENSITIVITY_NEGATIVE_RGB
+        distance = lambda rgb: sum((a-b) ** 2 for a, b in zip(rgb, neutral_rgb)) ** 0.5
+        endpoint_distance = distance(negative_rgb)
+        negative_cells = [node for node in cells if node.attrib["data-sign-class"] == "negative"]
+        self.assertEqual(len(negative_cells), 3)
+        for node in negative_cells:
+            self.assertLess(float(node.attrib["data-normalized-magnitude"]), 0.001)
+            rgb = tuple(map(int, node.attrib["fill"][4:-1].split(",")))
+            self.assertLess(distance(rgb), endpoint_distance / 100)
+
+        # A reintroduced sign-only blue-channel jump is rejected by the same
+        # cell-to-helper equality asserted above.
+        original = negative_cells[0].attrib["fill"]
+        negative_cells[0].attrib["fill"] = "rgb(240,240,135)"
+        with self.assertRaises(AssertionError):
+            self.assertEqual(negative_cells[0].attrib["fill"],
+                             reporting._sensitivity_fill(governed[0], maximum))
+        negative_cells[0].attrib["fill"] = original
+
+    def test_four_accepted_figures_remain_byte_identical(self):
+        expected = {
+            "production_availability_matrix.svg": "c243c06a9fd46eafe27e1934e8c3be40e2b9589fa33309e47996a0bdbb204872",
+            "schmieder_h1_source_model.svg": "d35aa0f9d005c70e0476b16f3a6bb3120e483c39a5e1b8f5b9be7908db31e394",
+            "schmieder_h1_axis_contrasts.svg": "0292810de091bede23ba284f2d25720516f106e87c77bb55595ca20c0cd8723c",
+            "waszkiewicz_both_clocks.svg": "8f4b7bce271bfe97557b8adae37e0f528d77534d30f784f464caa582ae1ce8fa",
+        }
+        root = ROOT / "validation/cases/val_corpus_002/figures"
+        for name, digest in expected.items():
+            self.assertEqual(reporting.sha256(root / name), digest)
+
     def test_figure_plot_geometry_is_inside_declared_panels_and_bands_do_not_overlap(self):
         figures = ROOT / "validation/cases/val_corpus_002/figures"
         for path in sorted(figures.glob("*.svg")):
