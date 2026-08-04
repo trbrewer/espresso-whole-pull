@@ -482,7 +482,7 @@ retuning. The corrected model still orders flow and mass as
 | Waszkiewicz cross-pressure transfer | Failing | Source ordering is reversed by every tested family |
 | Generic DE1 machine fixture | Failing/descriptive | Not a source-informed DE1 reconstruction |
 | Finite-porosity source-linked execution | `NUMERICALLY_RECOVERED_SCIENTIFIC_TRANSFER_FAILURE_REMAINS` | 3/3 corrected cases complete; model ordering remains opposite source |
-| Aggregate extraction transfer | Not yet adequately assessed | Required next corpus tranche |
+| Aggregate extraction and cup-chemistry transfer | Partial / source-specific only | VAL-CORPUS-002 completed the governed assessment: local reconstruction and partial directional transfer were observed, but grind-sign reversal, hydraulic target-coverage mismatch, and cross-source time-shape failure remain; general transfer and physical validation are not established |
 | Species-resolved chemistry | Not represented | Current solver is one-solute |
 | Population Visualizer transfer | Not yet executed as a frozen cohort | Available future comparison |
 | Independent physical validation | Not established | No qualifying final evidence route has been executed |
@@ -844,7 +844,10 @@ WP03-002 is complete when:
 
 ---
 
-# 12. Risks and controls
+# 12. Risks and controls — `HISTORICAL_EXECUTED_AND_CONSUMED`
+
+`NOT_CURRENT_AUTHORITY`. This table records controls used by the completed
+WP03-002 execution plan. It grants no present or future authority.
 
 | Risk | Required control |
 |---|---|

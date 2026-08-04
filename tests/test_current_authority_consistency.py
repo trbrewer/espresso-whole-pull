@@ -32,6 +32,7 @@ CURRENT_MARKERS = {
         "Physical\nvalidation remains `NOT_ESTABLISHED`",
     ),
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": (
+        "| Aggregate extraction and cup-chemistry transfer | Partial / source-specific only | VAL-CORPUS-002 completed the governed assessment: local reconstruction and partial directional transfer were observed, but grind-sign reversal, hydraulic target-coverage mismatch, and cross-source time-shape failure remain; general transfer and physical validation are not established |",
         "VAL_CORPUS_002:\n  COMPLETE_APPROVED_AND_MERGED",
         "ACTIVE_VALIDATION_CASE:\n  NONE",
         "ACTIVE_DATA_PLANNING_TASK:\n  NONE",
@@ -66,23 +67,47 @@ FORBIDDEN_CURRENT_MARKERS = (
     "VAL-CORPUS-002 is the active next",
     "WP03-002 is pending exact-head review",
     "merge and any next mechanism are not authorized",
+    "Aggregate extraction transfer | Not yet adequately assessed",
+    "Required next corpus tranche",
 )
+
+
+HISTORICAL_SECTION_HEADINGS = (
+    "# 11. WP03-002 detailed execution plan — `HISTORICAL_EXECUTED_AND_CONSUMED`",
+    "# 12. Risks and controls — `HISTORICAL_EXECUTED_AND_CONSUMED`",
+    "# 13. Human-owner authority template for WP03-002 — `HISTORICAL_EXECUTED_AND_CONSUMED`",
+    "# 14. Resume block for WP03-002 — `HISTORICAL_EXECUTED_AND_CONSUMED`",
+)
+
+
+def historical_program_sections(text: str) -> tuple[str, ...]:
+    """Return sections 11-14 after independently validating each boundary."""
+    sections = []
+    for index, heading in enumerate(HISTORICAL_SECTION_HEADINGS):
+        start = text.find(heading)
+        if start < 0:
+            raise AssertionError(f"program handoff lacks historical boundary: {heading}")
+        next_heading = (
+            HISTORICAL_SECTION_HEADINGS[index + 1]
+            if index + 1 < len(HISTORICAL_SECTION_HEADINGS)
+            else "# 15. New-conversation bootstrap"
+        )
+        end = text.find(next_heading, start + len(heading))
+        if end < 0:
+            raise AssertionError(f"program handoff lacks boundary after: {heading}")
+        section = text[start:end]
+        if "NOT_CURRENT_AUTHORITY" not in section:
+            raise AssertionError(f"historical section is not explicitly non-current: {heading}")
+        sections.append(section)
+    return tuple(sections)
 
 
 def current_program_text(text: str) -> str:
     """Exclude only the explicitly bounded executed-history sections 11-14."""
-    before, separator, remainder = text.partition(
-        "# 11. WP03-002 detailed execution plan — `HISTORICAL_EXECUTED_AND_CONSUMED`"
-    )
-    if not separator:
-        raise AssertionError("program handoff lacks the historical section-11 boundary")
-    _, resume, after = remainder.partition("# 15. New-conversation bootstrap")
-    if not resume:
-        raise AssertionError("program handoff lacks the current section-15 boundary")
-    self_check = remainder[: len(remainder) - len(after)]
-    if "NOT_CURRENT_AUTHORITY" not in self_check:
-        raise AssertionError("executed protocol is not explicitly non-current")
-    return before + "# 15. New-conversation bootstrap" + after
+    historical_program_sections(text)
+    start = text.index(HISTORICAL_SECTION_HEADINGS[0])
+    resume = text.index("# 15. New-conversation bootstrap", start)
+    return text[:start] + text[resume:]
 
 
 def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
@@ -117,7 +142,13 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         text = texts[path]
         if any(marker not in text for marker in markers):
             return False
-        current = current_program_text(text) if path.endswith("PROGRAM_STATE_AND_FORWARD_PLAN.md") else text
+        if path.endswith("PROGRAM_STATE_AND_FORWARD_PLAN.md"):
+            try:
+                current = current_program_text(text)
+            except AssertionError:
+                return False
+        else:
+            current = text
         if any(marker in current for marker in FORBIDDEN_CURRENT_MARKERS):
             return False
     return True
@@ -157,10 +188,39 @@ class CurrentAuthorityConsistencyTests(unittest.TestCase):
 
     def test_executed_protocol_sections_remain_explicitly_historical(self) -> None:
         text = self.texts["docs/PROGRAM_STATE_AND_FORWARD_PLAN.md"]
-        self.assertIn("HISTORICAL_EXECUTED_AND_CONSUMED", text)
-        self.assertIn("NOT_CURRENT_AUTHORITY", text)
+        sections = historical_program_sections(text)
+        self.assertEqual(len(sections), 4)
+        for heading, section in zip(HISTORICAL_SECTION_HEADINGS, sections):
+            with self.subTest(heading=heading):
+                self.assertTrue(section.startswith(heading))
+                self.assertIn("NOT_CURRENT_AUTHORITY", section)
         current = current_program_text(text)
         self.assertNotIn("Merge is not authorized.", current)
+
+    def test_stale_aggregate_transfer_row_fails_closed(self) -> None:
+        path = "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md"
+        corrected = CURRENT_MARKERS[path][0]
+        stale = "| Aggregate extraction transfer | Not yet adequately assessed | Required next corpus tranche |"
+        changed = dict(self.texts)
+        changed[path] = changed[path].replace(corrected, stale)
+        self.assertFalse(current_authorities_pass(changed, self.qa))
+
+    def test_section_12_historical_boundary_mutations_fail_closed(self) -> None:
+        path = "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md"
+        text = self.texts[path]
+        heading = HISTORICAL_SECTION_HEADINGS[1]
+        for mutated in (
+            text.replace(heading, "# 12. Risks and controls", 1),
+            text.replace(
+                "`NOT_CURRENT_AUTHORITY`. This table records controls used by the completed",
+                "This table records controls used by the completed",
+                1,
+            ),
+        ):
+            with self.subTest(mutation=mutated == text):
+                changed = dict(self.texts)
+                changed[path] = mutated
+                self.assertFalse(current_authorities_pass(changed, self.qa))
 
 
 if __name__ == "__main__":
