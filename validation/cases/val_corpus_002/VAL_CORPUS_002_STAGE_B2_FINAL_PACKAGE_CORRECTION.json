@@ -1,0 +1,35 @@
+{
+  "schema_version": "espresso.val_corpus_002.b2_final_package_correction.v1",
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "profile": "EWP_PRODUCTION_AND_SCORING_STAGE_V1",
+  "starting_head": "05a179e8cc9e514b60d800823ed6fba7d3ec9343",
+  "starting_tree": "cd9252e3c2e59411c6217f10b563fc5f1a866f19",
+  "findings": [
+    "CUP_MASSES_LINEAGE_CAVEAT_NOT_CARRIED",
+    "FINAL_RESULT_SCHEMA_ONLY_TOP_LEVEL_CLOSED",
+    "FINAL_STATUS_AMBIGUOUS_WITH_TYPED_FAILURES",
+    "EMBEDDED_BASE_RESULT_AUTHORITY_NOT_MARKED",
+    "TARGET_AVAILABILITY_SEMANTICS_AMBIGUOUS",
+    "FIGURES_ARE_TEXT_ONLY_NOT_SCIENTIFIC_PLOTS",
+    "REPORTING_REDUCER_FAIL_CLOSED_HARDENING_REQUIRED"
+  ],
+  "boundaries": {
+    "numerical_artifacts": "UNCHANGED",
+    "scientific_result": "UNCHANGED",
+    "openfoam": "PROHIBITED",
+    "sensitivity_rerun": "PROHIBITED",
+    "refit": "PROHIBITED",
+    "protected_scoring": "PROHIBITED",
+    "new_governing_physics": "NOT_AUTHORIZED",
+    "val_case_002": "NOT_STARTED",
+    "merge": "NOT_AUTHORIZED"
+  },
+  "immutable_counts": {
+    "production_identities": 45,
+    "production_pass": 27,
+    "typed_target_coverage_failures": 18,
+    "sensitivity_identities": 9,
+    "sensitivity_pass": 9,
+    "predecessor_parity_states": 1500
+  }
+}
