@@ -1,0 +1,63 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_taichi_001.geometry_manifest.v1",
+  "task": "XSV-TAICHI-001",
+  "status": "FROZEN_BEFORE_RETAINED_FLOW_EXECUTION",
+  "external_evidence_root": "EXTERNAL_EVIDENCE_ROOT",
+  "payload_encoding": "C_ORDER_UINT8_SOLID_1_FLUID_0",
+  "generation_repetitions": 2,
+  "separate_clean_python_processes": true,
+  "repeat_identity": "PASS",
+  "connectivity": {
+    "stencil": "SIX_NEIGHBOR_FLUID",
+    "diagnostic_flow_direction": "x",
+    "x_boundary": "NONPERIODIC_INLET_TO_OUTLET_DIAGNOSTIC",
+    "connected_porosity_used_to_redefine_flow_or_permeability": false
+  },
+  "geometries": [
+    {
+      "case_id": "CH33",
+      "shape": [33, 33, 33],
+      "dtype": "uint8",
+      "n_total": 35937,
+      "n_solid": 2178,
+      "n_fluid": 33759,
+      "phi_gross": 0.9393939393939394,
+      "n_x_connected_fluid": 33759,
+      "phi_x_connected": 0.9393939393939394,
+      "x_through_connected": true,
+      "payload_sha256": "9bf1654efe5045c59f8b0bbb0b2f537b390382522a1c34bfaaa294635240edd7",
+      "geometry_config_sha256": "674b2f00791e0f12f9dd5cf8c26b98afd56f2ccde81980189cfddda7c5afbebb"
+    },
+    {
+      "case_id": "SP32",
+      "shape": [32, 32, 32],
+      "dtype": "uint8",
+      "n_total": 32768,
+      "n_solid": 2608,
+      "n_fluid": 30160,
+      "phi_gross": 0.92041015625,
+      "n_x_connected_fluid": 30160,
+      "phi_x_connected": 0.92041015625,
+      "x_through_connected": true,
+      "payload_sha256": "40196fd2f2b86de853f2afcfce801b6da0fca1d399e107c6ed40328776ed5a85",
+      "geometry_config_sha256": "6f086749b44555938e2b5612c2a41ebcc6536661756a541a78f5c1657d6eb9ac"
+    },
+    {
+      "case_id": "M0A",
+      "shape": [40, 40, 40],
+      "dtype": "uint8",
+      "n_total": 64000,
+      "n_solid": 37609,
+      "n_fluid": 26391,
+      "phi_gross": 0.412359375,
+      "n_x_connected_fluid": 26390,
+      "phi_x_connected": 0.41234375,
+      "x_through_connected": true,
+      "payload_sha256": "10d9a010cbac4b8579154456c4271ecd2808af5116beab15a2ffd4e2c99cd039",
+      "geometry_config_sha256": "4c5ded6230ec5781c810d2a8f53a92a507a3b393cc99f16d9c2a8e5fb027b4f9"
+    }
+  ],
+  "full_masks_committed": false,
+  "retained_flow_solutions_before_freeze": 0,
+  "physical_validation": "NOT_ESTABLISHED"
+}

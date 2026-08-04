@@ -78,6 +78,34 @@ class XSVTaichi001Tests(unittest.TestCase):
         self.assertEqual(thresholds["returned_identity_relative_tolerance"], 1e-12)
         self.assertEqual(thresholds["serial_mpi_relative_difference_max"], 1e-8)
 
+    def test_frozen_geometry_manifest_is_complete_and_connected(self) -> None:
+        manifest = json.loads(
+            (CASE_ROOT / "XSV_TAICHI_001_GEOMETRY_MANIFEST.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(manifest["generation_repetitions"], 2)
+        self.assertEqual(manifest["repeat_identity"], "PASS")
+        self.assertFalse(
+            manifest["connectivity"][
+                "connected_porosity_used_to_redefine_flow_or_permeability"
+            ]
+        )
+        geometries = {row["case_id"]: row for row in manifest["geometries"]}
+        self.assertEqual(set(geometries), {"CH33", "SP32", "M0A"})
+        expected_payloads = {
+            "CH33": "9bf1654efe5045c59f8b0bbb0b2f537b390382522a1c34bfaaa294635240edd7",
+            "SP32": "40196fd2f2b86de853f2afcfce801b6da0fca1d399e107c6ed40328776ed5a85",
+            "M0A": "10d9a010cbac4b8579154456c4271ecd2808af5116beab15a2ffd4e2c99cd039",
+        }
+        for case_id, row in geometries.items():
+            self.assertEqual(row["payload_sha256"], expected_payloads[case_id])
+            self.assertTrue(row["x_through_connected"])
+            self.assertGreater(row["phi_gross"], 0.0)
+            self.assertLess(row["phi_gross"], 1.0)
+            self.assertLessEqual(row["phi_x_connected"], row["phi_gross"])
+        self.assertEqual(manifest["retained_flow_solutions_before_freeze"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()
