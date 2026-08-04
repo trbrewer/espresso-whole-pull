@@ -1,5 +1,15 @@
 {
-  "schema_version": "espresso.whole_pull.xsv_taichi_001.protocol.v1",
+  "schema_version": "espresso.whole_pull.xsv_taichi_001.protocol.v2",
+  "protocol_revision": 2,
+  "original_protocol_sha256": "d93323c9f78bed1e23f18f70e783f3d849d93831133ddef45368fb65e62d187e",
+  "protocol_amendment_001": {
+    "path": "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL_AMENDMENT_001.json",
+    "sha256": "7db8cb56f72eda28334d7073fd00fb0bc74641f9edc6d4977fd4f2301a2712ab",
+    "authorization_id": "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04",
+    "reason": "RADIAL_EQUAL_AREA_INTERFACE_INCOMPATIBLE_WITH_UNIFORM_MESH_FACE_CONTRACT",
+    "accepted_predecessor_gates": ["G0", "G1", "G2", "G3", "G4"],
+    "completed_predecessor_results_rerun": "PROHIBITED"
+  },
   "task": "XSV-TAICHI-001",
   "status": "G0_PROTOCOL_FREEZE_PENDING_EXACT_HEAD_CI",
   "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
@@ -80,6 +90,7 @@
   },
   "openfoam_settings": {
     "retained_runs": 8,
+    "process_attempt_ceiling": 9,
     "darcy_only": true,
     "prescribed_pressure": true,
     "saturated": true,
@@ -90,7 +101,17 @@
     "target_q_m_s": [0.00025,0.0005,0.001],
     "alternate_porosity": 0.30,
     "K_B_over_K_A": 0.4,
-    "retained_mpi_ranks": [1,16]
+    "retained_mpi_ranks": [1,16],
+    "radial_fixture_revision": 2,
+    "radial_fixture_classification": "MESH_CONFORMING_NEAR_EQUAL_AREA",
+    "radial_cells": 512,
+    "radial_grading": 1.0,
+    "radial_interface_face_index": 362,
+    "radial_interface_radius_m": 0.0004786795997912995,
+    "radial_inner_area_fraction": 0.4998931884765625,
+    "radial_outer_area_fraction": 0.5001068115234375,
+    "radial_delta_p_Pa": 0.5315118640909556,
+    "solver_alignment_tolerance": 1e-8
   },
   "run_ceilings": {
     "retained_lbm_runs": 19,
@@ -104,7 +125,8 @@
     "full_basket_runs": 0,
     "fines_runs": 0,
     "morphology_sweeps": 0,
-    "parameter_fits": 0
+    "parameter_fits": 0,
+    "openfoam_process_attempts": 9
   },
   "thresholds": {
     "mach_max": 0.05,

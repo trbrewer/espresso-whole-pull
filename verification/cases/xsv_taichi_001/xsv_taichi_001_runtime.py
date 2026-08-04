@@ -31,6 +31,7 @@ PROTOCOL_PATH = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCO
 EXPECTED_PUCKWORKS_COMMIT = "fc61c4670ec7bf801e40bb391aab16048b8da26b"
 CASE_MATRIX_PATH = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_CASE_MATRIX.csv"
 GEOMETRY_MANIFEST_PATH = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_GEOMETRY_MANIFEST.json"
+OPENFOAM_FIXTURE_PATH = ROOT / "verification/cases/xsv_taichi_001/openfoam/XSV_TAICHI_001_OPENFOAM_FIXTURES.json"
 
 for required_root_member in (
     ROOT / "SOURCE_PACKAGE_MANIFEST.json",
@@ -194,6 +195,73 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def radial_fixture_reference(fixture: Dict[str, Any]) -> Dict[str, float]:
+    """Recompute amendment-001 radial quantities from primitive inputs."""
+    domain = fixture["domain"]
+    profile = fixture["profiles"]["radial_two_zone"]
+    closure = fixture["closure"]
+    radial_cells = int(domain["radial_cells"])
+    selected = int(profile["interface_face_index"])
+    ideal = radial_cells / math.sqrt(2.0)
+    departures = {
+        face: abs((face / radial_cells) ** 2 - 0.5)
+        for face in range(1, radial_cells)
+    }
+    minimizers = [face for face, value in departures.items() if value == min(departures.values())]
+    if minimizers != [selected]:
+        raise RuntimeError("radial interface is not the unique nearest-area mesh face")
+    f_inner = (selected / radial_cells) ** 2
+    f_outer = 1.0 - f_inner
+    k_a = float(closure["K_A_m2"])
+    k_b = float(closure["K_B_m2"])
+    k_effective = f_inner * k_a + f_outer * k_b
+    target_q = next(
+        float(run["target_q_m_s"])
+        for run in fixture["runs"]
+        if run["run_id"] == "OF-PARALLEL-1"
+    )
+    delta_p = (
+        float(fixture["fluid"]["dynamic_viscosity_Pa_s"])
+        * float(domain["bed_depth_m"])
+        * target_q
+        / k_effective
+    )
+    return {
+        "ideal_face_index": ideal,
+        "selected_face_index": selected,
+        "interface_radius_m": float(domain["basket_radius_m"]) * selected / radial_cells,
+        "inner_area_fraction": f_inner,
+        "outer_area_fraction": f_outer,
+        "K_parallel_effective_m2": k_effective,
+        "delta_p_Pa": delta_p,
+        "inner_flow_share": f_inner * k_a / k_effective,
+        "outer_flow_share": f_outer * k_b / k_effective,
+    }
+
+
+def verify_radial_fixture(args: argparse.Namespace) -> None:
+    fixture = json.loads(OPENFOAM_FIXTURE_PATH.read_text(encoding="utf-8"))
+    reference = radial_fixture_reference(fixture)
+    profile = fixture["profiles"]["radial_two_zone"]
+    comparisons = {
+        "interface_radius_m": profile["interface_radius_m"],
+        "inner_area_fraction": profile["declared_inner_area_fraction"],
+        "outer_area_fraction": profile["declared_outer_area_fraction"],
+        "K_parallel_effective_m2": profile["K_parallel_effective_m2"],
+        "inner_flow_share": profile["expected_inner_flow_share"],
+        "outer_flow_share": profile["expected_outer_flow_share"],
+    }
+    parallel = next(run for run in fixture["runs"] if run["run_id"] == "OF-PARALLEL-1")
+    comparisons["delta_p_Pa"] = parallel["delta_p_Pa"]
+    for key, recorded in comparisons.items():
+        if not math.isclose(float(recorded), reference[key], rel_tol=1e-15, abs_tol=0.0):
+            raise RuntimeError(f"radial fixture mismatch for {key}")
+    output = {"disposition": "RADIAL_FIXTURE_REVISION_2_ANALYTICAL_PASS", **reference}
+    if args.output:
+        Path(args.output).write_bytes(canonical_json_bytes(output))
+    print(json.dumps(output, sort_keys=True))
+
+
 def load_lbm_case(run_id: str) -> Dict[str, str]:
     with CASE_MATRIX_PATH.open(encoding="utf-8", newline="") as handle:
         rows = [row for row in csv.DictReader(handle) if row["run_id"] == run_id]
@@ -347,6 +415,9 @@ def parse_args() -> argparse.Namespace:
     lbm.add_argument("--puckworks", required=True)
     lbm.add_argument("--evidence-root", required=True)
     lbm.set_defaults(function=run_lbm)
+    radial = subparsers.add_parser("verify-radial-fixture")
+    radial.add_argument("--output")
+    radial.set_defaults(function=verify_radial_fixture)
     return parser.parse_args()
 
 

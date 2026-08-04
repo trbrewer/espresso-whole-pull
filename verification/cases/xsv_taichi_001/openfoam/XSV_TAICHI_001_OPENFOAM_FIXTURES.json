@@ -1,5 +1,6 @@
 {
-  "schema_version": "espresso.whole_pull.xsv_taichi_001.openfoam_fixtures.v1",
+  "schema_version": "espresso.whole_pull.xsv_taichi_001.openfoam_fixtures.v2",
+  "fixture_revision": 2,
   "task": "XSV-TAICHI-001",
   "status": "FROZEN_BEFORE_OPENFOAM_EXECUTION",
   "source": {
@@ -23,6 +24,7 @@
     "wedge_angle_deg": 5.0,
     "axial_cells": 64,
     "radial_cells": 512,
+    "radial_grading": 1.0,
     "azimuthal_cells": 1,
     "mesh_basis": "EXISTING_DETERMINISTIC_HIGH_RADIAL_RESOLUTION_CONVENTION"
   },
@@ -41,12 +43,35 @@
       "upstream": "K_A",
       "downstream": "K_B"
     },
-    "radial_two_zone": {
+    "superseded_radial_fixture_revision_1": {
       "interface_radius_m": 0.0004787307364817192,
       "inner": "K_A",
       "outer": "K_B",
       "declared_inner_area_fraction": 0.5,
-      "declared_outer_area_fraction": 0.5
+      "declared_outer_area_fraction": 0.5,
+      "delta_p_Pa": 0.5314632027264452,
+      "original_fixture_sha256": "62f1d1963e9778c4bc41d77eaeb7b14b416a4631c6cea8b8d1d922ce05c050fa",
+      "failed_attempt_disposition": "PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT",
+      "supersession_reason": "RADIAL_EQUAL_AREA_INTERFACE_INCOMPATIBLE_WITH_UNIFORM_MESH_FACE_CONTRACT",
+      "executable": false
+    },
+    "radial_two_zone": {
+      "fixture_revision": 2,
+      "classification": "MESH_CONFORMING_NEAR_EQUAL_AREA",
+      "interface_face_index": 362,
+      "radial_cells": 512,
+      "radial_grading": 1.0,
+      "face_selection_rule": "nearest integer to radial_cells / sqrt(2); ties select lower integer",
+      "interface_radius_ratio": 0.70703125,
+      "interface_radius_m": 0.0004786795997912995,
+      "inner": "K_A",
+      "outer": "K_B",
+      "declared_inner_area_fraction": 0.4998931884765625,
+      "declared_outer_area_fraction": 0.5001068115234375,
+      "K_parallel_effective_m2": 1.1288553286128047e-09,
+      "expected_inner_flow_share": 0.7141985132218613,
+      "expected_outer_flow_share": 0.2858014867781387,
+      "solver_alignment_tolerance": 1e-8
     }
   },
   "runs": [
@@ -56,9 +81,16 @@
     {"run_id": "OF-U-PHI-ALT", "profile": "uniform", "porosity": "alternate", "target_q_m_s": 0.0005, "delta_p_Pa": 0.3720242419085117, "mpi_ranks": 1},
     {"run_id": "OF-SERIES-1", "profile": "axial_two_layer", "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.6510424233398954, "mpi_ranks": 1},
     {"run_id": "OF-SERIES-16", "profile": "axial_two_layer", "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.6510424233398954, "mpi_ranks": 16},
-    {"run_id": "OF-PARALLEL-1", "profile": "radial_two_zone", "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.5314632027264452, "mpi_ranks": 1},
-    {"run_id": "OF-PARALLEL-16", "profile": "radial_two_zone", "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.5314632027264452, "mpi_ranks": 16}
+    {"run_id": "OF-PARALLEL-1", "profile": "radial_two_zone", "fixture_revision": 2, "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.5315118640909556, "mpi_ranks": 1},
+    {"run_id": "OF-PARALLEL-16", "profile": "radial_two_zone", "fixture_revision": 2, "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.5315118640909556, "mpi_ranks": 16}
   ],
+  "process_attempt_accounting": {
+    "ceiling": 9,
+    "protocol_invalid_pre_solve_attempts": 1,
+    "failed_attempt_run_id": "OF-PARALLEL-1",
+    "failed_attempt_fixture_revision": 1,
+    "remaining_authorized_invocations": ["OF-PARALLEL-1_REVISION_2", "OF-SERIES-16", "OF-PARALLEL-16_REVISION_2"]
+  },
   "retained_openfoam_runs_before_freeze": 0,
   "physical_validation": "NOT_ESTABLISHED"
 }

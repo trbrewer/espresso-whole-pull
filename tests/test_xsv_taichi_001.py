@@ -1,6 +1,7 @@
 import csv
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -133,6 +134,104 @@ class XSVTaichi001Tests(unittest.TestCase):
         self.assertEqual(thresholds["channel_relative_error_max"], 0.0075)
         self.assertEqual(thresholds["returned_identity_relative_tolerance"], 1e-12)
         self.assertEqual(thresholds["serial_mpi_relative_difference_max"], 1e-8)
+
+    def test_authorized_radial_mesh_alignment_amendment_is_fail_closed(self) -> None:
+        amendment_path = CASE_ROOT / "XSV_TAICHI_001_PROTOCOL_AMENDMENT_001.json"
+        fixture_path = CASE_ROOT / "openfoam/XSV_TAICHI_001_OPENFOAM_FIXTURES.json"
+        amendment = json.loads(amendment_path.read_text(encoding="utf-8"))
+        fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            amendment["authorization_id"],
+            "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04",
+        )
+        self.assertEqual(
+            amendment["original_authorities"]["machine_protocol"]["sha256"],
+            "d93323c9f78bed1e23f18f70e783f3d849d93831133ddef45368fb65e62d187e",
+        )
+        self.assertEqual(
+            amendment["original_authorities"]["openfoam_fixture"]["sha256"],
+            "62f1d1963e9778c4bc41d77eaeb7b14b416a4631c6cea8b8d1d922ce05c050fa",
+        )
+        self.assertEqual(
+            hashlib.sha256(amendment_path.read_bytes()).hexdigest(),
+            self.protocol["protocol_amendment_001"]["sha256"],
+        )
+        domain = fixture["domain"]
+        profile = fixture["profiles"]["radial_two_zone"]
+        old = fixture["profiles"]["superseded_radial_fixture_revision_1"]
+        self.assertEqual(domain["radial_cells"], 512)
+        self.assertEqual(domain["radial_grading"], 1.0)
+        ideal = domain["radial_cells"] / math.sqrt(2.0)
+        self.assertAlmostEqual(ideal, 362.0386719675123)
+        departures = {
+            j: abs((j / domain["radial_cells"]) ** 2 - 0.5)
+            for j in range(1, domain["radial_cells"])
+        }
+        selected = profile["interface_face_index"]
+        self.assertEqual(selected, 362)
+        self.assertEqual(
+            [j for j, value in departures.items() if value == min(departures.values())],
+            [selected],
+        )
+        radius = domain["basket_radius_m"] * selected / domain["radial_cells"]
+        f_inner = (selected / domain["radial_cells"]) ** 2
+        f_outer = 1.0 - f_inner
+        self.assertEqual(radius, profile["interface_radius_m"])
+        self.assertEqual(f_inner, profile["declared_inner_area_fraction"])
+        self.assertEqual(f_outer, profile["declared_outer_area_fraction"])
+        self.assertNotEqual(profile["interface_radius_m"], old["interface_radius_m"])
+        self.assertNotEqual(profile["declared_inner_area_fraction"], 0.5)
+        self.assertFalse(old["executable"])
+        k_a = fixture["closure"]["K_A_m2"]
+        k_b = fixture["closure"]["K_B_m2"]
+        k_effective = f_inner * k_a + f_outer * k_b
+        target_q = next(
+            row["target_q_m_s"]
+            for row in fixture["runs"]
+            if row["run_id"] == "OF-PARALLEL-1"
+        )
+        delta_p = (
+            fixture["fluid"]["dynamic_viscosity_Pa_s"]
+            * domain["bed_depth_m"]
+            * target_q
+            / k_effective
+        )
+        self.assertEqual(k_effective, profile["K_parallel_effective_m2"])
+        self.assertEqual(delta_p, 0.5315118640909556)
+        self.assertNotEqual(delta_p, old["delta_p_Pa"])
+        self.assertEqual(f_inner * k_a / k_effective, profile["expected_inner_flow_share"])
+        self.assertEqual(f_outer * k_b / k_effective, profile["expected_outer_flow_share"])
+        self.assertEqual(f_inner + f_outer, 1.0)
+        self.assertEqual(fixture["closure"]["K_B_over_K_A"], 0.4)
+        self.assertEqual(profile["solver_alignment_tolerance"], 1e-8)
+        self.assertEqual(len(fixture["runs"]), 8)
+        self.assertEqual(
+            {row["run_id"] for row in fixture["runs"]},
+            {row["run_id"] for row in self.matrix if row["family"] == "OPENFOAM"},
+        )
+        accounting = fixture["process_attempt_accounting"]
+        self.assertEqual(accounting["ceiling"], 9)
+        self.assertEqual(accounting["protocol_invalid_pre_solve_attempts"], 1)
+        self.assertEqual(len(accounting["remaining_authorized_invocations"]), 3)
+        self.assertEqual(
+            amendment["accepted_predecessor_results"]["OF-SERIES-1"]["disposition"],
+            "COMPLETE_PASS",
+        )
+        self.assertEqual(amendment["completed_predecessor_results_rerun"], "PROHIBITED")
+        self.assertFalse(amendment["unchanged_inputs"]["thresholds_changed"])
+        self.assertFalse(amendment["governing_physics_changed"])
+        self.assertEqual(amendment["physical_validation"], "NOT_ESTABLISHED")
+        self.assertEqual(
+            hashlib.sha256(
+                (ROOT / "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md").read_bytes()
+            ).hexdigest(),
+            "8f6736c89da502b4b41d115292a504b0b83e28bfb94366f4cc83848309d810ab",
+        )
+        roadmap = (ROOT / "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("`XSV-TAICHI-002`", roadmap)
+        self.assertIn("candidate only, not authorized", roadmap)
 
     def test_frozen_geometry_manifest_is_complete_and_connected(self) -> None:
         manifest = json.loads(

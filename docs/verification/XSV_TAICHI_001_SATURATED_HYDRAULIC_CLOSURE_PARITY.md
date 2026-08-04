@@ -7,7 +7,7 @@
 - Profile: `EWP_XSV_TAICHI_001_CROSS_SOLVER_EXECUTION_STAGE_V1`
 - Change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
 - Evidence class: `SIMULATED_SYNTHETIC_REFERENCE`
-- Current status: `G0_PROTOCOL_FREEZE_PENDING_EXACT_HEAD_CI`
+- Current status: `G5_PROTOCOL_AMENDMENT_001_PENDING_EXACT_HEAD_CI`
 - Issue: [#58](https://github.com/trbrewer/espresso-whole-pull/issues/58)
 - Branch: `verification/xsv-taichi-001-saturated-hydraulic-closure-parity`
 - Pull request: [#59](https://github.com/trbrewer/espresso-whole-pull/pull/59),
@@ -131,7 +131,46 @@ Darcy only, zero extraction, constant viscosity `1e-3 Pa s`, density metadata
 `1000 kg/m3`, and no machine, wetting, chemistry, compaction, Forchheimer or
 dissolution-indexed permeability branch. Uniform target superficial velocities
 are `2.5e-4`, `5e-4`, and `1e-3 m/s`. The engineered composition contrast is
-`K_B=0.4*K_A` with equal axial lengths and equal radial areas.
+`K_B=0.4*K_A` with equal axial lengths. The original exactly equal radial-area
+fixture was found pre-solve to be incompatible with the frozen uniform radial
+mesh and is superseded by authorized amendment 001 below.
+
+### Authorized protocol amendment 001: mesh-conforming radial interface
+
+The original revision-1 radial fixture used `R/sqrt(2)`, declared area
+fractions `0.5/0.5`, and pressure drop `0.5314632027264452 Pa`. Its first
+`OF-PARALLEL-1` invocation stopped before time advancement with `Radial
+interface does not align with mesh: 0.0002136229947`. It produced no usable
+flow result and is permanently retained as
+`PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT`.
+
+Fresh human authorization
+`XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04` selects the unique mesh
+face minimizing `abs((j/512)^2 - 0.5)`: face `362`. Revision 2 is therefore
+`MESH_CONFORMING_NEAR_EQUAL_AREA`, not exactly equal area:
+
+```text
+interface_radius = basket_radius * 362 / 512
+interface_radius = 0.0004786795997912995 m
+f_inner = (362 / 512)^2 = 0.4998931884765625
+f_outer = 1 - f_inner = 0.5001068115234375
+K_parallel = f_inner*K_A + f_outer*K_B
+K_parallel = 1.1288553286128047e-09 m2
+delta_p_parallel = mu*bed_depth*target_q/K_parallel
+delta_p_parallel = 0.5315118640909556 Pa
+inner_flow_share = 0.7141985132218613
+outer_flow_share = 0.2858014867781387
+```
+
+The 512-cell uniform radial mesh, grading 1.0, wedge, closure values, target
+flow, source, alignment tolerance and all G5 thresholds remain unchanged.
+G0-G4 and the valid `OF-SERIES-1` result are accepted and prohibited from
+rerun. The case matrix still contains eight governed OpenFOAM identities;
+attempt provenance records one invalid pre-solve attempt and raises only the
+process-attempt ceiling from eight to nine. The three remaining invocations
+are corrected `OF-PARALLEL-1`, unchanged `OF-SERIES-16`, and corrected
+`OF-PARALLEL-16`, in that order. This amendment does not change the claim
+ceiling or establish physical validation.
 
 ## 11. Acceptance gates
 
@@ -173,15 +212,24 @@ most one identical infrastructure retry.
 3. Branch: CREATED_FROM_EXACT_START.
 4. Protocol-first commit `55c5335547892e74d58b049121211245b0cf8fd6`
    and draft PR #59: COMPLETE; exact-head G0 CI pending.
-5. G1 through G6: NOT_STARTED.
+5. G0 and G1: PASS.
+6. G2: PASS with 19/19 governed LBM cases.
+7. G3: `GROSS_AREA_DARCY_ADAPTER_CONFIRMED`.
+8. G4: PASS with four uniform OpenFOAM traces.
+9. G5: `OF-SERIES-1` PASS; original radial revision-1 attempt retained as
+   `PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT`; amendment 001
+   pending exact-head qualification before any further execution.
 
 ## 14. Numerical results
 
-`NOT_YET_GENERATED_PROSPECTIVE_PROTOCOL_ONLY`
+Accepted predecessor evidence is retained externally. Numerical results and
+the complete reduced package will be populated after amendment qualification
+and bounded G5/G6 completion.
 
 ## 15. Typed failures, if any
 
-`NONE_AT_PROTOCOL_FREEZE`
+`PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT` for the original
+revision-1 `OF-PARALLEL-1` attempt. It is not a scored flow result.
 
 ## 16. Limitations
 
