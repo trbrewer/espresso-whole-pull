@@ -509,10 +509,43 @@ class StageB2ProspectiveTests(unittest.TestCase):
         external = ROOT / "validation/external/puckworks_base_temporal_cv"
         record = json.loads((external / "PUCKWORKS_BASE_TEMPORAL_CV_SOURCE_RECORD.json").read_text())
         self.assertEqual(record["upstream_commit"], "21869fe19feec2dce6af8f4a41f63299473e31c2")
+        expected_artifacts = {
+            "validation/external/puckworks_base_temporal_cv/PAPER_A_TEMPORAL_MODEL_COMPARISON_V1.json":
+                "581c985723542003a9c74f80f7b70a340d9b80869110993e03f57d2998adb5ff",
+            "validation/external/puckworks_base_temporal_cv/PAPER_A_TEMPORAL_MATCHED_DATA_MANIFEST_V1.json":
+                "6df7c7698622aca082518894ea9e2b730141a27463d177c807b23feee5e5f111",
+            "validation/external/puckworks_base_temporal_cv/PAPER_A_CUP_TARGET_LINEAGE_AUDIT_V1.json":
+                "87087c54754c7f73fa7de11c8cde1639ab4901152f08d9f6a932739e83e2e92a",
+            "validation/external/puckworks_base_temporal_cv/PAPER_A_TEMPORAL_RESIDUAL_ROBUSTNESS_V1.json":
+                "f6f09ac985ab58652e53a52185db96801c50169776a396d2fa95e490619fc04b",
+            "docs/evidence/puckworks_base_temporal_cv/figures/temporal_heldout_late.png":
+                "55945eceb05ebc4d449c944a293911dfad6c60b418f808f570397b36c23013dd",
+            "docs/evidence/puckworks_base_temporal_cv/figures/temporal_observed_vs_predicted.png":
+                "4248022df4149fb9b9de5ad3caa6fd69c9e7198bacc4acbd0b412d1991994dbb",
+            "docs/evidence/puckworks_base_temporal_cv/figures/temporal_parameter_stability.png":
+                "2ccd5f82eff60945f83851c42e00520cea9cdfa11197d8f948d2f5239cedf126",
+            "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png":
+                "9336facc0d5a09b216904759c3942c70768d56f2f533d512a33096ce1822e778",
+            "docs/evidence/puckworks_base_temporal_cv/figures/temporal_integrated_vs_raw.png":
+                "69ec515c72bbb59c4873396974ea02c6d1b4b8878c1c45da94aa0812255e7717",
+        }
+        self.assertEqual(len(record["artifacts"]), 9)
+        local_paths = [member["local_path"] for member in record["artifacts"]]
+        upstream_paths = [member["upstream_path"] for member in record["artifacts"]]
+        self.assertEqual(set(local_paths), set(expected_artifacts))
+        self.assertEqual(len(local_paths), len(set(local_paths)))
+        self.assertEqual(len(upstream_paths), len(set(upstream_paths)))
+        self.assertEqual(sum(path.endswith(".json") for path in local_paths), 4)
+        self.assertEqual(sum(path.endswith(".png") for path in local_paths), 5)
         for member in record["artifacts"]:
-            self.assertEqual(reporting.sha256(ROOT / member["local_path"]), member["local_sha256"])
-            self.assertEqual(member["upstream_sha256"], member["local_sha256"])
+            path = ROOT / member["local_path"]
+            self.assertTrue(path.is_file(), member["local_path"])
+            observed = reporting.sha256(path)
+            self.assertEqual(observed, expected_artifacts[member["local_path"]])
+            self.assertEqual(observed, member["upstream_sha256"])
+            self.assertEqual(observed, member["local_sha256"])
             self.assertTrue(member["byte_identity"])
+
         model = json.loads((external / "PAPER_A_TEMPORAL_MODEL_COMPARISON_V1.json").read_text())
         expected = {
             "caffeine": (6.773723008023561, 9.956192697201004, 1.5553653242809058, 2.2230231547476897),
@@ -525,8 +558,125 @@ class StageB2ProspectiveTests(unittest.TestCase):
                               base["late_signed_pct"], base["derived_cumulative_mape"]), values)
             self.assertEqual(base["n_folds"], 5)
             self.assertEqual(base["failed_fits"], 0)
-        self.assertEqual(record["matched_data"]["shot_count"], 16)
-        self.assertEqual(record["matched_data"]["excluded_shot_count"], 3)
+            self.assertEqual(base["parameter_stability"]["kappa"], [1.053357520264539] * 5)
+
+        manifest = json.loads((external / "PAPER_A_TEMPORAL_MATCHED_DATA_MANIFEST_V1.json").read_text())
+        self.assertEqual(manifest["experiments"], [1.0, 2.0, 5.0, 6.0, 7.0])
+        self.assertEqual(manifest["n_shots"], 16)
+        self.assertEqual(len(manifest["shots"]), 16)
+        self.assertEqual(manifest["measured_fractions"], [1, 2, 3, 5, 7, 10])
+        self.assertEqual(manifest["late_fractions"], [7, 10])
+        self.assertEqual(manifest["n_excluded_overall"], 3)
+        self.assertEqual(manifest["exclusions"], [
+            {
+                "exp": 2.0, "rep": 3.0,
+                "reasons": ["fraction set [1, 3, 5, 7, 10] != [1, 2, 3, 5, 7, 10]"],
+                "fraction_rows_incomplete": [{
+                    "fraction": 2.0,
+                    "missing": ["c_caffeine_mg_g", "c_trigonelline_mg_g", "c_5cqa_mg_g"],
+                }],
+                "cup_rows_incomplete": [],
+            },
+            {
+                "exp": 5.0, "rep": 3.0,
+                "reasons": ["fraction set [1, 3, 5, 7, 10] != [1, 2, 3, 5, 7, 10]"],
+                "fraction_rows_incomplete": [{
+                    "fraction": 2.0,
+                    "missing": ["c_caffeine_mg_g", "c_trigonelline_mg_g", "c_5cqa_mg_g"],
+                }],
+                "cup_rows_incomplete": [],
+            },
+            {
+                "exp": 10.0, "rep": 1.0,
+                "reasons": ["fraction set [1, 3, 5, 7, 10] != [1, 2, 3, 5, 7, 10]"],
+                "fraction_rows_incomplete": [{
+                    "fraction": 2.0,
+                    "missing": ["mass_fraction_g", "mass_accumulated_g"],
+                }],
+                "cup_rows_incomplete": [],
+            },
+        ])
+        matched = record["matched_data"]
+        self.assertEqual(matched["experiments"], manifest["experiments"])
+        self.assertEqual(matched["experiment_count"], len(manifest["experiments"]))
+        self.assertEqual(matched["shot_count"], manifest["n_shots"])
+        self.assertEqual(matched["fractions"], manifest["measured_fractions"])
+        self.assertEqual(matched["late_fractions"], manifest["late_fractions"])
+        self.assertEqual(matched["held_out_unit"], "entire_experiment")
+        self.assertEqual(matched["excluded_shot_count"], len(manifest["exclusions"]))
+
+        audit = json.loads((external / "PAPER_A_CUP_TARGET_LINEAGE_AUDIT_V1.json").read_text())
+        self.assertEqual(audit["rows_reproduced"], 432)
+        self.assertEqual(audit["rows_within_0p01pct"], 427)
+        self.assertEqual(audit["median_rel_error_pct"], 3.2238843694444866e-05)
+        self.assertEqual(audit["conc_in_cup_equals_mass_over_M_mismatches"], 0)
+        self.assertEqual(audit["deviation_cause"]["deviating_rows_total"], 5)
+        lineage = {
+            "evidence_class": "POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+            "independent_measurement": False,
+            "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+            "prohibited_use": "INDEPENDENT_VALIDATION_TARGET",
+            "required_citation": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md",
+        }
+        self.assertEqual(record["cup_masses_csv_lineage"], lineage)
+
+        document = (ROOT / "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md").read_text()
+        normalized_document = " ".join(document.split())
+        required_document_text = (
+            "CROSS_REPOSITORY_SUPPORTING_EXTRACTION_EVIDENCE",
+            "LEAVE_ONE_EXPERIMENT_OUT_WITHIN_ONE_SOURCE_CAMPAIGN",
+            "PHYSICAL_VALIDATION: NOT_ESTABLISHED",
+            "GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION: NOT_ESTABLISHED",
+            "DIRECT_VALIDATION_OF_ESPRESSO_WHOLE_PULL_FOAM: NO",
+            "1.053357520264539",
+            "mass_in_cup(M) = c0 * lambda * (1 - exp(-M/lambda))",
+            "concentration_in_cup(M) = mass_in_cup(M) / M",
+            "432 rows checked",
+            "427 rows within 0.01%",
+            "3.2238843694444866e-05%",
+            "zero concentration `mass/M` mismatches",
+            "five larger deviations",
+            "evidence_class = POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+            "independent_measurement = false",
+            "allowed_use = SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+            "prohibited_use = INDEPENDENT_VALIDATION_TARGET",
+            "required_citation = docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md",
+            "## Standing instruction for future validation work",
+        )
+        for text in required_document_text:
+            self.assertIn(text, normalized_document)
+        for values in expected.values():
+            for value in values:
+                self.assertIn(repr(value), document)
+        standing_instruction = (
+            "Any future comparison, adapter, plot, report, or manuscript text that uses `cup_masses.csv` "
+            "must identify it as a post-fit quantity derived from replicate-fitted source kinetics, not as "
+            "an independent cup measurement. The required local authority is "
+            "`docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md`."
+        )
+        self.assertIn(standing_instruction, normalized_document)
+        self.assertIn(
+            "The retained BASE comparison reports zero positivity violations and zero mass-conservation violations.",
+            normalized_document,
+        )
+
+        conservation_path = "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png"
+        conservation = [item for item in record["artifacts"] if item["local_path"] == conservation_path]
+        self.assertEqual(len(conservation), 1)
+        self.assertEqual(conservation[0], {
+            "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/figures/temporal_conservation_checks.png",
+            "local_path": conservation_path,
+            "upstream_sha256": "9336facc0d5a09b216904759c3942c70768d56f2f533d512a33096ce1822e778",
+            "local_sha256": "9336facc0d5a09b216904759c3942c70768d56f2f533d512a33096ce1822e778",
+            "byte_identity": True,
+            "evidence_status": "SELECTED_SUPPORTING_FIGURE",
+            "claim_boundary": "RETAINED_COMPARISON_NUMERICAL_CHECK_ONLY",
+        })
+        # The positivity and mass-conservation outcome is source-reported and
+        # bound to the exact imported conservation-check figure. The imported
+        # JSON package does not expose structured violation counters, so this
+        # test verifies provenance and display integrity rather than
+        # independently recomputing those counters.
 
 
 if __name__ == "__main__":
