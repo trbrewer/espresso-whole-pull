@@ -1,22 +1,22 @@
 {
-  "aggregate_sha256": "241bf7fc20984f81446b9460002f1c15f7b6d6f46a52af275fd1e6fb852a69e5",
+  "aggregate_sha256": "f755c6aea99134671edf0e23868d3e10a5c1b66063b93516bf5b450887b2faec",
   "figure_count": 5,
   "figures": [
     {
       "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
-      "figure_bytes": 9073,
+      "figure_bytes": 18919,
       "figure_path": "validation/cases/val_corpus_002/figures/production_availability_matrix.svg",
-      "figure_sha256": "8b3de4131fe9c62789d3c6942a55d97083773322c02b8e5d7e180ff572dcb8d4",
-      "generation_script_sha256": "b439a2292ae1eb19c5b5008373216a39fb6adb6800cdd576332b9b0f68cf02b2",
+      "figure_sha256": "c243c06a9fd46eafe27e1934e8c3be40e2b9589fa33309e47996a0bdbb204872",
+      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
       "source_lineage": null,
       "source_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb"
     },
     {
       "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
-      "figure_bytes": 9549,
+      "figure_bytes": 29098,
       "figure_path": "validation/cases/val_corpus_002/figures/schmieder_h1_source_model.svg",
-      "figure_sha256": "1642a8e5fdd5abd0faa8291a5d78a3ff289562bfd200506d0a8be486b5fea309",
-      "generation_script_sha256": "b439a2292ae1eb19c5b5008373216a39fb6adb6800cdd576332b9b0f68cf02b2",
+      "figure_sha256": "d35aa0f9d005c70e0476b16f3a6bb3120e483c39a5e1b8f5b9be7908db31e394",
+      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
       "source_lineage": {
         "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
         "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
@@ -29,10 +29,10 @@
     },
     {
       "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
-      "figure_bytes": 6158,
+      "figure_bytes": 20949,
       "figure_path": "validation/cases/val_corpus_002/figures/schmieder_h1_axis_contrasts.svg",
-      "figure_sha256": "1b155ea15ddac9c0962a727061966fd28d9cccae0bca96e0067b3c67c3f890e4",
-      "generation_script_sha256": "b439a2292ae1eb19c5b5008373216a39fb6adb6800cdd576332b9b0f68cf02b2",
+      "figure_sha256": "0292810de091bede23ba284f2d25720516f106e87c77bb55595ca20c0cd8723c",
+      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
       "source_lineage": {
         "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
         "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
@@ -45,19 +45,19 @@
     },
     {
       "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
-      "figure_bytes": 4489,
+      "figure_bytes": 22131,
       "figure_path": "validation/cases/val_corpus_002/figures/waszkiewicz_both_clocks.svg",
-      "figure_sha256": "2a15970d91d5047026d48dff9d4fbb36210237c888fe909bcb0d06da38503d20",
-      "generation_script_sha256": "b439a2292ae1eb19c5b5008373216a39fb6adb6800cdd576332b9b0f68cf02b2",
+      "figure_sha256": "8f4b7bce271bfe97557b8adae37e0f528d77534d30f784f464caa582ae1ce8fa",
+      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
       "source_lineage": null,
       "source_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb"
     },
     {
       "deterministic_generation_disposition": "BYTE_IDENTICAL_REPEATED_GENERATION",
-      "figure_bytes": 3432,
+      "figure_bytes": 8012,
       "figure_path": "validation/cases/val_corpus_002/figures/sensitivity_matrix_and_singular_values.svg",
-      "figure_sha256": "523f68a59540ea8a2e1085206c13d31b3c840193fc237fabbb308cc3e5ca5bc6",
-      "generation_script_sha256": "b439a2292ae1eb19c5b5008373216a39fb6adb6800cdd576332b9b0f68cf02b2",
+      "figure_sha256": "ea3bbabaa222d97fd90038724c45c2837d47ececcfab99f3f55671f8e4ee7dba",
+      "generation_script_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
       "source_lineage": null,
       "source_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb"
     }

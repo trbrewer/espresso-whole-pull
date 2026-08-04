@@ -16,7 +16,7 @@
   "members": {
     "interpretation_and_reporting_implementation": {
       "path": "scripts/val_corpus_002_b2_reporting.py",
-      "sha256": "b439a2292ae1eb19c5b5008373216a39fb6adb6800cdd576332b9b0f68cf02b2"
+      "sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2"
     },
     "final_result_schema": {
       "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT_SCHEMA.json",
@@ -40,8 +40,8 @@
     },
     "figure_manifest": {
       "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FIGURE_MANIFEST.json",
-      "sha256": "0478a999343d9eee355beef438aa303160c00697c8ee3baf7221502ea092ee31",
-      "figure_aggregate_sha256": "241bf7fc20984f81446b9460002f1c15f7b6d6f46a52af275fd1e6fb852a69e5"
+      "sha256": "7dfff8c964e30a8a5179acff6540fa33eb558a889ca8b34a5bb287bd96eebee8",
+      "figure_aggregate_sha256": "f755c6aea99134671edf0e23868d3e10a5c1b66063b93516bf5b450887b2faec"
     },
     "human_report": {
       "path": "docs/validation/VAL_CORPUS_002_STAGE_B2_RESULT.md",

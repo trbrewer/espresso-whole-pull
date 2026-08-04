@@ -106,7 +106,10 @@
   and external artifact, replaced the overstated disposition with a frozen-
   rule interpretation, completed the 24-triplet-per-component normalized
   source audit, added the 21-row reduced source-clock diagnostic and closed
-  45-case numerical summary, and generated five deterministic figures. The
+  45-case numerical summary, and generated five deterministic figures. A
+  final reporting-only correction replaced ambiguous overlays and anonymous
+  cells with governed small multiples, labeled matrices, quantitative axes,
+  explicit plot rectangles, and fail-closed semantic/geometric tests. The
   result is local reconstruction only with partial directional transfer,
   grind-sign reversal, hydraulic target-coverage mismatch, and cross-source
   time-shape failure. Physical validation remains not established; no

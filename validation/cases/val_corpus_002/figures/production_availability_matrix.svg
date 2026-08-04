@@ -1,99 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
-<rect x="0" y="0" width="1000" height="620" fill="white"/>
-<title>Production availability: 45 governed identities</title>
-<desc>27 PASS; 18 immutable typed target-coverage failures; no imputation</desc>
-<text x="40" y="34" font-family="sans-serif" font-size="20">Production availability: 45 governed identities</text>
-<rect x="115" y="115" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="150" y="145" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">1</text>
-<rect x="205" y="115" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="240" y="145" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">2</text>
-<rect x="295" y="115" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="330" y="145" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">3</text>
-<rect x="385" y="115" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="420" y="145" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">4</text>
-<rect x="475" y="115" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="510" y="145" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">5</text>
-<rect x="565" y="115" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="600" y="145" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">6</text>
-<rect x="655" y="115" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="690" y="145" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">7</text>
-<rect x="745" y="115" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="780" y="145" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">8</text>
-<rect x="835" y="115" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="870" y="145" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">9</text>
-<rect x="115" y="190" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="150" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">10</text>
-<rect x="205" y="190" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="240" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">11</text>
-<rect x="295" y="190" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="330" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">12</text>
-<rect x="385" y="190" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="420" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">13</text>
-<rect x="475" y="190" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="510" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">14</text>
-<rect x="565" y="190" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="600" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">15</text>
-<rect x="655" y="190" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="690" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">16</text>
-<rect x="745" y="190" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="780" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">17</text>
-<rect x="835" y="190" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="870" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">18</text>
-<rect x="115" y="265" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="150" y="295" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">19</text>
-<rect x="205" y="265" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="240" y="295" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">20</text>
-<rect x="295" y="265" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="330" y="295" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">21</text>
-<rect x="385" y="265" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="420" y="295" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">22</text>
-<rect x="475" y="265" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="510" y="295" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">23</text>
-<rect x="565" y="265" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="600" y="295" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">24</text>
-<rect x="655" y="265" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="690" y="295" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">25</text>
-<rect x="745" y="265" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="780" y="295" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">26</text>
-<rect x="835" y="265" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="870" y="295" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">27</text>
-<rect x="115" y="340" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="150" y="370" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">28</text>
-<rect x="205" y="340" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="240" y="370" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">29</text>
-<rect x="295" y="340" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="330" y="370" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">30</text>
-<rect x="385" y="340" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="420" y="370" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">31</text>
-<rect x="475" y="340" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="510" y="370" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">32</text>
-<rect x="565" y="340" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="600" y="370" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">33</text>
-<rect x="655" y="340" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="690" y="370" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">34</text>
-<rect x="745" y="340" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="780" y="370" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">35</text>
-<rect x="835" y="340" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="870" y="370" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">36</text>
-<rect x="115" y="415" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="150" y="445" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">37</text>
-<rect x="205" y="415" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="240" y="445" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">38</text>
-<rect x="295" y="415" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="330" y="445" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">39</text>
-<rect x="385" y="415" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="420" y="445" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">40</text>
-<rect x="475" y="415" width="70" height="50" fill="#d95f0e" stroke="black"/>
-<text x="510" y="445" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">41</text>
-<rect x="565" y="415" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="600" y="445" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">42</text>
-<rect x="655" y="415" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="690" y="445" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">43</text>
-<rect x="745" y="415" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="780" y="445" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">44</text>
-<rect x="835" y="415" width="70" height="50" fill="#2c7fb8" stroke="black"/>
-<text x="870" y="445" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">45</text>
-<rect x="120" y="520" width="18" height="18" fill="#2c7fb8"/><text x="145" y="534" font-family="sans-serif" font-size="12">PASS (27)</text>
-<rect x="270" y="520" width="18" height="18" fill="#d95f0e"/><text x="295" y="534" font-family="sans-serif" font-size="12">typed target failure (18)</text>
-<text x="40" y="602" font-family="sans-serif" font-size="11">27 PASS; 18 immutable typed target-coverage failures; no imputation</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+<rect x="0" y="0" width="1200" height="820" fill="white"/>
+<title>Production availability matrix</title>
+<desc>27 PASS; 18 immutable typed target-coverage failures.</desc>
+<g id="title-band" data-band="title" data-x="30" data-y="18" data-width="1140" data-height="42">
+<text x="40.000" y="47.000" font-family="sans-serif" font-size="20">Production availability matrix</text>
+</g>
+<g id="legend-band" data-band="legend" data-x="30" data-y="66" data-width="1140" data-height="48">
+<rect x="330" y="80" width="18" height="18" fill="#2c7fb8"/>
+<text x="356.000" y="94.000" font-family="sans-serif" font-size="12">numerical PASS (27)</text>
+<rect x="550" y="80" width="18" height="18" fill="#d95f0e"/>
+<text x="576.000" y="94.000" font-family="sans-serif" font-size="12">typed target unavailability (18; normal execution, not infrastructure)</text>
+</g>
+<g id="plot-band" data-band="plot" data-x="70" data-y="122" data-width="1080" data-height="540">
+<g id="availability" data-panel="availability" data-plot-x="250.000" data-plot-y="150.000" data-plot-width="784.000" data-plot-height="452.000">
+<text x="316.000" y="140.000" font-family="sans-serif" font-size="11" text-anchor="middle">P0/H0</text>
+<text x="448.000" y="140.000" font-family="sans-serif" font-size="11" text-anchor="middle">P0/H1</text>
+<text x="580.000" y="140.000" font-family="sans-serif" font-size="11" text-anchor="middle">P1/H0</text>
+<text x="712.000" y="140.000" font-family="sans-serif" font-size="11" text-anchor="middle">P1/H1</text>
+<text x="844.000" y="140.000" font-family="sans-serif" font-size="11" text-anchor="middle">P2/H0</text>
+<text x="976.000" y="140.000" font-family="sans-serif" font-size="11" text-anchor="middle">P2/H1</text>
+<text x="235.000" y="182.000" font-family="sans-serif" font-size="11" text-anchor="end">Schmieder Exp 1</text>
+<g data-run-id="SCHM_EXP1_P0_H0"><title>SCHM_EXP1_P0_H0</title><rect x="250.000" y="150.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="312.000" y="178.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP1_P0_H1"><title>SCHM_EXP1_P0_H1</title><rect x="382.000" y="150.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="444.000" y="178.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP1_P1_H0"><title>SCHM_EXP1_P1_H0</title><rect x="514.000" y="150.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="576.000" y="178.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP1_P1_H1"><title>SCHM_EXP1_P1_H1</title><rect x="646.000" y="150.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="708.000" y="178.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"><title>SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H0</title><rect x="778.000" y="150.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="840.000" y="178.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"><title>SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H1</title><rect x="910.000" y="150.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="972.000" y="178.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<text x="235.000" y="237.000" font-family="sans-serif" font-size="11" text-anchor="end">Schmieder Exp 2</text>
+<g data-run-id="SCHM_EXP2_P0_H0"><title>SCHM_EXP2_P0_H0</title><rect x="250.000" y="205.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="312.000" y="233.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP2_P0_H1"><title>SCHM_EXP2_P0_H1</title><rect x="382.000" y="205.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="444.000" y="233.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP2_P1_H0"><title>SCHM_EXP2_P1_H0</title><rect x="514.000" y="205.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="576.000" y="233.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP2_P1_H1"><title>SCHM_EXP2_P1_H1</title><rect x="646.000" y="205.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="708.000" y="233.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"><title>SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H0</title><rect x="778.000" y="205.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="840.000" y="233.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"><title>SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H1</title><rect x="910.000" y="205.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="972.000" y="233.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<text x="235.000" y="292.000" font-family="sans-serif" font-size="11" text-anchor="end">Schmieder Exp 3</text>
+<g data-run-id="SCHM_EXP3_P0_H0"><title>SCHM_EXP3_P0_H0</title><rect x="250.000" y="260.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="312.000" y="288.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP3_P0_H1"><title>SCHM_EXP3_P0_H1</title><rect x="382.000" y="260.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="444.000" y="288.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP3_P1_H0"><title>SCHM_EXP3_P1_H0</title><rect x="514.000" y="260.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="576.000" y="288.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP3_P1_H1"><title>SCHM_EXP3_P1_H1</title><rect x="646.000" y="260.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="708.000" y="288.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"><title>SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H0</title><rect x="778.000" y="260.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="840.000" y="288.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"><title>SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H1</title><rect x="910.000" y="260.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="972.000" y="288.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<text x="235.000" y="347.000" font-family="sans-serif" font-size="11" text-anchor="end">Schmieder Exp 4</text>
+<g data-run-id="SCHM_EXP4_P0_H0"><title>SCHM_EXP4_P0_H0</title><rect x="250.000" y="315.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="312.000" y="343.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP4_P0_H1"><title>SCHM_EXP4_P0_H1</title><rect x="382.000" y="315.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="444.000" y="343.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP4_P1_H0"><title>SCHM_EXP4_P1_H0</title><rect x="514.000" y="315.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="576.000" y="343.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP4_P1_H1"><title>SCHM_EXP4_P1_H1</title><rect x="646.000" y="315.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="708.000" y="343.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"><title>SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H0</title><rect x="778.000" y="315.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="840.000" y="343.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"><title>SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H1</title><rect x="910.000" y="315.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="972.000" y="343.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<text x="235.000" y="402.000" font-family="sans-serif" font-size="11" text-anchor="end">Schmieder Exp 5</text>
+<g data-run-id="SCHM_EXP5_P0_H0"><title>SCHM_EXP5_P0_H0</title><rect x="250.000" y="370.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="312.000" y="398.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP5_P0_H1"><title>SCHM_EXP5_P0_H1</title><rect x="382.000" y="370.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="444.000" y="398.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP5_P1_H0"><title>SCHM_EXP5_P1_H0</title><rect x="514.000" y="370.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="576.000" y="398.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP5_P1_H1"><title>SCHM_EXP5_P1_H1</title><rect x="646.000" y="370.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="708.000" y="398.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"><title>SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H0</title><rect x="778.000" y="370.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="840.000" y="398.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"><title>SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H1</title><rect x="910.000" y="370.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="972.000" y="398.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<text x="235.000" y="457.000" font-family="sans-serif" font-size="11" text-anchor="end">Schmieder Exp 6</text>
+<g data-run-id="SCHM_EXP6_P0_H0"><title>SCHM_EXP6_P0_H0</title><rect x="250.000" y="425.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="312.000" y="453.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP6_P0_H1"><title>SCHM_EXP6_P0_H1</title><rect x="382.000" y="425.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="444.000" y="453.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP6_P1_H0"><title>SCHM_EXP6_P1_H0</title><rect x="514.000" y="425.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="576.000" y="453.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP6_P1_H1"><title>SCHM_EXP6_P1_H1</title><rect x="646.000" y="425.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="708.000" y="453.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"><title>SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H0</title><rect x="778.000" y="425.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="840.000" y="453.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"><title>SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H1</title><rect x="910.000" y="425.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="972.000" y="453.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<text x="235.000" y="512.000" font-family="sans-serif" font-size="11" text-anchor="end">Schmieder Exp 7</text>
+<g data-run-id="SCHM_EXP7_P0_H0"><title>SCHM_EXP7_P0_H0</title><rect x="250.000" y="480.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="312.000" y="508.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP7_P0_H1"><title>SCHM_EXP7_P0_H1</title><rect x="382.000" y="480.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="444.000" y="508.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP7_P1_H0"><title>SCHM_EXP7_P1_H0</title><rect x="514.000" y="480.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="576.000" y="508.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP7_P1_H1"><title>SCHM_EXP7_P1_H1</title><rect x="646.000" y="480.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="708.000" y="508.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<g data-run-id="SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"><title>SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H0</title><rect x="778.000" y="480.000" width="124" height="47" fill="#d95f0e" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="840.000" y="508.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">TYPED</text></g>
+<g data-run-id="SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"><title>SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1</title><rect x="910.000" y="480.000" width="124" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="972.000" y="508.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">PASS</text></g>
+<text x="235.000" y="587.000" font-family="sans-serif" font-size="11" text-anchor="end">Waszkiewicz 9 bar</text>
+<g data-run-id="WASZ_9_COMPACT_P0_CHEMISTRY"><title>WASZ_9_COMPACT_P0_CHEMISTRY</title><rect x="250.000" y="555.000" width="256" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="378.000" y="583.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">P0 PASS</text></g>
+<g data-run-id="WASZ_9_COMPACT_P1_CHEMISTRY"><title>WASZ_9_COMPACT_P1_CHEMISTRY</title><rect x="514.000" y="555.000" width="256" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="642.000" y="583.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">P1 PASS</text></g>
+<g data-run-id="WASZ_9_COMPACT_P2_FIXED_AFTER_EXP7_CALIBRATION_CHEMISTRY"><title>WASZ_9_COMPACT_P2_FIXED_AFTER_EXP7_CALIBRATION_CHEMISTRY</title><rect x="778.000" y="555.000" width="256" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/><text x="906.000" y="583.000" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">P2 PASS</text></g>
+</g>
+</g>
+<g id="lower-label-band" data-band="lower-label" data-x="70" data-y="666" data-width="1080" data-height="34">
+<text x="640.000" y="687.000" font-family="sans-serif" font-size="11" text-anchor="middle">Columns identify parameterization and hydraulic mode; each cell carries its governed run_id.</text>
+</g>
+<g id="axis-title-band" data-band="axis-title" data-x="30" data-y="704" data-width="1140" data-height="28">
+<text x="640.000" y="723.000" font-family="sans-serif" font-size="12" text-anchor="middle">45 governed identities: 42 Schmieder + 3 Waszkiewicz</text>
+</g>
+<g id="annotation-band" data-band="annotation" data-x="30" data-y="736" data-width="1140" data-height="30">
+<text x="640.000" y="754.000" font-family="sans-serif" font-size="11" text-anchor="middle">No imputation or extrapolation; typed target coverage is distinct from execution failure.</text>
+</g>
+<g id="caption-band" data-band="caption" data-x="30" data-y="770" data-width="1140" data-height="42">
+<text x="40.000" y="786.000" font-family="sans-serif" font-size="11">27 PASS; 18 immutable typed target-coverage failures.</text>
+</g>
 </svg>

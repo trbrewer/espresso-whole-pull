@@ -1,45 +1,180 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
-<rect x="0" y="0" width="1000" height="620" fill="white"/>
-<title>Waszkiewicz interval TDS: both frozen clocks</title>
-<desc>source points black; P0 green; P1 purple; P2 orange; no optimized shift</desc>
-<text x="40" y="34" font-family="sans-serif" font-size="20">Waszkiewicz interval TDS: both frozen clocks</text>
-<line x1="90" y1="540" x2="950" y2="540" stroke="black"/>
-<line x1="90" y1="70" x2="90" y2="540" stroke="black"/>
-<text x="480" y="575" font-family="sans-serif" font-size="13">5-second interval index (two fixed clock panels)</text>
-<text x="18" y="300" font-family="sans-serif" font-size="13" transform="rotate(-90 18 300)">interval TDS fraction</text>
-<polyline points="100.000,142.736 132.000,156.725 164.000,130.000 196.000,263.768 228.000,383.708 260.000,448.711 292.000,483.632 324.000,501.295 356.000,510.498 388.000,517.034 420.000,521.274 452.000,522.387" fill="none" stroke="#222" stroke-width="2"/>
-<circle cx="100.000" cy="142.736" r="3" fill="#222"/>
-<circle cx="132.000" cy="156.725" r="3" fill="#222"/>
-<circle cx="164.000" cy="130.000" r="3" fill="#222"/>
-<circle cx="196.000" cy="263.768" r="3" fill="#222"/>
-<circle cx="228.000" cy="383.708" r="3" fill="#222"/>
-<circle cx="260.000" cy="448.711" r="3" fill="#222"/>
-<circle cx="292.000" cy="483.632" r="3" fill="#222"/>
-<circle cx="324.000" cy="501.295" r="3" fill="#222"/>
-<circle cx="356.000" cy="510.498" r="3" fill="#222"/>
-<circle cx="388.000" cy="517.034" r="3" fill="#222"/>
-<circle cx="420.000" cy="521.274" r="3" fill="#222"/>
-<circle cx="452.000" cy="522.387" r="3" fill="#222"/>
-<polyline points="100.000,483.615 132.000,348.646 164.000,292.046 196.000,283.083 228.000,285.516 260.000,291.380 292.000,302.154 324.000,321.477 356.000,352.448 388.000,394.149 420.000,438.778 452.000,476.019" fill="none" stroke="#1b9e77" stroke-width="2"/>
-<polyline points="100.000,500.833 132.000,389.022 164.000,318.741 196.000,298.088 228.000,307.663 260.000,326.290 292.000,350.850 324.000,382.062 356.000,416.716 388.000,449.812 420.000,477.115 452.000,497.006" fill="none" stroke="#7570b3" stroke-width="2"/>
-<polyline points="100.000,457.652 132.000,318.863 164.000,283.292 196.000,280.573 228.000,282.029 260.000,289.295 292.000,318.504 324.000,395.101 356.000,481.810 388.000,519.300 420.000,528.003 452.000,529.641" fill="none" stroke="#d95f02" stroke-width="2"/>
-<text x="100" y="92" font-family="sans-serif" font-size="11">SOURCE_REPORTED_CLOCK</text>
-<polyline points="530.000,142.736 562.000,156.725 594.000,130.000 626.000,263.768 658.000,383.708 690.000,448.711 722.000,483.632 754.000,501.295 786.000,510.498 818.000,517.034 850.000,521.274 882.000,522.387" fill="none" stroke="#222" stroke-width="2"/>
-<circle cx="530.000" cy="142.736" r="3" fill="#222"/>
-<circle cx="562.000" cy="156.725" r="3" fill="#222"/>
-<circle cx="594.000" cy="130.000" r="3" fill="#222"/>
-<circle cx="626.000" cy="263.768" r="3" fill="#222"/>
-<circle cx="658.000" cy="383.708" r="3" fill="#222"/>
-<circle cx="690.000" cy="448.711" r="3" fill="#222"/>
-<circle cx="722.000" cy="483.632" r="3" fill="#222"/>
-<circle cx="754.000" cy="501.295" r="3" fill="#222"/>
-<circle cx="786.000" cy="510.498" r="3" fill="#222"/>
-<circle cx="818.000" cy="517.034" r="3" fill="#222"/>
-<circle cx="850.000" cy="521.274" r="3" fill="#222"/>
-<circle cx="882.000" cy="522.387" r="3" fill="#222"/>
-<polyline points="530.000,390.972 562.000,303.030 594.000,284.816 626.000,283.787 658.000,288.660 690.000,297.027 722.000,312.484 754.000,338.576 786.000,376.534 818.000,421.287 850.000,462.498 882.000,492.479" fill="none" stroke="#1b9e77" stroke-width="2"/>
-<polyline points="530.000,428.461 562.000,336.555 594.000,303.061 626.000,300.979 658.000,318.466 690.000,340.142 722.000,368.924 754.000,402.748 786.000,437.080 818.000,467.057 850.000,489.931 882.000,505.625" fill="none" stroke="#7570b3" stroke-width="2"/>
-<polyline points="530.000,356.410 562.000,288.131 594.000,280.948 626.000,281.050 658.000,285.094 690.000,302.309 722.000,358.722 754.000,451.696 786.000,509.767 818.000,526.059 850.000,529.286 882.000,529.873" fill="none" stroke="#d95f02" stroke-width="2"/>
-<text x="530" y="92" font-family="sans-serif" font-size="11">EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS</text>
-<text x="40" y="602" font-family="sans-serif" font-size="11">source points black; P0 green; P1 purple; P2 orange; no optimized shift</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+<rect x="0" y="0" width="1200" height="820" fill="white"/>
+<title>Waszkiewicz interval TDS under both frozen clocks</title>
+<desc>Same OpenFOAM results under two prospectively frozen clock presentations.</desc>
+<g id="title-band" data-band="title" data-x="30" data-y="18" data-width="1140" data-height="42">
+<text x="40.000" y="47.000" font-family="sans-serif" font-size="20">Waszkiewicz interval TDS under both frozen clocks</text>
+</g>
+<g id="legend-band" data-band="legend" data-x="30" data-y="66" data-width="1140" data-height="48">
+<text x="290.000" y="94.000" font-family="sans-serif" font-size="12" fill="#222">source ●</text>
+<text x="430.000" y="94.000" font-family="sans-serif" font-size="12" fill="#1b9e77">P0 ■ dashed</text>
+<text x="590.000" y="94.000" font-family="sans-serif" font-size="12" fill="#7570b3">P1 ▲ dotted</text>
+<text x="750.000" y="94.000" font-family="sans-serif" font-size="12" fill="#d95f02">fixed P2 ◆</text>
+</g>
+<g id="plot-band" data-band="plot" data-x="70" data-y="122" data-width="1080" data-height="540">
+<g id="wasz-clock-0" data-panel="wasz-clock-0" data-plot-x="115.000" data-plot-y="180.000" data-plot-width="450.000" data-plot-height="390.000">
+<rect x="115.000" y="180.000" width="450.000" height="390.000" fill="none" stroke="#333"/>
+<line x1="115.000" y1="570.000" x2="115.000" y2="574.000" stroke="#333"/>
+<text x="115.000" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">1</text>
+<line x1="196.818" y1="570.000" x2="196.818" y2="574.000" stroke="#333"/>
+<text x="196.818" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">3</text>
+<line x1="278.636" y1="570.000" x2="278.636" y2="574.000" stroke="#333"/>
+<text x="278.636" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">5</text>
+<line x1="360.455" y1="570.000" x2="360.455" y2="574.000" stroke="#333"/>
+<text x="360.455" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">7</text>
+<line x1="442.273" y1="570.000" x2="442.273" y2="574.000" stroke="#333"/>
+<text x="442.273" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">9</text>
+<line x1="524.091" y1="570.000" x2="524.091" y2="574.000" stroke="#333"/>
+<text x="524.091" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">11</text>
+<line x1="565.000" y1="570.000" x2="565.000" y2="574.000" stroke="#333"/>
+<text x="565.000" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">12</text>
+<line x1="111.000" y1="570.000" x2="115.000" y2="570.000" stroke="#333"/>
+<text x="108.000" y="573.000" font-family="sans-serif" font-size="9" text-anchor="end">0.00</text>
+<line x1="111.000" y1="375.000" x2="115.000" y2="375.000" stroke="#333"/>
+<text x="108.000" y="378.000" font-family="sans-serif" font-size="9" text-anchor="end">0.14</text>
+<line x1="111.000" y1="180.000" x2="115.000" y2="180.000" stroke="#333"/>
+<text x="108.000" y="183.000" font-family="sans-serif" font-size="9" text-anchor="end">0.28</text>
+<polyline points="120.000,235.140 160.000,247.020 200.000,224.325 240.000,337.920 280.000,439.770 320.000,494.970 360.000,524.625 400.000,539.624 440.000,547.440 480.000,552.989 520.000,556.590 560.000,557.535" fill="none" stroke="#222" stroke-width="2" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="120.000" cy="235.140" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="160.000" cy="247.020" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="200.000" cy="224.325" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="240.000" cy="337.920" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="280.000" cy="439.770" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="320.000" cy="494.970" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="360.000" cy="524.625" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="400.000" cy="539.624" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="440.000" cy="547.440" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="480.000" cy="552.989" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="520.000" cy="556.590" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<circle cx="560.000" cy="557.535" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polyline points="120.000,524.610 160.000,409.996 200.000,361.933 240.000,354.321 280.000,356.387 320.000,361.367 360.000,370.516 400.000,386.925 440.000,413.225 480.000,448.637 520.000,486.536 560.000,518.160" fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="117.000" y="521.610" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="157.000" y="406.996" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="197.000" y="358.933" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="237.000" y="351.321" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="277.000" y="353.387" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="317.000" y="358.367" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="357.000" y="367.516" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="397.000" y="383.925" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="437.000" y="410.225" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="477.000" y="445.637" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="517.000" y="483.536" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<rect x="557.000" y="515.160" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polyline points="120.000,539.232 160.000,444.283 200.000,384.601 240.000,367.063 280.000,375.194 320.000,391.012 360.000,411.868 400.000,438.373 440.000,467.801 480.000,495.905 520.000,519.091 560.000,535.982" fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="120.000,535.232 116.000,542.232 124.000,542.232" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="160.000,440.283 156.000,447.283 164.000,447.283" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="200.000,380.601 196.000,387.601 204.000,387.601" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="240.000,363.063 236.000,370.063 244.000,370.063" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="280.000,371.194 276.000,378.194 284.000,378.194" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="320.000,387.012 316.000,394.012 324.000,394.012" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="360.000,407.868 356.000,414.868 364.000,414.868" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="400.000,434.373 396.000,441.373 404.000,441.373" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="440.000,463.801 436.000,470.801 444.000,470.801" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="480.000,491.905 476.000,498.905 484.000,498.905" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="520.000,515.091 516.000,522.091 524.000,522.091" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="560.000,531.982 556.000,538.982 564.000,538.982" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polyline points="120.000,502.563 160.000,384.705 200.000,354.499 240.000,352.190 280.000,353.426 320.000,359.597 360.000,384.400 400.000,449.446 440.000,523.078 480.000,554.914 520.000,562.304 560.000,563.695" fill="none" stroke="#d95f02" stroke-width="2" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="120.000,498.563 116.000,502.563 120.000,506.563 124.000,502.563" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="160.000,380.705 156.000,384.705 160.000,388.705 164.000,384.705" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="200.000,350.499 196.000,354.499 200.000,358.499 204.000,354.499" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="240.000,348.190 236.000,352.190 240.000,356.190 244.000,352.190" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="280.000,349.426 276.000,353.426 280.000,357.426 284.000,353.426" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="320.000,355.597 316.000,359.597 320.000,363.597 324.000,359.597" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="360.000,380.400 356.000,384.400 360.000,388.400 364.000,384.400" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="400.000,445.446 396.000,449.446 400.000,453.446 404.000,449.446" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="440.000,519.078 436.000,523.078 440.000,527.078 444.000,523.078" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="480.000,550.914 476.000,554.914 480.000,558.914 484.000,554.914" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="520.000,558.304 516.000,562.304 520.000,566.304 524.000,562.304" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<polygon points="560.000,559.695 556.000,563.695 560.000,567.695 564.000,563.695" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-0"/>
+<text x="340.000" y="166.000" font-family="sans-serif" font-size="13" text-anchor="middle">Source-reported clock</text>
+</g>
+<g id="wasz-clock-1" data-panel="wasz-clock-1" data-plot-x="665.000" data-plot-y="180.000" data-plot-width="450.000" data-plot-height="390.000">
+<rect x="665.000" y="180.000" width="450.000" height="390.000" fill="none" stroke="#333"/>
+<line x1="665.000" y1="570.000" x2="665.000" y2="574.000" stroke="#333"/>
+<text x="665.000" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">1</text>
+<line x1="746.818" y1="570.000" x2="746.818" y2="574.000" stroke="#333"/>
+<text x="746.818" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">3</text>
+<line x1="828.636" y1="570.000" x2="828.636" y2="574.000" stroke="#333"/>
+<text x="828.636" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">5</text>
+<line x1="910.455" y1="570.000" x2="910.455" y2="574.000" stroke="#333"/>
+<text x="910.455" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">7</text>
+<line x1="992.273" y1="570.000" x2="992.273" y2="574.000" stroke="#333"/>
+<text x="992.273" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">9</text>
+<line x1="1074.091" y1="570.000" x2="1074.091" y2="574.000" stroke="#333"/>
+<text x="1074.091" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">11</text>
+<line x1="1115.000" y1="570.000" x2="1115.000" y2="574.000" stroke="#333"/>
+<text x="1115.000" y="586.000" font-family="sans-serif" font-size="9" text-anchor="middle">12</text>
+<line x1="661.000" y1="570.000" x2="665.000" y2="570.000" stroke="#333"/>
+<text x="658.000" y="573.000" font-family="sans-serif" font-size="9" text-anchor="end">0.00</text>
+<line x1="661.000" y1="375.000" x2="665.000" y2="375.000" stroke="#333"/>
+<text x="658.000" y="378.000" font-family="sans-serif" font-size="9" text-anchor="end">0.14</text>
+<line x1="661.000" y1="180.000" x2="665.000" y2="180.000" stroke="#333"/>
+<text x="658.000" y="183.000" font-family="sans-serif" font-size="9" text-anchor="end">0.28</text>
+<polyline points="670.000,235.140 710.000,247.020 750.000,224.325 790.000,337.920 830.000,439.770 870.000,494.970 910.000,524.625 950.000,539.624 990.000,547.440 1030.000,552.989 1070.000,556.590 1110.000,557.535" fill="none" stroke="#222" stroke-width="2" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="670.000" cy="235.140" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="710.000" cy="247.020" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="750.000" cy="224.325" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="790.000" cy="337.920" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="830.000" cy="439.770" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="870.000" cy="494.970" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="910.000" cy="524.625" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="950.000" cy="539.624" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="990.000" cy="547.440" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="1030.000" cy="552.989" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="1070.000" cy="556.590" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<circle cx="1110.000" cy="557.535" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polyline points="670.000,445.939 710.000,371.260 750.000,355.793 790.000,354.919 830.000,359.057 870.000,366.162 910.000,379.288 950.000,401.445 990.000,433.679 1030.000,471.682 1070.000,506.679 1110.000,532.138" fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="667.000" y="442.939" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="707.000" y="368.260" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="747.000" y="352.793" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="787.000" y="351.919" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="827.000" y="356.057" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="867.000" y="363.162" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="907.000" y="376.288" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="947.000" y="398.445" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="987.000" y="430.679" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="1027.000" y="468.682" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="1067.000" y="503.679" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<rect x="1107.000" y="529.138" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polyline points="670.000,477.774 710.000,399.729 750.000,371.287 790.000,369.518 830.000,384.368 870.000,402.775 910.000,427.216 950.000,455.939 990.000,485.093 1030.000,510.550 1070.000,529.974 1110.000,543.301" fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="670.000,473.774 666.000,480.774 674.000,480.774" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="710.000,395.729 706.000,402.729 714.000,402.729" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="750.000,367.287 746.000,374.287 754.000,374.287" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="790.000,365.518 786.000,372.518 794.000,372.518" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="830.000,380.368 826.000,387.368 834.000,387.368" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="870.000,398.775 866.000,405.775 874.000,405.775" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="910.000,423.216 906.000,430.216 914.000,430.216" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="950.000,451.939 946.000,458.939 954.000,458.939" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="990.000,481.093 986.000,488.093 994.000,488.093" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="1030.000,506.550 1026.000,513.550 1034.000,513.550" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="1070.000,525.974 1066.000,532.974 1074.000,532.974" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="1110.000,539.301 1106.000,546.301 1114.000,546.301" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polyline points="670.000,416.590 710.000,358.608 750.000,352.508 790.000,352.595 830.000,356.029 870.000,370.648 910.000,418.553 950.000,497.505 990.000,546.818 1030.000,560.653 1070.000,563.394 1110.000,563.892" fill="none" stroke="#d95f02" stroke-width="2" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="670.000,412.590 666.000,416.590 670.000,420.590 674.000,416.590" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="710.000,354.608 706.000,358.608 710.000,362.608 714.000,358.608" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="750.000,348.508 746.000,352.508 750.000,356.508 754.000,352.508" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="790.000,348.595 786.000,352.595 790.000,356.595 794.000,352.595" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="830.000,352.029 826.000,356.029 830.000,360.029 834.000,356.029" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="870.000,366.648 866.000,370.648 870.000,374.648 874.000,370.648" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="910.000,414.553 906.000,418.553 910.000,422.553 914.000,418.553" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="950.000,493.505 946.000,497.505 950.000,501.505 954.000,497.505" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="990.000,542.818 986.000,546.818 990.000,550.818 994.000,546.818" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="1030.000,556.653 1026.000,560.653 1030.000,564.653 1034.000,560.653" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="1070.000,559.394 1066.000,563.394 1070.000,567.394 1074.000,563.394" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<polygon points="1110.000,559.892 1106.000,563.892 1110.000,567.892 1114.000,563.892" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="wasz-clock-1"/>
+<text x="890.000" y="166.000" font-family="sans-serif" font-size="13" text-anchor="middle">Frozen +3 s offset</text>
+</g>
+</g>
+<g id="lower-label-band" data-band="lower-label" data-x="70" data-y="666" data-width="1080" data-height="34">
+<text x="640.000" y="688.000" font-family="sans-serif" font-size="11" text-anchor="middle">5-second interval index (1–12)</text>
+</g>
+<g id="axis-title-band" data-band="axis-title" data-x="30" data-y="704" data-width="1140" data-height="28">
+<text x="640.000" y="723.000" font-family="sans-serif" font-size="12" text-anchor="middle">Interval TDS fraction; shared y-domain 0 to 0.28</text>
+</g>
+<g id="annotation-band" data-band="annotation" data-x="30" data-y="736" data-width="1140" data-height="30">
+<text x="640.000" y="754.000" font-family="sans-serif" font-size="11" text-anchor="middle">No optimized shift; lower +3 s RMSE is a fixed-presentation improvement, not validation.</text>
+</g>
+<g id="caption-band" data-band="caption" data-x="30" data-y="770" data-width="1140" data-height="42">
+<text x="40.000" y="786.000" font-family="sans-serif" font-size="11">Same OpenFOAM results under two prospectively frozen clock presentations.</text>
+</g>
 </svg>

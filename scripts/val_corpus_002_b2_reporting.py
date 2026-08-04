@@ -406,123 +406,302 @@ def _esc(value: object) -> str:
     return str(value).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def _canvas(title: str, body: list[str], caption: str) -> bytes:
-    rows = ['<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">',
-            '<rect x="0" y="0" width="1000" height="620" fill="white"/>',
-            f'<title>{_esc(title)}</title>', f'<desc>{_esc(caption)}</desc>',
-            f'<text x="40" y="34" font-family="sans-serif" font-size="20">{_esc(title)}</text>']
-    rows.extend(body)
-    rows.append(f'<text x="40" y="602" font-family="sans-serif" font-size="11">{_esc(caption)}</text>')
+CANVAS_WIDTH = 1200
+CANVAS_HEIGHT = 820
+BANDS = {
+    "title": (30, 18, 1140, 42),
+    "legend": (30, 66, 1140, 48),
+    "plot": (70, 122, 1080, 540),
+    "lower-label": (70, 666, 1080, 34),
+    "axis-title": (30, 704, 1140, 28),
+    "annotation": (30, 736, 1140, 30),
+    "caption": (30, 770, 1140, 42),
+}
+LINEAGE_CAPTION = ("cup_masses.csv contains post-fit derived source quantities, not independent "
+                   "measurements; comparison role: reconstruction or derived metric only.")
+SENSITIVITY_OUTPUT_LABELS = (
+    "cup solute mass at 20 g",
+    "cup solute mass at 40 g",
+    "cup solute mass at 60 g",
+)
+
+
+def _text(x: float, y: float, value: object, size: int = 12, **attrs: object) -> str:
+    extra = " ".join(f'{key.replace("_", "-")}="{_esc(item)}"' for key, item in attrs.items())
+    return (f'<text x="{x:.3f}" y="{y:.3f}" font-family="sans-serif" font-size="{size}"'
+            f'{(" " + extra) if extra else ""}>{_esc(value)}</text>')
+
+
+def _band(name: str, body: list[str]) -> str:
+    x, y, width, height = BANDS[name]
+    return (f'<g id="{name}-band" data-band="{name}" data-x="{x}" data-y="{y}" '
+            f'data-width="{width}" data-height="{height}">\n' + "\n".join(body) + "\n</g>")
+
+
+def _wrapped(value: str, x: float, y: float, width: int = 150, size: int = 11) -> list[str]:
+    words, lines, current = value.split(), [], ""
+    for word in words:
+        candidate = f"{current} {word}".strip()
+        if len(candidate) > width and current:
+            lines.append(current)
+            current = word
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+    return [_text(x, y + index * (size + 3), line, size) for index, line in enumerate(lines)]
+
+
+def _canvas(title: str, bands: dict[str, list[str]], caption: str) -> bytes:
+    rows = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{CANVAS_WIDTH}" height="{CANVAS_HEIGHT}" '
+            f'viewBox="0 0 {CANVAS_WIDTH} {CANVAS_HEIGHT}">',
+            f'<rect x="0" y="0" width="{CANVAS_WIDTH}" height="{CANVAS_HEIGHT}" fill="white"/>',
+            f'<title>{_esc(title)}</title>', f'<desc>{_esc(caption)}</desc>']
+    for name in BANDS:
+        body = bands.get(name, [])
+        if name == "title":
+            body = [_text(40, 47, title, 20)] + body
+        if name == "caption":
+            body = body + _wrapped(caption, 40, 786)
+        rows.append(_band(name, body))
     rows.append('</svg>')
     return ("\n".join(rows) + "\n").encode()
 
 
-def _axes(xlabel: str, ylabel: str) -> list[str]:
-    return ['<line x1="90" y1="540" x2="950" y2="540" stroke="black"/>',
-            '<line x1="90" y1="70" x2="90" y2="540" stroke="black"/>',
-            f'<text x="480" y="575" font-family="sans-serif" font-size="13">{_esc(xlabel)}</text>',
-            f'<text x="18" y="300" font-family="sans-serif" font-size="13" transform="rotate(-90 18 300)">{_esc(ylabel)}</text>']
+def _panel(panel_id: str, rect: tuple[float, float, float, float], body: list[str]) -> str:
+    x, y, width, height = rect
+    return (f'<g id="{panel_id}" data-panel="{panel_id}" data-plot-x="{x:.3f}" '
+            f'data-plot-y="{y:.3f}" data-plot-width="{width:.3f}" data-plot-height="{height:.3f}">\n'
+            + "\n".join(body) + "\n</g>")
 
 
-def _polyline(points: list[tuple[float, float]], color: str, width: int = 2) -> str:
+def _polyline(points: list[tuple[float, float]], color: str, width: int = 2,
+              panel: str = "", dash: str | None = None) -> str:
     encoded = " ".join(f"{x:.3f},{y:.3f}" for x, y in points)
-    return f'<polyline points="{encoded}" fill="none" stroke="{color}" stroke-width="{width}"/>'
+    dashed = f' stroke-dasharray="{dash}"' if dash else ""
+    return (f'<polyline points="{encoded}" fill="none" stroke="{color}" stroke-width="{width}"'
+            f'{dashed} data-role="data" data-panel-ref="{panel}"/>')
+
+
+def _marker(x: float, y: float, style: str, color: str, panel: str, anchor: bool = False) -> str:
+    common = f'fill="{color}" stroke="#111" data-role="data" data-panel-ref="{panel}"'
+    if style == "square":
+        mark = f'<rect x="{x-3:.3f}" y="{y-3:.3f}" width="6" height="6" {common}/>'
+    elif style == "triangle":
+        mark = f'<polygon points="{x:.3f},{y-4:.3f} {x-4:.3f},{y+3:.3f} {x+4:.3f},{y+3:.3f}" {common}/>'
+    elif style == "diamond":
+        mark = f'<polygon points="{x:.3f},{y-4:.3f} {x-4:.3f},{y:.3f} {x:.3f},{y+4:.3f} {x+4:.3f},{y:.3f}" {common}/>'
+    else:
+        mark = f'<circle cx="{x:.3f}" cy="{y:.3f}" r="3" {common}/>'
+    if anchor:
+        mark += f'<circle cx="{x:.3f}" cy="{y:.3f}" r="7" fill="none" stroke="#b2182b" stroke-width="2" data-role="data" data-panel-ref="{panel}"/>'
+    return mark
+
+
+def _ticks(rect: tuple[float, float, float, float], xmin: float, xmax: float,
+           ymin: float, ymax: float, xticks: list[tuple[float, str]],
+           yticks: list[tuple[float, str]]) -> list[str]:
+    x, y, width, height = rect
+    rows = [f'<rect x="{x:.3f}" y="{y:.3f}" width="{width:.3f}" height="{height:.3f}" fill="none" stroke="#333"/>']
+    for value, label in xticks:
+        px = x + (value - xmin) / (xmax - xmin) * width
+        rows.extend([f'<line x1="{px:.3f}" y1="{y+height:.3f}" x2="{px:.3f}" y2="{y+height+4:.3f}" stroke="#333"/>',
+                     _text(px, y + height + 16, label, 9, text_anchor="middle")])
+    for value, label in yticks:
+        py = y + height - (value - ymin) / (ymax - ymin) * height
+        rows.extend([f'<line x1="{x-4:.3f}" y1="{py:.3f}" x2="{x:.3f}" y2="{py:.3f}" stroke="#333"/>',
+                     _text(x - 7, py + 3, label, 9, text_anchor="end")])
+    return rows
 
 
 def figures(final: dict, base: dict, output: Path, source_sha: str, script_sha: str) -> dict:
     output.mkdir(parents=True, exist_ok=True)
     interpretations = final["interpretation"]
-    caveat = ("cup_masses.csv: post-fit derived source quantities, not independent measurements; "
-              "see VAL_PUCKWORKS_001 lineage authority")
     content: dict[str, bytes] = {}
 
     cases = final["per_case_numerical_summary"]["cases"]
-    body = []
-    for index, row in enumerate(cases):
-        col, grid_row = index % 9, index // 9
-        x, y = 115 + col * 90, 115 + grid_row * 75
-        color = "#2c7fb8" if row["status"] == "PASS" else "#d95f0e"
-        body.append(f'<rect x="{x}" y="{y}" width="70" height="50" fill="{color}" stroke="black"/>')
-        body.append(f'<text x="{x + 35}" y="{y + 30}" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">{index + 1}</text>')
-    body += ['<rect x="120" y="520" width="18" height="18" fill="#2c7fb8"/><text x="145" y="534" font-family="sans-serif" font-size="12">PASS (27)</text>',
-             '<rect x="270" y="520" width="18" height="18" fill="#d95f0e"/><text x="295" y="534" font-family="sans-serif" font-size="12">typed target failure (18)</text>']
-    content["production_availability_matrix.svg"] = _canvas("Production availability: 45 governed identities", body,
-                                                              "27 PASS; 18 immutable typed target-coverage failures; no imputation")
+    indexed = {row["run_id"]: row for row in cases}
+    matrix_body = []
+    columns = (("P0/H0", "P0", "H0"), ("P0/H1", "P0", "H1"),
+               ("P1/H0", "P1", "H0"), ("P1/H1", "P1", "H1"),
+               ("P2/H0", "P2", "H0"), ("P2/H1", "P2", "H1"))
+    x0, y0, cell_w, cell_h = 250, 150, 132, 55
+    for col, (label, _, _) in enumerate(columns):
+        matrix_body.append(_text(x0 + col * cell_w + cell_w / 2, 140, label, 11, text_anchor="middle"))
+    for row_index, exp in enumerate(range(1, 8)):
+        matrix_body.append(_text(235, y0 + row_index * cell_h + 32, f"Schmieder Exp {exp}", 11, text_anchor="end"))
+        for col, (_, parameter, mode) in enumerate(columns):
+            suffix = "_FIXED_AFTER_EXP7_CALIBRATION" if parameter == "P2" else ""
+            run_id = f"SCHM_EXP{exp}_{parameter}{suffix}_{mode}"
+            row = indexed[run_id]
+            x, y = x0 + col * cell_w, y0 + row_index * cell_h
+            color = "#2c7fb8" if row["status"] == "PASS" else "#d95f0e"
+            matrix_body.append(f'<g data-run-id="{run_id}"><title>{run_id}</title><rect x="{x:.3f}" y="{y:.3f}" width="{cell_w-8}" height="{cell_h-8}" fill="{color}" stroke="#222" data-role="data" data-panel-ref="availability"/>{_text(x+(cell_w-8)/2, y+28, "PASS" if row["status"] == "PASS" else "TYPED", 10, fill="white", text_anchor="middle")}</g>')
+    wasz_y = y0 + 7 * cell_h + 20
+    matrix_body.append(_text(235, wasz_y + 32, "Waszkiewicz 9 bar", 11, text_anchor="end"))
+    for col, parameter in enumerate(PARAMETERS):
+        run_id = (f"WASZ_9_COMPACT_{parameter}_CHEMISTRY" if parameter != "P2"
+                  else "WASZ_9_COMPACT_P2_FIXED_AFTER_EXP7_CALIBRATION_CHEMISTRY")
+        row = indexed[run_id]
+        x = x0 + col * cell_w * 2
+        matrix_body.append(f'<g data-run-id="{run_id}"><title>{run_id}</title><rect x="{x:.3f}" y="{wasz_y:.3f}" width="{cell_w*2-8}" height="47" fill="#2c7fb8" stroke="#222" data-role="data" data-panel-ref="availability"/>{_text(x+(cell_w*2-8)/2, wasz_y+28, parameter+" PASS", 10, fill="white", text_anchor="middle")}</g>')
+    matrix_panel = _panel("availability", (250, 150, 784, 452), matrix_body)
+    bands = {"legend": ['<rect x="330" y="80" width="18" height="18" fill="#2c7fb8"/>', _text(356, 94, "numerical PASS (27)", 12),
+                         '<rect x="550" y="80" width="18" height="18" fill="#d95f0e"/>', _text(576, 94, "typed target unavailability (18; normal execution, not infrastructure)", 12)],
+             "plot": [matrix_panel],
+             "lower-label": [_text(640, 687, "Columns identify parameterization and hydraulic mode; each cell carries its governed run_id.", 11, text_anchor="middle")],
+             "axis-title": [_text(640, 723, "45 governed identities: 42 Schmieder + 3 Waszkiewicz", 12, text_anchor="middle")],
+             "annotation": [_text(640, 754, "No imputation or extrapolation; typed target coverage is distinct from execution failure.", 11, text_anchor="middle")]}
+    content["production_availability_matrix.svg"] = _canvas("Production availability matrix", bands,
+                                                              "27 PASS; 18 immutable typed target-coverage failures.")
 
-    body = _axes("target beverage mass (g)", "cup solute mass (g)")
     colors = {"P0": "#1b9e77", "P1": "#7570b3", "P2": "#d95f02"}
-    for key, value in sorted(base["schmieder"].items()):
-        if not key.endswith("_H1"):
-            continue
-        parameter = _parameter(key)
-        source_pts = [(90 + (m["target_mass_g"] - 20) / 40 * 860,
-                       540 - m["source_cup_solute_mass_g"] / 5.2 * 450) for m in value["target_metrics"]]
-        model_pts = [(90 + (m["target_mass_g"] - 20) / 40 * 860,
-                      540 - m["model_cup_solute_mass_g"] / 5.2 * 450) for m in value["target_metrics"]]
-        body.append(_polyline(source_pts, "#555555", 1))
-        body.append(_polyline(model_pts, colors[parameter], 2))
-        for x, y in model_pts:
-            radius = 5 if "EXP7_P2" in key else 3
-            body.append(f'<circle cx="{x:.3f}" cy="{y:.3f}" r="{radius}" fill="{colors[parameter]}"/>')
-    body.append('<text x="710" y="88" font-family="sans-serif" font-size="12">P0 green; P1 purple; P2 orange; gray source</text>')
-    body.append('<text x="710" y="106" font-family="sans-serif" font-size="12">large P2 marks: Experiment-7 calibration anchor</text>')
-    content["schmieder_h1_source_model.svg"] = _canvas("Schmieder H1 source/model cup-solute mass", body, caveat)
+    styles = {"source": ("#222", "circle", None), "P0": (colors["P0"], "square", "7 4"),
+              "P1": (colors["P1"], "triangle", "2 3"), "P2": (colors["P2"], "diamond", None)}
+    all_values = [metric[key] for run_id, record in base["schmieder"].items() if run_id.endswith("_H1")
+                  for metric in record["target_metrics"] for key in ("source_cup_solute_mass_g", "model_cup_solute_mass_g")]
+    ymax = math.ceil(max(all_values) * 1.08 * 10) / 10
+    panels = []
+    for exp in range(1, 8):
+        col, row_index = (exp - 1) % 4, (exp - 1) // 4
+        rect = (92 + col * 270, 158 + row_index * 245, 220, 180)
+        panel_id = f"schm-exp-{exp}"
+        body = _ticks(rect, 20, 60, 0, ymax, [(20, "20"), (40, "40"), (60, "60")],
+                      [(0, "0"), (ymax / 2, f"{ymax/2:.1f}"), (ymax, f"{ymax:.1f}")])
+        p0_key = f"SCHM_EXP{exp}_P0_H1"
+        series = {"source": [m["source_cup_solute_mass_g"] for m in base["schmieder"][p0_key]["target_metrics"]]}
+        for parameter in PARAMETERS:
+            suffix = "_FIXED_AFTER_EXP7_CALIBRATION" if parameter == "P2" else ""
+            key = f"SCHM_EXP{exp}_{parameter}{suffix}_H1"
+            series[parameter] = [m["model_cup_solute_mass_g"] for m in base["schmieder"][key]["target_metrics"]]
+        for name in ("source", "P0", "P1", "P2"):
+            color, marker, dash = styles[name]
+            points = [(rect[0] + 8 + (mass - 20) / 40 * (rect[2] - 16),
+                       rect[1] + rect[3] - value / ymax * rect[3])
+                      for mass, value in zip(TARGETS_G, series[name])]
+            body.append(_polyline(points, color, 2, panel_id, dash))
+            body.extend(_marker(x, y, marker, color, panel_id, exp == 7 and name == "P2") for x, y in points)
+        body.append(_text(rect[0] + rect[2] / 2, rect[1] - 9, f"Experiment {exp}" + (" — P2 calibration anchor" if exp == 7 else ""), 10, text_anchor="middle"))
+        panels.append(_panel(panel_id, rect, body))
+    legend = []
+    for index, name in enumerate(("source", "P0", "P1", "P2")):
+        color, marker, dash = styles[name]
+        x = 300 + index * 170
+        legend.extend([f'<line x1="{x}" y1="90" x2="{x+35}" y2="90" stroke="{color}" stroke-width="2"' + (f' stroke-dasharray="{dash}"' if dash else '') + '/>',
+                       f'<circle cx="{x+17}" cy="90" r="3" fill="{color}" stroke="#111"/>',
+                       _text(x + 43, 94, name if name == "source" else f"model {name}", 12)])
+    bands = {"legend": legend, "plot": panels,
+             "lower-label": [_text(640, 688, "Target beverage mass (g): 20, 40, 60 in every panel", 11, text_anchor="middle")],
+             "axis-title": [_text(640, 723, f"Cup solute mass (g); shared y-domain 0 to {ymax:.1f} g", 12, text_anchor="middle")],
+             "annotation": [_text(640, 754, "Red rings identify Experiment-7/P2 as the calibration reconstruction anchor.", 11, text_anchor="middle")]}
+    content["schmieder_h1_source_model.svg"] = _canvas("Schmieder H1 source/model cup-solute mass", bands, LINEAGE_CAPTION)
 
-    body = _axes("axis / brew-ratio group", "contrast (g cup solute)")
-    contrast_rows = []
-    for p in ("P1_H1", "P2_H1"):
-        for axis, ratios in sorted(base["axis_contrasts"][p].items()):
-            for ratio, row in sorted(ratios.items()):
-                contrast_rows.append((p, axis, ratio, row))
-    scale = max(abs(row[k]) for *_, row in contrast_rows for k in ("source", "model")) or 1.0
-    for i, (p, axis, ratio, row) in enumerate(contrast_rows):
-        x = 110 + i * 45
-        y0 = 305
-        for offset, key, color in ((-6, "source", "#333333"), (6, "model", "#e6550d" if p == "P2_H1" else "#756bb1")):
-            y = y0 - row[key] / scale * 200
-            body.append(f'<line x1="{x+offset}" y1="{y0}" x2="{x+offset}" y2="{y:.3f}" stroke="{color}" stroke-width="5"/>')
-        body.append(f'<text x="{x}" y="560" transform="rotate(60 {x} 560)" font-family="sans-serif" font-size="8">{_esc(p[:2]+"/"+axis.split("_")[0]+"/"+ratio)}</text>')
-    body.append('<line x1="90" y1="305" x2="950" y2="305" stroke="#888" stroke-dasharray="4 3"/>')
-    body.append('<text x="680" y="90" font-family="sans-serif" font-size="12">source black; P1 purple; P2 orange</text>')
-    content["schmieder_h1_axis_contrasts.svg"] = _canvas("H1 flow, grind, and temperature contrasts", body, caveat)
+    contrast_rows = [(p, axis, ratio, base["axis_contrasts"][p][axis][ratio])
+                     for p in ("P1_H1", "P2_H1")
+                     for axis in ("FLOW_HIGH_MINUS_LOW", "GRIND_COARSE_MINUS_FINE", "TEMPERATURE_HIGH_MINUS_LOW")
+                     for ratio in ("1/1", "1/2", "1/3")]
+    scale = math.ceil(max(abs(row[key]) for *_, row in contrast_rows for key in ("source", "model")) * 1.1 * 10) / 10
+    contrast_panels = []
+    axis_labels = (("FLOW_HIGH_MINUS_LOW", "Flow: high − low"), ("GRIND_COARSE_MINUS_FINE", "Grind: coarse − fine"),
+                   ("TEMPERATURE_HIGH_MINUS_LOW", "Temperature: high − low"))
+    for p_index, parameter in enumerate(("P1_H1", "P2_H1")):
+        for axis_index, (axis, axis_label) in enumerate(axis_labels):
+            rect = (105 + axis_index * 360, 165 + p_index * 250, 285, 180)
+            panel_id = f"contrast-{parameter[:2].lower()}-{axis_index}"
+            body = _ticks(rect, 0, 4, -scale, scale, [(1, "1:1"), (2, "1:2"), (3, "1:3")],
+                          [(-scale, f"-{scale:.1f}"), (0, "0"), (scale, f"{scale:.1f}")])
+            zero = rect[1] + rect[3] / 2
+            body.append(f'<line x1="{rect[0]:.3f}" y1="{zero:.3f}" x2="{rect[0]+rect[2]:.3f}" y2="{zero:.3f}" stroke="#666" stroke-dasharray="4 3"/>')
+            for idx, ratio in enumerate(("1/1", "1/2", "1/3"), 1):
+                row = base["axis_contrasts"][parameter][axis][ratio]
+                for offset, key, color, marker in ((-8, "source", "#222", "circle"), (8, "model", colors[parameter[:2]], "square")):
+                    x = rect[0] + idx / 4 * rect[2] + offset
+                    y = rect[1] + rect[3] - (row[key] + scale) / (2 * scale) * rect[3]
+                    body.append(f'<line x1="{x:.3f}" y1="{zero:.3f}" x2="{x:.3f}" y2="{y:.3f}" stroke="{color}" stroke-width="3" data-role="data" data-panel-ref="{panel_id}"/>')
+                    body.append(_marker(x, y, marker, color, panel_id))
+            body.append(_text(rect[0] + rect[2] / 2, rect[1] - 10, f"{parameter[:2]} — {axis_label}", 11, text_anchor="middle"))
+            contrast_panels.append(_panel(panel_id, rect, body))
+    bands = {"legend": ['<circle cx="430" cy="90" r="4" fill="#222" stroke="#111"/>', _text(442, 94, "source", 12),
+                         '<rect x="540" y="86" width="8" height="8" fill="#7570b3" stroke="#111"/>', _text(556, 94, "P1 model", 12),
+                         '<rect x="680" y="86" width="8" height="8" fill="#d95f02" stroke="#111"/>', _text(696, 94, "fixed P2 model", 12)],
+             "plot": contrast_panels,
+             "lower-label": [_text(640, 688, "Brew ratio categories: 1:1, 1:2, 1:3", 11, text_anchor="middle")],
+             "axis-title": [_text(640, 723, f"High-minus-low cup-solute contrast (g); shared symmetric scale ±{scale:.1f} g", 12, text_anchor="middle")],
+             "annotation": [_text(640, 754, "Zero line shown; source/model and P1/P2 identities use both marker form and colour.", 11, text_anchor="middle")]}
+    content["schmieder_h1_axis_contrasts.svg"] = _canvas("Schmieder H1 frozen axis contrasts", bands, LINEAGE_CAPTION)
 
-    body = _axes("5-second interval index (two fixed clock panels)", "interval TDS fraction")
     source = base["waszkiewicz"]["source_tds_fraction"]
     max_tds = max(source + [v for clocks in base["waszkiewicz"]["results"].values() for rec in clocks.values() for v in rec["model_interval_tds_fraction"]])
     clock_names = ("SOURCE_REPORTED_CLOCK", "EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS")
-    colors = {"P0": "#1b9e77", "P1": "#7570b3", "P2": "#d95f02"}
+    yscale = math.ceil(max_tds * 1.1 * 100) / 100
+    wasz_panels = []
     for panel, clock in enumerate(clock_names):
-        xbase = 100 + panel * 430
-        source_pts = [(xbase + i * 32, 530 - value / max_tds * 400) for i, value in enumerate(source)]
-        body.append(_polyline(source_pts, "#222", 2))
-        for x, y in source_pts: body.append(f'<circle cx="{x:.3f}" cy="{y:.3f}" r="3" fill="#222"/>')
+        rect = (115 + panel * 550, 180, 450, 390)
+        panel_id = f"wasz-clock-{panel}"
+        body = _ticks(rect, 1, 12, 0, yscale, [(value, str(value)) for value in (1, 3, 5, 7, 9, 11, 12)],
+                      [(0, "0.00"), (yscale / 2, f"{yscale/2:.2f}"), (yscale, f"{yscale:.2f}")])
+        source_pts = [(rect[0] + 5 + i / 11 * (rect[2] - 10),
+                       rect[1] + 6 + (1 - value / yscale) * (rect[3] - 12))
+                      for i, value in enumerate(source)]
+        body.append(_polyline(source_pts, "#222", 2, panel_id))
+        body.extend(_marker(x, y, "circle", "#222", panel_id) for x, y in source_pts)
         for parameter in PARAMETERS:
             values = base["waszkiewicz"]["results"][parameter][clock]["model_interval_tds_fraction"]
-            body.append(_polyline([(xbase + i * 32, 530 - value / max_tds * 400) for i, value in enumerate(values)], colors[parameter], 2))
-        body.append(f'<text x="{xbase}" y="92" font-family="sans-serif" font-size="11">{_esc(clock)}</text>')
-    content["waszkiewicz_both_clocks.svg"] = _canvas("Waszkiewicz interval TDS: both frozen clocks", body,
-                                                      "source points black; P0 green; P1 purple; P2 orange; no optimized shift")
+            points = [(rect[0] + 5 + i / 11 * (rect[2] - 10),
+                       rect[1] + 6 + (1 - value / yscale) * (rect[3] - 12))
+                      for i, value in enumerate(values)]
+            body.append(_polyline(points, colors[parameter], 2, panel_id, styles[parameter][2]))
+            body.extend(_marker(x, y, styles[parameter][1], colors[parameter], panel_id) for x, y in points)
+        heading = "Source-reported clock" if panel == 0 else "Frozen +3 s offset"
+        body.append(_text(rect[0] + rect[2] / 2, rect[1] - 14, heading, 13, text_anchor="middle"))
+        wasz_panels.append(_panel(panel_id, rect, body))
+    legend = [_text(290, 94, "source ●", 12, fill="#222"), _text(430, 94, "P0 ■ dashed", 12, fill=colors["P0"]),
+              _text(590, 94, "P1 ▲ dotted", 12, fill=colors["P1"]), _text(750, 94, "fixed P2 ◆", 12, fill=colors["P2"])]
+    bands = {"legend": legend, "plot": wasz_panels,
+             "lower-label": [_text(640, 688, "5-second interval index (1–12)", 11, text_anchor="middle")],
+             "axis-title": [_text(640, 723, f"Interval TDS fraction; shared y-domain 0 to {yscale:.2f}", 12, text_anchor="middle")],
+             "annotation": [_text(640, 754, "No optimized shift; lower +3 s RMSE is a fixed-presentation improvement, not validation.", 11, text_anchor="middle")]}
+    content["waszkiewicz_both_clocks.svg"] = _canvas("Waszkiewicz interval TDS under both frozen clocks", bands,
+                                                      "Same OpenFOAM results under two prospectively frozen clock presentations.")
 
-    body = []
     matrix = base["sensitivity"]["matrix"]
     maximum = max(abs(v) for row in matrix for v in row)
+    matrix_body = []
+    matrix_rect = (250, 190, 560, 330)
     for r, row in enumerate(matrix):
         for c, value in enumerate(row):
             intensity = int(235 - 170 * abs(value) / maximum)
-            color = f"rgb({intensity},{intensity},{255 if value >= 0 else 170})"
-            x, y = 120 + c * 130, 120 + r * 110
-            body.append(f'<rect x="{x}" y="{y}" width="110" height="90" fill="{color}" stroke="black"/>')
-            body.append(f'<text x="{x+55}" y="{y+50}" text-anchor="middle" font-family="sans-serif" font-size="12">{value:.4f}</text>')
+            color = f"rgb({intensity},{intensity},{255 if value >= 0 else 135})"
+            x, y = matrix_rect[0] + c * 140, matrix_rect[1] + r * 110
+            matrix_body.append(f'<rect x="{x:.3f}" y="{y:.3f}" width="140" height="110" fill="{color}" stroke="#222" data-role="data" data-panel-ref="sensitivity-matrix"/>')
+            matrix_body.append(_text(x + 70, y + 60, repr(value), 10, text_anchor="middle"))
+    for r, label in enumerate(SENSITIVITY_OUTPUT_LABELS):
+        matrix_body.append(_text(238, matrix_rect[1] + r * 110 + 58, label, 10, text_anchor="end"))
+    for c, label in enumerate(base["sensitivity"]["parameters"]):
+        matrix_body.append(_text(matrix_rect[0] + c * 140 + 70, 175, label, 10, text_anchor="middle"))
+    matrix_panel = _panel("sensitivity-matrix", matrix_rect, matrix_body)
     singular = base["sensitivity"]["singular_values"]
+    singular_rect = (900, 190, 220, 330)
+    singular_body = []
     for i, value in enumerate(singular):
-        h = value / max(singular) * 300
-        x = 700 + i * 80
-        body.append(f'<rect x="{x}" y="{500-h:.3f}" width="45" height="{h:.3f}" fill="#3182bd"/>')
-        body.append(f'<text x="{x+22}" y="520" text-anchor="middle" font-family="sans-serif" font-size="11">s{i+1}</text>')
-    body.append(f'<text x="650" y="100" font-family="sans-serif" font-size="13">singular values; rank {base["sensitivity"]["rank"]}</text>')
-    body.append('<text x="650" y="550" font-family="sans-serif" font-size="12">equifinality warning; NOT_STRUCTURAL_IDENTIFIABILITY</text>')
-    content["sensitivity_matrix_and_singular_values.svg"] = _canvas("Sensitivity elasticity matrix and singular values", body,
-                                                                     "3 outputs × 4 parameters; finite-range diagnostic")
+        height = value / max(singular) * 250
+        x = singular_rect[0] + 15 + i * 68
+        y = singular_rect[1] + 275 - height
+        singular_body.append(f'<rect x="{x:.3f}" y="{y:.3f}" width="42" height="{height:.3f}" fill="#3182bd" stroke="#222" data-role="data" data-panel-ref="singular-values"/>')
+        singular_body.extend([_text(x + 21, singular_rect[1] + 295, f"s{i+1}", 10, text_anchor="middle"),
+                              _text(x + 21, y - 7, repr(value), 8, text_anchor="middle")])
+    singular_body.append(_text(1010, 535, f"matrix rank = {base['sensitivity']['rank']}", 11, text_anchor="middle"))
+    singular_panel = _panel("singular-values", singular_rect, singular_body)
+    bands = {"legend": [_text(300, 91, "Signed elasticity key:", 12),
+                         '<rect x="455" y="78" width="35" height="18" fill="rgb(65,65,255)" stroke="#222"/>', _text(498, 92, "positive / stronger", 11),
+                         '<rect x="660" y="78" width="35" height="18" fill="rgb(65,65,135)" stroke="#222"/>', _text(703, 92, "negative / stronger", 11),
+                         '<rect x="860" y="78" width="35" height="18" fill="rgb(235,235,255)" stroke="#222"/>', _text(903, 92, "near zero", 11)],
+             "plot": [matrix_panel, singular_panel],
+             "lower-label": [_text(640, 688, "Every 3 × 4 matrix cell and all three singular values are labeled numerically.", 11, text_anchor="middle")],
+             "axis-title": [_text(640, 723, "Finite-range log-secant sensitivity diagnostic", 12, text_anchor="middle")],
+             "annotation": [_text(640, 754, "Equifinality warning; NOT_STRUCTURAL_IDENTIFIABILITY — not structural-identifiability proof.", 11, text_anchor="middle")]}
+    content["sensitivity_matrix_and_singular_values.svg"] = _canvas("Sensitivity elasticity matrix and singular values", bands,
+                                                                     "Finite-range 3-output × 4-parameter diagnostic; rank ceiling three.")
     rows = []
     for name, payload in content.items():
         path = output / name

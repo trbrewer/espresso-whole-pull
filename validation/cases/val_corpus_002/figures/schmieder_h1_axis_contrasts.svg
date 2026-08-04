@@ -1,67 +1,204 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
-<rect x="0" y="0" width="1000" height="620" fill="white"/>
-<title>H1 flow, grind, and temperature contrasts</title>
-<desc>cup_masses.csv: post-fit derived source quantities, not independent measurements; see VAL_PUCKWORKS_001 lineage authority</desc>
-<text x="40" y="34" font-family="sans-serif" font-size="20">H1 flow, grind, and temperature contrasts</text>
-<line x1="90" y1="540" x2="950" y2="540" stroke="black"/>
-<line x1="90" y1="70" x2="90" y2="540" stroke="black"/>
-<text x="480" y="575" font-family="sans-serif" font-size="13">axis / brew-ratio group</text>
-<text x="18" y="300" font-family="sans-serif" font-size="13" transform="rotate(-90 18 300)">contrast (g cup solute)</text>
-<line x1="104" y1="305" x2="104" y2="367.033" stroke="#333333" stroke-width="5"/>
-<line x1="116" y1="305" x2="116" y2="457.138" stroke="#756bb1" stroke-width="5"/>
-<text x="110" y="560" transform="rotate(60 110 560)" font-family="sans-serif" font-size="8">P1/FLOW/1/1</text>
-<line x1="149" y1="305" x2="149" y2="359.003" stroke="#333333" stroke-width="5"/>
-<line x1="161" y1="305" x2="161" y2="505.000" stroke="#756bb1" stroke-width="5"/>
-<text x="155" y="560" transform="rotate(60 155 560)" font-family="sans-serif" font-size="8">P1/FLOW/1/2</text>
-<line x1="194" y1="305" x2="194" y2="348.474" stroke="#333333" stroke-width="5"/>
-<line x1="206" y1="305" x2="206" y2="426.546" stroke="#756bb1" stroke-width="5"/>
-<text x="200" y="560" transform="rotate(60 200 560)" font-family="sans-serif" font-size="8">P1/FLOW/1/3</text>
-<line x1="239" y1="305" x2="239" y2="272.275" stroke="#333333" stroke-width="5"/>
-<line x1="251" y1="305" x2="251" y2="310.447" stroke="#756bb1" stroke-width="5"/>
-<text x="245" y="560" transform="rotate(60 245 560)" font-family="sans-serif" font-size="8">P1/GRIND/1/1</text>
-<line x1="284" y1="305" x2="284" y2="253.444" stroke="#333333" stroke-width="5"/>
-<line x1="296" y1="305" x2="296" y2="312.786" stroke="#756bb1" stroke-width="5"/>
-<text x="290" y="560" transform="rotate(60 290 560)" font-family="sans-serif" font-size="8">P1/GRIND/1/2</text>
-<line x1="329" y1="305" x2="329" y2="245.372" stroke="#333333" stroke-width="5"/>
-<line x1="341" y1="305" x2="341" y2="310.402" stroke="#756bb1" stroke-width="5"/>
-<text x="335" y="560" transform="rotate(60 335 560)" font-family="sans-serif" font-size="8">P1/GRIND/1/3</text>
-<line x1="374" y1="305" x2="374" y2="292.405" stroke="#333333" stroke-width="5"/>
-<line x1="386" y1="305" x2="386" y2="302.311" stroke="#756bb1" stroke-width="5"/>
-<text x="380" y="560" transform="rotate(60 380 560)" font-family="sans-serif" font-size="8">P1/TEMPERATURE/1/1</text>
-<line x1="419" y1="305" x2="419" y2="296.374" stroke="#333333" stroke-width="5"/>
-<line x1="431" y1="305" x2="431" y2="301.168" stroke="#756bb1" stroke-width="5"/>
-<text x="425" y="560" transform="rotate(60 425 560)" font-family="sans-serif" font-size="8">P1/TEMPERATURE/1/2</text>
-<line x1="464" y1="305" x2="464" y2="300.310" stroke="#333333" stroke-width="5"/>
-<line x1="476" y1="305" x2="476" y2="302.394" stroke="#756bb1" stroke-width="5"/>
-<text x="470" y="560" transform="rotate(60 470 560)" font-family="sans-serif" font-size="8">P1/TEMPERATURE/1/3</text>
-<line x1="509" y1="305" x2="509" y2="367.033" stroke="#333333" stroke-width="5"/>
-<line x1="521" y1="305" x2="521" y2="387.463" stroke="#e6550d" stroke-width="5"/>
-<text x="515" y="560" transform="rotate(60 515 560)" font-family="sans-serif" font-size="8">P2/FLOW/1/1</text>
-<line x1="554" y1="305" x2="554" y2="359.003" stroke="#333333" stroke-width="5"/>
-<line x1="566" y1="305" x2="566" y2="360.709" stroke="#e6550d" stroke-width="5"/>
-<text x="560" y="560" transform="rotate(60 560 560)" font-family="sans-serif" font-size="8">P2/FLOW/1/2</text>
-<line x1="599" y1="305" x2="599" y2="348.474" stroke="#333333" stroke-width="5"/>
-<line x1="611" y1="305" x2="611" y2="310.142" stroke="#e6550d" stroke-width="5"/>
-<text x="605" y="560" transform="rotate(60 605 560)" font-family="sans-serif" font-size="8">P2/FLOW/1/3</text>
-<line x1="644" y1="305" x2="644" y2="272.275" stroke="#333333" stroke-width="5"/>
-<line x1="656" y1="305" x2="656" y2="308.150" stroke="#e6550d" stroke-width="5"/>
-<text x="650" y="560" transform="rotate(60 650 560)" font-family="sans-serif" font-size="8">P2/GRIND/1/1</text>
-<line x1="689" y1="305" x2="689" y2="253.444" stroke="#333333" stroke-width="5"/>
-<line x1="701" y1="305" x2="701" y2="307.486" stroke="#e6550d" stroke-width="5"/>
-<text x="695" y="560" transform="rotate(60 695 560)" font-family="sans-serif" font-size="8">P2/GRIND/1/2</text>
-<line x1="734" y1="305" x2="734" y2="245.372" stroke="#333333" stroke-width="5"/>
-<line x1="746" y1="305" x2="746" y2="305.159" stroke="#e6550d" stroke-width="5"/>
-<text x="740" y="560" transform="rotate(60 740 560)" font-family="sans-serif" font-size="8">P2/GRIND/1/3</text>
-<line x1="779" y1="305" x2="779" y2="292.405" stroke="#333333" stroke-width="5"/>
-<line x1="791" y1="305" x2="791" y2="303.479" stroke="#e6550d" stroke-width="5"/>
-<text x="785" y="560" transform="rotate(60 785 560)" font-family="sans-serif" font-size="8">P2/TEMPERATURE/1/1</text>
-<line x1="824" y1="305" x2="824" y2="296.374" stroke="#333333" stroke-width="5"/>
-<line x1="836" y1="305" x2="836" y2="303.820" stroke="#e6550d" stroke-width="5"/>
-<text x="830" y="560" transform="rotate(60 830 560)" font-family="sans-serif" font-size="8">P2/TEMPERATURE/1/2</text>
-<line x1="869" y1="305" x2="869" y2="300.310" stroke="#333333" stroke-width="5"/>
-<line x1="881" y1="305" x2="881" y2="304.931" stroke="#e6550d" stroke-width="5"/>
-<text x="875" y="560" transform="rotate(60 875 560)" font-family="sans-serif" font-size="8">P2/TEMPERATURE/1/3</text>
-<line x1="90" y1="305" x2="950" y2="305" stroke="#888" stroke-dasharray="4 3"/>
-<text x="680" y="90" font-family="sans-serif" font-size="12">source black; P1 purple; P2 orange</text>
-<text x="40" y="602" font-family="sans-serif" font-size="11">cup_masses.csv: post-fit derived source quantities, not independent measurements; see VAL_PUCKWORKS_001 lineage authority</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+<rect x="0" y="0" width="1200" height="820" fill="white"/>
+<title>Schmieder H1 frozen axis contrasts</title>
+<desc>cup_masses.csv contains post-fit derived source quantities, not independent measurements; comparison role: reconstruction or derived metric only.</desc>
+<g id="title-band" data-band="title" data-x="30" data-y="18" data-width="1140" data-height="42">
+<text x="40.000" y="47.000" font-family="sans-serif" font-size="20">Schmieder H1 frozen axis contrasts</text>
+</g>
+<g id="legend-band" data-band="legend" data-x="30" data-y="66" data-width="1140" data-height="48">
+<circle cx="430" cy="90" r="4" fill="#222" stroke="#111"/>
+<text x="442.000" y="94.000" font-family="sans-serif" font-size="12">source</text>
+<rect x="540" y="86" width="8" height="8" fill="#7570b3" stroke="#111"/>
+<text x="556.000" y="94.000" font-family="sans-serif" font-size="12">P1 model</text>
+<rect x="680" y="86" width="8" height="8" fill="#d95f02" stroke="#111"/>
+<text x="696.000" y="94.000" font-family="sans-serif" font-size="12">fixed P2 model</text>
+</g>
+<g id="plot-band" data-band="plot" data-x="70" data-y="122" data-width="1080" data-height="540">
+<g id="contrast-p1-0" data-panel="contrast-p1-0" data-plot-x="105.000" data-plot-y="165.000" data-plot-width="285.000" data-plot-height="180.000">
+<rect x="105.000" y="165.000" width="285.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="176.250" y1="345.000" x2="176.250" y2="349.000" stroke="#333"/>
+<text x="176.250" y="361.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:1</text>
+<line x1="247.500" y1="345.000" x2="247.500" y2="349.000" stroke="#333"/>
+<text x="247.500" y="361.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:2</text>
+<line x1="318.750" y1="345.000" x2="318.750" y2="349.000" stroke="#333"/>
+<text x="318.750" y="361.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:3</text>
+<line x1="101.000" y1="345.000" x2="105.000" y2="345.000" stroke="#333"/>
+<text x="98.000" y="348.000" font-family="sans-serif" font-size="9" text-anchor="end">-1.2</text>
+<line x1="101.000" y1="255.000" x2="105.000" y2="255.000" stroke="#333"/>
+<text x="98.000" y="258.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="101.000" y1="165.000" x2="105.000" y2="165.000" stroke="#333"/>
+<text x="98.000" y="168.000" font-family="sans-serif" font-size="9" text-anchor="end">1.2</text>
+<line x1="105.000" y1="255.000" x2="390.000" y2="255.000" stroke="#666" stroke-dasharray="4 3"/>
+<line x1="168.250" y1="255.000" x2="168.250" y2="279.452" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-0"/>
+<circle cx="168.250" cy="279.452" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p1-0"/>
+<line x1="184.250" y1="255.000" x2="184.250" y2="314.969" stroke="#7570b3" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-0"/>
+<rect x="181.250" y="311.969" width="6" height="6" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="contrast-p1-0"/>
+<line x1="239.500" y1="255.000" x2="239.500" y2="276.287" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-0"/>
+<circle cx="239.500" cy="276.287" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p1-0"/>
+<line x1="255.500" y1="255.000" x2="255.500" y2="333.835" stroke="#7570b3" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-0"/>
+<rect x="252.500" y="330.835" width="6" height="6" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="contrast-p1-0"/>
+<line x1="310.750" y1="255.000" x2="310.750" y2="272.136" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-0"/>
+<circle cx="310.750" cy="272.136" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p1-0"/>
+<line x1="326.750" y1="255.000" x2="326.750" y2="302.910" stroke="#7570b3" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-0"/>
+<rect x="323.750" y="299.910" width="6" height="6" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="contrast-p1-0"/>
+<text x="247.500" y="155.000" font-family="sans-serif" font-size="11" text-anchor="middle">P1 — Flow: high − low</text>
+</g>
+<g id="contrast-p1-1" data-panel="contrast-p1-1" data-plot-x="465.000" data-plot-y="165.000" data-plot-width="285.000" data-plot-height="180.000">
+<rect x="465.000" y="165.000" width="285.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="536.250" y1="345.000" x2="536.250" y2="349.000" stroke="#333"/>
+<text x="536.250" y="361.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:1</text>
+<line x1="607.500" y1="345.000" x2="607.500" y2="349.000" stroke="#333"/>
+<text x="607.500" y="361.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:2</text>
+<line x1="678.750" y1="345.000" x2="678.750" y2="349.000" stroke="#333"/>
+<text x="678.750" y="361.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:3</text>
+<line x1="461.000" y1="345.000" x2="465.000" y2="345.000" stroke="#333"/>
+<text x="458.000" y="348.000" font-family="sans-serif" font-size="9" text-anchor="end">-1.2</text>
+<line x1="461.000" y1="255.000" x2="465.000" y2="255.000" stroke="#333"/>
+<text x="458.000" y="258.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="461.000" y1="165.000" x2="465.000" y2="165.000" stroke="#333"/>
+<text x="458.000" y="168.000" font-family="sans-serif" font-size="9" text-anchor="end">1.2</text>
+<line x1="465.000" y1="255.000" x2="750.000" y2="255.000" stroke="#666" stroke-dasharray="4 3"/>
+<line x1="528.250" y1="255.000" x2="528.250" y2="242.101" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-1"/>
+<circle cx="528.250" cy="242.101" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p1-1"/>
+<line x1="544.250" y1="255.000" x2="544.250" y2="257.147" stroke="#7570b3" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-1"/>
+<rect x="541.250" y="254.147" width="6" height="6" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="contrast-p1-1"/>
+<line x1="599.500" y1="255.000" x2="599.500" y2="234.678" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-1"/>
+<circle cx="599.500" cy="234.678" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p1-1"/>
+<line x1="615.500" y1="255.000" x2="615.500" y2="258.069" stroke="#7570b3" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-1"/>
+<rect x="612.500" y="255.069" width="6" height="6" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="contrast-p1-1"/>
+<line x1="670.750" y1="255.000" x2="670.750" y2="231.496" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-1"/>
+<circle cx="670.750" cy="231.496" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p1-1"/>
+<line x1="686.750" y1="255.000" x2="686.750" y2="257.129" stroke="#7570b3" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-1"/>
+<rect x="683.750" y="254.129" width="6" height="6" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="contrast-p1-1"/>
+<text x="607.500" y="155.000" font-family="sans-serif" font-size="11" text-anchor="middle">P1 — Grind: coarse − fine</text>
+</g>
+<g id="contrast-p1-2" data-panel="contrast-p1-2" data-plot-x="825.000" data-plot-y="165.000" data-plot-width="285.000" data-plot-height="180.000">
+<rect x="825.000" y="165.000" width="285.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="896.250" y1="345.000" x2="896.250" y2="349.000" stroke="#333"/>
+<text x="896.250" y="361.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:1</text>
+<line x1="967.500" y1="345.000" x2="967.500" y2="349.000" stroke="#333"/>
+<text x="967.500" y="361.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:2</text>
+<line x1="1038.750" y1="345.000" x2="1038.750" y2="349.000" stroke="#333"/>
+<text x="1038.750" y="361.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:3</text>
+<line x1="821.000" y1="345.000" x2="825.000" y2="345.000" stroke="#333"/>
+<text x="818.000" y="348.000" font-family="sans-serif" font-size="9" text-anchor="end">-1.2</text>
+<line x1="821.000" y1="255.000" x2="825.000" y2="255.000" stroke="#333"/>
+<text x="818.000" y="258.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="821.000" y1="165.000" x2="825.000" y2="165.000" stroke="#333"/>
+<text x="818.000" y="168.000" font-family="sans-serif" font-size="9" text-anchor="end">1.2</text>
+<line x1="825.000" y1="255.000" x2="1110.000" y2="255.000" stroke="#666" stroke-dasharray="4 3"/>
+<line x1="888.250" y1="255.000" x2="888.250" y2="250.035" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-2"/>
+<circle cx="888.250" cy="250.035" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p1-2"/>
+<line x1="904.250" y1="255.000" x2="904.250" y2="253.940" stroke="#7570b3" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-2"/>
+<rect x="901.250" y="250.940" width="6" height="6" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="contrast-p1-2"/>
+<line x1="959.500" y1="255.000" x2="959.500" y2="251.600" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-2"/>
+<circle cx="959.500" cy="251.600" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p1-2"/>
+<line x1="975.500" y1="255.000" x2="975.500" y2="253.490" stroke="#7570b3" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-2"/>
+<rect x="972.500" y="250.490" width="6" height="6" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="contrast-p1-2"/>
+<line x1="1030.750" y1="255.000" x2="1030.750" y2="253.151" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-2"/>
+<circle cx="1030.750" cy="253.151" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p1-2"/>
+<line x1="1046.750" y1="255.000" x2="1046.750" y2="253.973" stroke="#7570b3" stroke-width="3" data-role="data" data-panel-ref="contrast-p1-2"/>
+<rect x="1043.750" y="250.973" width="6" height="6" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="contrast-p1-2"/>
+<text x="967.500" y="155.000" font-family="sans-serif" font-size="11" text-anchor="middle">P1 — Temperature: high − low</text>
+</g>
+<g id="contrast-p2-0" data-panel="contrast-p2-0" data-plot-x="105.000" data-plot-y="415.000" data-plot-width="285.000" data-plot-height="180.000">
+<rect x="105.000" y="415.000" width="285.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="176.250" y1="595.000" x2="176.250" y2="599.000" stroke="#333"/>
+<text x="176.250" y="611.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:1</text>
+<line x1="247.500" y1="595.000" x2="247.500" y2="599.000" stroke="#333"/>
+<text x="247.500" y="611.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:2</text>
+<line x1="318.750" y1="595.000" x2="318.750" y2="599.000" stroke="#333"/>
+<text x="318.750" y="611.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:3</text>
+<line x1="101.000" y1="595.000" x2="105.000" y2="595.000" stroke="#333"/>
+<text x="98.000" y="598.000" font-family="sans-serif" font-size="9" text-anchor="end">-1.2</text>
+<line x1="101.000" y1="505.000" x2="105.000" y2="505.000" stroke="#333"/>
+<text x="98.000" y="508.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="101.000" y1="415.000" x2="105.000" y2="415.000" stroke="#333"/>
+<text x="98.000" y="418.000" font-family="sans-serif" font-size="9" text-anchor="end">1.2</text>
+<line x1="105.000" y1="505.000" x2="390.000" y2="505.000" stroke="#666" stroke-dasharray="4 3"/>
+<line x1="168.250" y1="505.000" x2="168.250" y2="529.452" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-0"/>
+<circle cx="168.250" cy="529.452" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p2-0"/>
+<line x1="184.250" y1="505.000" x2="184.250" y2="537.505" stroke="#d95f02" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-0"/>
+<rect x="181.250" y="534.505" width="6" height="6" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="contrast-p2-0"/>
+<line x1="239.500" y1="505.000" x2="239.500" y2="526.287" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-0"/>
+<circle cx="239.500" cy="526.287" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p2-0"/>
+<line x1="255.500" y1="505.000" x2="255.500" y2="526.959" stroke="#d95f02" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-0"/>
+<rect x="252.500" y="523.959" width="6" height="6" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="contrast-p2-0"/>
+<line x1="310.750" y1="505.000" x2="310.750" y2="522.136" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-0"/>
+<circle cx="310.750" cy="522.136" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p2-0"/>
+<line x1="326.750" y1="505.000" x2="326.750" y2="507.027" stroke="#d95f02" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-0"/>
+<rect x="323.750" y="504.027" width="6" height="6" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="contrast-p2-0"/>
+<text x="247.500" y="405.000" font-family="sans-serif" font-size="11" text-anchor="middle">P2 — Flow: high − low</text>
+</g>
+<g id="contrast-p2-1" data-panel="contrast-p2-1" data-plot-x="465.000" data-plot-y="415.000" data-plot-width="285.000" data-plot-height="180.000">
+<rect x="465.000" y="415.000" width="285.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="536.250" y1="595.000" x2="536.250" y2="599.000" stroke="#333"/>
+<text x="536.250" y="611.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:1</text>
+<line x1="607.500" y1="595.000" x2="607.500" y2="599.000" stroke="#333"/>
+<text x="607.500" y="611.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:2</text>
+<line x1="678.750" y1="595.000" x2="678.750" y2="599.000" stroke="#333"/>
+<text x="678.750" y="611.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:3</text>
+<line x1="461.000" y1="595.000" x2="465.000" y2="595.000" stroke="#333"/>
+<text x="458.000" y="598.000" font-family="sans-serif" font-size="9" text-anchor="end">-1.2</text>
+<line x1="461.000" y1="505.000" x2="465.000" y2="505.000" stroke="#333"/>
+<text x="458.000" y="508.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="461.000" y1="415.000" x2="465.000" y2="415.000" stroke="#333"/>
+<text x="458.000" y="418.000" font-family="sans-serif" font-size="9" text-anchor="end">1.2</text>
+<line x1="465.000" y1="505.000" x2="750.000" y2="505.000" stroke="#666" stroke-dasharray="4 3"/>
+<line x1="528.250" y1="505.000" x2="528.250" y2="492.101" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-1"/>
+<circle cx="528.250" cy="492.101" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p2-1"/>
+<line x1="544.250" y1="505.000" x2="544.250" y2="506.241" stroke="#d95f02" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-1"/>
+<rect x="541.250" y="503.241" width="6" height="6" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="contrast-p2-1"/>
+<line x1="599.500" y1="505.000" x2="599.500" y2="484.678" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-1"/>
+<circle cx="599.500" cy="484.678" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p2-1"/>
+<line x1="615.500" y1="505.000" x2="615.500" y2="505.980" stroke="#d95f02" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-1"/>
+<rect x="612.500" y="502.980" width="6" height="6" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="contrast-p2-1"/>
+<line x1="670.750" y1="505.000" x2="670.750" y2="481.496" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-1"/>
+<circle cx="670.750" cy="481.496" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p2-1"/>
+<line x1="686.750" y1="505.000" x2="686.750" y2="505.063" stroke="#d95f02" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-1"/>
+<rect x="683.750" y="502.063" width="6" height="6" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="contrast-p2-1"/>
+<text x="607.500" y="405.000" font-family="sans-serif" font-size="11" text-anchor="middle">P2 — Grind: coarse − fine</text>
+</g>
+<g id="contrast-p2-2" data-panel="contrast-p2-2" data-plot-x="825.000" data-plot-y="415.000" data-plot-width="285.000" data-plot-height="180.000">
+<rect x="825.000" y="415.000" width="285.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="896.250" y1="595.000" x2="896.250" y2="599.000" stroke="#333"/>
+<text x="896.250" y="611.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:1</text>
+<line x1="967.500" y1="595.000" x2="967.500" y2="599.000" stroke="#333"/>
+<text x="967.500" y="611.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:2</text>
+<line x1="1038.750" y1="595.000" x2="1038.750" y2="599.000" stroke="#333"/>
+<text x="1038.750" y="611.000" font-family="sans-serif" font-size="9" text-anchor="middle">1:3</text>
+<line x1="821.000" y1="595.000" x2="825.000" y2="595.000" stroke="#333"/>
+<text x="818.000" y="598.000" font-family="sans-serif" font-size="9" text-anchor="end">-1.2</text>
+<line x1="821.000" y1="505.000" x2="825.000" y2="505.000" stroke="#333"/>
+<text x="818.000" y="508.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="821.000" y1="415.000" x2="825.000" y2="415.000" stroke="#333"/>
+<text x="818.000" y="418.000" font-family="sans-serif" font-size="9" text-anchor="end">1.2</text>
+<line x1="825.000" y1="505.000" x2="1110.000" y2="505.000" stroke="#666" stroke-dasharray="4 3"/>
+<line x1="888.250" y1="505.000" x2="888.250" y2="500.035" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-2"/>
+<circle cx="888.250" cy="500.035" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p2-2"/>
+<line x1="904.250" y1="505.000" x2="904.250" y2="504.400" stroke="#d95f02" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-2"/>
+<rect x="901.250" y="501.400" width="6" height="6" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="contrast-p2-2"/>
+<line x1="959.500" y1="505.000" x2="959.500" y2="501.600" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-2"/>
+<circle cx="959.500" cy="501.600" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p2-2"/>
+<line x1="975.500" y1="505.000" x2="975.500" y2="504.535" stroke="#d95f02" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-2"/>
+<rect x="972.500" y="501.535" width="6" height="6" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="contrast-p2-2"/>
+<line x1="1030.750" y1="505.000" x2="1030.750" y2="503.151" stroke="#222" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-2"/>
+<circle cx="1030.750" cy="503.151" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="contrast-p2-2"/>
+<line x1="1046.750" y1="505.000" x2="1046.750" y2="504.973" stroke="#d95f02" stroke-width="3" data-role="data" data-panel-ref="contrast-p2-2"/>
+<rect x="1043.750" y="501.973" width="6" height="6" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="contrast-p2-2"/>
+<text x="967.500" y="405.000" font-family="sans-serif" font-size="11" text-anchor="middle">P2 — Temperature: high − low</text>
+</g>
+</g>
+<g id="lower-label-band" data-band="lower-label" data-x="70" data-y="666" data-width="1080" data-height="34">
+<text x="640.000" y="688.000" font-family="sans-serif" font-size="11" text-anchor="middle">Brew ratio categories: 1:1, 1:2, 1:3</text>
+</g>
+<g id="axis-title-band" data-band="axis-title" data-x="30" data-y="704" data-width="1140" data-height="28">
+<text x="640.000" y="723.000" font-family="sans-serif" font-size="12" text-anchor="middle">High-minus-low cup-solute contrast (g); shared symmetric scale ±1.2 g</text>
+</g>
+<g id="annotation-band" data-band="annotation" data-x="30" data-y="736" data-width="1140" data-height="30">
+<text x="640.000" y="754.000" font-family="sans-serif" font-size="11" text-anchor="middle">Zero line shown; source/model and P1/P2 identities use both marker form and colour.</text>
+</g>
+<g id="caption-band" data-band="caption" data-x="30" data-y="770" data-width="1140" data-height="42">
+<text x="40.000" y="786.000" font-family="sans-serif" font-size="11">cup_masses.csv contains post-fit derived source quantities, not independent measurements; comparison role: reconstruction or derived metric only.</text>
+</g>
 </svg>

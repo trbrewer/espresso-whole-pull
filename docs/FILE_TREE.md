@@ -132,7 +132,8 @@ configuration-inventory, and access-barrier records under
 `validation/cases/val_corpus_002/`. Complete solver products remain external.
 Stage B2 final reporting adds `scripts/val_corpus_002_b2_reporting.py`, the
 closed final-result schema and portable result/audit/summary records under the
-same case directory, five deterministic SVG figures under its `figures/`
+same case directory, five deterministic, quantitatively labeled SVG figures
+with explicit non-overlapping layout bands under its `figures/`
 subdirectory, and the substantive result report under `docs/validation/`.
 
 

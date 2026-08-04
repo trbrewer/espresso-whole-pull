@@ -233,21 +233,97 @@ class StageB2ProspectiveTests(unittest.TestCase):
             self.assertEqual(reporting.sha256(ROOT / row["figure_path"]), row["figure_sha256"])
             svg = ET.fromstring((ROOT / row["figure_path"]).read_bytes())
             primitives = [node for node in svg.iter() if node.tag.rsplit("}", 1)[-1] in
-                          {"line", "circle", "polyline", "rect"}]
+                          {"line", "circle", "polyline", "polygon", "rect"}]
             self.assertGreater(len(primitives), 5)
             for node in primitives:
                 for key in ("x", "x1", "x2", "cx"):
                     if key in node.attrib:
                         self.assertGreaterEqual(float(node.attrib[key]), 0.0)
-                        self.assertLessEqual(float(node.attrib[key]), 1000.0)
+                        self.assertLessEqual(float(node.attrib[key]), reporting.CANVAS_WIDTH)
                 for key in ("y", "y1", "y2", "cy"):
                     if key in node.attrib:
                         self.assertGreaterEqual(float(node.attrib[key]), 0.0)
-                        self.assertLessEqual(float(node.attrib[key]), 620.0)
+                        self.assertLessEqual(float(node.attrib[key]), reporting.CANVAS_HEIGHT)
                 for point in node.attrib.get("points", "").split():
                     x, y = map(float, point.split(","))
-                    self.assertTrue(0.0 <= x <= 1000.0 and 0.0 <= y <= 620.0)
+                    self.assertTrue(0.0 <= x <= reporting.CANVAS_WIDTH and
+                                    0.0 <= y <= reporting.CANVAS_HEIGHT)
             self.assertNotIn("timestamp", (ROOT / row["figure_path"]).read_text().lower())
+
+    def test_figure_semantics_and_required_labels_are_closed(self):
+        figures = ROOT / "validation/cases/val_corpus_002/figures"
+        source = (figures / "schmieder_h1_source_model.svg").read_text()
+        for experiment in range(1, 8):
+            self.assertIn(f"Experiment {experiment}", source)
+        for label in ("source", "model P0", "model P1", "model P2", "20", "40", "60",
+                      "calibration reconstruction anchor", "post-fit derived", "not independent"):
+            self.assertIn(label, source)
+
+        contrasts = (figures / "schmieder_h1_axis_contrasts.svg").read_text()
+        for label in ("P1 — Flow: high − low", "P1 — Grind: coarse − fine",
+                      "P1 — Temperature: high − low", "P2 — Flow: high − low",
+                      "P2 — Grind: coarse − fine", "P2 — Temperature: high − low",
+                      "1:1", "1:2", "1:3", "post-fit derived", "not independent"):
+            self.assertIn(label, contrasts)
+
+        wasz = (figures / "waszkiewicz_both_clocks.svg").read_text()
+        for label in ("Source-reported clock", "Frozen +3 s offset", "0.00", "0.14", "0.28",
+                      "5-second interval index", "No optimized shift", "not validation"):
+            self.assertIn(label, wasz)
+
+        sensitivity = (figures / "sensitivity_matrix_and_singular_values.svg").read_text()
+        base = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_RESULT.json").read_text())
+        for label in reporting.SENSITIVITY_OUTPUT_LABELS + tuple(base["sensitivity"]["parameters"]):
+            self.assertIn(label, sensitivity)
+        for value in base["sensitivity"]["singular_values"]:
+            self.assertIn(repr(value), sensitivity)
+        for label in ("matrix rank = 3", "NOT_STRUCTURAL_IDENTIFIABILITY",
+                      "not structural-identifiability proof", "Signed elasticity key"):
+            self.assertIn(label, sensitivity)
+
+    def test_figure_plot_geometry_is_inside_declared_panels_and_bands_do_not_overlap(self):
+        figures = ROOT / "validation/cases/val_corpus_002/figures"
+        for path in sorted(figures.glob("*.svg")):
+            svg = ET.fromstring(path.read_bytes())
+            panels = {node.attrib["data-panel"]: tuple(float(node.attrib[key]) for key in
+                      ("data-plot-x", "data-plot-y", "data-plot-width", "data-plot-height"))
+                      for node in svg.iter() if "data-panel" in node.attrib}
+            bands = sorted((float(node.attrib["data-y"]), float(node.attrib["data-y"]) +
+                            float(node.attrib["data-height"]), node.attrib["data-band"])
+                           for node in svg.iter() if "data-band" in node.attrib)
+            for (_, end, left), (start, _, right) in zip(bands, bands[1:]):
+                self.assertLessEqual(end, start, f"overlapping {left}/{right} in {path.name}")
+            for node in svg.iter():
+                if node.attrib.get("data-role") != "data":
+                    continue
+                x, y, width, height = panels[node.attrib["data-panel-ref"]]
+                points = []
+                tag = node.tag.rsplit("}", 1)[-1]
+                if tag == "line":
+                    points = [(float(node.attrib["x1"]), float(node.attrib["y1"])),
+                              (float(node.attrib["x2"]), float(node.attrib["y2"]))]
+                elif tag in ("polyline", "polygon"):
+                    points = [tuple(map(float, item.split(","))) for item in node.attrib["points"].split()]
+                elif tag == "circle":
+                    cx, cy, radius = map(float, (node.attrib["cx"], node.attrib["cy"], node.attrib["r"]))
+                    points = [(cx-radius, cy-radius), (cx+radius, cy+radius)]
+                elif tag == "rect":
+                    rx, ry, rw, rh = map(float, (node.attrib["x"], node.attrib["y"],
+                                                node.attrib["width"], node.attrib["height"]))
+                    points = [(rx, ry), (rx+rw, ry+rh)]
+                for px, py in points:
+                    self.assertTrue(x - 1e-6 <= px <= x + width + 1e-6, (path.name, tag, px, x, width))
+                    self.assertTrue(y - 1e-6 <= py <= y + height + 1e-6, (path.name, tag, py, y, height))
+
+    def test_production_figure_maps_all_governed_run_ids_once(self):
+        path = ROOT / "validation/cases/val_corpus_002/figures/production_availability_matrix.svg"
+        svg = ET.fromstring(path.read_bytes())
+        figure_ids = [node.attrib["data-run-id"] for node in svg.iter() if "data-run-id" in node.attrib]
+        summary = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_PER_CASE_NUMERICAL_SUMMARY.json").read_text())
+        governed = [row["run_id"] for row in summary["cases"]]
+        self.assertEqual(len(figure_ids), 45)
+        self.assertEqual(len(set(figure_ids)), 45)
+        self.assertEqual(set(figure_ids), set(governed))
 
     def test_claim_and_execution_boundaries_unchanged(self):
         result = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json").read_text())
