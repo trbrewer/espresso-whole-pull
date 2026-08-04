@@ -97,3 +97,35 @@ merge_status: NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW
 ```
 
 All scientific and numerical identities listed above remain unchanged.
+
+## 2026-08-03 sensitivity colour-key exact-head review
+
+Reviewed head `f0ceaa8b3307f2c380a64f17b6e1d240d2c9481b`, tree
+`83f56c1853b94e3c4361f9db3b3b5256185d3566`, under authorization
+`VAL-CORPUS-002-B2-SENSITIVITY-COLOUR-KEY-CORRECTION-2026-08-03`.
+
+Finding `B2-FIG-002` is
+`SENSITIVITY_COLOUR_KEY_DOES_NOT_MATCH_CELL_ENCODING`. The current mapping
+assigns the three near-zero negative elasticities
+`-0.00020477941226442888`, `-0.00022668882225069568`, and
+`-0.00023192355395433323` a pale-yellow fill because the blue channel jumps
+from `255` to `135` solely on sign. The legend instead declares a pale-blue
+neutral swatch. Consequently, the cells and key do not share one continuous,
+neutral-centered signed-magnitude mapping.
+
+This correction is reporting-only. The other four accepted SVG files are
+byte immutable at hashes `c243c06a9fd46eafe27e1934e8c3be40e2b9589fa33309e47996a0bdbb204872`,
+`d35aa0f9d005c70e0476b16f3a6bb3120e483c39a5e1b8f5b9be7908db31e394`,
+`0292810de091bede23ba284f2d25720516f106e87c77bb55595ca20c0cd8723c`,
+and `8f4b7bce271bfe97557b8adae37e0f528d77534d30f784f464caa582ae1ce8fa`.
+The sensitivity matrix, singular values, rank, scientific interpretation,
+claim ceiling, and every numerical/external artifact remain immutable.
+
+```text
+review_status: CORRECTION_AUTHORIZED_IN_PROGRESS
+merge_status: NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW
+```
+
+Closure identities, the old and new sensitivity hashes, dependent manifest
+hashes, and qualification results will be appended after implementation and
+qualification. The existing B2-FIG-001 record remains unchanged.

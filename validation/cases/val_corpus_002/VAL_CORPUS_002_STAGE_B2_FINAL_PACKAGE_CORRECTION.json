@@ -83,5 +83,47 @@
       },
       "merge_status": "NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW"
     }
+  },
+  "sensitivity_colour_key_exact_head_review": {
+    "date": "2026-08-03",
+    "authorization_id": "VAL-CORPUS-002-B2-SENSITIVITY-COLOUR-KEY-CORRECTION-2026-08-03",
+    "reviewed_head": "f0ceaa8b3307f2c380a64f17b6e1d240d2c9481b",
+    "reviewed_tree": "83f56c1853b94e3c4361f9db3b3b5256185d3566",
+    "finding_id": "B2-FIG-002",
+    "finding": "SENSITIVITY_COLOUR_KEY_DOES_NOT_MATCH_CELL_ENCODING",
+    "mapping_defect": "NEGATIVE_SIGN_CAUSES_BLUE_CHANNEL_JUMP_FROM_255_TO_135_WHILE_LEGEND_DECLARES_PALE_BLUE_NEUTRAL",
+    "affected_negative_elasticities": [
+      -0.00020477941226442888,
+      -0.00022668882225069568,
+      -0.00023192355395433323
+    ],
+    "boundary": "REPORTING_ONLY_NO_EXECUTION_NO_SCIENTIFIC_CHANGE",
+    "accepted_figure_sha256": {
+      "production_availability_matrix_svg": "c243c06a9fd46eafe27e1934e8c3be40e2b9589fa33309e47996a0bdbb204872",
+      "schmieder_h1_source_model_svg": "d35aa0f9d005c70e0476b16f3a6bb3120e483c39a5e1b8f5b9be7908db31e394",
+      "schmieder_h1_axis_contrasts_svg": "0292810de091bede23ba284f2d25720516f106e87c77bb55595ca20c0cd8723c",
+      "waszkiewicz_both_clocks_svg": "8f4b7bce271bfe97557b8adae37e0f528d77534d30f784f464caa582ae1ce8fa"
+    },
+    "immutable_identities": {
+      "historical_b2_result_sha256": "61fd74cb0977ac862965512dd3c4d92722a017fe9146314c168422250478b1be",
+      "final_numerical_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb",
+      "final_nested_schema_sha256": "d51a88ac58035543a0b8fdbaa6ac9edce4b81560798b9f4fac846641a595e6e9",
+      "per_case_summary_sha256": "c476283449d2c6c632c1a00d9d5418b66e2c80e8ff18b6f1e806dec1174c5a52",
+      "puckworks_lineage_authority_sha256": "8c988890b7b31479ff694ae6fc45fdd431e2ebd721e47e9d7e049939b421b0c9",
+      "production_aggregate_sha256": "c7eb8db410fe572c6638163dae1592f332cb82f15fe85c051cd65ef51651af02",
+      "external_aggregate_sha256": "dfd5404159b989b9e3fd6902355e3610c9685684b955b870797ef315676e6452",
+      "fixed_p2_rate_s_inverse": 0.3439597024835067
+    },
+    "closure": {
+      "status": "CORRECTION_AUTHORIZED_IN_PROGRESS",
+      "correction_commit": null,
+      "correction_head": null,
+      "correction_tree": null,
+      "old_sensitivity_svg_sha256": "ea3bbabaa222d97fd90038724c45c2837d47ececcfab99f3f55671f8e4ee7dba",
+      "new_sensitivity_svg_sha256": null,
+      "dependent_hashes": null,
+      "qualification": null,
+      "merge_status": "NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW"
+    }
   }
 }
