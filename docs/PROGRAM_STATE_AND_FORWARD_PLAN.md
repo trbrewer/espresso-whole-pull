@@ -185,7 +185,7 @@ the synchronized measurement package defined by VAL-DATA-001.
 | Latest executed WP03-002 candidate executable | `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6` |
 | Runtime Puckworks lock | `fc61c4670ec7bf801e40bb391aab16048b8da26b` |
 | Read-only evidence snapshot used by VAL-CORPUS-001 | `9c52c94edb27b461b6e7a4d471d29f3cef9d053e` |
-| Current Python suite | `452/452 PASS`, including 4 focused current-authority consistency tests |
+| Current qualification suite | `PACKAGE_QA_STATUS.json` is the machine-readable exact-head authority for current Python-test and focused current-authority-consistency counts; this handoff deliberately does not duplicate mutable totals. Confirm live pass/fail status from exact-head CI; counts elsewhere in explicitly bounded history remain historical. |
 | Current static gates | `38/38 PASS` |
 | Current source manifest | current exact count and aggregate are recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
 | Physical validation | `NOT_ESTABLISHED` |

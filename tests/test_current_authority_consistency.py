@@ -33,6 +33,7 @@ CURRENT_MARKERS = {
     ),
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": (
         "| Aggregate extraction and cup-chemistry transfer | Partial / source-specific only | VAL-CORPUS-002 completed the governed assessment: local reconstruction and partial directional transfer were observed, but grind-sign reversal, hydraulic target-coverage mismatch, and cross-source time-shape failure remain; general transfer and physical validation are not established |",
+        "`PACKAGE_QA_STATUS.json` is the machine-readable exact-head authority for current Python-test and focused current-authority-consistency counts; this handoff deliberately does not duplicate mutable totals. Confirm live pass/fail status from exact-head CI; counts elsewhere in explicitly bounded history remain historical.",
         "VAL_CORPUS_002:\n  COMPLETE_APPROVED_AND_MERGED",
         "ACTIVE_VALIDATION_CASE:\n  NONE",
         "ACTIVE_DATA_PLANNING_TASK:\n  NONE",
@@ -69,6 +70,9 @@ FORBIDDEN_CURRENT_MARKERS = (
     "merge and any next mechanism are not authorized",
     "Aggregate extraction transfer | Not yet adequately assessed",
     "Required next corpus tranche",
+    "452/452 PASS",
+    "4 focused current-authority consistency tests",
+    "Current Python suite | `452/452 PASS`, including 4 focused current-authority consistency tests",
 )
 
 
@@ -116,6 +120,17 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
     if qa.get("canonical_identity_role") != "LAST_SUBSTANTIVE_SCIENTIFIC_MERGE_BASE":
         return False
     if qa.get("live_repository_identity") != "RESOLVE_HEAD_AND_TREE_FROM_GIT":
+        return False
+    if qa.get("release_qualification") != "PASS":
+        return False
+    checks = qa.get("current_repository_checks", {})
+    python_count = checks.get("python_test_count")
+    focused_count = checks.get("current_authority_consistency_test_count")
+    if type(python_count) is not int or python_count <= 0:
+        return False
+    if type(focused_count) is not int or focused_count <= 0:
+        return False
+    if focused_count > python_count:
         return False
     for key, expected in (
         ("active_validation_case", "NONE"),
@@ -185,6 +200,27 @@ class CurrentAuthorityConsistencyTests(unittest.TestCase):
                 changed = dict(self.qa)
                 changed[key] = stale
                 self.assertFalse(current_authorities_pass(self.texts, changed))
+
+        checks = self.qa["current_repository_checks"]
+        for python_count, focused_count in (
+            (0, checks["current_authority_consistency_test_count"]),
+            (checks["python_test_count"], 0),
+            (1, 2),
+            (True, 1),
+            (1, True),
+        ):
+            with self.subTest(python_count=python_count, focused_count=focused_count):
+                changed = dict(self.qa)
+                changed["current_repository_checks"] = {
+                    **checks,
+                    "python_test_count": python_count,
+                    "current_authority_consistency_test_count": focused_count,
+                }
+                self.assertFalse(current_authorities_pass(self.texts, changed))
+
+        changed = dict(self.qa)
+        changed["release_qualification"] = "FAIL"
+        self.assertFalse(current_authorities_pass(self.texts, changed))
 
     def test_executed_protocol_sections_remain_explicitly_historical(self) -> None:
         text = self.texts["docs/PROGRAM_STATE_AND_FORWARD_PLAN.md"]
