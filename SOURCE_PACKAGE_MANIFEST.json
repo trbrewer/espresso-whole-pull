@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 278,
-  "total_uncompressed_bytes_excluding_manifest": 3221883,
-  "aggregate_source_sha256": "d91e1cf6555abc3b70f34ff5167463fe995b9e89bdcaa22754ac17e885b2c2ad",
-  "aggregate_sha256": "d91e1cf6555abc3b70f34ff5167463fe995b9e89bdcaa22754ac17e885b2c2ad",
+  "file_count": 281,
+  "total_uncompressed_bytes_excluding_manifest": 3232819,
+  "aggregate_source_sha256": "68ccf91aa87bb915bc8886fb49c4afe11ce1663a64cab6391950396ad5f16418",
+  "aggregate_sha256": "68ccf91aa87bb915bc8886fb49c4afe11ce1663a64cab6391950396ad5f16418",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1183,6 +1183,11 @@
       "bytes": 17847,
       "git_mode": "100755"
     },
+    "scripts/xsv_taichi_001.py": {
+      "sha256": "9250d6db0d113b4c62400e1e19804762d3b9820e22005be5711565400ca93997",
+      "bytes": 7309,
+      "git_mode": "100644"
+    },
     "solver/espressoWholePullFoam/Make/files": {
       "sha256": "70aa84e2e2cbd37a9c25217fee498c234816cf41fb57b5f24c41a0e8495f7d83",
       "bytes": 73,
@@ -1408,6 +1413,11 @@
       "bytes": 25759,
       "git_mode": "100644"
     },
+    "tests/test_xsv_taichi_001.py": {
+      "sha256": "ee1394085a75384ff7fa55cc036da17250efc3f2d17af312030399f592a6af47",
+      "bytes": 3316,
+      "git_mode": "100644"
+    },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_CASE_MATRIX.csv": {
       "sha256": "0d398a9e0fe356532ef6f1357f2c2da10327e9d1d47c17ac12efab2931bd05a7",
       "bytes": 2518,
@@ -1421,6 +1431,11 @@
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_STAGE_AUTHORIZATION.json": {
       "sha256": "17dbbb8567a2d64f6cb2b95f2e2ba63a2c5e419c1b3134b856fa2c4eaa175f0e",
       "bytes": 5489,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_taichi_001/lbm/README.md": {
+      "sha256": "781d543e99729158559aabfb35779750a83248a2cd8ae253a37afa838d14dcb4",
+      "bytes": 311,
       "git_mode": "100644"
     }
   }
