@@ -1,0 +1,145 @@
+{
+  "schema_version": "espresso.val_corpus_002.b2_final_package_correction.v1",
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "profile": "EWP_PRODUCTION_AND_SCORING_STAGE_V1",
+  "starting_head": "05a179e8cc9e514b60d800823ed6fba7d3ec9343",
+  "starting_tree": "cd9252e3c2e59411c6217f10b563fc5f1a866f19",
+  "findings": [
+    "CUP_MASSES_LINEAGE_CAVEAT_NOT_CARRIED",
+    "FINAL_RESULT_SCHEMA_ONLY_TOP_LEVEL_CLOSED",
+    "FINAL_STATUS_AMBIGUOUS_WITH_TYPED_FAILURES",
+    "EMBEDDED_BASE_RESULT_AUTHORITY_NOT_MARKED",
+    "TARGET_AVAILABILITY_SEMANTICS_AMBIGUOUS",
+    "FIGURES_ARE_TEXT_ONLY_NOT_SCIENTIFIC_PLOTS",
+    "REPORTING_REDUCER_FAIL_CLOSED_HARDENING_REQUIRED"
+  ],
+  "boundaries": {
+    "numerical_artifacts": "UNCHANGED",
+    "scientific_result": "UNCHANGED",
+    "openfoam": "PROHIBITED",
+    "sensitivity_rerun": "PROHIBITED",
+    "refit": "PROHIBITED",
+    "protected_scoring": "PROHIBITED",
+    "new_governing_physics": "NOT_AUTHORIZED",
+    "val_case_002": "NOT_STARTED",
+    "merge": "NOT_AUTHORIZED"
+  },
+  "immutable_counts": {
+    "production_identities": 45,
+    "production_pass": 27,
+    "typed_target_coverage_failures": 18,
+    "sensitivity_identities": 9,
+    "sensitivity_pass": 9,
+    "predecessor_parity_states": 1500
+  },
+  "figure_semantics_exact_head_review": {
+    "date": "2026-08-03",
+    "authorization_id": "VAL-CORPUS-002-B2-FIGURE-SEMANTICS-CORRECTION-2026-08-03",
+    "reviewed_head": "4765f6fdde10f277c70b4a4b50d5333d58c9f629",
+    "reviewed_tree": "458af5c6e6ed8c8ca1d80f4d42f30ac467bd869b",
+    "finding_id": "B2-FIG-001",
+    "finding": "SCIENTIFIC_FIGURE_SEMANTIC_LEGIBILITY_AND_PLOT_BOUNDS_NOT_CLOSED",
+    "observed_manifestations": [
+      "OVERLAYS_OR_ANONYMOUS_CELLS_PREVENT_UNAMBIGUOUS_GOVERNED_IDENTITY_MAPPING",
+      "QUANTITATIVE_AXES_AND_GOVERNED_ROW_COLUMN_SERIES_LABELS_INCOMPLETE",
+      "PLOT_GEOMETRY_AND_TEXT_BANDS_NOT_EXPLICITLY_NONOVERLAPPING_AND_CLOSED"
+    ],
+    "boundary": "REPORTING_ONLY_NO_EXECUTION_NO_SCIENTIFIC_CHANGE",
+    "immutable_identities": {
+      "fixed_p2_rate_s_inverse": 0.3439597024835067,
+      "production_aggregate_sha256": "c7eb8db410fe572c6638163dae1592f332cb82f15fe85c051cd65ef51651af02",
+      "external_aggregate_sha256": "dfd5404159b989b9e3fd6902355e3610c9685684b955b870797ef315676e6452",
+      "historical_b2_base_result_sha256": "61fd74cb0977ac862965512dd3c4d92722a017fe9146314c168422250478b1be",
+      "final_numerical_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb",
+      "final_nested_schema_sha256": "d51a88ac58035543a0b8fdbaa6ac9edce4b81560798b9f4fac846641a595e6e9",
+      "per_case_summary_sha256": "c476283449d2c6c632c1a00d9d5418b66e2c80e8ff18b6f1e806dec1174c5a52",
+      "puckworks_lineage_authority_sha256": "8c988890b7b31479ff694ae6fc45fdd431e2ebd721e47e9d7e049939b421b0c9"
+    },
+    "closure": {
+      "status": "VAL_CORPUS_002_STAGE_B2_FIGURE_SEMANTICS_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+      "correction_commit": "8cd8b5431cdaceda7242f975d90f09f142ee8850",
+      "correction_head": "8cd8b5431cdaceda7242f975d90f09f142ee8850",
+      "correction_tree": "ff881ce3c5d7e2e8da9aa5a5ffff128de1ba1dc9",
+      "changed_generated_hashes": {
+        "production_availability_matrix_svg": "c243c06a9fd46eafe27e1934e8c3be40e2b9589fa33309e47996a0bdbb204872",
+        "schmieder_h1_axis_contrasts_svg": "0292810de091bede23ba284f2d25720516f106e87c77bb55595ca20c0cd8723c",
+        "schmieder_h1_source_model_svg": "d35aa0f9d005c70e0476b16f3a6bb3120e483c39a5e1b8f5b9be7908db31e394",
+        "sensitivity_matrix_and_singular_values_svg": "ea3bbabaa222d97fd90038724c45c2837d47ececcfab99f3f55671f8e4ee7dba",
+        "waszkiewicz_both_clocks_svg": "8f4b7bce271bfe97557b8adae37e0f528d77534d30f784f464caa582ae1ce8fa",
+        "figure_aggregate_sha256": "f755c6aea99134671edf0e23868d3e10a5c1b66063b93516bf5b450887b2faec",
+        "reporting_reducer_sha256": "50fc3ac6a74ab16b6edb460fb21005704032c4f56d26bcba81195423624d1cf2",
+        "figure_manifest_sha256": "7dfff8c964e30a8a5179acff6540fa33eb558a889ca8b34a5bb287bd96eebee8",
+        "final_report_manifest_sha256": "4a7fa7235ad2f2faddaec16f058846f3f30f4c986d5ac3adf442c0c5d4e00ab6"
+      },
+      "qualification": {
+        "python_tests": "445/445 PASS",
+        "focused_stage_b2_tests": "36/36 PASS",
+        "static_gates": "38/38 PASS",
+        "source_manifest": "272/272 PASS",
+        "source_aggregate_sha256": "ddb4ecf93b521284883994726bab938bb15bc766ac8e0aaf93998540f7c601d9",
+        "deterministic_repeat_generation": "PASS",
+        "semantic_and_geometric_svg_tests": "PASS",
+        "syntax_whitespace_secret_local_path_links_and_boundaries": "PASS"
+      },
+      "merge_status": "NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW"
+    }
+  },
+  "sensitivity_colour_key_exact_head_review": {
+    "date": "2026-08-03",
+    "authorization_id": "VAL-CORPUS-002-B2-SENSITIVITY-COLOUR-KEY-CORRECTION-2026-08-03",
+    "reviewed_head": "f0ceaa8b3307f2c380a64f17b6e1d240d2c9481b",
+    "reviewed_tree": "83f56c1853b94e3c4361f9db3b3b5256185d3566",
+    "finding_id": "B2-FIG-002",
+    "finding": "SENSITIVITY_COLOUR_KEY_DOES_NOT_MATCH_CELL_ENCODING",
+    "mapping_defect": "NEGATIVE_SIGN_CAUSES_BLUE_CHANNEL_JUMP_FROM_255_TO_135_WHILE_LEGEND_DECLARES_PALE_BLUE_NEUTRAL",
+    "affected_negative_elasticities": [
+      -0.00020477941226442888,
+      -0.00022668882225069568,
+      -0.00023192355395433323
+    ],
+    "boundary": "REPORTING_ONLY_NO_EXECUTION_NO_SCIENTIFIC_CHANGE",
+    "accepted_figure_sha256": {
+      "production_availability_matrix_svg": "c243c06a9fd46eafe27e1934e8c3be40e2b9589fa33309e47996a0bdbb204872",
+      "schmieder_h1_source_model_svg": "d35aa0f9d005c70e0476b16f3a6bb3120e483c39a5e1b8f5b9be7908db31e394",
+      "schmieder_h1_axis_contrasts_svg": "0292810de091bede23ba284f2d25720516f106e87c77bb55595ca20c0cd8723c",
+      "waszkiewicz_both_clocks_svg": "8f4b7bce271bfe97557b8adae37e0f528d77534d30f784f464caa582ae1ce8fa"
+    },
+    "immutable_identities": {
+      "historical_b2_result_sha256": "61fd74cb0977ac862965512dd3c4d92722a017fe9146314c168422250478b1be",
+      "final_numerical_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb",
+      "final_nested_schema_sha256": "d51a88ac58035543a0b8fdbaa6ac9edce4b81560798b9f4fac846641a595e6e9",
+      "per_case_summary_sha256": "c476283449d2c6c632c1a00d9d5418b66e2c80e8ff18b6f1e806dec1174c5a52",
+      "puckworks_lineage_authority_sha256": "8c988890b7b31479ff694ae6fc45fdd431e2ebd721e47e9d7e049939b421b0c9",
+      "production_aggregate_sha256": "c7eb8db410fe572c6638163dae1592f332cb82f15fe85c051cd65ef51651af02",
+      "external_aggregate_sha256": "dfd5404159b989b9e3fd6902355e3610c9685684b955b870797ef315676e6452",
+      "fixed_p2_rate_s_inverse": 0.3439597024835067
+    },
+    "closure": {
+      "status": "VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+      "correction_commit": "cd6529487865a5c729b0380a7f30877803f25fc8",
+      "correction_head": "cd6529487865a5c729b0380a7f30877803f25fc8",
+      "correction_tree": "eecb5099278fa05a908a8589b1708e84d83d785c",
+      "old_sensitivity_svg_sha256": "ea3bbabaa222d97fd90038724c45c2837d47ececcfab99f3f55671f8e4ee7dba",
+      "new_sensitivity_svg_sha256": "5ba16412f89040ce7e62069e9af9df71197656b8daefc82e8efe06c9f1ef1197",
+      "dependent_hashes": {
+        "reporting_reducer_sha256": "12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb",
+        "figure_manifest_sha256": "1cde29b7558c71451453b243861d015b8b3be0982e424680b9e9666183c64a0e",
+        "figure_aggregate_sha256": "77e080b59fd94e27030d280f3f2054c71a67d57d3a5be1de4c17ef31ab068330",
+        "final_report_manifest_sha256": "86855f3e77ac6723cf02b327b82e812a6141f0e8c94d9165c4f48c97d33aab0e"
+      },
+      "qualification": {
+        "python_tests": "448/448 PASS",
+        "focused_stage_b2_tests": "39/39 PASS",
+        "static_gates": "38/38 PASS",
+        "source_manifest": "272/272 PASS",
+        "source_aggregate_sha256": "259ed53e677a98cffe7aaf6b51c3af1ea2b40b213288edb2ef7a57521fe5177f",
+        "continuous_neutral_centered_mapping": "PASS",
+        "accepted_four_figure_byte_parity": "PASS",
+        "deterministic_repeat_generation": "PASS",
+        "rendered_human_inspection": "PASS_NO_UNKEYED_YELLOW_NO_CLIPPING_NO_OVERLAP",
+        "syntax_whitespace_secret_local_path_links_and_boundaries": "PASS"
+      },
+      "merge_status": "NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW"
+    }
+  }
+}

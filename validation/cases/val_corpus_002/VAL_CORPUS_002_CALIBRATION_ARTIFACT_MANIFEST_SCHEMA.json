@@ -1,0 +1,58 @@
+{
+  "$id": "espresso.val_corpus_002.calibration_artifacts.v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "aggregate_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "files": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "bytes": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "CALIBRATION_CONFIGURATION",
+              "CALIBRATION_REDUCTION",
+              "NUMERICAL_VERIFICATION",
+              "OPTIMIZER_TRACE",
+              "RETAINED_MODEL_OUTPUT_TRACE"
+            ]
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "path",
+          "bytes",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "espresso.val_corpus_002.calibration_artifacts.v1"
+    }
+  },
+  "required": [
+    "schema_version",
+    "aggregate_sha256",
+    "files"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,12 @@
+{
+  "aggregate_sha256": "0ad09fdf9ca56b8aad8890101ef85db0ca2c90d3dc32a3c03a36574c70277208",
+  "external_root": "<VAL_CORPUS_002_RUNTIME_ROOT>",
+  "files": [
+    {"bytes": 31786, "path": "governed/optimizer-trace.json", "role": "OPTIMIZER_TRACE", "sha256": "d753f89cfbf91b33c430a5297a2f4431e7b72dcc3e0c52089bfe3b44b80604e7"},
+    {"bytes": 3923, "path": "governed/calibration-configuration.json", "role": "CALIBRATION_CONFIGURATION", "sha256": "d3234d976c554ad87704d9c6c00032a08b99d52c6fc61c32846e2470dff99573"},
+    {"bytes": 629, "path": "governed/calibration-reduction.json", "role": "CALIBRATION_REDUCTION", "sha256": "ded666efcc81200c73f4b073edc14b886fbf4a158eb44fdf13cd1c1088a30f58"},
+    {"bytes": 8106140, "path": "governed/retained-model-output-trace.csv", "role": "RETAINED_MODEL_OUTPUT_TRACE", "sha256": "c7653815f0bbcab6a09ce7a5888e40e7a9c24a82cae18815beba017d7afdbcaa"},
+    {"bytes": 1511, "path": "governed/numerical-verification.json", "role": "NUMERICAL_VERIFICATION", "sha256": "49a7e83b3baabe9c92d1e8d7931e981468836e0e09e4768aa6659fde179001ca"}
+  ],
+  "schema_version": "espresso.val_corpus_002.calibration_artifacts.v1"
+}

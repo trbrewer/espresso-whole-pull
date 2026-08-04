@@ -1,0 +1,11 @@
+{
+  "change_declaration": "SOURCE_SCENARIO_CHANGE_ONLY",
+  "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
+  "evidence_handling": "READ_ONLY_PINNED_PUBLIC_SOURCE_NO_COPY",
+  "new_governing_physics": "NOT_YET_JUSTIFIED",
+  "physical_validation": "NOT_ESTABLISHED",
+  "public_observable_data": true,
+  "sealed_holdout": false,
+  "stage_a": {"openfoam": "NOT_RUN", "calibration": "NOT_EXECUTED", "governed_scoring": "NOT_PERFORMED"},
+  "schema_version": 1
+}

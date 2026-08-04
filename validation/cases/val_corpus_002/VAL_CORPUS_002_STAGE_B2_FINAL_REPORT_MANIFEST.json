@@ -1,0 +1,63 @@
+{
+  "schema_version": "espresso.val_corpus_002.b2_final_report_manifest.v1",
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "bundle_status": "RESULT_COMPLETE_WITH_TYPED_FAILURES",
+  "reduction_status": "PASS",
+  "production_matrix_disposition": "COMPLETE_WITH_18_TYPED_NUMERICAL_CASE_FAILURES",
+  "source_lineage": {
+    "evidence_class": "POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+    "independent_measurement": false,
+    "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+    "prohibited_use": "INDEPENDENT_VALIDATION_TARGET",
+    "required_citation": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md",
+    "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
+    "uncertainty_role": "POST_FIT_DERIVED_REPLICATE_SPREAD_NOT_INDEPENDENT_MEASUREMENT_UNCERTAINTY"
+  },
+  "members": {
+    "interpretation_and_reporting_implementation": {
+      "path": "scripts/val_corpus_002_b2_reporting.py",
+      "sha256": "12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb"
+    },
+    "final_result_schema": {
+      "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT_SCHEMA.json",
+      "sha256": "d51a88ac58035543a0b8fdbaa6ac9edce4b81560798b9f4fac846641a595e6e9"
+    },
+    "final_result": {
+      "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json",
+      "sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb"
+    },
+    "normalized_species_audit": {
+      "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_NORMALIZED_SPECIES_AUDIT.json",
+      "sha256": "935e178f3f642c4ff9f57837013a018a3fe1c6150272a132713afb010cc8a29a"
+    },
+    "reduced_source_clock": {
+      "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_REDUCED_SOURCE_CLOCK.json",
+      "sha256": "9f3290100e2f1b67d6032832aad74ff2068d99b78fc6d32da93bd88b5184aaa4"
+    },
+    "per_case_numerical_summary": {
+      "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_PER_CASE_NUMERICAL_SUMMARY.json",
+      "sha256": "c476283449d2c6c632c1a00d9d5418b66e2c80e8ff18b6f1e806dec1174c5a52"
+    },
+    "figure_manifest": {
+      "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FIGURE_MANIFEST.json",
+      "sha256": "1cde29b7558c71451453b243861d015b8b3be0982e424680b9e9666183c64a0e",
+      "figure_aggregate_sha256": "77e080b59fd94e27030d280f3f2054c71a67d57d3a5be1de4c17ef31ab068330"
+    },
+    "human_report": {
+      "path": "docs/validation/VAL_CORPUS_002_STAGE_B2_RESULT.md",
+      "sha256": "d81aa00ffa3cb386d4ee9971109d94ff7e5c281d42d5fe508bc37332838426bb"
+    },
+    "persistent_source_lineage_authority": {
+      "path": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md",
+      "sha256": "8c988890b7b31479ff694ae6fc45fdd431e2ebd721e47e9d7e049939b421b0c9"
+    }
+  },
+  "immutable_inputs": {
+    "base_b2_result_sha256": "61fd74cb0977ac862965512dd3c4d92722a017fe9146314c168422250478b1be",
+    "corrected_production_aggregate_sha256": "c7eb8db410fe572c6638163dae1592f332cb82f15fe85c051cd65ef51651af02",
+    "combined_external_aggregate_sha256": "dfd5404159b989b9e3fd6902355e3610c9685684b955b870797ef315676e6452",
+    "fixed_p2_rate_s_inverse": 0.3439597024835067,
+    "openfoam_rerun": "NOT_PERFORMED",
+    "sensitivity_rerun": "NOT_PERFORMED"
+  }
+}

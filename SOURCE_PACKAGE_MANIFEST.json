@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 240,
-  "total_uncompressed_bytes_excluding_manifest": 2228345,
-  "aggregate_source_sha256": "481a80a5eccd1d964ea906ce1413c9e2ad3625e20a0967be782278e76229af2b",
-  "aggregate_sha256": "481a80a5eccd1d964ea906ce1413c9e2ad3625e20a0967be782278e76229af2b",
+  "file_count": 272,
+  "total_uncompressed_bytes_excluding_manifest": 3053438,
+  "aggregate_source_sha256": "259ed53e677a98cffe7aaf6b51c3af1ea2b40b213288edb2ef7a57521fe5177f",
+  "aggregate_sha256": "259ed53e677a98cffe7aaf6b51c3af1ea2b40b213288edb2ef7a57521fe5177f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "fc44d1565565a8df42a539e5677c29f1aa0dc49cee22eda253e640289b36585e",
-      "bytes": 7348,
+      "sha256": "412d5610b0521914a20ae8ce0be8033bde05afc37b12242626dd3ef083b9bd95",
+      "bytes": 8391,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -444,18 +444,43 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "3ac0d3cd549f30507971984b36df95807d4b58e1c9ba3bbb40f1bb40efdd3f67",
-      "bytes": 47042,
+      "sha256": "b0602f79d40d14e1413d9003babca90b40be181bc05ffb8c51a485e0e451f857",
+      "bytes": 48057,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "26f17bed485c7fc535d9e42bc5165ce9cf4a804202cb83465daa4ad77d810c9f",
-      "bytes": 12469,
+      "sha256": "5e08a1fb353930c60c9c8aab54d7bbb593c14ff707ba028cb89e6ed79df8b315",
+      "bytes": 14653,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
       "sha256": "8c2ba60bff79d3eff9c31f11b47c9952f7c369a990ccd512decf6bcd0bc3dec6",
       "bytes": 6218,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png": {
+      "sha256": "9336facc0d5a09b216904759c3942c70768d56f2f533d512a33096ce1822e778",
+      "bytes": 47554,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_heldout_late.png": {
+      "sha256": "55945eceb05ebc4d449c944a293911dfad6c60b418f808f570397b36c23013dd",
+      "bytes": 45948,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_integrated_vs_raw.png": {
+      "sha256": "69ec515c72bbb59c4873396974ea02c6d1b4b8878c1c45da94aa0812255e7717",
+      "bytes": 73243,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_observed_vs_predicted.png": {
+      "sha256": "4248022df4149fb9b9de5ad3caa6fd69c9e7198bacc4acbd0b412d1991994dbb",
+      "bytes": 137996,
+      "git_mode": "100644"
+    },
+    "docs/evidence/puckworks_base_temporal_cv/figures/temporal_parameter_stability.png": {
+      "sha256": "2ccd5f82eff60945f83851c42e00520cea9cdfa11197d8f948d2f5239cedf126",
+      "bytes": 61813,
       "git_mode": "100644"
     },
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md": {
@@ -563,6 +588,81 @@
       "bytes": 1548,
       "git_mode": "100644"
     },
+    "docs/validation/VAL_CORPUS_002_AGGREGATE_EXTRACTION_AND_CUP_CHEMISTRY_PROTOCOL.md": {
+      "sha256": "ced522778c14f4c7d0f3604713d0e28097d8df0d1199cb18e84a7f2e60821a26",
+      "bytes": 12786,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B0_EXACT_HEAD_REVIEW_CORRECTION.md": {
+      "sha256": "e57cf889e3e09c907a5364ed1699a54eb28d8e33229a043fd40d4025c11a5cb1",
+      "bytes": 4862,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B0_EXECUTION_TOOLING_PROTOCOL.md": {
+      "sha256": "752bfb22d2d6b0b1fb0194393d5fdc23b64a8dda40211d5dd3ff001dd62194d0",
+      "bytes": 11053,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B0_EXECUTION_TOOLING_REPORT.md": {
+      "sha256": "93ea3805379a1f7ab9365a92380dfd73fa44e7a4d6f2f7d660c96362a6401260",
+      "bytes": 5095,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B1_CALIBRATION_ACTIVATION.md": {
+      "sha256": "cc1ca0d79c82d5d1ac7487292eec93d4612a51350aaa61dc1a82232d6dc519b2",
+      "bytes": 1053,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B1_CALIBRATION_RESULT.md": {
+      "sha256": "ced828b3e510fb6f861fc72a084137093e13ac7faebe2ba85f5aa479f2a42603",
+      "bytes": 1627,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B1_EXACT_HEAD_SEMANTIC_CORRECTION.md": {
+      "sha256": "35984842729e621b7bbd9216a6c8327b83a6a26b80c36ea2411b0d4eda21b23b",
+      "bytes": 1873,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B1_INFRASTRUCTURE_RECOVERY_PROTOCOL.md": {
+      "sha256": "50b9a37b3f3eba44c8cfb851359edb268db9c6c460852e6816f86831667e96bc",
+      "bytes": 2766,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B1_RECOVERY_RESULT.md": {
+      "sha256": "0e341332953010811b0bce0b3cb2cae15e10a2b63e933e267274dcd1377920c7",
+      "bytes": 1441,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B2_ACTIVATION.md": {
+      "sha256": "c3f44d1175e6348904cb6bb03326de9fca4c1af2226361f9068a9b36d2b7d49d",
+      "bytes": 1031,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B2_EXACT_HEAD_ANALYSIS_CORRECTION.md": {
+      "sha256": "220067065509f6c87829765b0ebad4e0b09b1b1d2dc4a0b8a1e55d54f409e2c8",
+      "bytes": 1446,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B2_FINAL_PACKAGE_CORRECTION.md": {
+      "sha256": "f83736052c285e45360e9ed0f0e85562723551bacb36ed1a00da60570d49f584",
+      "bytes": 7434,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B2_MATERIALIZATION_RECOVERY_PROTOCOL.md": {
+      "sha256": "e228c779488b78e73d7d93a90a8e403abfb6d3b00c906fb66a9531a531d8bd3a",
+      "bytes": 2120,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B2_PARTIAL_RESULT.md": {
+      "sha256": "8426403a9ee17243d7d6a016ca1d4b6e2544f70415932d95e9ebcb024260f560",
+      "bytes": 1312,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_CORPUS_002_STAGE_B2_RESULT.md": {
+      "sha256": "d81aa00ffa3cb386d4ee9971109d94ff7e5c281d42d5fe508bc37332838426bb",
+      "bytes": 6323,
+      "git_mode": "100644"
+    },
     "docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md": {
       "sha256": "978d0711787a6604f088720327d4689102729646d4df57f96a6e121e119c5fc5",
       "bytes": 103284,
@@ -571,6 +671,11 @@
     "docs/validation/VAL_INFRA_002_STAGE0_VERIFIER_SCOPE_REPAIR.md": {
       "sha256": "ca9c24beeacadd8188024e1eec632338b16b05d141aaafd5fc166e81fdd59c60",
       "bytes": 2707,
+      "git_mode": "100644"
+    },
+    "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md": {
+      "sha256": "8c988890b7b31479ff694ae6fc45fdd431e2ebd721e47e9d7e049939b421b0c9",
+      "bytes": 11806,
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_CORRECTION_ADDENDUM.md": {
@@ -883,6 +988,41 @@
       "bytes": 54469,
       "git_mode": "100755"
     },
+    "scripts/val_corpus_002_b0_tooling.py": {
+      "sha256": "00de56031fa5510246e61837700b965802c047b89708958f6ed12add1026c9de",
+      "bytes": 81464,
+      "git_mode": "100755"
+    },
+    "scripts/val_corpus_002_b1_calibration.py": {
+      "sha256": "21e33fea09decc24e33ed4cba8971c87ec392da1b17c42c78616f24b5b454eee",
+      "bytes": 23358,
+      "git_mode": "100755"
+    },
+    "scripts/val_corpus_002_b1_recovery.py": {
+      "sha256": "1a8c6cf15de8b07073c05eeb72876ff369fdfc05e4d08672004e3180c8e57363",
+      "bytes": 30600,
+      "git_mode": "100755"
+    },
+    "scripts/val_corpus_002_b2.py": {
+      "sha256": "ec524cc0efb9b35070be9f6a2ede1ba6a849b5deae5c354405739add7008519d",
+      "bytes": 19546,
+      "git_mode": "100755"
+    },
+    "scripts/val_corpus_002_b2_recovery.py": {
+      "sha256": "2536fa2cbdfd9596130f144c32f6a5b2712773f269c49cd6b099f6644a3b78e8",
+      "bytes": 30654,
+      "git_mode": "100755"
+    },
+    "scripts/val_corpus_002_b2_reporting.py": {
+      "sha256": "12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb",
+      "bytes": 54674,
+      "git_mode": "100755"
+    },
+    "scripts/val_corpus_002_protocol.py": {
+      "sha256": "5ac97ec97a87979b5432989288d77a709c409ea65f00afc5db1628368cad1341",
+      "bytes": 45036,
+      "git_mode": "100755"
+    },
     "scripts/verify_build_provenance.py": {
       "sha256": "2eba6f44c8ae2d29942edc550f12310cb315b843baaab652c71d1cb585df0285",
       "bytes": 9044,
@@ -1166,6 +1306,26 @@
     "tests/test_val_corpus_001.py": {
       "sha256": "e73ff9b8a8a35a07874ff82584cda92a3a59f5eabcca44c560787a784acccde9",
       "bytes": 9450,
+      "git_mode": "100644"
+    },
+    "tests/test_val_corpus_002_b0_tooling.py": {
+      "sha256": "e7c0cf6c1a4a172ff87652fd605620cd1c6d0953f44d1592e690a150fec9956b",
+      "bytes": 38078,
+      "git_mode": "100644"
+    },
+    "tests/test_val_corpus_002_b1_calibration.py": {
+      "sha256": "7c2d81aca3b46e50edb031bd622e09c92fedd898835ebdc27a70ebc95b4d04b5",
+      "bytes": 3758,
+      "git_mode": "100644"
+    },
+    "tests/test_val_corpus_002_b2.py": {
+      "sha256": "51bce3be737605117df65c7658a22d7df253eb58c035fb201999a1af232bd2a6",
+      "bytes": 33014,
+      "git_mode": "100644"
+    },
+    "tests/test_val_corpus_002_protocol.py": {
+      "sha256": "093fa7f69d2246f47a31838d61a85317201a626344dfe13d3b2e7e5281567762",
+      "bytes": 20087,
       "git_mode": "100644"
     },
     "tests/test_wp02_002_machine_coupling.py": {

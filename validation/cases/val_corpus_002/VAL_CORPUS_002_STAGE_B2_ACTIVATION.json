@@ -1,0 +1,14 @@
+{
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "calibration": "CLOSED_NO_REFIT",
+  "governing_physics_change": "NO_GOVERNING_PHYSICS_CHANGE",
+  "physical_validation": "NOT_ESTABLISHED",
+  "profile": "EWP_PRODUCTION_AND_SCORING_STAGE_V1",
+  "production_identities": 45,
+  "p2_rate_role": "LOCAL_EXPERIMENT_7_H1_RECONSTRUCTION_FIXED_FOR_TRANSFER",
+  "p2_rate_s_inverse": 0.3439597024835067,
+  "schema_version": "espresso.val_corpus_002.b2_activation.v1",
+  "sensitivity_identities": 9,
+  "stage": "B2_FIXED_PARAMETER_PRODUCTION_SENSITIVITY_AND_SCORING",
+  "stage_b2_result_access": "PROHIBITED_UNTIL_ACTIVATION_COMMIT"
+}

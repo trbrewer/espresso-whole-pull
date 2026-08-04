@@ -25,12 +25,103 @@
   rebuild or rerun. Its retained result remains descriptive, post-observation,
   non-blind, and non-independent.
 
-- WP03-002: reproduced the three source-linked finite-porosity failures,
+- WP03-002 (complete, approved, and merged as PR #52): reproduced the three source-linked finite-porosity failures,
   demonstrated that a continuous analytical closure diagnostic incorrectly
   gated discrete nonlinear convergence, and applied an equation-preserving
   correction. All three unchanged cases then completed, but flow and mass
   ordering remained reversed with Spearman `-1.0`. Physical validation was
   not established.
+
+- VAL-CORPUS-002 Stage A: froze the aggregate-extraction and cup-chemistry
+  reconstruction protocol, public evidence identities, cohort partitions,
+  parameter mappings, future run matrix, sensitivity design, metrics, and
+  claim boundary. No OpenFOAM run, optimizer invocation, fitting, or governed
+  scoring occurred. Independent review and separate Stage-B authority remain
+  required.
+
+- VAL-CORPUS-002 Stage B0: added the prospective case-local tooling contract,
+  direct-content predecessor binding, deterministic configuration and typed
+  P2 inventory, parity and chemistry reducers, synthetic optimizer mechanics,
+  metrics/sensitivity tooling, and fail-closed result/protected-score
+  barriers. OpenFOAM, fitting, governed scoring, and Stage B1 were not run.
+
+- VAL-CORPUS-002 Stage B0 exact-head correction: replaced the calibration
+  objective with the exact Experiment-7/H1 relative-MSE contract, implemented
+  exact log-k golden-section mechanics and a closed calibration-manifest gate,
+  completed production reducers, and hardened raw interval, artifact, parity,
+  optimizer-trace, and protected-action controls. All qualification remained
+  synthetic; OpenFOAM, calibration, model-result access, and scoring were not
+  performed.
+
+- VAL-CORPUS-002 Stage B0 governed-gate completion: separated synthetic and
+  governed manifest paths; made the verification root and expected B1
+  authorization mandatory; content-verified the source cohort, closed artifact
+  manifest and all five retained members; reconstructed the typed calibration
+  configuration, unique selected optimizer row, and exact three-mass objective.
+  No OpenFOAM build/run, calibration, model-result access, governed scoring, or
+  Stage B1 action occurred.
+
+- VAL-CORPUS-002 Stage B1 activation: bound the exact Experiment-7/H1 typed
+  template, source vector, relative-MSE objective, log-k optimizer, executable
+  identity, closed external bundle, and case-local orchestration before any
+  calibration model-result access. H0, transfer, production, sensitivity,
+  protected scoring, refitting, and Stage B2 remain prohibited.
+
+- VAL-CORPUS-002 Stage B1 execution: twenty evaluations passed before one
+  completed solver run failed during MPI finalization and the next fresh case
+  failed in `blockMesh`. The stage stopped as
+  `INFRASTRUCTURE_OR_ORCHESTRATION_FAILURE`; the log-k tolerance was not met,
+  no final selection marker or governed manifest was created, and P2 was not
+  frozen. No transfer, protected, production, or sensitivity access occurred.
+
+- VAL-CORPUS-002 Stage B1 recovery and pre-B2 closure: preserved the interrupted
+  first attempt, content-verified all 20 passing evaluations, replayed the
+  optimizer from its original bounds, and completed 26 fresh evaluations. The
+  exact local Experiment-7/H1 P2 candidate is `0.3439597024835067 s^-1`.
+  Exact-head correction semantically reduced the retained trace, bound the
+  zero-exit attempt-2 selection, and made boundedness and 90-second completion
+  fail closed. Finalize-only revalidation passed without rerunning OpenFOAM or
+  the optimizer. Stage B2 and transfer/production scoring have not started;
+  physical validation is not established and new physics is not justified.
+
+- VAL-CORPUS-002 Stage B2 partial execution: materialized the fixed B1 rate
+  and attempted the frozen production matrix. Twenty-six identities passed
+  and eighteen Schmieder H0 identities retained typed 60 g coverage failures.
+  Waszkiewicz P0/P1 completed and predecessor parity passed all 1,500 states.
+  Waszkiewicz P2 preparation failed twice because its typed placeholder object
+  was not reduced to the scalar required by `prepare_case`; the stage stopped
+  before sensitivities or governed scoring. No refit, solver change, protected
+  access, new physics, or merge occurred.
+
+- VAL-CORPUS-002 Stage B2 controlled recovery: preserved the partial root and
+  both failed preparation attempts, corrected only structured Waszkiewicz P2
+  placeholder normalization, and content-verified the other 44 production
+  dispositions. Corrected Waszkiewicz P2 passed on its first corrected attempt;
+  the final production inventory is 27 pass and 18 immutable typed target-
+  coverage failures. All nine sensitivity identities passed with one exact
+  baseline reuse. Frozen metrics were calculated without refit, protected
+  scoring, solver changes, new physics, VAL-CASE-002, or merge.
+
+- VAL-CORPUS-002 Stage B2 final analysis correction: preserved every numerical
+  and external artifact, replaced the overstated disposition with a frozen-
+  rule interpretation, completed the 24-triplet-per-component normalized
+  source audit, added the 21-row reduced source-clock diagnostic and closed
+  45-case numerical summary, and generated five deterministic figures. A
+  final reporting-only correction replaced ambiguous overlays and anonymous
+  cells with governed small multiples, labeled matrices, quantitative axes,
+  explicit plot rectangles, and fail-closed semantic/geometric tests. The
+  result is local reconstruction only with partial directional transfer,
+  grind-sign reversal, hydraulic target-coverage mismatch, and cross-source
+  time-shape failure. Physical validation remains not established; no
+  OpenFOAM or sensitivity rerun, refit, protected scoring, or new physics
+  occurred.
+
+- VAL-CORPUS-002 Stage B2 final package correction: retained the complete
+  numerical campaign unchanged, added the persistent Puckworks cup-mass
+  lineage authority, made the nested result bundle fail closed, separated
+  numerical bracketing from governed availability, and replaced text-only
+  SVG summaries with deterministic scientific plots. No OpenFOAM, sensitivity,
+  refit, protected scoring, mechanism, or VAL-CASE-002 work was performed.
 
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.

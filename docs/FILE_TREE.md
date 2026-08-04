@@ -124,6 +124,19 @@ and ordinary tests use synthetic fixtures only.
 
 Generated case dictionaries, meshes, time directories, processor directories, logs, reports, traces, preflight records, qualification runs, and build products are excluded from the source-package manifest and removed by `./Allclean`.
 
+VAL-CORPUS-002 Stage B0 adds
+`scripts/val_corpus_002_b0_tooling.py`,
+`tests/test_val_corpus_002_b0_tooling.py`, its append-only tooling protocol and
+report under `docs/validation/`, and direct-reference, deterministic
+configuration-inventory, and access-barrier records under
+`validation/cases/val_corpus_002/`. Complete solver products remain external.
+Stage B2 final reporting adds `scripts/val_corpus_002_b2_reporting.py`, the
+closed final-result schema and portable result/audit/summary records under the
+same case directory, five deterministic, quantitatively labeled SVG figures
+with explicit non-overlapping layout bands under its `figures/`
+subdirectory, and the substantive result report under `docs/validation/`.
+
+
 VAL-001 post-result controls include `tools/validation/val001/invocation.py`,
 `source_identity.py`, the governed schema registry, the invocation event
 journal, the post-result execution lock, the hardening freeze, and standalone
@@ -153,3 +166,8 @@ VAL-CASE-001 case-specific artifacts are under
 addendum, scientific report, and review disposition under
 `docs/validation/cases/`. Complete generated OpenFOAM cases, meshes, fields,
 processor directories, executables, traces, and logs remain outside Git.
+The persistent imported-evidence authority is
+`docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md`;
+its exact upstream JSON records live under
+`validation/external/puckworks_base_temporal_cv/` and selected upstream plots
+under `docs/evidence/puckworks_base_temporal_cv/figures/`.

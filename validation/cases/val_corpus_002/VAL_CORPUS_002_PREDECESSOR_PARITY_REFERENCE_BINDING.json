@@ -1,0 +1,49 @@
+{
+  "binding_class": "DIRECT_CONTENT_ADDRESS",
+  "build_provenance_sha256": "5a27f0b6e2e2599e1a7174f314b4f702c571b97ead262580a7a4769a52b9fcd4",
+  "bytes": 2796444,
+  "case_manifest_sha256": "2687a4f7b0693bf41173eecc6332e95be9e5f8cc62f7bd4957323556d45ea778",
+  "common_domain_s": [
+    0.02,
+    29.9999999999994
+  ],
+  "configuration_sha256": "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5",
+  "executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+  "execution_record_sha256": "5a08518c0cbe6935f17b4826c473c7b494e1c4650c9efda733af903199422875",
+  "field_absolute_tolerances": {
+    "cup_beverage_mass_kg": 1e-12,
+    "cup_solute_mass_kg": 1e-12,
+    "cup_water_mass_kg": 1e-12,
+    "dissolved_in_puck_mass_kg": 1e-12,
+    "inlet_pressure_Pa": 1e-06,
+    "outlet_flow_m3_s": 1e-16,
+    "remaining_extractable_mass_kg": 1e-12,
+    "time_s": 1e-12,
+    "volumeWeightedMechanicalPorosity": 1e-12,
+    "volumeWeightedPermeabilityM2": 1e-25
+  },
+  "final_timestamp_accepted_as_30s_tolerance_s": 1e-12,
+  "final_timestamp_s": 29.9999999999994,
+  "first_timestamp_s": 0.02,
+  "header_sha256": "27eb008688cb84f98f5b7f877aa73d745f4b3e28ce5c99f95673ed222c854831",
+  "historical_manifest_status": "EXCLUDED_AS_DOWNSTREAM_ARTIFACT_BY_DESIGN",
+  "initial_state_check": "EXACT_IDENTITIES_SEPARATE_FROM_TRACE",
+  "normalized_path": "<WP03_002_REVIEW_ROOT>/corrected-runs-v2/cases/WASZ-9-COMPACT/postProcessing/wholePull/0/traces.csv",
+  "parity_t0_insertion": "PROHIBITED",
+  "required_fields": [
+    "time_s",
+    "inlet_pressure_Pa",
+    "outlet_flow_m3_s",
+    "cup_water_mass_kg",
+    "cup_solute_mass_kg",
+    "cup_beverage_mass_kg",
+    "remaining_extractable_mass_kg",
+    "dissolved_in_puck_mass_kg",
+    "volumeWeightedMechanicalPorosity",
+    "volumeWeightedPermeabilityM2"
+  ],
+  "runtime_root": "<WP03_002_REVIEW_ROOT>",
+  "scientific_input_bundle_sha256": "b4930f327466f201ddaab002373ec16e51075ea90e8621963afc056180bef770",
+  "sha256": "bb3a5d2214b3eaf0cec2d76be0c90f56b2454cfa1982b2770841b499ed1db30a",
+  "trace_rows": 1500
+}

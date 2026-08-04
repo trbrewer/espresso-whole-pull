@@ -1,16 +1,16 @@
 # Project State
 
 - Current released version: `v0.2.0`
-- Current merged `main`: `bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1`
-- Current merged tree: `c1d3fdc88dabaea410c4b6236e31ce1376e5eaea`
+- Current merged `main`: `0a5c146078da5d5f88b344b20e7b81042bf27ddb`
+- Current merged tree: `12fdbc542270e2765e2071d83c21812951f892e8`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 240/240 PASS
-- Active validation case: `NONE`
+- Public source verification: 272/272 PASS
+- Active validation case: `VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
 - Active data-planning task: `NONE`
-- Active solver task: `WP03-002` result complete; exact-head review pending
+- Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
@@ -22,6 +22,33 @@ VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2
 result remains validation-support sensitivity and practical-identifiability
 screening; it does not establish physical validation. VAL-CASE-002 is
 `NOT_STARTED`.
+
+WP03-002 is `COMPLETE_APPROVED_AND_MERGED` at merge commit
+`0a5c146078da5d5f88b344b20e7b81042bf27ddb`; its approved head was
+`78dc278212976a569bf21dda139a98c35756db14` and its executed solver SHA-256 was
+`e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6`.
+VAL-CORPUS-002 Stage A and the final Stage-B0 tooling are exact-head approved.
+Stage B1 attempt 1 stopped on an infrastructure failure and remains immutable.
+The bounded attempt-2 recovery verified all 20 passing evaluations as a
+complete cache, replayed the optimizer from its original bounds, and completed
+26 fresh evaluations. The exact P2 rate is a frozen candidate pending
+independent exact-head review. Its exact-head semantic correction now parses
+and independently reduces the retained trace, validates the closed numerical
+record, and deterministically reproduces the strengthened governed bundle
+without solver or optimizer execution. Stage B2 now has all 45 terminal
+production dispositions (27 PASS and 18 immutable typed target-coverage
+failures); its numerical campaign and approved scientific interpretation are
+unchanged. Final reporting now identifies Schmieder `cup_masses.csv` as
+post-fit derived evidence, not an independent measurement. Merge and any next
+mechanism remain unauthorized. The corrected Waszkiewicz P2 case passed,
+predecessor parity remains
+1,500/1,500, and the nine-identity sensitivity inventory passed with one exact
+baseline reuse. Frozen governed reductions and deterministic reporting are
+complete pending final exact-head review. The result is local reconstruction
+only with partial directional transfer, grind-sign reversal, and cross-source
+time-shape failure. The fail-closed framework is operational. Calibration
+remains closed with no refit. Protected scoring and VAL-CASE-002 remain
+unauthorized and have not started.
 
 The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
 admissible independent dataset or the synchronized pressure, flow/mass,

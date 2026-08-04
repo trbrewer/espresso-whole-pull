@@ -1,0 +1,13 @@
+{
+  "authorization_status": "NONE",
+  "conditional_evidence_treatments_remaining": 0,
+  "required_ordering": [
+    {"stage": "B0", "requirement": "implement and commit every case-local execution, calibration, and reduction tool with synthetic tests before model-result access"},
+    {"stage": "B1", "requirement": "execute and record Experiment-7 H1 calibration only; freeze exact global P2 k and optimizer trace before transfer scoring"},
+    {"stage": "B2", "requirement": "materialize every P2 production template with frozen k, then execute fixed-parameter production, sensitivity, and Waszkiewicz cases"}
+  ],
+  "ordering_prohibitions": {"transfer_observations_in_calibration": "PROHIBITED", "post_transfer_refit": "PROHIBITED", "mode_specific_p2_rates": "PROHIBITED", "scope": "issue #53 existing branch and draft PR #54"},
+  "prerequisites": ["independent review approval of exact Stage-A head", "separate explicit human-owner Stage-B execution authorization", "unchanged frozen protocol or prospectively reviewed amendment", "verified runtime and evidence locks", "clean exact-head identity"],
+  "prohibited_until_authorized": ["OpenFOAM build or execution", "optimizer invocation", "parameter fitting", "governed scoring", "model-versus-source metric calculation", "post-observation protocol edits"],
+  "schema_version": 1
+}

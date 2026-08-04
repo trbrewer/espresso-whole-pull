@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+<rect x="0" y="0" width="1200" height="820" fill="white"/>
+<title>Schmieder H1 source/model cup-solute mass</title>
+<desc>cup_masses.csv contains post-fit derived source quantities, not independent measurements; comparison role: reconstruction or derived metric only.</desc>
+<g id="title-band" data-band="title" data-x="30" data-y="18" data-width="1140" data-height="42">
+<text x="40.000" y="47.000" font-family="sans-serif" font-size="20">Schmieder H1 source/model cup-solute mass</text>
+</g>
+<g id="legend-band" data-band="legend" data-x="30" data-y="66" data-width="1140" data-height="48">
+<line x1="300" y1="90" x2="335" y2="90" stroke="#222" stroke-width="2"/>
+<circle cx="317" cy="90" r="3" fill="#222" stroke="#111"/>
+<text x="343.000" y="94.000" font-family="sans-serif" font-size="12">source</text>
+<line x1="470" y1="90" x2="505" y2="90" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4"/>
+<circle cx="487" cy="90" r="3" fill="#1b9e77" stroke="#111"/>
+<text x="513.000" y="94.000" font-family="sans-serif" font-size="12">model P0</text>
+<line x1="640" y1="90" x2="675" y2="90" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3"/>
+<circle cx="657" cy="90" r="3" fill="#7570b3" stroke="#111"/>
+<text x="683.000" y="94.000" font-family="sans-serif" font-size="12">model P1</text>
+<line x1="810" y1="90" x2="845" y2="90" stroke="#d95f02" stroke-width="2"/>
+<circle cx="827" cy="90" r="3" fill="#d95f02" stroke="#111"/>
+<text x="853.000" y="94.000" font-family="sans-serif" font-size="12">model P2</text>
+</g>
+<g id="plot-band" data-band="plot" data-x="70" data-y="122" data-width="1080" data-height="540">
+<g id="schm-exp-1" data-panel="schm-exp-1" data-plot-x="92.000" data-plot-y="158.000" data-plot-width="220.000" data-plot-height="180.000">
+<rect x="92.000" y="158.000" width="220.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="92.000" y1="338.000" x2="92.000" y2="342.000" stroke="#333"/>
+<text x="92.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">20</text>
+<line x1="202.000" y1="338.000" x2="202.000" y2="342.000" stroke="#333"/>
+<text x="202.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">40</text>
+<line x1="312.000" y1="338.000" x2="312.000" y2="342.000" stroke="#333"/>
+<text x="312.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">60</text>
+<line x1="88.000" y1="338.000" x2="92.000" y2="338.000" stroke="#333"/>
+<text x="85.000" y="341.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="88.000" y1="248.000" x2="92.000" y2="248.000" stroke="#333"/>
+<text x="85.000" y="251.000" font-family="sans-serif" font-size="9" text-anchor="end">3.0</text>
+<line x1="88.000" y1="158.000" x2="92.000" y2="158.000" stroke="#333"/>
+<text x="85.000" y="161.000" font-family="sans-serif" font-size="9" text-anchor="end">6.1</text>
+<polyline points="100.000,243.550 202.000,217.129 304.000,209.739" fill="none" stroke="#222" stroke-width="2" data-role="data" data-panel-ref="schm-exp-1"/>
+<circle cx="100.000" cy="243.550" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<circle cx="202.000" cy="217.129" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<circle cx="304.000" cy="209.739" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<polyline points="100.000,253.046 202.000,188.053 304.000,173.669" fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4" data-role="data" data-panel-ref="schm-exp-1"/>
+<rect x="97.000" y="250.046" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<rect x="199.000" y="185.053" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<rect x="301.000" y="170.669" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<polyline points="100.000,263.700 202.000,219.952 304.000,211.054" fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3" data-role="data" data-panel-ref="schm-exp-1"/>
+<polygon points="100.000,259.700 96.000,266.700 104.000,266.700" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<polygon points="202.000,215.952 198.000,222.952 206.000,222.952" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<polygon points="304.000,207.054 300.000,214.054 308.000,214.054" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<polyline points="100.000,249.418 202.000,210.248 304.000,210.025" fill="none" stroke="#d95f02" stroke-width="2" data-role="data" data-panel-ref="schm-exp-1"/>
+<polygon points="100.000,245.418 96.000,249.418 100.000,253.418 104.000,249.418" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<polygon points="202.000,206.248 198.000,210.248 202.000,214.248 206.000,210.248" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<polygon points="304.000,206.025 300.000,210.025 304.000,214.025 308.000,210.025" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-1"/>
+<text x="202.000" y="149.000" font-family="sans-serif" font-size="10" text-anchor="middle">Experiment 1</text>
+</g>
+<g id="schm-exp-2" data-panel="schm-exp-2" data-plot-x="362.000" data-plot-y="158.000" data-plot-width="220.000" data-plot-height="180.000">
+<rect x="362.000" y="158.000" width="220.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="362.000" y1="338.000" x2="362.000" y2="342.000" stroke="#333"/>
+<text x="362.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">20</text>
+<line x1="472.000" y1="338.000" x2="472.000" y2="342.000" stroke="#333"/>
+<text x="472.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">40</text>
+<line x1="582.000" y1="338.000" x2="582.000" y2="342.000" stroke="#333"/>
+<text x="582.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">60</text>
+<line x1="358.000" y1="338.000" x2="362.000" y2="338.000" stroke="#333"/>
+<text x="355.000" y="341.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="358.000" y1="248.000" x2="362.000" y2="248.000" stroke="#333"/>
+<text x="355.000" y="251.000" font-family="sans-serif" font-size="9" text-anchor="end">3.0</text>
+<line x1="358.000" y1="158.000" x2="362.000" y2="158.000" stroke="#333"/>
+<text x="355.000" y="161.000" font-family="sans-serif" font-size="9" text-anchor="end">6.1</text>
+<polyline points="370.000,253.170 472.000,225.504 574.000,216.481" fill="none" stroke="#222" stroke-width="2" data-role="data" data-panel-ref="schm-exp-2"/>
+<circle cx="370.000" cy="253.170" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<circle cx="472.000" cy="225.504" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<circle cx="574.000" cy="216.481" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<polyline points="370.000,272.043 472.000,221.295 574.000,192.687" fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4" data-role="data" data-panel-ref="schm-exp-2"/>
+<rect x="367.000" y="269.043" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<rect x="469.000" y="218.295" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<rect x="571.000" y="189.687" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<polyline points="370.000,287.295 472.000,250.969 574.000,229.904" fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3" data-role="data" data-panel-ref="schm-exp-2"/>
+<polygon points="370.000,283.295 366.000,290.295 374.000,290.295" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<polygon points="472.000,246.969 468.000,253.969 476.000,253.969" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<polygon points="574.000,225.904 570.000,232.904 578.000,232.904" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<polyline points="370.000,262.207 472.000,218.888 574.000,210.823" fill="none" stroke="#d95f02" stroke-width="2" data-role="data" data-panel-ref="schm-exp-2"/>
+<polygon points="370.000,258.207 366.000,262.207 370.000,266.207 374.000,262.207" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<polygon points="472.000,214.888 468.000,218.888 472.000,222.888 476.000,218.888" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<polygon points="574.000,206.823 570.000,210.823 574.000,214.823 578.000,210.823" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-2"/>
+<text x="472.000" y="149.000" font-family="sans-serif" font-size="10" text-anchor="middle">Experiment 2</text>
+</g>
+<g id="schm-exp-3" data-panel="schm-exp-3" data-plot-x="632.000" data-plot-y="158.000" data-plot-width="220.000" data-plot-height="180.000">
+<rect x="632.000" y="158.000" width="220.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="632.000" y1="338.000" x2="632.000" y2="342.000" stroke="#333"/>
+<text x="632.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">20</text>
+<line x1="742.000" y1="338.000" x2="742.000" y2="342.000" stroke="#333"/>
+<text x="742.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">40</text>
+<line x1="852.000" y1="338.000" x2="852.000" y2="342.000" stroke="#333"/>
+<text x="852.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">60</text>
+<line x1="628.000" y1="338.000" x2="632.000" y2="338.000" stroke="#333"/>
+<text x="625.000" y="341.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="628.000" y1="248.000" x2="632.000" y2="248.000" stroke="#333"/>
+<text x="625.000" y="251.000" font-family="sans-serif" font-size="9" text-anchor="end">3.0</text>
+<line x1="628.000" y1="158.000" x2="632.000" y2="158.000" stroke="#333"/>
+<text x="625.000" y="161.000" font-family="sans-serif" font-size="9" text-anchor="end">6.1</text>
+<polyline points="640.000,255.012 742.000,230.194 844.000,222.708" fill="none" stroke="#222" stroke-width="2" data-role="data" data-panel-ref="schm-exp-3"/>
+<circle cx="640.000" cy="255.012" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<circle cx="742.000" cy="230.194" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<circle cx="844.000" cy="222.708" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<polyline points="640.000,263.695 742.000,206.914 844.000,181.601" fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4" data-role="data" data-panel-ref="schm-exp-3"/>
+<rect x="637.000" y="260.695" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<rect x="739.000" y="203.914" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<rect x="841.000" y="178.601" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<polyline points="640.000,278.220 742.000,237.703 844.000,219.322" fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3" data-role="data" data-panel-ref="schm-exp-3"/>
+<polygon points="640.000,274.220 636.000,281.220 644.000,281.220" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<polygon points="742.000,233.703 738.000,240.703 746.000,240.703" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<polygon points="844.000,215.322 840.000,222.322 848.000,222.322" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<polyline points="640.000,256.096 742.000,213.373 844.000,210.099" fill="none" stroke="#d95f02" stroke-width="2" data-role="data" data-panel-ref="schm-exp-3"/>
+<polygon points="640.000,252.096 636.000,256.096 640.000,260.096 644.000,256.096" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<polygon points="742.000,209.373 738.000,213.373 742.000,217.373 746.000,213.373" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<polygon points="844.000,206.099 840.000,210.099 844.000,214.099 848.000,210.099" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-3"/>
+<text x="742.000" y="149.000" font-family="sans-serif" font-size="10" text-anchor="middle">Experiment 3</text>
+</g>
+<g id="schm-exp-4" data-panel="schm-exp-4" data-plot-x="902.000" data-plot-y="158.000" data-plot-width="220.000" data-plot-height="180.000">
+<rect x="902.000" y="158.000" width="220.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="902.000" y1="338.000" x2="902.000" y2="342.000" stroke="#333"/>
+<text x="902.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">20</text>
+<line x1="1012.000" y1="338.000" x2="1012.000" y2="342.000" stroke="#333"/>
+<text x="1012.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">40</text>
+<line x1="1122.000" y1="338.000" x2="1122.000" y2="342.000" stroke="#333"/>
+<text x="1122.000" y="354.000" font-family="sans-serif" font-size="9" text-anchor="middle">60</text>
+<line x1="898.000" y1="338.000" x2="902.000" y2="338.000" stroke="#333"/>
+<text x="895.000" y="341.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="898.000" y1="248.000" x2="902.000" y2="248.000" stroke="#333"/>
+<text x="895.000" y="251.000" font-family="sans-serif" font-size="9" text-anchor="end">3.0</text>
+<line x1="898.000" y1="158.000" x2="902.000" y2="158.000" stroke="#333"/>
+<text x="895.000" y="161.000" font-family="sans-serif" font-size="9" text-anchor="end">6.1</text>
+<polyline points="910.000,249.937 1012.000,222.198 1114.000,213.461" fill="none" stroke="#222" stroke-width="2" data-role="data" data-panel-ref="schm-exp-4"/>
+<circle cx="910.000" cy="249.937" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<circle cx="1012.000" cy="222.198" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<circle cx="1114.000" cy="213.461" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<polyline points="910.000,264.413 1012.000,208.198 1114.000,182.449" fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4" data-role="data" data-panel-ref="schm-exp-4"/>
+<rect x="907.000" y="261.413" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<rect x="1009.000" y="205.198" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<rect x="1111.000" y="179.449" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<polyline points="910.000,279.065 1012.000,238.910 1114.000,220.160" fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3" data-role="data" data-panel-ref="schm-exp-4"/>
+<polygon points="910.000,275.065 906.000,282.065 914.000,282.065" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<polygon points="1012.000,234.910 1008.000,241.910 1016.000,241.910" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<polygon points="1114.000,216.160 1110.000,223.160 1118.000,223.160" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<polyline points="910.000,256.584 1012.000,213.759 1114.000,210.124" fill="none" stroke="#d95f02" stroke-width="2" data-role="data" data-panel-ref="schm-exp-4"/>
+<polygon points="910.000,252.584 906.000,256.584 910.000,260.584 914.000,256.584" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<polygon points="1012.000,209.759 1008.000,213.759 1012.000,217.759 1016.000,213.759" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<polygon points="1114.000,206.124 1110.000,210.124 1114.000,214.124 1118.000,210.124" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-4"/>
+<text x="1012.000" y="149.000" font-family="sans-serif" font-size="10" text-anchor="middle">Experiment 4</text>
+</g>
+<g id="schm-exp-5" data-panel="schm-exp-5" data-plot-x="92.000" data-plot-y="403.000" data-plot-width="220.000" data-plot-height="180.000">
+<rect x="92.000" y="403.000" width="220.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="92.000" y1="583.000" x2="92.000" y2="587.000" stroke="#333"/>
+<text x="92.000" y="599.000" font-family="sans-serif" font-size="9" text-anchor="middle">20</text>
+<line x1="202.000" y1="583.000" x2="202.000" y2="587.000" stroke="#333"/>
+<text x="202.000" y="599.000" font-family="sans-serif" font-size="9" text-anchor="middle">40</text>
+<line x1="312.000" y1="583.000" x2="312.000" y2="587.000" stroke="#333"/>
+<text x="312.000" y="599.000" font-family="sans-serif" font-size="9" text-anchor="middle">60</text>
+<line x1="88.000" y1="583.000" x2="92.000" y2="583.000" stroke="#333"/>
+<text x="85.000" y="586.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="88.000" y1="493.000" x2="92.000" y2="493.000" stroke="#333"/>
+<text x="85.000" y="496.000" font-family="sans-serif" font-size="9" text-anchor="end">3.0</text>
+<line x1="88.000" y1="403.000" x2="92.000" y2="403.000" stroke="#333"/>
+<text x="85.000" y="406.000" font-family="sans-serif" font-size="9" text-anchor="end">6.1</text>
+<polyline points="100.000,494.863 202.000,466.008 304.000,456.529" fill="none" stroke="#222" stroke-width="2" data-role="data" data-panel-ref="schm-exp-5"/>
+<circle cx="100.000" cy="494.863" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<circle cx="202.000" cy="466.008" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<circle cx="304.000" cy="456.529" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<polyline points="100.000,508.768 202.000,452.112 304.000,426.740" fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4" data-role="data" data-panel-ref="schm-exp-5"/>
+<rect x="97.000" y="505.768" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<rect x="199.000" y="449.112" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<rect x="301.000" y="423.740" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<polyline points="100.000,523.324 202.000,482.893 304.000,464.460" fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3" data-role="data" data-panel-ref="schm-exp-5"/>
+<polygon points="100.000,519.324 96.000,526.324 104.000,526.324" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<polygon points="202.000,478.893 198.000,485.893 206.000,485.893" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<polygon points="304.000,460.460 300.000,467.460 308.000,467.460" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<polyline points="100.000,501.132 202.000,458.433 304.000,455.103" fill="none" stroke="#d95f02" stroke-width="2" data-role="data" data-panel-ref="schm-exp-5"/>
+<polygon points="100.000,497.132 96.000,501.132 100.000,505.132 104.000,501.132" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<polygon points="202.000,454.433 198.000,458.433 202.000,462.433 206.000,458.433" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<polygon points="304.000,451.103 300.000,455.103 304.000,459.103 308.000,455.103" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-5"/>
+<text x="202.000" y="394.000" font-family="sans-serif" font-size="10" text-anchor="middle">Experiment 5</text>
+</g>
+<g id="schm-exp-6" data-panel="schm-exp-6" data-plot-x="362.000" data-plot-y="403.000" data-plot-width="220.000" data-plot-height="180.000">
+<rect x="362.000" y="403.000" width="220.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="362.000" y1="583.000" x2="362.000" y2="587.000" stroke="#333"/>
+<text x="362.000" y="599.000" font-family="sans-serif" font-size="9" text-anchor="middle">20</text>
+<line x1="472.000" y1="583.000" x2="472.000" y2="587.000" stroke="#333"/>
+<text x="472.000" y="599.000" font-family="sans-serif" font-size="9" text-anchor="middle">40</text>
+<line x1="582.000" y1="583.000" x2="582.000" y2="587.000" stroke="#333"/>
+<text x="582.000" y="599.000" font-family="sans-serif" font-size="9" text-anchor="middle">60</text>
+<line x1="358.000" y1="583.000" x2="362.000" y2="583.000" stroke="#333"/>
+<text x="355.000" y="586.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="358.000" y1="493.000" x2="362.000" y2="493.000" stroke="#333"/>
+<text x="355.000" y="496.000" font-family="sans-serif" font-size="9" text-anchor="end">3.0</text>
+<line x1="358.000" y1="403.000" x2="362.000" y2="403.000" stroke="#333"/>
+<text x="355.000" y="406.000" font-family="sans-serif" font-size="9" text-anchor="end">6.1</text>
+<polyline points="370.000,492.909 472.000,464.670 574.000,455.801" fill="none" stroke="#222" stroke-width="2" data-role="data" data-panel-ref="schm-exp-6"/>
+<circle cx="370.000" cy="492.909" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<circle cx="472.000" cy="464.670" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<circle cx="574.000" cy="455.801" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<polyline points="370.000,508.418 472.000,451.482 574.000,426.332" fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4" data-role="data" data-panel-ref="schm-exp-6"/>
+<rect x="367.000" y="505.418" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<rect x="469.000" y="448.482" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<rect x="571.000" y="423.332" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<polyline points="370.000,522.907 472.000,482.299 574.000,464.056" fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3" data-role="data" data-panel-ref="schm-exp-6"/>
+<polygon points="370.000,518.907 366.000,525.907 374.000,525.907" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<polygon points="472.000,478.299 468.000,485.299 476.000,485.299" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<polygon points="574.000,460.056 570.000,467.056 578.000,467.056" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<polyline points="370.000,500.896 472.000,458.250 574.000,455.092" fill="none" stroke="#d95f02" stroke-width="2" data-role="data" data-panel-ref="schm-exp-6"/>
+<polygon points="370.000,496.896 366.000,500.896 370.000,504.896 374.000,500.896" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<polygon points="472.000,454.250 468.000,458.250 472.000,462.250 476.000,458.250" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<polygon points="574.000,451.092 570.000,455.092 574.000,459.092 578.000,455.092" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-6"/>
+<text x="472.000" y="394.000" font-family="sans-serif" font-size="10" text-anchor="middle">Experiment 6</text>
+</g>
+<g id="schm-exp-7" data-panel="schm-exp-7" data-plot-x="632.000" data-plot-y="403.000" data-plot-width="220.000" data-plot-height="180.000">
+<rect x="632.000" y="403.000" width="220.000" height="180.000" fill="none" stroke="#333"/>
+<line x1="632.000" y1="583.000" x2="632.000" y2="587.000" stroke="#333"/>
+<text x="632.000" y="599.000" font-family="sans-serif" font-size="9" text-anchor="middle">20</text>
+<line x1="742.000" y1="583.000" x2="742.000" y2="587.000" stroke="#333"/>
+<text x="742.000" y="599.000" font-family="sans-serif" font-size="9" text-anchor="middle">40</text>
+<line x1="852.000" y1="583.000" x2="852.000" y2="587.000" stroke="#333"/>
+<text x="852.000" y="599.000" font-family="sans-serif" font-size="9" text-anchor="middle">60</text>
+<line x1="628.000" y1="583.000" x2="632.000" y2="583.000" stroke="#333"/>
+<text x="625.000" y="586.000" font-family="sans-serif" font-size="9" text-anchor="end">0</text>
+<line x1="628.000" y1="493.000" x2="632.000" y2="493.000" stroke="#333"/>
+<text x="625.000" y="496.000" font-family="sans-serif" font-size="9" text-anchor="end">3.0</text>
+<line x1="628.000" y1="403.000" x2="632.000" y2="403.000" stroke="#333"/>
+<text x="625.000" y="406.000" font-family="sans-serif" font-size="9" text-anchor="end">6.1</text>
+<polyline points="640.000,496.718 742.000,468.620 844.000,459.446" fill="none" stroke="#222" stroke-width="2" data-role="data" data-panel-ref="schm-exp-7"/>
+<circle cx="640.000" cy="496.718" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/>
+<circle cx="742.000" cy="468.620" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/>
+<circle cx="844.000" cy="459.446" r="3" fill="#222" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/>
+<polyline points="640.000,508.434 742.000,451.526 844.000,426.363" fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="7 4" data-role="data" data-panel-ref="schm-exp-7"/>
+<rect x="637.000" y="505.434" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/>
+<rect x="739.000" y="448.526" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/>
+<rect x="841.000" y="423.363" width="6" height="6" fill="#1b9e77" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/>
+<polyline points="640.000,522.930 742.000,482.342 844.000,464.087" fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2 3" data-role="data" data-panel-ref="schm-exp-7"/>
+<polygon points="640.000,518.930 636.000,525.930 644.000,525.930" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/>
+<polygon points="742.000,478.342 738.000,485.342 746.000,485.342" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/>
+<polygon points="844.000,460.087 840.000,467.087 848.000,467.087" fill="#7570b3" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/>
+<polyline points="640.000,500.904 742.000,458.263 844.000,455.093" fill="none" stroke="#d95f02" stroke-width="2" data-role="data" data-panel-ref="schm-exp-7"/>
+<polygon points="640.000,496.904 636.000,500.904 640.000,504.904 644.000,500.904" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/><circle cx="640.000" cy="500.904" r="7" fill="none" stroke="#b2182b" stroke-width="2" data-role="data" data-panel-ref="schm-exp-7"/>
+<polygon points="742.000,454.263 738.000,458.263 742.000,462.263 746.000,458.263" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/><circle cx="742.000" cy="458.263" r="7" fill="none" stroke="#b2182b" stroke-width="2" data-role="data" data-panel-ref="schm-exp-7"/>
+<polygon points="844.000,451.093 840.000,455.093 844.000,459.093 848.000,455.093" fill="#d95f02" stroke="#111" data-role="data" data-panel-ref="schm-exp-7"/><circle cx="844.000" cy="455.093" r="7" fill="none" stroke="#b2182b" stroke-width="2" data-role="data" data-panel-ref="schm-exp-7"/>
+<text x="742.000" y="394.000" font-family="sans-serif" font-size="10" text-anchor="middle">Experiment 7 — P2 calibration anchor</text>
+</g>
+</g>
+<g id="lower-label-band" data-band="lower-label" data-x="70" data-y="666" data-width="1080" data-height="34">
+<text x="640.000" y="688.000" font-family="sans-serif" font-size="11" text-anchor="middle">Target beverage mass (g): 20, 40, 60 in every panel</text>
+</g>
+<g id="axis-title-band" data-band="axis-title" data-x="30" data-y="704" data-width="1140" data-height="28">
+<text x="640.000" y="723.000" font-family="sans-serif" font-size="12" text-anchor="middle">Cup solute mass (g); shared y-domain 0 to 6.1 g</text>
+</g>
+<g id="annotation-band" data-band="annotation" data-x="30" data-y="736" data-width="1140" data-height="30">
+<text x="640.000" y="754.000" font-family="sans-serif" font-size="11" text-anchor="middle">Red rings identify Experiment-7/P2 as the calibration reconstruction anchor.</text>
+</g>
+<g id="caption-band" data-band="caption" data-x="30" data-y="770" data-width="1140" data-height="42">
+<text x="40.000" y="786.000" font-family="sans-serif" font-size="11">cup_masses.csv contains post-fit derived source quantities, not independent measurements; comparison role: reconstruction or derived metric only.</text>
+</g>
+</svg>

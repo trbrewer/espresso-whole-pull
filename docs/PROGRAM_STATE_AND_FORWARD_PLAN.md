@@ -13,16 +13,20 @@
 REPOSITORY:
   trbrewer/espresso-whole-pull
 
-MERGED_BASE_MAIN:
-  bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1
+CANONICAL_MAIN:
+  0a5c146078da5d5f88b344b20e7b81042bf27ddb
 
-MERGED_BASE_TREE:
-  c1d3fdc88dabaea410c4b6236e31ce1376e5eaea
+CANONICAL_TREE:
+  12fdbc542270e2765e2071d83c21812951f892e8
 
-WP03_002_CANDIDATE:
-  solver/wp03-002-finite-porosity-nonlinear-robustness
-  RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW
-  exact head and tree are recorded by the open PR and exact-head report
+WP03_002:
+  COMPLETE_APPROVED_AND_MERGED
+
+WP03_002_MERGE_COMMIT:
+  0a5c146078da5d5f88b344b20e7b81042bf27ddb
+
+WP03_002_APPROVED_HEAD:
+  78dc278212976a569bf21dda139a98c35756db14
 
 OPENFOAM_TARGET:
   Foundation OpenFOAM 12
@@ -71,9 +75,12 @@ VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
 ACTIVE_VALIDATION_CASE:
-  NONE
+  VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
 
 ACTIVE_DATA_PLANNING_TASK:
+  NONE
+
+ACTIVE_SOLVER_TASK:
   NONE
 
 PHYSICAL_VALIDATION:
@@ -91,12 +98,23 @@ EXPERIMENTAL_COMMISSIONING:
 VAL_CASE_002:
   NOT_STARTED
 
-NEXT_SCIENTIFIC_TASK_AFTER_APPROVED_WP03_002_MERGE:
-  VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY
+CURRENT_SCIENTIFIC_TASK:
+  VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
 ```
 
-WP03-002 remains an open, unmerged candidate pending exact-head review. The
-next scientific task is named for sequencing only and has not started.
+WP03-002 is complete, approved, and merged. VAL-CORPUS-002 Stage A and final
+Stage-B0 tooling are exact-head approved. Stage B1 is complete as an exact
+frozen Experiment-7/H1 calibration candidate pending final pre-B2 review. Its
+local reconstruction rate is `0.3439597024835067 s^-1`. OpenFOAM was executed
+for B1 calibration and for the authorized fixed-parameter B2 matrix. Stage B2
+retains 27 passing and 18 immutable typed-failed production identities. The
+corrected Waszkiewicz P2 case passed and all nine sensitivity identities
+passed. Final reporting classifies the result as local reconstruction only,
+partial directional axis transfer with grind-sign reversal, hydraulic target-
+coverage mismatch, and cross-source time-shape failure. The fail-closed
+comparison framework is operational. Frozen governed reductions are complete
+pending final exact-head review.
+Calibration remains closed with no refit. Protected scoring remains prohibited.
 
 ---
 
@@ -121,25 +139,25 @@ The decisive result is that the Puckworks corpus is demonstrably useful. It expo
 
 This is not a failed validation program. It is the desired transition from internal verification to externally anchored diagnosis.
 
-WP03-002 is result-complete and awaiting exact-head review. After an approved
-merge, the next scientific task is
-`VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY`; it is not begun here.
+WP03-002 is complete, approved, and merged. The next scientific task entered
+Stage A as `VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY`; only its prospective
+protocol has been frozen here.
 
 ---
 
-# 2. Canonical merged base and current unmerged candidate
+# 2. Canonical merged state and active fixed-parameter Stage B2 candidate
 
 | Item | Canonical state |
 |---|---|
-| Current `main` | `bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1` |
-| Current tree | `c1d3fdc88dabaea410c4b6236e31ce1376e5eaea` |
+| Current `main` | `0a5c146078da5d5f88b344b20e7b81042bf27ddb` |
+| Current tree | `12fdbc542270e2765e2071d83c21812951f892e8` |
 | OpenFOAM | Foundation 12 |
 | Latest executed WP03-002 candidate executable | `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6` |
 | Runtime Puckworks lock | `fc61c4670ec7bf801e40bb391aab16048b8da26b` |
 | Read-only evidence snapshot used by VAL-CORPUS-001 | `9c52c94edb27b461b6e7a4d471d29f3cef9d053e` |
-| Current Python suite | `351/351 PASS` |
+| Current Python suite | `448/448 PASS` for the Stage-B2 sensitivity-colour-key-corrected package candidate |
 | Current static gates | `38/38 PASS` |
-| Current source manifest | `240/240 PASS`; exact aggregate is recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
+| Current source manifest | current exact count and aggregate are recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
 | Physical validation | `NOT_ESTABLISHED` |
 | Experimental commissioning | `NOT_AUTHORIZED` |
 | Governing-physics selection | `NOT_YET_JUSTIFIED` |

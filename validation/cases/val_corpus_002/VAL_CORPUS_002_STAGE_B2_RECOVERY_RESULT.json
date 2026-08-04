@@ -1,0 +1,33 @@
+{
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "corrected_production_aggregate_sha256": "c7eb8db410fe572c6638163dae1592f332cb82f15fe85c051cd65ef51651af02",
+  "corrected_waszkiewicz_p2": {
+    "attempt": 1,
+    "configuration_sha256": "af62b2c66154297a781af064679370abcdc3a74869ab15cd8a5f8644f224cf28",
+    "executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+    "execution_class": "FRESH_B2",
+    "final_time_s": 63.0000000000042,
+    "first_time_s": 0.02,
+    "normal_end": true,
+    "run_id": "WASZ_9_COMPACT_P2_FIXED_AFTER_EXP7_CALIBRATION_CHEMISTRY",
+    "scenario_sha256": "6b3a77ddafce177b9126fd0bd16314a11b169094301b2e3f652594e9cd9c6e2b",
+    "solver_commit": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
+    "solver_exit_code": 0,
+    "status": "PASS",
+    "trace_bytes": 6169970,
+    "trace_sha256": "50ce29b81e6ae8b9c2f0337b63f286329cef39dd2614d0ec711f759861b873ce",
+    "wall_seconds": 5.135286092758179
+  },
+  "original_failed_preparation_attempts": "RETAINED_UNCHANGED",
+  "original_partial_evidence": "IMMUTABLE",
+  "partial_cache_aggregate_sha256": "582cc453998f6eab27f1f2be8d6e143173dc3f7f2001477499191a14bacf7e57",
+  "partial_cache_count": 44,
+  "recovery_source_head": "8979d8b4b4bea5d119695e4685556f9d2909da61",
+  "schema_version": "espresso.val_corpus_002.b2_recovery_result.v1",
+  "sensitivity": {
+    "baseline_reuse_count": 1,
+    "fresh_count": 8,
+    "identity_count": 9
+  },
+  "status": "PASS"
+}

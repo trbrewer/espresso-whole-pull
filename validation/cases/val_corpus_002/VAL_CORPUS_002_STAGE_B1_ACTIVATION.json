@@ -1,0 +1,16 @@
+{
+  "authorization_id": "VAL-CORPUS-002-B1-CALIBRATION-2026-08-03",
+  "calibration_case_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+  "calibration_observations": "EXPERIMENT_7_REPLICATE_MEAN_CUP_SOLUTE_MASSES_AT_20_40_60_G",
+  "calibration_template_sha256": "2e688b4f9e756aa9bc3890f4eb8a05b9191f28208c1fc4a431d9a84fa3b710b8",
+  "exact_starting_head": "fd12ef922ca92a71e92cc6856093bede92355f90",
+  "exact_starting_tree": "1163b366cd7a0625bc3855286cca871f3b5038a6",
+  "h0_calibration": "PROHIBITED",
+  "mode_specific_p2_rate": "PROHIBITED",
+  "objective_identity": "EXP7_H1_EQUAL_WEIGHT_MEAN_SQUARED_RELATIVE_ERROR_20_40_60_G_V1",
+  "post_transfer_refitting": "PROHIBITED",
+  "profile": "EWP_CALIBRATION_STAGE_V1",
+  "schema_version": "espresso.val_corpus_002.stage_b1_activation.v1",
+  "stage_b2": "NOT_AUTHORIZED",
+  "transfer_result_access": "PROHIBITED"
+}

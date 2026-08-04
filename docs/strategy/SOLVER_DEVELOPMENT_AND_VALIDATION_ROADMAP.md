@@ -43,6 +43,22 @@ defect; all three unchanged cases completed, but cross-pressure ordering
 remained reversed. The aggregate extraction exit remains for VAL-CORPUS-002
 after exact-head review closes WP03-002.
 
+VAL-CORPUS-002 Stage A and Stage B0 are exact-head approved. Stage B1 is
+complete as an exact frozen Experiment-7/H1 calibration candidate pending
+final pre-B2 review. Its local reconstruction P2 rate is
+`0.3439597024835067 s^-1`. OpenFOAM was executed for B1 calibration only.
+Stage B2 retains 27 passing and 18 immutable typed-failed production
+identities. The corrected Waszkiewicz P2 case passed, predecessor parity
+remains 1,500/1,500, and all nine sensitivity identities passed. Frozen
+governed reductions and deterministic reporting are complete pending final
+exact-head review. The scientific disposition is local reconstruction only,
+partial directional transfer with grind-sign reversal, hydraulic target-
+coverage mismatch, and cross-source time-shape failure. The fail-closed
+framework is operational, but this result is not physical validation;
+protected scoring was not performed and new governing physics remains
+unauthorized.
+
+
 ### Workstream 1 — Validation-case framework
 
 Develop a common source-adapter schema, preserve source definitions, classify
@@ -124,3 +140,7 @@ complete a verified mechanism
 > without an intervening relevant real-data comparison.
 
 This is human-readable program guidance, not a CI or static-validation gate.
+The final package correction leaves those numerics and the scientific
+disposition unchanged while identifying `cup_masses.csv` as post-fit derived,
+not independent measurement evidence. Stage B2 is pending exact-head review;
+merge and any subsequent mechanism remain unauthorized.

@@ -1,0 +1,156 @@
+{
+  "authoritative_interpretation": "FINAL_RESULT_INTERPRETATION",
+  "authorization_id": "VAL-CORPUS-002-B2-PRODUCTION-SCORING-2026-08-03",
+  "base_result_reference": {
+    "base_result_role": "IMMUTABLE_HISTORICAL_SUPERSEDED_FOR_INTERPRETATION",
+    "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_RESULT.json",
+    "sha256": "61fd74cb0977ac862965512dd3c4d92722a017fe9146314c168422250478b1be"
+  },
+  "bundle_status": "RESULT_COMPLETE_WITH_TYPED_FAILURES",
+  "calibration": "CLOSED_NO_REFIT",
+  "immutable_numerical_artifacts": true,
+  "interpretation": {
+    "h0_target_coverage": {
+      "experiments": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "failure_count": 18,
+      "identities": [
+        "SCHM_EXP1_P0_H0",
+        "SCHM_EXP1_P1_H0",
+        "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+        "SCHM_EXP3_P0_H0",
+        "SCHM_EXP3_P1_H0",
+        "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+        "SCHM_EXP4_P0_H0",
+        "SCHM_EXP4_P1_H0",
+        "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+        "SCHM_EXP5_P0_H0",
+        "SCHM_EXP5_P1_H0",
+        "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+        "SCHM_EXP6_P0_H0",
+        "SCHM_EXP6_P1_H0",
+        "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+        "SCHM_EXP7_P0_H0",
+        "SCHM_EXP7_P1_H0",
+        "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H0"
+      ],
+      "parameterizations": [
+        "P0",
+        "P1",
+        "P2"
+      ]
+    },
+    "h1_error_improvement": "NOT_UNIFORM_ACROSS_PARAMETERIZATIONS",
+    "h1_target_coverage": {
+      "identities": [
+        "SCHM_EXP1_P0_H1",
+        "SCHM_EXP1_P1_H1",
+        "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+        "SCHM_EXP2_P0_H1",
+        "SCHM_EXP2_P1_H1",
+        "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+        "SCHM_EXP3_P0_H1",
+        "SCHM_EXP3_P1_H1",
+        "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+        "SCHM_EXP4_P0_H1",
+        "SCHM_EXP4_P1_H1",
+        "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+        "SCHM_EXP5_P0_H1",
+        "SCHM_EXP5_P1_H1",
+        "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+        "SCHM_EXP6_P0_H1",
+        "SCHM_EXP6_P1_H1",
+        "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+        "SCHM_EXP7_P0_H1",
+        "SCHM_EXP7_P1_H1",
+        "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1"
+      ],
+      "pass": 21
+    },
+    "hydraulic_conclusion": "HYDRAULIC_MISMATCH_MATERIALLY_CONTRIBUTES_TO_TARGET_COVERAGE",
+    "p2_h1_axis_signs": {
+      "flow": {
+        "matches": 3,
+        "total": 3
+      },
+      "grind": {
+        "matches": 0,
+        "total": 3
+      },
+      "temperature": {
+        "matches": 3,
+        "total": 3
+      }
+    },
+    "scale_transfer": "MIXED_AND_INCOMPLETE",
+    "schmieder_disposition": [
+      "PARTIAL_DIRECTIONAL_TRANSFER_ONLY",
+      "LOCAL_RECONSTRUCTION_ONLY"
+    ],
+    "scientific_result_disposition": "LOCAL_RECONSTRUCTION_ONLY_WITH_PARTIAL_AXIS_DIRECTION_TRANSFER,HYDRAULIC_TARGET_COVERAGE_MISMATCH,AND_CROSS_SOURCE_TIME_SHAPE_TRANSFER_FAILURE",
+    "validation_framework_disposition": "FRAMEWORK_OPERATIONAL_FOR_FAIL_CLOSED_FIXED_PARAMETER_AGGREGATE_CHEMISTRY_COMPARISON_WITH_TYPED_AVAILABILITY",
+    "waszkiewicz": {
+      "clock_comparison": "FIXED_PLUS_3_SECOND_PRESENTATION_IMPROVES_BUT_DOES_NOT_VALIDATE",
+      "disposition": "CROSS_SOURCE_TIME_SHAPE_TRANSFER_FAILURE",
+      "fixed_plus_3_s": {
+        "rmse": 0.06682489539009928,
+        "window_mean_residual": {
+          "early": -0.08072143166849205,
+          "late": -0.0037413913634276215,
+          "middle": 0.06597320745689621
+        }
+      },
+      "source_clock": {
+        "rmse": 0.08603049216615972,
+        "window_mean_residual": {
+          "early": -0.10176895108089963,
+          "late": 0.001955934536179469,
+          "middle": 0.08372607324036582
+        }
+      }
+    }
+  },
+  "new_governing_physics": "NOT_AUTHORIZED",
+  "openfoam_rerun": "NOT_PERFORMED",
+  "production_counts": {
+    "h1_pass": 21,
+    "identities": 45,
+    "pass": 27,
+    "typed_target_coverage_failures": 18
+  },
+  "production_matrix_disposition": "COMPLETE_WITH_18_TYPED_NUMERICAL_CASE_FAILURES",
+  "protected_scoring": "NOT_PERFORMED",
+  "records": {
+    "normalized_species_audit": {
+      "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_NORMALIZED_SPECIES_AUDIT.json",
+      "sha256": "935e178f3f642c4ff9f57837013a018a3fe1c6150272a132713afb010cc8a29a"
+    },
+    "per_case_numerical_summary": {
+      "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_PER_CASE_NUMERICAL_SUMMARY.json",
+      "sha256": "c476283449d2c6c632c1a00d9d5418b66e2c80e8ff18b6f1e806dec1174c5a52"
+    },
+    "reduced_source_clock": {
+      "path": "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_REDUCED_SOURCE_CLOCK.json",
+      "sha256": "9f3290100e2f1b67d6032832aad74ff2068d99b78fc6d32da93bd88b5184aaa4"
+    }
+  },
+  "reduction_status": "PASS",
+  "schema_version": "espresso.val_corpus_002.b2_final_result.v1",
+  "sensitivity_rerun": "NOT_PERFORMED",
+  "source_lineage": {
+    "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+    "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
+    "evidence_class": "POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+    "independent_measurement": false,
+    "prohibited_use": "INDEPENDENT_VALIDATION_TARGET",
+    "required_citation": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md",
+    "uncertainty_role": "POST_FIT_DERIVED_REPLICATE_SPREAD_NOT_INDEPENDENT_MEASUREMENT_UNCERTAINTY"
+  },
+  "val_case_002": "NOT_STARTED"
+}

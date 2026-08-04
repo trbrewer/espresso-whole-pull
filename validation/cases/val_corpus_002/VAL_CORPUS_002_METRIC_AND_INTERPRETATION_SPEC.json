@@ -1,0 +1,27 @@
+{
+  "axis_contrasts": ["high-flow minus low-flow", "coarse-setting minus fine-setting", "high-temperature minus low-temperature"],
+  "axis_outputs": ["source_sign", "model_sign", "contrast_magnitude_error"],
+  "mandatory_outputs": ["cup_solute_mass_g", "cumulative_tds_fraction", "cumulative_tds_percent", "extraction_yield_fraction", "extraction_yield_percent", "time_to_target_beverage_mass_s", "mean_outlet_flow_over_declared_intervals", "source_conditioned_hydraulic_residual", "liquid_balance_residual", "solute_balance_residual", "boundedness", "completion"],
+  "metrics": {
+    "aggregate": ["absolute_error", "relative_error", "rmse_20_40_60_g", "standardized_residual_where_source_sd_exists", "count_inside_replicate_range", "count_inside_one_source_sd_descriptive", "count_inside_two_source_sd_descriptive", "native_to_source_conditioned_error_ratio"],
+    "relative_error_denominator": "absolute source replicate mean; fail closed if zero",
+    "native_to_source_conditioned_error_ratio_zero_denominator": "UNDEFINED_WITH_PAIRED_ERRORS_REPORTED_NO_EPSILON_FLOOR",
+    "waszkiewicz": ["full_series_unweighted_rmse", "mae", "residual_bias", "mean_residual_2.5_to_17.5_s", "mean_residual_22.5_to_37.5_s", "mean_residual_42.5_to_57.5_s"],
+    "waszkiewicz_uncertainty": "secondary only where supplied; no SD invented at 2.5 s"
+  },
+  "interpretation_logic": {
+    "native_failure_source_conditioned_improvement": "HYDRAULIC_MISMATCH_MATERIALLY_CONTRIBUTES",
+    "native_and_source_conditioned_failure": "AGGREGATE_CHEMISTRY_OR_SOURCE_LAW_MISMATCH_REMAINS",
+    "p2_local_success_transfer_failure": "LOCAL_RECONSTRUCTION_ONLY",
+    "fixed_p1_or_p2_direction_and_scale_transfer": "SOURCE_SPECIFIC_AGGREGATE_CHEMISTRY_SUPPORT",
+    "waszkiewicz_shape_failure": "CROSS_SOURCE_TIME_SHAPE_TRANSFER_FAILURE",
+    "species_divergence": "AGGREGATE_REPRESENTATION_INFORMATION_LOSS_NOT_MULTISPECIES_AUTHORITY"
+  },
+  "source_uncertainty": {"replicate_means": true, "sample_standard_deviations": true, "ranges": true, "counts": true, "fabricated_floor": false, "replace_missing": false},
+  "species_limitation_audit": {"normalized_progression": ["TDS", "caffeine", "trigonelline", "5-CQA"], "openfoam_species_scoring": "PROHIBITED", "interpretation": "divergence exposes aggregate information loss but cannot uniquely attribute an aggregate residual to missing multispecies physics"},
+  "target_beverage_masses_g": [20, 40, 60],
+  "fixed_mass_operator": {"identity": "TIME_ORDERED_PLATEAU_SAFE_CUMULATIVE_MASS_V1", "inputs": ["time_s", "cumulative_beverage_mass_kg", "cumulative_solute_mass_kg"], "targets_kg": [0.02, 0.04, 0.06], "mass_absolute_tolerance_kg": 1e-12, "cup_solute_mass": "first adjacent strictly increasing beverage-mass pair bracketing target; linear interpolation; output kg", "plateau": "equal beverage mass requires solute unchanged within tolerance; retain last time-ordered sample", "mass_sorting": "PROHIBITED", "cumulative_tds": "cup solute mass at target divided by target mass", "extraction_yield": "cup solute mass at target divided by 0.020 kg dry dose", "reporting": "convert kg to g only after observation", "extrapolation": "PROHIBITED", "missing_target": "FAIL_CLOSED_INCOMPLETE"},
+  "universal_binary_physical_validation_threshold": "PROHIBITED",
+  "required_stage_b_dispositions": ["SCIENTIFIC_RESULT_DISPOSITION", "VALIDATION_FRAMEWORK_DISPOSITION", "CLAIM_CEILING"],
+  "schema_version": 1
+}
