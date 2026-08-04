@@ -4,6 +4,8 @@
   "current_governance_milestone": "VAL_CORPUS_002_COMPLETE_APPROVED_AND_MERGED",
   "canonical_main": "5c77b16513f932a822782fb97e9f8b97ceda0654",
   "canonical_tree": "76741f99f58672fd6f1fd021279517a255b045b6",
+  "canonical_identity_role": "LAST_SUBSTANTIVE_SCIENTIFIC_MERGE_BASE",
+  "live_repository_identity": "RESOLVE_HEAD_AND_TREE_FROM_GIT",
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
     "release_role": "NO_GOVERNING_PHYSICS_RELEASE_FINALIZATION"
@@ -28,11 +30,12 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 448,
+    "python_test_count": 452,
+    "current_authority_consistency_test_count": 4,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 272,
-    "source_manifest_aggregate_sha256": "82037c6f03c649ff744596bc643db39b4f732ffa41ea08d2c26b834ff1cff328",
+    "source_manifest_file_count": 273,
+    "source_manifest_aggregate_sha256": "0b9fcc039615a80509852d209e4d37a30b35d2c27eb2f02491b9d9f23569b2fb",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -335,6 +338,7 @@
   "active_data_planning_task": "NONE",
   "active_solver_task": "NONE",
   "experimental_commissioning": "NOT_AUTHORIZED",
+  "protected_or_holdout_scoring": "NOT_AUTHORIZED",
   "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
   "val_corpus_002": {
     "stage": "COMPLETE",

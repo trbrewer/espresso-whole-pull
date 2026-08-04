@@ -202,12 +202,13 @@ scoring are not authorized.
 
 Its historical completion counts are retained in its result records.
 
-## Post-WP03-001 phase
+## Completed post-WP03 validation program
 
-WP03-001 is merged and numerically verified for its tested cases. The active
-program phase is source-specific validation and mechanism discrimination.
-This documentation alignment performs no model or validation execution and
-authorizes no experiment, protected scoring or holdout opening.
+WP03-001, WP03-002, VAL-CORPUS-001, and VAL-CORPUS-002 are merged. No
+validation case, data-planning task, solver task, or mechanism-selection task
+is active. The current gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`. This
+administrative alignment performs no model or validation execution and
+authorizes no experiment, protected scoring, holdout opening, or mechanism.
 
 Current test and source-manifest identities are generated in
 `PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
@@ -226,15 +227,16 @@ perform zero real-data comparison invocations. The result is post-observation,
 not blind, not independent, and not physical validation. PR #38 is merged;
 the adverse invocation history and scientific limitations remain retained.
 
-## Active WP03-002 numerical task
+## Merged WP03-002 numerical result
 
 WP03-002 reproduced all three frozen failures, committed the diagnosis before
 source modification, and applied an equation-preserving correction to the
 nonlinear convergence gate. All three unchanged corrected cases complete.
 Serial/MPI repeatability, timestep refinement, conservation, independent
 scalar/derivative tests, and predecessor checks pass. Cross-pressure ordering
-remains reversed. The result is complete pending exact-head review of PR #52;
-physical validation remains `NOT_ESTABLISHED`.
+remains reversed. PR #52 merged the approved result as commit
+`0a5c146078da5d5f88b344b20e7b81042bf27ddb`; physical validation remains
+`NOT_ESTABLISHED`.
 
 ## VAL-001 post-result framework hardening
 
@@ -269,5 +271,5 @@ testing remains synthetic; V2 and the invocation journal are unchanged.
 VAL-001 explicit-semantics QA verifies zero instance-derived governing schemas,
 complete executable-profile dispatch, and externally pinned candidate roots.
 All cases are synthetic; governed comparison and OpenFOAM execution counts are
-zero for this correction.
-not established; merge and any next mechanism are not authorized.
+zero for this correction. Physical validation remains not established. The
+completed merges remain complete; no next mechanism is selected or authorized.

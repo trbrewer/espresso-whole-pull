@@ -1,13 +1,15 @@
 # Project State
 
 - Current released version: `v0.2.0`
-- Current merged `main`: `5c77b16513f932a822782fb97e9f8b97ceda0654`
-- Current merged tree: `76741f99f58672fd6f1fd021279517a255b045b6`
+- Last substantive scientific merge: `5c77b16513f932a822782fb97e9f8b97ceda0654`
+- Last substantive scientific tree: `76741f99f58672fd6f1fd021279517a255b045b6`
+- Live repository identity: resolve with `git rev-parse HEAD` and
+  `git rev-parse HEAD^{tree}`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 272/272 PASS
+- Public source verification: 273/273 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -137,7 +139,7 @@ cup accumulation, and water/solute conservation reporting.
 R0 remains frozen and unchanged. Source-linked and synthetic mechanism
 diagnostics are not improved predictions merely because they add complexity.
 
-## Active next program phase
+## Completed post-WP03 validation program and current gate
 
 VAL-001 and PR #38 are complete and merged. The source-specific adapter framework was added
 without changing governing physics. Its governed V2 comparison remains a
@@ -145,6 +147,12 @@ post-observation, non-blind, non-independent descriptive reconstruction; it is
 not physical validation and does not authorize a next-physics increment.
 VAL-OPS-001 provides a merged concise prospective operating standard for
 proportionate validation cases and reusable infrastructure work.
+
+VAL-CORPUS-001, WP03-002, and VAL-CORPUS-002 are complete, approved, and
+merged. No validation case, data-planning task, solver task, or mechanism-
+selection task is active. The current gate is
+`ADDITIONAL_INDEPENDENT_DATA_REQUIRED`; the next evidence route requires a
+separate human-owner decision and authorization.
 
 See the concise
 [solver development and validation roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)

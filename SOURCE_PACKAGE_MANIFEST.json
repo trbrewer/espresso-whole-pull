@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 272,
-  "total_uncompressed_bytes_excluding_manifest": 3053652,
-  "aggregate_source_sha256": "82037c6f03c649ff744596bc643db39b4f732ffa41ea08d2c26b834ff1cff328",
-  "aggregate_sha256": "82037c6f03c649ff744596bc643db39b4f732ffa41ea08d2c26b834ff1cff328",
+  "file_count": 273,
+  "total_uncompressed_bytes_excluding_manifest": 3057909,
+  "aggregate_source_sha256": "0b9fcc039615a80509852d209e4d37a30b35d2c27eb2f02491b9d9f23569b2fb",
+  "aggregate_sha256": "0b9fcc039615a80509852d209e4d37a30b35d2c27eb2f02491b9d9f23569b2fb",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "441232cb701e2211092e69924e33303acbb821b6a98035b8b7ea1774c44907dd",
-      "bytes": 7801,
+      "sha256": "c3c496656e5c03e79938c6e4b403471bfb898937350cff13997e486a1afcbd69",
+      "bytes": 7939,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -444,13 +444,13 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "05395c14be52b2fdf069ae6f7649b21c6f566b8eb72a1243b74d7ff789c06842",
-      "bytes": 48199,
+      "sha256": "db339c994564762eca6c3d5b67535d48fd5d19091e3823427be1df78ed9e8322",
+      "bytes": 44872,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "188f675bcf7c7e8dd39a2698428c1ed27061aa19d19208c8cafedcf73efbe9b3",
-      "bytes": 14725,
+      "sha256": "5ae460fcc5e491928a7889dd154ab651c2a8c79a9d1892d6238ad4b5ac352c9e",
+      "bytes": 14917,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -1251,6 +1251,11 @@
     "tests/test_change_contract.py": {
       "sha256": "08968615389dda13fe4adf4cc9c3fcfc237b00444fcf14cc24e11d3ba8432299",
       "bytes": 7498,
+      "git_mode": "100644"
+    },
+    "tests/test_current_authority_consistency.py": {
+      "sha256": "bf92c6ab75742bf9ed0e776af5629aa2230bc153c50f3fe520f58fe24e089e30",
+      "bytes": 7254,
       "git_mode": "100644"
     },
     "tests/test_r1_analysis.py": {
