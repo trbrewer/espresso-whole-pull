@@ -88,6 +88,15 @@ class XSVTaichi001Tests(unittest.TestCase):
         self.assertIn('lbm = subparsers.add_parser("run-lbm")', runtime)
         self.assertIn('k_gross = nu_lu * q_box / g_lu', runtime)
         self.assertIn('k_void = nu_lu * u_void / g_lu', runtime)
+        fixture = json.loads(
+            (CASE_ROOT / "openfoam/XSV_TAICHI_001_OPENFOAM_FIXTURES.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(len(fixture["runs"]), 8)
+        self.assertEqual(fixture["closure"]["K_B_over_K_A"], 0.4)
+        self.assertEqual(fixture["domain"]["radial_cells"], 512)
+        self.assertEqual(fixture["retained_openfoam_runs_before_freeze"], 0)
         geometry_manifest = CASE_ROOT / "XSV_TAICHI_001_GEOMETRY_MANIFEST.json"
         self.assertEqual(
             hashlib.sha256(geometry_manifest.read_bytes()).hexdigest(),

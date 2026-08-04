@@ -1,0 +1,64 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_taichi_001.openfoam_fixtures.v1",
+  "task": "XSV-TAICHI-001",
+  "status": "FROZEN_BEFORE_OPENFOAM_EXECUTION",
+  "source": {
+    "openfoam_distribution": "Foundation",
+    "openfoam_version": "12",
+    "solver_source_sha256": "a292021a19740e4dd8869a2fa63aaeaa95ea3843016734768b492ca2d2f38dd7"
+  },
+  "closure": {
+    "source_runs": ["M0A-TG-LOW", "M0A-TG-MID", "M0A-TG-HIGH"],
+    "origin_fit_s_qg": 7.679991073929766,
+    "K_A_lu": 1.7919979172502785,
+    "K_A_m2": 1.6127981255252507e-09,
+    "K_B_over_K_A": 0.4,
+    "K_B_m2": 6.451192502101003e-10,
+    "delta_x_m": 3e-05
+  },
+  "domain": {
+    "bed_depth_m": 0.0012000000000000001,
+    "gross_area_m2": 1.4400000000000002e-06,
+    "basket_radius_m": 0.0006770275002573076,
+    "wedge_angle_deg": 5.0,
+    "axial_cells": 64,
+    "radial_cells": 512,
+    "azimuthal_cells": 1,
+    "mesh_basis": "EXISTING_DETERMINISTIC_HIGH_RADIAL_RESOLUTION_CONVENTION"
+  },
+  "fluid": {
+    "dynamic_viscosity_Pa_s": 0.001,
+    "density_metadata_kg_m3": 1000.0
+  },
+  "porosity": {
+    "base": 0.412359375,
+    "alternate": 0.3
+  },
+  "profiles": {
+    "uniform": "K_A",
+    "axial_two_layer": {
+      "interface_position_m": 0.0006000000000000001,
+      "upstream": "K_A",
+      "downstream": "K_B"
+    },
+    "radial_two_zone": {
+      "interface_radius_m": 0.0004787307364817192,
+      "inner": "K_A",
+      "outer": "K_B",
+      "declared_inner_area_fraction": 0.5,
+      "declared_outer_area_fraction": 0.5
+    }
+  },
+  "runs": [
+    {"run_id": "OF-U-LOW", "profile": "uniform", "porosity": "base", "target_q_m_s": 0.00025, "delta_p_Pa": 0.18601212095425584, "mpi_ranks": 1},
+    {"run_id": "OF-U-MID", "profile": "uniform", "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.3720242419085117, "mpi_ranks": 1},
+    {"run_id": "OF-U-HIGH", "profile": "uniform", "porosity": "base", "target_q_m_s": 0.001, "delta_p_Pa": 0.7440484838170234, "mpi_ranks": 1},
+    {"run_id": "OF-U-PHI-ALT", "profile": "uniform", "porosity": "alternate", "target_q_m_s": 0.0005, "delta_p_Pa": 0.3720242419085117, "mpi_ranks": 1},
+    {"run_id": "OF-SERIES-1", "profile": "axial_two_layer", "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.6510424233398954, "mpi_ranks": 1},
+    {"run_id": "OF-SERIES-16", "profile": "axial_two_layer", "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.6510424233398954, "mpi_ranks": 16},
+    {"run_id": "OF-PARALLEL-1", "profile": "radial_two_zone", "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.5314632027264452, "mpi_ranks": 1},
+    {"run_id": "OF-PARALLEL-16", "profile": "radial_two_zone", "porosity": "base", "target_q_m_s": 0.0005, "delta_p_Pa": 0.5314632027264452, "mpi_ranks": 16}
+  ],
+  "retained_openfoam_runs_before_freeze": 0,
+  "physical_validation": "NOT_ESTABLISHED"
+}
