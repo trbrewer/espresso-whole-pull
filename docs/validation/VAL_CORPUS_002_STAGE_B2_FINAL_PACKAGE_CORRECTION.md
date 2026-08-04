@@ -129,3 +129,34 @@ merge_status: NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW
 Closure identities, the old and new sensitivity hashes, dependent manifest
 hashes, and qualification results will be appended after implementation and
 qualification. The existing B2-FIG-001 record remains unchanged.
+
+### Sensitivity colour-key correction closure
+
+The reporting implementation commit is
+`cd6529487865a5c729b0380a7f30877803f25fc8`, tree
+`eecb5099278fa05a908a8589b1708e84d83d785c`. One authoritative helper now
+interpolates continuously from the neutral RGB value to distinct negative or
+positive endpoints using normalized absolute magnitude. The 12 cells and all
+three key swatches call that helper and carry deterministic machine-readable
+value, normalized-magnitude, sign-class, and fill attributes.
+
+```text
+old sensitivity SVG: ea3bbabaa222d97fd90038724c45c2837d47ececcfab99f3f55671f8e4ee7dba
+new sensitivity SVG: 5ba16412f89040ce7e62069e9af9df71197656b8daefc82e8efe06c9f1ef1197
+reporting reducer: 12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb
+figure manifest: 1cde29b7558c71451453b243861d015b8b3be0982e424680b9e9666183c64a0e
+figure aggregate: 77e080b59fd94e27030d280f3f2054c71a67d57d3a5be1de4c17ef31ab068330
+final report manifest: 86855f3e77ac6723cf02b327b82e812a6141f0e8c94d9165c4f48c97d33aab0e
+Python: 448/448 PASS
+focused Stage B2: 39/39 PASS
+static gates: 38/38 PASS
+source manifest: 272/272 PASS
+continuous neutral-centred colour mapping: PASS
+accepted four-figure byte parity: PASS
+deterministic repeat generation: PASS
+review_status: VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+merge_status: NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW
+```
+
+The sensitivity values, labels, singular values, rank, interpretation, other
+four SVG files, and every scientific and numerical identity remain unchanged.

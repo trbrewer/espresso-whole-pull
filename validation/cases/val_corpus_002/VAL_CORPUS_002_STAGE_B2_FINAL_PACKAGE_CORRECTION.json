@@ -115,14 +115,30 @@
       "fixed_p2_rate_s_inverse": 0.3439597024835067
     },
     "closure": {
-      "status": "CORRECTION_AUTHORIZED_IN_PROGRESS",
-      "correction_commit": null,
-      "correction_head": null,
-      "correction_tree": null,
+      "status": "VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+      "correction_commit": "cd6529487865a5c729b0380a7f30877803f25fc8",
+      "correction_head": "cd6529487865a5c729b0380a7f30877803f25fc8",
+      "correction_tree": "eecb5099278fa05a908a8589b1708e84d83d785c",
       "old_sensitivity_svg_sha256": "ea3bbabaa222d97fd90038724c45c2837d47ececcfab99f3f55671f8e4ee7dba",
-      "new_sensitivity_svg_sha256": null,
-      "dependent_hashes": null,
-      "qualification": null,
+      "new_sensitivity_svg_sha256": "5ba16412f89040ce7e62069e9af9df71197656b8daefc82e8efe06c9f1ef1197",
+      "dependent_hashes": {
+        "reporting_reducer_sha256": "12d2517c9304f562c9395023f5b6fe9a609fcac7becca70bf0fca55a09fe84fb",
+        "figure_manifest_sha256": "1cde29b7558c71451453b243861d015b8b3be0982e424680b9e9666183c64a0e",
+        "figure_aggregate_sha256": "77e080b59fd94e27030d280f3f2054c71a67d57d3a5be1de4c17ef31ab068330",
+        "final_report_manifest_sha256": "86855f3e77ac6723cf02b327b82e812a6141f0e8c94d9165c4f48c97d33aab0e"
+      },
+      "qualification": {
+        "python_tests": "448/448 PASS",
+        "focused_stage_b2_tests": "39/39 PASS",
+        "static_gates": "38/38 PASS",
+        "source_manifest": "272/272 PASS",
+        "source_aggregate_sha256": "259ed53e677a98cffe7aaf6b51c3af1ea2b40b213288edb2ef7a57521fe5177f",
+        "continuous_neutral_centered_mapping": "PASS",
+        "accepted_four_figure_byte_parity": "PASS",
+        "deterministic_repeat_generation": "PASS",
+        "rendered_human_inspection": "PASS_NO_UNKEYED_YELLOW_NO_CLIPPING_NO_OVERLAP",
+        "syntax_whitespace_secret_local_path_links_and_boundaries": "PASS"
+      },
       "merge_status": "NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW"
     }
   }
