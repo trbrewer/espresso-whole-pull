@@ -31,5 +31,38 @@
     "sensitivity_identities": 9,
     "sensitivity_pass": 9,
     "predecessor_parity_states": 1500
+  },
+  "figure_semantics_exact_head_review": {
+    "date": "2026-08-03",
+    "authorization_id": "VAL-CORPUS-002-B2-FIGURE-SEMANTICS-CORRECTION-2026-08-03",
+    "reviewed_head": "4765f6fdde10f277c70b4a4b50d5333d58c9f629",
+    "reviewed_tree": "458af5c6e6ed8c8ca1d80f4d42f30ac467bd869b",
+    "finding_id": "B2-FIG-001",
+    "finding": "SCIENTIFIC_FIGURE_SEMANTIC_LEGIBILITY_AND_PLOT_BOUNDS_NOT_CLOSED",
+    "observed_manifestations": [
+      "OVERLAYS_OR_ANONYMOUS_CELLS_PREVENT_UNAMBIGUOUS_GOVERNED_IDENTITY_MAPPING",
+      "QUANTITATIVE_AXES_AND_GOVERNED_ROW_COLUMN_SERIES_LABELS_INCOMPLETE",
+      "PLOT_GEOMETRY_AND_TEXT_BANDS_NOT_EXPLICITLY_NONOVERLAPPING_AND_CLOSED"
+    ],
+    "boundary": "REPORTING_ONLY_NO_EXECUTION_NO_SCIENTIFIC_CHANGE",
+    "immutable_identities": {
+      "fixed_p2_rate_s_inverse": 0.3439597024835067,
+      "production_aggregate_sha256": "c7eb8db410fe572c6638163dae1592f332cb82f15fe85c051cd65ef51651af02",
+      "external_aggregate_sha256": "dfd5404159b989b9e3fd6902355e3610c9685684b955b870797ef315676e6452",
+      "historical_b2_base_result_sha256": "61fd74cb0977ac862965512dd3c4d92722a017fe9146314c168422250478b1be",
+      "final_numerical_result_sha256": "38e82e7a4b33dbdfc4a96bf9c4a5bca1f2ba5d8a900336185de7e2c772bb1beb",
+      "final_nested_schema_sha256": "d51a88ac58035543a0b8fdbaa6ac9edce4b81560798b9f4fac846641a595e6e9",
+      "per_case_summary_sha256": "c476283449d2c6c632c1a00d9d5418b66e2c80e8ff18b6f1e806dec1174c5a52",
+      "puckworks_lineage_authority_sha256": "8c988890b7b31479ff694ae6fc45fdd431e2ebd721e47e9d7e049939b421b0c9"
+    },
+    "closure": {
+      "status": "CORRECTION_AUTHORIZED_IN_PROGRESS",
+      "correction_commit": null,
+      "correction_head": null,
+      "correction_tree": null,
+      "changed_generated_hashes": null,
+      "qualification": null,
+      "merge_status": "NOT_AUTHORIZED_PENDING_CORRECTED_EXACT_HEAD_REVIEW"
+    }
   }
 }
