@@ -9,10 +9,15 @@ from __future__ import annotations
 
 import argparse
 from collections import deque
+import contextlib
+import csv
 import hashlib
 import importlib.util
+import io
 import json
+import math
 from pathlib import Path
+import platform
 import sys
 from typing import Any, Dict, Iterable, Tuple
 
@@ -24,6 +29,8 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[3]
 PROTOCOL_PATH = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL.json"
 EXPECTED_PUCKWORKS_COMMIT = "fc61c4670ec7bf801e40bb391aab16048b8da26b"
+CASE_MATRIX_PATH = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_CASE_MATRIX.csv"
+GEOMETRY_MANIFEST_PATH = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_GEOMETRY_MANIFEST.json"
 
 for required_root_member in (
     ROOT / "SOURCE_PACKAGE_MANIFEST.json",
@@ -179,6 +186,154 @@ def generate_geometry(args: argparse.Namespace) -> None:
     print(json.dumps(descriptor, sort_keys=True))
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def load_lbm_case(run_id: str) -> Dict[str, str]:
+    with CASE_MATRIX_PATH.open(encoding="utf-8", newline="") as handle:
+        rows = [row for row in csv.DictReader(handle) if row["run_id"] == run_id]
+    if len(rows) != 1 or rows[0]["family"] != "LBM":
+        raise RuntimeError(f"run ID is not one exact governed LBM case: {run_id}")
+    return rows[0]
+
+
+def run_lbm(args: argparse.Namespace) -> None:
+    protocol = json.loads(PROTOCOL_PATH.read_text(encoding="utf-8"))
+    geometry_manifest = json.loads(GEOMETRY_MANIFEST_PATH.read_text(encoding="utf-8"))
+    case = load_lbm_case(args.run_id)
+    geometry = next(
+        row for row in geometry_manifest["geometries"] if row["case_id"] == case["geometry"]
+    )
+    evidence_root = Path(args.evidence_root).resolve()
+    mask_path = evidence_root / "geometry/repeat_a" / f"{case['geometry']}.uint8"
+    if not mask_path.is_file() or sha256_file(mask_path) != geometry["payload_sha256"]:
+        raise RuntimeError(f"frozen mask identity mismatch: {mask_path}")
+    shape = tuple(geometry["shape"])
+    solid = np.frombuffer(mask_path.read_bytes(), dtype=np.uint8).reshape(shape).astype(bool)
+    output_dir = evidence_root / "lbm" / args.run_id
+    if output_dir.exists():
+        raise RuntimeError(f"refusing to overwrite retained run: {output_dir}")
+    output_dir.mkdir(parents=True)
+    puckworks = Path(args.puckworks).resolve()
+    g_lu = float(case["g_lu"])
+    tau_plus = float(protocol["lbm_settings"]["tau_plus"])
+    kwargs = {
+        "g": g_lu,
+        "tau_plus": tau_plus,
+        "max_steps": int(case["max_steps"]),
+        "check": int(protocol["lbm_settings"]["check_interval"]),
+        "rtol": float(protocol["lbm_settings"]["relative_convergence_tolerance"]),
+        "min_steps": int(protocol["lbm_settings"]["minimum_steps"]),
+        "verbose": True,
+    }
+    captured_stdout = io.StringIO()
+    captured_stderr = io.StringIO()
+    with contextlib.redirect_stdout(captured_stdout), contextlib.redirect_stderr(captured_stderr):
+        if case["backend"] == "NUMPY_REFERENCE":
+            module = load_module(
+                puckworks / "puckworks/models/brewer2026/lb_reference.py",
+                f"xsv_lb_reference_{args.run_id.replace('-', '_')}",
+            )
+            actual_architecture = "CPU_NUMPY"
+            result = module.solve(solid, **kwargs)
+        elif case["backend"] == "TAICHI":
+            module = load_module(
+                puckworks / "puckworks/models/brewer2026/lb_taichi.py",
+                f"xsv_lb_taichi_{args.run_id.replace('-', '_')}",
+            )
+            requested = case["architecture"].lower()
+            module.init_lb(arch="gpu" if requested == "cuda" else "cpu", dtype="f64")
+            actual_architecture = str(module.ti.lang.impl.current_cfg().arch)
+            if requested == "cuda" and actual_architecture != "Arch.cuda":
+                raise RuntimeError(f"CUDA substitution detected: {actual_architecture}")
+            if str(module.ti.lang.impl.current_cfg().default_fp) != "f64":
+                raise RuntimeError("Taichi float64 configuration not active")
+            result = module.solve(solid, **kwargs)
+        else:
+            raise RuntimeError(f"unapproved backend: {case['backend']}")
+    log_payload = (
+        "STDOUT\n" + captured_stdout.getvalue() + "\nSTDERR\n" + captured_stderr.getvalue()
+    ).encode("utf-8")
+    log_path = output_dir / "solver.log"
+    log_path.write_bytes(log_payload)
+    ux = np.asarray(result["ux"], dtype=np.float64)
+    velocity_path = output_dir / "ux.npy"
+    np.save(velocity_path, ux, allow_pickle=False)
+    fluid = ~solid
+    q_box = float(result["q"])
+    phi_gross = float(result["phi"])
+    nu_lu = float(result["nu"])
+    u_void = q_box / phi_gross
+    k_returned = float(result["k"])
+    k_gross = nu_lu * q_box / g_lu
+    k_void = nu_lu * u_void / g_lu
+    u_max = float(np.max(np.abs(ux[fluid])))
+    mach = math.sqrt(3.0) * u_max
+    reynolds = u_void * shape[0] / nu_lu
+    finite = all(
+        math.isfinite(value)
+        for value in (q_box, phi_gross, u_void, k_returned, k_gross, k_void, u_max, mach, reynolds)
+    )
+    completed_steps = int(result["steps"])
+    converged = completed_steps < int(case["max_steps"])
+    if not finite:
+        disposition = "LBM_NONFINITE"
+    elif not converged:
+        disposition = "LBM_UNCONVERGED"
+    elif mach > protocol["thresholds"]["mach_max"]:
+        disposition = "LBM_MACH_LIMIT_EXCEEDED"
+    elif reynolds > protocol["thresholds"]["Re_L_max"]:
+        disposition = "LBM_REYNOLDS_LIMIT_EXCEEDED"
+    else:
+        disposition = "RUN_LEVEL_PASS_PENDING_MATRIX_GATES"
+    record = {
+        "schema_version": "espresso.whole_pull.xsv_taichi_001.lbm_run.v1",
+        "task": "XSV-TAICHI-001",
+        "run_id": args.run_id,
+        "case_id": case["geometry"],
+        "backend": case["backend"],
+        "actual_architecture": actual_architecture,
+        "precision": "float64",
+        "puckworks_commit": protocol["sources"]["puckworks"]["commit"],
+        "puckworks_tree": protocol["sources"]["puckworks"]["tree"],
+        "puckworks_source_hashes": protocol["sources"]["puckworks"]["files"],
+        "mask_payload_sha256": geometry["payload_sha256"],
+        "g_lu": g_lu,
+        "tau_plus": tau_plus,
+        "nu_lu": nu_lu,
+        "check_interval": kwargs["check"],
+        "rtol": kwargs["rtol"],
+        "min_steps": kwargs["min_steps"],
+        "max_steps": kwargs["max_steps"],
+        "completed_steps": completed_steps,
+        "converged": converged,
+        "q_box_lu": q_box,
+        "phi_gross": phi_gross,
+        "phi_x_connected": geometry["phi_x_connected"],
+        "u_void_lu": u_void,
+        "k_puckworks_returned": k_returned,
+        "K_gross_lu": k_gross,
+        "K_void_lu": k_void,
+        "u_max_lu": u_max,
+        "Mach": mach,
+        "Re_L": reynolds,
+        "wall_clock_seconds": float(result["seconds"]),
+        "output_field_sha256": sha256_file(velocity_path),
+        "log_sha256": sha256_file(log_path),
+        "python": platform.python_version(),
+        "numpy": np.__version__,
+        "typed_disposition": disposition,
+    }
+    record_path = output_dir / "run.json"
+    record_path.write_bytes(canonical_json_bytes(record))
+    print(json.dumps(record, sort_keys=True))
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -187,6 +342,11 @@ def parse_args() -> argparse.Namespace:
     geometry.add_argument("--puckworks", required=True)
     geometry.add_argument("--output", required=True)
     geometry.set_defaults(function=generate_geometry)
+    lbm = subparsers.add_parser("run-lbm")
+    lbm.add_argument("--run-id", required=True)
+    lbm.add_argument("--puckworks", required=True)
+    lbm.add_argument("--evidence-root", required=True)
+    lbm.set_defaults(function=run_lbm)
     return parser.parse_args()
 
 

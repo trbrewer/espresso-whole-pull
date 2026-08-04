@@ -74,6 +74,7 @@ class XSVTaichi001Tests(unittest.TestCase):
             "generate_mask",
             "connected_descriptor",
             "generate_geometry",
+            "run_lbm",
             "parse_args",
             "main",
         ):
@@ -84,6 +85,9 @@ class XSVTaichi001Tests(unittest.TestCase):
         )
         self.assertIn("Path(__file__).resolve().parents[3]", runtime)
         self.assertIn("sys.dont_write_bytecode = True", runtime)
+        self.assertIn('lbm = subparsers.add_parser("run-lbm")', runtime)
+        self.assertIn('k_gross = nu_lu * q_box / g_lu', runtime)
+        self.assertIn('k_void = nu_lu * u_void / g_lu', runtime)
         geometry_manifest = CASE_ROOT / "XSV_TAICHI_001_GEOMETRY_MANIFEST.json"
         self.assertEqual(
             hashlib.sha256(geometry_manifest.read_bytes()).hexdigest(),
