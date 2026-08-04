@@ -1,22 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="394" viewBox="0 0 1200 394">
-<rect width="1200" height="100%" fill="white"/>
-<text x="24" y="34" font-family="monospace" font-size="20">schmieder h1 axis contrasts</text>
-<text x="24" y="64" font-family="monospace" font-size="13">P1_H1/FLOW_HIGH_MINUS_LOW/1/1 source=-0.326026666667 model=-0.799585156565</text>
-<text x="24" y="82" font-family="monospace" font-size="13">P1_H1/FLOW_HIGH_MINUS_LOW/1/2 source=-0.283823333333 model=-1.05113216651</text>
-<text x="24" y="100" font-family="monospace" font-size="13">P1_H1/FLOW_HIGH_MINUS_LOW/1/3 source=-0.228483333333 model=-0.638806119827</text>
-<text x="24" y="118" font-family="monospace" font-size="13">P1_H1/GRIND_COARSE_MINUS_FINE/1/1 source=0.171993333333 model=-0.0286284787496</text>
-<text x="24" y="136" font-family="monospace" font-size="13">P1_H1/GRIND_COARSE_MINUS_FINE/1/2 source=0.27096 model=-0.0409197400447</text>
-<text x="24" y="154" font-family="monospace" font-size="13">P1_H1/GRIND_COARSE_MINUS_FINE/1/3 source=0.313383333333 model=-0.0283895834081</text>
-<text x="24" y="172" font-family="monospace" font-size="13">P1_H1/TEMPERATURE_HIGH_MINUS_LOW/1/1 source=0.0661966666667 model=0.0141314087774</text>
-<text x="24" y="190" font-family="monospace" font-size="13">P1_H1/TEMPERATURE_HIGH_MINUS_LOW/1/2 source=0.0453333333333 model=0.0201385879528</text>
-<text x="24" y="208" font-family="monospace" font-size="13">P1_H1/TEMPERATURE_HIGH_MINUS_LOW/1/3 source=0.02465 model=0.0136955553905</text>
-<text x="24" y="226" font-family="monospace" font-size="13">P2_H1/FLOW_HIGH_MINUS_LOW/1/1 source=-0.326026666667 model=-0.433399733685</text>
-<text x="24" y="244" font-family="monospace" font-size="13">P2_H1/FLOW_HIGH_MINUS_LOW/1/2 source=-0.283823333333 model=-0.292789647157</text>
-<text x="24" y="262" font-family="monospace" font-size="13">P2_H1/FLOW_HIGH_MINUS_LOW/1/3 source=-0.228483333333 model=-0.0270260983066</text>
-<text x="24" y="280" font-family="monospace" font-size="13">P2_H1/GRIND_COARSE_MINUS_FINE/1/1 source=0.171993333333 model=-0.0165530061491</text>
-<text x="24" y="298" font-family="monospace" font-size="13">P2_H1/GRIND_COARSE_MINUS_FINE/1/2 source=0.27096 model=-0.0130637894089</text>
-<text x="24" y="316" font-family="monospace" font-size="13">P2_H1/GRIND_COARSE_MINUS_FINE/1/3 source=0.313383333333 model=-0.000836919625653</text>
-<text x="24" y="334" font-family="monospace" font-size="13">P2_H1/TEMPERATURE_HIGH_MINUS_LOW/1/1 source=0.0661966666667 model=0.00799503062723</text>
-<text x="24" y="352" font-family="monospace" font-size="13">P2_H1/TEMPERATURE_HIGH_MINUS_LOW/1/2 source=0.0453333333333 model=0.00620002763003</text>
-<text x="24" y="370" font-family="monospace" font-size="13">P2_H1/TEMPERATURE_HIGH_MINUS_LOW/1/3 source=0.02465 model=0.000364280895756</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect x="0" y="0" width="1000" height="620" fill="white"/>
+<title>H1 flow, grind, and temperature contrasts</title>
+<desc>cup_masses.csv: post-fit derived source quantities, not independent measurements; see VAL_PUCKWORKS_001 lineage authority</desc>
+<text x="40" y="34" font-family="sans-serif" font-size="20">H1 flow, grind, and temperature contrasts</text>
+<line x1="90" y1="540" x2="950" y2="540" stroke="black"/>
+<line x1="90" y1="70" x2="90" y2="540" stroke="black"/>
+<text x="480" y="575" font-family="sans-serif" font-size="13">axis / brew-ratio group</text>
+<text x="18" y="300" font-family="sans-serif" font-size="13" transform="rotate(-90 18 300)">contrast (g cup solute)</text>
+<line x1="104" y1="305" x2="104" y2="367.033" stroke="#333333" stroke-width="5"/>
+<line x1="116" y1="305" x2="116" y2="457.138" stroke="#756bb1" stroke-width="5"/>
+<text x="110" y="560" transform="rotate(60 110 560)" font-family="sans-serif" font-size="8">P1/FLOW/1/1</text>
+<line x1="149" y1="305" x2="149" y2="359.003" stroke="#333333" stroke-width="5"/>
+<line x1="161" y1="305" x2="161" y2="505.000" stroke="#756bb1" stroke-width="5"/>
+<text x="155" y="560" transform="rotate(60 155 560)" font-family="sans-serif" font-size="8">P1/FLOW/1/2</text>
+<line x1="194" y1="305" x2="194" y2="348.474" stroke="#333333" stroke-width="5"/>
+<line x1="206" y1="305" x2="206" y2="426.546" stroke="#756bb1" stroke-width="5"/>
+<text x="200" y="560" transform="rotate(60 200 560)" font-family="sans-serif" font-size="8">P1/FLOW/1/3</text>
+<line x1="239" y1="305" x2="239" y2="272.275" stroke="#333333" stroke-width="5"/>
+<line x1="251" y1="305" x2="251" y2="310.447" stroke="#756bb1" stroke-width="5"/>
+<text x="245" y="560" transform="rotate(60 245 560)" font-family="sans-serif" font-size="8">P1/GRIND/1/1</text>
+<line x1="284" y1="305" x2="284" y2="253.444" stroke="#333333" stroke-width="5"/>
+<line x1="296" y1="305" x2="296" y2="312.786" stroke="#756bb1" stroke-width="5"/>
+<text x="290" y="560" transform="rotate(60 290 560)" font-family="sans-serif" font-size="8">P1/GRIND/1/2</text>
+<line x1="329" y1="305" x2="329" y2="245.372" stroke="#333333" stroke-width="5"/>
+<line x1="341" y1="305" x2="341" y2="310.402" stroke="#756bb1" stroke-width="5"/>
+<text x="335" y="560" transform="rotate(60 335 560)" font-family="sans-serif" font-size="8">P1/GRIND/1/3</text>
+<line x1="374" y1="305" x2="374" y2="292.405" stroke="#333333" stroke-width="5"/>
+<line x1="386" y1="305" x2="386" y2="302.311" stroke="#756bb1" stroke-width="5"/>
+<text x="380" y="560" transform="rotate(60 380 560)" font-family="sans-serif" font-size="8">P1/TEMPERATURE/1/1</text>
+<line x1="419" y1="305" x2="419" y2="296.374" stroke="#333333" stroke-width="5"/>
+<line x1="431" y1="305" x2="431" y2="301.168" stroke="#756bb1" stroke-width="5"/>
+<text x="425" y="560" transform="rotate(60 425 560)" font-family="sans-serif" font-size="8">P1/TEMPERATURE/1/2</text>
+<line x1="464" y1="305" x2="464" y2="300.310" stroke="#333333" stroke-width="5"/>
+<line x1="476" y1="305" x2="476" y2="302.394" stroke="#756bb1" stroke-width="5"/>
+<text x="470" y="560" transform="rotate(60 470 560)" font-family="sans-serif" font-size="8">P1/TEMPERATURE/1/3</text>
+<line x1="509" y1="305" x2="509" y2="367.033" stroke="#333333" stroke-width="5"/>
+<line x1="521" y1="305" x2="521" y2="387.463" stroke="#e6550d" stroke-width="5"/>
+<text x="515" y="560" transform="rotate(60 515 560)" font-family="sans-serif" font-size="8">P2/FLOW/1/1</text>
+<line x1="554" y1="305" x2="554" y2="359.003" stroke="#333333" stroke-width="5"/>
+<line x1="566" y1="305" x2="566" y2="360.709" stroke="#e6550d" stroke-width="5"/>
+<text x="560" y="560" transform="rotate(60 560 560)" font-family="sans-serif" font-size="8">P2/FLOW/1/2</text>
+<line x1="599" y1="305" x2="599" y2="348.474" stroke="#333333" stroke-width="5"/>
+<line x1="611" y1="305" x2="611" y2="310.142" stroke="#e6550d" stroke-width="5"/>
+<text x="605" y="560" transform="rotate(60 605 560)" font-family="sans-serif" font-size="8">P2/FLOW/1/3</text>
+<line x1="644" y1="305" x2="644" y2="272.275" stroke="#333333" stroke-width="5"/>
+<line x1="656" y1="305" x2="656" y2="308.150" stroke="#e6550d" stroke-width="5"/>
+<text x="650" y="560" transform="rotate(60 650 560)" font-family="sans-serif" font-size="8">P2/GRIND/1/1</text>
+<line x1="689" y1="305" x2="689" y2="253.444" stroke="#333333" stroke-width="5"/>
+<line x1="701" y1="305" x2="701" y2="307.486" stroke="#e6550d" stroke-width="5"/>
+<text x="695" y="560" transform="rotate(60 695 560)" font-family="sans-serif" font-size="8">P2/GRIND/1/2</text>
+<line x1="734" y1="305" x2="734" y2="245.372" stroke="#333333" stroke-width="5"/>
+<line x1="746" y1="305" x2="746" y2="305.159" stroke="#e6550d" stroke-width="5"/>
+<text x="740" y="560" transform="rotate(60 740 560)" font-family="sans-serif" font-size="8">P2/GRIND/1/3</text>
+<line x1="779" y1="305" x2="779" y2="292.405" stroke="#333333" stroke-width="5"/>
+<line x1="791" y1="305" x2="791" y2="303.479" stroke="#e6550d" stroke-width="5"/>
+<text x="785" y="560" transform="rotate(60 785 560)" font-family="sans-serif" font-size="8">P2/TEMPERATURE/1/1</text>
+<line x1="824" y1="305" x2="824" y2="296.374" stroke="#333333" stroke-width="5"/>
+<line x1="836" y1="305" x2="836" y2="303.820" stroke="#e6550d" stroke-width="5"/>
+<text x="830" y="560" transform="rotate(60 830 560)" font-family="sans-serif" font-size="8">P2/TEMPERATURE/1/2</text>
+<line x1="869" y1="305" x2="869" y2="300.310" stroke="#333333" stroke-width="5"/>
+<line x1="881" y1="305" x2="881" y2="304.931" stroke="#e6550d" stroke-width="5"/>
+<text x="875" y="560" transform="rotate(60 875 560)" font-family="sans-serif" font-size="8">P2/TEMPERATURE/1/3</text>
+<line x1="90" y1="305" x2="950" y2="305" stroke="#888" stroke-dasharray="4 3"/>
+<text x="680" y="90" font-family="sans-serif" font-size="12">source black; P1 purple; P2 orange</text>
+<text x="40" y="602" font-family="sans-serif" font-size="11">cup_masses.csv: post-fit derived source quantities, not independent measurements; see VAL_PUCKWORKS_001 lineage authority</text>
 </svg>

@@ -135,6 +135,7 @@ closed final-result schema and portable result/audit/summary records under the
 same case directory, five deterministic SVG figures under its `figures/`
 subdirectory, and the substantive result report under `docs/validation/`.
 
+
 VAL-001 post-result controls include `tools/validation/val001/invocation.py`,
 `source_identity.py`, the governed schema registry, the invocation event
 journal, the post-result execution lock, the hardening freeze, and standalone
@@ -164,3 +165,8 @@ VAL-CASE-001 case-specific artifacts are under
 addendum, scientific report, and review disposition under
 `docs/validation/cases/`. Complete generated OpenFOAM cases, meshes, fields,
 processor directories, executables, traces, and logs remain outside Git.
+The persistent imported-evidence authority is
+`docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md`;
+its exact upstream JSON records live under
+`validation/external/puckworks_base_temporal_cv/` and selected upstream plots
+under `docs/evidence/puckworks_base_temporal_cv/figures/`.

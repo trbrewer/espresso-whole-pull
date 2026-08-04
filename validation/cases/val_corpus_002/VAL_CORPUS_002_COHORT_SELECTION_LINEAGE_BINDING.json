@@ -1,0 +1,16 @@
+{
+  "schema_version": "espresso.val_corpus_002.cohort_selection_lineage_binding.v1",
+  "bound_record_path": "validation/cases/val_corpus_002/VAL_CORPUS_002_COHORT_SELECTION.json",
+  "bound_record_sha256": "4fd5c0e4971b9f976c0f4da707ab5f9a43e1d5131e06e3ea4c64675bc5b0b054",
+  "binding_reason": "ORIGINAL_COHORT_REMAINS_IMMUTABLE_AND_CONTENT_BOUND_BY_THE_GOVERNED_B1_MANIFEST",
+  "source_path": "puckworks/data/schmieder2023/cup_masses.csv",
+  "source_lineage": {
+    "evidence_class": "POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+    "independent_measurement": false,
+    "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+    "prohibited_use": "INDEPENDENT_VALIDATION_TARGET",
+    "required_citation": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md",
+    "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
+    "uncertainty_role": "POST_FIT_DERIVED_REPLICATE_SPREAD_NOT_INDEPENDENT_MEASUREMENT_UNCERTAINTY"
+  }
+}

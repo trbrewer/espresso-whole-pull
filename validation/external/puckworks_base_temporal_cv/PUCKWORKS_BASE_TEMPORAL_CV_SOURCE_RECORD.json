@@ -1,0 +1,119 @@
+{
+  "schema_version": "espresso.external.puckworks_base_temporal_cv.v1",
+  "upstream_repository": "https://github.com/trbrewer/puckworks",
+  "upstream_commit": "21869fe19feec2dce6af8f4a41f63299473e31c2",
+  "evidence_role": "CROSS_REPOSITORY_SUPPORTING_EXTRACTION_EVIDENCE",
+  "comparison_mode": "LEAVE_ONE_EXPERIMENT_OUT_WITHIN_ONE_SOURCE_CAMPAIGN",
+  "physical_validation": "NOT_ESTABLISHED",
+  "direct_validation_of_espresso_whole_pull_foam": false,
+  "paper_1_status": "CLOSED_BY_SCIENTIFIC_EVIDENCE",
+  "artifacts": [
+    {
+      "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/PAPER_A_TEMPORAL_MODEL_COMPARISON_V1.json",
+      "local_path": "validation/external/puckworks_base_temporal_cv/PAPER_A_TEMPORAL_MODEL_COMPARISON_V1.json",
+      "upstream_sha256": "581c985723542003a9c74f80f7b70a340d9b80869110993e03f57d2998adb5ff",
+      "local_sha256": "581c985723542003a9c74f80f7b70a340d9b80869110993e03f57d2998adb5ff",
+      "byte_identity": true,
+      "evidence_status": "EXPLORATORY_SCIENTIFIC_SCREEN",
+      "claim_boundary": "SUPPORTING_EXTRACTION_COMPONENT_EVIDENCE_ONLY"
+    },
+    {
+      "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/PAPER_A_TEMPORAL_MATCHED_DATA_MANIFEST_V1.json",
+      "local_path": "validation/external/puckworks_base_temporal_cv/PAPER_A_TEMPORAL_MATCHED_DATA_MANIFEST_V1.json",
+      "upstream_sha256": "6df7c7698622aca082518894ea9e2b730141a27463d177c807b23feee5e5f111",
+      "local_sha256": "6df7c7698622aca082518894ea9e2b730141a27463d177c807b23feee5e5f111",
+      "byte_identity": true,
+      "evidence_status": "AUTHORITATIVE_MATCHED_DATA_DESCRIPTION",
+      "claim_boundary": "WITHIN_ONE_SOURCE_CAMPAIGN"
+    },
+    {
+      "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/PAPER_A_CUP_TARGET_LINEAGE_AUDIT_V1.json",
+      "local_path": "validation/external/puckworks_base_temporal_cv/PAPER_A_CUP_TARGET_LINEAGE_AUDIT_V1.json",
+      "upstream_sha256": "87087c54754c7f73fa7de11c8cde1639ab4901152f08d9f6a932739e83e2e92a",
+      "local_sha256": "87087c54754c7f73fa7de11c8cde1639ab4901152f08d9f6a932739e83e2e92a",
+      "byte_identity": true,
+      "evidence_status": "SOURCE_LINEAGE_AUDIT",
+      "claim_boundary": "DERIVED_CUMULATIVE_METRIC_NOT_INDEPENDENT"
+    },
+    {
+      "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/PAPER_A_TEMPORAL_RESIDUAL_ROBUSTNESS_V1.json",
+      "local_path": "validation/external/puckworks_base_temporal_cv/PAPER_A_TEMPORAL_RESIDUAL_ROBUSTNESS_V1.json",
+      "upstream_sha256": "f6f09ac985ab58652e53a52185db96801c50169776a396d2fa95e490619fc04b",
+      "local_sha256": "f6f09ac985ab58652e53a52185db96801c50169776a396d2fa95e490619fc04b",
+      "byte_identity": true,
+      "evidence_status": "EXPLORATORY_ROBUSTNESS_CONTEXT",
+      "claim_boundary": "NOT_A_FORMAL_GATE"
+    },
+    {
+      "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/figures/temporal_heldout_late.png",
+      "local_path": "docs/evidence/puckworks_base_temporal_cv/figures/temporal_heldout_late.png",
+      "upstream_sha256": "55945eceb05ebc4d449c944a293911dfad6c60b418f808f570397b36c23013dd",
+      "local_sha256": "55945eceb05ebc4d449c944a293911dfad6c60b418f808f570397b36c23013dd",
+      "byte_identity": true,
+      "evidence_status": "SELECTED_SUPPORTING_FIGURE",
+      "claim_boundary": "HELD_OUT_EXPERIMENT_WITHIN_ONE_CAMPAIGN"
+    },
+    {
+      "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/figures/temporal_observed_vs_predicted.png",
+      "local_path": "docs/evidence/puckworks_base_temporal_cv/figures/temporal_observed_vs_predicted.png",
+      "upstream_sha256": "4248022df4149fb9b9de5ad3caa6fd69c9e7198bacc4acbd0b412d1991994dbb",
+      "local_sha256": "4248022df4149fb9b9de5ad3caa6fd69c9e7198bacc4acbd0b412d1991994dbb",
+      "byte_identity": true,
+      "evidence_status": "SELECTED_SUPPORTING_FIGURE",
+      "claim_boundary": "RAW_FRACTION_EXTRACTION_COMPONENT_ONLY"
+    },
+    {
+      "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/figures/temporal_parameter_stability.png",
+      "local_path": "docs/evidence/puckworks_base_temporal_cv/figures/temporal_parameter_stability.png",
+      "upstream_sha256": "2ccd5f82eff60945f83851c42e00520cea9cdfa11197d8f948d2f5239cedf126",
+      "local_sha256": "2ccd5f82eff60945f83851c42e00520cea9cdfa11197d8f948d2f5239cedf126",
+      "byte_identity": true,
+      "evidence_status": "SELECTED_SUPPORTING_FIGURE",
+      "claim_boundary": "WITHIN_CAMPAIGN_PARAMETER_STABILITY"
+    },
+    {
+      "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/figures/temporal_conservation_checks.png",
+      "local_path": "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png",
+      "upstream_sha256": "9336facc0d5a09b216904759c3942c70768d56f2f533d512a33096ce1822e778",
+      "local_sha256": "9336facc0d5a09b216904759c3942c70768d56f2f533d512a33096ce1822e778",
+      "byte_identity": true,
+      "evidence_status": "SELECTED_SUPPORTING_FIGURE",
+      "claim_boundary": "RETAINED_COMPARISON_NUMERICAL_CHECK_ONLY"
+    },
+    {
+      "upstream_path": "docs/paper1_resource/exploratory/temporal_discrepancy/figures/temporal_integrated_vs_raw.png",
+      "local_path": "docs/evidence/puckworks_base_temporal_cv/figures/temporal_integrated_vs_raw.png",
+      "upstream_sha256": "69ec515c72bbb59c4873396974ea02c6d1b4b8878c1c45da94aa0812255e7717",
+      "local_sha256": "69ec515c72bbb59c4873396974ea02c6d1b4b8878c1c45da94aa0812255e7717",
+      "byte_identity": true,
+      "evidence_status": "DATA_LINEAGE_CAVEAT_FIGURE_ONLY",
+      "claim_boundary": "NOT_EVIDENCE_OF_SUPERIOR_PREDICTIVE_PERFORMANCE"
+    }
+  ],
+  "matched_data": {
+    "unit": "experiment_x_replicate_x_solute",
+    "primary_retained_grind": "GL 1.7",
+    "experiments": [1, 2, 5, 6, 7],
+    "experiment_count": 5,
+    "shot_count": 16,
+    "solutes": ["caffeine", "trigonelline", "5-CQA"],
+    "fractions": [1, 2, 3, 5, 7, 10],
+    "late_fractions": [7, 10],
+    "held_out_unit": "entire_experiment",
+    "excluded_shot_count": 3
+  },
+  "val_corpus_002_source_snapshot": {
+    "repository": "trbrewer/puckworks",
+    "commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e",
+    "tree": "44d6539096648777f78c4db83f0985d5bd16e352",
+    "cup_masses_csv_sha256": "39b7c16f9d9da614f151f46cb0db1440d43f150fbf49d3d2119f3f2fa1622f43",
+    "kinetics_fit_params_avg_csv_sha256": "00ff8c8344e9690274d2a6e7ec3f3d63b092d8b233d5f5f381301af09816b1d6"
+  },
+  "cup_masses_csv_lineage": {
+    "evidence_class": "POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+    "independent_measurement": false,
+    "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+    "prohibited_use": "INDEPENDENT_VALIDATION_TARGET",
+    "required_citation": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md"
+  }
+}

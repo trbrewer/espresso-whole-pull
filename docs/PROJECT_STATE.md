@@ -7,8 +7,8 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 266/266 PASS
-- Active validation case: `VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`
+- Public source verification: 272/272 PASS
+- Active validation case: `VAL_CORPUS_002_STAGE_B2_FINAL_REPORTING_AND_LINEAGE_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
@@ -36,8 +36,12 @@ independent exact-head review. Its exact-head semantic correction now parses
 and independently reduces the retained trace, validates the closed numerical
 record, and deterministically reproduces the strengthened governed bundle
 without solver or optimizer execution. Stage B2 now has all 45 terminal
-production dispositions: 27 pass and 18 immutable typed target-coverage
-failures. The corrected Waszkiewicz P2 case passed, predecessor parity remains
+production dispositions (27 PASS and 18 immutable typed target-coverage
+failures); its numerical campaign and approved scientific interpretation are
+unchanged. Final reporting now identifies Schmieder `cup_masses.csv` as
+post-fit derived evidence, not an independent measurement. Merge and any next
+mechanism remain unauthorized. The corrected Waszkiewicz P2 case passed,
+predecessor parity remains
 1,500/1,500, and the nine-identity sensitivity inventory passed with one exact
 baseline reuse. Frozen governed reductions and deterministic reporting are
 complete pending final exact-head review. The result is local reconstruction

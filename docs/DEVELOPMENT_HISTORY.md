@@ -113,6 +113,13 @@
   OpenFOAM or sensitivity rerun, refit, protected scoring, or new physics
   occurred.
 
+- VAL-CORPUS-002 Stage B2 final package correction: retained the complete
+  numerical campaign unchanged, added the persistent Puckworks cup-mass
+  lineage authority, made the nested result bundle fail closed, separated
+  numerical bracketing from governed availability, and replaced text-only
+  SVG summaries with deterministic scientific plots. No OpenFOAM, sensitivity,
+  refit, protected scoring, mechanism, or VAL-CASE-002 work was performed.
+
 - v0.1.0: initial source package; execution status unknown.
 - v0.1.1: failed solver build retained as engineering evidence.
 - v0.1.2: first complete whole-pull run.

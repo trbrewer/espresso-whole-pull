@@ -1,10 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="178" viewBox="0 0 1200 178">
-<rect width="1200" height="100%" fill="white"/>
-<text x="24" y="34" font-family="monospace" font-size="20">waszkiewicz both clocks</text>
-<text x="24" y="64" font-family="monospace" font-size="13">P0/EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS rmse=0.086452023793081464 values=0.0874527294285,0.142770204862,0.154227350455,0.154874812425,0.151809682295,0.146546353405,0.136823571255,0.120410883165,0.0965341683237,0.0683835608154,0.0424603201983,0.0236014870211</text>
-<text x="24" y="82" font-family="monospace" font-size="13">P0/SOURCE_REPORTED_CLOCK rmse=0.10405347908529534 values=0.0291774893717,0.114076833231,0.149679587518,0.155317673615,0.153787348224,0.150098745704,0.143321500736,0.131166455279,0.111685216415,0.0854538119198,0.0573810944016,0.033955383666</text>
-<text x="24" y="100" font-family="monospace" font-size="13">P1/EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS rmse=0.079851194373242701 values=0.063870839717,0.121682302446,0.142750581637,0.144060581602,0.133060996412,0.119425677522,0.101321331447,0.0800450942531,0.0584492947704,0.0395926198792,0.025204639923,0.0153325757555</text>
-<text x="24" y="118" font-family="monospace" font-size="13">P1/SOURCE_REPORTED_CLOCK rmse=0.09736753162872952 values=0.018346972039,0.0886790920449,0.132888022101,0.145879076644,0.139855981337,0.128139371793,0.112690406762,0.0930569071869,0.0712587999588,0.0504404183684,0.0332658208001,0.0207540063025</text>
-<text x="24" y="136" font-family="monospace" font-size="13">P2/EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS rmse=0.066824895390099281 values=0.109192621534,0.152142515081,0.15666073888,0.156596397832,0.1540528992,0.14322393388,0.107738464049,0.0492555326994,0.0127273628705,0.00247888891648,0.000448994847868,8.01879114232e-05</text>
-<text x="24" y="154" font-family="monospace" font-size="13">P2/SOURCE_REPORTED_CLOCK rmse=0.086030492166159725 values=0.0455090978337,0.132810849589,0.155185932948,0.156896315306,0.155980779979,0.151409931559,0.133036698094,0.0848548833286,0.0303128347539,0.00673039293273,0.00125594841114,0.00022556204696</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect x="0" y="0" width="1000" height="620" fill="white"/>
+<title>Waszkiewicz interval TDS: both frozen clocks</title>
+<desc>source points black; P0 green; P1 purple; P2 orange; no optimized shift</desc>
+<text x="40" y="34" font-family="sans-serif" font-size="20">Waszkiewicz interval TDS: both frozen clocks</text>
+<line x1="90" y1="540" x2="950" y2="540" stroke="black"/>
+<line x1="90" y1="70" x2="90" y2="540" stroke="black"/>
+<text x="480" y="575" font-family="sans-serif" font-size="13">5-second interval index (two fixed clock panels)</text>
+<text x="18" y="300" font-family="sans-serif" font-size="13" transform="rotate(-90 18 300)">interval TDS fraction</text>
+<polyline points="100.000,142.736 132.000,156.725 164.000,130.000 196.000,263.768 228.000,383.708 260.000,448.711 292.000,483.632 324.000,501.295 356.000,510.498 388.000,517.034 420.000,521.274 452.000,522.387" fill="none" stroke="#222" stroke-width="2"/>
+<circle cx="100.000" cy="142.736" r="3" fill="#222"/>
+<circle cx="132.000" cy="156.725" r="3" fill="#222"/>
+<circle cx="164.000" cy="130.000" r="3" fill="#222"/>
+<circle cx="196.000" cy="263.768" r="3" fill="#222"/>
+<circle cx="228.000" cy="383.708" r="3" fill="#222"/>
+<circle cx="260.000" cy="448.711" r="3" fill="#222"/>
+<circle cx="292.000" cy="483.632" r="3" fill="#222"/>
+<circle cx="324.000" cy="501.295" r="3" fill="#222"/>
+<circle cx="356.000" cy="510.498" r="3" fill="#222"/>
+<circle cx="388.000" cy="517.034" r="3" fill="#222"/>
+<circle cx="420.000" cy="521.274" r="3" fill="#222"/>
+<circle cx="452.000" cy="522.387" r="3" fill="#222"/>
+<polyline points="100.000,483.615 132.000,348.646 164.000,292.046 196.000,283.083 228.000,285.516 260.000,291.380 292.000,302.154 324.000,321.477 356.000,352.448 388.000,394.149 420.000,438.778 452.000,476.019" fill="none" stroke="#1b9e77" stroke-width="2"/>
+<polyline points="100.000,500.833 132.000,389.022 164.000,318.741 196.000,298.088 228.000,307.663 260.000,326.290 292.000,350.850 324.000,382.062 356.000,416.716 388.000,449.812 420.000,477.115 452.000,497.006" fill="none" stroke="#7570b3" stroke-width="2"/>
+<polyline points="100.000,457.652 132.000,318.863 164.000,283.292 196.000,280.573 228.000,282.029 260.000,289.295 292.000,318.504 324.000,395.101 356.000,481.810 388.000,519.300 420.000,528.003 452.000,529.641" fill="none" stroke="#d95f02" stroke-width="2"/>
+<text x="100" y="92" font-family="sans-serif" font-size="11">SOURCE_REPORTED_CLOCK</text>
+<polyline points="530.000,142.736 562.000,156.725 594.000,130.000 626.000,263.768 658.000,383.708 690.000,448.711 722.000,483.632 754.000,501.295 786.000,510.498 818.000,517.034 850.000,521.274 882.000,522.387" fill="none" stroke="#222" stroke-width="2"/>
+<circle cx="530.000" cy="142.736" r="3" fill="#222"/>
+<circle cx="562.000" cy="156.725" r="3" fill="#222"/>
+<circle cx="594.000" cy="130.000" r="3" fill="#222"/>
+<circle cx="626.000" cy="263.768" r="3" fill="#222"/>
+<circle cx="658.000" cy="383.708" r="3" fill="#222"/>
+<circle cx="690.000" cy="448.711" r="3" fill="#222"/>
+<circle cx="722.000" cy="483.632" r="3" fill="#222"/>
+<circle cx="754.000" cy="501.295" r="3" fill="#222"/>
+<circle cx="786.000" cy="510.498" r="3" fill="#222"/>
+<circle cx="818.000" cy="517.034" r="3" fill="#222"/>
+<circle cx="850.000" cy="521.274" r="3" fill="#222"/>
+<circle cx="882.000" cy="522.387" r="3" fill="#222"/>
+<polyline points="530.000,390.972 562.000,303.030 594.000,284.816 626.000,283.787 658.000,288.660 690.000,297.027 722.000,312.484 754.000,338.576 786.000,376.534 818.000,421.287 850.000,462.498 882.000,492.479" fill="none" stroke="#1b9e77" stroke-width="2"/>
+<polyline points="530.000,428.461 562.000,336.555 594.000,303.061 626.000,300.979 658.000,318.466 690.000,340.142 722.000,368.924 754.000,402.748 786.000,437.080 818.000,467.057 850.000,489.931 882.000,505.625" fill="none" stroke="#7570b3" stroke-width="2"/>
+<polyline points="530.000,356.410 562.000,288.131 594.000,280.948 626.000,281.050 658.000,285.094 690.000,302.309 722.000,358.722 754.000,451.696 786.000,509.767 818.000,526.059 850.000,529.286 882.000,529.873" fill="none" stroke="#d95f02" stroke-width="2"/>
+<text x="530" y="92" font-family="sans-serif" font-size="11">EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS</text>
+<text x="40" y="602" font-family="sans-serif" font-size="11">source points black; P0 green; P1 purple; P2 orange; no optimized shift</text>
 </svg>

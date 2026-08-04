@@ -40,6 +40,15 @@ SOLVER_EXECUTABLE_SHA256 = "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc
 ACCEPTED_WASZ_P0_SHA256 = "09abbfdc0115a59b9452048f1ac2dcdbaf7707c91c31b166c998eab78ecf28b5"
 MASS_ABSOLUTE_TOLERANCE_KG = 1e-12
 RATE_NONNEGATIVITY_TOLERANCE_KG_S = 1e-15
+SOURCE_LINEAGE = {
+    "evidence_class": "POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+    "independent_measurement": False,
+    "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+    "prohibited_use": "INDEPENDENT_VALIDATION_TARGET",
+    "required_citation": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md",
+    "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
+    "uncertainty_role": "POST_FIT_DERIVED_REPLICATE_SPREAD_NOT_INDEPENDENT_MEASUREMENT_UNCERTAINTY",
+}
 
 
 def sha256(path: Path) -> str:
@@ -403,6 +412,7 @@ def build(snapshot: Path) -> dict[str, object]:
         ("docs/cards/waszkiewicz2025.md", "CC-BY-4.0", "Waszkiewicz model/evidence card", "mixed", "ADMISSIBLE_PUBLIC", "DESCRIPTIVE_SOURCE_SUMMARY", "CLOCK_AND_LIMITATION_REFERENCE"),
     ]
     evidence = [evidence_entry(snapshot, *spec[:1], rights=spec[1], definition=spec[2], units=spec[3], admissibility=spec[4], circularity=spec[5], role=spec[6]) for spec in evidence_specs]
+    next(row for row in evidence if row["path"] == "puckworks/data/schmieder2023/cup_masses.csv").update(SOURCE_LINEAGE)
 
     c0 = 0.24827
     decay_mass_g = 17.47261

@@ -1,4 +1,13 @@
 {
+  "source_lineage": {
+    "evidence_class": "POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+    "independent_measurement": false,
+    "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+    "prohibited_use": "INDEPENDENT_VALIDATION_TARGET",
+    "required_citation": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md",
+    "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
+    "uncertainty_role": "POST_FIT_DERIVED_REPLICATE_SPREAD_NOT_INDEPENDENT_MEASUREMENT_UNCERTAINTY"
+  },
   "evidence_class": "RECONSTRUCTION_OR_CALIBRATION",
   "partitions": [
     {"id": "SCHMIEDER_EXP7", "role": "SOURCE_RECONSTRUCTION_AND_CALIBRATION_ONLY", "experiments": [7]},

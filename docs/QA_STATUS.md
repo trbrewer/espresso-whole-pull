@@ -63,7 +63,7 @@ and source/holdout-fit counts remained zero.
 - shell syntax: PASS
 - JSON syntax: PASS
 
-## VAL-CORPUS-002 Stage B2 current disposition
+## VAL-CORPUS-002 Stage B2 final reporting and lineage disposition
 
 Stage B2 recovery preserved both historical Waszkiewicz P2 preparation
 failures, corrected only the structured-placeholder normalization, and
@@ -78,6 +78,13 @@ with partial axis-direction transfer, grind-sign reversal, hydraulic target-
 coverage mismatch, and cross-source time-shape failure. The comparison
 framework remains operational and fail closed; current exact qualification
 counts are recorded in `PACKAGE_QA_STATUS.json`.
+
+The final package correction leaves the numerical campaign unchanged and
+complete: 27 production PASS, 18 immutable typed target-coverage failures,
+9/9 sensitivity PASS, and 1500/1500 predecessor parity PASS. It carries the
+mandatory post-fit-derived `cup_masses.csv` lineage caveat. Physical
+validation remains not established; merge and any next mechanism are not
+authorized.
 
 ## VAL-CORPUS-002 Stage B1 calibration disposition
 
@@ -262,3 +269,4 @@ VAL-001 explicit-semantics QA verifies zero instance-derived governing schemas,
 complete executable-profile dispatch, and externally pinned candidate roots.
 All cases are synthetic; governed comparison and OpenFOAM execution counts are
 zero for this correction.
+not established; merge and any next mechanism are not authorized.

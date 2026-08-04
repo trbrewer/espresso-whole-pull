@@ -2,7 +2,8 @@
   "cases": [
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -13,27 +14,28 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 6.782748048114815e-14,
       "maximum_solute_balance_relative_residual": 2.822999271915071e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP1_P0_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "FAIL_NO_EXTRAPOLATION",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP1_P0_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
-        "20_g": 52.297617282849096,
+        "20_g": 52.2976172828491,
         "40_g": null,
         "60_g": null
       },
@@ -43,7 +45,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -54,25 +57,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 7.45418097441231e-14,
       "maximum_solute_balance_relative_residual": 7.290427441689713e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP1_P0_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP1_P0_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 24.277596420381087,
         "40_g": 42.94466945284093,
@@ -84,7 +88,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -95,25 +100,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 6.782748048114815e-14,
       "maximum_solute_balance_relative_residual": 4.180830942512332e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP1_P1_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "FAIL_NO_EXTRAPOLATION",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP1_P1_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 52.62482829855042,
         "40_g": null,
@@ -125,7 +131,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -136,28 +143,29 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 7.45418097441231e-14,
       "maximum_solute_balance_relative_residual": 1.042763653741019e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP1_P1_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP1_P1_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 24.65628791902708,
-        "40_g": 44.07851356060422,
+        "40_g": 44.07851356060423,
         "60_g": 64.73948432542281
       },
       "trace_bytes": 7876182,
@@ -166,7 +174,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -177,25 +186,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 6.782748048114815e-14,
       "maximum_solute_balance_relative_residual": 3.6758355944283374e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "FAIL_NO_EXTRAPOLATION",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 52.211629226733116,
         "40_g": null,
@@ -207,7 +217,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -218,25 +229,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 7.45418097441231e-14,
       "maximum_solute_balance_relative_residual": 7.426036458127354e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP1_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 24.148634358933194,
         "40_g": 43.73360855280343,
@@ -248,7 +260,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -259,25 +272,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 5.226444553065936e-14,
       "maximum_solute_balance_relative_residual": 6.49735669466673e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP2_P0_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP2_P0_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 27.144769240784306,
         "40_g": 48.15246990098737,
@@ -289,7 +303,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -300,25 +315,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 4.090627689054845e-14,
       "maximum_solute_balance_relative_residual": 2.2982092041014996e-12,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP2_P0_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP2_P0_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 9.657133519331893,
         "40_g": 16.322200592123995,
@@ -330,7 +346,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -341,28 +358,29 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 5.226444553065936e-14,
       "maximum_solute_balance_relative_residual": 9.550780960091944e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP2_P1_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP2_P1_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
-        "20_g": 27.532452126235135,
-        "40_g": 49.44186075202255,
+        "20_g": 27.53245212623514,
+        "40_g": 49.441860752022556,
         "60_g": 72.81948735738945
       },
       "trace_bytes": 7596103,
@@ -371,7 +389,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -382,25 +401,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 4.090627689054845e-14,
       "maximum_solute_balance_relative_residual": 2.329951801074118e-12,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP2_P1_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP2_P1_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 9.845589354325215,
         "40_g": 16.68885444398521,
@@ -412,7 +432,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -423,29 +444,30 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 5.226444553065936e-14,
       "maximum_solute_balance_relative_residual": 6.391267329787288e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
-        "20_g": 27.0226094723687,
-        "40_g": 49.138418211376965,
-        "60_g": 72.79635475602481
+        "20_g": 27.022609472368703,
+        "40_g": 49.13841821137697,
+        "60_g": 72.7963547560248
       },
       "trace_bytes": 7617907,
       "trace_sha256": "aa979b7dbbc3d412be79dccac63407607b5f6398721f70ee2f53a830e3855d01",
@@ -453,7 +475,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -464,25 +487,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 4.090627689054845e-14,
       "maximum_solute_balance_relative_residual": 4.47478063086522e-12,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP2_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 9.535605741185933,
         "40_g": 16.29246283477318,
@@ -494,7 +518,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -505,25 +530,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 4.5124051030789927e-14,
       "maximum_solute_balance_relative_residual": 4.3882076928469994e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP3_P0_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP3_P0_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 36.26600957008878,
         "40_g": 64.70711702117114,
@@ -535,7 +561,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -546,25 +573,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 3.8901565571446876e-14,
       "maximum_solute_balance_relative_residual": 1.3812835648150786e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP3_P0_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP3_P0_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.409639904741017,
         "40_g": 23.159614307999426,
@@ -576,7 +604,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -587,27 +616,28 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 4.5124051030789927e-14,
       "maximum_solute_balance_relative_residual": 6.616674183414289e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP3_P1_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP3_P1_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
-        "20_g": 36.6496408184317,
+        "20_g": 36.649640818431706,
         "40_g": 66.51213821715466,
         "60_g": null
       },
@@ -617,7 +647,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -628,29 +659,30 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 3.8901565571446876e-14,
       "maximum_solute_balance_relative_residual": 1.4591102913517792e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP3_P1_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP3_P1_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.675154582187524,
-        "40_g": 23.72241257370688,
-        "60_g": 34.17432824600061
+        "40_g": 23.722412573706883,
+        "60_g": 34.174328246000606
       },
       "trace_bytes": 7996424,
       "trace_sha256": "511e835e68fe20b5354505400696bf6f6352c6528e70a5fb62e9ba9036396b8c",
@@ -658,7 +690,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -669,25 +702,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 4.5124051030789927e-14,
       "maximum_solute_balance_relative_residual": 4.875558600444039e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 36.16272217201249,
         "40_g": 66.32396634739172,
@@ -699,7 +733,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -710,25 +745,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 3.8901565571446876e-14,
       "maximum_solute_balance_relative_residual": 8.525410743254727e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP3_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.270730794329584,
         "40_g": 23.277682391695734,
@@ -740,7 +776,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -751,25 +788,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 3.714024051798221e-14,
       "maximum_solute_balance_relative_residual": 3.841069036969142e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP4_P0_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP4_P0_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 42.199104205929345,
         "40_g": 75.45886444417454,
@@ -781,7 +819,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -792,25 +831,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 1.9080537307294183e-13,
       "maximum_solute_balance_relative_residual": 1.353016563562648e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP4_P0_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP4_P0_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 12.990744235419745,
         "40_g": 22.387208183695567,
@@ -822,7 +862,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -833,25 +874,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 3.714024051798221e-14,
       "maximum_solute_balance_relative_residual": 5.0191244477502375e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP4_P1_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP4_P1_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 42.56518679694827,
         "40_g": 77.61391348122659,
@@ -863,7 +905,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -874,25 +917,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 1.9080537307294183e-13,
       "maximum_solute_balance_relative_residual": 1.3750638441157975e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP4_P1_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP4_P1_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.248591765742788,
         "40_g": 22.927677050217685,
@@ -904,7 +948,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -915,25 +960,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 3.714024051798221e-14,
       "maximum_solute_balance_relative_residual": 4.370725705665491e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 42.1043520600816,
         "40_g": 77.48072129230383,
@@ -945,7 +991,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -956,27 +1003,28 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 1.9080537307294183e-13,
       "maximum_solute_balance_relative_residual": 7.679261052010512e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP4_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
-        "20_g": 12.852974007869117,
+        "20_g": 12.852974007869118,
         "40_g": 22.48506090313306,
         "60_g": 32.80682385566879
       },
@@ -986,7 +1034,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -997,25 +1046,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 1.1395305543224942e-14,
       "maximum_solute_balance_relative_residual": 3.9508015729507855e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP5_P0_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP5_P0_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 39.66691800613646,
         "40_g": 70.86529013085014,
@@ -1027,7 +1077,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1038,29 +1089,30 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 2.4343692293061768e-14,
       "maximum_solute_balance_relative_residual": 1.3830514218376713e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP5_P0_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP5_P0_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
-        "20_g": 13.346716414828581,
+        "20_g": 13.346716414828583,
         "40_g": 23.032528860813255,
-        "60_g": 33.28628782745542
+        "60_g": 33.28628782745541
       },
       "trace_bytes": 8026972,
       "trace_sha256": "7aa2fc600611e507765d74113e4a7a9c0727376de01cee87fd2622299a1dc3d1",
@@ -1068,7 +1120,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1079,25 +1132,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 1.1395305543224942e-14,
       "maximum_solute_balance_relative_residual": 5.3704781531340294e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP5_P1_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP5_P1_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 40.041404727299906,
         "40_g": 72.86941113741626,
@@ -1109,7 +1163,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1120,28 +1175,29 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 2.4343692293061768e-14,
       "maximum_solute_balance_relative_residual": 1.4563629066685e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP5_P1_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP5_P1_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.610978946852946,
-        "40_g": 23.59135902079732,
+        "40_g": 23.591359020797324,
         "60_g": 33.97109923859111
       },
       "trace_bytes": 8016359,
@@ -1150,7 +1206,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1161,25 +1218,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 1.1395305543224942e-14,
       "maximum_solute_balance_relative_residual": 4.5035760979925945e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 39.568908857604356,
         "40_g": 72.71469039223474,
@@ -1191,7 +1249,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1202,29 +1261,30 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 2.4343692293061768e-14,
       "maximum_solute_balance_relative_residual": 8.312866111414389e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP5_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.208084407015237,
         "40_g": 23.1472730655012,
-        "60_g": 33.8012136203993
+        "60_g": 33.801213620399295
       },
       "trace_bytes": 8042405,
       "trace_sha256": "a29305ad87f1e21cabb627d08ed58f9bb8af9fe835ce70b18b8636ceae47f644",
@@ -1232,7 +1292,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1243,25 +1304,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 6.583953372017955e-14,
       "maximum_solute_balance_relative_residual": 3.5131902971370535e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP6_P0_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP6_P0_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 46.84348298976805,
         "40_g": 83.8741833538566,
@@ -1273,7 +1335,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1284,29 +1347,30 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 2.2752691095978497e-14,
       "maximum_solute_balance_relative_residual": 1.3765115649661464e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP6_P0_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP6_P0_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.558851547230105,
         "40_g": 23.424180341181135,
-        "60_g": 33.877599065504604
+        "60_g": 33.8775990655046
       },
       "trace_bytes": 7887994,
       "trace_sha256": "44daed9686ded1426378653c0de5a692052f2b330a64d748e79bdd60bb8a4171",
@@ -1314,7 +1378,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1325,25 +1390,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 6.583953372017955e-14,
       "maximum_solute_balance_relative_residual": 4.605244842906627e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP6_P1_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP6_P1_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 47.192350746716535,
         "40_g": 86.30939826439217,
@@ -1355,7 +1421,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1366,25 +1433,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 2.2752691095978497e-14,
       "maximum_solute_balance_relative_residual": 1.4602631206166192e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP6_P1_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP6_P1_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.826921207063792,
         "40_g": 23.994341720980614,
@@ -1396,7 +1464,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1407,25 +1476,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 6.583953372017955e-14,
       "maximum_solute_balance_relative_residual": 4.2814850462279146e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 46.75353514487245,
         "40_g": 86.20891646064617,
@@ -1437,7 +1507,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1448,28 +1519,29 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 2.2752691095978497e-14,
       "maximum_solute_balance_relative_residual": 8.702804024294659e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP6_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.419693772655528,
-        "40_g": 23.549396863874506,
+        "40_g": 23.54939686387451,
         "60_g": 34.40968773516365
       },
       "trace_bytes": 7903272,
@@ -1478,7 +1550,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1489,28 +1562,29 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 2.7562825196337815e-14,
       "maximum_solute_balance_relative_residual": 3.884607551435213e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP7_P0_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP7_P0_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 41.32019173030931,
-        "40_g": 73.85802020649729,
+        "40_g": 73.8580202064973,
         "60_g": null
       },
       "trace_bytes": 7496961,
@@ -1519,7 +1593,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1530,27 +1605,28 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 1.0121216918848481e-13,
       "maximum_solute_balance_relative_residual": 1.3766067726038373e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P0",
-      "run_id": "SCHM_EXP7_P0_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P0",
+      "run_id": "SCHM_EXP7_P0_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
-        "20_g": 13.54448266159757,
+        "20_g": 13.544482661597572,
         "40_g": 23.395159861551942,
         "60_g": 33.83225095317827
       },
@@ -1560,7 +1636,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1571,25 +1648,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 2.7562825196337815e-14,
       "maximum_solute_balance_relative_residual": 5.132807532090414e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP7_P1_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP7_P1_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 41.68939167751574,
         "40_g": 75.96010910119774,
@@ -1601,7 +1679,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1612,25 +1691,26 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 1.0121216918848481e-13,
       "maximum_solute_balance_relative_residual": 1.4586458171467516e-10,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P1",
-      "run_id": "SCHM_EXP7_P1_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P1",
+      "run_id": "SCHM_EXP7_P1_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
         "20_g": 13.812270760781342,
         "40_g": 23.964415426418373,
@@ -1642,7 +1722,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1653,28 +1734,29 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": false,
+        "40_g": false,
+        "60_g": false
+      },
+      "governed_case_reason": "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE",
       "hydraulic_mode": "H0",
       "maximum_liquid_balance_relative_residual": 2.7562825196337815e-14,
       "maximum_solute_balance_relative_residual": 4.38067621104064e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "TYPED_NUMERICAL_CASE_FAILURE",
-      "target_availability": {
-        "20_g": false,
-        "40_g": false,
-        "60_g": false
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "FAIL_NO_EXTRAPOLATION"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H0",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "TYPED_NUMERICAL_CASE_FAILURE",
       "target_mass_times_s": {
         "20_g": 41.22439959304782,
-        "40_g": 75.81975624171392,
+        "40_g": 75.81975624171393,
         "60_g": null
       },
       "trace_bytes": 7505027,
@@ -1683,7 +1765,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1694,27 +1777,28 @@
       "fatal_event_count": 0,
       "final_time_s": 89.9999999999992,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "20_g": true,
+        "40_g": true,
+        "60_g": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "H1",
       "maximum_liquid_balance_relative_residual": 1.0140569150050877e-13,
       "maximum_solute_balance_relative_residual": 1.7794712945888162e-11,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
-      "parameterization": "P2",
-      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
-      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
-      "status": "PASS",
-      "target_availability": {
-        "20_g": true,
-        "40_g": true,
-        "60_g": true
-      },
-      "target_bracket_dispositions": {
+      "numerical_target_bracketing": {
         "20_g": "PASS",
         "40_g": "PASS",
         "60_g": "PASS"
       },
+      "parameterization": "P2",
+      "run_id": "SCHM_EXP7_P2_FIXED_AFTER_EXP7_CALIBRATION_H1",
+      "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
+      "status": "PASS",
       "target_mass_times_s": {
-        "20_g": 13.405385365637228,
+        "20_g": 13.40538536563723,
         "40_g": 23.519605211323064,
         "60_g": 34.36297124764841
       },
@@ -1724,7 +1808,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1735,21 +1820,22 @@
       "fatal_event_count": 0,
       "final_time_s": 63.0000000000042,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "interval_series": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "WASZKIEWICZ_9_BAR",
       "maximum_liquid_balance_relative_residual": 1.193739904794081e-13,
       "maximum_solute_balance_relative_residual": 9.076726573237566e-14,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
+      "numerical_target_bracketing": {
+        "interval_series": "PASS"
+      },
       "parameterization": "COMPACT",
       "run_id": "WASZ_9_COMPACT_P0_CHEMISTRY",
       "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "status": "PASS",
-      "target_availability": {
-        "interval_series": true
-      },
-      "target_bracket_dispositions": {
-        "interval_series": "PASS"
-      },
       "target_mass_times_s": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "trace_bytes": 6090549,
       "trace_sha256": "ff07e45af1dad9039429bb2821a3a3701166c35f695053025fddd76ef1735158",
@@ -1757,7 +1843,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1768,21 +1855,22 @@
       "fatal_event_count": 0,
       "final_time_s": 63.0000000000042,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "interval_series": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "WASZKIEWICZ_9_BAR",
       "maximum_liquid_balance_relative_residual": 1.193739904794081e-13,
       "maximum_solute_balance_relative_residual": 9.052737601230952e-14,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
+      "numerical_target_bracketing": {
+        "interval_series": "PASS"
+      },
       "parameterization": "COMPACT",
       "run_id": "WASZ_9_COMPACT_P1_CHEMISTRY",
       "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "status": "PASS",
-      "target_availability": {
-        "interval_series": true
-      },
-      "target_bracket_dispositions": {
-        "interval_series": "PASS"
-      },
       "target_mass_times_s": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "trace_bytes": 6163291,
       "trace_sha256": "8cde72abacabad32bd42e1e78e0ff87bbbcfda2a333ff1cd1b40d5f512bd802a",
@@ -1790,7 +1878,8 @@
     },
     {
       "boundedness": {
-        "cumulative_mass_monotone": true,
+        "cumulative_beverage_mass_monotone": true,
+        "cumulative_solute_mass_monotone": true,
         "finite": true,
         "nonnegative": true,
         "tds_0_to_1": true
@@ -1801,21 +1890,22 @@
       "fatal_event_count": 0,
       "final_time_s": 63.0000000000042,
       "first_time_s": 0.02,
+      "governed_case_metric_availability": {
+        "interval_series": true
+      },
+      "governed_case_reason": "NUMERICAL_GATES_PASS",
       "hydraulic_mode": "WASZKIEWICZ_9_BAR",
       "maximum_liquid_balance_relative_residual": 1.193739904794081e-13,
       "maximum_solute_balance_relative_residual": 9.488397748516898e-14,
       "mean_outlet_flow_over_declared_intervals": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "normal_end": true,
+      "numerical_target_bracketing": {
+        "interval_series": "PASS"
+      },
       "parameterization": "P2",
       "run_id": "WASZ_9_COMPACT_P2_FIXED_AFTER_EXP7_CALIBRATION_CHEMISTRY",
       "source_conditioned_hydraulic_residual": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "status": "PASS",
-      "target_availability": {
-        "interval_series": true
-      },
-      "target_bracket_dispositions": {
-        "interval_series": "PASS"
-      },
       "target_mass_times_s": "UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN",
       "trace_bytes": 6169970,
       "trace_sha256": "50ce29b81e6ae8b9c2f0337b63f286329cef39dd2614d0ec711f759861b873ce",
@@ -1825,5 +1915,13 @@
   "production_matrix_disposition": "COMPLETE_WITH_18_TYPED_NUMERICAL_CASE_FAILURES",
   "reduction_status": "PASS",
   "schema_version": "espresso.val_corpus_002.b2_per_case_numerical_summary.v1",
+  "source_lineage": {
+    "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+    "comparison_role": "COMPARISON_TO_POST_FIT_DERIVED_SOURCE_QUANTITIES",
+    "evidence_class": "POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+    "independent_measurement": false,
+    "prohibited_use": "INDEPENDENT_VALIDATION_TARGET",
+    "required_citation": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md"
+  },
   "status": "PASS"
 }

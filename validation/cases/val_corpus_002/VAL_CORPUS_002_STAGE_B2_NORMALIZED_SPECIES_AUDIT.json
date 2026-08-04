@@ -776,6 +776,15 @@
   "replicate_triplets_per_component": 24,
   "schema_version": "espresso.val_corpus_002.b2_normalized_species_audit.v1",
   "source_commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e",
+  "source_lineage": {
+    "allowed_use": "SOURCE_LINEAGE_RECONSTRUCTION_OR_DERIVED_METRIC_ONLY",
+    "audit_role": "SOURCE_LINEAGE_DIAGNOSTIC_OF_POST_FIT_DERIVED_QUANTITIES",
+    "evidence_class": "POST_FIT_DERIVED_FROM_FITTED_KINETICS",
+    "independent_measurement": false,
+    "prohibited_use": "INDEPENDENT_VALIDATION_TARGET",
+    "required_citation": "docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md",
+    "uncertainty_role": "POST_FIT_DERIVED_REPLICATE_SPREAD_NOT_INDEPENDENT_MEASUREMENT_UNCERTAINTY"
+  },
   "source_path": "puckworks/data/schmieder2023/cup_masses.csv",
   "source_repository": "trbrewer/puckworks",
   "source_sha256": "39b7c16f9d9da614f151f46cb0db1440d43f150fbf49d3d2119f3f2fa1622f43",

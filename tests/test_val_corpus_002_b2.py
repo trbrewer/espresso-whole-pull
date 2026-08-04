@@ -4,6 +4,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -152,7 +153,8 @@ class StageB2ProspectiveTests(unittest.TestCase):
 
     def test_final_result_exact_inventory_and_dispositions(self):
         result = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json").read_text())
-        cases = result["per_case_numerical_summary"]["cases"]
+        summary = json.loads((ROOT / result["records"]["per_case_numerical_summary"]["path"]).read_text())
+        cases = summary["cases"]
         self.assertEqual(len(cases), 45)
         self.assertEqual(sum(row["status"] == "PASS" for row in cases), 27)
         failures = [row for row in cases if row["status"] == "TYPED_NUMERICAL_CASE_FAILURE"]
@@ -215,10 +217,13 @@ class StageB2ProspectiveTests(unittest.TestCase):
     def test_deterministic_figure_manifest_and_repeatability(self):
         result_path = ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json"
         result = json.loads(result_path.read_text())
+        summary = json.loads((ROOT / result["records"]["per_case_numerical_summary"]["path"]).read_text())
+        value = {**result, "per_case_numerical_summary": summary}
+        base = json.loads((ROOT / result["base_result_reference"]["path"]).read_text())
         script_sha = reporting.sha256(ROOT / "scripts/val_corpus_002_b2_reporting.py")
         with tempfile.TemporaryDirectory() as one, tempfile.TemporaryDirectory() as two:
-            first = reporting.figures(result, Path(one), reporting.sha256(result_path), script_sha)
-            second = reporting.figures(result, Path(two), reporting.sha256(result_path), script_sha)
+            first = reporting.figures(value, base, Path(one), reporting.sha256(result_path), script_sha)
+            second = reporting.figures(value, base, Path(two), reporting.sha256(result_path), script_sha)
             self.assertEqual([Path(one, Path(row["figure_path"]).name).read_bytes() for row in first["figures"]],
                              [Path(two, Path(row["figure_path"]).name).read_bytes() for row in second["figures"]])
             self.assertEqual(first["aggregate_sha256"], second["aggregate_sha256"])
@@ -226,11 +231,31 @@ class StageB2ProspectiveTests(unittest.TestCase):
         self.assertEqual(manifest["figure_count"], 5)
         for row in manifest["figures"]:
             self.assertEqual(reporting.sha256(ROOT / row["figure_path"]), row["figure_sha256"])
+            svg = ET.fromstring((ROOT / row["figure_path"]).read_bytes())
+            primitives = [node for node in svg.iter() if node.tag.rsplit("}", 1)[-1] in
+                          {"line", "circle", "polyline", "rect"}]
+            self.assertGreater(len(primitives), 5)
+            for node in primitives:
+                for key in ("x", "x1", "x2", "cx"):
+                    if key in node.attrib:
+                        self.assertGreaterEqual(float(node.attrib[key]), 0.0)
+                        self.assertLessEqual(float(node.attrib[key]), 1000.0)
+                for key in ("y", "y1", "y2", "cy"):
+                    if key in node.attrib:
+                        self.assertGreaterEqual(float(node.attrib[key]), 0.0)
+                        self.assertLessEqual(float(node.attrib[key]), 620.0)
+                for point in node.attrib.get("points", "").split():
+                    x, y = map(float, point.split(","))
+                    self.assertTrue(0.0 <= x <= 1000.0 and 0.0 <= y <= 620.0)
+            self.assertNotIn("timestamp", (ROOT / row["figure_path"]).read_text().lower())
 
     def test_claim_and_execution_boundaries_unchanged(self):
         result = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json").read_text())
-        self.assertEqual(result["base_result_sha256"], reporting.BASE_RESULT_SHA256)
-        self.assertEqual(result["base_result"]["claim_ceiling"]["physical_validation"], "NOT_ESTABLISHED")
+        self.assertEqual(result["base_result_reference"]["sha256"], reporting.BASE_RESULT_SHA256)
+        base = json.loads((ROOT / result["base_result_reference"]["path"]).read_text())
+        self.assertEqual(base["claim_ceiling"]["physical_validation"], "NOT_ESTABLISHED")
+        self.assertEqual(result["bundle_status"], "RESULT_COMPLETE_WITH_TYPED_FAILURES")
+        self.assertEqual(result["reduction_status"], "PASS")
         self.assertEqual(result["openfoam_rerun"], "NOT_PERFORMED")
         self.assertEqual(result["sensitivity_rerun"], "NOT_PERFORMED")
         self.assertEqual(result["calibration"], "CLOSED_NO_REFIT")
@@ -244,12 +269,101 @@ class StageB2ProspectiveTests(unittest.TestCase):
         self.assertEqual(manifest["immutable_inputs"]["base_b2_result_sha256"],
                          reporting.BASE_RESULT_SHA256)
 
-    def test_final_result_closed_schema_top_level(self):
+    def test_final_result_closed_schema_and_semantics(self):
         schema = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT_SCHEMA.json").read_text())
         result = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json").read_text())
         self.assertFalse(schema["additionalProperties"])
         self.assertEqual(set(result), set(schema["required"]))
         self.assertEqual(set(schema["properties"]), set(schema["required"]))
+        self.assertEqual(reporting.validate_final_package(ROOT)["status"], "PASS")
+        for mutation in (
+            lambda value: value.update({"bundle_status": "PASS"}),
+            lambda value: value.update({"production_matrix_disposition": "PASS"}),
+            lambda value: value.update({"authoritative_interpretation": "HISTORICAL_BASE_RESULT"}),
+            lambda value: value["interpretation"].clear(),
+            lambda value: value["source_lineage"].pop("required_citation"),
+            lambda value: value["production_counts"].update({"pass": 45}),
+            lambda value: value.update({"extra": "rejected"}),
+        ):
+            altered = copy.deepcopy(result)
+            mutation(altered)
+            with self.assertRaises(Exception):
+                reporting.validate_final_package(ROOT, altered)
+
+    def test_target_bracketing_is_distinct_from_governed_availability(self):
+        value = json.loads((ROOT / "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_PER_CASE_NUMERICAL_SUMMARY.json").read_text())
+        row = next(item for item in value["cases"] if item["run_id"] == "SCHM_EXP1_P0_H0")
+        self.assertEqual(row["numerical_target_bracketing"], {
+            "20_g": "PASS", "40_g": "FAIL_NO_EXTRAPOLATION", "60_g": "FAIL_NO_EXTRAPOLATION"})
+        self.assertEqual(row["governed_case_metric_availability"], {
+            "20_g": False, "40_g": False, "60_g": False})
+        self.assertEqual(row["governed_case_reason"],
+                         "COMPLETE_20_40_60_VECTOR_REQUIRED_CASE_TYPED_FAILURE")
+
+    def test_cup_mass_lineage_caveat_is_complete(self):
+        required = reporting.LINEAGE
+        paths = [
+            "validation/cases/val_corpus_002/VAL_CORPUS_002_COHORT_SELECTION_LINEAGE_BINDING.json",
+            "validation/cases/val_corpus_002/VAL_CORPUS_002_CALIBRATION_COMPARISON_LEDGER.json",
+            "validation/cases/val_corpus_002/VAL_CORPUS_002_EXP7_H1_CALIBRATION_SOURCE_BINDING.json",
+            "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_FINAL_RESULT.json",
+            "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_NORMALIZED_SPECIES_AUDIT.json",
+            "validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_PER_CASE_NUMERICAL_SUMMARY.json",
+        ]
+        for relative in paths:
+            text = (ROOT / relative).read_text()
+            for key, expected in required.items():
+                self.assertIn(f'"{key}"', text, relative)
+                if isinstance(expected, str):
+                    self.assertIn(expected, text, relative)
+        for name in ("schmieder_h1_source_model.svg", "schmieder_h1_axis_contrasts.svg"):
+            self.assertIn("post-fit derived", (ROOT / "validation/cases/val_corpus_002/figures" / name).read_text())
+
+    def test_every_governed_cup_mass_reference_carries_lineage(self):
+        required = {key: reporting.LINEAGE[key] for key in
+                    ("evidence_class", "independent_measurement", "allowed_use",
+                     "prohibited_use", "required_citation")}
+        found = []
+        for path in (ROOT / "validation").rglob("*.json"):
+            if "cup_masses.csv" not in path.read_text():
+                continue
+            value = json.loads(path.read_text())
+            stack = [value]
+            while stack:
+                current = stack.pop()
+                if isinstance(current, dict):
+                    if any(isinstance(item, str) and item.endswith("cup_masses.csv")
+                           for item in current.values()):
+                        lineage = current.get("source_lineage", current)
+                        self.assertTrue(all(lineage.get(k) == v for k, v in required.items()), path)
+                        found.append(path)
+                    stack.extend(current.values())
+                elif isinstance(current, list):
+                    stack.extend(current)
+        self.assertGreaterEqual(len(set(found)), 3)
+
+    def test_imported_base_cross_validation_identity_and_metrics(self):
+        external = ROOT / "validation/external/puckworks_base_temporal_cv"
+        record = json.loads((external / "PUCKWORKS_BASE_TEMPORAL_CV_SOURCE_RECORD.json").read_text())
+        self.assertEqual(record["upstream_commit"], "21869fe19feec2dce6af8f4a41f63299473e31c2")
+        for member in record["artifacts"]:
+            self.assertEqual(reporting.sha256(ROOT / member["local_path"]), member["local_sha256"])
+            self.assertEqual(member["upstream_sha256"], member["local_sha256"])
+            self.assertTrue(member["byte_identity"])
+        model = json.loads((external / "PAPER_A_TEMPORAL_MODEL_COMPARISON_V1.json").read_text())
+        expected = {
+            "caffeine": (6.773723008023561, 9.956192697201004, 1.5553653242809058, 2.2230231547476897),
+            "trigonelline": (10.298791345087212, 15.158854455498721, -3.4686832418065188, 3.1662156395611976),
+            "5CQA": (7.196408617674486, 10.016456716398794, 1.3445947506081093, 2.8110375983062417),
+        }
+        for solute, values in expected.items():
+            base = model["solutes"][solute]["BASE"]
+            self.assertEqual((base["all_fraction_mape"], base["late_fraction_mape"],
+                              base["late_signed_pct"], base["derived_cumulative_mape"]), values)
+            self.assertEqual(base["n_folds"], 5)
+            self.assertEqual(base["failed_fits"], 0)
+        self.assertEqual(record["matched_data"]["shot_count"], 16)
+        self.assertEqual(record["matched_data"]["excluded_shot_count"], 3)
 
 
 if __name__ == "__main__":

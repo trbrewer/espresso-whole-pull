@@ -58,6 +58,7 @@ framework is operational, but this result is not physical validation;
 protected scoring was not performed and new governing physics remains
 unauthorized.
 
+
 ### Workstream 1 — Validation-case framework
 
 Develop a common source-adapter schema, preserve source definitions, classify
@@ -139,3 +140,7 @@ complete a verified mechanism
 > without an intervening relevant real-data comparison.
 
 This is human-readable program guidance, not a CI or static-validation gate.
+The final package correction leaves those numerics and the scientific
+disposition unchanged while identifying `cup_masses.csv` as post-fit derived,
+not independent measurement evidence. Stage B2 is pending exact-head review;
+merge and any subsequent mechanism remain unauthorized.

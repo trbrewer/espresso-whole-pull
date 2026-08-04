@@ -17,6 +17,14 @@ conservation, bracket, and available target time. Mandatory outputs lacking a
 prospectively frozen operator are explicitly
 `UNAVAILABLE_OPERATOR_NOT_PROSPECTIVELY_FROZEN`.
 
+**Evidence lineage.** `cup_masses.csv` contains post-fit derived source
+quantities, not independent cup-mass measurements. These are reconstruction
+and derived-metric comparisons only. Replicate SDs and ranges describe spread
+among post-fit derived replicate quantities, not independent measurement
+uncertainty; standardized residuals are therefore not independent validation
+scores. The controlling caveat is
+[VAL-PUCKWORKS-001](VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md).
+
 ![Production availability](../../validation/cases/val_corpus_002/figures/production_availability_matrix.svg)
 
 ## B1 anchor and hydraulic finding
@@ -84,7 +92,8 @@ progression at brew ratios 1/1, 1/2, and 1/3 is:
 
 This demonstrates information loss in an aggregate representation; it does
 not grant named-species OpenFOAM authority or identify an aggregate residual's
-mechanism.
+mechanism. It is a source-lineage information-loss diagnostic of post-fit
+derived quantities, not independent validation.
 
 ## Reduced source-clock diagnostic
 

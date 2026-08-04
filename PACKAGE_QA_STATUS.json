@@ -1,7 +1,7 @@
 {
   "schema_version": "espresso.whole_pull.package_qa.v0.2.0",
   "package_version": "0.2.0",
-  "current_governance_milestone": "VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW",
+  "current_governance_milestone": "VAL_CORPUS_002_STAGE_B2_FINAL_REPORTING_AND_LINEAGE_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
   "canonical_main": "0a5c146078da5d5f88b344b20e7b81042bf27ddb",
   "canonical_tree": "12fdbc542270e2765e2071d83c21812951f892e8",
   "release_scope": {
@@ -28,11 +28,11 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 438,
+    "python_test_count": 442,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 266,
-    "source_manifest_aggregate_sha256": "7f3bc67d8883513bd9c3aa012cc1433702ba80e5b01a9ccbf22d23e37d3be97f",
+    "source_manifest_file_count": 272,
+    "source_manifest_aggregate_sha256": "b96be9aee1efb7c6ed67604afa1f7eef66b49b02ef3a0e01f5e20006d383b9fd",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -68,7 +68,7 @@
     "cross_pressure_ordering": "STILL_REVERSED",
     "physical_input_retuning_authorized": false,
     "governing_physics_change_authorized": false,
-    "active_validation_case": "VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_REVIEW",
+    "active_validation_case": "VAL_CORPUS_002_STAGE_B2_FINAL_REPORTING_AND_LINEAGE_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
     "active_data_planning_task": "NONE",
     "val_case_002": "NOT_STARTED",
     "new_governing_physics": "NOT_YET_JUSTIFIED",
@@ -331,12 +331,12 @@
   "wp_0_3a_contract_status": "FROZEN_NO_EXECUTION_NO_QUALIFYING_HYDRAULIC_HOLDOUT",
   "wp_0_3a_solver_support_evidence_disposition": "ADOPT_SELECTED_EVIDENCE_WITH_FOLLOWUP",
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
-  "active_validation_case": "VAL_CORPUS_002_STAGE_B2_RESULT_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW",
+  "active_validation_case": "VAL_CORPUS_002_STAGE_B2_FINAL_REPORTING_AND_LINEAGE_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
   "active_data_planning_task": "NONE",
   "active_solver_task": "NONE",
   "val_corpus_002": {
     "stage": "B2_RESULT",
-    "status": "RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+    "status": "FINAL_REPORTING_AND_LINEAGE_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
     "future_production_run_count": 45,
     "maximum_optimizer_evaluations": 128,
     "sensitivity_identity_count": 9,
@@ -347,7 +347,11 @@
     "calibration": "EXP7_H1_COMPLETE_P2_FROZEN_CANDIDATE",
     "p2_rate_s_inverse": 0.3439597024835067,
     "p2_rate_role": "LOCAL_EXPERIMENT_7_H1_RECONSTRUCTION",
-    "stage_b2": "RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+    "stage_b2": "FINAL_REPORTING_AND_LINEAGE_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+    "numerical_campaign": "COMPLETE_UNCHANGED",
+    "cup_mass_evidence": "POST_FIT_DERIVED_NOT_INDEPENDENT_MEASUREMENT",
+    "merge": "NOT_AUTHORIZED",
+    "next_mechanism": "NOT_STARTED_NOT_AUTHORIZED",
     "production_identity_counts": {"pass": 27, "typed_numerical_failure": 18, "infrastructure_failure": 0},
     "sensitivity_identity_counts": {"pass": 9, "baseline_reuse": 1, "fresh_execution": 8},
     "governed_scoring": "FROZEN_PROSPECTIVE_METRICS_COMPLETE",
@@ -357,6 +361,6 @@
     "new_governing_physics": "NOT_AUTHORIZED",
     "val_case_002": "NOT_STARTED"
   },
-  "next_scientific_milestone_after_approved_wp03_002_merge": "VAL_CORPUS_002_STAGE_B2_RESULT_EXACT_HEAD_REVIEW",
+  "current_val_corpus_002_review_merge_boundary": "FINAL_PACKAGE_EXACT_HEAD_REVIEW_MERGE_NOT_AUTHORIZED",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }
