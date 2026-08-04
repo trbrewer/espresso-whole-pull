@@ -10,7 +10,8 @@
 - Current status: `G0_PROTOCOL_FREEZE_PENDING_EXACT_HEAD_CI`
 - Issue: [#58](https://github.com/trbrewer/espresso-whole-pull/issues/58)
 - Branch: `verification/xsv-taichi-001-saturated-hydraulic-closure-parity`
-- Pull request: `BOOTSTRAP_PENDING`
+- Pull request: [#59](https://github.com/trbrewer/espresso-whole-pull/pull/59),
+  `OPEN_DRAFT_UNMERGED`
 
 ### Human-owner staged authorization and task-specific capability profile
 
@@ -170,7 +171,8 @@ most one identical infrastructure retry.
 1. Startup identities and read-only dependency: PASS.
 2. Issue #58: OPEN.
 3. Branch: CREATED_FROM_EXACT_START.
-4. Protocol-first commit and PR: PENDING.
+4. Protocol-first commit `55c5335547892e74d58b049121211245b0cf8fd6`
+   and draft PR #59: COMPLETE; exact-head G0 CI pending.
 5. G1 through G6: NOT_STARTED.
 
 ## 14. Numerical results
@@ -210,4 +212,3 @@ Preserve the exact quantity/reference-volume contract, separate backend
 parity from physical validation, bind every closure to geometry/source/unit
 hashes, retain failures, and require fresh human authority for every added
 geometry, run, threshold, mechanism, physical datum, XSV stage or merge.
-

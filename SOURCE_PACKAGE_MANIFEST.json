@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 278,
-  "total_uncompressed_bytes_excluding_manifest": 3218718,
-  "aggregate_source_sha256": "46e7c2b19b6862688919e157abb05b608cb006c5db22920aab453922e84946dd",
-  "aggregate_sha256": "46e7c2b19b6862688919e157abb05b608cb006c5db22920aab453922e84946dd",
+  "total_uncompressed_bytes_excluding_manifest": 3218838,
+  "aggregate_source_sha256": "62b3b8a82cf2a1d0a8b1c114891fa621ce606dfba6ccdd8a469fc96a46d79cd9",
+  "aggregate_sha256": "62b3b8a82cf2a1d0a8b1c114891fa621ce606dfba6ccdd8a469fc96a46d79cd9",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -714,8 +714,8 @@
       "git_mode": "100644"
     },
     "docs/verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md": {
-      "sha256": "dedac6b8a0e3ac63a81f76421d9598d4976fd659743b5904c51fb2a6f3346513",
-      "bytes": 9305,
+      "sha256": "a975fef2d21049d32c8c9505ad3ff9203ba2954c011fd616aee6d976f4ae6a47",
+      "bytes": 9455,
       "git_mode": "100644"
     },
     "docs/wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md": {
@@ -1414,13 +1414,13 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL.json": {
-      "sha256": "0a30204c15ea6fbe496647571c6fb061c38e180548a47d0cd57219e901d457ba",
-      "bytes": 5517,
+      "sha256": "d93323c9f78bed1e23f18f70e783f3d849d93831133ddef45368fb65e62d187e",
+      "bytes": 5500,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_STAGE_AUTHORIZATION.json": {
-      "sha256": "7a253d29c542d5ad8ddb963f2604f63a49140495303b255d102ddf533777a9a9",
-      "bytes": 4497,
+      "sha256": "3f6ca557939bfacd10414fbaa5d143509ac366a5f8171c5ae03cd94f216071c3",
+      "bytes": 4484,
       "git_mode": "100644"
     }
   }

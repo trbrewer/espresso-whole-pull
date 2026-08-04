@@ -26,9 +26,9 @@
   "base_tree": "0e981087e27c7e04bdcd0acec2da2ec59c3953d7",
   "issue": {"number": 58, "state": "OPEN"},
   "branch": "verification/xsv-taichi-001-saturated-hydraulic-closure-parity",
-  "pull_request": {"number": "BOOTSTRAP_PENDING", "state": "NOT_YET_CREATED"},
-  "controlling_protocol": {"path": "docs/verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md", "sha256": "dedac6b8a0e3ac63a81f76421d9598d4976fd659743b5904c51fb2a6f3346513"},
-  "machine_protocol": {"path": "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL.json", "sha256": "0a30204c15ea6fbe496647571c6fb061c38e180548a47d0cd57219e901d457ba"},
+  "pull_request": {"number": 59, "state": "OPEN_DRAFT_UNMERGED"},
+  "controlling_protocol": {"path": "docs/verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md", "sha256": "a975fef2d21049d32c8c9505ad3ff9203ba2954c011fd616aee6d976f4ae6a47"},
+  "machine_protocol": {"path": "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL.json", "sha256": "d93323c9f78bed1e23f18f70e783f3d849d93831133ddef45368fb65e62d187e"},
   "puckworks": {"commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "tree": "1d553e44ee2f7480a5df521560801b478618cc84", "access": "READ_ONLY_DETACHED"},
   "openfoam_target": "FOUNDATION_OPENFOAM_12",
   "strategy_versioning": {

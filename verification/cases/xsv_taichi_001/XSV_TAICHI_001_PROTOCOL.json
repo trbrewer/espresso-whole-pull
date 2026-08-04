@@ -14,7 +14,7 @@
   },
   "issue": 58,
   "branch": "verification/xsv-taichi-001-saturated-hydraulic-closure-parity",
-  "pull_request": "BOOTSTRAP_PENDING",
+  "pull_request": 59,
   "strategy": {
     "version": "1.7",
     "canonical_sha256": "8f6736c89da502b4b41d115292a504b0b83e28bfb94366f4cc83848309d810ab",
