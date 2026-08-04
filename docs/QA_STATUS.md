@@ -1,8 +1,8 @@
-# Package QA status — immutable baseline and VAL-CORPUS-002 Stage-B2 result candidate
+# Package QA status — immutable baseline and merged VAL-CORPUS-002 result
 
 Historical sections below describe immutable merged or released evidence.
 Explicit current-check sections distinguish the merged WP03-002 state from the
-open VAL-CORPUS-002 Stage-B1 calibration candidate; they do not redefine the
+merged VAL-CORPUS-002 package; they do not redefine the
 immutable release baseline.
 
 ## Immutable v0.2.0 release snapshot
@@ -46,7 +46,7 @@ and source/holdout-fit counts remained zero.
 ## Current repository checks
 
 - merged WP03-002 baseline Python suite: 351/351 PASS;
-- current VAL-CORPUS-002 Stage-B0/B1 Python suite: final count recorded in
+- current merged VAL-CORPUS-002 Python suite: final count recorded in
   `PACKAGE_QA_STATUS.json` after repository-wide qualification;
 - current active static gates: 38/38 PASS;
 - current source manifest: final corrected count recorded in
@@ -63,7 +63,7 @@ and source/holdout-fit counts remained zero.
 - shell syntax: PASS
 - JSON syntax: PASS
 
-## VAL-CORPUS-002 Stage B2 final reporting and lineage disposition
+## Merged VAL-CORPUS-002 Stage B2 disposition
 
 Stage B2 recovery preserved both historical Waszkiewicz P2 preparation
 failures, corrected only the structured-placeholder normalization, and
@@ -72,8 +72,9 @@ identities, 27 passed and 18 retain typed target-coverage failures.
 Predecessor parity passed 1,500/1,500 states. The nine sensitivity identities
 passed with one verified baseline reuse and eight fresh executions. Frozen
 governed reductions, the complete numerical summary, source-only species
-audit, reduced diagnostic, and deterministic figures are complete pending
-final exact-head review. The scientific result is local reconstruction only
+audit, reduced diagnostic, and deterministic figures are complete, approved,
+and merged in PR #54 as `5c77b16513f932a822782fb97e9f8b97ceda0654`.
+Issue #53 closed through the PR linkage. The scientific result is local reconstruction only
 with partial axis-direction transfer, grind-sign reversal, hydraulic target-
 coverage mismatch, and cross-source time-shape failure. The comparison
 framework remains operational and fail closed; current exact qualification
@@ -83,16 +84,16 @@ The final package correction leaves the numerical campaign unchanged and
 complete: 27 production PASS, 18 immutable typed target-coverage failures,
 9/9 sensitivity PASS, and 1500/1500 predecessor parity PASS. It carries the
 mandatory post-fit-derived `cup_masses.csv` lineage caveat. Physical
-validation remains not established; merge and any next mechanism are not
-authorized.
+validation remains not established. No validation case, data-planning task,
+solver task, or next mechanism is active or authorized.
 
 ## VAL-CORPUS-002 Stage B1 calibration disposition
 
-Stage B1 is complete as an exact frozen calibration candidate pending final
-pre-B2 review. The P2 rate is `0.3439597024835067 s^-1` and is restricted to
+Stage B1 is complete and incorporated into the approved merged Stage B2
+package. The P2 rate is `0.3439597024835067 s^-1` and is restricted to
 the local Experiment-7/H1 reconstruction role. OpenFOAM was executed for B1
 calibration only; the pre-B2 closure revalidated immutable artifacts without
-OpenFOAM or optimizer execution. Stage B2 is complete pending review; the B1
+OpenFOAM or optimizer execution. Stage B2 is complete, approved, and merged; the B1
 calibration remained closed and was not refit. Physical validation is not established,
 and new governing physics is not yet justified.
 
@@ -201,12 +202,13 @@ scoring are not authorized.
 
 Its historical completion counts are retained in its result records.
 
-## Post-WP03-001 phase
+## Completed post-WP03 validation program
 
-WP03-001 is merged and numerically verified for its tested cases. The active
-program phase is source-specific validation and mechanism discrimination.
-This documentation alignment performs no model or validation execution and
-authorizes no experiment, protected scoring or holdout opening.
+WP03-001, WP03-002, VAL-CORPUS-001, and VAL-CORPUS-002 are merged. No
+validation case, data-planning task, solver task, or mechanism-selection task
+is active. The current gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`. This
+administrative alignment performs no model or validation execution and
+authorizes no experiment, protected scoring, holdout opening, or mechanism.
 
 Current test and source-manifest identities are generated in
 `PACKAGE_QA_STATUS.json` and `SOURCE_PACKAGE_MANIFEST.json`. Physical
@@ -225,15 +227,16 @@ perform zero real-data comparison invocations. The result is post-observation,
 not blind, not independent, and not physical validation. PR #38 is merged;
 the adverse invocation history and scientific limitations remain retained.
 
-## Active WP03-002 numerical task
+## Merged WP03-002 numerical result
 
 WP03-002 reproduced all three frozen failures, committed the diagnosis before
 source modification, and applied an equation-preserving correction to the
 nonlinear convergence gate. All three unchanged corrected cases complete.
 Serial/MPI repeatability, timestep refinement, conservation, independent
 scalar/derivative tests, and predecessor checks pass. Cross-pressure ordering
-remains reversed. The result is complete pending exact-head review of PR #52;
-physical validation remains `NOT_ESTABLISHED`.
+remains reversed. PR #52 merged the approved result as commit
+`0a5c146078da5d5f88b344b20e7b81042bf27ddb`; physical validation remains
+`NOT_ESTABLISHED`.
 
 ## VAL-001 post-result framework hardening
 
@@ -268,5 +271,5 @@ testing remains synthetic; V2 and the invocation journal are unchanged.
 VAL-001 explicit-semantics QA verifies zero instance-derived governing schemas,
 complete executable-profile dispatch, and externally pinned candidate roots.
 All cases are synthetic; governed comparison and OpenFOAM execution counts are
-zero for this correction.
-not established; merge and any next mechanism are not authorized.
+zero for this correction. Physical validation remains not established. The
+completed merges remain complete; no next mechanism is selected or authorized.

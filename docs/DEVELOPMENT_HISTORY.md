@@ -364,3 +364,20 @@ Independent exact-head review subsequently approved VAL-DATA-001 and PR #48
 merged as `f9bd8d5413b93d3a9986559920335d4140527f5e`. Its current state is
 `COMPLETE_APPROVED_AND_MERGED`; experimental commissioning remains
 unauthorized.
+
+## 2026-08-03 — VAL-CORPUS-002 approved package merged and state aligned
+
+PR #54 merged the exact approved VAL-CORPUS-002 head
+`ffe899a847a1dee4dc07303991bd7b7a5f17d64b` as merge commit
+`5c77b16513f932a822782fb97e9f8b97ceda0654`, with tree
+`76741f99f58672fd6f1fd021279517a255b045b6`; Issue #53 closed through the PR
+linkage. The governed scientific package remains unchanged: 27 production
+PASS dispositions, 18 immutable typed target-coverage failures, 9/9
+sensitivity PASS, and 1,500/1,500 predecessor parity PASS. Its conclusion
+remains local reconstruction only with partial directional transfer,
+grind-sign reversal, and cross-source time-shape failure. Physical validation
+is not established. No validation case, data-planning task, solver task, or
+next mechanism is active. The next gate is a human-owner decision between an
+admissible independent dataset and authorization and commissioning of the
+synchronized measurement package defined by VAL-DATA-001; neither route is
+authorized by this administrative alignment.

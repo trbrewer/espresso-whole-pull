@@ -26,91 +26,83 @@ The merged Foundation OpenFOAM 12 solver provides:
 ```text
 PHYSICAL_VALIDATION:
   NOT_ESTABLISHED
+
+GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION:
+  NOT_ESTABLISHED
 ```
 
-## Current active phase
+## Completed validation program through VAL-CORPUS-002
+
+VAL-CORPUS-001, WP03-002, and VAL-CORPUS-002 are complete, approved, and
+merged. VAL-CORPUS-001 exposed reversed Waszkiewicz cross-pressure ordering.
+WP03-002 corrected an equation-extrinsic convergence-gate defect without
+retuning; the unchanged source-linked cases then completed while retaining the
+adverse cross-pressure ordering.
+
+VAL-CORPUS-002 completed the fixed-parameter aggregate-extraction and cup-
+chemistry comparison with:
+
+- 27 production PASS dispositions;
+- 18 immutable typed target-coverage failures;
+- 9/9 sensitivity identities PASS;
+- 1,500/1,500 predecessor-parity states PASS;
+- fixed P2 `0.3439597024835067 s^-1`, restricted to a local
+  Experiment-7/H1 reconstruction;
+- `cup_masses.csv` classified as post-fit-derived quantities, not independent
+  measurements;
+- partial directional transfer with grind-sign reversal;
+- hydraulic target-coverage mismatch; and
+- cross-source time-shape failure.
+
+These results support an operational fail-closed comparison framework. They do
+not establish physical validation or authorize another mechanism.
+
+## Current gate
 
 ```text
-POST-WP03-001 VALIDATION AND MECHANISM DISCRIMINATION
+ACTIVE_VALIDATION_CASE:
+  NONE
+
+ACTIVE_DATA_PLANNING_TASK:
+  NONE
+
+ACTIVE_SOLVER_TASK:
+  NONE
+
+CURRENT_SCIENTIFIC_GATE:
+  ADDITIONAL_INDEPENDENT_DATA_REQUIRED
+
+VAL_CASE_002:
+  NOT_STARTED
+
+EXPERIMENTAL_COMMISSIONING:
+  NOT_AUTHORIZED
+
+PROTECTED_OR_HOLDOUT_SCORING:
+  NOT_AUTHORIZED
+
+NEW_GOVERNING_PHYSICS:
+  NOT_YET_JUSTIFIED
+
+PHYSICAL_VALIDATION:
+  NOT_ESTABLISHED
 ```
 
-The first hydraulic/wetting corpus tranche, VAL-CORPUS-001, is complete,
-approved, and merged. It satisfied the wetting, saturated-hydraulic, and
-limited coupled pressure/flow exits, exposed reversed Waszkiewicz
-cross-pressure ordering, and retained three finite-porosity numerical
-failures. WP03-002 reproduced and corrected the numerical convergence-gate
-defect; all three unchanged cases completed, but cross-pressure ordering
-remained reversed. The aggregate extraction exit remains for VAL-CORPUS-002
-after exact-head review closes WP03-002.
+No validation case, data-planning task, solver task, or mechanism-selection
+task is active. Additional fitting or reuse of the same post-fit-derived
+cup-mass evidence is not a route to independent physical validation.
 
-VAL-CORPUS-002 Stage A and Stage B0 are exact-head approved. Stage B1 is
-complete as an exact frozen Experiment-7/H1 calibration candidate pending
-final pre-B2 review. Its local reconstruction P2 rate is
-`0.3439597024835067 s^-1`. OpenFOAM was executed for B1 calibration only.
-Stage B2 retains 27 passing and 18 immutable typed-failed production
-identities. The corrected Waszkiewicz P2 case passed, predecessor parity
-remains 1,500/1,500, and all nine sensitivity identities passed. Frozen
-governed reductions and deterministic reporting are complete pending final
-exact-head review. The scientific disposition is local reconstruction only,
-partial directional transfer with grind-sign reversal, hydraulic target-
-coverage mismatch, and cross-source time-shape failure. The fail-closed
-framework is operational, but this result is not physical validation;
-protected scoring was not performed and new governing physics remains
+## Next human-owner decision
+
+The human owner may separately choose one of two evidence routes:
+
+1. locate and qualify an admissible independent dataset; or
+2. authorize and commission the synchronized measurement package already
+   defined by VAL-DATA-001.
+
+Neither route is authorized by this roadmap. Experimental commissioning,
+protected or holdout scoring, VAL-CASE-002, and new governing physics remain
 unauthorized.
-
-
-### Workstream 1 — Validation-case framework
-
-Develop a common source-adapter schema, preserve source definitions, classify
-rights and evidence, separate calibration from comparison, represent
-uncertainty, calculate common metrics, and retain machine-readable bundles and
-standard reports.
-
-### Workstream 2 — Component comparisons
-
-Compare wetting and first drip, steady pressure–flow behavior, permeability,
-machine pressure nodes and delivery, quasi-static compaction, aggregate
-extraction and cup chemistry, and spatial maldistribution where evidence
-permits.
-
-### Workstream 3 — Limited coupled comparisons
-
-Compare multiple synchronized observables from the same apparatus or study.
-Report the result as apparatus- and source-specific, not universal validation.
-
-### Workstream 4 — Sensitivity and identifiability
-
-Assess parameter influence and correlation, equifinality, uncertainty
-propagation, observable information value, and transfer across pressure,
-recipe and apparatus conditions.
-
-### Workstream 5 — Mechanism discrimination
-
-Compare compatible existing branches on common cases: constant permeability,
-dissolution-indexed permeability, machine compliance, Darcy–Forchheimer
-resistance, static radial heterogeneity and quasi-static compaction.
-
-### Workstream 6 — Experimental design
-
-Use unresolved sensitivities and residuals to rank future measurements. This
-roadmap does not authorize commissioning or acquisition.
-
-## Exit criteria
-
-The tranche should produce at least:
-
-1. one real-data wetting or first-drip comparison;
-2. one real-data saturated hydraulic comparison;
-3. one limited coupled pressure/flow comparison;
-4. one aggregate extraction comparison;
-5. explicit calibration-versus-comparison separation;
-6. uncertainty bounds;
-7. an identifiability assessment;
-8. a mechanism-discrimination report;
-9. a ranked next-physics recommendation; and
-10. an updated experimental-data request.
-
-Universal whole-solver validation is not an exit criterion.
 
 ## Later, selected by evidence
 
@@ -125,7 +117,8 @@ Universal whole-solver validation is not an exit criterion.
 | Species-specific extraction disagreement | Multispecies chemistry |
 | No discriminating evidence | Retain the simpler model and request better data |
 
-This table guides investigation; it does not authorize a mechanism.
+These are evidence-dependent possibilities only. No mechanism is selected or
+authorized.
 
 ## Cadence rule
 
@@ -140,7 +133,3 @@ complete a verified mechanism
 > without an intervening relevant real-data comparison.
 
 This is human-readable program guidance, not a CI or static-validation gate.
-The final package correction leaves those numerics and the scientific
-disposition unchanged while identifying `cup_masses.csv` as post-fit derived,
-not independent measurement evidence. Stage B2 is pending exact-head review;
-merge and any subsequent mechanism remain unauthorized.

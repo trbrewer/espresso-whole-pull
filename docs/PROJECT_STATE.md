@@ -1,14 +1,16 @@
 # Project State
 
 - Current released version: `v0.2.0`
-- Current merged `main`: `0a5c146078da5d5f88b344b20e7b81042bf27ddb`
-- Current merged tree: `12fdbc542270e2765e2071d83c21812951f892e8`
+- Last substantive scientific merge: `5c77b16513f932a822782fb97e9f8b97ceda0654`
+- Last substantive scientific tree: `76741f99f58672fd6f1fd021279517a255b045b6`
+- Live repository identity: resolve with `git rev-parse HEAD` and
+  `git rev-parse HEAD^{tree}`
 - Public baseline: `v0.1.4-public.1`, immutable sanitized R0 derivative
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 272/272 PASS
-- Active validation case: `VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
+- Public source verification: 273/273 PASS
+- Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Physical validation: `NOT_ESTABLISHED`
@@ -27,34 +29,28 @@ WP03-002 is `COMPLETE_APPROVED_AND_MERGED` at merge commit
 `0a5c146078da5d5f88b344b20e7b81042bf27ddb`; its approved head was
 `78dc278212976a569bf21dda139a98c35756db14` and its executed solver SHA-256 was
 `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6`.
-VAL-CORPUS-002 Stage A and the final Stage-B0 tooling are exact-head approved.
-Stage B1 attempt 1 stopped on an infrastructure failure and remains immutable.
-The bounded attempt-2 recovery verified all 20 passing evaluations as a
-complete cache, replayed the optimizer from its original bounds, and completed
-26 fresh evaluations. The exact P2 rate is a frozen candidate pending
-independent exact-head review. Its exact-head semantic correction now parses
-and independently reduces the retained trace, validates the closed numerical
-record, and deterministically reproduces the strengthened governed bundle
-without solver or optimizer execution. Stage B2 now has all 45 terminal
-production dispositions (27 PASS and 18 immutable typed target-coverage
-failures); its numerical campaign and approved scientific interpretation are
-unchanged. Final reporting now identifies Schmieder `cup_masses.csv` as
-post-fit derived evidence, not an independent measurement. Merge and any next
-mechanism remain unauthorized. The corrected Waszkiewicz P2 case passed,
-predecessor parity remains
-1,500/1,500, and the nine-identity sensitivity inventory passed with one exact
-baseline reuse. Frozen governed reductions and deterministic reporting are
-complete pending final exact-head review. The result is local reconstruction
-only with partial directional transfer, grind-sign reversal, and cross-source
-time-shape failure. The fail-closed framework is operational. Calibration
-remains closed with no refit. Protected scoring and VAL-CASE-002 remain
-unauthorized and have not started.
+VAL-CORPUS-002 is `COMPLETE_APPROVED_AND_MERGED`. PR #54 merged the exact
+approved head `ffe899a847a1dee4dc07303991bd7b7a5f17d64b` as merge commit
+`5c77b16513f932a822782fb97e9f8b97ceda0654`, and Issue #53 closed through the
+PR linkage. Its 45 production identities retain 27 PASS and 18 immutable typed
+target-coverage failures; predecessor parity remains 1,500/1,500 PASS and the
+nine-identity sensitivity inventory remains 9/9 PASS. The exact P2 rate
+`0.3439597024835067 s^-1` remains a local Experiment-7/H1 reconstruction with
+calibration closed and no refit. Final reporting identifies Schmieder
+`cup_masses.csv` as post-fit derived evidence, not an independent measurement.
+The result remains local reconstruction only with partial directional
+transfer, grind-sign reversal, and cross-source time-shape failure. The
+fail-closed framework is operational. No validation case, data-planning task,
+solver task, or next mechanism is active. Protected scoring and VAL-CASE-002
+remain unauthorized and have not started.
 
-The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`: either an
-admissible independent dataset or the synchronized pressure, flow/mass,
-deformation, machine-side pressure, timing, and preparation measurement
-package identified by VAL-CASE-001. No acquisition, commissioning, or new
-governing physics is authorized by the administrative closure.
+The next scientific gate is `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`. A future
+human-owner decision must choose between locating and qualifying an admissible
+independent dataset or authorizing and commissioning the synchronized
+measurement package defined by VAL-DATA-001. Additional fitting or reuse of
+the same dependent cup-mass evidence is not a route to independent physical
+validation. No acquisition, commissioning, new validation case, or governing
+physics is authorized by this administrative state.
 
 VAL-DATA-001 is a complete, approved, and merged non-commissioning plan for
 the synchronized measurement package. `EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED`,
@@ -143,7 +139,7 @@ cup accumulation, and water/solute conservation reporting.
 R0 remains frozen and unchanged. Source-linked and synthetic mechanism
 diagnostics are not improved predictions merely because they add complexity.
 
-## Active next program phase
+## Completed post-WP03 validation program and current gate
 
 VAL-001 and PR #38 are complete and merged. The source-specific adapter framework was added
 without changing governing physics. Its governed V2 comparison remains a
@@ -151,6 +147,12 @@ post-observation, non-blind, non-independent descriptive reconstruction; it is
 not physical validation and does not authorize a next-physics increment.
 VAL-OPS-001 provides a merged concise prospective operating standard for
 proportionate validation cases and reusable infrastructure work.
+
+VAL-CORPUS-001, WP03-002, and VAL-CORPUS-002 are complete, approved, and
+merged. No validation case, data-planning task, solver task, or mechanism-
+selection task is active. The current gate is
+`ADDITIONAL_INDEPENDENT_DATA_REQUIRED`; the next evidence route requires a
+separate human-owner decision and authorization.
 
 See the concise
 [solver development and validation roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)

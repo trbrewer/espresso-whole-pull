@@ -13,11 +13,17 @@
 REPOSITORY:
   trbrewer/espresso-whole-pull
 
-CANONICAL_MAIN:
-  0a5c146078da5d5f88b344b20e7b81042bf27ddb
+LAST_SUBSTANTIVE_SCIENTIFIC_MERGE:
+  5c77b16513f932a822782fb97e9f8b97ceda0654
 
-CANONICAL_TREE:
-  12fdbc542270e2765e2071d83c21812951f892e8
+LAST_SUBSTANTIVE_SCIENTIFIC_TREE:
+  76741f99f58672fd6f1fd021279517a255b045b6
+
+LIVE_HEAD:
+  RESOLVE_FROM_GIT
+
+LIVE_TREE:
+  RESOLVE_FROM_GIT
 
 WP03_002:
   COMPLETE_APPROVED_AND_MERGED
@@ -74,8 +80,29 @@ VAL_DATA_001:
 VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
+VAL_CORPUS_002:
+  COMPLETE_APPROVED_AND_MERGED
+
+VAL_CORPUS_002_MERGE_COMMIT:
+  5c77b16513f932a822782fb97e9f8b97ceda0654
+
+VAL_CORPUS_002_MERGE_TREE:
+  76741f99f58672fd6f1fd021279517a255b045b6
+
+VAL_CORPUS_002_APPROVED_HEAD:
+  ffe899a847a1dee4dc07303991bd7b7a5f17d64b
+
+VAL_CORPUS_002_APPROVED_TREE:
+  76741f99f58672fd6f1fd021279517a255b045b6
+
+PR_54:
+  MERGED
+
+ISSUE_53:
+  CLOSED_BY_PR_LINKAGE
+
 ACTIVE_VALIDATION_CASE:
-  VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+  NONE
 
 ACTIVE_DATA_PLANNING_TASK:
   NONE
@@ -95,26 +122,26 @@ NEW_GOVERNING_PHYSICS:
 EXPERIMENTAL_COMMISSIONING:
   NOT_AUTHORIZED
 
+PROTECTED_OR_HOLDOUT_SCORING:
+  NOT_AUTHORIZED
+
 VAL_CASE_002:
   NOT_STARTED
 
-CURRENT_SCIENTIFIC_TASK:
-  VAL_CORPUS_002_STAGE_B2_SENSITIVITY_COLOUR_KEY_CORRECTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+CURRENT_SCIENTIFIC_GATE:
+  ADDITIONAL_INDEPENDENT_DATA_REQUIRED
 ```
 
-WP03-002 is complete, approved, and merged. VAL-CORPUS-002 Stage A and final
-Stage-B0 tooling are exact-head approved. Stage B1 is complete as an exact
-frozen Experiment-7/H1 calibration candidate pending final pre-B2 review. Its
-local reconstruction rate is `0.3439597024835067 s^-1`. OpenFOAM was executed
-for B1 calibration and for the authorized fixed-parameter B2 matrix. Stage B2
-retains 27 passing and 18 immutable typed-failed production identities. The
-corrected Waszkiewicz P2 case passed and all nine sensitivity identities
-passed. Final reporting classifies the result as local reconstruction only,
-partial directional axis transfer with grind-sign reversal, hydraulic target-
-coverage mismatch, and cross-source time-shape failure. The fail-closed
-comparison framework is operational. Frozen governed reductions are complete
-pending final exact-head review.
-Calibration remains closed with no refit. Protected scoring remains prohibited.
+WP03-002 and VAL-CORPUS-002 are complete, approved, and merged.
+VAL-CORPUS-002 retains 27 passing and 18 immutable typed-failed production
+identities, 1,500/1,500 predecessor-parity states, and 9/9 passing sensitivity
+identities. Its local Experiment-7/H1 reconstruction rate remains
+`0.3439597024835067 s^-1`; calibration is closed with no refit. Final reporting
+classifies the result as local reconstruction only, partial directional axis
+transfer with grind-sign reversal, hydraulic target-coverage mismatch, and
+cross-source time-shape failure. The fail-closed comparison framework is
+operational. No validation case, data-planning task, or solver task is active.
+Protected scoring remains prohibited.
 
 ---
 
@@ -139,23 +166,26 @@ The decisive result is that the Puckworks corpus is demonstrably useful. It expo
 
 This is not a failed validation program. It is the desired transition from internal verification to externally anchored diagnosis.
 
-WP03-002 is complete, approved, and merged. The next scientific task entered
-Stage A as `VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY`; only its prospective
-protocol has been frozen here.
+VAL-CORPUS-002 is complete, approved, and merged. The next scientific gate is
+additional independent data, not further fitting or reuse of the same
+dependent cup-mass evidence. A future human-owner decision must choose between
+qualifying an admissible independent dataset or authorizing and commissioning
+the synchronized measurement package defined by VAL-DATA-001.
 
 ---
 
-# 2. Canonical merged state and active fixed-parameter Stage B2 candidate
+# 2. Canonical merged state and completed VAL-CORPUS-002 package
 
 | Item | Canonical state |
 |---|---|
-| Current `main` | `0a5c146078da5d5f88b344b20e7b81042bf27ddb` |
-| Current tree | `12fdbc542270e2765e2071d83c21812951f892e8` |
+| Last substantive scientific merge | `5c77b16513f932a822782fb97e9f8b97ceda0654` |
+| Last substantive scientific tree | `76741f99f58672fd6f1fd021279517a255b045b6` |
+| Live head and tree | Resolve with `git rev-parse HEAD` and `git rev-parse HEAD^{tree}` |
 | OpenFOAM | Foundation 12 |
 | Latest executed WP03-002 candidate executable | `e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6` |
 | Runtime Puckworks lock | `fc61c4670ec7bf801e40bb391aab16048b8da26b` |
 | Read-only evidence snapshot used by VAL-CORPUS-001 | `9c52c94edb27b461b6e7a4d471d29f3cef9d053e` |
-| Current Python suite | `448/448 PASS` for the Stage-B2 sensitivity-colour-key-corrected package candidate |
+| Current qualification suite | `PACKAGE_QA_STATUS.json` is the machine-readable exact-head authority for current Python-test and focused current-authority-consistency counts; this handoff deliberately does not duplicate mutable totals. Confirm live pass/fail status from exact-head CI; counts elsewhere in explicitly bounded history remain historical. |
 | Current static gates | `38/38 PASS` |
 | Current source manifest | current exact count and aggregate are recorded in `SOURCE_PACKAGE_MANIFEST.json` and the excluded metadata record `PACKAGE_QA_STATUS.json` to avoid self-reference |
 | Physical validation | `NOT_ESTABLISHED` |
@@ -452,7 +482,7 @@ retuning. The corrected model still orders flow and mass as
 | Waszkiewicz cross-pressure transfer | Failing | Source ordering is reversed by every tested family |
 | Generic DE1 machine fixture | Failing/descriptive | Not a source-informed DE1 reconstruction |
 | Finite-porosity source-linked execution | `NUMERICALLY_RECOVERED_SCIENTIFIC_TRANSFER_FAILURE_REMAINS` | 3/3 corrected cases complete; model ordering remains opposite source |
-| Aggregate extraction transfer | Not yet adequately assessed | Required next corpus tranche |
+| Aggregate extraction and cup-chemistry transfer | Partial / source-specific only | VAL-CORPUS-002 completed the governed assessment: local reconstruction and partial directional transfer were observed, but grind-sign reversal, hydraulic target-coverage mismatch, and cross-source time-shape failure remain; general transfer and physical validation are not established |
 | Species-resolved chemistry | Not represented | Current solver is one-solute |
 | Population Visualizer transfer | Not yet executed as a frozen cohort | Available future comparison |
 | Independent physical validation | Not established | No qualifying final evidence route has been executed |
@@ -503,41 +533,29 @@ Completed prerequisites:
 
 - the finite-porosity implementation completes the source-linked cases;
 - the corrected compaction branch is compared through the accepted atlas
-  metrics.
+  metrics; and
+- VAL-CORPUS-002 is complete, approved, and merged.
 
-Outstanding prerequisites:
+Remaining scientific gate:
 
-- source comparability and assumptions are audited;
-- the VAL-CORPUS-002 extraction/chemistry tranche is completed;
-- repeated residual signatures are separated from numerical, metadata,
-  mapping, and identifiability effects.
+- additional independent data are required to separate repeated residual
+  signatures from source, mapping, metadata, numerical, and identifiability
+  limitations.
+
+The completed corpus work does not imply that every source-comparability
+uncertainty has been resolved. Additional fitting or reuse of the same
+post-fit-derived cup-mass evidence is not a route to independent physical
+validation.
 
 ---
 
-# 9. Administrative reconciliation completed by WP03-002
+# 9. Current administrative status
 
-The WP03-002 candidate reconciles earlier current-looking status lag while
-preserving explicitly time-scoped historical candidate states.
+WP03-002 and VAL-CORPUS-002 are complete, approved, and merged. Earlier dated
+candidate and execution records remain historical authorities for the state at
+which they were issued; they are not current-status authorities.
 
-The dated scope records
-`docs/validation/VAL_001_PR38_FINAL_HARDENING_NOTE.md` and
-`docs/validation/VAL_001_PR38_HARDENING_COMPLETION_NOTE.md` preserve PR #38's
-open state at issuance and are immutable historical candidate records. Their
-actual closure is: independently approved and subsequently merged as PR #38.
-They are not current-status authorities.
-
-## 9.1 Reconciled current-state entries
-
-| File | Historical lag corrected | Current state |
-|---|---|---|
-| `docs/PROJECT_STATE.md` | VAL-CORPUS-001 shown as open candidate; VAL-DATA-001 shown as active/pending | Both complete, approved, and merged; no active validation or data-planning task |
-| `docs/QA_STATUS.md` | VAL-DATA-001 described as candidate; VAL-001 described as open | VAL-DATA-001 and VAL-001 merged; retain their scientific limitations |
-| `docs/DEVELOPMENT_HISTORY.md` | VAL-CORPUS-001 and VAL-001 labelled open candidates | Record approved/merged final states and merge identities |
-| `PACKAGE_QA_STATUS.json` | VAL-CORPUS review pending; VAL-DATA active/pending | Both complete/approved/merged; no active data-planning task |
-| `docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md` | Earlier next-step text | WP03-002 candidate complete pending review; post-merge VAL-CORPUS-002 named but not started |
-| `docs/FILE_TREE.md` | Earlier navigation state | Program handoff and WP03-002 correction records linked |
-
-## 9.2 Required canonical status after alignment
+## 9.1 Current canonical status
 
 ```text
 VAL_001:
@@ -555,6 +573,9 @@ VAL_DATA_001:
 VAL_CORPUS_001:
   COMPLETE_APPROVED_AND_MERGED
 
+VAL_CORPUS_002:
+  COMPLETE_APPROVED_AND_MERGED
+
 ACTIVE_VALIDATION_CASE:
   NONE
 
@@ -562,12 +583,18 @@ ACTIVE_DATA_PLANNING_TASK:
   NONE
 
 ACTIVE_SOLVER_TASK:
-  WP03_002_RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+  NONE
+
+CURRENT_SCIENTIFIC_GATE:
+  ADDITIONAL_INDEPENDENT_DATA_REQUIRED
 
 PHYSICAL_VALIDATION:
   NOT_ESTABLISHED
 
 EXPERIMENTAL_COMMISSIONING:
+  NOT_AUTHORIZED
+
+PROTECTED_OR_HOLDOUT_SCORING:
   NOT_AUTHORIZED
 
 NEW_GOVERNING_PHYSICS:
@@ -577,143 +604,44 @@ VAL_CASE_002:
   NOT_STARTED
 ```
 
-## 9.3 Reconciliation boundary
+## 9.2 Identity and reconciliation boundary
 
-This reconciliation is part of the substantive WP03-002 numerical pull
-request, not a standalone documentation cycle. It changes no historical
-scientific result or immutable campaign execution count.
+The last substantive scientific merge baseline is VAL-CORPUS-002 merge commit
+`5c77b16513f932a822782fb97e9f8b97ceda0654`, tree
+`76741f99f58672fd6f1fd021279517a255b045b6`. Live repository identity must be
+resolved with `git rev-parse HEAD` and `git rev-parse HEAD^{tree}` rather than
+stored self-referentially in this file. Administrative alignment changes no
+historical scientific result or immutable campaign execution count.
 
 ---
 
-# 10. Forward program plan
+# 10. Current forward gate
 
-## Phase 1 — WP03-002 finite-porosity nonlinear robustness and corpus re-comparison — `RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
-
-**Status:** `RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
-**Historical work type:** solver code, numerical diagnosis, OpenFOAM execution, comparison
-**Governing-physics change:** none
-
-### Objective
-
-Historical executed objective: determine why the finite-porosity branch failed in:
+WP03-002 and VAL-CORPUS-002 are complete, approved, and merged. No current
+instruction authorizes further VAL-CORPUS-002 execution, fitting, or scoring.
 
 ```text
-WASZ-5-COMPACT
-WASZ-9-COMPACT
-WASZ-11-COMPACT
+CURRENT_SCIENTIFIC_GATE:
+  ADDITIONAL_INDEPENDENT_DATA_REQUIRED
+
+ACTIVE_VALIDATION_CASE:
+  NONE
+
+ACTIVE_DATA_PLANNING_TASK:
+  NONE
+
+ACTIVE_SOLVER_TASK:
+  NONE
 ```
 
-This objective was completed. The bounded correction recovered all three
-cases without retuning; the scientific transfer failure remains.
+The next action is a human-owner evidence-route decision between:
 
-### Required outcomes
+1. locating and qualifying an admissible independent dataset; or
+2. separately authorizing and commissioning the synchronized measurement
+   package defined by VAL-DATA-001.
 
-- exact failure reproduction;
-- exact failing timestep/state/residual identified;
-- independent scalar/reference evaluation of the constitutive solve;
-- diagnosis classification;
-- bounded numerical correction if justified;
-- predecessor and adversarial verification;
-- corrected 5/9/11-bar OpenFOAM runs;
-- re-comparison through the VAL-CORPUS V3 metrics;
-- explicit effect on cross-pressure ordering;
-- persistent administrative alignment.
-
----
-
-## Phase 2 — VAL-CORPUS-002 extraction and cup-chemistry comparison
-
-**Named next scientific task after an approved WP03-002 merge; not started.**
-
-Candidate evidence:
-
-- Waszkiewicz TDS fractions;
-- Schmieder cup masses and kinetics;
-- Pannusch kinetics;
-- Mo fixed-flow yield/strength;
-- Roman-Corrochano extraction conditions;
-- Angeloni total solids/multi-species evidence;
-- Egidi pressure/temperature/TDS/EY;
-- Smrke fines/flow/EY;
-- Liang brew-ratio trends;
-- Fasano transient/reversal signatures;
-- Ribes spatial/radial extraction evidence.
-
-Primary questions:
-
-- Does the one-solute model reproduce aggregate extraction direction and scale?
-- Does it reproduce time-dependent extraction or only endpoints?
-- Do hydraulic errors explain chemistry errors?
-- Does source-anchored chemistry transfer across flow, pressure, or brew ratio?
-- Which discrepancies are specifically caused by the one-solute limitation?
-
-This phase should include actual OpenFOAM runs, not only adapters.
-
----
-
-## Phase 3 — source-informed machine and Visualizer transfer
-
-Develop a stronger separation between:
-
-1. prescribed measured basket-pressure replay to test puck hydraulics;
-2. source-informed machine-boundary reconstruction;
-3. generic machine-fixture transfer;
-4. population-level Visualizer envelope comparison.
-
-Freeze a deterministic Visualizer cohort and use:
-
-- pressure;
-- scale-derived mass flow;
-- beverage mass;
-- temperature;
-- state and timing;
-- machine/grinder/dose context.
-
-Do not use ambiguous machine-reported flow or user-entered TDS/EY/sensory fields as canonical truth.
-
----
-
-## Phase 4 — residual-led physics decision
-
-After WP03-002 and the extraction tranche, update the mechanism matrix.
-
-Candidate outcomes:
-
-```text
-EXISTING_MODEL_FAMILY_SUFFICIENT_FOR_CURRENT_EVIDENCE
-FULLER_POROELASTIC_STORAGE_JUSTIFIED
-SWELLING_BRANCH_JUSTIFIED
-VISCOSITY_BRANCH_JUSTIFIED
-FINES_TRANSPORT_JUSTIFIED
-NONAXISYMMETRIC_CHANNELING_JUSTIFIED
-THERMAL_BRANCH_JUSTIFIED
-MULTISPECIES_BRANCH_JUSTIFIED
-ADDITIONAL_DATA_REQUIRED_BEFORE_NEW_PHYSICS
-```
-
-A new mechanism requires residual evidence that is:
-
-- repeated;
-- robust to source assumptions;
-- not explained by numerical defects;
-- not explained by parameter non-identifiability;
-- prospectively testable.
-
----
-
-## Phase 5 — optional experiment commissioning
-
-VAL-DATA-001 is ready to support a later commissioning decision, but commissioning remains separate.
-
-The strongest future evidence route remains:
-
-```text
-separate pilot/characterization work
--> separately commissioned untouched comparison dataset
--> independent component or coupled validation
-```
-
-No experiment is required before continuing corpus comparison and numerical diagnosis.
+Neither route is authorized here. Candidate mechanisms remain evidence-
+dependent possibilities only; no mechanism is selected or authorized.
 
 ---
 
@@ -916,7 +844,10 @@ WP03-002 is complete when:
 
 ---
 
-# 12. Risks and controls
+# 12. Risks and controls — `HISTORICAL_EXECUTED_AND_CONSUMED`
+
+`NOT_CURRENT_AUTHORITY`. This table records controls used by the completed
+WP03-002 execution plan. It grants no present or future authority.
 
 | Risk | Required control |
 |---|---|
@@ -1441,27 +1372,22 @@ Do not commission an experiment.
 Paste this into a new conversation together with this document:
 
 ```text
-We are continuing the espresso-whole-pull program from merged main
-bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1, tree
-c1d3fdc88dabaea410c4b6236e31ce1376e5eaea.
+The espresso-whole-pull program is scientifically merged through
+VAL-CORPUS-002 merge commit 5c77b16513f932a822782fb97e9f8b97ceda0654,
+tree 76741f99f58672fd6f1fd021279517a255b045b6. Resolve the live
+repository identity from Git rather than treating that scientific baseline as
+the mutable live HEAD.
 
-VAL-001, VAL-INFRA-002, VAL-CASE-001, VAL-DATA-001, and VAL-CORPUS-001 are
-merged. Physical validation is not established. Puckworks has been proven
-useful for external solver comparison.
+VAL-CORPUS-002 is complete, approved, and merged. No validation case,
+data-planning task, or solver task is active. The current scientific gate is
+ADDITIONAL_INDEPENDENT_DATA_REQUIRED.
 
-The most important corpus result is that the Waszkiewicz source orders
-terminal flow and mass as 5 > 9 > 11 bar, while all tested solver families
-order them 11 > 9 > 5 with Spearman -1. Selected local agreement exists,
-especially dissolution-indexed Darcy at 9 bar, but cross-pressure transfer
-fails. Foster wetting is partial. The generic DE1 machine overlay fails.
-The finite-porosity source-linked numerical defect was corrected by WP03-002;
-all three 5/9/11-bar cases complete, but their model ordering remains opposite
-the source ordering.
-
-WP03-002 is `RESULT_COMPLETE_PENDING_EXACT_HEAD_REVIEW`. After an approved
-merge, the named next scientific task is
-`VAL_CORPUS_002_EXTRACTION_AND_CUP_CHEMISTRY`; it is not started or authorized
-by this historical bootstrap.
+The human owner must select between locating and qualifying an admissible
+independent dataset and separately authorizing and commissioning the
+synchronized measurement package defined by VAL-DATA-001. Neither route is
+authorized by this bootstrap. Experimental commissioning is not authorized,
+VAL-CASE-002 is not started, new governing physics is not yet justified, and
+physical validation is not established.
 
 Use the attached PROGRAM_STATE_AND_FORWARD_PLAN as the persistent controlling
 handoff.
@@ -1471,8 +1397,20 @@ handoff.
 
 # 16. Repository references
 
-- Current merged main:  
-  `https://github.com/trbrewer/espresso-whole-pull/commit/bafcb2bc6fb2d1fbc0680d8835efcc2133e714d1`
+- VAL-CORPUS-002 substantive merge baseline:
+  `https://github.com/trbrewer/espresso-whole-pull/commit/5c77b16513f932a822782fb97e9f8b97ceda0654`
+- VAL-CORPUS-002 PR #54:
+  `https://github.com/trbrewer/espresso-whole-pull/pull/54`
+- VAL-CORPUS-002 Issue #53:
+  `https://github.com/trbrewer/espresso-whole-pull/issues/53`
+- Stage B2 result report:
+  `docs/validation/VAL_CORPUS_002_STAGE_B2_RESULT.md`
+- BASE/cup-mass lineage authority:
+  `docs/validation/VAL_PUCKWORKS_001_BASE_TEMPORAL_CROSS_VALIDATION_AND_CUP_MASS_LINEAGE.md`
+- Current project state:
+  `docs/PROJECT_STATE.md`
+- Current concise roadmap:
+  `docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md`
 - VAL-001 PR #38:  
   `https://github.com/trbrewer/espresso-whole-pull/pull/38`
 - VAL-OPS-001 PR #40:  
@@ -1491,8 +1429,6 @@ handoff.
   `docs/validation/VAL_CORPUS_001_EXISTING_EVIDENCE_COMPARISON_ATLAS.md`
 - VAL-DATA-001 plan at current main:  
   `docs/validation/VAL_DATA_001_SYNCHRONIZED_HYDRAULIC_COMPACTION_MEASUREMENT_PLAN.md`
-- Current concise roadmap:  
-  `docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md`
 
 ---
 

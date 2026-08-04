@@ -3,9 +3,11 @@
 OpenFOAM-based research solver for espresso-puck wetting, porous flow, extraction, and multiscale integration with Puckworks.
 
 > **Research software:** Hydraulic integration through static radial
-> heterogeneity and saturated quasi-static compaction are merged. The active
-> phase is source-specific validation and mechanism discrimination. Physical
-> validation is **NOT_ESTABLISHED**.
+> heterogeneity and saturated quasi-static compaction are merged. The source-
+> specific comparison program has progressed through VAL-CORPUS-002. No
+> validation, data-planning, solver, or next-mechanism task is active; the
+> current scientific gate is additional independent data. Physical validation
+> is **NOT_ESTABLISHED**.
 
 The approximately 40 g beverage endpoint at 30 s was used in the saturated-permeability calibration. It is not an independent prediction or validation target. The software does not yet predict taste.
 
