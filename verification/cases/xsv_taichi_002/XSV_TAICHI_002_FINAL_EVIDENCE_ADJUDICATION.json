@@ -1,0 +1,52 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_taichi_002.final_evidence_adjudication.v1",
+  "authorization": {
+    "authorization_header": "HUMAN_OWNER_STAGE_AUTHORIZATION_V1",
+    "human_owner_assertion": "I_PERSONALLY_AUTHORIZE_THIS_STAGE",
+    "authorization_id": "XSV-TAICHI-002-FINAL-EVIDENCE-ADJUDICATION-2026-08-05",
+    "profile": "EWP_XSV_TAICHI_002_FINAL_EVIDENCE_ADJUDICATION_STAGE_V1",
+    "start_head": "92b213a481f7114a067f6591461b8c58c6272dc9",
+    "start_tree": "de598c4c6c07d89a920b392f9c37ebc53eeae2fc"
+  },
+  "bound_identities": {
+    "review_reducer_v2_sha256": "0cc9a1f9281f545813c684962df962b50675f852753fdc7c5338374737c655d0",
+    "review_reducer_v3_sha256": "ac8e71c23ede9d0170a0696ac33b017d61d5ffb7c216418cee8ea8915dc58c5a",
+    "review_reducer_v4_sha256": "37459e5e6f2c278f69455d073c699b06f71a413369a7f19342d7b9a9f8c61965",
+    "current_result_sha256": "01ee56ed97cf0779450e6d22e249cc3de1d22701f08edd88e10f0feafe7e31af",
+    "historical_g9_deterministic_record_sha256": "88617500c4c4d6934e751d297e6f1c1efeb9d596548f82b0b1f41101894762e0",
+    "raw_self_excluding_manifest_sha256": "7b9a83c403d4eb9e15d0ccfb65f88fc38371d4c12975f80ddf543757364f4a4e",
+    "external_archive_sha256": "dbcf996c3334ef9d910de8c1cf0df3e7c1698523a2eda1aee037e9e95a67fab2"
+  },
+  "deterministic_reduction_evidence": {
+    "generated_core_inventory": "RETAINED",
+    "generated_core_matches_committed_core": "PASS",
+    "independent_output_A_execution": "NOT_SEPARATELY_ESTABLISHED",
+    "independent_output_B_execution": "NOT_SEPARATELY_ESTABLISHED",
+    "independent_second_reduction": "NOT_ESTABLISHED",
+    "historical_g9_record_interpretation": "output_A_inventory and output_B_inventory contain the same generated inventory assigned by reducer v4; their equality is not evidence of two independent reducer executions",
+    "permitted_reproducibility_claim": "ONE_GENERATED_DETERMINISTIC_CORE_MATCHED_THE_COMMITTED_CORE_BYTE_FOR_BYTE",
+    "prohibited_reproducibility_claims": ["TWO_INDEPENDENT_REDUCTIONS_EXECUTED", "DOUBLE_REDUCTION_INDEPENDENTLY_PROVED", "OUTPUT_A_AND_OUTPUT_B_HAVE_SEPARATE_EXECUTION_PROVENANCE"]
+  },
+  "run_binding_evidence": {
+    "direct_run_to_matrix_binding": "PASS",
+    "direct_primitive_artifact_binding": "PASS",
+    "retained_successful_run_identities": 22,
+    "required_binding_fields_checked": "COMPLETE",
+    "generic_comparator_mutations": "PASS_BUT_NOT_INTEGRATED_PACKAGE_MUTATIONS",
+    "real_temporary_package_mutation_coverage": "PARTIAL",
+    "uncovered_real_input_mutation_classes": ["run identity and order", "geometry payload binding", "direction and axis permutation", "force and force-level binding", "Puckworks dependency/source identities", "primitive velocity and solver-log bytes"],
+    "impact": "QA_TEST_DEPTH_LIMITATION_ONLY",
+    "numerical_result_invalidated": "NO"
+  },
+  "process_provenance": {
+    "process_attempt_count": "NOT_INDEPENDENTLY_RECONSTRUCTED",
+    "retry_ceiling_compliance": "NOT_INDEPENDENTLY_RECONSTRUCTED",
+    "chronological_execution_order": "NOT_INDEPENDENTLY_RECONSTRUCTED"
+  },
+  "package_disposition": "COMPLETE_WITH_TYPED_PROVENANCE_AND_MUTATION_COVERAGE_LIMITATIONS",
+  "scientific_disposition": "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_X_DIRECTION_ENVELOPE",
+  "physical_validation": "NOT_ESTABLISHED",
+  "current_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
+  "next_stage": "NOT_AUTHORIZED",
+  "merge_authority": "NOT_GRANTED"
+}

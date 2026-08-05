@@ -243,5 +243,33 @@
     "merge_authority": "NOT_GRANTED",
     "physical_validation": "NOT_ESTABLISHED",
     "final_exact_head_ci": "PENDING"
+  },
+  "g10_final_evidence_adjudication": {
+    "authorization_header": "HUMAN_OWNER_STAGE_AUTHORIZATION_V1",
+    "human_owner_assertion": "I_PERSONALLY_AUTHORIZE_THIS_STAGE",
+    "authorization_id": "XSV-TAICHI-002-FINAL-EVIDENCE-ADJUDICATION-2026-08-05",
+    "profile": "EWP_XSV_TAICHI_002_FINAL_EVIDENCE_ADJUDICATION_STAGE_V1",
+    "reviewed_head": "92b213a481f7114a067f6591461b8c58c6272dc9",
+    "reviewed_tree": "de598c4c6c07d89a920b392f9c37ebc53eeae2fc",
+    "final_evidence_adjudication_sha256": "025489c966b0b4bfe8140cbfc82668aa904b99ecff8de94eaebdb23ec69a04a6",
+    "historical_g9_deterministic_record_sha256": "88617500c4c4d6934e751d297e6f1c1efeb9d596548f82b0b1f41101894762e0",
+    "generated_committed_core_identity": "PASS",
+    "independent_second_reduction": "NOT_ESTABLISHED",
+    "run_binding_direct_verification": "PASS",
+    "run_binding_real_input_mutation_coverage": "PARTIAL",
+    "package_disposition": "COMPLETE_WITH_TYPED_PROVENANCE_AND_MUTATION_COVERAGE_LIMITATIONS",
+    "numerical_rerun": "NONE",
+    "reducer_v4_change": "NONE",
+    "target_change": false,
+    "protocol_change": false,
+    "case_matrix_change": false,
+    "geometry_manifest_change": false,
+    "historical_runtime_change": false,
+    "primitive_evidence_change": false,
+    "raw_evidence_change": false,
+    "merge_authority": "NOT_GRANTED",
+    "physical_validation": "NOT_ESTABLISHED",
+    "next_stage": "NOT_AUTHORIZED",
+    "final_exact_head_ci": "PENDING"
   }
 }

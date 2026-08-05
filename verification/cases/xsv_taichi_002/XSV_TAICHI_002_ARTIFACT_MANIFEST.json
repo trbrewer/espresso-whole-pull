@@ -1,1 +1,41 @@
-{"committed_members":{"XSV_TAICHI_002_DETERMINISTIC_REDUCTION_RECORD.json":"88617500c4c4d6934e751d297e6f1c1efeb9d596548f82b0b1f41101894762e0","XSV_TAICHI_002_G9_FINAL_PACKAGE_INTEGRITY_CLOSURE.json":"de92ba01ca15b88b4b3dc62588f6f55394b72041c911d17adf212a2c2ddf77d3","XSV_TAICHI_002_RESULT.json":"01ee56ed97cf0779450e6d22e249cc3de1d22701f08edd88e10f0feafe7e31af","XSV_TAICHI_002_RUN_MANIFEST.csv":"730ab9eb68220fb98242dcd7742b19c9d5e5923655f777457155f16062c2726b","XSV_TAICHI_002_SUMMARY.md":"fa0bf09b5fb4de0877bb469e6eec22cb71caa8ac20693ceb51ef204e071b0a4d","plots/XSV_TAICHI_002_PLOT_SOURCE.csv":"27991e04e03349dae24cc3e3426db472323b5939154dda856f9d34d09efcfffb","plots/coating_response.svg":"ed6535a8669524497a147dd039b5811e3b2a794d1ae0a80eeb0fad04d8fd08d6","plots/directional_permeability.svg":"68800f7ddefdca5199c37ade524529f383ecb8cde05e4231b1434f0cafa81c81","plots/heterogeneity_coefficient_of_variation.svg":"feb758872b162c66f3056d85d3eef5fe5a3c9fcee3b13a7d50b89d7910123e01","plots/heterogeneity_fastest_quartile_flow_share.svg":"5aca9d0c589d51a260b7ded0ede8540add46614ccbe3b726a171f9785af15586","plots/heterogeneity_response.svg":"055984f175daffc9117ccacabd2b5204921a407f50e268a6281662020eafec17","plots/heterogeneity_sigma_micro.svg":"b910e8b366a0bf108659c1022bd15857cd7f22b9a07551e116dd51933050c778","plots/k_ratio_vs_connected_porosity.svg":"b1b6deee171dd8355c63f40eb84ab8225ac639614e84e100e993e26833bf19de","plots/k_ratio_vs_gross_porosity.svg":"94b90adadeb28c210efec542eb65f5d8cd8c34143e925a2aa53051f6f7806328","plots/k_ratio_vs_localization.svg":"ae7b5f9b8a2c52e216dab63d554969a01da570fb8c65554f8c51397047301d45","plots/linearity_anchors.svg":"2e78f568720594506bf1770ea60f31b575644752a4e678ceb585dd89301328c0","xsv_taichi_002_review_reducer_v4.py":"37459e5e6f2c278f69455d073c699b06f71a413369a7f19342d7b9a9f8c61965"},"external_archive":{"bytes":12953600,"regular_file_count":93,"sha256":"dbcf996c3334ef9d910de8c1cf0df3e7c1698523a2eda1aee037e9e95a67fab2"},"external_manifest":{"all_members_verified":true,"member_count":92,"sha256":"7b9a83c403d4eb9e15d0ccfb65f88fc38371d4c12975f80ddf543757364f4a4e","source_bytes":12871643},"lineage":["0cc9a1f9281f545813c684962df962b50675f852753fdc7c5338374737c655d0","ac8e71c23ede9d0170a0696ac33b017d61d5ffb7c216418cee8ea8915dc58c5a","2d2315dab8855560c8c7aaf31ec2f6908c1698e80395f435fcca42660691a708"],"physical_validation":"NOT_ESTABLISHED","schema_version":"espresso.whole_pull.xsv_taichi_002.corrected_artifact_manifest.v4","task":"XSV-TAICHI-002"}
+{
+  "committed_members": {
+    "XSV_TAICHI_002_DETERMINISTIC_REDUCTION_RECORD.json": "88617500c4c4d6934e751d297e6f1c1efeb9d596548f82b0b1f41101894762e0",
+    "XSV_TAICHI_002_FINAL_EVIDENCE_ADJUDICATION.json": "025489c966b0b4bfe8140cbfc82668aa904b99ecff8de94eaebdb23ec69a04a6",
+    "XSV_TAICHI_002_G9_FINAL_PACKAGE_INTEGRITY_CLOSURE.json": "de92ba01ca15b88b4b3dc62588f6f55394b72041c911d17adf212a2c2ddf77d3",
+    "XSV_TAICHI_002_RESULT.json": "01ee56ed97cf0779450e6d22e249cc3de1d22701f08edd88e10f0feafe7e31af",
+    "XSV_TAICHI_002_RUN_MANIFEST.csv": "730ab9eb68220fb98242dcd7742b19c9d5e5923655f777457155f16062c2726b",
+    "XSV_TAICHI_002_SUMMARY.md": "62864c561ec10e2533e13a1a53a862ea28080f7e6de3d94f0825f4401e3525a7",
+    "plots/XSV_TAICHI_002_PLOT_SOURCE.csv": "27991e04e03349dae24cc3e3426db472323b5939154dda856f9d34d09efcfffb",
+    "plots/coating_response.svg": "ed6535a8669524497a147dd039b5811e3b2a794d1ae0a80eeb0fad04d8fd08d6",
+    "plots/directional_permeability.svg": "68800f7ddefdca5199c37ade524529f383ecb8cde05e4231b1434f0cafa81c81",
+    "plots/heterogeneity_coefficient_of_variation.svg": "feb758872b162c66f3056d85d3eef5fe5a3c9fcee3b13a7d50b89d7910123e01",
+    "plots/heterogeneity_fastest_quartile_flow_share.svg": "5aca9d0c589d51a260b7ded0ede8540add46614ccbe3b726a171f9785af15586",
+    "plots/heterogeneity_response.svg": "055984f175daffc9117ccacabd2b5204921a407f50e268a6281662020eafec17",
+    "plots/heterogeneity_sigma_micro.svg": "b910e8b366a0bf108659c1022bd15857cd7f22b9a07551e116dd51933050c778",
+    "plots/k_ratio_vs_connected_porosity.svg": "b1b6deee171dd8355c63f40eb84ab8225ac639614e84e100e993e26833bf19de",
+    "plots/k_ratio_vs_gross_porosity.svg": "94b90adadeb28c210efec542eb65f5d8cd8c34143e925a2aa53051f6f7806328",
+    "plots/k_ratio_vs_localization.svg": "ae7b5f9b8a2c52e216dab63d554969a01da570fb8c65554f8c51397047301d45",
+    "plots/linearity_anchors.svg": "2e78f568720594506bf1770ea60f31b575644752a4e678ceb585dd89301328c0",
+    "xsv_taichi_002_review_reducer_v4.py": "37459e5e6f2c278f69455d073c699b06f71a413369a7f19342d7b9a9f8c61965"
+  },
+  "external_archive": {
+    "bytes": 12953600,
+    "regular_file_count": 93,
+    "sha256": "dbcf996c3334ef9d910de8c1cf0df3e7c1698523a2eda1aee037e9e95a67fab2"
+  },
+  "external_manifest": {
+    "all_members_verified": true,
+    "member_count": 92,
+    "sha256": "7b9a83c403d4eb9e15d0ccfb65f88fc38371d4c12975f80ddf543757364f4a4e",
+    "source_bytes": 12871643
+  },
+  "lineage": [
+    "0cc9a1f9281f545813c684962df962b50675f852753fdc7c5338374737c655d0",
+    "ac8e71c23ede9d0170a0696ac33b017d61d5ffb7c216418cee8ea8915dc58c5a",
+    "2d2315dab8855560c8c7aaf31ec2f6908c1698e80395f435fcca42660691a708"
+  ],
+  "physical_validation": "NOT_ESTABLISHED",
+  "schema_version": "espresso.whole_pull.xsv_taichi_002.corrected_artifact_manifest.v4",
+  "task": "XSV-TAICHI-002"
+}

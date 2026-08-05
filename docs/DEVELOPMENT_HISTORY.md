@@ -488,3 +488,12 @@ the unchanged v2 scientific reduction. No target, geometry, protocol,
 historical runtime, primitive evidence, raw archive, or scientific result
 changed. The process-attempt provenance limitation, independent-data gate,
 and physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-002 final evidence adjudication
+
+The current package now states that one generated deterministic core matched
+the committed core byte for byte; the historical G9 A/B fields do not prove
+two separately executed reductions. Direct binding of all 22 retained runs
+remains PASS, while real temporary-package mutation coverage is explicitly
+partial for individual run-binding classes. These typed provenance and QA-
+depth limitations change no numerical or scientific result.

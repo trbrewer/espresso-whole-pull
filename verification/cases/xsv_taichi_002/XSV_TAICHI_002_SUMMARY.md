@@ -13,3 +13,21 @@ The primary `APPARENT_HYDRAULIC_CONDUCTANCE_RATIO_TARGET` is exactly `0.37327310
 C30 direction-normalized K ratios are X `0.42408239686225502`, Y `0.17610126503036505`, and Z `0.19374685744086939`. Y and Z are below the primary numerical target relative to their corresponding baselines. These are descriptive anisotropy-anchor observations, do not change the primary X conclusion, do not establish real-coffee anisotropy, and strengthen only the conditional case for directional permeability or fabric measurement.
 
 All 22 frozen identities were executed and the final package order matches the case matrix. Chronological execution order is not independently reconstructable from a separate immutable ledger. The evidence is an exact static synthetic screen; physical validation is not established and additional independent data remain required.
+
+## Final evidence adjudication
+
+The generated deterministic core matched the committed core byte for byte.
+The historical G9 record assigned the same generated inventory to its
+output-A and output-B fields and therefore does not independently establish
+two separate reduction executions. An independent second reduction is
+`NOT_ESTABLISHED`.
+
+All 22 retained run records pass direct frozen run-to-matrix and primitive-
+artifact binding. Real temporary-package mutation coverage is complete for
+frozen-file, matrix, target, claim-context, artifact, inventory, and QA
+classes, but remains partial for the individual run-binding classes. These
+are package-provenance and test-depth limitations; they do not change the
+numerical result or scientific disposition.
+
+Package disposition:
+`COMPLETE_WITH_TYPED_PROVENANCE_AND_MUTATION_COVERAGE_LIMITATIONS`.

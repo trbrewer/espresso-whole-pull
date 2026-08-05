@@ -9,7 +9,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 321/321 PASS
+- Public source verification: 322/322 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -58,6 +58,13 @@ retry-ceiling compliance, and chronology are not independently reconstructed.
 G9 wraps the unchanged v2 scientific reduction with reducer v4, which binds
 the frozen current bytes, exact ordered run set, occurrence-level claim
 contexts, and byte-identical generated and committed deterministic inventories.
+Final G10 adjudication clarifies that one generated deterministic core matched
+the committed core byte for byte; the historical G9 output-A and output-B
+fields do not establish two separately executed reductions. Direct binding of
+all 22 retained records remains PASS, while real temporary-package mutation
+coverage remains partial for individual run-binding classes. These are typed
+package-provenance and QA-depth limitations and do not alter the scientific
+non-attainment result.
 PR #61 remains draft and unmerged.
 
 VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2

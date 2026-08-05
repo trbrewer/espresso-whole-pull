@@ -475,6 +475,56 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
                     qa, CASE_ROOT / "XSV_TAICHI_002_RESULT.json")
                 self.assertFalse(next(x for x in checks if x["check"] == check_name)["pass"])
 
+    def test_final_evidence_adjudication_is_consistent_and_bounded(self) -> None:
+        adjudication_path = CASE_ROOT / "XSV_TAICHI_002_FINAL_EVIDENCE_ADJUDICATION.json"
+        adjudication = json.loads(adjudication_path.read_text())
+        deterministic = adjudication["deterministic_reduction_evidence"]
+        binding = adjudication["run_binding_evidence"]
+        self.assertEqual(
+            adjudication["bound_identities"]["historical_g9_deterministic_record_sha256"],
+            "88617500c4c4d6934e751d297e6f1c1efeb9d596548f82b0b1f41101894762e0",
+        )
+        self.assertEqual(deterministic["independent_second_reduction"], "NOT_ESTABLISHED")
+        self.assertEqual(binding["real_temporary_package_mutation_coverage"], "PARTIAL")
+        self.assertEqual(binding["direct_run_to_matrix_binding"], "PASS")
+        self.assertEqual(binding["direct_primitive_artifact_binding"], "PASS")
+        self.assertEqual(adjudication["scientific_disposition"], self.result["overall_synthesis"])
+
+        qa = json.loads((ROOT / "PACKAGE_QA_STATUS.json").read_text())["xsv_taichi_002"]
+        self.assertEqual(qa["independent_second_reduction"], "NOT_ESTABLISHED")
+        self.assertEqual(qa["run_binding_real_input_mutation_coverage"], "PARTIAL")
+        self.assertEqual(qa["run_binding_direct_verification"], "PASS")
+        self.assertEqual(qa["package_disposition"], adjudication["package_disposition"])
+        self.assertEqual(
+            qa["final_evidence_adjudication_sha256"],
+            hashlib.sha256(adjudication_path.read_bytes()).hexdigest(),
+        )
+
+        summary = (CASE_ROOT / "XSV_TAICHI_002_SUMMARY.md").read_text()
+        project = (ROOT / "docs/PROJECT_STATE.md").read_text()
+        for text in (summary, project, json.dumps(qa), json.dumps(adjudication)):
+            lower = text.lower()
+            self.assertNotIn("two independent reductions executed", lower)
+            self.assertNotIn("complete real-input mutation coverage for every run-binding class", lower)
+            self.assertNotIn("/home/", text)
+        self.assertIn("does not independently establish", summary)
+        self.assertIn("remains partial", project)
+
+        frozen = {
+            "xsv_taichi_002_review_reducer_v4.py": "37459e5e6f2c278f69455d073c699b06f71a413369a7f19342d7b9a9f8c61965",
+            "XSV_TAICHI_002_RESULT.json": "01ee56ed97cf0779450e6d22e249cc3de1d22701f08edd88e10f0feafe7e31af",
+            "XSV_TAICHI_002_PROTOCOL.json": "c8582edbc494a32379a5b28a4e12f2230521183962cd940bd58c8cfc504ff297",
+            "XSV_TAICHI_002_CASE_MATRIX.csv": "74a709b8a766587cfd97194cf001002a19c124152173ad4a9d50f3bf804b7ed2",
+            "XSV_TAICHI_002_TARGET.json": "388655e6a7f4043f7acd5d26d672f8d3843a44277c1b173a639b823f92278472",
+            "XSV_TAICHI_002_GEOMETRY_MANIFEST.json": "b635a1e83b0e04f0b29ddc27baa870a13ad0771e3c197766eba3664aeb86832a",
+        }
+        for relative, expected in frozen.items():
+            self.assertEqual(hashlib.sha256((CASE_ROOT / relative).read_bytes()).hexdigest(), expected)
+        self.assertEqual(self.artifacts["external_manifest"]["sha256"],
+                         "7b9a83c403d4eb9e15d0ccfb65f88fc38371d4c12975f80ddf543757364f4a4e")
+        self.assertEqual(self.artifacts["external_archive"]["sha256"],
+                         "dbcf996c3334ef9d910de8c1cf0df3e7c1698523a2eda1aee037e9e95a67fab2")
+
 
 if __name__ == "__main__":
     unittest.main()
