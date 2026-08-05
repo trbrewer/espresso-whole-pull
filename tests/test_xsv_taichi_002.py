@@ -22,6 +22,13 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             newline="", encoding="utf-8"
         ) as handle:
             cls.rows = list(csv.DictReader(handle))
+        cls.target = json.loads(
+            (CASE_ROOT / "XSV_TAICHI_002_TARGET.json").read_text(encoding="utf-8")
+        )
+        with (CASE_ROOT / "XSV_TAICHI_002_TARGET_INPUTS.csv").open(
+            newline="", encoding="utf-8"
+        ) as handle:
+            cls.target_rows = list(csv.DictReader(handle))
 
     def test_authority_dependency_and_claim_boundary(self) -> None:
         protocol = self.protocol
@@ -55,6 +62,32 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             target["default_type_if_equal_geometry_and_viscosity_unproved"],
             "APPARENT_HYDRAULIC_CONDUCTANCE_RATIO_TARGET",
         )
+        frozen = self.target
+        self.assertEqual(frozen["target_type"],
+                         "APPARENT_HYDRAULIC_CONDUCTANCE_RATIO_TARGET")
+        self.assertEqual([int(row["nominal_group_bar"]) for row in self.target_rows],
+                         [5, 9, 11])
+        self.assertEqual([int(row["source_csv_line"]) for row in self.target_rows],
+                         [5001, 9001, 10001])
+        conductance = {
+            int(row["nominal_group_bar"]):
+            float(row["mass_flow_g_s"]) / float(row["pressure_bar"])
+            for row in self.target_rows
+        }
+        expected = {
+            "T_11_5": conductance[11] / conductance[5],
+            "T_9_5": conductance[9] / conductance[5],
+            "T_11_9": conductance[11] / conductance[9],
+        }
+        for key, value in expected.items():
+            self.assertTrue(math.isclose(frozen["ratios"][key], value,
+                                         rel_tol=1e-15, abs_tol=0.0))
+        self.assertEqual(frozen["ratios"]["primary_attainment_rule"],
+                         "K_case_over_K_reference <= T_11_5")
+        self.assertFalse(frozen["selection_rule"]["new_window_selected"])
+        self.assertEqual(frozen["selection_rule"]["pressure_field"],
+                         "basket_pressure__bar")
+        self.assertFalse(frozen["morphology_generated_before_freeze"])
 
     def test_geometry_transform_and_axes_are_exact(self) -> None:
         geometry = self.protocol["geometry"]

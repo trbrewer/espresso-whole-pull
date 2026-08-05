@@ -9,7 +9,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 293/293 PASS
+- Public source verification: 295/295 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -38,7 +38,10 @@ independent-data gate. Its result and controlling authority are
 
 XSV-TAICHI-002 is active only as a prospectively gated, no-physics synthetic
 morphology-response screen. It uses the existing VAL-CORPUS-001 discrepancy as
-a non-independent target and cannot establish a real mechanism, real-coffee
+an apparent-conductance target; the frozen primary ratio is
+`T_11_5 = 0.37327310642080013`. This is a simplified plausibility-screen target,
+not an independently validated material-property ratio, and cannot establish a
+real mechanism, real-coffee
 permeability, or physical validation. The additional-independent-data gate is
 unchanged.
 

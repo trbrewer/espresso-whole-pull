@@ -34,8 +34,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 293,
-    "source_manifest_aggregate_sha256": "664d7b5baba1271c66ac5ac6b6322cfcba8e1b7a84d3d2a7dbbddf2599d8dd21",
+    "source_manifest_file_count": 295,
+    "source_manifest_aggregate_sha256": "bc190e603eac6e25fccc87b1b2d6938ce1b602cbd5ec8c315e9abe440765dddc",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -374,7 +374,7 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "xsv_taichi_002": {
-    "status": "G0_PROTOCOL_BOOTSTRAP_AND_PROSPECTIVE_FREEZE",
+    "status": "G1_REQUIRED_COLLAPSE_TARGET_FROZEN",
     "authorization_id": "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05",
     "profile": "EWP_XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_COLLAPSE_SCREEN_STAGE_V1",
     "issue": 60,
@@ -388,6 +388,8 @@
     },
     "planned_scored_cuda_identities": 22,
     "absolute_process_attempt_ceiling": 24,
+    "target_type": "APPARENT_HYDRAULIC_CONDUCTANCE_RATIO_TARGET",
+    "primary_target_ratio_T_11_5": 0.37327310642080013,
     "current_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
     "physical_validation": "NOT_ESTABLISHED",
     "merge_authority": "NOT_GRANTED"

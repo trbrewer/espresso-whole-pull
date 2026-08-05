@@ -33,5 +33,6 @@
   "next_stage_authority": "NONE",
   "merge_authority": "NOT_GRANTED",
   "physical_validation": "NOT_ESTABLISHED",
-  "g0_execution_state": {"target_numerically_derived": false, "geometry_generated": false, "taichi_executions": 0, "cuda_executions": 0, "openfoam_executions": 0}
+  "g0_execution_state": {"target_numerically_derived": false, "geometry_generated": false, "taichi_executions": 0, "cuda_executions": 0, "openfoam_executions": 0},
+  "g1_target_freeze": {"status": "PASS", "target_type": "APPARENT_HYDRAULIC_CONDUCTANCE_RATIO_TARGET", "primary_ratio_T_11_5": 0.37327310642080013, "target_path": "verification/cases/xsv_taichi_002/XSV_TAICHI_002_TARGET.json", "target_sha256": "388655e6a7f4043f7acd5d26d672f8d3843a44277c1b173a639b823f92278472", "inputs_path": "verification/cases/xsv_taichi_002/XSV_TAICHI_002_TARGET_INPUTS.csv", "inputs_sha256": "ba051dd799a3467af3ea06cd29e0a0e36f1e47774b8b4ecd6c70e69d45018c52", "morphology_generated": false, "taichi_executions": 0, "openfoam_executions": 0}
 }

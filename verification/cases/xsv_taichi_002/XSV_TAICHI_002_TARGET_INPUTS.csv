@@ -1,0 +1,4 @@
+condition,nominal_group_bar,source_time_s,source_csv_line,pressure_node,pressure_bar,pressure_std_bar,flow_field,mass_flow_g_s,mass_flow_std_g_s,source_path,source_sha256
+LOW_REFERENCE,5,100.000000,5001,basket_pressure__bar,4.504768,0.013838,mass_flow_rate__g_per_s,2.057772,0.049536,puckworks/data/waszkiewicz2025/traces_time_dependent.csv,40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9
+SECONDARY,9,100.000000,9001,basket_pressure__bar,8.716916,0.021960,mass_flow_rate__g_per_s,1.824924,0.038851,puckworks/data/waszkiewicz2025/traces_time_dependent.csv,40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9
+ADVERSE_HIGH,11,100.000000,10001,basket_pressure__bar,10.419167,0.019065,mass_flow_rate__g_per_s,1.776579,0.042978,puckworks/data/waszkiewicz2025/traces_time_dependent.csv,40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9
