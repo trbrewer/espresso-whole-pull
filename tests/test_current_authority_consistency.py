@@ -160,7 +160,9 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         return False
     for key, expected in (
         ("status", "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW"),
-        ("overall_scientific_disposition", result.get("overall_disposition")),
+        ("scientific_disposition", result.get("scientific_disposition")),
+        ("package_disposition", result.get("package_disposition")),
+        ("overall_compatibility_disposition", result.get("overall_disposition")),
         ("latest_authorization_id", "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04"),
         ("current_scientific_gate", "ADDITIONAL_INDEPENDENT_DATA_REQUIRED"),
         ("human_owner_independent_data_route_decision", "STILL_REQUIRED"),
@@ -176,6 +178,8 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
                       "additional_execution_during_correction": 0}:
         return False
     if xsv.get("corrected_result_sha256") != hashlib.sha256(result_path.read_bytes()).hexdigest():
+        return False
+    if "overall_scientific_disposition" in xsv:
         return False
 
     for path, markers in CURRENT_MARKERS.items():
@@ -251,6 +255,10 @@ class CurrentAuthorityConsistencyTests(unittest.TestCase):
             {"retained_numerical_execution": "NONE"},
             {"corrected_result_sha256": ""},
             {"current_scientific_gate": "XSV_TAICHI_001_EXECUTION"},
+            {"scientific_disposition": "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES"},
+            {"package_disposition": "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED"},
+            {"overall_compatibility_disposition": "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED"},
+            {"overall_scientific_disposition": "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES"},
         ):
             changed = dict(self.qa)
             changed["xsv_taichi_001"] = {**self.qa["xsv_taichi_001"], **stale_xsv}

@@ -162,7 +162,13 @@
       "external_archive_regular_file_count": 1546
     },
     "deterministic_double_reduction": "REQUIRED_BEFORE_EXACT_HEAD_REVIEW",
-    "qualification_results": "RESOLVE_FROM_EXACT_HEAD_CI",
+    "qualification_results": {
+      "focused_xsv_and_current_authority_tests": "12_PASS",
+      "complete_python_suite": "460_PASS",
+      "static_gates": "38_PASS",
+      "source_manifest": "288_PASS",
+      "exact_head_ci": "RESOLVE_FROM_GITHUB_AT_REVIEW"
+    },
     "additional_numerical_execution": 0,
     "scientific_inputs_changed": false,
     "thresholds_changed": false,
@@ -204,6 +210,33 @@
     "fixture_changed": false,
     "raw_evidence_changed": false,
     "source_or_dependency_changed": false,
+    "merge_authority": "NOT_GRANTED",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "final_current_authority_semantics_continuation": {
+    "protocol": "HUMAN_OWNER_STAGE_CONTINUATION_V1",
+    "human_owner_assertion": "I_PERSONALLY_DIRECT_THIS_CONTINUATION",
+    "continuation_id": "XSV-TAICHI-001-FINAL-CURRENT-AUTHORITY-SEMANTICS-CORRECTION-2026-08-05",
+    "active_authorization_id": "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04",
+    "reviewed_head": "723bd1a95ccf29463245af963af2c1a47823b83a",
+    "reviewed_tree": "54f6bd05d1a7f7602b544ddee6e4b92604213b0f",
+    "reviewed_parent": "e26738091ddf7b0e032a47d11fc585e2185bad30",
+    "corrected_finding": "XSV-FINAL-005",
+    "corrected_numerical_summary": "MAXIMUM_SAME_ROW_COMPOSITION_BOUNDARY_FLUX_IMBALANCE_2.1659767311672455E-12_BELOW_1E-6_GATE",
+    "corrected_machine_disposition_semantics": "SCIENTIFIC_PACKAGE_AND_OVERALL_COMPATIBILITY_FIELDS_DISTINCT",
+    "additional_numerical_execution": 0,
+    "reduced_artifacts_changed": false,
+    "scientific_inputs_changed": false,
+    "thresholds_changed": false,
+    "protocol_or_fixture_changed": false,
+    "source_or_dependency_changed": false,
+    "qualification_results": {
+      "focused_xsv_and_current_authority_tests": "12_PASS",
+      "complete_python_suite": "460_PASS",
+      "static_gates": "38_PASS",
+      "source_manifest": "288_PASS",
+      "exact_head_ci": "RESOLVE_FROM_GITHUB_AT_REVIEW"
+    },
     "merge_authority": "NOT_GRANTED",
     "physical_validation": "NOT_ESTABLISHED"
   },

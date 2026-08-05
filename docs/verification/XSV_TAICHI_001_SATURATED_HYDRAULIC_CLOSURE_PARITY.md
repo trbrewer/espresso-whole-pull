@@ -245,8 +245,9 @@ Series total-flow error is `0.002878157997348123`; its maximum serial/MPI
 diagnostic difference is `1.389913098940108e-11`. Corrected radial total-flow
 errors are at most `5.148998262299268e-11`, zone-share errors are below
 `9.619849887436926e-11`, and serial/MPI differences are below
-`1.2016994613028095e-12`. Flux imbalance is below `1e-12` for the composition
-fixtures. The complete exact values are governed by
+`1.2016994613028095e-12`. The maximum same-row composition boundary flux
+imbalance is `2.1659767311672455e-12`, well below the unchanged `1e-6`
+scientific gate. The complete exact values are governed by
 `verification/cases/xsv_taichi_001/XSV_TAICHI_001_RESULT.json`.
 
 Scientific disposition:

@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 288,
-  "total_uncompressed_bytes_excluding_manifest": 3892451,
-  "aggregate_source_sha256": "22f175b20d8ac62df2f2f1a94372db704c6368e0e3c4c3da4c77d3b4ade53c5d",
-  "aggregate_sha256": "22f175b20d8ac62df2f2f1a94372db704c6368e0e3c4c3da4c77d3b4ade53c5d",
+  "total_uncompressed_bytes_excluding_manifest": 3896562,
+  "aggregate_source_sha256": "e646090a1d002249f691fd1f79e5c355eb57cec615c86e2d196674f80ac3f5cb",
+  "aggregate_sha256": "e646090a1d002249f691fd1f79e5c355eb57cec615c86e2d196674f80ac3f5cb",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -714,8 +714,8 @@
       "git_mode": "100644"
     },
     "docs/verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md": {
-      "sha256": "ba03f5bd045f8bc5a621f55d816a1025237b477aa0ef4652a1ee1e076cc4fc24",
-      "bytes": 19358,
+      "sha256": "227b12e695fd95546a17963d8862332664abf30fb9a3c02308226b0efc85cf99",
+      "bytes": 19431,
       "git_mode": "100644"
     },
     "docs/wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md": {
@@ -1269,8 +1269,8 @@
       "git_mode": "100644"
     },
     "tests/test_current_authority_consistency.py": {
-      "sha256": "4d82d125882a9570154591ed299df1f585e1696ed6e90a46967a55afa9156804",
-      "bytes": 13856,
+      "sha256": "3e889d4154faa068dda801a72300a8c5049816e6d394359c46c6683b9bfb3ff4",
+      "bytes": 14430,
       "git_mode": "100644"
     },
     "tests/test_r1_analysis.py": {
@@ -1414,8 +1414,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {
-      "sha256": "88ac3d1f8bb108eb623a6d10e1f8968d7c72fdec12fc700460ae801d6ed46816",
-      "bytes": 29398,
+      "sha256": "3e3b7e78759d394bce1d53947d889987864a81280e9d3582782ce5678a56546f",
+      "bytes": 31223,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_ARTIFACT_MANIFEST.json": {
@@ -1449,8 +1449,8 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_STAGE_AUTHORIZATION.json": {
-      "sha256": "7691415532ed60e3d4ddd928d47340064445e1f9131b40287bddd21469b69ecd",
-      "bytes": 14898,
+      "sha256": "99222ea16f22a6b2cdd13783cf23a1358bc98c30c0cd882c341ec388927e5b08",
+      "bytes": 16537,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_SUMMARY.csv": {

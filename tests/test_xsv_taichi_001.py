@@ -301,6 +301,36 @@ class XSVTaichi001Tests(unittest.TestCase):
         self.assertEqual(result["scientific_disposition"], "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED")
         self.assertEqual(result["package_disposition"], "XSV_TAICHI_001_COMPLETE_WITH_TYPED_PROVENANCE_LIMITATION")
         self.assertEqual(result["trace_derived_field_integrity"], "LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE")
+        composition_fluxes = [
+            result["series"]["serial"]["boundary_flux_imbalance_relative"],
+            result["series"]["mpi"]["boundary_flux_imbalance_relative"],
+            result["parallel"]["serial"]["boundary_flux_imbalance_relative"],
+            result["parallel"]["mpi"]["boundary_flux_imbalance_relative"],
+        ]
+        maximum_composition_flux = max(composition_fluxes)
+        self.assertTrue(math.isclose(maximum_composition_flux,
+                                     2.1659767311672455e-12,
+                                     rel_tol=1e-12, abs_tol=1e-12))
+        authority_text = (ROOT / "docs/verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md").read_text(encoding="utf-8")
+        def current_summary_is_valid(text: str) -> bool:
+            return (
+                "2.1659767311672455e-12" in text
+                and "unchanged `1e-6` scientific gate" in text
+                and "Flux imbalance is below `1e-12` for the composition fixtures" not in text
+            )
+
+        self.assertTrue(current_summary_is_valid(authority_text))
+        self.assertFalse(current_summary_is_valid(
+            authority_text.replace("2.1659767311672455e-12", "1.0e-12")
+        ))
+        self.assertFalse(current_summary_is_valid(
+            authority_text + "\nFlux imbalance is below `1e-12` for the composition fixtures.\n"
+        ))
+        qa = json.loads((ROOT / "PACKAGE_QA_STATUS.json").read_text(encoding="utf-8"))["xsv_taichi_001"]
+        self.assertNotIn("overall_scientific_disposition", qa)
+        self.assertEqual(qa["scientific_disposition"], result["scientific_disposition"])
+        self.assertEqual(qa["package_disposition"], result["package_disposition"])
+        self.assertEqual(qa["overall_compatibility_disposition"], result["overall_disposition"])
         thresholds = self.protocol["thresholds"]
         parity = result["backend_parity"]
         self.assertLessEqual(

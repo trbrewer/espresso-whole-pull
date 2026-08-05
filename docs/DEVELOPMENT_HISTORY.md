@@ -428,3 +428,11 @@ therefore preserved as a package-level provenance limitation rather than a G5
 scientific failure. Scientific closure parity remains established only for the
 exact synthetic fixtures; the independent-data gate and physical-validation
 ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-001 final authority semantics aligned
+
+A no-run current-record correction replaced one understated composition-flux
+summary with the exact same-row maximum and made the machine record's
+scientific, package, and overall-compatibility dispositions explicit. No
+scientific result changed; the additional-independent-data gate and the
+physical-validation ceiling remain unchanged.
