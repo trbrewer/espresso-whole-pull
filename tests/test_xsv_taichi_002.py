@@ -25,6 +25,9 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
         cls.target = json.loads(
             (CASE_ROOT / "XSV_TAICHI_002_TARGET.json").read_text(encoding="utf-8")
         )
+        cls.geometry = json.loads(
+            (CASE_ROOT / "XSV_TAICHI_002_GEOMETRY_MANIFEST.json").read_text(encoding="utf-8")
+        )
         with (CASE_ROOT / "XSV_TAICHI_002_TARGET_INPUTS.csv").open(
             newline="", encoding="utf-8"
         ) as handle:
@@ -104,6 +107,21 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
         self.assertFalse(coating["connectivity_repair"])
         token = "XSV_TAICHI_002_COATING_V1|1|2|3".encode("ascii")
         self.assertEqual(len(hashlib.sha256(token).hexdigest()), 64)
+        manifest = self.geometry
+        self.assertEqual(manifest["status"], "FROZEN_BEFORE_RETAINED_LBM_EXECUTION")
+        self.assertEqual(manifest["repeat_identity"], "PASS")
+        self.assertEqual(manifest["unique_mask_count"], 12)
+        self.assertEqual(manifest["retained_lbm_runs_before_freeze"], 0)
+        records = {item["mask_id"]: item for item in manifest["geometries"]}
+        self.assertEqual(len(records), 12)
+        self.assertEqual(records["H-A0-S42"]["payload_sha256"],
+                         "10d9a010cbac4b8579154456c4271ecd2808af5116beab15a2ffd4e2c99cd039")
+        self.assertEqual(records["H-A0-S42"]["phi_gross"], 0.412359375)
+        self.assertEqual(records["H-A0-S42"]["phi_connected_x"], 0.41234375)
+        self.assertEqual([records[key]["removed_voxel_count"] for key in ("C05", "C15", "C30")],
+                         [1320, 3959, 7917])
+        self.assertTrue(all(item["through_x"] and item["through_y"] and item["through_z"]
+                            for item in records.values()))
 
     def test_exact_case_matrix_order_and_attempt_ceiling(self) -> None:
         expected = [
