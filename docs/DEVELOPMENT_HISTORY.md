@@ -436,3 +436,13 @@ summary with the exact same-row maximum and made the machine record's
 scientific, package, and overall-compatibility dispositions explicit. No
 scientific result changed; the additional-independent-data gate and the
 physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-002 protocol bootstrap authorized
+
+Human-owner authorization activated the prospective synthetic-morphology and
+required-collapse screen from the exact merged XSV-TAICHI-001 main identity.
+The G0 protocol freezes the 22-identity CUDA matrix, 24-attempt ceiling,
+synthetic-only claim boundary, and staged no-execution barriers. Issue #60 is
+the governed task record. No target evaluation, morphology generation, or
+numerical execution occurred during this bootstrap; the independent-data gate
+and physical-validation ceiling remain unchanged.

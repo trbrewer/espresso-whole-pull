@@ -156,7 +156,7 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
     xsv = qa.get("xsv_taichi_001", {})
     result_path = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_RESULT.json"
     result = json.loads(result_path.read_text(encoding="utf-8"))
-    if qa.get("active_cross_solver_verification_task") != "NONE":
+    if qa.get("active_cross_solver_verification_task") != "XSV-TAICHI-002":
         return False
     for key, expected in (
         ("status", "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW"),
@@ -166,7 +166,7 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         ("latest_authorization_id", "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04"),
         ("current_scientific_gate", "ADDITIONAL_INDEPENDENT_DATA_REQUIRED"),
         ("human_owner_independent_data_route_decision", "STILL_REQUIRED"),
-        ("xsv_taichi_002", "NOT_STARTED_NOT_AUTHORIZED"),
+        ("xsv_taichi_002", "STARTED_AUTHORIZED"),
         ("physical_validation", "NOT_ESTABLISHED"),
     ):
         if xsv.get(key) != expected:
@@ -180,6 +180,25 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
     if xsv.get("corrected_result_sha256") != hashlib.sha256(result_path.read_bytes()).hexdigest():
         return False
     if "overall_scientific_disposition" in xsv:
+        return False
+    xsv2 = qa.get("xsv_taichi_002", {})
+    for key, expected in (
+        ("status", "G0_PROTOCOL_BOOTSTRAP_AND_PROSPECTIVE_FREEZE"),
+        ("authorization_id", "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05"),
+        ("issue", 60),
+        ("planned_scored_cuda_identities", 22),
+        ("absolute_process_attempt_ceiling", 24),
+        ("current_scientific_gate", "ADDITIONAL_INDEPENDENT_DATA_REQUIRED"),
+        ("physical_validation", "NOT_ESTABLISHED"),
+        ("merge_authority", "NOT_GRANTED"),
+    ):
+        if xsv2.get(key) != expected:
+            return False
+    if xsv2.get("pull_request") != "BOOTSTRAP_PENDING" and not isinstance(xsv2.get("pull_request"), int):
+        return False
+    if xsv2.get("retained_numerical_execution") != {
+        "taichi_cuda_runs": 0, "openfoam_runs": 0, "geometry_generations": 0
+    }:
         return False
 
     for path, markers in CURRENT_MARKERS.items():

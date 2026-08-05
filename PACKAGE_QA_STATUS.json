@@ -30,12 +30,12 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 460,
+    "python_test_count": 465,
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 288,
-    "source_manifest_aggregate_sha256": "e646090a1d002249f691fd1f79e5c355eb57cec615c86e2d196674f80ac3f5cb",
+    "source_manifest_file_count": 293,
+    "source_manifest_aggregate_sha256": "1f7ffcf30a1a82de80a4a3e6664fc118f24deb7d4c2d075258dbf97c9a53e471",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -337,7 +337,7 @@
   "active_validation_case": "NONE",
   "active_data_planning_task": "NONE",
   "active_solver_task": "NONE",
-  "active_cross_solver_verification_task": "NONE",
+  "active_cross_solver_verification_task": "XSV-TAICHI-002",
   "experimental_commissioning": "NOT_AUTHORIZED",
   "protected_or_holdout_scoring": "NOT_AUTHORIZED",
   "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
@@ -370,8 +370,27 @@
     "strategy_v1_6_snapshot_sha256": "5f8bc4bfbe8089d7ff6ff44955230f059a84df96c3903bfe064448abf8aef703",
     "current_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
     "human_owner_independent_data_route_decision": "STILL_REQUIRED",
-    "xsv_taichi_002": "NOT_STARTED_NOT_AUTHORIZED",
+    "xsv_taichi_002": "STARTED_AUTHORIZED",
     "physical_validation": "NOT_ESTABLISHED"
+  },
+  "xsv_taichi_002": {
+    "status": "G0_PROTOCOL_BOOTSTRAP_AND_PROSPECTIVE_FREEZE",
+    "authorization_id": "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05",
+    "profile": "EWP_XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_COLLAPSE_SCREEN_STAGE_V1",
+    "issue": 60,
+    "pull_request": "BOOTSTRAP_PENDING",
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "evidence_class": "SIMULATED_SYNTHETIC_REFERENCE",
+    "retained_numerical_execution": {
+      "taichi_cuda_runs": 0,
+      "openfoam_runs": 0,
+      "geometry_generations": 0
+    },
+    "planned_scored_cuda_identities": 22,
+    "absolute_process_attempt_ceiling": 24,
+    "current_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
+    "physical_validation": "NOT_ESTABLISHED",
+    "merge_authority": "NOT_GRANTED"
   },
   "val_corpus_002": {
     "stage": "COMPLETE",

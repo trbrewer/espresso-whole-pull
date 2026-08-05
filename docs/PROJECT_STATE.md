@@ -9,11 +9,11 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 288/288 PASS
+- Public source verification: 293/293 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active cross-solver verification task: `NONE`
+- Active cross-solver verification task: `XSV-TAICHI-002`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
@@ -35,6 +35,12 @@ verification task. It activates no validation, data-planning, solver-
 development or mechanism-selection task and does not satisfy the additional-
 independent-data gate. Its result and controlling authority are
 [XSV-TAICHI-001 saturated hydraulic closure parity](verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md).
+
+XSV-TAICHI-002 is active only as a prospectively gated, no-physics synthetic
+morphology-response screen. It uses the existing VAL-CORPUS-001 discrepancy as
+a non-independent target and cannot establish a real mechanism, real-coffee
+permeability, or physical validation. The additional-independent-data gate is
+unchanged.
 
 VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2
 result remains validation-support sensitivity and practical-identifiability
