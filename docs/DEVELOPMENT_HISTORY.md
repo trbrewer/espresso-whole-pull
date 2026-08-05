@@ -457,3 +457,14 @@ Directional responses are retained descriptively, including substantial
 axis ratios, without a mechanism or physical-validation claim. No OpenFOAM,
 full-basket, explicit-fines, calibration, or protected-data work occurred.
 The independent-data gate remains unchanged and the draft PR remains unmerged.
+
+## 2026-08-05 — XSV-TAICHI-002 exact-head review correction
+
+Without rerunning CUDA or changing raw evidence, target, masks, geometry,
+matrix, or thresholds, a versioned reducer replaced asserted G0-G6 package
+gates with primitive- and hash-derived checks. It independently binds all 22
+records to the frozen matrix, evaluates heterogeneity by amplitude rather than
+pooled cases, narrows localization to descriptive reporting, distinguishes
+both plot references, and reports direction-normalized C30 anchors. The
+principal X-direction non-attainment result and independent-data gate remain
+unchanged; physical validation is not established.

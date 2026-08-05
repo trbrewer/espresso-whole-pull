@@ -9,7 +9,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 313/313 PASS
+- Public source verification: 316/316 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -44,6 +44,13 @@ not an independently validated material-property ratio, and cannot establish a
 real mechanism, real-coffee
 permeability, or physical validation. The additional-independent-data gate is
 unchanged.
+
+Exact-head review correction preserved every primitive and the historical
+execution runtime while replacing asserted package gates with a versioned,
+fail-closed reducer. Localization is now explicitly descriptive because no
+prospective change threshold was frozen. The primary X-direction non-attainment
+result is unchanged; transverse C30 reductions are retained only as descriptive
+anisotropy anchors. PR #61 remains draft and unmerged.
 
 VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2
 result remains validation-support sensitivity and practical-identifiability

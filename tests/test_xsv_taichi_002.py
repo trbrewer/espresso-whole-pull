@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import importlib.util
 import json
 import math
 import unittest
@@ -38,6 +39,11 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
         cls.artifacts = json.loads(
             (CASE_ROOT / "XSV_TAICHI_002_ARTIFACT_MANIFEST.json").read_text(encoding="utf-8")
         )
+        reducer_path = CASE_ROOT / "xsv_taichi_002_review_reducer_v2.py"
+        spec = importlib.util.spec_from_file_location("xsv002_review_reducer", reducer_path)
+        assert spec is not None and spec.loader is not None
+        cls.reducer = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.reducer)
 
     def test_authority_dependency_and_claim_boundary(self) -> None:
         protocol = self.protocol
@@ -198,9 +204,6 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
         observed = [row["run_id"] for row in runs]
         self.assertEqual(observed, expected)
         self.assertEqual(len(observed), len(set(observed)))
-        self.assertEqual(result["process_attempt_count"], 22)
-        self.assertEqual(result["infrastructure_retries"], 0)
-        baseline = runs[0]["K_gross_lu"]
         for row in runs:
             self.assertTrue(row["converged"])
             self.assertLess(row["completed_steps"], row["maximum_steps"])
@@ -212,41 +215,107 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
                 row["K_gross_lu"], row["nu_lu"] * row["q_box_lu"] / row["g_lu"],
                 rel_tol=1e-15, abs_tol=0.0,
             ))
-            self.assertTrue(math.isclose(row["K_over_K0"], row["K_gross_lu"] / baseline,
-                                         rel_tol=1e-15, abs_tol=0.0))
-            self.assertEqual(row["primary_target_attained"],
-                             row["K_over_K0"] <= self.target["ratios"]["T_11_5"])
-            self.assertEqual(row["run_level_disposition"], "PASS")
-        self.assertLess(result["baseline"]["relative_difference"], 0.0025)
+            self.assertEqual(row["binding_status"], "PASS")
         for fit in result["linearity"].values():
             self.assertGreaterEqual(fit["R2"], 0.9999)
             self.assertLessEqual(fit["maximum_q_over_g_relative_deviation"], 0.01)
             self.assertLessEqual(fit["normalized_intercept"], 0.005)
-            self.assertEqual(fit["disposition"], "PASS")
+            self.assertTrue(fit["pass"])
         self.assertEqual(result["family_dispositions"]["constriction"],
                          "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_CONSTRICTION_ENVELOPE")
         self.assertEqual(result["family_dispositions"]["heterogeneity"],
                          "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_HETEROGENEITY_ENVELOPE")
+        self.assertEqual(result["family_dispositions"]["localization"],
+                         "FLOW_LOCALIZATION_RESPONSE_REPORTED_DESCRIPTIVELY_NO_PROSPECTIVE_CHANGE_THRESHOLD")
         self.assertEqual(result["claim_ceiling"]["physical_validation"], "NOT_ESTABLISHED")
         self.assertEqual(result["claim_ceiling"]["next_stage"], "NOT_AUTHORIZED")
         self.assertEqual(self.artifacts["external_manifest"]["member_count"], 92)
         self.assertEqual(self.artifacts["external_archive"]["regular_file_count"], 93)
         for relative, digest in self.artifacts["committed_members"].items():
             self.assertEqual(hashlib.sha256((CASE_ROOT / relative).read_bytes()).hexdigest(), digest)
-        self.assertGreaterEqual(sum(name.endswith(".svg") for name in self.artifacts["committed_members"]), 8)
-        # Mutation coverage: altered primitive, identity, threshold outcome, or claim fails.
-        mutations = []
-        changed = dict(runs[0]); changed["K_gross_lu"] *= 1.01
-        mutations.append(not math.isclose(changed["K_gross_lu"], changed["nu_lu"] * changed["q_box_lu"] / changed["g_lu"], rel_tol=1e-15))
-        mutations.append(len(observed[:-1]) != len(expected))
-        mutations.append(len(observed + [observed[0]]) != len(set(observed + [observed[0]])))
-        mutations.append((0.06 <= 0.05) is False)
-        mutations.append((0.11 <= 0.10) is False)
-        mutations.append((1.01e-12 <= 1e-12) is False)
-        mutations.append((self.target["ratios"]["T_11_5"] + 0.01 <= self.target["ratios"]["T_11_5"]) is False)
-        mutations.append(result["claim_ceiling"]["physical_validation"] != "ESTABLISHED")
-        mutations.append(result["claim_ceiling"]["next_stage"] != "AUTHORIZED")
-        self.assertTrue(all(mutations))
+        self.assertEqual(sum(name.endswith(".svg") for name in self.artifacts["committed_members"]), 10)
+
+        reducer_text = (CASE_ROOT / "xsv_taichi_002_review_reducer_v2.py").read_text()
+        self.assertNotIn('gates = {"G0_', reducer_text)
+        self.assertNotIn('FLOW_LOCALIZATION_CHANGED_WITHOUT_REQUIRED_BULK_PERMEABILITY_COLLAPSE',
+                         reducer_text)
+        self.assertEqual(hashlib.sha256((CASE_ROOT / "xsv_taichi_002_runtime.py").read_bytes()).hexdigest(),
+                         "3bbf089ab5855bdbaeabb9a569ec9176974e8c25499a0c43c0d011be69d74a75")
+        self.assertEqual(result["reduction"]["pre_review_result_sha256"],
+                         "f4d2cd03bb794ac89e2aba0ddbb133e8ed531d14dc5fb41d7e4a009197259236")
+        self.assertEqual(result["chronology"]["chronological_execution_order"],
+                         "CHRONOLOGICAL_EXECUTION_ORDER_NOT_INDEPENDENTLY_RECONSTRUCTED")
+        self.assertTrue(all(item["status"] == "PASS" for item in result["gates"].values()))
+        for item in result["gates"].values():
+            self.assertTrue(item["checks"])
+            self.assertTrue(item["validation_rule"])
+            self.assertIsNone(item["failure_reason"])
+
+        binding_names = {item["check"] for item in result["run_binding_checks"]}
+        required_bindings = {
+            "run_id", "run_order", "geometry_id", "geometry_payload", "direction",
+            "axis_permutation", "force_level", "force", "tau_plus", "precision",
+            "cuda_backend", "convergence_tolerance", "check_interval", "minimum_steps",
+            "maximum_steps", "puckworks_commit", "puckworks_tree",
+            "puckworks_source_hashes", "mask_shape", "mask_dtype",
+            "velocity_identity", "log_identity",
+        }
+        self.assertTrue(required_bindings <= binding_names)
+        for name in required_bindings:
+            mutation = self.reducer.check(name, "MUTATED", "FROZEN", "synthetic mutation")
+            self.assertFalse(mutation["pass"], name)
+
+        # Counterfactual family branches are derived, including no pooled robustness.
+        synthetic_geometry = {
+            "H-A0-S42": {"phi_connected_x": 0.4},
+            "C30": {"phi_connected_x": 0.2, "through_x": True},
+        }
+        synthetic_rows = {
+            "C05-X-MID": {"K_over_directional_baseline": 0.2},
+            "C15-X-MID": {"K_over_directional_baseline": 0.8},
+            "C30-X-MID": {"K_over_directional_baseline": 0.8},
+        }
+        self.assertEqual(self.reducer.classify_constriction(
+            synthetic_rows, 0.373, synthetic_geometry),
+            "REQUIRED_COLLAPSE_ATTAINED_BY_MODERATE_SYNTHETIC_CONSTRICTION")
+        synthetic_rows["C05-X-MID"]["K_over_directional_baseline"] = 0.8
+        synthetic_rows["C30-X-MID"]["K_over_directional_baseline"] = 0.2
+        self.assertEqual(self.reducer.classify_constriction(
+            synthetic_rows, 0.373, synthetic_geometry),
+            "REQUIRED_COLLAPSE_ATTAINED_ONLY_BY_SEVERE_SYNTHETIC_CONSTRICTION")
+        synthetic_geometry["C30"]["phi_connected_x"] = 0.05
+        self.assertEqual(self.reducer.classify_constriction(
+            synthetic_rows, 0.373, synthetic_geometry),
+            "REQUIRED_COLLAPSE_ATTAINED_ONLY_NEAR_DIRECTIONAL_CONNECTIVITY_LOSS")
+        synthetic_geometry["C30"]["through_x"] = False
+        self.assertEqual(self.reducer.classify_constriction(
+            synthetic_rows, 0.373, synthetic_geometry),
+            "REQUIRED_COLLAPSE_CROSSED_ONLY_AFTER_DIRECTIONAL_CONNECTIVITY_LOSS")
+        self.assertEqual(self.reducer.classify_overall(
+            "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_CONSTRICTION_ENVELOPE",
+            "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_HETEROGENEITY_ENVELOPE"),
+            "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_X_DIRECTION_ENVELOPE")
+
+        hetero = result["heterogeneity"]
+        self.assertEqual(set(hetero["by_amplitude"]), {"1", "2"})
+        self.assertFalse(hetero["pooled_count_used_for_robustness"])
+        for amplitude in hetero["by_amplitude"].values():
+            self.assertEqual(len({row["seed"] for row in amplitude["paired_seed_results"]}), 3)
+            self.assertEqual(amplitude["attainment_count"],
+                             sum(row["target_attained"] for row in amplitude["paired_seed_results"]))
+
+        ratios = result["anisotropy"]["C30_direction_normalized_K_ratios"]
+        self.assertTrue(math.isclose(ratios["Y"], 0.17610126503036505, rel_tol=1e-15))
+        self.assertTrue(math.isclose(ratios["Z"], 0.1937468574408694, rel_tol=1e-15))
+        source = (CASE_ROOT / "plots/XSV_TAICHI_002_PLOT_SOURCE.csv").read_text()
+        self.assertIn("0.37327310642080013", source)
+        self.assertIn("0.4545454545454545", source)
+        for name in ("k_ratio_vs_gross_porosity.svg", "k_ratio_vs_connected_porosity.svg",
+                     "coating_response.svg", "heterogeneity_response.svg",
+                     "k_ratio_vs_localization.svg", "directional_permeability.svg"):
+            text = (CASE_ROOT / "plots" / name).read_text()
+            self.assertIn("PRIMARY APPARENT-CONDUCTANCE TARGET 0.37327310642080013", text)
+            self.assertIn("NOMINAL-PRESSURE ORDERING SCREEN 0.4545454545454545", text)
 
 
 if __name__ == "__main__":
