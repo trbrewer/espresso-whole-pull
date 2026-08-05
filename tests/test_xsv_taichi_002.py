@@ -41,7 +41,7 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
         cls.artifacts = json.loads(
             (CASE_ROOT / "XSV_TAICHI_002_ARTIFACT_MANIFEST.json").read_text(encoding="utf-8")
         )
-        reducer_path = CASE_ROOT / "xsv_taichi_002_review_reducer_v3.py"
+        reducer_path = CASE_ROOT / "xsv_taichi_002_review_reducer_v4.py"
         spec = importlib.util.spec_from_file_location("xsv002_review_reducer", reducer_path)
         assert spec is not None and spec.loader is not None
         cls.reducer = importlib.util.module_from_spec(spec)
@@ -237,14 +237,14 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256((CASE_ROOT / relative).read_bytes()).hexdigest(), digest)
         self.assertEqual(sum(name.endswith(".svg") for name in self.artifacts["committed_members"]), 10)
 
-        reducer_text = (CASE_ROOT / "xsv_taichi_002_review_reducer_v3.py").read_text()
+        reducer_text = (CASE_ROOT / "xsv_taichi_002_review_reducer_v4.py").read_text()
         self.assertNotIn('gates = {"G0_', reducer_text)
         self.assertNotIn('FLOW_LOCALIZATION_CHANGED_WITHOUT_REQUIRED_BULK_PERMEABILITY_COLLAPSE',
                          reducer_text)
         self.assertEqual(hashlib.sha256((CASE_ROOT / "xsv_taichi_002_runtime.py").read_bytes()).hexdigest(),
                          "3bbf089ab5855bdbaeabb9a569ec9176974e8c25499a0c43c0d011be69d74a75")
-        self.assertEqual(result["reduction"]["pre_review_result_sha256"],
-                         "f4d2cd03bb794ac89e2aba0ddbb133e8ed531d14dc5fb41d7e4a009197259236")
+        self.assertEqual(result["reduction"]["start_result_sha256"],
+                         "2d2315dab8855560c8c7aaf31ec2f6908c1698e80395f435fcca42660691a708")
         self.assertEqual(result["chronology"]["chronological_execution_order"],
                          "CHRONOLOGICAL_EXECUTION_ORDER_NOT_INDEPENDENTLY_RECONSTRUCTED")
         self.assertEqual(result["local_package_status"], "PASS_WITH_TYPED_PROVENANCE_LIMITATION")
@@ -352,11 +352,11 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             old_target, old_inputs = self.reducer.TARGET, self.reducer.TARGET_INPUTS
             try:
                 self.reducer.TARGET, self.reducer.TARGET_INPUTS = target, inputs
-                checks, _ = self.reducer.target_checks()
+                checks, _ = self.reducer.target_checks(target, inputs)
                 self.assertTrue(all(item["pass"] for item in checks))
                 text = inputs.read_text().replace("2.057772", "2.157772", 1)
                 inputs.write_text(text)
-                checks, _ = self.reducer.target_checks()
+                checks, _ = self.reducer.target_checks(target, inputs)
                 self.assertTrue(any(not item["pass"] for item in checks))
             finally:
                 self.reducer.TARGET, self.reducer.TARGET_INPUTS = old_target, old_inputs
@@ -366,14 +366,114 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             auth = json.loads((CASE_ROOT / "XSV_TAICHI_002_STAGE_AUTHORIZATION.json").read_text())
             auth["merge_authority"] = "GRANTED"
             auth_path.write_text(json.dumps(auth))
-            old_auth = self.reducer.AUTH
+            old_auth = self.reducer.v3.AUTH
             try:
-                self.reducer.AUTH = auth_path
-                checks, _ = self.reducer.historical_authority()
+                self.reducer.v3.AUTH = auth_path
+                checks, _ = self.reducer.v3.historical_authority()
                 self.assertTrue(any(item["check"] == "merge_authority" and not item["pass"]
                                     for item in checks))
             finally:
-                self.reducer.AUTH = old_auth
+                self.reducer.v3.AUTH = old_auth
+
+    def test_v4_real_package_mutations_fail_closed(self) -> None:
+        reducer = self.reducer
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for _, (relative, _) in reducer.FROZEN.items():
+                destination = root / relative
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(ROOT / relative, destination)
+            self.assertTrue(all(item["pass"] for item in reducer.frozen_checks(root)))
+            for key in ("protocol", "matrix", "target", "target_inputs", "geometry", "runtime"):
+                relative = reducer.FROZEN[key][0]
+                path = root / relative
+                original = path.read_bytes()
+                path.write_bytes(original + b" ")
+                failed = {item["check"] for item in reducer.frozen_checks(root) if not item["pass"]}
+                self.assertIn(f"frozen_{key}_sha256", failed)
+                path.write_bytes(original)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            matrix = Path(temporary) / "matrix.csv"
+            shutil.copy2(CASE_ROOT / "XSV_TAICHI_002_CASE_MATRIX.csv", matrix)
+            checks, rows = reducer.matrix_checks(matrix)
+            self.assertTrue(all(item["pass"] for item in checks))
+            duplicate = [dict(row) for row in rows]
+            duplicate[1]["run_id"] = duplicate[0]["run_id"]
+            with matrix.open("w", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=list(duplicate[0]), lineterminator="\n")
+                writer.writeheader(); writer.writerows(duplicate)
+            checks, _ = reducer.matrix_checks(matrix)
+            self.assertTrue(any(item["check"] == "matrix_unique_run_ids" and not item["pass"] for item in checks))
+            reordered = list(reversed(rows))
+            with matrix.open("w", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=list(reordered[0]), lineterminator="\n")
+                writer.writeheader(); writer.writerows(reordered)
+            checks, _ = reducer.matrix_checks(matrix)
+            self.assertTrue(any(item["check"] == "matrix_ordered_run_ids" and not item["pass"] for item in checks))
+
+        with tempfile.TemporaryDirectory() as temporary:
+            target = Path(temporary) / "target.json"
+            inputs = Path(temporary) / "inputs.csv"
+            shutil.copy2(CASE_ROOT / "XSV_TAICHI_002_TARGET.json", target)
+            shutil.copy2(CASE_ROOT / "XSV_TAICHI_002_TARGET_INPUTS.csv", inputs)
+            target_data = json.loads(target.read_text())
+            target_data["inputs"][0]["mass_flow_g_s"] *= 2
+            target_data["inputs"][2]["mass_flow_g_s"] *= 2
+            target.write_text(json.dumps(target_data))
+            with inputs.open(newline="") as handle:
+                rows = list(csv.DictReader(handle))
+            rows[0]["mass_flow_g_s"] = str(float(rows[0]["mass_flow_g_s"]) * 2)
+            rows[2]["mass_flow_g_s"] = str(float(rows[2]["mass_flow_g_s"]) * 2)
+            with inputs.open("w", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
+                writer.writeheader(); writer.writerows(rows)
+            checks, _ = reducer.target_checks(target, inputs)
+            self.assertFalse(next(x for x in checks if x["check"] == "target_frozen_hash")["pass"])
+            self.assertFalse(next(x for x in checks if x["check"] == "target_inputs_frozen_hash")["pass"])
+
+        mixed = "not FINES_CONFIRMED\nThe result is FINES_CONFIRMED\n"
+        findings = reducer.claim_occurrences(mixed)
+        self.assertTrue(any(item["pass"] for item in findings))
+        self.assertTrue(any(not item["pass"] for item in findings))
+        self.assertTrue(all(item["pass"] for item in reducer.claim_occurrences(
+            "FINES_CONFIRMED: NOT_ESTABLISHED\nProhibited: CLOGGING_CONFIRMED\n")))
+
+        a = [{"path": "x", "bytes": 1, "sha256": "a"}]
+        b = [{"path": "x", "bytes": 1, "sha256": "b"}]
+        self.assertFalse(reducer.compare_inventories(a, b, a)[0]["pass"])
+        self.assertFalse(reducer.compare_inventories(a, a, b)[1]["pass"])
+
+        with tempfile.TemporaryDirectory(dir=CASE_ROOT) as temporary:
+            artifact = Path(temporary) / "artifact.json"
+            data = json.loads((CASE_ROOT / "XSV_TAICHI_002_ARTIFACT_MANIFEST.json").read_text())
+            first = next(iter(data["committed_members"]))
+            data["committed_members"][first] = "0" * 64
+            artifact.write_text(json.dumps(data))
+            checks = reducer.artifact_checks(artifact, CASE_ROOT,
+                ROOT / "PACKAGE_QA_STATUS.json", CASE_ROOT / "XSV_TAICHI_002_RESULT.json")
+            self.assertTrue(any(not item["pass"] for item in checks))
+            data = json.loads((CASE_ROOT / "XSV_TAICHI_002_ARTIFACT_MANIFEST.json").read_text())
+            data["committed_members"].pop("XSV_TAICHI_002_RESULT.json")
+            artifact.write_text(json.dumps(data))
+            checks = reducer.artifact_checks(artifact, CASE_ROOT,
+                ROOT / "PACKAGE_QA_STATUS.json", CASE_ROOT / "XSV_TAICHI_002_RESULT.json")
+            self.assertFalse(next(x for x in checks if x["check"] == "artifact_required_classes")["pass"])
+
+        for field, value, check_name in (
+            ("result_sha256", "0" * 64, "qa_result_hash"),
+            ("physical_validation", "ESTABLISHED", "qa_physical_validation"),
+            ("xsv_taichi_003", "AUTHORIZED", "qa_next_stage"),
+        ):
+            with tempfile.TemporaryDirectory() as temporary:
+                qa = Path(temporary) / "qa.json"
+                payload = json.loads((ROOT / "PACKAGE_QA_STATUS.json").read_text())
+                payload["xsv_taichi_002"][field] = value
+                qa.write_text(json.dumps(payload))
+                checks = reducer.artifact_checks(
+                    CASE_ROOT / "XSV_TAICHI_002_ARTIFACT_MANIFEST.json", CASE_ROOT,
+                    qa, CASE_ROOT / "XSV_TAICHI_002_RESULT.json")
+                self.assertFalse(next(x for x in checks if x["check"] == check_name)["pass"])
 
 
 if __name__ == "__main__":

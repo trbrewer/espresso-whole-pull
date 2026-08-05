@@ -479,3 +479,12 @@ remain qualified, while process-attempt count, retry-ceiling compliance, and
 chronology are explicitly not independently reconstructed. No solver,
 geometry, target, protocol, primitive evidence, or raw archive changed; the
 independent-data gate and physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-002 final package-integrity closure
+
+Reducer v4 added exact frozen-byte, ordered run-set, occurrence-aware claim,
+artifact-completeness, and deterministic committed-output verification around
+the unchanged v2 scientific reduction. No target, geometry, protocol,
+historical runtime, primitive evidence, raw archive, or scientific result
+changed. The process-attempt provenance limitation, independent-data gate,
+and physical-validation ceiling remain unchanged.

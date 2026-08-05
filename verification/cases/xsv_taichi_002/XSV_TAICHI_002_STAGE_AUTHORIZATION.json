@@ -220,5 +220,28 @@
     "merge_authority": "NOT_GRANTED",
     "physical_validation": "NOT_ESTABLISHED",
     "final_exact_head_ci": "PENDING"
+  },
+  "g9_final_package_integrity_closure": {
+    "authorization_header": "HUMAN_OWNER_STAGE_AUTHORIZATION_V1",
+    "human_owner_assertion": "I_PERSONALLY_AUTHORIZE_THIS_STAGE",
+    "authorization_id": "XSV-TAICHI-002-FINAL-PACKAGE-INTEGRITY-CLOSURE-2026-08-05",
+    "profile": "EWP_XSV_TAICHI_002_FINAL_PACKAGE_INTEGRITY_CLOSURE_STAGE_V1",
+    "reviewed_head": "aa9dadd7492816feed37107a886fb1d6de08a808",
+    "reviewed_tree": "5698f67b5c236c6796e7d533c9ad4eb9cd2186a3",
+    "review_reducer_v2_sha256": "0cc9a1f9281f545813c684962df962b50675f852753fdc7c5338374737c655d0",
+    "review_reducer_v3_sha256": "ac8e71c23ede9d0170a0696ac33b017d61d5ffb7c216418cee8ea8915dc58c5a",
+    "review_reducer_v4_sha256": "5356b6d92e43caaea8ff8cd7b2760aa908bb2beadaf5cbc14de0c848734f3c4b",
+    "deterministic_double_reduction": "PASS",
+    "numerical_rerun": "NONE",
+    "target_change": false,
+    "protocol_change": false,
+    "case_matrix_change": false,
+    "geometry_manifest_change": false,
+    "historical_runtime_change": false,
+    "primitive_evidence_change": false,
+    "raw_evidence_change": false,
+    "merge_authority": "NOT_GRANTED",
+    "physical_validation": "NOT_ESTABLISHED",
+    "final_exact_head_ci": "PENDING"
   }
 }

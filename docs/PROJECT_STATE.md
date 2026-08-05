@@ -9,7 +9,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 318/318 PASS
+- Public source verification: 321/321 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -55,6 +55,9 @@ evidence, rederives the target rows, and verifies both retained copies of all
 twelve geometries. The package contains 22 successful retained CUDA records;
 because no independent process-attempt ledger exists, process-attempt count,
 retry-ceiling compliance, and chronology are not independently reconstructed.
+G9 wraps the unchanged v2 scientific reduction with reducer v4, which binds
+the frozen current bytes, exact ordered run set, occurrence-level claim
+contexts, and byte-identical generated and committed deterministic inventories.
 PR #61 remains draft and unmerged.
 
 VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2

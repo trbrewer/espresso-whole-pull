@@ -105,3 +105,15 @@ attempt count, retry-ceiling compliance, and chronological execution order are
 `NOT_INDEPENDENTLY_RECONSTRUCTED`; package ordering is not represented as
 launch history. This provenance limitation does not disqualify the retained
 numerical results or change the X-direction non-attainment disposition.
+
+## G9 final package-integrity closure
+
+Reducer v4 is the fail-closed evidence-binding wrapper around the unchanged
+v2 scientific reduction. It verifies the frozen protocol, matrix, target,
+geometry manifest, and historical-runtime bytes; the exact ordered and unique
+22-run set; each prohibited-claim occurrence in its own context; and the
+complete deterministic committed-output inventory. Independent clean output
+A and B inventories must be byte-identical and must match the committed core.
+The G3 process-attempt provenance limitation remains explicit. No numerical
+execution or scientific-evidence change occurred, and exact-head CI remains a
+review-time observation rather than a claim embedded in the candidate commit.
