@@ -221,8 +221,11 @@ most one identical infrastructure retry.
    analytical, flux-balance and serial/MPI gates. The original radial
    revision-1 attempt remains retained as
    `PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT`.
-10. G6: PASS. The complete external archive and deterministic reduced package
-    are hash-bound; repository qualification is complete pending exact-head CI.
+10. G6 local package: `LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE`. The
+    complete external archive and deterministic reduced package are
+    hash-bound, but the retained composition `flux_imbalance_relative` fields
+    do not identify their generating primitive basis. Repository qualification
+    is otherwise complete pending exact-head CI.
 
 ## 14. Numerical results
 
@@ -246,14 +249,21 @@ errors are at most `5.148998262299268e-11`, zone-share errors are below
 fixtures. The complete exact values are governed by
 `verification/cases/xsv_taichi_001/XSV_TAICHI_001_RESULT.json`.
 
-Overall disposition:
-`XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED`. This qualifies only the exact
-synthetic saturated-Darcy fixtures and declared closure contract.
+Scientific disposition:
+`XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED`. Package disposition:
+`XSV_TAICHI_001_COMPLETE_WITH_TYPED_PROVENANCE_LIMITATION`. Compatibility
+overall disposition: `XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES`. The
+scientific qualification applies only to the exact synthetic saturated-Darcy
+fixtures and declared closure contract.
 
 ## 15. Typed failures, if any
 
 `PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT` for the original
 revision-1 `OF-PARALLEL-1` attempt. It is not a scored flow result.
+
+`LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE` for the redundant stored
+composition flux-imbalance fields. This is a package-provenance limitation,
+not a failure of the same-row boundary-flow scientific gate.
 
 ## 16. Limitations
 
@@ -340,3 +350,32 @@ hashes remain in Git history as `dee90e1eb2182a968c91844009fa49a4e3be767c2b997b7
 and `8794ad07532f3fed953169b318b6d9d874a9a1177247ee03b767cc6d26722f4a`.
 The synthetic-only claim ceiling and independent-data gate are unchanged;
 `PHYSICAL_VALIDATION` remains `NOT_ESTABLISHED`.
+
+## Post-execution composition-flux primitive-basis adjudication
+
+On 5 August 2026, review of `e26738091ddf7b0e032a47d11fc585e2185bad30`
+found that the preceding correction compared final-CSV inlet flow with the
+separately reduced `xsv_trace.json` aggregate total. The final adjudication
+uses `inlet_flow_m3_s` and `outlet_flow_m3_s` from the same final CSV row for
+the unchanged `1e-6` scientific flux-balance gate. The `xsv_trace.json`
+aggregate total remains the source for composition total-flow comparison, and
+its difference from the CSV outlet is recorded separately as a G6
+representation-consistency diagnostic.
+
+The retained package contains no source code, generation command, structured
+provenance field, or pre-existing documented formula that identifies the
+primitive basis used to create the legacy composition
+`flux_imbalance_relative` fields. Their disposition is therefore
+`LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE`; the stored values are preserved
+without being called incorrect. All four same-row composition boundary
+balances pass, scientific G5 is `PASS`, and all governed composition summary
+rows are `PASS`. The current scientific disposition is
+`XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED`; package disposition is
+`XSV_TAICHI_001_COMPLETE_WITH_TYPED_PROVENANCE_LIMITATION`; compatibility
+overall disposition remains `XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES`.
+
+No NumPy, Taichi, CUDA, OpenFOAM, blockMesh, checkMesh, geometry, or case
+operation was repeated. No protocol, fixture, threshold, source, dependency,
+or raw evidence changed. The independent-data gate and synthetic-only claim
+ceiling remain unchanged, and `PHYSICAL_VALIDATION` remains
+`NOT_ESTABLISHED`.

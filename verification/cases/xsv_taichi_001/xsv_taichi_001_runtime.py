@@ -326,12 +326,32 @@ def evaluate_gate_contract(inputs: Dict[str, Any]) -> Dict[str, Any]:
     dispositions["FINAL_EXACT_HEAD_CI"] = "RESOLVE_FROM_GITHUB_AT_REVIEW"
     dispositions["FINAL_EXACT_HEAD_REVIEW"] = "PENDING"
     scientific_pass = all(dispositions[x] == "PASS" for x in
-                          ("G0", "G1", "G2", "G3", "G4", "G5", "G6_LOCAL_PACKAGE"))
+                          ("G0", "G1", "G2", "G3", "G4", "G5"))
+    package_pass = dispositions["G6_LOCAL_PACKAGE"] == "PASS"
+    g6_failures = [x["typed_failure"] for x in checks
+                   if x["gate"] == "G6_LOCAL_PACKAGE" and not x["pass"]]
+    provenance_only = bool(g6_failures) and set(g6_failures) == {
+        "LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE"
+    }
+    scientific_disposition = (
+        "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED" if scientific_pass
+        else "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES"
+    )
+    package_disposition = (
+        "XSV_TAICHI_001_PACKAGE_COMPLETE" if package_pass
+        else ("XSV_TAICHI_001_COMPLETE_WITH_TYPED_PROVENANCE_LIMITATION"
+              if provenance_only else "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES")
+    )
     return {
         "checks": checks,
         "gates": dispositions,
-        "overall_disposition": ("XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED"
-                                if scientific_pass else "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES"),
+        "scientific_disposition": scientific_disposition,
+        "package_disposition": package_disposition,
+        "overall_disposition": (
+            "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED"
+            if scientific_pass and package_pass
+            else "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES"
+        ),
     }
 
 
@@ -389,12 +409,14 @@ def _last_trace(path: Path, run_id: str, fixture: Dict[str, Any]) -> Dict[str, A
     qin = float(row["inlet_flow_m3_s"])
     spec = next(x for x in fixture["runs"] if x["run_id"] == run_id)
     exact = float(fixture["domain"]["gross_area_m2"]) * float(spec["target_q_m_s"])
-    return {"run_id": run_id, "total_flow_m3_s": q, "inlet_flow_m3_s": qin,
+    return {"run_id": run_id, "total_flow_m3_s": q,
+            "outlet_flow_m3_s": q, "inlet_flow_m3_s": qin,
             "exact_total_flow_m3_s": exact,
             "total_flow_relative_error": relative_difference(q, exact),
             "superficial_flow_m_s": q / float(fixture["domain"]["gross_area_m2"]),
             "superficial_flow_relative_error": relative_difference(q / float(fixture["domain"]["gross_area_m2"]), float(spec["target_q_m_s"])),
             "flux_imbalance_relative": relative_difference(qin, q),
+            "boundary_flux_imbalance_relative": relative_difference(qin, q),
             "structured_trace_sha256": sha256_file(path),
             "primitive_trace_sources": [{"logical_path": "/".join(path.parts[-5:]),
                 "sha256": sha256_file(path), "member_identity": "FINAL_ROW",
@@ -410,18 +432,33 @@ def _composition_trace(case: Path, run_id: str, fixture: Dict[str, Any]) -> Dict
     if not csv_path.is_file():
         csv_path = case / "processor0/postProcessing/wholePull/0/traces.csv"
     with csv_path.open(encoding="utf-8", newline="") as handle:
-        final_csv = list(csv.DictReader(handle))[-1]
+        csv_rows = list(csv.DictReader(handle))
+    if not csv_rows:
+        raise RuntimeError(f"empty composition trace: {run_id}")
+    final_csv = csv_rows[-1]
     total = float(stored["total_flow_m3_s"])
     inlet = float(final_csv["inlet_flow_m3_s"])
+    outlet = float(final_csv["outlet_flow_m3_s"])
     exact = float(stored["exact_total_flow_m3_s"])
     row = dict(stored)
     row.update({
         "inlet_flow_m3_s": inlet,
+        "outlet_flow_m3_s": outlet,
         "total_flow_relative_error": relative_difference(total, exact),
-        "flux_imbalance_relative": relative_difference(inlet, total),
+        "flux_imbalance_relative": relative_difference(inlet, outlet),
+        "boundary_flux_imbalance_relative": relative_difference(inlet, outlet),
+        "previous_hybrid_inlet_aggregate_relative_difference": relative_difference(inlet, total),
+        "aggregate_total_vs_boundary_outlet_relative_difference": relative_difference(total, outlet),
         "stored_derived_field_parity": {
             "total_flow_relative_error": relative_difference(total, exact),
-            "flux_imbalance_relative": relative_difference(inlet, total),
+        },
+        "legacy_flux_imbalance_provenance": {
+            "disposition": "LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE",
+            "stored_value": float(stored["flux_imbalance_relative"]),
+            "generating_formula": "NOT_ESTABLISHED_FROM_RETAINED_EVIDENCE",
+            "candidate_A_same_row_boundary_balance": relative_difference(inlet, outlet),
+            "candidate_B_previous_hybrid": relative_difference(inlet, total),
+            "candidate_C": "NOT_AVAILABLE",
         },
         "structured_trace_sha256": sha256_file(trace_path),
         "primitive_trace_sources": [
@@ -429,7 +466,9 @@ def _composition_trace(case: Path, run_id: str, fixture: Dict[str, Any]) -> Dict
              "member_identity": "STRUCTURED_MEMBERS",
              "fields": ["total_flow_m3_s", "exact_total_flow_m3_s", "pressure_fit"] if "SERIES" in run_id else ["total_flow_m3_s", "exact_total_flow_m3_s", "inner_flow_share", "outer_flow_share"]},
             {"logical_path": "openfoam/cases/" + case.name + "/" + "/".join(csv_path.relative_to(case).parts), "sha256": sha256_file(csv_path),
-             "member_identity": "FINAL_ROW", "fields": ["inlet_flow_m3_s"]},
+             "member_identity": "FINAL_ROW", "final_row_index": len(csv_rows) - 1,
+             "final_row_time_s": final_csv["time_s"],
+             "fields": ["inlet_flow_m3_s", "outlet_flow_m3_s"]},
         ],
     })
     if "SERIES" in run_id:
@@ -667,8 +706,24 @@ def reduce_final(args: argparse.Namespace) -> None:
         if gate == "G4": ev("G4", f"{row['run_id']}_superficial_flow", row["superficial_flow_relative_error"], thresholds["uniform_relative_error_max"], "<=", "OPENFOAM_UNIFORM_ANALYTICAL_GATE_FAILED", [f"structured trace:{row['run_id']}"])
         if "stored_record" in row:
             stored = row["stored_record"]
-            for field in ("total_flow_relative_error", "flux_imbalance_relative"):
-                ev(gate, f"{row['run_id']}_{field}_stored_parity", row[field], stored[field], "INTEGRITY_CLOSE", "STRUCTURED_TRACE_DERIVED_FIELD_MISMATCH", [f"structured trace:{row['run_id']}"])
+            ev(gate, f"{row['run_id']}_total_flow_relative_error_stored_parity",
+               row["total_flow_relative_error"], stored["total_flow_relative_error"],
+               "INTEGRITY_CLOSE", "STRUCTURED_TRACE_DERIVED_FIELD_MISMATCH",
+               [f"structured trace:{row['run_id']}"])
+            ev("G6_LOCAL_PACKAGE", f"{row['run_id']}_aggregate_total_boundary_outlet_consistency",
+               row["aggregate_total_vs_boundary_outlet_relative_difference"],
+               thresholds["flux_imbalance_relative_max"], "<=",
+               "TRACE_REPRESENTATION_CONSISTENCY_FAILED", [f"structured trace:{row['run_id']}"])
+            ev("G6_LOCAL_PACKAGE", f"{row['run_id']}_legacy_flux_provenance",
+               row["legacy_flux_imbalance_provenance"]["disposition"],
+               "STORED_DERIVED_FIELD_REPRODUCED", "EXACT",
+               "LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE",
+               [f"structured trace:{row['run_id']}"])
+            ev("G6_LOCAL_PACKAGE", f"{row['run_id']}_legacy_flux_provenance_supported",
+               row["legacy_flux_imbalance_provenance"]["generating_formula"] !=
+               "NOT_ESTABLISHED_FROM_RETAINED_EVIDENCE", True, "TRUE",
+               "LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE",
+               [f"structured trace:{row['run_id']}"])
     qdev = max(abs(x-uniform_median)/uniform_median for x in uniform_q_over_dp)
     ev("G4", "uniform_Q_over_delta_p", qdev, thresholds["uniform_Q_over_delta_p_relative_deviation_max"], "<=", "OPENFOAM_UNIFORM_ANALYTICAL_GATE_FAILED", ["four uniform structured traces"])
     ev("G4", "porosity_invariance", porosity_difference, thresholds["porosity_invariance_relative_difference_max"], "<=", "POROSITY_DOUBLE_COUNTING_OR_COUPLING_DETECTED", ["OF-U-MID", "OF-U-PHI-ALT"])
@@ -726,6 +781,12 @@ def reduce_final(args: argparse.Namespace) -> None:
         "gate_evaluation": evaluation,
         "evaluation_inputs": evaluation_inputs,
         "gates": gates,
+        "trace_derived_field_integrity": (
+            "PASS" if gates["G6_LOCAL_PACKAGE"] == "PASS"
+            else "LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE"
+        ),
+        "scientific_disposition": evaluation["scientific_disposition"],
+        "package_disposition": evaluation["package_disposition"],
         "overall_disposition": evaluation["overall_disposition"],
         "execution_package_status": "XSV_TAICHI_001_EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
         "claim_ceiling": {"qualified_scope": "EXACT_SYNTHETIC_SATURATED_DARCY_FIXTURES_ONLY", "real_coffee_permeability": "NOT_ESTABLISHED", "real_coffee_morphology": "NOT_REPRESENTED", "fines_physics": "NOT_TESTED", "full_basket_scale_transfer": "NOT_TESTED", "physical_validation": "NOT_ESTABLISHED", "independent_data_gate": "UNCHANGED"},

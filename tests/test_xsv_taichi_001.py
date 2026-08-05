@@ -290,14 +290,17 @@ class XSVTaichi001Tests(unittest.TestCase):
             result["protocol_invalid_attempt"]["disposition"],
             "PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT",
         )
-        self.assertEqual({key: result["gates"][key] for key in ("G0", "G1", "G2", "G3", "G4", "G6_LOCAL_PACKAGE")}, {key: "PASS" for key in ("G0", "G1", "G2", "G3", "G4", "G6_LOCAL_PACKAGE")})
-        self.assertEqual(result["gates"]["G5"], "STRUCTURED_TRACE_DERIVED_FIELD_MISMATCH")
+        self.assertEqual({key: result["gates"][key] for key in ("G0", "G1", "G2", "G3", "G4", "G5")}, {key: "PASS" for key in ("G0", "G1", "G2", "G3", "G4", "G5")})
+        self.assertEqual(result["gates"]["G6_LOCAL_PACKAGE"], "LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE")
         self.assertEqual(result["gates"]["FINAL_EXACT_HEAD_CI"], "RESOLVE_FROM_GITHUB_AT_REVIEW")
         self.assertEqual(result["gates"]["FINAL_EXACT_HEAD_REVIEW"], "PENDING")
         self.assertEqual(
             result["overall_disposition"],
             "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES",
         )
+        self.assertEqual(result["scientific_disposition"], "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED")
+        self.assertEqual(result["package_disposition"], "XSV_TAICHI_001_COMPLETE_WITH_TYPED_PROVENANCE_LIMITATION")
+        self.assertEqual(result["trace_derived_field_integrity"], "LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE")
         thresholds = self.protocol["thresholds"]
         parity = result["backend_parity"]
         self.assertLessEqual(
@@ -345,7 +348,7 @@ class XSVTaichi001Tests(unittest.TestCase):
             rows = list(csv.DictReader(handle))
         self.assertEqual(len([row for row in rows if row["row_class"] == "GOVERNED_RUN"]), 27)
         self.assertEqual(len([row for row in rows if row["row_class"] == "PROTOCOL_INVALID_ATTEMPT"]), 1)
-        self.assertTrue(all(row["disposition"] == ("G5_FAIL" if row["run_id"].startswith(("OF-SERIES", "OF-PARALLEL")) else "PASS") for row in rows if row["row_class"] == "GOVERNED_RUN"))
+        self.assertTrue(all(row["disposition"] == "PASS" for row in rows if row["row_class"] == "GOVERNED_RUN"))
 
         expected_lbm = {row["run_id"] for row in self.matrix if row["family"] == "LBM"}
         expected_openfoam = {row["run_id"] for row in self.matrix if row["family"] == "OPENFOAM"}
@@ -354,7 +357,9 @@ class XSVTaichi001Tests(unittest.TestCase):
         self.assertEqual(len({row["run_id"] for row in result["lbm_runs"]}), 19)
         self.assertEqual(len({row["run_id"] for row in result["openfoam_runs"]}), 8)
         failed = [check for check in result["gate_evaluation"]["checks"] if not check["pass"]]
-        self.assertEqual([check["check_id"] for check in failed], ["OF-SERIES-1_flux_imbalance_relative_stored_parity"])
+        self.assertTrue(failed)
+        self.assertEqual({check["gate"] for check in failed}, {"G6_LOCAL_PACKAGE"})
+        self.assertEqual({check["typed_failure"] for check in failed}, {"LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE"})
         self.assertEqual(result["external_evidence"]["manifest_member_count"], 1545)
         self.assertEqual(result["external_evidence"]["manifest_source_bytes"], 134226177)
         self.assertTrue(result["external_evidence"]["all_manifest_members_verified"])
@@ -368,6 +373,47 @@ class XSVTaichi001Tests(unittest.TestCase):
         spec.loader.exec_module(runtime)
         baseline = runtime.evaluate_gate_contract(copy.deepcopy(result["evaluation_inputs"]))
         self.assertEqual(baseline["overall_disposition"], "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES")
+        self.assertEqual(baseline["scientific_disposition"], "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED")
+        self.assertEqual(baseline["package_disposition"], "XSV_TAICHI_001_COMPLETE_WITH_TYPED_PROVENANCE_LIMITATION")
+
+        composition = [result["series"]["serial"], result["series"]["mpi"],
+                       result["parallel"]["serial"], result["parallel"]["mpi"]]
+        all_openfoam = result["openfoam_runs"]
+        self.assertEqual(len(all_openfoam), 8)
+        for row in all_openfoam:
+            self.assertTrue(math.isclose(
+                row["boundary_flux_imbalance_relative"],
+                runtime.relative_difference(row["inlet_flow_m3_s"], row["outlet_flow_m3_s"]),
+                rel_tol=1e-12, abs_tol=1e-12,
+            ))
+            self.assertLessEqual(row["boundary_flux_imbalance_relative"],
+                                 thresholds["flux_imbalance_relative_max"])
+        for row in composition:
+            csv_source = next(source for source in row["primitive_trace_sources"]
+                              if source["member_identity"] == "FINAL_ROW")
+            self.assertEqual(csv_source["fields"], ["inlet_flow_m3_s", "outlet_flow_m3_s"])
+            self.assertEqual(csv_source["final_row_index"], 0)
+            self.assertEqual(csv_source["final_row_time_s"], "0.02")
+            self.assertTrue(math.isclose(
+                row["flux_imbalance_relative"],
+                runtime.relative_difference(row["inlet_flow_m3_s"], row["outlet_flow_m3_s"]),
+                rel_tol=1e-12, abs_tol=1e-12,
+            ))
+            self.assertLessEqual(row["flux_imbalance_relative"], thresholds["flux_imbalance_relative_max"])
+            self.assertTrue(math.isclose(
+                row["previous_hybrid_inlet_aggregate_relative_difference"],
+                runtime.relative_difference(row["inlet_flow_m3_s"], row["total_flow_m3_s"]),
+                rel_tol=1e-12, abs_tol=1e-12,
+            ))
+            self.assertTrue(math.isclose(
+                row["aggregate_total_vs_boundary_outlet_relative_difference"],
+                runtime.relative_difference(row["total_flow_m3_s"], row["outlet_flow_m3_s"]),
+                rel_tol=1e-12, abs_tol=1e-12,
+            ))
+            self.assertEqual(row["legacy_flux_imbalance_provenance"]["disposition"],
+                             "LEGACY_DERIVED_FIELD_PROVENANCE_INCOMPLETE")
+            self.assertEqual(row["legacy_flux_imbalance_provenance"]["generating_formula"],
+                             "NOT_ESTABLISHED_FROM_RETAINED_EVIDENCE")
 
         tolerance = self.protocol["thresholds"]["returned_identity_relative_tolerance"]
         for row in result["lbm_runs"]:
@@ -425,6 +471,9 @@ class XSVTaichi001Tests(unittest.TestCase):
             "radial_share": mutate_check("radial_serial_inner", 1.0),
             "radial_mpi_share": mutate_check("serial_mpi_radial_inner", 1.0),
             "composition_flux": mutate_check("OF-SERIES-1_flux_imbalance", 1.0),
+            "composition_boundary_outlet": mutate_check("OF-PARALLEL-1_flux_imbalance", 1.0),
+            "aggregate_boundary_consistency": mutate_check("aggregate_total_boundary_outlet_consistency", 1.0),
+            "unsupported_reproduced_claim": mutate_check("legacy_flux_provenance", "STORED_DERIVED_FIELD_REPRODUCED"),
             "missing_invalid_attempt": mutate_check("protocol_invalid_attempt", "MISSING"),
             "manifest_hash": mutate_check("external_manifest_sha256", "mismatch"),
             "archive_hash": mutate_check("external_archive_sha256", "mismatch"),
@@ -451,6 +500,13 @@ class XSVTaichi001Tests(unittest.TestCase):
                 evaluated = runtime.evaluate_gate_contract(mutated)
                 self.assertEqual(evaluated["overall_disposition"], "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES")
                 self.assertTrue(any(not check["pass"] for check in evaluated["checks"]))
+                if name in {"composition_flux", "composition_boundary_outlet"}:
+                    self.assertEqual(evaluated["gates"]["G5"], "COMPOSITION_FLUX_BALANCE_FAILED")
+                    self.assertEqual(evaluated["scientific_disposition"], "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES")
+                if name == "unsupported_reproduced_claim":
+                    self.assertEqual(evaluated["gates"]["G5"], "PASS")
+                    self.assertEqual(evaluated["package_disposition"],
+                                     "XSV_TAICHI_001_COMPLETE_WITH_TYPED_PROVENANCE_LIMITATION")
 
 
 if __name__ == "__main__":

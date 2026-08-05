@@ -418,3 +418,13 @@ found one redundant stored-field mismatch in the OF-SERIES-1 flux-imbalance
 diagnostic; the scientific flux gate still passes, but G5 and the overall
 package retain the typed integrity failure. The independent-data gate and the
 physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-001 composition flux basis adjudicated
+
+No-run forensic reduction established same-row final-CSV inlet/outlet flow as
+the scientific flux-balance basis for all OpenFOAM cases. The four legacy
+composition flux fields lack retained generating-formula provenance and are
+therefore preserved as a package-level provenance limitation rather than a G5
+scientific failure. Scientific closure parity remains established only for the
+exact synthetic fixtures; the independent-data gate and physical-validation
+ceiling remain unchanged.
