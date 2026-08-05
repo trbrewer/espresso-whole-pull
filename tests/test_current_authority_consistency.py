@@ -156,7 +156,7 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
     xsv = qa.get("xsv_taichi_001", {})
     result_path = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_RESULT.json"
     result = json.loads(result_path.read_text(encoding="utf-8"))
-    if qa.get("active_cross_solver_verification_task") != "XSV-TAICHI-002":
+    if qa.get("active_cross_solver_verification_task") != "NONE":
         return False
     for key, expected in (
         ("status", "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW"),
@@ -166,7 +166,7 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         ("latest_authorization_id", "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04"),
         ("current_scientific_gate", "ADDITIONAL_INDEPENDENT_DATA_REQUIRED"),
         ("human_owner_independent_data_route_decision", "STILL_REQUIRED"),
-        ("xsv_taichi_002", "STARTED_AUTHORIZED"),
+        ("xsv_taichi_002", "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW"),
         ("physical_validation", "NOT_ESTABLISHED"),
     ):
         if xsv.get(key) != expected:
@@ -183,7 +183,7 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         return False
     xsv2 = qa.get("xsv_taichi_002", {})
     for key, expected in (
-        ("status", "G2_GEOMETRY_FROZEN_PENDING_EXACT_HEAD_CI"),
+        ("status", "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW"),
         ("authorization_id", "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05"),
         ("issue", 60),
         ("planned_scored_cuda_identities", 22),
@@ -197,8 +197,20 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
     if xsv2.get("pull_request") != "BOOTSTRAP_PENDING" and not isinstance(xsv2.get("pull_request"), int):
         return False
     if xsv2.get("retained_numerical_execution") != {
-        "taichi_cuda_runs": 0, "openfoam_runs": 0, "geometry_generations": 0
+        "taichi_cuda_runs": 22, "openfoam_runs": 0, "geometry_generations": 24
     }:
+        return False
+    if xsv2.get("executed_scored_cuda_identities") != 22:
+        return False
+    if xsv2.get("process_attempts") != 22 or xsv2.get("infrastructure_retries") != 0:
+        return False
+    xsv2_result_path = ROOT / "verification/cases/xsv_taichi_002/XSV_TAICHI_002_RESULT.json"
+    if xsv2.get("result_sha256") != hashlib.sha256(xsv2_result_path.read_bytes()).hexdigest():
+        return False
+    xsv2_result = json.loads(xsv2_result_path.read_text(encoding="utf-8"))
+    if xsv2.get("scientific_disposition") != xsv2_result.get("overall_synthesis"):
+        return False
+    if xsv2.get("xsv_taichi_003") != "NOT_STARTED_NOT_AUTHORIZED":
         return False
 
     for path, markers in CURRENT_MARKERS.items():

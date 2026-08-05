@@ -1,6 +1,6 @@
 # XSV-TAICHI-002 synthetic morphology and required permeability-collapse screen
 
-## Identity and prospective status
+## Identity and current status
 
 - Authorization: `XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05`
 - Profile: `EWP_XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_COLLAPSE_SCREEN_STAGE_V1`
@@ -10,12 +10,12 @@
   `OPEN_DRAFT_UNMERGED`
 - Change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
 - Evidence: `SIMULATED_SYNTHETIC_REFERENCE` plus an existing governed discrepancy target
-- Status: `G0_PROTOCOL_FREEZE_PENDING_EXACT_HEAD_CI`
+- Status: `EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
 
-This is a task-specific, nonreusable human-owner authorization. It permits the
-prospectively gated work below, but no OpenFOAM execution, dependency or solver
-change, fitting, protected scoring, physical-validation claim, merge, or next
-stage. No morphology or retained numerical result may exist before G0 passes.
+This is a task-specific, nonreusable human-owner authorization. Its staged
+execution is complete; the draft pull request remains open and unmerged. It
+permitted no OpenFOAM execution, dependency or solver change, fitting,
+protected scoring, physical-validation claim, merge, or next stage.
 
 ## Scientific question and evidence role
 
@@ -208,6 +208,34 @@ Stages are G0 protocol, G1 target, G2 geometry, G3 CUDA, G4 reduction, G5
 synthesis and G6 package. Each stage requires its predecessor. Exact-head
 `source-and-boundary` and `inexpensive-checks` must pass at G0 and G2 before
 the next retained operation and at the final candidate head.
+
+## Completed bounded result
+
+The 22 governed CUDA float64 identities completed in 22 process attempts with
+no retry, topology censoring, failure, or nonconvergence. The fresh M0A
+baseline is `K_gross_lu = 1.7919953212730297`, differing from the frozen
+XSV-TAICHI-001 value by approximately `1.45e-6` relative. Both extreme-anchor
+linearity gates pass.
+
+The primary apparent-conductance target is `T_11_5 =
+0.37327310642080013`; the nominal screen is `5/11 =
+0.4545454545454545`. C30 gives the smallest governed X-direction coating
+response, `K/K0 = 0.424082396862255`: it crosses the nominal screen but not
+the primary target. No paired-seed heterogeneity X case reaches the primary
+target. Consequently both X-direction families have
+`REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_*_ENVELOPE` dispositions.
+
+Directional results are reported descriptively. Baseline `(Ky/Kx, Kz/Kx)` is
+approximately `(0.3976, 0.3259)`; A2 seed 42 is `(0.7552, 0.9380)`; and C30
+is `(0.1651, 0.1489)`. No direction loses periodic connectivity. These exact
+synthetic axis responses make directional permeability a potentially useful
+future measurement question, but do not establish real-coffee anisotropy.
+
+Localization changes coexist with heterogeneous bulk responses, but the
+required X-direction collapse is not attained. The result weakens only these
+exact static synthetic families. It does not select compaction, fines,
+clogging, channeling, damage, or any real mechanism; it supplies no independent
+physical data and leaves the scientific gate unchanged.
 
 ## Claim ceiling and stop conditions
 

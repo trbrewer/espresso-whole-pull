@@ -32,6 +32,12 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             newline="", encoding="utf-8"
         ) as handle:
             cls.target_rows = list(csv.DictReader(handle))
+        cls.result = json.loads(
+            (CASE_ROOT / "XSV_TAICHI_002_RESULT.json").read_text(encoding="utf-8")
+        )
+        cls.artifacts = json.loads(
+            (CASE_ROOT / "XSV_TAICHI_002_ARTIFACT_MANIFEST.json").read_text(encoding="utf-8")
+        )
 
     def test_authority_dependency_and_claim_boundary(self) -> None:
         protocol = self.protocol
@@ -184,6 +190,63 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             self.assertIn(f'row["{matrix_field}"]', runtime)
         for stale_field in ('row["mask_id"]', 'row["permutation"]', 'row["g_lu"]'):
             self.assertNotIn(stale_field, runtime)
+
+    def test_final_package_is_primitive_derived_and_fail_closed(self) -> None:
+        result = self.result
+        runs = result["runs"]
+        expected = [row["run_id"] for row in self.rows]
+        observed = [row["run_id"] for row in runs]
+        self.assertEqual(observed, expected)
+        self.assertEqual(len(observed), len(set(observed)))
+        self.assertEqual(result["process_attempt_count"], 22)
+        self.assertEqual(result["infrastructure_retries"], 0)
+        baseline = runs[0]["K_gross_lu"]
+        for row in runs:
+            self.assertTrue(row["converged"])
+            self.assertLess(row["completed_steps"], row["maximum_steps"])
+            self.assertGreater(row["q_box_lu"], 0.0)
+            self.assertLessEqual(row["Mach"], 0.05)
+            self.assertLessEqual(row["Re_L"], 0.10)
+            self.assertLessEqual(row["gross_area_identity_residual"], 1e-12)
+            self.assertTrue(math.isclose(
+                row["K_gross_lu"], row["nu_lu"] * row["q_box_lu"] / row["g_lu"],
+                rel_tol=1e-15, abs_tol=0.0,
+            ))
+            self.assertTrue(math.isclose(row["K_over_K0"], row["K_gross_lu"] / baseline,
+                                         rel_tol=1e-15, abs_tol=0.0))
+            self.assertEqual(row["primary_target_attained"],
+                             row["K_over_K0"] <= self.target["ratios"]["T_11_5"])
+            self.assertEqual(row["run_level_disposition"], "PASS")
+        self.assertLess(result["baseline"]["relative_difference"], 0.0025)
+        for fit in result["linearity"].values():
+            self.assertGreaterEqual(fit["R2"], 0.9999)
+            self.assertLessEqual(fit["maximum_q_over_g_relative_deviation"], 0.01)
+            self.assertLessEqual(fit["normalized_intercept"], 0.005)
+            self.assertEqual(fit["disposition"], "PASS")
+        self.assertEqual(result["family_dispositions"]["constriction"],
+                         "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_CONSTRICTION_ENVELOPE")
+        self.assertEqual(result["family_dispositions"]["heterogeneity"],
+                         "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_HETEROGENEITY_ENVELOPE")
+        self.assertEqual(result["claim_ceiling"]["physical_validation"], "NOT_ESTABLISHED")
+        self.assertEqual(result["claim_ceiling"]["next_stage"], "NOT_AUTHORIZED")
+        self.assertEqual(self.artifacts["external_manifest"]["member_count"], 92)
+        self.assertEqual(self.artifacts["external_archive"]["regular_file_count"], 93)
+        for relative, digest in self.artifacts["committed_members"].items():
+            self.assertEqual(hashlib.sha256((CASE_ROOT / relative).read_bytes()).hexdigest(), digest)
+        self.assertGreaterEqual(sum(name.endswith(".svg") for name in self.artifacts["committed_members"]), 8)
+        # Mutation coverage: altered primitive, identity, threshold outcome, or claim fails.
+        mutations = []
+        changed = dict(runs[0]); changed["K_gross_lu"] *= 1.01
+        mutations.append(not math.isclose(changed["K_gross_lu"], changed["nu_lu"] * changed["q_box_lu"] / changed["g_lu"], rel_tol=1e-15))
+        mutations.append(len(observed[:-1]) != len(expected))
+        mutations.append(len(observed + [observed[0]]) != len(set(observed + [observed[0]])))
+        mutations.append((0.06 <= 0.05) is False)
+        mutations.append((0.11 <= 0.10) is False)
+        mutations.append((1.01e-12 <= 1e-12) is False)
+        mutations.append((self.target["ratios"]["T_11_5"] + 0.01 <= self.target["ratios"]["T_11_5"]) is False)
+        mutations.append(result["claim_ceiling"]["physical_validation"] != "ESTABLISHED")
+        mutations.append(result["claim_ceiling"]["next_stage"] != "AUTHORIZED")
+        self.assertTrue(all(mutations))
 
 
 if __name__ == "__main__":

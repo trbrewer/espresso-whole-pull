@@ -9,11 +9,11 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 298/298 PASS
+- Public source verification: 313/313 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active cross-solver verification task: `XSV-TAICHI-002`
+- Active cross-solver verification task: none
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
@@ -36,7 +36,7 @@ development or mechanism-selection task and does not satisfy the additional-
 independent-data gate. Its result and controlling authority are
 [XSV-TAICHI-001 saturated hydraulic closure parity](verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md).
 
-XSV-TAICHI-002 is active only as a prospectively gated, no-physics synthetic
+XSV-TAICHI-002 completed its bounded, no-physics synthetic
 morphology-response screen. It uses the existing VAL-CORPUS-001 discrepancy as
 an apparent-conductance target; the frozen primary ratio is
 `T_11_5 = 0.37327310642080013`. This is a simplified plausibility-screen target,

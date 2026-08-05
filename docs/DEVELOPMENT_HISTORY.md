@@ -446,3 +446,14 @@ synthetic-only claim boundary, and staged no-execution barriers. Issue #60 is
 the governed task record. No target evaluation, morphology generation, or
 numerical execution occurred during this bootstrap; the independent-data gate
 and physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-002 bounded synthetic screen completed
+
+All 22 prospectively frozen Taichi CUDA float64 identities completed without
+retry; every numerical gate and both extreme-anchor linearity gates passed.
+Neither the deterministic X-direction coating envelope nor the paired-seed
+heterogeneity envelope attained the governed apparent-conductance target.
+Directional responses are retained descriptively, including substantial
+axis ratios, without a mechanism or physical-validation claim. No OpenFOAM,
+full-basket, explicit-fines, calibration, or protected-data work occurred.
+The independent-data gate remains unchanged and the draft PR remains unmerged.

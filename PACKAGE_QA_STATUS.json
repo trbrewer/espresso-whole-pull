@@ -30,12 +30,12 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 465,
+    "python_test_count": 466,
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 298,
-    "source_manifest_aggregate_sha256": "9a9bb35f44e1b7fa479f0d3b561d504705a60ae2f9027b723534ffe46cb93cf3",
+    "source_manifest_file_count": 313,
+    "source_manifest_aggregate_sha256": "fdc1fcdbac18d337710b35b368909faa64eeb505fa222c1ad1ffb2c865f4b795",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -337,7 +337,7 @@
   "active_validation_case": "NONE",
   "active_data_planning_task": "NONE",
   "active_solver_task": "NONE",
-  "active_cross_solver_verification_task": "XSV-TAICHI-002",
+  "active_cross_solver_verification_task": "NONE",
   "experimental_commissioning": "NOT_AUTHORIZED",
   "protected_or_holdout_scoring": "NOT_AUTHORIZED",
   "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
@@ -370,11 +370,11 @@
     "strategy_v1_6_snapshot_sha256": "5f8bc4bfbe8089d7ff6ff44955230f059a84df96c3903bfe064448abf8aef703",
     "current_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
     "human_owner_independent_data_route_decision": "STILL_REQUIRED",
-    "xsv_taichi_002": "STARTED_AUTHORIZED",
+    "xsv_taichi_002": "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
     "physical_validation": "NOT_ESTABLISHED"
   },
   "xsv_taichi_002": {
-    "status": "G2_GEOMETRY_FROZEN_PENDING_EXACT_HEAD_CI",
+    "status": "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
     "authorization_id": "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05",
     "profile": "EWP_XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_COLLAPSE_SCREEN_STAGE_V1",
     "issue": 60,
@@ -382,9 +382,9 @@
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
     "evidence_class": "SIMULATED_SYNTHETIC_REFERENCE",
     "retained_numerical_execution": {
-      "taichi_cuda_runs": 0,
+      "taichi_cuda_runs": 22,
       "openfoam_runs": 0,
-      "geometry_generations": 0
+      "geometry_generations": 24
     },
     "planned_scored_cuda_identities": 22,
     "absolute_process_attempt_ceiling": 24,
@@ -392,7 +392,16 @@
     "primary_target_ratio_T_11_5": 0.37327310642080013,
     "current_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
     "physical_validation": "NOT_ESTABLISHED",
-    "merge_authority": "NOT_GRANTED"
+    "merge_authority": "NOT_GRANTED",
+    "executed_scored_cuda_identities": 22,
+    "process_attempts": 22,
+    "infrastructure_retries": 0,
+    "result_sha256": "f4d2cd03bb794ac89e2aba0ddbb133e8ed531d14dc5fb41d7e4a009197259236",
+    "summary_sha256": "e024410bf2d5a5b6eaaeb5b03ce71b0fd6c980801a0ac7629967be776ae7163f",
+    "runtime_sha256": "3bbf089ab5855bdbaeabb9a569ec9176974e8c25499a0c43c0d011be69d74a75",
+    "artifact_manifest_sha256": "ad40a9d28d82e59d49b0b7ea896f617783464e3243fec4be167a20d81b88ce1c",
+    "scientific_disposition": "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_X_DIRECTION_ENVELOPE",
+    "xsv_taichi_003": "NOT_STARTED_NOT_AUTHORIZED"
   },
   "val_corpus_002": {
     "stage": "COMPLETE",
