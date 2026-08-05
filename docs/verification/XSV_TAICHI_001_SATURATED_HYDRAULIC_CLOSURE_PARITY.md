@@ -311,3 +311,32 @@ The corrected identities are bound by `PACKAGE_QA_STATUS.json` and the XSV
 artifact manifest at the exact candidate head. The derived scientific outcome
 and synthetic-fixture interpretation are unchanged; independent physical data
 remain required and `PHYSICAL_VALIDATION` remains `NOT_ESTABLISHED`.
+
+## Post-execution end-to-end closure-lineage correction
+
+On 5 August 2026, review of `ecea08bab9b4210aeb0eda2c32e5037111978882`
+found that the reducer did not yet gate the complete M0A-CUDA-to-OpenFOAM
+closure handoff or reconstruct every OpenFOAM diagnostic from its retained
+primitive structured fields. The correction derives all per-run LBM
+quantities, the three-point M0A origin fit, lattice and SI closures, engineered
+K_B, porosity, bed depth, gross area and equivalent radius, and binds those
+values exactly to the frozen fixture. It also distinguishes the 1,545
+self-excluding manifest members from the archive's 1,546 regular files.
+
+Primitive trace reduction retained one new typed integrity failure:
+`OF-SERIES-1`'s stored flux-imbalance field does not reproduce from the
+mandated `xsv_trace.json` outlet flow and final `traces.csv` inlet flow within
+the `1e-12` formula-integrity tolerance. The recomputed imbalance remains far
+below the unchanged `1e-6` scientific gate; it was retained without rerun,
+retuning or suppression. Consequently the end-to-end closure handoff itself
+passes, G5 retains `STRUCTURED_TRACE_DERIVED_FIELD_MISMATCH`, and the overall
+package disposition is `XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES`.
+
+No NumPy, Taichi, CUDA, OpenFOAM, blockMesh, checkMesh, geometry, or case
+operation was repeated. The pre-correction runtime/result/summary/artifact
+hashes remain in Git history as `dee90e1eb2182a968c91844009fa49a4e3be767c2b997b7e1ac6bd9af7b2caa1`,
+`93fd6a7604511fb92e94d825f7f21dc41c33627df48d43ca08e0e18076f55ac1`,
+`a83080b7ca707b99545bfba6f2f420f6e8f1afa8a8022bfe332325f2fc5a463f`,
+and `8794ad07532f3fed953169b318b6d9d874a9a1177247ee03b767cc6d26722f4a`.
+The synthetic-only claim ceiling and independent-data gate are unchanged;
+`PHYSICAL_VALIDATION` remains `NOT_ESTABLISHED`.

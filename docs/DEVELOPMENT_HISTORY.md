@@ -407,3 +407,14 @@ execution. Gate, run-row, and overall dispositions are now derived from the
 frozen protocol and retained evidence, while exact-head CI and review remain
 external review-time states. The additional-independent-data gate is unchanged
 and physical validation remains not established.
+
+## 2026-08-05 — XSV-TAICHI-001 closure and trace lineage completed
+
+The retained XSV evidence was reduced again without solver, mesh, geometry,
+case-generation, or CUDA execution. The reducer now derives each LBM closure
+quantity, proves the exact M0A-to-OpenFOAM fixture handoff, and recomputes the
+OpenFOAM analytical metrics from retained primitives. That fail-closed pass
+found one redundant stored-field mismatch in the OF-SERIES-1 flux-imbalance
+diagnostic; the scientific flux gate still passes, but G5 and the overall
+package retain the typed integrity failure. The independent-data gate and the
+physical-validation ceiling remain unchanged.

@@ -290,15 +290,13 @@ class XSVTaichi001Tests(unittest.TestCase):
             result["protocol_invalid_attempt"]["disposition"],
             "PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT",
         )
-        self.assertEqual(
-            {key: result["gates"][key] for key in ("G0", "G1", "G2", "G3", "G4", "G5", "G6_LOCAL_PACKAGE")},
-            {key: "PASS" for key in ("G0", "G1", "G2", "G3", "G4", "G5", "G6_LOCAL_PACKAGE")},
-        )
+        self.assertEqual({key: result["gates"][key] for key in ("G0", "G1", "G2", "G3", "G4", "G6_LOCAL_PACKAGE")}, {key: "PASS" for key in ("G0", "G1", "G2", "G3", "G4", "G6_LOCAL_PACKAGE")})
+        self.assertEqual(result["gates"]["G5"], "STRUCTURED_TRACE_DERIVED_FIELD_MISMATCH")
         self.assertEqual(result["gates"]["FINAL_EXACT_HEAD_CI"], "RESOLVE_FROM_GITHUB_AT_REVIEW")
         self.assertEqual(result["gates"]["FINAL_EXACT_HEAD_REVIEW"], "PENDING")
         self.assertEqual(
             result["overall_disposition"],
-            "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED",
+            "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES",
         )
         thresholds = self.protocol["thresholds"]
         parity = result["backend_parity"]
@@ -347,7 +345,7 @@ class XSVTaichi001Tests(unittest.TestCase):
             rows = list(csv.DictReader(handle))
         self.assertEqual(len([row for row in rows if row["row_class"] == "GOVERNED_RUN"]), 27)
         self.assertEqual(len([row for row in rows if row["row_class"] == "PROTOCOL_INVALID_ATTEMPT"]), 1)
-        self.assertTrue(all(row["disposition"] == "PASS" for row in rows if row["row_class"] == "GOVERNED_RUN"))
+        self.assertTrue(all(row["disposition"] == ("G5_FAIL" if row["run_id"].startswith(("OF-SERIES", "OF-PARALLEL")) else "PASS") for row in rows if row["row_class"] == "GOVERNED_RUN"))
 
         expected_lbm = {row["run_id"] for row in self.matrix if row["family"] == "LBM"}
         expected_openfoam = {row["run_id"] for row in self.matrix if row["family"] == "OPENFOAM"}
@@ -355,7 +353,8 @@ class XSVTaichi001Tests(unittest.TestCase):
         self.assertEqual({row["run_id"] for row in result["openfoam_runs"]}, expected_openfoam)
         self.assertEqual(len({row["run_id"] for row in result["lbm_runs"]}), 19)
         self.assertEqual(len({row["run_id"] for row in result["openfoam_runs"]}), 8)
-        self.assertTrue(all(check["pass"] for check in result["gate_evaluation"]["checks"]))
+        failed = [check for check in result["gate_evaluation"]["checks"] if not check["pass"]]
+        self.assertEqual([check["check_id"] for check in failed], ["OF-SERIES-1_flux_imbalance_relative_stored_parity"])
         self.assertEqual(result["external_evidence"]["manifest_member_count"], 1545)
         self.assertEqual(result["external_evidence"]["manifest_source_bytes"], 134226177)
         self.assertTrue(result["external_evidence"]["all_manifest_members_verified"])
@@ -368,7 +367,32 @@ class XSVTaichi001Tests(unittest.TestCase):
         runtime = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(runtime)
         baseline = runtime.evaluate_gate_contract(copy.deepcopy(result["evaluation_inputs"]))
-        self.assertEqual(baseline["overall_disposition"], "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED")
+        self.assertEqual(baseline["overall_disposition"], "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES")
+
+        tolerance = self.protocol["thresholds"]["returned_identity_relative_tolerance"]
+        for row in result["lbm_runs"]:
+            lineage = row["formula_lineage"]
+            nu = (row["tau_plus"] - 0.5) / 3.0
+            u_void = row["q_box_lu"] / row["phi_gross"]
+            recomputed = {"nu_lu": nu, "u_void_lu": u_void,
+                          "K_gross_lu": nu * row["q_box_lu"] / row["g_lu"],
+                          "K_void_lu": nu * u_void / row["g_lu"],
+                          "Mach": math.sqrt(3.0) * row["u_max_lu"],
+                          "Re_L": u_void * {"CH33": 33, "SP32": 32, "M0A": 40}[row["case_id"]] / nu}
+            for field, value in recomputed.items():
+                self.assertTrue(math.isclose(lineage[field], value, rel_tol=tolerance, abs_tol=tolerance))
+                self.assertTrue(math.isclose(row[field], value, rel_tol=tolerance, abs_tol=tolerance))
+        handoff = result["closure_handoff_lineage"]
+        self.assertEqual(handoff["source_run_ids"], ["M0A-TG-LOW", "M0A-TG-MID", "M0A-TG-HIGH"])
+        self.assertEqual(handoff["origin_fit"]["recomputed"], 7.679991073929766)
+        self.assertEqual(handoff["K_A_lu"]["recomputed"], 1.7919979172502785)
+        self.assertEqual(handoff["K_A_m2"]["recomputed"], 1.6127981255252507e-09)
+        self.assertEqual(handoff["K_B_m2"]["recomputed"], 6.451192502101003e-10)
+        self.assertEqual(handoff["porosity"]["geometry"], handoff["porosity"]["fixture"])
+        self.assertEqual(handoff["disposition"], "PASS")
+        self.assertEqual(artifact["external_manifest_member_count"], 1545)
+        self.assertEqual(artifact["external_archive_regular_file_count"], 1546)
+        self.assertEqual(artifact["external_archive_file_count"], 1546)
 
         def mutate_check(fragment: str, value) -> dict:
             mutated = copy.deepcopy(result["evaluation_inputs"])
@@ -407,6 +431,18 @@ class XSVTaichi001Tests(unittest.TestCase):
             "unverified_external": mutate_check("external_all_manifest_members_verified", False),
             "physical_validation": mutate_check("physical_validation_ceiling", True),
             "xsv_002": mutate_check("xsv_taichi_002_inactive", True),
+            "lbm_K_lineage": mutate_check("K_gross_lu_formula_lineage", -1.0),
+            "lbm_u_void_lineage": mutate_check("u_void_lu_formula_lineage", -1.0),
+            "closure_source_runs": mutate_check("M0A_source_run_identity", ["M0A-TG-LOW"]),
+            "closure_origin_fit": mutate_check("M0A_origin_fit_identity", -1.0),
+            "closure_K_A_lu": mutate_check("M0A_K_A_lu_identity", -1.0),
+            "closure_K_A_m2": mutate_check("M0A_K_A_m2_identity", -1.0),
+            "closure_delta_x": mutate_check("M0A_delta_x_identity", -1.0),
+            "closure_K_B": mutate_check("M0A_K_B_m2_identity", -1.0),
+            "fixture_porosity": mutate_check("M0A_porosity_handoff", -1.0),
+            "domain_bed_depth": mutate_check("domain_bed_depth_identity", -1.0),
+            "domain_area": mutate_check("domain_gross_area_identity", -1.0),
+            "domain_radius": mutate_check("domain_basket_radius_identity", -1.0),
         }
         omitted = copy.deepcopy(result["evaluation_inputs"]); omitted["observed_lbm_ids"].pop(); mutations["omitted_run"] = omitted
         duplicate = copy.deepcopy(result["evaluation_inputs"]); duplicate["observed_lbm_ids"].append(duplicate["observed_lbm_ids"][0]); mutations["duplicate_run"] = duplicate

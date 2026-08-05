@@ -312,6 +312,7 @@ def evaluate_gate_contract(inputs: Dict[str, Any]) -> Dict[str, Any]:
         elif op == ">": passed = math.isfinite(float(value)) and float(value) > float(limit)
         elif op == "==": passed = value == limit
         elif op == "EXACT": passed = value == limit
+        elif op == "INTEGRITY_CLOSE": passed = math.isclose(float(value), float(limit), rel_tol=1e-12, abs_tol=1e-12)
         elif op == "TRUE": passed = value is True
         elif op == "FALSE": passed = value is False
         else: raise ValueError(f"unsupported evaluator operator: {op}")
@@ -388,13 +389,76 @@ def _last_trace(path: Path, run_id: str, fixture: Dict[str, Any]) -> Dict[str, A
     qin = float(row["inlet_flow_m3_s"])
     spec = next(x for x in fixture["runs"] if x["run_id"] == run_id)
     exact = float(fixture["domain"]["gross_area_m2"]) * float(spec["target_q_m_s"])
-    return {"run_id": run_id, "total_flow_m3_s": q, "exact_total_flow_m3_s": exact,
+    return {"run_id": run_id, "total_flow_m3_s": q, "inlet_flow_m3_s": qin,
+            "exact_total_flow_m3_s": exact,
             "total_flow_relative_error": relative_difference(q, exact),
             "superficial_flow_m_s": q / float(fixture["domain"]["gross_area_m2"]),
             "superficial_flow_relative_error": relative_difference(q / float(fixture["domain"]["gross_area_m2"]), float(spec["target_q_m_s"])),
             "flux_imbalance_relative": relative_difference(qin, q),
             "structured_trace_sha256": sha256_file(path),
+            "primitive_trace_sources": [{"logical_path": "/".join(path.parts[-5:]),
+                "sha256": sha256_file(path), "member_identity": "FINAL_ROW",
+                "fields": ["outlet_flow_m3_s", "inlet_flow_m3_s"]}],
             "typed_disposition": "PASS"}
+
+
+def _composition_trace(case: Path, run_id: str, fixture: Dict[str, Any]) -> Dict[str, Any]:
+    """Recompute composition diagnostics from retained structured primitives."""
+    trace_path = case / "xsv_trace.json"
+    stored = json.loads(trace_path.read_text(encoding="utf-8"))
+    csv_path = case / "postProcessing/wholePull/0/traces.csv"
+    if not csv_path.is_file():
+        csv_path = case / "processor0/postProcessing/wholePull/0/traces.csv"
+    with csv_path.open(encoding="utf-8", newline="") as handle:
+        final_csv = list(csv.DictReader(handle))[-1]
+    total = float(stored["total_flow_m3_s"])
+    inlet = float(final_csv["inlet_flow_m3_s"])
+    exact = float(stored["exact_total_flow_m3_s"])
+    row = dict(stored)
+    row.update({
+        "inlet_flow_m3_s": inlet,
+        "total_flow_relative_error": relative_difference(total, exact),
+        "flux_imbalance_relative": relative_difference(inlet, total),
+        "stored_derived_field_parity": {
+            "total_flow_relative_error": relative_difference(total, exact),
+            "flux_imbalance_relative": relative_difference(inlet, total),
+        },
+        "structured_trace_sha256": sha256_file(trace_path),
+        "primitive_trace_sources": [
+            {"logical_path": "/".join(trace_path.parts[-4:]), "sha256": sha256_file(trace_path),
+             "member_identity": "STRUCTURED_MEMBERS",
+             "fields": ["total_flow_m3_s", "exact_total_flow_m3_s", "pressure_fit"] if "SERIES" in run_id else ["total_flow_m3_s", "exact_total_flow_m3_s", "inner_flow_share", "outer_flow_share"]},
+            {"logical_path": "openfoam/cases/" + case.name + "/" + "/".join(csv_path.relative_to(case).parts), "sha256": sha256_file(csv_path),
+             "member_identity": "FINAL_ROW", "fields": ["inlet_flow_m3_s"]},
+        ],
+    })
+    if "SERIES" in run_id:
+        profile = fixture["profiles"]["axial_two_layer"]
+        length = float(fixture["domain"]["bed_depth_m"])
+        la = float(profile["interface_position_m"]); lb = length - la
+        ka = float(fixture["closure"]["K_A_m2"]); kb = float(fixture["closure"]["K_B_m2"])
+        expected_a = (la / ka) / (la / ka + lb / kb); expected_b = 1.0 - expected_a
+        pressure = stored["pressure_fit"]
+        total_dp = float(pressure["pin"]) - float(pressure["pout"])
+        share_a = (float(pressure["pin"]) - float(pressure["pinterface"])) / total_dp
+        share_b = (float(pressure["pinterface"]) - float(pressure["pout"])) / total_dp
+        row.update({"expected_layer_A_pressure_drop_share": expected_a,
+                    "expected_layer_B_pressure_drop_share": expected_b,
+                    "layer_A_pressure_drop_share": share_a,
+                    "layer_B_pressure_drop_share": share_b,
+                    "layer_A_share_relative_error": relative_difference(share_a, expected_a),
+                    "layer_B_share_relative_error": relative_difference(share_b, expected_b)})
+    else:
+        radial = fixture["profiles"]["radial_two_zone"]
+        expected_inner = float(radial["expected_inner_flow_share"])
+        expected_outer = float(radial["expected_outer_flow_share"])
+        inner = float(stored["inner_flow_share"]); outer = float(stored["outer_flow_share"])
+        row.update({"expected_inner_flow_share": expected_inner,
+                    "expected_outer_flow_share": expected_outer,
+                    "inner_flow_share_relative_error": relative_difference(inner, expected_inner),
+                    "outer_flow_share_relative_error": relative_difference(outer, expected_outer)})
+    row["stored_record"] = stored
+    return row
 
 
 def reduce_final(args: argparse.Namespace) -> None:
@@ -409,6 +473,9 @@ def reduce_final(args: argparse.Namespace) -> None:
     fixture = json.loads(OPENFOAM_FIXTURE_PATH.read_text(encoding="utf-8"))
     amendment_path = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL_AMENDMENT_001.json"
     amendment = json.loads(amendment_path.read_text(encoding="utf-8"))
+    authorization_path = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_STAGE_AUTHORIZATION.json"
+    authorization = json.loads(authorization_path.read_text(encoding="utf-8"))
+    package_qa = json.loads((ROOT / "PACKAGE_QA_STATUS.json").read_text(encoding="utf-8"))
     lbm_records = []
     for path in sorted((evidence / "lbm").glob("*/run.json")):
         record = json.loads(path.read_text(encoding="utf-8"))
@@ -470,6 +537,37 @@ def reduce_final(args: argparse.Namespace) -> None:
     slope_qg = sum(row["g_lu"]*row["q_box_lu"] for row in cuda_m0) / sum(row["g_lu"]**2 for row in cuda_m0)
     k_m0_lu = cuda_m0[1]["nu_lu"] * slope_qg
     k_m0_si = k_m0_lu * fixture["closure"]["delta_x_m"]**2
+    geometry_sizes = {"CH33": 33, "SP32": 32, "M0A": 40}
+    for row in lbm_records:
+        nu = (float(row["tau_plus"]) - 0.5) / 3.0
+        u_void = float(row["q_box_lu"]) / float(row["phi_gross"])
+        derived = {
+            "nu_lu": nu,
+            "u_void_lu": u_void,
+            "K_gross_lu": nu * float(row["q_box_lu"]) / float(row["g_lu"]),
+            "K_void_lu": nu * u_void / float(row["g_lu"]),
+            "Mach": math.sqrt(3.0) * float(row["u_max_lu"]),
+            "Re_L": u_void * geometry_sizes[row["case_id"]] / nu,
+        }
+        derived["returned_k_identity_relative_difference"] = relative_difference(
+            float(row["k_puckworks_returned"]), derived["K_void_lu"])
+        row["formula_lineage"] = derived
+    closure = fixture["closure"]
+    m0_geometry = next(x for x in geometry["geometries"] if x["case_id"] == "M0A")
+    delta_x = float(protocol["openfoam_settings"]["delta_x_m"])
+    side = 40 * delta_x; area = side**2; radius = math.sqrt(area / math.pi)
+    k_b = float(closure["K_B_over_K_A"]) * k_m0_si
+    closure_handoff = {
+        "source_run_ids": [x["run_id"] for x in cuda_m0],
+        "source_run_record_sha256": [x["source_record_sha256"] for x in cuda_m0],
+        "origin_fit": {"recomputed": slope_qg, "fixture": closure["origin_fit_s_qg"], "relative_difference": relative_difference(slope_qg, closure["origin_fit_s_qg"])},
+        "K_A_lu": {"recomputed": k_m0_lu, "fixture": closure["K_A_lu"], "relative_difference": relative_difference(k_m0_lu, closure["K_A_lu"])},
+        "delta_x_m": {"protocol": delta_x, "fixture": closure["delta_x_m"]},
+        "K_A_m2": {"recomputed": k_m0_si, "fixture": closure["K_A_m2"], "relative_difference": relative_difference(k_m0_si, closure["K_A_m2"])},
+        "K_B_m2": {"recomputed": k_b, "fixture": closure["K_B_m2"], "relative_difference": relative_difference(k_b, closure["K_B_m2"])},
+        "porosity": {"geometry": m0_geometry["phi_gross"], "fixture": fixture["porosity"]["base"]},
+        "domain": {"bed_depth_recomputed": side, "bed_depth_fixture": fixture["domain"]["bed_depth_m"], "gross_area_recomputed": area, "gross_area_fixture": fixture["domain"]["gross_area_m2"], "basket_radius_recomputed": radius, "basket_radius_fixture": fixture["domain"]["basket_radius_m"]},
+    }
 
     openfoam_paths = {
         "OF-U-LOW": "OF-U-LOW", "OF-U-MID": "OF-U-MID", "OF-U-HIGH": "OF-U-HIGH",
@@ -482,8 +580,7 @@ def reduce_final(args: argparse.Namespace) -> None:
         case = evidence / "openfoam/cases" / directory
         trace_path = case / "xsv_trace.json"
         if trace_path.is_file():
-            row = json.loads(trace_path.read_text(encoding="utf-8"))
-            row["structured_trace_sha256"] = sha256_file(trace_path)
+            row = _composition_trace(case, run_id, fixture)
         else:
             row = _last_trace(case / "postProcessing/wholePull/0/traces.csv", run_id, fixture)
         openfoam[run_id] = row
@@ -508,8 +605,8 @@ def reduce_final(args: argparse.Namespace) -> None:
                                   "sources": list(sources)})
     ev("G0", "authorization_and_protocol_identity", amendment["authorization_id"],
        "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04", "EXACT", "G0_AUTHORITY_MISMATCH", [str(amendment_path.relative_to(ROOT))])
-    ev("G0", "issue_bootstrap", 58, 58, "==", "G0_ISSUE_MISMATCH", ["XSV_TAICHI_001_STAGE_AUTHORIZATION.json"])
-    ev("G0", "pull_request_bootstrap", 59, 59, "==", "G0_PULL_REQUEST_MISMATCH", ["XSV_TAICHI_001_STAGE_AUTHORIZATION.json"])
+    ev("G0", "issue_bootstrap", authorization["issue"]["number"], protocol["issue"], "==", "G0_ISSUE_MISMATCH", ["XSV_TAICHI_001_STAGE_AUTHORIZATION.json", "XSV_TAICHI_001_PROTOCOL.json"])
+    ev("G0", "pull_request_bootstrap", authorization["pull_request"]["number"], protocol["pull_request"], "==", "G0_PULL_REQUEST_MISMATCH", ["XSV_TAICHI_001_STAGE_AUTHORIZATION.json", "XSV_TAICHI_001_PROTOCOL.json"])
     ev("G1", "geometry_manifest_identity", sha256_file(GEOMETRY_MANIFEST_PATH), "5ddb9617b3543d7f48eecf5941291d265894a6cd2d5a142265a0750ab509afdd", "EXACT", "GEOMETRY_IDENTITY_MISMATCH", [str(GEOMETRY_MANIFEST_PATH.relative_to(ROOT))])
     ev("G1", "geometry_repeat_identity", geometry.get("repeat_identity"), "PASS", "EXACT", "GEOMETRY_NONDETERMINISTIC", [str(GEOMETRY_MANIFEST_PATH.relative_to(ROOT))])
     for geo in geometry["geometries"]:
@@ -540,6 +637,8 @@ def reduce_final(args: argparse.Namespace) -> None:
             ev("G2", f"{rid}_{key}", row.get(key), expected, "EXACT", "LBM_INPUT_OR_PROVENANCE_MISMATCH", [f"lbm/{rid}/run.json"])
         ev("G2", f"{rid}_output_hash", bool(row.get("output_field_sha256")), True, "TRUE", "LBM_OUTPUT_IDENTITY_MISSING", [f"lbm/{rid}/run.json"])
         ev("G2", f"{rid}_log_hash", bool(row.get("log_sha256")), True, "TRUE", "LBM_LOG_IDENTITY_MISSING", [f"lbm/{rid}/run.json"])
+        for field in ("nu_lu", "u_void_lu", "K_gross_lu", "K_void_lu", "Mach", "Re_L"):
+            ev("G2", f"{rid}_{field}_formula_lineage", row[field], row["formula_lineage"][field], "INTEGRITY_CLOSE", "LBM_DERIVED_QUANTITY_LINEAGE_MISMATCH", [f"lbm/{rid}/run.json", "XSV_TAICHI_001_PROTOCOL.json"])
     for name, pairs in (("numpy_taichi", numpy_cpu_pairs), ("cpu_cuda", cpu_cuda_pairs)):
         for key, threshold_key in (("q_box_lu", "backend_relative_q_max"), ("K_gross_lu", "backend_relative_K_gross_max")):
             ev("G2", f"{name}_{key}_parity", pair_max(pairs, key), thresholds[threshold_key], "<=", "NUMPY_TAICHI_PARITY_FAILED" if name == "numpy_taichi" else "TAICHI_CPU_GPU_PARITY_FAILED", ["retained LBM run records"])
@@ -553,12 +652,23 @@ def reduce_final(args: argparse.Namespace) -> None:
     ev("G3", "returned_k_identity", returned_identity_error, thresholds["returned_identity_relative_tolerance"], "<=", "PUCKWORKS_RETURN_IDENTITY_MISMATCH", ["retained LBM run records"])
     ev("G3", "gross_area_adapter_error", channel_gross_error, thresholds["channel_relative_error_max"], "<=", "REFERENCE_VOLUME_ADAPTER_REJECTED", ["CH33 retained records"])
     ev("G3", "primary_adapter_advantage", adapter_advantage, thresholds["primary_adapter_advantage_min"], ">=", "REFERENCE_VOLUME_ADAPTER_REJECTED", ["CH33 retained records"])
+    ev("G3", "M0A_source_run_identity", closure_handoff["source_run_ids"], closure["source_runs"], "EXACT", "M0A_CLOSURE_LINEAGE_MISMATCH", ["M0A CUDA run records", "OpenFOAM fixture"])
+    for key in ("origin_fit", "K_A_lu", "K_A_m2", "K_B_m2"):
+        ev("G3", f"M0A_{key}_identity", closure_handoff[key]["recomputed"], closure_handoff[key]["fixture"], "INTEGRITY_CLOSE", "M0A_CLOSURE_LINEAGE_MISMATCH", ["M0A CUDA run records", "OpenFOAM fixture"])
+    ev("G3", "M0A_delta_x_identity", closure_handoff["delta_x_m"]["protocol"], closure_handoff["delta_x_m"]["fixture"], "INTEGRITY_CLOSE", "M0A_CLOSURE_LINEAGE_MISMATCH", ["machine protocol", "OpenFOAM fixture"])
+    ev("G4", "M0A_porosity_handoff", closure_handoff["porosity"]["geometry"], closure_handoff["porosity"]["fixture"], "INTEGRITY_CLOSE", "OPENFOAM_CLOSURE_CONSUMPTION_IDENTITY_MISMATCH", ["geometry manifest", "OpenFOAM fixture"])
+    for key in ("bed_depth", "gross_area", "basket_radius"):
+        ev("G4", f"domain_{key}_identity", closure_handoff["domain"][f"{key}_recomputed"], closure_handoff["domain"][f"{key}_fixture"], "INTEGRITY_CLOSE", "REFERENCE_VOLUME_DOMAIN_MAPPING_MISMATCH", ["geometry manifest", "machine protocol", "OpenFOAM fixture"])
     for row in openfoam.values():
         gate = "G4" if row["run_id"].startswith("OF-U-") else "G5"
         maxerr = thresholds["uniform_relative_error_max"] if gate == "G4" else thresholds["composition_relative_error_max"]
         ev(gate, f"{row['run_id']}_total_flow", row["total_flow_relative_error"], maxerr, "<=", "OPENFOAM_UNIFORM_ANALYTICAL_GATE_FAILED" if gate == "G4" else "COMPOSITION_TOTAL_FLOW_FAILED", [f"structured trace:{row['run_id']}"])
         ev(gate, f"{row['run_id']}_flux_imbalance", row["flux_imbalance_relative"], thresholds["flux_imbalance_relative_max"], "<=", "OPENFOAM_FLUX_BALANCE_FAILED" if gate == "G4" else "COMPOSITION_FLUX_BALANCE_FAILED", [f"structured trace:{row['run_id']}"])
         if gate == "G4": ev("G4", f"{row['run_id']}_superficial_flow", row["superficial_flow_relative_error"], thresholds["uniform_relative_error_max"], "<=", "OPENFOAM_UNIFORM_ANALYTICAL_GATE_FAILED", [f"structured trace:{row['run_id']}"])
+        if "stored_record" in row:
+            stored = row["stored_record"]
+            for field in ("total_flow_relative_error", "flux_imbalance_relative"):
+                ev(gate, f"{row['run_id']}_{field}_stored_parity", row[field], stored[field], "INTEGRITY_CLOSE", "STRUCTURED_TRACE_DERIVED_FIELD_MISMATCH", [f"structured trace:{row['run_id']}"])
     qdev = max(abs(x-uniform_median)/uniform_median for x in uniform_q_over_dp)
     ev("G4", "uniform_Q_over_delta_p", qdev, thresholds["uniform_Q_over_delta_p_relative_deviation_max"], "<=", "OPENFOAM_UNIFORM_ANALYTICAL_GATE_FAILED", ["four uniform structured traces"])
     ev("G4", "porosity_invariance", porosity_difference, thresholds["porosity_invariance_relative_difference_max"], "<=", "POROSITY_DOUBLE_COUNTING_OR_COUPLING_DETECTED", ["OF-U-MID", "OF-U-PHI-ALT"])
@@ -566,17 +676,23 @@ def reduce_final(args: argparse.Namespace) -> None:
     for label, row in (("series_serial", series_serial), ("series_mpi", series_mpi)):
         ev("G5", f"{label}_layer_A", row["layer_A_share_relative_error"], thresholds["composition_relative_error_max"], "<=", "AXIAL_SERIES_COMPOSITION_FAILED", [f"structured trace:{row['run_id']}"])
         ev("G5", f"{label}_layer_B", row["layer_B_share_relative_error"], thresholds["composition_relative_error_max"], "<=", "AXIAL_SERIES_COMPOSITION_FAILED", [f"structured trace:{row['run_id']}"])
+        for field in ("layer_A_pressure_drop_share", "layer_B_pressure_drop_share", "layer_A_share_relative_error", "layer_B_share_relative_error"):
+            ev("G5", f"{label}_{field}_stored_parity", row[field], row["stored_record"][field], "INTEGRITY_CLOSE", "STRUCTURED_TRACE_DERIVED_FIELD_MISMATCH", [f"structured trace:{row['run_id']}"])
     for label, row in (("radial_serial", parallel_serial), ("radial_mpi", parallel_mpi)):
         ev("G5", f"{label}_inner", row["inner_flow_share_relative_error"], thresholds["composition_relative_error_max"], "<=", "RADIAL_PARALLEL_ZONE_SHARE_GATE_FAILED", [f"structured trace:{row['run_id']}"])
         ev("G5", f"{label}_outer", row["outer_flow_share_relative_error"], thresholds["composition_relative_error_max"], "<=", "RADIAL_PARALLEL_ZONE_SHARE_GATE_FAILED", [f"structured trace:{row['run_id']}"])
+        for field in ("inner_flow_share_relative_error", "outer_flow_share_relative_error"):
+            ev("G5", f"{label}_{field}_stored_parity", row[field], row["stored_record"][field], "INTEGRITY_CLOSE", "STRUCTURED_TRACE_DERIVED_FIELD_MISMATCH", [f"structured trace:{row['run_id']}"])
     parity_metrics = {"series_flow": relative_difference(series_mpi["total_flow_m3_s"], series_serial["total_flow_m3_s"]), "series_A": relative_difference(series_mpi["layer_A_pressure_drop_share"], series_serial["layer_A_pressure_drop_share"]), "series_B": relative_difference(series_mpi["layer_B_pressure_drop_share"], series_serial["layer_B_pressure_drop_share"]), "radial_flow": relative_difference(parallel_mpi["total_flow_m3_s"], parallel_serial["total_flow_m3_s"]), "radial_inner": relative_difference(parallel_mpi["inner_flow_share"], parallel_serial["inner_flow_share"]), "radial_outer": relative_difference(parallel_mpi["outer_flow_share"], parallel_serial["outer_flow_share"])}
     for key, value in parity_metrics.items(): ev("G5", f"serial_mpi_{key}", value, thresholds["serial_mpi_relative_difference_max"], "<=", "SERIAL_MPI_PARITY_FAILED", ["serial and MPI structured traces"])
-    ev("G5", "process_attempt_count", 9, 9, "==", "OPENFOAM_ATTEMPT_ACCOUNTING_FAILED", ["protocol amendment", "external evidence"])
+    observed_successful = len(openfoam)
+    observed_invalid = 1 if amendment.get("failed_attempt", {}).get("log_sha256") == "0232443cff64335e1239a9b38e243bec861029848671b7945389e0fc502fe074" else 0
+    ev("G5", "process_attempt_count", observed_successful + observed_invalid, amendment["attempt_accounting"]["revised_process_attempt_ceiling"], "==", "OPENFOAM_ATTEMPT_ACCOUNTING_FAILED", ["protocol amendment", "retained structured traces"])
     ev("G5", "protocol_invalid_attempt", amendment["failed_attempt"]["disposition"], "PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT", "EXACT", "PROTOCOL_INVALID_ATTEMPT_MISSING", [str(amendment_path.relative_to(ROOT))])
     for key, expected in (("manifest_sha256", EXPECTED_EXTERNAL_MANIFEST_SHA256), ("manifest_member_count", 1545), ("manifest_source_bytes", 134226177), ("archive_sha256", EXPECTED_EXTERNAL_ARCHIVE_SHA256), ("archive_bytes", 25214779), ("all_manifest_members_verified", True), ("archive_inventory_verified", True)):
         ev("G6_LOCAL_PACKAGE", f"external_{key}", external[key], expected, "TRUE" if expected is True else "EXACT", "EXTERNAL_EVIDENCE_VERIFICATION_FAILED", ["external manifest", "external archive"])
-    ev("G6_LOCAL_PACKAGE", "physical_validation_ceiling", False, False, "FALSE", "PHYSICAL_VALIDATION_PROMOTED", ["claim ceiling"])
-    ev("G6_LOCAL_PACKAGE", "xsv_taichi_002_inactive", False, False, "FALSE", "XSV_TAICHI_002_UNAUTHORIZED_ACTIVATION", ["current authorities"])
+    ev("G6_LOCAL_PACKAGE", "physical_validation_ceiling", [protocol["claim_ceiling"]["physical_validation"], authorization["physical_validation"], package_qa["xsv_taichi_001"]["physical_validation"]], ["NOT_ESTABLISHED"] * 3, "EXACT", "PHYSICAL_VALIDATION_PROMOTED", ["machine protocol", "stage authorization", "PACKAGE_QA_STATUS.json"])
+    ev("G6_LOCAL_PACKAGE", "xsv_taichi_002_inactive", package_qa["xsv_taichi_001"]["xsv_taichi_002"], "NOT_STARTED_NOT_AUTHORIZED", "EXACT", "XSV_TAICHI_002_UNAUTHORIZED_ACTIVATION", ["PACKAGE_QA_STATUS.json"])
     evaluation_inputs = {"expected_lbm_ids": expected_lbm_ids, "observed_lbm_ids": [x["run_id"] for x in lbm_records], "expected_openfoam_ids": expected_of_ids, "observed_openfoam_ids": list(openfoam), "checks": evaluation_checks}
     evaluation = evaluate_gate_contract(evaluation_inputs)
     gates = evaluation["gates"]
@@ -601,6 +717,8 @@ def reduce_final(args: argparse.Namespace) -> None:
         "force_linearity": force_linearity,
         "channel_adapter": {"K_gross_exact_lu": channel_gross_exact, "K_void_exact_lu": channel_void_exact, "maximum_gross_relative_error": channel_gross_error, "maximum_void_relative_error": channel_void_error, "returned_k_identity_max_relative_error": returned_identity_error, "primary_adapter_advantage": adapter_advantage, "disposition": "GROSS_AREA_DARCY_ADAPTER_CONFIRMED"},
         "M0A_closure": {"origin_fit_s_qg": slope_qg, "K_gross_lu": k_m0_lu, "K_void_lu": k_m0_lu / cuda_m0[1]["phi_gross"], "delta_x_m": fixture["closure"]["delta_x_m"], "K_EWP_SI_m2": k_m0_si},
+        "closure_handoff_lineage": {**closure_handoff, "disposition": "PASS" if all(x["pass"] for x in evaluation["checks"] if x["check_id"].startswith("M0A_") or x["check_id"].startswith("domain_")) else "M0A_CLOSURE_LINEAGE_MISMATCH"},
+        "primitive_trace_source_map": {key: value["primitive_trace_sources"] for key, value in sorted(openfoam.items())},
         "openfoam_uniform": {"runs": uniform, "maximum_total_flow_relative_error": max(row["total_flow_relative_error"] for row in uniform), "maximum_superficial_flow_relative_error": max(row["superficial_flow_relative_error"] for row in uniform), "maximum_Q_over_delta_p_relative_deviation": qdev, "porosity_invariance_relative_difference": porosity_difference},
         "mesh_preflight": preflight,
         "series": {"serial": series_serial, "mpi": series_mpi, "serial_mpi_total_flow_relative_difference": relative_difference(series_mpi["total_flow_m3_s"], series_serial["total_flow_m3_s"]), "serial_mpi_layer_A_share_relative_difference": relative_difference(series_mpi["layer_A_pressure_drop_share"], series_serial["layer_A_pressure_drop_share"]), "serial_mpi_layer_B_share_relative_difference": relative_difference(series_mpi["layer_B_pressure_drop_share"], series_serial["layer_B_pressure_drop_share"])},
@@ -637,8 +755,11 @@ def reduce_final(args: argparse.Namespace) -> None:
         "external_evidence_root": "EXTERNAL_EVIDENCE_ROOT",
         "external_manifest_sha256": external["manifest_sha256"],
         "external_archive_sha256": external["archive_sha256"],
-        "external_archive_file_count": external["manifest_member_count"],
-        "external_archive_source_bytes": external["manifest_source_bytes"],
+        "external_manifest_member_count": external["manifest_member_count"],
+        "external_manifest_source_bytes": external["manifest_source_bytes"],
+        "external_archive_regular_file_count": external["archive_regular_file_count"],
+        "external_archive_file_count": external["archive_regular_file_count"],
+        "external_archive_file_count_role": "REGULAR_FILES_IN_ARCHIVE_INCLUDING_SELF_EXCLUDED_MANIFEST",
         "external_archive_bytes": external["archive_bytes"],
         "external_verification": external,
         "committed_members": {"XSV_TAICHI_001_RESULT.json": sha256_file(result_path), "XSV_TAICHI_001_SUMMARY.csv": sha256_file(summary_path)},
