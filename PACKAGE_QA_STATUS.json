@@ -34,8 +34,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 295,
-    "source_manifest_aggregate_sha256": "bc190e603eac6e25fccc87b1b2d6938ce1b602cbd5ec8c315e9abe440765dddc",
+    "source_manifest_file_count": 297,
+    "source_manifest_aggregate_sha256": "17957341b2fbf250ed91ff7c106023dfec813dd7f08c5b8897a01d9c134ab242",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -374,7 +374,7 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "xsv_taichi_002": {
-    "status": "G1_REQUIRED_COLLAPSE_TARGET_FROZEN",
+    "status": "G2_DETERMINISTIC_GEOMETRY_GENERATION_PENDING",
     "authorization_id": "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05",
     "profile": "EWP_XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_COLLAPSE_SCREEN_STAGE_V1",
     "issue": 60,

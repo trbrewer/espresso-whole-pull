@@ -183,7 +183,7 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         return False
     xsv2 = qa.get("xsv_taichi_002", {})
     for key, expected in (
-        ("status", "G1_REQUIRED_COLLAPSE_TARGET_FROZEN"),
+        ("status", "G2_DETERMINISTIC_GEOMETRY_GENERATION_PENDING"),
         ("authorization_id", "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05"),
         ("issue", 60),
         ("planned_scored_cuda_identities", 22),

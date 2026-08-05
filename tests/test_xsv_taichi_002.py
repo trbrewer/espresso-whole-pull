@@ -151,6 +151,17 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             "cuda_executions": 0,
             "openfoam_executions": 0,
         })
+        launcher = (ROOT / "scripts/xsv_taichi_002.py").read_text(encoding="utf-8")
+        runtime = (CASE_ROOT / "xsv_taichi_002_runtime.py").read_text(encoding="utf-8")
+        self.assertEqual(launcher.splitlines()[0], "#!/usr/bin/env python3")
+        self.assertTrue((ROOT / "scripts/xsv_taichi_002.py").stat().st_mode & 0o111)
+        for forbidden in ("import numpy", "import pandas", "import scipy", "import taichi"):
+            self.assertNotIn(forbidden, launcher)
+        for entrypoint in ("periodic_surface_ranking", "connectivity",
+                           "generate_geometries", "run_cuda", "main"):
+            self.assertIn(f"def {entrypoint}(", runtime)
+        self.assertIn("arch=\"gpu\", dtype=\"f64\"", runtime)
+        self.assertIn("refusing to overwrite", runtime)
 
 
 if __name__ == "__main__":

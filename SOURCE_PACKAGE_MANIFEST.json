@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 295,
-  "total_uncompressed_bytes_excluding_manifest": 3936260,
-  "aggregate_source_sha256": "bc190e603eac6e25fccc87b1b2d6938ce1b602cbd5ec8c315e9abe440765dddc",
-  "aggregate_sha256": "bc190e603eac6e25fccc87b1b2d6938ce1b602cbd5ec8c315e9abe440765dddc",
+  "file_count": 297,
+  "total_uncompressed_bytes_excluding_manifest": 3952746,
+  "aggregate_source_sha256": "17957341b2fbf250ed91ff7c106023dfec813dd7f08c5b8897a01d9c134ab242",
+  "aggregate_sha256": "17957341b2fbf250ed91ff7c106023dfec813dd7f08c5b8897a01d9c134ab242",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1193,6 +1193,11 @@
       "bytes": 486,
       "git_mode": "100755"
     },
+    "scripts/xsv_taichi_002.py": {
+      "sha256": "ff16e54d8b14dae8f6fd151df701c27d933d90bcebe4d92cc6040d9057756696",
+      "bytes": 448,
+      "git_mode": "100755"
+    },
     "solver/espressoWholePullFoam/Make/files": {
       "sha256": "70aa84e2e2cbd37a9c25217fee498c234816cf41fb57b5f24c41a0e8495f7d83",
       "bytes": 73,
@@ -1274,8 +1279,8 @@
       "git_mode": "100644"
     },
     "tests/test_current_authority_consistency.py": {
-      "sha256": "98435b2769e9c219d2ba80ca8eb613e92c8c0add57f20e4822a80d4807ebe364",
-      "bytes": 15302,
+      "sha256": "cec317472d50420c4e873ffff82de129d46dece1392df7d3680db207be905629",
+      "bytes": 15312,
       "git_mode": "100644"
     },
     "tests/test_r1_analysis.py": {
@@ -1424,8 +1429,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_002.py": {
-      "sha256": "5e4e7b89f73109e4f4fa06eaf2cf9a75a91a003abb74c37297b46d7c966d97f0",
-      "bytes": 7606,
+      "sha256": "13e51e5da6a452aacc04b5303a79b96b23303c9c13206222dd5352b8c9237ac5",
+      "bytes": 8400,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_ARTIFACT_MANIFEST.json": {
@@ -1506,6 +1511,11 @@
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_TARGET_INPUTS.csv": {
       "sha256": "ba051dd799a3467af3ea06cd29e0a0e36f1e47774b8b4ecd6c70e69d45018c52",
       "bytes": 874,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_taichi_002/xsv_taichi_002_runtime.py": {
+      "sha256": "5fe3879ca3185d929c837b3836d0b2d73ce88f7a56b6878595274a93f670631e",
+      "bytes": 15234,
       "git_mode": "100644"
     }
   }
