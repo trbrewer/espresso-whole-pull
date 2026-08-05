@@ -7,7 +7,7 @@
   "profile_type": "TASK_SPECIFIC_NONREUSABLE_CAPABILITY_EXCEPTION",
   "profile_reuse": "PROHIBITED_WITHOUT_FRESH_HUMAN_OWNER_STAGE_AUTHORIZATION_V1",
   "human_owner": "Tim Brewer",
-  "repository": "/home/tim/espresso-development/espresso-whole-pull",
+  "repository": "trbrewer/espresso-whole-pull",
   "remote": "trbrewer/espresso-whole-pull",
   "task": "XSV-TAICHI-002_SYNTHETIC_MORPHOLOGY_AND_REQUIRED_PERMEABILITY_COLLAPSE_SCREEN",
   "task_slug": "xsv_taichi_002",

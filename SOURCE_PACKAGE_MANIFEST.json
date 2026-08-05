@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 293,
-  "total_uncompressed_bytes_excluding_manifest": 3929050,
-  "aggregate_source_sha256": "bfdb22800508e0494f7a1d3e31d65d4cca877256661c78398a00d19861e3ffe3",
-  "aggregate_sha256": "bfdb22800508e0494f7a1d3e31d65d4cca877256661c78398a00d19861e3ffe3",
+  "total_uncompressed_bytes_excluding_manifest": 3929028,
+  "aggregate_source_sha256": "664d7b5baba1271c66ac5ac6b6322cfcba8e1b7a84d3d2a7dbbddf2599d8dd21",
+  "aggregate_sha256": "664d7b5baba1271c66ac5ac6b6322cfcba8e1b7a84d3d2a7dbbddf2599d8dd21",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1494,8 +1494,8 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_STAGE_AUTHORIZATION.json": {
-      "sha256": "31183c250bd8cbb3dfd9a1b08e347316cc97aa9cf0e15fca3cbab94a93a909ac",
-      "bytes": 3069,
+      "sha256": "aaa1cfd09c9bf52e33d53bd75034e86038e09b7829b3a4fa9a458b87407f3830",
+      "bytes": 3047,
       "git_mode": "100644"
     }
   }
