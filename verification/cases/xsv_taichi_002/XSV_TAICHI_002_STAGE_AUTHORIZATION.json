@@ -230,7 +230,7 @@
     "reviewed_tree": "5698f67b5c236c6796e7d533c9ad4eb9cd2186a3",
     "review_reducer_v2_sha256": "0cc9a1f9281f545813c684962df962b50675f852753fdc7c5338374737c655d0",
     "review_reducer_v3_sha256": "ac8e71c23ede9d0170a0696ac33b017d61d5ffb7c216418cee8ea8915dc58c5a",
-    "review_reducer_v4_sha256": "5356b6d92e43caaea8ff8cd7b2760aa908bb2beadaf5cbc14de0c848734f3c4b",
+    "review_reducer_v4_sha256": "37459e5e6f2c278f69455d073c699b06f71a413369a7f19342d7b9a9f8c61965",
     "deterministic_double_reduction": "PASS",
     "numerical_rerun": "NONE",
     "target_change": false,

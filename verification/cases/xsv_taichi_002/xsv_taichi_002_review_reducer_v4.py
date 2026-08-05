@@ -41,6 +41,8 @@ def digest(path:Path)->str:
  return h.hexdigest()
 def canonical(x:Any)->bytes:return (json.dumps(x,sort_keys=True,separators=(",",":"))+"\n").encode()
 def ck(name:str,observed:Any,expected:Any,path:str,rule:str,sha256:str|None=None)->dict[str,Any]:
+ try: path=str(Path(path).resolve().relative_to(ROOT))
+ except (ValueError,OSError): pass
  ok=observed==expected
  return {"check":name,"observed":observed,"expected":expected,"operator":"EXACT_EQUAL","evidence_path":path,"evidence_sha256":sha256,"derivation":rule,"pass":ok,"typed_failure_reason":None if ok else name.upper()+"_MISMATCH"}
 def gate(name:str,checks:list[dict[str,Any]],limitation:str|None=None)->dict[str,Any]:
