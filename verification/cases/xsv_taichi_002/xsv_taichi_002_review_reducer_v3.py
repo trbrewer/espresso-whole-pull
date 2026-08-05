@@ -12,13 +12,10 @@ import argparse, csv, hashlib, json, math, subprocess, sys, tempfile
 from pathlib import Path
 from typing import Any
 
-import numpy as np
-
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(HERE))
 import xsv_taichi_002_review_reducer_v2 as v2
-import xsv_taichi_002_runtime as historical
 
 classify_constriction = v2.classify_constriction
 classify_heterogeneity = v2.classify_heterogeneity
@@ -122,6 +119,8 @@ def target_checks() -> tuple[list[dict[str,Any]],dict[str,float]]:
     return checks,ratios
 
 def geometry_checks(evidence: Path) -> tuple[list[dict[str,Any]],list[dict[str,Any]]]:
+    import numpy as np
+    import xsv_taichi_002_runtime as historical
     doc=json.loads(GEOMETRY.read_text()); checks=[]; table=[]; masks={}
     for g in doc["geometries"]:
         name=g["mask_id"]; pa=evidence/"geometry/repeat_a"/f"{name}.uint8"; pb=evidence/"geometry/repeat_b"/f"{name}.uint8"

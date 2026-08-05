@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 318,
-  "total_uncompressed_bytes_excluding_manifest": 4382042,
-  "aggregate_source_sha256": "ffc253dffe6dea68e8db1054ffa67e1994d4361f7a40982cdac3b0450a765def",
-  "aggregate_sha256": "ffc253dffe6dea68e8db1054ffa67e1994d4361f7a40982cdac3b0450a765def",
+  "total_uncompressed_bytes_excluding_manifest": 4382049,
+  "aggregate_source_sha256": "1ff872773d894b8b567fe724ea75fea0c28425973ceb5b48e234277db33a84b7",
+  "aggregate_sha256": "1ff872773d894b8b567fe724ea75fea0c28425973ceb5b48e234277db33a84b7",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1494,7 +1494,7 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_ARTIFACT_MANIFEST.json": {
-      "sha256": "05f75d45e81143312db2e8217478ee0805f2f11915377ed971f5a032c89f7a17",
+      "sha256": "d121267183f2b978b309fd83e5ebfdf39c7828b80e1fd934899bbacd4a7ab3bc",
       "bytes": 2667,
       "git_mode": "100644"
     },
@@ -1509,7 +1509,7 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_G8_EVIDENCE_BINDING_CORRECTION.json": {
-      "sha256": "2af85270f82a99d0a96daad6ca01b02a7cb33aa004da996430f0526bec29842e",
+      "sha256": "093d8736072014bf4dde77967e4e38552fb1756e51263ed2e92a989962eb6488",
       "bytes": 2083,
       "git_mode": "100644"
     },
@@ -1524,7 +1524,7 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_RESULT.json": {
-      "sha256": "887c8e005ee4cc436441e01aaa2094ab57a25d392360eaf26c3d081575a7bb1f",
+      "sha256": "2d2315dab8855560c8c7aaf31ec2f6908c1698e80395f435fcca42660691a708",
       "bytes": 271345,
       "git_mode": "100644"
     },
@@ -1614,8 +1614,8 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/xsv_taichi_002_review_reducer_v3.py": {
-      "sha256": "6b6826aa92f01cbcc0a2708b789ac2f1c6706d0d11c1da4a3b3b07ba60a13609",
-      "bytes": 24967,
+      "sha256": "ac8e71c23ede9d0170a0696ac33b017d61d5ffb7c216418cee8ea8915dc58c5a",
+      "bytes": 24974,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/xsv_taichi_002_runtime.py": {

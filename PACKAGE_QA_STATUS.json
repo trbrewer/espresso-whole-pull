@@ -35,7 +35,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 318,
-    "source_manifest_aggregate_sha256": "ffc253dffe6dea68e8db1054ffa67e1994d4361f7a40982cdac3b0450a765def",
+    "source_manifest_aggregate_sha256": "1ff872773d894b8b567fe724ea75fea0c28425973ceb5b48e234277db33a84b7",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -395,10 +395,10 @@
     "merge_authority": "NOT_GRANTED",
     "executed_scored_cuda_identities": 22,
     "pre_review_result_sha256": "f4d2cd03bb794ac89e2aba0ddbb133e8ed531d14dc5fb41d7e4a009197259236",
-    "result_sha256": "887c8e005ee4cc436441e01aaa2094ab57a25d392360eaf26c3d081575a7bb1f",
+    "result_sha256": "2d2315dab8855560c8c7aaf31ec2f6908c1698e80395f435fcca42660691a708",
     "summary_sha256": "cdd21372ecb6a644e309e3c405b6d3888b1975ecbf1a4f8302063afd0ab28bb3",
     "runtime_sha256": "3bbf089ab5855bdbaeabb9a569ec9176974e8c25499a0c43c0d011be69d74a75",
-    "artifact_manifest_sha256": "05f75d45e81143312db2e8217478ee0805f2f11915377ed971f5a032c89f7a17",
+    "artifact_manifest_sha256": "d121267183f2b978b309fd83e5ebfdf39c7828b80e1fd934899bbacd4a7ab3bc",
     "scientific_disposition": "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_X_DIRECTION_ENVELOPE",
     "localization_disposition": "FLOW_LOCALIZATION_RESPONSE_REPORTED_DESCRIPTIVELY_NO_PROSPECTIVE_CHANGE_THRESHOLD",
     "anisotropy_disposition": "DIRECTIONAL_PERMEABILITY_RESPONSE_REPORTED_DESCRIPTIVELY",
@@ -409,7 +409,7 @@
     "infrastructure_retries": "NO_RETAINED_RETRY_RECORD",
     "attempt_ceiling_compliance": "NOT_INDEPENDENTLY_RECONSTRUCTED",
     "review_reducer_v2_sha256": "0cc9a1f9281f545813c684962df962b50675f852753fdc7c5338374737c655d0",
-    "review_reducer_v3_sha256": "6b6826aa92f01cbcc0a2708b789ac2f1c6706d0d11c1da4a3b3b07ba60a13609"
+    "review_reducer_v3_sha256": "ac8e71c23ede9d0170a0696ac33b017d61d5ffb7c216418cee8ea8915dc58c5a"
   },
   "val_corpus_002": {
     "stage": "COMPLETE",
