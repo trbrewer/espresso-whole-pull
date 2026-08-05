@@ -271,5 +271,29 @@
     "physical_validation": "NOT_ESTABLISHED",
     "next_stage": "NOT_AUTHORIZED",
     "final_exact_head_ci": "PENDING"
+  },
+  "g11_final_qa_test_count_alignment": {
+    "authorization_header": "HUMAN_OWNER_STAGE_AUTHORIZATION_V1",
+    "human_owner_assertion": "I_PERSONALLY_AUTHORIZE_THIS_STAGE",
+    "authorization_id": "XSV-TAICHI-002-FINAL-QA-COUNT-ALIGNMENT-2026-08-05",
+    "profile": "EWP_XSV_TAICHI_002_FINAL_QA_COUNT_ALIGNMENT_STAGE_V1",
+    "reviewed_head": "6d29ca1668c36b2201938e1f9cac9d5c3b531d51",
+    "reviewed_tree": "4b035741eb54cb463c33af8430fd375b659e15bd",
+    "corrected_qa_field": "current_repository_checks.python_test_count",
+    "prior_value": 466,
+    "corrected_value": 468,
+    "scientific_result": "UNCHANGED_REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_X_DIRECTION_ENVELOPE",
+    "package_disposition": "UNCHANGED_COMPLETE_WITH_TYPED_PROVENANCE_AND_MUTATION_COVERAGE_LIMITATIONS",
+    "tests_added": 0,
+    "tests_removed": 0,
+    "tests_modified": 0,
+    "numerical_execution": "NONE",
+    "reducer_execution": "NOT_NEEDED_ORDINARY_VERIFICATION_ONLY",
+    "scientific_change": "NONE",
+    "primitive_evidence_change": "NONE",
+    "raw_evidence_change": "NONE",
+    "merge_authority": "NOT_GRANTED",
+    "next_stage": "NOT_AUTHORIZED",
+    "final_exact_head_ci": "PENDING"
   }
 }

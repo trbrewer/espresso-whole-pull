@@ -30,12 +30,12 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 466,
+    "python_test_count": 468,
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 322,
-    "source_manifest_aggregate_sha256": "9130f10e0e4b65ad33cfe01eb3139df65fe4097219429ca41a6e0f7611758c42",
+    "source_manifest_aggregate_sha256": "06129cdd7f36d2af33dd44ecd0240179ee84e548bcfc30772ae164b80a5e9048",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -402,7 +402,7 @@
     "scientific_disposition": "REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_X_DIRECTION_ENVELOPE",
     "localization_disposition": "FLOW_LOCALIZATION_RESPONSE_REPORTED_DESCRIPTIVELY_NO_PROSPECTIVE_CHANGE_THRESHOLD",
     "anisotropy_disposition": "DIRECTIONAL_PERMEABILITY_RESPONSE_REPORTED_DESCRIPTIVELY",
-    "review_correction_status": "G10_FINAL_EVIDENCE_ADJUDICATION_COMPLETE_PENDING_MERGE_REVIEW",
+    "review_correction_status": "G11_FINAL_QA_TEST_COUNT_ALIGNMENT_COMPLETE_PENDING_EXACT_HEAD_MERGE_REVIEW",
     "xsv_taichi_003": "NOT_STARTED_NOT_AUTHORIZED",
     "retained_successful_run_records": 22,
     "process_attempts": "NOT_INDEPENDENTLY_RECONSTRUCTED",
