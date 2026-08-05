@@ -4,7 +4,7 @@
   "authorization_id": "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05",
   "profile": "EWP_XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_COLLAPSE_SCREEN_STAGE_V1",
   "issue": 60,
-  "pull_request": "BOOTSTRAP_PENDING",
+  "pull_request": 61,
   "branch": "verification/xsv-taichi-002-synthetic-morphology-collapse-screen",
   "starting_identity": {"commit": "40588d62ee03a31057f75adab1df8a9c609a10d6", "tree": "2c7e264a8f53b96c79dd58c65722d7677a29954e"},
   "classification": {

@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 293,
-  "total_uncompressed_bytes_excluding_manifest": 3929014,
-  "aggregate_source_sha256": "1f7ffcf30a1a82de80a4a3e6664fc118f24deb7d4c2d075258dbf97c9a53e471",
-  "aggregate_sha256": "1f7ffcf30a1a82de80a4a3e6664fc118f24deb7d4c2d075258dbf97c9a53e471",
+  "total_uncompressed_bytes_excluding_manifest": 3929050,
+  "aggregate_source_sha256": "bfdb22800508e0494f7a1d3e31d65d4cca877256661c78398a00d19861e3ffe3",
+  "aggregate_sha256": "bfdb22800508e0494f7a1d3e31d65d4cca877256661c78398a00d19861e3ffe3",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -719,8 +719,8 @@
       "git_mode": "100644"
     },
     "docs/verification/XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_AND_REQUIRED_PERMEABILITY_COLLAPSE_SCREEN.md": {
-      "sha256": "ba234c88ed838cc7884aee496374435c03e25055800b227d29c3fec58e5288b0",
-      "bytes": 11021,
+      "sha256": "4f3d6a528620b3d9d1d9ce39b3b9f088deb37586d33b3d761f690049610a3d7c",
+      "bytes": 11089,
       "git_mode": "100644"
     },
     "docs/wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md": {
@@ -1489,13 +1489,13 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_PROTOCOL.json": {
-      "sha256": "a88fa31b54e03a3b36791154b124c895374ecdfed8cf5be3faa5e87a70e3f812",
-      "bytes": 8809,
+      "sha256": "c8582edbc494a32379a5b28a4e12f2230521183962cd940bd58c8cfc504ff297",
+      "bytes": 8792,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_STAGE_AUTHORIZATION.json": {
-      "sha256": "724a6572c39236844f98087c849e5237895a4d5369bf73836eed5094096b4b0e",
-      "bytes": 3084,
+      "sha256": "31183c250bd8cbb3dfd9a1b08e347316cc97aa9cf0e15fca3cbab94a93a909ac",
+      "bytes": 3069,
       "git_mode": "100644"
     }
   }

@@ -35,7 +35,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 293,
-    "source_manifest_aggregate_sha256": "1f7ffcf30a1a82de80a4a3e6664fc118f24deb7d4c2d075258dbf97c9a53e471",
+    "source_manifest_aggregate_sha256": "bfdb22800508e0494f7a1d3e31d65d4cca877256661c78398a00d19861e3ffe3",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -378,7 +378,7 @@
     "authorization_id": "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05",
     "profile": "EWP_XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_COLLAPSE_SCREEN_STAGE_V1",
     "issue": 60,
-    "pull_request": "BOOTSTRAP_PENDING",
+    "pull_request": 61,
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
     "evidence_class": "SIMULATED_SYNTHETIC_REFERENCE",
     "retained_numerical_execution": {

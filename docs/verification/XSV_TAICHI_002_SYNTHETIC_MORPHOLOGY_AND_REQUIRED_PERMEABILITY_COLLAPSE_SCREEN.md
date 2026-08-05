@@ -6,7 +6,8 @@
 - Profile: `EWP_XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_COLLAPSE_SCREEN_STAGE_V1`
 - Issue: [#60](https://github.com/trbrewer/espresso-whole-pull/issues/60)
 - Branch: `verification/xsv-taichi-002-synthetic-morphology-collapse-screen`
-- Pull request: `BOOTSTRAP_PENDING`
+- Pull request: [#61](https://github.com/trbrewer/espresso-whole-pull/pull/61),
+  `OPEN_DRAFT_UNMERGED`
 - Change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
 - Evidence: `SIMULATED_SYNTHETIC_REFERENCE` plus an existing governed discrepancy target
 - Status: `G0_PROTOCOL_FREEZE_PENDING_EXACT_HEAD_CI`
