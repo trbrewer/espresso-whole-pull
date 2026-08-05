@@ -468,3 +468,14 @@ pooled cases, narrows localization to descriptive reporting, distinguishes
 both plot references, and reports direction-normalized C30 anchors. The
 principal X-direction non-attainment result and independent-data gate remain
 unchanged; physical validation is not established.
+
+## 2026-08-05 — XSV-TAICHI-002 fail-closed evidence binding
+
+Reducer v3 independently bound the final G0 authority and exact-head checks,
+rederived all target ratios from the three retained input rows, and verified
+both retained copies of all twelve masks, their counts, porosities, winding
+connectivity, and coating nestedness. The 22 successful numerical records
+remain qualified, while process-attempt count, retry-ceiling compliance, and
+chronology are explicitly not independently reconstructed. No solver,
+geometry, target, protocol, primitive evidence, or raw archive changed; the
+independent-data gate and physical-validation ceiling remain unchanged.

@@ -9,7 +9,7 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 316/316 PASS
+- Public source verification: 318/318 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -50,7 +50,12 @@ execution runtime while replacing asserted package gates with a versioned,
 fail-closed reducer. Localization is now explicitly descriptive because no
 prospective change threshold was frozen. The primary X-direction non-attainment
 result is unchanged; transverse C30 reductions are retained only as descriptive
-anisotropy anchors. PR #61 remains draft and unmerged.
+anisotropy anchors. G8 independently binds the final historical G0 Git and CI
+evidence, rederives the target rows, and verifies both retained copies of all
+twelve geometries. The package contains 22 successful retained CUDA records;
+because no independent process-attempt ledger exists, process-attempt count,
+retry-ceiling compliance, and chronology are not independently reconstructed.
+PR #61 remains draft and unmerged.
 
 VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2
 result remains validation-support sensitivity and practical-identifiability

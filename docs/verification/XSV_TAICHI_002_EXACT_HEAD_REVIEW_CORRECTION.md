@@ -86,3 +86,22 @@ direction, case identity, and qualification state.
 This remains an exact static synthetic screen. It establishes no real-coffee
 morphology, compaction, fines, clogging, channeling, mechanism, or physical
 validation. `ADDITIONAL_INDEPENDENT_DATA_REQUIRED` remains the current gate.
+
+## G8 fail-closed evidence binding
+
+The G8 correction preserves reducer v2 and the historical CUDA runtime while
+adding reducer v3 as current reduction authority. Git object inspection binds
+the final G0 head `df50ec4be2734e26aa91715d3c27009ad32d0cc1`, historical G0 protocol hash
+`4f3d6a528620b3d9d1d9ce39b3b9f088deb37586d33b3d761f690049610a3d7c`,
+and distinct current reporting protocol hash
+`04911d266c77470f7d7a83a39842090100407a43fc3a36990b2177eea5496c28`.
+Both required historical checks were recovered at the exact G0 head.
+
+Reducer v3 rederives all three target ratios and verifies both retained mask
+copies for all twelve geometries, including counts, porosities, periodic
+winding connectivity, and coating removal sets. It retains 22 successful run
+records. No independent immutable process-attempt ledger exists, so process-
+attempt count, retry-ceiling compliance, and chronological execution order are
+`NOT_INDEPENDENTLY_RECONSTRUCTED`; package ordering is not represented as
+launch history. This provenance limitation does not disqualify the retained
+numerical results or change the X-direction non-attainment disposition.

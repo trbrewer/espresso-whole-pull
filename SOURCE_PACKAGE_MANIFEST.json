@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 316,
-  "total_uncompressed_bytes_excluding_manifest": 4246650,
-  "aggregate_source_sha256": "a6cbdb38c078accdfcc8de8729653aefb887f9c8baedd869740b680740682431",
-  "aggregate_sha256": "a6cbdb38c078accdfcc8de8729653aefb887f9c8baedd869740b680740682431",
+  "file_count": 318,
+  "total_uncompressed_bytes_excluding_manifest": 4382042,
+  "aggregate_source_sha256": "ffc253dffe6dea68e8db1054ffa67e1994d4361f7a40982cdac3b0450a765def",
+  "aggregate_sha256": "ffc253dffe6dea68e8db1054ffa67e1994d4361f7a40982cdac3b0450a765def",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -719,8 +719,8 @@
       "git_mode": "100644"
     },
     "docs/verification/XSV_TAICHI_002_EXACT_HEAD_REVIEW_CORRECTION.md": {
-      "sha256": "5481aca7f0184455f352af479bc24c2bfc21b0864e2e4bb1a338e6beadba6491",
-      "bytes": 4096,
+      "sha256": "8b06b3d5b4a469f34b0b94ed0428291ab8adf8cceb8549a4da044c47417cd328",
+      "bytes": 5234,
       "git_mode": "100644"
     },
     "docs/verification/XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_AND_REQUIRED_PERMEABILITY_COLLAPSE_SCREEN.md": {
@@ -1284,8 +1284,8 @@
       "git_mode": "100644"
     },
     "tests/test_current_authority_consistency.py": {
-      "sha256": "f7bb4bad1646d80d5b10424a56f5ddc105d6521cf5f967546663f9ba68bf8403",
-      "bytes": 15992,
+      "sha256": "7c321bb26313723ae6891f2a6cf494890992b67d7ac5d7a993db3fb5c9ed6bfc",
+      "bytes": 16258,
       "git_mode": "100644"
     },
     "tests/test_r1_analysis.py": {
@@ -1434,8 +1434,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_002.py": {
-      "sha256": "46af818dc83dc5170e614ad8e6da92ab09c7da2f9d6a0336c260c9d1de2f197f",
-      "bytes": 18033,
+      "sha256": "d2d012854581b66aa512dba54d9db59d8cb126de8db264e8275dda5bf97ada11",
+      "bytes": 21574,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_ARTIFACT_MANIFEST.json": {
@@ -1494,8 +1494,8 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_ARTIFACT_MANIFEST.json": {
-      "sha256": "7295c3498ed6969b4c4ad72277d738d41d0663be8df7e45f6bd30bd4afe6dd67",
-      "bytes": 2512,
+      "sha256": "05f75d45e81143312db2e8217478ee0805f2f11915377ed971f5a032c89f7a17",
+      "bytes": 2667,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_CASE_MATRIX.csv": {
@@ -1506,6 +1506,11 @@
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_EXACT_HEAD_REVIEW_CORRECTION.json": {
       "sha256": "1631c44b0dd656af7b468015144fd0e1ecd4f99ffe60b74ec06836eda53e2c3b",
       "bytes": 1495,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_taichi_002/XSV_TAICHI_002_G8_EVIDENCE_BINDING_CORRECTION.json": {
+      "sha256": "2af85270f82a99d0a96daad6ca01b02a7cb33aa004da996430f0526bec29842e",
+      "bytes": 2083,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_GEOMETRY_MANIFEST.json": {
@@ -1519,23 +1524,23 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_RESULT.json": {
-      "sha256": "69cad8288cfb6c6b7568b5a67adc6454c39522008a4b671bd6f3c87e9d251fa0",
-      "bytes": 171197,
+      "sha256": "887c8e005ee4cc436441e01aaa2094ab57a25d392360eaf26c3d081575a7bb1f",
+      "bytes": 271345,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_RUN_MANIFEST.csv": {
-      "sha256": "9696fed8de06f2f50210b877d0563b43ebd2271169aace200a19e65ae11a6fb3",
-      "bytes": 5708,
+      "sha256": "abf767f4d92bf6ef2ba57757d86fb8c665a88cb87af9045cc9361c23ee0e7190",
+      "bytes": 6256,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_STAGE_AUTHORIZATION.json": {
-      "sha256": "990746ee70c3a0946160f498d1ef06167d15ffdf99c76b3b17a0527be090610e",
-      "bytes": 7973,
+      "sha256": "b79ba54268c04fa523a713b586efd3eb252dd7c0f578dd667864f97ab08029eb",
+      "bytes": 10344,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_SUMMARY.md": {
-      "sha256": "65a4cabc2d6bb9012aa1e0b54c39c5a6a41f50bd21ccc1d99ce79daddf98588c",
-      "bytes": 1856,
+      "sha256": "cdd21372ecb6a644e309e3c405b6d3888b1975ecbf1a4f8302063afd0ab28bb3",
+      "bytes": 2031,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_TARGET.json": {
@@ -1606,6 +1611,11 @@
     "verification/cases/xsv_taichi_002/xsv_taichi_002_review_reducer_v2.py": {
       "sha256": "0cc9a1f9281f545813c684962df962b50675f852753fdc7c5338374737c655d0",
       "bytes": 32786,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_taichi_002/xsv_taichi_002_review_reducer_v3.py": {
+      "sha256": "6b6826aa92f01cbcc0a2708b789ac2f1c6706d0d11c1da4a3b3b07ba60a13609",
+      "bytes": 24967,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/xsv_taichi_002_runtime.py": {

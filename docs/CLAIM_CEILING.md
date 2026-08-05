@@ -34,3 +34,9 @@ Localization and directional responses are descriptive because no prospective
 localization-change or strong-anisotropy threshold was frozen. Transverse
 direction-normalized target crossings do not alter the primary X-direction
 family disposition or establish real-coffee anisotropy.
+
+The 22 successful retained CUDA records support the bounded numerical result,
+but the historical process-attempt count, retry-ceiling compliance, and exact
+execution chronology are not independently reconstructable because no
+immutable process-attempt ledger was retained. This provenance limitation
+does not raise or lower the scientific claim ceiling.

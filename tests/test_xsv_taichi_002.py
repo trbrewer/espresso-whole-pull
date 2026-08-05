@@ -5,6 +5,8 @@ import hashlib
 import importlib.util
 import json
 import math
+import shutil
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -39,7 +41,7 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
         cls.artifacts = json.loads(
             (CASE_ROOT / "XSV_TAICHI_002_ARTIFACT_MANIFEST.json").read_text(encoding="utf-8")
         )
-        reducer_path = CASE_ROOT / "xsv_taichi_002_review_reducer_v2.py"
+        reducer_path = CASE_ROOT / "xsv_taichi_002_review_reducer_v3.py"
         spec = importlib.util.spec_from_file_location("xsv002_review_reducer", reducer_path)
         assert spec is not None and spec.loader is not None
         cls.reducer = importlib.util.module_from_spec(spec)
@@ -235,7 +237,7 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256((CASE_ROOT / relative).read_bytes()).hexdigest(), digest)
         self.assertEqual(sum(name.endswith(".svg") for name in self.artifacts["committed_members"]), 10)
 
-        reducer_text = (CASE_ROOT / "xsv_taichi_002_review_reducer_v2.py").read_text()
+        reducer_text = (CASE_ROOT / "xsv_taichi_002_review_reducer_v3.py").read_text()
         self.assertNotIn('gates = {"G0_', reducer_text)
         self.assertNotIn('FLOW_LOCALIZATION_CHANGED_WITHOUT_REQUIRED_BULK_PERMEABILITY_COLLAPSE',
                          reducer_text)
@@ -245,11 +247,19 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
                          "f4d2cd03bb794ac89e2aba0ddbb133e8ed531d14dc5fb41d7e4a009197259236")
         self.assertEqual(result["chronology"]["chronological_execution_order"],
                          "CHRONOLOGICAL_EXECUTION_ORDER_NOT_INDEPENDENTLY_RECONSTRUCTED")
-        self.assertTrue(all(item["status"] == "PASS" for item in result["gates"].values()))
+        self.assertEqual(result["local_package_status"], "PASS_WITH_TYPED_PROVENANCE_LIMITATION")
+        self.assertTrue(all(item["status"] in {"PASS", "PASS_WITH_TYPED_PROVENANCE_LIMITATION"}
+                            for item in result["gates"].values()))
+        self.assertEqual(result["gates"]["G3_BOUNDED_TAICHI_CUDA_EXECUTION"]["status"],
+                         "PASS_WITH_TYPED_PROVENANCE_LIMITATION")
         for item in result["gates"].values():
             self.assertTrue(item["checks"])
-            self.assertTrue(item["validation_rule"])
-            self.assertIsNone(item["failure_reason"])
+            for evidence_check in item["checks"]:
+                self.assertIn("observed", evidence_check)
+                self.assertIn("expected", evidence_check)
+                self.assertTrue(evidence_check["evidence_path"])
+                self.assertTrue(evidence_check["derivation"])
+                self.assertIsNone(evidence_check["typed_failure_reason"])
 
         binding_names = {item["check"] for item in result["run_binding_checks"]}
         required_bindings = {
@@ -262,7 +272,8 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
         }
         self.assertTrue(required_bindings <= binding_names)
         for name in required_bindings:
-            mutation = self.reducer.check(name, "MUTATED", "FROZEN", "synthetic mutation")
+            mutation = self.reducer.ck(name, "MUTATED", "FROZEN", "synthetic mutation",
+                                       "integrated binding comparison")
             self.assertFalse(mutation["pass"], name)
 
         # Counterfactual family branches are derived, including no pooled robustness.
@@ -316,6 +327,53 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             text = (CASE_ROOT / "plots" / name).read_text()
             self.assertIn("PRIMARY APPARENT-CONDUCTANCE TARGET 0.37327310642080013", text)
             self.assertIn("NOMINAL-PRESSURE ORDERING SCREEN 0.4545454545454545", text)
+
+        self.assertEqual(result["historical_g0"]["head"],
+                         "df50ec4be2734e26aa91715d3c27009ad32d0cc1")
+        self.assertEqual(result["historical_g0"]["historical_protocol_sha256"],
+                         "4f3d6a528620b3d9d1d9ce39b3b9f088deb37586d33b3d761f690049610a3d7c")
+        self.assertEqual(result["historical_g0"]["current_protocol_sha256"],
+                         "04911d266c77470f7d7a83a39842090100407a43fc3a36990b2177eea5496c28")
+        self.assertEqual(result["historical_g0"]["ci_disposition"], "PASS")
+        self.assertEqual(len(result["geometry_verification"]), 12)
+        self.assertTrue(all(row["repeat_byte_identity"] for row in result["geometry_verification"]))
+        self.assertEqual(result["attempt_provenance"]["process_attempt_count"],
+                         "NOT_INDEPENDENTLY_RECONSTRUCTED")
+        with (CASE_ROOT / "XSV_TAICHI_002_RUN_MANIFEST.csv").open(newline="") as handle:
+            self.assertNotIn("attempt_id", next(csv.DictReader(handle)))
+
+        # Actual gate builders fail closed against isolated mutated package inputs.
+        with tempfile.TemporaryDirectory(dir=CASE_ROOT) as temporary:
+            temporary_path = Path(temporary)
+            target = temporary_path / "target.json"
+            inputs = temporary_path / "inputs.csv"
+            shutil.copy2(CASE_ROOT / "XSV_TAICHI_002_TARGET.json", target)
+            shutil.copy2(CASE_ROOT / "XSV_TAICHI_002_TARGET_INPUTS.csv", inputs)
+            old_target, old_inputs = self.reducer.TARGET, self.reducer.TARGET_INPUTS
+            try:
+                self.reducer.TARGET, self.reducer.TARGET_INPUTS = target, inputs
+                checks, _ = self.reducer.target_checks()
+                self.assertTrue(all(item["pass"] for item in checks))
+                text = inputs.read_text().replace("2.057772", "2.157772", 1)
+                inputs.write_text(text)
+                checks, _ = self.reducer.target_checks()
+                self.assertTrue(any(not item["pass"] for item in checks))
+            finally:
+                self.reducer.TARGET, self.reducer.TARGET_INPUTS = old_target, old_inputs
+
+        with tempfile.TemporaryDirectory(dir=CASE_ROOT) as temporary:
+            auth_path = Path(temporary) / "authorization.json"
+            auth = json.loads((CASE_ROOT / "XSV_TAICHI_002_STAGE_AUTHORIZATION.json").read_text())
+            auth["merge_authority"] = "GRANTED"
+            auth_path.write_text(json.dumps(auth))
+            old_auth = self.reducer.AUTH
+            try:
+                self.reducer.AUTH = auth_path
+                checks, _ = self.reducer.historical_authority()
+                self.assertTrue(any(item["check"] == "merge_authority" and not item["pass"]
+                                    for item in checks))
+            finally:
+                self.reducer.AUTH = old_auth
 
 
 if __name__ == "__main__":

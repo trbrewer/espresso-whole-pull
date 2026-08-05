@@ -202,7 +202,13 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         return False
     if xsv2.get("executed_scored_cuda_identities") != 22:
         return False
-    if xsv2.get("process_attempts") != 22 or xsv2.get("infrastructure_retries") != 0:
+    if xsv2.get("retained_successful_run_records") != 22:
+        return False
+    if xsv2.get("process_attempts") != "NOT_INDEPENDENTLY_RECONSTRUCTED":
+        return False
+    if xsv2.get("infrastructure_retries") != "NO_RETAINED_RETRY_RECORD":
+        return False
+    if xsv2.get("attempt_ceiling_compliance") != "NOT_INDEPENDENTLY_RECONSTRUCTED":
         return False
     xsv2_result_path = ROOT / "verification/cases/xsv_taichi_002/XSV_TAICHI_002_RESULT.json"
     if xsv2.get("result_sha256") != hashlib.sha256(xsv2_result_path.read_bytes()).hexdigest():
