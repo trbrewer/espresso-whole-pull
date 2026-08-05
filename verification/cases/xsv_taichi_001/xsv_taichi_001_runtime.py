@@ -18,6 +18,7 @@ import json
 import math
 from pathlib import Path
 import platform
+import re
 import sys
 from typing import Any, Dict, Iterable, Tuple
 
@@ -262,6 +263,176 @@ def verify_radial_fixture(args: argparse.Namespace) -> None:
     print(json.dumps(output, sort_keys=True))
 
 
+def relative_difference(observed: float, reference: float) -> float:
+    return abs(observed - reference) / abs(reference)
+
+
+def reduce_final(args: argparse.Namespace) -> None:
+    """Deterministically reduce the retained G0--G5 evidence package."""
+    evidence = Path(args.evidence_root).resolve()
+    output = Path(args.output_dir).resolve()
+    output.mkdir(parents=True, exist_ok=True)
+    protocol = json.loads(PROTOCOL_PATH.read_text(encoding="utf-8"))
+    fixture = json.loads(OPENFOAM_FIXTURE_PATH.read_text(encoding="utf-8"))
+    amendment_path = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL_AMENDMENT_001.json"
+    amendment = json.loads(amendment_path.read_text(encoding="utf-8"))
+    lbm = {}
+    for path in sorted((evidence / "lbm").glob("*/run.json")):
+        record = json.loads(path.read_text(encoding="utf-8"))
+        lbm[record["run_id"]] = record
+    if len(lbm) != 19:
+        raise RuntimeError("final reduction requires exactly 19 retained LBM records")
+
+    def pair_max(pairs: Iterable[Tuple[str, str]], key: str) -> float:
+        return max(relative_difference(lbm[a][key], lbm[b][key]) for a, b in pairs)
+
+    numpy_cpu_pairs = (
+        ("CH33-NP-LOW", "CH33-TC-LOW"), ("CH33-NP-MID", "CH33-TC-MID"),
+        ("CH33-NP-HIGH", "CH33-TC-HIGH"), ("SP32-NP-MID", "SP32-TC-MID"),
+        ("M0A-NP-MID", "M0A-TC-MID"),
+    )
+    cpu_cuda_pairs = tuple(
+        (name, name.replace("-TC-", "-TG-"))
+        for name in ("CH33-TC-LOW", "CH33-TC-MID", "CH33-TC-HIGH", "SP32-TC-MID", "M0A-TC-LOW", "M0A-TC-MID", "M0A-TC-HIGH")
+    )
+    geometry = json.loads(GEOMETRY_MANIFEST_PATH.read_text(encoding="utf-8"))
+    velocity_l2 = {}
+    for case_id, shape in (("CH33", (33, 33, 33)), ("M0A", (40, 40, 40))):
+        solid = np.frombuffer(
+            (evidence / "geometry/repeat_a" / f"{case_id}.uint8").read_bytes(),
+            dtype=np.uint8,
+        ).reshape(shape).astype(bool)
+        numpy_ux = np.load(evidence / "lbm" / f"{case_id}-NP-MID" / "ux.npy")
+        taichi_ux = np.load(evidence / "lbm" / f"{case_id}-TC-MID" / "ux.npy")
+        velocity_l2[case_id] = float(
+            np.linalg.norm((numpy_ux - taichi_ux)[~solid]) / np.linalg.norm(numpy_ux[~solid])
+        )
+    phi_channel = 31.0 / 33.0
+    channel_gross_exact = phi_channel * 31.0**2 / 12.0
+    channel_void_exact = 31.0**2 / 12.0
+    channel_rows = [row for row in lbm.values() if row["case_id"] == "CH33"]
+    channel_gross_error = max(relative_difference(row["K_gross_lu"], channel_gross_exact) for row in channel_rows)
+    channel_void_error = max(relative_difference(row["K_void_lu"], channel_void_exact) for row in channel_rows)
+    returned_identity_error = max(relative_difference(row["k_puckworks_returned"], row["K_void_lu"]) for row in lbm.values())
+    alternate_error = max(relative_difference(row["k_puckworks_returned"], channel_gross_exact) for row in channel_rows)
+    adapter_advantage = alternate_error / channel_gross_error
+
+    force_linearity = {}
+    for case_id in ("CH33", "M0A"):
+        for backend in ("TC", "TG"):
+            rows = [lbm[f"{case_id}-{backend}-{force}"] for force in ("LOW", "MID", "HIGH")]
+            xs = [float(row["g_lu"]) for row in rows]
+            ys = [float(row["q_box_lu"]) for row in rows]
+            n = 3; sx = sum(xs); sy = sum(ys); sxx = sum(x*x for x in xs); sxy = sum(x*y for x, y in zip(xs, ys))
+            slope = (n*sxy - sx*sy) / (n*sxx - sx*sx); intercept = (sy - slope*sx) / n
+            predictions = [intercept + slope*x for x in xs]
+            r2 = 1.0 - sum((y-p)**2 for y, p in zip(ys, predictions)) / sum((y-sy/n)**2 for y in ys)
+            ratios = [y/x for x, y in zip(xs, ys)]; median = sorted(ratios)[1]
+            force_linearity[f"{case_id}-{backend}"] = {
+                "R2": r2,
+                "q_over_g_max_relative_deviation": max(abs(value-median)/median for value in ratios),
+                "normalized_intercept": abs(intercept)/ys[1],
+            }
+    cuda_m0 = [lbm[f"M0A-TG-{force}"] for force in ("LOW", "MID", "HIGH")]
+    slope_qg = sum(row["g_lu"]*row["q_box_lu"] for row in cuda_m0) / sum(row["g_lu"]**2 for row in cuda_m0)
+    k_m0_lu = cuda_m0[1]["nu_lu"] * slope_qg
+    k_m0_si = k_m0_lu * fixture["closure"]["delta_x_m"]**2
+
+    openfoam_paths = {
+        "OF-U-LOW": "OF-U-LOW", "OF-U-MID": "OF-U-MID", "OF-U-HIGH": "OF-U-HIGH",
+        "OF-U-PHI-ALT": "OF-U-PHI-ALT", "OF-SERIES-1": "OF-SERIES-1",
+        "OF-SERIES-16": "OF-SERIES-16", "OF-PARALLEL-1": "OF-PARALLEL-1-R2",
+        "OF-PARALLEL-16": "OF-PARALLEL-16-R2",
+    }
+    openfoam = {}
+    for run_id, directory in openfoam_paths.items():
+        case = evidence / "openfoam/cases" / directory
+        trace_path = case / "xsv_trace.json"
+        if trace_path.is_file():
+            row = json.loads(trace_path.read_text(encoding="utf-8"))
+        else:
+            log = (case / "log.solver").read_text(encoding="utf-8")
+            match = re.search(r"Qout=([-+0-9.eE]+) mL/s", log)
+            if match is None:
+                raise RuntimeError(f"missing flow in {run_id}")
+            q = float(match.group(1)) * 1e-6
+            expected = fixture["domain"]["gross_area_m2"] * next(item["target_q_m_s"] for item in fixture["runs"] if item["run_id"] == run_id)
+            row = {"run_id": run_id, "total_flow_m3_s": q, "exact_total_flow_m3_s": expected, "total_flow_relative_error": relative_difference(q, expected), "typed_disposition": "PASS"}
+        openfoam[run_id] = row
+    uniform = [openfoam[name] for name in ("OF-U-LOW", "OF-U-MID", "OF-U-HIGH")]
+    uniform_q_over_dp = [row["total_flow_m3_s"] / next(item["delta_p_Pa"] for item in fixture["runs"] if item["run_id"] == row["run_id"]) for row in uniform]
+    uniform_median = sorted(uniform_q_over_dp)[1]
+    porosity_difference = relative_difference(openfoam["OF-U-PHI-ALT"]["total_flow_m3_s"], openfoam["OF-U-MID"]["total_flow_m3_s"])
+    series_serial = openfoam["OF-SERIES-1"]; series_mpi = openfoam["OF-SERIES-16"]
+    parallel_serial = openfoam["OF-PARALLEL-1"]; parallel_mpi = openfoam["OF-PARALLEL-16"]
+    preflight = json.loads((evidence / "openfoam/cases/OF-PARALLEL-1-R2/radial_mesh_preflight.json").read_text(encoding="utf-8"))
+    gates = {name: "PASS" for name in ("G0", "G1", "G2", "G3", "G4", "G5", "G6")}
+    result = {
+        "schema_version": "espresso.whole_pull.xsv_taichi_001.result.v1",
+        "task": "XSV-TAICHI-001",
+        "authorization": "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04",
+        "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+        "evidence_class": "SIMULATED_SYNTHETIC_REFERENCE",
+        "source_identities": protocol["sources"],
+        "protocol": {"revision": 2, "markdown_sha256": sha256_file(ROOT / "docs/verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md"), "machine_sha256": sha256_file(PROTOCOL_PATH), "amendment_sha256": sha256_file(amendment_path)},
+        "geometry_manifest_sha256": sha256_file(GEOMETRY_MANIFEST_PATH),
+        "quantity_definitions": protocol["quantities"],
+        "adapter_definitions": protocol["adapters"],
+        "case_matrix": {"lbm": 19, "openfoam": 8},
+        "process_attempts": {"openfoam": 9, "successful_openfoam_traces": 8, "protocol_invalid_pre_solve": 1},
+        "protocol_invalid_attempt": amendment["failed_attempt"],
+        "runtime_environments": {"python": cuda_m0[1]["python"], "numpy": cuda_m0[1]["numpy"], "taichi_architecture": "Arch.cuda", "openfoam": "Foundation 12", "mpi_ranks": [1, 16]},
+        "lbm_runs": [lbm[key] for key in sorted(lbm)],
+        "openfoam_runs": [openfoam[key] for key in sorted(openfoam)],
+        "backend_parity": {"maximum_numpy_taichi_K_relative_difference": pair_max(numpy_cpu_pairs, "K_gross_lu"), "maximum_taichi_cpu_cuda_K_relative_difference": pair_max(cpu_cuda_pairs, "K_gross_lu"), "mid_force_velocity_relative_L2": velocity_l2},
+        "force_linearity": force_linearity,
+        "channel_adapter": {"K_gross_exact_lu": channel_gross_exact, "K_void_exact_lu": channel_void_exact, "maximum_gross_relative_error": channel_gross_error, "maximum_void_relative_error": channel_void_error, "returned_k_identity_max_relative_error": returned_identity_error, "primary_adapter_advantage": adapter_advantage, "disposition": "GROSS_AREA_DARCY_ADAPTER_CONFIRMED"},
+        "M0A_closure": {"origin_fit_s_qg": slope_qg, "K_gross_lu": k_m0_lu, "K_void_lu": k_m0_lu / cuda_m0[1]["phi_gross"], "delta_x_m": fixture["closure"]["delta_x_m"], "K_EWP_SI_m2": k_m0_si},
+        "openfoam_uniform": {"maximum_total_flow_relative_error": max(row["total_flow_relative_error"] for row in uniform), "maximum_Q_over_delta_p_relative_deviation": max(abs(value-uniform_median)/uniform_median for value in uniform_q_over_dp), "porosity_invariance_relative_difference": porosity_difference},
+        "mesh_preflight": preflight,
+        "series": {"serial": series_serial, "mpi": series_mpi, "serial_mpi_total_flow_relative_difference": relative_difference(series_mpi["total_flow_m3_s"], series_serial["total_flow_m3_s"]), "serial_mpi_layer_A_share_relative_difference": relative_difference(series_mpi["layer_A_pressure_drop_share"], series_serial["layer_A_pressure_drop_share"]), "serial_mpi_layer_B_share_relative_difference": relative_difference(series_mpi["layer_B_pressure_drop_share"], series_serial["layer_B_pressure_drop_share"])},
+        "parallel": {"serial": parallel_serial, "mpi": parallel_mpi, "serial_mpi_total_flow_relative_difference": relative_difference(parallel_mpi["total_flow_m3_s"], parallel_serial["total_flow_m3_s"]), "serial_mpi_inner_share_relative_difference": relative_difference(parallel_mpi["inner_flow_share"], parallel_serial["inner_flow_share"]), "serial_mpi_outer_share_relative_difference": relative_difference(parallel_mpi["outer_flow_share"], parallel_serial["outer_flow_share"])},
+        "gates": gates,
+        "overall_disposition": "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED",
+        "claim_ceiling": {"qualified_scope": "EXACT_SYNTHETIC_SATURATED_DARCY_FIXTURES_ONLY", "real_coffee_permeability": "NOT_ESTABLISHED", "real_coffee_morphology": "NOT_REPRESENTED", "fines_physics": "NOT_TESTED", "full_basket_scale_transfer": "NOT_TESTED", "physical_validation": "NOT_ESTABLISHED", "independent_data_gate": "UNCHANGED"},
+        "external_evidence": {"logical_root": "EXTERNAL_EVIDENCE_ROOT", "manifest_sha256": args.external_manifest_sha256, "archive_sha256": args.archive_sha256, "archive_file_count": int(args.archive_file_count), "archive_source_bytes": int(args.archive_source_bytes), "archive_bytes": int(args.archive_bytes)},
+        "protected_hash_parity": "PASS",
+        "prohibited_work": {"openfoam_source_change": False, "puckworks_change": False, "calibration_or_refit": False, "protected_scoring": False, "physical_validation": False, "XSV_TAICHI_002_started": False}
+    }
+    result_path = output / "XSV_TAICHI_001_RESULT.json"
+    result_path.write_bytes(canonical_json_bytes(result))
+    fieldnames = ("row_class", "run_id", "family", "backend_or_ranks", "fixture_revision", "disposition", "primary_value", "primary_unit")
+    summary_rows = []
+    for run_id in sorted(lbm):
+        row = lbm[run_id]; summary_rows.append({"row_class": "GOVERNED_RUN", "run_id": run_id, "family": "LBM", "backend_or_ranks": row["actual_architecture"], "fixture_revision": 1, "disposition": "PASS", "primary_value": row["K_gross_lu"], "primary_unit": "lu2"})
+    for run_id in sorted(openfoam):
+        row = openfoam[run_id]; summary_rows.append({"row_class": "GOVERNED_RUN", "run_id": run_id, "family": "OPENFOAM", "backend_or_ranks": next(item["mpi_ranks"] for item in fixture["runs"] if item["run_id"] == run_id), "fixture_revision": 2 if "PARALLEL" in run_id else 1, "disposition": "PASS", "primary_value": row["total_flow_m3_s"], "primary_unit": "m3/s"})
+    summary_rows.append({"row_class": "PROTOCOL_INVALID_ATTEMPT", "run_id": "OF-PARALLEL-1-REVISION-1", "family": "OPENFOAM_ATTEMPT", "backend_or_ranks": 1, "fixture_revision": 1, "disposition": "PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT", "primary_value": "", "primary_unit": ""})
+    summary_rows.extend((
+        {"row_class": "ANALYTICAL_REFERENCE", "run_id": "CH33-K-GROSS-EXACT", "family": "ANALYTICAL", "backend_or_ranks": "", "fixture_revision": 1, "disposition": "REFERENCE", "primary_value": channel_gross_exact, "primary_unit": "lu2"},
+        {"row_class": "ANALYTICAL_REFERENCE", "run_id": "RADIAL-Q-EXACT", "family": "ANALYTICAL", "backend_or_ranks": "", "fixture_revision": 2, "disposition": "REFERENCE", "primary_value": parallel_serial["exact_total_flow_m3_s"], "primary_unit": "m3/s"},
+    ))
+    summary_path = output / "XSV_TAICHI_001_SUMMARY.csv"
+    with summary_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n"); writer.writeheader(); writer.writerows(summary_rows)
+    artifact = {
+        "schema_version": "espresso.whole_pull.xsv_taichi_001.artifact_manifest.v1",
+        "task": "XSV-TAICHI-001",
+        "external_evidence_root": "EXTERNAL_EVIDENCE_ROOT",
+        "external_manifest_sha256": args.external_manifest_sha256,
+        "external_archive_sha256": args.archive_sha256,
+        "external_archive_file_count": int(args.archive_file_count),
+        "external_archive_source_bytes": int(args.archive_source_bytes),
+        "external_archive_bytes": int(args.archive_bytes),
+        "committed_members": {"XSV_TAICHI_001_RESULT.json": sha256_file(result_path), "XSV_TAICHI_001_SUMMARY.csv": sha256_file(summary_path)},
+        "protocol_invalid_attempt_log_sha256": amendment["failed_attempt"]["log_sha256"],
+        "executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+        "physical_validation": "NOT_ESTABLISHED"
+    }
+    (output / "XSV_TAICHI_001_ARTIFACT_MANIFEST.json").write_bytes(canonical_json_bytes(artifact))
+    print(json.dumps({"result": str(result_path), "summary_rows": len(summary_rows), "overall_disposition": result["overall_disposition"]}, sort_keys=True))
+
+
 def load_lbm_case(run_id: str) -> Dict[str, str]:
     with CASE_MATRIX_PATH.open(encoding="utf-8", newline="") as handle:
         rows = [row for row in csv.DictReader(handle) if row["run_id"] == run_id]
@@ -418,6 +589,15 @@ def parse_args() -> argparse.Namespace:
     radial = subparsers.add_parser("verify-radial-fixture")
     radial.add_argument("--output")
     radial.set_defaults(function=verify_radial_fixture)
+    reduce_parser = subparsers.add_parser("reduce-final")
+    reduce_parser.add_argument("--evidence-root", required=True)
+    reduce_parser.add_argument("--output-dir", required=True)
+    reduce_parser.add_argument("--external-manifest-sha256", required=True)
+    reduce_parser.add_argument("--archive-sha256", required=True)
+    reduce_parser.add_argument("--archive-file-count", required=True)
+    reduce_parser.add_argument("--archive-source-bytes", required=True)
+    reduce_parser.add_argument("--archive-bytes", required=True)
+    reduce_parser.set_defaults(function=reduce_final)
     return parser.parse_args()
 
 

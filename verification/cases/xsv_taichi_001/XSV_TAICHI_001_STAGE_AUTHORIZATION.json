@@ -38,6 +38,22 @@
     "merge_authority": "NOT_GRANTED",
     "physical_validation": "NOT_ESTABLISHED"
   },
+  "g5_g6_completion": {
+    "amendment_exact_head": "2e7816a467d51e241392c1a036d323365c2c5fe5",
+    "amendment_exact_tree": "2eff8bf8470bc5a25fe4120bf97719c69131d072",
+    "source_and_boundary": "PASS",
+    "inexpensive_checks": "PASS",
+    "mesh_preflight": "PASS",
+    "mesh_zone_area_max_relative_error": 7.04165367796253e-11,
+    "openfoam_process_attempts": 9,
+    "successful_openfoam_traces": 8,
+    "protocol_invalid_pre_solve_attempts": 1,
+    "G5": "PASS",
+    "G6": "PASS_PENDING_EXACT_HEAD_CI",
+    "overall_disposition": "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED",
+    "merge_authority": "NOT_GRANTED",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
   "g1_entrypoint_runtime_boundary_continuation": {
     "protocol": "HUMAN_OWNER_STAGE_CONTINUATION_V1",
     "assertion": "I_PERSONALLY_DIRECT_THIS_CONTINUATION",

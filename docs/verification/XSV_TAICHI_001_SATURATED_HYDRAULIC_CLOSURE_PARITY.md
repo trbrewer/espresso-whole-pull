@@ -3,11 +3,11 @@
 ## 1. Identity and status
 
 - Task: `XSV-TAICHI-001`
-- Authorization: `XSV-TAICHI-001-CROSS-SOLVER-EXECUTION-2026-08-04`
-- Profile: `EWP_XSV_TAICHI_001_CROSS_SOLVER_EXECUTION_STAGE_V1`
+- Authorization: `XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04`
+- Profile: `EWP_XSV_TAICHI_001_G5_RADIAL_MESH_ALIGNMENT_CORRECTION_STAGE_V1`
 - Change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
 - Evidence class: `SIMULATED_SYNTHETIC_REFERENCE`
-- Current status: `G5_PROTOCOL_AMENDMENT_001_PENDING_EXACT_HEAD_CI`
+- Current status: `XSV_TAICHI_001_EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW`
 - Issue: [#58](https://github.com/trbrewer/espresso-whole-pull/issues/58)
 - Branch: `verification/xsv-taichi-001-saturated-hydraulic-closure-parity`
 - Pull request: [#59](https://github.com/trbrewer/espresso-whole-pull/pull/59),
@@ -216,15 +216,39 @@ most one identical infrastructure retry.
 6. G2: PASS with 19/19 governed LBM cases.
 7. G3: `GROSS_AREA_DARCY_ADAPTER_CONFIRMED`.
 8. G4: PASS with four uniform OpenFOAM traces.
-9. G5: `OF-SERIES-1` PASS; original radial revision-1 attempt retained as
-   `PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT`; amendment 001
-   pending exact-head qualification before any further execution.
+9. G5: PASS. `OF-SERIES-1`, `OF-SERIES-16`, corrected revision-2
+   `OF-PARALLEL-1`, and corrected revision-2 `OF-PARALLEL-16` pass all
+   analytical, flux-balance and serial/MPI gates. The original radial
+   revision-1 attempt remains retained as
+   `PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT`.
+10. G6: PASS. The complete external archive and deterministic reduced package
+    are hash-bound; repository qualification is complete pending exact-head CI.
 
 ## 14. Numerical results
 
-Accepted predecessor evidence is retained externally. Numerical results and
-the complete reduced package will be populated after amendment qualification
-and bounded G5/G6 completion.
+All 19 LBM cases and eight final OpenFOAM case identities pass. Maximum
+NumPy/Taichi permeability disagreement is `2.712603934824874e-6`; maximum
+Taichi CPU/CUDA disagreement is `2.582235654693448e-12`; maximum governed
+mid-force fluid-cell velocity relative L2 difference is
+`2.490029824514269e-4`. Maximum channel permeability error is
+`5.188549174506077e-4`, the returned-k identity error is
+`3.547176316439907e-16`, and the gross-area adapter is more than 125 times
+closer than the alternate.
+
+The M0A origin fit gives `K_gross=1.7919979172502785 lu2` and
+`K_EWP=1.6127981255252507e-9 m2`. Uniform OpenFOAM errors are at numerical
+roundoff and the porosity-invariance difference is zero at recorded precision.
+Series total-flow error is `0.002878157997348123`; its maximum serial/MPI
+diagnostic difference is `1.389913098940108e-11`. Corrected radial total-flow
+errors are at most `5.148998262299268e-11`, zone-share errors are below
+`9.619849887436926e-11`, and serial/MPI differences are below
+`1.2016994613028095e-12`. Flux imbalance is below `1e-12` for the composition
+fixtures. The complete exact values are governed by
+`verification/cases/xsv_taichi_001/XSV_TAICHI_001_RESULT.json`.
+
+Overall disposition:
+`XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED`. This qualifies only the exact
+synthetic saturated-Darcy fixtures and declared closure contract.
 
 ## 15. Typed failures, if any
 
@@ -241,9 +265,14 @@ requires fresh authority.
 
 ## 17. Scientific interpretation
 
-Pending execution. “Cross-solver agreement” may be used only for the frozen
-synthetic saturated-Darcy fixtures and declared closure contract. It must not
-be abbreviated to a validation claim.
+The Taichi/OpenFOAM saturated closure interface, gross-area Darcy adapter,
+uniform consumption, axial-series composition, and mesh-conforming near-equal-
+area radial composition are qualified for the exact synthetic fixtures only.
+The original exact equal-area radial fixture was protocol-invalid for the
+frozen mesh; face 362 was selected prospectively without flow-result tuning.
+Real-coffee permeability and morphology are not established, fines and full-
+basket transfer were not tested, the independent-data gate is unchanged, and
+`PHYSICAL_VALIDATION` remains `NOT_ESTABLISHED`.
 
 ## 18. Forward decision ladder
 

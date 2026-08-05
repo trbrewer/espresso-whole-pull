@@ -9,11 +9,11 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 285/285 PASS
+- Public source verification: 288/288 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active cross-solver verification task: `XSV-TAICHI-001`
+- Active cross-solver verification task: `NONE`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
@@ -30,10 +30,10 @@
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).
 
-XSV-TAICHI-001 is a temporary no-physics computational-verification task. It
-does not activate a validation, data-planning, solver-development or
-mechanism-selection task and does not satisfy the additional-independent-data
-gate. Its live protocol is
+XSV-TAICHI-001 is `EXECUTION_COMPLETE` as a no-physics computational-
+verification task. It activates no validation, data-planning, solver-
+development or mechanism-selection task and does not satisfy the additional-
+independent-data gate. Its result and controlling authority are
 [XSV-TAICHI-001 saturated hydraulic closure parity](verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md).
 
 VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2

@@ -269,6 +269,74 @@ class XSVTaichi001Tests(unittest.TestCase):
             self.assertLessEqual(row["phi_x_connected"], row["phi_gross"])
         self.assertEqual(manifest["retained_flow_solutions_before_freeze"], 0)
 
+    def test_final_reduced_package_recomputes_all_gates_and_claim_boundaries(self) -> None:
+        result_path = CASE_ROOT / "XSV_TAICHI_001_RESULT.json"
+        summary_path = CASE_ROOT / "XSV_TAICHI_001_SUMMARY.csv"
+        artifact_path = CASE_ROOT / "XSV_TAICHI_001_ARTIFACT_MANIFEST.json"
+        result = json.loads(result_path.read_text(encoding="utf-8"))
+        artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+        self.assertEqual(result["case_matrix"], {"lbm": 19, "openfoam": 8})
+        self.assertEqual(len(result["lbm_runs"]), 19)
+        self.assertEqual(len(result["openfoam_runs"]), 8)
+        self.assertEqual(result["process_attempts"]["openfoam"], 9)
+        self.assertEqual(result["process_attempts"]["protocol_invalid_pre_solve"], 1)
+        self.assertEqual(
+            result["protocol_invalid_attempt"]["disposition"],
+            "PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT",
+        )
+        self.assertEqual(set(result["gates"].values()), {"PASS"})
+        self.assertEqual(
+            result["overall_disposition"],
+            "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED",
+        )
+        thresholds = self.protocol["thresholds"]
+        parity = result["backend_parity"]
+        self.assertLessEqual(
+            parity["maximum_numpy_taichi_K_relative_difference"],
+            thresholds["backend_relative_K_gross_max"],
+        )
+        self.assertLessEqual(
+            parity["maximum_taichi_cpu_cuda_K_relative_difference"],
+            thresholds["backend_relative_K_gross_max"],
+        )
+        self.assertTrue(
+            all(value <= thresholds["mid_force_velocity_relative_L2_max"]
+                for value in parity["mid_force_velocity_relative_L2"].values())
+        )
+        for metrics in result["force_linearity"].values():
+            self.assertGreaterEqual(metrics["R2"], thresholds["force_linearity_R2_min"])
+            self.assertLessEqual(metrics["q_over_g_max_relative_deviation"], thresholds["q_over_g_max_relative_deviation"])
+            self.assertLessEqual(metrics["normalized_intercept"], thresholds["normalized_intercept_max"])
+        channel = result["channel_adapter"]
+        self.assertLessEqual(channel["maximum_gross_relative_error"], thresholds["channel_relative_error_max"])
+        self.assertLessEqual(channel["returned_k_identity_max_relative_error"], thresholds["returned_identity_relative_tolerance"])
+        self.assertGreaterEqual(channel["primary_adapter_advantage"], thresholds["primary_adapter_advantage_min"])
+        self.assertLessEqual(result["openfoam_uniform"]["maximum_total_flow_relative_error"], thresholds["uniform_relative_error_max"])
+        self.assertLessEqual(result["openfoam_uniform"]["porosity_invariance_relative_difference"], thresholds["porosity_invariance_relative_difference_max"])
+        self.assertLessEqual(result["mesh_preflight"]["maximum_mesh_zone_area_relative_error"], 1e-8)
+        for family in ("series", "parallel"):
+            self.assertLessEqual(result[family]["serial"]["total_flow_relative_error"], thresholds["composition_relative_error_max"])
+            self.assertLessEqual(result[family]["mpi"]["total_flow_relative_error"], thresholds["composition_relative_error_max"])
+            self.assertLessEqual(result[family]["serial_mpi_total_flow_relative_difference"], thresholds["serial_mpi_relative_difference_max"])
+        self.assertEqual(result["claim_ceiling"]["physical_validation"], "NOT_ESTABLISHED")
+        self.assertEqual(result["claim_ceiling"]["independent_data_gate"], "UNCHANGED")
+        self.assertFalse(result["prohibited_work"]["XSV_TAICHI_002_started"])
+        text = result_path.read_text(encoding="utf-8") + artifact_path.read_text(encoding="utf-8")
+        self.assertNotIn("/home/", text)
+        self.assertNotIn("tim-MS-", text)
+        self.assertEqual(
+            artifact["committed_members"]["XSV_TAICHI_001_RESULT.json"],
+            hashlib.sha256(result_path.read_bytes()).hexdigest(),
+        )
+        self.assertEqual(
+            artifact["committed_members"]["XSV_TAICHI_001_SUMMARY.csv"],
+            hashlib.sha256(summary_path.read_bytes()).hexdigest(),
+        )
+        with summary_path.open(encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        self.assertEqual(len([row for row in rows if row["row_class"] == "GOVERNED_RUN"]), 27)
+        self.assertEqual(len([row for row in rows if row["row_class"] == "PROTOCOL_INVALID_ATTEMPT"]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

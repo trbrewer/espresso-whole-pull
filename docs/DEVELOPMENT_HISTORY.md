@@ -1,5 +1,12 @@
 # Development History
 
+- XSV-TAICHI-001 execution completion: 19/19 governed LBM cases and 8/8 final
+  OpenFOAM case identities passed the frozen synthetic closure-interface
+  gates. One original radial pre-solve attempt is retained as protocol-invalid;
+  authorized amendment 001 selected mesh face 362 without result tuning.
+  Physical validation remains not established and the independent-data gate
+  is unchanged.
+
 - XSV-TAICHI-001 G0 protocol freeze (prospective): human-authorized,
   task-specific `NO_GOVERNING_PHYSICS_CHANGE` cross-solver verification. It
   freezes three synthetic geometries, 19 LBM and eight unchanged-source

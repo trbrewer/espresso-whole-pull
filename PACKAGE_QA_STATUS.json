@@ -30,12 +30,12 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 459,
+    "python_test_count": 460,
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 285,
-    "source_manifest_aggregate_sha256": "2fb4b58c91de2107dba324941ed8919dfb1694bc67c575efa0d17a2017a0ab53",
+    "source_manifest_file_count": 288,
+    "source_manifest_aggregate_sha256": "51cc5475039dc6fad6d80ec000fc4262244c4f7456f4e9e28ff62206e9d28549",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",

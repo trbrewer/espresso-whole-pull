@@ -45,7 +45,8 @@ and source/holdout-fit counts remained zero.
 
 ## Current repository checks
 
-XSV-TAICHI-001 is at prospective protocol freeze. It declares
+XSV-TAICHI-001 execution and deterministic reduction are complete pending
+exact-head review. The exact synthetic closure-parity package declares
 `NO_GOVERNING_PHYSICS_CHANGE` and `SIMULATED_SYNTHETIC_REFERENCE`; no retained
 NumPy, Taichi, CUDA or OpenFOAM result is admitted before its protocol-first
 exact-head checks pass. Exact mutable qualification totals remain governed by
