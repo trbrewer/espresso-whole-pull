@@ -9,6 +9,10 @@ This tree is the historical v0.1.4 package view. Current navigation:
 - [Controlling strategy](strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md)
 - [Concise roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md)
 - [XSV-TAICHI-001 closure-parity authority](verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md)
+- [XSV-TAICHI-002 synthetic morphology screen](verification/XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_AND_REQUIRED_PERMEABILITY_COLLAPSE_SCREEN.md)
+- [XSV-TAICHI-002 exact-head review correction](verification/XSV_TAICHI_002_EXACT_HEAD_REVIEW_CORRECTION.md)
+  - Includes G9 reducer-v4 frozen-identity and deterministic-package closure;
+    machine records live under `verification/cases/xsv_taichi_002/`.
 - [Strategy v1.6 historical snapshot](strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md)
 - [Post-WP03 validation plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md)
 - [VAL-CORPUS-001 protocol](validation/VAL_CORPUS_001_PROTOCOL.md)
@@ -22,6 +26,11 @@ Machine-readable WP03-002 exact-head evidence is in
 `validation/wp03/WP03_002_GATE_EVIDENCE.json`,
 `validation/wp03/WP03_002_PROTOCOL_COMPLIANCE.json`, and
 `validation/wp03/WP03_002_VERIFICATION.json`.
+
+XSV-TAICHI-002 machine records, the immutable historical execution runtime,
+versioned review reducer, corrected result, review record, artifact manifest,
+plot-source table, and ten SVG files are under
+`verification/cases/xsv_taichi_002/`.
 
 VAL-CORPUS-001 machine-readable records, reduced results, and figures are
 under `validation/cases/val_corpus_001/`. The preserved original records sit

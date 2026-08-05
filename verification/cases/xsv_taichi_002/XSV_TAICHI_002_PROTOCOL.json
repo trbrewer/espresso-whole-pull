@@ -1,0 +1,119 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_taichi_002.protocol.v1",
+  "task": "XSV-TAICHI-002",
+  "authorization_id": "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05",
+  "profile": "EWP_XSV_TAICHI_002_SYNTHETIC_MORPHOLOGY_COLLAPSE_SCREEN_STAGE_V1",
+  "issue": 60,
+  "pull_request": 61,
+  "branch": "verification/xsv-taichi-002-synthetic-morphology-collapse-screen",
+  "starting_identity": {"commit": "40588d62ee03a31057f75adab1df8a9c609a10d6", "tree": "2c7e264a8f53b96c79dd58c65722d7677a29954e"},
+  "classification": {
+    "work_class": "SYNTHETIC_MORPHOLOGY_RESPONSE_AND_MECHANISM_PLAUSIBILITY_SCREEN",
+    "program_class": "CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION",
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "evidence_class": "SIMULATED_SYNTHETIC_REFERENCE",
+    "existing_data_role": "EXISTING_GOVERNED_DISCREPANCY_TARGET_NOT_INDEPENDENT_VALIDATION"
+  },
+  "scientific_question": "Can controlled synthetic changes in pore morphology produce a reduction in gross-area saturated permeability, together with changes in flow localization, comparable to the apparent hydraulic-conductance or effective-permeability collapse required by the governed adverse multipressure behavior already observed?",
+  "puckworks": {
+    "repository": "trbrewer/puckworks",
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "access": "READ_ONLY_DETACHED",
+    "source_sha256": {
+      "lb_reference.py": "9a60371d7777d3d91fe7df2ea529db498268f12b08ab6c461ec511190a0a989f",
+      "lb_taichi.py": "c0c52eaae0d6f5753eac3b41501db6645251efe56812c152b83ad2a521d9663f",
+      "pack_generator.py": "864416314c889793684fef0a143cab48f99056b72f715adf1a522298c7d9512b"
+    }
+  },
+  "quantity_contract": {
+    "mask": {"solid": 1, "fluid": 0},
+    "phi_gross": "N_fluid/N_total",
+    "q_box_lu": "sum_fluid(u_x_with_half_force_correction)/N_total",
+    "u_void_lu": "q_box_lu/phi_gross",
+    "nu_lu": "(tau_plus-0.5)/3",
+    "K_gross_lu": "nu_lu*q_box_lu/g_lu",
+    "K_void_lu": "nu_lu*u_void_lu/g_lu",
+    "k_puckworks_returned": "K_void_lu",
+    "adapter_identity": "K_gross_lu=phi_gross*k_puckworks_returned",
+    "connected_porosity_role": "DIAGNOSTIC_ONLY"
+  },
+  "target": {
+    "status": "G1_NOT_DERIVED",
+    "source_family": "VAL-CORPUS-001_WASZKIEWICZ_5_9_11_BAR_GOVERNED_SOURCE",
+    "source_selection": "EXACT_PREEXISTING_GOVERNED_TERMINAL_WINDOW_OR_ROW_ONLY",
+    "primary_ratio": "T_11_5=(Q_11/delta_p_11)/(Q_5/delta_p_5)",
+    "secondary_ratios": ["T_9_5=(Q_9/delta_p_9)/(Q_5/delta_p_5)", "T_11_9=(Q_11/delta_p_11)/(Q_9/delta_p_9)"],
+    "general_corrected_ratio": "[(Q_h/delta_p_h)/(Q_l/delta_p_l)]*(mu_h/mu_l)*(L_h/L_l)*(A_l/A_h)",
+    "correction_rule": "USE_ONLY_IF_EVERY_TERM_IS_GOVERNED_AND_SOURCE_LINKED",
+    "default_type_if_equal_geometry_and_viscosity_unproved": "APPARENT_HYDRAULIC_CONDUCTANCE_RATIO_TARGET",
+    "attainment_operator": "K_case/K_reference<=T_11_5",
+    "nominal_screen": {"label": "NOMINAL_PRESSURE_ORDERING_LOWER_BOUND_SCREEN", "ratio_upper_bound": 0.4545454545454545, "collapse_lower_bound": 0.5454545454545454}
+  },
+  "geometry": {
+    "generator": {"function": "make_pack", "L": 40, "voxel_um": 30.0, "gs": 1.3, "phis_target": 0.55, "hetero_len": 8.0, "batch": 64, "r_um": null, "w_floor": 0.25},
+    "seeds": [42, 1729, 20260805],
+    "hetero_amp": [0.0, 1.0, 2.0],
+    "baseline_payload_sha256": "10d9a010cbac4b8579154456c4271ecd2808af5116beab15a2ffd4e2c99cd039",
+    "baseline_phi_gross": 0.412359375,
+    "baseline_phi_connected_x": 0.41234375,
+    "coating": {
+      "version": "XSV_TAICHI_002_COATING_V1",
+      "periodicity": "XYZ",
+      "primary_rank": "INCREASING_PERIODIC_EUCLIDEAN_DISTANCE_TO_BASELINE_SOLID",
+      "tie_break": "INCREASING_SHA256_OF_XSV_TAICHI_002_COATING_V1|x|y|z",
+      "removal_count": "floor(f*N_void_0+0.5)",
+      "fractions": [0.0, 0.05, 0.15, 0.30],
+      "immutable_nested_ranking": true,
+      "connectivity_repair": false
+    },
+    "connectivity": {"neighbors": 6, "boundary": "PERIODIC_XYZ", "criterion": "NONZERO_WINDING_PATH", "directions": ["X", "Y", "Z"]},
+    "axis_permutations": {"X": [0,1,2], "Y": [1,0,2], "Z": [2,1,0]},
+    "axis_inverse_permutations": {"X": [0,1,2], "Y": [1,0,2], "Z": [2,1,0]},
+    "serialization": "C_ORDER_UINT8_VOXEL_PAYLOAD"
+  },
+  "lbm": {
+    "backend": "taichi_cuda",
+    "precision": "float64",
+    "tau_plus": 1.2,
+    "nu_lu": 0.2333333333333333,
+    "check_interval_steps": 200,
+    "relative_convergence_tolerance": 1e-6,
+    "minimum_steps": 1500,
+    "maximum_steps": 50000,
+    "forces": {"LOW": 5e-7, "MID": 1e-6, "HIGH": 2e-6},
+    "fresh_process_per_execution": true,
+    "cpu_substitution": false,
+    "numpy_duplicate_matrix": false
+  },
+  "case_matrix": {"path": "verification/cases/xsv_taichi_002/XSV_TAICHI_002_CASE_MATRIX.csv", "planned_scored_cuda_identities": 22, "absolute_process_attempt_ceiling": 24, "maximum_identical_infrastructure_retries": 2, "order_is_csv_order": true},
+  "baseline_gate": {"must_run_first": "H-A0-S42-X-MID", "reference_K_gross_lu": 1.7919979172502785, "reference_K_EWP_SI_m2": 1.6127981255252507e-9, "maximum_relative_K_difference": 0.0025},
+  "metrics": {
+    "per_run": ["steps","convergence_measure","converged","g_lu","q_box_lu","u_void_lu","phi_gross","phi_connected_direction","K_gross_lu","K_void_lu","k_puckworks_returned","K_gross_identity_residual","u_max_lu","Mach","Re_L","mask_sha256","source_sha256","environment_identity","attempt_id","primitive_artifact_sha256"],
+    "localization": {"semantics": "LOCKED_SIGMA_MICRO", "ncol": 4, "fields": ["sigma_micro","coefficient_of_variation","fastest_quartile_flow_share"], "nonpositive_mean_policy": "NULL_WITH_TYPED_REASON"},
+    "normalized_permeability": "K_case_x/K_H-A0-S42-X-MID"
+  },
+  "thresholds": {
+    "Mach_max": 0.05,
+    "Re_L_max": 0.10,
+    "returned_identity_relative_tolerance": 1e-12,
+    "force_fit_R2_min": 0.9999,
+    "q_over_g_max_relative_deviation": 0.01,
+    "normalized_intercept_max": 0.005,
+    "broadly_similar_porosity_absolute_delta_max": 0.015,
+    "near_directional_connectivity_loss_retention_max": 0.25
+  },
+  "linearity_anchors": ["H-A2-S42-X", "C30-X"],
+  "result_taxonomy": {
+    "constriction": ["REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_CONSTRICTION_ENVELOPE","REQUIRED_COLLAPSE_ATTAINED_BY_MODERATE_SYNTHETIC_CONSTRICTION","REQUIRED_COLLAPSE_ATTAINED_ONLY_BY_SEVERE_SYNTHETIC_CONSTRICTION","REQUIRED_COLLAPSE_ATTAINED_ONLY_NEAR_DIRECTIONAL_CONNECTIVITY_LOSS","REQUIRED_COLLAPSE_CROSSED_ONLY_AFTER_DIRECTIONAL_CONNECTIVITY_LOSS"],
+    "heterogeneity": ["REQUIRED_COLLAPSE_NOT_ATTAINED_WITHIN_SCREENED_HETEROGENEITY_ENVELOPE","REQUIRED_COLLAPSE_ATTAINED_BY_SYNTHETIC_HETEROGENEITY_WITHOUT_LARGE_GROSS_POROSITY_CHANGE","REQUIRED_COLLAPSE_ATTAINED_WITH_HETEROGENEITY_AND_MATERIAL_GROSS_POROSITY_DRIFT","REQUIRED_COLLAPSE_ATTAINED_IN_ONE_OF_THREE_PRESPECIFIED_REALIZATIONS","REQUIRED_COLLAPSE_ROBUST_ACROSS_THREE_PRESPECIFIED_REALIZATIONS"],
+    "localization": ["FLOW_LOCALIZATION_CHANGED_WITHOUT_REQUIRED_BULK_PERMEABILITY_COLLAPSE","FLOW_LOCALIZATION_AND_REQUIRED_PERMEABILITY_COLLAPSE_CO_OCCURRED","FLOW_LOCALIZATION_RESPONSE_NOT_QUALIFIED_DUE_TO_ZERO_OR_NONPOSITIVE_MEAN_FLOW"],
+    "anisotropy": ["DIRECTIONAL_PERMEABILITY_RESPONSE_REPORTED_DESCRIPTIVELY","DIRECTIONAL_CONNECTIVITY_LOSS_OBSERVED"],
+    "strong_anisotropy_threshold": null
+  },
+  "artifact_policy": {"external_root": "EXTERNAL_EVIDENCE_ROOT", "acyclic_order": ["protocol","target_freeze","geometry_freeze","execution","raw_retention","primitive_reduction","result_reduction","self_excluding_manifest","external_archive","external_archive_hash","committed_artifact_manifest","source_manifest"], "manifest_repetitions": 2, "reduction_repetitions": 2},
+  "stage_gates": {"G1": "G0_PASS", "G2": "G1_PASS", "G3": "G2_PASS", "G4": "G3_COMPLETE_OR_TYPED_EARLY_FAILURE_CLOSEOUT", "G5": "G4_COMPLETE", "G6": "G5_COMPLETE"},
+  "claim_ceiling": {"physical_validation": "NOT_ESTABLISHED", "independent_data_gate": "UNCHANGED", "real_coffee_morphology": "NOT_REPRESENTED", "real_coffee_permeability": "NOT_ESTABLISHED", "mechanism_identification": "NOT_AUTHORIZED", "openfoam_execution": "NONE_AUTHORIZED", "full_basket": "NOT_AUTHORIZED", "explicit_fines": "NOT_AUTHORIZED", "next_stage": "NOT_AUTHORIZED"},
+  "prohibited": ["OPENFOAM_EXECUTION","SOLVER_SOURCE_CHANGE","PUCKWORKS_CHANGE","DEPENDENCY_ADVANCE","FULL_BASKET","EXPLICIT_FINES","CALIBRATION_OR_REFIT","PROTECTED_OR_HOLDOUT_SCORING","POST_RESULT_MATRIX_EXPANSION","PHYSICAL_VALIDATION_PROMOTION","XSV_TAICHI_003","MERGE"],
+  "g0_state": {"target_numerically_derived": false, "geometry_generated": false, "retained_masks": 0, "taichi_executions": 0, "cuda_executions": 0, "openfoam_executions": 0}
+}

@@ -436,3 +436,64 @@ summary with the exact same-row maximum and made the machine record's
 scientific, package, and overall-compatibility dispositions explicit. No
 scientific result changed; the additional-independent-data gate and the
 physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-002 protocol bootstrap authorized
+
+Human-owner authorization activated the prospective synthetic-morphology and
+required-collapse screen from the exact merged XSV-TAICHI-001 main identity.
+The G0 protocol freezes the 22-identity CUDA matrix, 24-attempt ceiling,
+synthetic-only claim boundary, and staged no-execution barriers. Issue #60 is
+the governed task record. No target evaluation, morphology generation, or
+numerical execution occurred during this bootstrap; the independent-data gate
+and physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-002 bounded synthetic screen completed
+
+All 22 prospectively frozen Taichi CUDA float64 identities completed without
+retry; every numerical gate and both extreme-anchor linearity gates passed.
+Neither the deterministic X-direction coating envelope nor the paired-seed
+heterogeneity envelope attained the governed apparent-conductance target.
+Directional responses are retained descriptively, including substantial
+axis ratios, without a mechanism or physical-validation claim. No OpenFOAM,
+full-basket, explicit-fines, calibration, or protected-data work occurred.
+The independent-data gate remains unchanged and the draft PR remains unmerged.
+
+## 2026-08-05 — XSV-TAICHI-002 exact-head review correction
+
+Without rerunning CUDA or changing raw evidence, target, masks, geometry,
+matrix, or thresholds, a versioned reducer replaced asserted G0-G6 package
+gates with primitive- and hash-derived checks. It independently binds all 22
+records to the frozen matrix, evaluates heterogeneity by amplitude rather than
+pooled cases, narrows localization to descriptive reporting, distinguishes
+both plot references, and reports direction-normalized C30 anchors. The
+principal X-direction non-attainment result and independent-data gate remain
+unchanged; physical validation is not established.
+
+## 2026-08-05 — XSV-TAICHI-002 fail-closed evidence binding
+
+Reducer v3 independently bound the final G0 authority and exact-head checks,
+rederived all target ratios from the three retained input rows, and verified
+both retained copies of all twelve masks, their counts, porosities, winding
+connectivity, and coating nestedness. The 22 successful numerical records
+remain qualified, while process-attempt count, retry-ceiling compliance, and
+chronology are explicitly not independently reconstructed. No solver,
+geometry, target, protocol, primitive evidence, or raw archive changed; the
+independent-data gate and physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-002 final package-integrity closure
+
+Reducer v4 added exact frozen-byte, ordered run-set, occurrence-aware claim,
+artifact-completeness, and deterministic committed-output verification around
+the unchanged v2 scientific reduction. No target, geometry, protocol,
+historical runtime, primitive evidence, raw archive, or scientific result
+changed. The process-attempt provenance limitation, independent-data gate,
+and physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-002 final evidence adjudication
+
+The current package now states that one generated deterministic core matched
+the committed core byte for byte; the historical G9 A/B fields do not prove
+two separately executed reductions. Direct binding of all 22 retained runs
+remains PASS, while real temporary-package mutation coverage is explicitly
+partial for individual run-binding classes. These typed provenance and QA-
+depth limitations change no numerical or scientific result.

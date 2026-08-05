@@ -166,7 +166,7 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         ("latest_authorization_id", "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04"),
         ("current_scientific_gate", "ADDITIONAL_INDEPENDENT_DATA_REQUIRED"),
         ("human_owner_independent_data_route_decision", "STILL_REQUIRED"),
-        ("xsv_taichi_002", "NOT_STARTED_NOT_AUTHORIZED"),
+        ("xsv_taichi_002", "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW"),
         ("physical_validation", "NOT_ESTABLISHED"),
     ):
         if xsv.get(key) != expected:
@@ -180,6 +180,43 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
     if xsv.get("corrected_result_sha256") != hashlib.sha256(result_path.read_bytes()).hexdigest():
         return False
     if "overall_scientific_disposition" in xsv:
+        return False
+    xsv2 = qa.get("xsv_taichi_002", {})
+    for key, expected in (
+        ("status", "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW"),
+        ("authorization_id", "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05"),
+        ("issue", 60),
+        ("planned_scored_cuda_identities", 22),
+        ("absolute_process_attempt_ceiling", 24),
+        ("current_scientific_gate", "ADDITIONAL_INDEPENDENT_DATA_REQUIRED"),
+        ("physical_validation", "NOT_ESTABLISHED"),
+        ("merge_authority", "NOT_GRANTED"),
+    ):
+        if xsv2.get(key) != expected:
+            return False
+    if xsv2.get("pull_request") != "BOOTSTRAP_PENDING" and not isinstance(xsv2.get("pull_request"), int):
+        return False
+    if xsv2.get("retained_numerical_execution") != {
+        "taichi_cuda_runs": 22, "openfoam_runs": 0, "geometry_generations": 24
+    }:
+        return False
+    if xsv2.get("executed_scored_cuda_identities") != 22:
+        return False
+    if xsv2.get("retained_successful_run_records") != 22:
+        return False
+    if xsv2.get("process_attempts") != "NOT_INDEPENDENTLY_RECONSTRUCTED":
+        return False
+    if xsv2.get("infrastructure_retries") != "NO_RETAINED_RETRY_RECORD":
+        return False
+    if xsv2.get("attempt_ceiling_compliance") != "NOT_INDEPENDENTLY_RECONSTRUCTED":
+        return False
+    xsv2_result_path = ROOT / "verification/cases/xsv_taichi_002/XSV_TAICHI_002_RESULT.json"
+    if xsv2.get("result_sha256") != hashlib.sha256(xsv2_result_path.read_bytes()).hexdigest():
+        return False
+    xsv2_result = json.loads(xsv2_result_path.read_text(encoding="utf-8"))
+    if xsv2.get("scientific_disposition") != xsv2_result.get("overall_synthesis"):
+        return False
+    if xsv2.get("xsv_taichi_003") != "NOT_STARTED_NOT_AUTHORIZED":
         return False
 
     for path, markers in CURRENT_MARKERS.items():

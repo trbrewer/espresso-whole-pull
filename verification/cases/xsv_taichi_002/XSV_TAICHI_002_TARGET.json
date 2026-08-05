@@ -1,0 +1,36 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_taichi_002.target.v1",
+  "task": "XSV-TAICHI-002",
+  "authorization_id": "XSV-TAICHI-002-SYNTHETIC-MORPHOLOGY-COLLAPSE-SCREEN-2026-08-05",
+  "status": "FROZEN_BEFORE_MORPHOLOGY_GENERATION",
+  "target_type": "APPARENT_HYDRAULIC_CONDUCTANCE_RATIO_TARGET",
+  "evidence_role": "EXISTING_GOVERNED_DISCREPANCY_TARGET_NOT_INDEPENDENT_VALIDATION",
+  "governing_records": {
+    "evidence_snapshot": {"path": "validation/cases/val_corpus_001/VAL_CORPUS_001_EVIDENCE_SNAPSHOT.json", "sha256": "b038711dc1a17bd6f151735378b45a77fac852dc2550a8e9f04409f24a1f4222", "snapshot_commit": "9c52c94edb27b461b6e7a4d471d29f3cef9d053e", "snapshot_tree": "44d6539096648777f78c4db83f0985d5bd16e352"},
+    "review_correction_protocol": {"path": "validation/cases/val_corpus_001/VAL_CORPUS_001_REVIEW_CORRECTION_PROTOCOL.json", "sha256": "80b9692603d8168f63113ff43cc2c42045c2fe65eb093d577479d49248c34639"},
+    "result_bundle_v3": {"path": "validation/cases/val_corpus_001/results/VAL_CORPUS_001_RESULT_BUNDLE_V3.json", "sha256": "a8a8a4beda9c329021e28c12afaaa46cb230518eb72326fa7bfb09bbd45e8f7e"},
+    "governed_reducer": {"path": "scripts/val_corpus_001.py", "sha256": "13e4fee043f0e3152744738548f0beeeb7de819c86da07f236fcfc95503d7542"}
+  },
+  "source_files": {
+    "traces": {"path": "puckworks/data/waszkiewicz2025/traces_time_dependent.csv", "sha256": "40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9", "rights": "CC-BY-4.0_DEPOSITED_DATA", "units": "s, bar, g, g/s"},
+    "constants": {"path": "puckworks/data/waszkiewicz2025/constants.csv", "sha256": "0428390dae9c3032adb31d155dfc21b56ee34f0b407e8089fee3a31e47abf4ee", "rights": "CC-BY-4.0_DEPOSITED_DATA"}
+  },
+  "selection_rule": {"rule": "maximum time__s row within each exact reference_pressure_round__bar group", "source_window_s": [0.0, 100.0], "selected_time_s": 100.0, "pressure_field": "basket_pressure__bar", "flow_field": "mass_flow_rate__g_per_s", "downstream_pressure_bar_gauge": 0.0, "density_cancellation": "common mass-to-volume conversion cancels in every ratio", "new_window_selected": false, "interpolation": "NOT_REQUIRED_EXACT_RETAINED_ROW", "timing_offset": "NOT_APPLIED_TO_TERMINAL_SOURCE_RATIO"},
+  "inputs": [
+    {"condition": "LOW_REFERENCE", "nominal_group_bar": 5, "source_csv_line": 5001, "time_s": 100.0, "basket_pressure_bar": 4.504768, "basket_pressure_std_bar": 0.013838, "mass_flow_g_s": 2.057772, "mass_flow_std_g_s": 0.049536},
+    {"condition": "SECONDARY", "nominal_group_bar": 9, "source_csv_line": 9001, "time_s": 100.0, "basket_pressure_bar": 8.716916, "basket_pressure_std_bar": 0.021960, "mass_flow_g_s": 1.824924, "mass_flow_std_g_s": 0.038851},
+    {"condition": "ADVERSE_HIGH", "nominal_group_bar": 11, "source_csv_line": 10001, "time_s": 100.0, "basket_pressure_bar": 10.419167, "basket_pressure_std_bar": 0.019065, "mass_flow_g_s": 1.776579, "mass_flow_std_g_s": 0.042978}
+  ],
+  "formula": {"conductance": "H_c = Q_c / delta_p_c", "ratio": "T_h_l = (Q_h / delta_p_h) / (Q_l / delta_p_l)", "formula_version": "XSV_TAICHI_002_TARGET_V1", "primitive_fields": ["mass_flow_rate__g_per_s", "basket_pressure__bar"], "recomputation_tolerance": 1e-15},
+  "ratios": {
+    "T_11_5": 0.37327310642080013,
+    "T_9_5": 0.4583076405915515,
+    "T_11_9": 0.8144597064517739,
+    "orientation": "SMALLER_IS_GREATER_REQUIRED_COLLAPSE",
+    "primary_attainment_rule": "K_case_over_K_reference <= T_11_5"
+  },
+  "nominal_pressure_ordering_screen": {"label": "NOMINAL_PRESSURE_ORDERING_LOWER_BOUND_SCREEN", "ratio_upper_bound": 0.4545454545454545, "collapse_lower_bound_fraction": 0.5454545454545454, "formula": "Q_5 > Q_11 implies (Q_11/Q_5)*(5/11) < 5/11", "is_primary_target": false},
+  "interpretation": {"permeability_ratio_claim": "NOT_ESTABLISHED_AS_A_MEASURED_MATERIAL_PROPERTY_RATIO", "synthetic_comparison": "SIMPLIFIED_PLAUSIBILITY_SCREEN_ONLY", "mechanism_identification": "NOT_AUTHORIZED", "independent_validation": false, "physical_validation": "NOT_ESTABLISHED"},
+  "morphology_generated_before_freeze": false,
+  "numerical_execution_before_freeze": {"taichi_cuda": 0, "openfoam": 0}
+}

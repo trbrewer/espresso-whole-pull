@@ -9,11 +9,11 @@
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 288/288 PASS
+- Public source verification: 322/322 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active cross-solver verification task: `NONE`
+- Active cross-solver verification task: none
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
@@ -35,6 +35,37 @@ verification task. It activates no validation, data-planning, solver-
 development or mechanism-selection task and does not satisfy the additional-
 independent-data gate. Its result and controlling authority are
 [XSV-TAICHI-001 saturated hydraulic closure parity](verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md).
+
+XSV-TAICHI-002 completed its bounded, no-physics synthetic
+morphology-response screen. It uses the existing VAL-CORPUS-001 discrepancy as
+an apparent-conductance target; the frozen primary ratio is
+`T_11_5 = 0.37327310642080013`. This is a simplified plausibility-screen target,
+not an independently validated material-property ratio, and cannot establish a
+real mechanism, real-coffee
+permeability, or physical validation. The additional-independent-data gate is
+unchanged.
+
+Exact-head review correction preserved every primitive and the historical
+execution runtime while replacing asserted package gates with a versioned,
+fail-closed reducer. Localization is now explicitly descriptive because no
+prospective change threshold was frozen. The primary X-direction non-attainment
+result is unchanged; transverse C30 reductions are retained only as descriptive
+anisotropy anchors. G8 independently binds the final historical G0 Git and CI
+evidence, rederives the target rows, and verifies both retained copies of all
+twelve geometries. The package contains 22 successful retained CUDA records;
+because no independent process-attempt ledger exists, process-attempt count,
+retry-ceiling compliance, and chronology are not independently reconstructed.
+G9 wraps the unchanged v2 scientific reduction with reducer v4, which binds
+the frozen current bytes, exact ordered run set, occurrence-level claim
+contexts, and byte-identical generated and committed deterministic inventories.
+Final G10 adjudication clarifies that one generated deterministic core matched
+the committed core byte for byte; the historical G9 output-A and output-B
+fields do not establish two separately executed reductions. Direct binding of
+all 22 retained records remains PASS, while real temporary-package mutation
+coverage remains partial for individual run-binding classes. These are typed
+package-provenance and QA-depth limitations and do not alter the scientific
+non-attainment result.
+PR #61 remains draft and unmerged.
 
 VAL-CASE-001 is complete, exact-head approved, and merged. Its corrected v2
 result remains validation-support sensitivity and practical-identifiability

@@ -23,3 +23,20 @@ synthetic saturated-Darcy fixtures. It uses no independent physical data and
 does not directly validate espressoWholePullFoam, represent real coffee, or
 authorize mechanism selection. `PHYSICAL_VALIDATION` and
 `GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION` remain `NOT_ESTABLISHED`.
+
+XSV-TAICHI-002 may report only the response of its exact prespecified static
+synthetic heterogeneity and deterministic-coating families relative to an
+existing governed discrepancy target. It cannot identify compaction, fines,
+clogging, channeling, damage, or another real mechanism; establish real-coffee
+morphology, permeability, anisotropy, or transfer; or satisfy the independent-
+data gate. OpenFOAM and full-basket execution are outside its authority.
+Localization and directional responses are descriptive because no prospective
+localization-change or strong-anisotropy threshold was frozen. Transverse
+direction-normalized target crossings do not alter the primary X-direction
+family disposition or establish real-coffee anisotropy.
+
+The 22 successful retained CUDA records support the bounded numerical result,
+but the historical process-attempt count, retry-ceiling compliance, and exact
+execution chronology are not independently reconstructable because no
+immutable process-attempt ledger was retained. This provenance limitation
+does not raise or lower the scientific claim ceiling.
