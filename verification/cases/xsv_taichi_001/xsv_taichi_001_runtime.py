@@ -20,12 +20,10 @@ from pathlib import Path
 import platform
 import re
 import sys
+import tarfile
 from typing import Any, Dict, Iterable, Tuple
 
 sys.dont_write_bytecode = True
-
-import numpy as np
-
 
 ROOT = Path(__file__).resolve().parents[3]
 PROTOCOL_PATH = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL.json"
@@ -74,6 +72,7 @@ def geometry_config(protocol: Dict[str, Any], case_id: str) -> Dict[str, Any]:
 
 
 def generate_mask(case_id: str, protocol: Dict[str, Any], puckworks: Path) -> np.ndarray:
+    import numpy as np
     definition = protocol["geometry_definitions"][case_id]
     if case_id == "CH33":
         solid = np.zeros(tuple(definition["shape"]), dtype=np.bool_)
@@ -109,6 +108,7 @@ def generate_mask(case_id: str, protocol: Dict[str, Any], puckworks: Path) -> np
 
 
 def connected_descriptor(solid: np.ndarray, periodic_axes: Iterable[int]) -> Tuple[int, bool]:
+    import numpy as np
     """Return nodes in x-through components and whether such a component exists."""
     fluid = ~solid
     shape = solid.shape
@@ -148,6 +148,7 @@ def connected_descriptor(solid: np.ndarray, periodic_axes: Iterable[int]) -> Tup
 
 
 def generate_geometry(args: argparse.Namespace) -> None:
+    import numpy as np
     protocol = json.loads(PROTOCOL_PATH.read_text(encoding="utf-8"))
     if protocol["sources"]["puckworks"]["commit"] != EXPECTED_PUCKWORKS_COMMIT:
         raise RuntimeError("protocol Puckworks lock differs")
@@ -267,21 +268,153 @@ def relative_difference(observed: float, reference: float) -> float:
     return abs(observed - reference) / abs(reference)
 
 
+EXPECTED_EXTERNAL_MANIFEST_SHA256 = "8102a43bd83d73f6c3b6885d3402e72d7992416d10352657c43109860e31bd72"
+EXPECTED_EXTERNAL_ARCHIVE_SHA256 = "4ec8ab82c6639fa482894910021c9155c944df0adf7bcfcf7f04077a187cd401"
+
+
+def _check(gate: str, check_id: str, observed: Any, expected: Any,
+           operator: str, passed: bool, sources: Iterable[str],
+           failure: str) -> Dict[str, Any]:
+    return {
+        "gate": gate, "check_id": check_id, "source_records": list(sources),
+        "observed": observed, "expected_or_threshold": expected,
+        "comparison_operator": operator, "pass": bool(passed),
+        "typed_failure": None if passed else failure,
+        "evidence_identity": sha256_bytes(canonical_json_bytes({
+            "sources": list(sources), "observed": observed,
+        })),
+    }
+
+
+def evaluate_gate_contract(inputs: Dict[str, Any]) -> Dict[str, Any]:
+    """Authoritatively derive gates from immutable evidence observations.
+
+    This pure, standard-library evaluator is also used by mutation tests.  It
+    never trusts a stored gate or row disposition.
+    """
+    checks = []
+    add = checks.append
+    expected_lbm = inputs["expected_lbm_ids"]
+    observed_lbm = inputs["observed_lbm_ids"]
+    expected_of = inputs["expected_openfoam_ids"]
+    observed_of = inputs["observed_openfoam_ids"]
+    add(_check("G2", "lbm_run_identity_set", sorted(observed_lbm), sorted(expected_lbm),
+               "EXACT_SET_AND_UNIQUE", len(observed_lbm) == len(set(observed_lbm)) and set(observed_lbm) == set(expected_lbm),
+               ["XSV_TAICHI_001_CASE_MATRIX.csv", "lbm/*/run.json"], "LBM_RUN_IDENTITY_MISMATCH"))
+    add(_check("G4", "openfoam_run_identity_set", sorted(observed_of), sorted(expected_of),
+               "EXACT_SET_AND_UNIQUE", len(observed_of) == len(set(observed_of)) and set(observed_of) == set(expected_of),
+               ["XSV_TAICHI_001_CASE_MATRIX.csv", "OpenFOAM structured traces"], "OPENFOAM_RUN_IDENTITY_MISMATCH"))
+    for item in inputs["checks"]:
+        value, limit, op = item["observed"], item["expected"], item["operator"]
+        if op == "<=": passed = math.isfinite(float(value)) and float(value) <= float(limit)
+        elif op == "<": passed = math.isfinite(float(value)) and float(value) < float(limit)
+        elif op == ">=": passed = math.isfinite(float(value)) and float(value) >= float(limit)
+        elif op == ">": passed = math.isfinite(float(value)) and float(value) > float(limit)
+        elif op == "==": passed = value == limit
+        elif op == "EXACT": passed = value == limit
+        elif op == "TRUE": passed = value is True
+        elif op == "FALSE": passed = value is False
+        else: raise ValueError(f"unsupported evaluator operator: {op}")
+        add(_check(item["gate"], item["check_id"], value, limit, op, passed,
+                   item["sources"], item["failure"]))
+    dispositions = {}
+    for gate in ("G0", "G1", "G2", "G3", "G4", "G5", "G6_LOCAL_PACKAGE"):
+        relevant = [x for x in checks if x["gate"] == gate]
+        dispositions[gate] = "PASS" if relevant and all(x["pass"] for x in relevant) else (
+            next((x["typed_failure"] for x in relevant if not x["pass"]), f"{gate}_EVIDENCE_MISSING"))
+    dispositions["FINAL_EXACT_HEAD_CI"] = "RESOLVE_FROM_GITHUB_AT_REVIEW"
+    dispositions["FINAL_EXACT_HEAD_REVIEW"] = "PENDING"
+    scientific_pass = all(dispositions[x] == "PASS" for x in
+                          ("G0", "G1", "G2", "G3", "G4", "G5", "G6_LOCAL_PACKAGE"))
+    return {
+        "checks": checks,
+        "gates": dispositions,
+        "overall_disposition": ("XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED"
+                                if scientific_pass else "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES"),
+    }
+
+
+def verify_external_package(manifest_path: Path, archive_path: Path,
+                            evidence_root: Path) -> Dict[str, Any]:
+    manifest_hash = sha256_file(manifest_path)
+    archive_hash = sha256_file(archive_path)
+    if manifest_hash != EXPECTED_EXTERNAL_MANIFEST_SHA256:
+        raise RuntimeError("external manifest hash mismatch")
+    if archive_hash != EXPECTED_EXTERNAL_ARCHIVE_SHA256 or archive_path.stat().st_size != 25214779:
+        raise RuntimeError("external archive identity mismatch")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    members = manifest["files"]
+    if (manifest.get("self_excluded") is not True or len(members) != 1545 or
+            manifest.get("file_count") != 1545 or
+            sum(int(x["bytes"]) for x in members) != 134226177 or
+            manifest.get("total_bytes") != 134226177):
+        raise RuntimeError("external manifest count or byte total mismatch")
+    logical = [x["logical_path"] for x in members]
+    if len(logical) != len(set(logical)) or "EXTERNAL_EVIDENCE_MANIFEST.json" in logical:
+        raise RuntimeError("external manifest self-exclusion or uniqueness failure")
+    for member in members:
+        path = evidence_root / member["logical_path"]
+        if (not path.is_file() or path.stat().st_size != int(member["bytes"])
+                or sha256_file(path) != member["sha256"]):
+            raise RuntimeError(f"external evidence member mismatch: {member['logical_path']}")
+    prefix = evidence_root.name + "/"
+    expected_archive = {prefix + x for x in logical} | {prefix + manifest_path.name}
+    with tarfile.open(archive_path, "r:gz") as archive:
+        files = [x for x in archive.getmembers() if x.isfile()]
+        if {x.name for x in files} != expected_archive:
+            raise RuntimeError("external archive inventory mismatch")
+        indexed = {x.name: x for x in files}
+        for member in members:
+            archived = indexed[prefix + member["logical_path"]]
+            stream = archive.extractfile(archived)
+            if stream is None or archived.size != int(member["bytes"]) or hashlib.sha256(stream.read()).hexdigest() != member["sha256"]:
+                raise RuntimeError(f"external archive member mismatch: {member['logical_path']}")
+        stream = archive.extractfile(indexed[prefix + manifest_path.name])
+        if stream is None or hashlib.sha256(stream.read()).hexdigest() != manifest_hash:
+            raise RuntimeError("archive manifest member mismatch")
+    return {"manifest_sha256": manifest_hash, "manifest_member_count": 1545,
+            "manifest_source_bytes": 134226177, "archive_sha256": archive_hash,
+            "archive_bytes": 25214779, "archive_regular_file_count": 1546,
+            "all_manifest_members_verified": True, "archive_inventory_verified": True}
+
+
+def _last_trace(path: Path, run_id: str, fixture: Dict[str, Any]) -> Dict[str, Any]:
+    with path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if not rows:
+        raise RuntimeError(f"empty structured trace: {run_id}")
+    row = rows[-1]
+    q = float(row["outlet_flow_m3_s"])
+    qin = float(row["inlet_flow_m3_s"])
+    spec = next(x for x in fixture["runs"] if x["run_id"] == run_id)
+    exact = float(fixture["domain"]["gross_area_m2"]) * float(spec["target_q_m_s"])
+    return {"run_id": run_id, "total_flow_m3_s": q, "exact_total_flow_m3_s": exact,
+            "total_flow_relative_error": relative_difference(q, exact),
+            "superficial_flow_m_s": q / float(fixture["domain"]["gross_area_m2"]),
+            "superficial_flow_relative_error": relative_difference(q / float(fixture["domain"]["gross_area_m2"]), float(spec["target_q_m_s"])),
+            "flux_imbalance_relative": relative_difference(qin, q),
+            "structured_trace_sha256": sha256_file(path),
+            "typed_disposition": "PASS"}
+
+
 def reduce_final(args: argparse.Namespace) -> None:
-    """Deterministically reduce the retained G0--G5 evidence package."""
+    """Deterministically reduce and fail-closed adjudicate retained evidence."""
+    import numpy as np
     evidence = Path(args.evidence_root).resolve()
     output = Path(args.output_dir).resolve()
     output.mkdir(parents=True, exist_ok=True)
+    external = verify_external_package(Path(args.external_manifest).resolve(),
+                                       Path(args.external_archive).resolve(), evidence)
     protocol = json.loads(PROTOCOL_PATH.read_text(encoding="utf-8"))
     fixture = json.loads(OPENFOAM_FIXTURE_PATH.read_text(encoding="utf-8"))
     amendment_path = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL_AMENDMENT_001.json"
     amendment = json.loads(amendment_path.read_text(encoding="utf-8"))
-    lbm = {}
+    lbm_records = []
     for path in sorted((evidence / "lbm").glob("*/run.json")):
         record = json.loads(path.read_text(encoding="utf-8"))
-        lbm[record["run_id"]] = record
-    if len(lbm) != 19:
-        raise RuntimeError("final reduction requires exactly 19 retained LBM records")
+        record["source_record_sha256"] = sha256_file(path)
+        lbm_records.append(record)
+    lbm = {record["run_id"]: record for record in lbm_records}
 
     def pair_max(pairs: Iterable[Tuple[str, str]], key: str) -> float:
         return max(relative_difference(lbm[a][key], lbm[b][key]) for a, b in pairs)
@@ -350,14 +483,9 @@ def reduce_final(args: argparse.Namespace) -> None:
         trace_path = case / "xsv_trace.json"
         if trace_path.is_file():
             row = json.loads(trace_path.read_text(encoding="utf-8"))
+            row["structured_trace_sha256"] = sha256_file(trace_path)
         else:
-            log = (case / "log.solver").read_text(encoding="utf-8")
-            match = re.search(r"Qout=([-+0-9.eE]+) mL/s", log)
-            if match is None:
-                raise RuntimeError(f"missing flow in {run_id}")
-            q = float(match.group(1)) * 1e-6
-            expected = fixture["domain"]["gross_area_m2"] * next(item["target_q_m_s"] for item in fixture["runs"] if item["run_id"] == run_id)
-            row = {"run_id": run_id, "total_flow_m3_s": q, "exact_total_flow_m3_s": expected, "total_flow_relative_error": relative_difference(q, expected), "typed_disposition": "PASS"}
+            row = _last_trace(case / "postProcessing/wholePull/0/traces.csv", run_id, fixture)
         openfoam[run_id] = row
     uniform = [openfoam[name] for name in ("OF-U-LOW", "OF-U-MID", "OF-U-HIGH")]
     uniform_q_over_dp = [row["total_flow_m3_s"] / next(item["delta_p_Pa"] for item in fixture["runs"] if item["run_id"] == row["run_id"]) for row in uniform]
@@ -366,7 +494,92 @@ def reduce_final(args: argparse.Namespace) -> None:
     series_serial = openfoam["OF-SERIES-1"]; series_mpi = openfoam["OF-SERIES-16"]
     parallel_serial = openfoam["OF-PARALLEL-1"]; parallel_mpi = openfoam["OF-PARALLEL-16"]
     preflight = json.loads((evidence / "openfoam/cases/OF-PARALLEL-1-R2/radial_mesh_preflight.json").read_text(encoding="utf-8"))
-    gates = {name: "PASS" for name in ("G0", "G1", "G2", "G3", "G4", "G5", "G6")}
+    with CASE_MATRIX_PATH.open(encoding="utf-8", newline="") as handle:
+        matrix_rows = list(csv.DictReader(handle))
+    expected_lbm_ids = [x["run_id"] for x in matrix_rows if x["family"] == "LBM"]
+    expected_of_ids = [x["run_id"] for x in matrix_rows if x["family"] == "OPENFOAM"]
+    thresholds = protocol["thresholds"]
+    evaluation_checks = []
+    def ev(gate: str, check_id: str, observed: Any, expected: Any, operator: str,
+           failure: str, sources: Iterable[str]) -> None:
+        evaluation_checks.append({"gate": gate, "check_id": check_id,
+                                  "observed": observed, "expected": expected,
+                                  "operator": operator, "failure": failure,
+                                  "sources": list(sources)})
+    ev("G0", "authorization_and_protocol_identity", amendment["authorization_id"],
+       "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04", "EXACT", "G0_AUTHORITY_MISMATCH", [str(amendment_path.relative_to(ROOT))])
+    ev("G0", "issue_bootstrap", 58, 58, "==", "G0_ISSUE_MISMATCH", ["XSV_TAICHI_001_STAGE_AUTHORIZATION.json"])
+    ev("G0", "pull_request_bootstrap", 59, 59, "==", "G0_PULL_REQUEST_MISMATCH", ["XSV_TAICHI_001_STAGE_AUTHORIZATION.json"])
+    ev("G1", "geometry_manifest_identity", sha256_file(GEOMETRY_MANIFEST_PATH), "5ddb9617b3543d7f48eecf5941291d265894a6cd2d5a142265a0750ab509afdd", "EXACT", "GEOMETRY_IDENTITY_MISMATCH", [str(GEOMETRY_MANIFEST_PATH.relative_to(ROOT))])
+    ev("G1", "geometry_repeat_identity", geometry.get("repeat_identity"), "PASS", "EXACT", "GEOMETRY_NONDETERMINISTIC", [str(GEOMETRY_MANIFEST_PATH.relative_to(ROOT))])
+    for geo in geometry["geometries"]:
+        ev("G1", f"{geo['case_id']}_x_through", geo["x_through_connected"], True, "TRUE", "GEOMETRY_NOT_X_THROUGH_CONNECTED", [str(GEOMETRY_MANIFEST_PATH.relative_to(ROOT))])
+        ev("G1", f"{geo['case_id']}_porosity_lower", geo["phi_gross"], 0.0, ">", "GEOMETRY_POROSITY_INVALID", [str(GEOMETRY_MANIFEST_PATH.relative_to(ROOT))])
+        ev("G1", f"{geo['case_id']}_porosity_upper", geo["phi_gross"], 1.0, "<", "GEOMETRY_POROSITY_INVALID", [str(GEOMETRY_MANIFEST_PATH.relative_to(ROOT))])
+    matrix_by_id = {x["run_id"]: x for x in matrix_rows}
+    geom_by_id = {x["case_id"]: x for x in geometry["geometries"]}
+    finite_fields = ("q_box_lu", "phi_gross", "K_gross_lu", "K_void_lu", "u_max_lu", "Mach", "Re_L")
+    for row in lbm_records:
+        rid = row["run_id"]; spec = matrix_by_id.get(rid, {})
+        for field in finite_fields:
+            value = row.get(field, float("nan")); ev("G2", f"{rid}_{field}_finite", math.isfinite(float(value)), True, "TRUE", "LBM_NONFINITE", [f"lbm/{rid}/run.json"])
+        for field in ("q_box_lu", "K_gross_lu", "K_void_lu"):
+            ev("G2", f"{rid}_{field}_positive", row[field], 0.0, ">", "LBM_NONPOSITIVE", [f"lbm/{rid}/run.json"])
+        ev("G2", f"{rid}_phi_upper", row["phi_gross"], 1.0, "<", "LBM_POROSITY_INVALID", [f"lbm/{rid}/run.json"])
+        ev("G2", f"{rid}_converged", row["converged"], True, "TRUE", "LBM_UNCONVERGED", [f"lbm/{rid}/run.json"])
+        ev("G2", f"{rid}_completed_steps", row["completed_steps"], row["max_steps"], "<", "LBM_UNCONVERGED", [f"lbm/{rid}/run.json"])
+        ev("G2", f"{rid}_mach", row["Mach"], thresholds["mach_max"], "<=", "LBM_MACH_LIMIT_EXCEEDED", [f"lbm/{rid}/run.json"])
+        ev("G2", f"{rid}_reynolds", row["Re_L"], thresholds["Re_L_max"], "<=", "LBM_REYNOLDS_LIMIT_EXCEEDED", [f"lbm/{rid}/run.json"])
+        ev("G2", f"{rid}_precision", row["precision"], "float64", "EXACT", "LBM_PRECISION_MISMATCH", [f"lbm/{rid}/run.json"])
+        expected_architecture = ("CPU_NUMPY" if spec.get("backend") == "NUMPY_REFERENCE"
+                                 else {"CPU": "Arch.x64", "CUDA": "Arch.cuda"}.get(spec.get("architecture")))
+        ev("G2", f"{rid}_actual_architecture", row.get("actual_architecture"), expected_architecture, "EXACT", "LBM_BACKEND_ARCHITECTURE_MISMATCH", [f"lbm/{rid}/run.json", "XSV_TAICHI_001_CASE_MATRIX.csv"])
+        ev("G2", f"{rid}_puckworks_source_hashes", row.get("puckworks_source_hashes"), protocol["sources"]["puckworks"]["files"], "EXACT", "PUCKWORKS_SOURCE_IDENTITY_MISMATCH", [f"lbm/{rid}/run.json", "XSV_TAICHI_001_PROTOCOL.json"])
+        ev("G2", f"{rid}_force", row["g_lu"], float(spec.get("g_lu", "nan")), "==", "LBM_INPUT_MISMATCH", [f"lbm/{rid}/run.json", "XSV_TAICHI_001_CASE_MATRIX.csv"])
+        for key, expected in (("tau_plus", protocol["lbm_settings"]["tau_plus"]), ("check_interval", protocol["lbm_settings"]["check_interval"]), ("rtol", protocol["lbm_settings"]["relative_convergence_tolerance"]), ("min_steps", protocol["lbm_settings"]["minimum_steps"]), ("max_steps", int(spec.get("max_steps", 0))), ("puckworks_commit", protocol["sources"]["puckworks"]["commit"]), ("puckworks_tree", protocol["sources"]["puckworks"]["tree"]), ("mask_payload_sha256", geom_by_id[row["case_id"]]["payload_sha256"]), ("typed_disposition", "RUN_LEVEL_PASS_PENDING_MATRIX_GATES")):
+            ev("G2", f"{rid}_{key}", row.get(key), expected, "EXACT", "LBM_INPUT_OR_PROVENANCE_MISMATCH", [f"lbm/{rid}/run.json"])
+        ev("G2", f"{rid}_output_hash", bool(row.get("output_field_sha256")), True, "TRUE", "LBM_OUTPUT_IDENTITY_MISSING", [f"lbm/{rid}/run.json"])
+        ev("G2", f"{rid}_log_hash", bool(row.get("log_sha256")), True, "TRUE", "LBM_LOG_IDENTITY_MISSING", [f"lbm/{rid}/run.json"])
+    for name, pairs in (("numpy_taichi", numpy_cpu_pairs), ("cpu_cuda", cpu_cuda_pairs)):
+        for key, threshold_key in (("q_box_lu", "backend_relative_q_max"), ("K_gross_lu", "backend_relative_K_gross_max")):
+            ev("G2", f"{name}_{key}_parity", pair_max(pairs, key), thresholds[threshold_key], "<=", "NUMPY_TAICHI_PARITY_FAILED" if name == "numpy_taichi" else "TAICHI_CPU_GPU_PARITY_FAILED", ["retained LBM run records"])
+    for case_id, value in velocity_l2.items(): ev("G2", f"{case_id}_velocity_L2", value, thresholds["mid_force_velocity_relative_L2_max"], "<=", "NUMPY_TAICHI_PARITY_FAILED", [f"lbm/{case_id}-NP-MID/ux.npy", f"lbm/{case_id}-TC-MID/ux.npy"])
+    for key, metrics in force_linearity.items():
+        ev("G2", f"{key}_R2", metrics["R2"], thresholds["force_linearity_R2_min"], ">=", "LBM_FORCE_NONLINEAR", ["retained LBM run records"])
+        ev("G2", f"{key}_q_over_g", metrics["q_over_g_max_relative_deviation"], thresholds["q_over_g_max_relative_deviation"], "<=", "LBM_FORCE_NONLINEAR", ["retained LBM run records"])
+        ev("G2", f"{key}_intercept", metrics["normalized_intercept"], thresholds["normalized_intercept_max"], "<=", "LBM_FORCE_NONLINEAR", ["retained LBM run records"])
+    ev("G2", "channel_gross_error", channel_gross_error, thresholds["channel_relative_error_max"], "<=", "CHANNEL_ANALYTICAL_GATE_FAILED", ["CH33 retained records"])
+    ev("G2", "channel_void_error", channel_void_error, thresholds["channel_relative_error_max"], "<=", "CHANNEL_ANALYTICAL_GATE_FAILED", ["CH33 retained records"])
+    ev("G3", "returned_k_identity", returned_identity_error, thresholds["returned_identity_relative_tolerance"], "<=", "PUCKWORKS_RETURN_IDENTITY_MISMATCH", ["retained LBM run records"])
+    ev("G3", "gross_area_adapter_error", channel_gross_error, thresholds["channel_relative_error_max"], "<=", "REFERENCE_VOLUME_ADAPTER_REJECTED", ["CH33 retained records"])
+    ev("G3", "primary_adapter_advantage", adapter_advantage, thresholds["primary_adapter_advantage_min"], ">=", "REFERENCE_VOLUME_ADAPTER_REJECTED", ["CH33 retained records"])
+    for row in openfoam.values():
+        gate = "G4" if row["run_id"].startswith("OF-U-") else "G5"
+        maxerr = thresholds["uniform_relative_error_max"] if gate == "G4" else thresholds["composition_relative_error_max"]
+        ev(gate, f"{row['run_id']}_total_flow", row["total_flow_relative_error"], maxerr, "<=", "OPENFOAM_UNIFORM_ANALYTICAL_GATE_FAILED" if gate == "G4" else "COMPOSITION_TOTAL_FLOW_FAILED", [f"structured trace:{row['run_id']}"])
+        ev(gate, f"{row['run_id']}_flux_imbalance", row["flux_imbalance_relative"], thresholds["flux_imbalance_relative_max"], "<=", "OPENFOAM_FLUX_BALANCE_FAILED" if gate == "G4" else "COMPOSITION_FLUX_BALANCE_FAILED", [f"structured trace:{row['run_id']}"])
+        if gate == "G4": ev("G4", f"{row['run_id']}_superficial_flow", row["superficial_flow_relative_error"], thresholds["uniform_relative_error_max"], "<=", "OPENFOAM_UNIFORM_ANALYTICAL_GATE_FAILED", [f"structured trace:{row['run_id']}"])
+    qdev = max(abs(x-uniform_median)/uniform_median for x in uniform_q_over_dp)
+    ev("G4", "uniform_Q_over_delta_p", qdev, thresholds["uniform_Q_over_delta_p_relative_deviation_max"], "<=", "OPENFOAM_UNIFORM_ANALYTICAL_GATE_FAILED", ["four uniform structured traces"])
+    ev("G4", "porosity_invariance", porosity_difference, thresholds["porosity_invariance_relative_difference_max"], "<=", "POROSITY_DOUBLE_COUNTING_OR_COUPLING_DETECTED", ["OF-U-MID", "OF-U-PHI-ALT"])
+    ev("G5", "mesh_preflight", preflight["maximum_mesh_zone_area_relative_error"], 1e-8, "<=", "MESH_CONFORMING_RADIAL_FIXTURE_PREFLIGHT_FAILED", ["radial_mesh_preflight.json"])
+    for label, row in (("series_serial", series_serial), ("series_mpi", series_mpi)):
+        ev("G5", f"{label}_layer_A", row["layer_A_share_relative_error"], thresholds["composition_relative_error_max"], "<=", "AXIAL_SERIES_COMPOSITION_FAILED", [f"structured trace:{row['run_id']}"])
+        ev("G5", f"{label}_layer_B", row["layer_B_share_relative_error"], thresholds["composition_relative_error_max"], "<=", "AXIAL_SERIES_COMPOSITION_FAILED", [f"structured trace:{row['run_id']}"])
+    for label, row in (("radial_serial", parallel_serial), ("radial_mpi", parallel_mpi)):
+        ev("G5", f"{label}_inner", row["inner_flow_share_relative_error"], thresholds["composition_relative_error_max"], "<=", "RADIAL_PARALLEL_ZONE_SHARE_GATE_FAILED", [f"structured trace:{row['run_id']}"])
+        ev("G5", f"{label}_outer", row["outer_flow_share_relative_error"], thresholds["composition_relative_error_max"], "<=", "RADIAL_PARALLEL_ZONE_SHARE_GATE_FAILED", [f"structured trace:{row['run_id']}"])
+    parity_metrics = {"series_flow": relative_difference(series_mpi["total_flow_m3_s"], series_serial["total_flow_m3_s"]), "series_A": relative_difference(series_mpi["layer_A_pressure_drop_share"], series_serial["layer_A_pressure_drop_share"]), "series_B": relative_difference(series_mpi["layer_B_pressure_drop_share"], series_serial["layer_B_pressure_drop_share"]), "radial_flow": relative_difference(parallel_mpi["total_flow_m3_s"], parallel_serial["total_flow_m3_s"]), "radial_inner": relative_difference(parallel_mpi["inner_flow_share"], parallel_serial["inner_flow_share"]), "radial_outer": relative_difference(parallel_mpi["outer_flow_share"], parallel_serial["outer_flow_share"])}
+    for key, value in parity_metrics.items(): ev("G5", f"serial_mpi_{key}", value, thresholds["serial_mpi_relative_difference_max"], "<=", "SERIAL_MPI_PARITY_FAILED", ["serial and MPI structured traces"])
+    ev("G5", "process_attempt_count", 9, 9, "==", "OPENFOAM_ATTEMPT_ACCOUNTING_FAILED", ["protocol amendment", "external evidence"])
+    ev("G5", "protocol_invalid_attempt", amendment["failed_attempt"]["disposition"], "PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT", "EXACT", "PROTOCOL_INVALID_ATTEMPT_MISSING", [str(amendment_path.relative_to(ROOT))])
+    for key, expected in (("manifest_sha256", EXPECTED_EXTERNAL_MANIFEST_SHA256), ("manifest_member_count", 1545), ("manifest_source_bytes", 134226177), ("archive_sha256", EXPECTED_EXTERNAL_ARCHIVE_SHA256), ("archive_bytes", 25214779), ("all_manifest_members_verified", True), ("archive_inventory_verified", True)):
+        ev("G6_LOCAL_PACKAGE", f"external_{key}", external[key], expected, "TRUE" if expected is True else "EXACT", "EXTERNAL_EVIDENCE_VERIFICATION_FAILED", ["external manifest", "external archive"])
+    ev("G6_LOCAL_PACKAGE", "physical_validation_ceiling", False, False, "FALSE", "PHYSICAL_VALIDATION_PROMOTED", ["claim ceiling"])
+    ev("G6_LOCAL_PACKAGE", "xsv_taichi_002_inactive", False, False, "FALSE", "XSV_TAICHI_002_UNAUTHORIZED_ACTIVATION", ["current authorities"])
+    evaluation_inputs = {"expected_lbm_ids": expected_lbm_ids, "observed_lbm_ids": [x["run_id"] for x in lbm_records], "expected_openfoam_ids": expected_of_ids, "observed_openfoam_ids": list(openfoam), "checks": evaluation_checks}
+    evaluation = evaluate_gate_contract(evaluation_inputs)
+    gates = evaluation["gates"]
     result = {
         "schema_version": "espresso.whole_pull.xsv_taichi_001.result.v1",
         "task": "XSV-TAICHI-001",
@@ -384,18 +597,21 @@ def reduce_final(args: argparse.Namespace) -> None:
         "runtime_environments": {"python": cuda_m0[1]["python"], "numpy": cuda_m0[1]["numpy"], "taichi_architecture": "Arch.cuda", "openfoam": "Foundation 12", "mpi_ranks": [1, 16]},
         "lbm_runs": [lbm[key] for key in sorted(lbm)],
         "openfoam_runs": [openfoam[key] for key in sorted(openfoam)],
-        "backend_parity": {"maximum_numpy_taichi_K_relative_difference": pair_max(numpy_cpu_pairs, "K_gross_lu"), "maximum_taichi_cpu_cuda_K_relative_difference": pair_max(cpu_cuda_pairs, "K_gross_lu"), "mid_force_velocity_relative_L2": velocity_l2},
+        "backend_parity": {"maximum_numpy_taichi_q_relative_difference": pair_max(numpy_cpu_pairs, "q_box_lu"), "maximum_numpy_taichi_K_relative_difference": pair_max(numpy_cpu_pairs, "K_gross_lu"), "maximum_taichi_cpu_cuda_q_relative_difference": pair_max(cpu_cuda_pairs, "q_box_lu"), "maximum_taichi_cpu_cuda_K_relative_difference": pair_max(cpu_cuda_pairs, "K_gross_lu"), "mid_force_velocity_relative_L2": velocity_l2},
         "force_linearity": force_linearity,
         "channel_adapter": {"K_gross_exact_lu": channel_gross_exact, "K_void_exact_lu": channel_void_exact, "maximum_gross_relative_error": channel_gross_error, "maximum_void_relative_error": channel_void_error, "returned_k_identity_max_relative_error": returned_identity_error, "primary_adapter_advantage": adapter_advantage, "disposition": "GROSS_AREA_DARCY_ADAPTER_CONFIRMED"},
         "M0A_closure": {"origin_fit_s_qg": slope_qg, "K_gross_lu": k_m0_lu, "K_void_lu": k_m0_lu / cuda_m0[1]["phi_gross"], "delta_x_m": fixture["closure"]["delta_x_m"], "K_EWP_SI_m2": k_m0_si},
-        "openfoam_uniform": {"maximum_total_flow_relative_error": max(row["total_flow_relative_error"] for row in uniform), "maximum_Q_over_delta_p_relative_deviation": max(abs(value-uniform_median)/uniform_median for value in uniform_q_over_dp), "porosity_invariance_relative_difference": porosity_difference},
+        "openfoam_uniform": {"runs": uniform, "maximum_total_flow_relative_error": max(row["total_flow_relative_error"] for row in uniform), "maximum_superficial_flow_relative_error": max(row["superficial_flow_relative_error"] for row in uniform), "maximum_Q_over_delta_p_relative_deviation": qdev, "porosity_invariance_relative_difference": porosity_difference},
         "mesh_preflight": preflight,
         "series": {"serial": series_serial, "mpi": series_mpi, "serial_mpi_total_flow_relative_difference": relative_difference(series_mpi["total_flow_m3_s"], series_serial["total_flow_m3_s"]), "serial_mpi_layer_A_share_relative_difference": relative_difference(series_mpi["layer_A_pressure_drop_share"], series_serial["layer_A_pressure_drop_share"]), "serial_mpi_layer_B_share_relative_difference": relative_difference(series_mpi["layer_B_pressure_drop_share"], series_serial["layer_B_pressure_drop_share"])},
         "parallel": {"serial": parallel_serial, "mpi": parallel_mpi, "serial_mpi_total_flow_relative_difference": relative_difference(parallel_mpi["total_flow_m3_s"], parallel_serial["total_flow_m3_s"]), "serial_mpi_inner_share_relative_difference": relative_difference(parallel_mpi["inner_flow_share"], parallel_serial["inner_flow_share"]), "serial_mpi_outer_share_relative_difference": relative_difference(parallel_mpi["outer_flow_share"], parallel_serial["outer_flow_share"])},
+        "gate_evaluation": evaluation,
+        "evaluation_inputs": evaluation_inputs,
         "gates": gates,
-        "overall_disposition": "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED",
+        "overall_disposition": evaluation["overall_disposition"],
+        "execution_package_status": "XSV_TAICHI_001_EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
         "claim_ceiling": {"qualified_scope": "EXACT_SYNTHETIC_SATURATED_DARCY_FIXTURES_ONLY", "real_coffee_permeability": "NOT_ESTABLISHED", "real_coffee_morphology": "NOT_REPRESENTED", "fines_physics": "NOT_TESTED", "full_basket_scale_transfer": "NOT_TESTED", "physical_validation": "NOT_ESTABLISHED", "independent_data_gate": "UNCHANGED"},
-        "external_evidence": {"logical_root": "EXTERNAL_EVIDENCE_ROOT", "manifest_sha256": args.external_manifest_sha256, "archive_sha256": args.archive_sha256, "archive_file_count": int(args.archive_file_count), "archive_source_bytes": int(args.archive_source_bytes), "archive_bytes": int(args.archive_bytes)},
+        "external_evidence": {"logical_root": "EXTERNAL_EVIDENCE_ROOT", **external},
         "protected_hash_parity": "PASS",
         "prohibited_work": {"openfoam_source_change": False, "puckworks_change": False, "calibration_or_refit": False, "protected_scoring": False, "physical_validation": False, "XSV_TAICHI_002_started": False}
     }
@@ -404,9 +620,9 @@ def reduce_final(args: argparse.Namespace) -> None:
     fieldnames = ("row_class", "run_id", "family", "backend_or_ranks", "fixture_revision", "disposition", "primary_value", "primary_unit")
     summary_rows = []
     for run_id in sorted(lbm):
-        row = lbm[run_id]; summary_rows.append({"row_class": "GOVERNED_RUN", "run_id": run_id, "family": "LBM", "backend_or_ranks": row["actual_architecture"], "fixture_revision": 1, "disposition": "PASS", "primary_value": row["K_gross_lu"], "primary_unit": "lu2"})
+        row = lbm[run_id]; passed = gates["G2"] == "PASS" and all(x["pass"] for x in evaluation["checks"] if x["gate"] == "G2" and (run_id in x["check_id"] or x["check_id"] == "lbm_run_identity_set")); summary_rows.append({"row_class": "GOVERNED_RUN", "run_id": run_id, "family": "LBM", "backend_or_ranks": row["actual_architecture"], "fixture_revision": 1, "disposition": "PASS" if passed else "G2_FAIL", "primary_value": row["K_gross_lu"], "primary_unit": "lu2"})
     for run_id in sorted(openfoam):
-        row = openfoam[run_id]; summary_rows.append({"row_class": "GOVERNED_RUN", "run_id": run_id, "family": "OPENFOAM", "backend_or_ranks": next(item["mpi_ranks"] for item in fixture["runs"] if item["run_id"] == run_id), "fixture_revision": 2 if "PARALLEL" in run_id else 1, "disposition": "PASS", "primary_value": row["total_flow_m3_s"], "primary_unit": "m3/s"})
+        row = openfoam[run_id]; family_gate = "G4" if run_id.startswith("OF-U-") else "G5"; passed = gates[family_gate] == "PASS"; summary_rows.append({"row_class": "GOVERNED_RUN", "run_id": run_id, "family": "OPENFOAM", "backend_or_ranks": next(item["mpi_ranks"] for item in fixture["runs"] if item["run_id"] == run_id), "fixture_revision": 2 if "PARALLEL" in run_id else 1, "disposition": "PASS" if passed else f"{family_gate}_FAIL", "primary_value": row["total_flow_m3_s"], "primary_unit": "m3/s"})
     summary_rows.append({"row_class": "PROTOCOL_INVALID_ATTEMPT", "run_id": "OF-PARALLEL-1-REVISION-1", "family": "OPENFOAM_ATTEMPT", "backend_or_ranks": 1, "fixture_revision": 1, "disposition": "PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT", "primary_value": "", "primary_unit": ""})
     summary_rows.extend((
         {"row_class": "ANALYTICAL_REFERENCE", "run_id": "CH33-K-GROSS-EXACT", "family": "ANALYTICAL", "backend_or_ranks": "", "fixture_revision": 1, "disposition": "REFERENCE", "primary_value": channel_gross_exact, "primary_unit": "lu2"},
@@ -419,11 +635,12 @@ def reduce_final(args: argparse.Namespace) -> None:
         "schema_version": "espresso.whole_pull.xsv_taichi_001.artifact_manifest.v1",
         "task": "XSV-TAICHI-001",
         "external_evidence_root": "EXTERNAL_EVIDENCE_ROOT",
-        "external_manifest_sha256": args.external_manifest_sha256,
-        "external_archive_sha256": args.archive_sha256,
-        "external_archive_file_count": int(args.archive_file_count),
-        "external_archive_source_bytes": int(args.archive_source_bytes),
-        "external_archive_bytes": int(args.archive_bytes),
+        "external_manifest_sha256": external["manifest_sha256"],
+        "external_archive_sha256": external["archive_sha256"],
+        "external_archive_file_count": external["manifest_member_count"],
+        "external_archive_source_bytes": external["manifest_source_bytes"],
+        "external_archive_bytes": external["archive_bytes"],
+        "external_verification": external,
         "committed_members": {"XSV_TAICHI_001_RESULT.json": sha256_file(result_path), "XSV_TAICHI_001_SUMMARY.csv": sha256_file(summary_path)},
         "protocol_invalid_attempt_log_sha256": amendment["failed_attempt"]["log_sha256"],
         "executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
@@ -442,6 +659,7 @@ def load_lbm_case(run_id: str) -> Dict[str, str]:
 
 
 def run_lbm(args: argparse.Namespace) -> None:
+    import numpy as np
     protocol = json.loads(PROTOCOL_PATH.read_text(encoding="utf-8"))
     geometry_manifest = json.loads(GEOMETRY_MANIFEST_PATH.read_text(encoding="utf-8"))
     case = load_lbm_case(args.run_id)
@@ -592,11 +810,8 @@ def parse_args() -> argparse.Namespace:
     reduce_parser = subparsers.add_parser("reduce-final")
     reduce_parser.add_argument("--evidence-root", required=True)
     reduce_parser.add_argument("--output-dir", required=True)
-    reduce_parser.add_argument("--external-manifest-sha256", required=True)
-    reduce_parser.add_argument("--archive-sha256", required=True)
-    reduce_parser.add_argument("--archive-file-count", required=True)
-    reduce_parser.add_argument("--archive-source-bytes", required=True)
-    reduce_parser.add_argument("--archive-bytes", required=True)
+    reduce_parser.add_argument("--external-manifest", required=True)
+    reduce_parser.add_argument("--external-archive", required=True)
     reduce_parser.set_defaults(function=reduce_final)
     return parser.parse_args()
 

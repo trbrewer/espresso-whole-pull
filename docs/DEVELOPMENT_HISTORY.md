@@ -396,3 +396,14 @@ next mechanism is active. The next gate is a human-owner decision between an
 admissible independent dataset and authorization and commissioning of the
 synchronized measurement package defined by VAL-DATA-001; neither route is
 authorized by this administrative alignment.
+
+## 2026-08-05 — XSV-TAICHI-001 final reduction made fail closed
+
+Exact-head review found unconditional gate/summary PASS assignments and stale
+machine QA state in the completed no-physics XSV package. The same immutable
+1,545-member external evidence package was deterministically verified and
+reduced without any new solver, mesh, geometry, CUDA, calibration, or scoring
+execution. Gate, run-row, and overall dispositions are now derived from the
+frozen protocol and retained evidence, while exact-head CI and review remain
+external review-time states. The additional-independent-data gate is unchanged
+and physical validation remains not established.

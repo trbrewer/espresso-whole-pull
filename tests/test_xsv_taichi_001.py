@@ -1,5 +1,7 @@
 import csv
+import copy
 import hashlib
+import importlib.util
 import json
 import math
 import os
@@ -54,6 +56,10 @@ class XSVTaichi001Tests(unittest.TestCase):
 
         launcher_path = ROOT / "scripts/xsv_taichi_001.py"
         runtime_path = CASE_ROOT / "xsv_taichi_001_runtime.py"
+        runtime_text = runtime_path.read_text(encoding="utf-8")
+        self.assertNotIn('gates = {name: "PASS"', runtime_text)
+        self.assertNotIn('"overall_disposition": "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED"', runtime_text)
+        self.assertNotIn('"disposition": "PASS", "primary_value"', runtime_text)
         self.assertTrue(launcher_path.is_file())
         self.assertTrue(runtime_path.is_file())
         self.assertTrue(os.access(launcher_path, os.X_OK))
@@ -284,7 +290,12 @@ class XSVTaichi001Tests(unittest.TestCase):
             result["protocol_invalid_attempt"]["disposition"],
             "PROTOCOL_INVALID_PRE_SOLVE_MESH_INTERFACE_MISALIGNMENT",
         )
-        self.assertEqual(set(result["gates"].values()), {"PASS"})
+        self.assertEqual(
+            {key: result["gates"][key] for key in ("G0", "G1", "G2", "G3", "G4", "G5", "G6_LOCAL_PACKAGE")},
+            {key: "PASS" for key in ("G0", "G1", "G2", "G3", "G4", "G5", "G6_LOCAL_PACKAGE")},
+        )
+        self.assertEqual(result["gates"]["FINAL_EXACT_HEAD_CI"], "RESOLVE_FROM_GITHUB_AT_REVIEW")
+        self.assertEqual(result["gates"]["FINAL_EXACT_HEAD_REVIEW"], "PENDING")
         self.assertEqual(
             result["overall_disposition"],
             "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED",
@@ -336,6 +347,74 @@ class XSVTaichi001Tests(unittest.TestCase):
             rows = list(csv.DictReader(handle))
         self.assertEqual(len([row for row in rows if row["row_class"] == "GOVERNED_RUN"]), 27)
         self.assertEqual(len([row for row in rows if row["row_class"] == "PROTOCOL_INVALID_ATTEMPT"]), 1)
+        self.assertTrue(all(row["disposition"] == "PASS" for row in rows if row["row_class"] == "GOVERNED_RUN"))
+
+        expected_lbm = {row["run_id"] for row in self.matrix if row["family"] == "LBM"}
+        expected_openfoam = {row["run_id"] for row in self.matrix if row["family"] == "OPENFOAM"}
+        self.assertEqual({row["run_id"] for row in result["lbm_runs"]}, expected_lbm)
+        self.assertEqual({row["run_id"] for row in result["openfoam_runs"]}, expected_openfoam)
+        self.assertEqual(len({row["run_id"] for row in result["lbm_runs"]}), 19)
+        self.assertEqual(len({row["run_id"] for row in result["openfoam_runs"]}), 8)
+        self.assertTrue(all(check["pass"] for check in result["gate_evaluation"]["checks"]))
+        self.assertEqual(result["external_evidence"]["manifest_member_count"], 1545)
+        self.assertEqual(result["external_evidence"]["manifest_source_bytes"], 134226177)
+        self.assertTrue(result["external_evidence"]["all_manifest_members_verified"])
+        self.assertTrue(result["external_evidence"]["archive_inventory_verified"])
+
+        runtime_path = CASE_ROOT / "xsv_taichi_001_runtime.py"
+        spec = importlib.util.spec_from_file_location("xsv_gate_evaluator", runtime_path)
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        runtime = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(runtime)
+        baseline = runtime.evaluate_gate_contract(copy.deepcopy(result["evaluation_inputs"]))
+        self.assertEqual(baseline["overall_disposition"], "XSV_TAICHI_001_CLOSURE_PARITY_ESTABLISHED")
+
+        def mutate_check(fragment: str, value) -> dict:
+            mutated = copy.deepcopy(result["evaluation_inputs"])
+            candidates = [row for row in mutated["checks"] if fragment in row["check_id"]]
+            self.assertTrue(candidates, fragment)
+            candidates[0]["observed"] = value
+            return mutated
+
+        mutations = {
+            "nonfinite_lbm": mutate_check("q_box_lu_finite", False),
+            "unconverged_lbm": mutate_check("_converged", False),
+            "completed_at_max": mutate_check("_completed_steps", 50000),
+            "mach": mutate_check("_mach", 1.0),
+            "reynolds": mutate_check("_reynolds", 1.0),
+            "q_parity": mutate_check("numpy_taichi_q_box_lu_parity", 1.0),
+            "K_parity": mutate_check("numpy_taichi_K_gross_lu_parity", 1.0),
+            "velocity_l2": mutate_check("velocity_L2", 1.0),
+            "force_linearity": mutate_check("_R2", 0.0),
+            "channel_error": mutate_check("channel_gross_error", 1.0),
+            "returned_k": mutate_check("returned_k_identity", 1.0),
+            "adapter_advantage": mutate_check("primary_adapter_advantage", 0.0),
+            "uniform_flow": mutate_check("OF-U-LOW_total_flow", 1.0),
+            "uniform_q_dp": mutate_check("uniform_Q_over_delta_p", 1.0),
+            "uniform_flux": mutate_check("OF-U-LOW_flux_imbalance", 1.0),
+            "porosity_invariance": mutate_check("porosity_invariance", 1.0),
+            "series_flow": mutate_check("OF-SERIES-1_total_flow", 1.0),
+            "series_share": mutate_check("series_serial_layer_A", 1.0),
+            "series_mpi_share": mutate_check("serial_mpi_series_A", 1.0),
+            "radial_flow": mutate_check("OF-PARALLEL-1_total_flow", 1.0),
+            "radial_share": mutate_check("radial_serial_inner", 1.0),
+            "radial_mpi_share": mutate_check("serial_mpi_radial_inner", 1.0),
+            "composition_flux": mutate_check("OF-SERIES-1_flux_imbalance", 1.0),
+            "missing_invalid_attempt": mutate_check("protocol_invalid_attempt", "MISSING"),
+            "manifest_hash": mutate_check("external_manifest_sha256", "mismatch"),
+            "archive_hash": mutate_check("external_archive_sha256", "mismatch"),
+            "unverified_external": mutate_check("external_all_manifest_members_verified", False),
+            "physical_validation": mutate_check("physical_validation_ceiling", True),
+            "xsv_002": mutate_check("xsv_taichi_002_inactive", True),
+        }
+        omitted = copy.deepcopy(result["evaluation_inputs"]); omitted["observed_lbm_ids"].pop(); mutations["omitted_run"] = omitted
+        duplicate = copy.deepcopy(result["evaluation_inputs"]); duplicate["observed_lbm_ids"].append(duplicate["observed_lbm_ids"][0]); mutations["duplicate_run"] = duplicate
+        for name, mutated in mutations.items():
+            with self.subTest(mutation=name):
+                evaluated = runtime.evaluate_gate_contract(mutated)
+                self.assertEqual(evaluated["overall_disposition"], "XSV_TAICHI_001_COMPLETE_WITH_TYPED_FAILURES")
+                self.assertTrue(any(not check["pass"] for check in evaluated["checks"]))
 
 
 if __name__ == "__main__":

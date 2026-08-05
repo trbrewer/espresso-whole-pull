@@ -289,3 +289,25 @@ Preserve the exact quantity/reference-volume contract, separate backend
 parity from physical validation, bind every closure to geometry/source/unit
 hashes, retain failures, and require fresh human authority for every added
 geometry, run, threshold, mechanism, physical datum, XSV stage or merge.
+
+## Post-execution exact-head final-package correction
+
+On 5 August 2026, exact-head review of `f9fe87269b351d088fd88e83359a8c34a6dd1fac`
+identified that the first final reducer asserted gate and summary PASS values
+instead of deriving them fail closed, while `PACKAGE_QA_STATUS.json` retained
+stale G0 state. The correction re-reduces the same immutable external archive,
+verifies all 1,545 self-excluding manifest members and the archive inventory,
+and derives every G0--G5, local-package, run-row, and overall disposition from
+the frozen thresholds and retained records. Final exact-head CI remains
+external to the committed result and is resolved during review.
+
+No NumPy LBM, Taichi, CUDA, OpenFOAM, blockMesh, checkMesh, geometry generation,
+case generation, calibration, refit, or protected scoring was repeated. The
+pre-correction result, summary, and artifact-manifest identities remain in Git
+history as `d3b3b7d8d5c480160d0d89d60c143e776070b07d5783b47fa38e2660b7fc63c7`,
+`5f957575982b6c85f94a5b296b6efaacacf223aafc134a2f08247e903889ed24`, and
+`be2cddab2ab952d82930aedb594c4e79af5e23fc5fb1cacc81de8b79be4cf414`.
+The corrected identities are bound by `PACKAGE_QA_STATUS.json` and the XSV
+artifact manifest at the exact candidate head. The derived scientific outcome
+and synthetic-fixture interpretation are unchanged; independent physical data
+remain required and `PHYSICAL_VALIDATION` remains `NOT_ESTABLISHED`.

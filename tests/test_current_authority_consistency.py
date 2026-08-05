@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import unittest
 from pathlib import Path
 
@@ -152,6 +153,30 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         return False
     if val.get("physical_validation") != "NOT_ESTABLISHED":
         return False
+    xsv = qa.get("xsv_taichi_001", {})
+    result_path = ROOT / "verification/cases/xsv_taichi_001/XSV_TAICHI_001_RESULT.json"
+    result = json.loads(result_path.read_text(encoding="utf-8"))
+    if qa.get("active_cross_solver_verification_task") != "NONE":
+        return False
+    for key, expected in (
+        ("status", "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW"),
+        ("overall_scientific_disposition", result.get("overall_disposition")),
+        ("latest_authorization_id", "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04"),
+        ("current_scientific_gate", "ADDITIONAL_INDEPENDENT_DATA_REQUIRED"),
+        ("human_owner_independent_data_route_decision", "STILL_REQUIRED"),
+        ("xsv_taichi_002", "NOT_STARTED_NOT_AUTHORIZED"),
+        ("physical_validation", "NOT_ESTABLISHED"),
+    ):
+        if xsv.get(key) != expected:
+            return False
+    execution = xsv.get("retained_numerical_execution", {})
+    if execution != {"lbm_governed_runs": 19, "openfoam_governed_runs": 8,
+                      "openfoam_process_attempts": 9,
+                      "protocol_invalid_pre_solve_attempts": 1,
+                      "additional_execution_during_correction": 0}:
+        return False
+    if xsv.get("corrected_result_sha256") != hashlib.sha256(result_path.read_bytes()).hexdigest():
+        return False
 
     for path, markers in CURRENT_MARKERS.items():
         text = texts[path]
@@ -221,6 +246,15 @@ class CurrentAuthorityConsistencyTests(unittest.TestCase):
         changed = dict(self.qa)
         changed["release_qualification"] = "FAIL"
         self.assertFalse(current_authorities_pass(self.texts, changed))
+        for stale_xsv in (
+            {"status": "G0_PROTOCOL_FREEZE_PENDING_EXACT_HEAD_CI"},
+            {"retained_numerical_execution": "NONE"},
+            {"corrected_result_sha256": ""},
+            {"current_scientific_gate": "XSV_TAICHI_001_EXECUTION"},
+        ):
+            changed = dict(self.qa)
+            changed["xsv_taichi_001"] = {**self.qa["xsv_taichi_001"], **stale_xsv}
+            self.assertFalse(current_authorities_pass(self.texts, changed))
 
     def test_executed_protocol_sections_remain_explicitly_historical(self) -> None:
         text = self.texts["docs/PROGRAM_STATE_AND_FORWARD_PLAN.md"]
