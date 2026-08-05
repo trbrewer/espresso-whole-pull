@@ -1,9 +1,9 @@
 # Puckworks Whole-Pull Multiscale Modeling and Simulation Strategy
 
-**Strategy version:** 1.7
-**Date:** 4 August 2026
-**Status:** Controlling solver-development and validation strategy; VAL-CORPUS-002 complete; additional independent data remains the scientific gate; the cross-solver closure-verification ladder is established; physical validation is not established
-**Supersedes:** strategy v1.6 and all earlier strategy versions
+**Strategy version:** 1.6
+**Date:** 30 July 2026
+**Status:** Controlling solver-development and validation workflow; WP03-001 complete; post-WP03-001 validation and mechanism discrimination active; physical validation not established
+**Supersedes:** strategy v1.5 and all earlier strategy versions
 **Repository:** `trbrewer/espresso-whole-pull`; Puckworks remains the external evidence/model/data dependency
 **Reviewed Puckworks dependency baseline:** repository `https://github.com/trbrewer/puckworks.git`; commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`; tree `1d553e44ee2f7480a5df521560801b478618cc84`; alignment status `REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF`. The dependency review, source dossier, calibration/comparison contract, deterministic R1 bridge, and governed WP-0.1R execution are complete.
 **OpenFOAM implementation baseline:** `espresso_puck_whole_pull_reference_v0_1_4_openfoam12`, terminal freeze manifest `PASS`
@@ -12,7 +12,7 @@
 **Primary pore-scale platform:** Taichi/LBM on NVIDIA A100-SXM4-80GB-class GPU resources
 **Scientific and software backbone:** Puckworks models, data, model cards, contracts, validation gates, rights records, and public product layer
 **WP-0.1 disposition:** **IMPLEMENTATION PASS; BOUNDED CODE VERIFICATION PASS; NUMERICAL QUALIFICATION PASS; RELEASE PROVENANCE PASS; R0 FROZEN / QUALIFIED; PHYSICAL VALIDATION NOT ESTABLISHED**
-**Current scientific gate:** Additional independent data; no XSV stage substitutes for this gate
+**Next controlling milestone:** Post-WP03-001 source-specific validation and mechanism discrimination
 
 ---
 
@@ -41,42 +41,6 @@ adapters, uncertainty-aware comparisons, sensitivity and identifiability
 tools, residual decomposition, mechanism discrimination, ensemble execution,
 and experimental design. This is solver development directed at evidence, not
 a pause in solver development.
-
-### Cross-solver closure-verification ladder
-
-Taichi/LBM is the pore-scale and closure engine; Foundation OpenFOAM is the
-whole-puck continuum consumer. Their interface must preserve explicit units,
-pressure-gradient meaning, reference volume and area, porosity convention,
-geometry/source identity, and closure provenance. Backend parity, analytical
-code verification, closure-interface qualification, and physical validation
-are distinct evidence levels.
-
-The gated ladder is:
-
-1. **XSV-TAICHI-001 — saturated hydraulic closure parity.** The first bounded,
-   no-governing-physics cross-solver stage freezes synthetic geometries and a
-   gross-area Darcy adapter, verifies NumPy/Taichi backend parity and an
-   analytical channel, and tests unchanged OpenFOAM uniform, axial-series and
-   radial-parallel closure consumption.
-2. **XSV-TAICHI-002 — synthetic morphology and required-permeability-collapse
-   screen.** Candidate only; not authorized.
-3. **XSV-TAICHI-003 — optional same-geometry pore-scale OpenFOAM/Taichi
-   comparison.** Future possibility only; not authorized.
-
-Progression is evidence-gated and requires fresh human authority. None of
-these stages supplies independent physical data, represents real-coffee
-morphology by default, authorizes a new mechanism, or raises the claim
-ceiling. `PHYSICAL_VALIDATION = NOT_ESTABLISHED`.
-
-XSV-TAICHI-001 defines the first bounded cross-solver closure-verification
-stage. Its live execution and disposition are governed by the
-[current project state](../PROJECT_STATE.md), the
-[program handoff](../PROGRAM_STATE_AND_FORWARD_PLAN.md), its dedicated
-[verification authority](../verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md),
-and its machine result at
-`verification/cases/xsv_taichi_001/XSV_TAICHI_001_RESULT.json` when present.
-This strategy intentionally carries no mutable result, test total, PR head or
-merge identity.
 
 The next governing-physics increment will be selected from observed residuals
 and information gaps rather than from implementation convenience. General

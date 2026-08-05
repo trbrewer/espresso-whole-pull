@@ -1315,10 +1315,49 @@ class WP01R006DecisionTests(unittest.TestCase):
         )
 
     def test_strategy_and_authorization_boundary(self) -> None:
-        strategy = (
+        import hashlib
+
+        strategy_path = (
             ROOT / "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md"
-        ).read_text(encoding="utf-8")
-        self.assertIn("**Strategy version:** 1.6", strategy)
+        )
+        historical_path = (
+            ROOT
+            / "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md"
+        )
+        project_state_path = ROOT / "docs/PROJECT_STATE.md"
+        self.assertTrue(strategy_path.is_file())
+        self.assertTrue(historical_path.is_file())
+        self.assertTrue(project_state_path.is_file())
+
+        strategy = strategy_path.read_text(encoding="utf-8")
+        historical_bytes = historical_path.read_bytes()
+        historical = historical_bytes.decode("utf-8")
+        project_state = project_state_path.read_text(encoding="utf-8")
+
+        self.assertEqual(len(historical_bytes), 123447)
+        self.assertEqual(
+            hashlib.sha256(historical_bytes).hexdigest(),
+            "5f8bc4bfbe8089d7ff6ff44955230f059a84df96c3903bfe064448abf8aef703",
+        )
+        self.assertIn("**Strategy version:** 1.6", historical)
+        historical_header = historical.split("---", 1)[0]
+        self.assertIn(
+            "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+            historical_header,
+        )
+        self.assertIn(
+            "1d553e44ee2f7480a5df521560801b478618cc84",
+            historical_header,
+        )
+        self.assertIn(
+            "Post-WP03-001 source-specific validation and mechanism discrimination",
+            historical_header,
+        )
+        self.assertIn("issue #18", historical)
+        self.assertIn("ACTIVE NEXT PROGRAM TRANCHE", historical)
+        self.assertIn("EPISTEMIC_IDENTIFIABILITY_LIMIT", historical)
+        self.assertIn("historical", historical.lower())
+
         current_header = strategy.split("---", 1)[0]
         self.assertIn(
             "fc61c4670ec7bf801e40bb391aab16048b8da26b",
@@ -1332,14 +1371,26 @@ class WP01R006DecisionTests(unittest.TestCase):
             "alignment must be refreshed before integration",
             current_header,
         )
-        self.assertIn(
-            "Post-WP03-001 source-specific validation and mechanism discrimination",
-            current_header,
-        )
-        self.assertIn("issue #18", strategy)
-        self.assertIn("ACTIVE NEXT PROGRAM TRANCHE", strategy)
-        self.assertIn("EPISTEMIC_IDENTIFIABILITY_LIMIT", strategy)
-        self.assertIn("historical", strategy.lower())
+        self.assertIn("Cross-solver closure-verification ladder", strategy)
+        self.assertIn("PHYSICAL_VALIDATION = NOT_ESTABLISHED", strategy)
+
+        strategy_version_prefix = "**Strategy version:** "
+        strategy_versions = [
+            line[len(strategy_version_prefix):]
+            for line in current_header.splitlines()
+            if line.startswith(strategy_version_prefix)
+        ]
+        self.assertEqual(len(strategy_versions), 1)
+        project_version_prefix = "- Controlling strategy version: `"
+        project_versions = [
+            line[len(project_version_prefix):-1]
+            for line in project_state.splitlines()
+            if line.startswith(project_version_prefix)
+        ]
+        self.assertEqual(len(project_versions), 1)
+        self.assertEqual(strategy_versions[0], project_versions[0])
+        self.assertEqual(strategy_versions[0], "1.7")
+
         boundary = self.decision["authorization_boundaries"]
         self.assertFalse(boundary["governing_physics_change"])
         self.assertFalse(boundary["scientific_configuration_change"])

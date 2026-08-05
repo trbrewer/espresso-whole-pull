@@ -1,5 +1,20 @@
 # Development History
 
+- XSV-TAICHI-001 execution completion: 19/19 governed LBM cases and 8/8 final
+  OpenFOAM case identities passed the frozen synthetic closure-interface
+  gates. One original radial pre-solve attempt is retained as protocol-invalid;
+  authorized amendment 001 selected mesh face 362 without result tuning.
+  Physical validation remains not established and the independent-data gate
+  is unchanged.
+
+- XSV-TAICHI-001 G0 protocol freeze (prospective): human-authorized,
+  task-specific `NO_GOVERNING_PHYSICS_CHANGE` cross-solver verification. It
+  freezes three synthetic geometries, 19 LBM and eight unchanged-source
+  OpenFOAM runs, the gross-area Darcy adapter, analytical gates, evidence
+  retention and the unchanged physical-validation ceiling before numerical
+  result generation. Strategy v1.6 is preserved byte-identically and strategy
+  v1.7 establishes the durable gated XSV ladder.
+
 - VAL-CORPUS-001 (complete, approved, and merged as PR #50): exact-head review correction preserved the
   original 16-condition history and executed a frozen 13-case correction
   matrix with the unchanged Foundation OpenFOAM 12 executable. All correction
@@ -381,3 +396,43 @@ next mechanism is active. The next gate is a human-owner decision between an
 admissible independent dataset and authorization and commissioning of the
 synchronized measurement package defined by VAL-DATA-001; neither route is
 authorized by this administrative alignment.
+
+## 2026-08-05 — XSV-TAICHI-001 final reduction made fail closed
+
+Exact-head review found unconditional gate/summary PASS assignments and stale
+machine QA state in the completed no-physics XSV package. The same immutable
+1,545-member external evidence package was deterministically verified and
+reduced without any new solver, mesh, geometry, CUDA, calibration, or scoring
+execution. Gate, run-row, and overall dispositions are now derived from the
+frozen protocol and retained evidence, while exact-head CI and review remain
+external review-time states. The additional-independent-data gate is unchanged
+and physical validation remains not established.
+
+## 2026-08-05 — XSV-TAICHI-001 closure and trace lineage completed
+
+The retained XSV evidence was reduced again without solver, mesh, geometry,
+case-generation, or CUDA execution. The reducer now derives each LBM closure
+quantity, proves the exact M0A-to-OpenFOAM fixture handoff, and recomputes the
+OpenFOAM analytical metrics from retained primitives. That fail-closed pass
+found one redundant stored-field mismatch in the OF-SERIES-1 flux-imbalance
+diagnostic; the scientific flux gate still passes, but G5 and the overall
+package retain the typed integrity failure. The independent-data gate and the
+physical-validation ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-001 composition flux basis adjudicated
+
+No-run forensic reduction established same-row final-CSV inlet/outlet flow as
+the scientific flux-balance basis for all OpenFOAM cases. The four legacy
+composition flux fields lack retained generating-formula provenance and are
+therefore preserved as a package-level provenance limitation rather than a G5
+scientific failure. Scientific closure parity remains established only for the
+exact synthetic fixtures; the independent-data gate and physical-validation
+ceiling remain unchanged.
+
+## 2026-08-05 — XSV-TAICHI-001 final authority semantics aligned
+
+A no-run current-record correction replaced one understated composition-flux
+summary with the exact same-row maximum and made the machine record's
+scientific, package, and overall-compatibility dispositions explicit. No
+scientific result changed; the additional-independent-data gate and the
+physical-validation ceiling remain unchanged.

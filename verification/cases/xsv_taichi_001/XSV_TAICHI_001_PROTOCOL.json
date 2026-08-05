@@ -1,0 +1,157 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_taichi_001.protocol.v2",
+  "protocol_revision": 2,
+  "original_protocol_sha256": "d93323c9f78bed1e23f18f70e783f3d849d93831133ddef45368fb65e62d187e",
+  "protocol_amendment_001": {
+    "path": "verification/cases/xsv_taichi_001/XSV_TAICHI_001_PROTOCOL_AMENDMENT_001.json",
+    "sha256": "7db8cb56f72eda28334d7073fd00fb0bc74641f9edc6d4977fd4f2301a2712ab",
+    "authorization_id": "XSV-TAICHI-001-G5-RADIAL-MESH-ALIGNMENT-2026-08-04",
+    "reason": "RADIAL_EQUAL_AREA_INTERFACE_INCOMPATIBLE_WITH_UNIFORM_MESH_FACE_CONTRACT",
+    "accepted_predecessor_gates": ["G0", "G1", "G2", "G3", "G4"],
+    "completed_predecessor_results_rerun": "PROHIBITED"
+  },
+  "task": "XSV-TAICHI-001",
+  "status": "XSV_TAICHI_001_EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "evidence_class": "SIMULATED_SYNTHETIC_REFERENCE",
+  "authorization_id": "XSV-TAICHI-001-CROSS-SOLVER-EXECUTION-2026-08-04",
+  "profile": "EWP_XSV_TAICHI_001_CROSS_SOLVER_EXECUTION_STAGE_V1",
+  "starting_identity": {
+    "commit": "0dc98b649312108067310a90b9a8f79e636c4adb",
+    "tree": "0e981087e27c7e04bdcd0acec2da2ec59c3953d7",
+    "source_manifest_count": 273,
+    "source_aggregate_sha256": "85cfc4da91928b068b22ec528bee86a65457229629d0722380fff475606ac307"
+  },
+  "issue": 58,
+  "branch": "verification/xsv-taichi-001-saturated-hydraulic-closure-parity",
+  "pull_request": 59,
+  "strategy": {
+    "version": "1.7",
+    "canonical_sha256": "8f6736c89da502b4b41d115292a504b0b83e28bfb94366f4cc83848309d810ab",
+    "prior_snapshot": "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md",
+    "prior_snapshot_sha256": "5f8bc4bfbe8089d7ff6ff44955230f059a84df96c3903bfe064448abf8aef703",
+    "prior_snapshot_byte_identity": true,
+    "frozen_after_G0": true
+  },
+  "sources": {
+    "puckworks": {
+      "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+      "tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+      "read_only": true,
+      "files": {
+        "puckworks/models/brewer2026/lb_reference.py": "9a60371d7777d3d91fe7df2ea529db498268f12b08ab6c461ec511190a0a989f",
+        "puckworks/models/brewer2026/lb_taichi.py": "c0c52eaae0d6f5753eac3b41501db6645251efe56812c152b83ad2a521d9663f",
+        "puckworks/models/brewer2026/pack_generator.py": "864416314c889793684fef0a143cab48f99056b72f715adf1a522298c7d9512b"
+      }
+    },
+    "openfoam": {
+      "distribution": "Foundation",
+      "version": "12",
+      "solver_source_sha256": "a292021a19740e4dd8869a2fa63aaeaa95ea3843016734768b492ca2d2f38dd7",
+      "solver_source_change": false
+    }
+  },
+  "quantities": {
+    "mask": {"solid": 1, "fluid": 0},
+    "phi_gross": "N_fluid / N_total",
+    "q_box_lu": "sum_fluid(u_x_with_half_force_correction) / N_total",
+    "u_void_lu": "q_box_lu / phi_gross",
+    "nu_lu": "(tau_plus - 0.5) / 3",
+    "K_gross_lu": "nu_lu * q_box_lu / g_lu",
+    "K_void_lu": "nu_lu * u_void_lu / g_lu",
+    "k_puckworks_returned": "nu_lu * q_box_lu / (g_lu * phi_gross)",
+    "returned_identity": "k_puckworks_returned == K_void_lu"
+  },
+  "adapters": {
+    "primary": {
+      "name": "GROSS_AREA_DARCY",
+      "K_EWP_lu": "phi_gross * k_puckworks_returned",
+      "equivalent": "K_gross_lu",
+      "K_EWP_SI": "K_EWP_lu * delta_x_m^2"
+    },
+    "alternate_diagnostic": {
+      "K_ALT_lu": "k_puckworks_returned",
+      "selection_after_results": "PROHIBITED"
+    }
+  },
+  "geometry_definitions": {
+    "CH33": {"shape": [33,33,33], "flow_axis": "x", "solid_z": [0,32], "periodic": ["x","y"], "fluid_width": 31},
+    "SP32": {"function": "lb_reference.sphere_case", "L": 32, "c_nom": 0.08},
+    "M0A": {"function": "pack_generator.make_pack", "L": 40, "voxel_um": 30.0, "gs": 1.3, "phis_target": 0.55, "hetero_amp": 0.0, "hetero_len": 8.0, "seed": 42}
+  },
+  "lbm_settings": {
+    "precision": "float64",
+    "tau_plus": 1.2,
+    "check_interval": 200,
+    "relative_convergence_tolerance": 1e-6,
+    "minimum_steps": 1500,
+    "maximum_steps": {"CH33": 40000, "SP32": 30000, "M0A": 50000},
+    "forces": {"g_low": 5e-7, "g_mid": 1e-6, "g_high": 2e-6}
+  },
+  "openfoam_settings": {
+    "retained_runs": 8,
+    "process_attempt_ceiling": 9,
+    "darcy_only": true,
+    "prescribed_pressure": true,
+    "saturated": true,
+    "extraction_rate": 0.0,
+    "dynamic_viscosity_Pa_s": 0.001,
+    "density_metadata_kg_m3": 1000.0,
+    "delta_x_m": 3e-5,
+    "target_q_m_s": [0.00025,0.0005,0.001],
+    "alternate_porosity": 0.30,
+    "K_B_over_K_A": 0.4,
+    "retained_mpi_ranks": [1,16],
+    "radial_fixture_revision": 2,
+    "radial_fixture_classification": "MESH_CONFORMING_NEAR_EQUAL_AREA",
+    "radial_cells": 512,
+    "radial_grading": 1.0,
+    "radial_interface_face_index": 362,
+    "radial_interface_radius_m": 0.0004786795997912995,
+    "radial_inner_area_fraction": 0.4998931884765625,
+    "radial_outer_area_fraction": 0.5001068115234375,
+    "radial_delta_p_Pa": 0.5315118640909556,
+    "solver_alignment_tolerance": 1e-8
+  },
+  "run_ceilings": {
+    "retained_lbm_runs": 19,
+    "retained_openfoam_runs": 8,
+    "geometries": 3,
+    "random_M0_geometries": 1,
+    "force_levels": 3,
+    "precisions": 1,
+    "cuda_primary_attempts": 1,
+    "cuda_exact_infrastructure_retries": 1,
+    "full_basket_runs": 0,
+    "fines_runs": 0,
+    "morphology_sweeps": 0,
+    "parameter_fits": 0,
+    "openfoam_process_attempts": 9
+  },
+  "thresholds": {
+    "mach_max": 0.05,
+    "Re_L_max": 0.10,
+    "backend_relative_q_max": 0.0025,
+    "backend_relative_K_gross_max": 0.0025,
+    "mid_force_velocity_relative_L2_max": 0.02,
+    "channel_relative_error_max": 0.0075,
+    "force_linearity_R2_min": 0.9999,
+    "q_over_g_max_relative_deviation": 0.01,
+    "normalized_intercept_max": 0.005,
+    "returned_identity_relative_tolerance": 1e-12,
+    "primary_adapter_advantage_min": 5.0,
+    "uniform_relative_error_max": 0.005,
+    "uniform_Q_over_delta_p_relative_deviation_max": 0.005,
+    "porosity_invariance_relative_difference_max": 1e-6,
+    "composition_relative_error_max": 0.01,
+    "serial_mpi_relative_difference_max": 1e-8,
+    "flux_imbalance_relative_max": 1e-6
+  },
+  "gates": ["G0_AUTHORITY_AND_PROTOCOL_FREEZE","G1_GEOMETRY_IDENTITY_AND_CONNECTIVITY","G2_LBM_BACKEND_AND_LINEAR_REGIME","G3_REFERENCE_VOLUME_AND_ADAPTER","G4_UNIFORM_OPENFOAM_CLOSURE_CONSUMPTION","G5_SERIES_AND_PARALLEL_COMPOSITION","G6_PROVENANCE_AND_REPOSITORY_QUALIFICATION"],
+  "claim_ceiling": {
+    "physical_validation": "NOT_ESTABLISHED",
+    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
+    "direct_validation_of_espressoWholePullFoam": false,
+    "independent_data_gate": "UNCHANGED"
+  }
+}
