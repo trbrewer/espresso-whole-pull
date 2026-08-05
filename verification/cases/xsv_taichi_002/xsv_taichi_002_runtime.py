@@ -237,13 +237,13 @@ def run_cuda(args: argparse.Namespace) -> None:
     verify_puckworks(puckworks)
     manifest = json.loads(GEOMETRY_MANIFEST_PATH.read_text())
     row = matrix_row(args.run_id)
-    geometry = next(item for item in manifest["geometries"] if item["mask_id"] == row["mask_id"])
+    geometry = next(item for item in manifest["geometries"] if item["mask_id"] == row["geometry_id"])
     evidence = Path(args.evidence_root).resolve()
-    mask_path = evidence / "geometry/repeat_a" / f"{row['mask_id']}.uint8"
+    mask_path = evidence / "geometry/repeat_a" / f"{row['geometry_id']}.uint8"
     if sha256_file(mask_path) != geometry["payload_sha256"]:
         raise RuntimeError("frozen mask mismatch")
     solid = np.frombuffer(mask_path.read_bytes(), dtype=np.uint8).reshape(geometry["shape"]).astype(bool)
-    permutation = tuple(int(v) for v in row["permutation"].split(";"))
+    permutation = tuple(int(v) for v in row["axis_permutation"].split(";"))
     solid = np.transpose(solid, permutation)
     direction = row["direction"].lower()
     if not geometry[f"through_{direction}"]:
@@ -259,11 +259,11 @@ def run_cuda(args: argparse.Namespace) -> None:
         architecture = str(module.ti.lang.impl.current_cfg().arch)
         if architecture != "Arch.cuda" or str(module.ti.lang.impl.current_cfg().default_fp) != "f64":
             raise RuntimeError(f"CUDA float64 unavailable: {architecture}")
-        result = module.solve(solid, g=float(row["g_lu"]), tau_plus=1.2, max_steps=50000, check=200, rtol=1e-6, min_steps=1500, verbose=True)
+        result = module.solve(solid, g=float(row["force_lu"]), tau_plus=1.2, max_steps=50000, check=200, rtol=1e-6, min_steps=1500, verbose=True)
     (output / "solver.log").write_text("STDOUT\n" + stdout.getvalue() + "\nSTDERR\n" + stderr.getvalue(), encoding="utf-8")
     ux = np.asarray(result["ux"], dtype=np.float64)
     np.save(output / "ux.npy", ux, allow_pickle=False)
-    phi = float(result["phi"]); q = float(result["q"]); nu = float(result["nu"]); g = float(row["g_lu"])
+    phi = float(result["phi"]); q = float(result["q"]); nu = float(result["nu"]); g = float(row["force_lu"])
     u_void = q / phi; k_gross = nu * q / g; k_void = nu * u_void / g
     u_max = float(np.max(np.abs(ux[~solid]))); mach = math.sqrt(3.0) * u_max; reynolds = u_void * solid.shape[0] / nu
     converged = int(result["steps"]) < 50000
@@ -275,7 +275,7 @@ def run_cuda(args: argparse.Namespace) -> None:
     elif reynolds > 0.10: disposition = "LBM_REYNOLDS_LIMIT_EXCEEDED"
     elif abs(float(result["k"]) - k_void) / max(abs(k_void), 1e-300) > 1e-12: disposition = "LBM_RETURNED_IDENTITY_MISMATCH"
     else: disposition = "RUN_LEVEL_PASS_PENDING_MATRIX_GATES"
-    record = {"schema_version": "espresso.whole_pull.xsv_taichi_002.lbm_run.v1", "task": "XSV-TAICHI-002", "run_id": args.run_id, "run_order": int(row["run_order"]), "mask_id": row["mask_id"], "physical_direction": row["direction"], "permutation": list(permutation), "force_level": row["force_level"], "g_lu": g, "tau_plus": 1.2, "nu_lu": nu, "check_interval": 200, "relative_convergence_tolerance": 1e-6, "minimum_steps": 1500, "maximum_steps": 50000, "completed_steps": int(result["steps"]), "converged": converged, "actual_architecture": architecture, "precision": "float64", "q_box_lu": q, "phi_gross": phi, "phi_directionally_connected": geometry[f"phi_connected_{direction}"], "u_void_lu": u_void, "k_puckworks_returned": float(result["k"]), "K_gross_lu": k_gross, "K_void_lu": k_void, "gross_area_identity_residual": abs(phi * float(result["k"]) - k_gross) / max(abs(k_gross), 1e-300), "u_max_lu": u_max, "Mach": mach, "Re_L": reynolds, "mask_payload_sha256": geometry["payload_sha256"], "puckworks_commit": PUCKWORKS_COMMIT, "puckworks_tree": PUCKWORKS_TREE, "puckworks_source_hashes": PUCKWORKS_FILES, "output_field_sha256": sha256_file(output / "ux.npy"), "log_sha256": sha256_file(output / "solver.log"), "wall_clock_seconds": float(result["seconds"]), "python": platform.python_version(), "numpy": np.__version__, "typed_disposition": disposition}
+    record = {"schema_version": "espresso.whole_pull.xsv_taichi_002.lbm_run.v1", "task": "XSV-TAICHI-002", "run_id": args.run_id, "run_order": int(row["run_order"]), "mask_id": row["geometry_id"], "physical_direction": row["direction"], "permutation": list(permutation), "force_level": row["force_level"], "g_lu": g, "tau_plus": 1.2, "nu_lu": nu, "check_interval": 200, "relative_convergence_tolerance": 1e-6, "minimum_steps": 1500, "maximum_steps": 50000, "completed_steps": int(result["steps"]), "converged": converged, "actual_architecture": architecture, "precision": "float64", "q_box_lu": q, "phi_gross": phi, "phi_directionally_connected": geometry[f"phi_connected_{direction}"], "u_void_lu": u_void, "k_puckworks_returned": float(result["k"]), "K_gross_lu": k_gross, "K_void_lu": k_void, "gross_area_identity_residual": abs(phi * float(result["k"]) - k_gross) / max(abs(k_gross), 1e-300), "u_max_lu": u_max, "Mach": mach, "Re_L": reynolds, "mask_payload_sha256": geometry["payload_sha256"], "puckworks_commit": PUCKWORKS_COMMIT, "puckworks_tree": PUCKWORKS_TREE, "puckworks_source_hashes": PUCKWORKS_FILES, "output_field_sha256": sha256_file(output / "ux.npy"), "log_sha256": sha256_file(output / "solver.log"), "wall_clock_seconds": float(result["seconds"]), "python": platform.python_version(), "numpy": np.__version__, "typed_disposition": disposition}
     (output / "run.json").write_bytes(canonical_json(record))
     print(json.dumps(record, sort_keys=True))
 

@@ -180,6 +180,10 @@ class XSVTaichi002ProtocolTests(unittest.TestCase):
             self.assertIn(f"def {entrypoint}(", runtime)
         self.assertIn("arch=\"gpu\", dtype=\"f64\"", runtime)
         self.assertIn("refusing to overwrite", runtime)
+        for matrix_field in ("geometry_id", "axis_permutation", "force_lu"):
+            self.assertIn(f'row["{matrix_field}"]', runtime)
+        for stale_field in ('row["mask_id"]', 'row["permutation"]', 'row["g_lu"]'):
+            self.assertNotIn(stale_field, runtime)
 
 
 if __name__ == "__main__":

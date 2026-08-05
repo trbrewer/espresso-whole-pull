@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 298,
-  "total_uncompressed_bytes_excluding_manifest": 3962381,
-  "aggregate_source_sha256": "721fcbfa3c45083d881767d68249d2e32fd338ca6788e7e7d33d599c09e0f131",
-  "aggregate_sha256": "721fcbfa3c45083d881767d68249d2e32fd338ca6788e7e7d33d599c09e0f131",
+  "total_uncompressed_bytes_excluding_manifest": 3963064,
+  "aggregate_source_sha256": "9a9bb35f44e1b7fa479f0d3b561d504705a60ae2f9027b723534ffe46cb93cf3",
+  "aggregate_sha256": "9a9bb35f44e1b7fa479f0d3b561d504705a60ae2f9027b723534ffe46cb93cf3",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1429,8 +1429,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_002.py": {
-      "sha256": "9ecbd08f5c3a0f2c5afdcf686c9a847023c4eed2a9ffa15e5600f67bdd455c34",
-      "bytes": 9569,
+      "sha256": "7b4205704bdca39f845af68a595a0e0d97d111e56fb6c591ef1a211f0063d90e",
+      "bytes": 9842,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_ARTIFACT_MANIFEST.json": {
@@ -1504,8 +1504,8 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_STAGE_AUTHORIZATION.json": {
-      "sha256": "ad3a065f1595bffacf50f3c6a0d39967cd8b8a4d56e9e780a53811f94451ec15",
-      "bytes": 4064,
+      "sha256": "76a7e5f756efd2e16733e8cc9764b3465fdadc7b5827833cc80d4075d88245ee",
+      "bytes": 4449,
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/XSV_TAICHI_002_TARGET.json": {
@@ -1519,8 +1519,8 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_taichi_002/xsv_taichi_002_runtime.py": {
-      "sha256": "5fe3879ca3185d929c837b3836d0b2d73ce88f7a56b6878595274a93f670631e",
-      "bytes": 15234,
+      "sha256": "eba6a783233fbe0b19d20a4dd25afb84464b0526018c5ab821dfef6495e8c5dd",
+      "bytes": 15259,
       "git_mode": "100644"
     }
   }
