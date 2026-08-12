@@ -86,9 +86,14 @@ no axial, transverse, localization or topology REV is claimed.
 
 Regenerated solid-fraction states showed the expected strong trend but also
 large overlap: mean K was 2.643 at nominal phi_s=0.50, 1.516 at 0.55, 0.849
-for seven converged 0.60 cases, and 0.633 at 0.64. These are independently
-regenerated states, not a compression trajectory. They do not identify how a
-real bed moves between states.
+for seven converged 0.60 cases, and 0.633 at 0.64. The solid-fraction states
+were regenerated using the same seeded sphere-placement sequence at different
+stopping thresholds. Same-seed states are therefore nested/common-RNG
+relatives, not independent realizations and not a physical compression
+trajectory. They do not identify how a real bed moves between states. The
+prospectively frozen `RELATED_NON_NESTED` field remains preserved as
+`frozen_relation`; derived analysis uses
+`analysis_relation=RELATED_NESTED_COMMON_RNG`.
 
 Paired static restriction ratios were:
 
@@ -150,8 +155,11 @@ and their parents, and same-seed common-RNG solid-fraction states in one fold:
 Connected porosity, interfacial area, pore-distance and Euler connectivity add
 material predictive information. The present fabric/state labels add no
 cross-validated improvement beyond those topology descriptors. Remaining
-variance is too large for a deterministic K. The provisional recommendation
-is a conditional lognormal distribution for Kx with explicit residual
+variance is too large for a deterministic K. The parsimony-selected
+recommendation is `B_porosity_topology`, because the additional synthetic
+fabric/state labels change grouped CV R² by only about 0.00122 and RMSE(log K)
+by about 0.00074. The recommended closure is a conditional lognormal
+distribution for Kx with explicit residual
 realization variance, and an empirical distribution for K_perp/Kx. Its
 interpolation domain is limited to the tested synthetic states; extrapolation
 to real coffee, dynamic pressure causation, or subvoxel fines is prohibited.
@@ -176,7 +184,7 @@ remains the continuum-integration disposition.
 ## 10. Limitations and prohibited interpretations
 
 The boxes span about 1.2–8.0 characteristic diameters; resolution was not
-fully adjudicated; ten primary and one inertial identity did not converge;
+fully adjudicated; seventeen primary and one inertial identity did not converge;
 the bimodal proxy was not executable; descriptors are voxelized proxies; and
 no morphology range is physically calibrated to coffee. The static
 transformation does not reveal whether pressure, fines, swelling, compaction,

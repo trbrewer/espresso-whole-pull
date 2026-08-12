@@ -101,6 +101,22 @@ def assign_physical_lineages(records):
     return labels
 
 
+def apply_analysis_relationships(records):
+    """Preserve frozen relations while correcting derived analysis semantics."""
+    corrected = []
+    for record in records:
+        row = dict(record)
+        frozen = str(row["relation"])
+        row["frozen_relation"] = frozen
+        row["analysis_relation"] = (
+            "RELATED_NESTED_COMMON_RNG"
+            if row.get("family") == "SOLID_FRACTION"
+            else frozen
+        )
+        corrected.append(row)
+    return corrected
+
+
 def target_disposition(ratios, connected_retentions, *, target=0.373506,
                        minimum_valid_n=8, majority_fraction=0.75,
                        topology_retention_min=0.25, seed=20260812):

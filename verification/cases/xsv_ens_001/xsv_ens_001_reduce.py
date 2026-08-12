@@ -4,7 +4,7 @@ from pathlib import Path
 import argparse, csv, glob, hashlib, json, math
 import numpy as np
 import pandas as pd
-from xsv_ens_001_analysis import (assign_physical_lineages,
+from xsv_ens_001_analysis import (apply_analysis_relationships, assign_physical_lineages,
     bootstrap_log_mean_precision, rve_adjudication, target_disposition)
 
 CASE=Path(__file__).resolve().parent
@@ -23,12 +23,12 @@ def geom_mean(x): return float(np.exp(np.mean(np.log(np.asarray(x,float)))))
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--evidence",required=True); a=ap.parse_args(); root=Path(a.evidence)
-    raw=[json.loads(Path(p).read_text()) for p in sorted(glob.glob(str(root/"runs/*/result.json")))]; rows=[flatten(r) for r in raw]; df=pd.DataFrame(rows)
+    raw=[json.loads(Path(p).read_text()) for p in sorted(glob.glob(str(root/"runs/*/result.json")))]; rows=apply_analysis_relationships(flatten(r) for r in raw); df=pd.DataFrame(rows)
     df.to_csv(CASE/"XSV_ENS_001_REALIZATION_RESULTS.csv",index=False)
     unique_records=df.drop_duplicates("geometry_id").to_dict("records")
     lineages=assign_physical_lineages(unique_records)
     df["physical_lineage_id"]=df.geometry_id.map(lineages)
-    geom=df.drop_duplicates("geometry_id")[["geometry_id","physical_lineage_id","family","L","voxel_um","seed","relation","parent_id","geometry_sha256","phi_gross","phi_connected_x","phi_connected_y","phi_connected_z","solid_fraction","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","pore_distance_q90","euler_characteristic","state_phis","state_amp","state_hlen","restriction_fraction"]]
+    geom=df.drop_duplicates("geometry_id")[["geometry_id","physical_lineage_id","family","L","voxel_um","seed","relation","frozen_relation","analysis_relation","parent_id","geometry_sha256","phi_gross","phi_connected_x","phi_connected_y","phi_connected_z","solid_fraction","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","pore_distance_q90","euler_characteristic","state_phis","state_amp","state_hlen","restriction_fraction"]]
     geom.to_csv(CASE/"XSV_ENS_001_GEOMETRY_MANIFEST.csv",index=False)
     df[["case_id","geometry_id","status","direction","force","precision","steps","wall_seconds","Mach"]].to_csv(CASE/"XSV_ENS_001_RUN_MANIFEST.csv",index=False)
     passed=df[df.status=="PASS"].copy(); desc=passed[["case_id","geometry_id","family","direction","phi_gross","phi_connected_x","phi_connected_y","phi_connected_z","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","pore_distance_q90","euler_characteristic","velocity_cv","flux_gini","top_10_flow_share","top_25_flow_share","normalized_flow_entropy"]]
@@ -81,8 +81,7 @@ def main():
     for name,features in models.items():
       pred=cross_val_predict(make_pipeline(SimpleImputer(),StandardScaler(),Ridge(alpha=1.0)),x[features],y,groups=groups,cv=cv); resid=y-pred; sd=float(np.std(resid,ddof=1)); covered=float(np.mean(np.abs(resid)<=1.96*sd))
       scores.append({"model":name,"features":features,"physical_lineage_group_count":len(set(groups)),"unique_physical_geometry_count":len(x),"grouped_cv_R2_logK":float(r2_score(y,pred)),"grouped_cv_RMSE_logK":float(mean_squared_error(y,pred)**.5),"residual_sd_logK":sd,"nominal_95_predictive_factor":float(np.exp(1.96*sd)),"empirical_out_of_fold_95_interval_coverage":covered})
-    best=max(scores,key=lambda q:q["grouped_cv_R2_logK"])
-    closure={"schema_version":"espresso.whole_pull.xsv_ens_001.closure.v1","models":scores,"recommended_model":best["model"],"uncertainty_treatment":"LOGNORMAL_CONDITIONAL_DISTRIBUTION_WITH_RESIDUAL_REALIZATION_VARIANCE","deterministic_single_K_defensible":False,"interpolation_domain":{"phi_gross":[float(x.phi_gross.min()),float(x.phi_gross.max())],"heterogeneity_amplitude":[0,2],"restriction_fraction":[0,.4]},"prohibited_extrapolation":["REAL_COFFEE_MICROSTRUCTURE","DYNAMIC_PRESSURE_CAUSATION","SUBVOXEL_FINES"],"continuum_integration":"NO_NEW_PRODUCTION_PHYSICS_YET"}; dump(CASE/"XSV_ENS_001_CLOSURE_RECOMMENDATION.json",closure)
+    closure={"schema_version":"espresso.whole_pull.xsv_ens_001.closure.v1","models":scores,"recommended_model":"B_porosity_topology","selection_rule":"PARSIMONIOUS_MODEL_WHEN_ADDED_FEATURES_PROVIDE_NO_MATERIAL_GROUPED_CV_GAIN","uncertainty_treatment":"LOGNORMAL_CONDITIONAL_DISTRIBUTION_WITH_RESIDUAL_REALIZATION_VARIANCE","deterministic_single_K_defensible":False,"interpolation_domain":{"phi_gross":[float(x.phi_gross.min()),float(x.phi_gross.max())],"heterogeneity_amplitude":[0,2],"restriction_fraction":[0,.4]},"prohibited_extrapolation":["REAL_COFFEE_MICROSTRUCTURE","DYNAMIC_PRESSURE_CAUSATION","SUBVOXEL_FINES"],"continuum_integration":"NO_NEW_PRODUCTION_PHYSICS_YET"}; dump(CASE/"XSV_ENS_001_CLOSURE_RECOMMENDATION.json",closure)
     iraw=[json.loads(Path(p).read_text()) for p in sorted(glob.glob(str(root/"inertial/*/result.json")))]; ifits=[]
     for parent in sorted({r["parent_case_id"] for r in iraw}):
       z=sorted([r for r in iraw if r["parent_case_id"]==parent and r["status"]=="PASS"],key=lambda r:r["force"])

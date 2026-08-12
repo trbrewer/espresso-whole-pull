@@ -56,6 +56,32 @@ class XsvEns001Tests(unittest.TestCase):
               {"geometry_id":"SF60","geometry_sha256":"h4","family":"SOLID_FRACTION","L":40,"seed":1,"voxel_um":30,"parent_id":""}]
         labels=analysis.assign_physical_lineages(rows)
         self.assertEqual(labels["A"],labels["DUP"]); self.assertEqual(labels["A"],labels["CHILD"]); self.assertEqual(labels["SF50"],labels["SF60"])
+    def test_solid_fraction_derived_rows_use_common_rng_analysis_relation(self):
+        rows=analysis.apply_analysis_relationships([
+            {"family":"SOLID_FRACTION","relation":"RELATED_NON_NESTED"},
+            {"family":"BASELINE","relation":"INDEPENDENT_REALIZATIONS"},
+        ])
+        self.assertEqual(rows[0]["frozen_relation"],"RELATED_NON_NESTED")
+        self.assertEqual(rows[0]["analysis_relation"],"RELATED_NESTED_COMMON_RNG")
+        self.assertNotEqual(rows[0]["analysis_relation"],"RELATED_NON_NESTED")
+        self.assertEqual(rows[1]["analysis_relation"],"INDEPENDENT_REALIZATIONS")
+        import csv
+        for name in ("XSV_ENS_001_REALIZATION_RESULTS.csv",
+                     "XSV_ENS_001_GEOMETRY_MANIFEST.csv",
+                     "XSV_ENS_001_PLOT_SOURCE.csv"):
+            with (CASE/name).open() as f:
+                derived=[row for row in csv.DictReader(f)
+                         if row["family"]=="SOLID_FRACTION"]
+            self.assertTrue(derived)
+            self.assertTrue(all(row["frozen_relation"]=="RELATED_NON_NESTED"
+                                for row in derived))
+            self.assertTrue(all(row["analysis_relation"]=="RELATED_NESTED_COMMON_RNG"
+                                for row in derived))
+    def test_closure_recommendation_uses_parsimony(self):
+        closure=json.loads((CASE/"XSV_ENS_001_CLOSURE_RECOMMENDATION.json").read_text())
+        self.assertEqual(closure["recommended_model"],"B_porosity_topology")
+        self.assertEqual(closure["selection_rule"],
+                         "PARSIMONIOUS_MODEL_WHEN_ADDED_FEATURES_PROVIDE_NO_MATERIAL_GROUPED_CV_GAIN")
     def test_robust_target_requires_minimum_valid_n(self):
         self.assertEqual(analysis.target_disposition([.2,.25,.3],[.6,.6,.6]),"TARGET_ATTAINMENT_UNRESOLVED_UNCERTAINTY")
         self.assertEqual(analysis.target_disposition([.2]*8,[.6]*8),"ROBUST_TARGET_ATTAINMENT_WITHOUT_TOPOLOGY_LOSS")

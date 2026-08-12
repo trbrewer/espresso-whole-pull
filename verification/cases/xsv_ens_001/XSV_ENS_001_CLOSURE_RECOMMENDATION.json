@@ -74,7 +74,8 @@
     "DYNAMIC_PRESSURE_CAUSATION",
     "SUBVOXEL_FINES"
   ],
-  "recommended_model": "C_topology_fabric_state",
+  "recommended_model": "B_porosity_topology",
   "schema_version": "espresso.whole_pull.xsv_ens_001.closure.v1",
+  "selection_rule": "PARSIMONIOUS_MODEL_WHEN_ADDED_FEATURES_PROVIDE_NO_MATERIAL_GROUPED_CV_GAIN",
   "uncertainty_treatment": "LOGNORMAL_CONDITIONAL_DISTRIBUTION_WITH_RESIDUAL_REALIZATION_VARIANCE"
 }
