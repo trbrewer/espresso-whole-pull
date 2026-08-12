@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 322,
-  "total_uncompressed_bytes_excluding_manifest": 4428680,
-  "aggregate_source_sha256": "06129cdd7f36d2af33dd44ecd0240179ee84e548bcfc30772ae164b80a5e9048",
-  "aggregate_sha256": "06129cdd7f36d2af33dd44ecd0240179ee84e548bcfc30772ae164b80a5e9048",
+  "file_count": 327,
+  "total_uncompressed_bytes_excluding_manifest": 4488068,
+  "aggregate_source_sha256": "02b352344b1ee09bd0d4de2c6b1cde8b1600998ed0ae74f9ccab704721c24cab",
+  "aggregate_sha256": "02b352344b1ee09bd0d4de2c6b1cde8b1600998ed0ae74f9ccab704721c24cab",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -444,8 +444,8 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "de499438c5c395d2b4639a46576fd16d1955c4ebc37a299db253f15786c9f790",
-      "bytes": 46003,
+      "sha256": "6b70cd3c0369536534973a3aa5b1221edec59129d28f2772b849c844d21710b8",
+      "bytes": 46405,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
@@ -518,9 +518,24 @@
       "bytes": 2160,
       "git_mode": "100644"
     },
+    "docs/strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md": {
+      "sha256": "7d335991f443394ee9b1471a11d4ba56eae3ed9b5cda26e44db83f79e0e19114",
+      "bytes": 7996,
+      "git_mode": "100644"
+    },
     "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md": {
       "sha256": "5f8bc4bfbe8089d7ff6ff44955230f059a84df96c3903bfe064448abf8aef703",
       "bytes": 123447,
+      "git_mode": "100644"
+    },
+    "docs/validation/SCI_MD_001_PRESSURE_GRIND_MECHANISM_DISCRIMINATION_PROTOCOL.md": {
+      "sha256": "6965ac93823e48b943508a4aabb220a4c1591f59562502f8bfccaa23e04541c3",
+      "bytes": 5281,
+      "git_mode": "100644"
+    },
+    "docs/validation/SCI_MD_001_PRESSURE_GRIND_MECHANISM_DISCRIMINATION_RESULT.md": {
+      "sha256": "d88a1459b7c430361e6a230f5cbc0b713c206199eb37740dae41d49f2131235b",
+      "bytes": 13330,
       "git_mode": "100644"
     },
     "docs/validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md": {
@@ -993,6 +1008,11 @@
       "bytes": 274,
       "git_mode": "100755"
     },
+    "scripts/sci_md_001.py": {
+      "sha256": "3784004804bc4e6e15149a53d3e6edcad1597ef4308cd69883743a0d788aa875",
+      "bytes": 26943,
+      "git_mode": "100755"
+    },
     "scripts/static_validate.py": {
       "sha256": "161d865ddea9484828a303390dd4eea4cd5885b66e39cdd5fc32ffcc4ecf1c61",
       "bytes": 30529,
@@ -1301,6 +1321,11 @@
     "tests/test_reference_case.py": {
       "sha256": "268ed2e331d6f3c99576996eb7fb5751c1c1ebd64819f46f94bcf13cb8b04558",
       "bytes": 66862,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_001.py": {
+      "sha256": "b71462cbfea992c51a0db543960d7644ccb66ce8d5c0d4d7d30f147e277f79ce",
+      "bytes": 5436,
       "git_mode": "100644"
     },
     "tests/test_val001_administrative_semantics.py": {

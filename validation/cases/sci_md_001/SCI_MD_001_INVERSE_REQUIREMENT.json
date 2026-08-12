@@ -1,0 +1,142 @@
+{
+  "density_effect": "absolute Q-derived C and K scale inversely with density; ordering and ratios are invariant",
+  "density_sensitivity_kg_m3": [
+    965,
+    997,
+    1000
+  ],
+  "interpretation": "Effective conductance must fall strongly with pressure; the terminal 11/5 ratio is about 0.373. A static pressure-independent Darcy resistance, positive Forchheimer term with fixed coefficients, or a prescribed basket-pressure relabeling cannot supply that state change.",
+  "required_power_law_exponents_n_for_K_proportional_p_minus_n": {
+    "5_to_11": 1.1735725815259854,
+    "5_to_9": 1.1782781596830232,
+    "9_to_11": 1.1559261141874289
+  },
+  "rows": [
+    {
+      "mean_conductance_m3_s_pa": 1.7812103177642198e-12,
+      "mean_permeability_m2": 1.685424653736392e-14,
+      "mean_resistance_pa_s_m3": 36415216751149.6,
+      "mean_source_flow_g_s": 0.7936910811688311,
+      "mean_source_pressure_bar": 4.676217516233766,
+      "pressure_nominal_bar": 5,
+      "sample_count": 308,
+      "window": "early"
+    },
+    {
+      "mean_conductance_m3_s_pa": 4.3715508528521724e-12,
+      "mean_permeability_m2": 4.136468057128502e-14,
+      "mean_resistance_pa_s_m3": 228805284959.11346,
+      "mean_source_flow_g_s": 1.9137520630630631,
+      "mean_source_pressure_bar": 4.5367968888888885,
+      "pressure_nominal_bar": 5,
+      "sample_count": 333,
+      "window": "middle"
+    },
+    {
+      "mean_conductance_m3_s_pa": 4.60769271716337e-12,
+      "mean_permeability_m2": 4.3599112496140114e-14,
+      "mean_resistance_pa_s_m3": 217066110350.43277,
+      "mean_source_flow_g_s": 2.006155282282282,
+      "mean_source_pressure_bar": 4.511959738738739,
+      "pressure_nominal_bar": 5,
+      "sample_count": 333,
+      "window": "late"
+    },
+    {
+      "mean_conductance_m3_s_pa": 4.734260228946841e-12,
+      "mean_permeability_m2": 4.479672516767289e-14,
+      "mean_resistance_pa_s_m3": 211226242673.7059,
+      "mean_source_flow_g_s": 2.056292,
+      "mean_source_pressure_bar": 4.500962,
+      "pressure_nominal_bar": 5,
+      "sample_count": 1,
+      "window": "terminal"
+    },
+    {
+      "mean_conductance_m3_s_pa": 4.4097876947927785e-13,
+      "mean_permeability_m2": 4.172648689727021e-15,
+      "mean_resistance_pa_s_m3": 70769644209915.14,
+      "mean_source_flow_g_s": 0.3761853043478261,
+      "mean_source_pressure_bar": 8.885272882943145,
+      "pressure_nominal_bar": 9,
+      "sample_count": 299,
+      "window": "early"
+    },
+    {
+      "mean_conductance_m3_s_pa": 2.2196697097644574e-12,
+      "mean_permeability_m2": 2.100305626280416e-14,
+      "mean_resistance_pa_s_m3": 456590687774.6292,
+      "mean_source_flow_g_s": 1.8632403393393393,
+      "mean_source_pressure_bar": 8.701364651651652,
+      "pressure_nominal_bar": 9,
+      "sample_count": 333,
+      "window": "middle"
+    },
+    {
+      "mean_conductance_m3_s_pa": 2.247087679261862e-12,
+      "mean_permeability_m2": 2.1262491778562473e-14,
+      "mean_resistance_pa_s_m3": 445114791519.78906,
+      "mean_source_flow_g_s": 1.8878569189189187,
+      "mean_source_pressure_bar": 8.706164024024023,
+      "pressure_nominal_bar": 9,
+      "sample_count": 333,
+      "window": "late"
+    },
+    {
+      "mean_conductance_m3_s_pa": 2.1688844790571433e-12,
+      "mean_permeability_m2": 2.0522514021238684e-14,
+      "mean_resistance_pa_s_m3": 461066511220.88336,
+      "mean_source_flow_g_s": 1.827218,
+      "mean_source_pressure_bar": 8.730249,
+      "pressure_nominal_bar": 9,
+      "sample_count": 1,
+      "window": "terminal"
+    },
+    {
+      "mean_conductance_m3_s_pa": 3.303155518032228e-13,
+      "mean_permeability_m2": 3.125526328752076e-15,
+      "mean_resistance_pa_s_m3": 107832551167403.1,
+      "mean_source_flow_g_s": 0.33676940863787375,
+      "mean_source_pressure_bar": 10.619915853820599,
+      "pressure_nominal_bar": 11,
+      "sample_count": 301,
+      "window": "early"
+    },
+    {
+      "mean_conductance_m3_s_pa": 1.7015232365716552e-12,
+      "mean_permeability_m2": 1.610022793615335e-14,
+      "mean_resistance_pa_s_m3": 601649456298.1107,
+      "mean_source_flow_g_s": 1.7128964684684687,
+      "mean_source_pressure_bar": 10.43619263063063,
+      "pressure_nominal_bar": 11,
+      "sample_count": 333,
+      "window": "middle"
+    },
+    {
+      "mean_conductance_m3_s_pa": 1.821391134121484e-12,
+      "mean_permeability_m2": 1.7234447223495093e-14,
+      "mean_resistance_pa_s_m3": 549083635167.0305,
+      "mean_source_flow_g_s": 1.8309902762762762,
+      "mean_source_pressure_bar": 10.417323345345347,
+      "pressure_nominal_bar": 11,
+      "sample_count": 333,
+      "window": "late"
+    },
+    {
+      "mean_conductance_m3_s_pa": 1.7682756602856613e-12,
+      "mean_permeability_m2": 1.6731855653005236e-14,
+      "mean_resistance_pa_s_m3": 565522685438.3395,
+      "mean_source_flow_g_s": 1.777572,
+      "mean_source_pressure_bar": 10.417174,
+      "pressure_nominal_bar": 11,
+      "sample_count": 1,
+      "window": "terminal"
+    }
+  ],
+  "terminal_conductance_ratios": {
+    "11_over_5": 0.37350622373350667,
+    "11_over_9": 0.8152926895647137,
+    "9_over_5": 0.4581253193045584
+  },
+  "terminal_source_flow_order_pass": true
+}

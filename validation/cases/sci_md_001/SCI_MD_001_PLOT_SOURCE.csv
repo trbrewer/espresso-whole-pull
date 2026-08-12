@@ -1,0 +1,1513 @@
+panel,series,x,y,unit,role
+measured_pressure,source_5bar,0.0,4.379169,bar,SOURCE_MEASURED
+measured_flow,source_5bar,0.0,0.03607,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,0.0,8.535463769945601e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,0.600601,4.318831,bar,SOURCE_MEASURED
+measured_flow,source_5bar,0.600601,0.021653,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,0.600601,5.195466543819824e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,1.201201,4.453873,bar,SOURCE_MEASURED
+measured_flow,source_5bar,1.201201,0.007239,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,1.201201,1.6842766742888895e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,1.801802,4.644333,bar,SOURCE_MEASURED
+measured_flow,source_5bar,1.801802,-0.0069,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,1.801802,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,2.402402,4.846629,bar,SOURCE_MEASURED
+measured_flow,source_5bar,2.402402,0.002324,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,2.402402,4.969000423676775e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,3.003003,4.854815,bar,SOURCE_MEASURED
+measured_flow,source_5bar,3.003003,-0.004425,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,3.003003,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,3.603604,4.811254,bar,SOURCE_MEASURED
+measured_flow,source_5bar,3.603604,-0.002234,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,3.603604,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,4.204204,4.836507,bar,SOURCE_MEASURED
+measured_flow,source_5bar,4.204204,-5.8e-05,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,4.204204,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,4.804805,4.836858,bar,SOURCE_MEASURED
+measured_flow,source_5bar,4.804805,0.015936,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,4.804805,3.414197736899801e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,5.405405,4.809991,bar,SOURCE_MEASURED
+measured_flow,source_5bar,5.405405,0.004279,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,5.405405,9.218721804659737e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,6.006006,4.797824,bar,SOURCE_MEASURED
+measured_flow,source_5bar,6.006006,0.008474,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,6.006006,1.830277048565989e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,6.606607,4.785995,bar,SOURCE_MEASURED
+measured_flow,source_5bar,6.606607,0.012613,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,6.606607,2.7309820259410055e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,7.207207,4.789118,bar,SOURCE_MEASURED
+measured_flow,source_5bar,7.207207,0.00373,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,7.207207,8.070974601363474e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,7.807808,4.772212,bar,SOURCE_MEASURED
+measured_flow,source_5bar,7.807808,0.003844,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,7.807808,8.347113852274733e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,8.408408,4.80306,bar,SOURCE_MEASURED
+measured_flow,source_5bar,8.408408,0.028897,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,8.408408,6.23458331151542e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,9.009009,4.767631,bar,SOURCE_MEASURED
+measured_flow,source_5bar,9.009009,0.044642,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,9.009009,9.703171217817206e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,9.60961,4.766103,bar,SOURCE_MEASURED
+measured_flow,source_5bar,9.60961,0.067982,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,9.60961,1.4780979008171327e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,10.21021,4.778818,bar,SOURCE_MEASURED
+measured_flow,source_5bar,10.21021,0.102321,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,10.21021,2.218793943446509e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,10.810811,4.77767,bar,SOURCE_MEASURED
+measured_flow,source_5bar,10.810811,0.138783,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,10.810811,3.0101823757371445e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,11.411411,4.791735,bar,SOURCE_MEASURED
+measured_flow,source_5bar,11.411411,0.170475,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,11.411411,3.6867237250825203e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,12.012012,4.791792,bar,SOURCE_MEASURED
+measured_flow,source_5bar,12.012012,0.226918,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,12.012012,4.90731205629329e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,12.612613,4.772244,bar,SOURCE_MEASURED
+measured_flow,source_5bar,12.612613,0.257961,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,12.612613,5.601496873286359e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,13.213213,4.76324,bar,SOURCE_MEASURED
+measured_flow,source_5bar,13.213213,0.301689,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,13.213213,6.563412468884658e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,13.813814,4.778158,bar,SOURCE_MEASURED
+measured_flow,source_5bar,13.813814,0.356858,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,13.813814,7.739405776649286e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,14.414414,4.762052,bar,SOURCE_MEASURED
+measured_flow,source_5bar,14.414414,0.386756,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,14.414414,8.416191584827701e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,15.015015,4.716253,bar,SOURCE_MEASURED
+measured_flow,source_5bar,15.015015,0.428399,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,15.015015,9.41291291126169e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,15.615616,4.709134,bar,SOURCE_MEASURED
+measured_flow,source_5bar,15.615616,0.473572,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,15.615616,1.0421198176320687e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,16.216216,4.717432,bar,SOURCE_MEASURED
+measured_flow,source_5bar,16.216216,0.512689,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,16.216216,1.126214300118866e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,16.816817,4.730998,bar,SOURCE_MEASURED
+measured_flow,source_5bar,16.816817,0.547244,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,16.816817,1.198673573692643e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,17.417417,4.706872,bar,SOURCE_MEASURED
+measured_flow,source_5bar,17.417417,0.590469,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,17.417417,1.2999821836949558e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,18.018018,4.687536,bar,SOURCE_MEASURED
+measured_flow,source_5bar,18.018018,0.634978,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,18.018018,1.4037402382732432e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,18.618619,4.678175,bar,SOURCE_MEASURED
+measured_flow,source_5bar,18.618619,0.699207,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,18.618619,1.548823717321901e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,19.219219,4.714225,bar,SOURCE_MEASURED
+measured_flow,source_5bar,19.219219,0.752226,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,19.219219,1.653524828132207e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,19.81982,4.702448,bar,SOURCE_MEASURED
+measured_flow,source_5bar,19.81982,0.810819,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,19.81982,1.7867862504916189e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,20.42042,4.6661,bar,SOURCE_MEASURED
+measured_flow,source_5bar,20.42042,0.894153,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,20.42042,1.985777029401683e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,21.021021,4.658944,bar,SOURCE_MEASURED
+measured_flow,source_5bar,21.021021,0.972377,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,21.021021,2.1628174959507825e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,21.621622,4.667554,bar,SOURCE_MEASURED
+measured_flow,source_5bar,21.621622,1.033561,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,21.621622,2.2946658322405744e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,22.222222,4.662422,bar,SOURCE_MEASURED
+measured_flow,source_5bar,22.222222,1.087233,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,22.222222,2.416482937931237e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,22.822823,4.654516,bar,SOURCE_MEASURED
+measured_flow,source_5bar,22.822823,1.175571,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,22.822823,2.6172609357351878e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,23.423423,4.662036,bar,SOURCE_MEASURED
+measured_flow,source_5bar,23.423423,1.237973,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,23.423423,2.7517453214207996e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,24.024024,4.623753,bar,SOURCE_MEASURED
+measured_flow,source_5bar,24.024024,1.294948,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,24.024024,2.9022203952216643e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,24.624625,4.6245,bar,SOURCE_MEASURED
+measured_flow,source_5bar,24.624625,1.362334,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,24.624625,3.0527518168887604e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,25.225225,4.660287,bar,SOURCE_MEASURED
+measured_flow,source_5bar,25.225225,1.434208,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,25.225225,3.189129568062549e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,25.825826,4.632037,bar,SOURCE_MEASURED
+measured_flow,source_5bar,25.825826,1.490722,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,25.825826,3.3350114373129994e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,26.426426,4.604532,bar,SOURCE_MEASURED
+measured_flow,source_5bar,26.426426,1.544178,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,26.426426,3.475237995867005e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,27.027027,4.614855,bar,SOURCE_MEASURED
+measured_flow,source_5bar,27.027027,1.609106,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,27.027027,3.6132605629276607e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,27.627628,4.602195,bar,SOURCE_MEASURED
+measured_flow,source_5bar,27.627628,1.661048,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,27.627628,3.740157173367719e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,28.228228,4.613264,bar,SOURCE_MEASURED
+measured_flow,source_5bar,28.228228,1.701334,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,28.228228,3.821676831214888e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,28.828829,4.577837,bar,SOURCE_MEASURED
+measured_flow,source_5bar,28.828829,1.752022,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,28.828829,3.9659927589781785e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,29.429429,4.578884,bar,SOURCE_MEASURED
+measured_flow,source_5bar,29.429429,1.798268,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,29.429429,4.0697474656279005e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,30.03003,4.558206,bar,SOURCE_MEASURED
+measured_flow,source_5bar,30.03003,1.836358,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,30.03003,4.174803986548848e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,30.630631,4.543014,bar,SOURCE_MEASURED
+measured_flow,source_5bar,30.630631,1.85111,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,30.630631,4.222414248917597e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,31.231231,4.552261,bar,SOURCE_MEASURED
+measured_flow,source_5bar,31.231231,1.861918,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,31.231231,4.2384404247981664e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,31.831832,4.529788,bar,SOURCE_MEASURED
+measured_flow,source_5bar,31.831832,1.877483,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,31.831832,4.295075704077032e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,32.432432,4.516305,bar,SOURCE_MEASURED
+measured_flow,source_5bar,32.432432,1.887712,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,32.432432,4.331368759067355e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,33.033033,4.481442,bar,SOURCE_MEASURED
+measured_flow,source_5bar,33.033033,1.887592,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,33.033033,4.36478679409521e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,33.633634,4.46623,bar,SOURCE_MEASURED
+measured_flow,source_5bar,33.633634,1.898778,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,33.633634,4.405607404578184e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,34.234234,4.509436,bar,SOURCE_MEASURED
+measured_flow,source_5bar,34.234234,1.912448,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,34.234234,4.394809902976183e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,34.834835,4.515366,bar,SOURCE_MEASURED
+measured_flow,source_5bar,34.834835,1.905705,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,34.834835,4.373563149026881e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,35.435435,4.497713,bar,SOURCE_MEASURED
+measured_flow,source_5bar,35.435435,1.905561,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,35.435435,4.390397100479652e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,36.036036,4.507658,bar,SOURCE_MEASURED
+measured_flow,source_5bar,36.036036,1.915985,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,36.036036,4.404674631344756e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,36.636637,4.523284,bar,SOURCE_MEASURED
+measured_flow,source_5bar,36.636637,1.921355,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,36.636637,4.4017608683805874e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,37.237237,4.551772,bar,SOURCE_MEASURED
+measured_flow,source_5bar,37.237237,1.905819,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,37.237237,4.338842035391749e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,37.837838,4.561519,bar,SOURCE_MEASURED
+measured_flow,source_5bar,37.837838,1.912747,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,37.837838,4.345309629365385e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,38.438438,4.571848,bar,SOURCE_MEASURED
+measured_flow,source_5bar,38.438438,1.916548,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,38.438438,4.344107904783674e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,39.039039,4.592987,bar,SOURCE_MEASURED
+measured_flow,source_5bar,39.039039,1.917482,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,39.039039,4.326221648950043e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,39.63964,4.588094,bar,SOURCE_MEASURED
+measured_flow,source_5bar,39.63964,1.921649,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,39.63964,4.340246982711421e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,40.24024,4.58021,bar,SOURCE_MEASURED
+measured_flow,source_5bar,40.24024,1.923359,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,40.24024,4.351586793433108e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,40.840841,4.57392,bar,SOURCE_MEASURED
+measured_flow,source_5bar,40.840841,1.927982,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,40.840841,4.3680449336458784e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,41.441441,4.563214,bar,SOURCE_MEASURED
+measured_flow,source_5bar,41.441441,1.926456,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,41.441441,4.3748276130374255e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,42.042042,4.570394,bar,SOURCE_MEASURED
+measured_flow,source_5bar,42.042042,1.911265,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,42.042042,4.333511492068253e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,42.642643,4.566619,bar,SOURCE_MEASURED
+measured_flow,source_5bar,42.642643,1.907857,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,42.642643,4.329360268527684e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,43.243243,4.552244,bar,SOURCE_MEASURED
+measured_flow,source_5bar,43.243243,1.899146,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,43.243243,4.323201794554908e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,43.843844,4.549207,bar,SOURCE_MEASURED
+measured_flow,source_5bar,43.843844,1.900293,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,43.843844,4.328700681330726e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,44.444444,4.549583,bar,SOURCE_MEASURED
+measured_flow,source_5bar,44.444444,1.908118,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,44.444444,4.346166126283675e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,45.045045,4.545295,bar,SOURCE_MEASURED
+measured_flow,source_5bar,45.045045,1.907333,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,45.045045,4.348476569351418e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,45.645646,4.548614,bar,SOURCE_MEASURED
+measured_flow,source_5bar,45.645646,1.905614,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,45.645646,4.341387362565293e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,46.246246,4.557717,bar,SOURCE_MEASURED
+measured_flow,source_5bar,46.246246,1.908324,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,46.246246,4.338878047571178e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,46.846847,4.556218,bar,SOURCE_MEASURED
+measured_flow,source_5bar,46.846847,1.888615,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,46.846847,4.295479254147421e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,47.447447,4.544101,bar,SOURCE_MEASURED
+measured_flow,source_5bar,47.447447,1.905884,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,47.447447,4.3463147637450625e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,48.048048,4.571396,bar,SOURCE_MEASURED
+measured_flow,source_5bar,48.048048,1.891597,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,48.048048,4.287977119194488e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,48.648649,4.572975,bar,SOURCE_MEASURED
+measured_flow,source_5bar,48.648649,1.887334,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,48.648649,4.276836257572826e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,49.249249,4.561413,bar,SOURCE_MEASURED
+measured_flow,source_5bar,49.249249,1.885022,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,49.249249,4.282424489023751e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,49.84985,4.562449,bar,SOURCE_MEASURED
+measured_flow,source_5bar,49.84985,1.893673,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,49.84985,4.301101098148182e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,50.45045,4.54469,bar,SOURCE_MEASURED
+measured_flow,source_5bar,50.45045,1.882364,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,50.45045,4.2921217276207e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,51.051051,4.529596,bar,SOURCE_MEASURED
+measured_flow,source_5bar,51.051051,1.882953,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,51.051051,4.307771889864687e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,51.651652,4.528665,bar,SOURCE_MEASURED
+measured_flow,source_5bar,51.651652,1.862387,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,51.651652,4.261597435504518e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,52.252252,4.524378,bar,SOURCE_MEASURED
+measured_flow,source_5bar,52.252252,1.876991,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,52.252252,4.299084633915167e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,52.852853,4.531537,bar,SOURCE_MEASURED
+measured_flow,source_5bar,52.852853,1.871705,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,52.852853,4.2802048699483844e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,53.453453,4.522233,bar,SOURCE_MEASURED
+measured_flow,source_5bar,53.453453,1.875882,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,53.453453,4.298582516611718e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,54.054054,4.528888,bar,SOURCE_MEASURED
+measured_flow,source_5bar,54.054054,1.892899,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,54.054054,4.331203085339376e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,54.654655,4.546745,bar,SOURCE_MEASURED
+measured_flow,source_5bar,54.654655,1.906334,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,54.654655,4.3448129324789366e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,55.255255,4.556418,bar,SOURCE_MEASURED
+measured_flow,source_5bar,55.255255,1.907357,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,55.255255,4.33791577352064e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,55.855856,4.546553,bar,SOURCE_MEASURED
+measured_flow,source_5bar,55.855856,1.910743,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,55.855856,4.355045590770617e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,56.456456,4.545071,bar,SOURCE_MEASURED
+measured_flow,source_5bar,56.456456,1.902615,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,56.456456,4.337933910511037e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,57.057057,4.542662,bar,SOURCE_MEASURED
+measured_flow,source_5bar,57.057057,1.917167,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,57.057057,4.373430280316134e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,57.657658,4.537149,bar,SOURCE_MEASURED
+measured_flow,source_5bar,57.657658,1.926902,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,57.657658,4.400978758479607e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,58.258258,4.522487,bar,SOURCE_MEASURED
+measured_flow,source_5bar,58.258258,1.929476,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,58.258258,4.421144814387864e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,58.858859,4.511714,bar,SOURCE_MEASURED
+measured_flow,source_5bar,58.858859,1.942838,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,58.858859,4.462391957785901e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,59.459459,4.505561,bar,SOURCE_MEASURED
+measured_flow,source_5bar,59.459459,1.939717,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,59.459459,4.461307770667877e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,60.06006,4.495496,bar,SOURCE_MEASURED
+measured_flow,source_5bar,60.06006,1.922327,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,60.06006,4.4312100481531126e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,60.660661,4.477554,bar,SOURCE_MEASURED
+measured_flow,source_5bar,60.660661,1.917882,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,60.660661,4.438678990910287e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,61.261261,4.468426,bar,SOURCE_MEASURED
+measured_flow,source_5bar,61.261261,1.929363,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,61.261261,4.47437172815004e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,61.861862,4.496278,bar,SOURCE_MEASURED
+measured_flow,source_5bar,61.861862,1.925288,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,61.861862,4.437263662179243e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,62.462462,4.504181,bar,SOURCE_MEASURED
+measured_flow,source_5bar,62.462462,1.947557,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,62.462462,4.480711992665081e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,63.063063,4.50295,bar,SOURCE_MEASURED
+measured_flow,source_5bar,63.063063,1.94072,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,63.063063,4.466202841004576e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,63.663664,4.511334,bar,SOURCE_MEASURED
+measured_flow,source_5bar,63.663664,1.963736,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,63.663664,4.5107712829336695e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,64.264264,4.522115,bar,SOURCE_MEASURED
+measured_flow,source_5bar,64.264264,1.963564,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,64.264264,4.499623178867099e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,64.864865,4.524024,bar,SOURCE_MEASURED
+measured_flow,source_5bar,64.864865,1.977983,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,64.864865,4.530752524880895e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,65.465465,4.537064,bar,SOURCE_MEASURED
+measured_flow,source_5bar,65.465465,1.948715,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,65.465465,4.450882293887456e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,66.066066,4.533879,bar,SOURCE_MEASURED
+measured_flow,source_5bar,66.066066,1.971502,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,66.066066,4.506091260675485e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,66.666667,4.539918,bar,SOURCE_MEASURED
+measured_flow,source_5bar,66.666667,1.941269,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,66.666667,4.431088227160169e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,67.267267,4.519941,bar,SOURCE_MEASURED
+measured_flow,source_5bar,67.267267,1.944267,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,67.267267,4.457545919202373e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,67.867868,4.500729,bar,SOURCE_MEASURED
+measured_flow,source_5bar,67.867868,1.949518,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,67.867868,4.4886637403312915e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,68.468468,4.514978,bar,SOURCE_MEASURED
+measured_flow,source_5bar,68.468468,1.97296,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,68.468468,4.528301432952776e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,69.069069,4.521613,bar,SOURCE_MEASURED
+measured_flow,source_5bar,69.069069,1.96604,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,69.069069,4.505797268052502e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,69.66967,4.485808,bar,SOURCE_MEASURED
+measured_flow,source_5bar,69.66967,1.984379,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,69.66967,4.584126862622715e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,70.27027,4.484108,bar,SOURCE_MEASURED
+measured_flow,source_5bar,70.27027,1.983377,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,70.27027,4.583549177156027e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,70.870871,4.497946,bar,SOURCE_MEASURED
+measured_flow,source_5bar,70.870871,1.9816,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,70.870871,4.565353836152488e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,71.471471,4.504695,bar,SOURCE_MEASURED
+measured_flow,source_5bar,71.471471,1.989384,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,71.471471,4.5764204320918445e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,72.072072,4.501848,bar,SOURCE_MEASURED
+measured_flow,source_5bar,72.072072,1.989866,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,72.072072,4.5804240962810876e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,72.672673,4.514326,bar,SOURCE_MEASURED
+measured_flow,source_5bar,72.672673,1.978003,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,72.672673,4.540531723785073e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,73.273273,4.521286,bar,SOURCE_MEASURED
+measured_flow,source_5bar,73.273273,1.977393,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,73.273273,4.532143989781769e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,73.873874,4.52148,bar,SOURCE_MEASURED
+measured_flow,source_5bar,73.873874,1.982143,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,73.873874,4.542835967185947e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,74.474474,4.529895,bar,SOURCE_MEASURED
+measured_flow,source_5bar,74.474474,1.992309,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,74.474474,4.557652907886603e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,75.075075,4.541216,bar,SOURCE_MEASURED
+measured_flow,source_5bar,75.075075,1.989967,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,75.075075,4.5409466735603794e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,75.675676,4.532708,bar,SOURCE_MEASURED
+measured_flow,source_5bar,75.675676,1.982083,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,75.675676,4.531445706904986e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,76.276276,4.528922,bar,SOURCE_MEASURED
+measured_flow,source_5bar,76.276276,1.999199,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,76.276276,4.574397192731859e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,76.876877,4.527732,bar,SOURCE_MEASURED
+measured_flow,source_5bar,76.876877,2.000231,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,76.876877,4.577961412782313e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,77.477477,4.509128,bar,SOURCE_MEASURED
+measured_flow,source_5bar,77.477477,2.004124,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,77.477477,4.605796143363331e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,78.078078,4.491593,bar,SOURCE_MEASURED
+measured_flow,source_5bar,78.078078,2.010342,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,78.078078,4.638122729617806e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,78.678679,4.504978,bar,SOURCE_MEASURED
+measured_flow,source_5bar,78.678679,2.003251,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,78.678679,4.608030876112437e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,79.279279,4.499396,bar,SOURCE_MEASURED
+measured_flow,source_5bar,79.279279,2.003135,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,79.279279,4.613480486640516e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,79.87988,4.475277,bar,SOURCE_MEASURED
+measured_flow,source_5bar,79.87988,1.999258,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,79.87988,4.62936696027202e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,80.48048,4.506626,bar,SOURCE_MEASURED
+measured_flow,source_5bar,80.48048,1.984097,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,80.48048,4.562302412841698e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,81.081081,4.529504,bar,SOURCE_MEASURED
+measured_flow,source_5bar,81.081081,1.989644,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,81.081081,4.551949294858798e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,81.681682,4.500785,bar,SOURCE_MEASURED
+measured_flow,source_5bar,81.681682,2.01333,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,81.681682,4.635529872247213e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,82.282282,4.514134,bar,SOURCE_MEASURED
+measured_flow,source_5bar,82.282282,2.01102,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,82.282282,4.6165190249620366e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,82.882883,4.53595,bar,SOURCE_MEASURED
+measured_flow,source_5bar,82.882883,1.999437,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,82.882883,4.5678533502673264e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,83.483483,4.522189,bar,SOURCE_MEASURED
+measured_flow,source_5bar,83.483483,2.016595,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,83.483483,4.621071236286977e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,84.084084,4.52328,bar,SOURCE_MEASURED
+measured_flow,source_5bar,84.084084,2.013905,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,84.084084,4.613793942732922e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,84.684685,4.547731,bar,SOURCE_MEASURED
+measured_flow,source_5bar,84.684685,2.010449,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,84.684685,4.581112733752807e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,85.285285,4.548522,bar,SOURCE_MEASURED
+measured_flow,source_5bar,85.285285,2.004817,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,85.285285,4.567484932354261e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,85.885886,4.517746,bar,SOURCE_MEASURED
+measured_flow,source_5bar,85.885886,2.034456,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,85.885886,4.666584973093866e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,86.486486,4.514109,bar,SOURCE_MEASURED
+measured_flow,source_5bar,86.486486,2.017856,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,86.486486,4.632237473766433e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,87.087087,4.518848,bar,SOURCE_MEASURED
+measured_flow,source_5bar,87.087087,2.017125,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,87.087087,4.625703219256908e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,87.687688,4.507556,bar,SOURCE_MEASURED
+measured_flow,source_5bar,87.687688,2.01826,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,87.687688,4.639900513485297e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,88.288288,4.50338,bar,SOURCE_MEASURED
+measured_flow,source_5bar,88.288288,2.027114,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,88.288288,4.6645769831327854e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,88.888889,4.500875,bar,SOURCE_MEASURED
+measured_flow,source_5bar,88.888889,2.02832,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,88.888889,4.6699497550202886e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,89.489489,4.492328,bar,SOURCE_MEASURED
+measured_flow,source_5bar,89.489489,2.031447,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,89.489489,4.686047912953966e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,90.09009,4.506426,bar,SOURCE_MEASURED
+measured_flow,source_5bar,90.09009,2.027054,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,90.09009,4.661286112906876e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,90.690691,4.519882,bar,SOURCE_MEASURED
+measured_flow,source_5bar,90.690691,2.032014,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,90.690691,4.658780892150074e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,91.291291,4.526995,bar,SOURCE_MEASURED
+measured_flow,source_5bar,91.291291,2.022604,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,91.291291,4.629920497593917e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,91.891892,4.537028,bar,SOURCE_MEASURED
+measured_flow,source_5bar,91.891892,2.017691,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,91.891892,4.608460654399033e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,92.492492,4.545867,bar,SOURCE_MEASURED
+measured_flow,source_5bar,92.492492,2.01302,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,92.492492,4.588852001351781e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,93.093093,4.532509,bar,SOURCE_MEASURED
+measured_flow,source_5bar,93.093093,2.025063,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,93.093093,4.629910014142311e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,93.693694,4.521183,bar,SOURCE_MEASURED
+measured_flow,source_5bar,93.693694,2.034859,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,93.693694,4.663961127354949e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,94.294294,4.515066,bar,SOURCE_MEASURED
+measured_flow,source_5bar,94.294294,2.028863,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,94.294294,4.656518209619111e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,94.894895,4.502551,bar,SOURCE_MEASURED
+measured_flow,source_5bar,94.894895,2.03442,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,94.894895,4.6822506927428704e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,95.495495,4.499742,bar,SOURCE_MEASURED
+measured_flow,source_5bar,95.495495,2.038906,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,95.495495,4.695504672377266e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,96.096096,4.482294,bar,SOURCE_MEASURED
+measured_flow,source_5bar,96.096096,2.021548,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,96.096096,4.673652361452381e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,96.696697,4.469356,bar,SOURCE_MEASURED
+measured_flow,source_5bar,96.696697,2.020511,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,96.696697,4.684777364755503e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,97.297297,4.492721,bar,SOURCE_MEASURED
+measured_flow,source_5bar,97.297297,2.007547,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,97.297297,4.63051141055104e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,97.897898,4.494159,bar,SOURCE_MEASURED
+measured_flow,source_5bar,97.897898,2.019935,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,97.897898,4.657594204369961e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,98.498498,4.48706,bar,SOURCE_MEASURED
+measured_flow,source_5bar,98.498498,2.029701,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,98.498498,4.6875172127085366e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,99.099099,4.49341,bar,SOURCE_MEASURED
+measured_flow,source_5bar,99.099099,2.042325,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,99.099099,4.7100063509240645e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_5bar,99.6997,4.503519,bar,SOURCE_MEASURED
+measured_flow,source_5bar,99.6997,2.052801,g/s,SOURCE_MEASURED
+apparent_conductance,source_5bar,99.6997,4.723539352847835e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,0.0,8.383076,bar,SOURCE_MEASURED
+measured_flow,source_9bar,0.0,0.001214,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,0.0,1.5006795692689672e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,0.600601,8.951421,bar,SOURCE_MEASURED
+measured_flow,source_9bar,0.600601,0.003635,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,0.600601,4.2080909592324414e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,1.201201,9.025272,bar,SOURCE_MEASURED
+measured_flow,source_9bar,1.201201,0.006062,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,1.201201,6.9603057780132196e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,1.801802,9.020141,bar,SOURCE_MEASURED
+measured_flow,source_9bar,1.801802,0.002536,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,1.801802,2.913456978789355e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,2.402402,9.018288,bar,SOURCE_MEASURED
+measured_flow,source_9bar,2.402402,-0.00318,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,2.402402,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,3.003003,9.008907,bar,SOURCE_MEASURED
+measured_flow,source_9bar,3.003003,-0.000715,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,3.003003,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,3.603604,8.988749,bar,SOURCE_MEASURED
+measured_flow,source_9bar,3.603604,0.001817,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,3.603604,2.094731485331435e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,4.204204,9.00289,bar,SOURCE_MEASURED
+measured_flow,source_9bar,4.204204,-0.006362,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,4.204204,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,4.804805,8.989617,bar,SOURCE_MEASURED
+measured_flow,source_9bar,4.804805,-0.002783,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,4.804805,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,5.405405,8.96571,bar,SOURCE_MEASURED
+measured_flow,source_9bar,5.405405,-0.002313,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,5.405405,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,6.006006,8.972083,bar,SOURCE_MEASURED
+measured_flow,source_9bar,6.006006,0.002234,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,6.006006,2.580254670777958e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,6.606607,8.974554,bar,SOURCE_MEASURED
+measured_flow,source_9bar,6.606607,0.010922,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,6.606607,1.2611361762407254e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,7.207207,8.974694,bar,SOURCE_MEASURED
+measured_flow,source_9bar,7.207207,0.013652,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,7.207207,1.576337896207643e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,7.807808,8.978889,bar,SOURCE_MEASURED
+measured_flow,source_9bar,7.807808,0.015493,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,7.807808,1.788074480015595e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,8.408408,8.968627,bar,SOURCE_MEASURED
+measured_flow,source_9bar,8.408408,0.014616,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,8.408408,1.688788483414162e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,9.009009,8.967389,bar,SOURCE_MEASURED
+measured_flow,source_9bar,9.009009,0.013641,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,9.009009,1.576350852554382e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,9.60961,8.96091,bar,SOURCE_MEASURED
+measured_flow,source_9bar,9.60961,0.003112,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,9.60961,3.5988202831199555e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,10.21021,8.957588,bar,SOURCE_MEASURED
+measured_flow,source_9bar,10.21021,0.007071,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,10.21021,8.180172095318934e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,10.810811,8.953129,bar,SOURCE_MEASURED
+measured_flow,source_9bar,10.810811,0.014048,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,10.810811,1.6259693067493917e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,11.411411,8.932675,bar,SOURCE_MEASURED
+measured_flow,source_9bar,11.411411,0.022819,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,11.411411,2.6472061419846047e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,12.012012,8.931816,bar,SOURCE_MEASURED
+measured_flow,source_9bar,12.012012,0.031656,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,12.012012,3.6727296081468985e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,12.612613,8.898281,bar,SOURCE_MEASURED
+measured_flow,source_9bar,12.612613,0.051199,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,12.612613,5.96249528973324e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,13.213213,8.918298,bar,SOURCE_MEASURED
+measured_flow,source_9bar,13.213213,0.075388,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,13.213213,8.759774543612033e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,13.813814,8.907121,bar,SOURCE_MEASURED
+measured_flow,source_9bar,13.813814,0.100358,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,13.813814,1.1675818422264603e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,14.414414,8.878008,bar,SOURCE_MEASURED
+measured_flow,source_9bar,14.414414,0.120524,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,14.414414,1.4067945961252208e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,15.015015,8.901472,bar,SOURCE_MEASURED
+measured_flow,source_9bar,15.015015,0.138499,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,15.015015,1.6123432146137865e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,15.615616,8.884235,bar,SOURCE_MEASURED
+measured_flow,source_9bar,15.615616,0.160315,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,15.615616,1.869936282400865e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,16.216216,8.879472,bar,SOURCE_MEASURED
+measured_flow,source_9bar,16.216216,0.178284,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,16.216216,2.0806446494493988e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,16.816817,8.882403,bar,SOURCE_MEASURED
+measured_flow,source_9bar,16.816817,0.206133,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,16.816817,2.404859658190137e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,17.417417,8.884465,bar,SOURCE_MEASURED
+measured_flow,source_9bar,17.417417,0.242221,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,17.417417,2.825226027865272e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,18.018018,8.851053,bar,SOURCE_MEASURED
+measured_flow,source_9bar,18.018018,0.265337,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,18.018018,3.1065300564990183e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,18.618619,8.857217,bar,SOURCE_MEASURED
+measured_flow,source_9bar,18.618619,0.287759,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,18.618619,3.366699211753306e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,19.219219,8.854221,bar,SOURCE_MEASURED
+measured_flow,source_9bar,19.219219,0.313955,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,19.219219,3.6744279243980593e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,19.81982,8.853749,bar,SOURCE_MEASURED
+measured_flow,source_9bar,19.81982,0.338275,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,19.81982,3.9592724104870967e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,20.42042,8.844389,bar,SOURCE_MEASURED
+measured_flow,source_9bar,20.42042,0.344607,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,20.42042,4.0376525668631863e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,21.021021,8.848934,bar,SOURCE_MEASURED
+measured_flow,source_9bar,21.021021,0.37162,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,21.021021,4.3519190627464833e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,21.621622,8.865856,bar,SOURCE_MEASURED
+measured_flow,source_9bar,21.621622,0.399337,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,21.621622,4.66757778818651e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,22.222222,8.871523,bar,SOURCE_MEASURED
+measured_flow,source_9bar,22.222222,0.421112,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,22.222222,4.918946749368505e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,22.822823,8.888347,bar,SOURCE_MEASURED
+measured_flow,source_9bar,22.822823,0.456978,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,22.822823,5.327788525877957e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,23.423423,8.886631,bar,SOURCE_MEASURED
+measured_flow,source_9bar,23.423423,0.485617,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,23.423423,5.662776498916987e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,24.024024,8.881434,bar,SOURCE_MEASURED
+measured_flow,source_9bar,24.024024,0.520061,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,24.024024,6.06797636577805e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,24.624625,8.884945,bar,SOURCE_MEASURED
+measured_flow,source_9bar,24.624625,0.558863,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,24.624625,6.518134242666067e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,25.225225,8.89501,bar,SOURCE_MEASURED
+measured_flow,source_9bar,25.225225,0.616554,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,25.225225,7.182859402925526e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,25.825826,8.871642,bar,SOURCE_MEASURED
+measured_flow,source_9bar,25.825826,0.654625,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,25.825826,7.646474865055065e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,26.426426,8.857829,bar,SOURCE_MEASURED
+measured_flow,source_9bar,26.426426,0.700096,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,26.426426,8.190359995677886e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,27.027027,8.872144,bar,SOURCE_MEASURED
+measured_flow,source_9bar,27.027027,0.749169,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,27.027027,8.750319343807844e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,27.627628,8.8519,bar,SOURCE_MEASURED
+measured_flow,source_9bar,27.627628,0.778866,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,27.627628,9.117986261782619e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,28.228228,8.827366,bar,SOURCE_MEASURED
+measured_flow,source_9bar,28.228228,0.809962,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,28.228228,9.508372713940116e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,28.828829,8.811013,bar,SOURCE_MEASURED
+measured_flow,source_9bar,28.828829,0.864943,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,28.828829,1.0172655398843534e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,29.429429,8.803494,bar,SOURCE_MEASURED
+measured_flow,source_9bar,29.429429,0.910387,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,29.429429,1.0716270353754773e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,30.03003,8.810115,bar,SOURCE_MEASURED
+measured_flow,source_9bar,30.03003,0.944758,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,30.03003,1.111249778461338e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,30.630631,8.794993,bar,SOURCE_MEASURED
+measured_flow,source_9bar,30.630631,1.007922,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,30.630631,1.1875833857703855e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,31.231231,8.789205,bar,SOURCE_MEASURED
+measured_flow,source_9bar,31.231231,1.065379,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,31.231231,1.2561087027998222e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,31.831832,8.843993,bar,SOURCE_MEASURED
+measured_flow,source_9bar,31.831832,1.121634,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,31.831832,1.3142423630443127e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,32.432432,8.793784,bar,SOURCE_MEASURED
+measured_flow,source_9bar,32.432432,1.182655,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,32.432432,1.3936539978670472e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,33.033033,8.803875,bar,SOURCE_MEASURED
+measured_flow,source_9bar,33.033033,1.240005,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,33.033033,1.4595610167243392e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,33.633634,8.798272,bar,SOURCE_MEASURED
+measured_flow,source_9bar,33.633634,1.286603,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,33.633634,1.5153741069984575e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,34.234234,8.773036,bar,SOURCE_MEASURED
+measured_flow,source_9bar,34.234234,1.331031,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,34.234234,1.5722114166079969e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,34.834835,8.765367,bar,SOURCE_MEASURED
+measured_flow,source_9bar,34.834835,1.383696,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,34.834835,1.635849206639008e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,35.435435,8.761373,bar,SOURCE_MEASURED
+measured_flow,source_9bar,35.435435,1.451082,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,35.435435,1.7162971113071496e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,36.036036,8.737385,bar,SOURCE_MEASURED
+measured_flow,source_9bar,36.036036,1.491404,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,36.036036,1.7688317191665408e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,36.636637,8.744354,bar,SOURCE_MEASURED
+measured_flow,source_9bar,36.636637,1.543243,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,36.636637,1.8288549892209887e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,37.237237,8.739911,bar,SOURCE_MEASURED
+measured_flow,source_9bar,37.237237,1.585166,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,37.237237,1.879491756103138e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,37.837838,8.728933,bar,SOURCE_MEASURED
+measured_flow,source_9bar,37.837838,1.619927,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,37.837838,1.923122595872307e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,38.438438,8.757896,bar,SOURCE_MEASURED
+measured_flow,source_9bar,38.438438,1.664521,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,38.438438,1.96952810124632e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,39.039039,8.744499,bar,SOURCE_MEASURED
+measured_flow,source_9bar,39.039039,1.712476,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,39.039039,2.0293747286121363e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,39.63964,8.743667,bar,SOURCE_MEASURED
+measured_flow,source_9bar,39.63964,1.730164,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,39.63964,2.050531043984367e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,40.24024,8.726503,bar,SOURCE_MEASURED
+measured_flow,source_9bar,40.24024,1.747502,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,40.24024,2.0751530155371566e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,40.840841,8.710168,bar,SOURCE_MEASURED
+measured_flow,source_9bar,40.840841,1.773077,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,40.840841,2.1094719323760222e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,41.441441,8.717683,bar,SOURCE_MEASURED
+measured_flow,source_9bar,41.441441,1.795745,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,41.441441,2.134598892467636e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,42.042042,8.702125,bar,SOURCE_MEASURED
+measured_flow,source_9bar,42.042042,1.816133,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,42.042042,2.162693719991715e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,42.642643,8.687852,bar,SOURCE_MEASURED
+measured_flow,source_9bar,42.642643,1.839452,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,42.642643,2.1940611737488953e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,43.243243,8.685701,bar,SOURCE_MEASURED
+measured_flow,source_9bar,43.243243,1.883753,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,43.243243,2.2474589531327337e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,43.843844,8.665287,bar,SOURCE_MEASURED
+measured_flow,source_9bar,43.843844,1.904553,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,43.843844,2.277628025261566e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,44.444444,8.685567,bar,SOURCE_MEASURED
+measured_flow,source_9bar,44.444444,1.917582,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,44.444444,2.287854789696074e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,45.045045,8.69061,bar,SOURCE_MEASURED
+measured_flow,source_9bar,45.045045,1.94071,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,45.045045,2.314105046246299e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,45.645646,8.683386,bar,SOURCE_MEASURED
+measured_flow,source_9bar,45.645646,1.968113,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,45.645646,2.34873278325709e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,46.246246,8.696639,bar,SOURCE_MEASURED
+measured_flow,source_9bar,46.246246,1.962998,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,46.246246,2.3390585933863076e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,46.846847,8.709965,bar,SOURCE_MEASURED
+measured_flow,source_9bar,46.846847,1.970381,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,46.846847,2.344263835566414e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,47.447447,8.669181,bar,SOURCE_MEASURED
+measured_flow,source_9bar,47.447447,1.97578,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,47.447447,2.3617460686399006e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,48.048048,8.696086,bar,SOURCE_MEASURED
+measured_flow,source_9bar,48.048048,1.968337,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,48.048048,2.3455695598455405e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,48.648649,8.703621,bar,SOURCE_MEASURED
+measured_flow,source_9bar,48.648649,1.972886,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,48.648649,2.348955050750949e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,49.249249,8.696853,bar,SOURCE_MEASURED
+measured_flow,source_9bar,49.249249,1.973402,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,49.249249,2.351397874384112e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,49.84985,8.702507,bar,SOURCE_MEASURED
+measured_flow,source_9bar,49.84985,1.98455,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,49.84985,2.3631448930857814e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,50.45045,8.676575,bar,SOURCE_MEASURED
+measured_flow,source_9bar,50.45045,1.994799,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,50.45045,2.3824484002016092e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,51.051051,8.669456,bar,SOURCE_MEASURED
+measured_flow,source_9bar,51.051051,2.009216,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,51.051051,2.4016375643073622e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,51.651652,8.7312,bar,SOURCE_MEASURED
+measured_flow,source_9bar,51.651652,2.01172,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,51.651652,2.387625913761951e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,52.252252,8.694051,bar,SOURCE_MEASURED
+measured_flow,source_9bar,52.252252,2.007769,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,52.252252,2.3931187398207112e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,52.852853,8.684141,bar,SOURCE_MEASURED
+measured_flow,source_9bar,52.852853,1.998322,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,52.852853,2.38457666682289e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,53.453453,8.696405,bar,SOURCE_MEASURED
+measured_flow,source_9bar,53.453453,1.988067,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,53.453453,2.3689939198954267e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,54.054054,8.683498,bar,SOURCE_MEASURED
+measured_flow,source_9bar,54.054054,1.981067,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,54.054054,2.3641615060940374e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,54.654655,8.673306,bar,SOURCE_MEASURED
+measured_flow,source_9bar,54.654655,2.005544,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,54.654655,2.3961842667880437e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,55.255255,8.675543,bar,SOURCE_MEASURED
+measured_flow,source_9bar,55.255255,2.011338,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,55.255255,2.402487179075194e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,55.855856,8.672726,bar,SOURCE_MEASURED
+measured_flow,source_9bar,55.855856,2.015891,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,55.855856,2.4087077322823063e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,56.456456,8.675348,bar,SOURCE_MEASURED
+measured_flow,source_9bar,56.456456,2.005773,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,56.456456,2.3958937941432624e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,57.057057,8.668275,bar,SOURCE_MEASURED
+measured_flow,source_9bar,57.057057,2.005271,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,57.057057,2.397248629363316e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,57.657658,8.680889,bar,SOURCE_MEASURED
+measured_flow,source_9bar,57.657658,1.980101,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,57.657658,2.3637188941305733e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,58.258258,8.687569,bar,SOURCE_MEASURED
+measured_flow,source_9bar,58.258258,1.972184,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,58.258258,2.352457850564762e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,58.858859,8.681182,bar,SOURCE_MEASURED
+measured_flow,source_9bar,58.858859,1.963642,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,58.858859,2.3439920694737234e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,59.459459,8.671864,bar,SOURCE_MEASURED
+measured_flow,source_9bar,59.459459,1.969139,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,59.459459,2.3530795100370556e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,60.06006,8.683804,bar,SOURCE_MEASURED
+measured_flow,source_9bar,60.06006,1.953483,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,60.06006,2.33116122269216e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,60.660661,8.69789,bar,SOURCE_MEASURED
+measured_flow,source_9bar,60.660661,1.950554,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,60.660661,2.323896349419555e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,61.261261,8.680194,bar,SOURCE_MEASURED
+measured_flow,source_9bar,61.261261,1.951778,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,61.261261,2.3300952440091412e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,61.861862,8.688723,bar,SOURCE_MEASURED
+measured_flow,source_9bar,61.861862,1.949579,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,61.861862,2.3251853225968705e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,62.462462,8.688781,bar,SOURCE_MEASURED
+measured_flow,source_9bar,62.462462,1.956429,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,62.462462,2.333339469330438e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,63.063063,8.685005,bar,SOURCE_MEASURED
+measured_flow,source_9bar,63.063063,1.951592,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,63.063063,2.3285825736815105e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,63.663664,8.691452,bar,SOURCE_MEASURED
+measured_flow,source_9bar,63.663664,1.942713,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,63.663664,2.316269011511827e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,64.264264,8.694889,bar,SOURCE_MEASURED
+measured_flow,source_9bar,64.264264,1.948053,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,64.264264,2.321717703378071e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,64.864865,8.689191,bar,SOURCE_MEASURED
+measured_flow,source_9bar,64.864865,1.9337,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,64.864865,2.3061228564214914e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,65.465465,8.700668,bar,SOURCE_MEASURED
+measured_flow,source_9bar,65.465465,1.925812,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,65.465465,2.2936860751691058e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,66.066066,8.704776,bar,SOURCE_MEASURED
+measured_flow,source_9bar,66.066066,1.933695,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,66.066066,2.301988029955097e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,66.666667,8.686507,bar,SOURCE_MEASURED
+measured_flow,source_9bar,66.666667,1.933663,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,66.666667,2.306791274009541e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,67.267267,8.70371,bar,SOURCE_MEASURED
+measured_flow,source_9bar,67.267267,1.92554,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,67.267267,2.2925605728384438e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,67.867868,8.706136,bar,SOURCE_MEASURED
+measured_flow,source_9bar,67.867868,1.940301,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,67.867868,2.3094913879118855e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,68.468468,8.667603,bar,SOURCE_MEASURED
+measured_flow,source_9bar,68.468468,1.929236,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,68.468468,2.306529602423462e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,69.069069,8.681535,bar,SOURCE_MEASURED
+measured_flow,source_9bar,69.069069,1.923623,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,69.069069,2.296128173006916e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,69.66967,8.698009,bar,SOURCE_MEASURED
+measured_flow,source_9bar,69.66967,1.922605,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,69.66967,2.2905664820130295e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,70.27027,8.702035,bar,SOURCE_MEASURED
+measured_flow,source_9bar,70.27027,1.917593,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,70.27027,2.2835382817712722e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,70.870871,8.6993,bar,SOURCE_MEASURED
+measured_flow,source_9bar,70.870871,1.924588,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,70.870871,2.2925887253509593e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,71.471471,8.699122,bar,SOURCE_MEASURED
+measured_flow,source_9bar,71.471471,1.939721,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,71.471471,2.3106625877065912e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,72.072072,8.698726,bar,SOURCE_MEASURED
+measured_flow,source_9bar,72.072072,1.926298,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,72.072072,2.2947771093950406e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,72.672673,8.724744,bar,SOURCE_MEASURED
+measured_flow,source_9bar,72.672673,1.926776,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,72.672673,2.2885016080214078e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,73.273273,8.724431,bar,SOURCE_MEASURED
+measured_flow,source_9bar,73.273273,1.930667,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,73.273273,2.293205358274763e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,73.873874,8.711287,bar,SOURCE_MEASURED
+measured_flow,source_9bar,73.873874,1.920987,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,73.873874,2.2851504073128837e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,74.474474,8.717704,bar,SOURCE_MEASURED
+measured_flow,source_9bar,74.474474,1.918637,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,74.474474,2.2806749007150526e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,75.075075,8.729242,bar,SOURCE_MEASURED
+measured_flow,source_9bar,75.075075,1.912109,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,75.075075,2.269910839482905e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,75.675676,8.714667,bar,SOURCE_MEASURED
+measured_flow,source_9bar,75.675676,1.908824,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,75.675676,2.2698009672076085e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,76.276276,8.715912,bar,SOURCE_MEASURED
+measured_flow,source_9bar,76.276276,1.900828,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,76.276276,2.259969981553885e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,76.876877,8.709386,bar,SOURCE_MEASURED
+measured_flow,source_9bar,76.876877,1.894116,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,76.876877,2.2536772486281135e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,77.477477,8.704498,bar,SOURCE_MEASURED
+measured_flow,source_9bar,77.477477,1.887394,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,77.477477,2.2469402654388716e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,78.078078,8.703603,bar,SOURCE_MEASURED
+measured_flow,source_9bar,78.078078,1.882544,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,78.078078,2.2413968076524877e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,78.678679,8.691088,bar,SOURCE_MEASURED
+measured_flow,source_9bar,78.678679,1.892316,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,78.678679,2.2562758803016693e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,79.279279,8.683891,bar,SOURCE_MEASURED
+measured_flow,source_9bar,79.279279,1.888039,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,79.279279,2.2530419813486792e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,79.87988,8.689513,bar,SOURCE_MEASURED
+measured_flow,source_9bar,79.87988,1.896058,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,79.87988,2.261147365801952e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,80.48048,8.696962,bar,SOURCE_MEASURED
+measured_flow,source_9bar,80.48048,1.907871,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,80.48048,2.2732862277452563e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,81.081081,8.68796,bar,SOURCE_MEASURED
+measured_flow,source_9bar,81.081081,1.899947,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,81.081081,2.266190215906442e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,81.681682,8.694918,bar,SOURCE_MEASURED
+measured_flow,source_9bar,81.681682,1.883116,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,81.681682,2.2443173633626577e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,82.282282,8.706588,bar,SOURCE_MEASURED
+measured_flow,source_9bar,82.282282,1.878134,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,82.282282,2.235379519211122e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,82.882883,8.702242,bar,SOURCE_MEASURED
+measured_flow,source_9bar,82.882883,1.871755,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,82.882883,2.2288997330189536e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,83.483483,8.708111,bar,SOURCE_MEASURED
+measured_flow,source_9bar,83.483483,1.867897,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,83.483483,2.222806484190994e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,84.084084,8.713911,bar,SOURCE_MEASURED
+measured_flow,source_9bar,84.084084,1.871497,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,84.084084,2.2256081448774017e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,84.684685,8.707126,bar,SOURCE_MEASURED
+measured_flow,source_9bar,84.684685,1.874793,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,84.684685,2.2312651425684313e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,85.285285,8.703186,bar,SOURCE_MEASURED
+measured_flow,source_9bar,85.285285,1.882568,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,85.285285,2.2415327770701237e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,85.885886,8.698637,bar,SOURCE_MEASURED
+measured_flow,source_9bar,85.885886,1.88024,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,85.885886,2.2399316503960582e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,86.486486,8.705773,bar,SOURCE_MEASURED
+measured_flow,source_9bar,86.486486,1.854884,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,86.486486,2.2079137435495137e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,87.087087,8.713501,bar,SOURCE_MEASURED
+measured_flow,source_9bar,87.087087,1.864594,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,87.087087,2.2175033452776684e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,87.687688,8.706109,bar,SOURCE_MEASURED
+measured_flow,source_9bar,87.687688,1.878321,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,87.687688,2.2357250892727767e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,88.288288,8.71227,bar,SOURCE_MEASURED
+measured_flow,source_9bar,88.288288,1.865732,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,88.288288,2.219170246410442e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,88.888889,8.713506,bar,SOURCE_MEASURED
+measured_flow,source_9bar,88.888889,1.861761,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,88.888889,2.214132876436527e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,89.489489,8.721615,bar,SOURCE_MEASURED
+measured_flow,source_9bar,89.489489,1.88368,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,89.489489,2.238117596339669e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,90.09009,8.726555,bar,SOURCE_MEASURED
+measured_flow,source_9bar,90.09009,1.871238,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,90.09009,2.2220758773093116e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,90.690691,8.721386,bar,SOURCE_MEASURED
+measured_flow,source_9bar,90.690691,1.863717,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,90.690691,2.214456456081494e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,91.291291,8.708156,bar,SOURCE_MEASURED
+measured_flow,source_9bar,91.291291,1.863855,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,91.291291,2.2179850229477082e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,91.891892,8.711837,bar,SOURCE_MEASURED
+measured_flow,source_9bar,91.891892,1.867223,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,91.891892,2.2210540830706975e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,92.492492,8.701966,bar,SOURCE_MEASURED
+measured_flow,source_9bar,92.492492,1.866527,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,92.492492,2.2227446883455084e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,93.093093,8.69139,bar,SOURCE_MEASURED
+measured_flow,source_9bar,93.093093,1.8726,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,93.093093,2.2326902080277446e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,93.693694,8.679458,bar,SOURCE_MEASURED
+measured_flow,source_9bar,93.693694,1.876478,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,93.693694,2.2403896505574043e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,94.294294,8.676028,bar,SOURCE_MEASURED
+measured_flow,source_9bar,94.294294,1.879188,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,94.294294,2.244512209642716e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,94.894895,8.694136,bar,SOURCE_MEASURED
+measured_flow,source_9bar,94.894895,1.869131,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,94.894895,2.227850261443088e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,95.495495,8.718841,bar,SOURCE_MEASURED
+measured_flow,source_9bar,95.495495,1.8599,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,95.495495,2.210566189879329e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,96.096096,8.700798,bar,SOURCE_MEASURED
+measured_flow,source_9bar,96.096096,1.863651,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,96.096096,2.219617740333119e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,96.696697,8.716206,bar,SOURCE_MEASURED
+measured_flow,source_9bar,96.696697,1.863677,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,96.696697,2.215724941093262e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,97.297297,8.741597,bar,SOURCE_MEASURED
+measured_flow,source_9bar,97.297297,1.857853,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,97.297297,2.2023850669735194e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,97.897898,8.720595,bar,SOURCE_MEASURED
+measured_flow,source_9bar,97.897898,1.86014,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,97.897898,2.2104067642363626e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,98.498498,8.72206,bar,SOURCE_MEASURED
+measured_flow,source_9bar,98.498498,1.863751,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,98.498498,2.2143257287022757e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,99.099099,8.738241,bar,SOURCE_MEASURED
+measured_flow,source_9bar,99.099099,1.848746,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,99.099099,2.1924309065526686e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_9bar,99.6997,8.724104,bar,SOURCE_MEASURED
+measured_flow,source_9bar,99.6997,1.832586,g/s,SOURCE_MEASURED
+apparent_conductance,source_9bar,99.6997,2.176788412587622e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,0.0,10.145713,bar,SOURCE_MEASURED
+measured_flow,source_11bar,0.0,-0.02639,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,0.0,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,0.600601,10.720539,bar,SOURCE_MEASURED
+measured_flow,source_11bar,0.600601,-0.016885,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,0.600601,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,1.201201,10.722332,bar,SOURCE_MEASURED
+measured_flow,source_11bar,1.201201,-0.0074,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,1.201201,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,1.801802,10.728094,bar,SOURCE_MEASURED
+measured_flow,source_11bar,1.801802,0.000583,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,1.801802,5.631429755557764e-16,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,2.402402,10.733225,bar,SOURCE_MEASURED
+measured_flow,source_11bar,2.402402,-1.2e-05,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,2.402402,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,3.003003,10.717314,bar,SOURCE_MEASURED
+measured_flow,source_11bar,3.003003,0.003158,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,3.003003,3.053506559669361e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,3.603604,10.708842,bar,SOURCE_MEASURED
+measured_flow,source_11bar,3.603604,0.001374,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,3.603604,1.329587453892019e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,4.204204,10.696023,bar,SOURCE_MEASURED
+measured_flow,source_11bar,4.204204,0.004203,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,4.204204,4.072018557278505e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,4.804805,10.670558,bar,SOURCE_MEASURED
+measured_flow,source_11bar,4.804805,-0.000843,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,4.804805,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,5.405405,10.668424,bar,SOURCE_MEASURED
+measured_flow,source_11bar,5.405405,-0.000632,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,5.405405,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,6.006006,10.681762,bar,SOURCE_MEASURED
+measured_flow,source_11bar,6.006006,0.007882,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,6.006006,7.646562100586393e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,6.606607,10.660833,bar,SOURCE_MEASURED
+measured_flow,source_11bar,6.606607,0.003277,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,6.606607,3.1853560807863634e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,7.207207,10.667097,bar,SOURCE_MEASURED
+measured_flow,source_11bar,7.207207,-0.00214,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,7.207207,,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,7.807808,10.673764,bar,SOURCE_MEASURED
+measured_flow,source_11bar,7.807808,0.006455,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,7.807808,6.266879397918537e-15,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,8.408408,10.676462,bar,SOURCE_MEASURED
+measured_flow,source_11bar,8.408408,0.015072,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,8.408408,1.4629053004395025e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,9.009009,10.666974,bar,SOURCE_MEASURED
+measured_flow,source_11bar,9.009009,0.017253,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,9.009009,1.6760851274863835e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,9.60961,10.65606,bar,SOURCE_MEASURED
+measured_flow,source_11bar,9.60961,0.011428,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,9.60961,1.1113382475917108e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,10.21021,10.67454,bar,SOURCE_MEASURED
+measured_flow,source_11bar,10.21021,0.02466,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,10.21021,2.3939583480953483e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,10.810811,10.679273,bar,SOURCE_MEASURED
+measured_flow,source_11bar,10.810811,0.024606,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,10.810811,2.3876574365928207e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,11.411411,10.673982,bar,SOURCE_MEASURED
+measured_flow,source_11bar,11.411411,0.030194,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,11.411411,2.9313445695322e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,12.012012,10.657188,bar,SOURCE_MEASURED
+measured_flow,source_11bar,12.012012,0.042539,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,12.012012,4.1363505349604505e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,12.612613,10.6655,bar,SOURCE_MEASURED
+measured_flow,source_11bar,12.612613,0.062488,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,12.612613,6.071389446821782e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,13.213213,10.670292,bar,SOURCE_MEASURED
+measured_flow,source_11bar,13.213213,0.067642,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,13.213213,6.569205115245652e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,13.813814,10.663026,bar,SOURCE_MEASURED
+measured_flow,source_11bar,13.813814,0.084629,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,13.813814,8.224536411695415e-14,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,14.414414,10.655733,bar,SOURCE_MEASURED
+measured_flow,source_11bar,14.414414,0.104269,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,14.414414,1.0140154337770338e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,15.015015,10.651643,bar,SOURCE_MEASURED
+measured_flow,source_11bar,15.015015,0.121312,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,15.015015,1.1802115138335524e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,15.615616,10.65917,bar,SOURCE_MEASURED
+measured_flow,source_11bar,15.615616,0.139683,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,15.615616,1.3579783679022612e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,16.216216,10.653026,bar,SOURCE_MEASURED
+measured_flow,source_11bar,16.216216,0.169925,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,16.216216,1.6529395769948782e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,16.816817,10.642954,bar,SOURCE_MEASURED
+measured_flow,source_11bar,16.816817,0.177165,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,16.816817,1.7249973416697053e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,17.417417,10.640412,bar,SOURCE_MEASURED
+measured_flow,source_11bar,17.417417,0.20313,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,17.417417,1.978282507542235e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,18.018018,10.636308,bar,SOURCE_MEASURED
+measured_flow,source_11bar,18.018018,0.226496,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,18.018018,2.2066950376861553e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,18.618619,10.629044,bar,SOURCE_MEASURED
+measured_flow,source_11bar,18.618619,0.259004,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,18.618619,2.5251370439443085e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,19.219219,10.628276,bar,SOURCE_MEASURED
+measured_flow,source_11bar,19.219219,0.274945,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,19.219219,2.6807461383727324e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,19.81982,10.611353,bar,SOURCE_MEASURED
+measured_flow,source_11bar,19.81982,0.308691,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,19.81982,3.014573604630101e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,20.42042,10.601378,bar,SOURCE_MEASURED
+measured_flow,source_11bar,20.42042,0.331377,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,20.42042,3.239162445884674e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,21.021021,10.606631,bar,SOURCE_MEASURED
+measured_flow,source_11bar,21.021021,0.353942,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,21.021021,3.4580186169519705e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,21.621622,10.604672,bar,SOURCE_MEASURED
+measured_flow,source_11bar,21.621622,0.368909,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,21.621622,3.604912242179526e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,22.222222,10.587859,bar,SOURCE_MEASURED
+measured_flow,source_11bar,22.222222,0.409403,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,22.222222,4.006965085873382e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,22.822823,10.59742,bar,SOURCE_MEASURED
+measured_flow,source_11bar,22.822823,0.444954,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,22.822823,4.350985692548513e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,23.423423,10.599424,bar,SOURCE_MEASURED
+measured_flow,source_11bar,23.423423,0.459552,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,23.423423,4.492882718147429e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,24.024024,10.592756,bar,SOURCE_MEASURED
+measured_flow,source_11bar,24.024024,0.486349,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,24.024024,4.757860947956032e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,24.624625,10.580299,bar,SOURCE_MEASURED
+measured_flow,source_11bar,24.624625,0.510805,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,24.624625,5.002992885339219e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,25.225225,10.585986,bar,SOURCE_MEASURED
+measured_flow,source_11bar,25.225225,0.543873,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,25.225225,5.324010099111881e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,25.825826,10.577315,bar,SOURCE_MEASURED
+measured_flow,source_11bar,25.825826,0.579355,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,25.825826,5.675995048343256e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,26.426426,10.571133,bar,SOURCE_MEASURED
+measured_flow,source_11bar,26.426426,0.618465,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,26.426426,6.06270276853952e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,27.027027,10.560959,bar,SOURCE_MEASURED
+measured_flow,source_11bar,27.027027,0.671424,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,27.027027,6.588191146306966e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,27.627628,10.551663,bar,SOURCE_MEASURED
+measured_flow,source_11bar,27.627628,0.711179,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,27.627628,6.984425649253759e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,28.228228,10.552541,bar,SOURCE_MEASURED
+measured_flow,source_11bar,28.228228,0.742876,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,28.228228,7.295112040968816e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,28.828829,10.540921,bar,SOURCE_MEASURED
+measured_flow,source_11bar,28.828829,0.765426,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,28.828829,7.524841185763932e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,29.429429,10.536046,bar,SOURCE_MEASURED
+measured_flow,source_11bar,29.429429,0.805043,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,29.429429,7.917974644161595e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,30.03003,10.530269,bar,SOURCE_MEASURED
+measured_flow,source_11bar,30.03003,0.866552,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,30.03003,8.527620207520424e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,30.630631,10.522225,bar,SOURCE_MEASURED
+measured_flow,source_11bar,30.630631,0.903953,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,30.630631,8.902478896845743e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,31.231231,10.528715,bar,SOURCE_MEASURED
+measured_flow,source_11bar,31.231231,0.938701,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,31.231231,9.238992130179868e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,31.831832,10.515076,bar,SOURCE_MEASURED
+measured_flow,source_11bar,31.831832,0.985639,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,31.831832,9.713553803765558e-13,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,32.432432,10.483221,bar,SOURCE_MEASURED
+measured_flow,source_11bar,32.432432,1.022979,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,32.432432,1.0112177023502357e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,33.033033,10.509695,bar,SOURCE_MEASURED
+measured_flow,source_11bar,33.033033,1.040378,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,33.033033,1.0258260749702494e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,33.633634,10.531792,bar,SOURCE_MEASURED
+measured_flow,source_11bar,33.633634,1.111166,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,33.633634,1.0933251981362276e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,34.234234,10.498557,bar,SOURCE_MEASURED
+measured_flow,source_11bar,34.234234,1.144134,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,34.234234,1.1293276667287721e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,34.834835,10.501231,bar,SOURCE_MEASURED
+measured_flow,source_11bar,34.834835,1.196854,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,34.834835,1.1810645936988083e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,35.435435,10.503471,bar,SOURCE_MEASURED
+measured_flow,source_11bar,35.435435,1.231635,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,35.435435,1.2151275511512962e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,36.036036,10.503213,bar,SOURCE_MEASURED
+measured_flow,source_11bar,36.036036,1.286679,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,36.036036,1.2694649856092961e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,36.636637,10.504355,bar,SOURCE_MEASURED
+measured_flow,source_11bar,36.636637,1.323326,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,36.636637,1.3054797555801819e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,37.237237,10.493364,bar,SOURCE_MEASURED
+measured_flow,source_11bar,37.237237,1.359343,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,37.237237,1.3424156408325513e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,37.837838,10.491097,bar,SOURCE_MEASURED
+measured_flow,source_11bar,37.837838,1.38467,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,37.837838,1.367722738346471e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,38.438438,10.491568,bar,SOURCE_MEASURED
+measured_flow,source_11bar,38.438438,1.416147,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,38.438438,1.3987516876024497e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,39.039039,10.471041,bar,SOURCE_MEASURED
+measured_flow,source_11bar,39.039039,1.440704,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,39.039039,1.4257966451982833e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,39.63964,10.47102,bar,SOURCE_MEASURED
+measured_flow,source_11bar,39.63964,1.466069,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,39.63964,1.4509020964974113e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,40.24024,10.452071,bar,SOURCE_MEASURED
+measured_flow,source_11bar,40.24024,1.494554,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,40.24024,1.481773919983569e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,40.840841,10.439049,bar,SOURCE_MEASURED
+measured_flow,source_11bar,40.840841,1.528902,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,40.840841,1.5177190988806334e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,41.441441,10.438696,bar,SOURCE_MEASURED
+measured_flow,source_11bar,41.441441,1.563392,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,41.441441,1.5520093091968236e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,42.042042,10.435053,bar,SOURCE_MEASURED
+measured_flow,source_11bar,42.042042,1.588358,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,42.042042,1.5773440148106946e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,42.642643,10.431943,bar,SOURCE_MEASURED
+measured_flow,source_11bar,42.642643,1.618567,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,42.642643,1.6078227254411509e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,43.243243,10.431919,bar,SOURCE_MEASURED
+measured_flow,source_11bar,43.243243,1.647902,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,43.243243,1.6369667616487853e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,43.843844,10.426903,bar,SOURCE_MEASURED
+measured_flow,source_11bar,43.843844,1.682295,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,43.843844,1.671935454687759e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,44.444444,10.415366,bar,SOURCE_MEASURED
+measured_flow,source_11bar,44.444444,1.709065,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,44.444444,1.7004220624330461e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,45.045045,10.422182,bar,SOURCE_MEASURED
+measured_flow,source_11bar,45.045045,1.73167,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,45.045045,1.7217859791143774e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,45.645646,10.433846,bar,SOURCE_MEASURED
+measured_flow,source_11bar,45.645646,1.74503,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,45.645646,1.7331300879113187e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,46.246246,10.43122,bar,SOURCE_MEASURED
+measured_flow,source_11bar,46.246246,1.754298,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,46.246246,1.7427735093316372e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,46.846847,10.429902,bar,SOURCE_MEASURED
+measured_flow,source_11bar,46.846847,1.765948,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,46.846847,1.754568669447843e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,47.447447,10.430284,bar,SOURCE_MEASURED
+measured_flow,source_11bar,47.447447,1.767728,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,47.447447,1.756272875260762e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,48.048048,10.433432,bar,SOURCE_MEASURED
+measured_flow,source_11bar,48.048048,1.801642,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,48.048048,1.789427034649202e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,48.648649,10.438439,bar,SOURCE_MEASURED
+measured_flow,source_11bar,48.648649,1.813749,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,48.648649,1.8005878488987163e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,49.249249,10.432189,bar,SOURCE_MEASURED
+measured_flow,source_11bar,49.249249,1.842815,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,49.249249,1.8305389690897406e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,49.84985,10.414913,bar,SOURCE_MEASURED
+measured_flow,source_11bar,49.84985,1.851028,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,49.84985,1.841747243179034e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,50.45045,10.419514,bar,SOURCE_MEASURED
+measured_flow,source_11bar,50.45045,1.870882,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,50.45045,1.860679705247478e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,51.051051,10.413757,bar,SOURCE_MEASURED
+measured_flow,source_11bar,51.051051,1.851002,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,51.051051,1.8419258175169316e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,51.651652,10.400512,bar,SOURCE_MEASURED
+measured_flow,source_11bar,51.651652,1.860969,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,51.651652,1.8542022594407787e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,52.252252,10.395476,bar,SOURCE_MEASURED
+measured_flow,source_11bar,52.252252,1.876587,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,52.252252,1.870669261256187e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,52.852853,10.390406,bar,SOURCE_MEASURED
+measured_flow,source_11bar,52.852853,1.874696,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,52.852853,1.8696960979584574e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,53.453453,10.395314,bar,SOURCE_MEASURED
+measured_flow,source_11bar,53.453453,1.863331,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,53.453453,1.8574840099759135e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,54.054054,10.405372,bar,SOURCE_MEASURED
+measured_flow,source_11bar,54.054054,1.879041,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,54.054054,1.8713341013795464e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,54.654655,10.405078,bar,SOURCE_MEASURED
+measured_flow,source_11bar,54.654655,1.884709,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,54.654655,1.8770318888945603e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,55.255255,10.421544,bar,SOURCE_MEASURED
+measured_flow,source_11bar,55.255255,1.892819,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,55.255255,1.8821303890491118e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,55.855856,10.400371,bar,SOURCE_MEASURED
+measured_flow,source_11bar,55.855856,1.903578,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,55.855856,1.896682040591794e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,56.456456,10.400954,bar,SOURCE_MEASURED
+measured_flow,source_11bar,56.456456,1.903888,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,56.456456,1.896884586397062e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,57.057057,10.422727,bar,SOURCE_MEASURED
+measured_flow,source_11bar,57.057057,1.904236,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,57.057057,1.893268004049368e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,57.657658,10.41638,bar,SOURCE_MEASURED
+measured_flow,source_11bar,57.657658,1.900191,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,57.657658,1.890397474515701e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,58.258258,10.404173,bar,SOURCE_MEASURED
+measured_flow,source_11bar,58.258258,1.887563,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,58.258258,1.8800377831057703e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,58.858859,10.407709,bar,SOURCE_MEASURED
+measured_flow,source_11bar,58.858859,1.888164,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,58.858859,1.879997444321658e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,59.459459,10.425664,bar,SOURCE_MEASURED
+measured_flow,source_11bar,59.459459,1.893509,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,59.459459,1.882072443757999e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,60.06006,10.443248,bar,SOURCE_MEASURED
+measured_flow,source_11bar,60.06006,1.906447,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,60.06006,1.891741674729921e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,60.660661,10.422874,bar,SOURCE_MEASURED
+measured_flow,source_11bar,60.660661,1.901784,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,60.660661,1.890803459546434e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,61.261261,10.430928,bar,SOURCE_MEASURED
+measured_flow,source_11bar,61.261261,1.899984,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,61.261261,1.8875552940136917e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,61.861862,10.429406,bar,SOURCE_MEASURED
+measured_flow,source_11bar,61.861862,1.912334,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,61.861862,1.9001017548350352e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,62.462462,10.425532,bar,SOURCE_MEASURED
+measured_flow,source_11bar,62.462462,1.895678,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,62.462462,1.8842521999086105e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,63.063063,10.41208,bar,SOURCE_MEASURED
+measured_flow,source_11bar,63.063063,1.890643,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,63.063063,1.8816754616190534e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,63.663664,10.41856,bar,SOURCE_MEASURED
+measured_flow,source_11bar,63.663664,1.893523,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,63.663664,1.8833696787271948e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,64.264264,10.419975,bar,SOURCE_MEASURED
+measured_flow,source_11bar,64.264264,1.891574,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,64.264264,1.881175637063264e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,64.864865,10.434028,bar,SOURCE_MEASURED
+measured_flow,source_11bar,64.864865,1.860305,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,64.864865,1.8475867633022828e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,65.465465,10.423785,bar,SOURCE_MEASURED
+measured_flow,source_11bar,65.465465,1.863354,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,65.465465,1.852433437148566e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,66.066066,10.425962,bar,SOURCE_MEASURED
+measured_flow,source_11bar,66.066066,1.863061,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,66.066066,1.851755416547424e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,66.666667,10.41743,bar,SOURCE_MEASURED
+measured_flow,source_11bar,66.666667,1.837981,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,66.666667,1.8283238028151495e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,67.267267,10.398235,bar,SOURCE_MEASURED
+measured_flow,source_11bar,67.267267,1.837151,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,67.267267,1.8308717005233287e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,67.867868,10.392514,bar,SOURCE_MEASURED
+measured_flow,source_11bar,67.867868,1.850729,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,67.867868,1.8454186215292685e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,68.468468,10.408325,bar,SOURCE_MEASURED
+measured_flow,source_11bar,68.468468,1.844956,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,68.468468,1.8368676060659847e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,69.069069,10.39941,bar,SOURCE_MEASURED
+measured_flow,source_11bar,69.069069,1.844574,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,69.069069,1.838061628177362e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,69.66967,10.392207,bar,SOURCE_MEASURED
+measured_flow,source_11bar,69.66967,1.857832,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,69.66967,1.852555965996463e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,70.27027,10.40206,bar,SOURCE_MEASURED
+measured_flow,source_11bar,70.27027,1.855363,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,70.27027,1.8483415386464055e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,70.870871,10.41632,bar,SOURCE_MEASURED
+measured_flow,source_11bar,70.870871,1.845465,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,70.870871,1.8359641060667968e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,71.471471,10.416057,bar,SOURCE_MEASURED
+measured_flow,source_11bar,71.471471,1.846327,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,71.471471,1.8368680470731625e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,72.072072,10.423133,bar,SOURCE_MEASURED
+measured_flow,source_11bar,72.072072,1.848217,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,72.072072,1.8375000848613103e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,72.672673,10.428927,bar,SOURCE_MEASURED
+measured_flow,source_11bar,72.672673,1.845262,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,72.672673,1.8335429915620937e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,73.273273,10.432468,bar,SOURCE_MEASURED
+measured_flow,source_11bar,73.273273,1.852697,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,73.273273,1.840305922096962e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,73.873874,10.429536,bar,SOURCE_MEASURED
+measured_flow,source_11bar,73.873874,1.852962,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,73.873874,1.8410865791610176e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,74.474474,10.426865,bar,SOURCE_MEASURED
+measured_flow,source_11bar,74.474474,1.856046,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,74.474474,1.844623221428443e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,75.075075,10.432838,bar,SOURCE_MEASURED
+measured_flow,source_11bar,75.075075,1.844305,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,75.075075,1.8319050781692476e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,75.675676,10.430038,bar,SOURCE_MEASURED
+measured_flow,source_11bar,75.675676,1.839336,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,75.675676,1.8274599463528156e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,76.276276,10.421297,bar,SOURCE_MEASURED
+measured_flow,source_11bar,76.276276,1.845454,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,76.276276,1.8350763487182447e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,76.876877,10.423921,bar,SOURCE_MEASURED
+measured_flow,source_11bar,76.876877,1.839674,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,76.876877,1.828868357176863e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,77.477477,10.427072,bar,SOURCE_MEASURED
+measured_flow,source_11bar,77.477477,1.8384,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,77.477477,1.8270495496791946e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,78.078078,10.428844,bar,SOURCE_MEASURED
+measured_flow,source_11bar,78.078078,1.832501,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,78.078078,1.8208775266361047e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,78.678679,10.422494,bar,SOURCE_MEASURED
+measured_flow,source_11bar,78.678679,1.842236,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,78.678679,1.8316660577985774e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,79.279279,10.414255,bar,SOURCE_MEASURED
+measured_flow,source_11bar,79.279279,1.853717,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,79.279279,1.844539296442576e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,79.87988,10.421589,bar,SOURCE_MEASURED
+measured_flow,source_11bar,79.87988,1.8431,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,79.87988,1.832684235128153e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,80.48048,10.419424,bar,SOURCE_MEASURED
+measured_flow,source_11bar,80.48048,1.835327,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,80.48048,1.8253343603722285e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,81.081081,10.418097,bar,SOURCE_MEASURED
+measured_flow,source_11bar,81.081081,1.841859,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,81.081081,1.832064124730076e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,81.681682,10.41385,bar,SOURCE_MEASURED
+measured_flow,source_11bar,81.681682,1.824116,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,81.681682,1.815155439792578e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,82.282282,10.400098,bar,SOURCE_MEASURED
+measured_flow,source_11bar,82.282282,1.835284,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,82.282282,1.828683445736004e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,82.882883,10.405014,bar,SOURCE_MEASURED
+measured_flow,source_11bar,82.882883,1.829794,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,82.882883,1.8223517868329903e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,83.483483,10.415941,bar,SOURCE_MEASURED
+measured_flow,source_11bar,83.483483,1.827424,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,83.483483,1.8180821367392589e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,84.084084,10.40632,bar,SOURCE_MEASURED
+measured_flow,source_11bar,84.084084,1.818944,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,84.084084,1.811318566194549e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,84.684685,10.402633,bar,SOURCE_MEASURED
+measured_flow,source_11bar,84.684685,1.815075,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,84.684685,1.8081064051296394e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,85.285285,10.424902,bar,SOURCE_MEASURED
+measured_flow,source_11bar,85.285285,1.798315,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,85.285285,1.787584056045445e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,85.885886,10.42843,bar,SOURCE_MEASURED
+measured_flow,source_11bar,85.885886,1.804605,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,85.885886,1.7932296566392574e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,86.486486,10.41655,bar,SOURCE_MEASURED
+measured_flow,source_11bar,86.486486,1.818004,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,86.486486,1.8086045465263614e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,87.087087,10.41141,bar,SOURCE_MEASURED
+measured_flow,source_11bar,87.087087,1.815816,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,87.087087,1.8073196727426583e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,87.687688,10.414848,bar,SOURCE_MEASURED
+measured_flow,source_11bar,87.687688,1.828293,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,87.687688,1.8191375861440515e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,88.288288,10.401534,bar,SOURCE_MEASURED
+measured_flow,source_11bar,88.288288,1.82965,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,88.288288,1.82281802154788e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,88.888889,10.422526,bar,SOURCE_MEASURED
+measured_flow,source_11bar,88.888889,1.841835,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,88.888889,1.83126173607001e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,89.489489,10.425356,bar,SOURCE_MEASURED
+measured_flow,source_11bar,89.489489,1.832389,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,89.489489,1.821375408823653e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,90.09009,10.41496,bar,SOURCE_MEASURED
+measured_flow,source_11bar,90.09009,1.841363,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,90.09009,1.832122434006945e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,90.690691,10.415696,bar,SOURCE_MEASURED
+measured_flow,source_11bar,90.690691,1.838704,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,90.690691,1.829347502187074e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,91.291291,10.427752,bar,SOURCE_MEASURED
+measured_flow,source_11bar,91.291291,1.836238,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,91.291291,1.8247818951769107e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,91.891892,10.441046,bar,SOURCE_MEASURED
+measured_flow,source_11bar,91.891892,1.834597,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,91.891892,1.8208298168256008e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,92.492492,10.434674,bar,SOURCE_MEASURED
+measured_flow,source_11bar,92.492492,1.821822,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,92.492492,1.8092548416901718e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,93.093093,10.413745,bar,SOURCE_MEASURED
+measured_flow,source_11bar,93.093093,1.803646,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,93.093093,1.7948040905891524e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,93.693694,10.418284,bar,SOURCE_MEASURED
+measured_flow,source_11bar,93.693694,1.825609,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,93.693694,1.8158679470894257e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,94.294294,10.41464,bar,SOURCE_MEASURED
+measured_flow,source_11bar,94.294294,1.8229,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,94.294294,1.8138078167286154e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,94.894895,10.413859,bar,SOURCE_MEASURED
+measured_flow,source_11bar,94.894895,1.818138,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,94.894895,1.809205241798976e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,95.495495,10.418054,bar,SOURCE_MEASURED
+measured_flow,source_11bar,95.495495,1.833497,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,95.495495,1.8237541206752333e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,96.096096,10.418074,bar,SOURCE_MEASURED
+measured_flow,source_11bar,96.096096,1.826939,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,96.096096,1.8172274801171793e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,96.696697,10.402662,bar,SOURCE_MEASURED
+measured_flow,source_11bar,96.696697,1.802451,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,96.696697,1.7955258668082472e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,97.297297,10.418158,bar,SOURCE_MEASURED
+measured_flow,source_11bar,97.297297,1.802971,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,97.297297,1.7933724278034066e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,97.897898,10.422263,bar,SOURCE_MEASURED
+measured_flow,source_11bar,97.897898,1.800452,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,97.897898,1.7901614724898497e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,98.498498,10.424827,bar,SOURCE_MEASURED
+measured_flow,source_11bar,98.498498,1.799205,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,98.498498,1.788481612113441e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,99.099099,10.425774,bar,SOURCE_MEASURED
+measured_flow,source_11bar,99.099099,1.791749,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,99.099099,1.7809082711997276e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+measured_pressure,source_11bar,99.6997,10.408421,bar,SOURCE_MEASURED
+measured_flow,source_11bar,99.6997,1.781117,g/s,SOURCE_MEASURED
+apparent_conductance,source_11bar,99.6997,1.7732921241805993e-12,m3/(s Pa),SOURCE_MEASURED_DERIVED
+conductance_ratio,C11_over_C5,middle,0.38922645391658073,1,SOURCE_MEASURED_DERIVED
+conductance_ratio,C11_over_C5,late,0.39529353321173405,1,SOURCE_MEASURED_DERIVED
+conductance_ratio,C11_over_C5,terminal,0.37350622373350667,1,SOURCE_MEASURED_DERIVED
+grind_contrast,source,1/1,0.171993333333333,g,SOURCE_DERIVED
+grind_contrast,model,1/1,-0.01655300614912747,g,EXISTING_OPENFOAM_RESULT
+grind_contrast,source,1/2,0.27095999999999965,g,SOURCE_DERIVED
+grind_contrast,model,1/2,-0.013063789408884752,g,EXISTING_OPENFOAM_RESULT
+grind_contrast,source,1/3,0.3133833333333329,g,SOURCE_DERIVED
+grind_contrast,model,1/3,-0.000836919625653465,g,EXISTING_OPENFOAM_RESULT

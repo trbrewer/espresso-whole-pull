@@ -34,8 +34,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 322,
-    "source_manifest_aggregate_sha256": "06129cdd7f36d2af33dd44ecd0240179ee84e548bcfc30772ae164b80a5e9048",
+    "source_manifest_file_count": 327,
+    "source_manifest_aggregate_sha256": "02b352344b1ee09bd0d4de2c6b1cde8b1600998ed0ae74f9ccab704721c24cab",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -467,6 +467,29 @@
     "val_case_002": "NOT_STARTED"
   },
   "current_val_corpus_002_review_merge_boundary": "COMPLETE_APPROVED_AND_MERGED_NO_ACTIVE_FOLLOW_ON",
+  "sci_md_001": {
+    "status": "CORRECTED_PENDING_EXACT_HEAD_REVIEW",
+    "reviewed_pre_correction_head": "30d0e5bd7e172b4144bd3a742e575944ba6dd0c0",
+    "review_disposition": "CORRECTION_REQUIRED_BEFORE_MERGE",
+    "core_scientific_result": "RETAIN",
+    "issue": 62,
+    "branch": "research/sci-md-001-pressure-grind-mechanism-discrimination",
+    "protocol_freeze_commit": "d773488f79a80df7e07d2d3a1bff835a169e1498",
+    "pre_correction_result_data_commit": "a0f27d8ef65c618ed202fced8a9c980edbe803aa",
+    "pre_correction_result_data_tree": "f7ed1b495245979ca1dc1dc176bbe63d0d0a40aa",
+    "corrected_result_authority": "RESOLVE_FROM_EXACT_REVIEWED_HEAD_AND_TREE",
+    "reduced_evaluations": 5421,
+    "reduced_evaluation_breakdown": {
+      "p1_executed_grid_states": 301,
+      "p2_executed_grid_states": 5120,
+      "other_mechanisms": "ANALYTICAL_OR_STRUCTURAL_CHECKS_NOT_PARAMETER_ENSEMBLES"
+    },
+    "new_openfoam_runs": 0,
+    "pressure_terminal_conductance_ratio_11_over_5": 0.37350622373350667,
+    "grind_sign_match_count": 0,
+    "recommended_next_task": "NO_NEW_PRODUCTION_PHYSICS_YET",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
   "current_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }

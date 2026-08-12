@@ -1,0 +1,120 @@
+{
+  "evaluation_breakdown": {
+    "OTHER_ITEMS": "ANALYTICAL_OR_STRUCTURAL_CHECKS_NOT_PARAMETER_ENSEMBLES",
+    "P1_EXECUTED_GRID_STATES": 301,
+    "P2_EXECUTED_GRID_STATES": 5120
+  },
+  "evaluations": 5421,
+  "primary_pressure_basis": "RETAINED_MEASURED_TERMINAL_BASKET_PRESSURE",
+  "protocol_deviation": "Base-2 low-discrepancy sampling and adaptive refinement were not executed; P3/P4/G1/G2 are downgraded to not structurally excluded rather than represented as executed model passes.",
+  "records": [
+    {
+      "capable": true,
+      "capable_region_breadth": "n >= 1.18",
+      "disposition": "CANDIDATE_MECHANISM_CAPABILITY_PLAUSIBILITY_UNRESOLVED",
+      "distinctive_prediction": "simultaneous pressure and bed-height histories",
+      "evaluation_kind": "EXECUTED_ANALYTICAL_GRID_SCREEN",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Measured-pressure analytical/grid screen is mathematically capable; it restates the inverse requirement and is not yet a constitutive explanation.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P1_GENERIC_PRESSURE_DEPENDENT_PERMEABILITY",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": true,
+      "capable_region_breadth": "4362/5120 grid points",
+      "disposition": "CANDIDATE_MECHANISM_CAPABILITY_PLAUSIBILITY_UNRESOLVED",
+      "distinctive_prediction": "pressure-step lag and rebound/bed-height memory",
+      "evaluation_kind": "EXECUTED_ONE_STATE_GRID_SCREEN",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "A one-state finite-rate resistance surrogate is mathematically capable. Transient poromechanics is one possible realization, not a demonstrated explanation.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P2_RELAXING_RESISTANCE_SURROGATE_POROMECHANICS_MOTIVATED",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": null,
+      "capable_region_breadth": "inverse requirement is >= 2.677 resistance ratio at 11/5 bar",
+      "disposition": "NOT_STRUCTURALLY_EXCLUDED",
+      "distinctive_prediction": "bed-height increase and hydration-time dependence",
+      "evaluation_kind": "ANALYTICAL_STRUCTURAL_CHECK_ONLY",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Not structurally excluded, but no swelling-specific dynamical model was executed.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P3_SWELLING",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": null,
+      "capable_region_breadth": "inverse requirement is >= 2.677 resistance ratio at 11/5 bar",
+      "disposition": "NOT_STRUCTURALLY_EXCLUDED",
+      "distinctive_prediction": "turbidity, captured fines and incomplete recovery",
+      "evaluation_kind": "ANALYTICAL_STRUCTURAL_CHECK_ONLY",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Not structurally excluded, but no fines inventory/rate model was executed.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P4_MOBILE_DEPOSITED_FINES",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": true,
+      "capable_region_breadth": "mu11/mu5 >= 2.677",
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "distinctive_prediction": "large synchronized concentration/viscosity contrast",
+      "evaluation_kind": "ANALYTICAL_PROPERTY_REQUIREMENT",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "An analytical viscosity-only requirement is outside the defensible water-temperature variation represented here.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P5_CONCENTRATION_DEPENDENT_VISCOSITY",
+      "plausibility": "OUTSIDE_SUPPORTED_RANGE"
+    },
+    {
+      "capable": false,
+      "capable_region_breadth": "none under measured basket-pressure prescription",
+      "disposition": "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE",
+      "distinctive_prediction": "separate commanded, upstream and basket pressure",
+      "evaluation_kind": "ANALYTICAL_STRUCTURAL_CHECK_ONLY",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Supply dynamics cannot reverse a relationship already conditioned on measured basket pressure without a pressure-node or unmeasured dynamic-state error.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P6_MACHINE_BOUNDARY_DYNAMICS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": false,
+      "capable_region_breadth": "none with pressure-independent parallel paths",
+      "disposition": "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE",
+      "distinctive_prediction": "segmented outlet flow and spatial extraction",
+      "evaluation_kind": "ANALYTICAL_STRUCTURAL_CHECK_ONLY",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Static positive parallel paths preserve monotone Q(dp); localization must itself evolve with pressure/time to become capable.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P7_STATIC_LATERAL_PATHS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": null,
+      "capable_region_breadth": "required coarse-minus-fine mass correction 0.189..0.314 g",
+      "disposition": "NOT_STRUCTURALLY_EXCLUDED",
+      "distinctive_prediction": "independent grinder-specific PSD, fines, packing and permeability",
+      "evaluation_kind": "ANALYTICAL_STRUCTURAL_CHECK_ONLY",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Not structurally excluded; no three-brew-ratio structure model was executed.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "G1_GRIND_TO_STRUCTURE_MAPPING",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": null,
+      "capable_region_breadth": "conceptual two-population degree of freedom",
+      "disposition": "NOT_STRUCTURALLY_EXCLUDED",
+      "distinctive_prediction": "fractionated or species-resolved time series under prescribed hydraulics",
+      "evaluation_kind": "ANALYTICAL_STRUCTURAL_CHECK_ONLY",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Not structurally excluded; no two-population parameter ensemble or 3/3 prediction was executed.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "G2_BIMODAL_EXTRACTION",
+      "plausibility": "BOUND_UNRESOLVED"
+    }
+  ]
+}

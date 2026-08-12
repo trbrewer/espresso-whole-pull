@@ -1,5 +1,10 @@
 # Solver Development and Validation Roadmap
 
+The enduring forward scientific sequence and corrected-pending-exact-head-review SCI-MD-001 work are in the
+[Scientific Modeling Forward Plan](SCIENTIFIC_MODELING_FORWARD_PLAN.md). This
+new authorization supersedes only the stale statement that no mechanism-
+selection task is active; the independent-data validation gate is unchanged.
+
 ## Purpose
 
 This is the concise current / next / later roadmap. The long-form controlling
