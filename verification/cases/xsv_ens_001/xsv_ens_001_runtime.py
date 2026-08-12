@@ -166,6 +166,18 @@ def run_case(args):
       except Exception as e: rec.update(status="NUMERICAL_INSTABILITY",error=repr(e))
     write_json(out/"result.json",rec); print(json.dumps(rec,indent=2))
 
+def run_inertial(args):
+    selection=json.loads((CASE/"XSV_ENS_001_INERTIAL_SELECTION.json").read_text())
+    if args.parent not in selection["selected_parent_case_ids"]: raise SystemExit("parent not frozen")
+    source=Path(args.evidence)/"runs"/args.parent/"solid.npy"; solid=np.load(source)
+    force=float(args.force)
+    if force not in selection["forces_lu"]: raise SystemExit("force not frozen")
+    out=Path(args.evidence)/"inertial"/f"{args.parent}-G{force:.0e}"; out.mkdir(parents=True,exist_ok=True)
+    if (out/"result.json").exists(): print((out/"result.json").read_text()); return
+    s=solve(solid,args.puckworks,"f32",force); ux=s.pop("ux"); log=s.pop("log")
+    rec={"schema_version":"espresso.whole_pull.xsv_ens_001.inertial_run.v1","parent_case_id":args.parent,"geometry_sha256":sha_bytes(np.ascontiguousarray(solid,np.uint8).tobytes()),"force":force,"precision":"f32",**s,"status":"PASS" if s["converged"] and s["Mach"]<.05 else ("MACH_LIMIT_FAILURE" if s["Mach"]>=.05 else "NONCONVERGED")}
+    np.save(out/"ux.npy",ux); (out/"solver.log").write_text(log); write_json(out/"result.json",rec); print(json.dumps(rec,indent=2))
+
 def verify(_):
     p=PROTOCOL; assert p["targets"]=={"primary":0.373506,"supporting":[0.389226,0.395294],"rounded_substitution_prohibited":True}
     phi=.4; q=2e-5; nu=.2; g=1e-6; kg=nu*q/g; kv=nu*(q/phi)/g; assert math.isclose(kg,phi*kv) and not math.isclose(kg,kv)
@@ -178,6 +190,7 @@ def main():
     p=sp.add_parser("pilot"); p.add_argument("--puckworks",required=True); p.add_argument("--evidence",required=True)
     p=sp.add_parser("freeze-matrix"); p.add_argument("--pilot",required=True)
     p=sp.add_parser("run"); p.add_argument("--puckworks",required=True); p.add_argument("--evidence",required=True); p.add_argument("--case-id",required=True)
+    p=sp.add_parser("run-inertial"); p.add_argument("--puckworks",required=True); p.add_argument("--evidence",required=True); p.add_argument("--parent",required=True); p.add_argument("--force",required=True,type=float)
     sp.add_parser("verify")
-    a=ap.parse_args(); {"inventory":inventory,"pilot":pilot,"freeze-matrix":freeze,"run":run_case,"verify":verify}[a.cmd](a)
+    a=ap.parse_args(); {"inventory":inventory,"pilot":pilot,"freeze-matrix":freeze,"run":run_case,"run-inertial":run_inertial,"verify":verify}[a.cmd](a)
 if __name__=="__main__": main()
