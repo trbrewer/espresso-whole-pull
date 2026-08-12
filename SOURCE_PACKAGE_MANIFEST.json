@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 362,
-  "total_uncompressed_bytes_excluding_manifest": 5312913,
-  "aggregate_source_sha256": "f10014717c18cb578ee9e0e499a7edb236c25e5831d8a72ad5f5d408ef7942d2",
-  "aggregate_sha256": "f10014717c18cb578ee9e0e499a7edb236c25e5831d8a72ad5f5d408ef7942d2",
+  "file_count": 367,
+  "total_uncompressed_bytes_excluding_manifest": 5753757,
+  "aggregate_source_sha256": "54a6b712e96bfe717ab3d79620f2e3692ffd80c8c047c7445e918bdd7a8fd05a",
+  "aggregate_sha256": "54a6b712e96bfe717ab3d79620f2e3692ffd80c8c047c7445e918bdd7a8fd05a",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -519,8 +519,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md": {
-      "sha256": "1793f546c5ad1bf97429a94ad3d6650de24c32b30347a995035f672d6f082efa",
-      "bytes": 8027,
+      "sha256": "c5b0d3377cb2edf0ac67640144c09be40e1183efc1d6ae9dbd4e6b08e7ac8784",
+      "bytes": 8755,
       "git_mode": "100644"
     },
     "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md": {
@@ -729,13 +729,13 @@
       "git_mode": "100644"
     },
     "docs/verification/XSV_ENS_001_STOCHASTIC_GPU_PORE_SCALE_CLOSURE_AND_RVE_PROTOCOL.md": {
-      "sha256": "481c8b06407b98886c70b63e27facf9de450d77c5d5294adc4a68a8738705b41",
-      "bytes": 6123,
+      "sha256": "23445f683ef7fa1f16a4c4324bbad0b7b43b265b79a87b9dc62633f26eb554a4",
+      "bytes": 6469,
       "git_mode": "100644"
     },
     "docs/verification/XSV_ENS_001_STOCHASTIC_GPU_PORE_SCALE_CLOSURE_AND_RVE_RESULT.md": {
-      "sha256": "7451ed8ec501b5263c4694d45363f5f7822423d067ab99e8bbac07163d993ece",
-      "bytes": 9768,
+      "sha256": "43ad6309c711fe0f49c8c30e568748aecdfbe9b670b033e20708bb334c8d57b2",
+      "bytes": 10501,
       "git_mode": "100644"
     },
     "docs/verification/XSV_TAICHI_001_SATURATED_HYDRAULIC_CLOSURE_PARITY.md": {
@@ -1469,8 +1469,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_ens_001.py": {
-      "sha256": "16b0bcb9b4d22a0ecd04a3e658562793314db34873d2c747bad1cf1a2f30ba97",
-      "bytes": 2018,
+      "sha256": "8707d7728a18743500b20941dfc1ff09e5e016383bf9bcbd0757f400b8c8aa3c",
+      "bytes": 5433,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {
@@ -1484,18 +1484,33 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_ARTIFACT_MANIFEST.json": {
-      "sha256": "62362d9496f1afad03d0b1ae4fb569b4c5621c7dea6472d32cd334cf9c3d448d",
-      "bytes": 547,
+      "sha256": "5272be544ae3ca550fc822b803596b5914e92484453d933c96629477961a6605",
+      "bytes": 593,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_CLOSURE_RECOMMENDATION.json": {
-      "sha256": "566a27d2ebd76c893e5bbaa3e498b5a0d056da783004eb40784cb9115cec7837",
-      "bytes": 2027,
+      "sha256": "9b2945f5dda630faefa373c5a8c37880eb5b33c84d979c5196412749b148549d",
+      "bytes": 2445,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_ens_001/XSV_ENS_001_COMPLETION_MATRIX.csv": {
+      "sha256": "46b0f3f4a423057336ec28b81cda20095c917473f32c5b8ed6e19d6c85940596",
+      "bytes": 28278,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_ens_001/XSV_ENS_001_COMPLETION_MATRIX.json": {
+      "sha256": "4c138a35ca7362f7f9d0f99ad462a401d1b2b22a79b383ef739275dbc1851b5f",
+      "bytes": 53536,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_ens_001/XSV_ENS_001_COMPLETION_PROTOCOL.json": {
+      "sha256": "8eebc08120fef245b01ec837d6a58b7686365a89693099903e3b6ac26476776a",
+      "bytes": 1629,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_DESCRIPTOR_RESULTS.csv": {
-      "sha256": "be91e3ca37629c706281f39bc1b3d6a71581c3adeb3ec2acb0ddb7426bf996dc",
-      "bytes": 39466,
+      "sha256": "5c4445dab9169cea8314907951fb8a2aa7c2e4a47584c8092d462235a5cf8055",
+      "bytes": 71218,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_DIRECTIONAL_RESULTS.csv": {
@@ -1503,9 +1518,14 @@
       "bytes": 1786,
       "git_mode": "100644"
     },
+    "verification/cases/xsv_ens_001/XSV_ENS_001_DOMAIN_QUALIFICATION.json": {
+      "sha256": "dcdd8feedbc6f3c01b0793d847691f5d3eb0a68ba3e28b6d4f07f5baa25606c3",
+      "bytes": 4056,
+      "git_mode": "100644"
+    },
     "verification/cases/xsv_ens_001/XSV_ENS_001_GEOMETRY_MANIFEST.csv": {
-      "sha256": "0923dd04f3c790585fa555af59f789045b98e0903d7a87d8795cffb52a851138",
-      "bytes": 36099,
+      "sha256": "1c03fd0d332f0c8ee55090fec3a1660e4fec703dcaf83321d85e28d2c2d45e4a",
+      "bytes": 79224,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_INERTIAL_RESULTS.csv": {
@@ -1524,8 +1544,8 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_PLOT_SOURCE.csv": {
-      "sha256": "a7cb571b182d33eabe17ab2e09b4979de01f8d56e2f919c20657fd06fda7bdc7",
-      "bytes": 78848,
+      "sha256": "e32049237f92e088450dffb2cbfafa235fc0c37cf2f965e05182763fdfb14f44",
+      "bytes": 150703,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_PROTOCOL.json": {
@@ -1534,23 +1554,23 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_REALIZATION_RESULTS.csv": {
-      "sha256": "641aed6dd0b2c51eb98e48ab3f373e11dd36680b5abdfb0dd2179dbbea259c71",
-      "bytes": 83757,
+      "sha256": "0926ec72c121d2ed7c60e994ee05ad4eb7f6ada28e33e339e487718ac0d8f126",
+      "bytes": 152263,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_RESULT.json": {
-      "sha256": "7ee2c30ac898fd94a20f7be09925a9359a424fa1ab172ee032cd4f190cedb803",
-      "bytes": 10556,
+      "sha256": "9d9397c155bd38bfd191f524e629339ea7ba607eedbed6a3160a3c3bd092eb20",
+      "bytes": 18529,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_REV_ASSESSMENT.json": {
-      "sha256": "8943261a428fb94326fdc3ecd452cd599f53d0a677b418eaa5a21c2bb1662193",
-      "bytes": 2419,
+      "sha256": "e9de60ada6a4f081fbc3ade85b5a6126aa560b36836686b2fd70bbf81e8c6262",
+      "bytes": 9072,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_RUN_MANIFEST.csv": {
-      "sha256": "daa725211b7e47d1f0e0b2dd82a2d5dd73373385e80981a63a7036a4bcc3e289",
-      "bytes": 14067,
+      "sha256": "0577acd82e07d9c48da880d97bd06b1921c3a0264b59bbdbfc6c15651c7d5ccb",
+      "bytes": 24356,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_SCORED_MATRIX.csv": {
@@ -1564,78 +1584,83 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_TARGET_ASSESSMENT.json": {
-      "sha256": "166d93e211fc0dd7bf902c3b94aa47e826c866bae70bfecc1804d79fd2360b8d",
-      "bytes": 2240,
+      "sha256": "617837ffefc256887f63d8f1ef3108c3f7fc5192dd5066cfe8419435b2bd2643",
+      "bytes": 2312,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/01_permeability_distributions_by_size.svg": {
-      "sha256": "90f729bcded66121b44df50bf2e0a46c17e0fbee282e17c46eb1e0404545e365",
-      "bytes": 28125,
+      "sha256": "985b18b56d9328be6c8e1d3b887a430af766b3536b18c6cde61206392fbbc9d4",
+      "bytes": 47342,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/02_mean_ci_vs_size.svg": {
-      "sha256": "4ca84027afdce6b3de05f33dac4e20c43cadde6a5014fa66d2304982115108d4",
-      "bytes": 23931,
+      "sha256": "36ed8dcffe9fed45950e5094080717928f9ed5e4d46925e4a4416b48435e098b",
+      "bytes": 24214,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/03_cv_vs_size.svg": {
-      "sha256": "293d02e85a00fddb001f46eee0763087fd547b9e4cd76dd112a1733cb7a99bdc",
-      "bytes": 22660,
+      "sha256": "a3bad5d472b0dcfd425acaa19c0db0881174d97291281b25e88288bdb332d35c",
+      "bytes": 24600,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/04_K_vs_solid_fraction.svg": {
-      "sha256": "2d3a0cb42ff8c8918c31a4bf4725104950c7b52515c334197fdd483189703a49",
-      "bytes": 49513,
+      "sha256": "600839557fb1ebdcccd10d05e52e8825f412304c7d3bdbf16fe0fdf8a112a1b5",
+      "bytes": 68062,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/05_paired_restriction_ratios.svg": {
-      "sha256": "92af675487369f2ab03bc0c7f0afb89e63b559ff047733798f07c350075d6e65",
-      "bytes": 20405,
+      "sha256": "d7dcc0aa66163e405ca73f24ac54078a97ec006473d23f0e532da7b44bf3bc11",
+      "bytes": 19987,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/06_target_capability_map.svg": {
-      "sha256": "1bf6fa4ff3502ad32385088e1eafbbba336b9d4dbd559d2f340da03a73b2a920",
-      "bytes": 50504,
+      "sha256": "2f2ba5c902dc45f1a26b29b7530899672110b455a0b2c07954aa81fd85abbfe3",
+      "bytes": 69014,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/07_directional_components.svg": {
-      "sha256": "3f4dc528e52708c63bd0a2436ddbbb223e2cc6028fbc060e8bc81fb9dfc9c583",
-      "bytes": 30199,
+      "sha256": "188a6953f4ec417121a1da3de4e31239aaf2a8fe3c08e8571a94a3281065a408",
+      "bytes": 29627,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/08_transverse_axial_ratio.svg": {
-      "sha256": "f1484fd763a78b9db58ddb527b073fd4d16b93c7cff8f1736b55a9281126eb87",
-      "bytes": 22742,
+      "sha256": "d18caaac719f419fbd8585dd8ee84a845ea2d7d8d7bba5c9c296e8f8edaf4331",
+      "bytes": 22274,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/09_K_vs_topology.svg": {
-      "sha256": "3b6336506a67c7397d7e5035c2590f2c26b022fb6abe39d05d0a8a2d551b2855",
-      "bytes": 51831,
+      "sha256": "060bf89e915d15be8d16c50053cb85c42c215e5f28f3728f46d7c6f66a6aac6a",
+      "bytes": 70296,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/10_localization_vs_K.svg": {
-      "sha256": "6a86c70dd15cd8251ceb2ea196358235c99e6592f30cbd6a42222843da9fffe4",
-      "bytes": 46942,
+      "sha256": "8e1966fdef17f88da04913fc23bb787e67e154eac41e2b7596652c577501c386",
+      "bytes": 69077,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/11_inertial_force_flow.svg": {
-      "sha256": "1d75163f71e9582b674a868b5ef362db493691b2d0d303960aaaafb6c2ce4200",
-      "bytes": 44593,
+      "sha256": "e8e13123b49c18d212dcc367c79d07a3922b0eeea54440c0fb5bc6dd45ee4ec3",
+      "bytes": 43705,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/plots/12_grouped_closure_cv.svg": {
-      "sha256": "196a96eac343021bcef1d033eec2244ff22265075ec0f4ce986f842dac00fa3a",
-      "bytes": 30445,
+      "sha256": "4c1683435efcdc3172d5a1df9189e53d90976c66c3459b7514caf70465ec2337",
+      "bytes": 28534,
+      "git_mode": "100644"
+    },
+    "verification/cases/xsv_ens_001/xsv_ens_001_analysis.py": {
+      "sha256": "7be6efd788a287897e8bfda890b9e40eb7b6ed97dc3d2744ff16d792652fe501",
+      "bytes": 6540,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/xsv_ens_001_reduce.py": {
-      "sha256": "82fe7cd4920438596584b02631ab2c62a1bbd85507648253c7166c3cef82e563",
-      "bytes": 14111,
+      "sha256": "2a2c2bf5e92d568fe67716f54662004200a93c2915b5a3e6810bfea99132f346",
+      "bytes": 16266,
       "git_mode": "100755"
     },
     "verification/cases/xsv_ens_001/xsv_ens_001_runtime.py": {
-      "sha256": "55dcafeea2d13589f58e1d625e7e37d3f93bcd2c0e0f251b99302c264178a435",
-      "bytes": 15401,
+      "sha256": "0a8341f51941e0fff8fcb6de3aab937d030fa01f55bd86951732a54c90f5c325",
+      "bytes": 19298,
       "git_mode": "100755"
     },
     "verification/cases/xsv_taichi_001/XSV_TAICHI_001_ARTIFACT_MANIFEST.json": {
