@@ -1,0 +1,116 @@
+{
+  "rows": [
+    {
+      "disposition": "FAILED_PRESSURE_ORDERING",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": false,
+      "mechanism": "DARCY_STATIC",
+      "plausibility": "existing governed parameters"
+    },
+    {
+      "disposition": "FAILED_PRESSURE_ORDERING",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": false,
+      "mechanism": "DARCY_FORCHHEIMER_STATIC",
+      "plausibility": "existing governed parameters"
+    },
+    {
+      "disposition": "FAILED_PRESSURE_ORDERING",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": false,
+      "mechanism": "DARCY_DISSOLUTION_INDEXED",
+      "plausibility": "existing governed parameters"
+    },
+    {
+      "disposition": "FAILED_PRESSURE_ORDERING_AFTER_NUMERICAL_FIX",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": false,
+      "mechanism": "FINITE_POROSITY_COMPACTION",
+      "plausibility": "accepted source-linked post-WP03-002"
+    },
+    {
+      "disposition": "FAILED_GRIND_SIGN_0_OF_3",
+      "flow_order_pass": "UNASSESSED",
+      "grind_sign_match_count": 0,
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "FIXED_P2_EXTRACTION_H1",
+      "plausibility": "fixed local reconstruction"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P1_GENERIC_PRESSURE_DEPENDENT_PERMEABILITY",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P2_FINITE_RATE_POROMECHANICS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P3_SWELLING",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P4_MOBILE_DEPOSITED_FINES",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P5_CONCENTRATION_DEPENDENT_VISCOSITY",
+      "plausibility": "OUTSIDE_SUPPORTED_RANGE"
+    },
+    {
+      "disposition": "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P6_MACHINE_BOUNDARY_DYNAMICS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P7_STATIC_LATERAL_PATHS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": "UNASSESSED",
+      "grind_sign_match_count": 3,
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "G1_GRIND_TO_STRUCTURE_MAPPING",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": "UNASSESSED",
+      "grind_sign_match_count": 3,
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "G2_BIMODAL_EXTRACTION",
+      "plausibility": "BOUND_UNRESOLVED"
+    }
+  ]
+}

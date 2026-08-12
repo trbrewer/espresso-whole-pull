@@ -1,0 +1,105 @@
+{
+  "evaluations": 5421,
+  "records": [
+    {
+      "capable": true,
+      "capable_region_breadth": "n >= 1.25",
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "distinctive_prediction": "simultaneous pressure and bed-height histories",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Mathematically capable; it restates the inverse requirement and is not yet a constitutive explanation.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P1_GENERIC_PRESSURE_DEPENDENT_PERMEABILITY",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": true,
+      "capable_region_breadth": "4421/5120 grid points",
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "distinctive_prediction": "pressure-step lag and rebound/bed-height memory",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Finite-rate memory is mathematically capable, but current observations do not identify relaxation time or strain sensitivity.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P2_FINITE_RATE_POROMECHANICS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": true,
+      "capable_region_breadth": "requires >= 2.679 resistance ratio at 11/5 bar",
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "distinctive_prediction": "bed-height increase and hydration-time dependence",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Capable only through a large pressure-correlated swelling/resistance response not bounded by these data.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P3_SWELLING",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": true,
+      "capable_region_breadth": "requires >= 2.679 resistance ratio at 11/5 bar",
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "distinctive_prediction": "turbidity, captured fines and incomplete recovery",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Deposition can generate resistance growth and memory; inventory and rate are unidentifiable here.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P4_MOBILE_DEPOSITED_FINES",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": true,
+      "capable_region_breadth": "mu11/mu5 >= 2.679",
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "distinctive_prediction": "large synchronized concentration/viscosity contrast",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "A viscosity-only explanation requires roughly the inverse conductance ratio and is outside the defensible water-temperature variation represented here.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P5_CONCENTRATION_DEPENDENT_VISCOSITY",
+      "plausibility": "OUTSIDE_SUPPORTED_RANGE"
+    },
+    {
+      "capable": false,
+      "capable_region_breadth": "none under measured basket-pressure prescription",
+      "disposition": "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE",
+      "distinctive_prediction": "separate commanded, upstream and basket pressure",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Supply dynamics cannot reverse a relationship already conditioned on measured basket pressure without a pressure-node or unmeasured dynamic-state error.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P6_MACHINE_BOUNDARY_DYNAMICS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": false,
+      "capable_region_breadth": "none with pressure-independent parallel paths",
+      "disposition": "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE",
+      "distinctive_prediction": "segmented outlet flow and spatial extraction",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "Static positive parallel paths preserve monotone Q(dp); localization must itself evolve with pressure/time to become capable.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "P7_STATIC_LATERAL_PATHS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": true,
+      "capable_region_breadth": "required coarse-minus-fine mass correction 0.189..0.314 g",
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "distinctive_prediction": "independent grinder-specific PSD, fines, packing and permeability",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "The failure precedes any claim of unique chemistry: a common structure-map correction must be brew-ratio consistent, which the varying required correction does not demonstrate.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "G1_GRIND_TO_STRUCTURE_MAPPING",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "capable": true,
+      "capable_region_breadth": "two populations can change curvature and terminal contrast",
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "distinctive_prediction": "fractionated or species-resolved time series under prescribed hydraulics",
+      "existing_or_reduced": "REDUCED_DIAGNOSTIC_MODEL",
+      "interpretation": "A fast/slow population can correct sign, but exposed aggregate cup masses cannot identify fractions and rates uniquely.",
+      "label": "REDUCED_DIAGNOSTIC_NOT_VALIDATION",
+      "mechanism": "G2_BIMODAL_EXTRACTION",
+      "plausibility": "BOUND_UNRESOLVED"
+    }
+  ],
+  "sampling": "deterministic grids; seed recorded but unused by nonrandom design"
+}

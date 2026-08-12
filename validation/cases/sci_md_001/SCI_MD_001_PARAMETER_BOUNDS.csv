@@ -1,0 +1,5 @@
+parameter,minimum,maximum,unit,role,source
+power_law_n,0,3,1,SYNTHETIC_FIXTURE,inverse-screen envelope
+relaxation_time,0.1,100,s,SYNTHETIC_FIXTURE,diagnostic shot-time envelope
+strain_permeability_sensitivity,0.1,8,1,SYNTHETIC_FIXTURE,diagnostic capability envelope
+water_density,965,1000,kg/m3,FIXED_PREDECESSOR_VALUE,VAL-CORPUS-001 declared sensitivity
