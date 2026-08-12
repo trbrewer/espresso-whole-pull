@@ -124,7 +124,12 @@ def pilot(args):
     write_json(root/"pilot.json",result); print(json.dumps(result,indent=2)); return result
 
 def freeze(args):
-    pilot=json.loads(Path(args.pilot).read_text()); prec="f32" if pilot["qualification"]["f32_qualified"] else "f64"; force=1e-5 if prec=="f32" else 1e-6
+    pilot=json.loads(Path(args.pilot).read_text())
+    if "qualification" in pilot:
+        f32_ok=bool(pilot["qualification"]["f32_qualified"])
+    else:
+        f32_ok=pilot["precision_qualification"]["disposition"].startswith("F32_QUALIFIED")
+    prec="f32" if f32_ok else "f64"; force=1e-5 if prec=="f32" else 1e-6
     sizes=[24,32,40,56,72]; seeds=PROTOCOL["ensemble"]["seeds"][:8]; rows=[]
     def add(gid,family,state,L,seed,rel="INDEPENDENT_REALIZATIONS",parent="",dirs=("X",),purpose="SCORED"):
       for d in dirs:
