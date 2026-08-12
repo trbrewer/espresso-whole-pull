@@ -1,6 +1,6 @@
 # Project State
 
-Current scientific-discovery work is `SCI-MD-001_CORRECTED_PENDING_EXACT_HEAD_REVIEW`; see
+Current scientific-discovery work is `XSV-ENS-001_AUTHORIZED_AND_ACTIVE`; see
 the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md).
 The `ADDITIONAL_INDEPENDENT_DATA_REQUIRED` gate continues to limit validation
 claims and does not stop authorized post-observation mechanism discrimination.
@@ -34,6 +34,14 @@ claims and does not stop authorized post-observation mechanism discrimination.
 
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).
+
+SCI-MD-001 is `MERGED_COMPLETE` at merge commit
+`1c83a860bcab93062351be0be87d745a9bfc477d`; its approved head
+`5b254f893efbc9b26bd8e05e09939f5436770f78` is preserved in the merge
+ancestry. XSV-ENS-001 is the active stochastic synthetic pore-closure and
+synthetic-generator representative-volume programme. It changes no production
+OpenFOAM physics, does not assess real-coffee representative volume, and does
+not identify a dynamic pressure mechanism.
 
 XSV-TAICHI-001 is `EXECUTION_COMPLETE` as a no-physics computational-
 verification task. It activates no validation, data-planning, solver-

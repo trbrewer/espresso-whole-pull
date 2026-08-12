@@ -1,0 +1,25 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_ens_001.protocol.v1",
+  "task": "XSV-ENS-001",
+  "issue": 64,
+  "branch": "verification/xsv-ens-001-stochastic-pore-closure-rve",
+  "starting_identity": {"commit": "1c83a860bcab93062351be0be87d745a9bfc477d", "tree": "901dcaeca419d8d344aec6d5d9bac728bca94078"},
+  "classification": ["STOCHASTIC_GENERATOR_ENSEMBLE", "STATIC_STATE_CAPABILITY_COMPARISON", "POST_OBSERVATION_TARGET_COMPARISON", "NOT_REAL_COFFEE_MICROSTRUCTURE", "NOT_DYNAMIC_MECHANISM_IDENTIFICATION", "NOT_PHYSICAL_VALIDATION"],
+  "puckworks": {
+    "runtime_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "runtime_tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "read_only_evidence_commit": "bafafef3bc3c77599af8551d4e582aedb9b23f08",
+    "read_only_evidence_tree": "64ccf86aff4c90d1c513f1614b39e0823f64d6d7",
+    "source_sha256": {"lb_reference.py": "9a60371d7777d3d91fe7df2ea529db498268f12b08ab6c461ec511190a0a989f", "lb_taichi.py": "c0c52eaae0d6f5753eac3b41501db6645251efe56812c152b83ad2a521d9663f", "pack_generator.py": "864416314c889793684fef0a143cab48f99056b72f715adf1a522298c7d9512b"}
+  },
+  "targets": {"primary": 0.373506, "supporting": [0.389226, 0.395294], "rounded_substitution_prohibited": true},
+  "quantity_contract": {"phi_gross": "N_fluid/N_total", "q_box_lu": "sum_fluid(u_x_with_half_force)/N_total", "u_void_lu": "q_box_lu/phi_gross", "nu_lu": "(tau_plus-0.5)/3", "K_gross_lu2": "nu_lu*q_box_lu/g_lu", "K_void_lu2": "nu_lu*u_void_lu/g_lu", "identity": "K_gross_lu2=phi_gross*K_void_lu2", "primary": "K_gross_lu2"},
+  "pilot": {"evidence_class": "NUMERICAL_QUALIFICATION_ONLY", "f32_K_relative_tolerance": 0.01, "f32_localization_cv_relative_tolerance": 0.05, "directional_ratio_relative_tolerance": 0.03, "q_over_g_relative_tolerance": 0.01, "mach_max": 0.05, "rtol": 1e-6, "minimum_steps": 1500, "vram_headroom_fraction": 0.20},
+  "ensemble": {"candidate_L": [24, 32, 40, 56, 72, 96, 128, 160], "seeds": [101,211,307,401,503,601,701,809,907,1009,1103,1201,1301,1409,1511,1601,1709,1801,1901,2003,2111,2203,2309,2411], "minimum_n": 8, "batch_n": 4, "maximum_n": 24, "bootstrap_replicates": 10000, "bootstrap_seed": 20260812, "mean_logK_relative_half_width": 0.10},
+  "states": {"solid_fraction": [0.50,0.55,0.60,0.64], "restriction_fraction": [0.0,0.10,0.20,0.30,0.40], "heterogeneity_amplitude": [0.0,1.0,2.0], "heterogeneity_length": [4.0,8.0], "resolved_small_radius_min_voxels": 4.0},
+  "rev": {"mean_equivalence": [0.90,1.10], "variance_relative_margin": 0.15, "spatial_resolution_effect_max": 0.10},
+  "target_attainment": {"majority_fraction": 0.75, "connected_porosity_parent_retention_min": 0.25, "paired_estimator": "GEOMETRIC_MEAN_RATIO_PARENT_CLUSTERED_BOOTSTRAP", "independent_estimator": "RATIO_OF_GEOMETRIC_MEANS_INDEPENDENT_BOOTSTRAP"},
+  "retry": {"infrastructure_retries_per_identity": 1, "scientific_replacement_seed": false},
+  "claim_boundary": {"physical_validation": "NOT_ESTABLISHED", "real_coffee_representative_volume": "NOT_ESTABLISHED", "dynamic_pressure_mechanism": "NOT_IDENTIFIED", "production_openfoam_integration": false, "puckworks_runtime_lock_change": false}
+}
+

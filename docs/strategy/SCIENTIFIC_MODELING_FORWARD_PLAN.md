@@ -1,6 +1,6 @@
 # Scientific Modeling Forward Plan
 
-Status: enduring scientific handoff; SCI-MD-001 execution complete pending review.
+Status: enduring scientific handoff; SCI-MD-001 merged complete; XSV-ENS-001 active.
 Change declaration: `NO_GOVERNING_PHYSICS_CHANGE` for this document.
 
 ## 1. Executive scientific diagnosis
@@ -28,19 +28,20 @@ their internal mechanisms represent physical coffee accurately.
 
 ## 3. Prioritized forward task sequence
 
-### Immediate: SCI-MD-001
+### Completed: SCI-MD-001
 
 **Pressure-ordering and grind-response mechanism discrimination.** Determine
 which mechanisms can explain the current sign, ordering and transfer failures,
 and what physical behaviour the source requires before selecting new
 production physics.
 
-### High-value parallel successor: XSV-ENS-001
+### Active successor: XSV-ENS-001
 
 **Stochastic GPU pore-scale closure and representative-volume assessment.**
 Produce ensemble permeability, anisotropy, inertial, transverse-conductance,
 localization and uncertainty closures instead of relying on one synthetic
-packing. It is not executed on the SCI-MD-001 branch.
+packing. The authorized execution is on
+`verification/xsv-ens-001-stochastic-pore-closure-rve`.
 
 ### Next lateral-flow programme: SCI-LC-001
 
