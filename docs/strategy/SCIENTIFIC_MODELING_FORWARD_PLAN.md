@@ -1,6 +1,6 @@
 # Scientific Modeling Forward Plan
 
-Status: enduring scientific handoff; SCI-MD-001 active.  
+Status: enduring scientific handoff; SCI-MD-001 execution complete pending review.
 Change declaration: `NO_GOVERNING_PHYSICS_CHANGE` for this document.
 
 ## 1. Executive scientific diagnosis
@@ -126,3 +126,20 @@ authorized post-observation scientific discovery work.
 - Always resolve live Git and dependency identities; recorded identities are
   historical anchors, not forever-current mutable state.
 
+## 8. SCI-MD-001 completion disposition
+
+SCI-MD-001 is `EXECUTION_COMPLETE_PENDING_REVIEW`. The source requires a
+terminal 11/5 conductance ratio of `0.373506` (approximately
+`K proportional to p^-1.174`). Fixed Darcy, fixed Darcy--Forchheimer, accepted
+quasi-static compaction, static lateral paths, measured-basket-conditioned
+machine dynamics, and plausible viscosity-only change are ruled out as
+standalone explanations. Evolving resistance through transient deformation,
+swelling, fines or lateral localization survives but remains equifinal;
+grind-to-structure and bimodal extraction also survive without uniqueness.
+
+The selected disposition is `NO_NEW_PRODUCTION_PHYSICS_YET`; transient
+poromechanics remains a conditional leading candidate, while XSV-ENS-001 is a
+high-value computational successor. See the
+[SCI-MD-001 result](../validation/SCI_MD_001_PRESSURE_GRIND_MECHANISM_DISCRIMINATION_RESULT.md).
+Result-data commit/tree: `a0f27d8ef65c618ed202fced8a9c980edbe803aa` /
+`f7ed1b495245979ca1dc1dc176bbe63d0d0a40aa`.
