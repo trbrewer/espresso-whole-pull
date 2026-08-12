@@ -93,3 +93,20 @@ PROTECTED_OR_HOLDOUT_SCORING: NOT_AUTHORIZED
 EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED
 ```
 
+## Post-freeze review correction
+
+The prospective protocol above remains the historical freeze. Exact-head
+review found that its outcome taxonomy omitted the distinct state
+`CANDIDATE_MECHANISM_CAPABILITY_PLAUSIBILITY_UNRESOLVED`. The corrected
+reduction adds that state; it is a post-freeze taxonomy correction, not a
+prospectively frozen category. It also corrects the primary P1/P2 screens to
+use retained measured terminal basket pressures rather than nominal labels.
+
+The frozen base-2 low-discrepancy and adaptive-refinement methods were not
+executed. Instead of adding post-result model work, the correction explicitly
+downgrades P3 swelling, P4 fines, G1 structure mapping and G2 bimodal
+extraction to `NOT_STRUCTURALLY_EXCLUDED_NOT_EVALUATED`. Only P1's 301-state
+analytical grid and P2's 5,120-state one-state relaxing-resistance grid are
+executed parameter ensembles. P2 is renamed
+`P2_RELAXING_RESISTANCE_SURROGATE_POROMECHANICS_MOTIVATED`; it does not solve
+solid equilibrium, storage, deformation or effective stress.

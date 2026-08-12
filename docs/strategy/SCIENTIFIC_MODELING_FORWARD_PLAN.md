@@ -128,9 +128,12 @@ authorized post-observation scientific discovery work.
 
 ## 8. SCI-MD-001 completion disposition
 
-SCI-MD-001 is `EXECUTION_COMPLETE_PENDING_REVIEW`. The source requires a
-terminal 11/5 conductance ratio of `0.373506` (approximately
-`K proportional to p^-1.174`). Fixed Darcy, fixed Darcy--Forchheimer, accepted
+SCI-MD-001 is `CORRECTED_PENDING_EXACT_HEAD_REVIEW`. The source requires
+middle-, late-, and terminal-window 11/5 apparent-conductance ratios of
+`0.389226`, `0.395294`, and `0.373506` (approximately an equivalent terminal
+`C_app proportional to p^-1.174`; only under the fixed-geometry/viscosity
+convention is this also `K_app proportional to p^-1.174`). Fixed Darcy,
+fixed Darcy--Forchheimer, accepted
 quasi-static compaction, static lateral paths, measured-basket-conditioned
 machine dynamics, and plausible viscosity-only change are ruled out as
 standalone explanations. Evolving resistance through transient deformation,
@@ -138,8 +141,12 @@ swelling, fines or lateral localization survives but remains equifinal;
 grind-to-structure and bimodal extraction also survive without uniqueness.
 
 The selected disposition is `NO_NEW_PRODUCTION_PHYSICS_YET`; transient
-poromechanics remains a conditional leading candidate, while XSV-ENS-001 is a
-high-value computational successor. See the
+poromechanics remains conditional because the executed P2 model is only a
+one-state relaxing-resistance surrogate. XSV-ENS-001 is the next scientific
+programme and should directly test whether plausible geometry, compression,
+fabric, fines or realization changes can create the required 2.5--2.7-fold
+axial-resistance increase while quantifying transverse and inertial closures.
+See the
 [SCI-MD-001 result](../validation/SCI_MD_001_PRESSURE_GRIND_MECHANISM_DISCRIMINATION_RESULT.md).
 Result-data commit/tree: `a0f27d8ef65c618ed202fced8a9c980edbe803aa` /
 `f7ed1b495245979ca1dc1dc176bbe63d0d0a40aa`.

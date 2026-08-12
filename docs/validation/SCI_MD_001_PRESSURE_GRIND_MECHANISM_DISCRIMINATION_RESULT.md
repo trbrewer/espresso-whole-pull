@@ -1,17 +1,24 @@
 # SCI-MD-001 pressure/grind mechanism-discrimination result
 
-Status: `EXECUTION_COMPLETE_PENDING_REVIEW`  
-Result-data commit/tree: `a0f27d8ef65c618ed202fced8a9c980edbe803aa` /
-`f7ed1b495245979ca1dc1dc176bbe63d0d0a40aa`
+Status: `CORRECTED_PENDING_EXACT_HEAD_REVIEW`
+
+The original result-data commit/tree was
+`a0f27d8ef65c618ed202fced8a9c980edbe803aa` /
+`f7ed1b495245979ca1dc1dc176bbe63d0d0a40aa`. Review retained the core
+scientific result but required correction of taxonomy, pressure basis,
+false-green capability fields, and figures. The original protocol remains
+visible; the post-freeze correction is not represented as prospective.
 
 ## 1. Plain-language executive result
 
 The exposed Waszkiewicz traces require the puck-plus-correctly-defined
 boundary system to become substantially *less* conductive as pressure rises.
 At the terminal samples, apparent conductance at 11 bar is `0.373506` of that
-at 5 bar. A power-law representation would require approximately
-`K proportional to p^-1.174` from the measured terminal states. This is not a
-small scale correction: it is a state-changing resistance requirement.
+at 5 bar. The primary invariant is an equivalent
+`C_app proportional to p^-1.174` terminal requirement. Under the retained
+fixed-geometry and viscosity convention, it may also be expressed as
+`K_app proportional to p^-1.174`. This is not a small scale correction: it is
+a state-changing resistance requirement.
 
 No tested current EWP family produces the observed pressure ordering. Fixed
 Darcy, fixed-coefficient Darcy--Forchheimer, dissolution-indexed Darcy and the
@@ -27,8 +34,11 @@ aggregate extraction-closure error remain confounded. A two-population
 extraction model can change the sign, but the exposed aggregate cup quantities
 cannot identify its fractions and rates.
 
-Several evolving-resistance hypotheses are mathematically capable, but none
-is uniquely or physically identified by the available observables. The result
+The executed generic pressure-dependence and relaxing-resistance screens are
+mathematically capable. Swelling, fines, structure mapping and bimodal
+extraction are only *not structurally excluded*; they were not executed as
+mechanism-specific models. None is uniquely or physically identified by the
+available observables. The result
 therefore recommends `NO_NEW_PRODUCTION_PHYSICS_YET`: obtain the discriminating
 observables already specified by VAL-DATA-001, then select between transient
 poromechanics, fines, swelling and evolving lateral localization.
@@ -82,8 +92,14 @@ Darcy geometry/property convention, the terminal conductance ratios are:
 | 11/9 | 0.815293 |
 | 11/5 | 0.373506 |
 
-The pairwise required power-law exponents are 1.178 (5-to-9), 1.156 (9-to-11)
-and 1.174 (5-to-11). Changing density from 965 to 997 or 1000 kg/m3 rescales
+Middle-, late-, and terminal-window `C11/C5` ratios are respectively
+`0.389226`, `0.395294`, and `0.373506`, equivalent to resistance increases of
+`2.569`, `2.530`, and `2.677`. The requirement therefore persists across
+substantial windows and is not a terminal-sample artifact.
+
+The terminal pairwise required apparent-conductance power-law exponents are
+1.178 (5-to-9), 1.156 (9-to-11) and 1.174 (5-to-11). Changing density from
+965 to 997 or 1000 kg/m3 rescales
 absolute volumetric conductance/permeability but cannot change these ratios or
 ordering. The complete early/middle/late/terminal table is in
 `SCI_MD_001_INVERSE_REQUIREMENT.json`.
@@ -128,15 +144,24 @@ capability region.
 
 ## 8. Reduced candidate-mechanism results
 
-The deterministic screen evaluated 5,421 parameter states.
+The deterministic execution comprises exactly 301 P1 grid states and 5,120 P2
+grid states, totaling 5,421 parameter states. The remaining seven candidates
+are analytical or structural checks, not additional parameter ensembles.
+Base-2 low-discrepancy sampling and adaptive refinement promised by the frozen
+protocol were not executed; the correction records that deviation and
+downgrades unexecuted candidates rather than adding post-result model work.
 
 - P1 generic pressure-dependent permeability is capable for approximately
   `n >= 1.18` on the declared grid, but merely restates the required behavior.
-- P2 finite-rate poromechanical memory has capable regions. Relaxation time
-  and permeability/strain sensitivity are unbounded by current observations.
-- P3 swelling and P4 fines can supply resistance growth, but require about a
-  2.68-fold 11/5 resistance ratio and lack source-specific magnitude/rate
-  bounds.
+- P2 is a one-state exponential relaxing-resistance surrogate, now named
+  `P2_RELAXING_RESISTANCE_SURROGATE_POROMECHANICS_MOTIVATED`. It has 4,362
+  capable states out of 5,120 under measured terminal pressures. It does not
+  solve solid equilibrium, storage, deformation or effective stress. A
+  finite-rate resistance state can reproduce the ordering mathematically;
+  transient poromechanics is one possible realization, not a demonstrated
+  explanation.
+- P3 swelling and P4 fines are not structurally excluded, but no
+  mechanism-specific magnitude or dynamical model was executed.
 - P5 viscosity alone is mathematically capable only through approximately the
   same 2.68-fold property change, outside defensible water-property variation
   here.
@@ -144,8 +169,8 @@ The deterministic screen evaluated 5,421 parameter states.
   conditioned bed-top node.
 - P7 static lateral paths are incapable; pressure-dependent localization or
   communication could remain capable.
-- G1 structure mapping and G2 bimodal extraction can each change grind sign,
-  but exposed aggregate measurements do not identify them uniquely.
+- G1 structure mapping and G2 bimodal extraction are not structurally
+  excluded, but no executed model demonstrates a 3/3 grind-sign match.
 
 ![Candidate phase map](../../validation/cases/sci_md_001/figures/05_candidate_phase_map.svg)
 
@@ -161,9 +186,10 @@ Production solver source is unchanged.
 
 ## 10. Physical plausibility
 
-Generic evolving resistance, finite-rate poromechanics, swelling, fines,
-evolving lateral localization, grind-to-structure and bimodal extraction are
-capable but `BOUND_UNRESOLVED`. Viscosity-only capability is
+The P1 and P2 executed successful regions are
+`CANDIDATE_MECHANISM_CAPABILITY_PLAUSIBILITY_UNRESOLVED`, not outside the
+supported range. P3, P4, G1 and G2 are `NOT_STRUCTURALLY_EXCLUDED_NOT_EVALUATED`.
+Viscosity-only capability is
 `OUTSIDE_SUPPORTED_RANGE`. No candidate reaches
 `WITHIN_DIRECTLY_SUPPORTED_RANGE` from the exposed evidence.
 
@@ -188,10 +214,12 @@ water-property variation.
 
 ## 13. Mechanisms surviving
 
-Generic evolving resistance; finite-rate poromechanical memory; swelling;
-mobile/deposited fines; pressure-dependent lateral localization; corrected
-grind-to-structure/inventory mapping; and bimodal extraction remain possible
-but non-unique. Capability is not evidence that any is physically present.
+Generic pressure-dependent resistance and a one-state relaxing-resistance
+surrogate are executed mathematical survivors. Swelling, mobile/deposited
+fines, pressure-dependent lateral localization, grind-to-structure/inventory
+mapping and bimodal extraction remain not structurally excluded but
+unevaluated as specific models. None is evidence that a mechanism is physically
+present.
 
 ## 14. Decisive future measurements
 
@@ -205,7 +233,12 @@ no experiment is commissioned here.
 
 ## 15. Recommended next modelling task
 
-`NO_NEW_PRODUCTION_PHYSICS_YET`. The leading *conditional* candidate is
+`NO_NEW_PRODUCTION_PHYSICS_YET`. The next scientific programme should remain
+`XSV-ENS-001`, directly testing whether defensible changes in pore geometry,
+compression state, fabric, fines distribution or realization variability can
+produce a reproducible 2.5--2.7-fold axial-resistance increase while also
+quantifying transverse conductance and inertial closure. The leading
+*conditional* production-physics candidate is
 `WP04-TPM-001_TRANSIENT_POROMECHANICS`, but it should be selected only after a
 pressure-step bed-height/rebound observation can distinguish it from fines and
 swelling. If such observations remain unavailable, the next high-value
@@ -230,4 +263,3 @@ HOLDOUT_ACQUISITION: NOT_PERFORMED
 PROTECTED_SCORING: NOT_PERFORMED
 RESULT_CLASS: POST_OBSERVATION_MECHANISM_DISCRIMINATION_AND_REDUCED_DIAGNOSTIC
 ```
-

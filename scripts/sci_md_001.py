@@ -7,7 +7,7 @@ NOT_PHYSICAL_VALIDATION.  The production solver is neither imported nor changed.
 """
 from __future__ import annotations
 
-import argparse, csv, hashlib, json, math
+import argparse, csv, hashlib, html, json, math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -96,47 +96,86 @@ def inverse_analysis():
 
 def reduced_screen(inv):
     target=inv["terminal_conductance_ratios"]["11_over_5"]
+    terminal={r["pressure_nominal_bar"]:r for r in inv["rows"] if r["window"]=="terminal"}
+    measured={p:terminal[p]["mean_source_pressure_bar"] for p in PRESSURES}
     # Deterministic broad screens. Values are ratios to the 5-bar conductance.
     records=[]; evals=0
-    def add(mid, capable, plausible, breadth, interpretation, prediction):
+    def add(mid, capable, plausible, breadth, interpretation, prediction, evaluation_kind):
+        if capable is None:
+            disposition="NOT_STRUCTURALLY_EXCLUDED"
+        elif capable and plausible == "BOUND_UNRESOLVED":
+            disposition="CANDIDATE_MECHANISM_CAPABILITY_PLAUSIBILITY_UNRESOLVED"
+        elif capable and plausible.startswith("WITHIN_"):
+            disposition="CANDIDATE_MECHANISM_CAPABLE_WITHIN_PLAUSIBLE_RANGE"
+        elif capable:
+            disposition="CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE"
+        else:
+            disposition="EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE"
         records.append({"mechanism":mid,"existing_or_reduced":"REDUCED_DIAGNOSTIC_MODEL",
-          "capable":capable,"plausibility":plausible,"capable_region_breadth":breadth,
-          "disposition":("CANDIDATE_MECHANISM_CAPABLE_WITHIN_PLAUSIBLE_RANGE" if capable and plausible.startswith("WITHIN_") else "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE" if capable else "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE"),
+          "capable":capable,"evaluation_kind":evaluation_kind,
+          "plausibility":plausible,"capable_region_breadth":breadth,
+          "disposition":disposition,
           "interpretation":interpretation,"distinctive_prediction":prediction,"label":LABEL})
     ns=[i*0.01 for i in range(0,301)]; evals+=len(ns)
-    ok=[n for n in ns if (11/5)**(-n) <= target]
-    add("P1_GENERIC_PRESSURE_DEPENDENT_PERMEABILITY",bool(ok),"BOUND_UNRESOLVED",f"n >= {min(ok):.2f}" if ok else "none","Mathematically capable; it restates the inverse requirement and is not yet a constitutive explanation.","simultaneous pressure and bed-height histories")
+    ok=[n for n in ns if (measured[11]/measured[5])**(-n) <= target]
+    add("P1_GENERIC_PRESSURE_DEPENDENT_PERMEABILITY",bool(ok),"BOUND_UNRESOLVED",f"n >= {min(ok):.2f}" if ok else "none","Measured-pressure analytical/grid screen is mathematically capable; it restates the inverse requirement and is not yet a constitutive explanation.","simultaneous pressure and bed-height histories","EXECUTED_ANALYTICAL_GRID_SCREEN")
     # relaxation x'=(x_eq(p)-x)/tau, K/K0=exp(-beta*x); analytic Euler screen
     capable=0
     for tau in [10**(-1+3*i/63) for i in range(64)]:
       for beta in [i/10 for i in range(1,81)]:
         evals+=1; vals={}
         for p in PRESSURES:
-          x=(p-5)/6*(1-math.exp(-30/tau)); vals[p]=p/5*math.exp(-beta*x)
+          x=(measured[p]-measured[5])/(measured[11]-measured[5])*(1-math.exp(-30/tau))
+          vals[p]=measured[p]/measured[5]*math.exp(-beta*x)
         capable += ordering(vals)
-    add("P2_FINITE_RATE_POROMECHANICS",capable>0,"BOUND_UNRESOLVED",f"{capable}/5120 grid points","Finite-rate memory is mathematically capable, but current observations do not identify relaxation time or strain sensitivity.","pressure-step lag and rebound/bed-height memory")
+    add("P2_RELAXING_RESISTANCE_SURROGATE_POROMECHANICS_MOTIVATED",capable>0,"BOUND_UNRESOLVED",f"{capable}/5120 grid points","A one-state finite-rate resistance surrogate is mathematically capable. Transient poromechanics is one possible realization, not a demonstrated explanation.","pressure-step lag and rebound/bed-height memory","EXECUTED_ONE_STATE_GRID_SCREEN")
     # generic monotone state-growth mechanisms share required resistance gain
     required=1/target
-    add("P3_SWELLING",True,"BOUND_UNRESOLVED",f"requires >= {required:.3f} resistance ratio at 11/5 bar","Capable only through a large pressure-correlated swelling/resistance response not bounded by these data.","bed-height increase and hydration-time dependence")
-    add("P4_MOBILE_DEPOSITED_FINES",True,"BOUND_UNRESOLVED",f"requires >= {required:.3f} resistance ratio at 11/5 bar","Deposition can generate resistance growth and memory; inventory and rate are unidentifiable here.","turbidity, captured fines and incomplete recovery")
-    add("P5_CONCENTRATION_DEPENDENT_VISCOSITY",True,"OUTSIDE_SUPPORTED_RANGE",f"mu11/mu5 >= {required:.3f}","A viscosity-only explanation requires roughly the inverse conductance ratio and is outside the defensible water-temperature variation represented here.","large synchronized concentration/viscosity contrast")
-    add("P6_MACHINE_BOUNDARY_DYNAMICS",False,"BOUND_UNRESOLVED","none under measured basket-pressure prescription","Supply dynamics cannot reverse a relationship already conditioned on measured basket pressure without a pressure-node or unmeasured dynamic-state error.","separate commanded, upstream and basket pressure")
-    add("P7_STATIC_LATERAL_PATHS",False,"BOUND_UNRESOLVED","none with pressure-independent parallel paths","Static positive parallel paths preserve monotone Q(dp); localization must itself evolve with pressure/time to become capable.","segmented outlet flow and spatial extraction")
+    add("P3_SWELLING",None,"BOUND_UNRESOLVED",f"inverse requirement is >= {required:.3f} resistance ratio at 11/5 bar","Not structurally excluded, but no swelling-specific dynamical model was executed.","bed-height increase and hydration-time dependence","ANALYTICAL_STRUCTURAL_CHECK_ONLY")
+    add("P4_MOBILE_DEPOSITED_FINES",None,"BOUND_UNRESOLVED",f"inverse requirement is >= {required:.3f} resistance ratio at 11/5 bar","Not structurally excluded, but no fines inventory/rate model was executed.","turbidity, captured fines and incomplete recovery","ANALYTICAL_STRUCTURAL_CHECK_ONLY")
+    add("P5_CONCENTRATION_DEPENDENT_VISCOSITY",True,"OUTSIDE_SUPPORTED_RANGE",f"mu11/mu5 >= {required:.3f}","An analytical viscosity-only requirement is outside the defensible water-temperature variation represented here.","large synchronized concentration/viscosity contrast","ANALYTICAL_PROPERTY_REQUIREMENT")
+    add("P6_MACHINE_BOUNDARY_DYNAMICS",False,"BOUND_UNRESOLVED","none under measured basket-pressure prescription","Supply dynamics cannot reverse a relationship already conditioned on measured basket pressure without a pressure-node or unmeasured dynamic-state error.","separate commanded, upstream and basket pressure","ANALYTICAL_STRUCTURAL_CHECK_ONLY")
+    add("P7_STATIC_LATERAL_PATHS",False,"BOUND_UNRESOLVED","none with pressure-independent parallel paths","Static positive parallel paths preserve monotone Q(dp); localization must itself evolve with pressure/time to become capable.","segmented outlet flow and spatial extraction","ANALYTICAL_STRUCTURAL_CHECK_ONLY")
     b2=load(B2)["axis_contrasts"]["P2_H1"]["GRIND_COARSE_MINUS_FINE"]
     deficits={br:v["source"]-v["model"] for br,v in b2.items()}
-    add("G1_GRIND_TO_STRUCTURE_MAPPING",True,"BOUND_UNRESOLVED",f"required coarse-minus-fine mass correction {min(deficits.values()):.3f}..{max(deficits.values()):.3f} g","The failure precedes any claim of unique chemistry: a common structure-map correction must be brew-ratio consistent, which the varying required correction does not demonstrate.","independent grinder-specific PSD, fines, packing and permeability")
-    add("G2_BIMODAL_EXTRACTION",True,"BOUND_UNRESOLVED","two populations can change curvature and terminal contrast","A fast/slow population can correct sign, but exposed aggregate cup masses cannot identify fractions and rates uniquely.","fractionated or species-resolved time series under prescribed hydraulics")
-    dump(OUT/"SCI_MD_001_REDUCED_SCREEN.json",{"evaluations":evals,"sampling":"deterministic grids; seed recorded but unused by nonrandom design","records":records})
+    add("G1_GRIND_TO_STRUCTURE_MAPPING",None,"BOUND_UNRESOLVED",f"required coarse-minus-fine mass correction {min(deficits.values()):.3f}..{max(deficits.values()):.3f} g","Not structurally excluded; no three-brew-ratio structure model was executed.","independent grinder-specific PSD, fines, packing and permeability","ANALYTICAL_STRUCTURAL_CHECK_ONLY")
+    add("G2_BIMODAL_EXTRACTION",None,"BOUND_UNRESOLVED","conceptual two-population degree of freedom","Not structurally excluded; no two-population parameter ensemble or 3/3 prediction was executed.","fractionated or species-resolved time series under prescribed hydraulics","ANALYTICAL_STRUCTURAL_CHECK_ONLY")
+    dump(OUT/"SCI_MD_001_REDUCED_SCREEN.json",{"evaluations":evals,"evaluation_breakdown":{"P1_EXECUTED_GRID_STATES":301,"P2_EXECUTED_GRID_STATES":5120,"OTHER_ITEMS":"ANALYTICAL_OR_STRUCTURAL_CHECKS_NOT_PARAMETER_ENSEMBLES"},"primary_pressure_basis":"RETAINED_MEASURED_TERMINAL_BASKET_PRESSURE","protocol_deviation":"Base-2 low-discrepancy sampling and adaptive refinement were not executed; P3/P4/G1/G2 are downgraded to not structurally excluded rather than represented as executed model passes.","records":records})
     return records,evals
 
 def write_csv(path, rows, fields=None):
     fields=fields or list(rows[0])
     with path.open("w",newline="") as f:
-      w=csv.DictWriter(f,fieldnames=fields,extrasaction="ignore"); w.writeheader(); w.writerows(rows)
+      w=csv.DictWriter(f,fieldnames=fields,extrasaction="ignore",lineterminator="\n"); w.writeheader(); w.writerows(rows)
 
-def svg(path,title,lines):
-    body=''.join(f'<text x="30" y="{70+24*i}" font-family="sans-serif" font-size="15">{s}</text>' for i,s in enumerate(lines))
-    path.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="900" height="{110+24*len(lines)}" role="img"><title>{title}</title><rect width="100%" height="100%" fill="white"/><text x="30" y="35" font-family="sans-serif" font-size="22" font-weight="bold">{title}</text>{body}</svg>\n')
+COLORS=("#0072B2","#D55E00","#009E73","#CC79A7","#E69F00")
+def line_svg(path,title,series,xlabel,ylabel):
+    width,height=900,520; left,right,top,bottom=95,30,55,75
+    pts=[p for _,values in series for p in values if p[1] is not None and math.isfinite(p[1])]
+    xs=[p[0] for p in pts]; ys=[p[1] for p in pts]; xmin,xmax=min(xs),max(xs); ymin,ymax=min(ys),max(ys)
+    if ymin==ymax: ymin,ymax=ymin-1,ymax+1
+    X=lambda x:left+(x-xmin)/(xmax-xmin)*(width-left-right)
+    Y=lambda y:height-bottom-(y-ymin)/(ymax-ymin)*(height-top-bottom)
+    body=[f'<rect width="100%" height="100%" fill="white"/><line x1="{left}" y1="{height-bottom}" x2="{width-right}" y2="{height-bottom}" stroke="black"/><line x1="{left}" y1="{top}" x2="{left}" y2="{height-bottom}" stroke="black"/>']
+    for i,(name,values) in enumerate(series):
+      points=' '.join(f'{X(x):.1f},{Y(y):.1f}' for x,y in values if y is not None and math.isfinite(y))
+      body.append(f'<polyline fill="none" stroke="{COLORS[i%len(COLORS)]}" stroke-width="2.3" points="{points}"/>')
+      body.append(f'<text x="{left+180*i}" y="{height-18}" font-family="sans-serif" font-size="14" fill="{COLORS[i%len(COLORS)]}">{html.escape(name)}</text>')
+    body += [f'<text x="30" y="32" font-family="sans-serif" font-size="22" font-weight="bold">{html.escape(title)}</text>',f'<text x="{width/2-50}" y="{height-42}" font-family="sans-serif" font-size="14">{html.escape(xlabel)}</text>',f'<text transform="translate(22 {height/2+50}) rotate(-90)" font-family="sans-serif" font-size="14">{html.escape(ylabel)}</text>',f'<text x="{left}" y="{height-bottom+22}" font-family="sans-serif" font-size="12">{xmin:.3g}</text>',f'<text x="{width-right-45}" y="{height-bottom+22}" font-family="sans-serif" font-size="12">{xmax:.3g}</text>',f'<text x="28" y="{height-bottom}" font-family="sans-serif" font-size="12">{ymin:.3g}</text>',f'<text x="28" y="{top+5}" font-family="sans-serif" font-size="12">{ymax:.3g}</text>']
+    path.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img"><title>{html.escape(title)}</title>{"".join(body)}</svg>\n')
+
+def bar_svg(path,title,categories,series,ylabel):
+    width,height=900,520; left,bottom,top=90,90,55; values=[v for _,vs in series for v in vs]; lim=max(abs(min(values)),abs(max(values)))*1.15
+    Y=lambda y:top+(lim-y)/(2*lim)*(height-top-bottom); zero=Y(0); group=(width-left-30)/len(categories); bw=group/(len(series)+1)
+    body=[f'<rect width="100%" height="100%" fill="white"/><line x1="{left}" y1="{zero}" x2="{width-30}" y2="{zero}" stroke="black"/>']
+    for j,(name,vs) in enumerate(series):
+      for i,v in enumerate(vs):
+       x=left+i*group+(j+.4)*bw; y=min(zero,Y(v)); h=abs(Y(v)-zero)
+       body.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{bw*.8:.1f}" height="{h:.1f}" fill="{COLORS[j]}"/>')
+      body.append(f'<text x="{left+180*j}" y="{height-18}" font-family="sans-serif" font-size="14" fill="{COLORS[j]}">{html.escape(name)}</text>')
+    for i,c in enumerate(categories): body.append(f'<text x="{left+i*group+group*.35:.1f}" y="{height-bottom+25}" font-family="sans-serif" font-size="14">{html.escape(str(c))}</text>')
+    body += [f'<text x="30" y="32" font-family="sans-serif" font-size="22" font-weight="bold">{html.escape(title)}</text>',f'<text transform="translate(22 {height/2+50}) rotate(-90)" font-family="sans-serif" font-size="14">{html.escape(ylabel)}</text>']
+    path.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img"><title>{html.escape(title)}</title>{"".join(body)}</svg>\n')
 
 def final_reduce():
     inv=inventory(); inverse,src=inverse_analysis(); screens,evals=reduced_screen(inverse)
@@ -153,8 +192,23 @@ def final_reduce():
     families.append({"mechanism":"FINITE_POROSITY_COMPACTION","flow_order_pass":False,"mass_order_pass":False,"grind_sign_match_count":"UNASSESSED","plausibility":"accepted source-linked post-WP03-002","disposition":"FAILED_PRESSURE_ORDERING_AFTER_NUMERICAL_FIX"})
     g=b2["axis_contrasts"]["P2_H1"]["GRIND_COARSE_MINUS_FINE"]
     families.append({"mechanism":"FIXED_P2_EXTRACTION_H1","flow_order_pass":"UNASSESSED","mass_order_pass":"UNASSESSED","grind_sign_match_count":sum(sign(v["source"])==sign(v["model"]) for v in g.values()),"plausibility":"fixed local reconstruction","disposition":"FAILED_GRIND_SIGN_0_OF_3"})
-    for s in screens: families.append({"mechanism":s["mechanism"],"flow_order_pass":s["capable"] if s["mechanism"].startswith('P') else "UNASSESSED","mass_order_pass":"UNASSESSED","grind_sign_match_count":3 if s["mechanism"].startswith('G') and s["capable"] else "UNASSESSED","plausibility":s["plausibility"],"disposition":s["disposition"]})
-    write_csv(OUT/"SCI_MD_001_MECHANISM_CAPABILITY_MATRIX.csv",families)
+    for s in screens:
+      if s["mechanism"].startswith("P1_") or s["mechanism"].startswith("P2_"):
+        pressure_assessment="EXECUTED_ORDER_PASS" if s["capable"] else "EXECUTED_ORDER_FAIL"
+      elif s["capable"] is False:
+        pressure_assessment="ANALYTICALLY_STRUCTURALLY_INCAPABLE"
+      elif s["capable"] is True:
+        pressure_assessment="ANALYTICALLY_STRUCTURALLY_CAPABLE"
+      else:
+        pressure_assessment="NOT_STRUCTURALLY_EXCLUDED_NOT_EVALUATED"
+      families.append({"mechanism":s["mechanism"],"flow_order_pass":pressure_assessment,
+        "mass_order_pass":"NOT_EVALUATED","grind_sign_match_count":"NOT_EVALUATED",
+        "evaluation_kind":s["evaluation_kind"],"plausibility":s["plausibility"],"disposition":s["disposition"]})
+    matrix_fields=[]
+    for row in families:
+      for key in row:
+       if key not in matrix_fields: matrix_fields.append(key)
+    write_csv(OUT/"SCI_MD_001_MECHANISM_CAPABILITY_MATRIX.csv",families,matrix_fields)
     dump(OUT/"SCI_MD_001_MECHANISM_CAPABILITY_MATRIX.json",{"rows":families})
     bounds=[
       {"parameter":"power_law_n","minimum":0,"maximum":3,"unit":"1","role":"SYNTHETIC_FIXTURE","source":"inverse-screen envelope"},
@@ -164,26 +218,40 @@ def final_reduce():
     write_csv(OUT/"SCI_MD_001_PARAMETER_BOUNDS.csv",bounds)
     plot=[]
     for p,rs in src.items():
-      for r in rs[::max(1,len(rs)//100)]: plot.append({"panel":"pressure_inverse","series":f"source_{p}bar","x":r["source_time_s"],"y":r["conductance_m3_s_pa"],"unit":"m3/(s Pa)","role":"SOURCE_MEASURED_DERIVED"})
+      for r in rs[::max(1,len(rs)//160)]:
+       for panel,key,unit,role in (("measured_pressure","source_pressure_bar","bar","SOURCE_MEASURED"),("measured_flow","source_flow_g_s","g/s","SOURCE_MEASURED"),("apparent_conductance","conductance_m3_s_pa","m3/(s Pa)","SOURCE_MEASURED_DERIVED")):
+        plot.append({"panel":panel,"series":f"source_{p}bar","x":r["source_time_s"],"y":r[key],"unit":unit,"role":role})
+    for window in ("middle","late","terminal"):
+      vals={r["pressure_nominal_bar"]:r["mean_conductance_m3_s_pa"] for r in inverse["rows"] if r["window"]==window}
+      plot.append({"panel":"conductance_ratio","series":"C11_over_C5","x":window,"y":vals[11]/vals[5],"unit":"1","role":"SOURCE_MEASURED_DERIVED"})
     for br,v in g.items():
       plot += [{"panel":"grind_contrast","series":"source","x":br,"y":v["source"],"unit":"g","role":"SOURCE_DERIVED"},{"panel":"grind_contrast","series":"model","x":br,"y":v["model"],"unit":"g","role":"EXISTING_OPENFOAM_RESULT"}]
     write_csv(OUT/"SCI_MD_001_PLOT_SOURCE.csv",plot)
     run=[{"run_id":"SCI-MD-001-REDUCED-SCREEN","kind":"REDUCED_DIAGNOSTIC","status":"PASS","evaluations":evals,"ranks":1,"runtime_s":"recorded_by_invocation_not_retained","artifact":"SCI_MD_001_REDUCED_SCREEN.json"},{"run_id":"SCI-MD-001-OPENFOAM","kind":"OPENFOAM","status":"NOT_REQUIRED_REUSED_PRIMITIVES_SUFFICIENT","evaluations":0,"ranks":0,"runtime_s":0,"artifact":"none"}]
     write_csv(OUT/"SCI_MD_001_RUN_MANIFEST.csv",run)
     residual=b2["waszkiewicz"]["results"]["P2"]
-    result={"schema_version":"ewp.sci_md_001.result.v1","status":"EXECUTION_COMPLETE_PENDING_REVIEW","evidence_mode":"POST_OBSERVATION_MECHANISM_DISCRIMINATION","inverse_requirement":inverse,"grind":{"contrast_definition_in_source":"coarse-minus-fine","reported_primary_fine_minus_coarse":{br:{"source":-v["source"],"model":-v["model"],"sign_match":False,"minimum_model_change_g":v["source"]-v["model"]} for br,v in g.items()},"sign_match_count":0,"interpretation":"Failure persists under prescribed source hydraulics H1; it is therefore not solely a hydraulic-clock failure. Aggregate kinetics and grind-to-structure/inventory effects remain confounded."},"transient_transfer":residual,"existing_family_capability":families,"reduced_evaluations":evals,"new_openfoam_runs":0,"openfoam_reason":"Accepted traces contain the required primitives; no reduced survivor was sufficiently source-bounded to justify a confirmatory production run.","mechanisms_ruled_out_as_standalone":["pressure-independent Darcy","fixed-coefficient Darcy-Forchheimer","accepted quasi-static compaction","static pressure-independent lateral paths","machine dynamics conditioned on measured basket pressure","viscosity-only within defensible water-property variation"],"survivors":["generic pressure-dependent evolving resistance","finite-rate poromechanical memory","swelling resistance","fines deposition/mobility","evolving lateral localization","grind-to-structure closure","bimodal extraction"],"equifinality":"MULTIPLE_MECHANISMS_REMAIN_EQUIFINAL","recommended_next_task":"NO_NEW_PRODUCTION_PHYSICS_YET","recommended_measurement":"synchronized upstream and basket pressure, flow, bed-height/rebound, turbidity/captured fines, and fractionated chemistry; prioritize pressure-step bed-height/rebound plus turbidity to separate poromechanics from fines","claim_boundary":{"physical_validation":"NOT_ESTABLISHED","independent_validation":"NOT_PERFORMED","protected_scoring":"NOT_PERFORMED"}}
+    result={"schema_version":"ewp.sci_md_001.result.v2","status":"CORRECTED_PENDING_EXACT_HEAD_REVIEW","evidence_mode":"POST_OBSERVATION_MECHANISM_DISCRIMINATION","review_correction":"Corrects missing unresolved-plausibility taxonomy, nominal-pressure substitution, false-green conceptual capability fields, and figure form; original protocol freeze retained.","inverse_requirement":inverse,"grind":{"contrast_definition_in_source":"coarse-minus-fine","reported_primary_fine_minus_coarse":{br:{"source":-v["source"],"model":-v["model"],"sign_match":False,"minimum_model_change_g":v["source"]-v["model"]} for br,v in g.items()},"sign_match_count":0,"interpretation":"Failure persists under prescribed source hydraulics H1; it is therefore not solely a hydraulic-clock failure. Aggregate kinetics and grind-to-structure/inventory effects remain confounded."},"transient_transfer":residual,"existing_family_capability":families,"reduced_evaluations":evals,"reduced_evaluation_breakdown":{"P1_EXECUTED_GRID_STATES":301,"P2_EXECUTED_GRID_STATES":5120,"OTHER_MECHANISMS":"ANALYTICAL_OR_STRUCTURAL_CHECKS_NOT_PARAMETER_ENSEMBLES"},"new_openfoam_runs":0,"openfoam_reason":"Accepted traces contain the required primitives; no reduced survivor was sufficiently source-bounded to justify a confirmatory production run.","mechanisms_ruled_out_as_standalone":["pressure-independent Darcy","fixed-coefficient Darcy-Forchheimer","accepted quasi-static compaction","static pressure-independent lateral paths","machine dynamics conditioned on measured basket pressure","viscosity-only within defensible water-property variation"],"survivors":["generic pressure-dependent evolving resistance","one-state relaxing-resistance surrogate (poromechanics-motivated)","swelling not structurally excluded","fines deposition/mobility not structurally excluded","evolving lateral localization","grind-to-structure closure not structurally excluded","bimodal extraction not structurally excluded"],"equifinality":"MULTIPLE_MECHANISMS_REMAIN_EQUIFINAL","recommended_next_task":"NO_NEW_PRODUCTION_PHYSICS_YET","recommended_measurement":"synchronized upstream and basket pressure, flow, bed-height/rebound, turbidity/captured fines, and fractionated chemistry; prioritize pressure-step bed-height/rebound plus turbidity to separate poromechanics from fines","claim_boundary":{"physical_validation":"NOT_ESTABLISHED","independent_validation":"NOT_PERFORMED","protected_scoring":"NOT_PERFORMED"}}
     dump(OUT/"SCI_MD_001_RESULT.json",result)
     figs=OUT/"figures"; figs.mkdir(exist_ok=True)
     terminal={r["pressure_nominal_bar"]:r for r in inverse["rows"] if r["window"]=="terminal"}
-    svg(figs/"01_pressure_ordering.svg","Source and model pressure ordering",[f"Source terminal flow: 5={terminal[5]['mean_source_flow_g_s']:.3f}, 9={terminal[9]['mean_source_flow_g_s']:.3f}, 11={terminal[11]['mean_source_flow_g_s']:.3f} g/s (5 > 9 > 11)","All tested EWP families: 11 > 9 > 5 (failed sign gate)"])
-    svg(figs/"02_inverse_conductance.svg","Apparent conductance requirement",[f"C11/C5 = {inverse['terminal_conductance_ratios']['11_over_5']:.6f}",f"K proportional to p^-n: terminal 5-to-11 n = {inverse['required_power_law_exponents_n_for_K_proportional_p_minus_n']['5_to_11']:.3f}","Density changes absolute scale, not ordering or conductance ratios."])
-    svg(figs/"03_grind_contrasts.svg","Grind contrasts at three brew ratios",[f"{br}: source coarse-fine={v['source']:+.3f} g; model={v['model']:+.3f} g; sign FAIL" for br,v in g.items()])
-    svg(figs/"04_existing_capability.svg","Existing-model capability matrix",[f"{x['mechanism']}: {x['disposition']}" for x in families[:5]])
-    svg(figs/"05_candidate_phase_map.svg","Reduced candidate capability map",[f"{x['mechanism']}: capable={x['capable']}; {x['capable_region_breadth']}" for x in screens])
+    pressure_series=[(f"{p} bar",[(r["source_time_s"],r["source_pressure_bar"]) for r in src[p]]) for p in PRESSURES]
+    flow_series=[(f"{p} bar",[(r["source_time_s"],r["source_flow_g_s"]) for r in src[p]]) for p in PRESSURES]
+    conductance_series=[(f"{p} bar",[(r["source_time_s"],r["conductance_m3_s_pa"]) for r in src[p]]) for p in PRESSURES]
+    line_svg(figs/"01_pressure_ordering.svg","Measured pressure histories",pressure_series,"source time (s)","basket pressure (bar)")
+    line_svg(figs/"02_inverse_conductance.svg","Apparent hydraulic conductance histories",conductance_series,"source time (s)","C_app (m3/(s Pa))")
+    bar_svg(figs/"03_grind_contrasts.svg","Source versus model grind contrasts",list(g),[("source coarse - fine",[v["source"] for v in g.values()]),("model coarse - fine",[v["model"] for v in g.values()])],"mass contrast (g)")
+    line_svg(figs/"04_existing_capability.svg","Measured flow histories",flow_series,"source time (s)","mass flow (g/s)")
+    ratios=[]
+    for window in ("middle","late","terminal"):
+      vals={r["pressure_nominal_bar"]:r["mean_conductance_m3_s_pa"] for r in inverse["rows"] if r["window"]==window}; ratios.append(vals[11]/vals[5])
+    bar_svg(figs/"05_candidate_phase_map.svg","Persistent apparent-conductance requirement",["middle","late","terminal"],[("C11 / C5",ratios)],"conductance ratio")
     pr=residual["EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS"]["metrics"]["window_mean_residual"]
     sr=residual["SOURCE_REPORTED_CLOCK"]["metrics"]["window_mean_residual"]
-    svg(figs/"06_residual_fingerprints.svg","Transient residual fingerprints",[f"accepted +3 s: early={pr['early']:+.4f}, middle={pr['middle']:+.4f}, late={pr['late']:+.4f}",f"source clock: early={sr['early']:+.4f}, middle={sr['middle']:+.4f}, late={sr['late']:+.4f}","Clock is frozen; no result-dependent shift optimization."])
-    svg(figs/"07_capability_plausibility.svg","Capability versus physical plausibility",[f"{x['mechanism']}: {x['plausibility']}" for x in screens])
+    bar_svg(figs/"06_residual_fingerprints.svg","Transient residual fingerprints",["early","middle","late"],[("accepted +3 s",[pr[x] for x in ("early","middle","late")]),("source clock",[sr[x] for x in ("early","middle","late")])],"mean residual")
+    # P1 boundary and P2 capability fraction are plotted as executed-screen summaries.
+    p1=next(x for x in screens if x["mechanism"].startswith("P1_")); p2=next(x for x in screens if x["mechanism"].startswith("P2_"))
+    p1n=float(p1["capable_region_breadth"].split()[-1]); p2count=int(p2["capable_region_breadth"].split('/')[0])
+    bar_svg(figs/"07_capability_plausibility.svg","Executed reduced-screen capability boundaries",["P1 n threshold","P2 capable fraction"],[("measured-pressure primary",[p1n,p2count/5120])],"threshold or fraction")
     return result
 
 def verify():

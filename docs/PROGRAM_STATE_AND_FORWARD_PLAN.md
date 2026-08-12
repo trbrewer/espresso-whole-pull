@@ -1,6 +1,6 @@
 # Espresso Whole-Pull Program Handoff and Forward Execution Plan
 
-Current addendum: `SCI-MD-001` is `EXECUTION_COMPLETE_PENDING_REVIEW`. The enduring
+Current addendum: `SCI-MD-001` is `CORRECTED_PENDING_EXACT_HEAD_REVIEW`. The enduring
 scientific sequence and restart handoff are maintained in the
 [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md).
 Historical consumed execution blocks below are unchanged; the additional-

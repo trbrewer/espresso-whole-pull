@@ -1,6 +1,6 @@
 # Project State
 
-Current scientific-discovery work is `SCI-MD-001_EXECUTION_COMPLETE_PENDING_REVIEW`; see
+Current scientific-discovery work is `SCI-MD-001_CORRECTED_PENDING_EXACT_HEAD_REVIEW`; see
 the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md).
 The `ADDITIONAL_INDEPENDENT_DATA_REQUIRED` gate continues to limit validation
 claims and does not stop authorized post-observation mechanism discrimination.
