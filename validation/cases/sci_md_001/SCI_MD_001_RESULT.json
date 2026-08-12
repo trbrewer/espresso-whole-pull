@@ -1,0 +1,376 @@
+{
+  "claim_boundary": {
+    "independent_validation": "NOT_PERFORMED",
+    "physical_validation": "NOT_ESTABLISHED",
+    "protected_scoring": "NOT_PERFORMED"
+  },
+  "equifinality": "MULTIPLE_MECHANISMS_REMAIN_EQUIFINAL",
+  "evidence_mode": "POST_OBSERVATION_MECHANISM_DISCRIMINATION",
+  "existing_family_capability": [
+    {
+      "disposition": "FAILED_PRESSURE_ORDERING",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": false,
+      "mechanism": "DARCY_STATIC",
+      "plausibility": "existing governed parameters"
+    },
+    {
+      "disposition": "FAILED_PRESSURE_ORDERING",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": false,
+      "mechanism": "DARCY_FORCHHEIMER_STATIC",
+      "plausibility": "existing governed parameters"
+    },
+    {
+      "disposition": "FAILED_PRESSURE_ORDERING",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": false,
+      "mechanism": "DARCY_DISSOLUTION_INDEXED",
+      "plausibility": "existing governed parameters"
+    },
+    {
+      "disposition": "FAILED_PRESSURE_ORDERING_AFTER_NUMERICAL_FIX",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": false,
+      "mechanism": "FINITE_POROSITY_COMPACTION",
+      "plausibility": "accepted source-linked post-WP03-002"
+    },
+    {
+      "disposition": "FAILED_GRIND_SIGN_0_OF_3",
+      "flow_order_pass": "UNASSESSED",
+      "grind_sign_match_count": 0,
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "FIXED_P2_EXTRACTION_H1",
+      "plausibility": "fixed local reconstruction"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P1_GENERIC_PRESSURE_DEPENDENT_PERMEABILITY",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P2_FINITE_RATE_POROMECHANICS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P3_SWELLING",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P4_MOBILE_DEPOSITED_FINES",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": true,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P5_CONCENTRATION_DEPENDENT_VISCOSITY",
+      "plausibility": "OUTSIDE_SUPPORTED_RANGE"
+    },
+    {
+      "disposition": "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P6_MACHINE_BOUNDARY_DYNAMICS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE",
+      "flow_order_pass": false,
+      "grind_sign_match_count": "UNASSESSED",
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "P7_STATIC_LATERAL_PATHS",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": "UNASSESSED",
+      "grind_sign_match_count": 3,
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "G1_GRIND_TO_STRUCTURE_MAPPING",
+      "plausibility": "BOUND_UNRESOLVED"
+    },
+    {
+      "disposition": "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE",
+      "flow_order_pass": "UNASSESSED",
+      "grind_sign_match_count": 3,
+      "mass_order_pass": "UNASSESSED",
+      "mechanism": "G2_BIMODAL_EXTRACTION",
+      "plausibility": "BOUND_UNRESOLVED"
+    }
+  ],
+  "grind": {
+    "contrast_definition_in_source": "coarse-minus-fine",
+    "interpretation": "Failure persists under prescribed source hydraulics H1; it is therefore not solely a hydraulic-clock failure. Aggregate kinetics and grind-to-structure/inventory effects remain confounded.",
+    "reported_primary_fine_minus_coarse": {
+      "1/1": {
+        "minimum_model_change_g": 0.18854633948246047,
+        "model": 0.01655300614912747,
+        "sign_match": false,
+        "source": -0.171993333333333
+      },
+      "1/2": {
+        "minimum_model_change_g": 0.2840237894088844,
+        "model": 0.013063789408884752,
+        "sign_match": false,
+        "source": -0.27095999999999965
+      },
+      "1/3": {
+        "minimum_model_change_g": 0.31422025295898637,
+        "model": 0.000836919625653465,
+        "sign_match": false,
+        "source": -0.3133833333333329
+      }
+    },
+    "sign_match_count": 0
+  },
+  "inverse_requirement": {
+    "density_effect": "absolute Q-derived C and K scale inversely with density; ordering and ratios are invariant",
+    "density_sensitivity_kg_m3": [
+      965,
+      997,
+      1000
+    ],
+    "interpretation": "Effective conductance must fall strongly with pressure; the terminal 11/5 ratio is about 0.373. A static pressure-independent Darcy resistance, positive Forchheimer term with fixed coefficients, or a prescribed basket-pressure relabeling cannot supply that state change.",
+    "required_power_law_exponents_n_for_K_proportional_p_minus_n": {
+      "5_to_11": 1.1735725815259854,
+      "5_to_9": 1.1782781596830232,
+      "9_to_11": 1.1559261141874289
+    },
+    "rows": [
+      {
+        "mean_conductance_m3_s_pa": 1.7812103177642198e-12,
+        "mean_permeability_m2": 1.685424653736392e-14,
+        "mean_resistance_pa_s_m3": 36415216751149.6,
+        "mean_source_flow_g_s": 0.7936910811688311,
+        "mean_source_pressure_bar": 4.676217516233766,
+        "pressure_nominal_bar": 5,
+        "sample_count": 308,
+        "window": "early"
+      },
+      {
+        "mean_conductance_m3_s_pa": 4.3715508528521724e-12,
+        "mean_permeability_m2": 4.136468057128502e-14,
+        "mean_resistance_pa_s_m3": 228805284959.11346,
+        "mean_source_flow_g_s": 1.9137520630630631,
+        "mean_source_pressure_bar": 4.5367968888888885,
+        "pressure_nominal_bar": 5,
+        "sample_count": 333,
+        "window": "middle"
+      },
+      {
+        "mean_conductance_m3_s_pa": 4.60769271716337e-12,
+        "mean_permeability_m2": 4.3599112496140114e-14,
+        "mean_resistance_pa_s_m3": 217066110350.43277,
+        "mean_source_flow_g_s": 2.006155282282282,
+        "mean_source_pressure_bar": 4.511959738738739,
+        "pressure_nominal_bar": 5,
+        "sample_count": 333,
+        "window": "late"
+      },
+      {
+        "mean_conductance_m3_s_pa": 4.734260228946841e-12,
+        "mean_permeability_m2": 4.479672516767289e-14,
+        "mean_resistance_pa_s_m3": 211226242673.7059,
+        "mean_source_flow_g_s": 2.056292,
+        "mean_source_pressure_bar": 4.500962,
+        "pressure_nominal_bar": 5,
+        "sample_count": 1,
+        "window": "terminal"
+      },
+      {
+        "mean_conductance_m3_s_pa": 4.4097876947927785e-13,
+        "mean_permeability_m2": 4.172648689727021e-15,
+        "mean_resistance_pa_s_m3": 70769644209915.14,
+        "mean_source_flow_g_s": 0.3761853043478261,
+        "mean_source_pressure_bar": 8.885272882943145,
+        "pressure_nominal_bar": 9,
+        "sample_count": 299,
+        "window": "early"
+      },
+      {
+        "mean_conductance_m3_s_pa": 2.2196697097644574e-12,
+        "mean_permeability_m2": 2.100305626280416e-14,
+        "mean_resistance_pa_s_m3": 456590687774.6292,
+        "mean_source_flow_g_s": 1.8632403393393393,
+        "mean_source_pressure_bar": 8.701364651651652,
+        "pressure_nominal_bar": 9,
+        "sample_count": 333,
+        "window": "middle"
+      },
+      {
+        "mean_conductance_m3_s_pa": 2.247087679261862e-12,
+        "mean_permeability_m2": 2.1262491778562473e-14,
+        "mean_resistance_pa_s_m3": 445114791519.78906,
+        "mean_source_flow_g_s": 1.8878569189189187,
+        "mean_source_pressure_bar": 8.706164024024023,
+        "pressure_nominal_bar": 9,
+        "sample_count": 333,
+        "window": "late"
+      },
+      {
+        "mean_conductance_m3_s_pa": 2.1688844790571433e-12,
+        "mean_permeability_m2": 2.0522514021238684e-14,
+        "mean_resistance_pa_s_m3": 461066511220.88336,
+        "mean_source_flow_g_s": 1.827218,
+        "mean_source_pressure_bar": 8.730249,
+        "pressure_nominal_bar": 9,
+        "sample_count": 1,
+        "window": "terminal"
+      },
+      {
+        "mean_conductance_m3_s_pa": 3.303155518032228e-13,
+        "mean_permeability_m2": 3.125526328752076e-15,
+        "mean_resistance_pa_s_m3": 107832551167403.1,
+        "mean_source_flow_g_s": 0.33676940863787375,
+        "mean_source_pressure_bar": 10.619915853820599,
+        "pressure_nominal_bar": 11,
+        "sample_count": 301,
+        "window": "early"
+      },
+      {
+        "mean_conductance_m3_s_pa": 1.7015232365716552e-12,
+        "mean_permeability_m2": 1.610022793615335e-14,
+        "mean_resistance_pa_s_m3": 601649456298.1107,
+        "mean_source_flow_g_s": 1.7128964684684687,
+        "mean_source_pressure_bar": 10.43619263063063,
+        "pressure_nominal_bar": 11,
+        "sample_count": 333,
+        "window": "middle"
+      },
+      {
+        "mean_conductance_m3_s_pa": 1.821391134121484e-12,
+        "mean_permeability_m2": 1.7234447223495093e-14,
+        "mean_resistance_pa_s_m3": 549083635167.0305,
+        "mean_source_flow_g_s": 1.8309902762762762,
+        "mean_source_pressure_bar": 10.417323345345347,
+        "pressure_nominal_bar": 11,
+        "sample_count": 333,
+        "window": "late"
+      },
+      {
+        "mean_conductance_m3_s_pa": 1.7682756602856613e-12,
+        "mean_permeability_m2": 1.6731855653005236e-14,
+        "mean_resistance_pa_s_m3": 565522685438.3395,
+        "mean_source_flow_g_s": 1.777572,
+        "mean_source_pressure_bar": 10.417174,
+        "pressure_nominal_bar": 11,
+        "sample_count": 1,
+        "window": "terminal"
+      }
+    ],
+    "terminal_conductance_ratios": {
+      "11_over_5": 0.37350622373350667,
+      "11_over_9": 0.8152926895647137,
+      "9_over_5": 0.4581253193045584
+    },
+    "terminal_source_flow_order_pass": true
+  },
+  "mechanisms_ruled_out_as_standalone": [
+    "pressure-independent Darcy",
+    "fixed-coefficient Darcy-Forchheimer",
+    "accepted quasi-static compaction",
+    "static pressure-independent lateral paths",
+    "machine dynamics conditioned on measured basket pressure",
+    "viscosity-only within defensible water-property variation"
+  ],
+  "new_openfoam_runs": 0,
+  "openfoam_reason": "Accepted traces contain the required primitives; no reduced survivor was sufficiently source-bounded to justify a confirmatory production run.",
+  "recommended_measurement": "synchronized upstream and basket pressure, flow, bed-height/rebound, turbidity/captured fines, and fractionated chemistry; prioritize pressure-step bed-height/rebound plus turbidity to separate poromechanics from fines",
+  "recommended_next_task": "NO_NEW_PRODUCTION_PHYSICS_YET",
+  "reduced_evaluations": 5421,
+  "schema_version": "ewp.sci_md_001.result.v1",
+  "status": "EXECUTION_COMPLETE_PENDING_REVIEW",
+  "survivors": [
+    "generic pressure-dependent evolving resistance",
+    "finite-rate poromechanical memory",
+    "swelling resistance",
+    "fines deposition/mobility",
+    "evolving lateral localization",
+    "grind-to-structure closure",
+    "bimodal extraction"
+  ],
+  "transient_transfer": {
+    "EXISTING_ACCEPTED_FIXED_SOURCE_TO_SOLVER_OFFSET_PLUS_3_SECONDS": {
+      "metrics": {
+        "bias": -0.006163205191674489,
+        "mae": 0.050222070641358085,
+        "rmse": 0.06682489539009928,
+        "uncertainty_weighted_secondary": {
+          "count": 11,
+          "weighted_mse": 23.67982412757093
+        },
+        "window_mean_residual": {
+          "early": -0.08072143166849205,
+          "late": -0.0037413913634276215,
+          "middle": 0.06597320745689621
+        }
+      },
+      "model_interval_tds_fraction": [
+        0.1091926215344294,
+        0.15214251508057425,
+        0.1566607388795277,
+        0.15659639783150048,
+        0.15405289919969184,
+        0.1432239338795909,
+        0.10773846404886087,
+        0.04925553269944123,
+        0.012727362870516748,
+        0.002478888916481587,
+        0.00044899484786797394,
+        8.018791142320404e-05
+      ]
+    },
+    "SOURCE_REPORTED_CLOCK": {
+      "metrics": {
+        "bias": -0.005362314434784781,
+        "mae": 0.06418733572067598,
+        "rmse": 0.08603049216615972,
+        "uncertainty_weighted_secondary": {
+          "count": 11,
+          "weighted_mse": 45.180020411124545
+        },
+        "window_mean_residual": {
+          "early": -0.10176895108089963,
+          "late": 0.001955934536179469,
+          "middle": 0.08372607324036582
+        }
+      },
+      "model_interval_tds_fraction": [
+        0.045509097833714277,
+        0.13281084958870953,
+        0.1551859329481635,
+        0.15689631530581422,
+        0.15598077997948934,
+        0.15140993155905144,
+        0.13303669809429833,
+        0.08485488332862416,
+        0.030312834753883876,
+        0.006730392932734623,
+        0.001255948411139822,
+        0.00022556204695955732
+      ]
+    }
+  }
+}
