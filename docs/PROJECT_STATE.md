@@ -1,5 +1,10 @@
 # Project State
 
+Current scientific-discovery work is `SCI-MD-001_AUTHORIZED_AND_ACTIVE`; see
+the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md).
+The `ADDITIONAL_INDEPENDENT_DATA_REQUIRED` gate continues to limit validation
+claims and does not stop authorized post-observation mechanism discrimination.
+
 - Current released version: `v0.2.0`
 - Last substantive scientific merge: `5c77b16513f932a822782fb97e9f8b97ceda0654`
 - Last substantive scientific tree: `76741f99f58672fd6f1fd021279517a255b045b6`

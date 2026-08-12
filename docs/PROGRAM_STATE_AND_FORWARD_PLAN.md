@@ -1,5 +1,12 @@
 # Espresso Whole-Pull Program Handoff and Forward Execution Plan
 
+Current addendum: `SCI-MD-001` is authorized and active. The enduring
+scientific sequence and restart handoff are maintained in the
+[Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md).
+Historical consumed execution blocks below are unchanged; the additional-
+independent-data gate still limits validation claims, not authorized
+post-observation discovery.
+
 **Prepared:** 2026-08-02  
 **Purpose:** conversation-independent, repository-ready record of completed work, accepted scientific findings, current limitations, administrative corrections, and the next execution sequence  
 **Recommended repository path:** `docs/PROGRAM_STATE_AND_FORWARD_PLAN.md`  
