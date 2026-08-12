@@ -9,34 +9,36 @@ descriptor and reduction machinery is a diagnostic model extension only.
 ## 1. Executive result
 
 Nominally equivalent overlapping-sphere packs do not support one precise
-permeability closure. Across the baseline size cells, Kx coefficients of
-variation were 34–69%; at L=40 the 10th-to-90th percentile interval was
-0.604–2.779 lu². Porosity alone achieved grouped cross-validated R²=0.206 for
-log K. Adding connected porosity, interfacial area, pore-distance and topology
-descriptors raised R² to 0.682, but the remaining 95% predictive factor was
-about 2.26. A stochastic rather than single-scalar closure is warranted for
-this generator.
+permeability closure across the tested finite domains. Baseline Kx coefficients
+of variation fell from 72.0% at L=24 to 3.63% at L=160, with substantial
+spread through L=96. A true measured-porosity-only model achieved
+physical-lineage-grouped cross-validated R²=0.408 for log K. Adding connected
+porosity, interfacial area, pore-distance and topology descriptors raised R²
+to 0.632; the remaining nominal 95% predictive factor was 2.41 with 95.1%
+empirical out-of-fold coverage. A stochastic rather than unsupported
+single-scalar closure remains warranted until the representative scale and
+resolution dependence are resolved.
 
-No synthetic-generator representative volume was resolved. Mean K at L=32,
-56 and 72 was similar, but L=40 was 16% below the largest-size mean, spread
-continued to change materially, the largest box was only about 3.6 particle
-diameters, and same-continuous-geometry spatial convergence was not fully
-adjudicated. The dispositions are `NO_SYNTHETIC_GENERATOR_REV_RESOLVED`,
+No synthetic-generator representative volume was resolved. The completion
+pass qualified and executed through L=160, approximately eight characteristic
+particle diameters. L=128 was mean-equivalent to L=160 under the frozen band,
+and both largest sizes met sampling precision, but L=96 did not meet mean
+equivalence, the largest-three means retained a monotone trend, variance/CV
+continued to fall, and same-continuous-geometry spatial convergence was not
+fully adjudicated. The dispositions are `NO_SYNTHETIC_GENERATOR_REV_RESOLVED`,
 `SYNTHETIC_GENERATOR_VARIANCE_NOT_STABILIZED`,
-`GPU_DOMAIN_LIMIT_PREVENTS_REV_ADJUDICATION`, and
-`REAL_PUCK_REV_NOT_ASSESSED`.
+`SPATIAL_RESOLUTION_PREVENTS_REV_ADJUDICATION`, and
+`REAL_PUCK_REV_NOT_ASSESSED`. The measured GPU limit was not reached.
 
 A static throat-restriction proxy can mathematically produce the SCI-MD-001
-resistance requirement without disconnecting the periodic flow domain. At 30%
-void restriction, the converged-pair geometric-mean K ratio was 0.3525, but
-only two of three pairs crossed 0.373506 and the 95% interval [0.3005, 0.4362]
-did not: `TARGET_ATTAINMENT_IN_SOME_REALIZATIONS_ONLY`. At 40% restriction,
-all three converged pairs crossed all exact targets; geometric mean was 0.2303,
-95% interval [0.1829, 0.2992], and minimum connected-porosity retention was
-0.600: `ROBUST_TARGET_ATTAINMENT_WITHOUT_TOPOLOGY_LOSS` under the frozen rule.
-This is a capability result for a severe synthetic static transformation, not
-evidence that pressure created such a state or that it is supported for real
-coffee.
+resistance requirement without disconnecting the periodic flow domain. After
+eight parents were attempted, only six valid pairs remained at 20–40%
+restriction. At 40%, all six valid ratios crossed every target, with geometric
+mean 0.2102 and 95% interval [0.1728, 0.2587], while minimum connected-porosity
+retention was 0.600. This is a strong preliminary capability signal, but the
+frozen minimum of eight valid pairs was not met, so its disposition is
+`TARGET_ATTAINMENT_UNRESOLVED_UNCERTAINTY`, not robust. It is not evidence that
+pressure created such a state or that it is supported for real coffee.
 
 ## 2. Questions and SCI-MD-001 relationship
 
@@ -57,21 +59,24 @@ Broad ensembles therefore used f32 with retained f64 anchors and a fresh
 process per solve. The gross-area/void-area identity and half-force convention
 were preserved.
 
-The scored matrix contained 172 identities: 162 passed and ten were retained
-as nonconverged. The secondary force sweep contained 25 identities: 24 passed
-and one was retained as nonconverged. There were no allocation failures, seed
-substitutions, or disconnected geometries. Total reported GPU kernel time was
-375.7 s. Full evidence is external (944 files, 77,543,142 bytes; ordered-file
-aggregate `edc13f16326a711df300251900f99ba308f79ea986bd7c7c3b5bdc934b612fa6`).
+The completed primary programme contains 300 attempted identities: 283 passed
+and 17 were retained as nonconverged. Three domain-qualification identities
+passed. The secondary force sweep retained 24 passes and one nonconvergence.
+There were no allocation failures, seed substitutions, or disconnected
+geometries. Total reported GPU solver time was 1,035.2 s. External evidence
+contains 1,596 files and 466,365,359 bytes with ordered-file aggregate
+`3db16287c305b86a4726724723aa0c695ba2c5fa7da425f983667ec270f7e8ca`.
 
 ## 4. Spatial resolution and finite volume
 
 The accepted generator at 30 µm has a characteristic radius near ten voxels.
-Scored box sizes were L=24, 32, 40, 56 and 72, or approximately L/d=1.2–3.6.
-The 8 GiB GPU and required resolution prevented the desired L/d≈8 range.
-Baseline mean K values were 1.006, 1.765, 1.516, 1.740 and 1.809 lu²;
-respective CVs were 0.540, 0.578, 0.686, 0.440 and 0.341. These results show
-large finite-sample variability and no qualified variance plateau.
+Executed box sizes were L=24, 32, 40, 56, 72, 96, 128 and 160, approximately
+L/d=1.2–8.0. Measured qualification at L=96/128/160 retained 91.5%, 89.6% and
+85.6% GPU-memory headroom respectively; all passed. The original five sizes
+continued to 24 attempted identities because none met 10% precision. L=96
+stopped at 12 valid identities; L=128 and L=160 stopped at eight. CV decreased
+across the largest sizes from 0.169 to 0.0968 to 0.0363, so variance was not
+stable even though the L=128/L=160 mean comparison passed equivalence.
 
 `SPATIAL_DISCRETIZATION: NOT_FULLY_ADJUDICATED`. The programme did not obtain
 a defensible three-resolution, same-continuous-geometry series. Consequently
@@ -89,10 +94,10 @@ Paired static restriction ratios were:
 
 | Removed baseline void | Converged pairs | geometric mean K/K0 | 95% CI | terminal attainment |
 |---:|---:|---:|---:|---|
-| 0.10 | 4 | 0.6108 | 0.5351–0.6748 | none |
-| 0.20 | 3 | 0.5130 | 0.4672–0.5869 | none |
-| 0.30 | 3 | 0.3525 | 0.3005–0.4362 | 2/3 only |
-| 0.40 | 3 | 0.2303 | 0.1829–0.2992 | 3/3, robust frozen rule |
+| 0.10 | 8 | 0.6008 | 0.5565–0.6479 | none |
+| 0.20 | 6 | 0.5016 | 0.4613–0.5478 | none; valid n below 8 |
+| 0.30 | 6 | 0.3350 | 0.2906–0.3892 | 4/6; uncertainty unresolved |
+| 0.40 | 6 | 0.2102 | 0.1728–0.2587 | 6/6; uncertainty unresolved |
 
 Columnar heterogeneity did not simply add resistance. Mean K increased from
 1.52 for the comparable L40 uniform ensemble to 1.85–2.78 across tested
@@ -107,8 +112,9 @@ confounding sub-resolution particles and finite volume.
 
 ## 6. Directional permeability and localization
 
-Eleven directional triplets completed. Median K_perp/Kx was 0.806, but the
-range was 0.296–4.382. Thus transverse communication is not uniformly
+Eleven of 16 directional triplets completed. Their complete-case median
+K_perp/Kx was 0.806 and range was 0.296–4.382. Direction-dependent
+nonconvergence may bias these descriptive statistics. Transverse communication is not uniformly
 negligible in these finite synthetic packs, yet its magnitude and even apparent
 ordering are realization- and state-sensitive. These are diagonal directional
 components, not a complete tensor. The breadth supports a future lateral-flow
@@ -132,13 +138,14 @@ has no demonstrated role in the SCI-MD pressure ordering.
 
 ## 8. Stochastic closure discovery
 
-Grouped cross-validation kept all rows from a geometry together:
+Grouped cross-validation kept identical mask hashes, paired transformations
+and their parents, and same-seed common-RNG solid-fraction states in one fold:
 
 | model | grouped CV R²(log K) | RMSE(log K) | nominal 95% factor |
 |---|---:|---:|---:|
-| porosity and particle-state only | 0.206 | 0.654 | 3.62 |
-| porosity plus topology | 0.682 | 0.414 | 2.26 |
-| topology plus synthetic fabric/state labels | 0.682 | 0.414 | 2.26 |
+| measured porosity only | 0.408 | 0.567 | 3.05 |
+| porosity plus topology | 0.632 | 0.447 | 2.41 |
+| topology plus synthetic fabric/state labels | 0.633 | 0.446 | 2.40 |
 
 Connected porosity, interfacial area, pore-distance and Euler connectivity add
 material predictive information. The present fabric/state labels add no
@@ -152,8 +159,9 @@ to real coffee, dynamic pressure causation, or subvoxel fines is prohibited.
 ## 9. Continuum implication and next programme
 
 Static morphology is mathematically capable of exceeding the required
-2.5–2.7-fold resistance increase, but the crossing is transformation-level and
-realization dependent, and severe 40% void restriction lacks a physical bound.
+2.5–2.7-fold resistance increase, but robust ensemble attainment is unresolved
+because only six of eight attempted pairs were valid at the load-bearing
+levels, and severe 40% void restriction lacks a physical bound.
 The generator has no established representative-volume regime and higher-order
 topology matters much more than porosity alone. The evidence therefore favors
 `REAL_GEOMETRY_IMPORT_AND_MICROCT_COMPARISON` before new production physics.
@@ -167,7 +175,7 @@ remains the continuum-integration disposition.
 
 ## 10. Limitations and prohibited interpretations
 
-The boxes span only about 1.2–3.6 characteristic diameters; resolution was not
+The boxes span about 1.2–8.0 characteristic diameters; resolution was not
 fully adjudicated; ten primary and one inertial identity did not converge;
 the bimodal proxy was not executable; descriptors are voxelized proxies; and
 no morphology range is physically calibrated to coffee. The static

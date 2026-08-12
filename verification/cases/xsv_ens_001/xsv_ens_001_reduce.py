@@ -17,7 +17,7 @@ def ci(values,stat=lambda x:np.mean(x),n=10000,seed=BOOT_SEED):
     return [float(np.quantile(z,.025)),float(np.quantile(z,.975))]
 def flatten(r):
     state=json.loads(r["state"]); keys=["case_id","geometry_id","family","L","voxel_um","seed","relation","parent_id","direction","force","precision","purpose","status","geometry_sha256","K_gross_lu2","K_void_lu2","q_box_lu","phi_gross","phi_connected_x","phi_connected_y","phi_connected_z","solid_fraction","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","pore_distance_q90","euler_characteristic","velocity_cv","flux_gini","top_10_flow_share","top_25_flow_share","normalized_flow_entropy","Mach","steps","wall_seconds"]
-    d={k:r.get(k) for k in keys}; d.update({"state_phis":state.get("phis"),"state_amp":state.get("amp",0),"state_hlen":state.get("hlen",8),"restriction_fraction":state.get("restriction",0)})
+    d={k:r.get(k) for k in keys}; d.update({"L":int(r["L"]),"seed":int(r["seed"]),"voxel_um":float(r["voxel_um"]),"force":float(r["force"]),"state_phis":state.get("phis"),"state_amp":state.get("amp",0),"state_hlen":state.get("hlen",8),"restriction_fraction":state.get("restriction",0)})
     return d
 def geom_mean(x): return float(np.exp(np.mean(np.log(np.asarray(x,float)))))
 
@@ -43,8 +43,9 @@ def main():
     base=passed[(passed.family=="BASELINE")&(passed.direction=="X")]
     size=[]
     for L,g in base.groupby("L"):
-      k=g.K_gross_lu2.to_numpy(); precision=bootstrap_log_mean_precision(k)
-      size.append({"L":int(L),"n":len(k),"mean_K":float(k.mean()),"median_K":float(np.median(k)),"sd_K":float(k.std(ddof=1)),"cv_K":float(k.std(ddof=1)/k.mean()),"mean_K_ci_low":ci(k)[0],"mean_K_ci_high":ci(k)[1],"q10":float(np.quantile(k,.1)),"q90":float(np.quantile(k,.9)),"sampling":precision,"sampling_precision_met":precision["precision_met"]})
+      k=g.K_gross_lu2.to_numpy(); precision=bootstrap_log_mean_precision(k); attempted=int(len(df[(df.family=="BASELINE")&(df.direction=="X")&(df.L==L)]))
+      if attempted>=24 and not precision["precision_met"]: precision["action"]="STOP_MAXIMUM_ATTEMPTED_N_UNRESOLVED"
+      size.append({"L":int(L),"attempted_n":attempted,"valid_n":len(k),"n":len(k),"mean_K":float(k.mean()),"median_K":float(np.median(k)),"sd_K":float(k.std(ddof=1)),"cv_K":float(k.std(ddof=1)/k.mean()),"mean_K_ci_low":ci(k)[0],"mean_K_ci_high":ci(k)[1],"q10":float(np.quantile(k,.1)),"q90":float(np.quantile(k,.9)),"sampling":precision,"sampling_precision_met":precision["precision_met"]})
     largest=max(x["L"] for x in size); ref=next(x for x in size if x["L"]==largest)
     rng=np.random.default_rng(BOOT_SEED); refk=base[base.L==largest].K_gross_lu2.to_numpy()
     for x in size:
@@ -65,7 +66,7 @@ def main():
       ratios=g.ratio.to_numpy(); logci=ci(np.log(ratios)); c=[math.exp(v) for v in logci]; majority={str(t):float(np.mean(ratios<=t)) for t in TARGETS}; robust=c[1]<=TARGETS[0] and majority[str(TARGETS[0])]>=.75
       disp=target_disposition(ratios,g.connected_retention.to_numpy())
       assess.append({"restriction_fraction":float(f),"n_converged_pairs":len(g),"geometric_mean_ratio":geom_mean(ratios),"bootstrap_95_ci":c,"fraction_attaining":majority,"minimum_connected_porosity_retention":float(g.connected_retention.min()),"disposition":disp})
-    target={"schema_version":"espresso.whole_pull.xsv_ens_001.target.v1","exact_targets":{"terminal":TARGETS[0],"middle":TARGETS[1],"late":TARGETS[2]},"paired_restriction":assess,"classification":"STATIC_STATE_CAPABLE_DYNAMIC_CAUSE_UNIDENTIFIED","nonconvergence_qualification":"TEN_FROZEN_IDENTITIES_NONCONVERGED_AND_NOT_REPLACED"}; dump(CASE/"XSV_ENS_001_TARGET_ASSESSMENT.json",target)
+    target={"schema_version":"espresso.whole_pull.xsv_ens_001.target.v2","exact_targets":{"terminal":TARGETS[0],"middle":TARGETS[1],"late":TARGETS[2]},"minimum_valid_pairs_for_robust":8,"attempted_parent_count":8,"paired_restriction":assess,"classification":"STATIC_STATE_CAPABLE_DYNAMIC_CAUSE_UNIDENTIFIED","nonconvergence_qualification":"ALL_NONCONVERGED_IDENTITIES_RETAINED_AND_NOT_REPLACED"}; dump(CASE/"XSV_ENS_001_TARGET_ASSESSMENT.json",target)
     # Grouped closure comparison, one X-flow row per geometry.
     from sklearn.compose import TransformedTargetRegressor
     from sklearn.impute import SimpleImputer
@@ -94,12 +95,15 @@ def main():
       ifits.append({"parent_case_id":parent,"n_pass":len(z),"linear_a":float(coef[0]),"quadratic_b":float(coef[1]),"R2":r2,"max_Mach":max(r["Mach"] for r in z),"deletion_b_min":min(deleted),"deletion_b_max":max(deleted),"deletion_stable_25pct":stable,"disposition":"INERTIAL_CURVATURE_RESOLVED" if coef[1]>0 and stable else "INERTIAL_CURVATURE_NOT_RESOLVED_WITHIN_QUALIFIED_FORCE_RANGE"})
     pd.DataFrame(ifits).to_csv(CASE/"XSV_ENS_001_INERTIAL_RESULTS.csv",index=False)
     inertial_disposition="INERTIAL_CURVATURE_RESOLVED" if ifits and all(x["disposition"]=="INERTIAL_CURVATURE_RESOLVED" for x in ifits) else "INERTIAL_CURVATURE_NOT_RESOLVED_WITHIN_QUALIFIED_FORCE_RANGE"
-    result={"schema_version":"espresso.whole_pull.xsv_ens_001.result.v1","run_counts":df.status.value_counts().to_dict(),"inertial_run_counts":pd.Series([r['status'] for r in iraw]).value_counts().to_dict(),"total_run_identities":len(df)+len(iraw),"primary_run_identities":len(df),"secondary_inertial_run_identities":len(iraw),"total_gpu_seconds":float(pd.to_numeric(df.wall_seconds,errors='coerce').sum()+sum(r.get('wall_seconds',0) for r in iraw)),"baseline_realization_cv_by_size":{str(s['L']):s['cv_K'] for s in size},"rev":rev,"target":target,"directional":{"n_complete":len(ddf),"Kperp_over_Kx_median":float(ddf.Kperp_over_Kx.median()),"Kperp_over_Kx_range":[float(ddf.Kperp_over_Kx.min()),float(ddf.Kperp_over_Kx.max())]},"inertial":inertial_disposition,"inertial_fits":ifits,"closure":closure,"bimodal":"RESOLVED_BIMODAL_ARM_NOT_EXECUTED_RESOLUTION_LIMIT","spatial_resolution":"NOT_FULLY_ADJUDICATED","next_programme":"REAL_GEOMETRY_IMPORT_AND_MICROCT_COMPARISON","claim_boundary":{"physical_validation":"NOT_ESTABLISHED","real_coffee_representative_volume":"NOT_ESTABLISHED","dynamic_pressure_mechanism":"NOT_IDENTIFIED"}}; dump(CASE/"XSV_ENS_001_RESULT.json",result)
+    domainq=json.loads((CASE/"XSV_ENS_001_DOMAIN_QUALIFICATION.json").read_text()); domain_counts=pd.Series([r['status'] for r in domainq['cases']]).value_counts().to_dict()
+    result={"schema_version":"espresso.whole_pull.xsv_ens_001.result.v2","run_counts":df.status.value_counts().to_dict(),"domain_qualification_run_counts":domain_counts,"inertial_run_counts":pd.Series([r['status'] for r in iraw]).value_counts().to_dict(),"total_run_identities":len(df)+len(iraw)+len(domainq['cases']),"primary_run_identities":len(df),"domain_qualification_run_identities":len(domainq['cases']),"secondary_inertial_run_identities":len(iraw),"total_gpu_seconds":float(pd.to_numeric(df.wall_seconds,errors='coerce').sum()+sum(r.get('wall_seconds',0) for r in iraw)+sum(r.get('wall_seconds',0) for r in domainq['cases'])),"baseline_realization_cv_by_size":{str(s['L']):s['cv_K'] for s in size},"rev":rev,"target":target,"directional":{"n_planned_triplets":16,"n_complete":len(ddf),"missingness":"COMPLETE_CASE_DESCRIPTIVE_DIRECTION_DEPENDENT_NONCONVERGENCE_MAY_BIAS","Kperp_over_Kx_median":float(ddf.Kperp_over_Kx.median()),"Kperp_over_Kx_range":[float(ddf.Kperp_over_Kx.min()),float(ddf.Kperp_over_Kx.max())]},"inertial":inertial_disposition,"inertial_fits":ifits,"closure":closure,"bimodal":"RESOLVED_BIMODAL_ARM_NOT_EXECUTED_RESOLUTION_LIMIT","spatial_resolution":"NOT_FULLY_ADJUDICATED","next_programme":"REAL_GEOMETRY_IMPORT_AND_MICROCT_COMPARISON","claim_boundary":{"physical_validation":"NOT_ESTABLISHED","real_coffee_representative_volume":"NOT_ESTABLISHED","dynamic_pressure_mechanism":"NOT_IDENTIFIED"}}; dump(CASE/"XSV_ENS_001_RESULT.json",result)
     # Review-purpose plot-source table.
     plot=passed.copy(); plot.to_csv(CASE/"XSV_ENS_001_PLOT_SOURCE.csv",index=False)
     import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
     P=CASE/"plots"; P.mkdir(exist_ok=True)
-    def save(name,xlabel,ylabel): plt.xlabel(xlabel); plt.ylabel(ylabel); plt.tight_layout(); plt.savefig(P/name); plt.close()
+    def save(name,xlabel,ylabel):
+      plt.xlabel(xlabel); plt.ylabel(ylabel); plt.tight_layout(); path=P/name; plt.savefig(path); plt.close()
+      path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines())+"\n")
     for L,g in base.groupby('L'): plt.scatter([L]*len(g),g.K_gross_lu2,label=str(L),alpha=.7)
     save('01_permeability_distributions_by_size.svg','L (voxels)','Kx gross (lu²)')
     plt.errorbar([s['L'] for s in size],[s['mean_K'] for s in size],yerr=[[s['mean_K']-s['mean_K_ci_low'] for s in size],[s['mean_K_ci_high']-s['mean_K'] for s in size]],fmt='o-'); save('02_mean_ci_vs_size.svg','L (voxels)','ensemble mean Kx (lu²)')

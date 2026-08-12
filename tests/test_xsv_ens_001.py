@@ -58,9 +58,21 @@ class XsvEns001Tests(unittest.TestCase):
         self.assertEqual(labels["A"],labels["DUP"]); self.assertEqual(labels["A"],labels["CHILD"]); self.assertEqual(labels["SF50"],labels["SF60"])
     def test_robust_target_requires_minimum_valid_n(self):
         self.assertEqual(analysis.target_disposition([.2,.25,.3],[.6,.6,.6]),"TARGET_ATTAINMENT_UNRESOLVED_UNCERTAINTY")
+        self.assertEqual(analysis.target_disposition([.2]*8,[.6]*8),"ROBUST_TARGET_ATTAINMENT_WITHOUT_TOPOLOGY_LOSS")
     def test_porosity_only_contract_and_scale_correction(self):
         reducer=(CASE/"xsv_ens_001_reduce.py").read_text()
         self.assertIn('"A_porosity_only":["phi_gross"]',reducer)
         self.assertIn("StandardScaler()",reducer)
+    def test_nonconverged_rows_are_retained_in_committed_results(self):
+        import csv
+        with (CASE/"XSV_ENS_001_REALIZATION_RESULTS.csv").open() as f: rows=list(csv.DictReader(f))
+        self.assertGreater(sum(r["status"]=="NONCONVERGED" for r in rows),0)
+    def test_lineage_label_prevents_hash_cross_fold(self):
+        import csv
+        with (CASE/"XSV_ENS_001_GEOMETRY_MANIFEST.csv").open() as f: rows=list(csv.DictReader(f))
+        by_hash={}
+        for row in rows:
+            prior=by_hash.setdefault(row["geometry_sha256"],row["physical_lineage_id"])
+            self.assertEqual(prior,row["physical_lineage_id"])
 
 if __name__=="__main__": unittest.main()

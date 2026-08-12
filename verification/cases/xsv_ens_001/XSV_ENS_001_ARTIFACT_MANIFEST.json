@@ -1,11 +1,12 @@
 {
   "schema_version": "espresso.whole_pull.xsv_ens_001.artifact_manifest.v1",
   "external_root": "EXTERNAL_EVIDENCE_ROOT",
-  "regular_file_count": 944,
-  "total_bytes": 77543142,
-  "ordered_file_sha256_aggregate": "edc13f16326a711df300251900f99ba308f79ea986bd7c7c3b5bdc934b612fa6",
+  "regular_file_count": 1596,
+  "total_bytes": 466365359,
+  "ordered_file_sha256_aggregate": "3db16287c305b86a4726724723aa0c695ba2c5fa7da425f983667ec270f7e8ca",
   "aggregate_method": "sha256sum each lexically sorted regular file, then sha256sum the resulting lines",
-  "primary_run_identities": 172,
+  "primary_run_identities": 300,
+  "domain_qualification_run_identities": 3,
   "secondary_inertial_run_identities": 25,
   "heavy_artifacts_committed": false,
   "physical_validation": "NOT_ESTABLISHED"

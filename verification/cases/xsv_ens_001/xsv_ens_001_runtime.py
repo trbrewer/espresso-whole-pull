@@ -41,26 +41,25 @@ def inventory(_):
     print(json.dumps(result,indent=2)); return result
 
 def connectivity(solid):
-    fluid=~solid; L=solid.shape[0]; comp=np.full(solid.shape,-1,np.int32); lift=np.zeros(solid.shape+(3,),np.int32)
-    counts=[0,0,0]; winds=[False]*3; cid=0
-    for raw in np.argwhere(fluid):
-        s=tuple(map(int,raw))
-        if comp[s]>=0: continue
-        comp[s]=cid; q=deque([s]); members=[]; cw=[False]*3
-        while q:
-            n=q.popleft(); members.append(n); base=lift[n].copy()
-            for a in range(3):
-                for step in (-1,1):
-                    rr=list(n); rr[a]+=step; w=tuple(x%L for x in rr)
-                    if not fluid[w]: continue
-                    proposed=base.copy(); proposed[a]+=step
-                    if comp[w]<0: comp[w]=cid; lift[w]=proposed; q.append(w)
-                    elif comp[w]==cid:
-                        d=proposed-lift[w]
-                        for k in range(3): cw[k] |= bool(d[k])
-        for k in range(3):
-            if cw[k]: counts[k]+=len(members); winds[k]=True
-        cid+=1
+    from scipy.ndimage import label
+    fluid=~solid; structure=np.zeros((3,3,3),np.uint8); structure[1,1,:]=1; structure[1,:,1]=1; structure[:,1,1]=1
+    labels,n=label(fluid,structure); parent=np.arange(n+1); sizes=np.bincount(labels.ravel(),minlength=n+1)
+    def find(x):
+      while parent[x]!=x: parent[x]=parent[parent[x]]; x=parent[x]
+      return x
+    def union(a,b):
+      a,b=find(int(a)),find(int(b))
+      if a!=b: parent[max(a,b)]=min(a,b)
+    boundary=[]
+    for axis in range(3):
+      lo=np.take(labels,0,axis=axis); hi=np.take(labels,-1,axis=axis); pairs=np.unique(np.stack([lo[(lo>0)&(hi>0)],hi[(lo>0)&(hi>0)]],axis=1),axis=0)
+      boundary.append(pairs)
+      for a,b in pairs: union(a,b)
+    root_sizes={}
+    for lab in range(1,n+1): root_sizes[find(lab)]=root_sizes.get(find(lab),0)+int(sizes[lab])
+    counts=[]; winds=[]
+    for pairs in boundary:
+      roots={find(a) for a,_ in pairs}; winds.append(bool(roots)); counts.append(sum(root_sizes[r] for r in roots))
     return {f"phi_connected_{'xyz'[k]}":counts[k]/solid.size for k in range(3)} | {f"through_{'xyz'[k]}":winds[k] for k in range(3)}
 
 def descriptors(solid):

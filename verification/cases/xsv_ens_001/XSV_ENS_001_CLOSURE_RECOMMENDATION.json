@@ -17,36 +17,40 @@
   },
   "models": [
     {
+      "empirical_out_of_fold_95_interval_coverage": 0.9511111111111111,
       "features": [
-        "phi_gross",
-        "state_phis"
+        "phi_gross"
       ],
-      "grouped_cv_R2_logK": 0.20575051985693904,
-      "grouped_cv_RMSE_logK": 0.6542030985909131,
+      "grouped_cv_R2_logK": 0.40829284637981955,
+      "grouped_cv_RMSE_logK": 0.5669264398822665,
       "model": "A_porosity_only",
-      "nominal_95_predictive_factor": 3.621951378214945,
-      "residual_sd_logK": 0.6566392527323298
+      "nominal_95_predictive_factor": 3.0454623063122828,
+      "physical_lineage_group_count": 179,
+      "residual_sd_logK": 0.5681901603932397,
+      "unique_physical_geometry_count": 225
     },
     {
+      "empirical_out_of_fold_95_interval_coverage": 0.9511111111111111,
       "features": [
         "phi_gross",
-        "state_phis",
         "phi_connected_x",
         "specific_interfacial_area_lu",
         "pore_distance_q10",
         "pore_distance_q50",
         "euler_characteristic"
       ],
-      "grouped_cv_R2_logK": 0.6822373963985418,
-      "grouped_cv_RMSE_logK": 0.41379526787000087,
+      "grouped_cv_R2_logK": 0.6322300623386865,
+      "grouped_cv_RMSE_logK": 0.4469525453777951,
       "model": "B_porosity_topology",
-      "nominal_95_predictive_factor": 2.257051472758619,
-      "residual_sd_logK": 0.4153363792885135
+      "nominal_95_predictive_factor": 2.405929819129293,
+      "physical_lineage_group_count": 179,
+      "residual_sd_logK": 0.4479267591940643,
+      "unique_physical_geometry_count": 225
     },
     {
+      "empirical_out_of_fold_95_interval_coverage": 0.9422222222222222,
       "features": [
         "phi_gross",
-        "state_phis",
         "phi_connected_x",
         "specific_interfacial_area_lu",
         "pore_distance_q10",
@@ -56,11 +60,13 @@
         "state_hlen",
         "restriction_fraction"
       ],
-      "grouped_cv_R2_logK": 0.6817733566712376,
-      "grouped_cv_RMSE_logK": 0.4140972974194146,
+      "grouped_cv_R2_logK": 0.633453369099497,
+      "grouped_cv_RMSE_logK": 0.4462085809561912,
       "model": "C_topology_fabric_state",
-      "nominal_95_predictive_factor": 2.258380250842773,
-      "residual_sd_logK": 0.4156366597769308
+      "nominal_95_predictive_factor": 2.4022972673508316,
+      "physical_lineage_group_count": 179,
+      "residual_sd_logK": 0.4471558542166646,
+      "unique_physical_geometry_count": 225
     }
   ],
   "prohibited_extrapolation": [
@@ -68,7 +74,7 @@
     "DYNAMIC_PRESSURE_CAUSATION",
     "SUBVOXEL_FINES"
   ],
-  "recommended_model": "B_porosity_topology",
+  "recommended_model": "C_topology_fabric_state",
   "schema_version": "espresso.whole_pull.xsv_ens_001.closure.v1",
   "uncertainty_treatment": "LOGNORMAL_CONDITIONAL_DISTRIBUTION_WITH_RESIDUAL_REALIZATION_VARIANCE"
 }

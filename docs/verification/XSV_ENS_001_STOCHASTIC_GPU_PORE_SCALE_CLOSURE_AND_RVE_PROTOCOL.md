@@ -1,11 +1,17 @@
 # XSV-ENS-001 stochastic GPU pore-scale closure and RVE protocol
 
-Status: `STAGE_1_NUMERICAL_PILOT_ACTIVE`  
-Issue: #64  
+Status: `SCIENTIFIC_COMPLETION_PASS_EXECUTED_PENDING_EXACT_HEAD_REVIEW`
+Issue: #64
 Change declarations: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`; any new
 geometry family is `DIAGNOSTIC_GEOMETRY_MODEL_CHANGE`; any LBM extension is
 `DIAGNOSTIC_PORE_SCALE_MODEL_CHANGE` with production OpenFOAM integration and
 Puckworks lock change both false.
+
+The exact-head scientific-completion protocol and adaptive extension are
+recorded in `XSV_ENS_001_COMPLETION_PROTOCOL.json` and
+`XSV_ENS_001_COMPLETION_MATRIX.json`. They complete the original frozen seed,
+batch, maximum-sample, size-candidate and target rules; they do not redefine
+those rules after result exposure.
 
 ## Purpose and claim boundary
 

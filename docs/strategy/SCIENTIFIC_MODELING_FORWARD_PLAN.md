@@ -1,6 +1,7 @@
 # Scientific Modeling Forward Plan
 
-Status: enduring scientific handoff; SCI-MD-001 merged complete; XSV-ENS-001 active.
+Status: enduring scientific handoff; SCI-MD-001 merged complete; XSV-ENS-001
+scientific completion pass pending exact-head review.
 Change declaration: `NO_GOVERNING_PHYSICS_CHANGE` for this document.
 
 ## 1. Executive scientific diagnosis
@@ -35,13 +36,23 @@ which mechanisms can explain the current sign, ordering and transfer failures,
 and what physical behaviour the source requires before selecting new
 production physics.
 
-### Active successor: XSV-ENS-001
+### Completed candidate pending exact-head review: XSV-ENS-001
 
 **Stochastic GPU pore-scale closure and representative-volume assessment.**
 Produce ensemble permeability, anisotropy, inertial, transverse-conductance,
 localization and uncertainty closures instead of relying on one synthetic
 packing. The authorized execution is on
 `verification/xsv-ens-001-stochastic-pore-closure-rve`.
+
+The bounded completion pass executed the frozen sequential sampling through
+L=160, repaired physical-lineage grouped closure analysis, and removed the
+unsupported GPU-limit claim. No synthetic-generator REV was resolved because
+the L=96 comparison missed mean equivalence, the largest-size variance trend
+continued, and spatial resolution remains unadjudicated. Severe static
+restriction remains a strong capability signal but not a robust ensemble
+result because only six of eight attempted pairs were valid. Real-geometry
+import and microCT comparison remains the provisional next recommendation;
+no successor programme is authorized on this branch.
 
 ### Next lateral-flow programme: SCI-LC-001
 

@@ -113,7 +113,8 @@ independent physical data or changes the current scientific gate.
 
 ## Active scientific programme
 
-XSV-ENS-001 is authorized and active. It assesses stochastic synthetic
+XSV-ENS-001 has completed its bounded scientific correction and awaits
+exact-head review. It assesses stochastic synthetic
 pore-scale closure, finite-volume behavior, static-state capability relative
 to SCI-MD-001, and directional and inertial uncertainty. It does not alter the
 production OpenFOAM solver or establish physical validation.

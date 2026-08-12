@@ -1,6 +1,7 @@
 # Project State
 
-Current scientific-discovery work is `XSV-ENS-001_AUTHORIZED_AND_ACTIVE`; see
+Current scientific-discovery work is
+`XSV-ENS-001_SCIENTIFIC_COMPLETION_PASS_PENDING_EXACT_HEAD_REVIEW`; see
 the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md).
 The `ADDITIONAL_INDEPENDENT_DATA_REQUIRED` gate continues to limit validation
 claims and does not stop authorized post-observation mechanism discrimination.
