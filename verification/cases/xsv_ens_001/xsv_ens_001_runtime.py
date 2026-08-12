@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse, contextlib, csv, hashlib, importlib.util, io, json, math, os
 from pathlib import Path
 import platform, subprocess, sys, time
+import threading
 from collections import deque
 
 import numpy as np
@@ -151,8 +152,29 @@ def freeze(args):
     write_json(CASE/"XSV_ENS_001_SCORED_MATRIX.json",{"schema_version":"espresso.whole_pull.xsv_ens_001.matrix.v1","frozen_from_pilot_sha256":sha_file(args.pilot),"precision":prec,"force":force,"rows":rows,"run_identity_count":len(rows),"bimodal":"NOT_EXECUTED_RESOLUTION_LIMIT_PENDING_PILOT","sequential_minimum_n":8,"sequential_batch_n":4,"sequential_maximum_n":24})
     print(json.dumps({"rows":len(rows),"precision":prec,"force":force}))
 
+def freeze_completion(_):
+    contract=json.loads((CASE/"XSV_ENS_001_COMPLETION_PROTOCOL.json").read_text()); rows=[]
+    def add(gid,family,state,L,seed,relation,parent,batch):
+      rows.append({"case_id":gid+"-X","geometry_id":gid,"family":family,"state":json.dumps(state,separators=(",",":"),sort_keys=True),"L":L,"voxel_um":30,"seed":seed,"relation":relation,"parent_id":parent,"direction":"X","force":1e-5,"precision":"f32","purpose":f"SCIENTIFIC_COMPLETION_BATCH_{batch}"})
+    seeds=contract["baseline"]["seed_order"]
+    for L in contract["baseline"]["sizes"]:
+      start=8 if L in (24,32,40,56,72) else 0
+      for index,seed in enumerate(seeds[start:],start=start):
+        add(f"BASE-L{L}-S{seed}","BASELINE",{"phis":.55,"amp":0,"hlen":8},L,seed,"INDEPENDENT_REALIZATIONS","",index//4+1)
+    for seed in contract["restriction"]["attempted_parent_seeds"][4:]:
+      parent=f"BASE-L40-S{seed}"
+      for frac in contract["restriction"]["levels"]:
+        add(f"DEP{int(frac*100):02}-L40-S{seed}","THROAT_RESTRICTION",{"phis":.55,"amp":0,"hlen":8,"restriction":frac},40,seed,"PAIRED_TRANSFORMATION",parent,1)
+    path=CASE/"XSV_ENS_001_COMPLETION_MATRIX.csv"
+    with path.open("w",newline="") as f: writer=csv.DictWriter(f,fieldnames=FIELDS,lineterminator="\n"); writer.writeheader(); writer.writerows(rows)
+    write_json(CASE/"XSV_ENS_001_COMPLETION_MATRIX.json",{"schema_version":"espresso.whole_pull.xsv_ens_001.completion_matrix.v1","protocol_sha256":sha_file(CASE/"XSV_ENS_001_COMPLETION_PROTOCOL.json"),"rows":rows,"maximum_extension_identities":len(rows),"execution_is_adaptive_by_frozen_batch":True})
+    print(json.dumps({"maximum_extension_identities":len(rows)}))
+
 def run_case(args):
-    with (CASE/"XSV_ENS_001_SCORED_MATRIX.csv").open() as f: matches=[r for r in csv.DictReader(f) if r["case_id"]==args.case_id]
+    matches=[]
+    for matrix in (CASE/"XSV_ENS_001_SCORED_MATRIX.csv",CASE/"XSV_ENS_001_COMPLETION_MATRIX.csv"):
+      if matrix.exists():
+       with matrix.open() as f: matches.extend(r for r in csv.DictReader(f) if r["case_id"]==args.case_id)
     if len(matches)!=1: raise SystemExit("case identity not unique")
     row=matches[0]; out=Path(args.evidence)/"runs"/args.case_id
     if (out/"result.json").exists(): print((out/"result.json").read_text()); return
@@ -178,6 +200,28 @@ def run_inertial(args):
     rec={"schema_version":"espresso.whole_pull.xsv_ens_001.inertial_run.v1","parent_case_id":args.parent,"geometry_sha256":sha_bytes(np.ascontiguousarray(solid,np.uint8).tobytes()),"force":force,"precision":"f32",**s,"status":"PASS" if s["converged"] and s["Mach"]<.05 else ("MACH_LIMIT_FAILURE" if s["Mach"]>=.05 else "NONCONVERGED")}
     np.save(out/"ux.npy",ux); (out/"solver.log").write_text(log); write_json(out/"result.json",rec); print(json.dumps(rec,indent=2))
 
+def domain_qualify(args):
+    root=Path(args.evidence)/"domain_qualification"; root.mkdir(parents=True,exist_ok=True)
+    L=int(args.L); out=root/f"L{L}.json"
+    if out.exists(): print(out.read_text()); return
+    total=int(subprocess.check_output(["nvidia-smi","--query-gpu=memory.total","--format=csv,noheader,nounits"],text=True).strip().splitlines()[0])
+    samples=[]; stop=threading.Event()
+    def monitor():
+      while not stop.is_set():
+       try: samples.append(int(subprocess.check_output(["nvidia-smi","--query-gpu=memory.used","--format=csv,noheader,nounits"],text=True).strip().splitlines()[0]))
+       except Exception: pass
+       stop.wait(.05)
+    solid,meta=generate_pack(args.puckworks,L,30,.55,0,8,101); thread=threading.Thread(target=monitor); thread.start(); started=time.time()
+    try:
+      s=solve(solid,args.puckworks,"f32",1e-5,max_steps=50000); ux=s.pop("ux"); log=s.pop("log"); status="PASS" if s["converged"] and s["Mach"]<.05 else ("MACH_LIMIT_FAILURE" if s["Mach"]>=.05 else "NONCONVERGED")
+      result={"L":L,"status":status,"precision":"f32","force":1e-5,"generation":meta,**s}
+      np.save(root/f"L{L}-ux.npy",ux); (root/f"L{L}.log").write_text(log)
+    except Exception as e: result={"L":L,"status":"GPU_ALLOCATION_FAILURE_OR_INSTABILITY","error":repr(e)}
+    finally: stop.set(); thread.join()
+    peak=max(samples) if samples else None; headroom=(total-peak)/total if peak is not None else None
+    result.update({"gpu_total_mib":total,"gpu_peak_used_mib":peak,"gpu_headroom_fraction":headroom,"headroom_pass":headroom is not None and headroom>=PROTOCOL["pilot"]["vram_headroom_fraction"],"wall_clock_seconds":time.time()-started,"sample_count":len(samples)})
+    write_json(out,result); print(json.dumps(result,indent=2))
+
 def verify(_):
     p=PROTOCOL; assert p["targets"]=={"primary":0.373506,"supporting":[0.389226,0.395294],"rounded_substitution_prohibited":True}
     phi=.4; q=2e-5; nu=.2; g=1e-6; kg=nu*q/g; kv=nu*(q/phi)/g; assert math.isclose(kg,phi*kv) and not math.isclose(kg,kv)
@@ -189,8 +233,10 @@ def main():
     sp.add_parser("inventory")
     p=sp.add_parser("pilot"); p.add_argument("--puckworks",required=True); p.add_argument("--evidence",required=True)
     p=sp.add_parser("freeze-matrix"); p.add_argument("--pilot",required=True)
+    sp.add_parser("freeze-completion")
     p=sp.add_parser("run"); p.add_argument("--puckworks",required=True); p.add_argument("--evidence",required=True); p.add_argument("--case-id",required=True)
     p=sp.add_parser("run-inertial"); p.add_argument("--puckworks",required=True); p.add_argument("--evidence",required=True); p.add_argument("--parent",required=True); p.add_argument("--force",required=True,type=float)
+    p=sp.add_parser("domain-qualify"); p.add_argument("--puckworks",required=True); p.add_argument("--evidence",required=True); p.add_argument("--L",required=True,type=int)
     sp.add_parser("verify")
-    a=ap.parse_args(); {"inventory":inventory,"pilot":pilot,"freeze-matrix":freeze,"run":run_case,"run-inertial":run_inertial,"verify":verify}[a.cmd](a)
+    a=ap.parse_args(); {"inventory":inventory,"pilot":pilot,"freeze-matrix":freeze,"freeze-completion":freeze_completion,"run":run_case,"run-inertial":run_inertial,"domain-qualify":domain_qualify,"verify":verify}[a.cmd](a)
 if __name__=="__main__": main()

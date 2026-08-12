@@ -4,6 +4,8 @@ from pathlib import Path
 import argparse, csv, glob, hashlib, json, math
 import numpy as np
 import pandas as pd
+from xsv_ens_001_analysis import (assign_physical_lineages,
+    bootstrap_log_mean_precision, rve_adjudication, target_disposition)
 
 CASE=Path(__file__).resolve().parent
 TARGETS=(0.373506,0.389226,0.395294)
@@ -23,7 +25,10 @@ def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--evidence",required=True); a=ap.parse_args(); root=Path(a.evidence)
     raw=[json.loads(Path(p).read_text()) for p in sorted(glob.glob(str(root/"runs/*/result.json")))]; rows=[flatten(r) for r in raw]; df=pd.DataFrame(rows)
     df.to_csv(CASE/"XSV_ENS_001_REALIZATION_RESULTS.csv",index=False)
-    geom=df.drop_duplicates("geometry_id")[["geometry_id","family","L","voxel_um","seed","relation","parent_id","geometry_sha256","phi_gross","phi_connected_x","phi_connected_y","phi_connected_z","solid_fraction","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","pore_distance_q90","euler_characteristic","state_phis","state_amp","state_hlen","restriction_fraction"]]
+    unique_records=df.drop_duplicates("geometry_id").to_dict("records")
+    lineages=assign_physical_lineages(unique_records)
+    df["physical_lineage_id"]=df.geometry_id.map(lineages)
+    geom=df.drop_duplicates("geometry_id")[["geometry_id","physical_lineage_id","family","L","voxel_um","seed","relation","parent_id","geometry_sha256","phi_gross","phi_connected_x","phi_connected_y","phi_connected_z","solid_fraction","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","pore_distance_q90","euler_characteristic","state_phis","state_amp","state_hlen","restriction_fraction"]]
     geom.to_csv(CASE/"XSV_ENS_001_GEOMETRY_MANIFEST.csv",index=False)
     df[["case_id","geometry_id","status","direction","force","precision","steps","wall_seconds","Mach"]].to_csv(CASE/"XSV_ENS_001_RUN_MANIFEST.csv",index=False)
     passed=df[df.status=="PASS"].copy(); desc=passed[["case_id","geometry_id","family","direction","phi_gross","phi_connected_x","phi_connected_y","phi_connected_z","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","pore_distance_q90","euler_characteristic","velocity_cv","flux_gini","top_10_flow_share","top_25_flow_share","normalized_flow_entropy"]]
@@ -38,11 +43,17 @@ def main():
     base=passed[(passed.family=="BASELINE")&(passed.direction=="X")]
     size=[]
     for L,g in base.groupby("L"):
-      k=g.K_gross_lu2.to_numpy(); size.append({"L":int(L),"n":len(k),"mean_K":float(k.mean()),"median_K":float(np.median(k)),"sd_K":float(k.std(ddof=1)),"cv_K":float(k.std(ddof=1)/k.mean()),"mean_K_ci_low":ci(k)[0],"mean_K_ci_high":ci(k)[1],"q10":float(np.quantile(k,.1)),"q90":float(np.quantile(k,.9))})
+      k=g.K_gross_lu2.to_numpy(); precision=bootstrap_log_mean_precision(k)
+      size.append({"L":int(L),"n":len(k),"mean_K":float(k.mean()),"median_K":float(np.median(k)),"sd_K":float(k.std(ddof=1)),"cv_K":float(k.std(ddof=1)/k.mean()),"mean_K_ci_low":ci(k)[0],"mean_K_ci_high":ci(k)[1],"q10":float(np.quantile(k,.1)),"q90":float(np.quantile(k,.9)),"sampling":precision,"sampling_precision_met":precision["precision_met"]})
     largest=max(x["L"] for x in size); ref=next(x for x in size if x["L"]==largest)
-    for x in size: x["mean_ratio_to_largest"]=x["mean_K"]/ref["mean_K"]
-    resolution="SPATIAL_RESOLUTION_PREVENTS_REV_ADJUDICATION"
-    rev={"schema_version":"espresso.whole_pull.xsv_ens_001.rev.v1","size_statistics":size,"largest_L":largest,"characteristic_diameter_voxels":20.0,"largest_L_over_d":largest/20,"spatial_discretization":resolution,"mean_disposition":"NO_SYNTHETIC_GENERATOR_REV_RESOLVED","variance_disposition":"SYNTHETIC_GENERATOR_VARIANCE_NOT_STABILIZED","compute_disposition":"GPU_DOMAIN_LIMIT_PREVENTS_REV_ADJUDICATION","real_puck":"REAL_PUCK_REV_NOT_ASSESSED"}; dump(CASE/"XSV_ENS_001_REV_ASSESSMENT.json",rev)
+    rng=np.random.default_rng(BOOT_SEED); refk=base[base.L==largest].K_gross_lu2.to_numpy()
+    for x in size:
+      kvals=base[base.L==x["L"]].K_gross_lu2.to_numpy(); ratios=[]
+      for _ in range(10000): ratios.append(np.mean(kvals[rng.integers(0,len(kvals),len(kvals))])/np.mean(refk[rng.integers(0,len(refk),len(refk))]))
+      x["mean_ratio_to_largest"]=x["mean_K"]/ref["mean_K"]; x["mean_ratio_to_largest_ci"]=[float(v) for v in np.quantile(ratios,[.025,.975])]
+    qualification=json.loads((CASE/"XSV_ENS_001_DOMAIN_QUALIFICATION.json").read_text()) if (CASE/"XSV_ENS_001_DOMAIN_QUALIFICATION.json").exists() else {"gpu_domain_limit_measured":False}
+    adjudication=rve_adjudication(size,resolution_effect_resolved=False,gpu_limit_measured=qualification["gpu_domain_limit_measured"])
+    rev={"schema_version":"espresso.whole_pull.xsv_ens_001.rev.v2","size_statistics":size,"largest_L":largest,"characteristic_diameter_voxels":20.0,"largest_L_over_d":largest/20,"spatial_discretization":"NOT_FULLY_ADJUDICATED","adjudication":adjudication,"mean_disposition":adjudication["mean_disposition"],"variance_disposition":adjudication["variance_disposition"],"compute_disposition":adjudication["limitation"],"real_puck":"REAL_PUCK_REV_NOT_ASSESSED"}; dump(CASE/"XSV_ENS_001_REV_ASSESSMENT.json",rev)
     pairs=[]
     restr=passed[(passed.family=="THROAT_RESTRICTION")&(passed.direction=="X")]
     for seed,g in restr.groupby("seed"):
@@ -52,8 +63,7 @@ def main():
     assess=[]
     for f,g in pd.DataFrame(pairs).groupby("restriction_fraction"):
       ratios=g.ratio.to_numpy(); logci=ci(np.log(ratios)); c=[math.exp(v) for v in logci]; majority={str(t):float(np.mean(ratios<=t)) for t in TARGETS}; robust=c[1]<=TARGETS[0] and majority[str(TARGETS[0])]>=.75
-      topo=float(g.connected_retention.min())<.25
-      disp="ROBUST_TARGET_ATTAINMENT_WITHOUT_TOPOLOGY_LOSS" if robust and not topo else ("TARGET_ATTAINMENT_IN_SOME_REALIZATIONS_ONLY" if np.any(ratios<=TARGETS[0]) else "TARGET_ATTAINMENT_NOT_REACHED")
+      disp=target_disposition(ratios,g.connected_retention.to_numpy())
       assess.append({"restriction_fraction":float(f),"n_converged_pairs":len(g),"geometric_mean_ratio":geom_mean(ratios),"bootstrap_95_ci":c,"fraction_attaining":majority,"minimum_connected_porosity_retention":float(g.connected_retention.min()),"disposition":disp})
     target={"schema_version":"espresso.whole_pull.xsv_ens_001.target.v1","exact_targets":{"terminal":TARGETS[0],"middle":TARGETS[1],"late":TARGETS[2]},"paired_restriction":assess,"classification":"STATIC_STATE_CAPABLE_DYNAMIC_CAUSE_UNIDENTIFIED","nonconvergence_qualification":"TEN_FROZEN_IDENTITIES_NONCONVERGED_AND_NOT_REPLACED"}; dump(CASE/"XSV_ENS_001_TARGET_ASSESSMENT.json",target)
     # Grouped closure comparison, one X-flow row per geometry.
@@ -61,14 +71,15 @@ def main():
     from sklearn.impute import SimpleImputer
     from sklearn.linear_model import Ridge
     from sklearn.pipeline import make_pipeline
+    from sklearn.preprocessing import StandardScaler
     from sklearn.model_selection import GroupKFold, cross_val_predict
     from sklearn.metrics import r2_score, mean_squared_error
-    x=passed[passed.direction=="X"].drop_duplicates("geometry_id").copy(); y=np.log(x.K_gross_lu2.to_numpy()); groups=x.geometry_id.to_numpy(); folds=min(5,len(x)); cv=GroupKFold(folds)
-    models={"A_porosity_only":["phi_gross","state_phis"],"B_porosity_topology":["phi_gross","state_phis","phi_connected_x","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","euler_characteristic"],"C_topology_fabric_state":["phi_gross","state_phis","phi_connected_x","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","euler_characteristic","state_amp","state_hlen","restriction_fraction"]}
+    x=passed[passed.direction=="X"].drop_duplicates("geometry_sha256").copy(); y=np.log(x.K_gross_lu2.to_numpy()); groups=x.physical_lineage_id.to_numpy(); folds=min(5,len(set(groups))); cv=GroupKFold(folds)
+    models={"A_porosity_only":["phi_gross"],"B_porosity_topology":["phi_gross","phi_connected_x","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","euler_characteristic"],"C_topology_fabric_state":["phi_gross","phi_connected_x","specific_interfacial_area_lu","pore_distance_q10","pore_distance_q50","euler_characteristic","state_amp","state_hlen","restriction_fraction"]}
     scores=[]
     for name,features in models.items():
-      pred=cross_val_predict(make_pipeline(SimpleImputer(),Ridge(alpha=1.0)),x[features],y,groups=groups,cv=cv); resid=y-pred
-      scores.append({"model":name,"features":features,"grouped_cv_R2_logK":float(r2_score(y,pred)),"grouped_cv_RMSE_logK":float(mean_squared_error(y,pred)**.5),"residual_sd_logK":float(np.std(resid,ddof=1)),"nominal_95_predictive_factor":float(np.exp(1.96*np.std(resid,ddof=1)))})
+      pred=cross_val_predict(make_pipeline(SimpleImputer(),StandardScaler(),Ridge(alpha=1.0)),x[features],y,groups=groups,cv=cv); resid=y-pred; sd=float(np.std(resid,ddof=1)); covered=float(np.mean(np.abs(resid)<=1.96*sd))
+      scores.append({"model":name,"features":features,"physical_lineage_group_count":len(set(groups)),"unique_physical_geometry_count":len(x),"grouped_cv_R2_logK":float(r2_score(y,pred)),"grouped_cv_RMSE_logK":float(mean_squared_error(y,pred)**.5),"residual_sd_logK":sd,"nominal_95_predictive_factor":float(np.exp(1.96*sd)),"empirical_out_of_fold_95_interval_coverage":covered})
     best=max(scores,key=lambda q:q["grouped_cv_R2_logK"])
     closure={"schema_version":"espresso.whole_pull.xsv_ens_001.closure.v1","models":scores,"recommended_model":best["model"],"uncertainty_treatment":"LOGNORMAL_CONDITIONAL_DISTRIBUTION_WITH_RESIDUAL_REALIZATION_VARIANCE","deterministic_single_K_defensible":False,"interpolation_domain":{"phi_gross":[float(x.phi_gross.min()),float(x.phi_gross.max())],"heterogeneity_amplitude":[0,2],"restriction_fraction":[0,.4]},"prohibited_extrapolation":["REAL_COFFEE_MICROSTRUCTURE","DYNAMIC_PRESSURE_CAUSATION","SUBVOXEL_FINES"],"continuum_integration":"NO_NEW_PRODUCTION_PHYSICS_YET"}; dump(CASE/"XSV_ENS_001_CLOSURE_RECOMMENDATION.json",closure)
     iraw=[json.loads(Path(p).read_text()) for p in sorted(glob.glob(str(root/"inertial/*/result.json")))]; ifits=[]

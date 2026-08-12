@@ -3,9 +3,12 @@ import json
 import math
 from pathlib import Path
 import unittest
+import importlib.util
 
 ROOT=Path(__file__).resolve().parents[1]
 CASE=ROOT/"verification/cases/xsv_ens_001"
+spec=importlib.util.spec_from_file_location("xsv_analysis",CASE/"xsv_ens_001_analysis.py")
+analysis=importlib.util.module_from_spec(spec); spec.loader.exec_module(analysis)
 
 class XsvEns001Tests(unittest.TestCase):
     def setUp(self): self.protocol=json.loads((CASE/"XSV_ENS_001_PROTOCOL.json").read_text())
@@ -33,5 +36,31 @@ class XsvEns001Tests(unittest.TestCase):
         import csv
         with (CASE/"XSV_ENS_001_SCORED_MATRIX.csv").open() as f: ids=[r["case_id"] for r in csv.DictReader(f)]
         self.assertEqual(len(ids),len(set(ids)))
+    def test_wide_interval_requires_next_batch(self):
+        result=analysis.bootstrap_log_mean_precision([1,2,4,8,1,2,4,8])
+        self.assertEqual(result["action"],"ADD_NEXT_FROZEN_BATCH")
+    def test_maximum_n_allows_unresolved_stop(self):
+        result=analysis.bootstrap_log_mean_precision(([1,8]*12))
+        self.assertEqual(result["action"],"STOP_MAXIMUM_N_UNRESOLVED")
+    def test_rve_is_data_dependent(self):
+        stable=[{"L":40,"mean_K":1.0,"cv_K":.2,"sampling_precision_met":True,"mean_ratio_to_largest_ci":[.95,1.05]},
+                {"L":56,"mean_K":1.02,"cv_K":.21,"sampling_precision_met":True,"mean_ratio_to_largest_ci":[.96,1.04]},
+                {"L":72,"mean_K":1.0,"cv_K":.2,"sampling_precision_met":True,"mean_ratio_to_largest_ci":[1,1]}]
+        unstable=[dict(x) for x in stable]; unstable[-2]["mean_ratio_to_largest_ci"]=[.7,.8]
+        self.assertNotEqual(analysis.rve_adjudication(stable,resolution_effect_resolved=True,gpu_limit_measured=False)["mean_disposition"],analysis.rve_adjudication(unstable,resolution_effect_resolved=True,gpu_limit_measured=False)["mean_disposition"])
+    def test_physical_lineage_unions_hash_parent_and_nested_rng(self):
+        rows=[{"geometry_id":"A","geometry_sha256":"h1","family":"BASELINE","L":40,"seed":1,"voxel_um":30,"parent_id":""},
+              {"geometry_id":"DUP","geometry_sha256":"h1","family":"DIRECTIONAL","L":40,"seed":1,"voxel_um":30,"parent_id":""},
+              {"geometry_id":"CHILD","geometry_sha256":"h2","family":"THROAT_RESTRICTION","L":40,"seed":1,"voxel_um":30,"parent_id":"A"},
+              {"geometry_id":"SF50","geometry_sha256":"h3","family":"SOLID_FRACTION","L":40,"seed":1,"voxel_um":30,"parent_id":""},
+              {"geometry_id":"SF60","geometry_sha256":"h4","family":"SOLID_FRACTION","L":40,"seed":1,"voxel_um":30,"parent_id":""}]
+        labels=analysis.assign_physical_lineages(rows)
+        self.assertEqual(labels["A"],labels["DUP"]); self.assertEqual(labels["A"],labels["CHILD"]); self.assertEqual(labels["SF50"],labels["SF60"])
+    def test_robust_target_requires_minimum_valid_n(self):
+        self.assertEqual(analysis.target_disposition([.2,.25,.3],[.6,.6,.6]),"TARGET_ATTAINMENT_UNRESOLVED_UNCERTAINTY")
+    def test_porosity_only_contract_and_scale_correction(self):
+        reducer=(CASE/"xsv_ens_001_reduce.py").read_text()
+        self.assertIn('"A_porosity_only":["phi_gross"]',reducer)
+        self.assertIn("StandardScaler()",reducer)
 
 if __name__=="__main__": unittest.main()

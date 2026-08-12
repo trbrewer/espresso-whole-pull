@@ -1,0 +1,39 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_ens_001.completion_protocol.v1",
+  "reviewed_head": "b2145171bec3de52182140c3b384d33d4661a1ac",
+  "reviewed_tree": "cf373ac4a148fc76b38fe9c779b53e0faa0d437c",
+  "purpose": "COMPLETE_ALREADY_FROZEN_SAMPLING_AND_REPAIR_LOAD_BEARING_ANALYSIS",
+  "scientific_primary_disposition_change_permitted": true,
+  "baseline": {
+    "sizes": [24, 32, 40, 56, 72, 96, 128, 160],
+    "seed_order": [101,211,307,401,503,601,701,809,907,1009,1103,1201,1301,1409,1511,1601,1709,1801,1901,2003,2111,2203,2309,2411],
+    "minimum_n": 8,
+    "batch_n": 4,
+    "maximum_n": 24,
+    "stopping": "BOOTSTRAP_LOG_GEOMETRIC_MEAN_RELATIVE_HALF_WIDTH_LE_0.10",
+    "failed_identity_counts_toward_attempted_n": true,
+    "precision_requires_valid_values": true
+  },
+  "restriction": {
+    "levels": [0.0, 0.1, 0.2, 0.3, 0.4],
+    "attempted_parent_seeds": [101,211,307,401,503,601,701,809],
+    "minimum_valid_pairs_for_robust": 8,
+    "nonconverged_identity_replacement": false
+  },
+  "domain_qualification": {
+    "sizes": [96,128,160],
+    "minimum_headroom_fraction": 0.20,
+    "evidence_class": "NUMERICAL_QUALIFICATION_ONLY"
+  },
+  "closure": {
+    "grouping": ["IDENTICAL_MASK_HASH","PAIRED_TRANSFORMATION_PARENT","SAME_SEED_SAME_DOMAIN_SOLID_FRACTION_COMMON_RNG"],
+    "model_A_features": ["phi_gross"],
+    "ridge_scaling": "STANDARD_SCALER_FIT_WITHIN_TRAINING_FOLD",
+    "report_empirical_oof_95_coverage": true
+  },
+  "claim_boundary": {
+    "physical_validation": "NOT_ESTABLISHED",
+    "real_coffee_representative_volume": "NOT_ESTABLISHED",
+    "dynamic_pressure_mechanism": "NOT_IDENTIFIED"
+  }
+}
