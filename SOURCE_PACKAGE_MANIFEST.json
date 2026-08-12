@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 362,
-  "total_uncompressed_bytes_excluding_manifest": 5313086,
-  "aggregate_source_sha256": "20735d987860494ee48c325ada3d2939c0a8da6fa7e81e1efd56fda558261a25",
-  "aggregate_sha256": "20735d987860494ee48c325ada3d2939c0a8da6fa7e81e1efd56fda558261a25",
+  "total_uncompressed_bytes_excluding_manifest": 5312913,
+  "aggregate_source_sha256": "f10014717c18cb578ee9e0e499a7edb236c25e5831d8a72ad5f5d408ef7942d2",
+  "aggregate_sha256": "f10014717c18cb578ee9e0e499a7edb236c25e5831d8a72ad5f5d408ef7942d2",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1554,8 +1554,8 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_SCORED_MATRIX.csv": {
-      "sha256": "982991bb126ea837a2c5bd0c7e511a0b9a1d401aa741354ae5dce49614d817e4",
-      "bytes": 25735,
+      "sha256": "e9d460f9ecdd93a5e4e22f7f7a0ca478358393ae5ffd2e6bfea5089d82a20e9f",
+      "bytes": 25562,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_SCORED_MATRIX.json": {

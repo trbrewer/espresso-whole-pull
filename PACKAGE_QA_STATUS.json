@@ -35,7 +35,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 362,
-    "source_manifest_aggregate_sha256": "20735d987860494ee48c325ada3d2939c0a8da6fa7e81e1efd56fda558261a25",
+    "source_manifest_aggregate_sha256": "f10014717c18cb578ee9e0e499a7edb236c25e5831d8a72ad5f5d408ef7942d2",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -45,7 +45,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "20735d987860494ee48c325ada3d2939c0a8da6fa7e81e1efd56fda558261a25"
+    "source_manifest_aggregate_source_sha256": "f10014717c18cb578ee9e0e499a7edb236c25e5831d8a72ad5f5d408ef7942d2"
   },
   "wp03_002": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
