@@ -4,22 +4,47 @@ from __future__ import annotations
 
 import hashlib
 import math
+import random
 from collections import defaultdict
 
-import numpy as np
+try:  # Runtime reduction uses NumPy; repository CI intentionally has no extras.
+    import numpy as np
+except ModuleNotFoundError:  # pragma: no cover - exercised by dependency-free CI
+    np = None
+
+
+def _quantile(values, probability):
+    """Return a linearly interpolated quantile without optional dependencies."""
+    ordered = sorted(values)
+    position = (len(ordered) - 1) * probability
+    lower = math.floor(position)
+    upper = math.ceil(position)
+    if lower == upper:
+        return ordered[lower]
+    return ordered[lower] + (ordered[upper] - ordered[lower]) * (position - lower)
 
 
 def bootstrap_log_mean_precision(values, *, seed=20260812, replicates=10000,
                                  relative_half_width_limit=0.10,
                                  minimum_n=8, maximum_n=24):
-    values = np.asarray(values, dtype=float)
-    if len(values) == 0 or np.any(values <= 0):
+    values = [float(value) for value in values]
+    if not values or any(value <= 0 for value in values):
         raise ValueError("positive permeability values required")
-    logs = np.log(values)
-    rng = np.random.default_rng(seed)
-    means = np.mean(logs[rng.integers(0, len(logs), (replicates, len(logs)))], axis=1)
-    center = float(np.exp(np.mean(logs)))
-    low, high = np.exp(np.quantile(means, [0.025, 0.975]))
+    if np is not None:
+        array = np.asarray(values, dtype=float)
+        logs = np.log(array)
+        rng = np.random.default_rng(seed)
+        means = np.mean(logs[rng.integers(0, len(logs), (replicates, len(logs)))], axis=1)
+        center = float(np.exp(np.mean(logs)))
+        low, high = np.exp(np.quantile(means, [0.025, 0.975]))
+    else:
+        logs = [math.log(value) for value in values]
+        rng = random.Random(seed)
+        means = [sum(rng.choice(logs) for _ in logs) / len(logs)
+                 for _ in range(replicates)]
+        center = math.exp(sum(logs) / len(logs))
+        low, high = (math.exp(_quantile(means, probability))
+                     for probability in (0.025, 0.975))
     relative_half_width = float(max(center - low, high - center) / center)
     precision_met = len(values) >= minimum_n and relative_half_width <= relative_half_width_limit
     if precision_met:
@@ -79,20 +104,29 @@ def assign_physical_lineages(records):
 def target_disposition(ratios, connected_retentions, *, target=0.373506,
                        minimum_valid_n=8, majority_fraction=0.75,
                        topology_retention_min=0.25, seed=20260812):
-    ratios = np.asarray(ratios, dtype=float)
-    connected_retentions = np.asarray(connected_retentions, dtype=float)
+    ratios = [float(ratio) for ratio in ratios]
+    connected_retentions = [float(value) for value in connected_retentions]
     if len(ratios) < minimum_valid_n:
         disposition = "TARGET_ATTAINMENT_UNRESOLVED_UNCERTAINTY"
     else:
-        rng = np.random.default_rng(seed)
-        samples = ratios[rng.integers(0, len(ratios), (10000, len(ratios)))]
-        ci = np.exp(np.quantile(np.mean(np.log(samples), axis=1), [0.025, 0.975]))
-        robust = ci[1] <= target and np.mean(ratios <= target) >= majority_fraction
-        if robust and np.min(connected_retentions) >= topology_retention_min:
+        if np is not None:
+            array = np.asarray(ratios, dtype=float)
+            rng = np.random.default_rng(seed)
+            samples = array[rng.integers(0, len(array), (10000, len(array)))]
+            ci = np.exp(np.quantile(np.mean(np.log(samples), axis=1), [0.025, 0.975]))
+        else:
+            rng = random.Random(seed)
+            log_means = [sum(math.log(rng.choice(ratios)) for _ in ratios) / len(ratios)
+                         for _ in range(10000)]
+            ci = [math.exp(_quantile(log_means, probability))
+                  for probability in (0.025, 0.975)]
+        robust = (ci[1] <= target and
+                  sum(ratio <= target for ratio in ratios) / len(ratios) >= majority_fraction)
+        if robust and min(connected_retentions) >= topology_retention_min:
             disposition = "ROBUST_TARGET_ATTAINMENT_WITHOUT_TOPOLOGY_LOSS"
         elif robust:
             disposition = "TARGET_ATTAINMENT_ONLY_NEAR_CONNECTIVITY_LOSS"
-        elif np.any(ratios <= target):
+        elif any(ratio <= target for ratio in ratios):
             disposition = "TARGET_ATTAINMENT_IN_SOME_REALIZATIONS_ONLY"
         else:
             disposition = "TARGET_ATTAINMENT_NOT_REACHED"
@@ -113,10 +147,12 @@ def rve_adjudication(size_stats, *, resolution_effect_resolved,
                             "equivalent": interval[0] >= mean_band[0] and interval[1] <= mean_band[1]})
     adjacent_ok = comparisons[-1]["equivalent"]
     precision_ok = all(row["sampling_precision_met"] for row in ordered[-2:])
-    means = np.array([row["mean_K"] for row in ordered[-3:]], float)
-    monotone = bool(np.all(np.diff(means) > 0) or np.all(np.diff(means) < 0))
+    means = [float(row["mean_K"]) for row in ordered[-3:]]
+    differences = [right - left for left, right in zip(means, means[1:])]
+    monotone = bool(all(value > 0 for value in differences) or
+                    all(value < 0 for value in differences))
     mean_stable = adjacent_ok and precision_ok and not monotone and resolution_effect_resolved
-    cvs = np.array([row["cv_K"] for row in ordered[-2:]], float)
+    cvs = [float(row["cv_K"]) for row in ordered[-2:]]
     variance_stable = mean_stable and abs(cvs[0] / cvs[1] - 1) <= variance_margin
     if mean_stable and variance_stable:
         mean_disp = "SYNTHETIC_GENERATOR_REV_CANDIDATE"
