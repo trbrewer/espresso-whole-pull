@@ -136,9 +136,11 @@ convention is this also `K_app proportional to p^-1.174`). Fixed Darcy,
 fixed Darcy--Forchheimer, accepted
 quasi-static compaction, static lateral paths, measured-basket-conditioned
 machine dynamics, and plausible viscosity-only change are ruled out as
-standalone explanations. Evolving resistance through transient deformation,
-swelling, fines or lateral localization survives but remains equifinal;
-grind-to-structure and bimodal extraction also survive without uniqueness.
+standalone explanations. Generic pressure-dependent resistance and the
+relaxing-resistance surrogate are executed mathematical survivors. Swelling,
+fines, evolving lateral localization, grind-to-structure mapping, and bimodal
+extraction are not structurally excluded, but were not evaluated as
+mechanism-specific models.
 
 The selected disposition is `NO_NEW_PRODUCTION_PHYSICS_YET`; transient
 poromechanics remains conditional because the executed P2 model is only a
@@ -148,5 +150,8 @@ fabric, fines or realization changes can create the required 2.5--2.7-fold
 axial-resistance increase while quantifying transverse and inertial closures.
 See the
 [SCI-MD-001 result](../validation/SCI_MD_001_PRESSURE_GRIND_MECHANISM_DISCRIMINATION_RESULT.md).
-Result-data commit/tree: `a0f27d8ef65c618ed202fced8a9c980edbe803aa` /
-`f7ed1b495245979ca1dc1dc176bbe63d0d0a40aa`.
+Pre-correction result-data commit/tree:
+`a0f27d8ef65c618ed202fced8a9c980edbe803aa` /
+`f7ed1b495245979ca1dc1dc176bbe63d0d0a40aa`. Corrected result authority:
+`RESOLVE_FROM_EXACT_REVIEWED_HEAD_AND_TREE`; do not treat the pre-correction
+identity as the current result authority.

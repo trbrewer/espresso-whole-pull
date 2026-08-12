@@ -75,5 +75,12 @@ class SciMd001Tests(unittest.TestCase):
         for figure in (ROOT/"validation/cases/sci_md_001/figures").glob("*.svg"):
             text=figure.read_text()
             self.assertTrue("<polyline" in text or text.count("<rect") > 1)
+    def test_p2_beta_is_generic_not_strain(self):
+        import csv
+        with (ROOT/"validation/cases/sci_md_001/SCI_MD_001_PARAMETER_BOUNDS.csv").open() as f:
+            rows=list(csv.DictReader(f))
+        names={r["parameter"] for r in rows}
+        self.assertIn("state_to_log_conductance_sensitivity_beta",names)
+        self.assertFalse(any("strain" in name.lower() for name in names))
 
 if __name__=='__main__': unittest.main()

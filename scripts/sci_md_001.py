@@ -213,7 +213,7 @@ def final_reduce():
     bounds=[
       {"parameter":"power_law_n","minimum":0,"maximum":3,"unit":"1","role":"SYNTHETIC_FIXTURE","source":"inverse-screen envelope"},
       {"parameter":"relaxation_time","minimum":0.1,"maximum":100,"unit":"s","role":"SYNTHETIC_FIXTURE","source":"diagnostic shot-time envelope"},
-      {"parameter":"strain_permeability_sensitivity","minimum":0.1,"maximum":8,"unit":"1","role":"SYNTHETIC_FIXTURE","source":"diagnostic capability envelope"},
+      {"parameter":"state_to_log_conductance_sensitivity_beta","minimum":0.1,"maximum":8,"unit":"1","role":"SYNTHETIC_FIXTURE","source":"generic relaxing-resistance diagnostic capability envelope"},
       {"parameter":"water_density","minimum":965,"maximum":1000,"unit":"kg/m3","role":"FIXED_PREDECESSOR_VALUE","source":"VAL-CORPUS-001 declared sensitivity"}]
     write_csv(OUT/"SCI_MD_001_PARAMETER_BOUNDS.csv",bounds)
     plot=[]

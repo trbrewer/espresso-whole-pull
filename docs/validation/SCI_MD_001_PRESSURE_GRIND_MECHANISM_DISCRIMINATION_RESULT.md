@@ -31,8 +31,8 @@ The Schmieder grind failure also persists under prescribed source hydraulic
 histories: the fixed model has 0/3 grind-sign matches. It is therefore not
 solely a flow-clock error. A grind-to-structure/inventory error and an
 aggregate extraction-closure error remain confounded. A two-population
-extraction model can change the sign, but the exposed aggregate cup quantities
-cannot identify its fractions and rates.
+extraction model is not structurally excluded, but no executed model has
+demonstrated a 3/3 grind-sign correction.
 
 The executed generic pressure-dependence and relaxing-resistance screens are
 mathematically capable. Swelling, fines, structure mapping and bimodal

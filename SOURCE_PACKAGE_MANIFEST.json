@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 327,
-  "total_uncompressed_bytes_excluding_manifest": 4487378,
-  "aggregate_source_sha256": "b14a56cbad8ccd83271184945f40f5c96a243f85853dbe2199def4289da314d4",
-  "aggregate_sha256": "b14a56cbad8ccd83271184945f40f5c96a243f85853dbe2199def4289da314d4",
+  "total_uncompressed_bytes_excluding_manifest": 4488068,
+  "aggregate_source_sha256": "02b352344b1ee09bd0d4de2c6b1cde8b1600998ed0ae74f9ccab704721c24cab",
+  "aggregate_sha256": "02b352344b1ee09bd0d4de2c6b1cde8b1600998ed0ae74f9ccab704721c24cab",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -519,8 +519,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md": {
-      "sha256": "7a7bc230b460e21356275e468c7f60913ca5a5764916fb1d0f34894f29cf2628",
-      "bytes": 7736,
+      "sha256": "7d335991f443394ee9b1471a11d4ba56eae3ed9b5cda26e44db83f79e0e19114",
+      "bytes": 7996,
       "git_mode": "100644"
     },
     "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md": {
@@ -534,8 +534,8 @@
       "git_mode": "100644"
     },
     "docs/validation/SCI_MD_001_PRESSURE_GRIND_MECHANISM_DISCRIMINATION_RESULT.md": {
-      "sha256": "a809c748677d448b09e89f14d36d6c1fa0bf6a3ed2a3527abef1cebbaf480987",
-      "bytes": 13335,
+      "sha256": "d88a1459b7c430361e6a230f5cbc0b713c206199eb37740dae41d49f2131235b",
+      "bytes": 13330,
       "git_mode": "100644"
     },
     "docs/validation/VALIDATION_INFRASTRUCTURE_BACKLOG.md": {
@@ -1009,8 +1009,8 @@
       "git_mode": "100755"
     },
     "scripts/sci_md_001.py": {
-      "sha256": "b8aadb1a9345eaedee98c728e26f2be1570253107be800b4ef2d6a323c6914b8",
-      "bytes": 26905,
+      "sha256": "3784004804bc4e6e15149a53d3e6edcad1597ef4308cd69883743a0d788aa875",
+      "bytes": 26943,
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
@@ -1324,8 +1324,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_001.py": {
-      "sha256": "fcb2985b8d39699b1fdc5a4d356a2c6c111d50141f69a3d88233984c519a2c3f",
-      "bytes": 5039,
+      "sha256": "b71462cbfea992c51a0db543960d7644ccb66ce8d5c0d4d7d30f147e277f79ce",
+      "bytes": 5436,
       "git_mode": "100644"
     },
     "tests/test_val001_administrative_semantics.py": {
