@@ -1,0 +1,23 @@
+{
+  "schema_version": "ewp.sci_md_001.protocol.v1",
+  "status": "PROSPECTIVE_PROTOCOL_BEFORE_NEW_ADJUDICATIVE_CALCULATION",
+  "issue": 62,
+  "base": {"commit": "ed77b4c66f85e8169a240bc95109aa181eb94f93", "tree": "9448eb39f31255a3493a86f4e2758a782ac28b74"},
+  "change_map": {
+    "documentation_inverse_reduction_plot_tests": "NO_GOVERNING_PHYSICS_CHANGE",
+    "new_existing_physics_cases": "SOURCE_SCENARIO_CHANGE_ONLY",
+    "new_standalone_hypotheses": {"declaration": "GOVERNING_PHYSICS_CHANGE", "scope": "REDUCED_DIAGNOSTIC_ONLY", "production_openfoam_integration": false}
+  },
+  "evidence_mode": "POST_OBSERVATION_MECHANISM_DISCRIMINATION",
+  "arms": ["P_PRESSURE_ORDERING", "G_GRIND_RESPONSE", "T_TRANSIENT_TRANSFER"],
+  "priority": ["SIGN_AND_ORDERING", "RESIDUAL_STRUCTURE", "PHYSICAL_PLAUSIBILITY", "TRANSFER", "SCALE_ERROR"],
+  "pressure_operator": {"conductance": "Q_m3_s/delta_p_Pa", "resistance": "delta_p_Pa/Q_m3_s", "darcy_permeability": "mu_Pa_s*L_m*Q_m3_s/(A_m2*delta_p_Pa)", "flow_policy": "NONPOSITIVE_OR_MISSING_IS_UNAVAILABLE"},
+  "grind_contrast": "FINE_MINUS_COARSE",
+  "clocks": ["SOURCE_CLOCK", "ACCEPTED_PRESENTATION_CLOCK_PLUS_3_S"],
+  "sampling": {"method": "DETERMINISTIC_LOG_GRID_AND_BASE2_LOW_DISCREPANCY", "seed": 20260812, "adaptive_refinement": "NEAR_SIGN_CHANGE"},
+  "candidate_models": ["P1_GENERIC_PRESSURE_DEPENDENT_PERMEABILITY", "P2_FINITE_RATE_POROMECHANICS", "P3_SWELLING", "P4_FINES", "P5_VISCOSITY", "P6_MACHINE_BOUNDARY", "P7_LATERAL_PATHS", "G1_GRIND_TO_STRUCTURE", "G2_BIMODAL_EXTRACTION"],
+  "permitted_pairwise": ["P2_PLUS_P4", "G1_PLUS_G2"],
+  "openfoam": {"maximum_new_launches": 12, "routine_ranks": 32, "maximum_concurrent_cases": 2, "production_solver_source_change": false, "matrix_freeze_required_before_launch": true},
+  "outcomes": ["EXISTING_MODEL_FAMILY_CAPABLE_WITHIN_PLAUSIBLE_RANGE", "EXISTING_MODEL_FAMILY_STRUCTURALLY_INCAPABLE", "CANDIDATE_MECHANISM_CAPABLE_WITHIN_PLAUSIBLE_RANGE", "CANDIDATE_MECHANISM_CAPABLE_ONLY_OUTSIDE_PLAUSIBLE_RANGE", "MULTIPLE_MECHANISMS_REMAIN_EQUIFINAL", "NO_TESTED_MECHANISM_CAPABLE_WITHIN_SCREENED_RANGE", "TRANSIENT_POROMECHANICS_PRIORITIZED", "SWELLING_PRIORITIZED", "FINES_TRANSPORT_PRIORITIZED", "MACHINE_OR_BOUNDARY_DYNAMICS_PRIORITIZED", "LATERAL_EQUALIZATION_OR_CHANNELING_PRIORITIZED", "GRIND_TO_STRUCTURE_MAPPING_PRIORITIZED", "EXTRACTION_CLOSURE_PRIORITIZED", "ADDITIONAL_DATA_REQUIRED_FOR_MECHANISM_UNIQUENESS"],
+  "claim_boundary": {"physical_validation": "NOT_ESTABLISHED", "protected_or_holdout_scoring": "NOT_AUTHORIZED", "experimental_commissioning": "NOT_AUTHORIZED"}
+}
