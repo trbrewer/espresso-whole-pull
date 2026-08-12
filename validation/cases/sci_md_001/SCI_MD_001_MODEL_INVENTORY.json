@@ -1,0 +1,89 @@
+{
+  "families": [
+    {
+      "accepted_results_exist": true,
+      "active_state": "none",
+      "available_outputs": "pressure, flow, mass, water/solute balances and applicable diagnostics",
+      "compatible_compositions": "all profiles; prescribed or machine",
+      "governing_closure": "Q=K A dp/(mu L)",
+      "known_limitations": "composition limited by explicit solver checks; no dynamic lateral exchange",
+      "model_family": "static_darcy",
+      "new_openfoam_required": false,
+      "parameter_provenance": "existing governed configuration or source-linked predecessor",
+      "pressure_modes": "prescribedPressure,lumpedMachineCompliance"
+    },
+    {
+      "accepted_results_exist": true,
+      "active_state": "none",
+      "available_outputs": "pressure, flow, mass, water/solute balances and applicable diagnostics",
+      "compatible_compositions": "uniform/axial/radial; prescribed or machine",
+      "governing_closure": "dp=R_D Q+R_I Q|Q|",
+      "known_limitations": "composition limited by explicit solver checks; no dynamic lateral exchange",
+      "model_family": "static_darcy_forchheimer",
+      "new_openfoam_required": false,
+      "parameter_provenance": "existing governed configuration or source-linked predecessor",
+      "pressure_modes": "prescribedPressure,lumpedMachineCompliance"
+    },
+    {
+      "accepted_results_exist": true,
+      "active_state": "extracted fraction",
+      "available_outputs": "pressure, flow, mass, water/solute balances and applicable diagnostics",
+      "compatible_compositions": "Darcy; source-linked retained cases",
+      "governing_closure": "K=K0 f(extracted fraction)",
+      "known_limitations": "composition limited by explicit solver checks; no dynamic lateral exchange",
+      "model_family": "dissolution_indexed_darcy",
+      "new_openfoam_required": false,
+      "parameter_provenance": "existing governed configuration or source-linked predecessor",
+      "pressure_modes": "prescribedPressure,lumpedMachineCompliance"
+    },
+    {
+      "accepted_results_exist": true,
+      "active_state": "effective stress, phi, K",
+      "available_outputs": "pressure, flow, mass, water/solute balances and applicable diagnostics",
+      "compatible_compositions": "Darcy only; prescribed or machine; no DF/heterogeneous compaction",
+      "governing_closure": "exact scalar integral K(phi(p))",
+      "known_limitations": "composition limited by explicit solver checks; no dynamic lateral exchange",
+      "model_family": "finite_porosity_compaction",
+      "new_openfoam_required": false,
+      "parameter_provenance": "existing governed configuration or source-linked predecessor",
+      "pressure_modes": "prescribedPressure,lumpedMachineCompliance"
+    },
+    {
+      "accepted_results_exist": true,
+      "active_state": "upstream and basket pressure",
+      "available_outputs": "pressure, flow, mass, water/solute balances and applicable diagnostics",
+      "compatible_compositions": "Darcy/DF and supported profiles",
+      "governing_closure": "Cu dpu/dt=Qs(pu)-Qpuck",
+      "known_limitations": "composition limited by explicit solver checks; no dynamic lateral exchange",
+      "model_family": "machine_headspace",
+      "new_openfoam_required": false,
+      "parameter_provenance": "existing governed configuration or source-linked predecessor",
+      "pressure_modes": "prescribedPressure,lumpedMachineCompliance"
+    },
+    {
+      "accepted_results_exist": true,
+      "active_state": "zone flux diagnostics",
+      "available_outputs": "pressure, flow, mass, water/solute balances and applicable diagnostics",
+      "compatible_compositions": "Darcy/DF; static",
+      "governing_closure": "exact series resistance",
+      "known_limitations": "composition limited by explicit solver checks; no dynamic lateral exchange",
+      "model_family": "axial_heterogeneity",
+      "new_openfoam_required": false,
+      "parameter_provenance": "existing governed configuration or source-linked predecessor",
+      "pressure_modes": "prescribedPressure,lumpedMachineCompliance"
+    },
+    {
+      "accepted_results_exist": true,
+      "active_state": "zone flow/extraction",
+      "available_outputs": "pressure, flow, mass, water/solute balances and applicable diagnostics",
+      "compatible_compositions": "Darcy/DF; static",
+      "governing_closure": "exact parallel resistance",
+      "known_limitations": "composition limited by explicit solver checks; no dynamic lateral exchange",
+      "model_family": "radial_heterogeneity",
+      "new_openfoam_required": false,
+      "parameter_provenance": "existing governed configuration or source-linked predecessor",
+      "pressure_modes": "prescribedPressure,lumpedMachineCompliance"
+    }
+  ],
+  "schema_version": "ewp.sci_md_001.inventory.v1"
+}
