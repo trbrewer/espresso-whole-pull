@@ -1,0 +1,76 @@
+{
+  "classification": "STATIC_STATE_CAPABLE_DYNAMIC_CAUSE_UNIDENTIFIED",
+  "exact_targets": {
+    "late": 0.395294,
+    "middle": 0.389226,
+    "terminal": 0.373506
+  },
+  "nonconvergence_qualification": "TEN_FROZEN_IDENTITIES_NONCONVERGED_AND_NOT_REPLACED",
+  "paired_restriction": [
+    {
+      "bootstrap_95_ci": [
+        0.5350606414559744,
+        0.6747646103292878
+      ],
+      "disposition": "TARGET_ATTAINMENT_NOT_REACHED",
+      "fraction_attaining": {
+        "0.373506": 0.0,
+        "0.389226": 0.0,
+        "0.395294": 0.0
+      },
+      "geometric_mean_ratio": 0.6107738425026582,
+      "minimum_connected_porosity_retention": 0.8971614010220448,
+      "n_converged_pairs": 4,
+      "restriction_fraction": 0.1
+    },
+    {
+      "bootstrap_95_ci": [
+        0.4672264982829457,
+        0.5868999233951928
+      ],
+      "disposition": "TARGET_ATTAINMENT_NOT_REACHED",
+      "fraction_attaining": {
+        "0.373506": 0.0,
+        "0.389226": 0.0,
+        "0.395294": 0.0
+      },
+      "geometric_mean_ratio": 0.5129545169232103,
+      "minimum_connected_porosity_retention": 0.7971551518049248,
+      "n_converged_pairs": 3,
+      "restriction_fraction": 0.2
+    },
+    {
+      "bootstrap_95_ci": [
+        0.30048981768413174,
+        0.43622341484431243
+      ],
+      "disposition": "TARGET_ATTAINMENT_IN_SOME_REALIZATIONS_ONLY",
+      "fraction_attaining": {
+        "0.373506": 0.6666666666666666,
+        "0.389226": 0.6666666666666666,
+        "0.395294": 0.6666666666666666
+      },
+      "geometric_mean_ratio": 0.3525426133409309,
+      "minimum_connected_porosity_retention": 0.6989401545939916,
+      "n_converged_pairs": 3,
+      "restriction_fraction": 0.3
+    },
+    {
+      "bootstrap_95_ci": [
+        0.18291542813314726,
+        0.29921262387879954
+      ],
+      "disposition": "ROBUST_TARGET_ATTAINMENT_WITHOUT_TOPOLOGY_LOSS",
+      "fraction_attaining": {
+        "0.373506": 1.0,
+        "0.389226": 1.0,
+        "0.395294": 1.0
+      },
+      "geometric_mean_ratio": 0.23026724374059782,
+      "minimum_connected_porosity_retention": 0.5996294547171868,
+      "n_converged_pairs": 3,
+      "restriction_fraction": 0.4
+    }
+  ],
+  "schema_version": "espresso.whole_pull.xsv_ens_001.target.v1"
+}

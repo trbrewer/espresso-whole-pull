@@ -1,0 +1,78 @@
+{
+  "characteristic_diameter_voxels": 20.0,
+  "compute_disposition": "GPU_DOMAIN_LIMIT_PREVENTS_REV_ADJUDICATION",
+  "largest_L": 72,
+  "largest_L_over_d": 3.6,
+  "mean_disposition": "NO_SYNTHETIC_GENERATOR_REV_RESOLVED",
+  "real_puck": "REAL_PUCK_REV_NOT_ASSESSED",
+  "schema_version": "espresso.whole_pull.xsv_ens_001.rev.v1",
+  "size_statistics": [
+    {
+      "L": 24,
+      "cv_K": 0.5404149930278539,
+      "mean_K": 1.0057677348773106,
+      "mean_K_ci_high": 1.38030346126019,
+      "mean_K_ci_low": 0.6702572525236863,
+      "mean_ratio_to_largest": 0.5558735611550626,
+      "median_K": 0.9811588940587611,
+      "n": 8,
+      "q10": 0.48073374340402303,
+      "q90": 1.5677005068411165,
+      "sd_K": 0.5435319634313622
+    },
+    {
+      "L": 32,
+      "cv_K": 0.5780130767609343,
+      "mean_K": 1.7645830711540973,
+      "mean_K_ci_high": 2.5227240804176225,
+      "mean_K_ci_low": 1.2445468078932598,
+      "mean_ratio_to_largest": 0.9752600344015006,
+      "median_K": 1.3791174614741428,
+      "n": 8,
+      "q10": 1.094064238002462,
+      "q90": 2.6050563470442927,
+      "sd_K": 1.0199520901580383
+    },
+    {
+      "L": 40,
+      "cv_K": 0.6859400945883338,
+      "mean_K": 1.5160290737386601,
+      "mean_K_ci_high": 2.230517817126158,
+      "mean_K_ci_low": 0.8745426675602463,
+      "mean_ratio_to_largest": 0.8378877655451136,
+      "median_K": 0.9425149667675933,
+      "n": 8,
+      "q10": 0.6040974046549987,
+      "q90": 2.779222311712439,
+      "sd_K": 1.0399051262389607
+    },
+    {
+      "L": 56,
+      "cv_K": 0.4396349314502149,
+      "mean_K": 1.7398656094754645,
+      "mean_K_ci_high": 2.2372784098208944,
+      "mean_K_ci_low": 1.2426701876532276,
+      "mean_ratio_to_largest": 0.9615990439267053,
+      "median_K": 1.7490563340117833,
+      "n": 8,
+      "q10": 0.9278196901344837,
+      "q90": 2.7392660307183405,
+      "sd_K": 0.7649056979543323
+    },
+    {
+      "L": 72,
+      "cv_K": 0.3407409576602678,
+      "mean_K": 1.8093462347577793,
+      "mean_K_ci_high": 2.221560767003959,
+      "mean_K_ci_low": 1.4295153382629684,
+      "mean_ratio_to_largest": 1.0,
+      "median_K": 1.638829405086482,
+      "n": 8,
+      "q10": 1.2901161614005512,
+      "q90": 2.694723726421698,
+      "sd_K": 0.6165183687703655
+    }
+  ],
+  "spatial_discretization": "SPATIAL_RESOLUTION_PREVENTS_REV_ADJUDICATION",
+  "variance_disposition": "SYNTHETIC_GENERATOR_VARIANCE_NOT_STABILIZED"
+}

@@ -53,6 +53,10 @@ Sampling stops when the deterministic-bootstrap 95% interval for mean log K
 has a relative half-width no greater than 10%; otherwise it stops at n=24 with
 uncertainty unresolved.
 
+Equal seed integers across different non-nested domains are
+`RELATED_NON_NESTED`, never paired. Only a deterministic transformation of an
+identical parent mask is `PAIRED_TRANSFORMATION`.
+
 The sparse morphology programme includes regenerated solid fractions 0.50,
 0.55, 0.60, and 0.64; paired static throat-restriction fractions 0, 0.10,
 0.20, 0.30, and 0.40; columnar heterogeneity amplitudes 0, 1, and 2 with
@@ -106,4 +110,3 @@ figures, and compact reports. Failed identities are retained as
 `DISCONNECTED_GEOMETRY`, `NONCONVERGED`, `GPU_ALLOCATION_FAILURE`,
 `NUMERICAL_INSTABILITY`, `MACH_LIMIT_FAILURE`, `LINEARITY_FAILURE`, or
 `DESCRIPTOR_FAILURE`.
-

@@ -30,12 +30,12 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 468,
+    "python_test_count": 488,
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 327,
-    "source_manifest_aggregate_sha256": "02b352344b1ee09bd0d4de2c6b1cde8b1600998ed0ae74f9ccab704721c24cab",
+    "source_manifest_file_count": 362,
+    "source_manifest_aggregate_sha256": "20735d987860494ee48c325ada3d2939c0a8da6fa7e81e1efd56fda558261a25",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -44,7 +44,8 @@
     "wp_0_3b_a1_p1_boundary": "AMENDED_CANONICAL_RESULT_PRESENT_AND_VERIFIED",
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
-    "json_syntax": "PASS"
+    "json_syntax": "PASS",
+    "source_manifest_aggregate_source_sha256": "20735d987860494ee48c325ada3d2939c0a8da6fa7e81e1efd56fda558261a25"
   },
   "wp03_002": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
