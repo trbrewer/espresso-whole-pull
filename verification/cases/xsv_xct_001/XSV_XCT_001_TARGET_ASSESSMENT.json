@@ -1,0 +1,28 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_xct_001.target_assessment.v1",
+  "targets": {
+    "0.373506": {
+      "minimum_over_maximum_ratio": 0.08272251308900523,
+      "cross_sample_range_spans_target": true
+    },
+    "0.389226": {
+      "minimum_over_maximum_ratio": 0.08272251308900523,
+      "cross_sample_range_spans_target": true
+    },
+    "0.395294": {
+      "minimum_over_maximum_ratio": 0.08272251308900523,
+      "cross_sample_range_spans_target": true
+    }
+  },
+  "observed_minimum_over_maximum_ratio": 0.08272251308900523,
+  "comparison_class": "STATIC_STATE_CAPABILITY_COMPARISON",
+  "selection_class": "POST_OBSERVATION_TARGET_COMPARISON",
+  "confounding": [
+    "coffee",
+    "grind",
+    "porosity",
+    "preparation"
+  ],
+  "physical_cause": "NOT_IDENTIFIED",
+  "paired_transformation": "NOT_EXECUTED_NO_REAL_VOLUME"
+}

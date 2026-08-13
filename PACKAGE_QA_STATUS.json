@@ -30,12 +30,12 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 498,
+    "python_test_count": 514,
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 367,
-    "source_manifest_aggregate_sha256": "59be2eca4e361d22a6d0b6f79dcdb17e7eab372e7fed06bd1450879bfdd98215",
+    "source_manifest_file_count": 388,
+    "source_manifest_aggregate_sha256": "7c4d244303a0bcf55fa6ff1a78c86cf64f053dfb34d9653aeab485eaf63b0403",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -45,7 +45,21 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "59be2eca4e361d22a6d0b6f79dcdb17e7eab372e7fed06bd1450879bfdd98215"
+    "source_manifest_aggregate_source_sha256": "7c4d244303a0bcf55fa6ff1a78c86cf64f053dfb34d9653aeab485eaf63b0403"
+  },
+  "xsv_xct_001": {
+    "status": "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",
+    "issue": 66,
+    "pull_request": 67,
+    "route": "PROCESSED_REAL_COFFEE_DATA_ROUTE_COMPLETE",
+    "source_rows": 22,
+    "scoreable_rows": 21,
+    "raw_or_segmented_volumes": 0,
+    "gpu_runs": 0,
+    "cross_code": "CROSS_CODE_PARITY_NOT_ADJUDICATED",
+    "transfer": "SYNTHETIC_CLOSURE_REAL_DATA_OUT_OF_DOMAIN",
+    "production_openfoam_physics": "UNCHANGED",
+    "physical_validation": "NOT_ESTABLISHED"
   },
   "wp03_002": {
     "status": "COMPLETE_APPROVED_AND_MERGED",

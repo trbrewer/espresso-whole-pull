@@ -1,0 +1,43 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_xct_001.protocol.v1",
+  "task": "XSV-XCT-001",
+  "issue": 66,
+  "change_declaration": {
+    "class": "NUMERICAL_METHOD_CHANGE",
+    "scope": "DIAGNOSTIC_PORE_SCALE_ONLY",
+    "production_openfoam_integration": false,
+    "puckworks_runtime_lock_change": false,
+    "physical_validation": false
+  },
+  "sources": [
+    {"source_id":"WADSWORTH_2026_RS0S_252031","doi":"10.1098/rsos.252031","role":"PRIMARY_PROCESSED_REAL_COFFEE_XCT","samples_expected":22,"coffees":["Guayacan","Tumba"],"grind_settings":[1,2,3,4,5,6,7,8,9,10,11],"sample_class":"REAL_PACKED_GROUND_COFFEE_XCT","preparation":"LOOSELY_LOADED_5_MM_STRAW_NOT_CONTROLLED_TAMPED_PUCK","permeability_role":"PUBLISHED_NUMERICAL_PERMEABILITY_REFERENCE_NOT_DIRECT_PERMEAMETER_VALIDATION","article_license":"CC-BY-4.0","processed_route":"REQUIRED","volume_route":"CONDITIONAL_ACCESS_NOT_ESTABLISHED"},
+    {"source_id":"MO_2023_SCIREP_42380Y","doi":"10.1038/s41598-023-42380-y","role":"SECONDARY_COMPARISON_EVIDENCE","segmentation":"SOURCE_MODEL_CONDITIONED_SEGMENTATION","data_access":"AUTHORS_ON_REASONABLE_REQUEST_NO_REQUEST_SENT"}
+  ],
+  "exact_targets": {"primary":0.373506,"supporting":[0.389226,0.395294]},
+  "processed_population":"ALL_PRIMARY_ROWS_RETAIN_MISSING_EXCLUDED_PER_METRIC_ONLY",
+  "synthetic_population":"COMMITTED_XSV_ENS_001_PASS_X_DIRECTION_UNIQUE_MASK_ROWS",
+  "shared_feature_models": {
+    "primary":"connected_porosity_specific_surface",
+    "scale_proxy_sensitivity":"connected_porosity_specific_surface_particle_or_pore_scale",
+    "full_B_porosity_topology":"NOT_TESTABLE_WITH_PROCESSED_DATA_ONLY"
+  },
+  "transfer_mode":"SYNTHETIC_TRAIN_REAL_TEST_NO_REAL_REFIT",
+  "transfer_metrics":["RMSE_LOG_K","MEDIAN_MULTIPLICATIVE_ERROR","MEAN_SIGNED_LOG_BIAS","EMPIRICAL_95_INTERVAL_COVERAGE","R2_WITH_EXPLICIT_BASELINE"],
+  "grouping":{"synthetic":"physical_lineage_id","real":"coffee_and_sample","variants":"parent_volume","real_only_cross_validation":"LEAVE_ONE_COFFEE_OUT"},
+  "missing_data":"RETAIN_ROW_EXCLUDE_ONLY_FROM_UNDEFINED_METRIC",
+  "nonconvergence":"RETAIN_NO_REPLACEMENT",
+  "out_of_domain":"PER_FEATURE_CLOSED_SYNTHETIC_RANGE_AND_STANDARDIZED_NEAREST_NEIGHBOUR_DISTANCE",
+  "volume_selection":"ALL_DESCRIPTORS; FLOW_ALL_FEASIBLE_OR_BOTH_COFFEES_FINE_MIDDLE_COARSE_BY_GRIND_RANK",
+  "segmentation":{"primary":"SOURCE_BINARY_OR_FROZEN_SOURCE_METHOD_BEFORE_FLOW","sensitivities":["LOW_SOLID_THRESHOLD","HIGH_SOLID_THRESHOLD"],"result_dependent_retuning":false},
+  "resolution":{"levels":["NATIVE","MODERATE_PHASE_AWARE","COARSE_PHASE_AWARE_IF_RESOLVED"],"nearest_neighbour_decimation_not_physical_study":true},
+  "subvolumes":"DETERMINISTIC_GRID_OR_PROSPECTIVELY_SEEDED_PARENT_CLUSTERED",
+  "directions":["X","Y","Z"],
+  "precision":{"anchors":"f64","broad":"f32_after_paired_qualification","K_relative_tolerance":0.01,"directional_ratio_relative_tolerance":0.03,"localization_relative_tolerance":0.05},
+  "forcing":{"multiple_low_force_levels":true,"mach_max":0.05,"require_stable_q_over_g":true,"require_stable_K":true},
+  "boundary":"SOURCE_MATCH_REQUIRED; PERIODIC_CONNECTIVITY_CHANGE_PROHIBITS_EXACT_PARITY",
+  "hydraulic_quantity":"K_gross_m2",
+  "static_restriction_removed_void_fractions":[0.10,0.20,0.30,0.40],
+  "robust_target":{"minimum_valid_pairs":8,"minimum_crossing_fraction":0.75,"upper_bootstrap_95_at_or_below_target":true,"bootstrap_seed":20260812},
+  "final_dispositions":{"generator":["SYNTHETIC_GENERATOR_COVERS_REAL_DESCRIPTOR_DOMAIN","SYNTHETIC_GENERATOR_PARTIALLY_COVERS_REAL_DOMAIN","SYNTHETIC_GENERATOR_OUT_OF_DOMAIN_FOR_KEY_DESCRIPTORS","REAL_VOLUME_EVIDENCE_INSUFFICIENT_FOR_GENERATOR_ASSESSMENT"],"transfer":["SYNTHETIC_CLOSURE_TRANSFERS_WITHIN_DECLARED_ERROR","SYNTHETIC_CLOSURE_PARTIAL_TRANSFER_WITH_BIAS","SYNTHETIC_CLOSURE_FAILS_ON_REAL_GEOMETRY","SYNTHETIC_CLOSURE_REAL_DATA_OUT_OF_DOMAIN","FULL_TRANSFER_NOT_TESTABLE_WITH_PROCESSED_DATA_ONLY"],"cross_code":["EXACT_MASK_CROSS_CODE_PARITY_PASS","EXACT_MASK_CROSS_CODE_PARITY_FAIL","SOURCE_DOMAIN_NOT_IDENTICAL","BOUNDARY_SEMANTICS_NOT_EQUIVALENT","PUBLISHED_VALUE_MAPPING_UNRESOLVED","CROSS_CODE_PARITY_NOT_ADJUDICATED"],"scale":["WITHIN_SCAN_SUBVOLUME_STABILITY_OBSERVED","WITHIN_SCAN_VARIANCE_REMAINS_MATERIAL","BETWEEN_SCAN_VARIABILITY_DOMINANT","REAL_COFFEE_REV_NOT_ADJUDICATED","AVAILABLE_VOLUME_TOO_SMALL_FOR_SCALE_ASSESSMENT"]},
+  "claim_boundary":{"physical_validation":"NOT_ESTABLISHED","real_tamped_puck_representative_volume":"NOT_ESTABLISHED","dynamic_pressure_mechanism":"NOT_IDENTIFIED","production_openfoam_physics":"UNCHANGED"}
+}

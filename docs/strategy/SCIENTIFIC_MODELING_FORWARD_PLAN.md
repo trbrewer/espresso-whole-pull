@@ -1,8 +1,9 @@
 # Scientific Modeling Forward Plan
 
-Status: enduring scientific handoff; SCI-MD-001 merged complete; XSV-ENS-001
-scientific completion pass pending exact-head review.
-Change declaration: `NO_GOVERNING_PHYSICS_CHANGE` for this document.
+Status: enduring scientific handoff; XSV-ENS-001 merged complete; XSV-XCT-001
+execution complete pending exact-head review.
+Change declaration: `NUMERICAL_METHOD_CHANGE`, diagnostic pore scale only;
+production OpenFOAM integration false.
 
 ## 1. Executive scientific diagnosis
 
@@ -36,7 +37,7 @@ which mechanisms can explain the current sign, ordering and transfer failures,
 and what physical behaviour the source requires before selecting new
 production physics.
 
-### Completed candidate pending exact-head review: XSV-ENS-001
+### Completed: XSV-ENS-001
 
 **Stochastic GPU pore-scale closure and representative-volume assessment.**
 Produce ensemble permeability, anisotropy, inertial, transverse-conductance,
@@ -53,6 +54,28 @@ restriction remains a strong capability signal but not a robust ensemble
 result because only six of eight attempted pairs were valid. Real-geometry
 import and microCT comparison remains the provisional next recommendation;
 no successor programme is authorized on this branch.
+
+### Execution complete pending exact-head review: XSV-XCT-001
+
+**Real-coffee XCT import and microstructure-to-flow comparison.** Execute the
+processed Wadsworth 2026 route, audit legitimate volume access, and test
+synthetic-to-real morphology and closure transfer without changing production
+OpenFOAM or the Puckworks lock.
+
+The mandatory processed route retained all 22 Wadsworth rows and scored the 21
+with complete hydraulic fields. The source percolation relationship reproduced
+materially better than Kozeny--Carman. Both frozen strict transfer arms were
+completed. Every real row remained outside the synthetic feature domain. The
+two-feature arm uses a specific-surface proxy mapping with non-identical
+definitions; the three-feature arm is explicitly `SCALE_PROXY_MISMATCH`
+because pore-distance median and mean particle radius are non-equivalent.
+Neither arm supports external transfer or uniquely identifies a physical
+morphology mechanism. No rights-cleared raw or
+segmented flow domain was obtained; exact cross-code parity, segmentation,
+resolution, subvolume, anisotropy, localization, and real-mask transformation
+analyses are therefore unadjudicated. The evidence-selected next programme is
+dedicated access to exact real-XCT flow domains or rights-cleared acquisition,
+with `NO_NEW_PRODUCTION_PHYSICS_YET` retained.
 
 ### Next lateral-flow programme: SCI-LC-001
 
@@ -110,11 +133,13 @@ EXPERIMENTAL_COMMISSIONING:
 CURRENT_VALIDATION_GATE:
   ADDITIONAL_INDEPENDENT_DATA_REQUIRED
 CURRENT_DISCOVERY_AND_MECHANISM_DISCRIMINATION_TASK:
-  XSV-ENS-001
+  NONE_PENDING_XSV_XCT_001_EXACT_HEAD_REVIEW
 SCI-MD-001:
   MERGED_COMPLETE
 XSV-ENS-001:
-  SCIENTIFIC_COMPLETION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+  MERGED_COMPLETE
+XSV-XCT-001:
+  EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
 ```
 
 The independent-data gate limits validation claims; it does not prohibit the
@@ -131,8 +156,8 @@ authorized post-observation scientific discovery work.
   remote-tracking commit `bafafef3bc3c77599af8551d4e582aedb9b23f08`, tree
   `64ccf86aff4c90d1c513f1614b39e0823f64d6d7`; this is not the runtime lock
   and was not refreshed or executed.
-- Current discovery task: `XSV-ENS-001` on
-  `verification/xsv-ens-001-stochastic-pore-closure-rve`.
+- Current discovery task: `XSV-XCT-001` on
+  `verification/xsv-xct-001-real-coffee-xct-comparison`.
 - Questions: required pressure-dependent resistance; cause of grind-sign
   reversal; transferable transient residual mechanisms.
 - Claim ceiling: post-observation mechanism discrimination and synthetic

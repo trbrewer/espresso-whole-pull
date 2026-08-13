@@ -1,0 +1,613 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_xct_001.result.v1",
+  "route": "PROCESSED_REAL_COFFEE_DATA_ROUTE_COMPLETE",
+  "source_rows": 22,
+  "source_scored_rows": 21,
+  "raw_or_segmented_volumes": 0,
+  "gpu_runs": 0,
+  "source_reproduction": {
+    "kozeny_carman": {
+      "geometric_mean_prediction_over_observation": 0.5815384517284726,
+      "rmse_logK": 0.5935232674428734,
+      "median_multiplicative_error": 1.6385750467878986
+    },
+    "percolation_measured_surface": {
+      "geometric_mean_prediction_over_observation": 1.0956526414219672,
+      "rmse_logK": 0.28293720964939223,
+      "median_multiplicative_error": 1.237975372085197
+    },
+    "percolation_angular_surface": {
+      "geometric_mean_prediction_over_observation": 0.71429769366715,
+      "rmse_logK": 0.7908015838844116,
+      "median_multiplicative_error": 1.9635678934414897
+    }
+  },
+  "transfer": {
+    "schema_version": "espresso.whole_pull.xsv_xct_001.transfer.v2",
+    "mode": "SYNTHETIC_TRAIN_REAL_TEST",
+    "real_data_refitting": false,
+    "synthetic_unique_masks": 225,
+    "synthetic_physical_lineages": 179,
+    "real_scored_samples": 21,
+    "real_missing_samples": 1,
+    "descriptor_semantics": {
+      "mapping": "SPECIFIC_SURFACE_PROXY_MAPPING_WITH_NON_IDENTICAL_DEFINITIONS",
+      "real": "WADSWORTH_CONNECTED_PERCOLATING_PHASE_SURFACE_DERIVED_USING_MARCHING_CUBES",
+      "synthetic": "TOTAL_PERIODIC_VOXEL_FACE_INTERFACIAL_AREA_PROXY_NOT_RESTRICTED_TO_CONNECTED_PORE_PHASE",
+      "interpretation": "SURFACE_SCALE_DOMAIN_SEPARATION_NOT_UNIQUE_PHYSICAL_MECHANISM_IDENTIFICATION",
+      "real_total_surface_robustness_range_per_m": [
+        29883.78,
+        55946.72
+      ]
+    },
+    "two_feature_assessment": {
+      "arm": "TWO_FEATURE_SHARED_PROXY",
+      "label": "SPECIFIC_SURFACE_PROXY_MAPPING_NON_IDENTICAL_DEFINITIONS",
+      "mode": "SYNTHETIC_TRAIN_REAL_TEST",
+      "features": [
+        "connected_porosity",
+        "specific_surface_proxy_per_m"
+      ],
+      "rmse_logK": 9.027759478578828,
+      "median_multiplicative_error": 4744.254673596535,
+      "mean_signed_log_bias": -8.430266995972715,
+      "empirical_95_interval_coverage": 0.0,
+      "r2_logK": -186.235503871382,
+      "r2_baseline": "MEAN_OBSERVED_LOG_K_FULL_REAL_EVALUATION_POPULATION",
+      "r2_baseline_logK": -23.56544535240123,
+      "real_inside_synthetic_feature_box": 0,
+      "real_outside_synthetic_feature_box": 21,
+      "per_feature_inside_counts": {
+        "connected_porosity": 6,
+        "specific_surface_proxy_per_m": 0
+      },
+      "standardized_nearest_synthetic_distance": {
+        "minimum": 15.008486999285036,
+        "median": 33.13282604743241,
+        "maximum": 60.92756216546436
+      },
+      "feature_ranges": {
+        "synthetic": {
+          "connected_porosity": [
+            0.235171875,
+            0.494359375
+          ],
+          "specific_surface_proxy_per_m": [
+            3932.291666666667,
+            7551.041666666667
+          ]
+        },
+        "real": {
+          "connected_porosity": [
+            0.3707,
+            0.6733
+          ],
+          "specific_surface_proxy_per_m": [
+            17105.0,
+            46688.25
+          ]
+        }
+      },
+      "by_coffee": {
+        "Guayacan": {
+          "n": 10,
+          "rmse_logK": 9.646890995309159,
+          "median_multiplicative_error": 12739.895015233567,
+          "mean_signed_log_bias": -9.055143157109786
+        },
+        "Tumba": {
+          "n": 11,
+          "rmse_logK": 8.425525106434275,
+          "median_multiplicative_error": 367.3254561068132,
+          "mean_signed_log_bias": -7.862197758575382
+        }
+      },
+      "grind_rank_reporting": [
+        {
+          "grind_rank": 1,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G01",
+              "log_residual": -10.264682615979307,
+              "multiplicative_error": 28700.867161547012
+            },
+            {
+              "sample_id": "TUMBA-G01",
+              "log_residual": -5.505417947132607,
+              "multiplicative_error": 246.02125807371456
+            }
+          ]
+        },
+        {
+          "grind_rank": 2,
+          "n": 1,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "TUMBA-G02",
+              "log_residual": -8.521982463436512,
+              "multiplicative_error": 5024.003794570743
+            }
+          ]
+        },
+        {
+          "grind_rank": 3,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G03",
+              "log_residual": -6.476726863732672,
+              "multiplicative_error": 649.840445134037
+            },
+            {
+              "sample_id": "TUMBA-G03",
+              "log_residual": -5.841887752209296,
+              "multiplicative_error": 344.42892380791864
+            }
+          ]
+        },
+        {
+          "grind_rank": 4,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G04",
+              "log_residual": -3.6979329758471877,
+              "multiplicative_error": 40.36378515288515
+            },
+            {
+              "sample_id": "TUMBA-G04",
+              "log_residual": -5.906248256459499,
+              "multiplicative_error": 367.3254561068132
+            }
+          ]
+        },
+        {
+          "grind_rank": 5,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G05",
+              "log_residual": -6.031162041571051,
+              "multiplicative_error": 416.19838831503375
+            },
+            {
+              "sample_id": "TUMBA-G05",
+              "log_residual": -4.213912483058518,
+              "multiplicative_error": 67.62058733491172
+            }
+          ]
+        },
+        {
+          "grind_rank": 6,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G06",
+              "log_residual": -7.486957781541111,
+              "multiplicative_error": 1784.6146374831812
+            },
+            {
+              "sample_id": "TUMBA-G06",
+              "log_residual": -4.8850181837397315,
+              "multiplicative_error": 132.2928708915563
+            }
+          ]
+        },
+        {
+          "grind_rank": 7,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G07",
+              "log_residual": -8.464689622541162,
+              "multiplicative_error": 4744.254673596535
+            },
+            {
+              "sample_id": "TUMBA-G07",
+              "log_residual": -5.7369674866882505,
+              "multiplicative_error": 310.1225328650465
+            }
+          ]
+        },
+        {
+          "grind_rank": 8,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G08",
+              "log_residual": -10.23191774669959,
+              "multiplicative_error": 27775.72583110986
+            },
+            {
+              "sample_id": "TUMBA-G08",
+              "log_residual": -9.23780085368907,
+              "multiplicative_error": 10278.409957890768
+            }
+          ]
+        },
+        {
+          "grind_rank": 9,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G09",
+              "log_residual": -9.939604191342625,
+              "multiplicative_error": 20735.5353568706
+            },
+            {
+              "sample_id": "TUMBA-G09",
+              "log_residual": -11.218587667141016,
+              "multiplicative_error": 74502.47811782997
+            }
+          ]
+        },
+        {
+          "grind_rank": 10,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G10",
+              "log_residual": -11.606933816652365,
+              "multiplicative_error": 109856.89207772924
+            },
+            {
+              "sample_id": "TUMBA-G10",
+              "log_residual": -12.379115404938222,
+              "multiplicative_error": 237783.38827635834
+            }
+          ]
+        },
+        {
+          "grind_rank": 11,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G11",
+              "log_residual": -16.35082391519077,
+              "multiplicative_error": 12620384.917301446
+            },
+            {
+              "sample_id": "TUMBA-G11",
+              "log_residual": -13.037236845836471,
+              "multiplicative_error": 459198.0354772527
+            }
+          ]
+        }
+      ],
+      "grind_rank_aggregate_limitation": "MOST_RANKS_HAVE_ONE_OR_TWO_OBSERVATIONS; AGGREGATE_RANK_METRICS_NOT_ESTIMABLE",
+      "synthetic_grouped_oof_residual_sd_logK": 0.4807061006067202,
+      "ridge_coefficients_standardized_with_intercept": [
+        -20.649527889470463,
+        0.4513733659120828,
+        -0.3342178443208468
+      ]
+    },
+    "three_feature_scale_proxy_sensitivity": {
+      "arm": "THREE_FEATURE_SCALE_PROXY_SENSITIVITY",
+      "label": "SCALE_PROXY_MISMATCH",
+      "mode": "SYNTHETIC_TRAIN_REAL_TEST",
+      "features": [
+        "connected_porosity",
+        "specific_surface_proxy_per_m",
+        "non_equivalent_scale_proxy_m"
+      ],
+      "rmse_logK": 3.8077535417144928,
+      "median_multiplicative_error": 51.92966791020872,
+      "mean_signed_log_bias": 3.05988497682478,
+      "empirical_95_interval_coverage": 0.047619047619047616,
+      "r2_logK": -32.3093306360606,
+      "r2_baseline": "MEAN_OBSERVED_LOG_K_FULL_REAL_EVALUATION_POPULATION",
+      "r2_baseline_logK": -23.56544535240123,
+      "real_inside_synthetic_feature_box": 0,
+      "real_outside_synthetic_feature_box": 21,
+      "per_feature_inside_counts": {
+        "connected_porosity": 6,
+        "specific_surface_proxy_per_m": 0,
+        "non_equivalent_scale_proxy_m": 0
+      },
+      "standardized_nearest_synthetic_distance": {
+        "minimum": 26.249909245890496,
+        "median": 49.47308287260686,
+        "maximum": 92.18646748003451
+      },
+      "feature_ranges": {
+        "synthetic": {
+          "connected_porosity": [
+            0.235171875,
+            0.494359375
+          ],
+          "specific_surface_proxy_per_m": [
+            3932.291666666667,
+            7551.041666666667
+          ],
+          "non_equivalent_scale_proxy_m": [
+            5.196152422706631e-05,
+            9.949874371066199e-05
+          ]
+        },
+        "real": {
+          "connected_porosity": [
+            0.3707,
+            0.6733
+          ],
+          "specific_surface_proxy_per_m": [
+            17105.0,
+            46688.25
+          ],
+          "non_equivalent_scale_proxy_m": [
+            0.000192,
+            0.000818
+          ]
+        }
+      },
+      "by_coffee": {
+        "Guayacan": {
+          "n": 10,
+          "rmse_logK": 3.8528704582296167,
+          "median_multiplicative_error": 46.59119904235618,
+          "mean_signed_log_bias": 3.1170996654878165
+        },
+        "Tumba": {
+          "n": 11,
+          "rmse_logK": 3.766269193829009,
+          "median_multiplicative_error": 67.06173583031821,
+          "mean_signed_log_bias": 3.0078716234947467
+        }
+      },
+      "grind_rank_reporting": [
+        {
+          "grind_rank": 1,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G01",
+              "log_residual": -2.9518846467750706,
+              "multiplicative_error": 19.141995654792446
+            },
+            {
+              "sample_id": "TUMBA-G01",
+              "log_residual": -0.5026322907493039,
+              "multiplicative_error": 1.653066901421724
+            }
+          ]
+        },
+        {
+          "grind_rank": 2,
+          "n": 1,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "TUMBA-G02",
+              "log_residual": -1.5708184452646172,
+              "multiplicative_error": 4.81058378254036
+            }
+          ]
+        },
+        {
+          "grind_rank": 3,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G03",
+              "log_residual": 1.2376295826343373,
+              "multiplicative_error": 3.447431919266471
+            },
+            {
+              "sample_id": "TUMBA-G03",
+              "log_residual": 1.0840081840935625,
+              "multiplicative_error": 2.9565060543706996
+            }
+          ]
+        },
+        {
+          "grind_rank": 4,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G04",
+              "log_residual": 3.7460871635128505,
+              "multiplicative_error": 42.355029039840495
+            },
+            {
+              "sample_id": "TUMBA-G04",
+              "log_residual": 2.021873631692042,
+              "multiplicative_error": 7.552462218058845
+            }
+          ]
+        },
+        {
+          "grind_rank": 5,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G05",
+              "log_residual": 3.56919466002455,
+              "multiplicative_error": 35.488001733822834
+            },
+            {
+              "sample_id": "TUMBA-G05",
+              "log_residual": 4.233701425398596,
+              "multiplicative_error": 68.97205519560386
+            }
+          ]
+        },
+        {
+          "grind_rank": 6,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G06",
+              "log_residual": 3.434421051791656,
+              "multiplicative_error": 31.013452184387777
+            },
+            {
+              "sample_id": "TUMBA-G06",
+              "log_residual": 4.628468523107323,
+              "multiplicative_error": 102.35718634812986
+            }
+          ]
+        },
+        {
+          "grind_rank": 7,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G07",
+              "log_residual": 3.928434970230807,
+              "multiplicative_error": 50.82736904487187
+            },
+            {
+              "sample_id": "TUMBA-G07",
+              "log_residual": 5.317219152203958,
+              "multiplicative_error": 203.8163110551346
+            }
+          ]
+        },
+        {
+          "grind_rank": 8,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G08",
+              "log_residual": 3.9498902628850523,
+              "multiplicative_error": 51.92966791020872
+            },
+            {
+              "sample_id": "TUMBA-G08",
+              "log_residual": 4.205613625437916,
+              "multiplicative_error": 67.06173583031821
+            }
+          ]
+        },
+        {
+          "grind_rank": 9,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G09",
+              "log_residual": 4.908818938710738,
+              "multiplicative_error": 135.47931051167737
+            },
+            {
+              "sample_id": "TUMBA-G09",
+              "log_residual": 4.108003709006901,
+              "multiplicative_error": 60.82517154725909
+            }
+          ]
+        },
+        {
+          "grind_rank": 10,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G10",
+              "log_residual": 5.309071407813686,
+              "multiplicative_error": 202.1624147617962
+            },
+            {
+              "sample_id": "TUMBA-G10",
+              "log_residual": 4.4986026694489745,
+              "multiplicative_error": 89.89143545261624
+            }
+          ]
+        },
+        {
+          "grind_rank": 11,
+          "n": 2,
+          "aggregate_metrics": "NOT_ESTIMABLE_N_LT_3",
+          "rows": [
+            {
+              "sample_id": "GUAYACAN-G11",
+              "log_residual": 4.0393332640495565,
+              "multiplicative_error": 56.78846726768282
+            },
+            {
+              "sample_id": "TUMBA-G11",
+              "log_residual": 5.062547674066867,
+              "multiplicative_error": 157.9925174614882
+            }
+          ]
+        }
+      ],
+      "grind_rank_aggregate_limitation": "MOST_RANKS_HAVE_ONE_OR_TWO_OBSERVATIONS; AGGREGATE_RANK_METRICS_NOT_ESTIMABLE",
+      "synthetic_grouped_oof_residual_sd_logK": 0.47519963581739516,
+      "ridge_coefficients_standardized_with_intercept": [
+        -20.649527889470463,
+        0.3256114515103317,
+        -0.21903100531147318,
+        0.19516556868635077
+      ]
+    },
+    "scale_proxy_semantics": "pore_distance_q50_times_voxel_m_and_R_mean_m_are_non_equivalent_scale_descriptors",
+    "box_monotonicity": "OUTSIDE_TWO_FEATURE_BOX_IMPLIES_OUTSIDE_CORRESPONDING_THREE_FEATURE_BOX",
+    "real_only_leave_one_coffee_out": {
+      "connected_porosity_only": {
+        "grouping": "LEAVE_ONE_COFFEE_OUT",
+        "n": 21,
+        "rmse_logK": 0.7806699291271876,
+        "median_multiplicative_error": 1.78040274336102,
+        "mean_signed_log_bias": -0.026797605055851954
+      },
+      "connected_porosity_plus_specific_surface": {
+        "grouping": "LEAVE_ONE_COFFEE_OUT",
+        "n": 21,
+        "rmse_logK": 0.20439972338307982,
+        "median_multiplicative_error": 1.1346948324469694,
+        "mean_signed_log_bias": -0.013623833852833792
+      }
+    },
+    "disposition": "SYNTHETIC_CLOSURE_REAL_DATA_OUT_OF_DOMAIN",
+    "full_topology_transfer": "FULL_TRANSFER_NOT_TESTABLE_WITH_PROCESSED_DATA_ONLY"
+  },
+  "cross_code": "CROSS_CODE_PARITY_NOT_ADJUDICATED",
+  "generator": "REAL_VOLUME_EVIDENCE_INSUFFICIENT_FOR_GENERATOR_ASSESSMENT",
+  "real_coffee_rev": "REAL_COFFEE_REV_NOT_ADJUDICATED",
+  "target": {
+    "evidence_role": "STATIC_CROSS_SAMPLE_CAPABILITY_CONFOUNDED_BY_COFFEE_GRIND_POROSITY_AND_PREPARATION",
+    "adjudication": {
+      "0.373506": {
+        "minimum_over_maximum_ratio": 0.08272251308900523,
+        "cross_sample_range_spans_target": true
+      },
+      "0.389226": {
+        "minimum_over_maximum_ratio": 0.08272251308900523,
+        "cross_sample_range_spans_target": true
+      },
+      "0.395294": {
+        "minimum_over_maximum_ratio": 0.08272251308900523,
+        "cross_sample_range_spans_target": true
+      }
+    },
+    "dynamic_mechanism": "NOT_IDENTIFIED"
+  },
+  "next_programme": "DEDICATED_REAL_XCT_DATA_ACCESS_OR_ACQUISITION",
+  "production_disposition": "NO_NEW_PRODUCTION_PHYSICS_YET",
+  "claim_boundary": {
+    "physical_validation": "NOT_ESTABLISHED",
+    "real_coffee_geometry": "PROCESSED_DATA_ONLY",
+    "real_tamped_puck_representative_volume": "NOT_ESTABLISHED",
+    "dynamic_pressure_mechanism": "NOT_IDENTIFIED",
+    "production_openfoam_physics": "UNCHANGED"
+  }
+}
