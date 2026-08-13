@@ -166,6 +166,55 @@ def grouped_predictions(x, y, groups, alpha=1.0):
     return pred
 
 
+def assess_transfer_arm(name, label, feature_names, sx, rx, sy, ry, groups, real):
+    oof = grouped_predictions(sx, sy, groups)
+    residual_sd = float(np.std(sy-oof, ddof=1))
+    pred, beta, mean, scale = ridge_fit_predict(sx, sy, rx)
+    lower, upper = pred - 1.96*residual_sd, pred + 1.96*residual_sd
+    inside_by_feature = (rx >= sx.min(axis=0)) & (rx <= sx.max(axis=0))
+    inside = np.all(inside_by_feature, axis=1)
+    nearest = np.min(np.sqrt(np.sum(((rx[:,None,:]-mean)/scale-
+                                     (sx[None,:,:]-mean)/scale)**2, axis=2)), axis=1)
+    errors=pred-ry
+    baseline=float(ry.mean())
+    baseline_sse=float(np.sum((ry-baseline)**2))
+    r2=float(1.0-np.sum(errors**2)/baseline_sse)
+    by_coffee={}
+    for coffee in sorted({r["coffee"] for r in real}):
+        idx=np.array([r["coffee"]==coffee for r in real])
+        by_coffee[coffee]={"n":int(idx.sum()),"rmse_logK":float(np.sqrt(np.mean(errors[idx]**2))),
+          "median_multiplicative_error":float(np.median(np.exp(np.abs(errors[idx])))),
+          "mean_signed_log_bias":float(np.mean(errors[idx]))}
+    grind_rank=[]
+    for grind in sorted({int(r["G"]) for r in real}):
+        indices=[i for i,r in enumerate(real) if int(r["G"])==grind]
+        grind_rank.append({"grind_rank":grind,"n":len(indices),
+          "aggregate_metrics":"NOT_ESTIMABLE_N_LT_3" if len(indices)<3 else "ESTIMABLE",
+          "rows":[{"sample_id":real[i]["sample_id"],"log_residual":float(errors[i]),
+                   "multiplicative_error":float(math.exp(abs(errors[i])))} for i in indices]})
+    ranges={"synthetic":{},"real":{}}
+    for i,feature in enumerate(feature_names):
+        ranges["synthetic"][feature]=[float(sx[:,i].min()),float(sx[:,i].max())]
+        ranges["real"][feature]=[float(rx[:,i].min()),float(rx[:,i].max())]
+    return {"arm":name,"label":label,"mode":"SYNTHETIC_TRAIN_REAL_TEST",
+      "features":feature_names,"rmse_logK":float(np.sqrt(np.mean(errors**2))),
+      "median_multiplicative_error":float(np.median(np.exp(np.abs(errors)))),
+      "mean_signed_log_bias":float(np.mean(errors)),
+      "empirical_95_interval_coverage":float(np.mean((ry>=lower)&(ry<=upper))),
+      "r2_logK":r2,"r2_baseline":"MEAN_OBSERVED_LOG_K_FULL_REAL_EVALUATION_POPULATION",
+      "r2_baseline_logK":baseline,"real_inside_synthetic_feature_box":int(inside.sum()),
+      "real_outside_synthetic_feature_box":int((~inside).sum()),
+      "per_feature_inside_counts":{feature:int(inside_by_feature[:,i].sum()) for i,feature in enumerate(feature_names)},
+      "standardized_nearest_synthetic_distance":{"minimum":float(nearest.min()),
+        "median":float(np.median(nearest)),"maximum":float(nearest.max())},
+      "feature_ranges":ranges,"by_coffee":by_coffee,"grind_rank_reporting":grind_rank,
+      "grind_rank_aggregate_limitation":"MOST_RANKS_HAVE_ONE_OR_TWO_OBSERVATIONS; AGGREGATE_RANK_METRICS_NOT_ESTIMABLE",
+      "synthetic_grouped_oof_residual_sd_logK":residual_sd,
+      "ridge_coefficients_standardized_with_intercept":[float(v) for v in beta],
+      "prediction":pred,"lower":lower,"upper":upper,"inside":inside,"nearest":nearest,
+      "errors":errors}
+
+
 def transfer(rows):
     synthetic = [r for r in read_csv(ENS / "XSV_ENS_001_PLOT_SOURCE.csv")
                  if r["direction"] == "X" and r["status"] == "PASS"]
@@ -175,60 +224,57 @@ def transfer(rows):
     real = [r for r in rows if all(finite(r[key]) for key in
             ("phi_p_connected","s_p_connected_per_m","R_mean_m","k_m2"))]
     voxel = np.array([float(r["voxel_um"]) * 1e-6 for r in synthetic])
-    sx = np.column_stack([
+    sx2 = np.column_stack([
         [float(r["phi_connected_x"]) for r in synthetic],
         [float(r["specific_interfacial_area_lu"]) / v for r, v in zip(synthetic, voxel)],
     ])
-    rx = np.column_stack([[float(r["phi_p_connected"]) for r in real],
+    rx2 = np.column_stack([[float(r["phi_p_connected"]) for r in real],
                           [float(r["s_p_connected_per_m"]) for r in real]])
+    sx3=np.column_stack([sx2,[float(r["pore_distance_q50"])*v for r,v in zip(synthetic,voxel)]])
+    rx3=np.column_stack([rx2,[float(r["R_mean_m"]) for r in real]])
     sy = np.log(np.array([float(r["K_gross_lu2"]) * v*v
                           for r, v in zip(synthetic, voxel)]))
     ry = np.log(np.array([float(r["k_m2"]) for r in real]))
     groups = np.array([r["physical_lineage_id"] for r in synthetic])
-    oof = grouped_predictions(sx, sy, groups)
-    residual_sd = float(np.std(sy-oof, ddof=1))
-    pred, beta, mean, scale = ridge_fit_predict(sx, sy, rx)
-    lower, upper = pred - 1.96*residual_sd, pred + 1.96*residual_sd
-    inside = np.all((rx >= sx.min(axis=0)) & (rx <= sx.max(axis=0)), axis=1)
-    nearest = np.min(np.sqrt(np.sum(((rx[:,None,:]-mean)/scale-
-                                     (sx[None,:,:]-mean)/scale)**2, axis=2)), axis=1)
+    arm2=assess_transfer_arm("TWO_FEATURE_SHARED_PROXY","SPECIFIC_SURFACE_PROXY_MAPPING_NON_IDENTICAL_DEFINITIONS",
+      ["connected_porosity","specific_surface_proxy_per_m"],sx2,rx2,sy,ry,groups,real)
+    arm3=assess_transfer_arm("THREE_FEATURE_SCALE_PROXY_SENSITIVITY","SCALE_PROXY_MISMATCH",
+      ["connected_porosity","specific_surface_proxy_per_m","non_equivalent_scale_proxy_m"],sx3,rx3,sy,ry,groups,real)
     prediction_rows=[]
-    for row, obs, p, lo, hi, domain, distance in zip(real, ry, pred, lower, upper, inside, nearest):
+    for i,(row,obs) in enumerate(zip(real,ry)):
         prediction_rows.append({"sample_id":row["sample_id"],"coffee":row["coffee"],
-          "G":row["G"],"published_k_m2":math.exp(obs),"synthetic_prediction_k_m2":math.exp(p),
-          "log_residual":p-obs,"multiplicative_error":math.exp(abs(p-obs)),
-          "prediction_95_low_m2":math.exp(lo),"prediction_95_high_m2":math.exp(hi),
-          "covered_95":lo <= obs <= hi,"inside_synthetic_shared_feature_box":bool(domain),
-          "standardized_nearest_synthetic_distance":float(distance)})
+          "G":row["G"],"published_k_m2":math.exp(obs),
+          "two_feature_prediction_k_m2":math.exp(arm2["prediction"][i]),
+          "two_feature_log_residual":arm2["errors"][i],
+          "two_feature_multiplicative_error":math.exp(abs(arm2["errors"][i])),
+          "two_feature_covered_95":arm2["lower"][i]<=obs<=arm2["upper"][i],
+          "two_feature_inside_box":bool(arm2["inside"][i]),
+          "two_feature_nearest_distance":arm2["nearest"][i],
+          "three_feature_prediction_k_m2":math.exp(arm3["prediction"][i]),
+          "three_feature_log_residual":arm3["errors"][i],
+          "three_feature_multiplicative_error":math.exp(abs(arm3["errors"][i])),
+          "three_feature_covered_95":arm3["lower"][i]<=obs<=arm3["upper"][i],
+          "three_feature_inside_box":bool(arm3["inside"][i]),
+          "three_feature_nearest_distance":arm3["nearest"][i],
+          "scale_proxy_label":"SCALE_PROXY_MISMATCH"})
     write_csv(CASE / "XSV_XCT_001_PLOT_SOURCE.csv", prediction_rows)
-    errors=pred-ry
-    by_coffee={}
-    for coffee in sorted({r["coffee"] for r in real}):
-        idx=np.array([r["coffee"]==coffee for r in real])
-        by_coffee[coffee]={"n":int(idx.sum()),"rmse_logK":float(np.sqrt(np.mean(errors[idx]**2))),
-          "median_multiplicative_error":float(np.median(np.exp(np.abs(errors[idx])))),
-          "mean_signed_log_bias":float(np.mean(errors[idx]))}
-    feature_ranges={"synthetic":{"connected_porosity":[float(sx[:,0].min()),float(sx[:,0].max())],
-                  "specific_surface_per_m":[float(sx[:,1].min()),float(sx[:,1].max())]},
-                  "real":{"connected_porosity":[float(rx[:,0].min()),float(rx[:,0].max())],
-                  "specific_surface_per_m":[float(rx[:,1].min()),float(rx[:,1].max())]}}
+    for arm in (arm2,arm3):
+        for key in ("prediction","lower","upper","inside","nearest","errors"): arm.pop(key)
     real_models=real_only_reference_models(real)
-    result={"schema_version":"espresso.whole_pull.xsv_xct_001.transfer.v1",
-      "mode":"SYNTHETIC_TRAIN_REAL_TEST","features":["connected_porosity","specific_surface_per_m"],
+    result={"schema_version":"espresso.whole_pull.xsv_xct_001.transfer.v2",
+      "mode":"SYNTHETIC_TRAIN_REAL_TEST","real_data_refitting":False,
       "synthetic_unique_masks":len(synthetic),"synthetic_physical_lineages":len(set(groups)),
       "real_scored_samples":len(real),"real_missing_samples":len(rows)-len(real),
-      "rmse_logK":float(np.sqrt(np.mean(errors**2))),
-      "median_multiplicative_error":float(np.median(np.exp(np.abs(errors)))),
-      "mean_signed_log_bias":float(np.mean(errors)),
-      "empirical_95_interval_coverage":float(np.mean((ry>=lower)&(ry<=upper))),
-      "real_inside_synthetic_shared_feature_box":int(inside.sum()),
-      "real_outside_synthetic_shared_feature_box":int((~inside).sum()),
-      "shared_feature_ranges":feature_ranges,
-      "by_coffee":by_coffee,"synthetic_grouped_oof_residual_sd_logK":residual_sd,
+      "descriptor_semantics":{"mapping":"SPECIFIC_SURFACE_PROXY_MAPPING_WITH_NON_IDENTICAL_DEFINITIONS",
+        "real":"WADSWORTH_CONNECTED_PERCOLATING_PHASE_SURFACE_DERIVED_USING_MARCHING_CUBES",
+        "synthetic":"TOTAL_PERIODIC_VOXEL_FACE_INTERFACIAL_AREA_PROXY_NOT_RESTRICTED_TO_CONNECTED_PORE_PHASE",
+        "interpretation":"SURFACE_SCALE_DOMAIN_SEPARATION_NOT_UNIQUE_PHYSICAL_MECHANISM_IDENTIFICATION",
+        "real_total_surface_robustness_range_per_m":[min(float(r["s_total_per_m"]) for r in real),max(float(r["s_total_per_m"]) for r in real)]},
+      "two_feature_assessment":arm2,"three_feature_scale_proxy_sensitivity":arm3,
+      "scale_proxy_semantics":"pore_distance_q50_times_voxel_m_and_R_mean_m_are_non_equivalent_scale_descriptors",
+      "box_monotonicity":"OUTSIDE_TWO_FEATURE_BOX_IMPLIES_OUTSIDE_CORRESPONDING_THREE_FEATURE_BOX",
       "real_only_leave_one_coffee_out":real_models,
-      "ridge_coefficients_standardized_with_intercept":[float(v) for v in beta],
-      "disposition":"SYNTHETIC_CLOSURE_REAL_DATA_OUT_OF_DOMAIN" if not inside.all()
-                    else "SYNTHETIC_CLOSURE_PARTIAL_TRANSFER_WITH_BIAS",
+      "disposition":"SYNTHETIC_CLOSURE_REAL_DATA_OUT_OF_DOMAIN",
       "full_topology_transfer":"FULL_TRANSFER_NOT_TESTABLE_WITH_PROCESSED_DATA_ONLY"}
     (CASE/"XSV_XCT_001_TRANSFER_ASSESSMENT.json").write_text(json.dumps(result,indent=2)+"\n")
     return result
@@ -316,16 +362,18 @@ def figures(rows, repro, transfer_result):
     ax.plot([lo,hi],[lo,hi],"k--",lw=1); ax.set(xlabel="Published numerical K (m²)",ylabel="Recalculated K (m²)")
     ax.legend(); fig.tight_layout(); fig.savefig(figure_dir/"source_model_reproduction.png",dpi=180); plt.close(fig)
     plot=read_csv(CASE/"XSV_XCT_001_PLOT_SOURCE.csv")
-    fig,ax=plt.subplots(figsize=(5.5,4.5))
-    for coffee,marker in (("Guayacan","o"),("Tumba","s")):
-        p=[r for r in plot if r["coffee"]==coffee]
-        ax.loglog([float(r["published_k_m2"]) for r in p],[float(r["synthetic_prediction_k_m2"]) for r in p],marker,label=coffee,ls="none")
-    lo=min(float(r["synthetic_prediction_k_m2"]) for r in plot); hi=max(float(r["published_k_m2"]) for r in plot)
-    ax.plot([lo,hi],[lo,hi],"k--",lw=1); ax.set(xlabel="Published real-coffee numerical K (m²)",ylabel="Synthetic-trained prediction (m²)")
-    ax.legend(); fig.tight_layout(); fig.savefig(figure_dir/"synthetic_to_real_transfer.png",dpi=180); plt.close(fig)
-    ranges=transfer_result["shared_feature_ranges"]
+    fig,axs=plt.subplots(1,2,figsize=(9,4.2))
+    for ax,prefix,title in ((axs[0],"two_feature","Two-feature proxy mapping"),(axs[1],"three_feature","Scale proxy mismatch")):
+        for coffee,marker in (("Guayacan","o"),("Tumba","s")):
+            p=[r for r in plot if r["coffee"]==coffee]
+            ax.loglog([float(r["published_k_m2"]) for r in p],[float(r[f"{prefix}_prediction_k_m2"]) for r in p],marker,label=coffee,ls="none")
+        values=[float(r[f"{prefix}_prediction_k_m2"]) for r in plot]+[float(r["published_k_m2"]) for r in plot]
+        lo,hi=min(values),max(values); ax.plot([lo,hi],[lo,hi],"k--",lw=1); ax.set_title(title)
+        ax.set(xlabel="Published numerical K (m²)",ylabel="Synthetic-trained prediction (m²)"); ax.legend()
+    fig.tight_layout(); fig.savefig(figure_dir/"synthetic_to_real_transfer.png",dpi=180); plt.close(fig)
+    ranges=transfer_result["two_feature_assessment"]["feature_ranges"]
     fig,axs=plt.subplots(1,2,figsize=(8,3.5))
-    for ax,key,label in zip(axs,("connected_porosity","specific_surface_per_m"),("Connected porosity","Specific surface (m⁻¹)")):
+    for ax,key,label in zip(axs,("connected_porosity","specific_surface_proxy_per_m"),("Connected porosity","Non-identical surface proxy (m⁻¹)")):
         s=ranges["synthetic"][key]; r=ranges["real"][key]
         ax.plot(s,[0,0],lw=8,label="Synthetic"); ax.plot(r,[1,1],lw=8,label="Real processed")
         ax.set_yticks([0,1],["Synthetic","Real"]); ax.set_xlabel(label)
@@ -369,6 +417,23 @@ def summarize(repro, transfer_result):
     return result
 
 
+def write_artifact_manifest():
+    paths=[
+      CASE/"XSV_XCT_001_PROCESSED_SOURCE_DATA.csv",CASE/"XSV_XCT_001_SOURCE_REPRODUCTION.csv",
+      CASE/"XSV_XCT_001_SCORED_MATRIX.csv",CASE/"XSV_XCT_001_SCORED_MATRIX.json",
+      CASE/"XSV_XCT_001_PLOT_SOURCE.csv",CASE/"XSV_XCT_001_TRANSFER_ASSESSMENT.json",
+      CASE/"XSV_XCT_001_TARGET_ASSESSMENT.json",CASE/"XSV_XCT_001_RESULT.json",
+      ROOT/"docs/verification/XSV_XCT_001_REAL_COFFEE_XCT_IMPORT_AND_COMPARISON_RESULT.md",
+      ROOT/"docs/verification/figures/xsv_xct_001/shared_feature_domain.png",
+      ROOT/"docs/verification/figures/xsv_xct_001/source_model_reproduction.png",
+      ROOT/"docs/verification/figures/xsv_xct_001/synthetic_to_real_transfer.png"]
+    records=[{"path":str(p.relative_to(ROOT)),"bytes":p.stat().st_size,"sha256":sha256(p)} for p in paths]
+    aggregate=hashlib.sha256("".join(f"{r['path']}\0{r['sha256']}\n" for r in records).encode()).hexdigest()
+    (CASE/"XSV_XCT_001_ARTIFACT_MANIFEST.json").write_text(json.dumps({
+      "schema_version":"espresso.whole_pull.xsv_xct_001.artifact_manifest.v1",
+      "file_count":len(records),"aggregate_sha256":aggregate,"files":records},indent=2)+"\n")
+
+
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument("command",choices=["import-processed","reproduce-source","transfer","all","inspect-volume"])
     parser.add_argument("--source",type=Path); parser.add_argument("--volume",type=Path)
@@ -385,6 +450,7 @@ def main():
     if args.command in ("transfer","all"):
         result=summarize(repro,trans)
         if args.command=="all": figures(rows,repro,trans)
+        write_artifact_manifest()
         print(json.dumps(result,indent=2))
 
 

@@ -64,9 +64,13 @@ OpenFOAM or the Puckworks lock.
 
 The mandatory processed route retained all 22 Wadsworth rows and scored the 21
 with complete hydraulic fields. The source percolation relationship reproduced
-materially better than Kozeny--Carman. Every real row was outside the joint
-synthetic connected-porosity/specific-surface range, and the strict
-synthetic-trained closure failed external transfer. No rights-cleared raw or
+materially better than Kozeny--Carman. Both frozen strict transfer arms were
+completed. Every real row remained outside the synthetic feature domain. The
+two-feature arm uses a specific-surface proxy mapping with non-identical
+definitions; the three-feature arm is explicitly `SCALE_PROXY_MISMATCH`
+because pore-distance median and mean particle radius are non-equivalent.
+Neither arm supports external transfer or uniquely identifies a physical
+morphology mechanism. No rights-cleared raw or
 segmented flow domain was obtained; exact cross-code parity, segmentation,
 resolution, subvolume, anisotropy, localization, and real-mask transformation
 analyses are therefore unadjudicated. The evidence-selected next programme is

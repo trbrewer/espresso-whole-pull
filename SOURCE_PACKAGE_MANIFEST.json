@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 387,
-  "total_uncompressed_bytes_excluding_manifest": 6015613,
-  "aggregate_source_sha256": "15b96b88cc92344035557ce310090578a2b22a7f3853a7898a0e17d8fce3f69e",
-  "aggregate_sha256": "15b96b88cc92344035557ce310090578a2b22a7f3853a7898a0e17d8fce3f69e",
+  "file_count": 388,
+  "total_uncompressed_bytes_excluding_manifest": 6096820,
+  "aggregate_source_sha256": "7c4d244303a0bcf55fa6ff1a78c86cf64f053dfb34d9653aeab485eaf63b0403",
+  "aggregate_sha256": "7c4d244303a0bcf55fa6ff1a78c86cf64f053dfb34d9653aeab485eaf63b0403",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -524,8 +524,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md": {
-      "sha256": "6f846184e86a36d1731aed758fc22ff1ff6925b12fa453081ba6b675465bffb7",
-      "bytes": 9934,
+      "sha256": "a8c34c17655fad0632bcdfe6d8a5feadadebf45dc315aa47d6f7074765c341e0",
+      "bytes": 10206,
       "git_mode": "100644"
     },
     "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md": {
@@ -769,13 +769,13 @@
       "git_mode": "100644"
     },
     "docs/verification/XSV_XCT_001_REAL_COFFEE_XCT_IMPORT_AND_COMPARISON_RESULT.md": {
-      "sha256": "96041d9e8201ece485aaba370fadf013f4ab849f2657a89ca79e0207506355df",
-      "bytes": 7564,
+      "sha256": "d7078f710ec9801db3933ee1ca5b006b3afb7d5c3afeff01220faf64ee0b75c9",
+      "bytes": 9081,
       "git_mode": "100644"
     },
     "docs/verification/figures/xsv_xct_001/shared_feature_domain.png": {
-      "sha256": "7ce51c2a2c40bc9bdd5f8b8f848bcc335cd64680ff8c08b0f51d163683139b1e",
-      "bytes": 24849,
+      "sha256": "3267e1b716a149f66696a68994f9c66841127def11f95e661d42874c502f11ef",
+      "bytes": 26370,
       "git_mode": "100644"
     },
     "docs/verification/figures/xsv_xct_001/source_model_reproduction.png": {
@@ -784,8 +784,8 @@
       "git_mode": "100644"
     },
     "docs/verification/figures/xsv_xct_001/synthetic_to_real_transfer.png": {
-      "sha256": "0b92666800c0809c6051c6e659ef89f60161c2b1e4b75e3f7d3ddbd0fbfa199d",
-      "bytes": 53646,
+      "sha256": "96b83bdd89eb0d4271a51bb46c0c698d89e201db28d068d4733bce929c9eda3d",
+      "bytes": 90905,
       "git_mode": "100644"
     },
     "docs/wp03/WP03_002_DIAGNOSTIC_PROTOCOL.md": {
@@ -1524,8 +1524,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_xct_001.py": {
-      "sha256": "6f689f194c71f2fcd8cf2ade669fdfd773843b41e2d52b890bbf87cc47f8ba3a",
-      "bytes": 5304,
+      "sha256": "104c584c99c133a6ad0f0efa753439e10cd2759e1704d49bb81b07cfdb60b838",
+      "bytes": 7795,
       "git_mode": "100644"
     },
     "verification/cases/xsv_ens_001/XSV_ENS_001_ARTIFACT_MANIFEST.json": {
@@ -1913,9 +1913,14 @@
       "bytes": 33361,
       "git_mode": "100644"
     },
+    "verification/cases/xsv_xct_001/XSV_XCT_001_ARTIFACT_MANIFEST.json": {
+      "sha256": "ee620a8c102ec6c7bbfec99bacdaeede9fabdff31c62cbd84007927884578ff6",
+      "bytes": 2604,
+      "git_mode": "100644"
+    },
     "verification/cases/xsv_xct_001/XSV_XCT_001_PLOT_SOURCE.csv": {
-      "sha256": "f8620a43da3bbac043bf1e50a8fbc36bec4bb610ee05f25289f5b4ab91f399c7",
-      "bytes": 3957,
+      "sha256": "661d71d3bf35db1fe62e5c8a2699d2e2892e83ccf757ef294ae0f3e316c6e439",
+      "bytes": 5499,
       "git_mode": "100644"
     },
     "verification/cases/xsv_xct_001/XSV_XCT_001_PROCESSED_SOURCE_DATA.csv": {
@@ -1929,8 +1934,8 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_xct_001/XSV_XCT_001_RESULT.json": {
-      "sha256": "bbca1b572946469707b6e5f5a025e3c81c6cc48f40dc5fcf7f86e8744809efaa",
-      "bytes": 4511,
+      "sha256": "1e50a85cca6da21efd76c805223aa76c336a86949f479ccaac7a0c9f3b7141f2",
+      "bytes": 19654,
       "git_mode": "100644"
     },
     "verification/cases/xsv_xct_001/XSV_XCT_001_SCORED_MATRIX.csv": {
@@ -1959,13 +1964,13 @@
       "git_mode": "100644"
     },
     "verification/cases/xsv_xct_001/XSV_XCT_001_TRANSFER_ASSESSMENT.json": {
-      "sha256": "a563316b469807639e205c69b121401cdc747f55e4543cf0f69130bec3b692a4",
-      "bytes": 2262,
+      "sha256": "157f2115881738e7037fa3f273e65528c03159fc945916bcf672956bf21e9bdb",
+      "bytes": 16445,
       "git_mode": "100644"
     },
     "verification/tools/xsv_xct_001.py": {
-      "sha256": "7f734c4a4cd1a8d426c3b880c33aede70f138afbac10016bac939fe0d37ecf3f",
-      "bytes": 20132,
+      "sha256": "8c8d6cb12eeea3a571af062a37f1ae4abaa5777e8a8e06723d46208348057701",
+      "bytes": 24807,
       "git_mode": "100755"
     }
   }

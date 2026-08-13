@@ -75,7 +75,7 @@ class XsvXct001Tests(unittest.TestCase):
         result=json.loads((ROOT/"verification/cases/xsv_xct_001/XSV_XCT_001_TRANSFER_ASSESSMENT.json").read_text())
         self.assertEqual(result["mode"],"SYNTHETIC_TRAIN_REAL_TEST")
         self.assertGreater(result["synthetic_physical_lineages"],1)
-        self.assertEqual(result["real_inside_synthetic_shared_feature_box"],0)
+        self.assertEqual(result["two_feature_assessment"]["real_inside_synthetic_feature_box"],0)
         self.assertEqual(result["full_topology_transfer"],"FULL_TRANSFER_NOT_TESTABLE_WITH_PROCESSED_DATA_ONLY")
 
     def test_claims_remain_bounded(self):
@@ -94,6 +94,47 @@ class XsvXct001Tests(unittest.TestCase):
         for name in subprocess.check_output(["git","ls-files"],cwd=ROOT,text=True).splitlines():
             if Path(name).suffix.lower() in forbidden and "fixture" not in name: tracked.add(name)
         self.assertEqual(tracked,set())
+
+
+class XsvXct001CorrectionC1ArtifactTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.result=json.loads((ROOT/"verification/cases/xsv_xct_001/XSV_XCT_001_TRANSFER_ASSESSMENT.json").read_text())
+
+    def test_frozen_three_feature_arm_uses_real_radius(self):
+        arm=self.result["three_feature_scale_proxy_sensitivity"]
+        self.assertEqual(arm["label"],"SCALE_PROXY_MISMATCH")
+        self.assertIn("non_equivalent_scale_proxy_m",arm["features"])
+        self.assertIn("non_equivalent_scale_proxy_m",arm["feature_ranges"]["real"])
+        rows=XCT.read_csv(ROOT/"verification/cases/xsv_xct_001/XSV_XCT_001_PROCESSED_SOURCE_DATA.csv")
+        expected=[min(float(r["R_mean_m"]) for r in rows if r["k_m2"]),max(float(r["R_mean_m"]) for r in rows if r["k_m2"])]
+        self.assertEqual(arm["feature_ranges"]["real"]["non_equivalent_scale_proxy_m"],expected)
+
+    def test_two_and_three_feature_arms_are_both_retained(self):
+        self.assertIn("two_feature_assessment",self.result)
+        self.assertIn("three_feature_scale_proxy_sensitivity",self.result)
+        self.assertEqual(self.result["two_feature_assessment"]["real_outside_synthetic_feature_box"],21)
+        self.assertEqual(self.result["three_feature_scale_proxy_sensitivity"]["real_outside_synthetic_feature_box"],21)
+
+    def test_surface_definitions_are_explicitly_non_identical(self):
+        semantics=self.result["descriptor_semantics"]
+        self.assertIn("NON_IDENTICAL_DEFINITIONS",semantics["mapping"])
+        self.assertIn("MARCHING_CUBES",semantics["real"])
+        self.assertIn("TOTAL_PERIODIC_VOXEL_FACE",semantics["synthetic"])
+        self.assertNotEqual(semantics["real"],semantics["synthetic"])
+
+    def test_every_r2_has_an_explicit_baseline(self):
+        for key in ("two_feature_assessment","three_feature_scale_proxy_sensitivity"):
+            arm=self.result[key]
+            self.assertIn("r2_logK",arm)
+            self.assertEqual(arm["r2_baseline"],"MEAN_OBSERVED_LOG_K_FULL_REAL_EVALUATION_POPULATION")
+
+    def test_grind_rank_reporting_retains_small_sample_limitation(self):
+        for key in ("two_feature_assessment","three_feature_scale_proxy_sensitivity"):
+            arm=self.result[key]
+            self.assertEqual(len(arm["grind_rank_reporting"]),11)
+            self.assertIn("NOT_ESTIMABLE",arm["grind_rank_aggregate_limitation"])
+            self.assertTrue(all(rank["n"] in (1,2) for rank in arm["grind_rank_reporting"]))
 
 
 if __name__ == "__main__": unittest.main()
