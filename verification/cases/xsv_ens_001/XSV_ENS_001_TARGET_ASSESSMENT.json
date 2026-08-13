@@ -1,0 +1,78 @@
+{
+  "attempted_parent_count": 8,
+  "classification": "STATIC_STATE_CAPABLE_DYNAMIC_CAUSE_UNIDENTIFIED",
+  "exact_targets": {
+    "late": 0.395294,
+    "middle": 0.389226,
+    "terminal": 0.373506
+  },
+  "minimum_valid_pairs_for_robust": 8,
+  "nonconvergence_qualification": "ALL_NONCONVERGED_IDENTITIES_RETAINED_AND_NOT_REPLACED",
+  "paired_restriction": [
+    {
+      "bootstrap_95_ci": [
+        0.5565166198482316,
+        0.6478938855991374
+      ],
+      "disposition": "TARGET_ATTAINMENT_NOT_REACHED",
+      "fraction_attaining": {
+        "0.373506": 0.0,
+        "0.389226": 0.0,
+        "0.395294": 0.0
+      },
+      "geometric_mean_ratio": 0.6007964084305776,
+      "minimum_connected_porosity_retention": 0.8971614010220448,
+      "n_converged_pairs": 8,
+      "restriction_fraction": 0.1
+    },
+    {
+      "bootstrap_95_ci": [
+        0.4612966899902698,
+        0.5478332627262499
+      ],
+      "disposition": "TARGET_ATTAINMENT_UNRESOLVED_UNCERTAINTY",
+      "fraction_attaining": {
+        "0.373506": 0.0,
+        "0.389226": 0.0,
+        "0.395294": 0.0
+      },
+      "geometric_mean_ratio": 0.5015654825339348,
+      "minimum_connected_porosity_retention": 0.7971551518049248,
+      "n_converged_pairs": 6,
+      "restriction_fraction": 0.2
+    },
+    {
+      "bootstrap_95_ci": [
+        0.2905753382599579,
+        0.38919857030107285
+      ],
+      "disposition": "TARGET_ATTAINMENT_UNRESOLVED_UNCERTAINTY",
+      "fraction_attaining": {
+        "0.373506": 0.6666666666666666,
+        "0.389226": 0.6666666666666666,
+        "0.395294": 0.6666666666666666
+      },
+      "geometric_mean_ratio": 0.3350197915587206,
+      "minimum_connected_porosity_retention": 0.6989401545939916,
+      "n_converged_pairs": 6,
+      "restriction_fraction": 0.3
+    },
+    {
+      "bootstrap_95_ci": [
+        0.17277837578799177,
+        0.2587250923909968
+      ],
+      "disposition": "TARGET_ATTAINMENT_UNRESOLVED_UNCERTAINTY",
+      "fraction_attaining": {
+        "0.373506": 1.0,
+        "0.389226": 1.0,
+        "0.395294": 1.0
+      },
+      "geometric_mean_ratio": 0.21015451416791417,
+      "minimum_connected_porosity_retention": 0.5995771356504322,
+      "n_converged_pairs": 6,
+      "restriction_fraction": 0.4
+    }
+  ],
+  "schema_version": "espresso.whole_pull.xsv_ens_001.target.v2"
+}

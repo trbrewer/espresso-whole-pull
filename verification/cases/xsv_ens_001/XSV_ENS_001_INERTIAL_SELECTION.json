@@ -1,0 +1,16 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_ens_001.inertial_selection.v1",
+  "selection_time": "AFTER_FROZEN_BASELINE_EXECUTION_BEFORE_FORCE_SWEEP",
+  "selection_rule": "nearest deterministic 10th, 50th, and 90th percentiles of converged L40 baseline Kx, plus predeclared high-resistance and heterogeneous states; ties by case_id",
+  "selected_parent_case_ids": [
+    "BASE-L40-S211-X",
+    "BASE-L40-S809-X",
+    "BASE-L40-S307-X",
+    "DEP40-L40-S101-X",
+    "H2-C8-L40-S101-X"
+  ],
+  "forces_lu": [5e-06, 1e-05, 2e-05, 4e-05, 8e-05],
+  "precision": "f32",
+  "purpose": "SCORED_SECONDARY_INERTIAL_CLOSURE",
+  "primary_target_disposition_change_permitted": false
+}

@@ -1,6 +1,6 @@
 # Solver Development and Validation Roadmap
 
-The enduring forward scientific sequence and corrected-pending-exact-head-review SCI-MD-001 work are in the
+The enduring forward scientific sequence, merged SCI-MD-001 result, and active XSV-ENS-001 work are in the
 [Scientific Modeling Forward Plan](SCIENTIFIC_MODELING_FORWARD_PLAN.md). This
 new authorization supersedes only the stale statement that no mechanism-
 selection task is active; the independent-data validation gate is unchanged.
@@ -110,6 +110,14 @@ This ladder distinguishes backend parity, analytical verification and closure
 interface qualification from physical validation. It requires explicit unit,
 reference-volume and provenance contracts. No stage substitutes for
 independent physical data or changes the current scientific gate.
+
+## Active scientific programme
+
+XSV-ENS-001 has completed its bounded scientific correction and awaits
+exact-head review. It assesses stochastic synthetic
+pore-scale closure, finite-volume behavior, static-state capability relative
+to SCI-MD-001, and directional and inertial uncertainty. It does not alter the
+production OpenFOAM solver or establish physical validation.
 
 ## Next human-owner decision
 

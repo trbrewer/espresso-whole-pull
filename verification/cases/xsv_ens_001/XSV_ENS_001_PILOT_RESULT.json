@@ -1,0 +1,54 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_ens_001.pilot_result.v1",
+  "evidence_class": "NUMERICAL_QUALIFICATION_ONLY",
+  "executed_utc": "2026-08-12T17:33:39Z",
+  "hardware": {
+    "cpu": "AMD Ryzen Threadripper 3990X 64-Core Processor",
+    "physical_cores": 64,
+    "logical_cpus": 128,
+    "ram_bytes": 270361264128,
+    "gpu": "NVIDIA GeForce RTX 2070 SUPER",
+    "gpu_vram_mib": 8192,
+    "nvidia_driver": "570.211.01"
+  },
+  "software": {
+    "python": "3.12.3",
+    "taichi": "1.7.4",
+    "numpy": "2.5.2",
+    "compiler": "gcc 13.3.0",
+    "openfoam_context": "OpenFOAM Foundation 12"
+  },
+  "runtime_puckworks": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "accepted_anchor": {
+    "geometry": "XSV-TAICHI-002 H-A0-S42",
+    "K_gross_lu2_reference": 1.7919979172502785,
+    "K_gross_lu2_reproduced": 1.7919953212730295,
+    "relative_difference": 1.448649703084115e-06
+  },
+  "force_qualification": {
+    "f64_forces_lu": [5e-07, 1e-06, 2e-06],
+    "q_over_g_range_relative": 2.946026579293774e-06,
+    "maximum_mach": 0.0002413923259186947,
+    "disposition": "PASS"
+  },
+  "precision_qualification": {
+    "paired_f32_force_lu": 1e-05,
+    "K_gross_relative_difference": 0.0009763371130457887,
+    "localization_cv_relative_difference": 4.071429866836507e-05,
+    "f32_mach": 0.0012057980269998031,
+    "disposition": "F32_QUALIFIED_FOR_BROAD_ENSEMBLES_WITH_F64_ANCHORS"
+  },
+  "execution_policy": {
+    "broad_precision": "f32",
+    "anchor_precision": "f64",
+    "broad_force_lu": 1e-05,
+    "fresh_process_per_solve": true,
+    "maximum_infrastructure_retry": 1
+  },
+  "spatial_discretization": "NOT_YET_ADJUDICATED_AT_MATRIX_FREEZE",
+  "full_external_evidence": "EXTERNAL_EVIDENCE_ROOT/pilot",
+  "full_external_evidence_path_role": "LOCAL_RUNTIME_ONLY_NOT_PORTABLE_OR_COMMITTED_AS_SCIENTIFIC_INPUT"
+}
