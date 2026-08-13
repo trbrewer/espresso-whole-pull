@@ -9,13 +9,21 @@ import json
 import math
 from pathlib import Path
 
-import numpy as np
+try:
+    import numpy as np
+except ModuleNotFoundError:  # Optional scientific dependency, absent in base CI.
+    np = None
 
 ROOT = Path(__file__).resolve().parents[2]
 CASE = ROOT / "verification/cases/xsv_xct_001"
 ENS = ROOT / "verification/cases/xsv_ens_001"
 SOURCE_SHA256 = "3b0139fe02108d3dfcd1441d9e4062e86d9b7e1a8505141a7beefd9366ebf20f"
 TARGETS = (0.373506, 0.389226, 0.395294)
+
+
+def require_numpy():
+    if np is None:
+        raise RuntimeError("XSV-XCT-001 numerical commands require NumPy")
 
 
 def sha256(path: Path) -> str:
@@ -137,6 +145,7 @@ def source_reproduction(rows):
 
 
 def ridge_fit_predict(train_x, train_y, test_x, alpha=1.0):
+    require_numpy()
     mean = train_x.mean(axis=0); scale = train_x.std(axis=0)
     scale[scale == 0] = 1.0
     x = (train_x - mean) / scale
@@ -247,6 +256,7 @@ def real_only_reference_models(real):
 
 
 def volume_from_npy(path: Path, *, solid_value=1):
+    require_numpy()
     array=np.load(path,allow_pickle=False)
     if array.ndim != 3: raise ValueError("volume must be three-dimensional")
     if not np.isin(array,[0,1]).all(): raise ValueError("binary labels 0/1 required")
@@ -293,6 +303,7 @@ def parity_disposition(*, exact_mask, equivalent_boundary, value_mapping=True):
 
 
 def figures(rows, repro, transfer_result):
+    require_numpy()
     import matplotlib.pyplot as plt
     figure_dir=ROOT/"docs/verification/figures/xsv_xct_001"
     figure_dir.mkdir(parents=True,exist_ok=True)

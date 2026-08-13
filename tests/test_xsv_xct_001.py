@@ -13,6 +13,7 @@ SPEC.loader.exec_module(XCT)
 np = XCT.np
 
 
+@unittest.skipIf(XCT.np is None, "optional NumPy scientific dependency unavailable")
 class XsvXct001Tests(unittest.TestCase):
     def test_protocol_uses_exact_targets_and_processed_route(self):
         protocol=json.loads((ROOT/"verification/cases/xsv_xct_001/XSV_XCT_001_PROTOCOL.json").read_text())
