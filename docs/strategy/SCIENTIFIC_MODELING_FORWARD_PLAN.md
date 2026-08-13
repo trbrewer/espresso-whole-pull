@@ -1,7 +1,7 @@
 # Scientific Modeling Forward Plan
 
 Status: enduring scientific handoff; XSV-ENS-001 merged complete; XSV-XCT-001
-authorized and active.
+execution complete pending exact-head review.
 Change declaration: `NUMERICAL_METHOD_CHANGE`, diagnostic pore scale only;
 production OpenFOAM integration false.
 
@@ -55,12 +55,23 @@ result because only six of eight attempted pairs were valid. Real-geometry
 import and microCT comparison remains the provisional next recommendation;
 no successor programme is authorized on this branch.
 
-### Active: XSV-XCT-001
+### Execution complete pending exact-head review: XSV-XCT-001
 
 **Real-coffee XCT import and microstructure-to-flow comparison.** Execute the
 processed Wadsworth 2026 route, audit legitimate volume access, and test
 synthetic-to-real morphology and closure transfer without changing production
 OpenFOAM or the Puckworks lock.
+
+The mandatory processed route retained all 22 Wadsworth rows and scored the 21
+with complete hydraulic fields. The source percolation relationship reproduced
+materially better than Kozeny--Carman. Every real row was outside the joint
+synthetic connected-porosity/specific-surface range, and the strict
+synthetic-trained closure failed external transfer. No rights-cleared raw or
+segmented flow domain was obtained; exact cross-code parity, segmentation,
+resolution, subvolume, anisotropy, localization, and real-mask transformation
+analyses are therefore unadjudicated. The evidence-selected next programme is
+dedicated access to exact real-XCT flow domains or rights-cleared acquisition,
+with `NO_NEW_PRODUCTION_PHYSICS_YET` retained.
 
 ### Next lateral-flow programme: SCI-LC-001
 
@@ -118,13 +129,13 @@ EXPERIMENTAL_COMMISSIONING:
 CURRENT_VALIDATION_GATE:
   ADDITIONAL_INDEPENDENT_DATA_REQUIRED
 CURRENT_DISCOVERY_AND_MECHANISM_DISCRIMINATION_TASK:
-  XSV-XCT-001
+  NONE_PENDING_XSV_XCT_001_EXACT_HEAD_REVIEW
 SCI-MD-001:
   MERGED_COMPLETE
 XSV-ENS-001:
   MERGED_COMPLETE
 XSV-XCT-001:
-  AUTHORIZED_AND_ACTIVE
+  EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
 ```
 
 The independent-data gate limits validation claims; it does not prohibit the

@@ -1,0 +1,78 @@
+{
+  "schema_version": "espresso.whole_pull.xsv_xct_001.transfer.v1",
+  "mode": "SYNTHETIC_TRAIN_REAL_TEST",
+  "features": [
+    "connected_porosity",
+    "specific_surface_per_m"
+  ],
+  "synthetic_unique_masks": 225,
+  "synthetic_physical_lineages": 179,
+  "real_scored_samples": 21,
+  "real_missing_samples": 1,
+  "rmse_logK": 9.027759478578828,
+  "median_multiplicative_error": 4744.254673596535,
+  "mean_signed_log_bias": -8.430266995972715,
+  "empirical_95_interval_coverage": 0.0,
+  "real_inside_synthetic_shared_feature_box": 0,
+  "real_outside_synthetic_shared_feature_box": 21,
+  "shared_feature_ranges": {
+    "synthetic": {
+      "connected_porosity": [
+        0.235171875,
+        0.494359375
+      ],
+      "specific_surface_per_m": [
+        3932.291666666667,
+        7551.041666666667
+      ]
+    },
+    "real": {
+      "connected_porosity": [
+        0.3707,
+        0.6733
+      ],
+      "specific_surface_per_m": [
+        17105.0,
+        46688.25
+      ]
+    }
+  },
+  "by_coffee": {
+    "Guayacan": {
+      "n": 10,
+      "rmse_logK": 9.646890995309159,
+      "median_multiplicative_error": 12739.895015233567,
+      "mean_signed_log_bias": -9.055143157109786
+    },
+    "Tumba": {
+      "n": 11,
+      "rmse_logK": 8.425525106434275,
+      "median_multiplicative_error": 367.3254561068132,
+      "mean_signed_log_bias": -7.862197758575382
+    }
+  },
+  "synthetic_grouped_oof_residual_sd_logK": 0.4807061006067202,
+  "real_only_leave_one_coffee_out": {
+    "connected_porosity_only": {
+      "grouping": "LEAVE_ONE_COFFEE_OUT",
+      "n": 21,
+      "rmse_logK": 0.7806699291271876,
+      "median_multiplicative_error": 1.78040274336102,
+      "mean_signed_log_bias": -0.026797605055851954
+    },
+    "connected_porosity_plus_specific_surface": {
+      "grouping": "LEAVE_ONE_COFFEE_OUT",
+      "n": 21,
+      "rmse_logK": 0.20439972338307982,
+      "median_multiplicative_error": 1.1346948324469694,
+      "mean_signed_log_bias": -0.013623833852833792
+    }
+  },
+  "ridge_coefficients_standardized_with_intercept": [
+    -20.649527889470463,
+    0.4513733659120828,
+    -0.3342178443208468
+  ],
+  "disposition": "SYNTHETIC_CLOSURE_REAL_DATA_OUT_OF_DOMAIN",
+  "full_topology_transfer": "FULL_TRANSFER_NOT_TESTABLE_WITH_PROCESSED_DATA_ONLY"
+}

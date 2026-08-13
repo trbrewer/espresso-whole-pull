@@ -1,6 +1,7 @@
 # Project State
 
-Current scientific-discovery work is `XSV-XCT-001_AUTHORIZED_AND_ACTIVE`;
+Current scientific-discovery work is
+`XSV-XCT-001_EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW`;
 XSV-ENS-001 is `MERGED_COMPLETE` at merge commit
 `03e3348b261b7d8aec8f44c49441ae39b5fff059`. See
 the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md).
@@ -37,9 +38,14 @@ claims and does not stop authorized post-observation mechanism discrimination.
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).
 
-XSV-XCT-001 is the active real-coffee XCT processed-data and conditional
-real-volume comparison programme. Production OpenFOAM physics and the locked
-Puckworks runtime remain unchanged. SCI-MD-001 is `MERGED_COMPLETE` at merge commit
+XSV-XCT-001 completed its processed-real-coffee comparison; no rights-cleared
+raw or segmented volume was available, so exact-mask cross-code parity and
+full topology transfer remain unadjudicated. All 21 scoreable real rows are
+outside the synthetic shared-feature domain, and the strict synthetic closure
+does not transfer. The next recommendation is dedicated access to exact XCT
+flow domains or a rights-cleared real-XCT acquisition. Production OpenFOAM
+physics and the locked Puckworks runtime remain unchanged. SCI-MD-001 is
+`MERGED_COMPLETE` at merge commit
 `1c83a860bcab93062351be0be87d745a9bfc477d`; its approved head
 `5b254f893efbc9b26bd8e05e09939f5436770f78` is preserved in the merge
 ancestry. XSV-ENS-001 is the completed stochastic synthetic pore-closure and
