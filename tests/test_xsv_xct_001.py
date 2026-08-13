@@ -5,13 +5,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-import numpy as np
-
 ROOT = Path(__file__).resolve().parents[1]
-SPEC = importlib.util.spec_from_file_location("xsv_xct_001", ROOT / "scripts/xsv_xct_001.py")
+SPEC = importlib.util.spec_from_file_location("xsv_xct_001", ROOT / "verification/tools/xsv_xct_001.py")
 XCT = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = XCT
 SPEC.loader.exec_module(XCT)
+np = XCT.np
 
 
 class XsvXct001Tests(unittest.TestCase):
