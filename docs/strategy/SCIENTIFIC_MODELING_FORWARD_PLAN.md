@@ -29,7 +29,10 @@ The synthetic ensemble and processed real-coffee XCT programs found substantial 
 
 ```text
 RP-D-LC-001b P1b
-  -> bounded Puckworks disposition; stop before P2a
+  -> P2a candidate quantification
+  -> P2b arithmetic selection and proposed freeze
+  -> STOP for second exact-head review
+  -> P3/P4 if separately authorized, or bounded stop
   -> SCI-LC-001A reduced lateral phase diagram
        -> selected regime boundaries only -> SCI-LC-001B 3-D confirmations
 
