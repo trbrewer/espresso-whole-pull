@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 388,
-  "total_uncompressed_bytes_excluding_manifest": 6096820,
-  "aggregate_source_sha256": "7c4d244303a0bcf55fa6ff1a78c86cf64f053dfb34d9653aeab485eaf63b0403",
-  "aggregate_sha256": "7c4d244303a0bcf55fa6ff1a78c86cf64f053dfb34d9653aeab485eaf63b0403",
+  "file_count": 389,
+  "total_uncompressed_bytes_excluding_manifest": 6113352,
+  "aggregate_source_sha256": "195738b290d66cf21e7d42a3ebcdf7c8efa6614ebe0b56cd1f61e1e0c35392ad",
+  "aggregate_sha256": "195738b290d66cf21e7d42a3ebcdf7c8efa6614ebe0b56cd1f61e1e0c35392ad",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -524,8 +524,13 @@
       "git_mode": "100644"
     },
     "docs/strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md": {
-      "sha256": "a8c34c17655fad0632bcdfe6d8a5feadadebf45dc315aa47d6f7074765c341e0",
-      "bytes": 10206,
+      "sha256": "e3ec774880f4bdadca1dfdf98846e0577bec542f0344fe020c69076087a5225a",
+      "bytes": 16531,
+      "git_mode": "100644"
+    },
+    "docs/strategy/history/scientific_modeling_forward_plan_2026-08-14_pre_roadmap.md": {
+      "sha256": "d2c3134590b54cc74b1cd6924efacac5a94c280d702ea7c01cdae2b851a79871",
+      "bytes": 10207,
       "git_mode": "100644"
     },
     "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md": {
