@@ -1,10 +1,14 @@
 # Project State
 
-Current scientific-discovery work is
-`XSV-XCT-001_EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW`;
-XSV-ENS-001 is `MERGED_COMPLETE` at merge commit
-`03e3348b261b7d8aec8f44c49441ae39b5fff059`. See
-the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md).
+The current bounded scientific dependency is `RP-D-LC-001b`. P1b completed
+at the exact P0/P1a-bound Puckworks source authority on 14 August 2026 with
+seven admitted synthetic candidates. The dependency remains open; P2a needs
+separate exact-head review and authorization. This EWP task authorizes no
+later Puckworks phase and no EWP model execution. See
+the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md)
+for the prioritized program, gates, and current next action. XSV-XCT-001 is
+execution-complete, XSV-ENS-001 is `MERGED_COMPLETE`, and their pore-scale
+limitations are incorporated into that plan.
 The `ADDITIONAL_INDEPENDENT_DATA_REQUIRED` gate continues to limit validation
 claims and does not stop authorized post-observation mechanism discrimination.
 
@@ -17,16 +21,17 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 388/388 PASS
+- Public source verification: 389/389 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active cross-solver verification task: none
+- Active cross-model dependency: `RP-D-LC-001b` (P1b complete; P2a unauthorized)
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
 - Cross-solver evidence class: `SIMULATED_SYNTHETIC_REFERENCE`
-- Current scientific gate: `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`
+- Current physical-validation gate: `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`
+- Current discovery disposition: `NO_NEW_PRODUCTION_PHYSICS_YET`
 - Human-owner independent-data route decision: `STILL_REQUIRED`
 - Controlling strategy version: `1.7`
 - Prior strategy snapshot:

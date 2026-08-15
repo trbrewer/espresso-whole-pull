@@ -1,198 +1,199 @@
 # Scientific Modeling Forward Plan
 
-Status: enduring scientific handoff; XSV-ENS-001 merged complete; XSV-XCT-001
-execution complete pending exact-head review.
-Change declaration: `NUMERICAL_METHOD_CHANGE`, diagnostic pore scale only;
-production OpenFOAM integration false.
+- **Status date:** 14 August 2026
+- **Status:** Enduring scientific handoff; `RP-D-LC-001b P1b` complete with seven admitted candidates at the exact P0/P1a source authority; the dependency remains open and no later phase is authorized here
+- **Change declaration:** `NO_GOVERNING_PHYSICS_CHANGE`
+- **Standing disposition:** `NO_NEW_PRODUCTION_PHYSICS_YET`
 
-## 1. Executive scientific diagnosis
+**Current next action:** P2a requires separate exact-head review and authorization; do not execute it under this task.
 
-Espresso Whole Pull (EWP) is already a broad whole-pull modelling platform. Its
-present bottleneck is mechanism discrimination, not the ability to add more
-equations. Every tested production family reverses the Waszkiewicz terminal
-flow and accumulated-mass ordering (`source: 5 bar > 9 bar > 11 bar`), the
-fixed Schmieder comparison reverses the tested grind direction at all three
-brew ratios, and a locally successful extraction/time-history reconstruction
-does not transfer across sources. Physical validation is not established.
-These failures are productive scientific targets: sign, ordering, residual
-shape, plausibility and transfer precede aggregate error.
+## 1. Executive diagnosis
 
-## 2. Current merged modelling capabilities
+Espresso Whole-Pull (EWP) is already a broad numerical modeling platform. Its principal bottleneck is mechanism discrimination, not the ability to add more equations. Substantial numerical verification and useful local reconstructions exist, but physical validation remains `NOT_ESTABLISHED`.
 
-The Foundation OpenFOAM 12 platform includes initially dry sharp-front
-wetting; prescribed and machine-coupled pressure; Darcy and
-Darcy--Forchheimer saturated flow; axial and radial heterogeneity;
-dissolution-indexed effective permeability; quasi-static compaction;
-conservative one-solute transport and extraction; cup accumulation; spatial
-diagnostics; Taichi/LBM closure work; and sensitivity and identifiability
-infrastructure. These are verified or diagnostic capabilities, not proof that
-their internal mechanisms represent physical coffee accurately.
+Every tested production family reverses the observed Waszkiewicz pressure ordering: the source gives `5 bar > 9 bar > 11 bar`, while the tested models give `11 bar > 9 bar > 5 bar`. The tested grind comparison also fails in direction of response. Locally successful reconstructions do not transfer reliably across pressures, grinds, or sources. Further unrestricted fitting of the existing evidence is therefore not the answer. The useful question is which missing physical mechanism creates the required resistance evolution and spatial behavior.
 
-## 3. Prioritized forward task sequence
+Under the documented fixed-geometry and fixed-viscosity interpretation, the source requires an 11-bar/5-bar apparent-conductance ratio of approximately `0.37–0.40`, equivalent to an approximately `2.5–2.7`-fold resistance increase. This is an apparent-conductance requirement under that convention, not a measured universal material law; geometry, viscosity, pressure-node, source-processing, and evidence-role qualifications remain controlling.
 
-### Completed: SCI-MD-001
+## 2. Current capabilities and evidence ceiling
 
-**Pressure-ordering and grind-response mechanism discrimination.** Determine
-which mechanisms can explain the current sign, ordering and transfer failures,
-and what physical behaviour the source requires before selecting new
-production physics.
+The merged Foundation OpenFOAM 12 platform implements initially dry sharp-front wetting; prescribed and machine-coupled pressure; Darcy and Darcy–Forchheimer saturated flow; uniform, axial, and radial heterogeneity; evolving effective permeability; saturated quasi-static compaction; conservative one-solute transport and extraction; cup accumulation; and spatial and conservation diagnostics. The wider program also contains sensitivity and identifiability tools, Taichi/LBM and pore-scale closure investigations, source adapters, and governed comparison machinery.
 
-### Completed: XSV-ENS-001
+These are implemented, numerically verified, or diagnostic capabilities as documented by their individual packages. They are not physical validation, and additional model complexity does not by itself improve predictive accuracy.
 
-**Stochastic GPU pore-scale closure and representative-volume assessment.**
-Produce ensemble permeability, anisotropy, inertial, transverse-conductance,
-localization and uncertainty closures instead of relying on one synthetic
-packing. The authorized execution is on
-`verification/xsv-ens-001-stochastic-pore-closure-rve`.
+Completed discrimination work does not support fixed Darcy resistance, fixed Darcy–Forchheimer resistance, accepted quasi-static compaction, static lateral paths, measured-basket-conditioned machine dynamics, or plausible viscosity-only change as standalone explanations of the cross-pressure ordering. Static lateral paths failed as a standalone pressure-ordering explanation, but dynamically evolving lateral equalization, persistence, or localization remains scientifically open. Generic pressure-dependent resistance and the relaxing-resistance surrogate are mathematical capability survivors, not identified physical mechanisms.
 
-The bounded completion pass executed the frozen sequential sampling through
-L=160, repaired physical-lineage grouped closure analysis, and removed the
-unsupported GPU-limit claim. No synthetic-generator REV was resolved because
-the L=96 comparison missed mean equivalence, the largest-size variance trend
-continued, and spatial resolution remains unadjudicated. Severe static
-restriction remains a strong capability signal but not a robust ensemble
-result because only six of eight attempted pairs were valid. Real-geometry
-import and microCT comparison remains the provisional next recommendation;
-no successor programme is authorized on this branch.
+The synthetic ensemble and processed real-coffee XCT programs found substantial realization variability, no resolved synthetic representative volume in the completed study, severe synthetic-to-real feature-domain separation, and no demonstrated external transfer from the synthetic closure to real coffee. No rights-cleared exact real flow masks were available for same-mask parity. Segmentation, resolution, subvolume, anisotropy, localization, and real-mask transformation remain incompletely adjudicated. The appropriate parallel evidence route is exact real-geometry access or acquisition, not another nominal single-realization synthetic run.
 
-### Execution complete pending exact-head review: XSV-XCT-001
-
-**Real-coffee XCT import and microstructure-to-flow comparison.** Execute the
-processed Wadsworth 2026 route, audit legitimate volume access, and test
-synthetic-to-real morphology and closure transfer without changing production
-OpenFOAM or the Puckworks lock.
-
-The mandatory processed route retained all 22 Wadsworth rows and scored the 21
-with complete hydraulic fields. The source percolation relationship reproduced
-materially better than Kozeny--Carman. Both frozen strict transfer arms were
-completed. Every real row remained outside the synthetic feature domain. The
-two-feature arm uses a specific-surface proxy mapping with non-identical
-definitions; the three-feature arm is explicitly `SCALE_PROXY_MISMATCH`
-because pore-distance median and mean particle radius are non-equivalent.
-Neither arm supports external transfer or uniquely identifies a physical
-morphology mechanism. No rights-cleared raw or
-segmented flow domain was obtained; exact cross-code parity, segmentation,
-resolution, subvolume, anisotropy, localization, and real-mask transformation
-analyses are therefore unadjudicated. The evidence-selected next programme is
-dedicated access to exact real-XCT flow domains or rights-cleared acquisition,
-with `NO_NEW_PRODUCTION_PHYSICS_YET` retained.
-
-### Next lateral-flow programme: SCI-LC-001
-
-**Lateral equalization and channeling phase diagram.** Determine when imposed
-heterogeneity decays, persists or amplifies, using reduced multi-sector models
-before selected 3-D continuum cases. It is not executed here.
-
-### First major new production-physics candidate: WP04-TPM-001
-
-**Transient poromechanics.** Test finite-rate deformation,
-pressure-dependent consolidation, fluid storage and permeability evolution.
-This is a strong candidate, not an automatic choice: SCI-MD-001 must compare
-its capability with fines, swelling, machine dynamics, viscosity and lateral
-instability.
-
-### Later evidence-selected tasks
-
-| Task | Scientific question | Evidence trigger |
-|---|---|---|
-| `WP04-UW-001` | Do unsaturated wetting and trapped air control first drip or early hydraulic residuals? | Synchronized pressure/flow/first-drip evidence inconsistent with the sharp-front limit. |
-| `WP05-MSX-001` | Does a prescribed-hydraulics multispecies model explain grind and brew-ratio chemistry unavailable to one-solute kinetics? | Repeatable species/fraction trajectories showing aggregate-closure information loss. |
-| `WP04-FIN-001` | Can mobile/deposited fines generate the required resistance evolution and recovery? | Credible capability region plus turbidity, retained-fines, deposition or recovery observations. |
-
-## 4. Compute strategy
-
-Analytical inversions and reduced models screen broad parameter spaces;
-OpenFOAM tests whole-puck consequences and selected survivors. The 64 physical
-CPU cores primarily support concurrent ensembles (normally two 32-rank cases
-when I/O and memory permit). The GPU primarily supports pore-scale ensembles
-and suitable accelerated reductions. Full 3-D runs are reserved for regions
-where models disagree or instability boundaries occur. When realization
-variability matters, a controlled ensemble is more informative than one
-nominal expensive run.
-
-## 5. Explicit non-priorities
-
-The programme does not prioritize unrestricted tuning of the 9-bar
-reconstruction; another single-realization pore-scale study; simultaneous
-addition of many mechanisms; full 3-D simulation before reduced screening;
-thermal coupling merely because it is implementable; repository-wide
-refactoring; governance for its own sake; or cup-mass/extraction-yield
-agreement as proof that internal mechanisms are correct.
-
-## 6. Claim boundaries
+## 3. Program dependencies and gates
 
 ```text
-PHYSICAL_VALIDATION:
-  NOT_ESTABLISHED
-GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION:
-  NOT_ESTABLISHED
-PROTECTED_OR_HOLDOUT_SCORING:
-  NOT_AUTHORIZED
-EXPERIMENTAL_COMMISSIONING:
-  NOT_AUTHORIZED
-CURRENT_VALIDATION_GATE:
-  ADDITIONAL_INDEPENDENT_DATA_REQUIRED
-CURRENT_DISCOVERY_AND_MECHANISM_DISCRIMINATION_TASK:
-  NONE_PENDING_XSV_XCT_001_EXACT_HEAD_REVIEW
-SCI-MD-001:
-  MERGED_COMPLETE
-XSV-ENS-001:
-  MERGED_COMPLETE
-XSV-XCT-001:
-  EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW
+RP-D-LC-001b P1b
+  -> P2a candidate quantification
+  -> P2b arithmetic selection and proposed freeze
+  -> STOP for second exact-head review
+  -> P3/P4 if separately authorized, or bounded stop
+  -> SCI-LC-001A reduced lateral phase diagram
+       -> selected regime boundaries only -> SCI-LC-001B 3-D confirmations
+
+SCI-MD-002 common mechanism-signature ladder
+  -> one evidence-selected mechanism, or additional measurement design
+  -> WP04-TPM-001 only if transient poromechanics is distinguishably required
+
+XSV-XCT-002 exact real-geometry access/closure proceeds in parallel
 ```
 
-The independent-data gate limits validation claims; it does not prohibit the
-authorized post-observation scientific discovery work.
+Entry gates are exact source identity, prospectively frozen protocol and decision rules, admissible evidence rights, and validated predecessor artifacts. Exit gates are canonical artifact validation, conservation and numerical checks appropriate to the task, explicit scientific disposition, and an unchanged claim ceiling. Stop on authority mismatch, invalid or noncanonical predecessors, exhausted survivors, absent rights, non-identifiability, or a result that requires changing frozen tolerances, geometry, forcing, candidate families, or decision rules. A null result is a valid exit and must not be rescued by retuning.
 
-## 7. Restart block
+The independent-data gate limits physical-validation claims. It does not prohibit bounded, post-observation mechanism-discrimination work.
 
-- Resolve the mutable EWP base with Git; SCI-MD-001 began from commit
-  `ed77b4c66f85e8169a240bc95109aa181eb94f93`, tree
-  `9448eb39f31255a3493a86f4e2758a782ac28b74`.
-- Runtime Puckworks lock: commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`,
-  tree `1d553e44ee2f7480a5df521560801b478618cc84`.
-- Read-only locally available Puckworks evidence reference at task start:
-  remote-tracking commit `bafafef3bc3c77599af8551d4e582aedb9b23f08`, tree
-  `64ccf86aff4c90d1c513f1614b39e0823f64d6d7`; this is not the runtime lock
-  and was not refreshed or executed.
-- Current discovery task: `XSV-XCT-001` on
-  `verification/xsv-xct-001-real-coffee-xct-comparison`.
-- Questions: required pressure-dependent resistance; cause of grind-sign
-  reversal; transferable transient residual mechanisms.
-- Claim ceiling: post-observation mechanism discrimination and synthetic
-  diagnostics; physical validation not established.
-- Expected outputs: frozen protocol, inverse requirements, capability matrix,
-  reduced screens, bounded confirmations, figures and final result report.
-- Always resolve live Git and dependency identities; recorded identities are
-  historical anchors, not forever-current mutable state.
+## 4. Priority 0 — close the current Puckworks dependency
 
-## 8. SCI-MD-001 completion disposition
+### `RP-D-LC-001b`
 
-SCI-MD-001 is `MERGED_COMPLETE`. The source requires
-middle-, late-, and terminal-window 11/5 apparent-conductance ratios of
-`0.389226`, `0.395294`, and `0.373506` (approximately an equivalent terminal
-`C_app proportional to p^-1.174`; only under the fixed-geometry/viscosity
-convention is this also `K_app proportional to p^-1.174`). Fixed Darcy,
-fixed Darcy--Forchheimer, accepted
-quasi-static compaction, static lateral paths, measured-basket-conditioned
-machine dynamics, and plausible viscosity-only change are ruled out as
-standalone explanations. Generic pressure-dependent resistance and the
-relaxing-resistance surrogate are executed mathematical survivors. Swelling,
-fines, evolving lateral localization, grind-to-structure mapping, and bimodal
-extraction are not structurally excluded, but were not evaluated as
-mechanism-specific models.
+Purpose: determine whether the WP6 lateral-coupling boundary inverse recovers an independently field-derived effective lateral-coupling number from a corrected, independently implemented, spatially resolved three-dimensional creeping-flow virtual fixture.
 
-The selected disposition is `NO_NEW_PRODUCTION_PHYSICS_YET`; transient
-poromechanics remains conditional because the executed P2 model is only a
-one-state relaxing-resistance surrogate. XSV-ENS-001 is the next scientific
-programme and should directly test whether plausible geometry, compression,
-fabric, fines or realization changes can create the required 2.5--2.7-fold
-axial-resistance increase while quantifying transverse and inertial closures.
-See the
-[SCI-MD-001 result](../validation/SCI_MD_001_PRESSURE_GRIND_MECHANISM_DISCRIMINATION_RESULT.md).
-Pre-correction result-data commit/tree:
-`a0f27d8ef65c618ed202fced8a9c980edbe803aa` /
-`f7ed1b495245979ca1dc1dc176bbe63d0d0a40aa`. Corrected result authority:
-`RESOLVE_FROM_EXACT_REVIEWED_HEAD_AND_TREE`; do not treat the pre-correction
-identity as the current result authority.
+P1b fixed-step evidence completed on 14 August 2026 at the exact source bound by the accepted P0 and P1a authorities. Canonical validation admitted seven candidates (`w3_kz2`, `w3_kz3`, `w3_kz4`, `w5_kz2`, `w5_kz3`, `w5_kz4`, and `w7_kz2`); the other five candidates were rejected at P1a because their point estimates alone exceeded the artifact budget. The bounded disposition is:
+
+```text
+P1B_COMPLETE_ADMITTED_CANDIDATES
+```
+
+The Puckworks dependency remains open because candidate quantification has not passed P2a. This task stops after P1b. P2a, P2b, P3, P4, Stage B, and Paper 4 require separate authority. Neither an admitted candidate nor a null result establishes experimental validation, a measured real-puck `Xi`, or a universal physical `Xi`.
+
+Claim ceiling:
+
+```text
+SYNTHETIC_DETERMINISTIC_GEOMETRY
+SINGLE_PHASE_STEADY_CREEPING_FLOW
+CROSS_MODEL_NUMERICAL_VERIFICATION
+NO_EXPERIMENTAL_VALIDATION
+NO_MEASURED_REAL_PUCK_XI
+NO_UNIVERSAL_PHYSICAL_XI
+NO_EVIDENCE_RUNG_PROMOTION
+NO_STAGE_B_AUTHORIZATION
+NO_PAPER_4_AUTHORIZATION
+```
+
+## 5. Priority 1 — first new EWP modeling program
+
+### `SCI-LC-001A — Reduced lateral equalization and channeling phase diagram`
+
+This is the first new EWP modeling task after the Puckworks dependency is closed or bounded. It asks: under what combinations of lateral conductance, axial resistance contrast, heterogeneity scale, machine response, and resistance-evolution timescale does puck nonuniformity decay, persist, or amplify?
+
+Use a reduced multi-sector model before selected three-dimensional OpenFOAM work. It must include multiple lateral or circumferential sectors, an axial resistance per sector, local pressures and axial flows, neighboring-sector exchange, prescribed-pressure and machine-coupled modes, and optional resistance evolution introduced one mechanism at a time. A generic structure is `q_i = delta_p_i / R_i` and `q_i_to_j = G_L (p_i - p_j)`; use a better established repository formulation if one exists.
+
+Sweep dimensionless lateral-to-axial conductance, initial resistance or permeability contrast, sector number and heterogeneity scale, machine compliance or response time, shot duration relative to equalization time, and selected resistance-evolution times only after the static map is understood.
+
+Required observables are sector-flow fractions, flow inequality (coefficient of variation or equivalent), maximum/minimum flow ratio, lateral exchange flux, pressure asymmetry, perturbation decay or growth, persistence of dominant outlet regions, and local and aggregate extraction differences. Classify:
+
+```text
+LATERAL_EQUALIZATION
+HETEROGENEITY_PERSISTS
+HETEROGENEITY_AMPLIFIES
+TRANSITION_OR_BISTABLE_REGION
+```
+
+Only transition cases, instability boundaries, and regions where reduced formulations disagree progress to three-dimensional simulation. A synthetic `RP-D-LC-001b` estimate may be a numerical anchor or consistency constraint, never a measured real-puck parameter.
+
+## 6. Priority 1 — mechanism-specific resistance discrimination
+
+### `SCI-MD-002 — Physical mechanism-signature ladder`
+
+Run reduced, mechanism-specific models on one common admissible case matrix, separately comparing finite-rate poromechanics; swelling or dissolution-linked structural change; fines deposition and erosion; evolving lateral localization; machine-dynamics control; viscosity control; and the existing generic relaxing-resistance surrogate. Do not fit several new mechanisms simultaneously.
+
+Evaluate established source-mapped pressure and grind/brew-ratio cases in this order: correct sign; pressure ordering; grind-response direction; residual shape and timing; cross-condition transfer; aggregate error. Lower RMSE cannot rescue the wrong sign or ordering.
+
+Predeclare distinguishing evidence:
+
+| Candidate | Distinguishing evidence |
+|---|---|
+| Transient poromechanics | Bed-height lag, consolidation time, pressure dependence, possible unloading response |
+| Swelling/dissolution | Wetting- or extraction-linked delayed, mostly monotonic resistance growth |
+| Fines | Turbidity, retained/deposited fines, grind sensitivity, erosion or recovery |
+| Evolving localization | Increasing spatial flow variance and persistent high-flow paths |
+| Machine dynamics | Upstream-to-basket pressure lag and apparatus-specific response |
+| Viscosity | Temperature or concentration dependence without matching deformation |
+
+Required disposition:
+
+```text
+TRANSIENT_POROMECHANICS_SELECTED
+SWELLING_SELECTED
+FINES_SELECTED
+DYNAMIC_LOCALIZATION_SELECTED
+COMBINED_MECHANISM_REQUIRED_BUT_NOT_IDENTIFIABLE
+ADDITIONAL_DATA_REQUIRED
+```
+
+A combined-mechanism result authorizes measurement design, not simultaneous implementation.
+
+## 7. Priority 1 in parallel — real-geometry closure
+
+### `XSV-XCT-002 — Exact real-geometry closure and localization`
+
+Pursue exact source binary flow domains, rights-cleared grayscale volumes with segmentation information, or a newly acquired well-characterized tamped-puck XCT dataset. Once an admissible mask exists, test same-mask cross-code permeability; the permeability tensor or directional response; transverse conductance; velocity localization and high-flow volume fraction; segmentation-threshold, voxel-resolution/coarsening, subvolume/crop, and boundary-condition sensitivity; multiple subvolumes or realizations; and whether a stable engineering volume exists. Do not block reduced EWP modeling while access proceeds.
+
+## 8. Priority 2 — selected full-puck confirmation
+
+### `SCI-LC-001B — Selected three-dimensional continuum confirmations`
+
+Freeze a small set from `SCI-LC-001A`: one clearly equalizing case, one persistent case, one amplifying case if present, cases near important regime boundaries, and prescribed-pressure and machine-coupled versions of the most informative cases. Start with static local resistance. Add only the single evidence-selected dynamic law after reduced/full-model consistency is understood. Require conservation, representative mesh and timestep checks, rank consistency, and documented reduced/full-model comparison.
+
+### `WP04-TPM-001 — Transient poromechanics` (conditional)
+
+This is the strongest major production-physics candidate, but it is not automatic. Authorize it only if `SCI-MD-002` shows finite-rate deformation is materially and distinguishably required. Begin minimally with one displacement or volumetric-strain state, fluid storage or consolidation time, effective-stress-dependent porosity, permeability coupled to porosity or strain, machine coupling, and reversible or irreversible terms only where evidence requires them. Do not add fines, swelling, or damage in the same first branch.
+
+Verification must include a one-dimensional consolidation or equivalent benchmark, an independent reduced or manufactured transient solution, recovery of the quasi-static limit, liquid-volume and storage conservation, timestep/mesh/MPI consistency, physical bounds and monotonicity, and unchanged predecessor behavior when disabled.
+
+## 9. Priority 3 — conditional, evidence-selected work
+
+- `WP04-FIN-001`: fines migration, requiring a distinct fines signature.
+- `WP04-UW-001`: unsaturated wetting and trapped air, requiring an early-wetting residual the sharp-front limit cannot explain.
+- `WP05-MSX-001`: multispecies extraction, requiring chemistry that the one-solute aggregate cannot represent.
+- Thermal coupling, requiring a distinct unresolved thermal residual.
+
+Each requires a measurement or residual that the preceding model cannot explain.
+
+## 10. Compute strategy
+
+Use analytical inversions and reduced models for broad screening. Reserve OpenFOAM for a small frozen set of regime boundaries and model-disagreement cases. Use controlled ensembles where realization variability matters; do not substitute one expensive nominal run for an ensemble question. Use the GPU for pore-scale ensembles and suitable reductions and CPU concurrency for independent cases, subject to live host limits and each task’s execution authority. Numerical resolution targets are design starting points, not validated universal specifications.
+
+## 11. Experimental evidence priorities
+
+Without changing any experimental authority, prioritize:
+
+1. grinder-specific particle-size, packing, and permeability characterization;
+2. synchronized pressure, flow, mass, and puck-deformation measurements;
+3. time-dependent resistance observations separating consolidation, swelling, and fines;
+4. spatial flow or local-extraction measurements;
+5. synchronized whole-shot chemistry after the hydraulic mechanism is better constrained.
+
+## 12. Explicit non-priorities
+
+The program does not prioritize further unrestricted tuning of the locally successful 9-bar reconstruction; simultaneous addition of several mechanisms; another single-realization synthetic pore-scale study; large three-dimensional sweeps before reduced screening; thermal coupling merely because it is implementable; cup mass or extraction yield as proof of correct internal mechanisms; unrelated repository-wide refactoring; or new governance machinery without a demonstrated scientific or reader-facing need.
+
+Administrative work remains proportional: correct material scientific errors, misleading claims, false-green checks, and genuine identity failures, without turning scientific work into a new assurance-framework project.
+
+## 13. Claim boundaries
+
+```text
+PHYSICAL_VALIDATION: NOT_ESTABLISHED
+GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION: NOT_ESTABLISHED
+EXPERIMENTAL_COMMISSIONING: NOT_AUTHORIZED
+PROTECTED_OR_HOLDOUT_SCORING: NOT_AUTHORIZED
+NO_NEW_PRODUCTION_PHYSICS_YET
+```
+
+Discovery, numerical verification, reconstruction, and physical validation remain distinct. Local reconstruction and cross-model synthetic verification do not raise the claim ceiling.
+
+## 14. Restart block
+
+1. Resolve mutable EWP and Puckworks identities from live Git: absolute checkout, branch, `HEAD`, `HEAD^{tree}`, `origin/main`, merge bases, relevant feature branches, PRs/issues, and worktree status. Never treat a SHA copied from this document or an older report as automatically current.
+2. Read the repository instructions, current project state and claim ceiling, this plan, and the complete live protocol for the active task.
+3. Keep the EWP runtime Puckworks lock unchanged unless a separate dependency-refresh task authorizes advancement.
+4. For `RP-D-LC-001b`, validate the external bundle and exact P0/P1a-bound source before any phase action. Derive candidates from canonical records. Respect idempotency and stop at the authorized phase.
+5. Preserve the claim ceiling: synthetic cross-model verification is not physical validation and does not measure a real-puck or universal `Xi`.
+6. After the dependency is closed or bounded, the first new EWP modeling task is `SCI-LC-001A`.
+
+Historical identities belong in the history snapshot and task evidence as labeled anchors. They are not substitutes for live identity resolution.
