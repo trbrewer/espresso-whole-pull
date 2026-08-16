@@ -1,6 +1,6 @@
 # SCI-MD-002B decision and parallel-lane charter
 
-Status: `PREEXECUTION_CORRECTION_IN_PROGRESS_PENDING_ATTEMPT3_AND_SECOND_REVIEW`
+Status: `PREEXECUTION_CORRECTION_COMPLETE_PENDING_SECOND_REVIEW`
 
 Change declaration: `NO_GOVERNING_PHYSICS_CHANGE`; task declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`.
 
@@ -17,14 +17,14 @@ Alternatives considered were fines deposition/erosion, transient poromechanics, 
 - Task: `SCI-MD-002B`; lane: `EWP-PAR-SCI-MD-002B`; role: independent secondary reduced-model lane.
 - Owner role: `SOLE_SCI_MD_002B_WRITER_AND_EXECUTION_OWNER`.
 - Branch: `research/sci-md-002b-wetting-age-swelling`; dedicated worktree required and never shared.
-- Issue: #74; draft PR: pending first coherent commit.
+- Issue: #74; draft PR: #75 (must remain draft).
 - External namespace: `SCI_MD_002B_EXTERNAL_BUNDLE`; machine absolute paths are non-authoritative and uncommitted.
 - Start: EWP HEAD/tree above. Puckworks lock: commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`, tree `1d553e44ee2f7480a5df521560801b478618cc84`.
 - Primary lane observed read-only at correction start: SCI-LC-001A-C3, branch `research/sci-lc-001a-protocol`, head `4f06c5e179d9e6f045e1b58cef06ffa98ec0fbea`, issue #70, draft PR #71.
 
 ## Pre-execution review correction
 
-The first independent review approved the concept and isolation but required full governed pressure histories, separation of wetting and bed porosity, calculated swelling-storage bookkeeping, executable temporal outputs and matched uncertainty, and complete authority-gated execution/reduction. This correction preserves all earlier commits and pilot attempts. It changes no production or SCI-LC path and authorizes no adjudicative execution.
+The first independent review approved the concept and isolation but required full governed pressure histories, separation of wetting and bed porosity, calculated swelling-storage bookkeeping, executable temporal outputs and matched uncertainty, and complete authority-gated execution/reduction. This correction preserves all earlier commits and pilot attempts. Attempts 1 and 2 remain superseded diagnostic-only; attempt 3 is preserved diagnostic-only after exposing a synthetic-control pressure-dispatch defect; fresh attempt 4 passed its non-adjudicative integrity checks. It changes no production or SCI-LC path and authorizes no adjudicative execution.
 
 ## Ownership and paths
 

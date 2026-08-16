@@ -1,0 +1,15 @@
+{
+  "complete_source_pressure_triplet_executed": false,
+  "completed_records_before_stop": 6,
+  "defect": "SYNTHETIC_CONTROL_PRESSURE_DISPATCH",
+  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt3",
+  "manifest_created": false,
+  "peak_rss_bytes": 46108672,
+  "schema_version": "ewp.sci_md_002b.pilot_report.v2",
+  "scientific_reducer_ran": false,
+  "source_head": "81b4741",
+  "source_ordering_calculated": false,
+  "status": "DIAGNOSTIC_ONLY_PRESERVED_AFTER_PILOT_DEFECT",
+  "task_id": "SCI-MD-002B",
+  "wall_s": 17.02
+}

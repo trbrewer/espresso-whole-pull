@@ -1,24 +1,25 @@
 {
+  "base_refined": {
+    "base_case_id": "R1-SYNTH-P7-E-BASE",
+    "refined_case_id": "R1-SYNTH-P7-E-REFINED",
+    "relative_resistance_difference": 0.005255766632560187
+  },
   "complete_source_pressure_triplet_executed": false,
   "completion_count": 8,
-  "evidence_bundle_manifest_sha256": "2b1ce84f2e0c6955e90ed2a84c94634505c5050a8492b7bc09afbc342256ec4b",
-  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt2",
+  "evidence_bundle_manifest_sha256": "a72e922f0342bec42ee227a8bc33255aa1e25cdcce29b816d9350ddb62df1f7a",
+  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt4",
   "failure_count": 0,
-  "failures": [],
-  "peak_rss_bytes": 145760256,
-  "pilot_row_ids": ["A0-FOSTER-P9-N64-DT0.02", "A0-ZERO_SWELL-P9-N64-DT0.02", "A0-SIMULTANEOUS-P9-E-AC0.0", "A0-ACCOM_FIXED-E", "A0-ACCOM_FREE-E", "R1-REFERENCE-P9-E-D1.0-CM0.1-AC0.0-N32-DT0.04", "R1-REFERENCE-P9-E-D1.0-CM0.1-AC0.0-N64-DT0.02", "SYNTHETIC-S1-P7-M-D1.0-CM0.1-AC0.5-N64-DT0.02"],
-  "refinement": {
-    "coarse_to_base_relative_outlet_flow_difference": 0.0026322294750086676,
-    "coarse_to_base_relative_resistance_difference": 0.002639176392899709,
-    "role": "NON_ADJUDICATIVE_TIMING_AND_INTEGRITY_PILOT"
-  },
+  "peak_rss_bytes": 42045440,
+  "pilot_row_ids": ["A0-FOSTER-CONSTANT-P9", "C0-SOURCE-P5-NOSWELL", "C1-SOURCE-P9-E-AC0.0", "R1-SYNTH-P7-E-BASE", "R1-SYNTH-P7-E-REFINED", "T0-SOURCE-P11-E-STORAGE", "A0-ACCOM-FIXED-E", "A0-ACCOM-FREE-E"],
+  "pressure_history_path_tested": true,
   "row_count": 8,
-  "schema_version": "ewp.sci_md_002b.pilot_report.v1",
+  "schema_version": "ewp.sci_md_002b.pilot_report.v2",
   "scientific_reducer_ran": false,
-  "source_head": "1b5f61194217be3f84abf7b5cfbab89817d3bb81",
+  "source_head": "0c82a86",
   "source_ordering_calculated": false,
-  "source_tree": "b60ea6c85cb9ebcd9713c94daef29a4ea4c20ade",
-  "status": "SUPERSEDED_DIAGNOSTIC_ONLY_BY_PREEXECUTION_REVIEW_CORRECTION",
+  "status": "NON_ADJUDICATIVE_INTEGRITY_PILOT_COMPLETE",
+  "swelling_storage_nonzero": true,
   "task_id": "SCI-MD-002B",
-  "wall_s": 10.305427731014788
+  "temporal_records_complete": true,
+  "wall_s": 16.86413484509103
 }
