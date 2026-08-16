@@ -1,0 +1,375 @@
+{
+  "adaptive_rules": {
+    "D4_LOG_MIDPOINT_V1": {
+      "maximum_new_rows_per_parent_interval": 2,
+      "maximum_refinement_generations": 3,
+      "maximum_total_rows": 4096,
+      "selection": [
+        "adjacent classifications differ",
+        "gain within 10 percent of boundary",
+        "two largest finite differences",
+        "one interior representative per regime"
+      ]
+    },
+    "X1_SELECTED_HYDRAULIC_DIAGNOSTICS_V1": {
+      "maximum_total_rows": 1000,
+      "selection": "one robust interior per observed regime plus selected boundaries"
+    }
+  },
+  "artifact_and_result_schemas": {
+    "authority": "future immutable protocol/matrix/source/environment binding",
+    "case_record": "future canonical row, numerical validity, observables, and provenance",
+    "instances_created_by_this_task": "NONE",
+    "manifest": "future full expected-row partition and terminal disposition",
+    "result": "future reduced findings separated from 3-D, experimental, and unidentified claims"
+  },
+  "base_head": "3e8993f56badd575f3482ea7bfa0f87d24412100",
+  "base_tree": "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0",
+  "canonical_ordering": "arm order C0,S1,S2,S3,D1,D2,D3-EQ,D3-LOC then nested declared loop order",
+  "change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
+  "claim_boundary": {
+    "EXPERIMENTAL_COMMISSIONING": "NOT_AUTHORIZED",
+    "GENERAL_WHOLE_SOLVER_PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "OPENFOAM_EXECUTION_IN_THIS_TASK": "NONE",
+    "PHYSICAL_VALIDATION": "NOT_ESTABLISHED",
+    "PRODUCTION_OPENFOAM_PHYSICS_CHANGE": "NONE",
+    "PROTECTED_OR_HOLDOUT_SCORING": "NOT_AUTHORIZED",
+    "REAL_PUCK_LATERAL_CONDUCTANCE": "NOT_MEASURED",
+    "RP_D_LC_001B_XI_ROLE": "SYNTHETIC_NUMERICAL_CONTEXT_ONLY",
+    "SCI_LC_001A_ROLE": "REDUCED_DIAGNOSTIC_PHASE_DIAGRAM",
+    "UNIVERSAL_LATERAL_COUPLING_PARAMETER": "NOT_ESTABLISHED"
+  },
+  "classification_rules": {
+    "HETEROGENEITY_AMPLIFIES": "G_coupling_end>=1.10 and G_coupling_int>=1.10 with corroboration",
+    "HETEROGENEITY_PERSISTS": "both gains in [0.90,1.10] with corroboration",
+    "LATERAL_EQUALIZATION": "G_coupling_end<=0.90 and G_coupling_int<=0.90 with corroboration",
+    "NUMERICALLY_UNRESOLVED": "validity uncertainty or refinement failure; never a transition label",
+    "TRANSITION_OR_BISTABLE_REGION": [
+      "NEAR_MATERIALITY_BOUNDARY",
+      "METRIC_DISAGREEMENT",
+      "MODEL_FORM_DISAGREEMENT",
+      "SECTOR_RESOLUTION_DISAGREEMENT",
+      "INITIAL_CONDITION_DEPENDENCE",
+      "BISTABILITY_EVIDENCE",
+      "MIXED_COUPLING_AND_EVOLUTION_EFFECT"
+    ]
+  },
+  "compute_budget": {
+    "absolute_protocol_ceiling": 25000,
+    "initial_dynamic_rows": 324,
+    "initial_rows": 1271,
+    "initial_static_control_rows": 947,
+    "maximum_adaptive_rows": 4096,
+    "maximum_dynamic_trajectories": 15000,
+    "maximum_extraction_rows": 1000,
+    "maximum_extraction_trajectories": 1000,
+    "maximum_static_control_cases": 5000,
+    "maximum_total_adjudicative_cases": 20000,
+    "maximum_total_rows": 6367,
+    "memory_gib": 16,
+    "nested_library_threads": 1,
+    "review_wall_hours": 8,
+    "target_wall_hours": 4,
+    "timing_pilot_maximum": 64,
+    "worker_process_cap": 32
+  },
+  "dimensionless_groups": {
+    "Lambda": "scaled lateral conductance / characteristic axial conductance",
+    "Theta_L": "tau_lateral/T_shot",
+    "Theta_M": "tau_machine/T_shot",
+    "Theta_R": "tau_resistance/T_shot",
+    "beta": "log-resistance feedback magnitude",
+    "chi_R": "R_max/R_min=exp(a*(h_max-h_min))",
+    "kappa_h": "Fourier mode m or inverse normalized wavelength"
+  },
+  "equations": {
+    "core": [
+      "q_u_i=(p_b-p_i)/R_u_i",
+      "q_d_i=(p_i-p_o)/R_d_i",
+      "j_i_plus_half=G_L_i_plus_half*(p_i-p_i_plus_1)",
+      "C_h_i*dp_i/dt=q_u_i-q_d_i-j_i_plus_half+j_i_minus_half"
+    ],
+    "feedback": [
+      "Theta_R*dx_i/dt=s*(F_i-1)-x_i",
+      "R_i=R_i0*exp(beta*x_i)"
+    ],
+    "machine": [
+      "C_u*dp_u/dt=Q_supply(p_u,t)-Q_puck",
+      "p_b=p_u-R_u*Q_puck"
+    ],
+    "ring_eigenvalue": "lambda_N(m)=4*(N/(2*pi))^2*sin(pi*m/N)^2 -> m^2",
+    "scaled_ring_laplacian": "L_N p_i=(N/(2*pi))^2*(2*p_i-p_i_minus_1-p_i_plus_1)"
+  },
+  "evidence_mode": "PROSPECTIVE_REDUCED_MODEL_PROTOCOL",
+  "future_3d_nomination_rules": {
+    "maximum_distinct_hydraulic_base_cases": 8,
+    "maximum_total_prescribed_machine_variants": 12,
+    "priorities": [
+      "one robust interior per observed regime",
+      "up to two cases per important boundary",
+      "reduced-formulation disagreement",
+      "machine variants only when materially different"
+    ],
+    "status": "PROPOSED_SCI_LC_001B_CASES_PENDING_SEPARATE_REVIEW"
+  },
+  "hashing_rules": {
+    "canonical_json": "UTF-8 JSON, sorted keys, compact separators, ASCII escapes",
+    "matrix_sha256": "SHA-256 of ordered complete rows including row_sha256",
+    "row_sha256": "SHA-256 of row excluding row_sha256"
+  },
+  "hypotheses": {
+    "H0": "zero-coupling fixed-resistance normalized inequality persists",
+    "H1": "passive lateral exchange can equalize",
+    "H2": "passive lateral exchange can focus flow downstream",
+    "H3": "response depends on heterogeneity scale",
+    "H4": "machine response is spatially inactive in the linear quasi-steady fixed-resistance limit",
+    "H5": "signed resistance feedback distinguishes equalizing and localizing response",
+    "H6": "reduced-formulation disagreement identifies higher-value future 3-D cases"
+  },
+  "matrix_arms": {
+    "C0": "analytical and invariant controls",
+    "D1": "transient lateral equalization",
+    "D2": "machine coupling",
+    "D3-EQ": "equalizing resistance feedback",
+    "D3-LOC": "localizing resistance feedback",
+    "D4": "adaptive transition and bistability refinement; generated only from reviewed results",
+    "S1": "primary static atlas",
+    "S2": "pattern robustness",
+    "S3": "sector and axial-form convergence",
+    "X1": "selected extraction diagnostics; generated only from reviewed hydraulic results"
+  },
+  "matrix_summary": {
+    "adaptive_placeholder_rows": 0,
+    "initial_row_count": 1271,
+    "matrix_sha256": "69d13fe799996d1fed3ead770ece94f7b9b24280545ab5879c8d64ec11b0b50a",
+    "rows_by_arm": {
+      "C0": 16,
+      "D1": 48,
+      "D2": 84,
+      "D3-EQ": 96,
+      "D3-LOC": 96,
+      "S1": 756,
+      "S2": 135,
+      "S3": 40
+    }
+  },
+  "model_variants": [
+    "CORE_ONE_EXCHANGE_PLANE",
+    "MULTILAYER_SELECTED_CHECK"
+  ],
+  "observables": [
+    "H_q",
+    "CV_q",
+    "A_eff",
+    "seeded_mode_amplitude",
+    "J_L_abs",
+    "J_L_net",
+    "pressure_CV",
+    "G_time_end",
+    "G_time_int",
+    "G_coupling_end",
+    "G_coupling_int",
+    "sigma_m",
+    "dominant_region_persistence",
+    "conservation_residuals",
+    "extraction_diagnostics_selected_only"
+  ],
+  "outcomes": [
+    "SCI_LC_001A_PHASE_DIAGRAM_COMPLETE",
+    "SCI_LC_001A_EQUALIZATION_AND_PERSISTENCE_REGIONS_IDENTIFIED",
+    "SCI_LC_001A_AMPLIFICATION_REGION_IDENTIFIED",
+    "SCI_LC_001A_TRANSITION_OR_BISTABILITY_IDENTIFIED",
+    "SCI_LC_001A_NO_AMPLIFICATION_WITHIN_FROZEN_RANGE",
+    "SCI_LC_001A_REDUCED_FORMULATIONS_DISAGREE",
+    "SCI_LC_001A_PARAMETER_RANGE_TRUNCATED",
+    "SCI_LC_001A_NUMERICALLY_UNRESOLVED",
+    "SCI_LC_001A_PROTOCOL_OR_AUTHORITY_FAILURE"
+  ],
+  "parameters": {
+    "Theta_L": [
+      "0.01",
+      "0.03",
+      "0.1",
+      "0.3",
+      "1",
+      "3",
+      "10",
+      "30"
+    ],
+    "Theta_M": [
+      "0.03",
+      "0.1",
+      "0.3",
+      "1",
+      "3",
+      "10"
+    ],
+    "Theta_R": [
+      "0.03",
+      "0.1",
+      "0.3",
+      "1",
+      "3",
+      "10",
+      "INFINITE_NO_EVOLUTION"
+    ],
+    "axial_placement": [
+      "UPSTREAM",
+      "DISTRIBUTED",
+      "DOWNSTREAM"
+    ],
+    "beta": [
+      "0",
+      "0.25",
+      "0.5",
+      "1",
+      "2"
+    ],
+    "feedback_sign": [
+      "EQUALIZING",
+      "NONE",
+      "LOCALIZING"
+    ],
+    "fourier_modes_at_N8": [
+      1,
+      2,
+      4
+    ],
+    "lateral_conductance_ratio": [
+      "0",
+      "0.0001",
+      "0.0003",
+      "0.001",
+      "0.003",
+      "0.01",
+      "0.03",
+      "0.1",
+      "0.3",
+      "1",
+      "3",
+      "10",
+      "30",
+      "100"
+    ],
+    "placement_upstream_fraction": {
+      "DISTRIBUTED": "0.5",
+      "DOWNSTREAM": "0.05",
+      "UPSTREAM": "0.95"
+    },
+    "resistance_contrast": [
+      "1",
+      "1.25",
+      "1.5",
+      "2",
+      "4",
+      "8",
+      "16"
+    ],
+    "sector_count": [
+      4,
+      8,
+      16
+    ]
+  },
+  "random_or_low_discrepancy_seeds": {
+    "broadband_pattern": 20260816,
+    "stochastic_execution": "NONE"
+  },
+  "repository_change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "restart_block": {
+    "execution_authorized_by_this_protocol": false,
+    "permitted_only_for": "future exact-authority immutable case records",
+    "refuse_on": [
+      "authority mismatch",
+      "matrix or row hash mismatch",
+      "dependency mismatch",
+      "malformed or temporary artifact",
+      "validity stop",
+      "existing terminal manifest"
+    ]
+  },
+  "schema_version": "ewp.sci_lc_001a.protocol.v1",
+  "scientific_question": "Under what combinations of lateral conductance, axial resistance contrast, heterogeneity scale, machine response, and resistance-evolution timescale does puck nonuniformity decay, persist, or amplify?",
+  "state_variables": [
+    "p_b",
+    "p_u",
+    "p_i",
+    "q_u_i",
+    "q_d_i",
+    "j_edge",
+    "R_u_i",
+    "R_d_i",
+    "x_i",
+    "Q_total",
+    "Q_supply"
+  ],
+  "status": "PROSPECTIVE_PROTOCOL_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW",
+  "stop_rules": {
+    "AUTHORITY_STOP": [
+      "authority/hash mismatch",
+      "independent review incomplete",
+      "dirty execution checkout"
+    ],
+    "COMPUTE_STOP": [
+      "wall time",
+      "disk or memory",
+      "recurrent worker failures",
+      "budget mismatch"
+    ],
+    "DESIGN_STOP": [
+      "analytical redundancy",
+      "nonconvergent ring scaling",
+      "aggregate conductance not preserved",
+      "compute ceiling exceeded"
+    ],
+    "NUMERICAL_STOP": [
+      "nonfinite/nonpositive state",
+      "conservation/dissipation failure",
+      "invariance/refinement failure",
+      "clipping dependence"
+    ],
+    "SCIENTIFIC_BOUNDED_STOP": [
+      "NO_AMPLIFICATION_REGION_WITHIN_FROZEN_RANGE",
+      "NO_EQUALIZATION_REGION_WITHIN_FROZEN_RANGE",
+      "ONLY_PERSISTENCE_WITHIN_FROZEN_RANGE",
+      "NO_BISTABILITY_WITHIN_FROZEN_RANGE",
+      "MACHINE_RESPONSE_STRUCTURALLY_INACTIVE_IN_TESTED_LINEAR_MODEL"
+    ]
+  },
+  "task_id": "SCI-LC-001A-PROTOCOL-AND-MATRIX-FREEZE",
+  "topology_and_boundary_conditions": {
+    "axial_resistance_split": {
+      "DISTRIBUTED": "0.5/0.5",
+      "DOWNSTREAM": "0.05/0.95",
+      "UPSTREAM": "0.95/0.05"
+    },
+    "boundaries": [
+      "PRESCRIBED_PRESSURE",
+      "MACHINE_COUPLED_WP02_002"
+    ],
+    "core_nodes_per_sector": 1,
+    "topology": "periodic equal-area circumferential ring"
+  },
+  "units": {
+    "conductance": "m^3/(s Pa)",
+    "flow": "m^3/s",
+    "pressure": "Pa",
+    "resistance": "Pa s/m^3",
+    "storage": "m^3/Pa",
+    "time": "s"
+  },
+  "validity_gates": {
+    "numerical_gain_uncertainty": "max(0.02 absolute, 2 percent relative as applicable)",
+    "required": [
+      "finite",
+      "positive resistance and conductance",
+      "local conservation",
+      "global conservation",
+      "lateral cancellation",
+      "passive dissipation",
+      "timestep refinement",
+      "sector refinement",
+      "model-form agreement"
+    ]
+  }
+}
