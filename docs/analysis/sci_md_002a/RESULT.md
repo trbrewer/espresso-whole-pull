@@ -47,6 +47,10 @@ The deterministic 580-row matrix contained:
 
 Totals by evidence role are 210 source-conditioned, 245 synthetic signature, and 125 control trajectories. Grind/brew-ratio transfer was not executed because the governed corpus does not provide an admissible grind-to-initial-structure mapping; its disposition is `GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED`.
 
+### S2 machine-arm qualification
+
+The executed S2 arm used one fixed governed machine parameter tuple. Its pressure-group labels did not define three independently specified 5-, 9-, and 11-bar machine programs. S2 is therefore a fixed-machine descriptive control, not an adjudicative cross-pressure machine-transfer demonstration. The rejection is unchanged because frozen Gate 2 was decided exclusively from the S1 prescribed-basket-pressure candidates. No S2 result broadens the accepted rejection beyond the frozen single-state reversible consolidation family.
+
 The attempt-4 pilot executed 9 non-adjudicative trajectories in 2.22 s with zero failures and projected 143.1 s. The adjudicative run executed 580/580 valid trajectories in 120.75 s, used one process with nested threads fixed to one, launched no GPU work, and peaked at 135.8 MB RSS. The external bundle contains 580 atomic case records plus authority, snapshots, environment, manifest, logs, and timing.
 
 ## Verification
@@ -60,7 +64,7 @@ The attempt-4 pilot executed 9 non-adjudicative trajectories in 2.22 s with zero
 - Five fast/intermediate/slow/high-pressure/near-bound refinement cases had a maximum base-versus-half-step relative difference of `2.38165e-4` across final flow, mass, maximum strain, and minimum porosity; no gate changed.
 - Focused analytical/structural tests: 8/8 pass. Source-manifest verification and all 38 static gates pass at the executed source.
 
-The full repository suite ran 522 tests: 520 passed and 2 reported the deliberately deferred shared-metadata count (`docs/PROJECT_STATE.md` and `PACKAGE_QA_STATUS.json` still state the accepted-main 389-file manifest while this lane has 396 files). The active-lane shared-file policy prohibits updating those primary conflict points; they require regeneration after owner-selected integration. The legacy v0.1.3 no-physics verifier reports 27/28 because current `main` legitimately contains later merged production physics; direct `origin/main` path comparison shows zero solver, case, or configuration changes in this lane.
+The pre-integration full repository suite ran 522 tests: 520 passed and 2 identified the expected shared-metadata count mismatch. The owner-authorized serial integration pass reconciled those records; the post-integration suite passes 522/522, the focused set passes 8/8, source verification passes 396/396, and static validation passes 38/38. The legacy v0.1.3 no-physics verifier reports 27/28 because current `main` legitimately contains later merged production physics; direct `origin/main` path comparison shows zero solver, case, or configuration changes in this lane.
 
 Final execution counts: OpenFOAM launches 0, Puckworks calls 0, production solver modifications 0, SCI-LC-001A files modified 0, primary branch writes 0, and combined-mechanism trajectories 0.
 
@@ -75,6 +79,15 @@ Final execution counts: OpenFOAM launches 0, Puckworks calls 0, production solve
 7. Cross-pressure transfer: fail because the shared law does not transfer ordering.
 8. Distinctiveness: hydraulic evidence alone is not mechanism-identifying; synchronized deformation remains required.
 9. Aggregate error: not an adjudicative rescue metric. The smallest three-pressure terminal-flow RMSE was `2.75234e-4 kg/s`.
+
+### Retained S1 ordering margins
+
+These post-execution reporting calculations use the original attempt-4 S1 case records and do not alter the frozen gate:
+
+- Closest `Q5 > Q9` candidate: `pc=1,100,000 Pa`, `Theta_c=0.01`. `Q5=0.0015735766074527636 kg/s`, `Q9=0.0018287180470782172 kg/s`, so signed `Q5-Q9=-0.0002551414396254536 kg/s`. The governing records are `S1_SOURCE_PRESSURE_SCREEN-TPM_SINGLE_MODE_TRANSIENT-P5-PC1100000-TH0.01-SOURCE-PRESCRIBED_BASKET_PRESSURE` and its `P9` counterpart.
+- Closest `Q9 > Q11` candidate: `pc=1,100,000 Pa`, `Theta_c=0.1`. `Q9=0.0018314950216231534 kg/s`, `Q11=0.0018316300300689492 kg/s`, so signed `Q9-Q11=-1.3500844579577773e-7 kg/s`. The governing records are `S1_SOURCE_PRESSURE_SCREEN-TPM_SINGLE_MODE_TRANSIENT-P9-PC1100000-TH0.1-SOURCE-PRESCRIBED_BASKET_PRESSURE` and its `P11` counterpart.
+
+The prospective Gate-2 rule was strict signed ordering and froze no nonzero ordering-comparison tolerance, so neither comparison is within an applicable frozen pass tolerance. The `Q9-Q11` miss is nevertheless a numerical near-tie: its relative magnitude is approximately `7.37e-5`, smaller than the reported worst selected base-versus-half-step relative change (`2.38165e-4`). This qualification does not retrospectively change the strict Gate-2 failure.
 
 Within the source screen, predicted maximum bulk axial strain ranged from `0.006554` to `0.085060`; the corresponding minimum bed-height ratio was about `0.91494`. These are reduced-model predictions under source-derived/synthetic screen parameters, not measurements. The smallest mechanical porosity across every control and signature case was `0.0159204`; proximity to this valid but extreme bound reinforces the rejection rather than rescuing it.
 
@@ -98,3 +111,7 @@ COMBINED MECHANISM MODEL: NOT AUTHORIZED
 ```
 
 The screen establishes incapability of the frozen single-mode family to reproduce the required pressure ordering. It does not prove that real pucks are or are not poroelastic, does not identify a universal consolidation time, and does not authorize a combined mechanism or production implementation.
+
+## External evidence retention
+
+The valid attempt-4 external bundle remains retained under the symbolic authority `SCI_MD_002A_EXTERNAL_BUNDLE/attempt4/adjudicative`. Its manifest file SHA-256 is `20e206bcd24bf397ffbf4e17778f137037eab7b9361d818d0e1dc0f326085901`; the manifest's ordered-record aggregate SHA-256 is `8a9c954e19f7dffe814be1da6b8a808e6b33b4ac9b28524f6c2b56b148e897dc`; and the execution-authority file SHA-256 is `0ef48515a064e1f7641f8974f1d5bebb27271977294cd154160dd948f6460fe7`. All 580 atomic case records reverify by size and SHA-256: 105 S1, 105 S2, 175 T1, 105 generic-control, 70 unloading-design, 15 equilibrium, and 5 analytical-control records. Authority, protocol and matrix snapshots, environment, timing, stdout/stderr, and the manifest are also retained. The bundle plus the committed reducer, compact result, matrix, and protocol are sufficient to reproduce the reported reduction without treating a machine-specific absolute path as scientific authority.
