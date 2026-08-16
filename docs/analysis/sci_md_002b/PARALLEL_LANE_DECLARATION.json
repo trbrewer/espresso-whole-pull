@@ -3,7 +3,7 @@
   "base_tree": "a0cc697d7a787865baa76f2a8d00ffbb36e48408",
   "branch": "research/sci-md-002b-wetting-age-swelling",
   "claim_boundary": ["PHYSICAL_VALIDATION_NOT_ESTABLISHED", "POST_OBSERVATION_MECHANISM_DISCRIMINATION", "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE", "NO_COMBINED_MECHANISM_AUTHORIZATION", "NO_SCI_LC_001B_AUTHORIZATION"],
-  "draft_pr": "PENDING_FIRST_COHERENT_COMMIT",
+  "draft_pr": 75,
   "execution_authority": "PILOT_ONLY_ADJUDICATIVE_EXECUTION_NOT_AUTHORIZED",
   "external_output_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE",
   "forbidden_paths": ["docs/analysis/sci_lc_001a/**", "validation/cases/sci_lc_001a/**", "scripts/sci_lc_001a*", "tests/test_sci_lc_001a*", "solver/**", "config/**", "cases/**", "Puckworks/**", "issue #70", "PR #71"],

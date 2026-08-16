@@ -1,0 +1,31 @@
+{
+  "adjudicative_execution_status": "NOT_AUTHORIZED",
+  "base_main_head": "c872f782351a22277b7d7a8430bcbf140cff130e",
+  "base_main_tree": "a0cc697d7a787865baa76f2a8d00ffbb36e48408",
+  "case_matrix_count": 243,
+  "claim_ceiling": ["PHYSICAL_VALIDATION_NOT_ESTABLISHED", "POST_OBSERVATION_MECHANISM_DISCRIMINATION", "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE", "NO_COMBINED_MECHANISM_AUTHORIZATION", "NO_SCI_LC_001B_AUTHORIZATION"],
+  "draft_pr": 75,
+  "external_result_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE",
+  "file_hashes": {
+    "human_protocol": "ebb2cd4bade633f8c5ee3931efb82e32801c53e4cdd25fa694f3c51ddeef5e78",
+    "implementation": "5014125ad088c40e6f71f2078cbf5f21b4fc2d809a2cd8ee878e69dfa6fcd4da",
+    "lane_declaration": "3465c53ed60eea113cac99b221f19347f1f3643899fe6b5ad30ae4ebc493498f",
+    "machine_protocol": "b116c3223085d25afe4261b04ea92d318d232ca6b08e0103bafdd5aa94bad52d",
+    "matrix": "259b35b7f59fb93b9caf0275df763f29b3be6913aee08e5b98e2eddf743c4c73",
+    "reference_sources": "8795aaef4d7b81dce4247b115711d59385fdc1af97536536c605cf554869b2ae",
+    "source_overlay": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e"
+  },
+  "gate_precedence": ["AUTHORITY_AND_ARTIFACT_VALIDITY", "REFERENCE_AND_NUMERICAL_VALIDITY", "CONSERVATION_AND_PHYSICAL_STATE_VALIDITY", "RESISTANCE_DIRECTION", "PRESSURE_ORDERING", "TEMPORAL_SIGNATURE", "ASSUMPTION_DEPENDENCE", "PARTICLE_SIZE_AND_GRIND_IDENTIFIABILITY", "AGGREGATE_COMPARISON"],
+  "hard_trajectory_cap": 2500,
+  "issue": 74,
+  "lane_id": "EWP-PAR-SCI-MD-002B",
+  "next_review_state": "INDEPENDENT_EXACT_HEAD_PREEXECUTION_REVIEW_REQUIRED",
+  "pilot_row_ids": ["A0-FOSTER-P9-N64-DT0.02", "A0-ZERO_SWELL-P9-N64-DT0.02", "A0-SIMULTANEOUS-P9-E-AC0.0", "A0-ACCOM_FIXED-E", "A0-ACCOM_FREE-E", "R1-REFERENCE-P9-E-D1.0-CM0.1-AC0.0-N32-DT0.04", "R1-REFERENCE-P9-E-D1.0-CM0.1-AC0.0-N64-DT0.02", "SYNTHETIC-S1-P7-M-D1.0-CM0.1-AC0.5-N64-DT0.02"],
+  "pilot_status": "AUTHORIZED_NON_ADJUDICATIVE_NOT_YET_RUN",
+  "prospective_scientific_source_head": "203dd35ff9393263d84b25626495f8ac9597b395",
+  "prospective_scientific_source_tree": "73d1e654423ef809d99eb836ef666d8bef3140de",
+  "puckworks_lock": {"commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "tree": "1d553e44ee2f7480a5df521560801b478618cc84"},
+  "resource_cap": {"gpu": 0, "memory_gib": 16, "nested_threads": 1, "workers": 1},
+  "schema_version": "ewp.sci_md_002b.preexecution_authority.v1",
+  "task_id": "SCI-MD-002B"
+}
