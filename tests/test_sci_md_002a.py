@@ -25,4 +25,16 @@ class FreezeTests(unittest.TestCase):
         self.assertLess(abs(sigma-exact)/target,1e-3)
     def test_zero_and_frozen_controls(self):
         self.assertEqual(md2.j_integral(0),0); self.assertEqual(md2.bed_ratio(0),1); self.assertEqual(md2.porosity(0),md2.PHI); self.assertGreater(md2.conductance(0,1239155,1e-15),0)
+    def test_compaction_resistance_direction_is_separate_from_flow_order(self):
+        pc,k0=1239155,2e-15
+        pressures=(5e5,9e5,11e5)
+        conductances=[md2.conductance(p,pc,k0) for p in pressures]
+        flows=[g*p for g,p in zip(conductances,pressures)]
+        self.assertTrue(conductances[0]>conductances[1]>conductances[2])
+        self.assertFalse(flows[0]>flows[1]>flows[2])
+    def test_machine_balance_uses_adjacent_state(self):
+        row=next(r for r in md2.matrix_rows() if r['arm']=='S2_MACHINE_TRANSFER')
+        result=md2.simulate(row,md2.source_rows())
+        self.assertEqual(result['status'],'PASS')
+        self.assertLess(result['machine_balance_max_m3_s'],1e-18)
 if __name__ == '__main__': unittest.main()

@@ -85,24 +85,39 @@ def simulate(row,src,dt=DT):
     for i in range(n+1):
         t=i*dt
         target=interp(src[pgroup],t,"pressure_pa") if row["waveform"]=="SOURCE" else waveform(row["waveform"],t,pgroup*1e5)
-        if row["boundary_mode"]=="LUMPED_MACHINE_COMPLIANCE" or model=="MACHINE_ONLY":
-            g=conductance(sigma,pc,k0) if model!="MACHINE_ONLY" else conductance(0,pc,k0)
-            a=MACHINE["free_flow_m3_s"]/MACHINE["shutoff_pa"]+g/(1+MACHINE["line_resistance_pa_s_m3"]*g)
-            forcing=MACHINE["free_flow_m3_s"]
-            pu=(MACHINE["compliance_m3_pa"]*pu/dt+forcing)/(MACHINE["compliance_m3_pa"]/dt+a)
-            dp=max(0.,pu/(1+MACHINE["line_resistance_pa_s_m3"]*g))
-            supply=MACHINE["free_flow_m3_s"]*max(0.,1-pu/MACHINE["shutoff_pa"])
-        else: dp=target; supply=None
         old=sigma
-        if model=="TPM_QUASI_STATIC_EQUILIBRIUM": sigma=dp
-        elif model in ("TPM_DISABLED_FIXED_HYDRAULICS","MACHINE_ONLY"): sigma=0
-        elif model=="GENERIC_RELAXING_RESISTANCE": sigma=(sigma+dt*dp/tau)/(1+dt/tau)
-        else: sigma=(sigma+dt*dp/tau)/(1+dt/tau)
+        if row["boundary_mode"]=="LUMPED_MACHINE_COMPLIANCE" or model=="MACHINE_ONLY":
+            pu_old=pu
+            def coupled(candidate):
+                local_dp=max(0.,candidate)
+                local_sigma=old
+                for _ in range(8):
+                    if model in ("TPM_DISABLED_FIXED_HYDRAULICS","MACHINE_ONLY"): local_sigma=0.
+                    elif model=="TPM_QUASI_STATIC_EQUILIBRIUM": local_sigma=local_dp
+                    else: local_sigma=(old+dt*local_dp/tau)/(1+dt/tau)
+                    local_g=conductance(local_sigma,pc,k0)
+                    if model=="GENERIC_RELAXING_RESISTANCE": local_g=conductance(0,pc,k0)*math.exp(-2.5*local_sigma/pc)
+                    local_dp=candidate/(1+MACHINE["line_resistance_pa_s_m3"]*local_g)
+                local_q=local_g*local_dp
+                local_supply=MACHINE["free_flow_m3_s"]*max(0.,1-candidate/MACHINE["shutoff_pa"])
+                residual=MACHINE["compliance_m3_pa"]*(candidate-pu_old)/dt-(local_supply-local_q)
+                return residual,local_dp,local_sigma,local_supply
+            lo,hi=0.,MACHINE["shutoff_pa"]
+            for _ in range(50):
+                mid=(lo+hi)/2
+                if coupled(mid)[0]>0: hi=mid
+                else: lo=mid
+            pu=(lo+hi)/2; _,dp,sigma,supply=coupled(pu)
+        else: dp=target; supply=None
+        if supply is None:
+            if model=="TPM_QUASI_STATIC_EQUILIBRIUM": sigma=dp
+            elif model in ("TPM_DISABLED_FIXED_HYDRAULICS","MACHINE_ONLY"): sigma=0
+            else: sigma=(old+dt*dp/tau)/(1+dt/tau)
         if sigma>=pc: return {"status":"INVALID_BOUND","case_id":row["case_id"],"reason":"sigma_c>=pc"}
         x=sigma/pc; phi=porosity(x); br=bed_ratio(x); g=conductance(sigma,pc,k0)
         if model=="GENERIC_RELAXING_RESISTANCE": g=conductance(0,pc,k0)*math.exp(-2.5*x)
         q=g*dp; mass+=q*RHO*dt
-        if supply is not None: maxres=max(maxres,abs(MACHINE["compliance_m3_pa"]*(pu-(samples[-1]["pu"] if samples else 0))/dt-(supply-q)))
+        if supply is not None: maxres=max(maxres,abs(MACHINE["compliance_m3_pa"]*(pu-pu_old)/dt-(supply-q)))
         eps=1-br; maxeps=max(maxeps,eps); minphi=min(minphi,phi)
         if i%max(1,round(.1/dt))==0: samples.append({"t":t,"dp":dp,"pu":pu,"sigma":sigma,"q":q,"mass":mass,"eps":eps,"phi":phi,"k_ratio":permeability_ratio(x),"g":g})
     s50=next((s["t"] for s in samples if s["sigma"]>=.5*max(z["sigma"] for z in samples)),None); s90=next((s["t"] for s in samples if s["sigma"]>=.9*max(z["sigma"] for z in samples)),None)
@@ -131,12 +146,14 @@ def reduce_bundle(bundle):
     for key,v in candidates.items():
         if set(v)!=set(PRESSURES): continue
         q={p:v[p]["final_q_kg_s"] for p in PRESSURES}; observed={p:v[p]["source_final_q_kg_s"] for p in PRESSURES}
-        sign=(q[11]/q[5]<1); ordering=q[5]>q[9]>q[11]; bounds=all(v[p]["min_porosity"]>0 and v[p]["min_bed_ratio"]>0 for p in PRESSURES)
+        conductance={p:v[p]["final_conductance"] for p in PRESSURES}
+        sign=conductance[11]<conductance[9]<conductance[5]
+        ordering=q[5]>q[9]>q[11]; bounds=all(v[p]["min_porosity"]>0 and v[p]["min_bed_ratio"]>0 for p in PRESSURES)
         err=math.sqrt(sum((q[p]-observed[p])**2 for p in PRESSURES)/3)
-        assessed.append({"pc":key[0],"theta":key[1],"sign_pass":sign,"ordering_pass":ordering,"bounds_pass":bounds,"rmse_kg_s":err,"max_strain":max(v[p]["max_strain"] for p in PRESSURES)})
-    survivors=[x for x in assessed if x["sign_pass"] and x["ordering_pass"] and x["bounds_pass"]]
+        assessed.append({"pc":key[0],"theta":key[1],"resistance_direction_pass":sign,"pressure_ordering_pass":ordering,"sign_pass":sign,"ordering_pass":ordering,"bounds_pass":bounds,"rmse_kg_s":err,"max_strain":max(v[p]["max_strain"] for p in PRESSURES)})
+    survivors=[x for x in assessed if x["resistance_direction_pass"] and x["pressure_ordering_pass"] and x["bounds_pass"]]
     if survivors: disposition="SCI_MD_002A_TRANSIENT_POROMECHANICS_SURVIVES_NOT_IDENTIFIED"
-    elif any(x["sign_pass"] for x in assessed): disposition="SCI_MD_002A_REJECTED_WRONG_PRESSURE_ORDERING"
+    elif any(x["resistance_direction_pass"] for x in assessed): disposition="SCI_MD_002A_REJECTED_WRONG_PRESSURE_ORDERING"
     else: disposition="SCI_MD_002A_REJECTED_WRONG_SIGN"
     result={"schema_version":"ewp.sci_md_002a.result.v1","authority_sha256":sha(bundle/"execution_authority.json"),"manifest_sha256":sha(bundle/"manifest.json"),"trajectory_count":len(rec),"valid_count":len(valid),"invalid_count":len(rec)-len(valid),"source_conditioned_count":len([r for r in valid if r.get("arm") in ("S1_SOURCE_PRESSURE_SCREEN","S2_MACHINE_TRANSFER")]),"synthetic_signature_count":len([r for r in valid if r.get("arm") in ("T1_SYNTHETIC_TRANSIENT_SIGNATURES","U1_UNLOADING_MEASUREMENT_DESIGN")]),"control_count":len([r for r in valid if r.get("arm") in ("C0_ANALYTICAL_CONTROLS","E1_EQUILIBRIUM_PRESSURE_SCREEN","R1_GENERIC_RELAXING_RESISTANCE_CONTROL")]),"pressure_candidates":assessed,"survivor_count":len(survivors),"best_survivor":min(survivors,key=lambda x:x["rmse_kg_s"]) if survivors else None,"gates":{"artifact_and_numerical_validity":len(valid)==len(rec),"resistance_sign":any(x["sign_pass"] for x in assessed),"pressure_ordering":bool(survivors),"physical_bounds":all(x["bounds_pass"] for x in assessed),"grind_direction":"GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED","temporal_shape":"DESCRIPTIVE_POST_OBSERVATION","transfer":bool(survivors),"distinctiveness":"DEFORMATION_MEASUREMENT_REQUIRED"},"disposition":disposition,"claim_boundary":protocol()["claim_boundary"]}
     (OUT/"SCI_MD_002A_RESULT.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
