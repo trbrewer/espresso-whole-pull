@@ -31,7 +31,10 @@ def permeability_ratio(x,phi=PHI): return (1-x)**3/(1-phi*x)
 def porosity(x,phi=PHI):
     eps=phi*x
     return (phi-eps)/(1-eps)
-def bed_ratio(x,phi=PHI): return (1-(1-x)**4)/(4*j_integral(x,phi)) if x else 1.
+def bed_ratio(x,phi=PHI):
+    if not x: return 1.
+    numerator=x-1.5*x*x+x**3-.25*x**4
+    return numerator/j_integral(x,phi)
 def conductance(sigma,pc,k0):
     if sigma<=0: return AREA*k0/(MU*H0)
     x=sigma/pc
