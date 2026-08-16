@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 389,
-  "total_uncompressed_bytes_excluding_manifest": 6114247,
-  "aggregate_source_sha256": "bcd2010cb20912599ae97fa32f24099e72d48934a1c485696b7955c436d567ac",
-  "aggregate_sha256": "bcd2010cb20912599ae97fa32f24099e72d48934a1c485696b7955c436d567ac",
+  "file_count": 395,
+  "total_uncompressed_bytes_excluding_manifest": 6144557,
+  "aggregate_source_sha256": "6c4a6e58bcf667407a1de152fe1db0296d2ac93c4d44032ea717d3df0bfd6b30",
+  "aggregate_sha256": "6c4a6e58bcf667407a1de152fe1db0296d2ac93c4d44032ea717d3df0bfd6b30",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -458,6 +458,21 @@
       "bytes": 6218,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_002a/PARALLEL_LANE_DECLARATION.json": {
+      "sha256": "bab74eac5d800c1c96e1b0dae5deaf16c1a71414f32f852030f981462b2a827c",
+      "bytes": 2110,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_002a/PROTOCOL.md": {
+      "sha256": "d717112d50d67bf605f4b88eb6ff1e1bfd002e8648419299b47be30cabe292b2",
+      "bytes": 4316,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_002a/README.md": {
+      "sha256": "f8e1b0bbc1d850f23d6e07bae6fd76f14ed2cda7da4c96ec69c393ccfdf6f2b5",
+      "bytes": 357,
+      "git_mode": "100644"
+    },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
       "sha256": "5f4fe4be0b757a460e683f1a783dbf19b41773fe46c23a77fb5ebab83c9a6daa",
       "bytes": 1352,
@@ -521,6 +536,11 @@
     "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md": {
       "sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
       "bytes": 2160,
+      "git_mode": "100644"
+    },
+    "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
+      "sha256": "ccda2d8285b6393cb57044ddc73295cbdf5941d5d46fa8b24d2a99a19c48beec",
+      "bytes": 4067,
       "git_mode": "100644"
     },
     "docs/strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md": {
@@ -1063,6 +1083,11 @@
       "bytes": 26943,
       "git_mode": "100755"
     },
+    "scripts/sci_md_002a.py": {
+      "sha256": "81d43a94dd0edac7e74e6e99c1f0281fbabe86b0a2512cd1336df19f3e2def66",
+      "bytes": 17201,
+      "git_mode": "100644"
+    },
     "scripts/static_validate.py": {
       "sha256": "161d865ddea9484828a303390dd4eea4cd5885b66e39cdd5fc32ffcc4ecf1c61",
       "bytes": 30529,
@@ -1386,6 +1411,11 @@
     "tests/test_sci_md_001.py": {
       "sha256": "b71462cbfea992c51a0db543960d7644ccb66ce8d5c0d4d7d30f147e277f79ce",
       "bytes": 5436,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_002a.py": {
+      "sha256": "b36f73337d39241aaddfc73176b7cbe20c2611cbab83a012acb4562f1a15de7a",
+      "bytes": 2259,
       "git_mode": "100644"
     },
     "tests/test_val001_administrative_semantics.py": {

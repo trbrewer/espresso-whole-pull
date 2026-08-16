@@ -28,7 +28,7 @@
   "fixed_primitives": {
     "basket_area_m2": 0.002463008640414398,
     "bed_depth_m": 0.01,
-    "density_kg_m3": 965,
+    "density_kg_m3": 965.0,
     "k0_m2": "9_bar_scale_only_anchor",
     "mu_pa_s": 0.000315,
     "phi0": 0.4
@@ -90,7 +90,7 @@
   "source": {
     "alignment": "unchanged source clock; accepted presentation clock +3 s only where predecessor already uses it",
     "calibration": "one 9-bar multiplicative hydraulic scale; 5/11 bar transfer",
-    "grind_arm": "NOT_EXECUTED_UNLESS_GOVERNED_INITIAL_STRUCTURE_MAPPING_EXISTS",
+    "grind_arm": "GRIND_TRANSFER_NOT_IDENTIFIABLE_FROM_AVAILABLE_STRUCTURE_DATA",
     "groups": [
       5,
       9,
