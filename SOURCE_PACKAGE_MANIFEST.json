@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 404,
-  "total_uncompressed_bytes_excluding_manifest": 6238549,
-  "aggregate_source_sha256": "d94bdc651c3decc2ba1a52d33aa97149ab6a8e43ddbef483cf618ba1dfbdbff1",
-  "aggregate_sha256": "d94bdc651c3decc2ba1a52d33aa97149ab6a8e43ddbef483cf618ba1dfbdbff1",
+  "file_count": 406,
+  "total_uncompressed_bytes_excluding_manifest": 6249480,
+  "aggregate_source_sha256": "8150fac9c1af0c165280a3b7ecb94f2f879881195c1dae10ae08cf918e24320f",
+  "aggregate_sha256": "8150fac9c1af0c165280a3b7ecb94f2f879881195c1dae10ae08cf918e24320f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -484,8 +484,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/DRAFT_PR_BODY.md": {
-      "sha256": "364a3cce2de75e983883b927bf4559cedd81fe9c87697639063c6332d5721b2a",
-      "bytes": 4003,
+      "sha256": "e9a5683a4ff5280e9da05f8dd2ac92490829d6da6a1720a21721a9becb66017e",
+      "bytes": 5626,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_002b/INTEGRITY_INCIDENT_AND_RECOVERY.md": {
+      "sha256": "e4ba3fc9056ec8e18f2acec943f29ae07d6d38e33c15a5ded54b445697e42310",
+      "bytes": 4239,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/ISSUE_BODY.md": {
@@ -504,8 +509,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/README.md": {
-      "sha256": "ebd50eca4ef2d19438e7c2dd6aea3ae8bdccac45258392b0194e395b67b7f189",
-      "bytes": 1306,
+      "sha256": "d1cd1096c42fcdb8faac5e4681d48be32121ff1ca92ac520db6cb53dac2e67f1",
+      "bytes": 2126,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_002b/RESULT.md": {
+      "sha256": "2c8900ba07fb2f21a8fadcfe596c7cc4d9afe20a17ed1b387b22a3d37c8a8dd6",
+      "bytes": 4249,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
