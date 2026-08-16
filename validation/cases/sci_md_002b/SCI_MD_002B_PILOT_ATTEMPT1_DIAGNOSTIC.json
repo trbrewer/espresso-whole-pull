@@ -1,0 +1,18 @@
+{
+  "complete_source_pressure_triplet_executed": false,
+  "completion_count": 8,
+  "evidence_bundle_manifest_sha256": "584d165cb014f9a823e2962bb69f9612d072c8c51a4b7d0f08e78cda559a9657",
+  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt1",
+  "failure_count": 0,
+  "peak_rss_bytes": 136830976,
+  "reason": "Canonical static validation required a standard-library-only script; the implementation was corrected and this attempt was not reused.",
+  "row_count": 8,
+  "schema_version": "ewp.sci_md_002b.pilot_report.v1",
+  "scientific_reducer_ran": false,
+  "source_head": "e9392318946700135bdaee0e08c8379f9e0da4e0",
+  "source_ordering_calculated": false,
+  "source_tree": "071d437f56c89579d98f5bc1b3b156f9d3283cdb",
+  "status": "DIAGNOSTIC_ONLY_INVALIDATED_BY_STANDARD_LIBRARY_PORTABILITY_CORRECTION",
+  "task_id": "SCI-MD-002B",
+  "wall_s": 20.974339701002464
+}
