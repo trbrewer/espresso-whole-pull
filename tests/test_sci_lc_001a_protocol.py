@@ -1,4 +1,5 @@
 import ast
+import copy
 import csv
 import importlib.util
 import json
@@ -201,6 +202,32 @@ class SciLc001aProtocolTests(unittest.TestCase):
         self.assertEqual(self.protocol["resistance_evolution"]["fast_control"], "Theta_R=0.03")
         with self.assertRaisesRegex(ValueError, "STOP_RESISTANCE_EVOLUTION"):
             mod.evolved_resistance_primitives(base, [10] * 8, 1, "UPSTREAM_LOCALIZED")
+        for value in (0.25, 4.0):
+            state = mod.evolved_resistance_primitives(base, [math.log(value)] * 8, 1,
+                                                       "UPSTREAM_LOCALIZED")
+            self.assertEqual(state["multipliers"][0], value)
+            self.assertEqual(mod.multiplier_admissibility(state["multipliers"]), mod.MULTIPLIER_STOP)
+        self.assertEqual(mod.multiplier_admissibility([.2500001, 3.999999]),
+                         "SCIENTIFICALLY_ADMISSIBLE")
+        self.assertEqual(mod.multiplier_admissibility([float("nan")]),
+                         "STOP_NONFINITE_RESISTANCE_EVOLUTION_MULTIPLIER")
+
+    def test_feedback_label_mapping_and_semantics(self):
+        self.assertEqual(mod.feedback_sign_scalar("EQUALIZING"), 1.0)
+        self.assertEqual(mod.feedback_sign_scalar("LOCALIZING"), -1.0)
+        self.assertEqual(mod.feedback_sign_scalar("NONE"), 0.0)
+        with self.assertRaisesRegex(ValueError, "UNSUPPORTED"):
+            mod.feedback_sign_scalar("AMPLIFY")
+        active = copy.deepcopy(next(r for r in self.rows if r["arm"] == "D3-EQ"))
+        mod.validate_feedback_contract(active)
+        for label in ("NONE", "AMPLIFY"):
+            broken = dict(active, feedback_sign=label)
+            with self.assertRaises(ValueError):
+                mod.validate_feedback_contract(broken)
+        fixed = copy.deepcopy(next(r for r in self.rows if r["resistance_evolution_law"] == "NO_EVOLUTION"))
+        mod.validate_feedback_contract(fixed)
+        with self.assertRaises(ValueError):
+            mod.validate_feedback_contract(dict(fixed, feedback_sign="EQUALIZING"))
 
     def test_boundary_initial_and_integration_are_exactly_serialized(self):
         b = self.protocol["boundary_initial_integration"]
@@ -309,6 +336,30 @@ class SciLc001aProtocolTests(unittest.TestCase):
             mod.make_row(arm="BAD", pressure="AMBIGUOUS")
         with self.assertRaisesRegex(ValueError, "STATIC_CLASSIFIER"):
             mod.make_row(arm="BAD", pressure="MACHINE_COUPLED", theta_m="1")
+        tables = self.protocol["boundary_modes"]["field_dispositions"]
+        for mode in mod.BOUNDARY_MODES:
+            self.assertEqual(set(tables[mode]), set(mod.FIELDS))
+            self.assertFalse(set(tables[mode].values()) - set(mod.FIELD_DISPOSITIONS))
+
+        static = next(r for r in self.rows if r["pressure_mode"] == "PRESCRIBED_STATIC")
+        dynamic = next(r for r in self.rows if r["pressure_mode"] == "PRESCRIBED_DYNAMIC_RAMP")
+        machine = next(r for r in self.rows if r["pressure_mode"] == "MACHINE_COUPLED")
+        mutations = [
+            (static, "storage_ratio_S_h", "1"), (static, "hydraulic_storage_C_h", ".125"),
+            (static, "integration_profile", mod.INTEGRATION_PROFILE),
+            (static, "machine_response_ratio", "1"),
+            (dynamic, "machine_response_ratio", "1"),
+            (dynamic, "integration_profile", "STATIC_LINEAR_SOLVE_V1"),
+            (dynamic, "hydraulic_storage_C_h", mod.NA),
+            (machine, "machine_response_ratio", mod.NA),
+            (machine, "machine_reference_tuple", "UNSUPPORTED"),
+            (machine, "storage_ratio_S_h", mod.NA),
+            (machine, "hydraulic_storage_C_h", mod.NA),
+        ]
+        for original, field, value in mutations:
+            with self.subTest(mode=original["pressure_mode"], field=field):
+                with self.assertRaises(ValueError):
+                    mod.validate_boundary_row(dict(original, **{field: value}))
 
     def test_enforceable_rhs_cap_and_event_tie_breaking(self):
         self.assertEqual(mod.enforce_rhs_cap(199999), 200000)
@@ -328,16 +379,57 @@ class SciLc001aProtocolTests(unittest.TestCase):
 
     def test_residual_and_uncertainty_contracts(self):
         self.assertEqual(mod.scaled_residual_norm([1e-12], [1.0]), 1e-12)
-        self.assertAlmostEqual(mod.ratio_uncertainty(2, 4, u_numerator=.1, u_denominator=.2), .05)
-        components = {name: .001 for name in
-            ("u_integrator", "u_sector", "u_linear", "u_sampling", "u_denominator")}
-        self.assertAlmostEqual(mod.combine_uncertainty(components), .005)
-        with self.assertRaisesRegex(ValueError, "UNAVAILABLE"):
-            mod.combine_uncertainty(dict(components, u_sector="UNAVAILABLE"))
+        self.assertAlmostEqual(mod.residual_corrected_gain_uncertainty(
+            2, 4, corrected_numerator=2.1, corrected_denominator=4.2), 0)
+        components = {name: .001 for name in mod.UNCERTAINTY_COMPONENTS}
+        applicable = {name: True for name in mod.UNCERTAINTY_COMPONENTS}
+        self.assertAlmostEqual(mod.combine_uncertainty(components, applicable=applicable), .005)
+        allowed_na = dict(components, u_sector=mod.NA)
+        self.assertAlmostEqual(mod.combine_uncertainty(allowed_na,
+            applicable=dict(applicable, u_sector=False)), .004)
+        with self.assertRaisesRegex(ValueError, "NOT_APPLICABLE_REQUIRED"):
+            mod.combine_uncertainty(allowed_na, applicable=applicable)
+        with self.assertRaisesRegex(ValueError, "NUMERICALLY_UNRESOLVED"):
+            mod.combine_uncertainty(dict(components, u_sector="UNAVAILABLE"), applicable=applicable)
+        for bad in (-1, float("nan"), "BAD"):
+            with self.assertRaisesRegex(ValueError, "INVALID_UNCERTAINTY"):
+                mod.combine_uncertainty(dict(components, u_linear=bad), applicable=applicable)
         self.assertEqual(mod.uncertainty_limit(0), 0)
         self.assertEqual(mod.uncertainty_limit(1e-12), 2e-14)
         with self.assertRaisesRegex(ValueError, "DENOMINATOR_FLOOR"):
-            mod.ratio_uncertainty(1, 1e-13, u_numerator=0, u_denominator=0)
+            mod.residual_corrected_gain_uncertainty(1, 1e-13,
+                corrected_numerator=1, corrected_denominator=1e-13)
+        self.assertNotIn("u_denominator", self.protocol["uncertainty"]["components"])
+
+    def test_startup_refinement_boundaries_and_routing(self):
+        startup = [1.0] * 8
+        q = mod.Q_ZERO_THRESHOLD
+        self.assertEqual(mod.evolution_focusing(tau=0, flows=[0.0] * 8, startup=startup), startup)
+        self.assertEqual(mod.evolution_focusing(tau=mod.STARTUP_TAU_MAX,
+            flows=[q / 8] * 8, startup=startup), startup)
+        above = mod.evolution_focusing(tau=mod.STARTUP_TAU_MAX + 1e-12,
+            flows=[2 * q / 8] * 8, startup=startup)
+        self.assertEqual(above, startup)
+        with self.assertRaisesRegex(ValueError, "OUTSIDE_STARTUP"):
+            mod.evolution_focusing(tau=mod.STARTUP_TAU_MAX + 1e-12,
+                flows=[q / 8] * 8, startup=startup)
+        self.assertAlmostEqual(mod.startup_uncertainty(1, .99), .01)
+        for status in ("UNAVAILABLE", "STOPPED", "CAPPED"):
+            with self.assertRaisesRegex(ValueError, "NUMERICALLY_UNRESOLVED"):
+                mod.startup_uncertainty(1, 1, refined_status=status)
+        with self.assertRaisesRegex(ValueError, "NUMERICALLY_UNRESOLVED"):
+            mod.startup_uncertainty(1, float("nan"))
+
+    def test_sector_refinement_contract_and_nonlinear_removal(self):
+        row = next(r for r in self.rows if r["numerical_resolution_role"] == "SECTOR_REFINEMENT"
+                   and r["sector_count"] == 4)
+        self.assertEqual(mod.sector_refinement_nref(row), 8)
+        self.assertIn(mod.sector_companion_case_id(row, self.rows), {r["case_id"] for r in self.rows})
+        ordinary = next(r for r in self.rows if r["numerical_resolution_role"] == "PRIMARY")
+        self.assertEqual(mod.sector_refinement_nref(ordinary), mod.NA)
+        residual = self.protocol["residual_contract"]
+        self.assertEqual(residual["stage_a_nonlinear_fixed_point_solve"], "NOT_USED")
+        self.assertNotIn("nonlinear", residual)
 
     def test_structural_roles_and_comparator_reconciliation(self):
         ids = {row["case_id"]: row for row in self.rows}

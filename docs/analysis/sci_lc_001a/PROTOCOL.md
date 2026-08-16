@@ -1,8 +1,8 @@
-# SCI-LC-001A Stage-A prospective protocol — Correction C2
+# SCI-LC-001A Stage-A prospective protocol — Correction C3
 
-Task: `SCI-LC-001A-C2-EXECUTION-CONTRACT-CLOSURE-2026-08-16`
+Task: `SCI-LC-001A-C3-FINAL-PROSPECTIVE-CONTRACT-CLOSURE-2026-08-16`
 
-Status: `PROSPECTIVE_PROTOCOL_CORRECTED_PENDING_SECOND_INDEPENDENT_PRE_EXECUTION_REVIEW`
+Status: `PROSPECTIVE_PROTOCOL_C3_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW`
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Execution is not
 authorized. This package defines a reduced diagnostic model; it does not change
@@ -40,7 +40,7 @@ trajectory or classification.
     "structural_comparator_rows": 362
   },
   "stage_a_hard_maximum": 1280,
-  "status": "PROSPECTIVE_PROTOCOL_CORRECTED_PENDING_SECOND_INDEPENDENT_PRE_EXECUTION_REVIEW",
+  "status": "PROSPECTIVE_PROTOCOL_C3_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW",
   "uncertainty": "u_limit(G)=min(0.02,0.02*abs(G))"
 }
 ```
@@ -110,8 +110,10 @@ Rotation/reflection permutes vectors and preserves scalar observables.
 
 ## Closed boundary contract
 
-Every row instantiates exactly one of these modes; the validator rejects all
-conflicts.
+Every row instantiates exactly one of these modes. Machine-readable authority
+assigns every serialized field exactly one of `REQUIRED`, `PROHIBITED`,
+`DERIVED`, `NOT_APPLICABLE`, or `PROVENANCE_ONLY`; the validator enforces the
+full table and derived `C_h` and `C_u` identities.
 
 - `PRESCRIBED_STATIC`: unknown `p_i`; `p_o_hat=0` and constant `p_b_hat`
   are prescribed; conservative node balances are algebraic. Storage and all
@@ -140,6 +142,14 @@ F_i=(q_d_i/sum_j q_d_j)/a_i
 H_i(t)=H_i0 exp(beta x_i), x_i(0)=0.
 ```
 
+The conversion is frozen, not inferred from wording: `EQUALIZING -> s=+1.0`,
+`LOCALIZING -> s=-1.0`, and `NONE -> s=0.0`. For `F_i>1`, positive `s`
+increases `x_i`, `H_i`, and total local resistance and suppresses the initially
+high-flow sector; negative `s` decreases them and reinforces it. Placement
+changes the split, not the sign of total-resistance response. Active finite
+evolution requires the first two labels; exact no-evolution requires `NONE`,
+`beta=0`, and the no-evolution timescale semantics.
+
 At the zero-pressure start, a common prescribed or machine forcing has a
 common leading time coefficient. Expanding the storage balance one-sided gives
 `p_i proportional to (G_u_i/C_h_i)` and therefore
@@ -151,14 +161,20 @@ F_i(0+)=N(G_u_i G_d_i/C_h_i)/sum_j(G_u_j G_d_j/C_h_j).
 Machine compliance changes only the common time coefficient and cancels from
 the normalized limit; lateral exchange enters at higher order. This exact
 mode-common dynamic limit is used at `tau=0`. For `|Q_hat|<=1e-14` it may be
-used only through `tau<=1e-6`, with a threshold-refinement uncertainty check.
+used only through `tau<=1e-6`. A mandatory companion changes only both branch
+thresholds by the frozen factor 10 (`1e-15` flow and `1e-7` time), and
+`u_startup(G)=|G_base-G_refined|` enters uncertainty once. The branch uses
+`<=` at both thresholds. Missing, stopped, capped, or nonfinite companions are
+`NUMERICALLY_UNRESOLVED` and cannot classify.
 Zero flow later is a numerical stop. Nonfinite flow and negative flow beyond
 the threshold stop. A zero sector flow with positive total flow gives `F_i=0`.
 The prescribed-static mode starts from its algebraic `p_b_hat=1` solution and
 has no zero-flow branch.
 
-Only `H_i` evolves; floors and placement do not. Multipliers must remain in
-`[0.25,4]`; contact with either bound terminates, with no clipping or aggregate
+Only `H_i` evolves; floors and placement do not. Scientific admissibility is
+strictly `0.25 < H_i/H_i0 < 4`; contact with either bound terminates as
+`STOP_RESISTANCE_EVOLUTION_MULTIPLIER_BOUND_CONTACT_NO_CLIPPING`. The exact
+root state may be reconstructed diagnostically, but may not classify. There is no clipping or aggregate
 renormalization. `beta=0` and `Theta_R=INFINITE_NO_EVOLUTION` are exact fixed
 controls.
 
@@ -184,11 +200,10 @@ located event in an accepted step precedes a later cap; a cap precedes an event
 that would require an unevaluated RHS. Nonfinite event functions stop. No
 stopped or capped trajectory reaches classification.
 
+Stage A uses no nonlinear fixed-point solve: `STAGE_A_NONLINEAR_FIXED_POINT_SOLVE=NOT_USED`.
 Linear residuals use `r=A p-b`,
 `s_i=max(|b_i|,sum_j |A_ij||p_j|,1e-14)`, and
-`max_i |r_i|/s_i <=1e-12`. Nonlinear residuals use `r=y-Phi(y)`,
-`s_i=max(|y_i|,|Phi_i|,1e-14)`, and the same scaled infinity norm
-`<=1e-10`. Equality passes. Nonfinite values fail. No retry is allowed and all
+`max_i |r_i|/s_i <=1e-12`. Equality passes. Nonfinite values fail. No retry is allowed and all
 failure routing precedes scientific classification.
 
 ## Observables, uncertainty, and classification
@@ -205,20 +220,26 @@ For gain `G`, all uncertainty terms are nonnegative absolute gain units:
 
 ```text
 u_integrator=|G_base-G_refined|
-u_sector=|G_N-G_Nref| when sector refinement is required (otherwise explicit N/A)
-u_linear=first-order ratio propagation from residual-derived numerator/denominator errors
+u_sector=|G_N-G_Nref| for frozen sector-refinement predicates (otherwise explicit N/A)
+u_linear=|A/B-A_corrected/B_corrected| from deterministic residual correction
 u_sampling=|G_1001-G_2001| from one accepted dense output
-u_denominator=|A|u_B/|B|^2
+u_startup=|G_base_thresholds-G_refined_thresholds|
 u_G=sum of applicable terms
 u_limit(G)=min(0.02,0.02|G|)
 ```
 
-Unavailable required components, stopped trajectories, nonfinite metrics, and
+`NOT_APPLICABLE` contributes zero only where an exact predicate says the
+component does not apply; required N/A, missing, negative, nonfinite, or unknown
+sentinels are artifact-invalid, while `UNAVAILABLE` is unresolved. Sector
+companions map `N=4->8` and `N=8->16`; the explicit mode-4 Nyquist diagnostic
+maps `N=8->16`, with all non-resolution primitives identical. Unavailable required components, stopped trajectories, nonfinite metrics, and
 floor-dominated denominators are `NUMERICALLY_UNRESOLVED`. The limit is a 2%
 relative tolerance capped at 0.02 gain units. At `G=0` it is zero; exact nulls
 are handled analytically before this numerical gate, while a nonstructural
 zero with nonzero uncertainty is unresolved. Equality `u_G<=u_limit` passes.
 Model-form disagreement is a separate transition reason, not scalar error.
+Denominator residual error is included exactly once in `u_linear`; denominator
+floor contact is a validity gate and is not an additive uncertainty component.
 
 Analytical identities are predicates—not caller assertions: Lambda zero,
 self-similar placement, or uniform unit-contrast symmetry. They are recorded

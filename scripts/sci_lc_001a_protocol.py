@@ -20,14 +20,16 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "validation/cases/sci_lc_001a"
 NA = "NOT_APPLICABLE"
 INFINITE = "INFINITE_NO_LATERAL_EQUALIZATION"
-STATUS = "PROSPECTIVE_PROTOCOL_CORRECTED_PENDING_SECOND_INDEPENDENT_PRE_EXECUTION_REVIEW"
-TASK_ID = "SCI-LC-001A-C2-EXECUTION-CONTRACT-CLOSURE-2026-08-16"
+STATUS = "PROSPECTIVE_PROTOCOL_C3_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW"
+TASK_ID = "SCI-LC-001A-C3-FINAL-PROSPECTIVE-CONTRACT-CLOSURE-2026-08-16"
 BASE_HEAD = "3e8993f56badd575f3482ea7bfa0f87d24412100"
 BASE_TREE = "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0"
 REVIEWED_HEAD = "c683f7722b170d049bcdf08c6bc65afd3cef20ba"
 REVIEWED_TREE = "2a352bce78abbf8ad853cd7b0af6457bfea8f8fd"
 C1_HEAD = "86b9ff27b8c10d5cff9c52d9cd411b0ac179620e"
 C1_TREE = "2e35a5e245be9e266c747409f2420be9971963a6"
+C2_HEAD = "cbbec20d29dcde7e4a1aa3b1fb14b986b8820180"
+C2_TREE = "3cce042f161fc7bf3cd42cc679893db7c45f9743"
 
 LAMBDAS = ("0", "0.0001", "0.0003", "0.001", "0.003", "0.01", "0.03",
            "0.1", "0.3", "1", "3", "10", "30", "100")
@@ -51,6 +53,13 @@ PATTERN_SPAN_TOLERANCE = 1.0e-14
 D4_STATUS = "DEFERRED_NOT_AUTHORIZED_STAGE_A"
 X1_STATUS = "DEFERRED_NOT_AUTHORIZED_STAGE_A"
 MAX_RHS_EVALUATIONS = 200000
+STARTUP_REFINEMENT_FACTOR = 10.0
+REFINED_Q_ZERO_THRESHOLD = Q_ZERO_THRESHOLD / STARTUP_REFINEMENT_FACTOR
+REFINED_STARTUP_TAU_MAX = STARTUP_TAU_MAX / STARTUP_REFINEMENT_FACTOR
+FEEDBACK_SIGN_SCALARS = {"EQUALIZING": 1.0, "LOCALIZING": -1.0, "NONE": 0.0}
+MULTIPLIER_STOP = "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_BOUND_CONTACT_NO_CLIPPING"
+UNCERTAINTY_COMPONENTS = ("u_integrator", "u_sector", "u_linear", "u_sampling", "u_startup")
+FIELD_DISPOSITIONS = ("REQUIRED", "PROHIBITED", "DERIVED", "NOT_APPLICABLE", "PROVENANCE_ONLY")
 
 FIELDS = (
     "case_id", "arm", "model_variant", "pressure_mode", "boundary_profile",
@@ -175,6 +184,8 @@ def resistance_primitives(n: int, pattern: str, mode: str, contrast: str,
 def evolved_resistance_primitives(base: dict, x: list[float], beta: float,
                                   placement: str) -> dict:
     multipliers = [math.exp(beta * value) for value in x]
+    if any(not math.isfinite(value) for value in multipliers):
+        raise ValueError("STOP_NONFINITE_RESISTANCE_EVOLUTION_MULTIPLIER")
     if any(value < 0.25 or value > 4.0 for value in multipliers):
         raise ValueError("STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUT_OF_RANGE_NO_CLIPPING")
     residual = [value * multiplier for value, multiplier in zip(base["H_i"], multipliers)]
@@ -182,6 +193,100 @@ def evolved_resistance_primitives(base: dict, x: list[float], beta: float,
     return {"multipliers": multipliers, "H_i": residual,
             "R_u_i": [floor + alpha * value for value in residual],
             "R_d_i": [floor + (1.0 - alpha) * value for value in residual]}
+
+
+def multiplier_admissibility(multipliers: list[float]) -> str:
+    """Scientific admissibility is separate from diagnostic reconstruction."""
+    if not multipliers or any(not math.isfinite(value) for value in multipliers):
+        return "STOP_NONFINITE_RESISTANCE_EVOLUTION_MULTIPLIER"
+    if any(value <= 0.25 or value >= 4.0 for value in multipliers):
+        return MULTIPLIER_STOP
+    return "SCIENTIFICALLY_ADMISSIBLE"
+
+
+def feedback_sign_scalar(label: str) -> float:
+    try:
+        return FEEDBACK_SIGN_SCALARS[label]
+    except (KeyError, TypeError) as exc:
+        raise ValueError("UNSUPPORTED_FEEDBACK_SIGN_LABEL") from exc
+
+
+def validate_feedback_contract(row: dict) -> None:
+    label = row["feedback_sign"]
+    scalar = feedback_sign_scalar(label)
+    active = row["resistance_evolution_law"] != "NO_EVOLUTION"
+    infinite = row["resistance_evolution_timescale_ratio"] == "INFINITE_NO_EVOLUTION"
+    beta = d(row["feedback_gain"])
+    if active:
+        if label not in ("EQUALIZING", "LOCALIZING") or scalar == 0 or beta <= 0 or infinite:
+            raise ValueError("ACTIVE_FEEDBACK_REQUIRES_FINITE_NONZERO_SIGNED_EVOLUTION")
+    elif label != "NONE" or scalar != 0 or beta != 0:
+        raise ValueError("NO_EVOLUTION_REQUIRES_NONE_AND_ZERO_BETA")
+
+
+def boundary_field_dispositions(mode: str) -> dict[str, str]:
+    """Return a complete disposition for every serialized matrix field."""
+    if mode not in BOUNDARY_MODES:
+        raise ValueError("UNSUPPORTED_BOUNDARY_MODE")
+    result = {field: "PROVENANCE_ONLY" for field in FIELDS}
+    result.update({"pressure_mode": "REQUIRED", "boundary_profile": "REQUIRED",
+                   "integration_profile": "REQUIRED"})
+    if mode == "PRESCRIBED_STATIC":
+        result["prescribed_pressure_amplitude"] = "REQUIRED"
+        for field in ("storage_ratio_S_h", "hydraulic_storage_C_h", "derived_Theta_L_m",
+                      "machine_response_ratio", "machine_compliance_C_u", "machine_reference_tuple"):
+            result[field] = "PROHIBITED"
+    elif mode == "PRESCRIBED_DYNAMIC_RAMP":
+        result.update({"prescribed_pressure_amplitude": "DERIVED", "storage_ratio_S_h": "REQUIRED",
+                       "hydraulic_storage_C_h": "DERIVED", "derived_Theta_L_m": "DERIVED"})
+        for field in ("machine_response_ratio", "machine_compliance_C_u", "machine_reference_tuple"):
+            result[field] = "PROHIBITED"
+    else:
+        result["prescribed_pressure_amplitude"] = "PROHIBITED"
+        result.update({"storage_ratio_S_h": "REQUIRED", "hydraulic_storage_C_h": "DERIVED",
+                       "derived_Theta_L_m": "DERIVED", "machine_response_ratio": "REQUIRED",
+                       "machine_compliance_C_u": "DERIVED", "machine_reference_tuple": "REQUIRED"})
+    return result
+
+
+def validate_boundary_row(row: dict) -> None:
+    mode = row["pressure_mode"]
+    dispositions = boundary_field_dispositions(mode)
+    if set(dispositions) != set(FIELDS) or set(dispositions.values()) - set(FIELD_DISPOSITIONS):
+        raise ValueError("INCOMPLETE_BOUNDARY_FIELD_TRUTH_TABLE")
+    if mode == "PRESCRIBED_STATIC":
+        if (row["boundary_profile"] != "CONSTANT_BASKET_PRESSURE" or
+                row["integration_profile"] != "STATIC_LINEAR_SOLVE_V1" or
+                row["prescribed_pressure_amplitude"] == NA):
+            raise ValueError("INVALID_PRESCRIBED_STATIC_BOUNDARY")
+        prohibited = ("storage_ratio_S_h", "hydraulic_storage_C_h", "derived_Theta_L_m",
+                      "machine_response_ratio", "machine_compliance_C_u", "machine_reference_tuple")
+    elif mode == "PRESCRIBED_DYNAMIC_RAMP":
+        if (row["boundary_profile"] != "PIECEWISE_LINEAR_RAMP_TAU_0P05" or
+                row["integration_profile"] != INTEGRATION_PROFILE or
+                row["prescribed_pressure_amplitude"] != "1"):
+            raise ValueError("INVALID_PRESCRIBED_DYNAMIC_BOUNDARY")
+        prohibited = ("machine_response_ratio", "machine_compliance_C_u", "machine_reference_tuple")
+    else:
+        if (row["boundary_profile"] != "WP02_002_LINEAR_SUPPLY_RAMP_TAU_0P05" or
+                row["integration_profile"] != INTEGRATION_PROFILE or
+                row["prescribed_pressure_amplitude"] != NA or
+                row["machine_reference_tuple"] != MACHINE_TUPLE_ID):
+            raise ValueError("INVALID_MACHINE_BOUNDARY")
+        prohibited = ()
+    if any(row[field] != NA for field in prohibited):
+        raise ValueError("PROHIBITED_BOUNDARY_FIELD_IS_ACTIVE")
+    if mode != "PRESCRIBED_STATIC":
+        if row["storage_ratio_S_h"] == NA or row["hydraulic_storage_C_h"] == NA:
+            raise ValueError("MISSING_DYNAMIC_STORAGE_PRIMITIVE")
+        expected_ch = format(float(d(row["storage_ratio_S_h"])) / int(row["sector_count"]), ".17g")
+        if row["hydraulic_storage_C_h"] != expected_ch:
+            raise ValueError("INCONSISTENT_DYNAMIC_STORAGE_PRIMITIVE")
+    if mode == "MACHINE_COUPLED":
+        if row["machine_response_ratio"] == NA or row["machine_compliance_C_u"] == NA:
+            raise ValueError("MISSING_MACHINE_PRIMITIVE")
+        if row["machine_compliance_C_u"] != machine_compliance(row["machine_response_ratio"]):
+            raise ValueError("INCONSISTENT_MACHINE_COMPLIANCE")
 
 
 def uncertainty_limit(gain: float) -> float:
@@ -214,18 +319,32 @@ def startup_focusing(base: dict, storage: list[float], boundary_mode: str) -> li
 
 
 def evolution_focusing(*, tau: float, flows: list[float], startup: list[float],
-                       zero_threshold: float = Q_ZERO_THRESHOLD) -> list[float]:
+                       zero_threshold: float = Q_ZERO_THRESHOLD,
+                       startup_tau_max: float = STARTUP_TAU_MAX) -> list[float]:
     if not all(math.isfinite(value) for value in flows):
         raise ValueError("STOP_NONFINITE_SECTOR_FLOW")
     total = sum(flows)
     if total < -zero_threshold or any(value < -zero_threshold for value in flows):
         raise ValueError("STOP_UNEXPECTED_FLOW_REVERSAL")
     if abs(total) <= zero_threshold:
-        if tau <= STARTUP_TAU_MAX:
+        if tau <= startup_tau_max:
             return list(startup)
         raise ValueError("STOP_ZERO_TOTAL_FLOW_OUTSIDE_STARTUP_WINDOW")
     n = len(flows)
     return [(value / total) * n for value in flows]
+
+
+def startup_uncertainty(base_gain: float | str, refined_gain: float | str,
+                        *, refined_status: str = "COMPLETE") -> float:
+    if refined_status in ("STOPPED", "CAPPED", "UNAVAILABLE"):
+        raise ValueError("NUMERICALLY_UNRESOLVED_STARTUP_REFINEMENT")
+    if refined_status != "COMPLETE":
+        raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_STARTUP_REFINEMENT_STATUS")
+    if not isinstance(base_gain, (int, float)) or not isinstance(refined_gain, (int, float)):
+        raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_STARTUP_REFINEMENT_VALUE")
+    if not math.isfinite(base_gain) or not math.isfinite(refined_gain):
+        raise ValueError("NUMERICALLY_UNRESOLVED_STARTUP_REFINEMENT")
+    return abs(base_gain - refined_gain)
 
 
 def scaled_residual_norm(residual: list[float], scale: list[float],
@@ -272,28 +391,62 @@ def locate_linear_event(t0: float, value0: float, t1: float, value1: float,
     return t0 + fraction * (t1 - t0)
 
 
-def ratio_uncertainty(numerator: float, denominator: float, *,
-                      u_numerator: float, u_denominator: float,
-                      denominator_floor: float = 1.0e-12) -> float:
-    values = (numerator, denominator, u_numerator, u_denominator)
+def residual_corrected_gain_uncertainty(numerator: float, denominator: float, *,
+                                        corrected_numerator: float,
+                                        corrected_denominator: float,
+                                        denominator_floor: float = 1.0e-12) -> float:
+    """Recompute a gain after deterministic residual correction, once."""
+    values = (numerator, denominator, corrected_numerator, corrected_denominator)
     if not all(math.isfinite(value) for value in values):
-        raise ValueError("UNCERTAINTY_COMPONENT_UNAVAILABLE_NONFINITE")
-    if abs(denominator) <= denominator_floor:
-        raise ValueError("UNCERTAINTY_COMPONENT_UNAVAILABLE_DENOMINATOR_FLOOR")
-    return (abs(u_numerator) / abs(denominator)
-            + abs(numerator) * abs(u_denominator) / abs(denominator) ** 2)
+        raise ValueError("NUMERICALLY_UNRESOLVED_NONFINITE_RESIDUAL_CORRECTION")
+    if abs(denominator) <= denominator_floor or abs(corrected_denominator) <= denominator_floor:
+        raise ValueError("NUMERICALLY_UNRESOLVED_DENOMINATOR_FLOOR")
+    return abs(numerator / denominator - corrected_numerator / corrected_denominator)
 
 
-def combine_uncertainty(components: dict[str, float | str]) -> float:
-    required = ("u_integrator", "u_sector", "u_linear", "u_sampling", "u_denominator")
-    if set(components) != set(required):
-        raise ValueError("UNCERTAINTY_COMPONENT_SET_INCOMPLETE")
-    if any(value == "UNAVAILABLE" for value in components.values()):
-        raise ValueError("UNCERTAINTY_COMPONENT_UNAVAILABLE")
-    values = [float(components[name]) for name in required]
-    if any(not math.isfinite(value) or value < 0 for value in values):
-        raise ValueError("INVALID_UNCERTAINTY_COMPONENT")
-    return sum(values)
+def combine_uncertainty(components: dict[str, float | str], *,
+                        applicable: dict[str, bool]) -> float:
+    if set(components) != set(UNCERTAINTY_COMPONENTS) or set(applicable) != set(UNCERTAINTY_COMPONENTS):
+        raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_UNCERTAINTY_COMPONENT_SET")
+    total = 0.0
+    for name in UNCERTAINTY_COMPONENTS:
+        value = components[name]
+        if value == NA:
+            if applicable[name]:
+                raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_NOT_APPLICABLE_REQUIRED_COMPONENT")
+            continue
+        if value == "UNAVAILABLE":
+            raise ValueError("NUMERICALLY_UNRESOLVED_UNCERTAINTY_COMPONENT")
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_UNCERTAINTY_COMPONENT")
+        if not math.isfinite(value) or value < 0:
+            raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_UNCERTAINTY_COMPONENT")
+        total += value
+    return total
+
+
+def sector_refinement_nref(row: dict) -> int | str:
+    role = row["numerical_resolution_role"]
+    n = int(row["sector_count"])
+    if role == "SECTOR_REFINEMENT":
+        return {4: 8, 8: 16, 16: NA}.get(n, NA)
+    if role == "NYQUIST_TO_RESOLVED_DIAGNOSTIC":
+        return 16 if n == 8 else NA
+    return NA
+
+
+def sector_companion_case_id(row: dict, rows: list[dict]) -> str:
+    nref = sector_refinement_nref(row)
+    if nref == NA:
+        return NA
+    ignored = {"case_id", "sector_count", "G_A_identity", "hydraulic_storage_C_h",
+               "lateral_edge_coefficient", "lateral_edge_conductance_G_edge",
+               "derived_Theta_L_m", "comparator_case_id", "row_sha256", "adaptive_group_id"}
+    matches = [candidate for candidate in rows if candidate["sector_count"] == nref and
+               all(candidate[key] == row[key] for key in FIELDS if key not in ignored)]
+    if len(matches) != 1:
+        raise ValueError("NUMERICALLY_UNRESOLVED_SECTOR_COMPANION")
+    return matches[0]["case_id"]
 
 
 def structural_identity(row: dict) -> str | None:
@@ -608,6 +761,7 @@ def protocol(rows: list[dict]) -> dict:
         "task_id": TASK_ID, "status": STATUS, "base_head": BASE_HEAD, "base_tree": BASE_TREE,
         "reviewed_head": REVIEWED_HEAD, "reviewed_tree": REVIEWED_TREE,
         "c1_head": C1_HEAD, "c1_tree": C1_TREE,
+        "c2_reviewed_head": C2_HEAD, "c2_reviewed_tree": C2_TREE,
         "change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
         "evidence_mode": "PROSPECTIVE_REDUCED_MODEL_PROTOCOL_CORRECTION",
         "execution_authorized": False,
@@ -649,19 +803,27 @@ def protocol(rows: list[dict]) -> dict:
             "zero_coupling": INFINITE},
         "boundary_modes": {
             "closed_enumeration": list(BOUNDARY_MODES),
+            "field_disposition_values": list(FIELD_DISPOSITIONS),
+            "field_dispositions": {mode: boundary_field_dispositions(mode) for mode in BOUNDARY_MODES},
             "PRESCRIBED_STATIC": {"unknowns": ["p_i"], "prescribed": ["p_o_hat=0", "p_b_hat=amplitude"],
-                "equations": "algebraic conservative node balance", "required": ["prescribed_pressure_amplitude"],
-                "prohibited": ["machine_reference_tuple", "machine_compliance_C_u", "storage_ratio_S_h"]},
+                "equations": "algebraic conservative node balance", "integration_profile": "STATIC_LINEAR_SOLVE_V1",
+                "required": ["prescribed_pressure_amplitude"],
+                "prohibited": ["storage_ratio_S_h", "hydraulic_storage_C_h", "derived_Theta_L_m",
+                    "machine_response_ratio", "machine_reference_tuple", "machine_compliance_C_u"]},
             "PRESCRIBED_DYNAMIC_RAMP": {"unknowns": ["p_i(tau)"],
                 "prescribed": ["p_o_hat=0", "p_b_hat=min(tau/0.05,1)"],
                 "equations": "C_h dp_i/dt=q_u_i-q_d_i-j_plus+j_minus",
-                "initial": "p_i(0)=0", "required": ["storage_ratio_S_h"],
-                "prohibited": ["machine_reference_tuple", "machine_compliance_C_u"]},
+                "initial": "p_i(0)=0", "integration_profile": INTEGRATION_PROFILE,
+                "required": ["storage_ratio_S_h", "hydraulic_storage_C_h"],
+                "prohibited": ["machine_response_ratio", "machine_reference_tuple", "machine_compliance_C_u"],
+                "amplitude_field_semantics": "derived terminal ramp amplitude; not a static pressure prescription"},
             "MACHINE_COUPLED": {"unknowns": ["p_i(tau)", "p_u(tau)", "p_b(tau)"],
                 "prescribed": ["p_o_hat=0", "command=min(tau/0.05,1)"],
                 "equations": ["C_h dp_i/dt=q_u_i-q_d_i-j_plus+j_minus",
                     "C_u dp_u/dt=Q_supply-Q_puck", "p_b=p_u-R_line*Q_puck"],
-                "initial": "p_i(0)=p_u(0)=0", "required": ["machine_reference_tuple", "machine_compliance_C_u"],
+                "initial": "p_i(0)=p_u(0)=0", "integration_profile": INTEGRATION_PROFILE,
+                "required": ["storage_ratio_S_h", "hydraulic_storage_C_h", "machine_response_ratio",
+                    "machine_reference_tuple", "machine_compliance_C_u"],
                 "prohibited": ["prescribed_pressure_amplitude"]}},
         "machine_reference": {"id": MACHINE_TUPLE_ID, "p_o": "0", "p_shut": "1", "q_free": "1",
             "R_line": "0.1", "supply_law": "q_free*ramp(tau)*max(1-(p_u-p_o)/(p_shut-p_o),0)",
@@ -671,13 +833,24 @@ def protocol(rows: list[dict]) -> dict:
         "resistance_evolution": {"name": "SIGNED_LOCAL_FLOW_TO_RESISTANCE_FEEDBACK_SURROGATE",
             "equations": ["Theta_R*dx_i/dtau=s*(F_i-1)-x_i", "H_i(t)=H_i0*exp(beta*x_i)",
                 "R_u_i=R_floor+alpha_place*H_i(t)", "R_d_i=R_floor+(1-alpha_place)*H_i(t)"],
-            "initial_x_i": "0", "multiplier_bounds": ["0.25", "4"],
-            "out_of_bounds": "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUT_OF_RANGE_NO_CLIPPING",
+            "initial_x_i": "0", "feedback_sign_scalar": FEEDBACK_SIGN_SCALARS,
+            "sign_interpretation": {"EQUALIZING": "F_i>1 increases x_i,H_i,total resistance and suppresses high flow",
+                "LOCALIZING": "F_i>1 decreases x_i,H_i,total resistance and reinforces high flow",
+                "placement": "changes split but not sign of total resistance response"},
+            "multiplier_admissible_interval": "0.25 < H_i/H_i0 < 4.0",
+            "boundary_contact_disposition": MULTIPLIER_STOP,
+            "diagnostic_reconstruction_at_contact": True,
             "no_evolution": ["beta=0", "Theta_R=INFINITE_NO_EVOLUTION"],
             "fast_control": "Theta_R=0.03", "aggregate_renormalization": "NONE",
             "zero_flow_startup": {"dynamic_limit": "F_i=N*(G_u_i*G_d_i/C_h_i)/sum_j(G_u_j*G_d_j/C_h_j)",
                 "machine_note": "machine compliance changes only the common leading time coefficient",
                 "q_hat_zero_threshold": "1e-14", "startup_tau_max": "1e-6",
+                "branch_operators": "abs(Q_hat)<=q_threshold and tau<=startup_tau_max",
+                "refinement_factor": "10", "refined_q_hat_zero_threshold": "1e-15",
+                "refined_startup_tau_max": "1e-7",
+                "companion": "same case; only both startup thresholds divided by 10",
+                "uncertainty": "u_startup(G)=abs(G_base_thresholds-G_refined_thresholds)",
+                "unavailable_or_stopped": "NUMERICALLY_UNRESOLVED;NO_CLASSIFICATION",
                 "exact_zero": "use analytical limit only within startup window",
                 "below_threshold": "use same branch and require threshold-refinement uncertainty",
                 "flow_reversal": "STOP_UNEXPECTED_FLOW_REVERSAL",
@@ -706,8 +879,7 @@ def protocol(rows: list[dict]) -> dict:
         "residual_contract": {
             "linear": {"vector": "r=A*p-b", "scale": "s_i=max(abs(b_i),sum_j(abs(A_ij)*abs(p_j)),1e-14)",
                 "norm": "max_i(abs(r_i)/s_i)", "tolerance": "1e-12", "operator": "<=", "retry": "NONE"},
-            "nonlinear": {"vector": "r=y-Phi(y)", "scale": "s_i=max(abs(y_i),abs(Phi_i),1e-14)",
-                "norm": "max_i(abs(r_i)/s_i)", "tolerance": "1e-10", "operator": "<=", "retry": "NONE"},
+            "stage_a_nonlinear_fixed_point_solve": "NOT_USED",
             "nonfinite": "NUMERICAL_STOP_NONFINITE_RESIDUAL", "failure_route": "BEFORE_SCIENTIFIC_CLASSIFIER"},
         "model_form": {"initial_variant": "CORE_ONE_EXCHANGE_PLANE_ONLY",
             "multilayer_rows": 0, "reason": "independent review found the prior placeholder non-executable",
@@ -724,11 +896,18 @@ def protocol(rows: list[dict]) -> dict:
             "rationale": "2-percent relative ceiling capped at 0.02 gain units; exact structural identities use analytical preclassification",
             "components": {
                 "u_integrator": "abs(G_base-G_refined) from required DOP853 companion",
-                "u_sector": "abs(G_N-G_Nref) when row requires sector refinement; explicit NOT_APPLICABLE otherwise",
-                "u_linear": "ratio propagation from scaled-residual-derived numerator and denominator errors",
+                "u_sector": "abs(G_N-G_Nref); applies only to SECTOR_REFINEMENT 4->8 or 8->16 and NYQUIST 8->16",
+                "u_linear": "abs(A/B-A_corrected/B_corrected) from deterministic residual correction",
                 "u_sampling": "abs(G_1001-G_2001) reconstructed from the same accepted dense output",
-                "u_denominator": "abs(A)*u_B/abs(B)^2; unavailable when abs(B)<=declared floor"},
-            "combination": "u_G=u_integrator+u_sector+u_linear+u_sampling+u_denominator",
+                "u_startup": "abs(G_base_startup_thresholds-G_refined_startup_thresholds)"},
+            "combination": "u_G=u_integrator+u_sector+u_linear+u_sampling+u_startup",
+            "sentinels": {"finite_nonnegative": "include once", "NOT_APPLICABLE": "zero only when predicate false",
+                "NOT_APPLICABLE_REQUIRED": "AUTHORITY_OR_ARTIFACT_INVALID", "UNAVAILABLE": "NUMERICALLY_UNRESOLVED",
+                "missing_negative_nonfinite_unsupported": "AUTHORITY_OR_ARTIFACT_INVALID"},
+            "sector_refinement": {"SECTOR_REFINEMENT": {"4": 8, "8": 16, "16": NA},
+                "NYQUIST_TO_RESOLVED_DIAGNOSTIC": {"8": 16},
+                "identity": "all scientific primitives equal except N and N-derived G_A,C_h,G_edge,Theta_L and IDs"},
+            "denominator_allocation": "denominator residual error occurs once in u_linear; denominator floor is validity gate, not additive uncertainty",
             "units": "all components are absolute gain units", "operator": "u_G<=u_limit(G)",
             "unavailable": "NUMERICALLY_UNRESOLVED", "stopped": "UNAVAILABLE;NO_CLASSIFICATION",
             "model_form": "SEPARATE_TRANSITION_REASON_NOT_SCALAR_ERROR"},
@@ -792,27 +971,8 @@ def validate(rows: list[dict], spec: dict) -> None:
             raise ValueError(f"row hash mismatch {row['case_id']}")
         if row["heterogeneity_mode"].isdigit() and int(row["heterogeneity_mode"]) > row["sector_count"] // 2:
             raise ValueError("invalid Fourier mode")
-        if row["feedback_gain"] == "0" and row["feedback_sign"] != "NONE":
-            raise ValueError("redundant feedback")
-        if row["pressure_mode"] not in BOUNDARY_MODES:
-            raise ValueError("unsupported boundary mode")
-        if row["pressure_mode"] == "PRESCRIBED_STATIC":
-            if row["boundary_profile"] != "CONSTANT_BASKET_PRESSURE" or row["prescribed_pressure_amplitude"] == NA:
-                raise ValueError("invalid prescribed-static boundary")
-            if row["machine_reference_tuple"] != NA or row["machine_compliance_C_u"] != NA:
-                raise ValueError("machine primitive in prescribed-static row")
-        elif row["pressure_mode"] == "PRESCRIBED_DYNAMIC_RAMP":
-            if row["boundary_profile"] != "PIECEWISE_LINEAR_RAMP_TAU_0P05" or row["storage_ratio_S_h"] == NA:
-                raise ValueError("invalid prescribed-dynamic boundary")
-            if row["machine_reference_tuple"] != NA or row["machine_compliance_C_u"] != NA:
-                raise ValueError("machine primitive in prescribed-dynamic row")
-        else:
-            if row["boundary_profile"] != "WP02_002_LINEAR_SUPPLY_RAMP_TAU_0P05":
-                raise ValueError("invalid machine profile")
-            if row["machine_reference_tuple"] == NA or row["machine_compliance_C_u"] == NA:
-                raise ValueError("missing machine primitive")
-            if row["prescribed_pressure_amplitude"] != NA:
-                raise ValueError("prescribed basket pressure conflicts with machine boundary")
+        validate_feedback_contract(row)
+        validate_boundary_row(row)
         if row["case_role"] == "ACTIVE_SCIENTIFIC_CASE":
             if row["lateral_conductance_ratio"] == "0" or row["comparator_case_id"] == NA:
                 raise ValueError("active row lacks exact Lambda-zero comparator")

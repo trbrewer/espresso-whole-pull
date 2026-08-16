@@ -81,6 +81,18 @@ def all_tokens(text: str, tokens: Iterable[str]) -> bool:
     return all(token in text for token in tokens)
 
 
+def path_has_symlink_parent(path: Path) -> bool:
+    """Inspect caller spelling before resolve; reject every symlink ancestor."""
+    if not path.is_absolute():
+        raise ValueError("path must be absolute")
+    current = Path(path.anchor)
+    for component in path.parts[1:-1]:
+        current = current / component
+        if current.is_symlink():
+            return True
+    return False
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
@@ -96,6 +108,8 @@ def main() -> None:
     if args.output is not None:
         if not args.output.is_absolute():
             parser.error("--output must be an absolute path")
+        if path_has_symlink_parent(args.output):
+            parser.error("--output parent path must not contain a symlink")
         output = args.output.resolve(strict=False)
         if output == root or root in output.parents:
             parser.error("--output must be outside the repository")

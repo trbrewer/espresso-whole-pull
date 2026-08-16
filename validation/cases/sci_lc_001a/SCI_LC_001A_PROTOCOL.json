@@ -57,6 +57,7 @@
         "p_b=p_u-R_line*Q_puck"
       ],
       "initial": "p_i(0)=p_u(0)=0",
+      "integration_profile": "SCIPY_SOLVE_IVP_DOP853_V1",
       "prescribed": [
         "p_o_hat=0",
         "command=min(tau/0.05,1)"
@@ -65,6 +66,9 @@
         "prescribed_pressure_amplitude"
       ],
       "required": [
+        "storage_ratio_S_h",
+        "hydraulic_storage_C_h",
+        "machine_response_ratio",
         "machine_reference_tuple",
         "machine_compliance_C_u"
       ],
@@ -75,18 +79,22 @@
       ]
     },
     "PRESCRIBED_DYNAMIC_RAMP": {
+      "amplitude_field_semantics": "derived terminal ramp amplitude; not a static pressure prescription",
       "equations": "C_h dp_i/dt=q_u_i-q_d_i-j_plus+j_minus",
       "initial": "p_i(0)=0",
+      "integration_profile": "SCIPY_SOLVE_IVP_DOP853_V1",
       "prescribed": [
         "p_o_hat=0",
         "p_b_hat=min(tau/0.05,1)"
       ],
       "prohibited": [
+        "machine_response_ratio",
         "machine_reference_tuple",
         "machine_compliance_C_u"
       ],
       "required": [
-        "storage_ratio_S_h"
+        "storage_ratio_S_h",
+        "hydraulic_storage_C_h"
       ],
       "unknowns": [
         "p_i(tau)"
@@ -94,14 +102,18 @@
     },
     "PRESCRIBED_STATIC": {
       "equations": "algebraic conservative node balance",
+      "integration_profile": "STATIC_LINEAR_SOLVE_V1",
       "prescribed": [
         "p_o_hat=0",
         "p_b_hat=amplitude"
       ],
       "prohibited": [
+        "storage_ratio_S_h",
+        "hydraulic_storage_C_h",
+        "derived_Theta_L_m",
+        "machine_response_ratio",
         "machine_reference_tuple",
-        "machine_compliance_C_u",
-        "storage_ratio_S_h"
+        "machine_compliance_C_u"
       ],
       "required": [
         "prescribed_pressure_amplitude"
@@ -114,10 +126,174 @@
       "PRESCRIBED_STATIC",
       "PRESCRIBED_DYNAMIC_RAMP",
       "MACHINE_COUPLED"
-    ]
+    ],
+    "field_disposition_values": [
+      "REQUIRED",
+      "PROHIBITED",
+      "DERIVED",
+      "NOT_APPLICABLE",
+      "PROVENANCE_ONLY"
+    ],
+    "field_dispositions": {
+      "MACHINE_COUPLED": {
+        "G_A_identity": "PROVENANCE_ONLY",
+        "G_ref_identity": "PROVENANCE_ONLY",
+        "adaptive_group_id": "PROVENANCE_ONLY",
+        "arm": "PROVENANCE_ONLY",
+        "axial_layer_count": "PROVENANCE_ONLY",
+        "axial_placement": "PROVENANCE_ONLY",
+        "boundary_profile": "REQUIRED",
+        "case_id": "PROVENANCE_ONLY",
+        "case_role": "PROVENANCE_ONLY",
+        "comparator_case_id": "PROVENANCE_ONLY",
+        "derived_Theta_L_m": "DERIVED",
+        "eligibility": "PROVENANCE_ONLY",
+        "epsilon_floor": "PROVENANCE_ONLY",
+        "evolution_multiplier_bounds": "PROVENANCE_ONLY",
+        "feedback_gain": "PROVENANCE_ONLY",
+        "feedback_sign": "PROVENANCE_ONLY",
+        "heterogeneity_mode": "PROVENANCE_ONLY",
+        "heterogeneity_pattern": "PROVENANCE_ONLY",
+        "heterogeneity_scale": "PROVENANCE_ONLY",
+        "hydraulic_storage_C_h": "DERIVED",
+        "initial_condition_variant": "PROVENANCE_ONLY",
+        "integration_profile": "REQUIRED",
+        "lateral_conductance_ratio": "PROVENANCE_ONLY",
+        "lateral_edge_coefficient": "PROVENANCE_ONLY",
+        "lateral_edge_conductance_G_edge": "PROVENANCE_ONLY",
+        "machine_compliance_C_u": "DERIVED",
+        "machine_reference_tuple": "REQUIRED",
+        "machine_response_ratio": "REQUIRED",
+        "model_form_requirement": "PROVENANCE_ONLY",
+        "model_variant": "PROVENANCE_ONLY",
+        "no_evolution_comparator_case_id": "PROVENANCE_ONLY",
+        "numerical_resolution_role": "PROVENANCE_ONLY",
+        "parent_selection_rule": "PROVENANCE_ONLY",
+        "placement_alpha": "PROVENANCE_ONLY",
+        "prescribed_comparator_case_id": "PROVENANCE_ONLY",
+        "prescribed_pressure_amplitude": "PROHIBITED",
+        "pressure_mode": "REQUIRED",
+        "resistance_contrast": "PROVENANCE_ONLY",
+        "resistance_evolution_law": "PROVENANCE_ONLY",
+        "resistance_evolution_timescale_ratio": "PROVENANCE_ONLY",
+        "resistance_relaxation_tau_R": "PROVENANCE_ONLY",
+        "row_sha256": "PROVENANCE_ONLY",
+        "scientific_role": "PROVENANCE_ONLY",
+        "sector_count": "PROVENANCE_ONLY",
+        "shot_duration": "PROVENANCE_ONLY",
+        "static_or_dynamic_classifier": "PROVENANCE_ONLY",
+        "storage_ratio_S_h": "REQUIRED",
+        "uncertainty_profile": "PROVENANCE_ONLY",
+        "units_or_dimensionless_status": "PROVENANCE_ONLY"
+      },
+      "PRESCRIBED_DYNAMIC_RAMP": {
+        "G_A_identity": "PROVENANCE_ONLY",
+        "G_ref_identity": "PROVENANCE_ONLY",
+        "adaptive_group_id": "PROVENANCE_ONLY",
+        "arm": "PROVENANCE_ONLY",
+        "axial_layer_count": "PROVENANCE_ONLY",
+        "axial_placement": "PROVENANCE_ONLY",
+        "boundary_profile": "REQUIRED",
+        "case_id": "PROVENANCE_ONLY",
+        "case_role": "PROVENANCE_ONLY",
+        "comparator_case_id": "PROVENANCE_ONLY",
+        "derived_Theta_L_m": "DERIVED",
+        "eligibility": "PROVENANCE_ONLY",
+        "epsilon_floor": "PROVENANCE_ONLY",
+        "evolution_multiplier_bounds": "PROVENANCE_ONLY",
+        "feedback_gain": "PROVENANCE_ONLY",
+        "feedback_sign": "PROVENANCE_ONLY",
+        "heterogeneity_mode": "PROVENANCE_ONLY",
+        "heterogeneity_pattern": "PROVENANCE_ONLY",
+        "heterogeneity_scale": "PROVENANCE_ONLY",
+        "hydraulic_storage_C_h": "DERIVED",
+        "initial_condition_variant": "PROVENANCE_ONLY",
+        "integration_profile": "REQUIRED",
+        "lateral_conductance_ratio": "PROVENANCE_ONLY",
+        "lateral_edge_coefficient": "PROVENANCE_ONLY",
+        "lateral_edge_conductance_G_edge": "PROVENANCE_ONLY",
+        "machine_compliance_C_u": "PROHIBITED",
+        "machine_reference_tuple": "PROHIBITED",
+        "machine_response_ratio": "PROHIBITED",
+        "model_form_requirement": "PROVENANCE_ONLY",
+        "model_variant": "PROVENANCE_ONLY",
+        "no_evolution_comparator_case_id": "PROVENANCE_ONLY",
+        "numerical_resolution_role": "PROVENANCE_ONLY",
+        "parent_selection_rule": "PROVENANCE_ONLY",
+        "placement_alpha": "PROVENANCE_ONLY",
+        "prescribed_comparator_case_id": "PROVENANCE_ONLY",
+        "prescribed_pressure_amplitude": "DERIVED",
+        "pressure_mode": "REQUIRED",
+        "resistance_contrast": "PROVENANCE_ONLY",
+        "resistance_evolution_law": "PROVENANCE_ONLY",
+        "resistance_evolution_timescale_ratio": "PROVENANCE_ONLY",
+        "resistance_relaxation_tau_R": "PROVENANCE_ONLY",
+        "row_sha256": "PROVENANCE_ONLY",
+        "scientific_role": "PROVENANCE_ONLY",
+        "sector_count": "PROVENANCE_ONLY",
+        "shot_duration": "PROVENANCE_ONLY",
+        "static_or_dynamic_classifier": "PROVENANCE_ONLY",
+        "storage_ratio_S_h": "REQUIRED",
+        "uncertainty_profile": "PROVENANCE_ONLY",
+        "units_or_dimensionless_status": "PROVENANCE_ONLY"
+      },
+      "PRESCRIBED_STATIC": {
+        "G_A_identity": "PROVENANCE_ONLY",
+        "G_ref_identity": "PROVENANCE_ONLY",
+        "adaptive_group_id": "PROVENANCE_ONLY",
+        "arm": "PROVENANCE_ONLY",
+        "axial_layer_count": "PROVENANCE_ONLY",
+        "axial_placement": "PROVENANCE_ONLY",
+        "boundary_profile": "REQUIRED",
+        "case_id": "PROVENANCE_ONLY",
+        "case_role": "PROVENANCE_ONLY",
+        "comparator_case_id": "PROVENANCE_ONLY",
+        "derived_Theta_L_m": "PROHIBITED",
+        "eligibility": "PROVENANCE_ONLY",
+        "epsilon_floor": "PROVENANCE_ONLY",
+        "evolution_multiplier_bounds": "PROVENANCE_ONLY",
+        "feedback_gain": "PROVENANCE_ONLY",
+        "feedback_sign": "PROVENANCE_ONLY",
+        "heterogeneity_mode": "PROVENANCE_ONLY",
+        "heterogeneity_pattern": "PROVENANCE_ONLY",
+        "heterogeneity_scale": "PROVENANCE_ONLY",
+        "hydraulic_storage_C_h": "PROHIBITED",
+        "initial_condition_variant": "PROVENANCE_ONLY",
+        "integration_profile": "REQUIRED",
+        "lateral_conductance_ratio": "PROVENANCE_ONLY",
+        "lateral_edge_coefficient": "PROVENANCE_ONLY",
+        "lateral_edge_conductance_G_edge": "PROVENANCE_ONLY",
+        "machine_compliance_C_u": "PROHIBITED",
+        "machine_reference_tuple": "PROHIBITED",
+        "machine_response_ratio": "PROHIBITED",
+        "model_form_requirement": "PROVENANCE_ONLY",
+        "model_variant": "PROVENANCE_ONLY",
+        "no_evolution_comparator_case_id": "PROVENANCE_ONLY",
+        "numerical_resolution_role": "PROVENANCE_ONLY",
+        "parent_selection_rule": "PROVENANCE_ONLY",
+        "placement_alpha": "PROVENANCE_ONLY",
+        "prescribed_comparator_case_id": "PROVENANCE_ONLY",
+        "prescribed_pressure_amplitude": "REQUIRED",
+        "pressure_mode": "REQUIRED",
+        "resistance_contrast": "PROVENANCE_ONLY",
+        "resistance_evolution_law": "PROVENANCE_ONLY",
+        "resistance_evolution_timescale_ratio": "PROVENANCE_ONLY",
+        "resistance_relaxation_tau_R": "PROVENANCE_ONLY",
+        "row_sha256": "PROVENANCE_ONLY",
+        "scientific_role": "PROVENANCE_ONLY",
+        "sector_count": "PROVENANCE_ONLY",
+        "shot_duration": "PROVENANCE_ONLY",
+        "static_or_dynamic_classifier": "PROVENANCE_ONLY",
+        "storage_ratio_S_h": "PROHIBITED",
+        "uncertainty_profile": "PROVENANCE_ONLY",
+        "units_or_dimensionless_status": "PROVENANCE_ONLY"
+      }
+    }
   },
   "c1_head": "86b9ff27b8c10d5cff9c52d9cd411b0ac179620e",
   "c1_tree": "2e35a5e245be9e266c747409f2420be9971963a6",
+  "c2_reviewed_head": "cbbec20d29dcde7e4a1aa3b1fb14b986b8820180",
+  "c2_reviewed_tree": "3cce042f161fc7bf3cd42cc679893db7c45f9743",
   "canonical_ordering": "C0,S1,S2,S3,D1,D2,D3-EQ,D3-LOC then declared loop order",
   "change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
   "claim_boundary": {
@@ -298,14 +474,7 @@
       "vector": "r=A*p-b"
     },
     "nonfinite": "NUMERICAL_STOP_NONFINITE_RESIDUAL",
-    "nonlinear": {
-      "norm": "max_i(abs(r_i)/s_i)",
-      "operator": "<=",
-      "retry": "NONE",
-      "scale": "s_i=max(abs(y_i),abs(Phi_i),1e-14)",
-      "tolerance": "1e-10",
-      "vector": "r=y-Phi(y)"
-    }
+    "stage_a_nonlinear_fixed_point_solve": "NOT_USED"
   },
   "resistance_construction": {
     "common_floor": "R_floor=epsilon_floor*min_i(T_i)",
@@ -330,6 +499,8 @@
   },
   "resistance_evolution": {
     "aggregate_renormalization": "NONE",
+    "boundary_contact_disposition": "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_BOUND_CONTACT_NO_CLIPPING",
+    "diagnostic_reconstruction_at_contact": true,
     "equations": [
       "Theta_R*dx_i/dtau=s*(F_i-1)-x_i",
       "H_i(t)=H_i0*exp(beta*x_i)",
@@ -337,26 +508,39 @@
       "R_d_i=R_floor+(1-alpha_place)*H_i(t)"
     ],
     "fast_control": "Theta_R=0.03",
+    "feedback_sign_scalar": {
+      "EQUALIZING": 1.0,
+      "LOCALIZING": -1.0,
+      "NONE": 0.0
+    },
     "initial_x_i": "0",
-    "multiplier_bounds": [
-      "0.25",
-      "4"
-    ],
+    "multiplier_admissible_interval": "0.25 < H_i/H_i0 < 4.0",
     "name": "SIGNED_LOCAL_FLOW_TO_RESISTANCE_FEEDBACK_SURROGATE",
     "no_evolution": [
       "beta=0",
       "Theta_R=INFINITE_NO_EVOLUTION"
     ],
-    "out_of_bounds": "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUT_OF_RANGE_NO_CLIPPING",
+    "sign_interpretation": {
+      "EQUALIZING": "F_i>1 increases x_i,H_i,total resistance and suppresses high flow",
+      "LOCALIZING": "F_i>1 decreases x_i,H_i,total resistance and reinforces high flow",
+      "placement": "changes split but not sign of total resistance response"
+    },
     "zero_flow_startup": {
       "below_threshold": "use same branch and require threshold-refinement uncertainty",
+      "branch_operators": "abs(Q_hat)<=q_threshold and tau<=startup_tau_max",
+      "companion": "same case; only both startup thresholds divided by 10",
       "dynamic_limit": "F_i=N*(G_u_i*G_d_i/C_h_i)/sum_j(G_u_j*G_d_j/C_h_j)",
       "exact_zero": "use analytical limit only within startup window",
       "flow_reversal": "STOP_UNEXPECTED_FLOW_REVERSAL",
       "machine_note": "machine compliance changes only the common leading time coefficient",
       "nonfinite": "STOP_NONFINITE_SECTOR_FLOW",
       "q_hat_zero_threshold": "1e-14",
+      "refined_q_hat_zero_threshold": "1e-15",
+      "refined_startup_tau_max": "1e-7",
+      "refinement_factor": "10",
       "startup_tau_max": "1e-6",
+      "unavailable_or_stopped": "NUMERICALLY_UNRESOLVED;NO_CLASSIFICATION",
+      "uncertainty": "u_startup(G)=abs(G_base_thresholds-G_refined_thresholds)",
       "zero_sector_positive_total": "F_i=0"
     }
   },
@@ -408,7 +592,7 @@
       "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
     }
   },
-  "status": "PROSPECTIVE_PROTOCOL_CORRECTED_PENDING_SECOND_INDEPENDENT_PRE_EXECUTION_REVIEW",
+  "status": "PROSPECTIVE_PROTOCOL_C3_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
       "authority/hash/review mismatch",
@@ -454,20 +638,39 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-C2-EXECUTION-CONTRACT-CLOSURE-2026-08-16",
+  "task_id": "SCI-LC-001A-C3-FINAL-PROSPECTIVE-CONTRACT-CLOSURE-2026-08-16",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
-    "combination": "u_G=u_integrator+u_sector+u_linear+u_sampling+u_denominator",
+    "combination": "u_G=u_integrator+u_sector+u_linear+u_sampling+u_startup",
     "components": {
-      "u_denominator": "abs(A)*u_B/abs(B)^2; unavailable when abs(B)<=declared floor",
       "u_integrator": "abs(G_base-G_refined) from required DOP853 companion",
-      "u_linear": "ratio propagation from scaled-residual-derived numerator and denominator errors",
+      "u_linear": "abs(A/B-A_corrected/B_corrected) from deterministic residual correction",
       "u_sampling": "abs(G_1001-G_2001) reconstructed from the same accepted dense output",
-      "u_sector": "abs(G_N-G_Nref) when row requires sector refinement; explicit NOT_APPLICABLE otherwise"
+      "u_sector": "abs(G_N-G_Nref); applies only to SECTOR_REFINEMENT 4->8 or 8->16 and NYQUIST 8->16",
+      "u_startup": "abs(G_base_startup_thresholds-G_refined_startup_thresholds)"
     },
+    "denominator_allocation": "denominator residual error occurs once in u_linear; denominator floor is validity gate, not additive uncertainty",
     "model_form": "SEPARATE_TRANSITION_REASON_NOT_SCALAR_ERROR",
     "operator": "u_G<=u_limit(G)",
     "rationale": "2-percent relative ceiling capped at 0.02 gain units; exact structural identities use analytical preclassification",
+    "sector_refinement": {
+      "NYQUIST_TO_RESOLVED_DIAGNOSTIC": {
+        "8": 16
+      },
+      "SECTOR_REFINEMENT": {
+        "16": "NOT_APPLICABLE",
+        "4": 8,
+        "8": 16
+      },
+      "identity": "all scientific primitives equal except N and N-derived G_A,C_h,G_edge,Theta_L and IDs"
+    },
+    "sentinels": {
+      "NOT_APPLICABLE": "zero only when predicate false",
+      "NOT_APPLICABLE_REQUIRED": "AUTHORITY_OR_ARTIFACT_INVALID",
+      "UNAVAILABLE": "NUMERICALLY_UNRESOLVED",
+      "finite_nonnegative": "include once",
+      "missing_negative_nonfinite_unsupported": "AUTHORITY_OR_ARTIFACT_INVALID"
+    },
     "stopped": "UNAVAILABLE;NO_CLASSIFICATION",
     "unavailable": "NUMERICALLY_UNRESOLVED",
     "units": "all components are absolute gain units"
