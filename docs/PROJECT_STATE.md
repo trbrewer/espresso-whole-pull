@@ -1,10 +1,12 @@
 # Project State
 
-The current bounded scientific dependency is `RP-D-LC-001b`. P1b completed
-at the exact P0/P1a-bound Puckworks source authority on 14 August 2026 with
-seven admitted synthetic candidates. The dependency remains open; P2a needs
-separate exact-head review and authorization. This EWP task authorizes no
-later Puckworks phase and no EWP model execution. See
+The bounded scientific dependency `RP-D-LC-001b` is closed at a valid
+pre-primary-experiment design block. P2a completed and P2b independently
+recomputed `NO_UNAMBIGUOUS_BELOW_CANDIDATE`: the family supplied several
+in-window candidates but no whole-envelope below-window candidate. No freeze
+or instantiated post-freeze matrix exists, and P3/P4 remain unreachable. The
+current next action is `SCI-LC-001A — Reduced lateral equalization and
+channeling phase diagram`. See
 the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md)
 for the prioritized program, gates, and current next action. XSV-XCT-001 is
 execution-complete, XSV-ENS-001 is `MERGED_COMPLETE`, and their pore-scale
@@ -25,7 +27,10 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active cross-model dependency: `RP-D-LC-001b` (P1b complete; P2a unauthorized)
+- Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
+  `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
+- Current next action:
+  `SCI-LC-001A — Reduced lateral equalization and channeling phase diagram`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`

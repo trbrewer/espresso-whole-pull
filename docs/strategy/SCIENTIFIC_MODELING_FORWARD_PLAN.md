@@ -1,11 +1,11 @@
 # Scientific Modeling Forward Plan
 
-- **Status date:** 14 August 2026
-- **Status:** Enduring scientific handoff; `RP-D-LC-001b P1b` complete with seven admitted candidates at the exact P0/P1a source authority; the dependency remains open and no later phase is authorized here
+- **Status date:** 16 August 2026
+- **Status:** Enduring scientific handoff; `RP-D-LC-001b` closed at a valid pre-primary-experiment design block; no P3/P4 promotion
 - **Change declaration:** `NO_GOVERNING_PHYSICS_CHANGE`
 - **Standing disposition:** `NO_NEW_PRODUCTION_PHYSICS_YET`
 
-**Current next action:** P2a requires separate exact-head review and authorization; do not execute it under this task.
+**Current next action:** `SCI-LC-001A — Reduced lateral equalization and channeling phase diagram`.
 
 ## 1. Executive diagnosis
 
@@ -28,11 +28,9 @@ The synthetic ensemble and processed real-coffee XCT programs found substantial 
 ## 3. Program dependencies and gates
 
 ```text
-RP-D-LC-001b P1b
-  -> P2a candidate quantification
-  -> P2b arithmetic selection and proposed freeze
-  -> STOP for second exact-head review
-  -> P3/P4 if separately authorized, or bounded stop
+RP-D-LC-001b P2b
+  -> valid design block: NO_UNAMBIGUOUS_BELOW_CANDIDATE
+  -> no freeze, no instantiated matrix, P3/P4 unreachable
   -> SCI-LC-001A reduced lateral phase diagram
        -> selected regime boundaries only -> SCI-LC-001B 3-D confirmations
 
@@ -53,13 +51,18 @@ The independent-data gate limits physical-validation claims. It does not prohibi
 
 Purpose: determine whether the WP6 lateral-coupling boundary inverse recovers an independently field-derived effective lateral-coupling number from a corrected, independently implemented, spatially resolved three-dimensional creeping-flow virtual fixture.
 
-P1b fixed-step evidence completed on 14 August 2026 at the exact source bound by the accepted P0 and P1a authorities. Canonical validation admitted seven candidates (`w3_kz2`, `w3_kz3`, `w3_kz4`, `w5_kz2`, `w5_kz3`, `w5_kz4`, and `w7_kz2`); the other five candidates were rejected at P1a because their point estimates alone exceeded the artifact budget. The bounded disposition is:
+P1b fixed-step evidence completed on 14 August 2026 at the exact source bound by the accepted P0 and P1a authorities. Canonical validation admitted seven candidates (`w3_kz2`, `w3_kz3`, `w3_kz4`, `w5_kz2`, `w5_kz3`, `w5_kz4`, and `w7_kz2`); the other five candidates were rejected at P1a because their point estimates alone exceeded the artifact budget. P2a then completed all 168 eligible characterisation rows with 120 adaptive refusals and no failures. P2b independently rebuilt the candidate ledger and reached:
 
 ```text
-P1B_COMPLETE_ADMITTED_CANDIDATES
+PHASE_STOPPED_DESIGN_BLOCKED
+NO_UNAMBIGUOUS_BELOW_CANDIDATE
 ```
 
-The Puckworks dependency remains open because candidate quantification has not passed P2a. This task stops after P1b. P2a, P2b, P3, P4, Stage B, and Paper 4 require separate authority. Neither an admitted candidate nor a null result establishes experimental validation, a measured real-puck `Xi`, or a universal physical `Xi`.
+Five candidates remained final-gate eligible and four had unambiguous in-window envelopes. `w3_kz2` was boundary-ambiguous: its complete conservative envelope crossed the lower transition boundary, so it could not fill the required below-window slot. The independent read-only audit reproduced the complete endpoint and confirmed that all six underlying `w3_kz2` estimates are already above the boundary; reducing numerical uncertainty alone cannot make it an unambiguous below candidate.
+
+The Puckworks dependency is therefore closed and bounded before the primary mirror/path-swap experiment. No proposed freeze or instantiated P3/P4 matrix was created, WP6 inverse recovery was not tested, and no recovery result was established or falsified. P3, P4, Stage B, and Paper 4 remain unauthorized and unreachable.
+
+A possible lower-conductance bridge study is a separate future tranche, not a rescue or continuation of `RP-D-LC-001b`. The existing `kz=1` family is under-resolved at the coarse scientific resolution. Any future study requires a newly frozen, better-resolved design and its own authority; no candidate or geometry is selected here.
 
 Claim ceiling:
 
@@ -192,7 +195,7 @@ Discovery, numerical verification, reconstruction, and physical validation remai
 1. Resolve mutable EWP and Puckworks identities from live Git: absolute checkout, branch, `HEAD`, `HEAD^{tree}`, `origin/main`, merge bases, relevant feature branches, PRs/issues, and worktree status. Never treat a SHA copied from this document or an older report as automatically current.
 2. Read the repository instructions, current project state and claim ceiling, this plan, and the complete live protocol for the active task.
 3. Keep the EWP runtime Puckworks lock unchanged unless a separate dependency-refresh task authorizes advancement.
-4. For `RP-D-LC-001b`, validate the external bundle and exact P0/P1a-bound source before any phase action. Derive candidates from canonical records. Respect idempotency and stop at the authorized phase.
+4. Treat `RP-D-LC-001b` as closed at `NO_UNAMBIGUOUS_BELOW_CANDIDATE`. Do not resume it, create a freeze or instantiated matrix, or execute P3/P4.
 5. Preserve the claim ceiling: synthetic cross-model verification is not physical validation and does not measure a real-puck or universal `Xi`.
 6. After the dependency is closed or bounded, the first new EWP modeling task is `SCI-LC-001A`.
 

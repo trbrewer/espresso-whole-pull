@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 389,
-  "total_uncompressed_bytes_excluding_manifest": 6113476,
-  "aggregate_source_sha256": "a0b4a60472aed660d1d17f3d6a224bf5aaca154cecc36a048513c08713b99153",
-  "aggregate_sha256": "a0b4a60472aed660d1d17f3d6a224bf5aaca154cecc36a048513c08713b99153",
+  "total_uncompressed_bytes_excluding_manifest": 6114247,
+  "aggregate_source_sha256": "bcd2010cb20912599ae97fa32f24099e72d48934a1c485696b7955c436d567ac",
+  "aggregate_sha256": "bcd2010cb20912599ae97fa32f24099e72d48934a1c485696b7955c436d567ac",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -524,8 +524,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md": {
-      "sha256": "2f278b47efd6eacdd36a854840f67c29b511ebd44a8cfc0f233571522b26ea58",
-      "bytes": 16655,
+      "sha256": "e40ac5949cc0db8cecdd731b518256a248dffa5cbd0647b5fa3a3fe1c8216dfd",
+      "bytes": 17426,
       "git_mode": "100644"
     },
     "docs/strategy/history/scientific_modeling_forward_plan_2026-08-14_pre_roadmap.md": {
