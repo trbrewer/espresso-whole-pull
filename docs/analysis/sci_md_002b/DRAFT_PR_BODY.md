@@ -30,3 +30,15 @@ Both pre-execution review rounds are addressed. Attempts 1 through 5 remain pres
 Claim ceiling: `PHYSICAL_VALIDATION_NOT_ESTABLISHED`; `POST_OBSERVATION_MECHANISM_DISCRIMINATION`; `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`; `NO_COMBINED_MECHANISM_AUTHORIZATION`; `NO_SCI_LC_001B_AUTHORIZATION`.
 
 This PR must remain draft. Adjudicative execution, scientific classification, ready-for-review transition and merge require separate owner authorization following independent exact-head pre-execution review.
+
+## Owner-authorized execution result
+
+Following final exact-source owner authorization, the exact 435-row cohort was executed from `ee3a35e0bd8791415056f4537ead5e050052d020` (tree `57a8b96ef4806707553034092430afdc11eadaf8`). The original attempt suffered one isolated malformed-record integrity failure and emitted no scientific disposition. That failed package remains preserved byte-for-byte.
+
+Under separate recovery authorization, a physically separate clone retained all 434 valid records unchanged and regenerated only `S1-SOURCE-P9-M-D1.0-CM0.05-AC0.0-REFINED` through the frozen same-source, same-authority exact-resume path. The replacement scientific result matched independent clean-process simulations byte-for-byte. The recovered 435-record bundle passed the frozen verifier. Two reducer runs were byte-identical and emitted `SCI_MD_002B_REJECTED_WRONG_PRESSURE_ORDERING`: all 72 candidates passed numerical/physical validity and resistance direction, and all 72 robustly failed pressure ordering. No candidate reached temporal or aggregate comparison.
+
+Evidence qualifier: `PACKAGE_INTEGRITY_RECOVERED_BY_SAME_AUTHORITY_SINGLE_RECORD_EXACT_RESUME`.
+
+This rejects only the frozen one-way wetting-age swelling family over the executed bounds. `PHYSICAL_VALIDATION_NOT_ESTABLISHED`; no mechanism is selected; S2 remains design-blocked; porosity-bound robustness is unestablished; no production, OpenFOAM, GPU, SCI-LC, Puckworks, grind-transfer, or combined-mechanism work is authorized or performed.
+
+PR #75 must remain draft and unmerged pending owner scientific and exact-head review. Issue #74 remains open.
