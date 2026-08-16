@@ -24,7 +24,7 @@ Alternatives considered were fines deposition/erosion, transient poromechanics, 
 
 ## Pre-execution review correction
 
-The first independent review approved the concept and isolation but required full governed pressure histories, separation of wetting and bed porosity, calculated swelling-storage bookkeeping, executable temporal outputs and matched uncertainty, and complete authority-gated execution/reduction. This correction preserves all earlier commits and pilot attempts. Attempts 1 and 2 remain superseded diagnostic-only; attempt 3 is preserved diagnostic-only after exposing a synthetic-control pressure-dispatch defect; fresh attempt 4 passed its non-adjudicative integrity checks. It changes no production or SCI-LC path and authorizes no adjudicative execution.
+The first independent review approved the concept and isolation but required full governed pressure histories, separation of wetting and bed porosity, calculated swelling-storage bookkeeping, executable temporal outputs and matched uncertainty, and complete authority-gated execution/reduction. This correction preserves all earlier commits and pilot attempts. Attempts 1 and 2 remain superseded diagnostic-only; attempt 3 exposed a synthetic-control pressure-dispatch defect; attempt 4 exposed incomplete ledger closeout; both are preserved diagnostic-only. Fresh attempt 5 passed its non-adjudicative integrity and process-ledger checks. It changes no production or SCI-LC path and authorizes no adjudicative execution.
 
 ## Ownership and paths
 
