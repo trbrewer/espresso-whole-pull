@@ -37,7 +37,7 @@
   ],
   "pilot_attempt4_status": "AUTHORIZED_NON_ADJUDICATIVE_NOT_YET_RUN",
   "prospective_scientific_source_head": "e012ebb01ff7fe24557133633f10911932b8cda6",
-  "prospective_scientific_source_tree": "e1966590f318fbcc6ac90f9e19696885f5a13bc6",
+  "prospective_scientific_source_tree": "7913f593d41c37fbb069bafa26069ba80246cf8b",
   "puckworks_lock": {"commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "tree": "1d553e44ee2f7480a5df521560801b478618cc84"},
   "record_schema": "ewp.sci_md_002b.case_record.v2",
   "resource_cap": {"gpu": 0, "memory_gib": 16, "nested_threads": 1, "workers": 1},
