@@ -8,8 +8,10 @@ deterministically generated matrix live in
 
 Status: `PROSPECTIVE_PROTOCOL_CORRECTED_PENDING_SECOND_INDEPENDENT_PRE_EXECUTION_REVIEW`.
 
-Correction C1 replaces the independently reviewed degenerate resistance split,
-freezes primitive and comparator mappings, removes unresolved multilayer rows,
-and makes the adaptive selectors deterministic. It still authorizes no timing
-pilot, scientific sweep, OpenFOAM, Puckworks, production-physics change, or
-`SCI-LC-001B` nomination.
+Correction C2 closes the fixed 1,280-row Stage-A execution contract: finite
+zero-flow startup, exclusive boundary modes, enforceable solver/event stops,
+executable residual and uncertainty rules, analytical structural identities,
+and explicit non-self Lambda-zero comparator roles. D4 and X1 are deliberately
+`DEFERRED_NOT_AUTHORIZED_STAGE_A` and fail closed pending separate freezes,
+tests, review, and authorization. No timing pilot, scientific sweep, OpenFOAM,
+Puckworks, production-physics change, or `SCI-LC-001B` nomination is authorized.

@@ -208,11 +208,13 @@ class SciLc001aProtocolTests(unittest.TestCase):
                          ("0", "1", "min(tau/0.05,1)"))
         self.assertEqual(b["output_grid"], "tau_k=k/1000,k=0..1000")
         self.assertEqual((b["base_method"], b["refined_method"]), ("DOP853", "DOP853"))
+        self.assertEqual(b["maximum_rhs_evaluations"], 200000)
+        self.assertNotIn("maximum_internal_steps", b)
 
     def test_multilayer_placeholder_is_removed(self):
         self.assertEqual(self.protocol["model_form"]["multilayer_rows"], 0)
         self.assertFalse(any(r["model_variant"] != "CORE_ONE_EXCHANGE_PLANE" for r in self.rows))
-        self.assertTrue(self.protocol["future_3d_nomination_rules"]["model_form_corroboration_required"])
+        self.assertFalse(self.protocol["future_3d_nomination_rules"]["stage_a_authorized"])
 
     def test_uncertainty_ceiling_examples_and_human_agreement(self):
         self.assertEqual([mod.uncertainty_limit(x) for x in (0.5, 1.0, 2.0)], [0.01, 0.02, 0.02])
@@ -231,14 +233,14 @@ class SciLc001aProtocolTests(unittest.TestCase):
                             for r in self.rows if r["arm"] in ("S1", "S2", "S3")))
         ids = {r["case_id"]: r for r in self.rows}
         for row in self.rows:
-            if row["static_or_dynamic_classifier"] == "DYNAMIC_CLASSIFIER_V1" and row["scientific_role"] == "SCIENTIFIC":
+            if row["static_or_dynamic_classifier"] == "DYNAMIC_CLASSIFIER_V1" and row["case_role"] == "ACTIVE_SCIENTIFIC_CASE":
                 comparator = ids[row["comparator_case_id"]]
                 self.assertEqual(comparator["lateral_conductance_ratio"], "0")
                 for field in ("storage_ratio_S_h", "resistance_evolution_law", "pressure_mode",
                               "machine_response_ratio", "initial_condition_variant", "integration_profile"):
                     self.assertEqual(row[field], comparator[field])
         for row in self.rows:
-            if row["arm"] in ("S1", "S2", "S3"):
+            if row["arm"] in ("S1", "S2", "S3") and row["case_role"] == "ACTIVE_SCIENTIFIC_CASE":
                 comparator = ids[row["comparator_case_id"]]
                 self.assertEqual(comparator["lateral_conductance_ratio"], "0")
 
@@ -246,54 +248,22 @@ class SciLc001aProtocolTests(unittest.TestCase):
         self.assertEqual(mod.classify_synthetic_fixture(authority_valid=False, numerical_valid=False),
                          "AUTHORITY_OR_ARTIFACT_INVALID")
         self.assertEqual(mod.classify_synthetic_fixture(numerical_valid=False, structural_control=True),
-                         "NUMERICALLY_UNRESOLVED")
+                         "UNIFORM_OR_STRUCTURAL_CONTROL")
         self.assertEqual(mod.classify_synthetic_fixture(initial_dependence=True, model_disagreement=True),
                          "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE")
         self.assertEqual(mod.classify_synthetic_fixture(metric_disagreement=True, threshold_straddle=True),
                          "METRIC_DISAGREEMENT")
         self.assertEqual(mod.classify_synthetic_fixture(end_gain=.8, integrated_gain=.8), "LATERAL_EQUALIZATION")
 
-    def test_d4_selector_is_deterministic_handles_zero_ties_duplicates_and_caps(self):
-        fixture = [
-            {"case_id": "z", "adaptive_group_id": "g", "Lambda": "0", "gain": 1.0,
-             "classification": "HETEROGENEITY_PERSISTS", "numerically_valid": True},
-            {"case_id": "a", "adaptive_group_id": "g", "Lambda": "0.01", "gain": .89,
-             "classification": "LATERAL_EQUALIZATION", "numerically_valid": True},
-            {"case_id": "b", "adaptive_group_id": "g", "Lambda": "0.1", "gain": .91,
-             "classification": "HETEROGENEITY_PERSISTS", "numerically_valid": True},
-            {"case_id": "b-duplicate", "adaptive_group_id": "g", "Lambda": "0.1", "gain": .91,
-             "classification": "HETEROGENEITY_PERSISTS", "numerically_valid": True},
-            {"case_id": "c", "adaptive_group_id": "g", "Lambda": "1", "gain": 1.11,
-             "classification": "HETEROGENEITY_AMPLIFIES", "numerically_valid": True},
-        ]
-        first = mod.d4_select_synthetic(fixture, cap=3)
-        self.assertEqual(first, mod.d4_select_synthetic(list(reversed(fixture)), cap=3))
-        self.assertLessEqual(len(first), 3)
-        self.assertFalse(any(item["left_parent"] == "z" for item in first))
-        self.assertEqual(len({(x["adaptive_group_id"], x["Lambda"]) for x in first}), len(first))
-        exhausted = [dict(x, generation=3) for x in fixture]
-        self.assertFalse(any(x["generation"] > 3 for x in mod.d4_select_synthetic(exhausted)))
+    def test_d4_is_fail_closed_for_stage_a(self):
+        with self.assertRaisesRegex(mod.DeferredStageError, mod.D4_STATUS):
+            mod.d4_select_synthetic([])
+        self.assertEqual(self.protocol["staged_deferral"]["D4"]["status"], mod.D4_STATUS)
 
-    def test_x1_selector_handles_absent_regimes_boundary_and_ties(self):
-        fixture = [
-            {"case_id": "a", "classification": "LATERAL_EQUALIZATION", "gain": .7,
-             "uncertainty": .01, "numerically_valid": True},
-            {"case_id": "b", "classification": "LATERAL_EQUALIZATION", "gain": .89,
-             "uncertainty": .01, "numerically_valid": True},
-            {"case_id": "c", "classification": "HETEROGENEITY_PERSISTS", "gain": 1.0,
-             "uncertainty": .01, "numerically_valid": True},
-            {"case_id": "m", "classification": "HETEROGENEITY_PERSISTS", "gain": 1.0,
-             "uncertainty": .02, "numerically_valid": True, "pair_key": "p", "machine_material": True},
-            {"case_id": "p", "classification": "HETEROGENEITY_PERSISTS", "gain": 1.0,
-             "uncertainty": .02, "numerically_valid": True, "pair_key": "p"},
-            {"case_id": "bad", "classification": "HETEROGENEITY_AMPLIFIES", "gain": 1.3,
-             "uncertainty": .01, "numerically_valid": False},
-        ]
-        selected = mod.x1_select_synthetic(fixture, cap=10)
-        self.assertEqual(selected, mod.x1_select_synthetic(list(reversed(fixture)), cap=10))
-        self.assertNotIn("bad", {x["case_id"] for x in selected})
-        self.assertTrue({"m", "p"} <= {x["case_id"] for x in selected})
-        self.assertLessEqual(len(selected), 10)
+    def test_x1_is_fail_closed_for_stage_a(self):
+        with self.assertRaisesRegex(mod.DeferredStageError, mod.X1_STATUS):
+            mod.x1_select_synthetic([])
+        self.assertEqual(self.protocol["staged_deferral"]["X1"]["status"], mod.X1_STATUS)
 
     def test_generation_ids_hashes_csv_json_and_caps(self):
         again = mod.build_rows(); self.assertEqual(self.rows, again)
@@ -306,6 +276,88 @@ class SciLc001aProtocolTests(unittest.TestCase):
         self.assertEqual(csv_rows, [{k: str(v) for k, v in row.items()} for row in payload["rows"]])
         self.assertEqual(payload["matrix_sha256"], self.protocol["matrix_summary"]["matrix_sha256"])
         self.assertLess(self.protocol["compute_budget"]["prospective_maximum"], 20000)
+        self.assertEqual(self.protocol["compute_budget"]["prospective_maximum"], len(self.rows))
+
+    def test_zero_flow_startup_limit_and_rhs_are_finite(self):
+        for placement in mod.ACTIVE_PLACEMENTS + ("AXIALLY_SELF_SIMILAR",):
+            base = mod.resistance_primitives(8, "FOURIER", "1", "4", placement)
+            startup = mod.startup_focusing(base, [0.125] * 8, "PRESCRIBED_DYNAMIC_RAMP")
+            machine = mod.startup_focusing(base, [0.125] * 8, "MACHINE_COUPLED")
+            self.assertTrue(all(math.isfinite(value) for value in startup))
+            self.assertTrue(close_sequence(startup, machine, tol=0))
+            self.assertAlmostEqual(sum(startup), 8.0)
+            self.assertEqual(mod.evolution_focusing(tau=0, flows=[0.0] * 8, startup=startup), startup)
+            for threshold in (1e-10, 1e-12, 1e-14):
+                self.assertEqual(mod.evolution_focusing(tau=0, flows=[threshold / 100] * 8,
+                    startup=startup, zero_threshold=threshold), startup)
+            gu = [1 / value for value in base["R_u_i"]]
+            gd = [1 / value for value in base["R_d_i"]]
+            numerical = [a * b / .125 * 1e-8 for a, b in zip(gu, gd)]
+            self.assertTrue(close_sequence(
+                mod.evolution_focusing(tau=1e-5, flows=numerical, startup=startup, zero_threshold=1e-20),
+                startup, tol=2e-14))
+        with self.assertRaisesRegex(ValueError, "FLOW_REVERSAL"):
+            mod.evolution_focusing(tau=.1, flows=[-1.0] + [0.0] * 7, startup=[1.0] * 8)
+        values = mod.evolution_focusing(tau=.1, flows=[0.0] + [1.0] * 7, startup=[1.0] * 8)
+        self.assertEqual(values[0], 0.0)
+
+    def test_boundary_modes_are_closed_and_mutually_exclusive(self):
+        self.assertEqual(tuple(self.protocol["boundary_modes"]["closed_enumeration"]), mod.BOUNDARY_MODES)
+        for row in self.rows:
+            self.assertIn(row["pressure_mode"], mod.BOUNDARY_MODES)
+        with self.assertRaisesRegex(ValueError, "UNSUPPORTED_BOUNDARY_MODE"):
+            mod.make_row(arm="BAD", pressure="AMBIGUOUS")
+        with self.assertRaisesRegex(ValueError, "STATIC_CLASSIFIER"):
+            mod.make_row(arm="BAD", pressure="MACHINE_COUPLED", theta_m="1")
+
+    def test_enforceable_rhs_cap_and_event_tie_breaking(self):
+        self.assertEqual(mod.enforce_rhs_cap(199999), 200000)
+        with self.assertRaisesRegex(ValueError, "MAX_RHS"):
+            mod.enforce_rhs_cap(200000)
+        event = mod.select_multiplier_event([
+            {"tau": .5, "bound": "UPPER_BOUND", "sector_index": 0},
+            {"tau": .5 + 5e-11, "bound": "LOWER_BOUND", "sector_index": 2},
+            {"tau": .5, "bound": "LOWER_BOUND", "sector_index": 1},
+        ])
+        self.assertEqual((event["bound"], event["sector_index"]), ("LOWER_BOUND", 1))
+        # Dense-output event evidence is independent of the 1,001 reporting samples.
+        between_samples = {"tau": .5005, "bound": "UPPER_BOUND", "sector_index": 3}
+        self.assertEqual(mod.select_multiplier_event([between_samples]), between_samples)
+        self.assertAlmostEqual(mod.locate_linear_event(.5, 3.9, .501, 4.1, 4.0), .5005)
+        self.assertEqual(mod.locate_linear_event(.5, .25, .501, .2, .25), .5)
+
+    def test_residual_and_uncertainty_contracts(self):
+        self.assertEqual(mod.scaled_residual_norm([1e-12], [1.0]), 1e-12)
+        self.assertAlmostEqual(mod.ratio_uncertainty(2, 4, u_numerator=.1, u_denominator=.2), .05)
+        components = {name: .001 for name in
+            ("u_integrator", "u_sector", "u_linear", "u_sampling", "u_denominator")}
+        self.assertAlmostEqual(mod.combine_uncertainty(components), .005)
+        with self.assertRaisesRegex(ValueError, "UNAVAILABLE"):
+            mod.combine_uncertainty(dict(components, u_sector="UNAVAILABLE"))
+        self.assertEqual(mod.uncertainty_limit(0), 0)
+        self.assertEqual(mod.uncertainty_limit(1e-12), 2e-14)
+        with self.assertRaisesRegex(ValueError, "DENOMINATOR_FLOOR"):
+            mod.ratio_uncertainty(1, 1e-13, u_numerator=0, u_denominator=0)
+
+    def test_structural_roles_and_comparator_reconciliation(self):
+        ids = {row["case_id"]: row for row in self.rows}
+        self.assertEqual(sum(row["case_role"] == "STRUCTURAL_COMPARATOR" for row in self.rows), 362)
+        self.assertEqual(sum(row["case_role"] == "ACTIVE_SCIENTIFIC_CASE" for row in self.rows), 848)
+        for row in self.rows:
+            identity = mod.structural_identity(row)
+            if row["case_role"] == "ACTIVE_SCIENTIFIC_CASE":
+                comparator = ids[row["comparator_case_id"]]
+                self.assertEqual(comparator["case_role"], "STRUCTURAL_COMPARATOR")
+                self.assertIsNone(identity)
+            elif row["case_role"] == "STRUCTURAL_COMPARATOR":
+                self.assertEqual(row["comparator_case_id"], mod.NA)
+                self.assertEqual(identity, "EXACT_LAMBDA_ZERO_IDENTITY")
+
+    def test_zero_span_requires_unit_contrast(self):
+        unit = mod.resistance_primitives(8, "UNIFORM", "0", "1", "AXIALLY_SELF_SIMILAR")
+        self.assertTrue(close_sequence(unit["g_tilde"], 1.0, tol=0))
+        with self.assertRaisesRegex(ValueError, "ZERO_SPAN"):
+            mod.resistance_primitives(8, "UNIFORM", "0", "1.0001", "AXIALLY_SELF_SIMILAR")
 
     def test_matrix_removes_redundant_self_similar_factorial(self):
         self_similar = [r for r in self.rows if r["axial_placement"] == "AXIALLY_SELF_SIMILAR"]

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 393,
-  "total_uncompressed_bytes_excluding_manifest": 6191598,
-  "aggregate_source_sha256": "39c7bc09315ab6f9b9d46837fff11611e72ede3cc0ca556eb9febf4c64226f22",
-  "aggregate_sha256": "39c7bc09315ab6f9b9d46837fff11611e72ede3cc0ca556eb9febf4c64226f22",
+  "file_count": 394,
+  "total_uncompressed_bytes_excluding_manifest": 6204501,
+  "aggregate_source_sha256": "71a8a27c30485e3da0a9d28878f1b64a9ceb95bef73e0f74e412d83f45234a09",
+  "aggregate_sha256": "71a8a27c30485e3da0a9d28878f1b64a9ceb95bef73e0f74e412d83f45234a09",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -459,13 +459,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/PROTOCOL.md": {
-      "sha256": "71c932dee10462979d90f173781351b7a80e130f964c2ee8300a8d3435bed599",
-      "bytes": 16003,
+      "sha256": "dc133c4ad9bf09d157b608a62b562a36dadd7fd28c0abba2c79407ec64c32d11",
+      "bytes": 12884,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/README.md": {
-      "sha256": "4bd8be889d60e6d174bee27834923b793bc662d1a5ae6fabc26b68673980e322",
-      "bytes": 764,
+      "sha256": "6eb67eba465ad8b24ec6e79c27eb63e30ff40f87168454e93f8ac9cc45fa4b4d",
+      "bytes": 971,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1069,8 +1069,8 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_protocol.py": {
-      "sha256": "2e338570814979c667513e6e12d647573a492f9e33a4ac2e21ed468055125782",
-      "bytes": 42026,
+      "sha256": "53521c11bc2e441192b2d5491b92a94995c6f9b6bbbca42529be086a16d52deb",
+      "bytes": 52165,
       "git_mode": "100755"
     },
     "scripts/sci_md_001.py": {
@@ -1079,8 +1079,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "161d865ddea9484828a303390dd4eea4cd5885b66e39cdd5fc32ffcc4ecf1c61",
-      "bytes": 30529,
+      "sha256": "de2cf493384294d9dbd48e470adbaaf94130d464897f6d872c5f210eaf599a5f",
+      "bytes": 31179,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
@@ -1399,13 +1399,18 @@
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_protocol.py": {
-      "sha256": "c492dff383dd9f43af5d3be9ba3cb0bfd94fc529eba1d0f51b78b02be015939d",
-      "bytes": 18558,
+      "sha256": "2d6422bc549122763a1cde0d850614be643e5871342a9ac0ab74121ef32f8445",
+      "bytes": 21648,
       "git_mode": "100644"
     },
     "tests/test_sci_md_001.py": {
       "sha256": "b71462cbfea992c51a0db543960d7644ccb66ce8d5c0d4d7d30f147e277f79ce",
       "bytes": 5436,
+      "git_mode": "100644"
+    },
+    "tests/test_static_validate_non_mutating.py": {
+      "sha256": "374573df7fc74cb48c7a9783f7d75361521d3b0f5a6af649f985d3152a7fed18",
+      "bytes": 1936,
       "git_mode": "100644"
     },
     "tests/test_val001_administrative_semantics.py": {

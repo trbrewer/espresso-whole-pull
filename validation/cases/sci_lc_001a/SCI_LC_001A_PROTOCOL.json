@@ -1,62 +1,4 @@
 {
-  "adaptive_rules": {
-    "D4": {
-      "boundary_distance": "0.01 gain units",
-      "duplicate_rule": "canonical parameter identity first wins",
-      "finite_difference": "absolute gain change per log10 Lambda",
-      "grouping_fields": [
-        "arm",
-        "model_variant",
-        "pressure_mode",
-        "sector_count",
-        "axial_layer_count",
-        "heterogeneity_pattern",
-        "heterogeneity_mode",
-        "heterogeneity_scale",
-        "resistance_contrast",
-        "axial_placement",
-        "placement_alpha",
-        "epsilon_floor",
-        "G_ref_identity",
-        "G_A_identity",
-        "storage_ratio_S_h",
-        "hydraulic_storage_C_h",
-        "machine_response_ratio",
-        "machine_compliance_C_u",
-        "machine_reference_tuple",
-        "resistance_evolution_law",
-        "resistance_evolution_timescale_ratio",
-        "resistance_relaxation_tau_R",
-        "feedback_sign",
-        "feedback_gain",
-        "evolution_multiplier_bounds",
-        "shot_duration",
-        "initial_condition_variant",
-        "integration_profile",
-        "numerical_resolution_role",
-        "scientific_role",
-        "parent_selection_rule",
-        "eligibility",
-        "static_or_dynamic_classifier",
-        "model_form_requirement",
-        "units_or_dimensionless_status"
-      ],
-      "maximum_new_rows_per_parent_interval": 2,
-      "maximum_refinement_generations": 3,
-      "maximum_total_rows": 4096,
-      "midpoint": "geometric mean of positive endpoints",
-      "tie_break": "canonical case_id",
-      "zero_lambda": "FIXED_COMPARATOR_NOT_LOG_REFINED"
-    },
-    "X1": {
-      "boundary_score": "distance to nearest boundary",
-      "eligible": "valid resolved hydraulic regimes",
-      "maximum_total_rows": 1000,
-      "pairing": "prescribed/machine only if informative",
-      "robust_interior_score": "distance to nearest 0.90/1.10 boundary",
-      "tie_break": "uncertainty then canonical case_id"
-    }
-  },
   "base_head": "3e8993f56badd575f3482ea7bfa0f87d24412100",
   "base_tree": "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0",
   "boundary_initial_integration": {
@@ -68,14 +10,26 @@
     "base_max_step": "0.0025",
     "base_method": "DOP853",
     "base_rtol": "1e-8",
+    "cap_disposition": "STOP_MAX_RHS_EVALUATIONS_REACHED;PARTIAL_DIAGNOSTIC_INADMISSIBLE",
+    "cap_operator": "if nfev>=200000 before next evaluation: stop",
     "dynamic_p_b_hat": "min(tau/0.05,1)",
+    "events": {
+      "boundary_contact_stops": true,
+      "direction": "-1",
+      "earliest": "minimum root time",
+      "event_cap_order": "located event in accepted dense-output step precedes later cap; cap precedes unevaluated event",
+      "lower": "exp(beta*x_i)-0.25",
+      "nonfinite": "STOP_NONFINITE_EVENT_FUNCTION",
+      "root_time_tolerance": "1e-10 tau",
+      "terminal": true,
+      "tie_break": "LOWER_BOUND before UPPER_BOUND, then ascending sector index",
+      "upper": "4-exp(beta*x_i)"
+    },
     "failure": "NUMERICALLY_UNRESOLVED;NO_CLASSIFICATION",
     "initial_feedback_x": "0",
     "initial_internal_p_hat": "0",
     "initial_machine_p_u_hat": "0",
-    "linear_relative_residual": "1e-12",
-    "maximum_internal_steps": 200000,
-    "nonlinear_relative_residual": "1e-10",
+    "maximum_rhs_evaluations": 200000,
     "output_grid": "tau_k=k/1000,k=0..1000",
     "p_o_hat": "0",
     "phase_reversal": "phase->phase+pi",
@@ -85,14 +39,85 @@
     "refined_method": "DOP853",
     "refined_rtol": "2.5e-9",
     "reflection": "i->(-i) mod N",
+    "rhs_counter": "increments before every RHS call, including rejected trial steps",
     "rotation": "i->(i+1) mod N",
     "shot_horizon": [
       "0",
       "1"
     ],
+    "solver_api": "scipy.integrate.solve_ivp",
     "static_p_b_hat": "1",
     "tau_ramp": "0.05"
   },
+  "boundary_modes": {
+    "MACHINE_COUPLED": {
+      "equations": [
+        "C_h dp_i/dt=q_u_i-q_d_i-j_plus+j_minus",
+        "C_u dp_u/dt=Q_supply-Q_puck",
+        "p_b=p_u-R_line*Q_puck"
+      ],
+      "initial": "p_i(0)=p_u(0)=0",
+      "prescribed": [
+        "p_o_hat=0",
+        "command=min(tau/0.05,1)"
+      ],
+      "prohibited": [
+        "prescribed_pressure_amplitude"
+      ],
+      "required": [
+        "machine_reference_tuple",
+        "machine_compliance_C_u"
+      ],
+      "unknowns": [
+        "p_i(tau)",
+        "p_u(tau)",
+        "p_b(tau)"
+      ]
+    },
+    "PRESCRIBED_DYNAMIC_RAMP": {
+      "equations": "C_h dp_i/dt=q_u_i-q_d_i-j_plus+j_minus",
+      "initial": "p_i(0)=0",
+      "prescribed": [
+        "p_o_hat=0",
+        "p_b_hat=min(tau/0.05,1)"
+      ],
+      "prohibited": [
+        "machine_reference_tuple",
+        "machine_compliance_C_u"
+      ],
+      "required": [
+        "storage_ratio_S_h"
+      ],
+      "unknowns": [
+        "p_i(tau)"
+      ]
+    },
+    "PRESCRIBED_STATIC": {
+      "equations": "algebraic conservative node balance",
+      "prescribed": [
+        "p_o_hat=0",
+        "p_b_hat=amplitude"
+      ],
+      "prohibited": [
+        "machine_reference_tuple",
+        "machine_compliance_C_u",
+        "storage_ratio_S_h"
+      ],
+      "required": [
+        "prescribed_pressure_amplitude"
+      ],
+      "unknowns": [
+        "p_i"
+      ]
+    },
+    "closed_enumeration": [
+      "PRESCRIBED_STATIC",
+      "PRESCRIBED_DYNAMIC_RAMP",
+      "MACHINE_COUPLED"
+    ]
+  },
+  "c1_head": "86b9ff27b8c10d5cff9c52d9cd411b0ac179620e",
+  "c1_tree": "2e35a5e245be9e266c747409f2420be9971963a6",
   "canonical_ordering": "C0,S1,S2,S3,D1,D2,D3-EQ,D3-LOC then declared loop order",
   "change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
   "claim_boundary": {
@@ -115,8 +140,8 @@
     },
     "precedence": [
       "AUTHORITY_OR_ARTIFACT_INVALID",
+      "ANALYTICAL_STRUCTURAL_IDENTITY",
       "NUMERICALLY_UNRESOLVED",
-      "UNIFORM_OR_STRUCTURAL_CONTROL",
       "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE",
       "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT",
       "METRIC_DISAGREEMENT",
@@ -140,16 +165,17 @@
   "compute_budget": {
     "absolute_protocol_ceiling": 25000,
     "initial_rows": 1280,
-    "maximum_D4": 4096,
-    "maximum_X1": 1000,
+    "maximum_D4": 0,
+    "maximum_X1": 0,
     "maximum_dynamic_trajectories": 15000,
     "maximum_extraction_trajectories": 1000,
     "maximum_static_control_cases": 5000,
     "maximum_total_adjudicative_cases": 20000,
     "memory_gib": 16,
     "nested_library_threads": 1,
-    "prospective_maximum": 6376,
+    "prospective_maximum": 1280,
     "review_wall_hours": 8,
+    "stage_a_hard_maximum": 1280,
     "target_wall_hours": 4,
     "timing_pilot_maximum": 64,
     "worker_process_cap": 32
@@ -168,10 +194,9 @@
   "evidence_mode": "PROSPECTIVE_REDUCED_MODEL_PROTOCOL_CORRECTION",
   "execution_authorized": false,
   "future_3d_nomination_rules": {
-    "maximum_distinct_hydraulic_base_cases": 8,
-    "maximum_total_prescribed_machine_variants": 12,
-    "model_form_corroboration_required": true,
-    "status": "PROPOSED_SCI_LC_001B_CASES_PENDING_SEPARATE_REVIEW"
+    "separate_freeze_review_and_authorization_required": true,
+    "stage_a_authorized": false,
+    "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
   },
   "hashing_rules": {
     "canonical_json": "UTF-8 sorted compact JSON",
@@ -215,13 +240,14 @@
     "supply_law": "q_free*ramp(tau)*max(1-(p_u-p_o)/(p_shut-p_o),0)"
   },
   "matrix_summary": {
-    "comparator_bindings": 1210,
-    "controls": 70,
-    "dynamic_comparator_bindings": 552,
+    "active_scientific_rows": 848,
+    "comparator_bindings": 848,
+    "controls": 432,
+    "dynamic_comparator_bindings": 276,
     "dynamic_comparator_rows": 276,
     "dynamic_rows": 553,
     "initial_row_count": 1280,
-    "matrix_sha256": "cad4955a9e54c93ed4d1677a0ab00fcc05f53ede09e624bf572931f247911577",
+    "matrix_sha256": "4bb979181a0e5c672b896c44e3eee9574e28f0abed1d1f5dc227a47214e21717",
     "model_form_rows": 0,
     "rows_by_arm": {
       "C0": 70,
@@ -233,8 +259,9 @@
       "S2": 90,
       "S3": 64
     },
-    "scientific_rows": 1210,
-    "static_comparator_rows": 86
+    "scientific_rows": 848,
+    "static_comparator_rows": 86,
+    "structural_comparator_rows": 362
   },
   "model_form": {
     "broad_core_status": "PROVISIONAL_CORE_CLASSIFICATION",
@@ -260,6 +287,26 @@
     "dissipation",
     "selected_extraction_diagnostics"
   ],
+  "residual_contract": {
+    "failure_route": "BEFORE_SCIENTIFIC_CLASSIFIER",
+    "linear": {
+      "norm": "max_i(abs(r_i)/s_i)",
+      "operator": "<=",
+      "retry": "NONE",
+      "scale": "s_i=max(abs(b_i),sum_j(abs(A_ij)*abs(p_j)),1e-14)",
+      "tolerance": "1e-12",
+      "vector": "r=A*p-b"
+    },
+    "nonfinite": "NUMERICAL_STOP_NONFINITE_RESIDUAL",
+    "nonlinear": {
+      "norm": "max_i(abs(r_i)/s_i)",
+      "operator": "<=",
+      "retry": "NONE",
+      "scale": "s_i=max(abs(y_i),abs(Phi_i),1e-14)",
+      "tolerance": "1e-10",
+      "vector": "r=y-Phi(y)"
+    }
+  },
   "resistance_construction": {
     "common_floor": "R_floor=epsilon_floor*min_i(T_i)",
     "conductance_normalization": "g_tilde_i=exp(-a_h*h_i)/sum_j(a_j*exp(-a_h*h_j))",
@@ -300,7 +347,18 @@
       "beta=0",
       "Theta_R=INFINITE_NO_EVOLUTION"
     ],
-    "out_of_bounds": "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUT_OF_RANGE_NO_CLIPPING"
+    "out_of_bounds": "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUT_OF_RANGE_NO_CLIPPING",
+    "zero_flow_startup": {
+      "below_threshold": "use same branch and require threshold-refinement uncertainty",
+      "dynamic_limit": "F_i=N*(G_u_i*G_d_i/C_h_i)/sum_j(G_u_j*G_d_j/C_h_j)",
+      "exact_zero": "use analytical limit only within startup window",
+      "flow_reversal": "STOP_UNEXPECTED_FLOW_REVERSAL",
+      "machine_note": "machine compliance changes only the common leading time coefficient",
+      "nonfinite": "STOP_NONFINITE_SECTOR_FLOW",
+      "q_hat_zero_threshold": "1e-14",
+      "startup_tau_max": "1e-6",
+      "zero_sector_positive_total": "F_i=0"
+    }
   },
   "review_findings_corrected": [
     "PROPORTIONAL_SPLIT_STATIC_NULL",
@@ -325,6 +383,31 @@
   },
   "schema_version": "ewp.sci_lc_001a.protocol.v2",
   "scientific_question": "Under what combinations of lateral conductance, axial resistance contrast, heterogeneity scale, machine response, and resistance-evolution timescale does puck nonuniformity decay, persist, or amplify?",
+  "staged_deferral": {
+    "D4": {
+      "future_requirements": [
+        "canonical row materialization",
+        "exact comparators",
+        "alternate initial conditions",
+        "duplicate reconciliation",
+        "atomic cap",
+        "separate freeze/tests/review/authorization"
+      ],
+      "stage_a_rows": 0,
+      "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
+    },
+    "X1": {
+      "future_requirements": [
+        "complete eligibility",
+        "atomic prescribed-machine pairing",
+        "atomic cap",
+        "admissible Stage-A evidence",
+        "separate freeze/tests/review/authorization"
+      ],
+      "stage_a_nominations": 0,
+      "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
+    }
+  },
   "status": "PROSPECTIVE_PROTOCOL_CORRECTED_PENDING_SECOND_INDEPENDENT_PRE_EXECUTION_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
@@ -371,11 +454,23 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-PROTOCOL-CORRECTION-C1",
+  "task_id": "SCI-LC-001A-C2-EXECUTION-CONTRACT-CLOSURE-2026-08-16",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
     "combination": "u_G=u_integrator+u_sector+u_linear+u_sampling+u_denominator",
-    "model_form": "SEPARATE_TRANSITION_REASON_NOT_SCALAR_ERROR"
+    "components": {
+      "u_denominator": "abs(A)*u_B/abs(B)^2; unavailable when abs(B)<=declared floor",
+      "u_integrator": "abs(G_base-G_refined) from required DOP853 companion",
+      "u_linear": "ratio propagation from scaled-residual-derived numerator and denominator errors",
+      "u_sampling": "abs(G_1001-G_2001) reconstructed from the same accepted dense output",
+      "u_sector": "abs(G_N-G_Nref) when row requires sector refinement; explicit NOT_APPLICABLE otherwise"
+    },
+    "model_form": "SEPARATE_TRANSITION_REASON_NOT_SCALAR_ERROR",
+    "operator": "u_G<=u_limit(G)",
+    "rationale": "2-percent relative ceiling capped at 0.02 gain units; exact structural identities use analytical preclassification",
+    "stopped": "UNAVAILABLE;NO_CLASSIFICATION",
+    "unavailable": "NUMERICALLY_UNRESOLVED",
+    "units": "all components are absolute gain units"
   },
   "zero_execution": {
     "SCI_LC_001B_nominations": 0,
