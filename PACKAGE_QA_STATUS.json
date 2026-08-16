@@ -30,12 +30,12 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 514,
+    "python_test_count": 522,
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 389,
-    "source_manifest_aggregate_sha256": "bcd2010cb20912599ae97fa32f24099e72d48934a1c485696b7955c436d567ac",
+    "source_manifest_file_count": 396,
+    "source_manifest_aggregate_sha256": "c918b3aceeb9f324579f32b7be6aa56533e481f7032793d2cc43daf2445fe142",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -45,7 +45,23 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "bcd2010cb20912599ae97fa32f24099e72d48934a1c485696b7955c436d567ac"
+    "source_manifest_aggregate_source_sha256": "c918b3aceeb9f324579f32b7be6aa56533e481f7032793d2cc43daf2445fe142"
+  },
+  "sci_md_002a": {
+    "status": "OWNER_SCIENTIFIC_REVIEW_APPROVED_WITH_SCOPE_QUALIFICATION",
+    "issue": 72,
+    "pull_request": 73,
+    "pull_request_state": "OPEN_DRAFT_UNMERGED",
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "execution_source": "dce4b6f2941bc379bac6acf377ffcc29c017e12f",
+    "execution_tree": "bf310b624788de33e315b65d0c57b64c52efd47c",
+    "adjudicative_trajectory_count": 580,
+    "valid_trajectory_count": 580,
+    "scientific_result_disposition": "SCI_MD_002A_TRANSIENT_POROMECHANICS_REJECTED",
+    "frozen_rejection_reason": "WRONG_PRESSURE_ORDERING",
+    "s2_role": "FIXED_MACHINE_DESCRIPTIVE_CONTROL_NOT_ADJUDICATIVE_CROSS_PRESSURE_TRANSFER",
+    "production_openfoam_physics": "UNCHANGED",
+    "physical_validation": "NOT_ESTABLISHED"
   },
   "xsv_xct_001": {
     "status": "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",

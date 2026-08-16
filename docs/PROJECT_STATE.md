@@ -23,7 +23,7 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 389/389 PASS
+- Public source verification: 396/396 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -240,6 +240,12 @@ and the
 [post-WP03-001 validation and mechanism-discrimination plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md).
 
 General whole-solver physical validation remains `NOT_ESTABLISHED`.
+
+SCI-MD-002A completed its independent reduced transient-consolidation lane with
+the owner-approved disposition `SCI_MD_002A_TRANSIENT_POROMECHANICS_REJECTED`
+for `WRONG_PRESSURE_ORDERING`. The bounded result applies only to the frozen
+single-state reversible family and does not reject all poromechanics. Its draft
+PR remains unmerged; production OpenFOAM physics is unchanged.
 
 ## Completed VAL-CORPUS-001 comparison campaign
 
