@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 394,
-  "total_uncompressed_bytes_excluding_manifest": 6274219,
-  "aggregate_source_sha256": "1873339105916770c2c2d54c49b382dc8e080c0e4847cc5800469cd3472e78a9",
-  "aggregate_sha256": "1873339105916770c2c2d54c49b382dc8e080c0e4847cc5800469cd3472e78a9",
+  "file_count": 397,
+  "total_uncompressed_bytes_excluding_manifest": 6326207,
+  "aggregate_source_sha256": "5b9e3d7b1182105c78f595e2c10bcc876db6583d8cfec3c1d2dd72b2f0c13d34",
+  "aggregate_sha256": "5b9e3d7b1182105c78f595e2c10bcc876db6583d8cfec3c1d2dd72b2f0c13d34",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -459,13 +459,18 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/PROTOCOL.md": {
-      "sha256": "dba9240ca6fcce91a772514c54b502b5c8d742968e834a1f06a7df16cf1b68bd",
-      "bytes": 18043,
+      "sha256": "d2676530ceb39a5e5cc7997235265e241b385481257b7f52f5767cf7c78b0565",
+      "bytes": 18065,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/README.md": {
-      "sha256": "e63b20b58a723d64443352067271ae698eccf774314e2a24f35244297c772069",
-      "bytes": 1211,
+      "sha256": "c794edf3157e28136f0ae6b896bccce6cfa3dd7cab5ac5686307be82ea149ba0",
+      "bytes": 1364,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_lc_001a/STAGE_A_EXECUTOR.md": {
+      "sha256": "62e2558631f996db1d9d7f9a6f6e6e8030d9f67202e19399201f37c5c5a0556c",
+      "bytes": 4432,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1068,9 +1073,14 @@
       "bytes": 274,
       "git_mode": "100755"
     },
+    "scripts/sci_lc_001a_executor.py": {
+      "sha256": "78a6169dfd2ec8f474e2f7d7b692c9250f2bb71838d8ba50ec548b7a949cf593",
+      "bytes": 31751,
+      "git_mode": "100755"
+    },
     "scripts/sci_lc_001a_protocol.py": {
-      "sha256": "0bb11b2e81d145d2800a3823d3345ce6fdd1cf94771a526114a9b7e8c8f603ef",
-      "bytes": 93816,
+      "sha256": "c3fbb357120d41c531b5cf1776153d55a20b96cd545f433e757936756a6becb5",
+      "bytes": 95262,
       "git_mode": "100755"
     },
     "scripts/sci_md_001.py": {
@@ -1396,6 +1406,11 @@
     "tests/test_reference_case.py": {
       "sha256": "268ed2e331d6f3c99576996eb7fb5751c1c1ebd64819f46f94bcf13cb8b04558",
       "bytes": 66862,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_lc_001a_executor.py": {
+      "sha256": "d7641127dc8df292dcf93e46e64b3290fdcb04da72d9ab5250c024d2899b9a7e",
+      "bytes": 14184,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_protocol.py": {

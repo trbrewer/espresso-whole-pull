@@ -307,6 +307,8 @@
   "c3_reviewed_tree": "0ae277a266b05c499e5c1c91aca5a24fa6d42f0e",
   "c4_reviewed_head": "4f06c5e179d9e6f045e1b58cef06ffa98ec0fbea",
   "c4_reviewed_tree": "3f35ae046647dca44353cd8015eda471c9852a37",
+  "c5_reviewed_head": "9b28ee8811e09ad069f9c029bb27cd92134c28b2",
+  "c5_reviewed_tree": "3e0c4dac7ccbc095899c376f6d6833bd3133618c",
   "canonical_ordering": "C0,S1,S2,S3,D1,D2,D3-EQ,D3-LOC then declared loop order",
   "change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
   "claim_boundary": {
@@ -449,9 +451,11 @@
     "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
   },
   "gain_authority": {
+    "caller_floor_override": false,
     "comparator": "resolved internally and validated as exact Lambda-zero STRUCTURAL_COMPARATOR",
     "constructor": "build_gain_record",
     "denominator_default": false,
+    "denominator_floor_constant": "GAIN_DENOMINATOR_FLOOR=1e-12",
     "denominator_required": true,
     "gate": "abs(denominator)<=denominator_floor -> NUMERICALLY_UNRESOLVED",
     "record": "GainRecord",
@@ -750,6 +754,23 @@
   },
   "schema_version": "ewp.sci_lc_001a.protocol.v2",
   "scientific_question": "Under what combinations of lateral conductance, axial resistance contrast, heterogeneity scale, machine response, and resistance-evolution timescale does puck nonuniformity decay, persist, or amplify?",
+  "stage_a_executor": {
+    "execution_authority_required": true,
+    "modes": [
+      "plan",
+      "validate",
+      "execute",
+      "summarize"
+    ],
+    "module": "scripts/sci_lc_001a_executor.py",
+    "output": "absolute external non-symlink result root; atomic JSON records",
+    "real_execution_authority_created": false,
+    "resume": "validate manifest and records; reuse terminal records; no automatic retry",
+    "scientific_execution_authorized": false,
+    "status": "IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+    "synthetic_backend": "SYNTHETIC_TEST_ONLY; scientifically inadmissible",
+    "timing_pilot_authorized": false
+  },
   "staged_deferral": {
     "D4": {
       "future_requirements": [
@@ -775,7 +796,7 @@
       "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
     }
   },
-  "status": "PROSPECTIVE_PROTOCOL_C5_CORRECTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+  "status": "STAGE_A_EXECUTOR_E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
       "authority/hash/review mismatch",
@@ -821,7 +842,7 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-C5-FINAL-EXECUTOR-INTERFACE-CLOSURE-2026-08-16",
+  "task_id": "SCI-LC-001A-E1-PREEXECUTION-PATCHES-AND-STAGE-A-EXECUTOR-IMPLEMENTATION-2026-08-16",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
     "applicability_authority": "derive_uncertainty_contract(canonical_rows,subject_case_id,metric,evaluation,status,profile)",

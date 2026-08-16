@@ -23,14 +23,14 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 394/394 PASS
+- Public source verification: 397/397 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active modeling task: `SCI-LC-001A protocol correction C5`
-- Execution state: `NOT_STARTED`
+- Active modeling task: `SCI-LC-001A Stage-A executor implementation E1`
+- Execution state: `EXECUTOR_IMPLEMENTED_PENDING_BOUNDED_REVIEW; SCIENTIFIC_EXECUTION_NOT_STARTED`
 - Protocol state:
-  `C5_CORRECTED_PENDING_BOUNDED_INDEPENDENT_EXACT_HEAD_REVIEW`
+  `E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_EXACT_HEAD_REVIEW`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
 - Current next action:

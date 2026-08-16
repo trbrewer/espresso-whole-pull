@@ -6,7 +6,11 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `PROSPECTIVE_PROTOCOL_C5_CORRECTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`.
+Status: `STAGE_A_EXECUTOR_E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`.
+
+The Stage-A executor is now `TRUE_PENDING_REVIEW`; see
+[STAGE_A_EXECUTOR.md](STAGE_A_EXECUTOR.md). No timing pilot or scientific
+execution is authorized.
 
 Correction C5 additionally closes the authoritative BASE solve, canonical gain
 and denominator construction, applicability and flow-scale authority,
