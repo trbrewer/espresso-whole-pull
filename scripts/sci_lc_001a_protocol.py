@@ -21,8 +21,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "validation/cases/sci_lc_001a"
 NA = "NOT_APPLICABLE"
 INFINITE = "INFINITE_NO_LATERAL_EQUALIZATION"
-STATUS = "PROSPECTIVE_PROTOCOL_C5_CORRECTED_PENDING_BOUNDED_INDEPENDENT_REVIEW"
-TASK_ID = "SCI-LC-001A-C5-FINAL-EXECUTOR-INTERFACE-CLOSURE-2026-08-16"
+STATUS = "STAGE_A_EXECUTOR_E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW"
+TASK_ID = "SCI-LC-001A-E1-PREEXECUTION-PATCHES-AND-STAGE-A-EXECUTOR-IMPLEMENTATION-2026-08-16"
 BASE_HEAD = "3e8993f56badd575f3482ea7bfa0f87d24412100"
 BASE_TREE = "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0"
 REVIEWED_HEAD = "c683f7722b170d049bcdf08c6bc65afd3cef20ba"
@@ -35,6 +35,8 @@ C3_HEAD = "a33b85a752b3f27c675b7658aeefa18b1cbc987c"
 C3_TREE = "0ae277a266b05c499e5c1c91aca5a24fa6d42f0e"
 C4_HEAD = "4f06c5e179d9e6f045e1b58cef06ffa98ec0fbea"
 C4_TREE = "3f35ae046647dca44353cd8015eda471c9852a37"
+C5_HEAD = "9b28ee8811e09ad069f9c029bb27cd92134c28b2"
+C5_TREE = "3e0c4dac7ccbc095899c376f6d6833bd3133618c"
 
 LAMBDAS = ("0", "0.0001", "0.0003", "0.001", "0.003", "0.01", "0.03",
            "0.1", "0.3", "1", "3", "10", "30", "100")
@@ -72,6 +74,7 @@ FLOW_SCALES = ("SECTOR_SCALED_DIMENSIONLESS", "DIMENSIONAL_SECTOR_FLOW",
                "WHOLE_NETWORK_SCALED_PER_SECTOR")
 LINEAR_RESIDUAL_TOLERANCE = 1.0e-12
 PIVOT_RATIO_FLOOR = 64.0 * 2.220446049250313e-16
+GAIN_DENOMINATOR_FLOOR = 1.0e-12
 UNCERTAINTY_COMPONENTS = ("u_integrator", "u_sector", "u_linear", "u_sampling", "u_startup")
 FIELD_DISPOSITIONS = ("REQUIRED", "PROHIBITED", "DERIVED", "NOT_APPLICABLE", "PROVENANCE_ONLY")
 FIELD_AUTHORITY_CLASSES = ("IDENTITY_PRIMITIVE", "SCIENTIFIC_PRIMITIVE", "DERIVED_EXECUTION_FIELD",
@@ -85,6 +88,10 @@ METRIC_KINDS = ("STATIC_GAIN", "DYNAMIC_ENDPOINT_GAIN", "DYNAMIC_INTEGRATED_GAIN
                 "DYNAMIC_INTEGRATED_STRUCTURAL_NUMERICAL_CONTROL")
 QA_PROTOCOL_FOCUSED_COMMAND = "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol"
 QA_STATIC_REGRESSION_COMMAND = "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_static_validate_non_mutating"
+QA_EXECUTOR_FOCUSED_COMMAND = "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_executor"
+QA_COMBINED_FOCUSED_COMMAND = ("PYTHONDONTWRITEBYTECODE=1 python3 -m unittest "
+    "tests.test_sci_lc_001a_protocol tests.test_sci_lc_001a_executor "
+    "tests.test_static_validate_non_mutating")
 
 FIELDS = (
     "case_id", "arm", "model_variant", "pressure_mode", "boundary_profile",
@@ -145,14 +152,18 @@ def validate_qa_focused_scope(checks: dict) -> None:
     required = {
         "sci_lc_001a_protocol_focused_command": QA_PROTOCOL_FOCUSED_COMMAND,
         "sci_lc_001a_static_validator_regression_command": QA_STATIC_REGRESSION_COMMAND,
+        "sci_lc_001a_executor_focused_command": QA_EXECUTOR_FOCUSED_COMMAND,
+        "sci_lc_001a_combined_focused_command": QA_COMBINED_FOCUSED_COMMAND,
     }
     if any(checks.get(key) != value for key, value in required.items()):
         raise ValueError("PACKAGE_QA_FOCUSED_COMMAND_SCOPE_MISMATCH")
     protocol_count = checks.get("sci_lc_001a_protocol_focused_test_count")
     static_count = checks.get("sci_lc_001a_static_validator_regression_test_count")
+    executor_count = checks.get("sci_lc_001a_executor_focused_test_count")
     combined = checks.get("sci_lc_001a_combined_focused_test_count")
     if (type(protocol_count) is not int or type(static_count) is not int or
-            type(combined) is not int or combined != protocol_count + static_count):
+            type(executor_count) is not int or type(combined) is not int or
+            combined != protocol_count + static_count + executor_count):
         raise ValueError("PACKAGE_QA_FOCUSED_COUNT_SCOPE_MISMATCH")
 
 
@@ -447,6 +458,11 @@ class SectorFlowVector(NamedTuple):
 
 
 def q_hat_total_from_flow(flow: SectorFlowVector) -> float:
+    return sum(canonical_sector_q_hat(flow)) / flow.N
+
+
+def canonical_sector_q_hat(flow: SectorFlowVector) -> tuple[float, ...]:
+    """Return the sole canonical sector-scaled dimensionless flow vector."""
     if not isinstance(flow, SectorFlowVector):
         raise ValueError("UNTAGGED_FLOW_VECTOR_NOT_AUTHORIZED")
     if type(flow.N) is not int or flow.N not in (4, 8, 16) or len(flow.values) != flow.N:
@@ -459,23 +475,19 @@ def q_hat_total_from_flow(flow: SectorFlowVector) -> float:
     if flow.scale == "WHOLE_NETWORK_SCALED_PER_SECTOR":
         raise ValueError("UNSUPPORTED_WHOLE_NETWORK_SCALED_PER_SECTOR_INPUT")
     if flow.scale == "SECTOR_SCALED_DIMENSIONLESS":
-        return sum(float(value) for value in flow.values) / flow.N
+        return tuple(float(value) for value in flow.values)
     if any(value is None or isinstance(value, bool) or not isinstance(value, (int, float)) or
            not math.isfinite(value) or value <= 0 for value in (flow.G_ref, flow.delta_p_ref)):
         raise ValueError("INVALID_TOTAL_Q_HAT_REFERENCE_SCALE")
-    direct = sum(float(value) for value in flow.values) / (flow.G_ref * flow.delta_p_ref)
     g_a = flow.G_ref / flow.N
-    equivalent = sum(value / (g_a * flow.delta_p_ref) for value in flow.values) / flow.N
-    if not math.isclose(direct, equivalent, rel_tol=64 * 2.220446049250313e-16, abs_tol=0.0):
-        raise ValueError("INCONSISTENT_DIMENSIONAL_FLOW_NORMALIZATION")
-    return direct
+    return tuple(float(value) / (g_a * flow.delta_p_ref) for value in flow.values)
 
 
 def evolution_focusing(*, tau: float, flow: SectorFlowVector, startup: list[float],
                        zero_threshold: float = Q_ZERO_THRESHOLD,
                        startup_tau_max: float = STARTUP_TAU_MAX) -> list[float]:
-    q_total = q_hat_total_from_flow(flow)
-    flows = flow.values
+    flows = canonical_sector_q_hat(flow)
+    q_total = sum(flows) / flow.N
     total = sum(flows)
     if q_total < -zero_threshold or any(value < -zero_threshold for value in flows):
         raise ValueError("STOP_UNEXPECTED_FLOW_REVERSAL")
@@ -687,8 +699,7 @@ def _validate_comparator_pair(subject: dict, comparator: dict) -> None:
 
 
 def build_gain_record(canonical_rows: list[dict], subject_case_id: str, metric_kind: str,
-                      numerical_profile: str, numerator: float, denominator: float,
-                      *, denominator_floor: float = 1.0e-12) -> GainRecord:
+                      numerical_profile: str, numerator: float, denominator: float) -> GainRecord:
     rows = _canonical_map(canonical_rows)
     if subject_case_id not in rows:
         raise ValueError("UNKNOWN_GAIN_SUBJECT")
@@ -709,13 +720,13 @@ def build_gain_record(canonical_rows: list[dict], subject_case_id: str, metric_k
     if numerical_profile not in profiles:
         raise ValueError("GAIN_NUMERICAL_PROFILE_NOT_AUTHORIZED")
     if any(isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value)
-           for value in (numerator, denominator, denominator_floor)) or denominator_floor < 0:
+           for value in (numerator, denominator)):
         raise ValueError("INVALID_GAIN_NUMERIC_INPUT")
-    if abs(denominator) <= denominator_floor:
+    if abs(denominator) <= GAIN_DENOMINATOR_FLOOR:
         raise ValueError("NUMERICALLY_UNRESOLVED_DENOMINATOR_FLOOR")
     return GainRecord(subject_case_id, comparator_id, metric_kind, numerical_profile,
                       float(numerator), float(denominator), float(numerator / denominator),
-                      denominator_floor, "PASS", subject["case_role"], comparator["case_role"],
+                      GAIN_DENOMINATOR_FLOOR, "PASS", subject["case_role"], comparator["case_role"],
                       subject["pressure_mode"], "COMPLETE")
 
 
@@ -1245,6 +1256,7 @@ def protocol(rows: list[dict]) -> dict:
         "c2_reviewed_head": C2_HEAD, "c2_reviewed_tree": C2_TREE,
         "c3_reviewed_head": C3_HEAD, "c3_reviewed_tree": C3_TREE,
         "c4_reviewed_head": C4_HEAD, "c4_reviewed_tree": C4_TREE,
+        "c5_reviewed_head": C5_HEAD, "c5_reviewed_tree": C5_TREE,
         "change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
         "evidence_mode": "PROSPECTIVE_REDUCED_MODEL_PROTOCOL_CORRECTION",
         "execution_authorized": False,
@@ -1412,6 +1424,8 @@ def protocol(rows: list[dict]) -> dict:
             "subject": "validated canonical ACTIVE_SCIENTIFIC_CASE",
             "comparator": "resolved internally and validated as exact Lambda-zero STRUCTURAL_COMPARATOR",
             "denominator_required": True, "denominator_default": False,
+            "denominator_floor_constant": "GAIN_DENOMINATOR_FLOOR=1e-12",
+            "caller_floor_override": False,
             "gate": "abs(denominator)<=denominator_floor -> NUMERICALLY_UNRESOLVED",
             "structural_control_path": "distinct; ordinary gain construction prohibited"},
         "uncertainty": {"allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
@@ -1450,6 +1464,14 @@ def protocol(rows: list[dict]) -> dict:
                 "u_sampling": "abs(G_1001_FROM_BASE-G_2001_FROM_BASE)",
                 "u_sector": "abs(G_N_BASE-G_NREF_BASE)"},
             "sector_bundle_audit": sector_audit},
+        "stage_a_executor": {"module": "scripts/sci_lc_001a_executor.py",
+            "status": "IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+            "modes": ["plan", "validate", "execute", "summarize"],
+            "execution_authority_required": True, "real_execution_authority_created": False,
+            "output": "absolute external non-symlink result root; atomic JSON records",
+            "resume": "validate manifest and records; reuse terminal records; no automatic retry",
+            "synthetic_backend": "SYNTHETIC_TEST_ONLY; scientifically inadmissible",
+            "timing_pilot_authorized": False, "scientific_execution_authorized": False},
         "classification": {"static": {"metrics": ["G_static_H", "G_static_mode"],
                 "comparator": "exact same-row identity with Lambda=0"},
             "dynamic": {"metrics": ["G_coupling_end", "G_coupling_int"],
