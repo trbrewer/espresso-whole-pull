@@ -1,6 +1,6 @@
 # SCI-MD-002B prospective protocol
 
-Status: `CORRECTED_PREEXECUTION_PENDING_SECOND_REVIEW`
+Status: `ADJUDICATION_LAYER_CORRECTED_PENDING_FINAL_REVIEW`
 
 Change declarations: `NO_GOVERNING_PHYSICS_CHANGE`; `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Evidence class: `POST_OBSERVATION_MECHANISM_DISCRIMINATION`.
 
@@ -10,7 +10,7 @@ Can pressure-dependent wetting time give high-pressure cells enough extra swelli
 
 ## Evidence and mapping
 
-The canonical protocol reuses `validation/cases/val_corpus_001/results/VAL_CORPUS_001_OVERLAYS_V3.json`, exactly as merged SCI-MD-002A did: prescribed basket-pressure groups 5/9/11 bar, the same terminal reporting point, source flow targets, area `0.002463008640414398 m2`, depth `0.01 m`, viscosity `0.000315 Pa s`, and density `965 kg/m3`. One Darcy permeability is anchored at the governed 9-bar endpoint and transferred unchanged. No pressure-specific swelling, accommodation, particle distribution, permeability, or reporting time is allowed.
+The canonical protocol reuses `validation/cases/val_corpus_001/results/VAL_CORPUS_001_OVERLAYS_V3.json`, exactly as merged SCI-MD-002A did: prescribed basket-pressure groups 5/9/11 bar, the same terminal reporting point, source flow targets, area `0.002463008640414398 m2`, depth `0.01 m`, viscosity `0.000315 Pa s`, and density `965 kg/m3`. One Darcy permeability is anchored from the observed P9 terminal flow and observed pressure, then transferred unchanged to P5 and P11. No pressure-specific swelling, accommodation, particle distribution, permeability, or reporting time is allowed.
 
 The EWP source conditions are `EWP_GOVERNED_SOURCE`. Foster and Mo equations/parameters are `PUCKWORKS_PINNED_REFERENCE` at commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`. Axis brackets are `SYNTHETIC_SCREEN_BOUND`; controls and identities are respectively `NUMERICAL_CONTROL` and `DERIVED_IDENTITY`. No new digitization or restricted material is present. Particle/grind transfer is `GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED`.
 
@@ -48,11 +48,23 @@ Required states are finite; wetting monotone and bounded; uptake monotone; parti
 
 ## Execution and pilot boundary
 
-The corrected attempt-3 pilot contains eight analytical, pressure-history, storage, temporal, structural, and matched-refinement controls. It contains no complete adjudicative source triplet. It tests runtime, memory, immutable records, corrected pressure-history handling, and integrity only. It must not calculate ordering or run the scientific reducer. Attempts 1 and 2 remain superseded diagnostic-only records.
+The final attempt-6 pilot contains eight analytical, pressure-history, storage, temporal, structural, and matched-refinement controls. It contains no complete adjudicative source triplet. It tests runtime, memory, immutable records, corrected source-field semantics, ledger closeout, and integrity only. It must not calculate ordering or run the scientific reducer. Attempts 1 through 5 remain preserved unchanged with their existing evidence classifications.
 
 The authorized executor is complete but fail-closed. An owner JSON must bind the exact token, task/lane/branch/source identities, all artifact and Puckworks hashes, exact row set, namespace, resource limits, owner/date, record schema, and immutable/exact-resume semantics. The reducer verifies a complete immutable authority-bound bundle, applies the frozen gates, groups candidate triplets and refinements, propagates signed-margin uncertainty, and emits an auditable table. Neither is invoked adjudicatively in this tranche.
 
 Adjudicative execution requires a separately owner-created JSON with token `SCI_MD_002B_ADJUDICATIVE_EXECUTION_AUTHORIZED`, exact source/artifact/dependency hashes, namespace, one-worker cap, row set, date, and owner role. The program does not mint this token and refuses execution without it. No such authority exists.
+
+## Final adjudication-layer contract
+
+The governed overlay columns are exactly source time, solver time, observed pressure, predecessor reference-model pressure, observed flow, predecessor reference-model flow, observed mass, and predecessor reference-model mass. Source rows use explicit `observed_*` and `reference_model_*` names; nominal-pressure terminology is prohibited. The hydraulic anchor is the single observed P9 terminal-flow scale and is transferred unchanged.
+
+The indivisible adjudicative cohort is the canonical sorted set of all 432 S1 rows plus all three C0 controls: exactly 435 records and 72 candidate stems. Empty, partial, reordered, broadened, S1-only, or chunk authorities fail before execution. Production code returns only mechanical expected bindings and cannot supply the owner token, owner role, or authorization date.
+
+Package validity requires the exact cohort, three valid controls, complete comparator bindings, one authority/source/tree/schema, and 72 candidates. Candidate gates then run independently in this order: numerical and physical validity; resistance direction; pressure ordering with matched refinement uncertainty; temporal signature; assumption membership; aggregate eligibility. One candidate's failure cannot veto another candidate.
+
+Temporal validity requires exactly 999 governed timestamps, exact source times and observed pressures, finite complete fields, bounded monotone front/wet fraction, exact cell ages, no pre-wet storage or resistance growth, positive post-wet storage for nonzero `C_M`, consistent onset and full-wetting events, and resistance nondecrease within the frozen `5e-5` relative per-step numerical allowance. Aggregate residuals, RMSE and MAE use only observed terminal flow and are calculated only for earlier-gate survivors.
+
+Assumption reduction reports exact surviving accommodation values, powders, diffusivity multipliers, and `C_M` values. Fixed-height-only and single-unmapped-powder dependence retain their named dispositions; a single nonzero accommodation state is evidence-limited rather than general survival. Overlapping restrictions are secondary flags. The recorded `phi_wet` and `epsilon_b0` sensitivity bounds were not executed as matrix axes, so robustness across them is not established.
 
 ## Claim boundary
 

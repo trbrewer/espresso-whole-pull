@@ -1,4 +1,11 @@
 {
+  "adjudicative_cohort": {
+    "authority_must_equal_sorted_cohort": true,
+    "c0_count": 3,
+    "candidate_count": 72,
+    "row_count": 435,
+    "row_ids_sha256": "b5ff8f21c9d944a844bf399d09790b171f7a071520881b5cf2f2a310df68b8af"
+  },
   "budget": {
     "gpu": 0,
     "hard_max": 2500,
@@ -14,7 +21,8 @@
     "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
     "NO_COMBINED_MECHANISM_AUTHORIZATION",
     "NO_SCI_LC_001B_AUTHORIZATION",
-    "GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED"
+    "GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED",
+    "PHI_WET_AND_EPSILON_B0_BOUND_ROBUSTNESS_NOT_ESTABLISHED"
   ],
   "gates": [
     "AUTHORITY_AND_ARTIFACT_VALIDITY",
@@ -29,7 +37,7 @@
   ],
   "matrix_sha256": "1e18ad42f4dd007a708a5973cbaafa415d929f419cc1ddb75300c35e1105f399",
   "model": {
-    "chain": "pressure history -> wetting time -> local age -> Mo swelling -> volume-consistent accommodation -> CK permeability -> serial resistance -> axial flow",
+    "chain": "observed pressure history -> wetting time -> local age -> Mo swelling -> volume-consistent accommodation -> CK permeability -> serial resistance -> axial flow",
     "liquid_status": "ONE_WAY_LIQUID_FEEDBACK_NOT_CLOSED_BY_DESIGN",
     "one_way_balance": "front trajectory excludes swelling-storage feedback",
     "two_way": "SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED"
@@ -46,6 +54,7 @@
   ],
   "porosities": {
     "epsilon_b0": {
+      "matrix_axis_executed": false,
       "provenance": "PUCKWORKS_PINNED_REFERENCE_MO_NOMINAL_NOT_EWP_SOURCE_MEASUREMENT",
       "role": "REFERENCE_PRIMARY",
       "sensitivity_bounds": [
@@ -55,6 +64,7 @@
       "value": 0.17
     },
     "phi_wet": {
+      "matrix_axis_executed": false,
       "provenance": "PUCKWORKS_PINNED_REFERENCE_FOSTER_FITTED_NOT_EWP_SOURCE_MEASUREMENT",
       "role": "REFERENCE_PRIMARY",
       "sensitivity_bounds": [
@@ -78,33 +88,50 @@
     },
     "uncertainty": "for each margin, abs(base margin-refined margin); PASS iff both base margins minus uncertainty >0; REJECTED iff either base margin plus uncertainty <=0; otherwise NUMERICALLY_UNRESOLVED"
   },
-  "schema_version": "ewp.sci_md_002b.protocol.v2",
+  "schema_version": "ewp.sci_md_002b.protocol.v3",
   "source": {
+    "column_contract": [
+      "source_time_s",
+      "solver_time_s",
+      "observed_pressure_pa",
+      "reference_model_pressure_pa",
+      "observed_flow_kg_s",
+      "reference_model_flow_kg_s",
+      "observed_mass_kg",
+      "reference_model_mass_kg"
+    ],
     "histories": {
       "11": {
         "row_count": 999,
-        "terminal_pressure_pa": 1041717.4,
+        "terminal_observed_flow_kg_s": 0.001777572,
+        "terminal_observed_pressure_pa": 1041717.4,
+        "terminal_reference_model_pressure_pa": 1041916.7,
         "terminal_time_s": 99.8999
       },
       "5": {
         "row_count": 999,
-        "terminal_pressure_pa": 450096.2,
+        "terminal_observed_flow_kg_s": 0.002056292,
+        "terminal_observed_pressure_pa": 450096.2,
+        "terminal_reference_model_pressure_pa": 450476.8,
         "terminal_time_s": 99.8999
       },
       "9": {
         "row_count": 999,
-        "terminal_pressure_pa": 873024.9,
+        "terminal_observed_flow_kg_s": 0.001827218,
+        "terminal_observed_pressure_pa": 873024.9,
+        "terminal_reference_model_pressure_pa": 871691.6,
         "terminal_time_s": 99.8999
       }
     },
-    "hydraulic_anchor": "one terminal P9 model-flow anchor shared unchanged",
-    "integration": "piecewise-linear pressure with exact trapezoidal cumulative integral; analytic within-segment inversion; no extrapolation",
+    "hydraulic_anchor": "one observed P9 terminal-flow hydraulic scale, transferred unchanged to P5 and P11",
+    "integration": "piecewise-linear observed pressure with exact trapezoidal cumulative integral; analytic within-segment inversion; no extrapolation",
     "overlay_path": "validation/cases/val_corpus_001/results/VAL_CORPUS_001_OVERLAYS_V3.json",
     "overlay_sha256": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e"
   },
-  "status": "CORRECTED_PREEXECUTION_PENDING_SECOND_REVIEW",
+  "status": "ADJUDICATION_LAYER_CORRECTED_PENDING_FINAL_REVIEW",
   "task_id": "SCI-MD-002B",
   "temporal_output": {
+    "absolute_tolerance": 1e-10,
     "fields": [
       "time_s",
       "pressure_pa",
@@ -113,6 +140,8 @@
       "wet_fraction",
       "cell_wetting_times_s",
       "cell_wetting_ages_s",
+      "cell_swelling_storage_volumes_m3",
+      "cell_resistance_ratios",
       "swelling_storage_volume_m3",
       "swelling_storage_rate_m3_s",
       "effective_serial_resistance_ratio",
@@ -122,6 +151,18 @@
       "liquid_feedback_status",
       "resistance_growth_onset_s"
     ],
-    "grid": "all 999 governed source timestamps for SOURCE rows; frozen 0.5 s grid plus terminal for nominal controls"
+    "grid": "exactly all 999 governed source timestamps for SOURCE rows; frozen 0.5 s grid plus terminal for nominal controls",
+    "requirements": [
+      "exact source time and observed pressure",
+      "finite complete fields",
+      "bounded monotonic front and wet fraction",
+      "exact wetting age identity",
+      "no storage or resistance growth before local wetting",
+      "positive storage after wetting for nonzero C_M",
+      "onset not earlier than first wetting",
+      "resistance nondecrease within frozen relative step tolerance",
+      "consistent full-wetting and terminal events"
+    ],
+    "resistance_relative_step_tolerance": 5e-05
   }
 }
