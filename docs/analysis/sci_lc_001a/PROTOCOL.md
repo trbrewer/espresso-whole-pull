@@ -1,8 +1,8 @@
-# SCI-LC-001A Stage-A prospective protocol — Correction C3
+# SCI-LC-001A Stage-A prospective protocol — Correction C4
 
-Task: `SCI-LC-001A-C3-FINAL-PROSPECTIVE-CONTRACT-CLOSURE-2026-08-16`
+Task: `SCI-LC-001A-C4-DETERMINISTIC-EXECUTOR-CONTRACT-CLOSURE-2026-08-16`
 
-Status: `PROSPECTIVE_PROTOCOL_C3_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW`
+Status: `PROSPECTIVE_PROTOCOL_C4_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW`
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Execution is not
 authorized. This package defines a reduced diagnostic model; it does not change
@@ -40,7 +40,7 @@ trajectory or classification.
     "structural_comparator_rows": 362
   },
   "stage_a_hard_maximum": 1280,
-  "status": "PROSPECTIVE_PROTOCOL_C3_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW",
+  "status": "PROSPECTIVE_PROTOCOL_C4_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW",
   "uncertainty": "u_limit(G)=min(0.02,0.02*abs(G))"
 }
 ```
@@ -160,7 +160,10 @@ F_i(0+)=N(G_u_i G_d_i/C_h_i)/sum_j(G_u_j G_d_j/C_h_j).
 
 Machine compliance changes only the common time coefficient and cancels from
 the normalized limit; lateral exchange enters at higher order. This exact
-mode-common dynamic limit is used at `tau=0`. For `|Q_hat|<=1e-14` it may be
+mode-common dynamic limit is used at `tau=0`. Sector flow is scaled by
+`G_A Delta_p_ref`, while the branch uses
+`Q_hat_total=Q_total/(G_ref Delta_p_ref)=(1/N)sum_i(q_hat_i)`. For
+`|Q_hat_total|<=1e-14` it may be
 used only through `tau<=1e-6`. A mandatory companion changes only both branch
 thresholds by the frozen factor 10 (`1e-15` flow and `1e-7` time), and
 `u_startup(G)=|G_base-G_refined|` enters uncertainty once. The branch uses
@@ -172,9 +175,11 @@ The prescribed-static mode starts from its algebraic `p_b_hat=1` solution and
 has no zero-flow branch.
 
 Only `H_i` evolves; floors and placement do not. Scientific admissibility is
-strictly `0.25 < H_i/H_i0 < 4`; contact with either bound terminates as
-`STOP_RESISTANCE_EVOLUTION_MULTIPLIER_BOUND_CONTACT_NO_CLIPPING`. The exact
-root state may be reconstructed diagnostically, but may not classify. There is no clipping or aggregate
+the closed interval `0.25 <= H_i/H_i0 <= 4`. An outward crossing terminates as
+`STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUTWARD_CROSSING_NO_CLIPPING`; exact
+contact with inward or zero derivative continues. At an exact boundary an
+outward derivative stops immediately. The exact root state may be reconstructed
+diagnostically, but may not classify. There is no clipping or aggregate
 renormalization. `beta=0` and `Theta_R=INFINITE_NO_EVOLUTION` are exact fixed
 controls.
 
@@ -192,10 +197,10 @@ before every RHS call, including rejected trials; at `nfev>=200000` the next
 evaluation is refused. Partial output is diagnostic and scientifically
 inadmissible.
 
-Per-sector terminal events are `exp(beta*x_i)-0.25` and
+Per-sector outward-crossing events are `exp(beta*x_i)-0.25` and
 `4-exp(beta*x_i)`, each direction -1. Dense output locates roots to `1e-10`
 tau, independently of reporting samples. Earliest time wins; ties choose lower
-before upper, then ascending sector index. Boundary contact itself stops. A
+before upper, then ascending sector index. Tangential and inward contact do not stop. A
 located event in an accepted step precedes a later cap; a cap precedes an event
 that would require an unevaluated RHS. Nonfinite event functions stop. No
 stopped or capped trajectory reaches classification.
@@ -205,6 +210,14 @@ Linear residuals use `r=A p-b`,
 `s_i=max(|b_i|,sum_j |A_ij||p_j|,1e-14)`, and
 `max_i |r_i|/s_i <=1e-12`. Equality passes. Nonfinite values fail. No retry is allowed and all
 failure routing precedes scientific classification.
+
+`LINEAR_REFINED` uses the same validated `A,b` and deterministic binary64 dense
+Gaussian elimination with partial pivoting. From BASE `p0`, compute
+`r0=A p0-b`, solve `A delta_p=-r0` exactly once, and set `p1=p0+delta_p`.
+The corrected residual must be finite, no larger than the BASE residual, and
+`<=1e-12`. Static gains use independently corrected active/comparator states;
+dynamic `LINEAR_REFINED` is a complete companion trajectory applying this
+single correction at every algebraic solve. Failure makes the gain unresolved.
 
 ## Observables, uncertainty, and classification
 
@@ -221,7 +234,7 @@ For gain `G`, all uncertainty terms are nonnegative absolute gain units:
 ```text
 u_integrator=|G_base-G_refined|
 u_sector=|G_N-G_Nref| for frozen sector-refinement predicates (otherwise explicit N/A)
-u_linear=|A/B-A_corrected/B_corrected| from deterministic residual correction
+u_linear=|G_BASE-G_LINEAR_REFINED|
 u_sampling=|G_1001-G_2001| from one accepted dense output
 u_startup=|G_base_thresholds-G_refined_thresholds|
 u_G=sum of applicable terms
@@ -240,6 +253,22 @@ zero with nonzero uncertainty is unresolved. Equality `u_G<=u_limit` passes.
 Model-form disagreement is a separate transition reason, not scalar error.
 Denominator residual error is included exactly once in `u_linear`; denominator
 floor contact is a validity gate and is not an additive uncertainty component.
+Applicability is derived from validated rows and the enumerated metric kind,
+never supplied by a caller. A numeric value for an inapplicable component is
+artifact-invalid; an applicable `NOT_APPLICABLE` is artifact-invalid; applicable
+`UNAVAILABLE` is unresolved.
+
+## Numerical execution graph
+
+Dynamic rows have exactly `BASE`, `INTEGRATOR_REFINED`, `STARTUP_REFINED`, and
+`LINEAR_REFINED`; static rows have exactly `BASE` and `LINEAR_REFINED`. No
+combined profile exists. Thus 553 dynamic rows permit at most 2,212 trajectory
+invocations and 727 static rows permit at most 1,454 solves: 3,666 total solver
+cases. Keys are cached uniquely by `(case_id,numerical_profile)`. Sampling
+reconstructs 1,001 and 2,001 points from the same BASE dense output and adds no
+trajectory. Sector refinement reuses existing BASE rows and adds no case; all
+13 four-case bundles are complete. There are no hidden initial-condition runs,
+automatic retries, profile substitutions, or tolerance relaxations.
 
 Analytical identities are predicates—not caller assertions: Lambda zero,
 self-similar placement, or uniform unit-contrast symmetry. They are recorded

@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 394,
-  "total_uncompressed_bytes_excluding_manifest": 6222643,
-  "aggregate_source_sha256": "086fd40a2b850e58cd4d53001a1e2ede113bc0e97f7332ae0bcda6cec30f14c2",
-  "aggregate_sha256": "086fd40a2b850e58cd4d53001a1e2ede113bc0e97f7332ae0bcda6cec30f14c2",
+  "total_uncompressed_bytes_excluding_manifest": 6251396,
+  "aggregate_source_sha256": "15958c54acda648e0166283f90127bc32f214ece63bdd3be64f096f277de98fc",
+  "aggregate_sha256": "15958c54acda648e0166283f90127bc32f214ece63bdd3be64f096f277de98fc",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -459,13 +459,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/PROTOCOL.md": {
-      "sha256": "74caa5e62ea501eee41d5d2b50e8d20065dba20f911f046ecab21462a2086d7c",
-      "bytes": 14549,
+      "sha256": "658a83a37e5dd4953864386edcf74d7e21fd692600f7cd80e8352479e37e9c92",
+      "bytes": 16313,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/README.md": {
-      "sha256": "25df792c838e3c4570366f4967b1bf781f9502e2cfafc677e53d8654a3925838",
-      "bytes": 1016,
+      "sha256": "4f6d6fd0fab4abc229f262ca1662732c61168117be548aedde0e580dbc8bea79",
+      "bytes": 999,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1069,8 +1069,8 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_protocol.py": {
-      "sha256": "198871cf0760f18266ab18ba7cd365da0c8b5cd2e9212074fce768561513150f",
-      "bytes": 61435,
+      "sha256": "02031f6544d9efd1b0ef7c75b31302f719005ae689adf22a82f379d72bf07d25",
+      "bytes": 79300,
       "git_mode": "100755"
     },
     "scripts/sci_md_001.py": {
@@ -1399,8 +1399,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_protocol.py": {
-      "sha256": "951dca3927859b3e73af14fff62ceb1c119ac3d19a95618634e9b6924a240d9a",
-      "bytes": 27388,
+      "sha256": "ca44447217d1a3825eb56346cdbabae56f76e71ada3b247d1f2c05c7e86e64db",
+      "bytes": 36529,
       "git_mode": "100644"
     },
     "tests/test_sci_md_001.py": {

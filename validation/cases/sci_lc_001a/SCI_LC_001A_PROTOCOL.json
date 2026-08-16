@@ -14,13 +14,15 @@
     "cap_operator": "if nfev>=200000 before next evaluation: stop",
     "dynamic_p_b_hat": "min(tau/0.05,1)",
     "events": {
-      "boundary_contact_stops": true,
+      "boundary_contact_stops": false,
       "direction": "-1",
       "earliest": "minimum root time",
       "event_cap_order": "located event in accepted dense-output step precedes later cap; cap precedes unevaluated event",
+      "exact_boundary": "stop only when lower derivative<0 or upper multiplier derivative>0",
       "lower": "exp(beta*x_i)-0.25",
       "nonfinite": "STOP_NONFINITE_EVENT_FUNCTION",
       "root_time_tolerance": "1e-10 tau",
+      "tangential_or_inward_contact": "CONTINUE",
       "terminal": true,
       "tie_break": "LOWER_BOUND before UPPER_BOUND, then ascending sector index",
       "upper": "4-exp(beta*x_i)"
@@ -294,6 +296,8 @@
   "c1_tree": "2e35a5e245be9e266c747409f2420be9971963a6",
   "c2_reviewed_head": "cbbec20d29dcde7e4a1aa3b1fb14b986b8820180",
   "c2_reviewed_tree": "3cce042f161fc7bf3cd42cc679893db7c45f9743",
+  "c3_reviewed_head": "a33b85a752b3f27c675b7658aeefa18b1cbc987c",
+  "c3_reviewed_tree": "0ae277a266b05c499e5c1c91aca5a24fa6d42f0e",
   "canonical_ordering": "C0,S1,S2,S3,D1,D2,D3-EQ,D3-LOC then declared loop order",
   "change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
   "claim_boundary": {
@@ -344,9 +348,12 @@
     "maximum_D4": 0,
     "maximum_X1": 0,
     "maximum_dynamic_trajectories": 15000,
+    "maximum_dynamic_trajectory_invocations": 2212,
     "maximum_extraction_trajectories": 1000,
     "maximum_static_control_cases": 5000,
+    "maximum_static_solve_invocations": 1454,
     "maximum_total_adjudicative_cases": 20000,
+    "maximum_total_solver_cases": 3666,
     "memory_gib": 16,
     "nested_library_threads": 1,
     "prospective_maximum": 1280,
@@ -369,6 +376,64 @@
   },
   "evidence_mode": "PROSPECTIVE_REDUCED_MODEL_PROTOCOL_CORRECTION",
   "execution_authorized": false,
+  "field_authority": {
+    "G_A_identity": "DERIVED_EXECUTION_FIELD",
+    "G_ref_identity": "IDENTITY_PRIMITIVE",
+    "adaptive_group_id": "ROLE_OR_CONTROL_FIELD",
+    "arm": "IDENTITY_PRIMITIVE",
+    "axial_layer_count": "IDENTITY_PRIMITIVE",
+    "axial_placement": "IDENTITY_PRIMITIVE",
+    "boundary_profile": "DERIVED_EXECUTION_FIELD",
+    "case_id": "DERIVED_EXECUTION_FIELD",
+    "case_role": "ROLE_OR_CONTROL_FIELD",
+    "comparator_case_id": "ROLE_OR_CONTROL_FIELD",
+    "derived_Theta_L_m": "DERIVED_EXECUTION_FIELD",
+    "eligibility": "SCIENTIFIC_PRIMITIVE",
+    "epsilon_floor": "IDENTITY_PRIMITIVE",
+    "evolution_multiplier_bounds": "DERIVED_EXECUTION_FIELD",
+    "feedback_gain": "IDENTITY_PRIMITIVE",
+    "feedback_sign": "IDENTITY_PRIMITIVE",
+    "heterogeneity_mode": "IDENTITY_PRIMITIVE",
+    "heterogeneity_pattern": "IDENTITY_PRIMITIVE",
+    "heterogeneity_scale": "IDENTITY_PRIMITIVE",
+    "hydraulic_storage_C_h": "DERIVED_EXECUTION_FIELD",
+    "initial_condition_variant": "IDENTITY_PRIMITIVE",
+    "integration_profile": "DERIVED_EXECUTION_FIELD",
+    "lateral_conductance_ratio": "IDENTITY_PRIMITIVE",
+    "lateral_edge_coefficient": "DERIVED_EXECUTION_FIELD",
+    "lateral_edge_conductance_G_edge": "DERIVED_EXECUTION_FIELD",
+    "machine_compliance_C_u": "DERIVED_EXECUTION_FIELD",
+    "machine_reference_tuple": "DERIVED_EXECUTION_FIELD",
+    "machine_response_ratio": "IDENTITY_PRIMITIVE",
+    "model_form_requirement": "ROLE_OR_CONTROL_FIELD",
+    "model_variant": "IDENTITY_PRIMITIVE",
+    "no_evolution_comparator_case_id": "ROLE_OR_CONTROL_FIELD",
+    "numerical_resolution_role": "ROLE_OR_CONTROL_FIELD",
+    "parent_selection_rule": "SCIENTIFIC_PRIMITIVE",
+    "placement_alpha": "DERIVED_EXECUTION_FIELD",
+    "prescribed_comparator_case_id": "ROLE_OR_CONTROL_FIELD",
+    "prescribed_pressure_amplitude": "DERIVED_EXECUTION_FIELD",
+    "pressure_mode": "IDENTITY_PRIMITIVE",
+    "resistance_contrast": "IDENTITY_PRIMITIVE",
+    "resistance_evolution_law": "IDENTITY_PRIMITIVE",
+    "resistance_evolution_timescale_ratio": "IDENTITY_PRIMITIVE",
+    "resistance_relaxation_tau_R": "DERIVED_EXECUTION_FIELD",
+    "row_sha256": "DERIVED_EXECUTION_FIELD",
+    "scientific_role": "ROLE_OR_CONTROL_FIELD",
+    "sector_count": "IDENTITY_PRIMITIVE",
+    "shot_duration": "IDENTITY_PRIMITIVE",
+    "static_or_dynamic_classifier": "DERIVED_EXECUTION_FIELD",
+    "storage_ratio_S_h": "IDENTITY_PRIMITIVE",
+    "uncertainty_profile": "ROLE_OR_CONTROL_FIELD",
+    "units_or_dimensionless_status": "SCIENTIFIC_PRIMITIVE"
+  },
+  "field_authority_classes": [
+    "IDENTITY_PRIMITIVE",
+    "SCIENTIFIC_PRIMITIVE",
+    "DERIVED_EXECUTION_FIELD",
+    "ROLE_OR_CONTROL_FIELD",
+    "PROVENANCE_ONLY"
+  ],
   "future_3d_nomination_rules": {
     "separate_freeze_review_and_authorization_required": true,
     "stage_a_authorized": false,
@@ -446,6 +511,40 @@
     "nomination_gate": "SEPARATE_REVIEWED_MODEL_FORM_CHECK_REQUIRED_BEFORE_SCI_LC_001B_NOMINATION",
     "reason": "independent review found the prior placeholder non-executable"
   },
+  "numerical_execution_graph": {
+    "automatic_retries": 0,
+    "cache_key": "(case_id,numerical_profile)",
+    "combined_profiles_authorized": false,
+    "dynamic_matrix_rows": 553,
+    "dynamic_profiles": [
+      "BASE",
+      "INTEGRATOR_REFINED",
+      "STARTUP_REFINED",
+      "LINEAR_REFINED"
+    ],
+    "gain_components": {
+      "u_integrator": "abs(G_BASE-G_INTEGRATOR_REFINED)",
+      "u_linear": "abs(G_BASE-G_LINEAR_REFINED)",
+      "u_sampling": "abs(G_1001_FROM_BASE-G_2001_FROM_BASE)",
+      "u_sector": "abs(G_N_BASE-G_NREF_BASE)",
+      "u_startup": "abs(G_BASE-G_STARTUP_REFINED)"
+    },
+    "maximum_dynamic_trajectory_invocations": 2212,
+    "maximum_static_solve_invocations": 1454,
+    "maximum_total_solver_cases": 3666,
+    "sampling_additional_trajectories": 0,
+    "sector_additional_out_of_matrix_cases": 0,
+    "sector_bundle_audit": {
+      "all_complete": true,
+      "complete_four_case_bundles": 13,
+      "required_bundles": 13
+    },
+    "static_matrix_rows": 727,
+    "static_profiles": [
+      "BASE",
+      "LINEAR_REFINED"
+    ]
+  },
   "observables": [
     "H_q",
     "CV_q",
@@ -464,6 +563,18 @@
     "selected_extraction_diagnostics"
   ],
   "residual_contract": {
+    "LINEAR_REFINED": {
+      "algorithm": "binary64 dense Gaussian elimination; deterministic partial pivot; ascending elimination",
+      "api": "sci_lc_001a_protocol.dense_solve_binary64",
+      "dynamic_application": "separate complete trajectory; correction at every algebraic solve",
+      "failure": "NUMERICALLY_UNRESOLVED;NO_RETRY_OR_SUBSTITUTION",
+      "steps": [
+        "r0=A*p0-b",
+        "solve A*delta_p=-r0 exactly once",
+        "p1=p0+delta_p",
+        "require residual1<=residual0 and residual1<=1e-12"
+      ]
+    },
     "failure_route": "BEFORE_SCIENTIFIC_CLASSIFIER",
     "linear": {
       "norm": "max_i(abs(r_i)/s_i)",
@@ -499,7 +610,14 @@
   },
   "resistance_evolution": {
     "aggregate_renormalization": "NONE",
-    "boundary_contact_disposition": "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_BOUND_CONTACT_NO_CLIPPING",
+    "allowed_active_Theta_R": [
+      "0.03",
+      "0.1",
+      "0.3",
+      "1",
+      "3",
+      "10"
+    ],
     "diagnostic_reconstruction_at_contact": true,
     "equations": [
       "Theta_R*dx_i/dtau=s*(F_i-1)-x_i",
@@ -514,20 +632,41 @@
       "NONE": 0.0
     },
     "initial_x_i": "0",
-    "multiplier_admissible_interval": "0.25 < H_i/H_i0 < 4.0",
+    "multiplier_admissible_interval": "0.25 <= H_i/H_i0 <= 4.0",
     "name": "SIGNED_LOCAL_FLOW_TO_RESISTANCE_FEEDBACK_SURROGATE",
     "no_evolution": [
       "beta=0",
       "Theta_R=INFINITE_NO_EVOLUTION"
     ],
+    "no_evolution_variants": {
+      "NO_EVOLUTION_BETA_ZERO": [
+        "NO_EVOLUTION",
+        "NONE",
+        "0",
+        "NOT_APPLICABLE",
+        "NOT_APPLICABLE",
+        "NOT_APPLICABLE"
+      ],
+      "NO_EVOLUTION_INFINITE_RELAXATION": [
+        "NO_EVOLUTION",
+        "NONE",
+        "0",
+        "INFINITE_NO_EVOLUTION",
+        "INFINITE_NO_EVOLUTION",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "outward_crossing_disposition": "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUTWARD_CROSSING_NO_CLIPPING",
     "sign_interpretation": {
       "EQUALIZING": "F_i>1 increases x_i,H_i,total resistance and suppresses high flow",
       "LOCALIZING": "F_i>1 decreases x_i,H_i,total resistance and reinforces high flow",
       "placement": "changes split but not sign of total resistance response"
     },
+    "stop_rule": "outward crossing only; exact inward or tangential contact is admissible",
     "zero_flow_startup": {
+      "Q_hat_total": "Q_total/(G_ref*Delta_p_ref)=(1/N)*sum_i q_hat_i",
       "below_threshold": "use same branch and require threshold-refinement uncertainty",
-      "branch_operators": "abs(Q_hat)<=q_threshold and tau<=startup_tau_max",
+      "branch_operators": "abs(Q_hat_total)<=q_threshold and tau<=startup_tau_max",
       "companion": "same case; only both startup thresholds divided by 10",
       "dynamic_limit": "F_i=N*(G_u_i*G_d_i/C_h_i)/sum_j(G_u_j*G_d_j/C_h_j)",
       "exact_zero": "use analytical limit only within startup window",
@@ -592,7 +731,7 @@
       "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
     }
   },
-  "status": "PROSPECTIVE_PROTOCOL_C3_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW",
+  "status": "PROSPECTIVE_PROTOCOL_C4_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
       "authority/hash/review mismatch",
@@ -638,13 +777,38 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-C3-FINAL-PROSPECTIVE-CONTRACT-CLOSURE-2026-08-16",
+  "task_id": "SCI-LC-001A-C4-DETERMINISTIC-EXECUTOR-CONTRACT-CLOSURE-2026-08-16",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
+    "applicability_authority": "uncertainty_applicability(validated active,comparator,evaluation,metric,status)",
+    "applicability_table": {
+      "DYNAMIC_ENDPOINT_GAIN": [
+        "APPLICABLE",
+        "SECTOR_PREDICATE",
+        "APPLICABLE",
+        "NOT_APPLICABLE",
+        "APPLICABLE"
+      ],
+      "DYNAMIC_INTEGRATED_GAIN": [
+        "APPLICABLE",
+        "SECTOR_PREDICATE",
+        "APPLICABLE",
+        "APPLICABLE",
+        "APPLICABLE"
+      ],
+      "STATIC_GAIN": [
+        "NOT_APPLICABLE",
+        "SECTOR_PREDICATE",
+        "APPLICABLE",
+        "NOT_APPLICABLE",
+        "NOT_APPLICABLE"
+      ],
+      "STRUCTURAL_NUMERICAL_CONTROL": "mode-specific; never regime-classified"
+    },
     "combination": "u_G=u_integrator+u_sector+u_linear+u_sampling+u_startup",
     "components": {
       "u_integrator": "abs(G_base-G_refined) from required DOP853 companion",
-      "u_linear": "abs(A/B-A_corrected/B_corrected) from deterministic residual correction",
+      "u_linear": "abs(G_BASE-G_LINEAR_REFINED)",
       "u_sampling": "abs(G_1001-G_2001) reconstructed from the same accepted dense output",
       "u_sector": "abs(G_N-G_Nref); applies only to SECTOR_REFINEMENT 4->8 or 8->16 and NYQUIST 8->16",
       "u_startup": "abs(G_base_startup_thresholds-G_refined_startup_thresholds)"

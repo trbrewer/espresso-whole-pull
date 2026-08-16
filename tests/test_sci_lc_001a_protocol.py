@@ -206,7 +206,8 @@ class SciLc001aProtocolTests(unittest.TestCase):
             state = mod.evolved_resistance_primitives(base, [math.log(value)] * 8, 1,
                                                        "UPSTREAM_LOCALIZED")
             self.assertEqual(state["multipliers"][0], value)
-            self.assertEqual(mod.multiplier_admissibility(state["multipliers"]), mod.MULTIPLIER_STOP)
+            self.assertEqual(mod.multiplier_admissibility(state["multipliers"]),
+                             "SCIENTIFICALLY_ADMISSIBLE")
         self.assertEqual(mod.multiplier_admissibility([.2500001, 3.999999]),
                          "SCIENTIFICALLY_ADMISSIBLE")
         self.assertEqual(mod.multiplier_admissibility([float("nan")]),
@@ -228,6 +229,27 @@ class SciLc001aProtocolTests(unittest.TestCase):
         mod.validate_feedback_contract(fixed)
         with self.assertRaises(ValueError):
             mod.validate_feedback_contract(dict(fixed, feedback_sign="EQUALIZING"))
+
+    def test_active_timescale_and_no_evolution_contract(self):
+        active = copy.deepcopy(next(r for r in self.rows if r["arm"] == "D3-EQ"))
+        for theta in mod.THETA_R:
+            mod.validate_feedback_contract(dict(active,
+                resistance_evolution_timescale_ratio=theta, resistance_relaxation_tau_R=theta))
+        for theta in ("0.2", "0", "-1", "NaN", "Infinity", "BAD", mod.NA):
+            with self.subTest(theta=theta), self.assertRaises(ValueError):
+                mod.validate_feedback_contract(dict(active,
+                    resistance_evolution_timescale_ratio=theta, resistance_relaxation_tau_R=theta))
+        for mutation in ({"resistance_relaxation_tau_R": "3"},
+                         {"evolution_multiplier_bounds": "[0,4]"},
+                         {"feedback_gain": "0"}, {"feedback_sign": "NONE"}):
+            with self.assertRaises(ValueError):
+                mod.validate_feedback_contract(dict(active, **mutation))
+        variants = [r for r in self.rows if r["resistance_evolution_law"] == "NO_EVOLUTION"]
+        for variant in variants:
+            mod.validate_feedback_contract(variant)
+        infinite = next(r for r in variants if r["resistance_evolution_timescale_ratio"] == "INFINITE_NO_EVOLUTION")
+        with self.assertRaises(ValueError):
+            mod.validate_feedback_contract(dict(infinite, resistance_relaxation_tau_R=mod.NA))
 
     def test_boundary_initial_and_integration_are_exactly_serialized(self):
         b = self.protocol["boundary_initial_integration"]
@@ -379,27 +401,67 @@ class SciLc001aProtocolTests(unittest.TestCase):
 
     def test_residual_and_uncertainty_contracts(self):
         self.assertEqual(mod.scaled_residual_norm([1e-12], [1.0]), 1e-12)
-        self.assertAlmostEqual(mod.residual_corrected_gain_uncertainty(
-            2, 4, corrected_numerator=2.1, corrected_denominator=4.2), 0)
-        components = {name: .001 for name in mod.UNCERTAINTY_COMPONENTS}
-        applicable = {name: True for name in mod.UNCERTAINTY_COMPONENTS}
-        self.assertAlmostEqual(mod.combine_uncertainty(components, applicable=applicable), .005)
-        allowed_na = dict(components, u_sector=mod.NA)
-        self.assertAlmostEqual(mod.combine_uncertainty(allowed_na,
-            applicable=dict(applicable, u_sector=False)), .004)
+        active = next(r for r in self.rows if r["pressure_mode"] == "PRESCRIBED_STATIC" and
+                      r["case_role"] == "ACTIVE_SCIENTIFIC_CASE" and
+                      r["numerical_resolution_role"] == "PRIMARY")
+        comparator = {r["case_id"]: r for r in self.rows}[active["comparator_case_id"]]
+        components = {"u_integrator": mod.NA, "u_sector": mod.NA, "u_linear": .001,
+                      "u_sampling": mod.NA, "u_startup": mod.NA}
+        self.assertAlmostEqual(mod.combine_uncertainty(components, active_row=active,
+            comparator_row=comparator, evaluation_kind="GAIN", metric_kind="STATIC_GAIN"), .001)
+        numeric_inapplicable = dict(components, u_integrator=.001)
+        with self.assertRaisesRegex(ValueError, "INAPPLICABLE"):
+            mod.combine_uncertainty(numeric_inapplicable, active_row=active,
+                comparator_row=comparator, evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
+        required_na = dict(components, u_linear=mod.NA)
         with self.assertRaisesRegex(ValueError, "NOT_APPLICABLE_REQUIRED"):
-            mod.combine_uncertainty(allowed_na, applicable=applicable)
+            mod.combine_uncertainty(required_na, active_row=active, comparator_row=comparator,
+                evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
         with self.assertRaisesRegex(ValueError, "NUMERICALLY_UNRESOLVED"):
-            mod.combine_uncertainty(dict(components, u_sector="UNAVAILABLE"), applicable=applicable)
+            mod.combine_uncertainty(dict(components, u_linear="UNAVAILABLE"), active_row=active,
+                comparator_row=comparator, evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
         for bad in (-1, float("nan"), "BAD"):
             with self.assertRaisesRegex(ValueError, "INVALID_UNCERTAINTY"):
-                mod.combine_uncertainty(dict(components, u_linear=bad), applicable=applicable)
+                mod.combine_uncertainty(dict(components, u_linear=bad), active_row=active,
+                    comparator_row=comparator, evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
         self.assertEqual(mod.uncertainty_limit(0), 0)
         self.assertEqual(mod.uncertainty_limit(1e-12), 2e-14)
         with self.assertRaisesRegex(ValueError, "DENOMINATOR_FLOOR"):
-            mod.residual_corrected_gain_uncertainty(1, 1e-13,
-                corrected_numerator=1, corrected_denominator=1e-13)
+            mod.gain_profile_uncertainty(1, 1, denominator=1e-13)
         self.assertNotIn("u_denominator", self.protocol["uncertainty"]["components"])
+        dynamic = next(r for r in self.rows if r["pressure_mode"] == "PRESCRIBED_DYNAMIC_RAMP" and
+                       r["case_role"] == "ACTIVE_SCIENTIFIC_CASE")
+        dynamic_comparator = {r["case_id"]: r for r in self.rows}[dynamic["comparator_case_id"]]
+        expected = {
+            "STATIC_GAIN": (False, False, True, False, False),
+            "DYNAMIC_ENDPOINT_GAIN": (True, False, True, False, True),
+            "DYNAMIC_INTEGRATED_GAIN": (True, False, True, True, True),
+        }
+        for kind, flags in expected.items():
+            row, partner = (active, comparator) if kind == "STATIC_GAIN" else (dynamic, dynamic_comparator)
+            observed = mod.uncertainty_applicability(row, partner, "GAIN", kind, "COMPLETE")
+            self.assertEqual(tuple(observed[name] for name in mod.UNCERTAINTY_COMPONENTS), flags)
+        for broken in (dict(components, u_linear=True),
+                       {key: value for key, value in components.items() if key != "u_linear"},
+                       dict(components, unexpected=0)):
+            with self.assertRaisesRegex(ValueError, "INVALID_UNCERTAINTY|COMPONENT_SET"):
+                mod.combine_uncertainty(broken, active_row=active, comparator_row=comparator,
+                    evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
+
+    def test_linear_refinement_is_one_deterministic_correction(self):
+        matrix = [[4.0, 1.0], [1.0, 3.0]]; rhs = [1.0, 2.0]
+        result = mod.linear_refined_state(matrix, rhs, [0.09, 0.63])
+        self.assertEqual(result["correction_steps"], 1)
+        self.assertLessEqual(result["corrected_residual_norm"], result["base_residual_norm"])
+        self.assertLessEqual(result["corrected_residual_norm"], 1e-12)
+        self.assertTrue(close_sequence(result["state"], [1/11, 7/11], tol=2e-15))
+        with self.assertRaisesRegex(ValueError, "SINGULAR"):
+            mod.linear_refined_state([[1., 1.], [2., 2.]], [1., 2.], [0., 0.])
+        with self.assertRaisesRegex(ValueError, "NONFINITE"):
+            mod.linear_refined_state([[float("nan")]], [1.], [0.])
+        self.assertAlmostEqual(mod.gain_profile_uncertainty(1.0, .99), .01)
+        with self.assertRaisesRegex(ValueError, "UNRESOLVED"):
+            mod.gain_profile_uncertainty(1, 1, refined_status="STOPPED")
 
     def test_startup_refinement_boundaries_and_routing(self):
         startup = [1.0] * 8
@@ -408,11 +470,11 @@ class SciLc001aProtocolTests(unittest.TestCase):
         self.assertEqual(mod.evolution_focusing(tau=mod.STARTUP_TAU_MAX,
             flows=[q / 8] * 8, startup=startup), startup)
         above = mod.evolution_focusing(tau=mod.STARTUP_TAU_MAX + 1e-12,
-            flows=[2 * q / 8] * 8, startup=startup)
+            flows=[2 * q] * 8, startup=startup)
         self.assertEqual(above, startup)
         with self.assertRaisesRegex(ValueError, "OUTSIDE_STARTUP"):
             mod.evolution_focusing(tau=mod.STARTUP_TAU_MAX + 1e-12,
-                flows=[q / 8] * 8, startup=startup)
+                flows=[q] * 8, startup=startup)
         self.assertAlmostEqual(mod.startup_uncertainty(1, .99), .01)
         for status in ("UNAVAILABLE", "STOPPED", "CAPPED"):
             with self.assertRaisesRegex(ValueError, "NUMERICALLY_UNRESOLVED"):
@@ -430,6 +492,74 @@ class SciLc001aProtocolTests(unittest.TestCase):
         residual = self.protocol["residual_contract"]
         self.assertEqual(residual["stage_a_nonlinear_fixed_point_solve"], "NOT_USED")
         self.assertNotIn("nonlinear", residual)
+        self.assertEqual(mod.sector_bundle_audit(self.rows), {
+            "required_bundles": 13, "complete_four_case_bundles": 13, "all_complete": True})
+
+    def test_exhaustive_row_authority_rejects_rehashed_corruption(self):
+        canonical = {r["case_id"]: r for r in self.rows}
+        self.assertEqual(set(mod.FIELD_AUTHORITY), set(mod.FIELDS))
+        self.assertNotIn(None, mod.FIELD_AUTHORITY.values())
+        samples = {
+            "placement_alpha": "0.25", "G_A_identity": "BAD", "lateral_edge_coefficient": "9",
+            "lateral_edge_conductance_G_edge": "9", "hydraulic_storage_C_h": "9",
+            "derived_Theta_L_m": "9", "machine_compliance_C_u": "9",
+            "resistance_relaxation_tau_R": "9", "evolution_multiplier_bounds": "[0,9]",
+            "static_or_dynamic_classifier": "BAD", "integration_profile": "BAD",
+            "boundary_profile": "BAD", "machine_reference_tuple": "BAD",
+            "numerical_resolution_role": "BAD",
+        }
+        candidates = {
+            "machine_compliance_C_u": next(r for r in self.rows if r["pressure_mode"] == "MACHINE_COUPLED"),
+            "resistance_relaxation_tau_R": next(r for r in self.rows if r["arm"] == "D3-EQ"),
+            "evolution_multiplier_bounds": next(r for r in self.rows if r["arm"] == "D3-EQ"),
+        }
+        default = next(r for r in self.rows if r["pressure_mode"] == "PRESCRIBED_DYNAMIC_RAMP")
+        for field, value in samples.items():
+            broken = copy.deepcopy(candidates.get(field, default)); broken[field] = value
+            broken["row_sha256"] = mod.digest({k: broken[k] for k in mod.FIELDS if k != "row_sha256"})
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                mod.validate_row_against_expected_fields(broken, canonical)
+        coordinated = copy.deepcopy(default)
+        coordinated["lateral_conductance_ratio"] = "3"
+        coordinated["lateral_edge_coefficient"] = mod.edge_coefficient(
+            coordinated["sector_count"], coordinated["lateral_conductance_ratio"])
+        coordinated["lateral_edge_conductance_G_edge"] = format(
+            float(mod.d("3")) * (1 / coordinated["sector_count"]) *
+            (coordinated["sector_count"] / (2 * math.pi)) ** 2, ".17g")
+        identity = {k: coordinated[k] for k in mod.IDENTITY_FIELDS if k != "case_id"}
+        coordinated["case_id"] = f"SCI-LC-001A.{mod.token(coordinated['arm'])}.{mod.digest(identity)[:24]}"
+        coordinated["row_sha256"] = mod.digest({k: coordinated[k] for k in mod.FIELDS if k != "row_sha256"})
+        with self.assertRaisesRegex(ValueError, "FROZEN_STAGE_A_UNIVERSE"):
+            mod.validate_row_against_expected_fields(coordinated, canonical)
+        unknown = dict(default, unexpected_field="x")
+        with self.assertRaisesRegex(ValueError, "UNKNOWN_OR_UNCLASSIFIED"):
+            mod.validate_row_against_expected_fields(unknown, canonical)
+
+    def test_total_q_hat_and_execution_graph(self):
+        self.assertEqual(mod.total_q_hat([2.0] * 4, sector_count=4, g_ref=1, delta_p_ref=1), 2.0)
+        self.assertEqual(mod.total_q_hat([2.0] * 16, sector_count=16, g_ref=1, delta_p_ref=1), 2.0)
+        for bad in (0, -1):
+            with self.assertRaises(ValueError):
+                mod.total_q_hat([], sector_count=bad, g_ref=1, delta_p_ref=1)
+        graph = mod.execution_graph(self.rows)
+        self.assertEqual((graph["dynamic_matrix_rows"], graph["static_matrix_rows"]), (553, 727))
+        self.assertEqual((graph["maximum_dynamic_trajectory_invocations"],
+                          graph["maximum_static_solve_invocations"],
+                          graph["maximum_total_solver_cases"]), (2212, 1454, 3666))
+        self.assertEqual(len(graph["keys"]), len(set(graph["keys"])))
+        self.assertFalse(graph["combined_profiles_authorized"])
+        self.assertEqual(graph["sampling_additional_trajectories"], 0)
+        self.assertEqual(graph["sector_additional_out_of_matrix_cases"], 0)
+
+    def test_multiplier_closed_interval_and_outward_crossing(self):
+        self.assertEqual(mod.multiplier_admissibility([.25], [0]), "SCIENTIFICALLY_ADMISSIBLE")
+        self.assertEqual(mod.multiplier_admissibility([.25], [1]), "SCIENTIFICALLY_ADMISSIBLE")
+        self.assertEqual(mod.multiplier_admissibility([.25], [-1]), mod.MULTIPLIER_STOP)
+        self.assertEqual(mod.multiplier_admissibility([4], [0]), "SCIENTIFICALLY_ADMISSIBLE")
+        self.assertEqual(mod.multiplier_admissibility([4], [-1]), "SCIENTIFICALLY_ADMISSIBLE")
+        self.assertEqual(mod.multiplier_admissibility([4], [1]), mod.MULTIPLIER_STOP)
+        self.assertEqual(mod.multiplier_admissibility([.249999]), mod.MULTIPLIER_STOP)
+        self.assertEqual(mod.multiplier_admissibility([4.000001]), mod.MULTIPLIER_STOP)
 
     def test_structural_roles_and_comparator_reconciliation(self):
         ids = {row["case_id"]: row for row in self.rows}
