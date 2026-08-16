@@ -1,165 +1,83 @@
-import csv
-import hashlib
-import importlib.util
-import json
-import math
-import os
-import pathlib
-import sys
-import tempfile
-import unittest
+import copy, hashlib, importlib.util, json, math, pathlib, sys, tempfile, unittest
+ROOT=pathlib.Path(__file__).resolve().parents[1];SPEC=importlib.util.spec_from_file_location("md2b",ROOT/"scripts/sci_md_002b.py");md=importlib.util.module_from_spec(SPEC);sys.modules[SPEC.name]=md;SPEC.loader.exec_module(md)
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-SPEC = importlib.util.spec_from_file_location("md2b", ROOT / "scripts/sci_md_002b.py")
-md = importlib.util.module_from_spec(SPEC)
-sys.modules[SPEC.name] = md
-SPEC.loader.exec_module(md)
+class CorrectedPackage(unittest.TestCase):
+ def test_histories_full_and_terminal(self):
+  h=md.load_histories();self.assertEqual({p:len(h[p]) for p in md.PRESSURES},{5:999,9:999,11:999})
+  for p in md.PRESSURES:self.assertAlmostEqual(h[p][-1]["pressure_pa"],md.TERMINAL_PRESSURES[p],7);self.assertEqual(h[p][-1]["source_time_s"],99.8999)
+ def test_constant_pressure_closed_form(self):
+  rows=md.nominal_rows(9,10);I=md.cumulative_integral(rows)[-1];k=2e-15
+  self.assertAlmostEqual(md.front_from_integral(I,k),math.sqrt(2*k*(9e5+md.PCAP)*10/(md.MU*md.PHI_WET)),14)
+ def test_numerical_history_integral_and_inverse(self):
+  rows=[{"source_time_s":0.,"pressure_pa":1.},{"source_time_s":2.,"pressure_pa":3.}]
+  I=md.cumulative_integral(rows,pcap=0);self.assertEqual(I,[0.,4.]);self.assertAlmostEqual(md.invert_integral(rows,I,1.5,pcap=0),1.)
+ def test_overlay_hash_and_mutation_fail_closed(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=pathlib.Path(d)/"o.json";p.write_bytes(md.OVERLAY.read_bytes())
+   with self.assertRaises(ValueError):md.load_histories(p,"0"*64)
+   x=json.loads(p.read_text());x["overlays"]["R1-WASZ-5-DARCY-STATIC-MEASURED"][4][0]=999;p.write_text(json.dumps(x))
+   with self.assertRaises(ValueError):md.load_histories(p,md.sha(p))
+ def test_phi_wet_epsilon_separate(self):
+  self.assertNotEqual(md.PHI_WET,md.EPSILON_B0);p=md.protocol()["porosities"]
+  self.assertIn("NOT_EWP_SOURCE_MEASUREMENT",p["phi_wet"]["provenance"]);self.assertIn("NOT_EWP_SOURCE_MEASUREMENT",p["epsilon_b0"]["provenance"])
+  rows=md.load_histories()[9];k=md.hydraulic_anchor();self.assertNotEqual(md.wetting_times(rows,k,4,.2),md.wetting_times(rows,k,4,.3))
+ def test_volume_bookkeeping_independent(self):
+  F,dr,ac=1.05,1.02,.5;s=md.state(F,dr,ac,.001);bulk=md.AREA*.001*(1+ac*(F-1));solid=(1-md.EPSILON_B0)*md.AREA*.001*F
+  self.assertAlmostEqual(s["bulk_volume_m3"],bulk);self.assertAlmostEqual(s["swollen_solid_volume_m3"],solid);self.assertAlmostEqual(s["pore_volume_m3"],bulk-solid);self.assertAlmostEqual(s["porosity"],(bulk-solid)/bulk)
+ def test_nonzero_storage_and_one_way_status(self):
+  row=next(x for x in md.matrix_rows() if x["case_id"]==md.PILOT_IDS[5]);r=md.simulate(row)
+  self.assertGreater(r["terminal_swelling_storage_m3"],0);self.assertEqual(r["liquid_feedback_status"],"ONE_WAY_LIQUID_FEEDBACK_NOT_CLOSED_BY_DESIGN");self.assertEqual(r["whole_liquid_conservation"],"NOT_CLAIMED_ONE_WAY_FEEDBACK_UNCLOSED")
+ def test_temporal_complete_deterministic(self):
+  row=next(x for x in md.matrix_rows() if x["case_id"]=="C0-SOURCE-P5-NOSWELL");a=md.simulate(row);b=md.simulate(row);self.assertEqual(md.canonical(a),md.canonical(b));self.assertEqual(len(a["temporal"]),999)
+  self.assertTrue(set(md.protocol()["temporal_output"]["fields"])<=set(a["temporal"][0]))
+ def test_no_inactive_axes(self):
+  rows=md.matrix_rows();a=next(x for x in rows if x["case_id"]==md.PILOT_IDS[3]);b=next(x for x in rows if x["case_id"]==md.PILOT_IDS[4]);ra=md.simulate(a);rb=md.simulate(b);self.assertNotEqual(ra["terminal_resistance_ratio"],rb["terminal_resistance_ratio"]);self.assertNotIn("dt_s",a)
+ def test_matrix_exact_refinement_coverage(self):
+  rows=md.matrix_rows();ids={x["case_id"] for x in rows};self.assertEqual(len(rows),456);self.assertLessEqual(len(rows),2500)
+  for x in rows:
+   if x["arm"]=="S1":self.assertIn(x["numerical_companion_id"],ids);self.assertIn(x["control_id"],ids);self.assertEqual(len(x["cross_pressure_peer_ids"]),2);self.assertTrue(x["assumption_peer_ids"])
+ def test_margin_classes(self):
+  self.assertEqual(md.margin_class(2,1,.1,.1),"PASS");self.assertEqual(md.margin_class(-1,1,.1,.1),"REJECTED");self.assertEqual(md.margin_class(.05,1,.1,.1),"NUMERICALLY_UNRESOLVED")
+ def test_resistance_temporal_assumption_gate_order(self):
+  g=md.protocol()["gates"];self.assertLess(g.index("RESISTANCE_DIRECTION"),g.index("PRESSURE_ORDERING"));self.assertLess(g.index("TEMPORAL_SIGNATURE"),g.index("ASSUMPTION_DEPENDENCE"));self.assertEqual(g[-1],"AGGREGATE_COMPARISON")
+ def test_s2_block(self):
+  x=next(x for x in md.matrix_rows() if x["arm"]=="S2");self.assertEqual(md.simulate(x)["stop_reason"],"SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED")
+ def authority(self,path,ids,**changes):
+  a=md.expected_authority(ids,path);a.update(owner_role="HUMAN_REPOSITORY_OWNER",authorization_date="2099-01-01T00:00:00Z");a.update(changes);p=path/"authority.json";p.write_text(md.canonical(a));return p
+ def test_valid_authority_and_stale_broadened_rejection(self):
+  with tempfile.TemporaryDirectory(prefix="SCI_MD_002B_") as d:
+   b=pathlib.Path(d);cid=next(x["case_id"] for x in md.matrix_rows() if x["arm"]=="S1");p=self.authority(b,[cid]);self.assertEqual(md.validate_authority(p,b)[0]["authorized_row_ids"],[cid])
+   q=self.authority(b,[cid],source_head="0"*40);self.assertRaises(PermissionError,md.validate_authority,q,b)
+   q=self.authority(b,[md.PILOT_IDS[0]]);self.assertRaises(PermissionError,md.validate_authority,q,b)
+ def test_authorized_row_restriction_and_no_authority(self):
+  with tempfile.TemporaryDirectory(prefix="SCI_MD_002B_") as d:
+   b=pathlib.Path(d);cid=next(x["case_id"] for x in md.matrix_rows() if x["arm"]=="S1");p=self.authority(b,[cid]);m=md.execute_authorized(b,p);self.assertEqual(m["authorized_row_ids"],[cid])
+  with self.assertRaises(PermissionError):md.execute_adjudicative("/tmp/SCI_MD_002B_none",None)
+ def test_immutable_and_exact_resume(self):
+  with tempfile.TemporaryDirectory(prefix="SCI_MD_002B_") as d:
+   b=pathlib.Path(d);rec={"case_id":"X","authority_sha256":"A"};md.atomic_record(b,"X",rec)
+   with self.assertRaises(FileExistsError):md.atomic_record(b,"X",rec)
+   self.assertEqual(md.atomic_record(b,"X",rec,True)[1],"EXACT_RESUME_VERIFIED")
+   bad={"case_id":"X","authority_sha256":"B"};self.assertRaises(FileExistsError,md.atomic_record,b,"X",bad,True)
+ def synthetic_bundle(self,kind):
+  td=tempfile.TemporaryDirectory(prefix="SCI_MD_002B_");b=pathlib.Path(td.name);rows=md.matrix_rows();selected=[x for x in rows if x["arm"]=="C0"]
+  selected += [x for x in rows if x["arm"]=="S1" and x["powder"]=="E" and x["D_multiplier"]==.5 and x["cmax"]==.05 and x["accommodation"]==0]
+  ids=[x["case_id"] for x in selected];ap=self.authority(b,ids);ah=md.sha(ap)
+  for x in selected:
+   p=int(x["pressure_condition"].split("P")[1]);control=x["arm"]=="C0";q={5:3.,9:2.,11:1.}[p] if kind in ("pass","unresolved") else {5:1.,9:2.,11:3.}[p]
+   if kind=="unresolved" and x["resolution"]=="REFINED":q={5:2.,9:2.,11:1.}[p]
+   result={"status":"COMPLETE","terminal_outlet_flow_kg_s":q,"terminal_resistance_ratio":1. if control else 2.,"terminal_swelling_storage_m3":0. if control else 1e-9,"resistance_growth_onset_s":None if control else 1.,"liquid_feedback_status":"ONE_WAY_LIQUID_FEEDBACK_NOT_CLOSED_BY_DESIGN"}
+   status="PHYSICAL_INVALID" if kind=="early" and x["case_id"]==ids[-1] else "COMPLETE";rec={"schema_version":md.RECORD_SCHEMA,"task_id":md.TASK,"lane_id":md.LANE_ID,"case_id":x["case_id"],"source_head":md.git("rev-parse","HEAD"),"source_tree":md.git("rev-parse","HEAD^{tree}"),"authority_sha256":ah,"execution_status":status,"result":result};md.atomic_record(b/"case_records",x["case_id"],rec)
+  md.manifest(b,ah,ids);return td,b,ap
+ def test_synthetic_reducer_pass_wrong_unresolved_early(self):
+  expected={"pass":"SCI_MD_002B_CAPABILITY_DEPENDS_ON_FIXED_HEIGHT_EXTREME","wrong":"SCI_MD_002B_REJECTED_WRONG_PRESSURE_ORDERING","unresolved":"SCI_MD_002B_PRESSURE_ORDERING_NUMERICALLY_UNRESOLVED","early":"SCI_MD_002B_NUMERICAL_EXECUTION_INVALID"}
+  for kind,disp in expected.items():
+   td,b,a=self.synthetic_bundle(kind)
+   try:self.assertEqual(md.reduce_bundle(b,a)["disposition"],disp)
+   finally:td.cleanup()
+ def test_lane_and_dependency_boundaries(self):
+  src=pathlib.Path(md.__file__).read_text().lower();self.assertNotIn("import sci_lc",src);d=json.loads(md.LANE.read_text());self.assertFalse(any("sci_lc" in x for x in d["owned_paths"]));self.assertNotIn("solver/**",d["owned_paths"])
+ def test_no_absolute_paths(self):
+  for p in (md.LANE,md.OUT/"SCI_MD_002B_PROTOCOL.json",md.OUT/"SCI_MD_002B_CASE_MATRIX.json"):self.assertNotIn("/home/",p.read_text())
 
-
-class SciMd002BTests(unittest.TestCase):
-    def test_lane_charter_agreement_and_paths(self):
-        d = json.loads(md.LANE.read_text())
-        charter = (md.LANE.parent / "DECISION_AND_PARALLEL_LANE_CHARTER.md").read_text()
-        self.assertEqual(d["lane_id"], "EWP-PAR-SCI-MD-002B")
-        self.assertIn("scripts/sci_md_002b.py", d["owned_paths"])
-        self.assertIn("solver/**", d["forbidden_paths"])
-        self.assertIn(d["branch"], charter)
-
-    def test_no_sci_lc_import_or_owned_path(self):
-        src = pathlib.Path(md.__file__).read_text().lower()
-        self.assertNotIn("import sci_lc", src)
-        d = json.loads(md.LANE.read_text())
-        self.assertFalse(any("sci_lc" in x for x in d["owned_paths"]))
-
-    def test_deterministic_matrix_and_exact_count(self):
-        a, b = md.matrix_rows(), md.matrix_rows()
-        self.assertEqual(md.canonical(a), md.canonical(b))
-        self.assertEqual(len(a), 243)
-        self.assertLessEqual(len(a), 2500)
-        self.assertEqual(len({r["case_id"] for r in a}), len(a))
-
-    def test_protocol_and_matrix_hash(self):
-        p = json.loads((md.OUT / "SCI_MD_002B_PROTOCOL.json").read_text())
-        self.assertEqual(p["matrix_sha256"], md.sha(md.OUT / "SCI_MD_002B_CASE_MATRIX.json"))
-        self.assertEqual(p["budget"]["row_count"], 243)
-
-    def test_csv_json_agreement(self):
-        j = json.loads((md.OUT / "SCI_MD_002B_CASE_MATRIX.json").read_text())
-        with (md.OUT / "SCI_MD_002B_CASE_MATRIX.csv").open(newline="") as f:
-            c = list(csv.DictReader(f))
-        self.assertEqual(len(c), j["row_count"])
-        self.assertEqual([x["case_id"] for x in c], [x["case_id"] for x in j["rows"]])
-
-    def test_comparators_and_provenance_complete(self):
-        rows = md.matrix_rows(); ids = {r["case_id"] for r in rows}
-        allowed = set(md.protocol()["provenance_classes"])
-        for r in rows:
-            self.assertTrue(set(r["comparator_ids"]) <= ids)
-            self.assertIn(r["evidence_role"], allowed)
-
-    def test_foster_closed_form_and_zero_capillary_limit(self):
-        k, p, t = 2e-15, 5e5, 2.3
-        s = md.foster_front(t, p, k, pcap=0)
-        self.assertAlmostEqual(s*s, 2*k*p*t/(md.MU*md.PHI0), places=18)
-        tw = md.foster_wetting_times(p, k, 8)
-        self.assertTrue(all(tw[i] < tw[i+1] for i in range(7)))
-
-    def test_zero_swelling_and_monotonicity(self):
-        self.assertEqual(md.swelling_volume_ratio(50e-6, 30, 0, .1, 20), 1)
-        a = md.swelling_volume_ratio(50e-6, 2, md.D0, .1, 20)
-        b = md.swelling_volume_ratio(50e-6, 20, md.D0, .1, 20)
-        self.assertGreaterEqual(b, a)
-
-    def test_direct_pinned_mo_sphere_parity(self):
-        # Independently recorded from pinned fc61c467 swelling.py, N=32,
-        # R=50 um, D=1.25e-10 m2/s, C_M=0.1, t=10 s.
-        got = md.swelling_volume_ratio(50e-6, 10.0, md.D0, .1, 32)
-        self.assertLess(abs(got - 1.1108624452500107), 1e-4)
-
-    def test_accommodation_endpoint_and_volume_identities(self):
-        fixed = md.accommodation_state(1.05, 1.01, 0)
-        free = md.accommodation_state(1.05, 1.01, 1)
-        self.assertEqual(fixed["height_ratio"], 1)
-        self.assertAlmostEqual(free["porosity"], md.PHI0)
-        self.assertGreater(fixed["porosity"], 0)
-        self.assertGreater(free["pore_ratio"], 0)
-
-    def test_serial_resistance_and_fixed_pressure_monotonicity(self):
-        rs = [1., 2., 3.]
-        self.assertEqual(sum(rs)/len(rs), 2)
-        self.assertGreater(11e5/2, 9e5/2)
-
-    def test_simultaneous_wetting_identity(self):
-        base = 7e5
-        rel = md.accommodation_state(*md.particle_state("E", 10, md.D0, .1, 20), 0)["resistance_ratio"]
-        self.assertAlmostEqual((11e5/rel)/(5e5/rel), 11/5)
-        self.assertGreater(base/rel, 0)
-
-    def test_physical_state_bounds_no_clipping(self):
-        for ac in (0, .5, 1):
-            x = md.accommodation_state(1.08, 1.02, ac)
-            self.assertTrue(0 < x["porosity"] < 1)
-            self.assertGreater(x["permeability_ratio"], 0)
-            self.assertGreater(x["resistance_ratio"], 0)
-
-    def test_one_way_local_age_and_no_prewet_swelling(self):
-        wet = md.foster_wetting_times(9e5, md.hydraulic_anchor(), 16)
-        self.assertEqual(max(0, wet[0]-wet[0]), 0)
-        self.assertGreater(wet[-1], wet[0])
-
-    def test_two_way_is_reason_specific_block(self):
-        row = next(r for r in md.matrix_rows() if r["arm"] == "S2")
-        self.assertEqual(md.simulate(row)["stop_reason"], "SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED")
-
-    def test_conservation_fields_and_refinement_logic(self):
-        row = next(r for r in md.matrix_rows() if r["case_id"] == md.PILOT_IDS[6])
-        result = md.simulate(row)
-        self.assertEqual(result["liquid_balance_residual_m3"], 0)
-        self.assertFalse(result["clipping"])
-        self.assertTrue(row["refinement_companions"])
-
-    def test_pressure_margin_uncertainty_classification(self):
-        def classify(m1, m2, u):
-            if min(m1-u, m2-u) > 0: return "PASS"
-            if m1+u <= 0 or m2+u <= 0: return "REJECT"
-            return "UNRESOLVED"
-        self.assertEqual(classify(2, 1, .2), "PASS")
-        self.assertEqual(classify(-2, 1, .2), "REJECT")
-        self.assertEqual(classify(.1, 1, .2), "UNRESOLVED")
-
-    def test_gate_precedence_rmse_cannot_rescue_order(self):
-        gates = md.protocol()["gates"]
-        self.assertLess(gates.index("PRESSURE_ORDERING"), gates.index("AGGREGATE_COMPARISON"))
-
-    def test_grind_mapping_fails_closed(self):
-        self.assertIn("GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED", md.protocol()["claim_boundary"])
-
-    def test_execution_without_owner_authority_refused(self):
-        with self.assertRaises(PermissionError):
-            md.execute_adjudicative("/tmp/SCI_MD_002B_test", None)
-
-    def test_pilot_has_no_complete_adjudicative_triplet(self):
-        rows = {r["case_id"]: r for r in md.matrix_rows()}
-        chosen = [rows[x] for x in md.PILOT_IDS]
-        self.assertFalse(any(r["adjudicative"] for r in chosen))
-
-    def test_atomic_records_and_overwrite_refusal(self):
-        with tempfile.TemporaryDirectory(prefix="SCI_MD_002B_") as d:
-            p = pathlib.Path(d)
-            md.record_atomic(p, "X", {"a": 1})
-            with self.assertRaises(FileExistsError): md.record_atomic(p, "X", {"a": 1})
-
-    def test_process_ownership_predicates_and_path_safety(self):
-        with self.assertRaises(ValueError): md.safe_bundle(ROOT / "SCI_MD_002B_EXTERNAL_BUNDLE")
-        with tempfile.TemporaryDirectory() as d:
-            link = pathlib.Path(d)/"SCI_MD_002B_link"
-            link.symlink_to("/tmp")
-            with self.assertRaises(ValueError): md.safe_bundle(link)
-
-    def test_no_absolute_paths_or_production_changes_declared(self):
-        for p in [md.LANE, md.OUT/"SCI_MD_002B_PROTOCOL.json", md.OUT/"SCI_MD_002B_CASE_MATRIX.json"]:
-            self.assertNotIn("/home/", p.read_text())
-        self.assertNotIn("solver/**", json.loads(md.LANE.read_text())["owned_paths"])
-
-
-if __name__ == "__main__": unittest.main()
+if __name__=="__main__":unittest.main()
