@@ -15,17 +15,17 @@ Refs #74.
 
 ## Package
 
-The enduring charter records one-writer, path/process/resource, integration, duplicate-containment, and claim rules. The canonical protocol freezes A0/C0/C1/S1/S2/R1 arms, a deterministic 243-row matrix (hard cap 2,500), pressure-shared candidate sets, analytical controls, physical bounds, gate precedence, numerical-uncertainty ordering rules, dispositions, pilot selection, and external record schema.
+The enduring charter records one-writer, path/process/resource, integration, duplicate-containment, and claim rules. The corrected canonical protocol freezes A0/C0/C1/S1/S2/R1 arms, a deterministic 456-row matrix (hard cap 2,500), full governed P5/P9/P11 pressure histories, separate `phi_wet` and `epsilon_b0`, matched base/refined companions, pressure-shared candidate sets, analytical controls, physical bounds, gate precedence, numerical-uncertainty ordering rules, dispositions, pilot selection, and external record schema.
 
-The reduced model contains only `pressure -> wetting time -> local swelling age -> particle expansion -> bed geometry/porosity -> permeability/resistance -> axial flow`. It reimplements the pinned nonlinear Mo spherical diffusion/volume relation and relative Carman-Kozeny effect without extraction. A volume-consistent accommodation parameter spans fixed height to constant porosity. One 9-bar hydraulic scale is transferred unchanged.
+The reduced model contains only `pressure -> wetting time -> local swelling age -> particle expansion -> bed geometry/porosity -> permeability/resistance -> axial flow`. It integrates and inverts each full governed pressure history, reimplements the pinned nonlinear Mo spherical diffusion/volume relation and relative Carman-Kozeny effect without extraction, calculates solid/pore/bulk volumes and swelling storage, and emits deterministic temporal records. A volume-consistent accommodation parameter spans fixed height to constant porosity. One 9-bar hydraulic scale is transferred unchanged.
 
 S2 is retained as `SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED`: the available evidence does not uniquely close distributed swelling storage with moving cell volume, and unsupported physics was not invented.
 
-Adjudicative mode requires a separately owner-created exact-identity authority token and currently fails closed. The frozen eight-row pilot contains no adjudicative source row, no 5/9/11 source triplet, and cannot run scientific reduction.
+Adjudicative mode and the scientific reducer are fully implemented but require a separately owner-created exact-identity authority token and currently fail closed. No token exists in this tranche.
 
 ## Verification and pilot
 
-Focused controls currently pass 23/23; deterministic generator/reference/boundary and full repository checks plus the non-adjudicative pilot will be reported in a subsequent bounded commit. No OpenFOAM, GPU, heavy Puckworks execution, adjudicative source sweep, or scientific disposition is part of this PR.
+The first independent review findings are corrected. Attempts 1 and 2 remain superseded diagnostic-only. Attempt 3 is preserved diagnostic-only after exposing a synthetic-control dispatch defect; fresh attempt 4 completed all eight frozen rows in 16.86 s at 40.1 MiB peak RSS, verified its immutable manifest, exercised pressure-history, nonzero-storage, temporal-record, and base/refined paths, contained no complete adjudicative source triplet, and ran no scientific reducer or ordering calculation. Focused controls pass 20/20; the full Python suite passes 542/542; source verification passes 404/404; static validation passes 38/38. No OpenFOAM, GPU, heavy Puckworks execution, adjudicative source sweep, or scientific disposition is part of this PR.
 
 Claim ceiling: `PHYSICAL_VALIDATION_NOT_ESTABLISHED`; `POST_OBSERVATION_MECHANISM_DISCRIMINATION`; `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`; `NO_COMBINED_MECHANISM_AUTHORIZATION`; `NO_SCI_LC_001B_AUTHORIZATION`.
 
