@@ -206,11 +206,11 @@ class SciLc001aProtocolTests(unittest.TestCase):
             state = mod.evolved_resistance_primitives(base, [math.log(value)] * 8, 1,
                                                        "UPSTREAM_LOCALIZED")
             self.assertEqual(state["multipliers"][0], value)
-            self.assertEqual(mod.multiplier_admissibility(state["multipliers"]),
+            self.assertEqual(mod.multiplier_admissibility(value, 1, 0, "ACCEPTED_STEP"),
                              "SCIENTIFICALLY_ADMISSIBLE")
-        self.assertEqual(mod.multiplier_admissibility([.2500001, 3.999999]),
+        self.assertEqual(mod.multiplier_admissibility(.2500001, 1, 0, "ACCEPTED_STEP"),
                          "SCIENTIFICALLY_ADMISSIBLE")
-        self.assertEqual(mod.multiplier_admissibility([float("nan")]),
+        self.assertEqual(mod.multiplier_admissibility(float("nan"), 1, 0, "ACCEPTED_STEP"),
                          "STOP_NONFINITE_RESISTANCE_EVOLUTION_MULTIPLIER")
 
     def test_feedback_label_mapping_and_semantics(self):
@@ -335,19 +335,22 @@ class SciLc001aProtocolTests(unittest.TestCase):
             self.assertTrue(all(math.isfinite(value) for value in startup))
             self.assertTrue(close_sequence(startup, machine, tol=0))
             self.assertAlmostEqual(sum(startup), 8.0)
-            self.assertEqual(mod.evolution_focusing(tau=0, flows=[0.0] * 8, startup=startup), startup)
+            tagged = lambda values: mod.SectorFlowVector(tuple(values), 8,
+                "SECTOR_SCALED_DIMENSIONLESS")
+            self.assertEqual(mod.evolution_focusing(tau=0, flow=tagged([0.0] * 8), startup=startup), startup)
             for threshold in (1e-10, 1e-12, 1e-14):
-                self.assertEqual(mod.evolution_focusing(tau=0, flows=[threshold / 100] * 8,
+                self.assertEqual(mod.evolution_focusing(tau=0, flow=tagged([threshold / 100] * 8),
                     startup=startup, zero_threshold=threshold), startup)
             gu = [1 / value for value in base["R_u_i"]]
             gd = [1 / value for value in base["R_d_i"]]
             numerical = [a * b / .125 * 1e-8 for a, b in zip(gu, gd)]
             self.assertTrue(close_sequence(
-                mod.evolution_focusing(tau=1e-5, flows=numerical, startup=startup, zero_threshold=1e-20),
+                mod.evolution_focusing(tau=1e-5, flow=tagged(numerical), startup=startup,
+                                       zero_threshold=1e-20),
                 startup, tol=2e-14))
         with self.assertRaisesRegex(ValueError, "FLOW_REVERSAL"):
-            mod.evolution_focusing(tau=.1, flows=[-1.0] + [0.0] * 7, startup=[1.0] * 8)
-        values = mod.evolution_focusing(tau=.1, flows=[0.0] + [1.0] * 7, startup=[1.0] * 8)
+            mod.evolution_focusing(tau=.1, flow=tagged([-1.0] + [0.0] * 7), startup=[1.0] * 8)
+        values = mod.evolution_focusing(tau=.1, flow=tagged([0.0] + [1.0] * 7), startup=[1.0] * 8)
         self.assertEqual(values[0], 0.0)
 
     def test_boundary_modes_are_closed_and_mutually_exclusive(self):
@@ -404,77 +407,77 @@ class SciLc001aProtocolTests(unittest.TestCase):
         active = next(r for r in self.rows if r["pressure_mode"] == "PRESCRIBED_STATIC" and
                       r["case_role"] == "ACTIVE_SCIENTIFIC_CASE" and
                       r["numerical_resolution_role"] == "PRIMARY")
-        comparator = {r["case_id"]: r for r in self.rows}[active["comparator_case_id"]]
+        contract = mod.derive_uncertainty_contract(self.rows, active["case_id"], "STATIC_GAIN",
+                                                   "GAIN", "COMPLETE")
         components = {"u_integrator": mod.NA, "u_sector": mod.NA, "u_linear": .001,
                       "u_sampling": mod.NA, "u_startup": mod.NA}
-        self.assertAlmostEqual(mod.combine_uncertainty(components, active_row=active,
-            comparator_row=comparator, evaluation_kind="GAIN", metric_kind="STATIC_GAIN"), .001)
+        self.assertAlmostEqual(mod.combine_uncertainty(components, contract), .001)
         numeric_inapplicable = dict(components, u_integrator=.001)
         with self.assertRaisesRegex(ValueError, "INAPPLICABLE"):
-            mod.combine_uncertainty(numeric_inapplicable, active_row=active,
-                comparator_row=comparator, evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
+            mod.combine_uncertainty(numeric_inapplicable, contract)
         required_na = dict(components, u_linear=mod.NA)
         with self.assertRaisesRegex(ValueError, "NOT_APPLICABLE_REQUIRED"):
-            mod.combine_uncertainty(required_na, active_row=active, comparator_row=comparator,
-                evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
+            mod.combine_uncertainty(required_na, contract)
         with self.assertRaisesRegex(ValueError, "NUMERICALLY_UNRESOLVED"):
-            mod.combine_uncertainty(dict(components, u_linear="UNAVAILABLE"), active_row=active,
-                comparator_row=comparator, evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
+            mod.combine_uncertainty(dict(components, u_linear="UNAVAILABLE"), contract)
         for bad in (-1, float("nan"), "BAD"):
             with self.assertRaisesRegex(ValueError, "INVALID_UNCERTAINTY"):
-                mod.combine_uncertainty(dict(components, u_linear=bad), active_row=active,
-                    comparator_row=comparator, evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
+                mod.combine_uncertainty(dict(components, u_linear=bad), contract)
         self.assertEqual(mod.uncertainty_limit(0), 0)
         self.assertEqual(mod.uncertainty_limit(1e-12), 2e-14)
         with self.assertRaisesRegex(ValueError, "DENOMINATOR_FLOOR"):
-            mod.gain_profile_uncertainty(1, 1, denominator=1e-13)
+            mod.build_gain_record(self.rows, active["case_id"], "STATIC_GAIN", "BASE", 1, 1e-13)
         self.assertNotIn("u_denominator", self.protocol["uncertainty"]["components"])
         dynamic = next(r for r in self.rows if r["pressure_mode"] == "PRESCRIBED_DYNAMIC_RAMP" and
                        r["case_role"] == "ACTIVE_SCIENTIFIC_CASE")
-        dynamic_comparator = {r["case_id"]: r for r in self.rows}[dynamic["comparator_case_id"]]
         expected = {
             "STATIC_GAIN": (False, False, True, False, False),
             "DYNAMIC_ENDPOINT_GAIN": (True, False, True, False, True),
             "DYNAMIC_INTEGRATED_GAIN": (True, False, True, True, True),
         }
         for kind, flags in expected.items():
-            row, partner = (active, comparator) if kind == "STATIC_GAIN" else (dynamic, dynamic_comparator)
-            observed = mod.uncertainty_applicability(row, partner, "GAIN", kind, "COMPLETE")
-            self.assertEqual(tuple(observed[name] for name in mod.UNCERTAINTY_COMPONENTS), flags)
+            row = active if kind == "STATIC_GAIN" else dynamic
+            observed = mod.derive_uncertainty_contract(self.rows, row["case_id"], kind,
+                                                        "GAIN", "COMPLETE")
+            self.assertEqual(tuple(dict(observed.applicability)[name]
+                                   for name in mod.UNCERTAINTY_COMPONENTS), flags)
         for broken in (dict(components, u_linear=True),
                        {key: value for key, value in components.items() if key != "u_linear"},
                        dict(components, unexpected=0)):
             with self.assertRaisesRegex(ValueError, "INVALID_UNCERTAINTY|COMPONENT_SET"):
-                mod.combine_uncertainty(broken, active_row=active, comparator_row=comparator,
-                    evaluation_kind="GAIN", metric_kind="STATIC_GAIN")
+                mod.combine_uncertainty(broken, contract)
 
     def test_linear_refinement_is_one_deterministic_correction(self):
         matrix = [[4.0, 1.0], [1.0, 3.0]]; rhs = [1.0, 2.0]
-        result = mod.linear_refined_state(matrix, rhs, [0.09, 0.63])
-        self.assertEqual(result["correction_steps"], 1)
-        self.assertLessEqual(result["corrected_residual_norm"], result["base_residual_norm"])
-        self.assertLessEqual(result["corrected_residual_norm"], 1e-12)
-        self.assertTrue(close_sequence(result["state"], [1/11, 7/11], tol=2e-15))
-        with self.assertRaisesRegex(ValueError, "SINGULAR"):
-            mod.linear_refined_state([[1., 1.], [2., 2.]], [1., 2.], [0., 0.])
+        result = mod.linear_refined_state(matrix, rhs)
+        self.assertEqual(result.correction_steps, 1)
+        self.assertLessEqual(result.corrected_scaled_residual, result.base.scaled_residual)
+        self.assertLessEqual(result.corrected_scaled_residual, 1e-12)
+        self.assertTrue(close_sequence(result.corrected_state, [1/11, 7/11], tol=2e-15))
+        with self.assertRaisesRegex(ValueError, "PIVOT|SINGULAR"):
+            mod.linear_refined_state([[1., 1.], [2., 2.]], [1., 2.])
         with self.assertRaisesRegex(ValueError, "NONFINITE"):
-            mod.linear_refined_state([[float("nan")]], [1.], [0.])
-        self.assertAlmostEqual(mod.gain_profile_uncertainty(1.0, .99), .01)
-        with self.assertRaisesRegex(ValueError, "UNRESOLVED"):
-            mod.gain_profile_uncertainty(1, 1, refined_status="STOPPED")
+            mod.linear_refined_state([[float("nan")]], [1.])
+        active = next(r for r in self.rows if r["case_role"] == "ACTIVE_SCIENTIFIC_CASE"
+                      and r["pressure_mode"] == "PRESCRIBED_STATIC")
+        base = mod.build_gain_record(self.rows, active["case_id"], "STATIC_GAIN", "BASE", 1, 1)
+        refined = mod.build_gain_record(self.rows, active["case_id"], "STATIC_GAIN",
+                                        "LINEAR_REFINED", .99, 1)
+        self.assertAlmostEqual(mod.gain_profile_uncertainty(base, refined, "LINEAR_REFINED"), .01)
 
     def test_startup_refinement_boundaries_and_routing(self):
         startup = [1.0] * 8
         q = mod.Q_ZERO_THRESHOLD
-        self.assertEqual(mod.evolution_focusing(tau=0, flows=[0.0] * 8, startup=startup), startup)
+        flow = lambda values: mod.SectorFlowVector(tuple(values), 8, "SECTOR_SCALED_DIMENSIONLESS")
+        self.assertEqual(mod.evolution_focusing(tau=0, flow=flow([0.0] * 8), startup=startup), startup)
         self.assertEqual(mod.evolution_focusing(tau=mod.STARTUP_TAU_MAX,
-            flows=[q / 8] * 8, startup=startup), startup)
+            flow=flow([q / 8] * 8), startup=startup), startup)
         above = mod.evolution_focusing(tau=mod.STARTUP_TAU_MAX + 1e-12,
-            flows=[2 * q] * 8, startup=startup)
+            flow=flow([2 * q] * 8), startup=startup)
         self.assertEqual(above, startup)
         with self.assertRaisesRegex(ValueError, "OUTSIDE_STARTUP"):
             mod.evolution_focusing(tau=mod.STARTUP_TAU_MAX + 1e-12,
-                flows=[q] * 8, startup=startup)
+                flow=flow([q] * 8), startup=startup)
         self.assertAlmostEqual(mod.startup_uncertainty(1, .99), .01)
         for status in ("UNAVAILABLE", "STOPPED", "CAPPED"):
             with self.assertRaisesRegex(ValueError, "NUMERICALLY_UNRESOLVED"):
@@ -536,11 +539,16 @@ class SciLc001aProtocolTests(unittest.TestCase):
             mod.validate_row_against_expected_fields(unknown, canonical)
 
     def test_total_q_hat_and_execution_graph(self):
-        self.assertEqual(mod.total_q_hat([2.0] * 4, sector_count=4, g_ref=1, delta_p_ref=1), 2.0)
-        self.assertEqual(mod.total_q_hat([2.0] * 16, sector_count=16, g_ref=1, delta_p_ref=1), 2.0)
-        for bad in (0, -1):
-            with self.assertRaises(ValueError):
-                mod.total_q_hat([], sector_count=bad, g_ref=1, delta_p_ref=1)
+        for n in (4, 16):
+            tagged = mod.SectorFlowVector((2.0,) * n, n, "SECTOR_SCALED_DIMENSIONLESS")
+            self.assertEqual(mod.q_hat_total_from_flow(tagged), 2.0)
+        dimensional = mod.SectorFlowVector((.25,) * 4, 4, "DIMENSIONAL_SECTOR_FLOW", 2., .5)
+        self.assertEqual(mod.q_hat_total_from_flow(dimensional), 1.0)
+        with self.assertRaisesRegex(ValueError, "UNTAGGED"):
+            mod.q_hat_total_from_flow([1., 1.])
+        with self.assertRaisesRegex(ValueError, "UNSUPPORTED_WHOLE"):
+            mod.q_hat_total_from_flow(mod.SectorFlowVector((1.,) * 4, 4,
+                "WHOLE_NETWORK_SCALED_PER_SECTOR"))
         graph = mod.execution_graph(self.rows)
         self.assertEqual((graph["dynamic_matrix_rows"], graph["static_matrix_rows"]), (553, 727))
         self.assertEqual((graph["maximum_dynamic_trajectory_invocations"],
@@ -552,14 +560,104 @@ class SciLc001aProtocolTests(unittest.TestCase):
         self.assertEqual(graph["sector_additional_out_of_matrix_cases"], 0)
 
     def test_multiplier_closed_interval_and_outward_crossing(self):
-        self.assertEqual(mod.multiplier_admissibility([.25], [0]), "SCIENTIFICALLY_ADMISSIBLE")
-        self.assertEqual(mod.multiplier_admissibility([.25], [1]), "SCIENTIFICALLY_ADMISSIBLE")
-        self.assertEqual(mod.multiplier_admissibility([.25], [-1]), mod.MULTIPLIER_STOP)
-        self.assertEqual(mod.multiplier_admissibility([4], [0]), "SCIENTIFICALLY_ADMISSIBLE")
-        self.assertEqual(mod.multiplier_admissibility([4], [-1]), "SCIENTIFICALLY_ADMISSIBLE")
-        self.assertEqual(mod.multiplier_admissibility([4], [1]), mod.MULTIPLIER_STOP)
-        self.assertEqual(mod.multiplier_admissibility([.249999]), mod.MULTIPLIER_STOP)
-        self.assertEqual(mod.multiplier_admissibility([4.000001]), mod.MULTIPLIER_STOP)
+        f = lambda m, dx, context="ACCEPTED_STEP", bound=None: mod.multiplier_admissibility(
+            m, 1., dx, context, bound)
+        for m, dx in ((.25, 0), (.25, 1), (4., 0), (4., -1)):
+            self.assertEqual(f(m, dx), "SCIENTIFICALLY_ADMISSIBLE")
+        self.assertEqual(f(.25, -1), mod.MULTIPLIER_STOP)
+        self.assertEqual(f(4., 1), mod.MULTIPLIER_STOP)
+        self.assertEqual(f(.25 - 2 * mod.MULTIPLIER_BOUNDARY_ATOL, 0), mod.MULTIPLIER_OUTSIDE_STOP)
+        self.assertEqual(f(4 + 2 * mod.MULTIPLIER_BOUNDARY_ATOL, 0), mod.MULTIPLIER_OUTSIDE_STOP)
+        self.assertEqual(f(.25 + .5 * mod.MULTIPLIER_BOUNDARY_ATOL, -1), mod.MULTIPLIER_STOP)
+        self.assertEqual(f(4 - .5 * mod.MULTIPLIER_BOUNDARY_ATOL, 1), mod.MULTIPLIER_STOP)
+        self.assertEqual(f(.25 + .5 * mod.EVENT_ROOT_VALUE_ATOL, -1,
+                           "LOCATED_EVENT_ROOT", "LOWER_BOUND"), mod.MULTIPLIER_STOP)
+        with self.assertRaisesRegex(ValueError, "EVENT_ROOT_STATE"):
+            f(.25 + 2 * mod.EVENT_ROOT_VALUE_ATOL, -1, "LOCATED_EVENT_ROOT", "LOWER_BOUND")
+
+    def test_c5_base_solver_scaled_pivot_authority(self):
+        matrix, rhs = [[1e-20, 1.0], [1.0, 1.0]], [1.0, 2.0]
+        result = mod.solve_dense_binary64(matrix, rhs)
+        self.assertEqual(result.solver_status, "PASS")
+        self.assertEqual(result.pivot_history[0][1], 1)
+        scaled = mod.solve_dense_binary64([[v * 1e100 for v in row] for row in matrix],
+                                           [v * 1e100 for v in rhs])
+        self.assertEqual(scaled.solver_status, "PASS")
+        self.assertTrue(close_sequence(result.solution, scaled.solution, tol=1e-14))
+        self.assertEqual(result, mod.solve_dense_binary64(matrix, rhs))
+        for bad_a, bad_b in (([], []), ([[1, 2]], [1]), ([[True]], [1]),
+                             ([[float("nan")]], [1]), ([[0.0]], [0.0]),
+                             ([[1., 1.], [2., 2.]], [1., 2.])):
+            self.assertEqual(mod.solve_dense_binary64(bad_a, bad_b).solver_status, "FAIL")
+        with self.assertRaises(TypeError):
+            mod.linear_refined_state(matrix, rhs, [0, 0])
+
+    def test_c5_gain_and_applicability_are_canonical(self):
+        active = next(r for r in self.rows if r["case_role"] == "ACTIVE_SCIENTIFIC_CASE"
+                      and r["pressure_mode"] == "PRESCRIBED_STATIC")
+        base = mod.build_gain_record(self.rows, active["case_id"], "STATIC_GAIN", "BASE", 2., 1.)
+        refined = mod.build_gain_record(self.rows, active["case_id"], "STATIC_GAIN",
+                                        "LINEAR_REFINED", 1.9, 1.)
+        self.assertEqual(base.comparator_case_id, active["comparator_case_id"])
+        self.assertAlmostEqual(mod.gain_profile_uncertainty(base, refined, "LINEAR_REFINED"), .1)
+        with self.assertRaises(TypeError):
+            mod.build_gain_record(self.rows, active["case_id"], "STATIC_GAIN", "BASE", 1.)
+        comparator = next(r for r in self.rows if r["case_role"] == "STRUCTURAL_COMPARATOR")
+        with self.assertRaisesRegex(ValueError, "ACTIVE"):
+            mod.build_gain_record(self.rows, comparator["case_id"], "STATIC_GAIN", "BASE", 1., 1.)
+        dynamic = next(r for r in self.rows if r["case_role"] == "ACTIVE_SCIENTIFIC_CASE"
+                       and r["pressure_mode"] != "PRESCRIBED_STATIC")
+        for case_id, metric, evaluation in ((active["case_id"], "DYNAMIC_ENDPOINT_GAIN", "GAIN"),
+                                             (dynamic["case_id"], "STATIC_GAIN", "GAIN"),
+                                             (active["case_id"], "STATIC_STRUCTURAL_NUMERICAL_CONTROL", "CONTROL")):
+            with self.assertRaises(ValueError):
+                mod.derive_uncertainty_contract(self.rows, case_id, metric, evaluation, "COMPLETE")
+        control_contract = mod.derive_uncertainty_contract(
+            self.rows, comparator["case_id"], "STATIC_STRUCTURAL_NUMERICAL_CONTROL",
+            "CONTROL", "COMPLETE")
+        self.assertIsNone(control_contract.comparator_case_id)
+
+    def test_c5_flow_scale_contract_is_explicit(self):
+        sector = mod.SectorFlowVector((8.,) * 8, 8, "SECTOR_SCALED_DIMENSIONLESS")
+        dimensional = mod.SectorFlowVector((1.,) * 8, 8, "DIMENSIONAL_SECTOR_FLOW", 4., 2.)
+        self.assertEqual(mod.q_hat_total_from_flow(sector), 8.)
+        self.assertEqual(mod.q_hat_total_from_flow(dimensional), 1.)
+        self.assertEqual(mod.q_hat_total_from_flow(mod.SectorFlowVector((1e200,) * 8, 8,
+            "SECTOR_SCALED_DIMENSIONLESS")), 1e200)
+        for broken in (mod.SectorFlowVector((1.,) * 7, 8, "SECTOR_SCALED_DIMENSIONLESS"),
+                       mod.SectorFlowVector((True,) * 8, 8, "SECTOR_SCALED_DIMENSIONLESS"),
+                       mod.SectorFlowVector((1.,) * 8, 8, "DIMENSIONAL_SECTOR_FLOW", 0., 1.)):
+            with self.assertRaises(ValueError):
+                mod.q_hat_total_from_flow(broken)
+
+    def test_c5_boundary_disposition_partition_has_no_fallback(self):
+        for mode in mod.BOUNDARY_MODES:
+            table = mod.boundary_field_dispositions(mode)
+            self.assertEqual(set(table), set(mod.FIELDS))
+            self.assertNotIn("UNASSIGNED", table.values())
+            self.assertFalse(any(table[field] == "PROVENANCE_ONLY" and
+                mod.FIELD_AUTHORITY[field] == "DERIVED_EXECUTION_FIELD" for field in mod.FIELDS))
+        self.assertEqual(self.protocol["boundary_modes"]["unassigned_field_count"], 0)
+        self.assertEqual(self.protocol["boundary_modes"]["fallback_provenance_count"], 0)
+
+    def test_c5_package_qa_command_scope_is_explicit(self):
+        qa = json.loads((ROOT / "PACKAGE_QA_STATUS.json").read_text())["current_repository_checks"]
+        mod.validate_qa_focused_scope(qa)
+        broken = dict(qa, sci_lc_001a_combined_focused_test_count=
+                      qa["sci_lc_001a_combined_focused_test_count"] + 1)
+        with self.assertRaisesRegex(ValueError, "COUNT_SCOPE"):
+            mod.validate_qa_focused_scope(broken)
+
+    def test_c5_multiplier_all_tolerance_equalities(self):
+        f = lambda m, dx: mod.multiplier_admissibility(m, 1., dx, "ACCEPTED_STEP")
+        for delta in (-mod.MULTIPLIER_BOUNDARY_ATOL, -.5 * mod.MULTIPLIER_BOUNDARY_ATOL,
+                      0., .5 * mod.MULTIPLIER_BOUNDARY_ATOL, mod.MULTIPLIER_BOUNDARY_ATOL):
+            self.assertEqual(f(.25 + delta, -1.), mod.MULTIPLIER_STOP)
+            self.assertEqual(f(4. + delta, 1.), mod.MULTIPLIER_STOP)
+        self.assertEqual(f(.25, -mod.MULTIPLIER_DERIVATIVE_ATOL / .25),
+                         "SCIENTIFICALLY_ADMISSIBLE")
+        self.assertEqual(f(4., mod.MULTIPLIER_DERIVATIVE_ATOL / 4.),
+                         "SCIENTIFICALLY_ADMISSIBLE")
 
     def test_structural_roles_and_comparator_reconciliation(self):
         ids = {row["case_id"]: row for row in self.rows}

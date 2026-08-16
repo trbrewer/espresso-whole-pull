@@ -15,13 +15,14 @@ import math
 from collections import Counter
 from decimal import Decimal
 from pathlib import Path
+from typing import NamedTuple
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "validation/cases/sci_lc_001a"
 NA = "NOT_APPLICABLE"
 INFINITE = "INFINITE_NO_LATERAL_EQUALIZATION"
-STATUS = "PROSPECTIVE_PROTOCOL_C4_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW"
-TASK_ID = "SCI-LC-001A-C4-DETERMINISTIC-EXECUTOR-CONTRACT-CLOSURE-2026-08-16"
+STATUS = "PROSPECTIVE_PROTOCOL_C5_CORRECTED_PENDING_BOUNDED_INDEPENDENT_REVIEW"
+TASK_ID = "SCI-LC-001A-C5-FINAL-EXECUTOR-INTERFACE-CLOSURE-2026-08-16"
 BASE_HEAD = "3e8993f56badd575f3482ea7bfa0f87d24412100"
 BASE_TREE = "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0"
 REVIEWED_HEAD = "c683f7722b170d049bcdf08c6bc65afd3cef20ba"
@@ -32,6 +33,8 @@ C2_HEAD = "cbbec20d29dcde7e4a1aa3b1fb14b986b8820180"
 C2_TREE = "3cce042f161fc7bf3cd42cc679893db7c45f9743"
 C3_HEAD = "a33b85a752b3f27c675b7658aeefa18b1cbc987c"
 C3_TREE = "0ae277a266b05c499e5c1c91aca5a24fa6d42f0e"
+C4_HEAD = "4f06c5e179d9e6f045e1b58cef06ffa98ec0fbea"
+C4_TREE = "3f35ae046647dca44353cd8015eda471c9852a37"
 
 LAMBDAS = ("0", "0.0001", "0.0003", "0.001", "0.003", "0.01", "0.03",
            "0.1", "0.3", "1", "3", "10", "30", "100")
@@ -60,6 +63,15 @@ REFINED_Q_ZERO_THRESHOLD = Q_ZERO_THRESHOLD / STARTUP_REFINEMENT_FACTOR
 REFINED_STARTUP_TAU_MAX = STARTUP_TAU_MAX / STARTUP_REFINEMENT_FACTOR
 FEEDBACK_SIGN_SCALARS = {"EQUALIZING": 1.0, "LOCALIZING": -1.0, "NONE": 0.0}
 MULTIPLIER_STOP = "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUTWARD_CROSSING_NO_CLIPPING"
+MULTIPLIER_OUTSIDE_STOP = "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUTWARD_OR_OUT_OF_RANGE_NO_CLIPPING"
+MULTIPLIER_BOUNDARY_ATOL = 1.0e-12
+MULTIPLIER_DERIVATIVE_ATOL = 1.0e-14
+EVENT_ROOT_VALUE_ATOL = 1.0e-10
+MULTIPLIER_CONTEXTS = ("INITIAL_STATE", "ACCEPTED_STEP", "LOCATED_EVENT_ROOT")
+FLOW_SCALES = ("SECTOR_SCALED_DIMENSIONLESS", "DIMENSIONAL_SECTOR_FLOW",
+               "WHOLE_NETWORK_SCALED_PER_SECTOR")
+LINEAR_RESIDUAL_TOLERANCE = 1.0e-12
+PIVOT_RATIO_FLOOR = 64.0 * 2.220446049250313e-16
 UNCERTAINTY_COMPONENTS = ("u_integrator", "u_sector", "u_linear", "u_sampling", "u_startup")
 FIELD_DISPOSITIONS = ("REQUIRED", "PROHIBITED", "DERIVED", "NOT_APPLICABLE", "PROVENANCE_ONLY")
 FIELD_AUTHORITY_CLASSES = ("IDENTITY_PRIMITIVE", "SCIENTIFIC_PRIMITIVE", "DERIVED_EXECUTION_FIELD",
@@ -68,7 +80,11 @@ ALLOWED_ACTIVE_THETA_R = frozenset(THETA_R)
 DYNAMIC_NUMERICAL_PROFILES = ("BASE", "INTEGRATOR_REFINED", "STARTUP_REFINED", "LINEAR_REFINED")
 STATIC_NUMERICAL_PROFILES = ("BASE", "LINEAR_REFINED")
 METRIC_KINDS = ("STATIC_GAIN", "DYNAMIC_ENDPOINT_GAIN", "DYNAMIC_INTEGRATED_GAIN",
-                "STRUCTURAL_NUMERICAL_CONTROL")
+                "STATIC_STRUCTURAL_NUMERICAL_CONTROL",
+                "DYNAMIC_ENDPOINT_STRUCTURAL_NUMERICAL_CONTROL",
+                "DYNAMIC_INTEGRATED_STRUCTURAL_NUMERICAL_CONTROL")
+QA_PROTOCOL_FOCUSED_COMMAND = "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol"
+QA_STATIC_REGRESSION_COMMAND = "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_static_validate_non_mutating"
 
 FIELDS = (
     "case_id", "arm", "model_variant", "pressure_mode", "boundary_profile",
@@ -123,6 +139,21 @@ if set(FIELD_AUTHORITY.values()) - set(FIELD_AUTHORITY_CLASSES):
 
 def canonical_json(value: object) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+
+
+def validate_qa_focused_scope(checks: dict) -> None:
+    required = {
+        "sci_lc_001a_protocol_focused_command": QA_PROTOCOL_FOCUSED_COMMAND,
+        "sci_lc_001a_static_validator_regression_command": QA_STATIC_REGRESSION_COMMAND,
+    }
+    if any(checks.get(key) != value for key, value in required.items()):
+        raise ValueError("PACKAGE_QA_FOCUSED_COMMAND_SCOPE_MISMATCH")
+    protocol_count = checks.get("sci_lc_001a_protocol_focused_test_count")
+    static_count = checks.get("sci_lc_001a_static_validator_regression_test_count")
+    combined = checks.get("sci_lc_001a_combined_focused_test_count")
+    if (type(protocol_count) is not int or type(static_count) is not int or
+            type(combined) is not int or combined != protocol_count + static_count):
+        raise ValueError("PACKAGE_QA_FOCUSED_COUNT_SCOPE_MISMATCH")
 
 
 def digest(value: object) -> str:
@@ -230,18 +261,33 @@ def evolved_resistance_primitives(base: dict, x: list[float], beta: float,
             "R_d_i": [floor + (1.0 - alpha) * value for value in residual]}
 
 
-def multiplier_admissibility(multipliers: list[float], derivatives: list[float] | None = None) -> str:
-    """Closed interval; exact contact stops only for an outward derivative."""
-    if not multipliers or any(not math.isfinite(value) for value in multipliers):
+def multiplier_admissibility(multiplier: float, beta: float, dx_dt: float, context: str,
+                              located_boundary: str | None = None) -> str:
+    """Apply the closed-interval, outward-crossing rule to one sector state."""
+    if context not in MULTIPLIER_CONTEXTS:
+        raise ValueError("INVALID_MULTIPLIER_STATE_CONTEXT")
+    if any(isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value)
+           for value in (multiplier, beta, dx_dt)):
         return "STOP_NONFINITE_RESISTANCE_EVOLUTION_MULTIPLIER"
-    if any(value < 0.25 or value > 4.0 for value in multipliers):
-        return MULTIPLIER_STOP
-    if derivatives is not None:
-        if len(derivatives) != len(multipliers) or any(not math.isfinite(value) for value in derivatives):
-            return "STOP_NONFINITE_RESISTANCE_EVOLUTION_MULTIPLIER_DERIVATIVE"
-        if any((value == 0.25 and derivative < 0) or (value == 4.0 and derivative > 0)
-               for value, derivative in zip(multipliers, derivatives)):
-            return MULTIPLIER_STOP
+    if context == "LOCATED_EVENT_ROOT":
+        targets = {"LOWER_BOUND": 0.25, "UPPER_BOUND": 4.0}
+        if located_boundary not in targets:
+            raise ValueError("LOCATED_EVENT_ROOT_REQUIRES_BOUNDARY_IDENTITY")
+        target = targets[located_boundary]
+        if abs(multiplier - target) > EVENT_ROOT_VALUE_ATOL:
+            raise ValueError("EVENT_ROOT_STATE_INCONSISTENT_WITH_BOUNDARY")
+        multiplier = target
+    elif located_boundary is not None:
+        raise ValueError("BOUNDARY_IDENTITY_ONLY_VALID_FOR_LOCATED_EVENT_ROOT")
+    if multiplier < 0.25 - MULTIPLIER_BOUNDARY_ATOL or multiplier > 4.0 + MULTIPLIER_BOUNDARY_ATOL:
+        return MULTIPLIER_OUTSIDE_STOP
+    dm_dt = beta * multiplier * dx_dt
+    if not math.isfinite(dm_dt):
+        return "STOP_NONFINITE_RESISTANCE_EVOLUTION_MULTIPLIER_DERIVATIVE"
+    if 0.25 - MULTIPLIER_BOUNDARY_ATOL <= multiplier <= 0.25 + MULTIPLIER_BOUNDARY_ATOL:
+        return MULTIPLIER_STOP if dm_dt < -MULTIPLIER_DERIVATIVE_ATOL else "SCIENTIFICALLY_ADMISSIBLE"
+    if 4.0 - MULTIPLIER_BOUNDARY_ATOL <= multiplier <= 4.0 + MULTIPLIER_BOUNDARY_ATOL:
+        return MULTIPLIER_STOP if dm_dt > MULTIPLIER_DERIVATIVE_ATOL else "SCIENTIFICALLY_ADMISSIBLE"
     return "SCIENTIFICALLY_ADMISSIBLE"
 
 
@@ -282,27 +328,44 @@ def validate_feedback_contract(row: dict) -> None:
 
 
 def boundary_field_dispositions(mode: str) -> dict[str, str]:
-    """Return a complete disposition for every serialized matrix field."""
+    """Return the explicit, exhaustive disposition table for one mode.
+
+    The global authority is the only starting partition; there is deliberately
+    no provenance fallback.  Mode overrides are closed literal sets and the
+    final partition is asserted below.
+    """
     if mode not in BOUNDARY_MODES:
         raise ValueError("UNSUPPORTED_BOUNDARY_MODE")
-    result = {field: "PROVENANCE_ONLY" for field in FIELDS}
-    result.update({"pressure_mode": "REQUIRED", "boundary_profile": "REQUIRED",
-                   "integration_profile": "REQUIRED"})
+    result = {}
+    for field, authority in FIELD_AUTHORITY.items():
+        if authority in ("IDENTITY_PRIMITIVE", "SCIENTIFIC_PRIMITIVE"):
+            result[field] = "REQUIRED"
+        elif authority in ("DERIVED_EXECUTION_FIELD", "ROLE_OR_CONTROL_FIELD"):
+            result[field] = "DERIVED"
+        elif authority == "PROVENANCE_ONLY":
+            result[field] = "PROVENANCE_ONLY"
+        else:  # pragma: no cover - module initialization guards this
+            raise RuntimeError("UNASSIGNED_BOUNDARY_FIELD")
     if mode == "PRESCRIBED_STATIC":
         result["prescribed_pressure_amplitude"] = "REQUIRED"
         for field in ("storage_ratio_S_h", "hydraulic_storage_C_h", "derived_Theta_L_m",
                       "machine_response_ratio", "machine_compliance_C_u", "machine_reference_tuple"):
-            result[field] = "PROHIBITED"
+            result[field] = "NOT_APPLICABLE"
     elif mode == "PRESCRIBED_DYNAMIC_RAMP":
         result.update({"prescribed_pressure_amplitude": "DERIVED", "storage_ratio_S_h": "REQUIRED",
                        "hydraulic_storage_C_h": "DERIVED", "derived_Theta_L_m": "DERIVED"})
         for field in ("machine_response_ratio", "machine_compliance_C_u", "machine_reference_tuple"):
-            result[field] = "PROHIBITED"
+            result[field] = "NOT_APPLICABLE"
     else:
-        result["prescribed_pressure_amplitude"] = "PROHIBITED"
+        result["prescribed_pressure_amplitude"] = "NOT_APPLICABLE"
         result.update({"storage_ratio_S_h": "REQUIRED", "hydraulic_storage_C_h": "DERIVED",
                        "derived_Theta_L_m": "DERIVED", "machine_response_ratio": "REQUIRED",
                        "machine_compliance_C_u": "DERIVED", "machine_reference_tuple": "REQUIRED"})
+    if set(result) != set(FIELDS) or set(result.values()) - set(FIELD_DISPOSITIONS):
+        raise RuntimeError("INCOMPLETE_BOUNDARY_FIELD_TRUTH_TABLE")
+    if any(FIELD_AUTHORITY[field] == "DERIVED_EXECUTION_FIELD" and disposition == "PROVENANCE_ONLY"
+           for field, disposition in result.items()):
+        raise RuntimeError("EXECUTION_FIELD_CANNOT_BE_PROVENANCE_ONLY")
     return result
 
 
@@ -375,13 +438,45 @@ def startup_focusing(base: dict, storage: list[float], boundary_mode: str) -> li
     return [(value / total) * n for value in weights]
 
 
-def evolution_focusing(*, tau: float, flows: list[float], startup: list[float],
+class SectorFlowVector(NamedTuple):
+    values: tuple[float, ...]
+    N: int
+    scale: str
+    G_ref: float | None = None
+    delta_p_ref: float | None = None
+
+
+def q_hat_total_from_flow(flow: SectorFlowVector) -> float:
+    if not isinstance(flow, SectorFlowVector):
+        raise ValueError("UNTAGGED_FLOW_VECTOR_NOT_AUTHORIZED")
+    if type(flow.N) is not int or flow.N not in (4, 8, 16) or len(flow.values) != flow.N:
+        raise ValueError("INVALID_SECTOR_COUNT_FOR_TOTAL_Q_HAT")
+    if flow.scale not in FLOW_SCALES:
+        raise ValueError("UNKNOWN_SECTOR_FLOW_SCALE")
+    if any(isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value)
+           for value in flow.values):
+        raise ValueError("NONFINITE_SECTOR_FLOW")
+    if flow.scale == "WHOLE_NETWORK_SCALED_PER_SECTOR":
+        raise ValueError("UNSUPPORTED_WHOLE_NETWORK_SCALED_PER_SECTOR_INPUT")
+    if flow.scale == "SECTOR_SCALED_DIMENSIONLESS":
+        return sum(float(value) for value in flow.values) / flow.N
+    if any(value is None or isinstance(value, bool) or not isinstance(value, (int, float)) or
+           not math.isfinite(value) or value <= 0 for value in (flow.G_ref, flow.delta_p_ref)):
+        raise ValueError("INVALID_TOTAL_Q_HAT_REFERENCE_SCALE")
+    direct = sum(float(value) for value in flow.values) / (flow.G_ref * flow.delta_p_ref)
+    g_a = flow.G_ref / flow.N
+    equivalent = sum(value / (g_a * flow.delta_p_ref) for value in flow.values) / flow.N
+    if not math.isclose(direct, equivalent, rel_tol=64 * 2.220446049250313e-16, abs_tol=0.0):
+        raise ValueError("INCONSISTENT_DIMENSIONAL_FLOW_NORMALIZATION")
+    return direct
+
+
+def evolution_focusing(*, tau: float, flow: SectorFlowVector, startup: list[float],
                        zero_threshold: float = Q_ZERO_THRESHOLD,
                        startup_tau_max: float = STARTUP_TAU_MAX) -> list[float]:
-    if not all(math.isfinite(value) for value in flows):
-        raise ValueError("STOP_NONFINITE_SECTOR_FLOW")
+    q_total = q_hat_total_from_flow(flow)
+    flows = flow.values
     total = sum(flows)
-    q_total = total_q_hat(flows, sector_count=len(flows), g_ref=1.0, delta_p_ref=1.0)
     if q_total < -zero_threshold or any(value < -zero_threshold for value in flows):
         raise ValueError("STOP_UNEXPECTED_FLOW_REVERSAL")
     if abs(q_total) <= zero_threshold:
@@ -390,19 +485,6 @@ def evolution_focusing(*, tau: float, flows: list[float], startup: list[float],
         raise ValueError("STOP_ZERO_TOTAL_FLOW_OUTSIDE_STARTUP_WINDOW")
     n = len(flows)
     return [(value / total) * n for value in flows]
-
-
-def total_q_hat(sector_q_hat: list[float], *, sector_count: int,
-                g_ref: float, delta_p_ref: float) -> float:
-    """Q/(G_ref*Delta_p_ref) from sector values scaled by G_A=G_ref/N."""
-    if type(sector_count) is not int or sector_count <= 0 or len(sector_q_hat) != sector_count:
-        raise ValueError("INVALID_SECTOR_COUNT_FOR_TOTAL_Q_HAT")
-    if not math.isfinite(g_ref) or not math.isfinite(delta_p_ref) or g_ref <= 0 or delta_p_ref <= 0:
-        raise ValueError("INVALID_TOTAL_Q_HAT_REFERENCE_SCALE")
-    if not all(isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
-               for value in sector_q_hat):
-        raise ValueError("NONFINITE_SECTOR_FLOW")
-    return sum(sector_q_hat) / sector_count
 
 
 def startup_uncertainty(base_gain: float | str, refined_gain: float | str,
@@ -462,96 +544,248 @@ def locate_linear_event(t0: float, value0: float, t1: float, value1: float,
     return t0 + fraction * (t1 - t0)
 
 
-def dense_solve_binary64(matrix: list[list[float]], rhs: list[float]) -> list[float]:
-    """Deterministic dense Gaussian elimination with partial pivoting."""
+class LinearSolveResult(NamedTuple):
+    solution: tuple[float, ...]
+    scaled_residual: float
+    solver_status: str
+    pivot_history: tuple[tuple[int, int, float], ...]
+    row_permutation: tuple[int, ...]
+    failure_reason: str | None
+
+
+class LinearRefinementResult(NamedTuple):
+    base: LinearSolveResult
+    correction: LinearSolveResult
+    corrected_state: tuple[float, ...]
+    corrected_scaled_residual: float
+    status: str
+    failure_reason: str | None
+    correction_steps: int
+
+
+def _linear_failure(reason: str) -> LinearSolveResult:
+    return LinearSolveResult((), math.inf, "FAIL", (), (), reason)
+
+
+def solve_dense_binary64(matrix: list[list[float]], rhs: list[float]) -> LinearSolveResult:
+    """Authoritative binary64 Gaussian solve with scaled partial pivoting."""
+    if not isinstance(matrix, (list, tuple)) or not isinstance(rhs, (list, tuple)):
+        return _linear_failure("INVALID_LINEAR_SYSTEM_CONTAINER")
     n = len(rhs)
-    if n == 0 or len(matrix) != n or any(len(row) != n for row in matrix):
-        raise ValueError("INVALID_LINEAR_SYSTEM_SHAPE")
+    if n == 0 or len(matrix) != n or any(not isinstance(row, (list, tuple)) or len(row) != n
+                                         for row in matrix):
+        return _linear_failure("INVALID_LINEAR_SYSTEM_SHAPE")
     values = [value for row in matrix for value in row] + list(rhs)
     if not all(isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
                for value in values):
-        raise ValueError("NONFINITE_LINEAR_SYSTEM")
-    augmented = [[float(value) for value in row] + [float(rhs[i])] for i, row in enumerate(matrix)]
+        return _linear_failure("NONFINITE_OR_UNSUPPORTED_LINEAR_SYSTEM")
+    original_a = [[float(value) for value in row] for row in matrix]
+    original_b = [float(value) for value in rhs]
+    augmented = [row[:] + [original_b[i]] for i, row in enumerate(original_a)]
+    row_scales = [max(abs(value) for value in row) for row in original_a]
+    if any(not math.isfinite(value) or value == 0.0 for value in row_scales):
+        return _linear_failure("ZERO_OR_NONFINITE_INITIAL_ROW_SCALE")
+    row_ids = list(range(n)); pivots = []
     for column in range(n):
-        pivot = max(range(column, n), key=lambda index: (abs(augmented[index][column]), -index))
-        if abs(augmented[pivot][column]) <= 1.0e-15:
-            raise ValueError("SINGULAR_OR_ILL_CONDITIONED_LINEAR_SYSTEM")
+        candidates = [(abs(augmented[index][column]) / row_scales[index], -row_ids[index], index)
+                      for index in range(column, n)]
+        ratio, _, pivot = max(candidates)
+        if not math.isfinite(ratio) or ratio <= PIVOT_RATIO_FLOOR:
+            return _linear_failure("SCALED_PIVOT_RATIO_AT_OR_BELOW_FLOOR")
         augmented[column], augmented[pivot] = augmented[pivot], augmented[column]
+        row_scales[column], row_scales[pivot] = row_scales[pivot], row_scales[column]
+        row_ids[column], row_ids[pivot] = row_ids[pivot], row_ids[column]
+        pivots.append((column, row_ids[column], ratio))
         divisor = augmented[column][column]
-        for index in range(column, n + 1):
-            augmented[column][index] /= divisor
         for row in range(column + 1, n):
-            factor = augmented[row][column]
+            factor = augmented[row][column] / divisor
             for index in range(column, n + 1):
                 augmented[row][index] -= factor * augmented[column][index]
     solution = [0.0] * n
     for row in range(n - 1, -1, -1):
-        solution[row] = augmented[row][n] - sum(augmented[row][j] * solution[j] for j in range(row + 1, n))
+        pivot = augmented[row][row]
+        ratio = abs(pivot) / row_scales[row]
+        if not math.isfinite(ratio) or ratio <= PIVOT_RATIO_FLOOR:
+            return _linear_failure("SCALED_BACKSUBSTITUTION_PIVOT_AT_OR_BELOW_FLOOR")
+        solution[row] = (augmented[row][n] - sum(augmented[row][j] * solution[j]
+                                                 for j in range(row + 1, n))) / pivot
     if not all(math.isfinite(value) for value in solution):
-        raise ValueError("NONFINITE_LINEAR_SOLUTION")
-    return solution
+        return _linear_failure("NONFINITE_LINEAR_SOLUTION")
+    residual = [sum(original_a[i][j] * solution[j] for j in range(n)) - original_b[i]
+                for i in range(n)]
+    scale = [max(abs(original_b[i]), sum(abs(original_a[i][j]) * abs(solution[j])
+                                        for j in range(n)), 1.0e-14) for i in range(n)]
+    norm = scaled_residual_norm(residual, scale)
+    if not math.isfinite(norm) or norm > LINEAR_RESIDUAL_TOLERANCE:
+        return LinearSolveResult(tuple(solution), norm, "FAIL", tuple(pivots), tuple(row_ids),
+                                 "BASE_SCALED_RESIDUAL_ABOVE_TOLERANCE")
+    return LinearSolveResult(tuple(solution), norm, "PASS", tuple(pivots), tuple(row_ids), None)
 
 
-def linear_refined_state(matrix: list[list[float]], rhs: list[float], base_state: list[float],
-                         *, tolerance: float = 1.0e-12) -> dict:
-    """Apply exactly one A*delta=-r correction to a supplied BASE state."""
-    n = len(rhs)
-    if len(base_state) != n:
-        raise ValueError("INVALID_BASE_LINEAR_STATE")
-    residual0 = [sum(matrix[i][j] * base_state[j] for j in range(n)) - rhs[i] for i in range(n)]
-    scale0 = [max(abs(rhs[i]), sum(abs(matrix[i][j]) * abs(base_state[j]) for j in range(n)), 1.0e-14)
-              for i in range(n)]
-    norm0 = scaled_residual_norm(residual0, scale0)
-    correction = dense_solve_binary64(matrix, [-value for value in residual0])
-    state1 = [value + delta for value, delta in zip(base_state, correction)]
+def linear_refined_state(matrix: list[list[float]], rhs: list[float]) -> LinearRefinementResult:
+    """Obtain authoritative BASE and apply exactly one identical-solver correction."""
+    base = solve_dense_binary64(matrix, rhs)
+    if base.solver_status != "PASS":
+        raise ValueError("LINEAR_REFINED_BASE_SOLVE_FAILED:" + str(base.failure_reason))
+    n = len(rhs); base_state = base.solution
+    residual0 = [sum(float(matrix[i][j]) * base_state[j] for j in range(n)) - float(rhs[i])
+                 for i in range(n)]
+    correction = solve_dense_binary64(matrix, [-value for value in residual0])
+    if correction.solver_status != "PASS":
+        raise ValueError("LINEAR_REFINED_CORRECTION_SOLVE_FAILED:" + str(correction.failure_reason))
+    state1 = [value + delta for value, delta in zip(base_state, correction.solution)]
     residual1 = [sum(matrix[i][j] * state1[j] for j in range(n)) - rhs[i] for i in range(n)]
     scale1 = [max(abs(rhs[i]), sum(abs(matrix[i][j]) * abs(state1[j]) for j in range(n)), 1.0e-14)
               for i in range(n)]
     norm1 = scaled_residual_norm(residual1, scale1)
-    if norm1 > norm0 or norm1 > tolerance:
+    if norm1 > base.scaled_residual or norm1 > LINEAR_RESIDUAL_TOLERANCE:
         raise ValueError("LINEAR_REFINED_RESIDUAL_FAILED")
-    return {"state": state1, "correction": correction, "base_residual_norm": norm0,
-            "corrected_residual_norm": norm1, "correction_steps": 1}
+    return LinearRefinementResult(base, correction, tuple(state1), norm1, "PASS", None, 1)
 
 
-def gain_profile_uncertainty(base_gain: float, refined_gain: float, *,
-                             base_status: str = "COMPLETE", refined_status: str = "COMPLETE",
-                             denominator: float = 1.0, denominator_floor: float = 1.0e-12) -> float:
-    if base_status != "COMPLETE" or refined_status != "COMPLETE":
-        raise ValueError("NUMERICALLY_UNRESOLVED_REQUIRED_PROFILE")
-    if not all(math.isfinite(value) for value in (base_gain, refined_gain, denominator)):
-        raise ValueError("NUMERICALLY_UNRESOLVED_REQUIRED_PROFILE")
+class GainRecord(NamedTuple):
+    subject_case_id: str
+    comparator_case_id: str
+    metric_kind: str
+    numerical_profile: str
+    numerator: float
+    denominator: float
+    gain: float
+    denominator_floor: float
+    denominator_status: str
+    subject_role: str
+    comparator_role: str
+    boundary_mode: str
+    construction_status: str
+
+
+class UncertaintyContract(NamedTuple):
+    subject_case_id: str
+    comparator_case_id: str | None
+    metric_kind: str
+    evaluation_kind: str
+    numerical_profile: str
+    applicability: tuple[tuple[str, bool], ...]
+
+
+def _canonical_map(canonical_rows: list[dict]) -> dict[str, dict]:
+    mapping = {row["case_id"]: row for row in canonical_rows}
+    if len(mapping) != len(canonical_rows):
+        raise ValueError("DUPLICATE_CANONICAL_CASE_ID")
+    return mapping
+
+
+def _validate_comparator_pair(subject: dict, comparator: dict) -> None:
+    if subject["comparator_case_id"] != comparator["case_id"] or subject["case_id"] == comparator["case_id"]:
+        raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_COMPARATOR")
+    if comparator["case_role"] != "STRUCTURAL_COMPARATOR" or comparator["lateral_conductance_ratio"] != "0":
+        raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_COMPARATOR_ROLE")
+    ignored = ("lateral_conductance_ratio", "lateral_edge_coefficient",
+               "lateral_edge_conductance_G_edge", "derived_Theta_L_m", "scientific_role", "case_role")
+    if comparison_key(subject, ignore=ignored) != comparison_key(comparator, ignore=ignored):
+        raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_COMPARATOR_IDENTITY")
+
+
+def build_gain_record(canonical_rows: list[dict], subject_case_id: str, metric_kind: str,
+                      numerical_profile: str, numerator: float, denominator: float,
+                      *, denominator_floor: float = 1.0e-12) -> GainRecord:
+    rows = _canonical_map(canonical_rows)
+    if subject_case_id not in rows:
+        raise ValueError("UNKNOWN_GAIN_SUBJECT")
+    subject = rows[subject_case_id]
+    validate_row_against_expected_fields(subject, _canonical_map(build_rows()))
+    if metric_kind not in METRIC_KINDS[:3] or subject["case_role"] != "ACTIVE_SCIENTIFIC_CASE":
+        raise ValueError("ORDINARY_GAIN_REQUIRES_ACTIVE_SCIENTIFIC_CASE")
+    comparator_id = subject["comparator_case_id"]
+    if comparator_id == NA or comparator_id not in rows:
+        raise ValueError("GAIN_REQUIRES_RESOLVED_COMPARATOR")
+    comparator = rows[comparator_id]
+    validate_row_against_expected_fields(comparator, _canonical_map(build_rows()))
+    _validate_comparator_pair(subject, comparator)
+    static = subject["pressure_mode"] == "PRESCRIBED_STATIC"
+    if static != (metric_kind == "STATIC_GAIN"):
+        raise ValueError("GAIN_METRIC_BOUNDARY_MODE_MISMATCH")
+    profiles = STATIC_NUMERICAL_PROFILES if static else DYNAMIC_NUMERICAL_PROFILES
+    if numerical_profile not in profiles:
+        raise ValueError("GAIN_NUMERICAL_PROFILE_NOT_AUTHORIZED")
+    if any(isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value)
+           for value in (numerator, denominator, denominator_floor)) or denominator_floor < 0:
+        raise ValueError("INVALID_GAIN_NUMERIC_INPUT")
     if abs(denominator) <= denominator_floor:
         raise ValueError("NUMERICALLY_UNRESOLVED_DENOMINATOR_FLOOR")
-    return abs(base_gain - refined_gain)
+    return GainRecord(subject_case_id, comparator_id, metric_kind, numerical_profile,
+                      float(numerator), float(denominator), float(numerator / denominator),
+                      denominator_floor, "PASS", subject["case_role"], comparator["case_role"],
+                      subject["pressure_mode"], "COMPLETE")
 
 
-def uncertainty_applicability(active_row: dict, comparator_row: dict | None,
-                              evaluation_kind: str, metric_kind: str,
-                              execution_status: str) -> dict[str, bool]:
+def gain_profile_uncertainty(base_record: GainRecord, refined_record: GainRecord,
+                             expected_refined_profile: str) -> float:
+    if not isinstance(base_record, GainRecord) or not isinstance(refined_record, GainRecord):
+        raise ValueError("GAIN_UNCERTAINTY_REQUIRES_VALIDATED_RECORDS")
+    if base_record.numerical_profile != "BASE" or refined_record.numerical_profile != expected_refined_profile:
+        raise ValueError("GAIN_PROFILE_MISMATCH")
+    identity = ("subject_case_id", "comparator_case_id", "metric_kind", "subject_role",
+                "comparator_role", "boundary_mode")
+    if any(getattr(base_record, key) != getattr(refined_record, key) for key in identity):
+        raise ValueError("GAIN_RECORD_IDENTITY_MISMATCH")
+    if any(record.construction_status != "COMPLETE" or record.denominator_status != "PASS"
+           for record in (base_record, refined_record)):
+        raise ValueError("NUMERICALLY_UNRESOLVED_REQUIRED_PROFILE")
+    return abs(base_record.gain - refined_record.gain)
+
+
+def derive_uncertainty_contract(canonical_rows: list[dict], subject_case_id: str,
+                                metric_kind: str, evaluation_kind: str,
+                                execution_status: str, numerical_profile: str = "BASE") -> UncertaintyContract:
     if metric_kind not in METRIC_KINDS or evaluation_kind not in ("GAIN", "CONTROL"):
         raise ValueError("UNSUPPORTED_UNCERTAINTY_EVALUATION")
     if execution_status != "COMPLETE":
         raise ValueError("NUMERICALLY_UNRESOLVED_EXECUTION_STATUS")
-    if comparator_row is not None and active_row.get("comparator_case_id") != comparator_row.get("case_id"):
-        raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_COMPARATOR")
-    sector = sector_refinement_nref(active_row) != NA
+    rows = _canonical_map(canonical_rows)
+    if subject_case_id not in rows:
+        raise ValueError("UNKNOWN_UNCERTAINTY_SUBJECT")
+    subject = rows[subject_case_id]
+    validate_row_against_expected_fields(subject, _canonical_map(build_rows()))
+    gain_metric = metric_kind in METRIC_KINDS[:3]
+    if gain_metric != (evaluation_kind == "GAIN"):
+        raise ValueError("METRIC_EVALUATION_KIND_MISMATCH")
+    static_metric = metric_kind in ("STATIC_GAIN", "STATIC_STRUCTURAL_NUMERICAL_CONTROL")
+    static_row = subject["pressure_mode"] == "PRESCRIBED_STATIC"
+    if static_metric != static_row:
+        raise ValueError("METRIC_BOUNDARY_MODE_MISMATCH")
+    profiles = STATIC_NUMERICAL_PROFILES if static_row else DYNAMIC_NUMERICAL_PROFILES
+    if numerical_profile not in profiles:
+        raise ValueError("UNAUTHORIZED_NUMERICAL_PROFILE")
+    comparator_id = None
+    if gain_metric:
+        if subject["case_role"] != "ACTIVE_SCIENTIFIC_CASE":
+            raise ValueError("GAIN_REQUIRES_ACTIVE_SCIENTIFIC_CASE")
+        comparator_id = subject["comparator_case_id"]
+        if comparator_id == NA or comparator_id not in rows:
+            raise ValueError("GAIN_REQUIRES_RESOLVED_COMPARATOR")
+        comparator = rows[comparator_id]
+        validate_row_against_expected_fields(comparator, _canonical_map(build_rows()))
+        _validate_comparator_pair(subject, comparator)
+    elif subject["case_role"] not in ("STRUCTURAL_COMPARATOR", "BOUNDED_STRUCTURAL_CONTROL"):
+        raise ValueError("CONTROL_METRIC_REQUIRES_STRUCTURAL_OR_BOUNDED_CONTROL")
+    sector = sector_refinement_nref(subject) != NA
     table = {
         "STATIC_GAIN": (False, sector, True, False, False),
         "DYNAMIC_ENDPOINT_GAIN": (True, sector, True, False, True),
         "DYNAMIC_INTEGRATED_GAIN": (True, sector, True, True, True),
-        "STRUCTURAL_NUMERICAL_CONTROL": (
-            active_row.get("pressure_mode") != "PRESCRIBED_STATIC", sector, True,
-            False, active_row.get("pressure_mode") != "PRESCRIBED_STATIC"),
+        "STATIC_STRUCTURAL_NUMERICAL_CONTROL": (False, sector, True, False, False),
+        "DYNAMIC_ENDPOINT_STRUCTURAL_NUMERICAL_CONTROL": (True, sector, True, False, True),
+        "DYNAMIC_INTEGRATED_STRUCTURAL_NUMERICAL_CONTROL": (True, sector, True, True, True),
     }
-    return dict(zip(UNCERTAINTY_COMPONENTS, table[metric_kind]))
+    return UncertaintyContract(subject_case_id, comparator_id, metric_kind, evaluation_kind,
+                               numerical_profile, tuple(zip(UNCERTAINTY_COMPONENTS, table[metric_kind])))
 
 
-def combine_uncertainty(components: dict[str, float | str], *, active_row: dict,
-                        comparator_row: dict | None, evaluation_kind: str,
-                        metric_kind: str, execution_status: str = "COMPLETE") -> float:
-    applicable = uncertainty_applicability(active_row, comparator_row, evaluation_kind,
-                                            metric_kind, execution_status)
+def combine_uncertainty(components: dict[str, float | str], contract: UncertaintyContract) -> float:
+    if not isinstance(contract, UncertaintyContract):
+        raise ValueError("AUTHORITATIVE_UNCERTAINTY_CONTRACT_REQUIRED")
+    applicable = dict(contract.applicability)
     if set(components) != set(UNCERTAINTY_COMPONENTS):
         raise ValueError("AUTHORITY_OR_ARTIFACT_INVALID_UNCERTAINTY_COMPONENT_SET")
     total = 0.0
@@ -1010,6 +1244,7 @@ def protocol(rows: list[dict]) -> dict:
         "c1_head": C1_HEAD, "c1_tree": C1_TREE,
         "c2_reviewed_head": C2_HEAD, "c2_reviewed_tree": C2_TREE,
         "c3_reviewed_head": C3_HEAD, "c3_reviewed_tree": C3_TREE,
+        "c4_reviewed_head": C4_HEAD, "c4_reviewed_tree": C4_TREE,
         "change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
         "evidence_mode": "PROSPECTIVE_REDUCED_MODEL_PROTOCOL_CORRECTION",
         "execution_authorized": False,
@@ -1055,6 +1290,9 @@ def protocol(rows: list[dict]) -> dict:
             "closed_enumeration": list(BOUNDARY_MODES),
             "field_disposition_values": list(FIELD_DISPOSITIONS),
             "field_dispositions": {mode: boundary_field_dispositions(mode) for mode in BOUNDARY_MODES},
+            "unassigned_field_count": 0, "fallback_provenance_count": 0,
+            "explicit_provenance_counts": {mode: sum(value == "PROVENANCE_ONLY" for value in
+                boundary_field_dispositions(mode).values()) for mode in BOUNDARY_MODES},
             "PRESCRIBED_STATIC": {"unknowns": ["p_i"], "prescribed": ["p_o_hat=0", "p_b_hat=amplitude"],
                 "equations": "algebraic conservative node balance", "integration_profile": "STATIC_LINEAR_SOLVE_V1",
                 "required": ["prescribed_pressure_amplitude"],
@@ -1094,6 +1332,10 @@ def protocol(rows: list[dict]) -> dict:
                     "INFINITE_NO_EVOLUTION", "INFINITE_NO_EVOLUTION", NA]},
             "multiplier_admissible_interval": "0.25 <= H_i/H_i0 <= 4.0",
             "stop_rule": "outward crossing only; exact inward or tangential contact is admissible",
+            "boundary_atol": MULTIPLIER_BOUNDARY_ATOL,
+            "derivative_atol": MULTIPLIER_DERIVATIVE_ATOL,
+            "event_root_value_atol": EVENT_ROOT_VALUE_ATOL,
+            "state_contexts": list(MULTIPLIER_CONTEXTS),
             "outward_crossing_disposition": MULTIPLIER_STOP,
             "diagnostic_reconstruction_at_contact": True,
             "no_evolution": ["beta=0", "Theta_R=INFINITE_NO_EVOLUTION"],
@@ -1102,6 +1344,9 @@ def protocol(rows: list[dict]) -> dict:
                 "machine_note": "machine compliance changes only the common leading time coefficient",
                 "q_hat_zero_threshold": "1e-14", "startup_tau_max": "1e-6",
                 "Q_hat_total": "Q_total/(G_ref*Delta_p_ref)=(1/N)*sum_i q_hat_i",
+                "flow_scale_enumeration": list(FLOW_SCALES),
+                "authoritative_input": "SectorFlowVector(values,N,scale,G_ref,delta_p_ref)",
+                "unsupported_scale": "WHOLE_NETWORK_SCALED_PER_SECTOR",
                 "branch_operators": "abs(Q_hat_total)<=q_threshold and tau<=startup_tau_max",
                 "refinement_factor": "10", "refined_q_hat_zero_threshold": "1e-15",
                 "refined_startup_tau_max": "1e-7",
@@ -1138,10 +1383,16 @@ def protocol(rows: list[dict]) -> dict:
         "residual_contract": {
             "linear": {"vector": "r=A*p-b", "scale": "s_i=max(abs(b_i),sum_j(abs(A_ij)*abs(p_j)),1e-14)",
                 "norm": "max_i(abs(r_i)/s_i)", "tolerance": "1e-12", "operator": "<=", "retry": "NONE"},
-            "LINEAR_REFINED": {"api": "sci_lc_001a_protocol.dense_solve_binary64",
-                "algorithm": "binary64 dense Gaussian elimination; deterministic partial pivot; ascending elimination",
+            "BASE": {"api": "sci_lc_001a_protocol.solve_dense_binary64",
+                "dtype": "IEEE-754 binary64", "layout": "canonical logical row-major",
+                "algorithm": "dense Gaussian elimination with scaled partial pivoting",
+                "pivot_ratio_floor": PIVOT_RATIO_FLOOR,
+                "pivot_tie_break": "lowest original canonical row index", "caller_state_allowed": False},
+            "LINEAR_REFINED": {"api": "sci_lc_001a_protocol.linear_refined_state",
+                "algorithm": "authoritative BASE then one correction using identical binary64 scaled-pivot solver",
                 "steps": ["r0=A*p0-b", "solve A*delta_p=-r0 exactly once", "p1=p0+delta_p",
                     "require residual1<=residual0 and residual1<=1e-12"],
+                "base_source": "solve_dense_binary64(A,b); external p0 prohibited",
                 "dynamic_application": "separate complete trajectory; correction at every algebraic solve",
                 "failure": "NUMERICALLY_UNRESOLVED;NO_RETRY_OR_SUBSTITUTION"},
             "stage_a_nonlinear_fixed_point_solve": "NOT_USED",
@@ -1157,6 +1408,12 @@ def protocol(rows: list[dict]) -> dict:
             "total_flow": "1e-14", "generic_ratio_denominator": "1e-12",
             "fallback": {"uniform": "STRUCTURAL_IDENTITY", "fourier": "USE_SEEDED_MODE_IF_H_Q_FLOORED",
                          "otherwise": "NUMERICALLY_UNRESOLVED"}},
+        "gain_authority": {"record": "GainRecord", "constructor": "build_gain_record",
+            "subject": "validated canonical ACTIVE_SCIENTIFIC_CASE",
+            "comparator": "resolved internally and validated as exact Lambda-zero STRUCTURAL_COMPARATOR",
+            "denominator_required": True, "denominator_default": False,
+            "gate": "abs(denominator)<=denominator_floor -> NUMERICALLY_UNRESOLVED",
+            "structural_control_path": "distinct; ordinary gain construction prohibited"},
         "uncertainty": {"allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
             "rationale": "2-percent relative ceiling capped at 0.02 gain units; exact structural identities use analytical preclassification",
             "components": {
@@ -1166,12 +1423,14 @@ def protocol(rows: list[dict]) -> dict:
                 "u_sampling": "abs(G_1001-G_2001) reconstructed from the same accepted dense output",
                 "u_startup": "abs(G_base_startup_thresholds-G_refined_startup_thresholds)"},
             "combination": "u_G=u_integrator+u_sector+u_linear+u_sampling+u_startup",
-            "applicability_authority": "uncertainty_applicability(validated active,comparator,evaluation,metric,status)",
+            "applicability_authority": "derive_uncertainty_contract(canonical_rows,subject_case_id,metric,evaluation,status,profile)",
             "applicability_table": {
                 "STATIC_GAIN": [NA, "SECTOR_PREDICATE", "APPLICABLE", NA, NA],
                 "DYNAMIC_ENDPOINT_GAIN": ["APPLICABLE", "SECTOR_PREDICATE", "APPLICABLE", NA, "APPLICABLE"],
                 "DYNAMIC_INTEGRATED_GAIN": ["APPLICABLE", "SECTOR_PREDICATE", "APPLICABLE", "APPLICABLE", "APPLICABLE"],
-                "STRUCTURAL_NUMERICAL_CONTROL": "mode-specific; never regime-classified"},
+                "STATIC_STRUCTURAL_NUMERICAL_CONTROL": [NA, "SECTOR_PREDICATE", "APPLICABLE", NA, NA],
+                "DYNAMIC_ENDPOINT_STRUCTURAL_NUMERICAL_CONTROL": ["APPLICABLE", "SECTOR_PREDICATE", "APPLICABLE", NA, "APPLICABLE"],
+                "DYNAMIC_INTEGRATED_STRUCTURAL_NUMERICAL_CONTROL": ["APPLICABLE", "SECTOR_PREDICATE", "APPLICABLE", "APPLICABLE", "APPLICABLE"]},
             "sentinels": {"finite_nonnegative": "include once", "NOT_APPLICABLE": "zero only when predicate false",
                 "NOT_APPLICABLE_REQUIRED": "AUTHORITY_OR_ARTIFACT_INVALID", "UNAVAILABLE": "NUMERICALLY_UNRESOLVED",
                 "missing_negative_nonfinite_unsupported": "AUTHORITY_OR_ARTIFACT_INVALID"},

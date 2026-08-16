@@ -6,9 +6,12 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `PROSPECTIVE_PROTOCOL_C4_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW`.
+Status: `PROSPECTIVE_PROTOCOL_C5_CORRECTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`.
 
-Correction C4 closes exhaustive row derivation, active/no-evolution timing,
+Correction C5 additionally closes the authoritative BASE solve, canonical gain
+and denominator construction, applicability and flow-scale authority,
+approximate multiplier contacts, and complete boundary-field tables. Correction
+C4 closed exhaustive row derivation, active/no-evolution timing,
 deterministic one-step linear refinement, authoritative uncertainty
 applicability, N-invariant total-flow startup normalization, the fixed 3,666-key
 numerical companion graph, and closed-interval outward-crossing multiplier

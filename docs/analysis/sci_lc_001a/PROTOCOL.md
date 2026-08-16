@@ -1,8 +1,8 @@
-# SCI-LC-001A Stage-A prospective protocol — Correction C4
+# SCI-LC-001A Stage-A prospective protocol — Correction C5
 
-Task: `SCI-LC-001A-C4-DETERMINISTIC-EXECUTOR-CONTRACT-CLOSURE-2026-08-16`
+Task: `SCI-LC-001A-C5-FINAL-EXECUTOR-INTERFACE-CLOSURE-2026-08-16`
 
-Status: `PROSPECTIVE_PROTOCOL_C4_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW`
+Status: `PROSPECTIVE_PROTOCOL_C5_CORRECTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Execution is not
 authorized. This package defines a reduced diagnostic model; it does not change
@@ -40,7 +40,7 @@ trajectory or classification.
     "structural_comparator_rows": 362
   },
   "stage_a_hard_maximum": 1280,
-  "status": "PROSPECTIVE_PROTOCOL_C4_CORRECTED_PENDING_INDEPENDENT_PRE_EXECUTION_REVIEW",
+  "status": "PROSPECTIVE_PROTOCOL_C5_CORRECTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
   "uncertainty": "u_limit(G)=min(0.02,0.02*abs(G))"
 }
 ```
@@ -113,7 +113,10 @@ Rotation/reflection permutes vectors and preserves scalar observables.
 Every row instantiates exactly one of these modes. Machine-readable authority
 assigns every serialized field exactly one of `REQUIRED`, `PROHIBITED`,
 `DERIVED`, `NOT_APPLICABLE`, or `PROVENANCE_ONLY`; the validator enforces the
-full table and derived `C_h` and `C_u` identities.
+full table and derived `C_h` and `C_u` identities. The table is constructed
+from explicit, exhaustive per-mode partitions: unassigned fields and fallback
+provenance are both forbidden and counted as zero. No execution-affecting
+field may be provenance-only.
 
 - `PRESCRIBED_STATIC`: unknown `p_i`; `p_o_hat=0` and constant `p_b_hat`
   are prescribed; conservative node balances are algebraic. Storage and all
@@ -162,7 +165,11 @@ Machine compliance changes only the common time coefficient and cancels from
 the normalized limit; lateral exchange enters at higher order. This exact
 mode-common dynamic limit is used at `tau=0`. Sector flow is scaled by
 `G_A Delta_p_ref`, while the branch uses
-`Q_hat_total=Q_total/(G_ref Delta_p_ref)=(1/N)sum_i(q_hat_i)`. For
+`Q_hat_total=Q_total/(G_ref Delta_p_ref)=(1/N)sum_i(q_hat_i)`. Authoritative
+calls carry flows in a tagged `SectorFlowVector`. Accepted scales are
+`SECTOR_SCALED_DIMENSIONLESS` and `DIMENSIONAL_SECTOR_FLOW`; dimensional input
+requires positive `G_ref` and `Delta_p_ref`. `WHOLE_NETWORK_SCALED_PER_SECTOR`,
+untagged vectors, and unknown scales are rejected. For
 `|Q_hat_total|<=1e-14` it may be
 used only through `tau<=1e-6`. A mandatory companion changes only both branch
 thresholds by the frozen factor 10 (`1e-15` flow and `1e-7` time), and
@@ -182,6 +189,12 @@ outward derivative stops immediately. The exact root state may be reconstructed
 diagnostically, but may not classify. There is no clipping or aggregate
 renormalization. `beta=0` and `Theta_R=INFINITE_NO_EVOLUTION` are exact fixed
 controls.
+
+Contact uses relative tolerance zero and frozen absolute tolerances: multiplier
+boundary `1e-12`, multiplier derivative `1e-14`, and located-root value
+`1e-10`. Context is `INITIAL_STATE`, `ACCEPTED_STEP`, or `LOCATED_EVENT_ROOT`.
+A located root names its boundary and reconstructs within the root tolerance.
+The helper computes `dm/dt=beta*m*dx/dt`; callers cannot supply an outward flag.
 
 ## Integration, events, residuals, and sampling
 
@@ -211,8 +224,13 @@ Linear residuals use `r=A p-b`,
 `max_i |r_i|/s_i <=1e-12`. Equality passes. Nonfinite values fail. No retry is allowed and all
 failure routing precedes scientific classification.
 
-`LINEAR_REFINED` uses the same validated `A,b` and deterministic binary64 dense
-Gaussian elimination with partial pivoting. From BASE `p0`, compute
+BASE uses the sole authoritative `solve_dense_binary64(A,b)`: IEEE-754 binary64
+dense Gaussian elimination with scaled partial pivoting. Initial row scale is
+`max_j |A_ij|`; selection maximizes `|A_rk|/row_scale_r`, ties use the lowest
+original canonical row index, and ratio `<=64*epsilon_binary64` fails. BASE
+must pass the scaled residual above. Caller-provided BASE state is prohibited.
+
+`LINEAR_REFINED` internally obtains BASE `p0` using that same solver, then computes
 `r0=A p0-b`, solve `A delta_p=-r0` exactly once, and set `p1=p0+delta_p`.
 The corrected residual must be finite, no larger than the BASE residual, and
 `<=1e-12`. Static gains use independently corrected active/comparator states;
@@ -228,6 +246,14 @@ gains, growth rate, and persistence. Floors are `H_q=1e-12`, seeded amplitude
 `1e-12`, total dimensionless flow `1e-14`, and generic ratio denominator
 `1e-12`. A denominator at or below its floor is unavailable, not silently
 floored into a gain; an exact analytical control uses its identity path.
+
+Ordinary gains are immutable `GainRecord` values built only from a validated
+canonical active case. Construction resolves the exact Lambda-zero structural
+comparator, requires an explicit numerator and denominator, applies
+`abs(denominator)<=floor` as an unresolved gate, and records both. There is no
+denominator default; structural controls use a distinct evaluation path.
+Uncertainty applicability starts from a canonical case ID and validates role,
+boundary mode, metric, profile, and comparator before deriving components.
 
 For gain `G`, all uncertainty terms are nonnegative absolute gain units:
 

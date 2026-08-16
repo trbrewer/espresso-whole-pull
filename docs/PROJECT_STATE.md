@@ -27,10 +27,10 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active modeling task: `SCI-LC-001A protocol correction C4`
+- Active modeling task: `SCI-LC-001A protocol correction C5`
 - Execution state: `NOT_STARTED`
 - Protocol state:
-  `C4_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW`
+  `C5_CORRECTED_PENDING_BOUNDED_INDEPENDENT_EXACT_HEAD_REVIEW`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
 - Current next action:
