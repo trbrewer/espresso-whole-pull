@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 404,
-  "total_uncompressed_bytes_excluding_manifest": 6220637,
-  "aggregate_source_sha256": "fdfd848412bb994bcc1d3665d91ad215d9122633f80ff8f263006859ea3b12a0",
-  "aggregate_sha256": "fdfd848412bb994bcc1d3665d91ad215d9122633f80ff8f263006859ea3b12a0",
+  "total_uncompressed_bytes_excluding_manifest": 6221446,
+  "aggregate_source_sha256": "dd93f9060a5cfa71060dc1fcc7a17833bd3c1c3827b9009362d24f48ff2e53cc",
+  "aggregate_sha256": "dd93f9060a5cfa71060dc1fcc7a17833bd3c1c3827b9009362d24f48ff2e53cc",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -479,8 +479,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/DECISION_AND_PARALLEL_LANE_CHARTER.md": {
-      "sha256": "678418ab01f46f860ea3d597b338190e7e2aa757e2f3da7f3f6ca2f129d835cf",
-      "bytes": 6066,
+      "sha256": "ae2417e9fafea47ee71de25754f4af31c4481848bd93b84b57d548b3e3d4a2e6",
+      "bytes": 6258,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/DRAFT_PR_BODY.md": {
@@ -494,8 +494,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/PARALLEL_LANE_DECLARATION.json": {
-      "sha256": "67e6bbc3380d7a79ca8bc7a00bf9c922a4b0074df9d0fea39bc3a6bf3cb16cf5",
-      "bytes": 2338,
+      "sha256": "9ed977bfcc3b554d2298917b5426f62a2c13f7ffd891463e8679d10ab89616c0",
+      "bytes": 2322,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/PROTOCOL.md": {
@@ -504,8 +504,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/README.md": {
-      "sha256": "b3cfe66534eb948572d38156f2e592b8bb3d852d53752932822b00acd4ae2a19",
-      "bytes": 846,
+      "sha256": "ec1852ad794524a3e2ed765e5bbe227c4f5ac22f654636c2285e477123cc33f7",
+      "bytes": 998,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1124,8 +1124,8 @@
       "git_mode": "100755"
     },
     "scripts/sci_md_002b.py": {
-      "sha256": "9e81bd4d1ce4aa918db1f3bbc3147de1fc8a74fc4b69a397e21ce047163f6a12",
-      "bytes": 30672,
+      "sha256": "e5680e59ed54c5c620d40bbeb53460fa68b4daacb6073328b1d677e610faa872",
+      "bytes": 30871,
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
@@ -1459,8 +1459,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_002b.py": {
-      "sha256": "092b63ce8132c1c1fa40a0b5da55d56419a5b36c9d39ef7ed28e3cd6f57d17a7",
-      "bytes": 8486,
+      "sha256": "40f454015991962a00f57af2e20c94e1a78f4623b4534c6f005e54af6f332857",
+      "bytes": 8768,
       "git_mode": "100644"
     },
     "tests/test_val001_administrative_semantics.py": {
