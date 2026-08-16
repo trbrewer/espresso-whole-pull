@@ -293,11 +293,13 @@ def reduce_bundle(bundle_arg,authority_arg,output=None):
  return result
 
 def pilot_run(bundle_arg):
- b=safe_bundle(bundle_arg);rows={r["case_id"]:r for r in matrix_rows()};start=time.perf_counter();records=[];ledger=b/"process_ledger.jsonl";b.mkdir(parents=True,exist_ok=True)
- with ledger.open("a") as f:f.write(canonical({"task_id":TASK,"pid":os.getpid(),"parent_pid":os.getppid(),"command":" ".join(sys.argv),"working_directory":str(ROOT),"start_utc":utc(),"status":"RUNNING_PILOT_ATTEMPT3"}))
+ b=safe_bundle(bundle_arg);rows={r["case_id"]:r for r in matrix_rows()};start=time.perf_counter();records=[];ledger=b/"process_ledger.jsonl";b.mkdir(parents=True,exist_ok=True);pilot_identity=b.name
+ with ledger.open("a") as f:f.write(canonical({"task_id":TASK,"pid":os.getpid(),"parent_pid":os.getppid(),"command":" ".join(sys.argv),"working_directory":str(ROOT),"pilot_identity":pilot_identity,"start_utc":utc(),"status":"RUNNING"}))
  for cid in PILOT_IDS:
   result=simulate(rows[cid]);rec={"schema_version":RECORD_SCHEMA,"task_id":TASK,"lane_id":LANE_ID,"case_id":cid,"source_head":git("rev-parse","HEAD"),"source_tree":git("rev-parse","HEAD^{tree}"),"source_overlay_sha256":sha(OVERLAY),"parameters":rows[cid],"execution_status":"COMPLETE","result":result,"pilot_only":True,"scientific_reduction_authorized":False};atomic_record(b/"case_records",cid,rec);records.append(rec)
- m=manifest(b,"PILOT_NO_ADJUDICATIVE_AUTHORITY",list(PILOT_IDS));timing={"row_count":len(records),"completion_count":len(records),"failure_count":0,"wall_s":time.perf_counter()-start,"peak_rss_bytes":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,"manifest_sha256":sha(b/"manifest.json"),"scientific_reducer_ran":False,"source_ordering_calculated":False,"complete_adjudicative_triplet":False};(b/"timing.json").write_text(canonical(timing));return timing
+ m=manifest(b,"PILOT_NO_ADJUDICATIVE_AUTHORITY",list(PILOT_IDS));timing={"row_count":len(records),"completion_count":len(records),"failure_count":0,"wall_s":time.perf_counter()-start,"peak_rss_bytes":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,"manifest_sha256":sha(b/"manifest.json"),"scientific_reducer_ran":False,"source_ordering_calculated":False,"complete_adjudicative_triplet":False};(b/"timing.json").write_text(canonical(timing))
+ with ledger.open("a") as f:f.write(canonical({"task_id":TASK,"pid":os.getpid(),"parent_pid":os.getppid(),"pilot_identity":pilot_identity,"completion_utc":utc(),"status":"COMPLETE","completion_count":len(records),"failure_count":0}))
+ return timing
 
 def references():
  h=load_histories();const=nominal_rows(9,10);ci=cumulative_integral(const);k=hydraulic_anchor(h);s=front_from_integral(ci[-1],k);closed=math.sqrt(2*k*(9e5+PCAP)*10/(MU*PHI_WET));mo=swelling_ratio(50e-6,10,D0,.1,32)

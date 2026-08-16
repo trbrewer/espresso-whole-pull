@@ -35,6 +35,10 @@ class CorrectedPackage(unittest.TestCase):
  def test_synthetic_accommodation_controls_have_explicit_pressure_fixture(self):
   row=next(x for x in md.matrix_rows() if x["case_id"]=="A0-ACCOM-FIXED-E");result=md.simulate(row)
   self.assertEqual(result["terminal_pressure_pa"],9e5);self.assertEqual(result["status"],"COMPLETE")
+ def test_pilot_ledger_records_matching_start_and_completion(self):
+  with tempfile.TemporaryDirectory(prefix="SCI_MD_002B_attempt_fixture_") as d:
+   b=pathlib.Path(d)/"attempt_fixture";md.pilot_run(b);entries=[json.loads(x) for x in (b/"process_ledger.jsonl").read_text().splitlines()]
+   self.assertEqual([x["status"] for x in entries],["RUNNING","COMPLETE"]);self.assertTrue(all(x["pilot_identity"]=="attempt_fixture" for x in entries))
  def test_matrix_exact_refinement_coverage(self):
   rows=md.matrix_rows();ids={x["case_id"] for x in rows};self.assertEqual(len(rows),456);self.assertLessEqual(len(rows),2500)
   for x in rows:
