@@ -18,7 +18,7 @@
   "source_head": "e9392318946700135bdaee0e08c8379f9e0da4e0",
   "source_ordering_calculated": false,
   "source_tree": "071d437f56c89579d98f5bc1b3b156f9d3283cdb",
-  "status": "PASS_NON_ADJUDICATIVE_PILOT",
+  "status": "DIAGNOSTIC_ONLY_INVALIDATED_BY_STANDARD_LIBRARY_PORTABILITY_CORRECTION",
   "task_id": "SCI-MD-002B",
   "wall_s": 20.974339701002464
 }

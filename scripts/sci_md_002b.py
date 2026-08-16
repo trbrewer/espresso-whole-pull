@@ -24,9 +24,6 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-import numpy as np
-from scipy.integrate import solve_ivp
-
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "validation/cases/sci_md_002b"
 OVERLAY = ROOT / "validation/cases/val_corpus_001/results/VAL_CORPUS_001_OVERLAYS_V3.json"
@@ -117,9 +114,24 @@ def foster_front(t: float, pressure_pa: float, k0: float, phi: float = PHI0, pca
     return math.sqrt(2 * k0 * (pressure_pa + pcap) * t / (MU * phi))
 
 
-def foster_wetting_times(pressure_pa: float, k0: float, cells: int) -> np.ndarray:
-    centers = (np.arange(cells) + 0.5) * H0 / cells
-    return MU * PHI0 * centers**2 / (2 * k0 * (pressure_pa + PCAP))
+def foster_wetting_times(pressure_pa: float, k0: float, cells: int) -> list[float]:
+    centers = [(i + 0.5) * H0 / cells for i in range(cells)]
+    return [MU * PHI0 * z*z / (2 * k0 * (pressure_pa + PCAP)) for z in centers]
+
+
+def solve_tridiagonal(lower: list[float], diagonal: list[float], upper: list[float], rhs: list[float]) -> list[float]:
+    """Deterministic Thomas solve for a strictly diagonally dominant system."""
+    n = len(diagonal)
+    c, d = upper[:], rhs[:]
+    b = diagonal[:]
+    for i in range(1, n):
+        factor = lower[i] / b[i-1]
+        b[i] -= factor*c[i-1]
+        d[i] -= factor*d[i-1]
+    out = [0.0]*n
+    out[-1] = d[-1]/b[-1]
+    for i in range(n-2, -1, -1): out[i] = (d[i]-c[i]*out[i+1])/b[i]
+    return out
 
 
 @lru_cache(maxsize=4096)
@@ -129,23 +141,36 @@ def swelling_volume_ratio(radius_m: float, age_s: float, diffusivity: float, cma
         return 1.0
     if not (radius_m > 0 and diffusivity > 0 and 0 < cmax < 1 and radial_n >= 8):
         raise ValueError("invalid swelling primitive")
-    r = np.linspace(0.0, radius_m, radial_n + 1)
-    dr = radius_m / radial_n
-
-    def rhs(_t: float, c: np.ndarray) -> np.ndarray:
-        full = np.empty(radial_n + 1)
-        full[:-1], full[-1] = c, cmax
-        lap = np.empty(radial_n)
-        lap[1:] = ((full[2:] - 2 * full[1:-1] + full[:-2]) / dr**2
-                   + 2 / r[1:-1] * (full[2:] - full[:-2]) / (2 * dr))
-        lap[0] = 6 * (full[1] - full[0]) / dr**2
-        return diffusivity * (1 - full[:-1]) * lap
-
-    sol = solve_ivp(rhs, (0, age_s), np.zeros(radial_n), method="BDF", t_eval=[age_s], rtol=2e-8, atol=2e-10)
-    if not sol.success or not np.all(np.isfinite(sol.y)):
-        raise RuntimeError("swelling PDE failed")
-    c = np.append(sol.y[:, -1], cmax)
-    return float(3 / radius_m**3 * np.trapz(r**2 / (1 - c), r))
+    # Dimensionless implicit method of lines.  Picard-lagging (1-c) keeps each
+    # step tridiagonal and positivity-preserving without clipping.  The step
+    # cap is frozen before scientific execution.
+    tau_end = diffusivity*age_s/(radius_m*radius_m)
+    steps = max(1, min(12000, math.ceil(tau_end/0.005)))
+    if steps == 12000 and tau_end > 60:
+        # At this dimensionless age the bounded Dirichlet problem is at its
+        # uniform asymptote to far below the declared PDE discretization error.
+        return 1/(1-cmax)
+    dtau, dx = tau_end/steps, 1/radial_n
+    c = [0.0]*radial_n
+    for _ in range(steps):
+        lower, diagonal, upper, right = [0.0]*radial_n, [0.0]*radial_n, [0.0]*radial_n, c[:]
+        fac = dtau*(1-c[0])/(dx*dx)
+        diagonal[0], upper[0] = 1+6*fac, -6*fac
+        for i in range(1, radial_n):
+            x = i*dx; fac = dtau*(1-c[i])
+            lo, hi = 1/(dx*dx)-1/(x*dx), 1/(dx*dx)+1/(x*dx)
+            lower[i], diagonal[i] = -fac*lo, 1+2*fac/(dx*dx)
+            if i < radial_n-1: upper[i] = -fac*hi
+            else: right[i] += fac*hi*cmax
+        c = solve_tridiagonal(lower, diagonal, upper, right)
+        if any((not math.isfinite(x) or x < 0 or x >= 1) for x in c):
+            raise RuntimeError("swelling PDE physical-state failure")
+    full = c+[cmax]
+    integral = 0.0
+    for i in range(radial_n):
+        x0, x1 = i*dx, (i+1)*dx
+        integral += 0.5*dx*(x0*x0/(1-full[i]) + x1*x1/(1-full[i+1]))
+    return 3*integral
 
 
 def particle_state(powder: str, age_s: float, diffusivity: float, cmax: float, radial_n: int) -> tuple[float, float]:
@@ -257,6 +282,7 @@ def protocol(matrix_hash: str | None = None) -> dict[str, Any]:
         "parameter_provenance": {"Mo powders/D0/cmax0": "PUCKWORKS_PINNED_REFERENCE", "pressure/report time/flow targets": "EWP_GOVERNED_SOURCE", "axis multipliers/accommodation/refinement": "SYNTHETIC_SCREEN_BOUND", "identities": "DERIVED_IDENTITY"},
         "gates": ["AUTHORITY_AND_ARTIFACT_VALIDITY", "REFERENCE_AND_NUMERICAL_VALIDITY", "CONSERVATION_AND_PHYSICAL_STATE_VALIDITY", "RESISTANCE_DIRECTION", "PRESSURE_ORDERING", "TEMPORAL_SIGNATURE", "ASSUMPTION_DEPENDENCE", "PARTICLE_SIZE_AND_GRIND_IDENTIFIABILITY", "AGGREGATE_COMPARISON"],
         "ordering_rule": {"margins": ["M59=Q5-Q9", "M911=Q9-Q11"], "uncertainty": "maximum absolute matched base/refined difference for each margin", "pass": "both lower bounds > 0", "unresolved": "either interval includes zero", "reject": "either upper bound <= 0"},
+        "numerical_tolerances": {"pinned_mo_sphere_volume_ratio_absolute": 0.0001, "matrix_generation": "exact", "conservation_absolute_m3": 1e-12},
         "physical_bounds": ["finite complete trajectories", "0<=front<=H0", "monotonic wetting", "monotonic uptake", "positive radii/volume/porosity/permeability/resistance", "nonnegative pore volume", "no inversion", "no clipping"],
         "stop_conditions": ["AUTHORITY_MISMATCH", "HASH_MISMATCH", "SOURCE_MAPPING_INVALID", "RIGHTS_INVALID", "MATRIX_DESIGN_EXCEEDS_SECONDARY_LANE_BUDGET", "PHYSICAL_BOUND_FAILURE", "CLIPPING_REQUIRED", "TWO_WAY_COUPLING_DESIGN_BLOCKED"],
         "taxonomy": ["SCI_MD_002B_REJECTED_WRONG_RESISTANCE_DIRECTION", "SCI_MD_002B_REJECTED_WRONG_PRESSURE_ORDERING", "SCI_MD_002B_PRESSURE_ORDERING_NUMERICALLY_UNRESOLVED", "SCI_MD_002B_WETTING_AGE_SWELLING_CAPABILITY_SURVIVES_BOUNDED_SCREEN", "SCI_MD_002B_CAPABILITY_DEPENDS_ON_FIXED_HEIGHT_EXTREME", "SCI_MD_002B_CAPABILITY_DEPENDS_ON_UNMAPPED_PARTICLE_SIZE", "SCI_MD_002B_ONE_WAY_SURVIVES_TWO_WAY_DESIGN_BLOCKED", "SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED", "SCI_MD_002B_BED_ACCOMMODATION_MODEL_DESIGN_BLOCKED", "SCI_MD_002B_ADDITIONAL_SWELLING_AND_DEFORMATION_DATA_REQUIRED", "SCI_MD_002B_MODEL_OR_AUTHORITY_INVALID", "SCI_MD_002B_NUMERICAL_EXECUTION_INVALID", "SCI_MD_002B_COMBINED_MECHANISM_NOT_AUTHORIZED", "SCI_MD_002B_PREEXECUTION_PACKAGE_COMPLETE_PENDING_INDEPENDENT_REVIEW"],
@@ -308,7 +334,7 @@ def simulate(row: dict[str, Any]) -> dict[str, Any]:
     k0 = hydraulic_anchor()
     report_t = source_conditions().get(int(pbar), {"report_time_s": 30.0})["report_time_s"]
     cells = int(row["axial_cells"])
-    wet = np.zeros(cells) if row["coupling"] == "SIMULTANEOUS" else foster_wetting_times(p, k0, cells)
+    wet = [0.0]*cells if row["coupling"] == "SIMULTANEOUS" else foster_wetting_times(p, k0, cells)
     if row["coupling"] == "FOSTER_CLOSED_FORM":
         return {"status": "PASS", "front_m": min(H0, foster_front(report_t, p, k0)), "full_wetting_s": MU * PHI0 * H0**2 / (2*k0*(p+PCAP))}
     resistances, states = [], []
@@ -318,7 +344,7 @@ def simulate(row: dict[str, Any]) -> dict[str, Any]:
         state = accommodation_state(sr, dr, row["accommodation"])
         resistances.append(state["resistance_ratio"])
         states.append(state)
-    rrel = float(np.mean(resistances))
+    rrel = sum(resistances)/len(resistances)
     q = k0 * AREA * p / (MU * H0 * rrel)
     full = MU * PHI0 * H0**2 / (2*k0*(p+PCAP))
     return {"status": "PASS", "pressure_bar": pbar, "report_time_s": report_t, "first_drip_s": full,
@@ -326,7 +352,7 @@ def simulate(row: dict[str, Any]) -> dict[str, Any]:
             "swelling_storage_uptake_m3_s": 0.0, "outlet_flow_m3_s": q if report_t >= full else 0.0,
             "outlet_flow_kg_s": q * RHO if report_t >= full else 0.0, "relative_resistance": rrel,
             "min_porosity": min(s["porosity"] for s in states), "max_height_ratio": max(s["height_ratio"] for s in states),
-            "min_permeability_ratio": min(s["permeability_ratio"] for s in states), "wetting_times_s": wet.tolist(),
+            "min_permeability_ratio": min(s["permeability_ratio"] for s in states), "wetting_times_s": wet,
             "liquid_balance_residual_m3": 0.0, "clipping": False}
 
 

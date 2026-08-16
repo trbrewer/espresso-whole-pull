@@ -98,6 +98,11 @@
     "serial_resistance": "R/R0=sum_j[(h_j/h0_j)/(k_j/k0)]/N",
     "two_way": "SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED: distributed swelling storage and moving-volume balance require unsupported closure"
   },
+  "numerical_tolerances": {
+    "conservation_absolute_m3": 1e-12,
+    "matrix_generation": "exact",
+    "pinned_mo_sphere_volume_ratio_absolute": 0.0001
+  },
   "ordering_rule": {
     "margins": [
       "M59=Q5-Q9",

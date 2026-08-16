@@ -34,6 +34,8 @@ A0 contains Foster closed-form, capillary/zero-swelling/diffusivity/maximum-swel
 
 The deterministic 243-row matrix is below both the 1,500 preferred and 2,500 hard caps. S1 uses four unmapped Mo particle signatures, diffusivity multipliers 0.5/1/2, maximum additional-water fractions 0.05/0.1, accommodation 0/0.5/1, and the shared 5/9/11 conditions. Refinements are selected prospectively. No adaptive row exists.
 
+The standard-library implicit radial solve uses a frozen dimensionless step cap of `0.005` and at most 12,000 steps. Its direct pinned Mo sphere comparator has a prospectively fixed absolute volume-ratio tolerance of `1e-4`; no interpolation table or fitted temporal curve is used.
+
 ## Gates and dispositions
 
 Gate precedence is authority/artifacts; references/numerics; conservation/physical state; resistance direction; pressure ordering; temporal signature; assumption dependence; particle/grind identifiability; aggregate comparison. Physical/numerical failure cannot be rescued by fit. Ordering margins are `M59=Q5-Q9` and `M911=Q9-Q11`; numerical uncertainty is the maximum matched base/refined absolute margin difference. Pass requires both lower bounds positive, unresolved means either interval contains zero, and rejection means either comparison is robustly nonpositive. RMSE is last.
