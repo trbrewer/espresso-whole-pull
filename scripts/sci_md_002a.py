@@ -20,6 +20,11 @@ def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def git(*args): return subprocess.check_output(["git",*args],cwd=ROOT,text=True).strip()
 def j_integral(x,phi=PHI):
     if not 0<=x<1 or not 0<phi<1: raise ValueError("finite-porosity integral outside 0<=x<1")
+    if x<1e-3:
+        if x==0: return 0.
+        n=8; h=x/n
+        def f(s): return (1-s)**3/(1-phi*s)
+        return h/3*(f(0)+f(x)+sum((4 if i%2 else 2)*f(i*h) for i in range(1,n)))
     p=phi
     return x*x*(-3/(2*p)+1/(2*p*p))+x*(3/p-3/(p*p)+1/(p**3))+x**3/(3*p)-(p-1)**3*math.log1p(-p*x)/(p**4)
 def permeability_ratio(x,phi=PHI): return (1-x)**3/(1-phi*x)

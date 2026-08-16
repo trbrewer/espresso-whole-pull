@@ -25,6 +25,9 @@ class FreezeTests(unittest.TestCase):
         self.assertLess(abs(sigma-exact)/target,1e-3)
     def test_zero_and_frozen_controls(self):
         self.assertEqual(md2.j_integral(0),0); self.assertEqual(md2.bed_ratio(0),1); self.assertEqual(md2.porosity(0),md2.PHI); self.assertGreater(md2.conductance(0,1239155,1e-15),0)
+        for x in (1e-12,1e-9,1e-6,1e-4):
+            self.assertTrue(0<md2.j_integral(x)<x)
+            self.assertTrue(0<md2.bed_ratio(x)<=1)
     def test_compaction_resistance_direction_is_separate_from_flow_order(self):
         pc,k0=1239155,2e-15
         pressures=(5e5,9e5,11e5)
