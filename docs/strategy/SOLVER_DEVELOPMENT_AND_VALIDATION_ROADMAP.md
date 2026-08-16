@@ -1,9 +1,11 @@
 # Solver Development and Validation Roadmap
 
-The enduring forward scientific sequence, merged SCI-MD-001 result, and active XSV-ENS-001 work are in the
-[Scientific Modeling Forward Plan](SCIENTIFIC_MODELING_FORWARD_PLAN.md). This
-new authorization supersedes only the stale statement that no mechanism-
-selection task is active; the independent-data validation gate is unchanged.
+The enduring forward scientific sequence and merged SCI-MD-001 result are in
+the [Scientific Modeling Forward Plan](SCIENTIFIC_MODELING_FORWARD_PLAN.md).
+The independent-data validation gate is unchanged. `RP-D-LC-001b` is closed
+at the valid pre-primary-experiment design block
+`NO_UNAMBIGUOUS_BELOW_CANDIDATE`; no freeze was created and P3/P4 remain
+unreachable.
 
 ## Purpose
 
@@ -111,13 +113,14 @@ interface qualification from physical validation. It requires explicit unit,
 reference-volume and provenance contracts. No stage substitutes for
 independent physical data or changes the current scientific gate.
 
-## Active scientific programme
+## Current next scientific action
 
-XSV-ENS-001 has completed its bounded scientific correction and awaits
-exact-head review. It assesses stochastic synthetic
-pore-scale closure, finite-volume behavior, static-state capability relative
-to SCI-MD-001, and directional and inertial uncertainty. It does not alter the
-production OpenFOAM solver or establish physical validation.
+`SCI-LC-001A — Reduced lateral equalization and channeling phase diagram` is
+the current next action. It begins with reduced multi-sector models and does
+not inherit authority to resume `RP-D-LC-001b` or execute P3/P4. A possible
+lower-conductance bridge investigation remains a distinct future tranche that
+would require a newly frozen, better-resolved design; it is not a rescue of
+the closed experiment.
 
 ## Next human-owner decision
 
