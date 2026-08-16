@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 395,
-  "total_uncompressed_bytes_excluding_manifest": 6146519,
-  "aggregate_source_sha256": "92a27e0734a91e30cc9d4f8dd66588e75b6a1a4b74dc0fbff164ab2dddb85709",
-  "aggregate_sha256": "92a27e0734a91e30cc9d4f8dd66588e75b6a1a4b74dc0fbff164ab2dddb85709",
+  "file_count": 396,
+  "total_uncompressed_bytes_excluding_manifest": 6155014,
+  "aggregate_source_sha256": "1e5088ef254985751585335cffa2ff15a48ab305e912a3b3f4ac6bbccd89d301",
+  "aggregate_sha256": "1e5088ef254985751585335cffa2ff15a48ab305e912a3b3f4ac6bbccd89d301",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -459,8 +459,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002a/PARALLEL_LANE_DECLARATION.json": {
-      "sha256": "bab74eac5d800c1c96e1b0dae5deaf16c1a71414f32f852030f981462b2a827c",
-      "bytes": 2110,
+      "sha256": "faeaa340b6578c8584492a5b8ababc772cd82a5ed6ae37c4a2b85ffedfb3ab4f",
+      "bytes": 2090,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002a/PROTOCOL.md": {
@@ -471,6 +471,11 @@
     "docs/analysis/sci_md_002a/README.md": {
       "sha256": "f8e1b0bbc1d850f23d6e07bae6fd76f14ed2cda7da4c96ec69c393ccfdf6f2b5",
       "bytes": 357,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_002a/RESULT.md": {
+      "sha256": "b479065df962c1f3a6e29532db97908887ccb2eaebc848b566cc612d5c82e529",
+      "bytes": 8515,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
