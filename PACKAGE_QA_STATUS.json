@@ -30,12 +30,12 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 543,
+    "python_test_count": 549,
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 404,
-    "source_manifest_aggregate_sha256": "f9bf15c1fb01f04295a08a0faf14d6ac00b6bba2ffeb146dc20a862c35118a10",
+    "source_manifest_aggregate_sha256": "09898267518ebe36cb92bf222524f9f1a68da0dd30a32ed3f5e24cd4f5259f1d",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -45,7 +45,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "f9bf15c1fb01f04295a08a0faf14d6ac00b6bba2ffeb146dc20a862c35118a10"
+    "source_manifest_aggregate_source_sha256": "09898267518ebe36cb92bf222524f9f1a68da0dd30a32ed3f5e24cd4f5259f1d"
   },
   "sci_md_002a": {
     "status": "OWNER_SCIENTIFIC_REVIEW_APPROVED_WITH_SCOPE_QUALIFICATION",
