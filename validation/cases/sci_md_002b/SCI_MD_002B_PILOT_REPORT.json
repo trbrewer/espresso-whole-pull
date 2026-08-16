@@ -1,24 +1,24 @@
 {
   "complete_source_pressure_triplet_executed": false,
   "completion_count": 8,
-  "evidence_bundle_manifest_sha256": "584d165cb014f9a823e2962bb69f9612d072c8c51a4b7d0f08e78cda559a9657",
-  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt1",
+  "evidence_bundle_manifest_sha256": "2b1ce84f2e0c6955e90ed2a84c94634505c5050a8492b7bc09afbc342256ec4b",
+  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt2",
   "failure_count": 0,
   "failures": [],
-  "peak_rss_bytes": 136830976,
+  "peak_rss_bytes": 145760256,
   "pilot_row_ids": ["A0-FOSTER-P9-N64-DT0.02", "A0-ZERO_SWELL-P9-N64-DT0.02", "A0-SIMULTANEOUS-P9-E-AC0.0", "A0-ACCOM_FIXED-E", "A0-ACCOM_FREE-E", "R1-REFERENCE-P9-E-D1.0-CM0.1-AC0.0-N32-DT0.04", "R1-REFERENCE-P9-E-D1.0-CM0.1-AC0.0-N64-DT0.02", "SYNTHETIC-S1-P7-M-D1.0-CM0.1-AC0.5-N64-DT0.02"],
   "refinement": {
-    "coarse_to_base_relative_outlet_flow_difference": 0.0035301908549850024,
-    "coarse_to_base_relative_resistance_difference": 0.0035426972524273868,
+    "coarse_to_base_relative_outlet_flow_difference": 0.0026322294750086676,
+    "coarse_to_base_relative_resistance_difference": 0.002639176392899709,
     "role": "NON_ADJUDICATIVE_TIMING_AND_INTEGRITY_PILOT"
   },
   "row_count": 8,
   "schema_version": "ewp.sci_md_002b.pilot_report.v1",
   "scientific_reducer_ran": false,
-  "source_head": "e9392318946700135bdaee0e08c8379f9e0da4e0",
+  "source_head": "1b5f61194217be3f84abf7b5cfbab89817d3bb81",
   "source_ordering_calculated": false,
-  "source_tree": "071d437f56c89579d98f5bc1b3b156f9d3283cdb",
-  "status": "DIAGNOSTIC_ONLY_INVALIDATED_BY_STANDARD_LIBRARY_PORTABILITY_CORRECTION",
+  "source_tree": "b60ea6c85cb9ebcd9713c94daef29a4ea4c20ade",
+  "status": "PASS_NON_ADJUDICATIVE_PILOT",
   "task_id": "SCI-MD-002B",
-  "wall_s": 20.974339701002464
+  "wall_s": 10.305427731014788
 }
