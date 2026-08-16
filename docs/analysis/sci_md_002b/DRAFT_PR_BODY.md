@@ -21,15 +21,15 @@ The reduced model contains only `pressure -> wetting time -> local swelling age 
 
 S2 is retained as `SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED`: the available evidence does not uniquely close distributed swelling storage with moving cell volume, and unsupported physics was not invented.
 
-Adjudicative mode and the scientific reducer are fully implemented but require a separately owner-created exact-identity authority token and the exact 435-row cohort. Production code returns mechanical expected bindings only and cannot mint the token, owner role, authorization date, or a valid authority. No token exists in this tranche. The reducer requires all 435 records and 72 complete candidate stems, applies gates per candidate, uses observed-flow targets for aggregate metrics last, and reports exact assumption-dependence support.
+Adjudicative mode and the scientific reducer require a separately owner-created exact-identity authority token and the exact 435-row cohort. Production code returns mechanical expected bindings only and cannot mint the token, owner role, authorization date, or a valid authority. The owner supplied one external authority for the completed execution; neither its token nor complete contents are committed. The reducer requires all 435 records and 72 complete candidate stems, applies gates per candidate, uses observed-flow targets for aggregate metrics last, and reports exact assumption-dependence support.
 
 ## Verification and pilot
 
-Both pre-execution review rounds are addressed. Attempts 1 through 5 remain preserved unchanged. Final attempt 6 completed all eight frozen rows in 17.26 s at 52.9 MiB peak RSS, verified corrected source-field semantics, immutable records and ledger closeout, contained no complete adjudicative candidate triplet, used no owner token, and ran no scientific reducer or ordering calculation. Final focused, repository-wide, manifest, static and CI results are reported at the frozen head. No OpenFOAM, GPU, heavy Puckworks execution, adjudicative source sweep, or scientific disposition is part of this PR.
+Both pre-execution review rounds are addressed. Attempts 1 through 5 remain preserved unchanged. Final attempt 6 completed all eight frozen pilot rows in 17.26 s at 52.9 MiB peak RSS, verified corrected source-field semantics, immutable records and ledger closeout, contained no complete adjudicative candidate triplet, used no owner token, and ran no scientific reducer or ordering calculation. The later owner-authorized adjudicative execution and bounded disposition are reported below. No OpenFOAM, GPU, heavy Puckworks execution, production change, or SCI-LC execution is part of this PR.
 
 Claim ceiling: `PHYSICAL_VALIDATION_NOT_ESTABLISHED`; `POST_OBSERVATION_MECHANISM_DISCRIMINATION`; `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`; `NO_COMBINED_MECHANISM_AUTHORIZATION`; `NO_SCI_LC_001B_AUTHORIZATION`.
 
-This PR must remain draft. Adjudicative execution, scientific classification, ready-for-review transition and merge require separate owner authorization following independent exact-head pre-execution review.
+This PR must remain draft. The completed adjudicative result, ready-for-review transition, and merge require owner scientific and exact-head review; ready transition and merge remain unauthorized.
 
 ## Owner-authorized execution result
 

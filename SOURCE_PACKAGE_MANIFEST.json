@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 406,
-  "total_uncompressed_bytes_excluding_manifest": 6249480,
-  "aggregate_source_sha256": "8150fac9c1af0c165280a3b7ecb94f2f879881195c1dae10ae08cf918e24320f",
-  "aggregate_sha256": "8150fac9c1af0c165280a3b7ecb94f2f879881195c1dae10ae08cf918e24320f",
+  "total_uncompressed_bytes_excluding_manifest": 6249525,
+  "aggregate_source_sha256": "c1baf64343ad01c7bcb1d9c8f2fd9cb7bff9d5ce04ff663fb5602db5b5cf9df3",
+  "aggregate_sha256": "c1baf64343ad01c7bcb1d9c8f2fd9cb7bff9d5ce04ff663fb5602db5b5cf9df3",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -484,8 +484,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/DRAFT_PR_BODY.md": {
-      "sha256": "e9a5683a4ff5280e9da05f8dd2ac92490829d6da6a1720a21721a9becb66017e",
-      "bytes": 5626,
+      "sha256": "bb3b7b30d757d44d1e27961501a57df759dc7ce990895ea7aa8dc7cf3450df69",
+      "bytes": 5671,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002b/INTEGRITY_INCIDENT_AND_RECOVERY.md": {
