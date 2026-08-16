@@ -32,6 +32,9 @@ class CorrectedPackage(unittest.TestCase):
   self.assertTrue(set(md.protocol()["temporal_output"]["fields"])<=set(a["temporal"][0]))
  def test_no_inactive_axes(self):
   rows=md.matrix_rows();a=next(x for x in rows if x["case_id"]==md.PILOT_IDS[3]);b=next(x for x in rows if x["case_id"]==md.PILOT_IDS[4]);ra=md.simulate(a);rb=md.simulate(b);self.assertNotEqual(ra["terminal_resistance_ratio"],rb["terminal_resistance_ratio"]);self.assertNotIn("dt_s",a)
+ def test_synthetic_accommodation_controls_have_explicit_pressure_fixture(self):
+  row=next(x for x in md.matrix_rows() if x["case_id"]=="A0-ACCOM-FIXED-E");result=md.simulate(row)
+  self.assertEqual(result["terminal_pressure_pa"],9e5);self.assertEqual(result["status"],"COMPLETE")
  def test_matrix_exact_refinement_coverage(self):
   rows=md.matrix_rows();ids={x["case_id"] for x in rows};self.assertEqual(len(rows),456);self.assertLessEqual(len(rows),2500)
   for x in rows:

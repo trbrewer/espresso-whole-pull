@@ -186,7 +186,9 @@ def simulate(row,histories=None):
  if row["coupling"]=="TWO_WAY_DESIGN_BLOCKED":return {"status":"DESIGN_BLOCKED","stop_reason":"SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED"}
  histories=histories or load_histories(); source=row["pressure_condition"].startswith("SOURCE_P")
  if source:p=int(row["pressure_condition"].split("P")[1]);series=histories[p]
- else:p=float(row["pressure_condition"].split("_")[-1]);series=nominal_rows(p)
+ elif row["pressure_condition"].startswith("NOMINAL_STEP_"):p=float(row["pressure_condition"].removeprefix("NOMINAL_STEP_"));series=nominal_rows(p)
+ elif row["pressure_condition"]=="SYNTHETIC":p=9.;series=nominal_rows(p)
+ else:raise ValueError("UNSUPPORTED_PRESSURE_CONDITION")
  k0=hydraulic_anchor(histories);ci=cumulative_integral(series);cells=row["axial_cells"]
  wet=[0.]*cells if row["coupling"] in ("SIMULTANEOUS","ACCOM_ENDPOINT") else wetting_times(series,k0,cells)
  max_age=series[-1]["source_time_s"]; ages,vals=response_table(row,max_age); temporal=[];prev_storage=0.;onset=None;prevR=None
