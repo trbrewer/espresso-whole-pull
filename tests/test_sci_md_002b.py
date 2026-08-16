@@ -65,7 +65,8 @@ class CorrectedPackage(unittest.TestCase):
  def test_exact_cohort_authority_and_partial_rejection(self):
   with tempfile.TemporaryDirectory(prefix="SCI_MD_002B_") as d:
    b=pathlib.Path(d);ids=md.adjudicative_row_ids();p=self.authority(b);self.assertEqual(md.validate_authority(p,b)[0]["authorized_row_ids"],ids)
-   for bad in ([ids[3]],ids[:6],ids[:-1],ids+[md.PILOT_IDS[0]],list(reversed(ids))):
+   rows=md.matrix_rows();first=next(x for x in rows if x["arm"]=="S1");stem=(first["powder"],first["D_multiplier"],first["cmax"],first["accommodation"]);one_candidate=sorted([x["case_id"] for x in rows if x["arm"]=="C0" or x["arm"]=="S1" and (x["powder"],x["D_multiplier"],x["cmax"],x["accommodation"])==stem])
+   for bad in ([ids[3]],one_candidate,ids[:-1],ids+[md.PILOT_IDS[0]],list(reversed(ids))):
     q=self.authority(b,bad);self.assertRaises(PermissionError,md.validate_authority,q,b)
    q=self.authority(b,source_head="0"*40);self.assertRaises(PermissionError,md.validate_authority,q,b)
  def test_production_bindings_cannot_mint_owner_authority(self):
@@ -110,7 +111,8 @@ class CorrectedPackage(unittest.TestCase):
   td,b,a,_=self.synthetic_bundle(2,physical_first=True)
   try:
    with mock.patch.object(md,"temporal_signature",return_value=(True,"PASS")):result=md.reduce_bundle(b,a)
-   self.assertEqual(result["candidate_count"],72);self.assertIn("observed_flow_kg_s",result["aggregate_target"]);self.assertIn("reference_model_flow_kg_s prohibited",result["aggregate_target"]);self.assertTrue(any(x["first_failed_gate"]=="NUMERICAL_OR_PHYSICAL_VALIDITY" for x in result["candidates"]));self.assertTrue(any(x["aggregate_comparison_eligible"] for x in result["candidates"]))
+   survivor=next(x for x in result["candidates"] if x["aggregate_comparison_eligible"]);expected=math.sqrt(sum((q-md.TERMINAL_OBSERVED_FLOWS[p])**2 for p,q in {5:.003,9:.002,11:.001}.items())/3)
+   self.assertAlmostEqual(survivor["terminal_flow_rmse_kg_s"],expected);self.assertEqual(result["candidate_count"],72);self.assertIn("observed_flow_kg_s",result["aggregate_target"]);self.assertIn("reference_model_flow_kg_s prohibited",result["aggregate_target"]);self.assertTrue(any(x["first_failed_gate"]=="NUMERICAL_OR_PHYSICAL_VALIDITY" for x in result["candidates"]));self.assertTrue(any(x["aggregate_comparison_eligible"] for x in result["candidates"]))
   finally:td.cleanup()
  def test_single_accommodation_is_not_promoted(self):
   td,b,a,_=self.synthetic_bundle(2,single_accommodation=True)
