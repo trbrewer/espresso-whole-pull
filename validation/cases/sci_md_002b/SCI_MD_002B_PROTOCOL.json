@@ -1,60 +1,10 @@
 {
-  "axes": {
-    "accommodation": [
-      0,
-      0.5,
-      1
-    ],
-    "axial_cells": [
-      32,
-      64,
-      128
-    ],
-    "capillary_pressure_pa": 10000.0,
-    "cmax": [
-      0.05,
-      0.1
-    ],
-    "coupling": [
-      "ONE_WAY",
-      "TWO_WAY_DESIGN_BLOCKED"
-    ],
-    "diffusivity_multiplier": [
-      0.5,
-      1,
-      2
-    ],
-    "dt_s": [
-      0.04,
-      0.02,
-      0.01
-    ],
-    "phi0": 0.4,
-    "powder": [
-      "E",
-      "H",
-      "M",
-      "F"
-    ],
-    "pressure_bar": [
-      5,
-      9,
-      11
-    ],
-    "radial_cells": [
-      24,
-      32,
-      48
-    ]
-  },
   "budget": {
     "gpu": 0,
     "hard_max": 2500,
     "memory_gib": 16,
     "nested_threads": 1,
-    "pilot_max": 32,
-    "preferred_max": 1500,
-    "row_count": 243,
+    "row_count": 456,
     "workers": 1
   },
   "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
@@ -66,11 +16,10 @@
     "NO_SCI_LC_001B_AUTHORIZATION",
     "GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED"
   ],
-  "external_record_schema": "ewp.sci_md_002b.case_record.v1",
   "gates": [
     "AUTHORITY_AND_ARTIFACT_VALIDITY",
     "REFERENCE_AND_NUMERICAL_VALIDITY",
-    "CONSERVATION_AND_PHYSICAL_STATE_VALIDITY",
+    "PHYSICAL_STATE_AND_BOOKKEEPING_VALIDITY",
     "RESISTANCE_DIRECTION",
     "PRESSURE_ORDERING",
     "TEMPORAL_SIGNATURE",
@@ -78,138 +27,101 @@
     "PARTICLE_SIZE_AND_GRIND_IDENTIFIABILITY",
     "AGGREGATE_COMPARISON"
   ],
-  "hypotheses": {
-    "H0": "No swelling retains increasing flow with pressure.",
-    "H1": "Simultaneous wetting gives common relative conductance and cannot reverse ordering.",
-    "H2": "One-way pressure-dependent wetting age can create pressure-dependent resistance.",
-    "H3": "Conservative two-way feedback may strengthen, weaken, or make the effect nonmonotonic.",
-    "H4": "Capability may depend on fixed-height accommodation.",
-    "H5": "Particle-size dependence is synthetic and has no source-grind mapping.",
-    "H6": "Hydraulic survival cannot uniquely identify swelling without direct structural measurements."
-  },
-  "issue": 74,
-  "matrix_sha256": "259b35b7f59fb93b9caf0275df763f29b3be6913aee08e5b98e2eddf743c4c73",
+  "matrix_sha256": "1e18ad42f4dd007a708a5973cbaafa415d929f419cc1ddb75300c35e1105f399",
   "model": {
-    "accommodation": "V/V0=1+lambda*(Vs/Vs0-1); lambda=0 fixed height; lambda=1 constant porosity",
-    "age": "max(0,t-t_wet_j)",
-    "chain": "pressure -> wetting time -> local swelling age -> particle expansion -> bed geometry/porosity -> permeability/resistance -> axial flow",
-    "foster": "s=sqrt(2*k*(p+pcap)*t/(mu*phi0))",
-    "mo": "nonlinear spherical diffusion plus Eq42 volume and relative Carman-Kozeny",
-    "serial_resistance": "R/R0=sum_j[(h_j/h0_j)/(k_j/k0)]/N",
-    "two_way": "SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED: distributed swelling storage and moving-volume balance require unsupported closure"
+    "chain": "pressure history -> wetting time -> local age -> Mo swelling -> volume-consistent accommodation -> CK permeability -> serial resistance -> axial flow",
+    "liquid_status": "ONE_WAY_LIQUID_FEEDBACK_NOT_CLOSED_BY_DESIGN",
+    "one_way_balance": "front trajectory excludes swelling-storage feedback",
+    "two_way": "SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED"
   },
-  "numerical_tolerances": {
-    "conservation_absolute_m3": 1e-12,
-    "matrix_generation": "exact",
-    "pinned_mo_sphere_volume_ratio_absolute": 0.0001
-  },
-  "ordering_rule": {
-    "margins": [
-      "M59=Q5-Q9",
-      "M911=Q9-Q11"
-    ],
-    "pass": "both lower bounds > 0",
-    "reject": "either upper bound <= 0",
-    "uncertainty": "maximum absolute matched base/refined difference for each margin",
-    "unresolved": "either interval includes zero"
-  },
-  "parameter_provenance": {
-    "Mo powders/D0/cmax0": "PUCKWORKS_PINNED_REFERENCE",
-    "axis multipliers/accommodation/refinement": "SYNTHETIC_SCREEN_BOUND",
-    "identities": "DERIVED_IDENTITY",
-    "pressure/report time/flow targets": "EWP_GOVERNED_SOURCE"
-  },
-  "physical_bounds": [
-    "finite complete trajectories",
-    "0<=front<=H0",
-    "monotonic wetting",
-    "monotonic uptake",
-    "positive radii/volume/porosity/permeability/resistance",
-    "nonnegative pore volume",
-    "no inversion",
-    "no clipping"
-  ],
   "pilot_row_ids": [
-    "A0-FOSTER-P9-N64-DT0.02",
-    "A0-ZERO_SWELL-P9-N64-DT0.02",
-    "A0-SIMULTANEOUS-P9-E-AC0.0",
-    "A0-ACCOM_FIXED-E",
-    "A0-ACCOM_FREE-E",
-    "R1-REFERENCE-P9-E-D1.0-CM0.1-AC0.0-N32-DT0.04",
-    "R1-REFERENCE-P9-E-D1.0-CM0.1-AC0.0-N64-DT0.02",
-    "SYNTHETIC-S1-P7-M-D1.0-CM0.1-AC0.5-N64-DT0.02"
+    "A0-FOSTER-CONSTANT-P9",
+    "C0-SOURCE-P5-NOSWELL",
+    "C1-SOURCE-P9-E-AC0.0",
+    "R1-SYNTH-P7-E-BASE",
+    "R1-SYNTH-P7-E-REFINED",
+    "T0-SOURCE-P11-E-STORAGE",
+    "A0-ACCOM-FIXED-E",
+    "A0-ACCOM-FREE-E"
   ],
-  "provenance_classes": [
-    "EWP_GOVERNED_SOURCE",
-    "PUCKWORKS_PINNED_REFERENCE",
-    "SOURCE_REPORTED",
-    "SYNTHETIC_SCREEN_BOUND",
-    "NUMERICAL_CONTROL",
-    "DERIVED_IDENTITY"
-  ],
-  "question": "Can pressure-dependent Foster wetting times plus shared Mo-style swelling produce Q5 > Q9 > Q11?",
-  "reducer_behavior": "adjudicative records only; gate precedence fixed; pilot reduction forbidden",
-  "schema_version": "ewp.sci_md_002b.protocol.v1",
-  "source": {
-    "hydraulic_calibration": "single 9-bar scale shared unchanged",
-    "overlay": "validation/cases/val_corpus_001/results/VAL_CORPUS_001_OVERLAYS_V3.json",
-    "pressure_groups_bar": [
-      5,
-      9,
-      11
-    ],
-    "reporting_point": "same terminal source point as SCI-MD-002A",
-    "source_targets": {
-      "5": {
-        "flow_kg_s": 0.002056292,
-        "mass_kg": 0.154969955,
-        "pressure_pa": 450096.2,
-        "report_time_s": 99.8999,
-        "source_overlay_id": "R1-WASZ-5-DARCY-STATIC-MEASURED"
-      },
-      "9": {
-        "flow_kg_s": 0.001827218,
-        "mass_kg": 0.136206018,
-        "pressure_pa": 873024.9,
-        "report_time_s": 99.8999,
-        "source_overlay_id": "R1-WASZ-9-DARCY-STATIC-MEASURED"
-      },
-      "11": {
-        "flow_kg_s": 0.001777572,
-        "mass_kg": 0.128185935,
-        "pressure_pa": 1041717.3999999999,
-        "report_time_s": 99.8999,
-        "source_overlay_id": "R1-WASZ-11-DARCY-STATIC-MEASURED"
-      }
+  "porosities": {
+    "epsilon_b0": {
+      "provenance": "PUCKWORKS_PINNED_REFERENCE_MO_NOMINAL_NOT_EWP_SOURCE_MEASUREMENT",
+      "role": "REFERENCE_PRIMARY",
+      "sensitivity_bounds": [
+        0.17,
+        0.4
+      ],
+      "value": 0.17
+    },
+    "phi_wet": {
+      "provenance": "PUCKWORKS_PINNED_REFERENCE_FOSTER_FITTED_NOT_EWP_SOURCE_MEASUREMENT",
+      "role": "REFERENCE_PRIMARY",
+      "sensitivity_bounds": [
+        0.173,
+        0.4
+      ],
+      "value": 0.322
     }
   },
-  "status": "PROSPECTIVE_FROZEN_ADJUDICATIVE_EXECUTION_NOT_AUTHORIZED",
-  "stop_conditions": [
-    "AUTHORITY_MISMATCH",
-    "HASH_MISMATCH",
-    "SOURCE_MAPPING_INVALID",
-    "RIGHTS_INVALID",
-    "MATRIX_DESIGN_EXCEEDS_SECONDARY_LANE_BUDGET",
-    "PHYSICAL_BOUND_FAILURE",
-    "CLIPPING_REQUIRED",
-    "TWO_WAY_COUPLING_DESIGN_BLOCKED"
-  ],
-  "task_change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
+  "record_schema": "ewp.sci_md_002b.case_record.v2",
+  "refinement": {
+    "base": {
+      "axial_cells": 64,
+      "radial_cells": 32,
+      "response_points": 65
+    },
+    "refined": {
+      "axial_cells": 128,
+      "radial_cells": 48,
+      "response_points": 129
+    },
+    "uncertainty": "for each margin, abs(base margin-refined margin); PASS iff both base margins minus uncertainty >0; REJECTED iff either base margin plus uncertainty <=0; otherwise NUMERICALLY_UNRESOLVED"
+  },
+  "schema_version": "ewp.sci_md_002b.protocol.v2",
+  "source": {
+    "histories": {
+      "11": {
+        "row_count": 999,
+        "terminal_pressure_pa": 1041717.4,
+        "terminal_time_s": 99.8999
+      },
+      "5": {
+        "row_count": 999,
+        "terminal_pressure_pa": 450096.2,
+        "terminal_time_s": 99.8999
+      },
+      "9": {
+        "row_count": 999,
+        "terminal_pressure_pa": 873024.9,
+        "terminal_time_s": 99.8999
+      }
+    },
+    "hydraulic_anchor": "one terminal P9 model-flow anchor shared unchanged",
+    "integration": "piecewise-linear pressure with exact trapezoidal cumulative integral; analytic within-segment inversion; no extrapolation",
+    "overlay_path": "validation/cases/val_corpus_001/results/VAL_CORPUS_001_OVERLAYS_V3.json",
+    "overlay_sha256": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e"
+  },
+  "status": "CORRECTED_PREEXECUTION_PENDING_SECOND_REVIEW",
   "task_id": "SCI-MD-002B",
-  "taxonomy": [
-    "SCI_MD_002B_REJECTED_WRONG_RESISTANCE_DIRECTION",
-    "SCI_MD_002B_REJECTED_WRONG_PRESSURE_ORDERING",
-    "SCI_MD_002B_PRESSURE_ORDERING_NUMERICALLY_UNRESOLVED",
-    "SCI_MD_002B_WETTING_AGE_SWELLING_CAPABILITY_SURVIVES_BOUNDED_SCREEN",
-    "SCI_MD_002B_CAPABILITY_DEPENDS_ON_FIXED_HEIGHT_EXTREME",
-    "SCI_MD_002B_CAPABILITY_DEPENDS_ON_UNMAPPED_PARTICLE_SIZE",
-    "SCI_MD_002B_ONE_WAY_SURVIVES_TWO_WAY_DESIGN_BLOCKED",
-    "SCI_MD_002B_TWO_WAY_COUPLING_DESIGN_BLOCKED",
-    "SCI_MD_002B_BED_ACCOMMODATION_MODEL_DESIGN_BLOCKED",
-    "SCI_MD_002B_ADDITIONAL_SWELLING_AND_DEFORMATION_DATA_REQUIRED",
-    "SCI_MD_002B_MODEL_OR_AUTHORITY_INVALID",
-    "SCI_MD_002B_NUMERICAL_EXECUTION_INVALID",
-    "SCI_MD_002B_COMBINED_MECHANISM_NOT_AUTHORIZED",
-    "SCI_MD_002B_PREEXECUTION_PACKAGE_COMPLETE_PENDING_INDEPENDENT_REVIEW"
-  ]
+  "temporal_output": {
+    "fields": [
+      "time_s",
+      "pressure_pa",
+      "pressure_integral_pa_s",
+      "front_position_m",
+      "wet_fraction",
+      "cell_wetting_times_s",
+      "cell_wetting_ages_s",
+      "swelling_storage_volume_m3",
+      "swelling_storage_rate_m3_s",
+      "effective_serial_resistance_ratio",
+      "hydraulic_flow_m3_s",
+      "front_filling_flow_m3_s",
+      "outlet_flow_m3_s",
+      "liquid_feedback_status",
+      "resistance_growth_onset_s"
+    ],
+    "grid": "all 999 governed source timestamps for SOURCE rows; frozen 0.5 s grid plus terminal for nominal controls"
+  }
 }

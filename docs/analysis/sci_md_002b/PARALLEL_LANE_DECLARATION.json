@@ -13,7 +13,7 @@
   "lane_role": "SECONDARY_INDEPENDENT_REDUCED_MODEL_LANE",
   "one_writer_policy": "SOLE_SCI_MD_002B_WRITER_AND_EXECUTION_OWNER",
   "owned_paths": ["docs/analysis/sci_md_002b/**", "validation/cases/sci_md_002b/**", "scripts/sci_md_002b.py", "tests/test_sci_md_002b.py", "SCI_MD_002B_EXTERNAL_BUNDLE/**"],
-  "primary_parallel_lane": {"task": "SCI-LC-001A-C3", "branch": "research/sci-lc-001a-protocol", "head": "a33b85a752b3f27c675b7658aeefa18b1cbc987c", "issue": 70, "draft_pr": 71, "access": "READ_ONLY"},
+  "primary_parallel_lane": {"task": "SCI-LC-001A-C3", "branch": "research/sci-lc-001a-protocol", "head": "4f06c5e179d9e6f045e1b58cef06ffa98ec0fbea", "issue": 70, "draft_pr": 71, "access": "READ_ONLY"},
   "process_policy": "LEDGERED_TASK_OWNED_PROCESSES_ONLY_NO_SIGNALING_OTHER_LANES",
   "puckworks_lock": {"commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b", "tree": "1d553e44ee2f7480a5df521560801b478618cc84", "access": "READ_ONLY_GIT_OBJECT"},
   "read_only_dependencies": ["SCI-LC-001A-C3", "Puckworks locked reference", "merged SCI-MD-002A source mapping", "production OpenFOAM"],
@@ -21,6 +21,6 @@
   "schema_version": "ewp.parallel_lane.v1",
   "scientific_question": "Can pressure-dependent wetting time plus pressure-shared Mo-style particle swelling produce enough axial resistance for Q5 > Q9 > Q11?",
   "shared_file_policy": "AVOID_SHARED_STATUS_AND_STRATEGY_FILES_RECONCILE_GENERATED_METADATA_ONLY_IF_CANONICALLY_REQUIRED",
-  "status": "PREEXECUTION_PACKAGE_COMPLETE_PENDING_INDEPENDENT_REVIEW",
+  "status": "PREEXECUTION_CORRECTION_IN_PROGRESS_PENDING_ATTEMPT3_AND_SECOND_REVIEW",
   "task_id": "SCI-MD-002B"
 }

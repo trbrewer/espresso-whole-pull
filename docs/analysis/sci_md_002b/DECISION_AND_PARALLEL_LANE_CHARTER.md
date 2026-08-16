@@ -1,6 +1,6 @@
 # SCI-MD-002B decision and parallel-lane charter
 
-Status: `PROSPECTIVE_IMPLEMENTATION_IN_PROGRESS`
+Status: `PREEXECUTION_CORRECTION_IN_PROGRESS_PENDING_ATTEMPT3_AND_SECOND_REVIEW`
 
 Change declaration: `NO_GOVERNING_PHYSICS_CHANGE`; task declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`.
 
@@ -20,7 +20,11 @@ Alternatives considered were fines deposition/erosion, transient poromechanics, 
 - Issue: #74; draft PR: pending first coherent commit.
 - External namespace: `SCI_MD_002B_EXTERNAL_BUNDLE`; machine absolute paths are non-authoritative and uncommitted.
 - Start: EWP HEAD/tree above. Puckworks lock: commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`, tree `1d553e44ee2f7480a5df521560801b478618cc84`.
-- Primary lane observed read-only: SCI-LC-001A-C3, branch `research/sci-lc-001a-protocol`, head `a33b85a752b3f27c675b7658aeefa18b1cbc987c`, issue #70, draft PR #71.
+- Primary lane observed read-only at correction start: SCI-LC-001A-C3, branch `research/sci-lc-001a-protocol`, head `4f06c5e179d9e6f045e1b58cef06ffa98ec0fbea`, issue #70, draft PR #71.
+
+## Pre-execution review correction
+
+The first independent review approved the concept and isolation but required full governed pressure histories, separation of wetting and bed porosity, calculated swelling-storage bookkeeping, executable temporal outputs and matched uncertainty, and complete authority-gated execution/reduction. This correction preserves all earlier commits and pilot attempts. It changes no production or SCI-LC path and authorizes no adjudicative execution.
 
 ## Ownership and paths
 
