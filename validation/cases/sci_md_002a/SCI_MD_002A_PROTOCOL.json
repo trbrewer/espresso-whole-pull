@@ -1,0 +1,121 @@
+{
+  "budgets": {
+    "gpu": 0,
+    "initial_parameter_sets": 35,
+    "memory_gib": 16,
+    "pilot_max": 64,
+    "refined_parameter_sets_max": 0,
+    "review_hours": 8,
+    "source_trajectories": 210,
+    "target_hours": 4,
+    "total_trajectories": 580,
+    "workers": "min(16,floor(0.25*logical_cpu_count))"
+  },
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_boundary": {
+    "combined_mechanism_model": "NOT_AUTHORIZED",
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "general_whole_solver_physical_validation": "NOT_ESTABLISHED",
+    "model_class": "REDUCED_DIAGNOSTIC_TRANSIENT_CONSOLIDATION_MODEL",
+    "physical_validation": "NOT_ESTABLISHED",
+    "production_openfoam_physics": "UNCHANGED",
+    "real_puck_parameters": "NOT_IDENTIFIED",
+    "wetted_puck_modulus": "NOT_MEASURED_BY_THIS_TASK",
+    "wp04_tpm_001": "NOT_AUTHORIZED_BY_THIS_TASK_ALONE"
+  },
+  "equilibrium_mapping": "accepted WP03 finite-porosity depth-resolved scalar integral evaluated at sigma_c; epsilon_bulk=1-bed_height_ratio(sigma_c)",
+  "evidence_class": "POST_OBSERVATION_MECHANISM_DISCRIMINATION",
+  "fixed_primitives": {
+    "basket_area_m2": 0.002463008640414398,
+    "bed_depth_m": 0.01,
+    "density_kg_m3": 965,
+    "k0_m2": "9_bar_scale_only_anchor",
+    "mu_pa_s": 0.000315,
+    "phi0": 0.4
+  },
+  "gate_order": [
+    "ARTIFACT_AND_NUMERICAL_VALIDITY",
+    "RESISTANCE_SIGN",
+    "PRESSURE_ORDERING",
+    "PHYSICAL_BOUNDS",
+    "GRIND_DIRECTION_OR_NOT_IDENTIFIABLE",
+    "TEMPORAL_SHAPE",
+    "TRANSFER",
+    "DISTINCTIVENESS",
+    "AGGREGATE_ERROR"
+  ],
+  "issue": 72,
+  "matrix_sha256": "b2aa5ab159bb36e802968b8ba26c54b295a6eca80f66951777efcc1a408e7e41",
+  "models": [
+    "TPM_DISABLED_FIXED_HYDRAULICS",
+    "TPM_QUASI_STATIC_EQUILIBRIUM",
+    "TPM_SINGLE_MODE_TRANSIENT"
+  ],
+  "numerics": {
+    "base_dt_s": 0.05,
+    "integrator": "backward_euler_for_state_and_machine",
+    "output_dt_s": 0.1,
+    "refined_dt_s": 0.025,
+    "relative_tolerance": 1e-09
+  },
+  "parameter_bounds": {
+    "critical_pressure_pa": [
+      1100000,
+      1239155,
+      1500000,
+      2000000,
+      3000000
+    ],
+    "provenance": {
+      "1239155": "SOURCE_DERIVED_EXISTING_CLOSURE",
+      "other_pc_levels": "SYNTHETIC_SCREEN_BOUND",
+      "theta_levels": "SYNTHETIC_SCREEN_BOUND"
+    },
+    "shot_scale_s": 100.0,
+    "theta_c": [
+      0.01,
+      0.03,
+      0.1,
+      0.3,
+      1.0,
+      3.0,
+      10.0
+    ]
+  },
+  "pressure_nodes": {
+    "drive": "BASKET_OR_PUCK_INLET_GAUGE minus BASKET_BOTTOM_AMBIENT_GAUGE",
+    "sign": "positive compression"
+  },
+  "schema_version": "ewp.sci_md_002a.protocol.v1",
+  "source": {
+    "alignment": "unchanged source clock; accepted presentation clock +3 s only where predecessor already uses it",
+    "calibration": "one 9-bar multiplicative hydraulic scale; 5/11 bar transfer",
+    "grind_arm": "NOT_EXECUTED_UNLESS_GOVERNED_INITIAL_STRUCTURE_MAPPING_EXISTS",
+    "groups": [
+      5,
+      9,
+      11
+    ],
+    "overlays": "validation/cases/val_corpus_001/results/VAL_CORPUS_001_OVERLAYS_V3.json"
+  },
+  "state_equation": "tau_c*d(sigma_c)/dt=delta_p_basket_to_outlet-sigma_c",
+  "status": "PROSPECTIVE_FROZEN_BEFORE_ADJUDICATIVE_EXECUTION",
+  "stop_rules": [
+    "SOURCE_MATRIX_UNRESOLVED",
+    "RIGHTS_UNCLEAR",
+    "EFFECTIVE_STRESS_MAPPING_UNRESOLVED",
+    "HASH_MISMATCH",
+    "NONFINITE_OR_INVALID_STATE",
+    "CONSERVATION_FAILURE",
+    "REFINEMENT_CHANGES_GATE",
+    "EXECUTED_SOURCE_MISMATCH"
+  ],
+  "task_id": "SCI-MD-002A",
+  "validity": {
+    "bed_height_positive": true,
+    "no_clipping": true,
+    "pc_strictly_greater_than_effective_state": true,
+    "permeability_positive": true,
+    "porosity_interval": "0<phi<=phi0"
+  }
+}
