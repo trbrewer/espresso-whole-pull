@@ -17,12 +17,14 @@ The screen can proceed without fitting the retained ordering by using broad, pre
 | Axial mobile transport | Conservative upwind advection | `NUMERICAL_CONTROL` | Minimum dispersion-free transport model |
 | Dispersion | Zero in primary family | `UNIDENTIFIED_NOT_EXECUTED` | No defensible source bound |
 | Downstream retention | Shared prospective bracket | `SYNTHETIC_CAPABILITY_BOUND` | Full retention is not assumed to represent an ordinary basket and is not assumed dominant without proof |
-| Compact-layer packing | Explicit porosity bracket | `SYNTHETIC_CAPABILITY_BOUND` | Not measured |
+| Compact-layer porosity | One fixed synthetic value, 0.5 | `SYNTHETIC_CAPABILITY_BOUND` | Not measured; no porosity robustness established |
+| Particle velocity ratio | Fixed at 1.0 | `SYNTHETIC_CAPABILITY_UPPER_BOUND` | Fastest admissible transport control; retardation robustness not established |
 | Specific cake resistance | Positive mass-specific-resistance bracket | `SYNTHETIC_CAPABILITY_BOUND` | Fasano compact-layer conductivity is unspecified |
 | Layer thickness | Deposited mass divided by solids density, solids fraction, and filter area | `DERIVED_IDENTITY` | Volume- and mass-consistent |
 | Active-bed permeability after loss | Fixed | `NUMERICAL_CONTROL` | Bed opening/channeling is prohibited |
 | Hydraulic anchor | One observed P9 terminal-flow scale transferred unchanged | `EWP_GOVERNED_SOURCE` | Reference scale, not clean-bed measurement |
 | Saturated start | Source indices 100–899 as inherited governed comparison window | `EWP_GOVERNED_SOURCE` | `SATURATED_MODEL_APPROXIMATION`; no measured first-drip/saturation event |
+| Window-start fines state | Full uniformly distributed unreleased inventory; zero mobile, deposited, and escaped mass; zero cake resistance | `SYNTHETIC_CAPABILITY_BOUND` | `SYNTHETIC_WINDOW_START_RESET`; `PRE_WINDOW_FINES_STATE_NOT_ADJUDICATED`; not observed at 10.01001 s |
 | Solids density and geometry | Existing EWP conventions where available; otherwise disclosed bounds | `EWP_GOVERNED_SOURCE` / `SYNTHETIC_CAPABILITY_BOUND` | No group-specific retuning |
 | Particle-size/grind mapping | Not executed | `UNIDENTIFIED_NOT_EXECUTED` | `GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED` |
 
@@ -35,4 +37,3 @@ The Puckworks multi-streamtube rung is inspected solely to exclude it. Its local
 ## Measurements needed for identification
 
 Direct time-resolved turbidity or outlet fines flux, retained/deposited mass, deposited-layer thickness and conductivity, mobilizable fines inventory, particle-size distributions, and interruption/recovery observations are required to distinguish this mechanism. No synthetic survivor can supply those measurements.
-

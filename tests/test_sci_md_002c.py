@@ -65,6 +65,10 @@ class TestFeasibilityAndPhysics(unittest.TestCase):
   z=M.simulate(r);self.assertGreater(z["terminal"]["deposited_mass_kg"],0);self.assertTrue(M.temporal_ok(z,r))
   for field in ("released_mass_increment_kg","mobile_mass_change_kg","retained_outlet_mass_increment_kg","compact_layer_thickness_m","predicted_flow_kg_s"):
    bad=json.loads(json.dumps(z));bad["temporal"][10][field]+=1e-4;self.assertFalse(M.temporal_ok(bad,r),field)
+  for field in ("released_mass_rate_kg_s","outlet_fines_flux_kg_s","deposition_rate_kg_s","escaped_rate_kg_s","cumulative_released_mass_kg","cumulative_transported_outlet_mass_kg","pressure_integral_pa_s"):
+   bad=json.loads(json.dumps(z));bad["temporal"][10][field]+=1e-4;self.assertFalse(M.temporal_ok(bad,r),field)
+  for field in ("mobile_mass_kg","deposited_mass_kg","escaped_mass_kg","compact_layer_resistance_pa_s_m3","released_mass_rate_kg_s","pressure_integral_pa_s"):
+   bad=json.loads(json.dumps(z));bad["temporal"][0][field]+=1e-4;self.assertFalse(M.temporal_ok(bad,r),field)
 
 class TestMatrixAndAuthority(unittest.TestCase):
  def test_matrix_counts_and_comparators(self):
@@ -117,6 +121,18 @@ class TestDurability(unittest.TestCase):
   with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
    target=Path(d)/"target";target.mkdir();link=Path(d)/"link";link.symlink_to(target,target_is_directory=True)
    with self.assertRaises(ValueError):M.safe_bundle(link)
+ def test_exact_case_record_file_set(self):
+  ids=["A","B"]
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   b=Path(d);root=b/"case_records";root.mkdir();(root/"A.json").write_text("{}");(root/"B.json").write_text("{}")
+   M.validate_case_record_directory(b,ids,complete=True)
+   (root/"extra.json").write_text("{}")
+   with self.assertRaisesRegex(ValueError,"EXTRA"):M.validate_case_record_directory(b,ids,complete=True)
+   (root/"extra.json").unlink();(root/"orphan.tmp.1").write_text("")
+   with self.assertRaisesRegex(ValueError,"TEMPORARY"):M.validate_case_record_directory(b,ids,complete=True)
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   b=Path(d);target=b/"target";target.mkdir();(b/"case_records").symlink_to(target,target_is_directory=True)
+   with self.assertRaisesRegex(ValueError,"SYMLINK"):M.validate_case_record_directory(b,ids,complete=True)
 
 class TestReductionRules(unittest.TestCase):
  def synthetic_bundle(self,mode):
@@ -124,13 +140,15 @@ class TestReductionRules(unittest.TestCase):
   ap=b/"authority.json";ap.write_text(M.canonical(a));ah=M.sha(ap);lookup={r["case_id"]:r for r in M.matrix_rows()};entries=[]
   for cid in M.adjudicative_ids():
    r=lookup[cid];p=int(r["pressure_identity"].split("P")[-1]);base={5:.003,9:.002,11:.001}[p]
-   if mode=="WRONG":base={5:.001,9:.002,11:.003}[p]
+   if mode in ("WRONG","FAIL_FEASIBLE_WRONG","MASS_FAIL_WRONG","GEOMETRY_FAIL_WRONG"):base={5:.001,9:.002,11:.003}[p]
    if mode=="UNRESOLVED":
     base={5:.00200001,9:.002,11:.00199999}[p]
     if r["resolution"]=="REFINED":base={5:.00199999,9:.002,11:.00200001}[p]
-   physical="INVALID" if mode=="ONE_INVALID" and cid.startswith("S1-SOURCE-P5-FF0.02-MF0.25-KR0.02-N1.0-RET0.5-AR1e+12") else "VALID"
+   feasible_target=cid.startswith("S1-SOURCE-P5-FF0.1-MF0.75-KR0.02-N1.0-RET1.0-AR1e+13")
+   physical="INVALID" if (mode=="ONE_INVALID" and cid.startswith("S1-SOURCE-P5-FF0.02-MF0.25-KR0.02-N1.0-RET0.5-AR1e+12")) or (mode=="FAIL_FEASIBLE_WRONG" and feasible_target) else "VALID"
    inv=M.DOSE*r["fines_fraction"]*r["mobilizable_fraction"];maxrc=M.MU*r["specific_cake_resistance_m_kg"]*inv*r["retention_fraction"]/M.AREA**2
-   result={"case_id":cid,"numerical_status":"COMPLETE","physical_status":physical,"max_abs_mass_residual_kg":0.0,"available_inventory_kg":inv,"maximum_depositable_mass_kg":inv*r["retention_fraction"],"maximum_possible_cake_resistance_pa_s_m3":maxrc,"terminal":{"predicted_flow_kg_s":base,"total_resistance_pa_s_m3":M.hydraulic_anchor()+(0 if r["arm"]=="C0" else 1e8),"bound_mass_kg":0.0,"mobile_mass_kg":0.0,"deposited_mass_kg":inv*r["retention_fraction"],"escaped_mass_kg":inv*(1-r["retention_fraction"]),"compact_layer_thickness_m":0.0,"compact_layer_resistance_pa_s_m3":0 if r["arm"]=="C0" else 1e8},"temporal":[]}
+   result=M.simulate(r) if r["arm"]=="C0" else {"case_id":cid,"numerical_status":"COMPLETE","physical_status":physical,"max_abs_mass_residual_kg":1.0 if mode=="MASS_FAIL_WRONG" and feasible_target else 0.0,"available_inventory_kg":inv,"maximum_depositable_mass_kg":inv*r["retention_fraction"],"maximum_possible_cake_resistance_pa_s_m3":maxrc,"terminal":{"predicted_flow_kg_s":base,"total_resistance_pa_s_m3":M.hydraulic_anchor()+1e8,"bound_mass_kg":0.0,"mobile_mass_kg":0.0,"deposited_mass_kg":inv*r["retention_fraction"],"escaped_mass_kg":inv*(1-r["retention_fraction"]),"compact_layer_thickness_m":-1.0 if mode=="GEOMETRY_FAIL_WRONG" and feasible_target else 0.0,"compact_layer_resistance_pa_s_m3":1e8},"temporal":[]}
+   if mode=="FAIL_FEASIBLE_WRONG" and feasible_target: result={"case_id":cid,"numerical_status":"FAILURE","physical_status":"INVALID","stop_reason":"RuntimeError:SYNTHETIC_TEST_FAILURE","terminal":{},"temporal":[]}
    rec=M.record_for(r,a,ah,result,"synthetic-test",M.utc())
    path=b/"case_records"/(cid+".json");path.parent.mkdir(exist_ok=True);path.write_text(M.canonical(rec));entries.append({"case_id":cid,"path":f"case_records/{cid}.json","size":path.stat().st_size,"sha256":M.sha(path)})
   aggregate=M.hash_obj([{"case_id":x["case_id"],"size":x["size"],"sha256":x["sha256"]} for x in entries]);(b/"manifest.json").write_text(M.canonical({"schema_version":"ewp.sci_md_002c.manifest.v1","task_id":M.TASK,"lane_id":M.LANE_ID,"source_head":a["source_head"],"source_tree":a["source_tree"],"row_ids_sha256":M.hash_obj(M.adjudicative_ids()),"record_count":len(entries),"records":entries,"ordered_record_aggregate_sha256":aggregate,"bundle_uuid":a["bundle_uuid"],"authority_sha256":ah}))
@@ -145,6 +163,34 @@ class TestReductionRules(unittest.TestCase):
      self.assertEqual(result["candidate_count"],96);self.assertEqual(result["family_disposition"],disp)
      if mode=="ONE_INVALID":self.assertTrue(any(not x["numerical_physical_valid"] for x in result["candidates"]));self.assertTrue(any(x["aggregate_eligible"] for x in result["candidates"]))
     finally:td.cleanup()
+ def test_potentially_feasible_failure_modes_preclude_rejection(self):
+  for mode in ("FAIL_FEASIBLE_WRONG","MASS_FAIL_WRONG","GEOMETRY_FAIL_WRONG"):
+   td,b,ap=self.synthetic_bundle(mode)
+   try:
+    with mock.patch.object(M,"temporal_ok",return_value=True):result=M.reduce_bundle(b,ap,b/"result.json")
+    self.assertEqual(result["family_disposition"],"SCI_MD_002C_NUMERICAL_EXECUTION_INVALID")
+    failed=next(x for x in result["candidates"] if not x["numerical_physical_valid"] and x["inventory_feasible"])
+    self.assertEqual(failed["ordering"],"NOT_EVALUATED");self.assertIsNone(failed["M59_kg_s"]);self.assertEqual(failed["temporal_signature"],"NOT_EVALUATED")
+   finally:td.cleanup()
+ def test_all_candidates_inventory_impossible(self):
+  td,b,ap=self.synthetic_bundle("WRONG")
+  try:
+   impossible={"optimistic_joint_bounds":{"required_Rc9_pa_s_m3":1e99,"required_Rc11_pa_s_m3":1e99}}
+   with mock.patch.object(M,"feasibility_bounds",return_value=impossible),mock.patch.object(M,"temporal_ok",return_value=True):result=M.reduce_bundle(b,ap,b/"result.json")
+   self.assertEqual(result["family_disposition"],"SCI_MD_002C_REJECTED_INSUFFICIENT_FINES_INVENTORY")
+  finally:td.cleanup()
+ def test_c0_controls_are_package_prerequisites(self):
+  lookup={r["case_id"]:r for r in M.matrix_rows()};records={}
+  for p in M.PRESSURES:
+   cid=f"C0-SOURCE-P{p}-NOFINES";r=lookup[cid];z=M.simulate(r);records[cid]={"numerical_status":"COMPLETE","physical_status":"VALID","result":z}
+  self.assertEqual(set(M.validate_c0_controls(records,lookup)),set(M.PRESSURES))
+  mutations=(("initial_inventory_kg",1),)
+  for field,value in mutations:
+   bad=json.loads(json.dumps(records));bad["C0-SOURCE-P5-NOFINES"]["result"][field]=value
+   with self.assertRaises(ValueError):M.validate_c0_controls(bad,lookup)
+  for field in ("deposited_mass_kg","escaped_mass_kg","compact_layer_thickness_m","compact_layer_resistance_pa_s_m3","total_resistance_pa_s_m3","predicted_flow_kg_s","observed_pressure_pa"):
+   bad=json.loads(json.dumps(records));bad["C0-SOURCE-P5-NOFINES"]["result"]["terminal"][field]+=1
+   with self.assertRaises(ValueError):M.validate_c0_controls(bad,lookup)
  def test_incomplete_bundle_fails_before_disposition(self):
   td,b,ap=self.synthetic_bundle("PASS")
   try:
