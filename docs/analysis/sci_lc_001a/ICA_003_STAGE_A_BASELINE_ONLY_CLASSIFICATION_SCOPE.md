@@ -112,3 +112,21 @@ necessary behavior of a real espresso puck.
 ICA-003 authorizes no Stage-A, D4, X1, OpenFOAM, Puckworks, pilot, or physical
 execution. The resulting exact head requires separate independent read-only
 review before any later owner adjudication.
+
+## ICA-003-R1 F01-F03 correction candidate
+
+The bounded correction closes three implementation gaps while preserving the
+scientific contract. Ordinary Stage-A labels now come from the single closed
+active-precedence domain; `;` is reserved as the qualification delimiter, and
+callers may not preseed or overwrite `qualified_classification`. Existing
+authority fields are compared before result binding, so a conflict is rejected
+without producing a valid-looking record.
+
+Classification-bearing executed `BASE` keys are serialized, in frozen graph
+order, to `classifications/CLASSIFICATION_RECORDS.jsonl`. The validated store
+drives `CLASSIFICATION_SUMMARY.json` and the owner-facing
+`CLASSIFICATION_REPORT.md`; neither downstream artifact reclassifies results.
+All three artifacts retain ordinary and qualified labels, scope, architecture,
+and run authority. Missing, stale, mixed, diagnostic, synthetic, D4, and X1
+evidence fails closed. These corrections generate no scientific evidence and
+remain pending a new independent exact-head review.

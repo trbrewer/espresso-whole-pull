@@ -6,7 +6,12 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW`.
+Status: `ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW`.
+
+ICA-003-R1 F01-F03 corrections are implemented pending a new independent
+exact-head review. They close label qualification and authority-collision
+barriers and add deterministic canonical classification records, summaries,
+and owner-facing reporting. They do not authorize or execute scientific work.
 
 ICA-003 freezes owner-selected Architecture B. Dynamic Stage-A classifications
 are `BASELINE_ZERO_STATE_ONLY`; static algebraic classifications are

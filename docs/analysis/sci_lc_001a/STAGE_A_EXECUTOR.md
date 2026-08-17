@@ -168,3 +168,27 @@ The next action is one bounded independent exact-head implementation review.
 A passing review may support a separate decision about a small timing pilot;
 it does not itself authorize timing, scientific execution, D4, X1, readiness,
 merge, or physical-validation claims.
+
+## Classification artifacts and correction barriers
+
+The correction candidate uses the active Stage-A precedence as the closed
+ordinary-label domain. Qualification is derived exactly as
+`<ordinary_regime_label>;<initial_condition_scope>`; delimiter-bearing or
+unknown components and caller collisions with derived fields are rejected.
+Result authority already present in a record is checked before binding and is
+never silently overwritten.
+
+After an authorized run, `--mode classify` validates authority-bound executed
+`BASE` evidence and writes, under the run root:
+
+- `classifications/CLASSIFICATION_RECORDS.jsonl` — versioned per-key records in
+  frozen plan order;
+- `classifications/CLASSIFICATION_SUMMARY.json` — reconciled deterministic
+  ordinary, qualified, scope, and state-variant counts;
+- `classifications/CLASSIFICATION_REPORT.md` — owner-facing counts and explicit
+  scientific non-claims.
+
+The summary and report consume validated classification records; they do not
+reclassify raw results. Diagnostic and synthetic evidence remain inadmissible
+to canonical export. This candidate remains pending independent exact-head
+review and authorizes no scientific execution.

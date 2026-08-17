@@ -332,6 +332,16 @@
     "UNIVERSAL_LATERAL_COUPLING_PARAMETER": "NOT_ESTABLISHED"
   },
   "classification": {
+    "canonical_classification_artifacts": {
+      "authority_conflict_routing": "FAIL_CLOSED_BEFORE_BINDING",
+      "ordering": "FROZEN_EXECUTION_PLAN_ORDER",
+      "owner_report": "classifications/CLASSIFICATION_REPORT.md",
+      "record_schema": "ewp.sci_lc_001a.classification_record.v1",
+      "records": "classifications/CLASSIFICATION_RECORDS.jsonl",
+      "summary": "classifications/CLASSIFICATION_SUMMARY.json",
+      "summary_schema": "ewp.sci_lc_001a.classification_summary.v1",
+      "synthetic_and_diagnostic_evidence": "SCIENTIFICALLY_INADMISSIBLE"
+    },
     "dynamic": {
       "comparator": "materialized Lambda=0 with same storage,evolution,boundary,machine,initial,numerics",
       "metrics": [
@@ -355,6 +365,25 @@
       "status": "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_D4_ROBUSTNESS_UNADJUDICATED_PENDING_REVIEW"
     },
     "precedence": [
+      "AUTHORITY_OR_ARTIFACT_INVALID",
+      "ANALYTICAL_STRUCTURAL_IDENTITY",
+      "NUMERICALLY_UNRESOLVED",
+      "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT",
+      "METRIC_DISAGREEMENT",
+      "NEAR_THRESHOLD_TRANSITION",
+      "LATERAL_EQUALIZATION",
+      "HETEROGENEITY_AMPLIFIES",
+      "HETEROGENEITY_PERSISTS"
+    ],
+    "qualified_classification_contract": {
+      "caller_collision_routing": "CLASSIFICATION_DERIVED_FIELD_COLLISION",
+      "delimiter": ";",
+      "derived_field_owner": "CANONICAL_CLASSIFIER_ONLY",
+      "exact_delimiter_count": 1,
+      "format": "<ordinary_regime_label>;<initial_condition_scope>",
+      "unknown_label_routing": "INVALID_STAGE_A_REGIME_LABEL"
+    },
+    "stage_a_ordinary_label_domain": [
       "AUTHORITY_OR_ARTIFACT_INVALID",
       "ANALYTICAL_STRUCTURAL_IDENTITY",
       "NUMERICALLY_UNRESOLVED",
@@ -953,7 +982,7 @@
       "status": "DEFERRED_NOT_AUTHORIZED"
     }
   },
-  "status": "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW",
+  "status": "ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
       "authority/hash/review mismatch",
@@ -998,7 +1027,7 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-ICA-003-STAGE-A-BASELINE-ONLY-CLASSIFICATION-SCOPE-RECONCILIATION-2026-08-17",
+  "task_id": "SCI-LC-001A-ICA-003-R1-F01-F03-BOUNDED-CORRECTION-2026-08-17",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
     "applicability_authority": "derive_uncertainty_contract(canonical_rows,subject_case_id,metric,evaluation,status,profile)",

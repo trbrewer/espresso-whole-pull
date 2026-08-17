@@ -2,7 +2,7 @@
 
 Task: `SCI-LC-001A-ICA-003-STAGE-A-BASELINE-ONLY-CLASSIFICATION-SCOPE-RECONCILIATION-2026-08-17`
 
-Status: `STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW`
+Status: `ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW`
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Execution is not
 authorized. This package defines a reduced diagnostic model; it does not change
@@ -39,7 +39,7 @@ trajectory or classification.
     "structural_comparator_rows": 362
   },
   "stage_a_hard_maximum": 1280,
-  "status": "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW",
+  "status": "ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW",
   "uncertainty": "u_limit(G)=min(0.02,0.02*abs(G))"
 }
 ```
@@ -433,3 +433,20 @@ restart matching. Partial/stopped outputs are never adjudicative.
 
 The package now requires another independent read-only exact-head review and
 separate owner adjudication before any timing or scientific execution.
+
+## ICA-003-R1 classification correction contract
+
+The active Stage-A precedence is also the closed ordinary-classification
+domain. Qualification uses exactly one `;` delimiter and is derived as
+`<ordinary_regime_label>;<initial_condition_scope>`; unknown or delimiter-
+bearing components and caller collisions with derived fields fail closed.
+Present authority fields must exactly match governing authority before result
+binding and cannot be overwritten to manufacture agreement.
+
+Canonical classification-bearing executed `BASE` keys are stored in frozen
+plan order at `classifications/CLASSIFICATION_RECORDS.jsonl`. Validated records
+alone drive `CLASSIFICATION_SUMMARY.json` and `CLASSIFICATION_REPORT.md`.
+Counts reconcile by ordinary label, qualified label, scope, and state variant;
+the report retains the baseline-only qualifier and explicit non-claims. This
+correction remains pending independent exact-head review and generates no
+canonical scientific evidence.

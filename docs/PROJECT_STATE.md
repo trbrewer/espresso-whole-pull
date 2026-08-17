@@ -27,10 +27,10 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active modeling task: `SCI-LC-001A ICA-003 baseline-zero-state classification scope reconciliation`
-- Execution state: `NO_SCIENTIFIC_EXECUTION; ICA_003_SCOPE_RECONCILIATION_PENDING_REVIEW`
+- Active modeling task: `SCI-LC-001A ICA-003-R1 F01-F03 bounded correction`
+- Execution state: `NO_SCIENTIFIC_EXECUTION; ICA_003_R1_F01_F03_CORRECTED_PENDING_EXACT_HEAD_REVIEW`
 - Protocol state:
-  `STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW`
+  `ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
 - Current next action:
