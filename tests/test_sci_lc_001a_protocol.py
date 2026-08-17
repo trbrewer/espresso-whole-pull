@@ -298,14 +298,16 @@ class SciLc001aProtocolTests(unittest.TestCase):
                          "AUTHORITY_OR_ARTIFACT_INVALID")
         self.assertEqual(mod.classify_synthetic_fixture(numerical_valid=False, structural_control=True),
                          "UNIFORM_OR_STRUCTURAL_CONTROL")
-        self.assertEqual(mod.classify_synthetic_fixture(initial_dependence=True, model_disagreement=True),
-                         "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE")
+        self.assertNotIn("initial_dependence",
+            __import__("inspect").signature(mod.classify_synthetic_fixture).parameters)
+        self.assertEqual(mod.classify_synthetic_fixture(model_disagreement=True),
+                         "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT")
         self.assertEqual(mod.classify_synthetic_fixture(metric_disagreement=True, threshold_straddle=True),
                          "METRIC_DISAGREEMENT")
         self.assertEqual(mod.classify_synthetic_fixture(end_gain=.8, integrated_gain=.8), "LATERAL_EQUALIZATION")
 
     def test_d4_is_fail_closed_for_stage_a(self):
-        with self.assertRaisesRegex(mod.DeferredStageError, mod.D4_STATUS):
+        with self.assertRaisesRegex(mod.DeferredStageError, mod.D4_AUTHORITY_STOP):
             mod.d4_select_synthetic([])
         self.assertEqual(self.protocol["staged_deferral"]["D4"]["status"], mod.D4_STATUS)
 

@@ -296,7 +296,7 @@ class SciLc001aExecutorTests(unittest.TestCase):
         self.assertEqual(self.canonical.matrix_hash,
             "4bb979181a0e5c672b896c44e3eee9574e28f0abed1d1f5dc227a47214e21717")
         self.assertEqual((protocol.D4_STATUS, protocol.X1_STATUS),
-            ("DEFERRED_NOT_AUTHORIZED_STAGE_A", "DEFERRED_NOT_AUTHORIZED_STAGE_A"))
+                         ("DEFERRED_NOT_AUTHORIZED", "DEFERRED_NOT_AUTHORIZED"))
         with self.assertRaises(protocol.DeferredStageError): protocol.d4_select_synthetic()
         with self.assertRaises(protocol.DeferredStageError): protocol.x1_select_synthetic()
 
@@ -579,8 +579,7 @@ class SciLc001aExecutorTests(unittest.TestCase):
         self.assertEqual(f(authority_invalid=True, metrics=((.5,0),(.5,0))), "AUTHORITY_OR_ARTIFACT_INVALID")
         self.assertEqual(f(structural_identity=True), "ANALYTICAL_STRUCTURAL_IDENTITY")
         self.assertEqual(f(numerical_unresolved=True), "NUMERICALLY_UNRESOLVED")
-        self.assertEqual(f(initial_condition_disagreement=True, metrics=((.5,0),(.5,0))),
-                         "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE")
+        self.assertNotIn("initial_condition_disagreement", inspect.signature(f).parameters)
         self.assertEqual(f(sector_disagreement=True, metrics=((.5,0),(.5,0))),
                          "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT")
         self.assertEqual(f(metrics=((.8,0),(1.,0))), "METRIC_DISAGREEMENT")
@@ -588,12 +587,13 @@ class SciLc001aExecutorTests(unittest.TestCase):
         self.assertEqual(f(metrics=((1.2,0),(1.2,0))), "HETEROGENEITY_AMPLIFIES")
         self.assertEqual(f(metrics=((1.,0),(1.,0))), "HETEROGENEITY_PERSISTS")
 
-    def test_initial_condition_authority_gap_is_explicit_and_not_caller_overridable(self):
+    def test_baseline_initial_condition_scope_is_explicit_and_not_caller_overridable(self):
         status = self.canonical.by_id and json.loads(
             executor.PROTOCOL_PATH.read_text())["classification"]["initial_condition_reconciliation"]
-        self.assertEqual(status["status"], "AUTHORITY_INCOMPLETE_LOCALIZED_SCIENCE_ONLY_GAP")
-        self.assertEqual(status["grouping_authority"], "NOT_DEFINED_FOR_STAGE_A")
-        self.assertEqual(status["disagreement_predicate"], "NOT_DEFINED_FOR_STAGE_A")
+        self.assertEqual(status["status"], protocol.INITIAL_CONDITION_AUTHORITY_STATUS)
+        self.assertEqual(status["stage_a_dynamic_scope"], "BASELINE_ZERO_STATE_ONLY")
+        self.assertEqual(status["initial_condition_dependence_branch"], "NOT_EVALUATED_NOT_FALSE")
+        self.assertEqual(status["reserved_future_label_stage_a_status"], "NOT_ADJUDICATED_STAGE_A")
         self.assertFalse(status["hidden_runs_authorized"])
         signature = inspect.signature(executor.classify_stage_a_evidence)
         self.assertNotIn("initial_condition_disagreement", signature.parameters)

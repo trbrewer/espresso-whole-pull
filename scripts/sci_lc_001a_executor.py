@@ -149,6 +149,10 @@ def build_plan(store: CanonicalStore) -> dict:
             "dynamic_profile_keys": graph["maximum_dynamic_trajectory_invocations"],
             "static_profile_keys": graph["maximum_static_solve_invocations"],
             "total_keys": len(keys), "keys": [list(key) for key in keys],
+            "dynamic_initial_state_variant": protocol.DYNAMIC_INITIAL_STATE_VARIANT,
+            "static_dynamic_initial_state_variant": protocol.STATIC_INITIAL_STATE_VARIANT,
+            "initial_condition_scope": protocol.DYNAMIC_INITIAL_CONDITION_SCOPE,
+            "cache_identity": "(case_id,numerical_profile)",
             "solver_calls": 0, "d4_keys": 0, "x1_keys": 0}
 
 
@@ -241,7 +245,10 @@ class ResultStore:
     def manifest_identity(manifest: dict) -> str:
         keys = ("schema", "run_id", "authorization_id", "git_head", "git_tree",
                 "matrix_semantic_sha256", "protocol_sha256", "executor_source_sha256",
-                "execution_mode", "backend", "evidence_kind", "output_root")
+                "execution_mode", "backend", "evidence_kind", "output_root",
+                "stage_a_architecture_id", "dynamic_initial_state_variant",
+                "initial_condition_scope", "initial_condition_robustness", "bistability_status",
+                "initial_condition_dependence_branch")
         if any(key not in manifest for key in keys):
             raise ValueError("RUN_MANIFEST_IDENTITY_FIELD_MISSING")
         return sha256_bytes(canonical_json({key: manifest[key] for key in keys}).encode())
@@ -256,7 +263,13 @@ class ResultStore:
                     "executor_source_sha256": context.executor_identity,
                     "execution_mode": context.execution_mode, "output_root": str(self.root),
                     "backend": context.backend, "evidence_kind": context.evidence_kind,
-                    "task_count": task_count, "run_id": context.run_id}
+                    "task_count": task_count, "run_id": context.run_id,
+                    "stage_a_architecture_id": protocol.ARCHITECTURE_ID,
+                    "dynamic_initial_state_variant": protocol.DYNAMIC_INITIAL_STATE_VARIANT,
+                    "initial_condition_scope": protocol.DYNAMIC_INITIAL_CONDITION_SCOPE,
+                    "initial_condition_robustness": protocol.NOT_ADJUDICATED_STAGE_A,
+                    "bistability_status": protocol.NOT_ADJUDICATED_STAGE_A,
+                    "initial_condition_dependence_branch": protocol.INITIAL_CONDITION_BRANCH_STATUS}
         if self.manifest_path.exists():
             manifest = self.load_manifest()
             if any(manifest.get(key) != value for key, value in expected.items()):
@@ -284,6 +297,7 @@ class ResultStore:
         if record.get("status") not in RESULT_STATUSES:
             raise ValueError("INVALID_RESULT_STATUS")
         row = self.canonical.row(record["case_id"])
+        _validate_record_initial_condition_scope(row, record)
         if record["profile"] not in (protocol.STATIC_NUMERICAL_PROFILES if
                 row["pressure_mode"] == "PRESCRIBED_STATIC" else protocol.DYNAMIC_NUMERICAL_PROFILES):
             raise ValueError("PROFILE_NOT_AUTHORIZED_FOR_ROW")
@@ -329,6 +343,7 @@ class ResultStore:
                 record.get("row_hash") != row["row_sha256"] or record.get("profile") != profile or
                 record.get("status") not in RESULT_STATUSES):
             raise ValueError("RESULT_RECORD_CANONICAL_IDENTITY_MISMATCH")
+        _validate_record_initial_condition_scope(row, record)
         bindings = {"run_id": "run_id", "authorization_id": "authorization_id",
             "authorized_head": "git_head", "authorized_tree": "git_tree",
             "matrix_semantic_sha256": "matrix_semantic_sha256", "protocol_sha256": "protocol_sha256",
@@ -355,6 +370,7 @@ def _case_record(row: dict, profile: str, context: _ValidatedExecutionContext, s
                  rhs_evaluations_status: str | None = None) -> dict:
     rhs_status = rhs_evaluations_status or ("MEASURED" if nfev is not None else
         "NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION")
+    scope = protocol.stage_a_initial_condition_scope(row)
     return {"schema": CASE_SCHEMA, "case_id": row["case_id"], "profile": profile,
             "row_hash": row["row_sha256"], "role": row["case_role"],
             "boundary_mode": row["pressure_mode"], "authorization_id": context.authorization_id,
@@ -364,7 +380,16 @@ def _case_record(row: dict, profile: str, context: _ValidatedExecutionContext, s
             "rhs_evaluations_status": rhs_status,
             "execution_failure_class": execution_failure_class, "stop_disposition": stop,
             "linear_solve_status": linear_status, "residual_status": "PASS" if status == "COMPLETE" else status,
-            "metric_primitives": metrics, "evidence_kind": context.evidence_kind}
+            "metric_primitives": metrics, "evidence_kind": context.evidence_kind,
+            "stage_a_architecture_id": protocol.ARCHITECTURE_ID, **scope}
+
+
+def _validate_record_initial_condition_scope(row: dict, record: Mapping[str, object]) -> None:
+    expected = protocol.stage_a_initial_condition_scope(row)
+    if record.get("stage_a_architecture_id") != protocol.ARCHITECTURE_ID:
+        raise ValueError("RESULT_RECORD_STAGE_A_ARCHITECTURE_SCOPE_MISSING_OR_INVALID")
+    if any(record.get(key) != value for key, value in expected.items()):
+        raise ValueError("RESULT_RECORD_INITIAL_CONDITION_SCOPE_MISSING_OR_INVALID")
 
 
 def assemble_static_system(row: dict) -> tuple[list[list[float]], list[float], dict]:
@@ -690,13 +715,12 @@ def evaluate_uncertainty_evidence(canonical: CanonicalStore, results: ResultStor
 
 def _classification_precedence_fixture(*, authority_invalid: bool = False,
         structural_identity: bool = False, numerical_unresolved: bool = False,
-        initial_condition_disagreement: bool = False, sector_disagreement: bool = False,
+        sector_disagreement: bool = False,
         model_form_disagreement: bool = False, metrics: tuple[tuple[float, float], tuple[float, float]] | None = None) -> str:
     """Pure precedence engine. Tests use it only with synthetic scalar fixtures."""
     if authority_invalid: return "AUTHORITY_OR_ARTIFACT_INVALID"
     if structural_identity: return "ANALYTICAL_STRUCTURAL_IDENTITY"
     if numerical_unresolved or metrics is None: return "NUMERICALLY_UNRESOLVED"
-    if initial_condition_disagreement: return "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE"
     if model_form_disagreement or sector_disagreement: return "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT"
     labels = []
     for gain, uncertainty in metrics:
@@ -709,6 +733,13 @@ def _classification_precedence_fixture(*, authority_invalid: bool = False,
         else: labels.append("NEAR_THRESHOLD_TRANSITION")
     if labels[0] != labels[1]: return "METRIC_DISAGREEMENT"
     return labels[0]
+
+
+def _qualified_classification_record(row: dict, regime_label: str, **details: object) -> dict:
+    scope = protocol.stage_a_initial_condition_scope(row)
+    return {"ordinary_regime_label": regime_label,
+            "qualified_classification": protocol.qualify_stage_a_classification(row, regime_label),
+            "stage_a_architecture_id": protocol.ARCHITECTURE_ID, **scope, **details}
 
 
 def classify_stage_a_evidence(canonical: CanonicalStore, results: ResultStore,
@@ -726,8 +757,9 @@ def classify_stage_a_evidence(canonical: CanonicalStore, results: ResultStore,
                   subject["axial_placement"] == "AXIALLY_SELF_SIMILAR" or
                   subject["heterogeneity_pattern"] == "UNIFORM")
     if structural:
-        return {"classification": "ANALYTICAL_STRUCTURAL_IDENTITY",
-                "numerical_control_status": "SEPARATELY_RECORDED"}
+        return _qualified_classification_record(subject, "ANALYTICAL_STRUCTURAL_IDENTITY",
+            numerical_control_status="SEPARATELY_RECORDED",
+            precedence=list(protocol_spec_precedence()))
     metric_names = (("G_static_H", "G_static_mode") if subject["pressure_mode"] == "PRESCRIBED_STATIC"
                     else ("G_coupling_end", "G_coupling_int"))
     evidence = []
@@ -750,14 +782,14 @@ def classify_stage_a_evidence(canonical: CanonicalStore, results: ResultStore,
                                _classification_precedence_fixture(metrics=tuple(companion_evidence)))
     classification = _classification_precedence_fixture(metrics=tuple(evidence),
                                                           sector_disagreement=sector_disagreement)
-    return {"classification": classification, "metrics": dict(zip(metric_names, evidence)),
-            "precedence": list(protocol_spec_precedence())}
+    return _qualified_classification_record(subject, classification,
+        metrics=dict(zip(metric_names, evidence)), precedence=list(protocol_spec_precedence()))
 
 
 def protocol_spec_precedence() -> tuple[str, ...]:
     return ("AUTHORITY_OR_ARTIFACT_INVALID", "ANALYTICAL_STRUCTURAL_IDENTITY", "NUMERICALLY_UNRESOLVED",
-        "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE", "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT",
-        "METRIC_DISAGREEMENT", "NEAR_THRESHOLD_TRANSITION", "LATERAL_EQUALIZATION",
+        "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT", "METRIC_DISAGREEMENT",
+        "NEAR_THRESHOLD_TRANSITION", "LATERAL_EQUALIZATION",
         "HETEROGENEITY_AMPLIFIES", "HETEROGENEITY_PERSISTS")
 
 
@@ -1002,6 +1034,8 @@ def summarize(result_store: ResultStore) -> dict:
     manifest = result_store.load_manifest() if result_store.manifest_path.exists() else None
     counts = {status: 0 for status in RESULT_STATUSES}; evidence = set(); records = 0
     failure_classes = {}; projection_eligible = 0; complete_horizon_samples = 0
+    initial_condition_scopes: dict[str, int] = {}
+    dynamic_initial_state_variants: dict[str, int] = {}
     for path in sorted((result_store.root / "cases").glob("*/*.json")) if (result_store.root / "cases").exists() else []:
         if manifest is None:
             raise ValueError("SUMMARY_REQUIRES_RUN_MANIFEST")
@@ -1009,13 +1043,24 @@ def summarize(result_store: ResultStore) -> dict:
         counts[record["status"]] += 1; evidence.add(record["evidence_kind"]); records += 1
         failure_class = record.get("execution_failure_class", "NUMERICAL_CASE_DISPOSITION")
         failure_classes[failure_class] = failure_classes.get(failure_class, 0) + 1
+        for field, counts_by_value in (("initial_condition_scope", initial_condition_scopes),
+                ("dynamic_initial_state_variant", dynamic_initial_state_variants)):
+            value = str(record[field])
+            counts_by_value[value] = counts_by_value.get(value, 0) + 1
         if failure_class not in ("IMPLEMENTATION_EXCEPTION", "SHARED_INFRASTRUCTURE_FAILURE"):
             projection_eligible += 1
             if record["status"] == "COMPLETE": complete_horizon_samples += 1
     return {"records": records, "statuses": counts, "failure_classes": failure_classes,
             "projection_eligible_records": projection_eligible,
             "complete_horizon_projection_records": complete_horizon_samples,
-            "evidence_kinds": sorted(evidence), "solver_calls": 0}
+            "evidence_kinds": sorted(evidence),
+            "stage_a_architecture_id": protocol.ARCHITECTURE_ID,
+            "initial_condition_scopes": initial_condition_scopes,
+            "dynamic_initial_state_variants": dynamic_initial_state_variants,
+            "initial_condition_robustness": protocol.NOT_ADJUDICATED_STAGE_A,
+            "bistability_status": protocol.NOT_ADJUDICATED_STAGE_A,
+            "initial_condition_dependence_branch": protocol.INITIAL_CONDITION_BRANCH_STATUS,
+            "solver_calls": 0}
 
 
 def _cli() -> argparse.ArgumentParser:
