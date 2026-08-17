@@ -36,7 +36,7 @@
   ],
   "github": {
     "draft_pr": "PENDING",
-    "issue": "PENDING"
+    "issue": 77
   },
   "integration_policy": "independent review; owner-selected merge order; no rebase or scientific-source rewrite; agent does not mark ready or merge",
   "lane_id": "EWP-PAR-SCI-MD-002C",
