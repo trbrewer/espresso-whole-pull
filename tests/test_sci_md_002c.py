@@ -90,6 +90,12 @@ class TestDurability(unittest.TestCase):
   rec={"case_id":"X","bundle_uuid":"u","result":{"v":1}};rec["record_sha256"]=M.internal_hash(rec)
   self.assertEqual(rec["record_sha256"],M.internal_hash(rec));bad=json.loads(M.canonical(rec));bad["result"]["v"]=2;self.assertNotEqual(bad["record_sha256"],M.internal_hash(bad))
   with self.assertRaises(json.JSONDecodeError):json.loads('{"x":')
+ def test_manifest_detects_same_size_corruption(self):
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   b=Path(d);p=b/"case_records/X.json";rec={"case_id":"X","bundle_uuid":"u","result":{"v":1}};rec["record_sha256"]=M.internal_hash(rec);h,n=M.durable_write(p,rec)
+   rows=[{"case_id":"X","path":"case_records/X.json","size":n,"sha256":h}];man={"record_count":1,"records":rows,"ordered_record_aggregate_sha256":M.hash_obj([{"case_id":"X","size":n,"sha256":h}])};M.durable_write(b/"manifest.json",man)
+   self.assertEqual(M.verify_bundle(b,expected_ids=["X"])["record_count"],1);data=bytearray(p.read_bytes());data[data.index(b'1')]=ord('2');p.write_bytes(data)
+   with self.assertRaisesRegex(ValueError,"FULL_RECORD_HASH_FAILURE"):M.verify_bundle(b,expected_ids=["X"])
  def test_safe_path_rejects_git_and_symlink(self):
   with self.assertRaises(ValueError):M.safe_bundle(ROOT/"SCI_MD_002C_EXTERNAL_BUNDLE")
   with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
