@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 415,
-  "total_uncompressed_bytes_excluding_manifest": 6323540,
-  "aggregate_source_sha256": "d4497e3e0933aa1e5d7109c2012c4d4b5debf03b343ec6f85e450157d58de890",
-  "aggregate_sha256": "d4497e3e0933aa1e5d7109c2012c4d4b5debf03b343ec6f85e450157d58de890",
+  "total_uncompressed_bytes_excluding_manifest": 6323533,
+  "aggregate_source_sha256": "a74645b466720f03ed0393a786b7be0166ed01e0c6faedfbd9ece68dbc3a2e86",
+  "aggregate_sha256": "a74645b466720f03ed0393a786b7be0166ed01e0c6faedfbd9ece68dbc3a2e86",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -539,8 +539,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002c/PARALLEL_LANE_DECLARATION.json": {
-      "sha256": "6c412784d980bcaffa73a24c29a8722815296ada33e571be3794b506cc32833a",
-      "bytes": 3391,
+      "sha256": "88cc276c952980ccafe09b193d503d7f7e7093103aa8c5469aed2a9d14addeba",
+      "bytes": 3384,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002c/PROTOCOL.md": {
