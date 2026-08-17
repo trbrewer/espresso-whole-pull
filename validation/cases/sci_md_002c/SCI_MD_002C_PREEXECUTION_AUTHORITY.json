@@ -625,20 +625,20 @@
   "hashes": {
     "feasibility_bounds": "6753fb520420fbaf2910f62a6bd3e9b2ddd15f4a07693920222f1b154b64aa2b",
     "human_protocol": "fa11fe207cd885040495d3fb1c5308373cd4f2826c26933b9fbe2cd29036f3c0",
-    "implementation": "cefc030b09261aa995f1341e3e030901ac1d0356d8de9b45caba9817c903e4d3",
+    "implementation": "02ec326d4963686fa8dfbd60c3b3c12b2aaf13f823bf32344f4afc70be3004fa",
     "lane_declaration": "88cc276c952980ccafe09b193d503d7f7e7093103aa8c5469aed2a9d14addeba",
     "machine_protocol": "a933af58e2df21a56db4a8ddb15cc0fbb5a3055bc38302182187ffa20fe82c57",
     "matrix_csv": "70c3a9d7aefb02398d5c65b16d57e15f57a10b900f97a29d320cd859a8467997",
     "matrix_json": "b67046e221572817286fd9c1075e4f4a3e04c2f7df8f64ce9fcc754d40b93b15",
-    "pilot_report": "6fd11696f358971cb1ad19ecbbce390fe818605f71d5ecf0841f0098bf6e4144",
+    "pilot_report": "40c85b1691eb3c65ab8c9da40e360fef1845faee21fdd2c1a2525f72f44bca29",
     "puckworks_reference": "1e0d26bfd77c9202f79540037fc39b5458c9e80d22224da725bace5c7037def5",
-    "source_manifest": "f8075d4b07f0079b268672fd6d696a00d29516dbae3174992ded4e8846bbcf4b",
+    "source_manifest": "38c05dedfb89ffe98972db9a2ea57b1363ec30f534cd4ebb0aa46f61fb796625",
     "source_overlay": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e"
   },
   "lane_id": "EWP-PAR-SCI-MD-002C",
   "owner_execution_token_present": false,
   "pilot": {
-    "accepted_attempt": "attempt5",
+    "accepted_attempt": "attempt6",
     "ids": [
       "A0-ZERO-FINES",
       "A0-MASS-CONSERVATION",
@@ -649,11 +649,11 @@
       "C1-FASANO-STRUCTURAL",
       "R1-SYNTH-P7-BASE"
     ],
-    "report_sha256": "6fd11696f358971cb1ad19ecbbce390fe818605f71d5ecf0841f0098bf6e4144"
+    "report_sha256": "40c85b1691eb3c65ab8c9da40e360fef1845faee21fdd2c1a2525f72f44bca29"
   },
   "prospective_execution_source": {
-    "head": "841f8513ed7a2ae0d29466664145650ff9b1f4c9",
-    "tree": "418466b632a0e9c2906ee15093eb0f714b50a940"
+    "head": "36bca231c4cf9fdee939d8ec3f8cbcc6e74e08da",
+    "tree": "8d4f5bb8241483e227a483332035d9e6df454b97"
   },
   "puckworks": {
     "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
