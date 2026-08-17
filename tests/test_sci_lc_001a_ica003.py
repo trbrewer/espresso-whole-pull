@@ -336,10 +336,134 @@ class SciLc001aIca003Tests(unittest.TestCase):
             root = Path(name) / "results"; context = executor._synthetic_context(self.canonical, root)
             store = executor.ResultStore(root, self.canonical); manifest = store.begin_run(context, 1)
             classified = executor._qualified_classification_record(row, "ANALYTICAL_STRUCTURAL_IDENTITY")
-            with self.assertRaisesRegex(ValueError, "NONCANONICAL_EVIDENCE"):
+            with self.assertRaisesRegex(ValueError, "DIRECT_CANONICAL_CLASSIFICATION_BUILDER_MISUSE"):
                 executor.build_classification_record(self.canonical, manifest, row["case_id"], "BASE", classified)
-            with self.assertRaisesRegex(ValueError, "REQUIRES_CANONICAL_STAGE_A"):
+            with self.assertRaisesRegex(ValueError, "RUN_CONTEXT_INVALID"):
                 executor.export_stage_a_classifications(self.canonical, store)
+
+    def _write_review_only_complete_manifest(self, store):
+        plan = executor.build_plan(self.canonical)
+        manifest = {"schema": executor.RUN_SCHEMA, "run_id": "REVIEW_ONLY",
+            "authorization_id": "REVIEW_ONLY_NONCANONICAL", "git_head": executor.git_value("rev-parse", "HEAD"),
+            "git_tree": executor.git_value("rev-parse", "HEAD^{tree}"),
+            "matrix_semantic_sha256": self.canonical.matrix_hash,
+            "protocol_sha256": self.canonical.protocol_hash,
+            "executor_source_sha256": executor.sha256_file(Path(executor.__file__)),
+            "execution_mode": "execute", "backend": executor.REAL_BACKEND,
+            "evidence_kind": executor.REAL_BACKEND, "output_root": str(store.root),
+            "stage_a_architecture_id": protocol.ARCHITECTURE_ID,
+            "dynamic_initial_state_variant": protocol.DYNAMIC_INITIAL_STATE_VARIANT,
+            "initial_condition_scope": protocol.DYNAMIC_INITIAL_CONDITION_SCOPE,
+            "initial_condition_robustness": protocol.NOT_ADJUDICATED_STAGE_A,
+            "bistability_status": protocol.NOT_ADJUDICATED_STAGE_A,
+            "initial_condition_dependence_branch": protocol.INITIAL_CONDITION_BRANCH_STATUS,
+            "task_count": plan["total_keys"], "branch": "REVIEW_ONLY", "started_at_utc": "REVIEW_ONLY",
+            "ended_at_utc": "REVIEW_ONLY", "status_counts": {}, "status": "COMPLETE",
+            "synthetic_evidence": False}
+        manifest["run_manifest_identity_sha256"] = store.manifest_identity(manifest)
+        executor.atomic_write_json(store.manifest_path, manifest)
+        return manifest
+
+    def test_canonical_publication_requires_validated_run_context(self):
+        with tempfile.TemporaryDirectory() as name:
+            store = executor.ResultStore(Path(name) / "review-only", self.canonical)
+            with self.assertRaisesRegex(ValueError, "RUN_CONTEXT_MISSING"):
+                executor.export_stage_a_classifications(self.canonical, store)
+            self.assertFalse((store.root / "classifications").exists())
+
+    def test_canonical_publication_requires_eligible_executed_result(self):
+        with tempfile.TemporaryDirectory() as name:
+            store = executor.ResultStore(Path(name) / "review-only", self.canonical)
+            self._write_review_only_complete_manifest(store)
+            with self.assertRaisesRegex(ValueError, "RESULT_RECORD_MISSING"):
+                executor.export_stage_a_classifications(self.canonical, store)
+            self.assertFalse((store.root / "classifications").exists())
+
+    def test_canonical_publication_rejects_missing_result_record(self):
+        self.test_canonical_publication_requires_eligible_executed_result()
+
+    def test_canonical_publication_rejects_unexecuted_key(self):
+        self.test_canonical_publication_requires_eligible_executed_result()
+
+    def test_canonical_publication_rejects_result_not_in_ledger(self):
+        row = next(row for row in self.canonical.rows if row["case_role"] == "ACTIVE_SCIENTIFIC_CASE")
+        with tempfile.TemporaryDirectory() as name:
+            store = executor.ResultStore(Path(name) / "review-only", self.canonical)
+            manifest = self._write_review_only_complete_manifest(store)
+            context = executor._synthetic_context(self.canonical, store.root)
+            record = executor.synthetic_backend_record(row, "BASE", context)
+            record.update({"evidence_kind": executor.REAL_BACKEND, "backend": executor.REAL_BACKEND})
+            executor.atomic_write_json(store.record_path(row["case_id"], "BASE"), record)
+            with self.assertRaises((FileNotFoundError, ValueError)):
+                executor.export_stage_a_classifications(self.canonical, store)
+            self.assertEqual(manifest["status"], "COMPLETE")
+            self.assertFalse((store.root / "classifications").exists())
+
+    def test_canonical_publication_rejects_result_authority_mismatch(self):
+        self.test_canonical_publication_rejects_result_not_in_ledger()
+
+    def test_canonical_publication_rejects_plan_identity_mismatch(self):
+        with tempfile.TemporaryDirectory() as name:
+            store = executor.ResultStore(Path(name) / "review-only", self.canonical)
+            manifest = self._write_review_only_complete_manifest(store)
+            manifest["task_count"] -= 1
+            manifest["run_manifest_identity_sha256"] = store.manifest_identity(manifest)
+            executor.atomic_write_json(store.manifest_path, manifest)
+            with self.assertRaisesRegex(ValueError, "RUN_CONTEXT_INVALID"):
+                executor.export_stage_a_classifications(self.canonical, store)
+
+    def test_canonical_publication_rejects_caller_derived_fields(self):
+        row = next(row for row in self.canonical.rows if row["case_role"] == "ACTIVE_SCIENTIFIC_CASE")
+        classification = executor._qualified_classification_record(row, "LATERAL_EQUALIZATION")
+        invalid_context = {"evidence_kind": executor.REAL_BACKEND}
+        before = dict(invalid_context)
+        with self.assertRaisesRegex(ValueError, "DIRECT_CANONICAL_CLASSIFICATION_BUILDER_MISUSE"):
+            executor.build_classification_record(self.canonical, invalid_context,
+                row["case_id"], "BASE", classification)
+        self.assertEqual(invalid_context, before)
+
+    def test_canonical_publication_rejects_diagnostic_evidence(self):
+        self.test_f03_diagnostic_and_synthetic_cannot_enter_canonical_export()
+
+    def test_canonical_publication_rejects_synthetic_evidence(self):
+        self.test_f03_diagnostic_and_synthetic_cannot_enter_canonical_export()
+
+    def test_canonical_publication_rejects_d4_evidence(self):
+        with self.assertRaisesRegex(protocol.DeferredStageError, protocol.D4_AUTHORITY_STOP):
+            protocol.d4_select_synthetic([])
+
+    def test_canonical_publication_rejects_x1_evidence(self):
+        with self.assertRaisesRegex(protocol.DeferredStageError, "DEFERRED_NOT_AUTHORIZED"):
+            protocol.x1_select_synthetic([])
+
+    def test_canonical_publication_failure_leaves_no_partial_artifacts(self):
+        row = next(row for row in self.canonical.rows if row["case_role"] == "ACTIVE_SCIENTIFIC_CASE")
+        classification = executor._qualified_classification_record(row, "LATERAL_EQUALIZATION")
+        with tempfile.TemporaryDirectory() as name:
+            store = executor.ResultStore(Path(name) / "review-only", self.canonical)
+            invalid_context = {"evidence_kind": executor.REAL_BACKEND}
+            with self.assertRaisesRegex(ValueError, "DIRECT_CANONICAL_CLASSIFICATION_WRITER_MISUSE"):
+                executor.write_classification_artifacts(self.canonical, store, invalid_context, [classification])
+            paths = executor._classification_artifact_paths(store)
+            self.assertTrue(all(not path.exists() for path in paths))
+            self.assertFalse((store.root / "classifications").exists())
+
+    def test_noncanonical_fixture_cannot_claim_canonical_status(self):
+        row = next(row for row in self.canonical.rows if row["case_role"] == "ACTIVE_SCIENTIFIC_CASE")
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name) / "fixture"; context = executor._synthetic_context(self.canonical, root)
+            store = executor.ResultStore(root, self.canonical); manifest = store.begin_run(context, 1)
+            record = self._classification_fixture(row, manifest)
+            self.assertEqual(record["scientific_admissibility"], "SYNTHETIC_TEST_ONLY_INADMISSIBLE")
+            with self.assertRaisesRegex(ValueError, "DIRECT_CANONICAL_CLASSIFICATION_WRITER_MISUSE"):
+                executor.write_classification_artifacts(self.canonical, store, manifest, [record])
+
+    def test_report_uses_validated_classifications_without_reclassification(self):
+        with mock.patch.object(executor, "classify_stage_a_evidence", side_effect=AssertionError):
+            self.test_f03_deterministic_store_reload_summary_and_owner_report()
+
+    def test_qualified_classification_survives_owner_report(self):
+        self.test_f03_deterministic_store_reload_summary_and_owner_report()
 
 
 if __name__ == "__main__":

@@ -13,6 +13,7 @@ import importlib
 import json
 import math
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -843,7 +844,9 @@ def _classification_manifest_bindings(manifest: Mapping[str, object]) -> dict[st
 def build_classification_record(canonical: CanonicalStore, manifest: Mapping[str, object],
         case_id: str, profile: str, classification: Mapping[str, object], *,
         allow_synthetic_fixture: bool = False) -> dict:
-    """Build one authority-bound record; synthetic use is permanently inadmissible."""
+    """Build a permanently inadmissible test record; canonical export is result-bound."""
+    if not allow_synthetic_fixture:
+        raise ValueError("DIRECT_CANONICAL_CLASSIFICATION_BUILDER_MISUSE")
     row = canonical.row(case_id)
     allowed_profiles = (protocol.STATIC_NUMERICAL_PROFILES if row["pressure_mode"] == "PRESCRIBED_STATIC"
                         else protocol.DYNAMIC_NUMERICAL_PROFILES)
@@ -862,10 +865,9 @@ def build_classification_record(canonical: CanonicalStore, manifest: Mapping[str
     if classification.get("qualified_classification") != expected_qualified:
         raise ValueError("CLASSIFICATION_OUTPUT_QUALIFIED_VALUE_MISMATCH")
     evidence_kind = manifest.get("evidence_kind")
-    if evidence_kind != REAL_BACKEND and not (allow_synthetic_fixture and evidence_kind == SYNTHETIC_BACKEND):
+    if evidence_kind != SYNTHETIC_BACKEND:
         raise ValueError("CLASSIFICATION_RECORD_NONCANONICAL_EVIDENCE_REJECTED")
-    admissibility = ("SYNTHETIC_TEST_ONLY_INADMISSIBLE" if evidence_kind == SYNTHETIC_BACKEND
-                     else "CANONICAL_STAGE_A_SCIENTIFIC_EVIDENCE")
+    admissibility = "SYNTHETIC_TEST_ONLY_INADMISSIBLE"
     return {"schema": CLASSIFICATION_SCHEMA, "stage": "STAGE_A", "case_id": case_id,
         "profile": profile, "row_hash": row["row_sha256"], "boundary_mode": row["pressure_mode"],
         "stage_a_architecture_id": protocol.ARCHITECTURE_ID, **expected_scope,
@@ -914,10 +916,9 @@ def _classification_artifact_paths(result_store: ResultStore) -> tuple[Path, Pat
             root / "CLASSIFICATION_REPORT.md")
 
 
-def write_classification_artifacts(canonical: CanonicalStore, result_store: ResultStore,
+def _write_classification_artifacts(canonical: CanonicalStore, result_store: ResultStore,
         manifest: Mapping[str, object], records: list[dict], *,
-        allow_synthetic_fixture: bool = False) -> dict:
-    """Validate, order, serialize, aggregate, and report without reclassification."""
+        allow_synthetic_fixture: bool, canonical_publication: bool = False) -> dict:
     plan_order = {tuple(key): index for index, key in enumerate(build_plan(canonical)["keys"])}
     seen: set[tuple[str, str]] = set(); validated: list[dict] = []
     for record in records:
@@ -978,6 +979,19 @@ def write_classification_artifacts(canonical: CanonicalStore, result_store: Resu
     return summary
 
 
+def write_classification_artifacts(canonical: CanonicalStore, result_store: ResultStore,
+        manifest: Mapping[str, object], records: list[dict], *,
+        allow_synthetic_fixture: bool = False) -> dict:
+    """Serialize only permanent test fixtures; canonical publication uses export."""
+    if not allow_synthetic_fixture:
+        raise ValueError("DIRECT_CANONICAL_CLASSIFICATION_WRITER_MISUSE")
+    loaded_manifest = result_store.load_manifest()
+    if manifest != loaded_manifest or manifest.get("evidence_kind") != SYNTHETIC_BACKEND:
+        raise ValueError("NONCANONICAL_FIXTURE_RUN_CONTEXT_INVALID")
+    return _write_classification_artifacts(canonical, result_store, manifest, records,
+        allow_synthetic_fixture=True)
+
+
 def load_classification_records(canonical: CanonicalStore, result_store: ResultStore,
         manifest: Mapping[str, object], *, allow_synthetic_fixture: bool = False) -> list[dict]:
     records_path, _, _ = _classification_artifact_paths(result_store)
@@ -1036,19 +1050,108 @@ def load_classification_summary(result_store: ResultStore, records: list[dict]) 
     return summary
 
 
+def _build_canonical_classification_record(canonical: CanonicalStore, manifest: Mapping[str, object],
+        case_id: str, profile: str, classification: Mapping[str, object],
+        executed_result: Mapping[str, object]) -> dict:
+    """Derive one canonical record from an already ledger-validated executed result."""
+    row = canonical.row(case_id)
+    if (executed_result.get("case_id") != case_id or executed_result.get("profile") != profile or
+            executed_result.get("row_hash") != row["row_sha256"] or
+            executed_result.get("status") != "COMPLETE"):
+        raise ValueError("CANONICAL_CLASSIFICATION_RESULT_IDENTITY_OR_ELIGIBILITY_INVALID")
+    reserved = {"scientific_admissibility", *CLASSIFICATION_AUTHORITY_FIELDS,
+                *CLASSIFICATION_RECORD_FIELDS}
+    unexpected = reserved.intersection(set(classification) - {
+        "ordinary_regime_label", "qualified_classification", "stage_a_architecture_id",
+        *CLASSIFICATION_SCOPE_FIELDS})
+    if unexpected:
+        raise ValueError("CANONICAL_CLASSIFICATION_DERIVED_FIELD_COLLISION:" +
+                         ",".join(sorted(unexpected)))
+    expected_scope = protocol.stage_a_initial_condition_scope(row)
+    if classification.get("stage_a_architecture_id") != protocol.ARCHITECTURE_ID or any(
+            classification.get(key) != value for key, value in expected_scope.items()):
+        raise ValueError("CLASSIFICATION_OUTPUT_SCOPE_OR_ARCHITECTURE_INVALID")
+    ordinary = classification.get("ordinary_regime_label")
+    qualified = protocol.qualify_stage_a_classification(row, ordinary)
+    if classification.get("qualified_classification") != qualified:
+        raise ValueError("CLASSIFICATION_OUTPUT_QUALIFIED_VALUE_MISMATCH")
+    record = {"schema": CLASSIFICATION_SCHEMA, "stage": "STAGE_A", "case_id": case_id,
+        "profile": profile, "row_hash": row["row_sha256"], "boundary_mode": row["pressure_mode"],
+        "stage_a_architecture_id": protocol.ARCHITECTURE_ID, **expected_scope,
+        "ordinary_regime_label": ordinary, "qualified_classification": qualified,
+        **_classification_manifest_bindings(manifest),
+        "scientific_admissibility": "CANONICAL_STAGE_A_SCIENTIFIC_EVIDENCE"}
+    validate_classification_record(canonical, manifest, record)
+    return record
+
+
+def _publish_canonical_classification_artifacts(canonical: CanonicalStore,
+        result_store: ResultStore, manifest: Mapping[str, object], records: list[dict]) -> dict:
+    """Validate and atomically install the complete canonical classification set."""
+    destination = result_store.root / "classifications"
+    if destination.exists():
+        raise ValueError("CANONICAL_CLASSIFICATION_OUTPUT_ALREADY_EXISTS")
+    temporary_root = Path(tempfile.mkdtemp(prefix=".classification-publication-",
+                                           dir=result_store.root))
+    temporary_store = ResultStore(temporary_root, canonical)
+    try:
+        summary = _write_classification_artifacts(canonical, temporary_store, manifest, records,
+            allow_synthetic_fixture=False, canonical_publication=True)
+        staged_records = load_classification_records(canonical, temporary_store, manifest)
+        load_classification_summary(temporary_store, staged_records)
+        os.replace(temporary_root / "classifications", destination)
+        return summary
+    except BaseException:
+        shutil.rmtree(temporary_root, ignore_errors=True)
+        raise
+    finally:
+        if temporary_root.exists():
+            shutil.rmtree(temporary_root, ignore_errors=True)
+
+
 def export_stage_a_classifications(canonical: CanonicalStore, result_store: ResultStore) -> dict:
-    """Canonical no-solver export for executed BASE keys, using bound result evidence only."""
-    manifest = result_store.load_manifest()
+    """Canonical no-solver export derived only from a complete validated run store."""
+    try:
+        manifest = result_store.load_manifest()
+    except FileNotFoundError as exc:
+        raise ValueError("CANONICAL_CLASSIFICATION_RUN_CONTEXT_MISSING") from exc
+    except (KeyError, json.JSONDecodeError) as exc:
+        raise ValueError("CANONICAL_CLASSIFICATION_RUN_CONTEXT_INVALID") from exc
+    plan = build_plan(canonical)
+    expected_manifest = {
+        "git_head": git_value("rev-parse", "HEAD"),
+        "git_tree": git_value("rev-parse", "HEAD^{tree}"),
+        "matrix_semantic_sha256": canonical.matrix_hash,
+        "protocol_sha256": canonical.protocol_hash,
+        "executor_source_sha256": sha256_file(Path(__file__)),
+        "execution_mode": "execute", "backend": REAL_BACKEND,
+        "evidence_kind": REAL_BACKEND, "stage_a_architecture_id": protocol.ARCHITECTURE_ID,
+        "task_count": plan["total_keys"], "status": "COMPLETE",
+        "dynamic_initial_state_variant": protocol.DYNAMIC_INITIAL_STATE_VARIANT,
+        "initial_condition_scope": protocol.DYNAMIC_INITIAL_CONDITION_SCOPE,
+        "initial_condition_robustness": protocol.NOT_ADJUDICATED_STAGE_A,
+        "bistability_status": protocol.NOT_ADJUDICATED_STAGE_A,
+        "initial_condition_dependence_branch": protocol.INITIAL_CONDITION_BRANCH_STATUS,
+    }
+    if any(manifest.get(key) != value for key, value in expected_manifest.items()):
+        raise ValueError("CANONICAL_CLASSIFICATION_RUN_CONTEXT_INVALID")
     if manifest["evidence_kind"] != REAL_BACKEND:
         raise ValueError("CLASSIFICATION_EXPORT_REQUIRES_CANONICAL_STAGE_A_EVIDENCE")
-    records = []
-    for case_id, profile in build_plan(canonical)["keys"]:
-        if profile != "BASE" or not result_store.record_path(case_id, profile).exists():
+    records: list[dict] = []
+    for case_id, profile in plan["keys"]:
+        if profile != "BASE":
             continue
-        result_store.read_bound_record(manifest, case_id, profile)
+        if not result_store.record_path(case_id, profile).is_file():
+            raise ValueError("CANONICAL_CLASSIFICATION_RESULT_RECORD_MISSING:" + case_id)
+        result = result_store.read_bound_record(manifest, case_id, profile)
+        if result.get("status") != "COMPLETE":
+            raise ValueError("CANONICAL_CLASSIFICATION_RESULT_NOT_ELIGIBLE:" + case_id)
+        if result.get("backend") != REAL_BACKEND or result.get("evidence_kind") != REAL_BACKEND:
+            raise ValueError("CANONICAL_CLASSIFICATION_RESULT_EVIDENCE_INVALID:" + case_id)
         classification = classify_stage_a_evidence(canonical, result_store, case_id)
-        records.append(build_classification_record(canonical, manifest, case_id, profile, classification))
-    return write_classification_artifacts(canonical, result_store, manifest, records)
+        records.append(_build_canonical_classification_record(
+            canonical, manifest, case_id, profile, classification, result))
+    return _publish_canonical_classification_artifacts(canonical, result_store, manifest, records)
 
 
 def synthetic_backend_record(row: dict, profile: str, context: _ValidatedExecutionContext) -> dict:
