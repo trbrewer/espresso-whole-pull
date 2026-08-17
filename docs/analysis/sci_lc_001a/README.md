@@ -6,12 +6,19 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW`.
+Status: `ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_EXACT_HEAD_REVIEW`.
 
 ICA-003-R1 F01-F03 corrections are implemented pending a new independent
 exact-head review. They close label qualification and authority-collision
 barriers and add deterministic canonical classification records, summaries,
 and owner-facing reporting. They do not authorize or execute scientific work.
+
+The R2 correction binds canonical publication to a validated complete run,
+frozen plan, checksum-ledgered eligible results, and atomic installation.
+Caller provenance and preassembled records cannot establish canonical status.
+Owner path and historical-evidence decisions are recorded in
+[ICA_003_R2_CORRECTION_AND_EVIDENCE_ADJUDICATION.md](ICA_003_R2_CORRECTION_AND_EVIDENCE_ADJUDICATION.md).
+Independent R3 exact-head review remains required.
 
 ICA-003 freezes owner-selected Architecture B. Dynamic Stage-A classifications
 are `BASELINE_ZERO_STATE_ONLY`; static algebraic classifications are

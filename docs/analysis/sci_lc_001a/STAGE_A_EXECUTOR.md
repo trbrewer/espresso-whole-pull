@@ -178,8 +178,9 @@ unknown components and caller collisions with derived fields are rejected.
 Result authority already present in a record is checked before binding and is
 never silently overwritten.
 
-After an authorized run, `--mode classify` validates authority-bound executed
-`BASE` evidence and writes, under the run root:
+After a complete authorized run, `--mode classify` independently reloads the
+run manifest, frozen plan, result checksum ledger, and authority-bound eligible
+`COMPLETE` `BASE` evidence before writing, under the run root:
 
 - `classifications/CLASSIFICATION_RECORDS.jsonl` — versioned per-key records in
   frozen plan order;
@@ -189,6 +190,9 @@ After an authorized run, `--mode classify` validates authority-bound executed
   scientific non-claims.
 
 The summary and report consume validated classification records; they do not
-reclassify raw results. Diagnostic and synthetic evidence remain inadmissible
-to canonical export. This candidate remains pending independent exact-head
-review and authorizes no scientific execution.
+reclassify raw results. Arbitrary mappings or prebuilt records cannot enter the
+canonical publisher. The low-level fixture serializer is permanently synthetic
+and inadmissible. The three-file set is installed atomically only after complete
+validation. Diagnostic and synthetic evidence remain inadmissible to canonical
+export. This candidate remains pending R3 independent exact-head review and
+authorizes no scientific execution.

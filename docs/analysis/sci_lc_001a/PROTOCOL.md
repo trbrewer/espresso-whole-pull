@@ -2,7 +2,7 @@
 
 Task: `SCI-LC-001A-ICA-003-STAGE-A-BASELINE-ONLY-CLASSIFICATION-SCOPE-RECONCILIATION-2026-08-17`
 
-Status: `ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW`
+Status: `ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_INDEPENDENT_EXACT_HEAD_REVIEW`
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Execution is not
 authorized. This package defines a reduced diagnostic model; it does not change
@@ -39,7 +39,7 @@ trajectory or classification.
     "structural_comparator_rows": 362
   },
   "stage_a_hard_maximum": 1280,
-  "status": "ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW",
+  "status": "ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_INDEPENDENT_EXACT_HEAD_REVIEW",
   "uncertainty": "u_limit(G)=min(0.02,0.02*abs(G))"
 }
 ```
@@ -444,9 +444,13 @@ Present authority fields must exactly match governing authority before result
 binding and cannot be overwritten to manufacture agreement.
 
 Canonical classification-bearing executed `BASE` keys are stored in frozen
-plan order at `classifications/CLASSIFICATION_RECORDS.jsonl`. Validated records
+plan order at `classifications/CLASSIFICATION_RECORDS.jsonl`. Canonical export
+reloads the authorized run manifest, frozen plan, result records, and checksum
+ledger; caller mappings and preassembled records cannot establish canonical
+status. Validated, eligible `COMPLETE` real-result records
 alone drive `CLASSIFICATION_SUMMARY.json` and `CLASSIFICATION_REPORT.md`.
 Counts reconcile by ordinary label, qualified label, scope, and state variant;
 the report retains the baseline-only qualifier and explicit non-claims. This
 correction remains pending independent exact-head review and generates no
-canonical scientific evidence.
+canonical scientific evidence. Publication validates the entire output set and
+atomically installs it; validation failure leaves no partial canonical set.

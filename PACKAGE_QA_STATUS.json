@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 619,
+    "python_test_count": 635,
     "sci_lc_001a_protocol_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol",
     "sci_lc_001a_protocol_focused_test_count": 47,
     "sci_lc_001a_static_validator_regression_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_static_validate_non_mutating",
@@ -38,14 +38,14 @@
     "sci_lc_001a_executor_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_executor",
     "sci_lc_001a_executor_focused_test_count": 37,
     "sci_lc_001a_ica003_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_ica003",
-    "sci_lc_001a_ica003_focused_test_count": 18,
+    "sci_lc_001a_ica003_focused_test_count": 34,
     "sci_lc_001a_combined_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol tests.test_sci_lc_001a_executor tests.test_static_validate_non_mutating tests.test_sci_lc_001a_ica003",
-    "sci_lc_001a_combined_focused_test_count": 105,
+    "sci_lc_001a_combined_focused_test_count": 121,
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 399,
-    "source_manifest_aggregate_sha256": "b3d3d1294761fb3d077cf2b5a1a86b677ca7fe06a9ab6e6f9457c014883208c0",
+    "source_manifest_file_count": 400,
+    "source_manifest_aggregate_sha256": "19e615e52b0625be493870ee0fbefb4636d52446c59e4c707539371a66530143",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -55,12 +55,12 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "b3d3d1294761fb3d077cf2b5a1a86b677ca7fe06a9ab6e6f9457c014883208c0"
+    "source_manifest_aggregate_source_sha256": "19e615e52b0625be493870ee0fbefb4636d52446c59e4c707539371a66530143"
   },
   "sci_lc_001a_ica_003": {
-    "authorization": "SCI-LC-001A-ICA-003-R1-F01-F03-BOUNDED-CORRECTION-2026-08-17",
+    "authorization": "SCI-LC-001A-ICA-003-R2-F01-F03-BOUNDED-CORRECTION-AND-EVIDENCE-ADJUDICATION-2026-08-17",
     "selected_architecture": "ARCHITECTURE_B_BASELINE_ZERO_STATE_STAGE_A_WITH_D4_ROBUSTNESS_DEFERRED",
-    "status": "F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW",
+    "status": "R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_INDEPENDENT_EXACT_HEAD_REVIEW",
     "dynamic_initial_state_variant": "ZERO_STATE_BASELINE",
     "dynamic_initial_condition_scope": "BASELINE_ZERO_STATE_ONLY",
     "initial_condition_robustness": "NOT_ADJUDICATED_STAGE_A",

@@ -28,9 +28,9 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Active modeling task: `SCI-LC-001A ICA-003-R1 F01-F03 bounded correction`
-- Execution state: `NO_SCIENTIFIC_EXECUTION; ICA_003_R1_F01_F03_CORRECTED_PENDING_EXACT_HEAD_REVIEW`
+- Execution state: `NO_SCIENTIFIC_EXECUTION; ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_EXACT_HEAD_REVIEW`
 - Protocol state:
-  `ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW`
+  `ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_INDEPENDENT_EXACT_HEAD_REVIEW`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
 - Current next action:

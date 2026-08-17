@@ -982,7 +982,7 @@
       "status": "DEFERRED_NOT_AUTHORIZED"
     }
   },
-  "status": "ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW",
+  "status": "ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_INDEPENDENT_EXACT_HEAD_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
       "authority/hash/review mismatch",
@@ -1027,7 +1027,7 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-ICA-003-R1-F01-F03-BOUNDED-CORRECTION-2026-08-17",
+  "task_id": "SCI-LC-001A-ICA-003-R2-F01-F03-BOUNDED-CORRECTION-AND-EVIDENCE-ADJUDICATION-2026-08-17",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
     "applicability_authority": "derive_uncertainty_contract(canonical_rows,subject_case_id,metric,evaluation,status,profile)",

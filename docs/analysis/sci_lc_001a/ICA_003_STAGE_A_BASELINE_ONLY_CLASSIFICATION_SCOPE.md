@@ -130,3 +130,11 @@ All three artifacts retain ordinary and qualified labels, scope, architecture,
 and run authority. Missing, stale, mixed, diagnostic, synthetic, D4, and X1
 evidence fails closed. These corrections generate no scientific evidence and
 remain pending a new independent exact-head review.
+
+The R2 correction further makes the canonical publisher run-root-bound: it
+reloads the manifest, frozen plan, result checksum ledger, and each eligible
+executed result rather than accepting caller-declared provenance or prebuilt
+records. Publication is atomic and failure leaves no canonical-looking partial
+set. Test-only serialization is permanently scientifically inadmissible. The
+owner's generated-path and historical-log adjudications are recorded in
+`ICA_003_R2_CORRECTION_AND_EVIDENCE_ADJUDICATION.md`; R3 review remains required.
