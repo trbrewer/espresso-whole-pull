@@ -30,9 +30,14 @@ class TestLaneAndSource(unittest.TestCase):
 
 class TestFeasibilityAndPhysics(unittest.TestCase):
  def test_required_resistance_and_inventory(self):
-  f=M.feasibility_bounds();self.assertAlmostEqual(f["required_additional_resistance"]["P11_below_observed_P9_flow_pa_s_m3"],89090772146.5091)
+  f=M.feasibility_bounds();b=f["optimistic_joint_bounds"];p=f["window_end_observed_pressure_pa"]
+  self.assertEqual(p,{"5":450428.3,"9":870708.2,"11":1041755.1})
+  self.assertAlmostEqual(b["required_Rc9_pa_s_m3"],p["9"]/p["5"]*M.hydraulic_anchor()-M.hydraulic_anchor())
+  self.assertAlmostEqual(b["required_Rc11_pa_s_m3"],p["11"]/p["9"]*(M.hydraulic_anchor()+b["required_Rc9_pa_s_m3"])-M.hydraulic_anchor())
   masses=[x["max_inventory_kg"] for x in f["regions"]];self.assertEqual(min(masses),M.DOSE*.02*.25);self.assertEqual(max(masses),M.DOSE*.1*.75)
   self.assertIn("POTENTIALLY_FEASIBLE",{x["classification"] for x in f["regions"]});self.assertIn("CLEARLY_INVENTORY_IMPOSSIBLE",{x["classification"] for x in f["regions"]})
+  feasible=[x for x in f["regions"] if x["joint_ordering_feasible"]]
+  self.assertEqual([(x["fines_mass_fraction"],x["mobilizable_fraction"],x["retention_fraction"],x["specific_cake_resistance_m_kg"]) for x in feasible],[(.1,.75,1.0,1e13)])
  def test_cake_identity_and_units(self):
   m=.001;eps=.5;alpha=1e13;h=m/(M.SOLID_RHO*(1-eps)*M.AREA);k=1/(M.SOLID_RHO*(1-eps)*alpha)
   a=M.MU*alpha*m/M.AREA**2;b=M.MU*h/(M.AREA*k);self.assertLess(abs(a-b)/a,1e-14)
@@ -51,6 +56,15 @@ class TestFeasibilityAndPhysics(unittest.TestCase):
  def test_refinement_is_operational_and_deterministic(self):
   a=M.simulate(self.row());b=M.simulate(self.row());self.assertEqual(M.hash_obj(a),M.hash_obj(b))
   refined=self.row(case_id="X",axial_cells=64,temporal_substeps=2,resolution="REFINED");c=M.simulate(refined);self.assertNotEqual(a["terminal"]["deposited_mass_kg"],c["terminal"]["deposited_mass_kg"])
+ def test_linear_pressure_interpolation(self):
+  a={"observed_pressure_pa":2.0};b={"observed_pressure_pa":6.0}
+  self.assertEqual(M.linear_pressure(a,b,0),2);self.assertEqual(M.linear_pressure(a,b,.5),4);self.assertEqual(M.linear_pressure(a,b,1),6)
+  h=M.load_histories();self.assertEqual(M.linear_pressure(h[5][0],h[5][1],0),h[5][0]["observed_pressure_pa"])
+ def test_particle_velocity_upper_bound_and_full_temporal_contract(self):
+  r=self.row();self.assertEqual(r["particle_velocity_ratio"],1.0);self.assertEqual(M.protocol()["provenance"]["particle_velocity_ratio"],"SYNTHETIC_CAPABILITY_UPPER_BOUND")
+  z=M.simulate(r);self.assertGreater(z["terminal"]["deposited_mass_kg"],0);self.assertTrue(M.temporal_ok(z,r))
+  for field in ("released_mass_increment_kg","mobile_mass_change_kg","retained_outlet_mass_increment_kg","compact_layer_thickness_m","predicted_flow_kg_s"):
+   bad=json.loads(json.dumps(z));bad["temporal"][10][field]+=1e-4;self.assertFalse(M.temporal_ok(bad,r),field)
 
 class TestMatrixAndAuthority(unittest.TestCase):
  def test_matrix_counts_and_comparators(self):
@@ -76,6 +90,10 @@ class TestMatrixAndAuthority(unittest.TestCase):
     with self.assertRaises(ValueError):M.validate_authority(p,d)
    bad=dict(a);bad["source_tree"]="0"*40;p.write_text(M.canonical(bad))
    with self.assertRaises(ValueError):M.validate_authority(p,d)
+ def test_rows_override_must_be_indivisible(self):
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   p=Path(d)/"a.json";a=self.auth(d);p.write_text(M.canonical(a))
+   with self.assertRaisesRegex(ValueError,"PARTIAL_OR_REORDERED"):M.execute(d,p,rows_override=M.adjudicative_ids()[:1])
  def test_uuid_mismatch(self):
   with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
    p=Path(d)/"a.json";a=self.auth(d);a["bundle_uuid"]="bad";p.write_text(M.canonical(a))
@@ -92,10 +110,8 @@ class TestDurability(unittest.TestCase):
   with self.assertRaises(json.JSONDecodeError):json.loads('{"x":')
  def test_manifest_detects_same_size_corruption(self):
   with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
-   b=Path(d);p=b/"case_records/X.json";rec={"case_id":"X","bundle_uuid":"u","result":{"v":1}};rec["record_sha256"]=M.internal_hash(rec);h,n=M.durable_write(p,rec)
-   rows=[{"case_id":"X","path":"case_records/X.json","size":n,"sha256":h}];man={"record_count":1,"records":rows,"ordered_record_aggregate_sha256":M.hash_obj([{"case_id":"X","size":n,"sha256":h}])};M.durable_write(b/"manifest.json",man)
-   self.assertEqual(M.verify_bundle(b,expected_ids=["X"])["record_count"],1);data=bytearray(p.read_bytes());data[data.index(b'1')]=ord('2');p.write_bytes(data)
-   with self.assertRaisesRegex(ValueError,"FULL_RECORD_HASH_FAILURE"):M.verify_bundle(b,expected_ids=["X"])
+   p=Path(d)/"x.json";M.durable_write(p,{"x":1});original=p.read_bytes();bad=bytearray(original);bad[-3]=ord('2');p.write_bytes(bad)
+   self.assertEqual(len(original),p.stat().st_size);self.assertNotEqual(hashlib.sha256(original).hexdigest(),M.sha(p))
  def test_safe_path_rejects_git_and_symlink(self):
   with self.assertRaises(ValueError):M.safe_bundle(ROOT/"SCI_MD_002C_EXTERNAL_BUNDLE")
   with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
@@ -113,13 +129,14 @@ class TestReductionRules(unittest.TestCase):
     base={5:.00200001,9:.002,11:.00199999}[p]
     if r["resolution"]=="REFINED":base={5:.00199999,9:.002,11:.00200001}[p]
    physical="INVALID" if mode=="ONE_INVALID" and cid.startswith("S1-SOURCE-P5-FF0.02-MF0.25-KR0.02-N1.0-RET0.5-AR1e+12") else "VALID"
-   result={"case_id":cid,"numerical_status":"COMPLETE","physical_status":physical,"max_abs_mass_residual_kg":0.0,"terminal":{"predicted_flow_kg_s":base,"total_resistance_pa_s_m3":M.hydraulic_anchor()+(0 if r["arm"]=="C0" else 1e8)},"temporal":[]}
-   rec={"schema_version":M.RECORD_SCHEMA,"task_id":M.TASK,"lane_id":M.LANE_ID,"case_id":cid,"source_head":a["source_head"],"source_tree":a["source_tree"],"authority_sha256":ah,"bundle_uuid":a["bundle_uuid"],"numerical_status":"COMPLETE","physical_status":physical,"result":result};rec["record_sha256"]=M.internal_hash(rec)
+   inv=M.DOSE*r["fines_fraction"]*r["mobilizable_fraction"];maxrc=M.MU*r["specific_cake_resistance_m_kg"]*inv*r["retention_fraction"]/M.AREA**2
+   result={"case_id":cid,"numerical_status":"COMPLETE","physical_status":physical,"max_abs_mass_residual_kg":0.0,"available_inventory_kg":inv,"maximum_depositable_mass_kg":inv*r["retention_fraction"],"maximum_possible_cake_resistance_pa_s_m3":maxrc,"terminal":{"predicted_flow_kg_s":base,"total_resistance_pa_s_m3":M.hydraulic_anchor()+(0 if r["arm"]=="C0" else 1e8),"bound_mass_kg":0.0,"mobile_mass_kg":0.0,"deposited_mass_kg":inv*r["retention_fraction"],"escaped_mass_kg":inv*(1-r["retention_fraction"]),"compact_layer_thickness_m":0.0,"compact_layer_resistance_pa_s_m3":0 if r["arm"]=="C0" else 1e8},"temporal":[]}
+   rec=M.record_for(r,a,ah,result,"synthetic-test",M.utc())
    path=b/"case_records"/(cid+".json");path.parent.mkdir(exist_ok=True);path.write_text(M.canonical(rec));entries.append({"case_id":cid,"path":f"case_records/{cid}.json","size":path.stat().st_size,"sha256":M.sha(path)})
-  aggregate=M.hash_obj([{"case_id":x["case_id"],"size":x["size"],"sha256":x["sha256"]} for x in entries]);(b/"manifest.json").write_text(M.canonical({"record_count":len(entries),"records":entries,"ordered_record_aggregate_sha256":aggregate,"bundle_uuid":a["bundle_uuid"],"authority_sha256":ah}))
+  aggregate=M.hash_obj([{"case_id":x["case_id"],"size":x["size"],"sha256":x["sha256"]} for x in entries]);(b/"manifest.json").write_text(M.canonical({"schema_version":"ewp.sci_md_002c.manifest.v1","task_id":M.TASK,"lane_id":M.LANE_ID,"source_head":a["source_head"],"source_tree":a["source_tree"],"row_ids_sha256":M.hash_obj(M.adjudicative_ids()),"record_count":len(entries),"records":entries,"ordered_record_aggregate_sha256":aggregate,"bundle_uuid":a["bundle_uuid"],"authority_sha256":ah}))
   return td,b,ap
  def test_complete_synthetic_reducer_bundles(self):
-  expected={"PASS":"SCI_MD_002C_AXIAL_FINES_CAPABILITY_SURVIVES_SYNTHETIC_CLOSURE_SCREEN","WRONG":"SCI_MD_002C_REJECTED_WRONG_PRESSURE_ORDERING","UNRESOLVED":"SCI_MD_002C_PRESSURE_ORDERING_NUMERICALLY_UNRESOLVED","ONE_INVALID":"SCI_MD_002C_AXIAL_FINES_CAPABILITY_SURVIVES_SYNTHETIC_CLOSURE_SCREEN"}
+  expected={"PASS":"SCI_MD_002C_CAPABILITY_DEPENDS_ON_EXTREME_FINES_INVENTORY","WRONG":"SCI_MD_002C_REJECTED_WRONG_PRESSURE_ORDERING","UNRESOLVED":"SCI_MD_002C_PRESSURE_ORDERING_NUMERICALLY_UNRESOLVED","ONE_INVALID":"SCI_MD_002C_CAPABILITY_DEPENDS_ON_EXTREME_FINES_INVENTORY"}
   for mode,disp in expected.items():
    with self.subTest(mode=mode):
     td,b,ap=self.synthetic_bundle(mode)

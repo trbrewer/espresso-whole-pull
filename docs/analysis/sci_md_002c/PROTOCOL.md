@@ -10,7 +10,7 @@ This is `POST_OBSERVATION_MECHANISM_DISCRIMINATION`; `PHYSICAL_VALIDATION_NOT_ES
 
 The governed overlay SHA-256 is `e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e`. Its exact columns are source time, solver time, observed pressure, predecessor/reference pressure, observed flow, predecessor/reference flow, observed mass, and predecessor/reference mass. Observed pressure forces the model and observed flow alone is the comparison target.
 
-The saturated-model approximation is the already governed protected comparison window at source rows 100–899 inclusive: exactly 800 samples from 10.01001 through 89.98999 s, linearly interpreted only between exact samples and with model time zero at the first selected sample. This is not a measured first-drip or full-wetting event. No claim is made outside the selected window.
+The saturated-model approximation is the already governed protected comparison window at source rows 100–899 inclusive: exactly 800 samples from 10.01001 through 89.98999 s. Pressure is piecewise linear between exact samples and is evaluated at each numerical-substep midpoint; exact source pressure is retained at reporting timestamps. This is not a measured first-drip or full-wetting event. No claim is made outside the selected window.
 
 The hydraulic scale is one observed P9 full-overlay terminal-flow reference transferred unchanged to P5 and P11. It is not a clean-bed measurement. No fines parameter is pressure-specific.
 
@@ -24,7 +24,7 @@ The primary synthetic release closure is
 \dot M_{b,i}=-k_{rel}(u/u_{ref})^nM_{b,i}.
 \]
 
-It is a prospective `SYNTHETIC_CAPABILITY_BOUND`, not the unidentified Fasano equilibrium law. Exact exponential depletion prevents release beyond remaining inventory. Mobile mass uses conservative first-order upwind compartment transport with CFL-controlled internal subcycling and zero dispersion. At the outlet, shared retention fractions 0.5 and 1.0 are both in the primary matrix because full-retention dominance is not assumed. Deposited and escaped fluxes sum exactly to outlet fines flux.
+It is a prospective `SYNTHETIC_CAPABILITY_BOUND`, not the unidentified Fasano equilibrium law. Exact exponential depletion prevents release beyond remaining inventory. Mobile mass uses conservative first-order upwind compartment transport with CFL-controlled internal subcycling and zero dispersion. `particle_velocity_ratio=1.0` is fixed as a `SYNTHETIC_CAPABILITY_UPPER_BOUND`: fines move at the fastest admissible velocity, and robustness to particle retardation is not established. At the outlet, shared retention fractions 0.5 and 1.0 are both in the primary matrix because full-retention dominance is not assumed. Deposited and escaped fluxes sum exactly to outlet fines flux.
 
 The compact layer obeys the mass/volume identities in `FEASIBILITY_BOUNDS.md`; added resistance is nonnegative and zero at zero deposited mass. Flow is
 
@@ -45,18 +45,20 @@ For each pressure margin, uncertainty is the absolute difference between base an
 - A0: zero limits, finite inventory, conservation, transport refinement, serial resistance, and durable-record controls.
 - B0: closure-independent feasibility records, separate from transient row count.
 - C0: three governed no-fines controls.
-- C1: qualitative Fasano/Puckworks structural mechanism checks only.
+- C1: `INDEPENDENT_STRUCTURAL_IDENTITY_CHECKS`, `PUCKWORKS_PROVENANCE_BOUND`, and `NO_QUANTITATIVE_REFERENCE_PARITY_CLAIM`.
 - S1: the primary governed axial fines-deposition family.
 - S2: no deferred conditional run; retention 0.5 and 1.0 are already in S1 because dominance is not assumed.
 - R1: base/refined numerical comparisons.
 
 ## Temporal contract
 
-Every source-conditioned record contains all 800 exact window timestamps with observed pressure, predicted and clean-bed flow, bound and mobile mass, release rate, outlet flux, retained/escaped rates and cumulative masses, layer thickness and resistance, total resistance, and fines-mass residual. Required signatures are decreasing bound inventory only through release, transport-respecting outlet flux, nondecreasing deposition, no layer resistance before deposition, resistance tracking deposited mass, no pre-deposition growth, mass balance within tolerance, and flow response consistent with deposition.
+Every source-conditioned record contains all 800 exact window timestamps with observed pressure, predicted and clean-bed flow, bound and mobile mass, interval and cumulative release, outlet flux, retained/escaped increments and cumulative masses, layer thickness and resistance, total resistance, and fines-mass residual. The validator independently checks every release, mobile, outlet, retained, escaped, deposition, geometry, resistance, flow, monotonicity, source-time, source-pressure, conservation, and terminal-summary identity at frozen absolute/relative tolerances.
 
 ## Gate precedence and reduction
 
-Gate 0 validates source/tree/dependencies/hashes/authority/bundle UUID/exact cohort/records/controls. Gates 1–8 are reference and numerical validity; inventory, conservation, and physical bounds; resistance direction; signed ordering; temporal signature; retention and closure dependence; grind identifiability; and aggregate comparison. Gates apply per candidate after package validity. Aggregate observed-flow RMSE/MAE is calculated last and cannot rescue any earlier failure. An incomplete or empty bundle cannot emit a family disposition.
+Gate 0 validates source/tree/dependencies/hashes/authority/bundle UUID/exact cohort/records/controls. Gate 2 separately records numerical mass conservation, physical-state validity, finite-inventory feasibility, and compact-layer geometry validity. Only a valid candidate whose retention-adjusted optimistic maximum cake resistance misses the joint bounds receives `SCI_MD_002C_REJECTED_INSUFFICIENT_FINES_INVENTORY`; conservation failure is numerical invalidity. Subsequent gates are resistance direction, signed ordering, temporal signature, retention and closure dependence, grind identifiability, and aggregate comparison. Gates apply per candidate after package validity. Aggregate observed-flow RMSE/MAE is calculated last and cannot rescue any earlier failure.
+
+Survivor support is reported across retention, release coefficient and exponent, total mobilizable inventory and its primitive factors, cake resistance, fixed layer porosity, and particle velocity. Primary dependence precedence is extreme inventory, full retention, single retention, release closure, layer conductivity, then bounded synthetic capability; overlapping restrictions remain secondary flags. Fixed compact-layer porosity and particle velocity are not robustness axes.
 
 The exact machine-readable dispositions are frozen in `SCI_MD_002C_PROTOCOL.json`. Capability is always qualified as synthetic-closure capability; `FINES_SELECTED` and physical-validation language are prohibited.
 

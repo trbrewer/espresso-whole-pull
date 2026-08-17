@@ -1,21 +1,21 @@
-# SCI-MD-002C feasibility bounds
+# SCI-MD-002C joint ordering feasibility bounds
 
-The canonical calculations are in `validation/cases/sci_md_002c/SCI_MD_002C_FEASIBILITY_BOUNDS.json`.
+The canonical calculations are in `validation/cases/sci_md_002c/SCI_MD_002C_FEASIBILITY_BOUNDS.json`. They use the selected 800-row saturated-window endpoints, not the full-overlay terminal values: P5 = 450428.3 Pa, P9 = 870708.2 Pa, and P11 = 1041755.1 Pa. The common resistance is the accepted observed-P9 full-overlay terminal-flow hydraulic scale, 461066511220.88336 Pa·s/m³, transferred unchanged; it is a reference scale rather than a clean-bed measurement.
 
-Using governed terminal observed pressure and flow, the effective resistances are approximately (2.1123\times10^{11}), (4.6107\times10^{11}), and (5.6552\times10^{11}) Pa·s/m³ for P5, P9, and P11. The common hydraulic convention is the observed P9 terminal-flow scale, transferred unchanged. It is a reference scale, not a clean-bed physical measurement.
-
-At the P11 governed terminal pressure, at least (8.9091\times10^{10}) Pa·s/m³ additional resistance is required to reduce predicted flow below the governed P9 observed terminal flow. Matching the P11 observed terminal flow relative to the P9 anchor requires (1.0446\times10^{11}) Pa·s/m³. The analogous P9-vs-P5 threshold is zero under this convention because the common-anchor P9 prediction is already below the observed P5 target.
-
-The mobilizable inventory is `dose × fines mass fraction × mobilizable fraction`, with 18.5 g dose, fines fractions 0.02/0.06/0.10, and mobilizable fractions 0.25/0.75. The resulting range is 0.0925–1.3875 g; the model never treats all coffee as mobilizable fines.
-
-For deposited mass (m_d), compact-layer porosity \(\epsilon_c\), solids density \(\rho_s\), and filter area \(A\):
+The feasibility gate is the model ordering itself. For cake resistances `Rc5`, `Rc9`, and `Rc11`:
 
 \[
-h_c=\frac{m_d}{\rho_s(1-\epsilon_c)A},\qquad
-R_c=\frac{\mu\alpha_c m_d}{A^2}.
+R_{c9,required}(R_{c5})=(P_9/P_5)(R_b+R_{c5})-R_b,
 \]
 
-The implied permeability is (k_c=1/[\rho_s(1-\epsilon_c)\alpha_c]), which recovers (R_c=\mu h_c/(A k_c)). The matrix brackets \(\alpha_c\) at (10^{12}) and (10^{13}) m/kg. Regions whose full-inventory resistance remains below the frozen P11 ordering threshold are `CLEARLY_INVENTORY_IMPOSSIBLE`; others are `POTENTIALLY_FEASIBLE`. No analytic pruning is applied to the transient matrix, so closure dependence remains visible.
+\[
+R_{c11,required}(R_{c9})=(P_{11}/P_9)(R_b+R_{c9})-R_b.
+\]
 
-Disposition: `POTENTIALLY_FEASIBLE_ONLY_WITH_SYNTHETIC_CLOSURE_BOUNDS`. The bounds are not real-puck measurements.
+The optimistic `Rc5=0` joint thresholds are 430206066602.08014 Pa·s/m³ at P9 and 605292750627.3674 Pa·s/m³ at P11. They are necessary, not sufficient, bounds.
 
+Mobilizable inventory is `dose × fines fraction × mobilizable fraction`; maximum depositable mass additionally multiplies retention. Cake resistance is `mu × alpha_c × m_deposit / A²`, with layer thickness `m_deposit/[rho_s(1-epsilon_c)A]`. The optimistic maximum assumes complete release, transport, and retention-adjusted available deposition by reporting time.
+
+Across the 24 frozen closure regions, exactly one is potentially feasible: fines fraction 0.10, mobilizable fraction 0.75, retention 1.0, and specific cake resistance 1e13 m/kg, whose maximum resistance is 720462987844.896 Pa·s/m³. The other 23 regions are `CLEARLY_INVENTORY_IMPOSSIBLE`. No transient rows are pruned; impossible regions remain governed negative controls.
+
+Disposition: `POTENTIALLY_FEASIBLE_ONLY_WITH_SYNTHETIC_CLOSURE_BOUNDS`. These bounds are not real-puck measurements.
