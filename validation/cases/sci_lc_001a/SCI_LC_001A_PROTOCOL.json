@@ -18,12 +18,16 @@
       "direction": "-1",
       "earliest": "minimum root time",
       "event_cap_order": "located event in accepted dense-output step precedes later cap; cap precedes unevaluated event",
-      "exact_boundary": "stop only when lower derivative<0 or upper multiplier derivative>0",
+      "exact_boundary": "directional outward event stops; inward/tangential event does not fire",
       "lower": "exp(beta*x_i)-0.25",
       "nonfinite": "STOP_NONFINITE_EVENT_FUNCTION",
+      "post_event_counted_rhs_call": "ABSENT",
+      "post_event_dense_output": "PROHIBITED",
+      "rhs_count_requirement": "wrapper_count==solve_ivp.nfev",
       "root_time_tolerance": "1e-10 tau",
-      "tangential_or_inward_contact": "CONTINUE",
+      "tangential_or_inward_contact": "ADMISSIBLE_NO_TERMINAL_EVENT",
       "terminal": true,
+      "terminal_event_continue_path": "ABSENT",
       "tie_break": "LOWER_BOUND before UPPER_BOUND, then ascending sector index",
       "upper": "4-exp(beta*x_i)"
     },
@@ -585,6 +589,88 @@
     "dissipation",
     "selected_extraction_diagnostics"
   ],
+  "owner_metric_authority": {
+    "H_q_definition": "H_q=(1/2)*sum_i(abs(d_i))",
+    "H_q_denominator_floor": 1e-12,
+    "classifier_binding": {
+      "dynamic": [
+        "G_coupling_end",
+        "G_coupling_int"
+      ],
+      "static": [
+        "G_static_H",
+        "G_static_mode"
+      ]
+    },
+    "current_resistance": [
+      "M_i=exp(beta*x_i)",
+      "H_i=H_i0*M_i",
+      "R_u_i=R_floor+alpha_place*H_i",
+      "R_d_i=R_floor+(1-alpha_place)*H_i",
+      "G_d_i=1/R_d_i",
+      "q_i=G_d_i*(p_i-p_o)"
+    ],
+    "dynamic_endpoint": {
+      "evolved_resistance_reconstruction": true,
+      "final_state_required": "complete admissible tau=1 trajectory",
+      "gain": "G_coupling_end=H_q_active(1)/H_q_comparator(1)",
+      "primitive": "H_q(1)",
+      "stopped_or_capped": "NUMERICALLY_UNRESOLVED"
+    },
+    "dynamic_integrated": {
+      "active_reconstruction": "separate H_q grid",
+      "companion_grid_points": 2001,
+      "comparator_reconstruction": "separate H_q grid",
+      "denominator_floor": 1e-12,
+      "gain": "G_coupling_int_M=I_M_active/I_M_comparator",
+      "interval": "[0,1]",
+      "primary_grid_points": 1001,
+      "primary_reported_grid": 1001,
+      "quadrature": "COMPOSITE_TRAPEZOIDAL",
+      "tau_zero": "analytical startup fractions",
+      "weights": {
+        "delta_tau": "1/(M-1)",
+        "endpoint": "1/2",
+        "interior": "1"
+      }
+    },
+    "effective_at": "E2-R1 exact commit; no prior result is reinterpreted",
+    "flow_departure_definition": "d_i=f_i-1/N",
+    "flow_fraction_definition": "f_i=q_i/sum_j(q_j)",
+    "owner_metric_authority_id": "SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16",
+    "sampling": {
+      "additional_trajectory_count": 0,
+      "applicability": {
+        "DYNAMIC_ENDPOINT_GAIN": "NOT_APPLICABLE",
+        "DYNAMIC_INTEGRATED_GAIN": "APPLICABLE",
+        "STATIC_GAIN": "NOT_APPLICABLE"
+      },
+      "formula": "abs(G_coupling_int_1001-G_coupling_int_2001)",
+      "same_base_dense_output": true
+    },
+    "sector_indexing": "i=0,...,N-1",
+    "static_H": {
+      "comparator": "exact Lambda=0",
+      "denominator_floor": 1e-12,
+      "gain": "G_static_H=H_q_active/H_q_comparator",
+      "primitive": "H_q_static"
+    },
+    "static_mode": {
+      "centered_seed": "s_i=h_i-mean(h)",
+      "denominator_floor": 1e-12,
+      "fourier_C_m": "sum_i(d_i*cos(2*pi*m*i/N))",
+      "fourier_S_m": "sum_i(d_i*sin(2*pi*m*i/N))",
+      "gain": "G_static_mode=A_seeded_active/A_seeded_comparator",
+      "least_squares_amplitude": "A_seeded=abs(sum_i(d_i*s_i))/sum_i(s_i^2)",
+      "non_fourier_seed_source": "pattern_values(validated canonical row)",
+      "nyquist_normalization": "A_seeded=abs(C_m)/N when N even and m=N/2",
+      "ordinary_fourier_normalization": "A_seeded=(2/N)*sqrt(C_m^2+S_m^2)",
+      "phase_rotation_reflection": "magnitude invariant; no phase-zero projection",
+      "primitive": "A_seeded",
+      "uniform_disposition": "NOT_APPLICABLE"
+    },
+    "zero_time_dynamic_fraction": "f_i(0)=F_i(0+)/N from analytical startup focusing"
+  },
   "residual_contract": {
     "BASE": {
       "algorithm": "dense Gaussian elimination with scaled partial pivoting",
@@ -760,14 +846,29 @@
       "plan",
       "validate",
       "execute",
-      "summarize"
+      "summarize",
+      "pilot-plan",
+      "pilot-execute"
     ],
     "module": "scripts/sci_lc_001a_executor.py",
     "output": "absolute external non-symlink result root; atomic JSON records",
+    "pilot": {
+      "allowlist_required": true,
+      "authority_created": false,
+      "evidence_kind": "DIAGNOSTIC_TIMING_ONLY",
+      "reuse": "DISABLED",
+      "scientific_evidence": false,
+      "status": "INTERFACE_IMPLEMENTED_PENDING_E2_REVIEW"
+    },
+    "private_case_executors": [
+      "_execute_static_case",
+      "_execute_dynamic_case"
+    ],
+    "public_real_execution_api": "execute_authorized_graph",
     "real_execution_authority_created": false,
-    "resume": "validate manifest and records; reuse terminal records; no automatic retry",
+    "resume": "manifest-identity and checksum-ledger bound records; no cross-run reuse or automatic retry",
     "scientific_execution_authorized": false,
-    "status": "IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+    "status": "E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
     "synthetic_backend": "SYNTHETIC_TEST_ONLY; scientifically inadmissible",
     "timing_pilot_authorized": false
   },
@@ -796,7 +897,7 @@
       "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
     }
   },
-  "status": "STAGE_A_EXECUTOR_E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+  "status": "STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
       "authority/hash/review mismatch",
@@ -842,7 +943,7 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-E1-PREEXECUTION-PATCHES-AND-STAGE-A-EXECUTOR-IMPLEMENTATION-2026-08-16",
+  "task_id": "SCI-LC-001A-E2-R1-OWNER-METRIC-FREEZE-RUNTIME-SAFETY-EVIDENCE-AND-PILOT-INTERFACE-2026-08-16",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
     "applicability_authority": "derive_uncertainty_contract(canonical_rows,subject_case_id,metric,evaluation,status,profile)",

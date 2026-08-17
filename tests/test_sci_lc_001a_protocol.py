@@ -692,6 +692,21 @@ class SciLc001aProtocolTests(unittest.TestCase):
         self.assertFalse(self.protocol["execution_authorized"])
         self.assertEqual(set(self.protocol["zero_execution"].values()), {0})
 
+    def test_owner_metric_authority_is_complete_and_structured(self):
+        authority = self.protocol["owner_metric_authority"]
+        self.assertEqual(authority["owner_metric_authority_id"],
+                         "SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16")
+        self.assertEqual(authority["H_q_definition"], "H_q=(1/2)*sum_i(abs(d_i))")
+        self.assertEqual(authority["static_mode"]["nyquist_normalization"],
+                         "A_seeded=abs(C_m)/N when N even and m=N/2")
+        self.assertEqual(authority["dynamic_integrated"]["quadrature"], "COMPOSITE_TRAPEZOIDAL")
+        self.assertEqual(authority["dynamic_integrated"]["primary_grid_points"], 1001)
+        self.assertEqual(authority["dynamic_integrated"]["companion_grid_points"], 2001)
+        self.assertEqual(authority["sampling"]["additional_trajectory_count"], 0)
+        self.assertEqual(authority["classifier_binding"]["static"], ["G_static_H", "G_static_mode"])
+        self.assertEqual(authority["classifier_binding"]["dynamic"],
+                         ["G_coupling_end", "G_coupling_int"])
+
 
 if __name__ == "__main__":
     unittest.main()

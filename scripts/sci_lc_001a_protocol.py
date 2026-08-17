@@ -21,8 +21,9 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "validation/cases/sci_lc_001a"
 NA = "NOT_APPLICABLE"
 INFINITE = "INFINITE_NO_LATERAL_EQUALIZATION"
-STATUS = "STAGE_A_EXECUTOR_E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW"
-TASK_ID = "SCI-LC-001A-E1-PREEXECUTION-PATCHES-AND-STAGE-A-EXECUTOR-IMPLEMENTATION-2026-08-16"
+STATUS = "STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW"
+TASK_ID = "SCI-LC-001A-E2-R1-OWNER-METRIC-FREEZE-RUNTIME-SAFETY-EVIDENCE-AND-PILOT-INTERFACE-2026-08-16"
+OWNER_METRIC_AUTHORITY_ID = "SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16"
 BASE_HEAD = "3e8993f56badd575f3482ea7bfa0f87d24412100"
 BASE_TREE = "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0"
 REVIEWED_HEAD = "c683f7722b170d049bcdf08c6bc65afd3cef20ba"
@@ -75,6 +76,9 @@ FLOW_SCALES = ("SECTOR_SCALED_DIMENSIONLESS", "DIMENSIONAL_SECTOR_FLOW",
 LINEAR_RESIDUAL_TOLERANCE = 1.0e-12
 PIVOT_RATIO_FLOOR = 64.0 * 2.220446049250313e-16
 GAIN_DENOMINATOR_FLOOR = 1.0e-12
+H_Q_DENOMINATOR_FLOOR = 1.0e-12
+SEEDED_MODE_AMPLITUDE_FLOOR = 1.0e-12
+SCIENTIFIC_METRICS = ("G_static_H", "G_static_mode", "G_coupling_end", "G_coupling_int")
 UNCERTAINTY_COMPONENTS = ("u_integrator", "u_sector", "u_linear", "u_sampling", "u_startup")
 FIELD_DISPOSITIONS = ("REQUIRED", "PROHIBITED", "DERIVED", "NOT_APPLICABLE", "PROVENANCE_ONLY")
 FIELD_AUTHORITY_CLASSES = ("IDENTITY_PRIMITIVE", "SCIENTIFIC_PRIMITIVE", "DERIVED_EXECUTION_FIELD",
@@ -229,6 +233,71 @@ def pattern_values(n: int, pattern: str, mode: str, initial: str = "BASE_PHASE")
             raise ValueError(f"unknown pattern {pattern}")
         values.append(value)
     return values
+
+
+def outlet_heterogeneity_from_fractions(fractions: list[float] | tuple[float, ...]) -> float:
+    """Owner-authorized H_q: half the L1 distance from uniform outlet share."""
+    if not fractions or any(isinstance(value, bool) or not isinstance(value, (int, float)) or
+                            not math.isfinite(value) for value in fractions):
+        raise ValueError("INVALID_OUTLET_FLOW_FRACTIONS")
+    total = sum(fractions)
+    if not math.isclose(total, 1.0, rel_tol=0.0, abs_tol=1.0e-12):
+        raise ValueError("OUTLET_FLOW_FRACTIONS_MUST_SUM_TO_ONE")
+    n = len(fractions)
+    return 0.5 * sum(abs(float(value) - 1.0 / n) for value in fractions)
+
+
+def outlet_fraction_primitives(flows: list[float] | tuple[float, ...]) -> dict:
+    if not flows or any(isinstance(value, bool) or not isinstance(value, (int, float)) or
+                        not math.isfinite(value) for value in flows):
+        raise ValueError("INVALID_OUTLET_SECTOR_FLOW")
+    if any(value < -Q_ZERO_THRESHOLD for value in flows):
+        raise ValueError("STOP_UNEXPECTED_FLOW_REVERSAL")
+    total = sum(flows)
+    if total <= Q_ZERO_THRESHOLD:
+        raise ValueError("NUMERICALLY_UNRESOLVED_TOTAL_FLOW_FLOOR")
+    fractions = tuple(float(value) / total for value in flows)
+    departures = tuple(value - 1.0 / len(flows) for value in fractions)
+    return {"Q_total": total, "fractions": fractions, "departures": departures,
+            "H_q": outlet_heterogeneity_from_fractions(fractions)}
+
+
+def seeded_pattern_amplitude(departures: list[float] | tuple[float, ...], *,
+                             pattern: str, mode: str, initial: str = "BASE_PHASE") -> float | str:
+    """Owner-authorized phase-invariant Fourier or centered-seed amplitude."""
+    n = len(departures)
+    if n == 0 or any(isinstance(value, bool) or not isinstance(value, (int, float)) or
+                     not math.isfinite(value) for value in departures):
+        raise ValueError("INVALID_SEEDED_AMPLITUDE_DEPARTURES")
+    if pattern.startswith("FOURIER"):
+        try:
+            m = int(mode)
+        except (TypeError, ValueError) as exc:
+            raise ValueError("INVALID_FOURIER_MODE") from exc
+        if str(m) != str(mode) or m <= 0 or m > n // 2:
+            raise ValueError("INVALID_FOURIER_MODE")
+        c_m = sum(value * math.cos(2.0 * math.pi * m * i / n)
+                  for i, value in enumerate(departures))
+        s_m = sum(value * math.sin(2.0 * math.pi * m * i / n)
+                  for i, value in enumerate(departures))
+        if n % 2 == 0 and m == n // 2:
+            return abs(c_m) / n
+        return 2.0 * math.hypot(c_m, s_m) / n
+    seed = pattern_values(n, pattern, mode, initial)
+    mean = sum(seed) / n
+    centered = [value - mean for value in seed]
+    norm2 = sum(value * value for value in centered)
+    if norm2 <= PATTERN_SPAN_TOLERANCE:
+        return NA
+    return abs(sum(value * seed_value for value, seed_value in zip(departures, centered))) / norm2
+
+
+def composite_trapezoid(values: list[float] | tuple[float, ...]) -> float:
+    if len(values) < 2 or any(isinstance(value, bool) or not isinstance(value, (int, float)) or
+                              not math.isfinite(value) for value in values):
+        raise ValueError("INVALID_TRAPEZOID_VALUES")
+    step = 1.0 / (len(values) - 1)
+    return step * (0.5 * values[0] + sum(values[1:-1]) + 0.5 * values[-1])
 
 
 def resistance_primitives(n: int, pattern: str, mode: str, contrast: str,
@@ -1385,8 +1454,10 @@ def protocol(rows: list[dict]) -> dict:
             "cap_disposition": "STOP_MAX_RHS_EVALUATIONS_REACHED;PARTIAL_DIAGNOSTIC_INADMISSIBLE",
             "events": {"lower": "exp(beta*x_i)-0.25", "upper": "4-exp(beta*x_i)",
                 "direction": "-1", "terminal": True, "boundary_contact_stops": False,
-                "exact_boundary": "stop only when lower derivative<0 or upper multiplier derivative>0",
-                "tangential_or_inward_contact": "CONTINUE",
+                "exact_boundary": "directional outward event stops; inward/tangential event does not fire",
+                "tangential_or_inward_contact": "ADMISSIBLE_NO_TERMINAL_EVENT",
+                "terminal_event_continue_path": "ABSENT", "post_event_dense_output": "PROHIBITED",
+                "post_event_counted_rhs_call": "ABSENT", "rhs_count_requirement": "wrapper_count==solve_ivp.nfev",
                 "root_time_tolerance": "1e-10 tau", "earliest": "minimum root time",
                 "tie_break": "LOWER_BOUND before UPPER_BOUND, then ascending sector index",
                 "nonfinite": "STOP_NONFINITE_EVENT_FUNCTION",
@@ -1416,6 +1487,47 @@ def protocol(rows: list[dict]) -> dict:
         "observables": ["H_q", "CV_q", "A_eff", "seeded_mode_amplitude", "J_L_abs", "J_L_net",
             "pressure_CV", "G_static_H", "G_static_mode", "G_coupling_end", "G_coupling_int",
             "sigma_m", "conservation", "dissipation", "selected_extraction_diagnostics"],
+        "owner_metric_authority": {
+            "owner_metric_authority_id": OWNER_METRIC_AUTHORITY_ID,
+            "effective_at": "E2-R1 exact commit; no prior result is reinterpreted",
+            "sector_indexing": "i=0,...,N-1",
+            "flow_fraction_definition": "f_i=q_i/sum_j(q_j)",
+            "flow_departure_definition": "d_i=f_i-1/N",
+            "H_q_definition": "H_q=(1/2)*sum_i(abs(d_i))",
+            "H_q_denominator_floor": H_Q_DENOMINATOR_FLOOR,
+            "zero_time_dynamic_fraction": "f_i(0)=F_i(0+)/N from analytical startup focusing",
+            "current_resistance": ["M_i=exp(beta*x_i)", "H_i=H_i0*M_i",
+                "R_u_i=R_floor+alpha_place*H_i", "R_d_i=R_floor+(1-alpha_place)*H_i",
+                "G_d_i=1/R_d_i", "q_i=G_d_i*(p_i-p_o)"],
+            "static_H": {"primitive": "H_q_static", "gain": "G_static_H=H_q_active/H_q_comparator",
+                "comparator": "exact Lambda=0", "denominator_floor": H_Q_DENOMINATOR_FLOOR},
+            "static_mode": {"primitive": "A_seeded", "fourier_C_m": "sum_i(d_i*cos(2*pi*m*i/N))",
+                "fourier_S_m": "sum_i(d_i*sin(2*pi*m*i/N))",
+                "ordinary_fourier_normalization": "A_seeded=(2/N)*sqrt(C_m^2+S_m^2)",
+                "nyquist_normalization": "A_seeded=abs(C_m)/N when N even and m=N/2",
+                "phase_rotation_reflection": "magnitude invariant; no phase-zero projection",
+                "non_fourier_seed_source": "pattern_values(validated canonical row)",
+                "centered_seed": "s_i=h_i-mean(h)",
+                "least_squares_amplitude": "A_seeded=abs(sum_i(d_i*s_i))/sum_i(s_i^2)",
+                "uniform_disposition": NA, "denominator_floor": SEEDED_MODE_AMPLITUDE_FLOOR,
+                "gain": "G_static_mode=A_seeded_active/A_seeded_comparator"},
+            "dynamic_endpoint": {"final_state_required": "complete admissible tau=1 trajectory",
+                "evolved_resistance_reconstruction": True, "primitive": "H_q(1)",
+                "gain": "G_coupling_end=H_q_active(1)/H_q_comparator(1)",
+                "stopped_or_capped": "NUMERICALLY_UNRESOLVED"},
+            "dynamic_integrated": {"interval": "[0,1]", "primary_grid_points": 1001,
+                "companion_grid_points": 2001, "quadrature": "COMPOSITE_TRAPEZOIDAL",
+                "weights": {"endpoint": "1/2", "interior": "1", "delta_tau": "1/(M-1)"},
+                "tau_zero": "analytical startup fractions", "active_reconstruction": "separate H_q grid",
+                "comparator_reconstruction": "separate H_q grid",
+                "gain": "G_coupling_int_M=I_M_active/I_M_comparator",
+                "primary_reported_grid": 1001, "denominator_floor": GAIN_DENOMINATOR_FLOOR},
+            "sampling": {"formula": "abs(G_coupling_int_1001-G_coupling_int_2001)",
+                "same_base_dense_output": True, "additional_trajectory_count": 0,
+                "applicability": {"STATIC_GAIN": NA, "DYNAMIC_ENDPOINT_GAIN": NA,
+                    "DYNAMIC_INTEGRATED_GAIN": "APPLICABLE"}},
+            "classifier_binding": {"static": ["G_static_H", "G_static_mode"],
+                "dynamic": ["G_coupling_end", "G_coupling_int"]}},
         "denominator_floors": {"H_q": "1e-12", "seeded_mode_amplitude": "1e-12",
             "total_flow": "1e-14", "generic_ratio_denominator": "1e-12",
             "fallback": {"uniform": "STRUCTURAL_IDENTITY", "fourier": "USE_SEEDED_MODE_IF_H_Q_FLOORED",
@@ -1465,12 +1577,17 @@ def protocol(rows: list[dict]) -> dict:
                 "u_sector": "abs(G_N_BASE-G_NREF_BASE)"},
             "sector_bundle_audit": sector_audit},
         "stage_a_executor": {"module": "scripts/sci_lc_001a_executor.py",
-            "status": "IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
-            "modes": ["plan", "validate", "execute", "summarize"],
+            "status": "E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+            "modes": ["plan", "validate", "execute", "summarize", "pilot-plan", "pilot-execute"],
+            "public_real_execution_api": "execute_authorized_graph",
+            "private_case_executors": ["_execute_static_case", "_execute_dynamic_case"],
             "execution_authority_required": True, "real_execution_authority_created": False,
             "output": "absolute external non-symlink result root; atomic JSON records",
-            "resume": "validate manifest and records; reuse terminal records; no automatic retry",
+            "resume": "manifest-identity and checksum-ledger bound records; no cross-run reuse or automatic retry",
             "synthetic_backend": "SYNTHETIC_TEST_ONLY; scientifically inadmissible",
+            "pilot": {"status": "INTERFACE_IMPLEMENTED_PENDING_E2_REVIEW", "authority_created": False,
+                "allowlist_required": True, "reuse": "DISABLED", "evidence_kind": "DIAGNOSTIC_TIMING_ONLY",
+                "scientific_evidence": False},
             "timing_pilot_authorized": False, "scientific_execution_authorized": False},
         "classification": {"static": {"metrics": ["G_static_H", "G_static_mode"],
                 "comparator": "exact same-row identity with Lambda=0"},

@@ -1,8 +1,8 @@
-# SCI-LC-001A Stage-A prospective protocol and executor — E1
+# SCI-LC-001A Stage-A prospective protocol and executor — E2-R1
 
-Task: `SCI-LC-001A-E1-PREEXECUTION-PATCHES-AND-STAGE-A-EXECUTOR-IMPLEMENTATION-2026-08-16`
+Task: `SCI-LC-001A-E2-R1-OWNER-METRIC-FREEZE-RUNTIME-SAFETY-EVIDENCE-AND-PILOT-INTERFACE-2026-08-16`
 
-Status: `STAGE_A_EXECUTOR_E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`
+Status: `STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Execution is not
 authorized. This package defines a reduced diagnostic model; it does not change
@@ -40,7 +40,7 @@ trajectory or classification.
     "structural_comparator_rows": 362
   },
   "stage_a_hard_maximum": 1280,
-  "status": "STAGE_A_EXECUTOR_E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+  "status": "STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
   "uncertainty": "u_limit(G)=min(0.02,0.02*abs(G))"
 }
 ```
@@ -213,9 +213,12 @@ inadmissible.
 Per-sector outward-crossing events are `exp(beta*x_i)-0.25` and
 `4-exp(beta*x_i)`, each direction -1. Dense output locates roots to `1e-10`
 tau, independently of reporting samples. Earliest time wins; ties choose lower
-before upper, then ascending sector index. Tangential and inward contact do not stop. A
-located event in an accepted step precedes a later cap; a cap precedes an event
-that would require an unevaluated RHS. Nonfinite event functions stop. No
+before upper, then ascending sector index. Tangential and inward contact do not
+fire the directional event. Every located terminal event stops; there is no
+post-event continuation or evaluation beyond its time, and no extra counted RHS
+call diagnoses the root. Wrapped RHS count must equal solver `nfev`. A located
+event in an accepted step precedes a later cap; a cap precedes an event that
+would require an unevaluated RHS. Nonfinite event functions stop. No
 stopped or capped trajectory reaches classification.
 
 Stage A uses no nonlinear fixed-point solve: `STAGE_A_NONLINEAR_FIXED_POINT_SOLVE=NOT_USED`.
@@ -238,6 +241,53 @@ dynamic `LINEAR_REFINED` is a complete companion trajectory applying this
 single correction at every algebraic solve. Failure makes the gain unresolved.
 
 ## Observables, uncertainty, and classification
+
+### Owner metric authority freeze
+
+Authority ID: `SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16`.
+The prior artifacts named the metric families without completely defining the
+seeded-mode normalization or integrated quadrature. These prospective owner
+definitions become controlling only at the E2-R1 commit. No prior result is
+reinterpreted and no trajectory was executed under the incomplete definitions.
+
+Sectors use `i=0,...,N-1`. At every valid output state,
+`M_i=exp(beta*x_i)`, `H_i=H_i0*M_i`,
+`R_u_i=R_floor+alpha_place*H_i`,
+`R_d_i=R_floor+(1-alpha_place)*H_i`, `G_d_i=1/R_d_i`, and
+`q_i=G_d_i*(p_i-p_o)`. Thus `Q=sum_i q_i`, `f_i=q_i/Q`,
+`d_i=f_i-1/N`, and `H_q=(1/2)sum_i|d_i|`. Current, not initial,
+resistance is used for evolving outputs. At dynamic `tau=0`, the frozen
+one-sided startup value gives `f_i(0)=F_i(0+)/N`. The `H_q` comparator floor is
+`1e-12`, with equality unresolved unless analytical structural identity applies.
+
+`G_static_H=H_q_active/H_q_comparator`. For Fourier seed `m`,
+`C_m=sum_i d_i cos(2*pi*m*i/N)` and
+`S_m=sum_i d_i sin(2*pi*m*i/N)`. Nonzero non-Nyquist amplitude is
+`A_seeded=(2/N)sqrt(C_m^2+S_m^2)`; Nyquist `m=N/2` uses
+`A_seeded=|C_m|/N`. Magnitude makes this invariant under rotation, reflection,
+and phase reversal. For contiguous-block and broadband patterns the canonical
+seed is regenerated, centered as `s_i=h_i-mean(h)`, and
+`A_seeded=|sum_i d_i*s_i|/sum_i s_i^2`. Uniform zero-norm seeds are
+`NOT_APPLICABLE`. `G_static_mode=A_seeded_active/A_seeded_comparator`; its
+primitive floor is `1e-12`, equality unresolved.
+
+For complete trajectories, `G_coupling_end=H_q_active(1)/H_q_comparator(1)`
+after reconstructing evolved resistance at `tau=1`. Stopped, capped, failed,
+or terminal-event trajectories have no endpoint metric.
+
+The integrated primitive is `I_M=integral_0^1 H_q(tau)dt`, reconstructed on
+`tau_k=k/(M-1)` with `M=1001` primary and `M=2001` sampling companion. The
+controlling composite trapezoid is
+`I_M=Delta_tau[(1/2)H_q(tau_0)+sum_{k=1}^{M-2}H_q(tau_k)+(1/2)H_q(tau_{M-1})]`,
+`Delta_tau=1/(M-1)`. Every grid state reconstructs its current resistance;
+the first value uses analytical startup fractions. Active and comparator
+integrals are formed separately, then
+`G_coupling_int,M=I_M,active/I_M,comparator`. The reported
+`G_coupling_int` is the 1001-point value. Sampling uncertainty is exactly
+`|G_coupling_int,1001-G_coupling_int,2001|` from the same accepted BASE dense
+outputs and adds zero trajectories. Static classifiers use
+`(G_static_H,G_static_mode)` and dynamic classifiers use
+`(G_coupling_end,G_coupling_int)`; thresholds and precedence are unchanged.
 
 Hydraulic observables include sector flows and pressures, `H_q`, area-weighted
 `CV_q`, effective area, seeded-mode amplitudes, absolute/net lateral exchange,
