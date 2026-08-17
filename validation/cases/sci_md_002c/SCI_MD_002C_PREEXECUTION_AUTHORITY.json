@@ -604,10 +604,16 @@
     "S1-SOURCE-P9-FF0.1-MF0.75-KR0.1-N2.0-RET1.0-AR1e+13-REFINED"
   ],
   "external_namespace": "SCI_MD_002C_EXTERNAL_BUNDLE",
+  "gate2_subconditions": [
+    "numerical_mass_conservation",
+    "physical_state_validity",
+    "finite_inventory_feasibility",
+    "compact_layer_geometry_validity"
+  ],
   "gate_order": [
     "AUTHORITY_AND_PACKAGE_INTEGRITY",
     "REFERENCE_AND_NUMERICAL_VALIDITY",
-    "INVENTORY_CONSERVATION_AND_PHYSICAL_BOUNDS",
+    "MASS_CONSERVATION_PHYSICAL_STATE_INVENTORY_AND_GEOMETRY",
     "RESISTANCE_DIRECTION",
     "PRESSURE_ORDERING",
     "TEMPORAL_FINES_DEPOSITION_SIGNATURE",
@@ -617,22 +623,22 @@
   ],
   "hard_row_cap": 2500,
   "hashes": {
-    "feasibility_bounds": "e2c7b127bfb9758498f1953cf3c490b590c790abc80dcf2c1c002e80192aef6c",
-    "human_protocol": "cc264eaa757703387a3d44d3041acf3be00dc57047eedc181393a415ca3fbbc3",
-    "implementation": "9ce0d75a1fddb25c1cb490011dada4657a15bac0b962c462b3aeca518de9821e",
+    "feasibility_bounds": "6753fb520420fbaf2910f62a6bd3e9b2ddd15f4a07693920222f1b154b64aa2b",
+    "human_protocol": "fa11fe207cd885040495d3fb1c5308373cd4f2826c26933b9fbe2cd29036f3c0",
+    "implementation": "cefc030b09261aa995f1341e3e030901ac1d0356d8de9b45caba9817c903e4d3",
     "lane_declaration": "88cc276c952980ccafe09b193d503d7f7e7093103aa8c5469aed2a9d14addeba",
-    "machine_protocol": "64f524e558fc7f173cff321512aa024d1dec519c66fed6c8e23dbe98e588c20d",
-    "matrix_csv": "ba23e1805f7a568ff45dbd530cc10ab9909704e8d07de3eec1106f8447b59683",
-    "matrix_json": "acbd214a7429c072c808b78fa16b677666169fb08dd36b2a70be372ca7d85149",
-    "pilot_report": "becf46f0e0a4e3a4ef6ca632ec6b86440b39481807d8974cd577243c6b462a54",
-    "puckworks_reference": "1bd0133ca1259693b5bfcd1b0cf2c5d71735e64a5a78d433e02566932053ab6c",
-    "source_manifest": "299213eeb4748bd558862e258ed6ad986d679e2f9519893f1da3c45bf3b544ae",
+    "machine_protocol": "a933af58e2df21a56db4a8ddb15cc0fbb5a3055bc38302182187ffa20fe82c57",
+    "matrix_csv": "70c3a9d7aefb02398d5c65b16d57e15f57a10b900f97a29d320cd859a8467997",
+    "matrix_json": "b67046e221572817286fd9c1075e4f4a3e04c2f7df8f64ce9fcc754d40b93b15",
+    "pilot_report": "6fd11696f358971cb1ad19ecbbce390fe818605f71d5ecf0841f0098bf6e4144",
+    "puckworks_reference": "1e0d26bfd77c9202f79540037fc39b5458c9e80d22224da725bace5c7037def5",
+    "source_manifest": "f8075d4b07f0079b268672fd6d696a00d29516dbae3174992ded4e8846bbcf4b",
     "source_overlay": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e"
   },
   "lane_id": "EWP-PAR-SCI-MD-002C",
   "owner_execution_token_present": false,
   "pilot": {
-    "accepted_attempt": "attempt4",
+    "accepted_attempt": "attempt5",
     "ids": [
       "A0-ZERO-FINES",
       "A0-MASS-CONSERVATION",
@@ -643,11 +649,11 @@
       "C1-FASANO-STRUCTURAL",
       "R1-SYNTH-P7-BASE"
     ],
-    "report_sha256": "becf46f0e0a4e3a4ef6ca632ec6b86440b39481807d8974cd577243c6b462a54"
+    "report_sha256": "6fd11696f358971cb1ad19ecbbce390fe818605f71d5ecf0841f0098bf6e4144"
   },
   "prospective_execution_source": {
-    "head": "b5263373968d3cea0de2e985de4f0855af2569b5",
-    "tree": "91f0aa630a5d61b2fcbb97ae373e0780a35d81c7"
+    "head": "841f8513ed7a2ae0d29466664145650ff9b1f4c9",
+    "tree": "418466b632a0e9c2906ee15093eb0f714b50a940"
   },
   "puckworks": {
     "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
