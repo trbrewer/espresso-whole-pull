@@ -333,6 +333,14 @@
         "G_coupling_int"
       ]
     },
+    "initial_condition_reconciliation": {
+      "disagreement_predicate": "NOT_DEFINED_FOR_STAGE_A",
+      "grouping_authority": "NOT_DEFINED_FOR_STAGE_A",
+      "hidden_runs_authorized": false,
+      "serialized_field": "initial_condition_variant",
+      "source_note": "alternate initial conditions remain a D4 future requirement",
+      "status": "AUTHORITY_INCOMPLETE_LOCALIZED_SCIENCE_ONLY_GAP"
+    },
     "precedence": [
       "AUTHORITY_OR_ARTIFACT_INVALID",
       "ANALYTICAL_STRUCTURAL_IDENTITY",
@@ -841,6 +849,7 @@
   "schema_version": "ewp.sci_lc_001a.protocol.v2",
   "scientific_question": "Under what combinations of lateral conductance, axial resistance contrast, heterogeneity scale, machine response, and resistance-evolution timescale does puck nonuniformity decay, persist, or amplify?",
   "stage_a_executor": {
+    "canonical_dispatcher": "_execute_canonical_case",
     "execution_authority_required": true,
     "modes": [
       "plan",
@@ -855,20 +864,26 @@
     "pilot": {
       "allowlist_required": true,
       "authority_created": false,
+      "canonical_adapter": "_execute_canonical_pilot_case",
+      "cpu_time_source": "time.process_time_ns around canonical case calculation",
       "evidence_kind": "DIAGNOSTIC_TIMING_ONLY",
+      "output_size_definition": "serialized canonical case-outcome bytes before diagnostic filtering",
+      "public_launcher_parameter": false,
       "reuse": "DISABLED",
       "scientific_evidence": false,
-      "status": "INTERFACE_IMPLEMENTED_PENDING_E2_REVIEW"
+      "status": "CANONICAL_ADAPTER_IMPLEMENTED_PENDING_E2_R2_REVIEW",
+      "wall_time_source": "time.perf_counter_ns around canonical case calculation"
     },
     "private_case_executors": [
       "_execute_static_case",
       "_execute_dynamic_case"
     ],
     "public_real_execution_api": "execute_authorized_graph",
+    "public_real_execution_launcher_parameter": false,
     "real_execution_authority_created": false,
     "resume": "manifest-identity and checksum-ledger bound records; no cross-run reuse or automatic retry",
     "scientific_execution_authorized": false,
-    "status": "E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+    "status": "E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW",
     "synthetic_backend": "SYNTHETIC_TEST_ONLY; scientifically inadmissible",
     "timing_pilot_authorized": false
   },
@@ -897,7 +912,7 @@
       "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
     }
   },
-  "status": "STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+  "status": "STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
       "authority/hash/review mismatch",
@@ -943,7 +958,7 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-E2-R1-OWNER-METRIC-FREEZE-RUNTIME-SAFETY-EVIDENCE-AND-PILOT-INTERFACE-2026-08-16",
+  "task_id": "SCI-LC-001A-E2-R2-CANONICAL-LAUNCHER-PILOT-ADAPTER-AND-INITIAL-CONDITION-RECONCILIATION-2026-08-16",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
     "applicability_authority": "derive_uncertainty_contract(canonical_rows,subject_case_id,metric,evaluation,status,profile)",

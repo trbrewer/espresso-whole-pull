@@ -6,7 +6,14 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`.
+Status: `STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW`.
+
+E2-R2 removes caller-selected launchers from the public real and pilot APIs,
+binds both to the canonical private dispatcher, and measures diagnostic timing
+inside the pilot adapter. The frozen artifacts do not define Stage-A
+initial-condition partner groups or a disagreement predicate, so that
+classifier branch remains an explicitly localized owner-authority gap; no
+hidden run or new graph key was introduced.
 
 The Stage-A executor and diagnostic timing interface are now
 `TRUE_PENDING_E2_REVIEW`; see [STAGE_A_EXECUTOR.md](STAGE_A_EXECUTOR.md).

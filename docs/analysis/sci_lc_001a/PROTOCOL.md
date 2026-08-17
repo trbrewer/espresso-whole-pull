@@ -1,8 +1,8 @@
-# SCI-LC-001A Stage-A prospective protocol and executor — E2-R1
+# SCI-LC-001A Stage-A prospective protocol and executor — E2-R2
 
-Task: `SCI-LC-001A-E2-R1-OWNER-METRIC-FREEZE-RUNTIME-SAFETY-EVIDENCE-AND-PILOT-INTERFACE-2026-08-16`
+Task: `SCI-LC-001A-E2-R2-CANONICAL-LAUNCHER-PILOT-ADAPTER-AND-INITIAL-CONDITION-RECONCILIATION-2026-08-16`
 
-Status: `STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`
+Status: `STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW`
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Execution is not
 authorized. This package defines a reduced diagnostic model; it does not change
@@ -40,7 +40,7 @@ trajectory or classification.
     "structural_comparator_rows": 362
   },
   "stage_a_hard_maximum": 1280,
-  "status": "STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+  "status": "STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW",
   "uncertainty": "u_limit(G)=min(0.02,0.02*abs(G))"
 }
 ```
@@ -359,6 +359,15 @@ equalization (`end,int<=0.90`), amplification (`end,int>=1.10`), then
 persistence. Static cases use only matched static `H_q` and seeded-mode gains;
 dynamic cases use endpoint and integrated gains against exact matched dynamic
 Lambda-zero rows.
+
+The precedence label does not itself define an executable initial-condition
+comparison. The Stage-A artifacts contain `initial_condition_variant`, but do
+not freeze canonical partner groups, a disagreement/equality predicate, or a
+missing-partner evidence route. Alternate initial conditions remain explicitly
+listed below as a future D4 requirement, and the 3,666-key graph contains no
+hidden initial-condition run. E2-R2 records this as
+`AUTHORITY_INCOMPLETE_LOCALIZED_SCIENCE_ONLY_GAP`; an implementation must not
+invent partner science from the variant name alone.
 
 ## Matrix and comparator reconciliation
 

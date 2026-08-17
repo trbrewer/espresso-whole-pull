@@ -21,8 +21,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "validation/cases/sci_lc_001a"
 NA = "NOT_APPLICABLE"
 INFINITE = "INFINITE_NO_LATERAL_EQUALIZATION"
-STATUS = "STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW"
-TASK_ID = "SCI-LC-001A-E2-R1-OWNER-METRIC-FREEZE-RUNTIME-SAFETY-EVIDENCE-AND-PILOT-INTERFACE-2026-08-16"
+STATUS = "STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW"
+TASK_ID = "SCI-LC-001A-E2-R2-CANONICAL-LAUNCHER-PILOT-ADAPTER-AND-INITIAL-CONDITION-RECONCILIATION-2026-08-16"
 OWNER_METRIC_AUTHORITY_ID = "SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16"
 BASE_HEAD = "3e8993f56badd575f3482ea7bfa0f87d24412100"
 BASE_TREE = "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0"
@@ -1577,16 +1577,22 @@ def protocol(rows: list[dict]) -> dict:
                 "u_sector": "abs(G_N_BASE-G_NREF_BASE)"},
             "sector_bundle_audit": sector_audit},
         "stage_a_executor": {"module": "scripts/sci_lc_001a_executor.py",
-            "status": "E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW",
+            "status": "E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW",
             "modes": ["plan", "validate", "execute", "summarize", "pilot-plan", "pilot-execute"],
             "public_real_execution_api": "execute_authorized_graph",
+            "public_real_execution_launcher_parameter": False,
+            "canonical_dispatcher": "_execute_canonical_case",
             "private_case_executors": ["_execute_static_case", "_execute_dynamic_case"],
             "execution_authority_required": True, "real_execution_authority_created": False,
             "output": "absolute external non-symlink result root; atomic JSON records",
             "resume": "manifest-identity and checksum-ledger bound records; no cross-run reuse or automatic retry",
             "synthetic_backend": "SYNTHETIC_TEST_ONLY; scientifically inadmissible",
-            "pilot": {"status": "INTERFACE_IMPLEMENTED_PENDING_E2_REVIEW", "authority_created": False,
+            "pilot": {"status": "CANONICAL_ADAPTER_IMPLEMENTED_PENDING_E2_R2_REVIEW", "authority_created": False,
                 "allowlist_required": True, "reuse": "DISABLED", "evidence_kind": "DIAGNOSTIC_TIMING_ONLY",
+                "public_launcher_parameter": False, "canonical_adapter": "_execute_canonical_pilot_case",
+                "wall_time_source": "time.perf_counter_ns around canonical case calculation",
+                "cpu_time_source": "time.process_time_ns around canonical case calculation",
+                "output_size_definition": "serialized canonical case-outcome bytes before diagnostic filtering",
                 "scientific_evidence": False},
             "timing_pilot_authorized": False, "scientific_execution_authorized": False},
         "classification": {"static": {"metrics": ["G_static_H", "G_static_mode"],
@@ -1594,6 +1600,13 @@ def protocol(rows: list[dict]) -> dict:
             "dynamic": {"metrics": ["G_coupling_end", "G_coupling_int"],
                 "comparator": "materialized Lambda=0 with same storage,evolution,boundary,machine,initial,numerics"},
             "thresholds": {"equalization": "0.90", "amplification": "1.10"},
+            "initial_condition_reconciliation": {
+                "status": "AUTHORITY_INCOMPLETE_LOCALIZED_SCIENCE_ONLY_GAP",
+                "serialized_field": "initial_condition_variant",
+                "grouping_authority": "NOT_DEFINED_FOR_STAGE_A",
+                "disagreement_predicate": "NOT_DEFINED_FOR_STAGE_A",
+                "hidden_runs_authorized": False,
+                "source_note": "alternate initial conditions remain a D4 future requirement"},
             "precedence": ["AUTHORITY_OR_ARTIFACT_INVALID", "ANALYTICAL_STRUCTURAL_IDENTITY",
                 "NUMERICALLY_UNRESOLVED", "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE",
                 "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT", "METRIC_DISAGREEMENT",

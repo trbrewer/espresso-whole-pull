@@ -6,8 +6,13 @@ Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`
 
 ```text
 PROTOCOL_SPECIFIED = TRUE
-EXECUTOR_IMPLEMENTED = TRUE_PENDING_E2_REVIEW
-DIAGNOSTIC_TIMING_INTERFACE_IMPLEMENTED = TRUE_PENDING_E2_REVIEW
+EXECUTOR_IMPLEMENTED = TRUE_PENDING_E2_R2_REVIEW
+PUBLIC_REAL_EXECUTION_BINDING = CANONICAL_PRIVATE_EXECUTORS_ONLY
+DIAGNOSTIC_TIMING_INTERFACE_IMPLEMENTED = TRUE_PENDING_E2_R2_REVIEW
+PILOT_TIMING_MEASUREMENT = INTERNAL_AROUND_CANONICAL_CASE_EXECUTION
+PILOT_REUSE = DISABLED
+PILOT_EVIDENCE_KIND = DIAGNOSTIC_TIMING_ONLY
+INITIAL_CONDITION_RECONCILIATION = AUTHORITY_GAP_LOCALIZED_SCIENTIFIC_CLASSIFICATION_ONLY
 TIMING_PILOT_AUTHORIZED = FALSE
 SCIENTIFIC_EXECUTION_AUTHORIZED = FALSE
 PHYSICAL_VALIDATION = NOT_ESTABLISHED
@@ -20,10 +25,14 @@ interface for the frozen 1,280-row matrix and 3,666 `(case_id, profile)` keys.
 It does not itself grant execution authority. `execute` requires a separate
 absolute execution-authority artifact binding the exact Git HEAD and tree,
 matrix semantic hash, protocol artifact hash, mode, backend, and external
-output root. No such real authority is created by E2-R1.
+output root. No such real authority is created by E2-R2.
 `execute_authorized_graph` is the sole public real-execution path and constructs
-a private validated context; private case executors cannot accept an authority
-dictionary.
+a private validated context. It exposes no launcher or callback parameter and
+always dispatches through `_execute_canonical_case` to the reviewed private
+static or dynamic executor. Private case executors cannot accept an authority
+dictionary. Callback injection exists only in the explicitly synthetic,
+private `_execute_graph_synthetic_test_only` path, which cannot write real or
+diagnostic evidence.
 
 The six modes are:
 
@@ -107,7 +116,26 @@ Pilot selection is an explicit canonical case/profile allowlist whose hash and
 maximum size are authority-bound. The first pilot requires a new or empty
 external root and has reuse disabled. Its evidence kind is permanently
 `DIAGNOSTIC_TIMING_ONLY`; it cannot enter scientific evidence, classification,
-D4, or X1. E2-R1 creates no pilot authority and runs no pilot.
+D4, or X1. The public API exposes no callback. `_execute_canonical_pilot_case`
+uses the same canonical private static/dynamic dispatcher as Stage A and
+measures `case_wall_time_ns` with `time.perf_counter_ns` and CPU time with
+`time.process_time_ns` immediately around that case calculation. Status, RHS
+count, and linear status come from the canonical outcome. Output size means
+the serialized canonical case-outcome byte count before diagnostic filtering;
+scientific metric payloads are omitted from the persisted pilot record. E2-R2
+creates no pilot authority and runs no pilot.
+
+## Localized initial-condition authority gap
+
+The controlling artifacts serialize `initial_condition_variant` and reserve
+the classifier precedence label `INITIAL_CONDITION_DEPENDENT_OR_BISTABLE`, but
+they do not define canonical Stage-A partner groups, an equality/disagreement
+predicate, or the missing-evidence route. `PROTOCOL.md` also retains alternate
+initial conditions as a future D4 requirement and the frozen graph authorizes
+no hidden initial-condition run. E2-R2 therefore does not invent a grouping or
+predicate. Runtime and diagnostic-pilot closure is complete; authoritative
+initial-condition reconciliation remains a localized science-only authority
+gap pending an explicit owner freeze.
 
 ## Synthetic testing
 

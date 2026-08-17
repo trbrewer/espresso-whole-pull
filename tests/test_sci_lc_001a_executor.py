@@ -475,6 +475,17 @@ class SciLc001aExecutorTests(unittest.TestCase):
         self.assertEqual(f(metrics=((1.2,0),(1.2,0))), "HETEROGENEITY_AMPLIFIES")
         self.assertEqual(f(metrics=((1.,0),(1.,0))), "HETEROGENEITY_PERSISTS")
 
+    def test_initial_condition_authority_gap_is_explicit_and_not_caller_overridable(self):
+        status = self.canonical.by_id and json.loads(
+            executor.PROTOCOL_PATH.read_text())["classification"]["initial_condition_reconciliation"]
+        self.assertEqual(status["status"], "AUTHORITY_INCOMPLETE_LOCALIZED_SCIENCE_ONLY_GAP")
+        self.assertEqual(status["grouping_authority"], "NOT_DEFINED_FOR_STAGE_A")
+        self.assertEqual(status["disagreement_predicate"], "NOT_DEFINED_FOR_STAGE_A")
+        self.assertFalse(status["hidden_runs_authorized"])
+        signature = inspect.signature(executor.classify_stage_a_evidence)
+        self.assertNotIn("initial_condition_disagreement", signature.parameters)
+        self.assertNotIn("initial_condition_partner_ids", signature.parameters)
+
     def test_pilot_plan_is_allowlisted_diagnostic_only(self):
         with tempfile.TemporaryDirectory() as name:
             root=Path(name); output=root/"output"; output.mkdir()
