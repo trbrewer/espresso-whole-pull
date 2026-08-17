@@ -332,7 +332,7 @@ def record_for(row,a,ah,result,command,start) -> dict[str,Any]:
       "authority_sha256":ah,"bundle_uuid":a["bundle_uuid"],"protocol_sha256":a["protocol_sha256"],"matrix_sha256":a["matrix_sha256"],"implementation_sha256":a["implementation_sha256"],
       "source_overlay_sha256":a["source_overlay_sha256"],"feasibility_sha256":a["feasibility_sha256"],"puckworks_reference_sha256":a["puckworks_reference_sha256"],"parameters":row,"provenance":row["evidence_role"],
       "command":command,"pid":os.getpid(),"parent_pid":os.getppid(),"start_time":start,"completion_time":utc(),"numerical_status":result["numerical_status"],
-      "physical_status":result["physical_status"],"stop_reason":None,"scientific_result_sha256":hash_obj(result),"result":result}
+      "physical_status":result["physical_status"],"stop_reason":result.get("stop_reason"),"scientific_result_sha256":hash_obj(result),"result":result}
     rec["record_sha256"]=internal_hash(rec); return rec
 
 def record_relative_path(case_id:str) -> str:
