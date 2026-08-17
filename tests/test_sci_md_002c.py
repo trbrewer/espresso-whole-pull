@@ -114,7 +114,7 @@ class TestReductionRules(unittest.TestCase):
     if r["resolution"]=="REFINED":base={5:.00199999,9:.002,11:.00200001}[p]
    physical="INVALID" if mode=="ONE_INVALID" and cid.startswith("S1-SOURCE-P5-FF0.02-MF0.25-KR0.02-N1.0-RET0.5-AR1e+12") else "VALID"
    result={"case_id":cid,"numerical_status":"COMPLETE","physical_status":physical,"max_abs_mass_residual_kg":0.0,"terminal":{"predicted_flow_kg_s":base,"total_resistance_pa_s_m3":M.hydraulic_anchor()+(0 if r["arm"]=="C0" else 1e8)},"temporal":[]}
-   rec={"schema_version":M.RECORD_SCHEMA,"task_id":M.TASK,"lane_id":M.LANE_ID,"case_id":cid,"source_head":a["source_head"],"source_tree":a["source_tree"],"authority_sha256":ah,"bundle_uuid":a["bundle_uuid"],"result":result};rec["record_sha256"]=M.internal_hash(rec)
+   rec={"schema_version":M.RECORD_SCHEMA,"task_id":M.TASK,"lane_id":M.LANE_ID,"case_id":cid,"source_head":a["source_head"],"source_tree":a["source_tree"],"authority_sha256":ah,"bundle_uuid":a["bundle_uuid"],"numerical_status":"COMPLETE","physical_status":physical,"result":result};rec["record_sha256"]=M.internal_hash(rec)
    path=b/"case_records"/(cid+".json");path.parent.mkdir(exist_ok=True);path.write_text(M.canonical(rec));entries.append({"case_id":cid,"path":f"case_records/{cid}.json","size":path.stat().st_size,"sha256":M.sha(path)})
   aggregate=M.hash_obj([{"case_id":x["case_id"],"size":x["size"],"sha256":x["sha256"]} for x in entries]);(b/"manifest.json").write_text(M.canonical({"record_count":len(entries),"records":entries,"ordered_record_aggregate_sha256":aggregate,"bundle_uuid":a["bundle_uuid"],"authority_sha256":ah}))
   return td,b,ap
