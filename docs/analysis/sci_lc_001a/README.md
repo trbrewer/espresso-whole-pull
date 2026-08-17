@@ -6,11 +6,13 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `STAGE_A_EXECUTOR_E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`.
+Status: `STAGE_A_EXECUTOR_E2_R1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_REVIEW`.
 
-The Stage-A executor is now `TRUE_PENDING_REVIEW`; see
-[STAGE_A_EXECUTOR.md](STAGE_A_EXECUTOR.md). No timing pilot or scientific
-execution is authorized.
+The Stage-A executor and diagnostic timing interface are now
+`TRUE_PENDING_E2_REVIEW`; see [STAGE_A_EXECUTOR.md](STAGE_A_EXECUTOR.md).
+Owner metric authority `SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16` is
+prospectively frozen in the controlling protocol and JSON. No timing pilot or
+scientific execution is authorized.
 
 Correction C5 additionally closes the authoritative BASE solve, canonical gain
 and denominator construction, applicability and flow-scale authority,

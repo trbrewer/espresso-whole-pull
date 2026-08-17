@@ -6,7 +6,8 @@ Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`
 
 ```text
 PROTOCOL_SPECIFIED = TRUE
-EXECUTOR_IMPLEMENTED = TRUE_PENDING_REVIEW
+EXECUTOR_IMPLEMENTED = TRUE_PENDING_E2_REVIEW
+DIAGNOSTIC_TIMING_INTERFACE_IMPLEMENTED = TRUE_PENDING_E2_REVIEW
 TIMING_PILOT_AUTHORIZED = FALSE
 SCIENTIFIC_EXECUTION_AUTHORIZED = FALSE
 PHYSICAL_VALIDATION = NOT_ESTABLISHED
@@ -19,14 +20,19 @@ interface for the frozen 1,280-row matrix and 3,666 `(case_id, profile)` keys.
 It does not itself grant execution authority. `execute` requires a separate
 absolute execution-authority artifact binding the exact Git HEAD and tree,
 matrix semantic hash, protocol artifact hash, mode, backend, and external
-output root. No such real authority is created by E1.
+output root. No such real authority is created by E2-R1.
+`execute_authorized_graph` is the sole public real-execution path and constructs
+a private validated context; private case executors cannot accept an authority
+dictionary.
 
-The four modes are:
+The six modes are:
 
 - `plan`: validate canonical artifacts and construct the graph; zero solves;
 - `validate`: additionally validate an external output root; zero solves;
 - `execute`: require and validate a separate authority before dispatch;
 - `summarize`: validate and summarize an existing store; zero solves.
+- `pilot-plan`: validate an authority-bound exact allowlist; zero solves;
+- `pilot-execute`: require a separate diagnostic timing authority.
 
 Output roots must be absolute, outside the repository and scientific case
 directories, and contain no symlink component. All records use same-directory
@@ -60,7 +66,15 @@ The scientific gain floor is the non-overridable module constant
 subject and comparator rows and result records internally. Uncertainty
 evaluation derives applicability and profile dependencies internally.
 Classification accepts only authoritative real-backend evidence and rejects
-all `SYNTHETIC_TEST_ONLY` records.
+all `SYNTHETIC_TEST_ONLY` and `DIAGNOSTIC_TIMING_ONLY` records.
+
+Owner authority `SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16` prospectively
+freezes current evolved-flow reconstruction, `H_q`, phase-invariant
+Fourier/Nyquist and centered non-Fourier seed amplitudes, endpoint gain, and
+composite-trapezoidal integrated gain on 1,001/2,001 grids. Sampling uses the
+same BASE dense output and adds no trajectory. Static classification consumes
+`(G_static_H,G_static_mode)` and dynamic classification consumes
+`(G_coupling_end,G_coupling_int)` under the existing precedence.
 
 Internal transport tuples remain constructible Python values. They are not
 public executor inputs, are absent from the executor export list, and cannot
@@ -78,7 +92,22 @@ row hash, role, boundary mode, authority, solver status, metrics, and checksum.
 Resume validates the manifest and every reusable record. `COMPLETE`, `STOPPED`,
 `CAPPED`, and `NUMERICALLY_UNRESOLVED` records are preserved and not retried.
 Only absent or non-final interrupted work is dispatched. A mismatched manifest
-or record fails closed. No automatic scientific retry exists.
+or record fails closed. Records bind an immutable manifest-identity digest and
+a manifest checksum ledger, so consistently stale and copied cross-run records
+are rejected. No automatic scientific retry exists.
+
+Directional multiplier events are terminal stops. No event can return to a
+continuation path, no terminated dense solution is evaluated beyond its root,
+and no counted RHS call is made solely to diagnose a root. Wrapped RHS calls
+must equal solver-reported `nfev`.
+
+## Diagnostic timing interface
+
+Pilot selection is an explicit canonical case/profile allowlist whose hash and
+maximum size are authority-bound. The first pilot requires a new or empty
+external root and has reuse disabled. Its evidence kind is permanently
+`DIAGNOSTIC_TIMING_ONLY`; it cannot enter scientific evidence, classification,
+D4, or X1. E2-R1 creates no pilot authority and runs no pilot.
 
 ## Synthetic testing
 

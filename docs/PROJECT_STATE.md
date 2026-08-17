@@ -27,10 +27,10 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active modeling task: `SCI-LC-001A Stage-A executor implementation E1`
-- Execution state: `EXECUTOR_IMPLEMENTED_PENDING_BOUNDED_REVIEW; SCIENTIFIC_EXECUTION_NOT_STARTED`
+- Active modeling task: `SCI-LC-001A Stage-A executor correction E2-R1`
+- Execution state: `EXECUTOR_AND_DIAGNOSTIC_PILOT_INTERFACE_IMPLEMENTED_PENDING_E2_REVIEW; SCIENTIFIC_EXECUTION_NOT_STARTED`
 - Protocol state:
-  `E1_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_EXACT_HEAD_REVIEW`
+  `E2_R1_OWNER_METRICS_AND_EXECUTOR_IMPLEMENTED_PENDING_BOUNDED_INDEPENDENT_EXACT_HEAD_REVIEW`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
 - Current next action:
