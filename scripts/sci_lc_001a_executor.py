@@ -35,6 +35,8 @@ PILOT_AUTHORITY_SCHEMA = "ewp.sci_lc_001a.pilot_authority.v1"
 PILOT_ALLOWLIST_SCHEMA = "ewp.sci_lc_001a.pilot_allowlist.v1"
 RUN_SCHEMA = "ewp.sci_lc_001a.run_manifest.v1"
 CASE_SCHEMA = "ewp.sci_lc_001a.case_profile_result.v1"
+CLASSIFICATION_SCHEMA = "ewp.sci_lc_001a.classification_record.v1"
+CLASSIFICATION_SUMMARY_SCHEMA = "ewp.sci_lc_001a.classification_summary.v1"
 PLAN_SCHEMA = "ewp.sci_lc_001a.execution_plan.v1"
 RESULT_STATUSES = ("NOT_STARTED", "RUNNING", "COMPLETE", "STOPPED", "CAPPED",
                    "NUMERICALLY_UNRESOLVED", "AUTHORITY_INVALID", "FAILED", "INTERRUPTED")
@@ -44,7 +46,10 @@ PILOT_EVIDENCE = "DIAGNOSTIC_TIMING_ONLY"
 PUBLIC_API = ("CanonicalStore", "ResultStore", "build_plan", "validate_execution_authority",
               "execute_authorized_graph", "pilot_plan", "execute_authorized_pilot",
               "evaluate_gain_evidence", "evaluate_uncertainty_evidence",
-              "classify_stage_a_evidence", "main")
+              "classify_stage_a_evidence", "build_classification_record",
+              "validate_classification_record", "write_classification_artifacts",
+              "load_classification_records", "load_classification_summary",
+              "export_stage_a_classifications", "main")
 __all__ = PUBLIC_API
 
 
@@ -226,6 +231,21 @@ def atomic_write_json(path: Path, payload: dict) -> None:
         raise
 
 
+def atomic_write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temporary = tempfile.mkstemp(prefix=".tmp-", suffix=path.suffix, dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(text); handle.flush(); os.fsync(handle.fileno())
+        os.replace(temporary, path)
+    except BaseException:
+        try:
+            os.unlink(temporary)
+        except FileNotFoundError:
+            pass
+        raise
+
+
 class ResultStore:
     def __init__(self, root: Path, canonical: CanonicalStore):
         self.root = validate_external_output_root(root)
@@ -309,6 +329,10 @@ class ResultStore:
             "execution_mode": manifest["execution_mode"], "backend": manifest["backend"],
             "evidence_kind": manifest["evidence_kind"],
             "run_manifest_identity_sha256": manifest["run_manifest_identity_sha256"]}
+        conflicts = [key for key, value in bindings.items()
+                     if key in record and record[key] != value]
+        if conflicts:
+            raise ValueError("RESULT_RECORD_AUTHORITY_CONFLICT:" + ",".join(sorted(conflicts)))
         record = {**record, **bindings}
         body = dict(record); body.pop("output_checksum", None)
         record = {**body, "output_checksum": sha256_bytes(canonical_json(body).encode())}
@@ -736,6 +760,11 @@ def _classification_precedence_fixture(*, authority_invalid: bool = False,
 
 
 def _qualified_classification_record(row: dict, regime_label: str, **details: object) -> dict:
+    reserved = {"ordinary_regime_label", "qualified_classification", "stage_a_architecture_id",
+                *protocol.stage_a_initial_condition_scope(row)}
+    collisions = reserved.intersection(details)
+    if collisions:
+        raise ValueError("CLASSIFICATION_DERIVED_FIELD_COLLISION:" + ",".join(sorted(collisions)))
     scope = protocol.stage_a_initial_condition_scope(row)
     return {"ordinary_regime_label": regime_label,
             "qualified_classification": protocol.qualify_stage_a_classification(row, regime_label),
@@ -787,10 +816,239 @@ def classify_stage_a_evidence(canonical: CanonicalStore, results: ResultStore,
 
 
 def protocol_spec_precedence() -> tuple[str, ...]:
-    return ("AUTHORITY_OR_ARTIFACT_INVALID", "ANALYTICAL_STRUCTURAL_IDENTITY", "NUMERICALLY_UNRESOLVED",
-        "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT", "METRIC_DISAGREEMENT",
-        "NEAR_THRESHOLD_TRANSITION", "LATERAL_EQUALIZATION",
-        "HETEROGENEITY_AMPLIFIES", "HETEROGENEITY_PERSISTS")
+    return protocol.STAGE_A_ORDINARY_CLASSIFICATIONS
+
+
+CLASSIFICATION_SCOPE_FIELDS = ("dynamic_initial_state_variant", "initial_condition_scope",
+    "initial_condition_robustness", "bistability_status", "initial_condition_dependence_branch")
+CLASSIFICATION_AUTHORITY_FIELDS = ("run_id", "authorization_id", "authorized_head", "authorized_tree",
+    "matrix_semantic_sha256", "protocol_sha256", "executor_source_sha256",
+    "run_manifest_identity_sha256", "evidence_kind")
+CLASSIFICATION_RECORD_FIELDS = frozenset(("schema", "stage", "case_id", "profile", "row_hash",
+    "boundary_mode", "stage_a_architecture_id", *CLASSIFICATION_SCOPE_FIELDS,
+    "ordinary_regime_label", "qualified_classification", *CLASSIFICATION_AUTHORITY_FIELDS,
+    "scientific_admissibility"))
+
+
+def _classification_manifest_bindings(manifest: Mapping[str, object]) -> dict[str, object]:
+    return {"run_id": manifest["run_id"], "authorization_id": manifest["authorization_id"],
+        "authorized_head": manifest["git_head"], "authorized_tree": manifest["git_tree"],
+        "matrix_semantic_sha256": manifest["matrix_semantic_sha256"],
+        "protocol_sha256": manifest["protocol_sha256"],
+        "executor_source_sha256": manifest["executor_source_sha256"],
+        "run_manifest_identity_sha256": manifest["run_manifest_identity_sha256"],
+        "evidence_kind": manifest["evidence_kind"]}
+
+
+def build_classification_record(canonical: CanonicalStore, manifest: Mapping[str, object],
+        case_id: str, profile: str, classification: Mapping[str, object], *,
+        allow_synthetic_fixture: bool = False) -> dict:
+    """Build one authority-bound record; synthetic use is permanently inadmissible."""
+    row = canonical.row(case_id)
+    allowed_profiles = (protocol.STATIC_NUMERICAL_PROFILES if row["pressure_mode"] == "PRESCRIBED_STATIC"
+                        else protocol.DYNAMIC_NUMERICAL_PROFILES)
+    if profile not in allowed_profiles:
+        raise ValueError("CLASSIFICATION_PROFILE_NOT_AUTHORIZED_FOR_ROW")
+    expected_scope = protocol.stage_a_initial_condition_scope(row)
+    expected_keys = {"ordinary_regime_label", "qualified_classification", "stage_a_architecture_id",
+                     *CLASSIFICATION_SCOPE_FIELDS}
+    if not expected_keys.issubset(classification):
+        raise ValueError("CLASSIFICATION_OUTPUT_REQUIRED_FIELD_MISSING")
+    if classification.get("stage_a_architecture_id") != protocol.ARCHITECTURE_ID or any(
+            classification.get(key) != value for key, value in expected_scope.items()):
+        raise ValueError("CLASSIFICATION_OUTPUT_SCOPE_OR_ARCHITECTURE_INVALID")
+    ordinary = classification.get("ordinary_regime_label")
+    expected_qualified = protocol.qualify_stage_a_classification(row, ordinary)
+    if classification.get("qualified_classification") != expected_qualified:
+        raise ValueError("CLASSIFICATION_OUTPUT_QUALIFIED_VALUE_MISMATCH")
+    evidence_kind = manifest.get("evidence_kind")
+    if evidence_kind != REAL_BACKEND and not (allow_synthetic_fixture and evidence_kind == SYNTHETIC_BACKEND):
+        raise ValueError("CLASSIFICATION_RECORD_NONCANONICAL_EVIDENCE_REJECTED")
+    admissibility = ("SYNTHETIC_TEST_ONLY_INADMISSIBLE" if evidence_kind == SYNTHETIC_BACKEND
+                     else "CANONICAL_STAGE_A_SCIENTIFIC_EVIDENCE")
+    return {"schema": CLASSIFICATION_SCHEMA, "stage": "STAGE_A", "case_id": case_id,
+        "profile": profile, "row_hash": row["row_sha256"], "boundary_mode": row["pressure_mode"],
+        "stage_a_architecture_id": protocol.ARCHITECTURE_ID, **expected_scope,
+        "ordinary_regime_label": ordinary, "qualified_classification": expected_qualified,
+        **_classification_manifest_bindings(manifest), "scientific_admissibility": admissibility}
+
+
+def validate_classification_record(canonical: CanonicalStore, manifest: Mapping[str, object],
+        record: Mapping[str, object], *, allow_synthetic_fixture: bool = False) -> None:
+    if set(record) != CLASSIFICATION_RECORD_FIELDS:
+        raise ValueError("CLASSIFICATION_RECORD_SCHEMA_FIELDS_INVALID")
+    if record.get("schema") != CLASSIFICATION_SCHEMA or record.get("stage") != "STAGE_A":
+        raise ValueError("CLASSIFICATION_RECORD_SCHEMA_OR_STAGE_INVALID")
+    row = canonical.row(str(record["case_id"])); expected_scope = protocol.stage_a_initial_condition_scope(row)
+    if (record.get("row_hash") != row["row_sha256"] or
+            record.get("boundary_mode") != row["pressure_mode"] or
+            record.get("stage_a_architecture_id") != protocol.ARCHITECTURE_ID):
+        raise ValueError("CLASSIFICATION_RECORD_CANONICAL_IDENTITY_INVALID")
+    allowed_profiles = (protocol.STATIC_NUMERICAL_PROFILES if row["pressure_mode"] == "PRESCRIBED_STATIC"
+                        else protocol.DYNAMIC_NUMERICAL_PROFILES)
+    if record.get("profile") not in allowed_profiles:
+        raise ValueError("CLASSIFICATION_RECORD_PROFILE_INVALID")
+    if any(record.get(key) != value for key, value in expected_scope.items()):
+        raise ValueError("CLASSIFICATION_RECORD_SCOPE_INVALID")
+    expected_qualified = protocol.qualify_stage_a_classification(
+        row, str(record.get("ordinary_regime_label")))
+    if record.get("qualified_classification") != expected_qualified:
+        raise ValueError("CLASSIFICATION_RECORD_QUALIFIED_VALUE_MISMATCH")
+    bindings = _classification_manifest_bindings(manifest)
+    if any(record.get(key) != value for key, value in bindings.items()):
+        raise ValueError("CLASSIFICATION_RECORD_AUTHORITY_MISMATCH")
+    synthetic = record.get("evidence_kind") == SYNTHETIC_BACKEND
+    expected_admissibility = ("SYNTHETIC_TEST_ONLY_INADMISSIBLE" if synthetic
+                              else "CANONICAL_STAGE_A_SCIENTIFIC_EVIDENCE")
+    if record.get("scientific_admissibility") != expected_admissibility:
+        raise ValueError("CLASSIFICATION_RECORD_ADMISSIBILITY_INVALID")
+    if synthetic and not allow_synthetic_fixture:
+        raise ValueError("SYNTHETIC_CLASSIFICATION_RECORD_SCIENTIFICALLY_INADMISSIBLE")
+    if not synthetic and record.get("evidence_kind") != REAL_BACKEND:
+        raise ValueError("CLASSIFICATION_RECORD_NONCANONICAL_EVIDENCE_REJECTED")
+
+
+def _classification_artifact_paths(result_store: ResultStore) -> tuple[Path, Path, Path]:
+    root = result_store.root / "classifications"
+    return (root / "CLASSIFICATION_RECORDS.jsonl", root / "CLASSIFICATION_SUMMARY.json",
+            root / "CLASSIFICATION_REPORT.md")
+
+
+def write_classification_artifacts(canonical: CanonicalStore, result_store: ResultStore,
+        manifest: Mapping[str, object], records: list[dict], *,
+        allow_synthetic_fixture: bool = False) -> dict:
+    """Validate, order, serialize, aggregate, and report without reclassification."""
+    plan_order = {tuple(key): index for index, key in enumerate(build_plan(canonical)["keys"])}
+    seen: set[tuple[str, str]] = set(); validated: list[dict] = []
+    for record in records:
+        validate_classification_record(canonical, manifest, record,
+            allow_synthetic_fixture=allow_synthetic_fixture)
+        key = (str(record["case_id"]), str(record["profile"]))
+        if key in seen:
+            raise ValueError("DUPLICATE_CLASSIFICATION_KEY")
+        if key not in plan_order:
+            raise ValueError("CLASSIFICATION_KEY_NOT_IN_FROZEN_PLAN")
+        seen.add(key); validated.append(dict(record))
+    validated.sort(key=lambda record: plan_order[(record["case_id"], record["profile"])])
+    ordinary: dict[str, int] = {}; qualified: dict[str, int] = {}; scopes: dict[str, int] = {}
+    variants: dict[str, int] = {}
+    for record in validated:
+        for field, destination in (("ordinary_regime_label", ordinary),
+                ("qualified_classification", qualified), ("initial_condition_scope", scopes),
+                ("dynamic_initial_state_variant", variants)):
+            value = str(record[field]); destination[value] = destination.get(value, 0) + 1
+    total = len(validated)
+    if any(sum(counts.values()) != total for counts in (ordinary, qualified, scopes, variants)):
+        raise ValueError("CLASSIFICATION_SUMMARY_COUNT_RECONCILIATION_FAILED")
+    summary = {"schema": CLASSIFICATION_SUMMARY_SCHEMA, "total_records": total,
+        "stage_a_architecture_id": protocol.ARCHITECTURE_ID,
+        "governing_run_manifest_identity_sha256": manifest["run_manifest_identity_sha256"],
+        "scientific_admissibility": ("SYNTHETIC_TEST_ONLY_INADMISSIBLE" if
+            manifest["evidence_kind"] == SYNTHETIC_BACKEND else "CANONICAL_STAGE_A_SCIENTIFIC_EVIDENCE"),
+        "ordinary_classification_counts": dict(sorted(ordinary.items())),
+        "qualified_classification_counts": dict(sorted(qualified.items())),
+        "initial_condition_scope_counts": dict(sorted(scopes.items())),
+        "dynamic_initial_state_variant_counts": dict(sorted(variants.items())),
+        "reconciliation_status": "PASS", "rejected_record_count": 0,
+        "initial_condition_robustness": protocol.NOT_ADJUDICATED_STAGE_A,
+        "bistability_status": protocol.NOT_ADJUDICATED_STAGE_A,
+        "d4_status": protocol.D4_STATUS, "x1_status": protocol.X1_STATUS,
+        "physical_validation": "NOT_ESTABLISHED"}
+    records_path, summary_path, report_path = _classification_artifact_paths(result_store)
+    atomic_write_text(records_path, "".join(canonical_json(record) + "\n" for record in validated))
+    atomic_write_json(summary_path, summary)
+    report_lines = ["# SCI-LC-001A Stage-A classification report", "",
+        f"- Governing manifest: `{manifest['run_manifest_identity_sha256']}`",
+        f"- Authorized HEAD: `{manifest['git_head']}`", f"- Authorized tree: `{manifest['git_tree']}`",
+        f"- Architecture: `{protocol.ARCHITECTURE_ID}`", f"- Canonical records: {total}",
+        f"- Scientific admissibility: `{summary['scientific_admissibility']}`", "",
+        "## Ordinary classification counts", ""]
+    report_lines.extend(f"- `{label}`: {count}" for label, count in sorted(ordinary.items()))
+    report_lines.extend(["", "## Qualified classification counts", ""])
+    report_lines.extend(f"- `{label}`: {count}" for label, count in sorted(qualified.items()))
+    report_lines.extend(["", "## Initial-condition scope counts", ""])
+    report_lines.extend(f"- `{label}`: {count}" for label, count in sorted(scopes.items()))
+    report_lines.extend(["", "## Explicit non-claims", "",
+        "- Alternate-start agreement is not established.",
+        "- Initial-condition robustness is not adjudicated.", "- Bistability is not adjudicated.",
+        "- Physical validation is not established.", "- D4 is deferred and unauthorized.",
+        "- X1 is deferred and unauthorized.", "",
+        "Rejected invalid, stale, duplicate, diagnostic, synthetic, D4, or X1 records: 0 accepted.", ""])
+    atomic_write_text(report_path, "\n".join(report_lines))
+    return summary
+
+
+def load_classification_records(canonical: CanonicalStore, result_store: ResultStore,
+        manifest: Mapping[str, object], *, allow_synthetic_fixture: bool = False) -> list[dict]:
+    records_path, _, _ = _classification_artifact_paths(result_store)
+    records = [json.loads(line) for line in records_path.read_text(encoding="utf-8").splitlines() if line]
+    seen: set[tuple[str, str]] = set()
+    for record in records:
+        validate_classification_record(canonical, manifest, record,
+            allow_synthetic_fixture=allow_synthetic_fixture)
+        key = (record["case_id"], record["profile"])
+        if key in seen: raise ValueError("DUPLICATE_CLASSIFICATION_KEY")
+        seen.add(key)
+    return records
+
+
+def load_classification_summary(result_store: ResultStore, records: list[dict]) -> dict:
+    _, summary_path, _ = _classification_artifact_paths(result_store)
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    required = {"schema", "total_records", "stage_a_architecture_id",
+        "governing_run_manifest_identity_sha256", "scientific_admissibility",
+        "ordinary_classification_counts", "qualified_classification_counts",
+        "initial_condition_scope_counts", "dynamic_initial_state_variant_counts",
+        "reconciliation_status", "rejected_record_count", "initial_condition_robustness",
+        "bistability_status", "d4_status", "x1_status", "physical_validation"}
+    if set(summary) != required or summary.get("schema") != CLASSIFICATION_SUMMARY_SCHEMA:
+        raise ValueError("CLASSIFICATION_SUMMARY_SCHEMA_INVALID")
+    manifest = result_store.load_manifest()
+    expected_admissibility = ("SYNTHETIC_TEST_ONLY_INADMISSIBLE" if
+        manifest["evidence_kind"] == SYNTHETIC_BACKEND else
+        "CANONICAL_STAGE_A_SCIENTIFIC_EVIDENCE")
+    expected_authority = {
+        "stage_a_architecture_id": protocol.ARCHITECTURE_ID,
+        "governing_run_manifest_identity_sha256": manifest["run_manifest_identity_sha256"],
+        "scientific_admissibility": expected_admissibility,
+        "initial_condition_robustness": protocol.NOT_ADJUDICATED_STAGE_A,
+        "bistability_status": protocol.NOT_ADJUDICATED_STAGE_A,
+        "d4_status": protocol.D4_STATUS,
+        "x1_status": protocol.X1_STATUS,
+        "physical_validation": "NOT_ESTABLISHED",
+        "rejected_record_count": 0,
+    }
+    if any(summary.get(key) != value for key, value in expected_authority.items()):
+        raise ValueError("CLASSIFICATION_SUMMARY_AUTHORITY_INVALID")
+    expected: dict[str, dict[str, int]] = {}
+    for field, output in (("ordinary_regime_label", "ordinary_classification_counts"),
+            ("qualified_classification", "qualified_classification_counts"),
+            ("initial_condition_scope", "initial_condition_scope_counts"),
+            ("dynamic_initial_state_variant", "dynamic_initial_state_variant_counts")):
+        counts: dict[str, int] = {}
+        for record in records:
+            value = str(record[field]); counts[value] = counts.get(value, 0) + 1
+        expected[output] = dict(sorted(counts.items()))
+    if (summary.get("total_records") != len(records) or
+            any(summary.get(key) != value for key, value in expected.items()) or
+            summary.get("reconciliation_status") != "PASS"):
+        raise ValueError("CLASSIFICATION_SUMMARY_COUNT_RECONCILIATION_FAILED")
+    return summary
+
+
+def export_stage_a_classifications(canonical: CanonicalStore, result_store: ResultStore) -> dict:
+    """Canonical no-solver export for executed BASE keys, using bound result evidence only."""
+    manifest = result_store.load_manifest()
+    if manifest["evidence_kind"] != REAL_BACKEND:
+        raise ValueError("CLASSIFICATION_EXPORT_REQUIRES_CANONICAL_STAGE_A_EVIDENCE")
+    records = []
+    for case_id, profile in build_plan(canonical)["keys"]:
+        if profile != "BASE" or not result_store.record_path(case_id, profile).exists():
+            continue
+        result_store.read_bound_record(manifest, case_id, profile)
+        classification = classify_stage_a_evidence(canonical, result_store, case_id)
+        records.append(build_classification_record(canonical, manifest, case_id, profile, classification))
+    return write_classification_artifacts(canonical, result_store, manifest, records)
 
 
 def synthetic_backend_record(row: dict, profile: str, context: _ValidatedExecutionContext) -> dict:
@@ -1066,7 +1324,8 @@ def summarize(result_store: ResultStore) -> dict:
 def _cli() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", required=True,
-                        choices=("plan", "validate", "execute", "summarize", "pilot-plan", "pilot-execute"))
+                        choices=("plan", "validate", "execute", "summarize", "classify",
+                                 "pilot-plan", "pilot-execute"))
     parser.add_argument("--output-root", type=Path)
     parser.add_argument("--execution-authority", type=Path)
     parser.add_argument("--pilot-authority", type=Path)
@@ -1088,6 +1347,8 @@ def main(argv: list[str] | None = None) -> int:
     result_store = ResultStore(output, store)
     if args.mode == "summarize":
         print(json.dumps(summarize(result_store), indent=2)); return 0
+    if args.mode == "classify":
+        print(json.dumps(export_stage_a_classifications(store, result_store), indent=2)); return 0
     if args.mode in ("pilot-plan", "pilot-execute"):
         if args.pilot_authority is None or args.pilot_allowlist is None:
             raise SystemExit("--pilot-authority and --pilot-allowlist are required")

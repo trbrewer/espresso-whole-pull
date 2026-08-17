@@ -21,8 +21,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "validation/cases/sci_lc_001a"
 NA = "NOT_APPLICABLE"
 INFINITE = "INFINITE_NO_LATERAL_EQUALIZATION"
-STATUS = "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW"
-TASK_ID = "SCI-LC-001A-ICA-003-STAGE-A-BASELINE-ONLY-CLASSIFICATION-SCOPE-RECONCILIATION-2026-08-17"
+STATUS = "ICA_003_R1_F01_F03_CORRECTED_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW"
+TASK_ID = "SCI-LC-001A-ICA-003-R1-F01-F03-BOUNDED-CORRECTION-2026-08-17"
 OWNER_METRIC_AUTHORITY_ID = "SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16"
 BASE_HEAD = "3e8993f56badd575f3482ea7bfa0f87d24412100"
 BASE_TREE = "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0"
@@ -70,6 +70,18 @@ DYNAMIC_INITIAL_CONDITION_SCOPE = "BASELINE_ZERO_STATE_ONLY"
 STATIC_INITIAL_CONDITION_SCOPE = "DYNAMIC_INITIAL_CONDITION_NOT_APPLICABLE"
 NOT_ADJUDICATED_STAGE_A = "NOT_ADJUDICATED_STAGE_A"
 INITIAL_CONDITION_BRANCH_STATUS = "NOT_EVALUATED_NOT_FALSE"
+QUALIFICATION_DELIMITER = ";"
+STAGE_A_ORDINARY_CLASSIFICATIONS = (
+    "AUTHORITY_OR_ARTIFACT_INVALID",
+    "ANALYTICAL_STRUCTURAL_IDENTITY",
+    "NUMERICALLY_UNRESOLVED",
+    "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT",
+    "METRIC_DISAGREEMENT",
+    "NEAR_THRESHOLD_TRANSITION",
+    "LATERAL_EQUALIZATION",
+    "HETEROGENEITY_AMPLIFIES",
+    "HETEROGENEITY_PERSISTS",
+)
 LEGACY_REALIZATION_SEMANTICS = (
     "LEGACY_STRUCTURAL_OR_HETEROGENEITY_REALIZATION_IDENTIFIER_NOT_DYNAMIC_STATE")
 HISTORICAL_ALTERNATE_STATUS = (
@@ -1009,9 +1021,15 @@ def stage_a_initial_condition_scope(row: dict) -> dict[str, str]:
 
 def qualify_stage_a_classification(row: dict, regime_label: str) -> str:
     """Make the Stage-A scope inseparable from every serialized classification."""
-    if not isinstance(regime_label, str) or not regime_label:
+    if regime_label not in STAGE_A_ORDINARY_CLASSIFICATIONS:
         raise ValueError("INVALID_STAGE_A_REGIME_LABEL")
-    return regime_label + ";" + stage_a_initial_condition_scope(row)["initial_condition_scope"]
+    scope = stage_a_initial_condition_scope(row)["initial_condition_scope"]
+    if QUALIFICATION_DELIMITER in regime_label or QUALIFICATION_DELIMITER in scope:
+        raise ValueError("INVALID_STAGE_A_QUALIFICATION_DELIMITER")
+    qualified = regime_label + QUALIFICATION_DELIMITER + scope
+    if qualified.count(QUALIFICATION_DELIMITER) != 1:
+        raise ValueError("INVALID_STAGE_A_QUALIFICATION_FORMAT")
+    return qualified
 
 
 class DeferredStageError(RuntimeError):
@@ -1698,6 +1716,23 @@ def protocol(rows: list[dict]) -> dict:
                 "hidden_runs_authorized": False,
                 "d4_alternate_initial_state_construction":
                     "UNFROZEN_PENDING_SEPARATE_OWNER_SCIENTIFIC_DESIGN"},
+            "stage_a_ordinary_label_domain": list(STAGE_A_ORDINARY_CLASSIFICATIONS),
+            "qualified_classification_contract": {
+                "delimiter": QUALIFICATION_DELIMITER,
+                "format": "<ordinary_regime_label>;<initial_condition_scope>",
+                "exact_delimiter_count": 1,
+                "derived_field_owner": "CANONICAL_CLASSIFIER_ONLY",
+                "caller_collision_routing": "CLASSIFICATION_DERIVED_FIELD_COLLISION",
+                "unknown_label_routing": "INVALID_STAGE_A_REGIME_LABEL"},
+            "canonical_classification_artifacts": {
+                "records": "classifications/CLASSIFICATION_RECORDS.jsonl",
+                "summary": "classifications/CLASSIFICATION_SUMMARY.json",
+                "owner_report": "classifications/CLASSIFICATION_REPORT.md",
+                "record_schema": "ewp.sci_lc_001a.classification_record.v1",
+                "summary_schema": "ewp.sci_lc_001a.classification_summary.v1",
+                "ordering": "FROZEN_EXECUTION_PLAN_ORDER",
+                "authority_conflict_routing": "FAIL_CLOSED_BEFORE_BINDING",
+                "synthetic_and_diagnostic_evidence": "SCIENTIFICALLY_INADMISSIBLE"},
             "precedence": ["AUTHORITY_OR_ARTIFACT_INVALID", "ANALYTICAL_STRUCTURAL_IDENTITY",
                 "NUMERICALLY_UNRESOLVED", "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT", "METRIC_DISAGREEMENT",
                 "NEAR_THRESHOLD_TRANSITION", "LATERAL_EQUALIZATION", "HETEROGENEITY_AMPLIFIES",
@@ -1780,6 +1815,15 @@ def validate(rows: list[dict], spec: dict) -> None:
             reconciliation.get("reserved_future_label_stage_a_status") != NOT_ADJUDICATED_STAGE_A or
             "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE" in spec["classification"]["precedence"]):
         raise ValueError("STAGE_A_INITIAL_CONDITION_BRANCH_MUST_REMAIN_INACTIVE")
+    classification = spec.get("classification", {})
+    if (classification.get("stage_a_ordinary_label_domain") != list(STAGE_A_ORDINARY_CLASSIFICATIONS) or
+            classification.get("precedence") != list(STAGE_A_ORDINARY_CLASSIFICATIONS)):
+        raise ValueError("STAGE_A_ORDINARY_LABEL_DOMAIN_OR_PRECEDENCE_MISMATCH")
+    qualification = classification.get("qualified_classification_contract", {})
+    if (qualification.get("delimiter") != QUALIFICATION_DELIMITER or
+            qualification.get("exact_delimiter_count") != 1 or
+            qualification.get("derived_field_owner") != "CANONICAL_CLASSIFIER_ONLY"):
+        raise ValueError("STAGE_A_QUALIFIED_CLASSIFICATION_CONTRACT_MISMATCH")
     placeholders = spec.get("boundary_initial_integration", {}).get("historical_alternate_amplitudes", {})
     if placeholders != {"values": ["0.5", "1.5"], "status": HISTORICAL_ALTERNATE_STATUS,
                         "production_or_planning_use": "PROHIBITED"}:

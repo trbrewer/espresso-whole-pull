@@ -197,6 +197,150 @@ class SciLc001aIca003Tests(unittest.TestCase):
                           "bistability", "initial_condition_partner_ids"):
             self.assertNotIn(forbidden, parameters)
 
+    def test_f01_closed_label_delimiter_and_collision_barriers(self):
+        dynamic = next(row for row in self.canonical.rows if row["pressure_mode"] != "PRESCRIBED_STATIC")
+        for label in protocol.STAGE_A_ORDINARY_CLASSIFICATIONS:
+            expected = label + ";BASELINE_ZERO_STATE_ONLY"
+            self.assertEqual(protocol.qualify_stage_a_classification(dynamic, label), expected)
+            self.assertEqual(protocol.qualify_stage_a_classification(dynamic, label), expected)
+        for invalid in ("", "UNKNOWN_LABEL", "LATERAL_EQUALIZATION;INJECTED"):
+            with self.assertRaisesRegex(ValueError, "INVALID_STAGE_A_REGIME_LABEL"):
+                protocol.qualify_stage_a_classification(dynamic, invalid)
+        details = {"qualified_classification": "CALLER_SUPPLIED", "marker": "unchanged"}
+        before = dict(details)
+        with self.assertRaisesRegex(ValueError, "CLASSIFICATION_DERIVED_FIELD_COLLISION"):
+            executor._qualified_classification_record(dynamic, "LATERAL_EQUALIZATION", **details)
+        self.assertEqual(details, before)
+        with mock.patch.object(protocol, "stage_a_initial_condition_scope",
+                return_value={"initial_condition_scope": "BAD;SCOPE"}):
+            with self.assertRaisesRegex(ValueError, "QUALIFICATION_DELIMITER"):
+                protocol.qualify_stage_a_classification(dynamic, "LATERAL_EQUALIZATION")
+
+    def test_f02_all_present_authority_conflicts_reject_before_record_write(self):
+        row = next(row for row in self.canonical.rows if row["pressure_mode"] != "PRESCRIBED_STATIC")
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name) / "results"; context = executor._synthetic_context(self.canonical, root)
+            store = executor.ResultStore(root, self.canonical); manifest = store.begin_run(context, 1)
+            bindings = executor._classification_manifest_bindings(manifest)
+            matching = executor.synthetic_backend_record(row, "BASE", context); matching.update(bindings)
+            store.write_record(manifest, matching)
+            self.assertTrue(store.record_path(row["case_id"], "BASE").is_file())
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name) / "results"; context = executor._synthetic_context(self.canonical, root)
+            store = executor.ResultStore(root, self.canonical); manifest = store.begin_run(context, 1)
+            absent = executor.synthetic_backend_record(row, "BASE", context)
+            absent.pop("authorized_head", None)
+            store.write_record(manifest, absent)
+            self.assertEqual(json.loads(store.record_path(row["case_id"], "BASE").read_text())[
+                "authorized_head"], manifest["git_head"])
+        for field in executor.CLASSIFICATION_AUTHORITY_FIELDS:
+            with tempfile.TemporaryDirectory() as name:
+                root = Path(name) / "results"; context = executor._synthetic_context(self.canonical, root)
+                store = executor.ResultStore(root, self.canonical); manifest = store.begin_run(context, 1)
+                record = executor.synthetic_backend_record(row, "BASE", context)
+                record[field] = "CONFLICT"
+                with self.assertRaisesRegex(ValueError, "RESULT_RECORD_AUTHORITY_CONFLICT"):
+                    store.write_record(manifest, record)
+                self.assertFalse(store.record_path(row["case_id"], "BASE").exists())
+            with tempfile.TemporaryDirectory() as name:
+                root = Path(name) / "results"; context = executor._synthetic_context(self.canonical, root)
+                store = executor.ResultStore(root, self.canonical); manifest = store.begin_run(context, 1)
+                record = executor.synthetic_backend_record(row, "BASE", context)
+                record[field] = executor._classification_manifest_bindings(manifest)[field]
+                store.write_record(manifest, record)
+                self.assertTrue(store.record_path(row["case_id"], "BASE").exists())
+
+    def _classification_fixture(self, row, manifest):
+        classified = executor._qualified_classification_record(row, "ANALYTICAL_STRUCTURAL_IDENTITY")
+        return executor.build_classification_record(self.canonical, manifest, row["case_id"], "BASE",
+            classified, allow_synthetic_fixture=True)
+
+    def test_f03_deterministic_store_reload_summary_and_owner_report(self):
+        rows = [next(row for row in self.canonical.rows if row["pressure_mode"] != "PRESCRIBED_STATIC"),
+                next(row for row in self.canonical.rows if row["pressure_mode"] == "PRESCRIBED_STATIC")]
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name) / "results"; context = executor._synthetic_context(self.canonical, root)
+            store = executor.ResultStore(root, self.canonical); manifest = store.begin_run(context, 2)
+            records = [self._classification_fixture(row, manifest) for row in rows]
+            summary = executor.write_classification_artifacts(self.canonical, store, manifest,
+                list(reversed(records)), allow_synthetic_fixture=True)
+            paths = executor._classification_artifact_paths(store)
+            first = tuple(path.read_bytes() for path in paths)
+            executor.write_classification_artifacts(self.canonical, store, manifest, records,
+                allow_synthetic_fixture=True)
+            self.assertEqual(first, tuple(path.read_bytes() for path in paths))
+            loaded = executor.load_classification_records(self.canonical, store, manifest,
+                allow_synthetic_fixture=True)
+            self.assertEqual(len(loaded), 2)
+            self.assertEqual({r["qualified_classification"] for r in loaded}, {
+                "ANALYTICAL_STRUCTURAL_IDENTITY;BASELINE_ZERO_STATE_ONLY",
+                "ANALYTICAL_STRUCTURAL_IDENTITY;DYNAMIC_INITIAL_CONDITION_NOT_APPLICABLE"})
+            self.assertEqual(executor.load_classification_summary(store, loaded), summary)
+            report = paths[2].read_text()
+            self.assertIn("ANALYTICAL_STRUCTURAL_IDENTITY;BASELINE_ZERO_STATE_ONLY", report)
+            self.assertIn("Initial-condition robustness is not adjudicated", report)
+            self.assertIn("## Qualified classification counts", report)
+            self.assertEqual(summary["total_records"], 2)
+            self.assertEqual(sum(summary["ordinary_classification_counts"].values()), 2)
+            self.assertEqual(sum(summary["qualified_classification_counts"].values()), 2)
+            self.assertEqual(sum(summary["initial_condition_scope_counts"].values()), 2)
+
+    def test_f03_record_and_summary_corruptions_fail_closed(self):
+        row = next(row for row in self.canonical.rows if row["pressure_mode"] != "PRESCRIBED_STATIC")
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name) / "results"; context = executor._synthetic_context(self.canonical, root)
+            store = executor.ResultStore(root, self.canonical); manifest = store.begin_run(context, 1)
+            record = self._classification_fixture(row, manifest)
+            corruptions = (
+                lambda r: r.pop("initial_condition_scope"),
+                lambda r: r.__setitem__("qualified_classification", "MALFORMED"),
+                lambda r: r.__setitem__("ordinary_regime_label", "UNKNOWN_LABEL"),
+                lambda r: r.__setitem__("authorized_head", "STALE"),
+                lambda r: r.__setitem__("stage_a_architecture_id", "ARCHITECTURE_A"),
+                lambda r: r.__setitem__("stage", "D4"),
+                lambda r: r.__setitem__("case_id", "X1-UNKNOWN"),
+            )
+            for corrupt in corruptions:
+                changed = dict(record); corrupt(changed)
+                with self.assertRaises((ValueError, KeyError)):
+                    executor.validate_classification_record(self.canonical, manifest, changed,
+                        allow_synthetic_fixture=True)
+            with self.assertRaisesRegex(ValueError, "DUPLICATE_CLASSIFICATION_KEY"):
+                executor.write_classification_artifacts(self.canonical, store, manifest,
+                    [record, dict(record)], allow_synthetic_fixture=True)
+            with self.assertRaisesRegex(ValueError, "SYNTHETIC_CLASSIFICATION_RECORD"):
+                executor.validate_classification_record(self.canonical, manifest, record)
+            executor.write_classification_artifacts(self.canonical, store, manifest, [record],
+                allow_synthetic_fixture=True)
+            records = executor.load_classification_records(self.canonical, store, manifest,
+                allow_synthetic_fixture=True)
+            summary_path = executor._classification_artifact_paths(store)[1]
+            summary = json.loads(summary_path.read_text()); summary["total_records"] = 2
+            summary_path.write_text(json.dumps(summary))
+            with self.assertRaisesRegex(ValueError, "COUNT_RECONCILIATION"):
+                executor.load_classification_summary(store, records)
+            summary["total_records"] = 1; summary["stage_a_architecture_id"] = "ARCHITECTURE_A"
+            summary_path.write_text(json.dumps(summary))
+            with self.assertRaisesRegex(ValueError, "SUMMARY_AUTHORITY_INVALID"):
+                executor.load_classification_summary(store, records)
+            record_path = executor._classification_artifact_paths(store)[0]
+            malformed = dict(record); malformed["qualified_classification"] = "CALLER_SUPPLIED"
+            record_path.write_text(json.dumps(malformed) + "\n")
+            with self.assertRaisesRegex(ValueError, "QUALIFIED_VALUE_MISMATCH"):
+                executor.load_classification_records(self.canonical, store, manifest,
+                    allow_synthetic_fixture=True)
+
+    def test_f03_diagnostic_and_synthetic_cannot_enter_canonical_export(self):
+        row = next(row for row in self.canonical.rows if row["pressure_mode"] != "PRESCRIBED_STATIC")
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name) / "results"; context = executor._synthetic_context(self.canonical, root)
+            store = executor.ResultStore(root, self.canonical); manifest = store.begin_run(context, 1)
+            classified = executor._qualified_classification_record(row, "ANALYTICAL_STRUCTURAL_IDENTITY")
+            with self.assertRaisesRegex(ValueError, "NONCANONICAL_EVIDENCE"):
+                executor.build_classification_record(self.canonical, manifest, row["case_id"], "BASE", classified)
+            with self.assertRaisesRegex(ValueError, "REQUIRES_CANONICAL_STAGE_A"):
+                executor.export_stage_a_classifications(self.canonical, store)
+
 
 if __name__ == "__main__":
     unittest.main()
