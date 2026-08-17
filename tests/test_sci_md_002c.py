@@ -103,6 +103,38 @@ class TestDurability(unittest.TestCase):
    with self.assertRaises(ValueError):M.safe_bundle(link)
 
 class TestReductionRules(unittest.TestCase):
+ def synthetic_bundle(self,mode):
+  td=tempfile.TemporaryDirectory(prefix="sci_md_002c_reducer_");b=Path(td.name);a=M.expected_authority_bindings(b);a["bundle_uuid"]=str(uuid.uuid4());a.update(authorization_token=M.TOKEN,owner_role=M.OWNER_ROLE,authorization_date="2026-08-16T12:00:00Z")
+  ap=b/"authority.json";ap.write_text(M.canonical(a));ah=M.sha(ap);lookup={r["case_id"]:r for r in M.matrix_rows()};entries=[]
+  for cid in M.adjudicative_ids():
+   r=lookup[cid];p=int(r["pressure_identity"].split("P")[-1]);base={5:.003,9:.002,11:.001}[p]
+   if mode=="WRONG":base={5:.001,9:.002,11:.003}[p]
+   if mode=="UNRESOLVED":
+    base={5:.00200001,9:.002,11:.00199999}[p]
+    if r["resolution"]=="REFINED":base={5:.00199999,9:.002,11:.00200001}[p]
+   physical="INVALID" if mode=="ONE_INVALID" and cid.startswith("S1-SOURCE-P5-FF0.02-MF0.25-KR0.02-N1.0-RET0.5-AR1e+12") else "VALID"
+   result={"case_id":cid,"numerical_status":"COMPLETE","physical_status":physical,"max_abs_mass_residual_kg":0.0,"terminal":{"predicted_flow_kg_s":base,"total_resistance_pa_s_m3":M.hydraulic_anchor()+(0 if r["arm"]=="C0" else 1e8)},"temporal":[]}
+   rec={"schema_version":M.RECORD_SCHEMA,"task_id":M.TASK,"lane_id":M.LANE_ID,"case_id":cid,"source_head":a["source_head"],"source_tree":a["source_tree"],"authority_sha256":ah,"bundle_uuid":a["bundle_uuid"],"result":result};rec["record_sha256"]=M.internal_hash(rec)
+   path=b/"case_records"/(cid+".json");path.parent.mkdir(exist_ok=True);path.write_text(M.canonical(rec));entries.append({"case_id":cid,"path":f"case_records/{cid}.json","size":path.stat().st_size,"sha256":M.sha(path)})
+  aggregate=M.hash_obj([{"case_id":x["case_id"],"size":x["size"],"sha256":x["sha256"]} for x in entries]);(b/"manifest.json").write_text(M.canonical({"record_count":len(entries),"records":entries,"ordered_record_aggregate_sha256":aggregate,"bundle_uuid":a["bundle_uuid"],"authority_sha256":ah}))
+  return td,b,ap
+ def test_complete_synthetic_reducer_bundles(self):
+  expected={"PASS":"SCI_MD_002C_AXIAL_FINES_CAPABILITY_SURVIVES_SYNTHETIC_CLOSURE_SCREEN","WRONG":"SCI_MD_002C_REJECTED_WRONG_PRESSURE_ORDERING","UNRESOLVED":"SCI_MD_002C_PRESSURE_ORDERING_NUMERICALLY_UNRESOLVED","ONE_INVALID":"SCI_MD_002C_AXIAL_FINES_CAPABILITY_SURVIVES_SYNTHETIC_CLOSURE_SCREEN"}
+  for mode,disp in expected.items():
+   with self.subTest(mode=mode):
+    td,b,ap=self.synthetic_bundle(mode)
+    try:
+     with mock.patch.object(M,"temporal_ok",return_value=True):result=M.reduce_bundle(b,ap,b/"result.json")
+     self.assertEqual(result["candidate_count"],96);self.assertEqual(result["family_disposition"],disp)
+     if mode=="ONE_INVALID":self.assertTrue(any(not x["numerical_physical_valid"] for x in result["candidates"]));self.assertTrue(any(x["aggregate_eligible"] for x in result["candidates"]))
+    finally:td.cleanup()
+ def test_incomplete_bundle_fails_before_disposition(self):
+  td,b,ap=self.synthetic_bundle("PASS")
+  try:
+   first=next((b/"case_records").glob("*.json"));first.unlink()
+   with self.assertRaises((FileNotFoundError,ValueError)):M.reduce_bundle(b,ap,b/"result.json")
+   self.assertFalse((b/"result.json").exists())
+  finally:td.cleanup()
  def test_ordering_uncertainty(self):
   self.assertEqual(M.ordering(3,2,.1,.1),"PASS");self.assertEqual(M.ordering(-1,2,.1,.1),"REJECTED");self.assertEqual(M.ordering(.05,2,.1,.1),"NUMERICALLY_UNRESOLVED")
  def test_temporal_signature_complete(self):
