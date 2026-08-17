@@ -35,7 +35,7 @@ consume validated classifications and never reclassify raw results.
 ## Historical evidence adjudication (ICA003-R2-F03)
 
 A bounded provenance search covers the immutable correction bundle, its named
-command paths, lane-specific directories below `/home/tim/espresso-runs/sci_lc_001a`,
+command paths, lane-specific directories below the external SCI-LC-001A run root,
 and clearly lane-named surviving temporary paths. If the original intermediate
 full-suite stdout and stderr are not recoverable with provenance, the status is
 `ORIGINAL_RAW_LOGS_IRRECOVERABLE_AFTER_BOUNDED_PROVENANCE_SEARCH`. That gap

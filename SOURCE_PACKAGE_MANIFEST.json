@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 400,
-  "total_uncompressed_bytes_excluding_manifest": 6494687,
-  "aggregate_source_sha256": "19e615e52b0625be493870ee0fbefb4636d52446c59e4c707539371a66530143",
-  "aggregate_sha256": "19e615e52b0625be493870ee0fbefb4636d52446c59e4c707539371a66530143",
+  "total_uncompressed_bytes_excluding_manifest": 6494683,
+  "aggregate_source_sha256": "0eaccf45ecbb969b2cda18289b5380d274c1811570d5baf157e93ac1e05d7c74",
+  "aggregate_sha256": "0eaccf45ecbb969b2cda18289b5380d274c1811570d5baf157e93ac1e05d7c74",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -459,8 +459,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/ICA_003_R2_CORRECTION_AND_EVIDENCE_ADJUDICATION.md": {
-      "sha256": "d18b62fe01e975d823c4426da4c62e637f587e5c50272a4a2f1f124d673046d6",
-      "bytes": 3038,
+      "sha256": "1e98246baa7d4567ada27f39f9aae346e8ba57f7744e2b29743d7aba5183f291",
+      "bytes": 3034,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/ICA_003_STAGE_A_BASELINE_ONLY_CLASSIFICATION_SCOPE.md": {
