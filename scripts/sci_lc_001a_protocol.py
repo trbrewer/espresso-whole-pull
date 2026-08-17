@@ -21,8 +21,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "validation/cases/sci_lc_001a"
 NA = "NOT_APPLICABLE"
 INFINITE = "INFINITE_NO_LATERAL_EQUALIZATION"
-STATUS = "STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW"
-TASK_ID = "SCI-LC-001A-E2-R2-CANONICAL-LAUNCHER-PILOT-ADAPTER-AND-INITIAL-CONDITION-RECONCILIATION-2026-08-16"
+STATUS = "STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW"
+TASK_ID = "SCI-LC-001A-E2-R3-DYNAMIC-PILOT-FINDINGS-CORRECTION-2026-08-17"
 OWNER_METRIC_AUTHORITY_ID = "SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16"
 BASE_HEAD = "3e8993f56badd575f3482ea7bfa0f87d24412100"
 BASE_TREE = "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0"
@@ -64,6 +64,7 @@ MAX_RHS_EVALUATIONS = 200000
 STARTUP_REFINEMENT_FACTOR = 10.0
 REFINED_Q_ZERO_THRESHOLD = Q_ZERO_THRESHOLD / STARTUP_REFINEMENT_FACTOR
 REFINED_STARTUP_TAU_MAX = STARTUP_TAU_MAX / STARTUP_REFINEMENT_FACTOR
+DYNAMIC_FIRST_STEP = 1.0e-7
 FEEDBACK_SIGN_SCALARS = {"EQUALIZING": 1.0, "LOCALIZING": -1.0, "NONE": 0.0}
 MULTIPLIER_STOP = "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUTWARD_CROSSING_NO_CLIPPING"
 MULTIPLIER_OUTSIDE_STOP = "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUTWARD_OR_OUT_OF_RANGE_NO_CLIPPING"
@@ -75,6 +76,7 @@ FLOW_SCALES = ("SECTOR_SCALED_DIMENSIONLESS", "DIMENSIONAL_SECTOR_FLOW",
                "WHOLE_NETWORK_SCALED_PER_SECTOR")
 LINEAR_RESIDUAL_TOLERANCE = 1.0e-12
 PIVOT_RATIO_FLOOR = 64.0 * 2.220446049250313e-16
+LINEAR_REFINEMENT_MONOTONICITY_ATOL = PIVOT_RATIO_FLOOR
 GAIN_DENOMINATOR_FLOOR = 1.0e-12
 H_Q_DENOMINATOR_FLOOR = 1.0e-12
 SEEDED_MODE_AMPLITUDE_FLOOR = 1.0e-12
@@ -703,6 +705,13 @@ def solve_dense_binary64(matrix: list[list[float]], rhs: list[float]) -> LinearS
     return LinearSolveResult(tuple(solution), norm, "PASS", tuple(pivots), tuple(row_ids), None)
 
 
+def linear_refinement_residuals_admissible(base_norm: float, corrected_norm: float) -> bool:
+    """Apply the frozen absolute ceiling and binary64 monotonicity allowance."""
+    return (math.isfinite(base_norm) and math.isfinite(corrected_norm) and
+            corrected_norm <= LINEAR_RESIDUAL_TOLERANCE and
+            corrected_norm <= base_norm + LINEAR_REFINEMENT_MONOTONICITY_ATOL)
+
+
 def linear_refined_state(matrix: list[list[float]], rhs: list[float]) -> LinearRefinementResult:
     """Obtain authoritative BASE and apply exactly one identical-solver correction."""
     base = solve_dense_binary64(matrix, rhs)
@@ -719,7 +728,7 @@ def linear_refined_state(matrix: list[list[float]], rhs: list[float]) -> LinearR
     scale1 = [max(abs(rhs[i]), sum(abs(matrix[i][j]) * abs(state1[j]) for j in range(n)), 1.0e-14)
               for i in range(n)]
     norm1 = scaled_residual_norm(residual1, scale1)
-    if norm1 > base.scaled_residual or norm1 > LINEAR_RESIDUAL_TOLERANCE:
+    if not linear_refinement_residuals_admissible(base.scaled_residual, norm1):
         raise ValueError("LINEAR_REFINED_RESIDUAL_FAILED")
     return LinearRefinementResult(base, correction, tuple(state1), norm1, "PASS", None, 1)
 
@@ -1448,6 +1457,8 @@ def protocol(rows: list[dict]) -> dict:
             "base_rtol": "1e-8", "base_atol": "1e-10", "base_max_step": "0.0025",
             "refined_method": "DOP853", "refined_rtol": "2.5e-9", "refined_atol": "2.5e-11",
             "refined_max_step": "0.00125", "solver_api": "scipy.integrate.solve_ivp",
+            "dynamic_first_step": DYNAMIC_FIRST_STEP,
+            "dynamic_first_step_scope": "all dynamic profiles and both dynamic boundary modes",
             "maximum_rhs_evaluations": MAX_RHS_EVALUATIONS,
             "rhs_counter": "increments before every RHS call, including rejected trial steps",
             "cap_operator": "if nfev>=200000 before next evaluation: stop",
@@ -1474,7 +1485,9 @@ def protocol(rows: list[dict]) -> dict:
             "LINEAR_REFINED": {"api": "sci_lc_001a_protocol.linear_refined_state",
                 "algorithm": "authoritative BASE then one correction using identical binary64 scaled-pivot solver",
                 "steps": ["r0=A*p0-b", "solve A*delta_p=-r0 exactly once", "p1=p0+delta_p",
-                    "require residual1<=residual0 and residual1<=1e-12"],
+                    "require residual1<=1e-12 and residual1<=residual0+monotonicity_atol"],
+                "monotonicity_atol": LINEAR_REFINEMENT_MONOTONICITY_ATOL,
+                "monotonicity_atol_identity": "PIVOT_RATIO_FLOOR=64*epsilon_binary64",
                 "base_source": "solve_dense_binary64(A,b); external p0 prohibited",
                 "dynamic_application": "separate complete trajectory; correction at every algebraic solve",
                 "failure": "NUMERICALLY_UNRESOLVED;NO_RETRY_OR_SUBSTITUTION"},
@@ -1577,7 +1590,7 @@ def protocol(rows: list[dict]) -> dict:
                 "u_sector": "abs(G_N_BASE-G_NREF_BASE)"},
             "sector_bundle_audit": sector_audit},
         "stage_a_executor": {"module": "scripts/sci_lc_001a_executor.py",
-            "status": "E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW",
+            "status": "E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW",
             "modes": ["plan", "validate", "execute", "summarize", "pilot-plan", "pilot-execute"],
             "public_real_execution_api": "execute_authorized_graph",
             "public_real_execution_launcher_parameter": False,
@@ -1587,12 +1600,15 @@ def protocol(rows: list[dict]) -> dict:
             "output": "absolute external non-symlink result root; atomic JSON records",
             "resume": "manifest-identity and checksum-ledger bound records; no cross-run reuse or automatic retry",
             "synthetic_backend": "SYNTHETIC_TEST_ONLY; scientifically inadmissible",
-            "pilot": {"status": "CANONICAL_ADAPTER_IMPLEMENTED_PENDING_E2_R2_REVIEW", "authority_created": False,
+            "pilot": {"status": "CANONICAL_ADAPTER_IMPLEMENTED_PENDING_E2_R3_REVIEW", "authority_created": False,
                 "allowlist_required": True, "reuse": "DISABLED", "evidence_kind": "DIAGNOSTIC_TIMING_ONLY",
                 "public_launcher_parameter": False, "canonical_adapter": "_execute_canonical_pilot_case",
                 "wall_time_source": "time.perf_counter_ns around canonical case calculation",
                 "cpu_time_source": "time.process_time_ns around canonical case calculation",
                 "output_size_definition": "serialized canonical case-outcome bytes before diagnostic filtering",
+                "implementation_exception": "manifest INFRASTRUCTURE_FAILURE; abort before next key; no retry",
+                "unknown_rhs_count": "null;NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION",
+                "projection_exclusion": ["IMPLEMENTATION_EXCEPTION", "SHARED_INFRASTRUCTURE_FAILURE"],
                 "scientific_evidence": False},
             "timing_pilot_authorized": False, "scientific_execution_authorized": False},
         "classification": {"static": {"metrics": ["G_static_H", "G_static_mode"],
@@ -1660,6 +1676,17 @@ def validate(rows: list[dict], spec: dict) -> None:
         raise ValueError("duplicate case ID")
     if len(rows) != len(canonical_rows):
         raise ValueError("FROZEN_STAGE_A_ROW_COUNT_MISMATCH")
+    integration = spec["boundary_initial_integration"]
+    if (not math.isfinite(DYNAMIC_FIRST_STEP) or DYNAMIC_FIRST_STEP <= 0 or
+            DYNAMIC_FIRST_STEP > REFINED_STARTUP_TAU_MAX or
+            DYNAMIC_FIRST_STEP > min(float(integration["base_max_step"]),
+                                     float(integration["refined_max_step"])) or
+            integration.get("dynamic_first_step") != DYNAMIC_FIRST_STEP):
+        raise ValueError("DYNAMIC_FIRST_STEP_AUTHORITY_MISMATCH")
+    refined = spec["residual_contract"]["LINEAR_REFINED"]
+    if (refined.get("monotonicity_atol") != LINEAR_REFINEMENT_MONOTONICITY_ATOL or
+            LINEAR_REFINEMENT_MONOTONICITY_ATOL != PIVOT_RATIO_FLOOR):
+        raise ValueError("LINEAR_REFINEMENT_MONOTONICITY_AUTHORITY_MISMATCH")
     by_id = {row["case_id"]: row for row in rows}
     ids = set(by_id)
     for row in rows:

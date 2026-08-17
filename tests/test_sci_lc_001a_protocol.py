@@ -451,7 +451,15 @@ class SciLc001aProtocolTests(unittest.TestCase):
         matrix = [[4.0, 1.0], [1.0, 3.0]]; rhs = [1.0, 2.0]
         result = mod.linear_refined_state(matrix, rhs)
         self.assertEqual(result.correction_steps, 1)
-        self.assertLessEqual(result.corrected_scaled_residual, result.base.scaled_residual)
+        self.assertLessEqual(result.corrected_scaled_residual,
+                             result.base.scaled_residual + mod.LINEAR_REFINEMENT_MONOTONICITY_ATOL)
+        allowance = mod.LINEAR_REFINEMENT_MONOTONICITY_ATOL
+        self.assertTrue(mod.linear_refinement_residuals_admissible(0., 0.))
+        self.assertTrue(mod.linear_refinement_residuals_admissible(0., allowance))
+        self.assertFalse(mod.linear_refinement_residuals_admissible(0., math.nextafter(allowance, math.inf)))
+        self.assertTrue(mod.linear_refinement_residuals_admissible(1e-12, 1e-12))
+        self.assertFalse(mod.linear_refinement_residuals_admissible(1e-12, math.nextafter(1e-12, math.inf)))
+        self.assertFalse(mod.linear_refinement_residuals_admissible(0., float("nan")))
         self.assertLessEqual(result.corrected_scaled_residual, 1e-12)
         self.assertTrue(close_sequence(result.corrected_state, [1/11, 7/11], tol=2e-15))
         with self.assertRaisesRegex(ValueError, "PIVOT|SINGULAR"):
@@ -464,6 +472,18 @@ class SciLc001aProtocolTests(unittest.TestCase):
         refined = mod.build_gain_record(self.rows, active["case_id"], "STATIC_GAIN",
                                         "LINEAR_REFINED", .99, 1)
         self.assertAlmostEqual(mod.gain_profile_uncertainty(base, refined, "LINEAR_REFINED"), .01)
+
+    def test_dynamic_first_step_and_linear_monotonicity_authority(self):
+        self.assertEqual(mod.DYNAMIC_FIRST_STEP, 1e-7)
+        self.assertGreater(mod.DYNAMIC_FIRST_STEP, 0.)
+        self.assertLessEqual(mod.DYNAMIC_FIRST_STEP, mod.REFINED_STARTUP_TAU_MAX)
+        self.assertLessEqual(mod.DYNAMIC_FIRST_STEP, .00125)
+        self.assertEqual(mod.LINEAR_REFINEMENT_MONOTONICITY_ATOL, mod.PIVOT_RATIO_FLOOR)
+        matrix = [[1.104972000349389]]; rhs = [0.28222496547552944]
+        result = mod.linear_refined_state(matrix, rhs)
+        self.assertLessEqual(result.corrected_scaled_residual, mod.LINEAR_RESIDUAL_TOLERANCE)
+        self.assertLessEqual(result.corrected_scaled_residual,
+                             result.base.scaled_residual + mod.LINEAR_REFINEMENT_MONOTONICITY_ATOL)
 
     def test_startup_refinement_boundaries_and_routing(self):
         startup = [1.0] * 8

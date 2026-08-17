@@ -12,6 +12,8 @@
     "base_rtol": "1e-8",
     "cap_disposition": "STOP_MAX_RHS_EVALUATIONS_REACHED;PARTIAL_DIAGNOSTIC_INADMISSIBLE",
     "cap_operator": "if nfev>=200000 before next evaluation: stop",
+    "dynamic_first_step": 1e-07,
+    "dynamic_first_step_scope": "all dynamic profiles and both dynamic boundary modes",
     "dynamic_p_b_hat": "min(tau/0.05,1)",
     "events": {
       "boundary_contact_stops": false,
@@ -695,11 +697,13 @@
       "base_source": "solve_dense_binary64(A,b); external p0 prohibited",
       "dynamic_application": "separate complete trajectory; correction at every algebraic solve",
       "failure": "NUMERICALLY_UNRESOLVED;NO_RETRY_OR_SUBSTITUTION",
+      "monotonicity_atol": 1.4210854715202004e-14,
+      "monotonicity_atol_identity": "PIVOT_RATIO_FLOOR=64*epsilon_binary64",
       "steps": [
         "r0=A*p0-b",
         "solve A*delta_p=-r0 exactly once",
         "p1=p0+delta_p",
-        "require residual1<=residual0 and residual1<=1e-12"
+        "require residual1<=1e-12 and residual1<=residual0+monotonicity_atol"
       ]
     },
     "failure_route": "BEFORE_SCIENTIFIC_CLASSIFIER",
@@ -867,11 +871,17 @@
       "canonical_adapter": "_execute_canonical_pilot_case",
       "cpu_time_source": "time.process_time_ns around canonical case calculation",
       "evidence_kind": "DIAGNOSTIC_TIMING_ONLY",
+      "implementation_exception": "manifest INFRASTRUCTURE_FAILURE; abort before next key; no retry",
       "output_size_definition": "serialized canonical case-outcome bytes before diagnostic filtering",
+      "projection_exclusion": [
+        "IMPLEMENTATION_EXCEPTION",
+        "SHARED_INFRASTRUCTURE_FAILURE"
+      ],
       "public_launcher_parameter": false,
       "reuse": "DISABLED",
       "scientific_evidence": false,
-      "status": "CANONICAL_ADAPTER_IMPLEMENTED_PENDING_E2_R2_REVIEW",
+      "status": "CANONICAL_ADAPTER_IMPLEMENTED_PENDING_E2_R3_REVIEW",
+      "unknown_rhs_count": "null;NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION",
       "wall_time_source": "time.perf_counter_ns around canonical case calculation"
     },
     "private_case_executors": [
@@ -883,7 +893,7 @@
     "real_execution_authority_created": false,
     "resume": "manifest-identity and checksum-ledger bound records; no cross-run reuse or automatic retry",
     "scientific_execution_authorized": false,
-    "status": "E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW",
+    "status": "E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW",
     "synthetic_backend": "SYNTHETIC_TEST_ONLY; scientifically inadmissible",
     "timing_pilot_authorized": false
   },
@@ -912,7 +922,7 @@
       "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
     }
   },
-  "status": "STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW",
+  "status": "STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
       "authority/hash/review mismatch",
@@ -958,7 +968,7 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-E2-R2-CANONICAL-LAUNCHER-PILOT-ADAPTER-AND-INITIAL-CONDITION-RECONCILIATION-2026-08-16",
+  "task_id": "SCI-LC-001A-E2-R3-DYNAMIC-PILOT-FINDINGS-CORRECTION-2026-08-17",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
     "applicability_authority": "derive_uncertainty_contract(canonical_rows,subject_case_id,metric,evaluation,status,profile)",

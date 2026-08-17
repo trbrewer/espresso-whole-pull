@@ -1,8 +1,8 @@
-# SCI-LC-001A Stage-A prospective protocol and executor — E2-R2
+# SCI-LC-001A Stage-A prospective protocol and executor — E2-R3
 
-Task: `SCI-LC-001A-E2-R2-CANONICAL-LAUNCHER-PILOT-ADAPTER-AND-INITIAL-CONDITION-RECONCILIATION-2026-08-16`
+Task: `SCI-LC-001A-E2-R3-DYNAMIC-PILOT-FINDINGS-CORRECTION-2026-08-17`
 
-Status: `STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW`
+Status: `STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW`
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Execution is not
 authorized. This package defines a reduced diagnostic model; it does not change
@@ -40,7 +40,7 @@ trajectory or classification.
     "structural_comparator_rows": 362
   },
   "stage_a_hard_maximum": 1280,
-  "status": "STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW",
+  "status": "STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW",
   "uncertainty": "u_limit(G)=min(0.02,0.02*abs(G))"
 }
 ```
@@ -227,6 +227,11 @@ Linear residuals use `r=A p-b`,
 `max_i |r_i|/s_i <=1e-12`. Equality passes. Nonfinite values fail. No retry is allowed and all
 failure routing precedes scientific classification.
 
+All dynamic profiles and both dynamic boundary modes pass the common
+`DYNAMIC_FIRST_STEP=1.0e-7` explicitly to DOP853. This is a common deterministic
+initialization setting, equal to the refined startup-window limit and below
+every dynamic `max_step`; it is not a profile, matrix axis, or hidden run.
+
 BASE uses the sole authoritative `solve_dense_binary64(A,b)`: IEEE-754 binary64
 dense Gaussian elimination with scaled partial pivoting. Initial row scale is
 `max_j |A_ij|`; selection maximizes `|A_rk|/row_scale_r`, ties use the lowest
@@ -235,8 +240,11 @@ must pass the scaled residual above. Caller-provided BASE state is prohibited.
 
 `LINEAR_REFINED` internally obtains BASE `p0` using that same solver, then computes
 `r0=A p0-b`, solve `A delta_p=-r0` exactly once, and set `p1=p0+delta_p`.
-The corrected residual must be finite, no larger than the BASE residual, and
-`<=1e-12`. Static gains use independently corrected active/comparator states;
+The corrected residual must be finite, `<=1e-12`, and no larger than the BASE
+residual plus `64*epsilon_binary64 = 1.4210854715202004e-14`. Equality passes.
+This absolute monotonicity allowance covers only binary64 rounding after the
+single frozen correction; it does not relax the `1e-12` ceiling. Static gains
+use independently corrected active/comparator states;
 dynamic `LINEAR_REFINED` is a complete companion trajectory applying this
 single correction at every algebraic solve. Failure makes the gain unresolved.
 
