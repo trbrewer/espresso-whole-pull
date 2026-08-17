@@ -6,7 +6,14 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `STAGE_A_EXECUTOR_E2_R2_RUNTIME_AND_PILOT_COMPLETE_INITIAL_CONDITION_AUTHORITY_GAP_PENDING_REVIEW`.
+Status: `STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW`.
+
+E2-R3 corrects the diagnostic pilot's dynamic findings: explicit no-event
+handling, truthful RHS diagnostics, abort-on-implementation-failure semantics,
+a common `1e-7` DOP853 first step, and binary64-bounded one-step linear
+refinement monotonicity. The DTP-001-R1 bundle remains immutable; its dynamic
+projection is not valid for complete-horizon planning. No canonical case is
+executed during E2-R3.
 
 E2-R2 removes caller-selected launchers from the public real and pilot APIs,
 binds both to the canonical private dispatcher, and measures diagnostic timing

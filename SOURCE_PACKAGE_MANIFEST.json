@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 397,
-  "total_uncompressed_bytes_excluding_manifest": 6395470,
-  "aggregate_source_sha256": "578ac2a701150e10c965840caee898ae22d3b67b4815c3ddae97817bc0dd768f",
-  "aggregate_sha256": "578ac2a701150e10c965840caee898ae22d3b67b4815c3ddae97817bc0dd768f",
+  "total_uncompressed_bytes_excluding_manifest": 6413285,
+  "aggregate_source_sha256": "2b51f4215c27f6036afcc21f8c6a0c69ba7f8aed32e8276cab3890c289f5f63c",
+  "aggregate_sha256": "2b51f4215c27f6036afcc21f8c6a0c69ba7f8aed32e8276cab3890c289f5f63c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -459,18 +459,18 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/PROTOCOL.md": {
-      "sha256": "6e1c406a302226aee112e608039ea3b8629fa3f38b39cc917eb60bc7e6663a0f",
-      "bytes": 21571,
+      "sha256": "5669034e27a35d518fedaa8fac468b0e35cda748ecc530a2041070a582f3cf05",
+      "bytes": 21984,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/README.md": {
-      "sha256": "2050336f349dae12e2cec39da1118ba3002dcaadb0627ab6a45c38783e3b1f92",
-      "bytes": 1977,
+      "sha256": "24b597393bc4189d82b1d1423892fc3d6b336ba23543382420f0cf0779ca0d39",
+      "bytes": 2348,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/STAGE_A_EXECUTOR.md": {
-      "sha256": "468ef7974e892f783e7030557b7005e99340817251efb53c99f533bf9726e323",
-      "bytes": 8000,
+      "sha256": "9f3669168d7dfd23c7610e28e6f5018216ffcbd622c08b37b1bae6977ceb2e59",
+      "bytes": 8942,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1074,13 +1074,13 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_executor.py": {
-      "sha256": "da15f33cb16d9d6948a8f786257a6669b10e98784a70181cefd199c17c63b82f",
-      "bytes": 57997,
+      "sha256": "f532705a6278b75f5fe5ff23b3cae8a6ad99622ec732e9ace1e3ab4df3cb8d86",
+      "bytes": 62917,
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_protocol.py": {
-      "sha256": "26d1ce750d34d0ffe5303e2e324a62dd1477014dd5813182cda1ccfe8e772525",
-      "bytes": 103840,
+      "sha256": "781ea1ec0b1c4cdaee293a8e3be35f8f482184453a92a54864c70bcc3ddfa8d9",
+      "bytes": 105630,
       "git_mode": "100755"
     },
     "scripts/sci_md_001.py": {
@@ -1409,13 +1409,13 @@
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_executor.py": {
-      "sha256": "28574f6056ce519b6679ff22385b8b1430408b4d9b82680eb7109f5fb63e5073",
-      "bytes": 39849,
+      "sha256": "19e9265a98bf6dd06c84449b4f9798b2ce8bb47b2634bcb571b99d4b4f0c7139",
+      "bytes": 47754,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_protocol.py": {
-      "sha256": "8e974aaffca96477eebe5b8f06f2e879a2d65779f9f9b545530264bc97ea6398",
-      "bytes": 43981,
+      "sha256": "a721cf5acbfdcdd21da12250827faba0fdc7684c5b3bff1ec1b54e8bfafde151",
+      "bytes": 45455,
       "git_mode": "100644"
     },
     "tests/test_sci_md_001.py": {

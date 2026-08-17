@@ -1,14 +1,14 @@
 # SCI-LC-001A Stage-A executor implementation authority
 
-Status date: 16 August 2026
+Status date: 17 August 2026
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`
 
 ```text
 PROTOCOL_SPECIFIED = TRUE
-EXECUTOR_IMPLEMENTED = TRUE_PENDING_E2_R2_REVIEW
+EXECUTOR_IMPLEMENTED = TRUE_PENDING_E2_R3_REVIEW
 PUBLIC_REAL_EXECUTION_BINDING = CANONICAL_PRIVATE_EXECUTORS_ONLY
-DIAGNOSTIC_TIMING_INTERFACE_IMPLEMENTED = TRUE_PENDING_E2_R2_REVIEW
+DIAGNOSTIC_TIMING_INTERFACE_IMPLEMENTED = TRUE_PENDING_E2_R3_REVIEW
 PILOT_TIMING_MEASUREMENT = INTERNAL_AROUND_CANONICAL_CASE_EXECUTION
 PILOT_REUSE = DISABLED
 PILOT_EVIDENCE_KIND = DIAGNOSTIC_TIMING_ONLY
@@ -25,7 +25,7 @@ interface for the frozen 1,280-row matrix and 3,666 `(case_id, profile)` keys.
 It does not itself grant execution authority. `execute` requires a separate
 absolute execution-authority artifact binding the exact Git HEAD and tree,
 matrix semantic hash, protocol artifact hash, mode, backend, and external
-output root. No such real authority is created by E2-R2.
+output root. No such real authority is created by E2-R3.
 `execute_authorized_graph` is the sole public real-execution path and constructs
 a private validated context. It exposes no launcher or callback parameter and
 always dispatches through `_execute_canonical_case` to the reviewed private
@@ -69,6 +69,10 @@ continuation, DOP853 profiles, RHS cap, dense output, and 1,001/2,001 sampling.
 All flow thresholds operate on
 `q_hat_sector_i=q_i/[(G_ref/N)*Delta_p_ref]`; dimensional and already-scaled
 representations therefore share identical reversal and startup decisions.
+Every dynamic profile uses the common explicit DOP853
+`first_step=1.0e-7`. No-event results normalize SciPy's `t_events=None` and
+`y_events=None` to empty sequences; evolving results require structurally
+consistent event arrays before event processing.
 
 The scientific gain floor is the non-overridable module constant
 `GAIN_DENOMINATOR_FLOOR=1e-12`. Authoritative gain evaluation loads canonical
@@ -124,6 +128,17 @@ count, and linear status come from the canonical outcome. Output size means
 the serialized canonical case-outcome byte count before diagnostic filtering;
 scientific metric payloads are omitted from the persisted pilot record. E2-R2
 creates no pilot authority and runs no pilot.
+
+The completed DTP-001-R1 diagnostic pilot found 4 COMPLETE, 13 STOPPED, and 11
+FAILED records. Its shared no-event `TypeError` and false zero RHS counts are
+implementation findings, so its status-mixed full-graph estimate is
+`NOT_VALID_FOR_COMPLETE_HORIZON_PLANNING_DUE_TO_IMPLEMENTATION_FAILURES`.
+E2-R3 preserves that external bundle unchanged. Unexpected implementation or
+shared-infrastructure exceptions now retain a measured RHS count when known,
+use explicit unavailability otherwise, mark the manifest
+`INFRASTRUCTURE_FAILURE`, and abort before the next key. Such durations are
+excluded from projections; STOPPED/CAPPED samples remain separate from
+COMPLETE full-horizon samples.
 
 ## Localized initial-condition authority gap
 
