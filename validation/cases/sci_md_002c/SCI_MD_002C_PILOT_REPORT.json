@@ -1,0 +1,62 @@
+{
+  "accepted_attempt": "pilot/attempt4",
+  "bundle_uuid": "584f1888-f259-40a9-90c4-9f1c3ecf7cdb",
+  "complete_source_triplet_executed": false,
+  "completion_count": 8,
+  "corruption_injection": {
+    "audit_sha256": "92ffe2a1b0e3bb22615bb93e4ba2befde36563629d27dd5e65a4e7db43b418af",
+    "changed_byte_detected": true,
+    "corrupt_resume_refused": true,
+    "original_record_unchanged": true,
+    "same_size_mutation_detected": true
+  },
+  "diagnostic_attempts": [
+    {
+      "attempt": "pilot/attempt1",
+      "classification": "DIAGNOSTIC_ONLY_DURABLE_READBACK_CANONICAL_EQUIVALENCE_DEFECT",
+      "preserved": true
+    },
+    {
+      "attempt": "pilot/attempt2",
+      "classification": "DIAGNOSTIC_ONLY_MANIFEST_AGGREGATE_CONTRACT_DEFECT",
+      "preserved": true
+    },
+    {
+      "attempt": "pilot/attempt3",
+      "classification": "SUPERSEDED_DIAGNOSTIC_ONLY_PROTOCOL_STATUS_HASH_CHANGED",
+      "preserved": true
+    }
+  ],
+  "external_namespace": "SCI_MD_002C_EXTERNAL_BUNDLE",
+  "failures": 0,
+  "ledger_closeout": "COMPLETE",
+  "manifest_sha256": "a612dbd9573b9a6d8d696e01a7c61f2edd394baf23d2e9a36c1f72c5dc5a0cf1",
+  "ordered_record_aggregate_sha256": "f2fe720c8531e4a93d4fef92da57c57a979d3cf48fc4b573f69f6a2355f6b775",
+  "peak_rss_bytes": 36126720,
+  "pilot_row_ids": [
+    "A0-ZERO-FINES",
+    "A0-MASS-CONSERVATION",
+    "A0-TRANSPORT-BASE",
+    "A0-TRANSPORT-REFINED",
+    "C0-SOURCE-P5-NOFINES",
+    "C0-SOURCE-P11-NOFINES",
+    "C1-FASANO-STRUCTURAL",
+    "R1-SYNTH-P7-BASE"
+  ],
+  "resource_contract": {
+    "gpu": 0,
+    "memory_ceiling_gib": 16,
+    "nested_threads": 1,
+    "openfoam": 0,
+    "workers": 1
+  },
+  "row_count": 8,
+  "schema_version": "ewp.sci_md_002c.pilot_report.v1",
+  "scientific_disposition_emitted": false,
+  "scientific_reducer_ran": false,
+  "source_head": "e406f67e71aa27ad31450695c5bf082b1b5fdb44",
+  "source_ordering_calculated": false,
+  "source_tree": "20c02e680443e74808122197e25daafd818be88c",
+  "task_id": "SCI-MD-002C",
+  "wall_time_s": 0.6639554600697011
+}
