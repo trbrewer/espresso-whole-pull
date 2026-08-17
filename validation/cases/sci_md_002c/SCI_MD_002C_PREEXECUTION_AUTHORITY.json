@@ -626,7 +626,7 @@
     "matrix_json": "acbd214a7429c072c808b78fa16b677666169fb08dd36b2a70be372ca7d85149",
     "pilot_report": "becf46f0e0a4e3a4ef6ca632ec6b86440b39481807d8974cd577243c6b462a54",
     "puckworks_reference": "1bd0133ca1259693b5bfcd1b0cf2c5d71735e64a5a78d433e02566932053ab6c",
-    "source_manifest": "79c726852fb0cd152c660d90d36644e8155e9dd8249ccdb084c403d3a7fb2fd9",
+    "source_manifest": "d73fa644124760c996f813071a2757fe815aa15953bf794a2105be967586d1b7",
     "source_overlay": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e"
   },
   "lane_id": "EWP-PAR-SCI-MD-002C",
@@ -646,8 +646,8 @@
     "report_sha256": "becf46f0e0a4e3a4ef6ca632ec6b86440b39481807d8974cd577243c6b462a54"
   },
   "prospective_execution_source": {
-    "head": "5c67b9df53cacd1a397c6496e2cf6b4b3835ea3e",
-    "tree": "46c3d4076e62f838be04b69937bb8409da4b6c46"
+    "head": "364620a2850fb75191ea0fd0564dfa20f6c5d0fc",
+    "tree": "f09e4ccb6d0c37cd71a69e712c95f2ddae017053"
   },
   "puckworks": {
     "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
