@@ -1,6 +1,6 @@
 {
-  "accepted_attempt": "pilot/attempt5",
-  "bundle_uuid": "085abfa1-fd6a-4cdf-9067-5e3219782f76",
+  "accepted_attempt": "pilot/attempt6",
+  "bundle_uuid": "97665f02-aaa6-4eb5-8569-b3b319f98380",
   "complete_source_triplet_executed": false,
   "completion_count": 8,
   "corruption_injection": {
@@ -14,26 +14,27 @@
     {"attempt": "pilot/attempt1", "classification": "DIAGNOSTIC_ONLY_DURABLE_READBACK_CANONICAL_EQUIVALENCE_DEFECT", "preserved": true},
     {"attempt": "pilot/attempt2", "classification": "DIAGNOSTIC_ONLY_MANIFEST_AGGREGATE_CONTRACT_DEFECT", "preserved": true},
     {"attempt": "pilot/attempt3", "classification": "SUPERSEDED_DIAGNOSTIC_ONLY_PROTOCOL_STATUS_HASH_CHANGED", "preserved": true},
-    {"attempt": "pilot/attempt4", "classification": "SUPERSEDED_PRE_CORRECTION_NON_ADJUDICATIVE_INTEGRITY_TIMING_EVIDENCE", "preserved": true}
+    {"attempt": "pilot/attempt4", "classification": "SUPERSEDED_PRE_CORRECTION_NON_ADJUDICATIVE_INTEGRITY_TIMING_EVIDENCE", "preserved": true},
+    {"attempt": "pilot/attempt5", "classification": "DIAGNOSTIC_ONLY_FAILURE_RECORD_STOP_REASON_ENVELOPE_DEFECT", "preserved": true}
   ],
   "external_namespace": "SCI_MD_002C_EXTERNAL_BUNDLE",
   "failures": 0,
   "full_temporal_validation": "PASS",
   "ledger_closeout": "COMPLETE",
   "linear_pressure_interpolation": "EXERCISED",
-  "manifest_sha256": "bf27ca7368b739efcd0cc9aa16e8f0b34e2ded0dbc209e5e886259ee739a5807",
-  "ordered_record_aggregate_sha256": "35030be85350757b96f9fc6902cef27394c9591d4beb0c8977bfc3ffdf47037a",
-  "peak_rss_bytes": 37679104,
+  "manifest_sha256": "edeead5b962ba395d182287426afbc131233ecd7b325beadbcb162648310e14b",
+  "ordered_record_aggregate_sha256": "905423689495287536b9945640b86393b902ad04d5974ffec63c9324d76247b1",
+  "peak_rss_bytes": 37666816,
   "pilot_row_ids": ["A0-ZERO-FINES", "A0-MASS-CONSERVATION", "A0-TRANSPORT-BASE", "A0-TRANSPORT-REFINED", "C0-SOURCE-P5-NOFINES", "C0-SOURCE-P11-NOFINES", "C1-FASANO-STRUCTURAL", "R1-SYNTH-P7-BASE"],
   "resource_contract": {"gpu": 0, "memory_ceiling_gib": 16, "nested_threads": 1, "openfoam": 0, "workers": 1},
   "row_count": 8,
   "schema_version": "ewp.sci_md_002c.pilot_report.v2",
   "scientific_disposition_emitted": false,
   "scientific_reducer_ran": false,
-  "source_head": "bc4d5d3d8cad0734ddb1aeffa1e062bdcf7db0fc",
+  "source_head": "4406bb3eae0d990563b622081d4047819218f380",
   "source_ordering_calculated": false,
-  "source_tree": "cb0b22bfd78d5d60fa796a36c1eda4fb7cc1fd46",
+  "source_tree": "f0de8c48932dc684cc4210f96699e40af4a91ca9",
   "strict_record_manifest_validation": "PASS",
   "task_id": "SCI-MD-002C",
-  "wall_time_s": 0.4827454548794776
+  "wall_time_s": 0.48492302000522614
 }
