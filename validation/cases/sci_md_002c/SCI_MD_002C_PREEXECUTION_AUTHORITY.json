@@ -13,6 +13,8 @@
     "NO_OPENFOAM_AUTHORIZATION",
     "GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED",
     "FINES_CLOSURE_PARAMETERS_NOT_ESTABLISHED_AS_REAL_PUCK_MEASUREMENTS"
+    ,"SYNTHETIC_WINDOW_START_RESET"
+    ,"PRE_WINDOW_FINES_STATE_NOT_ADJUDICATED"
   ],
   "cohort_counts": {
     "C0": 3,
@@ -624,21 +626,32 @@
   "hard_row_cap": 2500,
   "hashes": {
     "feasibility_bounds": "6753fb520420fbaf2910f62a6bd3e9b2ddd15f4a07693920222f1b154b64aa2b",
-    "human_protocol": "fa11fe207cd885040495d3fb1c5308373cd4f2826c26933b9fbe2cd29036f3c0",
-    "implementation": "02ec326d4963686fa8dfbd60c3b3c12b2aaf13f823bf32344f4afc70be3004fa",
+    "human_protocol": "0533cdcca6159230b6419de74bcfe75b1615a907324ced1eafe29e2a8253b892",
+    "implementation": "8821690e690fe0dec983684a2de249f67ea02061d71df4be2872940a08169912",
     "lane_declaration": "88cc276c952980ccafe09b193d503d7f7e7093103aa8c5469aed2a9d14addeba",
-    "machine_protocol": "a933af58e2df21a56db4a8ddb15cc0fbb5a3055bc38302182187ffa20fe82c57",
+    "machine_protocol": "dc96558d8ce4eaf51e63e29e40d8c0a0032b63cb05f9da1d730a1bdee8b3a0bb",
     "matrix_csv": "70c3a9d7aefb02398d5c65b16d57e15f57a10b900f97a29d320cd859a8467997",
-    "matrix_json": "b67046e221572817286fd9c1075e4f4a3e04c2f7df8f64ce9fcc754d40b93b15",
-    "pilot_report": "40c85b1691eb3c65ab8c9da40e360fef1845faee21fdd2c1a2525f72f44bca29",
+    "matrix_json": "b67d92bd212dfba1d96383de68057190fd19157fa4a840bfc10a69a3121d12f2",
+    "pilot_report": "61f753765b822ebea8ef1c3f3794ae0aaed1c6209d59c1a78ea7b0be90458d65",
     "puckworks_reference": "1e0d26bfd77c9202f79540037fc39b5458c9e80d22224da725bace5c7037def5",
-    "source_manifest": "38c05dedfb89ffe98972db9a2ea57b1363ec30f534cd4ebb0aa46f61fb796625",
+    "source_manifest": "c7306d600f874926af6b0ca70e53f9e1e774634bae25bd675895ac3527d3249a",
     "source_overlay": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e"
   },
   "lane_id": "EWP-PAR-SCI-MD-002C",
   "owner_execution_token_present": false,
+  "window_start_initial_state": [
+    "WINDOW_START_FULL_UNRELEASED_INVENTORY",
+    "WINDOW_START_INVENTORY_UNIFORMLY_DISTRIBUTED_AXIAL",
+    "WINDOW_START_ZERO_MOBILE_FINES",
+    "WINDOW_START_ZERO_DEPOSITED_MASS",
+    "WINDOW_START_ZERO_ESCAPED_MASS",
+    "WINDOW_START_ZERO_CAKE_RESISTANCE",
+    "SYNTHETIC_WINDOW_START_RESET",
+    "PRE_WINDOW_FINES_STATE_NOT_ADJUDICATED"
+  ],
+  "window_start_initial_state_sha256": "82523328d956956998eb9ccbc64d8bad22f1fd4b2fa2c184f7e470195f1eded8",
   "pilot": {
-    "accepted_attempt": "attempt6",
+    "accepted_attempt": "attempt7",
     "ids": [
       "A0-ZERO-FINES",
       "A0-MASS-CONSERVATION",
@@ -649,11 +662,11 @@
       "C1-FASANO-STRUCTURAL",
       "R1-SYNTH-P7-BASE"
     ],
-    "report_sha256": "40c85b1691eb3c65ab8c9da40e360fef1845faee21fdd2c1a2525f72f44bca29"
+    "report_sha256": "61f753765b822ebea8ef1c3f3794ae0aaed1c6209d59c1a78ea7b0be90458d65"
   },
   "prospective_execution_source": {
-    "head": "36bca231c4cf9fdee939d8ec3f8cbcc6e74e08da",
-    "tree": "8d4f5bb8241483e227a483332035d9e6df454b97"
+    "head": "cb9ebd2d4ba220d4777f033e06eddbae787b519a",
+    "tree": "393ede84c88ae330faf103ce3845936dc0f9fc73"
   },
   "puckworks": {
     "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
