@@ -23,7 +23,7 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 406/406 PASS
+- Public source verification: 416/416 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -241,11 +241,27 @@ and the
 
 General whole-solver physical validation remains `NOT_ESTABLISHED`.
 
-SCI-MD-002A completed its independent reduced transient-consolidation lane with
-the owner-approved disposition `SCI_MD_002A_TRANSIENT_POROMECHANICS_REJECTED`
-for `WRONG_PRESSURE_ORDERING`. The bounded result applies only to the frozen
-single-state reversible family and does not reject all poromechanics. Its draft
-PR remains unmerged; production OpenFOAM physics is unchanged.
+SCI-MD-002A completed and merged its independent reduced transient-consolidation
+lane at merge commit `c872f782351a22277b7d7a8430bcbf140cff130e`. Its accepted
+disposition is `SCI_MD_002A_TRANSIENT_POROMECHANICS_REJECTED` for
+`WRONG_PRESSURE_ORDERING`. The bounded result applies only to the frozen
+single-state reversible family and does not reject all poromechanics.
+
+SCI-MD-002B completed and merged its independent reduced one-way wetting-age
+swelling lane at merge commit `db5b0a5492b36d568241f97b482fe90fac8d44da`.
+Its accepted disposition is `SCI_MD_002B_REJECTED_WRONG_PRESSURE_ORDERING`,
+qualified by
+`PACKAGE_INTEGRITY_RECOVERED_BY_SAME_AUTHORITY_SINGLE_RECORD_EXACT_RESUME`.
+
+SCI-MD-002C execution and reduction are complete, and owner scientific review
+approved the disposition `SCI_MD_002C_REJECTED_WRONG_PRESSURE_ORDERING`. Its
+frozen execution source is `cb9ebd2d4ba220d4777f033e06eddbae787b519a`;
+serial integration remains pending exact-head review. This post-observation
+screen establishes no physical validation and makes
+`NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. SCI-LC-001A remains the active,
+independent primary lane. The standing `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`,
+`PHYSICAL_VALIDATION_NOT_ESTABLISHED`, and `NO_NEW_PRODUCTION_PHYSICS_YET`
+boundaries remain unchanged.
 
 ## Completed VAL-CORPUS-001 comparison campaign
 
