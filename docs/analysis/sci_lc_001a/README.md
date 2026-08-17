@@ -6,7 +6,13 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW`.
+Status: `STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW`.
+
+ICA-003 freezes owner-selected Architecture B. Dynamic Stage-A classifications
+are `BASELINE_ZERO_STATE_ONLY`; static algebraic classifications are
+`DYNAMIC_INITIAL_CONDITION_NOT_APPLICABLE`. Initial-condition robustness and
+bistability are `NOT_ADJUDICATED_STAGE_A`. See
+[ICA_003_STAGE_A_BASELINE_ONLY_CLASSIFICATION_SCOPE.md](ICA_003_STAGE_A_BASELINE_ONLY_CLASSIFICATION_SCOPE.md).
 
 E2-R3 corrects the diagnostic pilot's dynamic findings: explicit no-event
 handling, truthful RHS diagnostics, abort-on-implementation-failure semantics,
@@ -17,10 +23,10 @@ executed during E2-R3.
 
 E2-R2 removes caller-selected launchers from the public real and pilot APIs,
 binds both to the canonical private dispatcher, and measures diagnostic timing
-inside the pilot adapter. The frozen artifacts do not define Stage-A
-initial-condition partner groups or a disagreement predicate, so that
-classifier branch remains an explicitly localized owner-authority gap; no
-hidden run or new graph key was introduced.
+inside the pilot adapter. Alternate-state partners and their predicate remain
+an unfrozen D4 design question. Architecture B permits scientifically honest,
+explicitly qualified baseline-only Stage-A labels without treating absent
+alternate evidence as agreement; no hidden run or new graph key is introduced.
 
 The Stage-A executor and diagnostic timing interface are now
 `TRUE_PENDING_E2_REVIEW`; see [STAGE_A_EXECUTOR.md](STAGE_A_EXECUTOR.md).
@@ -36,6 +42,6 @@ deterministic one-step linear refinement, authoritative uncertainty
 applicability, N-invariant total-flow startup normalization, the fixed 3,666-key
 numerical companion graph, and closed-interval outward-crossing multiplier
 semantics. D4 and X1 remain deliberately
-`DEFERRED_NOT_AUTHORIZED_STAGE_A` and fail closed pending separate freezes,
+`DEFERRED_NOT_AUTHORIZED` and fail closed pending separate freezes,
 tests, review, and authorization. No timing pilot, scientific sweep, OpenFOAM,
 Puckworks, production-physics change, or `SCI-LC-001B` nomination is authorized.

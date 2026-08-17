@@ -27,10 +27,10 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active modeling task: `SCI-LC-001A Stage-A dynamic runtime correction E2-R3`
-- Execution state: `DTP_001_R1_ACCEPTED_AS_DIAGNOSTIC_FAILURE_DISCOVERY; E2_R3_CORRECTION_PENDING_REVIEW`
+- Active modeling task: `SCI-LC-001A ICA-003 baseline-zero-state classification scope reconciliation`
+- Execution state: `NO_SCIENTIFIC_EXECUTION; ICA_003_SCOPE_RECONCILIATION_PENDING_REVIEW`
 - Protocol state:
-  `E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_BOUNDED_INDEPENDENT_EXACT_HEAD_REVIEW`
+  `STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
 - Current next action:

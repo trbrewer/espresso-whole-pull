@@ -2,10 +2,6 @@
   "base_head": "3e8993f56badd575f3482ea7bfa0f87d24412100",
   "base_tree": "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0",
   "boundary_initial_integration": {
-    "alternate_amplitudes": [
-      "0.5",
-      "1.5"
-    ],
     "base_atol": "1e-10",
     "base_max_step": "0.0025",
     "base_method": "DOP853",
@@ -34,13 +30,21 @@
       "upper": "4-exp(beta*x_i)"
     },
     "failure": "NUMERICALLY_UNRESOLVED;NO_CLASSIFICATION",
+    "historical_alternate_amplitudes": {
+      "production_or_planning_use": "PROHIBITED",
+      "status": "NON_EXECUTABLE_HISTORICAL_PLACEHOLDERS_WITH_UNRESOLVED_SCIENTIFIC_MEANING",
+      "values": [
+        "0.5",
+        "1.5"
+      ]
+    },
     "initial_feedback_x": "0",
     "initial_internal_p_hat": "0",
     "initial_machine_p_u_hat": "0",
     "maximum_rhs_evaluations": 200000,
     "output_grid": "tau_k=k/1000,k=0..1000",
     "p_o_hat": "0",
-    "phase_reversal": "phase->phase+pi",
+    "phase_reversal": "HISTORICAL_UNFROZEN_D4_CONCEPT_NOT_EXECUTABLE_STAGE_A",
     "primary_fourier_phase": "0",
     "refined_atol": "2.5e-11",
     "refined_max_step": "0.00125",
@@ -336,18 +340,24 @@
       ]
     },
     "initial_condition_reconciliation": {
-      "disagreement_predicate": "NOT_DEFINED_FOR_STAGE_A",
-      "grouping_authority": "NOT_DEFINED_FOR_STAGE_A",
+      "architecture_id": "ARCHITECTURE_B_BASELINE_ZERO_STATE_STAGE_A_WITH_D4_ROBUSTNESS_DEFERRED",
+      "bistability_status": "NOT_ADJUDICATED_STAGE_A",
+      "d4_alternate_initial_state_construction": "UNFROZEN_PENDING_SEPARATE_OWNER_SCIENTIFIC_DESIGN",
       "hidden_runs_authorized": false,
+      "initial_condition_dependence_branch": "NOT_EVALUATED_NOT_FALSE",
+      "initial_condition_robustness": "NOT_ADJUDICATED_STAGE_A",
+      "reserved_future_label": "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE",
+      "reserved_future_label_stage_a_status": "NOT_ADJUDICATED_STAGE_A",
       "serialized_field": "initial_condition_variant",
-      "source_note": "alternate initial conditions remain a D4 future requirement",
-      "status": "AUTHORITY_INCOMPLETE_LOCALIZED_SCIENCE_ONLY_GAP"
+      "serialized_field_semantics": "LEGACY_STRUCTURAL_OR_HETEROGENEITY_REALIZATION_IDENTIFIER_NOT_DYNAMIC_STATE",
+      "stage_a_dynamic_scope": "BASELINE_ZERO_STATE_ONLY",
+      "stage_a_static_scope": "DYNAMIC_INITIAL_CONDITION_NOT_APPLICABLE",
+      "status": "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_D4_ROBUSTNESS_UNADJUDICATED_PENDING_REVIEW"
     },
     "precedence": [
       "AUTHORITY_OR_ARTIFACT_INVALID",
       "ANALYTICAL_STRUCTURAL_IDENTITY",
       "NUMERICALLY_UNRESOLVED",
-      "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE",
       "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT",
       "METRIC_DISAGREEMENT",
       "NEAR_THRESHOLD_TRANSITION",
@@ -462,7 +472,7 @@
   "future_3d_nomination_rules": {
     "separate_freeze_review_and_authorization_required": true,
     "stage_a_authorized": false,
-    "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
+    "status": "DEFERRED_NOT_AUTHORIZED"
   },
   "gain_authority": {
     "caller_floor_override": false,
@@ -897,20 +907,41 @@
     "synthetic_backend": "SYNTHETIC_TEST_ONLY; scientifically inadmissible",
     "timing_pilot_authorized": false
   },
+  "stage_a_initial_condition_scope": {
+    "architecture_id": "ARCHITECTURE_B_BASELINE_ZERO_STATE_STAGE_A_WITH_D4_ROBUSTNESS_DEFERRED",
+    "authority_status": "FROZEN_PENDING_INDEPENDENT_REVIEW",
+    "bistability_status": "NOT_ADJUDICATED_STAGE_A",
+    "cache_identity": "(case_id,numerical_profile)",
+    "d4_alternate_initial_state_construction": "UNFROZEN_PENDING_SEPARATE_OWNER_SCIENTIFIC_DESIGN",
+    "d4_status": "DEFERRED_NOT_AUTHORIZED",
+    "dynamic_initial_state": {
+      "internal_sector_pressure": 0.0,
+      "machine_pressure_where_applicable": 0.0,
+      "resistance_feedback_state_x_i_where_applicable": 0.0
+    },
+    "dynamic_initial_state_variant": "ZERO_STATE_BASELINE",
+    "dynamic_scope": "BASELINE_ZERO_STATE_ONLY",
+    "initial_condition_classification_authority_status": "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_D4_ROBUSTNESS_UNADJUDICATED_PENDING_REVIEW",
+    "initial_condition_dependence_branch": "NOT_EVALUATED_NOT_FALSE",
+    "initial_condition_robustness": "NOT_ADJUDICATED_STAGE_A",
+    "legacy_initial_condition_variant_semantics": "LEGACY_STRUCTURAL_OR_HETEROGENEITY_REALIZATION_IDENTIFIER_NOT_DYNAMIC_STATE",
+    "physical_validation": "NOT_ESTABLISHED",
+    "static_dynamic_initial_state_variant": "NOT_APPLICABLE_STATIC_ALGEBRAIC",
+    "static_scope": "DYNAMIC_INITIAL_CONDITION_NOT_APPLICABLE",
+    "x1_status": "DEFERRED_NOT_AUTHORIZED"
+  },
   "staged_deferral": {
     "D4": {
-      "future_requirements": [
-        "canonical row materialization",
-        "exact comparators",
-        "alternate initial conditions",
-        "duplicate reconciliation",
-        "atomic cap",
-        "separate freeze/tests/review/authorization"
-      ],
+      "alternate_initial_state_construction": "UNFROZEN_PENDING_SEPARATE_OWNER_SCIENTIFIC_DESIGN",
+      "direct_invocation_disposition": "D4_ALTERNATE_INITIAL_STATE_AUTHORITY_UNFROZEN_NOT_AUTHORIZED",
+      "disagreement_predicate": "UNFROZEN",
+      "missing_partner_routing": "UNFROZEN_PENDING_GROUP_DESIGN",
+      "partner_group_schema": "UNFROZEN",
       "stage_a_rows": 0,
-      "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
+      "status": "DEFERRED_NOT_AUTHORIZED"
     },
     "X1": {
+      "eligibility_from_baseline_stage_a": "NOT_ADJUDICATED",
       "future_requirements": [
         "complete eligibility",
         "atomic prescribed-machine pairing",
@@ -919,10 +950,10 @@
         "separate freeze/tests/review/authorization"
       ],
       "stage_a_nominations": 0,
-      "status": "DEFERRED_NOT_AUTHORIZED_STAGE_A"
+      "status": "DEFERRED_NOT_AUTHORIZED"
     }
   },
-  "status": "STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW",
+  "status": "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW",
   "stop_rules": {
     "AUTHORITY_STOP": [
       "authority/hash/review mismatch",
@@ -948,7 +979,6 @@
       "no amplification",
       "no equalization",
       "persistence only",
-      "no bistability",
       "machine structurally inactive"
     ]
   },
@@ -968,7 +998,7 @@
     "primitive": "C_h=S_h*G_A*T_shot",
     "zero_coupling": "INFINITE_NO_LATERAL_EQUALIZATION"
   },
-  "task_id": "SCI-LC-001A-E2-R3-DYNAMIC-PILOT-FINDINGS-CORRECTION-2026-08-17",
+  "task_id": "SCI-LC-001A-ICA-003-STAGE-A-BASELINE-ONLY-CLASSIFICATION-SCOPE-RECONCILIATION-2026-08-17",
   "uncertainty": {
     "allowed_ceiling": "u_limit(G)=min(0.02,0.02*abs(G))",
     "applicability_authority": "derive_uncertainty_contract(canonical_rows,subject_case_id,metric,evaluation,status,profile)",

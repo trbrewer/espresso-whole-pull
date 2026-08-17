@@ -21,8 +21,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "validation/cases/sci_lc_001a"
 NA = "NOT_APPLICABLE"
 INFINITE = "INFINITE_NO_LATERAL_EQUALIZATION"
-STATUS = "STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW"
-TASK_ID = "SCI-LC-001A-E2-R3-DYNAMIC-PILOT-FINDINGS-CORRECTION-2026-08-17"
+STATUS = "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW"
+TASK_ID = "SCI-LC-001A-ICA-003-STAGE-A-BASELINE-ONLY-CLASSIFICATION-SCOPE-RECONCILIATION-2026-08-17"
 OWNER_METRIC_AUTHORITY_ID = "SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16"
 BASE_HEAD = "3e8993f56badd575f3482ea7bfa0f87d24412100"
 BASE_TREE = "ba7256d8d5813c87c72a3f896c0ac5f51cd06ee0"
@@ -58,8 +58,22 @@ BOUNDARY_MODES = ("PRESCRIBED_STATIC", "PRESCRIBED_DYNAMIC_RAMP", "MACHINE_COUPL
 Q_ZERO_THRESHOLD = 1.0e-14
 STARTUP_TAU_MAX = 1.0e-6
 PATTERN_SPAN_TOLERANCE = 1.0e-14
-D4_STATUS = "DEFERRED_NOT_AUTHORIZED_STAGE_A"
-X1_STATUS = "DEFERRED_NOT_AUTHORIZED_STAGE_A"
+D4_STATUS = "DEFERRED_NOT_AUTHORIZED"
+X1_STATUS = "DEFERRED_NOT_AUTHORIZED"
+D4_AUTHORITY_STOP = "D4_ALTERNATE_INITIAL_STATE_AUTHORITY_UNFROZEN_NOT_AUTHORIZED"
+ARCHITECTURE_ID = "ARCHITECTURE_B_BASELINE_ZERO_STATE_STAGE_A_WITH_D4_ROBUSTNESS_DEFERRED"
+INITIAL_CONDITION_AUTHORITY_STATUS = (
+    "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_D4_ROBUSTNESS_UNADJUDICATED_PENDING_REVIEW")
+DYNAMIC_INITIAL_STATE_VARIANT = "ZERO_STATE_BASELINE"
+STATIC_INITIAL_STATE_VARIANT = "NOT_APPLICABLE_STATIC_ALGEBRAIC"
+DYNAMIC_INITIAL_CONDITION_SCOPE = "BASELINE_ZERO_STATE_ONLY"
+STATIC_INITIAL_CONDITION_SCOPE = "DYNAMIC_INITIAL_CONDITION_NOT_APPLICABLE"
+NOT_ADJUDICATED_STAGE_A = "NOT_ADJUDICATED_STAGE_A"
+INITIAL_CONDITION_BRANCH_STATUS = "NOT_EVALUATED_NOT_FALSE"
+LEGACY_REALIZATION_SEMANTICS = (
+    "LEGACY_STRUCTURAL_OR_HETEROGENEITY_REALIZATION_IDENTIFIER_NOT_DYNAMIC_STATE")
+HISTORICAL_ALTERNATE_STATUS = (
+    "NON_EXECUTABLE_HISTORICAL_PLACEHOLDERS_WITH_UNRESOLVED_SCIENTIFIC_MEANING")
 MAX_RHS_EVALUATIONS = 200000
 STARTUP_REFINEMENT_FACTOR = 10.0
 REFINED_Q_ZERO_THRESHOLD = Q_ZERO_THRESHOLD / STARTUP_REFINEMENT_FACTOR
@@ -95,9 +109,10 @@ METRIC_KINDS = ("STATIC_GAIN", "DYNAMIC_ENDPOINT_GAIN", "DYNAMIC_INTEGRATED_GAIN
 QA_PROTOCOL_FOCUSED_COMMAND = "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol"
 QA_STATIC_REGRESSION_COMMAND = "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_static_validate_non_mutating"
 QA_EXECUTOR_FOCUSED_COMMAND = "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_executor"
+QA_ICA003_FOCUSED_COMMAND = "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_ica003"
 QA_COMBINED_FOCUSED_COMMAND = ("PYTHONDONTWRITEBYTECODE=1 python3 -m unittest "
     "tests.test_sci_lc_001a_protocol tests.test_sci_lc_001a_executor "
-    "tests.test_static_validate_non_mutating")
+    "tests.test_static_validate_non_mutating tests.test_sci_lc_001a_ica003")
 
 FIELDS = (
     "case_id", "arm", "model_variant", "pressure_mode", "boundary_profile",
@@ -159,6 +174,7 @@ def validate_qa_focused_scope(checks: dict) -> None:
         "sci_lc_001a_protocol_focused_command": QA_PROTOCOL_FOCUSED_COMMAND,
         "sci_lc_001a_static_validator_regression_command": QA_STATIC_REGRESSION_COMMAND,
         "sci_lc_001a_executor_focused_command": QA_EXECUTOR_FOCUSED_COMMAND,
+        "sci_lc_001a_ica003_focused_command": QA_ICA003_FOCUSED_COMMAND,
         "sci_lc_001a_combined_focused_command": QA_COMBINED_FOCUSED_COMMAND,
     }
     if any(checks.get(key) != value for key, value in required.items()):
@@ -166,10 +182,12 @@ def validate_qa_focused_scope(checks: dict) -> None:
     protocol_count = checks.get("sci_lc_001a_protocol_focused_test_count")
     static_count = checks.get("sci_lc_001a_static_validator_regression_test_count")
     executor_count = checks.get("sci_lc_001a_executor_focused_test_count")
+    ica003_count = checks.get("sci_lc_001a_ica003_focused_test_count")
     combined = checks.get("sci_lc_001a_combined_focused_test_count")
     if (type(protocol_count) is not int or type(static_count) is not int or
-            type(executor_count) is not int or type(combined) is not int or
-            combined != protocol_count + static_count + executor_count):
+            type(executor_count) is not int or type(ica003_count) is not int or
+            type(combined) is not int or
+            combined != protocol_count + static_count + executor_count + ica003_count):
         raise ValueError("PACKAGE_QA_FOCUSED_COUNT_SCOPE_MISMATCH")
 
 
@@ -968,12 +986,40 @@ def structural_identity(row: dict) -> str | None:
     return None
 
 
+def stage_a_initial_condition_scope(row: dict) -> dict[str, str]:
+    """Return the frozen Stage-A scope; no row field can select another start."""
+    if row.get("pressure_mode") == "PRESCRIBED_STATIC":
+        return {
+            "dynamic_initial_state_variant": STATIC_INITIAL_STATE_VARIANT,
+            "initial_condition_scope": STATIC_INITIAL_CONDITION_SCOPE,
+            "initial_condition_robustness": STATIC_INITIAL_STATE_VARIANT,
+            "bistability_status": STATIC_INITIAL_STATE_VARIANT,
+            "initial_condition_dependence_branch": STATIC_INITIAL_STATE_VARIANT,
+        }
+    if row.get("pressure_mode") not in ("PRESCRIBED_DYNAMIC_RAMP", "MACHINE_COUPLED"):
+        raise ValueError("UNKNOWN_STAGE_A_STATIC_DYNAMIC_IDENTITY")
+    return {
+        "dynamic_initial_state_variant": DYNAMIC_INITIAL_STATE_VARIANT,
+        "initial_condition_scope": DYNAMIC_INITIAL_CONDITION_SCOPE,
+        "initial_condition_robustness": NOT_ADJUDICATED_STAGE_A,
+        "bistability_status": NOT_ADJUDICATED_STAGE_A,
+        "initial_condition_dependence_branch": INITIAL_CONDITION_BRANCH_STATUS,
+    }
+
+
+def qualify_stage_a_classification(row: dict, regime_label: str) -> str:
+    """Make the Stage-A scope inseparable from every serialized classification."""
+    if not isinstance(regime_label, str) or not regime_label:
+        raise ValueError("INVALID_STAGE_A_REGIME_LABEL")
+    return regime_label + ";" + stage_a_initial_condition_scope(row)["initial_condition_scope"]
+
+
 class DeferredStageError(RuntimeError):
     pass
 
 
 def classify_synthetic_fixture(*, authority_valid: bool = True, numerical_valid: bool = True,
-                               structural_control: bool = False, initial_dependence: bool = False,
+                               structural_control: bool = False,
                                model_disagreement: bool = False, metric_disagreement: bool = False,
                                threshold_straddle: bool = False, end_gain: float = 1.0,
                                integrated_gain: float = 1.0) -> str:
@@ -984,8 +1030,6 @@ def classify_synthetic_fixture(*, authority_valid: bool = True, numerical_valid:
         return "UNIFORM_OR_STRUCTURAL_CONTROL"
     if not numerical_valid:
         return "NUMERICALLY_UNRESOLVED"
-    if initial_dependence:
-        return "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE"
     if model_disagreement:
         return "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT"
     if metric_disagreement:
@@ -1302,7 +1346,7 @@ def bind_relationships(rows: list[dict]) -> None:
 
 def d4_select_synthetic(*_args: object, **_kwargs: object) -> list[dict]:
     """Fail closed: Stage A cannot materialize D4 rows."""
-    raise DeferredStageError(D4_STATUS)
+    raise DeferredStageError(D4_AUTHORITY_STOP)
 
 
 def x1_select_synthetic(*_args: object, **_kwargs: object) -> list[dict]:
@@ -1338,6 +1382,26 @@ def protocol(rows: list[dict]) -> dict:
         "change_declaration": "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
         "evidence_mode": "PROSPECTIVE_REDUCED_MODEL_PROTOCOL_CORRECTION",
         "execution_authorized": False,
+        "stage_a_initial_condition_scope": {
+            "architecture_id": ARCHITECTURE_ID,
+            "authority_status": "FROZEN_PENDING_INDEPENDENT_REVIEW",
+            "initial_condition_classification_authority_status": INITIAL_CONDITION_AUTHORITY_STATUS,
+            "dynamic_initial_state_variant": DYNAMIC_INITIAL_STATE_VARIANT,
+            "dynamic_initial_state": {"internal_sector_pressure": 0.0,
+                "machine_pressure_where_applicable": 0.0,
+                "resistance_feedback_state_x_i_where_applicable": 0.0},
+            "dynamic_scope": DYNAMIC_INITIAL_CONDITION_SCOPE,
+            "static_dynamic_initial_state_variant": STATIC_INITIAL_STATE_VARIANT,
+            "static_scope": STATIC_INITIAL_CONDITION_SCOPE,
+            "initial_condition_robustness": NOT_ADJUDICATED_STAGE_A,
+            "bistability_status": NOT_ADJUDICATED_STAGE_A,
+            "initial_condition_dependence_branch": INITIAL_CONDITION_BRANCH_STATUS,
+            "legacy_initial_condition_variant_semantics": LEGACY_REALIZATION_SEMANTICS,
+            "cache_identity": "(case_id,numerical_profile)",
+            "d4_alternate_initial_state_construction":
+                "UNFROZEN_PENDING_SEPARATE_OWNER_SCIENTIFIC_DESIGN",
+            "d4_status": D4_STATUS, "x1_status": X1_STATUS,
+            "physical_validation": "NOT_ESTABLISHED"},
         "field_authority_classes": list(FIELD_AUTHORITY_CLASSES),
         "field_authority": FIELD_AUTHORITY,
         "scientific_question": ("Under what combinations of lateral conductance, axial resistance contrast, "
@@ -1452,7 +1516,10 @@ def protocol(rows: list[dict]) -> dict:
             "dynamic_p_b_hat": "min(tau/0.05,1)", "tau_ramp": "0.05", "shot_horizon": ["0", "1"],
             "initial_internal_p_hat": "0", "initial_machine_p_u_hat": "0", "initial_feedback_x": "0",
             "primary_fourier_phase": "0", "rotation": "i->(i+1) mod N", "reflection": "i->(-i) mod N",
-            "alternate_amplitudes": ["0.5", "1.5"], "phase_reversal": "phase->phase+pi",
+            "historical_alternate_amplitudes": {"values": ["0.5", "1.5"],
+                "status": HISTORICAL_ALTERNATE_STATUS,
+                "production_or_planning_use": "PROHIBITED"},
+            "phase_reversal": "HISTORICAL_UNFROZEN_D4_CONCEPT_NOT_EXECUTABLE_STAGE_A",
             "output_grid": "tau_k=k/1000,k=0..1000", "base_method": "DOP853",
             "base_rtol": "1e-8", "base_atol": "1e-10", "base_max_step": "0.0025",
             "refined_method": "DOP853", "refined_rtol": "2.5e-9", "refined_atol": "2.5e-11",
@@ -1617,21 +1684,32 @@ def protocol(rows: list[dict]) -> dict:
                 "comparator": "materialized Lambda=0 with same storage,evolution,boundary,machine,initial,numerics"},
             "thresholds": {"equalization": "0.90", "amplification": "1.10"},
             "initial_condition_reconciliation": {
-                "status": "AUTHORITY_INCOMPLETE_LOCALIZED_SCIENCE_ONLY_GAP",
+                "status": INITIAL_CONDITION_AUTHORITY_STATUS,
+                "architecture_id": ARCHITECTURE_ID,
                 "serialized_field": "initial_condition_variant",
-                "grouping_authority": "NOT_DEFINED_FOR_STAGE_A",
-                "disagreement_predicate": "NOT_DEFINED_FOR_STAGE_A",
+                "serialized_field_semantics": LEGACY_REALIZATION_SEMANTICS,
+                "stage_a_dynamic_scope": DYNAMIC_INITIAL_CONDITION_SCOPE,
+                "stage_a_static_scope": STATIC_INITIAL_CONDITION_SCOPE,
+                "initial_condition_robustness": NOT_ADJUDICATED_STAGE_A,
+                "bistability_status": NOT_ADJUDICATED_STAGE_A,
+                "initial_condition_dependence_branch": INITIAL_CONDITION_BRANCH_STATUS,
+                "reserved_future_label": "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE",
+                "reserved_future_label_stage_a_status": NOT_ADJUDICATED_STAGE_A,
                 "hidden_runs_authorized": False,
-                "source_note": "alternate initial conditions remain a D4 future requirement"},
+                "d4_alternate_initial_state_construction":
+                    "UNFROZEN_PENDING_SEPARATE_OWNER_SCIENTIFIC_DESIGN"},
             "precedence": ["AUTHORITY_OR_ARTIFACT_INVALID", "ANALYTICAL_STRUCTURAL_IDENTITY",
-                "NUMERICALLY_UNRESOLVED", "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE",
-                "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT", "METRIC_DISAGREEMENT",
+                "NUMERICALLY_UNRESOLVED", "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT", "METRIC_DISAGREEMENT",
                 "NEAR_THRESHOLD_TRANSITION", "LATERAL_EQUALIZATION", "HETEROGENEITY_AMPLIFIES",
                 "HETEROGENEITY_PERSISTS"]},
         "staged_deferral": {"D4": {"status": D4_STATUS, "stage_a_rows": 0,
-                "future_requirements": ["canonical row materialization", "exact comparators", "alternate initial conditions",
-                    "duplicate reconciliation", "atomic cap", "separate freeze/tests/review/authorization"]},
+                "alternate_initial_state_construction":
+                    "UNFROZEN_PENDING_SEPARATE_OWNER_SCIENTIFIC_DESIGN",
+                "partner_group_schema": "UNFROZEN", "disagreement_predicate": "UNFROZEN",
+                "missing_partner_routing": "UNFROZEN_PENDING_GROUP_DESIGN",
+                "direct_invocation_disposition": D4_AUTHORITY_STOP},
             "X1": {"status": X1_STATUS, "stage_a_nominations": 0,
+                "eligibility_from_baseline_stage_a": "NOT_ADJUDICATED",
                 "future_requirements": ["complete eligibility", "atomic prescribed-machine pairing", "atomic cap",
                     "admissible Stage-A evidence", "separate freeze/tests/review/authorization"]}},
         "compute_budget": {"maximum_static_control_cases": 5000, "maximum_dynamic_trajectories": 15000,
@@ -1647,7 +1725,7 @@ def protocol(rows: list[dict]) -> dict:
             "NUMERICAL_STOP": ["nonfinite/nonpositive", "conservation/dissipation", "refinement", "clipping"],
             "DESIGN_STOP": ["redundancy", "inadequate topology", "budget"],
             "SCIENTIFIC_BOUNDED_STOP": ["no amplification", "no equalization", "persistence only",
-                "no bistability", "machine structurally inactive"], "COMPUTE_STOP": ["time", "memory", "disk"]},
+                "machine structurally inactive"], "COMPUTE_STOP": ["time", "memory", "disk"]},
         "future_3d_nomination_rules": {"status": X1_STATUS, "stage_a_authorized": False,
             "separate_freeze_review_and_authorization_required": True},
         "canonical_ordering": "C0,S1,S2,S3,D1,D2,D3-EQ,D3-LOC then declared loop order",
@@ -1672,6 +1750,40 @@ def protocol(rows: list[dict]) -> dict:
 def validate(rows: list[dict], spec: dict) -> None:
     canonical_rows = build_rows()
     canonical_by_id = {row["case_id"]: row for row in canonical_rows}
+    scope = spec.get("stage_a_initial_condition_scope", {})
+    required_scope = {
+        "architecture_id": ARCHITECTURE_ID,
+        "authority_status": "FROZEN_PENDING_INDEPENDENT_REVIEW",
+        "initial_condition_classification_authority_status": INITIAL_CONDITION_AUTHORITY_STATUS,
+        "dynamic_initial_state_variant": DYNAMIC_INITIAL_STATE_VARIANT,
+        "dynamic_scope": DYNAMIC_INITIAL_CONDITION_SCOPE,
+        "static_dynamic_initial_state_variant": STATIC_INITIAL_STATE_VARIANT,
+        "static_scope": STATIC_INITIAL_CONDITION_SCOPE,
+        "initial_condition_robustness": NOT_ADJUDICATED_STAGE_A,
+        "bistability_status": NOT_ADJUDICATED_STAGE_A,
+        "initial_condition_dependence_branch": INITIAL_CONDITION_BRANCH_STATUS,
+        "legacy_initial_condition_variant_semantics": LEGACY_REALIZATION_SEMANTICS,
+        "cache_identity": "(case_id,numerical_profile)",
+        "d4_alternate_initial_state_construction":
+            "UNFROZEN_PENDING_SEPARATE_OWNER_SCIENTIFIC_DESIGN",
+        "d4_status": D4_STATUS, "x1_status": X1_STATUS,
+        "physical_validation": "NOT_ESTABLISHED",
+    }
+    if any(scope.get(key) != value for key, value in required_scope.items()):
+        raise ValueError("STAGE_A_BASELINE_SCOPE_AUTHORITY_MISMATCH")
+    if scope.get("dynamic_initial_state") != {"internal_sector_pressure": 0.0,
+            "machine_pressure_where_applicable": 0.0,
+            "resistance_feedback_state_x_i_where_applicable": 0.0}:
+        raise ValueError("STAGE_A_ZERO_STATE_AUTHORITY_MISMATCH")
+    reconciliation = spec.get("classification", {}).get("initial_condition_reconciliation", {})
+    if (reconciliation.get("initial_condition_dependence_branch") != INITIAL_CONDITION_BRANCH_STATUS or
+            reconciliation.get("reserved_future_label_stage_a_status") != NOT_ADJUDICATED_STAGE_A or
+            "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE" in spec["classification"]["precedence"]):
+        raise ValueError("STAGE_A_INITIAL_CONDITION_BRANCH_MUST_REMAIN_INACTIVE")
+    placeholders = spec.get("boundary_initial_integration", {}).get("historical_alternate_amplitudes", {})
+    if placeholders != {"values": ["0.5", "1.5"], "status": HISTORICAL_ALTERNATE_STATUS,
+                        "production_or_planning_use": "PROHIBITED"}:
+        raise ValueError("HISTORICAL_ALTERNATE_PLACEHOLDER_AUTHORITY_MISMATCH")
     if len({row["case_id"] for row in rows}) != len(rows):
         raise ValueError("duplicate case ID")
     if len(rows) != len(canonical_rows):

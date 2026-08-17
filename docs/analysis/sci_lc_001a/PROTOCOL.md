@@ -1,8 +1,8 @@
-# SCI-LC-001A Stage-A prospective protocol and executor — E2-R3
+# SCI-LC-001A Stage-A baseline-zero-state protocol — ICA-003
 
-Task: `SCI-LC-001A-E2-R3-DYNAMIC-PILOT-FINDINGS-CORRECTION-2026-08-17`
+Task: `SCI-LC-001A-ICA-003-STAGE-A-BASELINE-ONLY-CLASSIFICATION-SCOPE-RECONCILIATION-2026-08-17`
 
-Status: `STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW`
+Status: `STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW`
 
 Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Execution is not
 authorized. This package defines a reduced diagnostic model; it does not change
@@ -15,7 +15,6 @@ trajectory or classification.
     "AUTHORITY_OR_ARTIFACT_INVALID",
     "ANALYTICAL_STRUCTURAL_IDENTITY",
     "NUMERICALLY_UNRESOLVED",
-    "INITIAL_CONDITION_DEPENDENT_OR_BISTABLE",
     "MODEL_FORM_OR_SECTOR_RESOLUTION_DISAGREEMENT",
     "METRIC_DISAGREEMENT",
     "NEAR_THRESHOLD_TRANSITION",
@@ -40,7 +39,7 @@ trajectory or classification.
     "structural_comparator_rows": 362
   },
   "stage_a_hard_maximum": 1280,
-  "status": "STAGE_A_EXECUTOR_E2_R3_DYNAMIC_RUNTIME_CORRECTION_PENDING_REVIEW",
+  "status": "STAGE_A_BASELINE_ZERO_STATE_SCOPE_FROZEN_PENDING_INDEPENDENT_REVIEW",
   "uncertainty": "u_limit(G)=min(0.02,0.02*abs(G))"
 }
 ```
@@ -361,21 +360,28 @@ numerical controls still execute; an implementation failure is recorded in a
 separate numerical-status field and cannot erase the theorem. Such controls
 may be comparators but may never be nominated.
 
-Remaining precedence is numerical failure, alternate-attractor dependence,
-model/sector disagreement, metric disagreement, threshold-straddling,
+Remaining Stage-A baseline precedence is numerical failure, model/sector
+disagreement, metric disagreement, threshold-straddling,
 equalization (`end,int<=0.90`), amplification (`end,int>=1.10`), then
 persistence. Static cases use only matched static `H_q` and seeded-mode gains;
 dynamic cases use endpoint and integrated gains against exact matched dynamic
 Lambda-zero rows.
 
-The precedence label does not itself define an executable initial-condition
-comparison. The Stage-A artifacts contain `initial_condition_variant`, but do
-not freeze canonical partner groups, a disagreement/equality predicate, or a
-missing-partner evidence route. Alternate initial conditions remain explicitly
-listed below as a future D4 requirement, and the 3,666-key graph contains no
-hidden initial-condition run. E2-R2 records this as
-`AUTHORITY_INCOMPLETE_LOCALIZED_SCIENCE_ONLY_GAP`; an implementation must not
-invent partner science from the variant name alone.
+Stage A is explicitly a `BASELINE_ZERO_STATE_ONLY` screen. Every dynamic case
+starts with sector pressure zero, machine pressure zero where applicable, and
+feedback state zero where applicable. Its scientific identity is
+`ZERO_STATE_BASELINE`; numerical profiles do not alter it. Static algebraic
+cases use `DYNAMIC_INITIAL_CONDITION_NOT_APPLICABLE`. Every serialized
+classification joins the ordinary label to that scope. Initial-condition
+robustness and bistability are `NOT_ADJUDICATED_STAGE_A`; the reserved
+`INITIAL_CONDITION_DEPENDENT_OR_BISTABLE` vocabulary is inactive in Stage A and
+is represented as `NOT_EVALUATED_NOT_FALSE`, never as agreement.
+
+The legacy matrix field `initial_condition_variant` is a
+`LEGACY_STRUCTURAL_OR_HETEROGENEITY_REALIZATION_IDENTIFIER_NOT_DYNAMIC_STATE`.
+Its existing values and all row identities remain unchanged. Historical 0.5
+and 1.5 amplitudes are non-executable placeholders with unresolved scientific
+meaning. They cannot create state, rows, graph keys, or classifications.
 
 ## Matrix and comparator reconciliation
 
@@ -398,13 +404,14 @@ The Stage-A hard maximum and prospective maximum are both exactly 1,280.
 
 ## Staged deferral and future work
 
-`D4_STATUS=DEFERRED_NOT_AUTHORIZED_STAGE_A` and
-`X1_STATUS=DEFERRED_NOT_AUTHORIZED_STAGE_A`. Direct helper invocation fails
+`D4_STATUS=DEFERRED_NOT_AUTHORIZED` and
+`X1_STATUS=DEFERRED_NOT_AUTHORIZED`. Direct helper invocation fails
 closed. Stage A cannot generate adaptive rows or nominate SCI-LC-001B.
 
-D4 still requires canonical row materialization, exact comparator and alternate
-initial-condition binding, duplicate reconciliation, atomic cap semantics,
-tests, independent review, and explicit authorization. X1 still requires
+D4 alternate-state construction, partner schema, comparison predicate, and
+missing-evidence routing are `UNFROZEN_PENDING_SEPARATE_OWNER_SCIENTIFIC_DESIGN`.
+Direct invocation fails with
+`D4_ALTERNATE_INITIAL_STATE_AUTHORITY_UNFROZEN_NOT_AUTHORIZED`. X1 still requires
 complete eligibility, atomic prescribed/machine pairs and cap handling,
 admissible Stage-A evidence, tests, independent review, and explicit
 authorization. Existing or retired helpers cannot be used informally.

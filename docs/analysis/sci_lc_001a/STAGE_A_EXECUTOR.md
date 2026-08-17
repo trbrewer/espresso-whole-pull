@@ -12,7 +12,10 @@ DIAGNOSTIC_TIMING_INTERFACE_IMPLEMENTED = TRUE_PENDING_E2_R3_REVIEW
 PILOT_TIMING_MEASUREMENT = INTERNAL_AROUND_CANONICAL_CASE_EXECUTION
 PILOT_REUSE = DISABLED
 PILOT_EVIDENCE_KIND = DIAGNOSTIC_TIMING_ONLY
-INITIAL_CONDITION_RECONCILIATION = AUTHORITY_GAP_LOCALIZED_SCIENTIFIC_CLASSIFICATION_ONLY
+SELECTED_ARCHITECTURE = ARCHITECTURE_B_BASELINE_ZERO_STATE_STAGE_A_WITH_D4_ROBUSTNESS_DEFERRED
+STAGE_A_INITIAL_CONDITION_SCOPE = BASELINE_ZERO_STATE_ONLY
+INITIAL_CONDITION_ROBUSTNESS = NOT_ADJUDICATED_STAGE_A
+BISTABILITY_STATUS = NOT_ADJUDICATED_STAGE_A
 TIMING_PILOT_AUTHORIZED = FALSE
 SCIENTIFIC_EXECUTION_AUTHORIZED = FALSE
 PHYSICAL_VALIDATION = NOT_ESTABLISHED
@@ -140,17 +143,19 @@ use explicit unavailability otherwise, mark the manifest
 excluded from projections; STOPPED/CAPPED samples remain separate from
 COMPLETE full-horizon samples.
 
-## Localized initial-condition authority gap
+## Baseline-zero-state classification authority
 
-The controlling artifacts serialize `initial_condition_variant` and reserve
-the classifier precedence label `INITIAL_CONDITION_DEPENDENT_OR_BISTABLE`, but
-they do not define canonical Stage-A partner groups, an equality/disagreement
-predicate, or the missing-evidence route. `PROTOCOL.md` also retains alternate
-initial conditions as a future D4 requirement and the frozen graph authorizes
-no hidden initial-condition run. E2-R2 therefore does not invent a grouping or
-predicate. Runtime and diagnostic-pilot closure is complete; authoritative
-initial-condition reconciliation remains a localized science-only authority
-gap pending an explicit owner freeze.
+ICA-003 freezes Stage A as a baseline-zero-state screen. Dynamic records and
+classifications carry `ZERO_STATE_BASELINE`, `BASELINE_ZERO_STATE_ONLY`, and
+explicit `NOT_ADJUDICATED_STAGE_A` robustness and bistability values. Static
+algebraic records use `DYNAMIC_INITIAL_CONDITION_NOT_APPLICABLE`. Bare dynamic
+labels and stale unqualified records fail closed.
+
+The legacy matrix field `initial_condition_variant` selects structural or
+heterogeneity realization and never constructs a dynamic initial state. The
+future `INITIAL_CONDITION_DEPENDENT_OR_BISTABLE` branch is inactive in Stage A:
+it is `NOT_EVALUATED_NOT_FALSE`, not absent evidence treated as agreement.
+D4's alternate state and comparison contract remain unfrozen and unauthorized.
 
 ## Synthetic testing
 
