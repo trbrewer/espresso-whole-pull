@@ -1,0 +1,84 @@
+{
+  "base": {
+    "head": "db5b0a5492b36d568241f97b482fe90fac8d44da",
+    "tree": "3260123d4395dd5d3ec6b088fdb63087a917e9dd"
+  },
+  "branch": "research/sci-md-002c-axial-fines-deposition",
+  "claim_boundary": [
+    "PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+    "POST_OBSERVATION_MECHANISM_DISCRIMINATION",
+    "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
+    "NO_COMBINED_MECHANISM_AUTHORIZATION",
+    "NO_SCI_LC_AUTHORIZATION",
+    "NO_OPENFOAM_AUTHORIZATION",
+    "GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED",
+    "FINES_CLOSURE_PARAMETERS_NOT_ESTABLISHED_AS_REAL_PUCK_MEASUREMENTS"
+  ],
+  "current_execution_authority": "SCI_MD_002C_ADJUDICATIVE_EXECUTION_NOT_AUTHORIZED",
+  "evidence_durability_policy": {
+    "bundle_uuid_required": true,
+    "case_record": "canonical temporary write; flush; fsync; atomic rename; directory fsync; readback parse and internal/full hash verification",
+    "corruption_tests_required": true,
+    "manifest": "atomic, fsync, readback-verified, UUID-bound ordered aggregate"
+  },
+  "external_namespace": "SCI_MD_002C_EXTERNAL_BUNDLE",
+  "forbidden_paths": [
+    "docs/analysis/sci_lc_001a/**",
+    "validation/cases/sci_lc_001a/**",
+    "scripts/sci_lc_001a*",
+    "tests/test_sci_lc_001a*",
+    "solver/**",
+    "config/**",
+    "cases/**",
+    "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md",
+    "docs/strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md",
+    "docs/PROJECT_STATE.md"
+  ],
+  "github": {
+    "draft_pr": "PENDING",
+    "issue": "PENDING"
+  },
+  "integration_policy": "independent review; owner-selected merge order; no rebase or scientific-source rewrite; agent does not mark ready or merge",
+  "lane_id": "EWP-PAR-SCI-MD-002C",
+  "lane_role": "SECONDARY_SCIENTIFIC_MECHANISM_DISCRIMINATION",
+  "one_writer_policy": "SCI-MD-002C owner alone writes its branch, artifacts, GitHub objects, external bundle, authorities, and processes",
+  "owned_paths": [
+    "docs/analysis/sci_md_002c/**",
+    "validation/cases/sci_md_002c/**",
+    "scripts/sci_md_002c.py",
+    "tests/test_sci_md_002c.py",
+    "SCI_MD_002C_EXTERNAL_BUNDLE",
+    "SCI-MD-002C issue",
+    "SCI-MD-002C draft PR"
+  ],
+  "primary_parallel_lane": {
+    "issue": 70,
+    "lane": "SCI-LC-001A",
+    "pr": 71,
+    "state": "ACTIVE_READ_ONLY_RE_RESOLVED_AT_PREFLIGHT"
+  },
+  "process_policy": "ledger-owned processes only; never signal another lane; primary SCI-LC has priority",
+  "puckworks": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "mode": "READ_ONLY",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "read_only_dependencies": [
+    "SCI-LC-001A branch, worktree, issue #70, PR #71, authorities, matrices, processes, and evidence",
+    "Puckworks pinned reference",
+    "merged SCI-MD-002A and SCI-MD-002B authority and result artifacts",
+    "governed source overlay"
+  ],
+  "resource_limits": {
+    "gpu": 0,
+    "memory_gib": 16,
+    "nested_threads": 1,
+    "openfoam": 0,
+    "workers": 1
+  },
+  "schema_version": "ewp.parallel_lane.v1",
+  "scientific_question": "Can pressure-shared finite-inventory axial fines mobilization, transport, and downstream deposition reproduce Q5 > Q9 > Q11?",
+  "shared_file_policy": "avoid global strategy/project state and Issue #76; only canonical minimal generated metadata in isolated commit if required",
+  "status": "PROSPECTIVE_IMPLEMENTATION_IN_PROGRESS",
+  "task_id": "SCI-MD-002C"
+}
