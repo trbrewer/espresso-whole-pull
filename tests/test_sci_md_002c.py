@@ -84,7 +84,7 @@ class TestMatrixAndAuthority(unittest.TestCase):
 class TestDurability(unittest.TestCase):
  def test_atomic_write_readback_and_temp_exclusion(self):
   with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
-   p=Path(d)/"r.json";h,n=M.durable_write(p,{"x":1});self.assertEqual(h,M.sha(p));self.assertEqual(n,p.stat().st_size);self.assertFalse(list(Path(d).glob("*.tmp.*")))
+   p=Path(d)/"r.json";h,n=M.durable_write(p,{"x":1,"tuple":("a","b")});self.assertEqual(h,M.sha(p));self.assertEqual(n,p.stat().st_size);self.assertFalse(list(Path(d).glob("*.tmp.*")))
    with self.assertRaises(FileExistsError):M.durable_write(p,{"x":2})
  def test_corruption_and_malformed_detection(self):
   rec={"case_id":"X","bundle_uuid":"u","result":{"v":1}};rec["record_sha256"]=M.internal_hash(rec)

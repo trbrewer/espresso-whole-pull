@@ -296,7 +296,7 @@ def durable_write(path: Path, obj: dict[str,Any], *, refuse_existing=True) -> tu
             fd=os.open(path.parent,os.O_RDONLY); os.fsync(fd); os.close(fd)
         except OSError: pass
         got=path.read_bytes()
-        if got!=data or json.loads(got)!=obj: raise IOError("DURABLE_READBACK_MISMATCH")
+        if got!=data or json.loads(got)!=json.loads(data): raise IOError("DURABLE_READBACK_MISMATCH")
         return hashlib.sha256(got).hexdigest(),len(got)
     finally:
         if tmp.exists(): tmp.unlink()
