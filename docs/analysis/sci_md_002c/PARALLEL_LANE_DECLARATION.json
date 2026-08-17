@@ -35,7 +35,7 @@
     "docs/PROJECT_STATE.md"
   ],
   "github": {
-    "draft_pr": "PENDING",
+    "draft_pr": 78,
     "issue": 77
   },
   "integration_policy": "independent review; owner-selected merge order; no rebase or scientific-source rewrite; agent does not mark ready or merge",
