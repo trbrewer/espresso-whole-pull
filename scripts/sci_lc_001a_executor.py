@@ -270,9 +270,12 @@ class ResultStore:
         atomic_write_json(self.manifest_path, manifest)
         return manifest
 
-    def finish_run(self, manifest: dict, summary: dict) -> None:
+    def finish_run(self, manifest: dict, summary: dict, *, status: str | None = None,
+                   unattempted_keys: int | None = None) -> None:
         final = {**manifest, "ended_at_utc": utc_now(), "status_counts": summary["statuses"],
-                 "status": "COMPLETE" if summary["records"] == manifest["task_count"] else "INTERRUPTED"}
+                 "status": status or ("COMPLETE" if summary["records"] == manifest["task_count"] else "INTERRUPTED")}
+        if unattempted_keys is not None:
+            final["unattempted_key_count"] = unattempted_keys
         atomic_write_json(self.manifest_path, final)
 
     def write_record(self, manifest: dict, record: dict) -> None:
@@ -346,14 +349,20 @@ class ResultStore:
 
 
 def _case_record(row: dict, profile: str, context: _ValidatedExecutionContext, status: str, metrics: dict,
-                 *, synthetic: bool, started: str, nfev: int = 0,
-                 stop: str | None = None, linear_status: str = "NOT_APPLICABLE") -> dict:
+                 *, synthetic: bool, started: str, nfev: int | None = 0,
+                 stop: str | None = None, linear_status: str = "NOT_APPLICABLE",
+                 execution_failure_class: str = "NUMERICAL_CASE_DISPOSITION",
+                 rhs_evaluations_status: str | None = None) -> dict:
+    rhs_status = rhs_evaluations_status or ("MEASURED" if nfev is not None else
+        "NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION")
     return {"schema": CASE_SCHEMA, "case_id": row["case_id"], "profile": profile,
             "row_hash": row["row_sha256"], "role": row["case_role"],
             "boundary_mode": row["pressure_mode"], "authorization_id": context.authorization_id,
             "authorized_head": context.authorized_head, "authorized_tree": context.authorized_tree,
             "status": status, "started_at_utc": started, "ended_at_utc": utc_now(),
-            "solver_settings": profile, "rhs_evaluations": nfev, "stop_disposition": stop,
+            "solver_settings": profile, "rhs_evaluations": nfev,
+            "rhs_evaluations_status": rhs_status,
+            "execution_failure_class": execution_failure_class, "stop_disposition": stop,
             "linear_solve_status": linear_status, "residual_status": "PASS" if status == "COMPLETE" else status,
             "metric_primitives": metrics, "evidence_kind": context.evidence_kind}
 
@@ -522,21 +531,41 @@ def _execute_dynamic_case(store: CanonicalStore, case_id: str, profile: str,
             events.extend((lower, upper))
     try:
         solved = solve_ivp_impl(rhs, (0., 1.), y0, method="DOP853", dense_output=True,
-                                events=events or None, **settings)
+                                events=events or None, first_step=protocol.DYNAMIC_FIRST_STEP, **settings)
     except ValueError as exc:
+        if not (str(exc).startswith("STOP_") or str(exc).startswith("LINEAR_REFINED_")):
+            return _case_record(row, profile, context, "FAILED", {}, synthetic=synthetic,
+                started=started, nfev=nfev, stop=type(exc).__name__ + ":" + str(exc),
+                execution_failure_class="IMPLEMENTATION_EXCEPTION")
         status = "CAPPED" if "MAX_RHS" in str(exc) else "STOPPED"
         return _case_record(row, profile, context, status, {}, synthetic=synthetic,
                             started=started, nfev=nfev, stop=str(exc))
+    except Exception as exc:
+        return _case_record(row, profile, context, "FAILED", {}, synthetic=synthetic,
+            started=started, nfev=nfev, stop=type(exc).__name__ + ":" + str(exc),
+            execution_failure_class="IMPLEMENTATION_EXCEPTION")
     if not solved.success or solved.sol is None:
         return _case_record(row, profile, context, "FAILED", {}, synthetic=synthetic,
                             started=started, nfev=nfev, stop=str(solved.message))
     if hasattr(solved, "nfev") and solved.nfev != nfev:
         return _case_record(row, profile, context, "FAILED", {}, synthetic=synthetic,
                             started=started, nfev=nfev, stop="RHS_COUNTER_NFEV_MISMATCH")
+    raw_t_events = getattr(solved, "t_events", None)
+    raw_y_events = getattr(solved, "y_events", None)
+    t_events = raw_t_events if raw_t_events is not None else ()
+    y_events = raw_y_events if raw_y_events is not None else ()
+    if events and (len(t_events) != len(events) or len(y_events) != len(events)):
+        return _case_record(row, profile, context, "FAILED", {}, synthetic=synthetic,
+            started=started, nfev=nfev, stop="EVENT_RESULT_STRUCTURE_INCONSISTENT",
+            execution_failure_class="NUMERICAL_CASE_DISPOSITION")
     located = []
-    for index, times in enumerate(getattr(solved, "t_events", ())):
+    for index, times in enumerate(t_events):
+        if index >= len(y_events) or len(y_events[index]) != len(times):
+            return _case_record(row, profile, context, "FAILED", {}, synthetic=synthetic,
+                started=started, nfev=nfev, stop="EVENT_RESULT_STRUCTURE_INCONSISTENT",
+                execution_failure_class="NUMERICAL_CASE_DISPOSITION")
         for event_index, tau_event in enumerate(times):
-            states = getattr(solved, "y_events", ())[index]
+            states = y_events[index]
             event_state = states[event_index]
             sector = index // 2; bound = "LOWER_BOUND" if index % 2 == 0 else "UPPER_BOUND"
             x_value = event_state[n + (1 if machine else 0) + sector]
@@ -550,15 +579,20 @@ def _execute_dynamic_case(store: CanonicalStore, case_id: str, profile: str,
         return _case_record(row, profile, context, "STOPPED", {"terminal_tau": selected["tau"]}, synthetic=synthetic,
                             started=started, nfev=nfev, stop=protocol.MULTIPLIER_STOP + ":" +
                             canonical_json(selected))
-    sample1001 = solved.sol([i / 1000 for i in range(1001)])
-    final_p = tuple(float(sample1001[i][-1]) for i in range(n))
-    final_state = [float(sample1001[i][-1]) for i in range(len(sample1001))]
-    final_x = final_state[n + (1 if machine else 0):]
-    final_evolved = _evolved_primitives(row, base, final_x)
-    aux = {"gd": [1 / x for x in final_evolved["R_d_i"]], "ge": float(row["lateral_edge_conductance_G_edge"])}
-    metrics = _flow_metrics(final_p, aux, row)
-    h1001, integral1001 = _dynamic_hq_grid(row, base, storage, startup, solved.sol, 1001)
-    h2001, integral2001 = _dynamic_hq_grid(row, base, storage, startup, solved.sol, 2001)
+    try:
+        sample1001 = solved.sol([i / 1000 for i in range(1001)])
+        final_p = tuple(float(sample1001[i][-1]) for i in range(n))
+        final_state = [float(sample1001[i][-1]) for i in range(len(sample1001))]
+        final_x = final_state[n + (1 if machine else 0):]
+        final_evolved = _evolved_primitives(row, base, final_x)
+        aux = {"gd": [1 / x for x in final_evolved["R_d_i"]], "ge": float(row["lateral_edge_conductance_G_edge"])}
+        metrics = _flow_metrics(final_p, aux, row)
+        h1001, integral1001 = _dynamic_hq_grid(row, base, storage, startup, solved.sol, 1001)
+        h2001, integral2001 = _dynamic_hq_grid(row, base, storage, startup, solved.sol, 2001)
+    except Exception as exc:
+        return _case_record(row, profile, context, "FAILED", {}, synthetic=synthetic,
+            started=started, nfev=nfev, stop=type(exc).__name__ + ":" + str(exc),
+            execution_failure_class="IMPLEMENTATION_EXCEPTION")
     metrics.update({"H_q_endpoint": metrics["H_q"], "H_q_integral_1001": integral1001,
         "H_q_integral_2001": integral2001, "H_q_grid_1001_count": len(h1001),
         "H_q_grid_2001_count": len(h2001), "final_multipliers": final_evolved["multipliers"],
@@ -767,18 +801,32 @@ def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _V
         raise ValueError("REAL_GRAPH_REQUIRES_REAL_STAGE_A_CONTEXT")
     plan = build_plan(store); completed = reused = 0
     manifest = result_store.begin_run(context, plan["total_keys"])
+    infrastructure_failure = False
     for case_id, profile in plan["keys"]:
         if result_store.reusable(manifest, case_id, profile):
             reused += 1; continue
         if interrupt_after is not None and completed >= interrupt_after:
             break
         row = store.row(case_id)
-        record = _execute_canonical_case(store, row, profile, context)
+        try:
+            record = _execute_canonical_case(store, row, profile, context)
+        except Exception as exc:
+            record = _case_record(row, profile, context, "FAILED", {}, synthetic=False,
+                started=utc_now(), nfev=None, stop=type(exc).__name__ + ":" + str(exc),
+                execution_failure_class="IMPLEMENTATION_EXCEPTION",
+                rhs_evaluations_status="NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION")
         result_store.write_record(manifest, record); completed += 1
+        if record.get("execution_failure_class") in ("IMPLEMENTATION_EXCEPTION", "SHARED_INFRASTRUCTURE_FAILURE"):
+            infrastructure_failure = True
+            break
     store_summary = summarize(result_store)
-    result_store.finish_run(manifest, store_summary)
+    remaining = plan["total_keys"] - completed - reused
+    result_store.finish_run(manifest, store_summary,
+        status="INFRASTRUCTURE_FAILURE" if infrastructure_failure else None,
+        unattempted_keys=remaining if infrastructure_failure else None)
     return {"planned": plan["total_keys"], "completed_now": completed, "reused": reused,
-            "remaining": plan["total_keys"] - completed - reused, "backend": context.backend,
+            "remaining": remaining, "backend": context.backend,
+            "infrastructure_failures": 1 if infrastructure_failure else 0,
             "status_counts": store_summary["statuses"]}
 
 
@@ -890,7 +938,10 @@ def _execute_canonical_pilot_case(store: CanonicalStore, row: Mapping[str, objec
                 "case_wall_time_ns": wall_end - wall_start,
                 "case_cpu_time_ns": cpu_end - cpu_start, "solver_status": "EXCEPTION",
                 "failure_disposition": type(exc).__name__ + ":" + str(exc),
-                "rhs_evaluations": 0, "linear_solve_status": "NOT_AVAILABLE",
+                "rhs_evaluations": None,
+                "rhs_evaluations_status": "NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION",
+                "execution_failure_class": "IMPLEMENTATION_EXCEPTION",
+                "linear_solve_status": "NOT_AVAILABLE",
                 "stop_disposition": None, "canonical_outcome_serialized_bytes": 0}
     wall_end = time.perf_counter_ns(); cpu_end = time.process_time_ns()
     encoded_size = len(canonical_json(outcome).encode("utf-8"))
@@ -898,7 +949,9 @@ def _execute_canonical_pilot_case(store: CanonicalStore, row: Mapping[str, objec
             "case_wall_time_ns": wall_end - wall_start,
             "case_cpu_time_ns": cpu_end - cpu_start,
             "solver_status": outcome.get("status", "FAILED"),
-            "rhs_evaluations": int(outcome.get("rhs_evaluations", 0)),
+            "rhs_evaluations": outcome.get("rhs_evaluations"),
+            "rhs_evaluations_status": outcome.get("rhs_evaluations_status", "MEASURED"),
+            "execution_failure_class": outcome.get("execution_failure_class", "NUMERICAL_CASE_DISPOSITION"),
             "linear_solve_status": outcome.get("linear_solve_status", "NOT_APPLICABLE"),
             "residual_status": outcome.get("residual_status", "NOT_AVAILABLE"),
             "stop_disposition": outcome.get("stop_disposition"),
@@ -920,6 +973,7 @@ def execute_authorized_pilot(*, pilot_authority_path: Path, allowlist_path: Path
         run_id=sha256_bytes(canonical_json(material).encode())[:24])
     store = CanonicalStore.load(); results = ResultStore(output, store)
     manifest = results.begin_run(context, plan["key_count"])
+    infrastructure_failure = False
     for case_id, profile in map(tuple, plan["keys"]):
         diagnostic = _execute_canonical_pilot_case(store, store.row(case_id), profile, context)
         if not isinstance(diagnostic, dict) or "status" not in diagnostic:
@@ -927,22 +981,41 @@ def execute_authorized_pilot(*, pilot_authority_path: Path, allowlist_path: Path
         record = _case_record(store.row(case_id), profile, context, diagnostic["status"],
             {"diagnostic_timing_only": {key: value for key, value in diagnostic.items() if key != "status"}},
             synthetic=False, started=diagnostic["started_at_utc"],
-            nfev=int(diagnostic.get("rhs_evaluations", 0)), stop=diagnostic.get("stop_disposition"))
+            nfev=diagnostic.get("rhs_evaluations"), stop=diagnostic.get("stop_disposition"),
+            execution_failure_class=diagnostic.get("execution_failure_class", "NUMERICAL_CASE_DISPOSITION"),
+            rhs_evaluations_status=diagnostic.get("rhs_evaluations_status"))
         results.write_record(manifest, record)
-    summary = summarize(results); results.finish_run(manifest, summary)
+        if record["execution_failure_class"] in ("IMPLEMENTATION_EXCEPTION", "SHARED_INFRASTRUCTURE_FAILURE"):
+            infrastructure_failure = True
+            break
+    summary = summarize(results)
+    remaining = plan["key_count"] - summary["records"]
+    results.finish_run(manifest, summary,
+        status="INFRASTRUCTURE_FAILURE" if infrastructure_failure else None,
+        unattempted_keys=remaining if infrastructure_failure else None)
     return {"planned": plan["key_count"], "completed": summary["records"],
+            "remaining": remaining, "infrastructure_failures": 1 if infrastructure_failure else 0,
             "evidence_kind": PILOT_EVIDENCE, "reuse": "DISABLED"}
 
 
 def summarize(result_store: ResultStore) -> dict:
     manifest = result_store.load_manifest() if result_store.manifest_path.exists() else None
     counts = {status: 0 for status in RESULT_STATUSES}; evidence = set(); records = 0
+    failure_classes = {}; projection_eligible = 0; complete_horizon_samples = 0
     for path in sorted((result_store.root / "cases").glob("*/*.json")) if (result_store.root / "cases").exists() else []:
         if manifest is None:
             raise ValueError("SUMMARY_REQUIRES_RUN_MANIFEST")
         record = result_store.read_bound_record(manifest, path.parent.name, path.stem)
         counts[record["status"]] += 1; evidence.add(record["evidence_kind"]); records += 1
-    return {"records": records, "statuses": counts, "evidence_kinds": sorted(evidence), "solver_calls": 0}
+        failure_class = record.get("execution_failure_class", "NUMERICAL_CASE_DISPOSITION")
+        failure_classes[failure_class] = failure_classes.get(failure_class, 0) + 1
+        if failure_class not in ("IMPLEMENTATION_EXCEPTION", "SHARED_INFRASTRUCTURE_FAILURE"):
+            projection_eligible += 1
+            if record["status"] == "COMPLETE": complete_horizon_samples += 1
+    return {"records": records, "statuses": counts, "failure_classes": failure_classes,
+            "projection_eligible_records": projection_eligible,
+            "complete_horizon_projection_records": complete_horizon_samples,
+            "evidence_kinds": sorted(evidence), "solver_calls": 0}
 
 
 def _cli() -> argparse.ArgumentParser:

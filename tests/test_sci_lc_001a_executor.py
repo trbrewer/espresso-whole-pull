@@ -461,6 +461,119 @@ class SciLc001aExecutorTests(unittest.TestCase):
                                                  synthetic=True, solve_ivp_impl=solver)
         self.assertEqual(record["status"], "STOPPED"); self.assertEqual(record["rhs_evaluations"], 1)
 
+    def test_no_event_none_and_absent_results_process_with_actual_nfev(self):
+        row = dict(next(r for r in self.canonical.rows if r["pressure_mode"] == "PRESCRIBED_DYNAMIC_RAMP"
+                        and r["resistance_evolution_law"] == "NO_EVOLUTION"))
+        row.update(case_id="DIAGNOSTIC_FIXTURE_ONLY.no_event", row_sha256="DIAGNOSTIC_FIXTURE_ONLY")
+        fake = mock.Mock(); fake.row.return_value = row; n = row["sector_count"]
+        def make_solver(with_none):
+            class Solution:
+                success = True; message = "complete"; nfev = 1
+                if with_none:
+                    t_events = None; y_events = None
+                @staticmethod
+                def sol(times):
+                    return [[float(t) for t in times] for _ in range(n)]
+            def solver(rhs, interval, y0, **kwargs):
+                self.assertEqual(kwargs["first_step"], protocol.DYNAMIC_FIRST_STEP)
+                rhs(0., y0); return Solution()
+            return solver
+        for with_none in (False, True):
+            record = executor._execute_dynamic_case(fake, row["case_id"], "BASE",
+                self.synthetic_context("/tmp"), synthetic=True, solve_ivp_impl=make_solver(with_none))
+            self.assertEqual(record["status"], "COMPLETE")
+            self.assertEqual(record["rhs_evaluations"], 1)
+
+    def test_event_result_structure_failure_retains_actual_nfev(self):
+        row = dict(next(r for r in self.canonical.rows if r["pressure_mode"] == "PRESCRIBED_DYNAMIC_RAMP"
+                        and r["resistance_evolution_law"] != "NO_EVOLUTION"))
+        row.update(case_id="DIAGNOSTIC_FIXTURE_ONLY.bad_events", row_sha256="DIAGNOSTIC_FIXTURE_ONLY")
+        fake = mock.Mock(); fake.row.return_value = row
+        class Solution:
+            success=True; message="complete"; nfev=1; t_events=(); y_events=(); sol=mock.Mock()
+        def solver(rhs, interval, y0, **kwargs): rhs(0., y0); return Solution()
+        record = executor._execute_dynamic_case(fake, row["case_id"], "BASE",
+            self.synthetic_context("/tmp"), synthetic=True, solve_ivp_impl=solver)
+        self.assertEqual(record["stop_disposition"], "EVENT_RESULT_STRUCTURE_INCONSISTENT")
+        self.assertEqual(record["rhs_evaluations"], 1)
+
+    def test_real_scipy_fixture_startup_and_no_event_regressions(self):
+        ids = ("SCI-LC-001A.d2.00b933e6816e891dc7e28a89",
+               "SCI-LC-001A.d3meq.0061cf3ba15ffea327832067",
+               "SCI-LC-001A.d3mloc.04e0df973f29194ff1b2ee60",
+               "SCI-LC-001A.d3meq.505047457ab446cc447eef02")
+        for case_id in ids:
+            row = dict(self.canonical.row(case_id)); row.update(
+                case_id="DIAGNOSTIC_FIXTURE_ONLY." + case_id, row_sha256="DIAGNOSTIC_FIXTURE_ONLY")
+            fake = mock.Mock(); fake.row.return_value = row
+            profiles = protocol.DYNAMIC_NUMERICAL_PROFILES if "d2." in case_id else ("BASE", "STARTUP_REFINED")
+            for profile in profiles:
+                record = executor._execute_dynamic_case(fake, row["case_id"], profile,
+                    self.synthetic_context("/tmp"), synthetic=True)
+                self.assertEqual(record["status"], "COMPLETE")
+                self.assertGreater(record["rhs_evaluations"], 3)
+
+    def test_persistent_zero_flow_still_stops_after_startup_window(self):
+        row = dict(next(r for r in self.canonical.rows if r["pressure_mode"] == "PRESCRIBED_DYNAMIC_RAMP"
+                        and r["resistance_evolution_law"] != "NO_EVOLUTION"))
+        row.update(case_id="DIAGNOSTIC_FIXTURE_ONLY.persistent_zero", row_sha256="DIAGNOSTIC_FIXTURE_ONLY")
+        fake = mock.Mock(); fake.row.return_value = row
+        def solver(rhs, interval, y0, **kwargs):
+            rhs(0., y0)
+            rhs(2 * protocol.REFINED_STARTUP_TAU_MAX, y0)
+            raise AssertionError("persistent zero did not stop")
+        record = executor._execute_dynamic_case(fake, row["case_id"], "STARTUP_REFINED",
+            self.synthetic_context("/tmp"), synthetic=True, solve_ivp_impl=solver)
+        self.assertEqual(record["status"], "STOPPED")
+        self.assertIn("ZERO_TOTAL_FLOW", record["stop_disposition"])
+        self.assertEqual(record["rhs_evaluations"], 2)
+
+    def test_pilot_adapter_unknown_exception_count_is_not_zero(self):
+        row = next(item for item in self.canonical.rows if item["pressure_mode"] != "PRESCRIBED_STATIC")
+        context = self.real_context("/tmp", executor.PILOT_EVIDENCE, "DIAGNOSTIC_TIMING_PILOT")
+        with mock.patch.object(executor, "_execute_canonical_case", side_effect=TypeError("fixture")), \
+             mock.patch.object(executor.time, "perf_counter_ns", side_effect=(1, 4)), \
+             mock.patch.object(executor.time, "process_time_ns", side_effect=(2, 7)):
+            diagnostic = executor._execute_canonical_pilot_case(self.canonical, row, "BASE", context)
+        self.assertIsNone(diagnostic["rhs_evaluations"])
+        self.assertEqual(diagnostic["rhs_evaluations_status"],
+                         "NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION")
+        self.assertEqual(diagnostic["execution_failure_class"], "IMPLEMENTATION_EXCEPTION")
+
+    def test_pilot_implementation_exception_is_truthful_and_aborts(self):
+        rows = [row for row in self.canonical.rows if row["pressure_mode"] == "PRESCRIBED_STATIC"][:3]
+        with tempfile.TemporaryDirectory() as name:
+            output = Path(name) / "pilot-output"
+            authority = {"authorization_id":"FIXTURE", "authorized_head":"H", "authorized_tree":"T",
+                "matrix_semantic_sha256":self.canonical.matrix_hash,
+                "protocol_artifact_sha256":self.canonical.protocol_hash,
+                "executor_source_sha256":executor.sha256_file(Path(executor.__file__)),
+                "backend":executor.REAL_BACKEND,"evidence_kind":executor.PILOT_EVIDENCE}
+            plan={"key_count":3,"keys":[[r["case_id"],"BASE"] for r in rows],"authority":authority}
+            complete={"status":"COMPLETE","started_at_utc":"FIXTURE","case_wall_time_ns":1,
+                "case_cpu_time_ns":1,"rhs_evaluations":0,"rhs_evaluations_status":"MEASURED",
+                "execution_failure_class":"NUMERICAL_CASE_DISPOSITION","linear_solve_status":"PASS",
+                "stop_disposition":None,"canonical_outcome_serialized_bytes":1}
+            failure={"status":"FAILED","started_at_utc":"FIXTURE","case_wall_time_ns":2,
+                "case_cpu_time_ns":2,"rhs_evaluations":None,
+                "rhs_evaluations_status":"NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION",
+                "execution_failure_class":"IMPLEMENTATION_EXCEPTION","linear_solve_status":"NOT_AVAILABLE",
+                "stop_disposition":None,"failure_disposition":"TypeError:fixture",
+                "canonical_outcome_serialized_bytes":0}
+            sentinel=mock.Mock(side_effect=[complete,failure,AssertionError("third launched")])
+            with mock.patch.object(executor,"pilot_plan",return_value=plan), \
+                 mock.patch.object(executor.CanonicalStore,"load",return_value=self.canonical), \
+                 mock.patch.object(executor,"_execute_canonical_pilot_case",side_effect=sentinel):
+                result=executor.execute_authorized_pilot(pilot_authority_path=Path("/fixture"),
+                    allowlist_path=Path("/fixture"),output_root=output)
+            self.assertEqual(sentinel.call_count,2)
+            self.assertEqual((result["completed"],result["remaining"],result["infrastructure_failures"]),(2,1,1))
+            store=executor.ResultStore(output,self.canonical); manifest=store.load_manifest()
+            self.assertEqual(manifest["status"],"INFRASTRUCTURE_FAILURE")
+            summary=executor.summarize(store)
+            self.assertEqual(summary["failure_classes"]["IMPLEMENTATION_EXCEPTION"],1)
+            self.assertEqual(summary["projection_eligible_records"],1)
+
     def test_classifier_precedence_fixture(self):
         f = executor._classification_precedence_fixture
         self.assertEqual(f(authority_invalid=True, metrics=((.5,0),(.5,0))), "AUTHORITY_OR_ARTIFACT_INVALID")
