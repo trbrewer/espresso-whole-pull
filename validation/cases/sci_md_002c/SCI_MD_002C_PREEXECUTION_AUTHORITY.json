@@ -620,13 +620,13 @@
     "feasibility_bounds": "e2c7b127bfb9758498f1953cf3c490b590c790abc80dcf2c1c002e80192aef6c",
     "human_protocol": "cc264eaa757703387a3d44d3041acf3be00dc57047eedc181393a415ca3fbbc3",
     "implementation": "9ce0d75a1fddb25c1cb490011dada4657a15bac0b962c462b3aeca518de9821e",
-    "lane_declaration": "6c412784d980bcaffa73a24c29a8722815296ada33e571be3794b506cc32833a",
+    "lane_declaration": "88cc276c952980ccafe09b193d503d7f7e7093103aa8c5469aed2a9d14addeba",
     "machine_protocol": "64f524e558fc7f173cff321512aa024d1dec519c66fed6c8e23dbe98e588c20d",
     "matrix_csv": "ba23e1805f7a568ff45dbd530cc10ab9909704e8d07de3eec1106f8447b59683",
     "matrix_json": "acbd214a7429c072c808b78fa16b677666169fb08dd36b2a70be372ca7d85149",
     "pilot_report": "becf46f0e0a4e3a4ef6ca632ec6b86440b39481807d8974cd577243c6b462a54",
     "puckworks_reference": "1bd0133ca1259693b5bfcd1b0cf2c5d71735e64a5a78d433e02566932053ab6c",
-    "source_manifest": "54a6c20ea1ebd495338a314fc9678d6c2bc7adce5e534d9ee8c2bbd7b52c4c01",
+    "source_manifest": "79c726852fb0cd152c660d90d36644e8155e9dd8249ccdb084c403d3a7fb2fd9",
     "source_overlay": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e"
   },
   "lane_id": "EWP-PAR-SCI-MD-002C",
@@ -646,8 +646,8 @@
     "report_sha256": "becf46f0e0a4e3a4ef6ca632ec6b86440b39481807d8974cd577243c6b462a54"
   },
   "prospective_execution_source": {
-    "head": "248253fa7e60cd1bff61e5e6cf97057f0e431cec",
-    "tree": "1c886bac523db0bd53035d5fe4bc3ddb581fcb34"
+    "head": "5c67b9df53cacd1a397c6496e2cf6b4b3835ea3e",
+    "tree": "46c3d4076e62f838be04b69937bb8409da4b6c46"
   },
   "puckworks": {
     "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
