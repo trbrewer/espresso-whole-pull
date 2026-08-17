@@ -35,6 +35,17 @@ class SciLc001aExecutorTests(unittest.TestCase):
     def synthetic_context(self, root):
         return executor._synthetic_context(self.canonical, Path(root))
 
+    def real_context(self, root, evidence=executor.REAL_BACKEND,
+                     mode="execute"):
+        material = {"authorization_id": "SENTINEL_AUTHORITY_ONLY", "authorized_head": "H",
+            "authorized_tree": "T", "matrix_hash": self.canonical.matrix_hash,
+            "protocol_hash": self.canonical.protocol_hash,
+            "executor_identity": executor.sha256_file(Path(executor.__file__)),
+            "execution_mode": mode, "backend": executor.REAL_BACKEND,
+            "evidence_kind": evidence, "output_root": str(root)}
+        return executor._ValidatedExecutionContext(**material,
+            run_id=executor.sha256_bytes(executor.canonical_json(material).encode())[:24])
+
     def test_denominator_floor_is_fixed_and_not_overridable(self):
         active = next(row for row in self.canonical.rows if row["case_role"] == "ACTIVE_SCIENTIFIC_CASE"
                       and row["pressure_mode"] == "PRESCRIBED_STATIC")
@@ -159,13 +170,50 @@ class SciLc001aExecutorTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"VALIDATED_EXECUTION_CONTEXT"):
             executor._execute_dynamic_case(self.canonical,dynamic["case_id"],"BASE",{})
 
+    def test_public_real_execution_has_no_launcher_injection(self):
+        signature = inspect.signature(executor.execute_authorized_graph)
+        for name in ("real_launcher", "launcher", "case_runner", "callback", "executor_callback"):
+            self.assertNotIn(name, signature.parameters)
+            with self.assertRaises(TypeError):
+                executor.execute_authorized_graph(execution_authority_path=Path("/missing"),
+                    output_root=Path("/tmp/missing"), **{name: mock.Mock()})
+        self.assertNotIn("_execute_canonical_case", executor.__all__)
+
+    def test_canonical_dispatch_is_fixed_by_row_mode(self):
+        static = next(row for row in self.canonical.rows if row["pressure_mode"] == "PRESCRIBED_STATIC")
+        dynamic = next(row for row in self.canonical.rows if row["pressure_mode"] != "PRESCRIBED_STATIC")
+        context = self.real_context("/tmp")
+        static_result = {"status": "COMPLETE", "evidence_kind": executor.REAL_BACKEND}
+        dynamic_result = {"status": "COMPLETE", "evidence_kind": executor.REAL_BACKEND}
+        with mock.patch.object(executor, "_execute_static_case", return_value=static_result) as static_call, \
+             mock.patch.object(executor, "_execute_dynamic_case", return_value=dynamic_result) as dynamic_call:
+            self.assertIs(executor._execute_canonical_case(self.canonical, static, "BASE", context), static_result)
+            static_call.assert_called_once(); dynamic_call.assert_not_called()
+            static_call.reset_mock()
+            self.assertIs(executor._execute_canonical_case(self.canonical, dynamic, "BASE", context), dynamic_result)
+            dynamic_call.assert_called_once(); static_call.assert_not_called()
+            with self.assertRaisesRegex(ValueError, "PROFILE_NOT_AUTHORIZED"):
+                executor._execute_canonical_case(self.canonical, static, "INTEGRATOR_REFINED", context)
+
+    def test_synthetic_injection_cannot_write_real_evidence(self):
+        with tempfile.TemporaryDirectory() as name:
+            context = self.synthetic_context(name)
+            store = executor.ResultStore(Path(name), self.canonical)
+            def forged(row, profile, _context):
+                return {**executor.synthetic_backend_record(row, profile, context),
+                        "evidence_kind": executor.REAL_BACKEND}
+            with self.assertRaisesRegex(ValueError, "SYNTHETIC_RUNNER_EVIDENCE"):
+                executor._execute_graph_synthetic_test_only(
+                    self.canonical, store, context, interrupt_after=1, test_runner=forged)
+
     def test_synthetic_full_graph_atomic_store_and_resume(self):
         with tempfile.TemporaryDirectory() as name:
             store = executor.ResultStore(Path(name), self.canonical)
             context = self.synthetic_context(name)
-            first = executor._execute_graph(self.canonical, store, context, interrupt_after=37)
+            first = executor._execute_graph_synthetic_test_only(
+                self.canonical, store, context, interrupt_after=37)
             self.assertEqual((first["completed_now"], first["remaining"]), (37, 3629))
-            resumed = executor._execute_graph(self.canonical, store, context)
+            resumed = executor._execute_graph_synthetic_test_only(self.canonical, store, context)
             self.assertEqual((resumed["completed_now"], resumed["reused"], resumed["remaining"]),
                              (3629, 37, 0))
             summary = executor.summarize(store)
@@ -177,7 +225,8 @@ class SciLc001aExecutorTests(unittest.TestCase):
     def test_authoritative_gain_uncertainty_and_synthetic_classification_block(self):
         with tempfile.TemporaryDirectory() as name:
             results = executor.ResultStore(Path(name), self.canonical)
-            executor._execute_graph(self.canonical, results, self.synthetic_context(name))
+            executor._execute_graph_synthetic_test_only(
+                self.canonical, results, self.synthetic_context(name))
             active = next(row for row in self.canonical.rows if row["case_role"] == "ACTIVE_SCIENTIFIC_CASE"
                           and row["pressure_mode"] == "PRESCRIBED_STATIC" and
                           row["numerical_resolution_role"] == "PRIMARY")
@@ -376,7 +425,8 @@ class SciLc001aExecutorTests(unittest.TestCase):
     def test_manifest_binding_rejects_recomputed_tamper(self):
         with tempfile.TemporaryDirectory() as name:
             store = executor.ResultStore(Path(name), self.canonical); context = self.synthetic_context(name)
-            executor._execute_graph(self.canonical, store, context, interrupt_after=1)
+            executor._execute_graph_synthetic_test_only(
+                self.canonical, store, context, interrupt_after=1)
             manifest = store.load_manifest(); case_id, profile = map(str, self.plan["keys"][0])
             path = store.record_path(case_id, profile); record = json.loads(path.read_text())
             self.assertTrue(store.reusable(manifest, case_id, profile))
@@ -456,6 +506,70 @@ class SciLc001aExecutorTests(unittest.TestCase):
             pilot_store.begin_run(context,0)
             with self.assertRaisesRegex(ValueError,"DIAGNOSTIC_TIMING"):
                 executor.classify_stage_a_evidence(self.canonical,pilot_store,self.plan["keys"][0][0])
+
+    def test_public_pilot_has_no_callback_and_cli_binds_adapter(self):
+        signature = inspect.signature(executor.execute_authorized_pilot)
+        for name in ("launcher", "real_launcher", "callback", "case_runner",
+                     "timing_result", "status_result"):
+            self.assertNotIn(name, signature.parameters)
+            with self.assertRaises(TypeError):
+                executor.execute_authorized_pilot(pilot_authority_path=Path("/missing"),
+                    allowlist_path=Path("/missing"), output_root=Path("/tmp/missing"),
+                    **{name: object()})
+        with tempfile.TemporaryDirectory() as name, \
+             mock.patch.object(executor, "execute_authorized_pilot", return_value={}) as bound:
+            rc = executor.main(["--mode", "pilot-execute", "--output-root", name,
+                "--pilot-authority", "/fixture/authority.json",
+                "--pilot-allowlist", "/fixture/allowlist.json"])
+            self.assertEqual(rc, 0); bound.assert_called_once()
+
+    def test_pilot_adapter_measures_canonical_outcome_internally(self):
+        row = next(item for item in self.canonical.rows if item["pressure_mode"] != "PRESCRIBED_STATIC")
+        context = self.real_context("/tmp", executor.PILOT_EVIDENCE,
+                                    "DIAGNOSTIC_TIMING_PILOT")
+        outcome = {"status": "STOPPED", "rhs_evaluations": 17,
+            "linear_solve_status": "NOT_APPLICABLE", "residual_status": "STOPPED",
+            "stop_disposition": "SYNTHETIC_SENTINEL_STOP", "metric_primitives": {"invented": 99}}
+        with mock.patch.object(executor, "_execute_canonical_case", return_value=outcome) as canonical, \
+             mock.patch.object(executor.time, "perf_counter_ns", side_effect=(100, 175)), \
+             mock.patch.object(executor.time, "process_time_ns", side_effect=(20, 55)):
+            diagnostic = executor._execute_canonical_pilot_case(self.canonical, row, "BASE", context)
+        canonical.assert_called_once()
+        self.assertEqual(diagnostic["case_wall_time_ns"], 75)
+        self.assertEqual(diagnostic["case_cpu_time_ns"], 35)
+        self.assertEqual(diagnostic["rhs_evaluations"], 17)
+        self.assertEqual(diagnostic["status"], "STOPPED")
+        self.assertNotIn("metric_primitives", diagnostic)
+
+    def test_public_pilot_persists_only_internal_diagnostic_adapter_result(self):
+        row = next(item for item in self.canonical.rows if item["pressure_mode"] == "PRESCRIBED_STATIC")
+        with tempfile.TemporaryDirectory() as name:
+            output = Path(name) / "pilot-output"
+            authority = {"authorization_id": "SENTINEL_PILOT_ONLY", "authorized_head": "H",
+                "authorized_tree": "T", "matrix_semantic_sha256": self.canonical.matrix_hash,
+                "protocol_artifact_sha256": self.canonical.protocol_hash,
+                "executor_source_sha256": executor.sha256_file(Path(executor.__file__)),
+                "backend": executor.REAL_BACKEND, "evidence_kind": executor.PILOT_EVIDENCE}
+            plan = {"key_count": 1, "keys": [[row["case_id"], "BASE"]], "authority": authority}
+            diagnostic = {"status": "COMPLETE", "started_at_utc": "SYNTHETIC_SENTINEL",
+                "case_wall_time_ns": 41,
+                "case_cpu_time_ns": 19, "rhs_evaluations": 0,
+                "linear_solve_status": "PASS", "residual_status": "PASS",
+                "stop_disposition": None, "canonical_outcome_serialized_bytes": 123}
+            with mock.patch.object(executor, "pilot_plan", return_value=plan), \
+                 mock.patch.object(executor.CanonicalStore, "load", return_value=self.canonical), \
+                 mock.patch.object(executor, "_execute_canonical_pilot_case",
+                                   return_value=diagnostic) as adapter:
+                result = executor.execute_authorized_pilot(
+                    pilot_authority_path=Path("/sentinel/pilot.json"),
+                    allowlist_path=Path("/sentinel/allowlist.json"), output_root=output)
+            self.assertEqual(result["evidence_kind"], executor.PILOT_EVIDENCE)
+            adapter.assert_called_once()
+            store = executor.ResultStore(output, self.canonical); manifest = store.load_manifest()
+            record = store.read_bound_record(manifest, row["case_id"], "BASE")
+            self.assertEqual(record["evidence_kind"], executor.PILOT_EVIDENCE)
+            self.assertEqual(record["metric_primitives"], {"diagnostic_timing_only": {
+                key: value for key, value in diagnostic.items() if key != "status"}})
 
 
 if __name__ == "__main__":

@@ -16,6 +16,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import time
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -737,25 +738,42 @@ def synthetic_backend_record(row: dict, profile: str, context: _ValidatedExecuti
                         started="SYNTHETIC_DETERMINISTIC", nfev=0)
 
 
-def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _ValidatedExecutionContext,
-                  *, interrupt_after: int | None = None,
-                  real_launcher: Callable = None) -> dict:
+def _execute_canonical_case(store: CanonicalStore, row: Mapping[str, object], profile: str,
+                            context: _ValidatedExecutionContext) -> dict:
+    """Dispatch one authority-bound real calculation; callers cannot replace it."""
     if not isinstance(context, _ValidatedExecutionContext):
         raise ValueError("VALIDATED_EXECUTION_CONTEXT_REQUIRED")
+    if context.backend != REAL_BACKEND or context.evidence_kind not in (REAL_BACKEND, PILOT_EVIDENCE):
+        raise ValueError("CANONICAL_DISPATCH_REQUIRES_REAL_VALIDATED_CONTEXT")
+    canonical = store.row(str(row.get("case_id")))
+    if canonical is not row and canonical != row:
+        raise ValueError("CANONICAL_DISPATCH_ROW_MISMATCH")
+    profiles = (protocol.STATIC_NUMERICAL_PROFILES if canonical["pressure_mode"] == "PRESCRIBED_STATIC"
+                else protocol.DYNAMIC_NUMERICAL_PROFILES)
+    if profile not in profiles:
+        raise ValueError("PROFILE_NOT_AUTHORIZED_FOR_ROW")
+    if canonical["pressure_mode"] == "PRESCRIBED_STATIC":
+        return _execute_static_case(store, canonical["case_id"], profile, context)
+    if canonical["pressure_mode"] in ("PRESCRIBED_DYNAMIC_RAMP", "MACHINE_COUPLED"):
+        return _execute_dynamic_case(store, canonical["case_id"], profile, context)
+    raise ValueError("UNSUPPORTED_CANONICAL_BOUNDARY_MODE")
+
+
+def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _ValidatedExecutionContext,
+                  *, interrupt_after: int | None = None) -> dict:
+    if not isinstance(context, _ValidatedExecutionContext):
+        raise ValueError("VALIDATED_EXECUTION_CONTEXT_REQUIRED")
+    if context.backend != REAL_BACKEND or context.evidence_kind != REAL_BACKEND:
+        raise ValueError("REAL_GRAPH_REQUIRES_REAL_STAGE_A_CONTEXT")
     plan = build_plan(store); completed = reused = 0
     manifest = result_store.begin_run(context, plan["total_keys"])
-    if context.backend == REAL_BACKEND and real_launcher is None:
-        real_launcher = lambda row, profile: (_execute_static_case(store, row["case_id"], profile, context)
-            if row["pressure_mode"] == "PRESCRIBED_STATIC" else
-            _execute_dynamic_case(store, row["case_id"], profile, context))
     for case_id, profile in plan["keys"]:
         if result_store.reusable(manifest, case_id, profile):
             reused += 1; continue
         if interrupt_after is not None and completed >= interrupt_after:
             break
         row = store.row(case_id)
-        record = (synthetic_backend_record(row, profile, context) if context.backend == SYNTHETIC_BACKEND
-                  else real_launcher(row, profile))
+        record = _execute_canonical_case(store, row, profile, context)
         result_store.write_record(manifest, record); completed += 1
     store_summary = summarize(result_store)
     result_store.finish_run(manifest, store_summary)
@@ -764,11 +782,36 @@ def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _V
             "status_counts": store_summary["statuses"]}
 
 
-def execute_authorized_graph(execution_authority_path: Path, output_root: Path,
-                             *, real_launcher: Callable | None = None) -> dict:
+def execute_authorized_graph(*, execution_authority_path: Path, output_root: Path) -> dict:
     store = CanonicalStore.load()
     context = validate_execution_authority(execution_authority_path, output_root, store)
-    return _execute_graph(store, ResultStore(output_root, store), context, real_launcher=real_launcher)
+    return _execute_graph(store, ResultStore(output_root, store), context)
+
+
+def _execute_graph_synthetic_test_only(store: CanonicalStore, result_store: ResultStore,
+        context: _ValidatedExecutionContext, *, interrupt_after: int | None = None,
+        test_runner: Callable[[dict, str, _ValidatedExecutionContext], dict] | None = None) -> dict:
+    """Exercise orchestration only; cannot accept or emit real/diagnostic evidence."""
+    if (not isinstance(context, _ValidatedExecutionContext) or context.backend != SYNTHETIC_BACKEND or
+            context.evidence_kind != SYNTHETIC_BACKEND):
+        raise ValueError("SYNTHETIC_TEST_ONLY_CONTEXT_REQUIRED")
+    runner = test_runner or synthetic_backend_record
+    plan = build_plan(store); completed = reused = 0
+    manifest = result_store.begin_run(context, plan["total_keys"])
+    for case_id, profile in plan["keys"]:
+        if result_store.reusable(manifest, case_id, profile):
+            reused += 1; continue
+        if interrupt_after is not None and completed >= interrupt_after:
+            break
+        record = runner(store.row(case_id), profile, context)
+        if record.get("evidence_kind") != SYNTHETIC_BACKEND:
+            raise ValueError("SYNTHETIC_RUNNER_EVIDENCE_KIND_VIOLATION")
+        result_store.write_record(manifest, record); completed += 1
+    store_summary = summarize(result_store)
+    result_store.finish_run(manifest, store_summary)
+    return {"planned": plan["total_keys"], "completed_now": completed, "reused": reused,
+            "remaining": plan["total_keys"] - completed - reused, "backend": context.backend,
+            "status_counts": store_summary["statuses"]}
 
 
 def _load_pilot_allowlist(path: Path, store: CanonicalStore) -> tuple[list[tuple[str, str]], str]:
@@ -829,13 +872,44 @@ def pilot_plan(pilot_authority_path: Path, allowlist_path: Path, output_root: Pa
         "authority": authority}
 
 
-def execute_authorized_pilot(pilot_authority_path: Path, allowlist_path: Path, output_root: Path,
-                             *, real_launcher: Callable | None = None) -> dict:
+def _execute_canonical_pilot_case(store: CanonicalStore, row: Mapping[str, object], profile: str,
+                                  context: _ValidatedExecutionContext) -> dict:
+    """Measure one canonical calculation and retain diagnostic-only information."""
+    if (not isinstance(context, _ValidatedExecutionContext) or context.backend != REAL_BACKEND or
+            context.evidence_kind != PILOT_EVIDENCE or
+            context.execution_mode != "DIAGNOSTIC_TIMING_PILOT"):
+        raise ValueError("VALIDATED_DIAGNOSTIC_PILOT_CONTEXT_REQUIRED")
+    started_at_utc = utc_now()
+    wall_start = time.perf_counter_ns()
+    cpu_start = time.process_time_ns()
+    try:
+        outcome = _execute_canonical_case(store, row, profile, context)
+    except Exception as exc:
+        wall_end = time.perf_counter_ns(); cpu_end = time.process_time_ns()
+        return {"status": "FAILED", "started_at_utc": started_at_utc,
+                "case_wall_time_ns": wall_end - wall_start,
+                "case_cpu_time_ns": cpu_end - cpu_start, "solver_status": "EXCEPTION",
+                "failure_disposition": type(exc).__name__ + ":" + str(exc),
+                "rhs_evaluations": 0, "linear_solve_status": "NOT_AVAILABLE",
+                "stop_disposition": None, "canonical_outcome_serialized_bytes": 0}
+    wall_end = time.perf_counter_ns(); cpu_end = time.process_time_ns()
+    encoded_size = len(canonical_json(outcome).encode("utf-8"))
+    return {"status": outcome["status"], "started_at_utc": started_at_utc,
+            "case_wall_time_ns": wall_end - wall_start,
+            "case_cpu_time_ns": cpu_end - cpu_start,
+            "solver_status": outcome.get("status", "FAILED"),
+            "rhs_evaluations": int(outcome.get("rhs_evaluations", 0)),
+            "linear_solve_status": outcome.get("linear_solve_status", "NOT_APPLICABLE"),
+            "residual_status": outcome.get("residual_status", "NOT_AVAILABLE"),
+            "stop_disposition": outcome.get("stop_disposition"),
+            "canonical_outcome_serialized_bytes": encoded_size}
+
+
+def execute_authorized_pilot(*, pilot_authority_path: Path, allowlist_path: Path,
+                             output_root: Path) -> dict:
     output = validate_external_output_root(output_root)
     if output.exists() and any(output.iterdir()): raise ValueError("PILOT_OUTPUT_ROOT_MUST_BE_NEW_OR_EMPTY")
     plan = pilot_plan(pilot_authority_path, allowlist_path, output)
-    if real_launcher is None:
-        raise ValueError("REAL_PILOT_LAUNCHER_NOT_BOUND")
     authority = plan["authority"]
     material = {"authorization_id": authority["authorization_id"],
         "authorized_head": authority["authorized_head"], "authorized_tree": authority["authorized_tree"],
@@ -847,12 +921,12 @@ def execute_authorized_pilot(pilot_authority_path: Path, allowlist_path: Path, o
     store = CanonicalStore.load(); results = ResultStore(output, store)
     manifest = results.begin_run(context, plan["key_count"])
     for case_id, profile in map(tuple, plan["keys"]):
-        diagnostic = real_launcher(store.row(case_id), profile, context)
+        diagnostic = _execute_canonical_pilot_case(store, store.row(case_id), profile, context)
         if not isinstance(diagnostic, dict) or "status" not in diagnostic:
             raise ValueError("INVALID_PILOT_DIAGNOSTIC_RESULT")
         record = _case_record(store.row(case_id), profile, context, diagnostic["status"],
             {"diagnostic_timing_only": {key: value for key, value in diagnostic.items() if key != "status"}},
-            synthetic=False, started=diagnostic.get("started_at_utc", utc_now()),
+            synthetic=False, started=diagnostic["started_at_utc"],
             nfev=int(diagnostic.get("rhs_evaluations", 0)), stop=diagnostic.get("stop_disposition"))
         results.write_record(manifest, record)
     summary = summarize(results); results.finish_run(manifest, summary)
@@ -902,11 +976,13 @@ def main(argv: list[str] | None = None) -> int:
         if args.mode == "pilot-plan":
             planned = pilot_plan(args.pilot_authority, args.pilot_allowlist, output)
             print(json.dumps({key: value for key, value in planned.items() if key != "authority"}, indent=2)); return 0
-        execute_authorized_pilot(args.pilot_authority, args.pilot_allowlist, output)
+        execute_authorized_pilot(pilot_authority_path=args.pilot_authority,
+                                 allowlist_path=args.pilot_allowlist, output_root=output)
         return 0
     if args.execution_authority is None:
         raise SystemExit("--execution-authority is required for execute")
-    summary = execute_authorized_graph(args.execution_authority, output)
+    summary = execute_authorized_graph(execution_authority_path=args.execution_authority,
+                                       output_root=output)
     print(json.dumps(summary, indent=2)); return 0
 
 
