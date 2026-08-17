@@ -168,7 +168,7 @@ def adjudicative_ids() -> list[str]:
     return ids
 
 def protocol(matrix_hash: str | None=None) -> dict[str, Any]:
-    return {"schema_version":"ewp.sci_md_002c.protocol.v1","task_id":TASK,"status":"PROSPECTIVE_IMPLEMENTATION_IN_PROGRESS",
+    return {"schema_version":"ewp.sci_md_002c.protocol.v1","task_id":TASK,"status":"PREEXECUTION_PACKAGE_COMPLETE_PENDING_INDEPENDENT_REVIEW",
       "source":{"overlay_path":str(OVERLAY.relative_to(ROOT)),"overlay_sha256":OVERLAY_SHA,"column_contract":["source_time_s","solver_time_s","observed_pressure_pa","reference_model_pressure_pa","observed_flow_kg_s","reference_model_flow_kg_s","observed_mass_kg","reference_model_mass_kg"],
       "forcing":"observed_pressure_pa","comparison_target":"observed_flow_kg_s","window":{"indices_inclusive":[100,899],"rows":800,"source_start_s":10.01001,"source_end_s":89.98999,"interpretation":"SATURATED_MODEL_APPROXIMATION_INHERITED_GOVERNED_PROTECTED_WINDOW","measured_saturation_event":False},"hydraulic_anchor":"one observed P9 full-overlay terminal-flow hydraulic scale transferred unchanged"},
       "model":{"chain":"observed pressure -> axial flow -> finite-inventory release -> conservative axial transport -> downstream deposition -> compact-layer resistance -> aggregate flow","release":"k_rel*(u/u_ref)^n*M_bound, shared across pressure","transport":"first-order conservative upwind finite volume; zero dispersion","retention":"0.5 and 1.0 primary bracket; no unproven full-retention dominance assumption","cake":"Rc=mu*alpha_c*m_dep/A^2 and h=m_dep/(rho_s*(1-epsilon_c)*A)","active_bed":"fixed; fines loss does not open bed"},
