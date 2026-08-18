@@ -183,6 +183,9 @@ def execute(bundle_arg,authority_arg):
     if any(authority.get(k)!=v for k,v in expected.items()):raise PermissionError("EXECUTION_AUTHORITY_MISMATCH")
     workers=max(1,min(8,(os.cpu_count() or 1)//8));(bundle/"authority").mkdir();(bundle/"adjudicative").mkdir();(bundle/"manifests").mkdir();(bundle/"logs").mkdir()
     (bundle/"authority/EXECUTION_AUTHORITY.json").write_text(canonical(authority));(bundle/"authority/ENVIRONMENT.json").write_text(canonical({"python":platform.python_version(),"logical_cpus":os.cpu_count(),"workers":workers,"nested_threads":1,"gpu":0,"openfoam":0,"puckworks":0}))
+    (bundle/"protocol").mkdir()
+    for name in ("SCI_ED_001_PROTOCOL.json","SCI_ED_001_CASE_MATRIX.json","SOURCE_BINDING.json","PRESSURE_PROGRAMS.json","FEATURE_DEFINITIONS.json"):
+        (bundle/"protocol"/name).write_bytes((OUT/name).read_bytes())
     start=time.perf_counter();records=[]
     with concurrent.futures.ProcessPoolExecutor(max_workers=workers) as pool:
         pending={};iterator=iter(matrix["rows"])
@@ -206,7 +209,8 @@ def read_record(path):
     return obj
 def verify_bundle(bundle_arg,authority_arg):
     bundle=safe_bundle(bundle_arg);manifest=json.loads((bundle/"manifests/RUN_MANIFEST.json").read_text());authority=json.loads(Path(authority_arg).read_text())
-    if sha(bundle/"authority/EXECUTION_AUTHORITY.json")!=sha(Path(authority_arg)):raise PermissionError("BUNDLE_AUTHORITY_MISMATCH")
+    external_authority=json.loads(Path(authority_arg).read_text());internal_authority=json.loads((bundle/"authority/EXECUTION_AUTHORITY.json").read_text())
+    if external_authority!=internal_authority:raise PermissionError("BUNDLE_AUTHORITY_OBJECT_MISMATCH")
     files=record_files(bundle);records=[]
     for p in files:
         rec=read_record(p);records.append({"path":p.name,"bytes":p.stat().st_size,"file_sha256":sha(p),"content_sha256":hashlib.sha256(gzip.decompress(p.read_bytes())).hexdigest()})

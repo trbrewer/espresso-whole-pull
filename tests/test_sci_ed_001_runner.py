@@ -52,6 +52,11 @@ class SciEd001RunnerTests(unittest.TestCase):
         with self.assertRaises(ValueError):MOD.safe_bundle(ROOT/"SCI_ED_001_EXTERNAL_BUNDLE")
         self.assertIn("SCI_ED_001_EXTERNAL_BUNDLE",MOD.safe_bundle("/tmp/SCI_ED_001_EXTERNAL_BUNDLE/attempt_001").parts)
 
+    def test_authority_comparison_is_canonical_object_not_presentation_bytes(self):
+        a={"x":1,"y":[2,3]}
+        self.assertEqual(json.loads(json.dumps(a,indent=2)),json.loads(MOD.canonical(a)))
+        self.assertNotEqual(json.dumps(a,indent=2).encode(),MOD.canonical(a).encode())
+
     def test_replay_parity_gate(self):
         result=MOD.replay();self.assertEqual(result["status"],"PASS")
         self.assertEqual({x["family"] for x in result["checks"]},{"SCI-MD-002A","SCI-MD-002B","SCI-MD-002C"})
