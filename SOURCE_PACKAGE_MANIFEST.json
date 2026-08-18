@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 430,
-  "total_uncompressed_bytes_excluding_manifest": 6464722,
-  "aggregate_source_sha256": "f3f61bafabce2a209a1edb785c5a899aecbd561b3c51f22b1c0c064fee94e962",
-  "aggregate_sha256": "f3f61bafabce2a209a1edb785c5a899aecbd561b3c51f22b1c0c064fee94e962",
+  "total_uncompressed_bytes_excluding_manifest": 6471198,
+  "aggregate_source_sha256": "630121701a7be376cf2a2517c84c1dcc6a2ba55fd01030e0ee74eb0fb0b0bdd8",
+  "aggregate_sha256": "630121701a7be376cf2a2517c84c1dcc6a2ba55fd01030e0ee74eb0fb0b0bdd8",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1214,8 +1214,8 @@
       "git_mode": "100755"
     },
     "scripts/sci_ed_001_verify_no_governing_physics_change.py": {
-      "sha256": "88c62804b99bc23c18d8bceed65757bc8ee21cd1ce23b49f5353ac6817be3aca",
-      "bytes": 6235,
+      "sha256": "8bd17db90290d8b1ea9ed404614be92b33977be5ec2675c313cc75a89fd60d67",
+      "bytes": 8579,
       "git_mode": "100755"
     },
     "scripts/sci_md_001.py": {
@@ -1559,8 +1559,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_ed_001_c1.py": {
-      "sha256": "2d97df1dab2c4b1f95b149b7bf3e6c39819c4c5fa32ddddb544c14c845c5ee13",
-      "bytes": 4021,
+      "sha256": "1e618d9725ccc927a736c3ac654aa7ce9493d092c2158479b4618cb4a9c56afb",
+      "bytes": 8153,
       "git_mode": "100644"
     },
     "tests/test_sci_ed_001_protocol.py": {

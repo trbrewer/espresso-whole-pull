@@ -35,7 +35,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 430,
-    "source_manifest_aggregate_sha256": "f3f61bafabce2a209a1edb785c5a899aecbd561b3c51f22b1c0c064fee94e962",
+    "source_manifest_aggregate_sha256": "630121701a7be376cf2a2517c84c1dcc6a2ba55fd01030e0ee74eb0fb0b0bdd8",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -45,7 +45,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "f3f61bafabce2a209a1edb785c5a899aecbd561b3c51f22b1c0c064fee94e962"
+    "source_manifest_aggregate_source_sha256": "630121701a7be376cf2a2517c84c1dcc6a2ba55fd01030e0ee74eb0fb0b0bdd8"
   },
   "sci_md_002a": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
@@ -141,7 +141,11 @@
     "direct_measurement_value": "QUANTITATIVELY_UNRESOLVED_COMMON_INTERFACES_AND_FROZEN_UNCERTAINTY_TARGETS_MISSING",
     "production_openfoam_physics": "UNCHANGED",
     "physical_validation": "NOT_ESTABLISHED",
-    "experimental_commissioning": "NOT_AUTHORIZED"
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "no_governing_physics_verifier_schema": "espresso.whole_pull.sci_ed_001.no_governing_physics_change.v2",
+    "strict_task_owned_path_mode": "PRESERVED",
+    "shared_metadata_integration_classification": "OWNER_AUTHORIZED_SCI_ED_FIRST_SHARED_METADATA_OVERLAP",
+    "shared_metadata_integration_verification": "PASS_PENDING_FINAL_COMMITTED_AUTHORITY"
   },
   "xsv_xct_001": {
     "status": "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",

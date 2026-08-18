@@ -7,6 +7,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 SPEC=importlib.util.spec_from_file_location("sci_ed_001_c1",ROOT/"scripts/sci_ed_001.py")
 MOD=importlib.util.module_from_spec(SPEC);sys.modules[SPEC.name]=MOD;SPEC.loader.exec_module(MOD)
+VERIFY_SPEC=importlib.util.spec_from_file_location("sci_ed_001_verify",ROOT/"scripts/sci_ed_001_verify_no_governing_physics_change.py")
+VERIFY=importlib.util.module_from_spec(VERIFY_SPEC);sys.modules[VERIFY_SPEC.name]=VERIFY;VERIFY_SPEC.loader.exec_module(VERIFY)
 OUT=ROOT/"validation/cases/sci_ed_001"
 
 class SciEd001C1Tests(unittest.TestCase):
@@ -68,5 +70,64 @@ class SciEd001C1Tests(unittest.TestCase):
         self.assertIn("NEW_FEATURE",protocol["forbidden_changes"])
         self.assertIn("NEW_PROGRAM",protocol["forbidden_changes"])
         self.assertTrue(protocol["no_corrected_ranking_before_commit_e"])
+
+    def test_verifier_strict_default_is_preserved(self):
+        r=VERIFY.classify_changed_paths(sorted(VERIFY.AUTHORIZED_SHARED_METADATA),None)
+        self.assertFalse(r["strict_all_changed_paths_owned"])
+        self.assertFalse(r["effective_path_contract_pass"])
+
+    def test_verifier_exact_owner_authorization_succeeds(self):
+        r=VERIFY.classify_changed_paths(sorted(VERIFY.AUTHORIZED_SHARED_METADATA),VERIFY.OWNER_AUTHORIZATION)
+        self.assertTrue(r["owner_authorization_exact"])
+        self.assertTrue(r["authorized_shared_metadata_set_exact"])
+        self.assertTrue(r["owner_authorized_shared_metadata_mode"])
+        self.assertTrue(r["effective_path_contract_pass"])
+        self.assertEqual(r["unauthorized_changed_paths"],[])
+        self.assertEqual(r["integration_classification"],VERIFY.AUTHORIZED_CLASSIFICATION)
+
+    def test_verifier_missing_authorization_fails(self):
+        r=VERIFY.classify_changed_paths(sorted(VERIFY.AUTHORIZED_SHARED_METADATA),None)
+        self.assertFalse(r["owner_authorization_supplied"]);self.assertFalse(r["effective_path_contract_pass"])
+
+    def test_verifier_incorrect_authorizations_fail(self):
+        token=VERIFY.OWNER_AUTHORIZATION
+        for value in ("", "wrong", token[:-1], token+"X"):
+            with self.subTest(value=value):
+                r=VERIFY.classify_changed_paths(sorted(VERIFY.AUTHORIZED_SHARED_METADATA),value)
+                self.assertFalse(r["owner_authorization_exact"]);self.assertFalse(r["effective_path_contract_pass"])
+
+    def test_verifier_partial_shared_set_fails(self):
+        for count in (1,2):
+            r=VERIFY.classify_changed_paths(sorted(VERIFY.AUTHORIZED_SHARED_METADATA)[:count],VERIFY.OWNER_AUTHORIZATION)
+            self.assertFalse(r["authorized_shared_metadata_set_exact"]);self.assertFalse(r["effective_path_contract_pass"])
+
+    def test_verifier_fourth_path_fails(self):
+        paths=sorted(VERIFY.AUTHORIZED_SHARED_METADATA)+["README.md"]
+        r=VERIFY.classify_changed_paths(paths,VERIFY.OWNER_AUTHORIZATION)
+        self.assertEqual(r["unauthorized_changed_paths"],["README.md"]);self.assertFalse(r["effective_path_contract_pass"])
+
+    def test_verifier_sci_lc_task_path_fails(self):
+        paths=sorted(VERIFY.AUTHORIZED_SHARED_METADATA)+["docs/analysis/sci_lc_001a/PROTOCOL.md"]
+        r=VERIFY.classify_changed_paths(paths,VERIFY.OWNER_AUTHORIZATION)
+        self.assertIn("docs/analysis/sci_lc_001a/PROTOCOL.md",r["unauthorized_changed_paths"])
+        self.assertFalse(r["effective_path_contract_pass"])
+
+    def test_verifier_protected_physics_path_fails(self):
+        paths=sorted(VERIFY.AUTHORIZED_SHARED_METADATA)+["solver/espressoWholePullFoam/espressoWholePullFoam.C"]
+        r=VERIFY.classify_changed_paths(paths,VERIFY.OWNER_AUTHORIZATION)
+        self.assertIn("solver/espressoWholePullFoam/espressoWholePullFoam.C",r["unauthorized_changed_paths"])
+        self.assertFalse(r["effective_path_contract_pass"])
+
+    def test_verifier_reports_strict_and_effective_truthfully(self):
+        r=VERIFY.classify_changed_paths(sorted(VERIFY.AUTHORIZED_SHARED_METADATA),VERIFY.OWNER_AUTHORIZATION)
+        self.assertFalse(r["strict_all_changed_paths_owned"]);self.assertTrue(r["effective_path_contract_pass"])
+
+    def test_verifier_path_output_is_deterministic(self):
+        paths=["docs/PROJECT_STATE.md","scripts/sci_ed_001.py","SOURCE_PACKAGE_MANIFEST.json","PACKAGE_QA_STATUS.json"]
+        a=VERIFY.classify_changed_paths(paths,VERIFY.OWNER_AUTHORIZATION)
+        b=VERIFY.classify_changed_paths(list(reversed(paths)),VERIFY.OWNER_AUTHORIZATION)
+        self.assertEqual(VERIFY.canonical(a),VERIFY.canonical(b))
+        for key in ("task_owned_changed_paths","non_task_owned_changed_paths","authorized_shared_metadata_changed_paths","unauthorized_changed_paths"):
+            self.assertEqual(a[key],sorted(a[key]))
 
 if __name__=="__main__":unittest.main()

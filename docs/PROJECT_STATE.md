@@ -280,6 +280,10 @@ frozen uncertainty targets are missing. This is
 `MODEL_INFORMED_FUTURE_DESIGN_ONLY`; physical validation is not established,
 experimental commissioning is not authorized, and no production governing
 physics changed.
+The task-specific physics-boundary verifier retains strict task-local ownership
+by default and adds an exact-token, exact-three-path integration mode classified
+as `OWNER_AUTHORIZED_SCI_ED_FIRST_SHARED_METADATA_OVERLAP`; SCI-LC-001A must
+refresh from post-SCI-ED `origin/main` before its own eventual integration.
 
 ## Completed VAL-CORPUS-001 comparison campaign
 
