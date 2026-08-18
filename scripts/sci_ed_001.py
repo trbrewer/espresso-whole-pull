@@ -2,7 +2,7 @@
 """Deterministic SCI-ED-001 model adapters, execution, and reduction."""
 from __future__ import annotations
 
-import argparse, concurrent.futures, gzip, hashlib, importlib.util, itertools, json, math, os, platform, resource, subprocess, sys, time
+import argparse, concurrent.futures, gzip, hashlib, importlib.util, itertools, json, math, os, platform, re, resource, subprocess, sys, time
 from pathlib import Path
 from typing import Any
 
@@ -310,12 +310,109 @@ def reduce_bundle(bundle_arg,authority_arg):
     for name,obj in docs.items():(reduction/name).write_text(canonical(obj))
     return {"status":"PASS","primitive_feature_rows":len(primitive),"family_envelopes":len(envelopes),"pairwise_rows":len(separations),"top_rank":rankings[0],"set_cover":set_cover,"files":{k:sha(reduction/k) for k in docs}}
 
+C1_SOURCE_HEAD="5217b4b8b9984e01a849b82bda6d61b60ff07a2c"
+C1_SOURCE_TREE="a15e6597c65a7c920ff84874c1798c6623efed97"
+C1_SOURCE_AGGREGATE="9a0bcea35850d8ea94db16e0aa9a6af15fc7f2ee8b0f2bae6be6b5a4cdd5336e"
+
+def verify_bundle_c1(bundle_arg,authority_arg):
+    bundle=safe_bundle(bundle_arg);manifest=json.loads((bundle/"manifests/RUN_MANIFEST.json").read_text());external=json.loads(Path(authority_arg).read_text());internal=json.loads((bundle/"authority/EXECUTION_AUTHORITY.json").read_text())
+    if external!=internal:raise PermissionError("BUNDLE_AUTHORITY_OBJECT_MISMATCH")
+    if external.get("source_head")!=C1_SOURCE_HEAD or external.get("source_tree")!=C1_SOURCE_TREE:raise PermissionError("C1_SOURCE_AUTHORITY_MISMATCH")
+    files=record_files(bundle);records=[]
+    for p in files:
+        read_record(p);records.append({"path":p.name,"bytes":p.stat().st_size,"file_sha256":sha(p),"content_sha256":hashlib.sha256(gzip.decompress(p.read_bytes())).hexdigest()})
+    aggregate=hashlib.sha256("".join(x["file_sha256"] for x in sorted(records,key=lambda x:x["path"])).encode()).hexdigest()
+    ok=len(records)==2628==manifest["expected_rows"]==manifest["completed_rows"] and manifest["invalid_rows"]==0 and aggregate==manifest["ordered_record_aggregate_sha256"]==C1_SOURCE_AGGREGATE
+    return {"schema_version":"espresso.whole_pull.sci_ed_001.c1.raw_authority.v1","status":"PASS" if ok else "FAIL","record_count":len(records),"base_refined_pairs":len(records)//2,"ordered_record_aggregate_sha256":aggregate}
+
+def c1_feature_support(feature,program_id):
+    match=re.search(r"_at_([0-9]+(?:\.[0-9]+)?)s(?:_|$)",feature);point=float(match.group(1)) if match else None
+    if point is not None:
+        normalized=feature.startswith("normalized_");start=-2.0 if normalized else point
+        return {"feature_support_start_s":start,"feature_support_end_s":point,"uses_post_design_data":point>0,"uses_preconditioning_samples":normalized,"prospective_mapping_status":"AMBIGUOUS_PROSPECTIVE_MAPPING","causal_role":"POST_DESIGN_PROGRAM_RESPONSE" if point>0 else "COMMON_PREFIX_DIAGNOSTIC"}
+    if feature.startswith("pre_event_"):
+        return {"feature_support_start_s":-2.0,"feature_support_end_s":0.0,"uses_post_design_data":False,"uses_preconditioning_samples":True,"prospective_mapping_status":"UNAMBIGUOUS_DERIVATION_FROM_FROZEN_RULE","causal_role":"NON_ADJUDICATIVE_PRECONDITIONING_DIAGNOSTIC"}
+    if feature.startswith("terminal_") or feature in {"maximum_compression_m","residual_deformation_m","swelling_storage_uptake_m3","peak_outlet_fines_flux_kg_s","cumulative_released_mass_kg","cumulative_escaped_mass_kg","cumulative_deposited_mass_kg","cake_resistance_pa_s_m3","fines_mass_conservation_residual_kg"}:
+        return {"feature_support_start_s":-2.0 if "normalized" in feature else 0.0,"feature_support_end_s":80.0,"uses_post_design_data":True,"uses_preconditioning_samples":"normalized" in feature,"prospective_mapping_status":"UNAMBIGUOUS_DERIVATION_FROM_FROZEN_RULE","causal_role":"POST_DESIGN_PROGRAM_RESPONSE"}
+    if feature in {"post_unload_residual_resistance","resistance_recovery_fraction"}:
+        return {"feature_support_start_s":-2.0,"feature_support_end_s":80.0,"uses_post_design_data":True,"uses_preconditioning_samples":True,"prospective_mapping_status":"UNAMBIGUOUS_DERIVATION_FROM_FROZEN_RULE","causal_role":"POST_DESIGN_PROGRAM_RESPONSE"}
+    if feature=="pulse_integrated_flow_m3":
+        return {"feature_support_start_s":20.0,"feature_support_end_s":27.0,"uses_post_design_data":True,"uses_preconditioning_samples":False,"prospective_mapping_status":"AMBIGUOUS_PROSPECTIVE_MAPPING","causal_role":"POST_DESIGN_PROGRAM_RESPONSE"}
+    return {"feature_support_start_s":None,"feature_support_end_s":None,"uses_post_design_data":False,"uses_preconditioning_samples":False,"prospective_mapping_status":"AMBIGUOUS_PROSPECTIVE_MAPPING","causal_role":"PROSPECTIVE_FEATURE_IDENTITY_UNRESOLVED"}
+
+def c1_eligibility(feature,program_id):
+    item=c1_feature_support(feature,program_id);mapping=item["prospective_mapping_status"] in {"EXPLICITLY_FROZEN","UNAMBIGUOUS_DERIVATION_FROM_FROZEN_RULE"}
+    item["ranking_eligible"]=bool(item["uses_post_design_data"] and mapping)
+    if not item["uses_post_design_data"]:item["ranking_exclusion_reason"]="NO_STRICTLY_POSITIVE_DESIGN_TIME_SUPPORT"
+    elif not mapping:item["ranking_exclusion_reason"]="AMBIGUOUS_PROSPECTIVE_MAPPING"
+    else:item["ranking_exclusion_reason"]=None
+    return item
+
+def reduce_bundle_c1(source_arg,authority_arg,target_arg):
+    source=safe_bundle(source_arg);target=safe_bundle(target_arg)
+    if target.exists():raise FileExistsError("IMMUTABLE_CORRECTION_ATTEMPT_ALREADY_EXISTS")
+    verification=verify_bundle_c1(source,authority_arg)
+    if verification["status"]!="PASS":raise ValueError("C1_RAW_AUTHORITY_FAILED")
+    grouped={};eligibility={}
+    for p in record_files(source):
+        r=read_record(p);recomputed=features(r["trajectory"],r["program_id"])
+        if recomputed!=r["features"]:raise ValueError("RAW_FEATURE_RECOMPUTATION_MISMATCH")
+        grouped.setdefault((r["family_id"],r["parameter_stem_id"],r["program_id"]),{})[r["resolution_id"]]=recomputed
+        for feature in recomputed:eligibility[(r["program_id"],feature)]=c1_eligibility(feature,r["program_id"])
+    if len(grouped)!=1314 or any(set(v)!={"BASE","REFINED"} for v in grouped.values()):raise ValueError("BASE_REFINED_PAIR_INCOMPLETE")
+    primitive=[]
+    for (family,stem,program),pair in sorted(grouped.items()):
+        for feature in sorted(set(pair["BASE"])&set(pair["REFINED"])):
+            x=pair["BASE"][feature];y=pair["REFINED"][feature]
+            if isinstance(x,(int,float)) and isinstance(y,(int,float)) and math.isfinite(x) and math.isfinite(y):primitive.append({"family_id":family,"parameter_stem_id":stem,"program_id":program,"feature_id":feature,"base":x,"refined":y,"numeric_uncertainty":abs(x-y),"ranking_eligible":eligibility[(program,feature)]["ranking_eligible"]})
+    preflows={(x["family_id"],x["parameter_stem_id"],x["program_id"]):x["base"] for x in primitive if x["feature_id"]=="pre_event_flow_m3_s"};envelopes=[]
+    for scenario in ("N0","N1"):
+      for key in sorted({(x["family_id"],x["program_id"],x["feature_id"]) for x in primitive}):
+        vals=[x for x in primitive if (x["family_id"],x["program_id"],x["feature_id"])==key];lo=min(x["base"]-x["numeric_uncertainty"] for x in vals);hi=max(x["base"]+x["numeric_uncertainty"] for x in vals);expand=0.0
+        if scenario=="N1":
+            expand=measurement_expansion(key[2],[preflows.get((x["family_id"],x["parameter_stem_id"],x["program_id"])) for x in vals]);expand=0.0 if expand is None else expand
+        minrow=min(vals,key=lambda x:x["base"]-x["numeric_uncertainty"]);maxrow=max(vals,key=lambda x:x["base"]+x["numeric_uncertainty"])
+        envelopes.append({"family_id":key[0],"program_id":key[1],"feature_id":key[2],"noise_scenario_id":scenario,"family_feature_min":lo,"family_feature_max":hi,"numerical_expansion":max(x["numeric_uncertainty"] for x in vals),"measurement_expansion":expand,"expanded_min":lo-expand,"expanded_max":hi+expand,"parameter_stem_at_min":minrow["parameter_stem_id"],"parameter_stem_at_max":maxrow["parameter_stem_id"],"feature_status":"COMPARABLE","ranking_eligible":eligibility[(key[1],key[2])]["ranking_eligible"]})
+    emap={(x["family_id"],x["program_id"],x["feature_id"],x["noise_scenario_id"]):x for x in envelopes};separations=[]
+    for program in [x["program_id"] for x in load("PRESSURE_PROGRAMS.json")["programs"]]:
+      for package in [f"M{i}" for i in range(7)]:
+       for scenario in ("N0","N1"):
+        for fa,fb in PRIMARY_PAIRS:
+          shared=sorted({k[2] for k in emap if k[0]==fa and k[1]==program and k[3]==scenario}&{k[2] for k in emap if k[0]==fb and k[1]==program and k[3]==scenario});candidates=[]
+          for feature in shared:
+            if not eligibility[(program,feature)]["ranking_eligible"] or not package_allows(package,feature) or not cross_family_comparable(feature):continue
+            ea=emap[(fa,program,feature,scenario)];eb=emap[(fb,program,feature,scenario)];status,margin=classify((ea["expanded_min"],ea["expanded_max"]),(eb["expanded_min"],eb["expanded_max"]));candidates.append((status,margin,feature))
+          separated=[x for x in candidates if x[0]=="ROBUSTLY_SEPARATED"]
+          if separated:status,margin,feature=max(separated,key=lambda x:(x[1],x[2]))
+          elif candidates:status,margin,feature=max(candidates,key=lambda x:(x[1],x[2]))
+          else:status,margin,feature="NOT_COMPARABLE",None,None
+          separations.append({"program_id":program,"measurement_package_id":package,"noise_scenario_id":scenario,"family_a":fa,"family_b":fb,"classification":status,"separation_margin":margin,"best_feature":feature})
+    rankings=[];packages={x["measurement_package_id"]:x for x in load("MEASUREMENT_PACKAGES.json")["packages"]};progs={x["program_id"]:x for x in load("PRESSURE_PROGRAMS.json")["programs"]}
+    for program in progs:
+      for package in packages:
+        rows=[x for x in separations if x["program_id"]==program and x["measurement_package_id"]==package and x["noise_scenario_id"]=="N1"];sep=[x for x in rows if x["classification"]=="ROBUSTLY_SEPARATED"]
+        rankings.append({"program_id":program,"measurement_package_id":package,"robust_pair_count_n1":len(sep),"minimum_positive_margin":min((x["separation_margin"] for x in sep),default=None),"unresolved_primary_pairs":sum(x["classification"] in {"NUMERICALLY_UNRESOLVED","NOT_COMPARABLE"} for x in rows)})
+    rankings.sort(key=lambda x:(-x["robust_pair_count_n1"],-(x["minimum_positive_margin"] or -math.inf),x["unresolved_primary_pairs"],packages[x["measurement_package_id"]]["additional_sensor_class_count"],len(progs[x["program_id"]]["breakpoints"])-2,max(z["pressure_pa_gauge"] for z in progs[x["program_id"]]["breakpoints"]),x["program_id"],x["measurement_package_id"]))
+    for i,x in enumerate(rankings,1):x["rank"]=i
+    measurement_rankings=sorted((min((x for x in rankings if x["measurement_package_id"]==p),key=lambda x:x["rank"]) for p in packages),key=lambda x:x["rank"]);set_cover=select_set_cover(separations)
+    eligibility_rows=[]
+    for (program,feature),item in sorted(eligibility.items()):eligibility_rows.append({"program_id":program,"concrete_feature_id":feature,**item})
+    target.mkdir(parents=True);(target/"authority").mkdir();(target/"source_attempt").mkdir();(target/"diagnostics").mkdir();(target/"reduction").mkdir();(target/"logs").mkdir();(target/"manifests").mkdir();(target/"review").mkdir()
+    docs={"FEATURE_ELIGIBILITY_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.feature_eligibility.v1","rows":eligibility_rows},"FEATURE_SUMMARIES_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.feature_summaries.v1","rows":primitive},"FAMILY_ENVELOPES_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.family_envelopes.v1","rows":envelopes},"PAIRWISE_SEPARATION_MATRIX_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.pairwise.v1","rows":separations},"PROGRAM_RANKING_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.program_ranking.v1","rows":rankings},"MEASUREMENT_PACKAGE_RANKING_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.measurement_ranking.v1","rows":measurement_rankings},"SET_COVER_RESULT_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.set_cover.v1","result":set_cover}}
+    for name,obj in docs.items():(target/"reduction"/name).write_text(canonical(obj))
+    authority={"schema_version":"espresso.whole_pull.sci_ed_001.c1.correction_authority.v1","correction_mode":"REDUCTION_ONLY_FROM_VERIFIED_IMMUTABLE_RAW_TRAJECTORIES","source_attempt":"attempt_004","source_execution_commit":C1_SOURCE_HEAD,"source_execution_tree":C1_SOURCE_TREE,"source_ordered_aggregate":C1_SOURCE_AGGREGATE,"source_row_count":2628,"source_pair_count":1314,"correction_protocol_hash":sha(OUT/"SCI_ED_001_C1_CORRECTION_PROTOCOL.json"),"correction_reducer_commit":git("rev-parse","HEAD"),"correction_reducer_tree":git("rev-parse","HEAD^{tree}"),"correction_implementation_hash":sha(Path(__file__)),"raw_trajectories_reused":2628,"new_model_executions":0}
+    (target/"authority"/"CORRECTION_AUTHORITY_C1.json").write_text(canonical(authority));(target/"source_attempt"/"RAW_AUTHORITY_VERIFICATION_C1.json").write_text(canonical(verification))
+    hashes={name:sha(target/"reduction"/name) for name in docs};aggregate=hashlib.sha256("".join(hashes[k] for k in sorted(hashes)).encode()).hexdigest();manifest={"schema_version":"espresso.whole_pull.sci_ed_001.c1.correction_manifest.v1",**authority,"corrected_reduction_hashes":hashes,"corrected_ordered_aggregate":aggregate}
+    (target/"manifests"/"CORRECTION_MANIFEST_C1.json").write_text(canonical(manifest))
+    return {"status":"PASS","raw_authority":verification,"primitive_feature_rows":len(primitive),"family_envelopes":len(envelopes),"pairwise_rows":len(separations),"top_rank":rankings[0],"set_cover":set_cover,"corrected_ordered_aggregate":aggregate,"files":hashes}
+
 def main():
     p=argparse.ArgumentParser();sp=p.add_subparsers(dest="cmd",required=True);q=sp.add_parser("replay");q.add_argument("--output")
     q=sp.add_parser("run-row");q.add_argument("--row-id",required=True)
     q=sp.add_parser("execute");q.add_argument("--bundle",required=True);q.add_argument("--authority",required=True)
     q=sp.add_parser("verify-bundle");q.add_argument("--bundle",required=True);q.add_argument("--authority",required=True)
     q=sp.add_parser("reduce");q.add_argument("--bundle",required=True);q.add_argument("--authority",required=True)
+    q=sp.add_parser("reduce-c1");q.add_argument("--source-bundle",required=True);q.add_argument("--authority",required=True);q.add_argument("--target-bundle",required=True)
     a=p.parse_args()
     if a.cmd=="replay":
         result=replay()
@@ -325,5 +422,6 @@ def main():
         row=next(x for x in load("SCI_ED_001_CASE_MATRIX.json")["rows"] if x["row_id"]==a.row_id);print(canonical(run_row(row)),end="")
     elif a.cmd=="execute":print(canonical(execute(a.bundle,a.authority)),end="")
     elif a.cmd=="verify-bundle":print(canonical(verify_bundle(a.bundle,a.authority)),end="")
-    else:print(canonical(reduce_bundle(a.bundle,a.authority)),end="")
+    elif a.cmd=="reduce":print(canonical(reduce_bundle(a.bundle,a.authority)),end="")
+    else:print(canonical(reduce_bundle_c1(a.source_bundle,a.authority,a.target_bundle)),end="")
 if __name__=="__main__":main()
