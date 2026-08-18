@@ -497,3 +497,9 @@ two separately executed reductions. Direct binding of all 22 retained runs
 remains PASS, while real temporary-package mutation coverage is explicitly
 partial for individual run-binding classes. These typed provenance and QA-
 depth limitations change no numerical or scientific result.
+# 2026-08-18 — SCI-LC-001A OBS-001
+
+Added default-disabled, bounded multiplier event-state observability with four
+versioned diagnostic schemas, deterministic exact-float serialization, atomic
+sidecars, health and manifest reconciliation, and static no-physics/no-feedback
+verification. No canonical scientific execution or classification was run.

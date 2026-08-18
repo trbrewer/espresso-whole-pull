@@ -23,7 +23,7 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 400/400 PASS
+- Public source verification: 407/407 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -327,3 +327,9 @@ supplied exact head and tree identities. No comparison or OpenFOAM execution
 occurred in this correction. V2 remains descriptive,
 post-observation, non-blind, and non-independent. No new scoring, solver run,
 fit, protected access, experiment, or physics change occurred.
+# OBS-001 continuation (2026-08-18)
+
+SCI-LC-001A OBS-001 bounded multiplier event-state observability is implemented
+on its review branch and remains pending exact-head review. Diagnostics are
+default-disabled; governing physics, numerical methods, canonical execution,
+classification, replay, correction, and merge are unchanged or unauthorized.

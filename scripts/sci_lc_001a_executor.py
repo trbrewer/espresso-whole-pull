@@ -27,6 +27,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 import sci_lc_001a_protocol as protocol  # noqa: E402
+import sci_lc_001a_obs_001_diagnostics as obs_001  # noqa: E402
 
 ROOT = SCRIPT_DIR.parent
 MATRIX_PATH = ROOT / "validation/cases/sci_lc_001a/SCI_LC_001A_PARAMETER_MATRIX.json"
@@ -478,14 +479,37 @@ def _evolved_primitives(row: dict, base: dict, x: list[float] | tuple[float, ...
         base, list(x), float(row["feedback_gain"]), row["axial_placement"])}
 
 
+def _evolved_primitives_observed(row: dict, base: dict, x: list[float] | tuple[float, ...],
+                                 diagnostic_observer) -> dict:
+    """Observed equivalent; callback output is intentionally ignored."""
+    if diagnostic_observer is None:
+        return _evolved_primitives(row, base, x)
+    if row["resistance_evolution_law"] == "NO_EVOLUTION":
+        return {**base, "multipliers": [1.0] * len(base["H_i"])}
+    return {**base, **protocol.evolved_resistance_primitives(
+        base, list(x), float(row["feedback_gain"]), row["axial_placement"],
+        diagnostic_observer=diagnostic_observer)}
+
+
+def _emit_diagnostic(observer, event: str, payload: dict) -> None:
+    """Never permit diagnostic administration to affect a scientific result."""
+    if observer is None:
+        return
+    try:
+        observer(event, payload)
+    except BaseException:
+        return
+
+
 def _dynamic_rhs_core(row: dict, profile: str, tau: float, state: list[float], base: dict,
-                      storage: list[float], startup: list[float]) -> tuple[list[float], dict]:
+                      storage: list[float], startup: list[float], *,
+                      diagnostic_observer=None) -> tuple[list[float], dict]:
     """Pure frozen RHS and diagnostic primitives; does not increment solver counters."""
     n = row["sector_count"]; machine = row["pressure_mode"] == "MACHINE_COUPLED"
     evolving = row["resistance_evolution_law"] != "NO_EVOLUTION"
     pressures = state[:n]; upstream = state[n] if machine else None
     x = state[n + (1 if machine else 0):]
-    evolved = _evolved_primitives(row, base, x)
+    evolved = _evolved_primitives_observed(row, base, x, diagnostic_observer)
     gu = [1 / value for value in evolved["R_u_i"]]; gd = [1 / value for value in evolved["R_d_i"]]
     if machine:
         sum_gu = sum(gu); right = upstream + .1 * sum(g * p for g, p in zip(gu, pressures))
@@ -540,7 +564,7 @@ def _dynamic_hq_grid(row: dict, base: dict, storage: list[float], startup: list[
 
 def _execute_dynamic_case(store: CanonicalStore, case_id: str, profile: str,
                           context: _ValidatedExecutionContext, *, synthetic: bool = False,
-                          solve_ivp_impl: Callable | None = None) -> dict:
+                          solve_ivp_impl: Callable | None = None, diagnostic_observer=None) -> dict:
     """Execute the frozen dynamic network; tests provide only trivial ODE fixtures."""
     if not isinstance(context, _ValidatedExecutionContext):
         raise ValueError("VALIDATED_EXECUTION_CONTEXT_REQUIRED")
@@ -563,7 +587,10 @@ def _execute_dynamic_case(store: CanonicalStore, case_id: str, profile: str,
     def rhs(tau: float, state: list[float]) -> list[float]:
         nonlocal nfev
         nfev = protocol.enforce_rhs_cap(nfev)
-        return _dynamic_rhs_core(row, profile, tau, state, base, storage, startup)[0]
+        _emit_diagnostic(diagnostic_observer, "CANDIDATE_STATE",
+            {"tau": tau, "candidate_step_index": nfev, "state": list(state)})
+        return _dynamic_rhs_core(row, profile, tau, state, base, storage, startup,
+                                 diagnostic_observer=diagnostic_observer)[0]
 
     y0 = [0.] * n + ([0.] if machine else []) + ([0.] * n if evolving else [])
     settings = ({"rtol": 2.5e-9, "atol": 2.5e-11, "max_step": .00125} if
@@ -600,6 +627,11 @@ def _execute_dynamic_case(store: CanonicalStore, case_id: str, profile: str,
     if hasattr(solved, "nfev") and solved.nfev != nfev:
         return _case_record(row, profile, context, "FAILED", {}, synthetic=synthetic,
                             started=started, nfev=nfev, stop="RHS_COUNTER_NFEV_MISMATCH")
+    if diagnostic_observer is not None and len(solved.t):
+        prior_index = max(0, len(solved.t) - 2)
+        _emit_diagnostic(diagnostic_observer, "ACCEPTED_STEPS", {
+            "prior_time": float(solved.t[prior_index]), "prior_step_index": prior_index,
+            "prior_state": [float(solved.y[i][prior_index]) for i in range(len(solved.y))]})
     raw_t_events = getattr(solved, "t_events", None)
     raw_y_events = getattr(solved, "y_events", None)
     t_events = raw_t_events if raw_t_events is not None else ()
@@ -624,8 +656,14 @@ def _execute_dynamic_case(store: CanonicalStore, case_id: str, profile: str,
                 return _case_record(row, profile, context, "FAILED", {}, synthetic=synthetic,
                     started=started, nfev=nfev, stop="EVENT_ROOT_STATE_INCONSISTENT_WITH_BOUNDARY")
             located.append({"tau": float(tau_event), "bound": bound, "sector_index": sector})
+            _emit_diagnostic(diagnostic_observer, "LOCATED_EVENT_ROOT",
+                {"tau": float(tau_event), "bound": bound, "sector_index": sector,
+                 "state": [float(value) for value in event_state]})
     if located:
         selected = protocol.select_multiplier_event(located)
+        _emit_diagnostic(diagnostic_observer, "STOPPED_RESULT_CONSTRUCTION",
+            {"selected": dict(selected), "all_triggering_events": [dict(event) for event in located],
+             "nfev": nfev})
         return _case_record(row, profile, context, "STOPPED", {"terminal_tau": selected["tau"]}, synthetic=synthetic,
                             started=started, nfev=nfev, stop=protocol.MULTIPLIER_STOP + ":" +
                             canonical_json(selected))
@@ -648,6 +686,8 @@ def _execute_dynamic_case(store: CanonicalStore, case_id: str, profile: str,
         "H_q_grid_2001_count": len(h2001), "final_multipliers": final_evolved["multipliers"],
         "final_R_u_i": final_evolved["R_u_i"], "final_R_d_i": final_evolved["R_d_i"],
         "final_G_d_i": aux["gd"]})
+    _emit_diagnostic(diagnostic_observer, "NORMAL_COMPLETION",
+        {"tau": 1.0, "nfev": nfev, "state": list(final_state)})
     return _case_record(row, profile, context, "COMPLETE", metrics, synthetic=synthetic,
                         started=started, nfev=nfev)
 
@@ -1166,7 +1206,7 @@ def synthetic_backend_record(row: dict, profile: str, context: _ValidatedExecuti
 
 
 def _execute_canonical_case(store: CanonicalStore, row: Mapping[str, object], profile: str,
-                            context: _ValidatedExecutionContext) -> dict:
+                            context: _ValidatedExecutionContext, *, diagnostic_observer=None) -> dict:
     """Dispatch one authority-bound real calculation; callers cannot replace it."""
     if not isinstance(context, _ValidatedExecutionContext):
         raise ValueError("VALIDATED_EXECUTION_CONTEXT_REQUIRED")
@@ -1182,17 +1222,23 @@ def _execute_canonical_case(store: CanonicalStore, row: Mapping[str, object], pr
     if canonical["pressure_mode"] == "PRESCRIBED_STATIC":
         return _execute_static_case(store, canonical["case_id"], profile, context)
     if canonical["pressure_mode"] in ("PRESCRIBED_DYNAMIC_RAMP", "MACHINE_COUPLED"):
-        return _execute_dynamic_case(store, canonical["case_id"], profile, context)
+        return _execute_dynamic_case(store, canonical["case_id"], profile, context,
+                                     diagnostic_observer=diagnostic_observer)
     raise ValueError("UNSUPPORTED_CANONICAL_BOUNDARY_MODE")
 
 
 def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _ValidatedExecutionContext,
-                  *, interrupt_after: int | None = None) -> dict:
+                  *, interrupt_after: int | None = None,
+                  diagnostic_config: obs_001.DiagnosticConfig | None = None) -> dict:
     if not isinstance(context, _ValidatedExecutionContext):
         raise ValueError("VALIDATED_EXECUTION_CONTEXT_REQUIRED")
     if context.backend != REAL_BACKEND or context.evidence_kind != REAL_BACKEND:
         raise ValueError("REAL_GRAPH_REQUIRES_REAL_STAGE_A_CONTEXT")
     plan = build_plan(store); completed = reused = 0
+    diagnostic_config = diagnostic_config or obs_001.DiagnosticConfig.from_field(None)
+    dynamic_keys = [case_id + "__" + profile for case_id, profile in plan["keys"]
+                    if store.row(case_id)["pressure_mode"] != "PRESCRIBED_STATIC"]
+    diagnostic_run = obs_001.DiagnosticRun(diagnostic_config, dynamic_keys) if diagnostic_config.enabled else None
     manifest = result_store.begin_run(context, plan["total_keys"])
     infrastructure_failure = False
     for case_id, profile in plan["keys"]:
@@ -1201,14 +1247,54 @@ def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _V
         if interrupt_after is not None and completed >= interrupt_after:
             break
         row = store.row(case_id)
+        key_id = case_id + "__" + profile
+        key_observer = None
+        if diagnostic_run is not None and row["pressure_mode"] != "PRESCRIBED_STATIC":
+            n = int(row["sector_count"]); machine = row["pressure_mode"] == "MACHINE_COUPLED"
+            evolving = row["resistance_evolution_law"] != "NO_EVOLUTION"
+            state_names = ([f"p_{i}" for i in range(n)] + (["p_upstream"] if machine else []) +
+                           ([f"x_{i}" for i in range(n)] if evolving else []))
+            base_h = protocol.resistance_primitives(n, row["heterogeneity_pattern"], row["heterogeneity_mode"],
+                row["resistance_contrast"], row["axial_placement"], row["epsilon_floor"],
+                row["initial_condition_variant"])["H_i"]
+            common = {"implementation_version": obs_001.IMPLEMENTATION_VERSION,
+                "implementation_sha256": sha256_file(Path(obs_001.__file__)),
+                "configuration_sha256": diagnostic_config.configuration_sha256,
+                "repository": "https://github.com/trbrewer/espresso-whole-pull.git",
+                "candidate_head": context.authorized_head, "candidate_tree": context.authorized_tree,
+                "executor_sha256": context.executor_identity,
+                "protocol_source_sha256": sha256_file(Path(protocol.__file__)),
+                "protocol_json_sha256": sha256_file(PROTOCOL_PATH),
+                "matrix_json_sha256": sha256_file(MATRIX_PATH),
+                "matrix_csv_sha256": sha256_file(MATRIX_PATH.with_suffix(".csv")),
+                "plan_sha256": "32257a94c278149fad01eb212f35592c8ff6971553ce59a9f9c85f72f39aec27",
+                "backend": context.backend, "run_id": context.run_id,
+                "execution_authority": {"identity": context.authorization_id, "sha256": None},
+                "diagnostic_authority": {"identity": "OBS_001_CONFIGURATION", "sha256": diagnostic_config.configuration_sha256},
+                "key_id": key_id, "row_id": case_id, "arm": row["arm"], "profile": profile,
+                "model_variant": row["model_variant"], "process_id": os.getpid(),
+                "worker_id": "EXECUTOR_MAIN", "attempt_number": 1}
+            key_observer = obs_001.ExecutorKeyObserver(common, state_names, base_h)
         try:
-            record = _execute_canonical_case(store, row, profile, context)
+            if key_observer is None:
+                record = _execute_canonical_case(store, row, profile, context)
+            else:
+                record = _execute_canonical_case(store, row, profile, context,
+                                                 diagnostic_observer=key_observer)
         except Exception as exc:
             record = _case_record(row, profile, context, "FAILED", {}, synthetic=False,
                 started=utc_now(), nfev=None, stop=type(exc).__name__ + ":" + str(exc),
                 execution_failure_class="IMPLEMENTATION_EXCEPTION",
                 rhs_evaluations_status="NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION")
         result_store.write_record(manifest, record); completed += 1
+        if diagnostic_run is not None and key_observer is not None:
+            try:
+                diagnostic_run.register(key_id, record["status"], key_observer.terminal_record(record))
+            except BaseException as exc:
+                diagnostic_run.fail(key_id, "SERIALIZATION_FAILURE", type(exc).__name__ + ":" + str(exc))
+                if diagnostic_config.required:
+                    infrastructure_failure = True
+                    break
         if record.get("execution_failure_class") in ("IMPLEMENTATION_EXCEPTION", "SHARED_INFRASTRUCTURE_FAILURE"):
             infrastructure_failure = True
             break
@@ -1217,16 +1303,28 @@ def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _V
     result_store.finish_run(manifest, store_summary,
         status="INFRASTRUCTURE_FAILURE" if infrastructure_failure else None,
         unattempted_keys=remaining if infrastructure_failure else None)
-    return {"planned": plan["total_keys"], "completed_now": completed, "reused": reused,
+    result = {"planned": plan["total_keys"], "completed_now": completed, "reused": reused,
             "remaining": remaining, "backend": context.backend,
             "infrastructure_failures": 1 if infrastructure_failure else 0,
             "status_counts": store_summary["statuses"]}
+    if diagnostic_run is not None:
+        try:
+            result["diagnostic_health"] = diagnostic_run.finalize()[0]
+        except BaseException as exc:
+            diagnostic_run.fail("RUN_FINALIZATION", "HEALTH_FINALIZATION_FAILURE",
+                type(exc).__name__ + ":" + str(exc))
+            result["diagnostic_health"] = diagnostic_run.finalize_objects()[0]
+            if diagnostic_config.required:
+                result["diagnostic_administrative_status"] = obs_001.ADMIN_FAILURE
+    return result
 
 
-def execute_authorized_graph(*, execution_authority_path: Path, output_root: Path) -> dict:
+def execute_authorized_graph(*, execution_authority_path: Path, output_root: Path,
+                             diagnostic_config: obs_001.DiagnosticConfig | None = None) -> dict:
     store = CanonicalStore.load()
     context = validate_execution_authority(execution_authority_path, output_root, store)
-    return _execute_graph(store, ResultStore(output_root, store), context)
+    return _execute_graph(store, ResultStore(output_root, store), context,
+                          diagnostic_config=diagnostic_config)
 
 
 def _execute_graph_synthetic_test_only(store: CanonicalStore, result_store: ResultStore,
@@ -1433,11 +1531,25 @@ def _cli() -> argparse.ArgumentParser:
     parser.add_argument("--execution-authority", type=Path)
     parser.add_argument("--pilot-authority", type=Path)
     parser.add_argument("--pilot-allowlist", type=Path)
+    parser.add_argument("--multiplier-diagnostics-config", type=Path)
     return parser
 
 
+def _load_multiplier_diagnostics_config(path: Path | None) -> obs_001.DiagnosticConfig:
+    if path is None:
+        return obs_001.DiagnosticConfig.from_field(None)
+    if not path.is_absolute() or not path.is_file():
+        raise ValueError("MULTIPLIER_DIAGNOSTICS_CONFIG_ABSOLUTE_FILE_REQUIRED")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if set(payload) != {"multiplier_diagnostics"}:
+        raise ValueError("MULTIPLIER_DIAGNOSTICS_SINGLE_FIELD_REQUIRED")
+    return obs_001.DiagnosticConfig.from_field(payload["multiplier_diagnostics"])
+
+
 def main(argv: list[str] | None = None) -> int:
-    args = _cli().parse_args(argv); store = CanonicalStore.load(); plan = build_plan(store)
+    args = _cli().parse_args(argv)
+    diagnostic_config = _load_multiplier_diagnostics_config(args.multiplier_diagnostics_config)
+    store = CanonicalStore.load(); plan = build_plan(store)
     if args.mode == "plan":
         print(json.dumps({key: value for key, value in plan.items() if key != "keys"}, indent=2)); return 0
     if args.output_root is None:
@@ -1464,7 +1576,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.execution_authority is None:
         raise SystemExit("--execution-authority is required for execute")
     summary = execute_authorized_graph(execution_authority_path=args.execution_authority,
-                                       output_root=output)
+                                       output_root=output, diagnostic_config=diagnostic_config)
     print(json.dumps(summary, indent=2)); return 0
 
 

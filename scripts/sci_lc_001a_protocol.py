@@ -106,6 +106,16 @@ LINEAR_REFINEMENT_MONOTONICITY_ATOL = PIVOT_RATIO_FLOOR
 GAIN_DENOMINATOR_FLOOR = 1.0e-12
 H_Q_DENOMINATOR_FLOOR = 1.0e-12
 SEEDED_MODE_AMPLITUDE_FLOOR = 1.0e-12
+
+
+def _emit_multiplier_diagnostic(observer, event: str, payload: dict) -> None:
+    """Administratively isolate diagnostics from all scientific control flow."""
+    if observer is None:
+        return
+    try:
+        observer(event, payload)
+    except BaseException:
+        return
 SCIENTIFIC_METRICS = ("G_static_H", "G_static_mode", "G_coupling_end", "G_coupling_int")
 UNCERTAINTY_COMPONENTS = ("u_integrator", "u_sector", "u_linear", "u_sampling", "u_startup")
 FIELD_DISPOSITIONS = ("REQUIRED", "PROHIBITED", "DERIVED", "NOT_APPLICABLE", "PROVENANCE_ONLY")
@@ -360,8 +370,11 @@ def resistance_primitives(n: int, pattern: str, mode: str, contrast: str,
 
 
 def evolved_resistance_primitives(base: dict, x: list[float], beta: float,
-                                  placement: str) -> dict:
+                                  placement: str, *, diagnostic_observer=None) -> dict:
     multipliers = [math.exp(beta * value) for value in x]
+    _emit_multiplier_diagnostic(diagnostic_observer, "RAW_MULTIPLIER_GUARD",
+        {"x": list(x), "beta": beta, "multipliers": list(multipliers),
+         "H_i0": list(base["H_i"])})
     if any(not math.isfinite(value) for value in multipliers):
         raise ValueError("STOP_NONFINITE_RESISTANCE_EVOLUTION_MULTIPLIER")
     if any(value < 0.25 or value > 4.0 for value in multipliers):
@@ -374,7 +387,7 @@ def evolved_resistance_primitives(base: dict, x: list[float], beta: float,
 
 
 def multiplier_admissibility(multiplier: float, beta: float, dx_dt: float, context: str,
-                              located_boundary: str | None = None) -> str:
+                              located_boundary: str | None = None, *, diagnostic_observer=None) -> str:
     """Apply the closed-interval, outward-crossing rule to one sector state."""
     if context not in MULTIPLIER_CONTEXTS:
         raise ValueError("INVALID_MULTIPLIER_STATE_CONTEXT")
@@ -394,6 +407,9 @@ def multiplier_admissibility(multiplier: float, beta: float, dx_dt: float, conte
     if multiplier < 0.25 - MULTIPLIER_BOUNDARY_ATOL or multiplier > 4.0 + MULTIPLIER_BOUNDARY_ATOL:
         return MULTIPLIER_OUTSIDE_STOP
     dm_dt = beta * multiplier * dx_dt
+    _emit_multiplier_diagnostic(diagnostic_observer, "MULTIPLIER_CONTACT_DIRECTION",
+        {"multiplier": multiplier, "beta": beta, "dx_dt": dx_dt, "dm_dt": dm_dt,
+         "context": context, "located_boundary": located_boundary})
     if not math.isfinite(dm_dt):
         return "STOP_NONFINITE_RESISTANCE_EVOLUTION_MULTIPLIER_DERIVATIVE"
     if 0.25 - MULTIPLIER_BOUNDARY_ATOL <= multiplier <= 0.25 + MULTIPLIER_BOUNDARY_ATOL:

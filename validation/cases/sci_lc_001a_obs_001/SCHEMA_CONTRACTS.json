@@ -1,0 +1,14 @@
+{
+  "schema": "ewp.sci_lc_001a.obs_001.schema_contracts.v1",
+  "schemas": [
+    "espresso.whole_pull.sci_lc_001a.multiplier_stop_event.v1",
+    "espresso.whole_pull.sci_lc_001a.multiplier_margin_summary.v1",
+    "espresso.whole_pull.sci_lc_001a.multiplier_diagnostic_health.v1",
+    "espresso.whole_pull.sci_lc_001a.multiplier_diagnostic_manifest.v1"
+  ],
+  "float_encoding": ["value", "round_trip", "ieee754_hex", "dtype", "finite_category"],
+  "unknown_fields": "REJECTED",
+  "missing_required_fields": "REJECTED",
+  "ordinary_guard_event_stream_count": 0,
+  "tie_break_order": ["accepted_step_index", "candidate_step_index", "simulation_time", "profile_order", "sector_index", "event_sequence"]
+}

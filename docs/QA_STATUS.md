@@ -280,3 +280,10 @@ complete executable-profile dispatch, and externally pinned candidate roots.
 All cases are synthetic; governed comparison and OpenFOAM execution counts are
 zero for this correction. Physical validation remains not established. The
 completed merges remain complete; no next mechanism is selected or authorized.
+# OBS-001 local qualification
+
+The OBS-001 branch adds focused schema, serialization, guard/contact, bounded
+summary, cardinality, failure-isolation, parity, no-physics, and no-feedback
+checks. The final exact counts and candidate identities are recorded in the
+external immutable OBS-001 evidence package. Physical validation is not
+established.
