@@ -116,7 +116,10 @@ def features(rows,program_id):
     last=design[-1];f={"pre_event_flow_m3_s":q0,"pre_event_resistance_pa_s_m3":r0,"terminal_normalized_flow":last["outlet_flow_m3_s"]/q0 if q0 else None,"terminal_normalized_resistance":last["apparent_resistance_pa_s_m3"]/r0 if last["apparent_resistance_pa_s_m3"] is not None and r0 else None,"terminal_mass_kg":last["cumulative_mass_kg"]-design[0]["cumulative_mass_kg"]}
     event_times={"P3_UPSTEP_5_TO_11":[20,21],"P4_DOWNSTEP_11_TO_5":[20,21],"P5_PULSE_9_11_9":[20,21,26,27],"P6_UNLOAD_9_0_9":[20,21,31,32],"P7_CYCLE_5_11_5_11_5":[15,16,30,31,45,46],"P8_SLOW_RAMP_5_TO_9":[0,10]}.get(program_id,[])
     for t in event_times:
-        f[f"flow_at_{t:g}s_m3_s"]=event_value(design,t,"outlet_flow_m3_s");f[f"resistance_at_{t:g}s_pa_s_m3"]=event_value(design,t,"apparent_resistance_pa_s_m3")
+        flow_value=event_value(design,t,"outlet_flow_m3_s");resistance_value=event_value(design,t,"apparent_resistance_pa_s_m3")
+        f[f"flow_at_{t:g}s_m3_s"]=flow_value;f[f"resistance_at_{t:g}s_pa_s_m3"]=resistance_value
+        f[f"normalized_flow_at_{t:g}s"]=flow_value/q0 if flow_value is not None and q0 else None
+        f[f"normalized_resistance_at_{t:g}s"]=resistance_value/r0 if resistance_value is not None and r0 else None
     if program_id in {"P4_DOWNSTEP_11_TO_5","P6_UNLOAD_9_0_9","P7_CYCLE_5_11_5_11_5"}:
         before=event_value(design,20 if program_id!="P7_CYCLE_5_11_5_11_5" else 15,"apparent_resistance_pa_s_m3");late=last["apparent_resistance_pa_s_m3"]
         f["post_unload_residual_resistance"]=late/r0-1 if late is not None and r0 else None;f["resistance_recovery_fraction"]=(before-late)/(before-r0) if None not in (before,late) and abs(before-r0)>0 else None
@@ -226,11 +229,14 @@ def feature_class(feature):
 def package_allows(package,feature):
     cls=feature_class(feature);allowed={"M0":{"HYDRAULIC"},"M1":{"HYDRAULIC","UPSTREAM"},"M2":{"HYDRAULIC","DEFORMATION"},"M3":{"HYDRAULIC","FINES"},"M4":{"HYDRAULIC","WETTING"},"M5":{"HYDRAULIC","UPSTREAM","DEFORMATION"},"M6":{"HYDRAULIC","UPSTREAM","DEFORMATION","FINES","WETTING"}}
     return cls in allowed[package]
+def cross_family_comparable(feature):
+    if feature_class(feature)!="HYDRAULIC":return True
+    return feature.startswith("normalized_") or feature.startswith("terminal_normalized_") or feature in {"post_unload_residual_resistance","resistance_recovery_fraction"}
 def measurement_expansion(feature,values):
     if feature=="terminal_mass_kg":return 5e-4
     if feature in {"maximum_compression_m","residual_deformation_m"}:return 5e-5
     if feature=="pre_event_flow_m3_s":return 2e-8
-    if feature=="terminal_normalized_flow":
+    if feature=="terminal_normalized_flow" or feature.startswith("normalized_flow_at_"):
         denominators=[v for v in values if isinstance(v,(int,float)) and v>0]
         return 4e-8/min(denominators) if denominators else math.inf
     if "resistance" in feature:
@@ -283,7 +289,7 @@ def reduce_bundle(bundle_arg,authority_arg):
           shared=sorted({k[2] for k in emap if k[0]==fa and k[1]==program and k[3]==scenario}&{k[2] for k in emap if k[0]==fb and k[1]==program and k[3]==scenario})
           candidates=[]
           for feature in shared:
-            if not package_allows(package,feature):continue
+            if not package_allows(package,feature) or not cross_family_comparable(feature):continue
             ea=emap[(fa,program,feature,scenario)];eb=emap[(fb,program,feature,scenario)];status,margin=classify((ea["expanded_min"],ea["expanded_max"]),(eb["expanded_min"],eb["expanded_max"]));candidates.append((status,margin,feature))
           separated=[x for x in candidates if x[0]=="ROBUSTLY_SEPARATED"]
           if separated:status,margin,feature=max(separated,key=lambda x:(x[1],x[2]))

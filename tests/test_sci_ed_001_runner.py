@@ -33,6 +33,12 @@ class SciEd001RunnerTests(unittest.TestCase):
         self.assertEqual(MOD.classify((0,1),(2,3)),("ROBUSTLY_SEPARATED",1))
         status,margin=MOD.classify((0,2),(1,3));self.assertEqual(status,"OVERLAPPING");self.assertLessEqual(margin,0)
 
+    def test_cross_family_hydraulics_exclude_incomparable_absolute_anchors(self):
+        for feature in ("pre_event_flow_m3_s","pre_event_resistance_pa_s_m3","terminal_mass_kg","flow_at_20s_m3_s","resistance_at_20s_pa_s_m3"):
+            self.assertFalse(MOD.cross_family_comparable(feature))
+        for feature in ("terminal_normalized_flow","terminal_normalized_resistance","normalized_flow_at_20s","normalized_resistance_at_20s","post_unload_residual_resistance"):
+            self.assertTrue(MOD.cross_family_comparable(feature))
+
     def test_deterministic_three_program_capped_set_cover(self):
         rows=[]
         for i,pair in enumerate(MOD.PRIMARY_PAIRS):
