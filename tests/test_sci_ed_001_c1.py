@@ -58,6 +58,11 @@ class SciEd001C1Tests(unittest.TestCase):
         b=MOD.c1_eligibility("terminal_normalized_flow","P1_CONST_9BAR")
         self.assertEqual(MOD.canonical(a),MOD.canonical(b))
 
+    def test_required_preconditioning_diagnostic_is_emitted(self):
+        source=(ROOT/"scripts/sci_ed_001.py").read_text()
+        self.assertIn('PRECONDITIONING_DIAGNOSTICS_C1.json',source)
+        self.assertIn('groups_expected":292',source)
+
     def test_no_new_program_or_feature_contract(self):
         protocol=json.loads((OUT/"SCI_ED_001_C1_CORRECTION_PROTOCOL.json").read_text())
         self.assertIn("NEW_FEATURE",protocol["forbidden_changes"])

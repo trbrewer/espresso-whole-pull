@@ -353,11 +353,13 @@ def reduce_bundle_c1(source_arg,authority_arg,target_arg):
     if target.exists():raise FileExistsError("IMMUTABLE_CORRECTION_ATTEMPT_ALREADY_EXISTS")
     verification=verify_bundle_c1(source,authority_arg)
     if verification["status"]!="PASS":raise ValueError("C1_RAW_AUTHORITY_FAILED")
-    grouped={};eligibility={}
+    grouped={};eligibility={};prefix_checks={}
     for p in record_files(source):
         r=read_record(p);recomputed=features(r["trajectory"],r["program_id"])
         if recomputed!=r["features"]:raise ValueError("RAW_FEATURE_RECOMPUTATION_MISMATCH")
         grouped.setdefault((r["family_id"],r["parameter_stem_id"],r["program_id"]),{})[r["resolution_id"]]=recomputed
+        prefix=[x for x in r["trajectory"] if x["design_time_s"]<=0];zero=min(prefix,key=lambda x:abs(x["design_time_s"]));pre=[x for x in prefix if -2<=x["design_time_s"]<=0];q0=sum(x["outlet_flow_m3_s"] for x in pre)/len(pre);rvals=[x["apparent_resistance_pa_s_m3"] for x in pre if x.get("apparent_resistance_pa_s_m3") is not None];r0=sum(rvals)/len(rvals)
+        prefix_checks[(r["family_id"],r["parameter_stem_id"],r["resolution_id"],r["program_id"]) ]={"prefix_hash":hash_obj(prefix),"pressure_pa":zero["pressure_pa"],"normalized_flow_at_0s":zero["outlet_flow_m3_s"]/q0,"normalized_resistance_at_0s":zero["apparent_resistance_pa_s_m3"]/r0 if zero.get("apparent_resistance_pa_s_m3") is not None else None}
         for feature in recomputed:eligibility[(r["program_id"],feature)]=c1_eligibility(feature,r["program_id"])
     if len(grouped)!=1314 or any(set(v)!={"BASE","REFINED"} for v in grouped.values()):raise ValueError("BASE_REFINED_PAIR_INCOMPLETE")
     primitive=[]
@@ -398,11 +400,23 @@ def reduce_bundle_c1(source_arg,authority_arg,target_arg):
     eligibility_rows=[]
     for (program,feature),item in sorted(eligibility.items()):eligibility_rows.append({"program_id":program,"concrete_feature_id":feature,**item})
     target.mkdir(parents=True);(target/"authority").mkdir();(target/"source_attempt").mkdir();(target/"diagnostics").mkdir();(target/"reduction").mkdir();(target/"logs").mkdir();(target/"manifests").mkdir();(target/"review").mkdir()
+    prefix_groups={}
+    for (family,stem,resolution,program),value in prefix_checks.items():prefix_groups.setdefault((family,stem,resolution),{})[program]=value
+    exact=0;numeric=0;different=0;max_q=0.;max_r=0.
+    for values in prefix_groups.values():
+        ref=values["P0_CONST_5BAR"]
+        if all(x["prefix_hash"]==ref["prefix_hash"] for x in values.values()):exact+=1
+        else:
+            qdiff=max(abs(x["normalized_flow_at_0s"]-ref["normalized_flow_at_0s"]) for x in values.values());rdiff=max(abs(x["normalized_resistance_at_0s"]-ref["normalized_resistance_at_0s"]) for x in values.values() if x["normalized_resistance_at_0s"] is not None and ref["normalized_resistance_at_0s"] is not None);max_q=max(max_q,qdiff);max_r=max(max_r,rdiff)
+            if qdiff<=1e-12 and rdiff<=1e-12:numeric+=1
+            else:different+=1
+    preconditioning={"schema_version":"espresso.whole_pull.sci_ed_001.c1.preconditioning_diagnostics.v1","groups_expected":292,"groups_completed":len(prefix_groups),"groups_exactly_identical":exact,"groups_numerically_identical":numeric,"groups_different":different,"design_zero_pressure_all_500kpa":all(x["pressure_pa"]==500000 for x in prefix_checks.values()),"maximum_normalized_flow_at_zero_difference":max_q,"maximum_normalized_resistance_at_zero_difference":max_r,"common_history_classification":"COMMON_PRECONDITIONING_STATE_SIGNATURE","ranking_role":"NON_ADJUDICATIVE"}
+    (target/"diagnostics"/"PRECONDITIONING_DIAGNOSTICS_C1.json").write_text(canonical(preconditioning))
     docs={"FEATURE_ELIGIBILITY_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.feature_eligibility.v1","rows":eligibility_rows},"FEATURE_SUMMARIES_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.feature_summaries.v1","rows":primitive},"FAMILY_ENVELOPES_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.family_envelopes.v1","rows":envelopes},"PAIRWISE_SEPARATION_MATRIX_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.pairwise.v1","rows":separations},"PROGRAM_RANKING_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.program_ranking.v1","rows":rankings},"MEASUREMENT_PACKAGE_RANKING_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.measurement_ranking.v1","rows":measurement_rankings},"SET_COVER_RESULT_C1.json":{"schema_version":"espresso.whole_pull.sci_ed_001.c1.set_cover.v1","result":set_cover}}
     for name,obj in docs.items():(target/"reduction"/name).write_text(canonical(obj))
     authority={"schema_version":"espresso.whole_pull.sci_ed_001.c1.correction_authority.v1","correction_mode":"REDUCTION_ONLY_FROM_VERIFIED_IMMUTABLE_RAW_TRAJECTORIES","source_attempt":"attempt_004","source_execution_commit":C1_SOURCE_HEAD,"source_execution_tree":C1_SOURCE_TREE,"source_ordered_aggregate":C1_SOURCE_AGGREGATE,"source_row_count":2628,"source_pair_count":1314,"correction_protocol_hash":sha(OUT/"SCI_ED_001_C1_CORRECTION_PROTOCOL.json"),"correction_reducer_commit":git("rev-parse","HEAD"),"correction_reducer_tree":git("rev-parse","HEAD^{tree}"),"correction_implementation_hash":sha(Path(__file__)),"raw_trajectories_reused":2628,"new_model_executions":0}
     (target/"authority"/"CORRECTION_AUTHORITY_C1.json").write_text(canonical(authority));(target/"source_attempt"/"RAW_AUTHORITY_VERIFICATION_C1.json").write_text(canonical(verification))
-    hashes={name:sha(target/"reduction"/name) for name in docs};aggregate=hashlib.sha256("".join(hashes[k] for k in sorted(hashes)).encode()).hexdigest();manifest={"schema_version":"espresso.whole_pull.sci_ed_001.c1.correction_manifest.v1",**authority,"corrected_reduction_hashes":hashes,"corrected_ordered_aggregate":aggregate}
+    hashes={name:sha(target/"reduction"/name) for name in docs};hashes["PRECONDITIONING_DIAGNOSTICS_C1.json"]=sha(target/"diagnostics"/"PRECONDITIONING_DIAGNOSTICS_C1.json");aggregate=hashlib.sha256("".join(hashes[k] for k in sorted(hashes)).encode()).hexdigest();manifest={"schema_version":"espresso.whole_pull.sci_ed_001.c1.correction_manifest.v1",**authority,"corrected_reduction_hashes":hashes,"corrected_ordered_aggregate":aggregate}
     (target/"manifests"/"CORRECTION_MANIFEST_C1.json").write_text(canonical(manifest))
     return {"status":"PASS","raw_authority":verification,"primitive_feature_rows":len(primitive),"family_envelopes":len(envelopes),"pairwise_rows":len(separations),"top_rank":rankings[0],"set_cover":set_cover,"corrected_ordered_aggregate":aggregate,"files":hashes}
 
