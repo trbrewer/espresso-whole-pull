@@ -23,7 +23,7 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 416/416 PASS
+- Public source verification: 430/430 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -262,6 +262,24 @@ screen establishes no physical validation and makes
 independent primary lane. The standing `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`,
 `PHYSICAL_VALIDATION_NOT_ESTABLISHED`, and `NO_NEW_PRODUCTION_PHYSICS_YET`
 boundaries remain unchanged.
+
+SCI-ED-001 and its C1 causal-attribution correction are complete pending an
+independent exact-head review of draft PR #80. The corrected disposition is
+`SCI_ED_001_FROZEN_FAMILIES_REMAIN_OBSERVATIONALLY_EQUIVALENT`. C1 established
+that the historical P8 three-pair result came from asymmetric exposure of the
+common end-of-preconditioning `normalized_flow_at_0s` signature. That feature
+is `PRECONDITIONING_ONLY_NONRANKING`, a
+`COMMON_PRECONDITIONING_STATE_SIGNATURE`, and
+`NOT_A_PRESSURE_PROGRAM_DISCRIMINATOR`. Under the frozen N1 planning bounds,
+zero of six primary family pairs are robustly separated, all six overlap, and
+there is no best pressure program, best measurement package, complete set
+cover, or recommended pressure program. The N0 deformation separation of TPM
+from swelling does not survive N1. Quantitative direct-measurement value
+remains unresolved because common cross-family observable interfaces and
+frozen uncertainty targets are missing. This is
+`MODEL_INFORMED_FUTURE_DESIGN_ONLY`; physical validation is not established,
+experimental commissioning is not authorized, and no production governing
+physics changed.
 
 ## Completed VAL-CORPUS-001 comparison campaign
 
