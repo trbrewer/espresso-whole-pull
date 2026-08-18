@@ -1,59 +1,44 @@
-# SCI-ED-001 result
+# SCI-ED-001 corrected result
 
 ## Disposition
 
 `SCI_ED_001_FROZEN_FAMILIES_REMAIN_OBSERVATIONALLY_EQUIVALENT`
 
-The frozen screen did not identify a single program, or a set of at most three programs, that robustly separated all six primary family pairs under N1. The best ranked partial design was `P8_SLOW_RAMP_5_TO_9` with `M0`. It separated three of six pairs using the prospectively frozen `normalized_flow_at_0s` feature:
+C1 correction result: `SCI_ED_001_C1_CORRECTION_COMPLETE_NO_CAUSALLY_ELIGIBLE_PAIR_SEPARATION`.
 
-| Pair | N0 | N1 margin | N1 result |
-|---|---:|---:|---|
-| F_TPM / F_SWELL | 0.690564 | 0.288851 | ROBUSTLY_SEPARATED |
-| F_TPM / F_FINES | -0.012730 | -0.081399 | OVERLAPPING |
-| F_TPM / F_GENERIC | -0.055033 | -0.123988 | OVERLAPPING |
-| F_SWELL / F_FINES | 0.692072 | 0.283451 | ROBUSTLY_SEPARATED |
-| F_SWELL / F_GENERIC | 0.690762 | 0.281855 | ROBUSTLY_SEPARATED |
-| F_FINES / F_GENERIC | -0.012531 | -0.088395 | OVERLAPPING |
+The independent review established that the original three P8/M0 separations were not caused by the slow ramp. Their selected feature, `normalized_flow_at_0s`, is supported only by the common `[-2,0]` pre-event interval and exact design-zero state. At that state every program remains at 500,000 Pa. The result is reclassified as `COMMON_PRECONDITIONING_STATE_SIGNATURE`, not a pressure-program discriminator.
 
-The discriminating feature is the design-clock-zero flow divided by the frozen two-second pre-event mean. It therefore measures continued state evolution across the end of preconditioning, not a terminal-flow or absolute hydraulic-anchor difference. All other programs separated zero complete-envelope pairs under N1 with M0. The unload/reload, pulse, repeated-cycle, and fast/slow companion histories did not overcome full parameter-envelope overlap with the frozen extracted features.
+The corrected reduction admitted only existing features with strictly positive design-time support, an adequate prospective mapping, existing cross-family comparability, package availability, and defined uncertainty. No program/package combination robustly separated any primary family pair under N1. All six pairs remain overlapping. Under N0, deformation separated TPM from swelling, but that separation did not survive the frozen planning uncertainty and does not support the N1 recommendation gate. No single program or three-program set succeeds, and no pressure program is recommended.
 
-M0 is `PARTIALLY_DISCRIMINATING`, not sufficient. M1 through M6 did not increase quantified coverage. Upstream pressure was not common to the family interfaces. Deformation, wetting, and fines outputs were family-specific rather than common quantitative observables; absent outputs were not treated as structural zero. No fines/turbidity uncertainty target existed. Consequently, direct-observable value remains `NOT_ESTABLISHED_IN_COMMON_COMPARISON_SPACE`, rather than zero.
+## Review and correction authority
 
-## Execution authority
+- Reviewed candidate: `640540b23e400a95ce86dcd718fa372217912738`, tree `7a71ebabda86c44d2700a8cf979baf0f50d392ee`.
+- Original execution: `5217b4b8b9984e01a849b82bda6d61b60ff07a2c`, tree `a15e6597c65a7c920ff84874c1798c6623efed97`.
+- Original immutable raw attempt: `SCI_ED_001_EXTERNAL_BUNDLE/attempt_004`.
+- Original raw aggregate: `9a0bcea35850d8ea94db16e0aa9a6af15fc7f2ee8b0f2bae6be6b5a4cdd5336e`.
+- Phase-I external review: `SCI_ED_001_EXTERNAL_BUNDLE/c1_review/attempt_001`.
+- Correction protocol commit: `d7112b87ca83dad8703e43fcdedb81abc0eb95b0`.
+- Corrective reducer authority: `5f0812946744c000797e6670bab0cb90c29c9007`, tree `fbafc5bfd682d1e4e6aed1499c3eaea08d9c6cda`.
+- Corrected reduction: `SCI_ED_001_EXTERNAL_BUNDLE/correction_c1/attempt_003`.
+- Corrected aggregate: `c98b1362459d5d2513d0e4d3adf786405c0d485e45c924eecdc3376f4d38bb88`.
+- Raw trajectories reused: 2,628; new model executions: 0.
 
-- Repository: `trbrewer/espresso-whole-pull`
-- Worktree: `/home/tim/espresso-development/espresso-whole-pull-sci-ed-001`
-- Branch: `research/sci-ed-001-virtual-pressure-program-discrimination`
-- Issue: #79
-- Draft pull request: #80
-- Starting commit/tree: `e8a66378d7829877fb74c87889193f32dd977772` / `1c51175a8c5035c0cab989fada791aebb78f6fd7`
-- Exact execution commit/tree: `5217b4b8b9984e01a849b82bda6d61b60ff07a2c` / `a15e6597c65a7c920ff84874c1798c6623efed97`
-- Exact implementation SHA-256: `c8c4d6260ec25c94aa4b388d0bd63c19d45afaa1512f6f2f17018615384a3938`
-- Protocol SHA-256: `fc04193bb95179ee7221f5a27974760c5ea2b0604f52182fe7a0c08f36eb5953`
-- Case-matrix SHA-256: `d63a020aaf9f7afa381a2994941a686669d08a111bb18c48722068902e556448`
-- External authority: `SCI_ED_001_EXTERNAL_BUNDLE/attempt_004`
-- Rows: 2,628 expected, 2,628 completed, 0 invalid; 1,314 base/refined pairs
-- Workers: 8; elapsed: 939.122 s; parent peak RSS: 199,368,704 bytes
-- Ordered record aggregate: `9a0bcea35850d8ea94db16e0aa9a6af15fc7f2ee8b0f2bae6be6b5a4cdd5336e`
+Correction attempt 001 produced no output and is preserved as invalid after duplicate reducer processes were stopped. Attempt 002 produced the corrected ranking but omitted a required diagnostic and is preserved as incomplete. Attempt 003 is the complete correction authority. Attempts 001--004 of the original execution remain unchanged.
 
-Attempts 001–003 are preserved as non-adjudicative failed attempts: authority typo, authority-byte canonicalization defect, and invalid absolute-anchor reduction, respectively. Attempt 004 was a complete fresh execution with no record reuse and passed bundle verification and deterministic reduction.
+## Prefix audit
 
-## Family signatures and limits
+All 292 family/stem/resolution groups were audited across P0--P8. There were 148 exactly identical and 144 numerically identical prefixes, with zero materially different groups. Maximum relative prefix difference was `4.8905016961739676e-14`; maximum normalized-flow-at-zero difference was `4.440892098500626e-16`. These are floating-point roundoff, not program leakage.
 
-- F_TPM retained finite-rate resistance lag, reversible single-mode deformation, unload recovery, and hysteresis behavior across all 35 eligible stems.
-- F_SWELL retained wetting-age state evolution, one-way swelling persistence, and accommodation dependence across all 72 eligible stems.
-- F_FINES retained release, transport, deposition, outlet flux, cake resistance, pause/reload behavior, and the synthetic-window reset limitation across all four inventory-feasible stems. The 92 inventory-impossible rows remained controls only.
-- F_GENERIC retained nonphysical relaxing-resistance lag and pressure-history dependence across all 35 eligible stems.
+## Interpretation
 
-These signatures did not imply robust cross-family separation wherever the complete expanded intervals overlapped. The predecessor families had already been rejected for wrong source pressure ordering; this screen did not fit, rehabilitate, or physically select them.
+Hydraulic telemetry is `NONIDENTIFYING` within the corrected frozen space. Direct deformation, wetting, fines, and upstream-pressure packages do not receive quantified discrimination credit because their outputs are not common across all relevant interfaces or lack a frozen measurement uncertainty. Absence of an output was not treated as structural zero.
 
-## Limitations
-
-This is post-observation, model-informed design using synthetic basket-top pressure programs. Initial states remain model-specific; fines retain `SYNTHETIC_WINDOW_START_RESET` and `PRE_WINDOW_FINES_STATE_NOT_ADJUDICATED`. Swelling is one-way coupled, poromechanics is one reversible mode, and generic relaxation is a nonphysical surrogate. There is no localization, combined mechanism, real apparatus feasibility model, independent data, demonstrated sensor performance, physical validation, or experimental commissioning.
+The predecessor families had already failed source pressure ordering. C1 did not alter, fit, rehabilitate, or physically select a family. It changed only causal eligibility in reduction and interpretation.
 
 `MODEL_INFORMED_FUTURE_DESIGN_ONLY`
+
+`NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`
 
 `PHYSICAL_VALIDATION_NOT_ESTABLISHED`
 
 `EXPERIMENTAL_COMMISSIONING_NOT_AUTHORIZED`
-
