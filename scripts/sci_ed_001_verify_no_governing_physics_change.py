@@ -18,6 +18,17 @@ AUTHORIZED_SHARED_METADATA = frozenset(
     {"PACKAGE_QA_STATUS.json", "SOURCE_PACKAGE_MANIFEST.json", "docs/PROJECT_STATE.md"}
 )
 AUTHORIZED_CLASSIFICATION = "OWNER_AUTHORIZED_SCI_ED_FIRST_SHARED_METADATA_OVERLAP"
+MANDATORY_CHECK_FIELDS = (
+    "starting_head_exists_and_tree_exact",
+    "current_head_and_tree_exact",
+    "descends_from_start",
+    "effective_path_contract_pass",
+    "forbidden_paths_unchanged",
+    "production_solver_exact",
+    "all_protected_aggregates_exact",
+    "declaration_exact",
+    "predecessor_read_only_interface_declared",
+)
 FORBIDDEN_PREFIXES = ("solver/", "config/", "cases/", "dependencies/", "tools/", "docs/analysis/sci_md_002", "validation/cases/sci_md_002", "scripts/sci_md_002", "tests/test_sci_md_002", "docs/analysis/sci_lc_001a/", "validation/cases/sci_lc_001a/", "scripts/sci_lc_001a", "tests/test_sci_lc_001a")
 SHARED_MACHINE = ("scripts/machine_coupling_reference.py", "scripts/analyze_wp02_002_machine_coupling.py", "solver/espressoWholePullFoam/machineBoundaryModel.H")
 
@@ -66,12 +77,21 @@ def classify_changed_paths(changed: list[str], owner_authorization: str | None) 
     }
 
 
-def main() -> int:
+def decide(checks: dict[str, bool]) -> tuple[str, str]:
+    passed = all(checks.get(field) is True for field in MANDATORY_CHECK_FIELDS)
+    return (
+        "PASS" if passed else "FAIL",
+        "SCI_ED_001_INTRODUCED_NO_NEW_GOVERNING_CHANGE"
+        if passed else "SCI_ED_001_NO_GOVERNING_PHYSICS_BOUNDARY_FAILED",
+    )
+
+
+def main(argv: list[str] | None = None, check_overrides: dict[str, bool] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--root", required=True); p.add_argument("--expected-start-head", required=True); p.add_argument("--expected-start-tree", required=True)
     p.add_argument("--expected-current-head", required=True); p.add_argument("--expected-current-tree", required=True); p.add_argument("--output", required=True)
     p.add_argument("--owner-authorization")
-    a = p.parse_args(); root = Path(a.root).resolve()
+    a = p.parse_args(argv); root = Path(a.root).resolve()
     observed_head = git(root, "rev-parse", "HEAD"); observed_tree = git(root, "rev-parse", "HEAD^{tree}")
     start_tree = git(root, "rev-parse", f"{a.expected_start_head}^{{tree}}")
     current_tree = git(root, "rev-parse", f"{a.expected_current_head}^{{tree}}")
@@ -105,9 +125,13 @@ def main() -> int:
         "declaration_exact": "NO_GOVERNING_PHYSICS_CHANGE" in subprocess.check_output(["git", "show", f"{a.expected_current_head}:validation/cases/sci_ed_001/SCI_ED_001_PROTOCOL.json"], cwd=root, text=True),
         "predecessor_read_only_interface_declared": len(set(predecessor_imports)) == 3,
     }
-    effective_checks = {key: value for key, value in checks.items() if key not in {"all_changed_paths_owned", "strict_all_changed_paths_owned"}}
-    passed = all(effective_checks.values())
-    report = {"schema_version": SCHEMA, "status": "PASS" if passed else "FAIL", "starting_head": a.expected_start_head,
+    if check_overrides:
+        unknown = sorted(set(check_overrides) - set(MANDATORY_CHECK_FIELDS))
+        if unknown:
+            raise ValueError(f"unknown mandatory check override: {unknown}")
+        checks.update(check_overrides)
+    status, task_result = decide(checks)
+    report = {"schema_version": SCHEMA, "status": status, "starting_head": a.expected_start_head,
               "starting_tree": a.expected_start_tree, "current_head": a.expected_current_head, "current_tree": a.expected_current_tree,
               "observed_head": observed_head, "observed_tree": observed_tree, "changed_paths": sorted(changed), "forbidden_changed_paths": sorted(forbidden),
               **path_contract, "owner_authorization": a.owner_authorization,
@@ -115,7 +139,7 @@ def main() -> int:
               "production_solver_path": "solver/espressoWholePullFoam/espressoWholePullFoam.C", "starting_production_solver_sha256": start_solver_sha,
               "current_production_solver_sha256": current_solver_sha, "aggregates": aggregates, "checks": checks,
               "active_solver_context": "ACTIVE_SOLVER_ALREADY_CONTAINS_ACCEPTED_GOVERNING_CHANGES",
-              "task_result": "SCI_ED_001_INTRODUCED_NO_NEW_GOVERNING_CHANGE" if passed else "SCI_ED_001_NO_GOVERNING_PHYSICS_BOUNDARY_FAILED",
+              "task_result": task_result,
               "claim": "SCI-ED-001 added no new production governing-physics change relative to its frozen current-main starting authority."}
     Path(a.output).write_text(canonical(report)); print(canonical(report), end="")
     return 0 if report["status"] == "PASS" else 1

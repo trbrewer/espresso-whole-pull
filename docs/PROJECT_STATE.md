@@ -284,6 +284,14 @@ The task-specific physics-boundary verifier retains strict task-local ownership
 by default and adds an exact-token, exact-three-path integration mode classified
 as `OWNER_AUTHORIZED_SCI_ED_FIRST_SHARED_METADATA_OVERLAP`; SCI-LC-001A must
 refresh from post-SCI-ED `origin/main` before its own eventual integration.
+Independent exact-head review R1 stopped with
+`SCI_ED_001_C1_INDEPENDENT_EXACT_HEAD_REVIEW_FAIL_VERIFIER_CONTRACT`: its ten
+new verifier tests covered helper-level path classification but not durable CLI
+exit, top-level result, or protected-check conjunction semantics. The scientific
+correction was not reopened. Helper tests remain, while real strict/wrong/exact
+CLI tests, protected-check override prevention, and fixed mandatory-conjunction
+coverage are now added. The candidate is ready only for a fresh independent R2
+review; PR #80 remains draft and unmerged.
 
 ## Completed VAL-CORPUS-001 comparison campaign
 
