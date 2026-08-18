@@ -273,7 +273,12 @@ def generate() -> dict[str, Any]:
                 "execution": {"external_namespace": "SCI_ED_001_EXTERNAL_BUNDLE", "immutable_attempts": True, "atomic_records": True, "adjudicative_row_count": len(matrix), "adaptive_rows": "FORBIDDEN"},
                 "claim_boundary": ["MODEL_INFORMED_FUTURE_DESIGN_ONLY", "PHYSICAL_VALIDATION_NOT_ESTABLISHED", "EXPERIMENTAL_COMMISSIONING_NOT_AUTHORIZED", "NO_COMBINED_MECHANISM_AUTHORIZATION", "NO_DYNAMIC_LOCALIZATION_RESULT", "NO_SCI_LC_001B_AUTHORIZATION"]}
     (OUT / "SCI_ED_001_PROTOCOL.json").write_text(canonical(protocol))
-    prospective = [p for p in sorted(OUT.iterdir()) if p.name not in {"SCI_ED_001_PROTOCOL.json"}]
+    prospective_names = ["FEATURE_DEFINITIONS.json", "MEASUREMENT_PACKAGES.json", "MODEL_FAMILY_INCLUSION_LEDGER.json",
+                         "MODEL_FAMILY_REGISTRY.json", "MODEL_PROGRAM_COMPATIBILITY_MATRIX.json",
+                         "OBSERVABLE_COMPATIBILITY_MATRIX.json", "PLANNING_NOISE_MODEL.json", "PRESSURE_PROGRAMS.csv",
+                         "PRESSURE_PROGRAMS.json", "SCI_ED_001_CASE_MATRIX.csv", "SCI_ED_001_CASE_MATRIX.json",
+                         "SOURCE_BINDING.json", "STARTING_PHYSICS_BOUNDARY.json"]
+    prospective = [OUT / name for name in prospective_names]
     hashes = {p.relative_to(ROOT).as_posix(): sha(p) for p in prospective}
     protocol["prospective_artifact_sha256"] = hashes
     (OUT / "SCI_ED_001_PROTOCOL.json").write_text(canonical(protocol))
