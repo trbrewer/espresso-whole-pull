@@ -18,7 +18,11 @@ def module(name, path):
     s=importlib.util.spec_from_file_location(name,path)
     if s is None or s.loader is None: raise RuntimeError("MODEL_INTERFACE_NOT_AVAILABLE_FOR_VIRTUAL_PROGRAM")
     m=importlib.util.module_from_spec(s);sys.modules[name]=m;s.loader.exec_module(m);return m
-def models(): return (module("sci_ed_a",ROOT/"scripts/sci_md_002a.py"),module("sci_ed_b",ROOT/"scripts/sci_md_002b.py"),module("sci_ed_c",ROOT/"scripts/sci_md_002c.py"))
+_MODELS=None
+def models():
+    global _MODELS
+    if _MODELS is None:_MODELS=(module("sci_ed_a",ROOT/"scripts/sci_md_002a.py"),module("sci_ed_b",ROOT/"scripts/sci_md_002b.py"),module("sci_ed_c",ROOT/"scripts/sci_md_002c.py"))
+    return _MODELS
 def load(name): return json.loads((OUT/name).read_text())
 
 def pressure(program,t):
@@ -181,10 +185,15 @@ def execute(bundle_arg,authority_arg):
     (bundle/"authority/EXECUTION_AUTHORITY.json").write_text(canonical(authority));(bundle/"authority/ENVIRONMENT.json").write_text(canonical({"python":platform.python_version(),"logical_cpus":os.cpu_count(),"workers":workers,"nested_threads":1,"gpu":0,"openfoam":0,"puckworks":0}))
     start=time.perf_counter();records=[]
     with concurrent.futures.ProcessPoolExecutor(max_workers=workers) as pool:
-        futures={pool.submit(run_row,row):row for row in matrix["rows"]}
-        for future in concurrent.futures.as_completed(futures):
-            row=futures[future];rec=future.result();rec["execution_authority_sha256"]=sha(bundle/"authority/EXECUTION_AUTHORITY.json")
-            records.append(atomic_gzip(bundle/"adjudicative"/(row["row_id"]+".json.gz"),rec))
+        pending={};iterator=iter(matrix["rows"])
+        for row in itertools.islice(iterator,workers*2):pending[pool.submit(run_row,row)]=row
+        while pending:
+            done,_=concurrent.futures.wait(pending,return_when=concurrent.futures.FIRST_COMPLETED)
+            for future in done:
+                row=pending.pop(future);rec=future.result();rec["execution_authority_sha256"]=sha(bundle/"authority/EXECUTION_AUTHORITY.json")
+                records.append(atomic_gzip(bundle/"adjudicative"/(row["row_id"]+".json.gz"),rec))
+                next_row=next(iterator,None)
+                if next_row is not None:pending[pool.submit(run_row,next_row)]=next_row
     records.sort(key=lambda x:x["path"]);aggregate=hashlib.sha256("".join(x["file_sha256"] for x in records).encode()).hexdigest();elapsed=time.perf_counter()-start
     manifest={"schema_version":"espresso.whole_pull.sci_ed_001.run_manifest.v1","expected_rows":matrix["row_count"],"completed_rows":len(records),"invalid_rows":0,"records":records,"ordered_record_aggregate_sha256":aggregate,"elapsed_s":elapsed,"worker_count":workers,"peak_rss_bytes_parent":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024}
     (bundle/"manifests/RUN_MANIFEST.json").write_text(canonical(manifest));return manifest
