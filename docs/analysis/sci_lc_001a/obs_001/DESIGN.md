@@ -25,6 +25,9 @@ prior-manifest consumption, or a nonempty prior result/sidecar root fails before
 the first scientific key with
 `DIAGNOSTIC_ENABLED_REQUIRES_FRESH_COMPLETE_EXECUTION`. Disabled mode preserves
 the pre-OBS reuse behavior.
+Explicit resume, reuse, and prior-manifest requests reject even when the output
+root is empty; nonempty result and sidecar roots are checked independently.
+These administrative checks precede run-manifest creation and key dispatch.
 
 Diagnostic callbacks return no scientific values. Exceptions are isolated and
 reported under `DIAGNOSTIC_EVIDENCE_INCOMPLETE`; they do not rewrite scientific

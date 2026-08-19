@@ -73,17 +73,17 @@ def stop_record() -> dict:
             "exited_bound": "UPPER_BOUND", "stop_direction": "OUTWARD"},
         trigger={"sector_count": 2, "triggering_sectors": [0], "primary_sector": 0,
                  "parameter_bindings": {}}, root=None,
-        sectors=[{"sector": 0, "beta": obs.exact_float(1.), "x_i": obs.exact_float(0.),
-            "beta_x_i": obs.exact_float(0.), "M_i": obs.exact_float(1.),
-            "H_i0": obs.exact_float(1.), "H_i": obs.exact_float(1.),
+        sectors=[{"sector": 0, "beta": obs.exact_float(1.), "x_i": obs.exact_float(math.log(4.)),
+            "beta_x_i": obs.exact_float(math.log(4.)), "M_i": obs.exact_float(4.),
+            "H_i0": obs.exact_float(1.), "H_i": obs.exact_float(4.),
             "preceding_valid": None, "candidate": None, "event_root": None,
             "lower_bound": obs.exact_float(.25), "upper_bound": obs.exact_float(4.)}],
         guard_semantics={"boundary_tolerance": obs.exact_float(1e-12),
             "derivative_tolerance": obs.exact_float(1e-14),
             "located_root_tolerance": obs.exact_float(1e-10),
             "guard_decision": "STOP", "no_clipping": True},
-        margins={"lower": obs.exact_float(.75), "upper": obs.exact_float(3.),
-            "minimum": obs.exact_float(.75),
+        margins={"lower": obs.exact_float(3.75), "upper": obs.exact_float(0.),
+            "minimum": obs.exact_float(0.),
             "absolute_exceedance": None, "relative_exceedance": None,
             "normalized_interval_exceedance": None},
         correlation={"guard": "g", "contact": "c", "event_root": None,
@@ -122,14 +122,14 @@ class SchemaSerializationTests(unittest.TestCase):
                         "exited_bound": "UPPER_BOUND", "stop_direction": "OUTWARD"},
             trigger={"sector_count": 2, "triggering_sectors": [0], "primary_sector": 0,
                      "parameter_bindings": {}}, root=None,
-            sectors=[{"sector": 0, "beta": obs.exact_float(1.), "x_i": obs.exact_float(0.),
-                      "beta_x_i": obs.exact_float(0.), "M_i": obs.exact_float(1.),
-                      "H_i0": obs.exact_float(1.), "H_i": obs.exact_float(1.),
+            sectors=[{"sector": 0, "beta": obs.exact_float(1.), "x_i": obs.exact_float(math.log(4.)),
+                      "beta_x_i": obs.exact_float(math.log(4.)), "M_i": obs.exact_float(4.),
+                      "H_i0": obs.exact_float(1.), "H_i": obs.exact_float(4.),
                       "preceding_valid": None, "candidate": None, "event_root": None,
                       "lower_bound": obs.exact_float(.25), "upper_bound": obs.exact_float(4.)}],
             guard_semantics={"guard_decision": "STOP", "no_clipping": True},
-            margins={"lower": obs.exact_float(.75), "upper": obs.exact_float(3.),
-                "minimum": obs.exact_float(.75), "absolute_exceedance": None,
+            margins={"lower": obs.exact_float(3.75), "upper": obs.exact_float(0.),
+                "minimum": obs.exact_float(0.), "absolute_exceedance": None,
                 "relative_exceedance": None, "normalized_interval_exceedance": None},
             correlation={"guard": "g", "contact": "c", "event_root": None,
                          "stopped_result": "s", "final_record": "f"})
@@ -206,6 +206,12 @@ class ApplicabilityAndFreshExecutionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, obs.FRESH_EXECUTION_FAILURE):
                     executor._require_fresh_diagnostic_execution(result_store, config)
                 dispatch.assert_not_called()
+                for request in ({"resume_requested": True}, {"reuse_requested": True},
+                                {"prior_manifest_requested": True}):
+                    empty = Path(directory) / ("empty-" + next(iter(request)))
+                    with self.assertRaisesRegex(ValueError, obs.FRESH_EXECUTION_FAILURE):
+                        executor._require_fresh_diagnostic_execution(
+                            executor.ResultStore(empty, store), config, **request)
             with self.subTest(mode=mode + "-stale"), tempfile.TemporaryDirectory() as directory:
                 output = Path(directory) / "results"
                 sidecar = Path(directory) / "diagnostics"; sidecar.mkdir()
@@ -269,6 +275,11 @@ class StrictRecursiveSemanticValidationTests(unittest.TestCase):
             lambda r: r["states"]["candidate"].__setitem__("shape", [99]),
             lambda r: r["correlation"].pop("guard"),
             lambda r: r["guard_semantics"].__setitem__("unknown", True),
+            lambda r: r["trigger"]["parameter_bindings"].__setitem__("unknown", 1),
+            lambda r: r["sectors"][0].__setitem__("preceding_valid", {}),
+            lambda r: r["sectors"][0].__setitem__("event_root", {"x_i": obs.exact_float(0.),
+                "M_i": obs.exact_float(1.)}),
+            lambda r: r["margins"].__setitem__("absolute_exceedance", obs.exact_float(1.)),
         )
         for index, mutate in enumerate(probes):
             record = stop_record(); mutate(record)
@@ -282,6 +293,7 @@ class StrictRecursiveSemanticValidationTests(unittest.TestCase):
             lambda m: m.__setitem__("expected_dynamic_keys", 2),
             lambda m: m["entries"][0].__setitem__("actual_record_path", "/fabricated"),
             lambda m: m["entries"][0].__setitem__("applicability", "INVALID"),
+            lambda m: m["entries"][0].__setitem__("validation", "PASS"),
         )
         for mutate in mutations:
             candidate = copy.deepcopy(manifest); mutate(candidate)
@@ -293,6 +305,35 @@ class StrictRecursiveSemanticValidationTests(unittest.TestCase):
         mismatched_health["manifest_sha256"] = "0" * 64
         with self.assertRaisesRegex(ValueError, "MANIFEST_HASH_MISMATCH"):
             obs.validate_run_reconciliation(mismatched_health, manifest)
+
+    def test_manifest_order_and_multiplier_stop_token_coupling(self):
+        config = obs.DiagnosticConfig.from_field({"mode": "ENABLED_REQUIRED", "sidecar_root": "/tmp/obs-r1"})
+        run = obs.DiagnosticRun(config, {"z": obs.NOT_APPLICABLE, "a": obs.NOT_APPLICABLE})
+        run.register_not_applicable("z", "COMPLETE")
+        run.register_not_applicable("a", "COMPLETE")
+        _, manifest = run.finalize_objects()
+        self.assertEqual([entry["key_id"] for entry in manifest["entries"]], ["a", "z"])
+        candidate = copy.deepcopy(manifest); candidate["entries"].reverse()
+        with self.assertRaisesRegex(ValueError, "ENTRY_ORDER"):
+            obs.validate_run_object(candidate)
+        candidate = copy.deepcopy(manifest)
+        candidate["entries"][0]["scientific_terminal_status"] = "STOPPED"
+        candidate["entries"][0]["scientific_stop_token"] = protocol.MULTIPLIER_STOP
+        candidate["entries"][0]["applicability"] = obs.APPLICABLE
+        with self.assertRaises(ValueError):
+            obs.validate_run_object(candidate)
+        with tempfile.TemporaryDirectory() as directory:
+            stop_config = obs.DiagnosticConfig.from_field(
+                {"mode": "ENABLED_REQUIRED", "sidecar_root": directory})
+            stopped = obs.DiagnosticRun(stop_config, {"OBS_FIXTURE_KEY_001": obs.APPLICABLE})
+            stopped.register("OBS_FIXTURE_KEY_001", "STOPPED", stop_record())
+            stop_health, stop_manifest = stopped.finalize_objects()
+            obs.validate_run_reconciliation(stop_health, stop_manifest)
+            missing = copy.deepcopy(stop_manifest["entries"][0])
+            missing["actual_record_path"] = None
+            stop_manifest["entries"][0] = missing
+            with self.assertRaises(ValueError):
+                obs.validate_run_object(stop_manifest)
 
 
 class MarginAndGuardTests(unittest.TestCase):

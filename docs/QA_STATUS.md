@@ -294,3 +294,12 @@ terminal disposition for every dynamic key, explicit no-evolution
 not-applicability without fabricated evidence, fresh execution for either
 enabled mode, and strict recursive validation independent of resealing. Replay
 and merge remain unauthorized.
+
+Standing-authority qualification did not automatically accept descendant
+`5c1ed6d`: its 26 focused tests passed, but audit found untested recursive
+closure and record-coupling gaps. An isolated linear descendant correction
+closes the parameter-binding and sector-state objects, validates
+bound/contact/exceedance semantics, binds manifest multiplier-stop
+classification to the scientific stop token, sorts entries deterministically,
+couples validation status to payload, and rejects explicit
+resume/reuse/prior-manifest requests before dispatch.

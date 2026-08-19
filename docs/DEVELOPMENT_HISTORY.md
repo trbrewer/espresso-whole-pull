@@ -511,3 +511,12 @@ adds an explicit 1,060/1,152 no-evolution/applicable partition, a pre-dispatch
 fresh-execution barrier for enabled diagnostics, and independently reseal-proof
 recursive validation. No canonical execution, classification, replay, physics
 change, or merge occurred.
+
+Two narrower activation attempts subsequently stopped before mutation: first
+under an exact cleanliness condition, then when the inherited bytes had become
+descendant `5c1ed6d`. A standing-authority audit found remaining nested-schema
+and manifest-coupling defects, but concurrent activity removed its temporary
+correction and introduced an unrelated workflow patch. The isolated-workspace
+amendment quarantined that checkout and reconstructed the correction in a fresh
+clone. Scientific execution, replay, classification, physics changes and merge
+remain zero or unauthorized.

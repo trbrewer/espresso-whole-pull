@@ -34,6 +34,17 @@
     "finite_category"
   ],
   "recursive_semantic_validation": true,
+  "stop_event_nested_contract": {
+    "parameter_bindings": "CLOSED_EMPTY_OBJECT",
+    "sector_event_root": "NULL_OR_EXACT_X_I_AND_M_I_BOUND_TO_SECTOR_PRIMITIVES",
+    "sector_preceding_and_candidate": "NULL_NO_UNDECLARED_PAYLOAD",
+    "bound_contact_and_exceedance": "ARITHMETICALLY_COUPLED"
+  },
+  "manifest_entry_contract": {
+    "deterministic_order": "KEY_ID_ASCENDING",
+    "scientific_stop_token": "REQUIRED_NULLABLE_AND_COUPLED_TO_MULTIPLIER_STOP_PAYLOAD",
+    "validation": "COUPLED_TO_TERMINAL_DISPOSITION_AND_PAYLOAD"
+  },
   "independent_of_integrity_sealing": true,
   "unknown_fields": "REJECTED_AT_EVERY_CLOSED_OBJECT_LEVEL",
   "missing_required_fields": "REJECTED_AT_EVERY_CLOSED_OBJECT_LEVEL",

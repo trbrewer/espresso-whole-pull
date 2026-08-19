@@ -258,6 +258,14 @@ def _validate_scientific_component_order(vector: Mapping[str, object], name: str
         raise ValueError("DIAGNOSTIC_STATE_COMPONENT_NAME_INVALID:" + name)
     if [rank(component) for component in names] != sorted(rank(component) for component in names):
         raise ValueError("DIAGNOSTIC_STATE_COMPONENT_ORDER_INVALID:" + name)
+    pressure = [int(component[2:]) for component in names if re.fullmatch(r"p_\d+", component)]
+    evolving = [int(component[2:]) for component in names if re.fullmatch(r"x_\d+", component)]
+    if pressure != list(range(len(pressure))) or evolving != list(range(len(evolving))):
+        raise ValueError("DIAGNOSTIC_STATE_COMPONENT_INDEX_MAPPING_INVALID:" + name)
+    if evolving and len(evolving) != len(pressure):
+        raise ValueError("DIAGNOSTIC_STATE_COMPONENT_DIMENSION_INVALID:" + name)
+    if names.count("p_upstream") > 1:
+        raise ValueError("DIAGNOSTIC_STATE_COMPONENT_MAPPING_INVALID:" + name)
 
 
 def _validate_authority(value: object, name: str) -> None:
@@ -355,6 +363,7 @@ def _validate_stop(record: Mapping[str, object]) -> None:
         raise ValueError("DIAGNOSTIC_PRIMARY_SECTOR_INVALID")
     if not isinstance(trigger["parameter_bindings"], Mapping):
         raise ValueError("DIAGNOSTIC_PARAMETER_BINDINGS_INVALID")
+    _require_exact_keys(trigger["parameter_bindings"], set(), set())
     timeline = record["timeline"]
     _require_exact_keys(timeline, {"prior_accepted_time", "prior_accepted_step_index", "candidate_time",
         "candidate_step_index", "event_root_present", "event_root_time", "evaluation_stage"}, set())
@@ -400,6 +409,14 @@ def _validate_stop(record: Mapping[str, object]) -> None:
         for optional_state in ("preceding_valid", "candidate", "event_root"):
             if item[optional_state] is not None and not isinstance(item[optional_state], Mapping):
                 raise ValueError("DIAGNOSTIC_STOP_SECTOR_STATE_INVALID")
+        if item["preceding_valid"] is not None or item["candidate"] is not None:
+            raise ValueError("DIAGNOSTIC_STOP_SECTOR_UNDECLARED_STATE_PAYLOAD")
+        if item["event_root"] is not None:
+            _require_exact_keys(item["event_root"], {"x_i", "M_i"}, set())
+            root_x = validate_exact_float(item["event_root"]["x_i"], f"sectors[{index}].event_root.x_i")
+            root_m = validate_exact_float(item["event_root"]["M_i"], f"sectors[{index}].event_root.M_i")
+            if root_x != values["x_i"] or root_m != values["M_i"]:
+                raise ValueError("DIAGNOSTIC_STOP_SECTOR_EVENT_ROOT_INCONSISTENT")
     guard = record["guard_semantics"]
     allowed_guard = {"guard_decision", "no_clipping"}
     full_guard = allowed_guard | {"boundary_tolerance", "derivative_tolerance", "located_root_tolerance"}
@@ -430,6 +447,28 @@ def _validate_stop(record: Mapping[str, object]) -> None:
     if (lower_margin != primary_multiplier - .25 or upper_margin != 4. - primary_multiplier or
             minimum_margin != min(lower_margin, upper_margin)):
         raise ValueError("DIAGNOSTIC_STOP_MARGIN_BOUND_INCONSISTENT")
+    exited_bound = scientific["exited_bound"]
+    finite = scientific["finite_category"] == "FINITE"
+    if finite and exited_bound == "UNKNOWN":
+        raise ValueError("DIAGNOSTIC_STOP_FINITE_BOUND_UNKNOWN")
+    selected_margin = lower_margin if exited_bound == "LOWER_BOUND" else upper_margin
+    if finite and selected_margin > 1e-12:
+        raise ValueError("DIAGNOSTIC_STOP_EXITED_BOUND_MARGIN_INCONSISTENT")
+    if scientific["contact_category"] in ("EXACT_CONTACT", "LOCATED_EVENT") and selected_margin != 0.0:
+        raise ValueError("DIAGNOSTIC_STOP_CONTACT_MARGIN_INCONSISTENT")
+    exceedance_names = ("absolute_exceedance", "relative_exceedance", "normalized_interval_exceedance")
+    exceedances = [margins[name] for name in exceedance_names]
+    if finite and selected_margin < 0.0:
+        if any(value is None for value in exceedances):
+            raise ValueError("DIAGNOSTIC_STOP_EXCEEDANCE_REQUIRED")
+        absolute = validate_exact_float(margins["absolute_exceedance"], "margins.absolute_exceedance")
+        relative = validate_exact_float(margins["relative_exceedance"], "margins.relative_exceedance")
+        normalized = validate_exact_float(margins["normalized_interval_exceedance"], "margins.normalized_interval_exceedance")
+        bound = .25 if exited_bound == "LOWER_BOUND" else 4.
+        if absolute != -selected_margin or relative != absolute / bound or normalized != absolute / 3.75:
+            raise ValueError("DIAGNOSTIC_STOP_EXCEEDANCE_INCONSISTENT")
+    elif any(value is not None for value in exceedances):
+        raise ValueError("DIAGNOSTIC_STOP_EXCEEDANCE_NOT_APPLICABLE")
     correlation = record["correlation"]
     _require_exact_keys(correlation, {"guard", "contact", "event_root", "stopped_result", "final_record"}, set())
     for name in ("guard", "contact", "stopped_result", "final_record"):
@@ -549,7 +588,7 @@ def validate_run_object(record: Mapping[str, object]) -> None:
         applicable = 0
         for index, entry in enumerate(record["entries"]):
             if not isinstance(entry, Mapping): raise ValueError("DIAGNOSTIC_MANIFEST_ENTRY_OBJECT_REQUIRED")
-            common = {"key_id", "applicability", "scientific_terminal_status", "expected_record_type",
+            common = {"key_id", "applicability", "scientific_terminal_status", "scientific_stop_token", "expected_record_type",
                       "actual_record_path", "record_sha256", "schema", "validation",
                       "diagnostic_terminal_status"}
             _require_exact_keys(entry, common, set())
@@ -560,6 +599,8 @@ def validate_run_object(record: Mapping[str, object]) -> None:
                 _enum(entry["scientific_terminal_status"], ("COMPLETE", "STOPPED", "CAPPED",
                     "NUMERICALLY_UNRESOLVED", "FAILED", "INTERRUPTED"),
                     f"entries[{index}].scientific_terminal_status")
+            if entry["scientific_stop_token"] is not None:
+                _text(entry["scientific_stop_token"], f"entries[{index}].scientific_stop_token")
             if entry["applicability"] == NOT_APPLICABLE:
                 if any(entry[name] is not None for name in ("expected_record_type", "actual_record_path", "record_sha256", "schema")):
                     raise ValueError("DIAGNOSTIC_NOT_APPLICABLE_PAYLOAD_INVALID")
@@ -569,7 +610,10 @@ def validate_run_object(record: Mapping[str, object]) -> None:
                 applicable += 1
                 if entry["scientific_terminal_status"] == "COMPLETE": expected_type, expected_schema, disposition = "MULTIPLIER_MARGIN_SUMMARY", SUMMARY_SCHEMA, "MULTIPLIER_MARGIN_SUMMARY_WRITTEN"
                 elif (entry["scientific_terminal_status"] == "STOPPED" and
-                      entry["expected_record_type"] == "MULTIPLIER_STOP_EVENT"):
+                      isinstance(entry["scientific_stop_token"], str) and
+                      (entry["scientific_stop_token"] == "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUTWARD_OR_OUT_OF_RANGE_NO_CLIPPING" or
+                       entry["scientific_stop_token"] == "STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUTWARD_CROSSING_NO_CLIPPING" or
+                       entry["scientific_stop_token"].startswith("STOP_RESISTANCE_EVOLUTION_MULTIPLIER_OUTWARD_CROSSING_NO_CLIPPING:"))):
                     expected_type, expected_schema, disposition = "MULTIPLIER_STOP_EVENT", STOP_SCHEMA, "MULTIPLIER_STOP_EVENT_WRITTEN"
                 else: expected_type, expected_schema, disposition = None, None, (
                     ADMIN_FAILURE if entry["scientific_terminal_status"] is None
@@ -581,10 +625,18 @@ def validate_run_object(record: Mapping[str, object]) -> None:
                     if not Path(entry["actual_record_path"]).is_absolute():
                         raise ValueError("DIAGNOSTIC_MANIFEST_RECORD_PATH_INVALID")
                     _sha256(entry["record_sha256"], f"entries[{index}].record_sha256")
+                elif any(entry[name] is not None for name in ("actual_record_path", "record_sha256", "schema")):
+                    raise ValueError("DIAGNOSTIC_MANIFEST_UNEXPECTED_RECORD_PAYLOAD")
             if entry["validation"] not in ("PASS", "NOT_APPLICABLE", "FAILED"):
                 raise ValueError("DIAGNOSTIC_MANIFEST_VALIDATION_INVALID")
+            expected_validation = ("NOT_APPLICABLE" if entry["diagnostic_terminal_status"] == NOT_APPLICABLE
+                else "PASS" if entry["expected_record_type"] is not None else "FAILED")
+            if entry["validation"] != expected_validation:
+                raise ValueError("DIAGNOSTIC_MANIFEST_VALIDATION_COUPLING_INVALID")
         if applicable != record["applicable_dynamic_keys"]:
             raise ValueError("DIAGNOSTIC_MANIFEST_APPLICABILITY_LIST_MISMATCH")
+        if identities != sorted(identities):
+            raise ValueError("DIAGNOSTIC_MANIFEST_ENTRY_ORDER_INVALID")
     else:
         raise ValueError("DIAGNOSTIC_RUN_SCHEMA_IDENTITY_INVALID")
     if record.get("schema_version") != 2 or record.get("diagnostic_contract") != CONTRACT_ID:
@@ -824,6 +876,12 @@ class ExecutorKeyObserver:
                 "lower_bound":exact_float(.25),
                 "upper_bound":exact_float(4.)})
         stop=str(scientific_record.get("stop_disposition"))
+        primary_multiplier=struct.unpack(">d",bytes.fromhex(sectors[0]["M_i"]["ieee754_hex"]))[0]
+        lower_margin=primary_multiplier-.25
+        upper_margin=4.-primary_multiplier
+        selected_margin=(lower_margin if triggers[0].get("bound") == "LOWER_BOUND" else upper_margin)
+        finite_exceedance=math.isfinite(selected_margin) and selected_margin < 0.0
+        bound=.25 if triggers[0].get("bound") == "LOWER_BOUND" else 4.
         return self.key.stopped_record(scientific={"status":scientific_record.get("status"),
             "stop_token":stop,"finite_category":"NONFINITE" if "NONFINITE" in stop else "FINITE",
             "contact_category":"LOCATED_EVENT" if self.root else "RAW_GUARD",
@@ -833,13 +891,11 @@ class ExecutorKeyObserver:
             root=self.root,sectors=sectors,guard_semantics={"boundary_tolerance":exact_float(1e-12),
                 "derivative_tolerance":exact_float(1e-14),"located_root_tolerance":exact_float(1e-10),
                 "guard_decision":"STOP","no_clipping":True},
-            margins={"lower":exact_float(struct.unpack(">d",bytes.fromhex(sectors[0]["M_i"]["ieee754_hex"]))[0]-.25),
-                "upper":exact_float(4.-struct.unpack(">d",bytes.fromhex(sectors[0]["M_i"]["ieee754_hex"]))[0]),
-                "minimum":exact_float(min(
-                    struct.unpack(">d",bytes.fromhex(sectors[0]["M_i"]["ieee754_hex"]))[0]-.25,
-                    4.-struct.unpack(">d",bytes.fromhex(sectors[0]["M_i"]["ieee754_hex"]))[0])),
-                "absolute_exceedance":None,
-                     "relative_exceedance":None,"normalized_interval_exceedance":None},
+            margins={"lower":exact_float(lower_margin), "upper":exact_float(upper_margin),
+                "minimum":exact_float(min(lower_margin, upper_margin)),
+                "absolute_exceedance":exact_float(-selected_margin) if finite_exceedance else None,
+                "relative_exceedance":exact_float(-selected_margin/bound) if finite_exceedance else None,
+                "normalized_interval_exceedance":exact_float(-selected_margin/3.75) if finite_exceedance else None},
             correlation={"guard":digest({"key":self.key.common["key_id"],"kind":"guard"}),
                 "contact":digest({"key":self.key.common["key_id"],"kind":"contact"}),
                 "event_root":None if self.root is None else digest(self.root),
@@ -887,27 +943,33 @@ class DiagnosticRun:
         checksum = atomic_write_record(path, record)
         self.entries[key_id] = {"applicability": APPLICABLE,
             "scientific_terminal_status": scientific_status,
+            "scientific_stop_token": (record["scientific"]["stop_token"]
+                                      if scientific_status == "STOPPED" else None),
             "expected_record_type": expected_type, "actual_record_path": str(path),
             "record_sha256": checksum, "schema": record["schema"], "validation": "PASS",
             "diagnostic_terminal_status": terminal}
 
-    def register_not_applicable(self, key_id: str, scientific_status: str) -> None:
+    def register_not_applicable(self, key_id: str, scientific_status: str,
+                                scientific_stop_token: object = None) -> None:
         if key_id in self.entries:
             raise ValueError("DUPLICATE_DIAGNOSTIC_TERMINAL_IDENTITY")
         if self.applicability.get(key_id) != NOT_APPLICABLE:
             raise ValueError("DIAGNOSTIC_NOT_APPLICABLE_BINDING_INVALID")
         self.entries[key_id] = {"applicability": NOT_APPLICABLE,
-            "scientific_terminal_status": scientific_status, "expected_record_type": None,
+            "scientific_terminal_status": scientific_status,
+            "scientific_stop_token": scientific_stop_token, "expected_record_type": None,
             "actual_record_path": None, "record_sha256": None, "schema": None,
             "validation": "NOT_APPLICABLE", "diagnostic_terminal_status": NOT_APPLICABLE}
 
-    def register_other_applicable(self, key_id: str, scientific_status: str) -> None:
+    def register_other_applicable(self, key_id: str, scientific_status: str,
+                                  scientific_stop_token: object = None) -> None:
         if key_id in self.entries:
             raise ValueError("DUPLICATE_DIAGNOSTIC_TERMINAL_IDENTITY")
         if self.applicability.get(key_id) != APPLICABLE or scientific_status == "COMPLETE":
             raise ValueError("DIAGNOSTIC_OTHER_APPLICABLE_BINDING_INVALID")
         self.entries[key_id] = {"applicability": APPLICABLE,
-            "scientific_terminal_status": scientific_status, "expected_record_type": None,
+            "scientific_terminal_status": scientific_status,
+            "scientific_stop_token": scientific_stop_token, "expected_record_type": None,
             "actual_record_path": None, "record_sha256": None, "schema": None,
             "validation": "FAILED",
             "diagnostic_terminal_status": "APPLICABLE_OTHER_TERMINAL_EVIDENCE_INCOMPLETE"}
@@ -920,7 +982,8 @@ class DiagnosticRun:
                               "reason": reason, "detail": detail})
         if key_id in self.applicability and key_id not in self.entries:
             self.entries[key_id] = {"applicability": self.applicability[key_id],
-                "scientific_terminal_status": None, "expected_record_type": None,
+                "scientific_terminal_status": None, "scientific_stop_token": None,
+                "expected_record_type": None,
                 "actual_record_path": None, "record_sha256": None, "schema": None,
                 "validation": "FAILED", "diagnostic_terminal_status": ADMIN_FAILURE}
 
@@ -929,11 +992,12 @@ class DiagnosticRun:
         applicable_keys = {key for key, value in self.applicability.items() if value == APPLICABLE}
         not_applicable_keys = set(self.expected) - applicable_keys
         manifest_entries = []
-        for key in self.expected:
+        for key in sorted(self.expected):
             entry = self.entries.get(key)
             if entry is None:
                 entry = {"applicability": self.applicability[key],
-                    "scientific_terminal_status": None, "expected_record_type": None,
+                    "scientific_terminal_status": None, "scientific_stop_token": None,
+                    "expected_record_type": None,
                     "actual_record_path": None, "record_sha256": None, "schema": None,
                     "validation": "FAILED", "diagnostic_terminal_status": ADMIN_FAILURE}
             manifest_entries.append(dict(key_id=key, **entry))

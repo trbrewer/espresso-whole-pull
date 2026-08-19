@@ -338,3 +338,8 @@ enabled reuse/resume before dispatch, and recursively validates the active
 schemas. Diagnostics are
 default-disabled; governing physics, numerical methods, canonical execution,
 classification, replay, correction, and merge are unchanged or unauthorized.
+
+Two narrower activation attempts stopped before mutation and remain historical.
+The isolated-workspace amendment quarantines the contested original checkout
+and reconstructs the required normal descendant correction from `5c1ed6d`.
+No candidate is accepted merely because it exists or was pushed.

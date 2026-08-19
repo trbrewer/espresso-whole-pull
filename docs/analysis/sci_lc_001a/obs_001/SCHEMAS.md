@@ -13,6 +13,14 @@ Validation is independent of sealing: strict scalar types, closed enums,
 SHA-256 encodings, decimal/hex float equivalence, state shape and order, sector
 sets, bounds and margins, record/payload coupling, and health/manifest
 reconciliation are checked after any independently recomputed integrity hash.
+Stop-event validation additionally closes the currently empty parameter-binding
+object, rejects undeclared per-sector state payloads, checks event-root sector
+values against the retained primitives, couples the exited bound and contact
+category to the signed margin, and requires exact exceedance values only for an
+actual finite exceedance. Manifest v2 includes the scientific stop token so an
+applicable `STOPPED` key cannot be mislabeled as a multiplier-domain stop merely
+by asserting an expected payload type. Entries are key-ID sorted and validation
+status is coupled to disposition and payload presence.
 
 Minimum-margin ties use accepted-step index, candidate-step index, simulation
 time, profile order, sector index, then event sequence. Record identities exclude

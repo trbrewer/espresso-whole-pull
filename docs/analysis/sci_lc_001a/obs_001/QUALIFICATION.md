@@ -22,3 +22,11 @@ R1 qualification includes independently resealed corrupt records, the exact
 `backend = "NOT_A_BACKEND"` probes, enabled reuse/resume pre-dispatch rejection,
 and disabled-mode compatibility. Canonical execution and diagnostic replay are
 not qualification mechanisms and remain unauthorized.
+
+The standing-authority audit treated descendant `5c1ed6d` as unqualified until
+inspection. Its initial 26 focused tests passed, but audit identified missing
+recursive closure for parameter bindings and sector-state payloads plus
+insufficient manifest stop-token, ordering, and validation-status coupling.
+The isolated-workspace descendant correction reconstructs those lost changes
+and adds independently resealed probes; the pushed candidate was not accepted
+merely because it existed.
