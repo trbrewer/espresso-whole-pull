@@ -287,3 +287,10 @@ summary, cardinality, failure-isolation, parity, no-physics, and no-feedback
 checks. The final exact counts and candidate identities are recorded in the
 external immutable OBS-001 evidence package. Physical validation is not
 established.
+
+The historical `7f345f7` candidate's overall PASS is superseded: terminal
+cardinality and schema qualification were not established. R1 requires one
+terminal disposition for every dynamic key, explicit no-evolution
+not-applicability without fabricated evidence, fresh execution for either
+enabled mode, and strict recursive validation independent of resealing. Replay
+and merge remain unauthorized.

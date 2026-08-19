@@ -330,6 +330,11 @@ fit, protected access, experiment, or physics change occurred.
 # OBS-001 continuation (2026-08-18)
 
 SCI-LC-001A OBS-001 bounded multiplier event-state observability is implemented
-on its review branch and remains pending exact-head review. Diagnostics are
+on its review branch and remains pending a new exact-head review after R1. The
+historical `7f345f7` overall PASS was superseded by three material review
+findings; its no-physics and no-feedback findings remain supported. R1 separates
+1,060 no-evolution dynamic keys from 1,152 multiplier-applicable keys, prohibits
+enabled reuse/resume before dispatch, and recursively validates the active
+schemas. Diagnostics are
 default-disabled; governing physics, numerical methods, canonical execution,
 classification, replay, correction, and merge are unchanged or unauthorized.

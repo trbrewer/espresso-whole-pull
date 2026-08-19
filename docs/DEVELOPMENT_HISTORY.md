@@ -503,3 +503,11 @@ Added default-disabled, bounded multiplier event-state observability with four
 versioned diagnostic schemas, deterministic exact-float serialization, atomic
 sidecars, health and manifest reconciliation, and static no-physics/no-feedback
 verification. No canonical scientific execution or classification was run.
+
+Independent exact-head review then rejected the historical `7f345f7` overall
+PASS for incomplete no-evolution cardinality, enabled reuse, and recursive
+schema contracts while retaining its no-physics and no-feedback findings. R1
+adds an explicit 1,060/1,152 no-evolution/applicable partition, a pre-dispatch
+fresh-execution barrier for enabled diagnostics, and independently reseal-proof
+recursive validation. No canonical execution, classification, replay, physics
+change, or merge occurred.

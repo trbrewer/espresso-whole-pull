@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "18641c01ebd4d18636c092f616855eb2659c4a09"
+R1_BASE = "7f345f75985f19e44660ee03de1d37065d6d8597"
 IMMUTABLE = {
  "validation/cases/sci_lc_001a/SCI_LC_001A_PARAMETER_MATRIX.json":"d71b889732c7f1cbf023e2e814e29044675f744f7171bc39de309140a51b6680",
  "validation/cases/sci_lc_001a/SCI_LC_001A_PARAMETER_MATRIX.csv":"7d74460bee9f91fc7b5fe6f15a14924ca490a4d5f042a51d22c0b85020cd4efb",
@@ -51,8 +52,11 @@ def main():
                                                 "_execute_dynamic_case","_execute_canonical_case"]}
     for path,names in targets.items():
         base=subprocess.run(["git","show",f"{BASE}:{path}"],cwd=ROOT,check=True,capture_output=True,text=True).stdout
+        r1_base=subprocess.run(["git","show",f"{R1_BASE}:{path}"],cwd=ROOT,check=True,capture_output=True,text=True).stdout
         candidate=(ROOT/path).read_text()
-        for name in names: checks[f"normalized_ast:{path}:{name}"]=function(base,name)==function(candidate,name)
+        for name in names:
+            checks[f"normalized_ast:{path}:{name}"]=function(base,name)==function(candidate,name)
+            checks[f"r1_delta_normalized_ast:{path}:{name}"]=function(r1_base,name)==function(candidate,name)
     checks.update({"formula_exp_beta_x": "math.exp(beta * value)" in (ROOT/"scripts/sci_lc_001a_protocol.py").read_text(),
       "bounds_0p25_4p0": all(x in (ROOT/"scripts/sci_lc_001a_protocol.py").read_text() for x in ("value < 0.25","value > 4.0")),
       "tolerances": all(x in (ROOT/"scripts/sci_lc_001a_protocol.py").read_text() for x in ("1.0e-12","1.0e-14","1.0e-10")),

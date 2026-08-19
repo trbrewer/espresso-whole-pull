@@ -1236,8 +1236,12 @@ def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _V
         raise ValueError("REAL_GRAPH_REQUIRES_REAL_STAGE_A_CONTEXT")
     plan = build_plan(store); completed = reused = 0
     diagnostic_config = diagnostic_config or obs_001.DiagnosticConfig.from_field(None)
-    dynamic_keys = [case_id + "__" + profile for case_id, profile in plan["keys"]
-                    if store.row(case_id)["pressure_mode"] != "PRESCRIBED_STATIC"]
+    if diagnostic_config.enabled:
+        _require_fresh_diagnostic_execution(result_store, diagnostic_config)
+    dynamic_keys = {case_id + "__" + profile: obs_001.multiplier_applicability(
+                    store.row(case_id)["resistance_evolution_law"])
+                    for case_id, profile in plan["keys"]
+                    if store.row(case_id)["pressure_mode"] != "PRESCRIBED_STATIC"}
     diagnostic_run = obs_001.DiagnosticRun(diagnostic_config, dynamic_keys) if diagnostic_config.enabled else None
     manifest = result_store.begin_run(context, plan["total_keys"])
     infrastructure_failure = False
@@ -1287,9 +1291,19 @@ def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _V
                 execution_failure_class="IMPLEMENTATION_EXCEPTION",
                 rhs_evaluations_status="NOT_AVAILABLE_DUE_TO_IMPLEMENTATION_EXCEPTION")
         result_store.write_record(manifest, record); completed += 1
-        if diagnostic_run is not None and key_observer is not None:
+        if diagnostic_run is not None and row["pressure_mode"] != "PRESCRIBED_STATIC":
             try:
-                diagnostic_run.register(key_id, record["status"], key_observer.terminal_record(record))
+                applicability = dynamic_keys[key_id]
+                if applicability == obs_001.NOT_APPLICABLE:
+                    diagnostic_run.register_not_applicable(key_id, record["status"])
+                elif record["status"] == "COMPLETE" or (record["status"] == "STOPPED" and
+                        isinstance(record.get("stop_disposition"), str) and
+                        (record["stop_disposition"] == protocol.MULTIPLIER_OUTSIDE_STOP or
+                         record["stop_disposition"].startswith(protocol.MULTIPLIER_STOP + ":"))):
+                    assert key_observer is not None
+                    diagnostic_run.register(key_id, record["status"], key_observer.terminal_record(record))
+                else:
+                    diagnostic_run.register_other_applicable(key_id, record["status"])
             except BaseException as exc:
                 diagnostic_run.fail(key_id, "SERIALIZATION_FAILURE", type(exc).__name__ + ":" + str(exc))
                 if diagnostic_config.required:
@@ -1317,6 +1331,19 @@ def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _V
             if diagnostic_config.required:
                 result["diagnostic_administrative_status"] = obs_001.ADMIN_FAILURE
     return result
+
+
+def _require_fresh_diagnostic_execution(result_store: ResultStore,
+                                        config: obs_001.DiagnosticConfig) -> None:
+    """Reject enabled diagnostic reuse/resume before any scientific dispatch."""
+    if not config.enabled:
+        return
+    roots = [result_store.root]
+    if config.sidecar_root is not None and config.sidecar_root != result_store.root:
+        roots.append(config.sidecar_root)
+    for root in roots:
+        if root.exists() and any(root.iterdir()):
+            raise ValueError(obs_001.FRESH_EXECUTION_FAILURE)
 
 
 def execute_authorized_graph(*, execution_authority_path: Path, output_root: Path,

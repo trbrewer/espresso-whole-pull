@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 407,
-  "total_uncompressed_bytes_excluding_manifest": 6549724,
-  "aggregate_source_sha256": "dc89a4e02ba533b326ce3e5c36b34eb8a982468dbd7c7e4b98bae11b4bdfcf4b",
-  "aggregate_sha256": "dc89a4e02ba533b326ce3e5c36b34eb8a982468dbd7c7e4b98bae11b4bdfcf4b",
+  "total_uncompressed_bytes_excluding_manifest": 6599190,
+  "aggregate_source_sha256": "5fc8eaeb23660c0720aff87225ee3b0279ef52b822621495c9ca10dfafc8cb82",
+  "aggregate_sha256": "5fc8eaeb23660c0720aff87225ee3b0279ef52b822621495c9ca10dfafc8cb82",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -399,8 +399,8 @@
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
-      "sha256": "390c4e2367b5c8b89fb1f1d5f0cd76caaae9944befc339eddd802cb823d75069",
-      "bytes": 9549,
+      "sha256": "82fa1c1c472d4b9a202c535729fca11b2ae48ff8ae014af344b5520daeaddae9",
+      "bytes": 9768,
       "git_mode": "100644"
     },
     "docs/FREEZE_FINALIZATION_SPECIFICATION_V0_1_4.md": {
@@ -449,8 +449,8 @@
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "115326f5df19f04d2e084dc6d219e23aa295663056d722fd4a359ee1c3e80685",
-      "bytes": 15670,
+      "sha256": "81f39e713ad1e0429b81ff98ecb317dfe8041b1ebbe60a5856be9058ba1b0f9c",
+      "bytes": 16070,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -484,18 +484,18 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/obs_001/DESIGN.md": {
-      "sha256": "e9d8cf0875d198b5edfd272fe350bc7f96044f8d428b51477378565d2e1f05eb",
-      "bytes": 1341,
+      "sha256": "65ef277e4dc835e2b37226bb1834164a3def7fcfbf2034ca1baf824aaf99daf2",
+      "bytes": 2160,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/obs_001/QUALIFICATION.md": {
-      "sha256": "65e682616aeffcca8533cf1212c6157290caf6a4a108dfe35acbce2bf6e32225",
-      "bytes": 929,
+      "sha256": "4f2d0d1d3c78b74739b28a61f014202408e5e71cd7b280822b86a090100c135f",
+      "bytes": 1421,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/obs_001/SCHEMAS.md": {
-      "sha256": "8eb560dc96a82bbdeed6eda5f0069fb6d3d6527cf48c52879264c6bfd69d8aaa",
-      "bytes": 888,
+      "sha256": "886b27d3434e68e6bd5340388d554c736ae85ea7242d9c655808117a148af69b",
+      "bytes": 1691,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1099,13 +1099,13 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_executor.py": {
-      "sha256": "e931fb31c9609acf20d22686d855ea9782a594d73ac6e51f1486cb6ee394c62d",
-      "bytes": 95538,
+      "sha256": "9e9ff65b71d3d827a302f839bc6abcc8eca6a4a24a26bd5533f70dbcf82b5ad7",
+      "bytes": 97078,
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_obs_001_diagnostics.py": {
-      "sha256": "49c71f99eb21f1339f9b445dca1837d57fc4d8787e66e761bc61380ce40c48c6",
-      "bytes": 26599,
+      "sha256": "ca6f29733b693a93eec02d5afbbabeb6b9682f162f2617b99e157f447ce3c199",
+      "bytes": 60092,
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_obs_001_no_feedback.py": {
@@ -1114,8 +1114,8 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_obs_001_no_physics.py": {
-      "sha256": "65e19af9467bb851526e8cec395c51569858ea194c7acbe2c6b3d3b676ff9a5b",
-      "bytes": 3883,
+      "sha256": "cb733d1be108c26cae6052c0c823013397fd3465a3aeba8c8656700d1778800b",
+      "bytes": 4182,
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_protocol.py": {
@@ -1459,8 +1459,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_obs_001.py": {
-      "sha256": "3a7c689bb4d93994a5f9199a5b67e6559faab9a3f81787feaccfdce09629d7b1",
-      "bytes": 10863,
+      "sha256": "a4ecb654a3f976cffa0430e98ca11cdfea8139c32cb135492336c240bc52365f",
+      "bytes": 22264,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_protocol.py": {

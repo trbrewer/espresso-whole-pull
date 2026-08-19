@@ -30,7 +30,9 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 649,
+    "python_test_count": 661,
+    "sci_lc_001a_obs_001_r1_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_obs_001",
+    "sci_lc_001a_obs_001_r1_focused_test_count": 26,
     "sci_lc_001a_protocol_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol",
     "sci_lc_001a_protocol_focused_test_count": 47,
     "sci_lc_001a_static_validator_regression_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_static_validate_non_mutating",
@@ -45,7 +47,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 407,
-    "source_manifest_aggregate_sha256": "dc89a4e02ba533b326ce3e5c36b34eb8a982468dbd7c7e4b98bae11b4bdfcf4b",
+    "source_manifest_aggregate_sha256": "5fc8eaeb23660c0720aff87225ee3b0279ef52b822621495c9ca10dfafc8cb82",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -55,7 +57,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "dc89a4e02ba533b326ce3e5c36b34eb8a982468dbd7c7e4b98bae11b4bdfcf4b"
+    "source_manifest_aggregate_source_sha256": "5fc8eaeb23660c0720aff87225ee3b0279ef52b822621495c9ca10dfafc8cb82"
   },
   "sci_lc_001a_ica_003": {
     "authorization": "SCI-LC-001A-ICA-003-R2-F01-F03-BOUNDED-CORRECTION-AND-EVIDENCE-ADJUDICATION-2026-08-17",

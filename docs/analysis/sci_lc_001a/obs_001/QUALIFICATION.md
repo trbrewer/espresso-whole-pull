@@ -10,7 +10,15 @@ and the observed-wrapper dispatch. The independent no-feedback analyzer rejects
 diagnostic identifiers in classifier functions, assigned callback returns, RNG,
 monkey-patching, diagnostic key identity, and scientific-state assignment.
 
-For 2,212 dynamic terminal records, a conservative 200 KiB maximum stop record
-projects to 442.4 MiB plus manifest, health, and filesystem overhead. This is
-materially below RCA-002's approximately 6.37 GB ordinary-event stream. No
+The frozen plan audit partitions 2,212 dynamic keys into 1,060 no-evolution
+not-applicable dispositions and 1,152 multiplier-evolution-applicable keys.
+The sets are deterministic, disjoint, and complete. For 2,212 manifest
+dispositions, with large records limited to the applicable set, the projection
+is materially below RCA-002's approximately 6.37 GB ordinary-event stream. No
 required stop record is capped away.
+
+R1 qualification includes independently resealed corrupt records, the exact
+`minimum = "garbage"`, `guard_evaluations = -9`, and
+`backend = "NOT_A_BACKEND"` probes, enabled reuse/resume pre-dispatch rejection,
+and disabled-mode compatibility. Canonical execution and diagnostic replay are
+not qualification mechanisms and remain unauthorized.
