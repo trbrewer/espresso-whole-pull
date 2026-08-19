@@ -280,3 +280,26 @@ complete executable-profile dispatch, and externally pinned candidate roots.
 All cases are synthetic; governed comparison and OpenFOAM execution counts are
 zero for this correction. Physical validation remains not established. The
 completed merges remain complete; no next mechanism is selected or authorized.
+# OBS-001 local qualification
+
+The OBS-001 branch adds focused schema, serialization, guard/contact, bounded
+summary, cardinality, failure-isolation, parity, no-physics, and no-feedback
+checks. The final exact counts and candidate identities are recorded in the
+external immutable OBS-001 evidence package. Physical validation is not
+established.
+
+The historical `7f345f7` candidate's overall PASS is superseded: terminal
+cardinality and schema qualification were not established. R1 requires one
+terminal disposition for every dynamic key, explicit no-evolution
+not-applicability without fabricated evidence, fresh execution for either
+enabled mode, and strict recursive validation independent of resealing. Replay
+and merge remain unauthorized.
+
+Standing-authority qualification did not automatically accept descendant
+`5c1ed6d`: its 26 focused tests passed, but audit found untested recursive
+closure and record-coupling gaps. An isolated linear descendant correction
+closes the parameter-binding and sector-state objects, validates
+bound/contact/exceedance semantics, binds manifest multiplier-stop
+classification to the scientific stop token, sorts entries deterministically,
+couples validation status to payload, and rejects explicit
+resume/reuse/prior-manifest requests before dispatch.

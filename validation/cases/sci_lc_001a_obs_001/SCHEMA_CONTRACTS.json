@@ -1,0 +1,63 @@
+{
+  "schema": "ewp.sci_lc_001a.obs_001.schema_contracts.v2",
+  "schemas": [
+    {
+      "identity": "espresso.whole_pull.sci_lc_001a.multiplier_stop_event.v1",
+      "version_disposition": "V1_RETAINED_STRICT_ENFORCEMENT_OF_PUBLISHED_STRUCTURE"
+    },
+    {
+      "identity": "espresso.whole_pull.sci_lc_001a.multiplier_margin_summary.v1",
+      "version_disposition": "V1_RETAINED_STRICT_ENFORCEMENT_OF_PUBLISHED_STRUCTURE"
+    },
+    {
+      "identity": "espresso.whole_pull.sci_lc_001a.multiplier_diagnostic_health.v2",
+      "version_disposition": "V2_INCOMPATIBLE_APPLICABILITY_AND_RECONCILIATION_STRUCTURE"
+    },
+    {
+      "identity": "espresso.whole_pull.sci_lc_001a.multiplier_diagnostic_manifest.v2",
+      "version_disposition": "V2_INCOMPATIBLE_PER_KEY_APPLICABILITY_AND_TERMINAL_DISPOSITION_STRUCTURE"
+    }
+  ],
+  "applicability": [
+    "MULTIPLIER_EVOLUTION_APPLICABLE",
+    "NOT_APPLICABLE_NO_RESISTANCE_EVOLUTION"
+  ],
+  "backend_enum": [
+    "REAL_STAGE_A",
+    "SYNTHETIC_TEST_ONLY"
+  ],
+  "float_encoding": [
+    "value",
+    "round_trip",
+    "ieee754_hex",
+    "dtype",
+    "finite_category"
+  ],
+  "recursive_semantic_validation": true,
+  "stop_event_nested_contract": {
+    "parameter_bindings": "CLOSED_EMPTY_OBJECT",
+    "sector_event_root": "NULL_OR_EXACT_X_I_AND_M_I_BOUND_TO_SECTOR_PRIMITIVES",
+    "sector_preceding_and_candidate": "NULL_NO_UNDECLARED_PAYLOAD",
+    "bound_contact_and_exceedance": "ARITHMETICALLY_COUPLED"
+  },
+  "manifest_entry_contract": {
+    "deterministic_order": "KEY_ID_ASCENDING",
+    "scientific_stop_token": "REQUIRED_NULLABLE_AND_COUPLED_TO_MULTIPLIER_STOP_PAYLOAD",
+    "validation": "COUPLED_TO_TERMINAL_DISPOSITION_AND_PAYLOAD"
+  },
+  "independent_of_integrity_sealing": true,
+  "unknown_fields": "REJECTED_AT_EVERY_CLOSED_OBJECT_LEVEL",
+  "missing_required_fields": "REJECTED_AT_EVERY_CLOSED_OBJECT_LEVEL",
+  "strict_types": true,
+  "enabled_execution_contract": "FRESH_COMPLETE_EXECUTION_ONLY",
+  "enabled_reuse_failure": "DIAGNOSTIC_ENABLED_REQUIRES_FRESH_COMPLETE_EXECUTION",
+  "ordinary_guard_event_stream_count": 0,
+  "tie_break_order": [
+    "accepted_step_index",
+    "candidate_step_index",
+    "simulation_time",
+    "profile_order",
+    "sector_index",
+    "event_sequence"
+  ]
+}
