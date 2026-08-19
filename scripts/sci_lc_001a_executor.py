@@ -28,6 +28,7 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 import sci_lc_001a_protocol as protocol  # noqa: E402
 import sci_lc_001a_obs_001_diagnostics as obs_001  # noqa: E402
+import sci_lc_001a_family_controller as family_controller  # noqa: E402
 
 ROOT = SCRIPT_DIR.parent
 MATRIX_PATH = ROOT / "validation/cases/sci_lc_001a/SCI_LC_001A_PARAMETER_MATRIX.json"
@@ -1229,7 +1230,8 @@ def _execute_canonical_case(store: CanonicalStore, row: Mapping[str, object], pr
 
 def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _ValidatedExecutionContext,
                   *, interrupt_after: int | None = None,
-                  diagnostic_config: obs_001.DiagnosticConfig | None = None) -> dict:
+                  diagnostic_config: obs_001.DiagnosticConfig | None = None,
+                  family_control_root: Path | None = None) -> dict:
     if not isinstance(context, _ValidatedExecutionContext):
         raise ValueError("VALIDATED_EXECUTION_CONTEXT_REQUIRED")
     if context.backend != REAL_BACKEND or context.evidence_kind != REAL_BACKEND:
@@ -1247,6 +1249,9 @@ def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _V
     manifest = result_store.begin_run(context, plan["total_keys"])
     infrastructure_failure = False
     for case_id, profile in plan["keys"]:
+        if family_control_root is None:
+            raise ValueError("FAMILY_CONTROLLER_REQUIRED_FOR_REAL_DISPATCH")
+        family_controller.check_dispatch(family_control_root)
         if result_store.reusable(manifest, case_id, profile):
             reused += 1; continue
         if interrupt_after is not None and completed >= interrupt_after:
@@ -1356,11 +1361,13 @@ def _require_fresh_diagnostic_execution(result_store: ResultStore,
 
 
 def execute_authorized_graph(*, execution_authority_path: Path, output_root: Path,
-                             diagnostic_config: obs_001.DiagnosticConfig | None = None) -> dict:
+                             diagnostic_config: obs_001.DiagnosticConfig | None = None,
+                             family_control_root: Path | None = None) -> dict:
     store = CanonicalStore.load()
     context = validate_execution_authority(execution_authority_path, output_root, store)
     return _execute_graph(store, ResultStore(output_root, store), context,
-                          diagnostic_config=diagnostic_config)
+                          diagnostic_config=diagnostic_config,
+                          family_control_root=family_control_root)
 
 
 def _execute_graph_synthetic_test_only(store: CanonicalStore, result_store: ResultStore,
@@ -1568,6 +1575,7 @@ def _cli() -> argparse.ArgumentParser:
     parser.add_argument("--pilot-authority", type=Path)
     parser.add_argument("--pilot-allowlist", type=Path)
     parser.add_argument("--multiplier-diagnostics-config", type=Path)
+    parser.add_argument("--family-control-root", type=Path)
     return parser
 
 
@@ -1611,8 +1619,11 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.execution_authority is None:
         raise SystemExit("--execution-authority is required for execute")
+    if args.family_control_root is None:
+        raise SystemExit("--family-control-root is required for execute")
     summary = execute_authorized_graph(execution_authority_path=args.execution_authority,
-                                       output_root=output, diagnostic_config=diagnostic_config)
+                                       output_root=output, diagnostic_config=diagnostic_config,
+                                       family_control_root=args.family_control_root)
     print(json.dumps(summary, indent=2)); return 0
 
 
