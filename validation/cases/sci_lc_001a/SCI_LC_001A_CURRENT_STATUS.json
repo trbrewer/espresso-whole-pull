@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "SCI-LC-001A",
+  "family": "E4",
+  "current_state": "HOLD_PENDING_INFRASTRUCTURE_CORRECTION",
+  "attempts_01_through_03": "TERMINAL_QUARANTINED_SCIENTIFICALLY_INELIGIBLE",
+  "attempt_04": "RESERVED_NOT_STARTED_CONDITIONAL_NOT_ACTIVE",
+  "attempt_05_authority": "NONE",
+  "canonical_execution_count": 0,
+  "canonical_classification_count": 0,
+  "launch_authorized": false,
+  "classification_authorized": false,
+  "merge_authorized": false,
+  "requires_corrected_head_owner_reanchoring": true,
+  "physical_validation": "NOT_ESTABLISHED"
+}

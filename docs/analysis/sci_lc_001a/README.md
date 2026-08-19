@@ -6,7 +6,13 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_EXACT_HEAD_REVIEW`.
+Current authoritative status: `HOLD_PENDING_INFRASTRUCTURE_CORRECTION`.
+See [AUDIT_AND_CURRENT_STATE.md](AUDIT_AND_CURRENT_STATE.md). Historical
+noncanonical execution attempts occurred, but canonical scientific execution
+and canonical classification counts are both zero. E4 Attempts 01--03 are
+quarantined and scientifically ineligible. Attempt 04 is conditionally reserved,
+unstarted, unconsumed, and not launch-authorized on a corrected head. Attempt 05
+authority is `NONE`; physical validation is `NOT_ESTABLISHED`.
 
 ICA-003-R1 F01-F03 corrections are implemented pending a new independent
 exact-head review. They close label qualification and authority-collision
@@ -18,7 +24,8 @@ frozen plan, checksum-ledgered eligible results, and atomic installation.
 Caller provenance and preassembled records cannot establish canonical status.
 Owner path and historical-evidence decisions are recorded in
 [ICA_003_R2_CORRECTION_AND_EVIDENCE_ADJUDICATION.md](ICA_003_R2_CORRECTION_AND_EVIDENCE_ADJUDICATION.md).
-Independent R3 exact-head review remains required.
+The historical R3 review gate is complete; text below preserves the earlier
+candidate chronology and is not the current execution authority.
 
 ICA-003 freezes owner-selected Architecture B. Dynamic Stage-A classifications
 are `BASELINE_ZERO_STATE_ONLY`; static algebraic classifications are
