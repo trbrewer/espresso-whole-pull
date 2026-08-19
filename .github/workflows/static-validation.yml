@@ -19,6 +19,26 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Set up pinned Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12.3'
+          architecture: 'x64'
+      - name: Install pinned numerical test dependencies
+        run: |
+          python3 -m pip install --disable-pip-version-check --no-input --only-binary=:all: \
+            'numpy==1.26.4' 'scipy==1.11.4'
+          python3 -m pip check
+      - name: Verify pinned numerical test environment
+        run: |
+          python3 - <<'PY'
+          import platform, numpy, scipy
+          actual = (platform.python_version(), numpy.__version__, scipy.__version__)
+          expected = ('3.12.3', '1.26.4', '1.11.4')
+          if actual != expected:
+              raise SystemExit(f"PINNED_PYTHON_ENVIRONMENT_MISMATCH:{actual!r}")
+          print(actual)
+          PY
       - name: Externally pinned VAL-001 candidate root
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
