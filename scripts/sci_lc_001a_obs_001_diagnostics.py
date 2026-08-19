@@ -456,6 +456,8 @@ def _validate_stop(record: Mapping[str, object]) -> None:
         raise ValueError("DIAGNOSTIC_STOP_EXITED_BOUND_MARGIN_INCONSISTENT")
     if scientific["contact_category"] in ("EXACT_CONTACT", "LOCATED_EVENT") and selected_margin != 0.0:
         raise ValueError("DIAGNOSTIC_STOP_CONTACT_MARGIN_INCONSISTENT")
+    if finite and selected_margin == 0.0 and scientific["contact_category"] == "RAW_GUARD":
+        raise ValueError("DIAGNOSTIC_STOP_CONTACT_CATEGORY_INCONSISTENT")
     exceedance_names = ("absolute_exceedance", "relative_exceedance", "normalized_interval_exceedance")
     exceedances = [margins[name] for name in exceedance_names]
     if finite and selected_margin < 0.0:
@@ -988,6 +990,23 @@ class DiagnosticRun:
                 "validation": "FAILED", "diagnostic_terminal_status": ADMIN_FAILURE}
 
     def finalize_objects(self) -> tuple[dict, dict]:
+        if self.config.enabled and self.config.sidecar_root is not None:
+            records_root = self.config.sidecar_root / "records"
+            expected_paths = set()
+            for key_id, entry in self.entries.items():
+                path_text = entry.get("actual_record_path")
+                if path_text is None:
+                    continue
+                path = Path(path_text)
+                expected_paths.add(path.resolve())
+                if (not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != entry.get("record_sha256")):
+                    self.failures.append({"namespace": ADMIN_FAILURE, "key_id": key_id,
+                        "reason": "HEALTH_FINALIZATION_FAILURE", "detail": "DIAGNOSTIC_RECORD_FILE_OR_HASH_MISMATCH"})
+            actual_paths = ({path.resolve() for path in records_root.glob("*.json")}
+                            if records_root.is_dir() else set())
+            for path in sorted(actual_paths - expected_paths):
+                self.failures.append({"namespace": ADMIN_FAILURE, "key_id": path.name,
+                    "reason": "MANIFEST_RECONCILIATION_FAILURE", "detail": "UNMANIFESTED_DIAGNOSTIC_RECORD"})
         missing = sorted(set(self.expected) - set(self.entries))
         applicable_keys = {key for key, value in self.applicability.items() if value == APPLICABLE}
         not_applicable_keys = set(self.expected) - applicable_keys
