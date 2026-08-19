@@ -990,6 +990,9 @@ class DiagnosticRun:
                 "validation": "FAILED", "diagnostic_terminal_status": ADMIN_FAILURE}
 
     def finalize_objects(self) -> tuple[dict, dict]:
+        verified_record_keys: set[str] = set()
+        corrupt_record_keys: set[str] = set()
+        unexpected_record_count = 0
         if self.config.enabled and self.config.sidecar_root is not None:
             records_root = self.config.sidecar_root / "records"
             expected_paths = set()
@@ -999,12 +1002,23 @@ class DiagnosticRun:
                     continue
                 path = Path(path_text)
                 expected_paths.add(path.resolve())
-                if (not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != entry.get("record_sha256")):
+                try:
+                    raw = path.read_bytes()
+                    retained = json.loads(raw)
+                    if hashlib.sha256(raw).hexdigest() != entry.get("record_sha256"):
+                        raise ValueError("HASH_MISMATCH")
+                    validate_record(retained)
+                    if retained.get("key_id") != key_id or retained.get("record_type") != entry.get("expected_record_type"):
+                        raise ValueError("IDENTITY_MISMATCH")
+                    verified_record_keys.add(key_id)
+                except (OSError, ValueError, TypeError, json.JSONDecodeError):
+                    corrupt_record_keys.add(key_id)
                     self.failures.append({"namespace": ADMIN_FAILURE, "key_id": key_id,
                         "reason": "HEALTH_FINALIZATION_FAILURE", "detail": "DIAGNOSTIC_RECORD_FILE_OR_HASH_MISMATCH"})
             actual_paths = ({path.resolve() for path in records_root.glob("*.json")}
                             if records_root.is_dir() else set())
             for path in sorted(actual_paths - expected_paths):
+                unexpected_record_count += 1
                 self.failures.append({"namespace": ADMIN_FAILURE, "key_id": path.name,
                     "reason": "MANIFEST_RECONCILIATION_FAILURE", "detail": "UNMANIFESTED_DIAGNOSTIC_RECORD"})
         missing = sorted(set(self.expected) - set(self.entries))
@@ -1040,14 +1054,14 @@ class DiagnosticRun:
             "applicable_complete_keys": complete, "applicable_multiplier_stopped_keys": stopped,
             "other_applicable_terminal_states": other,
             "completed_summaries_expected": complete,
-            "completed_summaries_written": sum(e.get("expected_record_type") == "MULTIPLIER_MARGIN_SUMMARY" for e in self.entries.values()),
+            "completed_summaries_written": sum(k in verified_record_keys and e.get("expected_record_type") == "MULTIPLIER_MARGIN_SUMMARY" for k,e in self.entries.items()),
             "stop_events_expected": stopped,
-            "stop_events_written": sum(e.get("expected_record_type") == "MULTIPLIER_STOP_EVENT" for e in self.entries.values()),
+            "stop_events_written": sum(k in verified_record_keys and e.get("expected_record_type") == "MULTIPLIER_STOP_EVENT" for k,e in self.entries.items()),
             "not_applicable_dispositions": sum(e.get("diagnostic_terminal_status") == NOT_APPLICABLE for e in self.entries.values()),
             "terminal_diagnostic_dispositions": len(self.entries),
             "duplicate_identities": 0, "missing_identities": missing,
-            "missing_applicable_records": sorted(set(missing) & applicable_keys),
-            "unexpected_records": 0,
+            "missing_applicable_records": sorted((set(missing) | corrupt_record_keys) & applicable_keys),
+            "unexpected_records": unexpected_record_count,
             "serialization_failures": sum(x["reason"] == "SERIALIZATION_FAILURE" for x in self.failures),
             "schema_failures": sum(x["reason"] == "SCHEMA_FAILURE" for x in self.failures),
             "write_failures": sum(x["reason"] == "WRITE_FAILURE" for x in self.failures),

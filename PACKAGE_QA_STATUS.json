@@ -47,7 +47,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 407,
-    "source_manifest_aggregate_sha256": "00f96c9413cb4f6a37cac947b73cdd91ad597bf1279656551aca4a4b5ad3cfc3",
+    "source_manifest_aggregate_sha256": "d7bfa768fdea5f8ad21e941c3971d194b9f70d965462830320ff9a15bd9abc19",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -57,7 +57,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "00f96c9413cb4f6a37cac947b73cdd91ad597bf1279656551aca4a4b5ad3cfc3"
+    "source_manifest_aggregate_source_sha256": "d7bfa768fdea5f8ad21e941c3971d194b9f70d965462830320ff9a15bd9abc19"
   },
   "sci_lc_001a_ica_003": {
     "authorization": "SCI-LC-001A-ICA-003-R2-F01-F03-BOUNDED-CORRECTION-AND-EVIDENCE-ADJUDICATION-2026-08-17",
