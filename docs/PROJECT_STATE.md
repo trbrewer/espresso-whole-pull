@@ -15,14 +15,17 @@ Issue #79 is closed. The corrected result remains
 `SCI_ED_001_FROZEN_FAMILIES_REMAIN_OBSERVATIONALLY_EQUIVALENT`; physical
 validation is `NOT_ESTABLISHED` and no governing physics changed.
 
-SCI-LC-001A now owns the serialized shared-metadata continuation. PR #71
-remains draft and unmerged; reconciliation PR #82 and stacked infrastructure
-PR #84 remain draft and unmerged. Historical noncanonical attempts occurred,
+SCI-LC-001A is rebuilding its reconciliation and execution-control layer on
+the single accelerated replacement branch
+`recovery/sci-lc-001a-accelerated-completion-v2`. PR #71 remains draft and
+unmerged. PR #82 and stacked PR #84 preserve their exact history and are
+pending closure without merge as superseded once the replacement PR exists.
+Their scientific protocol was not rejected; the reset corrects RCA-002 audit
+state and simplifies integration. Historical noncanonical attempts occurred,
 but canonical scientific execution and classification counts are both zero.
-E3 and E4 Attempts 01--03 are scientifically ineligible; Attempt 04 remains
-an unstarted, unconsumed old-head conditional reservation with no corrected-
-head launch authority. Attempt 05 authority is `NONE`, and the family hold
-remains active.
+E3 and E4 Attempts 01--03 are scientifically ineligible and cannot be reused
+or combined. Attempt 04 is unstarted and unconsumed pending final readiness.
+Attempt 05 authority is `NONE`, and the family hold remains active.
 
 The bounded scientific dependency `RP-D-LC-001b` is closed at a valid
 pre-primary-experiment design block. P2a completed and P2b independently
@@ -47,7 +50,7 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 452/452 PASS
+- Public source verification: 458/458 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`

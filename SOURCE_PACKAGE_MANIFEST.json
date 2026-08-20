@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 448,
-  "total_uncompressed_bytes_excluding_manifest": 6976383,
-  "aggregate_source_sha256": "76e5adbe86e9ebaa18c241bfdd9ba37f489a3f82cd00cd6ad2a027afdf2b4b44",
-  "aggregate_sha256": "76e5adbe86e9ebaa18c241bfdd9ba37f489a3f82cd00cd6ad2a027afdf2b4b44",
+  "file_count": 458,
+  "total_uncompressed_bytes_excluding_manifest": 7020229,
+  "aggregate_source_sha256": "1f33a2624eeb50276b4d05396f3773952aef53ca7ad78d94379a8898cba931d0",
+  "aggregate_sha256": "1f33a2624eeb50276b4d05396f3773952aef53ca7ad78d94379a8898cba931d0",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -383,6 +383,11 @@
       "bytes": 4149,
       "git_mode": "100644"
     },
+    "config/systemd/sci-lc-001a-attempt@.service": {
+      "sha256": "9509b18ec2666a81d4d9e23a67c31f478688d26ab7dbba70b414902f854e1221",
+      "bytes": 691,
+      "git_mode": "100644"
+    },
     "docs/ASSUMPTIONS_AND_CLAIM_CEILING.md": {
       "sha256": "d7c28a116727977483cfa39a0ba1b6c03d624582be3969f7969cd51852939c1f",
       "bytes": 4289,
@@ -498,6 +503,21 @@
       "bytes": 3631,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_lc_001a/ACCELERATED_RECOVERY_RESET_DECISION.md": {
+      "sha256": "ec696ce7f54d95bb2e8591497fe9092339b18671d272cc8d48a3774cf249676f",
+      "bytes": 2105,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_lc_001a/AUDIT_AND_CURRENT_STATE.md": {
+      "sha256": "4787f42ab8ad71c0935043d261d58799298dfe4a810f7704a6b9ff41581768dc",
+      "bytes": 1930,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_lc_001a/EXECUTION_AND_INTEGRATION_RULES.md": {
+      "sha256": "342f8e7abf11dd95a16442d4914c8aae6d362932cd56390470b72fa92278e4fd",
+      "bytes": 1107,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_lc_001a/ICA_003_R2_CORRECTION_AND_EVIDENCE_ADJUDICATION.md": {
       "sha256": "1e98246baa7d4567ada27f39f9aae346e8ba57f7744e2b29743d7aba5183f291",
       "bytes": 3034,
@@ -506,6 +526,11 @@
     "docs/analysis/sci_lc_001a/ICA_003_STAGE_A_BASELINE_ONLY_CLASSIFICATION_SCOPE.md": {
       "sha256": "7962aa5a3c8a13606e56625ae48a6604211acbb525f7e5d4d27f49020178c743",
       "bytes": 7022,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_lc_001a/INFRASTRUCTURE_CORRECTION.md": {
+      "sha256": "1b48100fb2733f55475fd33c98498b2df378742a586e8a9546a3aa10bea3b75b",
+      "bytes": 2731,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/PROTOCOL.md": {
@@ -1259,8 +1284,13 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_executor.py": {
-      "sha256": "9ec1972c74580db200ed8a0089e074082d204cedf0ebd45c8409f9e80cf81a12",
-      "bytes": 97690,
+      "sha256": "5ceb93976718b344390baf53265eb475d11c32a59904bed8462316c69facea41",
+      "bytes": 98397,
+      "git_mode": "100755"
+    },
+    "scripts/sci_lc_001a_family_controller.py": {
+      "sha256": "a79781f7a2b772256f68caf1dc99849e5568abaf18e1fa51f77a3df89e9ee335",
+      "bytes": 10738,
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_obs_001_diagnostics.py": {
@@ -1281,6 +1311,11 @@
     "scripts/sci_lc_001a_protocol.py": {
       "sha256": "277a5b4e96a6948977465b66a85112d91b790899c024153c0d4f81f2bc9aa0ee",
       "bytes": 116211,
+      "git_mode": "100755"
+    },
+    "scripts/sci_lc_001a_supervised_launch.sh": {
+      "sha256": "17deaa4b2232c64c7831df93796c6f6ffe7ff4392713453d122b6b9c8cf35aa2",
+      "bytes": 1672,
       "git_mode": "100755"
     },
     "scripts/sci_md_001.py": {
@@ -1351,6 +1386,11 @@
     "scripts/val_corpus_002_protocol.py": {
       "sha256": "5ac97ec97a87979b5432989288d77a709c409ea65f00afc5db1628368cad1341",
       "bytes": 45036,
+      "git_mode": "100755"
+    },
+    "scripts/validate_sci_lc_001a_ledger.py": {
+      "sha256": "f3396cd55f33706fbdf88cff21eff7d4be7f96086308ed9bcca74f6bee21f731",
+      "bytes": 8193,
       "git_mode": "100755"
     },
     "scripts/verify_build_provenance.py": {
@@ -1604,7 +1644,7 @@
       "git_mode": "100644"
     },
     "tests/test_current_authority_consistency.py": {
-      "sha256": "7c321bb26313723ae6891f2a6cf494890992b67d7ac5d7a993db3fb5c9ed6bfc",
+      "sha256": "85600678ea1287ac468f48cd89ed55c1906e5319e356ef047bee41f66034ba03",
       "bytes": 16258,
       "git_mode": "100644"
     },
@@ -1624,8 +1664,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_ed_001_c1.py": {
-      "sha256": "6a7597259a8f77ec1a1315732de8f794f0c74a6931c00ff1a015cfce958bb465",
-      "bytes": 15165,
+      "sha256": "aca69cd766d7e8e8a3a55e8b0834dbcacf2d74d569ccd69bafb33e2747ddf1b3",
+      "bytes": 15726,
       "git_mode": "100644"
     },
     "tests/test_sci_ed_001_protocol.py": {
@@ -1643,9 +1683,19 @@
       "bytes": 47797,
       "git_mode": "100644"
     },
+    "tests/test_sci_lc_001a_family_controller.py": {
+      "sha256": "2e312a86e919060a91a18a9699fe4156f1c9517c75f70435ad2e67c78f52fc05",
+      "bytes": 7827,
+      "git_mode": "100644"
+    },
     "tests/test_sci_lc_001a_ica003.py": {
       "sha256": "b9d5d9adf51cd66f0930897ad439d7d63110d5dfbbdbe650dd358adbea27a5f5",
       "bytes": 31116,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_lc_001a_ledger.py": {
+      "sha256": "849fea5d4c89732c12d088335ace6d505bf0cbec5290ed17581622c1bbfbeed8",
+      "bytes": 5584,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_obs_001.py": {

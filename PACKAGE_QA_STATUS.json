@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 779,
+    "python_test_count": 822,
     "sci_lc_001a_obs_001_r1_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_obs_001",
     "sci_lc_001a_obs_001_r1_focused_test_count": 26,
     "sci_lc_001a_protocol_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol",
@@ -46,8 +46,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 452,
-    "source_manifest_aggregate_sha256": "7c4e83eddfbf047072d598a2a167c20fa14e19e22bc3e2b969f51ea170af6004",
+    "source_manifest_file_count": 458,
+    "source_manifest_aggregate_sha256": "1f33a2624eeb50276b4d05396f3773952aef53ca7ad78d94379a8898cba931d0",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -57,7 +57,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "7c4e83eddfbf047072d598a2a167c20fa14e19e22bc3e2b969f51ea170af6004"
+    "source_manifest_aggregate_source_sha256": "1f33a2624eeb50276b4d05396f3773952aef53ca7ad78d94379a8898cba931d0"
   },
   "sci_md_002a": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
@@ -181,19 +181,23 @@
     "review_state": "MERGED_EXACT_INDEPENDENTLY_REVIEWED_AND_OWNER_APPROVED"
   },
   "sci_lc_001a": {
-    "status": "CLEAN_PATH_RECONCILIATION_ACTIVE_INFRASTRUCTURE_STACKED",
+    "status": "ACCELERATED_REPLACEMENT_CANDIDATE_IN_PROGRESS",
     "issue": 70,
     "protocol_pull_request": 71,
-    "reconciliation_pull_request": 82,
+    "superseded_reconciliation_pull_request": 82,
     "infrastructure_issue": 83,
-    "infrastructure_pull_request": 84,
+    "superseded_infrastructure_pull_request": 84,
+    "replacement_branch": "recovery/sci-lc-001a-accelerated-completion-v2",
+    "replacement_pull_request": "PENDING_CREATION",
+    "accelerated_focused_test_count": 193,
+    "ledger_and_negative_test_count": 15,
     "historical_noncanonical_execution_attempts_occurred": true,
     "canonical_scientific_execution_count": 0,
     "canonical_classification_count": 0,
     "e3_scientific_eligibility": "INELIGIBLE_NONCANONICAL",
     "e4_attempts_01_through_03": "QUARANTINED_SCIENTIFICALLY_INELIGIBLE",
-    "attempt_04": "RESERVED_OLD_HEAD_CONDITIONAL_NOT_STARTED_NOT_CONSUMED",
-    "attempt_04_corrected_head_reservation": "ABSENT",
+    "attempt_04": "UNSTARTED_UNCONSUMED_PENDING_FINAL_READINESS",
+    "attempt_04_reservation": "ABSENT",
     "attempt_04_launch_authorized": false,
     "attempt_05_authority": "NONE",
     "family_hold": "ACTIVE",
