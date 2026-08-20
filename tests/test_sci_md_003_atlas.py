@@ -3,7 +3,8 @@ from pathlib import Path
 from tools.sci_md_003_atlas.consumer import EXPECTED_COMMIT,EXPECTED_HASH,EXPECTED_SCHEMA,EXPECTED_TREE,load_atlas,retained_export
 
 ROOT=Path(__file__).resolve().parents[1]
-ATLAS=Path('/home/tim/espresso-development/worktrees/puckworks-rp-a-001/docs/analysis/rp_a_001/atlas_export.json')
+def atlas_fixture(schema=EXPECTED_SCHEMA):
+ return {'schema_version':schema,'manifest':{'execution_code_commit':EXPECTED_COMMIT,'execution_code_tree':EXPECTED_TREE}}
 
 class AtlasConsumerTests(unittest.TestCase):
  def test_exact_pin(self):
@@ -11,12 +12,13 @@ class AtlasConsumerTests(unittest.TestCase):
   self.assertEqual((pin['puckworks_commit'],pin['puckworks_tree']),(EXPECTED_COMMIT,EXPECTED_TREE))
   self.assertEqual(pin['export_artifact_sha256'],EXPECTED_HASH)
  def test_load_and_reject_wrong_hash(self):
-  self.assertEqual(load_atlas(ATLAS)['schema_version'],EXPECTED_SCHEMA)
-  with self.assertRaisesRegex(ValueError,'HASH_MISMATCH'): load_atlas(ATLAS,'0'*64)
- def test_wrong_schema_rejected_after_hash_binding(self):
-  a=json.loads(ATLAS.read_text()); a['schema_version']='wrong'
   with tempfile.TemporaryDirectory() as d:
-   p=Path(d)/'a.json'; p.write_text(json.dumps(a)); h=hashlib.sha256(p.read_bytes()).hexdigest()
+   p=Path(d)/'a.json'; p.write_text(json.dumps(atlas_fixture())); h=hashlib.sha256(p.read_bytes()).hexdigest()
+   self.assertEqual(load_atlas(p,h)['schema_version'],EXPECTED_SCHEMA)
+   with self.assertRaisesRegex(ValueError,'HASH_MISMATCH'): load_atlas(p,'0'*64)
+ def test_wrong_schema_rejected_after_hash_binding(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/'a.json'; p.write_text(json.dumps(atlas_fixture('wrong'))); h=hashlib.sha256(p.read_bytes()).hexdigest()
    with self.assertRaisesRegex(ValueError,'SCHEMA_VERSION'): load_atlas(p,h)
  def test_pressure_nodes_provenance_and_unsupported(self):
   e=retained_export(); supported=[r for r in e['observables'] if r['support_status']=='SUPPORTED']
