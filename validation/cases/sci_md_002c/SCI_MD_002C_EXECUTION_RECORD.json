@@ -1,0 +1,79 @@
+{
+  "authority_sha256": "34f644ffd23ef36076015aba2789e1a8b598a52d021f25563473814caffa2c4b",
+  "bundle_sealing": {
+    "method": "POSIX_WRITE_BITS_REMOVED",
+    "record_sha256": "7207ebb9b0192a70b9be8dbc55ac9af59b574ea290b32cf430b0ab8319a23535"
+  },
+  "bundle_uuid": "27e6b4c0-ccf7-416f-83b5-19fdc7e69c6b",
+  "candidate_count": 96,
+  "case_record_bytes": 562751929,
+  "claim_boundary": [
+    "PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+    "POST_OBSERVATION_MECHANISM_DISCRIMINATION",
+    "NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE",
+    "NO_COMBINED_MECHANISM_AUTHORIZATION",
+    "NO_SCI_LC_AUTHORIZATION",
+    "NO_OPENFOAM_AUTHORIZATION",
+    "GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED",
+    "FINES_CLOSURE_PARAMETERS_NOT_ESTABLISHED_AS_REAL_PUCK_MEASUREMENTS",
+    "SYNTHETIC_WINDOW_START_RESET",
+    "PRE_WINDOW_FINES_STATE_NOT_ADJUDICATED"
+  ],
+  "completion_state_counts": {
+    "COMPLETE": 579,
+    "FAILURE": 0,
+    "INVALID": 0,
+    "VALID": 579
+  },
+  "deterministic_second_reduction": {
+    "byte_identical": true,
+    "reduction_1_sha256": "565fac7ae38e90fe715791ebc40680630495297ded1a570270e147aa36cd2036",
+    "reduction_2_sha256": "565fac7ae38e90fe715791ebc40680630495297ded1a570270e147aa36cd2036"
+  },
+  "execution_source_head": "cb9ebd2d4ba220d4777f033e06eddbae787b519a",
+  "execution_source_tree": "393ede84c88ae330faf103ce3845936dc0f9fc73",
+  "external_bundle_symbolic_identity": "SCI_MD_002C_EXTERNAL_BUNDLE/adjudicative/attempt1",
+  "manifest_sha256": "fd1267cf515db4388177eb2cb713ebee97f9a3cece9403caf373149965940dcb",
+  "ordered_record_aggregate_sha256": "d5a5bb2225da8f53e934a04ea3aa14d7b37f06ab07ae936ed21b0efc7a21be34",
+  "process_summary": {
+    "closeout_status": "COMPLETE",
+    "nested_thread_limit": 1,
+    "openfoam_runs": 0,
+    "owned_processes_remaining_at_recording": 0,
+    "peak_rss_bytes": 42446848,
+    "wall_time_seconds": 110.09,
+    "worker_limit": 1
+  },
+  "puckworks_object_verification_sha256": "0bfbc16f09d8bba3b4876b8fae569063be0f9f68b1cbd874dd68cd7326e57317",
+  "record_counts": {
+    "C0": 3,
+    "S1": 576,
+    "total": 579
+  },
+  "reducer_output_sha256": "565fac7ae38e90fe715791ebc40680630495297ded1a570270e147aa36cd2036",
+  "review_head": "be4079f28070e6b601fe6a9fb6461b5f421ca4b1",
+  "review_tree": "05e09705fdab079c1692b18c298172f3c01993e7",
+  "schema_version": "ewp.sci_md_002c.execution_record.v1",
+  "scientific_disposition": "SCI_MD_002C_REJECTED_WRONG_PRESSURE_ORDERING",
+  "task_id": "SCI-MD-002C",
+  "verification_sequence": [
+    {
+      "manifest_sha256": "fd1267cf515db4388177eb2cb713ebee97f9a3cece9403caf373149965940dcb",
+      "ordered_record_aggregate_sha256": "d5a5bb2225da8f53e934a04ea3aa14d7b37f06ab07ae936ed21b0efc7a21be34",
+      "record_count": 579,
+      "verification_output_sha256": "66f725773c583acb547d65aeb1e4769b876d3c0509f5dacc310dee44e5f855df"
+    },
+    {
+      "manifest_sha256": "fd1267cf515db4388177eb2cb713ebee97f9a3cece9403caf373149965940dcb",
+      "ordered_record_aggregate_sha256": "d5a5bb2225da8f53e934a04ea3aa14d7b37f06ab07ae936ed21b0efc7a21be34",
+      "record_count": 579,
+      "verification_output_sha256": "66f725773c583acb547d65aeb1e4769b876d3c0509f5dacc310dee44e5f855df"
+    },
+    {
+      "manifest_sha256": "fd1267cf515db4388177eb2cb713ebee97f9a3cece9403caf373149965940dcb",
+      "ordered_record_aggregate_sha256": "d5a5bb2225da8f53e934a04ea3aa14d7b37f06ab07ae936ed21b0efc7a21be34",
+      "record_count": 579,
+      "verification_output_sha256": "66f725773c583acb547d65aeb1e4769b876d3c0509f5dacc310dee44e5f855df"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "2.0.0",
+  "task_id": "SCI-LC-001A",
+  "packages": [
+    {
+      "logical_evidence_id": "RCA-002",
+      "host_path": "external://espresso-runs/sci_lc_001a/STAGE_A_RCA_002_18641c0_SOURCE_PRESERVING_OBSERVABILITY_ONLY_3666_KEY_DIAGNOSTIC_REPLAY_EVENT_STATE_CAPTURE_ROOT_CAUSE_AND_BLAST_RADIUS_ADJUDICATION",
+      "checksum_manifest_sha256": "e2193147c7c47e8a93c049964783d3a2e405f982121db7326ade87bd97172a79",
+      "git_head": "18641c01ebd4d18636c092f616855eb2659c4a09",
+      "terminal_state": "STOPPED",
+      "terminal_disposition": "STOP_EVENT_STATE_CAPTURE_INCOMPLETE",
+      "quarantine_status": "READ_ONLY_HISTORICAL_DIAGNOSTIC",
+      "scientific_eligibility": false,
+      "reuse_permission": false,
+      "combination_permission": false
+    },
+    {
+      "logical_evidence_id": "E4-ATTEMPTS-01-03",
+      "host_path": "external://espresso-runs/sci_lc_001a/STAGE_A_E4_PM_001_93959CA_READ_ONLY_EXECUTION_FAMILY_INFRASTRUCTURE_POSTMORTEM_AND_CLOSURE_ADJUDICATION",
+      "ledger_sha256": "e95294855953f5f1923ad59da3eaf46dee2c046acce12370eaa1fb70a0924fbb",
+      "git_head": "93959caf85ff26b5e3520fbcb181654ce27db3a0",
+      "terminal_state": "CONTAINED",
+      "quarantine_status": "READ_ONLY_ON_HOLD",
+      "scientific_eligibility": false,
+      "reuse_permission": false,
+      "combination_permission": false
+    },
+    {
+      "logical_evidence_id": "PR82-INDEPENDENT-FAILURE",
+      "host_path": "external://espresso-runs/sci_lc_001a/INDEPENDENT_EXACT_HEAD_REVIEW_PR82_PR84_20260820T112206Z",
+      "evidence_aggregate_sha256": "e2a72b3308bd96cf69d729e4123349a5dd3ff9a8616eef1440fc41e190484742",
+      "action_ledger_sha256": "433cf411f45e2fe38a1b923e44ce7debfda0add48e35174be536fbd9fcdceaf9",
+      "finding_sha256": "943b401ed69e239c4085e8148735cb366c85c0b260b8385db648e4c15576c614",
+      "github_comment_id": 5355326969,
+      "terminal_state": "COMPLETE",
+      "quarantine_status": "IMMUTABLE_REVIEW_EVIDENCE",
+      "scientific_eligibility": false,
+      "reuse_permission": false,
+      "combination_permission": false
+    }
+  ]
+}

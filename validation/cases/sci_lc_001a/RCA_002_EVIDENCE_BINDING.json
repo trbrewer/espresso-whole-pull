@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "RCA-002",
+  "authorization_id": "SCI-LC-001A-STAGE-A-RCA-002-SOURCE-PRESERVING-OBSERVABILITY-ONLY-3666-KEY-DIAGNOSTIC-REPLAY-EVENT-STATE-CAPTURE-ROOT-CAUSE-AND-BLAST-RADIUS-ADJUDICATION-2026-08-18",
+  "evidence_root": "external://espresso-runs/sci_lc_001a/STAGE_A_RCA_002_18641c0_SOURCE_PRESERVING_OBSERVABILITY_ONLY_3666_KEY_DIAGNOSTIC_REPLAY_EVENT_STATE_CAPTURE_ROOT_CAUSE_AND_BLAST_RADIUS_ADJUDICATION",
+  "git_head": "18641c01ebd4d18636c092f616855eb2659c4a09",
+  "git_tree": "25051ed0a398eb50253cb758e345b8576a21e9da",
+  "matrix_semantic_sha256": "4bb979181a0e5c672b896c44e3eee9574e28f0abed1d1f5dc227a47214e21717",
+  "planned_keys": 3666,
+  "attempted_keys": 2555,
+  "completed_keys": 2555,
+  "stopped_keys": 0,
+  "failed_keys": 0,
+  "unattempted_keys": 1111,
+  "classification_count": 0,
+  "event_state_capture_complete": false,
+  "terminal_disposition": "STOP_EVENT_STATE_CAPTURE_INCOMPLETE",
+  "canonical_eligibility": false,
+  "classification_eligibility": false,
+  "sources": {
+    "reports/COUNTERS.json": "8bb363e28119dfd57d45e006d708bb6c6ec7d54db4f4212942d5763e1876e8bb",
+    "reports/EVENT_STATE_SUFFICIENCY.json": "0392e9763c2d01cb1c6d1267b2b049892b203f89382136f3968bf9ea04d301a4",
+    "reports/FINAL_DECISION.json": "183e245b1daa0614bfd34543a7c57fbec5870e58532220e346d5da62a014f29a",
+    "reports/REPLAY_PARTIAL_CORPUS.json": "46f2b4d723112e54968b44eb81d3c7ca8cf30d33a5b22e6af408173f356e85f0",
+    "verification/INDEPENDENT_CHECKER.json": "bddcf267609dbd1150e153b93f18269294d4d5ebbb202c916210b953688babe3",
+    "CHECKSUMS.sha256": "e2193147c7c47e8a93c049964783d3a2e405f982121db7326ade87bd97172a79"
+  },
+  "dispatched_keys": {
+    "status": "UNRESOLVED_FROM_RETAINED_EVIDENCE",
+    "reason": "The historical executor was sequential and retained 2555 completed records, but interruption could occur after entering the next key and before its record was durably written; no per-key pre-execution dispatch ledger was retained.",
+    "sources": [
+      "reports/COUNTERS.json#DIAGNOSTIC_REPLAY_KEYS_ATTEMPTED",
+      "reports/REPLAY_PARTIAL_CORPUS.json#attempted_or_reused_records",
+      "historical-executor@18641c01:_execute_graph"
+    ]
+  }
+}
