@@ -16,10 +16,10 @@ Issue #79 is closed. The corrected result remains
 validation is `NOT_ESTABLISHED` and no governing physics changed.
 
 SCI-LC-001A is rebuilding its reconciliation and execution-control layer on
-the single accelerated replacement branch
+the single accelerated replacement branch and draft PR #85
 `recovery/sci-lc-001a-accelerated-completion-v2`. PR #71 remains draft and
-unmerged. PR #82 and stacked PR #84 preserve their exact history and are
-pending closure without merge as superseded once the replacement PR exists.
+unmerged. PR #82 and stacked PR #84 preserve their exact history and were
+closed without merge as superseded after replacement PR #85 was established.
 Their scientific protocol was not rejected; the reset corrects RCA-002 audit
 state and simplifies integration. Historical noncanonical attempts occurred,
 but canonical scientific execution and classification counts are both zero.

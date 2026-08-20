@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 458,
-  "total_uncompressed_bytes_excluding_manifest": 7020229,
-  "aggregate_source_sha256": "1f33a2624eeb50276b4d05396f3773952aef53ca7ad78d94379a8898cba931d0",
-  "aggregate_sha256": "1f33a2624eeb50276b4d05396f3773952aef53ca7ad78d94379a8898cba931d0",
+  "total_uncompressed_bytes_excluding_manifest": 7020302,
+  "aggregate_source_sha256": "030c1dd5a3b4745fc07ea89bc8922680df060339d0fe03b3d2bea673fa09964c",
+  "aggregate_sha256": "030c1dd5a3b4745fc07ea89bc8922680df060339d0fe03b3d2bea673fa09964c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -504,8 +504,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/ACCELERATED_RECOVERY_RESET_DECISION.md": {
-      "sha256": "ec696ce7f54d95bb2e8591497fe9092339b18671d272cc8d48a3774cf249676f",
-      "bytes": 2105,
+      "sha256": "22c257b57b0c2cf322d9b881eab8595873e9193a362331099049552a84303f55",
+      "bytes": 2178,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/AUDIT_AND_CURRENT_STATE.md": {
