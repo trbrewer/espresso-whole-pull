@@ -21,7 +21,7 @@
   "backend": "REAL_STAGE_A",
   "diagnostics": "ENABLED_REQUIRED",
   "worker_cap": 1,
-  "attempt_root": "/home/tim/espresso-runs/sci_lc_001a/STAGE_A_E4_ATTEMPT_04_18d2e78_20260820T141618Z",
+  "attempt_root_id": "STAGE_A_E4_ATTEMPT_04_18d2e78_20260820T141618Z",
   "result_root_contract": "attempt_root/scientific-results; must be absent before reservation",
   "diagnostic_root_contract": "attempt_root/required-diagnostics; must be absent before launch",
   "reuse": false,
@@ -37,7 +37,7 @@
     "canonical_keys_dispatched": 0,
     "attempt_budget_consumed": 0,
     "canonical_attempt_root_created": false,
-    "evidence": "/home/tim/espresso-runs/sci_lc_001a/CLEAN_PATH_SINGLE_AGENT_20260819T230555Z/CORRECTIONS/ACCELERATED_RESET_20260820T133726Z/READINESS_SYNTHETIC"
+    "evidence_id": "CLEAN_PATH_SINGLE_AGENT_20260819T230555Z/CORRECTIONS/ACCELERATED_RESET_20260820T133726Z/READINESS_SYNTHETIC"
   },
   "disabled_capabilities": [
     "D4",
