@@ -45,20 +45,88 @@ class SciLcLedgerTests(unittest.TestCase):
                          len({record["record_id"] for record in self.ledger["records"]}))
         self.assertEqual(self.ledger["attempt_05_authority"], "NONE")
 
-    def test_attempt_04_terminal_ineligible_evidence(self):
+    def test_attempt_04_dispatch_precision_matches_surviving_durable_evidence(self):
         attempt = self.record(self.ledger, "E4-ATTEMPT-04")
-        self.assertEqual((attempt["planned_keys"], attempt["dispatched_keys"],
+        self.assertEqual(attempt["controller_reported_dispatch_scalar"], 3666)
+        self.assertEqual(attempt["dispatched_keys"]["status"],
+                         "UNRESOLVED_FROM_RETAINED_EVIDENCE")
+        self.assertIn("no durable per-key pre-launch dispatch records survive",
+                      attempt["dispatched_keys"]["reason"])
+        self.assertEqual(attempt["durable_per_key_prelaunch_dispatch_records"], 0)
+        self.assertEqual((attempt["planned_keys"], attempt["attempted_keys"],
                           attempt["completed_keys"], attempt["stopped_keys"],
-                          attempt["unattempted_keys"]), (3666, 3666, 3558, 108, 0))
+                          attempt["failed_keys"], attempt["unattempted_keys"]),
+                         (3666, 3666, 3558, 108, 0, 0))
         self.assertFalse(attempt["diagnostic_health_complete"])
         self.assertFalse(attempt["classification_eligibility"])
         self.assertEqual(attempt["classification_count"], 0)
         self.assertTrue(attempt["quarantined"])
+        self.assertEqual(self.ledger["attempt_05_authority"], "NONE")
+
+    def test_attempt_04_dispatch_surfaces_are_consistent(self):
+        result = (ROOT / "docs/analysis/sci_lc_001a/RESULT.md").read_text()
+        audit = (ROOT / "docs/analysis/sci_lc_001a/AUDIT_AND_CURRENT_STATE.md").read_text()
+        readme = (ROOT / "docs/analysis/sci_lc_001a/README.md").read_text()
+        project = (ROOT / "docs/PROJECT_STATE.md").read_text()
+        archive = json.loads((CASE / "EVIDENCE_ARCHIVE_MANIFEST.json").read_text())
+        package = next(item for item in archive["packages"]
+                       if item["logical_evidence_id"] == "E4-ATTEMPT-04")
+        qa = json.loads((ROOT / "PACKAGE_QA_STATUS.json").read_text())["sci_lc_001a"]
+        for surface in (result, audit, readme, project):
+            self.assertIn("exact per-key dispatched inventory is unresolved",
+                          " ".join(surface.split()))
+        self.assertEqual(package["dispatched_keys"]["status"],
+                         "UNRESOLVED_FROM_RETAINED_EVIDENCE")
+        self.assertEqual(package["controller_reported_dispatch_scalar"], 3666)
+        self.assertEqual(package["durable_per_key_prelaunch_dispatch_records"], 0)
+        self.assertEqual(qa["attempt_04_exact_dispatched_inventory"],
+                         "UNRESOLVED_FROM_RETAINED_EVIDENCE")
 
     def test_negative_attempt_04_false_complete_diagnostics(self):
         self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").update(
             diagnostic_health_complete=True),
             "ATTEMPT_04_FINAL_EVIDENCE_MISMATCH:diagnostic_health_complete")
+
+    def test_negative_attempt_04_exact_dispatch_integer(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").update(
+            dispatched_keys=3666), "ATTEMPT_04_EXACT_DISPATCH_MUST_BE_TYPED_UNRESOLVED")
+
+    def test_negative_attempt_04_unresolved_status_removed(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04")[
+            "dispatched_keys"].update(status="UNKNOWN"),
+            "ATTEMPT_04_DISPATCH_UNRESOLVED_STATUS_REQUIRED")
+
+    def test_negative_attempt_04_controller_scalar_removed(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").pop(
+            "controller_reported_dispatch_scalar"),
+            "ATTEMPT_04_FINAL_EVIDENCE_MISMATCH:controller_reported_dispatch_scalar")
+
+    def test_negative_attempt_04_controller_scalar_changed(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").update(
+            controller_reported_dispatch_scalar=3665),
+            "ATTEMPT_04_FINAL_EVIDENCE_MISMATCH:controller_reported_dispatch_scalar")
+
+    def test_negative_attempt_04_durable_dispatch_records_nonzero(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").update(
+            durable_per_key_prelaunch_dispatch_records=1),
+            "ATTEMPT_04_FINAL_EVIDENCE_MISMATCH:durable_per_key_prelaunch_dispatch_records")
+
+    def test_negative_attempt_04_attempted_changed(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").update(
+            attempted_keys=3665), "ATTEMPT_04_FINAL_EVIDENCE_MISMATCH:attempted_keys")
+
+    def test_negative_attempt_04_outcome_arithmetic(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").update(
+            stopped_keys=107), "PLANNED_COUNT_ARITHMETIC_INVALID:E4-ATTEMPT-04")
+
+    def test_negative_attempt_04_eligibility_true(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").update(
+            classification_eligibility=True),
+            "INCOMPLETE_CLASSIFICATION_ELIGIBILITY:E4-ATTEMPT-04")
+
+    def test_negative_attempt_04_classification_nonzero(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").update(
+            classification_count=1), "INELIGIBLE_CLASSIFICATION_NONZERO:E4-ATTEMPT-04")
 
     def test_current_status_matches_ledger(self):
         status = json.loads((CASE / "SCI_LC_001A_CURRENT_STATUS.json").read_text())

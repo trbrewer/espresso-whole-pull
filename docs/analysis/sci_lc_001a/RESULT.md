@@ -1,6 +1,6 @@
 # SCI-LC-001A terminal result
 
-Final Attempt 04 executed all 3,666 frozen Stage-A keys from exact head `34af7e56f4887abd0a11e1dff0e825c935dc62e2` without reuse, resume, replay, import, or combination with historical outputs. It produced 3,558 `COMPLETE` and 108 `STOPPED` scientific records, with zero failed and zero unattempted keys.
+Final Attempt 04 used the 3,666-key frozen Stage-A plan from exact head `34af7e56f4887abd0a11e1dff0e825c935dc62e2` without reuse, resume, replay, import, or combination with historical outputs. Attempt/result and terminal evidence exists for all 3,666 keys: 3,558 are `COMPLETE`, 108 are `STOPPED`, and zero are failed or unattempted. The controller terminal record reports a final dispatch scalar of 3,666, but the exact per-key dispatched inventory is unresolved: zero durable per-key pre-launch dispatch records survive, so dispatch identities, timestamps, sequence, and an independently reconstructed exact dispatch count are unavailable.
 
 The result is not classification-eligible. Required multiplier diagnostics finalized with `clean_finalization=false`: 1,044 applicable diagnostic records were written, but 108 applicable stopped cases had no accepted multiplier terminal record. No canonical classification artifact was generated.
 

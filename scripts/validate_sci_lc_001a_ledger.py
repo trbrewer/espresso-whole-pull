@@ -146,7 +146,9 @@ def validate_ledger(ledger: dict, binding: dict) -> None:
         if binding.get("sources", {}).get(source) != digest:
             _fail(f"RCA002_SOURCE_HASH_MISMATCH:{source}")
     attempt4 = by_id.get("E4-ATTEMPT-04")
-    attempt4_exact = {"planned_keys": 3666, "dispatched_keys": 3666,
+    attempt4_exact = {"planned_keys": 3666,
+        "controller_reported_dispatch_scalar": 3666,
+        "durable_per_key_prelaunch_dispatch_records": 0,
         "attempted_keys": 3666, "completed_keys": 3558, "stopped_keys": 108,
         "failed_keys": 0, "unattempted_keys": 0, "consumed": True,
         "terminal_state": "QUARANTINED",
@@ -159,6 +161,21 @@ def validate_ledger(ledger: dict, binding: dict) -> None:
     for field, expected in attempt4_exact.items():
         if attempt4.get(field) != expected:
             _fail(f"ATTEMPT_04_FINAL_EVIDENCE_MISMATCH:{field}")
+    dispatched = attempt4.get("dispatched_keys")
+    if not isinstance(dispatched, dict):
+        _fail("ATTEMPT_04_EXACT_DISPATCH_MUST_BE_TYPED_UNRESOLVED")
+    if dispatched.get("status") != UNRESOLVED:
+        _fail("ATTEMPT_04_DISPATCH_UNRESOLVED_STATUS_REQUIRED")
+    reason = dispatched.get("reason", "")
+    if ("no durable per-key pre-launch dispatch records survive" not in reason or
+            "independently reconstructable count" not in reason):
+        _fail("ATTEMPT_04_DISPATCH_LIMITATION_REASON_INVALID")
+    required_dispatch_sources = {
+        "ATTEMPT_04_CONTROLLER_TERMINAL_RECORD:84958e5081f58d514ef5735660fbb17fa4e423445bc96f55160043a1cfbb40a3",
+        "FINAL_INDEPENDENT_REVIEW_PR71_20260820T172117Z:b555887f6a03c5c020002ea309ba6a1782410041c0eaeb07c3153296ad550912",
+    }
+    if set(dispatched.get("sources", [])) != required_dispatch_sources:
+        _fail("ATTEMPT_04_DISPATCH_SOURCE_BINDING_MISMATCH")
 
 
 def load_and_validate(case: Path = CASE) -> None:

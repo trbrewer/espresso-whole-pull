@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 828,
+    "python_test_count": 838,
     "sci_lc_001a_obs_001_r1_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_obs_001",
     "sci_lc_001a_obs_001_r1_focused_test_count": 26,
     "sci_lc_001a_protocol_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol",
@@ -47,7 +47,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 459,
-    "source_manifest_aggregate_sha256": "07163408705e7845170631508d1dcfa1e0ff1b5b8ef97768070c15e16adcd3d4",
+    "source_manifest_aggregate_sha256": "0b06c674f95a7df715d4eb4dd23d741768397b4df5df63083781e0f45c11b81a",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -57,7 +57,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "07163408705e7845170631508d1dcfa1e0ff1b5b8ef97768070c15e16adcd3d4"
+    "source_manifest_aggregate_source_sha256": "0b06c674f95a7df715d4eb4dd23d741768397b4df5df63083781e0f45c11b81a"
   },
   "sci_md_002a": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
@@ -189,14 +189,18 @@
     "superseded_infrastructure_pull_request": 84,
     "replacement_branch": "recovery/sci-lc-001a-accelerated-completion-v2",
     "replacement_pull_request": 85,
-    "accelerated_focused_test_count": 199,
-    "ledger_and_negative_test_count": 17,
+    "accelerated_focused_test_count": 212,
+    "ledger_and_negative_test_count": 27,
     "historical_noncanonical_execution_attempts_occurred": true,
     "canonical_scientific_execution_count": 1,
     "canonical_classification_count": 0,
     "e3_scientific_eligibility": "INELIGIBLE_NONCANONICAL",
     "e4_attempts_01_through_03": "QUARANTINED_SCIENTIFICALLY_INELIGIBLE",
     "attempt_04": "TERMINAL_QUARANTINED_DIAGNOSTIC_EVIDENCE_INCOMPLETE",
+    "attempt_04_controller_reported_dispatch_scalar": 3666,
+    "attempt_04_exact_dispatched_inventory": "UNRESOLVED_FROM_RETAINED_EVIDENCE",
+    "attempt_04_durable_per_key_prelaunch_dispatch_records": 0,
+    "attempt_04_attempted_keys": 3666,
     "attempt_04_reservation": "CONSUMED_ONCE_CLOSED",
     "attempt_04_launch_authorized": false,
     "attempt_05_authority": "NONE",

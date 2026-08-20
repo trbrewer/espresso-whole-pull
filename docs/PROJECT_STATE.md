@@ -22,8 +22,11 @@ into the protocol branch. PR #71 remains draft. PR #82 and stacked PR #84 preser
 closed without merge as superseded after replacement PR #85 was established.
 Their scientific protocol was not rejected; the reset corrects RCA-002 audit
 state and simplifies integration. Historical noncanonical attempts occurred.
-Final Attempt 04 executed once from the exact qualified head, but required
-diagnostics were incomplete; canonical scientific execution count is one and
+Final Attempt 04 executed once from the exact qualified head. Attempt/result
+evidence covers all 3,666 keys; the controller reports a dispatch scalar of
+3,666, while the exact per-key dispatched inventory is unresolved because no
+durable pre-launch dispatch records survive. Required diagnostics were
+incomplete; canonical scientific execution count is one and
 canonical classification count is zero.
 E3 and E4 Attempts 01--03 are scientifically ineligible and cannot be reused
 or combined. Attempt 04 is terminal, quarantined, and ineligible.

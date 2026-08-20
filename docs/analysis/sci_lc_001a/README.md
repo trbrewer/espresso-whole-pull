@@ -9,7 +9,8 @@ deterministically generated matrix live in
 Status: `FINAL_ATTEMPT_04_TERMINAL_INELIGIBLE_PENDING_FINAL_REVIEW`.
 
 The controlling current result is [RESULT.md](RESULT.md): one fresh Attempt 04
-executed all 3,666 keys, but required diagnostics were incomplete for 108
+has attempt/result evidence for all 3,666 keys, but its exact per-key dispatched
+inventory is unresolved and required diagnostics were incomplete for 108
 applicable stopped cases. It is quarantined and classification-ineligible;
 zero canonical classifications were produced and Attempt 05 authority is
 `NONE`. The developmental chronology below is retained as historical context
