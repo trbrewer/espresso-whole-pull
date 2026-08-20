@@ -105,6 +105,10 @@ class FamilyControllerTests(unittest.TestCase):
     def test_dispatch_marks_consumed(self):
         self.reserve(); fc.transition(self.root,"STARTING",cause="test"); fc.transition(self.root,"RUNNING",cause="test")
         result=fc.transition(self.root,"STOP_REQUESTED",cause="test",dispatched=1); self.assertTrue(result["consumed"])
+    def test_record_dispatch_atomically_increments_consumption(self):
+        self.reserve(); fc.transition(self.root,"STARTING",cause="test"); fc.transition(self.root,"RUNNING",cause="test")
+        self.assertEqual(fc.record_dispatch(self.root)["canonical_keys_dispatched"],1)
+        result=fc.record_dispatch(self.root); self.assertEqual(result["canonical_keys_dispatched"],2); self.assertTrue(result["consumed"])
     def test_dispatch_regression_rejected(self):
         self.reserve(); fc.transition(self.root,"STARTING",cause="test"); fc.transition(self.root,"RUNNING",cause="test"); fc.transition(self.root,"STOP_REQUESTED",cause="test",dispatched=2)
         with self.assertRaisesRegex(ValueError,"REGRESSION"): fc.transition(self.root,"FINALIZING",cause="test",dispatched=1)

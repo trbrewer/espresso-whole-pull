@@ -1251,7 +1251,7 @@ def _execute_graph(store: CanonicalStore, result_store: ResultStore, context: _V
     for case_id, profile in plan["keys"]:
         if family_control_root is None:
             raise ValueError("FAMILY_CONTROLLER_REQUIRED_FOR_REAL_DISPATCH")
-        family_controller.check_dispatch(family_control_root)
+        family_controller.record_dispatch(family_control_root)
         if result_store.reusable(manifest, case_id, profile):
             reused += 1; continue
         if interrupt_after is not None and completed >= interrupt_after:

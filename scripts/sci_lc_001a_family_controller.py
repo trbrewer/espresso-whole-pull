@@ -188,6 +188,20 @@ def check_dispatch(control_root: Path) -> None:
     if value["state"] != "RUNNING": raise ValueError("DISPATCH_REQUIRES_RUNNING")
 
 
+def record_dispatch(control_root: Path) -> dict:
+    """Durably consume one key at the immediate pre-launch boundary."""
+    with family_lock(control_root):
+        path = control_root / "reservation.json"
+        value = json.loads(path.read_text())
+        hold_state(control_root, "dispatch", value["authority_sha256"])
+        if value["state"] != "RUNNING": raise ValueError("DISPATCH_REQUIRES_RUNNING")
+        value["canonical_keys_dispatched"] += 1
+        value["consumed"] = True
+        value["updated_at_utc"] = utc_now()
+        atomic_write(path, value)
+        return value
+
+
 def readiness(control_root: Path) -> dict:
     """Exercise lifecycle wiring with no reference to the canonical dispatcher."""
     hold_state(control_root, "recovery")

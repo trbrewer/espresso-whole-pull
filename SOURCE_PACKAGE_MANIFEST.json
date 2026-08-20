@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 458,
-  "total_uncompressed_bytes_excluding_manifest": 7022976,
-  "aggregate_source_sha256": "f356eee81d36c9206398ffb7116dc09dd7f12a71b38a25945374a4f02517e9b1",
-  "aggregate_sha256": "f356eee81d36c9206398ffb7116dc09dd7f12a71b38a25945374a4f02517e9b1",
+  "total_uncompressed_bytes_excluding_manifest": 7024205,
+  "aggregate_source_sha256": "2e9de9d2e44e14d309c488a0c6a19970b676e200a83462e87db1e90a2253e2fc",
+  "aggregate_sha256": "2e9de9d2e44e14d309c488a0c6a19970b676e200a83462e87db1e90a2253e2fc",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -529,8 +529,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/INFRASTRUCTURE_CORRECTION.md": {
-      "sha256": "bc1c4f05373e69d292accbc2eab387afebdc09658470bf8f0d373b7278de0cf2",
-      "bytes": 3104,
+      "sha256": "fc9ed302e895f27f09e31468849bece73211a86094be44f4092de0aec1d05e70",
+      "bytes": 3323,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/PROTOCOL.md": {
@@ -1284,13 +1284,13 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_executor.py": {
-      "sha256": "5ceb93976718b344390baf53265eb475d11c32a59904bed8462316c69facea41",
-      "bytes": 98397,
+      "sha256": "3c3a191acc0e7a3c6feebb7d90e44a54cee97df56072304f31a9ffae7d36aa45",
+      "bytes": 98398,
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_family_controller.py": {
-      "sha256": "f49c3f9a04a64b84e209868c7d181aa4ca2d930c565a2841ef6e487fcec95a3e",
-      "bytes": 11373,
+      "sha256": "49982e110636964bd522ca38c9b5916ff13e96f916e5487bc10df5f76d09a41e",
+      "bytes": 11964,
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_obs_001_diagnostics.py": {
@@ -1684,8 +1684,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_family_controller.py": {
-      "sha256": "e3e7d20208fc2aa247e0d93af5ec76785e34425efad2104a1c6c29db019f0292",
-      "bytes": 9191,
+      "sha256": "6a59aa5c9a22b5006d9a0b1d27136baac84f6e97b6483190ae3966ff94be4141",
+      "bytes": 9609,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_ica003.py": {

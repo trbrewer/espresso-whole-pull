@@ -20,6 +20,9 @@ and execution authority files through `SCI_LC_CONTROL_AUTHORITY` and
 `SCI_LC_EXECUTION_AUTHORITY`; the former reserves the attempt slot and the
 latter is validated by the scientific executor. The family-hold record must
 match the exact control-authority SHA-256 at reservation and dispatch gates.
+Each immediate pre-launch boundary then increments and durably persists the
+controller dispatch count under the same family lock before invoking science;
+the first such increment irreversibly marks Attempt 04 consumed.
 
 The family hold is closed-schema and is checked at allocation, reservation,
 post-reservation, root/unit/service boundaries, pre-dispatch, every dispatch,
