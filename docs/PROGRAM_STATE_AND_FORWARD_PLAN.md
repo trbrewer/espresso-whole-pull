@@ -194,6 +194,23 @@ The decisive result is that the Puckworks corpus is demonstrably useful. It expo
 
 This is not a failed validation program. It is the desired transition from internal verification to externally anchored diagnosis.
 
+## SCI-MD-003 / RP-A-001 current cross-repository programme
+
+The current authorized analysis consumes the pinned Puckworks common-observable
+atlas and retained EWP results only. SCI-LC-001A is historical and unresolved:
+3,558 cases completed, 108 stopped, all stopped cases diagnostic-applicable,
+`clean_finalization=false`, classification eligibility false, and zero eligible
+classifications. The SCI-LC family hold remains active; SCI-LC-001B and any new
+lateral programme are not nominated. No completed SCI-LC subset enters this work.
+
+The SCI-MD-003 consumer changes no OpenFOAM governing physics, runs no OpenFOAM
+case, leaves the runtime Puckworks lock unchanged, and does not activate a
+production solver task. Its bounded result is
+`SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED` with
+`NO_COMPLETE_MEASUREMENT_SET`. Physical validation remains `NOT_ESTABLISHED`,
+the gate remains `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`, and experimental
+commissioning and protected/holdout scoring remain unauthorized.
+
 VAL-CORPUS-002 is complete, approved, and merged. The next scientific gate is
 additional independent data, not further fitting or reuse of the same
 dependent cup-mass evidence. A future human-owner decision must choose between
