@@ -1,0 +1,12 @@
+{
+  "atlas_schema_version": "puckworks.response-atlas-export/v1",
+  "atlas_specification_sha256": "a3064d18f026bef7b54e70f825febfd7b8bb01fe5bdbaff1477435030c8b678f",
+  "checkout_method": "git checkout exact feature commit; consume retained versioned export only",
+  "export_artifact_sha256": "434c8bd208474bd4fe33281cc6f633ee8ac4e47ffefae9039a4014cba7ad2420",
+  "protocol_sha256": "f56254b255a70a846b5e8ec48d5879b49a9ac678746482eaf6cac35ba53a4f2b",
+  "puckworks_commit": "2cb75c1fdd8aae34abad66e8fb1d42b0630fdaad",
+  "puckworks_remote": "https://github.com/trbrewer/puckworks.git",
+  "puckworks_tree": "66fa1f25a9302c8e4be7dba35e8b9d99f527bd78",
+  "role": "READ_ONLY_ANALYSIS_DEPENDENCY",
+  "runtime_dependency_lock_changed": false
+}
