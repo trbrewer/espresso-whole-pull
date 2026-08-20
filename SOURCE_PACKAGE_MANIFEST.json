@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 459,
-  "total_uncompressed_bytes_excluding_manifest": 7033661,
-  "aggregate_source_sha256": "0b06c674f95a7df715d4eb4dd23d741768397b4df5df63083781e0f45c11b81a",
-  "aggregate_sha256": "0b06c674f95a7df715d4eb4dd23d741768397b4df5df63083781e0f45c11b81a",
+  "file_count": 470,
+  "total_uncompressed_bytes_excluding_manifest": 7059039,
+  "aggregate_source_sha256": "317dc8416169bb2ee1222a75d545f755707da446ccef1634520cd1034459602f",
+  "aggregate_sha256": "317dc8416169bb2ee1222a75d545f755707da446ccef1634520cd1034459602f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -449,8 +449,8 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "6b70cd3c0369536534973a3aa5b1221edec59129d28f2772b849c844d21710b8",
-      "bytes": 46405,
+      "sha256": "a72b6f02c6408a6df172d70cf17c8a3925aee55602c1149e539321cdf0ec52c8",
+      "bytes": 47416,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
@@ -666,6 +666,56 @@
     "docs/analysis/sci_md_002c/RESULT.md": {
       "sha256": "f10bb896ddea0bd88da7bea7b5f0e7c71efcbfa26f3a570a9679a0c527f23143",
       "bytes": 5415,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/DECISION.json": {
+      "sha256": "fb981c1c7d2cf6decadcba90d69b44ac723c93c9ee6867ea0cdad40720dcb2ec",
+      "bytes": 799,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/MEASUREMENT_RECOMMENDATION.md": {
+      "sha256": "971ffcfc0f853a2fbba13e6315071df890f8242319670d2bcace710d7eedd1c8",
+      "bytes": 549,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/PROTOCOL.md": {
+      "sha256": "a336ec9437bda1d43cb3ef4c7abec3cbdf76787282aff7300a4891250d892c3b",
+      "bytes": 543,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/PUCKWORKS_ANALYSIS_PIN.json": {
+      "sha256": "13088f70a7e8ff5b090ce642b2d1ac5a69c24b5cbbed3be61b480d9f30d50912",
+      "bytes": 734,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/REPRODUCE.md": {
+      "sha256": "5c7a3980bf7e3656ca11e8d5f4df790667bbaae69c4ffe9233bcc833dbe97bdb",
+      "bytes": 392,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/RESULT.md": {
+      "sha256": "1c1cec59088e8ebd19a9c79090e1a6fdb9deed05af6ead5e0106bf78e6645e71",
+      "bytes": 1251,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/cross_repository_comparison.json": {
+      "sha256": "944117dd69fcf6a48c593f4ebda2d24dc061a88e009997bc8ee6db4157989dfd",
+      "bytes": 1516,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/ewp_case_matrix.json": {
+      "sha256": "2952ee653a3b6017941f97eb965f7240fd971aed6154b48d6dc63b85e37599d3",
+      "bytes": 315,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/ewp_observable_export.json": {
+      "sha256": "05628770cf2650484104def11b1a4887be120cc58daaae724f3a38abca2625b4",
+      "bytes": 12539,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/measurement_value_consumer.json": {
+      "sha256": "86d5051b2ec722c1c41c0f38faa947318b79f6ab1d238641057809884206c912",
+      "bytes": 3343,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1731,6 +1781,11 @@
     "tests/test_sci_md_002c.py": {
       "sha256": "e5fe1d46f2865e2bb4e0ab19288a3d44e662a22516bbc920efd81c8b437dda32",
       "bytes": 19173,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_003_atlas.py": {
+      "sha256": "0c0d90a5206bb1a000c7df915ef6a1e20bcb239011357726960fb51c16966e35",
+      "bytes": 2386,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {
