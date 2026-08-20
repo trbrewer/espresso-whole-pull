@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 779,
+    "python_test_count": 812,
     "sci_lc_001a_obs_001_r1_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_obs_001",
     "sci_lc_001a_obs_001_r1_focused_test_count": 26,
     "sci_lc_001a_protocol_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol",
