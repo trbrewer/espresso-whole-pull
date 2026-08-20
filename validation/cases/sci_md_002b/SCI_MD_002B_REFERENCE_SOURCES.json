@@ -1,0 +1,21 @@
+{
+  "ewp_source_overlay": {
+    "path": "validation/cases/val_corpus_001/results/VAL_CORPUS_001_OVERLAYS_V3.json",
+    "provenance_class": "EWP_GOVERNED_SOURCE",
+    "sha256": "e69d2b7b0f0ee6945013a0b185da21803d404270a34f1c9d26aed6ecda370c0e"
+  },
+  "puckworks": {
+    "commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "files": [
+      {"path": "docs/cards/foster2025_2.md", "sha256": "b907b002ddb81560dd6e3d514b8cfa31bb1b2820a397195d27aa865036976b4b"},
+      {"path": "docs/cards/mo2023_2.md", "sha256": "f1581ac8f1cef634e32000a2d561f3e41518eeaadbf8b9e2b579389260f1270a"},
+      {"path": "puckworks/models/foster2025/infiltration.py", "sha256": "bed1e3b9e7546f805f4341578ad4e6258a9d0005f483096bbe57381dd95a5cc9"},
+      {"path": "puckworks/models/mo2023_2/swelling.py", "sha256": "a8c4760f1d0430ec5291fad7371f7ba87fbd450fa881064a4c676f0c423bb441"},
+      {"path": "puckworks/data/mo2023_2/table1_granulometry.csv", "sha256": "781299488ad480fd121bcea7a9c592c2a7f12af539f3df9b7fd61e9fd45d6521"}
+    ],
+    "provenance_class": "PUCKWORKS_PINNED_REFERENCE",
+    "repository": "https://github.com/trbrewer/puckworks.git",
+    "tree": "1d553e44ee2f7480a5df521560801b478618cc84"
+  },
+  "schema_version": "ewp.sci_md_002b.reference_sources.v1"
+}

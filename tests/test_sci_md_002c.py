@@ -1,0 +1,211 @@
+import hashlib, importlib.util, json, os, sys, tempfile, unittest, uuid
+from pathlib import Path
+from unittest import mock
+
+ROOT=Path(__file__).resolve().parents[1]
+SPEC=importlib.util.spec_from_file_location("sci_md_002c",ROOT/"scripts/sci_md_002c.py")
+M=importlib.util.module_from_spec(SPEC);sys.modules[SPEC.name]=M;SPEC.loader.exec_module(M)
+
+class TestLaneAndSource(unittest.TestCase):
+ def test_lane_agreement_and_paths(self):
+  lane=json.loads(M.LANE.read_text()); charter=(M.DOC/"DECISION_AND_PARALLEL_LANE_CHARTER.md").read_text()
+  self.assertEqual(lane["lane_id"],M.LANE_ID);self.assertIn(lane["branch"],charter)
+  self.assertEqual(lane["owned_paths"][:4],["docs/analysis/sci_md_002c/**","validation/cases/sci_md_002c/**","scripts/sci_md_002c.py","tests/test_sci_md_002c.py"])
+  self.assertIn("solver/**",lane["forbidden_paths"]);self.assertIn("docs/analysis/sci_lc_001a/**",lane["forbidden_paths"])
+ def test_no_forbidden_import_or_dependency(self):
+  text=(ROOT/"scripts/sci_md_002c.py").read_text().lower()
+  self.assertNotIn("import sci_lc",text);self.assertNotIn("import puckworks",text);self.assertNotIn("solver/",text);self.assertNotIn("config/",text)
+ def test_overlay_semantics_and_window(self):
+  h=M.load_histories();self.assertEqual(set(h),{5,9,11})
+  self.assertTrue(all(len(x)==800 for x in h.values()));self.assertEqual(h[5][0]["source_time_s"],10.01001);self.assertEqual(h[11][-1]["source_time_s"],89.98999)
+  self.assertAlmostEqual(h[9][0]["observed_pressure_pa"],896674.5);self.assertAlmostEqual(h[9][0]["reference_model_pressure_pa"],871691.6)
+  self.assertNotEqual(h[9][-1]["observed_flow_kg_s"],h[9][-1]["reference_model_flow_kg_s"])
+ def test_overlay_hash_and_window_fail_closed(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/"x.json";p.write_bytes(M.OVERLAY.read_bytes()+b" ")
+   with self.assertRaisesRegex(ValueError,"SOURCE_OVERLAY_HASH_MISMATCH"):M.load_histories(p)
+ def test_observed_p9_anchor(self):
+  expect=M.TERMINAL_PRESSURES[9]/(M.TERMINAL_FLOWS[9]/M.RHO)
+  self.assertEqual(M.hydraulic_anchor(),expect)
+
+class TestFeasibilityAndPhysics(unittest.TestCase):
+ def test_required_resistance_and_inventory(self):
+  f=M.feasibility_bounds();b=f["optimistic_joint_bounds"];p=f["window_end_observed_pressure_pa"]
+  self.assertEqual(p,{"5":450428.3,"9":870708.2,"11":1041755.1})
+  self.assertAlmostEqual(b["required_Rc9_pa_s_m3"],p["9"]/p["5"]*M.hydraulic_anchor()-M.hydraulic_anchor())
+  self.assertAlmostEqual(b["required_Rc11_pa_s_m3"],p["11"]/p["9"]*(M.hydraulic_anchor()+b["required_Rc9_pa_s_m3"])-M.hydraulic_anchor())
+  masses=[x["max_inventory_kg"] for x in f["regions"]];self.assertEqual(min(masses),M.DOSE*.02*.25);self.assertEqual(max(masses),M.DOSE*.1*.75)
+  self.assertIn("POTENTIALLY_FEASIBLE",{x["classification"] for x in f["regions"]});self.assertIn("CLEARLY_INVENTORY_IMPOSSIBLE",{x["classification"] for x in f["regions"]})
+  feasible=[x for x in f["regions"] if x["joint_ordering_feasible"]]
+  self.assertEqual([(x["fines_mass_fraction"],x["mobilizable_fraction"],x["retention_fraction"],x["specific_cake_resistance_m_kg"]) for x in feasible],[(.1,.75,1.0,1e13)])
+ def test_cake_identity_and_units(self):
+  m=.001;eps=.5;alpha=1e13;h=m/(M.SOLID_RHO*(1-eps)*M.AREA);k=1/(M.SOLID_RHO*(1-eps)*alpha)
+  a=M.MU*alpha*m/M.AREA**2;b=M.MU*h/(M.AREA*k);self.assertLess(abs(a-b)/a,1e-14)
+ def row(self,**changes):
+  r=next(x.copy() for x in M.matrix_rows() if x["case_id"]=="R1-SYNTH-P7-BASE");r.update(changes);return r
+ def test_zero_limits(self):
+  for change in ({"fines_fraction":0},{"release_rate_s":0},{"retention_fraction":0},{"specific_cake_resistance_m_kg":0}):
+   z=M.simulate(self.row(**change));self.assertEqual(z["terminal"]["compact_layer_resistance_pa_s_m3"],0)
+ def test_conservation_inventory_and_deposition(self):
+  z=M.simulate(self.row());t=z["temporal"]
+  self.assertLessEqual(z["max_abs_mass_residual_kg"],M.MASS_ABS_TOL);self.assertTrue(all(x["bound_mass_kg"]>=0 and x["mobile_mass_kg"]>=0 for x in t))
+  self.assertGreater(t[-1]["deposited_mass_kg"],0);self.assertTrue(all(b["deposited_mass_kg"]>=a["deposited_mass_kg"] for a,b in zip(t,t[1:])))
+  self.assertTrue(all((x["deposited_mass_kg"]>0 or x["compact_layer_resistance_pa_s_m3"]==0) for x in t))
+ def test_fixed_active_bed_and_resistance(self):
+  z=M.simulate(self.row());self.assertTrue(all(abs((x["total_resistance_pa_s_m3"]-x["compact_layer_resistance_pa_s_m3"])-M.hydraulic_anchor())<1e-3 for x in z["temporal"]))
+ def test_refinement_is_operational_and_deterministic(self):
+  a=M.simulate(self.row());b=M.simulate(self.row());self.assertEqual(M.hash_obj(a),M.hash_obj(b))
+  refined=self.row(case_id="X",axial_cells=64,temporal_substeps=2,resolution="REFINED");c=M.simulate(refined);self.assertNotEqual(a["terminal"]["deposited_mass_kg"],c["terminal"]["deposited_mass_kg"])
+ def test_linear_pressure_interpolation(self):
+  a={"observed_pressure_pa":2.0};b={"observed_pressure_pa":6.0}
+  self.assertEqual(M.linear_pressure(a,b,0),2);self.assertEqual(M.linear_pressure(a,b,.5),4);self.assertEqual(M.linear_pressure(a,b,1),6)
+  h=M.load_histories();self.assertEqual(M.linear_pressure(h[5][0],h[5][1],0),h[5][0]["observed_pressure_pa"])
+ def test_particle_velocity_upper_bound_and_full_temporal_contract(self):
+  r=self.row();self.assertEqual(r["particle_velocity_ratio"],1.0);self.assertEqual(M.protocol()["provenance"]["particle_velocity_ratio"],"SYNTHETIC_CAPABILITY_UPPER_BOUND")
+  z=M.simulate(r);self.assertGreater(z["terminal"]["deposited_mass_kg"],0);self.assertTrue(M.temporal_ok(z,r))
+  for field in ("released_mass_increment_kg","mobile_mass_change_kg","retained_outlet_mass_increment_kg","compact_layer_thickness_m","predicted_flow_kg_s"):
+   bad=json.loads(json.dumps(z));bad["temporal"][10][field]+=1e-4;self.assertFalse(M.temporal_ok(bad,r),field)
+  for field in ("released_mass_rate_kg_s","outlet_fines_flux_kg_s","deposition_rate_kg_s","escaped_rate_kg_s","cumulative_released_mass_kg","cumulative_transported_outlet_mass_kg","pressure_integral_pa_s"):
+   bad=json.loads(json.dumps(z));bad["temporal"][10][field]+=1e-4;self.assertFalse(M.temporal_ok(bad,r),field)
+  for field in ("mobile_mass_kg","deposited_mass_kg","escaped_mass_kg","compact_layer_resistance_pa_s_m3","released_mass_rate_kg_s","pressure_integral_pa_s"):
+   bad=json.loads(json.dumps(z));bad["temporal"][0][field]+=1e-4;self.assertFalse(M.temporal_ok(bad,r),field)
+
+class TestMatrixAndAuthority(unittest.TestCase):
+ def test_matrix_counts_and_comparators(self):
+  rows=M.matrix_rows();self.assertEqual(len(rows),585);self.assertEqual(len(M.adjudicative_ids()),579);self.assertEqual(sum(x["arm"]=="S1" for x in rows),576)
+  self.assertEqual(len({x["case_id"] for x in rows}),len(rows));self.assertLess(len(rows),M.HARD_CAP)
+  lookup={x["case_id"] for x in rows}
+  for r in rows:
+   if r["arm"]=="S1":self.assertIn(r["control_id"],lookup);self.assertIn(r["refinement_id"],lookup);self.assertEqual(len(r["cross_pressure_peer_ids"]),2)
+ def test_generation_and_csv_agree(self):
+  before={p:M.sha(p) for p in (M.OUT/"SCI_MD_002C_CASE_MATRIX.json",M.OUT/"SCI_MD_002C_CASE_MATRIX.csv")};M.verify_generated();self.assertEqual(before,{p:M.sha(p) for p in before})
+  j=json.loads((M.OUT/"SCI_MD_002C_CASE_MATRIX.json").read_text())
+  with (M.OUT/"SCI_MD_002C_CASE_MATRIX.csv").open() as f:self.assertEqual(len(list(__import__('csv').DictReader(f))),j["row_count"])
+ def auth(self,b):
+  a=M.expected_authority_bindings(b);a["bundle_uuid"]=str(uuid.uuid4());a.update(authorization_token=M.TOKEN,owner_role=M.OWNER_ROLE,authorization_date="2026-08-16T12:00:00Z");return a
+ def test_production_cannot_mint_owner_authority(self):
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   a=M.expected_authority_bindings(d);self.assertNotIn("authorization_token",a);self.assertNotIn("owner_role",a);self.assertNotIn("authorization_date",a);self.assertEqual(a["bundle_uuid"],"INDEPENDENT_OWNER_VALUE_REQUIRED")
+ def test_exact_authority_and_rejections(self):
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   p=Path(d)/"a.json";a=self.auth(d);p.write_text(M.canonical(a));self.assertEqual(M.validate_authority(p,d)["authorized_row_ids"],M.adjudicative_ids())
+   for ids in ([],a["authorized_row_ids"][:1],a["authorized_row_ids"][:-1],a["authorized_row_ids"]+["EXTRA"],list(reversed(a["authorized_row_ids"]))):
+    bad=dict(a);bad["authorized_row_ids"]=ids;p.write_text(M.canonical(bad))
+    with self.assertRaises(ValueError):M.validate_authority(p,d)
+   bad=dict(a);bad["source_tree"]="0"*40;p.write_text(M.canonical(bad))
+   with self.assertRaises(ValueError):M.validate_authority(p,d)
+ def test_rows_override_must_be_indivisible(self):
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   p=Path(d)/"a.json";a=self.auth(d);p.write_text(M.canonical(a))
+   with self.assertRaisesRegex(ValueError,"PARTIAL_OR_REORDERED"):M.execute(d,p,rows_override=M.adjudicative_ids()[:1])
+ def test_uuid_mismatch(self):
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   p=Path(d)/"a.json";a=self.auth(d);a["bundle_uuid"]="bad";p.write_text(M.canonical(a))
+   with self.assertRaises(ValueError):M.validate_authority(p,d)
+
+class TestDurability(unittest.TestCase):
+ def test_atomic_write_readback_and_temp_exclusion(self):
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   p=Path(d)/"r.json";h,n=M.durable_write(p,{"x":1,"tuple":("a","b")});self.assertEqual(h,M.sha(p));self.assertEqual(n,p.stat().st_size);self.assertFalse(list(Path(d).glob("*.tmp.*")))
+   with self.assertRaises(FileExistsError):M.durable_write(p,{"x":2})
+ def test_corruption_and_malformed_detection(self):
+  rec={"case_id":"X","bundle_uuid":"u","result":{"v":1}};rec["record_sha256"]=M.internal_hash(rec)
+  self.assertEqual(rec["record_sha256"],M.internal_hash(rec));bad=json.loads(M.canonical(rec));bad["result"]["v"]=2;self.assertNotEqual(bad["record_sha256"],M.internal_hash(bad))
+  with self.assertRaises(json.JSONDecodeError):json.loads('{"x":')
+ def test_manifest_detects_same_size_corruption(self):
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   p=Path(d)/"x.json";M.durable_write(p,{"x":1});original=p.read_bytes();bad=bytearray(original);bad[-3]=ord('2');p.write_bytes(bad)
+   self.assertEqual(len(original),p.stat().st_size);self.assertNotEqual(hashlib.sha256(original).hexdigest(),M.sha(p))
+ def test_safe_path_rejects_git_and_symlink(self):
+  with self.assertRaises(ValueError):M.safe_bundle(ROOT/"SCI_MD_002C_EXTERNAL_BUNDLE")
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   target=Path(d)/"target";target.mkdir();link=Path(d)/"link";link.symlink_to(target,target_is_directory=True)
+   with self.assertRaises(ValueError):M.safe_bundle(link)
+ def test_exact_case_record_file_set(self):
+  ids=["A","B"]
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   b=Path(d);root=b/"case_records";root.mkdir();(root/"A.json").write_text("{}");(root/"B.json").write_text("{}")
+   M.validate_case_record_directory(b,ids,complete=True)
+   (root/"extra.json").write_text("{}")
+   with self.assertRaisesRegex(ValueError,"EXTRA"):M.validate_case_record_directory(b,ids,complete=True)
+   (root/"extra.json").unlink();(root/"orphan.tmp.1").write_text("")
+   with self.assertRaisesRegex(ValueError,"TEMPORARY"):M.validate_case_record_directory(b,ids,complete=True)
+  with tempfile.TemporaryDirectory(prefix="sci_md_002c_") as d:
+   b=Path(d);target=b/"target";target.mkdir();(b/"case_records").symlink_to(target,target_is_directory=True)
+   with self.assertRaisesRegex(ValueError,"SYMLINK"):M.validate_case_record_directory(b,ids,complete=True)
+
+class TestReductionRules(unittest.TestCase):
+ def synthetic_bundle(self,mode):
+  td=tempfile.TemporaryDirectory(prefix="sci_md_002c_reducer_");b=Path(td.name);a=M.expected_authority_bindings(b);a["bundle_uuid"]=str(uuid.uuid4());a.update(authorization_token=M.TOKEN,owner_role=M.OWNER_ROLE,authorization_date="2026-08-16T12:00:00Z")
+  ap=b/"authority.json";ap.write_text(M.canonical(a));ah=M.sha(ap);lookup={r["case_id"]:r for r in M.matrix_rows()};entries=[]
+  for cid in M.adjudicative_ids():
+   r=lookup[cid];p=int(r["pressure_identity"].split("P")[-1]);base={5:.003,9:.002,11:.001}[p]
+   if mode in ("WRONG","FAIL_FEASIBLE_WRONG","MASS_FAIL_WRONG","GEOMETRY_FAIL_WRONG"):base={5:.001,9:.002,11:.003}[p]
+   if mode=="UNRESOLVED":
+    base={5:.00200001,9:.002,11:.00199999}[p]
+    if r["resolution"]=="REFINED":base={5:.00199999,9:.002,11:.00200001}[p]
+   feasible_target=cid.startswith("S1-SOURCE-P5-FF0.1-MF0.75-KR0.02-N1.0-RET1.0-AR1e+13")
+   physical="INVALID" if (mode=="ONE_INVALID" and cid.startswith("S1-SOURCE-P5-FF0.02-MF0.25-KR0.02-N1.0-RET0.5-AR1e+12")) or (mode=="FAIL_FEASIBLE_WRONG" and feasible_target) else "VALID"
+   inv=M.DOSE*r["fines_fraction"]*r["mobilizable_fraction"];maxrc=M.MU*r["specific_cake_resistance_m_kg"]*inv*r["retention_fraction"]/M.AREA**2
+   result=M.simulate(r) if r["arm"]=="C0" else {"case_id":cid,"numerical_status":"COMPLETE","physical_status":physical,"max_abs_mass_residual_kg":1.0 if mode=="MASS_FAIL_WRONG" and feasible_target else 0.0,"available_inventory_kg":inv,"maximum_depositable_mass_kg":inv*r["retention_fraction"],"maximum_possible_cake_resistance_pa_s_m3":maxrc,"terminal":{"predicted_flow_kg_s":base,"total_resistance_pa_s_m3":M.hydraulic_anchor()+1e8,"bound_mass_kg":0.0,"mobile_mass_kg":0.0,"deposited_mass_kg":inv*r["retention_fraction"],"escaped_mass_kg":inv*(1-r["retention_fraction"]),"compact_layer_thickness_m":-1.0 if mode=="GEOMETRY_FAIL_WRONG" and feasible_target else 0.0,"compact_layer_resistance_pa_s_m3":1e8},"temporal":[]}
+   if mode=="FAIL_FEASIBLE_WRONG" and feasible_target: result={"case_id":cid,"numerical_status":"FAILURE","physical_status":"INVALID","stop_reason":"RuntimeError:SYNTHETIC_TEST_FAILURE","terminal":{},"temporal":[]}
+   rec=M.record_for(r,a,ah,result,"synthetic-test",M.utc())
+   path=b/"case_records"/(cid+".json");path.parent.mkdir(exist_ok=True);path.write_text(M.canonical(rec));entries.append({"case_id":cid,"path":f"case_records/{cid}.json","size":path.stat().st_size,"sha256":M.sha(path)})
+  aggregate=M.hash_obj([{"case_id":x["case_id"],"size":x["size"],"sha256":x["sha256"]} for x in entries]);(b/"manifest.json").write_text(M.canonical({"schema_version":"ewp.sci_md_002c.manifest.v1","task_id":M.TASK,"lane_id":M.LANE_ID,"source_head":a["source_head"],"source_tree":a["source_tree"],"row_ids_sha256":M.hash_obj(M.adjudicative_ids()),"record_count":len(entries),"records":entries,"ordered_record_aggregate_sha256":aggregate,"bundle_uuid":a["bundle_uuid"],"authority_sha256":ah}))
+  return td,b,ap
+ def test_complete_synthetic_reducer_bundles(self):
+  expected={"PASS":"SCI_MD_002C_CAPABILITY_DEPENDS_ON_EXTREME_FINES_INVENTORY","WRONG":"SCI_MD_002C_REJECTED_WRONG_PRESSURE_ORDERING","UNRESOLVED":"SCI_MD_002C_PRESSURE_ORDERING_NUMERICALLY_UNRESOLVED","ONE_INVALID":"SCI_MD_002C_CAPABILITY_DEPENDS_ON_EXTREME_FINES_INVENTORY"}
+  for mode,disp in expected.items():
+   with self.subTest(mode=mode):
+    td,b,ap=self.synthetic_bundle(mode)
+    try:
+     with mock.patch.object(M,"temporal_ok",return_value=True):result=M.reduce_bundle(b,ap,b/"result.json")
+     self.assertEqual(result["candidate_count"],96);self.assertEqual(result["family_disposition"],disp)
+     if mode=="ONE_INVALID":self.assertTrue(any(not x["numerical_physical_valid"] for x in result["candidates"]));self.assertTrue(any(x["aggregate_eligible"] for x in result["candidates"]))
+    finally:td.cleanup()
+ def test_potentially_feasible_failure_modes_preclude_rejection(self):
+  for mode in ("FAIL_FEASIBLE_WRONG","MASS_FAIL_WRONG","GEOMETRY_FAIL_WRONG"):
+   td,b,ap=self.synthetic_bundle(mode)
+   try:
+    with mock.patch.object(M,"temporal_ok",return_value=True):result=M.reduce_bundle(b,ap,b/"result.json")
+    self.assertEqual(result["family_disposition"],"SCI_MD_002C_NUMERICAL_EXECUTION_INVALID")
+    failed=next(x for x in result["candidates"] if not x["numerical_physical_valid"] and x["inventory_feasible"])
+    self.assertEqual(failed["ordering"],"NOT_EVALUATED");self.assertIsNone(failed["M59_kg_s"]);self.assertEqual(failed["temporal_signature"],"NOT_EVALUATED")
+   finally:td.cleanup()
+ def test_all_candidates_inventory_impossible(self):
+  td,b,ap=self.synthetic_bundle("WRONG")
+  try:
+   impossible={"optimistic_joint_bounds":{"required_Rc9_pa_s_m3":1e99,"required_Rc11_pa_s_m3":1e99}}
+   with mock.patch.object(M,"feasibility_bounds",return_value=impossible),mock.patch.object(M,"temporal_ok",return_value=True):result=M.reduce_bundle(b,ap,b/"result.json")
+   self.assertEqual(result["family_disposition"],"SCI_MD_002C_REJECTED_INSUFFICIENT_FINES_INVENTORY")
+  finally:td.cleanup()
+ def test_c0_controls_are_package_prerequisites(self):
+  lookup={r["case_id"]:r for r in M.matrix_rows()};records={}
+  for p in M.PRESSURES:
+   cid=f"C0-SOURCE-P{p}-NOFINES";r=lookup[cid];z=M.simulate(r);records[cid]={"numerical_status":"COMPLETE","physical_status":"VALID","result":z}
+  self.assertEqual(set(M.validate_c0_controls(records,lookup)),set(M.PRESSURES))
+  mutations=(("initial_inventory_kg",1),)
+  for field,value in mutations:
+   bad=json.loads(json.dumps(records));bad["C0-SOURCE-P5-NOFINES"]["result"][field]=value
+   with self.assertRaises(ValueError):M.validate_c0_controls(bad,lookup)
+  for field in ("deposited_mass_kg","escaped_mass_kg","compact_layer_thickness_m","compact_layer_resistance_pa_s_m3","total_resistance_pa_s_m3","predicted_flow_kg_s","observed_pressure_pa"):
+   bad=json.loads(json.dumps(records));bad["C0-SOURCE-P5-NOFINES"]["result"]["terminal"][field]+=1
+   with self.assertRaises(ValueError):M.validate_c0_controls(bad,lookup)
+ def test_incomplete_bundle_fails_before_disposition(self):
+  td,b,ap=self.synthetic_bundle("PASS")
+  try:
+   first=next((b/"case_records").glob("*.json"));first.unlink()
+   with self.assertRaises((FileNotFoundError,ValueError)):M.reduce_bundle(b,ap,b/"result.json")
+   self.assertFalse((b/"result.json").exists())
+  finally:td.cleanup()
+ def test_ordering_uncertainty(self):
+  self.assertEqual(M.ordering(3,2,.1,.1),"PASS");self.assertEqual(M.ordering(-1,2,.1,.1),"REJECTED");self.assertEqual(M.ordering(.05,2,.1,.1),"NUMERICALLY_UNRESOLVED")
+ def test_temporal_signature_complete(self):
+  row=next(x for x in M.matrix_rows() if x["case_id"]=="C0-SOURCE-P5-NOFINES");z=M.simulate(row);self.assertTrue(M.temporal_ok(z,row))
+  bad=json.loads(json.dumps(z));bad["temporal"][2]["mass_residual_kg"]=1;self.assertFalse(M.temporal_ok(bad,row))
+ def test_gate_precedence_and_aggregate_last_are_encoded(self):
+  gates=M.protocol()["gates"];self.assertEqual(gates[-1],"AGGREGATE_COMPARISON");self.assertLess(gates.index("RESISTANCE_DIRECTION"),gates.index("PRESSURE_ORDERING"));self.assertLess(gates.index("PRESSURE_ORDERING"),gates.index("TEMPORAL_FINES_DEPOSITION_SIGNATURE"))
+ def test_claim_and_dependence_taxonomy(self):
+  p=M.protocol();self.assertIn("SCI_MD_002C_CAPABILITY_DEPENDS_ON_FULL_RETENTION_COMPACT_LAYER",p["dispositions"]);self.assertIn("GRIND_DISCRIMINATION_ADDITIONAL_DATA_REQUIRED",p["claim_boundary"]);self.assertNotIn("FINES_SELECTED",json.dumps(p))
+
+if __name__=="__main__":unittest.main()
