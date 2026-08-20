@@ -46,8 +46,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 459,
-    "source_manifest_aggregate_sha256": "0b06c674f95a7df715d4eb4dd23d741768397b4df5df63083781e0f45c11b81a",
+    "source_manifest_file_count": 470,
+    "source_manifest_aggregate_sha256": "317dc8416169bb2ee1222a75d545f755707da446ccef1634520cd1034459602f",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -57,7 +57,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "0b06c674f95a7df715d4eb4dd23d741768397b4df5df63083781e0f45c11b81a"
+    "source_manifest_aggregate_source_sha256": "317dc8416169bb2ee1222a75d545f755707da446ccef1634520cd1034459602f"
   },
   "sci_md_002a": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
