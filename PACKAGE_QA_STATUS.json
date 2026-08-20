@@ -46,8 +46,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 452,
-    "source_manifest_aggregate_sha256": "7c4e83eddfbf047072d598a2a167c20fa14e19e22bc3e2b969f51ea170af6004",
+    "source_manifest_file_count": 457,
+    "source_manifest_aggregate_sha256": "7b2f1107f7d513601e15f1d7ce1989ef30bfde16db75aca0453c597fab7dd06e",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -57,7 +57,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "7c4e83eddfbf047072d598a2a167c20fa14e19e22bc3e2b969f51ea170af6004"
+    "source_manifest_aggregate_source_sha256": "7b2f1107f7d513601e15f1d7ce1989ef30bfde16db75aca0453c597fab7dd06e"
   },
   "sci_md_002a": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
@@ -201,7 +201,11 @@
     "openfoam_authorized": false,
     "puckworks_authorized": false,
     "d4_authorized": false,
-    "x1_authorized": false
+    "x1_authorized": false,
+    "infrastructure_candidate": "DRAFT_PR_84_PENDING_INDEPENDENT_EXACT_HEAD_REVIEW",
+    "infrastructure_readiness": "NOT_ISSUED",
+    "attempt_04_reservations_created_by_qualification": 0,
+    "canonical_dispatches_by_qualification": 0
   },
   "xsv_xct_001": {
     "status": "EXECUTION_COMPLETE_PENDING_EXACT_HEAD_REVIEW",

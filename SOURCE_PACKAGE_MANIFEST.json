@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 452,
-  "total_uncompressed_bytes_excluding_manifest": 6990086,
-  "aggregate_source_sha256": "7c4e83eddfbf047072d598a2a167c20fa14e19e22bc3e2b969f51ea170af6004",
-  "aggregate_sha256": "7c4e83eddfbf047072d598a2a167c20fa14e19e22bc3e2b969f51ea170af6004",
+  "file_count": 457,
+  "total_uncompressed_bytes_excluding_manifest": 7014452,
+  "aggregate_source_sha256": "7b2f1107f7d513601e15f1d7ce1989ef30bfde16db75aca0453c597fab7dd06e",
+  "aggregate_sha256": "7b2f1107f7d513601e15f1d7ce1989ef30bfde16db75aca0453c597fab7dd06e",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -383,6 +383,11 @@
       "bytes": 4149,
       "git_mode": "100644"
     },
+    "config/systemd/sci-lc-001a-attempt@.service": {
+      "sha256": "9509b18ec2666a81d4d9e23a67c31f478688d26ab7dbba70b414902f854e1221",
+      "bytes": 691,
+      "git_mode": "100644"
+    },
     "docs/ASSUMPTIONS_AND_CLAIM_CEILING.md": {
       "sha256": "d7c28a116727977483cfa39a0ba1b6c03d624582be3969f7969cd51852939c1f",
       "bytes": 4289,
@@ -511,6 +516,11 @@
     "docs/analysis/sci_lc_001a/ICA_003_STAGE_A_BASELINE_ONLY_CLASSIFICATION_SCOPE.md": {
       "sha256": "7962aa5a3c8a13606e56625ae48a6604211acbb525f7e5d4d27f49020178c743",
       "bytes": 7022,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_lc_001a/INFRASTRUCTURE_CORRECTION.md": {
+      "sha256": "1b48100fb2733f55475fd33c98498b2df378742a586e8a9546a3aa10bea3b75b",
+      "bytes": 2731,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/PROTOCOL.md": {
@@ -1274,8 +1284,13 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_executor.py": {
-      "sha256": "9ec1972c74580db200ed8a0089e074082d204cedf0ebd45c8409f9e80cf81a12",
-      "bytes": 97690,
+      "sha256": "5ceb93976718b344390baf53265eb475d11c32a59904bed8462316c69facea41",
+      "bytes": 98397,
+      "git_mode": "100755"
+    },
+    "scripts/sci_lc_001a_family_controller.py": {
+      "sha256": "a79781f7a2b772256f68caf1dc99849e5568abaf18e1fa51f77a3df89e9ee335",
+      "bytes": 10738,
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_obs_001_diagnostics.py": {
@@ -1296,6 +1311,11 @@
     "scripts/sci_lc_001a_protocol.py": {
       "sha256": "277a5b4e96a6948977465b66a85112d91b790899c024153c0d4f81f2bc9aa0ee",
       "bytes": 116211,
+      "git_mode": "100755"
+    },
+    "scripts/sci_lc_001a_supervised_launch.sh": {
+      "sha256": "17deaa4b2232c64c7831df93796c6f6ffe7ff4392713453d122b6b9c8cf35aa2",
+      "bytes": 1672,
       "git_mode": "100755"
     },
     "scripts/sci_md_001.py": {
@@ -1661,6 +1681,11 @@
     "tests/test_sci_lc_001a_executor.py": {
       "sha256": "8388ddb7f79ebff64126d1d77fafa6810a3680b8d4d6ea93ff92a322ef286ad4",
       "bytes": 47797,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_lc_001a_family_controller.py": {
+      "sha256": "2e312a86e919060a91a18a9699fe4156f1c9517c75f70435ad2e67c78f52fc05",
+      "bytes": 7827,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_ica003.py": {
