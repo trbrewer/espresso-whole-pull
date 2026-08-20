@@ -6,7 +6,14 @@ authority is [PROTOCOL.md](PROTOCOL.md). Machine-readable authority and the
 deterministically generated matrix live in
 `validation/cases/sci_lc_001a/`.
 
-Status: `ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_EXACT_HEAD_REVIEW`.
+Status: `FINAL_ATTEMPT_04_TERMINAL_INELIGIBLE_PENDING_FINAL_REVIEW`.
+
+The controlling current result is [RESULT.md](RESULT.md): one fresh Attempt 04
+executed all 3,666 keys, but required diagnostics were incomplete for 108
+applicable stopped cases. It is quarantined and classification-ineligible;
+zero canonical classifications were produced and Attempt 05 authority is
+`NONE`. The developmental chronology below is retained as historical context
+and its prospective authorization statements are superseded by that result.
 
 ICA-003-R1 F01-F03 corrections are implemented pending a new independent
 exact-head review. They close label qualification and authority-collision

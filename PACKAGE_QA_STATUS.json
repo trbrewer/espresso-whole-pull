@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 826,
+    "python_test_count": 828,
     "sci_lc_001a_obs_001_r1_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_obs_001",
     "sci_lc_001a_obs_001_r1_focused_test_count": 26,
     "sci_lc_001a_protocol_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol",
@@ -46,8 +46,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 458,
-    "source_manifest_aggregate_sha256": "2e9de9d2e44e14d309c488a0c6a19970b676e200a83462e87db1e90a2253e2fc",
+    "source_manifest_file_count": 459,
+    "source_manifest_aggregate_sha256": "07163408705e7845170631508d1dcfa1e0ff1b5b8ef97768070c15e16adcd3d4",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -57,7 +57,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "2e9de9d2e44e14d309c488a0c6a19970b676e200a83462e87db1e90a2253e2fc"
+    "source_manifest_aggregate_source_sha256": "07163408705e7845170631508d1dcfa1e0ff1b5b8ef97768070c15e16adcd3d4"
   },
   "sci_md_002a": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
@@ -181,7 +181,7 @@
     "review_state": "MERGED_EXACT_INDEPENDENTLY_REVIEWED_AND_OWNER_APPROVED"
   },
   "sci_lc_001a": {
-    "status": "ACCELERATED_REPLACEMENT_MERGED_FINAL_READINESS_IN_PROGRESS",
+    "status": "FINAL_ATTEMPT_04_TERMINAL_INELIGIBLE_PENDING_FINAL_REVIEW",
     "issue": 70,
     "protocol_pull_request": 71,
     "superseded_reconciliation_pull_request": 82,
@@ -189,15 +189,15 @@
     "superseded_infrastructure_pull_request": 84,
     "replacement_branch": "recovery/sci-lc-001a-accelerated-completion-v2",
     "replacement_pull_request": 85,
-    "accelerated_focused_test_count": 197,
-    "ledger_and_negative_test_count": 15,
+    "accelerated_focused_test_count": 199,
+    "ledger_and_negative_test_count": 17,
     "historical_noncanonical_execution_attempts_occurred": true,
-    "canonical_scientific_execution_count": 0,
+    "canonical_scientific_execution_count": 1,
     "canonical_classification_count": 0,
     "e3_scientific_eligibility": "INELIGIBLE_NONCANONICAL",
     "e4_attempts_01_through_03": "QUARANTINED_SCIENTIFICALLY_INELIGIBLE",
-    "attempt_04": "UNSTARTED_UNCONSUMED_PENDING_FINAL_READINESS",
-    "attempt_04_reservation": "ABSENT",
+    "attempt_04": "TERMINAL_QUARANTINED_DIAGNOSTIC_EVIDENCE_INCOMPLETE",
+    "attempt_04_reservation": "CONSUMED_ONCE_CLOSED",
     "attempt_04_launch_authorized": false,
     "attempt_05_authority": "NONE",
     "family_hold": "ACTIVE",

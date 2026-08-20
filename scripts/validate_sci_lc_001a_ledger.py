@@ -146,9 +146,19 @@ def validate_ledger(ledger: dict, binding: dict) -> None:
         if binding.get("sources", {}).get(source) != digest:
             _fail(f"RCA002_SOURCE_HASH_MISMATCH:{source}")
     attempt4 = by_id.get("E4-ATTEMPT-04")
-    if (attempt4 is None or attempt4.get("consumed") is not False or
-            attempt4.get("terminal_state") != "UNSTARTED"):
-        _fail("ATTEMPT_04_NOT_UNSTARTED_UNCONSUMED")
+    attempt4_exact = {"planned_keys": 3666, "dispatched_keys": 3666,
+        "attempted_keys": 3666, "completed_keys": 3558, "stopped_keys": 108,
+        "failed_keys": 0, "unattempted_keys": 0, "consumed": True,
+        "terminal_state": "QUARANTINED",
+        "terminal_disposition": "FINAL_ATTEMPT_04_DIAGNOSTIC_EVIDENCE_INCOMPLETE",
+        "diagnostic_health_complete": False, "scientific_eligibility": False,
+        "canonical_eligibility": False, "classification_eligibility": False,
+        "classification_count": 0, "quarantined": True}
+    if attempt4 is None:
+        _fail("ATTEMPT_04_RECORD_MISSING")
+    for field, expected in attempt4_exact.items():
+        if attempt4.get(field) != expected:
+            _fail(f"ATTEMPT_04_FINAL_EVIDENCE_MISMATCH:{field}")
 
 
 def load_and_validate(case: Path = CASE) -> None:

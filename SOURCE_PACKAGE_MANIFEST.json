@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 458,
-  "total_uncompressed_bytes_excluding_manifest": 7024205,
-  "aggregate_source_sha256": "2e9de9d2e44e14d309c488a0c6a19970b676e200a83462e87db1e90a2253e2fc",
-  "aggregate_sha256": "2e9de9d2e44e14d309c488a0c6a19970b676e200a83462e87db1e90a2253e2fc",
+  "file_count": 459,
+  "total_uncompressed_bytes_excluding_manifest": 7027767,
+  "aggregate_source_sha256": "07163408705e7845170631508d1dcfa1e0ff1b5b8ef97768070c15e16adcd3d4",
+  "aggregate_sha256": "07163408705e7845170631508d1dcfa1e0ff1b5b8ef97768070c15e16adcd3d4",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -509,8 +509,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/AUDIT_AND_CURRENT_STATE.md": {
-      "sha256": "4787f42ab8ad71c0935043d261d58799298dfe4a810f7704a6b9ff41581768dc",
-      "bytes": 1930,
+      "sha256": "f6aa9d3d4b62bbf98014685747edfb414951a959e1d6ff4aafdd311b209265c1",
+      "bytes": 2283,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/EXECUTION_AND_INTEGRATION_RULES.md": {
@@ -539,8 +539,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/README.md": {
-      "sha256": "5194c2c16c3f817e5ef1493d3cd9f09c666241ac651d30a2cd028c73c2fc421f",
-      "bytes": 3534,
+      "sha256": "17dc89669b5d2bd681163fc29d8ce27c73a4eeed2b39f48cc8474f21ecb36cc2",
+      "bytes": 3973,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_lc_001a/RESULT.md": {
+      "sha256": "bbf09cb6f55aa996086afd7a6825c620da049865365e68d058e7de7491b5540e",
+      "bytes": 1305,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/STAGE_A_EXECUTOR.md": {
@@ -1389,8 +1394,8 @@
       "git_mode": "100755"
     },
     "scripts/validate_sci_lc_001a_ledger.py": {
-      "sha256": "f3396cd55f33706fbdf88cff21eff7d4be7f96086308ed9bcca74f6bee21f731",
-      "bytes": 8193,
+      "sha256": "c73e5fc2febc62eef79e4eea6537532f2312ffe759b9337b141050293f336607",
+      "bytes": 8787,
       "git_mode": "100755"
     },
     "scripts/verify_build_provenance.py": {
@@ -1694,8 +1699,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_ledger.py": {
-      "sha256": "849fea5d4c89732c12d088335ace6d505bf0cbec5290ed17581622c1bbfbeed8",
-      "bytes": 5584,
+      "sha256": "b563b185011f048eb8eead3df528ff73dedcd139e8223a2a783ae8c6ff3c8cba",
+      "bytes": 6455,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_obs_001.py": {

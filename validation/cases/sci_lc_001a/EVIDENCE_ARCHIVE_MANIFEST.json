@@ -37,6 +37,24 @@
       "scientific_eligibility": false,
       "reuse_permission": false,
       "combination_permission": false
+    },
+    {
+      "logical_evidence_id": "E4-ATTEMPT-04",
+      "host_path": "external://espresso-runs/sci_lc_001a/STAGE_A_E4_ATTEMPT_04_ac0f437_20260820T141618Z",
+      "git_head": "34af7e56f4887abd0a11e1dff0e825c935dc62e2",
+      "git_tree": "b03eb3b2c15dd331e9b7bd6a7bc2eeec5af4049b",
+      "controller_reservation_sha256": "84958e5081f58d514ef5735660fbb17fa4e423445bc96f55160043a1cfbb40a3",
+      "run_manifest_sha256": "d3bb7403b297a2e1e24c2108e70ab9c95a2dee95ff00854456cb6d69257f5b12",
+      "diagnostic_health_sha256": "602b0556a772592bee2a6f2bb96c8c812ae234b41b52583a4cc8dc72fba0de10",
+      "final_eligibility_adjudication_sha256": "06ce037a3364f9121be4fc2d0b848eccbbe06ad7e2db4656fed6e8325e490229",
+      "evidence_file_count": 8389,
+      "evidence_aggregate_sha256": "46e50a510f527041a67d5c6b689886dca336156263d9c5e3edeb043969e32292",
+      "terminal_state": "QUARANTINED",
+      "terminal_disposition": "FINAL_ATTEMPT_04_DIAGNOSTIC_EVIDENCE_INCOMPLETE",
+      "quarantine_status": "READ_ONLY_FINAL_ATTEMPT",
+      "scientific_eligibility": false,
+      "reuse_permission": false,
+      "combination_permission": false
     }
   ]
 }

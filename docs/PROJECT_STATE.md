@@ -21,10 +21,12 @@ single accelerated replacement branch
 into the protocol branch. PR #71 remains draft. PR #82 and stacked PR #84 preserve their exact history and were
 closed without merge as superseded after replacement PR #85 was established.
 Their scientific protocol was not rejected; the reset corrects RCA-002 audit
-state and simplifies integration. Historical noncanonical attempts occurred,
-but canonical scientific execution and classification counts are both zero.
+state and simplifies integration. Historical noncanonical attempts occurred.
+Final Attempt 04 executed once from the exact qualified head, but required
+diagnostics were incomplete; canonical scientific execution count is one and
+canonical classification count is zero.
 E3 and E4 Attempts 01--03 are scientifically ineligible and cannot be reused
-or combined. Attempt 04 is unstarted and unconsumed pending final readiness.
+or combined. Attempt 04 is terminal, quarantined, and ineligible.
 Attempt 05 authority is `NONE`, and the family hold remains active.
 
 The bounded scientific dependency `RP-D-LC-001b` is closed at a valid
@@ -50,7 +52,7 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 458/458 PASS
+- Public source verification: 459/459 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`

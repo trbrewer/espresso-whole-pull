@@ -45,6 +45,21 @@ class SciLcLedgerTests(unittest.TestCase):
                          len({record["record_id"] for record in self.ledger["records"]}))
         self.assertEqual(self.ledger["attempt_05_authority"], "NONE")
 
+    def test_attempt_04_terminal_ineligible_evidence(self):
+        attempt = self.record(self.ledger, "E4-ATTEMPT-04")
+        self.assertEqual((attempt["planned_keys"], attempt["dispatched_keys"],
+                          attempt["completed_keys"], attempt["stopped_keys"],
+                          attempt["unattempted_keys"]), (3666, 3666, 3558, 108, 0))
+        self.assertFalse(attempt["diagnostic_health_complete"])
+        self.assertFalse(attempt["classification_eligibility"])
+        self.assertEqual(attempt["classification_count"], 0)
+        self.assertTrue(attempt["quarantined"])
+
+    def test_negative_attempt_04_false_complete_diagnostics(self):
+        self.assert_invalid(lambda l, b: self.record(l, "E4-ATTEMPT-04").update(
+            diagnostic_health_complete=True),
+            "ATTEMPT_04_FINAL_EVIDENCE_MISMATCH:diagnostic_health_complete")
+
     def test_current_status_matches_ledger(self):
         status = json.loads((CASE / "SCI_LC_001A_CURRENT_STATUS.json").read_text())
         result = self.ledger["canonical_result"]
