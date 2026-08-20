@@ -1,0 +1,13 @@
+{
+  "completion_count": 8,
+  "evidence_bundle_manifest_sha256": "13d634a7fadc24300b868633adbe4f09658ae0fce510a32738365738ba7e3d3a",
+  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt5",
+  "failure_count": 0,
+  "process_ledger_complete": true,
+  "schema_version": "ewp.sci_md_002b.pilot_report.v2",
+  "scientific_reducer_ran": false,
+  "source_head": "7243e84d22589edc9c4e546a686c5a4edaf14972",
+  "source_ordering_calculated": false,
+  "status": "NON_ADJUDICATIVE_INTEGRITY_EVIDENCE_PRESERVED",
+  "task_id": "SCI-MD-002B"
+}

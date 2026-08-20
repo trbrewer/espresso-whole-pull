@@ -1,0 +1,11 @@
+{
+  "complete_source_pressure_triplet_executed": false,
+  "completion_count": 8,
+  "defect": "PROCESS_LEDGER_MISSING_COMPLETION_ENTRY_AND_STALE_ATTEMPT_LABEL",
+  "evidence_bundle_manifest_sha256": "a72e922f0342bec42ee227a8bc33255aa1e25cdcce29b816d9350ddb62df1f7a",
+  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt4",
+  "scientific_reducer_ran": false,
+  "source_ordering_calculated": false,
+  "status": "DIAGNOSTIC_ONLY_PRESERVED_AFTER_LEDGER_DEFECT",
+  "task_id": "SCI-MD-002B"
+}
