@@ -71,7 +71,7 @@ FORBIDDEN_CURRENT_MARKERS = (
     "merge and any next mechanism are not authorized",
     "Aggregate extraction transfer | Not yet adequately assessed",
     "Required next corpus tranche",
-    "452/452 PASS",
+    "430/430 PASS",
     "4 focused current-authority consistency tests",
     "Current Python suite | `452/452 PASS`, including 4 focused current-authority consistency tests",
 )
