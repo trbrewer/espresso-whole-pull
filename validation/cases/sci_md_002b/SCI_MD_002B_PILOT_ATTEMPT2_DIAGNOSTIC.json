@@ -1,0 +1,17 @@
+{
+  "complete_source_pressure_triplet_executed": false,
+  "completion_count": 8,
+  "evidence_bundle_manifest_sha256": "2b1ce84f2e0c6955e90ed2a84c94634505c5050a8492b7bc09afbc342256ec4b",
+  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt2",
+  "failure_count": 0,
+  "peak_rss_bytes": 145760256,
+  "row_count": 8,
+  "schema_version": "ewp.sci_md_002b.pilot_report.v1",
+  "scientific_reducer_ran": false,
+  "source_head": "1b5f61194217be3f84abf7b5cfbab89817d3bb81",
+  "source_ordering_calculated": false,
+  "source_tree": "b60ea6c85cb9ebcd9713c94daef29a4ea4c20ade",
+  "status": "SUPERSEDED_DIAGNOSTIC_ONLY_BY_PREEXECUTION_REVIEW_CORRECTION",
+  "task_id": "SCI-MD-002B",
+  "wall_s": 10.305427731014788
+}

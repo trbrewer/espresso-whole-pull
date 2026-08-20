@@ -1,0 +1,21 @@
+{
+  "complete_source_pressure_triplet_executed": false,
+  "completion_count": 8,
+  "corrected_source_field_semantics_verified": true,
+  "evidence_bundle_manifest_sha256": "b0211c726534f229f7f7de7c224eb43d66576ce4177321fd28193f457c6d4d5a",
+  "external_namespace": "SCI_MD_002B_EXTERNAL_BUNDLE/pilot/attempt6",
+  "failure_count": 0,
+  "owner_adjudicative_token_used": false,
+  "peak_rss_bytes": 55488512,
+  "pilot_row_ids": ["A0-FOSTER-CONSTANT-P9", "C0-SOURCE-P5-NOSWELL", "C1-SOURCE-P9-E-AC0.0", "R1-SYNTH-P7-E-BASE", "R1-SYNTH-P7-E-REFINED", "T0-SOURCE-P11-E-STORAGE", "A0-ACCOM-FIXED-E", "A0-ACCOM-FREE-E"],
+  "process_ledger_complete": true,
+  "row_count": 8,
+  "schema_version": "ewp.sci_md_002b.pilot_report.v3",
+  "scientific_reducer_ran": false,
+  "source_head": "685e6d69a3077e7d43ab7b77474db3eab187f242",
+  "source_ordering_calculated": false,
+  "source_tree": "93380d6f168877c3f7f8ae7e60ca4a21639c967c",
+  "status": "FINAL_NON_ADJUDICATIVE_INTEGRITY_PILOT_COMPLETE",
+  "task_id": "SCI-MD-002B",
+  "wall_s": 17.263972787884995
+}

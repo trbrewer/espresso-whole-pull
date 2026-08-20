@@ -1,0 +1,29 @@
+{
+  "branch": "research/sci-md-002a-transient-poromechanics",
+  "claim_boundary": {
+    "combined_mechanism_model": "NOT_AUTHORIZED",
+    "evidence_class": "POST_OBSERVATION_MECHANISM_DISCRIMINATION",
+    "experimental_commissioning": "NOT_AUTHORIZED",
+    "physical_validation": "NOT_ESTABLISHED",
+    "production_openfoam_physics": "UNCHANGED",
+    "wp04_tpm_001": "NOT_AUTHORIZED_BY_THIS_TASK_ALONE"
+  },
+  "draft_pr": 73,
+  "execution_authority": "STANDALONE_REDUCED_MODEL_ONLY_NO_OPENFOAM_NO_PUCKWORKS",
+  "external_output_namespace": "SCI_MD_002A_EXTERNAL_BUNDLE",
+  "forbidden_paths": ["primary SCI-LC-001A branch", "issue #70", "PR #71", "primary agent worktree", "primary agent external artifacts"],
+  "integration_policy": "OWNER_SELECTED_SERIAL_INTEGRATION_NO_AGENT_MERGE_NO_EXECUTION_COMMIT_REWRITE",
+  "issue": 72,
+  "lane_id": "EWP-PAR-SCI-MD-002A",
+  "lane_role": "SECONDARY_INDEPENDENT_SCIENTIFIC_EXECUTION_LANE",
+  "owned_paths": ["docs/analysis/sci_md_002a/**", "validation/cases/sci_md_002a/**", "scripts/sci_md_002a.py", "tests/test_sci_md_002a.py", "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md"],
+  "primary_parallel_lane": "SCI-LC-001A",
+  "read_only_dependencies": ["docs/analysis/sci_lc_001a/**", "validation/cases/sci_lc_001a/**", "scripts/sci_lc_001a*", "tests/test_sci_lc_001a*", "production OpenFOAM solver and cases", "existing source-data bundles", "existing source adapters", "existing machine and compaction references"],
+  "repository": "https://github.com/trbrewer/espresso-whole-pull.git",
+  "resource_limits": {"gpu": 0, "memory_gib": 16, "nested_threads": 1, "workers": "min(16,floor(0.25*logical_cpu_count))"},
+  "schema_version": "ewp.parallel_lane.v1",
+  "scientific_question": "Can finite-rate pressure-driven consolidation produce the required resistance, pressure-ordering, temporal, transfer, and bounded-deformation signatures?",
+  "shared_file_policy": "AVOID_DURING_ACTIVE_LANES_REGENERATE_REQUIRED_METADATA_AFTER_INTEGRATION",
+  "status": "EXECUTION_COMPLETE_PENDING_SCIENTIFIC_AND_INTEGRATION_REVIEW",
+  "task_id": "SCI-MD-002A"
+}

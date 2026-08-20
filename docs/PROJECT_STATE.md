@@ -1,5 +1,29 @@
 # Project State
 
+## Current SCI-ED / SCI-LC serialization authority
+
+SCI-ED-001 C1 merged through PR #80 at merge commit
+`9ac7bf88340b5c12a0003729ac4e998b7bf67626`. Its first parent is
+`e8a66378d7829877fb74c87889193f32dd977772`, its second parent is the
+independently reviewed head `481e9bebe1d01de32b6db5412248c37153e926ed`,
+and its tree is the approved tree
+`7dd5085ac2d2f756c687598c591c2a3e9eb39a20`. The merge used the pre-existing
+uniquely scoped pull-request-only administrator bypass. Ruleset mutations were
+zero and the pre/post canonical policy SHA-256 remained
+`e901438be3464105ebfaff28983d15a00ad154508d665c106e33df44d9c83af2`.
+Issue #79 is closed. The corrected result remains
+`SCI_ED_001_FROZEN_FAMILIES_REMAIN_OBSERVATIONALLY_EQUIVALENT`; physical
+validation is `NOT_ESTABLISHED` and no governing physics changed.
+
+SCI-LC-001A now owns the serialized shared-metadata continuation. PR #71
+remains draft and unmerged; reconciliation PR #82 and stacked infrastructure
+PR #84 remain draft and unmerged. Historical noncanonical attempts occurred,
+but canonical scientific execution and classification counts are both zero.
+E3 and E4 Attempts 01--03 are scientifically ineligible; Attempt 04 remains
+an unstarted, unconsumed old-head conditional reservation with no corrected-
+head launch authority. Attempt 05 authority is `NONE`, and the family hold
+remains active.
+
 The bounded scientific dependency `RP-D-LC-001b` is closed at a valid
 pre-primary-experiment design block. P2a completed and P2b independently
 recomputed `NO_UNAMBIGUOUS_BELOW_CANDIDATE`: the family supplied several
@@ -23,14 +47,10 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 407/407 PASS
+- Public source verification: 430/430 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active modeling task: `SCI-LC-001A ICA-003-R1 F01-F03 bounded correction`
-- Execution state: `NO_SCIENTIFIC_EXECUTION; ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_EXACT_HEAD_REVIEW`
-- Protocol state:
-  `ICA_003_R2_F01_F03_CORRECTED_AND_ADJUDICATED_PENDING_R3_INDEPENDENT_EXACT_HEAD_REVIEW`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
 - Current next action:
@@ -245,6 +265,59 @@ and the
 
 General whole-solver physical validation remains `NOT_ESTABLISHED`.
 
+SCI-MD-002A completed and merged its independent reduced transient-consolidation
+lane at merge commit `c872f782351a22277b7d7a8430bcbf140cff130e`. Its accepted
+disposition is `SCI_MD_002A_TRANSIENT_POROMECHANICS_REJECTED` for
+`WRONG_PRESSURE_ORDERING`. The bounded result applies only to the frozen
+single-state reversible family and does not reject all poromechanics.
+
+SCI-MD-002B completed and merged its independent reduced one-way wetting-age
+swelling lane at merge commit `db5b0a5492b36d568241f97b482fe90fac8d44da`.
+Its accepted disposition is `SCI_MD_002B_REJECTED_WRONG_PRESSURE_ORDERING`,
+qualified by
+`PACKAGE_INTEGRITY_RECOVERED_BY_SAME_AUTHORITY_SINGLE_RECORD_EXACT_RESUME`.
+
+SCI-MD-002C execution and reduction are complete, and owner scientific review
+approved the disposition `SCI_MD_002C_REJECTED_WRONG_PRESSURE_ORDERING`. Its
+frozen execution source is `cb9ebd2d4ba220d4777f033e06eddbae787b519a`;
+serial integration remains pending exact-head review. This post-observation
+screen establishes no physical validation and makes
+`NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. SCI-LC-001A remains the active,
+independent primary lane. The standing `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`,
+`PHYSICAL_VALIDATION_NOT_ESTABLISHED`, and `NO_NEW_PRODUCTION_PHYSICS_YET`
+boundaries remain unchanged.
+
+SCI-ED-001 and its C1 causal-attribution correction are complete, independently
+reviewed, owner-approved, and merged through PR #80. The corrected disposition is
+`SCI_ED_001_FROZEN_FAMILIES_REMAIN_OBSERVATIONALLY_EQUIVALENT`. C1 established
+that the historical P8 three-pair result came from asymmetric exposure of the
+common end-of-preconditioning `normalized_flow_at_0s` signature. That feature
+is `PRECONDITIONING_ONLY_NONRANKING`, a
+`COMMON_PRECONDITIONING_STATE_SIGNATURE`, and
+`NOT_A_PRESSURE_PROGRAM_DISCRIMINATOR`. Under the frozen N1 planning bounds,
+zero of six primary family pairs are robustly separated, all six overlap, and
+there is no best pressure program, best measurement package, complete set
+cover, or recommended pressure program. The N0 deformation separation of TPM
+from swelling does not survive N1. Quantitative direct-measurement value
+remains unresolved because common cross-family observable interfaces and
+frozen uncertainty targets are missing. This is
+`MODEL_INFORMED_FUTURE_DESIGN_ONLY`; physical validation is not established,
+experimental commissioning is not authorized, and no production governing
+physics changed.
+The task-specific physics-boundary verifier retains strict task-local ownership
+by default and adds an exact-token, exact-three-path integration mode classified
+as `OWNER_AUTHORIZED_SCI_ED_FIRST_SHARED_METADATA_OVERLAP`; SCI-LC-001A must
+refresh from post-SCI-ED `origin/main` before its own eventual integration.
+Independent exact-head review R1 stopped with
+`SCI_ED_001_C1_INDEPENDENT_EXACT_HEAD_REVIEW_FAIL_VERIFIER_CONTRACT`: its ten
+new verifier tests covered helper-level path classification but not durable CLI
+exit, top-level result, or protected-check conjunction semantics. The scientific
+correction was not reopened. Helper tests remain, while real strict/wrong/exact
+CLI tests, protected-check override prevention, and fixed mandatory-conjunction
+coverage are now added. R2A passed at the exact approved head. The
+owner-approved two-parent merge is complete, Issue #79 is closed, and
+SCI-ED-first shared-metadata serialization has transferred to SCI-LC.
+
 ## Completed VAL-CORPUS-001 comparison campaign
 
 VAL-CORPUS-001 is complete, approved, and merged. It executed the unchanged
@@ -327,19 +400,3 @@ supplied exact head and tree identities. No comparison or OpenFOAM execution
 occurred in this correction. V2 remains descriptive,
 post-observation, non-blind, and non-independent. No new scoring, solver run,
 fit, protected access, experiment, or physics change occurred.
-# OBS-001 continuation (2026-08-18)
-
-SCI-LC-001A OBS-001 bounded multiplier event-state observability is implemented
-on its review branch and remains pending a new exact-head review after R1. The
-historical `7f345f7` overall PASS was superseded by three material review
-findings; its no-physics and no-feedback findings remain supported. R1 separates
-1,060 no-evolution dynamic keys from 1,152 multiplier-applicable keys, prohibits
-enabled reuse/resume before dispatch, and recursively validates the active
-schemas. Diagnostics are
-default-disabled; governing physics, numerical methods, canonical execution,
-classification, replay, correction, and merge are unchanged or unauthorized.
-
-Two narrower activation attempts stopped before mutation and remain historical.
-The isolated-workspace amendment quarantines the contested original checkout
-and reconstructs the required normal descendant correction from `5c1ed6d`.
-No candidate is accepted merely because it exists or was pushed.

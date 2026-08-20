@@ -85,19 +85,21 @@ infrastructure correction, independent exact-head review, readiness pass, and
 fresh owner re-anchor to the unchanged corrected head are required before
 Attempt 04. PR #71 and `main` merge authority are `NONE`.
 
-SCI-ED-001 owns first serialization of `PACKAGE_QA_STATUS.json`,
-`SOURCE_PACKAGE_MANIFEST.json`, and `docs/PROJECT_STATE.md`. Its current public
-head is `481e9bebe1d01de32b6db5412248c37153e926ed`; a fresh independent R2A review
-is required. These shared files are intentionally not finalized in this
-task-local tranche.
+SCI-ED-001 completed first serialization and merged through PR #80 as
+`9ac7bf88340b5c12a0003729ac4e998b7bf67626`, with parents `e8a66378...` and
+the independently approved head `481e9bebe1d01de32b6db5412248c37153e926ed`.
+The merge tree equals approved tree `7dd5085a...`. It used the pre-existing
+PR-only administrator bypass with zero ruleset mutations; the pre/post policy
+SHA-256 is `e901438b...3af2`. Issue #79 is closed. This branch now owns the
+serialized shared metadata; PR #84 must regenerate it after incorporating the
+frozen PR #82 candidate.
 
 ## Known inconsistencies and remaining gates
 
 The prior README and project state still say ICA-003 R3 is pending and use an
 unqualified `NO_SCIENTIFIC_EXECUTION` statement. Those surfaces are superseded
 by this audit and must be corrected without changing frozen scientific content.
-The remaining gates are: SCI-ED R2A, SCI-ED exact-head owner/merge decision,
-task-local reconciliation review, infrastructure implementation review and
+The remaining gates are: task-local reconciliation review, infrastructure implementation review and
 owner decision, corrected-head readiness, Attempt 04 owner re-anchor, one fresh
 attempt, and independent evidence adjudication.
 

@@ -15,7 +15,7 @@ authority or interpretation changes.
 | Family suspension | PM-001 administrative closure | Suspension remains effective; PM-001 bounded defects and correction scope. |
 | PM-001 `next_stage_authority: NONE` | conditional Attempt 04 reservation | Reservation SHA-256 `23981f...6673f8`; it does not activate a corrected head or create Attempt 05. |
 | Initial containment count summary | additive finding-count erratum | Immutable register controls: 8 MAJOR, 1 MINOR, 5 ADVISORY, 0 FATAL; evidence bytes unchanged. |
-| SCI-ED Commit G `7ad4289` correction state | public candidate `481e9bebe1d01de32b6db5412248c37153e926ed` | Earlier result remains chronology; current candidate is pending fresh independent R2A and owns first shared-metadata serialization. |
+| SCI-ED Commit G `7ad4289` correction state | merged PR #80, merge `9ac7bf88340b5c12a0003729ac4e998b7bf67626`, approved head/tree `481e9be...` / `7dd5085...` | Earlier result remains chronology; R2A and owner approval passed, the exact tree-preserving merge completed with zero ruleset mutation, and first shared-metadata serialization is incorporated. |
 
 Supporting evidence includes Git commit objects, PR #71/Issue #70 comments,
 the PM-001 attempt registry and closure package, the complete local owner
