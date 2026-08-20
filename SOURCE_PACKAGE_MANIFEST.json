@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 458,
-  "total_uncompressed_bytes_excluding_manifest": 7020302,
-  "aggregate_source_sha256": "030c1dd5a3b4745fc07ea89bc8922680df060339d0fe03b3d2bea673fa09964c",
-  "aggregate_sha256": "030c1dd5a3b4745fc07ea89bc8922680df060339d0fe03b3d2bea673fa09964c",
+  "total_uncompressed_bytes_excluding_manifest": 7022976,
+  "aggregate_source_sha256": "f356eee81d36c9206398ffb7116dc09dd7f12a71b38a25945374a4f02517e9b1",
+  "aggregate_sha256": "f356eee81d36c9206398ffb7116dc09dd7f12a71b38a25945374a4f02517e9b1",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -384,8 +384,8 @@
       "git_mode": "100644"
     },
     "config/systemd/sci-lc-001a-attempt@.service": {
-      "sha256": "9509b18ec2666a81d4d9e23a67c31f478688d26ab7dbba70b414902f854e1221",
-      "bytes": 691,
+      "sha256": "861307e89b6f7c496d20a5bf94b42161dc3ad8802caacf4e5e460ea26eafdb96",
+      "bytes": 731,
       "git_mode": "100644"
     },
     "docs/ASSUMPTIONS_AND_CLAIM_CEILING.md": {
@@ -529,8 +529,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/INFRASTRUCTURE_CORRECTION.md": {
-      "sha256": "1b48100fb2733f55475fd33c98498b2df378742a586e8a9546a3aa10bea3b75b",
-      "bytes": 2731,
+      "sha256": "bc1c4f05373e69d292accbc2eab387afebdc09658470bf8f0d373b7278de0cf2",
+      "bytes": 3104,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/PROTOCOL.md": {
@@ -1289,8 +1289,8 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_family_controller.py": {
-      "sha256": "a79781f7a2b772256f68caf1dc99849e5568abaf18e1fa51f77a3df89e9ee335",
-      "bytes": 10738,
+      "sha256": "f49c3f9a04a64b84e209868c7d181aa4ca2d930c565a2841ef6e487fcec95a3e",
+      "bytes": 11373,
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_obs_001_diagnostics.py": {
@@ -1314,8 +1314,8 @@
       "git_mode": "100755"
     },
     "scripts/sci_lc_001a_supervised_launch.sh": {
-      "sha256": "17deaa4b2232c64c7831df93796c6f6ffe7ff4392713453d122b6b9c8cf35aa2",
-      "bytes": 1672,
+      "sha256": "0f1ef725bc4075a004c5563317951e634aea448ea5945736b3b5bd00327bc0c9",
+      "bytes": 1934,
       "git_mode": "100755"
     },
     "scripts/sci_md_001.py": {
@@ -1684,8 +1684,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_family_controller.py": {
-      "sha256": "2e312a86e919060a91a18a9699fe4156f1c9517c75f70435ad2e67c78f52fc05",
-      "bytes": 7827,
+      "sha256": "e3e7d20208fc2aa247e0d93af5ec76785e34425efad2104a1c6c29db019f0292",
+      "bytes": 9191,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_ica003.py": {

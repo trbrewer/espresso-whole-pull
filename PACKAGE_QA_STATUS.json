@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 822,
+    "python_test_count": 825,
     "sci_lc_001a_obs_001_r1_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_obs_001",
     "sci_lc_001a_obs_001_r1_focused_test_count": 26,
     "sci_lc_001a_protocol_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol",
@@ -47,7 +47,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 458,
-    "source_manifest_aggregate_sha256": "030c1dd5a3b4745fc07ea89bc8922680df060339d0fe03b3d2bea673fa09964c",
+    "source_manifest_aggregate_sha256": "f356eee81d36c9206398ffb7116dc09dd7f12a71b38a25945374a4f02517e9b1",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -57,7 +57,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "030c1dd5a3b4745fc07ea89bc8922680df060339d0fe03b3d2bea673fa09964c"
+    "source_manifest_aggregate_source_sha256": "f356eee81d36c9206398ffb7116dc09dd7f12a71b38a25945374a4f02517e9b1"
   },
   "sci_md_002a": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
@@ -181,7 +181,7 @@
     "review_state": "MERGED_EXACT_INDEPENDENTLY_REVIEWED_AND_OWNER_APPROVED"
   },
   "sci_lc_001a": {
-    "status": "ACCELERATED_REPLACEMENT_CANDIDATE_IN_PROGRESS",
+    "status": "ACCELERATED_REPLACEMENT_MERGED_FINAL_READINESS_IN_PROGRESS",
     "issue": 70,
     "protocol_pull_request": 71,
     "superseded_reconciliation_pull_request": 82,
@@ -189,7 +189,7 @@
     "superseded_infrastructure_pull_request": 84,
     "replacement_branch": "recovery/sci-lc-001a-accelerated-completion-v2",
     "replacement_pull_request": 85,
-    "accelerated_focused_test_count": 193,
+    "accelerated_focused_test_count": 196,
     "ledger_and_negative_test_count": 15,
     "historical_noncanonical_execution_attempts_occurred": true,
     "canonical_scientific_execution_count": 0,

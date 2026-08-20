@@ -15,6 +15,11 @@ record, rejects ordinals above its stated maximum or above 04, refuses a
 pre-existing root, binds authority/head/tree/root/controller identity, and
 persists through file and directory `fsync` plus atomic replacement. Repeating
 the identical reservation is idempotent; a conflicting reservation fails.
+The supervised launcher deliberately accepts separate closed-schema control
+and execution authority files through `SCI_LC_CONTROL_AUTHORITY` and
+`SCI_LC_EXECUTION_AUTHORITY`; the former reserves the attempt slot and the
+latter is validated by the scientific executor. The family-hold record must
+match the exact control-authority SHA-256 at reservation and dispatch gates.
 
 The family hold is closed-schema and is checked at allocation, reservation,
 post-reservation, root/unit/service boundaries, pre-dispatch, every dispatch,

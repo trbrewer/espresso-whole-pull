@@ -108,13 +108,15 @@ def authority(path: Path) -> tuple[dict, str]:
     return value, sha256_bytes(raw)
 
 
-def hold_state(control_root: Path, gate: str) -> None:
+def hold_state(control_root: Path, gate: str, authority_sha256: str | None = None) -> None:
     if gate not in HOLD_GATES: raise ValueError("UNKNOWN_HOLD_GATE")
     path = control_root / "family_hold.json"
     if not path.exists(): raise ValueError("FAMILY_HOLD_RECORD_MISSING")
     value = load_closed(path, {"schema", "state", "authority_sha256", "updated_at_utc"})
     if value["schema"] != SCHEMA or value["state"] != "RELEASED_FOR_EXACT_AUTHORITY":
         raise PermissionError("FAMILY_HOLD_ACTIVE:" + gate)
+    if authority_sha256 is not None and value["authority_sha256"] != authority_sha256:
+        raise PermissionError("FAMILY_HOLD_AUTHORITY_MISMATCH:" + gate)
 
 
 def process_identity(attempt_id: str, run_root: Path, authority_sha256: str,
@@ -131,7 +133,7 @@ def process_identity(attempt_id: str, run_root: Path, authority_sha256: str,
 def reserve(control_root: Path, authority_path: Path) -> dict:
     auth, auth_hash = authority(authority_path)
     with family_lock(control_root):
-        hold_state(control_root, "allocation"); hold_state(control_root, "reservation")
+        hold_state(control_root, "allocation", auth_hash); hold_state(control_root, "reservation", auth_hash)
         reservation_path = control_root / "reservation.json"
         if reservation_path.exists():
             existing = json.loads(reservation_path.read_text())
@@ -147,19 +149,26 @@ def reserve(control_root: Path, authority_path: Path) -> dict:
                  "reserved_at_utc": utc_now(), "state": "RESERVED", "canonical_keys_dispatched": 0,
                  "consumed": False, "controller_identity": process_identity(
                     f"E4-ATTEMPT-{auth['attempt_ordinal']:02d}", run_root, auth_hash)}
-        atomic_write(reservation_path, value); hold_state(control_root, "post_reservation")
+        atomic_write(reservation_path, value); hold_state(control_root, "post_reservation", auth_hash)
         return value
 
 
-def transition(control_root: Path, target: str, *, cause: str, dispatched: int | None = None) -> dict:
+def transition(control_root: Path, target: str, *, cause: str, dispatched: int | None = None,
+               authority_path: Path | None = None) -> dict:
     if target not in STATES: raise ValueError("UNKNOWN_TARGET_STATE")
     with family_lock(control_root):
         path = control_root / "reservation.json"
         value = json.loads(path.read_text())
+        if authority_path is not None:
+            _, supplied_hash = authority(authority_path)
+            if supplied_hash != value["authority_sha256"]:
+                raise PermissionError("TRANSITION_AUTHORITY_MISMATCH")
         current = value["state"]
         if target == current and target in TERMINAL: return value
         if target not in TRANSITIONS[current]: raise ValueError(f"ILLEGAL_TRANSITION:{current}:{target}")
-        if target in ("STARTING", "RUNNING"): hold_state(control_root, "root_creation" if target == "STARTING" else "post_launch_pre_dispatch")
+        if target in ("STARTING", "RUNNING"):
+            hold_state(control_root, "root_creation" if target == "STARTING" else "post_launch_pre_dispatch",
+                       value["authority_sha256"])
         if dispatched is not None:
             if dispatched < value["canonical_keys_dispatched"]: raise ValueError("DISPATCH_COUNT_REGRESSION")
             value["canonical_keys_dispatched"] = dispatched
@@ -174,8 +183,8 @@ def transition(control_root: Path, target: str, *, cause: str, dispatched: int |
 
 
 def check_dispatch(control_root: Path) -> None:
-    hold_state(control_root, "dispatch")
     value = json.loads((control_root / "reservation.json").read_text())
+    hold_state(control_root, "dispatch", value["authority_sha256"])
     if value["state"] != "RUNNING": raise ValueError("DISPATCH_REQUIRES_RUNNING")
 
 
@@ -217,7 +226,8 @@ def _cli() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = _cli().parse_args(argv)
     if args.mode == "reserve": result = reserve(args.control_root, args.authority)
-    elif args.mode == "transition": result = transition(args.control_root, args.target, cause=args.cause)
+    elif args.mode == "transition": result = transition(
+        args.control_root, args.target, cause=args.cause, authority_path=args.authority)
     else: result = readiness(args.control_root)
     print(json.dumps(result, sort_keys=True, indent=2)); return 0
 

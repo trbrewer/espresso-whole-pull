@@ -15,10 +15,10 @@ Issue #79 is closed. The corrected result remains
 `SCI_ED_001_FROZEN_FAMILIES_REMAIN_OBSERVATIONALLY_EQUIVALENT`; physical
 validation is `NOT_ESTABLISHED` and no governing physics changed.
 
-SCI-LC-001A is rebuilding its reconciliation and execution-control layer on
-the single accelerated replacement branch and draft PR #85
-`recovery/sci-lc-001a-accelerated-completion-v2`. PR #71 remains draft and
-unmerged. PR #82 and stacked PR #84 preserve their exact history and were
+SCI-LC-001A rebuilt its reconciliation and execution-control layer on the
+single accelerated replacement branch
+`recovery/sci-lc-001a-accelerated-completion-v2`; PR #85 was merged normally
+into the protocol branch. PR #71 remains draft. PR #82 and stacked PR #84 preserve their exact history and were
 closed without merge as superseded after replacement PR #85 was established.
 Their scientific protocol was not rejected; the reset corrects RCA-002 audit
 state and simplifies integration. Historical noncanonical attempts occurred,

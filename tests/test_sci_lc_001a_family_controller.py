@@ -19,11 +19,9 @@ class FamilyControllerTests(unittest.TestCase):
         self.root = Path(self.temp.name) / "control"
         self.run = Path(self.temp.name) / "run"
         self.root.mkdir()
-        fc.atomic_write(self.root / "family_hold.json", {"schema": fc.SCHEMA,
-            "state": "RELEASED_FOR_EXACT_AUTHORITY", "authority_sha256": "a" * 64,
-            "updated_at_utc": fc.utc_now()})
         self.authority = Path(self.temp.name) / "authority.json"
         self.write_authority()
+        self.release_hold()
 
     def tearDown(self): self.temp.cleanup()
 
@@ -32,6 +30,12 @@ class FamilyControllerTests(unittest.TestCase):
             "authorization_id": "TEST", "attempt_ordinal": ordinal,
             "maximum_attempt_ordinal": maximum, "authorized_head": "h" * 40,
             "authorized_tree": "t" * 40, "allowed_root": str(self.run), "profile": "TEST"})
+
+    def release_hold(self):
+        authority_hash = fc.sha256_bytes(self.authority.read_bytes())
+        fc.atomic_write(self.root / "family_hold.json", {"schema": fc.SCHEMA,
+            "state": "RELEASED_FOR_EXACT_AUTHORITY", "authority_sha256": authority_hash,
+            "updated_at_utc": fc.utc_now()})
 
     def reserve(self): return fc.reserve(self.root, self.authority)
 
@@ -51,6 +55,22 @@ class FamilyControllerTests(unittest.TestCase):
     def test_hold_before_allocation(self):
         fc.atomic_write(self.root / "family_hold.json", {"schema":fc.SCHEMA,"state":"HELD","authority_sha256":"a"*64,"updated_at_utc":fc.utc_now()})
         with self.assertRaises(PermissionError): self.reserve()
+    def test_hold_bound_to_exact_authority(self):
+        value=json.loads((self.root/"family_hold.json").read_text()); value["authority_sha256"]="b"*64
+        fc.atomic_write(self.root/"family_hold.json",value)
+        with self.assertRaisesRegex(PermissionError, "AUTHORITY_MISMATCH"): self.reserve()
+    def test_transition_bound_to_exact_authority(self):
+        self.reserve(); other=Path(self.temp.name)/"other.json"
+        value=json.loads(self.authority.read_text()); value["authorization_id"]="OTHER"
+        fc.atomic_write(other,value)
+        with self.assertRaisesRegex(PermissionError, "TRANSITION_AUTHORITY_MISMATCH"):
+            fc.transition(self.root,"STARTING",cause="TEST",authority_path=other)
+    def test_supervised_launcher_separates_control_and_execution_authority(self):
+        launcher=(Path(__file__).parents[1]/"scripts"/"sci_lc_001a_supervised_launch.sh").read_text()
+        self.assertIn("SCI_LC_CONTROL_AUTHORITY", launcher)
+        self.assertIn("--authority \"$SCI_LC_CONTROL_AUTHORITY\"", launcher)
+        self.assertIn("--execution-authority \"$SCI_LC_EXECUTION_AUTHORITY\"", launcher)
+        self.assertNotIn("--execution-authority \"$SCI_LC_AUTHORITY\"", launcher)
     def test_missing_hold_fails(self):
         (self.root / "family_hold.json").unlink()
         with self.assertRaisesRegex(ValueError, "MISSING"): self.reserve()
@@ -65,7 +85,7 @@ class FamilyControllerTests(unittest.TestCase):
         self.assertEqual([queue.get()[0] for _ in workers].count("ok"), 2)  # same authority is idempotent
         self.assertEqual(json.loads((self.root/"reservation.json").read_text())["attempt_ordinal"], 4)
     def test_different_second_reservation_rejected(self):
-        self.reserve(); value=json.loads(self.authority.read_text()); value["authorization_id"]="OTHER"; fc.atomic_write(self.authority,value)
+        self.reserve(); value=json.loads(self.authority.read_text()); value["authorization_id"]="OTHER"; fc.atomic_write(self.authority,value); self.release_hold()
         with self.assertRaisesRegex(ValueError, "ALREADY_RESERVED"): self.reserve()
     def test_legal_transitions(self):
         self.reserve(); self.assertEqual(fc.transition(self.root,"STARTING",cause="test")["state"],"STARTING")
