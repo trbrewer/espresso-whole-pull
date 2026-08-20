@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 416,
-  "total_uncompressed_bytes_excluding_manifest": 6359356,
-  "aggregate_source_sha256": "e886e0adc97cb60ecfd9ffd91ae33cd7c29e897c4e8897d9a9b95cb2ba0d2f1e",
-  "aggregate_sha256": "e886e0adc97cb60ecfd9ffd91ae33cd7c29e897c4e8897d9a9b95cb2ba0d2f1e",
+  "file_count": 430,
+  "total_uncompressed_bytes_excluding_manifest": 6478927,
+  "aggregate_source_sha256": "9aedd6786bcf55653386c40b93b9affb785f149bb7b7c8e56c11a7d633a98886",
+  "aggregate_sha256": "9aedd6786bcf55653386c40b93b9affb785f149bb7b7c8e56c11a7d633a98886",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -456,6 +456,46 @@
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
       "sha256": "8c2ba60bff79d3eff9c31f11b47c9952f7c369a990ccd512decf6bcd0bc3dec6",
       "bytes": 6218,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_001/CORRECTION_HISTORY_C1.md": {
+      "sha256": "c17095710ab56de351d509161459f8fca67faef9fd13f4b5d23c438ad699e76c",
+      "bytes": 1360,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_001/INDEPENDENT_CAUSAL_ATTRIBUTION_REVIEW_C1.md": {
+      "sha256": "d362a63071e1d602aae6507c16ab4b78079591ed955a57368613dae0ff64541c",
+      "bytes": 1894,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_001/INTEGRATION_HANDOFF.md": {
+      "sha256": "ffc246dc2e316dec3eb04b15418521572c349ce5e7861c41eb528a030d07a8a5",
+      "bytes": 1626,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_001/MEASUREMENT_RECOMMENDATION.md": {
+      "sha256": "7c44f4afeeda71615cc71a9a08f27e1573c64dda2235d7c1e41437190bbaf4b4",
+      "bytes": 1230,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_001/PARALLEL_LANE_DECLARATION.json": {
+      "sha256": "d332029b4c3f7415f1d14b3241ffebe29cfe4dd4115b929fd10f8d35c51169e5",
+      "bytes": 626,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_001/PROTOCOL.md": {
+      "sha256": "373ac38ba14cfd97739be008b4eddace9efdadebd19f561cdb9c5ed118ea5ab0",
+      "bytes": 3926,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_001/README.md": {
+      "sha256": "7fcb0149ff11223d961099d394fbcf89abce62e9d20f78728e08589c32a428f6",
+      "bytes": 1230,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_001/RESULT.md": {
+      "sha256": "6216eb5372daf64f9e77bce9aef7e14cc311a75c1004fc7161d9e192bd648bdd",
+      "bytes": 3631,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_002a/PARALLEL_LANE_DECLARATION.json": {
@@ -1163,6 +1203,21 @@
       "bytes": 274,
       "git_mode": "100755"
     },
+    "scripts/sci_ed_001.py": {
+      "sha256": "0670403c56a98d99da8f10fff75ec5a568005e90b81fb8123aa34740c1630f02",
+      "bytes": 45786,
+      "git_mode": "100755"
+    },
+    "scripts/sci_ed_001_protocol.py": {
+      "sha256": "1eb0384081051474c494ad7198f0f192935460b7d5922881a82b360d089ba19b",
+      "bytes": 24012,
+      "git_mode": "100755"
+    },
+    "scripts/sci_ed_001_verify_no_governing_physics_change.py": {
+      "sha256": "be27bb003475d52b7446b2f6704cf41f1f1985e9d1ee5a8a2e1b7aede9ad5b09",
+      "bytes": 9296,
+      "git_mode": "100755"
+    },
     "scripts/sci_md_001.py": {
       "sha256": "3784004804bc4e6e15149a53d3e6edcad1597ef4308cd69883743a0d788aa875",
       "bytes": 26943,
@@ -1501,6 +1556,21 @@
     "tests/test_reference_case.py": {
       "sha256": "268ed2e331d6f3c99576996eb7fb5751c1c1ebd64819f46f94bcf13cb8b04558",
       "bytes": 66862,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_ed_001_c1.py": {
+      "sha256": "6a7597259a8f77ec1a1315732de8f794f0c74a6931c00ff1a015cfce958bb465",
+      "bytes": 15165,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_ed_001_protocol.py": {
+      "sha256": "acd2c9c838f61499047cd754836fcd9da25a3e50888d2c66e6c2a0858c57bf12",
+      "bytes": 5050,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_ed_001_runner.py": {
+      "sha256": "560f083f0207819b2e3c8560efc2ac1103284972af21bef6a4854860e8dc4895",
+      "bytes": 4739,
       "git_mode": "100644"
     },
     "tests/test_sci_md_001.py": {
