@@ -1,5 +1,37 @@
 # Project State
 
+## Current SCI-ED / SCI-LC serialization authority
+
+SCI-ED-001 C1 merged through PR #80 at merge commit
+`9ac7bf88340b5c12a0003729ac4e998b7bf67626`. Its first parent is
+`e8a66378d7829877fb74c87889193f32dd977772`, its second parent is the
+independently reviewed head `481e9bebe1d01de32b6db5412248c37153e926ed`,
+and its tree is the approved tree
+`7dd5085ac2d2f756c687598c591c2a3e9eb39a20`. The merge used the pre-existing
+uniquely scoped pull-request-only administrator bypass. Ruleset mutations were
+zero and the pre/post canonical policy SHA-256 remained
+`e901438be3464105ebfaff28983d15a00ad154508d665c106e33df44d9c83af2`.
+Issue #79 is closed. The corrected result remains
+`SCI_ED_001_FROZEN_FAMILIES_REMAIN_OBSERVATIONALLY_EQUIVALENT`; physical
+validation is `NOT_ESTABLISHED` and no governing physics changed.
+
+SCI-LC-001A rebuilt its reconciliation and execution-control layer on the
+single accelerated replacement branch
+`recovery/sci-lc-001a-accelerated-completion-v2`; PR #85 was merged normally
+into the protocol branch. PR #71 remains draft. PR #82 and stacked PR #84 preserve their exact history and were
+closed without merge as superseded after replacement PR #85 was established.
+Their scientific protocol was not rejected; the reset corrects RCA-002 audit
+state and simplifies integration. Historical noncanonical attempts occurred.
+Final Attempt 04 executed once from the exact qualified head. Attempt/result
+evidence covers all 3,666 keys; the controller reports a dispatch scalar of
+3,666, while the exact per-key dispatched inventory is unresolved because no
+durable pre-launch dispatch records survive. Required diagnostics were
+incomplete; canonical scientific execution count is one and
+canonical classification count is zero.
+E3 and E4 Attempts 01--03 are scientifically ineligible and cannot be reused
+or combined. Attempt 04 is terminal, quarantined, and ineligible.
+Attempt 05 authority is `NONE`, and the family hold remains active.
+
 The bounded scientific dependency `RP-D-LC-001b` is closed at a valid
 pre-primary-experiment design block. P2a completed and P2b independently
 recomputed `NO_UNAMBIGUOUS_BELOW_CANDIDATE`: the family supplied several
@@ -23,7 +55,7 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 430/430 PASS
+- Public source verification: 459/459 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
@@ -263,8 +295,8 @@ independent primary lane. The standing `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`,
 `PHYSICAL_VALIDATION_NOT_ESTABLISHED`, and `NO_NEW_PRODUCTION_PHYSICS_YET`
 boundaries remain unchanged.
 
-SCI-ED-001 and its C1 causal-attribution correction are complete pending an
-independent exact-head review of draft PR #80. The corrected disposition is
+SCI-ED-001 and its C1 causal-attribution correction are complete, independently
+reviewed, owner-approved, and merged through PR #80. The corrected disposition is
 `SCI_ED_001_FROZEN_FAMILIES_REMAIN_OBSERVATIONALLY_EQUIVALENT`. C1 established
 that the historical P8 three-pair result came from asymmetric exposure of the
 common end-of-preconditioning `normalized_flow_at_0s` signature. That feature
@@ -290,8 +322,9 @@ new verifier tests covered helper-level path classification but not durable CLI
 exit, top-level result, or protected-check conjunction semantics. The scientific
 correction was not reopened. Helper tests remain, while real strict/wrong/exact
 CLI tests, protected-check override prevention, and fixed mandatory-conjunction
-coverage are now added. The candidate is ready only for a fresh independent R2
-review; PR #80 remains draft and unmerged.
+coverage are now added. R2A passed at the exact approved head. The
+owner-approved two-parent merge is complete, Issue #79 is closed, and
+SCI-ED-first shared-metadata serialization has transferred to SCI-LC.
 
 ## Completed VAL-CORPUS-001 comparison campaign
 

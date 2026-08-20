@@ -1,0 +1,75 @@
+{
+  "schema_version": "2.0.0",
+  "task_id": "SCI-LC-001A",
+  "packages": [
+    {
+      "logical_evidence_id": "RCA-002",
+      "host_path": "external://espresso-runs/sci_lc_001a/STAGE_A_RCA_002_18641c0_SOURCE_PRESERVING_OBSERVABILITY_ONLY_3666_KEY_DIAGNOSTIC_REPLAY_EVENT_STATE_CAPTURE_ROOT_CAUSE_AND_BLAST_RADIUS_ADJUDICATION",
+      "checksum_manifest_sha256": "e2193147c7c47e8a93c049964783d3a2e405f982121db7326ade87bd97172a79",
+      "git_head": "18641c01ebd4d18636c092f616855eb2659c4a09",
+      "terminal_state": "STOPPED",
+      "terminal_disposition": "STOP_EVENT_STATE_CAPTURE_INCOMPLETE",
+      "quarantine_status": "READ_ONLY_HISTORICAL_DIAGNOSTIC",
+      "scientific_eligibility": false,
+      "reuse_permission": false,
+      "combination_permission": false
+    },
+    {
+      "logical_evidence_id": "E4-ATTEMPTS-01-03",
+      "host_path": "external://espresso-runs/sci_lc_001a/STAGE_A_E4_PM_001_93959CA_READ_ONLY_EXECUTION_FAMILY_INFRASTRUCTURE_POSTMORTEM_AND_CLOSURE_ADJUDICATION",
+      "ledger_sha256": "e95294855953f5f1923ad59da3eaf46dee2c046acce12370eaa1fb70a0924fbb",
+      "git_head": "93959caf85ff26b5e3520fbcb181654ce27db3a0",
+      "terminal_state": "CONTAINED",
+      "quarantine_status": "READ_ONLY_ON_HOLD",
+      "scientific_eligibility": false,
+      "reuse_permission": false,
+      "combination_permission": false
+    },
+    {
+      "logical_evidence_id": "PR82-INDEPENDENT-FAILURE",
+      "host_path": "external://espresso-runs/sci_lc_001a/INDEPENDENT_EXACT_HEAD_REVIEW_PR82_PR84_20260820T112206Z",
+      "evidence_aggregate_sha256": "e2a72b3308bd96cf69d729e4123349a5dd3ff9a8616eef1440fc41e190484742",
+      "action_ledger_sha256": "433cf411f45e2fe38a1b923e44ce7debfda0add48e35174be536fbd9fcdceaf9",
+      "finding_sha256": "943b401ed69e239c4085e8148735cb366c85c0b260b8385db648e4c15576c614",
+      "github_comment_id": 5355326969,
+      "terminal_state": "COMPLETE",
+      "quarantine_status": "IMMUTABLE_REVIEW_EVIDENCE",
+      "scientific_eligibility": false,
+      "reuse_permission": false,
+      "combination_permission": false
+    },
+    {
+      "logical_evidence_id": "E4-ATTEMPT-04",
+      "host_path": "external://espresso-runs/sci_lc_001a/STAGE_A_E4_ATTEMPT_04_ac0f437_20260820T141618Z",
+      "git_head": "34af7e56f4887abd0a11e1dff0e825c935dc62e2",
+      "git_tree": "b03eb3b2c15dd331e9b7bd6a7bc2eeec5af4049b",
+      "controller_reservation_sha256": "84958e5081f58d514ef5735660fbb17fa4e423445bc96f55160043a1cfbb40a3",
+      "run_manifest_sha256": "d3bb7403b297a2e1e24c2108e70ab9c95a2dee95ff00854456cb6d69257f5b12",
+      "diagnostic_health_sha256": "602b0556a772592bee2a6f2bb96c8c812ae234b41b52583a4cc8dc72fba0de10",
+      "final_eligibility_adjudication_sha256": "06ce037a3364f9121be4fc2d0b848eccbbe06ad7e2db4656fed6e8325e490229",
+      "evidence_file_count": 8389,
+      "evidence_aggregate_sha256": "46e50a510f527041a67d5c6b689886dca336156263d9c5e3edeb043969e32292",
+      "controller_reported_dispatch_scalar": 3666,
+      "dispatched_keys": {
+        "status": "UNRESOLVED_FROM_RETAINED_EVIDENCE",
+        "reason": "The surviving controller terminal record reports a final scalar of 3666, but no durable per-key pre-launch dispatch records survive; exact dispatched identities, timestamps, sequence, and independently reconstructable count are unavailable.",
+        "sources": [
+          "ATTEMPT_04_CONTROLLER_TERMINAL_RECORD:84958e5081f58d514ef5735660fbb17fa4e423445bc96f55160043a1cfbb40a3",
+          "FINAL_INDEPENDENT_REVIEW_PR71_20260820T172117Z:b555887f6a03c5c020002ea309ba6a1782410041c0eaeb07c3153296ad550912"
+        ]
+      },
+      "durable_per_key_prelaunch_dispatch_records": 0,
+      "attempted_keys": 3666,
+      "completed_keys": 3558,
+      "stopped_keys": 108,
+      "failed_keys": 0,
+      "unattempted_keys": 0,
+      "terminal_state": "QUARANTINED",
+      "terminal_disposition": "FINAL_ATTEMPT_04_DIAGNOSTIC_EVIDENCE_INCOMPLETE",
+      "quarantine_status": "READ_ONLY_FINAL_ATTEMPT",
+      "scientific_eligibility": false,
+      "reuse_permission": false,
+      "combination_permission": false
+    }
+  ]
+}

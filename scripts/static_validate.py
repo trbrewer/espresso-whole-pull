@@ -81,12 +81,41 @@ def all_tokens(text: str, tokens: Iterable[str]) -> bool:
     return all(token in text for token in tokens)
 
 
+def path_has_symlink_parent(path: Path) -> bool:
+    """Inspect caller spelling before resolve; reject every symlink ancestor."""
+    if not path.is_absolute():
+        raise ValueError("path must be absolute")
+    current = Path(path.anchor)
+    for component in path.parts[1:-1]:
+        current = current / component
+        if current.is_symlink():
+            return True
+    return False
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="optional absolute report path outside the repository; default is stdout only",
+    )
     args = parser.parse_args()
 
     root = args.root.resolve()
+    output = None
+    if args.output is not None:
+        if not args.output.is_absolute():
+            parser.error("--output must be an absolute path")
+        if path_has_symlink_parent(args.output):
+            parser.error("--output parent path must not contain a symlink")
+        output = args.output.resolve(strict=False)
+        if output == root or root in output.parents:
+            parser.error("--output must be outside the repository")
+        parent = output.parent
+        if not parent.is_dir() or parent.is_symlink():
+            parser.error("--output parent must be an existing non-symlink directory")
     case = root / "cases/reference_R0_20g_58mm_9bar"
     fixture_case = root / "cases/fixture_layered_pressure_v0_1_4"
     scenario = json.loads((root / "config/reference_R0.json").read_text(encoding="utf-8"))
@@ -793,9 +822,9 @@ def main() -> None:
             "Physical validation is not established.",
         ],
     }
-    output = case / "preflight/STATIC_VALIDATION_REPORT_V0_2_0.json"
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    if output is not None:
+        output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print(f"static-validation report written to {output}", file=sys.stderr)
     print(json.dumps(report, indent=2))
     if not all_pass:
         raise SystemExit(1)

@@ -182,3 +182,15 @@ The persistent imported-evidence authority is
 its exact upstream JSON records live under
 `validation/external/puckworks_base_temporal_cv/` and selected upstream plots
 under `docs/evidence/puckworks_base_temporal_cv/figures/`.
+# OBS-001 additions
+
+- `scripts/sci_lc_001a_obs_001_diagnostics.py`
+- `scripts/sci_lc_001a_obs_001_no_physics.py`
+- `scripts/sci_lc_001a_obs_001_no_feedback.py`
+- `tests/test_sci_lc_001a_obs_001.py`
+- `validation/cases/sci_lc_001a_obs_001/SCHEMA_CONTRACTS.json`
+- `docs/analysis/sci_lc_001a/obs_001/`
+
+The OBS-001 R1 correction remains within these existing paths. Stop and summary
+schemas retain v1 with strict enforcement; health and manifest are v2 for
+explicit applicability and terminal-disposition reconciliation.

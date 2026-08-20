@@ -1,0 +1,17 @@
+[Unit]
+Description=SCI-LC-001A authority-bound attempt %i
+After=default.target
+
+[Service]
+Type=exec
+EnvironmentFile=%h/.config/espresso-whole-pull/sci-lc-001a-%i.env
+ExecStart=/usr/bin/bash %h/espresso-development/isolated/espresso-whole-pull-sci-lc-001a-clean-path/scripts/sci_lc_001a_supervised_launch.sh
+ExecStopPost=/usr/bin/python3 %h/espresso-development/isolated/espresso-whole-pull-sci-lc-001a-clean-path/scripts/sci_lc_001a_family_controller.py --control-root ${SCI_LC_CONTROL_ROOT} --mode transition --authority ${SCI_LC_CONTROL_AUTHORITY} --target STOPPED --cause SYSTEMD_EXEC_STOP_POST
+Restart=no
+KillMode=control-group
+TimeoutStopSec=120
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

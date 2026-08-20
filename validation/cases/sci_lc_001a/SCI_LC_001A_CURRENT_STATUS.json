@@ -1,0 +1,14 @@
+{
+  "schema_version": "2.0.0",
+  "task_id": "SCI-LC-001A",
+  "current_state": "FINAL_ATTEMPT_04_TERMINAL_INELIGIBLE_PENDING_FINAL_REVIEW",
+  "family_hold": "ACTIVE",
+  "historical_attempts": "TERMINAL_QUARANTINED_SCIENTIFICALLY_INELIGIBLE",
+  "attempt_04": "TERMINAL_QUARANTINED_DIAGNOSTIC_EVIDENCE_INCOMPLETE",
+  "attempt_05_authority": "NONE",
+  "canonical_execution_count": 1,
+  "canonical_classification_count": 0,
+  "launch_authorized": false,
+  "classification_authorized": false,
+  "physical_validation": "NOT_ESTABLISHED"
+}

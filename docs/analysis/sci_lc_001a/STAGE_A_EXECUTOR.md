@@ -1,0 +1,198 @@
+# SCI-LC-001A Stage-A executor implementation authority
+
+Status date: 17 August 2026
+
+Change declaration: `NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`
+
+```text
+PROTOCOL_SPECIFIED = TRUE
+EXECUTOR_IMPLEMENTED = TRUE_PENDING_E2_R3_REVIEW
+PUBLIC_REAL_EXECUTION_BINDING = CANONICAL_PRIVATE_EXECUTORS_ONLY
+DIAGNOSTIC_TIMING_INTERFACE_IMPLEMENTED = TRUE_PENDING_E2_R3_REVIEW
+PILOT_TIMING_MEASUREMENT = INTERNAL_AROUND_CANONICAL_CASE_EXECUTION
+PILOT_REUSE = DISABLED
+PILOT_EVIDENCE_KIND = DIAGNOSTIC_TIMING_ONLY
+SELECTED_ARCHITECTURE = ARCHITECTURE_B_BASELINE_ZERO_STATE_STAGE_A_WITH_D4_ROBUSTNESS_DEFERRED
+STAGE_A_INITIAL_CONDITION_SCOPE = BASELINE_ZERO_STATE_ONLY
+INITIAL_CONDITION_ROBUSTNESS = NOT_ADJUDICATED_STAGE_A
+BISTABILITY_STATUS = NOT_ADJUDICATED_STAGE_A
+TIMING_PILOT_AUTHORIZED = FALSE
+SCIENTIFIC_EXECUTION_AUTHORIZED = FALSE
+PHYSICAL_VALIDATION = NOT_ESTABLISHED
+```
+
+## Boundary and scope
+
+`scripts/sci_lc_001a_executor.py` implements the prospective Stage-A execution
+interface for the frozen 1,280-row matrix and 3,666 `(case_id, profile)` keys.
+It does not itself grant execution authority. `execute` requires a separate
+absolute execution-authority artifact binding the exact Git HEAD and tree,
+matrix semantic hash, protocol artifact hash, mode, backend, and external
+output root. No such real authority is created by E2-R3.
+`execute_authorized_graph` is the sole public real-execution path and constructs
+a private validated context. It exposes no launcher or callback parameter and
+always dispatches through `_execute_canonical_case` to the reviewed private
+static or dynamic executor. Private case executors cannot accept an authority
+dictionary. Callback injection exists only in the explicitly synthetic,
+private `_execute_graph_synthetic_test_only` path, which cannot write real or
+diagnostic evidence.
+
+The six modes are:
+
+- `plan`: validate canonical artifacts and construct the graph; zero solves;
+- `validate`: additionally validate an external output root; zero solves;
+- `execute`: require and validate a separate authority before dispatch;
+- `summarize`: validate and summarize an existing store; zero solves.
+- `pilot-plan`: validate an authority-bound exact allowlist; zero solves;
+- `pilot-execute`: require a separate diagnostic timing authority.
+
+Output roots must be absolute, outside the repository and scientific case
+directories, and contain no symlink component. All records use same-directory
+temporary files, `fsync`, and atomic rename.
+
+## Graph and numerical profiles
+
+Dynamic rows use exactly `BASE`, `INTEGRATOR_REFINED`, `STARTUP_REFINED`, and
+`LINEAR_REFINED`; static rows use exactly `BASE` and `LINEAR_REFINED`. The
+result is 2,212 dynamic keys plus 1,454 static keys, or 3,666 total. Cache and
+resume identity is exactly `(case_id, numerical_profile)`. There is no combined
+profile, retry, tolerance relaxation, profile substitution, hidden initial
+condition, sampling trajectory, out-of-matrix sector case, D4 key, or X1 key.
+
+## Scientific implementation
+
+Static execution assembles the frozen one-exchange-plane ring system from the
+canonical resistance primitives. BASE calls the authoritative scaled-pivot
+binary64 solver. LINEAR_REFINED internally obtains BASE and performs the one
+frozen correction.
+
+Dynamic execution implements prescribed-ramp and machine-coupled storage,
+lateral flux, signed resistance evolution, the canonical zero-flow
+continuation, DOP853 profiles, RHS cap, dense output, and 1,001/2,001 sampling.
+All flow thresholds operate on
+`q_hat_sector_i=q_i/[(G_ref/N)*Delta_p_ref]`; dimensional and already-scaled
+representations therefore share identical reversal and startup decisions.
+Every dynamic profile uses the common explicit DOP853
+`first_step=1.0e-7`. No-event results normalize SciPy's `t_events=None` and
+`y_events=None` to empty sequences; evolving results require structurally
+consistent event arrays before event processing.
+
+The scientific gain floor is the non-overridable module constant
+`GAIN_DENOMINATOR_FLOOR=1e-12`. Authoritative gain evaluation loads canonical
+subject and comparator rows and result records internally. Uncertainty
+evaluation derives applicability and profile dependencies internally.
+Classification accepts only authoritative real-backend evidence and rejects
+all `SYNTHETIC_TEST_ONLY` and `DIAGNOSTIC_TIMING_ONLY` records.
+
+Owner authority `SCI-LC-001A-OWNER-METRIC-AUTHORITY-2026-08-16` prospectively
+freezes current evolved-flow reconstruction, `H_q`, phase-invariant
+Fourier/Nyquist and centered non-Fourier seed amplitudes, endpoint gain, and
+composite-trapezoidal integrated gain on 1,001/2,001 grids. Sampling uses the
+same BASE dense output and adds no trajectory. Static classification consumes
+`(G_static_H,G_static_mode)` and dynamic classification consumes
+`(G_coupling_end,G_coupling_int)` under the existing precedence.
+
+Internal transport tuples remain constructible Python values. They are not
+public executor inputs, are absent from the executor export list, and cannot
+enter the authoritative gain, uncertainty, or classification paths. No
+in-process authentication machinery is used.
+
+## Result store and resume
+
+The external store contains `RUN_MANIFEST.json` and atomic
+`cases/<case_id>/<profile>.json` records. The manifest binds authorization,
+Git identity, matrix and protocol hashes, executor source hash, output root,
+backend, timestamps, task count, and status counts. Records bind case, profile,
+row hash, role, boundary mode, authority, solver status, metrics, and checksum.
+
+Resume validates the manifest and every reusable record. `COMPLETE`, `STOPPED`,
+`CAPPED`, and `NUMERICALLY_UNRESOLVED` records are preserved and not retried.
+Only absent or non-final interrupted work is dispatched. A mismatched manifest
+or record fails closed. Records bind an immutable manifest-identity digest and
+a manifest checksum ledger, so consistently stale and copied cross-run records
+are rejected. No automatic scientific retry exists.
+
+Directional multiplier events are terminal stops. No event can return to a
+continuation path, no terminated dense solution is evaluated beyond its root,
+and no counted RHS call is made solely to diagnose a root. Wrapped RHS calls
+must equal solver-reported `nfev`.
+
+## Diagnostic timing interface
+
+Pilot selection is an explicit canonical case/profile allowlist whose hash and
+maximum size are authority-bound. The first pilot requires a new or empty
+external root and has reuse disabled. Its evidence kind is permanently
+`DIAGNOSTIC_TIMING_ONLY`; it cannot enter scientific evidence, classification,
+D4, or X1. The public API exposes no callback. `_execute_canonical_pilot_case`
+uses the same canonical private static/dynamic dispatcher as Stage A and
+measures `case_wall_time_ns` with `time.perf_counter_ns` and CPU time with
+`time.process_time_ns` immediately around that case calculation. Status, RHS
+count, and linear status come from the canonical outcome. Output size means
+the serialized canonical case-outcome byte count before diagnostic filtering;
+scientific metric payloads are omitted from the persisted pilot record. E2-R2
+creates no pilot authority and runs no pilot.
+
+The completed DTP-001-R1 diagnostic pilot found 4 COMPLETE, 13 STOPPED, and 11
+FAILED records. Its shared no-event `TypeError` and false zero RHS counts are
+implementation findings, so its status-mixed full-graph estimate is
+`NOT_VALID_FOR_COMPLETE_HORIZON_PLANNING_DUE_TO_IMPLEMENTATION_FAILURES`.
+E2-R3 preserves that external bundle unchanged. Unexpected implementation or
+shared-infrastructure exceptions now retain a measured RHS count when known,
+use explicit unavailability otherwise, mark the manifest
+`INFRASTRUCTURE_FAILURE`, and abort before the next key. Such durations are
+excluded from projections; STOPPED/CAPPED samples remain separate from
+COMPLETE full-horizon samples.
+
+## Baseline-zero-state classification authority
+
+ICA-003 freezes Stage A as a baseline-zero-state screen. Dynamic records and
+classifications carry `ZERO_STATE_BASELINE`, `BASELINE_ZERO_STATE_ONLY`, and
+explicit `NOT_ADJUDICATED_STAGE_A` robustness and bistability values. Static
+algebraic records use `DYNAMIC_INITIAL_CONDITION_NOT_APPLICABLE`. Bare dynamic
+labels and stale unqualified records fail closed.
+
+The legacy matrix field `initial_condition_variant` selects structural or
+heterogeneity realization and never constructs a dynamic initial state. The
+future `INITIAL_CONDITION_DEPENDENT_OR_BISTABLE` branch is inactive in Stage A:
+it is `NOT_EVALUATED_NOT_FALSE`, not absent evidence treated as agreement.
+D4's alternate state and comparison contract remain unfrozen and unauthorized.
+
+## Synthetic testing
+
+`SYNTHETIC_TEST_ONLY` exercises all 3,666 keys, persistence, interruption,
+resume, dependency arithmetic, and summary generation without integrating a
+canonical matrix trajectory. Synthetic records are labeled permanently and
+cannot reach scientific classification or export.
+
+The next action is one bounded independent exact-head implementation review.
+A passing review may support a separate decision about a small timing pilot;
+it does not itself authorize timing, scientific execution, D4, X1, readiness,
+merge, or physical-validation claims.
+
+## Classification artifacts and correction barriers
+
+The correction candidate uses the active Stage-A precedence as the closed
+ordinary-label domain. Qualification is derived exactly as
+`<ordinary_regime_label>;<initial_condition_scope>`; delimiter-bearing or
+unknown components and caller collisions with derived fields are rejected.
+Result authority already present in a record is checked before binding and is
+never silently overwritten.
+
+After a complete authorized run, `--mode classify` independently reloads the
+run manifest, frozen plan, result checksum ledger, and authority-bound eligible
+`COMPLETE` `BASE` evidence before writing, under the run root:
+
+- `classifications/CLASSIFICATION_RECORDS.jsonl` — versioned per-key records in
+  frozen plan order;
+- `classifications/CLASSIFICATION_SUMMARY.json` — reconciled deterministic
+  ordinary, qualified, scope, and state-variant counts;
+- `classifications/CLASSIFICATION_REPORT.md` — owner-facing counts and explicit
+  scientific non-claims.
+
+The summary and report consume validated classification records; they do not
+reclassify raw results. Arbitrary mappings or prebuilt records cannot enter the
+canonical publisher. The low-level fixture serializer is permanently synthetic
+and inadmissible. The three-file set is installed atomically only after complete
+validation. Diagnostic and synthetic evidence remain inadmissible to canonical
+export. This candidate remains pending R3 independent exact-head review and
+authorizes no scientific execution.

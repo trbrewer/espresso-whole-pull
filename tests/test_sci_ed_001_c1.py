@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from contextlib import contextmanager
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -16,6 +17,8 @@ VERIFY=importlib.util.module_from_spec(VERIFY_SPEC);sys.modules[VERIFY_SPEC.name
 OUT=ROOT/"validation/cases/sci_ed_001"
 START_HEAD="e8a66378d7829877fb74c87889193f32dd977772"
 START_TREE="1c51175a8c5035c0cab989fada791aebb78f6fd7"
+APPROVED_HEAD="481e9bebe1d01de32b6db5412248c37153e926ed"
+APPROVED_TREE="7dd5085ac2d2f756c687598c591c2a3e9eb39a20"
 EXPECTED_MANDATORY_CHECKS=(
     "starting_head_exists_and_tree_exact",
     "current_head_and_tree_exact",
@@ -30,19 +33,27 @@ EXPECTED_MANDATORY_CHECKS=(
 PROTECTED_CHECKS=tuple(x for x in EXPECTED_MANDATORY_CHECKS if x!="effective_path_contract_pass")
 
 class SciEd001C1Tests(unittest.TestCase):
-    def verifier_args(self,output,authorization=None):
-        head=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
-        tree=subprocess.check_output(["git","rev-parse","HEAD^{tree}"],cwd=ROOT,text=True).strip()
-        args=["--root",str(ROOT),"--expected-start-head",START_HEAD,"--expected-start-tree",START_TREE,
-              "--expected-current-head",head,"--expected-current-tree",tree,"--output",str(output)]
+    @contextmanager
+    def approved_worktree(self):
+        with tempfile.TemporaryDirectory() as td:
+            checkout=Path(td)/"approved"
+            subprocess.run(["git","worktree","add","--detach",str(checkout),APPROVED_HEAD],cwd=ROOT,check=True,capture_output=True)
+            try:
+                yield checkout
+            finally:
+                subprocess.run(["git","worktree","remove","--force",str(checkout)],cwd=ROOT,check=True,capture_output=True)
+
+    def verifier_args(self,output,authorization=None,root=ROOT):
+        args=["--root",str(root),"--expected-start-head",START_HEAD,"--expected-start-tree",START_TREE,
+              "--expected-current-head",APPROVED_HEAD,"--expected-current-tree",APPROVED_TREE,"--output",str(output)]
         if authorization is not None: args.extend(["--owner-authorization",authorization])
         return args
 
     def run_verifier_cli(self,authorization=None):
-        with tempfile.TemporaryDirectory() as td:
+        with tempfile.TemporaryDirectory() as td, self.approved_worktree() as checkout:
             output=Path(td)/"report.json"
-            completed=subprocess.run([sys.executable,str(ROOT/"scripts/sci_ed_001_verify_no_governing_physics_change.py"),
-                                      *self.verifier_args(output,authorization)],cwd=ROOT,text=True,capture_output=True,check=False)
+            completed=subprocess.run([sys.executable,str(checkout/"scripts/sci_ed_001_verify_no_governing_physics_change.py"),
+                                      *self.verifier_args(output,authorization,checkout)],cwd=checkout,text=True,capture_output=True,check=False)
             self.assertTrue(output.is_file(),completed.stderr)
             report=json.loads(output.read_text())
             self.assertEqual(completed.returncode==0,report["status"]=="PASS")
@@ -210,10 +221,10 @@ class SciEd001C1Tests(unittest.TestCase):
         self.assert_complete_report(r);self.assertTrue(all(r["checks"][x] for x in EXPECTED_MANDATORY_CHECKS))
 
     def test_verifier_owner_token_cannot_override_protected_failure(self):
-        with tempfile.TemporaryDirectory() as td:
+        with tempfile.TemporaryDirectory() as td, self.approved_worktree() as checkout:
             output=Path(td)/"report.json"
             with contextlib.redirect_stdout(io.StringIO()):
-                rc=VERIFY.main(self.verifier_args(output,VERIFY.OWNER_AUTHORIZATION),{"production_solver_exact":False})
+                rc=VERIFY.main(self.verifier_args(output,VERIFY.OWNER_AUTHORIZATION,checkout),{"production_solver_exact":False})
             r=json.loads(output.read_text())
         self.assertTrue(r["effective_path_contract_pass"]);self.assertTrue(r["owner_authorization_exact"])
         self.assertFalse(r["checks"]["production_solver_exact"])
