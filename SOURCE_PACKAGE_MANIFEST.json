@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 470,
-  "total_uncompressed_bytes_excluding_manifest": 7059198,
-  "aggregate_source_sha256": "65f50e3945d99137ef0263cdaf1ae1a56e2c87cc74cced8e6288ed5bc1fe95a7",
-  "aggregate_sha256": "65f50e3945d99137ef0263cdaf1ae1a56e2c87cc74cced8e6288ed5bc1fe95a7",
+  "file_count": 485,
+  "total_uncompressed_bytes_excluding_manifest": 7082162,
+  "aggregate_source_sha256": "06cd8ccb715930abe6d72cbb14bed278e3fdd27a65c037ab7f9949ea5184e4b8",
+  "aggregate_sha256": "06cd8ccb715930abe6d72cbb14bed278e3fdd27a65c037ab7f9949ea5184e4b8",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -449,8 +449,8 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "a72b6f02c6408a6df172d70cf17c8a3925aee55602c1149e539321cdf0ec52c8",
-      "bytes": 47416,
+      "sha256": "85d8ec1fb66bad3f13e1143fa2caa180f7ba0b33b0e43dfaeea4afdefa693041",
+      "bytes": 47564,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
@@ -698,6 +698,76 @@
       "bytes": 1251,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_003/SUPERSESSION.md": {
+      "sha256": "5de14e961a9d7150f47f68ce702c1b58f5a49abeb200cf71e9c48978d24158dc",
+      "bytes": 417,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/MEASUREMENT_RECOMMENDATION.md": {
+      "sha256": "e04a1c6904babf4cbc98080d69d632c9fc18aebdf414b403cec555e03ea97204",
+      "bytes": 514,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/PROTOCOL.md": {
+      "sha256": "db3bb08b887c2e05fb82b4c5b757ee1fc5c005e54473eab249126cfac7505bb5",
+      "bytes": 1241,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/PUCKWORKS_ANALYSIS_PIN.json": {
+      "sha256": "d36a4db558924e19c82e39f5885a312abc3b1b7307cef59ac5f2c812005602ed",
+      "bytes": 1451,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/REPRODUCE.md": {
+      "sha256": "e7d102ec83c35c3464899b27146c341ac74d4f3560f8e3f7c1285e5cb886d474",
+      "bytes": 459,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/RESULT.md": {
+      "sha256": "707e9961d3425363930764ddc0d2daaa2d171a36c8a0a0cd1e3344d025f91b63",
+      "bytes": 1003,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/coverage_matrix.json": {
+      "sha256": "723e124ccc8a555779d93c807907cef2c34590fb9e26988bbc7e681bab003893",
+      "bytes": 915,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/cross_repository_comparison.json": {
+      "sha256": "0ee9e18310a7751d5812fd6d5a99a49785f9523fba9b6619b75239977ec9e871",
+      "bytes": 1273,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/decision.json": {
+      "sha256": "c5c1deb0a1f751e31287116f60934b9eab1bd10c715a4cd254f243a8ca0d5c59",
+      "bytes": 1323,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/ewp_case_matrix.json": {
+      "sha256": "8a8a588b3711ebfe0412acd70e14fa647ba1e04f45d2fc80c82d1b6225741df4",
+      "bytes": 379,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/ewp_observable_export.json": {
+      "sha256": "19b24e27b728320a18a0264409cc9f2967bd18890aee7f0797e5853c1f45ba3e",
+      "bytes": 10614,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/measurement_value.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/minimum_measurement_sets.json": {
+      "sha256": "e4931a1b85830a151b97c25cb4c5d5e074bef57208cb09ddefee6d0fc79ddf65",
+      "bytes": 156,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/pair_eligibility.json": {
+      "sha256": "0ee9e18310a7751d5812fd6d5a99a49785f9523fba9b6619b75239977ec9e871",
+      "bytes": 1273,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_003/cross_repository_comparison.json": {
       "sha256": "944117dd69fcf6a48c593f4ebda2d24dc061a88e009997bc8ee6db4157989dfd",
       "bytes": 1516,
@@ -716,6 +786,11 @@
     "docs/analysis/sci_md_003/measurement_value_consumer.json": {
       "sha256": "86d5051b2ec722c1c41c0f38faa947318b79f6ab1d238641057809884206c912",
       "bytes": 3343,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/superseded/initial_candidate/manifest.json": {
+      "sha256": "9f8ab4107a7f0bd4e0e7ca25f2a6091839669e6b5df7f66f96672419178eda9d",
+      "bytes": 588,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1784,8 +1859,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_003_atlas.py": {
-      "sha256": "79a1a6ce5321a448601d7c32a0d2f610196cd330a3c43ec5868e9a7189afe206",
-      "bytes": 2545,
+      "sha256": "a2e5e4339ed149f603f18f3b07a4d0693e501bc1463a4d21c7bc670b4018264b",
+      "bytes": 3752,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {
