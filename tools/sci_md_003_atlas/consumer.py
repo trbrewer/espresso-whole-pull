@@ -1,54 +1,97 @@
+"""Validated, response-derived SCI-MD-003 C1 thin consumer."""
 from __future__ import annotations
-import argparse,hashlib,json
+import argparse, hashlib, itertools, json
+from dataclasses import asdict, dataclass
 from pathlib import Path
+from typing import Any
 
-ROOT=Path(__file__).resolve().parents[2]; OUT=ROOT/'docs/analysis/sci_md_003'
-EXPECTED_SCHEMA='puckworks.response-atlas-export/v1'
-EXPECTED_HASH='434c8bd208474bd4fe33281cc6f633ee8ac4e47ffefae9039a4014cba7ad2420'
-EXPECTED_COMMIT='2cb75c1fdd8aae34abad66e8fb1d42b0630fdaad'; EXPECTED_TREE='66fa1f25a9302c8e4be7dba35e8b9d99f527bd78'
+ROOT=Path(__file__).resolve().parents[2]; OUT=ROOT/'docs/analysis/sci_md_003/c1'
+EXPECTED_SCHEMA='puckworks.response-atlas-export/v2'
+EXPECTED_HASH='6353b1de063a0d2f55a1ec93dffb0ffcbdaaac3ec434e16c7c13f4cd90a44ed3'
+EXPECTED_COMMIT='8a4d2ffa35f45f9c44d0db0659ff0f1d469c8aa7'; EXPECTED_TREE='94499f4f8f9a350894c60c1e23924e4d5644f874'
+EXPECTED_PROTOCOL='aee421985ebd904150ed7ca714c0aebc624a2e9a424d4ab6eafd391677a39e53'
+EXPECTED_CASE='7537675bd469e515724d1fe61535c8047bf5d05a0f71165978b02c5481f6c519'
+EXPECTED_ASSUMPTIONS='17f37c2ccbb39bca86f44d3bbc004085c40b6318ca6d101869fa6dfd3d5aac4a'
+SUPPORT={'SUPPORTED','UNSUPPORTED_RELATIONSHIP','UNSUPPORTED_FOR_CASE','OUTSIDE_VALID_RANGE','MISSING_REQUIRED_INPUT','NUMERICAL_FAILURE','NOT_EVALUATED'}
 
-def _bytes(o): return (json.dumps(o,indent=2,sort_keys=True,allow_nan=False)+'\n').encode()
-def _write(name,o): p=OUT/name; p.parent.mkdir(parents=True,exist_ok=True); p.write_bytes(_bytes(o))
-def _sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
-def _load(rel): return json.loads((ROOT/rel).read_text())
+def pretty(x:Any)->bytes:return (json.dumps(x,indent=2,sort_keys=True,allow_nan=False)+'\n').encode()
+def canonical(x:Any)->bytes:return (json.dumps(x,sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+def sha256(p:Path)->str:return hashlib.sha256(p.read_bytes()).hexdigest()
+def _load(rel:str)->Any:return json.loads((ROOT/rel).read_text())
+def _write(name:str,x:Any)->None:
+ p=OUT/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(pretty(x))
 
-def load_atlas(path, expected_hash=EXPECTED_HASH):
-    if _sha(path)!=expected_hash: raise ValueError('PUCKWORKS_ARTIFACT_HASH_MISMATCH')
-    a=json.loads(Path(path).read_text())
-    if a.get('schema_version')!=EXPECTED_SCHEMA: raise ValueError('PUCKWORKS_SCHEMA_VERSION_MISMATCH')
-    m=a['manifest']
-    if (m['execution_code_commit'],m['execution_code_tree'])!=(EXPECTED_COMMIT,EXPECTED_TREE): raise ValueError('PUCKWORKS_IDENTITY_MISMATCH')
-    return a
+def validate_atlas(a:dict[str,Any])->dict[str,Any]:
+ if a.get('schema_version')!=EXPECTED_SCHEMA:raise ValueError('PUCKWORKS_SCHEMA_VERSION_MISMATCH')
+ m=a.get('run_manifest',{})
+ for k,v in {'execution_code_commit':EXPECTED_COMMIT,'execution_code_tree':EXPECTED_TREE,'protocol_sha256':EXPECTED_PROTOCOL,'case_matrix_sha256':EXPECTED_CASE,'measurement_assumption_sha256':EXPECTED_ASSUMPTIONS}.items():
+  if m.get(k)!=v:raise ValueError(f'PUCKWORKS_{k.upper()}_MISMATCH')
+ counts=a.get('summary_counts',{}); actual={'explanations':len(a.get('explanations',[])),'pair_eligibility':len(a.get('pair_eligibility',[])),'eligible_pairs':sum(x.get('eligibility')=='eligible' for x in a.get('pair_eligibility',[])),'measurement_records':len(a.get('measurement_value_records',[])),'result_cells':len(a.get('result_cells',[]))}
+ if any(counts.get(k)!=v for k,v in actual.items()):raise ValueError('PUCKWORKS_SUMMARY_COUNTS_MISMATCH')
+ for c in a.get('result_cells',[]):
+  if c.get('support_status') not in SUPPORT:raise ValueError('UNKNOWN_SUPPORT_STATE')
+  if c['support_status']!='SUPPORTED' and c.get('value') is not None:raise ValueError('UNSUPPORTED_NUMERIC_CELL')
+ ids={x['pair_id'] for x in a.get('pair_eligibility',[])}
+ if not set(a.get('decision',{}).get('decision_reason_record_ids',[]))<=ids:raise ValueError('PUCKWORKS_DECISION_NOT_SUPPORTED')
+ return a
 
-def retained_export():
-    wp=_load('validation/wp03/WP03_002_CORRECTED_COMPARISON.json')
-    vc=_load('validation/cases/val_case_001/VAL_CASE_001_RESULTS.json')
-    b2=_load('validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_RESULT.json')
-    rows=[]
-    for case in wp['corrected_compaction']:
-      e=case['endpoint']; rows.extend([
-       {'case_id':case['id'],'source_artifact':'validation/wp03/WP03_002_CORRECTED_COMPARISON.json','source_field':'corrected_compaction[].endpoint.model_pressure_bar','observable':'basket_pressure','value':e['model_pressure_bar'],'unit':'bar','node':'BASKET','reference_basis':'GAUGE','time_origin':'solver_time=source_time+3s','adapter':'NONE','uncertainty':'NOT_PROVIDED','support_status':'SUPPORTED','evidence_class':'RETAINED_POST_OBSERVATION_MODEL_OUTPUT'},
-       {'case_id':case['id'],'source_artifact':'validation/wp03/WP03_002_CORRECTED_COMPARISON.json','source_field':'corrected_compaction[].endpoint.model_flow_g_s','observable':'mass_flow_rate','value':e['model_flow_g_s'],'unit':'g/s','node':'BED_OUTLET','reference_basis':'beverage mass flow','time_origin':'solver_time=source_time+3s','adapter':'NONE','uncertainty':'NOT_PROVIDED','support_status':'SUPPORTED','evidence_class':'RETAINED_POST_OBSERVATION_MODEL_OUTPUT'},
-       {'case_id':case['id'],'source_artifact':'validation/wp03/WP03_002_CORRECTED_COMPARISON.json','source_field':'corrected_compaction[].endpoint.model_mass_g','observable':'cumulative_delivered_mass','value':e['model_mass_g'],'unit':'g','node':'BED_OUTLET','reference_basis':'beverage mass','time_origin':'solver_time=source_time+3s','adapter':'NONE','uncertainty':'NOT_PROVIDED','support_status':'SUPPORTED','evidence_class':'RETAINED_POST_OBSERVATION_MODEL_OUTPUT'}])
-    for ch in ['upstream_pressure','bed_pressure_drop','first_drip_timing','effective_resistance','permeability','porosity','bed_height_or_deformation','cup_tds','extraction_yield','spatial_flow_variance','local_extraction']:
-      rows.append({'case_id':'RETAINED_SET','source_artifact':'retained artifact audit','source_field':'NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS','observable':ch,'value':None,'unit':'NOT_PROVIDED','node':'NOT_PROVIDED','reference_basis':'NOT_PROVIDED','time_origin':'NOT_PROVIDED','adapter':'NONE','uncertainty':'NOT_PROVIDED','support_status':'UNSUPPORTED_RELATIONSHIP','evidence_class':'NOT_AVAILABLE'})
-    return {'schema_version':'ewp.sci-md-003-observable-export/v1','excluded_families':['SCI-LC-001A'],
-      'retained_sources':{'wp03_002':{'sha256':_sha(ROOT/'validation/wp03/WP03_002_CORRECTED_COMPARISON.json'),'pressure_flow_ordering':wp['ordering']},'val_case_001':{'sha256':_sha(ROOT/'validation/cases/val_case_001/VAL_CASE_001_RESULTS.json'),'case_id':vc['case_id'],'scientific_disposition':vc['scientific_result_disposition']},'val_corpus_002':{'sha256':_sha(ROOT/'validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_RESULT.json'),'status':b2['status'],'production_counts':b2['production_counts'],'scientific_disposition':b2['scientific_result_disposition']}},'observables':sorted(rows,key=lambda r:(r['case_id'],r['observable']))}
+def load_atlas(path:Path,expected_hash:str=EXPECTED_HASH)->dict[str,Any]:
+ if sha256(path)!=expected_hash:raise ValueError('PUCKWORKS_ARTIFACT_HASH_MISMATCH')
+ return validate_atlas(json.loads(path.read_text()))
 
-def consume(atlas_path):
-    atlas=load_atlas(atlas_path); ewp=retained_export()
-    cross=[{'comparison_id':'EWP_WP03_PRESSURE_ORDERING_VS_PUCKWORKS_STATIC_HYDRAULICS','puckworks_component':'wadsworth2026.inertial','ewp_source':'WP03-002 corrected compaction','observable':'flow response to pressure','comparability_level':3,'numeric_residual':None,'disagreement_category':'SEMANTIC_OR_NONCOMPARABLE','reason':'EWP retained mass flow from dynamic compacting bed versus static superficial Darcy velocity; model ordering is decreasing while Puckworks lens is increasing, but bases/interventions are not level 1/2'},
-      {'comparison_id':'EWP_WP03_MACHINE_VS_FOSTER_NULL','puckworks_component':'foster2025.machine_mode','ewp_source':'WP03-002 corrected compaction','observable':'machine pressure/flow/timing','comparability_level':3,'numeric_residual':None,'disagreement_category':'UNSUPPORTED_COMPARISON','reason':'selected EWP compact endpoint lacks synchronized upstream/headspace timing and first-drip observables needed for null survival gates'},
-      {'comparison_id':'EWP_EXTRACTION_VS_CAMERON','puckworks_component':'cameron2020.extraction_bdf','ewp_source':'VAL-CORPUS-002','observable':'extraction response','comparability_level':4,'numeric_residual':None,'disagreement_category':'SEMANTIC_OR_NONCOMPARABLE','reason':'selected retained aggregate source/model contrasts do not expose a matching cup-basis endpoint under the frozen Cameron cases'}]
-    mv={'records':atlas['measurement_value_records']['records'],'ewp_effect':'selected retained endpoints add basket pressure, flow, and delivered mass but no declared measurement uncertainty and no level-1/2 complete pair coverage','minimum_measurement_sets':'NO_COMPLETE_MEASUREMENT_SET'}
-    decision={'selected_outcome':'SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED','physical_validation':'NOT_ESTABLISHED','current_gate':'ADDITIONAL_INDEPENDENT_DATA_REQUIRED','reasons':['fixed-bed apparatus null cannot be adjudicated against selected retained EWP endpoints','cross-repository comparisons are levels 3 and 4','required synchronized upstream/basket pressure, timing, deformation, spatial, and uncertainty fields are absent','NO_COMPLETE_MEASUREMENT_SET'],'not_selected':{'APPARATUS_OBSERVATION_EXPLANATION_SURVIVES':'applicable null gates incomplete','DYNAMIC_BED_SIGNATURE_DISTINGUISHABLE':'no robust unique level-1/2 deformation route','SPATIAL_LOCALIZATION_ONLY_DISTINGUISHABLE_ROUTE':'no retained supported spatial comparator'}}
-    _write('ewp_observable_export.json',ewp); _write('cross_repository_comparison.json',cross); _write('measurement_value_consumer.json',mv); _write('DECISION.json',decision)
-    return decision
+def retained_export()->dict[str,Any]:
+ wp=_load('validation/wp03/WP03_002_CORRECTED_COMPARISON.json');vc=_load('validation/cases/val_case_001/VAL_CASE_001_RESULTS.json');b2=_load('validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_RESULT.json');rows=[]
+ for case in wp['corrected_compaction']:
+  e=case['endpoint']
+  for obs,field,unit,node,basis in [('basket_pressure','model_pressure_bar','bar','BASKET','GAUGE'),('flow','model_flow_g_s','g/s','BED_OUTLET','BEVERAGE_MASS_FLOW'),('delivered_mass','model_mass_g','g','BED_OUTLET','BEVERAGE_MASS')]:
+   rows.append({'case_id':case['id'],'source_artifact':'validation/wp03/WP03_002_CORRECTED_COMPARISON.json','source_field':f'corrected_compaction[].endpoint.{field}','observable':obs,'value':e[field],'unit':unit,'node':node,'reference_basis':basis,'time_basis':'solver_time=source_time+3s; endpoint','uncertainty':'NOT_PROVIDED','support_status':'SUPPORTED','evidence_class':'RETAINED_POST_OBSERVATION_MODEL_OUTPUT'})
+ available={r['observable'] for r in rows}
+ for ch in ['basket_pressure','separate_upstream_pressure','flow','delivered_mass','bed_height_or_deformation','first_drip_timing','temperature','turbidity_or_downstream_suspended_solids','retained_fines_mass','spatial_flow_variance','local_extraction']:
+  if ch not in available:rows.append({'case_id':'RETAINED_SET','source_artifact':'retained artifact audit','source_field':'NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS','observable':ch,'value':None,'unit':'NOT_PROVIDED','node':'NOT_PROVIDED','reference_basis':'NOT_PROVIDED','time_basis':'NOT_PROVIDED','uncertainty':'NOT_PROVIDED','support_status':'UNSUPPORTED_RELATIONSHIP','evidence_class':'NOT_AVAILABLE'})
+ return {'schema_version':'ewp.sci-md-003-observable-export/c1','excluded_families':['SCI-LC-001A'],'retained_sources':{'wp03_002':{'sha256':sha256(ROOT/'validation/wp03/WP03_002_CORRECTED_COMPARISON.json'),'pressure_flow_ordering':wp['ordering']},'val_case_001':{'sha256':sha256(ROOT/'validation/cases/val_case_001/VAL_CASE_001_RESULTS.json'),'case_id':vc['case_id'],'scientific_disposition':vc['scientific_result_disposition']},'val_corpus_002':{'sha256':sha256(ROOT/'validation/cases/val_corpus_002/VAL_CORPUS_002_STAGE_B2_RESULT.json'),'status':b2['status'],'production_counts':b2['production_counts'],'scientific_disposition':b2['scientific_result_disposition']}},'observables':sorted(rows,key=lambda r:(r['case_id'],r['observable']))}
 
-def main():
-    p=argparse.ArgumentParser(); p.add_argument('command',choices=['run','verify']); p.add_argument('--atlas',required=True); a=p.parse_args()
-    before={n:(OUT/n).read_bytes() for n in ['ewp_observable_export.json','cross_repository_comparison.json','measurement_value_consumer.json','DECISION.json'] if (OUT/n).exists()}
-    consume(a.atlas)
-    if a.command=='verify' and before and any((OUT/n).read_bytes()!=b for n,b in before.items()): raise SystemExit('DETERMINISTIC_EXPORT_DRIFT')
-    print('SCI_MD_003_'+a.command.upper()+'_OK')
-if __name__=='__main__': main()
+@dataclass(frozen=True)
+class Pair:
+ pair_id:str;puckworks_explanation:str;ewp_explanation:str;scenario:str;channel:str;comparability_level:int;pair_role:str;eligibility:str;reason_code:str;uncertainty_available:bool
+ def __post_init__(self):
+  if self.comparability_level not in range(1,6):raise ValueError('BAD_COMPARABILITY_LEVEL')
+  if self.eligibility=='eligible' and (self.comparability_level>2 or self.pair_role not in {'SCIENTIFICALLY_COMPETING','NESTED_LIMIT'}):raise ValueError('INELIGIBLE_PAIR_MARKED_ELIGIBLE')
+
+def derive_pairs(a:dict[str,Any],e:dict[str,Any])->list[Pair]:
+ wads=any(c.get('component_id')=='wadsworth2026.inertial' and c.get('adjudicative') is True for c in a['result_cells'])
+ pairs=[Pair('EWP_FOSTER_MACHINE','FOSTER_FIXED_BED_MACHINE_NULL','EWP_WP03_DYNAMIC_BED','MACHINE_REF','flow',3,'SCIENTIFICALLY_COMPETING','ineligible','MACHINE_PARAMETERS_AND_TIME_HISTORY_NOT_MATCHED',False),Pair('EWP_WADSWORTH_FLOW','WADSWORTH_STATIC_INERTIAL_LENS','EWP_WP03_DYNAMIC_BED','P09_REF','flow',4,'SCIENTIFICALLY_COMPETING','ineligible','BED_DROP_STATIC_VELOCITY_VS_BASKET_DYNAMIC_MASS_FLOW',False),Pair('EWP_CAMERON_EXTRACTION','CAMERON_EXTRACTION_OBSERVER','EWP_RETAINED_EXTRACTION','P09_REF','local_extraction',4,'OBSERVATION_OPERATOR_COMPARISON','ineligible','NO_MATCHED_CUP_BASIS_ENDPOINT',False)]
+ if wads:pairs.append(Pair('EWP_WADSWORTH_ADJUDICATIVE','WADSWORTH_STATIC_INERTIAL_LENS','EWP_WP03_DYNAMIC_BED','P09_REF','flow',2,'SCIENTIFICALLY_COMPETING','unresolved','UNCERTAINTY_NOT_PROVIDED',False))
+ return pairs
+
+def measurement(p:Pair)->dict[str,Any]:
+ if p.eligibility=='eligible' and p.uncertainty_available:raise ValueError('ELIGIBLE_INTERVALS_REQUIRED')
+ classification='NOT_ADJUDICATED_MISSING_UNCERTAINTY' if p.eligibility=='eligible' else 'UNSUPPORTED'
+ return {'measurement_record_id':f'MV_{p.pair_id}_{p.channel}_{p.scenario}','pair_id':p.pair_id,'scenario':p.scenario,'channel':p.channel,'comparability_level':p.comparability_level,'left_support_state':'SUPPORTED' if p.eligibility=='eligible' else 'UNSUPPORTED_FOR_CASE','right_support_state':'SUPPORTED','left_prediction_interval':None,'right_prediction_interval':None,'declared_measurement_uncertainty':'NOT_PROVIDED','measurement_uncertainty_provenance':'NOT_PROVIDED','expanded_observable_intervals':None,'interval_combination_method':'CONSERVATIVE_ADDITIVE_BOUNDED_HALF_WIDTHS_NO_DISTRIBUTION','classification':classification,'reason_code':p.reason_code,'evidence_label':'RETAINED_CROSS_REPOSITORY_ANALYSIS','covers_pair_robustly':False,'claim_ceiling':'MODEL_RESPONSE_COMPARISON_ONLY__PHYSICAL_VALIDATION_NOT_ESTABLISHED'}
+
+def minimum_sets(ids:list[str],records:list[dict[str,Any]])->dict[str,Any]:
+ if not ids:return {'eligible_pair_ids':[],'result':'NO_COMPLETE_MEASUREMENT_SET','zero_pair_status':'NO_ELIGIBLE_PAIRWISE_DISCRIMINATION_PROBLEM','sets':[]}
+ channels=sorted({r['channel'] for r in records if r['covers_pair_robustly']})
+ for n in range(1,len(channels)+1):
+  found=[]
+  for choice in itertools.combinations(channels,n):
+   covered={r['pair_id'] for r in records if r['covers_pair_robustly'] and r['channel'] in choice}
+   if covered>=set(ids):found.append(list(choice))
+  if found:return {'eligible_pair_ids':ids,'result':'COMPLETE_MEASUREMENT_SET','zero_pair_status':'NOT_APPLICABLE','sets':found}
+ return {'eligible_pair_ids':ids,'result':'NO_COMPLETE_MEASUREMENT_SET','zero_pair_status':'NOT_APPLICABLE','sets':[]}
+
+def build(a:dict[str,Any])->dict[str,Any]:
+ e=retained_export();pairs=derive_pairs(a,e);eligible=[p.pair_id for p in pairs if p.eligibility=='eligible'];records=[measurement(p) for p in pairs if p.eligibility=='eligible'];channels=[x['channel'] for x in a['measurement_assumptions']['channels']];coverage=[{'channel':c,'robustly_covered_pair_ids':sorted({r['pair_id'] for r in records if r['channel']==c and r['covers_pair_robustly']})} for c in channels];sets=minimum_sets(eligible,records)
+ decision={'decision_id':'EWP_CROSS_REPOSITORY_PROGRAMME_DECISION','selected_outcome':'SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED','puckworks_component_atlas_decision':a['decision']['selected_outcome'],'decision_reason_record_ids':[p.pair_id for p in pairs],'eligible_pair_count':len(eligible),'minimum_measurement_sets':sets['result'],'zero_pair_status':sets['zero_pair_status'],'physical_validation':'NOT_ESTABLISHED','reasons':['No level-1/2 scientifically eligible cross-repository pair survives retained-case, evidence-domain, node, basis, and uncertainty checks.','The zero-pair universe is not treated as successful coverage.','A complete measurement set cannot be calculated until comparability and uncertainty are established.'],'not_selected':{'APPARATUS_OBSERVATION_EXPLANATION_SURVIVES':'Foster and retained EWP machine histories are not matched at level 1/2.','DYNAMIC_BED_SIGNATURE_DISTINGUISHABLE':'No robust unique retained deformation discriminator.','SPATIAL_LOCALIZATION_ONLY_DISTINGUISHABLE_ROUTE':'No supported retained spatial comparator.'},'claim_ceiling':'MODEL_RESPONSE_COMPARISON_ONLY__PHYSICAL_VALIDATION_NOT_ESTABLISHED'}
+ return {'ewp_observable_export':e,'pair_eligibility':[asdict(p) for p in pairs],'cross_repository_comparison':[asdict(p) for p in pairs],'measurement_value':records,'coverage_matrix':coverage,'minimum_measurement_sets':sets,'decision':decision}
+
+def consume(path:Path)->dict[str,Any]:
+ b=build(load_atlas(path))
+ for name,value in b.items():_write(name+'.json',value)
+ return b['decision']
+def verify(path:Path)->None:
+ for name,value in build(load_atlas(path)).items():
+  p=OUT/(name+'.json')
+  if not p.exists() or p.read_bytes()!=pretty(value):raise ValueError('DETERMINISTIC_EXPORT_DRIFT:'+name)
+def main()->None:
+ p=argparse.ArgumentParser();p.add_argument('command',choices=['run','verify']);p.add_argument('--atlas',type=Path,required=True);a=p.parse_args();consume(a.atlas) if a.command=='run' else verify(a.atlas);print('SCI_MD_003_C1_'+a.command.upper()+'_OK')
+if __name__=='__main__':main()
