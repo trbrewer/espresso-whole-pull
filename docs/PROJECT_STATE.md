@@ -65,7 +65,10 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Active cross-model dependency: `SCI-MD-003 / RP-A-001` through a pinned,
   read-only Puckworks atlas export; the runtime dependency lock is unchanged
 - Current next action:
-  `SCI-MD-003 / RP-A-001 — common-observable response atlas consumer`
+  independent exact-head review of the corrected Puckworks RP-A-001 C1 export,
+  followed by review of the pinned SCI-MD-003 C1 consumer. The C1 result is
+  `SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED`: no eligible level-1/2
+  cross-repository pair and no complete measurement set were found.
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`

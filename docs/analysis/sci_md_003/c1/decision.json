@@ -1,0 +1,25 @@
+{
+  "claim_ceiling": "MODEL_RESPONSE_COMPARISON_ONLY__PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+  "decision_id": "EWP_CROSS_REPOSITORY_PROGRAMME_DECISION",
+  "decision_reason_record_ids": [
+    "EWP_FOSTER_MACHINE",
+    "EWP_WADSWORTH_FLOW",
+    "EWP_CAMERON_EXTRACTION"
+  ],
+  "eligible_pair_count": 0,
+  "minimum_measurement_sets": "NO_COMPLETE_MEASUREMENT_SET",
+  "not_selected": {
+    "APPARATUS_OBSERVATION_EXPLANATION_SURVIVES": "Foster and retained EWP machine histories are not matched at level 1/2.",
+    "DYNAMIC_BED_SIGNATURE_DISTINGUISHABLE": "No robust unique retained deformation discriminator.",
+    "SPATIAL_LOCALIZATION_ONLY_DISTINGUISHABLE_ROUTE": "No supported retained spatial comparator."
+  },
+  "physical_validation": "NOT_ESTABLISHED",
+  "puckworks_component_atlas_decision": "SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED",
+  "reasons": [
+    "No level-1/2 scientifically eligible cross-repository pair survives retained-case, evidence-domain, node, basis, and uncertainty checks.",
+    "The zero-pair universe is not treated as successful coverage.",
+    "A complete measurement set cannot be calculated until comparability and uncertainty are established."
+  ],
+  "selected_outcome": "SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED",
+  "zero_pair_status": "NO_ELIGIBLE_PAIRWISE_DISCRIMINATION_PROBLEM"
+}

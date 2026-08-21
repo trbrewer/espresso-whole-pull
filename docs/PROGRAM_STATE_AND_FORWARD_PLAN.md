@@ -206,8 +206,10 @@ lateral programme are not nominated. No completed SCI-LC subset enters this work
 The SCI-MD-003 consumer changes no OpenFOAM governing physics, runs no OpenFOAM
 case, leaves the runtime Puckworks lock unchanged, and does not activate a
 production solver task. Its bounded result is
-`SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED` with
-`NO_COMPLETE_MEASUREMENT_SET`. Physical validation remains `NOT_ESTABLISHED`,
+`SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED` with the initial candidate
+superseded by C1. The corrected response-derived consumer found zero eligible
+level-1/2 cross-repository pairs and calculated `NO_COMPLETE_MEASUREMENT_SET`;
+physical validation remains `NOT_ESTABLISHED`,
 the gate remains `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`, and experimental
 commissioning and protected/holdout scoring remain unauthorized.
 
