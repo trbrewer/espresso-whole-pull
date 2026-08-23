@@ -31,6 +31,7 @@
 #include "PstreamReduceOps.H"
 #include "mathematicalConstants.H"
 #include "OSspecific.H"
+#include "PtrList.H"
 #include "machineBoundaryModel.H"
 #include "forchheimerResistance.H"
 #include "poroelasticCompaction.H"
@@ -44,6 +45,18 @@ using namespace Foam;
 
 namespace
 {
+
+struct SpeciesParameters
+{
+    word id;
+    word role;
+    scalar initialFraction;
+    scalar rateConstant;
+    scalar saturationConcentration;
+    scalar diffusivity;
+    bool inherited;
+    label index;
+};
 
 scalar globalSumValue(scalar value)
 {
@@ -461,6 +474,108 @@ int main(int argc, char *argv[])
         readScalar(modelProperties.lookup("saturationConcentration"));
     const scalar effectiveSoluteDiffusivity =
         readScalar(modelProperties.lookup("effectiveSoluteDiffusivity"));
+    const word soluteTransportModel = modelProperties.lookupOrDefault<word>
+    (
+        "soluteTransportModel", "legacySingleSolute"
+    );
+    const bool indexedSpeciesMode =
+        soluteTransportModel == "indexedPassiveSpecies";
+    if (!indexedSpeciesMode && soluteTransportModel != "legacySingleSolute")
+    {
+        FatalErrorInFunction << "Unsupported soluteTransportModel="
+            << soluteTransportModel << exit(FatalError);
+    }
+    List<SpeciesParameters> speciesParameters;
+    if (indexedSpeciesMode)
+    {
+        if (!modelProperties.found("indexedPassiveSpeciesCoeffs"))
+        {
+            FatalErrorInFunction << "Missing indexedPassiveSpeciesCoeffs"
+                << exit(FatalError);
+        }
+        const dictionary& coefficients =
+            modelProperties.subDict("indexedPassiveSpeciesCoeffs");
+        const wordList speciesOrder(coefficients.lookup("speciesOrder"));
+        if (speciesOrder.empty())
+        {
+            FatalErrorInFunction << "speciesOrder must not be empty"
+                << exit(FatalError);
+        }
+        speciesParameters.setSize(speciesOrder.size());
+        scalar fractionSum = 0.0;
+        forAll(speciesOrder, speciesi)
+        {
+            const word& speciesId = speciesOrder[speciesi];
+            for (label earlier = 0; earlier < speciesi; ++earlier)
+            {
+                if (speciesOrder[earlier] == speciesId)
+                {
+                    FatalErrorInFunction << "Duplicate species id=" << speciesId
+                        << exit(FatalError);
+                }
+            }
+            if (!coefficients.found(speciesId))
+            {
+                FatalErrorInFunction << "Missing species dictionary=" << speciesId
+                    << exit(FatalError);
+            }
+            const dictionary& entry = coefficients.subDict(speciesId);
+            SpeciesParameters parameters;
+            parameters.id = speciesId;
+            entry.lookup("role") >> parameters.role;
+            parameters.initialFraction =
+                readScalar(entry.lookup("effectiveInitialFraction"));
+            parameters.rateConstant =
+                readScalar(entry.lookup("extractionRateConstant"));
+            parameters.saturationConcentration =
+                readScalar(entry.lookup("saturationConcentration"));
+            parameters.diffusivity =
+                readScalar(entry.lookup("effectiveSoluteDiffusivity"));
+            parameters.inherited = entry.lookupOrDefault<bool>
+            (
+                "inheritLegacyParameters", false
+            );
+            parameters.index = speciesi;
+            if
+            (
+                (parameters.role != "explicitInventory"
+              && parameters.role != "structuralBalance")
+             || parameters.initialFraction < 0.0
+             || parameters.rateConstant < 0.0
+             || parameters.saturationConcentration <= 0.0
+             || parameters.diffusivity < 0.0
+             || !std::isfinite(parameters.initialFraction)
+             || !std::isfinite(parameters.rateConstant)
+             || !std::isfinite(parameters.saturationConcentration)
+             || !std::isfinite(parameters.diffusivity)
+            )
+            {
+                FatalErrorInFunction << "Invalid indexed species=" << speciesId
+                    << exit(FatalError);
+            }
+            if
+            (
+                parameters.role == "structuralBalance"
+             && (!parameters.inherited
+              || parameters.rateConstant != extractionRateConstant
+              || parameters.saturationConcentration != saturationConcentration
+              || parameters.diffusivity != effectiveSoluteDiffusivity)
+            )
+            {
+                FatalErrorInFunction
+                    << "Structural-balance parameters must exactly inherit legacy"
+                    << exit(FatalError);
+            }
+            fractionSum += parameters.initialFraction;
+            speciesParameters[speciesi] = parameters;
+        }
+        if (Foam::mag(fractionSum - extractableFraction) > 1.0e-15)
+        {
+            FatalErrorInFunction << "Indexed inventory closure failed: "
+                << fractionSum << " != " << extractableFraction
+                << exit(FatalError);
+        }
+    }
     const scalar targetBeverageMass =
         readScalar(modelProperties.lookup("targetBeverageMass"));
     const scalar initialWetFront =
@@ -864,6 +979,53 @@ int main(int argc, char *argv[])
         mesh
     );
 
+    PtrList<volScalarField> speciesConcentrations(speciesParameters.size());
+    PtrList<volScalarField> speciesInventories(speciesParameters.size());
+    PtrList<volScalarField> speciesExtractionRates(speciesParameters.size());
+    forAll(speciesParameters, speciesi)
+    {
+        const word suffix("_" + speciesParameters[speciesi].id);
+        speciesConcentrations.set
+        (
+            speciesi,
+            new volScalarField
+            (
+                IOobject
+                (
+                    "dissolvedConcentration" + suffix, runTime.name(), mesh,
+                    IOobject::NO_READ, IOobject::AUTO_WRITE
+                ),
+                dissolvedConcentration
+            )
+        );
+        speciesInventories.set
+        (
+            speciesi,
+            new volScalarField
+            (
+                IOobject
+                (
+                    "remainingExtractable" + suffix, runTime.name(), mesh,
+                    IOobject::NO_READ, IOobject::AUTO_WRITE
+                ),
+                remainingExtractable
+            )
+        );
+        speciesExtractionRates.set
+        (
+            speciesi,
+            new volScalarField
+            (
+                IOobject
+                (
+                    "localExtractionRate" + suffix, runTime.name(), mesh,
+                    IOobject::NO_READ, IOobject::AUTO_WRITE
+                ),
+                localExtractionRate
+            )
+        );
+    }
+
     surfaceScalarField darcyFlux
     (
         IOobject
@@ -1120,6 +1282,26 @@ int main(int argc, char *argv[])
     (
         "zero", localExtractionRate.dimensions(), 0.0
     );
+    forAll(speciesParameters, speciesi)
+    {
+        speciesConcentrations[speciesi] = dimensionedScalar
+        (
+            "zero", dissolvedConcentration.dimensions(), 0.0
+        );
+        speciesInventories[speciesi] = dimensionedScalar
+        (
+            "initialSpeciesExtractableDensity",
+            remainingExtractable.dimensions(),
+            dryDose*speciesParameters[speciesi].initialFraction/fullMeshVolume
+        );
+        speciesExtractionRates[speciesi] = dimensionedScalar
+        (
+            "zero", localExtractionRate.dimensions(), 0.0
+        );
+        speciesConcentrations[speciesi].correctBoundaryConditions();
+        speciesInventories[speciesi].correctBoundaryConditions();
+        speciesExtractionRates[speciesi].correctBoundaryConditions();
+    }
 
     p.boundaryFieldRef()[inletPatchId] == 0.0;
     p.boundaryFieldRef()[outletPatchId] == outletPressure;
@@ -1293,8 +1475,14 @@ int main(int argc, char *argv[])
         caseRoot/"postProcessing"/"wholePull"/"0"
     );
     const fileName tracePath(traceDirectory/"traces.csv");
+    const fileName speciesTraceDirectory
+    (
+        caseRoot/"postProcessing"/"wholePullSpecies"/"0"
+    );
+    const fileName speciesTracePath(speciesTraceDirectory/"species_traces.csv");
 
     std::ofstream trace;
+    std::ofstream speciesTrace;
     if (Pstream::master())
     {
         // Create each level explicitly.  This avoids relying on whether the
@@ -1405,6 +1593,28 @@ int main(int argc, char *argv[])
                   << "effective_permeability_m2";
         }
         trace << '\n';
+        if (indexedSpeciesMode)
+        {
+            mkDir(caseRoot/"postProcessing"/"wholePullSpecies");
+            mkDir(speciesTraceDirectory);
+            speciesTrace.open
+            (
+                speciesTracePath.c_str(), std::ios::out | std::ios::trunc
+            );
+            if (!speciesTrace.good())
+            {
+                FatalErrorInFunction << "Unable to open species trace output: "
+                    << speciesTracePath << exit(FatalError);
+            }
+            speciesTrace << std::setprecision(15)
+                << "time_s,species_index,species_id,species_role,"
+                << "initial_extractable_mass_kg,outlet_solute_rate_kg_s,"
+                << "cup_solute_mass_kg,remaining_extractable_mass_kg,"
+                << "dissolved_mass_kg,back_diffusion_mass_kg,"
+                << "solute_balance_residual_kg,min_concentration_kg_m3,"
+                << "max_concentration_kg_m3,concentration_initial_residual,"
+                << "concentration_final_residual,concentration_iterations\n";
+        }
     }
 
     scalar localInitialStoredWaterMass = 0.0;
@@ -1441,6 +1651,12 @@ int main(int argc, char *argv[])
     scalar cupWaterMass = 0.0;
     scalar cupSoluteMass = 0.0;
     scalar soluteBackDiffusionMass = 0.0;
+    scalarField speciesCupMass(speciesParameters.size(), 0.0);
+    scalarField speciesBackDiffusionMass(speciesParameters.size(), 0.0);
+    scalarField speciesOutletRate(speciesParameters.size(), 0.0);
+    scalarField speciesConcentrationInitialResidual(speciesParameters.size(), 0.0);
+    scalarField speciesConcentrationFinalResidual(speciesParameters.size(), 0.0);
+    labelList speciesConcentrationIterations(speciesParameters.size(), 0);
     scalar previousStoredWaterMass = initialStoredWaterMass;
     scalar previousCupBeverageMass = 0.0;
     scalar upstreamPressure = initialUpstreamPressure;
@@ -2393,6 +2609,8 @@ int main(int argc, char *argv[])
           : 0.0;
 
         // Explicit source evaluated from the beginning-of-step inventories.
+        if (!indexedSpeciesMode)
+        {
         forAll(localExtractionRate, celli)
         {
             const scalar capacityFactor = Foam::max
@@ -2491,6 +2709,138 @@ int main(int argc, char *argv[])
 
         dissolvedConcentration.correctBoundaryConditions();
         remainingExtractable.correctBoundaryConditions();
+        }
+        else
+        {
+            concentrationInitialResidual = 0.0;
+            concentrationFinalResidual = 0.0;
+            concentrationIterations = 0;
+            forAll(speciesParameters, speciesi)
+            {
+                volScalarField& concentration = speciesConcentrations[speciesi];
+                volScalarField& inventory = speciesInventories[speciesi];
+                volScalarField& source = speciesExtractionRates[speciesi];
+                const SpeciesParameters& parameters = speciesParameters[speciesi];
+                forAll(source, celli)
+                {
+                    const scalar capacityFactor = Foam::max
+                    (
+                        1.0 - concentration[celli]
+                       /parameters.saturationConcentration,
+                        0.0
+                    );
+                    scalar rate = parameters.rateConstant*inventory[celli]
+                        *wetMask[celli]*capacityFactor;
+                    source[celli] = Foam::min
+                    (
+                        Foam::max(rate, 0.0),
+                        inventory[celli]/Foam::max(deltaT, SMALL)
+                    );
+                }
+                source.correctBoundaryConditions();
+                if (saturatedAtStepStart)
+                {
+                    const dimensionedScalar diffusivity
+                    (
+                        "speciesDiffusivity",
+                        dimensionSet(0, 2, -1, 0, 0, 0, 0),
+                        parameters.diffusivity
+                    );
+                    fvScalarMatrix equation
+                    (
+                        fvm::ddt(porosity, concentration)
+                      + fvm::div
+                        (
+                            darcyFlux,
+                            concentration,
+                            "div(darcyFlux,dissolvedConcentration)"
+                        )
+                      - fvm::laplacian(porosity*diffusivity, concentration)
+                     == source
+                    );
+                    const SolverPerformance<scalar> performance
+                    (
+                        equation.solve
+                        (
+                            mesh.solution().solverDict
+                            (
+                                "dissolvedConcentration"
+                            )
+                        )
+                    );
+                    speciesConcentrationInitialResidual[speciesi] =
+                        performance.initialResidual();
+                    speciesConcentrationFinalResidual[speciesi] =
+                        performance.finalResidual();
+                    speciesConcentrationIterations[speciesi] =
+                        performance.nIterations();
+                    concentrationInitialResidual = Foam::max
+                    (
+                        concentrationInitialResidual,
+                        performance.initialResidual()
+                    );
+                    concentrationFinalResidual = Foam::max
+                    (
+                        concentrationFinalResidual,
+                        performance.finalResidual()
+                    );
+                    concentrationIterations += performance.nIterations();
+                    forAll(inventory, celli)
+                    {
+                        inventory[celli] = Foam::max
+                        (
+                            inventory[celli] - deltaT*source[celli], 0.0
+                        );
+                        concentration[celli] = Foam::max
+                        (
+                            concentration[celli], 0.0
+                        );
+                    }
+                }
+                else
+                {
+                    forAll(concentration, celli)
+                    {
+                        const scalar oldBulkDissolved = porosity[celli]
+                            *previousSaturation[celli]*concentration[celli];
+                        const scalar newBulkDissolved =
+                            oldBulkDissolved + deltaT*source[celli];
+                        const scalar newLiquidFraction =
+                            porosity[celli]*saturation[celli];
+                        concentration[celli] = newLiquidFraction > VSMALL
+                          ? Foam::max(newBulkDissolved/newLiquidFraction, 0.0)
+                          : 0.0;
+                        inventory[celli] = Foam::max
+                        (
+                            inventory[celli] - deltaT*source[celli], 0.0
+                        );
+                    }
+                }
+                concentration.correctBoundaryConditions();
+                inventory.correctBoundaryConditions();
+            }
+            dissolvedConcentration = dimensionedScalar
+            (
+                "zero", dissolvedConcentration.dimensions(), 0.0
+            );
+            remainingExtractable = dimensionedScalar
+            (
+                "zero", remainingExtractable.dimensions(), 0.0
+            );
+            localExtractionRate = dimensionedScalar
+            (
+                "zero", localExtractionRate.dimensions(), 0.0
+            );
+            forAll(speciesParameters, speciesi)
+            {
+                dissolvedConcentration += speciesConcentrations[speciesi];
+                remainingExtractable += speciesInventories[speciesi];
+                localExtractionRate += speciesExtractionRates[speciesi];
+            }
+            dissolvedConcentration.correctBoundaryConditions();
+            remainingExtractable.correctBoundaryConditions();
+            localExtractionRate.correctBoundaryConditions();
+        }
 
         scalar outletSoluteRate = 0.0;
         scalar inletBackDiffusionRate = 0.0;
@@ -2663,6 +3013,52 @@ int main(int argc, char *argv[])
                         << "Machine/OpenFOAM flux mismatch at t=" << timeValue
                         << ": " << machineFluxRelativeDifference
                         << exit(FatalError);
+                }
+            }
+
+            if (indexedSpeciesMode)
+            {
+                outletSoluteRate = 0.0;
+                inletBackDiffusionRate = 0.0;
+                const fvsPatchScalarField& outletFlux =
+                    darcyFlux.boundaryField()[outletPatchId];
+                const scalarField& inletArea =
+                    mesh.magSf().boundaryField()[inletPatchId];
+                forAll(speciesParameters, speciesi)
+                {
+                    const fvPatchScalarField& outletConcentration =
+                        speciesConcentrations[speciesi]
+                            .boundaryField()[outletPatchId];
+                    scalar localOutletRate = 0.0;
+                    forAll(outletFlux, facei)
+                    {
+                        localOutletRate += Foam::max(outletFlux[facei], 0.0)
+                            *outletConcentration[facei];
+                    }
+                    tmp<scalarField> tGradient =
+                        speciesConcentrations[speciesi]
+                            .boundaryField()[inletPatchId].snGrad();
+                    const scalarField& gradient = tGradient();
+                    scalar localBackRate = 0.0;
+                    forAll(gradient, facei)
+                    {
+                        localBackRate += Foam::max
+                        (
+                            -initialPorosity
+                           *speciesParameters[speciesi].diffusivity
+                           *gradient[facei]*inletArea[facei],
+                            0.0
+                        );
+                    }
+                    speciesOutletRate[speciesi] =
+                        sectorScale*globalSumValue(localOutletRate);
+                    const scalar backRate =
+                        sectorScale*globalSumValue(localBackRate);
+                    outletSoluteRate += speciesOutletRate[speciesi];
+                    inletBackDiffusionRate += backRate;
+                    speciesCupMass[speciesi] +=
+                        Foam::max(speciesOutletRate[speciesi], 0.0)*deltaT;
+                    speciesBackDiffusionMass[speciesi] += backRate*deltaT;
                 }
             }
 
@@ -3038,6 +3434,58 @@ int main(int argc, char *argv[])
                 << exit(FatalError);
         }
 
+        scalarField speciesRemainingMass(speciesParameters.size(), 0.0);
+        scalarField speciesDissolvedMass(speciesParameters.size(), 0.0);
+        scalarField speciesMinimumConcentration(speciesParameters.size(), 0.0);
+        scalarField speciesMaximumConcentration(speciesParameters.size(), 0.0);
+        scalarField speciesBalanceResidual(speciesParameters.size(), 0.0);
+        forAll(speciesParameters, speciesi)
+        {
+            scalar localSpeciesRemaining = 0.0;
+            scalar localSpeciesDissolved = 0.0;
+            scalar localSpeciesMinimum = GREAT;
+            scalar localSpeciesMaximum = -GREAT;
+            forAll(mesh.V(), celli)
+            {
+                localSpeciesRemaining += speciesInventories[speciesi][celli]
+                    *mesh.V()[celli];
+                localSpeciesDissolved += porosity[celli]*saturation[celli]
+                    *speciesConcentrations[speciesi][celli]*mesh.V()[celli];
+                localSpeciesMinimum = Foam::min
+                (
+                    localSpeciesMinimum, speciesConcentrations[speciesi][celli]
+                );
+                localSpeciesMaximum = Foam::max
+                (
+                    localSpeciesMaximum, speciesConcentrations[speciesi][celli]
+                );
+            }
+            speciesRemainingMass[speciesi] =
+                sectorScale*globalSumValue(localSpeciesRemaining);
+            speciesDissolvedMass[speciesi] =
+                sectorScale*globalSumValue(localSpeciesDissolved);
+            speciesMinimumConcentration[speciesi] =
+                globalMinValue(localSpeciesMinimum);
+            speciesMaximumConcentration[speciesi] =
+                globalMaxValue(localSpeciesMaximum);
+            speciesBalanceResidual[speciesi] =
+                dryDose*speciesParameters[speciesi].initialFraction
+              - speciesRemainingMass[speciesi]
+              - speciesDissolvedMass[speciesi]
+              - speciesCupMass[speciesi]
+              - speciesBackDiffusionMass[speciesi];
+            if
+            (
+                speciesMinimumConcentration[speciesi] < -1.0e-14
+             || speciesRemainingMass[speciesi] < -1.0e-14
+             || !std::isfinite(speciesBalanceResidual[speciesi])
+            )
+            {
+                FatalErrorInFunction << "Invalid bounded species state for "
+                    << speciesParameters[speciesi].id << exit(FatalError);
+            }
+        }
+
         if (Pstream::master())
         {
             const scalar compliantStorage =
@@ -3207,6 +3655,24 @@ int main(int argc, char *argv[])
                       << ',' << saturatedPermeability*effectiveMultiplier;
             }
             trace << '\n';
+            forAll(speciesParameters, speciesi)
+            {
+                speciesTrace << timeValue << ',' << speciesi << ','
+                    << speciesParameters[speciesi].id << ','
+                    << speciesParameters[speciesi].role << ','
+                    << dryDose*speciesParameters[speciesi].initialFraction << ','
+                    << speciesOutletRate[speciesi] << ','
+                    << speciesCupMass[speciesi] << ','
+                    << speciesRemainingMass[speciesi] << ','
+                    << speciesDissolvedMass[speciesi] << ','
+                    << speciesBackDiffusionMass[speciesi] << ','
+                    << speciesBalanceResidual[speciesi] << ','
+                    << speciesMinimumConcentration[speciesi] << ','
+                    << speciesMaximumConcentration[speciesi] << ','
+                    << speciesConcentrationInitialResidual[speciesi] << ','
+                    << speciesConcentrationFinalResidual[speciesi] << ','
+                    << speciesConcentrationIterations[speciesi] << '\n';
+            }
         }
 
         if (runTime.writeTime())
@@ -3229,6 +3695,11 @@ int main(int argc, char *argv[])
     {
         trace.flush();
         trace.close();
+        if (indexedSpeciesMode)
+        {
+            speciesTrace.flush();
+            speciesTrace.close();
+        }
     }
 
     Info<< "\nEnd\n" << endl;

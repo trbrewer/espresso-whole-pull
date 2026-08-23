@@ -1,8 +1,17 @@
 # Project State
 
-## SCI-MD-004 Stage A — active owner-selected priority (2026-08-23)
+## SCI-MD-004 Stage C — active owner-selected priority (2026-08-23)
 
-The human owner selected SCI-MD-004 Stage A, superseding SCI-LC-001A as the current development priority without reversing its scientific result. SCI-MD-003 remains closed and unchanged. This stage is `NO_GOVERNING_PHYSICS_CHANGE`: no multispecies solver exists yet, and no Angeloni holdout prediction or score has been generated. The data-sufficiency disposition is `GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT`; the next authorized action is SCI-MD-004 Stage C implementation planning conditional on predeclared nonchemical hydraulic information. Physical validation remains `NOT_ESTABLISHED`.
+The human owner selected SCI-MD-004 as the active development priority,
+superseding SCI-LC-001A as the current next action without reversing its
+historical scientific result. Stage A is merged and complete with disposition
+`GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT`. Stage C is a
+`GOVERNING_PHYSICS_CHANGE` that adds strictly passive indexed solute states;
+hydraulics are required to remain unchanged. A verified implementation
+candidate is being prepared for independent exact-head review. Active
+protected comparison remains `NONE`: Angeloni scoring is unauthorized and no
+Angeloni holdout prediction or score has been generated. SCI-MD-003 remains
+closed and unchanged. Physical validation remains `NOT_ESTABLISHED`.
 
 ## Current SCI-ED / SCI-LC serialization authority
 
@@ -66,14 +75,13 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 488/488 PASS
+- Public source verification: 492/492 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
-- Active solver task: `NONE`
+- Active solver task: `SCI-MD-004_STAGE_C_INDEXED_PASSIVE_SPECIES`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
-- Current next action:
-  `SCI-LC-001A — Reduced lateral equalization and channeling phase diagram`
+- Current next action: `SCI-MD-004 Stage C independent exact-head review`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
@@ -86,6 +94,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
   `docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
+- Active protected comparison: `NONE`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
 
 The exact source-manifest count and aggregate are generated in

@@ -1,5 +1,18 @@
 # WP-0.1 model specification — v0.1.4 frozen-candidate release
 
+## Indexed passive-species extension
+
+For each configured species, Stage C applies
+`d(phi C_i)/dt + div(q C_i) - div(phi D_i grad(C_i)) = R_i`, where
+`R_i = k_i M_i wetMask max(1-C_i/Csat_i,0)` and
+`0 <= R_i <= M_i/delta_t`. Inventory updates as
+`M_i(new)=max(M_i(old)-delta_t R_i,0)`. Filling retains the existing local
+bulk-dissolved-mass rule independently for every species. Outlet advection,
+inlet back diffusion, cup accumulation, and conservation accounting use the
+unchanged legacy operators per species. A structural-balance species receives
+the legacy extractable fraction not allocated to explicit species and inherits
+the exact legacy scalar parameters.
+
 ## Release boundary
 
 Version 0.1.4 contains the same governing model as the numerically qualified v0.1.3 release. Its changes are limited to freeze finalization, provenance, diagnostics, explicit acceptance gates, and the routine MPI default.
