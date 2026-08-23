@@ -1,7 +1,7 @@
 # SCI-MD-003 / RP-A-001 C1 result
 
-The corrected consumer validated Puckworks export v2 at SHA-256
-`6353b1de063a0d2f55a1ec93dffb0ffcbdaaac3ec434e16c7c13f4cd90a44ed3`
+The reconciled consumer validated the independently accepted Puckworks export v5 at SHA-256
+`3f55615114e5938a443506107af8f93f51156e0f3682750608dead1a4f006b1e`
 and independently reconstructed cross-repository eligibility and measurement
 coverage.
 
@@ -16,4 +16,6 @@ and the non-vacuous result was `NO_COMPLETE_MEASUREMENT_SET`.
 The independently derived programme disposition is
 `SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED`. This does not reject apparatus,
 dynamic-bed, spatial, or lateral-coupling explanations. Physical validation is
-`NOT_ESTABLISHED`.
+`NOT_ESTABLISHED`. The accepted producer merged as
+`378e4c8c094bce3599eeadbcb237464d738596e7` with a tree byte-identical to the
+accepted feature tree. The EWP runtime dependency lock remains unchanged.

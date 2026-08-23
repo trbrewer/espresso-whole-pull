@@ -37,17 +37,21 @@ pre-primary-experiment design block. P2a completed and P2b independently
 recomputed `NO_UNAMBIGUOUS_BELOW_CANDIDATE`: the family supplied several
 in-window candidates but no whole-envelope below-window candidate. No freeze
 or instantiated post-freeze matrix exists, and P3/P4 remain unreachable. The
-SCI-LC-001A is historical and scientifically unresolved: zero eligible
-classifications were produced, the family hold remains active, SCI-LC-001B was
-not nominated, and no lateral programme is active. The current authorized
-cross-repository programme is `SCI-MD-003 / RP-A-001 — common-observable
-component-response, residual-decomposition, and measurement-value atlas`. See
+current next action is `SCI-LC-001A — Reduced lateral equalization and
+channeling phase diagram`. See
 the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md)
 for the prioritized program, gates, and current next action. XSV-XCT-001 is
 execution-complete, XSV-ENS-001 is `MERGED_COMPLETE`, and their pore-scale
 limitations are incorporated into that plan.
 The `ADDITIONAL_INDEPENDENT_DATA_REQUIRED` gate continues to limit validation
 claims and does not stop authorized post-observation mechanism discrimination.
+
+SCI-MD-003 / RP-A-001 is closed. The thin EWP consumer is reconciled to the
+independently accepted Puckworks v5 exact-head export and independently derives
+zero eligible pairwise discrimination problems, `NO_COMPLETE_MEASUREMENT_SET`,
+and `SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED`. This no-physics closeout
+does not alter the active SCI-LC-001A model-development state below, the runtime
+Puckworks dependency lock, or the physical-validation ceiling.
 
 - Current released version: `v0.2.0`
 - Last substantive scientific merge: `5c77b16513f932a822782fb97e9f8b97ceda0654`
@@ -62,13 +66,10 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
-- Active cross-model dependency: `SCI-MD-003 / RP-A-001` through a pinned,
-  read-only Puckworks atlas export; the runtime dependency lock is unchanged
+- Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
+  `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
 - Current next action:
-  independent exact-head review of the corrected Puckworks RP-A-001 C1 export,
-  followed by review of the pinned SCI-MD-003 C1 consumer. The C1 result is
-  `SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED`: no eligible level-1/2
-  cross-repository pair and no complete measurement set were found.
+  `SCI-LC-001A — Reduced lateral equalization and channeling phase diagram`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
@@ -296,10 +297,8 @@ approved the disposition `SCI_MD_002C_REJECTED_WRONG_PRESSURE_ORDERING`. Its
 frozen execution source is `cb9ebd2d4ba220d4777f033e06eddbae787b519a`;
 serial integration remains pending exact-head review. This post-observation
 screen establishes no physical validation and makes
-`NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. Those reduced families remain
-rejected only within their frozen definitions and may appear only as labelled
-negative controls. SCI-MD-003 / RP-A-001 is the current bounded analysis lane.
-The standing `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`,
+`NO_PRODUCTION_GOVERNING_PHYSICS_CHANGE`. SCI-LC-001A remains the active,
+independent primary lane. The standing `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`,
 `PHYSICAL_VALIDATION_NOT_ESTABLISHED`, and `NO_NEW_PRODUCTION_PHYSICS_YET`
 boundaries remain unchanged.
 

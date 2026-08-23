@@ -1,6 +1,6 @@
 # Reproduce SCI-MD-003 C1
 
-From this repository root, with the exact Puckworks v2 export named in the pin:
+From this repository root, with the exact accepted Puckworks v5 export named in the pin:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python3 -m tools.sci_md_003_atlas run --atlas /path/to/atlas_export.json

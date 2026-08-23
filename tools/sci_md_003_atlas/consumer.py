@@ -6,12 +6,18 @@ from pathlib import Path
 from typing import Any
 
 ROOT=Path(__file__).resolve().parents[2]; OUT=ROOT/'docs/analysis/sci_md_003/c1'
-EXPECTED_SCHEMA='puckworks.response-atlas-export/v2'
-EXPECTED_HASH='6353b1de063a0d2f55a1ec93dffb0ffcbdaaac3ec434e16c7c13f4cd90a44ed3'
-EXPECTED_COMMIT='8a4d2ffa35f45f9c44d0db0659ff0f1d469c8aa7'; EXPECTED_TREE='94499f4f8f9a350894c60c1e23924e4d5644f874'
-EXPECTED_PROTOCOL='aee421985ebd904150ed7ca714c0aebc624a2e9a424d4ab6eafd391677a39e53'
+EXPECTED_SCHEMA='puckworks.response-atlas-export/v5'
+EXPECTED_HASH='3f55615114e5938a443506107af8f93f51156e0f3682750608dead1a4f006b1e'
+EXPECTED_COMMIT='fd9b0dd5b8e7bcdc057e4bd01c69954346631f15'; EXPECTED_TREE='d0bb07722997e189c7489b4c50959a84e123be2f'
+EXPECTED_MERGE_COMMIT='378e4c8c094bce3599eeadbcb237464d738596e7'
+EXPECTED_PROTOCOL='8bf4b9d6c5d3fd2f2fb077f98a16e2175356ebc6a975ea640c25e810a710cb37'
 EXPECTED_CASE='7537675bd469e515724d1fe61535c8047bf5d05a0f71165978b02c5481f6c519'
 EXPECTED_ASSUMPTIONS='17f37c2ccbb39bca86f44d3bbc004085c40b6318ca6d101869fa6dfd3d5aac4a'
+EXPECTED_SPEC='a3064d18f026bef7b54e70f825febfd7b8bb01fe5bdbaff1477435030c8b678f'
+EXPECTED_REGISTRY='a8e336c00982f05e3312483d2d67f894b7485995069af936b084341b9ce8e114'
+EXPECTED_DECISION_INPUT='11efe65820894e8bf3768c3c4e4a43c922f05139a06d4a26617cf621167df6b7'
+EXPECTED_COMPONENTS=['foster2025.machine_mode','wadsworth2026.inertial','cameron2020.extraction_bdf']
+EXPECTED_CARDS={'cameron2020.md':'3d0eb1f7e6b18a5aebf2c17eab75b990f5d167aef1a5fb6129ab402f21f3f22b','foster2025_2.md':'b907b002ddb81560dd6e3d514b8cfa31bb1b2820a397195d27aa865036976b4b','wadsworth2026.md':'606abfce68ba40105b4650ee6af2e8c716c60adb2653b87065b5fd2207c25fe8','wadsworth2026_grindmap.md':'8cffbac5fe9f42072fb880be8b9e972870c847386eacd0ed2091d6f3dd1c34d4','wadsworth2026_inertial.md':'799b7dc68df3dc5602e7831db08482405c4c40cfccf24dfb81e69676f7a4c888'}
 SUPPORT={'SUPPORTED','UNSUPPORTED_RELATIONSHIP','UNSUPPORTED_FOR_CASE','OUTSIDE_VALID_RANGE','MISSING_REQUIRED_INPUT','NUMERICAL_FAILURE','NOT_EVALUATED'}
 
 def pretty(x:Any)->bytes:return (json.dumps(x,indent=2,sort_keys=True,allow_nan=False)+'\n').encode()
@@ -24,15 +30,18 @@ def _write(name:str,x:Any)->None:
 def validate_atlas(a:dict[str,Any])->dict[str,Any]:
  if a.get('schema_version')!=EXPECTED_SCHEMA:raise ValueError('PUCKWORKS_SCHEMA_VERSION_MISMATCH')
  m=a.get('run_manifest',{})
- for k,v in {'execution_code_commit':EXPECTED_COMMIT,'execution_code_tree':EXPECTED_TREE,'protocol_sha256':EXPECTED_PROTOCOL,'case_matrix_sha256':EXPECTED_CASE,'measurement_assumption_sha256':EXPECTED_ASSUMPTIONS}.items():
+ for k,v in {'execution_code_commit':EXPECTED_COMMIT,'execution_code_tree':EXPECTED_TREE,'protocol_sha256':EXPECTED_PROTOCOL,'case_matrix_sha256':EXPECTED_CASE,'measurement_assumption_sha256':EXPECTED_ASSUMPTIONS,'component_response_atlas_spec_sha256':EXPECTED_SPEC,'registry_snapshot_sha256':EXPECTED_REGISTRY,'selected_components':EXPECTED_COMPONENTS,'selected_card_sha256':EXPECTED_CARDS}.items():
   if m.get(k)!=v:raise ValueError(f'PUCKWORKS_{k.upper()}_MISMATCH')
- counts=a.get('summary_counts',{}); actual={'explanations':len(a.get('explanations',[])),'pair_eligibility':len(a.get('pair_eligibility',[])),'eligible_pairs':sum(x.get('eligibility')=='eligible' for x in a.get('pair_eligibility',[])),'measurement_records':len(a.get('measurement_value_records',[])),'result_cells':len(a.get('result_cells',[]))}
+ counts=a.get('summary_counts',{}); eligibility=a.get('channel_eligibility',[]); actual={'explanations':len(a.get('explanations',[])),'channel_eligibility':len(eligibility),'eligible_records':sum(x.get('eligibility')=='eligible' for x in eligibility),'measurement_records':len(a.get('measurement_value_records',[])),'result_cells':len(a.get('result_cells',[]))}
  if any(counts.get(k)!=v for k,v in actual.items()):raise ValueError('PUCKWORKS_SUMMARY_COUNTS_MISMATCH')
+ if a.get('matched_comparisons')!=eligibility:raise ValueError('PUCKWORKS_AUTHORIZED_COMPARISON_UNIVERSE_MISMATCH')
  for c in a.get('result_cells',[]):
   if c.get('support_status') not in SUPPORT:raise ValueError('UNKNOWN_SUPPORT_STATE')
   if c['support_status']!='SUPPORTED' and c.get('value') is not None:raise ValueError('UNSUPPORTED_NUMERIC_CELL')
- ids={x['pair_id'] for x in a.get('pair_eligibility',[])}
- if not set(a.get('decision',{}).get('decision_reason_record_ids',[]))<=ids:raise ValueError('PUCKWORKS_DECISION_NOT_SUPPORTED')
+ decision=a.get('decision',{}); apparatus=a.get('apparatus_evaluation',{})
+ if decision.get('decision_input_hash')!=EXPECTED_DECISION_INPUT or decision.get('selected_outcome')!='SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED':raise ValueError('PUCKWORKS_DECISION_AUTHORITY_MISMATCH')
+ if decision.get('physical_validation')!='NOT_ESTABLISHED' or decision.get('minimum_measurement_sets')!='NO_COMPLETE_MEASUREMENT_SET' or decision.get('eligible_pair_count')!=0:raise ValueError('PUCKWORKS_DECISION_SEMANTICS_MISMATCH')
+ if apparatus.get('status')!='NOT_EVALUATED' or a.get('apparatus_gate_evidence') or a.get('apparatus_gate_results'):raise ValueError('PUCKWORKS_APPARATUS_STATE_MISMATCH')
  return a
 
 def load_atlas(path:Path,expected_hash:str=EXPECTED_HASH)->dict[str,Any]:

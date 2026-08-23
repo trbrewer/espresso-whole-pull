@@ -194,24 +194,16 @@ The decisive result is that the Puckworks corpus is demonstrably useful. It expo
 
 This is not a failed validation program. It is the desired transition from internal verification to externally anchored diagnosis.
 
-## SCI-MD-003 / RP-A-001 current cross-repository programme
+## SCI-MD-003 / RP-A-001 closed consumer record
 
-The current authorized analysis consumes the pinned Puckworks common-observable
-atlas and retained EWP results only. SCI-LC-001A is historical and unresolved:
-3,558 cases completed, 108 stopped, all stopped cases diagnostic-applicable,
-`clean_finalization=false`, classification eligibility false, and zero eligible
-classifications. The SCI-LC family hold remains active; SCI-LC-001B and any new
-lateral programme are not nominated. No completed SCI-LC subset enters this work.
-
-The SCI-MD-003 consumer changes no OpenFOAM governing physics, runs no OpenFOAM
-case, leaves the runtime Puckworks lock unchanged, and does not activate a
-production solver task. Its bounded result is
-`SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED` with the initial candidate
-superseded by C1. The corrected response-derived consumer found zero eligible
-level-1/2 cross-repository pairs and calculated `NO_COMPLETE_MEASUREMENT_SET`;
-physical validation remains `NOT_ESTABLISHED`,
-the gate remains `ADDITIONAL_INDEPENDENT_DATA_REQUIRED`, and experimental
-commissioning and protected/holdout scoring remain unauthorized.
+The independently accepted Puckworks v5 response atlas is consumed through a
+thin, read-only EWP adapter. The adapter independently derives zero eligible
+pairwise discrimination problems, `NO_COMPLETE_MEASUREMENT_SET`, and
+`SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED`. The reconciliation changes no
+solver, application, case, governing physics, model parameter, or runtime
+hydraulic behavior; it leaves the production dependency lock and the active
+model-development programme unchanged. Physical validation remains
+`NOT_ESTABLISHED`.
 
 VAL-CORPUS-002 is complete, approved, and merged. The next scientific gate is
 additional independent data, not further fitting or reuse of the same
