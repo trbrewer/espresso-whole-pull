@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 459,
-  "total_uncompressed_bytes_excluding_manifest": 7033661,
-  "aggregate_source_sha256": "0b06c674f95a7df715d4eb4dd23d741768397b4df5df63083781e0f45c11b81a",
-  "aggregate_sha256": "0b06c674f95a7df715d4eb4dd23d741768397b4df5df63083781e0f45c11b81a",
+  "file_count": 485,
+  "total_uncompressed_bytes_excluding_manifest": 7084311,
+  "aggregate_source_sha256": "356120e64210691e9db7d16370bcc2e4127b35ee33f9dc141b1b9f15775e299d",
+  "aggregate_sha256": "356120e64210691e9db7d16370bcc2e4127b35ee33f9dc141b1b9f15775e299d",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -449,8 +449,8 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "6b70cd3c0369536534973a3aa5b1221edec59129d28f2772b849c844d21710b8",
-      "bytes": 46405,
+      "sha256": "d466457a971657fcd6fad47c07879e1d577be710dc5cf21867eda5af72851989",
+      "bytes": 46992,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
@@ -666,6 +666,131 @@
     "docs/analysis/sci_md_002c/RESULT.md": {
       "sha256": "f10bb896ddea0bd88da7bea7b5f0e7c71efcbfa26f3a570a9679a0c527f23143",
       "bytes": 5415,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/DECISION.json": {
+      "sha256": "fb981c1c7d2cf6decadcba90d69b44ac723c93c9ee6867ea0cdad40720dcb2ec",
+      "bytes": 799,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/MEASUREMENT_RECOMMENDATION.md": {
+      "sha256": "971ffcfc0f853a2fbba13e6315071df890f8242319670d2bcace710d7eedd1c8",
+      "bytes": 549,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/PROTOCOL.md": {
+      "sha256": "a336ec9437bda1d43cb3ef4c7abec3cbdf76787282aff7300a4891250d892c3b",
+      "bytes": 543,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/PUCKWORKS_ANALYSIS_PIN.json": {
+      "sha256": "13088f70a7e8ff5b090ce642b2d1ac5a69c24b5cbbed3be61b480d9f30d50912",
+      "bytes": 734,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/REPRODUCE.md": {
+      "sha256": "5c7a3980bf7e3656ca11e8d5f4df790667bbaae69c4ffe9233bcc833dbe97bdb",
+      "bytes": 392,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/RESULT.md": {
+      "sha256": "1c1cec59088e8ebd19a9c79090e1a6fdb9deed05af6ead5e0106bf78e6645e71",
+      "bytes": 1251,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/SUPERSESSION.md": {
+      "sha256": "5de14e961a9d7150f47f68ce702c1b58f5a49abeb200cf71e9c48978d24158dc",
+      "bytes": 417,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/MEASUREMENT_RECOMMENDATION.md": {
+      "sha256": "e04a1c6904babf4cbc98080d69d632c9fc18aebdf414b403cec555e03ea97204",
+      "bytes": 514,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/PROTOCOL.md": {
+      "sha256": "78608c30fb35b17ce7bc2d9c0db4c1dad901ddaebeb0019b464a6a048f4d4171",
+      "bytes": 1475,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/PUCKWORKS_ANALYSIS_PIN.json": {
+      "sha256": "f7921aa4f7ccba09d0b389be6d18a035b592e8edaf1710abe3d452853d466120",
+      "bytes": 2559,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/REPRODUCE.md": {
+      "sha256": "8b6c7161eac5316f2709a00c080512f53a643c080357377b41c40bc7ef639843",
+      "bytes": 468,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/RESULT.md": {
+      "sha256": "e3b30d61a5df633f0262c139c5e2ab8a762c32b3d9a5b8b95672dfa0a6943312",
+      "bytes": 1214,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/coverage_matrix.json": {
+      "sha256": "723e124ccc8a555779d93c807907cef2c34590fb9e26988bbc7e681bab003893",
+      "bytes": 915,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/cross_repository_comparison.json": {
+      "sha256": "0ee9e18310a7751d5812fd6d5a99a49785f9523fba9b6619b75239977ec9e871",
+      "bytes": 1273,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/decision.json": {
+      "sha256": "c5c1deb0a1f751e31287116f60934b9eab1bd10c715a4cd254f243a8ca0d5c59",
+      "bytes": 1323,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/ewp_case_matrix.json": {
+      "sha256": "8a8a588b3711ebfe0412acd70e14fa647ba1e04f45d2fc80c82d1b6225741df4",
+      "bytes": 379,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/ewp_observable_export.json": {
+      "sha256": "19b24e27b728320a18a0264409cc9f2967bd18890aee7f0797e5853c1f45ba3e",
+      "bytes": 10614,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/measurement_value.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/minimum_measurement_sets.json": {
+      "sha256": "e4931a1b85830a151b97c25cb4c5d5e074bef57208cb09ddefee6d0fc79ddf65",
+      "bytes": 156,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/c1/pair_eligibility.json": {
+      "sha256": "0ee9e18310a7751d5812fd6d5a99a49785f9523fba9b6619b75239977ec9e871",
+      "bytes": 1273,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/cross_repository_comparison.json": {
+      "sha256": "944117dd69fcf6a48c593f4ebda2d24dc061a88e009997bc8ee6db4157989dfd",
+      "bytes": 1516,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/ewp_case_matrix.json": {
+      "sha256": "2952ee653a3b6017941f97eb965f7240fd971aed6154b48d6dc63b85e37599d3",
+      "bytes": 315,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/ewp_observable_export.json": {
+      "sha256": "05628770cf2650484104def11b1a4887be120cc58daaae724f3a38abca2625b4",
+      "bytes": 12539,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/measurement_value_consumer.json": {
+      "sha256": "86d5051b2ec722c1c41c0f38faa947318b79f6ab1d238641057809884206c912",
+      "bytes": 3343,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_003/superseded/initial_candidate/manifest.json": {
+      "sha256": "9f8ab4107a7f0bd4e0e7ca25f2a6091839669e6b5df7f66f96672419178eda9d",
+      "bytes": 588,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1731,6 +1856,11 @@
     "tests/test_sci_md_002c.py": {
       "sha256": "e5fe1d46f2865e2bb4e0ab19288a3d44e662a22516bbc920efd81c8b437dda32",
       "bytes": 19173,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_003_atlas.py": {
+      "sha256": "a9a968e474579cfe71ad9ed1235d6fca3da4a6a95f6614352fcc9540b3abeeb5",
+      "bytes": 4911,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

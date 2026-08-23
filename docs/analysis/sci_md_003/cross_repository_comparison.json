@@ -1,0 +1,32 @@
+[
+  {
+    "comparability_level": 3,
+    "comparison_id": "EWP_WP03_PRESSURE_ORDERING_VS_PUCKWORKS_STATIC_HYDRAULICS",
+    "disagreement_category": "SEMANTIC_OR_NONCOMPARABLE",
+    "ewp_source": "WP03-002 corrected compaction",
+    "numeric_residual": null,
+    "observable": "flow response to pressure",
+    "puckworks_component": "wadsworth2026.inertial",
+    "reason": "EWP retained mass flow from dynamic compacting bed versus static superficial Darcy velocity; model ordering is decreasing while Puckworks lens is increasing, but bases/interventions are not level 1/2"
+  },
+  {
+    "comparability_level": 3,
+    "comparison_id": "EWP_WP03_MACHINE_VS_FOSTER_NULL",
+    "disagreement_category": "UNSUPPORTED_COMPARISON",
+    "ewp_source": "WP03-002 corrected compaction",
+    "numeric_residual": null,
+    "observable": "machine pressure/flow/timing",
+    "puckworks_component": "foster2025.machine_mode",
+    "reason": "selected EWP compact endpoint lacks synchronized upstream/headspace timing and first-drip observables needed for null survival gates"
+  },
+  {
+    "comparability_level": 4,
+    "comparison_id": "EWP_EXTRACTION_VS_CAMERON",
+    "disagreement_category": "SEMANTIC_OR_NONCOMPARABLE",
+    "ewp_source": "VAL-CORPUS-002",
+    "numeric_residual": null,
+    "observable": "extraction response",
+    "puckworks_component": "cameron2020.extraction_bdf",
+    "reason": "selected retained aggregate source/model contrasts do not expose a matching cup-basis endpoint under the frozen Cameron cases"
+  }
+]

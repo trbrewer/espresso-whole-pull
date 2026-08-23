@@ -1,0 +1,5 @@
+{
+  "excluded": ["SCI-LC-001A completed subset", "new OpenFOAM execution"],
+  "frozen_cases": ["WP03-002/WASZ-5-COMPACT", "WP03-002/WASZ-9-COMPACT", "WP03-002/WASZ-11-COMPACT", "VAL-CASE-001 retained sensitivity and identifiability", "VAL-CORPUS-002 retained B2 contrasts"],
+  "status": "FROZEN_OBSERVATION_ONLY"
+}

@@ -1,0 +1,16 @@
+{
+  "current_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
+  "not_selected": {
+    "APPARATUS_OBSERVATION_EXPLANATION_SURVIVES": "applicable null gates incomplete",
+    "DYNAMIC_BED_SIGNATURE_DISTINGUISHABLE": "no robust unique level-1/2 deformation route",
+    "SPATIAL_LOCALIZATION_ONLY_DISTINGUISHABLE_ROUTE": "no retained supported spatial comparator"
+  },
+  "physical_validation": "NOT_ESTABLISHED",
+  "reasons": [
+    "fixed-bed apparatus null cannot be adjudicated against selected retained EWP endpoints",
+    "cross-repository comparisons are levels 3 and 4",
+    "required synchronized upstream/basket pressure, timing, deformation, spatial, and uncertainty fields are absent",
+    "NO_COMPLETE_MEASUREMENT_SET"
+  ],
+  "selected_outcome": "SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED"
+}

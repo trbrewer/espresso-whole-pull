@@ -1,0 +1,10 @@
+{
+  "ewp_final_head": "be8623fadcf47de4e8e045fc1cc917f3ba5192b7",
+  "ewp_final_tree": "cef9241a9a02ccb34d8c6aa6cecc18826c2e63b1",
+  "ewp_implementation_commit": "b7ad27048f1d88ea9780ae52c0010660def314d5",
+  "ewp_result_commit": "8876622bdd7f9780aafe2dd4c56421a8dd211c10",
+  "puckworks_export_schema": "puckworks.response-atlas-export/v1",
+  "puckworks_export_sha256": "434c8bd208474bd4fe33281cc6f633ee8ac4e47ffefae9039a4014cba7ad2420",
+  "status": "SUPERSEDED_NOT_ELIGIBLE_AS_C1_RESULT",
+  "reason": "Measurement value and final decision were copied rather than independently derived."
+}

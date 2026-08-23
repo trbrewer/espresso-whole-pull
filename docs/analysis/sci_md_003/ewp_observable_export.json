@@ -1,0 +1,359 @@
+{
+  "excluded_families": [
+    "SCI-LC-001A"
+  ],
+  "observables": [
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "bed_height_or_deformation",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "bed_pressure_drop",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "cup_tds",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "effective_resistance",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "extraction_yield",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "first_drip_timing",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "local_extraction",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "permeability",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "porosity",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "spatial_flow_variance",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "RETAINED_SET",
+      "evidence_class": "NOT_AVAILABLE",
+      "node": "NOT_PROVIDED",
+      "observable": "upstream_pressure",
+      "reference_basis": "NOT_PROVIDED",
+      "source_artifact": "retained artifact audit",
+      "source_field": "NOT_RETAINED_IN_SELECTED_COMPACT_ENDPOINTS",
+      "support_status": "UNSUPPORTED_RELATIONSHIP",
+      "time_origin": "NOT_PROVIDED",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "NOT_PROVIDED",
+      "value": null
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "WASZ-11-COMPACT",
+      "evidence_class": "RETAINED_POST_OBSERVATION_MODEL_OUTPUT",
+      "node": "BASKET",
+      "observable": "basket_pressure",
+      "reference_basis": "GAUGE",
+      "source_artifact": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "source_field": "corrected_compaction[].endpoint.model_pressure_bar",
+      "support_status": "SUPPORTED",
+      "time_origin": "solver_time=source_time+3s",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "bar",
+      "value": 11.0
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "WASZ-11-COMPACT",
+      "evidence_class": "RETAINED_POST_OBSERVATION_MODEL_OUTPUT",
+      "node": "BED_OUTLET",
+      "observable": "cumulative_delivered_mass",
+      "reference_basis": "beverage mass",
+      "source_artifact": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "source_field": "corrected_compaction[].endpoint.model_mass_g",
+      "support_status": "SUPPORTED",
+      "time_origin": "solver_time=source_time+3s",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "g",
+      "value": 20.86573711136818
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "WASZ-11-COMPACT",
+      "evidence_class": "RETAINED_POST_OBSERVATION_MODEL_OUTPUT",
+      "node": "BED_OUTLET",
+      "observable": "mass_flow_rate",
+      "reference_basis": "beverage mass flow",
+      "source_artifact": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "source_field": "corrected_compaction[].endpoint.model_flow_g_s",
+      "support_status": "SUPPORTED",
+      "time_origin": "solver_time=source_time+3s",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "g/s",
+      "value": 0.6859429265236632
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "WASZ-5-COMPACT",
+      "evidence_class": "RETAINED_POST_OBSERVATION_MODEL_OUTPUT",
+      "node": "BASKET",
+      "observable": "basket_pressure",
+      "reference_basis": "GAUGE",
+      "source_artifact": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "source_field": "corrected_compaction[].endpoint.model_pressure_bar",
+      "support_status": "SUPPORTED",
+      "time_origin": "solver_time=source_time+3s",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "bar",
+      "value": 5.0
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "WASZ-5-COMPACT",
+      "evidence_class": "RETAINED_POST_OBSERVATION_MODEL_OUTPUT",
+      "node": "BED_OUTLET",
+      "observable": "cumulative_delivered_mass",
+      "reference_basis": "beverage mass",
+      "source_artifact": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "source_field": "corrected_compaction[].endpoint.model_mass_g",
+      "support_status": "SUPPORTED",
+      "time_origin": "solver_time=source_time+3s",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "g",
+      "value": 15.956580521107659
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "WASZ-5-COMPACT",
+      "evidence_class": "RETAINED_POST_OBSERVATION_MODEL_OUTPUT",
+      "node": "BED_OUTLET",
+      "observable": "mass_flow_rate",
+      "reference_basis": "beverage mass flow",
+      "source_artifact": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "source_field": "corrected_compaction[].endpoint.model_flow_g_s",
+      "support_status": "SUPPORTED",
+      "time_origin": "solver_time=source_time+3s",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "g/s",
+      "value": 0.5853541853587553
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "WASZ-9-COMPACT",
+      "evidence_class": "RETAINED_POST_OBSERVATION_MODEL_OUTPUT",
+      "node": "BASKET",
+      "observable": "basket_pressure",
+      "reference_basis": "GAUGE",
+      "source_artifact": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "source_field": "corrected_compaction[].endpoint.model_pressure_bar",
+      "support_status": "SUPPORTED",
+      "time_origin": "solver_time=source_time+3s",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "bar",
+      "value": 9.0
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "WASZ-9-COMPACT",
+      "evidence_class": "RETAINED_POST_OBSERVATION_MODEL_OUTPUT",
+      "node": "BED_OUTLET",
+      "observable": "cumulative_delivered_mass",
+      "reference_basis": "beverage mass",
+      "source_artifact": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "source_field": "corrected_compaction[].endpoint.model_mass_g",
+      "support_status": "SUPPORTED",
+      "time_origin": "solver_time=source_time+3s",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "g",
+      "value": 20.313852248476433
+    },
+    {
+      "adapter": "NONE",
+      "case_id": "WASZ-9-COMPACT",
+      "evidence_class": "RETAINED_POST_OBSERVATION_MODEL_OUTPUT",
+      "node": "BED_OUTLET",
+      "observable": "mass_flow_rate",
+      "reference_basis": "beverage mass flow",
+      "source_artifact": "validation/wp03/WP03_002_CORRECTED_COMPARISON.json",
+      "source_field": "corrected_compaction[].endpoint.model_flow_g_s",
+      "support_status": "SUPPORTED",
+      "time_origin": "solver_time=source_time+3s",
+      "uncertainty": "NOT_PROVIDED",
+      "unit": "g/s",
+      "value": 0.6809731269405028
+    }
+  ],
+  "retained_sources": {
+    "val_case_001": {
+      "case_id": "VAL-CASE-001",
+      "scientific_disposition": "VALIDATION_SUPPORT_SENSITIVITY_AND_IDENTIFIABILITY_SCREENING",
+      "sha256": "bb7bba7481a56ac8729758a6d5cd36e7d046b889256a7c1d1c8ed7cff998375a"
+    },
+    "val_corpus_002": {
+      "production_counts": {
+        "b1_anchor_reuse": 1,
+        "fresh_executions_total": 44,
+        "identities": 45,
+        "infrastructure_failure": 0,
+        "pass": 27,
+        "typed_numerical_failure": 18
+      },
+      "scientific_disposition": "FIXED_PARAMETER_B2_RESULT_WITH_18_IMMUTABLE_TARGET_COVERAGE_FAILURES",
+      "sha256": "61fd74cb0977ac862965512dd3c4d92722a017fe9146314c168422250478b1be",
+      "status": "PASS"
+    },
+    "wp03_002": {
+      "pressure_flow_ordering": {
+        "flow": {
+          "model_order": [
+            "WASZ-11-COMPACT",
+            "WASZ-9-COMPACT",
+            "WASZ-5-COMPACT"
+          ],
+          "source_order": [
+            "WASZ-5-COMPACT",
+            "WASZ-9-COMPACT",
+            "WASZ-11-COMPACT"
+          ],
+          "spearman": -1.0
+        },
+        "mass": {
+          "model_order": [
+            "WASZ-11-COMPACT",
+            "WASZ-9-COMPACT",
+            "WASZ-5-COMPACT"
+          ],
+          "source_order": [
+            "WASZ-5-COMPACT",
+            "WASZ-9-COMPACT",
+            "WASZ-11-COMPACT"
+          ],
+          "spearman": -1.0
+        }
+      },
+      "sha256": "6a6c6bd62dd6ffda209c79e24e9fc9506f74fdc421de9ff56400c15162f0600e"
+    }
+  },
+  "schema_version": "ewp.sci-md-003-observable-export/v1"
+}

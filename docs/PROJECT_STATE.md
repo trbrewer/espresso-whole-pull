@@ -46,6 +46,13 @@ limitations are incorporated into that plan.
 The `ADDITIONAL_INDEPENDENT_DATA_REQUIRED` gate continues to limit validation
 claims and does not stop authorized post-observation mechanism discrimination.
 
+SCI-MD-003 / RP-A-001 is closed. The thin EWP consumer is reconciled to the
+independently accepted Puckworks v5 exact-head export and independently derives
+zero eligible pairwise discrimination problems, `NO_COMPLETE_MEASUREMENT_SET`,
+and `SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED`. This no-physics closeout
+does not alter the active SCI-LC-001A model-development state below, the runtime
+Puckworks dependency lock, or the physical-validation ceiling.
+
 - Current released version: `v0.2.0`
 - Last substantive scientific merge: `5c77b16513f932a822782fb97e9f8b97ceda0654`
 - Last substantive scientific tree: `76741f99f58672fd6f1fd021279517a255b045b6`
@@ -55,7 +62,7 @@ claims and does not stop authorized post-observation mechanism discrimination.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 459/459 PASS
+- Public source verification: 485/485 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`

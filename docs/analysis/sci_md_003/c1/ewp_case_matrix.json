@@ -1,0 +1,13 @@
+{
+  "cases": [
+    "WP03_002_CORRECTED_COMPACTION_5BAR",
+    "WP03_002_CORRECTED_COMPACTION_9BAR",
+    "WP03_002_CORRECTED_COMPACTION_11BAR",
+    "VAL_CASE_001_RETAINED",
+    "VAL_CORPUS_002_STAGE_B2_RETAINED"
+  ],
+  "execution": "OBSERVATION_ONLY_RETAINED_OUTPUTS",
+  "openfoam_execution": false,
+  "schema_version": "ewp.sci-md-003-case-matrix/c1",
+  "sci_lc_excluded": true
+}

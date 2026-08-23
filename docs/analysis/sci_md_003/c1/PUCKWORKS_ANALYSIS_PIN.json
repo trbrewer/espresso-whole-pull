@@ -1,0 +1,41 @@
+{
+  "adapter_versions": {
+    "flow_area_density": "1.0.0",
+    "permeability_to_resistance": "1.0.0",
+    "pressure_drop_to_gradient": "2.0.0",
+    "scalar_darcy_flux_override": "1.0.0"
+  },
+  "atlas_schema_version": "puckworks.response-atlas-export/v5",
+  "case_matrix_sha256": "7537675bd469e515724d1fe61535c8047bf5d05a0f71165978b02c5481f6c519",
+  "checkout_method": "git checkout exact accepted feature commit; consume independently accepted exact-head v5 export only",
+  "decision_input_sha256": "11efe65820894e8bf3768c3c4e4a43c922f05139a06d4a26617cf621167df6b7",
+  "export_artifact_sha256": "3f55615114e5938a443506107af8f93f51156e0f3682750608dead1a4f006b1e",
+  "measurement_assumption_sha256": "17f37c2ccbb39bca86f44d3bbc004085c40b6318ca6d101869fa6dfd3d5aac4a",
+  "protocol_sha256": "8bf4b9d6c5d3fd2f2fb077f98a16e2175356ebc6a975ea640c25e810a710cb37",
+  "puckworks_execution_commit": "fd9b0dd5b8e7bcdc057e4bd01c69954346631f15",
+  "puckworks_execution_tree": "d0bb07722997e189c7489b4c50959a84e123be2f",
+  "puckworks_final_head": "fd9b0dd5b8e7bcdc057e4bd01c69954346631f15",
+  "puckworks_final_tree": "d0bb07722997e189c7489b4c50959a84e123be2f",
+  "puckworks_merge_commit": "378e4c8c094bce3599eeadbcb237464d738596e7",
+  "puckworks_merge_tree": "d0bb07722997e189c7489b4c50959a84e123be2f",
+  "puckworks_result_commit": "fd9b0dd5b8e7bcdc057e4bd01c69954346631f15",
+  "puckworks_remote": "https://github.com/trbrewer/puckworks.git",
+  "registry_snapshot_sha256": "a8e336c00982f05e3312483d2d67f894b7485995069af936b084341b9ce8e114",
+  "role": "READ_ONLY_ANALYSIS_DEPENDENCY",
+  "runtime_dependency_lock_changed": false,
+  "selected_card_sha256": {
+    "cameron2020.md": "3d0eb1f7e6b18a5aebf2c17eab75b990f5d167aef1a5fb6129ab402f21f3f22b",
+    "foster2025_2.md": "b907b002ddb81560dd6e3d514b8cfa31bb1b2820a397195d27aa865036976b4b",
+    "wadsworth2026.md": "606abfce68ba40105b4650ee6af2e8c716c60adb2653b87065b5fd2207c25fe8",
+    "wadsworth2026_grindmap.md": "8cffbac5fe9f42072fb880be8b9e972870c847386eacd0ed2091d6f3dd1c34d4",
+    "wadsworth2026_inertial.md": "799b7dc68df3dc5602e7831db08482405c4c40cfccf24dfb81e69676f7a4c888"
+  },
+  "selected_components": [
+    "foster2025.machine_mode",
+    "wadsworth2026.inertial",
+    "cameron2020.extraction_bdf"
+  ],
+  "component_response_atlas_spec_sha256": "a3064d18f026bef7b54e70f825febfd7b8bb01fe5bdbaff1477435030c8b678f",
+  "superseded_v1_export_sha256": "434c8bd208474bd4fe33281cc6f633ee8ac4e47ffefae9039a4014cba7ad2420",
+  "superseded_v2_export_sha256": "6353b1de063a0d2f55a1ec93dffb0ffcbdaaac3ec434e16c7c13f4cd90a44ed3"
+}

@@ -194,6 +194,17 @@ The decisive result is that the Puckworks corpus is demonstrably useful. It expo
 
 This is not a failed validation program. It is the desired transition from internal verification to externally anchored diagnosis.
 
+## SCI-MD-003 / RP-A-001 closed consumer record
+
+The independently accepted Puckworks v5 response atlas is consumed through a
+thin, read-only EWP adapter. The adapter independently derives zero eligible
+pairwise discrimination problems, `NO_COMPLETE_MEASUREMENT_SET`, and
+`SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED`. The reconciliation changes no
+solver, application, case, governing physics, model parameter, or runtime
+hydraulic behavior; it leaves the production dependency lock and the active
+model-development programme unchanged. Physical validation remains
+`NOT_ESTABLISHED`.
+
 VAL-CORPUS-002 is complete, approved, and merged. The next scientific gate is
 additional independent data, not further fitting or reuse of the same
 dependent cup-mass evidence. A future human-owner decision must choose between

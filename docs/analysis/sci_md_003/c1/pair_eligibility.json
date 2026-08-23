@@ -1,0 +1,38 @@
+[
+  {
+    "channel": "flow",
+    "comparability_level": 3,
+    "eligibility": "ineligible",
+    "ewp_explanation": "EWP_WP03_DYNAMIC_BED",
+    "pair_id": "EWP_FOSTER_MACHINE",
+    "pair_role": "SCIENTIFICALLY_COMPETING",
+    "puckworks_explanation": "FOSTER_FIXED_BED_MACHINE_NULL",
+    "reason_code": "MACHINE_PARAMETERS_AND_TIME_HISTORY_NOT_MATCHED",
+    "scenario": "MACHINE_REF",
+    "uncertainty_available": false
+  },
+  {
+    "channel": "flow",
+    "comparability_level": 4,
+    "eligibility": "ineligible",
+    "ewp_explanation": "EWP_WP03_DYNAMIC_BED",
+    "pair_id": "EWP_WADSWORTH_FLOW",
+    "pair_role": "SCIENTIFICALLY_COMPETING",
+    "puckworks_explanation": "WADSWORTH_STATIC_INERTIAL_LENS",
+    "reason_code": "BED_DROP_STATIC_VELOCITY_VS_BASKET_DYNAMIC_MASS_FLOW",
+    "scenario": "P09_REF",
+    "uncertainty_available": false
+  },
+  {
+    "channel": "local_extraction",
+    "comparability_level": 4,
+    "eligibility": "ineligible",
+    "ewp_explanation": "EWP_RETAINED_EXTRACTION",
+    "pair_id": "EWP_CAMERON_EXTRACTION",
+    "pair_role": "OBSERVATION_OPERATOR_COMPARISON",
+    "puckworks_explanation": "CAMERON_EXTRACTION_OBSERVER",
+    "reason_code": "NO_MATCHED_CUP_BASIS_ENDPOINT",
+    "scenario": "P09_REF",
+    "uncertainty_available": false
+  }
+]
