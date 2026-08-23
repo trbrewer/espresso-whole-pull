@@ -1,0 +1,50 @@
+{
+  "schema_version": "ewp.sci_md_004.stage_c.r1.verification.v2",
+  "authorization": "SCI-MD-004-STAGE-C-R1-OWNER-AUTHORIZATION-VERIFICATION-COMPLETION-POSITIVE-DIFFUSIVITY-INHERITED-BOUNDARY-SENSITIVITY-ADJUDICATION-AND-FINAL-EXACT-HEAD-REVIEW-2026-08-23",
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "authority": {
+    "stage_a": {"commit": "bf4de34310fcc433071e00ee7fa51082a37d1c4c", "tree": "6f344dd1dad6b54876f20d80d6e58ec4ce4af9ac", "disposition": "GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT"},
+    "r0_implementation": {"commit": "7e957214ad581abad86582ea859dee162e46a509", "tree": "d23e45458c54cb64b31a752dd8e7fc7dc3fb19ef"},
+    "r0_reviewed_candidate": {"commit": "75b3ba9a4a46d7e9fead96992f1f5440f8fe9e3b", "tree": "c69655004bb6711c1452c19e3e4def47468dc239"},
+    "r0_failure_record": {"commit": "53ce8dbeb73d71da512bf368d8de0f7402348f9c", "tree": "bda18f9577dad4bc5c50cfc6c5d0b1d562d0cefd", "disposition": "SCI_MD_004_STAGE_C_IMPLEMENTATION_VERIFICATION_FAILED"},
+    "r1_base": {"commit": "bf4de34310fcc433071e00ee7fa51082a37d1c4c", "tree": "6f344dd1dad6b54876f20d80d6e58ec4ce4af9ac"}
+  },
+  "frozen_artifacts": {
+    "solver_source_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+    "candidate_executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+    "base_executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+    "reference_config_sha256": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286"
+  },
+  "gates": {
+    "V1": "fresh unchanged legacy replay: byte-identical case generation, aggregate trace, legacy solute fields, and all active hydraulic fields",
+    "V2": "explicit indexed one-species exact reduction including traces, aggregate fields, per-species fields, events, conservation, and hydraulics",
+    "V3": "zero inventory limit",
+    "V4": "zero transfer limit",
+    "V5": "zero diffusivity limit",
+    "V6": "identical-species trace and field symmetry",
+    "V7": "standalone/combined per-species traces and fields plus cellwise aggregate and every aggregate mass/rate/residual sum",
+    "V8": "independent uniform source/inventory analytical limit",
+    "V9": "explicit/residual inventory closure",
+    "V10": "every species/time and aggregate trace plus final-field-integrated conservation and extracted-mass bounds",
+    "V11": "finite/nonnegative fields and traces, monotonic cumulative and remaining states, beginning-step source cap, and unclamped diagnostics",
+    "V12": "two fresh serial runs: input, all dictionaries, initial fields, traces, final species/aggregate/hydraulic fields, and compact result hashes",
+    "V13": "one serial and two MPI runs: repeated traces/reconstructed fields, every species/time, aggregate, conservation, hydraulics, and events",
+    "V14": "coarse/intermediate/fine timestep comparison of all species and aggregate masses, concentrations, rates, residuals, first drip, and target event",
+    "V15": "V15A and V15B and V15C",
+    "V16": "direct legacy/indexed equality of every active hydraulic/mechanical field, trace, and event; predeclared NOT_APPLICABLE only",
+    "V17": "individually named rejection tests for every owner-enumerated category; no Boolean placeholder",
+    "V18": "stable declared species ordering and naming in dictionaries, fields, and traces"
+  },
+  "v15": {
+    "V15A": {"case": "original flowing positive-diffusivity application case", "meshes": [[512,32],[1024,32],[2048,32]], "routes": ["base_legacy","candidate_legacy","candidate_indexed_one"], "indexed_relative": 1e-12, "mass_floor_kg": 1e-14, "concentration_floor_kg_m3": 1e-12, "mass_rate_floor_kg_s": 1e-14},
+    "V15B": {"end_s": 2.0, "delta_t_s": 0.0005, "axial_cells": [64,128,256], "radial_cells": 4, "radial_check_cells": 8, "species": [{"id":"species_a","fraction":0.14,"availability":1.0,"rate_1_s":0.05,"saturation_kg_m3":1e12,"diffusivity_m2_s":2e-7},{"id":"species_b","fraction":0.14,"availability":1.0,"rate_1_s":0.12,"saturation_kg_m3":1e12,"diffusivity_m2_s":8e-7}], "profile_relative_limits": {"coarse":0.02,"reference":0.0075,"fine":0.0025}, "oracle_remainder_relative":1e-10, "mass_balance_kg":1e-12, "capacity_ratio_max":1e-9, "radial_relative":1e-10, "timestep_contamination_fraction":0.1},
+    "V15C": {"primary_coarse_fine_relative":0.02,"primary_reference_fine_relative":0.0075,"back_diffusion_fraction_initial_max":0.01,"back_diffusion_reference_fine_initial_difference_max":0.001,"conservation_kg":1e-12,"accepted_limitation":"INHERITED_LEGACY_INLET_BACK_DIFFUSION_MESH_SENSITIVITY"}
+  },
+  "tolerances": {"mass_balance_kg":1e-12,"aggregate_residual_sum_kg":1e-14,"nonnegative_floor":-1e-14,"timestep_coarse_fine_relative":0.005,"timestep_intermediate_fine_relative":0.0025,"serial_mpi_species_relative":1e-6,"serial_mpi_hydraulic_relative":1e-8,"candidate_legacy_overhead_ratio":1.10},
+  "v16_not_applicable": {"effective_stress_field":"not written by the production solver; active mechanics is covered by direct porosity/permeability fields and stress/compaction traces","mechanical_porosity_field":"the active porosity field is mechanical porosity in the mechanics case","compaction_permeability_ratio_field":"permeability is compared directly and the ratio is compared through minimumPermeabilityRatio"},
+  "performance": {"modes":["base_legacy","candidate_legacy","indexed_one","indexed_three"],"warmups_per_mode":1,"interleaved_cycles":5,"rotated_order":true,"timer":"monotonic_high_resolution","rss":"/usr/bin/time -v","preferred_median_min_s":1.0},
+  "fail_closed": {"required_gates":["V1","V2","V3","V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14","V15","V16","V17","V18"],"required_v15_subgates":["V15A","V15B","V15C"],"forbidden_statuses":["NOT_RUN","INCOMPLETE"],"reject_missing_metric":true,"reject_missing_comparison":true,"verify_evidence_hashes":true,"reject_executable_mismatch":true,"reject_reused_directory":true,"reject_target_path":true,"reject_empty_output":true},
+  "holdout": {"classification":"PROTECTED_EXTERNAL_NO_RETUNING_ENDPOINT_HOLDOUT","preexisting_exposure":true,"target_access":false,"predictions":0,"scores":0,"parameter_fits":0,"post_holdout_retuning":0},
+  "allowed_result_classes": ["SCI_MD_004_STAGE_C_R1_VERIFIED_READY_FOR_INDEPENDENT_EXACT_HEAD_REVIEW","SCI_MD_004_STAGE_C_R1_VERIFIED_MERGED_READY_FOR_STAGE_E0","SCI_MD_004_STAGE_C_R1_NEW_INDEXED_NUMERICAL_DEFECT_UNRESOLVED","SCI_MD_004_STAGE_C_R1_MATERIAL_POSITIVE_DIFFUSION_MESH_DEPENDENCE","SCI_MD_004_STAGE_C_R1_VERIFICATION_INCOMPLETE"],
+  "claim_ceiling": "Generic indexed conservative passive-species software and numerical verification only; physical validation NOT_ESTABLISHED."
+}

@@ -44,6 +44,37 @@ ALLOWED_SPECIES_PROVENANCE = {
 }
 
 
+def validate_indexed_generated_names(species_ids: list[str], *,
+                                     existing_fields: set[str] | None = None,
+                                     existing_traces: set[str] | None = None,
+                                     aggregate_fields: set[str] | None = None) -> None:
+    """Fail closed before rendering any indexed dictionary or field name."""
+    fields = set(existing_fields or ())
+    traces = set(existing_traces or ())
+    rendered_keys: set[str] = set()
+    aggregate_names = aggregate_fields or {
+        "dissolvedConcentration", "remainingExtractable", "localExtractionRate"
+    }
+    for species_id in species_ids:
+        if species_id in rendered_keys:
+            raise SystemExit(f"duplicate rendered dictionary key: {species_id}")
+        rendered_keys.add(species_id)
+        generated_fields = {
+            f"dissolvedConcentration_{species_id}",
+            f"remainingExtractable_{species_id}",
+            f"localExtractionRate_{species_id}",
+        }
+        if generated_fields & fields:
+            raise SystemExit("generated field-name collision")
+        if generated_fields & aggregate_names:
+            raise SystemExit("aggregate-field collision")
+        generated_trace = f"species_trace_{species_id}"
+        if generated_trace in traces:
+            raise SystemExit("generated trace-name collision")
+        fields.update(generated_fields)
+        traces.add(generated_trace)
+
+
 def indexed_species_contract(scenario: dict) -> dict | None:
     extraction = scenario["extraction"]
     model = extraction.get(
@@ -65,9 +96,12 @@ def indexed_species_contract(scenario: dict) -> dict | None:
     structural_count = 0
     normalized = []
     for index, raw in enumerate(species):
+        if not isinstance(raw, dict):
+            raise SystemExit(f"species entry {index} must be a dictionary")
         species_id = raw.get("id")
         if (
             not isinstance(species_id, str) or not species_id
+            or not species_id.isascii()
             or not species_id.replace("_", "a").isalnum()
             or not (species_id[0].isalpha() or species_id[0] == "_")
             or "/" in species_id or ".." in species_id
@@ -123,6 +157,7 @@ def indexed_species_contract(scenario: dict) -> dict | None:
         else:
             raise SystemExit(f"unknown indexed species role: {role!r}")
         normalized.append(entry)
+    validate_indexed_generated_names([item["id"] for item in normalized])
     tolerance = 1.0e-15
     residual = legacy_fraction - explicit_sum
     if not math.isfinite(residual) or residual < -tolerance:
@@ -288,11 +323,7 @@ def render_control_dict(scenario: dict) -> str:
     start_value = time_cfg["start_s"] if r1 else time_cfg.get("start_s", 0.0)
     compression = "on" if bool(compression_value) else "off"
     write_format = str(format_value)
-    write_precision = (
-        int(output_cfg["write_precision_digits"])
-        if is_wp02_uniform_fixture(scenario)
-        else 10
-    )
+    write_precision = int(output_cfg.get("write_precision_digits", 10))
     return f'''FoamFile
 {{
     version     2.0;

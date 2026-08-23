@@ -1,0 +1,37 @@
+{
+  "schema_version": "ewp.sci_md_004.stage_c.r1.compact_result.v2",
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "result": "SCI_MD_004_STAGE_C_R1_MATERIAL_POSITIVE_DIFFUSION_MESH_DEPENDENCE",
+  "merged": false,
+  "r0_preserved": true,
+  "r0_disposition": "SCI_MD_004_STAGE_C_IMPLEMENTATION_VERIFICATION_FAILED",
+  "v15_diagnostic": {
+    "classification": "INHERITED_LEGACY_INLET_DIFFUSIVE_BOUNDARY_SENSITIVITY",
+    "route_equivalence": "BYTE_IDENTICAL_AT_EVERY_MESH",
+    "original_driver": "INLET_BACK_DIFFUSION_MASS",
+    "coarse_fine_relative": 0.096797634329856,
+    "reference_fine_relative": 0.059794251033624
+  },
+  "v15": {
+    "V15A": "PASS_DEVELOPMENT_DIAGNOSTIC",
+    "V15B": "FAIL_MANDATORY_POSITIVE_ORDER_AND_TIMESTEP_CONTAMINATION",
+    "V15C": "NOT_RUN_AFTER_BLOCKING_V15B",
+    "development_result_sha256": "3e9577ebf1155e51620d8b3f3260970e9b48358856ce324746d9803b1844999b"
+  },
+  "matrix": {
+    "status": "FAIL_CLOSED",
+    "adjudicative_execution": "NOT_RUN_AFTER_BLOCKING_V15B",
+    "independent_review": "NOT_ELIGIBLE",
+    "performance": "NOT_RUN_AFTER_BLOCKING_V15B"
+  },
+  "production_solver_source_changed_in_r1": false,
+  "holdout": {
+    "target_values_accessed": false,
+    "predictions_generated": 0,
+    "scores_generated": 0,
+    "species_parameters_fitted": 0,
+    "post_holdout_retuning_events": 0
+  },
+  "physical_validation": "NOT_ESTABLISHED"
+}
+

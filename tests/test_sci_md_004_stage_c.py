@@ -4,6 +4,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,6 +14,11 @@ SPEC = importlib.util.spec_from_file_location(
 PREPARE = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
 SPEC.loader.exec_module(PREPARE)
+sys.path.insert(0, str(ROOT))
+from tools.sci_md_004_stage_c.oracle import (  # noqa: E402
+    concentration, observed_order, remaining_mass, weighted_errors,
+)
+from tools.sci_md_004_stage_c.runner import validate_complete_result  # noqa: E402
 
 
 class IndexedSpeciesConfigurationTests(unittest.TestCase):
@@ -156,6 +162,145 @@ class StageCScopeTests(unittest.TestCase):
             "cases/reference_R0_20g_58mm_9bar/",
         )
         self.assertFalse([p for p in changed if p.startswith(forbidden)])
+
+
+class R1FailClosedTests(unittest.TestCase):
+    def test_missing_required_assertion_forces_failure(self):
+        gate = {
+            "status": "PASS", "scenario_hashes": ["a"], "executable_hash": "b",
+            "ranks": [1], "meshes": [[1, 1]], "timesteps_s": [1.0],
+            "metrics": {"assertion": "PASS"}, "tolerances": {"x": 0.0},
+            "per_species": {}, "aggregate": {}, "evidence_paths": [__file__],
+            "output_hashes": {}, "failure_reasons": [],
+        }
+        result = {"gates": {f"V{i}": copy.deepcopy(gate) for i in range(1, 19)}}
+        self.assertTrue(validate_complete_result(result, verify_hashes=False))
+        del result["gates"]["V10"]
+        defects = validate_complete_result(result, verify_hashes=False)
+        self.assertTrue(any("V10" in defect for defect in defects))
+
+    def test_v17_boolean_placeholder_is_rejected(self):
+        result = {"gates": {}}
+        for number in range(1, 19):
+            result["gates"][f"V{number}"] = {
+                "status": "PASS", "scenario_hashes": ["a"],
+                "executable_hash": "b", "ranks": [1], "meshes": [[1, 1]],
+                "timesteps_s": [1.0], "metrics": {"assertion": "PASS"},
+                "tolerances": {"x": 0.0}, "per_species": {}, "aggregate": {},
+                "evidence_paths": [__file__], "output_hashes": {},
+                "failure_reasons": [],
+            }
+        result["gates"]["V15"]["metrics"] = {"subgates": {
+            name: {"status": "PASS"} for name in ("V15A", "V15B", "V15C")}}
+        result["gates"]["V17"]["metrics"] = {
+            "categories": {f"case_{i}": True for i in range(39)}}
+        self.assertTrue(any("Boolean placeholder" in item for item in
+                            validate_complete_result(result, verify_hashes=False)))
+
+
+class R1AnalyticalOracleTests(unittest.TestCase):
+    def test_inventory_decay(self):
+        self.assertAlmostEqual(remaining_mass(0.14, 0.12, 2.0),
+                               0.14 * __import__("math").exp(-0.24))
+
+    def test_profile_boundary_and_remainder(self):
+        value, metadata = concentration(
+            x=0.0, time_s=2.0, length_m=0.009, phi=0.4,
+            diffusivity=8e-7, rate=0.12, initial_inventory_density=100.0)
+        self.assertEqual(value, 0.0)
+        self.assertLessEqual(metadata["estimated_relative_remainder"], 1e-10)
+
+    def test_weighted_profile_errors(self):
+        result = weighted_errors([1.0, 2.0], [1.0, 2.0], [0.5, 0.5])
+        self.assertEqual(result["l1_relative"], 0.0)
+        self.assertEqual(result["l2_relative"], 0.0)
+
+    def test_positive_observed_order(self):
+        self.assertAlmostEqual(observed_order(0.04, 0.01), 2.0)
+
+
+class R1GeneratedCollisionRejectionTests(unittest.TestCase):
+    def test_generated_field_name_collision(self):
+        with self.assertRaises(SystemExit):
+            PREPARE.validate_indexed_generated_names(
+                ["species_a"], existing_fields={"dissolvedConcentration_species_a"})
+
+    def test_generated_trace_name_collision(self):
+        with self.assertRaises(SystemExit):
+            PREPARE.validate_indexed_generated_names(
+                ["species_a"], existing_traces={"species_trace_species_a"})
+
+    def test_aggregate_field_collision(self):
+        with self.assertRaises(SystemExit):
+            PREPARE.validate_indexed_generated_names(
+                ["species_a"],
+                aggregate_fields={"dissolvedConcentration_species_a"})
+
+    def test_duplicate_rendered_dictionary_key(self):
+        with self.assertRaises(SystemExit):
+            PREPARE.validate_indexed_generated_names(["species_a", "species_a"])
+
+
+class R1IndividualParserRejectionTests(IndexedSpeciesConfigurationTests):
+    """Each generated method has one stable category name in unittest output."""
+
+
+def _remove_species(extraction):
+    extraction.pop("species")
+
+
+def _species_entry(extraction):
+    return extraction["species"][0]
+
+
+REJECTION_MUTATIONS = {
+    "missing_species_list": _remove_species,
+    "empty_species_list": lambda e: e.update(species=[]),
+    "duplicate_species_id": lambda e: e["species"].append(copy.deepcopy(e["species"][0])),
+    "invalid_openfoam_word": lambda e: _species_entry(e).update(id="bad-name"),
+    "path_traversal_syntax": lambda e: _species_entry(e).update(id="../bad"),
+    "whitespace_containing_id": lambda e: _species_entry(e).update(id="bad id"),
+    "unstable_id": lambda e: _species_entry(e).update(id="café"),
+    "unknown_role": lambda e: _species_entry(e).update(role="unknown"),
+    "missing_species_dictionary": lambda e: e["species"].__setitem__(0, None),
+    "missing_inventory": lambda e: _species_entry(e).pop("dry_coffee_inventory_mass_fraction"),
+    "negative_inventory": lambda e: _species_entry(e).update(dry_coffee_inventory_mass_fraction=-1),
+    "nan_inventory": lambda e: _species_entry(e).update(dry_coffee_inventory_mass_fraction=float("nan")),
+    "infinite_inventory": lambda e: _species_entry(e).update(dry_coffee_inventory_mass_fraction=float("inf")),
+    "availability_below_zero": lambda e: _species_entry(e).update(availability_fraction=-0.1),
+    "availability_above_one": lambda e: _species_entry(e).update(availability_fraction=1.1),
+    "nan_availability": lambda e: _species_entry(e).update(availability_fraction=float("nan")),
+    "negative_transfer_constant": lambda e: _species_entry(e).update(rate_constant_1_s=-1),
+    "nan_transfer_constant": lambda e: _species_entry(e).update(rate_constant_1_s=float("nan")),
+    "zero_saturation_concentration": lambda e: _species_entry(e).update(saturation_concentration_kg_m3=0),
+    "negative_saturation_concentration": lambda e: _species_entry(e).update(saturation_concentration_kg_m3=-1),
+    "nan_saturation_concentration": lambda e: _species_entry(e).update(saturation_concentration_kg_m3=float("nan")),
+    "negative_diffusivity": lambda e: _species_entry(e).update(effective_diffusivity_m2_s=-1),
+    "nan_diffusivity": lambda e: _species_entry(e).update(effective_diffusivity_m2_s=float("nan")),
+    "multiple_structural_balance_species": lambda e: e["species"].append({"id":"balance_b","role":"structural_balance","inherit_legacy_parameters":True}),
+    "structural_balance_without_inheritance": lambda e: e["species"][1].update(inherit_legacy_parameters=False),
+    "structural_balance_with_independent_inventory": lambda e: e["species"][1].update(dry_coffee_inventory_mass_fraction=0.18),
+    "structural_balance_with_conflicting_rate": lambda e: e["species"][1].update(rate_constant_1_s=0.2),
+    "structural_balance_with_conflicting_saturation": lambda e: e["species"][1].update(saturation_concentration_kg_m3=1.0),
+    "structural_balance_with_conflicting_diffusivity": lambda e: e["species"][1].update(effective_diffusivity_m2_s=1e-8),
+    "explicit_over_allocation": lambda e: _species_entry(e).update(dry_coffee_inventory_mass_fraction=0.4),
+    "explicit_under_allocation_without_residual": lambda e: e.update(species=e["species"][:1]),
+    "closure_outside_frozen_tolerance": lambda e: (e.update(species=e["species"][:1]), _species_entry(e).update(dry_coffee_inventory_mass_fraction=0.280000000000002)),
+    "forbidden_provenance_class": lambda e: _species_entry(e)["parameter_provenance"].update(rate="HOLDOUT_ENDPOINT_DERIVED"),
+    "missing_provenance_key": lambda e: _species_entry(e)["parameter_provenance"].pop("rate"),
+    "unknown_provenance_class": lambda e: _species_entry(e)["parameter_provenance"].update(rate="UNKNOWN"),
+}
+
+
+def _make_rejection_test(mutation):
+    def test(self):
+        self.assert_rejected(mutation)
+    return test
+
+
+for _category, _mutation in REJECTION_MUTATIONS.items():
+    setattr(R1IndividualParserRejectionTests, f"test_reject_{_category}",
+            _make_rejection_test(_mutation))
 
 
 if __name__ == "__main__":

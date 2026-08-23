@@ -1,6 +1,6 @@
 # Project State
 
-## SCI-MD-004 Stage C — active owner-selected priority (2026-08-23)
+## SCI-MD-004 Stage C R1 — positive-diffusion numerics blocking (2026-08-23)
 
 The human owner selected SCI-MD-004 as the active development priority,
 superseding SCI-LC-001A as the current next action without reversing its
@@ -11,6 +11,17 @@ hydraulics are required to remain unchanged. A Stage C implementation
 candidate reached independent exact-head review and was rejected because
 mandatory positive-diffusivity mesh convergence and several complete
 verification assertions were not established. It must not be merged. Active
+owner-authorized R1 preserved that failed R0 history and established exact
+base-legacy/candidate-legacy/indexed-one route equivalence across the positive-
+diffusivity mesh hierarchy. The original sensitivity is inherited inlet
+back-diffusion sensitivity, not a new indexed defect. The independent V15B
+manufactured positive-diffusion series nevertheless failed mandatory positive
+spatial-order and timestep-contamination rules. R1 is therefore
+`SCI_MD_004_STAGE_C_R1_MATERIAL_POSITIVE_DIFFUSION_MESH_DEPENDENCE`, remains
+unmerged, and is not eligible for an exact-head PASS review. No production
+solver source changed during R1. Stage A remains merged and unchanged; R0 PR
+#91 remains closed without merge and R0 remains failed. No parameterization is
+authorized. Active
 protected comparison remains `NONE`: Angeloni scoring is unauthorized and no
 Angeloni holdout prediction or score has been generated. SCI-MD-003 remains
 closed and unchanged. Physical validation remains `NOT_ESTABLISHED`.
@@ -77,7 +88,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 492/492 PASS
+- Public source verification: 495/495 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `SCI-MD-004_STAGE_C_INDEXED_PASSIVE_SPECIES`

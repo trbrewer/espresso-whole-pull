@@ -1,0 +1,8 @@
+gate,status,scope,reason,evidence
+V15_DIAGNOSTIC,PASS,three routes at 512x32 1024x32 2048x32,exact route equivalence and inherited inlet back-diffusion driver,external/v15-diagnostic/classification.json
+V15A,PASS_DEVELOPMENT_DIAGNOSTIC,positive-diffusivity route equivalence,all three aggregate traces byte-identical at each mesh,external/v15-diagnostic
+V15B,FAIL,positive-diffusivity analytical spatial case,mandatory positive spatial order and timestep-contamination rules fail,external/v15-diagnostic/v15b-development-result.json
+V15C,NOT_RUN,application characterization,blocked after mandatory V15B failure,none
+V1-V18,NOT_RUN_ADJUDICATIVE,complete frozen matrix,not eligible after mandatory V15B failure,none
+PERFORMANCE,NOT_RUN,interleaved performance,not eligible after mandatory V15B failure,none
+INDEPENDENT_REVIEW,NOT_ELIGIBLE,exact-head review,no verified candidate exists,none
