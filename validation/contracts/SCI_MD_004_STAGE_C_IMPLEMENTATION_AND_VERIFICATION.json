@@ -1,0 +1,52 @@
+{
+  "schema_version": "ewp.sci_md_004.stage_c.verification.v1",
+  "authorization": "SCI-MD-004-STAGE-C-OWNER-AUTHORIZATION-CONDITIONAL-INDEXED-PASSIVE-SPECIES-SOLVER-IMPLEMENTATION-EXACT-LEGACY-REDUCTION-AND-ADDITIVE-VERIFICATION-2026-08-23",
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "stage_a_disposition": "GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT",
+  "solute_models": {
+    "default": "legacySingleSolute",
+    "indexed": "indexedPassiveSpecies"
+  },
+  "species_roles": [
+    "explicitInventory",
+    "structuralBalance"
+  ],
+  "field_patterns": [
+    "dissolvedConcentration_<species_id>",
+    "remainingExtractable_<species_id>",
+    "localExtractionRate_<species_id>"
+  ],
+  "species_trace": {
+    "path": "postProcessing/wholePullSpecies/0/species_traces.csv",
+    "ordering": "time_then_declared_species_order",
+    "precision": 15
+  },
+  "tolerances": {
+    "indexed_reduction_relative": 1e-12,
+    "integrated_mass_absolute_kg": 1e-14,
+    "concentration_absolute_kg_m3": 1e-12,
+    "mass_rate_absolute_kg_s": 1e-14,
+    "mass_balance_absolute_kg": 1e-12,
+    "inventory_upper_bound_kg": 1e-12,
+    "monotonic_inventory_kg": 1e-12,
+    "nonnegativity_floor": -1e-14,
+    "timestep_coarse_fine_relative": 0.005,
+    "timestep_intermediate_fine_relative": 0.0025,
+    "mesh_coarse_fine_relative": 0.02,
+    "mesh_reference_fine_relative": 0.0075,
+    "serial_mpi_species_relative": 1e-6,
+    "serial_mpi_hydraulic_relative": 1e-8,
+    "analytical_uniform_relative": 0.0001
+  },
+  "matrix": [
+    "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9",
+    "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18"
+  ],
+  "protected_data_policy": {
+    "target_access_permitted": false,
+    "prediction_permitted": false,
+    "scoring_permitted": false,
+    "parameter_fitting_permitted": false
+  },
+  "claim_ceiling": "Physical validation remains NOT_ESTABLISHED."
+}
