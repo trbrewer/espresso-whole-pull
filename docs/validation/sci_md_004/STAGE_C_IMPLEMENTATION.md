@@ -22,13 +22,17 @@ saturation, wet-mask, porosity, permeability, mobility, and Darcy-flux fields.
 The explicit indexed one-species replay has zero serialized difference in all
 aggregate solute histories and exact checked hydraulic columns.
 
-The additive V2--V18 manufactured matrix passes. V15 intentionally uses the
-flowing zero-diffusivity limit to isolate source/advection mesh convergence;
-the positive-diffusivity development sequence exposed 5.998% reference--fine
-sensitivity in the inherited inlet boundary-gradient loss while its other
-species quantities passed. Stage C does not alter that legacy operator. This
-limitation is retained in external development evidence and does not support a
-positive-diffusivity boundary-loss mesh-convergence claim.
+Independent exact-head review rejected the candidate. The positive-diffusivity
+development sequence exposed 5.998% reference--fine sensitivity in the
+inherited inlet boundary-gradient loss, above the frozen 0.75% gate. Replacing
+that case with a zero-diffusivity limit does not qualify mesh sensitivity of
+the implemented advection-diffusion capability. The reviewer also found that
+the additive runner did not completely assert required aggregate
+superposition, total conservation and bounds, deterministic final fields,
+all-species serial/MPI equivalence, event-time convergence, direct hydraulic
+field identity, and every parser rejection category. The performance sequence
+was grouped rather than interleaved. The implementation is therefore a failed
+candidate and must not be merged.
 
 Angeloni remains `PROTECTED_EXTERNAL_NO_RETUNING_ENDPOINT_HOLDOUT` with
 `PREEXISTING_EXPOSURE = TRUE`. No target values were accessed, no prediction or

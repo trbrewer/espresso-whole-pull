@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 492,
-  "total_uncompressed_bytes_excluding_manifest": 7129978,
-  "aggregate_source_sha256": "2c98fae5b0ba5faef1116d5e49bb76f690c3968e0f6655862a458fa505e33c27",
-  "aggregate_sha256": "2c98fae5b0ba5faef1116d5e49bb76f690c3968e0f6655862a458fa505e33c27",
+  "total_uncompressed_bytes_excluding_manifest": 7131325,
+  "aggregate_source_sha256": "4dbac786fb8dc2ffe20254ebcef371efa925dbefd67b758ff1f080c80c39c320",
+  "aggregate_sha256": "4dbac786fb8dc2ffe20254ebcef371efa925dbefd67b758ff1f080c80c39c320",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1079,18 +1079,18 @@
       "git_mode": "100644"
     },
     "docs/validation/sci_md_004/STAGE_C_IMPLEMENTATION.md": {
-      "sha256": "04906f54a4614217b0a150e7f3b9544205d091c7ee4a9537f6316a9037ea5766",
-      "bytes": 2224,
+      "sha256": "ddd6d9e851155393d2872e028791a69989c1355ce011d20b3a8748038fe06e3a",
+      "bytes": 2494,
       "git_mode": "100644"
     },
     "docs/validation/sci_md_004/STAGE_C_VERIFICATION_RESULT.json": {
-      "sha256": "16faabef5cb645eb98b12c2444ea1efbb211efad0e680f1c54f76bba5db566ab",
-      "bytes": 2619,
+      "sha256": "0aff3206dffd33dc27fe88a245c831339ce368ec3ba105e76252ea9cd8801045",
+      "bytes": 3309,
       "git_mode": "100644"
     },
     "docs/validation/sci_md_004/STAGE_C_VERIFICATION_RUNS.csv": {
-      "sha256": "a7eee70a4a31c7ccff4bb29c77421af6e6328d4592a15698c11ca8b57843d1a1",
-      "bytes": 1796,
+      "sha256": "9d8fa8f0638c567ac1b88011d0c83786b02ea80e4e4664f75e9f05c70444a40b",
+      "bytes": 2183,
       "git_mode": "100644"
     },
     "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md": {

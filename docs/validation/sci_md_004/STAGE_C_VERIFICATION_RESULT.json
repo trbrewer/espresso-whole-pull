@@ -1,7 +1,7 @@
 {
   "schema_version": "ewp.sci_md_004.stage_c.compact_result.v1",
   "change_declaration": "GOVERNING_PHYSICS_CHANGE",
-  "result": "SCI_MD_004_STAGE_C_VERIFIED_IMPLEMENTATION_READY_FOR_INDEPENDENT_EXACT_HEAD_REVIEW",
+  "result": "SCI_MD_004_STAGE_C_IMPLEMENTATION_VERIFICATION_FAILED",
   "base": {
     "commit": "bf4de34310fcc433071e00ee7fa51082a37d1c4c",
     "tree": "6f344dd1dad6b54876f20d80d6e58ec4ce4af9ac",
@@ -17,17 +17,17 @@
     "V4": "PASS",
     "V5": "PASS",
     "V6": "PASS",
-    "V7": "PASS",
+    "V7": "FAIL_INCOMPLETE_AGGREGATE_ASSERTIONS",
     "V8": "PASS",
     "V9": "PASS",
-    "V10": "PASS",
-    "V11": "PASS",
-    "V12": "PASS",
-    "V13": "PASS",
-    "V14": "PASS",
-    "V15": "PASS",
-    "V16": "PASS",
-    "V17": "PASS",
+    "V10": "FAIL_INCOMPLETE_TOTAL_CONSERVATION_ASSERTIONS",
+    "V11": "FAIL_INCOMPLETE_BOUNDED_STATE_ASSERTIONS",
+    "V12": "FAIL_INCOMPLETE_DICTIONARY_AND_FIELD_DETERMINISM_ASSERTIONS",
+    "V13": "FAIL_INCOMPLETE_ALL_SPECIES_FIELD_AND_HYDRAULIC_MPI_ASSERTIONS",
+    "V14": "FAIL_INCOMPLETE_AGGREGATE_CONCENTRATION_AND_EVENT_TIME_ASSERTIONS",
+    "V15": "FAIL_POSITIVE_DIFFUSIVITY_MESH_GATE",
+    "V16": "FAIL_INCOMPLETE_DIRECT_FIELD_ASSERTIONS",
+    "V17": "FAIL_INCOMPLETE_REJECTION_COVERAGE",
     "V18": "PASS",
     "legacy_trace_byte_identical": true,
     "indexed_one_species_maximum_absolute_difference": 0.0,
@@ -46,7 +46,8 @@
     "timestep_intermediate_fine_relative": 0.0011892888821720862,
     "mesh_coarse_fine_relative": 0.005325959022012049,
     "mesh_reference_fine_relative": 0.0017722254106328583,
-    "mesh_scope": "FLOWING_ZERO_DIFFUSIVITY_SOURCE_ADVECTION_LIMIT",
+    "mesh_scope": "ZERO_DIFFUSIVITY_SUBSTITUTE_NOT_ACCEPTED_FOR_ADVECTION_DIFFUSION_GATE",
+    "positive_diffusivity_mesh_reference_fine_relative": 0.0599794258968155,
     "hydraulic_columns_maximum_absolute_difference": 0.0,
     "external_matrix_result_sha256": "1bfbc6b8d05186598f8328e549c2ba01f370c09e9740e7b16eadac8cc4cf7edb"
   },
@@ -64,6 +65,12 @@
     "scores_generated": 0,
     "species_parameters_fitted": 0,
     "post_holdout_retuning_events": 0
+  },
+  "independent_review": {
+    "reviewer": "/root/independent_stage_c_review",
+    "reviewed_commit": "75b3ba9a4a46d7e9fead96992f1f5440f8fe9e3b",
+    "reviewed_tree": "c69655004bb6711c1452c19e3e4def47468dc239",
+    "disposition": "FAIL"
   },
   "physical_validation": "NOT_ESTABLISHED"
 }
