@@ -14,7 +14,8 @@ from .compare import (canonical_sha256, maximum_column_difference, relative_erro
                       internal_numeric_values, rows, scalar_boundary_values,
                       scalar_internal_values, sha256)
 from .oracle import concentration as analytical_concentration
-from .oracle import integrated_solution, observed_order, remaining_mass, weighted_errors
+from .oracle import (discrete_integrals, discrete_profile, integrated_solution,
+                     observed_order, remaining_mass, weighted_errors)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -36,7 +37,7 @@ HYDRAULIC_COLUMNS = (
     "volumeWeightedMechanicalPorosity", "minimumCompactionPermeabilityM2",
     "volumeWeightedPermeabilityM2",
 )
-CONTRACT_PATH = ROOT / "validation/contracts/SCI_MD_004_STAGE_C_R1_VERIFICATION_COMPLETION.json"
+CONTRACT_PATH = ROOT / "validation/contracts/SCI_MD_004_STAGE_C_R2_SEPARATED_SPACE_TIME_VERIFICATION.json"
 REQUIRED_GATES = {f"V{i}" for i in range(1, 19)}
 REQUIRED_GATE_KEYS = {
     "status", "scenario_hashes", "executable_hash", "ranks", "meshes",
@@ -65,10 +66,27 @@ REJECTION_CATEGORIES = (
 )
 
 
+def latest_time_name(case: Path) -> str:
+    candidates=[]
+    for path in case.iterdir():
+        if path.is_dir():
+            try:
+                value=float(path.name)
+            except ValueError:
+                continue
+            if value > 0.0:
+                candidates.append((value,path.name))
+    if not candidates:
+        raise ValueError(f"case has no positive written time: {case}")
+    return max(candidates)[1]
+
+
 def validate_complete_result(result: dict, *, verify_hashes: bool = True) -> list[str]:
     """Return every completeness defect; an empty list alone permits PASS."""
     defects: list[str] = []
     gates = result.get("gates")
+    if result.get("forbidden_target_path_present"):
+        defects.append("protected target path present")
     if not isinstance(gates, dict):
         return ["gates is absent or is not an object"]
     missing = REQUIRED_GATES - set(gates)
@@ -87,6 +105,9 @@ def validate_complete_result(result: dict, *, verify_hashes: bool = True) -> lis
             defects.append(f"{gate_name}: missing keys {sorted(absent)}")
         if gate.get("status") in {None, "NOT_RUN", "INCOMPLETE"}:
             defects.append(f"{gate_name}: forbidden status {gate.get('status')!r}")
+        expected_executable=result.get("executable_sha256")
+        if expected_executable and gate.get("executable_hash") != expected_executable:
+            defects.append(f"{gate_name}: executable hash mismatch")
         for key in ("scenario_hashes", "metrics", "tolerances", "evidence_paths",
                     "output_hashes"):
             if not gate.get(key):
@@ -97,6 +118,26 @@ def validate_complete_result(result: dict, *, verify_hashes: bool = True) -> lis
                 defects.append("V15: incomplete V15A/V15B/V15C subgates")
             elif any(v.get("status") != "PASS" for v in subgates.values()):
                 defects.append("V15: one or more subgates did not PASS")
+            v15b = subgates.get("V15B", {}) if isinstance(subgates, dict) else {}
+            classifications = v15b.get("metric_classification", {})
+            required_classes = {"spatial", "temporal", "invariant", "diagnostic"}
+            if set(classifications) != required_classes:
+                defects.append("V15B: missing separated metric classification")
+            else:
+                spatial = set(classifications["spatial"])
+                temporal = set(classifications["temporal"])
+                if "remaining_mass" in spatial:
+                    defects.append("V15B: remaining mass incorrectly classified as spatial")
+                required_profile = {"profile_l1_relative", "profile_l2_relative",
+                                    "profile_linf_relative"}
+                if not required_profile <= spatial or not required_profile <= temporal:
+                    defects.append("V15B: primary profile norm removed")
+            if not v15b.get("temporal"):
+                defects.append("V15B: discrete/continuous temporal sequence absent")
+            elif len(v15b["temporal"]) != 5:
+                defects.append("V15B: temporal sequence incomplete")
+            if not v15b.get("analytical"):
+                defects.append("V15B: discrete spatial oracle evidence absent")
         if gate_name == "V17":
             categories = gate.get("metrics", {}).get("categories")
             if not isinstance(categories, dict) or len(categories) < 39:
@@ -183,6 +224,11 @@ class Matrix:
         subprocess.run(["blockMesh", "-case", str(case)], check=True,
                        stdout=(case / "blockMesh.log").open("w"),
                        stderr=subprocess.STDOUT)
+        for function_name in ("writeCellCentres", "writeCellVolumes"):
+            subprocess.run(["postProcess", "-case", str(case), "-func",
+                            function_name, "-time", "0"], check=True,
+                           stdout=(case/f"{function_name}.log").open("w"),
+                           stderr=subprocess.STDOUT)
         executable = (solver_override or self.solver).resolve()
         environment = dict(os.environ, ESPRESSO_CASE_ROOT=str(case))
         log = (case / "solver.log").open("w")
@@ -220,7 +266,7 @@ class Matrix:
     def application_metrics(self, case: Path) -> dict:
         aggregate_rows, species_rows = self.traces(case)
         final_aggregate = aggregate_rows[-1]
-        final_time = f"{float(final_aggregate['time_s']):g}"
+        final_time = latest_time_name(case)
         name = next(name for name, value in self.runs.items() if value == case)
         count = self.run_metadata[name]["mesh"][0]*self.run_metadata[name]["mesh"][1]
         result = {"species": {}, "aggregate": {}}
@@ -264,18 +310,18 @@ class Matrix:
     def positive_diffusion_scenario(self, *, axial: int, radial: int = 4,
                                     dt: float = 5e-4) -> dict:
         scenario=self.compact(end=2.0,dt=dt,axial=axial,radial=radial)
-        scenario["scenario_id"]=f"sci_md_004_r1_v15b_{axial}x{radial}_dt_{dt:g}"
+        scenario["scenario_id"]=f"sci_md_004_r2_v15b_{axial}x{radial}_dt_{dt:g}"
         scenario["wetting"]["initial_wet_front_m"]=scenario["coffee_bed"]["bed_depth_m"]
         scenario["hydraulics"]["target_inlet_pressure_gauge_Pa"]=0.0
         scenario["hydraulics"]["front_pressure_gauge_Pa"]=0.0
         return indexed(scenario,[
-            explicit("species_a",.14,rate=.05,saturation=1e12,diffusivity=2e-7),
-            explicit("species_b",.14,rate=.12,saturation=1e12,diffusivity=8e-7),
+            explicit("species_a",.14,rate=.05,saturation=1e30,diffusivity=2e-7),
+            explicit("species_b",.14,rate=.12,saturation=1e30,diffusivity=8e-7),
         ])
 
-    def analytical_diffusion_metrics(self, case: Path, scenario: dict) -> dict:
+    def separated_diffusion_metrics(self, case: Path, scenario: dict) -> dict:
         _, species_rows=self.traces(case)
-        final_time=f"{scenario['time']['end_s']:g}"
+        final_time=latest_time_name(case)
         axial=scenario["geometry"]["axial_cells"]
         radial=scenario["geometry"]["radial_cells"]
         count=axial*radial
@@ -284,40 +330,87 @@ class Matrix:
         phi=float(scenario["coffee_bed"]["initial_porosity"])
         volume=area*length
         dose=float(scenario["coffee_bed"]["dry_dose_kg"])
+        centres=internal_numeric_values(case/"0"/"C",cell_count=count)
+        if len(centres) != 3*count:
+            raise ValueError("writeCellCentres did not emit one vector per cell")
+        locations=[centres[3*index] for index in range(count)]
+        volumes=scalar_internal_values(case/"0"/"Vc",cell_count=count)
+        dt=float(scenario["time"]["delta_t_s"])
+        steps=round(float(scenario["time"]["end_s"])/dt)
         result={}
         for sid,rate,diffusivity in (("species_a",.05,2e-7),("species_b",.12,8e-7)):
             actual=scalar_internal_values(case/final_time/f"dissolvedConcentration_{sid}",
                                           cell_count=count)
             density=dose*.14/volume
-            expected=[]; maximum_remainder=0.0
-            for cell in range(count):
-                x=((cell%axial)+.5)*length/axial
+            continuous=[]; maximum_remainder=0.0
+            for x in locations:
                 value,meta=analytical_concentration(
                     x=x,time_s=2.0,length_m=length,phi=phi,diffusivity=diffusivity,
                     rate=rate,initial_inventory_density=density)
-                expected.append(value)
+                continuous.append(value)
                 maximum_remainder=max(maximum_remainder,meta["estimated_relative_remainder"])
-            errors=weighted_errors(actual,expected,[1.0]*count)
+            discrete,discrete_meta=discrete_profile(
+                locations_m=locations,steps=steps,delta_t=dt,length_m=length,
+                phi=phi,diffusivity=diffusivity,rate=rate,
+                initial_inventory_density=density)
+            spatial=weighted_errors(actual,discrete,volumes)
+            temporal=weighted_errors(discrete,continuous,volumes)
             analytical=integrated_solution(time_s=2.0,length_m=length,area_m2=area,
                 phi=phi,diffusivity=diffusivity,rate=rate,initial_inventory_density=density)
+            discrete_mass=discrete_integrals(
+                steps=steps,delta_t=dt,length_m=length,area_m2=area,phi=phi,
+                diffusivity=diffusivity,rate=rate,
+                initial_inventory_density=density,terms=20000)
             row=[item for item in species_rows if item["species_id"]==sid][-1]
             initial=float(row["initial_extractable_mass_kg"])
-            result[sid]={**errors,
+            production_remaining=float(row["remaining_extractable_mass_kg"])
+            production_dissolved=float(row["dissolved_mass_kg"])
+            production_back=float(row["back_diffusion_mass_kg"])
+            axial_profile=[]
+            for axial_index in range(axial):
+                members=[index for index,x in enumerate(locations)
+                         if abs(x-(axial_index+.5)*length/axial) <= 1e-12]
+                member_volume=sum(volumes[index] for index in members)
+                axial_profile.append(sum(actual[index]*volumes[index] for index in members)/member_volume)
+            result[sid]={
                 "actual":{
                     "maximum_concentration_kg_m3":max(actual),
-                    "volume_weighted_mean_concentration_kg_m3":sum(actual)/len(actual),
+                    "volume_weighted_mean_concentration_kg_m3":sum(a*v for a,v in zip(actual,volumes))/sum(volumes),
                     "dissolved_mass_kg":float(row["dissolved_mass_kg"]),
                     "remaining_mass_kg":float(row["remaining_extractable_mass_kg"]),
                     "back_diffusion_mass_kg":float(row["back_diffusion_mass_kg"]),
+                    "radially_reduced_profile_kg_m3":axial_profile,
                 },
-                "oracle_remainder_relative":maximum_remainder,
-                "capacity_ratio":max(actual)/1e12,
-                "maximum_concentration_relative_error":relative_error(max(actual),max(expected)),
-                "dissolved_mass_relative_error":relative_error(float(row["dissolved_mass_kg"]),analytical["dissolved_mass_kg"]),
-                "remaining_mass_relative_error":relative_error(float(row["remaining_extractable_mass_kg"]),remaining_mass(initial,rate,2.0)),
-                "back_diffusion_closure_relative_error":relative_error(float(row["back_diffusion_mass_kg"]),analytical["back_diffusion_closure_kg"]),
-                "back_diffusion_flux_relative_error":relative_error(float(row["back_diffusion_mass_kg"]),analytical["back_diffusion_flux_kg"]),
-                "oracle_internal_closure_relative":analytical["internal_closure_relative"],
+                "spatial":{
+                    "profile_l1_relative":spatial["l1_relative"],
+                    "profile_l2_relative":spatial["l2_relative"],
+                    "profile_linf_relative":spatial["maximum_relative"],
+                    "dissolved_mass_relative":relative_error(production_dissolved,discrete_mass["dissolved_mass_kg"]),
+                    "back_diffusion_closure_relative":relative_error(production_back,discrete_mass["back_diffusion_closure_kg"]),
+                    "back_diffusion_flux_relative":relative_error(production_back,discrete_mass["back_diffusion_flux_kg"]),
+                },
+                "temporal":{
+                    "profile_l1_relative":temporal["l1_relative"],
+                    "profile_l2_relative":temporal["l2_relative"],
+                    "profile_linf_relative":temporal["maximum_relative"],
+                    "remaining_mass_relative":relative_error(discrete_mass["remaining_mass_kg"],remaining_mass(initial,rate,2.0)),
+                    "dissolved_mass_relative":relative_error(discrete_mass["dissolved_mass_kg"],analytical["dissolved_mass_kg"]),
+                    "back_diffusion_mass_relative":relative_error(discrete_mass["back_diffusion_closure_kg"],analytical["back_diffusion_closure_kg"]),
+                },
+                "invariants":{
+                    "remaining_production_discrete_relative":relative_error(production_remaining,discrete_mass["remaining_mass_kg"]),
+                    "remaining_production_discrete_absolute_kg":abs(production_remaining-discrete_mass["remaining_mass_kg"]),
+                    "capacity_ratio":max(actual)/1e30,
+                    "production_balance_residual_kg":abs(float(row["solute_balance_residual_kg"])),
+                },
+                "oracle":{
+                    "continuous_profile_remainder_relative":maximum_remainder,
+                    "discrete_profile_remainder_relative":discrete_meta["estimated_relative_remainder"],
+                    "continuous_flux_closure_relative":analytical["internal_closure_relative"],
+                    "discrete_flux_closure_relative":discrete_mass["flux_closure_relative_initial"],
+                    "discrete_flux_remainder_relative":discrete_mass["estimated_relative_remainder"],
+                    "discrete":discrete_mass,"continuous":analytical,
+                },
                 "production_balance_residual_kg":abs(float(row["solute_balance_residual_kg"])),
             }
         return result
@@ -351,6 +444,88 @@ class Matrix:
             "output_hashes": hashes,
             "failure_reasons": failure_reasons or ([] if passed else ["gate assertion failed"]),
         }
+
+    def refresh_global_mass_and_state_coverage(self):
+        """Bind V10/V11 to every indexed run, including later matrix gates."""
+        residual_max=0.0; bounds_pass=True; finite_pass=True; field_min=math.inf
+        row_count=0; indexed_runs=0; log_nonfinite=[]
+        aggregate_residual_sum_max=0.0; field_trace_max=0.0
+        for name,case in self.runs.items():
+            species_path=case/"postProcessing/wholePullSpecies/0/species_traces.csv"
+            if not species_path.is_file():
+                continue
+            indexed_runs+=1; table=rows(species_path); row_count+=len(table)
+            aggregate_table,_=self.traces(case)
+            by_time={}
+            for row in table:
+                by_time.setdefault(row["time_s"],[]).append(row)
+            for aggregate_row in aggregate_table:
+                species_at_time=by_time.get(aggregate_row["time_s"],[])
+                if not species_at_time:
+                    bounds_pass=False
+                    continue
+                aggregate_residual_sum_max=max(aggregate_residual_sum_max,abs(
+                    sum(float(row["solute_balance_residual_kg"]) for row in species_at_time)-
+                    float(aggregate_row["solute_balance_residual_kg"])))
+            seen=set()
+            for row in table:
+                key=(row["species_id"],row["time_s"])
+                if key in seen:
+                    bounds_pass=False
+                seen.add(key)
+                numbers={key:float(value) for key,value in row.items()
+                         if key not in {"species_id","species_role"}}
+                finite_pass &= all(math.isfinite(value) for value in numbers.values())
+                initial=numbers["initial_extractable_mass_kg"]
+                remaining=numbers["remaining_extractable_mass_kg"]
+                removed=(numbers["cup_solute_mass_kg"]+numbers["dissolved_mass_kg"]+
+                         numbers["back_diffusion_mass_kg"])
+                residual_max=max(residual_max,abs(numbers["solute_balance_residual_kg"]))
+                bounds_pass &= remaining<=initial+1e-12 and removed<=initial+1e-12
+            final=latest_time_name(case)
+            count=self.run_metadata[name]["mesh"][0]*self.run_metadata[name]["mesh"][1]
+            species=sorted({row["species_id"] for row in table})
+            last_aggregate=aggregate_table[-1]
+            scale=float(last_aggregate["straight_sided_wedge_scale"])
+            volumes=scalar_internal_values(case/"0"/"Vc",cell_count=count)
+            porosity=scalar_internal_values(case/final/"porosity",cell_count=count)
+            saturation=scalar_internal_values(case/final/"saturation",cell_count=count)
+            for sid in species:
+                for stem in ("dissolvedConcentration","remainingExtractable",
+                             "localExtractionRate"):
+                    values=scalar_internal_values(case/final/f"{stem}_{sid}",cell_count=count)
+                    finite_pass &= all(math.isfinite(value) for value in values)
+                    field_min=min(field_min,min(values))
+                last=[row for row in table if row["species_id"]==sid][-1]
+                inventory=scalar_internal_values(case/final/f"remainingExtractable_{sid}",cell_count=count)
+                concentration=scalar_internal_values(case/final/f"dissolvedConcentration_{sid}",cell_count=count)
+                integrated_remaining=scale*sum(v*m for v,m in zip(volumes,inventory))
+                integrated_dissolved=scale*sum(v*p*s*c for v,p,s,c in zip(
+                    volumes,porosity,saturation,concentration))
+                field_trace_max=max(field_trace_max,
+                    abs(integrated_remaining-float(last["remaining_extractable_mass_kg"])),
+                    abs(integrated_dissolved-float(last["dissolved_mass_kg"])))
+            log_text=(case/"solver.log").read_text(errors="replace")
+            if __import__("re").search(r"(?i)(?:^|[^A-Za-z])(nan|inf)(?:[^A-Za-z]|$)",log_text):
+                log_nonfinite.append(name)
+        v10=self.results["V10"]
+        v10["metrics"]["all_indexed_run_summary"]={"indexed_runs":indexed_runs,
+            "species_time_rows":row_count,"maximum_residual_kg":residual_max,
+            "aggregate_residual_sum_maximum_kg":aggregate_residual_sum_max,
+            "final_field_trace_maximum_difference_kg":field_trace_max,
+            "bounds_pass":bounds_pass}
+        v10_pass=(v10["status"]=="PASS" and residual_max<=1e-12 and bounds_pass and
+                  aggregate_residual_sum_max<=1e-14 and field_trace_max<=1e-12)
+        v10["status"]="PASS" if v10_pass else "FAIL"
+        v10["failure_reasons"]=[] if v10_pass else ["all-indexed-run conservation failed"]
+        v11=self.results["V11"]
+        v11["metrics"]["all_indexed_run_summary"]={"indexed_runs":indexed_runs,
+            "species_time_rows":row_count,"minimum_written_field_value":field_min,
+            "finite":finite_pass,"logs_with_nonfinite_tokens":log_nonfinite}
+        v11_pass=(v11["status"]=="PASS" and finite_pass and field_min>=-1e-14 and
+                  not log_nonfinite)
+        v11["status"]="PASS" if v11_pass else "FAIL"
+        v11["failure_reasons"]=[] if v11_pass else ["all-indexed-run bounded-state scan failed"]
 
     def execute(self):
         if self.base_solver is None:
@@ -570,12 +745,12 @@ class Matrix:
             dissolved = float(row["dissolved_mass_kg"])
             cup = float(row["cup_solute_mass_kg"])
             back = float(row["back_diffusion_mass_kg"])
-            residual = float(row["solute_balance_residual_kg"])
+            balance_residual = float(row["solute_balance_residual_kg"])
             recomputed = initial-remaining-dissolved-cup-back
             conservation_rows[key] = {
-                "reported_residual_kg": residual,
+                "reported_residual_kg": balance_residual,
                 "recomputed_residual_kg": recomputed,
-                "absolute_reporting_difference_kg": abs(recomputed-residual),
+                "absolute_reporting_difference_kg": abs(recomputed-balance_residual),
             }
             bounds[key] = {
                 "remaining_le_initial": remaining <= initial+1e-12,
@@ -804,12 +979,14 @@ class Matrix:
 
         timestep = {}
         for label, dt in (("coarse",.02),("intermediate",.01),("fine",.005)):
-            case=self.run(f"timestep_{label}", indexed(self.compact(end=30,dt=dt), [
+            timestep_scenario=self.compact(end=8,dt=dt)
+            timestep_scenario["time"]["target_beverage_mass_kg"]=.005
+            case=self.run(f"timestep_{label}", indexed(timestep_scenario, [
                 explicit("species_a", .10, rate=.12, saturation=80),
                 explicit("species_b", .18, rate=.20, saturation=220)]))
             aggregate_table,species_table=self.traces(case)
             final={r["species_id"]:r for r in species_table[-2:]}
-            final_dir=f"{self.compact(end=30,dt=dt)['time']['end_s']:g}"
+            final_dir=latest_time_name(case)
             count=self.compact()["geometry"]["axial_cells"]*self.compact()["geometry"]["radial_cells"]
             timestep[label]={}
             for sid,row in final.items():
@@ -846,19 +1023,24 @@ class Matrix:
                     }
         mass_metrics={key:value["relative"] for group in timestep_comparisons.values()
                       for key,value in group.items() if not key.endswith(("first_drip_s","target_beverage_time_s"))}
+        nonrelative=("first_drip_s","target_beverage_time_s","solute_balance_residual_kg")
         ts_cf=max(v["relative"] for k,v in timestep_comparisons["coarse_fine"].items()
-                  if not k.endswith(("first_drip_s","target_beverage_time_s")))
+                  if not k.endswith(nonrelative))
         ts_if=max(v["relative"] for k,v in timestep_comparisons["intermediate_fine"].items()
-                  if not k.endswith(("first_drip_s","target_beverage_time_s")))
+                  if not k.endswith(nonrelative))
         event_max=max(v["absolute"] for group in timestep_comparisons.values() for k,v in group.items()
                       if k.endswith(("first_drip_s","target_beverage_time_s")))
-        self.gate("V14", ts_cf<=.005 and ts_if<=.0025 and event_max<=.02,
+        residual_max=max(abs(values["solute_balance_residual_kg"])
+                         for group in timestep.values() for values in group.values())
+        self.gate("V14", ts_cf<=.005 and ts_if<=.0025 and event_max<=.02 and
+                  residual_max<=1e-12,
                   tolerances={"coarse_fine_relative":.005,"intermediate_fine_relative":.0025,
                               "event_time_absolute_s":.02},
                   per_species={k:v for k,v in timestep["fine"].items() if k!="aggregate"},
                   aggregate=timestep["fine"]["aggregate"],
                   coarse_fine_relative=ts_cf, intermediate_fine_relative=ts_if,
                   event_time_maximum_absolute_s=event_max,
+                  mass_residual_maximum_absolute_kg=residual_max,
                   comparisons=timestep_comparisons, all_values=timestep)
 
         v15a={}
@@ -873,14 +1055,14 @@ class Matrix:
             paths=(base_case/"postProcessing/wholePull/0/traces.csv",
                    candidate_case/"postProcessing/wholePull/0/traces.csv",
                    one_case/"postProcessing/wholePull/0/traces.csv")
-            base_rows=rows(paths[0]); candidate_rows=rows(paths[1]); one_rows=rows(paths[2])
+            base_route_rows=rows(paths[0]); candidate_route_rows=rows(paths[1]); indexed_route_rows=rows(paths[2])
             route_columns=("cup_solute_mass_kg","remaining_extractable_mass_kg",
                            "dissolved_in_puck_mass_kg","solute_backdiffusion_mass_kg",
                            "solute_balance_residual_kg","min_concentration_kg_m3",
                            "max_concentration_kg_m3","totalSoluteFluxKgS")+HYDRAULIC_COLUMNS
-            base_candidate={column:maximum_column_difference(base_rows,candidate_rows,column)
+            base_candidate={column:maximum_column_difference(base_route_rows,candidate_route_rows,column)
                             for column in route_columns}
-            candidate_indexed={column:maximum_column_difference(candidate_rows,one_rows,column)
+            candidate_indexed={column:maximum_column_difference(candidate_route_rows,indexed_route_rows,column)
                                for column in route_columns}
             v15a[label]={"trace_hashes":[sha256(path) for path in paths],
                          "base_candidate_maximum_absolute":base_candidate,
@@ -898,52 +1080,92 @@ class Matrix:
         for label,axial in (("coarse",64),("reference",128),("fine",256)):
             scenario=self.positive_diffusion_scenario(axial=axial)
             v15b_scenarios[label]=scenario
-            v15b[label]=self.analytical_diffusion_metrics(
+            v15b[label]=self.separated_diffusion_metrics(
                 self.run(f"v15b_{label}",scenario),scenario)
         radial_scenario=self.positive_diffusion_scenario(axial=128,radial=8)
-        radial_metrics=self.analytical_diffusion_metrics(
+        radial_metrics=self.separated_diffusion_metrics(
             self.run("v15b_reference_radial_double",radial_scenario),radial_scenario)
         timestep_metrics={}
-        for label,axial in (("reference",128),("fine",256)):
-            scenario=self.positive_diffusion_scenario(axial=axial,dt=2.5e-4)
-            timestep_metrics[label]=self.analytical_diffusion_metrics(
-                self.run(f"v15b_{label}_dt_half",scenario),scenario)
+        for dt in (4e-3,2e-3,1e-3,5e-4,2.5e-4):
+            label=f"dt_{dt:g}"
+            scenario=self.positive_diffusion_scenario(axial=256,dt=dt)
+            timestep_metrics[label]=self.separated_diffusion_metrics(
+                self.run(f"v15b_temporal_{label}",scenario),scenario)
         v15b_orders={}
         v15b_pass=True
-        primary_error_names=("l1_relative","l2_relative","maximum_concentration_relative_error",
-                             "dissolved_mass_relative_error","remaining_mass_relative_error",
-                             "back_diffusion_closure_relative_error","back_diffusion_flux_relative_error")
+        primary_error_names=("profile_l1_relative","profile_l2_relative",
+                             "profile_linf_relative","dissolved_mass_relative",
+                             "back_diffusion_closure_relative",
+                             "back_diffusion_flux_relative")
         limits={"coarse":.02,"reference":.0075,"fine":.0025}
-        timestep_contamination={}
+        spatial_minimum_orders={"profile_l1_relative":1.5,
+            "profile_l2_relative":1.5,"profile_linf_relative":1.0,
+            "dissolved_mass_relative":1.5,
+            "back_diffusion_closure_relative":.5,
+            "back_diffusion_flux_relative":.5}
+        temporal_order_bounds={"remaining_mass_relative":(.9,1.1),
+            "profile_l1_relative":(.8,1.2),"profile_l2_relative":(.8,1.2),
+            "profile_linf_relative":(.7,1.3),"dissolved_mass_relative":(.8,1.2),
+            "back_diffusion_mass_relative":(.7,1.3)}
+        temporal_orders={}
+        radial_changes={}
         for sid in ("species_a","species_b"):
             v15b_orders[sid]={}
             for metric in primary_error_names:
-                sequence=[v15b[label][sid][metric] for label in ("coarse","reference","fine")]
+                sequence=[v15b[label][sid]["spatial"][metric]
+                          for label in ("coarse","reference","fine")]
                 v15b_orders[sid][metric]=[
                     observed_order(sequence[0],sequence[1]),
                     observed_order(sequence[1],sequence[2])]
                 v15b_pass &= all(sequence[i]<=limits[label] for i,label in enumerate(
                     ("coarse","reference","fine"))) and sequence[0]>sequence[1]>sequence[2]
+                v15b_pass &= all(order>=spatial_minimum_orders[metric]
+                                 for order in v15b_orders[sid][metric])
             for label in ("coarse","reference","fine"):
                 item=v15b[label][sid]
-                v15b_pass &= (item["oracle_remainder_relative"]<=1e-10 and
-                              item["oracle_internal_closure_relative"]<=1e-10 and
-                              item["production_balance_residual_kg"]<=1e-12 and
-                              item["capacity_ratio"]<=1e-9)
-            radial_changes={metric:relative_error(radial_metrics[sid]["actual"][metric],
-                v15b["reference"][sid]["actual"][metric]) for metric in
-                v15b["reference"][sid]["actual"]}
-            radial_metrics[sid]["radial_relative_changes"]=radial_changes
-            v15b_pass &= max(radial_changes.values())<=1e-10
-            for label in ("reference","fine"):
-                timestep_contamination[f"{label}:{sid}"]={}
-                other_label="fine" if label=="reference" else None
-                for metric in primary_error_names:
-                    contribution=abs(timestep_metrics[label][sid][metric]-v15b[label][sid][metric])
-                    spatial=(abs(v15b["reference"][sid][metric]-v15b["fine"][sid][metric]))
-                    tolerance=limits[label]
-                    timestep_contamination[f"{label}:{sid}"][metric]=contribution
-                    v15b_pass &= contribution<=.1*spatial and contribution<=.1*tolerance
+                oracle=item["oracle"]; invariant=item["invariants"]
+                v15b_pass &= (oracle["continuous_profile_remainder_relative"]<=1e-10 and
+                              oracle["discrete_profile_remainder_relative"]<=1e-10 and
+                              oracle["continuous_flux_closure_relative"]<=1e-10 and
+                              oracle["discrete_flux_closure_relative"]<=1e-10 and
+                              oracle["discrete_flux_remainder_relative"]<=1e-10 and
+                              invariant["production_balance_residual_kg"]<=1e-12 and
+                              invariant["capacity_ratio"]<=1e-16 and
+                              (invariant["remaining_production_discrete_relative"]<=1e-12 or
+                               invariant["remaining_production_discrete_absolute_kg"]<=1e-14))
+            remaining_values=[v15b[label][sid]["actual"]["remaining_mass_kg"]
+                              for label in ("coarse","reference","fine")]
+            v15b_orders[sid]["remaining_mesh_invariance_absolute_kg"]=max(
+                remaining_values)-min(remaining_values)
+            v15b_pass &= v15b_orders[sid]["remaining_mesh_invariance_absolute_kg"]<=1e-14
+            radial_changes[sid]={}
+            for metric in ("dissolved_mass_kg","remaining_mass_kg",
+                           "back_diffusion_mass_kg","maximum_concentration_kg_m3",
+                           "volume_weighted_mean_concentration_kg_m3"):
+                radial_changes[sid][metric]=relative_error(
+                    radial_metrics[sid]["actual"][metric],
+                    v15b["reference"][sid]["actual"][metric])
+            reference_profile=v15b["reference"][sid]["actual"]["radially_reduced_profile_kg_m3"]
+            radial_profile=radial_metrics[sid]["actual"]["radially_reduced_profile_kg_m3"]
+            radial_changes[sid]["profile_linf_relative"]=max(
+                abs(a-b) for a,b in zip(reference_profile,radial_profile))/max(
+                    max(abs(value) for value in reference_profile),1e-30)
+            v15b_pass &= max(radial_changes[sid].values())<=1e-10
+            temporal_orders[sid]={}
+            temporal_labels=[f"dt_{dt:g}" for dt in (4e-3,2e-3,1e-3,5e-4,2.5e-4)]
+            for metric,bounds in temporal_order_bounds.items():
+                sequence=[timestep_metrics[label][sid]["temporal"][metric]
+                          for label in temporal_labels]
+                orders=[observed_order(sequence[i],sequence[i+1])
+                        for i in range(len(sequence)-1)]
+                temporal_orders[sid][metric]={"errors":sequence,"orders":orders}
+                for error,order in zip(sequence[1:],orders):
+                    if error>1e-10:
+                        v15b_pass &= bounds[0]<=order<=bounds[1]
+                v15b_pass &= sequence[-1]<=.001
+            for label in temporal_labels:
+                v15b_pass &= all(value<=.0025 for value in
+                                  timestep_metrics[label][sid]["spatial"].values())
 
         v15c_comparisons={"coarse_fine":{},"reference_fine":{}}
         primary=("cup_mass_kg","remaining_mass_kg","dissolved_mass_kg",
@@ -979,7 +1201,14 @@ class Matrix:
             "V15A":{"status":"PASS" if v15a_pass else "FAIL","routes":v15a},
             "V15B":{"status":"PASS" if v15b_pass else "FAIL","analytical":v15b,
                     "orders":v15b_orders,"radial_double":radial_metrics,
-                    "timestep_contamination":timestep_contamination},
+                    "radial_changes":radial_changes,"temporal":timestep_metrics,
+                    "temporal_orders":temporal_orders,
+                    "metric_classification":{
+                        "spatial":list(primary_error_names),
+                        "temporal":list(temporal_order_bounds),
+                        "invariant":["remaining_mass","initial_inventory","capacity_ratio",
+                                     "mass_closure","radial_invariance"],
+                        "diagnostic":["scalar_maximum_difference","error_of_error_ratio"]}},
             "V15C":{"status":"PASS" if v15c_pass else "FAIL","application":v15c,
                     "comparisons":v15c_comparisons,"boundary_fractions":boundary_conditions,
                     "reference_fine_inventory_normalized":boundary_reference_fine,
@@ -1053,6 +1282,7 @@ class Matrix:
             explicit("species_b",.14),explicit("species_a",.14)]))
         ordering=rendered.index("species_b") < rendered.index("species_a")
         self.gate("V18", ordering, declared_order_preserved=ordering)
+        self.refresh_global_mass_and_state_coverage()
 
 
 def main():
@@ -1061,6 +1291,7 @@ def main():
     parser.add_argument("--expected-sha256", required=True)
     parser.add_argument("--base-solver", type=Path, required=True)
     parser.add_argument("--expected-base-sha256", required=True)
+    parser.add_argument("--expected-contract-sha256", required=True)
     parser.add_argument("--output", type=Path, required=True)
     args=parser.parse_args()
     solver=args.solver.resolve(); output=args.output.resolve()
@@ -1069,6 +1300,11 @@ def main():
     base_solver=args.base_solver.resolve()
     if not base_solver.is_file() or sha256(base_solver)!=args.expected_base_sha256:
         raise SystemExit("base solver executable hash mismatch")
+    if sha256(CONTRACT_PATH)!=args.expected_contract_sha256:
+        raise SystemExit("verification contract hash mismatch")
+    solver_source=ROOT/"solver/espressoWholePullFoam/espressoWholePullFoam.C"
+    if sha256(solver_source)!="9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599":
+        raise SystemExit("unauthorized production solver source change")
     if ROOT in output.parents or output==ROOT:
         raise SystemExit("verification output must remain outside the repository")
     if output.exists():
@@ -1076,11 +1312,11 @@ def main():
     output.mkdir(parents=True)
     matrix=Matrix(solver,output,base_solver)
     matrix.execute()
-    result={"schema_version":"ewp.sci_md_004.stage_c.r1.runtime_matrix.v2",
+    result={"schema_version":"ewp.sci_md_004.stage_c.r2.runtime_matrix.v3",
             "executable_sha256":args.expected_sha256,
             "base_executable_sha256":args.expected_base_sha256,
             "contract_sha256":sha256(CONTRACT_PATH),
-            "matrix_scope":"fresh fail-closed V1-V18 R1 matrix including V15A/V15B/V15C",
+            "matrix_scope":"fresh fail-closed V1-V18 R2 separated-space-time matrix including V15A/V15B/V15C",
             "gates":matrix.results}
     defects=validate_complete_result(result)
     passed=not defects and all(g["status"]=="PASS" for g in matrix.results.values())

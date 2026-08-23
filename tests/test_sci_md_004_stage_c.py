@@ -16,7 +16,10 @@ assert SPEC.loader is not None
 SPEC.loader.exec_module(PREPARE)
 sys.path.insert(0, str(ROOT))
 from tools.sci_md_004_stage_c.oracle import (  # noqa: E402
-    concentration, observed_order, remaining_mass, weighted_errors,
+    concentration, discrete_integrals, discrete_mode_closed,
+    discrete_mode_recurrence, discrete_mode_sum_closed, discrete_profile,
+    discrete_remaining_density, integrated_solution, observed_order,
+    remaining_mass, weighted_errors,
 )
 from tools.sci_md_004_stage_c.runner import validate_complete_result  # noqa: E402
 
@@ -165,6 +168,22 @@ class StageCScopeTests(unittest.TestCase):
 
 
 class R1FailClosedTests(unittest.TestCase):
+    @staticmethod
+    def valid_v15_subgates():
+        return {
+            "V15A": {"status": "PASS"},
+            "V15B": {"status": "PASS", "analytical": {"coarse": {}},
+                "temporal": {f"dt_{value}": {} for value in range(5)},
+                "metric_classification": {
+                    "spatial": ["profile_l1_relative", "profile_l2_relative",
+                                "profile_linf_relative"],
+                    "temporal": ["remaining_mass", "profile_l1_relative",
+                                 "profile_l2_relative", "profile_linf_relative"],
+                    "invariant": ["remaining_mass"],
+                    "diagnostic": ["error_of_error_ratio"]}},
+            "V15C": {"status": "PASS"},
+        }
+
     def test_missing_required_assertion_forces_failure(self):
         gate = {
             "status": "PASS", "scenario_hashes": ["a"], "executable_hash": "b",
@@ -174,6 +193,8 @@ class R1FailClosedTests(unittest.TestCase):
             "output_hashes": {}, "failure_reasons": [],
         }
         result = {"gates": {f"V{i}": copy.deepcopy(gate) for i in range(1, 19)}}
+        result["gates"]["V15"]["metrics"] = {
+            "subgates": self.valid_v15_subgates()}
         self.assertTrue(validate_complete_result(result, verify_hashes=False))
         del result["gates"]["V10"]
         defects = validate_complete_result(result, verify_hashes=False)
@@ -190,12 +211,76 @@ class R1FailClosedTests(unittest.TestCase):
                 "evidence_paths": [__file__], "output_hashes": {},
                 "failure_reasons": [],
             }
-        result["gates"]["V15"]["metrics"] = {"subgates": {
-            name: {"status": "PASS"} for name in ("V15A", "V15B", "V15C")}}
+        result["gates"]["V15"]["metrics"] = {
+            "subgates": self.valid_v15_subgates()}
         result["gates"]["V17"]["metrics"] = {
             "categories": {f"case_{i}": True for i in range(39)}}
         self.assertTrue(any("Boolean placeholder" in item for item in
                             validate_complete_result(result, verify_hashes=False)))
+
+    def complete_result(self):
+        gate = {"status":"PASS","scenario_hashes":["a"],
+            "executable_hash":"b","ranks":[1],"meshes":[[1,1]],
+            "timesteps_s":[1.0],"metrics":{"assertion":"PASS"},
+            "tolerances":{"x":0},"per_species":{},"aggregate":{},
+            "evidence_paths":[__file__],"output_hashes":{},"failure_reasons":[]}
+        result={"gates":{f"V{i}":copy.deepcopy(gate) for i in range(1,19)}}
+        result["gates"]["V15"]["metrics"]={"subgates":self.valid_v15_subgates()}
+        result["gates"]["V17"]["metrics"]={"categories":{
+            f"case_{i}":"PASS" for i in range(39)}}
+        return result
+
+    def test_remaining_mass_spatial_classification_is_rejected(self):
+        result=self.complete_result()
+        result["gates"]["V15"]["metrics"]["subgates"]["V15B"][
+            "metric_classification"]["spatial"].append("remaining_mass")
+        self.assertTrue(any("remaining mass" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_removed_profile_norm_is_rejected(self):
+        result=self.complete_result()
+        result["gates"]["V15"]["metrics"]["subgates"]["V15B"][
+            "metric_classification"]["spatial"].remove("profile_linf_relative")
+        self.assertTrue(any("profile norm" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_omitted_discrete_oracle_is_rejected(self):
+        result=self.complete_result()
+        result["gates"]["V15"]["metrics"]["subgates"]["V15B"]["analytical"]={}
+        self.assertTrue(any("spatial oracle" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_incomplete_temporal_sequence_is_rejected(self):
+        result=self.complete_result()
+        result["gates"]["V15"]["metrics"]["subgates"]["V15B"]["temporal"].pop("dt_4")
+        self.assertTrue(any("temporal sequence incomplete" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_missing_v15c_is_rejected(self):
+        result=self.complete_result()
+        del result["gates"]["V15"]["metrics"]["subgates"]["V15C"]
+        self.assertTrue(any("incomplete V15A" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_altered_evidence_is_rejected(self):
+        result=self.complete_result()
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/"evidence.txt"; path.write_text("altered")
+            gate=result["gates"]["V1"]
+            gate["evidence_paths"]=[str(path)]
+            gate["output_hashes"]={str(path):"0"*64}
+            self.assertTrue(any("evidence hash mismatch" in item for item in
+                validate_complete_result(result,verify_hashes=True)))
+
+    def test_executable_hash_change_is_rejected(self):
+        result=self.complete_result(); result["executable_sha256"]="expected"
+        self.assertTrue(any("executable hash mismatch" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_protected_target_path_flag_is_rejected(self):
+        result=self.complete_result(); result["forbidden_target_path_present"]=True
+        self.assertIn("protected target path present",
+                      validate_complete_result(result,verify_hashes=False))
 
 
 class R1AnalyticalOracleTests(unittest.TestCase):
@@ -217,6 +302,74 @@ class R1AnalyticalOracleTests(unittest.TestCase):
 
     def test_positive_observed_order(self):
         self.assertAlmostEqual(observed_order(0.04, 0.01), 2.0)
+
+
+class R2SeparatedSpaceTimeOracleTests(unittest.TestCase):
+    def parameters(self, **updates):
+        values = {
+            "steps": 4000, "delta_t": 5.0e-4, "length_m": 0.009,
+            "phi": 0.4, "diffusivity": 2.0e-7, "rate": 0.05,
+            "initial_inventory_density": 70.0,
+        }
+        values.update(updates)
+        return values
+
+    def test_recurrence_and_closed_form_agree(self):
+        for mode in (0, 1, 7, 31):
+            with self.subTest(mode=mode):
+                recurrence = discrete_mode_recurrence(mode=mode, **self.parameters())
+                closed = discrete_mode_closed(mode=mode, **self.parameters())
+                self.assertAlmostEqual(recurrence, closed, delta=abs(closed)*2e-12)
+
+    def test_closed_modal_sum_agrees_with_recurrence(self):
+        parameters = self.parameters(steps=200)
+        for mode in (0, 5, 20):
+            expected = sum(discrete_mode_recurrence(
+                mode=mode, **(parameters | {"steps": step}))
+                for step in range(1, parameters["steps"]+1))
+            actual = discrete_mode_sum_closed(mode=mode, **parameters)
+            self.assertAlmostEqual(actual, expected, delta=abs(expected)*2e-11)
+
+    def test_equal_rate_limit(self):
+        parameters = self.parameters(steps=100, delta_t=1e-3)
+        eigenvalue = 0.5*__import__("math").pi/parameters["length_m"]
+        parameters["diffusivity"] = (parameters["rate"] /
+            (1-parameters["rate"]*parameters["delta_t"]))/eigenvalue**2
+        recurrence = discrete_mode_recurrence(mode=0, **parameters)
+        closed = discrete_mode_closed(mode=0, **parameters)
+        self.assertAlmostEqual(recurrence, closed, delta=abs(closed)*2e-12)
+
+    def test_discrete_oracle_converges_first_order_to_continuous(self):
+        math = __import__("math")
+        errors = []
+        for dt in (4e-3, 2e-3, 1e-3, 5e-4):
+            steps = round(2.0/dt)
+            discrete = discrete_remaining_density(70.0, .05, dt, steps)
+            continuous = 70.0*math.exp(-.1)
+            errors.append(abs(discrete-continuous)/continuous)
+        orders = [observed_order(errors[i], errors[i+1]) for i in range(3)]
+        self.assertTrue(all(.99 < order < 1.01 for order in orders), orders)
+
+    def test_discrete_flux_and_closure_agree_and_tail_is_resolved(self):
+        result = discrete_integrals(area_m2=0.002, terms=20000,
+                                    **self.parameters())
+        self.assertLessEqual(result["flux_closure_relative_initial"], 1e-10)
+        self.assertLessEqual(result["estimated_relative_remainder"], 1e-10)
+
+    def test_discrete_profile_is_deterministic(self):
+        locations = [(index+.5)*.009/64 for index in range(64)]
+        first = discrete_profile(locations_m=locations, terms=10000,
+                                 **self.parameters())
+        second = discrete_profile(locations_m=locations, terms=10000,
+                                  **self.parameters())
+        self.assertEqual(json.dumps(first, sort_keys=True),
+                         json.dumps(second, sort_keys=True))
+        self.assertLessEqual(first[1]["estimated_relative_remainder"], 1e-10)
+
+    def test_oracle_has_no_production_import(self):
+        source = (ROOT / "tools/sci_md_004_stage_c/oracle.py").read_text()
+        for forbidden in ("espressoWholePullFoam", "prepare_case", "runner"):
+            self.assertNotIn(f"import {forbidden}", source)
 
 
 class R1GeneratedCollisionRejectionTests(unittest.TestCase):
