@@ -7,8 +7,10 @@ superseding SCI-LC-001A as the current next action without reversing its
 historical scientific result. Stage A is merged and complete with disposition
 `GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT`. Stage C is a
 `GOVERNING_PHYSICS_CHANGE` that adds strictly passive indexed solute states;
-hydraulics are required to remain unchanged. A verified implementation
-candidate is being prepared for independent exact-head review. Active
+hydraulics are required to remain unchanged. A Stage C implementation
+candidate reached independent exact-head review and was rejected because
+mandatory positive-diffusivity mesh convergence and several complete
+verification assertions were not established. It must not be merged. Active
 protected comparison remains `NONE`: Angeloni scoring is unauthorized and no
 Angeloni holdout prediction or score has been generated. SCI-MD-003 remains
 closed and unchanged. Physical validation remains `NOT_ESTABLISHED`.
@@ -81,7 +83,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Active solver task: `SCI-MD-004_STAGE_C_INDEXED_PASSIVE_SPECIES`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
-- Current next action: `SCI-MD-004 Stage C independent exact-head review`
+- Current next action: `SCI-MD-004 Stage C verification failure resolution requires new owner direction`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`

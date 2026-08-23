@@ -5,15 +5,15 @@ V3,PASS,maximum zero state 0,1e-14,external/matrix-dev-5/zero_inventory
 V4,PASS,maximum zero state 1.73472347597681e-18,1e-14,external/matrix-dev-5/zero_transfer
 V5,PASS,back diffusion 0 and balance 9.18861341181465e-18 kg,1e-12 kg,external/matrix-dev-5/zero_diffusivity
 V6,PASS,maximum symmetry difference 0,exact,external/matrix-dev-5/symmetry
-V7,PASS,maximum superposition difference 0,1e-14,external/matrix-dev-5/species_combined
+V7,FAIL,standalone species traces match but aggregate field and cup-sum assertions are incomplete,complete required matrix,external/matrix-dev-5/species_combined
 V8,PASS,maximum analytical relative error 2.251818233049719e-6,1e-4,external/matrix-dev-5/uniform_analytical
 V9,PASS,residual fraction 0.12 and closure error 0,1e-15,external/matrix-dev-5/result.json
-V10,PASS,maximum species balance 3.09065381794149e-17 kg,1e-12 kg,external/matrix-dev-5/result.json
-V11,PASS,minimum concentration 0 kg/m3,-1e-14 floor,external/matrix-dev-5/result.json
-V12,PASS,serial traces byte identical,byte identity,external/matrix-dev-5/serial_repeat
-V13,PASS,MPI repeat identical and serial/MPI 2.965047141178223e-14 relative,1e-6,external/matrix-dev-5/mpi_first
-V14,PASS,coarse/fine 0.004255125011522384 and intermediate/fine 0.0011892888821720862,0.005 and 0.0025,external/matrix-dev-5/timestep_*
-V15,PASS,coarse/fine 0.005325959022012049 and reference/fine 0.0017722254106328583,0.02 and 0.0075,external/matrix-dev-5/mesh_*
-V16,PASS,maximum hydraulic difference 0,exact,external/matrix-dev-5/result.json
-V17,PASS,17 rejection categories exercised,all reject,focused unit tests
+V10,FAIL,per-species residual checked but total residual and extracted-mass bounds incomplete,complete required matrix,external/matrix-dev-5/result.json
+V11,FAIL,minimum concentration checked but inventory/source/monotonicity/finiteness assertions incomplete,complete required matrix,external/matrix-dev-5/result.json
+V12,FAIL,traces repeat but generated dictionaries and final fields are not asserted,byte identity,external/matrix-dev-5/serial_repeat
+V13,FAIL,MPI trace repeats but all-species fields/aggregate/hydraulics are incomplete,complete required matrix,external/matrix-dev-5/mpi_first
+V14,FAIL,species mass convergence passes but aggregate concentration and event-time checks are incomplete,complete required matrix,external/matrix-dev-5/timestep_*
+V15,FAIL,positive-diffusivity reference/fine difference 0.0599794258968155,0.0075,external/matrix-dev-4/mesh_*
+V16,FAIL,selected trace columns match but direct hydraulic field comparisons are incomplete,exact,external/matrix-dev-5/result.json
+V17,FAIL,rejection coverage does not independently establish every required category,all reject,focused unit tests
 V18,PASS,declared order preserved,true,focused unit tests and external matrix
