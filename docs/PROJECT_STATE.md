@@ -1,5 +1,9 @@
 # Project State
 
+## SCI-MD-004 Stage A — active owner-selected priority (2026-08-23)
+
+The human owner selected SCI-MD-004 Stage A, superseding SCI-LC-001A as the current development priority without reversing its scientific result. SCI-MD-003 remains closed and unchanged. This stage is `NO_GOVERNING_PHYSICS_CHANGE`: no multispecies solver exists yet, and no Angeloni holdout prediction or score has been generated. The data-sufficiency disposition is `GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT`; the next authorized action is SCI-MD-004 Stage C implementation planning conditional on predeclared nonchemical hydraulic information. Physical validation remains `NOT_ESTABLISHED`.
+
 ## Current SCI-ED / SCI-LC serialization authority
 
 SCI-ED-001 C1 merged through PR #80 at merge commit
@@ -62,7 +66,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 485/485 PASS
+- Public source verification: 488/488 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`

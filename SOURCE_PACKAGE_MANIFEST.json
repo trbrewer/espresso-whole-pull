@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 485,
-  "total_uncompressed_bytes_excluding_manifest": 7084311,
-  "aggregate_source_sha256": "356120e64210691e9db7d16370bcc2e4127b35ee33f9dc141b1b9f15775e299d",
-  "aggregate_sha256": "356120e64210691e9db7d16370bcc2e4127b35ee33f9dc141b1b9f15775e299d",
+  "file_count": 488,
+  "total_uncompressed_bytes_excluding_manifest": 7089072,
+  "aggregate_source_sha256": "456bd7963c4e3f0db3d2ab4855b4c088759b25ae709c176d5178f1abb0ea415d",
+  "aggregate_sha256": "456bd7963c4e3f0db3d2ab4855b4c088759b25ae709c176d5178f1abb0ea415d",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1068,6 +1068,16 @@
       "bytes": 3495,
       "git_mode": "100644"
     },
+    "docs/validation/sci_md_004/STAGE_A_CONTRACT.md": {
+      "sha256": "2d0489e14a71b9ed0b908574af4aa67268ecc6817a82744ad0bd78611cb5c3f4",
+      "bytes": 1195,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_004/STAGE_A_DECISION.json": {
+      "sha256": "4b09658a39ef8edacb9db24dfaef4846e68f350845b3ffed17356dc7039775ea",
+      "bytes": 522,
+      "git_mode": "100644"
+    },
     "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md": {
       "sha256": "70bb9dbd1db2ca6a1fe9fefa376f90b5eaa3dde69dd0dcb585e18a4115525a96",
       "bytes": 1023,
@@ -1861,6 +1871,11 @@
     "tests/test_sci_md_003_atlas.py": {
       "sha256": "a9a968e474579cfe71ad9ed1235d6fca3da4a6a95f6614352fcc9540b3abeeb5",
       "bytes": 4911,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_004_stage_a.py": {
+      "sha256": "84ffed4b60f0e22eb4afe193c6f77409fcabc797e5598e6ee5d7f37384d54ef1",
+      "bytes": 3044,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {
