@@ -1,0 +1,10 @@
+{
+  "authorization": "SCI-MD-004-STAGE-A-OWNER-AUTHORIZATION-MULTISPECIES-DATA-CONTRACT-ANGELONI-PROTECTED-EXTERNAL-ENDPOINT-HOLDOUT-AND-EXACT-ONE-SPECIES-REDUCTION-DESIGN-2026-08-23",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "disposition": "GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT",
+  "holdout_predictions_generated": 0,
+  "holdout_scores_generated": 0,
+  "multispecies_solver_implemented": false,
+  "physical_validation": "NOT_ESTABLISHED",
+  "next_action": "SCI-MD-004 Stage C implementation planning"
+}
