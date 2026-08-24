@@ -1,6 +1,6 @@
 # Project State
 
-## SCI-MD-004 Stage C R2 — separated space/time verification active (2026-08-23)
+## SCI-MD-004 Stage C R2 — verified candidate awaiting review (2026-08-23)
 
 The human owner selected SCI-MD-004 as the active development priority,
 superseding SCI-LC-001A as the current next action without reversing its
@@ -20,12 +20,14 @@ spatial-order and timestep-contamination rules. R1 is therefore
 `SCI_MD_004_STAGE_C_R1_MATERIAL_POSITIVE_DIFFUSION_MESH_DEPENDENCE`, remains
 failed and preserved, and received no independent review. The owner further
 adjudicated that R1 did not establish a new indexed solver defect: its v2
-method conflated temporal and spatial discretization error. R2 is the active,
+method conflated temporal and spatial discretization error. R2 is the
 separately authorized v3 verification-method correction. It compares finite-
 timestep production output with an exact discrete-time oracle for spatial
 verification, then compares that oracle with the continuous equations for
-temporal verification. Production solver source is intended to remain byte-
-identical to R1. Stage A remains merged and unchanged; R0 PR #91 remains
+temporal verification. Production solver source remains byte-identical to R1.
+The frozen complete R2 V1--V18 matrix and interleaved performance protocol
+passed. The exact candidate awaits one independent exact-head review and
+remains unmerged. Stage A remains merged and unchanged; R0 PR #91 remains
 closed without merge and R0 remains failed. R1 PR #93 and issue #92 are closed
 without merge with the R1 failure preserved. No parameterization is authorized. Active
 protected comparison remains `NONE`: Angeloni scoring is unauthorized and no
@@ -94,7 +96,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 495/495 PASS
+- Public source verification: 498/498 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `SCI-MD-004_STAGE_C_INDEXED_PASSIVE_SPECIES`

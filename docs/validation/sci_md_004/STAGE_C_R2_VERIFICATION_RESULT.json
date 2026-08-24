@@ -1,0 +1,42 @@
+{
+  "schema_version": "ewp.sci_md_004.stage_c.r2.compact_result.v3",
+  "result": "SCI_MD_004_STAGE_C_R2_VERIFIED_READY_FOR_INDEPENDENT_EXACT_HEAD_REVIEW",
+  "merged": false,
+  "executed_candidate": {"commit":"a39f3375c23908c40fe895f588551fd9a9925508","tree":"70d0fe2c3f16cd639963ec4aac1dd86cb3a774de"},
+  "authority": {
+    "r0_result": "SCI_MD_004_STAGE_C_IMPLEMENTATION_VERIFICATION_FAILED",
+    "r1_result": "SCI_MD_004_STAGE_C_R1_MATERIAL_POSITIVE_DIFFUSION_MESH_DEPENDENCE",
+    "r1_contractual_failure_preserved": true,
+    "material_positive_diffusion_solver_defect_established_by_r1": false,
+    "verification_space_time_axis_confound_established": true
+  },
+  "frozen_hashes": {
+    "production_solver_source_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+    "candidate_executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+    "base_executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+    "contract_sha256": "949dbe55ecfe4e3582ff03d017e0e65fc0315fd81b2b8fffc25dd40dd79e4e9f",
+    "adjudicative_result_sha256": "81d1fe4b9870d289ba8a13023df98fbb717d50b93a71835f596e8ab683ee0a8d",
+    "performance_result_sha256": "4f5e427812f1dfea57736bfe5d73b10d2c39959b7d77f7ca4cd7d0babab88b48"
+  },
+  "matrix": {
+    "status": "PASS",
+    "completeness_defects": [],
+    "gates": {"V1":"PASS","V2":"PASS","V3":"PASS","V4":"PASS","V5":"PASS","V6":"PASS","V7":"PASS","V8":"PASS","V9":"PASS","V10":"PASS","V11":"PASS","V12":"PASS","V13":"PASS","V14":"PASS","V15":"PASS","V16":"PASS","V17":"PASS","V18":"PASS"},
+    "indexed_runs_scanned": 31,
+    "species_time_rows_scanned": 88805,
+    "maximum_conservation_residual_kg": 2.39545887661092e-13,
+    "maximum_aggregate_residual_sum_difference_kg": 3.0015459518903683e-16,
+    "maximum_final_field_trace_difference_kg": 1.951563910473908e-17
+  },
+  "v14": {"coarse_fine_maximum_relative":0.0044265637577041465,"intermediate_fine_maximum_relative":0.0007029926197273573,"event_time_maximum_absolute_s":0.003775670116040075,"mass_residual_maximum_absolute_kg":3.25067755132628e-13},
+  "v15": {
+    "V15A": {"status":"PASS","route_maximum_absolute_difference":0.0,"coarse_trace_sha256":"ef3f79d6116311218ca46f3c5e4249ba812a46b748eaf9fa850bf7edb9f90f36","reference_trace_sha256":"a460798914b7acb909a8aac54065a78a8384239dac857608af1e2917d6c9d392","fine_trace_sha256":"b8d9a425139c95ff205e467fe0128beb2bcea84089e4841518e0df45fb436353"},
+    "V15B": {"status":"PASS","spatial_order_range":[1.9418443469557187,1.9998022081945743],"temporal_order_range":[0.9994252683811341,1.0004281442759133],"maximum_radial_relative_change":1.7338523866514148e-12,"maximum_capacity_ratio":6.27330695080694e-29},
+    "V15C": {"status":"PASS","classification":"INHERITED_LEGACY_INLET_BACK_DIFFUSION_MESH_SENSITIVITY","maximum_primary_coarse_fine_relative":0.00528354181547547,"maximum_primary_reference_fine_relative":0.0017461313860528906,"maximum_back_diffusion_fraction_initial":0.00015169107836336833,"maximum_reference_fine_inventory_normalized_difference":8.296111281583032e-06}
+  },
+  "performance": {"status":"PASS","candidate_legacy_overhead_ratio":1.0135985368936822,"base_median_s":0.825918927,"candidate_legacy_median_s":0.837150216,"indexed_one_median_s":0.876891377,"indexed_three_median_s":1.5156247,"indexed_one_scaling":1.0474719593215753,"indexed_three_scaling":1.8104572764035458,"cycles":5},
+  "production_solver_source_changed_in_r2": false,
+  "holdout": {"target_values_accessed":false,"predictions_generated":0,"scores_generated":0,"species_parameters_fitted":0,"post_holdout_retuning_events":0},
+  "independent_review": "PENDING",
+  "physical_validation": "NOT_ESTABLISHED"
+}

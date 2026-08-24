@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 495,
-  "total_uncompressed_bytes_excluding_manifest": 7145700,
-  "aggregate_source_sha256": "002c428b3a4510a955a1fe5db7284e8963605eaaaee2c2060f7ba7c0d95179d2",
-  "aggregate_sha256": "002c428b3a4510a955a1fe5db7284e8963605eaaaee2c2060f7ba7c0d95179d2",
+  "file_count": 498,
+  "total_uncompressed_bytes_excluding_manifest": 7164312,
+  "aggregate_source_sha256": "7df6168f31e89b9ad72877df07a1c9d74edc34e9b05295cb76c4a32d01120f74",
+  "aggregate_sha256": "7df6168f31e89b9ad72877df07a1c9d74edc34e9b05295cb76c4a32d01120f74",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1098,6 +1098,21 @@
       "bytes": 890,
       "git_mode": "100644"
     },
+    "docs/validation/sci_md_004/STAGE_C_R2_VERIFICATION_METHOD_CORRECTION.md": {
+      "sha256": "ea575f4246d1f47d580de4d881ffac35ac11936bd23f859a4ec3b402a3579f3b",
+      "bytes": 2815,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_004/STAGE_C_R2_VERIFICATION_RESULT.json": {
+      "sha256": "187943fc5257f37d444b1c3138edebc7e8b2486e54bdac8cb280ee7a64d7d36b",
+      "bytes": 3715,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_004/STAGE_C_R2_VERIFICATION_RUNS.csv": {
+      "sha256": "9b696bfad905b1983aa839186f1bc6fd0e9d2fa36ec8b785d9586d41a271fb34",
+      "bytes": 4227,
+      "git_mode": "100644"
+    },
     "docs/validation/sci_md_004/STAGE_C_VERIFICATION_RESULT.json": {
       "sha256": "0aff3206dffd33dc27fe88a245c831339ce368ec3ba105e76252ea9cd8801045",
       "bytes": 3309,
@@ -1904,13 +1919,13 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_a.py": {
-      "sha256": "84c1d48632ea24fa091f3996a4bd26d1bede512bc221c52509438e42e1a22d2d",
-      "bytes": 3430,
+      "sha256": "943578c40f4313060f775af4e5d1a4da34d91548b02b77e03d1950f1de590fa9",
+      "bytes": 3514,
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_c.py": {
-      "sha256": "3b1b66928e2a5f8391ccbbf5dff4c01756a1f31589f3b1baa45e5c2558dca618",
-      "bytes": 14704,
+      "sha256": "d2f32efdf30360fd00f731bb63a021fc9cf004b523bd18a6d2fd91d393176708",
+      "bytes": 22475,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {
