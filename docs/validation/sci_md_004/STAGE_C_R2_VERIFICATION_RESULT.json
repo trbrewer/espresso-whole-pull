@@ -1,6 +1,6 @@
 {
   "schema_version": "ewp.sci_md_004.stage_c.r2.compact_result.v3",
-  "result": "SCI_MD_004_STAGE_C_R2_VERIFIED_READY_FOR_INDEPENDENT_EXACT_HEAD_REVIEW",
+  "result": "SCI_MD_004_STAGE_C_R2_VERIFICATION_INCOMPLETE",
   "merged": false,
   "executed_candidate": {"commit":"a39f3375c23908c40fe895f588551fd9a9925508","tree":"70d0fe2c3f16cd639963ec4aac1dd86cb3a774de"},
   "authority": {
@@ -37,6 +37,6 @@
   "performance": {"status":"PASS","candidate_legacy_overhead_ratio":1.0135985368936822,"base_median_s":0.825918927,"candidate_legacy_median_s":0.837150216,"indexed_one_median_s":0.876891377,"indexed_three_median_s":1.5156247,"indexed_one_scaling":1.0474719593215753,"indexed_three_scaling":1.8104572764035458,"cycles":5},
   "production_solver_source_changed_in_r2": false,
   "holdout": {"target_values_accessed":false,"predictions_generated":0,"scores_generated":0,"species_parameters_fitted":0,"post_holdout_retuning_events":0},
-  "independent_review": "PENDING",
+  "independent_review": {"status":"FAIL","reviewed_commit":"4502cfc338d4f29050788388ef349a0cc5ee8abd","reviewed_tree":"69cc1c1758fe72b832355e188ffaf84329ab4f54","blockers":["V11_BEGINNING_STEP_AND_PRECLAMP_ASSERTIONS_ABSENT","V12_COMPACT_RESULT_COMPARISON_TAUTOLOGICAL","V15A_SOLUTE_FIELD_ROUTES_ABSENT","V16_ACTIVE_MECHANICS_FIELDS_OMITTED"],"correction":"IN_PROGRESS"},
   "physical_validation": "NOT_ESTABLISHED"
 }

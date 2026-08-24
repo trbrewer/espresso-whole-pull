@@ -170,8 +170,14 @@ class StageCScopeTests(unittest.TestCase):
 class R1FailClosedTests(unittest.TestCase):
     @staticmethod
     def valid_v15_subgates():
+        fields={name:{"base_candidate_equal":True,
+            "candidate_indexed_aggregate_equal":True,
+            "candidate_indexed_species_equal":True} for name in
+            ("dissolvedConcentration","remainingExtractable","localExtractionRate")}
         return {
-            "V15A": {"status": "PASS"},
+            "V15A": {"status": "PASS", "routes": {
+                mesh:{"solute_field_routes":copy.deepcopy(fields)}
+                for mesh in ("coarse","reference","fine")}},
             "V15B": {"status": "PASS", "analytical": {"coarse": {}},
                 "temporal": {f"dt_{value}": {} for value in range(5)},
                 "metric_classification": {
@@ -184,6 +190,18 @@ class R1FailClosedTests(unittest.TestCase):
             "V15C": {"status": "PASS"},
         }
 
+    def add_complete_special_gates(self,result):
+        result["gates"]["V11"]["metrics"].update(
+            source_beginning_step_cap_asserted=True,
+            silent_clamp_mass_upper_bound_asserted=True)
+        result["gates"]["V11"]["aggregate"]["beginning_step_diagnostics"]={
+            "species_a":[{"status":"PASS"}]}
+        result["gates"]["V12"]["aggregate"]["independent_compact_results"]={
+            "first":{"file":"hash"},"second":{"file":"hash"}}
+        result["gates"]["V16"]["aggregate"]["active_mechanics_fields"]={
+            name:True for name in ("mechanicalPorosity","compactionPermeabilityRatio",
+                "compactionStrain","effectiveMatrixStress","normalizedEffectiveStress")}
+
     def test_missing_required_assertion_forces_failure(self):
         gate = {
             "status": "PASS", "scenario_hashes": ["a"], "executable_hash": "b",
@@ -195,6 +213,7 @@ class R1FailClosedTests(unittest.TestCase):
         result = {"gates": {f"V{i}": copy.deepcopy(gate) for i in range(1, 19)}}
         result["gates"]["V15"]["metrics"] = {
             "subgates": self.valid_v15_subgates()}
+        self.add_complete_special_gates(result)
         self.assertTrue(validate_complete_result(result, verify_hashes=False))
         del result["gates"]["V10"]
         defects = validate_complete_result(result, verify_hashes=False)
@@ -213,6 +232,7 @@ class R1FailClosedTests(unittest.TestCase):
             }
         result["gates"]["V15"]["metrics"] = {
             "subgates": self.valid_v15_subgates()}
+        self.add_complete_special_gates(result)
         result["gates"]["V17"]["metrics"] = {
             "categories": {f"case_{i}": True for i in range(39)}}
         self.assertTrue(any("Boolean placeholder" in item for item in
@@ -228,6 +248,7 @@ class R1FailClosedTests(unittest.TestCase):
         result["gates"]["V15"]["metrics"]={"subgates":self.valid_v15_subgates()}
         result["gates"]["V17"]["metrics"]={"categories":{
             f"case_{i}":"PASS" for i in range(39)}}
+        self.add_complete_special_gates(result)
         return result
 
     def test_remaining_mass_spatial_classification_is_rejected(self):
@@ -260,6 +281,32 @@ class R1FailClosedTests(unittest.TestCase):
         result=self.complete_result()
         del result["gates"]["V15"]["metrics"]["subgates"]["V15C"]
         self.assertTrue(any("incomplete V15A" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_missing_v15a_field_route_is_rejected(self):
+        result=self.complete_result()
+        del result["gates"]["V15"]["metrics"]["subgates"]["V15A"][
+            "routes"]["fine"]["solute_field_routes"]["localExtractionRate"]
+        self.assertTrue(any("V15A" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_missing_v11_step_diagnostic_is_rejected(self):
+        result=self.complete_result()
+        result["gates"]["V11"]["aggregate"]["beginning_step_diagnostics"]={}
+        self.assertTrue(any("pre-clamp" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_missing_v12_independent_compact_result_is_rejected(self):
+        result=self.complete_result()
+        del result["gates"]["V12"]["aggregate"]["independent_compact_results"]["second"]
+        self.assertTrue(any("V12" in item for item in
+            validate_complete_result(result,verify_hashes=False)))
+
+    def test_missing_v16_active_mechanics_field_is_rejected(self):
+        result=self.complete_result()
+        del result["gates"]["V16"]["aggregate"]["active_mechanics_fields"][
+            "compactionStrain"]
+        self.assertTrue(any("V16" in item for item in
             validate_complete_result(result,verify_hashes=False)))
 
     def test_altered_evidence_is_rejected(self):

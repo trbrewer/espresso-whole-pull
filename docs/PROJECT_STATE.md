@@ -1,6 +1,6 @@
 # Project State
 
-## SCI-MD-004 Stage C R2 — verified candidate awaiting review (2026-08-23)
+## SCI-MD-004 Stage C R2 — exact-head verification correction active (2026-08-23)
 
 The human owner selected SCI-MD-004 as the active development priority,
 superseding SCI-LC-001A as the current next action without reversing its
@@ -25,9 +25,11 @@ separately authorized v3 verification-method correction. It compares finite-
 timestep production output with an exact discrete-time oracle for spatial
 verification, then compares that oracle with the continuous equations for
 temporal verification. Production solver source remains byte-identical to R1.
-The frozen complete R2 V1--V18 matrix and interleaved performance protocol
-passed. The exact candidate awaits one independent exact-head review and
-remains unmerged. Stage A remains merged and unchanged; R0 PR #91 remains
+The first frozen R2 matrix and interleaved performance protocol nominally
+passed, but independent exact-head review failed four mandatory completeness
+checks in V11, V12, V15A, and V16. That candidate remains unmerged and the
+failed review is preserved. A bounded verification-only correction is active;
+it changes no production solver source or tolerance. Stage A remains merged and unchanged; R0 PR #91 remains
 closed without merge and R0 remains failed. R1 PR #93 and issue #92 are closed
 without merge with the R1 failure preserved. No parameterization is authorized. Active
 protected comparison remains `NONE`: Angeloni scoring is unauthorized and no

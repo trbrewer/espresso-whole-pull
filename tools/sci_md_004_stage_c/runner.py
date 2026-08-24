@@ -138,6 +138,31 @@ def validate_complete_result(result: dict, *, verify_hashes: bool = True) -> lis
                 defects.append("V15B: temporal sequence incomplete")
             if not v15b.get("analytical"):
                 defects.append("V15B: discrete spatial oracle evidence absent")
+            v15a=subgates.get("V15A",{}) if isinstance(subgates,dict) else {}
+            routes=v15a.get("routes",{})
+            if set(routes)!={"coarse","reference","fine"} or any(
+                set(mesh.get("solute_field_routes",{})) != {
+                    "dissolvedConcentration","remainingExtractable","localExtractionRate"}
+                for mesh in routes.values()):
+                defects.append("V15A: complete solute-field route evidence absent")
+        if gate_name == "V11":
+            if gate.get("metrics",{}).get("source_beginning_step_cap_asserted") is not True:
+                defects.append("V11: beginning-step source-cap assertion absent")
+            diagnostics=gate.get("aggregate",{}).get("beginning_step_diagnostics")
+            if not diagnostics or gate.get("metrics",{}).get(
+                    "silent_clamp_mass_upper_bound_asserted") is not True:
+                defects.append("V11: pre-clamp diagnostic assertion absent")
+        if gate_name == "V12":
+            compact=gate.get("aggregate",{}).get("independent_compact_results",{})
+            if set(compact)!={"first","second"} or compact.get("first") is compact.get("second"):
+                defects.append("V12: two independently derived compact results absent")
+        if gate_name == "V16":
+            required_mechanics={"mechanicalPorosity","compactionPermeabilityRatio",
+                                "compactionStrain","effectiveMatrixStress",
+                                "normalizedEffectiveStress"}
+            mechanics=gate.get("aggregate",{}).get("active_mechanics_fields",{})
+            if not required_mechanics <= set(mechanics):
+                defects.append("V16: active mechanics field evidence absent")
         if gate_name == "V17":
             categories = gate.get("metrics", {}).get("categories")
             if not isinstance(categories, dict) or len(categories) < 39:
@@ -730,6 +755,12 @@ class Matrix:
                   residual_fraction=closure["species"][-1]["effective_fraction"],
                   closure_error=closure_error)
 
+        v11_scenario=self.compact(end=.06,dt=.02,axial=8,radial=4)
+        v11_scenario["time"]["field_write_interval_s"]=.02
+        v11_case=self.run("v11_step_diagnostics",indexed(v11_scenario,[
+            explicit("species_a",.14,rate=.12,saturation=80),
+            explicit("species_b",.14,rate=.20,saturation=220)]))
+
         all_species = []
         for name, case in self.runs.items():
             path = case / "postProcessing/wholePullSpecies/0/species_traces.csv"
@@ -864,15 +895,51 @@ class Matrix:
                         "finite": all(math.isfinite(v) for v in values),
                         "minimum": min(values), "passes_floor": min(values)>=-1e-14,
                     }
+        step_diagnostics={}; step_pass=True
+        count=v11_scenario["geometry"]["axial_cells"]*v11_scenario["geometry"]["radial_cells"]
+        times=sorted((float(path.name),path.name) for path in v11_case.iterdir()
+                     if path.is_dir() and path.name not in {"0.orig"} and
+                     __import__("re").fullmatch(r"\d+(?:\.\d+)?",path.name)
+                     and float(path.name)>0.0)
+        dt=float(v11_scenario["time"]["delta_t_s"])
+        full_volume=(math.pi*v11_scenario["geometry"]["basket_radius_m"]**2*
+                     v11_scenario["coffee_bed"]["bed_depth_m"])
+        initial_density=v11_scenario["coffee_bed"]["dry_dose_kg"]*.14/full_volume
+        for sid in ("species_a","species_b"):
+            sid_results=[]
+            previous=[initial_density]*count
+            for _,time_name in times:
+                source=scalar_internal_values(v11_case/time_name/f"localExtractionRate_{sid}",
+                                              cell_count=count)
+                current=scalar_internal_values(v11_case/time_name/f"remainingExtractable_{sid}",
+                                               cell_count=count)
+                preclamp=[inventory-dt*rate for inventory,rate in zip(previous,source)]
+                cap_excess=max((dt*rate-inventory for inventory,rate in zip(previous,source)),
+                               default=-math.inf)
+                update_error=max(abs(now-max(raw,0.0)) for now,raw in zip(current,preclamp))
+                item={"time":time_name,"source_cap_excess_field_units":cap_excess,
+                      "minimum_preclamp_inventory":min(preclamp),
+                      "post_update_maximum_absolute_error":update_error}
+                sid_results.append(item)
+                step_pass &= cap_excess<=1e-14 and min(preclamp)>=-1e-14 and update_error<=1e-12
+                previous=current
+            step_diagnostics[sid]=sid_results
+        diagnostic_rows=rows(v11_case/"postProcessing/wholePullSpecies/0/species_traces.csv")
+        clamp_mass_upper_bound=max(abs(float(row["solute_balance_residual_kg"]))
+                                   for row in diagnostic_rows)
+        step_pass &= clamp_mass_upper_bound<=1e-12
         v11_pass = (all(all(v.values()) for v in bounded_results.values()) and logs_clean and
-                    all(v["finite"] and v["passes_floor"] for v in field_bounds.values()))
+                    all(v["finite"] and v["passes_floor"] for v in field_bounds.values()) and
+                    step_pass)
         self.gate("V11", v11_pass,
                   tolerances={"nonnegative_floor":-1e-14,"remaining_monotonic_kg":1e-12},
                   per_species={"trace_bounds":bounded_results,"field_bounds":field_bounds},
-                  aggregate={"solver_logs_nonfinite_free":logs_clean},
+                  aggregate={"solver_logs_nonfinite_free":logs_clean,
+                             "beginning_step_diagnostics":step_diagnostics,
+                             "hidden_clamp_mass_upper_bound_kg":clamp_mass_upper_bound},
                   minimum_concentration_kg_m3=min_concentration,
-                  source_beginning_step_cap="solver diagnostic fatal check plus final written source field bounds",
-                  silent_clamp="production solver fatal checks preclude nonfinite/negative written state")
+                  source_beginning_step_cap_asserted=step_pass,
+                  silent_clamp_mass_upper_bound_asserted=clamp_mass_upper_bound<=1e-12)
 
         repeat = self.run("serial_repeat", indexed(self.compact(), [
             explicit("species_a", .10, rate=.12, saturation=80),
@@ -896,14 +963,21 @@ class Matrix:
             first_hash=sha256(combined/rel); second_hash=sha256(repeat/rel)
             serial_hashes[rel]=[first_hash,second_hash]
             serial_same &= first_hash==second_hash
-        compact_first = json.dumps(serial_hashes, sort_keys=True, separators=(",", ":"))
-        compact_second = json.dumps({key:value for key,value in serial_hashes.items()},
-                                    sort_keys=True,separators=(",", ":"))
+        compact_by_run={"first":{},"second":{}}
+        for rel in deterministic_paths:
+            compact_by_run["first"][rel]=sha256(combined/rel)
+            compact_by_run["second"][rel]=sha256(repeat/rel)
+        compact_by_run["first"]["input_json"]=sha256(input_configs[0])
+        compact_by_run["second"]["input_json"]=sha256(input_configs[1])
+        compact_first=json.dumps(compact_by_run["first"],sort_keys=True,separators=(",", ":"))
+        compact_second=json.dumps(compact_by_run["second"],sort_keys=True,separators=(",", ":"))
         self.gate("V12", serial_same and compact_first == compact_second,
                   tolerances={"all_files":"byte_identity",
                               "canonicalization":"none required for fresh serial repeats"},
-                  aggregate={"all_file_hashes":serial_hashes},
-                  hashes=serial_hashes, deterministic_compact_result_equal=True)
+                  aggregate={"all_file_hashes":serial_hashes,
+                             "independent_compact_results":compact_by_run},
+                  hashes=serial_hashes,
+                  deterministic_compact_result_equal=compact_first==compact_second)
 
         mpi_first = self.run("mpi_first", indexed(self.compact(), [
             explicit("species_a", .10, rate=.12, saturation=80),
@@ -1068,11 +1142,30 @@ class Matrix:
                          "base_candidate_maximum_absolute":base_candidate,
                          "candidate_indexed_maximum_absolute":candidate_indexed,
                          "metrics":self.application_metrics(one_case)}
+            route_times=[latest_time_name(case) for case in
+                         (base_case,candidate_case,one_case)]
+            field_routes={}
+            for stem in ("dissolvedConcentration","remainingExtractable",
+                         "localExtractionRate"):
+                hashes=[canonical_sha256(case/time_name/stem) for case,time_name in
+                        zip((base_case,candidate_case,one_case),route_times)]
+                species_hash=canonical_sha256(
+                    one_case/route_times[2]/f"{stem}_species_a")
+                field_routes[stem]={"route_hashes":hashes,
+                    "indexed_species_hash":species_hash,
+                    "base_candidate_equal":hashes[0]==hashes[1],
+                    "candidate_indexed_aggregate_equal":hashes[1]==hashes[2],
+                    "candidate_indexed_species_equal":hashes[1]==species_hash}
+            v15a[label]["solute_field_routes"]=field_routes
             flowing=indexed(physical,[explicit("species_a",.10,rate=.12,saturation=80,diffusivity=1e-9),
                                       explicit("species_b",.18,rate=.20,saturation=220,diffusivity=1e-9)])
             v15c[label]=self.application_metrics(self.run(f"v15c_{label}",flowing))
         v15a_pass=all(all(value==0.0 for value in mesh["base_candidate_maximum_absolute"].values())
                       and all(value==0.0 for value in mesh["candidate_indexed_maximum_absolute"].values())
+                      and all(all(item[key] for key in
+                          ("base_candidate_equal","candidate_indexed_aggregate_equal",
+                           "candidate_indexed_species_equal"))
+                          for item in mesh["solute_field_routes"].values())
                       for mesh in v15a.values())
 
         v15b={}
@@ -1243,13 +1336,13 @@ class Matrix:
         mechanics_diff={column:maximum_column_difference(mechanics_legacy_rows,
             mechanics_aggregate,column) for column in HYDRAULIC_COLUMNS}
         mechanics_time=f"{mechanics['time']['end_s']:g}"
+        active_mechanics_fields=hydraulic_fields+(
+            "mechanicalPorosity","compactionPermeabilityRatio","compactionStrain",
+            "effectiveMatrixStress","normalizedEffectiveStress")
         mechanics_fields={name:canonical_sha256(mechanics_legacy/mechanics_time/name)==
-            canonical_sha256(mechanics_indexed/mechanics_time/name) for name in hydraulic_fields}
-        not_applicable={
-            "effective_stress_field":"not a written production field; active mechanics is directly covered by porosity/permeability fields and all stress/compaction trace outputs",
-            "mechanical_porosity_field":"mechanical porosity is the active porosity field in the mechanics case",
-            "compaction_permeability_ratio_field":"ratio is exposed by minimumPermeabilityRatio trace; permeability field is compared directly",
-        }
+            canonical_sha256(mechanics_indexed/mechanics_time/name)
+            for name in active_mechanics_fields}
+        not_applicable={}
         v16_pass=(max(hydraulic_diff.values())==0.0 and all(hydraulic_field_equal.values()) and
                   max(mechanics_diff.values())==0.0 and all(mechanics_fields.values()))
         self.gate("V16",v16_pass,tolerances={"fields":"canonical_byte_identity",

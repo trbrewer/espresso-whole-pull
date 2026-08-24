@@ -50,3 +50,14 @@ Stage A is merged and unchanged. R0 and R1 are failed and preserved. R2 is the
 active separated-space-time verification correction. No parameterization or
 protected holdout scoring is authorized, and physical validation remains
 `NOT_ESTABLISHED`.
+
+The first R2 exact-head review of commit `4502cfc338d4f29050788388ef349a0cc5ee8abd`
+failed verification completeness. Its runner omitted V15A final solute-field
+routes and three active V16 mechanics fields, derived both V12 compact results
+from one hash dictionary, and did not execute V11 beginning-step source-cap and
+pre-clamp diagnostics. That review failure is preserved externally. The
+correction adds direct field hashes, independently derived serial compact
+results, written-every-step source/inventory assertions, active mechanics and
+stress fields, and fail-closed self-tests for all four omissions. It changes no
+contract tolerance, manufactured parameter, production source, or case
+semantics outside the bounded V11 diagnostic case.
