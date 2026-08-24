@@ -1,0 +1,76 @@
+{
+  "schema_version": "ewp.sci_md_004.stage_c.compact_result.v1",
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "result": "SCI_MD_004_STAGE_C_IMPLEMENTATION_VERIFICATION_FAILED",
+  "base": {
+    "commit": "bf4de34310fcc433071e00ee7fa51082a37d1c4c",
+    "tree": "6f344dd1dad6b54876f20d80d6e58ec4ce4af9ac",
+    "solver_source_sha256": "a292021a19740e4dd8869a2fa63aaeaa95ea3843016734768b492ca2d2f38dd7",
+    "executable_sha256": "e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+    "trace_sha256": "fd9b29265c39f854ea660e10770a6f9dfec825a52390b2396f607a89c549b5cf",
+    "two_run_byte_stability": "PASS"
+  },
+  "verification": {
+    "V1": "PASS",
+    "V2": "PASS",
+    "V3": "PASS",
+    "V4": "PASS",
+    "V5": "PASS",
+    "V6": "PASS",
+    "V7": "FAIL_INCOMPLETE_AGGREGATE_ASSERTIONS",
+    "V8": "PASS",
+    "V9": "PASS",
+    "V10": "FAIL_INCOMPLETE_TOTAL_CONSERVATION_ASSERTIONS",
+    "V11": "FAIL_INCOMPLETE_BOUNDED_STATE_ASSERTIONS",
+    "V12": "FAIL_INCOMPLETE_DICTIONARY_AND_FIELD_DETERMINISM_ASSERTIONS",
+    "V13": "FAIL_INCOMPLETE_ALL_SPECIES_FIELD_AND_HYDRAULIC_MPI_ASSERTIONS",
+    "V14": "FAIL_INCOMPLETE_AGGREGATE_CONCENTRATION_AND_EVENT_TIME_ASSERTIONS",
+    "V15": "FAIL_POSITIVE_DIFFUSIVITY_MESH_GATE",
+    "V16": "FAIL_INCOMPLETE_DIRECT_FIELD_ASSERTIONS",
+    "V17": "FAIL_INCOMPLETE_REJECTION_COVERAGE",
+    "V18": "PASS",
+    "legacy_trace_byte_identical": true,
+    "indexed_one_species_maximum_absolute_difference": 0.0,
+    "maximum_species_balance_residual_kg": 3.09065381794149e-17,
+    "minimum_species_concentration_kg_m3": 0.0,
+    "symmetry_maximum_difference": 0.0,
+    "superposition_maximum_difference": 0.0,
+    "analytical_relative_error": {
+      "species_a": 1.597902437646989e-6,
+      "species_b": 2.251818233049719e-6
+    },
+    "serial_repeat_byte_identical": true,
+    "mpi_repeat_byte_identical": true,
+    "serial_mpi_maximum_relative_difference": 2.965047141178223e-14,
+    "timestep_coarse_fine_relative": 0.004255125011522384,
+    "timestep_intermediate_fine_relative": 0.0011892888821720862,
+    "mesh_coarse_fine_relative": 0.005325959022012049,
+    "mesh_reference_fine_relative": 0.0017722254106328583,
+    "mesh_scope": "ZERO_DIFFUSIVITY_SUBSTITUTE_NOT_ACCEPTED_FOR_ADVECTION_DIFFUSION_GATE",
+    "positive_diffusivity_mesh_reference_fine_relative": 0.0599794258968155,
+    "hydraulic_columns_maximum_absolute_difference": 0.0,
+    "external_matrix_result_sha256": "1bfbc6b8d05186598f8328e549c2ba01f370c09e9740e7b16eadac8cc4cf7edb"
+  },
+  "performance": {
+    "base_legacy_median_s": 0.07,
+    "candidate_legacy_median_s": 0.07,
+    "candidate_legacy_overhead_ratio": 1.0,
+    "indexed_one_species_median_s": 0.08,
+    "indexed_three_species_median_s": 0.1,
+    "external_result_sha256": "f7765432ce96e2c23d2a01eab474a7a9833d3e308de6c39f528979df759f5a18"
+  },
+  "holdout": {
+    "target_values_accessed": false,
+    "predictions_generated": 0,
+    "scores_generated": 0,
+    "species_parameters_fitted": 0,
+    "post_holdout_retuning_events": 0
+  },
+  "independent_review": {
+    "reviewer": "/root/independent_stage_c_review",
+    "reviewed_commit": "75b3ba9a4a46d7e9fead96992f1f5440f8fe9e3b",
+    "reviewed_tree": "c69655004bb6711c1452c19e3e4def47468dc239",
+    "disposition": "FAIL"
+  },
+  "physical_validation": "NOT_ESTABLISHED"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "ewp.sci_md_004.stage_c.r2.verification.v3",
+  "authorization": "SCI-MD-004-STAGE-C-R2-OWNER-AUTHORIZATION-SEPARATED-SPACE-TIME-POSITIVE-DIFFUSION-VERIFICATION-CONTRACT-CORRECTION-COMPLETE-V1-V18-MATRIX-AND-FINAL-EXACT-HEAD-REVIEW-2026-08-23",
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "r2_change_declaration": "NO_ADDITIONAL_PRODUCTION_SOLVER_CHANGE",
+  "authority": {
+    "stage_a": {"commit":"bf4de34310fcc433071e00ee7fa51082a37d1c4c","tree":"6f344dd1dad6b54876f20d80d6e58ec4ce4af9ac","disposition":"GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT"},
+    "r0_reviewed_candidate": {"commit":"75b3ba9a4a46d7e9fead96992f1f5440f8fe9e3b","tree":"c69655004bb6711c1452c19e3e4def47468dc239"},
+    "r0_failure_record": {"commit":"53ce8dbeb73d71da512bf368d8de0f7402348f9c","tree":"bda18f9577dad4bc5c50cfc6c5d0b1d562d0cefd","result":"SCI_MD_004_STAGE_C_IMPLEMENTATION_VERIFICATION_FAILED"},
+    "r1_reconstruction_commits": ["fcba238884b1cf0ef63dc2be3e0da3e43edaeb0e","e71ae0d3065dac66027608e57c11b52d212e380d","3ea26fc79efde0e4f1e34d3ec0fa115acc0478ca"],
+    "r1_failure_record": {"commit":"a5ad88ac4575cec1cfc9db53bf6f2e83ca135c91","tree":"d0d4c284775ad0d4b0d12968043c85cb7672ea3a","result":"SCI_MD_004_STAGE_C_R1_MATERIAL_POSITIVE_DIFFUSION_MESH_DEPENDENCE"},
+    "r2_base": {"commit":"a5ad88ac4575cec1cfc9db53bf6f2e83ca135c91","tree":"d0d4c284775ad0d4b0d12968043c85cb7672ea3a"},
+    "owner_adjudication": ["SCI_MD_004_STAGE_C_R1_CONTRACTUAL_FAILURE_PRESERVED","MATERIAL_POSITIVE_DIFFUSION_SOLVER_DEFECT_NOT_ESTABLISHED","VERIFICATION_SPACE_TIME_AXIS_CONFOUND_ESTABLISHED"]
+  },
+  "frozen_artifacts": {
+    "solver_source_sha256":"9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+    "candidate_executable_sha256":"d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+    "base_executable_sha256":"e682bb63d4b54a19133a81e1dc857217132b91918ecceb33ffbc88c35b6b0fd6",
+    "reference_config_sha256":"67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+    "schemes":{"ddt":"Euler","gradient":"Gauss linear","laplacian":"Gauss linear corrected","interpolation":"linear","snGrad":"corrected"}
+  },
+  "oracles": {
+    "continuous": {"inventory":"M(t)=M0 exp(-k t)","concentration":"phi*dC/dt-phi*D*d2C/dx2=k*M0*exp(-k*t)","inlet":"C(0,t)=0","outlet":"dC/dx(L,t)=0","eigenvalues":"(n+1/2)*pi/L","coefficients":"2/((n+1/2)*pi)"},
+    "discrete": {"inventory":"M^(m+1)=(1-k*dt)M^m","source":"beginning-of-step k*M^m","concentration":"implicit Euler","diffusion_factor":"1/(1+D*lambda_n^2*dt)","implementations":["direct_recurrence","closed_form"],"back_diffusion":["discrete_boundary_flux_accumulation","discrete_mass_closure"]},
+    "relative_remainder_max": 1e-10,
+    "independence": ["no production C++ import","no prepare_case import","no production field parser import","frozen manufactured parameters only"]
+  },
+  "metric_classification": {
+    "spatial":["profile_l1","profile_l2","profile_linf","dissolved_mass","back_diffusion_closure","back_diffusion_flux"],
+    "temporal":["remaining_mass","profile_l1","profile_l2","profile_linf","dissolved_mass","back_diffusion_mass"],
+    "invariant":["remaining_mass_at_fixed_timestep","initial_inventory","capacity_ratio","source_integral","oracle_closure","production_conservation","radial_invariance","identical_species_symmetry"],
+    "diagnostic_only":["scalar_maximum_difference","scalar_minimum_difference","difference_between_error_magnitudes","error_of_error_ratio"],
+    "forbidden_gate":"abs(error_dt_half-error_dt)/abs(error_reference-error_fine)"
+  },
+  "gates": {
+    "V1":"fresh unchanged legacy dictionaries, trace, solute fields, and active hydraulic fields byte-identical",
+    "V2":"indexed one-species exact reduction including fields, traces, events, conservation, and hydraulics",
+    "V3":"zero inventory", "V4":"zero transfer", "V5":"zero diffusivity",
+    "V6":"identical-species trace and field symmetry",
+    "V7":"standalone/combined species traces, internal and boundary fields, all masses, outlet rate, residuals, and aggregate cellwise sums",
+    "V8":"independent uniform source/inventory analytical limit",
+    "V9":"explicit/residual inventory closure",
+    "V10":"every species/time and aggregate trace plus final-field conservation and extracted-mass bounds",
+    "V11":"finite bounded states, monotonic cumulative/remaining masses, beginning-step source cap, and unclamped violation detection",
+    "V12":"two fresh serial runs: JSON, dictionaries, initial fields, traces, final species/aggregate/hydraulic fields, compact result",
+    "V13":"one serial and two MPI runs: repeat hashes, all species/times, reconstructed fields, aggregates, hydraulics, conservation, events",
+    "V14":"all species and aggregate timestep sensitivity for masses, concentrations, rates, residuals, first drip, and target event",
+    "V15":"V15A and corrected separated-space-time V15B and V15C",
+    "V16":"direct equality of every active hydraulic/mechanical field, trace, and event",
+    "V17":"all owner-enumerated individually named parser/rejection categories; no Boolean placeholder",
+    "V18":"stable declared species ordering and naming in dictionaries, fields, and traces"
+  },
+  "v15": {
+    "V15A":{"meshes":[[512,32],[1024,32],[2048,32]],"routes":["base_legacy","candidate_legacy","indexed_one"],"trace":"byte_identity","fields":"exact_or_frozen_strict","hydraulics":"exact"},
+    "V15B":{"end_s":2.0,"species":[{"id":"species_a","fraction":0.14,"availability":1.0,"rate_1_s":0.05,"saturation_kg_m3":1e30,"diffusivity_m2_s":2e-7},{"id":"species_b","fraction":0.14,"availability":1.0,"rate_1_s":0.12,"saturation_kg_m3":1e30,"diffusivity_m2_s":8e-7}],"spatial":{"delta_t_s":0.0005,"meshes":[[64,4],[128,4],[256,4]],"relative_limits":{"coarse":0.02,"reference":0.0075,"fine":0.0025},"minimum_orders":{"profile_l1":1.5,"profile_l2":1.5,"profile_linf":1.0,"dissolved_mass":1.5,"back_diffusion":0.5}},"temporal":{"mesh":[256,4],"timesteps_s":[0.004,0.002,0.001,0.0005,0.00025],"order_bounds":{"remaining_mass":[0.9,1.1],"profile_l1":[0.8,1.2],"profile_l2":[0.8,1.2],"profile_linf":[0.7,1.3],"dissolved_mass":[0.8,1.2],"back_diffusion":[0.7,1.3]},"finest_relative_max":0.001,"order_floor_relative":1e-10},"radial":{"reference":[128,4],"repeat":[128,8],"relative_max":1e-10},"remaining_relative":1e-12,"remaining_absolute_kg":1e-14,"mass_balance_kg":1e-12,"capacity_ratio_max":1e-16},
+    "V15C":{"primary_coarse_fine_relative":0.02,"primary_reference_fine_relative":0.0075,"back_diffusion_fraction_initial_max":0.01,"back_diffusion_reference_fine_initial_difference_max":0.001,"conservation_kg":1e-12,"accepted_limitation":"INHERITED_LEGACY_INLET_BACK_DIFFUSION_MESH_SENSITIVITY"}
+  },
+  "v14":{"end_s":8.0,"target_beverage_mass_kg":0.005,"timesteps_s":{"coarse":0.02,"intermediate":0.01,"fine":0.005},"coarse_fine_relative":0.005,"intermediate_fine_relative":0.0025,"event_time_absolute_s":0.02,"mass_residual_absolute_kg":1e-12,"near_zero_residuals_use_absolute_gate":true},
+  "tolerances":{"mass_balance_kg":1e-12,"aggregate_residual_sum_kg":1e-14,"nonnegative_floor":-1e-14,"timestep_coarse_fine_relative":0.005,"timestep_intermediate_fine_relative":0.0025,"serial_mpi_species_relative":1e-6,"serial_mpi_hydraulic_relative":1e-8,"candidate_legacy_overhead_ratio":1.10},
+  "performance":{"modes":["base_legacy","candidate_legacy","indexed_one","indexed_three"],"warmups_per_mode":1,"interleaved_cycles":5,"rotated_order":true,"timer":"monotonic_high_resolution","rss":"/usr/bin/time -v","preferred_median_min_s":1.0},
+  "fail_closed":{"required_gates":["V1","V2","V3","V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14","V15","V16","V17","V18"],"required_v15_subgates":["V15A","V15B","V15C"],"forbidden_statuses":["NOT_RUN","INCOMPLETE"],"reject_missing_metric":true,"reject_missing_metric_classification":true,"reject_spatial_order_on_temporal_quantity":true,"reject_error_of_error_temporal_gate":true,"verify_evidence_hashes":true,"reject_executable_mismatch":true,"reject_reused_directory":true,"reject_stale_output":true,"reject_target_path":true,"reject_empty_output":true,"reject_missing_species_or_time":true,"reject_nonfinite":true},
+  "holdout":{"classification":"PROTECTED_EXTERNAL_NO_RETUNING_ENDPOINT_HOLDOUT","preexisting_exposure":true,"target_access":false,"predictions":0,"scores":0,"parameter_fits":0,"post_holdout_retuning":0},
+  "allowed_result_classes":["SCI_MD_004_STAGE_C_R2_VERIFIED_READY_FOR_INDEPENDENT_EXACT_HEAD_REVIEW","SCI_MD_004_STAGE_C_R2_VERIFIED_MERGED_READY_FOR_STAGE_E0","SCI_MD_004_STAGE_C_R2_NEW_INDEXED_NUMERICAL_DEFECT_IDENTIFIED","SCI_MD_004_STAGE_C_R2_TIME_DISCRETE_SPATIAL_VERIFICATION_FAILED","SCI_MD_004_STAGE_C_R2_CONTINUOUS_TIME_CONVERGENCE_FAILED","SCI_MD_004_STAGE_C_R2_APPLICATION_POSITIVE_DIFFUSION_MESH_LIMITATION_BLOCKING","SCI_MD_004_STAGE_C_R2_VERIFICATION_FAILED","SCI_MD_004_STAGE_C_R2_VERIFICATION_INCOMPLETE","SCI_MD_004_STAGE_C_R2_UNAUTHORIZED_PRODUCTION_SOLVER_CHANGE"],
+  "claim_ceiling":"Generic indexed conservative passive-species software and numerical verification only; physical validation NOT_ESTABLISHED."
+}

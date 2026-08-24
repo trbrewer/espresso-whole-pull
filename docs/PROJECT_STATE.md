@@ -1,8 +1,42 @@
 # Project State
 
-## SCI-MD-004 Stage A — active owner-selected priority (2026-08-23)
+## SCI-MD-004 Stage C R2 — exact-head verification correction active (2026-08-23)
 
-The human owner selected SCI-MD-004 Stage A, superseding SCI-LC-001A as the current development priority without reversing its scientific result. SCI-MD-003 remains closed and unchanged. This stage is `NO_GOVERNING_PHYSICS_CHANGE`: no multispecies solver exists yet, and no Angeloni holdout prediction or score has been generated. The data-sufficiency disposition is `GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT`; the next authorized action is SCI-MD-004 Stage C implementation planning conditional on predeclared nonchemical hydraulic information. Physical validation remains `NOT_ESTABLISHED`.
+The human owner selected SCI-MD-004 as the active development priority,
+superseding SCI-LC-001A as the current next action without reversing its
+historical scientific result. Stage A is merged and complete with disposition
+`GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT`. Stage C is a
+`GOVERNING_PHYSICS_CHANGE` that adds strictly passive indexed solute states;
+hydraulics are required to remain unchanged. A Stage C implementation
+candidate reached independent exact-head review and was rejected because
+mandatory positive-diffusivity mesh convergence and several complete
+verification assertions were not established. It must not be merged. Active
+owner-authorized R1 preserved that failed R0 history and established exact
+base-legacy/candidate-legacy/indexed-one route equivalence across the positive-
+diffusivity mesh hierarchy. The original sensitivity is inherited inlet
+back-diffusion sensitivity, not a new indexed defect. The independent V15B
+manufactured positive-diffusion series nevertheless failed its frozen positive
+spatial-order and timestep-contamination rules. R1 is therefore
+`SCI_MD_004_STAGE_C_R1_MATERIAL_POSITIVE_DIFFUSION_MESH_DEPENDENCE`, remains
+failed and preserved, and received no independent review. The owner further
+adjudicated that R1 did not establish a new indexed solver defect: its v2
+method conflated temporal and spatial discretization error. R2 is the
+separately authorized v3 verification-method correction. It compares finite-
+timestep production output with an exact discrete-time oracle for spatial
+verification, then compares that oracle with the continuous equations for
+temporal verification. Production solver source remains byte-identical to R1.
+The first frozen R2 matrix and interleaved performance protocol nominally
+passed, but independent exact-head review failed four mandatory completeness
+checks in V11, V12, V15A, and V16. That candidate remains unmerged and the
+failed review is preserved. The bounded verification-only correction changes
+no production solver source or tolerance. Its fresh adjudicative-002 V1–V18
+matrix and interleaved performance protocol pass, and the exact corrected
+candidate awaits one independent exact-head review. Stage A remains merged and unchanged; R0 PR #91 remains
+closed without merge and R0 remains failed. R1 PR #93 and issue #92 are closed
+without merge with the R1 failure preserved. No parameterization is authorized. Active
+protected comparison remains `NONE`: Angeloni scoring is unauthorized and no
+Angeloni holdout prediction or score has been generated. SCI-MD-003 remains
+closed and unchanged. Physical validation remains `NOT_ESTABLISHED`.
 
 ## Current SCI-ED / SCI-LC serialization authority
 
@@ -66,14 +100,13 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 488/488 PASS
+- Public source verification: 498/498 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
-- Active solver task: `NONE`
+- Active solver task: `SCI-MD-004_STAGE_C_INDEXED_PASSIVE_SPECIES`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
-- Current next action:
-  `SCI-LC-001A — Reduced lateral equalization and channeling phase diagram`
+- Current next action: `SCI-MD-004 Stage C verification failure resolution requires new owner direction`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
@@ -86,6 +119,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
   `docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
+- Active protected comparison: `NONE`
 - Protected or holdout scoring: `NOT_AUTHORIZED`
 
 The exact source-manifest count and aggregate are generated in

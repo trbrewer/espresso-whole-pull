@@ -30,7 +30,9 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 859,
+    "python_test_count": 937,
+    "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
+    "sci_md_004_stage_c_focused_test_count": 78,
     "sci_lc_001a_obs_001_r1_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_obs_001",
     "sci_lc_001a_obs_001_r1_focused_test_count": 26,
     "sci_lc_001a_protocol_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_protocol",
@@ -46,8 +48,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 488,
-    "source_manifest_aggregate_sha256": "456bd7963c4e3f0db3d2ab4855b4c088759b25ae709c176d5178f1abb0ea415d",
+    "source_manifest_file_count": 498,
+    "source_manifest_aggregate_sha256": "ce0796ce5d2632a8c0909c065b2f859979a9e83faa42b498def336971102230d",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -57,7 +59,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "456bd7963c4e3f0db3d2ab4855b4c088759b25ae709c176d5178f1abb0ea415d"
+    "source_manifest_aggregate_source_sha256": "002c428b3a4510a955a1fe5db7284e8963605eaaaee2c2060f7ba7c0d95179d2"
   },
   "sci_md_002a": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
@@ -515,7 +517,7 @@
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
   "active_validation_case": "NONE",
   "active_data_planning_task": "NONE",
-  "active_solver_task": "NONE",
+  "active_solver_task": "SCI-MD-004_STAGE_C_INDEXED_PASSIVE_SPECIES",
   "active_cross_solver_verification_task": "NONE",
   "experimental_commissioning": "NOT_AUTHORIZED",
   "protected_or_holdout_scoring": "NOT_AUTHORIZED",

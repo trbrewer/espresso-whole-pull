@@ -37,6 +37,167 @@ WP02_CONFIG_RELATIVES = {
     Path("config/fixture_WP02_001_uniform_pressure.json"),
 }
 
+INDEXED_SPECIES_MODEL = "indexed_passive_species_first_order_with_capacity_ceiling"
+ALLOWED_SPECIES_PROVENANCE = {
+    "DIRECT_MEASURED_INPUT", "LITERATURE_CONSTRAINED", "TRAINING_DATA_ESTIMATE",
+    "FIXED_STRUCTURAL_ASSUMPTION", "PROXY",
+}
+
+
+def validate_indexed_generated_names(species_ids: list[str], *,
+                                     existing_fields: set[str] | None = None,
+                                     existing_traces: set[str] | None = None,
+                                     aggregate_fields: set[str] | None = None) -> None:
+    """Fail closed before rendering any indexed dictionary or field name."""
+    fields = set(existing_fields or ())
+    traces = set(existing_traces or ())
+    rendered_keys: set[str] = set()
+    aggregate_names = aggregate_fields or {
+        "dissolvedConcentration", "remainingExtractable", "localExtractionRate"
+    }
+    for species_id in species_ids:
+        if species_id in rendered_keys:
+            raise SystemExit(f"duplicate rendered dictionary key: {species_id}")
+        rendered_keys.add(species_id)
+        generated_fields = {
+            f"dissolvedConcentration_{species_id}",
+            f"remainingExtractable_{species_id}",
+            f"localExtractionRate_{species_id}",
+        }
+        if generated_fields & fields:
+            raise SystemExit("generated field-name collision")
+        if generated_fields & aggregate_names:
+            raise SystemExit("aggregate-field collision")
+        generated_trace = f"species_trace_{species_id}"
+        if generated_trace in traces:
+            raise SystemExit("generated trace-name collision")
+        fields.update(generated_fields)
+        traces.add(generated_trace)
+
+
+def indexed_species_contract(scenario: dict) -> dict | None:
+    extraction = scenario["extraction"]
+    model = extraction.get(
+        "model", "single_effective_solute_first_order_with_capacity_ceiling"
+    )
+    if model != INDEXED_SPECIES_MODEL:
+        return None
+    species = extraction.get("species")
+    if not isinstance(species, list) or not species:
+        raise SystemExit("indexed extraction requires a nonempty species list")
+    legacy_fraction = float(
+        scenario["coffee_bed"]["initial_extractable_fraction_dry_basis"]
+    )
+    legacy_rate = float(extraction["legacy_rate_constant_1_s"])
+    legacy_saturation = float(extraction["legacy_saturation_concentration_kg_m3"])
+    legacy_diffusivity = float(scenario["liquid"]["effective_solute_diffusivity_m2_s"])
+    seen: set[str] = set()
+    explicit_sum = 0.0
+    structural_count = 0
+    normalized = []
+    for index, raw in enumerate(species):
+        if not isinstance(raw, dict):
+            raise SystemExit(f"species entry {index} must be a dictionary")
+        species_id = raw.get("id")
+        if (
+            not isinstance(species_id, str) or not species_id
+            or not species_id.isascii()
+            or not species_id.replace("_", "a").isalnum()
+            or not (species_id[0].isalpha() or species_id[0] == "_")
+            or "/" in species_id or ".." in species_id
+        ):
+            raise SystemExit(f"invalid indexed species id: {species_id!r}")
+        if species_id in seen:
+            raise SystemExit(f"duplicate indexed species id: {species_id}")
+        seen.add(species_id)
+        role = raw.get("role")
+        entry = {"id": species_id, "index": index}
+        if role == "explicit_inventory":
+            required = (
+                "dry_coffee_inventory_mass_fraction", "availability_fraction",
+                "rate_constant_1_s", "saturation_concentration_kg_m3",
+                "effective_diffusivity_m2_s", "parameter_provenance",
+            )
+            missing = [key for key in required if key not in raw]
+            if missing:
+                raise SystemExit(f"species {species_id} missing keys: {', '.join(missing)}")
+            inventory, availability, rate, saturation, diffusivity = (
+                float(raw[key]) for key in required[:5]
+            )
+            values = (inventory, availability, rate, saturation, diffusivity)
+            if not all(math.isfinite(value) for value in values):
+                raise SystemExit(f"species {species_id} contains a nonfinite value")
+            if (inventory < 0.0 or not 0.0 <= availability <= 1.0 or rate < 0.0
+                    or saturation <= 0.0 or diffusivity < 0.0):
+                raise SystemExit(f"species {species_id} contains an invalid value")
+            provenance = raw["parameter_provenance"]
+            if set(provenance) != {
+                "inventory", "availability", "rate", "saturation", "diffusivity"
+            } or any(value not in ALLOWED_SPECIES_PROVENANCE
+                     for value in provenance.values()):
+                raise SystemExit(f"species {species_id} has forbidden provenance")
+            effective = inventory * availability
+            explicit_sum += effective
+            entry.update(role="explicitInventory", effective_fraction=effective,
+                         rate=rate, saturation=saturation, diffusivity=diffusivity,
+                         inherited=False)
+        elif role == "structural_balance":
+            structural_count += 1
+            if structural_count > 1:
+                raise SystemExit("at most one structural-balance species is permitted")
+            if raw != {"id": species_id, "role": "structural_balance",
+                       "inherit_legacy_parameters": True}:
+                raise SystemExit(
+                    "structural-balance species must contain only id, role, and "
+                    "inherit_legacy_parameters=true"
+                )
+            entry.update(role="structuralBalance", rate=legacy_rate,
+                         saturation=legacy_saturation, diffusivity=legacy_diffusivity,
+                         inherited=True)
+        else:
+            raise SystemExit(f"unknown indexed species role: {role!r}")
+        normalized.append(entry)
+    validate_indexed_generated_names([item["id"] for item in normalized])
+    tolerance = 1.0e-15
+    residual = legacy_fraction - explicit_sum
+    if not math.isfinite(residual) or residual < -tolerance:
+        raise SystemExit("indexed species inventory exceeds legacy extractableFraction")
+    if structural_count:
+        for entry in normalized:
+            if entry["role"] == "structuralBalance":
+                entry["effective_fraction"] = max(residual, 0.0)
+    elif abs(residual) > tolerance:
+        raise SystemExit(
+            "explicit indexed inventory must equal extractableFraction without a "
+            "structural-balance species"
+        )
+    if abs(sum(item["effective_fraction"] for item in normalized) - legacy_fraction) > tolerance:
+        raise SystemExit("indexed inventory closure failed")
+    return {"species": normalized, "closure_tolerance": tolerance}
+
+
+def render_indexed_species(scenario: dict) -> str:
+    contract = indexed_species_contract(scenario)
+    if contract is None:
+        return ""
+    lines = ["soluteTransportModel indexedPassiveSpecies;", "",
+             "indexedPassiveSpeciesCoeffs", "{", "    speciesOrder", "    ("]
+    lines.extend(f"        {item['id']}" for item in contract["species"])
+    lines.extend(["    );", ""])
+    for item in contract["species"]:
+        lines.extend([
+            f"    {item['id']}", "    {", f"        role {item['role']};",
+            f"        effectiveInitialFraction {item['effective_fraction']:.16g};",
+            f"        extractionRateConstant {item['rate']:.16g};",
+            f"        saturationConcentration {item['saturation']:.16g};",
+            f"        effectiveSoluteDiffusivity {item['diffusivity']:.16g};",
+            "        inheritLegacyParameters "
+            f"{'true' if item['inherited'] else 'false'};",
+            "    }", "",
+        ])
+    lines.extend(["}", ""])
+    return "\n".join(lines)
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -162,11 +323,7 @@ def render_control_dict(scenario: dict) -> str:
     start_value = time_cfg["start_s"] if r1 else time_cfg.get("start_s", 0.0)
     compression = "on" if bool(compression_value) else "off"
     write_format = str(format_value)
-    write_precision = (
-        int(output_cfg["write_precision_digits"])
-        if is_wp02_uniform_fixture(scenario)
-        else 10
-    )
+    write_precision = int(output_cfg.get("write_precision_digits", 10))
     return f'''FoamFile
 {{
     version     2.0;
@@ -206,6 +363,14 @@ def render_properties(scenario: dict) -> str:
     hydraulic = scenario["hydraulics"]
     wetting = scenario["wetting"]
     extraction = scenario["extraction"]
+    indexed_species_dictionary = render_indexed_species(scenario)
+    legacy_rate = extraction.get(
+        "rate_constant_1_s", extraction.get("legacy_rate_constant_1_s")
+    )
+    legacy_saturation = extraction.get(
+        "saturation_concentration_kg_m3",
+        extraction.get("legacy_saturation_concentration_kg_m3"),
+    )
     time_cfg = scenario["time"]
     r1 = is_r1_scenario(scenario)
     closure = scenario.get("effective_permeability_evolution")
@@ -507,9 +672,9 @@ pressureProbe2Position     {float(probes[1]['position_m']):.16g};
 pressureProbe2HalfWidth    {float(probes[1]['half_width_m']):.16g};
 
 // One effective soluble inventory [SI]
-extractionRateConstant     {float(extraction['rate_constant_1_s']):.16g};
-saturationConcentration    {float(extraction['saturation_concentration_kg_m3']):.16g};
-
+extractionRateConstant     {float(legacy_rate):.16g};
+saturationConcentration    {float(legacy_saturation):.16g};
+{indexed_species_dictionary}
 targetBeverageMass         {float(time_cfg['target_beverage_mass_kg']):.16g};
 {machine_dictionary}
 {mechanics_dictionary}
