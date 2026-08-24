@@ -28,8 +28,10 @@ temporal verification. Production solver source remains byte-identical to R1.
 The first frozen R2 matrix and interleaved performance protocol nominally
 passed, but independent exact-head review failed four mandatory completeness
 checks in V11, V12, V15A, and V16. That candidate remains unmerged and the
-failed review is preserved. A bounded verification-only correction is active;
-it changes no production solver source or tolerance. Stage A remains merged and unchanged; R0 PR #91 remains
+failed review is preserved. The bounded verification-only correction changes
+no production solver source or tolerance. Its fresh adjudicative-002 V1–V18
+matrix and interleaved performance protocol pass, and the exact corrected
+candidate awaits one independent exact-head review. Stage A remains merged and unchanged; R0 PR #91 remains
 closed without merge and R0 remains failed. R1 PR #93 and issue #92 are closed
 without merge with the R1 failure preserved. No parameterization is authorized. Active
 protected comparison remains `NONE`: Angeloni scoring is unauthorized and no

@@ -1,4 +1,5 @@
 run_id,ranks,axial_cells,radial_cells,timestep_s,end_s,scenario_sha256
+v11_step_diagnostics,1,8,4,0.02,0.06,8b16ebd161766f5b3fcdd4b1eeda1a25bbf16575048084dff1c896ebf57df8a2
 compact_legacy,1,32,16,0.02,6.0,51e088e61d5283593be5db4cc3b77cfc4d107fb3585f0fa1139313494f871e2d
 indexed_one,1,32,16,0.02,6.0,d7a399f21a9c08bb478c1d444bfff5a5bf9ac58dda4fd61ed39d5a805485c791
 mpi_first,2,32,16,0.02,6.0,cbb55e93563d14f055d75159ffac1e7ce05c5774624754e37c84b7506889a669
