@@ -19,7 +19,7 @@ CURRENT_MARKERS = {
         "VAL-CORPUS-002 is `COMPLETE_APPROVED_AND_MERGED`",
         "Active validation case: `NONE`",
         "Active data-planning task: `NONE`",
-        "Active solver task: `SCI-MD-004_STAGE_E0_G1_PRE_HOLDOUT_FREEZE`",
+        "Active solver task: `NONE`",
         "`ADDITIONAL_INDEPENDENT_DATA_REQUIRED`",
         "VAL-CASE-002 is `NOT_STARTED`",
         "Experimental commissioning: `NOT_AUTHORIZED`",
@@ -136,7 +136,7 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
     for key, expected in (
         ("active_validation_case", "NONE"),
         ("active_data_planning_task", "NONE"),
-        ("active_solver_task", "SCI-MD-004_STAGE_E0_G1_PRE_HOLDOUT_FREEZE"),
+        ("active_solver_task", "NONE"),
         ("current_scientific_gate", "ADDITIONAL_INDEPENDENT_DATA_REQUIRED"),
         ("experimental_commissioning", "NOT_AUTHORIZED"),
         ("protected_or_holdout_scoring", "NOT_AUTHORIZED"),

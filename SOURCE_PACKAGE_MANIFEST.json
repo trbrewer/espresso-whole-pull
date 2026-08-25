@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 501,
-  "total_uncompressed_bytes_excluding_manifest": 7188483,
-  "aggregate_source_sha256": "17dc73a7da6fdbbd5647629431b02bfd0675acefd3a69966372ead2454a69683",
-  "aggregate_sha256": "17dc73a7da6fdbbd5647629431b02bfd0675acefd3a69966372ead2454a69683",
+  "file_count": 503,
+  "total_uncompressed_bytes_excluding_manifest": 7193376,
+  "aggregate_source_sha256": "943575cad90f870ebcf889f441cccae2a3c6fe71441af398f12899d27fb3e60c",
+  "aggregate_sha256": "943575cad90f870ebcf889f441cccae2a3c6fe71441af398f12899d27fb3e60c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1133,6 +1133,11 @@
       "bytes": 2718,
       "git_mode": "100644"
     },
+    "docs/validation/sci_md_004/STAGE_E1_PROTECTED_HOLDOUT_RESULT.md": {
+      "sha256": "3f38eaf08165318306b109b4a5d65f677f060005839eb0b77d9f88d998b1b00f",
+      "bytes": 2558,
+      "git_mode": "100644"
+    },
     "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md": {
       "sha256": "70bb9dbd1db2ca6a1fe9fefa376f90b5eaa3dde69dd0dcb585e18a4115525a96",
       "bytes": 1023,
@@ -1839,8 +1844,8 @@
       "git_mode": "100644"
     },
     "tests/test_current_authority_consistency.py": {
-      "sha256": "b95c00b5cddb373a17e34b6848558699fbd022e19cc31833bf99d08077e92ef8",
-      "bytes": 16332,
+      "sha256": "85600678ea1287ac468f48cd89ed55c1906e5319e356ef047bee41f66034ba03",
+      "bytes": 16258,
       "git_mode": "100644"
     },
     "tests/test_r1_analysis.py": {
@@ -1929,8 +1934,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_a.py": {
-      "sha256": "651e59fc1739e45e938a973b2a377e37bdda0e0cff6cc01745df04d9d3b59bb8",
-      "bytes": 3678,
+      "sha256": "19d5b4130d14edcc97d52eaf8794a22e0ec962addd2c97cd09dbfea20f3706f8",
+      "bytes": 3777,
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_c.py": {
@@ -1941,6 +1946,11 @@
     "tests/test_sci_md_004_stage_e0_freeze.py": {
       "sha256": "6ba283c37dab8a9912b42cd86f532c81a7bba6f0682d6e938cdc3a1fab14ea45",
       "bytes": 2708,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_004_stage_e1.py": {
+      "sha256": "241eb524409b0a90c70e0b2f14280e6095c05ca7bec4ac34b91a243c0f94d1b2",
+      "bytes": 2310,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {
