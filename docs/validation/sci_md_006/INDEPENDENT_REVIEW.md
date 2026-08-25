@@ -152,3 +152,82 @@ The focused command `python3 -m unittest tests.test_sci_md_006 -v` passed all 18
 tests. No adjudicative `execute` operation was run during this rereview.
 Angeloni was not accessed. Puckworks was not modified. No path other than this
 continuous independent-review record was modified by the reviewer.
+
+## Final consolidated pre-execution review
+
+SCI_MD_006_FINAL_CONSOLIDATED_PREEXECUTION_REVIEW_STOP
+
+F-final commit: `410319473e97acb871062665ebc8d8f7ecc98297`
+
+F-final tree: `ae1c3890c21409ab17eeafd55cb51925ea714420`
+
+B-final commit: `4ea32581130e348f7dae49a01fc1fa25d6d30103`
+
+B-final tree: `aa574b8eedc0af2421db2a175515fdd28a889ea8`
+
+Review date: 2026-08-25
+
+This final review does not authorize adjudicative execution. The consolidated
+candidate repairs the empty binding and executes genuine production cases
+before optimization, but the following frozen semantic defects remain:
+
+1. The already frozen real pre-fit parity result is a valid application-contract
+   failure, not an application-representability failure. Gauge invariance passes
+   and production outlet flow matches each prescribed flow, so the conditional
+   Darcy mapping demonstrably represents the fixed-flow application. The parity
+   matrix then fails the frozen reduced/full thresholds (for example P01 has
+   species prediction NRMSE about 2.563 and endpoint discrepancy about 0.00984;
+   P05 also exceeds both thresholds). Nevertheless `blocked_result()` will write
+   a final report stating that the unchanged production interface "cannot
+   represent" the application. That is contradicted by the frozen gauge and
+   production-flow evidence and would create a materially false scientific
+   narrative for the expected zero-optimizer terminal result.
+2. The nominal parity-success path still does not satisfy the required result
+   contract. `FULL_DATA_FITS.json` and `BLOCKED_CV_FITS.json` do not preserve the
+   required exact bound-distance classifications; blocked predictions omit
+   condition identity, flow/timing, parameter set, source/input hashes, solver
+   diagnostics, and conservation diagnostics; no per-fold diagnostic metrics
+   are produced; no `SECONDARY_BENCHMARKS.json` is produced; and the success-path
+   final report contains only disposition plus claim-ceiling text rather than
+   the required model, inventory, blocked-CV, identifiability, parity,
+   numerical, sensitivity, and next-work narrative.
+3. Application-specific production numerical evidence is not enforced on the
+   success path. `postfit_parity()` obtains production application metrics but
+   does not retain or gate them. The H0/H1 numerical gates use only
+   `numerical.qualify(...)["reduced_pass"]`; production conservation,
+   nonnegative state, source-cap behavior, reference/fine behavior, and
+   application-specific serial/parallel behavior are therefore not mechanically
+   qualified. The generic Stage-C reuse manifest cannot substitute for the
+   expressly required application-specific checks where the new conditional
+   Darcy case generator and observation mapping are involved.
+4. Required direct test and QA evidence remains incomplete. The final focused
+   suite has 21 passing tests when the binding check is enabled, but it still
+   lacks direct frozen-condition nesting, exactly-once whole-block OOF,
+   execution-record start isolation, every-fit nesting inequality, complete
+   artifact-schema/manifest closure, numerical/parity failure propagation,
+   truthful blocked-report semantics, and claim-ceiling/report-content tests.
+   `PACKAGE_QA_STATUS.json` records a generic 975-test repository snapshot but
+   contains no SCI-MD-006 full-QA command/result closure for F-final/B-final.
+
+Controls verified as passing: B-final is a direct child of F-final and its JSON
+binding is nonempty and parseable; it binds the exact F-final commit/tree,
+allowed deltas, immutable authorities, and 35 scientific file hashes; every
+bound file matches both the F-final blob and current B-final worktree bytes; the
+Stage-E0-R1 bundle manifest and members close; H0-HIST, SCI-MD-004/005 result
+paths, and production source are unchanged; Puckworks remains at commit
+`5ce003e751aac516b5de3d9ede4e6910627e2b12`, tree
+`d50c23028df01d6e1dc0a14ab331d0ea7453cb7f`, clean and read-only; the
+conditional-Darcy permeability is fixed from declared flow and gauge rather
+than optimized; alternate-gauge evidence passes; the real pre-fit production
+matrix ran before any optimizer and truthfully records `pass: false`; the
+preflight records `fit_authorized: false` and `optimizer_call_count: 0`; the
+success path no longer contains the prior intentional runtime stop; explicit
+decision gates include H0/H1 parity, numerical, identifiability, bounds,
+optimizer, prediction, and integrity controls.
+
+Focused QA commands used by the reviewer were
+`python3 -m unittest tests.test_sci_md_006 -v` (20 pass, one expected binding
+test skip) and `SCI_MD_006_REQUIRE_BINDING=1 python3 -m unittest
+tests.test_sci_md_006 -v` (21 pass). No adjudicative analysis was executed.
+Angeloni was not accessed. Puckworks was not modified. Only this continuous
+review record was modified by the reviewer.
