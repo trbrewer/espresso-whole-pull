@@ -114,7 +114,10 @@ def main():
         closure=compose(aggregate_history=agg["history"],inventories={s:inventories[(held,s)] for s in SPECIES},dry_dose_kg=.02,
             fractions=[{"fraction_id":f,"lower_beverage_mass_kg":lo,"upper_beverage_mass_kg":hi} for f,lo,hi in fractions],aggregate_inventory_fraction=.28)
         for item in closure["species"]: cv_h0[(held,item["fraction_id"],item["species_id"])]=item["species_concentration_kg_per_kg_beverage"]
-    report={"schema_version":"ewp.sci-md-005-training-result/v1","bounds":BOUNDS,"fixed_starts":starts_report,"fitted_parameters":fitted,"metrics":{},"joint":{}}
+    report={"schema_version":"ewp.sci-md-005-training-result/v1",
+        "adjudicative_status":"NONADJUDICATIVE_UPSTREAM_H0_CONTRACT_BLOCKED",
+        "warning":"These attempted reduced-model metrics cannot select a scientific result because the required H0 identity cannot exactly reproduce the frozen SCI-MD-004 H0 artifacts.",
+        "bounds":BOUNDS,"fixed_starts":starts_report,"fitted_parameters":fitted,"metrics":{},"joint":{}}
     for species in SPECIES:
         sr=[r for r in rows if r["species_id"]==species]
         report["metrics"][species]={"H0":metrics(sr,cv_h0),"H1_production":metrics(sr,cv_h1)}

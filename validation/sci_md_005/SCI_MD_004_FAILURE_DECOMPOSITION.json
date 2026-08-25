@@ -15,30 +15,60 @@
         "mean": 5.871288219530908e-05,
         "minimum": 3.3908852954715824e-05
       },
+      "back_diffused_mass_kg": {
+        "maximum": 3.30324004528862e-08,
+        "mean": 1.8271423765607655e-08,
+        "minimum": 8.50463623519349e-09
+      },
       "cup_fraction_initial": {
         "maximum": 0.9884858587642623,
         "mean": 0.903311521129085,
         "minimum": 0.8010680505769214
+      },
+      "cup_mass_kg": {
+        "maximum": 0.000367172025670014,
+        "mean": 0.00028106813698178365,
+        "minimum": 0.000201470135769819
       },
       "dissolved_fraction_initial": {
         "maximum": 0.05182359050013967,
         "mean": 0.028603719717255303,
         "minimum": 0.0058022910914340906
       },
+      "dissolved_mass_kg": {
+        "maximum": 1.92576462298519e-05,
+        "mean": 8.909873385793035e-06,
+        "minimum": 1.45521460573167e-06
+      },
       "fraction_initial_remaining": {
         "maximum": 0.14707420134851804,
         "mean": 0.06802604627146419,
         "minimum": 0.005623603262706259
+      },
+      "initial_inventory_kg": {
+        "maximum": 0.0003716,
+        "mean": 0.0003112,
+        "minimum": 0.0002508
       },
       "inventory_utilization": {
         "maximum": 0.9943763967372938,
         "mean": 0.9319739537285359,
         "minimum": 0.852925798651482
       },
+      "remaining_inventory_kg": {
+        "maximum": 5.46527732211093e-05,
+        "mean": 2.1203718208657653e-05,
+        "minimum": 1.41039969828673e-06
+      },
       "retained_fraction_initial": {
         "maximum": 2.552195199230498e-15,
         "mean": 2.629842627239465e-16,
         "minimum": -3.231791982047868e-15
+      },
+      "retained_mass_kg": {
+        "maximum": 6.40090555967009e-19,
+        "mean": 7.325634328557538e-20,
+        "minimum": -1.2009339005289877e-18
       }
     },
     "H0/trigonelline": {
@@ -47,30 +77,60 @@
         "mean": 5.871406815778176e-05,
         "minimum": 3.391092545108708e-05
       },
+      "back_diffused_mass_kg": {
+        "maximum": 1.41695282777315e-08,
+        "mean": 8.17886690766405e-09,
+        "minimum": 4.04222910748708e-09
+      },
       "cup_fraction_initial": {
         "maximum": 0.9889015830535822,
         "mean": 0.9052843407567027,
         "minimum": 0.8049887417773839
+      },
+      "cup_mass_kg": {
+        "maximum": 0.000157611045527415,
+        "mean": 0.0001261015459492278,
+        "minimum": 9.60421046013242e-05
       },
       "dissolved_fraction_initial": {
         "maximum": 0.051268757486552956,
         "mean": 0.028211687267540114,
         "minimum": 0.005644768789070856
       },
+      "dissolved_mass_kg": {
+        "maximum": 8.17223994335654e-06,
+        "mean": 3.93079900843526e-06,
+        "minimum": 6.72856439657246e-07
+      },
       "fraction_initial_remaining": {
         "maximum": 0.14370834105851318,
         "mean": 0.06644525790759909,
         "minimum": 0.0053654009449694805
+      },
+      "initial_inventory_kg": {
+        "maximum": 0.0001594,
+        "mean": 0.0001393,
+        "minimum": 0.0001192
       },
       "inventory_utilization": {
         "maximum": 0.9946345990550305,
         "mean": 0.933554742092401,
         "minimum": 0.8562916589414868
       },
+      "remaining_inventory_kg": {
+        "maximum": 2.2907109564727e-05,
+        "mean": 9.259476175429235e-06,
+        "minimum": 6.39555792640362e-07
+      },
       "retained_fraction_initial": {
         "maximum": 4.6048978154394996e-15,
         "mean": 3.314139727630423e-16,
         "minimum": -4.473784136802109e-15
+      },
+      "retained_mass_kg": {
+        "maximum": 5.489038196003883e-19,
+        "mean": 4.6050285207429204e-20,
+        "minimum": -5.332750691068114e-19
       }
     },
     "H1/caffeine": {
@@ -79,30 +139,60 @@
         "mean": 4.020157669131962e-06,
         "minimum": 1.7248097426539693e-06
       },
+      "back_diffused_mass_kg": {
+        "maximum": 2.61778072904465e-09,
+        "mean": 1.2509298677222242e-09,
+        "minimum": 4.33064920901754e-10
+      },
       "cup_fraction_initial": {
         "maximum": 0.594241256302823,
         "mean": 0.43090478271921373,
         "minimum": 0.30614579447828044
+      },
+      "cup_mass_kg": {
+        "maximum": 0.000192649852791414,
+        "mean": 0.00013266163979523354,
+        "minimum": 8.29278049860098e-05
       },
       "dissolved_fraction_initial": {
         "maximum": 0.056301833120006466,
         "mean": 0.05222548718043552,
         "minimum": 0.04688356752060576
       },
+      "dissolved_mass_kg": {
+        "maximum": 2.09217611873944e-05,
+        "mean": 1.6238740392327135e-05,
+        "minimum": 1.21174524960638e-05
+      },
       "fraction_initial_remaining": {
         "maximum": 0.6466454771682347,
         "mean": 0.5168657099426808,
         "minimum": 0.35113563921416185
+      },
+      "initial_inventory_kg": {
+        "maximum": 0.0003716,
+        "mean": 0.0003112,
+        "minimum": 0.0002508
       },
       "inventory_utilization": {
         "maximum": 0.6488643607858381,
         "mean": 0.4831342900573193,
         "minimum": 0.35335452283176527
       },
+      "remaining_inventory_kg": {
+        "maximum": 0.000240293459315716,
+        "mean": 0.00016229836888257134,
+        "minimum": 8.80648183149118e-05
+      },
       "retained_fraction_initial": {
         "maximum": 5.014979529159349e-15,
         "mean": 9.026455291232087e-16,
         "minimum": -3.932630550421729e-15
+      },
+      "retained_mass_kg": {
+        "maximum": 1.6731001747028316e-18,
+        "mean": 2.6717674743200887e-19,
+        "minimum": -1.4613655125367143e-18
       }
     },
     "H1/trigonelline": {
@@ -111,30 +201,60 @@
         "mean": 4.567084491005305e-06,
         "minimum": 2.124126585915257e-06
       },
+      "back_diffused_mass_kg": {
+        "maximum": 1.22802665311349e-09,
+        "mean": 6.361683747310246e-10,
+        "minimum": 2.53371930341747e-10
+      },
       "cup_fraction_initial": {
         "maximum": 0.7253554653539162,
         "mean": 0.551764729987307,
         "minimum": 0.40754239896438393
+      },
+      "cup_mass_kg": {
+        "maximum": 0.000106864022980528,
+        "mean": 7.64854879170636e-05,
+        "minimum": 5.11946222379247e-05
       },
       "dissolved_fraction_initial": {
         "maximum": 0.05970019464497221,
         "mean": 0.056374075591294266,
         "minimum": 0.050691871719876845
       },
+      "dissolved_mass_kg": {
+        "maximum": 9.51621102640857e-06,
+        "mean": 7.865097796735886e-06,
+        "minimum": 6.04247110900932e-06
+      },
       "fraction_initial_remaining": {
         "maximum": 0.5355805221159736,
         "mean": 0.39185662733690574,
         "minimum": 0.22394501130510067
+      },
+      "initial_inventory_kg": {
+        "maximum": 0.0001594,
+        "mean": 0.0001393,
+        "minimum": 0.0001192
       },
       "inventory_utilization": {
         "maximum": 0.7760549886948993,
         "mean": 0.6081433726630943,
         "minimum": 0.4644194778840263
       },
+      "remaining_inventory_kg": {
+        "maximum": 8.53715352252862e-05,
+        "mean": 5.49487781178255e-05,
+        "minimum": 2.6694245347568e-05
+      },
       "retained_fraction_initial": {
         "maximum": 4.5222246907241304e-15,
         "mean": 1.9557925283225702e-15,
         "minimum": 5.210756435803907e-16
+      },
+      "retained_mass_kg": {
+        "maximum": 7.208426157014263e-19,
+        "mean": 2.745813486830742e-19,
+        "minimum": 6.211221671478258e-20
       }
     }
   },
@@ -1345,10 +1465,18 @@
   "schema_version": "ewp.sci-md-005-consumed-comparison-diagnostic/v1",
   "semantic_portability_hypothesis": "DIRECT_OUTLET_EXPONENTIAL_PARAMETERS_ARE_NOT_SEMANTICALLY_PORTABLE_TO_THE_LOCAL_PRODUCTION_SOURCE",
   "signed_error_distribution": {
-    "maximum": -0.08081637017347365,
-    "mean": -2.0814184793685198,
-    "median": -1.7311813142270331,
-    "minimum": -4.854317608440912
+    "H0": {
+      "maximum": 2.0793006416987403,
+      "mean": 0.3938634608515552,
+      "median": 0.2696975637319292,
+      "minimum": -0.5289473849802726
+    },
+    "H1": {
+      "maximum": -0.08081637017347365,
+      "mean": -2.0814184793685198,
+      "median": -1.7311813142270331,
+      "minimum": -4.854317608440912
+    }
   },
   "source": "COMMITTED_SCI_MD_004_ARTIFACTS_ONLY"
 }
