@@ -1,0 +1,29 @@
+{
+  "angeloni_species_prediction_count": 0,
+  "artifact_hashes": {
+    "BLOCKED_WHOLE_EXPERIMENT_CV.csv": "8d3c5f4b725351e915a6ce56a7591bc709e8f59e2459dd14b25fc1258251f48a",
+    "COMMON_H0_H1_OBSERVATION_OPERATOR.json": "4d2e5347ca876553443d9ba5629b6095679a33a9f4794bed98ea8cc3c63d76fd",
+    "CONDITIONAL_CASE_FREEZE.json": "d969d00295443b2861a9f0107c2536ef5283f9e580a1f3fb56a8c2252df47626",
+    "NUMERICAL_APPLICATION_QUALIFICATION.json": "e9ffc2f907e5ca3d31e47fdc3c865f8cd63c4fda509d687318979786652b0385",
+    "PARAMETERIZATION_AND_IDENTIFIABILITY.json": "ec30b7e0038e092c9b8e0d8e3d5d47de35be4e1afdbc650f826ac72f17e1b051"
+  },
+  "disposition": "PASS",
+  "input_hashes": {
+    "docs/analysis/sci_md_004/angeloni_conditions.csv": "275adaae17513dc1df7fd9266940d567672bfae25c19ee3a1d24b97b00f3a393",
+    "docs/analysis/sci_md_004/angeloni_inventories_long.csv": "618236827430ecf53acc3c2bfa774b1de09312496cf10fd046c84ec40e46d94c",
+    "docs/analysis/sci_md_004/data_contract.json": "767e93731798e81468d2a5e07f17a7b3f760ed2f61cc3a3999ed53f8f902940b",
+    "docs/analysis/sci_md_004_stage_e0/bundle_manifest.json": "112f8b3b943a5cea3399746fde512048e3898f99c8079433dae86bd142db8709",
+    "docs/analysis/sci_md_004_stage_e0/maille_caffeine_plausibility.csv": "914d5f4c0a4a4042dfeb23e4db6ab0c11c0af023e458f89de061af09a29a82d0",
+    "docs/analysis/sci_md_004_stage_e0/pannusch_scaling_priors.csv": "2ec7bbc66300f75986c91d74de632b5fcc5fe3246469c3c0a1e2e3ab4ba7284b",
+    "docs/analysis/sci_md_004_stage_e0/schmieder_species_fractions_long.csv": "29ca41748060cb3cfe58b4e1d3ebfb13c45aedae468fe7b6f01710c307c0c0e2",
+    "docs/analysis/sci_md_004_stage_e0/schmieder_training_inventories.csv": "6174adcf9a41e5d934d5285f3e129b7488d5a339651844d84f847ec164965f08",
+    "docs/analysis/sci_md_004_stage_e0/training_contract.json": "aa4924987d538afd9059f271669cc9c832ab083fda66ad126b6d1fc1146e44ce"
+  },
+  "production_solver_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+  "protected_scorer_invocations": 0,
+  "puckworks_commit": "5ce003e751aac516b5de3d9ede4e6910627e2b12",
+  "puckworks_scientific_bundle_sha256": "112f8b3b943a5cea3399746fde512048e3898f99c8079433dae86bd142db8709",
+  "puckworks_tree": "d50c23028df01d6e1dc0a14ab331d0ea7453cb7f",
+  "schema_version": "ewp.sci-md-004-stage-e0-g1-freeze/v1",
+  "semantic_protected_target_access": false
+}

@@ -1,6 +1,6 @@
 # Project State
 
-## SCI-MD-004 Stage C R2 — exact-head verification correction active (2026-08-23)
+## SCI-MD-004 Stage E0 — G1 pre-holdout freeze awaiting audit (2026-08-24)
 
 The human owner selected SCI-MD-004 as the active development priority,
 superseding SCI-LC-001A as the current next action without reversing its
@@ -33,9 +33,15 @@ no production solver source or tolerance. Its fresh adjudicative-002 V1–V18
 matrix and interleaved performance protocol pass, and the exact corrected
 candidate awaits one independent exact-head review. Stage A remains merged and unchanged; R0 PR #91 remains
 closed without merge and R0 remains failed. R1 PR #93 and issue #92 are closed
-without merge with the R1 failure preserved. No parameterization is authorized. Active
-protected comparison remains `NONE`: Angeloni scoring is unauthorized and no
-Angeloni holdout prediction or score has been generated. SCI-MD-003 remains
+without merge with the R1 failure preserved. The owner has now authorized
+target-blind Stage E0 parameterization and conditional case freeze under
+SCI-GOV-001 class G1. Exactly four caffeine/trigonelline parameters, blocked
+whole-experiment cross-validation, identifiability, numerical application
+qualification, the common H0/H1 observation operator, and all 66 H0/H1
+reference/fine case configurations are frozen for independent pre-scoring
+audit. Active protected comparison remains `NONE`: Angeloni scoring is
+unauthorized and no Angeloni holdout prediction or score has been generated.
+SCI-MD-003 remains
 closed and unchanged. Physical validation remains `NOT_ESTABLISHED`.
 
 ## Current SCI-ED / SCI-LC serialization authority
@@ -100,13 +106,13 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 498/498 PASS
+- Public source verification: 501/501 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
-- Active solver task: `SCI-MD-004_STAGE_C_INDEXED_PASSIVE_SPECIES`
+- Active solver task: `SCI-MD-004_STAGE_E0_G1_PRE_HOLDOUT_FREEZE`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
-- Current next action: `SCI-MD-004 Stage C verification failure resolution requires new owner direction`
+- Current next action: `SCI-MD-004 Stage E0 independent G1 pre-scoring audit`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`

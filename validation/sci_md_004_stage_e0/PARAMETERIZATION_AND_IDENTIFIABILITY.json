@@ -1,0 +1,74 @@
+{
+  "angeloni_status": "PROTECTED_EXTERNAL_NO_RETUNING_ENDPOINT_HOLDOUT",
+  "blocked_training_prediction_is_independent_holdout": false,
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "disposition": "PASS",
+  "governance_class": "G1_PARAMETERIZATION_AND_PRE_HOLDOUT_FREEZE",
+  "parameter_count_fitted": 4,
+  "parameters": {
+    "caffeine": {
+      "blocked_nrmse": 0.38173850790480385,
+      "blocked_whole_experiment_r2": 0.6318258967351627,
+      "csat_95pct_lower": 5.726763654867166,
+      "csat_95pct_upper": 7.41122299848838,
+      "diffusivity_status": "PROXY_FIXED_NOT_FITTED",
+      "effectiveSoluteDiffusivity_m2_s": 1e-10,
+      "extractionRateConstant_1_s": 0.04423709010294066,
+      "fit_objective": "OLS_LOG_CONCENTRATION_ON_ELAPSED_BEVERAGE_TIME",
+      "identifiability": {
+        "max_relative_95pct_half_width": 0.14589721999237434,
+        "pass": true,
+        "threshold": 0.25
+      },
+      "k_95pct_lower": 0.03778302163636944,
+      "k_95pct_upper": 0.05069115856951188,
+      "mapping": {
+        "concentration_kg_m3": "fraction_concentration_kg_per_kg_beverage * 1000 kg/m3",
+        "equation": "C_out(t)=saturationConcentration*exp(-extractionRateConstant*t)",
+        "time_s": "accumulated_beverage_mass_kg / (1000 kg/m3 * flow_m3_s)"
+      },
+      "n_observations": 90,
+      "n_predictions": 90,
+      "predictive_content": {
+        "pass": true,
+        "r2_threshold": 0.5
+      },
+      "saturationConcentration_kg_m3": 6.514777241461055
+    },
+    "trigonelline": {
+      "blocked_nrmse": 0.5133132886356618,
+      "blocked_whole_experiment_r2": 0.6003862148320445,
+      "csat_95pct_lower": 3.276374818719964,
+      "csat_95pct_upper": 4.604309853272961,
+      "diffusivity_status": "PROXY_FIXED_NOT_FITTED",
+      "effectiveSoluteDiffusivity_m2_s": 9.687426142431468e-11,
+      "extractionRateConstant_1_s": 0.0623465636881358,
+      "fit_objective": "OLS_LOG_CONCENTRATION_ON_ELAPSED_BEVERAGE_TIME",
+      "identifiability": {
+        "max_relative_95pct_half_width": 0.17094947538995267,
+        "pass": true,
+        "threshold": 0.25
+      },
+      "k_95pct_lower": 0.05382969797141018,
+      "k_95pct_upper": 0.07086342940486141,
+      "mapping": {
+        "concentration_kg_m3": "fraction_concentration_kg_per_kg_beverage * 1000 kg/m3",
+        "equation": "C_out(t)=saturationConcentration*exp(-extractionRateConstant*t)",
+        "time_s": "accumulated_beverage_mass_kg / (1000 kg/m3 * flow_m3_s)"
+      },
+      "n_observations": 90,
+      "n_predictions": 90,
+      "predictive_content": {
+        "pass": true,
+        "r2_threshold": 0.5
+      },
+      "saturationConcentration_kg_m3": 3.8839985660202996
+    }
+  },
+  "residual_extractables": {
+    "behavior": "EXACT_ACCEPTED_LEGACY",
+    "legacy_extractable_fraction": 0.28
+  },
+  "schema_version": "ewp.sci-md-004-stage-e0-g1-parameterization/v1",
+  "training_fit_is_validation": false
+}

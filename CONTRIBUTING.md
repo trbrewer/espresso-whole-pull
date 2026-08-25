@@ -20,6 +20,11 @@ principal issue and select exactly one change declaration.
 
 Before proposing a change:
 
+Scientific-development governance follows
+`docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md`.
+Controls must remain proportional to the declared governance class; stricter
+controls require an explicit owner exception tied to a named risk.
+
 1. Read `docs/ONBOARDING.md`, `docs/CLAIM_CEILING.md`, and the controlling strategy.
 2. State the change declaration and evidence role.
 3. Keep calibration inputs separate from protected comparisons.
