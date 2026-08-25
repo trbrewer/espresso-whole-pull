@@ -1,0 +1,13 @@
+{
+  "common_to": [
+    "H0",
+    "H1"
+  ],
+  "cup_concentration_operator": "cup_species_mass_kg / (beverage_mass_kg / 1000 kg_m3)",
+  "cup_mass_operator": "time_integral_outlet_advective_species_flux",
+  "density_kg_m3": 1000.0,
+  "frozen_before_prediction": true,
+  "nominal_beverage_mass_only": true,
+  "schema_version": "ewp.sci-md-004-stage-e0-g1-observation-operator/v1",
+  "selection_used_protected_targets": false
+}

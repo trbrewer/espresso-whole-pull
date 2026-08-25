@@ -1,0 +1,3244 @@
+{
+  "case_count": 66,
+  "cases": [
+    {
+      "configurations": [
+        {
+          "configuration_id": "A1-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A1-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A1-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A1-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A1",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A10-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A10-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A10-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A10-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 369.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A10",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A11-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A11-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A11-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A11-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 800000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 364.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A11",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A12-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A12-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A12-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A12-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A12",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A13-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A13-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A13-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A13-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A13",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A14-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A14-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A14-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A14-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A14",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A15-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A15-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A15-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A15-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A15",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A16-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A16-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A16-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A16-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A16",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A17-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A17-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A17-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A17-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A17",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A18-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A18-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A18-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A18-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A18",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A19-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A19-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A19-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A19-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A19",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A2-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A2-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A2-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A2-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A2",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A20-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A20-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A20-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A20-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A20",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A21-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A21-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A21-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A21-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 1000000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 362.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A21",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A22-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A22-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A22-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A22-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 700000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 370.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A22",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A23-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A23-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A23-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A23-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A23",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A24-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A24-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A24-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A24-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A24",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A25-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A25-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A25-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A25-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A25",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A26-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A26-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A26-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A26-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A26",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A27-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A27-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A27-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A27-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A27",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A28-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A28-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A28-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A28-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A28",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A29-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A29-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A29-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A29-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A29",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A3-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A3-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A3-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A3-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A3",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A30-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A30-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A30-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A30-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A30",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A31-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A31-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A31-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A31-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A31",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A32-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A32-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A32-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A32-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 800000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 363.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A32",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A33-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A33-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A33-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A33-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 1100000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 368.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A33",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A4-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A4-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A4-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A4-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A4",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A5-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A5-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A5-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A5-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A5",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A6-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A6-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A6-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A6-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A6",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A7-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A7-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A7-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A7-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A7",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A8-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A8-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A8-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A8-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A8",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "A9-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A9-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "A9-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "A9-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.012539999999999999,
+        "residual_extractables": 0.25949,
+        "trigonelline": 0.00797
+      },
+      "sample_id": "A9",
+      "variety": "Arabica"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R1-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R1-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R1-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R1-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R1",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R10-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R10-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R10-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R10-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 369.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R10",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R11-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R11-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R11-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R11-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 800000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 364.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R11",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R12-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R12-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R12-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R12-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R12",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R13-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R13-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R13-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R13-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R13",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R14-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R14-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R14-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R14-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R14",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R15-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R15-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R15-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R15-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R15",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R16-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R16-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R16-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R16-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R16",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R17-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R17-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R17-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R17-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R17",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R18-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R18-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R18-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R18-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R18",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R19-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R19-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R19-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R19-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R19",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R2-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R2-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R2-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R2-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R2",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R20-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R20-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R20-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R20-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R20",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R21-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R21-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R21-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R21-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 700000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 370.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R21",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R22-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R22-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R22-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R22-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.003076923076923077,
+        "dose_kg": 0.02,
+        "grind_code": "C",
+        "permeability_fit": null,
+        "pressure_Pa": 1000000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 13.0,
+        "temperature_K": 362.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R22",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R23-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R23-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R23-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R23-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R23",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R24-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R24-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R24-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R24-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R24",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R25-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R25-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R25-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R25-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R25",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R26-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R26-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R26-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R26-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R26",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R27-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R27-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R27-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R27-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R27",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R28-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R28-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R28-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R28-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R28",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R29-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R29-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R29-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R29-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R29",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R3-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R3-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R3-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R3-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 366.54999999999995
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R3",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R30-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R30-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R30-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R30-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R30",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R31-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R31-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R31-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R31-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R31",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R32-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R32-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R32-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R32-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 1100000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 368.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R32",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R33-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R33-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R33-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R33-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.001142857142857143,
+        "dose_kg": 0.02,
+        "grind_code": "F",
+        "permeability_fit": null,
+        "pressure_Pa": 800000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 35.0,
+        "temperature_K": 363.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R33",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R4-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R4-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R4-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R4-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R4",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R5-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R5-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R5-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R5-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R5",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R6-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R6-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R6-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R6-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 361.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R6",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R7-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R7-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R7-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R7-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 900000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R7",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R8-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R8-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R8-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R8-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 1200000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R8",
+      "variety": "Robusta"
+    },
+    {
+      "configurations": [
+        {
+          "configuration_id": "R9-H0-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R9-H0-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H0",
+          "resolution": "fine"
+        },
+        {
+          "configuration_id": "R9-H1-reference",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "reference"
+        },
+        {
+          "configuration_id": "R9-H1-fine",
+          "execution_status": "FROZEN_NOT_EXECUTED",
+          "hypothesis": "H1",
+          "resolution": "fine"
+        }
+      ],
+      "hydraulics": {
+        "basis": "CONDITIONAL_MEASURED_NOMINAL_YIELD_OVER_REPORTED_DURATION",
+        "basket_radius_m": 0.02925,
+        "bed_height_m": 0.01388,
+        "beverage_mass_kg": 0.04,
+        "conditional_outlet_mass_flow_kg_s": 0.002,
+        "dose_kg": 0.02,
+        "grind_code": "O",
+        "permeability_fit": null,
+        "pressure_Pa": 600000.0,
+        "pressure_reference": "MACHINE_OVERPRESSURE_GAUGE_REPORTED",
+        "shot_duration_s": 20.0,
+        "temperature_K": 371.15
+      },
+      "inventories_kg_per_kg_dry": {
+        "caffeine": 0.01858,
+        "residual_extractables": 0.25546,
+        "trigonelline": 0.00596
+      },
+      "sample_id": "R9",
+      "variety": "Robusta"
+    }
+  ],
+  "configuration_count": 264,
+  "hydraulic_status": "CONDITIONAL_INPUT_ONLY",
+  "protected_scorer_invocations": 0,
+  "schema_version": "ewp.sci-md-004-stage-e0-g1-case-freeze/v1",
+  "species_prediction_count": 0
+}

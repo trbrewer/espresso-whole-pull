@@ -1,5 +1,10 @@
 # Public Repository Agent Rules
 
+Scientific-development governance follows
+`docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md`.
+Controls must remain proportional to the declared governance class; stricter
+controls require an explicit owner exception tied to a named risk.
+
 - Read `docs/ONBOARDING.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, and the controlling strategy before substantive work.
 - Preserve tag `v0.1.4-public.1` and the offline archival identities in `provenance/`.
 - Declare every scientific change as `NO_GOVERNING_PHYSICS_CHANGE`, `SOURCE_SCENARIO_CHANGE_ONLY`, `NUMERICAL_METHOD_CHANGE`, or `GOVERNING_PHYSICS_CHANGE`.

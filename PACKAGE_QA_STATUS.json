@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 937,
+    "python_test_count": 941,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
     "sci_md_004_stage_c_focused_test_count": 78,
     "sci_lc_001a_obs_001_r1_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_obs_001",
@@ -48,8 +48,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 498,
-    "source_manifest_aggregate_sha256": "ce0796ce5d2632a8c0909c065b2f859979a9e83faa42b498def336971102230d",
+    "source_manifest_file_count": 501,
+    "source_manifest_aggregate_sha256": "17dc73a7da6fdbbd5647629431b02bfd0675acefd3a69966372ead2454a69683",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -517,7 +517,7 @@
   "wp_0_3a_runtime_dependency_lock_disposition": "RETAIN_EXISTING_LOCK",
   "active_validation_case": "NONE",
   "active_data_planning_task": "NONE",
-  "active_solver_task": "SCI-MD-004_STAGE_C_INDEXED_PASSIVE_SPECIES",
+  "active_solver_task": "SCI-MD-004_STAGE_E0_G1_PRE_HOLDOUT_FREEZE",
   "active_cross_solver_verification_task": "NONE",
   "experimental_commissioning": "NOT_AUTHORIZED",
   "protected_or_holdout_scoring": "NOT_AUTHORIZED",

@@ -1,0 +1,42 @@
+{
+  "disposition": "PASS",
+  "mesh": {
+    "fine": "STAGE_C_ACCEPTED_FINE_MESH",
+    "new_species_execution": false,
+    "qualification": "REUSED_BY_UNCHANGED_PRODUCTION_SOLVER_HASH_AND_STAGE_C_EVIDENCE_HASHES",
+    "reference": "STAGE_C_ACCEPTED_REFERENCE_MESH"
+  },
+  "method": "EXACT_OPERATOR_PREAPPLICATION_QUADRATURE",
+  "species": {
+    "caffeine": {
+      "fine": {
+        "delta_t_s": 0.025,
+        "integral": 115.95865528146511,
+        "relative_exact_error": 5.0961460076021223e-08
+      },
+      "frozen_limit": 0.0025,
+      "pass": true,
+      "reference": {
+        "delta_t_s": 0.05,
+        "integral": 115.95863755319955,
+        "relative_exact_error": 2.038458188576526e-07
+      },
+      "reference_fine_relative": 1.5288436657284194e-07
+    },
+    "trigonelline": {
+      "fine": {
+        "delta_t_s": 0.025,
+        "integral": 55.26975248824732,
+        "relative_exact_error": 1.0122639911377973e-07
+      },
+      "frozen_limit": 0.0025,
+      "pass": true,
+      "reference": {
+        "delta_t_s": 0.05,
+        "integral": 55.269735703976295,
+        "relative_exact_error": 4.049055105776763e-07
+      },
+      "reference_fine_relative": 3.0367914220424266e-07
+    }
+  }
+}
