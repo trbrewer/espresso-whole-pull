@@ -1,5 +1,14 @@
 # Project State
 
+SCI-MD-005 is `SCI_MD_005_TRAINING_DATA_CONTRACT_BLOCKED`. Its required
+inventory-scaled common-extraction H0 cannot exactly reproduce the frozen
+SCI-MD-004 H0 species and total-solids artifacts because the historical cases
+used one absolute saturation concentration, producing unequal species and
+aggregate extracted fractions. No production physics, solver source,
+Puckworks evidence, or Angeloni prediction was changed; Angeloni remains
+`CONSUMED_POST_HOLDOUT_COMPARISON_DATA`. Experimental commissioning and a new
+holdout execution remain unauthorized.
+
 ## SCI-MD-004 Stage E1 — conditional hydraulic reconciliation result (2026-08-25)
 
 The owner-authorized G1 condition-specific Darcy adapter and G3 protected
@@ -134,7 +143,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 505/505 PASS
+- Public source verification: 507/507 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`

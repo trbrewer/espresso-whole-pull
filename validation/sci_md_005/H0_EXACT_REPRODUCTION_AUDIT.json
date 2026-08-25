@@ -1,0 +1,1332 @@
+{
+  "comparison_count": 132,
+  "detail": [
+    {
+      "aggregate_legacy_extracted_fraction": 0.8223484023289035,
+      "common_closure_cup_mass_kg": 0.00020624497930408898,
+      "cup_mass_difference_kg": 2.450044964872502e-05,
+      "fraction_difference": 0.09768919317673452,
+      "frozen_cup_mass_kg": 0.000230745428952814,
+      "frozen_species_extracted_fraction": 0.920037595505638,
+      "sample_id": "A1",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8223484023289035,
+      "common_closure_cup_mass_kg": 0.00013108233533122723,
+      "cup_mass_difference_kg": 1.5757553595168762e-05,
+      "fraction_difference": 0.0988554177865042,
+      "frozen_cup_mass_kg": 0.000146839888926396,
+      "frozen_species_extracted_fraction": 0.9212038201154077,
+      "sample_id": "A1",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8227296442102373,
+      "common_closure_cup_mass_kg": 0.0002063405947679275,
+      "cup_mass_difference_kg": 2.4424262799760518e-05,
+      "fraction_difference": 0.09738541786188404,
+      "frozen_cup_mass_kg": 0.000230764857567688,
+      "frozen_species_extracted_fraction": 0.9201150620721213,
+      "sample_id": "A10",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8227296442102373,
+      "common_closure_cup_mass_kg": 0.00013114310528711183,
+      "cup_mass_difference_kg": 1.5708671845626163e-05,
+      "fraction_difference": 0.098548756873439,
+      "frozen_cup_mass_kg": 0.000146851777132738,
+      "frozen_species_extracted_fraction": 0.9212784010836763,
+      "sample_id": "A10",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8219987182435355,
+      "common_closure_cup_mass_kg": 0.0002061572785354787,
+      "cup_mass_difference_kg": 2.4570331800841295e-05,
+      "fraction_difference": 0.09796783014689514,
+      "frozen_cup_mass_kg": 0.00023072761033632,
+      "frozen_species_extracted_fraction": 0.9199665483904307,
+      "sample_id": "A11",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8219987182435355,
+      "common_closure_cup_mass_kg": 0.00013102659568801957,
+      "cup_mass_difference_kg": 1.5802390108181417e-05,
+      "fraction_difference": 0.09913670080414949,
+      "frozen_cup_mass_kg": 0.000146828985796201,
+      "frozen_species_extracted_fraction": 0.921135419047685,
+      "sample_id": "A11",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7003550749997391,
+      "common_closure_cup_mass_kg": 0.00017564905280993456,
+      "cup_mass_difference_kg": 2.5886863364102435e-05,
+      "fraction_difference": 0.10321715854905278,
+      "frozen_cup_mass_kg": 0.000201535916174037,
+      "frozen_species_extracted_fraction": 0.8035722335487919,
+      "sample_id": "A12",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7003550749997391,
+      "common_closure_cup_mass_kg": 0.00011163659895495843,
+      "cup_mass_difference_kg": 1.6719249119637584e-05,
+      "fraction_difference": 0.104888639395468,
+      "frozen_cup_mass_kg": 0.000128355848074596,
+      "frozen_species_extracted_fraction": 0.8052437143952071,
+      "sample_id": "A12",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7003550749997624,
+      "common_closure_cup_mass_kg": 0.00017564905280994037,
+      "cup_mass_difference_kg": 2.588686336409864e-05,
+      "fraction_difference": 0.10321715854903757,
+      "frozen_cup_mass_kg": 0.000201535916174039,
+      "frozen_species_extracted_fraction": 0.8035722335487999,
+      "sample_id": "A13",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7003550749997624,
+      "common_closure_cup_mass_kg": 0.00011163659895496211,
+      "cup_mass_difference_kg": 1.67192491196349e-05,
+      "fraction_difference": 0.10488863939545101,
+      "frozen_cup_mass_kg": 0.000128355848074597,
+      "frozen_species_extracted_fraction": 0.8052437143952134,
+      "sample_id": "A13",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7003550749997624,
+      "common_closure_cup_mass_kg": 0.00017564905280994037,
+      "cup_mass_difference_kg": 2.588686336409864e-05,
+      "fraction_difference": 0.10321715854903757,
+      "frozen_cup_mass_kg": 0.000201535916174039,
+      "frozen_species_extracted_fraction": 0.8035722335487999,
+      "sample_id": "A14",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7003550749997624,
+      "common_closure_cup_mass_kg": 0.00011163659895496211,
+      "cup_mass_difference_kg": 1.67192491196349e-05,
+      "fraction_difference": 0.10488863939545101,
+      "frozen_cup_mass_kg": 0.000128355848074597,
+      "frozen_species_extracted_fraction": 0.8052437143952134,
+      "sample_id": "A14",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7010003481069785,
+      "common_closure_cup_mass_kg": 0.0001758108873052302,
+      "cup_mass_difference_kg": 2.578183185221179e-05,
+      "fraction_difference": 0.10279837261647451,
+      "frozen_cup_mass_kg": 0.000201592719157442,
+      "frozen_species_extracted_fraction": 0.803798720723453,
+      "sample_id": "A15",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7010003481069785,
+      "common_closure_cup_mass_kg": 0.00011173945548825238,
+      "cup_mass_difference_kg": 1.665148760051563e-05,
+      "fraction_difference": 0.10446353576233136,
+      "frozen_cup_mass_kg": 0.000128390943088768,
+      "frozen_species_extracted_fraction": 0.8054638838693099,
+      "sample_id": "A15",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7010003481069892,
+      "common_closure_cup_mass_kg": 0.00017581088730523288,
+      "cup_mass_difference_kg": 2.578183185221011e-05,
+      "fraction_difference": 0.10279837261646785,
+      "frozen_cup_mass_kg": 0.000201592719157443,
+      "frozen_species_extracted_fraction": 0.803798720723457,
+      "sample_id": "A16",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7010003481069892,
+      "common_closure_cup_mass_kg": 0.00011173945548825407,
+      "cup_mass_difference_kg": 1.6651487600514937e-05,
+      "fraction_difference": 0.10446353576232703,
+      "frozen_cup_mass_kg": 0.000128390943088769,
+      "frozen_species_extracted_fraction": 0.8054638838693162,
+      "sample_id": "A16",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7010003481069892,
+      "common_closure_cup_mass_kg": 0.00017581088730523288,
+      "cup_mass_difference_kg": 2.578183185221011e-05,
+      "fraction_difference": 0.10279837261646785,
+      "frozen_cup_mass_kg": 0.000201592719157443,
+      "frozen_species_extracted_fraction": 0.803798720723457,
+      "sample_id": "A17",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7010003481069892,
+      "common_closure_cup_mass_kg": 0.00011173945548825407,
+      "cup_mass_difference_kg": 1.6651487600514937e-05,
+      "fraction_difference": 0.10446353576232703,
+      "frozen_cup_mass_kg": 0.000128390943088769,
+      "frozen_species_extracted_fraction": 0.8054638838693162,
+      "sample_id": "A17",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.6996084198248106,
+      "common_closure_cup_mass_kg": 0.00017546179169206249,
+      "cup_mass_difference_kg": 2.6008344077758526e-05,
+      "fraction_difference": 0.10370153141052052,
+      "frozen_cup_mass_kg": 0.000201470135769821,
+      "frozen_species_extracted_fraction": 0.8033099512353311,
+      "sample_id": "A18",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.6996084198248106,
+      "common_closure_cup_mass_kg": 0.00011151758212007481,
+      "cup_mass_difference_kg": 1.6797623319241188e-05,
+      "fraction_difference": 0.10538032195257963,
+      "frozen_cup_mass_kg": 0.000128315205439316,
+      "frozen_species_extracted_fraction": 0.8049887417773902,
+      "sample_id": "A18",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.6996084198247945,
+      "common_closure_cup_mass_kg": 0.00017546179169205845,
+      "cup_mass_difference_kg": 2.600834407776056e-05,
+      "fraction_difference": 0.10370153141052862,
+      "frozen_cup_mass_kg": 0.000201470135769819,
+      "frozen_species_extracted_fraction": 0.8033099512353231,
+      "sample_id": "A19",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.6996084198247945,
+      "common_closure_cup_mass_kg": 0.00011151758212007223,
+      "cup_mass_difference_kg": 1.679762331924276e-05,
+      "fraction_difference": 0.1053803219525894,
+      "frozen_cup_mass_kg": 0.000128315205439315,
+      "frozen_species_extracted_fraction": 0.8049887417773839,
+      "sample_id": "A19",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.822348402328916,
+      "common_closure_cup_mass_kg": 0.00020624497930409212,
+      "cup_mass_difference_kg": 2.4500449648721874e-05,
+      "fraction_difference": 0.09768919317672198,
+      "frozen_cup_mass_kg": 0.000230745428952814,
+      "frozen_species_extracted_fraction": 0.920037595505638,
+      "sample_id": "A2",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.822348402328916,
+      "common_closure_cup_mass_kg": 0.0001310823353312292,
+      "cup_mass_difference_kg": 1.5757553595167786e-05,
+      "fraction_difference": 0.09885541778649798,
+      "frozen_cup_mass_kg": 0.000146839888926397,
+      "frozen_species_extracted_fraction": 0.921203820115414,
+      "sample_id": "A2",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.6996084198247928,
+      "common_closure_cup_mass_kg": 0.000175461791692058,
+      "cup_mass_difference_kg": 2.6008344077760992e-05,
+      "fraction_difference": 0.10370153141053029,
+      "frozen_cup_mass_kg": 0.000201470135769819,
+      "frozen_species_extracted_fraction": 0.8033099512353231,
+      "sample_id": "A20",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.6996084198247928,
+      "common_closure_cup_mass_kg": 0.00011151758212007198,
+      "cup_mass_difference_kg": 1.6797623319243017e-05,
+      "fraction_difference": 0.10538032195259106,
+      "frozen_cup_mass_kg": 0.000128315205439315,
+      "frozen_species_extracted_fraction": 0.8049887417773839,
+      "sample_id": "A20",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.6997458240188874,
+      "common_closure_cup_mass_kg": 0.00017549625266393695,
+      "cup_mass_difference_kg": 2.598599271385604e-05,
+      "fraction_difference": 0.10361241113977693,
+      "frozen_cup_mass_kg": 0.000201482245377793,
+      "frozen_species_extracted_fraction": 0.8033582351586643,
+      "sample_id": "A21",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.6997458240188874,
+      "common_closure_cup_mass_kg": 0.00011153948434861065,
+      "cup_mass_difference_kg": 1.6783203134517364e-05,
+      "fraction_difference": 0.10528985655280654,
+      "frozen_cup_mass_kg": 0.000128322687483128,
+      "frozen_species_extracted_fraction": 0.805035680571694,
+      "sample_id": "A21",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7008593337360053,
+      "common_closure_cup_mass_kg": 0.0001757755209009901,
+      "cup_mass_difference_kg": 2.5804788440535908e-05,
+      "fraction_difference": 0.10288990606274284,
+      "frozen_cup_mass_kg": 0.000201580309341526,
+      "frozen_species_extracted_fraction": 0.8037492397987481,
+      "sample_id": "A22",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7008593337360053,
+      "common_closure_cup_mass_kg": 0.00011171697779751923,
+      "cup_mass_difference_kg": 1.666629811196676e-05,
+      "fraction_difference": 0.10455644988686796,
+      "frozen_cup_mass_kg": 0.000128383275909486,
+      "frozen_species_extracted_fraction": 0.8054157836228732,
+      "sample_id": "A22",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9360963009532141,
+      "common_closure_cup_mass_kg": 0.00023477295227906605,
+      "cup_mass_difference_kg": 1.3130873592586973e-05,
+      "fraction_difference": 0.05235595531334514,
+      "frozen_cup_mass_kg": 0.000247903825871653,
+      "frozen_species_extracted_fraction": 0.9884522562665592,
+      "sample_id": "A23",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9360963009532141,
+      "common_closure_cup_mass_kg": 0.00014921375037194233,
+      "cup_mass_difference_kg": 8.392193145505662e-06,
+      "fraction_difference": 0.05264863955775201,
+      "frozen_cup_mass_kg": 0.000157605943517448,
+      "frozen_species_extracted_fraction": 0.9887449405109661,
+      "sample_id": "A23",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9360963009532195,
+      "common_closure_cup_mass_kg": 0.00023477295227906743,
+      "cup_mass_difference_kg": 1.3130873592585591e-05,
+      "fraction_difference": 0.0523559553133397,
+      "frozen_cup_mass_kg": 0.000247903825871653,
+      "frozen_species_extracted_fraction": 0.9884522562665592,
+      "sample_id": "A24",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9360963009532195,
+      "common_closure_cup_mass_kg": 0.0001492137503719432,
+      "cup_mass_difference_kg": 8.392193145504795e-06,
+      "fraction_difference": 0.05264863955774657,
+      "frozen_cup_mass_kg": 0.000157605943517448,
+      "frozen_species_extracted_fraction": 0.9887449405109661,
+      "sample_id": "A24",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9360963009532195,
+      "common_closure_cup_mass_kg": 0.00023477295227906743,
+      "cup_mass_difference_kg": 1.3130873592585591e-05,
+      "fraction_difference": 0.0523559553133397,
+      "frozen_cup_mass_kg": 0.000247903825871653,
+      "frozen_species_extracted_fraction": 0.9884522562665592,
+      "sample_id": "A25",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9360963009532195,
+      "common_closure_cup_mass_kg": 0.0001492137503719432,
+      "cup_mass_difference_kg": 8.392193145504795e-06,
+      "fraction_difference": 0.05264863955774657,
+      "frozen_cup_mass_kg": 0.000157605943517448,
+      "frozen_species_extracted_fraction": 0.9887449405109661,
+      "sample_id": "A25",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9366219631192874,
+      "common_closure_cup_mass_kg": 0.00023490478835031724,
+      "cup_mass_difference_kg": 1.3007465027759782e-05,
+      "fraction_difference": 0.05186389564497518,
+      "frozen_cup_mass_kg": 0.000247912253378077,
+      "frozen_species_extracted_fraction": 0.9884858587642625,
+      "sample_id": "A26",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9366219631192874,
+      "common_closure_cup_mass_kg": 0.0001492975409212144,
+      "cup_mass_difference_kg": 8.313504606200601e-06,
+      "fraction_difference": 0.05215498498243787,
+      "frozen_cup_mass_kg": 0.000157611045527415,
+      "frozen_species_extracted_fraction": 0.9887769481017252,
+      "sample_id": "A26",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9366219631192874,
+      "common_closure_cup_mass_kg": 0.00023490478835031724,
+      "cup_mass_difference_kg": 1.3007465027759782e-05,
+      "fraction_difference": 0.05186389564497518,
+      "frozen_cup_mass_kg": 0.000247912253378077,
+      "frozen_species_extracted_fraction": 0.9884858587642625,
+      "sample_id": "A27",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9366219631192874,
+      "common_closure_cup_mass_kg": 0.0001492975409212144,
+      "cup_mass_difference_kg": 8.313504606200601e-06,
+      "fraction_difference": 0.05215498498243787,
+      "frozen_cup_mass_kg": 0.000157611045527415,
+      "frozen_species_extracted_fraction": 0.9887769481017252,
+      "sample_id": "A27",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9366219631192713,
+      "common_closure_cup_mass_kg": 0.0002349047883503132,
+      "cup_mass_difference_kg": 1.300746502776382e-05,
+      "fraction_difference": 0.051863895644991276,
+      "frozen_cup_mass_kg": 0.000247912253378077,
+      "frozen_species_extracted_fraction": 0.9884858587642625,
+      "sample_id": "A28",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9366219631192713,
+      "common_closure_cup_mass_kg": 0.00014929754092121182,
+      "cup_mass_difference_kg": 8.313504606203176e-06,
+      "fraction_difference": 0.05215498498245397,
+      "frozen_cup_mass_kg": 0.000157611045527415,
+      "frozen_species_extracted_fraction": 0.9887769481017252,
+      "sample_id": "A28",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9354839101126196,
+      "common_closure_cup_mass_kg": 0.00023461936465624496,
+      "cup_mass_difference_kg": 1.3274680967620043e-05,
+      "fraction_difference": 0.05292934995063814,
+      "frozen_cup_mass_kg": 0.000247894045623865,
+      "frozen_species_extracted_fraction": 0.9884132600632577,
+      "sample_id": "A29",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9354839101126196,
+      "common_closure_cup_mass_kg": 0.00014911613527195154,
+      "cup_mass_difference_kg": 8.483887342216462e-06,
+      "fraction_difference": 0.053223885459325326,
+      "frozen_cup_mass_kg": 0.000157600022614168,
+      "frozen_species_extracted_fraction": 0.9887077955719449,
+      "sample_id": "A29",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8223484023289248,
+      "common_closure_cup_mass_kg": 0.00020624497930409432,
+      "cup_mass_difference_kg": 2.450044964871968e-05,
+      "fraction_difference": 0.09768919317671321,
+      "frozen_cup_mass_kg": 0.000230745428952814,
+      "frozen_species_extracted_fraction": 0.920037595505638,
+      "sample_id": "A3",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8223484023289248,
+      "common_closure_cup_mass_kg": 0.00013108233533123061,
+      "cup_mass_difference_kg": 1.5757553595166377e-05,
+      "fraction_difference": 0.09885541778648921,
+      "frozen_cup_mass_kg": 0.000146839888926397,
+      "frozen_species_extracted_fraction": 0.921203820115414,
+      "sample_id": "A3",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9354839101126302,
+      "common_closure_cup_mass_kg": 0.00023461936465624762,
+      "cup_mass_difference_kg": 1.3274680967618362e-05,
+      "fraction_difference": 0.052929349950631366,
+      "frozen_cup_mass_kg": 0.000247894045623866,
+      "frozen_species_extracted_fraction": 0.9884132600632616,
+      "sample_id": "A30",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9354839101126302,
+      "common_closure_cup_mass_kg": 0.00014911613527195325,
+      "cup_mass_difference_kg": 8.483887342215757e-06,
+      "fraction_difference": 0.053223885459320885,
+      "frozen_cup_mass_kg": 0.000157600022614169,
+      "frozen_species_extracted_fraction": 0.9887077955719511,
+      "sample_id": "A30",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9354839101126267,
+      "common_closure_cup_mass_kg": 0.00023461936465624675,
+      "cup_mass_difference_kg": 1.327468096761923e-05,
+      "fraction_difference": 0.05292934995063492,
+      "frozen_cup_mass_kg": 0.000247894045623866,
+      "frozen_species_extracted_fraction": 0.9884132600632616,
+      "sample_id": "A31",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9354839101126267,
+      "common_closure_cup_mass_kg": 0.00014911613527195268,
+      "cup_mass_difference_kg": 8.483887342216327e-06,
+      "fraction_difference": 0.05322388545932444,
+      "frozen_cup_mass_kg": 0.000157600022614169,
+      "frozen_species_extracted_fraction": 0.9887077955719511,
+      "sample_id": "A31",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9357101397029963,
+      "common_closure_cup_mass_kg": 0.00023467610303751145,
+      "cup_mass_difference_kg": 1.3221550932517571e-05,
+      "fraction_difference": 0.05271750770541295,
+      "frozen_cup_mass_kg": 0.000247897653970029,
+      "frozen_species_extracted_fraction": 0.9884276474084093,
+      "sample_id": "A32",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9357101397029963,
+      "common_closure_cup_mass_kg": 0.0001491521962686576,
+      "cup_mass_difference_kg": 8.450010809661396e-06,
+      "fraction_difference": 0.0530113601609874,
+      "frozen_cup_mass_kg": 0.000157602207078319,
+      "frozen_species_extracted_fraction": 0.9887214998639837,
+      "sample_id": "A32",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9362787174588534,
+      "common_closure_cup_mass_kg": 0.0002348187023386804,
+      "cup_mass_difference_kg": 1.3088044646010597e-05,
+      "fraction_difference": 0.052185185988878,
+      "frozen_cup_mass_kg": 0.000247906746984691,
+      "frozen_species_extracted_fraction": 0.9884639034477314,
+      "sample_id": "A33",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9362787174588534,
+      "common_closure_cup_mass_kg": 0.00014924282756294122,
+      "cup_mass_difference_kg": 8.364884390420777e-06,
+      "fraction_difference": 0.05247731738030592,
+      "frozen_cup_mass_kg": 0.000157607711953362,
+      "frozen_species_extracted_fraction": 0.9887560348391593,
+      "sample_id": "A33",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.821564574130941,
+      "common_closure_cup_mass_kg": 0.00020604839519203997,
+      "cup_mass_difference_kg": 2.465709499948002e-05,
+      "fraction_difference": 0.09831377591499213,
+      "frozen_cup_mass_kg": 0.00023070549019152,
+      "frozen_species_extracted_fraction": 0.9198783500459331,
+      "sample_id": "A4",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.821564574130941,
+      "common_closure_cup_mass_kg": 0.00013095739311647198,
+      "cup_mass_difference_kg": 1.5858057372762028e-05,
+      "fraction_difference": 0.09948593082033885,
+      "frozen_cup_mass_kg": 0.000146815450489234,
+      "frozen_species_extracted_fraction": 0.9210505049512798,
+      "sample_id": "A4",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8215645741309445,
+      "common_closure_cup_mass_kg": 0.00020604839519204087,
+      "cup_mass_difference_kg": 2.4657094999479127e-05,
+      "fraction_difference": 0.09831377591498858,
+      "frozen_cup_mass_kg": 0.00023070549019152,
+      "frozen_species_extracted_fraction": 0.9198783500459331,
+      "sample_id": "A5",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8215645741309445,
+      "common_closure_cup_mass_kg": 0.00013095739311647255,
+      "cup_mass_difference_kg": 1.585805737276146e-05,
+      "fraction_difference": 0.0994859308203353,
+      "frozen_cup_mass_kg": 0.000146815450489234,
+      "frozen_species_extracted_fraction": 0.9210505049512798,
+      "sample_id": "A5",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8215645741309445,
+      "common_closure_cup_mass_kg": 0.00020604839519204087,
+      "cup_mass_difference_kg": 2.4657094999479127e-05,
+      "fraction_difference": 0.09831377591498858,
+      "frozen_cup_mass_kg": 0.00023070549019152,
+      "frozen_species_extracted_fraction": 0.9198783500459331,
+      "sample_id": "A6",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8215645741309445,
+      "common_closure_cup_mass_kg": 0.00013095739311647255,
+      "cup_mass_difference_kg": 1.585805737276146e-05,
+      "fraction_difference": 0.0994859308203353,
+      "frozen_cup_mass_kg": 0.000146815450489234,
+      "frozen_species_extracted_fraction": 0.9210505049512798,
+      "sample_id": "A6",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8230246443002017,
+      "common_closure_cup_mass_kg": 0.00020641458079049058,
+      "cup_mass_difference_kg": 2.4365311829401427e-05,
+      "fraction_difference": 0.09715036614593875,
+      "frozen_cup_mass_kg": 0.000230779892619892,
+      "frozen_species_extracted_fraction": 0.9201750104461405,
+      "sample_id": "A7",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8230246443002017,
+      "common_closure_cup_mass_kg": 0.00013119012830145214,
+      "cup_mass_difference_kg": 1.5670848600273863e-05,
+      "fraction_difference": 0.09831147177085231,
+      "frozen_cup_mass_kg": 0.000146860976901726,
+      "frozen_species_extracted_fraction": 0.921336116071054,
+      "sample_id": "A7",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8230246443002177,
+      "common_closure_cup_mass_kg": 0.0002064145807904946,
+      "cup_mass_difference_kg": 2.4365311829398418e-05,
+      "fraction_difference": 0.09715036614592676,
+      "frozen_cup_mass_kg": 0.000230779892619893,
+      "frozen_species_extracted_fraction": 0.9201750104461445,
+      "sample_id": "A8",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8230246443002177,
+      "common_closure_cup_mass_kg": 0.0001311901283014547,
+      "cup_mass_difference_kg": 1.5670848600271315e-05,
+      "fraction_difference": 0.09831147177083632,
+      "frozen_cup_mass_kg": 0.000146860976901726,
+      "frozen_species_extracted_fraction": 0.921336116071054,
+      "sample_id": "A8",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8230246443002088,
+      "common_closure_cup_mass_kg": 0.00020641458079049234,
+      "cup_mass_difference_kg": 2.4365311829399665e-05,
+      "fraction_difference": 0.09715036614593164,
+      "frozen_cup_mass_kg": 0.000230779892619892,
+      "frozen_species_extracted_fraction": 0.9201750104461405,
+      "sample_id": "A9",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8230246443002088,
+      "common_closure_cup_mass_kg": 0.00013119012830145328,
+      "cup_mass_difference_kg": 1.5670848600272724e-05,
+      "fraction_difference": 0.0983114717708452,
+      "frozen_cup_mass_kg": 0.000146860976901726,
+      "frozen_species_extracted_fraction": 0.921336116071054,
+      "sample_id": "A9",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8260309801517982,
+      "common_closure_cup_mass_kg": 0.0003069531122244082,
+      "cup_mass_difference_kg": 3.434734458791078e-05,
+      "fraction_difference": 0.09243095960148218,
+      "frozen_cup_mass_kg": 0.000341300456812319,
+      "frozen_species_extracted_fraction": 0.9184619397532804,
+      "sample_id": "R1",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8260309801517982,
+      "common_closure_cup_mass_kg": 9.846289283409434e-05,
+      "cup_mass_difference_kg": 1.140491404623665e-05,
+      "fraction_difference": 0.09567880911272353,
+      "frozen_cup_mass_kg": 0.000109867806880331,
+      "frozen_species_extracted_fraction": 0.9217097892645217,
+      "sample_id": "R1",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8264004361017321,
+      "common_closure_cup_mass_kg": 0.0003070904020554036,
+      "cup_mass_difference_kg": 3.4240310052554375e-05,
+      "fraction_difference": 0.09214292263873614,
+      "frozen_cup_mass_kg": 0.000341330712107958,
+      "frozen_species_extracted_fraction": 0.9185433587404682,
+      "sample_id": "R10",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8264004361017321,
+      "common_closure_cup_mass_kg": 9.850693198332646e-05,
+      "cup_mass_difference_kg": 1.1369617002765536e-05,
+      "fraction_difference": 0.09538269297622093,
+      "frozen_cup_mass_kg": 0.000109876548986092,
+      "frozen_species_extracted_fraction": 0.921783129077953,
+      "sample_id": "R10",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8256921025714357,
+      "common_closure_cup_mass_kg": 0.0003068271853155455,
+      "cup_mass_difference_kg": 3.444552354385852e-05,
+      "fraction_difference": 0.09269516561856439,
+      "frozen_cup_mass_kg": 0.000341272708859404,
+      "frozen_species_extracted_fraction": 0.91838726819,
+      "sample_id": "R11",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8256921025714357,
+      "common_closure_cup_mass_kg": 9.842249862651513e-05,
+      "cup_mass_difference_kg": 1.1437290507004865e-05,
+      "fraction_difference": 0.09595042371648377,
+      "frozen_cup_mass_kg": 0.00010985978913352,
+      "frozen_species_extracted_fraction": 0.9216425262879194,
+      "sample_id": "R11",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7037332687657714,
+      "common_closure_cup_mass_kg": 0.00026150728267336065,
+      "cup_mass_difference_kg": 3.6270719670241345e-05,
+      "fraction_difference": 0.09760688824069264,
+      "frozen_cup_mass_kg": 0.000297778002343602,
+      "frozen_species_extracted_fraction": 0.801340157006464,
+      "sample_id": "R12",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7037332687657714,
+      "common_closure_cup_mass_kg": 8.388500563687995e-05,
+      "cup_mass_difference_kg": 1.2187112491268847e-05,
+      "fraction_difference": 0.10224087660460446,
+      "frozen_cup_mass_kg": 9.60721181281488e-05,
+      "frozen_species_extracted_fraction": 0.8059741453703758,
+      "sample_id": "R12",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7037332687657946,
+      "common_closure_cup_mass_kg": 0.00026150728267336927,
+      "cup_mass_difference_kg": 3.627071967023473e-05,
+      "fraction_difference": 0.09760688824067476,
+      "frozen_cup_mass_kg": 0.000297778002343604,
+      "frozen_species_extracted_fraction": 0.8013401570064693,
+      "sample_id": "R13",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7037332687657946,
+      "common_closure_cup_mass_kg": 8.388500563688271e-05,
+      "cup_mass_difference_kg": 1.2187112491266692e-05,
+      "fraction_difference": 0.10224087660458636,
+      "frozen_cup_mass_kg": 9.60721181281494e-05,
+      "frozen_species_extracted_fraction": 0.8059741453703809,
+      "sample_id": "R13",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7037332687657946,
+      "common_closure_cup_mass_kg": 0.00026150728267336927,
+      "cup_mass_difference_kg": 3.627071967023473e-05,
+      "fraction_difference": 0.09760688824067476,
+      "frozen_cup_mass_kg": 0.000297778002343604,
+      "frozen_species_extracted_fraction": 0.8013401570064693,
+      "sample_id": "R14",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7037332687657946,
+      "common_closure_cup_mass_kg": 8.388500563688271e-05,
+      "cup_mass_difference_kg": 1.2187112491266692e-05,
+      "fraction_difference": 0.10224087660458636,
+      "frozen_cup_mass_kg": 9.60721181281494e-05,
+      "frozen_species_extracted_fraction": 0.8059741453703809,
+      "sample_id": "R14",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7030022824522018,
+      "common_closure_cup_mass_kg": 0.00026123564815923816,
+      "cup_mass_difference_kg": 3.644123943514783e-05,
+      "fraction_difference": 0.098065768124725,
+      "frozen_cup_mass_kg": 0.000297676887594386,
+      "frozen_species_extracted_fraction": 0.8010680505769268,
+      "sample_id": "R15",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7030022824522018,
+      "common_closure_cup_mass_kg": 8.379787206830244e-05,
+      "cup_mass_difference_kg": 1.224423253302246e-05,
+      "fraction_difference": 0.10272007158575891,
+      "frozen_cup_mass_kg": 9.60421046013249e-05,
+      "frozen_species_extracted_fraction": 0.8057223540379607,
+      "sample_id": "R15",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7030022824521857,
+      "common_closure_cup_mass_kg": 0.0002612356481592322,
+      "cup_mass_difference_kg": 3.6441239435151785e-05,
+      "fraction_difference": 0.09806576812473577,
+      "frozen_cup_mass_kg": 0.000297676887594384,
+      "frozen_species_extracted_fraction": 0.8010680505769214,
+      "sample_id": "R16",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7030022824521857,
+      "common_closure_cup_mass_kg": 8.379787206830053e-05,
+      "cup_mass_difference_kg": 1.2244232533023774e-05,
+      "fraction_difference": 0.1027200715857699,
+      "frozen_cup_mass_kg": 9.60421046013243e-05,
+      "frozen_species_extracted_fraction": 0.8057223540379556,
+      "sample_id": "R16",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7030022824521838,
+      "common_closure_cup_mass_kg": 0.0002612356481592315,
+      "cup_mass_difference_kg": 3.644123943515249e-05,
+      "fraction_difference": 0.09806576812473766,
+      "frozen_cup_mass_kg": 0.000297676887594384,
+      "frozen_species_extracted_fraction": 0.8010680505769214,
+      "sample_id": "R17",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7030022824521838,
+      "common_closure_cup_mass_kg": 8.37978720683003e-05,
+      "cup_mass_difference_kg": 1.2244232533023896e-05,
+      "fraction_difference": 0.1027200715857709,
+      "frozen_cup_mass_kg": 9.60421046013242e-05,
+      "frozen_species_extracted_fraction": 0.8057223540379547,
+      "sample_id": "R17",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7043649844816803,
+      "common_closure_cup_mass_kg": 0.0002617420282333924,
+      "cup_mass_difference_kg": 3.6123291879250634e-05,
+      "fraction_difference": 0.09721015037473257,
+      "frozen_cup_mass_kg": 0.000297865320112643,
+      "frozen_species_extracted_fraction": 0.8015751348564129,
+      "sample_id": "R18",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7043649844816803,
+      "common_closure_cup_mass_kg": 8.396030615021629e-05,
+      "cup_mass_difference_kg": 1.2137728426844514e-05,
+      "fraction_difference": 0.10182658076211848,
+      "frozen_cup_mass_kg": 9.60980345770608e-05,
+      "frozen_species_extracted_fraction": 0.8061915652437988,
+      "sample_id": "R18",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7043649844816893,
+      "common_closure_cup_mass_kg": 0.00026174202823339574,
+      "cup_mass_difference_kg": 3.612329187924825e-05,
+      "fraction_difference": 0.09721015037472625,
+      "frozen_cup_mass_kg": 0.000297865320112644,
+      "frozen_species_extracted_fraction": 0.8015751348564155,
+      "sample_id": "R19",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7043649844816893,
+      "common_closure_cup_mass_kg": 8.396030615021736e-05,
+      "cup_mass_difference_kg": 1.2137728426843837e-05,
+      "fraction_difference": 0.1018265807621127,
+      "frozen_cup_mass_kg": 9.60980345770612e-05,
+      "frozen_species_extracted_fraction": 0.806191565243802,
+      "sample_id": "R19",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8260309801518176,
+      "common_closure_cup_mass_kg": 0.0003069531122244154,
+      "cup_mass_difference_kg": 3.43473445879046e-05,
+      "fraction_difference": 0.09243095960146552,
+      "frozen_cup_mass_kg": 0.00034130045681232,
+      "frozen_species_extracted_fraction": 0.9184619397532832,
+      "sample_id": "R2",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8260309801518176,
+      "common_closure_cup_mass_kg": 9.846289283409666e-05,
+      "cup_mass_difference_kg": 1.1404914046235336e-05,
+      "fraction_difference": 0.09567880911271254,
+      "frozen_cup_mass_kg": 0.000109867806880332,
+      "frozen_species_extracted_fraction": 0.9217097892645302,
+      "sample_id": "R2",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7043649844816893,
+      "common_closure_cup_mass_kg": 0.00026174202823339574,
+      "cup_mass_difference_kg": 3.612329187924825e-05,
+      "fraction_difference": 0.09721015037472625,
+      "frozen_cup_mass_kg": 0.000297865320112644,
+      "frozen_species_extracted_fraction": 0.8015751348564155,
+      "sample_id": "R20",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7043649844816893,
+      "common_closure_cup_mass_kg": 8.396030615021736e-05,
+      "cup_mass_difference_kg": 1.2137728426843837e-05,
+      "fraction_difference": 0.1018265807621127,
+      "frozen_cup_mass_kg": 9.60980345770612e-05,
+      "frozen_species_extracted_fraction": 0.806191565243802,
+      "sample_id": "R20",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7042269341324927,
+      "common_closure_cup_mass_kg": 0.0002616907287236343,
+      "cup_mass_difference_kg": 3.6155514756580685e-05,
+      "fraction_difference": 0.09729686425344652,
+      "frozen_cup_mass_kg": 0.000297846243480215,
+      "frozen_species_extracted_fraction": 0.8015237983859392,
+      "sample_id": "R21",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7042269341324927,
+      "common_closure_cup_mass_kg": 8.394385054859312e-05,
+      "cup_mass_difference_kg": 1.2148522106951876e-05,
+      "fraction_difference": 0.1019171317697305,
+      "frozen_cup_mass_kg": 9.6092372655545e-05,
+      "frozen_species_extracted_fraction": 0.8061440659022232,
+      "sample_id": "R21",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7031368046701445,
+      "common_closure_cup_mass_kg": 0.0002612856366154257,
+      "cup_mass_difference_kg": 3.640986508274133e-05,
+      "fraction_difference": 0.09798133768229633,
+      "frozen_cup_mass_kg": 0.000297695501698167,
+      "frozen_species_extracted_fraction": 0.8011181423524408,
+      "sample_id": "R22",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.7031368046701445,
+      "common_closure_cup_mass_kg": 8.381390711668123e-05,
+      "cup_mass_difference_kg": 1.223372280741077e-05,
+      "fraction_difference": 0.10263190274673473,
+      "frozen_cup_mass_kg": 9.6047629924092e-05,
+      "frozen_species_extracted_fraction": 0.8057687074168792,
+      "sample_id": "R22",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9388492758715231,
+      "common_closure_cup_mass_kg": 0.00034887639091385795,
+      "cup_mass_difference_kg": 1.8282310839470048e-05,
+      "fraction_difference": 0.04919889892214757,
+      "frozen_cup_mass_kg": 0.000367158701753328,
+      "frozen_species_extracted_fraction": 0.9880481747936707,
+      "sample_id": "R23",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9388492758715231,
+      "common_closure_cup_mass_kg": 0.00011191083368388555,
+      "cup_mass_difference_kg": 5.962499945382451e-06,
+      "fraction_difference": 0.05002097269616146,
+      "frozen_cup_mass_kg": 0.000117873333629268,
+      "frozen_species_extracted_fraction": 0.9888702485676846,
+      "sample_id": "R23",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9388492758715302,
+      "common_closure_cup_mass_kg": 0.0003488763909138606,
+      "cup_mass_difference_kg": 1.828231083946739e-05,
+      "fraction_difference": 0.049198898922140466,
+      "frozen_cup_mass_kg": 0.000367158701753328,
+      "frozen_species_extracted_fraction": 0.9880481747936707,
+      "sample_id": "R24",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9388492758715302,
+      "common_closure_cup_mass_kg": 0.0001119108336838864,
+      "cup_mass_difference_kg": 5.962499945381597e-06,
+      "fraction_difference": 0.05002097269615435,
+      "frozen_cup_mass_kg": 0.000117873333629268,
+      "frozen_species_extracted_fraction": 0.9888702485676846,
+      "sample_id": "R24",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9388492758715302,
+      "common_closure_cup_mass_kg": 0.0003488763909138606,
+      "cup_mass_difference_kg": 1.828231083946739e-05,
+      "fraction_difference": 0.049198898922140466,
+      "frozen_cup_mass_kg": 0.000367158701753328,
+      "frozen_species_extracted_fraction": 0.9880481747936707,
+      "sample_id": "R25",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9388492758715302,
+      "common_closure_cup_mass_kg": 0.0001119108336838864,
+      "cup_mass_difference_kg": 5.962499945381597e-06,
+      "fraction_difference": 0.05002097269615435,
+      "frozen_cup_mass_kg": 0.000117873333629268,
+      "frozen_species_extracted_fraction": 0.9888702485676846,
+      "sample_id": "R25",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9382697966893088,
+      "common_closure_cup_mass_kg": 0.0003486610564497471,
+      "cup_mass_difference_kg": 1.8482182364229895e-05,
+      "fraction_difference": 0.049736766319240844,
+      "frozen_cup_mass_kg": 0.000367143238813977,
+      "frozen_species_extracted_fraction": 0.9880065630085496,
+      "sample_id": "R26",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9382697966893088,
+      "common_closure_cup_mass_kg": 0.0001118417597653656,
+      "cup_mass_difference_kg": 6.027239308914402e-06,
+      "fraction_difference": 0.050564088162033505,
+      "frozen_cup_mass_kg": 0.00011786899907428,
+      "frozen_species_extracted_fraction": 0.9888338848513423,
+      "sample_id": "R26",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9382697966893178,
+      "common_closure_cup_mass_kg": 0.0003486610564497505,
+      "cup_mass_difference_kg": 1.8482182364225504e-05,
+      "fraction_difference": 0.049736766319229075,
+      "frozen_cup_mass_kg": 0.000367143238813976,
+      "frozen_species_extracted_fraction": 0.9880065630085468,
+      "sample_id": "R27",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9382697966893178,
+      "common_closure_cup_mass_kg": 0.00011184175976536667,
+      "cup_mass_difference_kg": 6.0272393089133314e-06,
+      "fraction_difference": 0.05056408816202451,
+      "frozen_cup_mass_kg": 0.00011786899907428,
+      "frozen_species_extracted_fraction": 0.9888338848513423,
+      "sample_id": "R27",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9382697966893159,
+      "common_closure_cup_mass_kg": 0.00034866105644974977,
+      "cup_mass_difference_kg": 1.848218236422621e-05,
+      "fraction_difference": 0.04973676631923096,
+      "frozen_cup_mass_kg": 0.000367143238813976,
+      "frozen_species_extracted_fraction": 0.9880065630085468,
+      "sample_id": "R28",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9382697966893159,
+      "common_closure_cup_mass_kg": 0.00011184175976536645,
+      "cup_mass_difference_kg": 6.027239308913548e-06,
+      "fraction_difference": 0.0505640881620264,
+      "frozen_cup_mass_kg": 0.00011786899907428,
+      "frozen_species_extracted_fraction": 0.9888338848513423,
+      "sample_id": "R28",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9393466862752125,
+      "common_closure_cup_mass_kg": 0.0003490612286198689,
+      "cup_mass_difference_kg": 1.811079705014507e-05,
+      "fraction_difference": 0.048737344053135234,
+      "frozen_cup_mass_kg": 0.000367172025670014,
+      "frozen_species_extracted_fraction": 0.9880840303283477,
+      "sample_id": "R29",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9393466862752125,
+      "common_closure_cup_mass_kg": 0.00011197012500400532,
+      "cup_mass_difference_kg": 5.906943695981677e-06,
+      "fraction_difference": 0.04955489677836977,
+      "frozen_cup_mass_kg": 0.000117877068699987,
+      "frozen_species_extracted_fraction": 0.9889015830535822,
+      "sample_id": "R29",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8260309801518089,
+      "common_closure_cup_mass_kg": 0.00030695311222441216,
+      "cup_mass_difference_kg": 3.434734458790785e-05,
+      "fraction_difference": 0.0924309596014743,
+      "frozen_cup_mass_kg": 0.00034130045681232,
+      "frozen_species_extracted_fraction": 0.9184619397532832,
+      "sample_id": "R3",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8260309801518089,
+      "common_closure_cup_mass_kg": 9.846289283409562e-05,
+      "cup_mass_difference_kg": 1.1404914046236379e-05,
+      "fraction_difference": 0.09567880911272131,
+      "frozen_cup_mass_kg": 0.000109867806880332,
+      "frozen_species_extracted_fraction": 0.9217097892645302,
+      "sample_id": "R3",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9393466862751945,
+      "common_closure_cup_mass_kg": 0.00034906122861986226,
+      "cup_mass_difference_kg": 1.8110797050151738e-05,
+      "fraction_difference": 0.04873734405315322,
+      "frozen_cup_mass_kg": 0.000367172025670014,
+      "frozen_species_extracted_fraction": 0.9880840303283477,
+      "sample_id": "R30",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9393466862751945,
+      "common_closure_cup_mass_kg": 0.00011197012500400317,
+      "cup_mass_difference_kg": 5.906943695982829e-06,
+      "fraction_difference": 0.04955489677837943,
+      "frozen_cup_mass_kg": 0.000117877068699986,
+      "frozen_species_extracted_fraction": 0.9889015830535739,
+      "sample_id": "R30",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9393466862752125,
+      "common_closure_cup_mass_kg": 0.0003490612286198689,
+      "cup_mass_difference_kg": 1.811079705014507e-05,
+      "fraction_difference": 0.048737344053135234,
+      "frozen_cup_mass_kg": 0.000367172025670014,
+      "frozen_species_extracted_fraction": 0.9880840303283477,
+      "sample_id": "R31",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9393466862752125,
+      "common_closure_cup_mass_kg": 0.00011197012500400532,
+      "cup_mass_difference_kg": 5.906943695981677e-06,
+      "fraction_difference": 0.04955489677836977,
+      "frozen_cup_mass_kg": 0.000117877068699987,
+      "frozen_species_extracted_fraction": 0.9889015830535822,
+      "sample_id": "R31",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9390218884585838,
+      "common_closure_cup_mass_kg": 0.00034894053375120974,
+      "cup_mass_difference_kg": 1.822278632218925e-05,
+      "fraction_difference": 0.04903871453764608,
+      "frozen_cup_mass_kg": 0.000367163320073399,
+      "frozen_species_extracted_fraction": 0.9880606029962299,
+      "sample_id": "R32",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9390218884585838,
+      "common_closure_cup_mass_kg": 0.00011193140910426318,
+      "cup_mass_difference_kg": 5.943219157652821e-06,
+      "fraction_difference": 0.04985922112124852,
+      "frozen_cup_mass_kg": 0.000117874628261916,
+      "frozen_species_extracted_fraction": 0.9888811095798323,
+      "sample_id": "R32",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9384838682897017,
+      "common_closure_cup_mass_kg": 0.0003487406054564531,
+      "cup_mass_difference_kg": 1.8408338329974907e-05,
+      "fraction_difference": 0.049538047174313427,
+      "frozen_cup_mass_kg": 0.000367148943786428,
+      "frozen_species_extracted_fraction": 0.9880219154640151,
+      "sample_id": "R33",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.9384838682897017,
+      "common_closure_cup_mass_kg": 0.00011186727710013244,
+      "cup_mass_difference_kg": 6.0033211681185654e-06,
+      "fraction_difference": 0.05036343261844434,
+      "frozen_cup_mass_kg": 0.000117870598268251,
+      "frozen_species_extracted_fraction": 0.988847300908146,
+      "sample_id": "R33",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8252713699207266,
+      "common_closure_cup_mass_kg": 0.000306670841062542,
+      "cup_mass_difference_kg": 3.4567421531730036e-05,
+      "fraction_difference": 0.09302320110799256,
+      "frozen_cup_mass_kg": 0.000341238262594272,
+      "frozen_species_extracted_fraction": 0.9182945710287191,
+      "sample_id": "R4",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8252713699207266,
+      "common_closure_cup_mass_kg": 9.837234729455061e-05,
+      "cup_mass_difference_kg": 1.1477488454674398e-05,
+      "fraction_difference": 0.09628765482109392,
+      "frozen_cup_mass_kg": 0.000109849835749225,
+      "frozen_species_extracted_fraction": 0.9215590247418205,
+      "sample_id": "R4",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.825271369920732,
+      "common_closure_cup_mass_kg": 0.000306670841062544,
+      "cup_mass_difference_kg": 3.456742153172803e-05,
+      "fraction_difference": 0.09302320110798712,
+      "frozen_cup_mass_kg": 0.000341238262594272,
+      "frozen_species_extracted_fraction": 0.9182945710287191,
+      "sample_id": "R5",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.825271369920732,
+      "common_closure_cup_mass_kg": 9.837234729455126e-05,
+      "cup_mass_difference_kg": 1.1477488454673747e-05,
+      "fraction_difference": 0.09628765482108848,
+      "frozen_cup_mass_kg": 0.000109849835749225,
+      "frozen_species_extracted_fraction": 0.9215590247418205,
+      "sample_id": "R5",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.825271369920732,
+      "common_closure_cup_mass_kg": 0.000306670841062544,
+      "cup_mass_difference_kg": 3.456742153172803e-05,
+      "fraction_difference": 0.09302320110798712,
+      "frozen_cup_mass_kg": 0.000341238262594272,
+      "frozen_species_extracted_fraction": 0.9182945710287191,
+      "sample_id": "R6",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.825271369920732,
+      "common_closure_cup_mass_kg": 9.837234729455126e-05,
+      "cup_mass_difference_kg": 1.1477488454673747e-05,
+      "fraction_difference": 0.09628765482108848,
+      "frozen_cup_mass_kg": 0.000109849835749225,
+      "frozen_species_extracted_fraction": 0.9215590247418205,
+      "sample_id": "R6",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8266863134322731,
+      "common_closure_cup_mass_kg": 0.00030719663407143265,
+      "cup_mass_difference_kg": 3.415749156627037e-05,
+      "fraction_difference": 0.09192005265411829,
+      "frozen_cup_mass_kg": 0.000341354125637703,
+      "frozen_species_extracted_fraction": 0.9186063660863913,
+      "sample_id": "R7",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8266863134322731,
+      "common_closure_cup_mass_kg": 9.854100856112695e-05,
+      "cup_mass_difference_kg": 1.1342305542306057e-05,
+      "fraction_difference": 0.09515356998578905,
+      "frozen_cup_mass_kg": 0.000109883314103433,
+      "frozen_species_extracted_fraction": 0.9218398834180621,
+      "sample_id": "R7",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8266863134322553,
+      "common_closure_cup_mass_kg": 0.00030719663407142604,
+      "cup_mass_difference_kg": 3.415749156627699e-05,
+      "fraction_difference": 0.09192005265413605,
+      "frozen_cup_mass_kg": 0.000341354125637703,
+      "frozen_species_extracted_fraction": 0.9186063660863913,
+      "sample_id": "R8",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8266863134322553,
+      "common_closure_cup_mass_kg": 9.854100856112482e-05,
+      "cup_mass_difference_kg": 1.1342305542308184e-05,
+      "fraction_difference": 0.09515356998580682,
+      "frozen_cup_mass_kg": 0.000109883314103433,
+      "frozen_species_extracted_fraction": 0.9218398834180621,
+      "sample_id": "R8",
+      "species_id": "trigonelline"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8266863134322641,
+      "common_closure_cup_mass_kg": 0.0003071966340714293,
+      "cup_mass_difference_kg": 3.4157491566273734e-05,
+      "fraction_difference": 0.09192005265412728,
+      "frozen_cup_mass_kg": 0.000341354125637703,
+      "frozen_species_extracted_fraction": 0.9186063660863913,
+      "sample_id": "R9",
+      "species_id": "caffeine"
+    },
+    {
+      "aggregate_legacy_extracted_fraction": 0.8266863134322641,
+      "common_closure_cup_mass_kg": 9.854100856112588e-05,
+      "cup_mass_difference_kg": 1.1342305542307127e-05,
+      "fraction_difference": 0.09515356998579805,
+      "frozen_cup_mass_kg": 0.000109883314103433,
+      "frozen_species_extracted_fraction": 0.9218398834180621,
+      "sample_id": "R9",
+      "species_id": "trigonelline"
+    }
+  ],
+  "disposition": "SCI_MD_005_TRAINING_DATA_CONTRACT_BLOCKED",
+  "exact_reproduction": false,
+  "frozen_case_count": 66,
+  "maximum_absolute_cup_mass_difference_kg": 3.644123943515249e-05,
+  "maximum_extracted_fraction_difference": 0.10538032195259106,
+  "reason": "FROZEN_SCI_MD_004_H0_USED_A_COMMON_ABSOLUTE_CSAT_AND_DOES_NOT_HAVE_A_COMMON_INVENTORY_SCALED_EXTRACTION_FRACTION",
+  "schema_version": "ewp.sci-md-005-h0-contract-audit/v1"
+}

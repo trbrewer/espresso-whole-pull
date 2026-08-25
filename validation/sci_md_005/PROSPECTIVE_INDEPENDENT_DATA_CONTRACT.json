@@ -1,0 +1,26 @@
+{
+  "commissioning_authorized": false,
+  "holdout_rules": {
+    "complete_shot_level_hydraulic_histories_required": true,
+    "minimum_untouched_domain": "AT_LEAST_ONE_COFFEE_ROAST_OR_APPARATUS_CONDITION",
+    "post_freeze_parameter_or_threshold_revision": "PROHIBITED",
+    "training_holdout_separation": "PROSPECTIVE"
+  },
+  "required_same_shot_fields": [
+    "initial_dry_coffee_caffeine_inventory",
+    "initial_dry_coffee_trigonelline_inventory",
+    "dose",
+    "basket_geometry",
+    "grind_information",
+    "temperature",
+    "synchronized_pressure_history",
+    "synchronized_flow_or_beverage_mass_history",
+    "fraction_resolved_caffeine_concentrations",
+    "fraction_resolved_trigonelline_concentrations",
+    "total_solids",
+    "final_beverage_mass",
+    "uncertainty_and_replicate_information"
+  ],
+  "schema_version": "ewp.sci-md-005-prospective-independent-data-contract/v1",
+  "status": "PROSPECTIVE_CONTRACT_ONLY"
+}
