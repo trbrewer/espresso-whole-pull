@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 503,
-  "total_uncompressed_bytes_excluding_manifest": 7193376,
-  "aggregate_source_sha256": "943575cad90f870ebcf889f441cccae2a3c6fe71441af398f12899d27fb3e60c",
-  "aggregate_sha256": "943575cad90f870ebcf889f441cccae2a3c6fe71441af398f12899d27fb3e60c",
+  "file_count": 505,
+  "total_uncompressed_bytes_excluding_manifest": 7200269,
+  "aggregate_source_sha256": "fb1000b84cf4ab5526a94a636f1a2b3acdac4fc1a2c16a29d68f3140647837cc",
+  "aggregate_sha256": "fb1000b84cf4ab5526a94a636f1a2b3acdac4fc1a2c16a29d68f3140647837cc",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1133,6 +1133,11 @@
       "bytes": 2718,
       "git_mode": "100644"
     },
+    "docs/validation/sci_md_004/STAGE_E1_CONDITIONAL_DARCY_RECONCILIATION.md": {
+      "sha256": "6123d66102afb26525bb2c2882bf0f0ec136c9f0144d7c5c620cf7aef691aff7",
+      "bytes": 2411,
+      "git_mode": "100644"
+    },
     "docs/validation/sci_md_004/STAGE_E1_PROTECTED_HOLDOUT_RESULT.md": {
       "sha256": "3f38eaf08165318306b109b4a5d65f677f060005839eb0b77d9f88d998b1b00f",
       "bytes": 2558,
@@ -1934,8 +1939,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_a.py": {
-      "sha256": "19d5b4130d14edcc97d52eaf8794a22e0ec962addd2c97cd09dbfea20f3706f8",
-      "bytes": 3777,
+      "sha256": "ee6560e6966d0b1f10b871e88220e9efd65c9401f302555d4bb442f0a5132e65",
+      "bytes": 3999,
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_c.py": {
@@ -1951,6 +1956,11 @@
     "tests/test_sci_md_004_stage_e1.py": {
       "sha256": "241eb524409b0a90c70e0b2f14280e6095c05ca7bec4ac34b91a243c0f94d1b2",
       "bytes": 2310,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_004_stage_e1_hydraulic.py": {
+      "sha256": "8b92b057ea7617eeef375dd029d0dc6660bb6bd4f2c18e908ae8f20ccac935f2",
+      "bytes": 4260,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

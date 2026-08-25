@@ -1,0 +1,17 @@
+{
+  "artifact_hashes": {
+    "DIRECTIONAL_PAIR_MANIFEST.json": "65e2ff0a1f0e8d3ae915119afbb08a46ccaf7f6dda319c12c4872679439632a5",
+    "EXECUTION_MANIFEST.json": "902deca6dcf9eac977c2c5eb715e55c685a9549fc68542a951c38f4a9ec260e8",
+    "NUMERICAL_STABILITY.csv": "9308a07d0df6846e0f4d0e058057fe2743c9c767ee22292fa6c3eebe5155381d",
+    "PREDICTIONS.csv": "0f3494c5aebeeb431dff66682d3a0e63d3cbb2b13039ee318f6b022b917cc410",
+    "PREDICTIONS_ALL_RESOLUTIONS.csv": "e84ac5b8ebd0fa7752766d55e982f2b912a8a84ee680aeae0e712619df1992e0"
+  },
+  "audited_freeze_commit": "51bb5c83010957a760c1cdfc851d3a4def9a16d8",
+  "audited_freeze_tree": "0b2e1c376e64a1ba00d6f062a15fa42e207a7265",
+  "numerical_gate_count": 792,
+  "numerical_gate_status": "PASS",
+  "prediction_bundle_sha256": "04b5f4f6e5272b969a7d0d5dfd50c3483daea956b88852dd9d71560bcf0983bc",
+  "prediction_execution_count": 264,
+  "primary_prediction_count": 396,
+  "semantic_protected_target_open_count": 0
+}

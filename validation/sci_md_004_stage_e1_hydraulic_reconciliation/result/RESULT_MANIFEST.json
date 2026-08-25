@@ -1,0 +1,13 @@
+{
+  "artifact_hashes": {
+    "CONDITION_LEVEL_RESULTS.csv": "de0990b5ac1158c9a3b807ca3770fd72d21fa76c2f59a368d72ab8f5573b4a33",
+    "DIRECTIONAL_RESULTS.csv": "7d4fac378de3f548169f72657ffd14182bde379ac0e8ec2770bb0925184d32b4",
+    "FINAL_SCIENTIFIC_RESULT.json": "6682e89e5482cde071218e6215986f38fab8bc8b333483e44850b558cd370048",
+    "SCORER_INVOCATION_RECEIPT.json": "2436d58b6a95f9df070ce6cc9994862f7091a9932171c30ea0dabadcd3a40b7a",
+    "SPECIES_METRICS.json": "0cd7472e5afc8e02751199eacd5d4401caa4ce030453a92143c35e0aad4584fc",
+    "TOTAL_SOLIDS_METRICS.json": "e2daf317a7cfcd9a9dfc10b226bfc0a37215d8d834e2e3c5d70b4491d713233e"
+  },
+  "primary_scientific_result": "SCI_MD_004_REJECTED_PARAMETERIZATION_OR_FORMULATION",
+  "successful_scorer_process_count": 1,
+  "target_open_count": 1
+}

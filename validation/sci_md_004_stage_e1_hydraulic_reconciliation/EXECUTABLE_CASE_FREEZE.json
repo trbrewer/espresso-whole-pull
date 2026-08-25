@@ -1,0 +1,2648 @@
+{
+  "scenario_count": 264,
+  "scenarios": [
+    {
+      "condition_id": "C18",
+      "configuration_id": "A1-H0-reference",
+      "generated_case_sha256": "36726e51a4036d9de7597c8b6f93fe8cd65ba61b323c2e33c107d970b701c850",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A1",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A1-H0-reference.json",
+      "scenario_sha256": "d10f3607f6d51a4d172498e31840c064611cbffd778b298ade849acf1c5fe957"
+    },
+    {
+      "condition_id": "C18",
+      "configuration_id": "A1-H0-fine",
+      "generated_case_sha256": "04b02fd9f25930603a2697020f65e2917d68509ddc269bdb0537e58ca547550d",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A1",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A1-H0-fine.json",
+      "scenario_sha256": "e8ac754b748d08ce32ceb413625cf1d4f3fffc3915c5c90c06b9558d8c9d730c"
+    },
+    {
+      "condition_id": "C18",
+      "configuration_id": "A1-H1-reference",
+      "generated_case_sha256": "171952fcbbf265c53d9047fdda23d775c6d92f5562011451731fce8841511912",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A1",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A1-H1-reference.json",
+      "scenario_sha256": "b6a534c63f83f560c2cfe6cabc1c3681d931368d1a4001a60bed2297907112b2"
+    },
+    {
+      "condition_id": "C18",
+      "configuration_id": "A1-H1-fine",
+      "generated_case_sha256": "c051cb7886ed17f31503c3a978dd74ee3b12c6b258963081f3f96f4ec33b1c1a",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A1",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A1-H1-fine.json",
+      "scenario_sha256": "7027026e59d6abdc53e1da52c192fedeec5a47059a909849bbdfb08a96f1ee06"
+    },
+    {
+      "condition_id": "C23",
+      "configuration_id": "A10-H0-reference",
+      "generated_case_sha256": "36b1a764ad663836e6109c6aa3c369bb277f3fdc3a26b72490229ff28522b0a6",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A10",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A10-H0-reference.json",
+      "scenario_sha256": "083e3920dddef9737599314df3ff07416d8a433b03aef59ff821463015bf2a7f"
+    },
+    {
+      "condition_id": "C23",
+      "configuration_id": "A10-H0-fine",
+      "generated_case_sha256": "f58a2d777b717cf785f12dd356df2794119beea39fa1e7db42acc6e24a478a80",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A10",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A10-H0-fine.json",
+      "scenario_sha256": "b5ac7af04d0648d442537a05b107d91070bebef5370a5f74ebd8fa3d012b7688"
+    },
+    {
+      "condition_id": "C23",
+      "configuration_id": "A10-H1-reference",
+      "generated_case_sha256": "5e4de846add89dd17291ab43ac69833d42e9c56d37659b96ca2a8489f5e843fa",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A10",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A10-H1-reference.json",
+      "scenario_sha256": "0d34bd28df8e3fdc7165b49a39f226f3a5a341c46028b309067292bec0babfc3"
+    },
+    {
+      "condition_id": "C23",
+      "configuration_id": "A10-H1-fine",
+      "generated_case_sha256": "fbcb2ecec35d426acdde6c4b559d4bff14c4f3169fdf6b069e9e1661cc7037b6",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A10",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A10-H1-fine.json",
+      "scenario_sha256": "a8b5019f1753131a3eea0dc142b1b68a3f5d11958cff0b585278ff963e94c4c1"
+    },
+    {
+      "condition_id": "C12",
+      "configuration_id": "A11-H0-reference",
+      "generated_case_sha256": "906c48b697989ea821921cd474551c704c9b270abf112598c0b5b575e38d060f",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A11",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A11-H0-reference.json",
+      "scenario_sha256": "87e00c7f1f0a58ec4e3e8023aea8883e7251ab322d6d80442d274aa81ea269bd"
+    },
+    {
+      "condition_id": "C12",
+      "configuration_id": "A11-H0-fine",
+      "generated_case_sha256": "9f12f5382d0569667b13ad1a50f396a792e407faea6d1781e559e9709b1141fc",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A11",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A11-H0-fine.json",
+      "scenario_sha256": "9c640e26104b850c9e4f183676772a0bc7dc5d4e285a5af5fc6cebedda64905e"
+    },
+    {
+      "condition_id": "C12",
+      "configuration_id": "A11-H1-reference",
+      "generated_case_sha256": "bc16a59f87909f023c4386a9b3bd9a278ae55fe2278303d6a7b0efb025f0b2d6",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A11",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A11-H1-reference.json",
+      "scenario_sha256": "93308b51e547b5f752d6ea8d38a474907213d30ad6da3f7f3c8c757abae7f0fb"
+    },
+    {
+      "condition_id": "C12",
+      "configuration_id": "A11-H1-fine",
+      "generated_case_sha256": "01696d2b975f2d7ef1d85d989104805db4fa931b883945b0e6be6c036796eb76",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A11",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A11-H1-fine.json",
+      "scenario_sha256": "d6b5aa65930e358fbead1216b78eb2f499e625c39d0e22054845663462df63de"
+    },
+    {
+      "condition_id": "C16",
+      "configuration_id": "A12-H0-reference",
+      "generated_case_sha256": "10a95f6c24a6b196657e25c79c7ead90b62ad19252c5aa36e252e250cc50e167",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A12",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A12-H0-reference.json",
+      "scenario_sha256": "34c4c806d1695c1202261be0743f4c6dea1f21d342bd6b3661b65b77f7c946b4"
+    },
+    {
+      "condition_id": "C16",
+      "configuration_id": "A12-H0-fine",
+      "generated_case_sha256": "aa038cfdbd3cd25b892028ee901a7f570efaded18d637d98240bdbf99cdc2db8",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A12",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A12-H0-fine.json",
+      "scenario_sha256": "21a3e6a7fc06aba58555d35f28e16a45d78a3c2ad5aa50685767e00d02b09f73"
+    },
+    {
+      "condition_id": "C16",
+      "configuration_id": "A12-H1-reference",
+      "generated_case_sha256": "0946040cf424892053e1c95bf77ef6e99cced9a3d4055cb2220492fe16c9aaa1",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A12",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A12-H1-reference.json",
+      "scenario_sha256": "c033ff25940c7a8591db2623c279629aaeb579375f3d29fa28dc6b2257c5660a"
+    },
+    {
+      "condition_id": "C16",
+      "configuration_id": "A12-H1-fine",
+      "generated_case_sha256": "8cbbd3a167209353ecc448b654873f5ca5c331f09b418ddb016d9adacc541d96",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A12",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A12-H1-fine.json",
+      "scenario_sha256": "52d3c4f3daf6a4d60bc87e3ad8f8339910902950e48d9292d8c00afce69ac18c"
+    },
+    {
+      "condition_id": "C13",
+      "configuration_id": "A13-H0-reference",
+      "generated_case_sha256": "7633af955cb383850ef2d2adbce7b86177485700e4060d7e600d76fd044ba6b2",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A13",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A13-H0-reference.json",
+      "scenario_sha256": "7b6ec32dc9a86ef38abc2ddb3bf8dc87bfb11bd6b6a70e5b682520cb4ce6fb17"
+    },
+    {
+      "condition_id": "C13",
+      "configuration_id": "A13-H0-fine",
+      "generated_case_sha256": "7d8503cba4bab0738f2ba3e0417dee8354a03568b14699b5ccd981651f32e6e8",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A13",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A13-H0-fine.json",
+      "scenario_sha256": "771c7f7b3b968897cd274ae52946399119b508e56dee68e12fec0bac37959a13"
+    },
+    {
+      "condition_id": "C13",
+      "configuration_id": "A13-H1-reference",
+      "generated_case_sha256": "4280bafd1aea7f291951f298e164a63cb565adc9c65f236a57395c26bbde0d32",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A13",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A13-H1-reference.json",
+      "scenario_sha256": "098f1b4e80b71a4bde75f293354cc91ca9f108af723503c3ef36e4757c985844"
+    },
+    {
+      "condition_id": "C13",
+      "configuration_id": "A13-H1-fine",
+      "generated_case_sha256": "e77dfcadd4ed09f4903038c0e0482741723587e9793901ed47360dbfceca855b",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A13",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A13-H1-fine.json",
+      "scenario_sha256": "85f214f977a82a726580c328e26bad88a55140bd526c033e1920a57575566aa5"
+    },
+    {
+      "condition_id": "C19",
+      "configuration_id": "A14-H0-reference",
+      "generated_case_sha256": "bb89ad949931f24c57bcc77afa3553c3e39d0c51d3d0c391b6d49635e75ebf0b",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A14",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A14-H0-reference.json",
+      "scenario_sha256": "46e262ce6d557f2c6c0c36f444f9bef32de0b8c61ea5e7ac28afd24629a7e125"
+    },
+    {
+      "condition_id": "C19",
+      "configuration_id": "A14-H0-fine",
+      "generated_case_sha256": "9a059fdf12d7bd62453ec2ae81297d628c80a718c0e17445d8ae23be8cae939b",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A14",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A14-H0-fine.json",
+      "scenario_sha256": "94b0f8ac388455a0289b6f9808672406adcf254299d09ca06f3c8ee8193f5fe8"
+    },
+    {
+      "condition_id": "C19",
+      "configuration_id": "A14-H1-reference",
+      "generated_case_sha256": "82be27f2a87ccfcaeefc8b13976f7a8f7036b2f30af8306feb7d79a518a2eae2",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A14",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A14-H1-reference.json",
+      "scenario_sha256": "3f72547875d939b31cd7ea2f4dd319d9f39699fb1669c82078f28a706c7a9c58"
+    },
+    {
+      "condition_id": "C19",
+      "configuration_id": "A14-H1-fine",
+      "generated_case_sha256": "308888883d11a1790cce193dcb981337ddea6135a6a0136e4be097251fa8db56",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A14",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A14-H1-fine.json",
+      "scenario_sha256": "cfd7478e5773a9b04728c00802292d935f5ef7840a169984d1ed479d27822e7c"
+    },
+    {
+      "condition_id": "C28",
+      "configuration_id": "A15-H0-reference",
+      "generated_case_sha256": "cb904a13d715657b8e71d1dfb59716cf542dd6c7949f5a5b7b0fcdd184f69823",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A15",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A15-H0-reference.json",
+      "scenario_sha256": "2de475ed1a9c9904ff1dbe2bd815a8cf843e3c915acf04c6ad86b59da8146079"
+    },
+    {
+      "condition_id": "C28",
+      "configuration_id": "A15-H0-fine",
+      "generated_case_sha256": "c1cc6daa583d0191133fc8953d6d88ae3c737a1b8659f773c9a76c1a5d7220c0",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A15",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A15-H0-fine.json",
+      "scenario_sha256": "484b0741e2ace162547f7880a651013ed69c19441408bc0f1e76eecf793d7db1"
+    },
+    {
+      "condition_id": "C28",
+      "configuration_id": "A15-H1-reference",
+      "generated_case_sha256": "17a1086e0a75b86535d437f49ff7dc394b495c70ae4039c95925074d3ac67f34",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A15",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A15-H1-reference.json",
+      "scenario_sha256": "0f7026f9a14f3e15a22db033da0e4f403f1c2394b6c273d519754d9a6a319893"
+    },
+    {
+      "condition_id": "C28",
+      "configuration_id": "A15-H1-fine",
+      "generated_case_sha256": "3560b867cedff0c6c11127e78b04f42df2b5235271ebb60979ac8ef08a405e64",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A15",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A15-H1-fine.json",
+      "scenario_sha256": "9addf71cab448551aea4307d5082d9e6d74ca5384cd159eadf4d9ad1c2954fc2"
+    },
+    {
+      "condition_id": "C31",
+      "configuration_id": "A16-H0-reference",
+      "generated_case_sha256": "b05bf46451cc37900e595e2336b16db631969d285a59276e4358af964bde786f",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A16",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A16-H0-reference.json",
+      "scenario_sha256": "a1a9ce493989fc00cff9b5683497cf5f1e9972d5ddcf3a45fa215f30e6598477"
+    },
+    {
+      "condition_id": "C31",
+      "configuration_id": "A16-H0-fine",
+      "generated_case_sha256": "e583ee2caea4df52303aeba278501d149a4e09e28ffc227cac5dda132be08c54",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A16",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A16-H0-fine.json",
+      "scenario_sha256": "9b30714c90347e490481fdfec10527e19616913a81293083605915d15dbb390e"
+    },
+    {
+      "condition_id": "C31",
+      "configuration_id": "A16-H1-reference",
+      "generated_case_sha256": "9389a73f69ab12a31f7d4594ef43ae18763a60134b2a069d7fe3d60df37a8c54",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A16",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A16-H1-reference.json",
+      "scenario_sha256": "2be3eacd8080c6336ba5d2df7d52d62fa76a87a105aadc8c50607aa2b41dce31"
+    },
+    {
+      "condition_id": "C31",
+      "configuration_id": "A16-H1-fine",
+      "generated_case_sha256": "c6bb05c7c84f816225c9ed5d0ae3542e4971bf5ed0508cc0bf7bc09f1ccab795",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A16",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A16-H1-fine.json",
+      "scenario_sha256": "ae8750fd4eb27f969bcfe8f187d66e37429c4d32351061b533acf94b05682592"
+    },
+    {
+      "condition_id": "C25",
+      "configuration_id": "A17-H0-reference",
+      "generated_case_sha256": "9dbb082307608ec777e5918ff3c4714d55d3ef3d396e333630938fa91b0d4468",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A17",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A17-H0-reference.json",
+      "scenario_sha256": "d54c90a956d32c604ffa5ca0f2135601f42b529bf3953d3081b5be9c3692a6ed"
+    },
+    {
+      "condition_id": "C25",
+      "configuration_id": "A17-H0-fine",
+      "generated_case_sha256": "9e6ab66dae053983077aa7c4f097c6e9302fbe2e05a3474c23e3448e3f6284e2",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A17",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A17-H0-fine.json",
+      "scenario_sha256": "34d0566cbb9c27d7153228339a5b54cb45833dafa3a1d1c07e28cbd500af7f9a"
+    },
+    {
+      "condition_id": "C25",
+      "configuration_id": "A17-H1-reference",
+      "generated_case_sha256": "b6d277f947141dc6571586facdbebdedb51c7d90694e409fdb7d7d29bd864cfd",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A17",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A17-H1-reference.json",
+      "scenario_sha256": "53b85b768ae40338914e611fa4f225d2e59efb617d568cbdea4df4b785a069e9"
+    },
+    {
+      "condition_id": "C25",
+      "configuration_id": "A17-H1-fine",
+      "generated_case_sha256": "46ec1b312ae4f56348cac0f24bddafa22f3ee1ef7435bc5420d53d60247820f4",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A17",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A17-H1-fine.json",
+      "scenario_sha256": "62f1dc63399c54fe398af25ae3574dd58157f36dc7eab26f6cc95409b918a8ac"
+    },
+    {
+      "condition_id": "C04",
+      "configuration_id": "A18-H0-reference",
+      "generated_case_sha256": "dfd9ee43783705b2c2dd6dc83a36c479ffff9fe3452d9b30db2b91ecd840ee1c",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A18",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A18-H0-reference.json",
+      "scenario_sha256": "b7e58e78c3f176030a2d481118356c26083657a372657fe1fe2c9b1b7e3f2cd5"
+    },
+    {
+      "condition_id": "C04",
+      "configuration_id": "A18-H0-fine",
+      "generated_case_sha256": "ea286dfc37c4ab576b77fd3062f4b9625a508128aa48f28994612f1103f317e2",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A18",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A18-H0-fine.json",
+      "scenario_sha256": "5c6b8a22e01448056dadcc99f67f8e586319b4e712eb1ad51457e4d63cfee10f"
+    },
+    {
+      "condition_id": "C04",
+      "configuration_id": "A18-H1-reference",
+      "generated_case_sha256": "814f4cf1d5aa24e285b30f2b0d7c7e0df33160660c0786bdb3a2c1133d17dff5",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A18",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A18-H1-reference.json",
+      "scenario_sha256": "deb8cf81684f87913a45e9307061822ad52c79a24960fb631e69c4fe1f380061"
+    },
+    {
+      "condition_id": "C04",
+      "configuration_id": "A18-H1-fine",
+      "generated_case_sha256": "2ccbc5008c085449290209581256ef06254cf30393d4cffed879e90e84d32898",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A18",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A18-H1-fine.json",
+      "scenario_sha256": "280f7da54fc0f6d611f74a44318e10affe5e0ce4c842fd6e5f5b3fab364cbd67"
+    },
+    {
+      "condition_id": "C07",
+      "configuration_id": "A19-H0-reference",
+      "generated_case_sha256": "9f1e9962550b857f3d62274d8cd230a6779cbbb5389ed698dc2908f8586ce162",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A19",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A19-H0-reference.json",
+      "scenario_sha256": "0ff590fa3cbb779cd6be416ce6e78ffc15da0128f0d0d28489a3c1e6076e9a4a"
+    },
+    {
+      "condition_id": "C07",
+      "configuration_id": "A19-H0-fine",
+      "generated_case_sha256": "d50d882bce20d58d999849298ffd307dab3195b2b545b7f43385fb999da23ae5",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A19",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A19-H0-fine.json",
+      "scenario_sha256": "4c96a706389b4fbd11f189758e903276af960373fc66823d39a04b1c4d119033"
+    },
+    {
+      "condition_id": "C07",
+      "configuration_id": "A19-H1-reference",
+      "generated_case_sha256": "8f499baf8cffaf0c24ee806378d986870d339faaf2c1ff135b17765a26755b77",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A19",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A19-H1-reference.json",
+      "scenario_sha256": "993d93aa2202647e6973560f363a0b99d2d94325941540aed088c67fd83d7e81"
+    },
+    {
+      "condition_id": "C07",
+      "configuration_id": "A19-H1-fine",
+      "generated_case_sha256": "920768ae9beeee2c3ce01265549581e1a5d03dc38a860f901612a7ca533116ba",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A19",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A19-H1-fine.json",
+      "scenario_sha256": "a84e82e3021a8bb3375ee98e18940baf4015e250ec9f6d384ab5032bc8dd0aa3"
+    },
+    {
+      "condition_id": "C15",
+      "configuration_id": "A2-H0-reference",
+      "generated_case_sha256": "455b7f5e8987404011fbc5fcc47d41dcb65b8ba69b3a02e0e45a31af1d17f05c",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A2",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A2-H0-reference.json",
+      "scenario_sha256": "0783446aa9b5ef45e0884894a3511bc7b1f334428cf1b139ac484a898755ccf6"
+    },
+    {
+      "condition_id": "C15",
+      "configuration_id": "A2-H0-fine",
+      "generated_case_sha256": "cdb38c1b25e789c129128af46d7725332b06bccc551dde5f6b7cb8ea2fbc1289",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A2",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A2-H0-fine.json",
+      "scenario_sha256": "9366439de309ab40da7c565c733352cbddc0159f56ebd8bb77491c56176ba2a0"
+    },
+    {
+      "condition_id": "C15",
+      "configuration_id": "A2-H1-reference",
+      "generated_case_sha256": "6b4dc394d2e6164197b667449c0fdba1c1b3909f5be62cd6f5e796eccd0a2ec5",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A2",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A2-H1-reference.json",
+      "scenario_sha256": "1b48da8b72706c3928f0f0d869ba2e568b297f90bd8e4aa3e6dcd36db4294cd0"
+    },
+    {
+      "condition_id": "C15",
+      "configuration_id": "A2-H1-fine",
+      "generated_case_sha256": "25e090d1650188a8d48c6a7a06cae320c4c230e020e446d463c85c8a59939f43",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A2",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A2-H1-fine.json",
+      "scenario_sha256": "21399169db8084cb2c52206e3315dbd00af8f8ed2b6c06f96b75727c137eb6c8"
+    },
+    {
+      "condition_id": "C01",
+      "configuration_id": "A20-H0-reference",
+      "generated_case_sha256": "f840f062df4b8f76d165034cef9ab638dcde0daece964d7bec8a820f2a694874",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A20",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A20-H0-reference.json",
+      "scenario_sha256": "8f53761d356c62bb4006ea8521d291bc1c5f23c16f4720dad72df4311e76dc60"
+    },
+    {
+      "condition_id": "C01",
+      "configuration_id": "A20-H0-fine",
+      "generated_case_sha256": "35800c9dbc7a529a8d1ddb15dc434ee6bdaea7858084a4756846884ad6d657e7",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A20",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A20-H0-fine.json",
+      "scenario_sha256": "ca87d80436392e7b0968883fcd166d4d029dd365dde3bd3545daf596278141e8"
+    },
+    {
+      "condition_id": "C01",
+      "configuration_id": "A20-H1-reference",
+      "generated_case_sha256": "abec25c7cca9f3ae252ca18521b033196f0f7b100b1bcba74809a0d942fec3f7",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A20",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A20-H1-reference.json",
+      "scenario_sha256": "dee87b084c5fa671d90766833e519e8595c7413b3043f06b3ccbb1999de4da66"
+    },
+    {
+      "condition_id": "C01",
+      "configuration_id": "A20-H1-fine",
+      "generated_case_sha256": "85b0dbcecf3fd3a3136fb470fd97baee32c7c42ff7215de422a2161b3ac77922",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A20",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A20-H1-fine.json",
+      "scenario_sha256": "b6008f02d21d2ea3089057bcd369e8819224854d3a2407443afacc203bb779ae"
+    },
+    {
+      "condition_id": "C10",
+      "configuration_id": "A21-H0-reference",
+      "generated_case_sha256": "63f85731c9a85e04d2e233c46378d9e91f7f7d0547d8d0db61c2375d94f7db77",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A21",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A21-H0-reference.json",
+      "scenario_sha256": "0960cd53d15c759b2bd2b772eea8cc71a35a7f9dad2d4f6807c9671658c29d8e"
+    },
+    {
+      "condition_id": "C10",
+      "configuration_id": "A21-H0-fine",
+      "generated_case_sha256": "aaa88aa76d5bbff8237c5235195fd6b385e26a78bd12946abe3ce0675823f76a",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A21",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A21-H0-fine.json",
+      "scenario_sha256": "3e90af5924ac99ca77f39ddd4e3d015c527c6f3fff5e3899a244a79092f1747e"
+    },
+    {
+      "condition_id": "C10",
+      "configuration_id": "A21-H1-reference",
+      "generated_case_sha256": "69605e79c54b4ff059ad1acd3381b97119e127cdbe1d5f5a5cc993f86f26c3b3",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A21",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A21-H1-reference.json",
+      "scenario_sha256": "9d7ab18b5db7f16e4635cf436ffcb8d8b25840f9a5950dc33c0fa5d7236be333"
+    },
+    {
+      "condition_id": "C10",
+      "configuration_id": "A21-H1-fine",
+      "generated_case_sha256": "7fc47950ad3f49a51879220332abf624fe6401f07e964e23ca00186b44b8946f",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A21",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A21-H1-fine.json",
+      "scenario_sha256": "e15a07886a205b77481f3e8b58ad82ef43bef06f4c7a3b12d755c831e70b1596"
+    },
+    {
+      "condition_id": "C24",
+      "configuration_id": "A22-H0-reference",
+      "generated_case_sha256": "c2df3f4813db170fb7dde304aa06b8ef4383e9fb39f1116de3d378a96cb09678",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A22",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A22-H0-reference.json",
+      "scenario_sha256": "10cf015d256ea0dc8024ecc220dd56733435513aa57fbce67ebc15befa2c0ef8"
+    },
+    {
+      "condition_id": "C24",
+      "configuration_id": "A22-H0-fine",
+      "generated_case_sha256": "52c5b841b48c6a4071c090ac282657dd80845f5196304f076c979f2206ff4ecb",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A22",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A22-H0-fine.json",
+      "scenario_sha256": "8daab3b711ed9a483a3093e369a7d481fe25d3a6b111cd896bf3488d9d0c55af"
+    },
+    {
+      "condition_id": "C24",
+      "configuration_id": "A22-H1-reference",
+      "generated_case_sha256": "825ca4abeaf7332fde864660ec953c1089eef2dbe9820390ba3a89dfca94ffc6",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A22",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A22-H1-reference.json",
+      "scenario_sha256": "6fde5bc8b79318a38e46d539968934efa98d08c56512211e63d52ac61931abb7"
+    },
+    {
+      "condition_id": "C24",
+      "configuration_id": "A22-H1-fine",
+      "generated_case_sha256": "839a13857772abb0c0279df1b19b8a931231a71c3b1de1d193e5283ddcb12fd3",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A22",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A22-H1-fine.json",
+      "scenario_sha256": "52a988d4a049963c589326e5cb087ee71d8c6bb8b8e00a4ae7933d0fc3bce19a"
+    },
+    {
+      "condition_id": "C17",
+      "configuration_id": "A23-H0-reference",
+      "generated_case_sha256": "6bcf5f1a0fe3b636fd80ac540d4aab08a556c3320ae73c5fb70a71eec1ef64b2",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A23",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A23-H0-reference.json",
+      "scenario_sha256": "a31262a381a6cc2de12136be884c05ece4b64601683d91a339e49b866eb322e1"
+    },
+    {
+      "condition_id": "C17",
+      "configuration_id": "A23-H0-fine",
+      "generated_case_sha256": "8930d9acef519dac7d769b7aac55119dbfc4b7969f8ec0b592466792fa165562",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A23",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A23-H0-fine.json",
+      "scenario_sha256": "7dee6a5c6720562ac4777f310eeb139787dca831532839a80fd98fd812687ec1"
+    },
+    {
+      "condition_id": "C17",
+      "configuration_id": "A23-H1-reference",
+      "generated_case_sha256": "edb38de8f366bade80734e00f68c579a0c506c9f4dc187525be24560849c505c",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A23",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A23-H1-reference.json",
+      "scenario_sha256": "5b1e6cc10136d9cd01e6a77d85605ee6f072ec0ec2eb5cde71602e7f6c7f4a45"
+    },
+    {
+      "condition_id": "C17",
+      "configuration_id": "A23-H1-fine",
+      "generated_case_sha256": "3ea3e980e7e7a14ab2dc34c297ba05fe96bf91f61024ba245da922c26c8d41d9",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A23",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A23-H1-fine.json",
+      "scenario_sha256": "ed9d50c7be9e09cfe1bb19a18c5aa9cceaa8dac97fe44246abe043b2b67f6eb2"
+    },
+    {
+      "condition_id": "C14",
+      "configuration_id": "A24-H0-reference",
+      "generated_case_sha256": "aed8ae3e9779ae2decf47f24a1b4eac85c3711971a5c7313ed64908e2a5086a4",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A24",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A24-H0-reference.json",
+      "scenario_sha256": "7ee70bc68e915f9c365b6cc99ef82a2df059d41a3a52802b159cf2c78a8fb03c"
+    },
+    {
+      "condition_id": "C14",
+      "configuration_id": "A24-H0-fine",
+      "generated_case_sha256": "185d055af86e7a51569a82ed1ff79ba6ebc756a7cbe9625428976de29c6b2a51",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A24",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A24-H0-fine.json",
+      "scenario_sha256": "618c4240045a242fbed529dccab43187f2c91f25125953f62ea581b767d20935"
+    },
+    {
+      "condition_id": "C14",
+      "configuration_id": "A24-H1-reference",
+      "generated_case_sha256": "7e3dcecf2aacfe1f2dc3b344cfce5bb6aca1bb3b8880c20b942a2fce3564aa48",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A24",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A24-H1-reference.json",
+      "scenario_sha256": "35bd39f2e5af7fb47e99227db853bb23b53cc9ff340d3b7773da76ba1bba1bf7"
+    },
+    {
+      "condition_id": "C14",
+      "configuration_id": "A24-H1-fine",
+      "generated_case_sha256": "924e6d76319cff99bc48e38cc0aabb198b40846b97ed878eb5469f5e6d6378f3",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A24",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A24-H1-fine.json",
+      "scenario_sha256": "776d4dc69f8b242916dd2b01e03059f6cd64821cff95fa98d9bd5bb88577daff"
+    },
+    {
+      "condition_id": "C20",
+      "configuration_id": "A25-H0-reference",
+      "generated_case_sha256": "3f48765a02fa854b55be91e76cf9757bdc960054c76fa2b53da1e379e37d044e",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A25",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A25-H0-reference.json",
+      "scenario_sha256": "97fb9ed7f774746ee496837c208845c1c6cbce3757605d1069347e8d23ec89de"
+    },
+    {
+      "condition_id": "C20",
+      "configuration_id": "A25-H0-fine",
+      "generated_case_sha256": "76b06e635982407a63e0fd7cca8f4a4633c8cb0507e06e8e9a1f79babe0af4e4",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A25",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A25-H0-fine.json",
+      "scenario_sha256": "a3ced5e3aa4343b58b12861d60519290e42e49049151534d931d1217ae21f86b"
+    },
+    {
+      "condition_id": "C20",
+      "configuration_id": "A25-H1-reference",
+      "generated_case_sha256": "f7fb946070926776507b06ec9d0a36b74dd5d700974fb1ca900ef72cc38427f7",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A25",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A25-H1-reference.json",
+      "scenario_sha256": "446d2025c03785e35cd5dd4e5a631e4c80c47b9b7099a9e106ec81e16bb8d0ed"
+    },
+    {
+      "condition_id": "C20",
+      "configuration_id": "A25-H1-fine",
+      "generated_case_sha256": "46cb27e19a24d8c5c682549af1117c9a0e37427b875e0a239dd0ba6506ebba83",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A25",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A25-H1-fine.json",
+      "scenario_sha256": "9c14939df279ed08040ad44dfa4aaa4f4ced9e887200974575cc54a542ddd339"
+    },
+    {
+      "condition_id": "C32",
+      "configuration_id": "A26-H0-reference",
+      "generated_case_sha256": "898312818d3052ea3cad53a02d87ff1c8cb13cf2aefca9c7057562372b4f8c25",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A26",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A26-H0-reference.json",
+      "scenario_sha256": "cda108490fbbb63cae4ad126d2fe587a52f5ee328faebebb9f163faef16d6054"
+    },
+    {
+      "condition_id": "C32",
+      "configuration_id": "A26-H0-fine",
+      "generated_case_sha256": "dd380d8bb244752d476d4370eb0c3fe17db27b91867741b31d311255351f0bc1",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A26",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A26-H0-fine.json",
+      "scenario_sha256": "1d3702de7fefbefc8ae619a75d122a5cdadf073cd8269b350954a9ad70d3ca37"
+    },
+    {
+      "condition_id": "C32",
+      "configuration_id": "A26-H1-reference",
+      "generated_case_sha256": "26c5b6c8f12560af4abcaa6ca2e46deb4e578942e7567991323a9fb0b6ab85c4",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A26",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A26-H1-reference.json",
+      "scenario_sha256": "c638772bf31670f0756204c75ec0b5b3d3c2ad86176217cf815c2992bff64d99"
+    },
+    {
+      "condition_id": "C32",
+      "configuration_id": "A26-H1-fine",
+      "generated_case_sha256": "470f6f6350b38c0a6de492d6139bbd4993fb114c783ff07087ce109c2b670935",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A26",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A26-H1-fine.json",
+      "scenario_sha256": "2c6f0068c591960368bdda954f149e7b3cf3e40c0243628d0b972e248460314a"
+    },
+    {
+      "condition_id": "C26",
+      "configuration_id": "A27-H0-reference",
+      "generated_case_sha256": "21cf81ba0f557a19a8d76f81dd81b16fb00d5697f1195b14564453d94bf6bb33",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A27",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A27-H0-reference.json",
+      "scenario_sha256": "752cf2b0d5cfc7a3e1e8a9dda6f3bff550e0ae417256490ee01e854b4854dd53"
+    },
+    {
+      "condition_id": "C26",
+      "configuration_id": "A27-H0-fine",
+      "generated_case_sha256": "2fd548e1be095032466480f2edb2ed49954258712f6944a3dd2f6fcebf63bf3a",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A27",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A27-H0-fine.json",
+      "scenario_sha256": "83228e13bc31005a83fbd827592d07363fe59720f493e54041dc860c20d575e4"
+    },
+    {
+      "condition_id": "C26",
+      "configuration_id": "A27-H1-reference",
+      "generated_case_sha256": "a1dca4c32888c4b07509d53cecbea718d1814e8ea870503327127fc7481d91cd",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A27",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A27-H1-reference.json",
+      "scenario_sha256": "95290172f5f9a57c01b954e54ede87ad18a49e99934d6e33abd1a7889cb40863"
+    },
+    {
+      "condition_id": "C26",
+      "configuration_id": "A27-H1-fine",
+      "generated_case_sha256": "796778db08d0a0750523b2e233e7aea5a1e3b39899f1cbd17aae52ab83c68a4b",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A27",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A27-H1-fine.json",
+      "scenario_sha256": "ce4543835631e7812b27b9d1575610f49346cc376042c10a24d03628c48e8dbd"
+    },
+    {
+      "condition_id": "C29",
+      "configuration_id": "A28-H0-reference",
+      "generated_case_sha256": "6a8db6ab0b54a832481b4f57adcdcf7b40d80a577a8fb8bbfa85c0ad45e4c52e",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A28",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A28-H0-reference.json",
+      "scenario_sha256": "1b7f5806ed55a1907bb347a43989d9a5e2e2f4debc6e24e7479baa6ce0c49a7a"
+    },
+    {
+      "condition_id": "C29",
+      "configuration_id": "A28-H0-fine",
+      "generated_case_sha256": "1adcdd67677fc711aef8f4026042fb8e78e480d9d87ba70805b220bdf62fd601",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A28",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A28-H0-fine.json",
+      "scenario_sha256": "c3664dbc14d01e1ecd02d9a136f56ea43b4275a0c76bd47984ea620080b4dfef"
+    },
+    {
+      "condition_id": "C29",
+      "configuration_id": "A28-H1-reference",
+      "generated_case_sha256": "2d2e950724792615772debcc50a8f286bda64c7a3c9595867d6ebaf9642c7e1d",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A28",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A28-H1-reference.json",
+      "scenario_sha256": "2f656ab827af9aeda8c331280b8ce0fc2a032d4c6a7f0bde0921077fb7b3c9a1"
+    },
+    {
+      "condition_id": "C29",
+      "configuration_id": "A28-H1-fine",
+      "generated_case_sha256": "60353ececa573867f8ed696b2672eb30c41b885ed72f445861cf67d064fa7764",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A28",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A28-H1-fine.json",
+      "scenario_sha256": "711012e51c8bcf5598f5c141e285167b21bd52c004dc1c575ad24d84ff57dc1d"
+    },
+    {
+      "condition_id": "C05",
+      "configuration_id": "A29-H0-reference",
+      "generated_case_sha256": "2b7c4f835f9d4849d62376100381c86518a9261b31f4e3a3b9bce22f3caf5406",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A29",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A29-H0-reference.json",
+      "scenario_sha256": "e4ef10c52e1bc0ad31a2d766d3ed36292afeebe27a670c522a0536320a5ffb4c"
+    },
+    {
+      "condition_id": "C05",
+      "configuration_id": "A29-H0-fine",
+      "generated_case_sha256": "d16beb60e53bc6f8cf88d61eda133ee88c0d3075749837578adc1800be7583ba",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A29",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A29-H0-fine.json",
+      "scenario_sha256": "41da7101390e239939b542cef9ade10f1fde090f6a543f594b45d6ea097aaecb"
+    },
+    {
+      "condition_id": "C05",
+      "configuration_id": "A29-H1-reference",
+      "generated_case_sha256": "a2a9a915cafbe949c2559f7047bb8199ccc6ed04322306e6a6819a141e537893",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A29",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A29-H1-reference.json",
+      "scenario_sha256": "5ec1181fff2b744427e243a316a4f50fd5ba8bbd0729388da65471b620c2aee4"
+    },
+    {
+      "condition_id": "C05",
+      "configuration_id": "A29-H1-fine",
+      "generated_case_sha256": "181a1253349428860a0adb7eb08c4228c9ce05828d75e3cc402e6db9abd78fab",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A29",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A29-H1-fine.json",
+      "scenario_sha256": "a45bdf4201f2a5b835e7ecd5573095c4bd329d677ca01200dc6235373e9704e8"
+    },
+    {
+      "condition_id": "C21",
+      "configuration_id": "A3-H0-reference",
+      "generated_case_sha256": "2c9eba21b3ae0dd7a7a0b620128104e52f15906038ab21b83e220a52a2002c79",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A3",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A3-H0-reference.json",
+      "scenario_sha256": "6cfe90766904a9be7614761f14f231a35366c3c13d3c681944354a43b723a909"
+    },
+    {
+      "condition_id": "C21",
+      "configuration_id": "A3-H0-fine",
+      "generated_case_sha256": "418afad8e75ea00c2c9625bda1e5a011d553bdb278ce2e03c9ec455af1c3f04c",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A3",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A3-H0-fine.json",
+      "scenario_sha256": "52abacf83cb4bdd0c30f4782a516994f926000bbf95176e379131b163c6c1c01"
+    },
+    {
+      "condition_id": "C21",
+      "configuration_id": "A3-H1-reference",
+      "generated_case_sha256": "effada7e920a10d6dfe4859ad9a753e1163594e1fff29f1b7f27a0d12ec19b46",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A3",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A3-H1-reference.json",
+      "scenario_sha256": "e64638d6d6bbcc66ce49b6ab436b72b30411c71ab31195a65768ed661fdd5c6a"
+    },
+    {
+      "condition_id": "C21",
+      "configuration_id": "A3-H1-fine",
+      "generated_case_sha256": "01051a9cd5b5371b780b2d1dcd275dada19013dfe8c6ccf6b8162545be342712",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A3",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A3-H1-fine.json",
+      "scenario_sha256": "02c58aa76ee2ccc52517290aa515ed0ed9bdcb8c0e73fe004014387f09a1e368"
+    },
+    {
+      "condition_id": "C08",
+      "configuration_id": "A30-H0-reference",
+      "generated_case_sha256": "46984697e8ab9dcfe3db115bf4fff7ced8aa87ff0cb8d7576b2a399e2509c4df",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A30",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A30-H0-reference.json",
+      "scenario_sha256": "0f84d200444ec1a05d6fac768c89b041c57d64ec97f281d67fceb79f23753f70"
+    },
+    {
+      "condition_id": "C08",
+      "configuration_id": "A30-H0-fine",
+      "generated_case_sha256": "c9cdecc5caeb31daae800a1fea445949f30c3d8649b6294428a1e742b526beef",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A30",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A30-H0-fine.json",
+      "scenario_sha256": "81f214d6ad7426e9aa856d61330c0493fdd1d9da675124cd1ec16f39f73df9d7"
+    },
+    {
+      "condition_id": "C08",
+      "configuration_id": "A30-H1-reference",
+      "generated_case_sha256": "6beb083fb2c8be3d35deccc4b94660f6eea5e8d1bccbe964a6c3e788ea20441c",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A30",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A30-H1-reference.json",
+      "scenario_sha256": "d0c4499de7dcbf0e5d04d20627ac3a0fdaf7ef2ef72af6cd2e12e0d95612428b"
+    },
+    {
+      "condition_id": "C08",
+      "configuration_id": "A30-H1-fine",
+      "generated_case_sha256": "98b326d7a95fc18fad052f2c9fed157d4c1be9a364cb6c89b583f12fd33c467e",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A30",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A30-H1-fine.json",
+      "scenario_sha256": "f9e3ddda979bd13e1acf441a015c93415009995d805c1cd60de3ec0f1fa364f9"
+    },
+    {
+      "condition_id": "C02",
+      "configuration_id": "A31-H0-reference",
+      "generated_case_sha256": "c66ff1d2b5a0c439deff52bc8b0becc601dc97b25b971fe5ace6e87cdca437c2",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A31",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A31-H0-reference.json",
+      "scenario_sha256": "b93ceb3a3c165b009306de8a6fa72add75882f87aed7268f920d2998ba6a64e8"
+    },
+    {
+      "condition_id": "C02",
+      "configuration_id": "A31-H0-fine",
+      "generated_case_sha256": "e8144a98fe08860addd76d40b00ad10e852c688e919a9c0756f34f67d4dffacf",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A31",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A31-H0-fine.json",
+      "scenario_sha256": "c6730632588db960f6f9a901a4e773ce83ab3699a14e5634416782d6518d87dd"
+    },
+    {
+      "condition_id": "C02",
+      "configuration_id": "A31-H1-reference",
+      "generated_case_sha256": "3f41747bb281600ea1e36374b2ab093ce97266cfd32da6d4e30ee2fd0165dcae",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A31",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A31-H1-reference.json",
+      "scenario_sha256": "bcf6dfba99e26867f973672244c91f667f69ebb6090198c17c5490f743b1ce7f"
+    },
+    {
+      "condition_id": "C02",
+      "configuration_id": "A31-H1-fine",
+      "generated_case_sha256": "5662e0956e48af4a445d1488ba4e8ad359b48709a952ae34bfa771fcc2efca1a",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A31",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A31-H1-fine.json",
+      "scenario_sha256": "c9dd1d5033b5678407f53cdd18a234e89695d5e8166abb39355ae8330b86e29a"
+    },
+    {
+      "condition_id": "C11",
+      "configuration_id": "A32-H0-reference",
+      "generated_case_sha256": "56cd1855103e25223d1af9ddf493561d634e5d9d98fc53e67892feec8266b9ca",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A32",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A32-H0-reference.json",
+      "scenario_sha256": "78c9abb22d3f67e44b38d1184234dd7ab4bca573b9544835312124dfe79d9ae1"
+    },
+    {
+      "condition_id": "C11",
+      "configuration_id": "A32-H0-fine",
+      "generated_case_sha256": "685ab9c8b453638ff5b23c8478fcbe7a3079db0fb7a1366c67ded143f82096e6",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A32",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A32-H0-fine.json",
+      "scenario_sha256": "4c927a49c148eb9eb51783ee063366878bec1767f9830fc4b06efe6435dd49e9"
+    },
+    {
+      "condition_id": "C11",
+      "configuration_id": "A32-H1-reference",
+      "generated_case_sha256": "225d4f250ee59fcc4c2324ee67794e4b53ca68795c2394eb997f03c577b30176",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A32",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A32-H1-reference.json",
+      "scenario_sha256": "dcc2915f454814deb97293fceaa7076c250d7533f5fcca1042eccb731b0d2d02"
+    },
+    {
+      "condition_id": "C11",
+      "configuration_id": "A32-H1-fine",
+      "generated_case_sha256": "248d299b88439ca20d7c1299e743e9a5c972bdc698f95d0c4963e6c6a7d0241c",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A32",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A32-H1-fine.json",
+      "scenario_sha256": "c9f23d7d7142f1ec866077ac49c36e10c79e0e778dae5c6d65965527fba8e94d"
+    },
+    {
+      "condition_id": "C22",
+      "configuration_id": "A33-H0-reference",
+      "generated_case_sha256": "133f16ddee8e80505f517be9af78a5ceafb57c3cca781636ad1d178cf992c0e9",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A33",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A33-H0-reference.json",
+      "scenario_sha256": "4cebd3b2481cb5b7126d69758c64c9f292c887f2dace8c58e9f432b12160f084"
+    },
+    {
+      "condition_id": "C22",
+      "configuration_id": "A33-H0-fine",
+      "generated_case_sha256": "6d962973bfed82b66422cf9ab8222b2092b98fb2c9310cc90380599d81ffde48",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A33",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A33-H0-fine.json",
+      "scenario_sha256": "e02f41c164023637eed075f2a3f813a498c5857f597ab88fd025b22aab1d51fa"
+    },
+    {
+      "condition_id": "C22",
+      "configuration_id": "A33-H1-reference",
+      "generated_case_sha256": "eb9b89a9eaa98b9edf0e220efda348dcacf228017a59328c234f98de76867922",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A33",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A33-H1-reference.json",
+      "scenario_sha256": "0b81c90f9a212924a8d3228aabdb58180ef56c05e72eb165039d40d680c9ea1b"
+    },
+    {
+      "condition_id": "C22",
+      "configuration_id": "A33-H1-fine",
+      "generated_case_sha256": "9aea1c08b8edbc9ac876ab6e77ea41d8a8b2d50e13d5ca5f24c7a6ea5d35a768",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A33",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A33-H1-fine.json",
+      "scenario_sha256": "188f57e6462de1dacafa51895b8e388c78872733de36a1743bc3dca3d9172d25"
+    },
+    {
+      "condition_id": "C06",
+      "configuration_id": "A4-H0-reference",
+      "generated_case_sha256": "2c5bf5cf2d896bc3823d85fcd1762d53a690bfa51480c988a66ec08a37fc07c7",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A4",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A4-H0-reference.json",
+      "scenario_sha256": "f8a5ac3f98b3f3fe2b348d17de5449c6ec41ad0a57d6b8e72bf19b18ce9d4d88"
+    },
+    {
+      "condition_id": "C06",
+      "configuration_id": "A4-H0-fine",
+      "generated_case_sha256": "531a7181fb52c9134d04bdfc49c5c533f34a37899431d475dc932bb75deb1573",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A4",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A4-H0-fine.json",
+      "scenario_sha256": "6742d36a73dcf075050d3eb100427e5bacaa1f0be0b8d75785387fb70402bae4"
+    },
+    {
+      "condition_id": "C06",
+      "configuration_id": "A4-H1-reference",
+      "generated_case_sha256": "51c5b97d0b47b36950ce66a7e9d1103b91334f7d01e6db8b8ff29c8741d0cf5c",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A4",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A4-H1-reference.json",
+      "scenario_sha256": "a2e8fcd225cbbffa26e45f6d7af83c77cec3797d6392994e6c8bb35b5579a15c"
+    },
+    {
+      "condition_id": "C06",
+      "configuration_id": "A4-H1-fine",
+      "generated_case_sha256": "61f7d9e6611c4935253dfb88fcc08e99ec0ce534cd7c21c3904736a3cb8a9013",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A4",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A4-H1-fine.json",
+      "scenario_sha256": "e49caafea19030d4d30002e08dc6b3b6382210d96029ebb0d93eaa789136c64a"
+    },
+    {
+      "condition_id": "C03",
+      "configuration_id": "A5-H0-reference",
+      "generated_case_sha256": "210bb2f7dac44e2486ced0312f4938a7542873caf8b482a36d7e70a95168e51e",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A5",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A5-H0-reference.json",
+      "scenario_sha256": "c050b52ad5eac8ea8cc5b890647c60e44ffe9c4f5d0536211e77dd6b9e799cc3"
+    },
+    {
+      "condition_id": "C03",
+      "configuration_id": "A5-H0-fine",
+      "generated_case_sha256": "0a5cf1fef52598b20a46f786a02df9c5d93f50ab976eaac58f087c6f6e722575",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A5",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A5-H0-fine.json",
+      "scenario_sha256": "109e1a60309ca5018977c37c93e142f87a3e4bb19761679d4fd0d66001dfedd2"
+    },
+    {
+      "condition_id": "C03",
+      "configuration_id": "A5-H1-reference",
+      "generated_case_sha256": "e423856ed3bf164916c2d0982756b09ebe4c522db94701f23ac0c4e5cb06766d",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A5",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A5-H1-reference.json",
+      "scenario_sha256": "fff42bc25d8505b7c9306354bfb1a8a030e6168567db96a35338bc047c4b3899"
+    },
+    {
+      "condition_id": "C03",
+      "configuration_id": "A5-H1-fine",
+      "generated_case_sha256": "add6dcbab5805038288db01d3838d9ccbafc57b5134bb860bf9255337eff0ea3",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A5",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A5-H1-fine.json",
+      "scenario_sha256": "dd15e3f310e86ee2b528621d1103afc859213433ece524d5324545d474f6ec07"
+    },
+    {
+      "condition_id": "C09",
+      "configuration_id": "A6-H0-reference",
+      "generated_case_sha256": "6c2f298a0051bc1058aa2deaabdc5800c8ec6b5684eea653388e376c634489e5",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A6",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A6-H0-reference.json",
+      "scenario_sha256": "f2d4c9790ce544fce52f07a283c93331b25a9cb38dc29e3c05b6ca3e84c77ded"
+    },
+    {
+      "condition_id": "C09",
+      "configuration_id": "A6-H0-fine",
+      "generated_case_sha256": "dd863ba7b76c5d1ddfb0503f507ecbde8024c3b0dde13565fbc3e0aea3be533b",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A6",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A6-H0-fine.json",
+      "scenario_sha256": "daf22d346d2875ff09276c3a9f4bc05c86b0d44b7ec27530a2174bc1e262a345"
+    },
+    {
+      "condition_id": "C09",
+      "configuration_id": "A6-H1-reference",
+      "generated_case_sha256": "1eea2dd6ece1e2e6a3e0e64a91c7e153ce4837403e51f080cf2e4901539dcd64",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A6",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A6-H1-reference.json",
+      "scenario_sha256": "38f12ba5bb925268874c649b59d15dd214993f91506d8807550d3c57185daa43"
+    },
+    {
+      "condition_id": "C09",
+      "configuration_id": "A6-H1-fine",
+      "generated_case_sha256": "386600f8f9121e3c9369fd2f44bfd3c03c0138ac6aef700d9d65f9a16112a97e",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A6",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A6-H1-fine.json",
+      "scenario_sha256": "94260996037bbab40529e03aeb4469fde6cf39d033162d4bc8fab07a04b3bc5d"
+    },
+    {
+      "condition_id": "C33",
+      "configuration_id": "A7-H0-reference",
+      "generated_case_sha256": "4565bae94db875a185aaf35d9424685c3d18120289e289ee8188ab46e6b42d78",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A7",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A7-H0-reference.json",
+      "scenario_sha256": "255aa8f275960cb9087bb5b0a5c407152ba4ce67d70d1a8b51d027c1880844a8"
+    },
+    {
+      "condition_id": "C33",
+      "configuration_id": "A7-H0-fine",
+      "generated_case_sha256": "86434284babfb480642b58d7c411fb0c07755c6059c9cbe373430b7c570dad1e",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A7",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A7-H0-fine.json",
+      "scenario_sha256": "9a039bd71b4b22eb68e3b563ff2b4a5d173ec6e43fb1ebe1a2f7a7b34aed0d95"
+    },
+    {
+      "condition_id": "C33",
+      "configuration_id": "A7-H1-reference",
+      "generated_case_sha256": "31574f2977f37a22dbb99d8084f1cb72dd45a0153dcca8dd653ff87170340911",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A7",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A7-H1-reference.json",
+      "scenario_sha256": "1ac37af19694da98d94b7ae515249240c17d6e415ca9c693ca6d2a33b2ae93fe"
+    },
+    {
+      "condition_id": "C33",
+      "configuration_id": "A7-H1-fine",
+      "generated_case_sha256": "80d1c703462b89a63028bdc9e7d9125f38911581fd2e83f8e1d07f3d0dd23b19",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A7",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A7-H1-fine.json",
+      "scenario_sha256": "7898955fffbca86b6baf6da4642dd3f0c0d93ae0664b513e5f85898729c86747"
+    },
+    {
+      "condition_id": "C30",
+      "configuration_id": "A8-H0-reference",
+      "generated_case_sha256": "31029f4bbfa7492fcc2d88f48ed6a97e5d77108761e93a91eaed4f8e50913f31",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A8",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A8-H0-reference.json",
+      "scenario_sha256": "aff773e7b0d2ad60e4e6b1e9da1a2afb81ba70593562f7a1abd77c0f14e8c64e"
+    },
+    {
+      "condition_id": "C30",
+      "configuration_id": "A8-H0-fine",
+      "generated_case_sha256": "dcaf075eb2c3451244cb92a12fdc00e90564df96243d922fb9de1fefde6c96e1",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A8",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A8-H0-fine.json",
+      "scenario_sha256": "096e2e0f5890c837b1bf576aa5a1b743c46b4a0ab87493fc03f12d81dbca1cd3"
+    },
+    {
+      "condition_id": "C30",
+      "configuration_id": "A8-H1-reference",
+      "generated_case_sha256": "373c5c4def699c73d313c3a94635c950242115e3571894409b41491bfbbf6656",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A8",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A8-H1-reference.json",
+      "scenario_sha256": "d1491baf8fd384a2453b0adc7eeaacb50c484df7a3d9be96c221591018a4c979"
+    },
+    {
+      "condition_id": "C30",
+      "configuration_id": "A8-H1-fine",
+      "generated_case_sha256": "d2cc097921b10963343a09a5755692bd35502d4de572ef578f907c924a4998fe",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A8",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A8-H1-fine.json",
+      "scenario_sha256": "52a0e35e7777efdd49f0e99cc7b7ad5d87f68ea1876cf5e35a9266b467d4ecac"
+    },
+    {
+      "condition_id": "C27",
+      "configuration_id": "A9-H0-reference",
+      "generated_case_sha256": "cfb05e219b5fe82efde3aa19b975f3b231f7c1834817e7dfca12f55bedcf7ce0",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "A9",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A9-H0-reference.json",
+      "scenario_sha256": "d808429326e8c3f70cb90641a95a42a60fdc939e15a70c48f7caeacdbbde6e0c"
+    },
+    {
+      "condition_id": "C27",
+      "configuration_id": "A9-H0-fine",
+      "generated_case_sha256": "c00eab2d30486ff2bb9479fe82bdd6c1f3d664ada909a33cbbefceabf2b2d675",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "A9",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A9-H0-fine.json",
+      "scenario_sha256": "88035a8dc1436d7f207a3e042cfff89ab0a2e2fa43de408f7c37fee194c20736"
+    },
+    {
+      "condition_id": "C27",
+      "configuration_id": "A9-H1-reference",
+      "generated_case_sha256": "5e0528fc5bd173a71992bb9e9d1419f8747aa8fca8fac86fb1845b8b9fe31892",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "A9",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A9-H1-reference.json",
+      "scenario_sha256": "95347608b625f14a88e90837434bdb29ac88330360df951355a90c9898239e09"
+    },
+    {
+      "condition_id": "C27",
+      "configuration_id": "A9-H1-fine",
+      "generated_case_sha256": "43832748a45d9f4e757451b772051cd440b693765e3713ee0f4db31968956e45",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "A9",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/A9-H1-fine.json",
+      "scenario_sha256": "41bb0c2d8cb5bea481e091202b3396c69c794fa0a4d4a74fcdf7eb5891d1c4af"
+    },
+    {
+      "condition_id": "C18",
+      "configuration_id": "R1-H0-reference",
+      "generated_case_sha256": "ec90851c034178e9ce64790cd0dca5e09e930260b7644c4a0e44f86b338238bb",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R1",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R1-H0-reference.json",
+      "scenario_sha256": "caf3f1fe346dab36c94b177a618956cef09477f6a95d46d2155861c843367151"
+    },
+    {
+      "condition_id": "C18",
+      "configuration_id": "R1-H0-fine",
+      "generated_case_sha256": "0c406888daa4e1c45f9e5e4f0b4b3656dae9bb6531434f077dfb5fd60bc54370",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R1",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R1-H0-fine.json",
+      "scenario_sha256": "8eeae17a261c13c51617a64bd0395ddd80227218332f4b6cd5b09573ea474a71"
+    },
+    {
+      "condition_id": "C18",
+      "configuration_id": "R1-H1-reference",
+      "generated_case_sha256": "f2f237435ef443469340d528aa03654c9fd0440e2679ca00320c7d50b4facc23",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R1",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R1-H1-reference.json",
+      "scenario_sha256": "6ef49f438ef6f8a7977b325e1e250a166d59091e0275c2dacf0b3b28390fc3e5"
+    },
+    {
+      "condition_id": "C18",
+      "configuration_id": "R1-H1-fine",
+      "generated_case_sha256": "2448ec40323f802792d8914456de8d2b7cc8a2f50537674ca245acbef52d66d2",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R1",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R1-H1-fine.json",
+      "scenario_sha256": "b1cb14ba79fef5fe98cacd033cd9dc0dfebbadee09cb496b3f10efb9a40050d5"
+    },
+    {
+      "condition_id": "C23",
+      "configuration_id": "R10-H0-reference",
+      "generated_case_sha256": "cbb1d85f41a0b0923a7753559f560c2082b6a51d80c5f3b02d175976b6e65cb9",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R10",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R10-H0-reference.json",
+      "scenario_sha256": "f711576db0a1cabe315e054016529f5762ca157b0d255b644b115f3beba8c75c"
+    },
+    {
+      "condition_id": "C23",
+      "configuration_id": "R10-H0-fine",
+      "generated_case_sha256": "11225e08868873a4ffeb5ce3ad3973529316eea1b26a5446f64dd0b4d95b0d19",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R10",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R10-H0-fine.json",
+      "scenario_sha256": "9723e7512a26dcd08e1b453b16c9e45b9be8fa5ee86b7a8d42398cb1f2a81fe4"
+    },
+    {
+      "condition_id": "C23",
+      "configuration_id": "R10-H1-reference",
+      "generated_case_sha256": "a317153581b83cdffea045cdfe7dadeb5bcc2619449eb372f29cfd1853784996",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R10",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R10-H1-reference.json",
+      "scenario_sha256": "3d90f5d8072812845bfcccb29e562b2e89b9926f80db75bb1b74fd513c67c32c"
+    },
+    {
+      "condition_id": "C23",
+      "configuration_id": "R10-H1-fine",
+      "generated_case_sha256": "d62cbadf9ca7044fc441ca15a178b6dfc309d78c56d3ed8ef48849d4057415fa",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R10",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R10-H1-fine.json",
+      "scenario_sha256": "754e93d82fffb9c871e51de25ff74c430be53be8a63738f44b729475efa5e48e"
+    },
+    {
+      "condition_id": "C12",
+      "configuration_id": "R11-H0-reference",
+      "generated_case_sha256": "8d948ce66d13210ba8656b97c8ff5adaafa721c61341192194525bd3d4e6f524",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R11",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R11-H0-reference.json",
+      "scenario_sha256": "0e494f1d0a4f17d20e4f95c0d51ccdca66ef789c1c8e9ee6d048ef018d694315"
+    },
+    {
+      "condition_id": "C12",
+      "configuration_id": "R11-H0-fine",
+      "generated_case_sha256": "45ae73229f7ae4b412f9a1c208364302017ad16c43eb850e2a8360201bf4d2c9",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R11",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R11-H0-fine.json",
+      "scenario_sha256": "302a7786b04225ae3a6eabebaa040e9eb7766e5018f3c1b9121aeef7a88f3070"
+    },
+    {
+      "condition_id": "C12",
+      "configuration_id": "R11-H1-reference",
+      "generated_case_sha256": "518c5e9a4c48670279b45f71c98ec0ff909e5383aaa5f2d6564f2a1fa001b1c5",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R11",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R11-H1-reference.json",
+      "scenario_sha256": "9a3c3cc4e65f487e5a5c1325008e3c06c314e602d5cba9a0e7f04b6ff7487210"
+    },
+    {
+      "condition_id": "C12",
+      "configuration_id": "R11-H1-fine",
+      "generated_case_sha256": "fb1fea2a26a5d415a734e0273cf6b901243279e8407edac41d220093265ecaaf",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R11",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R11-H1-fine.json",
+      "scenario_sha256": "8ec0525b322944e30d4cf09e01a0ff9556822b47312bf2683db23861fd5bf968"
+    },
+    {
+      "condition_id": "C16",
+      "configuration_id": "R12-H0-reference",
+      "generated_case_sha256": "2a5936f57693449a1069875f0b03bc5eb1121256ddd2d1563313761cf244be1a",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R12",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R12-H0-reference.json",
+      "scenario_sha256": "484be9b1b62dfd7f49ec1c88ab147b604e85b4b9b28af6dc464e001ad65c1111"
+    },
+    {
+      "condition_id": "C16",
+      "configuration_id": "R12-H0-fine",
+      "generated_case_sha256": "58fb363ca8f6966a08c7827b0e649b85b0a94f24fcd518555a8648c6a9b35536",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R12",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R12-H0-fine.json",
+      "scenario_sha256": "8c22e4191604daf3dfdd155f62edc477d65412a5e42353f98850a4d7932e8515"
+    },
+    {
+      "condition_id": "C16",
+      "configuration_id": "R12-H1-reference",
+      "generated_case_sha256": "d230c856b40431e9d18879d873bef32dcf93ff97ff71027559fcdb8e0f69587b",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R12",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R12-H1-reference.json",
+      "scenario_sha256": "34b312e1982faccb1d3971746a26b5f4057e7e02f2c50d032a8334a5e8d15f9c"
+    },
+    {
+      "condition_id": "C16",
+      "configuration_id": "R12-H1-fine",
+      "generated_case_sha256": "28b638296a3fa50d28e0ea9bccd1cf5b72ba389a7aeacfa43b28e69efd49efdf",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R12",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R12-H1-fine.json",
+      "scenario_sha256": "24a1489c0a72b5f7349626d8cfed5c6dd9923d2ff9bb94159273cc2d7066f779"
+    },
+    {
+      "condition_id": "C19",
+      "configuration_id": "R13-H0-reference",
+      "generated_case_sha256": "b9746aa4a53eb0c93438e08b7818504f329c98a754505f86144dac254381b4bc",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R13",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R13-H0-reference.json",
+      "scenario_sha256": "36f0e10cfa66560b45f6de80d2d40b4488c72b1b50e9b761e3cabe2f2941021b"
+    },
+    {
+      "condition_id": "C19",
+      "configuration_id": "R13-H0-fine",
+      "generated_case_sha256": "b1aa22d76dbf44e6d9b4268522ae846efef7f09515ed7b5cfcde75279293814a",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R13",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R13-H0-fine.json",
+      "scenario_sha256": "79e5de483d07c15eb6ae83e6d0cc5eacf07cb77af71101c0c1a066d931f200c5"
+    },
+    {
+      "condition_id": "C19",
+      "configuration_id": "R13-H1-reference",
+      "generated_case_sha256": "07bf94db1e59a099b085fbca3946daf4b048ed4a1cead26bf99cd392987c7630",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R13",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R13-H1-reference.json",
+      "scenario_sha256": "4f61b1d39594446ec403bfb6cbe8f58fa3d537bde45f2a32450801ded68d4278"
+    },
+    {
+      "condition_id": "C19",
+      "configuration_id": "R13-H1-fine",
+      "generated_case_sha256": "ee2f1cf95a256ea031b6c27bf339d6d14e8890b868714f1a7cb675a0c71a3c4f",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R13",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R13-H1-fine.json",
+      "scenario_sha256": "fd2d5a4db99552d2b6a1ec8ecf1cc0d9bef56ab447b324853210c6844220f76b"
+    },
+    {
+      "condition_id": "C13",
+      "configuration_id": "R14-H0-reference",
+      "generated_case_sha256": "125f8a56ecbe9b662d8efd38c459625ffb59ca4a54ff6f487701c39c1cedede1",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R14",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R14-H0-reference.json",
+      "scenario_sha256": "bad4debaf3f05f8d0c1f4a0de8b2de897130826433d9af57ac59a7e60d57279b"
+    },
+    {
+      "condition_id": "C13",
+      "configuration_id": "R14-H0-fine",
+      "generated_case_sha256": "c8eb0aff5771205212048f590d65f641f80595b77ad2f182038379320926cebe",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R14",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R14-H0-fine.json",
+      "scenario_sha256": "e784e3d4fb1a4f0335f9e40507816d61d75d55e2aad7a9ffc70cde4ce9c667ec"
+    },
+    {
+      "condition_id": "C13",
+      "configuration_id": "R14-H1-reference",
+      "generated_case_sha256": "1c85a69a543d2552212f8715808497e87e373ca7bf4be0dbb291b4bb79ef9ce5",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R14",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R14-H1-reference.json",
+      "scenario_sha256": "2e5f15d3a83f1e7f2bd0d60a721a42836df5c7ae5641477fbb64151cefc1a828"
+    },
+    {
+      "condition_id": "C13",
+      "configuration_id": "R14-H1-fine",
+      "generated_case_sha256": "d504c107822dadb1f61c4003bbaeb6daa6b847f18ffc8e23a20f64cfd6068696",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R14",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R14-H1-fine.json",
+      "scenario_sha256": "869b92b38aad11cfa7b285faf258383c9f0d9000f38ab7597b30d7b337845427"
+    },
+    {
+      "condition_id": "C04",
+      "configuration_id": "R15-H0-reference",
+      "generated_case_sha256": "6a6d96465fbe7ae07f9ba2f957ec9c3dedca8ed4616b25f8d0706bdece646aca",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R15",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R15-H0-reference.json",
+      "scenario_sha256": "aa8fc161ec5e50b5570b8f17df7a2a1166caad2ea66f1fc66d3a871921d52a81"
+    },
+    {
+      "condition_id": "C04",
+      "configuration_id": "R15-H0-fine",
+      "generated_case_sha256": "eba85a1ef4f67e471b02b95ffb1bd9615c80aa546de12e476de124f8f24a6ec2",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R15",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R15-H0-fine.json",
+      "scenario_sha256": "28af5f7cedf8089f0aed09a9b51875f89be95f2d39940fffa8232567aab4aa59"
+    },
+    {
+      "condition_id": "C04",
+      "configuration_id": "R15-H1-reference",
+      "generated_case_sha256": "ca1d0b471f414dd0d0e6cc820350f60950217f353015b213c5dfe29735b523ff",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R15",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R15-H1-reference.json",
+      "scenario_sha256": "10bb9bec8f83da4c76799e29a5824a6711ace46f4a5f129cb290c61a9ece426c"
+    },
+    {
+      "condition_id": "C04",
+      "configuration_id": "R15-H1-fine",
+      "generated_case_sha256": "38b6395b3b66c76b21d685852a621854e6dc0a16b41cb4ef4d34f5597227bb2d",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R15",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R15-H1-fine.json",
+      "scenario_sha256": "41d91e9bf880995dbe8b3491132b44e50cbed2d178b04b03a5c0445050045e42"
+    },
+    {
+      "condition_id": "C07",
+      "configuration_id": "R16-H0-reference",
+      "generated_case_sha256": "8e28255cf43025a29c643cd4fb3dbebd2e491b0be3c29fb0ec461685b1b0889f",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R16",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R16-H0-reference.json",
+      "scenario_sha256": "d40aeac901f118fc3509dcc8e9e496b99829bb73dfd03ec95d8558ea666c1ca6"
+    },
+    {
+      "condition_id": "C07",
+      "configuration_id": "R16-H0-fine",
+      "generated_case_sha256": "aa5abe188a4900b55fa3e8a5d41349979af7c84d50546c5bc31064614c43ef8f",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R16",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R16-H0-fine.json",
+      "scenario_sha256": "03d9ce4f206b79fedb645c33b20d857fd57f38175f4aadce09b8c4acbbadf312"
+    },
+    {
+      "condition_id": "C07",
+      "configuration_id": "R16-H1-reference",
+      "generated_case_sha256": "1e2487ff0bb939c5a6d8e3febf8bff2642d941cf1549f32141c21b7a08061ff3",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R16",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R16-H1-reference.json",
+      "scenario_sha256": "cc42f348766bf5e91abaa3dbcc7b0ab694ae57032f32cf6e7f160088f3f2b56f"
+    },
+    {
+      "condition_id": "C07",
+      "configuration_id": "R16-H1-fine",
+      "generated_case_sha256": "3d2283daa9eaf7c54fa69b2510d58ba7c959dda0d56e887b16d43de02b5715a7",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R16",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R16-H1-fine.json",
+      "scenario_sha256": "0608a6504f603d3df7b8435ff7fecedbfa323a99933859bb24890273af37f7b6"
+    },
+    {
+      "condition_id": "C01",
+      "configuration_id": "R17-H0-reference",
+      "generated_case_sha256": "52124999cc016cd9eb976d256524e7850ec510e9a2333cf4b194727d5ecf0dd8",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R17",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R17-H0-reference.json",
+      "scenario_sha256": "1e355682bc4ffb2cdd27313ff5d268cae3a3d372d8ece8bb4bb2d8eef57293c0"
+    },
+    {
+      "condition_id": "C01",
+      "configuration_id": "R17-H0-fine",
+      "generated_case_sha256": "4038a9c46326e4424855b6a45ca537bda8817fd4d19d86e6360eaa7f79b0ae12",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R17",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R17-H0-fine.json",
+      "scenario_sha256": "df1eaacb53f514bc9b48e05699b349c9df2790d7a8fb0cc50d4f5a854101c62b"
+    },
+    {
+      "condition_id": "C01",
+      "configuration_id": "R17-H1-reference",
+      "generated_case_sha256": "1cea4656532c7a9f9f7eab0a00422e749e3df48b681c44e58a3df6eec7c05cef",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R17",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R17-H1-reference.json",
+      "scenario_sha256": "5537810feadc23337ae0f139db342666cc746302f5d052f52e010c4c5a8e67ca"
+    },
+    {
+      "condition_id": "C01",
+      "configuration_id": "R17-H1-fine",
+      "generated_case_sha256": "80bff8066bce5bc979832d377dc623a53ded39aa1b1753e364c77736881b3612",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R17",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R17-H1-fine.json",
+      "scenario_sha256": "02c45d5fdc7e1e851e1c04f50ee31e01e408cb0e78e3f26f578a138b9f9caa37"
+    },
+    {
+      "condition_id": "C28",
+      "configuration_id": "R18-H0-reference",
+      "generated_case_sha256": "6bdaf26f6ff574a0aa3d2e87fea79f8bf6f2686474405b8e9ebff6b5cdac04d1",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R18",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R18-H0-reference.json",
+      "scenario_sha256": "0785a8c1bbbac244109d57c3bfdf9b043547632a156f2c6e672a3440fbc991de"
+    },
+    {
+      "condition_id": "C28",
+      "configuration_id": "R18-H0-fine",
+      "generated_case_sha256": "773ef9db4e1dd11ce233873e3ab10dc4857c210321fcebaa76479e1c7ccd202e",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R18",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R18-H0-fine.json",
+      "scenario_sha256": "af38d970ad37e89c070eb6ba009f7cd2f97ef59699da18327ba4cc4a93cb7aa9"
+    },
+    {
+      "condition_id": "C28",
+      "configuration_id": "R18-H1-reference",
+      "generated_case_sha256": "4d701d5d1d0f467305b167c2fb02e4d43e5317608a367f4cc69fa78218eaac73",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R18",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R18-H1-reference.json",
+      "scenario_sha256": "f820006293d393a81cf22a824015fc10a02a9b6c426416389220b7a81a58ab2e"
+    },
+    {
+      "condition_id": "C28",
+      "configuration_id": "R18-H1-fine",
+      "generated_case_sha256": "03d66a9b783b019c079363f7638b77517fb141c69dacb395b0ee6d0574b467ac",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R18",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R18-H1-fine.json",
+      "scenario_sha256": "f3490644358863103173443e2d9e4cbbc768dd84ad891da8fb920af1c277c95f"
+    },
+    {
+      "condition_id": "C31",
+      "configuration_id": "R19-H0-reference",
+      "generated_case_sha256": "0f7f406cb9953ddef7de4a7aade748cb47f85b61cb896a73379dd506191bc923",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R19",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R19-H0-reference.json",
+      "scenario_sha256": "dcca1f7ddc06c61d96530ab04a87ce9bda82e7e02eb16f64777757dec8409cec"
+    },
+    {
+      "condition_id": "C31",
+      "configuration_id": "R19-H0-fine",
+      "generated_case_sha256": "df12c6f69b2a743a765e76ea97932f987f181b3540b0453caee267ab766a6203",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R19",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R19-H0-fine.json",
+      "scenario_sha256": "67dda4c853e2fa716553622eb1cdbe5b9ca7aaa324c5f0344e8fcd773c6dea18"
+    },
+    {
+      "condition_id": "C31",
+      "configuration_id": "R19-H1-reference",
+      "generated_case_sha256": "594bb91f504ce0f869010728f0cf912722e8841b3fc34bbd1fb1b91f0aa00e0a",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R19",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R19-H1-reference.json",
+      "scenario_sha256": "7ba0351110b6064d149195a231df404842cec55ade4ca2a00bc0c5fdc3cb2722"
+    },
+    {
+      "condition_id": "C31",
+      "configuration_id": "R19-H1-fine",
+      "generated_case_sha256": "517ecfd96252cba778552a1acc982cc38cc85aa681df7275d919dd100b116416",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R19",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R19-H1-fine.json",
+      "scenario_sha256": "ecbdfd6a01bee02a4074ec1f138a5d01b23645e99c4f579aa2fd95941e9e6c84"
+    },
+    {
+      "condition_id": "C21",
+      "configuration_id": "R2-H0-reference",
+      "generated_case_sha256": "c3baa57d62791a310b1597f01e21da497ba4e266d6c7d58d4121904c5ff3bc5a",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R2",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R2-H0-reference.json",
+      "scenario_sha256": "95b5adee9fd6976b29783a1f4d23668f4c2b81490a8b24070525f7fb7d5f4f3a"
+    },
+    {
+      "condition_id": "C21",
+      "configuration_id": "R2-H0-fine",
+      "generated_case_sha256": "e82127a3fb2cb08910719831b52430b0d71de4e922bdaa3288a837034b79a07f",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R2",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R2-H0-fine.json",
+      "scenario_sha256": "2958f6fa7a45c0e00782e782cd5d66faaf02bf3f760ae94588b386ade25c85dc"
+    },
+    {
+      "condition_id": "C21",
+      "configuration_id": "R2-H1-reference",
+      "generated_case_sha256": "f1bda1ceb40a9a923d534f2995f0dad74322f224acbf34109a29fcfe611b1332",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R2",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R2-H1-reference.json",
+      "scenario_sha256": "8b56745a2133a284987f7829858b67a942db578970056966365ad45332e64cd4"
+    },
+    {
+      "condition_id": "C21",
+      "configuration_id": "R2-H1-fine",
+      "generated_case_sha256": "387d44ee52e68a51b5522526cd41e67960b220426e3c80ab42991fce6bfde1f7",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R2",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R2-H1-fine.json",
+      "scenario_sha256": "2767d9fa0084b2d241e7a03b6fa7d532db7882efa855de84508464da7c26604e"
+    },
+    {
+      "condition_id": "C25",
+      "configuration_id": "R20-H0-reference",
+      "generated_case_sha256": "0e0d3a45565094ca260fb4ca002c4140814726cf7cecfe00d189318030492981",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R20",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R20-H0-reference.json",
+      "scenario_sha256": "3ebdbdd157e2ab709f72135e993ecf6346aa8751e06dae8ea8997b8db4f2e254"
+    },
+    {
+      "condition_id": "C25",
+      "configuration_id": "R20-H0-fine",
+      "generated_case_sha256": "1bab28beb4a02b93d32f5fdba336318d34160d31788ed49eda6238a5578b5e42",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R20",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R20-H0-fine.json",
+      "scenario_sha256": "c59f646954c83d445eb9dbc977e0a4ddd0cab9ca8a9b996e1dd16d3ccd346cbe"
+    },
+    {
+      "condition_id": "C25",
+      "configuration_id": "R20-H1-reference",
+      "generated_case_sha256": "56557aec61ba1c060af9a69498ad06e08b82861917a9c01e13a60dc5ea3478e7",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R20",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R20-H1-reference.json",
+      "scenario_sha256": "65e10002f813ff88860cd35b64c3a42d89c66f7698382f4a1afb1ccc1c891ab3"
+    },
+    {
+      "condition_id": "C25",
+      "configuration_id": "R20-H1-fine",
+      "generated_case_sha256": "11c64f3a3b523d97579a55813a4500f971a94919061db13a7a05032e3ed65fc2",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R20",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R20-H1-fine.json",
+      "scenario_sha256": "9b5a8a01763253886440f50d7eca3b68077051a9aba1ef804e40aebaed3beef7"
+    },
+    {
+      "condition_id": "C24",
+      "configuration_id": "R21-H0-reference",
+      "generated_case_sha256": "d8be1f35945d7a0b8e3c60b1a8e5fffab1afe781894c6809f2d3f4b1f6354921",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R21",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R21-H0-reference.json",
+      "scenario_sha256": "72411646a78f020f08ff7c70847bb3c0963781ed907cef1cd8d180bf6c005570"
+    },
+    {
+      "condition_id": "C24",
+      "configuration_id": "R21-H0-fine",
+      "generated_case_sha256": "1edb8a6b38a20b64041f61953be786013ea042d9cb6891a09d9977ffd9b887b2",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R21",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R21-H0-fine.json",
+      "scenario_sha256": "36ea66708ea156f5e30f7100753c09125c88a34340889635f65c731e1a8a44b3"
+    },
+    {
+      "condition_id": "C24",
+      "configuration_id": "R21-H1-reference",
+      "generated_case_sha256": "932ac07bd9bc9a1d0104f6b3e2ba4c28387fc5b0f6ded4e21971b9c828f3bbe5",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R21",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R21-H1-reference.json",
+      "scenario_sha256": "1ec785f30745048792ca0753213fbc32376c2b70ed62fab8ac4dc06b304a079f"
+    },
+    {
+      "condition_id": "C24",
+      "configuration_id": "R21-H1-fine",
+      "generated_case_sha256": "54f5f57a69138a2ef3b3af1bde87b9092f18e67ac18869b011c30dd0288a8604",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R21",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R21-H1-fine.json",
+      "scenario_sha256": "e0cecc66f53ef1ab6572960e8b996a89ab9f0086a484caf54d2c421b422842a1"
+    },
+    {
+      "condition_id": "C10",
+      "configuration_id": "R22-H0-reference",
+      "generated_case_sha256": "74363f1bb25528a5425667dc3f9529b408b91c4c3c1c5556f830c5fd0115df99",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R22",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R22-H0-reference.json",
+      "scenario_sha256": "bb99539186d4c468c1c46ea7ad5bdbc65d2ce29977d2c1fb0c63095a2d9750ba"
+    },
+    {
+      "condition_id": "C10",
+      "configuration_id": "R22-H0-fine",
+      "generated_case_sha256": "95d9be059038a736deabb183f4e15a64117f10a402bec8b529a5dda69abf808a",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R22",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R22-H0-fine.json",
+      "scenario_sha256": "809db782ec8d73607c253854efb6d3ef9bb29fcf232a909e37db2d065ea3f3ad"
+    },
+    {
+      "condition_id": "C10",
+      "configuration_id": "R22-H1-reference",
+      "generated_case_sha256": "4627ac0cd06f36c5f4bc67d66351f300fafc3b7ac8a0d6ddb7f91df4f53678fc",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R22",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R22-H1-reference.json",
+      "scenario_sha256": "7180864045aea347b8336bd36fd960a061537fdcfd6008d57f091ee21f02c396"
+    },
+    {
+      "condition_id": "C10",
+      "configuration_id": "R22-H1-fine",
+      "generated_case_sha256": "694d66b04176132989a38c5bcb5607b670c1e23c609b7107c6448f7b08117386",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R22",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R22-H1-fine.json",
+      "scenario_sha256": "82db2196300c93b3f8b75bd8894ad36c92433cae9099d3083205c33756b9c245"
+    },
+    {
+      "condition_id": "C17",
+      "configuration_id": "R23-H0-reference",
+      "generated_case_sha256": "079ea95c34a108c0e630eeba02010e384bbb4ed4124a3b9acb19b1b1401515e3",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R23",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R23-H0-reference.json",
+      "scenario_sha256": "d97c59957146df15732ae23816bba9f409c29f729309adb9d551e50d77798c89"
+    },
+    {
+      "condition_id": "C17",
+      "configuration_id": "R23-H0-fine",
+      "generated_case_sha256": "1885e615afeef44dcffc1fdc3c118285fcc99bb34e5260e94b1ea35f1a88bf5a",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R23",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R23-H0-fine.json",
+      "scenario_sha256": "a9ada6b9a6571dfda75b9354abcba938afa1bcacae13268bd18ec23b1cdd3a88"
+    },
+    {
+      "condition_id": "C17",
+      "configuration_id": "R23-H1-reference",
+      "generated_case_sha256": "e108c3f4b7aa3e135850dc02287df6b069be890636efc3ebfdd44451cfe16350",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R23",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R23-H1-reference.json",
+      "scenario_sha256": "b03e182fbc625d8ad933bcd807d18ff43f6cdea6ff9dcae8e345ad627a913cb6"
+    },
+    {
+      "condition_id": "C17",
+      "configuration_id": "R23-H1-fine",
+      "generated_case_sha256": "8c30ec3d12d31a72519ace9a828d3ae56c4a39982dd26325aeb564bd60f8824b",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R23",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R23-H1-fine.json",
+      "scenario_sha256": "76b08a34457fcdcf096a673c76beb2cf86b61d50fc7bc886c3078aff6fb77cde"
+    },
+    {
+      "condition_id": "C20",
+      "configuration_id": "R24-H0-reference",
+      "generated_case_sha256": "71135cb2adedab11606836dbdac44c8fcded15d445d927c04625488533c18829",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R24",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R24-H0-reference.json",
+      "scenario_sha256": "22a5caae0dcafa502042c7b016515f4005b7efbd5ef07f61606e9802df611d47"
+    },
+    {
+      "condition_id": "C20",
+      "configuration_id": "R24-H0-fine",
+      "generated_case_sha256": "4b396489fe169cc4d4922e867ddd69d4d357511a7530ca111be539ba2c294516",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R24",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R24-H0-fine.json",
+      "scenario_sha256": "563eea8df6ed102a792bb4809400154833f8b683c9711727202e060c138d16e9"
+    },
+    {
+      "condition_id": "C20",
+      "configuration_id": "R24-H1-reference",
+      "generated_case_sha256": "61a6c900b27105282980284570ea11538b8912c4ab8a5fa0e286bca068e29263",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R24",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R24-H1-reference.json",
+      "scenario_sha256": "5dd76cc0371de9319c5394dcc8d18be5b37bf41e30e7b3b0932370f0519ac23a"
+    },
+    {
+      "condition_id": "C20",
+      "configuration_id": "R24-H1-fine",
+      "generated_case_sha256": "ab58a24fac6f39a59925c640404b279a9cc4e510afc1437304d5d053b273e6d0",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R24",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R24-H1-fine.json",
+      "scenario_sha256": "cfbe170c76525333208aefa3c260f2e92fc5fc1c64ea06b0da4c47ccaaeb253c"
+    },
+    {
+      "condition_id": "C14",
+      "configuration_id": "R25-H0-reference",
+      "generated_case_sha256": "5c3244df64b7c5dd1beb227b14ae062d5f622c01d17b1134f2c2e5bf20a6b26d",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R25",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R25-H0-reference.json",
+      "scenario_sha256": "9996786d47dffbdd908fd5acc71e24a7bb4154c567e7b198c597f79a7d811f87"
+    },
+    {
+      "condition_id": "C14",
+      "configuration_id": "R25-H0-fine",
+      "generated_case_sha256": "9b0442f384a0f04c93efa777cdb1ff313ad4d8bebd0f4e199de8e460ba783013",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R25",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R25-H0-fine.json",
+      "scenario_sha256": "c63a93d4a62d566d469424dfa21a24184be5c1c1d5f8f04d5f47feab7da9cd40"
+    },
+    {
+      "condition_id": "C14",
+      "configuration_id": "R25-H1-reference",
+      "generated_case_sha256": "6ea6b992c8f529d37f450029bdd0649de2bc030980fc2b94dbcc000cac009010",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R25",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R25-H1-reference.json",
+      "scenario_sha256": "a1241ffb0a4ebb94049cd33d0bc53f2cf2f85c54ca4fc48d3d640c4faec7eded"
+    },
+    {
+      "condition_id": "C14",
+      "configuration_id": "R25-H1-fine",
+      "generated_case_sha256": "193d4957c687498c369e5484470b5b8b32c540c171831e4f1fce00c8cdfcb5dd",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R25",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R25-H1-fine.json",
+      "scenario_sha256": "c6faf8b184fc83ebf17c34b31604633d1643a658881a2040986daa05fe19711c"
+    },
+    {
+      "condition_id": "C05",
+      "configuration_id": "R26-H0-reference",
+      "generated_case_sha256": "8b7466d0d64034463424c63a2eb89ba67f08f92cb169827ab46af37340a1030a",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R26",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R26-H0-reference.json",
+      "scenario_sha256": "d9d8620e8a14906508ab33c1750fddb456a49b272b54c3da4500ee41890f638a"
+    },
+    {
+      "condition_id": "C05",
+      "configuration_id": "R26-H0-fine",
+      "generated_case_sha256": "90660e729265e2c66c0fda13ad89d27a89fb957f318bc0f478b33b987d4655c3",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R26",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R26-H0-fine.json",
+      "scenario_sha256": "bb640daa5c3f987bf35e6b0caa2e294b1162acdfe13b3f15c45b869b242a0c02"
+    },
+    {
+      "condition_id": "C05",
+      "configuration_id": "R26-H1-reference",
+      "generated_case_sha256": "336bbdd9b50b8cfe2f777ed983cd417f25b0a409a2eeab932fdedbcd0f9ed154",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R26",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R26-H1-reference.json",
+      "scenario_sha256": "af8621896e03f6630d2d94356f265ffa42c2e6413ba057e3162ab62a308d482b"
+    },
+    {
+      "condition_id": "C05",
+      "configuration_id": "R26-H1-fine",
+      "generated_case_sha256": "e9abf2845dad4e4eba10feb20d610b4b79eff7068849a7b4e44c41a0d2bef1db",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R26",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R26-H1-fine.json",
+      "scenario_sha256": "112ab642eb1ea73705cf4cd99b68fdc092269f77e8051ca0e1d6a20410214d39"
+    },
+    {
+      "condition_id": "C08",
+      "configuration_id": "R27-H0-reference",
+      "generated_case_sha256": "6efd2c87052b29e1ca9282198eb19c51908e8635d92452848839ff0cde43bc48",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R27",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R27-H0-reference.json",
+      "scenario_sha256": "94156cc566e5d0dc01ab68091b32ad2bffc3f996961bef398095e950c2571c0e"
+    },
+    {
+      "condition_id": "C08",
+      "configuration_id": "R27-H0-fine",
+      "generated_case_sha256": "fa24eebcc4d3ea63a8b8b104f81a7c43cac85c5497c07373f57c42d602f0127b",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R27",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R27-H0-fine.json",
+      "scenario_sha256": "bdf4739164d0c3d4cf15cdb1557d13da2267247e4966f0b30b82f8744380324a"
+    },
+    {
+      "condition_id": "C08",
+      "configuration_id": "R27-H1-reference",
+      "generated_case_sha256": "f6ba4d467ac448ab4dc7b4a89c3d9afb00760d78b25c8b1e929ae5d2fa7f676a",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R27",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R27-H1-reference.json",
+      "scenario_sha256": "161b246d432dc20366d723b507108d88c93ab7705e3cfbea15c8bd2e38095431"
+    },
+    {
+      "condition_id": "C08",
+      "configuration_id": "R27-H1-fine",
+      "generated_case_sha256": "e26acb807043beb461b2e9b80aad0cc10b2b98a00c621e1b7626905b5a7d54d6",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R27",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R27-H1-fine.json",
+      "scenario_sha256": "58c40284e83ec176685902a62fde231472d78707ac1cc810e84e7a6d55bab503"
+    },
+    {
+      "condition_id": "C02",
+      "configuration_id": "R28-H0-reference",
+      "generated_case_sha256": "330b15ebc1cbfdc1328f4904ac38d776d0f7605c3595d710a62f167390de7441",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R28",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R28-H0-reference.json",
+      "scenario_sha256": "06924ed9ad9951cc2e68441ae33b4a99f1811ddec93253114626b2f2bc151370"
+    },
+    {
+      "condition_id": "C02",
+      "configuration_id": "R28-H0-fine",
+      "generated_case_sha256": "2dcd23f66bb0130e990d72a76c6abc2178df8b898e952138b4641e5945ac1d9a",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R28",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R28-H0-fine.json",
+      "scenario_sha256": "a350a4c5c884d7be0ede0d14ecb759767dc635268cc742cb6084584964d58985"
+    },
+    {
+      "condition_id": "C02",
+      "configuration_id": "R28-H1-reference",
+      "generated_case_sha256": "a66b7487aa73e34bbefb6c9f97bbb70ee74ba4368f37bb9a5a3ce9532801e70c",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R28",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R28-H1-reference.json",
+      "scenario_sha256": "b9b8f5e8cd0e83b5aadab0641f3bbdde57e0dd8425efad544b0e70fc8e933de1"
+    },
+    {
+      "condition_id": "C02",
+      "configuration_id": "R28-H1-fine",
+      "generated_case_sha256": "ee3cd6c531fbffbd42015687bc09dc2675713370ac7b477c1e46576674fa43e0",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R28",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R28-H1-fine.json",
+      "scenario_sha256": "2aa587bb5409c1dad0e77bc4d0317677d1673eed66775d4097349e391f1c8a85"
+    },
+    {
+      "condition_id": "C26",
+      "configuration_id": "R29-H0-reference",
+      "generated_case_sha256": "ccf0c291d216939fe038ecc9e5465e4a0a2f2ce28d9877a52ba6973605bddc69",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R29",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R29-H0-reference.json",
+      "scenario_sha256": "2cedd9adfded71b8642cc7d8c0249c454fc169eca85308ac1f8c9c8c5b9434cb"
+    },
+    {
+      "condition_id": "C26",
+      "configuration_id": "R29-H0-fine",
+      "generated_case_sha256": "c784592cced5b1c1845e151212776bb08fdda7bae7b85f650ee2cc67e6588d19",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R29",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R29-H0-fine.json",
+      "scenario_sha256": "c46d59fb11d2196dbe09a1870f9fc064fbeb4000e21f677360b45b567ef436a3"
+    },
+    {
+      "condition_id": "C26",
+      "configuration_id": "R29-H1-reference",
+      "generated_case_sha256": "b7ce598b193bcd73054c7475f080352142531570b82d2588f491a00b1f7d78b2",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R29",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R29-H1-reference.json",
+      "scenario_sha256": "1ed5611400a2ba54186076554d7e51bf439de85b8c23fa8c761ff8aac7c3d3fb"
+    },
+    {
+      "condition_id": "C26",
+      "configuration_id": "R29-H1-fine",
+      "generated_case_sha256": "e583c5e182142ef81876f714bd18a07b95e2192e35daa385e86e418aab55ac20",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R29",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R29-H1-fine.json",
+      "scenario_sha256": "d00b86383cbe05fc7b7bb5b6fd3f83c2ddca4fa2757dbcb2b3ea644ad507cf40"
+    },
+    {
+      "condition_id": "C15",
+      "configuration_id": "R3-H0-reference",
+      "generated_case_sha256": "f9b419f2bdb9273ed23f3388dbffb772513c4d4b2a6cb34be3dd42a6644b2dc7",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R3",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R3-H0-reference.json",
+      "scenario_sha256": "69f4d1de61b39b2410af897ff33a31d6cc4f8b507085813f6ba8439311f5da9a"
+    },
+    {
+      "condition_id": "C15",
+      "configuration_id": "R3-H0-fine",
+      "generated_case_sha256": "fab317213882f33bf36ba5595fe3c4bd29a23a18153483aa7f669c02c6ed7ca3",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R3",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R3-H0-fine.json",
+      "scenario_sha256": "521d75c183bf2308077786ca16faebdb7ab7dae9e4980bab300be1e8b49070fe"
+    },
+    {
+      "condition_id": "C15",
+      "configuration_id": "R3-H1-reference",
+      "generated_case_sha256": "5e9bdccf6fffed4e35213a1a9854a5906399c014e2a3090d2c7cedfd65580e03",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R3",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R3-H1-reference.json",
+      "scenario_sha256": "e53546bf1755a592a86d4198c356ae84be1321652f52a4ca633415a6407c51e6"
+    },
+    {
+      "condition_id": "C15",
+      "configuration_id": "R3-H1-fine",
+      "generated_case_sha256": "048184a45dd055df5c161aef08e4811707578a53b694aa5331deea1d87895179",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R3",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R3-H1-fine.json",
+      "scenario_sha256": "f73dcd74fb91ab08b7e9bc4ce1b3824fa43d2891231817c0fa254e28d2cd3c3e"
+    },
+    {
+      "condition_id": "C29",
+      "configuration_id": "R30-H0-reference",
+      "generated_case_sha256": "82c86f360e0507f00690dbfaed3562c4f4e2fcc0df5c7a017540399207325485",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R30",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R30-H0-reference.json",
+      "scenario_sha256": "797632ca85eab8183cba79477012edc1af7434738d203b1c5b888099b97ff38e"
+    },
+    {
+      "condition_id": "C29",
+      "configuration_id": "R30-H0-fine",
+      "generated_case_sha256": "347281bfe0c42422bb259584d4d1ab2b21c987b962459f06c1c89b8e721c4c87",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R30",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R30-H0-fine.json",
+      "scenario_sha256": "3dadf13ab31e3007d76b577003fc772e167ecd473dda535b42bf55d1f78b1ccd"
+    },
+    {
+      "condition_id": "C29",
+      "configuration_id": "R30-H1-reference",
+      "generated_case_sha256": "595a474d794f3a567fed3b2537efd77d9a2fd4410d8b29af3bbbe9e30d3a7a60",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R30",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R30-H1-reference.json",
+      "scenario_sha256": "8d74be00e09af607d2965b88ef5f890f9405368c1f50e20018f6e9458fc76257"
+    },
+    {
+      "condition_id": "C29",
+      "configuration_id": "R30-H1-fine",
+      "generated_case_sha256": "7e9db5299db9160018813e68cb685e0f6efbdef0bac8f63d2b73b84ff86c8144",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R30",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R30-H1-fine.json",
+      "scenario_sha256": "3dfcdcf9bfd3a019282faf31a95178217490957b8e6265902adde67e63b5f2fc"
+    },
+    {
+      "condition_id": "C32",
+      "configuration_id": "R31-H0-reference",
+      "generated_case_sha256": "7ed7c89b137871cbe0f075161524538c7b46c6cadce5c6c85323b7ee2c22b995",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R31",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R31-H0-reference.json",
+      "scenario_sha256": "9bf7eaa5837c4d5646b1fc7bed6c1725c19c3bb99ba977f78938c5ed8dc5832c"
+    },
+    {
+      "condition_id": "C32",
+      "configuration_id": "R31-H0-fine",
+      "generated_case_sha256": "cc5998ac9e23644864eecbf4a41d9a54816faca397d184b05d5db0c9d6f64f12",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R31",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R31-H0-fine.json",
+      "scenario_sha256": "a1051776b14985db20dbaa0aa0411933c7ac23ef0baaefed60859d9264cfbf88"
+    },
+    {
+      "condition_id": "C32",
+      "configuration_id": "R31-H1-reference",
+      "generated_case_sha256": "8959f0cc1147cf6f435680fd9d9dc1588e28a784fd566b24b4011ce17a23021d",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R31",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R31-H1-reference.json",
+      "scenario_sha256": "a08cd4828c2904b96995c8deb0cc16c5f8c6e11adbd9186adf6423cca2688c34"
+    },
+    {
+      "condition_id": "C32",
+      "configuration_id": "R31-H1-fine",
+      "generated_case_sha256": "75ac1a40d50c74806422cefa131d0f78ce3ef546533be25df777065f7f8618ae",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R31",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R31-H1-fine.json",
+      "scenario_sha256": "e0e1de65b27faab056bf15889a831c118240c62e6e0c4dad604068487a25a59f"
+    },
+    {
+      "condition_id": "C22",
+      "configuration_id": "R32-H0-reference",
+      "generated_case_sha256": "7fd55f0706d4b9b7f6b694c377c8fd5234f317e1032b10c7c0f544d61ec48cbe",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R32",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R32-H0-reference.json",
+      "scenario_sha256": "0c9798d9c489e8d9abeeee46b8ce5f9d68e9909a33ac7d55d5d08f058050f5bb"
+    },
+    {
+      "condition_id": "C22",
+      "configuration_id": "R32-H0-fine",
+      "generated_case_sha256": "f1e288ecf2c310ea0b16cf4d9fbfaf614fc26752b005b189b49b8c128c717353",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R32",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R32-H0-fine.json",
+      "scenario_sha256": "398351c6e1224d14afc6185c2e7f9fd3ed00684b07761b42aca2177ef022793f"
+    },
+    {
+      "condition_id": "C22",
+      "configuration_id": "R32-H1-reference",
+      "generated_case_sha256": "4d84bd5744e5ce483a010da091d5c3a0d60b75f1165667462f73a7759f0936fb",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R32",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R32-H1-reference.json",
+      "scenario_sha256": "d1289b4fe6196ceb93ba9b8cfa44b98972694caf4c4819d24fb0768bb5a83d1c"
+    },
+    {
+      "condition_id": "C22",
+      "configuration_id": "R32-H1-fine",
+      "generated_case_sha256": "a14efcdef5fed18e8c9b0dff708fac319948b735583cc93db92006825c1e413d",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R32",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R32-H1-fine.json",
+      "scenario_sha256": "c12329393eb2c09a5dc0a04d668b4b7f74fa0bc5324331ea4e86284149f419c2"
+    },
+    {
+      "condition_id": "C11",
+      "configuration_id": "R33-H0-reference",
+      "generated_case_sha256": "9cf188bc4913b4382e36b4e28b5b3c74a07d56c3d35f675f96904d21435f6f27",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R33",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R33-H0-reference.json",
+      "scenario_sha256": "00bfcd9f77e6b3813b38789814ed73c32dc8f9c304f655e44f1610f9e7aaf53b"
+    },
+    {
+      "condition_id": "C11",
+      "configuration_id": "R33-H0-fine",
+      "generated_case_sha256": "3126e8764fa5c35cc2d1069684c7ab93ba7e58ebddb84d5add61f386add738be",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R33",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R33-H0-fine.json",
+      "scenario_sha256": "09b5bd05806699388a2d0611455bdb127952a8c4e4632ba883b6d0fe79693a22"
+    },
+    {
+      "condition_id": "C11",
+      "configuration_id": "R33-H1-reference",
+      "generated_case_sha256": "f62a8676ef890677621ae3f7df14f192ac6de82034286fbdce58eab03864f44f",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R33",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R33-H1-reference.json",
+      "scenario_sha256": "0b1527cfe781beb7ec693ff654b24ea79c45863058d4d8ad7d94525a2a82ef3c"
+    },
+    {
+      "condition_id": "C11",
+      "configuration_id": "R33-H1-fine",
+      "generated_case_sha256": "46dd59c96b8dfeaac5627ac4a093763e5d131e71d0c913f867b257dd41ae0f8e",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R33",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R33-H1-fine.json",
+      "scenario_sha256": "437ce6affbcf87230547987293bb6d950dbd7f330864fa8be21b431ca0bfd44f"
+    },
+    {
+      "condition_id": "C06",
+      "configuration_id": "R4-H0-reference",
+      "generated_case_sha256": "da854779c81a0dcef7e6b4bca3181a654e6f878663c408cbc3be3c8c1b8baeb1",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R4",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R4-H0-reference.json",
+      "scenario_sha256": "8c8667169483abdf19644ab1d8bc0a3f67e44b05ff7c63f734ea6468e5c857e5"
+    },
+    {
+      "condition_id": "C06",
+      "configuration_id": "R4-H0-fine",
+      "generated_case_sha256": "2e5345498afacbe9c8e719d509b73de0f212b8cb802d65208f069990c6ec0c13",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R4",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R4-H0-fine.json",
+      "scenario_sha256": "9e9d8a7a61f03aa9e3119229e397111aa6392298b36fca0d00e4a5c59e06f9fc"
+    },
+    {
+      "condition_id": "C06",
+      "configuration_id": "R4-H1-reference",
+      "generated_case_sha256": "7024c0e3f3ddb5552b2b1f5318e82537986ec66f8b7984b195a956844a2acfc3",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R4",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R4-H1-reference.json",
+      "scenario_sha256": "7b993aca531d1e01edba75a23854f6674d441d2a00b3e5fcc7aaad520cda5af5"
+    },
+    {
+      "condition_id": "C06",
+      "configuration_id": "R4-H1-fine",
+      "generated_case_sha256": "20b19510cd9723368997b15cc13286e54a6fa747a2fc6bd8953224f0af01d309",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R4",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R4-H1-fine.json",
+      "scenario_sha256": "821faae41f0983a00f5f50d07f39a425bd4a8005797883ed7eae0826f47eddad"
+    },
+    {
+      "condition_id": "C09",
+      "configuration_id": "R5-H0-reference",
+      "generated_case_sha256": "ffc8c015a0ab9e97e58f160babe5a4249b9221128126040718c1f44061b7fa41",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R5",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R5-H0-reference.json",
+      "scenario_sha256": "31629955e002ffab5d5251417149c3a99e143e7a310dc24397604c3943e55a20"
+    },
+    {
+      "condition_id": "C09",
+      "configuration_id": "R5-H0-fine",
+      "generated_case_sha256": "758d80c2b0504d88884a8a4fb0c5240924f883864ea8686b763792ae01252503",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R5",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R5-H0-fine.json",
+      "scenario_sha256": "90553a932f2eaa62105200717b497e2923c78ccafc5c2bb8329f3843d0681b47"
+    },
+    {
+      "condition_id": "C09",
+      "configuration_id": "R5-H1-reference",
+      "generated_case_sha256": "4303fdc8f0c21d352b3058384b246d25f246e65a90ed74a785056e3d04d47921",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R5",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R5-H1-reference.json",
+      "scenario_sha256": "dddb5fa445f5b1e19d8f3055671f1d2a837467b3d4ccdd1d361d65fa1fae1ba6"
+    },
+    {
+      "condition_id": "C09",
+      "configuration_id": "R5-H1-fine",
+      "generated_case_sha256": "ec937ecb91b249514665def278f1ae26e12a3b4ed566f549a28c76a998ab5a34",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R5",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R5-H1-fine.json",
+      "scenario_sha256": "119ccf31aab1692b473d14b61a606376aeaa9f1825e86786d2fc3b1719d7aadf"
+    },
+    {
+      "condition_id": "C03",
+      "configuration_id": "R6-H0-reference",
+      "generated_case_sha256": "95a006f7f7d403ef1995cef41a2deaf61a23fce416aaf588b208f24c0776c595",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R6",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R6-H0-reference.json",
+      "scenario_sha256": "48b4f3680757fbf4864ed9ea429142b1c9f56f968100ba9a21a7079b7327fcc8"
+    },
+    {
+      "condition_id": "C03",
+      "configuration_id": "R6-H0-fine",
+      "generated_case_sha256": "5d2e9ea2ba8adc262a9c3c2584134c4148d3d5ffc9e582706a9ae69e901d6684",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R6",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R6-H0-fine.json",
+      "scenario_sha256": "15d90cb040ccf93f72d7177d4c249590113110c44d91d4da13a8c416c6b82767"
+    },
+    {
+      "condition_id": "C03",
+      "configuration_id": "R6-H1-reference",
+      "generated_case_sha256": "c10957310831f98753630a1754b7ca927118b149d867a81be09c5e8d221df5ef",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R6",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R6-H1-reference.json",
+      "scenario_sha256": "74c74067448cb8a357f4037b3ad6726f782a4fda3f8bfd50cfdb898a93f7b783"
+    },
+    {
+      "condition_id": "C03",
+      "configuration_id": "R6-H1-fine",
+      "generated_case_sha256": "5ce2070d91287b9142792865e600d1806d1ee5fc7fa585f2ab8f1646454619fe",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R6",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R6-H1-fine.json",
+      "scenario_sha256": "a069f20d78a562f64e7ff5a5fdb8d387af96bf1b7b3a44ed7f28c2c05a625d43"
+    },
+    {
+      "condition_id": "C30",
+      "configuration_id": "R7-H0-reference",
+      "generated_case_sha256": "c7123901c871fb6ff051b7d57000df81d95cbbaffa2ba598f4535cedd6739adc",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R7",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R7-H0-reference.json",
+      "scenario_sha256": "7d16201e78448e513c66fa3a2ac4be3ec6c677460a64c6aa20224aefcc9b4320"
+    },
+    {
+      "condition_id": "C30",
+      "configuration_id": "R7-H0-fine",
+      "generated_case_sha256": "bd5c4c8930bb1517801f6c6af860a6ca59b521628ef51ad8fa7a29f3c928d8c0",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R7",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R7-H0-fine.json",
+      "scenario_sha256": "a863ddc2ad8125a471a824c42737918710ac6df7669a373c8432205137bd4d6d"
+    },
+    {
+      "condition_id": "C30",
+      "configuration_id": "R7-H1-reference",
+      "generated_case_sha256": "6a3854daf849734cc61d32b5867a10367a58e734ca3c504a904fac6aeb81873e",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R7",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R7-H1-reference.json",
+      "scenario_sha256": "cc5c3246c37d8be2328d1376818854200ec996463d67e1d40699d669e3c33f37"
+    },
+    {
+      "condition_id": "C30",
+      "configuration_id": "R7-H1-fine",
+      "generated_case_sha256": "808e2ccc4a2f0869f18af639baa10b30bfadfa84e6a3daf6f3179f97b69f60c9",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R7",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R7-H1-fine.json",
+      "scenario_sha256": "98c8bcdf832ed287036be79f1b1b29bf209c73a9ebfc0d8cdfe99b19964d61dc"
+    },
+    {
+      "condition_id": "C33",
+      "configuration_id": "R8-H0-reference",
+      "generated_case_sha256": "45aac5639076c134c732edfe2727cd1490258b2aea45ce97fba293fd69023d48",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R8",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R8-H0-reference.json",
+      "scenario_sha256": "132f39d6d5909099848a7033b068900e2f6be30c9d024e98729f47236d895086"
+    },
+    {
+      "condition_id": "C33",
+      "configuration_id": "R8-H0-fine",
+      "generated_case_sha256": "0040fdd029508adbbb185fd6db0478131dbb1ba56722e5dad7e343e8b917b18f",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R8",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R8-H0-fine.json",
+      "scenario_sha256": "b987bd6e3e85a90b657cf7e1b2a0b1cd63240b12e75acd929f6decaaac17fe0e"
+    },
+    {
+      "condition_id": "C33",
+      "configuration_id": "R8-H1-reference",
+      "generated_case_sha256": "73793480d2e2ee262b8122386b82259feb5726dd2faa09499493d98a062f73bd",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R8",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R8-H1-reference.json",
+      "scenario_sha256": "db02858c5a47e8469b0f43f6aa9f96a57951ee773f6b97ae1c5d0d33754a2e89"
+    },
+    {
+      "condition_id": "C33",
+      "configuration_id": "R8-H1-fine",
+      "generated_case_sha256": "9a3e3faa7f17bd9f7aa2fd20522fd832f336d26ff40ade2a6899ffd1ad6a1ba8",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R8",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R8-H1-fine.json",
+      "scenario_sha256": "90aea370d0d742403b5672310bcf65f6c3eb1d820dc2ffa75bef833bca3a094c"
+    },
+    {
+      "condition_id": "C27",
+      "configuration_id": "R9-H0-reference",
+      "generated_case_sha256": "ae64cfcff689b6b903af1237fe2e2a3008e2c9df086e0312ebfacda63f49153e",
+      "hypothesis": "H0",
+      "resolution": "reference",
+      "sample_id": "R9",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R9-H0-reference.json",
+      "scenario_sha256": "7271a6d24c3c3b1059ea9ea5cf5cf3879c91cb707c01558388fcbfe03d743755"
+    },
+    {
+      "condition_id": "C27",
+      "configuration_id": "R9-H0-fine",
+      "generated_case_sha256": "765a9856fa48211a83d505e81983db5ff81f628b3e8b5f7818736746cb54fc3c",
+      "hypothesis": "H0",
+      "resolution": "fine",
+      "sample_id": "R9",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R9-H0-fine.json",
+      "scenario_sha256": "0357448aca59e810aeeafb3d4ccb4b2ee36cc0da78c9aa00897ad10b11dbac69"
+    },
+    {
+      "condition_id": "C27",
+      "configuration_id": "R9-H1-reference",
+      "generated_case_sha256": "49509796a30a74a5cadcf2175893b4746e157b4a9c3129492c3d6a36bd3771d6",
+      "hypothesis": "H1",
+      "resolution": "reference",
+      "sample_id": "R9",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R9-H1-reference.json",
+      "scenario_sha256": "d1b7e35fe82a330369ed8b2c91a44d10a5b9928295099f680f6a640e44a43d08"
+    },
+    {
+      "condition_id": "C27",
+      "configuration_id": "R9-H1-fine",
+      "generated_case_sha256": "c1e1cbe0c7fbf8289120b74d63e71db662d606b45e638d56b4abe8197872c5b6",
+      "hypothesis": "H1",
+      "resolution": "fine",
+      "sample_id": "R9",
+      "scenario_path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/scenarios/R9-H1-fine.json",
+      "scenario_sha256": "0821ac5ae3c385886945963e3ec4a0604131c850a88ab814b6c46625d40cf094"
+    }
+  ],
+  "schema_version": "ewp.sci-md-004-stage-e1-executable-freeze/v1",
+  "species_prediction_count": 0,
+  "target_open_count": 0
+}

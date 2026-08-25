@@ -1,0 +1,950 @@
+{
+  "authorization": "SCI-MD-004-STAGE-E1-HYDRAULIC-RECONCILIATION-OWNER-AUTHORIZATION-CONDITIONAL-EFFECTIVE-DARCY-PERMEABILITY-FREEZE-AND-RESUMED-SINGLE-PROTECTED-HOLDOUT-EXECUTION-2026-08-25",
+  "beverage_observation_density_kg_m3": 1000.0,
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_ceiling": [
+    "THE GENERIC INDEXED SPECIES SOLVER IS SOFTWARE AND NUMERICALLY VERIFIED.",
+    "THE CAFFEINE AND TRIGONELLINE PARAMETERS ARE TRAINING-DATA ESTIMATES, NOT UNIVERSAL PHYSICAL CONSTANTS.",
+    "THE HYDRAULIC ADAPTER USES CONDITION-SPECIFIC EFFECTIVE PERMEABILITY DERIVED FROM REPORTED PRESSURE, NOMINAL YIELD, DURATION, GEOMETRY, AND WATER PROPERTIES.",
+    "THE INFERRED PERMEABILITIES ARE NONPORTABLE NUISANCE INPUTS AND ARE NOT A VALIDATED GRINDER-TO-PERMEABILITY MODEL.",
+    "THE ANGELONI COMPARISON IS CONDITIONAL ON MEASURED INITIAL INVENTORIES AND NONCHEMICAL APPARATUS INPUTS.",
+    "THE RESULT DOES NOT VALIDATE MACHINE HYDRAULICS, PERMEABILITY, INTERNAL TRANSIENT FIELDS, THERMAL CHEMISTRY, LIPID TRANSPORT, TASTE, OR UNRESTRICTED TRANSFER.",
+    "GENERAL PHYSICAL VALIDATION REMAINS NOT_ESTABLISHED."
+  ],
+  "conditions": [
+    {
+      "apparatus_key": [
+        361.15,
+        600000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C01",
+      "dynamic_viscosity_Pa_s": 0.000320222486214732,
+      "effective_permeability_m2": 8.825828245781783e-15,
+      "liquid_density_kg_m3": 960.8367258469636,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A20",
+        "R17"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        361.15,
+        600000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C02",
+      "dynamic_viscosity_Pa_s": 0.000320222486214732,
+      "effective_permeability_m2": 3.2781647770046627e-15,
+      "liquid_density_kg_m3": 960.8367258469636,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A31",
+        "R28"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        361.15,
+        600000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C03",
+      "dynamic_viscosity_Pa_s": 0.000320222486214732,
+      "effective_permeability_m2": 5.73678835975816e-15,
+      "liquid_density_kg_m3": 960.8367258469636,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A5",
+        "R6"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        361.15,
+        900000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C04",
+      "dynamic_viscosity_Pa_s": 0.000320222486214732,
+      "effective_permeability_m2": 5.883885497187856e-15,
+      "liquid_density_kg_m3": 960.8367258469636,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A18",
+        "R15"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        361.15,
+        900000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C05",
+      "dynamic_viscosity_Pa_s": 0.000320222486214732,
+      "effective_permeability_m2": 2.185443184669775e-15,
+      "liquid_density_kg_m3": 960.8367258469636,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A29",
+        "R26"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        361.15,
+        900000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C06",
+      "dynamic_viscosity_Pa_s": 0.000320222486214732,
+      "effective_permeability_m2": 3.8245255731721066e-15,
+      "liquid_density_kg_m3": 960.8367258469636,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A4",
+        "R4"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        361.15,
+        1200000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C07",
+      "dynamic_viscosity_Pa_s": 0.000320222486214732,
+      "effective_permeability_m2": 4.4129141228908914e-15,
+      "liquid_density_kg_m3": 960.8367258469636,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A19",
+        "R16"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        361.15,
+        1200000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C08",
+      "dynamic_viscosity_Pa_s": 0.000320222486214732,
+      "effective_permeability_m2": 1.6390823885023314e-15,
+      "liquid_density_kg_m3": 960.8367258469636,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A30",
+        "R27"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        361.15,
+        1200000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C09",
+      "dynamic_viscosity_Pa_s": 0.000320222486214732,
+      "effective_permeability_m2": 2.86839417987908e-15,
+      "liquid_density_kg_m3": 960.8367258469636,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A6",
+        "R5"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        362.15,
+        1000000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C10",
+      "dynamic_viscosity_Pa_s": 0.00031640810853689617,
+      "effective_permeability_m2": 5.23619323093708e-15,
+      "liquid_density_kg_m3": 960.1441302687418,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A21",
+        "R22"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        363.15,
+        800000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C11",
+      "dynamic_viscosity_Pa_s": 0.00031267394194924405,
+      "effective_permeability_m2": 2.404137977574585e-15,
+      "liquid_density_kg_m3": 959.4494816253839,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A32",
+        "R33"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        364.15,
+        800000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C12",
+      "dynamic_viscosity_Pa_s": 0.0003090178388507517,
+      "effective_permeability_m2": 4.161067706620561e-15,
+      "liquid_density_kg_m3": 958.7527656156028,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A11",
+        "R11"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        366.54999999999995,
+        600000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C13",
+      "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+      "effective_permeability_m2": 8.316190218274106e-15,
+      "liquid_density_kg_m3": 957.0721254861872,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A13",
+        "R14"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        366.54999999999995,
+        600000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C14",
+      "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+      "effective_permeability_m2": 3.0888706525018104e-15,
+      "liquid_density_kg_m3": 957.0721254861872,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A24",
+        "R25"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        366.54999999999995,
+        600000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C15",
+      "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+      "effective_permeability_m2": 5.405523641878169e-15,
+      "liquid_density_kg_m3": 957.0721254861872,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A2",
+        "R3"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        366.54999999999995,
+        900000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C16",
+      "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+      "effective_permeability_m2": 5.544126812182737e-15,
+      "liquid_density_kg_m3": 957.0721254861872,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A12",
+        "R12"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        366.54999999999995,
+        900000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C17",
+      "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+      "effective_permeability_m2": 2.059247101667874e-15,
+      "liquid_density_kg_m3": 957.0721254861872,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A23",
+        "R23"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        366.54999999999995,
+        900000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C18",
+      "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+      "effective_permeability_m2": 3.603682427918779e-15,
+      "liquid_density_kg_m3": 957.0721254861872,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A1",
+        "R1"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        366.54999999999995,
+        1200000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C19",
+      "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+      "effective_permeability_m2": 4.158095109137053e-15,
+      "liquid_density_kg_m3": 957.0721254861872,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A14",
+        "R13"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        366.54999999999995,
+        1200000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C20",
+      "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+      "effective_permeability_m2": 1.5444353262509052e-15,
+      "liquid_density_kg_m3": 957.0721254861872,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A25",
+        "R24"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        366.54999999999995,
+        1200000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C21",
+      "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+      "effective_permeability_m2": 2.7027618209390843e-15,
+      "liquid_density_kg_m3": 957.0721254861872,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A3",
+        "R2"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        368.15,
+        1100000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C22",
+      "dynamic_viscosity_Pa_s": 0.0002951334387979305,
+      "effective_permeability_m2": 1.6564283520646273e-15,
+      "liquid_density_kg_m3": 955.9449363487626,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A33",
+        "R32"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        369.15,
+        900000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C23",
+      "dynamic_viscosity_Pa_s": 0.00029183773520965263,
+      "effective_permeability_m2": 3.5059470083008e-15,
+      "liquid_density_kg_m3": 955.2376634162829,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A10",
+        "R10"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        370.15,
+        700000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C24",
+      "dynamic_viscosity_Pa_s": 0.0002886085545692269,
+      "effective_permeability_m2": 6.8632034394235124e-15,
+      "liquid_density_kg_m3": 954.5282339329713,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A22",
+        "R21"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        371.15,
+        600000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C25",
+      "dynamic_viscosity_Pa_s": 0.0002854441766900997,
+      "effective_permeability_m2": 7.92518734491157e-15,
+      "liquid_density_kg_m3": 953.8166324489738,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A17",
+        "R20"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        371.15,
+        600000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C26",
+      "dynamic_viscosity_Pa_s": 0.0002854441766900997,
+      "effective_permeability_m2": 2.9436410138242975e-15,
+      "liquid_density_kg_m3": 953.8166324489738,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A27",
+        "R29"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        371.15,
+        600000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C27",
+      "dynamic_viscosity_Pa_s": 0.0002854441766900997,
+      "effective_permeability_m2": 5.151371774192521e-15,
+      "liquid_density_kg_m3": 953.8166324489738,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A9",
+        "R9"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        371.15,
+        900000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C28",
+      "dynamic_viscosity_Pa_s": 0.0002854441766900997,
+      "effective_permeability_m2": 5.283458229941048e-15,
+      "liquid_density_kg_m3": 953.8166324489738,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A15",
+        "R18"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        371.15,
+        900000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C29",
+      "dynamic_viscosity_Pa_s": 0.0002854441766900997,
+      "effective_permeability_m2": 1.962427342549532e-15,
+      "liquid_density_kg_m3": 953.8166324489738,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A28",
+        "R30"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        371.15,
+        900000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C30",
+      "dynamic_viscosity_Pa_s": 0.0002854441766900997,
+      "effective_permeability_m2": 3.434247849461681e-15,
+      "liquid_density_kg_m3": 953.8166324489738,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A8",
+        "R7"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        371.15,
+        1200000.0,
+        "C",
+        13.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C31",
+      "dynamic_viscosity_Pa_s": 0.0002854441766900997,
+      "effective_permeability_m2": 3.962593672455785e-15,
+      "liquid_density_kg_m3": 953.8166324489738,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.33,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A16",
+        "R19"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        371.15,
+        1200000.0,
+        "F",
+        35.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C32",
+      "dynamic_viscosity_Pa_s": 0.0002854441766900997,
+      "effective_permeability_m2": 1.4718205069121488e-15,
+      "liquid_density_kg_m3": 953.8166324489738,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.276,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A26",
+        "R31"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    },
+    {
+      "apparatus_key": [
+        371.15,
+        1200000.0,
+        "O",
+        20.0,
+        0.02925,
+        0.01388,
+        0.04,
+        0.02
+      ],
+      "condition_id": "C33",
+      "dynamic_viscosity_Pa_s": 0.0002854441766900997,
+      "effective_permeability_m2": 2.5756858870962604e-15,
+      "liquid_density_kg_m3": 953.8166324489738,
+      "permeability_provenance": "NONPORTABLE_CONDITIONAL_EFFECTIVE_PERMEABILITY",
+      "porosity": 0.305,
+      "porosity_provenance": "LITERATURE_CONSTRAINED_NOMINAL_SOURCE_POROSITY",
+      "sample_ids": [
+        "A7",
+        "R8"
+      ],
+      "varieties": [
+        "Arabica",
+        "Robusta"
+      ],
+      "water_property_provenance": "LITERATURE_CONSTRAINED_CONSTITUTIVE_CLOSURE"
+    }
+  ],
+  "pannusch_water_closure_sha256": "9d144765200b66422e72218f8ceff5d5ca531da88150fa71d023bbc490b20cf1",
+  "porosity_by_grind": {
+    "C": 0.33,
+    "F": 0.276,
+    "O": 0.305
+  },
+  "profile": "EWP_SCI_MD_004_STAGE_E1_G1_HYDRAULIC_ADAPTER_TO_G3_HOLDOUT_V1",
+  "protocol": "POST_WETTING_SATURATED_CONDITIONAL_EXTRACTION",
+  "schema_version": "ewp.sci-md-004-stage-e1-conditional-darcy-adapter/v1",
+  "target_beverage_mass_role": "DIAGNOSTIC_ONLY_NOT_BOUNDARY_CONDITION"
+}

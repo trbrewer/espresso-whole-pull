@@ -1,5 +1,27 @@
 # Project State
 
+## SCI-MD-004 Stage E1 — conditional hydraulic reconciliation result (2026-08-25)
+
+The owner-authorized G1 condition-specific Darcy adapter and G3 protected
+execution are complete on the governed result branch. The prior merged result
+`SCI_MD_004_STAGE_E1_EXECUTION_CONTRACT_BLOCKED_BEFORE_TARGET_ACCESS` remains
+preserved exactly. The additive G1 freeze established 33 paired apparatus
+conditions, 66/66 passing zero-inventory hydraulic qualifications, and 264/264
+deterministically materialized scenarios without changing the production
+solver or governing physics. Independent pre-scoring audit passed at commit
+`51bb5c83010957a760c1cdfc851d3a4def9a16d8`.
+
+All 264 target-blind prediction executions and all 792 numerical gates passed.
+The immutable prediction freeze is commit
+`8c46ca93e23ac8eb1c521509566f6d3e96cbc381`, tree
+`9d9960945774e84b696d7dd5d17b62c474d4bdd4`. One scorer process then opened
+the protected target once and atomically committed the result. H1 materially
+worsened the caffeine and trigonelline joint result, so the exact disposition
+is `SCI_MD_004_REJECTED_PARAMETERIZATION_OR_FORMULATION`. No retuning or second
+scorer invocation is permitted. Angeloni may not again be called a no-retuning
+holdout for a model revised in response to these results. General physical
+validation remains `NOT_ESTABLISHED`.
+
 ## SCI-MD-004 Stage E1 — execution contract blocked before target access (2026-08-24)
 
 The human owner selected SCI-MD-004 as the active development priority,
@@ -112,13 +134,13 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 503/503 PASS
+- Public source verification: 505/505 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
-- Current next action: `SCI-MD-004 Stage E1 hydraulic execution-contract reconciliation requires new owner direction`
+- Current next action: `NONE; SCI-MD-004 negative result closeout and merge only`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`
@@ -131,8 +153,8 @@ Puckworks dependency lock, or the physical-validation ceiling.
   `docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md`
 - Physical validation: `NOT_ESTABLISHED`
 - Experimental commissioning: `NOT_AUTHORIZED`
-- Active protected comparison: `NONE`
-- Protected or holdout scoring: `NOT_AUTHORIZED`
+- Active protected comparison: `SCI-MD-004 CONSUMED ONCE; NO RETUNING`
+- Protected or holdout scoring: `COMPLETE; ONE SCORER PROCESS; ONE TARGET OPEN`
 
 The exact source-manifest count and aggregate are generated in
 [`SOURCE_PACKAGE_MANIFEST.json`](../SOURCE_PACKAGE_MANIFEST.json).

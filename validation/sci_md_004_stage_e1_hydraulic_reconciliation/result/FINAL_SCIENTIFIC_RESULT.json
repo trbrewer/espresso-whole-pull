@@ -1,0 +1,50 @@
+{
+  "claim_ceiling": [
+    "THE GENERIC INDEXED SPECIES SOLVER IS SOFTWARE AND NUMERICALLY VERIFIED.",
+    "THE CAFFEINE AND TRIGONELLINE PARAMETERS ARE TRAINING-DATA ESTIMATES, NOT UNIVERSAL PHYSICAL CONSTANTS.",
+    "THE HYDRAULIC ADAPTER USES CONDITION-SPECIFIC EFFECTIVE PERMEABILITY DERIVED FROM REPORTED PRESSURE, NOMINAL YIELD, DURATION, GEOMETRY, AND WATER PROPERTIES.",
+    "THE INFERRED PERMEABILITIES ARE NONPORTABLE NUISANCE INPUTS AND ARE NOT A VALIDATED GRINDER-TO-PERMEABILITY MODEL.",
+    "THE ANGELONI COMPARISON IS CONDITIONAL ON MEASURED INITIAL INVENTORIES AND NONCHEMICAL APPARATUS INPUTS.",
+    "THE RESULT DOES NOT VALIDATE MACHINE HYDRAULICS, PERMEABILITY, INTERNAL TRANSIENT FIELDS, THERMAL CHEMISTRY, LIPID TRANSPORT, TASTE, OR UNRESTRICTED TRANSFER.",
+    "GENERAL PHYSICAL VALIDATION REMAINS NOT_ESTABLISHED.",
+    "ANGELONI MAY NOT AGAIN BE CALLED A NO-RETUNING HOLDOUT FOR A MODEL REVISED IN RESPONSE TO ITS RESULTS."
+  ],
+  "directional_results": {
+    "caffeine": {
+      "H0": {
+        "concordant": 33,
+        "fraction": 1.0,
+        "pairs": 33
+      },
+      "H1": {
+        "concordant": 33,
+        "fraction": 1.0,
+        "pairs": 33
+      }
+    },
+    "trigonelline": {
+      "H0": {
+        "concordant": 33,
+        "fraction": 1.0,
+        "pairs": 33
+      },
+      "H1": {
+        "concordant": 33,
+        "fraction": 1.0,
+        "pairs": 33
+      }
+    }
+  },
+  "joint_J": {
+    "H0": 0.11856558553817663,
+    "H1": 0.44617367576361905,
+    "material_improvement_threshold": 0.15,
+    "relative_improvement": -2.763095958565116
+  },
+  "physical_validation": "NOT_ESTABLISHED",
+  "post_holdout_retuning_count": 0,
+  "prediction_execution_count": 264,
+  "primary_scientific_result": "SCI_MD_004_REJECTED_PARAMETERIZATION_OR_FORMULATION",
+  "protected_target_open_count": 1,
+  "successful_scorer_process_count": 1
+}
