@@ -1,0 +1,65 @@
+{
+  "accepted_executable": true,
+  "accepted_stage_c_harness": "tools.sci_md_004_stage_c.runner.Matrix.run",
+  "executable_identity": "accepted Stage-C final-build executable",
+  "executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+  "identical_prescribed_flow_representable": false,
+  "matrix": {
+    "csat_kg_m3": [
+      0.2,
+      4.47213595499958,
+      100.0
+    ],
+    "diffusivity_m2_s": {
+      "caffeine": 1e-10,
+      "trigonelline": 9.687426142431468e-11
+    },
+    "flow_m3_s": [
+      1e-06,
+      2e-06,
+      3e-06
+    ],
+    "fraction_endpoint_mass_kg": [
+      0.004272666666666667,
+      0.028181533333333335,
+      0.06382513333333334
+    ],
+    "geometry": {
+      "diameter_m": 0.058,
+      "length_m": 0.015,
+      "porosity": 0.17
+    },
+    "inventory_mass_fraction_range": [
+      0.0048284665436302224,
+      0.011541064281687496
+    ],
+    "k_1_s": [
+      0.002,
+      0.03162277660168379,
+      0.5
+    ],
+    "selection": "TARGET_BLIND_LOW_INTERIOR_HIGH",
+    "thresholds": {
+      "endpoint_cup_mass_relative_discrepancy_max": 0.005,
+      "species_prediction_nrmse_max": 0.01
+    }
+  },
+  "operation_order": [
+    "authority_closure",
+    "target_access_controls",
+    "target_blind_prefit_parity",
+    "optimizer_not_reached"
+  ],
+  "optimizer_call_count": 0,
+  "pass": false,
+  "production_source_immutable": true,
+  "production_source_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+  "reason": "UNCHANGED_PRODUCTION_INTERFACE_HAS_NO_IDENTICAL_PRESCRIBED_FLOW_BOUNDARY",
+  "required_application": "fixed prescribed volumetric flow for complete fraction schedule",
+  "stage": "TARGET_BLIND_PREFIT",
+  "status": "CONTRACT_BLOCKED",
+  "supported_boundary_models": [
+    "prescribedPressure",
+    "lumpedMachine"
+  ]
+}

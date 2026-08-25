@@ -55,35 +55,44 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def load_evidence(puckworks: Path) -> tuple[list[Observation], dict[tuple[int, str], float]]:
-    raw_path = puckworks / "data/schmieder2023/raw_fractions.csv"
-    fit_path = puckworks / "data/schmieder2023/kinetics_fit_params_avg.csv"
-    raw = read_csv(raw_path)
-    fits = {(int(float(r["exp"])), r["component"]): r for r in read_csv(fit_path)}
-    cols = {"caffeine": "c_caffeine_mg_g", "trigonelline": "c_trigonelline_mg_g"}
-    grouped: dict[tuple[int, int, str], list[dict[str, str]]] = defaultdict(list)
-    for row in raw:
-        for species, column in cols.items():
-            if row[column] and row["mass_fraction_g"] and row["mass_accumulated_g"]:
-                grouped[(int(float(row["exp"])), int(float(row["fraction"])), species)].append(row)
-    observations: list[Observation] = []
-    first: dict[tuple[int, str], list[tuple[float, float]]] = defaultdict(list)
-    for (exp, fraction, species), rows in sorted(grouped.items()):
-        mass = fmean(float(r["mass_fraction_g"]) * 1e-3 for r in rows)
-        midpoint = fmean(float(r["mass_accumulated_g"]) * 1e-3 for r in rows)
-        concentration = fmean(float(r[cols[species]]) * 1e-3 for r in rows)
-        observations.append(Observation(exp, fraction, species,
-            float(rows[0]["flow_set_ml_s"]) * 1e-6, midpoint-mass/2, midpoint+mass/2, concentration))
-        if fraction == 1:
-            first[(exp, species)].append((mass, concentration))
-    inventories = {}
-    for key, values in sorted(first.items()):
-        fit = fits[key]
-        first_mass_g = fmean(v[0] for v in values) * 1e3
-        first_species_mg = fmean(m * 1e3 * c * 1e3 for m, c in values)
-        tail_mg = float(fit["c0"]) * float(fit["lambda_g"]) * math.exp(-first_mass_g/float(fit["lambda_g"]))
-        inventories[key] = (first_species_mg + tail_mg) / 20.0 * 1e-3
-    return observations, inventories
+def load_evidence(bundle: Path) -> tuple[list[Observation], dict[tuple[int, str], float]]:
+    """Consume only the immutable Stage-E0-R1 bundle; never reconstruct it."""
+    verify_bundle(bundle)
+    summary = read_csv(bundle / "schmieder_fraction_summary.csv")
+    long_rows = read_csv(bundle / "schmieder_species_fractions_long.csv")
+    coordinates: dict[tuple[int, int], list[dict[str, str]]] = defaultdict(list)
+    for row in long_rows:
+        coordinates[(int(row["experiment_id"]), int(row["fraction_id"]))].append(row)
+    observations=[]
+    for row in summary:
+        if not row["mean_concentration_kg_per_kg_beverage"]:
+            continue
+        exp, fraction = int(row["experiment_id"]), int(row["fraction_id"])
+        source = coordinates[(exp, fraction)]
+        masses=[float(r["fraction_mass_kg"]) for r in source if r["fraction_mass_kg"]]
+        mids=[float(r["accumulated_mass_coordinate_kg"]) for r in source if r["accumulated_mass_coordinate_kg"]]
+        flows=[float(r["flow_m3_s"]) for r in source]
+        mass, midpoint, flow = fmean(masses), fmean(mids), fmean(flows)
+        observations.append(Observation(exp,fraction,row["species_id"],flow,
+            midpoint-mass/2,midpoint+mass/2,float(row["mean_concentration_kg_per_kg_beverage"])))
+    inventories={(int(r["experiment_id"]),r["species_id"]):float(r["inventory_mass_fraction_kg_per_kg_dry_coffee"])
+        for r in read_csv(bundle/"schmieder_training_inventories.csv")}
+    return sorted(observations,key=lambda r:(r.experiment_id,r.fraction_id,r.species_id)),inventories
+
+
+def verify_bundle(bundle: Path) -> dict:
+    manifest_path=bundle/"bundle_manifest.json"
+    if sha256(manifest_path)!="112f8b3b943a5cea3399746fde512048e3898f99c8079433dae86bd142db8709":
+        raise ValueError("FROZEN_BUNDLE_MANIFEST_HASH_MISMATCH")
+    manifest=json.loads(manifest_path.read_text(encoding="utf-8"))
+    required={"training_contract.json","schmieder_species_fractions_long.csv","schmieder_fraction_summary.csv",
+              "schmieder_training_inventories.csv","pannusch_scaling_priors.csv","target_access_policy.json"}
+    if not required <= set(manifest.get("artifacts",{})):
+        raise ValueError("FROZEN_BUNDLE_MEMBER_MISSING")
+    for name, expected in sorted(manifest["artifacts"].items()):
+        if sha256(bundle/name)!=expected: raise ValueError("FROZEN_BUNDLE_MEMBER_HASH_MISMATCH:"+name)
+    if manifest.get("semantic_target_access") is not False: raise ValueError("TARGET_ACCESS_POLICY_INVALID")
+    return manifest
 
 
 def pooled_inventory(source: Mapping[tuple[int, str], float], training: Sequence[int]) -> dict[str, float]:
@@ -199,12 +208,21 @@ def blocked_metrics(rows: Sequence[Observation], predictions: Mapping[tuple[int,
             "species_noninferiority_pass":{s:errors[(s,"H1-SPECIES")]<=1.05*errors[(s,"H0-SHARED")] for s in SPECIES}}
 
 
+REQUIRED_GATES=("training_bundle_integrity","inventory_policy","exact_nesting","prefit_application_parity",
+ "h0_optimizer","h1_optimizer","h0_identifiability","h1_identifiability","h0_no_bounds","h1_no_bounds",
+ "h0_postfit_parity","h1_postfit_parity","h0_numerical","h1_numerical","joint_improvement",
+ "caffeine_noninferiority","trigonelline_noninferiority","nesting_inequality","h0_hist_immutable",
+ "production_solver_immutable","puckworks_read_only","angeloni_nonaccess","holdout_noncreation","governance_integrity")
+
+
 def decision(g: Mapping[str,bool]) -> str:
-    contract = all(g.get(k,False) for k in ("data_contract","inventory_policy","nesting","parity"))
+    if set(g) != set(REQUIRED_GATES): raise ValueError("DECISION_GATE_SCHEMA_MISMATCH")
+    contract = all(g[k] for k in ("training_bundle_integrity","inventory_policy","exact_nesting","prefit_application_parity"))
     if not contract: return "SCI_MD_006_TRAINING_APPLICATION_CONTRACT_BLOCKED"
-    h0 = all(g.get(k,False) for k in ("h0_optimizer","h0_identifiable","h0_no_bounds","numerical","governance"))
+    integrity=all(g[k] for k in ("h0_hist_immutable","production_solver_immutable","puckworks_read_only","angeloni_nonaccess","holdout_noncreation","governance_integrity"))
+    h0 = integrity and all(g[k] for k in ("h0_optimizer","h0_identifiability","h0_no_bounds","h0_postfit_parity","h0_numerical"))
     if not h0: return "SCI_MD_006_SHARED_NULL_NOT_QUALIFIED"
-    h1keys=("joint_improvement","species_noninferiority","h1_identifiable","h1_no_bounds","h1_optimizer","nesting_inequality")
-    if all(g.get(k,False) for k in h1keys):
+    h1keys=("joint_improvement","caffeine_noninferiority","trigonelline_noninferiority","h1_identifiability","h1_no_bounds","h1_optimizer","nesting_inequality","h1_postfit_parity","h1_numerical")
+    if all(g[k] for k in h1keys):
         return "SCI_MD_006_SPECIES_SPECIFIC_PRODUCTION_LAW_ELIGIBLE_FOR_NEW_INDEPENDENT_DATASET_TEST"
     return "SCI_MD_006_SHARED_PARAMETER_PRODUCTION_BASELINE_RETAINED"

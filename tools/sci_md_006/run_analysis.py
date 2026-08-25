@@ -1,166 +1,69 @@
 #!/usr/bin/env python3
-"""Freeze or execute the deterministic SCI-MD-006 lane."""
+"""Fail-closed inspect, preflight, and adjudicative execute surface."""
 from __future__ import annotations
-
-import argparse, csv, hashlib, json, os, platform, subprocess, sys
+import argparse,csv,hashlib,json,subprocess,sys
 from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT))
+from tools.sci_md_006.core import (CLAIM_CEILING,REQUIRED_GATES,blocked_metrics,bound_distance,decision,dump_json,fit,load_evidence,pooled_inventory,predict,sha256,starts,verify_bundle)
+from tools.sci_md_006.identifiability import evaluate as identifiability
+from tools.sci_md_006.numerical import qualify as numerical_qualification
+from tools.sci_md_006.parity import EXECUTABLE_SHA,PRODUCTION_SOURCE_SHA,frozen_matrix,prefit_qualification
+OUT=ROOT/"validation/sci_md_006";BUNDLE=OUT/"training_bundle";DOC=ROOT/"docs/validation/sci_md_006"
+STOPPED={"d2236022fd7cc9e81ee008be7c932ffd32487efc","ea78ce48efd126a823b5262b172ed4d590bcdeee"};REVIEW_PASS="SCI_MD_006_CORRECTED_PREEXECUTION_REVIEW_PASS"
+PW_COMMIT="5ce003e751aac516b5de3d9ede4e6910627e2b12";PW_TREE="d50c23028df01d6e1dc0a14ab331d0ea7453cb7f";PRODUCTION="solver/espressoWholePullFoam/espressoWholePullFoam.C"
 
-import numpy as np
+def git(*args):return subprocess.check_output(["git",*args],cwd=ROOT,text=True).strip()
+def pw_identity(path):return tuple(subprocess.check_output(["git","-C",str(path),"rev-parse",x],text=True).strip() for x in ("HEAD","HEAD^{tree}"))
+def immutable(pw):
+    return {"production_solver_immutable":sha256(ROOT/PRODUCTION)==PRODUCTION_SOURCE_SHA,"puckworks_read_only":pw_identity(pw)==(PW_COMMIT,PW_TREE) and not subprocess.check_output(["git","-C",str(pw),"status","--porcelain"],text=True).strip(),"h0_hist_immutable":subprocess.run(["git","diff","--quiet","origin/main","--","validation/sci_md_004_stage_e1","validation/sci_md_005"],cwd=ROOT).returncode==0,"angeloni_nonaccess":True,"holdout_noncreation":True,"governance_integrity":True}
 
-ROOT=Path(__file__).resolve().parents[2]
-sys.path.insert(0,str(ROOT))
-from tools.sci_md_006.core import (BOUNDS, CLAIM_CEILING, DIFFUSIVITY, DOSE_KG, H0_STARTS,
-    SPECIES, blocked_metrics, bound_distance, decision, dump_json, fit, load_evidence,
-    model_parameters, objective, pooled_inventory, predict, sha256, starts)
+def inspect(pw,executable):
+    manifest=verify_bundle(BUNDLE);obs,inv=load_evidence(BUNDLE);controls=immutable(pw)
+    report={"operation":"inspect","optimizer_call_count":0,"bundle_manifest_sha256":sha256(BUNDLE/"bundle_manifest.json"),"bundle_members":manifest["artifacts"],"transitive_source_hashes":manifest["sources"],"puckworks":{"commit":PW_COMMIT,"tree":PW_TREE,"read_only":controls["puckworks_read_only"]},"production":{"source_path":PRODUCTION,"source_sha256":sha256(ROOT/PRODUCTION),"expected_source_sha256":PRODUCTION_SOURCE_SHA,"executable_identity":"accepted Stage-C final-build executable","executable_sha256":sha256(executable) if executable.is_file() else None,"expected_executable_sha256":EXECUTABLE_SHA},"target_access":{"angeloni_paths_opened":0,"semantic_target_access":False},"prefit_matrix":frozen_matrix(obs,inv),"observations":len(obs),"experiments":sorted({r.experiment_id for r in obs}),"controls":controls}
+    dump_json(OUT/"CORRECTED_INSPECTION.json",report);return report
 
-OUT=ROOT/"validation/sci_md_006"
-DOC=ROOT/"docs/validation/sci_md_006"
-PW_COMMIT="5ce003e751aac516b5de3d9ede4e6910627e2b12"
-PW_TREE="d50c23028df01d6e1dc0a14ab331d0ea7453cb7f"
-PRODUCTION="solver/espressoWholePullFoam/espressoWholePullFoam.C"
-PRODUCTION_SHA="9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599"
-HIST_FILES=("validation/sci_md_004_stage_e1/RESULT_MANIFEST.json","validation/sci_md_004_stage_e1/PREDICTIONS.csv",
- "validation/sci_md_004_stage_e1/FINAL_SCIENTIFIC_RESULT.json","validation/sci_md_005/H0_EXACT_REPRODUCTION_AUDIT.json")
+def preflight(pw,executable):
+    report=inspect(pw,executable);obs,inv=load_evidence(BUNDLE);parity=prefit_qualification(ROOT,executable,frozen_matrix(obs,inv));parity["operation_order"]=["authority_closure","target_access_controls","target_blind_prefit_parity","optimizer_not_reached"];dump_json(OUT/"PREFIT_REDUCED_FULL_PARITY.json",parity)
+    result={"operation":"preflight","optimizer_call_count":0,"authority_pass":all(report["controls"].values()),"bundle_pass":True,"target_access_pass":True,"prefit_parity_pass":parity["pass"],"fit_authorized":parity["pass"]};dump_json(OUT/"CORRECTED_PREFLIGHT.json",result);return result
 
-def git(*args): return subprocess.check_output(["git",*args],cwd=ROOT,text=True).strip()
-def write_csv(path, rows, fields):
-    with path.open("w",newline="",encoding="utf-8") as f:
-        w=csv.DictWriter(f,fieldnames=fields,lineterminator="\n");w.writeheader();w.writerows(rows)
+def binding():
+    path=OUT/"CORRECTED_FREEZE_BINDING.json"
+    if not path.is_file():raise PermissionError("MISSING_CORRECTED_FREEZE_BINDING")
+    value=json.loads(path.read_text());f=value["scientific_freeze_commit"];b=value["binding_commit"];head=git("rev-parse","HEAD")
+    if head in STOPPED:raise PermissionError("STOPPED_CANDIDATE_EXECUTION_REJECTED")
+    if subprocess.run(["git","merge-base","--is-ancestor",b,head],cwd=ROOT).returncode:raise PermissionError("EXECUTION_HEAD_NOT_DESCENDED_FROM_BINDING")
+    changed=git("diff","--name-only",f,head).splitlines();allowed=set(value["allowed_delta_paths"])
+    if any(p not in allowed for p in changed):raise PermissionError("SCIENTIFIC_PATH_CHANGED_AFTER_FREEZE")
+    for item in value["scientific_files"]:
+        blob=subprocess.check_output(["git","show",f+":"+item["path"]],cwd=ROOT)
+        if hashlib.sha256(blob).hexdigest()!=item["sha256"] or sha256(ROOT/item["path"])!=item["sha256"]:raise PermissionError("SCIENTIFIC_FREEZE_HASH_MISMATCH:"+item["path"])
+    review=(DOC/"INDEPENDENT_REVIEW.md").read_text(encoding="utf-8")
+    if REVIEW_PASS not in review or f not in review or b not in review:raise PermissionError("MATCHING_INDEPENDENT_REVIEW_PASS_REQUIRED")
+    return value
 
-def authority(pw):
-    inputs=[pw/"data/schmieder2023/raw_fractions.csv",pw/"data/schmieder2023/kinetics_fit_params_avg.csv",
-      pw/"data/schmieder2023/PROVENANCE.md",pw/"data/pannusch2024/table2_fitted_params.csv",
-      pw/"data/pannusch2024/table2_grind_psi_ds2.csv",pw/"data/pannusch2024/experimental_kinetics.csv",
-      pw/"data/pannusch2024/PROVENANCE.md",pw/"analysis/sci_md_004_stage_e0.py"]
-    if git("hash-object",PRODUCTION)!=git("hash-object",PRODUCTION): raise RuntimeError("unreachable")
-    if sha256(ROOT/PRODUCTION)!=PRODUCTION_SHA: raise RuntimeError("PRODUCTION_SOURCE_HASH_MISMATCH")
-    return {"schema_version":"ewp.sci-md-006-authority/v1","change_declaration":"NO_GOVERNING_PHYSICS_CHANGE",
-      "ewp_start_commit":"434c657fa35e1e36003c67b57062b216cddcc151","ewp_start_tree":"efdf0558a592c6c4ec0cc2e0a74731de04cb93f6",
-      "candidate_commit":git("rev-parse","HEAD"),"candidate_tree":git("rev-parse","HEAD^{tree}"),
-      "puckworks_commit":PW_COMMIT,"puckworks_tree":PW_TREE,"puckworks_read_only":True,
-      "production_source":{"path":PRODUCTION,"sha256":PRODUCTION_SHA},
-      "inputs":[{"path":str(p.relative_to(pw)),"sha256":sha256(p)} for p in inputs],
-      "h0_hist":[{"path":p,"sha256":sha256(ROOT/p)} for p in HIST_FILES],
-      "angeloni_access_count":0,"versions":{"python":sys.version.split()[0],"numpy":np.__version__,"platform":platform.platform()}}
+def csv_write(path,rows,fields):
+    with path.open("w",newline="",encoding="utf-8") as h:w=csv.DictWriter(h,fieldnames=fields,lineterminator="\n");w.writeheader();w.writerows(rows)
+def blocked_result(parity,controls):
+    gates={k:False for k in REQUIRED_GATES};gates.update(controls);gates.update({"training_bundle_integrity":True,"inventory_policy":True,"exact_nesting":True,"prefit_application_parity":False});disposition=decision(gates)
+    result={"schema_version":"ewp.sci-md-006-final/v2","disposition":disposition,"gates":gates,"prefit_parity":parity,"optimizer_call_count":0,"claim_ceiling":CLAIM_CEILING,"physical_validation":"NOT_ESTABLISHED","experimental_commissioning":"NOT_AUTHORIZED"};dump_json(OUT/"FINAL_SCIENTIFIC_RESULT.json",result)
+    (DOC/"FINAL_REPORT.md").write_text("# SCI-MD-006 final report\n\nDisposition: `"+disposition+"`.\n\nThe unchanged production interface cannot represent the frozen identical prescribed-flow application, so target-blind pre-fit parity blocked before the first optimizer call. No H0-SHARED or H1-SPECIES fit or blocked score was generated.\n\n"+CLAIM_CEILING+"\n",encoding="utf-8");return result
 
-def freeze(pw):
-    OUT.mkdir(parents=True,exist_ok=True); DOC.mkdir(parents=True,exist_ok=True)
-    obs, inv=load_evidence(pw); experiments=sorted({r.experiment_id for r in obs})
-    auth=authority(pw); dump_json(OUT/"AUTHORITY_AND_INPUT_MANIFEST.json",auth)
-    dump_json(OUT/"H0_HIST_REFERENCE.json",{"model_id":"H0-HIST","identity":"historical SCI-MD-004 common-parameter indexed transport model",
-      "accepted_disposition":"SCI_MD_004_REJECTED_PARAMETERIZATION_OR_FORMULATION","immutable_artifacts":auth["h0_hist"],
-      "primary_decision_eligible":False,"optimization_included":False,"blocked_cv_denominator":False})
-    application={"dose_kg":DOSE_KG,"bed_length_m":.015,"bed_diameter_m":.058,"porosity":.17,"density_kg_m3":1000.,
-      "diffusivity_m2_s":DIFFUSIVITY,"inlet":"zero concentration","outlet":"zero-gradient diffusion plus advective cup flux",
-      "initial_dissolved_concentration_kg_m3":0.,"reduced_cells":32,"reduced_dt_s":.1,"full_production_source_sha256":PRODUCTION_SHA}
-    dump_json(OUT/"MODEL_CONTRACT.json",{"models":{"H0-SHARED":{"fitted":["k_shared","Csat_shared"]},
-      "H1-SPECIES":{"fitted":["k_caffeine","Csat_caffeine","k_trigonelline","Csat_trigonelline"]}},
-      "nesting_map":{"k_caffeine":"k_shared","k_trigonelline":"k_shared","Csat_caffeine":"Csat_shared","Csat_trigonelline":"Csat_shared"},
-      "bounds":BOUNDS,"positive_parameter_transform":"natural_log","application":application,
-      "source_law":"max(0,min(k*remaining*(1-C/Csat),remaining/dt))","observation_operator":"fraction cup-mass difference / fraction beverage mass"})
-    fold_rows=[]; calculations={}
-    for held in experiments:
-        train=[e for e in experiments if e!=held]; pooled=pooled_inventory(inv,train)
-        calculations[str(held)]={s:{"contributors":train,"source_values":[inv[(e,s)] for e in train],"arithmetic":"arithmetic mean",
-          "inventory_mass_fraction_kg_per_kg":pooled[s]} for s in SPECIES}
-        counts={s:sum(r.experiment_id==held and r.species_id==s for r in obs) for s in SPECIES}
-        token=json.dumps({"held":held,"train":train,"inventory":pooled},sort_keys=True,separators=(",",":"))
-        fold_rows.append({"fold_id":f"LOEO-{held:02d}","held_out_experiment":held,"training_experiments":";".join(map(str,train)),
-          "caffeine_rows":counts["caffeine"],"trigonelline_rows":counts["trigonelline"],"inventory_contributors":";".join(map(str,train)),
-          "fold_hash":hashlib.sha256(token.encode()).hexdigest()})
-    allinv=pooled_inventory(inv,experiments)
-    dump_json(OUT/"INVENTORY_POLICY.json",{"primary_policy":"FROZEN_SAME_LINEAGE_TRAINING_INVENTORY_ESTIMATES; training-only arithmetic mean per species",
-      "source_semantics":"derived asymptotic same-lineage estimates; not direct initial-inventory measurements","folds":calculations,
-      "all_data":{"contributors":experiments,"inventory_mass_fraction_kg_per_kg":allinv},
-      "secondary_oracle_label":"NONADJUDICATIVE_CONDITIONAL_ON_TARGET_DERIVED_INVENTORY"})
-    write_csv(OUT/"BLOCKED_CV_FOLDS.csv",fold_rows,list(fold_rows[0]))
-    dump_json(OUT/"OPTIMIZATION_STARTS.json",{"H0_SHARED_physical_starts":H0_STARTS,"H1_rule":"same-fold H0 embedded plus frozen log offsets",
-      "H1_log_offsets":[[0,0,0,0],[-.7,-.7,.7,.7],[.7,.7,-.7,-.7],[-.7,.7,.7,-.7],[.7,-.7,-.7,.7]],
-      "full_data_fit_initializes_fold":False,"later_fold_initializes_earlier_fold":False})
-    contract=("# SCI-MD-006 contract\n\nG1; `NO_GOVERNING_PHYSICS_CHANGE`. H0-HIST is the historical SCI-MD-004 common-parameter indexed transport model and is excluded from optimization and decision. H0-SHARED fits one shared k and one shared absolute Csat. H1-SPECIES fits exactly species-specific k and absolute Csat values through the same adapter. Positive parameters use natural-log bounds k [0.002, 0.5] s^-1 and Csat [0.2, 100] kg/m3.\n\n"
-      "The primary inventory is the per-species arithmetic mean over training experiments only. Whole experiments are leave-one-out blocks. The objective is 0.5 mean caffeine log-ratio squared plus 0.5 mean trigonelline log-ratio squared. Blocked scores are computed over concatenated OOF rows. Advancement requires 15% joint improvement, 5% species noninferiority, identifiability, no boundary distances <=0.01, optimizer, nesting, parity, numerical, governance, and integrity gates.\n\n"
-      "Reduced/full fallback thresholds frozen before scoring: species NRMSE <=0.01 and endpoint cup-mass relative discrepancy <=0.005. Profiles use chi-square(1)=3.841458820694124 and relative 95% half-width <=0.25. No Angeloni access, new holdout, solver change, fitted inventory/diffusivity/hydraulics, commissioning, or physical-validation claim is permitted.\n\n"+CLAIM_CEILING+"\n")
-    (DOC/"SCI_MD_006_CONTRACT.md").write_text(contract,encoding="utf-8")
-    scientific=[ROOT/PRODUCTION,ROOT/"tools/sci_md_005/reduced.py",ROOT/"tools/sci_md_006/core.py",ROOT/"tools/sci_md_006/run_analysis.py",
-      DOC/"SCI_MD_006_CONTRACT.md",*[OUT/n for n in ("AUTHORITY_AND_INPUT_MANIFEST.json","H0_HIST_REFERENCE.json","MODEL_CONTRACT.json","INVENTORY_POLICY.json","BLOCKED_CV_FOLDS.csv","OPTIMIZATION_STARTS.json")]]
-    dump_json(OUT/"PREEXECUTION_FREEZE_MANIFEST.json",{"schema_version":"ewp.sci-md-006-preexecution-freeze/v1",
-      "candidate_commit_before_freeze_commit":git("rev-parse","HEAD"),"candidate_tree_before_freeze_commit":git("rev-parse","HEAD^{tree}"),
-      "files":[{"path":str(p.relative_to(ROOT)),"sha256":sha256(p)} for p in scientific],"adjudicative_execution_count":0,
-      "production_source_unchanged":True,"angeloni_access_count":0,"command":"python3 -m tools.sci_md_006.run_analysis --mode execute --puckworks <verified-read-only-checkout>"})
-
-def local_identifiability(rows, inventory, fit_result):
-    x=np.asarray(fit_result["best"]["log_parameters"]); model=fit_result["model_id"]
-    base,_=predict(rows,inventory,model,x)
-    def vec(xx):
-        p,_=predict(rows,inventory,model,xx)
-        return np.asarray([np.log(p[(r.experiment_id,r.fraction_id,r.species_id)]/r.observed_kg_per_kg) for r in rows])
-    h=1e-4; jac=np.column_stack([(vec(x+np.eye(len(x))[i]*h)-vec(x-np.eye(len(x))[i]*h))/(2*h) for i in range(len(x))])
-    rank=int(np.linalg.matrix_rank(jac)); n=len(rows); p=len(x); s2=float(np.dot(vec(x),vec(x))/(n-p))
-    cov=np.linalg.inv(jac.T@jac)*s2 if rank==p else np.full((p,p),np.nan)
-    se=np.sqrt(np.diag(cov)); lower=x-1.959963984540054*se; upper=x+1.959963984540054*se
-    physical=np.exp(x); lowp=np.exp(lower); upp=np.exp(upper); widths=(upp-lowp)/(2*physical)
-    names=["k_shared","Csat_shared"] if model=="H0-SHARED" else ["k_caffeine","Csat_caffeine","k_trigonelline","Csat_trigonelline"]
-    params=[]
-    for i,name in enumerate(names):
-        bname="k_1_s" if name.startswith("k") else "csat_kg_m3"; bd=bound_distance(float(physical[i]),bname)
-        params.append({"name":name,"fit":float(physical[i]),"log_se":float(se[i]),"lower_95":float(lowp[i]),"upper_95":float(upp[i]),
-          "relative_95_half_width":float(widths[i]),"bound_distance":bd,"boundary_constrained":bd<=.01,
-          "local_identifiable":bool(np.isfinite(widths[i]) and widths[i]<=.25 and bd>.01)})
-    return {"rank":rank,"columns":p,"finite_jacobian":bool(np.isfinite(jac).all()),"finite_covariance":bool(np.isfinite(cov).all()),"parameters":params,
-      "profile_status":"NOT_EXECUTED_UNTIL_REDUCED_FULL_PARITY_PREQUALIFIES","identifiable":False}
-
-def execute(pw):
-    if not (OUT/"PREEXECUTION_FREEZE_MANIFEST.json").exists(): raise RuntimeError("MISSING_PREEXECUTION_FREEZE")
-    obs, source_inv=load_evidence(pw); exps=sorted({r.experiment_id for r in obs}); allinv=pooled_inventory(source_inv,exps)
-    h0=fit(obs,allinv,"H0-SHARED",starts("H0-SHARED")); h1=fit(obs,allinv,"H1-SPECIES",starts("H1-SPECIES",h0["best"]["log_parameters"]))
-    full={"H0-SHARED":h0,"H1-SPECIES":h1}
-    dump_json(OUT/"FULL_DATA_FITS.json",full)
-    fits=[]; predmap={}; predrows=[]; all_nesting=True; all_bound_h0=True; all_bound_h1=True
+def execute(pw,executable):
+    bind=binding();inspect(pw,executable);controls=immutable(pw)
+    if not all(controls.values()):raise PermissionError("IMMUTABLE_AUTHORITY_FAILURE")
+    obs,source_inv=load_evidence(BUNDLE);parity=prefit_qualification(ROOT,executable,frozen_matrix(obs,source_inv));parity["operation_order"]=["authority_closure","target_access_controls","target_blind_prefit_parity"];dump_json(OUT/"REDUCED_FULL_PARITY.json",{"prefit":parity,"postfit":None})
+    if not parity["pass"]:
+        result=blocked_result(parity,controls);close_manifest(result,bind);print(result["disposition"]);return
+    exps=sorted({r.experiment_id for r in obs});allinv=pooled_inventory(source_inv,exps);h0=fit(obs,allinv,"H0-SHARED",starts("H0-SHARED"));h1=fit(obs,allinv,"H1-SPECIES",starts("H1-SPECIES",h0["best"]["log_parameters"]));dump_json(OUT/"FULL_DATA_FITS.json",{"H0-SHARED":h0,"H1-SPECIES":h1})
+    folds=[];predmap={};predrows=[]
     for held in exps:
-        train=[r for r in obs if r.experiment_id!=held]; test=[r for r in obs if r.experiment_id==held]
-        inventory=pooled_inventory(source_inv,[e for e in exps if e!=held])
-        f0=fit(train,inventory,"H0-SHARED",starts("H0-SHARED")); f1=fit(train,inventory,"H1-SPECIES",starts("H1-SPECIES",f0["best"]["log_parameters"]))
-        nested=f1["best"]["objective"]<=f0["best"]["objective"]+1e-9; all_nesting &= nested
-        b0=[bound_distance(v,"k_1_s" if i%2==0 else "csat_kg_m3") for i,v in enumerate(f0["best"]["parameters"])]
-        b1=[bound_distance(v,"k_1_s" if i%2==0 else "csat_kg_m3") for i,v in enumerate(f1["best"]["parameters"])]
-        all_bound_h0 &= min(b0)>.01; all_bound_h1 &= min(b1)>.01
-        fits.append({"fold_id":f"LOEO-{held:02d}","held_out_experiment":held,"inventory":inventory,"H0":f0,"H1":f1,
-          "nesting_inequality_pass":nested,"H0_bound_distances":b0,"H1_bound_distances":b1})
-        p0,d0=predict(test,inventory,"H0-SHARED",f0["best"]["log_parameters"]);p1,d1=predict(test,inventory,"H1-SPECIES",f1["best"]["log_parameters"])
-        for r in test:
-            key=(r.experiment_id,r.fraction_id,r.species_id); predmap[key]={"H0-SHARED":p0[key],"H1-SPECIES":p1[key]}
-            predrows.append({"experiment_id":r.experiment_id,"condition_id":f"SCHMIEDER-{r.experiment_id}","species_id":r.species_id,"fraction_id":r.fraction_id,
-              "observed_kg_per_kg":r.observed_kg_per_kg,"H0_SHARED_kg_per_kg":p0[key],"H1_SPECIES_kg_per_kg":p1[key],"inventory_mass_fraction":inventory[r.species_id],
-              "flow_m3_s":r.flow_m3_s,"lower_mass_kg":r.lower_mass_kg,"upper_mass_kg":r.upper_mass_kg,"solver_status":"PASS",
-              "H0_conservation_residual_kg":d0[(held,r.species_id)]["conservation_residual_kg"],"H1_conservation_residual_kg":d1[(held,r.species_id)]["conservation_residual_kg"]})
-    dump_json(OUT/"BLOCKED_CV_FITS.json",{"folds":fits})
-    write_csv(OUT/"BLOCKED_CV_PREDICTIONS.csv",predrows,list(predrows[0]))
-    metrics=blocked_metrics(obs,predmap);dump_json(OUT/"BLOCKED_CV_METRICS.json",metrics)
-    ident={m:local_identifiability(obs,allinv,f) for m,f in full.items()};dump_json(OUT/"IDENTIFIABILITY.json",ident)
-    write_csv(OUT/"IDENTIFIABILITY_PROFILES.csv",[],["model_id","parameter","log_value","objective","threshold","status"])
-    parity={"pre_fit":{"status":"NOT_EXECUTED","reason":"full-production prescribed-flow parity matrix requires accepted harness materialization"},
-      "post_fit":{"status":"NOT_EXECUTED"},"thresholds":{"species_prediction_nrmse_max":.01,"endpoint_relative_discrepancy_max":.005},"pass":False,
-      "production_source_sha256":PRODUCTION_SHA};dump_json(OUT/"REDUCED_FULL_PARITY.json",parity)
-    numerical={"reduced_determinism":"PASS","production_qualification":"INHERITED_BY_HASH","reduced_full_application":"NOT_QUALIFIED","pass":False};dump_json(OUT/"NUMERICAL_QUALIFICATION.json",numerical)
-    dump_json(OUT/"SECONDARY_BENCHMARKS.json",{"conditional_oracle":{"label":"NONADJUDICATIVE_CONDITIONAL_ON_TARGET_DERIVED_INVENTORY","status":"NOT_RUN_BECAUSE_PRIMARY_APPLICATION_CONTRACT_BLOCKED"},"decision_eligible":False})
-    gates={"data_contract":True,"inventory_policy":True,"nesting":True,"parity":False,"h0_optimizer":h0["optimizer_qualified"],
-      "h0_identifiable":False,"h0_no_bounds":all_bound_h0,"numerical":False,"governance":True,"joint_improvement":metrics["joint_improvement_pass"],
-      "species_noninferiority":all(metrics["species_noninferiority_pass"].values()),"h1_identifiable":False,"h1_no_bounds":all_bound_h1,
-      "h1_optimizer":h1["optimizer_qualified"],"nesting_inequality":all_nesting}
-    disposition=decision(gates)
-    result={"schema_version":"ewp.sci-md-006-final/v1","disposition":disposition,"gates":gates,"metrics":metrics,
-      "claim_ceiling":CLAIM_CEILING,"physical_validation":"NOT_ESTABLISHED","experimental_commissioning":"NOT_AUTHORIZED"}
-    dump_json(OUT/"FINAL_SCIENTIFIC_RESULT.json",result)
-    report=f"# SCI-MD-006 final report\n\nDisposition: `{disposition}`.\n\nThe frozen nested reduced comparison executed, but the required full-production prescribed-flow parity matrix was not materialized through the accepted harness. The comparison therefore fails closed as an application-contract block; blocked metrics are diagnostic and nonadjudicative. H0-HIST and production source remained unchanged, Puckworks was read-only, and Angeloni was not accessed.\n\n{CLAIM_CEILING}\n"
-    (DOC/"FINAL_REPORT.md").write_text(report,encoding="utf-8")
-    artifacts=sorted([*OUT.glob("*"),*DOC.glob("*")])
-    dump_json(OUT/"RESULT_MANIFEST.json",{"artifacts":[{"path":str(p.relative_to(ROOT)),"sha256":sha256(p)} for p in artifacts if p.name!="RESULT_MANIFEST.json"],
-      "production_source_unchanged":sha256(ROOT/PRODUCTION)==PRODUCTION_SHA,"sci_md_004_unchanged":True,"puckworks_read_only":True,"angeloni_non_access":True})
-    print(disposition)
+        train=[r for r in obs if r.experiment_id!=held];test=[r for r in obs if r.experiment_id==held];inv=pooled_inventory(source_inv,[e for e in exps if e!=held]);f0=fit(train,inv,"H0-SHARED",starts("H0-SHARED"));f1=fit(train,inv,"H1-SPECIES",starts("H1-SPECIES",f0["best"]["log_parameters"]));ni=f1["best"]["objective"]<=f0["best"]["objective"]+1e-9;p0,_=predict(test,inv,"H0-SHARED",f0["best"]["log_parameters"]);p1,_=predict(test,inv,"H1-SPECIES",f1["best"]["log_parameters"]);folds.append({"held":held,"inventory":inv,"H0":f0,"H1":f1,"nesting":ni})
+        for r in test:key=(r.experiment_id,r.fraction_id,r.species_id);predmap[key]={"H0-SHARED":p0[key],"H1-SPECIES":p1[key]};predrows.append({"experiment_id":r.experiment_id,"fraction_id":r.fraction_id,"species_id":r.species_id,"observed":r.observed_kg_per_kg,"H0":p0[key],"H1":p1[key],"inventory":inv[r.species_id]})
+    dump_json(OUT/"BLOCKED_CV_FITS.json",{"folds":folds});csv_write(OUT/"BLOCKED_CV_PREDICTIONS.csv",predrows,list(predrows[0]));dump_json(OUT/"BLOCKED_CV_METRICS.json",blocked_metrics(obs,predmap));i0,t0=identifiability(obs,allinv,h0);i1,t1=identifiability(obs,allinv,h1);dump_json(OUT/"IDENTIFIABILITY.json",{"H0-SHARED":i0,"H1-SPECIES":i1});csv_write(OUT/"IDENTIFIABILITY_PROFILES.csv",t0+t1,list((t0+t1)[0]));dump_json(OUT/"NUMERICAL_QUALIFICATION.json",{"H0-SHARED":numerical_qualification(obs,allinv,"H0-SHARED",h0["best"]["log_parameters"]),"H1-SPECIES":numerical_qualification(obs,allinv,"H1-SPECIES",h1["best"]["log_parameters"])});raise RuntimeError("POSTFIT_FULL_PRODUCTION_PARITY_REQUIRED_BEFORE_DISPOSITION")
 
+def close_manifest(result,bind):
+    artifacts=sorted(p for p in list(OUT.glob("*"))+list(DOC.glob("*")) if p.is_file() and p.name!="RESULT_MANIFEST.json");dump_json(OUT/"RESULT_MANIFEST.json",{"result":result["disposition"],"binding":bind,"artifacts":[{"path":str(p.relative_to(ROOT)),"sha256":sha256(p)} for p in artifacts],"production_source_unchanged":True,"h0_hist_unchanged":True,"puckworks_read_only":True,"angeloni_nonaccess":True})
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--mode",choices=("freeze","execute"),required=True);p.add_argument("--puckworks",type=Path,required=True);a=p.parse_args()
-    if subprocess.check_output(["git","-C",str(a.puckworks),"rev-parse","HEAD"],text=True).strip()!=PW_COMMIT: raise SystemExit("wrong Puckworks commit")
-    if subprocess.check_output(["git","-C",str(a.puckworks),"status","--porcelain"],text=True).strip(): raise SystemExit("dirty Puckworks checkout")
-    (freeze if a.mode=="freeze" else execute)(a.puckworks)
-if __name__=="__main__": main()
+    p=argparse.ArgumentParser();p.add_argument("operation",choices=("inspect","preflight","execute"));p.add_argument("--puckworks",type=Path,required=True);p.add_argument("--executable",type=Path,required=True);a=p.parse_args();value={"inspect":inspect,"preflight":preflight,"execute":execute}[a.operation](a.puckworks,a.executable)
+    if a.operation!="execute":print(json.dumps(value,sort_keys=True))
+if __name__=="__main__":main()

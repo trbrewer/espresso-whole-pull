@@ -1,0 +1,9 @@
+{
+  "authority_pass": true,
+  "bundle_pass": true,
+  "fit_authorized": false,
+  "operation": "preflight",
+  "optimizer_call_count": 0,
+  "prefit_parity_pass": false,
+  "target_access_pass": true
+}
