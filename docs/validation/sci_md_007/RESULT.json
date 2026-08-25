@@ -1,0 +1,31 @@
+{
+  "schema_version": "espresso.sci_md_007.handoff.v1",
+  "task_id": "SCI-MD-007",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "operational_status": "COMPLETE",
+  "scientific_disposition": "SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED",
+  "caffeine_feasible": false,
+  "trigonelline_feasible": false,
+  "paired_gate_F5": false,
+  "overall_feasible": false,
+  "compound_gate_results": {
+    "caffeine": {"F0": true, "F1": true, "F2": false, "F3": false, "F4": false, "F6": false, "F7": false},
+    "trigonelline": {"F0": true, "F1": true, "F2": false, "F3": false, "F4": false, "F6": false, "F7": false}
+  },
+  "extractable_inventory_mapping_status": "NOT_ESTABLISHED",
+  "model_stage": "NOT_RUN_FEASIBILITY_FAILED",
+  "inventory_predictor_activation": "NOT_AUTHORIZED",
+  "model_adoption_status": "NOT_AUTHORIZED_BY_FEASIBILITY_SCREEN",
+  "physical_validation": "NOT_ESTABLISHED",
+  "openfoam_execution": "NOT_RUN",
+  "angeloni_reuse": false,
+  "sci_md_006_reopened": false,
+  "claim_ceiling": [
+    "Evidence-adequacy and prediction-feasibility screen only.",
+    "No descriptor-conditioned initial-inventory predictor is authorized.",
+    "Current inventory values remain restricted source-specific or sensitivity priors.",
+    "Total roasted content is not extractable inventory or c_s0.",
+    "No extraction-kinetics formulation or physical validation was established.",
+    "No runtime integration or governing-physics change is authorized."
+  ]
+}

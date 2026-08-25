@@ -1,5 +1,16 @@
 # Project State
 
+SCI-MD-007 is complete with
+`SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`,
+locked to Puckworks commit `7915bcba615f142d0a3d3968d82fb6fd73c99d85` and tree
+`92bf34173d96247f59861ae1b802056c87ba70f2`. No descriptor-conditioned
+initial-inventory predictor or runtime adoption is authorized. Total roasted content remains
+distinct from extractable inventory and c_s0; physical validation remains `NOT_ESTABLISHED`.
+No OpenFOAM execution or governing-physics change occurred. Angeloni was not reused and
+SCI-MD-006 remains its preserved pre-execution STOP. The generic exact fraction-boundary
+production/reduced parity qualification remains a separate deferred numerical-interface task,
+not a continuation or repair of SCI-MD-006.
+
 SCI-MD-005 is `SCI_MD_005_TRAINING_DATA_CONTRACT_BLOCKED`. Its required
 inventory-scaled common-extraction H0 cannot exactly reproduce the frozen
 SCI-MD-004 H0 species and total-solids artifacts because the historical cases
@@ -143,7 +154,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 507/507 PASS
+- Public source verification: 511/511 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
