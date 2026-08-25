@@ -1,0 +1,26 @@
+{
+  "accepted_disposition": "SCI_MD_004_REJECTED_PARAMETERIZATION_OR_FORMULATION",
+  "blocked_cv_denominator": false,
+  "identity": "historical SCI-MD-004 common-parameter indexed transport model",
+  "immutable_artifacts": [
+    {
+      "path": "validation/sci_md_004_stage_e1/RESULT_MANIFEST.json",
+      "sha256": "81d204201859a50d3f14d53473d757439c8619cb273b357ad2cfeae9ecf444a6"
+    },
+    {
+      "path": "validation/sci_md_004_stage_e1/PREDICTIONS.csv",
+      "sha256": "705d6b0e385d3d9fba90c4ee9d01cb842bd9238db536ca355f4d230f8d8d6057"
+    },
+    {
+      "path": "validation/sci_md_004_stage_e1/FINAL_SCIENTIFIC_RESULT.json",
+      "sha256": "797172b7ab72b97bc47c7caffbb6cf998f078ac4f302af5c8236d7518b128f41"
+    },
+    {
+      "path": "validation/sci_md_005/H0_EXACT_REPRODUCTION_AUDIT.json",
+      "sha256": "57b9ad086956d9c8ab2dc0690fd8af6808c28aa01935a6d2181393baaf891ff6"
+    }
+  ],
+  "model_id": "H0-HIST",
+  "optimization_included": false,
+  "primary_decision_eligible": false
+}
