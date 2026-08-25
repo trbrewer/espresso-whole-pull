@@ -1,0 +1,15 @@
+{
+  "g1_freeze_manifest_sha256": "7ec81afcb4c91d9592b6eb07ea923f35107d690245157ea5e1972ab3edb538ef",
+  "lifecycle": [
+    "BEFORE_TARGET_OPEN",
+    "TARGET_OPENED",
+    "RESULT_COMMITTED"
+  ],
+  "prediction_commit": "8c46ca93e23ac8eb1c521509566f6d3e96cbc381",
+  "prediction_manifest_sha256": "06312aa83f200cdeab09795e8611e80d63865936794b84fc582ed2b990214062",
+  "prediction_tree": "9d9960945774e84b696d7dd5d17b62c474d4bdd4",
+  "protected_target_open_count": 1,
+  "result": "SCI_MD_004_REJECTED_PARAMETERIZATION_OR_FORMULATION",
+  "scorer_process_count": 1,
+  "target_sha256": "f3282db7e86a9aff1fce04e71c65beb430925ca515d5a898339e2e379844d1c5"
+}
