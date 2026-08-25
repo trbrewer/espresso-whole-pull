@@ -29,7 +29,7 @@ def preflight(pw,executable):
 def binding():
     path=OUT/"CORRECTED_FREEZE_BINDING.json"
     if not path.is_file():raise PermissionError("MISSING_CORRECTED_FREEZE_BINDING")
-    value=json.loads(path.read_text());f=value["scientific_freeze_commit"];b=value["binding_commit"];head=git("rev-parse","HEAD")
+    value=json.loads(path.read_text());f=value["scientific_freeze_commit"];b=git("log","-1","--format=%H","--diff-filter=A","--",str(path.relative_to(ROOT)));head=git("rev-parse","HEAD")
     if head in STOPPED:raise PermissionError("STOPPED_CANDIDATE_EXECUTION_REJECTED")
     if subprocess.run(["git","merge-base","--is-ancestor",b,head],cwd=ROOT).returncode:raise PermissionError("EXECUTION_HEAD_NOT_DESCENDED_FROM_BINDING")
     changed=git("diff","--name-only",f,head).splitlines();allowed=set(value["allowed_delta_paths"])

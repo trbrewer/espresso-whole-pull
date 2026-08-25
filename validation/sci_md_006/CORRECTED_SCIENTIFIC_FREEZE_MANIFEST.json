@@ -40,7 +40,7 @@
     },
     {
       "path": "tools/sci_md_006/run_analysis.py",
-      "sha256": "3214bf19920c95e82ed8668486e9a430e4970c4ed59d5d5aa24695ea8fe61ce5"
+      "sha256": "b9cd016df168bd6fa12a8ef5d6ba81726472bb8eb703665d9c496649f591ba85"
     },
     {
       "path": "validation/sci_md_006/AUTHORITY_AND_INPUT_MANIFEST.json",
