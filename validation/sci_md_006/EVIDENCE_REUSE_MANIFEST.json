@@ -1,0 +1,11 @@
+{
+  "applicability": "Unchanged indexed-species source, boundedness, conservation, serial/MPI, and executable behavior are generic solver properties; SCI-MD-006 adds only deterministic scalar case generation and therefore reuses these immutable accepted checks.",
+  "artifacts": [
+    {"path": "docs/validation/sci_md_004/STAGE_C_R2_VERIFICATION_RESULT.json", "sha256": "07660e585b97cc42e9eeb077fad060ff16513f64c4cee7ce3f31ec6f3f3021df"},
+    {"path": "validation/contracts/SCI_MD_004_STAGE_C_R2_SEPARATED_SPACE_TIME_VERIFICATION.json", "sha256": "949dbe55ecfe4e3582ff03d017e0e65fc0315fd81b2b8fffc25dd40dd79e4e9f"},
+    {"path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/G1_FREEZE_MANIFEST.json", "sha256": "7ec81afcb4c91d9592b6eb07ea923f35107d690245157ea5e1972ab3edb538ef"},
+    {"path": "validation/sci_md_004_stage_e1_hydraulic_reconciliation/HYDRAULIC_QUALIFICATION.csv", "sha256": "b75a5e86ff7827c67eb537c7b9c0e276c6039bf9b57e19ecf6d4d8a45e910306"}
+  ],
+  "reused_controls": ["generic indexed-species equation implementation", "generic source cap", "generic serial/MPI equivalence", "generic boundedness and conservation", "executable/source identity"],
+  "schema_version": "ewp.sci-md-006-evidence-reuse/v1"
+}

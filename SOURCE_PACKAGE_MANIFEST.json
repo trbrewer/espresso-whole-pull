@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 511,
-  "total_uncompressed_bytes_excluding_manifest": 7222985,
-  "aggregate_source_sha256": "a4272930e786e398a7a8745b62190430f7c5cfa498674574c7ad26f98c5e3d97",
-  "aggregate_sha256": "a4272930e786e398a7a8745b62190430f7c5cfa498674574c7ad26f98c5e3d97",
+  "total_uncompressed_bytes_excluding_manifest": 7228123,
+  "aggregate_source_sha256": "4f39a1e74ee444932182eda144da6ad5668c34a8284bb558abb180760271bbb7",
+  "aggregate_sha256": "4f39a1e74ee444932182eda144da6ad5668c34a8284bb558abb180760271bbb7",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1149,8 +1149,8 @@
       "git_mode": "100644"
     },
     "docs/validation/sci_md_006/INDEPENDENT_REVIEW.md": {
-      "sha256": "cbd9ba935dc55902c119f74e643f324f8da404154edace86ded08445844e1b0e",
-      "bytes": 4645,
+      "sha256": "4c8b05da22d4e31f04a4ee87af8d215a2c31a0b4c3fe397da2585ee7bd0ada11",
+      "bytes": 8834,
       "git_mode": "100644"
     },
     "docs/validation/sci_md_006/OWNER_ADJUDICATION.md": {
@@ -1159,8 +1159,8 @@
       "git_mode": "100644"
     },
     "docs/validation/sci_md_006/SCI_MD_006_CONTRACT.md": {
-      "sha256": "cf43ffd6841584fca2fe0fefa616c86f7d87487882337053d140594189ce4e18",
-      "bytes": 2276,
+      "sha256": "5d1dfb0d1dd97e56bb09e3059b576b713dc74d56a52c845fb030170f7bdc2f58",
+      "bytes": 2890,
       "git_mode": "100644"
     },
     "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md": {
@@ -1989,8 +1989,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_006.py": {
-      "sha256": "f577f210c05b06008897e314f136e15729cef50c052d70f48f9eee7f3ba83459",
-      "bytes": 6531,
+      "sha256": "d6bd0dcad8c4fe3ded93c8a709939c1bc6858a1016c140261f9b772a3c153a79",
+      "bytes": 6866,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

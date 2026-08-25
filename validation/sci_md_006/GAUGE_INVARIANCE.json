@@ -1,0 +1,121 @@
+{
+  "nonzero_endpoint_relative_discrepancy": {
+    "caffeine": 0.0,
+    "trigonelline": 1.119204862197307e-15
+  },
+  "nonzero_species_nrmse": {
+    "caffeine": 0.0,
+    "trigonelline": 2.9909312130752232e-15
+  },
+  "pass": true,
+  "zero_inventory_pairs": [
+    {
+      "cases": [
+        {
+          "cup_water_mass_kg": 0.00999999999999963,
+          "deterministic_input_hash_match": true,
+          "executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+          "flow": 1e-06,
+          "flow_relative_error": 3.3034284942917713e-14,
+          "gauge": "canonical",
+          "liquid_balance_residual_kg": 5.23886489744996e-16,
+          "max_saturation": 1.0,
+          "min_saturation": 1.0,
+          "outlet_flow_m3_s": 9.99999999999967e-07,
+          "permeability_m2": 1.9870712276633778e-15,
+          "pressure_pa": 900000.0
+        },
+        {
+          "cup_water_mass_kg": 0.00999999999999963,
+          "deterministic_input_hash_match": true,
+          "executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+          "flow": 1e-06,
+          "flow_relative_error": 3.3034284942917713e-14,
+          "gauge": "alternate",
+          "liquid_balance_residual_kg": 5.23886489744996e-16,
+          "max_saturation": 1.0,
+          "min_saturation": 1.0,
+          "outlet_flow_m3_s": 9.99999999999967e-07,
+          "permeability_m2": 3.9741424553267555e-15,
+          "pressure_pa": 450000.0
+        }
+      ],
+      "cup_water_gauge_relative_difference": 0.0,
+      "flow_gauge_relative_difference": 0.0,
+      "flow_m3_s": 1e-06,
+      "pass": true
+    },
+    {
+      "cases": [
+        {
+          "cup_water_mass_kg": 0.00999999999999966,
+          "deterministic_input_hash_match": true,
+          "executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+          "flow": 2e-06,
+          "flow_relative_error": 3.494010907423989e-14,
+          "gauge": "canonical",
+          "liquid_balance_residual_kg": 4.562322741819e-16,
+          "max_saturation": 1.0,
+          "min_saturation": 1.0,
+          "outlet_flow_m3_s": 1.99999999999993e-06,
+          "permeability_m2": 3.9741424553267555e-15,
+          "pressure_pa": 900000.0
+        },
+        {
+          "cup_water_mass_kg": 0.00999999999999961,
+          "deterministic_input_hash_match": true,
+          "executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+          "flow": 2e-06,
+          "flow_relative_error": 3.494010907423989e-14,
+          "gauge": "alternate",
+          "liquid_balance_residual_kg": 5.06539254985228e-16,
+          "max_saturation": 1.0,
+          "min_saturation": 1.0,
+          "outlet_flow_m3_s": 1.99999999999993e-06,
+          "permeability_m2": 7.948284910653511e-15,
+          "pressure_pa": 450000.0
+        }
+      ],
+      "cup_water_gauge_relative_difference": 5.030698080332937e-15,
+      "flow_gauge_relative_difference": 0.0,
+      "flow_m3_s": 2e-06,
+      "pass": true
+    },
+    {
+      "cases": [
+        {
+          "cup_water_mass_kg": 0.0100499999999999,
+          "deterministic_input_hash_match": true,
+          "executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+          "flow": 3e-06,
+          "flow_relative_error": 1.3411354998193088e-14,
+          "gauge": "canonical",
+          "liquid_balance_residual_kg": 6.93889390390723e-17,
+          "max_saturation": 1.0,
+          "min_saturation": 1.0,
+          "outlet_flow_m3_s": 2.99999999999996e-06,
+          "permeability_m2": 5.961213682990134e-15,
+          "pressure_pa": 900000.0
+        },
+        {
+          "cup_water_mass_kg": 0.0100499999999999,
+          "deterministic_input_hash_match": true,
+          "executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+          "flow": 3e-06,
+          "flow_relative_error": 1.3411354998193088e-14,
+          "gauge": "alternate",
+          "liquid_balance_residual_kg": 3.46944695195361e-18,
+          "max_saturation": 1.0,
+          "min_saturation": 1.0,
+          "outlet_flow_m3_s": 2.99999999999996e-06,
+          "permeability_m2": 1.1922427365980267e-14,
+          "pressure_pa": 450000.0
+        }
+      ],
+      "cup_water_gauge_relative_difference": 0.0,
+      "flow_gauge_relative_difference": 0.0,
+      "flow_m3_s": 3e-06,
+      "pass": true
+    }
+  ]
+}

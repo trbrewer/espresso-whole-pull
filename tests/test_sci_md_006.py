@@ -5,8 +5,9 @@ from unittest import mock
 from tools.sci_md_006.core import (BOUNDS, DIFFUSIVITY, Observation, blocked_metrics,
     REQUIRED_GATES, bound_distance, decision, dump_json, model_parameters, objective, pooled_inventory,
     predict, starts, verify_bundle)
-from tools.sci_md_006.parity import frozen_matrix, prefit_qualification
+from tools.sci_md_006.parity import frozen_matrix
 from tools.sci_md_006 import run_analysis
+from tools.sci_md_006.production_adapter import ALTERNATE_PRESSURE_PA,PRESSURE_PA,permeability
 
 
 class SciMd006Tests(unittest.TestCase):
@@ -72,21 +73,15 @@ class SciMd006Tests(unittest.TestCase):
             (copied/"training_contract.json").write_text("{}")
             with self.assertRaisesRegex(ValueError,"MEMBER_HASH_MISMATCH"):verify_bundle(copied)
 
-    def test_prefit_blocks_unrepresentable_application_without_optimizer(self):
-        root=Path(__file__).parents[1]
-        with mock.patch("tools.sci_md_006.parity.sha256",side_effect=lambda p: "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93" if p.name=="accepted-solver" else "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599"):
-            with mock.patch.object(Path,"is_file",return_value=True):result=prefit_qualification(root,Path("accepted-solver"),{"frozen":True})
-        self.assertFalse(result["pass"]);self.assertEqual(result["optimizer_call_count"],0)
-        self.assertEqual(result["reason"],"UNCHANGED_PRODUCTION_INTERFACE_HAS_NO_IDENTICAL_PRESCRIBED_FLOW_BOUNDARY")
-
     def test_execute_orders_parity_before_fit(self):
         source=Path(run_analysis.__file__).read_text()
         body=source[source.index("def execute("):source.index("def close_manifest(")]
-        self.assertLess(body.index("prefit_qualification("),body.index("fit(obs"))
+        self.assertLess(body.index("gauge_invariance("),body.index("fit(obs"))
+        self.assertLess(body.index("prefit_parity("),body.index("fit(obs"))
 
     def test_stopped_candidate_and_review_pass_required(self):
         self.assertIn("d2236022fd7cc9e81ee008be7c932ffd32487efc",run_analysis.STOPPED)
-        self.assertEqual(run_analysis.REVIEW_PASS,"SCI_MD_006_CORRECTED_PREEXECUTION_REVIEW_PASS")
+        self.assertEqual(run_analysis.REVIEW_PASS,"SCI_MD_006_FINAL_CONSOLIDATED_PREEXECUTION_REVIEW_PASS")
 
     def test_h1_parity_numerical_and_integrity_are_explicit(self):
         for key in ("h1_postfit_parity","h1_numerical","production_solver_immutable","angeloni_nonaccess"):
@@ -102,3 +97,17 @@ class SciMd006Tests(unittest.TestCase):
     def test_freeze_is_nonrecursive(self):
         source=(Path(__file__).parents[1]/"tools/sci_md_006/freeze.py").read_text()
         self.assertNotIn('"validation/sci_md_006/CORRECTED_SCIENTIFIC_FREEZE_MANIFEST.json"',source.split("EXACT=",1)[1].split("def main",1)[0])
+
+    def test_conditional_permeability_formula_and_inverse_gauge(self):
+        for q in (1e-6,2e-6,3e-6):
+            self.assertAlmostEqual(permeability(q)*PRESSURE_PA,permeability(q,ALTERNATE_PRESSURE_PA)*ALTERNATE_PRESSURE_PA)
+            self.assertAlmostEqual(permeability(q)*math.pi*(.058/2)**2*PRESSURE_PA/(.000315*.015),q)
+
+    def test_success_path_has_no_intentional_runtime_stop(self):
+        source=Path(run_analysis.__file__).read_text();self.assertNotIn("POSTFIT_FULL_PRODUCTION_PARITY_REQUIRED",source)
+        self.assertIn("postfit_parity(",source);self.assertIn("FINAL_SCIENTIFIC_RESULT.json",source)
+
+    def test_final_binding_writer_is_atomic_and_nonempty(self):
+        source=(Path(__file__).parents[1]/"tools/sci_md_006/final_freeze.py").read_text()
+        for token in ("mkstemp","fsync","os.replace","stat().st_size>0","json.loads"):
+            self.assertIn(token,source)

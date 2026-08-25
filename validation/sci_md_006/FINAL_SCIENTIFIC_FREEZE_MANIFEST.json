@@ -1,0 +1,147 @@
+{
+  "adjudicative_fit_count": 0,
+  "authorization": "SCI-MD-006-OWNER-ADJUDICATION-UPHOLD-CORRECTED-REREVIEW-STOP-INVOKE-SCI-GOV-001-CIRCUIT-BREAKER-AND-AUTHORIZE-ONE-CONSOLIDATED-FINAL-APPLICATION-REPRESENTABILITY-AND-COMPLETION-2026-08-25",
+  "schema_version": "ewp.sci-md-006-final-scientific-freeze/v1",
+  "scientific_files": [
+    {
+      "path": "docs/validation/sci_md_006/OWNER_ADJUDICATION.md",
+      "sha256": "3a6d61527b47ec5a6282d2119f1f5d5d2cb9760571edb95ec203d7fb7c8eeb9e"
+    },
+    {
+      "path": "docs/validation/sci_md_006/SCI_MD_006_CONTRACT.md",
+      "sha256": "5d1dfb0d1dd97e56bb09e3059b576b713dc74d56a52c845fb030170f7bdc2f58"
+    },
+    {
+      "path": "tests/test_sci_md_006.py",
+      "sha256": "d6bd0dcad8c4fe3ded93c8a709939c1bc6858a1016c140261f9b772a3c153a79"
+    },
+    {
+      "path": "tools/sci_md_006/__init__.py",
+      "sha256": "d9150001af3dfc3824f106c013a71a776433ab868e605dfa58bc7dc3be0102dd"
+    },
+    {
+      "path": "tools/sci_md_006/core.py",
+      "sha256": "30d85e27dbbefb13ef48a3dcc081743508e8fb03cd6937b8396c472066e96b07"
+    },
+    {
+      "path": "tools/sci_md_006/final_freeze.py",
+      "sha256": "16600dd3154dac5a0818c1315c6fa8bf64269b6247a7c3a571b7e54e9a9e122c"
+    },
+    {
+      "path": "tools/sci_md_006/freeze.py",
+      "sha256": "3955d4bfa1537dd4a75a4abd0a75e3a7f28df4225d4cc259bf60257eb5ba56a7"
+    },
+    {
+      "path": "tools/sci_md_006/identifiability.py",
+      "sha256": "faf5ccb80b5ebea2f2cf403e611c6cc104e829480d26a9efc79fb25afb207ffc"
+    },
+    {
+      "path": "tools/sci_md_006/numerical.py",
+      "sha256": "2178efb9de8321c5ce93892b5b379f0b09ad8e752cb64f0efdbbfce6a4694f6a"
+    },
+    {
+      "path": "tools/sci_md_006/parity.py",
+      "sha256": "f6a8a8b63f5ff54a6da679ae9623b9d1fc0a7e5bda53f877df84b350c195cf3a"
+    },
+    {
+      "path": "tools/sci_md_006/production_adapter.py",
+      "sha256": "b825182b755356e21dec9038ce00a37f0ef94e290c34349911124a8751bf7caa"
+    },
+    {
+      "path": "tools/sci_md_006/qualification.py",
+      "sha256": "0792a9fb193f0ffd05f34eaab98c41aae2609538a6a6edbe02ed5606fcd02587"
+    },
+    {
+      "path": "tools/sci_md_006/run_analysis.py",
+      "sha256": "fa159a9f177da930b474be69fe24a5068ad6c2fe24a344597a972c4f03d34976"
+    },
+    {
+      "path": "validation/sci_md_006/APPLICATION_MAPPING_CONTRACT.json",
+      "sha256": "fc1805e94577fa282a73e6f2b1e975686b1943dc74527a263d64a61721f3c6cd"
+    },
+    {
+      "path": "validation/sci_md_006/AUTHORITY_AND_INPUT_MANIFEST.json",
+      "sha256": "68378f6646db4be3dab5a20e738ca519f69697f72334e0ce9e95f029fb1e7ee7"
+    },
+    {
+      "path": "validation/sci_md_006/BLOCKED_CV_FOLDS.csv",
+      "sha256": "23d1a560da1fb2616f4cfbfeadb211ab1609a98dafa2709a420ec6317679652d"
+    },
+    {
+      "path": "validation/sci_md_006/CORRECTED_INSPECTION.json",
+      "sha256": "f723dc95cef3131ecb957d9bb47c956a6de60401b66b98f017dacf39a735ffac"
+    },
+    {
+      "path": "validation/sci_md_006/CORRECTED_PREFLIGHT.json",
+      "sha256": "0d58c94729074fa402ddf99ef171ab756ee6b0abae76dba70037f1b79d989f25"
+    },
+    {
+      "path": "validation/sci_md_006/EVIDENCE_REUSE_MANIFEST.json",
+      "sha256": "5435b1c98ef63c45dad49e9201c5f9cfcb6d64672d069371bff6ece0b40e57f5"
+    },
+    {
+      "path": "validation/sci_md_006/GAUGE_INVARIANCE.json",
+      "sha256": "31f7ffd054fafd6353cc67f89747c1b2bd4a503452bfc80c9abdc10fc9068764"
+    },
+    {
+      "path": "validation/sci_md_006/H0_HIST_REFERENCE.json",
+      "sha256": "b37c91de948a1e7924e3178264fd3d6dccf77d767ea23e7106b770f51374197f"
+    },
+    {
+      "path": "validation/sci_md_006/INVENTORY_POLICY.json",
+      "sha256": "1fffea1540782cd5fab780222a03e89096e58751932eccd345c796bf9a79a9d7"
+    },
+    {
+      "path": "validation/sci_md_006/MODEL_CONTRACT.json",
+      "sha256": "866620897b178104928e0b3075db085426849878c4b0aa1fadbef3a698a51263"
+    },
+    {
+      "path": "validation/sci_md_006/OPTIMIZATION_STARTS.json",
+      "sha256": "c63b02d20b299fc10d25473e278cbeae30d69fc3c7583c5e271a89c18705dcbb"
+    },
+    {
+      "path": "validation/sci_md_006/PREFIT_REDUCED_FULL_PARITY.json",
+      "sha256": "d5cd1c0b25c8f270d5fa573898abb6622c4bc0c1574b961168e735411389ea42"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/STAGE_E0_R1_TRAINING_CONTRACT.md",
+      "sha256": "51402f9fb97fc1a7f4fd1359c19b1dba74bd0eb271037e3302b5bdff455def63"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/bundle_manifest.json",
+      "sha256": "112f8b3b943a5cea3399746fde512048e3898f99c8079433dae86bd142db8709"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/maille_caffeine_plausibility.csv",
+      "sha256": "914d5f4c0a4a4042dfeb23e4db6ab0c11c0af023e458f89de061af09a29a82d0"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/pannusch_scaling_priors.csv",
+      "sha256": "2ec7bbc66300f75986c91d74de632b5fcc5fe3246469c3c0a1e2e3ab4ba7284b"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/schmieder_fraction_summary.csv",
+      "sha256": "89d2522bf58c62e99709ab39cce2d2f35c753887851728ceda9196dc7aaf33f6"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/schmieder_species_fractions_long.csv",
+      "sha256": "29ca41748060cb3cfe58b4e1d3ebfb13c45aedae468fe7b6f01710c307c0c0e2"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/schmieder_training_inventories.csv",
+      "sha256": "6174adcf9a41e5d934d5285f3e129b7488d5a339651844d84f847ec164965f08"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/target_access_policy.json",
+      "sha256": "8f27422669cb83812c199a9f8340d1dd834e90538f7b904ce7bdc8d407006f89"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/target_blind_file_access_manifest.json",
+      "sha256": "cade464732b1ecb6cc6ee3e695a94ded8d097a53c28dda1752f1091057d5fdc3"
+    },
+    {
+      "path": "validation/sci_md_006/training_bundle/training_contract.json",
+      "sha256": "aa4924987d538afd9059f271669cc9c832ab083fda66ad126b6d1fc1146e44ce"
+    }
+  ]
+}

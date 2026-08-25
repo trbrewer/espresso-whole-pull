@@ -2,6 +2,7 @@
   "authority_pass": true,
   "bundle_pass": true,
   "fit_authorized": false,
+  "gauge_pass": true,
   "operation": "preflight",
   "optimizer_call_count": 0,
   "prefit_parity_pass": false,
