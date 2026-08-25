@@ -1,0 +1,54 @@
+{
+  "application": {
+    "bed_diameter_m": 0.058,
+    "bed_length_m": 0.015,
+    "density_kg_m3": 1000.0,
+    "diffusivity_m2_s": {
+      "caffeine": 1e-10,
+      "trigonelline": 9.687426142431468e-11
+    },
+    "dose_kg": 0.02,
+    "full_production_source_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+    "initial_dissolved_concentration_kg_m3": 0.0,
+    "inlet": "zero concentration",
+    "outlet": "zero-gradient diffusion plus advective cup flux",
+    "porosity": 0.17,
+    "reduced_cells": 32,
+    "reduced_dt_s": 0.1
+  },
+  "bounds": {
+    "csat_kg_m3": [
+      0.2,
+      100.0
+    ],
+    "k_1_s": [
+      0.002,
+      0.5
+    ]
+  },
+  "models": {
+    "H0-SHARED": {
+      "fitted": [
+        "k_shared",
+        "Csat_shared"
+      ]
+    },
+    "H1-SPECIES": {
+      "fitted": [
+        "k_caffeine",
+        "Csat_caffeine",
+        "k_trigonelline",
+        "Csat_trigonelline"
+      ]
+    }
+  },
+  "nesting_map": {
+    "Csat_caffeine": "Csat_shared",
+    "Csat_trigonelline": "Csat_shared",
+    "k_caffeine": "k_shared",
+    "k_trigonelline": "k_shared"
+  },
+  "observation_operator": "fraction cup-mass difference / fraction beverage mass",
+  "positive_parameter_transform": "natural_log",
+  "source_law": "max(0,min(k*remaining*(1-C/Csat),remaining/dt))"
+}

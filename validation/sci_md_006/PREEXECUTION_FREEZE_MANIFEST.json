@@ -1,0 +1,55 @@
+{
+  "adjudicative_execution_count": 0,
+  "angeloni_access_count": 0,
+  "candidate_commit_before_freeze_commit": "434c657fa35e1e36003c67b57062b216cddcc151",
+  "candidate_tree_before_freeze_commit": "efdf0558a592c6c4ec0cc2e0a74731de04cb93f6",
+  "command": "python3 -m tools.sci_md_006.run_analysis --mode execute --puckworks <verified-read-only-checkout>",
+  "files": [
+    {
+      "path": "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+      "sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599"
+    },
+    {
+      "path": "tools/sci_md_005/reduced.py",
+      "sha256": "8ace66531ad225d552bb05b47f7622a4ccc34afaf58694d828b58a3a58bceb2b"
+    },
+    {
+      "path": "tools/sci_md_006/core.py",
+      "sha256": "cffd5234b20dd86355cfaa25f078eda8dd9a273ee8b801de1dc8282592e01c97"
+    },
+    {
+      "path": "tools/sci_md_006/run_analysis.py",
+      "sha256": "a3ca1f606a68842f7ccc5edf4c0e4099693a9add8aafe49c5d8ea8abfc5f8968"
+    },
+    {
+      "path": "docs/validation/sci_md_006/SCI_MD_006_CONTRACT.md",
+      "sha256": "7019653b81594c8fb6f47c4769ed40ad6ce58c70ef25d900a3753de70d85f3e0"
+    },
+    {
+      "path": "validation/sci_md_006/AUTHORITY_AND_INPUT_MANIFEST.json",
+      "sha256": "68378f6646db4be3dab5a20e738ca519f69697f72334e0ce9e95f029fb1e7ee7"
+    },
+    {
+      "path": "validation/sci_md_006/H0_HIST_REFERENCE.json",
+      "sha256": "b37c91de948a1e7924e3178264fd3d6dccf77d767ea23e7106b770f51374197f"
+    },
+    {
+      "path": "validation/sci_md_006/MODEL_CONTRACT.json",
+      "sha256": "866620897b178104928e0b3075db085426849878c4b0aa1fadbef3a698a51263"
+    },
+    {
+      "path": "validation/sci_md_006/INVENTORY_POLICY.json",
+      "sha256": "1fffea1540782cd5fab780222a03e89096e58751932eccd345c796bf9a79a9d7"
+    },
+    {
+      "path": "validation/sci_md_006/BLOCKED_CV_FOLDS.csv",
+      "sha256": "23d1a560da1fb2616f4cfbfeadb211ab1609a98dafa2709a420ec6317679652d"
+    },
+    {
+      "path": "validation/sci_md_006/OPTIMIZATION_STARTS.json",
+      "sha256": "c63b02d20b299fc10d25473e278cbeae30d69fc3c7583c5e271a89c18705dcbb"
+    }
+  ],
+  "production_source_unchanged": true,
+  "schema_version": "ewp.sci-md-006-preexecution-freeze/v1"
+}

@@ -1,0 +1,13 @@
+{
+  "classification": "NONPORTABLE_PRESCRIBED_FLOW_EQUIVALENT_DARCY_NUISANCE_INPUT",
+  "density_kg_m3": 1000.0,
+  "dynamic_viscosity_Pa_s": 0.000315,
+  "geometry": {"diameter_m": 0.058, "length_m": 0.015, "porosity": 0.17},
+  "gauge_invariance_thresholds": {"flow_relative_error": 1e-8, "gauge_flow_relative_difference": 1e-8, "cup_water_relative_difference": 1e-8, "species_nrmse": 1e-8, "species_endpoint_relative_discrepancy": 1e-8},
+  "interpretation_prohibited": ["measured permeability", "predicted permeability", "grinder-to-permeability model", "Schmieder pressure measurement"],
+  "permeability_equation": "K = mu_ref * L * Q / (A * deltaP_ref)",
+  "pressure": {"canonical_gauge_Pa": 900000.0, "alternate_gauge_Pa": 450000.0, "outlet_gauge_Pa": 0.0, "ramp_s": 0.0},
+  "production_models": {"pressureBoundaryModel": "prescribedPressure", "flowResistanceModel": "darcy", "bedMechanicsModel": "none", "permeability_profile": "uniform", "initial_saturation": 1.0},
+  "schema_version": "ewp.sci-md-006-conditional-darcy/v1",
+  "target_beverage_mass_role": "DIAGNOSTIC_ONLY"
+}

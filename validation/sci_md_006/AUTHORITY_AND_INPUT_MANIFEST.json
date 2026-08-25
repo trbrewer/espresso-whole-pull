@@ -1,0 +1,73 @@
+{
+  "angeloni_access_count": 0,
+  "candidate_commit": "434c657fa35e1e36003c67b57062b216cddcc151",
+  "candidate_tree": "efdf0558a592c6c4ec0cc2e0a74731de04cb93f6",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "ewp_start_commit": "434c657fa35e1e36003c67b57062b216cddcc151",
+  "ewp_start_tree": "efdf0558a592c6c4ec0cc2e0a74731de04cb93f6",
+  "h0_hist": [
+    {
+      "path": "validation/sci_md_004_stage_e1/RESULT_MANIFEST.json",
+      "sha256": "81d204201859a50d3f14d53473d757439c8619cb273b357ad2cfeae9ecf444a6"
+    },
+    {
+      "path": "validation/sci_md_004_stage_e1/PREDICTIONS.csv",
+      "sha256": "705d6b0e385d3d9fba90c4ee9d01cb842bd9238db536ca355f4d230f8d8d6057"
+    },
+    {
+      "path": "validation/sci_md_004_stage_e1/FINAL_SCIENTIFIC_RESULT.json",
+      "sha256": "797172b7ab72b97bc47c7caffbb6cf998f078ac4f302af5c8236d7518b128f41"
+    },
+    {
+      "path": "validation/sci_md_005/H0_EXACT_REPRODUCTION_AUDIT.json",
+      "sha256": "57b9ad086956d9c8ab2dc0690fd8af6808c28aa01935a6d2181393baaf891ff6"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "data/schmieder2023/raw_fractions.csv",
+      "sha256": "f3511dd46648fb34962c9d774cc901fa65acd7f0caaf130f143e4f04dbb0915f"
+    },
+    {
+      "path": "data/schmieder2023/kinetics_fit_params_avg.csv",
+      "sha256": "00ff8c8344e9690274d2a6e7ec3f3d63b092d8b233d5f5f381301af09816b1d6"
+    },
+    {
+      "path": "data/schmieder2023/PROVENANCE.md",
+      "sha256": "5ff593f0ecec62cd3156118b020697e115a6528d2e26b31300f6938e5fe269cf"
+    },
+    {
+      "path": "data/pannusch2024/table2_fitted_params.csv",
+      "sha256": "318e1440d2922dfe98ddc06efe89de8fcd70c65f49ae9a8b92bc1123bd26a409"
+    },
+    {
+      "path": "data/pannusch2024/table2_grind_psi_ds2.csv",
+      "sha256": "eb7400697015722d0d77ebe06bed385f3af0f142cd7b7e3f440dc00ae6594639"
+    },
+    {
+      "path": "data/pannusch2024/experimental_kinetics.csv",
+      "sha256": "735c8aa86e06ff1c46f13335924d91636e77da161962a1b7e9394421dbdd28ca"
+    },
+    {
+      "path": "data/pannusch2024/PROVENANCE.md",
+      "sha256": "701d85305fadd078ed1bf355cfaf7b3cbf4923d53977ac360219d1fabaad754b"
+    },
+    {
+      "path": "analysis/sci_md_004_stage_e0.py",
+      "sha256": "f29a0fd373e1bccfdc0a482fe7edc3b3e8a032cd6567bfb87b21e50a7db09b8f"
+    }
+  ],
+  "production_source": {
+    "path": "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+    "sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599"
+  },
+  "puckworks_commit": "5ce003e751aac516b5de3d9ede4e6910627e2b12",
+  "puckworks_read_only": true,
+  "puckworks_tree": "d50c23028df01d6e1dc0a14ab331d0ea7453cb7f",
+  "schema_version": "ewp.sci-md-006-authority/v1",
+  "versions": {
+    "numpy": "1.26.4",
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  }
+}
