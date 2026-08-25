@@ -1,0 +1,204 @@
+{
+  "pair_count": 33,
+  "pairs": [
+    {
+      "condition_id": "C01",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A20",
+      "sample_b": "R17"
+    },
+    {
+      "condition_id": "C02",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A31",
+      "sample_b": "R28"
+    },
+    {
+      "condition_id": "C03",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A5",
+      "sample_b": "R6"
+    },
+    {
+      "condition_id": "C04",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A18",
+      "sample_b": "R15"
+    },
+    {
+      "condition_id": "C05",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A29",
+      "sample_b": "R26"
+    },
+    {
+      "condition_id": "C06",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A4",
+      "sample_b": "R4"
+    },
+    {
+      "condition_id": "C07",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A19",
+      "sample_b": "R16"
+    },
+    {
+      "condition_id": "C08",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A30",
+      "sample_b": "R27"
+    },
+    {
+      "condition_id": "C09",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A6",
+      "sample_b": "R5"
+    },
+    {
+      "condition_id": "C10",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A21",
+      "sample_b": "R22"
+    },
+    {
+      "condition_id": "C11",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A32",
+      "sample_b": "R33"
+    },
+    {
+      "condition_id": "C12",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A11",
+      "sample_b": "R11"
+    },
+    {
+      "condition_id": "C13",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A13",
+      "sample_b": "R14"
+    },
+    {
+      "condition_id": "C14",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A24",
+      "sample_b": "R25"
+    },
+    {
+      "condition_id": "C15",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A2",
+      "sample_b": "R3"
+    },
+    {
+      "condition_id": "C16",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A12",
+      "sample_b": "R12"
+    },
+    {
+      "condition_id": "C17",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A23",
+      "sample_b": "R23"
+    },
+    {
+      "condition_id": "C18",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A1",
+      "sample_b": "R1"
+    },
+    {
+      "condition_id": "C19",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A14",
+      "sample_b": "R13"
+    },
+    {
+      "condition_id": "C20",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A25",
+      "sample_b": "R24"
+    },
+    {
+      "condition_id": "C21",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A3",
+      "sample_b": "R2"
+    },
+    {
+      "condition_id": "C22",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A33",
+      "sample_b": "R32"
+    },
+    {
+      "condition_id": "C23",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A10",
+      "sample_b": "R10"
+    },
+    {
+      "condition_id": "C24",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A22",
+      "sample_b": "R21"
+    },
+    {
+      "condition_id": "C25",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A17",
+      "sample_b": "R20"
+    },
+    {
+      "condition_id": "C26",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A27",
+      "sample_b": "R29"
+    },
+    {
+      "condition_id": "C27",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A9",
+      "sample_b": "R9"
+    },
+    {
+      "condition_id": "C28",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A15",
+      "sample_b": "R18"
+    },
+    {
+      "condition_id": "C29",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A28",
+      "sample_b": "R30"
+    },
+    {
+      "condition_id": "C30",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A8",
+      "sample_b": "R7"
+    },
+    {
+      "condition_id": "C31",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A16",
+      "sample_b": "R19"
+    },
+    {
+      "condition_id": "C32",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A26",
+      "sample_b": "R31"
+    },
+    {
+      "condition_id": "C33",
+      "definition_basis": "INPUT_METADATA_ONLY_NONVARIETY_APPARATUS_KEY",
+      "sample_a": "A7",
+      "sample_b": "R8"
+    }
+  ],
+  "target_derived": false
+}
