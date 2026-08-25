@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 503,
-  "total_uncompressed_bytes_excluding_manifest": 7193376,
-  "aggregate_source_sha256": "943575cad90f870ebcf889f441cccae2a3c6fe71441af398f12899d27fb3e60c",
-  "aggregate_sha256": "943575cad90f870ebcf889f441cccae2a3c6fe71441af398f12899d27fb3e60c",
+  "file_count": 505,
+  "total_uncompressed_bytes_excluding_manifest": 7199727,
+  "aggregate_source_sha256": "3a11e431143ede4a48866aad63c792226e3914526885f29a6267239bf37b10a6",
+  "aggregate_sha256": "3a11e431143ede4a48866aad63c792226e3914526885f29a6267239bf37b10a6",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1133,6 +1133,11 @@
       "bytes": 2718,
       "git_mode": "100644"
     },
+    "docs/validation/sci_md_004/STAGE_E1_CONDITIONAL_DARCY_RECONCILIATION.md": {
+      "sha256": "6123d66102afb26525bb2c2882bf0f0ec136c9f0144d7c5c620cf7aef691aff7",
+      "bytes": 2411,
+      "git_mode": "100644"
+    },
     "docs/validation/sci_md_004/STAGE_E1_PROTECTED_HOLDOUT_RESULT.md": {
       "sha256": "3f38eaf08165318306b109b4a5d65f677f060005839eb0b77d9f88d998b1b00f",
       "bytes": 2558,
@@ -1951,6 +1956,11 @@
     "tests/test_sci_md_004_stage_e1.py": {
       "sha256": "241eb524409b0a90c70e0b2f14280e6095c05ca7bec4ac34b91a243c0f94d1b2",
       "bytes": 2310,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_004_stage_e1_hydraulic.py": {
+      "sha256": "b341134dbcad00cd0af4ad5c4064901c441768bf32e12e1bed45e00c9db44acb",
+      "bytes": 3940,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

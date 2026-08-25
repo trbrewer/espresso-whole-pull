@@ -1,0 +1,168 @@
+{
+  "bedMechanicsModel": "none",
+  "claim_ceiling": "THE GENERIC INDEXED SPECIES SOLVER IS SOFTWARE AND NUMERICALLY VERIFIED. THE CAFFEINE AND TRIGONELLINE PARAMETERS ARE TRAINING-DATA ESTIMATES, NOT UNIVERSAL PHYSICAL CONSTANTS. THE HYDRAULIC ADAPTER USES CONDITION-SPECIFIC EFFECTIVE PERMEABILITY DERIVED FROM REPORTED PRESSURE, NOMINAL YIELD, DURATION, GEOMETRY, AND WATER PROPERTIES. THE INFERRED PERMEABILITIES ARE NONPORTABLE NUISANCE INPUTS AND ARE NOT A VALIDATED GRINDER-TO-PERMEABILITY MODEL. THE ANGELONI COMPARISON IS CONDITIONAL ON MEASURED INITIAL INVENTORIES AND NONCHEMICAL APPARATUS INPUTS. THE RESULT DOES NOT VALIDATE MACHINE HYDRAULICS, PERMEABILITY, INTERNAL TRANSIENT FIELDS, THERMAL CHEMISTRY, LIPID TRANSPORT, TASTE, OR UNRESTRICTED TRANSFER. GENERAL PHYSICAL VALIDATION REMAINS NOT_ESTABLISHED.",
+  "coffee_bed": {
+    "bed_depth_m": 0.01388,
+    "dry_dose_kg": 0.02,
+    "initial_extractable_fraction_dry_basis": 0.28,
+    "initial_porosity": 0.276,
+    "particle_solid_density_kg_m3": 740.4578638779789
+  },
+  "extraction": {
+    "legacy_rate_constant_1_s": 0.15,
+    "legacy_saturation_concentration_kg_m3": 180.0,
+    "model": "indexed_passive_species_first_order_with_capacity_ceiling",
+    "species": [
+      {
+        "availability_fraction": 1.0,
+        "dry_coffee_inventory_mass_fraction": 0.01858,
+        "effective_diffusivity_m2_s": 1e-09,
+        "id": "caffeine",
+        "parameter_provenance": {
+          "availability": "FIXED_STRUCTURAL_ASSUMPTION",
+          "diffusivity": "FIXED_STRUCTURAL_ASSUMPTION",
+          "inventory": "DIRECT_MEASURED_INPUT",
+          "rate": "FIXED_STRUCTURAL_ASSUMPTION",
+          "saturation": "FIXED_STRUCTURAL_ASSUMPTION"
+        },
+        "rate_constant_1_s": 0.15,
+        "role": "explicit_inventory",
+        "saturation_concentration_kg_m3": 180.0
+      },
+      {
+        "availability_fraction": 1.0,
+        "dry_coffee_inventory_mass_fraction": 0.00596,
+        "effective_diffusivity_m2_s": 1e-09,
+        "id": "trigonelline",
+        "parameter_provenance": {
+          "availability": "FIXED_STRUCTURAL_ASSUMPTION",
+          "diffusivity": "FIXED_STRUCTURAL_ASSUMPTION",
+          "inventory": "DIRECT_MEASURED_INPUT",
+          "rate": "FIXED_STRUCTURAL_ASSUMPTION",
+          "saturation": "FIXED_STRUCTURAL_ASSUMPTION"
+        },
+        "rate_constant_1_s": 0.15,
+        "role": "explicit_inventory",
+        "saturation_concentration_kg_m3": 180.0
+      },
+      {
+        "id": "residual_extractables",
+        "inherit_legacy_parameters": true,
+        "role": "structural_balance"
+      }
+    ]
+  },
+  "flowResistanceModel": "darcy",
+  "geometry": {
+    "axial_cells": 128,
+    "axial_grading": 1.0,
+    "azimuthal_cells": 1,
+    "basket_diameter_m": 0.0585,
+    "basket_radius_m": 0.02925,
+    "radial_cells": 4,
+    "radial_grading": 1.0,
+    "wedge_angle_deg": 5.0
+  },
+  "governance": {
+    "authorization": "SCI-MD-004-STAGE-E1-HYDRAULIC-RECONCILIATION-OWNER-AUTHORIZATION-CONDITIONAL-EFFECTIVE-DARCY-PERMEABILITY-FREEZE-AND-RESUMED-SINGLE-PROTECTED-HOLDOUT-EXECUTION-2026-08-25",
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "profile": "EWP_SCI_MD_004_STAGE_E1_G1_HYDRAULIC_ADAPTER_TO_G3_HOLDOUT_V1",
+    "task": "SCI-MD-004-E1-HYDRAULIC"
+  },
+  "hydraulics": {
+    "front_pressure_gauge_Pa": 0.0,
+    "gravity_enabled": false,
+    "outlet_pressure_gauge_Pa": 0.0,
+    "permeability_profile": {
+      "downstream_permeability_m2": 2.059247101667874e-15,
+      "inner_permeability_m2": 2.059247101667874e-15,
+      "interface_position_m": 0.00694,
+      "interface_radius_m": 0.014625,
+      "outer_permeability_m2": 2.059247101667874e-15,
+      "type": "uniform",
+      "upstream_permeability_m2": 2.059247101667874e-15
+    },
+    "pressure_integration_method": "exact_piecewise_linear_positive_driving_pressure_integral",
+    "pressure_ramp_time_s": 0.0,
+    "saturated_permeability_m2": 2.059247101667874e-15,
+    "target_inlet_pressure_gauge_Pa": 900000.0,
+    "wetting_permeability_m2": 2.059247101667874e-15
+  },
+  "liquid": {
+    "density_kg_m3": 957.0721254861872,
+    "dynamic_viscosity_Pa_s": 0.00030054938314958834,
+    "effective_solute_diffusivity_m2_s": 1e-09,
+    "temperature_K": 366.54999999999995
+  },
+  "mode": "validation",
+  "numerical_hardening": {
+    "milestone": "WP-0.1H",
+    "qualified_predecessor": "0.1.3",
+    "reference_freeze_status": "pending_fresh_target_Allrun_and_standard_Allverify",
+    "release_role": "no_physics_change_freeze_finalization"
+  },
+  "openfoam_distribution": "OpenFOAM Foundation",
+  "openfoam_version": "12",
+  "output": {
+    "live_stage_logging": false,
+    "reference_artifact_version": "0.1.4",
+    "write_compression": false,
+    "write_format": "ascii",
+    "write_precision_digits": 15
+  },
+  "parallel": {
+    "decomposition_method": "scotch",
+    "default_subdomains": 1
+  },
+  "pressureBoundaryModel": "prescribedPressure",
+  "pressure_nodes": {
+    "inlet": "bed_top_gauge_pressure",
+    "outlet": "basket_bottom_ambient_gauge_pressure"
+  },
+  "scenario_id": "sci_md_004_e1_R23_H0_reference",
+  "schema_version": "espresso.whole_pull.reference_scenario.v0.1.4",
+  "solver": "espressoWholePullFoam",
+  "solver_version": "0.1.4",
+  "time": {
+    "delta_t_s": 0.05,
+    "end_s": 35.0,
+    "field_write_interval_s": 35.0,
+    "start_s": 0.0,
+    "target_beverage_mass_kg": 0.04
+  },
+  "verification": {
+    "analytical_first_drip_absolute_tolerance_s": 1e-08,
+    "analytical_flow_relative_tolerance": 1e-08,
+    "b0_parity": {
+      "event_absolute_tolerance_s": 1e-08,
+      "hydraulic_relative_tolerance": 1e-08,
+      "inventory_relative_tolerance": 0.005
+    },
+    "bounded_state": {
+      "concentration_cap_absolute_tolerance_kg_m3": 1e-08,
+      "inventory_absolute_tolerance_kg": 1e-12,
+      "monotonic_mass_absolute_tolerance_kg": 1e-12,
+      "retained_water_absolute_tolerance_kg": 1e-12
+    },
+    "pressure_probes": [
+      {
+        "half_width_m": 1.7952918192111726e-05,
+        "name": "quarter_depth",
+        "position_m": 0.002252915224108138
+      },
+      {
+        "half_width_m": 1.7952918192111726e-05,
+        "name": "three_quarter_depth",
+        "position_m": 0.006758745672324415
+      }
+    ],
+    "retained_water_relative_tolerance": 1e-08,
+    "wedge_volume_relative_tolerance": 1e-08
+  },
+  "wetting": {
+    "front_smoothing_cells": 1.0,
+    "initial_saturation": 1.0,
+    "initial_wet_front_m": 0.01388,
+    "model": "darcy_sharp_front_storage"
+  }
+}

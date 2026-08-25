@@ -1,0 +1,21 @@
+{
+  "accepted_executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+  "all_hydraulic_qualification_runs_pass": true,
+  "artifact_hashes": {
+    "CONDITIONAL_DARCY_ADAPTER.json": "256674d19d5634bea5cdf7bfcd3fbb0a0ac481c5eba9b786a402be5788d43764",
+    "EXECUTABLE_CASE_FREEZE.json": "9d9558cc37a61d3b77134691205f41c2809d3660c383c551e6ff5ea9db8ba789",
+    "EXECUTABLE_CASE_MANIFEST.json": "e3301422e58f1481dedfbc19d98c26a67330cfcb638070b7847392786644d375",
+    "HYDRAULIC_QUALIFICATION.csv": "b75a5e86ff7827c67eb537c7b9c0e276c6039bf9b57e19ecf6d4d8a45e910306"
+  },
+  "authorization": "SCI-MD-004-STAGE-E1-HYDRAULIC-RECONCILIATION-OWNER-AUTHORIZATION-CONDITIONAL-EFFECTIVE-DARCY-PERMEABILITY-FREEZE-AND-RESUMED-SINGLE-PROTECTED-HOLDOUT-EXECUTION-2026-08-25",
+  "condition_count": 33,
+  "executable_scenario_count": 264,
+  "hydraulic_qualification_run_count": 66,
+  "hydraulic_qualification_sha256": "b75a5e86ff7827c67eb537c7b9c0e276c6039bf9b57e19ecf6d4d8a45e910306",
+  "production_solver_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+  "profile": "EWP_SCI_MD_004_STAGE_E1_G1_HYDRAULIC_ADAPTER_TO_G3_HOLDOUT_V1",
+  "puckworks_commit": "5ce003e751aac516b5de3d9ede4e6910627e2b12",
+  "puckworks_tree": "d50c23028df01d6e1dc0a14ab331d0ea7453cb7f",
+  "schema_version": "ewp.sci-md-004-stage-e1-g1-freeze/v1",
+  "target_open_count": 0
+}
