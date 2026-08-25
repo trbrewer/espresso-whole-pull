@@ -1,0 +1,14 @@
+{
+  "authorization": "SCI-MD-004-STAGE-E1-OWNER-AUTHORIZATION-SINGLE-PROTECTED-HOLDOUT-PREDICTION-NUMERICAL-FREEZE-ONE-SCORER-INVOCATION-AND-FINAL-SCIENTIFIC-DISPOSITION-2026-08-24",
+  "blocker": "The frozen conditional_outlet_mass_flow_kg_s is a mandatory hydraulic input, but the accepted production interface exposes no prescribed-flow boundary. prescribedPressure predicts flow from permeability; lumpedMachineCompliance requires a new machine model. Using inherited template permeability would ignore the frozen conditional flow, while fitting permeability or adding a flow boundary is explicitly prohibited.",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "governance_class": "G3_PROTECTED_HOLDOUT_PREDICTION_AND_SCORING",
+  "physical_validation": "NOT_ESTABLISHED",
+  "post_holdout_retuning_count": 0,
+  "prediction_execution_count": 0,
+  "primary_scientific_result": "SCI_MD_004_STAGE_E1_EXECUTION_CONTRACT_BLOCKED_BEFORE_TARGET_ACCESS",
+  "production_solver_changed": false,
+  "protected_scorer_process_count": 0,
+  "schema_version": "ewp.sci-md-004-stage-e1-result/v1",
+  "semantic_protected_target_access_count": 0
+}

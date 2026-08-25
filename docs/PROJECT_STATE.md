@@ -1,6 +1,6 @@
 # Project State
 
-## SCI-MD-004 Stage E0 — G1 pre-holdout freeze awaiting audit (2026-08-24)
+## SCI-MD-004 Stage E1 — execution contract blocked before target access (2026-08-24)
 
 The human owner selected SCI-MD-004 as the active development priority,
 superseding SCI-LC-001A as the current next action without reversing its
@@ -39,8 +39,14 @@ SCI-GOV-001 class G1. Exactly four caffeine/trigonelline parameters, blocked
 whole-experiment cross-validation, identifiability, numerical application
 qualification, the common H0/H1 observation operator, and all 66 H0/H1
 reference/fine case configurations are frozen for independent pre-scoring
-audit. Active protected comparison remains `NONE`: Angeloni scoring is
-unauthorized and no Angeloni holdout prediction or score has been generated.
+audit. Stage E1 then stopped at the target-blind executable-materialization
+gate with
+`SCI_MD_004_STAGE_E1_EXECUTION_CONTRACT_BLOCKED_BEFORE_TARGET_ACCESS`.
+The frozen conditional outlet mass flow has no accepted representation in the
+unchanged production interface without fitting permeability, adding a flow
+boundary, or introducing a machine model. All are unauthorized. Active
+protected comparison remains `NONE`: no Angeloni holdout prediction or score
+has been generated.
 SCI-MD-003 remains
 closed and unchanged. Physical validation remains `NOT_ESTABLISHED`.
 
@@ -106,13 +112,13 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 501/501 PASS
+- Public source verification: 503/503 PASS
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
-- Active solver task: `SCI-MD-004_STAGE_E0_G1_PRE_HOLDOUT_FREEZE`
+- Active solver task: `NONE`
 - Active cross-model dependency: `NONE` (`RP-D-LC-001b` closed/bounded by
   `NO_UNAMBIGUOUS_BELOW_CANDIDATE`)
-- Current next action: `SCI-MD-004 Stage E0 independent G1 pre-scoring audit`
+- Current next action: `SCI-MD-004 Stage E1 hydraulic execution-contract reconciliation requires new owner direction`
 - Cross-solver work class:
   `CROSS_SOLVER_VERIFICATION_AND_CLOSURE_INTERFACE_QUALIFICATION`
 - Cross-solver change declaration: `NO_GOVERNING_PHYSICS_CHANGE`

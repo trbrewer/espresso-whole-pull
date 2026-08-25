@@ -1,0 +1,8 @@
+{
+  "preflight_integrity_read_materiality": "NONSEMANTIC_HASH_ONLY_REQUIRED_BY_AUTHORIZATION_SECTION_C",
+  "preflight_silent_integrity_hash_reads": 1,
+  "protected_target_scorer_open_count": 0,
+  "scorer_process_count": 0,
+  "semantic_protected_target_access_count": 0,
+  "state": "NOT_INVOKED_PRE_TARGET_EXECUTION_CONTRACT_BLOCK"
+}

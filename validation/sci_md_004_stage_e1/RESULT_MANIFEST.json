@@ -1,0 +1,35 @@
+{
+  "accepted_ewp_base_commit": "c50c9a6ab122f3668372c7801c004f5fdc27beca",
+  "accepted_ewp_base_tree": "c1b66d5a1546fb33dbb3e2fb633a49b6412a9178",
+  "accepted_executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+  "accepted_puckworks_commit": "5ce003e751aac516b5de3d9ede4e6910627e2b12",
+  "accepted_puckworks_tree": "d50c23028df01d6e1dc0a14ab331d0ea7453cb7f",
+  "artifact_hashes": {
+    "CONDITION_LEVEL_RESULTS.csv": "3b13ec4d15036fd3fb03411c1d3737b7de3a7cc1c8be9a87a5834e9565bd9986",
+    "DIRECTIONAL_PAIR_MANIFEST.json": "f6795357413ebeb9e3fb13e9e204d4efd578dbf71bd23dae1aadd76ba43350dc",
+    "FINAL_SCIENTIFIC_RESULT.json": "797172b7ab72b97bc47c7caffbb6cf998f078ac4f302af5c8236d7518b128f41",
+    "MATERIALIZED_CASE_MANIFEST.json": "5664ec630b1e6b230dfe3a9b32c46c72ae4cab552632f7ef6139d40b77e074a9",
+    "NUMERICAL_STABILITY.csv": "0b38f37dcb3d2362c464c631a25608204b501623dd5dfdf4fdad4d17e7be3f1c",
+    "PREDICTIONS.csv": "705d6b0e385d3d9fba90c4ee9d01cb842bd9238db536ca355f4d230f8d8d6057",
+    "PREDICTION_MANIFEST.json": "4859196e1750f8444191c8a901e57d494f5aa4183c928b070fd54133cf1c2b56",
+    "SCORER_INVOCATION_RECEIPT.json": "ce13e6afc78da054dd07413425c2c9f564e341f54323a0ad2b81d7ddb278ddd4",
+    "SPECIES_METRICS.json": "746e793f5fda96f3e742767fb193ff4a1a12aad0ae587e785f2d8e12c27884f6",
+    "TOTAL_SOLIDS_METRICS.json": "746e793f5fda96f3e742767fb193ff4a1a12aad0ae587e785f2d8e12c27884f6"
+  },
+  "authority_hashes": {
+    "docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md": "58c33923f02ca733d611ddc41173fce0e2f33a20d2908312b572f57822edc364",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+    "validation/sci_md_004_stage_e0/BLOCKED_WHOLE_EXPERIMENT_CV.csv": "8d3c5f4b725351e915a6ce56a7591bc709e8f59e2459dd14b25fc1258251f48a",
+    "validation/sci_md_004_stage_e0/COMMON_H0_H1_OBSERVATION_OPERATOR.json": "4d2e5347ca876553443d9ba5629b6095679a33a9f4794bed98ea8cc3c63d76fd",
+    "validation/sci_md_004_stage_e0/CONDITIONAL_CASE_FREEZE.json": "d969d00295443b2861a9f0107c2536ef5283f9e580a1f3fb56a8c2252df47626",
+    "validation/sci_md_004_stage_e0/FREEZE_MANIFEST.json": "997057ac8ec9baaba9d96790b5e2d72cce2d57c76e5ad0b4fcddff3eaad16933",
+    "validation/sci_md_004_stage_e0/NUMERICAL_APPLICATION_QUALIFICATION.json": "e9ffc2f907e5ca3d31e47fdc3c865f8cd63c4fda509d687318979786652b0385",
+    "validation/sci_md_004_stage_e0/PARAMETERIZATION_AND_IDENTIFIABILITY.json": "ec30b7e0038e092c9b8e0d8e3d5d47de35be4e1afdbc650f826ac72f17e1b051"
+  },
+  "prediction_count": 0,
+  "primary_scientific_result": "SCI_MD_004_STAGE_E1_EXECUTION_CONTRACT_BLOCKED_BEFORE_TARGET_ACCESS",
+  "protected_scorer_process_count": 0,
+  "schema_version": "ewp.sci-md-004-stage-e1-result-manifest/v1",
+  "semantic_protected_target_access_count": 0,
+  "solver_execution_count": 0
+}
