@@ -1,0 +1,269 @@
+{
+  "adjudicative_status": "NONADJUDICATIVE_UPSTREAM_H0_CONTRACT_BLOCKED",
+  "warning": "These attempted reduced-model metrics cannot select a scientific result because the required H0 identity cannot exactly reproduce the frozen SCI-MD-004 H0 artifacts.",
+  "bounds": {
+    "csat_kg_m3": [
+      0.2,
+      100.0
+    ],
+    "k_1_s": [
+      0.002,
+      0.5
+    ]
+  },
+  "fitted_parameters": {
+    "caffeine": {
+      "csat_kg_m3": 13.807107206581305,
+      "k_1_s": 0.09018035261474691,
+      "objective": 15.657667789404075
+    },
+    "trigonelline": {
+      "csat_kg_m3": 99.99999999999996,
+      "k_1_s": 0.09247858258241895,
+      "objective": 21.46009887926462
+    }
+  },
+  "fixed_starts": {
+    "caffeine": [
+      {
+        "converged": true,
+        "objective": 15.657667789404075,
+        "parameters": [
+          0.09018035261474691,
+          13.807107206581305
+        ],
+        "start": [
+          0.01,
+          0.5
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 15.657667789992956,
+        "parameters": [
+          0.09018082001596824,
+          13.807298117412675
+        ],
+        "start": [
+          0.01,
+          10
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 15.657667792309551,
+        "parameters": [
+          0.09017962352875991,
+          13.807338139573526
+        ],
+        "start": [
+          0.03,
+          2
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 15.657667790409246,
+        "parameters": [
+          0.09018159862913719,
+          13.806830670860444
+        ],
+        "start": [
+          0.03,
+          30
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 15.657667790298206,
+        "parameters": [
+          0.0901807522701988,
+          13.806845368353294
+        ],
+        "start": [
+          0.08,
+          1
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 15.657667789744352,
+        "parameters": [
+          0.09017974666007597,
+          13.807438670755511
+        ],
+        "start": [
+          0.08,
+          15
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 15.657667790414221,
+        "parameters": [
+          0.0901798643847765,
+          13.80730641292061
+        ],
+        "start": [
+          0.2,
+          3
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 15.657667790832187,
+        "parameters": [
+          0.09018165892185094,
+          13.806827393930208
+        ],
+        "start": [
+          0.2,
+          60
+        ]
+      }
+    ],
+    "trigonelline": [
+      {
+        "converged": true,
+        "objective": 21.460098879264873,
+        "parameters": [
+          0.09247857936941396,
+          99.99999999999996
+        ],
+        "start": [
+          0.01,
+          0.5
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 21.46009887926473,
+        "parameters": [
+          0.0924785827786449,
+          99.99999999999996
+        ],
+        "start": [
+          0.01,
+          10
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 21.46009887926534,
+        "parameters": [
+          0.09247858606823106,
+          99.99999999999942
+        ],
+        "start": [
+          0.03,
+          2
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 21.460098879266212,
+        "parameters": [
+          0.09247856995917726,
+          99.99999999993388
+        ],
+        "start": [
+          0.03,
+          30
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 21.460098879265328,
+        "parameters": [
+          0.09247857392131206,
+          99.99999999974985
+        ],
+        "start": [
+          0.08,
+          1
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 21.460098879264933,
+        "parameters": [
+          0.09247858266876688,
+          99.99999999999996
+        ],
+        "start": [
+          0.08,
+          15
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 21.460098879264706,
+        "parameters": [
+          0.09247857833033972,
+          99.99999999998911
+        ],
+        "start": [
+          0.2,
+          3
+        ]
+      },
+      {
+        "converged": true,
+        "objective": 21.46009887926462,
+        "parameters": [
+          0.09247858258241895,
+          99.99999999999996
+        ],
+        "start": [
+          0.2,
+          60
+        ]
+      }
+    ]
+  },
+  "joint": {
+    "J_H0": 0.5655143198337991,
+    "J_H1_production": 0.551037582788493,
+    "material_improvement_pass": false,
+    "required_maximum": 0.4806871718587292
+  },
+  "metrics": {
+    "caffeine": {
+      "H0": {
+        "mae": 0.001334447247353546,
+        "median_absolute_relative_error": 0.3010493559524348,
+        "nrmse": 0.4607449299099482,
+        "rms_log_error": 0.44432529134694027,
+        "signed_bias": -0.00032485731287303803
+      },
+      "H1_production": {
+        "mae": 0.0013056869821010176,
+        "median_absolute_relative_error": 0.2323253365736619,
+        "nrmse": 0.48909772045411526,
+        "rms_log_error": 0.42950135498979836,
+        "signed_bias": -0.0004781444008568082
+      }
+    },
+    "trigonelline": {
+      "H0": {
+        "mae": 0.0010156553690260767,
+        "median_absolute_relative_error": 0.5116904299264889,
+        "nrmse": 0.67028370975765,
+        "rms_log_error": 0.5782899677992149,
+        "signed_bias": -0.00040962907398209075
+      },
+      "H1_production": {
+        "mae": 0.0008429630434048236,
+        "median_absolute_relative_error": 0.31580187073225385,
+        "nrmse": 0.6129774451228707,
+        "rms_log_error": 0.502235615858312,
+        "signed_bias": -0.00030395877025489676
+      }
+    }
+  },
+  "schema_version": "ewp.sci-md-005-training-result/v1",
+  "starts_within_one_percent": {
+    "caffeine": true,
+    "trigonelline": true
+  }
+}

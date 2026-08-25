@@ -1,5 +1,11 @@
 # Claim Ceiling
 
+SCI-MD-005 establishes only a deterministic data-contract incompatibility:
+the newly authorized inventory-scaled common-extraction H0 is not identical to
+the frozen SCI-MD-004 common-parameter indexed H0. Its attempted Schmieder-only
+fit is nonadjudicative. It does not validate species kinetics, authorize an
+Angeloni rescore, commission data, or change governing physics.
+
 R0 is a numerically qualified calibration baseline for the bounded recorded configuration.
 
 It supports code-verification and numerical-qualification claims under its analytical, reduced-twin, time-step, mesh, heterogeneous-pressure, MPI, conservation, and provenance gates.
