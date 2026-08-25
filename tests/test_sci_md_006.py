@@ -1,4 +1,4 @@
-import json, math, shutil, tempfile, unittest
+import json, math, os, shutil, tempfile, unittest
 from pathlib import Path
 from unittest import mock
 
@@ -111,3 +111,10 @@ class SciMd006Tests(unittest.TestCase):
         source=(Path(__file__).parents[1]/"tools/sci_md_006/final_freeze.py").read_text()
         for token in ("mkstemp","fsync","os.replace","stat().st_size>0","json.loads"):
             self.assertIn(token,source)
+
+    @unittest.skipUnless(os.environ.get("SCI_MD_006_REQUIRE_BINDING")=="1","B-final is created only after F-final")
+    def test_exact_committed_final_binding_bytes(self):
+        path=Path(__file__).parents[1]/"validation/sci_md_006/FINAL_FREEZE_BINDING.json"
+        self.assertGreater(path.stat().st_size,0);value=json.loads(path.read_bytes())
+        self.assertEqual(value["schema_version"],"ewp.sci-md-006-final-binding/v1")
+        self.assertEqual(len(value["scientific_freeze_commit"]),40)

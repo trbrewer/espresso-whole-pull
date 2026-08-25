@@ -13,7 +13,7 @@
     },
     {
       "path": "tests/test_sci_md_006.py",
-      "sha256": "d6bd0dcad8c4fe3ded93c8a709939c1bc6858a1016c140261f9b772a3c153a79"
+      "sha256": "2ee781178e9035c00c8d2790ca8f87ca0174b80885964a4b4fcd14fd2adac8c2"
     },
     {
       "path": "tools/sci_md_006/__init__.py",
