@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 505,
-  "total_uncompressed_bytes_excluding_manifest": 7199727,
-  "aggregate_source_sha256": "3a11e431143ede4a48866aad63c792226e3914526885f29a6267239bf37b10a6",
-  "aggregate_sha256": "3a11e431143ede4a48866aad63c792226e3914526885f29a6267239bf37b10a6",
+  "total_uncompressed_bytes_excluding_manifest": 7200047,
+  "aggregate_source_sha256": "d75e9c9e4c2d9a9bc3ec8f8c8c61dacc766f960a1f16cd963948e702973808ed",
+  "aggregate_sha256": "d75e9c9e4c2d9a9bc3ec8f8c8c61dacc766f960a1f16cd963948e702973808ed",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1959,8 +1959,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_e1_hydraulic.py": {
-      "sha256": "b341134dbcad00cd0af4ad5c4064901c441768bf32e12e1bed45e00c9db44acb",
-      "bytes": 3940,
+      "sha256": "8b92b057ea7617eeef375dd029d0dc6660bb6bd4f2c18e908ae8f20ccac935f2",
+      "bytes": 4260,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

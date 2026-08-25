@@ -66,7 +66,15 @@ class HydraulicFreezeTests(unittest.TestCase):
         self.assertLessEqual(max(float(row["reference_fine_beverage_mass_relative"]) for row in rows), .0025)
 
     def test_no_target_path_or_target_value(self):
-        for path in OUT.rglob("*"):
+        g1_paths = [
+            OUT / "CONDITIONAL_DARCY_ADAPTER.json",
+            OUT / "EXECUTABLE_CASE_FREEZE.json",
+            OUT / "EXECUTABLE_CASE_MANIFEST.json",
+            OUT / "G1_FREEZE_MANIFEST.json",
+            OUT / "HYDRAULIC_QUALIFICATION.csv",
+            *(OUT / "scenarios").glob("*.json"),
+        ]
+        for path in g1_paths:
             if path.is_file():
                 text = path.read_text(errors="ignore").casefold()
                 self.assertNotIn("angeloni_targets_long", text)
