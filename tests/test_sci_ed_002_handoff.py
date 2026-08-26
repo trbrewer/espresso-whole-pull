@@ -11,7 +11,7 @@ class SciEd002Handoff(unittest.TestCase):
         self.assertEqual(verify()["status"], "SCI_ED_002_HANDOFF_VERIFIED")
 
     def test_fail_closed_mutations(self):
-        cases = (("commit","PRODUCER_COMMIT_MISMATCH"),("tree","PRODUCER_TREE_MISMATCH"),("commissioning","COMMISSIONING_STATUS_WEAKENED"),("c_s0","C_S0_STATUS_WEAKENED"),("predictor","PREDICTOR_ELIGIBILITY_WEAKENED"),("holdout","HOLDOUT_STATUS_WEAKENED"))
+        cases = (("commit","INTERMEDIATE_COMMIT_SUBSTITUTED_FOR_FINAL_HEAD"),("tree","PRODUCER_TREE_MISMATCH"),("export","SCHEMA_HASH_MISMATCH"),("schema","SCHEMA_HASH_MISMATCH"),("commissioning","COMMISSIONING_STATUS_WEAKENED"),("c_s0","C_S0_STATUS_WEAKENED"),("predictor","PREDICTOR_ELIGIBILITY_WEAKENED"),("holdout","HOLDOUT_STATUS_WEAKENED"))
         for mutation, reason in cases:
             with self.subTest(mutation=mutation), self.assertRaisesRegex(AssertionError, reason):
                 verify(mutation=mutation)
