@@ -14,7 +14,7 @@ def tree(root, rev):
     for rec in git(root,"ls-tree","-rz",rev).stdout.split("\0"):
         if not rec: continue
         meta,path=rec.split("\t",1); mode,kind,oid=meta.split()
-        data=git(root,"cat-file","-p",oid).stdout.encode() if kind=="blob" else b""
+        data=subprocess.check_output(["git","-C",str(root),"cat-file","-p",oid]) if kind=="blob" else b""
         out[path]={"mode":mode,"object_type":kind,"oid":oid,"sha256":hashlib.sha256(data).hexdigest() if kind=="blob" else None}
     return out
 
