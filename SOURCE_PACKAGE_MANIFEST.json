@@ -26,13 +26,38 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 517,
-  "total_uncompressed_bytes_excluding_manifest": 7298415,
-  "aggregate_source_sha256": "008198f26729872076cca3707618479e036cecd7027f73865a2766bb0eaa812b",
-  "aggregate_sha256": "008198f26729872076cca3707618479e036cecd7027f73865a2766bb0eaa812b",
+  "file_count": 529,
+  "total_uncompressed_bytes_excluding_manifest": 7310072,
+  "aggregate_source_sha256": "dc39be3e3cb836fe44502865f1842a7b0efbdcee654855a5265125cd35d2e2b4",
+  "aggregate_sha256": "dc39be3e3cb836fe44502865f1842a7b0efbdcee654855a5265125cd35d2e2b4",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
+    ".pytest_cache/.gitignore": {
+      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd",
+      "bytes": 37,
+      "git_mode": "100644"
+    },
+    ".pytest_cache/CACHEDIR.TAG": {
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
+      "bytes": 191,
+      "git_mode": "100644"
+    },
+    ".pytest_cache/README.md": {
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
+      "bytes": 302,
+      "git_mode": "100644"
+    },
+    ".pytest_cache/v/cache/lastfailed": {
+      "sha256": "db85ada477848d9db04463c9c6615ca8c4a0d7e7f38b4f9bc114bb3e6a489fc6",
+      "bytes": 46,
+      "git_mode": "100644"
+    },
+    ".pytest_cache/v/cache/nodeids": {
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2,
+      "git_mode": "100644"
+    },
     "Allclean": {
       "sha256": "0bcb5c9a56e6afd73ea47ab7748eab95466d809cda6c66e93f0225d4ff59341e",
       "bytes": 953,
@@ -1073,6 +1098,31 @@
       "bytes": 3495,
       "git_mode": "100644"
     },
+    "docs/validation/sci_ed_002/MEASUREMENT_CONTRACT.md": {
+      "sha256": "f2a1bf606dff5337b5db6575c59daa9861a25ecda0608d30fec3dc9115e77758",
+      "bytes": 1083,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/PUCKWORKS_AUTHORITY.json": {
+      "sha256": "49ffc8dae6c3d6c58e4e3087f8cb91de404c2444234b7e752214794d2091ffbb",
+      "bytes": 835,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/RESULT.json": {
+      "sha256": "b91d3ebad3b138750f5eeb37f533be6116e719699934d3e572d5a272c73cb53c",
+      "bytes": 504,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/RESULT.md": {
+      "sha256": "6179ac5fac6e26fe051b435d06f0d0db68d09b5f23eb617cafe0619aea022687",
+      "bytes": 623,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/SCI_ED_002_EXPORT.json": {
+      "sha256": "7d48c05411b2808cf9b15c8b49842859af7a2a91263dcb9552c1177d02d7cd96",
+      "bytes": 3547,
+      "git_mode": "100644"
+    },
     "docs/validation/sci_md_004/STAGE_A_CONTRACT.md": {
       "sha256": "2d0489e14a71b9ed0b908574af4aa67268ecc6817a82744ad0bd78611cb5c3f4",
       "bytes": 1195,
@@ -1678,6 +1728,11 @@
       "bytes": 8487,
       "git_mode": "100755"
     },
+    "scripts/verify_sci_ed_002_handoff.py": {
+      "sha256": "fd7cf9dee89d07e82eaaad99317fdf50e6272c0e84ba5976438feaa9d4cc45b2",
+      "bytes": 3332,
+      "git_mode": "100755"
+    },
     "scripts/verify_source_manifest.py": {
       "sha256": "386700b7bb5a869e3fb86d2b3f7bbd59c24adeaf28f10bbedc60dcafe27cc556",
       "bytes": 3497,
@@ -1933,6 +1988,11 @@
       "bytes": 4739,
       "git_mode": "100644"
     },
+    "tests/test_sci_ed_002_handoff.py": {
+      "sha256": "c69b0b0addb7a8c7ebece9e3c4e47c8b620a715c7ddf1f892e4712bd8f959fe7",
+      "bytes": 1036,
+      "git_mode": "100644"
+    },
     "tests/test_sci_lc_001a_executor.py": {
       "sha256": "8388ddb7f79ebff64126d1d77fafa6810a3680b8d4d6ea93ff92a322ef286ad4",
       "bytes": 47797,
@@ -1989,8 +2049,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_a.py": {
-      "sha256": "f0f90bf0a1e21c61d6897037acfa778243daef60e8b139972a14f1ca1901493f",
-      "bytes": 4352,
+      "sha256": "1606c6813d034c171dd61b663b04f8e430cd5314bff7881bea512d6e677ad467",
+      "bytes": 4471,
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_c.py": {

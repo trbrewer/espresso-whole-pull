@@ -1,0 +1,17 @@
+sci_ed_002_field,ewp_contract,relationship
+material_roast_unit_id,shot_metadata,foreign_key_only
+prebrew_aliquot_id,shot_metadata,foreign_key_only
+same_batch_moisture_id,shot_metadata,foreign_key_only
+dose_g,shot_metadata,reuse
+elapsed_time,shot_time_series,reuse
+basket_pressure,shot_time_series,reuse
+flow_or_beverage_mass,shot_time_series,reuse
+brew_temperature,shot_time_series,reuse
+fraction_boundary_time,fraction_metadata,reuse
+fraction_mass,fraction_metadata,reuse
+caffeine,chemistry_measurements,reuse
+trigonelline,chemistry_measurements,reuse
+fraction_tds,fraction_metadata,reuse
+calibration_id,calibration,reuse
+exclusion_event_id,exclusions,reuse
+raw_file_id,file_manifest,reuse

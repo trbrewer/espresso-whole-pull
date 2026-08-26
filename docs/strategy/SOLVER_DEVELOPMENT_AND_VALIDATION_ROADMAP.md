@@ -169,3 +169,6 @@ complete a verified mechanism
 > without an intervening relevant real-data comparison.
 
 This is human-readable program guidance, not a CI or static-validation gate.
+# SCI-ED-002 measurement dependency
+
+The prospective Puckworks contract defines a future direct-measurement path; it does not change the solver roadmap or authorize commissioning. Predictor or mapping development cannot start from synthetic capacity. A later owner decision may commission all or part of the frozen design after review and merge.
