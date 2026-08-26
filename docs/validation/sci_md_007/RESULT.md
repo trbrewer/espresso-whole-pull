@@ -1,4 +1,12 @@
-# SCI-MD-007 thin handoff
+# SCI-MD-007-R1 corrected thin handoff
+
+This additive correction supersedes the provisional handoff without rewriting it from Git
+history. It binds Puckworks commit `7a9603c0f795fa28dca75c7be1aa594cc929c4e9`, tree
+`02f52fa29e3b1e70fcba5e4656d5f5ddfdce5aa6`, export SHA-256
+`a754b4e6caa876bb07aa21eaced6af97d557607341b7fb3fec89a4b190e43844`, and source-package
+manifest SHA-256 `49d6cf99055fa4aace7de74a80ddedf224e3113b304b3c1ba4fec04d7f3b1453`.
+The verifier hashes and parses the vendored bytes and can independently compare them with the
+exact upstream Git object.
 
 Puckworks mechanically returned
 `SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`.

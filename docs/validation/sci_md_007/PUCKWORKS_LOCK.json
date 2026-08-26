@@ -1,10 +1,11 @@
 {
-  "schema_version": "espresso.sci_md_007.puckworks_lock.v1",
+  "schema_version": "espresso.sci_md_007.puckworks_lock.v2",
   "repository": "https://github.com/trbrewer/puckworks.git",
-  "commit": "7915bcba615f142d0a3d3968d82fb6fd73c99d85",
-  "tree": "92bf34173d96247f59861ae1b802056c87ba70f2",
+  "commit": "7a9603c0f795fa28dca75c7be1aa594cc929c4e9",
+  "tree": "02f52fa29e3b1e70fcba5e4656d5f5ddfdce5aa6",
   "export_path": "docs/analysis/sci_md_007/SCI_MD_007_EXPORT.json",
-  "export_sha256": "626822addc1113bb41c0b51481a0ddbe2f21f9d52f358d1cf5e70cb342e07cd1",
-  "source_package_manifest_sha256": "d28ac6a60bf7fe27ec049946c397b26c007e2a118c8bc4410a954dd8f605ca16",
-  "result_schema_version": "1.0.0"
+  "export_sha256": "a754b4e6caa876bb07aa21eaced6af97d557607341b7fb3fec89a4b190e43844",
+  "manifest_path": "docs/analysis/sci_md_007/source_package_manifest.json",
+  "source_package_manifest_sha256": "49d6cf99055fa4aace7de74a80ddedf224e3113b304b3c1ba4fec04d7f3b1453",
+  "result_schema_version": "1.1.0-R1"
 }

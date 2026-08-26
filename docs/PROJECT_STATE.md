@@ -1,9 +1,10 @@
 # Project State
 
-SCI-MD-007 is complete with
+SCI-MD-007-R1 correctively supersedes the provisional handoff and is complete with
 `SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`,
-locked to Puckworks commit `7915bcba615f142d0a3d3968d82fb6fd73c99d85` and tree
-`92bf34173d96247f59861ae1b802056c87ba70f2`. No descriptor-conditioned
+locked to Puckworks commit `7a9603c0f795fa28dca75c7be1aa594cc929c4e9` and tree
+`02f52fa29e3b1e70fcba5e4656d5f5ddfdce5aa6`. Exact vendored export and manifest
+bytes are hash-verified, and the nested gates are independently reduced. No descriptor-conditioned
 initial-inventory predictor or runtime adoption is authorized. Total roasted content remains
 distinct from extractable inventory and c_s0; physical validation remains `NOT_ESTABLISHED`.
 No OpenFOAM execution or governing-physics change occurred. Angeloni was not reused and
@@ -154,7 +155,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 511/511 PASS
+- Public source verification: 513/513 PASS (derived from `SOURCE_PACKAGE_MANIFEST.json`)
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
