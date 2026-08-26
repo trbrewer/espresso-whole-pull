@@ -61,6 +61,10 @@ PUBLIC_DOCUMENTATION_PATHS = {
     "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md",
     "docs/strategy/history/espresso_puck_modeling_and_simulation_strategy_v1_3.md",
     "docs/validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md",
+    # E3B is a nonrecursive administrative binding over an already frozen E3
+    # scientific tree. Its bytes are verified by verify_handoff.py, not treated
+    # as scientific source-package input.
+    "docs/validation/sci_md_007/EWP_CANDIDATE_BINDING.json",
 }
 
 

@@ -1,0 +1,80 @@
+{
+  "allowed_path_check": true,
+  "angeloni_reuse": false,
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "changed_file_sha256": {
+    "docs/PROJECT_STATE.md": "0e13024db20b033f6c90fa537f41bd73e80d2087ece4177a537bcf5acc7a8bc8",
+    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md": "77a645da14de08b098979ec979a683a91c88ccdfc5188510d7e6afbd634dadaf",
+    "docs/validation/sci_md_007/PUCKWORKS_LOCK.json": "c51a0f792d0f11d55882d103f716ea090209142df14620b546815cc8523cea32",
+    "docs/validation/sci_md_007/R2_QUALIFICATION.md": "6f82b725fa42e05adae5991a5514146189094bbeeb46d144bb2531296395e1a1",
+    "docs/validation/sci_md_007/RESULT.json": "e11b1244d38540acb04206e15ded869848ed5457326bb4cdc7190f3855da2391",
+    "docs/validation/sci_md_007/RESULT.md": "076f3287ff0e6f2d06cf756af3014de1aebd14f57dd1ed75db20992cc69b632e",
+    "docs/validation/sci_md_007/upstream/R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json": "4893158c36c6902c73a7839b9b7ad65df07a74951240dc3910599b50bdaecd1d",
+    "docs/validation/sci_md_007/upstream/R2_PACKAGE_AUTHORITY_CLOSURE.json": "96342c3bd34e87b9fa37700c18f88bcc02c4a3ae424fca91a4683bb266eb9bc3",
+    "docs/validation/sci_md_007/upstream/SCI_MD_007_EXPORT.json": "48b915a322dbe3dd2275bf06e741232ac7f70527e9629d4dc7ea199685be4688",
+    "docs/validation/sci_md_007/upstream/source_package_manifest.json": "d29689477be1df64f6248734c2faf817dd8dafbf17f31ca49e0a1d055798cf0e",
+    "scripts/generate_source_manifest.py": "0846b6534c69a4ac46ad9a40c42eb79b85db58fb97b4030a841402124c9b6051",
+    "tests/test_sci_md_004_stage_a.py": "4391886a18be200cd65151ae263e2a73174895a2cf0d410ef5a0f3c3c74d339f",
+    "tests/test_sci_md_007_handoff.py": "2db5ce4603f65111bb041a1905822c2ec14f870ecdc45ff16db3083e67f8709c",
+    "validation/sci_md_007/verify_handoff.py": "e5356d22f3fd0752245307fac4adb39a6a0582d31dddb4d57da503a7b0376ed3"
+  },
+  "changed_paths": [
+    "PACKAGE_QA_STATUS.json",
+    "SOURCE_PACKAGE_MANIFEST.json",
+    "docs/PROJECT_STATE.md",
+    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md",
+    "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json",
+    "docs/validation/sci_md_007/PUCKWORKS_LOCK.json",
+    "docs/validation/sci_md_007/R2_QUALIFICATION.md",
+    "docs/validation/sci_md_007/RESULT.json",
+    "docs/validation/sci_md_007/RESULT.md",
+    "docs/validation/sci_md_007/upstream/R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json",
+    "docs/validation/sci_md_007/upstream/R2_PACKAGE_AUTHORITY_CLOSURE.json",
+    "docs/validation/sci_md_007/upstream/SCI_MD_007_EXPORT.json",
+    "docs/validation/sci_md_007/upstream/source_package_manifest.json",
+    "scripts/generate_source_manifest.py",
+    "tests/test_sci_md_004_stage_a.py",
+    "tests/test_sci_md_007_handoff.py",
+    "validation/sci_md_007/verify_handoff.py"
+  ],
+  "commands": {
+    "changed_paths": {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "434c657fa35e1e36003c67b57062b216cddcc151"
+      ],
+      "exit_status": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7742bf9c2147a880db9965155d14c1e4c5cef9ac6034c58924c70b1782604462"
+    },
+    "untracked_paths": {
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard"
+      ],
+      "exit_status": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2b5228385a3cb3ddce3cf5c234f74f78c0cac1d603978dd5d844454f2a3be1ac"
+    }
+  },
+  "g0_fraction_boundary_parity": "NOT_RUN_SEPARATE_DEFERRED",
+  "g0_intersection": [],
+  "governing_physics_intersection": [],
+  "inventory_predictor_activation": "NOT_AUTHORIZED",
+  "no_network_no_new_evidence": true,
+  "openfoam_execution": "NOT_RUN",
+  "openfoam_intersection": [],
+  "protected_data_content_intersection": [],
+  "protected_data_path_intersection": [],
+  "runtime_inventory_provider_intersection": [],
+  "schema_version": "espresso.sci_md_007.boundary_evidence.v1",
+  "sci_md_006_intersection": [],
+  "sci_md_006_reopened": false,
+  "starting_commit": "434c657fa35e1e36003c67b57062b216cddcc151",
+  "starting_tree": "efdf0558a592c6c4ec0cc2e0a74731de04cb93f6",
+  "status": "PASS"
+}

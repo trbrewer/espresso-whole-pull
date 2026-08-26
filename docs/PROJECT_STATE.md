@@ -1,9 +1,11 @@
 # Project State
 
-SCI-MD-007-R2 additively supersedes the provisional and R1 handoffs and is complete with
+SCI-MD-007-R2-C1 preserves the stopped R2 producer/consumer candidates and additively
+supersedes their package authority with the qualified P3 handoff. The scientific reduction remains
 `SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`,
-locked to Puckworks commit `bd811cff2765573b5f9a4c8bf26f95a5a0d6392f` and tree
-`5cbfa7092f9731f281e54e702065a31831b4ca53`. Exact vendored export and manifest
+locked to Puckworks commit `31741303fb604ed3e6586a555ea6ef6989c24a62` and tree
+`a918072d28f555bf98638fa97da1adb568bf09b8`. Exact vendored export, manifest,
+R2 correction contract, and package-authority closure
 bytes are hash-verified, every manifest member closes against producer Git objects when available,
 and the exported Boolean decision is independently reduced. Puckworks remains authoritative for
 deriving gate primitives from evidence registers. No descriptor-conditioned
@@ -13,7 +15,7 @@ No OpenFOAM execution or governing-physics change occurred. Angeloni was not reu
 SCI-MD-006 remains its preserved pre-execution STOP. The generic exact fraction-boundary
 production/reduced parity qualification remains a separate deferred numerical-interface task,
 not a continuation or repair of SCI-MD-006.
-Public source verification: 514/514 PASS.
+Public source verification: 517/517 PASS.
 
 SCI-MD-005 is `SCI_MD_005_TRAINING_DATA_CONTRACT_BLOCKED`. Its required
 inventory-scaled common-extraction H0 cannot exactly reproduce the frozen

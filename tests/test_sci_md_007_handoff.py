@@ -193,6 +193,7 @@ class TestSciMd007Handoff(unittest.TestCase):
     def test_boundary_claim_tampers_fail(self):
         mutations = {
             "claim ceiling": lambda e: e.pop("claim_ceiling"),
+            "partial claim ceiling": lambda e: e.update(claim_ceiling=["Physical validation remains NOT_ESTABLISHED."]),
             "Angeloni": lambda e: e.update(source_lineage="Angeloni"),
             "SCI-MD-006": lambda e: e.update(sci_md_006_reopened=True),
             "unexpected predictor": lambda e: e.update(model_stage="MODEL_RUN"),
@@ -214,7 +215,7 @@ class TestSciMd007Handoff(unittest.TestCase):
             "schema": lambda lock: lock.update(schema_version="v2"),
             "result schema": lambda lock: lock.update(result_schema_version="1.1.0-R1"),
             "cutoff": lambda lock: lock.update(evidence_cutoff_date="2026-08-26"),
-            "contract": lambda lock: lock.update(correction_contract_sha256="0" * 64),
+            "contract": lambda lock: lock.update(r2_contract_sha256="0" * 64),
         }
         for name, mutation in mutations.items():
             with self.subTest(name=name):
@@ -224,6 +225,57 @@ class TestSciMd007Handoff(unittest.TestCase):
                 mutation(lock)
                 dump(path, lock)
                 self.assertEqual(MODULE.verify(root=root)["status"], "FAIL")
+
+    def test_contract_and_package_closure_tampers_fail(self):
+        cases = (
+            "R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json",
+            "R2_PACKAGE_AUTHORITY_CLOSURE.json",
+        )
+        for name in cases:
+            with self.subTest(name=name):
+                root = self.with_fixture()
+                path = root / "docs/validation/sci_md_007/upstream" / name
+                payload = load(path)
+                if "claim_ceiling" in payload:
+                    payload["claim_ceiling"] = payload["claim_ceiling"][:1]
+                    lock_field = "r2_contract_sha256"
+                else:
+                    payload["final_package_status"] = "FAIL"
+                    lock_field = "package_authority_closure_sha256"
+                dump(path, payload)
+                lock_path = root / "docs/validation/sci_md_007/PUCKWORKS_LOCK.json"
+                lock = load(lock_path)
+                lock[lock_field] = MODULE._sha(path.read_bytes())
+                dump(lock_path, lock)
+                self.assertEqual(MODULE.verify(root=root)["status"], "FAIL")
+
+    def test_boundary_evidence_forbidden_paths_fail(self):
+        for forbidden in (
+            "solver/injected.C",
+            "applications/injected.C",
+            "runtime/inventory_provider.py",
+            "docs/analysis/sci_md_006/injected.json",
+            "g0/injected.json",
+            "protected/angeloni.json",
+        ):
+            with self.subTest(forbidden=forbidden):
+                temporary = tempfile.TemporaryDirectory()
+                self.addCleanup(temporary.cleanup)
+                root = Path(temporary.name)
+                subprocess.run(["git", "init", "-q", str(root)], check=True)
+                subprocess.run(["git", "-C", str(root), "config", "user.email", "test@example.invalid"], check=True)
+                subprocess.run(["git", "-C", str(root), "config", "user.name", "Test"], check=True)
+                (root / "README.md").write_text("base\n")
+                subprocess.run(["git", "-C", str(root), "add", "README.md"], check=True)
+                subprocess.run(["git", "-C", str(root), "commit", "-q", "-m", "base"], check=True)
+                base = subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"], text=True).strip()
+                old = MODULE.STARTING_COMMIT
+                self.addCleanup(setattr, MODULE, "STARTING_COMMIT", old)
+                MODULE.STARTING_COMMIT = base
+                path = root / forbidden
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("injected\n")
+                self.assertEqual(MODULE.derive_boundary_evidence(root)["status"], "FAIL")
 
     def test_verifier_claims_only_exported_boolean_reduction(self):
         text = (ROOT / "validation/sci_md_007/verify_handoff.py").read_text()

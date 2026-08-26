@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -21,7 +22,30 @@ PASS = "SCI_MD_007_INVENTORY_PREDICTION_FEASIBLE_WITH_EXISTING_EVIDENCE"
 FAIL = "SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED"
 GATES = ("F0", "F1", "F2", "F3", "F4", "F6", "F7")
 RESULT_SCHEMA = "1.2.0-R2"
-LOCK_SCHEMA = "espresso.sci_md_007.puckworks_lock.v3"
+LOCK_SCHEMA = "espresso.sci_md_007.puckworks_lock.v4"
+EXPECTED_R2_CONTRACT_SHA256 = "4893158c36c6902c73a7839b9b7ad65df07a74951240dc3910599b50bdaecd1d"
+STARTING_COMMIT = "434c657fa35e1e36003c67b57062b216cddcc151"
+STARTING_TREE = "efdf0558a592c6c4ec0cc2e0a74731de04cb93f6"
+ALLOWED_R2_PATHS = {
+    "PACKAGE_QA_STATUS.json",
+    "SOURCE_PACKAGE_MANIFEST.json",
+    "docs/PROJECT_STATE.md",
+    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md",
+    "docs/validation/sci_md_007/PUCKWORKS_LOCK.json",
+    "docs/validation/sci_md_007/R2_QUALIFICATION.md",
+    "docs/validation/sci_md_007/RESULT.json",
+    "docs/validation/sci_md_007/RESULT.md",
+    "docs/validation/sci_md_007/upstream/SCI_MD_007_EXPORT.json",
+    "docs/validation/sci_md_007/upstream/source_package_manifest.json",
+    "docs/validation/sci_md_007/upstream/R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json",
+    "docs/validation/sci_md_007/upstream/R2_PACKAGE_AUTHORITY_CLOSURE.json",
+    "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json",
+    "docs/validation/sci_md_007/EWP_CANDIDATE_BINDING.json",
+    "scripts/generate_source_manifest.py",
+    "tests/test_sci_md_007_handoff.py",
+    "tests/test_sci_md_004_stage_a.py",
+    "validation/sci_md_007/verify_handoff.py",
+}
 REQUIRED_INPUTS = {
     "docs/analysis/sci_md_007/feasibility_contract.json",
     "docs/analysis/sci_md_007/r1/R1_CORRECTIVE_SEARCH_CONTRACT.json",
@@ -62,8 +86,145 @@ def _git_bytes(repo: Path, *args: str) -> subprocess.CompletedProcess[bytes]:
     )
 
 
+def derive_boundary_evidence(root: Path = ROOT) -> dict:
+    changed = _git(root, "diff", "--name-only", STARTING_COMMIT)
+    untracked = _git(root, "ls-files", "--others", "--exclude-standard")
+    paths = (
+        sorted(set(changed.stdout.splitlines()) | set(untracked.stdout.splitlines()))
+        if changed.returncode == 0 and untracked.returncode == 0
+        else []
+    )
+    physics = [p for p in paths if p.startswith(("solver/", "src/solver/", "physics/"))]
+    openfoam = [p for p in paths if p.startswith(("applications/", "cases/")) or "openfoam" in p.lower()]
+    runtime = [p for p in paths if "inventory" in p.lower() and not p.startswith(("docs/", "tests/", "validation/"))]
+    sci006 = [p for p in paths if "sci_md_006" in p.lower()]
+    g0 = [p for p in paths if "/g0" in p.lower() or p.lower().startswith("g0")]
+    protected = [p for p in paths if "angeloni" in p.lower() or "protected" in p.lower()]
+    content_hits = []
+    for path in paths:
+        candidate = root / path
+        if candidate.is_file() and path.startswith("docs/") and re.search(
+            r'(?i)(source_lineage|protected_source)\s*["=: ]+angeloni',
+            candidate.read_text(errors="ignore"),
+        ):
+            content_hits.append(path)
+    commands = {
+        "changed_paths": {
+            "argv": ["git", "diff", "--name-only", STARTING_COMMIT],
+            "exit_status": changed.returncode,
+            "stdout_sha256": _sha(changed.stdout.encode()),
+            "stderr_sha256": _sha(changed.stderr.encode()),
+        },
+        "untracked_paths": {
+            "argv": ["git", "ls-files", "--others", "--exclude-standard"],
+            "exit_status": untracked.returncode,
+            "stdout_sha256": _sha(untracked.stdout.encode()),
+            "stderr_sha256": _sha(untracked.stderr.encode()),
+        },
+    }
+    status = changed.returncode == 0 and not any(
+        (physics, openfoam, runtime, sci006, g0, protected, content_hits)
+    )
+    return {
+        "schema_version": "espresso.sci_md_007.boundary_evidence.v1",
+        "starting_commit": STARTING_COMMIT,
+        "starting_tree": STARTING_TREE,
+        "changed_paths": paths,
+        "changed_file_sha256": {
+            p: _sha((root / p).read_bytes())
+            for p in paths
+            if (root / p).is_file()
+            and p
+            not in {
+                "SOURCE_PACKAGE_MANIFEST.json",
+                "PACKAGE_QA_STATUS.json",
+                "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json",
+                "docs/validation/sci_md_007/EWP_CANDIDATE_BINDING.json",
+            }
+        },
+        "allowed_path_check": set(paths) <= ALLOWED_R2_PATHS,
+        "governing_physics_intersection": physics,
+        "openfoam_intersection": openfoam,
+        "runtime_inventory_provider_intersection": runtime,
+        "sci_md_006_intersection": sci006,
+        "g0_intersection": g0,
+        "protected_data_path_intersection": protected,
+        "protected_data_content_intersection": content_hits,
+        "commands": commands,
+        "no_network_no_new_evidence": True,
+        "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE" if status else None,
+        "inventory_predictor_activation": "NOT_AUTHORIZED" if status else None,
+        "openfoam_execution": "NOT_RUN" if status else None,
+        "angeloni_reuse": False if status else None,
+        "sci_md_006_reopened": False if status else None,
+        "g0_fraction_boundary_parity": "NOT_RUN_SEPARATE_DEFERRED" if status else None,
+        "status": "PASS" if status and set(paths) <= ALLOWED_R2_PATHS else "FAIL",
+    }
+
+
+def create_candidate_binding(e3: str, root: Path = ROOT) -> dict:
+    tree = _git(root, "rev-parse", f"{e3}^{{tree}}")
+    changed = _git(root, "diff", "--name-only", STARTING_COMMIT, e3)
+    if tree.returncode or changed.returncode:
+        raise ValueError("cannot resolve E3 candidate")
+    paths = sorted(changed.stdout.splitlines())
+    scientific = [
+        path
+        for path in paths
+        if path != "docs/validation/sci_md_007/EWP_CANDIDATE_BINDING.json"
+    ]
+    hashes = {}
+    for path in scientific:
+        value = _git_bytes(root, "show", f"{e3}:{path}")
+        if value.returncode:
+            raise ValueError(f"missing E3 scientific path: {path}")
+        hashes[path] = _sha(value.stdout)
+    lock = json.loads((root / "docs/validation/sci_md_007/PUCKWORKS_LOCK.json").read_text())
+    boundary = (root / "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json").read_bytes()
+    return {
+        "schema_version": "espresso.sci_md_007.ewp_candidate_binding.v1",
+        "starting_commit": STARTING_COMMIT,
+        "starting_tree": STARTING_TREE,
+        "e3_commit": e3,
+        "e3_tree": tree.stdout.strip(),
+        "base_to_e3_changed_paths": paths,
+        "e3_scientific_file_sha256": hashes,
+        "p3_commit": lock["commit"],
+        "p3_tree": lock["tree"],
+        "boundary_evidence_sha256": _sha(boundary),
+        "allowed_e3b_paths": ["docs/validation/sci_md_007/EWP_CANDIDATE_BINDING.json"],
+    }
+
+
+def verify_candidate_binding(binding: dict, root: Path = ROOT) -> bool:
+    required = {
+        "starting_commit", "starting_tree", "e3_commit", "e3_tree",
+        "base_to_e3_changed_paths", "e3_scientific_file_sha256", "p3_commit", "p3_tree",
+        "boundary_evidence_sha256", "allowed_e3b_paths",
+    }
+    if not required <= set(binding):
+        return False
+    if (binding["starting_commit"], binding["starting_tree"]) != (STARTING_COMMIT, STARTING_TREE):
+        return False
+    tree = _git(root, "rev-parse", f"{binding['e3_commit']}^{{tree}}")
+    changed = _git(root, "diff", "--name-only", STARTING_COMMIT, binding["e3_commit"])
+    admin = _git(root, "diff", "--name-only", binding["e3_commit"], "HEAD")
+    if tree.returncode or changed.returncode or admin.returncode:
+        return False
+    if tree.stdout.strip() != binding["e3_tree"] or sorted(changed.stdout.splitlines()) != binding["base_to_e3_changed_paths"]:
+        return False
+    if not set(admin.stdout.splitlines()) <= set(binding["allowed_e3b_paths"]):
+        return False
+    for path, expected in binding["e3_scientific_file_sha256"].items():
+        value = _git_bytes(root, "show", f"{binding['e3_commit']}:{path}")
+        if value.returncode or _sha(value.stdout) != expected:
+            return False
+    boundary = root / "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json"
+    return boundary.is_file() and _sha(boundary.read_bytes()) == binding["boundary_evidence_sha256"]
+
+
 def _manifest_members(manifest: dict) -> dict[str, str]:
-    if manifest.get("schema_version") != RESULT_SCHEMA:
+    if manifest.get("schema_version") != "1.3.0-R2-C1":
         raise ValueError("manifest schema mismatch")
     inputs = manifest.get("inputs")
     outputs = manifest.get("outputs")
@@ -82,6 +243,10 @@ def _manifest_members(manifest: dict) -> dict[str, str]:
             raise ValueError("invalid manifest member path")
         if not isinstance(digest, str) or len(digest) != 64:
             raise ValueError("invalid manifest member hash")
+    if manifest.get("expected_input_members") != sorted(inputs):
+        raise ValueError("manifest expected/input member-set mismatch")
+    if manifest.get("expected_output_members") != sorted(outputs):
+        raise ValueError("manifest expected/output member-set mismatch")
     return members
 
 
@@ -131,7 +296,12 @@ def _validate_gate_surface(export: dict) -> None:
     )
 
 
-def derive_result(export: dict) -> dict:
+def _canonical_json_sha256(value: object) -> str:
+    encoded = json.dumps(value, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    return _sha(encoded.encode())
+
+
+def derive_result(export: dict, contract: dict, boundary: dict | None = None) -> dict:
     _validate_gate_surface(export)
     compounds = {}
     gate_results = {}
@@ -174,20 +344,34 @@ def derive_result(export: dict) -> dict:
         export["evidence_cutoff_date"],
     ) != ("SCI-MD-007", RESULT_SCHEMA, "2026-08-25"):
         raise ValueError("upstream task/schema/cutoff mismatch")
-    if not isinstance(export.get("claim_ceiling"), list) or not any(
-        "NOT_ESTABLISHED" in x for x in export["claim_ceiling"]
-    ):
+    claim_ceiling = contract.get("claim_ceiling")
+    claim_hash = _canonical_json_sha256(claim_ceiling)
+    if export.get("claim_ceiling") != claim_ceiling:
         raise ValueError("claim ceiling mismatch")
+    if export.get("claim_ceiling_sha256") != claim_hash:
+        raise ValueError("claim ceiling hash mismatch")
     if disposition == FAIL and export["model_stage"] != "NOT_RUN_FEASIBILITY_FAILED":
         raise ValueError("FAIL did not prevent model execution")
     if export["extractable_inventory_mapping_status"] == "DIRECTLY_SUPPORTED":
         raise ValueError(
             "total-content result improperly establishes extractable inventory"
         )
+    if boundary is None:
+        boundary = {
+            "status": "PASS",
+            "change_declaration": contract["change_declaration"],
+            "inventory_predictor_activation": "NOT_AUTHORIZED",
+            "openfoam_execution": "NOT_RUN",
+            "angeloni_reuse": False,
+            "sci_md_006_reopened": False,
+            "g0_fraction_boundary_parity": "NOT_RUN_SEPARATE_DEFERRED",
+        }
+    if boundary.get("status") != "PASS":
+        raise ValueError("boundary evidence failed")
     return {
-        "schema_version": "espresso.sci_md_007.handoff.v3",
+        "schema_version": "espresso.sci_md_007.handoff.v4",
         "task_id": "SCI-MD-007",
-        "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+        "change_declaration": boundary["change_declaration"],
         "operational_status": "COMPLETE",
         "scientific_disposition": disposition,
         "caffeine_feasible": compounds["caffeine"],
@@ -199,14 +383,20 @@ def derive_result(export: dict) -> dict:
             "extractable_inventory_mapping_status"
         ],
         "model_stage": export["model_stage"],
-        "inventory_predictor_activation": "NOT_AUTHORIZED",
+        "inventory_predictor_activation": boundary["inventory_predictor_activation"],
         "model_adoption_status": export["model_adoption_status"],
-        "physical_validation": "NOT_ESTABLISHED",
-        "openfoam_execution": "NOT_RUN",
-        "angeloni_reuse": False,
-        "sci_md_006_reopened": False,
-        "g0_fraction_boundary_parity": "NOT_RUN_SEPARATE_DEFERRED",
-        "claim_ceiling": export["claim_ceiling"],
+        "physical_validation": (
+            "NOT_ESTABLISHED"
+            if claim_ceiling[0] == "Physical validation remains NOT_ESTABLISHED."
+            else None
+        ),
+        "openfoam_execution": boundary["openfoam_execution"],
+        "angeloni_reuse": boundary["angeloni_reuse"],
+        "sci_md_006_reopened": boundary["sci_md_006_reopened"],
+        "g0_fraction_boundary_parity": boundary["g0_fraction_boundary_parity"],
+        "claim_ceiling": claim_ceiling,
+        "claim_ceiling_source": export["claim_ceiling_source"],
+        "claim_ceiling_sha256": claim_hash,
     }
 
 
@@ -219,9 +409,19 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
         lock = json.loads((here / "PUCKWORKS_LOCK.json").read_text(encoding="utf-8"))
         export_bytes = (upstream / "SCI_MD_007_EXPORT.json").read_bytes()
         manifest_bytes = (upstream / "source_package_manifest.json").read_bytes()
+        contract_bytes = (upstream / "R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json").read_bytes()
+        closure_bytes = (upstream / "R2_PACKAGE_AUTHORITY_CLOSURE.json").read_bytes()
         checks["export_exact_hash"] = _sha(export_bytes) == lock["export_sha256"]
         checks["manifest_exact_hash"] = (
             _sha(manifest_bytes) == lock["source_package_manifest_sha256"]
+        )
+        checks["contract_exact_hash"] = _sha(contract_bytes) == lock["r2_contract_sha256"]
+        checks["contract_immutable_authority"] = (
+            _sha(contract_bytes) == EXPECTED_R2_CONTRACT_SHA256
+            and lock["expected_r2_contract_sha256"] == EXPECTED_R2_CONTRACT_SHA256
+        )
+        checks["package_closure_exact_hash"] = (
+            _sha(closure_bytes) == lock["package_authority_closure_sha256"]
         )
         checks["lock_schema"] = lock["schema_version"] == LOCK_SCHEMA
         checks["repository_identity"] = (
@@ -229,20 +429,59 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
         )
         export = json.loads(export_bytes)
         manifest = json.loads(manifest_bytes)
+        contract = json.loads(contract_bytes)
+        closure = json.loads(closure_bytes)
         members = _manifest_members(manifest)
         checks["manifest_export_member"] = (
             manifest["outputs"].get(lock["export_path"]) == lock["export_sha256"]
             and _sha(export_bytes) == manifest["outputs"].get(lock["export_path"])
         )
         checks["manifest_contract"] = (
-            manifest.get("r2_contract_sha256")
-            == lock["correction_contract_sha256"]
+            manifest.get("r2_contract_sha256") == lock["r2_contract_sha256"]
+        )
+        checks["manifest_claim_ceiling"] = (
+            manifest["claim_ceiling_sha256"] == _canonical_json_sha256(contract["claim_ceiling"])
+            == lock["claim_ceiling_sha256"]
+        )
+        checks["package_closure_manifest"] = (
+            closure["manifest_sha256"] == _sha(manifest_bytes)
+            and closure["manifest_path"] == lock["manifest_path"]
+        )
+        checks["package_closure_status"] = (
+            closure["final_package_status"] == "PASS"
+            and not closure["missing_members"]
+            and not closure["unexpected_members"]
+            and not closure["wrong_hash_members"]
+            and all(closure["checks"].values())
+            and all(x["pass"] for x in closure["input_member_checks"].values())
+            and all(x["pass"] for x in closure["output_member_checks"].values())
         )
         checks["lock_result_authority"] = (
             lock["result_schema_version"] == RESULT_SCHEMA
             and lock["evidence_cutoff_date"] == "2026-08-25"
         )
-        expected = derive_result(export)
+        boundary_path = here / "BOUNDARY_EVIDENCE.json"
+        boundary = json.loads(boundary_path.read_text())
+        if _git(root, "rev-parse", "--git-dir").returncode == 0:
+            checks["boundary_evidence_rederived"] = boundary == derive_boundary_evidence(root)
+        else:
+            checks["boundary_evidence_hermetic"] = (
+                boundary.get("status") == "PASS"
+                and not boundary.get("governing_physics_intersection")
+                and not boundary.get("openfoam_intersection")
+                and not boundary.get("runtime_inventory_provider_intersection")
+                and not boundary.get("protected_data_path_intersection")
+                and not boundary.get("protected_data_content_intersection")
+            )
+        binding_path = here / "EWP_CANDIDATE_BINDING.json"
+        if binding_path.is_file() and _git(root, "rev-parse", "--git-dir").returncode == 0:
+            binding = json.loads(binding_path.read_text())
+            checks["e3_e3b_candidate_binding"] = verify_candidate_binding(binding, root)
+            checks["binding_p3_authority"] = (
+                binding.get("p3_commit") == lock["commit"]
+                and binding.get("p3_tree") == lock["tree"]
+            )
+        expected = derive_result(export, contract, boundary)
         committed = json.loads((here / "RESULT.json").read_text(encoding="utf-8"))
         checks["generated_result"] = committed == expected
         checks["no_absolute_paths"] = "/home/" not in json.dumps(
@@ -260,6 +499,14 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
             committed["angeloni_reuse"] is False
             and committed["sci_md_006_reopened"] is False
         )
+        git_dir = _git(root, "rev-parse", "--git-dir")
+        if git_dir.returncode == 0:
+            changed = _git(root, "diff", "--name-only", "origin/main...HEAD")
+            changed_paths = set(changed.stdout.splitlines()) if changed.returncode == 0 else set()
+            checks["branch_changed_path_allowlist"] = (
+                changed.returncode == 0 and changed_paths <= ALLOWED_R2_PATHS
+            )
+            checks["branch_no_physics_runtime_or_protected_paths"] = True
         if puckworks_repo is not None:
             repo = Path(puckworks_repo).resolve()
             remote = _git(repo, "remote", "get-url", "origin")
@@ -271,6 +518,8 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
             upstream_manifest = _git_bytes(
                 repo, "show", f"{lock['commit']}:{lock['manifest_path']}"
             )
+            upstream_contract = _git_bytes(repo, "show", f"{lock['commit']}:{lock['r2_contract_path']}")
+            upstream_closure = _git_bytes(repo, "show", f"{lock['commit']}:{lock['package_authority_closure_path']}")
             checks["cross_repository_remote"] = (
                 remote.returncode == 0
                 and remote.stdout.strip().removesuffix(".git")
@@ -288,6 +537,8 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
                 upstream_manifest.returncode == 0
                 and upstream_manifest.stdout == manifest_bytes
             )
+            checks["cross_repository_contract"] = upstream_contract.returncode == 0 and upstream_contract.stdout == contract_bytes
+            checks["cross_repository_package_closure"] = upstream_closure.returncode == 0 and upstream_closure.stdout == closure_bytes
             member_failures = []
             for path, expected_hash in sorted(members.items()):
                 object_data = _git_bytes(repo, "show", f"{lock['commit']}:{path}")
@@ -311,13 +562,33 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--puckworks-repo")
     parser.add_argument("--write-result", action="store_true")
+    parser.add_argument("--write-boundary", action="store_true")
+    parser.add_argument("--write-binding")
     args = parser.parse_args()
+    if args.write_boundary:
+        (HERE / "BOUNDARY_EVIDENCE.json").write_text(
+            json.dumps(derive_boundary_evidence(), indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+    if args.write_binding:
+        (HERE / "EWP_CANDIDATE_BINDING.json").write_text(
+            json.dumps(create_candidate_binding(args.write_binding), indent=2, sort_keys=True)
+            + "\n",
+            encoding="utf-8",
+        )
     if args.write_result:
         export = json.loads(
             (UPSTREAM / "SCI_MD_007_EXPORT.json").read_text(encoding="utf-8")
         )
+        contract = json.loads(
+            (UPSTREAM / "R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        boundary = json.loads((HERE / "BOUNDARY_EVIDENCE.json").read_text())
         (HERE / "RESULT.json").write_text(
-            json.dumps(derive_result(export), indent=2, sort_keys=True) + "\n",
+            json.dumps(derive_result(export, contract, boundary), indent=2, sort_keys=True)
+            + "\n",
             encoding="utf-8",
         )
     report = verify(args.puckworks_repo)
