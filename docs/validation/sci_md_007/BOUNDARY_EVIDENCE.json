@@ -16,7 +16,7 @@
     "scripts/generate_source_manifest.py": "0846b6534c69a4ac46ad9a40c42eb79b85db58fb97b4030a841402124c9b6051",
     "tests/test_sci_md_004_stage_a.py": "f0f90bf0a1e21c61d6897037acfa778243daef60e8b139972a14f1ca1901493f",
     "tests/test_sci_md_007_handoff.py": "2db5ce4603f65111bb041a1905822c2ec14f870ecdc45ff16db3083e67f8709c",
-    "validation/sci_md_007/verify_handoff.py": "30693dd3da6893a454b268af651a8b9222dde22d785a17caf041b0d59ae7cf5c"
+    "validation/sci_md_007/verify_handoff.py": "1dfaf5a5c130f2569d43d475f3bb0d3b9401748e4a9357f9e18be3e06476cbe5"
   },
   "changed_paths": [
     "PACKAGE_QA_STATUS.json",

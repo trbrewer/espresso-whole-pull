@@ -467,7 +467,19 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
         )
         boundary_path = here / "BOUNDARY_EVIDENCE.json"
         boundary = json.loads(boundary_path.read_text())
-        if _git(root, "rev-parse", "--git-dir").returncode == 0:
+        binding_path = here / "EWP_CANDIDATE_BINDING.json"
+        if binding_path.is_file() and _git(root, "rev-parse", "--git-dir").returncode == 0:
+            binding = json.loads(binding_path.read_text())
+            frozen_boundary = _git_bytes(
+                root,
+                "show",
+                f"{binding['e3_commit']}:docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json",
+            )
+            checks["boundary_evidence_rederived"] = (
+                frozen_boundary.returncode == 0
+                and frozen_boundary.stdout == boundary_path.read_bytes()
+            )
+        elif _git(root, "rev-parse", "--git-dir").returncode == 0:
             checks["boundary_evidence_rederived"] = boundary == derive_boundary_evidence(root)
         else:
             checks["boundary_evidence_hermetic"] = (
@@ -478,9 +490,7 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
                 and not boundary.get("protected_data_path_intersection")
                 and not boundary.get("protected_data_content_intersection")
             )
-        binding_path = here / "EWP_CANDIDATE_BINDING.json"
         if binding_path.is_file() and _git(root, "rev-parse", "--git-dir").returncode == 0:
-            binding = json.loads(binding_path.read_text())
             checks["e3_e3b_candidate_binding"] = verify_candidate_binding(binding, root)
             checks["binding_p3_authority"] = (
                 binding.get("p3_commit") == lock["commit"]
