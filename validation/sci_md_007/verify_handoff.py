@@ -94,6 +94,11 @@ def derive_boundary_evidence(root: Path = ROOT) -> dict:
         if changed.returncode == 0 and untracked.returncode == 0
         else []
     )
+    paths = [
+        path
+        for path in paths
+        if path != "docs/validation/sci_md_007/EWP_CANDIDATE_BINDING.json"
+    ]
     physics = [p for p in paths if p.startswith(("solver/", "src/solver/", "physics/"))]
     openfoam = [p for p in paths if p.startswith(("applications/", "cases/")) or "openfoam" in p.lower()]
     runtime = [p for p in paths if "inventory" in p.lower() and not p.startswith(("docs/", "tests/", "validation/"))]

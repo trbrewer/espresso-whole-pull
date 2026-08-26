@@ -14,9 +14,9 @@
     "docs/validation/sci_md_007/upstream/SCI_MD_007_EXPORT.json": "48b915a322dbe3dd2275bf06e741232ac7f70527e9629d4dc7ea199685be4688",
     "docs/validation/sci_md_007/upstream/source_package_manifest.json": "d29689477be1df64f6248734c2faf817dd8dafbf17f31ca49e0a1d055798cf0e",
     "scripts/generate_source_manifest.py": "0846b6534c69a4ac46ad9a40c42eb79b85db58fb97b4030a841402124c9b6051",
-    "tests/test_sci_md_004_stage_a.py": "4391886a18be200cd65151ae263e2a73174895a2cf0d410ef5a0f3c3c74d339f",
+    "tests/test_sci_md_004_stage_a.py": "f0f90bf0a1e21c61d6897037acfa778243daef60e8b139972a14f1ca1901493f",
     "tests/test_sci_md_007_handoff.py": "2db5ce4603f65111bb041a1905822c2ec14f870ecdc45ff16db3083e67f8709c",
-    "validation/sci_md_007/verify_handoff.py": "e5356d22f3fd0752245307fac4adb39a6a0582d31dddb4d57da503a7b0376ed3"
+    "validation/sci_md_007/verify_handoff.py": "30693dd3da6893a454b268af651a8b9222dde22d785a17caf041b0d59ae7cf5c"
   },
   "changed_paths": [
     "PACKAGE_QA_STATUS.json",
@@ -47,7 +47,7 @@
       ],
       "exit_status": 0,
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "7742bf9c2147a880db9965155d14c1e4c5cef9ac6034c58924c70b1782604462"
+      "stdout_sha256": "935390ae102d88245439980992b11cb679b20a12c5bd463dfdc9bc340b16f3e7"
     },
     "untracked_paths": {
       "argv": [
@@ -58,7 +58,7 @@
       ],
       "exit_status": 0,
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "2b5228385a3cb3ddce3cf5c234f74f78c0cac1d603978dd5d844454f2a3be1ac"
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
   },
   "g0_fraction_boundary_parity": "NOT_RUN_SEPARATE_DEFERRED",
