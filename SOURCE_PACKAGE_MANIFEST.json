@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 529,
-  "total_uncompressed_bytes_excluding_manifest": 7310072,
-  "aggregate_source_sha256": "dc39be3e3cb836fe44502865f1842a7b0efbdcee654855a5265125cd35d2e2b4",
-  "aggregate_sha256": "dc39be3e3cb836fe44502865f1842a7b0efbdcee654855a5265125cd35d2e2b4",
+  "file_count": 544,
+  "total_uncompressed_bytes_excluding_manifest": 7323744,
+  "aggregate_source_sha256": "04272f4dd5c557aae5c22c8d2b01918ea6cb1150630b219d3b536b6eb60baa1d",
+  "aggregate_sha256": "04272f4dd5c557aae5c22c8d2b01918ea6cb1150630b219d3b536b6eb60baa1d",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1104,8 +1104,8 @@
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/PUCKWORKS_AUTHORITY.json": {
-      "sha256": "49ffc8dae6c3d6c58e4e3087f8cb91de404c2444234b7e752214794d2091ffbb",
-      "bytes": 835,
+      "sha256": "33221c4a572665795a4643645f66203be1321583622c863b89918a96f04ba353",
+      "bytes": 1393,
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/RESULT.json": {
@@ -1119,8 +1119,78 @@
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/SCI_ED_002_EXPORT.json": {
-      "sha256": "7d48c05411b2808cf9b15c8b49842859af7a2a91263dcb9552c1177d02d7cd96",
-      "bytes": 3547,
+      "sha256": "18716c638a1837a8719a55b579e45514b217b686e9a6960ef8cc8379e7bc0d34",
+      "bytes": 4015,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/ACTIVATION.json": {
+      "sha256": "9eae934a3c4f7d53d90740a536291ff7179b848d0f9668948a58061e087eaa14",
+      "bytes": 494,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/AUTHORIZATION.md": {
+      "sha256": "fba6c34b61d6a6aa845a8eb39de44a9b5b3a4a5bf43c33c50d10ccfab9b0129a",
+      "bytes": 360,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/BRANCH_NO_PHYSICS_RESULT.json": {
+      "sha256": "896af93d9f34dc2f7a484f8cb1ece1b6d8f597b4f0e510ac17fc03ab6d006e3c",
+      "bytes": 332,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/BRANCH_NO_PHYSICS_RESULT.md": {
+      "sha256": "b9d967e3383f6fddfaa098f2ad9a321fdc51f8df6235aa37dac244fac03b7015",
+      "bytes": 318,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/FINAL_HEAD_QUALIFICATION.json": {
+      "sha256": "60f80aba3c3d7727de11ac6fa3a5c0c1a295c5b6a1b4dbdd263b1c4827b95c3d",
+      "bytes": 238,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/FINAL_HEAD_QUALIFICATION.md": {
+      "sha256": "cb30c0e7ef91fa3e493bbb39618e757d500a9d0022a3ac2927794affe83878c2",
+      "bytes": 195,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/HISTORICAL_NO_PHYSICS_VERIFIER_COMPARISON.json": {
+      "sha256": "29597de132be621579c3f66c1c2aec22e0309eae4368c9ea97e776c44a9c55e6",
+      "bytes": 1216,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/HISTORICAL_NO_PHYSICS_VERIFIER_COMPARISON.md": {
+      "sha256": "43d54025629259553f341dfab84eacaa83a54bb761a2c1bd196bdb329e68b9b0",
+      "bytes": 322,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/PROTECTED_PATHS.json": {
+      "sha256": "a07c921374807e6c00bc4eebb826f620be8cf384923ece55abd04474da2b4197",
+      "bytes": 1984,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/PUCKWORKS_FINAL_AUTHORITY_RECONCILIATION.json": {
+      "sha256": "684481b24267dcf8ddc77f1d187ce264cae6d6d6d6c30f4ecb6214e158b2d0ba",
+      "bytes": 489,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/PUCKWORKS_FINAL_AUTHORITY_RECONCILIATION.md": {
+      "sha256": "fc4ebd7f0bda034b8f3992eafbd950c0db7da66ce7c0a7dc9ff5afcb9f16ae98",
+      "bytes": 405,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/R1_RESULT.json": {
+      "sha256": "72b691476ee003a18a4f385168e400fbac403cb0879f155d2a0fb381aa59a4f4",
+      "bytes": 566,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/R1_RESULT.md": {
+      "sha256": "161c0f749d25e53ac75cf039171760d217bb326f166d9d0349b47846fba51e31",
+      "bytes": 323,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r1/SOURCE_MANIFEST.json": {
+      "sha256": "a183ca1a5666b4fb07e285ac4e30d1e8580178a290a02fc9de692b20aa388ced",
+      "bytes": 1428,
       "git_mode": "100644"
     },
     "docs/validation/sci_md_004/STAGE_A_CONTRACT.md": {
@@ -1729,8 +1799,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_sci_ed_002_handoff.py": {
-      "sha256": "fd7cf9dee89d07e82eaaad99317fdf50e6272c0e84ba5976438feaa9d4cc45b2",
-      "bytes": 3332,
+      "sha256": "cd19d9559c160e5bb032cbe3570230ee061ff5dec1028d9dab98bbee1bb87ffb",
+      "bytes": 4197,
       "git_mode": "100755"
     },
     "scripts/verify_source_manifest.py": {
@@ -1948,6 +2018,11 @@
       "bytes": 5817,
       "git_mode": "100644"
     },
+    "tests/test_branch_no_physics_change.py": {
+      "sha256": "a6ad11da0d5143f9db986e709dcf02b4089c777a46b1fdefeecd634985b20b0c",
+      "bytes": 3021,
+      "git_mode": "100644"
+    },
     "tests/test_change_contract.py": {
       "sha256": "08968615389dda13fe4adf4cc9c3fcfc237b00444fcf14cc24e11d3ba8432299",
       "bytes": 7498,
@@ -1989,8 +2064,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_ed_002_handoff.py": {
-      "sha256": "c69b0b0addb7a8c7ebece9e3c4e47c8b620a715c7ddf1f892e4712bd8f959fe7",
-      "bytes": 1036,
+      "sha256": "749e589943ab8870471cb5fda9e9ebd3c0e08ae454f975da488f521a5a985100",
+      "bytes": 1126,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_executor.py": {
