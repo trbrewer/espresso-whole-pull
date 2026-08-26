@@ -13,6 +13,7 @@ No OpenFOAM execution or governing-physics change occurred. Angeloni was not reu
 SCI-MD-006 remains its preserved pre-execution STOP. The generic exact fraction-boundary
 production/reduced parity qualification remains a separate deferred numerical-interface task,
 not a continuation or repair of SCI-MD-006.
+Public source verification: 514/514 PASS.
 
 SCI-MD-005 is `SCI_MD_005_TRAINING_DATA_CONTRACT_BLOCKED`. Its required
 inventory-scaled common-extraction H0 cannot exactly reproduce the frozen
