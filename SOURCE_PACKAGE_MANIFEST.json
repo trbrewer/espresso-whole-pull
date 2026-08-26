@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 507,
-  "total_uncompressed_bytes_excluding_manifest": 7208538,
-  "aggregate_source_sha256": "3e725ddd6953981c2e3a2c0c7093712de452c8f4a8cea87426e42256098baa6c",
-  "aggregate_sha256": "3e725ddd6953981c2e3a2c0c7093712de452c8f4a8cea87426e42256098baa6c",
+  "file_count": 517,
+  "total_uncompressed_bytes_excluding_manifest": 7298415,
+  "aggregate_source_sha256": "008198f26729872076cca3707618479e036cecd7027f73865a2766bb0eaa812b",
+  "aggregate_sha256": "008198f26729872076cca3707618479e036cecd7027f73865a2766bb0eaa812b",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1148,6 +1148,51 @@
       "bytes": 5010,
       "git_mode": "100644"
     },
+    "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json": {
+      "sha256": "265004aa333014e1863831abcb7ccf10424e976f7372d788bef1940d2cf3bdee",
+      "bytes": 4207,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_007/PUCKWORKS_LOCK.json": {
+      "sha256": "c51a0f792d0f11d55882d103f716ea090209142df14620b546815cc8523cea32",
+      "bytes": 1241,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_007/R2_QUALIFICATION.md": {
+      "sha256": "6f82b725fa42e05adae5991a5514146189094bbeeb46d144bb2531296395e1a1",
+      "bytes": 1374,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_007/RESULT.json": {
+      "sha256": "e11b1244d38540acb04206e15ded869848ed5457326bb4cdc7190f3855da2391",
+      "bytes": 1833,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_007/RESULT.md": {
+      "sha256": "076f3287ff0e6f2d06cf756af3014de1aebd14f57dd1ed75db20992cc69b632e",
+      "bytes": 1680,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_007/upstream/R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json": {
+      "sha256": "4893158c36c6902c73a7839b9b7ad65df07a74951240dc3910599b50bdaecd1d",
+      "bytes": 6254,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_007/upstream/R2_PACKAGE_AUTHORITY_CLOSURE.json": {
+      "sha256": "96342c3bd34e87b9fa37700c18f88bcc02c4a3ae424fca91a4683bb266eb9bc3",
+      "bytes": 17323,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_007/upstream/SCI_MD_007_EXPORT.json": {
+      "sha256": "48b915a322dbe3dd2275bf06e741232ac7f70527e9629d4dc7ea199685be4688",
+      "bytes": 30549,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_md_007/upstream/source_package_manifest.json": {
+      "sha256": "d29689477be1df64f6248734c2faf817dd8dafbf17f31ca49e0a1d055798cf0e",
+      "bytes": 8774,
+      "git_mode": "100644"
+    },
     "docs/validation/templates/VALIDATION_CASE_PROTOCOL_TEMPLATE.md": {
       "sha256": "70bb9dbd1db2ca6a1fe9fefa376f90b5eaa3dde69dd0dcb585e18a4115525a96",
       "bytes": 1023,
@@ -1304,8 +1349,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "19fb99efe9bee76dcd39d08c5b52cb75dac50c845cd8c63eceb2303447518a68",
-      "bytes": 9086,
+      "sha256": "0846b6534c69a4ac46ad9a40c42eb79b85db58fb97b4030a841402124c9b6051",
+      "bytes": 9346,
       "git_mode": "100755"
     },
     "scripts/generate_val001_administrative_freeze.py": {
@@ -1944,8 +1989,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_a.py": {
-      "sha256": "8e9503c3aee84fbeb6069052f890812e085a26f2f25881c1a7c885fa8d6a10e2",
-      "bytes": 4163,
+      "sha256": "f0f90bf0a1e21c61d6897037acfa778243daef60e8b139972a14f1ca1901493f",
+      "bytes": 4352,
       "git_mode": "100644"
     },
     "tests/test_sci_md_004_stage_c.py": {
@@ -1971,6 +2016,11 @@
     "tests/test_sci_md_005.py": {
       "sha256": "171d2b258488bec3cda1c77ec037198dc57b35ec0b99df52957d9428f3d10219",
       "bytes": 3095,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_007_handoff.py": {
+      "sha256": "2db5ce4603f65111bb041a1905822c2ec14f870ecdc45ff16db3083e67f8709c",
+      "bytes": 16193,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

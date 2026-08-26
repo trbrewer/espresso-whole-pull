@@ -1,5 +1,11 @@
 # Solver Development and Validation Roadmap
 
+> **SCI-MD-007 (2026-08-25):** completed as a no-physics evidence-feasibility screen.
+> Disposition: `SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`.
+> The next inventory-specific action is additional paired direct dry-basis caffeine and
+> trigonelline measurement evidence; no predictor activation or experimental commissioning is
+> authorized. Generic exact fraction-boundary parity remains separate and deferred.
+
 The enduring forward scientific sequence and merged SCI-MD-001 result are in
 the [Scientific Modeling Forward Plan](SCIENTIFIC_MODELING_FORWARD_PLAN.md).
 The independent-data validation gate is unchanged. `RP-D-LC-001b` is closed

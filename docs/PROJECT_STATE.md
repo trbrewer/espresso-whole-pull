@@ -1,5 +1,22 @@
 # Project State
 
+SCI-MD-007-R2-C1 preserves the stopped R2 producer/consumer candidates and additively
+supersedes their package authority with the qualified P3 handoff. The scientific reduction remains
+`SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`,
+locked to Puckworks commit `31741303fb604ed3e6586a555ea6ef6989c24a62` and tree
+`a918072d28f555bf98638fa97da1adb568bf09b8`. Exact vendored export, manifest,
+R2 correction contract, and package-authority closure
+bytes are hash-verified, every manifest member closes against producer Git objects when available,
+and the exported Boolean decision is independently reduced. Puckworks remains authoritative for
+deriving gate primitives from evidence registers. No descriptor-conditioned
+initial-inventory predictor or runtime adoption is authorized. Total roasted content remains
+distinct from extractable inventory and c_s0; physical validation remains `NOT_ESTABLISHED`.
+No OpenFOAM execution or governing-physics change occurred. Angeloni was not reused and
+SCI-MD-006 remains its preserved pre-execution STOP. The generic exact fraction-boundary
+production/reduced parity qualification remains a separate deferred numerical-interface task,
+not a continuation or repair of SCI-MD-006.
+Public source verification: 517/517 PASS.
+
 SCI-MD-005 is `SCI_MD_005_TRAINING_DATA_CONTRACT_BLOCKED`. Its required
 inventory-scaled common-extraction H0 cannot exactly reproduce the frozen
 SCI-MD-004 H0 species and total-solids artifacts because the historical cases
@@ -143,7 +160,7 @@ Puckworks dependency lock, or the physical-validation ceiling.
 - Archival baseline: WP-0.1H v0.1.4, `FROZEN / QUALIFIED`
 - OpenFOAM target: Foundation 12
 - Puckworks integration: locked external checkout, no submodule
-- Public source verification: 507/507 PASS
+- Public source verification: 513/513 PASS (derived from `SOURCE_PACKAGE_MANIFEST.json`)
 - Active validation case: `NONE`
 - Active data-planning task: `NONE`
 - Active solver task: `NONE`
