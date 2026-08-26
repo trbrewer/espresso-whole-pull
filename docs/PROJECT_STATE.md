@@ -1,10 +1,12 @@
 # Project State
 
-SCI-MD-007-R1 correctively supersedes the provisional handoff and is complete with
+SCI-MD-007-R2 additively supersedes the provisional and R1 handoffs and is complete with
 `SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`,
-locked to Puckworks commit `7a9603c0f795fa28dca75c7be1aa594cc929c4e9` and tree
-`02f52fa29e3b1e70fcba5e4656d5f5ddfdce5aa6`. Exact vendored export and manifest
-bytes are hash-verified, and the nested gates are independently reduced. No descriptor-conditioned
+locked to Puckworks commit `bd811cff2765573b5f9a4c8bf26f95a5a0d6392f` and tree
+`5cbfa7092f9731f281e54e702065a31831b4ca53`. Exact vendored export and manifest
+bytes are hash-verified, every manifest member closes against producer Git objects when available,
+and the exported Boolean decision is independently reduced. Puckworks remains authoritative for
+deriving gate primitives from evidence registers. No descriptor-conditioned
 initial-inventory predictor or runtime adoption is authorized. Total roasted content remains
 distinct from extractable inventory and c_s0; physical validation remains `NOT_ESTABLISHED`.
 No OpenFOAM execution or governing-physics change occurred. Angeloni was not reused and

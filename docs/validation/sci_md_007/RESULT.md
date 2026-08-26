@@ -1,12 +1,15 @@
-# SCI-MD-007-R1 corrected thin handoff
+# SCI-MD-007-R2 exact evidence-package handoff
 
-This additive correction supersedes the provisional handoff without rewriting it from Git
-history. It binds Puckworks commit `7a9603c0f795fa28dca75c7be1aa594cc929c4e9`, tree
-`02f52fa29e3b1e70fcba5e4656d5f5ddfdce5aa6`, export SHA-256
-`a754b4e6caa876bb07aa21eaced6af97d557607341b7fb3fec89a4b190e43844`, and source-package
-manifest SHA-256 `49d6cf99055fa4aace7de74a80ddedf224e3113b304b3c1ba4fec04d7f3b1453`.
-The verifier hashes and parses the vendored bytes and can independently compare them with the
-exact upstream Git object.
+This additive correction preserves the provisional and R1 handoffs in Git history. It binds
+Puckworks commit `bd811cff2765573b5f9a4c8bf26f95a5a0d6392f`, tree
+`5cbfa7092f9731f281e54e702065a31831b4ca53`, export SHA-256
+`68bffe377587b3b91a0128c3277aaf637ee77e0ac2f78e25d627577804659e08`, and source-package
+manifest SHA-256 `0c024450b58a0b707c59bcd57029a378669cfc1d57b8546498ec8483442d8ab4`.
+
+EWP verifies the exact Puckworks producer authority and source-package bytes and independently
+reduces the exported Boolean feasibility decision. Puckworks remains the authority that derives
+the gate primitives from the underlying evidence registers. With the producer checkout supplied,
+the verifier reads the exact commit's Git objects and closes every manifest member hash.
 
 Puckworks mechanically returned
 `SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`.

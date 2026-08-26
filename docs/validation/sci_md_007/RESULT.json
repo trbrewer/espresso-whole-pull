@@ -31,6 +31,7 @@
     }
   },
   "extractable_inventory_mapping_status": "NOT_ESTABLISHED",
+  "g0_fraction_boundary_parity": "NOT_RUN_SEPARATE_DEFERRED",
   "inventory_predictor_activation": "NOT_AUTHORIZED",
   "model_adoption_status": "NOT_AUTHORIZED_BY_FEASIBILITY_SCREEN",
   "model_stage": "NOT_RUN_FEASIBILITY_FAILED",
@@ -39,7 +40,7 @@
   "overall_feasible": false,
   "paired_gate_F5": false,
   "physical_validation": "NOT_ESTABLISHED",
-  "schema_version": "espresso.sci_md_007.handoff.v2",
+  "schema_version": "espresso.sci_md_007.handoff.v3",
   "sci_md_006_reopened": false,
   "scientific_disposition": "SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED",
   "task_id": "SCI-MD-007",

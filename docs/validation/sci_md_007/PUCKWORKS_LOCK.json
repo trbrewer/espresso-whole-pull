@@ -1,11 +1,13 @@
 {
-  "schema_version": "espresso.sci_md_007.puckworks_lock.v2",
+  "schema_version": "espresso.sci_md_007.puckworks_lock.v3",
   "repository": "https://github.com/trbrewer/puckworks.git",
-  "commit": "7a9603c0f795fa28dca75c7be1aa594cc929c4e9",
-  "tree": "02f52fa29e3b1e70fcba5e4656d5f5ddfdce5aa6",
+  "commit": "bd811cff2765573b5f9a4c8bf26f95a5a0d6392f",
+  "tree": "5cbfa7092f9731f281e54e702065a31831b4ca53",
   "export_path": "docs/analysis/sci_md_007/SCI_MD_007_EXPORT.json",
-  "export_sha256": "a754b4e6caa876bb07aa21eaced6af97d557607341b7fb3fec89a4b190e43844",
+  "export_sha256": "68bffe377587b3b91a0128c3277aaf637ee77e0ac2f78e25d627577804659e08",
   "manifest_path": "docs/analysis/sci_md_007/source_package_manifest.json",
-  "source_package_manifest_sha256": "49d6cf99055fa4aace7de74a80ddedf224e3113b304b3c1ba4fec04d7f3b1453",
-  "result_schema_version": "1.1.0-R1"
+  "source_package_manifest_sha256": "0c024450b58a0b707c59bcd57029a378669cfc1d57b8546498ec8483442d8ab4",
+  "result_schema_version": "1.2.0-R2",
+  "evidence_cutoff_date": "2026-08-25",
+  "correction_contract_sha256": "4893158c36c6902c73a7839b9b7ad65df07a74951240dc3910599b50bdaecd1d"
 }
