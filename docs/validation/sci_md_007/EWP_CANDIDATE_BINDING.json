@@ -1,0 +1,51 @@
+{
+  "allowed_e3b_paths": [
+    "docs/validation/sci_md_007/EWP_CANDIDATE_BINDING.json"
+  ],
+  "base_to_e3_changed_paths": [
+    "PACKAGE_QA_STATUS.json",
+    "SOURCE_PACKAGE_MANIFEST.json",
+    "docs/PROJECT_STATE.md",
+    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md",
+    "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json",
+    "docs/validation/sci_md_007/PUCKWORKS_LOCK.json",
+    "docs/validation/sci_md_007/R2_QUALIFICATION.md",
+    "docs/validation/sci_md_007/RESULT.json",
+    "docs/validation/sci_md_007/RESULT.md",
+    "docs/validation/sci_md_007/upstream/R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json",
+    "docs/validation/sci_md_007/upstream/R2_PACKAGE_AUTHORITY_CLOSURE.json",
+    "docs/validation/sci_md_007/upstream/SCI_MD_007_EXPORT.json",
+    "docs/validation/sci_md_007/upstream/source_package_manifest.json",
+    "scripts/generate_source_manifest.py",
+    "tests/test_sci_md_004_stage_a.py",
+    "tests/test_sci_md_007_handoff.py",
+    "validation/sci_md_007/verify_handoff.py"
+  ],
+  "boundary_evidence_sha256": "265004aa333014e1863831abcb7ccf10424e976f7372d788bef1940d2cf3bdee",
+  "e3_commit": "3aba38cc7148850f33179976dfe697134714428b",
+  "e3_scientific_file_sha256": {
+    "PACKAGE_QA_STATUS.json": "ab97e8d71a863f4743cf68e8569ff8a0fe2573a1d8651ff143c4119f6dbeea90",
+    "SOURCE_PACKAGE_MANIFEST.json": "f40ba631e32ee2361842a182d6ab5dc9e477eabf528a1d6e22d1f53aab29ec94",
+    "docs/PROJECT_STATE.md": "0e13024db20b033f6c90fa537f41bd73e80d2087ece4177a537bcf5acc7a8bc8",
+    "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md": "77a645da14de08b098979ec979a683a91c88ccdfc5188510d7e6afbd634dadaf",
+    "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json": "265004aa333014e1863831abcb7ccf10424e976f7372d788bef1940d2cf3bdee",
+    "docs/validation/sci_md_007/PUCKWORKS_LOCK.json": "c51a0f792d0f11d55882d103f716ea090209142df14620b546815cc8523cea32",
+    "docs/validation/sci_md_007/R2_QUALIFICATION.md": "6f82b725fa42e05adae5991a5514146189094bbeeb46d144bb2531296395e1a1",
+    "docs/validation/sci_md_007/RESULT.json": "e11b1244d38540acb04206e15ded869848ed5457326bb4cdc7190f3855da2391",
+    "docs/validation/sci_md_007/RESULT.md": "076f3287ff0e6f2d06cf756af3014de1aebd14f57dd1ed75db20992cc69b632e",
+    "docs/validation/sci_md_007/upstream/R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json": "4893158c36c6902c73a7839b9b7ad65df07a74951240dc3910599b50bdaecd1d",
+    "docs/validation/sci_md_007/upstream/R2_PACKAGE_AUTHORITY_CLOSURE.json": "96342c3bd34e87b9fa37700c18f88bcc02c4a3ae424fca91a4683bb266eb9bc3",
+    "docs/validation/sci_md_007/upstream/SCI_MD_007_EXPORT.json": "48b915a322dbe3dd2275bf06e741232ac7f70527e9629d4dc7ea199685be4688",
+    "docs/validation/sci_md_007/upstream/source_package_manifest.json": "d29689477be1df64f6248734c2faf817dd8dafbf17f31ca49e0a1d055798cf0e",
+    "scripts/generate_source_manifest.py": "0846b6534c69a4ac46ad9a40c42eb79b85db58fb97b4030a841402124c9b6051",
+    "tests/test_sci_md_004_stage_a.py": "f0f90bf0a1e21c61d6897037acfa778243daef60e8b139972a14f1ca1901493f",
+    "tests/test_sci_md_007_handoff.py": "2db5ce4603f65111bb041a1905822c2ec14f870ecdc45ff16db3083e67f8709c",
+    "validation/sci_md_007/verify_handoff.py": "1dfaf5a5c130f2569d43d475f3bb0d3b9401748e4a9357f9e18be3e06476cbe5"
+  },
+  "e3_tree": "34730e3bbb3077ee794863c3a906188667f592b9",
+  "p3_commit": "31741303fb604ed3e6586a555ea6ef6989c24a62",
+  "p3_tree": "a918072d28f555bf98638fa97da1adb568bf09b8",
+  "schema_version": "espresso.sci_md_007.ewp_candidate_binding.v1",
+  "starting_commit": "434c657fa35e1e36003c67b57062b216cddcc151",
+  "starting_tree": "efdf0558a592c6c4ec0cc2e0a74731de04cb93f6"
+}
