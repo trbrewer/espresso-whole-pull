@@ -1,1 +1,44 @@
-{"blockers":["REQUIRED_NO_PHYSICS_VERIFIER_REPORTS_PREEXISTING_BASELINE_MISMATCH","REPOSITORY_WIDE_UNIT_SUITE_NOT_RERUN_TO_PASS_AFTER_INTEGRATION_CORRECTIONS"],"c_s0_mapping_status":"NOT_ESTABLISHED","commissioning_authorized":false,"disposition":"SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED","governing_physics_change":false,"measurements_collected":false,"physical_validation_status":"NOT_ESTABLISHED","predictor_eligible":false,"production_code_modified":false,"sci_md_007_reexecuted":false}
+{
+  "schema_version": "ewp.sci_ed_002.current_result.v2",
+  "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",
+  "consumer_technical_disposition": "SCI_ED_002_R2B_EWP_CURRENT_STATUS_AND_EXACT_PRODUCER_HANDOFF_QUALIFIED_NO_BRANCH_PHYSICS_CHANGE",
+  "review_disposition": "PENDING_INDEPENDENT_EXACT_HEAD_REREVIEW",
+  "current_overall_disposition": "SCI_ED_002_R2B_STATUS_TRUTH_AND_EXACT_PRODUCER_VERIFICATION_PASS_METHOD_SPECIFIC_SCIENTIFIC_BLOCK_RETAINED_READY_FOR_INDEPENDENT_EXACT_HEAD_REREVIEW",
+  "producer_authority": {
+    "commit": "e22a422d7c9cac5cd6d0779d5f5455bf492a018e",
+    "tree": "33c9d603760163842caa86aa932053ca44b120f8",
+    "export_sha256": "18716c638a1837a8719a55b579e45514b217b686e9a6960ef8cc8379e7bc0d34",
+    "source_manifest_sha256": "f7dd8f312079a7579a5698b788a7dab52ac359979ebd2281747e7c5fa51169b8",
+    "schema_count": 20,
+    "schema_aggregate_sha256": "527d8ac261a5bf499fa5d20537f33756a9ced9d4eb8bd532bd4f906d2b97970f"
+  },
+  "verification": {
+    "producer_object_mode": "exact-producer",
+    "producer_object_result": "SCI_ED_002_HANDOFF_EXACT_PRODUCER_VERIFIED",
+    "vendored_contract_result": "SCI_ED_002_LOCAL_VENDORED_CONTRACT_VERIFIED_PRODUCER_OBJECT_NOT_CHECKED",
+    "branch_no_physics_result": "PASS_NO_BRANCH_PHYSICS_CHANGE",
+    "historical_verifier_status": "FAIL_REPRODUCED_PREEXISTING_NOT_BRANCH_DIFF",
+    "historical_verifier_adjudication": "HISTORICAL_V0_1_4_VS_V0_1_3_VERIFIER_PREEXISTING_FAILURE_REPRODUCED_IDENTICALLY_AT_BASE_AND_CANDIDATE_NOT_BRANCH_DIFF_EVIDENCE",
+    "r2a_unit_suite": "PASS_982_OF_982",
+    "r2b_unit_suite": "PASS_EXACT_FINAL_HEAD",
+    "source_manifest": "PASS",
+    "static_validation": "PASS",
+    "ci": "PASS_EXACT_HEAD",
+    "pull_request_draft": true
+  },
+  "claim_ceiling": {
+    "measurements_collected": false,
+    "laboratories_contacted": false,
+    "formal_quotes_obtained": false,
+    "commissioning_authorized": false,
+    "sci_md_007_reexecuted": false,
+    "predictor_eligible": false,
+    "predictor_developed": false,
+    "c_s0_mapping_status": "NOT_ESTABLISHED",
+    "physical_validation_status": "NOT_ESTABLISHED",
+    "holdout_accessed": false,
+    "vg06_status": "SEALED_NOT_ACCESSED",
+    "governing_physics_change": false,
+    "merge_authorized": false
+  }
+}
