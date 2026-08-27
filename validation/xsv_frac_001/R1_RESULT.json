@@ -1,0 +1,26 @@
+{
+  "schema": "espresso.xsv_frac_001.result.v1",
+  "task": "XSV-FRAC-001",
+  "status": "NUMERICAL_QUALIFICATION_FAIL",
+  "case_count": 16,
+  "pure_case_count": 6,
+  "production_case_count": 9,
+  "reduced_comparison_count": 1,
+  "maximum_boundary_error_kg": 0.0,
+  "maximum_component_residual_kg": 2.710505431213761e-20,
+  "maximum_species_residual_kg": 2.710505431213761e-20,
+  "production_reduced_parity": {
+    "residual_extractables": {
+      "endpoint_relative": 1.620998520021946,
+      "fraction_nrmse": 0.9599903965801599
+    },
+    "species_a": {
+      "endpoint_relative": 1.8508407664932638,
+      "fraction_nrmse": 1.104328560183672
+    }
+  },
+  "deterministic_replay": true,
+  "serial_two_rank_executed": true,
+  "external_evidence_id": "xsv-frac-001-qualification-r4",
+  "claim_ceiling": "Exact means conservative only with respect to discrete per-step cup-mass quadrature; physical validation NOT_ESTABLISHED."
+}

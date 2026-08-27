@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 604,
-  "total_uncompressed_bytes_excluding_manifest": 7453105,
-  "aggregate_source_sha256": "ccc8ecfad1b434e645afcd52bacf123082e00f5817016389e46880d1ebe87390",
-  "aggregate_sha256": "ccc8ecfad1b434e645afcd52bacf123082e00f5817016389e46880d1ebe87390",
+  "file_count": 605,
+  "total_uncompressed_bytes_excluding_manifest": 7460683,
+  "aggregate_source_sha256": "6bf651659e3879095de888e9f83b455b409be8b0e3bd11763d4fada696fe828b",
+  "aggregate_sha256": "6bf651659e3879095de888e9f83b455b409be8b0e3bd11763d4fada696fe828b",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1056,6 +1056,11 @@
     "docs/validation/XSV_FRAC_001.md": {
       "sha256": "de05f6758d526de8fc5aefb91875ae2e87994edf660106b8981fa7d3d7f2c0ae",
       "bytes": 1285,
+      "git_mode": "100644"
+    },
+    "docs/validation/XSV_FRAC_001_R1_DIAGNOSIS.md": {
+      "sha256": "1cf29702530089b0143cc9ee06cb68bb2bdb32c181ce0faba230707eee12425a",
+      "bytes": 3318,
       "git_mode": "100644"
     },
     "docs/validation/cases/VAL_CASE_001_CORRECTION_ADDENDUM.md": {
@@ -2244,8 +2249,8 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "ce05287ae644b2eb54116f1f4c8a9c6ca1e46262daef366dd6c9cc7c00ab932d",
-      "bytes": 162427,
+      "sha256": "51ee96cf60b5470bb6102a5e3a4fea4e515ceb822dea86e9822176c4cd043553",
+      "bytes": 162770,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/forchheimerResistance.H": {
@@ -2589,8 +2594,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_frac_001.py": {
-      "sha256": "a06369979e57bc9562514bababde8e5820bdc80e79134728284784124ac2b64a",
-      "bytes": 5982,
+      "sha256": "b5ad00bfc7e95ea77a1db6df4ac89a51b57f5f6bb77037e4629d01fa1f51cb61",
+      "bytes": 9899,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {

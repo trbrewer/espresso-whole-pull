@@ -1736,6 +1736,8 @@ int main(int argc, char *argv[])
     bool fractionOpen = false;
     scalar collectedFractionWater = 0.0;
     scalar collectedFractionSolute = 0.0;
+    scalar emittedFractionWater = 0.0;
+    scalar emittedFractionSolute = 0.0;
     scalarField fractionSpeciesMass(speciesParameters.size(), 0.0);
     scalarField cumulativeFractionSpeciesMass(speciesParameters.size(), 0.0);
 
@@ -3230,11 +3232,13 @@ int main(int argc, char *argv[])
                         {
                             fractionSpeciesTrace << emittedFractionCount+1
                                 << ",0,legacy_effective_solute,legacyEffectiveSolute," << fractionSolute << ','
-                                << fractionSolute/beverage << ',' << cupSoluteMass << ',' << initialExtractableMass << ','
-                                << fractionSolute/initialExtractableMass << ',' << cupSoluteMass/initialExtractableMass << '\n';
+                                << fractionSolute/beverage << ',' << collectedFractionSolute << ',' << initialExtractableMass << ','
+                                << fractionSolute/initialExtractableMass << ',' << collectedFractionSolute/initialExtractableMass << '\n';
                         }
                     }
                     ++emittedFractionCount;
+                    emittedFractionWater += fractionWater;
+                    emittedFractionSolute += fractionSolute;
                     ++nextFractionBoundary;
                     fractionWater = fractionSolute = 0.0;
                     fractionSpeciesMass = scalar(0.0);
@@ -3901,9 +3905,11 @@ int main(int argc, char *argv[])
                 {
                     fractionSpeciesTrace << emittedFractionCount+1
                         << ",0,legacy_effective_solute,legacyEffectiveSolute," << fractionSolute << ','
-                        << fractionSolute/beverage << ',' << cupSoluteMass << ',' << initialExtractableMass << ','
-                        << fractionSolute/initialExtractableMass << ',' << cupSoluteMass/initialExtractableMass << '\n';
+                        << fractionSolute/beverage << ',' << collectedFractionSolute << ',' << initialExtractableMass << ','
+                        << fractionSolute/initialExtractableMass << ',' << collectedFractionSolute/initialExtractableMass << '\n';
                 }
+                emittedFractionWater += fractionWater;
+                emittedFractionSolute += fractionSolute;
             }
             fractionTrace.flush(); fractionTrace.close();
             fractionSpeciesTrace.flush(); fractionSpeciesTrace.close();
@@ -3929,8 +3935,8 @@ int main(int argc, char *argv[])
             for (label i=nextFractionBoundary; i<fractionBoundaries.size(); ++i)
             { if (i>nextFractionBoundary) manifest << ','; manifest << fractionBoundaries[i]; }
             manifest << "],\n  \"final_emitted_cumulative_component_totals\": {\"water_mass_kg\": "
-                << collectedFractionWater << ", \"solute_mass_kg\": " << collectedFractionSolute
-                << ", \"beverage_mass_kg\": " << collectedFractionWater+collectedFractionSolute << "},\n"
+                << emittedFractionWater << ", \"solute_mass_kg\": " << emittedFractionSolute
+                << ", \"beverage_mass_kg\": " << emittedFractionWater+emittedFractionSolute << "},\n"
                 << "  \"closure_tolerances\": {\"absolute_mass_kg\": 1e-12, \"relative\": 1e-10},\n"
                 << "  \"configuration_sha256\": \"" << fractionConfigurationSha256 << "\",\n"
                 << "  \"production_source_sha256\": \"" << fractionProductionSourceSha256 << "\",\n"
