@@ -1,46 +1,615 @@
 {
-  "schema": "XSV_FLOW_001_RESULT_V1",
-  "task_id": "XSV-FLOW-001",
-  "change_declaration": "NUMERICAL_METHOD_CHANGE",
-  "scientific_classification": "NO_NEW_GOVERNING_PHYSICS",
-  "governing_physics_change": false,
-  "evidence_class": "SIMULATED_SYNTHETIC_NUMERICAL_QUALIFICATION",
-  "physical_validation": "NOT_ESTABLISHED",
-  "base_authority": {"commit": "85190cf68cd80789d19f7836d88294c1030c6ff9", "tree": "3777a6bf2da4d83c598001de2a61dfc2e54dcd76", "source_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599"},
-  "candidate_execution_authority": {"commit": "2bb6a33f7943e548b2ba74fb55c3d65bb4c87c73", "tree": "2224af8cbfdee5961d93f49f6a4e4308c41383c6", "source_sha256": "99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6"},
-  "executables": {
-    "baseline": {"sha256": "1438299707e266b2b7294e0b4c66a743f46d8cad39f2a8b6990b6c56a9ac86c9", "size": 832376},
-    "candidate": {"sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30", "size": 849352},
-    "hashes_stable_before_after": true
-  },
-  "environment": {"openfoam": "Foundation OpenFOAM 12", "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"},
-  "production_run_count": 13,
-  "startup_negative_run_count": 18,
-  "gate_counts": {"production_pass": 11, "production_fail": 0, "startup_negative_pass": 18, "startup_negative_fail": 0},
-  "cases": {
-    "FLOW_UC_M32": {"status": "PASS", "max_flow_error_m3_s": 0.0, "max_closure_error_m3_s": 3.3881317890172014e-21, "max_reverse_m3_s": 0.0, "conductance_m3_s_Pa": 1.64741774621603e-12, "pressure_relative_error": 3.2603393408554165e-15},
-    "FLOW_UC_M64": {"status": "PASS", "max_flow_error_m3_s": 6.352747104407253e-22, "max_closure_error_m3_s": 1.0376153603865179e-20, "max_reverse_m3_s": 0.0, "conductance_m3_s_Pa": 1.647417746216035e-12, "pressure_relative_error": 6.328894014601691e-15},
-    "FLOW_UC_M128": {"status": "PASS", "max_flow_error_m3_s": 2.117582368135751e-22, "max_closure_error_m3_s": 1.9397054492123478e-19, "max_reverse_m3_s": 0.0, "conductance_m3_s_Pa": 1.6474177462161374e-12, "pressure_relative_error": 6.846712615796374e-14},
-    "FLOW_LC_M32": {"status": "PASS", "max_flow_error_m3_s": 2.117582368135751e-22, "max_closure_error_m3_s": 4.0234064994579266e-21, "max_reverse_m3_s": 0.0, "conductance_m3_s_Pa": 2.2042105036479136e-12, "pressure_relative_error": 0.0034722222222186945},
-    "FLOW_LC_M64": {"status": "PASS", "max_flow_error_m3_s": 1.2705494208814505e-21, "max_closure_error_m3_s": 8.851494298807439e-20, "max_reverse_m3_s": 0.0, "conductance_m3_s_Pa": 2.20037709407635e-12, "pressure_relative_error": 0.0017361111111066623},
-    "FLOW_LC_M128": {"status": "PASS", "max_flow_error_m3_s": 1.0587911840678754e-21, "max_closure_error_m3_s": 7.093900933254765e-20, "max_reverse_m3_s": 0.0, "conductance_m3_s_Pa": 2.198465385046047e-12, "pressure_relative_error": 0.0008680555556291501},
-    "FLOW_UPL_DT040": {"status": "PASS", "max_flow_error_m3_s": 1.768181277393352e-20, "max_closure_error_m3_s": 6.052050408131976e-19, "max_reverse_m3_s": 0.0, "volume_error_m3": 2.710505431213761e-20},
-    "FLOW_UPL_DT020": {"status": "PASS", "max_flow_error_m3_s": 2.9434394917086937e-20, "max_closure_error_m3_s": 1.1180834903756764e-19, "max_reverse_m3_s": 3.685861571003809e-22, "volume_error_m3": 3.7269449679189215e-20},
-    "FLOW_UPL_DT010": {"status": "PASS", "max_flow_error_m3_s": 3.2610768469290563e-20, "max_closure_error_m3_s": 9.162778906923394e-19, "max_reverse_m3_s": 7.671386684365649e-22, "volume_error_m3": 2.710505431213761e-20},
-    "FLOW_LPL_REFERENCE": {"status": "PASS", "max_flow_error_m3_s": 3.790472438962994e-20, "max_closure_error_m3_s": 9.698527246061739e-20, "max_reverse_m3_s": 3.8356933421828244e-22, "conductance_m3_s_Pa": 2.20037709407635e-12, "pressure_relative_error": 0.0017361111111067592},
-    "FLOW_ZERO": {"status": "PASS", "max_flow_error_m3_s": 0.0, "max_closure_error_m3_s": 0.0, "max_reverse_m3_s": 0.0, "inlet_equals_outlet": true, "finite_flow_error_ratio": true}
-  },
-  "maximum_flow_error": {"case_id": "FLOW_LPL_REFERENCE", "m3_s": 3.790472438962994e-20},
-  "maximum_closure_error": {"case_id": "FLOW_UPL_DT010", "m3_s": 9.162778906923394e-19},
-  "maximum_reverse_flow_m3_s": 7.671386684365649e-22,
-  "discrete_conductance_range_m3_s_Pa": [1.64741774621603e-12, 2.2042105036479136e-12],
-  "timestep_comparison": "PASS",
-  "serial_two_rank": "PASS",
-  "deterministic_replay": "PASS_BYTE_IDENTICAL",
-  "zero_flow": "PASS",
-  "default_disabled_regression": {"saturated_prescribed_pressure": "PASS_BYTE_IDENTICAL", "wetting_prescribed_pressure": "PASS_BYTE_IDENTICAL", "lumped_machine": "PASS_BYTE_IDENTICAL", "prescribed_flow_output_absent": true},
-  "negative_cases": {"count": 18, "status": "PASS", "nonfinite_target": "OPENFOAM_SCALAR_PARSE_REJECTION_NONFINITE_UNREPRESENTABLE", "all_other_cases": "INTENDED_XSV_FLOW_001_FATAL_TOKEN"},
-  "external_evidence_identity": "XSV_FLOW_001_EXTERNAL_QUALIFICATION",
-  "final_disposition": "XSV_FLOW_001_PASS_READY_FOR_SINGLE_FOCUSED_REVIEW",
-  "claim_ceiling": "implemented and numerically qualified; physical validation NOT_ESTABLISHED"
+    "base_authority": {
+        "commit": "85190cf68cd80789d19f7836d88294c1030c6ff9",
+        "tree": "3777a6bf2da4d83c598001de2a61dfc2e54dcd76"
+    },
+    "candidate_authority": {
+        "commit": "131e40a14c78ecb2716cf5b4bdf5cab2c64cffd5",
+        "source_sha256": "99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6",
+        "tree": "577754cb48cb7ccc0e330f4dc197f3644133e7dd"
+    },
+    "solver_build_execution_authority": {
+        "baseline": {
+            "commit": "85190cf68cd80789d19f7836d88294c1030c6ff9",
+            "tree": "3777a6bf2da4d83c598001de2a61dfc2e54dcd76",
+            "source_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599"
+        },
+        "candidate": {
+            "commit": "2bb6a33f7943e548b2ba74fb55c3d65bb4c87c73",
+            "tree": "2224af8cbfdee5961d93f49f6a4e4308c41383c6",
+            "source_sha256": "99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6"
+        }
+    },
+    "qualification_runner_authority": {
+        "commit": "131e40a14c78ecb2716cf5b4bdf5cab2c64cffd5",
+        "tree": "577754cb48cb7ccc0e330f4dc197f3644133e7dd",
+        "runner_sha256": "71a916b989ec0e8b788418b0c03aee3a0e0804c0807e9bdef68d3f04708a2dd3"
+    },
+    "cases": {
+        "FLOW_LC_M128": {
+            "achieved_discrete_volume_m3": 5.999999999999962e-06,
+            "discrete_conductance_m3_s_Pa": 2.198465385046047e-12,
+            "first_time_s": 0.02,
+            "gate_failure_count": 0,
+            "last_time_s": 5.99999999999996,
+            "maximum_analytical_pressure_error_time_s": 0.02,
+            "maximum_analytical_pressure_relative_error": 0.0008680555556291501,
+            "maximum_closure_error_m3_s": 7.093900933254765e-20,
+            "maximum_closure_error_time_s": 0.02,
+            "maximum_flow_error_m3_s": 1.0587911840678754e-21,
+            "maximum_flow_error_ratio": 1.0483081030375006e-09,
+            "maximum_flow_error_ratio_time_s": 0.02,
+            "maximum_flow_error_time_s": 0.02,
+            "maximum_reverse_flow_m3_s": 0.0,
+            "maximum_reverse_flow_time_s": 0.02,
+            "row_count": 300,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.999999999999962e-06,
+            "volume_error_m3": 0.0
+        },
+        "FLOW_LC_M32": {
+            "achieved_discrete_volume_m3": 5.999999999999962e-06,
+            "discrete_conductance_m3_s_Pa": 2.2042105036479136e-12,
+            "first_time_s": 0.02,
+            "gate_failure_count": 0,
+            "last_time_s": 5.99999999999996,
+            "maximum_analytical_pressure_error_time_s": 0.02,
+            "maximum_analytical_pressure_relative_error": 0.0034722222222186945,
+            "maximum_closure_error_m3_s": 4.0234064994579266e-21,
+            "maximum_closure_error_time_s": 0.02,
+            "maximum_flow_error_m3_s": 2.117582368135751e-22,
+            "maximum_flow_error_ratio": 2.0966162060750009e-10,
+            "maximum_flow_error_ratio_time_s": 0.02,
+            "maximum_flow_error_time_s": 0.02,
+            "maximum_reverse_flow_m3_s": 0.0,
+            "maximum_reverse_flow_time_s": 0.02,
+            "row_count": 300,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.999999999999962e-06,
+            "volume_error_m3": 0.0
+        },
+        "FLOW_LC_M64": {
+            "achieved_discrete_volume_m3": 6.000000000000003e-06,
+            "discrete_conductance_m3_s_Pa": 2.20037709407635e-12,
+            "first_time_s": 0.02,
+            "gate_failure_count": 0,
+            "last_time_s": 5.99999999999996,
+            "maximum_analytical_pressure_error_time_s": 0.02,
+            "maximum_analytical_pressure_relative_error": 0.0017361111111066623,
+            "maximum_closure_error_m3_s": 8.851494298807439e-20,
+            "maximum_closure_error_time_s": 0.02,
+            "maximum_flow_error_m3_s": 1.2705494208814505e-21,
+            "maximum_flow_error_ratio": 1.2579697236450007e-09,
+            "maximum_flow_error_ratio_time_s": 0.02,
+            "maximum_flow_error_time_s": 0.02,
+            "maximum_reverse_flow_m3_s": 0.0,
+            "maximum_reverse_flow_time_s": 0.02,
+            "row_count": 300,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.999999999999962e-06,
+            "volume_error_m3": 4.0657581468206416e-20
+        },
+        "FLOW_LPL_REFERENCE": {
+            "achieved_discrete_volume_m3": 5.125000000000027e-06,
+            "discrete_conductance_m3_s_Pa": 2.20037709407635e-12,
+            "first_time_s": 0.02,
+            "gate_failure_count": 0,
+            "last_time_s": 5.99999999999996,
+            "maximum_analytical_pressure_error_time_s": 5.879999999999963,
+            "maximum_analytical_pressure_relative_error": 0.0017361111111067592,
+            "maximum_closure_error_m3_s": 9.698527246061739e-20,
+            "maximum_closure_error_time_s": 5.199999999999977,
+            "maximum_flow_error_m3_s": 3.790472438962994e-20,
+            "maximum_flow_error_ratio": 3.747007155953928e-08,
+            "maximum_flow_error_ratio_time_s": 2.760000000000002,
+            "maximum_flow_error_time_s": 2.760000000000002,
+            "maximum_reverse_flow_m3_s": 3.8356933421828244e-22,
+            "maximum_reverse_flow_time_s": 5.99999999999996,
+            "row_count": 300,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.125000000000014e-06,
+            "volume_error_m3": 1.3552527156068805e-20
+        },
+        "FLOW_UC_M128": {
+            "achieved_discrete_volume_m3": 5.999999999999962e-06,
+            "discrete_conductance_m3_s_Pa": 1.6474177462161374e-12,
+            "first_time_s": 0.02,
+            "gate_failure_count": 0,
+            "last_time_s": 5.99999999999996,
+            "maximum_analytical_pressure_error_time_s": 0.02,
+            "maximum_analytical_pressure_relative_error": 6.846712615796374e-14,
+            "maximum_closure_error_m3_s": 1.9397054492123478e-19,
+            "maximum_closure_error_time_s": 0.02,
+            "maximum_flow_error_m3_s": 2.117582368135751e-22,
+            "maximum_flow_error_ratio": 2.0966162060750009e-10,
+            "maximum_flow_error_ratio_time_s": 0.02,
+            "maximum_flow_error_time_s": 0.02,
+            "maximum_reverse_flow_m3_s": 0.0,
+            "maximum_reverse_flow_time_s": 0.02,
+            "row_count": 300,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.999999999999962e-06,
+            "volume_error_m3": 0.0
+        },
+        "FLOW_UC_M32": {
+            "achieved_discrete_volume_m3": 5.999999999999962e-06,
+            "discrete_conductance_m3_s_Pa": 1.64741774621603e-12,
+            "first_time_s": 0.02,
+            "gate_failure_count": 0,
+            "last_time_s": 5.99999999999996,
+            "maximum_analytical_pressure_error_time_s": 0.02,
+            "maximum_analytical_pressure_relative_error": 3.2603393408554165e-15,
+            "maximum_closure_error_m3_s": 3.3881317890172014e-21,
+            "maximum_closure_error_time_s": 0.02,
+            "maximum_flow_error_m3_s": 0.0,
+            "maximum_flow_error_ratio": 0.0,
+            "maximum_flow_error_ratio_time_s": 0.02,
+            "maximum_flow_error_time_s": 0.02,
+            "maximum_reverse_flow_m3_s": 0.0,
+            "maximum_reverse_flow_time_s": 0.02,
+            "row_count": 300,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.999999999999962e-06,
+            "volume_error_m3": 0.0
+        },
+        "FLOW_UC_M64": {
+            "achieved_discrete_volume_m3": 5.999999999999962e-06,
+            "discrete_conductance_m3_s_Pa": 1.647417746216035e-12,
+            "first_time_s": 0.02,
+            "gate_failure_count": 0,
+            "last_time_s": 5.99999999999996,
+            "maximum_analytical_pressure_error_time_s": 0.02,
+            "maximum_analytical_pressure_relative_error": 6.328894014601691e-15,
+            "maximum_closure_error_m3_s": 1.0376153603865179e-20,
+            "maximum_closure_error_time_s": 0.02,
+            "maximum_flow_error_m3_s": 6.352747104407253e-22,
+            "maximum_flow_error_ratio": 6.289848618225003e-10,
+            "maximum_flow_error_ratio_time_s": 0.02,
+            "maximum_flow_error_time_s": 0.02,
+            "maximum_reverse_flow_m3_s": 0.0,
+            "maximum_reverse_flow_time_s": 0.02,
+            "row_count": 300,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.999999999999962e-06,
+            "volume_error_m3": 0.0
+        },
+        "FLOW_UPL_DT010": {
+            "achieved_discrete_volume_m3": 5.1249999999999425e-06,
+            "discrete_conductance_m3_s_Pa": 1.647417746216035e-12,
+            "first_time_s": 0.01,
+            "gate_failure_count": 0,
+            "last_time_s": 5.9999999999999165,
+            "maximum_analytical_pressure_error_time_s": 2.0400000000000005,
+            "maximum_analytical_pressure_relative_error": 6.46465170030816e-15,
+            "maximum_closure_error_m3_s": 9.162778906923394e-19,
+            "maximum_closure_error_time_s": 3.00999999999998,
+            "maximum_flow_error_m3_s": 3.2610768469290563e-20,
+            "maximum_flow_error_ratio": 3.221293867663414e-08,
+            "maximum_flow_error_ratio_time_s": 2.959999999999981,
+            "maximum_flow_error_time_s": 2.959999999999981,
+            "maximum_reverse_flow_m3_s": 7.671386684365649e-22,
+            "maximum_reverse_flow_time_s": 5.9999999999999165,
+            "row_count": 600,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.125000000000005e-06,
+            "volume_error_m3": 6.268043809681823e-20
+        },
+        "FLOW_UPL_DT020": {
+            "achieved_discrete_volume_m3": 5.124999999999967e-06,
+            "discrete_conductance_m3_s_Pa": 1.647417746216035e-12,
+            "first_time_s": 0.02,
+            "gate_failure_count": 0,
+            "last_time_s": 5.99999999999996,
+            "maximum_analytical_pressure_error_time_s": 1.1800000000000006,
+            "maximum_analytical_pressure_relative_error": 6.420984449469073e-15,
+            "maximum_closure_error_m3_s": 1.1180834903756764e-19,
+            "maximum_closure_error_time_s": 2.3200000000000016,
+            "maximum_flow_error_m3_s": 2.9434394917086937e-20,
+            "maximum_flow_error_ratio": 2.9083933518192717e-08,
+            "maximum_flow_error_ratio_time_s": 2.880000000000002,
+            "maximum_flow_error_time_s": 2.880000000000002,
+            "maximum_reverse_flow_m3_s": 3.685861571003809e-22,
+            "maximum_reverse_flow_time_s": 5.99999999999996,
+            "row_count": 300,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.125000000000014e-06,
+            "volume_error_m3": 4.658681209898652e-20
+        },
+        "FLOW_UPL_DT040": {
+            "achieved_discrete_volume_m3": 5.124999999999973e-06,
+            "discrete_conductance_m3_s_Pa": 1.647417746216035e-12,
+            "first_time_s": 0.04,
+            "gate_failure_count": 0,
+            "last_time_s": 6.000000000000004,
+            "maximum_analytical_pressure_error_time_s": 5.760000000000004,
+            "maximum_analytical_pressure_relative_error": 6.392822236971517e-15,
+            "maximum_closure_error_m3_s": 6.052050408131976e-19,
+            "maximum_closure_error_time_s": 5.0000000000000036,
+            "maximum_flow_error_m3_s": 1.768181277393352e-20,
+            "maximum_flow_error_ratio": 1.7515416318903933e-08,
+            "maximum_flow_error_ratio_time_s": 2.200000000000001,
+            "maximum_flow_error_time_s": 2.200000000000001,
+            "maximum_reverse_flow_m3_s": 0.0,
+            "maximum_reverse_flow_time_s": 0.04,
+            "row_count": 150,
+            "status": "PASS",
+            "target_discrete_volume_m3": 5.125000000000001e-06,
+            "volume_error_m3": 2.795208725939191e-20
+        },
+        "FLOW_ZERO": {
+            "achieved_discrete_volume_m3": 0.0,
+            "discrete_conductance_m3_s_Pa": 1.647417746216035e-12,
+            "first_time_s": 0.02,
+            "gate_failure_count": 0,
+            "last_time_s": 0.19999999999999998,
+            "maximum_analytical_pressure_error_time_s": 0.02,
+            "maximum_analytical_pressure_relative_error": 0.0,
+            "maximum_closure_error_m3_s": 0.0,
+            "maximum_closure_error_time_s": 0.02,
+            "maximum_flow_error_m3_s": 0.0,
+            "maximum_flow_error_ratio": 0.0,
+            "maximum_flow_error_ratio_time_s": 0.02,
+            "maximum_flow_error_time_s": 0.02,
+            "maximum_reverse_flow_m3_s": 0.0,
+            "maximum_reverse_flow_time_s": 0.02,
+            "row_count": 10,
+            "status": "PASS",
+            "target_discrete_volume_m3": 0.0,
+            "volume_error_m3": 0.0
+        }
+    },
+    "change_declaration": "NUMERICAL_METHOD_CHANGE",
+    "claim_ceiling": "implemented and numerically qualified; physical validation NOT_ESTABLISHED",
+    "default_disabled_regression": {
+        "lumped_machine": {
+            "input_byte_equality": true,
+            "input_file_count": 20,
+            "input_path_set_equality": true,
+            "postprocessing_byte_equality": true,
+            "postprocessing_file_count": 1,
+            "postprocessing_output_paths": [
+                "wholePull/0/traces.csv"
+            ],
+            "postprocessing_path_set_equality": true,
+            "prescribed_flow_output_absence": true,
+            "species_fraction_output_comparison": "NOT_APPLICABLE",
+            "status": "PASS"
+        },
+        "saturated_prescribed_pressure": {
+            "input_byte_equality": true,
+            "input_file_count": 20,
+            "input_path_set_equality": true,
+            "postprocessing_byte_equality": true,
+            "postprocessing_file_count": 1,
+            "postprocessing_output_paths": [
+                "wholePull/0/traces.csv"
+            ],
+            "postprocessing_path_set_equality": true,
+            "prescribed_flow_output_absence": true,
+            "species_fraction_output_comparison": "NOT_APPLICABLE",
+            "status": "PASS"
+        },
+        "wetting_prescribed_pressure": {
+            "input_byte_equality": true,
+            "input_file_count": 20,
+            "input_path_set_equality": true,
+            "postprocessing_byte_equality": true,
+            "postprocessing_file_count": 1,
+            "postprocessing_output_paths": [
+                "wholePull/0/traces.csv"
+            ],
+            "postprocessing_path_set_equality": true,
+            "prescribed_flow_output_absence": true,
+            "species_fraction_output_comparison": "NOT_APPLICABLE",
+            "status": "PASS"
+        }
+    },
+    "deterministic_replay": {
+        "status": "PASS"
+    },
+    "discrete_conductance_range_m3_s_Pa": [
+        1.64741774621603e-12,
+        2.2042105036479136e-12
+    ],
+    "environment": {
+        "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+        "openfoam": "Foundation OpenFOAM 12"
+    },
+    "evidence_class": "SIMULATED_SYNTHETIC_NUMERICAL_QUALIFICATION",
+    "executable_identity": {
+        "after": {
+            "baseline": {
+                "sha256": "1438299707e266b2b7294e0b4c66a743f46d8cad39f2a8b6990b6c56a9ac86c9",
+                "size": 832376
+            },
+            "candidate": {
+                "sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+                "size": 849352
+            }
+        },
+        "before": {
+            "baseline": {
+                "sha256": "1438299707e266b2b7294e0b4c66a743f46d8cad39f2a8b6990b6c56a9ac86c9",
+                "size": 832376
+            },
+            "candidate": {
+                "sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+                "size": 849352
+            }
+        }
+    },
+    "external_evidence_identity": "XSV_FLOW_001_EXTERNAL_QUALIFICATION",
+    "final_matrix_work_product": {
+        "identity": "XSV_FLOW_001_CORRECTED_COMMITTED_RUNNER_COMPLETE_MATRIX",
+        "runner_output_sha256": "0ce633fc2ebca4ee18cfd135202ff7c8cf98528a88f27b0febf4d39cd5ec5711",
+        "executable_hashes_stable_before_after": true
+    },
+    "final_disposition": "XSV_FLOW_001_PASS_READY_FOR_SINGLE_FOCUSED_REVIEW",
+    "gate_counts": {
+        "production_pass": 11,
+        "startup_negative_pass": 18
+    },
+    "governing_physics_change": false,
+    "mandatory_case_ids": [
+        "FLOW_UC_M32",
+        "FLOW_UC_M64",
+        "FLOW_UC_M128",
+        "FLOW_LC_M32",
+        "FLOW_LC_M64",
+        "FLOW_LC_M128",
+        "FLOW_UPL_DT040",
+        "FLOW_UPL_DT020",
+        "FLOW_UPL_DT010",
+        "FLOW_LPL_REFERENCE",
+        "FLOW_ZERO"
+    ],
+    "maximum_closure_error": {
+        "case_id": "FLOW_UPL_DT010",
+        "m3_s": 9.162778906923394e-19,
+        "time_s": 3.00999999999998
+    },
+    "maximum_flow_error": {
+        "case_id": "FLOW_LPL_REFERENCE",
+        "m3_s": 3.790472438962994e-20,
+        "time_s": 2.760000000000002
+    },
+    "maximum_reverse_flow_m3_s": 7.671386684365649e-22,
+    "negative_cases": {
+        "compaction": {
+            "fatal_token": "XSV_FLOW_001_REJECTS_COMPACTION",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "decreasing_times": {
+            "fatal_token": "XSV_FLOW_001_INVALID_SCHEDULE",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "duplicate_times": {
+            "fatal_token": "XSV_FLOW_001_INVALID_SCHEDULE",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "evolving_permeability": {
+            "fatal_token": "XSV_FLOW_001_REJECTS_EVOLVING_PERMEABILITY",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "forchheimer": {
+            "fatal_token": "XSV_FLOW_001_REQUIRES_STATIC_DARCY",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "incomplete_coverage": {
+            "fatal_token": "XSV_FLOW_001_INVALID_SCHEDULE",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "initial_unsaturated": {
+            "fatal_token": "XSV_FLOW_001_REQUIRES_FULL_INITIAL_SATURATION",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "inlet_patch": {
+            "fatal_token": "XSV_FLOW_001_INVALID_PRESSURE_PATCH",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "machine_boundary": {
+            "fatal_token": "XSV_FLOW_001_REJECTS_MACHINE_COMPLIANCE",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "missing_dictionary": {
+            "fatal_token": "XSV_FLOW_001_INVALID_SCHEDULE",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "negative_target": {
+            "fatal_token": "XSV_FLOW_001_INVALID_TARGET_FLOW",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "nonfinite_target": {
+            "fatal_token": "OPENFOAM_SCALAR_PARSE_REJECTION_NONFINITE_UNREPRESENTABLE",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "one_point": {
+            "fatal_token": "XSV_FLOW_001_INVALID_SCHEDULE",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "outlet_patch": {
+            "fatal_token": "XSV_FLOW_001_INVALID_PRESSURE_PATCH",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "pressure_ramp": {
+            "fatal_token": "XSV_FLOW_001_REJECTS_PRESSURE_RAMP",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "radial_profile": {
+            "fatal_token": "XSV_FLOW_001_REJECTS_RADIAL_PROFILE_V1",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "unequal_lists": {
+            "fatal_token": "XSV_FLOW_001_INVALID_SCHEDULE",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        },
+        "unsupported_schedule": {
+            "fatal_token": "XSV_FLOW_001_INVALID_SCHEDULE",
+            "no_production_rows": true,
+            "nonzero_exit": true,
+            "status": "PASS"
+        }
+    },
+    "physical_validation": "NOT_ESTABLISHED",
+    "pressure_acceptance": {
+        "status": "PASS"
+    },
+    "production_run_count": 13,
+    "runtime_gates": {
+        "status": "PASS"
+    },
+    "schema": "XSV_FLOW_001_RESULT_V1",
+    "scientific_classification": "NO_NEW_GOVERNING_PHYSICS",
+    "serial_two_rank": {
+        "common_row_count": 300,
+        "final_time_s": {
+            "mpi": 5.99999999999996,
+            "serial": 5.99999999999996
+        },
+        "first_time_s": {
+            "mpi": 0.02,
+            "serial": 0.02
+        },
+        "maximum_achieved_signed_inlet_flow_m3_s_difference": {
+            "time_s": 2.680000000000002,
+            "value": 7.623296525288703e-20
+        },
+        "maximum_achieved_signed_outlet_flow_m3_s_difference": {
+            "time_s": 2.760000000000002,
+            "value": 7.115076756936123e-20
+        },
+        "maximum_closure_error_m3_s": {
+            "mpi": 9.613823951336309e-20,
+            "serial": 9.698527246061739e-20
+        },
+        "maximum_discrete_conductance_m3_s_Pa_difference": {
+            "limit_at_worst_time": 1.022003770940764e-18,
+            "time_s": 0.02,
+            "value": 3.352343302827212e-26
+        },
+        "maximum_flow_error_ratio": {
+            "mpi": 3.2864811367864066e-08,
+            "serial": 3.747007155953928e-08
+        },
+        "maximum_flow_error_ratio_difference": {
+            "time_s": 5.119999999999979,
+            "value": 2.3877783379572256e-08
+        },
+        "maximum_inlet_outlet_closure_error_m3_s_difference": {
+            "time_s": 5.199999999999977,
+            "value": 9.634999775017666e-20
+        },
+        "maximum_required_inlet_pressure_Pa_difference": {
+            "limit_at_worst_time": 0.00569084444873169,
+            "time_s": 3.000000000000002,
+            "value": 8.731149137020111e-09
+        },
+        "maximum_target_outlet_flow_m3_s_difference": {
+            "time_s": 0.02,
+            "value": 0.0
+        },
+        "mpi_achieved_volume_m3": 5.124999999999945e-06,
+        "mpi_target_volume_error_m3": 6.860966872759833e-20,
+        "mpi_target_volume_m3": 5.125000000000014e-06,
+        "row_count_status": "PASS",
+        "serial_achieved_volume_m3": 5.125000000000027e-06,
+        "serial_mpi_volume_difference_m3": 8.216219588366713e-20,
+        "serial_target_volume_error_m3": 1.3552527156068805e-20,
+        "serial_target_volume_m3": 5.125000000000014e-06,
+        "status": "PASS",
+        "time_alignment_status": "PASS"
+    },
+    "startup_negative_run_count": 18,
+    "task_id": "XSV-FLOW-001",
+    "timestep_comparison": {
+        "pairs": [
+            {
+                "coarse_row_count": 150,
+                "matched_common_time_count": 150,
+                "maximum_absolute_pressure_difference_Pa": 3.3032847568392754e-08,
+                "maximum_conductance_difference_m3_s_Pa": 0.0,
+                "maximum_outlet_pressure_difference_Pa": 0.0,
+                "maximum_pressure_difference_time_s": 5.960000000000004,
+                "maximum_target_difference_m3_s": 5.44218668610888e-20,
+                "missing_or_duplicate_time_count": 0,
+                "pair": "FLOW_UPL_DT040_vs_FLOW_UPL_DT020",
+                "pressure_limit_at_worst_time_Pa": 3.135052895047064e-05,
+                "required_knot_presence_status": "PASS",
+                "status": "PASS"
+            },
+            {
+                "coarse_row_count": 150,
+                "matched_common_time_count": 150,
+                "maximum_absolute_pressure_difference_Pa": 6.60693331155926e-08,
+                "maximum_conductance_difference_m3_s_Pa": 0.0,
+                "maximum_outlet_pressure_difference_Pa": 0.0,
+                "maximum_pressure_difference_time_s": 5.960000000000004,
+                "maximum_target_difference_m3_s": 1.088437337221776e-19,
+                "missing_or_duplicate_time_count": 0,
+                "pair": "FLOW_UPL_DT040_vs_FLOW_UPL_DT010",
+                "pressure_limit_at_worst_time_Pa": 3.1350528950503674e-05,
+                "required_knot_presence_status": "PASS",
+                "status": "PASS"
+            },
+            {
+                "coarse_row_count": 300,
+                "matched_common_time_count": 300,
+                "maximum_absolute_pressure_difference_Pa": 3.306195139884949e-08,
+                "maximum_conductance_difference_m3_s_Pa": 0.0,
+                "maximum_outlet_pressure_difference_Pa": 0.0,
+                "maximum_pressure_difference_time_s": 5.0399999999999805,
+                "maximum_target_difference_m3_s": 5.44218668610888e-20,
+                "missing_or_duplicate_time_count": 0,
+                "pair": "FLOW_UPL_DT020_vs_FLOW_UPL_DT010",
+                "pressure_limit_at_worst_time_Pa": 0.0007294126948106315,
+                "required_knot_presence_status": "PASS",
+                "status": "PASS"
+            }
+        ],
+        "required_knots_s": [
+            1.0,
+            3.0,
+            5.0,
+            6.0
+        ],
+        "status": "PASS",
+        "time_alignment_tolerance_s": 1e-12
+    },
+    "zero_flow": {
+        "status": "PASS"
+    }
 }
