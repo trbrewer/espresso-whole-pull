@@ -12,5 +12,8 @@ controls require an explicit owner exception tied to a named risk.
 - Do not silently reuse comparison or holdout data for calibration.
 - Do not commit generated fields, meshes, processor directories, executables, full logs, uncleaned runs, credentials, hostnames, or local absolute paths.
 - Keep Puckworks as a locked external dependency; do not copy rights-restricted material.
-- Run source, static, Python, no-physics, shell, JSON, boundary, and secret checks before acceptance.
+- Run source, static, Python, historical-baseline-integrity,
+  task-applicable change-declaration, shell, JSON, boundary, and secret/path
+  checks before acceptance. Historical release comparators are not global
+  assertions about authorized current-development solver source.
 - Full OpenFOAM runs are manual and release-gated; retain complete evidence outside Git.

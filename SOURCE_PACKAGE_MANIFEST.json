@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 602,
-  "total_uncompressed_bytes_excluding_manifest": 7427682,
-  "aggregate_source_sha256": "fe307dd125dc8f01ce9dcd1ac4b918d6fa8d4538b1bb041c687adbeaed3ceb76",
-  "aggregate_sha256": "fe307dd125dc8f01ce9dcd1ac4b918d6fa8d4538b1bb041c687adbeaed3ceb76",
+  "file_count": 605,
+  "total_uncompressed_bytes_excluding_manifest": 7468155,
+  "aggregate_source_sha256": "3624c027ac461eb63886bcff0a409db66356093f50436e3098d4f1dcab518123",
+  "aggregate_sha256": "3624c027ac461eb63886bcff0a409db66356093f50436e3098d4f1dcab518123",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1053,6 +1053,16 @@
       "bytes": 11806,
       "git_mode": "100644"
     },
+    "docs/validation/XSV_FRAC_001.md": {
+      "sha256": "ba620004f6be7ab3de6a9e8113cf8099990c224694a0404f67ebe8f4afe6d6ca",
+      "bytes": 2856,
+      "git_mode": "100644"
+    },
+    "docs/validation/XSV_FRAC_001_R1_DIAGNOSIS.md": {
+      "sha256": "1cf29702530089b0143cc9ee06cb68bb2bdb32c181ce0faba230707eee12425a",
+      "bytes": 3318,
+      "git_mode": "100644"
+    },
     "docs/validation/cases/VAL_CASE_001_CORRECTION_ADDENDUM.md": {
       "sha256": "875b5a8ef84498aab93c4bac2e57a3fd391c211be5f6694834ca73ed53e24a6b",
       "bytes": 6830,
@@ -1824,8 +1834,8 @@
       "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
-      "sha256": "ba6d8b743847dc50c3dd0a46d3b575978f577c1d72030471bcc7d1e47c027f59",
-      "bytes": 59097,
+      "sha256": "d8981793e3e6af11fc4077086701f020393dcb593b8c26f354e18cabd8e085da",
+      "bytes": 62203,
       "git_mode": "100755"
     },
     "scripts/r1_contract_bridge.py": {
@@ -2239,8 +2249,8 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
-      "bytes": 147377,
+      "sha256": "51ee96cf60b5470bb6102a5e3a4fea4e515ceb822dea86e9822176c4cd043553",
+      "bytes": 162770,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/forchheimerResistance.H": {
@@ -2581,6 +2591,11 @@
     "tests/test_xsv_ens_001.py": {
       "sha256": "0f122c32fcd03918bbeb6aaea02b57912181964c50f334f71806053725d725c8",
       "bytes": 7078,
+      "git_mode": "100644"
+    },
+    "tests/test_xsv_frac_001.py": {
+      "sha256": "d6746e62feab4c0b8947f32ded48e5ea1d0da5b3b4d64145fcca0fd6e34483e8",
+      "bytes": 15800,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {

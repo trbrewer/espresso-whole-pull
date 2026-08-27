@@ -40,6 +40,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <iomanip>
+#include <string>
 
 using namespace Foam;
 
@@ -578,6 +579,37 @@ int main(int argc, char *argv[])
     }
     const scalar targetBeverageMass =
         readScalar(modelProperties.lookup("targetBeverageMass"));
+    const bool fractionCollectionEnabled =
+        modelProperties.found("fractionCollection")
+     && modelProperties.subDict("fractionCollection").lookupOrDefault<bool>
+        ("enabled", false);
+    scalarList fractionBoundaries;
+    bool emitTerminalPartial = false;
+    string fractionConfigurationSha256("not_available");
+    string fractionProductionSourceSha256("not_available");
+    if (fractionCollectionEnabled)
+    {
+        const dictionary& fractionDict = modelProperties.subDict("fractionCollection");
+        const word basis(fractionDict.lookup("boundaryBasis"));
+        fractionBoundaries = scalarList(fractionDict.lookup("cumulativeBoundariesKg"));
+        emitTerminalPartial = fractionDict.lookupOrDefault<bool>("emitTerminalPartial", false);
+        fractionDict.lookup("configurationSha256") >> fractionConfigurationSha256;
+        fractionDict.lookup("productionSourceSha256") >> fractionProductionSourceSha256;
+        if (basis != "cumulativeBeverageMass" || fractionBoundaries.empty()
+         || fractionBoundaries.size() > 10000)
+        {
+            FatalErrorInFunction << "Invalid fractionCollection contract" << exit(FatalError);
+        }
+        forAll(fractionBoundaries, boundaryi)
+        {
+            if (!std::isfinite(fractionBoundaries[boundaryi])
+             || fractionBoundaries[boundaryi] <= 0.0
+             || (boundaryi && fractionBoundaries[boundaryi] <= fractionBoundaries[boundaryi-1]))
+            {
+                FatalErrorInFunction << "fraction boundaries must be finite, positive, and strictly increasing" << exit(FatalError);
+            }
+        }
+    }
     const scalar initialWetFront =
         readScalar(modelProperties.lookup("initialWetFront"));
     const scalar layerInterfacePosition =
@@ -1480,9 +1512,15 @@ int main(int argc, char *argv[])
         caseRoot/"postProcessing"/"wholePullSpecies"/"0"
     );
     const fileName speciesTracePath(speciesTraceDirectory/"species_traces.csv");
+    const fileName fractionDirectory(caseRoot/"postProcessing"/"wholePullFractions"/"0");
+    const fileName fractionsPath(fractionDirectory/"fractions.csv");
+    const fileName fractionSpeciesPath(fractionDirectory/"fraction_species.csv");
+    const fileName fractionManifestPath(fractionDirectory/"manifest.json");
 
     std::ofstream trace;
     std::ofstream speciesTrace;
+    std::ofstream fractionTrace;
+    std::ofstream fractionSpeciesTrace;
     if (Pstream::master())
     {
         // Create each level explicitly.  This avoids relying on whether the
@@ -1593,6 +1631,27 @@ int main(int argc, char *argv[])
                   << "effective_permeability_m2";
         }
         trace << '\n';
+        if (fractionCollectionEnabled)
+        {
+            mkDir(caseRoot/"postProcessing"/"wholePullFractions");
+            mkDir(fractionDirectory);
+            fractionTrace.open(fractionsPath.c_str(), std::ios::out | std::ios::trunc);
+            fractionSpeciesTrace.open(fractionSpeciesPath.c_str(), std::ios::out | std::ios::trunc);
+            if (!fractionTrace.good() || !fractionSpeciesTrace.good())
+            {
+                FatalErrorInFunction << "Unable to open fraction outputs" << exit(FatalError);
+            }
+            fractionTrace << std::setprecision(17)
+                << "fraction_index,status,requested_lower_cumulative_beverage_mass_kg,"
+                << "requested_upper_cumulative_beverage_mass_kg,realized_lower_cumulative_beverage_mass_kg,"
+                << "realized_upper_cumulative_beverage_mass_kg,start_time_s,end_time_s,water_mass_kg,"
+                << "total_solute_mass_kg,beverage_mass_kg,tds_mass_fraction,cumulative_beverage_mass_kg,"
+                << "water_plus_solute_closure_residual_kg,species_sum_closure_residual_kg\n";
+            fractionSpeciesTrace << std::setprecision(17)
+                << "fraction_index,species_index,species_id,species_role,species_mass_kg,"
+                << "species_mass_fraction_of_beverage,cumulative_species_mass_kg,initial_species_inventory_kg,"
+                << "fraction_species_mass_fraction_of_initial_inventory,cumulative_extracted_fraction_of_initial_inventory\n";
+        }
         if (indexedSpeciesMode)
         {
             mkDir(caseRoot/"postProcessing"/"wholePullSpecies");
@@ -1667,6 +1726,20 @@ int main(int argc, char *argv[])
     scalar outerCumulativeLiquid = 0.0;
     scalar innerCumulativeSolute = 0.0;
     scalar outerCumulativeSolute = 0.0;
+    label nextFractionBoundary = 0;
+    label emittedFractionCount = 0;
+    scalar fractionCumulativeBeverage = 0.0;
+    scalar fractionWater = 0.0;
+    scalar fractionSolute = 0.0;
+    scalar fractionStartTime = 0.0;
+    scalar fractionLastTime = 0.0;
+    bool fractionOpen = false;
+    scalar collectedFractionWater = 0.0;
+    scalar collectedFractionSolute = 0.0;
+    scalar emittedFractionWater = 0.0;
+    scalar emittedFractionSolute = 0.0;
+    scalarField fractionSpeciesMass(speciesParameters.size(), 0.0);
+    scalarField cumulativeFractionSpeciesMass(speciesParameters.size(), 0.0);
 
     Info<< "Scenario: " << scenarioId << nl
         << "Mode: " << mode << nl
@@ -2843,6 +2916,9 @@ int main(int argc, char *argv[])
         }
 
         scalar outletSoluteRate = 0.0;
+        scalar stepWaterMass = 0.0;
+        scalar stepSoluteMass = 0.0;
+        scalarField stepSpeciesMass(speciesParameters.size(), 0.0);
         scalar inletBackDiffusionRate = 0.0;
         scalar innerOutletFlow = 0.0;
         scalar outerOutletFlow = 0.0;
@@ -3056,7 +3132,7 @@ int main(int argc, char *argv[])
                         sectorScale*globalSumValue(localBackRate);
                     outletSoluteRate += speciesOutletRate[speciesi];
                     inletBackDiffusionRate += backRate;
-                    speciesCupMass[speciesi] +=
+                    stepSpeciesMass[speciesi] =
                         Foam::max(speciesOutletRate[speciesi], 0.0)*deltaT;
                     speciesBackDiffusionMass[speciesi] += backRate*deltaT;
                 }
@@ -3064,15 +3140,112 @@ int main(int argc, char *argv[])
 
             cumulativeInletWaterMass +=
                 liquidDensity*inletVolumeFlow*deltaT;
-            cupWaterMass += liquidDensity*outletVolumeFlow*deltaT;
+            stepWaterMass = liquidDensity*outletVolumeFlow*deltaT;
+            stepSoluteMass = Foam::max(outletSoluteRate, 0.0)*deltaT;
+            cupWaterMass += stepWaterMass;
+            cupSoluteMass += stepSoluteMass;
+            forAll(speciesParameters, speciesi)
+            {
+                speciesCupMass[speciesi] += stepSpeciesMass[speciesi];
+            }
             cumulativePuckOutletVolume += outletVolumeFlow*deltaT;
             innerCumulativeLiquid += innerOutletFlow*deltaT;
             outerCumulativeLiquid += outerOutletFlow*deltaT;
             innerCumulativeSolute += Foam::max(innerSoluteRate, 0.0)*deltaT;
             outerCumulativeSolute += Foam::max(outerSoluteRate, 0.0)*deltaT;
-            cupSoluteMass += Foam::max(outletSoluteRate, 0.0)*deltaT;
             soluteBackDiffusionMass +=
                 Foam::max(inletBackDiffusionRate, 0.0)*deltaT;
+        }
+
+        if (fractionCollectionEnabled && saturatedAtStepStart)
+        {
+            const scalar stepBeverageMass = stepWaterMass + stepSoluteMass;
+            scalar speciesStepSum = 0.0;
+            forAll(stepSpeciesMass, speciesi) speciesStepSum += stepSpeciesMass[speciesi];
+            if (indexedSpeciesMode && Foam::mag(speciesStepSum-stepSoluteMass)
+                > Foam::max(1.0e-12, 1.0e-10*Foam::max(stepSoluteMass, stepBeverageMass)))
+            {
+                FatalErrorInFunction << "fraction indexed species increment closure failed" << exit(FatalError);
+            }
+            if (!std::isfinite(stepBeverageMass) || stepBeverageMass < -1.0e-15)
+            {
+                FatalErrorInFunction << "materially negative fraction beverage increment" << exit(FatalError);
+            }
+            scalar remainingStepMass = Foam::max(stepBeverageMass, 0.0);
+            scalar allocatedStepMass = 0.0;
+            while (remainingStepMass > VSMALL && nextFractionBoundary < fractionBoundaries.size())
+            {
+                if (!fractionOpen)
+                {
+                    fractionStartTime = stepStartTime + deltaT*allocatedStepMass/stepBeverageMass;
+                    fractionOpen = true;
+                }
+                const scalar need = nextFractionBoundary < fractionBoundaries.size()
+                    ? fractionBoundaries[nextFractionBoundary]-fractionCumulativeBeverage
+                    : remainingStepMass;
+                const scalar allocation = Foam::min(remainingStepMass, need);
+                const scalar share = allocation/stepBeverageMass;
+                fractionWater += stepWaterMass*share;
+                fractionSolute += stepSoluteMass*share;
+                collectedFractionWater += stepWaterMass*share;
+                collectedFractionSolute += stepSoluteMass*share;
+                forAll(stepSpeciesMass, speciesi)
+                {
+                    const scalar component = stepSpeciesMass[speciesi]*share;
+                    fractionSpeciesMass[speciesi] += component;
+                    cumulativeFractionSpeciesMass[speciesi] += component;
+                }
+                fractionCumulativeBeverage += allocation;
+                allocatedStepMass += allocation;
+                remainingStepMass -= allocation;
+                fractionLastTime = stepStartTime + deltaT*allocatedStepMass/stepBeverageMass;
+                if (nextFractionBoundary < fractionBoundaries.size()
+                 && Foam::mag(fractionCumulativeBeverage-fractionBoundaries[nextFractionBoundary])
+                    <= Foam::max(1.0e-12, 1.0e-10*fractionBoundaries[nextFractionBoundary]))
+                {
+                    fractionCumulativeBeverage = fractionBoundaries[nextFractionBoundary];
+                    const scalar lower = nextFractionBoundary ? fractionBoundaries[nextFractionBoundary-1] : 0.0;
+                    const scalar beverage = fractionWater+fractionSolute;
+                    if (Pstream::master())
+                    {
+                        fractionTrace << emittedFractionCount+1 << ",complete," << lower << ','
+                            << fractionBoundaries[nextFractionBoundary] << ',' << lower << ','
+                            << fractionCumulativeBeverage << ',' << fractionStartTime << ',' << fractionLastTime
+                            << ',' << fractionWater << ',' << fractionSolute << ',' << beverage << ','
+                            << (beverage > VSMALL ? fractionSolute/beverage : 0.0) << ','
+                            << fractionCumulativeBeverage << ',' << beverage-fractionWater-fractionSolute << ','
+                            << (indexedSpeciesMode ? fractionSolute-sum(fractionSpeciesMass) : 0.0) << '\n';
+                        if (indexedSpeciesMode)
+                        {
+                            forAll(speciesParameters, speciesi)
+                            {
+                                const scalar initial = dryDose*speciesParameters[speciesi].initialFraction;
+                                fractionSpeciesTrace << emittedFractionCount+1 << ',' << speciesi << ','
+                                    << speciesParameters[speciesi].id << ',' << speciesParameters[speciesi].role << ','
+                                    << fractionSpeciesMass[speciesi] << ',' << fractionSpeciesMass[speciesi]/beverage << ','
+                                    << cumulativeFractionSpeciesMass[speciesi] << ',' << initial << ','
+                                    << (initial > VSMALL ? fractionSpeciesMass[speciesi]/initial : 0.0) << ','
+                                    << (initial > VSMALL ? cumulativeFractionSpeciesMass[speciesi]/initial : 0.0) << '\n';
+                            }
+                        }
+                        else
+                        {
+                            fractionSpeciesTrace << emittedFractionCount+1
+                                << ",0,legacy_effective_solute,legacyEffectiveSolute," << fractionSolute << ','
+                                << fractionSolute/beverage << ',' << collectedFractionSolute << ',' << initialExtractableMass << ','
+                                << fractionSolute/initialExtractableMass << ',' << collectedFractionSolute/initialExtractableMass << '\n';
+                        }
+                    }
+                    ++emittedFractionCount;
+                    emittedFractionWater += fractionWater;
+                    emittedFractionSolute += fractionSolute;
+                    ++nextFractionBoundary;
+                    fractionWater = fractionSolute = 0.0;
+                    fractionSpeciesMass = scalar(0.0);
+                    fractionStartTime = fractionLastTime;
+                    fractionOpen = nextFractionBoundary < fractionBoundaries.size();
+                }
+            }
         }
 
         scalar localRemainingMass = 0.0;
@@ -3699,6 +3872,76 @@ int main(int argc, char *argv[])
         {
             speciesTrace.flush();
             speciesTrace.close();
+        }
+        if (fractionCollectionEnabled)
+        {
+            if (emitTerminalPartial && nextFractionBoundary < fractionBoundaries.size()
+             && fractionWater+fractionSolute > VSMALL)
+            {
+                const scalar lower = nextFractionBoundary ? fractionBoundaries[nextFractionBoundary-1] : 0.0;
+                const scalar requestedUpper = nextFractionBoundary < fractionBoundaries.size()
+                    ? fractionBoundaries[nextFractionBoundary] : fractionCumulativeBeverage;
+                const scalar beverage = fractionWater+fractionSolute;
+                fractionTrace << emittedFractionCount+1 << ",partial," << lower << ',' << requestedUpper
+                    << ',' << lower << ',' << fractionCumulativeBeverage << ',' << fractionStartTime << ','
+                    << fractionLastTime << ',' << fractionWater << ',' << fractionSolute << ',' << beverage << ','
+                    << fractionSolute/beverage << ',' << fractionCumulativeBeverage << ','
+                    << beverage-fractionWater-fractionSolute << ','
+                    << (indexedSpeciesMode ? fractionSolute-sum(fractionSpeciesMass) : 0.0) << '\n';
+                if (indexedSpeciesMode)
+                {
+                    forAll(speciesParameters, speciesi)
+                    {
+                        const scalar initial = dryDose*speciesParameters[speciesi].initialFraction;
+                        fractionSpeciesTrace << emittedFractionCount+1 << ',' << speciesi << ','
+                            << speciesParameters[speciesi].id << ',' << speciesParameters[speciesi].role << ','
+                            << fractionSpeciesMass[speciesi] << ',' << fractionSpeciesMass[speciesi]/beverage << ','
+                            << cumulativeFractionSpeciesMass[speciesi] << ',' << initial << ','
+                            << (initial > VSMALL ? fractionSpeciesMass[speciesi]/initial : 0.0) << ','
+                            << (initial > VSMALL ? cumulativeFractionSpeciesMass[speciesi]/initial : 0.0) << '\n';
+                    }
+                }
+                else
+                {
+                    fractionSpeciesTrace << emittedFractionCount+1
+                        << ",0,legacy_effective_solute,legacyEffectiveSolute," << fractionSolute << ','
+                        << fractionSolute/beverage << ',' << collectedFractionSolute << ',' << initialExtractableMass << ','
+                        << fractionSolute/initialExtractableMass << ',' << collectedFractionSolute/initialExtractableMass << '\n';
+                }
+                emittedFractionWater += fractionWater;
+                emittedFractionSolute += fractionSolute;
+            }
+            fractionTrace.flush(); fractionTrace.close();
+            fractionSpeciesTrace.flush(); fractionSpeciesTrace.close();
+            std::ofstream manifest(fractionManifestPath.c_str(), std::ios::out | std::ios::trunc);
+            if (!manifest.good())
+            {
+                FatalErrorInFunction << "Unable to open fraction manifest" << exit(FatalError);
+            }
+            manifest << std::setprecision(17)
+                << "{\n  \"schema\": \"espresso.whole_pull.fractions.v1\",\n"
+                << "  \"task\": \"XSV-FRAC-001\",\n"
+                << "  \"change_declaration\": \"NUMERICAL_METHOD_CHANGE\",\n"
+                << "  \"numerical_method_change\": true,\n"
+                << "  \"new_governing_physics\": false,\n"
+                << "  \"boundary_basis\": \"cumulativeBeverageMass\",\n"
+                << "  \"mass_partition_convention\": \"piecewise_constant_step_flux_mass_partition\",\n"
+                << "  \"time_location_convention\": \"piecewise_constant_step_flux_mass_partition\",\n"
+                << "  \"requested_boundaries_kg\": [";
+            forAll(fractionBoundaries, i) { if (i) manifest << ','; manifest << fractionBoundaries[i]; }
+            manifest << "],\n  \"emit_terminal_partial\": " << (emitTerminalPartial ? "true" : "false")
+                << ",\n  \"completed_fraction_count\": " << emittedFractionCount
+                << ",\n  \"uncompleted_requested_boundaries_kg\": [";
+            for (label i=nextFractionBoundary; i<fractionBoundaries.size(); ++i)
+            { if (i>nextFractionBoundary) manifest << ','; manifest << fractionBoundaries[i]; }
+            manifest << "],\n  \"final_emitted_cumulative_component_totals\": {\"water_mass_kg\": "
+                << emittedFractionWater << ", \"solute_mass_kg\": " << emittedFractionSolute
+                << ", \"beverage_mass_kg\": " << emittedFractionWater+emittedFractionSolute << "},\n"
+                << "  \"closure_tolerances\": {\"absolute_mass_kg\": 1e-12, \"relative\": 1e-10},\n"
+                << "  \"configuration_sha256\": \"" << fractionConfigurationSha256 << "\",\n"
+                << "  \"production_source_sha256\": \"" << fractionProductionSourceSha256 << "\",\n"
+                << "  \"claim_ceiling\": \"Numerical qualification only; physical validation is NOT_ESTABLISHED.\"\n}\n";
+            manifest.close();
         }
     }
 

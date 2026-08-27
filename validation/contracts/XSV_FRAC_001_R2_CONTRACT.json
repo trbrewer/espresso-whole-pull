@@ -1,0 +1,24 @@
+{
+  "schema": "espresso.xsv_frac_001.r2.contract.v1",
+  "task": "XSV-FRAC-001-R2",
+  "change_declaration": "NUMERICAL_METHOD_CHANGE",
+  "scientific_classification": "NO_NEW_GOVERNING_PHYSICS",
+  "r1_result_sha256": "69973b49bd110da6dfddcfbff1791b27f97b03f76092b7875f069e7267701a47",
+  "r1_reduced_pde_gate": "SUPERSEDED_NONADJUDICATIVE_NONCOMPARABLE_FORCING_AND_SOURCE_CAPACITY_ALGORITHMS",
+  "mandatory_oracle": "INDEPENDENT_TRACE_DIFFERENCED_DISCRETE_STREAM_PARTITION",
+  "tolerances": {"mass_absolute_kg": 1e-12, "mass_relative": 1e-10, "time_absolute_s": 1e-12, "time_relative": 1e-10, "dimensionless_absolute": 1e-10, "nrmse_max": 0.01, "endpoint_relative_max": 0.005},
+  "behavior_ids": [
+    "PURE_EXACT_BOUNDARY", "PURE_MULTI_BOUNDARY_SINGLE_STEP", "PURE_ZERO_MASS_STEP",
+    "PURE_TERMINAL_PARTIAL_ENABLED", "PURE_TERMINAL_PARTIAL_DISABLED", "PURE_IRREGULAR_BOUNDARIES",
+    "PROD_LEGACY_EFFECTIVE_SOLUTE", "PROD_ONE_INDEXED_LEGACY_EQUIVALENCE",
+    "PROD_IDENTICAL_SPECIES_SPLIT", "PROD_DISTINCT_TWO_SPECIES",
+    "PROD_THREE_SPECIES_STRUCTURAL_BALANCE", "PROD_ZERO_EXTRACTION_RATE",
+    "PROD_ZERO_DIFFUSIVITY", "PROD_POSITIVE_DIFFUSIVITY", "PROD_TIMESTEP_REFINEMENT",
+    "PROD_AXIAL_MESH_REFINEMENT", "PROD_DETERMINISTIC_REPLAY",
+    "PROD_SERIAL_TWO_RANK_EQUIVALENCE", "PROD_WETTING_REFERENCE_SMOKE",
+    "PROD_INCOMPLETE_FINAL_BOUNDARY"
+  ],
+  "mesh_axial_cells": [32, 64, 128],
+  "timesteps_s": [0.02, 0.01, 0.005],
+  "claim_ceiling": "Discrete fraction-observer qualification only; no reduced-PDE or physical-validation claim."
+}
