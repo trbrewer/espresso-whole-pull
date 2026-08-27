@@ -1,0 +1,57 @@
+name: SCI-ED-002 exact producer handoff
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  exact-producer-handoff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Resolve locked producer authority
+        id: lock
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          lock=json.load(open('docs/validation/sci_ed_002/PUCKWORKS_AUTHORITY.json'))
+          commit=lock['producer_commit']; tree=lock['producer_tree']
+          if not re.fullmatch(r'[0-9a-f]{40}',commit): raise SystemExit('LOCKED_PRODUCER_COMMIT_INVALID')
+          if not re.fullmatch(r'[0-9a-f]{40}',tree): raise SystemExit('LOCKED_PRODUCER_TREE_INVALID')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write(f'commit={commit}\ntree={tree}\n')
+          PY
+      - uses: actions/checkout@v7
+        with:
+          repository: trbrewer/puckworks
+          ref: ${{ steps.lock.outputs.commit }}
+          path: puckworks-producer
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Verify exact producer object and handoff
+        run: |
+          test "$(git -C puckworks-producer rev-parse HEAD)" = "${{ steps.lock.outputs.commit }}"
+          test "$(git -C puckworks-producer rev-parse HEAD^{tree})" = "${{ steps.lock.outputs.tree }}"
+          PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_sci_ed_002_handoff.py \
+            --root . --mode exact-producer --producer-root puckworks-producer \
+            --output /tmp/sci-ed-002-exact-producer.json
+          python3 - <<'PY'
+          import json
+          result=json.load(open('/tmp/sci-ed-002-exact-producer.json'))
+          assert result['status']=='SCI_ED_002_HANDOFF_EXACT_PRODUCER_VERIFIED'
+          assert result['full_handoff_verified'] is True
+          assert result['producer_commit_verified'] is True
+          assert result['producer_tree_verified'] is True
+          PY
+      - uses: actions/upload-artifact@v6
+        with:
+          name: sci-ed-002-exact-producer-handoff
+          path: /tmp/sci-ed-002-exact-producer.json
+          if-no-files-found: error

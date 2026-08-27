@@ -1,0 +1,1 @@
+{"schema_version":"ewp.sci_ed_002.r2b.exact_producer_ci.v1","workflow":".github/workflows/sci-ed-002-exact-producer.yml","job":"exact-producer-handoff","commit_derived_from_lock":true,"detached_exact_checkout":true,"tree_verified":true,"vendored_fallback_allowed":false,"production_execution":false}
