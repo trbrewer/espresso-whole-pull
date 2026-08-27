@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 576,
-  "total_uncompressed_bytes_excluding_manifest": 7371641,
-  "aggregate_source_sha256": "1f78ef08ec86852034669744320cf5e2e8a9bd4296c14f832d50a8a087f30c89",
-  "aggregate_sha256": "1f78ef08ec86852034669744320cf5e2e8a9bd4296c14f832d50a8a087f30c89",
+  "file_count": 602,
+  "total_uncompressed_bytes_excluding_manifest": 7426310,
+  "aggregate_source_sha256": "e7013eb7058ee91d4f7bdb34756f37ba03c251ade2b4bfd4523601bb995ecd70",
+  "aggregate_sha256": "e7013eb7058ee91d4f7bdb34756f37ba03c251ade2b4bfd4523601bb995ecd70",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1079,18 +1079,18 @@
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/PUCKWORKS_AUTHORITY.json": {
-      "sha256": "c88814874dcfbf3899e6de149d0a383ef60ba38eec678c99e7fdaeeddf88851c",
-      "bytes": 2703,
+      "sha256": "cfb80667ef999158a8a0863f8fcbe9449f5f00577a35da5862be22fbf4ad2a2f",
+      "bytes": 6879,
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/RESULT.json": {
-      "sha256": "05406436b0f62796a6c1835434610504ba2ce955cb177914d8b9410b667f7294",
-      "bytes": 2732,
+      "sha256": "3a4d9c8028b6b68ab719e45ac90c369305009906b7a51f1e93b0fa7d94679ee2",
+      "bytes": 3201,
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/RESULT.md": {
-      "sha256": "969ce42c50ae886a63d4256db071b5a93b994be5786bff528cc4b920649ec56f",
-      "bytes": 1754,
+      "sha256": "e93da74c7dbe1b7dec573a78f11d6515551371798e45fc3e06a6bab530654fc5",
+      "bytes": 1745,
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/SCI_ED_002_EXPORT.json": {
@@ -1345,6 +1345,131 @@
     },
     "docs/validation/sci_ed_002/r2c/SOURCE_MANIFEST.json": {
       "sha256": "56a975c7190861f2036f7671574913a3cb9616a5125cc81bd5f6bd5c48a4a556",
+      "bytes": 171,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/ACCEPTED_REREVIEW_FINDINGS.json": {
+      "sha256": "2ca23d3c674415740efa42b56b5cda63eb2322db5e3480772fcad9ea112222a1",
+      "bytes": 343,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/ACCEPTED_REREVIEW_FINDINGS.md": {
+      "sha256": "6c8ec847f981dd65a8234e283e88253de0541885bf82de99212602507625325a",
+      "bytes": 276,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/ACTIVATION.json": {
+      "sha256": "7ef50c64b471a9e4bc4dad0326938e5bf6569e118563158e830d3fa59f0e7dfb",
+      "bytes": 285,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/ACTIVATION.md": {
+      "sha256": "f159033c6f9441edcbfdc724fa11b08721c3a2ba0ffcff6442bf26b0fc3079e3",
+      "bytes": 272,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/AUTHORITY_CLASSIFICATION_CONTRACT.json": {
+      "sha256": "173fcaef2777c339d5a5e634b021b2fd6ac82166d96c15fd99cb28011008b7a4",
+      "bytes": 489,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/AUTHORITY_CLASSIFICATION_CONTRACT.md": {
+      "sha256": "3e28e044b295a58b0a039f87f3d05e2b8402a9ca3455d84e0107eab78aba0711",
+      "bytes": 378,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/AUTHORITY_CONJUNCTION_MATRIX.json": {
+      "sha256": "9c6a98a4f4da7b3ade05bf4ba89c455c3abc13f29c5e5a9a2387e517ba0ecbdf",
+      "bytes": 323,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/AUTHORITY_CONJUNCTION_MATRIX.md": {
+      "sha256": "194d563112f292bb995c0295a3a9334954d3686c4fe3a6a89fba0a8a3fb7654c",
+      "bytes": 272,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/AUTHORITY_FIELD_INVENTORY.json": {
+      "sha256": "dd1db67339fc94bd2949b6656f6e8da04ec19d39d33590800fec59e5eb9d25ae",
+      "bytes": 14323,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/AUTHORITY_FIELD_INVENTORY.md": {
+      "sha256": "3d90b53e5e9a176870e036ed3505c142b5f556f24174bf12cabbcbe164fa56b7",
+      "bytes": 389,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/AUTHORIZATION.md": {
+      "sha256": "2c440c0ce1ddd0b83820253e931c93f97277e0f348c98442e05c6dd7f7e58e68",
+      "bytes": 541,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/FINAL_HEAD_QUALIFICATION.json": {
+      "sha256": "521f2ca3f1aa933da55b118ac16e0bc3c69e296f8e653b635c5dcb02b2b186b5",
+      "bytes": 250,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/FINAL_HEAD_QUALIFICATION.md": {
+      "sha256": "a6673dd985319ed2d2cdbdf1766e7c68452be37814fb82a75ece60351dadfaf4",
+      "bytes": 248,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/HISTORICAL_PROVENANCE_CONTRACT.json": {
+      "sha256": "9f28abf2cf47543fa0b0bd6af2d9797009a23631e1f45915df683929a5f9d3a1",
+      "bytes": 542,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/HISTORICAL_PROVENANCE_CONTRACT.md": {
+      "sha256": "01adcf69025eda40c657d622e04e5afaeb07e7f9ac1609af1f77da1ae3df62e5",
+      "bytes": 236,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/MALFORMED_AUTHORITY_DIAGNOSTIC_CONTRACT.json": {
+      "sha256": "6d2851dbae48d3808f4882d90b0afbfb4944bdbc452675bb2a8b8e92f13ad52a",
+      "bytes": 286,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/MALFORMED_AUTHORITY_DIAGNOSTIC_CONTRACT.md": {
+      "sha256": "cab84ce91340eb496150ef3ae1829c043e3428b819febb5a6bdd2bb7c0b61af4",
+      "bytes": 296,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/NEGATIVE_CONTROL_MATRIX.json": {
+      "sha256": "8b753b37fd2fe10b95c0026bcf109d83b0e54bbc766a2fb39eb579a96d2b4b2a",
+      "bytes": 1594,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/NEGATIVE_CONTROL_MATRIX.md": {
+      "sha256": "ecbd9d79aab656828429f0adeb9f353d597eace397f4a150bdf0869bdb490a4c",
+      "bytes": 345,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/PROTECTED_PATHS.json": {
+      "sha256": "c95843f861cd2dbf564de1680074e61c8d2850660b89a500050c8b973339e582",
+      "bytes": 6348,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/QA_COUNT_RECONCILIATION.json": {
+      "sha256": "e00a925b401aad0b5826e88df8098b836b9abf74af803425af50416f85badae8",
+      "bytes": 520,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/QA_COUNT_RECONCILIATION.md": {
+      "sha256": "68031a2ca2d32352a8817633d8365140e6af81cf162d53a77246772ba3121653",
+      "bytes": 350,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/R2D_RESULT.json": {
+      "sha256": "4b945c13d6b64d1533808620ea7e11eadcf5907b2ad05e80b5bcb4f19792d699",
+      "bytes": 618,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/R2D_RESULT.md": {
+      "sha256": "408a4af70dc44c1acf4142411cfc226df12bba49f22f4d92e5ac58fbd7eb8506",
+      "bytes": 368,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2d/SOURCE_MANIFEST.json": {
+      "sha256": "e0c6d5d7dc12cdaf8545280c4fad09a9ef976540ed621e6e47c889920bb688c5",
       "bytes": 171,
       "git_mode": "100644"
     },
@@ -1738,6 +1863,11 @@
       "bytes": 848,
       "git_mode": "100755"
     },
+    "scripts/run_unit_qualification.py": {
+      "sha256": "9d562c88c1bbf3b954149ce07f74924f7d1dbcabbcc45bdab21c4ebfe372c7b6",
+      "bytes": 2112,
+      "git_mode": "100755"
+    },
     "scripts/run_val001_comparisons.py": {
       "sha256": "804d9b9f36170dd1d0a40919ef0285fd9066eeab4fbb96bada71d59b10323265",
       "bytes": 464,
@@ -1954,8 +2084,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_sci_ed_002_handoff.py": {
-      "sha256": "eaaa7ffbdb21060678f351969deb24becc77d67f4802353a8787bc24c59c4ec7",
-      "bytes": 14207,
+      "sha256": "69b89d51234b01c8a6bd3031aef04a4f1b8e555d966b92c67e204c71b941bc65",
+      "bytes": 27274,
       "git_mode": "100755"
     },
     "scripts/verify_source_manifest.py": {
@@ -2224,8 +2354,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_ed_002_handoff.py": {
-      "sha256": "36aba7c54c85168e1f1342adb60a7b92e6d2737f9f42e490e56e078d4d37628e",
-      "bytes": 8014,
+      "sha256": "bf5477aa0d4b6e96dba6fc379fc7910b3b0f910cc3ad089a57556e7c598aa975",
+      "bytes": 12805,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_executor.py": {

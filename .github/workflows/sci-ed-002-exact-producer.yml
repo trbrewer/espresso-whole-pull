@@ -22,7 +22,8 @@ jobs:
           python3 - <<'PY'
           import json, os, re
           lock=json.load(open('docs/validation/sci_ed_002/PUCKWORKS_AUTHORITY.json'))
-          commit=lock['producer_commit']; tree=lock['producer_tree']
+          current=lock['current_authority']
+          commit=current['producer_commit']; tree=current['producer_tree']
           if not re.fullmatch(r'[0-9a-f]{40}',commit): raise SystemExit('LOCKED_PRODUCER_COMMIT_INVALID')
           if not re.fullmatch(r'[0-9a-f]{40}',tree): raise SystemExit('LOCKED_PRODUCER_TREE_INVALID')
           with open(os.environ['GITHUB_OUTPUT'],'a') as out:
@@ -58,7 +59,15 @@ jobs:
           assert result['producer_schemas_status']=='VERIFIED_20_OF_20'
           assert result['schema_aggregate']['status']=='RETIRED_NO_AUTHORITATIVE_AGGREGATION_ALGORITHM'
           assert result['schema_aggregate']['verified'] is False
-          assert result['claim_ceiling_exact_producer_layer']=='PASS'
+          assert result['authority_contract_valid'] is True
+          assert result['authority_field_classification_complete'] is True
+          assert result['all_current_adjudicative_fields_verified'] is True
+          assert result['derived_values_recomputed'] is True
+          assert result['deprecated_duplicates_absent'] is True
+          assert result['historical_provenance_verified'] is True
+          assert result['sci_md_007_authority_verified'] is True
+          assert result['claim_ceiling_verified'] is True
+          assert result['no_physics_evaluation']=='NOT_PART_OF_HANDOFF_VERIFIER'
           PY
       - name: Exercise complete end-to-end decision mutations
         run: PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v tests.test_sci_ed_002_handoff

@@ -1,8 +1,8 @@
 # Project State
 
-## SCI-ED-002 current consumer status (R2B)
+## SCI-ED-002 current consumer status (R2D)
 
-The SCI-ED-002 protocol remains scientifically blocked because its reference-extractability stopping rule is not defensibly frozen. The EWP consumer is technically qualified with mandatory exact-producer Git-object verification; vendored-only validation is explicitly limited. The unchanged historical verifier retains its pre-existing 27/28 result and is not a branch-diff finding; branch-scoped verification reports no protected production change. Fresh independent exact-head rereview is pending. Commissioning, predictor development, `c_s0` mapping, and merge remain unauthorized.
+The SCI-ED-002 protocol remains scientifically blocked because its reference-extractability stopping rule is not defensibly frozen. R2D technically qualifies the EWP consumer with a closed, completely classified authority contract, mandatory exact-producer Git-object verification, public complete-path negative controls, and structured fail-closed diagnostics; vendored-only validation is explicitly limited. The unchanged historical verifier retains its pre-existing 27/28 result and is not a branch-diff finding; branch-scoped verification reports no protected production change. Fresh independent exact-head rereview is pending. Commissioning, SCI-MD-007 replay, predictor development, `c_s0` mapping, and merge remain unauthorized.
 
 SCI-MD-007-R2-C1 preserves the stopped R2 producer/consumer candidates and additively
 supersedes their package authority with the qualified P3 handoff. The scientific reduction remains

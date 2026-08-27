@@ -1,0 +1,416 @@
+{
+  "field_count": 82,
+  "fields": [
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/authority_contract_version",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/authority_model",
+      "value_type": "str"
+    },
+    {
+      "classification": "DERIVED_INFORMATIONAL",
+      "json_pointer": "/contract_metadata/closed_fields",
+      "value_type": "bool"
+    },
+    {
+      "classification": "DERIVED_INFORMATIONAL",
+      "json_pointer": "/contract_metadata/deprecated_manifest_aliases_absent",
+      "value_type": "bool"
+    },
+    {
+      "classification": "DERIVED_INFORMATIONAL",
+      "json_pointer": "/contract_metadata/exact_head_binding",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/claim_ceiling/c_s0_mapping_status",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/claim_ceiling/commissioning_authorized",
+      "value_type": "bool"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/claim_ceiling/governing_physics_change",
+      "value_type": "bool"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/claim_ceiling/holdout_status",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/claim_ceiling/predictor_eligible",
+      "value_type": "bool"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/export/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/export/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_commit",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/r1_evidence/expected_member_count",
+      "value_type": "int"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/r1_evidence/member_authority_commit",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/r1_evidence/member_authority_tree",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/r1_evidence/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/r1_evidence/role",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/r1_evidence/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/scientific_package/expected_member_count",
+      "value_type": "int"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/scientific_package/member_authority_commit",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/scientific_package/member_authority_tree",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/scientific_package/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/scientific_package/role",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_manifests/scientific_package/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_schema_package_version",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/producer_tree",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/analytical_batches/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/analytical_batches/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/base_coffee_materials/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/base_coffee_materials/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/bridge_assignments/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/bridge_assignments/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/chain_of_custody/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/chain_of_custody/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/chemistry_measurements/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/chemistry_measurements/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/exclusions_and_reruns/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/exclusions_and_reruns/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/file_manifest/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/file_manifest/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/holdout_registry/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/holdout_registry/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/laboratories/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/laboratories/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/material_roast_units/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/material_roast_units/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/moisture_measurements/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/moisture_measurements/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/quality_control_measurements/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/quality_control_measurements/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/reference_extraction_runs/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/reference_extraction_runs/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/reference_extraction_steps/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/reference_extraction_steps/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/roast_measurements/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/roast_measurements/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/sample_aliquots/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/sample_aliquots/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/study_source_groups/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/study_source_groups/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/total_content_measurements/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/total_content_measurements/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/uncertainty_components/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/uncertainty_components/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/validation_groups/path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/schemas/validation_groups/sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/sci_md_007_authority/commit",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/sci_md_007_authority/disposition",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/sci_md_007_authority/export_path",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/sci_md_007_authority/tree",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/current_authority/scientific_protocol_disposition",
+      "value_type": "str"
+    },
+    {
+      "classification": "HISTORICAL_PROVENANCE",
+      "json_pointer": "/historical_provenance/r0_design_candidate/commit",
+      "value_type": "str"
+    },
+    {
+      "classification": "HISTORICAL_PROVENANCE",
+      "json_pointer": "/historical_provenance/r0_design_candidate/tree",
+      "value_type": "str"
+    },
+    {
+      "classification": "HISTORICAL_PROVENANCE",
+      "json_pointer": "/historical_provenance/r0_export_publication/commit",
+      "value_type": "str"
+    },
+    {
+      "classification": "HISTORICAL_PROVENANCE",
+      "json_pointer": "/historical_provenance/r0_export_publication/tree",
+      "value_type": "str"
+    },
+    {
+      "classification": "HISTORICAL_PROVENANCE",
+      "json_pointer": "/historical_provenance/r1_scientific_content/commit",
+      "value_type": "str"
+    },
+    {
+      "classification": "HISTORICAL_PROVENANCE",
+      "json_pointer": "/historical_provenance/r1_scientific_content/tree",
+      "value_type": "str"
+    },
+    {
+      "classification": "ADJUDICATIVE_CURRENT_AUTHORITY",
+      "json_pointer": "/producer_repository",
+      "value_type": "str"
+    },
+    {
+      "classification": "HISTORICAL_PROVENANCE",
+      "json_pointer": "/retired_authorities/schema_aggregate/historical_sha256",
+      "value_type": "str"
+    },
+    {
+      "classification": "DERIVED_INFORMATIONAL",
+      "json_pointer": "/retired_authorities/schema_aggregate/part_of_current_pass",
+      "value_type": "bool"
+    },
+    {
+      "classification": "DERIVED_INFORMATIONAL",
+      "json_pointer": "/retired_authorities/schema_aggregate/status",
+      "value_type": "str"
+    }
+  ],
+  "schema_version": "ewp.sci_ed_002.authority_field_inventory.v1"
+}
