@@ -48,8 +48,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 557,
-    "source_manifest_aggregate_sha256": "5c4cf1b2303a03596d06dbe0fc39b049b57f57025cc9726d9a11466c1f8e6f1f",
+    "source_manifest_file_count": 576,
+    "source_manifest_aggregate_sha256": "1f78ef08ec86852034669744320cf5e2e8a9bd4296c14f832d50a8a087f30c89",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -59,7 +59,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "5c4cf1b2303a03596d06dbe0fc39b049b57f57025cc9726d9a11466c1f8e6f1f"
+    "source_manifest_aggregate_source_sha256": "1f78ef08ec86852034669744320cf5e2e8a9bd4296c14f832d50a8a087f30c89"
   },
   "sci_ed_002_r2b": {
     "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",
@@ -69,6 +69,22 @@
     "vendored_contract": "SCI_ED_002_LOCAL_VENDORED_CONTRACT_VERIFIED_PRODUCER_OBJECT_NOT_CHECKED",
     "exact_real_producer": "SCI_ED_002_HANDOFF_EXACT_PRODUCER_VERIFIED",
     "dedicated_exact_producer_ci": "PASS_EXACT_HEAD",
+    "branch_no_physics": "PASS_NO_BRANCH_PHYSICS_CHANGE",
+    "historical_verifier": "FAIL_REPRODUCED_PREEXISTING_27_OF_28",
+    "governing_physics_change": false
+  },
+  "sci_ed_002_r2c": {
+    "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",
+    "consumer_technical_disposition": "SCI_ED_002_R2C_EWP_END_TO_END_HANDOFF_AND_COMPLETE_PRODUCER_PIN_QUALIFIED_NO_BRANCH_PHYSICS_CHANGE",
+    "review_disposition": "PENDING_INDEPENDENT_EXACT_HEAD_REREVIEW",
+    "complete_end_to_end_decision": "PASS",
+    "vendored_contract": "SCI_ED_002_LOCAL_VENDORED_CONTRACT_VERIFIED_PRODUCER_OBJECT_NOT_CHECKED",
+    "exact_real_producer": "SCI_ED_002_HANDOFF_EXACT_PRODUCER_VERIFIED",
+    "claim_ceiling_conjunction": "PASS",
+    "scientific_package_manifest": "PASS_77_MEMBERS",
+    "r1_evidence_manifest": "PASS_17_MEMBERS",
+    "individual_schemas": "PASS_20_OF_20",
+    "schema_aggregate": "RETIRED_NO_AUTHORITATIVE_AGGREGATION_ALGORITHM",
     "branch_no_physics": "PASS_NO_BRANCH_PHYSICS_CHANGE",
     "historical_verifier": "FAIL_REPRODUCED_PREEXISTING_27_OF_28",
     "governing_physics_change": false

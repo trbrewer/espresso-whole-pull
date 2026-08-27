@@ -1,5 +1,6 @@
 {
-  "authority_model": "FINAL_PACKAGE_HEAD",
+  "authority_model": "FINAL_PACKAGE_HEAD_DUAL_MANIFEST_V2",
+  "authority_contract_version": "2.0.0",
   "producer_repository": "https://github.com/trbrewer/puckworks.git",
   "producer_commit": "e22a422d7c9cac5cd6d0779d5f5455bf492a018e",
   "producer_tree": "33c9d603760163842caa86aa932053ca44b120f8",
@@ -11,6 +12,29 @@
   "producer_export_sha256": "18716c638a1837a8719a55b579e45514b217b686e9a6960ef8cc8379e7bc0d34",
   "producer_source_manifest_path": "docs/analysis/sci_ed_002/r1/SOURCE_MANIFEST.json",
   "producer_source_manifest_sha256": "f7dd8f312079a7579a5698b788a7dab52ac359979ebd2281747e7c5fa51169b8",
+  "producer_manifests": {
+        "scientific_package": {
+            "role": "SCIENTIFIC_PACKAGE_SOURCE_MANIFEST",
+            "path": "docs/analysis/sci_ed_002/SOURCE_MANIFEST.json",
+            "sha256": "bfcc32b28b7a5662778b1bdb25d03b735f637961e92654658e1de4de8699f146",
+            "member_authority_commit": "2b8c3937bf05c4c0cc00b1bbe532845532a48e1e",
+            "member_authority_tree": "b9c84f73bbc1057d63edccb0018a6a7b04d7d4ea",
+      "hash_pin_source": "compact_export.source_manifest_sha256",
+      "member_policy": "CLOSED_EXACT_LIST_ALL_MEMBERS_VERIFIED",
+      "export_intentionally_excluded": true
+    },
+        "r1_evidence": {
+      "role": "R1_EVIDENCE_MANIFEST",
+      "path": "docs/analysis/sci_ed_002/r1/SOURCE_MANIFEST.json",
+            "sha256": "f7dd8f312079a7579a5698b788a7dab52ac359979ebd2281747e7c5fa51169b8",
+            "member_authority_commit": "e22a422d7c9cac5cd6d0779d5f5455bf492a018e",
+            "member_authority_tree": "33c9d603760163842caa86aa932053ca44b120f8",
+      "hash_pin_source": "ewp_authority_policy",
+      "member_policy": "CLOSED_EXACT_LIST_ALL_MEMBERS_VERIFIED",
+      "export_intentionally_excluded": true
+    }
+  },
+  "schema_aggregate_policy": "RETIRED_NO_AUTHORITATIVE_AGGREGATION_ALGORITHM",
   "schema_version": "1.0.0",
   "sci_md_007_authority": {"commit": "31741303fb604ed3e6586a555ea6ef6989c24a62", "tree": "a918072d28f555bf98638fa97da1adb568bf09b8"},
   "producer_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",

@@ -49,7 +49,16 @@ jobs:
           assert result['full_handoff_verified'] is True
           assert result['producer_commit_verified'] is True
           assert result['producer_tree_verified'] is True
+          assert result['producer_manifests_verified'] is True
+          assert result['producer_manifests']['scientific_package']['members_verified'] is True
+          assert result['producer_manifests']['r1_evidence']['members_verified'] is True
+          assert result['producer_schemas_status']=='VERIFIED_20_OF_20'
+          assert result['schema_aggregate']['status']=='RETIRED_NO_AUTHORITATIVE_AGGREGATION_ALGORITHM'
+          assert result['schema_aggregate']['verified'] is False
+          assert result['claim_ceiling_exact_producer_layer']=='PASS'
           PY
+      - name: Exercise complete end-to-end decision mutations
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v tests.test_sci_ed_002_handoff
       - uses: actions/upload-artifact@v6
         with:
           name: sci-ed-002-exact-producer-handoff

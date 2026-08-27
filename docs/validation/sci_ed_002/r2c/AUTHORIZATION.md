@@ -1,0 +1,5 @@
+# SCI-ED-002 R2C authorization
+
+Authority: `SCI-ED-002-R2C-OWNER-AUTHORIZATION-ACCEPT-R2B-INDEPENDENT-EXACT-HEAD-REREVIEW-FAIL-BOUNDED-EWP-END-TO-END-HANDOFF-DECISION-COMPLETE-CLAIM-CONJUNCTION-DUAL-MANIFEST-AND-SCHEMA-AGGREGATE-CLOSURE-WITH-METHOD-SPECIFIC-SCIENTIFIC-BLOCK-PRESERVED-2026-08-27`.
+
+EWP-only technical correction. Puckworks is read-only. No method, physics, commissioning, predictor, `c_s0`, VG06, OpenFOAM, merge, or historical-evidence change is authorized.
