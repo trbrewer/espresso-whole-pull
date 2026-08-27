@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 605,
-  "total_uncompressed_bytes_excluding_manifest": 7460683,
-  "aggregate_source_sha256": "6bf651659e3879095de888e9f83b455b409be8b0e3bd11763d4fada696fe828b",
-  "aggregate_sha256": "6bf651659e3879095de888e9f83b455b409be8b0e3bd11763d4fada696fe828b",
+  "total_uncompressed_bytes_excluding_manifest": 7461328,
+  "aggregate_source_sha256": "a1aed15ded363a1ab68abc51434f3d0fc93c9e90b50302ae4c80b3d2de8b8d85",
+  "aggregate_sha256": "a1aed15ded363a1ab68abc51434f3d0fc93c9e90b50302ae4c80b3d2de8b8d85",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1054,8 +1054,8 @@
       "git_mode": "100644"
     },
     "docs/validation/XSV_FRAC_001.md": {
-      "sha256": "de05f6758d526de8fc5aefb91875ae2e87994edf660106b8981fa7d3d7f2c0ae",
-      "bytes": 1285,
+      "sha256": "53893ce43aea4f9d477e65bf1451ff059c0fc229bde1e1055f4dd882657d6c01",
+      "bytes": 1930,
       "git_mode": "100644"
     },
     "docs/validation/XSV_FRAC_001_R1_DIAGNOSIS.md": {

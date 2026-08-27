@@ -530,3 +530,15 @@ fit, protected access, experiment, or physics change occurred.
 # SCI-ED-002 prospective measurement contract (candidate)
 
 The branch consumes the exact Puckworks SCI-ED-002 candidate contract. Commissioning is not authorized and additional direct measurements remain required. Do not rerun SCI-MD-007 until real open-core evidence exists. Predictor development remains ineligible and `c_s0` mapping remains `NOT_ESTABLISHED`. This is a candidate branch state, not a merged authority.
+
+## XSV-FRAC-001 R2 candidate
+
+R1 remains a preserved numerical-qualification FAIL; its reduced-PDE scores
+are non-adjudicative because the compared routes did not share forcing or
+source/capacity semantics. R2 corrects the legacy pseudo-species cumulative
+output and qualifies the exact discrete mass-defined fraction observer against
+an independent trace-difference partition oracle over all 20 frozen synthetic
+behaviors. Four default-disabled regressions, refinement levels,
+serial/two-rank equivalence, and deterministic replay passed. This adds no
+governing physics and establishes no physical validation; EXP-006 remains
+future experimental work and SCI-MD-006 remains unchanged.

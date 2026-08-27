@@ -2,14 +2,22 @@
 
 ## Result
 
-`XSV_FRAC_001_IMPLEMENTED_NUMERICAL_QUALIFICATION_FAIL`
+`XSV_FRAC_001_R2_PASS_READY_FOR_OWNER_ADJUDICATION`
 
 The optional production observation interface conservatively splits the
 existing discrete water and per-species solute cup increments at cumulative
-beverage-mass boundaries. Boundary and component closure passed the executed
-synthetic matrix, but the independent reduced transport route exceeded the
-frozen production/reduced parity ceilings. The failure is preserved without
-retuning.
+beverage-mass boundaries. R2 passed all 20 frozen behaviors against an
+independent discrete-stream observer oracle, including refinement levels,
+serial/two-rank comparison, deterministic replay, and four default-disabled
+runtime regressions.
+
+R1 remains an overall FAIL. Its zero boundary errors and approximately
+`2.71e-20 kg` component residuals were valid but incomplete observations. Its
+legacy cumulative pseudo-species output was defective, and its reduced-PDE
+parity was non-adjudicative because the two routes used different pressure
+forcing and different source/capacity algorithms. R2 fixes the legacy output
+and removes that reduced-PDE route from acceptance; it does not reinterpret
+the R1 scores as a production-model disagreement.
 
 “Exact” refers only to conservation against the production solver's existing
 rectangular per-step cup-mass quadrature. It does not reconstruct continuous
@@ -23,7 +31,9 @@ experimental or protected data were used. Physical validation remains
 `NOT_ESTABLISHED`; SCI-MD-006 remains unchanged and EXP-006 remains future
 experimental work.
 
-The frozen contract is
-`validation/contracts/XSV_FRAC_001_CONTRACT.json`; the compact result is
-`validation/xsv_frac_001/RESULT.json`. Complete generated evidence remains
-outside Git under external identity `xsv-frac-001-qualification-r4`.
+The R2 contract is `validation/contracts/XSV_FRAC_001_R2_CONTRACT.json`.
+`validation/xsv_frac_001/R1_RESULT.json` preserves R1,
+`validation/xsv_frac_001/R2_RESULT.json` records the complete R2 matrix, and
+`validation/xsv_frac_001/RESULT.json` is the programme summary. Generated run
+products remain outside Git under evidence identity
+`xsv-frac-001-r2-qualification-final-677bc30`.
