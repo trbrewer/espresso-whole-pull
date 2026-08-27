@@ -35,6 +35,7 @@
 #include "machineBoundaryModel.H"
 #include "forchheimerResistance.H"
 #include "poroelasticCompaction.H"
+#include "prescribedFlowBoundaryModel.H"
 
 #include <cmath>
 #include <cstdlib>
@@ -314,6 +315,18 @@ int main(int argc, char *argv[])
             "pressureBoundaryModel",
             "prescribedPressure"
         );
+    const bool prescribedFlow = pressureBoundaryModel == "prescribedFlow";
+    PrescribedFlowBoundaryParameters prescribedFlowParameters
+    {
+        "constant", scalarList(), scalarList(), 1.0, 1.0
+    };
+    if (prescribedFlow)
+    {
+        prescribedFlowParameters = readPrescribedFlowBoundary
+        (
+            modelProperties, runTime.value(), runTime.endTime().value()
+        );
+    }
     const word flowResistanceModel =
         modelProperties.lookupOrDefault<word>("flowResistanceModel", "darcy");
     const bool darcyForchheimer =
@@ -661,7 +674,8 @@ int main(int argc, char *argv[])
 
     const bool lumpedMachine =
         pressureBoundaryModel == "lumpedMachineCompliance";
-    if (!lumpedMachine && pressureBoundaryModel != "prescribedPressure")
+    if (!lumpedMachine && !prescribedFlow
+     && pressureBoundaryModel != "prescribedPressure")
     {
         FatalErrorInFunction << "Unsupported pressureBoundaryModel="
             << pressureBoundaryModel << exit(FatalError);
@@ -718,6 +732,62 @@ int main(int argc, char *argv[])
 
     const bool effectivePermeabilityEnabled =
         modelProperties.found("effectivePermeabilityEvolution");
+
+    if (prescribedFlow)
+    {
+        const scalar saturationTolerance =
+            1.0e-12*Foam::max(1.0, Foam::mag(bedDepth));
+        if (Foam::mag(initialWetFront - bedDepth) > saturationTolerance)
+        {
+            FatalErrorInFunction
+                << "XSV_FLOW_001_REQUIRES_FULL_INITIAL_SATURATION"
+                << exit(FatalError);
+        }
+        if (flowResistanceModel != "darcy")
+        {
+            FatalErrorInFunction << "XSV_FLOW_001_REQUIRES_STATIC_DARCY"
+                << exit(FatalError);
+        }
+        if (bedMechanicsModel != "none")
+        {
+            FatalErrorInFunction << "XSV_FLOW_001_REJECTS_COMPACTION"
+                << exit(FatalError);
+        }
+        if (effectivePermeabilityEnabled)
+        {
+            FatalErrorInFunction
+                << "XSV_FLOW_001_REJECTS_EVOLVING_PERMEABILITY"
+                << exit(FatalError);
+        }
+        if (modelProperties.found("machineBoundary") || lumpedMachine)
+        {
+            FatalErrorInFunction << "XSV_FLOW_001_REJECTS_MACHINE_COMPLIANCE"
+                << exit(FatalError);
+        }
+        if (permeabilityProfile == "radial_two_zone")
+        {
+            FatalErrorInFunction << "XSV_FLOW_001_REJECTS_RADIAL_PROFILE_V1"
+                << exit(FatalError);
+        }
+        if (permeabilityProfile != "uniform"
+         && permeabilityProfile != "axial_two_layer")
+        {
+            FatalErrorInFunction << "XSV_FLOW_001_REQUIRES_STATIC_DARCY"
+                << exit(FatalError);
+        }
+        if (pressureRampTime != 0.0)
+        {
+            FatalErrorInFunction << "XSV_FLOW_001_REJECTS_PRESSURE_RAMP"
+                << exit(FatalError);
+        }
+        if (!std::isfinite(dynamicViscosity) || dynamicViscosity <= 0.0
+         || !std::isfinite(saturatedPermeability)
+         || saturatedPermeability <= 0.0)
+        {
+            FatalErrorInFunction << "XSV_FLOW_001_REQUIRES_STATIC_DARCY"
+                << exit(FatalError);
+        }
+    }
     scalar sourceReferencePressureBar = 0.0;
     scalar sourcePcBar = 0.0;
     scalar sourceQcGPerS = 0.0;
@@ -841,6 +911,22 @@ int main(int argc, char *argv[])
         IOobject("p", runTime.name(), mesh, IOobject::MUST_READ, IOobject::AUTO_WRITE),
         mesh
     );
+
+    if
+    (
+        prescribedFlow
+     && (
+            !isA<fixedValueFvPatchScalarField>
+             (p.boundaryField()[inletPatchId])
+         || !isA<fixedValueFvPatchScalarField>
+             (p.boundaryField()[outletPatchId])
+        )
+    )
+    {
+        FatalErrorInFunction << "XSV_FLOW_001_INVALID_PRESSURE_PATCH inletType="
+            << p.boundaryField()[inletPatchId].type() << " outletType="
+            << p.boundaryField()[outletPatchId].type() << exit(FatalError);
+    }
 
     volVectorField U
     (
@@ -1372,6 +1458,94 @@ int main(int argc, char *argv[])
         permeability/dynamicViscosityCoefficient
     );
 
+    const scalar referencePressureDropPa = 1.0e5;
+    scalar discreteConductanceM3sPa = 0.0;
+    if (prescribedFlow)
+    {
+        volScalarField pReference
+        (
+            IOobject
+            (
+                "p", runTime.name(), mesh,
+                IOobject::NO_READ, IOobject::NO_WRITE, false
+            ),
+            p
+        );
+        pReference.boundaryFieldRef()[inletPatchId] ==
+            outletPressure + referencePressureDropPa;
+        pReference.boundaryFieldRef()[outletPatchId] == outletPressure;
+        pReference.correctBoundaryConditions();
+        fvScalarMatrix referenceEquation
+        (
+            fvm::laplacian(hydraulicMobility, pReference)
+        );
+        referenceEquation.solve("p");
+        surfaceScalarField referenceFlux
+        (
+            IOobject
+            (
+                "referenceFluxXsvFlow001", runTime.name(), mesh,
+                IOobject::NO_READ, IOobject::NO_WRITE
+            ),
+            -referenceEquation.flux()
+        );
+        scalar localOutletSigned = 0.0;
+        scalar localInletSigned = 0.0;
+        scalar localOutletReverse = 0.0;
+        scalar localInletReverse = 0.0;
+        const fvsPatchScalarField& outletReference =
+            referenceFlux.boundaryField()[outletPatchId];
+        const fvsPatchScalarField& inletReference =
+            referenceFlux.boundaryField()[inletPatchId];
+        forAll(outletReference, facei)
+        {
+            localOutletSigned += outletReference[facei];
+            localOutletReverse += Foam::max(-outletReference[facei], 0.0);
+        }
+        forAll(inletReference, facei)
+        {
+            localInletSigned -= inletReference[facei];
+            localInletReverse += Foam::max(inletReference[facei], 0.0);
+        }
+        const scalar referenceOutlet =
+            sectorScale*globalSumValue(localOutletSigned);
+        const scalar referenceInlet =
+            sectorScale*globalSumValue(localInletSigned);
+        const scalar referenceOutletReverse =
+            sectorScale*globalSumValue(localOutletReverse);
+        const scalar referenceInletReverse =
+            sectorScale*globalSumValue(localInletReverse);
+        discreteConductanceM3sPa = referenceOutlet/referencePressureDropPa;
+        const scalar referenceClosureError =
+            Foam::mag(referenceInlet - referenceOutlet);
+        const scalar referenceClosureLimit =
+            prescribedFlowParameters.absoluteTolerance
+          + prescribedFlowParameters.relativeTolerance
+           *Foam::max(Foam::mag(referenceInlet), Foam::mag(referenceOutlet));
+        if (!std::isfinite(discreteConductanceM3sPa)
+         || discreteConductanceM3sPa <= 0.0)
+        {
+            FatalErrorInFunction
+                << "XSV_FLOW_001_INVALID_DISCRETE_CONDUCTANCE conductance="
+                << discreteConductanceM3sPa << exit(FatalError);
+        }
+        if (referenceClosureError > referenceClosureLimit)
+        {
+            FatalErrorInFunction
+                << "XSV_FLOW_001_INLET_OUTLET_CLOSURE_FAIL reference=1 error="
+                << referenceClosureError << " limit=" << referenceClosureLimit
+                << exit(FatalError);
+        }
+        if (referenceOutletReverse > prescribedFlowParameters.absoluteTolerance
+         || referenceInletReverse > prescribedFlowParameters.absoluteTolerance)
+        {
+            FatalErrorInFunction
+                << "XSV_FLOW_001_REVERSE_FLOW_FAIL reference=1 outletReverse="
+                << referenceOutletReverse << " inletReverse="
+                << referenceInletReverse << exit(FatalError);
+        }
+    }
+
     surfaceScalarField poroelasticFaceMobility
     (
         IOobject
@@ -1516,11 +1690,20 @@ int main(int argc, char *argv[])
     const fileName fractionsPath(fractionDirectory/"fractions.csv");
     const fileName fractionSpeciesPath(fractionDirectory/"fraction_species.csv");
     const fileName fractionManifestPath(fractionDirectory/"manifest.json");
+    const fileName prescribedFlowDirectory
+    (
+        caseRoot/"postProcessing"/"prescribedFlow"/"0"
+    );
+    const fileName prescribedFlowPath
+    (
+        prescribedFlowDirectory/"prescribed_flow.csv"
+    );
 
     std::ofstream trace;
     std::ofstream speciesTrace;
     std::ofstream fractionTrace;
     std::ofstream fractionSpeciesTrace;
+    std::ofstream prescribedFlowTrace;
     if (Pstream::master())
     {
         // Create each level explicitly.  This avoids relying on whether the
@@ -1631,6 +1814,33 @@ int main(int argc, char *argv[])
                   << "effective_permeability_m2";
         }
         trace << '\n';
+        if (prescribedFlow)
+        {
+            mkDir(caseRoot/"postProcessing"/"prescribedFlow");
+            mkDir(prescribedFlowDirectory);
+            prescribedFlowTrace.open
+            (
+                prescribedFlowPath.c_str(), std::ios::out | std::ios::trunc
+            );
+            if (!prescribedFlowTrace.good())
+            {
+                FatalErrorInFunction
+                    << "Unable to open prescribed-flow output"
+                    << exit(FatalError);
+            }
+            prescribedFlowTrace << std::setprecision(17)
+                << "time_s,target_outlet_flow_m3_s,"
+                << "achieved_signed_outlet_flow_m3_s,"
+                << "achieved_positive_outlet_flow_m3_s,"
+                << "achieved_signed_inlet_flow_m3_s,"
+                << "required_inlet_pressure_Pa,outlet_pressure_Pa,"
+                << "discrete_conductance_m3_s_Pa,"
+                << "absolute_flow_error_m3_s,flow_error_limit_m3_s,"
+                << "flow_error_ratio,inlet_outlet_closure_error_m3_s,"
+                << "closure_error_limit_m3_s,outlet_reverse_flow_m3_s,"
+                << "inlet_reverse_flow_m3_s,flow_gate_pass,"
+                << "closure_gate_pass,direction_gate_pass\n";
+        }
         if (fractionCollectionEnabled)
         {
             mkDir(caseRoot/"postProcessing"/"wholePullFractions");
@@ -1753,6 +1963,18 @@ int main(int argc, char *argv[])
         << "Initial extractable mass: " << initialExtractableMass << " kg" << nl
         << "Straight-sided sector scale: " << sectorScale << nl
         << "Cells per rank (local rank shown): " << mesh.nCells() << nl << endl;
+    if (prescribedFlow)
+    {
+        Info<< "XSV-FLOW-001 prescribed-flow startup: scheduleType="
+            << prescribedFlowParameters.scheduleType
+            << " pointCount=" << prescribedFlowParameters.flows.size()
+            << " referencePressureDropPa=" << referencePressureDropPa
+            << " discreteConductanceM3sPa=" << discreteConductanceM3sPa
+            << " absoluteToleranceM3s="
+            << prescribedFlowParameters.absoluteTolerance
+            << " relativeTolerance=" << prescribedFlowParameters.relativeTolerance
+            << " targetSemantics=fullBasketPositiveInletToOutlet" << nl << endl;
+    }
 
     while (runTime.loop())
     {
@@ -1765,6 +1987,21 @@ int main(int argc, char *argv[])
             targetInletPressure,
             pressureRampTime
         );
+        scalar prescribedTargetFlow = 0.0;
+        if (prescribedFlow)
+        {
+            prescribedTargetFlow = prescribedFlowParameters.target(timeValue);
+            const scalar requiredPressureDrop =
+                prescribedTargetFlow/discreteConductanceM3sPa;
+            inletPressure = outletPressure + requiredPressureDrop;
+            if (!std::isfinite(inletPressure) || inletPressure < outletPressure)
+            {
+                FatalErrorInFunction
+                    << "XSV_FLOW_001_INVALID_TARGET_FLOW time=" << timeValue
+                    << " target=" << prescribedTargetFlow
+                    << " pressure=" << inletPressure << exit(FatalError);
+            }
+        }
         scalar supplyFlow = 0.0;
         scalar puckFlow = 0.0;
         scalar couplingResidual = 0.0;
@@ -2605,6 +2842,114 @@ int main(int argc, char *argv[])
             p.correctBoundaryConditions();
             U.correctBoundaryConditions();
             darcyFlux = fvc::flux(U);
+        }
+
+        scalar achievedSignedOutletFlow = 0.0;
+        scalar achievedPositiveOutletFlow = 0.0;
+        scalar achievedSignedInletFlow = 0.0;
+        scalar outletReverseFlow = 0.0;
+        scalar inletReverseFlow = 0.0;
+        scalar prescribedFlowError = 0.0;
+        scalar prescribedFlowLimit = 1.0;
+        scalar prescribedClosureError = 0.0;
+        scalar prescribedClosureLimit = 1.0;
+        if (prescribedFlow)
+        {
+            scalar localSignedOutlet = 0.0;
+            scalar localPositiveOutlet = 0.0;
+            scalar localSignedInlet = 0.0;
+            scalar localOutletReverse = 0.0;
+            scalar localInletReverse = 0.0;
+            const fvsPatchScalarField& outletControllerFlux =
+                darcyFlux.boundaryField()[outletPatchId];
+            const fvsPatchScalarField& inletControllerFlux =
+                darcyFlux.boundaryField()[inletPatchId];
+            forAll(outletControllerFlux, facei)
+            {
+                localSignedOutlet += outletControllerFlux[facei];
+                localPositiveOutlet += Foam::max(outletControllerFlux[facei], 0.0);
+                localOutletReverse += Foam::max(-outletControllerFlux[facei], 0.0);
+            }
+            forAll(inletControllerFlux, facei)
+            {
+                localSignedInlet -= inletControllerFlux[facei];
+                localInletReverse += Foam::max(inletControllerFlux[facei], 0.0);
+            }
+            achievedSignedOutletFlow =
+                sectorScale*globalSumValue(localSignedOutlet);
+            achievedPositiveOutletFlow =
+                sectorScale*globalSumValue(localPositiveOutlet);
+            achievedSignedInletFlow =
+                sectorScale*globalSumValue(localSignedInlet);
+            outletReverseFlow =
+                sectorScale*globalSumValue(localOutletReverse);
+            inletReverseFlow = sectorScale*globalSumValue(localInletReverse);
+            prescribedFlowError =
+                Foam::mag(achievedSignedOutletFlow - prescribedTargetFlow);
+            prescribedFlowLimit = prescribedFlowParameters.absoluteTolerance
+              + prescribedFlowParameters.relativeTolerance
+               *Foam::mag(prescribedTargetFlow);
+            prescribedClosureError =
+                Foam::mag(achievedSignedInletFlow - achievedSignedOutletFlow);
+            prescribedClosureLimit = prescribedFlowParameters.absoluteTolerance
+              + prescribedFlowParameters.relativeTolerance*Foam::max
+                (
+                    Foam::mag(prescribedTargetFlow),
+                    Foam::max
+                    (
+                        Foam::mag(achievedSignedInletFlow),
+                        Foam::mag(achievedSignedOutletFlow)
+                    )
+                );
+            if (prescribedFlowError > prescribedFlowLimit
+             || Foam::mag(achievedPositiveOutletFlow-achievedSignedOutletFlow)
+                > prescribedFlowLimit)
+            {
+                FatalErrorInFunction << "XSV_FLOW_001_FLOW_GATE_FAIL time="
+                    << timeValue << " target=" << prescribedTargetFlow
+                    << " achieved=" << achievedSignedOutletFlow
+                    << " inlet=" << achievedSignedInletFlow
+                    << " pressure=" << inletPressure
+                    << " conductance=" << discreteConductanceM3sPa
+                    << " error=" << prescribedFlowError
+                    << " limit=" << prescribedFlowLimit
+                    << " outletReverse=" << outletReverseFlow
+                    << " inletReverse=" << inletReverseFlow
+                    << " closureError=" << prescribedClosureError
+                    << exit(FatalError);
+            }
+            if (prescribedClosureError > prescribedClosureLimit)
+            {
+                FatalErrorInFunction
+                    << "XSV_FLOW_001_INLET_OUTLET_CLOSURE_FAIL time="
+                    << timeValue << " target=" << prescribedTargetFlow
+                    << " achieved=" << achievedSignedOutletFlow
+                    << " inlet=" << achievedSignedInletFlow
+                    << " pressure=" << inletPressure
+                    << " conductance=" << discreteConductanceM3sPa
+                    << " error=" << prescribedFlowError
+                    << " limit=" << prescribedFlowLimit
+                    << " outletReverse=" << outletReverseFlow
+                    << " inletReverse=" << inletReverseFlow
+                    << " closureError=" << prescribedClosureError
+                    << exit(FatalError);
+            }
+            if (outletReverseFlow > prescribedFlowParameters.absoluteTolerance
+             || inletReverseFlow > prescribedFlowParameters.absoluteTolerance)
+            {
+                FatalErrorInFunction << "XSV_FLOW_001_REVERSE_FLOW_FAIL time="
+                    << timeValue << " target=" << prescribedTargetFlow
+                    << " achieved=" << achievedSignedOutletFlow
+                    << " inlet=" << achievedSignedInletFlow
+                    << " pressure=" << inletPressure
+                    << " conductance=" << discreteConductanceM3sPa
+                    << " error=" << prescribedFlowError
+                    << " limit=" << prescribedFlowLimit
+                    << " outletReverse=" << outletReverseFlow
+                    << " inletReverse=" << inletReverseFlow
+                    << " closureError=" << prescribedClosureError
+                    << exit(FatalError);
+            }
         }
 
         scalar localProbe1WeightedPressure = 0.0;
@@ -3661,6 +4006,21 @@ int main(int argc, char *argv[])
 
         if (Pstream::master())
         {
+            if (prescribedFlow)
+            {
+                prescribedFlowTrace << timeValue << ','
+                    << prescribedTargetFlow << ','
+                    << achievedSignedOutletFlow << ','
+                    << achievedPositiveOutletFlow << ','
+                    << achievedSignedInletFlow << ','
+                    << inletPressure << ',' << outletPressure << ','
+                    << discreteConductanceM3sPa << ','
+                    << prescribedFlowError << ',' << prescribedFlowLimit << ','
+                    << prescribedFlowError/prescribedFlowLimit << ','
+                    << prescribedClosureError << ',' << prescribedClosureLimit
+                    << ',' << outletReverseFlow << ',' << inletReverseFlow
+                    << ",1,1,1\n";
+            }
             const scalar compliantStorage =
                 lumpedMachine
               ? machineParameters.compliance

@@ -478,6 +478,69 @@ def render_properties(scenario: dict) -> str:
     pressure_boundary_model = scenario.get(
         "pressureBoundaryModel", "prescribedPressure"
     )
+    prescribed_flow_dictionary = ""
+    if pressure_boundary_model == "prescribedFlow":
+        boundary = scenario.get("prescribedFlowBoundary")
+        if not isinstance(boundary, dict):
+            raise SystemExit("XSV_FLOW_001_INVALID_SCHEDULE missing dictionary")
+        allowed = {
+            "scheduleType", "volumetricFlowRateM3PerS", "timesS",
+            "volumetricFlowRatesM3PerS", "absoluteFlowToleranceM3PerS",
+            "relativeFlowTolerance",
+        }
+        if not set(boundary) <= allowed:
+            raise SystemExit("XSV_FLOW_001_INVALID_SCHEDULE unknown key")
+        try:
+            absolute = float(boundary["absoluteFlowToleranceM3PerS"])
+            relative = float(boundary["relativeFlowTolerance"])
+        except (KeyError, TypeError, ValueError):
+            raise SystemExit("XSV_FLOW_001_INVALID_SCHEDULE invalid tolerances")
+        if not all(math.isfinite(x) and x > 0.0 for x in (absolute, relative)):
+            raise SystemExit("XSV_FLOW_001_INVALID_SCHEDULE invalid tolerances")
+        schedule_type = boundary.get("scheduleType")
+        if schedule_type == "constant":
+            if ("volumetricFlowRateM3PerS" not in boundary
+                    or "timesS" in boundary
+                    or "volumetricFlowRatesM3PerS" in boundary):
+                raise SystemExit("XSV_FLOW_001_INVALID_SCHEDULE constant contract")
+            try:
+                flow = float(boundary["volumetricFlowRateM3PerS"])
+            except (TypeError, ValueError):
+                raise SystemExit("XSV_FLOW_001_INVALID_TARGET_FLOW")
+            if not math.isfinite(flow) or flow < 0.0:
+                raise SystemExit("XSV_FLOW_001_INVALID_TARGET_FLOW")
+            schedule_lines = f"    volumetricFlowRateM3PerS {flow:.16g};\n"
+        elif schedule_type == "piecewiseLinear":
+            if ("volumetricFlowRateM3PerS" in boundary
+                    or "timesS" not in boundary
+                    or "volumetricFlowRatesM3PerS" not in boundary):
+                raise SystemExit("XSV_FLOW_001_INVALID_SCHEDULE piecewise contract")
+            try:
+                times = [float(x) for x in boundary["timesS"]]
+                flows = [float(x) for x in boundary["volumetricFlowRatesM3PerS"]]
+            except (TypeError, ValueError):
+                raise SystemExit("XSV_FLOW_001_INVALID_SCHEDULE values")
+            if (len(times) < 2 or len(times) != len(flows)
+                    or not all(math.isfinite(x) for x in times + flows)
+                    or any(b <= a for a, b in zip(times, times[1:]))
+                    or any(x < 0.0 for x in flows)
+                    or times[0] > float(time_cfg.get("start_s", 0.0))
+                    or times[-1] < float(time_cfg["end_s"])):
+                raise SystemExit("XSV_FLOW_001_INVALID_SCHEDULE values or coverage")
+            schedule_lines = (
+                "    timesS (" + " ".join(f"{x:.16g}" for x in times) + ");\n"
+                "    volumetricFlowRatesM3PerS ("
+                + " ".join(f"{x:.16g}" for x in flows) + ");\n"
+            )
+        else:
+            raise SystemExit("XSV_FLOW_001_INVALID_SCHEDULE scheduleType")
+        prescribed_flow_dictionary = f'''prescribedFlowBoundary
+{{
+    scheduleType {schedule_type};
+{schedule_lines}    absoluteFlowToleranceM3PerS {absolute:.16g};
+    relativeFlowTolerance {relative:.16g};
+}}
+'''
     flow_model = scenario.get("flowResistanceModel", "darcy")
     flow_dictionary = ""
     if flow_model == "darcyForchheimer":
@@ -534,7 +597,26 @@ machineFluxRelativeTolerance {flux_tol:.16g};
     else:
         raise SystemExit("unsupported flowResistanceModel")
     machine_dictionary = ""
-    if pressure_boundary_model == "lumpedMachineCompliance":
+    if pressure_boundary_model == "prescribedFlow":
+        depth = float(bed["bed_depth_m"])
+        initial_front = float(wetting["initial_wet_front_m"] if r1 else wetting.get("initial_wet_front_m", 0.0))
+        if abs(initial_front - depth) > 1e-12 * max(1.0, abs(depth)):
+            raise SystemExit("XSV_FLOW_001_REQUIRES_FULL_INITIAL_SATURATION")
+        if flow_model != "darcy":
+            raise SystemExit("XSV_FLOW_001_REQUIRES_STATIC_DARCY")
+        if scenario.get("bedMechanicsModel", "none") != "none":
+            raise SystemExit("XSV_FLOW_001_REJECTS_COMPACTION")
+        if closure is not None:
+            raise SystemExit("XSV_FLOW_001_REJECTS_EVOLVING_PERMEABILITY")
+        if "machineBoundary" in scenario:
+            raise SystemExit("XSV_FLOW_001_REJECTS_MACHINE_COMPLIANCE")
+        if profile_type == "radial_two_zone":
+            raise SystemExit("XSV_FLOW_001_REJECTS_RADIAL_PROFILE_V1")
+        if profile_type not in {"uniform", "axial_two_layer"}:
+            raise SystemExit("XSV_FLOW_001_REQUIRES_STATIC_DARCY")
+        if float(hydraulic["pressure_ramp_time_s"]) != 0.0:
+            raise SystemExit("XSV_FLOW_001_REJECTS_PRESSURE_RAMP")
+    elif pressure_boundary_model == "lumpedMachineCompliance":
         machine = scenario.get("machineBoundary")
         required_machine = {
             "initialUpstreamPressure",
@@ -695,7 +777,7 @@ inletPatch                 inlet;
 outletPatch                outlet;
 pressureIntegrationMethod  exactPiecewiseLinearIntegral;
 pressureBoundaryModel      {pressure_boundary_model};
-{flow_dictionary}
+{prescribed_flow_dictionary}{flow_dictionary}
 
 // Geometry [SI]
 basketRadius               {float(geometry['basket_radius_m']):.16g};
