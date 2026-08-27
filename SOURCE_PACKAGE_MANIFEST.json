@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 545,
-  "total_uncompressed_bytes_excluding_manifest": 7329052,
-  "aggregate_source_sha256": "d54d8c9021a03f4de71ab87f11cef32458de45ab5e9223aaeea523fdf77bfcc8",
-  "aggregate_sha256": "d54d8c9021a03f4de71ab87f11cef32458de45ab5e9223aaeea523fdf77bfcc8",
+  "total_uncompressed_bytes_excluding_manifest": 7329246,
+  "aggregate_source_sha256": "4272bae8147ae694afcbe802d637a07888d75a0d8b62f3b380416f615d7d502e",
+  "aggregate_sha256": "4272bae8147ae694afcbe802d637a07888d75a0d8b62f3b380416f615d7d502e",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1164,8 +1164,8 @@
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/r1/PROTECTED_PATHS.json": {
-      "sha256": "a07c921374807e6c00bc4eebb826f620be8cf384923ece55abd04474da2b4197",
-      "bytes": 1984,
+      "sha256": "ab35450ef4e585f8a53254e367a5a509640b588c6bf86f4d8c2b74da775153fa",
+      "bytes": 2178,
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/r1/PUCKWORKS_FINAL_AUTHORITY_RECONCILIATION.json": {
