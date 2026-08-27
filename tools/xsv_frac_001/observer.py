@@ -10,6 +10,8 @@ def rows(path):
     with Path(path).open(newline="",encoding="utf-8") as stream: return list(csv.DictReader(stream))
 def close_mass(a,b): return abs(a-b)<=max(MASS_ABS,MASS_REL*abs(b))
 def close_time(a,b,dt): return abs(a-b)<=max(TIME_ABS,TIME_REL*max(abs(b),abs(dt)))
+def validate_manifest_source(manifest,production_source_sha256):
+    if production_source_sha256 and manifest.get("production_source_sha256")!=production_source_sha256: raise AssertionError("manifest production source differs from candidate receipt")
 
 def configured_species(scenario):
     extraction=scenario["extraction"]
@@ -75,7 +77,7 @@ AGG_MASS=("requested_lower_cumulative_beverage_mass_kg","requested_upper_cumulat
 SPEC_MASS=("species_mass_kg","cumulative_species_mass_kg","initial_species_inventory_kg")
 SPEC_RATIO=("species_mass_fraction_of_beverage","fraction_species_mass_fraction_of_initial_inventory","cumulative_extracted_fraction_of_initial_inventory")
 
-def compare(case,scenario):
+def compare(case,scenario,production_source_sha256=None):
     wants,want_species,uncompleted=expected(case,scenario); actual=rows(Path(case)/"postProcessing/wholePullFractions/0/fractions.csv"); actual_species=rows(Path(case)/"postProcessing/wholePullFractions/0/fraction_species.csv")
     if len(actual)!=len(wants): raise AssertionError("unequal aggregate row counts")
     if len(actual_species)!=len(want_species): raise AssertionError("unequal species row counts")
@@ -108,6 +110,7 @@ def compare(case,scenario):
     for key,value in required.items():
         if manifest.get(key)!=value: raise AssertionError(f"manifest mismatch: {key}")
     if not manifest.get("configuration_sha256") or not manifest.get("production_source_sha256"): raise AssertionError("manifest production binding absent")
+    validate_manifest_source(manifest,production_source_sha256)
     totals=manifest.get("final_emitted_cumulative_component_totals",{}); want_water=sum(r["water_mass_kg"] for r in wants); want_solute=sum(r["total_solute_mass_kg"] for r in wants)
     for key,value in (("water_mass_kg",want_water),("solute_mass_kg",want_solute),("beverage_mass_kg",want_water+want_solute)):
         if key not in totals or not close_mass(float(totals[key]),value): raise AssertionError(f"manifest cumulative total mismatch: {key}")

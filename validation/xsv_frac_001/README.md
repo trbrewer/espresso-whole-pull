@@ -14,7 +14,8 @@ Run the synthetic harness outside Git after loading Foundation OpenFOAM 12:
 ```bash
 python3 -m tools.xsv_frac_001.runner \
   --work-root /external/path/xsv-frac-001 --openfoam-ranks 1 2 \
-  --baseline-solver /external/path/starting-main/espressoWholePullFoam
+  --candidate-build-receipt /external/path/candidate-receipt.json \
+  --baseline-build-receipt /external/path/baseline-receipt.json
 ```
 
 The runner returns 0 on PASS, 2 on numerical qualification failure, and 3

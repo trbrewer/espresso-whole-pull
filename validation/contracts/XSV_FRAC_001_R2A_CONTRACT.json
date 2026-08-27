@@ -1,0 +1,21 @@
+{
+  "schema": "espresso.xsv_frac_001.r2a.contract.v1",
+  "task": "XSV-FRAC-001-R2A",
+  "change_declaration": "NUMERICAL_METHOD_CHANGE",
+  "scientific_classification": "NO_NEW_GOVERNING_PHYSICS",
+  "baseline_authority": {
+    "commit": "fc668afbeb7782d3d342b8ba403fb6c1dee396d4",
+    "tree": "d04f7c7c61eeae057ae55dde878ec4d7cb936815"
+  },
+  "required_behavior_count": 20,
+  "resolution_behavior_semantics": "RESOLUTION_COVERAGE_OBSERVER_ORACLE_PASS_AT_EVERY_LEVEL",
+  "resolution_levels": {
+    "timesteps_s": [0.02, 0.01, 0.005],
+    "axial_cells": [32, 64, 128]
+  },
+  "cross_level_magnitudes": "DIAGNOSTIC_ONLY_NO_NEW_PHYSICAL_CONVERGENCE_THRESHOLD",
+  "candidate_and_baseline_build_receipts_required": true,
+  "r1_result_sha256": "69973b49bd110da6dfddcfbff1791b27f97b03f76092b7875f069e7267701a47",
+  "r2_result_sha256": "b8eaf116a2c2c34abf1f34ded13fbaf28ac38deab1c9243d91555b09270948b1",
+  "claim_ceiling": "Discrete fraction-observer qualification only; no physical validation or PDE-convergence claim."
+}
