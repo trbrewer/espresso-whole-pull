@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -12,7 +13,7 @@ SPEC = importlib.util.spec_from_file_location(
 )
 MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
-PUCKWORKS = ROOT.parent / "puckworks-sci-md-007"
+PUCKWORKS = Path(os.environ["PUCKWORKS_GIT_REPOSITORY"]).resolve() if os.environ.get("PUCKWORKS_GIT_REPOSITORY") else None
 
 
 def fixture_root(tmp_path):
@@ -54,7 +55,7 @@ class TestSciMd007Handoff(unittest.TestCase):
 
     def test_handoff_and_cross_repository_verify_exact_bytes(self):
         self.assertEqual(MODULE.verify()["status"], "PASS")
-        if PUCKWORKS.is_dir():
+        if PUCKWORKS is not None:
             self.assertEqual(MODULE.verify(PUCKWORKS)["status"], "PASS")
 
     def test_one_vendored_byte_tamper_fails(self):
@@ -130,7 +131,7 @@ class TestSciMd007Handoff(unittest.TestCase):
         self.assertEqual(MODULE.verify(root=root)["status"], "FAIL")
 
     def test_fake_commit_and_wrong_tree_fail_cross_repository(self):
-        if not PUCKWORKS.is_dir():
+        if PUCKWORKS is None:
             self.skipTest("optional cross-repository checkout is unavailable")
         root = self.with_fixture()
         path = root / "docs/validation/sci_md_007/PUCKWORKS_LOCK.json"
@@ -284,7 +285,7 @@ class TestSciMd007Handoff(unittest.TestCase):
         self.assertNotIn("independent raw-register", text.lower())
 
     def test_cross_repository_manifest_member_tamper_fails(self):
-        if not PUCKWORKS.is_dir():
+        if PUCKWORKS is None:
             self.skipTest("optional cross-repository checkout is unavailable")
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)

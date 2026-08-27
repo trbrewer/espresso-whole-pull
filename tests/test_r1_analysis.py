@@ -6,7 +6,9 @@ import math
 import csv
 import tempfile
 import unittest
+from copy import deepcopy
 from pathlib import Path
+from tools.sci_ed_002_record_context import RecordContextError, validate_record_context
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("r1_analysis", ROOT / "scripts/analyze_r1.py")
@@ -237,10 +239,28 @@ class R1AnalysisSyntheticTests(unittest.TestCase):
         self.assertEqual(status["workflow_execution_status"], "PASS")
         self.assertEqual(status["protected_comparison_status"], "FAIL")
 
-        manifest = json.loads((ROOT / "SOURCE_PACKAGE_MANIFEST.json").read_text())
-        project_state = (ROOT / "docs/PROJECT_STATE.md").read_text()
-        count = len(manifest["files"])
-        self.assertIn(f"Public source verification: {count}/{count} PASS", project_state)
+        activation = json.loads((ROOT / "docs/validation/sci_ed_002/r1/ACTIVATION.json").read_text())
+        r1_result = json.loads((ROOT / "docs/validation/sci_ed_002/r1/R1_RESULT.json").read_text())
+        validate_record_context(activation, r1_result)
+
+    def test_final_record_context_rejects_nonportable_or_escalated_state(self) -> None:
+        activation = json.loads((ROOT / "docs/validation/sci_ed_002/r1/ACTIVATION.json").read_text())
+        result = json.loads((ROOT / "docs/validation/sci_ed_002/r1/R1_RESULT.json").read_text())
+        cases = (
+            ("MACHINE_LOCAL_ABSOLUTE_PATH", activation, {**activation, "path": "/tmp/worktree"}, result),
+            ("WRONG_REPOSITORY_AUTHORITY", activation, {**activation, "branch": "main"}, result),
+            ("SCIENTIFIC_DISPOSITION_CHANGED", result, activation, {**result, "disposition": "PASS"}),
+            ("COMMISSIONING_TRUE", result, activation, {**result, "commissioning_authorized": True}),
+            ("PREDICTOR_ELIGIBILITY_TRUE", result, activation, {**result, "predictor_eligible": True}),
+            ("C_S0_ESTABLISHED", result, activation, {**result, "c_s0_mapping_status": "ESTABLISHED"}),
+            ("INCONSISTENT_STATUS", result, activation, {**result, "consumer_status": "PASS"}),
+        )
+        for reason, _, candidate_activation, candidate_result in cases:
+            with self.subTest(reason=reason), self.assertRaisesRegex(RecordContextError, reason):
+                validate_record_context(candidate_activation, candidate_result)
+        missing = deepcopy(activation); missing.pop("base")
+        with self.assertRaisesRegex(RecordContextError, "MISSING_CONTEXT_FIELD"):
+            validate_record_context(missing, result)
 
 
 if __name__ == "__main__":

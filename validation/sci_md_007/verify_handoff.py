@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -67,6 +68,17 @@ REQUIRED_OUTPUTS = {
     "docs/analysis/sci_md_007/r2/R2_CROSS_ARTIFACT_AUDIT.json",
     "docs/analysis/sci_md_007/r2/search_closure_audit.json",
     "docs/analysis/sci_md_007/r2/fold_transportability_audit.csv",
+}
+ACCEPTED_CONSUMER_EVIDENCE = {
+    "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json",
+    "docs/validation/sci_md_007/PUCKWORKS_LOCK.json",
+    "docs/validation/sci_md_007/R2_QUALIFICATION.md",
+    "docs/validation/sci_md_007/RESULT.json",
+    "docs/validation/sci_md_007/RESULT.md",
+    "docs/validation/sci_md_007/upstream/R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json",
+    "docs/validation/sci_md_007/upstream/R2_PACKAGE_AUTHORITY_CLOSURE.json",
+    "docs/validation/sci_md_007/upstream/SCI_MD_007_EXPORT.json",
+    "docs/validation/sci_md_007/upstream/source_package_manifest.json",
 }
 
 
@@ -213,13 +225,12 @@ def verify_candidate_binding(binding: dict, root: Path = ROOT) -> bool:
         return False
     tree = _git(root, "rev-parse", f"{binding['e3_commit']}^{{tree}}")
     changed = _git(root, "diff", "--name-only", STARTING_COMMIT, binding["e3_commit"])
-    admin = _git(root, "diff", "--name-only", binding["e3_commit"], "HEAD")
-    if tree.returncode or changed.returncode or admin.returncode:
+    if tree.returncode or changed.returncode:
         return False
     if tree.stdout.strip() != binding["e3_tree"] or sorted(changed.stdout.splitlines()) != binding["base_to_e3_changed_paths"]:
         return False
-    if not set(admin.stdout.splitlines()) <= set(binding["allowed_e3b_paths"]):
-        return False
+    # The binding freezes E3/E3b. Unrelated later programmes are outside this
+    # historical candidate range and have their own branch-scope controls.
     for path, expected in binding["e3_scientific_file_sha256"].items():
         value = _git_bytes(root, "show", f"{binding['e3_commit']}:{path}")
         if value.returncode or _sha(value.stdout) != expected:
@@ -496,6 +507,14 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
                 binding.get("p3_commit") == lock["commit"]
                 and binding.get("p3_tree") == lock["tree"]
             )
+            preserved = []
+            for path in sorted(ACCEPTED_CONSUMER_EVIDENCE):
+                frozen = _git_bytes(root, "show", f"{binding['e3_commit']}:{path}")
+                current = root / path
+                if frozen.returncode or not current.is_file() or frozen.stdout != current.read_bytes():
+                    preserved.append(path)
+            checks["accepted_consumer_evidence_preserved"] = not preserved
+            failures.extend(f"accepted_consumer_evidence_changed:{path}" for path in preserved)
         expected = derive_result(export, contract, boundary)
         committed = json.loads((here / "RESULT.json").read_text(encoding="utf-8"))
         checks["generated_result"] = committed == expected
@@ -514,14 +533,9 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
             committed["angeloni_reuse"] is False
             and committed["sci_md_006_reopened"] is False
         )
-        git_dir = _git(root, "rev-parse", "--git-dir")
-        if git_dir.returncode == 0:
-            changed = _git(root, "diff", "--name-only", "origin/main...HEAD")
-            changed_paths = set(changed.stdout.splitlines()) if changed.returncode == 0 else set()
-            checks["branch_changed_path_allowlist"] = (
-                changed.returncode == 0 and changed_paths <= ALLOWED_R2_PATHS
-            )
-            checks["branch_no_physics_runtime_or_protected_paths"] = True
+        # Historical SCI-MD-007 applicability is bound above to its E3 consumer
+        # and P3 producer objects. Later branch paths are governed separately by
+        # the current task's no-physics verifier, never by this historical list.
         if puckworks_repo is not None:
             repo = Path(puckworks_repo).resolve()
             remote = _git(repo, "remote", "get-url", "origin")
@@ -575,7 +589,7 @@ def verify(puckworks_repo: str | Path | None = None, root: Path = ROOT) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--puckworks-repo")
+    parser.add_argument("--puckworks-repo", default=os.environ.get("PUCKWORKS_GIT_REPOSITORY"))
     parser.add_argument("--write-result", action="store_true")
     parser.add_argument("--write-boundary", action="store_true")
     parser.add_argument("--write-binding")
