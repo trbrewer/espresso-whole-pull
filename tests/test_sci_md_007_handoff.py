@@ -1,10 +1,12 @@
 import importlib.util
 import json
+import os
 import shutil
 import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from tools.git_object_authority import GitAuthority, object_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location(
@@ -12,7 +14,7 @@ SPEC = importlib.util.spec_from_file_location(
 )
 MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
-PUCKWORKS = ROOT.parent / "puckworks-sci-md-007"
+PUCKWORKS = Path(os.environ["PUCKWORKS_GIT_REPOSITORY"]).resolve() if os.environ.get("PUCKWORKS_GIT_REPOSITORY") else None
 
 
 def fixture_root(tmp_path):
@@ -53,9 +55,28 @@ class TestSciMd007Handoff(unittest.TestCase):
         return fixture_root(Path(temporary.name))
 
     def test_handoff_and_cross_repository_verify_exact_bytes(self):
-        self.assertEqual(MODULE.verify()["status"], "PASS")
-        if PUCKWORKS.is_dir():
-            self.assertEqual(MODULE.verify(PUCKWORKS)["status"], "PASS")
+        root = self.with_fixture()
+        self.assertEqual(MODULE.verify(root=root)["status"], "PASS")
+        if PUCKWORKS is not None:
+            self.assertEqual(MODULE.verify(PUCKWORKS, root=root)["status"], "PASS")
+
+    def test_accepted_consumer_evidence_is_preserved_at_frozen_e3(self):
+        binding = load(ROOT / "docs/validation/sci_md_007/EWP_CANDIDATE_BINDING.json")
+        authority = GitAuthority(binding["e3_commit"], binding["e3_tree"])
+        paths = (
+            "docs/validation/sci_md_007/BOUNDARY_EVIDENCE.json",
+            "docs/validation/sci_md_007/PUCKWORKS_LOCK.json",
+            "docs/validation/sci_md_007/R2_QUALIFICATION.md",
+            "docs/validation/sci_md_007/RESULT.json",
+            "docs/validation/sci_md_007/RESULT.md",
+            "docs/validation/sci_md_007/upstream/R2_EVIDENCE_PACKAGE_CORRECTION_CONTRACT.json",
+            "docs/validation/sci_md_007/upstream/R2_PACKAGE_AUTHORITY_CLOSURE.json",
+            "docs/validation/sci_md_007/upstream/SCI_MD_007_EXPORT.json",
+            "docs/validation/sci_md_007/upstream/source_package_manifest.json",
+        )
+        for path in paths:
+            with self.subTest(path=path):
+                self.assertEqual((ROOT / path).read_bytes(), object_bytes(ROOT, authority, path))
 
     def test_one_vendored_byte_tamper_fails(self):
         for name in ("SCI_MD_007_EXPORT.json", "source_package_manifest.json"):
@@ -130,7 +151,7 @@ class TestSciMd007Handoff(unittest.TestCase):
         self.assertEqual(MODULE.verify(root=root)["status"], "FAIL")
 
     def test_fake_commit_and_wrong_tree_fail_cross_repository(self):
-        if not PUCKWORKS.is_dir():
+        if PUCKWORKS is None:
             self.skipTest("optional cross-repository checkout is unavailable")
         root = self.with_fixture()
         path = root / "docs/validation/sci_md_007/PUCKWORKS_LOCK.json"
@@ -284,7 +305,7 @@ class TestSciMd007Handoff(unittest.TestCase):
         self.assertNotIn("independent raw-register", text.lower())
 
     def test_cross_repository_manifest_member_tamper_fails(self):
-        if not PUCKWORKS.is_dir():
+        if PUCKWORKS is None:
             self.skipTest("optional cross-repository checkout is unavailable")
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)

@@ -1,0 +1,1 @@
+{"schema_version":"sci-ed-002-r2c-claim-conjunction/v1","layers":["LOCK_EXPORT_INTERNAL_CONJUNCTION","IMMUTABLE_POLICY","EXACT_PRODUCER_BYTES"],"fields":["commissioning","predictor_eligibility","c_s0_mapping","holdout","governing_physics_claim","producer_disposition","claim_ceiling_disposition"],"jointly_wrong_rejected":true,"status":"PASS"}

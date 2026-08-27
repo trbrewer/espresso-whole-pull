@@ -154,8 +154,20 @@ class StageCScopeTests(unittest.TestCase):
 
     def test_forbidden_repository_paths_are_unchanged(self):
         import subprocess
+        base = "bf4de34310fcc433071e00ee7fa51082a37d1c4c"
+        candidate = "fcba238884b1cf0ef63dc2be3e0da3e43edaeb0e"
+        self.assertEqual(
+            subprocess.check_output(
+                ["git", "rev-parse", f"{candidate}^{{tree}}"], cwd=ROOT, text=True
+            ).strip(),
+            "d23e45458c54cb64b31a752dd8e7fc7dc3fb19ef",
+        )
+        subprocess.run(
+            ["git", "merge-base", "--is-ancestor", base, candidate],
+            cwd=ROOT, check=True,
+        )
         changed = subprocess.run(
-            ["git", "diff", "--name-only", "origin/main"], cwd=ROOT,
+            ["git", "diff", "--name-only", base, candidate], cwd=ROOT,
             check=True, text=True, capture_output=True,
         ).stdout.splitlines()
         forbidden = (

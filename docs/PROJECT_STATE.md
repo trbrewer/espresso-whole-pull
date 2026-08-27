@@ -1,5 +1,9 @@
 # Project State
 
+## SCI-ED-002 owner-accepted blocked-result closeout
+
+SCI-ED-002 is complete as an owner-accepted, merge-authorized valid blocked design package. Its scientific blocker remains the unresolved operational reference-extractability endpoint rule. Exact producer, source, unit, hosted-CI, and branch no-physics evidence are accepted. Exhaustive public CLI mutation coverage remains incomplete and is accepted as nonblocking technical debt; the historical R2D failure is not rewritten. No further SCI-ED-002 governance work is planned absent an owner-defined revisit trigger. Commissioning, SCI-MD-007 replay, predictor development, and `c_s0` mapping remain unauthorized. The programme returns to productive model and simulation development outside the unresolved inventory-to-`c_s0` dependency.
+
 SCI-MD-007-R2-C1 preserves the stopped R2 producer/consumer candidates and additively
 supersedes their package authority with the qualified P3 handoff. The scientific reduction remains
 `SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`,
@@ -15,7 +19,7 @@ No OpenFOAM execution or governing-physics change occurred. Angeloni was not reu
 SCI-MD-006 remains its preserved pre-execution STOP. The generic exact fraction-boundary
 production/reduced parity qualification remains a separate deferred numerical-interface task,
 not a continuation or repair of SCI-MD-006.
-Public source verification: 517/517 PASS.
+Public source verification: 529/529 PASS.
 
 SCI-MD-005 is `SCI_MD_005_TRAINING_DATA_CONTRACT_BLOCKED`. Its required
 inventory-scaled common-extraction H0 cannot exactly reproduce the frozen
@@ -513,3 +517,6 @@ supplied exact head and tree identities. No comparison or OpenFOAM execution
 occurred in this correction. V2 remains descriptive,
 post-observation, non-blind, and non-independent. No new scoring, solver run,
 fit, protected access, experiment, or physics change occurred.
+# SCI-ED-002 prospective measurement contract (candidate)
+
+The branch consumes the exact Puckworks SCI-ED-002 candidate contract. Commissioning is not authorized and additional direct measurements remain required. Do not rerun SCI-MD-007 until real open-core evidence exists. Predictor development remains ineligible and `c_s0` mapping remains `NOT_ESTABLISHED`. This is a candidate branch state, not a merged authority.

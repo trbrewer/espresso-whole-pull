@@ -1,0 +1,1 @@
+{"schema_version":"ewp.sci_ed_002.malformed_diagnostics.v1","required_fields":["status","full_handoff_verified","verification_mode","stage","reason_code","field","expected","observed","expected_source","observed_source"],"raw_traceback_permitted":false,"stale_success_permitted":false}

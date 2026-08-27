@@ -284,6 +284,10 @@ class PackageContractTests(unittest.TestCase):
         ):
             self.assertTrue(excluded(Path(relative)), relative)
 
+    def test_source_manifest_excludes_pytest_cache_on_clean_checkout(self) -> None:
+        for relative in (".pytest_cache/.gitignore", ".pytest_cache/v/cache/nodeids"):
+            self.assertTrue(excluded(Path(relative)), relative)
+
     def test_source_manifest_excludes_only_the_approved_puckworks_report(self) -> None:
         self.assertTrue(excluded(Path("docs/integration/PUCKWORKS_UPDATE_IMPACT.md")))
         self.assertFalse(excluded(Path("docs/integration/arbitrary_solver_source.md")))

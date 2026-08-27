@@ -1,0 +1,33 @@
+{
+  "adjudication": "HISTORICAL_V0_1_4_VS_V0_1_3_VERIFIER_PREEXISTING_FAILURE_REPRODUCED_IDENTICALLY_AT_BASE_AND_CANDIDATE_NOT_BRANCH_DIFF_EVIDENCE",
+  "base_exit_code": 1,
+  "base_summary": {
+    "fail": 1,
+    "failed_comparisons": [
+      "openfoam_solver_source"
+    ],
+    "pass": 27,
+    "total": 28
+  },
+  "candidate_exit_code": 1,
+  "candidate_summary": {
+    "fail": 1,
+    "failed_comparisons": [
+      "openfoam_solver_source"
+    ],
+    "pass": 27,
+    "total": 28
+  },
+  "failed_comparison": {
+    "allowed_difference": "displayed package version token only",
+    "baseline_normalized_sha256": "5c4e51785019b703c32008a9bd302a9ef298bfe36998490ddcc8b5e572b30c35",
+    "baseline_path": "baseline_evidence/v0_1_3/source_contract/espressoWholePullFoam.C",
+    "baseline_raw_sha256": "605e2b8d97a699fd24387c358b86ec89405bada682109797cf77e0b2b968cb2f",
+    "current_normalized_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+    "current_path": "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+    "current_raw_sha256": "9ffba0fa7800de50375a2a0c94cf99127870ac4451b104866c7e50322c992599",
+    "status": "FAIL"
+  },
+  "fingerprints_equal": true,
+  "schema_version": "1.0.0"
+}

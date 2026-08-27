@@ -114,7 +114,7 @@ def excluded(relative: Path) -> bool:
         return True
     if parts and parts[0] in PUBLIC_METADATA_DIRECTORIES:
         return True
-    if "__pycache__" in parts or name.endswith(".pyc"):
+    if "__pycache__" in parts or ".pytest_cache" in parts or name.endswith(".pyc"):
         return True
     if "qualification_runs" in parts:
         return True

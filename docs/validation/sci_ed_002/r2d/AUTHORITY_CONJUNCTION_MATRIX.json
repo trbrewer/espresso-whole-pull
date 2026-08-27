@@ -1,0 +1,1 @@
+{"schema_version":"ewp.sci_ed_002.authority_conjunction.v1","stages":["structure","classification","immutable_policy","lock_export_conjunction","historical_provenance","producer_object","export","dual_manifests","twenty_schemas","sci_md_007","claim_ceiling","derived_values","atomic_result"],"full_pass_requires_all":true}
