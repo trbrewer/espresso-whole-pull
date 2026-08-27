@@ -42,6 +42,69 @@ ALLOWED_SPECIES_PROVENANCE = {
     "DIRECT_MEASURED_INPUT", "LITERATURE_CONSTRAINED", "TRAINING_DATA_ESTIMATE",
     "FIXED_STRUCTURAL_ASSUMPTION", "PROXY",
 }
+MAX_FRACTION_BOUNDARIES = 10000
+
+
+def fraction_collection_contract(scenario: dict) -> dict | None:
+    """Validate the optional fraction observer before case materialization."""
+    raw = scenario.get("fractionCollection")
+    if raw is None:
+        return None
+    if not isinstance(raw, dict):
+        raise SystemExit("fractionCollection must be an object")
+    allowed = {"enabled", "boundaryBasis", "cumulativeBoundariesKg",
+               "emitTerminalPartial"}
+    if set(raw) - allowed:
+        raise SystemExit("fractionCollection contains unrecognized keys")
+    if "enabled" not in raw or type(raw["enabled"]) is not bool:
+        raise SystemExit("fractionCollection enabled must be Boolean")
+    if not raw["enabled"]:
+        if set(raw) != {"enabled"}:
+            raise SystemExit("disabled fractionCollection accepts only enabled")
+        return None
+    if set(raw) != allowed:
+        raise SystemExit("enabled fractionCollection is incomplete")
+    if raw["boundaryBasis"] != "cumulativeBeverageMass":
+        raise SystemExit("unsupported fractionCollection boundaryBasis")
+    if type(raw["emitTerminalPartial"]) is not bool:
+        raise SystemExit("emitTerminalPartial must be Boolean")
+    values = raw["cumulativeBoundariesKg"]
+    if not isinstance(values, list) or not values:
+        raise SystemExit("cumulativeBoundariesKg must be a nonempty array")
+    if len(values) > MAX_FRACTION_BOUNDARIES:
+        raise SystemExit("too many fraction boundaries")
+    if any(isinstance(x, bool) for x in values):
+        raise SystemExit("fraction boundaries must be numbers")
+    try:
+        boundaries = [float(x) for x in values]
+    except (TypeError, ValueError):
+        raise SystemExit("fraction boundaries must be numbers")
+    if any(not math.isfinite(x) or x <= 0.0 for x in boundaries):
+        raise SystemExit("fraction boundaries must be finite and positive")
+    if any(b <= a for a, b in zip(boundaries, boundaries[1:])):
+        raise SystemExit("fraction boundaries must be strictly increasing")
+    return {"boundaries": boundaries,
+            "emit_terminal_partial": raw["emitTerminalPartial"]}
+
+
+def render_fraction_collection(scenario: dict) -> str:
+    contract = fraction_collection_contract(scenario)
+    if contract is None:
+        return ""
+    boundaries = " ".join(f"{x:.16g}" for x in contract["boundaries"])
+    terminal = "true" if contract["emit_terminal_partial"] else "false"
+    digest = hashlib.sha256(canonical_json(scenario["fractionCollection"]).encode()).hexdigest()
+    source_digest = sha256(SCRIPT_DIR.parent/"solver/espressoWholePullFoam/espressoWholePullFoam.C")
+    return f'''fractionCollection
+{{
+    enabled true;
+    boundaryBasis cumulativeBeverageMass;
+    cumulativeBoundariesKg ({boundaries});
+    emitTerminalPartial {terminal};
+    configurationSha256 "{digest}";
+    productionSourceSha256 "{source_digest}";
+}}
+'''
 
 
 def validate_indexed_generated_names(species_ids: list[str], *,
@@ -617,6 +680,7 @@ effectivePermeabilityEvolution
     maximumMultiplier {float(closure["maximum_effective_multiplier"]):.16g};
 }}
 '''
+    fraction_dictionary = render_fraction_collection(scenario)
     return f'''FoamFile
 {{
     version     2.0;
@@ -676,6 +740,7 @@ extractionRateConstant     {float(legacy_rate):.16g};
 saturationConcentration    {float(legacy_saturation):.16g};
 {indexed_species_dictionary}
 targetBeverageMass         {float(time_cfg['target_beverage_mass_kg']):.16g};
+{fraction_dictionary}
 {machine_dictionary}
 {mechanics_dictionary}
 {closure_dictionary}
@@ -1181,6 +1246,8 @@ def main() -> None:
     root = args.root.resolve()
     config_path = resolve_path(root, args.config, REFERENCE_CONFIG_RELATIVE)
     scenario = json.loads(config_path.read_text(encoding="utf-8"))
+    # Validate optional observers before creating or copying any case path.
+    fraction_collection_contract(scenario)
     if args.nprocs < 1:
         raise SystemExit("nprocs must be positive")
     r1 = config_path == (root / R1_CONFIG_RELATIVE).resolve() or is_r1_scenario(

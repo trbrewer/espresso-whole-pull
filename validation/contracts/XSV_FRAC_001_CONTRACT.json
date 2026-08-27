@@ -1,0 +1,30 @@
+{
+  "schema": "espresso.xsv_frac_001.contract.v1",
+  "task": "XSV-FRAC-001",
+  "change_declaration": "NUMERICAL_METHOD_CHANGE",
+  "governance_class": "G2",
+  "scientific_qualification": "NO_NEW_GOVERNING_PHYSICS",
+  "frozen_before_adjudicative_execution": true,
+  "boundary_basis": "cumulativeBeverageMass",
+  "mass_partition_convention": "piecewise_constant_step_flux_mass_partition",
+  "tolerances": {
+    "mass_absolute_kg": 1e-12,
+    "mass_relative": 1e-10,
+    "numerical_floor_kg": 1e-15,
+    "fraction_series_species_nrmse_max": 0.01,
+    "endpoint_species_cup_mass_relative_max": 0.005
+  },
+  "matrix": [
+    "pure_exact_boundaries", "pure_multiple_boundaries", "pure_zero_mass_step",
+    "terminal_partial_enabled", "terminal_partial_disabled", "legacy_effective_solute",
+    "indexed_one_legacy_equivalent", "identical_split_species", "distinct_two_species",
+    "three_species_structural_balance", "zero_extraction_rate", "zero_diffusivity",
+    "positive_diffusivity", "irregular_boundaries", "timestep_refinement_factor_two",
+    "axial_mesh_refinement", "deterministic_rerun", "serial_two_rank",
+    "wetting_reference_smoke", "incomplete_final_boundary"
+  ],
+  "mesh_axial_cells": [32, 64, 128],
+  "timestep_levels_s": [0.02, 0.01, 0.005],
+  "protected_data_access": "FORBIDDEN",
+  "claim_ceiling": "Numerical qualification only; physical validation is NOT_ESTABLISHED."
+}

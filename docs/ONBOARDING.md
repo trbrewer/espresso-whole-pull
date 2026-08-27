@@ -36,11 +36,20 @@ its evidence and protected-comparison contracts are accepted.
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_source_manifest.py --root .
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/static_validate.py --root .
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p 'test_*.py'
-PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_no_physics_change.py --root . --output /tmp/no-physics.json
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_v0_1_4_baseline_integrity.py --root . --output /tmp/v0-1-4-baseline.json
 bash -n Allrun Allverify Allclean Allwmake scripts/*.sh scripts/lib/*.sh
 ```
 
 These checks do not compile or run OpenFOAM and do not establish physical validation.
+
+The v0.1.4 baseline-integrity check protects immutable historical evidence.
+Current active-boundary and release-integrity checks are the commands invoked
+by `.github/workflows/static-validation.yml`, selected according to the active
+task's change declaration. `scripts/verify_no_physics_change.py` remains the
+historical v0.1.4-versus-v0.1.3 release verifier; it is not a global
+current-main no-change assertion after authorized solver development. Root
+`Allverify` is an archival/release qualification workflow, not a routine
+current-development acceptance command.
 
 Foundation OpenFOAM 12 is the current target. Full runs are manual and release-gated. Do not run `Allrun`, `Allverify`, or `Allclean` as part of routine documentation or CI work.
 

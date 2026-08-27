@@ -1,5 +1,15 @@
 # Project State
 
+## XSV-FRAC-001 exact discrete cup-fraction interface
+
+XSV-FRAC-001 implemented the optional exact-discrete mass-defined
+multispecies cup-fraction observation interface without adding governing
+physics or prescribed-flow behavior. Boundary and component closure passed,
+including selected two-rank execution and deterministic replay, but the frozen
+independent reduced-route parity ceilings failed. The preserved disposition is
+`XSV_FRAC_001_IMPLEMENTED_NUMERICAL_QUALIFICATION_FAIL`; physical validation
+remains `NOT_ESTABLISHED`.
+
 ## SCI-ED-002 owner-accepted blocked-result closeout
 
 SCI-ED-002 is complete as an owner-accepted, merge-authorized valid blocked design package. Its scientific blocker remains the unresolved operational reference-extractability endpoint rule. Exact producer, source, unit, hosted-CI, and branch no-physics evidence are accepted. Exhaustive public CLI mutation coverage remains incomplete and is accepted as nonblocking technical debt; the historical R2D failure is not rewritten. No further SCI-ED-002 governance work is planned absent an owner-defined revisit trigger. Commissioning, SCI-MD-007 replay, predictor development, and `c_s0` mapping remain unauthorized. The programme returns to productive model and simulation development outside the unresolved inventory-to-`c_s0` dependency.
