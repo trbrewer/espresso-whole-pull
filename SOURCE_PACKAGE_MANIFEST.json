@@ -26,38 +26,13 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 545,
-  "total_uncompressed_bytes_excluding_manifest": 7329246,
-  "aggregate_source_sha256": "4272bae8147ae694afcbe802d637a07888d75a0d8b62f3b380416f615d7d502e",
-  "aggregate_sha256": "4272bae8147ae694afcbe802d637a07888d75a0d8b62f3b380416f615d7d502e",
+  "file_count": 540,
+  "total_uncompressed_bytes_excluding_manifest": 7329011,
+  "aggregate_source_sha256": "3e865e033ec34efbf204335a07cd17f20216f00ae2360106467ae33d7a1a3b9c",
+  "aggregate_sha256": "3e865e033ec34efbf204335a07cd17f20216f00ae2360106467ae33d7a1a3b9c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
-    ".pytest_cache/.gitignore": {
-      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd",
-      "bytes": 37,
-      "git_mode": "100644"
-    },
-    ".pytest_cache/CACHEDIR.TAG": {
-      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
-      "bytes": 191,
-      "git_mode": "100644"
-    },
-    ".pytest_cache/README.md": {
-      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
-      "bytes": 302,
-      "git_mode": "100644"
-    },
-    ".pytest_cache/v/cache/lastfailed": {
-      "sha256": "db85ada477848d9db04463c9c6615ca8c4a0d7e7f38b4f9bc114bb3e6a489fc6",
-      "bytes": 46,
-      "git_mode": "100644"
-    },
-    ".pytest_cache/v/cache/nodeids": {
-      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "bytes": 2,
-      "git_mode": "100644"
-    },
     "Allclean": {
       "sha256": "0bcb5c9a56e6afd73ea47ab7748eab95466d809cda6c66e93f0225d4ff59341e",
       "bytes": 953,
@@ -1164,8 +1139,8 @@
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/r1/PROTECTED_PATHS.json": {
-      "sha256": "ab35450ef4e585f8a53254e367a5a509640b588c6bf86f4d8c2b74da775153fa",
-      "bytes": 2178,
+      "sha256": "598456c4a883b16a16c998e06012ea06aee566bfa8b129ccf3ddc1ee5827554e",
+      "bytes": 2257,
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/r1/PUCKWORKS_FINAL_AUTHORITY_RECONCILIATION.json": {
@@ -1469,8 +1444,8 @@
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {
-      "sha256": "0846b6534c69a4ac46ad9a40c42eb79b85db58fb97b4030a841402124c9b6051",
-      "bytes": 9346,
+      "sha256": "a36cb8744634c0816015c3e462582ebe4bb61aa55534527d7443a1d7fb581a7d",
+      "bytes": 9374,
       "git_mode": "100755"
     },
     "scripts/generate_val001_administrative_freeze.py": {
@@ -2049,8 +2024,8 @@
       "git_mode": "100644"
     },
     "tests/test_reference_case.py": {
-      "sha256": "268ed2e331d6f3c99576996eb7fb5751c1c1ebd64819f46f94bcf13cb8b04558",
-      "bytes": 66862,
+      "sha256": "905665cb80ef2254ffb1367be325a1bcf8911a93d3af3b0ad96d86e36d337d42",
+      "bytes": 67098,
       "git_mode": "100644"
     },
     "tests/test_sci_ed_001_c1.py": {
