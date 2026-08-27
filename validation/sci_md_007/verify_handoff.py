@@ -170,8 +170,7 @@ def derive_boundary_evidence(root: Path = ROOT) -> dict:
 def create_candidate_binding(e3: str, root: Path = ROOT) -> dict:
     tree = _git(root, "rev-parse", f"{e3}^{{tree}}")
     changed = _git(root, "diff", "--name-only", STARTING_COMMIT, e3)
-    admin = _git(root, "diff", "--name-only", binding["e3_commit"], "HEAD")
-    if tree.returncode or changed.returncode or admin.returncode:
+    if tree.returncode or changed.returncode:
         raise ValueError("cannot resolve E3 candidate")
     paths = sorted(changed.stdout.splitlines())
     scientific = [
@@ -214,7 +213,8 @@ def verify_candidate_binding(binding: dict, root: Path = ROOT) -> bool:
         return False
     tree = _git(root, "rev-parse", f"{binding['e3_commit']}^{{tree}}")
     changed = _git(root, "diff", "--name-only", STARTING_COMMIT, binding["e3_commit"])
-    if tree.returncode or changed.returncode:
+    admin = _git(root, "diff", "--name-only", binding["e3_commit"], "HEAD")
+    if tree.returncode or changed.returncode or admin.returncode:
         return False
     if tree.stdout.strip() != binding["e3_tree"] or sorted(changed.stdout.splitlines()) != binding["base_to_e3_changed_paths"]:
         return False
