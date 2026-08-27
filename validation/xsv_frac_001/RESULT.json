@@ -3,7 +3,7 @@
   "task_id": "XSV-FRAC-001-R2A",
   "change_declaration": "NUMERICAL_METHOD_CHANGE",
   "scientific_classification": "NO_NEW_GOVERNING_PHYSICS",
-  "disposition": "XSV_FRAC_001_R2A_PASS_PENDING_CI_REVIEW_AND_MERGE",
+  "disposition": "XSV_FRAC_001_R2A_PASS_MERGED_AND_CLOSED_RETURN_TO_MODEL_DEVELOPMENT",
   "r1": {
     "commit": "80dcf9ef4397bed79f9917d4ed367b8d3d7675d0",
     "tree": "e5ed6d536382d8be22927dc2eb580a64e2075598",
@@ -30,6 +30,19 @@
     "executable_hashes_stable": true,
     "default_disabled_regressions_pass": true,
     "external_evidence_identity": "xsv-frac-001-r2a-qualification"
+  },
+  "integration": {
+    "closeout_commit": "868cd7268d92245e207e16b9e7396f5673461b8b",
+    "closeout_tree": "7226b628a44b42c2f326c48b6784175b54fd00d9",
+    "merge_commit": "5b87d787aaf51fdd353c16ee9e08b6f6c6e83347",
+    "merge_tree": "7226b628a44b42c2f326c48b6784175b54fd00d9",
+    "pull_request": 110,
+    "pull_request_state": "MERGED",
+    "issue": 109,
+    "issue_state": "CLOSED",
+    "hosted_ci": "PASS",
+    "focused_exact_head_review": "PASS",
+    "programme_state": "COMPLETE_RETURN_TO_MODEL_DEVELOPMENT"
   },
   "exactness_definition": "Conservative and oracle-equivalent with respect to the production solver's existing discrete per-step cup-mass quadrature.",
   "claim_ceiling": "Discrete fraction-observer numerical qualification only; no reduced-PDE parity or physical-convergence claim; physical validation remains NOT_ESTABLISHED."

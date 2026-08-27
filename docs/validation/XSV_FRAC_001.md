@@ -2,7 +2,7 @@
 
 ## Result
 
-`XSV_FRAC_001_R2A_PASS_PENDING_CI_REVIEW_AND_MERGE`
+`XSV_FRAC_001_R2A_PASS_MERGED_AND_CLOSED_RETURN_TO_MODEL_DEVELOPMENT`
 
 The optional production observation interface conservatively splits the
 existing discrete water and per-species solute cup increments at cumulative
@@ -16,7 +16,9 @@ substantive defects make the preserved R2 disposition FAIL. R2A subsequently
 binds fresh baseline and candidate executables to exact clean source
 authorities and completes the missing cross-level diagnostics. Its bound rerun
 passed 20/20 behaviors, serial/two-rank equivalence, deterministic replay, and
-all four default-disabled regressions.
+all four default-disabled regressions. Hosted CI and the focused exact-head
+review passed. PR #110 merged at
+`5b87d787aaf51fdd353c16ee9e08b6f6c6e83347`, and issue #109 is closed.
 
 The retained `REFINEMENT` behavior identifiers mean
 `RESOLUTION_COVERAGE_OBSERVER_ORACLE_PASS_AT_EVERY_LEVEL`. Timestep results
@@ -24,13 +26,15 @@ were diagnostically sensitive and mesh results stable. These magnitudes are
 reported for model-development context only; no PDE-convergence qualification
 or new physical threshold is claimed.
 
-R1 remains an overall FAIL. Its zero boundary errors and approximately
+R1 remains a preserved overall FAIL. Its zero boundary errors and approximately
 `2.71e-20 kg` component residuals were valid but incomplete observations. Its
 legacy cumulative pseudo-species output was defective, and its reduced-PDE
 parity was non-adjudicative because the two routes used different pressure
 forcing and different source/capacity algorithms. R2 fixes the legacy output
-and removes that reduced-PDE route from acceptance; it does not reinterpret
-the R1 scores as a production-model disagreement.
+and removes that reduced-PDE route from acceptance. Its 20/20 observer/oracle
+numerical observations passed, but R2 remains a preserved terminal FAIL for
+the two qualification gaps later closed by R2A. Neither result rewrites the R1
+scores as a production-model disagreement.
 
 “Exact” refers only to conservation against the production solver's existing
 rectangular per-step cup-mass quadrature. It does not reconstruct continuous

@@ -2,13 +2,20 @@
 
 ## XSV-FRAC-001 exact discrete cup-fraction interface
 
-XSV-FRAC-001 implemented the optional exact-discrete mass-defined
-multispecies cup-fraction observation interface without adding governing
-physics or prescribed-flow behavior. Boundary and component closure passed,
-including selected two-rank execution and deterministic replay, but the frozen
-independent reduced-route parity ceilings failed. The preserved disposition is
-`XSV_FRAC_001_IMPLEMENTED_NUMERICAL_QUALIFICATION_FAIL`; physical validation
-remains `NOT_ESTABLISHED`.
+XSV-FRAC-001 is complete, independently reviewed, and merged through PR #110
+at merge commit `5b87d787aaf51fdd353c16ee9e08b6f6c6e83347`; issue #109 is closed. The
+optional exact-discrete mass-defined multispecies fraction observer
+conservatively partitions the production solver's existing per-step cup-mass
+increments without adding governing physics or prescribed-flow behavior. R2A
+bound fresh baseline and candidate executables to exact clean source
+authorities and passed all 20 declared observer/oracle behaviors,
+deterministic replay, serial/two-rank equivalence, and all four
+default-disabled regressions. Timestep results were diagnostically sensitive
+and axial-mesh results stable; these are application-style diagnostics only
+and establish no new PDE-convergence claim. The final disposition is
+`XSV_FRAC_001_R2A_PASS_MERGED_AND_CLOSED_RETURN_TO_MODEL_DEVELOPMENT`.
+Physical validation remains `NOT_ESTABLISHED`. “Exact” applies only to the
+production solver's existing discrete per-step cup-mass quadrature.
 
 ## SCI-ED-002 owner-accepted blocked-result closeout
 
@@ -26,9 +33,11 @@ deriving gate primitives from evidence registers. No descriptor-conditioned
 initial-inventory predictor or runtime adoption is authorized. Total roasted content remains
 distinct from extractable inventory and c_s0; physical validation remains `NOT_ESTABLISHED`.
 No OpenFOAM execution or governing-physics change occurred. Angeloni was not reused and
-SCI-MD-006 remains its preserved pre-execution STOP. The generic exact fraction-boundary
-production/reduced parity qualification remains a separate deferred numerical-interface task,
-not a continuation or repair of SCI-MD-006.
+SCI-MD-006 remains its preserved pre-execution STOP. XSV-FRAC-001 has now
+completed numerical qualification of the exact discrete fraction-observer
+interface. It does not establish production/reduced-PDE parity, repair
+SCI-MD-006, authorize an inventory predictor, or change the physical-validation
+ceiling.
 Public source verification: 529/529 PASS.
 
 SCI-MD-005 is `SCI_MD_005_TRAINING_DATA_CONTRACT_BLOCKED`. Its required
@@ -531,26 +540,17 @@ fit, protected access, experiment, or physics change occurred.
 
 The branch consumes the exact Puckworks SCI-ED-002 candidate contract. Commissioning is not authorized and additional direct measurements remain required. Do not rerun SCI-MD-007 until real open-core evidence exists. Predictor development remains ineligible and `c_s0` mapping remains `NOT_ESTABLISHED`. This is a candidate branch state, not a merged authority.
 
-## XSV-FRAC-001 R2 candidate
+## XSV-FRAC-001 completed R2A closeout
 
-R1 remains a preserved numerical-qualification FAIL; its reduced-PDE scores
-are non-adjudicative because the compared routes did not share forcing or
-source/capacity semantics. R2 corrects the legacy pseudo-species cumulative
-output and qualifies the exact discrete mass-defined fraction observer against
-an independent trace-difference partition oracle over all 20 frozen synthetic
-behaviors. Four default-disabled regressions, refinement levels,
-serial/two-rank equivalence, and deterministic replay produced PASS
-observations. Exact-head review rejected acceptance because executable and
-baseline identities were not fail-closed and refinement was not adjudicated
-across levels. The terminal R2 disposition is therefore observer qualification
-FAIL. This adds no governing physics and establishes no physical validation;
+R1 failed and remains preserved; its reduced-PDE scores are non-adjudicative
+because the compared routes did not share forcing or source/capacity
+semantics. R2 corrected the legacy pseudo-species output and produced 20/20
+observer/oracle numerical passes, but remains a preserved terminal FAIL
+because executable/source binding and cross-level adjudication were
+incomplete. R2A closed those two exact gaps without changing production solver
+source. Its bound rerun, hosted CI, and focused exact-head review passed. PR
+#110 merged at `5b87d787aaf51fdd353c16ee9e08b6f6c6e83347`, issue #109 closed, and the
+programme returned to model development. Timestep sensitivity and axial-mesh
+stability remain application-style diagnostics, not a PDE-convergence claim.
+This adds no governing physics and establishes no physical validation;
 EXP-006 remains future experimental work and SCI-MD-006 remains unchanged.
-
-R2A preserves both failed historical results and closes their two remaining
-acceptance defects without changing production source. Fresh baseline and
-candidate builds are bound to clean exact Git authorities and retained stable
-hashes through the complete run. All 20 observer behaviors and four
-default-disabled regressions passed. Cross-level diagnostics classify the
-timestep series as sensitive and axial-mesh series as stable; these are
-diagnostic observations, not a PDE-convergence claim. Merge remains contingent
-on exact-head CI and the single focused R2A review.
