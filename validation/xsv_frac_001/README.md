@@ -24,6 +24,9 @@ processor directories remain outside Git.
 R1 remains a preserved FAIL. Its reduced-PDE comparison was non-adjudicative
 because forcing and source/capacity semantics differed. R2 instead compares
 the C++ observer with an independent Python oracle built by differencing the
-solver's per-step cumulative mass traces. This qualifies the observation and
-partition interface only; it is not physical validation and does not validate
-the transport PDE, an experimental campaign, or an indexed kinetic law.
+solver's per-step cumulative mass traces. R2 produced passing numerical
+observer comparisons, but terminal exact-head review found non-fail-closed
+executable/baseline binding and missing cross-level refinement adjudication;
+the final disposition is observer qualification FAIL. This is not physical
+validation and does not validate the transport PDE, an experimental campaign,
+or an indexed kinetic law.

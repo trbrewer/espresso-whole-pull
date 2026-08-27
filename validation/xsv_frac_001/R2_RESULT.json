@@ -914,6 +914,17 @@
     "commit": "677bc30e0d253e610722097541f496dd75bb787d",
     "tree": "930880c4a34f54b77f6a44de467345f9cb3ee166"
   },
+  "exact_head_review": {
+    "reviewed_commit": "2ca8416134e1e6fa618f81c74b9ff1953d278dc8",
+    "reviewed_tree": "96ac8be93ba096006aed7de04365bbcee92a4661",
+    "status": "REJECT",
+    "high_findings": [
+      "Candidate and baseline executable hashes were not fail-closed against their declared source authorities."
+    ],
+    "medium_findings": [
+      "Mesh and timestep levels were executed and observer-checked but cross-level refinement was not adjudicated."
+    ]
+  },
   "schema": "espresso.xsv_frac_001.r2.result.v1",
-  "status": "PASS"
+  "status": "OBSERVER_QUALIFICATION_FAIL_TERMINAL"
 }

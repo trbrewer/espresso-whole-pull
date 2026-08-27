@@ -539,6 +539,9 @@ source/capacity semantics. R2 corrects the legacy pseudo-species cumulative
 output and qualifies the exact discrete mass-defined fraction observer against
 an independent trace-difference partition oracle over all 20 frozen synthetic
 behaviors. Four default-disabled regressions, refinement levels,
-serial/two-rank equivalence, and deterministic replay passed. This adds no
-governing physics and establishes no physical validation; EXP-006 remains
-future experimental work and SCI-MD-006 remains unchanged.
+serial/two-rank equivalence, and deterministic replay produced PASS
+observations. Exact-head review rejected acceptance because executable and
+baseline identities were not fail-closed and refinement was not adjudicated
+across levels. The terminal R2 disposition is therefore observer qualification
+FAIL. This adds no governing physics and establishes no physical validation;
+EXP-006 remains future experimental work and SCI-MD-006 remains unchanged.

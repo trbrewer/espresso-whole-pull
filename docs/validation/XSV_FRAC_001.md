@@ -2,14 +2,17 @@
 
 ## Result
 
-`XSV_FRAC_001_R2_PASS_READY_FOR_OWNER_ADJUDICATION`
+`XSV_FRAC_001_R2_OBSERVER_QUALIFICATION_FAIL_TERMINAL`
 
 The optional production observation interface conservatively splits the
 existing discrete water and per-species solute cup increments at cumulative
 beverage-mass boundaries. R2 passed all 20 frozen behaviors against an
 independent discrete-stream observer oracle, including refinement levels,
 serial/two-rank comparison, deterministic replay, and four default-disabled
-runtime regressions.
+runtime regressions. These numerical observations are preserved, but the
+exact-head review rejected acceptance because executable/baseline authority
+was not fail-closed and cross-level refinement was not adjudicated. Those
+substantive defects make the terminal R2 disposition FAIL.
 
 R1 remains an overall FAIL. Its zero boundary errors and approximately
 `2.71e-20 kg` component residuals were valid but incomplete observations. Its
