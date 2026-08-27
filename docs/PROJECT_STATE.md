@@ -545,3 +545,12 @@ baseline identities were not fail-closed and refinement was not adjudicated
 across levels. The terminal R2 disposition is therefore observer qualification
 FAIL. This adds no governing physics and establishes no physical validation;
 EXP-006 remains future experimental work and SCI-MD-006 remains unchanged.
+
+R2A preserves both failed historical results and closes their two remaining
+acceptance defects without changing production source. Fresh baseline and
+candidate builds are bound to clean exact Git authorities and retained stable
+hashes through the complete run. All 20 observer behaviors and four
+default-disabled regressions passed. Cross-level diagnostics classify the
+timestep series as sensitive and axial-mesh series as stable; these are
+diagnostic observations, not a PDE-convergence claim. Merge remains contingent
+on exact-head CI and the single focused R2A review.

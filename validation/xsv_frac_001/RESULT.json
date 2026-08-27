@@ -1,34 +1,36 @@
 {
-  "schema": "espresso.xsv_frac_001.programme_result.v2",
-  "task_id": "XSV-FRAC-001-R2",
+  "schema": "espresso.xsv_frac_001.programme_result.v3",
+  "task_id": "XSV-FRAC-001-R2A",
   "change_declaration": "NUMERICAL_METHOD_CHANGE",
   "scientific_classification": "NO_NEW_GOVERNING_PHYSICS",
-  "disposition": "XSV_FRAC_001_R2_OBSERVER_QUALIFICATION_FAIL_TERMINAL",
+  "disposition": "XSV_FRAC_001_R2A_PASS_PENDING_CI_REVIEW_AND_MERGE",
   "r1": {
     "commit": "80dcf9ef4397bed79f9917d4ed367b8d3d7675d0",
     "tree": "e5ed6d536382d8be22927dc2eb580a64e2075598",
     "result_path": "validation/xsv_frac_001/R1_RESULT.json",
     "result_sha256": "69973b49bd110da6dfddcfbff1791b27f97b03f76092b7875f069e7267701a47",
-    "disposition": "XSV_FRAC_001_IMPLEMENTED_NUMERICAL_QUALIFICATION_FAIL",
-    "reduced_pde_parity": "NONADJUDICATIVE_NONCOMPARABLE_IMPLEMENTATIONS"
+    "disposition": "XSV_FRAC_001_IMPLEMENTED_NUMERICAL_QUALIFICATION_FAIL"
   },
   "r2": {
     "execution_commit": "677bc30e0d253e610722097541f496dd75bb787d",
     "execution_tree": "930880c4a34f54b77f6a44de467345f9cb3ee166",
     "result_path": "validation/xsv_frac_001/R2_RESULT.json",
     "result_sha256": "b8eaf116a2c2c34abf1f34ded13fbaf28ac38deab1c9243d91555b09270948b1",
+    "disposition": "XSV_FRAC_001_R2_OBSERVER_QUALIFICATION_FAIL_TERMINAL"
+  },
+  "r2a": {
+    "execution_commit": "5c0b88595b3143d258e7b08baf715258a667b1b8",
+    "execution_tree": "7d3ae76afbf3d6bb326ba471eb2154a554c2fbc2",
+    "result_path": "validation/xsv_frac_001/R2A_RESULT.json",
+    "result_sha256": "1546dc96afd8f6b5b506b14e244a0c19c3de4463be0fe1fdab1341bf192fa03c",
+    "status": "PASS",
     "behavior_count": 20,
-    "behavior_ids_complete": true,
-    "all_executed_behavior_records_pass": true,
-    "default_disabled_regressions_pass": true,
-    "exact_head_review": "REJECT",
-    "acceptance_defects": [
-      "Executable and baseline authority binding was not fail-closed.",
-      "Cross-level refinement was not adjudicated."
-    ],
     "candidate_executable_sha256": "1438299707e266b2b7294e0b4c66a743f46d8cad39f2a8b6990b6c56a9ac86c9",
-    "external_evidence_identity": "xsv-frac-001-r2-qualification-final-677bc30"
+    "baseline_executable_sha256": "d793a731fd2f4f82e623350c61835d0e955d886849f5e363a5abd8dd0fae4c93",
+    "executable_hashes_stable": true,
+    "default_disabled_regressions_pass": true,
+    "external_evidence_identity": "xsv-frac-001-r2a-qualification"
   },
   "exactness_definition": "Conservative and oracle-equivalent with respect to the production solver's existing discrete per-step cup-mass quadrature.",
-  "claim_ceiling": "R2 observer qualification failed terminally; physical validation remains NOT_ESTABLISHED."
+  "claim_ceiling": "Discrete fraction-observer numerical qualification only; no reduced-PDE parity or physical-convergence claim; physical validation remains NOT_ESTABLISHED."
 }
