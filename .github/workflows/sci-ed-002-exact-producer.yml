@@ -33,7 +33,10 @@ jobs:
           repository: trbrewer/puckworks
           ref: ${{ steps.lock.outputs.commit }}
           path: puckworks-producer
-          fetch-depth: 1
+          # The scientific-package manifest binds members at the frozen design
+          # candidate as well as the final package head, so both exact objects
+          # must be available to the verifier.
+          fetch-depth: 0
           persist-credentials: false
       - name: Verify exact producer object and handoff
         run: |
