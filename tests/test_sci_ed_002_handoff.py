@@ -1,3 +1,4 @@
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -17,7 +18,11 @@ class SciEd002Handoff(unittest.TestCase):
                 verify(mutation=mutation)
 
     def test_producer_files_verify_when_available(self):
-        producer = Path(__file__).parents[2] / "puckworks-upstream"
+        producer_value = os.environ.get("PUCKWORKS_GIT_REPOSITORY")
+        if producer_value is None:
+            self.skipTest("PUCKWORKS_GIT_REPOSITORY not supplied")
+        producer = Path(producer_value)
+        self.assertTrue((producer / ".git").exists() or (producer / "HEAD").exists())
         self.assertTrue(verify(producer)["no_physics_change"])
 
 
