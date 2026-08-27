@@ -81,7 +81,7 @@ def analyze(case, scenario):
       "max_reverse":max(reverse),"conductance":float(data[0]["discrete_conductance_m3_s_Pa"]),
       "max_pressure_relative_error":max(pressure_errors),"target_volume":target_volume,
       "achieved_volume":achieved,"volume_error":abs(achieved-target_volume),
-      "sample_times":sample,"status":"PASS"}
+      "status":"PASS"}
 
 def run_case(matrix, name, scenario, ranks=1):
     case=matrix.run(name,scenario,ranks); return case,analyze(case,scenario)
