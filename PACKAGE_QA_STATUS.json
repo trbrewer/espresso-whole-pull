@@ -49,7 +49,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
     "source_manifest_file_count": 602,
-    "source_manifest_aggregate_sha256": "e7013eb7058ee91d4f7bdb34756f37ba03c251ade2b4bfd4523601bb995ecd70",
+    "source_manifest_aggregate_sha256": "fe307dd125dc8f01ce9dcd1ac4b918d6fa8d4538b1bb041c687adbeaed3ceb76",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -59,7 +59,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "e7013eb7058ee91d4f7bdb34756f37ba03c251ade2b4bfd4523601bb995ecd70"
+    "source_manifest_aggregate_source_sha256": "fe307dd125dc8f01ce9dcd1ac4b918d6fa8d4538b1bb041c687adbeaed3ceb76"
   },
   "sci_ed_002_r2b": {
     "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",
@@ -91,14 +91,17 @@
   },
   "sci_ed_002_r2d": {
     "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",
-    "consumer_technical_disposition": "SCI_ED_002_R2D_EWP_COMPLETE_AUTHORITY_LOCK_NEGATIVE_CONTROL_DIAGNOSTIC_AND_CURRENT_QA_QUALIFIED_NO_BRANCH_PHYSICS_CHANGE",
-    "review_disposition": "PENDING_INDEPENDENT_EXACT_HEAD_REREVIEW",
+    "consumer_technical_disposition": "SCI_ED_002_TECHNICALLY_QUALIFIED_FOR_MERGE_AS_VALID_BLOCKED_RESEARCH_ARTIFACT_WITH_ACCEPTED_NONBLOCKING_NEGATIVE_CONTROL_COVERAGE_DEBT",
+    "review_disposition": "OWNER_ADJUDICATED_NO_FURTHER_EXACT_HEAD_REREVIEW_REQUIRED",
+    "owner_adjudication": "SCI_ED_002_OWNER_ACCEPTS_TECHNICALLY_QUALIFIED_VALID_BLOCKED_RESULT_WITH_NONBLOCKING_NEGATIVE_CONTROL_COVERAGE_DEBT",
+    "historical_r2d_disposition": "SCI_ED_002_R2D_COMPLETE_NEGATIVE_CONTROL_COVERAGE_NOT_ESTABLISHED",
     "current_qualification": {"suite": "python3 -m unittest discover -s tests -p 'test_*.py'", "tests_discovered": 987, "tests_run": 987, "passed": 985, "skipped": 2, "failures": 0, "errors": 0, "expected_failures": 0, "unexpected_successes": 0, "status": "PASS", "exact_head_binding": "EXTERNAL_CI_AND_FINAL_REVIEW_EVIDENCE"},
     "historical_qualification": {"r2b": {"tests_run": 987, "passed": 987, "skipped": 0}, "r2c": {"tests_run": 984, "passed": 982, "skipped": 2, "failures": 0, "errors": 0}},
     "authority_contract": "PASS_V3_CLOSED_82_OF_82_LEAVES_CLASSIFIED",
     "current_authority_conjunction": "PASS",
     "historical_provenance": "PASS_NOT_USED_FOR_CURRENT_SELECTION",
-    "negative_controls": "PASS_PUBLIC_COMPLETE_PATH_MAPPING",
+    "negative_controls": "PRINCIPAL_CONTROLS_PASS_EXHAUSTIVE_MATRIX_INCOMPLETE_ACCEPTED_NONBLOCKING_DEBT",
+    "residual_technical_debt": {"identifier": "SCI_ED_002_NONBLOCKING_TECHNICAL_DEBT_EXHAUSTIVE_PUBLIC_CLI_NEGATIVE_CONTROL_MATRIX_INCOMPLETE", "accepted": true, "blocking_merge": false, "immediate_remediation_required": false, "triggered_revisit_only": true, "owner_adjudicated": true},
     "malformed_authority_diagnostics": "PASS_STRUCTURED_FAIL_CLOSED",
     "vendored_contract": "SCI_ED_002_LOCAL_VENDORED_CONTRACT_VERIFIED_PRODUCER_OBJECT_NOT_CHECKED",
     "exact_real_producer": "SCI_ED_002_HANDOFF_EXACT_PRODUCER_VERIFIED",
@@ -109,6 +112,10 @@
     "sci_md_007_authority": "PASS_EXACT_OBJECT",
     "branch_no_physics": "PASS_NO_BRANCH_PHYSICS_CHANGE",
     "historical_verifier": "FAIL_REPRODUCED_PREEXISTING_27_OF_28",
+    "hosted_exact_head_ci": "PASS",
+    "further_independent_rereview_required": false,
+    "merge_authorized": true,
+    "commissioning_authorized": false,
     "governing_physics_change": false
   },
   "sci_md_002a": {

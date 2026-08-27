@@ -1,9 +1,31 @@
 {
   "schema_version": "ewp.sci_ed_002.current_result.v2",
   "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",
-  "consumer_technical_disposition": "SCI_ED_002_R2D_EWP_COMPLETE_AUTHORITY_LOCK_NEGATIVE_CONTROL_DIAGNOSTIC_AND_CURRENT_QA_QUALIFIED_NO_BRANCH_PHYSICS_CHANGE",
-  "review_disposition": "PENDING_INDEPENDENT_EXACT_HEAD_REREVIEW",
-  "current_overall_disposition": "SCI_ED_002_R2D_COMPLETE_AUTHORITY_LOCK_AND_NEGATIVE_CONTROL_CLOSURE_PASS_METHOD_SPECIFIC_SCIENTIFIC_BLOCK_RETAINED_READY_FOR_INDEPENDENT_EXACT_HEAD_REREVIEW",
+  "consumer_technical_disposition": "SCI_ED_002_TECHNICALLY_QUALIFIED_FOR_MERGE_AS_VALID_BLOCKED_RESEARCH_ARTIFACT_WITH_ACCEPTED_NONBLOCKING_NEGATIVE_CONTROL_COVERAGE_DEBT",
+  "review_disposition": "OWNER_ADJUDICATED_NO_FURTHER_EXACT_HEAD_REREVIEW_REQUIRED",
+  "current_overall_disposition": "SCI_ED_002_OWNER_ACCEPTED_VALID_BLOCKED_RESULT_READY_FOR_MERGE_AND_CLOSEOUT",
+  "owner_adjudication": "SCI_ED_002_OWNER_ACCEPTS_TECHNICALLY_QUALIFIED_VALID_BLOCKED_RESULT_WITH_NONBLOCKING_NEGATIVE_CONTROL_COVERAGE_DEBT",
+  "historical_r2d_disposition": "SCI_ED_002_R2D_COMPLETE_NEGATIVE_CONTROL_COVERAGE_NOT_ESTABLISHED",
+  "residual_technical_debt": {
+    "identifier": "SCI_ED_002_NONBLOCKING_TECHNICAL_DEBT_EXHAUSTIVE_PUBLIC_CLI_NEGATIVE_CONTROL_MATRIX_INCOMPLETE",
+    "accepted": true,
+    "blocking_merge": false,
+    "blocking_commissioning": "NOT_APPLICABLE_SCIENTIFIC_BLOCK_ALREADY_CONTROLS",
+    "immediate_remediation_required": false,
+    "triggered_revisit_only": true,
+    "owner_adjudicated": true,
+    "scope": "Exhaustive complete-CLI demonstration is incomplete for every historical-provenance and manifest corruption combination; no known invalid authority or mutation is accepted.",
+    "revisit_triggers": [
+      "MATERIAL_HANDOFF_VERIFIER_REDESIGN",
+      "MATERIAL_AUTHORITY_CONTRACT_CHANGE",
+      "EXTERNAL_HISTORICAL_PROVENANCE_CONSUMER",
+      "EXPERIMENTAL_COMMISSIONING_PROPOSAL",
+      "REAL_PRODUCER_AUTHORITY_INCONSISTENCY",
+      "BELIEVED_REJECTED_MUTATION_DEMONSTRATED_TO_PASS",
+      "PROMOTION_BEYOND_BLOCKED_CLAIM_CEILING"
+    ]
+  },
+  "further_independent_rereview_required": false,
   "producer_authority": {
     "commit": "e22a422d7c9cac5cd6d0779d5f5455bf492a018e",
     "tree": "33c9d603760163842caa86aa932053ca44b120f8",
@@ -28,8 +50,8 @@
     "authority_field_classification": "PASS_82_OF_82_LEAVES",
     "historical_provenance": "PASS_NOT_USED_FOR_CURRENT_SELECTION",
     "structured_malformed_diagnostics": "PASS",
-    "public_negative_control_mapping": "PASS",
-    "complete_decision_coverage": "PASS",
+    "public_negative_control_mapping": "PRINCIPAL_CONTROLS_PASS_EXHAUSTIVE_COMBINATORIAL_COVERAGE_ACCEPTED_AS_NONBLOCKING_DEBT",
+    "complete_decision_coverage": "R2D_ORIGINAL_EXHAUSTIVE_CONTRACT_NOT_COMPLETE_OWNER_ACCEPTED_FOR_MERGE",
     "claim_ceiling_conjunction": "PASS",
     "dual_producer_manifests": "PASS",
     "individual_producer_schemas": "PASS_20_OF_20",
@@ -51,6 +73,6 @@
     "holdout_accessed": false,
     "vg06_status": "SEALED_NOT_ACCESSED",
     "governing_physics_change": false,
-    "merge_authorized": false
+    "merge_authorized": true
   }
 }
