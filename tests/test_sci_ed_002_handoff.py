@@ -2,7 +2,7 @@ import json, os, shutil, subprocess, tempfile, unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts.verify_sci_ed_002_handoff import EXACT_STATUS, VENDORED_STATUS, HandoffError, verify
+from scripts.verify_sci_ed_002_handoff import EXACT_STATUS, VENDORED_STATUS, HandoffError, verify, verify_commit_identity
 
 ROOT=Path(__file__).parents[1]
 
@@ -49,8 +49,10 @@ class SciEd002Handoff(unittest.TestCase):
             ta=subprocess.check_output(["git","-C",str(repo),"rev-parse",a+"^{tree}"],text=True).strip()
             tb=subprocess.check_output(["git","-C",str(repo),"rev-parse",b+"^{tree}"],text=True).strip()
             self.assertNotEqual(a,b); self.assertEqual(ta,tb)
-            with self.assertRaisesRegex(HandoffError,"SUPPLIED_PRODUCER_COMMIT_MISMATCH"):
-                verify(producer_root=repo,producer_commit=b)
+            cases=((b,a,a,"PRODUCER_COMMIT_MISMATCH_ACROSS_PINNED_AUTHORITIES"),(a,b,a,"PRODUCER_COMMIT_MISMATCH_ACROSS_PINNED_AUTHORITIES"),(a,a,b,"SUPPLIED_PRODUCER_COMMIT_MISMATCH"))
+            for lock,export,supplied,reason in cases:
+                with self.subTest(lock=lock,export=export,supplied=supplied), self.assertRaisesRegex(HandoffError,reason):
+                    verify_commit_identity(a,lock,export,supplied)
 
     def test_ci_requires_real_exact_producer(self):
         text=(ROOT/".github/workflows/sci-ed-002-exact-producer.yml").read_text()

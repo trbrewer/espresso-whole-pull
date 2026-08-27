@@ -24,6 +24,12 @@ def _equal(actual, expected, reason, field, authority):
 
 def _sha(data): return hashlib.sha256(data).hexdigest()
 
+def verify_commit_identity(expected_commit, lock_commit, export_commit, supplied_commit):
+    _equal(lock_commit,expected_commit,"PRODUCER_COMMIT_MISMATCH_ACROSS_PINNED_AUTHORITIES","producer_commit","authority-lock")
+    if export_commit is not None:
+        _equal(export_commit,expected_commit,"PRODUCER_COMMIT_MISMATCH_ACROSS_PINNED_AUTHORITIES","producer_commit","vendored-export")
+    _equal(supplied_commit,expected_commit,"SUPPLIED_PRODUCER_COMMIT_MISMATCH","producer_commit","exact-producer")
+
 def _load(root):
     here=root/REL; lock=json.loads((here/"PUCKWORKS_AUTHORITY.json").read_text())
     data=(here/"SCI_ED_002_EXPORT.json").read_bytes()
@@ -33,7 +39,7 @@ def _vendored(lock, export, data):
     _equal(lock["authority_model"],"FINAL_PACKAGE_HEAD","AUTHORITY_MODEL_INVALID","authority_model","vendored")
     _equal(lock["schema_version"],export["schema_version"],"SCHEMA_VERSION_MISMATCH","schema_version","vendored")
     _equal(_sha(data),lock["producer_export_sha256"],"VENDORED_EXPORT_HASH_MISMATCH","producer_export_sha256","vendored")
-    _equal(lock["producer_commit"],EXPECTED_PRODUCER_COMMIT,"PRODUCER_COMMIT_MISMATCH_ACROSS_PINNED_AUTHORITIES","producer_commit","vendored")
+    verify_commit_identity(EXPECTED_PRODUCER_COMMIT,lock["producer_commit"],export.get("producer_package_commit"),EXPECTED_PRODUCER_COMMIT)
     _equal(lock["producer_tree"],EXPECTED_PRODUCER_TREE,"PRODUCER_TREE_MISMATCH_ACROSS_PINNED_AUTHORITIES","producer_tree","vendored")
     _equal(len(export.get("schema_sha256",{})),20,"SCHEMA_SET_INCOMPLETE","schema_count","vendored")
     ceiling=export["claim_ceiling"]
@@ -58,7 +64,7 @@ def verify(root=ROOT, mode="exact-producer", producer_root=None, producer_commit
     locked=lock["producer_commit"]
     if not re.fullmatch(r"[0-9a-f]{40}",locked): _fail("LOCKED_PRODUCER_COMMIT_INVALID","producer_commit","40 lowercase hex",locked,"exact-producer")
     selected=producer_commit or locked
-    _equal(selected,locked,"SUPPLIED_PRODUCER_COMMIT_MISMATCH","producer_commit","exact-producer")
+    verify_commit_identity(EXPECTED_PRODUCER_COMMIT,locked,export.get("producer_package_commit"),selected)
     authority=GitAuthority(selected,lock["producer_tree"])
     try: verify_authority(repo,authority)
     except AuthorityError as exc: _fail(str(exc),"producer_authority",{"commit":selected,"tree":lock["producer_tree"]},None,"exact-producer")
