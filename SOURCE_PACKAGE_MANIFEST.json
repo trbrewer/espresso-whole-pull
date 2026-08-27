@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 540,
-  "total_uncompressed_bytes_excluding_manifest": 7329249,
-  "aggregate_source_sha256": "c6d8407f873dd8f472f186282316557eada8f9b12352211d3257e2cf9614ed46",
-  "aggregate_sha256": "c6d8407f873dd8f472f186282316557eada8f9b12352211d3257e2cf9614ed46",
+  "file_count": 557,
+  "total_uncompressed_bytes_excluding_manifest": 7348895,
+  "aggregate_source_sha256": "4f5f7e185c7ee05192b062a29e0448bf7bc0b6c2097ed013abf4c08487854c76",
+  "aggregate_sha256": "4f5f7e185c7ee05192b062a29e0448bf7bc0b6c2097ed013abf4c08487854c76",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1084,13 +1084,13 @@
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/RESULT.json": {
-      "sha256": "b91d3ebad3b138750f5eeb37f533be6116e719699934d3e572d5a272c73cb53c",
-      "bytes": 504,
+      "sha256": "e1497cbd09ba749279f7fe171d749ed3a5c809aaceaf43c7fd366c19fee7d012",
+      "bytes": 2356,
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/RESULT.md": {
-      "sha256": "6179ac5fac6e26fe051b435d06f0d0db68d09b5f23eb617cafe0619aea022687",
-      "bytes": 623,
+      "sha256": "3c9fb1ef7faafdc56f5c0803a2d6353f5b725fe738424e637194b0898f02180d",
+      "bytes": 1034,
       "git_mode": "100644"
     },
     "docs/validation/sci_ed_002/SCI_ED_002_EXPORT.json": {
@@ -1166,6 +1166,91 @@
     "docs/validation/sci_ed_002/r1/SOURCE_MANIFEST.json": {
       "sha256": "630f5a9e9649019cde3a91eb4b7ccf2b43d13989a638c5537bdcf9283c0987e9",
       "bytes": 1428,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/ACCEPTED_REVIEW_FINDINGS.json": {
+      "sha256": "97d3f0c4d0995a0a29a155a67dc33ddbc6edcfb7a4fada2415889e339ad5acca",
+      "bytes": 372,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/ACCEPTED_REVIEW_FINDINGS.md": {
+      "sha256": "4ae1d2855f953f0ca7177ffc932a1242e31c680fba83d2397f6d417d62294ea3",
+      "bytes": 286,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/ACTIVATION.json": {
+      "sha256": "536c2527697ead7069de3ca6f54a352d5549e593ea274eee1416a85c9f2025f4",
+      "bytes": 372,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/ACTIVATION.md": {
+      "sha256": "06a521bf5eddfac26aad4306d022216809b17365504983e90c44dd5e7881efe8",
+      "bytes": 234,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/AUTHORIZATION.md": {
+      "sha256": "1aadfc6e7005fdea3987b1d26a6847c620963f790216f24367cb17d42d0fd503",
+      "bytes": 498,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/EXACT_PRODUCER_CI_CONTRACT.json": {
+      "sha256": "73133e61732e3948659cdaf0a73977b9fb6830bc3cc767ae6088a9c31b7bd568",
+      "bytes": 300,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/EXACT_PRODUCER_CI_CONTRACT.md": {
+      "sha256": "e7abf223ff46870329ffe435c1cde2a29dc70d2d7eb14f5e5389233e64575134",
+      "bytes": 271,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/FINAL_HEAD_QUALIFICATION.json": {
+      "sha256": "950a9c4f21f021225d346d092e7afee87f65d1116919881a5cf66979a8d26d08",
+      "bytes": 532,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/FINAL_HEAD_QUALIFICATION.md": {
+      "sha256": "82761eea4f81fcb365246df47adba928330316f8902ad136ed24e7be0b23659c",
+      "bytes": 339,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/HANDOFF_VERIFICATION_CONTRACT.json": {
+      "sha256": "993b4b4731b0fdd25ee415bd59514005b9cd3173143c44594e0d3e4492b930a2",
+      "bytes": 437,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/HANDOFF_VERIFICATION_CONTRACT.md": {
+      "sha256": "881133026c74d2e5efaf7aea145ccada3cf14b774d9c87b564094e3be2ee1a8e",
+      "bytes": 279,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/PROTECTED_PATHS.json": {
+      "sha256": "c7a039336985f9dc3235dfd9cc43d63bf4bcb0a1906619fe164412df0880f25b",
+      "bytes": 3072,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/R2B_RESULT.json": {
+      "sha256": "43c2e5b1e8df13054b0b0a21e5c82b861ab9606dcc1634fbc2a91200855738ed",
+      "bytes": 560,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/R2B_RESULT.md": {
+      "sha256": "fece81d49078b903b8da03d362c3025a575aea9c60a9af4dec4f0efb7f094c97",
+      "bytes": 293,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/SOURCE_MANIFEST.json": {
+      "sha256": "080bab24caf3c87a7ec40f15b553fc1982bc9d73741fb817bcfb1bf3e835fa15",
+      "bytes": 717,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/STATUS_TRUTH_RECONCILIATION.json": {
+      "sha256": "cd5b03ad45d138382e5ba936147c6f3a092f91e3f0c5f233d068c396fc0aca1d",
+      "bytes": 561,
+      "git_mode": "100644"
+    },
+    "docs/validation/sci_ed_002/r2b/STATUS_TRUTH_RECONCILIATION.md": {
+      "sha256": "61ee0c9b013d7e27e69dd788fc97ad7bb3622a9c4319a017a8f34046ab56aea2",
+      "bytes": 323,
       "git_mode": "100644"
     },
     "docs/validation/sci_md_004/STAGE_A_CONTRACT.md": {
@@ -1774,8 +1859,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_sci_ed_002_handoff.py": {
-      "sha256": "cd19d9559c160e5bb032cbe3570230ee061ff5dec1028d9dab98bbee1bb87ffb",
-      "bytes": 4197,
+      "sha256": "3a9934d80c40844056c4c79768fd2114707a5fec8160bbfe6eefe56fdb9c4c29",
+      "bytes": 8065,
       "git_mode": "100755"
     },
     "scripts/verify_source_manifest.py": {
@@ -2044,8 +2129,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_ed_002_handoff.py": {
-      "sha256": "566c82a70e01234d989e66737ca49b0e832bc23d4d4c456ff4df3cd21fb03c9d",
-      "bytes": 1364,
+      "sha256": "ae5acffe4a1c0818e8e4980ba7e6ca67ee18cee60165a912c5ee3a7742f1f380",
+      "bytes": 5433,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_executor.py": {

@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 982,
+    "python_test_count": 985,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
     "sci_md_004_stage_c_focused_test_count": 78,
     "sci_lc_001a_obs_001_r1_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_lc_001a_obs_001",
@@ -48,8 +48,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 540,
-    "source_manifest_aggregate_sha256": "c6d8407f873dd8f472f186282316557eada8f9b12352211d3257e2cf9614ed46",
+    "source_manifest_file_count": 557,
+    "source_manifest_aggregate_sha256": "4f5f7e185c7ee05192b062a29e0448bf7bc0b6c2097ed013abf4c08487854c76",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -59,7 +59,19 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "c6d8407f873dd8f472f186282316557eada8f9b12352211d3257e2cf9614ed46"
+    "source_manifest_aggregate_source_sha256": "4f5f7e185c7ee05192b062a29e0448bf7bc0b6c2097ed013abf4c08487854c76"
+  },
+  "sci_ed_002_r2b": {
+    "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",
+    "consumer_technical_disposition": "SCI_ED_002_R2B_EWP_CURRENT_STATUS_AND_EXACT_PRODUCER_HANDOFF_QUALIFIED_NO_BRANCH_PHYSICS_CHANGE",
+    "review_disposition": "PENDING_INDEPENDENT_EXACT_HEAD_REREVIEW",
+    "unit_suite": "PASS_EXACT_FINAL_HEAD",
+    "vendored_contract": "SCI_ED_002_LOCAL_VENDORED_CONTRACT_VERIFIED_PRODUCER_OBJECT_NOT_CHECKED",
+    "exact_real_producer": "SCI_ED_002_HANDOFF_EXACT_PRODUCER_VERIFIED",
+    "dedicated_exact_producer_ci": "PASS_EXACT_HEAD",
+    "branch_no_physics": "PASS_NO_BRANCH_PHYSICS_CHANGE",
+    "historical_verifier": "FAIL_REPRODUCED_PREEXISTING_27_OF_28",
+    "governing_physics_change": false
   },
   "sci_md_002a": {
     "status": "COMPLETE_APPROVED_AND_MERGED",
