@@ -1,0 +1,23 @@
+{
+  "schema": "espresso.xsv_flow_001.contract.v1",
+  "task_id": "XSV-FLOW-001",
+  "governance_class": "G2",
+  "change_declaration": "NUMERICAL_METHOD_CHANGE",
+  "governing_physics_change": false,
+  "evidence_class": "SIMULATED_SYNTHETIC_NUMERICAL_QUALIFICATION",
+  "physical_validation": "NOT_ESTABLISHED",
+  "reference_pressure_drop_Pa": 100000.0,
+  "qualified_profiles": ["uniform", "axial_two_layer"],
+  "runtime_flow_tolerance": {"absolute_m3_s": 1e-12, "relative": 1e-8},
+  "closure_tolerance": {"absolute_m3_s": 2e-12, "relative": 2e-8},
+  "reverse_flow_maximum_m3_s": 1e-12,
+  "uniform_finest_relative_pressure_error_maximum": 0.0005,
+  "layered_finest_relative_pressure_error_maximum": 0.002,
+  "pressure_trend_rule": "fine <= 1.05 * coarse; relative errors <= 1e-12 are numerical zero",
+  "common_time_pressure": {"absolute_Pa": 1e-6, "relative": 1e-9},
+  "discrete_volume": {"absolute_m3": 1e-12, "relative": 1e-9},
+  "parallel_pressure": {"absolute_Pa": 1e-5, "relative": 1e-8},
+  "parallel_conductance": {"absolute_m3_s_Pa": 1e-18, "relative": 1e-8},
+  "deterministic_outputs": ["postProcessing/prescribedFlow/0/prescribed_flow.csv", "postProcessing/wholePull/0/traces.csv"],
+  "mandatory_case_ids": ["FLOW_UC_M32", "FLOW_UC_M64", "FLOW_UC_M128", "FLOW_LC_M32", "FLOW_LC_M64", "FLOW_LC_M128", "FLOW_UPL_DT040", "FLOW_UPL_DT020", "FLOW_UPL_DT010", "FLOW_LPL_REFERENCE", "FLOW_ZERO"]
+}

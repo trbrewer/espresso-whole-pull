@@ -1,5 +1,14 @@
 # Project State
 
+## XSV-FLOW-001 prescribed-flow numerical interface
+
+The active G2 solver lane adds default-disabled prescribed full-basket
+volumetric flow for initially saturated, static Darcy `uniform` and
+`axial_two_layer` cases. Existing prescribed-pressure and lumped-machine modes
+remain available and unchanged when the new mode is not selected. The new
+interface is a numerical-method and boundary change only; it adds no governing
+physics and physical validation remains `NOT_ESTABLISHED`.
+
 ## XSV-FRAC-001 exact discrete cup-fraction interface
 
 XSV-FRAC-001 is complete, independently reviewed, and merged through PR #110
