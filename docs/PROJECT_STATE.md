@@ -1,5 +1,15 @@
 # Project State
 
+## SCI-MD-008 prescribed-flow exact-fraction reconstruction
+
+SCI-MD-008 stopped prospectively at
+`SCI_MD_008_STOP_FRACTION_OUTPUT_REMAINS_INVENTORY_SCALE_DEPENDENT`. Eighteen
+production runs spanning low/middle/high flow, uniform/axial-two-layer geometry,
+both species, and 0.01x/0.1x/1x inventory showed normalized fraction-shape
+changes up to 0.0801141 versus the frozen 1e-6 tolerance. The canonical target
+matrix was therefore not scored, no parameters were fitted, and no prior
+disposition changed. Physical validation remains `NOT_ESTABLISHED`.
+
 ## XSV-FLOW-001 prescribed-flow numerical interface
 
 The active G2 solver lane adds default-disabled prescribed full-basket
