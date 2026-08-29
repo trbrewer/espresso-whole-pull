@@ -1,56 +1,121 @@
-import csv, json, math, tempfile, unittest
+import csv, importlib, inspect, json, shutil, tempfile, unittest
 from pathlib import Path
 from unittest import mock
 
 from tools.sci_md_008 import study
 
 ROOT=Path(__file__).resolve().parents[1]
+PACKAGE=ROOT/'validation/sci_md_008'
 
 class SciMd008Tests(unittest.TestCase):
-    def test_01_parameter_artifact(self):
+    def copy_package(self):
+        temporary=tempfile.TemporaryDirectory(); path=Path(temporary.name)/'result'
+        shutil.copytree(PACKAGE,path); return temporary,path
+
+    def test_parameter_artifact_is_frozen(self):
         self.assertEqual(study.sha(ROOT/study.PARAM_REL),study.PARAM_SHA)
-    def test_02_source_condition_closure_constants(self):
-        self.assertEqual((study.RADIUS,study.DEPTH,study.DOSE),(.02925,.01388,.020))
-    def test_03_flow_unit_conversion(self):
-        self.assertAlmostEqual(1e-6*study.DENSITY,.001)
-    def test_04_constant_flow_exact(self):
-        self.assertAlmostEqual(study.conservative_volume(2e-6,3,.7),6e-6)
-    def test_05_piecewise_linear_exact(self):
-        # Trapezoid authority for a 1->3 mL/s one-second synthetic schedule.
-        self.assertAlmostEqual(.5*(1e-6+3e-6),2e-6)
-    def test_06_fraction_boundary_placement(self):
-        self.assertEqual(study.lookup({0:0,.01:2},.01),2)
-    def test_07_partial_final_step(self):
-        self.assertAlmostEqual(study.conservative_volume(1e-6,1.05,.2),1.05e-6)
-    def test_08_species_mass_conservation_identity(self):
-        self.assertAlmostEqual(.2-.05-.10-.05,0)
-    def test_09_linear_inventory_invariance(self):
-        a=[.2,.3,.5]; self.assertEqual(a,[10*x/sum(10*y for y in a) for x in a])
-    def test_10_reduced_wrapper_equivalence(self):
-        c,k,q,a,b=6.5,.04,1e-6,.01,.02
-        avg=study.b0_average(c,k,a,b,q); t0=a/(1000*q); t1=b/(1000*q)
-        self.assertAlmostEqual(avg,c*(math.exp(-k*t0)-math.exp(-k*t1))/(k*(t1-t0)))
-    def test_11_uniform_driver_schema(self):
-        self.assertIn("uniform",("uniform","axial_two_layer"))
-    def test_12_two_layer_driver_schema(self):
-        self.assertAlmostEqual(.5*.5+2*.5,1.25)
-    def test_13_zero_contrast_equivalence(self):
-        k=1.77e-15; self.assertEqual(2/(1/k+1/k),k)
-    def test_14_deterministic_reduced_execution(self):
-        args=(6.5,.04,.001,.002,1e-6); self.assertEqual(study.b0_average(*args),study.b0_average(*args))
-    def test_15_result_schema(self):
-        r=json.loads((ROOT/'validation/sci_md_008/RESULT.json').read_text()); self.assertEqual(r['schema'],'ewp.sci-md-008.result/v1')
-    def test_16_evidence_label(self):
-        r=json.loads((ROOT/'validation/sci_md_008/RESULT.json').read_text()); self.assertEqual(r['evidence_class'],'SOURCE_DEPENDENT_RECONSTRUCTION')
-    def test_17_no_independent_label(self):
-        text=(ROOT/'validation/sci_md_008/FINAL_REPORT.md').read_text(); self.assertIn('not validation',text)
-    def test_18_mutated_parameter_fails(self):
+
+    def test_cli_calls_only_real_inventory_gate(self):
+        argv=['--puckworks','/p','--executable','/e','--run-root','/r','--output','/o']
+        with mock.patch.object(study,'run_inventory_gate',return_value={'disposition':study.STOP}) as gate:
+            self.assertEqual(study.main(argv),3)
+        gate.assert_called_once_with(Path('/p'),Path('/e'),Path('/r'),Path('/o'))
+
+    def test_only_scientific_runner_is_inventory_gate(self):
+        runners=[name for name,value in vars(study).items() if inspect.isfunction(value) and name.startswith('run_')]
+        self.assertEqual(runners,['run_inventory_gate'])
+
+    def test_target_scoring_functions_are_absent(self):
+        for name in ('run_matrix','score','prediction_row','inventory_gate','adjudicate','plots'):
+            self.assertFalse(hasattr(study,name),name)
+
+    def test_source_has_no_synthetic_inventory_pass(self):
+        source=inspect.getsource(study)
+        self.assertNotIn('INVENTORY_SCALE_INVARIANCE_PASS',source)
+        self.assertNotIn('fraction_shape_max_difference":0.0',source.replace(' ',''))
+
+    def test_source_has_no_performance_disposition(self):
+        source=inspect.getsource(study)
+        for token in ('SCI_MD_008_PRODUCTION_PDE_CONDITIONAL_SOURCE_RECONSTRUCTION_SUPPORTED',
+                      'SCI_MD_008_PRODUCTION_PDE_NO_MATERIAL_INCREMENTAL_VALUE',
+                      'SCI_MD_008_PRODUCTION_TRANSPORT_PARAMETERIZATION_OR_FORMULATION_REJECTED'):
+            self.assertNotIn(token,source)
+
+    def test_blocked_target_artifacts(self):
+        for name in study.BLOCKED_TABLES:
+            self.assertEqual(study.read_csv(PACKAGE/name),[{'state':'BLOCKED','reason':study.STOP}])
+
+    def test_result_closes_against_real_inventory_csv(self):
+        self.assertEqual(study.verify_result_package(PACKAGE)['status'],'PASS')
+
+    def test_maximum_is_recomputed_from_rows(self):
+        rows=study.read_csv(PACKAGE/'INVENTORY_SCALE_INVARIANCE.csv')
+        maximum=max(float(r['fraction_shape_max_absolute_difference']) for r in rows)
+        result=json.loads((PACKAGE/'RESULT.json').read_text())
+        self.assertEqual(maximum,result['maximum_fraction_shape_difference'])
+
+    def test_mutated_gate_row_fails(self):
+        temporary,path=self.copy_package()
+        try:
+            rows=study.read_csv(path/'INVENTORY_SCALE_INVARIANCE.csv'); rows[0]['condition']='E99'
+            with (path/'INVENTORY_SCALE_INVARIANCE.csv').open('w',newline='') as stream:
+                writer=csv.DictWriter(stream,fieldnames=list(rows[0]),lineterminator='\n'); writer.writeheader(); writer.writerows(rows)
+            with self.assertRaises(ValueError): study.verify_result_package(path)
+        finally: temporary.cleanup()
+
+    def test_mutated_result_summary_fails(self):
+        temporary,path=self.copy_package()
+        try:
+            result=json.loads((path/'RESULT.json').read_text()); result['maximum_fraction_shape_difference']=0
+            (path/'RESULT.json').write_text(json.dumps(result))
+            with self.assertRaises(ValueError): study.verify_result_package(path)
+        finally: temporary.cleanup()
+
+    def test_positive_disposition_mutation_fails(self):
+        temporary,path=self.copy_package()
+        try:
+            result=json.loads((path/'RESULT.json').read_text()); result['disposition']='SCI_MD_008_PRODUCTION_PDE_NO_MATERIAL_INCREMENTAL_VALUE_OVER_FROZEN_REDUCED_MODEL'
+            (path/'RESULT.json').write_text(json.dumps(result))
+            with self.assertRaises(ValueError): study.verify_result_package(path)
+        finally: temporary.cleanup()
+
+    def test_unblocked_target_artifact_fails(self):
+        temporary,path=self.copy_package()
+        try:
+            (path/'MODEL_COMPARISON.csv').write_text('state,reason\nPASS,scored\n')
+            with self.assertRaises(ValueError): study.verify_result_package(path)
+        finally: temporary.cleanup()
+
+    def test_incomplete_run_manifest_fails(self):
+        temporary,path=self.copy_package()
+        try:
+            lines=(path/'RUN_MANIFEST.csv').read_text().splitlines(); (path/'RUN_MANIFEST.csv').write_text('\n'.join(lines[:-1])+'\n')
+            with self.assertRaises(ValueError): study.verify_result_package(path)
+        finally: temporary.cleanup()
+
+    def test_import_has_no_execution_side_effect(self):
+        with mock.patch.object(study.Matrix,'run',side_effect=AssertionError('scientific run')):
+            importlib.reload(study)
+
+    def test_package_verification_is_deterministic(self):
+        self.assertEqual(study.verify_result_package(PACKAGE),study.verify_result_package(PACKAGE))
+
+    def test_exact_stop_is_preserved(self):
+        result=json.loads((PACKAGE/'RESULT.json').read_text())
+        self.assertEqual(result['disposition'],study.STOP)
+
+    def test_exact_gate_coverage(self):
+        result=study.verify_result_package(PACKAGE)
+        self.assertEqual((result['production_runs'],result['inventory_rows']),(18,36))
+
+    def test_zero_target_predictions(self):
+        result=json.loads((PACKAGE/'RESULT.json').read_text())
+        self.assertEqual(result['canonical_prediction_count'],0)
+        self.assertEqual(result['canonical_matrix_state'],'BLOCKED_NOT_EXECUTED_BY_PREDECLARED_GATE')
+
+    def test_mutated_parameter_fails_authority(self):
         def fake_git(*args,**kwargs): return 'commit' if args[:2]==('cat-file','-t') else study.PW_TREE
         with mock.patch.object(study,'git',side_effect=fake_git), mock.patch.object(study,'sha',return_value='bad'):
             with self.assertRaises(SystemExit): study.authority(ROOT)
-    def test_19_incomplete_matrix_fails_closed(self):
-        self.assertNotEqual(1,48*2*3)
-    def test_20_stop_disposition(self):
-        r=json.loads((ROOT/'validation/sci_md_008/RESULT.json').read_text()); self.assertEqual(r['disposition'],'SCI_MD_008_STOP_FRACTION_OUTPUT_REMAINS_INVENTORY_SCALE_DEPENDENT')
 
 if __name__=='__main__': unittest.main()
