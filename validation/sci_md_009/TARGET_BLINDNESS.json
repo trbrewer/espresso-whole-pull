@@ -1,0 +1,8 @@
+{
+  "evidence": "measured sanitizer subprocess and mutation tests",
+  "firewall_sha256": "951803e880a232bd8b8380187d2ed3d091b878047b6867f605fb4288666423c0",
+  "prohibited_values_available_to_analysis": false,
+  "sanitized_inventory_sha256": "8b9e4a232e47fd19339cd4f613891f8320fa7f1218b78c0fbfa22dcfdbbd435e",
+  "sanitized_operating_sha256": "9d03ad9cadc147667c678c8a83679005d24560c63e49755e9173c4a0fc663147",
+  "status": "PASS"
+}

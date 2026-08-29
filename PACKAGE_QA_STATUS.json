@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1049,
+    "python_test_count": 1092,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -50,8 +50,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 609,
-    "source_manifest_aggregate_sha256": "e7fd5f2e7a2a0c7d3bd4f2342de206676fc6c73eaf7ed7606f23bf549d88fce0",
+    "source_manifest_file_count": 610,
+    "source_manifest_aggregate_sha256": "7d546158aa5461d268594e7f736fae76b86c4ca29eeddf834f77b51fe0c8c754",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -61,7 +61,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "e7fd5f2e7a2a0c7d3bd4f2342de206676fc6c73eaf7ed7606f23bf549d88fce0"
+    "source_manifest_aggregate_source_sha256": "7d546158aa5461d268594e7f736fae76b86c4ca29eeddf834f77b51fe0c8c754"
   },
   "sci_ed_002_r2b": {
     "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",
@@ -97,13 +97,45 @@
     "review_disposition": "OWNER_ADJUDICATED_NO_FURTHER_EXACT_HEAD_REREVIEW_REQUIRED",
     "owner_adjudication": "SCI_ED_002_OWNER_ACCEPTS_TECHNICALLY_QUALIFIED_VALID_BLOCKED_RESULT_WITH_NONBLOCKING_NEGATIVE_CONTROL_COVERAGE_DEBT",
     "historical_r2d_disposition": "SCI_ED_002_R2D_COMPLETE_NEGATIVE_CONTROL_COVERAGE_NOT_ESTABLISHED",
-    "current_qualification": {"suite": "python3 -m unittest discover -s tests -p 'test_*.py'", "tests_discovered": 987, "tests_run": 987, "passed": 985, "skipped": 2, "failures": 0, "errors": 0, "expected_failures": 0, "unexpected_successes": 0, "status": "PASS", "exact_head_binding": "EXTERNAL_CI_AND_FINAL_REVIEW_EVIDENCE"},
-    "historical_qualification": {"r2b": {"tests_run": 987, "passed": 987, "skipped": 0}, "r2c": {"tests_run": 984, "passed": 982, "skipped": 2, "failures": 0, "errors": 0}},
+    "current_qualification": {
+      "suite": "python3 -m unittest discover -s tests -p 'test_*.py'",
+      "tests_discovered": 987,
+      "tests_run": 987,
+      "passed": 985,
+      "skipped": 2,
+      "failures": 0,
+      "errors": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "status": "PASS",
+      "exact_head_binding": "EXTERNAL_CI_AND_FINAL_REVIEW_EVIDENCE"
+    },
+    "historical_qualification": {
+      "r2b": {
+        "tests_run": 987,
+        "passed": 987,
+        "skipped": 0
+      },
+      "r2c": {
+        "tests_run": 984,
+        "passed": 982,
+        "skipped": 2,
+        "failures": 0,
+        "errors": 0
+      }
+    },
     "authority_contract": "PASS_V3_CLOSED_82_OF_82_LEAVES_CLASSIFIED",
     "current_authority_conjunction": "PASS",
     "historical_provenance": "PASS_NOT_USED_FOR_CURRENT_SELECTION",
     "negative_controls": "PRINCIPAL_CONTROLS_PASS_EXHAUSTIVE_MATRIX_INCOMPLETE_ACCEPTED_NONBLOCKING_DEBT",
-    "residual_technical_debt": {"identifier": "SCI_ED_002_NONBLOCKING_TECHNICAL_DEBT_EXHAUSTIVE_PUBLIC_CLI_NEGATIVE_CONTROL_MATRIX_INCOMPLETE", "accepted": true, "blocking_merge": false, "immediate_remediation_required": false, "triggered_revisit_only": true, "owner_adjudicated": true},
+    "residual_technical_debt": {
+      "identifier": "SCI_ED_002_NONBLOCKING_TECHNICAL_DEBT_EXHAUSTIVE_PUBLIC_CLI_NEGATIVE_CONTROL_MATRIX_INCOMPLETE",
+      "accepted": true,
+      "blocking_merge": false,
+      "immediate_remediation_required": false,
+      "triggered_revisit_only": true,
+      "owner_adjudicated": true
+    },
     "malformed_authority_diagnostics": "PASS_STRUCTURED_FAIL_CLOSED",
     "vendored_contract": "SCI_ED_002_LOCAL_VENDORED_CONTRACT_VERIFIED_PRODUCER_OBJECT_NOT_CHECKED",
     "exact_real_producer": "SCI_ED_002_HANDOFF_EXACT_PRODUCER_VERIFIED",

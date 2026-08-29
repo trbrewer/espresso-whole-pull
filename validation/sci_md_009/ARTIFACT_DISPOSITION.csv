@@ -1,0 +1,15 @@
+artifact,classification,reason
+RUN_MANIFEST.csv,REGENERATED_FROM_VALID_RAW_CASES,498 raw cases hash-close
+DIMENSIONLESS_REGIME_MAP.csv,REGENERATED_FROM_VALID_RAW_CASES,498 raw cases hash-close
+INVENTORY_CAPACITY_TRAJECTORIES.csv,REGENERATED_FROM_VALID_RAW_CASES,498 raw cases hash-close
+LOCAL_SENSITIVITY.csv,REGENERATED_FROM_VALID_RAW_CASES,498 raw cases hash-close
+B1_B2_EQUIVALENCE.csv,REGENERATED_FROM_VALID_RAW_CASES,498 raw cases hash-close
+NUMERICAL_QUALIFICATION.json,REGENERATED_FROM_VALID_RAW_CASES,498 raw cases hash-close
+PROFILE_RESULTS.csv,SUPERSEDED_BY_C1,reviewed adjudicative method unsupported
+SYNTHETIC_RECOVERY.csv,SUPERSEDED_BY_C1,reviewed adjudicative method unsupported
+OBSERVABLE_BUNDLE_COMPARISON.csv,SUPERSEDED_BY_C1,reviewed adjudicative method unsupported
+PRECISION_FRONTIER.csv,SUPERSEDED_BY_C1,reviewed adjudicative method unsupported
+PILOT_DESIGN_PARETO.csv,SUPERSEDED_BY_C1,reviewed adjudicative method unsupported
+MINIMUM_PILOT_DESIGN.json,SUPERSEDED_BY_C1,reviewed adjudicative method unsupported
+FINAL_REPORT.md,SUPERSEDED_BY_C1,reviewed adjudicative method unsupported
+RESULT.json,SUPERSEDED_BY_C1,reviewed adjudicative method unsupported

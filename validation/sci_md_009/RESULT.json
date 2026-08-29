@@ -1,0 +1,20 @@
+{
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "disposition": "SCI_MD_009_C1_STOP_NONLINEAR_RESPONSE_NOT_QUALIFIED",
+  "existing_cases_retained": 498,
+  "joint_recovery": "BLOCKED",
+  "maximum_validation_relative_error": 0.08255430449708766,
+  "nonlinear_response_qualified": false,
+  "observable_bundles": "BLOCKED",
+  "physical_validation": "NOT_ESTABLISHED",
+  "pilot": "BLOCKED",
+  "precision_frontier": "BLOCKED",
+  "profiles": "BLOCKED",
+  "schema": "ewp.sci-md-009-c1.result/v1",
+  "sci_ed_002": "EMPIRICAL_REFERENCE_EXTRACTION_TAIL_DATA_REQUIRED",
+  "supplemental_cap": 150,
+  "supplemental_cases": 96,
+  "target_blind_firewall": "PASS",
+  "target_chemistry_values_accessed": false,
+  "target_scores": 0
+}

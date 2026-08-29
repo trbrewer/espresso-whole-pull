@@ -1,0 +1,38 @@
+{
+  "B1_B2_limiting_equivalence": "PASS_EXISTING_XSV",
+  "derivative_rule": "PASS_IF_5_PERCENT_OR_1E-8",
+  "determinism_and_resolution_shape_maxima": {
+    "qual_dt_coarse": {
+      "caffeine": 0.0006433323079904352,
+      "trigonelline": 0.0007376942181604104
+    },
+    "qual_dt_fine": {
+      "caffeine": 0.00031677428332667346,
+      "trigonelline": 0.00036233697075033905
+    },
+    "qual_mesh_coarse": {
+      "caffeine": 0.000522523527518165,
+      "trigonelline": 0.000601753343610345
+    },
+    "qual_mesh_fine": {
+      "caffeine": 0.0002797889253423891,
+      "trigonelline": 0.00032157440958555106
+    },
+    "qual_parallel": {
+      "caffeine": 2.9858060468512804e-13,
+      "trigonelline": 3.4897085221530233e-13
+    },
+    "qual_repeat": {
+      "caffeine": 0.0,
+      "trigonelline": 0.0
+    }
+  },
+  "finite_difference_steps": [
+    0.005,
+    0.01,
+    0.02
+  ],
+  "flow_conservation_max_error_ratio": 1.0131178388727908e-07,
+  "production_cases": 498,
+  "status": "PASS"
+}

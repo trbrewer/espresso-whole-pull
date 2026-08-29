@@ -1,5 +1,18 @@
 # Project State
 
+## SCI-MD-009 inventory–capacity identifiability
+
+SCI-MD-009-C1 proved the one-way target-blind firewall, hash-closed all 498
+historical cases, and completed 96 frozen supplemental production cases. The
+prospectively frozen quadratic nonlinear response failed held-out validation
+(maximum relative fraction-mass error 0.08255 versus 0.02), so nonlinear
+profiles, joint recovery, O0--O7 ranking, precision, pilot selection, and a
+numerical SCI-ED-002 tail requirement were not adjudicated. Disposition:
+`SCI_MD_009_C1_STOP_NONLINEAR_RESPONSE_NOT_QUALIFIED`. Prior practical-
+identifiability, 20%, O6, eight-/fifteen-shot, and 6.7% statements are
+withdrawn. SCI-MD-008 and SCI-ED-002 remain unchanged; physical validation
+remains `NOT_ESTABLISHED`.
+
 ## SCI-MD-008 prescribed-flow exact-fraction reconstruction
 
 SCI-MD-008 stopped prospectively at
