@@ -1,11 +1,12 @@
 # Claim Ceiling
 
-SCI-MD-009 establishes target-blind model sensitivity and practical
-identifiability only: the frozen production model is testable with paired
-absolute fraction masses and effective-inventory evidence of specified
-precision. It does not establish that I_ref equals M0, validate a Q_s bridge,
-authorize a c_s0 mapping or inventory predictor, validate hydraulics, or
-constitute physical validation. Physical validation remains `NOT_ESTABLISHED`.
+SCI-MD-009-C1 establishes only a target-blind firewall, closure of 498 retained
+production cases, and a valid negative held-out response-model qualification
+from 96 supplemental cases. It does not establish practical identifiability,
+scalar-M0 sufficiency, an O0--O7 ranking, inventory precision, a pilot, a Q_s
+bridge, or an SCI-ED-002 tail threshold. It does not authorize a c_s0 mapping or
+inventory predictor, validate hydraulics, or constitute physical validation.
+Physical validation remains `NOT_ESTABLISHED`.
 
 SCI-MD-008 establishes only that the current frozen-parameter production path's
 normalized exact fraction output remains materially dependent on initial
