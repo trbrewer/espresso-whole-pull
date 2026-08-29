@@ -1,4 +1,3 @@
-from .study import main
+from .c1 import main
 
 raise SystemExit(main())
-

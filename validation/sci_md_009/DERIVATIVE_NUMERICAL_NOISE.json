@@ -1,0 +1,8 @@
+{
+  "derivative_noise_floor_kg": 2.168067833006961e-08,
+  "finite_difference_failures": 0,
+  "maximum_derivative_mass_scale": 2.938979023603406e-05,
+  "maximum_shape_difference": 0.0007376942181604104,
+  "method": "largest resolution/repeat/rank shape difference times maximum 1pct derivative mass scale",
+  "singular_value_floor_kg": 2.1680678330069608e-07
+}

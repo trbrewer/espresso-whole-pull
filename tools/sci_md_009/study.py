@@ -48,9 +48,6 @@ def write_csv(path:Path,rows:list[dict],fields:list[str]|None=None)->None:
 def read_csv(path:Path)->list[dict[str,str]]:
     with path.open(newline="") as f:return list(csv.DictReader(f))
 
-def frozen_blob(puck:Path,rel:str)->bytes:
-    return subprocess.check_output(["git","-C",str(puck),"show",f"{PW_COMMIT}:{rel}"])
-
 def projected_csv(puck:Path,rel:str,columns:tuple[str,...])->list[dict[str,str]]:
     """Whitelist projection in a child process; prohibited values never enter Python."""
     script=("import csv,sys\ncols="+repr(columns)+"\n"
@@ -68,6 +65,7 @@ class Envelope:
     experiment:int; flow:float; temperature:float; grind:str; bounds:tuple[float,...]
 
 def load_target_blind(puck:Path)->tuple[list[Envelope],dict[tuple[int,str],float],dict]:
+    raise RuntimeError(PENDING)
     rows=projected_csv(puck,SOURCE_REL,ALLOWED)
     grouped=defaultdict(list)
     for r in rows:
@@ -87,6 +85,7 @@ def load_target_blind(puck:Path)->tuple[list[Envelope],dict[tuple[int,str],float
     return env,inv,params
 
 def authority(puck:Path)->dict:
+    raise RuntimeError(PENDING)
     if git(puck,"rev-parse",f"{PW_COMMIT}^{{tree}}")!=PW_TREE or sha(ROOT/PARAM_REL)!=PARAM_SHA:
         raise SystemExit("SCI_MD_009_STOP_SOURCE_OR_PARAMETER_AUTHORITY_UNREPRODUCIBLE")
     s8=json.loads((ROOT/"validation/sci_md_008/RESULT.json").read_text())
@@ -103,10 +102,11 @@ def authority(puck:Path)->dict:
       "parameter_artifact":PARAM_REL,"parameter_sha256":PARAM_SHA,
       "frozen_parameters":{s:{k:frozen[s][k] for k in ("extractionRateConstant_1_s","saturationConcentration_kg_m3","effectiveSoluteDiffusivity_m2_s","k_95pct_lower","k_95pct_upper","csat_95pct_lower","csat_95pct_upper")} for s in SPECIES},
       "solver_source_sha256":sha(ROOT/"solver/espressoWholePullFoam/espressoWholePullFoam.C"),
-      "source_sha256":sha_bytes(frozen_blob(puck,SOURCE_REL)),"nominal_inventory_sha256":sha_bytes(frozen_blob(puck,INVENTORY_REL))}
+      "source_sha256":"UNREACHABLE_C1_PENDING","nominal_inventory_sha256":"UNREACHABLE_C1_PENDING"}
 
 def make_scenario(matrix:Matrix,e:Envelope,inv:dict,params:dict,model:str,scale:float=1,
-                  k_scale:float=1,cs_scale:float=1,d_scale:float=1,dt:float=.05,axial:int=128)->dict:
+                  k_scale:float=1,cs_scale:float=1,d_scale:float=1,dt:float=.05,axial:int=128,
+                  species_scales:dict|None=None)->dict:
     end=max(e.bounds)/(DENSITY*e.flow); s=matrix.compact(end=end,dt=dt,axial=axial,radial=4)
     s["scenario_id"]=f"sci_md_009_e{e.experiment}_{model.lower()}";s["mode"]="validation";s.pop("calibration",None)
     s["geometry"].update({"basket_radius_m":RADIUS,"basket_diameter_m":2*RADIUS})
@@ -122,8 +122,9 @@ def make_scenario(matrix:Matrix,e:Envelope,inv:dict,params:dict,model:str,scale:
     s["wetting"].update({"initial_saturation":1.,"initial_wet_front_m":DEPTH});s["pressureBoundaryModel"]="prescribedFlow"
     s["flowResistanceModel"]="darcy";s["bedMechanicsModel"]="none"
     s["prescribedFlowBoundary"]={"scheduleType":"constant","volumetricFlowRateM3PerS":e.flow,"absoluteFlowToleranceM3PerS":1e-12,"relativeFlowTolerance":1e-8}
-    species=[explicit(x,inv[e.experiment,x]*scale,params[x]["extractionRateConstant_1_s"]*k_scale,
-      params[x]["saturationConcentration_kg_m3"]*cs_scale,params[x]["effectiveSoluteDiffusivity_m2_s"]*d_scale) for x in SPECIES]
+    species_scales=species_scales or {x:(scale,k_scale,cs_scale,d_scale) for x in SPECIES}
+    species=[explicit(x,inv[e.experiment,x]*species_scales[x][0],params[x]["extractionRateConstant_1_s"]*species_scales[x][1],
+      params[x]["saturationConcentration_kg_m3"]*species_scales[x][2],params[x]["effectiveSoluteDiffusivity_m2_s"]*species_scales[x][3]) for x in SPECIES]
     species.append({"id":"residual_extractables","role":"structural_balance","inherit_legacy_parameters":True});s=indexed(s,species)
     s["fractionCollection"]={"enabled":True,"boundaryBasis":"cumulativeBeverageMass","cumulativeBoundariesKg":list(e.bounds),"emitTerminalPartial":True}
     s["time"].update({"end_s":end,"delta_t_s":dt,"field_write_interval_s":end,"target_beverage_mass_kg":999.})
@@ -168,6 +169,7 @@ def select_precision(elasticity:np.ndarray,separation:np.ndarray)->float|None:
     return None
 
 def execute(puck:Path,executable:Path,run_root:Path,output:Path)->dict:
+    raise RuntimeError(PENDING)
     auth=authority(puck); env,inv,params=load_target_blind(puck)
     run_root.mkdir(parents=True,exist_ok=True);output.mkdir(parents=True,exist_ok=True)
     sanitized=[]

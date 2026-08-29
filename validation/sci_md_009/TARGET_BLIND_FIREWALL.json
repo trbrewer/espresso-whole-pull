@@ -1,0 +1,36 @@
+{
+  "full_source_read_api_absent": true,
+  "inventory": {
+    "classification": "TRAINING_DERIVED_NOMINAL_SCALE_FOR_DIMENSIONLESS_CENTERING",
+    "row_count": 30,
+    "sanitized_sha256": "8b9e4a232e47fd19339cd4f613891f8320fa7f1218b78c0fbfa22dcfdbbd435e",
+    "schema": [
+      "experiment_id",
+      "species_id",
+      "inventory_mass_fraction_kg_per_kg_dry_coffee"
+    ],
+    "source_object": "5ce003e751aac516b5de3d9ede4e6910627e2b12:docs/analysis/sci_md_004_stage_e0/schmieder_training_inventories.csv",
+    "source_sha256": "6174adcf9a41e5d934d5285f3e129b7488d5a339651844d84f847ec164965f08"
+  },
+  "operating": {
+    "classification": "OPERATING_ENVELOPE_ONLY",
+    "row_count": 576,
+    "sanitized_sha256": "9d03ad9cadc147667c678c8a83679005d24560c63e49755e9173c4a0fc663147",
+    "schema": [
+      "experiment_id",
+      "replicate_id",
+      "temperature_K",
+      "flow_m3_s",
+      "grind_source",
+      "fraction_lower_mass_kg",
+      "fraction_upper_mass_kg"
+    ],
+    "source_object": "5ce003e751aac516b5de3d9ede4e6910627e2b12:docs/analysis/sci_md_004_stage_e0/schmieder_species_fractions_long.csv",
+    "source_sha256": "29ca41748060cb3cfe58b4e1d3ebfb13c45aedae468fe7b6f01710c307c0c0e2"
+  },
+  "parent_received_full_source_blob": false,
+  "prohibited_names_emitted": false,
+  "sanitizer": "tools.sci_md_009.sanitize",
+  "schema": "ewp.sci-md-009-c1.firewall/v1",
+  "status": "PASS"
+}
