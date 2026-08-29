@@ -1,3 +1,3 @@
-# Reproduce SCI-MD-009
+# Reproduce SCI-MD-009-C1
 
-With OpenFOAM Foundation 12 loaded: `python3 -m tools.sci_md_009 --puckworks /path/to/puckworks --executable /path/to/espressoWholePullFoam --run-root /fresh/runs --output /fresh/results`. Runtime fields remain external.
+`python3 -m tools.sci_md_009.c1 --puckworks /path/puckworks --executable /path/espressoWholePullFoam --existing-run-root /path/sci-md-009-runs-r3 --supplemental-run-root /path/supplemental --output /fresh/results`
