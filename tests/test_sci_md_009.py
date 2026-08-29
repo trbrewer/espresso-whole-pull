@@ -23,7 +23,8 @@ class C1Tests(unittest.TestCase):
  def test_06_scenarios(self):self.assertTrue(all(r['classification']=='RETAINED_VALID' for r in study.read_csv(PKG/'EXISTING_CASE_AUDIT.csv')))
  def test_07_raw(self):self.assertEqual(json.loads((PKG/'RAW_OUTPUT_MANIFEST.json').read_text())['case_count'],498)
  def test_08_derivatives(self):self.assertTrue(all(r['status']=='PASS' for r in study.read_csv(PKG/'DERIVATIVE_QUALIFICATION.csv')))
- def test_09_noise(self):self.assertGreater(json.loads((PKG/'DERIVATIVE_NUMERICAL_NOISE.json').read_text())['derivative_noise_floor_kg'],0)
+ def test_09_noise(self):
+  noise=json.loads((PKG/'DERIVATIVE_NUMERICAL_NOISE.json').read_text());self.assertGreater(noise['diagnostic_derivative_noise_proxy_kg'],0);self.assertEqual(noise['status'],'DIAGNOSTIC_DERIVATIVE_NOISE_PROXY_NOT_ADJUDICATED');self.assertFalse(noise['direct_resolution_varied_derivatives_executed']);self.assertFalse(noise['usable_for_rank_adjudication'])
  def test_10_rank_floor(self):self.assertEqual((study.rank_from_noise(np.diag([3.,2.,1.]),.5)['rank'],study.rank_from_noise(np.diag([3.,2.,1.]),1.5)['rank']),(3,2))
  def test_11_profiles_blocked(self):self.assertEqual(study.read_csv(PKG/'NONLINEAR_PROFILE_RESULTS.csv')[0]['state'],'BLOCKED')
  def test_12_multimodal_not_claimed(self):self.assertEqual(json.loads((PKG/'RESULT.json').read_text())['profiles'],'BLOCKED')
@@ -58,4 +59,35 @@ class C1Tests(unittest.TestCase):
  def test_35_claim(self):self.assertEqual(json.loads((PKG/'RESULT.json').read_text())['physical_validation'],'NOT_ESTABLISHED')
  def test_36_package(self):self.assertEqual(c1.verify(PKG)['status'],'PASS')
  def test_37_sci008(self):self.assertNotIn('def run_matrix',(ROOT/'tools/sci_md_008/study.py').read_text())
+ def test_38_positive_adjudication_removed(self):
+  source=inspect.getsource(c1)
+  for name in ('FINAL=','def nonlinear_analysis','def bundle_analysis','def precision_and_pilots','def reports'):
+   self.assertNotIn(name,source)
+ def test_39_execute_has_one_terminal_gate(self):
+  source=inspect.getsource(c1.execute)
+  self.assertIn('stop_after_response_gate',source)
+  for name in ('nonlinear_analysis','bundle_analysis','precision_and_pilots','PRACTICAL_IDENTIFIABILITY'):
+   self.assertNotIn(name,source)
+ def test_40_mocked_response_pass_stops_blocked(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/'p';shutil.copytree(PKG,p);rows=study.read_csv(p/'NONLINEAR_RESPONSE_VALIDATION.csv')
+   for row in rows:row['relative_error']=.001;row['absolute_error_kg']=0.;row['status']='PASS'
+   c1.cwrite(p/'NONLINEAR_RESPONSE_VALIDATION.csv',rows);plan=study.read_csv(p/'GLOBAL_PARAMETER_DESIGN.csv');c1.stop_after_response_gate(p,plan,rows,True);c1.manifest(p)
+   result=json.loads((p/'RESULT.json').read_text());self.assertEqual(result['disposition'],c1.RESPONSE_PASSED_STOP)
+   self.assertTrue(result['nonlinear_response_qualified'])
+   for name in ('NONLINEAR_PROFILE_RESULTS.csv','JOINT_SYNTHETIC_RECOVERY.csv','OBSERVABLE_BUNDLE_COMPARISON.csv','PRECISION_FRONTIER.csv','PILOT_DESIGN_PARETO.csv','PILOT_ROBUSTNESS.csv'):
+    self.assertEqual(study.read_csv(p/name),[{'state':'BLOCKED','reason':c1.RESPONSE_PASSED_STOP}])
+   self.assertEqual(c1.verify(p)['disposition'],c1.RESPONSE_PASSED_STOP)
+ def test_41_low_error_retained_stop_rejected(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/'p';shutil.copytree(PKG,p);rows=study.read_csv(p/'NONLINEAR_RESPONSE_VALIDATION.csv')
+   for row in rows:row['relative_error']=.001;row['status']='PASS'
+   c1.cwrite(p/'NONLINEAR_RESPONSE_VALIDATION.csv',rows);c1.manifest(p)
+   with self.assertRaises(ValueError):c1.verify(p)
+ def test_42_positive_disposition_rejected(self):
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/'p';shutil.copytree(PKG,p);result=json.loads((p/'RESULT.json').read_text());result['disposition']='MODEL_PERFORMANCE_PASS';c1.jwrite(p/'RESULT.json',result);c1.manifest(p)
+   with self.assertRaises(ValueError):c1.verify(p)
+ def test_43_no_local_rank_conclusion(self):
+  self.assertEqual(json.loads((PKG/'LOCAL_IDENTIFIABILITY.json').read_text()),{'state':'BLOCKED','reason':c1.RESPONSE_FAILED_STOP})
 if __name__=='__main__':unittest.main()
