@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 612,
-  "total_uncompressed_bytes_excluding_manifest": 7545932,
-  "aggregate_source_sha256": "43c40100c1d627dc8361cfb306df155d7670282b43dd68c1eca297c415cd4e44",
-  "aggregate_sha256": "43c40100c1d627dc8361cfb306df155d7670282b43dd68c1eca297c415cd4e44",
+  "file_count": 628,
+  "total_uncompressed_bytes_excluding_manifest": 7616840,
+  "aggregate_source_sha256": "ce67f741c38c24239f26039532316fae02645a8d5d435a238930e933ce7362a1",
+  "aggregate_sha256": "ce67f741c38c24239f26039532316fae02645a8d5d435a238930e933ce7362a1",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -826,6 +826,81 @@
     "docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md": {
       "sha256": "58c33923f02ca733d611ddc41173fce0e2f33a20d2908312b572f57822edc364",
       "bytes": 14688,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/EQUIPMENT_PURCHASE_GATES.csv": {
+      "sha256": "1ef50d32361be46ba5868049c194e471685085f7b5d9f666ec9ed61768a5317d",
+      "bytes": 5226,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/FRACTION_DESIGN_COMPARISON.csv": {
+      "sha256": "ca239a97be39b1af92e32a3de0ae3ae2b06f995abbf4d1d1e5d190ded7e91718",
+      "bytes": 1485,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/HOME_LAB_EVIDENCE_AUDIT.md": {
+      "sha256": "fdf10559b04e961a47edea2478347dada0db9c0ce4dc3d6087d37761f895c51b",
+      "bytes": 6806,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/MINIMUM_NEW_MEASUREMENT_CROSSWALK.csv": {
+      "sha256": "61b8b356697ae3017dc58f6bb8ab19049523073305c05d530d6061d2ca4d5610",
+      "bytes": 2227,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/PUCKWORKS_HOME_LAB_EVIDENCE_MATRIX.csv": {
+      "sha256": "1f9a624a828e548980dcbf039f2c61d609656cb8766987e50de38aeb6beb9f02",
+      "bytes": 4525,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/REPRODUCE.md": {
+      "sha256": "193f65dda5731296fadfdce39fefadeb7b33963e021b1d715b38581142446949",
+      "bytes": 1147,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/RESULT.json": {
+      "sha256": "933b7b923afbbefe0c3183b4e71b38792b9fb909fd21066c914a00b99541ae37",
+      "bytes": 1442,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/REVISED_BRONZE_SEQUENCE.md": {
+      "sha256": "70a296daf31106b6123a4a496bddeeb36f1a0853a4c4edfa4492b4254009b2d5",
+      "bytes": 3678,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/SIGNAL_AND_RANGE_PRIORS.csv": {
+      "sha256": "8f01330f868a7ea124c28984a98381bd82117ffaa8dee0e923a90d550b88d91c",
+      "bytes": 2895,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/SOURCE_CONSUMPTION_AND_ELIGIBILITY.csv": {
+      "sha256": "cd734cfc5a82f5b81307a63464dee891810b8a6f294bba8b74fceab59ffeb322",
+      "bytes": 2021,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/VISUALIZER_COHORT_ATLAS.csv": {
+      "sha256": "816c388baf839ab15eeb7cb82a01a5e1a6f483da6046ee2a10dcb87978a628a6",
+      "bytes": 1802,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/VISUALIZER_FIELD_COMPLETENESS.csv": {
+      "sha256": "b31f256842617f0a6910f24425527ef24cdb161e5a6690c10adf1472cb64fc89",
+      "bytes": 4743,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/VISUALIZER_HISTORICAL_ACCESS_BRIEF.md": {
+      "sha256": "ea3430399801f9d06ff286b499b031c2ad6cf42826809220c9f6ff3ab98b90ab",
+      "bytes": 1320,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/VISUALIZER_LOCAL_CORPUS_INTEGRITY.json": {
+      "sha256": "54ddb210a5b49ca22e35fce00a6dd0f00b8ced36cd8279ca297d248c93a6045d",
+      "bytes": 1241,
+      "git_mode": "100644"
+    },
+    "docs/planning/home_lab_existing_evidence_audit/VISUALIZER_MARGINAL_VALUE.json": {
+      "sha256": "1a40f401fb648cb587f8a0e88c40aab37e1e8a2ff2fa8b77e7044265e25b28f2",
+      "bytes": 1024,
       "git_mode": "100644"
     },
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md": {
@@ -1771,6 +1846,11 @@
     "scripts/generate_freeze_manifest.py": {
       "sha256": "bc8cfcb0b1ddd3708377d7bc628c5738e8e74e527808904199b8ac195cabc76e",
       "bytes": 16454,
+      "git_mode": "100755"
+    },
+    "scripts/generate_home_lab_evidence_audit.py": {
+      "sha256": "2943e157e1274fed1753125d274fee6760f9a1f4f9a4a36c5cd3d4366c28ba73",
+      "bytes": 29326,
       "git_mode": "100755"
     },
     "scripts/generate_source_manifest.py": {

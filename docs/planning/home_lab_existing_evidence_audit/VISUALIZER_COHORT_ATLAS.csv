@@ -1,0 +1,9 @@
+cohort,inclusion_rule,count,time_span,machine_mix,channel_completeness,principal_caveat,permitted_scientific_use
+complete_hydraulic,valid time+achieved pressure+beverage weight+scale flow or derivable weight+machine+duration,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,local corpus absent,definition/design only; no empirical claim
+complete_thermal_hydraulic,complete hydraulic plus valid temperature,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,local corpus absent,definition/design only; no empirical claim
+repeated_contributor_ge_3,salted contributor with >=3 usable shots,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,local corpus absent,definition/design only; no empirical claim
+repeated_contributor_ge_10,salted contributor with >=10 usable shots,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,local corpus absent,definition/design only; no empirical claim
+repeated_contributor_ge_30,salted contributor with >=30 usable shots,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,local corpus absent,definition/design only; no empirical claim
+profile_contrast,achieved-channel classification: low/conventional/declining/flow-controlled/long-or-short-preinfusion/other,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,local corpus absent,definition/design only; no empirical claim
+manual_or_lever_relevant,conservative machine/integration metadata only; NO_RELIABLE_MANUAL_LEVER_COHORT_IDENTIFIER when unsupported,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,local corpus absent,definition/design only; no empirical claim
+outcome_annotated,TDS/EY retained separately from hydraulics,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,NOT_COMPUTABLE,local corpus absent,definition/design only; no empirical claim

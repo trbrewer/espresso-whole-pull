@@ -1,0 +1,13 @@
+decision,required_observable,existing_source_coverage,apparatus_specific,already_consumed,suitably_paired,remaining_missing,least_expensive_new_measurement,equipment_or_service,reusable
+Flair pressure/flow/mass characterization,"synchronized pressure, scale mass/time",source rig + ecological telemetry,yes,mostly consumed/context,no,Flair synchronized trace,existing scale+video first; pressure only if failed,existing gear then transducer,yes
+first drip,time-stamped visible first beverage,source timing,yes,consumed,no,Flair first drip,phone video synchronized to scale,none initially,yes
+fraction bulk extraction,fraction mass+TDS,source fractions,yes,consumed,no,Flair paired fractions,six mass fractions,manual collector+qualified refractometer,yes
+dry-basis extraction yield,dose moisture+cup dissolved mass,bulk source EY,yes,consumed,no,home dry basis,moisture plus TDS,qualified drying workflow,yes
+initial moisture,lot moisture,method context only,yes,n/a,no,same lot,replicate drying,oven/desiccator or external service,yes
+initial I_ref,sequential reference extractability,proxy only,yes,consumed,no,method-conditioned paired initial value,external method development,external service first,yes
+spent-puck I_ref,recovered spent-puck sequential extractability,none,n/a,no,no,paired spent value and tail,external paired assay,external service first,yes
+fraction caffeine/trigonelline mass,concentration x sample mass,source species fractions,yes,consumed,no,home Flair fractions,external chromatography batch,HPLC service,yes
+cup-spent mass balance,"initial I_ref, all fractions, spent I_ref, losses",no complete paired source,yes,no,no,complete paired chain,one external reference batch,service+prep equipment,yes
+grinder-specific PSD,PSD moments/distribution,other grinders,yes,consumed,no,home grinder/prep PSD,external imaging first,imaging service/equipment later,yes
+grinder-specific permeability,pressure-flow across known geometry,other rigs,yes,consumed,no,home prepared-bed tie point,later fixture test,permeability fixture,yes
+puck deformation,time-resolved puck/headspace geometry,CT source,yes,consumed,no,Flair-visible or displacement tie point,camera feasibility,camera then sensor only if needed,yes

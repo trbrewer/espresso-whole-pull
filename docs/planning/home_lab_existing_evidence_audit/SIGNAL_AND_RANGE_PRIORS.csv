@@ -1,0 +1,17 @@
+observable,planning_range,source_ids,measured_or_inferred,uncertainty,equipment_sizing,flair_extrapolation_required
+shot duration,15-60 s ecological/planning envelope,visualizer/hydraulic_timeseries; egidi2024/table2,mixed; Visualizer local values unavailable,unknown/source-reported,yes,yes
+preinfusion duration,short vs long; establish locally before numeric bounds,visualizer/hydraulic_timeseries; foster2025_2/fig12_14_curves,inferred design class,not quantified,yes,yes
+first-drip time,order 8 s source offset; qualify locally,waszkiewicz2025/tds_solids_calibration; foster2025_2/fig12_14_curves,measured/model-aligned source,source-specific,yes,yes
+achieved pressure,0-12 bar sizing; distinguish basket from line,waszkiewicz2025/traces_time_dependent,measured,retained by source,yes,yes
+scale outlet flow,0-8 g/s conservative logger range; normal espresso mostly lower,waszkiewicz2025/traces_time_dependent; visualizer/hydraulic_timeseries,measured/source plus ecological intended,source retained,yes,yes
+beverage mass,0-60 g conservative,waszkiewicz2025/traces_time_dependent; schmieder2023/cup_masses,measured,source retained,yes,yes
+fraction mass,about 3-8 g for six fractions of a 20-48 g beverage,schmieder2023/raw_fractions; pannusch2024/experimental_kinetics,inferred planning range,propagate balance/collector uncertainty,yes,yes
+bulk TDS,source curves imply percent-scale signal; qualify refractometer across early-to-late dilution,waszkiewicz2025/tds_fractions; egidi2024/table2,measured source,source sigma where available,yes,yes
+caffeine/trigonelline,"mg/g and absolute mg fraction signals; set LOQ from late fractions, not a universal numeric range",schmieder2023/raw_fractions; cup_masses,measured source,replicate/RSD,yes for service specification,yes
+initial total content,coffee/species-specific mg/g dry basis distributions,dias2015/table2; viencz2023/tables1_2; acre2024/tables1_2,measured,retained,context only,yes
+reference extractability proxy,~0.20 dry-mass fraction equilibrium context,liang2021/fig4_E,digitized measured proxy,source uncertainty limited,method planning only,yes
+spent-puck inventory,NO_ACCEPTED_PAIRED_RANGE,none,missing,unknown,no,new measurement required
+coffee moisture,measure each lot; do not import a universal correction,liang2021/fig4_E; accepted composition sources,method context,source-specific,yes,yes
+PSD descriptors,volume distribution/moments; no setting conversion,waszkiewicz2025/mastersizer_psd; wadsworth2026/table1_full,measured,replicate/error retained,yes,yes
+porosity,source packed-bed values only; measure grinder/dose/prep-specific value later,wadsworth2026/table1_full,measured,source error,fixture sizing,yes
+permeability,roughly 1e-17 to 1e-12 m2 conservative multi-source apparatus envelope,wadsworth2026/table1_full; romancorrochano2017/tamped_kappa,measured heterogeneous methods,source error/SD,fixture sizing,yes

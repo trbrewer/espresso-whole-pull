@@ -1,0 +1,17 @@
+{
+  "classification": "LOCAL_CORPUS_ABSENT_HARVEST_REQUIRED",
+  "harvest_blocker": "Existing stable production salt is absent; creating a replacement would break contributor continuity.",
+  "incremental_harvest_executed": false,
+  "likely_redundant": "Repeated ordinary current-window crawls after duration/pressure/flow/profile distributions demonstrate deterministic stability.",
+  "metrics": {
+    "achieved_pressure_profile_classes": "NOT_COMPUTABLE",
+    "beverage_yield": "NOT_COMPUTABLE",
+    "peak_pressure": "NOT_COMPUTABLE",
+    "peak_scale_flow": "NOT_COMPUTABLE",
+    "pressure_flow_trajectory_clusters": "NOT_COMPUTABLE",
+    "shot_duration": "NOT_COMPUTABLE"
+  },
+  "reason": "No auditable local records; stabilization cannot be estimated from aggregate_stats.csv.",
+  "subsampling_executed": false,
+  "worthwhile_collection": "Restore/reconcile the documented recent-window store, or run one bounded current-window crawl only with the existing production salt; prioritize new machine/integration coverage."
+}
