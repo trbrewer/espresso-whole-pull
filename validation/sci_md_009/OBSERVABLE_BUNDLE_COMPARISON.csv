@@ -1,0 +1,17 @@
+species,bundle,jacobian_rank,M0_identifiable,Q_explicit_unknown,Q_assumed_one
+caffeine,O0,2,False,False,False
+caffeine,O1,3,True,False,False
+caffeine,O2,3,True,False,False
+caffeine,O3,3,True,False,False
+caffeine,O4,2,False,False,False
+caffeine,O5,2,False,True,False
+caffeine,O6,3,True,True,False
+caffeine,O7,3,True,True,False
+trigonelline,O0,2,False,False,False
+trigonelline,O1,3,True,False,False
+trigonelline,O2,3,True,False,False
+trigonelline,O3,3,True,False,False
+trigonelline,O4,2,False,False,False
+trigonelline,O5,2,False,True,False
+trigonelline,O6,3,True,True,False
+trigonelline,O7,3,True,True,False

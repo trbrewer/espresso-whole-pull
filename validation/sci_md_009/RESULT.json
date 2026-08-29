@@ -1,0 +1,61 @@
+{
+  "B1_B2_chemistry_equivalent": true,
+  "B1_B2_equivalent": false,
+  "B1_B2_hydraulics_equivalent": false,
+  "I_ref_equals_M0": "NOT_ESTABLISHED",
+  "Q_s": "MUST_BE_MEASURED",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "combined_rank": {
+    "caffeine": 3,
+    "trigonelline": 3
+  },
+  "computational_cap": 500,
+  "disposition": "SCI_MD_009_REFERENCE_TO_PRODUCTION_INVENTORY_BRIDGE_MUST_BE_MEASURED",
+  "espresso_start_commit": "c33422204962e693d6410eae9024a79ddd776f94",
+  "espresso_start_tree": "394b34ce13433e542d4c83d3b3ab8b50c4ccedbe",
+  "evidence_class": "TARGET_BLIND_FROZEN_PHYSICS_SENSITIVITY_IDENTIFIABILITY_AND_EXPERIMENTAL_DESIGN",
+  "frozen_parameters": {
+    "caffeine": {
+      "csat_95pct_lower": 5.726763654867166,
+      "csat_95pct_upper": 7.41122299848838,
+      "effectiveSoluteDiffusivity_m2_s": 1e-10,
+      "extractionRateConstant_1_s": 0.04423709010294066,
+      "k_95pct_lower": 0.03778302163636944,
+      "k_95pct_upper": 0.05069115856951188,
+      "saturationConcentration_kg_m3": 6.514777241461055
+    },
+    "trigonelline": {
+      "csat_95pct_lower": 3.276374818719964,
+      "csat_95pct_upper": 4.604309853272961,
+      "effectiveSoluteDiffusivity_m2_s": 9.687426142431468e-11,
+      "extractionRateConstant_1_s": 0.0623465636881358,
+      "k_95pct_lower": 0.05382969797141018,
+      "k_95pct_upper": 0.07086342940486141,
+      "saturationConcentration_kg_m3": 3.8839985660202996
+    }
+  },
+  "maximum_tested_permissible_inventory_relative_standard_uncertainty": 0.2,
+  "nominal_inventory_sha256": "6174adcf9a41e5d934d5285f3e129b7488d5a339651844d84f847ec164965f08",
+  "parameter_artifact": "validation/sci_md_004_stage_e0/PARAMETERIZATION_AND_IDENTIFIABILITY.json",
+  "parameter_sha256": "ec30b7e0038e092c9b8e0d8e3d5d47de35be4e1afdbc650f826ac72f17e1b051",
+  "physical_validation": "NOT_ESTABLISHED",
+  "precision_frontier_feasible": true,
+  "production_case_count": 498,
+  "production_cases_failed": 0,
+  "production_cases_passed": 498,
+  "puckworks_authority_commit": "5ce003e751aac516b5de3d9ede4e6910627e2b12",
+  "puckworks_authority_tree": "d50c23028df01d6e1dc0a14ab331d0ea7453cb7f",
+  "puckworks_origin_main_commit": "dfe0bdc761574e3327fa96f1d84e8199e156c192",
+  "puckworks_origin_main_tree": "56efc9dea3e910d94e8a51fc80efc891cf3b8c88",
+  "scalar_M0_sufficient_within_frozen_model": true,
+  "schema": "ewp.sci-md-009.result/v1",
+  "sci_ed_002_revisit": "EMPIRICAL_REFERENCE_EXTRACTION_TAIL_DATA_REQUIRED",
+  "solver_source_sha256": "99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6",
+  "source_sha256": "29ca41748060cb3cfe58b4e1d3ebfb13c45aedae468fe7b6f01710c307c0c0e2",
+  "synthetic_recovery_pass": {
+    "caffeine": true,
+    "trigonelline": true
+  },
+  "target_chemistry_values_accessed": false,
+  "target_residuals_or_scores": 0
+}

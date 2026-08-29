@@ -1,5 +1,16 @@
 # Project State
 
+## SCI-MD-009 inventory–capacity identifiability
+
+SCI-MD-009 executed 498 target-blind frozen-physics production cases and found
+full-rank combined M0/k/Csat sensitivities for caffeine and trigonelline. A
+scalar effective M0 is sufficient within the frozen model, but I_ref cannot be
+equated to it: paired initial/spent reference extraction and absolute fractions
+must measure species-specific Q_s. Disposition:
+`SCI_MD_009_REFERENCE_TO_PRODUCTION_INVENTORY_BRIDGE_MUST_BE_MEASURED`.
+SCI-MD-008 and SCI-ED-002 remain unchanged; physical validation remains
+`NOT_ESTABLISHED`.
+
 ## SCI-MD-008 prescribed-flow exact-fraction reconstruction
 
 SCI-MD-008 stopped prospectively at

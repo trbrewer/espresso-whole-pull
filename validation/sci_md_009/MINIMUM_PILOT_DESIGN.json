@@ -1,0 +1,39 @@
+{
+  "minimum": {
+    "Q_species": "estimated_not_fixed",
+    "chromatography_injections": 60,
+    "conditions": [
+      "low_flow",
+      "high_flow"
+    ],
+    "fraction_assays_species": 96,
+    "fractions_per_shot": 6,
+    "homogenized_lots": 1,
+    "initial_reference_preparations": 4,
+    "name": "MINIMUM_VIABLE_PILOT",
+    "observables": "O6",
+    "randomization": "adjacent randomized aliquots",
+    "replicates_per_condition": 4,
+    "shots": 8,
+    "spent_puck_preparations": 8
+  },
+  "robust": {
+    "Q_species": "estimated_not_fixed",
+    "chromatography_injections": 110,
+    "conditions": [
+      "low_flow",
+      "middle_flow",
+      "high_flow"
+    ],
+    "fraction_assays_species": 180,
+    "fractions_per_shot": 6,
+    "homogenized_lots": 1,
+    "initial_reference_preparations": 5,
+    "name": "ROBUST_PILOT",
+    "observables": "O7",
+    "randomization": "adjacent randomized aliquots",
+    "replicates_per_condition": 5,
+    "shots": 15,
+    "spent_puck_preparations": 15
+  }
+}
