@@ -1,8 +1,13 @@
 # Puckworks Whole-Pull Multiscale Modeling and Simulation Strategy
 
+> **Current execution note (29 August 2026):** The enduring strategy remains
+> controlling technical context, while current task selection and the direct
+> paired-measurement feasibility gate are defined by the
+> [Data-First Scientific Development Plan](DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md).
+
 **Strategy version:** 1.7
 **Date:** 4 August 2026
-**Status:** Controlling solver-development and validation strategy; VAL-CORPUS-002 complete; additional independent data remains the scientific gate; the cross-solver closure-verification ladder is established; physical validation is not established
+**Status:** Controlling technical strategy; current execution is governed by the data-first plan; physical validation is not established
 **Supersedes:** strategy v1.6 and all earlier strategy versions
 **Repository:** `trbrewer/espresso-whole-pull`; Puckworks remains the external evidence/model/data dependency
 **Reviewed Puckworks dependency baseline:** repository `https://github.com/trbrewer/puckworks.git`; commit `fc61c4670ec7bf801e40bb391aab16048b8da26b`; tree `1d553e44ee2f7480a5df521560801b478618cc84`; alignment status `REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF`. The dependency review, source dossier, calibration/comparison contract, deterministic R1 bridge, and governed WP-0.1R execution are complete.
@@ -12,7 +17,7 @@
 **Primary pore-scale platform:** Taichi/LBM on NVIDIA A100-SXM4-80GB-class GPU resources
 **Scientific and software backbone:** Puckworks models, data, model cards, contracts, validation gates, rights records, and public product layer
 **WP-0.1 disposition:** **IMPLEMENTATION PASS; BOUNDED CODE VERIFICATION PASS; NUMERICAL QUALIFICATION PASS; RELEASE PROVENANCE PASS; R0 FROZEN / QUALIFIED; PHYSICAL VALIDATION NOT ESTABLISHED**
-**Current scientific gate:** Additional independent data; no XSV stage substitutes for this gate
+**Current scientific gate:** `DIRECT_PAIRED_MEASUREMENT_FEASIBILITY`; no XSV stage substitutes for direct data
 
 ---
 

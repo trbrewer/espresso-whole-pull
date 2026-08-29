@@ -1,11 +1,16 @@
 # Scientific Modeling Forward Plan
 
+> **SUPERSEDED AS THE ACTIVE EXECUTION PLAN ON 29 AUGUST 2026 BY
+> [DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md](DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md).**
+> This document is retained as historical mechanism-roadmap context; its
+> former current-next-action statements are not current authority.
+
 - **Status date:** 16 August 2026
 - **Status:** Enduring scientific handoff; `RP-D-LC-001b` closed at a valid pre-primary-experiment design block; no P3/P4 promotion
 - **Change declaration:** `NO_GOVERNING_PHYSICS_CHANGE`
 - **Standing disposition:** `NO_NEW_PRODUCTION_PHYSICS_YET`
 
-**Current next action:** `SCI-LC-001A — Reduced lateral equalization and channeling phase diagram`.
+**Historical next action at this document's status date:** `SCI-LC-001A — Reduced lateral equalization and channeling phase diagram` (closed; not current authority).
 
 ## 1. Executive diagnosis
 

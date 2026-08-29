@@ -231,7 +231,7 @@ class XSVTaichi001Tests(unittest.TestCase):
             hashlib.sha256(
                 (ROOT / "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md").read_bytes()
             ).hexdigest(),
-            "8f6736c89da502b4b41d115292a504b0b83e28bfb94366f4cc83848309d810ab",
+            "088ae61a044737d1ed126590f0e27a7e7c008089a2f39cfa523108f7e9962fe0",
         )
         roadmap = (ROOT / "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md").read_text(
             encoding="utf-8"

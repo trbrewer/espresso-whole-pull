@@ -50,8 +50,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 610,
-    "source_manifest_aggregate_sha256": "7d546158aa5461d268594e7f736fae76b86c4ca29eeddf834f77b51fe0c8c754",
+    "source_manifest_file_count": 612,
+    "source_manifest_aggregate_sha256": "43c40100c1d627dc8361cfb306df155d7670282b43dd68c1eca297c415cd4e44",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -61,7 +61,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "7d546158aa5461d268594e7f736fae76b86c4ca29eeddf834f77b51fe0c8c754"
+    "source_manifest_aggregate_source_sha256": "43c40100c1d627dc8361cfb306df155d7670282b43dd68c1eca297c415cd4e44"
   },
   "sci_ed_002_r2b": {
     "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",
@@ -609,6 +609,7 @@
   "active_validation_case": "NONE",
   "active_data_planning_task": "NONE",
   "active_solver_task": "NONE",
+  "active_surrogate_task": "NONE",
   "active_cross_solver_verification_task": "NONE",
   "experimental_commissioning": "NOT_AUTHORIZED",
   "protected_or_holdout_scoring": "NOT_AUTHORIZED",
@@ -762,6 +763,6 @@
     "recommended_next_task": "NO_NEW_PRODUCTION_PHYSICS_YET",
     "physical_validation": "NOT_ESTABLISHED"
   },
-  "current_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
+  "current_scientific_gate": "DIRECT_PAIRED_MEASUREMENT_FEASIBILITY",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }

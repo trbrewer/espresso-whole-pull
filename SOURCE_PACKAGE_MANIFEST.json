@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 610,
-  "total_uncompressed_bytes_excluding_manifest": 7523942,
-  "aggregate_source_sha256": "7d546158aa5461d268594e7f736fae76b86c4ca29eeddf834f77b51fe0c8c754",
-  "aggregate_sha256": "7d546158aa5461d268594e7f736fae76b86c4ca29eeddf834f77b51fe0c8c754",
+  "file_count": 612,
+  "total_uncompressed_bytes_excluding_manifest": 7545932,
+  "aggregate_source_sha256": "43c40100c1d627dc8361cfb306df155d7670282b43dd68c1eca297c415cd4e44",
+  "aggregate_sha256": "43c40100c1d627dc8361cfb306df155d7670282b43dd68c1eca297c415cd4e44",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "c3c496656e5c03e79938c6e4b403471bfb898937350cff13997e486a1afcbd69",
-      "bytes": 7939,
+      "sha256": "2ec1e2846505d2f38e4a4d22e65a86668e38c4406bbdc6d7498d0981ce02f8cd",
+      "bytes": 8092,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -449,13 +449,13 @@
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
-      "sha256": "d466457a971657fcd6fad47c07879e1d577be710dc5cf21867eda5af72851989",
-      "bytes": 46992,
+      "sha256": "62824fb276d43bae3ab821b32da1fbbc4fb95130eb7138e2dc728753f613cd5f",
+      "bytes": 47393,
       "git_mode": "100644"
     },
     "docs/QA_STATUS.md": {
-      "sha256": "3e1682cfa26df5c033f96dba8ef96c2c858de88576ac5e646d3879b5db16e367",
-      "bytes": 16617,
+      "sha256": "76e713c6058a71e1feb01c8164ed13c7da93c6e328c54b600511744261275e4c",
+      "bytes": 16966,
       "git_mode": "100644"
     },
     "docs/RUNBOOK_AND_TROUBLESHOOTING.md": {
@@ -863,14 +863,19 @@
       "bytes": 2160,
       "git_mode": "100644"
     },
+    "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": {
+      "sha256": "f77b547458641e4770a32e9922b67c293e326317833ec1a34572feb980a5c562",
+      "bytes": 11947,
+      "git_mode": "100644"
+    },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
       "sha256": "ccda2d8285b6393cb57044ddc73295cbdf5941d5d46fa8b24d2a99a19c48beec",
       "bytes": 4067,
       "git_mode": "100644"
     },
     "docs/strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md": {
-      "sha256": "e40ac5949cc0db8cecdd731b518256a248dffa5cbd0647b5fa3a3fe1c8216dfd",
-      "bytes": 17426,
+      "sha256": "5967ed4e0d15ada080c021be6c7e9b675445c6ad6a4f5268c3cbeaf03b9cd8e5",
+      "bytes": 17790,
       "git_mode": "100644"
     },
     "docs/strategy/history/scientific_modeling_forward_plan_2026-08-14_pre_roadmap.md": {
@@ -881,6 +886,11 @@
     "docs/strategy/history/whole_pull_modeling_and_simulation_strategy_v1_6.md": {
       "sha256": "5f8bc4bfbe8089d7ff6ff44955230f059a84df96c3903bfe064448abf8aef703",
       "bytes": 123447,
+      "git_mode": "100644"
+    },
+    "docs/validation/PAIRED_INVENTORY_FRACTION_FEASIBILITY_PILOT_BRIEF.md": {
+      "sha256": "7bff6670b7647cdb6ef773bf49d5c14ac735aec6ce456e0cb094df8144e762e3",
+      "bytes": 8366,
       "git_mode": "100644"
     },
     "docs/validation/SCI_MD_001_PRESSURE_GRIND_MECHANISM_DISCRIMINATION_PROTOCOL.md": {
@@ -2334,8 +2344,8 @@
       "git_mode": "100644"
     },
     "tests/test_current_authority_consistency.py": {
-      "sha256": "85600678ea1287ac468f48cd89ed55c1906e5319e356ef047bee41f66034ba03",
-      "bytes": 16258,
+      "sha256": "6f8db67dc1fa894a9f3ff224098e15fd6a391d413bd5b8f00acd795467b01719",
+      "bytes": 16668,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
@@ -2624,7 +2634,7 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {
-      "sha256": "3e3b7e78759d394bce1d53947d889987864a81280e9d3582782ce5678a56546f",
+      "sha256": "08ffa1556a18aebda0d7a10da75ff59dd51fb0c7bf90de7bef5c6718ac1126f5",
       "bytes": 31223,
       "git_mode": "100644"
     },
