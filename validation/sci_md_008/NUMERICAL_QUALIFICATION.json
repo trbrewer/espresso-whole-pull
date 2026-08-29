@@ -1,0 +1,9 @@
+{
+  "all_runtime_flow_gates_pass": true,
+  "interface_prerequisites": {
+    "XSV_FLOW_001": "PASS_MERGED",
+    "XSV_FRAC_001": "PASS_MERGED"
+  },
+  "retained_gate_runs_completed": 18,
+  "status": "NOT_REACHED_AFTER_MANDATORY_GATE_FAILURE"
+}

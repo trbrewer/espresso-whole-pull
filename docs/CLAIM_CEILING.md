@@ -1,5 +1,13 @@
 # Claim Ceiling
 
+SCI-MD-008 establishes only that the current frozen-parameter production path's
+normalized exact fraction output remains materially dependent on initial
+inventory scale under the tested source-conditioned prescribed flows. Its
+prospective gate stopped the B0/B1/B2 target comparison. It does not adjudicate
+incremental chemistry value, validate hydraulics, authorize inventory
+prediction, or establish independent validation. Physical validation remains
+`NOT_ESTABLISHED`.
+
 SCI-MD-005 establishes only a deterministic data-contract incompatibility:
 the newly authorized inventory-scaled common-extraction H0 is not identical to
 the frozen SCI-MD-004 common-parameter indexed H0. Its attempted Schmieder-only
