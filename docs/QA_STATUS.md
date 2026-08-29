@@ -1,5 +1,10 @@
 # Package QA status — immutable baseline and merged VAL-CORPUS-002 result
 
+> **Current execution status (29 August 2026):** Current task selection is
+> governed by the [Data-First Scientific Development Plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md).
+> The scientific gate is `DIRECT_PAIRED_MEASUREMENT_FEASIBILITY`; active solver
+> and surrogate tasks are `NONE`; physical validation remains `NOT_ESTABLISHED`.
+
 Historical sections below describe immutable merged or released evidence.
 Explicit current-check sections distinguish the merged WP03-002 state from the
 merged VAL-CORPUS-002 package; they do not redefine the

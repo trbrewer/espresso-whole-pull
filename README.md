@@ -5,9 +5,9 @@ OpenFOAM-based research solver for espresso-puck wetting, porous flow, extractio
 > **Research software:** Hydraulic integration through static radial
 > heterogeneity and saturated quasi-static compaction are merged. The source-
 > specific comparison program has progressed through VAL-CORPUS-002. No
-> validation, data-planning, solver, or next-mechanism task is active; the
-> current scientific gate is additional independent data. Physical validation
-> is **NOT_ESTABLISHED**.
+> solver or surrogate task is active. The current scientific gate is direct
+> paired measurement feasibility, beginning with paired inventory and species-
+> fraction feasibility preparation. Physical validation is **NOT_ESTABLISHED**.
 
 The approximately 40 g beverage endpoint at 30 s was used in the saturated-permeability calibration. It is not an independent prediction or validation target. The software does not yet predict taste.
 
@@ -37,6 +37,8 @@ Full generated fields, uncleaned runs, processor directories, compiled executabl
 - Sanitization proof: `provenance/PUBLIC_SANITIZATION_REPORT.json`
 - Compact baseline summary: `validation/baselines/v0.1.4/PUBLIC_BASELINE_SUMMARY.json`
 - Claim ceiling: `docs/CLAIM_CEILING.md`
+- Current scientific execution plan:
+  `docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md`
 - Controlling strategy:
   `docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md`
 - Concise roadmap:

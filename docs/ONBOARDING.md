@@ -1,6 +1,7 @@
 # Onboarding
 
 Read `README.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, the
+[current scientific execution plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md),
 [controlling strategy](strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md),
 the [concise roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md),
 the [post-WP03 validation plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md),

@@ -5,7 +5,8 @@ Scientific-development governance follows
 Controls must remain proportional to the declared governance class; stricter
 controls require an explicit owner exception tied to a named risk.
 
-- Read `docs/ONBOARDING.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, and the controlling strategy before substantive work.
+- Read `docs/ONBOARDING.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, `docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md`, and the controlling strategy before substantive work.
+- Before proposing substantive scientific work, apply the data-first plan's three-test task-selection gate and repeated-blocker circuit breaker.
 - Preserve tag `v0.1.4-public.1` and the offline archival identities in `provenance/`.
 - Declare every scientific change as `NO_GOVERNING_PHYSICS_CHANGE`, `SOURCE_SCENARIO_CHANGE_ONLY`, `NUMERICAL_METHOD_CHANGE`, or `GOVERNING_PHYSICS_CHANGE`.
 - Never describe numerical qualification as physical validation.

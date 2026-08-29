@@ -1,5 +1,20 @@
 # Project State
 
+## Data-first scientific-development pivot
+
+SCI-MD-009-C1-R1 merged through PR #115 at merge commit
+`834820049a98e5084495bda94fc8f3c8234b062d`, preserving the terminal
+`SCI_MD_009_C1_STOP_NONLINEAR_RESPONSE_NOT_QUALIFIED`. The current surrogate
+and inventory-identifiability lane is closed as a programme priority;
+SCI-MD-009-C2 is `PAUSED_NOT_CURRENT_PRIORITY`. The owner has adopted the
+[Data-First Scientific Development Plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md).
+The current next action is paired inventory/species-fraction feasibility
+preparation followed by separately authorized human laboratory execution via
+the EXP-006 / EXP-010 measurement route. Current solver task: `NONE`. Current
+surrogate task: `NONE`. This G0 alignment changes no production physics,
+scientific parameter, accepted evidence, or validation claim. Physical
+validation remains `NOT_ESTABLISHED`.
+
 ## SCI-MD-009 inventory–capacity identifiability
 
 SCI-MD-009-C1 proved the one-way target-blind firewall, hash-closed all 498
@@ -105,9 +120,9 @@ validation remains `NOT_ESTABLISHED`.
 
 ## SCI-MD-004 Stage E1 — execution contract blocked before target access (2026-08-24)
 
-The human owner selected SCI-MD-004 as the active development priority,
-superseding SCI-LC-001A as the current next action without reversing its
-historical scientific result. Stage A is merged and complete with disposition
+At that historical stage, the human owner selected SCI-MD-004 as the active
+development priority, superseding the then-current SCI-LC-001A next action
+without reversing its historical scientific result. Stage A is merged and complete with disposition
 `GO_STAGE_C_CONDITIONAL_HYDRAULIC_INPUT`. Stage C is a
 `GOVERNING_PHYSICS_CHANGE` that adds strictly passive indexed solute states;
 hydraulics are required to remain unchanged. A Stage C implementation
@@ -189,11 +204,10 @@ The bounded scientific dependency `RP-D-LC-001b` is closed at a valid
 pre-primary-experiment design block. P2a completed and P2b independently
 recomputed `NO_UNAMBIGUOUS_BELOW_CANDIDATE`: the family supplied several
 in-window candidates but no whole-envelope below-window candidate. No freeze
-or instantiated post-freeze matrix exists, and P3/P4 remain unreachable. The
-current next action is `SCI-LC-001A — Reduced lateral equalization and
-channeling phase diagram`. See
-the enduring [Scientific Modeling Forward Plan](strategy/SCIENTIFIC_MODELING_FORWARD_PLAN.md)
-for the prioritized program, gates, and current next action. XSV-XCT-001 is
+or instantiated post-freeze matrix exists, and P3/P4 remain unreachable.
+SCI-LC-001A is historical and closed, not an active successor. See the
+[Data-First Scientific Development Plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md)
+for current priorities and task-selection gates. XSV-XCT-001 is
 execution-complete, XSV-ENS-001 is `MERGED_COMPLETE`, and their pore-scale
 limitations are incorporated into that plan.
 The `ADDITIONAL_INDEPENDENT_DATA_REQUIRED` gate continues to limit validation
@@ -203,7 +217,7 @@ SCI-MD-003 / RP-A-001 is closed. The thin EWP consumer is reconciled to the
 independently accepted Puckworks v5 exact-head export and independently derives
 zero eligible pairwise discrimination problems, `NO_COMPLETE_MEASUREMENT_SET`,
 and `SCI_MD_003_RP_A_001_ADDITIONAL_DATA_REQUIRED`. This no-physics closeout
-does not alter the active SCI-LC-001A model-development state below, the runtime
+does not alter the historical SCI-LC-001A record below, the runtime
 Puckworks dependency lock, or the physical-validation ceiling.
 
 - Current released version: `v0.2.0`

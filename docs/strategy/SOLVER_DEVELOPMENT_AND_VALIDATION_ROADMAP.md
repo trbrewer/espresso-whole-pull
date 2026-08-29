@@ -1,5 +1,10 @@
 # Solver Development and Validation Roadmap
 
+> **Current execution authority (29 August 2026):** The
+> [Data-First Scientific Development Plan](DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md)
+> controls current task selection. SCI-LC-001A is historical/closed and is not
+> an active successor. SCI-MD-009-C2 is paused.
+
 > **SCI-MD-007 (2026-08-25):** completed as a no-physics evidence-feasibility screen.
 > Disposition: `SCI_MD_007_INVENTORY_PRIOR_ONLY_ADDITIONAL_DIRECT_MEASUREMENTS_REQUIRED`.
 > The next inventory-specific action is additional paired direct dry-basis caffeine and
@@ -84,8 +89,11 @@ ACTIVE_DATA_PLANNING_TASK:
 ACTIVE_SOLVER_TASK:
   NONE
 
+ACTIVE_SURROGATE_TASK:
+  NONE
+
 CURRENT_SCIENTIFIC_GATE:
-  ADDITIONAL_INDEPENDENT_DATA_REQUIRED
+  DIRECT_PAIRED_MEASUREMENT_FEASIBILITY
 
 VAL_CASE_002:
   NOT_STARTED
@@ -103,9 +111,9 @@ PHYSICAL_VALIDATION:
   NOT_ESTABLISHED
 ```
 
-No validation case, data-planning task, solver task, or mechanism-selection
-task is active. Additional fitting or reuse of the same post-fit-derived
-cup-mass evidence is not a route to independent physical validation.
+No solver, surrogate, validation-scoring, or mechanism-selection task is
+active. Additional fitting or reuse of the same post-fit-derived cup-mass
+evidence is not a route to independent physical validation.
 
 ## Parallel cross-solver closure-verification ladder
 
@@ -123,12 +131,12 @@ independent physical data or changes the current scientific gate.
 
 ## Current next scientific action
 
-`SCI-LC-001A — Reduced lateral equalization and channeling phase diagram` is
-the current next action. It begins with reduced multi-sector models and does
-not inherit authority to resume `RP-D-LC-001b` or execute P3/P4. A possible
-lower-conductance bridge investigation remains a distinct future tranche that
-would require a newly frozen, better-resolved design; it is not a rescue of
-the closed experiment.
+`PAIRED INVENTORY AND SPECIES-FRACTION FEASIBILITY PILOT USING THE EXP-006 /
+EXP-010 MEASUREMENT ROUTE` is the current next scientific action. It begins
+with laboratory-facing feasibility preparation and requires separate human
+operational action before collection. It is not an optimized design,
+independent validation, or authorization to score a holdout. Mechanism
+candidates below remain later, evidence-selected possibilities.
 
 ## Next human-owner decision
 
