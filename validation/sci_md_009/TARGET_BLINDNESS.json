@@ -1,0 +1,33 @@
+{
+  "allowed_fields": [
+    "experiment_id",
+    "replicate_id",
+    "temperature_K",
+    "flow_m3_s",
+    "grind_source",
+    "fraction_lower_mass_kg",
+    "fraction_upper_mass_kg"
+  ],
+  "allowed_source_files": [
+    "docs/analysis/sci_md_004_stage_e0/schmieder_species_fractions_long.csv",
+    "docs/analysis/sci_md_004_stage_e0/schmieder_training_inventories.csv"
+  ],
+  "chemistry_targets_loaded": false,
+  "nominal_inventory_classification": "TRAINING_DERIVED_NOMINAL_SCALE_FOR_DIMENSIONLESS_CENTERING",
+  "prohibited_fields": [
+    "source_concentration_mg_g",
+    "concentration_kg_per_kg_beverage",
+    "fraction_species_mass_kg",
+    "cumulative_measured_fraction_species_mass_kg",
+    "fitted_tail_species_mass_mg",
+    "model_score",
+    "residual"
+  ],
+  "sanitized_artifact_sha256": "181c2277e4bbe958e0b20546176582417040adebd77b8c77ddb613393b7a63b9",
+  "source_hashes": {
+    "nominal": "6174adcf9a41e5d934d5285f3e129b7488d5a339651844d84f847ec164965f08",
+    "operating": "29ca41748060cb3cfe58b4e1d3ebfb13c45aedae468fe7b6f01710c307c0c0e2"
+  },
+  "status": "PASS",
+  "target_residuals_generated": false
+}
