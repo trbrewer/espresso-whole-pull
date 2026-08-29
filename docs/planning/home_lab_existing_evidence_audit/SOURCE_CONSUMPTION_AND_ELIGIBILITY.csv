@@ -1,0 +1,18 @@
+dataset_id,consumption_status,current_role,eligible_as_fresh_independent_comparison,reason
+visualizer/hydraulic_timeseries,not model-fit,DESIGN_RECONSTRUCTION_OR_CALIBRATION,POTENTIALLY_YES_IF_PROSPECTIVELY_RESERVED,uncontrolled; no Flair tie-point
+visualizer/user_outcomes,not model-fit,DESIGN_RECONSTRUCTION_OR_CALIBRATION,POTENTIALLY_YES_IF_PROSPECTIVELY_RESERVED,not analytical groundtruth
+waszkiewicz2025/traces_time_dependent,consumed by RC-3/SCI-MD stages,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,pressure nodes and TDS-derived dissolved flow must stay distinct
+waszkiewicz2025/tds_fractions,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not Flair and not fresh validation
+waszkiewicz2025/mastersizer_psd,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not grinder-setting transfer
+wadsworth2026/table1_full,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,source-specific
+schmieder2023/raw_fractions,consumed SCI-MD-004/007/008/009,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not eligible fresh holdout
+schmieder2023/cup_masses,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not Flair
+pannusch2024/experimental_kinetics,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not independent of Schmieder
+dias2015/table2,consumed SCI-MD-007,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,total content != I_ref or M0
+viencz2023/tables1_2,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not extractability
+acre2024/tables1_2,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not independent holdout
+liang2021/fig3_tds,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,method-conditioned proxy; not production M0
+liang2021/fig4_E,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not paired to home shots
+romancorrochano2017/tamped_kappa,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,no Flair pairing
+foster2025_2/fig12_14_curves,consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not transferable quantitative deformation
+egidi2024/table2,context-consumed,DESIGN_RECONSTRUCTION_OR_CALIBRATION,NO,not response test and not Flair

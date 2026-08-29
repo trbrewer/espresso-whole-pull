@@ -1,0 +1,24 @@
+{
+  "audit_id": "HOME-LAB-EVIDENCE-001",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_ceiling": "PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+  "fallback_fraction_scheme": "early-dense mass fractions",
+  "measurement_lane_classification": {
+    "flair_hydraulics_and_first_drip": "NEW_FLAIR_SPECIFIC_TIE_POINT_REQUIRED",
+    "fraction_caffeine_trigonelline": "EXTERNAL_ANALYTICAL_SERVICE_REQUIRED",
+    "fraction_scheme_and_signal_planning": "EXISTING_DATA_SUFFICIENT_FOR_DESIGN_NOT_VALIDATION",
+    "initial_and_spent_reference_extractability_mass_balance": "NEW_PAIRED_HOME_MEASUREMENT_REQUIRED",
+    "operating_and_instrument_ranges": "EXISTING_DATA_SUFFICIENT_FOR_CURRENT_DECISION",
+    "uv_vis_hplc_inline_flow_and_advanced_prep": "EQUIPMENT_PURCHASE_NOT_YET_JUSTIFIED",
+    "visualizer_population_context": "EXISTING_DATA_PARTIAL_TARGETED_EXPANSION_WORTHWHILE"
+  },
+  "minimum_first_purchase": "NONE before zero/low-cost Flair qualification; if gauge/video fails, pressure transducer is likely first; for B1, a qualified refractometer and manual collector are required.",
+  "overall_disposition": "EXISTING_DATA_SUFFICIENT_FOR_DESIGN_NOT_VALIDATION",
+  "provisional_fraction_scheme": "six equal beverage-mass fractions",
+  "validation_result_issued": false,
+  "visualizer": {
+    "corpus_status": "ABSENT",
+    "historical_access_materially_helpful": true,
+    "marginal_value": "LOCAL_CORPUS_ABSENT_HARVEST_REQUIRED"
+  }
+}

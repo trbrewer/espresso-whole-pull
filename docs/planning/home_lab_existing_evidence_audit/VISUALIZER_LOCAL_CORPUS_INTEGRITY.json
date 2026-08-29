@@ -1,0 +1,36 @@
+{
+  "audit_id": "HOME-LAB-EVIDENCE-001",
+  "channel_length_mismatches": null,
+  "corpus_status": "ABSENT",
+  "duplicate_records": null,
+  "first_source_timestamp": null,
+  "first_update_timestamp": null,
+  "historical_versions": null,
+  "interrupted_run_manifests": null,
+  "last_source_timestamp": null,
+  "last_update_timestamp": null,
+  "latest_version_logic": "Puckworks max(updated_at), tie by append sequence; not executable without index/store",
+  "missing_machine_records": null,
+  "privacy_small_cell_rule": "Suppress machine/contributor cells <5; combine into Other/Redacted; never emit identifiers.",
+  "quarantined_records": null,
+  "rebuild_index": {
+    "executed": false,
+    "reason": "NO_SHARDS"
+  },
+  "reconciliation": {
+    "executed": false,
+    "reason": "NO_LOCAL_STORE"
+  },
+  "schema_version": 1,
+  "searched_scope": [
+    "authoritative Puckworks puckworks/data/visualizer",
+    "documented predecessor crawl_v6_20260715 location",
+    "workspace stores matching Visualizer shard/index/run conventions"
+  ],
+  "stable_production_salt_present": false,
+  "total_records": null,
+  "tracked_aggregate_is_not_local_store": true,
+  "unique_latest_version_shots": null,
+  "unit_flags": null,
+  "unreadable_shards": null
+}
