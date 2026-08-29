@@ -19,6 +19,7 @@ sys.path.insert(0,str(ROOT))
 from tools.sci_md_004_stage_c.runner import Matrix, explicit, indexed
 
 TASK="SCI-MD-009"; START_COMMIT="c33422204962e693d6410eae9024a79ddd776f94"
+PENDING="SCI_MD_009_C1_ADJUDICATION_PENDING"
 START_TREE="394b34ce13433e542d4c83d3b3ab8b50c4ccedbe"
 PW_COMMIT="5ce003e751aac516b5de3d9ede4e6910627e2b12"; PW_TREE="d50c23028df01d6e1dc0a14ab331d0ea7453cb7f"
 SOURCE_REL="docs/analysis/sci_md_004_stage_e0/schmieder_species_fractions_long.csv"
@@ -330,8 +331,7 @@ def execute(puck:Path,executable:Path,run_root:Path,output:Path)->dict:
     # Calculate disposition from combined rank/recovery and precision.
     recovery_ok={sp:bool(np.median([float(r["relative_error"]) for r in recover if r["species"]==sp and float(r["noise_relative"])<=.02])<=.1) for sp in SPECIES}
     rank_ok={sp:ident["combined"][sp]["rank"]==3 for sp in SPECIES};precision_pass=any(all(any(r["species"]==sp and float(r["inventory_relative_uncertainty"])==u and r["status"]=="PASS" for r in front) for sp in SPECIES) for u in UNCERTAINTIES)
-    disposition=("SCI_MD_009_REFERENCE_TO_PRODUCTION_INVENTORY_BRIDGE_MUST_BE_MEASURED" if all(rank_ok.values()) and all(recovery_ok.values()) and precision_pass else
-      "SCI_MD_009_INVENTORY_K_CSAT_NOT_PRACTICALLY_IDENTIFIABLE_WITH_AVAILABLE_OBSERVABLES")
+    disposition=PENDING
     result={"schema":"ewp.sci-md-009.result/v1","disposition":disposition,"change_declaration":"NO_GOVERNING_PHYSICS_CHANGE",
       "evidence_class":"TARGET_BLIND_FROZEN_PHYSICS_SENSITIVITY_IDENTIFIABILITY_AND_EXPERIMENTAL_DESIGN","production_case_count":len(plan),
       "production_cases_passed":len(manifest),"production_cases_failed":0,"computational_cap":MAX_CASES,"target_chemistry_values_accessed":False,
