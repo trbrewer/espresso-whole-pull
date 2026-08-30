@@ -1,5 +1,16 @@
 # Existing Data Leverage Programme
 
+## Current result (2026-08-30)
+
+XSV-PANNUSCH-MULTIMODEL-001 is `COMPLETE_POSITIVE`: the fixed published
+Pannusch structure reduced frozen March common-subset fraction-share RMSE by
+53.05% relative to the analyte-pooled baseline, with its paired condition
+interval below zero and invariant ranking across the declared inventory grid.
+The named tested-model-selection decision is exhausted; the Pannusch corpus is
+not. Current residual-selected priority is `OBS-PANNUSCH-TELEMETRY-001`, scoped
+to beverage-mass/fraction-boundary observation mapping. Home-lab operation
+remains deferred.
+
 ## Purpose and authorities
 
 Available data must be exhausted for the named scientific decision before new

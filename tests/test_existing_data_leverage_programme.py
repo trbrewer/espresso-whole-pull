@@ -8,5 +8,5 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         data = module.validate()
-        self.assertEqual(data["current_priority"], "XSV-PANNUSCH-MULTIMODEL-001")
+        self.assertEqual(data["current_priority"], "OBS-PANNUSCH-TELEMETRY-001")
         self.assertEqual(data["home_lab_status"], "DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED")

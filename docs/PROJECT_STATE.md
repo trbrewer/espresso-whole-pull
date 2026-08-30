@@ -1,5 +1,18 @@
 # Project State
 
+## XSV-PANNUSCH-MULTIMODEL-001 grouped result (2026-08-30)
+
+`XSV_PANNUSCH_MULTIMODEL_001_MECHANISTIC_STRUCTURE_HAS_GROUPED_PREDICTIVE_ADVANTAGE`.
+On the frozen source-internal, target-exposed March common subset, fixed
+published Pannusch RMSE was 0.0113722 versus 0.0242212 for the pooled baseline
+(53.05% lower; paired condition-bootstrap difference interval entirely below
+zero; zero of four conditions worse). Ranking was stable across 0.01x/0.1x/1x.
+Species partial pooling was not supported. Current successor is
+`OBS-PANNUSCH-TELEMETRY-001` for systematic early/tail observation residuals.
+SCI-ED-003 remains deferred; home-lab operation remains
+`DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED`. No production physics or
+parameters changed; physical and independent validation remain unestablished.
+
 ## Current existing-data model-advancement priority (2026-08-30)
 
 The accepted successor disposition is

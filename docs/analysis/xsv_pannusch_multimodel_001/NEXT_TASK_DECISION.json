@@ -1,0 +1,5 @@
+{
+  "strongest": {"task_id":"OBS-PANNUSCH-TELEMETRY-001","scientific_question":"Can reconstructed beverage-mass and fraction-boundary timing remove the fixed-Pannusch early/tail residual without changing kinetics?","triggering_result":"fraction 2 residual +0.01669; fractions 5/6 -0.00946/-0.01001; 24 source-order beverage-mass joins","available_data":"prediction mass-fit coefficients and 24 source-order joins","model_change":"research-only observation/fraction-boundary adapter","positive_action":"qualify observer component","negative_action":"rule out observer explanation and assess grind fallback","null_action":"retain current model and no production change","maximum_claim":"SOURCE_INTERNAL_OBSERVATION_OPERATOR_COMPONENT_EVIDENCE"},
+  "first_fallback":"SCI-MD-PANNUSCH-GRIND-001",
+  "second_fallback":"SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+}
