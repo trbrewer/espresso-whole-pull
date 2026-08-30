@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ewp.data-availability-preflight/v1",
+  "type": "object",
+  "required": ["schema_version","task_id","scientific_question","decision_to_change","governance_class","model_stage","required_observables","required_independence","puckworks_authority","external_data_check","datasets_reviewed","prior_tasks_reviewed","existing_data_routes_considered","usable_existing_evidence","remaining_scoped_gaps","data_sufficiency_status","data_starvation_scope","home_lab_recommendation","next_action","prepared_by","evidence"],
+  "properties": {
+    "data_sufficiency_status": {"enum": ["EXISTING_DATA_SUFFICIENT_FOR_CURRENT_DECISION","EXISTING_DATA_PARTIALLY_SUFFICIENT","SPECIFIC_DATA_GAP_REMAINS","INDEPENDENT_VALIDATION_DATA_GAP_REMAINS","EXISTING_DATA_NOT_YET_EXHAUSTED","NO_RELEVANT_DATA_FOUND_AFTER_REGISTER_CHECK","NOT_APPLICABLE"]},
+    "home_lab_recommendation": {"type":"object","required":["status","operational_authorization"],"properties":{"status":{"enum":["NONE","DEFER_EXISTING_DATA_NOT_EXHAUSTED","REDESIGN_FOR_SPECIFIC_REMAINING_GAP","PROCEED_TO_BOUNDED_LOCAL_METHOD_QUALIFICATION","PROCEED_TO_INDEPENDENCE_TIER_AFTER_METHOD_QUALIFICATION","NOT_APPLICABLE"]},"operational_authorization":{"const":false}}}
+  }
+}

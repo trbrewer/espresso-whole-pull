@@ -1,5 +1,14 @@
 # Solver Development and Validation Roadmap
 
+## Current programme priority (2026-08-30)
+
+`XSV-PANNUSCH-MULTIMODEL-001` is the immediate scientific task. It permits
+research-only adapters and grouped comparison but no production governing-
+physics, solver-equation, or parameter adoption. Unknown inventory is handled
+by scale-reduced observables, training-only profiling, or sensitivity bounds.
+SCI-ED-003 remains later for absolute closure/independence and home-lab
+operation remains deferred.
+
 > **Current execution authority (29 August 2026):** The
 > [Data-First Scientific Development Plan](DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md)
 > controls current task selection. SCI-LC-001A is historical/closed and is not
@@ -110,6 +119,12 @@ NEW_GOVERNING_PHYSICS:
 PHYSICAL_VALIDATION:
   NOT_ESTABLISHED
 ```
+
+Before the mechanism-selection ladder, check and qualify available data using
+`provenance/AVAILABLE_DATA_AUTHORITY.json` and a validated task preflight. The
+cadence is: available-data qualification → strongest eligible real-data comparison
+→ residual/identifiability assessment → at most one model increment → new data only
+for the named unresolved decision.
 
 No solver, surrogate, validation-scoring, or mechanism-selection task is
 active. Additional fitting or reuse of the same post-fit-derived cup-mass

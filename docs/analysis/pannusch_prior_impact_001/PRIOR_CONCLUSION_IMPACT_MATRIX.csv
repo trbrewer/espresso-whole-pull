@@ -1,0 +1,9 @@
+conclusion_id,prior_task,original_claim,original_scope,original_evidence,relevant_new_evidence,input_bytes_changed,interpretation_only,current_wording,decision_changes,successor_justified,classification
+C1,SCI-MD-003,NO_COMPLETE_MEASUREMENT_SET,three synchronized discrimination problems,RP-A atlas,Pannusch fraction chemistry,false,true,no complete set for those structural/hydraulic cells; chemistry data do exist,false,false,HISTORICALLY_VALID_CURRENTLY_NARROWED
+C2,SCI-MD-004,E0 parameterization passes,Schmieder training bundle,exact frozen bundle,corrected Pannusch rows,false,false,unchanged,false,false,UNCHANGED_NO_AFFECTED_DEPENDENCY
+C3,SCI-MD-005,common-extraction contract fails,M0/cs0 equivalence,task result,experiment 46,false,true,n=1 recovered mass does not supply contract,false,false,UNCHANGED_NO_AFFECTED_DEPENDENCY
+C4,SCI-MD-007,inventory predictor infeasible,breadth/direct total-content contract,evidence registers,experiment 46 plus March campaign,false,true,operational/fraction evidence improves but predictor blocker remains,false,false,PARTIALLY_SUPERSEDED_BY_NEW_EVIDENCE
+C5,SCI-MD-008,normalized fraction shape inventory-dependent,finite-inventory production observer,0.01x/0.1x/1x artifacts,Pannusch proposed normalized observer,false,true,later transfer is conditional and nonadjudicative,true,false,HISTORICALLY_VALID_CURRENTLY_NARROWED
+C6,VAL-CORPUS-002,transfer failure and no physical validation,Schmieder cases,governed manifests,Pannusch correction,false,false,unchanged,false,false,UNCHANGED_NO_AFFECTED_DEPENDENCY
+C7,SCI-MD-009/C1,nonlinear surrogate fails,frozen model matrix,task result,additional observations,false,false,unchanged,false,false,UNCHANGED_NO_AFFECTED_DEPENDENCY
+C8,current plan,programme is data-starved,programme-wide,current strategy,recovered corpus,false,true,source-internal fraction chemistry is available; named M0/closure/independence/hydraulic gaps remain,true,true,CURRENT_STATEMENT_OBSOLETE

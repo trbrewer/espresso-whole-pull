@@ -1,5 +1,13 @@
 # Data-First Scientific Development Plan
 
+## Current additive decision (2026-08-30)
+
+`ESPRESSO_DATA_LEVERAGE_001_EXISTING_DATA_SUPPORTS_IMMEDIATE_MODEL_ADVANCEMENT`.
+The immediate task is `XSV-PANNUSCH-MULTIMODEL-001`, using grouped, scale-
+reduced and bounded-nuisance comparisons on corrected Pannusch evidence.
+SCI-ED-003 is deferred as a later absolute-closure and independence task;
+home-lab operation remains deferred. See `EXISTING_DATA_LEVERAGE_PROGRAMME.md`.
+
 - **Status date:** 29 August 2026
 - **Status:** Current scientific execution plan and task-selection guidance
 - **Applies to:** espresso-whole-pull model, simulation, validation, and independent-data work, with Puckworks as the evidence/data authority
@@ -17,7 +25,15 @@
 
 The numerical platform is substantially more mature than the independent empirical evidence available to constrain it. The programme has produced many positive engineering and numerical results, useful local reconstructions, and valid scientific falsifications, but few positive independent predictive results. That pattern does not show scientific dishonesty or a defective fail-closed approach. It does show that further simulation and assurance work against essentially the same evidence has reached diminishing scientific returns.
 
-The programme is currently **data-starved, not model-starved**. The current response is to acquire new measurements, not to relax gates, retune consumed data, add another mechanism, or search indefinitely for a favorable surrogate. The near-term milestone is to acquire one genuinely new synchronized dataset and complete one prospectively frozen no-retuning comparison.
+Before recovery and qualification of the full Pannusch corpus, the programme was
+described as **data-starved, not model-starved**. That historical diagnosis is now
+too broad. Source reconstruction, replicate-resolved fraction chemistry,
+source-internal campaign-separated comparison, source-apparatus variance, and
+species-trajectory diagnostics are available. Specific gaps remain for production
+M0, operational-reference repeatability, initial/cup/retained/residual closure,
+local method qualification, independent coffee/apparatus/laboratory transfer, and
+hydraulic or structural validation. Use the pinned available-data authority,
+current sufficiency artifact, and completed preflight before proposing measurement.
 
 > Negative results are scientifically useful when they retire a hypothesis,
 > constrain a claim, or change the next decision. Repeated negative or
@@ -125,7 +141,15 @@ Use the least burdensome governance class that protects the claim. G0 documentat
 
 SCI-MD-009-C1-R1 is merged as a terminal response-model stop. The current surrogate/identifiability lane is closed, and SCI-MD-009-C2 must not execute now.
 
-### Priority 1 — paired inventory/fraction feasibility pilot
+### Priority 1 — local method and mass-closure qualification contract
+
+Prepare, but do not execute without separate authorization, the minimum contract
+for repeated operational references, paired caffeine/trigonelline fractions,
+spent residual, retained liquid, moisture basis, blanks, recovery, LOD/LOQ and
+durable joins. Pannusch already supplies source-apparatus feasibility and planning
+evidence; the remaining decision is local qualification and closure.
+
+### Historical Priority 1 — paired inventory/fraction feasibility pilot
 
 Prepare and execute, through human laboratory operations, a small combined EXP-006 / EXP-010 feasibility pilot. It asks whether measurement, uncertainty, mass closure, and the empirical relationship—if any—between operational reference extractability and production-shot inventory can support a later experiment. It is not an independent model-validation campaign. The laboratory-facing preparation brief is `docs/validation/PAIRED_INVENTORY_FRACTION_FEASIBILITY_PILOT_BRIEF.md`.
 
@@ -198,4 +222,3 @@ Future substantive sessions must:
 6. choose the least burdensome governance class that protects the claim;
 7. prefer new direct data over another synthetic calculation when both address the same blocker; and
 8. preserve negative results without automatically creating a rescue task.
-

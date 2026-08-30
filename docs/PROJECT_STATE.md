@@ -1,5 +1,29 @@
 # Project State
 
+## Current existing-data model-advancement priority (2026-08-30)
+
+The accepted successor disposition is
+`ESPRESSO_DATA_LEVERAGE_001_EXISTING_DATA_SUPPORTS_IMMEDIATE_MODEL_ADVANCEMENT`.
+PANNUSCH-PRIOR-IMPACT-001 remains historically valid, including its absolute-
+closure conclusion, but its immediate selection of SCI-ED-003 is additively
+superseded. Current task: `XSV-PANNUSCH-MULTIMODEL-001`. Source-internal
+Pannusch evidence is not exhausted: grouped comparison, bounded latent/nuisance
+inventory treatment, scale-reduced observables, component falsification and
+residual diagnosis remain legitimate despite exposed targets and unknown M0.
+SCI-ED-003 remains later for closure and independence. Home-lab operation is
+`DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED`; Visualizer bulk anonymized
+export remains high value and permission required. Physical and independent
+validation remain `NOT_ESTABLISHED`.
+
+`CURRENT_EXISTING_DATA_LEVERAGE_PROGRAMME`:
+`docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md`
+
+`CURRENT_DATA_LEVERAGE_AUTHORITY`:
+`provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json`
+
+`CURRENT_DATA_LEVERAGE_LEDGER`:
+`docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv`
+
 ## Data-first scientific-development pivot
 
 SCI-MD-009-C1-R1 merged through PR #115 at merge commit
@@ -600,3 +624,17 @@ programme returned to model development. Timestep sensitivity and axial-mesh
 stability remain application-style diagnostics, not a PDE-convergence claim.
 This adds no governing physics and establishes no physical validation;
 EXP-006 remains future experimental work and SCI-MD-006 remains unchanged.
+# PANNUSCH-PRIOR-IMPACT-001 current pointers (2026-08-30)
+
+`PANNUSCH_PRIOR_IMPACT_001_COMPLETE_NORMALIZED_TRANSFER_REMAINS_INVENTORY_BLOCKED`.
+Recovered source-internal fraction chemistry narrows prior broad data-gap
+wording, but production M0, closure, local method qualification, hydraulics,
+structure and independent validation remain scoped gaps. Next task:
+`SCI-ED-003` local caffeine/trigonelline method and closure qualification
+contract; no laboratory execution is authorized.
+
+CURRENT_AVAILABLE_DATA_AUTHORITY: `provenance/AVAILABLE_DATA_AUTHORITY.json`
+
+CURRENT_DATA_SUFFICIENCY: `docs/analysis/pannusch_prior_impact_001/CURRENT_DATA_SUFFICIENCY.json`
+
+CURRENT_DATA_PREFLIGHT_POLICY: `docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md`

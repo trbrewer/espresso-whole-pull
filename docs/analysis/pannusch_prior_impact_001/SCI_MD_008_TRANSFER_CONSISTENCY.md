@@ -1,0 +1,5 @@
+# SCI-MD-008 normalized-transfer consistency
+
+SCI-MD-008 used individual fraction extracted mass normalized within shot; the proposed Pannusch observable uses six individual fraction concentrations or derived masses normalized within each physical shot. The exact case programmes differ, but the nonlinear finite-inventory production operator and normalization concept are the same. Existing 0.01x/0.1x/1x artifacts are therefore sufficient to reject an inventory-free or adjudicative interpretation: maximum shape change is `0.08011412483893848`, far above the frozen `1e-6` invariance tolerance.
+
+No expensive matrix and no Pannusch target comparison was run. Result: `NORMALIZED_TRANSFER_CONDITIONALLY_INTERPRETABLE_BUT_NOT_ADJUDICATIVE`. Constant-temperature PRED-C01, C02, C05–C08 could support a descriptive fixed-inventory, target-exposed comparison with a declared sensitivity context, but cannot adjudicate model performance while inventory is arbitrary. PRED-C03/C04 remain blocked by absent temperature-ramp physics. Experiment 46 is only `NONAUTHORITATIVE_OPERATIONAL_REFERENCE_CONTEXT`, never production M0.

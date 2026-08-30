@@ -1,0 +1,9 @@
+{
+  "task_id": "ESPRESSO-DATA-LEVERAGE-001",
+  "disposition": "ESPRESSO_DATA_LEVERAGE_001_EXISTING_DATA_SUPPORTS_IMMEDIATE_MODEL_ADVANCEMENT",
+  "current_next_task": "XSV-PANNUSCH-MULTIMODEL-001",
+  "home_lab_status": "DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED",
+  "visualizer_status": "VISUALIZER_BULK_ANONYMIZED_EXPORT_HIGH_VALUE_AND_PERMISSION_REQUIRED",
+  "target_exposed": true,
+  "independent_validation": false
+}
