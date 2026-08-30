@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 648,
-  "total_uncompressed_bytes_excluding_manifest": 7606001,
-  "aggregate_source_sha256": "44411047ed7db2c2cc875ec27b64982694b85273be29d0a8470a589422933a94",
-  "aggregate_sha256": "44411047ed7db2c2cc875ec27b64982694b85273be29d0a8470a589422933a94",
+  "file_count": 654,
+  "total_uncompressed_bytes_excluding_manifest": 7616381,
+  "aggregate_source_sha256": "92078a5e275fd177a72ab6c3263de29c402da57f1153e7ca65ca1b4191d5dfa9",
+  "aggregate_sha256": "92078a5e275fd177a72ab6c3263de29c402da57f1153e7ca65ca1b4191d5dfa9",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -931,6 +931,36 @@
     "docs/analysis/sci_md_003/superseded/initial_candidate/manifest.json": {
       "sha256": "9f8ab4107a7f0bd4e0e7ca25f2a6091839669e6b5df7f66f96672419178eda9d",
       "bytes": 588,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/DATA_AUTHORITY.json": {
+      "sha256": "c6702c707bb10732ec547b9910c5df17dec99c0eb1b0251347aea5517e96d33f",
+      "bytes": 747,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/DATA_AVAILABILITY_PREFLIGHT.json": {
+      "sha256": "63744aa044933d354982b27c370b1ca0a692cee1b60833533561a504264548d1",
+      "bytes": 575,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/METHODS_FREEZE.json": {
+      "sha256": "7d7492864adb7eb74c39cfc35692d3cc51fbcf49c423f2abba48c07c779c0631",
+      "bytes": 4388,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/MODEL_PRIVILEGE_REGISTRY.csv": {
+      "sha256": "db79362c534710632e4b034ab25b96ecd9d5b1473ed3f747bc5e0cbb380312f4",
+      "bytes": 3576,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/OBSERVABLE_CONTRACT.json": {
+      "sha256": "f46b369883deac90bfa920276e71c05789280d0886174d69b0cf9f54356a6b75",
+      "bytes": 603,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/SPLIT_CONTRACT.json": {
+      "sha256": "abdeb61c8ead24ea761b88d0894c19d3e13c18261b88fe19dc6c8f05bac138c9",
+      "bytes": 491,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
