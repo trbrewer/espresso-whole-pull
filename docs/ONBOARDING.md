@@ -6,6 +6,10 @@ Read `README.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, the
 the [concise roadmap](strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md),
 the [post-WP03 validation plan](validation/POST_WP03_001_VALIDATION_AND_MECHANISM_DISCRIMINATION_PLAN.md),
 [Puckworks integration](PUCKWORKS_INTEGRATION.md), and `CONTRIBUTING.md`.
+Before substantive science or new measurement, also read
+`strategy/AVAILABLE_DATA_FIRST_POLICY.md`,
+`../provenance/AVAILABLE_DATA_AUTHORITY.json`, and the task's completed data
+preflight. External data unavailable in the checkout are not absent.
 
 For validation work, also read the
 [Validation Operating Standard v1](validation/VALIDATION_OPERATING_STANDARD_V1.md)

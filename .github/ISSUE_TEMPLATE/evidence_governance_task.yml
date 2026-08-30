@@ -3,6 +3,19 @@ description: Propose evidence, dependency, dossier, contract, rights, or decisio
 title: "[Evidence/governance] "
 labels: ["scientific-review", "evidence", "no-physics-change"]
 body:
+  - type: textarea
+    id: data_availability
+    attributes:
+      label: Available-data preflight
+      description: Record the authority and scoped gap; use NOT_APPLICABLE for ordinary G0 work.
+      value: |
+        Data authority checked:
+        Data families reviewed:
+        External corpora checked:
+        Remaining scoped gap:
+        Existing-data routes considered:
+        Data preflight artifact:
+        Lab recommendation, if any:
   - type: markdown
     attributes:
       value: |

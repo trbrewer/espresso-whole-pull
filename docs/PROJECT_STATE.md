@@ -600,3 +600,17 @@ programme returned to model development. Timestep sensitivity and axial-mesh
 stability remain application-style diagnostics, not a PDE-convergence claim.
 This adds no governing physics and establishes no physical validation;
 EXP-006 remains future experimental work and SCI-MD-006 remains unchanged.
+# PANNUSCH-PRIOR-IMPACT-001 current pointers (2026-08-30)
+
+`PANNUSCH_PRIOR_IMPACT_001_COMPLETE_NORMALIZED_TRANSFER_REMAINS_INVENTORY_BLOCKED`.
+Recovered source-internal fraction chemistry narrows prior broad data-gap
+wording, but production M0, closure, local method qualification, hydraulics,
+structure and independent validation remain scoped gaps. Next task:
+`SCI-ED-003` local caffeine/trigonelline method and closure qualification
+contract; no laboratory execution is authorized.
+
+CURRENT_AVAILABLE_DATA_AUTHORITY: `provenance/AVAILABLE_DATA_AUTHORITY.json`
+
+CURRENT_DATA_SUFFICIENCY: `docs/analysis/pannusch_prior_impact_001/CURRENT_DATA_SUFFICIENCY.json`
+
+CURRENT_DATA_PREFLIGHT_POLICY: `docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md`

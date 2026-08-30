@@ -111,6 +111,12 @@ PHYSICAL_VALIDATION:
   NOT_ESTABLISHED
 ```
 
+Before the mechanism-selection ladder, check and qualify available data using
+`provenance/AVAILABLE_DATA_AUTHORITY.json` and a validated task preflight. The
+cadence is: available-data qualification → strongest eligible real-data comparison
+→ residual/identifiability assessment → at most one model increment → new data only
+for the named unresolved decision.
+
 No solver, surrogate, validation-scoring, or mechanism-selection task is
 active. Additional fitting or reuse of the same post-fit-derived cup-mass
 evidence is not a route to independent physical validation.
