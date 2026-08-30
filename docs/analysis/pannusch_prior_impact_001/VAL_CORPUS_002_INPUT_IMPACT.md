@@ -1,0 +1,3 @@
+# VAL-CORPUS-002 input impact
+
+The accepted source-only and production cases use the distinct Schmieder `cup_masses.csv`, `raw_fractions.csv`, post-fit parameters, and governed P2/H1 mappings. Hash tracing found no Pannusch reconstructed row, spill value, March target, experiment 46 value, or Pannusch grind assignment in a case configuration. Classification is `UNCHANGED_NO_AFFECTED_DEPENDENCY`; no source diagnostic or OpenFOAM case was replayed. `LOCAL_RECONSTRUCTION_ONLY`, `HYDRAULIC_TARGET_COVERAGE_MISMATCH`, `CROSS_SOURCE_TIME_SHAPE_TRANSFER_FAILURE`, and `PHYSICAL_VALIDATION_NOT_ESTABLISHED` remain current.

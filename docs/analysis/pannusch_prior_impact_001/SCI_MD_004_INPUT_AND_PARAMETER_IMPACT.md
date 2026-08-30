@@ -1,0 +1,5 @@
+# SCI-MD-004 input and parameter impact
+
+Classification: `UNCHANGED_NO_AFFECTED_DEPENDENCY`. The exact E0 authority is Puckworks `5ce003e751aac516b5de3d9ede4e6910627e2b12` / tree `d50c23028df01d6e1dc0a14ab331d0ea7453cb7f`; its bundle hash is `112f8b3b943a5cea3399746fde512048e3898f99c8079433dae86bd142db8709`.
+
+The four fitted quantities use `schmieder_species_fractions_long.csv`, derived from Schmieder `raw_fractions.csv`, with whole Schmieder experiments as blocks and measured flow/time conversion. They do not consume Pannusch `experimental_kinetics.csv`, spill rows 3/11/14, or a center-versus-source Pannusch grind mapping. Pannusch contributes fixed diffusivity/scaling priors only; PR #259 did not change those bytes. Therefore the authorized four-cell fit would be identical in all cells and was not run. Frozen parameters, intervals, gates, Stage E1, production defaults, and historical interpretation remain unchanged. Angeloni files and scorer were not accessed. No corrected-training successor is justified.

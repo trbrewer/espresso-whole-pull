@@ -1,0 +1,5 @@
+# SCI-MD-007 corrected-data reassessment
+
+The accepted historical gates remain immutable. Additive current evidence changes operational-reference coverage from none to one n=1 preparation and establishes source-internal replicate/fraction chemistry (45 fit shots; 24 campaign-separated prediction shots; six fractions; caffeine, trigonelline, 5-CQA, workbook CQA sum and TDS). It also supplies source grind assignments. This removes any broad current claim that no fraction chemistry exists.
+
+The conclusion is `PARTIALLY_REDUCED`, not dissolved. Experiment 46 is measured recovered mass with an empirically resolved tail, but not total roasted content, production M0, c_s0, repeatability, same-lot pairing, or mass closure. Coffee, roast, apparatus and laboratory breadth do not increase; target exposure and source lineage do not create independence. Direct total-content, I_ref→M0, inventory-predictor, uncertainty, mass-basis, and independent-validation gates remain failed. No predictor was fit and no missing descriptor was inferred.
