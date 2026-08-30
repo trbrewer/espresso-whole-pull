@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/existing_data_leverage_programme.schema.json",
+  "schema_version": 1,
+  "programme_id": "ESPRESSO-EXISTING-DATA-LEVERAGE-PROGRAMME",
+  "current_priority": "XSV-PANNUSCH-MULTIMODEL-001",
+  "home_lab_status": "DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED",
+  "authorities": {
+    "puckworks_commit": "7cf18d7bc388f636d9bca98e6e1a1def4bf08cf5",
+    "puckworks_tree": "8ced3bc61283bb8aa156c80e73e92c0ed8f03215",
+    "manifest_sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081",
+    "available_data_register_sha256": "d33978af59bca2ec538949c1249ecc931d48f968cb1a05693bf6e24e336c6efd",
+    "pannusch_source_manifest_sha256": "15b9f765d49abe45d6788d7c7891b0695fca185d9c614d122e393993ec06a83c",
+    "ewp_commit": "PENDING_PR119_MERGE",
+    "ewp_tree": "PENDING_PR119_MERGE"
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "XSV-PANNUSCH-MULTIMODEL-001", "title": "Fair grouped Pannusch multimodel comparison", "data_families": ["Pannusch fit campaign", "Pannusch March campaign"], "scientific_question": "Which equally privileged structure predicts replicate-resolved fraction shape?", "model_component": "extraction observation and kinetics", "status": "READY", "priority": 1, "prerequisites": [], "task_id": "XSV-PANNUSCH-MULTIMODEL-001", "current_evidence": "ESPRESSO-DATA-LEVERAGE-001", "expected_information": "grouped model ranking and residual-selected successor", "positive_action": "activate strongest supported successor", "negative_action": "retain simpler empirical representation", "null_action": "prefer simplest indistinguishable model", "blocked_action": "record exact common-observable or technical blocker", "claim_ceiling": "SOURCE_INTERNAL_TARGET_EXPOSED_GROUPED_COMPARISON", "home_lab_effect": "DEFER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "task completion", "notes": "Unknown inventory is profiled or bounded, not a universal blocker."
+    },
+    {
+      "opportunity_id": "SCI-MD-PANNUSCH-SPECIES-001", "title": "Species kinetics", "data_families": ["Pannusch named analytes"], "scientific_question": "Do species-specific deviations improve grouped prediction?", "model_component": "species kinetics", "status": "PROPOSED", "priority": 2, "prerequisites": ["XSV-PANNUSCH-MULTIMODEL-001"], "task_id": "SCI-MD-PANNUSCH-SPECIES-001", "current_evidence": "paired species differences", "expected_information": "shared versus partially pooled kinetics", "positive_action": "implement bounded species structure", "negative_action": "retain shared kinetics", "null_action": "retain simpler model", "blocked_action": "record capability blocker", "claim_ceiling": "SPECIES_STRUCTURE_EVIDENCE", "home_lab_effect": "DEFER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "species residual signal", "notes": "Conditional."
+    },
+    {
+      "opportunity_id": "OBS-PANNUSCH-TELEMETRY-001", "title": "Telemetry observation adapter", "data_families": ["Pannusch telemetry"], "scientific_question": "Do delivered boundaries explain residuals?", "model_component": "boundary and observer", "status": "PROPOSED", "priority": 3, "prerequisites": ["reliable joins"], "task_id": "OBS-PANNUSCH-TELEMETRY-001", "current_evidence": "telemetry inventory", "expected_information": "programmed versus delivered mismatch", "positive_action": "build observation adapter", "negative_action": "retain programmed boundary", "null_action": "defer", "blocked_action": "record join blocker", "claim_ceiling": "OBSERVER_COMPONENT_EVIDENCE", "home_lab_effect": "DEFER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "boundary residual signal", "notes": "No hydraulic validation."
+    },
+    {
+      "opportunity_id": "SCI-MD-PANNUSCH-LATENT-INVENTORY-001", "title": "Latent inventory", "data_families": ["Pannusch fractions", "experiment 46"], "scientific_question": "Can training data constrain predictive inventory variation?", "model_component": "inventory nuisance", "status": "PROPOSED", "priority": 4, "prerequisites": ["inventory-conditional ranking"], "task_id": "SCI-MD-PANNUSCH-LATENT-INVENTORY-001", "current_evidence": "broad historical scale envelope", "expected_information": "inventory rank robustness", "positive_action": "fit training-only hierarchy", "negative_action": "retain sensitivity envelope", "null_action": "report nonidentifiability", "blocked_action": "record data blocker", "claim_ceiling": "INVENTORY_CONDITIONAL", "home_lab_effect": "NARROW", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "rank changes by inventory", "notes": "Experiment 46 is contextual only."
+    },
+    {
+      "opportunity_id": "VISUALIZER-DATA-ACCESS-001", "title": "Permissioned Visualizer export", "data_families": ["Visualizer bulk anonymized export"], "scientific_question": "Can population data constrain real-world boundaries?", "model_component": "population hydraulics", "status": "BLOCKED_ACCESS", "priority": 5, "prerequisites": ["maintainer permission"], "task_id": "VISUALIZER-DATA-ACCESS-001", "current_evidence": "public schema and bounded public pilot", "expected_information": "population boundary distributions", "positive_action": "ingest permissioned aggregate", "negative_action": "retain public-only evidence", "null_action": "defer", "blocked_action": "do not contact or access", "claim_ceiling": "PUBLIC_SCHEMA_OPPORTUNITY", "home_lab_effect": "DEFER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "access status change", "notes": "Permission required."
+    },
+    {
+      "opportunity_id": "XSV-VISUALIZER-HYD-001", "title": "Visualizer hydraulics", "data_families": ["Visualizer bulk anonymized export"], "scientific_question": "Which boundaries transfer across users?", "model_component": "hydraulics", "status": "DEFERRED_BY_HIGHER_PRIORITY", "priority": 6, "prerequisites": ["VISUALIZER-DATA-ACCESS-001"], "task_id": "XSV-VISUALIZER-HYD-001", "current_evidence": "none permissioned", "expected_information": "real-world boundary spread", "positive_action": "compare", "negative_action": "retire", "null_action": "defer", "blocked_action": "await permission", "claim_ceiling": "POPULATION_ASSOCIATION", "home_lab_effect": "DEFER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "permission", "notes": "Deferred by access."
+    },
+    {
+      "opportunity_id": "SCI-DATA-FUSION-001", "title": "Cross-corpus fusion", "data_families": ["registered corpora"], "scientific_question": "Can common boundaries reduce uncertainty?", "model_component": "boundary uncertainty", "status": "DEFERRED_BY_HIGHER_PRIORITY", "priority": 7, "prerequisites": ["component results"], "task_id": "SCI-DATA-FUSION-001", "current_evidence": "opportunity map", "expected_information": "cross-corpus constraints", "positive_action": "integrate", "negative_action": "keep corpora separate", "null_action": "defer", "blocked_action": "record semantic blocker", "claim_ceiling": "CROSS_CORPUS_COMPONENT_EVIDENCE", "home_lab_effect": "NARROW", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "prerequisites complete", "notes": "Deferred."
+    },
+    {
+      "opportunity_id": "SCI-ED-003", "title": "Targeted closure contract", "data_families": ["absolute inventory and closure"], "scientific_question": "Which minimum measurement closes the controlling absolute quantity?", "model_component": "absolute closure", "status": "DEFERRED_BY_HIGHER_PRIORITY", "priority": 8, "prerequisites": ["existing-data successors"], "task_id": "SCI-ED-003", "current_evidence": "PANNUSCH-PRIOR-IMPACT-001", "expected_information": "minimum closure measurement", "positive_action": "prepare nonoperational contract", "negative_action": "continue analysis", "null_action": "defer", "blocked_action": "record blocker", "claim_ceiling": "CLOSURE_CONTRACT_ONLY", "home_lab_effect": "POTENTIAL_LATER_AUTHORIZATION", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "specific closure blocker controls", "notes": "No operation authorized."
+    },
+    {
+      "opportunity_id": "INDEPENDENT-TRANSFER-TIER", "title": "Independent transfer tier", "data_families": ["future independent corpus"], "scientific_question": "Does the selected structure transfer independently?", "model_component": "external validation", "status": "DEFERRED_BY_HIGHER_PRIORITY", "priority": 9, "prerequisites": ["selected model", "independent corpus"], "task_id": "INDEPENDENT-TRANSFER-TIER", "current_evidence": "not established", "expected_information": "independent transfer", "positive_action": "validate prospectively", "negative_action": "falsify external transfer", "null_action": "report uncertainty", "blocked_action": "record access/data blocker", "claim_ceiling": "INDEPENDENT_ONLY_WHEN_PROSPECTIVE", "home_lab_effect": "POTENTIAL_LATER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "independent corpus available", "notes": "Deferred."
+    }
+  ],
+  "laboratory_gate": {"operation_authorized": false, "existing_data_exhaustion_required": true, "separate_owner_authorization_required": true},
+  "review_triggers": ["after every substantive existing-data task", "new dataset", "before data-gap statement", "before laboratory or procurement recommendation", "before exhaustion declaration"],
+  "current_claim_ceiling": "SOURCE_INTERNAL_TARGET_EXPOSED_MODEL_DEVELOPMENT",
+  "last_completed_opportunity_review": "ESPRESSO-DATA-LEVERAGE-001"
+}

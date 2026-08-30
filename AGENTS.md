@@ -7,6 +7,7 @@ controls require an explicit owner exception tied to a named risk.
 
 - Read `docs/ONBOARDING.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, `docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md`, and the controlling strategy before substantive work.
 - Before proposing substantive scientific work, apply the data-first plan's three-test task-selection gate and repeated-blocker circuit breaker.
+- Current data-leverage authority is `provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json`; its human programme is `docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md` and active ledger is `docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv`. No data-exhaustion or laboratory recommendation may bypass them.
 - Before substantive scientific work, a general data-gap conclusion, or new
   measurement, read `docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md` and
   `provenance/AVAILABLE_DATA_AUTHORITY.json`, then create or validate a scoped

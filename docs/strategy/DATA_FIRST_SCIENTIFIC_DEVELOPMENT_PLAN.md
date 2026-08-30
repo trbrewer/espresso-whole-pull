@@ -1,5 +1,13 @@
 # Data-First Scientific Development Plan
 
+## Current additive decision (2026-08-30)
+
+`ESPRESSO_DATA_LEVERAGE_001_EXISTING_DATA_SUPPORTS_IMMEDIATE_MODEL_ADVANCEMENT`.
+The immediate task is `XSV-PANNUSCH-MULTIMODEL-001`, using grouped, scale-
+reduced and bounded-nuisance comparisons on corrected Pannusch evidence.
+SCI-ED-003 is deferred as a later absolute-closure and independence task;
+home-lab operation remains deferred. See `EXISTING_DATA_LEVERAGE_PROGRAMME.md`.
+
 - **Status date:** 29 August 2026
 - **Status:** Current scientific execution plan and task-selection guidance
 - **Applies to:** espresso-whole-pull model, simulation, validation, and independent-data work, with Puckworks as the evidence/data authority
