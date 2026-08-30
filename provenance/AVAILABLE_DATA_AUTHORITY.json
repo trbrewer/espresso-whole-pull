@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-08-30",
+  "puckworks_commit": "57f7e74eef92aa9d83ae0995f8b6123663b37548",
+  "puckworks_tree": "2aa223e77a6bec66bd2b73e87fc2c774bc56cef9",
+  "puckworks_manifest_sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081",
+  "puckworks_available_data_register_sha256": "d33978af59bca2ec538949c1249ecc931d48f968cb1a05693bf6e24e336c6efd",
+  "pannusch_reconstruction_result_sha256": "ae723407f251d175d4ba590f9a9989f929f21c53114c39ae8768e628a97c4e99",
+  "pannusch_source_subset_manifest_sha256": "15b9f765d49abe45d6788d7c7891b0695fca185d9c614d122e393993ec06a83c",
+  "pannusch_transfer_eligibility_sha256": "bfbdc952e37c71c6a5eb84dd7c247322704779a98d2fe3bf0fea1951a2cdc4cc",
+  "source_rights": "CC-BY-NC-3.0",
+  "source_target_exposure": "SOURCE_INTERNAL_TARGET_EXPOSED_NOT_INDEPENDENT",
+  "espresso_base_commit": "d1c4ea125fdd041991a5d1b1380cf4bfc2de31a9",
+  "espresso_base_tree": "4e9c39fd1b00ab19c43f8a64868e38cc55837546"
+}
