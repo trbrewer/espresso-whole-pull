@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 654,
-  "total_uncompressed_bytes_excluding_manifest": 7616381,
-  "aggregate_source_sha256": "92078a5e275fd177a72ab6c3263de29c402da57f1153e7ca65ca1b4191d5dfa9",
-  "aggregate_sha256": "92078a5e275fd177a72ab6c3263de29c402da57f1153e7ca65ca1b4191d5dfa9",
+  "file_count": 665,
+  "total_uncompressed_bytes_excluding_manifest": 7659310,
+  "aggregate_source_sha256": "e5a451a0ecdb512c5ead02735cf66103973131443203fa3d100bc2c05d1d0243",
+  "aggregate_sha256": "e5a451a0ecdb512c5ead02735cf66103973131443203fa3d100bc2c05d1d0243",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -66,6 +66,21 @@
     "VERSION": {
       "sha256": "1f930dd1f133c1f97a94fe3acb8db34372cf4c01ffdb2b3ff4ca72f9494121e9",
       "bytes": 6,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_pannusch_multimodel_001/finalize.py": {
+      "sha256": "c42f1c46d5dd906d17ddb74aa42ea9d6f63d4d383d836a3a08adb8968136cbee",
+      "bytes": 8253,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_pannusch_multimodel_001/pannusch_fixed.py": {
+      "sha256": "587d7e9a9a6aa953f4b06fb3ea9076a0ae8a554664efce72b06be5da26f9adf5",
+      "bytes": 3588,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_pannusch_multimodel_001/run.py": {
+      "sha256": "b2eeabdcc13492e169911311117457c5db7c5ef29f81b4e055d7e19d29afdc89",
+      "bytes": 15037,
       "git_mode": "100644"
     },
     "baseline_evidence/v0_1_2/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_2.json": {
@@ -933,6 +948,16 @@
       "bytes": 588,
       "git_mode": "100644"
     },
+    "docs/analysis/xsv_pannusch_multimodel_001/CALIBRATION_FREEZE.json": {
+      "sha256": "0b9a70bc3fd265c2df49a14c8ffd80baebbb7adc0aadc38bd3fb7e3567e40990",
+      "bytes": 1431,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/CAMPAIGN_SEPARATED_RESULTS.csv": {
+      "sha256": "49c248c0086f51282773fa7d92c9bab4157403d030495a65914157acd70a223e",
+      "bytes": 1380,
+      "git_mode": "100644"
+    },
     "docs/analysis/xsv_pannusch_multimodel_001/DATA_AUTHORITY.json": {
       "sha256": "c6702c707bb10732ec547b9910c5df17dec99c0eb1b0251347aea5517e96d33f",
       "bytes": 747,
@@ -943,9 +968,29 @@
       "bytes": 575,
       "git_mode": "100644"
     },
+    "docs/analysis/xsv_pannusch_multimodel_001/DATA_PROFILE.json": {
+      "sha256": "9af5ecf15dbe9ba2e2eb162fc2f3c9da3a4bcb946ff48c88ed39a8ea5cc58a5d",
+      "bytes": 561,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/GROUPED_INTERNAL_RESULTS.csv": {
+      "sha256": "b5514d254e8603b8a73b439a4469aa75c58e1f7f6507c6083c273fa6f5d04f34",
+      "bytes": 1215,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/INVENTORY_SENSITIVITY.csv": {
+      "sha256": "485e66dc0d90a1f2c2f6ff18bfde2b1b875078a4ed799244296fdf9b81579719",
+      "bytes": 3052,
+      "git_mode": "100644"
+    },
     "docs/analysis/xsv_pannusch_multimodel_001/METHODS_FREEZE.json": {
       "sha256": "7d7492864adb7eb74c39cfc35692d3cc51fbcf49c423f2abba48c07c779c0631",
       "bytes": 4388,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/MODEL_COMPARISON_RESULTS.csv": {
+      "sha256": "49c248c0086f51282773fa7d92c9bab4157403d030495a65914157acd70a223e",
+      "bytes": 1380,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/MODEL_PRIVILEGE_REGISTRY.csv": {
@@ -956,6 +1001,16 @@
     "docs/analysis/xsv_pannusch_multimodel_001/OBSERVABLE_CONTRACT.json": {
       "sha256": "f46b369883deac90bfa920276e71c05789280d0886174d69b0cf9f54356a6b75",
       "bytes": 603,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/RESIDUAL_FINDINGS.csv": {
+      "sha256": "af43b9a58c8b5f4272ed34a9451d2d49a8623be64be53e557277adb0d4de3036",
+      "bytes": 6168,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/SPECIES_MODEL_RESULTS.csv": {
+      "sha256": "1a7c1e97708b8995e171fd85dc8ba824302ebe50f39ab8932265b330dd87aae0",
+      "bytes": 864,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/SPLIT_CONTRACT.json": {

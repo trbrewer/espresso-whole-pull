@@ -1,0 +1,25 @@
+model_id,inventory_scale,primary_error,rank_invariant,meaning
+BASELINE-POOL-ANALYTE,0.01,0.024221195884893,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-POOL-ANALYTE,0.1,0.024221195884893,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-POOL-ANALYTE,1.0,0.024221195884893,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-POOL-UNIVERSAL,0.01,0.027137642082534,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-POOL-UNIVERSAL,0.1,0.027137642082534,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-POOL-UNIVERSAL,1.0,0.027137642082534,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-NEAREST-CONDITION,0.01,0.038312054482631,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-NEAREST-CONDITION,0.1,0.038312054482631,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-NEAREST-CONDITION,1.0,0.038312054482631,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-COMPOSITIONAL-RIDGE,0.01,0.0240577910076148,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-COMPOSITIONAL-RIDGE,0.1,0.0240577910076148,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+BASELINE-COMPOSITIONAL-RIDGE,1.0,0.0240577910076148,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-ONE-TIMESCALE,0.01,0.0552073690439093,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-ONE-TIMESCALE,0.1,0.0552073690439093,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-ONE-TIMESCALE,1.0,0.0552073690439093,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-TWO-TIMESCALE,0.01,0.0282356108223618,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-TWO-TIMESCALE,0.1,0.0282356108223618,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-TWO-TIMESCALE,1.0,0.0282356108223618,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-SPECIES-PARTIAL-POOL,0.01,0.0240577864023423,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-SPECIES-PARTIAL-POOL,0.1,0.0240577864023423,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-SPECIES-PARTIAL-POOL,1.0,0.0240577864023423,True,multiplicative recovered-mass sensitivity; normalized shares invariant
+MODEL-PANNUSCH-FIXED,0.01,0.011373020545024317,True,"factor on fitted published c_s0; broad historical grid, not measured distribution"
+MODEL-PANNUSCH-FIXED,0.1,0.011372305050204133,True,"factor on fitted published c_s0; broad historical grid, not measured distribution"
+MODEL-PANNUSCH-FIXED,1.0,0.011372155559988432,True,"factor on fitted published c_s0; broad historical grid, not measured distribution"
