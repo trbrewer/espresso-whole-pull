@@ -28,8 +28,8 @@
   ],
   "file_count": 648,
   "total_uncompressed_bytes_excluding_manifest": 7606001,
-  "aggregate_source_sha256": "a58be2c2fe168adad79637092363648ebdbbeb26f4adbe912184c1f36d5300f1",
-  "aggregate_sha256": "a58be2c2fe168adad79637092363648ebdbbeb26f4adbe912184c1f36d5300f1",
+  "aggregate_source_sha256": "44411047ed7db2c2cc875ec27b64982694b85273be29d0a8470a589422933a94",
+  "aggregate_sha256": "44411047ed7db2c2cc875ec27b64982694b85273be29d0a8470a589422933a94",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -519,7 +519,7 @@
       "git_mode": "100644"
     },
     "docs/analysis/pannusch_prior_impact_001/DATA_AVAILABILITY_PREFLIGHT.json": {
-      "sha256": "b792a397f0115f5bab18248d4d285854c3fada7fb24b5572006ba04e622b8ee4",
+      "sha256": "f55319d04a6f013ee5c0bc55dc31149b3a2d35d7c56198c50ebe99a92e085042",
       "bytes": 3767,
       "git_mode": "100644"
     },
