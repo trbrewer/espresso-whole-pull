@@ -10,8 +10,8 @@
     "manifest_sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081",
     "available_data_register_sha256": "d33978af59bca2ec538949c1249ecc931d48f968cb1a05693bf6e24e336c6efd",
     "pannusch_source_manifest_sha256": "15b9f765d49abe45d6788d7c7891b0695fca185d9c614d122e393993ec06a83c",
-    "ewp_commit": "PENDING_PR119_MERGE",
-    "ewp_tree": "PENDING_PR119_MERGE"
+    "ewp_commit": "1519a0294eda106ceeff9c56cd57c8027bdcd9cf",
+    "ewp_tree": "63c28db50e807d38faf65fc68b22da98f52c20f3"
   },
   "opportunities": [
     {
