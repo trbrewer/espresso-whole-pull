@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 693,
-  "total_uncompressed_bytes_excluding_manifest": 7741220,
-  "aggregate_source_sha256": "aacafce2069f3bf924b32f0873b0ee5c8a73cc40ce86b30833a8728537d59b73",
-  "aggregate_sha256": "aacafce2069f3bf924b32f0873b0ee5c8a73cc40ce86b30833a8728537d59b73",
+  "total_uncompressed_bytes_excluding_manifest": 7744365,
+  "aggregate_source_sha256": "365a5dd1e02e5927b1a69a595f335143d23acfac368fc3c691d81d4773e2ef12",
+  "aggregate_sha256": "365a5dd1e02e5927b1a69a595f335143d23acfac368fc3c691d81d4773e2ef12",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -519,17 +519,17 @@
       "git_mode": "100644"
     },
     "docs/analysis/espresso_corpus_leverage_002/WASZKIEWICZ_DYNAMIC_HYD_TASK_BRIEF.json": {
-      "sha256": "fd163ed3f82f73de6831664431f751f15619e98418cf1e5e45c2e57951f17ac7",
-      "bytes": 4317,
+      "sha256": "ecf13ae3d4d4b6fdfca23c8679eb401c7e87808d04a6193e9ff163fbc44d12b7",
+      "bytes": 5741,
       "git_mode": "100644"
     },
     "docs/analysis/espresso_corpus_leverage_002/WASZKIEWICZ_DYNAMIC_HYD_TASK_BRIEF.md": {
-      "sha256": "19b3e9f002cc68c98192ab4db28a82ed0384686ed52197783b244889ed6dcf6a",
-      "bytes": 2596,
+      "sha256": "d15648b862a20c88597b3167550bbade57edd6702ef67416341c73866ac60653",
+      "bytes": 3844,
       "git_mode": "100644"
     },
     "docs/analysis/espresso_corpus_leverage_002/summary.json": {
-      "sha256": "ffaa7a633ab07f5b0bb925b93a2cf6e4d83a1f3abf782e74551e0d2004919970",
+      "sha256": "f062d8808f9b2d1ed4134f419f0c6a17fec1269788cfcb42a066994812402a72",
       "bytes": 4319,
       "git_mode": "100644"
     },
@@ -2069,8 +2069,8 @@
       "git_mode": "100644"
     },
     "schemas/existing_data_leverage_programme.schema.json": {
-      "sha256": "a48b8ad44ff0b9c9b6a296f7360e313f065386ad6476a8d6fec3652010ab2872",
-      "bytes": 2501,
+      "sha256": "2587866c863ac89c7908fef536ecd87e7f1d2f18ed8cf8e589817c607df57ea1",
+      "bytes": 2549,
       "git_mode": "100644"
     },
     "scripts/analyze_r1.py": {
@@ -2454,8 +2454,8 @@
       "git_mode": "100755"
     },
     "scripts/validate_local_data_corpus_authority.py": {
-      "sha256": "6b608e66cb0fb833d1169aa414cafc4c32a9d36fb2544a8fdf2e4d6b76596e06",
-      "bytes": 1917,
+      "sha256": "7f6f1864859c353fea09b9e22a1b2b27407f1a4e8681e391f6f736730ae6c925",
+      "bytes": 2325,
       "git_mode": "100755"
     },
     "scripts/validate_sci_lc_001a_ledger.py": {
@@ -2719,7 +2719,7 @@
       "git_mode": "100644"
     },
     "tests/test_available_data_first.py": {
-      "sha256": "f28a7fde70c81449d46bf5ef696ee9479ea46ecce4613543c88fc51f7bfe5c0a",
+      "sha256": "01f5a4055930c680a8c8ef82916118cd8b8fba2fad81bd8ddb8dab950d0e12dc",
       "bytes": 1706,
       "git_mode": "100644"
     },
@@ -2739,8 +2739,8 @@
       "git_mode": "100644"
     },
     "tests/test_espresso_corpus_leverage_002_c1.py": {
-      "sha256": "4376353babb7bc16ff73883a8272e26a32e62012300d084db110b8a87b11dce2",
-      "bytes": 1234,
+      "sha256": "eab7ee8648b6dab58689746c87c0268b2ba9c94de573fef2b1587554b45f9ecc",
+      "bytes": 1251,
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {

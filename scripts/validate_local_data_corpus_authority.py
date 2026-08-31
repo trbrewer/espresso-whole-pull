@@ -23,6 +23,14 @@ def validate():
     assert not visualizer["raw_redistribution_permitted"] and not visualizer["private_data_permitted"]
     assert brief["authority"]["physical_brews"] == 56 and brief["authority"]["controlled_conditions"] == 11
     assert brief["authority"]["independent_unit"] == "physical_brew" and not brief["execution_in_c1"]
+    bindings = brief["source_bindings"]
+    assert {row["dataset_id"] for row in bindings} >= {
+        "waszkiewicz2025/traces_per_brew",
+        "waszkiewicz2025/traces_time_dependent",
+        "waszkiewicz2025/equilibrium_windows",
+        "waszkiewicz2025/brewer_quadratic",
+    }
+    assert all(len(row["sha256"]) == 64 and row["path"].startswith("puckworks/data/waszkiewicz2025/") for row in bindings)
     assert all(len(authority[key]) == 64 for key in ("manifest_sha256", "available_data_register_sha256", "local_corpus_family_index_sha256", "visualizer_permission_status_sha256", "telisromero_authority_sha256"))
     return authority
 

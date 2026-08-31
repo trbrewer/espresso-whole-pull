@@ -14,6 +14,19 @@ subtraction, scale-measured then aligned/interpolated mass, Savitzky-Golay
 mass-derivative flow, synchronization/cadence, exclusions, rights, and
 aggregate-SEM meaning.
 
+Bound source authority (relative to the exact pinned Puckworks producer):
+
+- `waszkiewicz2025/traces_per_brew` — `puckworks/data/waszkiewicz2025/traces_per_brew.csv` — SHA-256 `55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08`.
+- `waszkiewicz2025/traces_time_dependent` — `puckworks/data/waszkiewicz2025/traces_time_dependent.csv` — SHA-256 `40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9`.
+- `waszkiewicz2025/equilibrium_windows` — `puckworks/data/waszkiewicz2025/equilibrium_windows.csv` — SHA-256 `c33bd01729cfe63db6d319d9c64afcac818050fdf8c888ab4d47dc233d5e2213`.
+- `waszkiewicz2025/brewer_quadratic` — parameters SHA-256 `60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919`; points SHA-256 `718f848973d708ae2e9044c0d87141524460e947044a59d3cefda5530ab056d8`.
+- `waszkiewicz2025/static_calibration` — SHA-256 `2a2fdd129cbfb7742196abb493409c76aab11e2bef9f74aafb3df996c6b21ce5`.
+- `waszkiewicz2025/constants` — SHA-256 `0428390dae9c3032adb31d155dfc21b56ee34f0b407e8089fee3a31e47abf4ee`.
+
+Rights: CC-BY-4.0 Zenodo record 10.5281/zenodo.18046315; deposited
+GPLv3 processing code is not ingested. The source exclusions and the declared
+`12-8-6_alt` duplicate alias must be retained.
+
 Freeze a bounded subset of W-H0 fixed resistance; W-H1 monotone time-varying;
 W-H2 cumulative-mass/progress-dependent; W-H3 one bounded change point; W-H4
 pressure/flow-dependent; and W-H5 observation-delay alternative where source
