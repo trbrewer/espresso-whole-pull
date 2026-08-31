@@ -1,0 +1,56 @@
+{
+  "task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
+  "title": "Grouped comparison of fixed versus evolving basket-node effective hydraulic resistance",
+  "scientific_question": "Does a fixed effective-resistance representation adequately predict the qualified Waszkiewicz pressure-flow-mass response across held-out physical brews and controlled conditions, or is one bounded evolving-resistance component justified?",
+  "authority": {
+    "source_family": "waszkiewicz2025",
+    "physical_brews": 56,
+    "controlled_conditions": 11,
+    "independent_unit": "physical_brew",
+    "higher_level_group": "controlled_condition",
+    "time_rows_are_independent": false,
+    "pressure": "line pressure measured; basket-node pressure derived by fitted brewer-loss subtraction",
+    "flow": "Savitzky-Golay derivative of scale mass",
+    "mass": "scale measured then aligned and interpolated",
+    "time": "retain exact source synchronization and sample cadence",
+    "uncertainty": "aggregate_SEM_not_row_level_independent_noise"
+  },
+  "prerequisite_authority": ["exact source files and hashes", "brew and condition register", "channel definitions and units", "sampling rate and synchronization", "exclusions", "rights"],
+  "source_bindings": [
+    {"dataset_id": "waszkiewicz2025/traces_per_brew", "path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv", "sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08"},
+    {"dataset_id": "waszkiewicz2025/traces_time_dependent", "path": "puckworks/data/waszkiewicz2025/traces_time_dependent.csv", "sha256": "40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9"},
+    {"dataset_id": "waszkiewicz2025/equilibrium_windows", "path": "puckworks/data/waszkiewicz2025/equilibrium_windows.csv", "sha256": "c33bd01729cfe63db6d319d9c64afcac818050fdf8c888ab4d47dc233d5e2213"},
+    {"dataset_id": "waszkiewicz2025/brewer_quadratic", "path": "puckworks/data/waszkiewicz2025/brewer_quadratic_params.csv", "sha256": "60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919"},
+    {"dataset_id": "waszkiewicz2025/brewer_quadratic", "path": "puckworks/data/waszkiewicz2025/brewer_quadratic_points.csv", "sha256": "718f848973d708ae2e9044c0d87141524460e947044a59d3cefda5530ab056d8"},
+    {"dataset_id": "waszkiewicz2025/static_calibration", "path": "puckworks/data/waszkiewicz2025/static_calibration.csv", "sha256": "2a2fdd129cbfb7742196abb493409c76aab11e2bef9f74aafb3df996c6b21ce5"},
+    {"dataset_id": "waszkiewicz2025/constants", "path": "puckworks/data/waszkiewicz2025/constants.csv", "sha256": "0428390dae9c3032adb31d155dfc21b56ee34f0b407e8089fee3a31e47abf4ee"}
+  ],
+  "frozen_candidate_model_family": {
+    "W-H0": "fixed effective resistance",
+    "W-H1": "monotone time-varying effective resistance",
+    "W-H2": "cumulative-mass- or progress-dependent effective resistance",
+    "W-H3": "one bounded change point",
+    "W-H4": "pressure- or flow-dependent effective resistance",
+    "W-H5": "simple observation-delay alternative only where source semantics justify it"
+  },
+  "modeling_strategy": "Directly predict a qualified pressure, flow, or mass channel or vector under the source forcing and observation structure; use threshold-controlled apparent resistance only as a diagnostic.",
+  "evaluation": ["leave-one-physical-brew-out", "leave-one-condition-out", "blocked-time prediction within brews", "condition-balanced aggregation", "complexity penalties and parameter-count disclosure", "low-flow threshold sensitivity", "preinfusion inclusion/exclusion sensitivity", "smoothing and differentiation sensitivity", "failure and coverage rate", "uncertainty-aware comparison"],
+  "fairness": ["identical observations and fitting windows", "no complete held-out-brew fitting presented as prediction", "nested model selection", "prefer the simpler model within uncertainty", "no row-level pseudo-replication"],
+  "primary_metric": "prospectively frozen condition-balanced held-out predictive error on a direct qualified channel or vector of channels",
+  "secondary_metrics": ["blocked-time predictive error", "pressure trajectory error", "flow trajectory error", "beverage-mass trajectory error", "change-point stability", "parameter stability", "coverage", "uncertainty calibration", "residual structure"],
+  "outcomes": {
+    "positive": "Authorize the smallest EWP-compatible evolving-resistance component task after stable grouped predictive advantage.",
+    "negative": "Preserve fixed hydraulic resistance and use the source to constrain uncertainty and benchmark ranges.",
+    "null": "Retain the simpler model and quantify the detectable effect threshold.",
+    "blocked": "Perform one bounded source-observation qualification; do not default to home-lab collection."
+  },
+  "maximum_claim": "SOURCE_INTERNAL_CONTROLLED_COMPONENT_EVIDENCE_ON_THE_WASZKIEWICZ_APPARATUS_THAT_A_FIXED_OR_BOUNDED_EVOLVING_EFFECTIVE_HYDRAULIC_RESISTANCE_BETTER_REPRESENTS_THE_QUALIFIED_BASKET_NODE_PRESSURE_FLOW_MASS_RESPONSE",
+  "prohibited_claims": ["measured intrinsic permeability validation", "universal coffee transfer", "independent whole-model validation", "channeling validation", "compaction validation", "fines-migration validation", "fracture validation", "grinder-to-cup physical validation"],
+  "relationships": {
+    "visualizer": "Population operating envelopes and future representative boundaries; not a replacement for this controlled decision.",
+    "wadsworth_vaca": "Potential later separate priors and observation operators for translating effective resistance into parameter distributions.",
+    "home_laboratory": "No home-lab work is needed for the source-internal comparison."
+  },
+  "execution_in_c1": false,
+  "production_adoption_in_c1": false
+}

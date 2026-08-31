@@ -1,5 +1,15 @@
 # Existing Data Leverage Programme
 
+## Reviewed C1 portfolio (2026-08-31)
+
+All 39 material families are registered. Current priority is
+`XSV-WASZKIEWICZ-DYNAMIC-HYD-001`. Conditional successors are
+`EWP-POROSITY-PERMEABILITY-PRIOR-001`, `EWP-REAL-WORLD-BOUNDARIES-001`,
+`OBS-PANNUSCH-FRACTION-WINDOW-001`, and `SCI-MD-RHEOLOGY-001`. Each result
+selects the next task; this is not a mandatory queue. Visualizer dynamics are
+not predictively qualified, SCI-ED-003 and independent transfer remain deferred,
+and home-lab operation remains unauthorized.
+
 ## Current result (2026-08-30)
 
 XSV-PANNUSCH-MULTIMODEL-001 is `COMPLETE_NULL`: fixed Pannusch strongly beats

@@ -1,5 +1,9 @@
 # Public Repository Agent Rules
 
+Current authority covers 39 reviewed families. Start with grouped Waszkiewicz
+hydraulics; do not promote Visualizer sparse chemistry, fuse Wadsworth/Vaca, or
+authorize home-lab work.
+
 Scientific-development governance follows
 `docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md`.
 Controls must remain proportional to the declared governance class; stricter

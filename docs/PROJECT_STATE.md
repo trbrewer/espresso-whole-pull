@@ -1,5 +1,12 @@
 # Project State
 
+## Reviewed whole-corpus authority (2026-08-31)
+
+All 39 material families are registered. Current priority is grouped
+Waszkiewicz hydraulics (56 brews/11 conditions). Visualizer is boundary and
+descriptive-hydraulic authority, not population chemistry. Wadsworth/Vaca stay
+separate. Home-lab operation is deferred; production physics is unchanged.
+
 ## XSV-PANNUSCH-MULTIMODEL-001 grouped result (2026-08-30)
 
 `XSV_PANNUSCH_MULTIMODEL_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_VARIABILITY`.

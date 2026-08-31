@@ -2,18 +2,54 @@
   "$schema": "../schemas/existing_data_leverage_programme.schema.json",
   "schema_version": 1,
   "programme_id": "ESPRESSO-EXISTING-DATA-LEVERAGE-PROGRAMME",
-  "current_priority": "OBS-PANNUSCH-FRACTION-WINDOW-001",
-  "home_lab_status": "DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED",
+  "current_priority": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
+  "home_lab_status": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY",
   "authorities": {
-    "puckworks_commit": "7cf18d7bc388f636d9bca98e6e1a1def4bf08cf5",
-    "puckworks_tree": "8ced3bc61283bb8aa156c80e73e92c0ed8f03215",
+    "puckworks_commit": "a3428a4d4ad571ef3168a70e8a04620fca5d3520",
+    "puckworks_tree": "6175b4ad39f45ebcdec32a176e5611bf3b03655b",
     "manifest_sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081",
-    "available_data_register_sha256": "d33978af59bca2ec538949c1249ecc931d48f968cb1a05693bf6e24e336c6efd",
+    "available_data_register_sha256": "0c318f43c40361629bb8f25ab4b8ca9f073425ca3ec3a2418bbd8a6cb67a5481",
+    "local_corpus_family_index_sha256": "448a1eef0944d0d2b5e0f4ea04b3e5bc8418f315b5a323707f855815f8dcefcd",
+    "visualizer_permission_status_sha256": "6c9231e80a47643551845191542e1578ecce880a1468774158bb4e8a35e27706",
+    "telisromero_authority_sha256": "066538a3a8fa9b65c4361306eae47e33426567ca54dac7441dbffa7ffad4e610",
     "pannusch_source_manifest_sha256": "15b9f765d49abe45d6788d7c7891b0695fca185d9c614d122e393993ec06a83c",
     "ewp_commit": "1519a0294eda106ceeff9c56cd57c8027bdcd9cf",
     "ewp_tree": "63c28db50e807d38faf65fc68b22da98f52c20f3"
   },
   "opportunities": [
+    {
+      "opportunity_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
+      "title": "Grouped comparison of fixed versus evolving basket-node effective hydraulic resistance",
+      "data_families": ["waszkiewicz2025"],
+      "scientific_question": "Does fixed effective resistance adequately predict held-out physical brews and controlled conditions, or is one bounded evolving component justified?",
+      "model_component": "basket-node effective hydraulic resistance",
+      "status": "READY",
+      "priority": 1,
+      "prerequisites": ["stable reviewed producer authority"],
+      "task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
+      "current_evidence": "56 distinct physical brews in 11 controlled conditions; processed channels; aggregate SEM",
+      "expected_information": "grouped held-out fixed-versus-evolving resistance comparison",
+      "positive_action": "authorize smallest supported EWP-compatible evolving component task",
+      "negative_action": "preserve fixed resistance and constrain uncertainty",
+      "null_action": "retain simpler model and quantify detectable effect",
+      "blocked_action": "perform one bounded source-observation qualification",
+      "claim_ceiling": "SOURCE_INTERNAL_CONTROLLED_COMPONENT_EVIDENCE_ON_ONE_APPARATUS",
+      "home_lab_effect": "DEFER",
+      "completion_evidence": [],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "task completion or material source-semantics change",
+      "notes": "Physical brew is the independent unit; no row-level pseudo-replication and no production adoption."
+    },
+    {
+      "opportunity_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001", "title": "Separate-source porosity/permeability priors", "data_families": ["wadsworth2026", "vacaguerra2023a"], "scientific_question": "Can source-specific priors and observation operators constrain EWP hydraulics?", "model_component": "porosity/permeability priors", "status": "PROPOSED_CONDITIONAL_SECOND_PRIORITY", "priority": 2, "prerequisites": ["Waszkiewicz result review"], "task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001", "current_evidence": "22 PSD rows, 21 permeability values, 50 dry-porosity rows", "expected_information": "separate prior/operator utility", "positive_action": "adopt bounded separate adapters", "negative_action": "reject unsupported mapping", "null_action": "retain broad priors", "blocked_action": "resolve one source definition", "claim_ceiling": "SEPARATE_SOURCE_PRIORS_AND_OBSERVATION_OPERATORS", "home_lab_effect": "DEFER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "preceding task result", "notes": "Direct combined validation-table fusion is prohibited."
+    },
+    {
+      "opportunity_id": "EWP-REAL-WORLD-BOUNDARIES-001", "title": "Recent-public real-world boundary library", "data_families": ["visualizer"], "scientific_question": "Which qualified boundaries span the recent-public operating envelope?", "model_component": "boundary conditions", "status": "PROPOSED_CONDITIONAL_THIRD_PRIORITY", "priority": 3, "prerequisites": ["task-specific schema/device qualification"], "task_id": "EWP-REAL-WORLD-BOUNDARIES-001", "current_evidence": "23,169 unique permissioned local records", "expected_information": "representative boundary/profile library", "positive_action": "adopt bounded library", "negative_action": "retain current boundaries", "null_action": "report indistinguishable strata", "blocked_action": "qualify device/schema identity", "claim_ceiling": "RECENT_PUBLIC_COHORT_BOUNDARIES", "home_lab_effect": "DEFER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "preceding task result", "notes": "No population chemistry or predictive dynamic-resistance qualification."
+    },
+    {
+      "opportunity_id": "SCI-MD-RHEOLOGY-001", "title": "Bounded rheology sensitivity", "data_families": ["telisromero2001"], "scientific_question": "Does source-bounded fluid-property uncertainty affect an EWP decision?", "model_component": "liquor rheology", "status": "PROPOSED_CONDITIONAL_FIFTH_PRIORITY", "priority": 5, "prerequisites": ["hydraulic result review"], "task_id": "SCI-MD-RHEOLOGY-001", "current_evidence": "concentration/temperature coffee-extract rheology authority", "expected_information": "bounded sensitivity", "positive_action": "authorize smallest warranted rheology task", "negative_action": "preserve water-viscosity simplification", "null_action": "retain broad prior", "blocked_action": "resolve source domain/rights only", "claim_ceiling": "BOUNDED_FLUID_PROPERTY_SENSITIVITY", "home_lab_effect": "DEFER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "preceding task result", "notes": "Not coffee-specific production viscosity validation."
+    },
     {
       "opportunity_id": "XSV-PANNUSCH-MULTIMODEL-001",
       "title": "Fair grouped Pannusch multimodel comparison",
@@ -83,8 +119,8 @@
       ],
       "scientific_question": "Can target-independent shot/window/clock/vial reconstruction explain the fraction-2/tail residual?",
       "model_component": "boundary and observer",
-      "status": "READY",
-      "priority": 1,
+      "status": "PROPOSED_CONDITIONAL_FOURTH_PRIORITY",
+      "priority": 4,
       "prerequisites": [
         "PR #121 C1 corrected result merged after independent exact-head rereview"
       ],
@@ -140,25 +176,23 @@
       ],
       "scientific_question": "Can population data constrain real-world boundaries?",
       "model_component": "population hydraulics",
-      "status": "BLOCKED_ACCESS",
-      "priority": 5,
-      "prerequisites": [
-        "maintainer permission"
-      ],
+      "status": "READY_FOR_BOUNDARY_LIBRARY_AND_DESCRIPTIVE_HYDRAULIC_ANALYSIS",
+      "priority": 3,
+      "prerequisites": ["task-specific schema/device qualification"],
       "task_id": "VISUALIZER-DATA-ACCESS-001",
-      "current_evidence": "public schema and bounded public pilot",
+      "current_evidence": "permissioned July 15 local snapshot: 23,169 unique records; sparse unusable population chemistry",
       "expected_information": "population boundary distributions",
       "positive_action": "ingest permissioned aggregate",
       "negative_action": "retain public-only evidence",
       "null_action": "defer",
-      "blocked_action": "do not contact or access",
-      "claim_ceiling": "PUBLIC_SCHEMA_OPPORTUNITY",
+      "blocked_action": "qualify schema/device identity; make no new API request by default",
+      "claim_ceiling": "RECENT_PUBLIC_COHORT_BOUNDARIES_AND_DESCRIPTIVE_HYDRAULICS",
       "home_lab_effect": "DEFER",
       "completion_evidence": [],
       "exhausted_for_decision": false,
       "exhaustion_decision": null,
       "review_trigger": "access status change",
-      "notes": "Permission required."
+      "notes": "Local analysis permission exists; raw redistribution/private use do not. Dynamic-resistance selection is not predictively qualified."
     },
     {
       "opportunity_id": "XSV-VISUALIZER-HYD-001",
@@ -224,7 +258,7 @@
       ],
       "scientific_question": "Which minimum measurement closes the controlling absolute quantity?",
       "model_component": "absolute closure",
-      "status": "DEFERRED_BY_HIGHER_PRIORITY",
+      "status": "DEFERRED_BY_HIGHER_VALUE_EXISTING_DATA_TASKS",
       "priority": 8,
       "prerequisites": [
         "existing-data successors"

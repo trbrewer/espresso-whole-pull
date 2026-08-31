@@ -1,5 +1,9 @@
 # Solver Development and Validation Roadmap
 
+Conditional order: Waszkiewicz hydraulics; separate Wadsworth/Vaca priors;
+Visualizer boundaries; Pannusch fraction windows; rheology sensitivity. Results
+select successors; no production adoption or home-lab work is authorized.
+
 ## XSV-PANNUSCH-MULTIMODEL-001 consequence (2026-08-30)
 
 The unchanged published Pannusch structure has source-internal grouped

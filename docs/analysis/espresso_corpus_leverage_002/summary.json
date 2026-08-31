@@ -1,0 +1,64 @@
+{
+  "task_id": "ESPRESSO-CORPUS-LEVERAGE-002",
+  "correction_id": "ESPRESSO-CORPUS-LEVERAGE-002-C1",
+  "disposition": "ESPRESSO_CORPUS_LEVERAGE_002_COMPLETE_NON_PANNUSCH_CONTROLLED_DATA_TASK_BECOMES_IMMEDIATE_PRIORITY",
+  "independent_review": {
+    "task_id": "ESPRESSO-CORPUS-LEVERAGE-002-R1",
+    "disposition": "ESPRESSO_CORPUS_LEVERAGE_002_R1_INDEPENDENT_REVIEW_PASS_WITH_MATERIAL_QUALIFICATIONS_WASZKIEWICZ_REMAINS_PRIORITY",
+    "evidence_sha256": "6acab568531f6e24b7fe28bbbb6030167962eed7fb5f199f49ed5a4c323b3663"
+  },
+  "authorities": {
+    "authority_status": "MERGED_PRODUCER_AUTHORITY",
+    "puckworks_commit": "a3428a4d4ad571ef3168a70e8a04620fca5d3520",
+    "puckworks_tree": "6175b4ad39f45ebcdec32a176e5611bf3b03655b",
+    "manifest_sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081",
+    "available_data_register_sha256": "0c318f43c40361629bb8f25ab4b8ca9f073425ca3ec3a2418bbd8a6cb67a5481",
+    "local_corpus_family_index_sha256": "448a1eef0944d0d2b5e0f4ea04b3e5bc8418f315b5a323707f855815f8dcefcd",
+    "visualizer_permission_status_sha256": "6c9231e80a47643551845191542e1578ecce880a1468774158bb4e8a35e27706",
+    "telisromero_authority_sha256": "066538a3a8fa9b65c4361306eae47e33426567ca54dac7441dbffa7ffad4e610",
+    "ewp_commit": "PENDING_CANDIDATE_COMMIT",
+    "ewp_tree": "PENDING_CANDIDATE_TREE"
+  },
+  "coverage": {"material_families": 39, "mapped_or_registered_families": 39, "unregistered_material_families": 0, "families_without_disposition": 0, "families_without_opportunity_or_exclusion": 0, "high_priority_without_pilot_or_blocker": 0},
+  "visualizer": {
+    "corpus_id": "VISUALIZER_COFFEE_API_CRAWL_2026_07_15",
+    "permission_status": "OWNER_ATTESTED_WRITTEN_PERMISSION",
+    "local_snapshot_ready": true,
+    "unique_records": 23169,
+    "deterministic_sample": 1966,
+    "time_series_qualified": 1223,
+    "resistance_qualified": 1061,
+    "plausible_nonzero_tds_before_joint_checks": 8,
+    "plausible_nonzero_ey_before_joint_checks": 9,
+    "usable_population_chemistry": false,
+    "hydraulic_result": "MOTIVATING_DESCRIPTIVE_EVIDENCE_NOT_PREDICTIVELY_QUALIFIED",
+    "boundary_library_ready": true,
+    "API_refresh_permitted": true,
+    "additional_API_requests_made": 0,
+    "raw_redistribution_permitted": false,
+    "private_data_permitted": false
+  },
+  "waszkiewicz": {
+    "physical_brews": 56,
+    "conditions": 11,
+    "independent_unit": "physical_brew",
+    "pressure_semantics": "line measured; basket derived by fitted brewer-loss subtraction",
+    "flow_semantics": "Savitzky-Golay derivative of scale mass",
+    "mass_semantics": "scale measured then aligned/interpolated",
+    "uncertainty_semantics": "aggregate_SEM",
+    "task_readiness": "WASZKIEWICZ_DYNAMIC_HYD_TASK_READY_WITH_NARROWED_SCOPE"
+  },
+  "wadsworth": {"PSD_rows": 22, "permeability_values": 21, "permeability_range_m2": [1.58e-11, 1.91e-10]},
+  "vaca_guerra": {"dry_porosity_rows": 50},
+  "wadsworth_vaca": {"direct_fusion_supported": false, "approved_use": "SEPARATE_SOURCE_PRIORS_AND_OBSERVATION_OPERATORS"},
+  "current_priority": {"task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001", "title": "Grouped comparison of fixed versus evolving basket-node effective hydraulic resistance"},
+  "conditional_priorities": ["EWP-POROSITY-PERMEABILITY-PRIOR-001", "EWP-REAL-WORLD-BOUNDARIES-001", "OBS-PANNUSCH-FRACTION-WINDOW-001", "SCI-MD-RHEOLOGY-001"],
+  "home_lab": {"status": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY", "operation_authorized": false, "equipment_purchase_authorized": false},
+  "producer_test_classification": {
+    "base_passed": 4497, "base_skipped": 33, "base_failed": 64, "base_errors": 3,
+    "candidate_passed": 4567, "candidate_skipped": 33, "candidate_failed": 0, "candidate_errors": 0,
+    "new_unclassified_failures": 0, "new_relevant_failures": 0, "blocking_failures": 0,
+    "classifications": {"ENVIRONMENT_OR_OPTIONAL_DEPENDENCY_FAILURE": 67, "CHECKOUT_LAYOUT_OR_TEST_ISOLATION_FAILURE": 1}
+  },
+  "change_declarations": {"production_governing_physics_change": false, "production_parameter_adoption": false, "raw_data_mutation": false, "raw_visualizer_commit": false, "private_visualizer_access": false, "API_requests": false, "angeloni_access": false, "protected_holdout_scoring": false, "laboratory_operation": false}
+}
