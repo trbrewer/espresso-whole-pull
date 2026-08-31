@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 752,
-  "total_uncompressed_bytes_excluding_manifest": 8242803,
-  "aggregate_source_sha256": "1e1acb364a030982b17d7fca8b2030be9373286e91818c6da917b510dc29b901",
-  "aggregate_sha256": "1e1acb364a030982b17d7fca8b2030be9373286e91818c6da917b510dc29b901",
+  "total_uncompressed_bytes_excluding_manifest": 8241991,
+  "aggregate_source_sha256": "8330b35a65c77c920a4917a9a09c71fc23dedac7956a22aef948ed2f62bba329",
+  "aggregate_sha256": "8330b35a65c77c920a4917a9a09c71fc23dedac7956a22aef948ed2f62bba329",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -109,8 +109,8 @@
       "git_mode": "100644"
     },
     "analysis/xsv_waszkiewicz_dynamic_hyd_001/c2_r1_reporting.py": {
-      "sha256": "12d8c67fa9e86c507938daa02180c7e91792645137c7c04b8ede48ce64b3b17f",
-      "bytes": 8166,
+      "sha256": "671f12855f04dc4fb13ba568c118d785a808ad9991520c803320eeb386a2de78",
+      "bytes": 8392,
       "git_mode": "100644"
     },
     "analysis/xsv_waszkiewicz_dynamic_hyd_001/core.py": {
@@ -1244,8 +1244,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_SUPPORTED_PRE_C2_ENVIRONMENT.json": {
-      "sha256": "f07c72b565882c3c6604769e95d1389423ee441371759540e96a6640d6881cf5",
-      "bytes": 2077,
+      "sha256": "ed4ae11c1c323983324399f4e9872e0dd4b39ef7ac47daa2ffb116f571179842",
+      "bytes": 1039,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_SUPPORTED_PRE_C2_TEST_AUTHORITY.json": {
