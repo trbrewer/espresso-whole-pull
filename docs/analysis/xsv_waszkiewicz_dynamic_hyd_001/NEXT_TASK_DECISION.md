@@ -1,5 +1,3 @@
 # Next task decision
 
-Selected: `EWP-POROSITY-PERMEABILITY-PRIOR-001` after `XSV_WASZKIEWICZ_DYNAMIC_HYD_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_BREW_AND_CONDITION_VARIABILITY`.
-
-Fallbacks: `EWP-REAL-WORLD-BOUNDARIES-001`, then `OBS-PANNUSCH-FRACTION-WINDOW-001`. No successor is implemented here.
+`EWP-POROSITY-PERMEABILITY-PRIOR-001` is `READY_AFTER_C1_MERGE`. Wadsworth and Vaca Guerra remain separate source-conditioned priors; no rows are concatenated and dry porosity is not wet operating porosity.

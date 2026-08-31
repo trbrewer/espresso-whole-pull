@@ -1,53 +1,30 @@
-"""Generate compact, claim-scoped figures from frozen task products."""
-import csv, json, os
-from collections import defaultdict
+"""Generate C1 claim-scoped figures from corrected repository products."""
+import csv, os
 from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
-
-ROOT=Path(__file__).resolve().parents[2]
-DOC=ROOT/'docs/analysis/xsv_waszkiewicz_dynamic_hyd_001'
-EVID=Path(os.environ.get('XSV_WASZKIEWICZ_EVIDENCE','review-evidence/xsv-waszkiewicz-dynamic-hyd-001'))
-OUT=EVID/'figures'; OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[2];DOC=ROOT/'docs/analysis/xsv_waszkiewicz_dynamic_hyd_001'
+EVID=Path(os.environ.get('XSV_WASZKIEWICZ_EVIDENCE','review-evidence/xsv-waszkiewicz-dynamic-hyd-001'));OUT=EVID/'figures';OUT.mkdir(parents=True,exist_ok=True)
 STAMP='SOURCE_INTERNAL · CONTROLLED COMPONENT COMPARISON · NOT INDEPENDENT WHOLE-MODEL VALIDATION'
-
 def rows(name):
-    with (DOC/name).open(newline='') as f:return list(csv.DictReader(f))
+    with (DOC/name).open(newline='',encoding='utf-8') as f:return list(csv.DictReader(f))
 def finish(name,title):
-    plt.title(title); plt.figtext(.5,.01,STAMP,ha='center',fontsize=6); plt.tight_layout(rect=(0,.035,1,1)); plt.savefig(OUT/name,dpi=160); plt.close()
-
-reg=rows('BREW_CONDITION_REGISTER.csv'); by=defaultdict(int)
-for r in reg:
-    if r['independent_physical_brew']=='true':by[float(r['condition_id'])]+=1
-plt.bar([str(x) for x in sorted(by)],[by[x] for x in sorted(by)]); plt.xlabel('controlled condition (bar)'); plt.ylabel('physical brews'); finish('01_inventory.png','Brew and condition inventory')
-
-for fn,num,title in [('LEAVE_ONE_BREW_OUT_RESULTS.csv','02_lobo.png','LOBO normalized mass error'),('LEAVE_ONE_CONDITION_OUT_RESULTS.csv','03_loco.png','LOCO normalized mass error'),('BLOCKED_TIME_RESULTS.csv','04_blocked_time.png','Blocked-time normalized mass error')]:
-    rr=rows(fn); models=sorted(set(r['model_id'] for r in rr)); vals=[[float(r['nrmse']) for r in rr if r['model_id']==m] for m in models]; plt.boxplot(vals,labels=models,showfliers=False); plt.ylabel('normalized RMSE'); finish(num,title)
-
-rr=rows('LEAVE_ONE_CONDITION_OUT_RESULTS.csv'); conds=sorted(set(r['condition_id'] for r in rr),key=float)
-for m in ['W-H1','W-H2','W-H3','W-H5']:
-    d=[]
-    for c in conds:
-        a=np.mean([float(r['nrmse']) for r in rr if r['condition_id']==c and r['model_id']==m]); b=np.mean([float(r['nrmse']) for r in rr if r['condition_id']==c and r['model_id']=='W-H0A']); d.append(a-b)
-    plt.plot(conds,d,'o-',label=m)
-plt.axhline(0,color='k',lw=.7); plt.xticks(rotation=45); plt.ylabel('evolving/control minus fixed NRMSE'); plt.legend(); finish('05_paired_condition_differences.png','Paired condition differences')
-
-sens=rows('PROCESSING_SENSITIVITY.csv'); models=sorted(set(r['model'] for r in sens)); cfg=sorted(set(r['configuration_id'] for r in sens)); z=np.array([[float(next(r for r in sens if r['model']==m and r['configuration_id']==c)['primary_error']) for c in cfg] for m in models]); plt.imshow(z,aspect='auto'); plt.yticks(range(len(models)),models); plt.xticks(range(len(cfg)),cfg,rotation=35,ha='right'); plt.colorbar(label='LOCO NRMSE'); finish('06_processing_sensitivity.png','Processing-window sensitivity')
-
-par=rows('PARAMETER_STABILITY.csv');
-for m in sorted(set(r['model_id'] for r in par)):
-    x=[float(r['value']) for r in par if r['model_id']==m and r['parameter_index']=='0']; plt.plot(x,'o',ms=3,label=m)
-plt.xlabel('LOCO condition fold'); plt.ylabel('log-resistance intercept'); plt.legend(); finish('07_parameter_stability.png','Foldwise parameter stability')
-
-res=rows('RESIDUAL_FINDINGS.csv'); plt.bar([r['model_id'] for r in res],[float(r['mean_residual_g']) for r in res]); plt.ylabel('mean mass residual (g)'); finish('08_residual_summary.png','Held-out residual summary')
-
-cmp=rows('MODEL_COMPARISON_RESULTS.csv'); x=np.arange(len(cmp)); w=.25
-for j,key in enumerate(['lobo_condition_balanced_nrmse','loco_condition_balanced_nrmse','blocked_time_condition_balanced_nrmse']): plt.bar(x+(j-1)*w,[float(r[key]) for r in cmp],w,label=key.split('_')[0])
-plt.xticks(x,[r['model_id'] for r in cmp]); plt.ylabel('condition-balanced NRMSE'); plt.legend(); finish('09_grouped_overview.png','Grouped predictive comparison')
-
-summary=json.load((DOC/'summary.json').open());
-plt.axis('off'); plt.text(.02,.85,'Published Waszkiewicz lane',fontsize=15); plt.text(.02,.65,'Static parity: PASS\nDynamic 9-bar parity: PASS\nPrivilege: SOURCE_POST_FIT_RECONSTRUCTION\nSoft circularity: same-rig dissolved-mass trajectory',fontsize=11); finish('10_source_model_lane.png','Source model parity and privilege')
-
-# Remaining required views are explicit derived summaries, not invented raw channels.
-for name,title,text in [('11_signal_contract.png','Signal and observation contract','Line pressure: measured/source processed\nBasket pressure: derived\nMass: scale measured, aligned/interpolated\nFlow: SG-derived diagnostic'),('12_delay_control.png','Observation-delay control','Frozen +1 s delay did not improve grouped LOCO prediction'),('13_model_form_conclusion.png','Model-form conclusion','No evolving form passed all strong gates\nFixed resistance retained at available variability')]:
-    plt.axis('off'); plt.text(.05,.65,text,fontsize=13); finish(name,title)
+    plt.title(title);plt.figtext(.5,.01,STAMP,ha='center',fontsize=6);plt.tight_layout(rect=(0,.035,1,1));plt.savefig(OUT/name,dpi=160);plt.close()
+cmp=rows('MODEL_COMPARISON_RESULTS.csv');models=[r['model_id'] for r in cmp]
+plt.bar(models,[float(r['loco_condition_balanced_nrmse']) for r in cmp]);plt.ylabel('condition-balanced NRMSE');finish('01_loco_error_by_model.png','LOCO error by model')
+diff=rows('CONDITION_DIFFERENCES.csv')
+for i,m in enumerate(['W-H1','W-H2','W-H3'],2):
+    rr=[r for r in diff if r['model_id']==m];plt.bar([r['condition_id'] for r in rr],[float(r['paired_difference']) for r in rr]);plt.axhline(0,color='k',lw=.7);plt.ylabel('evolving minus fixed NRMSE');finish(f'{i:02d}_{m.lower()}_condition_differences.png',f'{m}: all eleven condition-level paired differences')
+wh2=[r for r in diff if r['model_id']=='W-H2'];one=next(r for r in wh2 if float(r['condition_id'])==1);full=np.mean([float(r['paired_difference']) for r in wh2]);without=np.mean([float(r['paired_difference']) for r in wh2 if r is not one]);plt.bar(['all conditions','without 1 bar'],[full,without]);plt.axhline(0,color='k',lw=.7);finish('05_wh2_one_bar_influence.png','W-H2 influence with and without 1 bar')
+bt=rows('BLOCKED_TIME_RESULTS.csv');plt.boxplot([[float(r['nrmse']) for r in bt if r['model_id']==m] for m in models],labels=models,showfliers=False);plt.ylabel('corrected NRMSE');finish('06_corrected_blocked_time.png','Corrected fair blocked-time performance')
+plt.axis('off');plt.text(.04,.7,'Original: held prefix fitted + state reset\nCorrected: other-brew prefixes + state continuation\nOriginal result: SUPERSEDED DIAGNOSTIC',fontsize=12);finish('07_original_vs_corrected_blocked_time.png','Original versus corrected blocked-time method')
+inv=rows('INVALID_STATE_AUDIT.csv');plt.bar(models,[sum(int(r['invalid_intervals']) for r in inv if r['model_id']==m) for m in models]);plt.ylabel('invalid scored intervals');finish('08_invalid_state_coverage.png','Typed invalid-state coverage and failure summary')
+proc=rows('PROCESSING_SENSITIVITY.csv');cfg=sorted({r['configuration_id'] for r in proc})
+for m in models:plt.plot(cfg,[float(next(r for r in proc if r['configuration_id']==c and r['model']==m)['mean_rank']) for c in cfg],'o-',label=m)
+plt.ylabel('mean LOCO rank');plt.xticks(rotation=25);plt.legend();finish('09_processing_mean_rank.png','Mean ranking across tested processing windows')
+plt.bar(cfg,[sum(next(r for r in proc if r['configuration_id']==c and r['model']==m)['adoption_gate']=='FAIL' for m in models[1:]) for c in cfg]);plt.ylabel('evolving forms failing gate');plt.xticks(rotation=25);finish('10_processing_adoption_gate.png','No tested evolving form passes the full adoption gate')
+for m in models[1:4]:plt.plot(cfg,[float(next(r for r in proc if r['configuration_id']==c and r['model']==m)['LOCO'])-float(next(r for r in proc if r['configuration_id']==c and r['model']=='W-H0A')['LOCO']) for c in cfg],'o-',label=m)
+plt.axhline(0,color='k',lw=.7);plt.xticks(rotation=25);plt.legend();finish('11_effect_magnitude_windows.png','Effect-magnitude variation across tested windows')
+mono=rows('MONOTONE_MASS_SENSITIVITY.csv');plt.bar([r['model_id'] for r in mono],[float(r['monotone_loco_nrmse']) for r in mono]);finish('12_monotone_mass_sensitivity.png','Separate isotonic-mass sensitivity')
+plt.axis('off');plt.text(.04,.65,'Representative held-out predictions use identical line-pressure forcing.\nW-H0A: fixed state. W-H2: recursive modeled mass progress.\nObserved held-out progress is not used after the initial offset.',fontsize=11);finish('13_representative_heldout_trajectories.png','Fixed and W-H2 held-out trajectory contract')
+plt.axis('off');plt.text(.04,.62,'Static: Pc ≈ 12.392 bar; Qc ≈ 1.897 g/s\nDynamic 9 bar: ≈1.6% long-run error; post-15 s r ≈0.982\nClassification: SOURCE_POST_FIT_RECONSTRUCTION',fontsize=11);finish('14_source_model_reconstruction.png','Source reconstruction, separate from grouped prediction')

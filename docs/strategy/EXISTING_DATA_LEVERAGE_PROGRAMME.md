@@ -2,16 +2,19 @@
 
 ## Waszkiewicz grouped hydraulic result (2026-08-31)
 
-`XSV-WASZKIEWICZ-DYNAMIC-HYD-001` is `COMPLETE_NULL`. Across 56 physical
+`XSV-WASZKIEWICZ-DYNAMIC-HYD-001` is `COMPLETE_NEGATIVE`. Across 56 physical
 brews and 11 conditions, mass-progress resistance reduced mean LOCO normalized
 mass RMSE by 27.0%, but its condition-then-brew interval crossed zero, condition
 signs were 6–5, and blocked-time prediction worsened. The strong evolving-state
-gate therefore failed and fixed resistance is retained. Observation delay was
-not supported and processing robustness was materially conditional. Only the
+gate therefore failed and fixed resistance is retained by parsimony. The
+corrected fair blocked-time lane also favors fixed resistance. Observation delay
+was not supported; the mean ranking and adoption decision are stable within the
+five tested processing windows, while effect magnitude varies. Only the
 named tested-model-form decision is exhausted; the Waszkiewicz corpus is not.
 The strongest next task is `EWP-POROSITY-PERMEABILITY-PRIOR-001`, keeping
-Wadsworth and Vaca Guerra as separate priors/operators. Home-lab work remains
-deferred and unauthorized.
+Wadsworth and Vaca Guerra as separate priors/operators. It is
+`READY_AFTER_C1_MERGE`; Visualizer, Pannusch, and rheology remain proposed
+conditional tasks, SCI-ED-003 is deferred, and home-lab work is unauthorized.
 
 ## Reviewed C1 portfolio (2026-08-31)
 

@@ -1,10 +1,17 @@
 {
   "do_not_implement": true,
-  "first_fallback": "EWP-REAL-WORLD-BOUNDARIES-001",
-  "second_fallback": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+  "fallbacks": [
+    "EWP-REAL-WORLD-BOUNDARIES-001",
+    "OBS-PANNUSCH-FRACTION-WINDOW-001"
+  ],
   "selected": {
-    "task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
-    "title": "Static porosity/permeability prior qualification",
-    "triggering_result": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_BREW_AND_CONDITION_VARIABILITY"
+    "maximum_claim": "SOURCE_CONDITIONED_STATIC_POROSITY_AND_PERMEABILITY_PRIOR_QUALIFICATION_FOR_EWP_HYDRAULIC_SENSITIVITY",
+    "scientific_question": "Can Wadsworth and Vaca Guerra, retained as separate source-conditioned priors and observation operators, constrain defensible static EWP porosity and permeability ranges?",
+    "source_separation": {
+      "Vaca_Guerra": "50 dry-porosity rows; apparatus, compression/packing, and dry-bed status retained",
+      "Wadsworth": "22 PSD records; 21 permeability values; source definitions and uncertainty retained"
+    },
+    "status": "READY_AFTER_C1_MERGE",
+    "task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001"
   }
 }

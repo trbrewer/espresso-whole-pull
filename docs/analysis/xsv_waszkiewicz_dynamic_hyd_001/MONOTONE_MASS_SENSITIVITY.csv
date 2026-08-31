@@ -1,0 +1,6 @@
+model_id,monotone_loco_nrmse,condition_wins,adoption_decision,blocked_time_winner,invalid_roots,primary_mass_unchanged
+W-H0A,0.44705036479027527,,BASELINE,W-H0A,0,True
+W-H1,0.41007321897798776,6,FAIL,W-H0A,0,True
+W-H2,0.3263543502689996,6,FAIL,W-H0A,0,True
+W-H3,0.4157456405062592,6,FAIL,W-H0A,0,True
+W-H5,0.4471304344546432,5,FAIL,W-H0A,0,True

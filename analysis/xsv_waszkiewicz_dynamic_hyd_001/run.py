@@ -89,9 +89,10 @@ def score(s, model, beta, start=15.0, end=95.0, eval_class=""):
     t=s['time'][mask]; line=s['line'][mask]; obs=s['mass'][mask]-s['mass'][i0]
     delay=1.0 if model=="W-H5" else 0.0
     q,pred=predict(model,beta,line,t,delay=delay)
-    resid=pred-obs; rmse=float(np.sqrt(np.mean(resid**2))); scale=max(float(obs[-1]-obs[0]),1.0)
+    valid=np.isfinite(q) & np.isfinite(pred); invalid=int((~valid).sum())
+    resid=pred-obs; rmse=float(np.sqrt(np.mean(resid**2))) if not invalid else float("nan"); scale=max(float(obs[-1]-obs[0]),1.0)
     return {"model_id":model,"condition_id":f"{s['condition']:g}","physical_brew_id":s['id'],"evaluation_class":eval_class,
-        "rmse_g":rmse,"nrmse":rmse/scale,"endpoint_error_g":float(pred[-1]-obs[-1]),"coverage":float(np.mean(np.isfinite(q))),"failed":False}, (t,obs,pred,q,resid)
+        "rmse_g":rmse,"nrmse":rmse/scale,"endpoint_error_g":float(pred[-1]-obs[-1]),"eligible_brews":1,"predicted_brews":int(not invalid),"invalid_brews":int(bool(invalid)),"coverage_fraction":float(valid.mean()),"coverage":float(valid.mean()),"invalid_time_fraction":float(1-valid.mean()),"failure_rate":float(bool(invalid)),"invalid_intervals":invalid,"failed":bool(invalid)}, (t,obs,pred,q,resid)
 
 def evaluate(shots):
     vals=list(shots.values()); lobo=[]; loco=[]; blocked=[]; residual=[]
@@ -108,13 +109,23 @@ def evaluate(shots):
                 row,tr=score(held,m,b,eval_class="LOCO"); loco.append(row)
                 t,obs,pred,q,res=tr
                 for k in range(0,len(t),10): residual.append({"model_id":m,"condition_id":f"{cond:g}","brew_id":held['id'],"time":t[k],"observed_mass_increment":obs[k],"predicted_mass_increment":pred[k],"mass_residual":res[k],"observed_line_pressure":held['line'][int(round(t[k]/DT))],"predicted_or_used_line_pressure":held['line'][int(round(t[k]/DT))],"source_flow":held['flow'][int(round(t[k]/DT))],"predicted_flow":q[k],"derived_basket_pressure":held['basket'][int(round(t[k]/DT))],"modeled_basket_pressure":max(held['line'][int(round(t[k]/DT))]-(A*q[k]**2+B*q[k]+C),0),"processing_configuration":"primary_t15_95","fold_id":f"LOCO-{cond:g}","evaluation_class":"LOCO"})
-    # Blocked time: parameters use only first 60 s of every other brew; evaluate 60-95 s.
+    # Corrected blocked time: fit only other brews' prefixes, then propagate the
+    # evaluated brew continuously from 15 s so every dynamic state crosses 60 s.
     for held in vals:
         training=[]
         for s in vals:
+            if s['id']==held['id']: continue
             z={k:(v[:600] if isinstance(v,np.ndarray) else v) for k,v in s.items()}; training.append(z)
         for m in MODELS:
-            b=fit(training,m); row,_=score(held,m,b,start=60,end=95,eval_class="BLOCKED_TIME"); blocked.append(row)
+            b=fit(training,m)
+            mask=(held['time']>=15)&(held['time']<=95); i0=np.flatnonzero(mask)[0]
+            t=held['time'][mask]; line=held['line'][mask]; obs=held['mass'][mask]-held['mass'][i0]
+            q,pred=predict(m,b,line,t,delay=1.0 if m=='W-H5' else 0.0)
+            ev=t>=60; pred_ev=pred[ev]-pred[ev][0]; obs_ev=obs[ev]-obs[ev][0]
+            valid=np.isfinite(q[ev])&np.isfinite(pred_ev); invalid=int((~valid).sum())
+            scale=max(float(obs_ev[-1]-obs_ev[0]),1.0); rmse=float(np.sqrt(np.mean((pred_ev-obs_ev)**2))) if not invalid else float('nan')
+            row={"model_id":m,"condition_id":f"{held['condition']:g}","physical_brew_id":held['id'],"evaluation_class":"BLOCKED_TIME","rmse_g":rmse,"nrmse":rmse/scale,"endpoint_error_g":float(pred_ev[-1]-obs_ev[-1]),"eligible_brews":1,"predicted_brews":int(not invalid),"invalid_brews":int(bool(invalid)),"coverage_fraction":float(valid.mean()),"coverage":float(valid.mean()),"invalid_time_fraction":float(1-valid.mean()),"failure_rate":float(bool(invalid)),"invalid_intervals":invalid,"failed":bool(invalid),"training_window":"other_brews_15_60","evaluation_window":"held_brew_60_95","parameter_training_source":"OTHER_PHYSICAL_BREWS_PREFIX_ONLY","state_initialization":"ANALYSIS_START_15S","state_at_split":"CONTINUED_FROM_MODELED_PREFIX","modeled_progress_at_split":float(pred[np.flatnonzero(ev)[0]]),"observed_progress_used_after_initialization":False}
+            blocked.append(row)
     return lobo,loco,blocked,residual
 
 def bootstrap(loco):
@@ -214,6 +225,8 @@ The result is not independent whole-model validation and does not establish intr
     write_csv(OUT/"MODEL_PRIVILEGE_REGISTRY.csv",reg)
     # Required sensitivity/source placeholders explicitly distinguish completed primary from scoped diagnostics.
     write_csv(OUT/"SOURCE_PROCESSING_CHECKS.csv",[{"check":"SG reconstruction","result":"documented window31 order1 cadence0.1001001"},{"check":"aggregate uncertainty","result":"SEM; not row likelihood"},{"check":"alias","result":"excluded from independent scoring"}])
-    print(json.dumps({"disposition":disposition,"best_evolving":best,"methods_hash":methods_hash,"folds_hash":folds_hash}, indent=2, default=lambda x: x.item() if isinstance(x, np.generic) else str(x)))
+    from c1_reporting import finalize as finalize_c1
+    corrected=finalize_c1({'OUT':OUT,'EVID':EVID,'MODELS':MODELS,'shots':shots,'source_rows':source_rows,'lobo':lobo,'loco':loco,'blocked':blocked,'comparison':comparison,'unc':unc,'write_csv':write_csv,'dump':dump,'fit':fit,'score':score,'balanced':condition_balanced,'A':A,'B':B,'C':C})
+    print(json.dumps({"disposition":corrected['disposition'],"best_evolving":best,"methods_hash":methods_hash,"folds_hash":folds_hash,"c1_addendum_hash":corrected['freezes']['c1_methods_addendum_sha256']}, indent=2, default=lambda x: x.item() if isinstance(x, np.generic) else str(x)))
 
 if __name__ == "__main__": main()

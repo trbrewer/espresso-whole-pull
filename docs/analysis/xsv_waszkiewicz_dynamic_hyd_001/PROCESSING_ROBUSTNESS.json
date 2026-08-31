@@ -1,0 +1,15 @@
+{
+  "additional_dispositions": [
+    "MEAN_LOCO_RANKING_STABLE_WITHIN_TESTED_WINDOWS",
+    "EFFECT_MAGNITUDE_VARIABLE",
+    "BROADER_PROCESSING_ROBUSTNESS_NOT_ESTABLISHED"
+  ],
+  "adoption_decision_across_tested_windows": "STABLE",
+  "broader_processing_scope": "TESTED_CONFIGURATIONS_ONLY",
+  "condition_sign_pattern_across_tested_windows": "VARIABLE",
+  "coverage_stability": "STABLE",
+  "effect_magnitude_across_tested_windows": "VARIABLE",
+  "mean_loco_ranking_across_tested_windows": "STABLE",
+  "parameter_stability": "VARIABLE",
+  "processing_disposition": "ADOPTION_DECISION_ROBUST_WITHIN_TESTED_PROCESSING_WINDOWS"
+}

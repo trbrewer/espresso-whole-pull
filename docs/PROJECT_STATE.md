@@ -2,13 +2,14 @@
 
 ## XSV-WASZKIEWICZ-DYNAMIC-HYD-001 grouped result (2026-08-31)
 
-`XSV_WASZKIEWICZ_DYNAMIC_HYD_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_BREW_AND_CONDITION_VARIABILITY`.
-The best mean evolving result (recursive mass-progress resistance) improved
-LOCO normalized mass RMSE by 27.0%, but its clustered interval crossed zero,
-only 6/11 conditions improved, and blocked-time performance worsened. Fixed
-resistance remains the simpler representation. The next task is
-`EWP-POROSITY-PERMEABILITY-PRIOR-001`; no production physics, production
-parameter, independent-validation claim, or home-lab authority changed.
+`XSV_WASZKIEWICZ_DYNAMIC_HYD_001_NO_TESTED_EVOLVING_RESISTANCE_FORM_HAS_STABLE_GROUPED_PREDICTIVE_ADVANTAGE`.
+W-H1 and W-H3 reproduce average LOCO improvement and W-H2 improves mean LOCO
+by 27.0%, but each wins only 6/11 conditions, W-H2's clustered interval crosses
+zero and its mean is materially influenced by 1 bar, and corrected fair
+blocked-time prediction favors W-H0A. Fixed resistance is retained by
+parsimony, not physically validated. `EWP-POROSITY-PERMEABILITY-PRIOR-001` is
+`READY_AFTER_C1_MERGE`; Visualizer, Pannusch, rheology, and other Waszkiewicz
+questions remain unexhausted. SCI-ED-003 and home-lab operation remain deferred.
 
 ## Reviewed whole-corpus authority (2026-08-31)
 
