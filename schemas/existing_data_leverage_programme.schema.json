@@ -6,7 +6,7 @@
     "schema_version": {"const": 1},
     "programme_id": {"const": "ESPRESSO-EXISTING-DATA-LEVERAGE-PROGRAMME"},
     "current_priority": {"type": "string"},
-    "home_lab_status": {"const": "DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED"},
+    "home_lab_status": {"const": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY"},
     "authorities": {"type": "object", "required": ["puckworks_commit", "puckworks_tree", "manifest_sha256", "available_data_register_sha256", "pannusch_source_manifest_sha256", "ewp_commit", "ewp_tree"]},
     "opportunities": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/opportunity"}},
     "laboratory_gate": {"type": "object", "required": ["operation_authorized", "existing_data_exhaustion_required", "separate_owner_authorization_required"], "properties": {"operation_authorized": {"const": false}, "existing_data_exhaustion_required": {"const": true}, "separate_owner_authorization_required": {"const": true}}},
@@ -17,7 +17,7 @@
     "type": "object",
     "required": ["opportunity_id", "title", "data_families", "scientific_question", "model_component", "status", "priority", "prerequisites", "task_id", "current_evidence", "expected_information", "positive_action", "negative_action", "null_action", "blocked_action", "claim_ceiling", "home_lab_effect", "completion_evidence", "exhausted_for_decision", "exhaustion_decision", "review_trigger", "notes"],
     "properties": {
-      "status": {"enum": ["PROPOSED", "READY", "ACTIVE", "COMPLETE_POSITIVE", "COMPLETE_NEGATIVE", "COMPLETE_NULL", "BLOCKED_RIGHTS", "BLOCKED_ACCESS", "BLOCKED_DATA_JOIN", "BLOCKED_MODEL_CAPABILITY", "BLOCKED_TECHNICAL", "DEFERRED_BY_HIGHER_PRIORITY", "SUPERSEDED", "EXHAUSTED_FOR_NAMED_DECISION"]},
+      "status": {"enum": ["PROPOSED", "READY", "ACTIVE", "COMPLETE_POSITIVE", "COMPLETE_NEGATIVE", "COMPLETE_NULL", "BLOCKED_RIGHTS", "BLOCKED_ACCESS", "BLOCKED_DATA_JOIN", "BLOCKED_MODEL_CAPABILITY", "BLOCKED_TECHNICAL", "DEFERRED_BY_HIGHER_PRIORITY", "PROPOSED_CONDITIONAL_SECOND_PRIORITY", "PROPOSED_CONDITIONAL_THIRD_PRIORITY", "PROPOSED_CONDITIONAL_FOURTH_PRIORITY", "PROPOSED_CONDITIONAL_FIFTH_PRIORITY", "READY_FOR_BOUNDARY_LIBRARY_AND_DESCRIPTIVE_HYDRAULIC_ANALYSIS", "SUPERSEDED", "EXHAUSTED_FOR_NAMED_DECISION"]},
       "data_families": {"type": "array", "minItems": 1},
       "completion_evidence": {"type": "array"},
       "exhausted_for_decision": {"type": "boolean"},

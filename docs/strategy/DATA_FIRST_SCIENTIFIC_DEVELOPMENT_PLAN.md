@@ -1,5 +1,9 @@
 # Data-First Scientific Development Plan
 
+> 2026-08-31: 39 reviewed families are registered. Immediate priority is grouped
+> Waszkiewicz hydraulics. Visualizer is descriptive/boundary authority,
+> Wadsworth/Vaca remain separate, and home lab remains deferred.
+
 ## Current residual-selected task (2026-08-30)
 
 XSV-PANNUSCH-MULTIMODEL-001 completed with a strong grouped predictive

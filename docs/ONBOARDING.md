@@ -1,5 +1,9 @@
 # Onboarding
 
+Current authority covers 39/39 reviewed families. Start with
+`XSV-WASZKIEWICZ-DYNAMIC-HYD-001`; use Visualizer only for boundaries and
+descriptive hydraulics, keep Wadsworth/Vaca separate, and defer home-lab work.
+
 Read `README.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, the
 [current scientific execution plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md),
 [controlling strategy](strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md),

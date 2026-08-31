@@ -1,0 +1,47 @@
+{
+  "task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
+  "title": "Grouped comparison of fixed versus evolving basket-node effective hydraulic resistance",
+  "scientific_question": "Does a fixed effective-resistance representation adequately predict the qualified Waszkiewicz pressure-flow-mass response across held-out physical brews and controlled conditions, or is one bounded evolving-resistance component justified?",
+  "authority": {
+    "source_family": "waszkiewicz2025",
+    "physical_brews": 56,
+    "controlled_conditions": 11,
+    "independent_unit": "physical_brew",
+    "higher_level_group": "controlled_condition",
+    "time_rows_are_independent": false,
+    "pressure": "line pressure measured; basket-node pressure derived by fitted brewer-loss subtraction",
+    "flow": "Savitzky-Golay derivative of scale mass",
+    "mass": "scale measured then aligned and interpolated",
+    "time": "retain exact source synchronization and sample cadence",
+    "uncertainty": "aggregate_SEM_not_row_level_independent_noise"
+  },
+  "prerequisite_authority": ["exact source files and hashes", "brew and condition register", "channel definitions and units", "sampling rate and synchronization", "exclusions", "rights"],
+  "frozen_candidate_model_family": {
+    "W-H0": "fixed effective resistance",
+    "W-H1": "monotone time-varying effective resistance",
+    "W-H2": "cumulative-mass- or progress-dependent effective resistance",
+    "W-H3": "one bounded change point",
+    "W-H4": "pressure- or flow-dependent effective resistance",
+    "W-H5": "simple observation-delay alternative only where source semantics justify it"
+  },
+  "modeling_strategy": "Directly predict a qualified pressure, flow, or mass channel or vector under the source forcing and observation structure; use threshold-controlled apparent resistance only as a diagnostic.",
+  "evaluation": ["leave-one-physical-brew-out", "leave-one-condition-out", "blocked-time prediction within brews", "condition-balanced aggregation", "complexity penalties and parameter-count disclosure", "low-flow threshold sensitivity", "preinfusion inclusion/exclusion sensitivity", "smoothing and differentiation sensitivity", "failure and coverage rate", "uncertainty-aware comparison"],
+  "fairness": ["identical observations and fitting windows", "no complete held-out-brew fitting presented as prediction", "nested model selection", "prefer the simpler model within uncertainty", "no row-level pseudo-replication"],
+  "primary_metric": "prospectively frozen condition-balanced held-out predictive error on a direct qualified channel or vector of channels",
+  "secondary_metrics": ["blocked-time predictive error", "pressure trajectory error", "flow trajectory error", "beverage-mass trajectory error", "change-point stability", "parameter stability", "coverage", "uncertainty calibration", "residual structure"],
+  "outcomes": {
+    "positive": "Authorize the smallest EWP-compatible evolving-resistance component task after stable grouped predictive advantage.",
+    "negative": "Preserve fixed hydraulic resistance and use the source to constrain uncertainty and benchmark ranges.",
+    "null": "Retain the simpler model and quantify the detectable effect threshold.",
+    "blocked": "Perform one bounded source-observation qualification; do not default to home-lab collection."
+  },
+  "maximum_claim": "SOURCE_INTERNAL_CONTROLLED_COMPONENT_EVIDENCE_ON_THE_WASZKIEWICZ_APPARATUS_THAT_A_FIXED_OR_BOUNDED_EVOLVING_EFFECTIVE_HYDRAULIC_RESISTANCE_BETTER_REPRESENTS_THE_QUALIFIED_BASKET_NODE_PRESSURE_FLOW_MASS_RESPONSE",
+  "prohibited_claims": ["measured intrinsic permeability validation", "universal coffee transfer", "independent whole-model validation", "channeling validation", "compaction validation", "fines-migration validation", "fracture validation", "grinder-to-cup physical validation"],
+  "relationships": {
+    "visualizer": "Population operating envelopes and future representative boundaries; not a replacement for this controlled decision.",
+    "wadsworth_vaca": "Potential later separate priors and observation operators for translating effective resistance into parameter distributions.",
+    "home_laboratory": "No home-lab work is needed for the source-internal comparison."
+  },
+  "execution_in_c1": false,
+  "production_adoption_in_c1": false
+}

@@ -1,5 +1,9 @@
 # Claude repository guidance
 
+Current authority: 39/39 families registered; grouped Waszkiewicz hydraulics is
+immediate; Visualizer is descriptive/boundary authority; Wadsworth/Vaca remain
+separate; home lab is deferred.
+
 Follow `AGENTS.md` and the governance documents it references.
 This includes its available-data-first read/preflight rule; do not replace it
 with an unscoped programme-wide data-gap claim.

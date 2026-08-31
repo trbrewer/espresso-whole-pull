@@ -1,0 +1,6 @@
+priority,task_id,family,status,positive_consequence,negative_consequence,null_consequence,blocked_consequence,claim_ceiling,home_lab_effect
+1,XSV-WASZKIEWICZ-DYNAMIC-HYD-001,waszkiewicz2025,READY_WITH_NARROWED_SCOPE,authorize smallest bounded evolving component,preserve fixed resistance,retain simpler model and quantify detectable effect,qualify observation semantics once,SOURCE_INTERNAL_CONTROLLED_COMPONENT,DEFER
+2,EWP-POROSITY-PERMEABILITY-PRIOR-001,wadsworth2026+vacaguerra2023a,PROPOSED_CONDITIONAL_SECOND_PRIORITY,adopt separate priors/operators,narrow or reject mappings,retain broad uncertainty,resolve source definition only,SEPARATE_SOURCE_PRIORS,DEFER
+3,EWP-REAL-WORLD-BOUNDARIES-001,visualizer,PROPOSED_CONDITIONAL_THIRD_PRIORITY,adopt representative boundary library,retain current envelopes,report indistinguishable strata,qualify device/schema identity,RECENT_PUBLIC_COHORT_BOUNDARIES,DEFER
+4,OBS-PANNUSCH-FRACTION-WINDOW-001,pannusch2024,PROPOSED_CONDITIONAL_FOURTH_PRIORITY,qualify source-order joins,retire deterministic join,retain source-order ceiling,document missing identity,SOURCE_INTERNAL_OBSERVATION_OPERATOR,DEFER
+5,SCI-MD-RHEOLOGY-001,telisromero2001,PROPOSED_CONDITIONAL_FIFTH_PRIORITY,bound fluid-property sensitivity,preserve water-viscosity simplification,retain broad prior,resolve domain/rights only,BOUNDED_FLUID_PROPERTY_SENSITIVITY,DEFER
