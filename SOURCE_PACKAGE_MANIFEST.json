@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 720,
-  "total_uncompressed_bytes_excluding_manifest": 8184364,
-  "aggregate_source_sha256": "8f704451d9126d982600f4adf5d33fc26d14e2700b93e206a79c30e269c616a7",
-  "aggregate_sha256": "8f704451d9126d982600f4adf5d33fc26d14e2700b93e206a79c30e269c616a7",
+  "total_uncompressed_bytes_excluding_manifest": 8183219,
+  "aggregate_source_sha256": "f855296081f1aab8441a6906aecdd19f418f593522e55005fc84b51ad621dd74",
+  "aggregate_sha256": "f855296081f1aab8441a6906aecdd19f418f593522e55005fc84b51ad621dd74",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1164,13 +1164,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/BLOCKED_TIME_RESULTS.csv": {
-      "sha256": "4e547f254da1a94080b190b1cce4b102a5dddbc4dd399fef6aa2d8a2dddd4b0a",
-      "bytes": 26246,
+      "sha256": "4f356953c70bc95102abf60fb284ffa5430f9a4c72042aa6559e46f2f956d2b6",
+      "bytes": 25965,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/BREW_CONDITION_REGISTER.csv": {
-      "sha256": "1f9835e35b451c3d38760e4f06b852f2efa758d6d601f1104bd397bc68b4df43",
-      "bytes": 14477,
+      "sha256": "a149e7b9f181909163a3a4ca80ed797f5dc412fd16181c338d6af7881489eccb",
+      "bytes": 14419,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/CHANNEL_SEMANTICS.json": {
@@ -1194,13 +1194,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/LEAVE_ONE_BREW_OUT_RESULTS.csv": {
-      "sha256": "73de4829f45965b97986ca70215271a3065034a8d5691419d2b9482452010b61",
-      "bytes": 23859,
+      "sha256": "e9beaf840fe84da7eb682ed9b5df871f2bfb867f4a71fbd202380ffe10bb5a3d",
+      "bytes": 23578,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/LEAVE_ONE_CONDITION_OUT_RESULTS.csv": {
-      "sha256": "4fc5571737a99e8cb1fea1fd101b9194f5afa4808e01135506047375801632ff",
-      "bytes": 23837,
+      "sha256": "dc2ed33e6d98112aab8bd2236b09ffd65d45c164518ab6e3b7f4b8e234203883",
+      "bytes": 23556,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/METHODS_FREEZE.json": {
@@ -1209,13 +1209,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/MODEL_COMPARISON_RESULTS.csv": {
-      "sha256": "c3d06a47764eaf0f99a26412314dabe328c319692f88dcd71fc8e57f9d04ddce",
-      "bytes": 885,
+      "sha256": "4a42919c635545acb0efeb61f4658bebfbce29a84a8378dc04c49b2c9c3af8d3",
+      "bytes": 879,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/MODEL_PRIVILEGE_REGISTRY.csv": {
-      "sha256": "321355f745027c7469c8e3b946cbf42d7c84055d01d42694a9af851b9f83f935",
-      "bytes": 3054,
+      "sha256": "6f1360191026b1026056d10c832fe3a8ef689bd6504f1d70b47ba399d0f2537c",
+      "bytes": 3045,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/NEXT_TASK_DECISION.json": {
@@ -1229,18 +1229,18 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/PARAMETER_STABILITY.csv": {
-      "sha256": "fa3f0d02d7a710c1d8e0bf9a829a5fe83c68aa88d372ef3387ef1386caa727a5",
-      "bytes": 7766,
+      "sha256": "fb5f688b7ee3ea8c6c58fdffc16468b8973f8c3ea84a77b85435a1bd5f666ad3",
+      "bytes": 7578,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/PROCESSING_SENSITIVITY.csv": {
-      "sha256": "858c2b8d5fc9a666de83aef8794480e699ffb2834adda213bf89b24d8c2d687c",
-      "bytes": 2239,
+      "sha256": "ede2448636a48e170d225bf32664d895c5635f344762a61ae871f03775962608",
+      "bytes": 2213,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/RESIDUAL_FINDINGS.csv": {
-      "sha256": "7b72b68a042dac4150468c4e895ad48a7fc52816310df37c3a1b7ac0e5dd613f",
-      "bytes": 552,
+      "sha256": "dbc098e8af724a351715a7829d808e11a063910496b158ee9b874e93a11544f0",
+      "bytes": 546,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/RESULT.md": {
@@ -1259,13 +1259,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/SOURCE_PROCESSING_CHECKS.csv": {
-      "sha256": "a779816e978548cd20ae5dc65aae13df5420ebcb3433072c3ebc425782067253",
-      "bytes": 165,
+      "sha256": "baa96a3125641b380e892a517cbab9349a4ebf7917d8dd6ec918672b45258bf1",
+      "bytes": 161,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/UNCERTAINTY_RESULTS.csv": {
-      "sha256": "3270f70acac9a1a6917b2949e472e71f9589f07c9835f9c384e319c9b7a5a1ec",
-      "bytes": 443,
+      "sha256": "ef9b41d0277295d328e3be1751a820dbf5291d4c667c713aee9bc019275e71f0",
+      "bytes": 438,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/summary.json": {
