@@ -1,0 +1,19 @@
+{
+  "fallbacks": [
+    "SCI-MD-PANNUSCH-FLOW-HISTORY-001",
+    "XSV-PANNUSCH-EWP-INPUT-MAPPING-001"
+  ],
+  "grind": "PROPOSED_CONDITIONAL_NOT_CURRENTLY_SUPPORTED",
+  "home_lab": "DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED",
+  "strongest": {
+    "blocked_outcome": "joins or clocks cannot be qualified",
+    "existing_data": "24 SOURCE_ORDER_ONLY beverage-mass/telemetry records plus workbook windows",
+    "maximum_claim": "SOURCE_INTERNAL_FRACTION_WINDOW_AND_OBSERVATION_OPERATOR_QUALIFICATION",
+    "negative_outcome": "qualified observer leaves residual",
+    "null_outcome": "observer effect indistinguishable",
+    "positive_outcome": "qualified observer reduces residual",
+    "scientific_question": "Can target-independent shot/window/clock/vial reconstruction explain or reduce the fraction-2/tail residual without changing extraction kinetics?",
+    "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+    "title": "Source-order join qualification and fraction-window observation-operator reconstruction"
+  }
+}

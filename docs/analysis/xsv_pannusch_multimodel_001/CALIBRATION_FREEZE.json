@@ -1,0 +1,56 @@
+{
+  "blocked_models": {
+    "MODEL-EWP-FIXED": "BLOCKED_MODEL_CAPABILITY_NON_TARGET_GRIND_TO_EWP_MAPPING_ABSENT",
+    "MODEL-PANNUSCH-FIXED": "PENDING_PARITY_AND_EXECUTION"
+  },
+  "calibration_conditions": 15,
+  "calibration_rows": 84,
+  "calibration_shots": 45,
+  "folds": {
+    "LOCO": 15,
+    "LOGO": 3,
+    "LOSO": 45
+  },
+  "march_conditions": [
+    "PRED-C01",
+    "PRED-C02",
+    "PRED-C03",
+    "PRED-C04",
+    "PRED-C05",
+    "PRED-C06",
+    "PRED-C07",
+    "PRED-C08"
+  ],
+  "march_targets_loaded": false,
+  "methods_freeze_sha256": "7d7492864adb7eb74c39cfc35692d3cc51fbcf49c423f2abba48c07c779c0631",
+  "model_ids": [
+    "BASELINE-POOL-ANALYTE",
+    "BASELINE-POOL-UNIVERSAL",
+    "BASELINE-NEAREST-CONDITION",
+    "BASELINE-COMPOSITIONAL-RIDGE",
+    "MODEL-ONE-TIMESCALE",
+    "MODEL-TWO-TIMESCALE",
+    "MODEL-SPECIES-PARTIAL-POOL"
+  ],
+  "prediction_code_sha256": "b2eeabdcc13492e169911311117457c5db7c5ef29f81b4e055d7e19d29afdc89",
+  "schema_version": 1,
+  "selected_hyperparameters": {
+    "inventory_scales": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "models": [
+      "BASELINE-POOL-ANALYTE",
+      "BASELINE-POOL-UNIVERSAL",
+      "BASELINE-NEAREST-CONDITION",
+      "BASELINE-COMPOSITIONAL-RIDGE",
+      "MODEL-ONE-TIMESCALE",
+      "MODEL-TWO-TIMESCALE",
+      "MODEL-SPECIES-PARTIAL-POOL"
+    ],
+    "partial_pool_alpha": 0.0001,
+    "ridge_alpha": 0.0001
+  },
+  "task_id": "XSV-PANNUSCH-MULTIMODEL-001"
+}

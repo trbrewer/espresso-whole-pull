@@ -1,0 +1,29 @@
+{
+  "aggregate_lane": [
+    "TDS"
+  ],
+  "conditions": 23,
+  "fit_conditions": 15,
+  "fit_physical_shots": 45,
+  "fractions_per_shot": 6,
+  "independent_external_validation": false,
+  "invalid_spills_excluded": 3,
+  "march_conditions": 8,
+  "march_physical_shots": 24,
+  "physical_shots": 69,
+  "primary_analytes": [
+    "caffeine",
+    "trigonelline"
+  ],
+  "secondary_analytes": [
+    "5-CQA"
+  ],
+  "target_exposed": true,
+  "valid_rows_by_variable": {
+    "5-CQA": 411,
+    "CQA_sum": 411,
+    "TDS": 414,
+    "caffeine": 411,
+    "trigonelline": 411
+  }
+}

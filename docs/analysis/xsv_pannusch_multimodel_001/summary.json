@@ -1,0 +1,164 @@
+{
+  "change_declarations": {
+    "angeloni_access": false,
+    "independent_validation_claim": false,
+    "laboratory_operation": false,
+    "production_governing_physics_change": false,
+    "production_parameter_adoption": false,
+    "protected_holdout_scoring": false,
+    "puckworks_mutation": false,
+    "raw_data_mutation": false
+  },
+  "correction_id": "XSV-PANNUSCH-MULTIMODEL-001-C1",
+  "disposition": "XSV_PANNUSCH_MULTIMODEL_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_VARIABILITY",
+  "fallback_tasks": [
+    "SCI-MD-PANNUSCH-FLOW-HISTORY-001",
+    "XSV-PANNUSCH-EWP-INPUT-MAPPING-001"
+  ],
+  "fixed_pannusch": {
+    "calibration_reconstruction_rmse": 0.008853278216015602,
+    "leave_grind_out_genuine": false,
+    "loco_genuine": false,
+    "loso_genuine": false,
+    "march_prediction_genuine": true,
+    "privilege_class": "POST_HOC_REPRODUCIBLE_PUBLISHED_PARAMETER_PANNUSCH_MODEL_WITH_TARGET_INDEPENDENT_CALIBRATION_SCALE",
+    "source_fit_experiments": [
+      9,
+      10,
+      11,
+      14,
+      15
+    ],
+    "source_nonfit_result": {
+      "analytes": 2,
+      "conditions": "1-8;12;13",
+      "evidence_class": "PANNUSCH_SOURCE_NONFIT_CONDITION_PREDICTION",
+      "interpretation": "fixed model; no refit",
+      "physical_shots": 29,
+      "primary_rmse": 0.009631059109492307
+    },
+    "target_driven_tuning_found": false
+  },
+  "freezes": {
+    "c1_calibration_addendum_sha256": "5326056458b14c987f7765ee7850edd53f54b20c952946a426d32c46f0d728cb",
+    "c1_methods_addendum_sha256": "769502c6f0b2e7b16fe96f8be2e7582ffae2f6454ebc386d6c17c90cab2c776c",
+    "original_calibration_freeze_sha256": "0b9a70bc3fd265c2df49a14c8ffd80baebbb7adc0aadc38bd3fb7e3567e40990",
+    "original_freezes_modified": false,
+    "original_methods_freeze_sha256": "7d7492864adb7eb74c39cfc35692d3cc51fbcf49c423f2abba48c07c779c0631",
+    "target_blind": false,
+    "target_exposed": true
+  },
+  "home_lab": {
+    "operation_authorized": false,
+    "status": "DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED"
+  },
+  "independent_review": {
+    "disposition": "XSV_PANNUSCH_MULTIMODEL_001_R2_INDEPENDENT_REVIEW_SCIENTIFIC_DISPOSITION_NOT_SUPPORTED",
+    "review_evidence_sha256": "5d6d428aeebf6e8e42bec22dcc29b0435c4c5484905b5d0c5817ea2aca17d93a",
+    "task_id": "XSV-PANNUSCH-MULTIMODEL-001-R2"
+  },
+  "inventory": {
+    "absolute_mass_robustness_established": false,
+    "cross_model_ranking_robustness_established": false,
+    "disposition": "NORMALIZED_FIXED_PANNUSCH_CS0_SCALE_INVARIANT",
+    "production_M0_established": false,
+    "production_inventory_robustness_established": false,
+    "structural_scale_cancellation": true
+  },
+  "next_task": {
+    "blocked_outcome": "joins or clocks cannot be qualified",
+    "existing_data": "24 SOURCE_ORDER_ONLY beverage-mass/telemetry records plus workbook windows",
+    "maximum_claim": "SOURCE_INTERNAL_FRACTION_WINDOW_AND_OBSERVATION_OPERATOR_QUALIFICATION",
+    "negative_outcome": "qualified observer leaves residual",
+    "null_outcome": "observer effect indistinguishable",
+    "positive_outcome": "qualified observer reduces residual",
+    "scientific_question": "Can target-independent shot/window/clock/vial reconstruction explain or reduce the fraction-2/tail residual without changing extraction kinetics?",
+    "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+    "title": "Source-order join qualification and fraction-window observation-operator reconstruction"
+  },
+  "original_disposition": "XSV_PANNUSCH_MULTIMODEL_001_MECHANISTIC_STRUCTURE_HAS_GROUPED_PREDICTIVE_ADVANTAGE",
+  "original_result_superseded": true,
+  "primary_comparison": {
+    "boundary_aware_rmse": 0.011186801136910956,
+    "condition_signs": {
+      "boundary_aware_better": 2,
+      "pannusch_better": 2
+    },
+    "ordinal_pooled_rmse": 0.02422119588489305,
+    "pannusch_improvement_vs_boundary_aware_percent": -1.6569028161763433,
+    "pannusch_improvement_vs_ordinal_percent": 53.04874452098633,
+    "pannusch_minus_boundary_aware_interval": [
+      -0.0011669899500557634,
+      0.0014989898029067967
+    ],
+    "pannusch_rmse": 0.011372155559988481,
+    "subset": [
+      "PRED-C01",
+      "PRED-C02",
+      "PRED-C05",
+      "PRED-C06"
+    ],
+    "unique_mechanistic_advantage_supported": false
+  },
+  "residuals": {
+    "fraction_2_interval": [
+      0.009934799589704857,
+      0.024239302450906313
+    ],
+    "fraction_2_mean": 0.01669280674270228,
+    "fraction_5_interval": [
+      -0.01085453370008966,
+      -0.007902349486442138
+    ],
+    "fraction_5_mean": -0.009460341863701116,
+    "fraction_6_interval": [
+      -0.012338398834782393,
+      -0.008453459940638916
+    ],
+    "fraction_6_mean": -0.010014823168044603,
+    "schedule_dependence_material": true
+  },
+  "species": {
+    "analyte_pooled_shapes_differ": true,
+    "disposition": "SPECIES_SIGNAL_NOT_SUPPORTED_FOR_ADDED_CONDITION_DEPENDENT_COMPLEXITY",
+    "partial_pool_advantage_percent": 0.67465,
+    "successor_justified": false
+  },
+  "task_id": "XSV-PANNUSCH-MULTIMODEL-001",
+  "telemetry": {
+    "broad_telemetry_successor_ready": false,
+    "fraction_window_successor_ready": true,
+    "potential_joins": 24,
+    "qualified_deterministic_joins": 0,
+    "source_order_only": 24
+  },
+  "uncertainty": {
+    "boundary_baseline_absolute_interval": [
+      0.008973018804160435,
+      0.013812623640888597
+    ],
+    "candidate_interval": [
+      -0.022865289688787045,
+      -0.005386834924764449
+    ],
+    "candidate_method_superseded": true,
+    "condition_then_shot": true,
+    "exact_sign_flip_one_sided_p": 0.0625,
+    "exact_sign_flip_two_sided_p": 0.125,
+    "ordinal_baseline_absolute_interval": [
+      0.014322730633721258,
+      0.03625182273319769
+    ],
+    "pannusch_absolute_interval": [
+      0.009568026887972737,
+      0.014084660659348667
+    ],
+    "pannusch_minus_ordinal_interval": [
+      -0.023771928899983606,
+      -0.004139343351570031
+    ],
+    "replicates": 2000,
+    "seed": 20260830,
+    "two_level_bootstrap_used": true
+  }
+}

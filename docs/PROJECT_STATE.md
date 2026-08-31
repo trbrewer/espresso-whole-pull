@@ -1,5 +1,19 @@
 # Project State
 
+## XSV-PANNUSCH-MULTIMODEL-001 grouped result (2026-08-30)
+
+`XSV_PANNUSCH_MULTIMODEL_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_VARIABILITY`.
+C1 preserves the 53.05% fixed-Pannusch advantage over an ordinal-only pooled
+profile but corrects the primary fairness comparison: fixed Pannusch RMSE
+0.0113722 versus calibration-only boundary-aware empirical RMSE 0.0111868,
+paired interval [-0.001167, 0.001499], with condition signs split 2–2. Unique
+mechanistic predictive advantage is not established. Species partial pooling
+was not supported. Current successor is `OBS-PANNUSCH-FRACTION-WINDOW-001`,
+limited to qualifying source-order joins and the fraction-window observer.
+SCI-ED-003 remains deferred; home-lab operation remains
+`DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED`. No production physics or
+parameters changed; physical and independent validation remain unestablished.
+
 ## Current existing-data model-advancement priority (2026-08-30)
 
 The accepted successor disposition is

@@ -1,5 +1,15 @@
 # Existing Data Leverage Programme
 
+## Current result (2026-08-30)
+
+XSV-PANNUSCH-MULTIMODEL-001 is `COMPLETE_NULL`: fixed Pannusch strongly beats
+the ordinal-only pooled profile but is indistinguishable from a calibration-only
+boundary-aware empirical profile with matched fraction-window privilege. Only
+the named unique-advantage decision is exhausted; the Pannusch corpus is not.
+Current priority is `OBS-PANNUSCH-FRACTION-WINDOW-001`, scoped to qualification
+of 24 source-order joins, clocks, vial transitions, and fraction windows.
+Home-lab operation remains deferred.
+
 ## Purpose and authorities
 
 Available data must be exhausted for the named scientific decision before new
@@ -21,7 +31,7 @@ fusion; experiment reduction; absolute closure; independent validation.
 
 1. XSV-PANNUSCH-MULTIMODEL-001.
 2. One residual-selected Pannusch successor.
-3. OBS-PANNUSCH-TELEMETRY-001 if boundary/timing evidence warrants.
+3. OBS-PANNUSCH-FRACTION-WINDOW-001 after C1 merge and exact-head rereview.
 4. Permissioned Visualizer population-hydraulics lane.
 5. Cross-corpus boundary/uncertainty integration.
 6. SCI-ED-003 targeted closure contract.

@@ -1,5 +1,13 @@
 # Solver Development and Validation Roadmap
 
+## XSV-PANNUSCH-MULTIMODEL-001 consequence (2026-08-30)
+
+The unchanged published Pannusch structure has source-internal grouped
+predictive content beyond simple baselines for fraction shares. The immediate
+successor is the research-only `OBS-PANNUSCH-FRACTION-WINDOW-001` observation-operator qualification,
+not production parameter adoption or new governing physics. SCI-ED-003 and
+laboratory operation remain deferred.
+
 ## Current programme priority (2026-08-30)
 
 `XSV-PANNUSCH-MULTIMODEL-001` is the immediate scientific task. It permits
