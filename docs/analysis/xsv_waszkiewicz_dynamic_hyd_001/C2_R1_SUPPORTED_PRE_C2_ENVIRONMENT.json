@@ -1,0 +1,33 @@
+{
+  "architecture": "x86_64",
+  "checkout_path": "/home/tim/espresso-development/isolated/espresso-whole-pull-xsv-waszkiewicz-dynamic-hyd-001-20260831",
+  "environment_kind": "system",
+  "environment_variables": {
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "PATH": "/home/tim/.local/bin:/usr/local/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/codex-path:/home/tim/.codex/tmp/arg0/codex-arg08Xx62a:/home/tim/.local/bin:/usr/bin:/home/tim/OpenFOAM/blastfoam/bin:/home/tim/OpenFOAM/ThirdParty-12/platforms/linux64Gcc/gperftools-svn/bin:/home/tim/OpenFOAM/OpenFOAM-12/bin:/home/tim/OpenFOAM/OpenFOAM-12/wmake:/home/tim/OpenFOAM/tim-12/platforms/linux64GccDPInt32Opt/bin:/home/tim/OpenFOAM/site/12/platforms/linux64GccDPInt32Opt/bin:/home/tim/OpenFOAM/OpenFOAM-12/platforms/linux64GccDPInt32Opt/bin:/usr/local/cuda-12.6/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/tim/blastCFD/install/bin",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "generated_files_present_before_discovery": [],
+  "kernel": "6.17.0-35-generic",
+  "locale": "C.UTF-8",
+  "os": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+  "package_versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.11.4"
+  },
+  "python_executable": "/usr/bin/python3",
+  "python_version": "3.12.3",
+  "source_commit": "e4667eee315ecb8c93ba9be7c1385e04f12ffcca",
+  "source_tree": "430397d9b4b9de14a4e85df2f75a709ae8c21802",
+  "sys_path": [
+    "/home/tim/espresso-development/isolated/espresso-whole-pull-xsv-waszkiewicz-dynamic-hyd-001-20260831/analysis/xsv_waszkiewicz_dynamic_hyd_001",
+    "/usr/lib/python312.zip",
+    "/usr/lib/python3.12",
+    "/usr/lib/python3.12/lib-dynload",
+    "/usr/local/lib/python3.12/dist-packages",
+    "/usr/lib/python3/dist-packages"
+  ],
+  "test_command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'",
+  "working_directory": "/home/tim/espresso-development/isolated/espresso-whole-pull-xsv-waszkiewicz-dynamic-hyd-001-20260831"
+}

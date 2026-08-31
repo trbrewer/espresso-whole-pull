@@ -50,8 +50,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 38,
-    "source_manifest_file_count": 736,
-    "source_manifest_aggregate_sha256": "d217d244257e2b3ad0ac3e1227c631fdad6bceaee79c61ad2643a8677eabfcf8",
+    "source_manifest_file_count": 752,
+    "source_manifest_aggregate_sha256": "1e1acb364a030982b17d7fca8b2030be9373286e91818c6da917b510dc29b901",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -61,7 +61,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "d217d244257e2b3ad0ac3e1227c631fdad6bceaee79c61ad2643a8677eabfcf8"
+    "source_manifest_aggregate_source_sha256": "1e1acb364a030982b17d7fca8b2030be9373286e91818c6da917b510dc29b901"
   },
   "sci_ed_002_r2b": {
     "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 736,
-  "total_uncompressed_bytes_excluding_manifest": 8182810,
-  "aggregate_source_sha256": "d217d244257e2b3ad0ac3e1227c631fdad6bceaee79c61ad2643a8677eabfcf8",
-  "aggregate_sha256": "d217d244257e2b3ad0ac3e1227c631fdad6bceaee79c61ad2643a8677eabfcf8",
+  "file_count": 752,
+  "total_uncompressed_bytes_excluding_manifest": 8242803,
+  "aggregate_source_sha256": "1e1acb364a030982b17d7fca8b2030be9373286e91818c6da917b510dc29b901",
+  "aggregate_sha256": "1e1acb364a030982b17d7fca8b2030be9373286e91818c6da917b510dc29b901",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -94,8 +94,23 @@
       "git_mode": "100644"
     },
     "analysis/xsv_waszkiewicz_dynamic_hyd_001/c1_reporting.py": {
-      "sha256": "083528ac1bd990cf5f3d9cde1bd313550b92be7e9e27dddc17fce24116419c1f",
-      "bytes": 23092,
+      "sha256": "35338fa5683626a551581a4a48f49c257505606ec1178c4faafe44335803d5bf",
+      "bytes": 23253,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_waszkiewicz_dynamic_hyd_001/c2_r1_evidence.py": {
+      "sha256": "f45f5953ea184ab7415cfc3d5d92364839a24facead3d5820f5ce1ce1c8e73e8",
+      "bytes": 6261,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_waszkiewicz_dynamic_hyd_001/c2_r1_finalize.py": {
+      "sha256": "b59fed8e7b20d23732820ba188269dea26e4a4310523a353e8e67353f738bcc2",
+      "bytes": 2816,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_waszkiewicz_dynamic_hyd_001/c2_r1_reporting.py": {
+      "sha256": "12d8c67fa9e86c507938daa02180c7e91792645137c7c04b8ede48ce64b3b17f",
+      "bytes": 8166,
       "git_mode": "100644"
     },
     "analysis/xsv_waszkiewicz_dynamic_hyd_001/core.py": {
@@ -1198,6 +1213,56 @@
       "bytes": 3454,
       "git_mode": "100644"
     },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_CORRECTION_RECORD.json": {
+      "sha256": "1c9803f0e14f29e9fb3f4a242250ce4454e470cea61b051552182dbf2b0eeadb",
+      "bytes": 2868,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_CORRECTION_RECORD.md": {
+      "sha256": "a5adc137bb9b0418b820b0e76140f7a6cef18329aa7a6a8ccad52f419170d8e8",
+      "bytes": 468,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_FINAL_TEST_AUTHORITY.json": {
+      "sha256": "ae9c5942a09a31951c45afee056356bc937b3fdaf9890842d7cf106be5c1ca8a",
+      "bytes": 1319,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_SCIENTIFIC_INVARIANCE_LEDGER.json": {
+      "sha256": "01e32623e94a0af98b27e73c55edd6cba35cc23b9bb2ba18d36f0985a0c531a3",
+      "bytes": 14000,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_SEMANTIC_MUTATION_REQUIREMENTS.json": {
+      "sha256": "4cb169b0a58ccad94f1a2400278fc53aeb98a46a937228c945c6d4a3642aaec5",
+      "bytes": 2839,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_SUMMARY.json": {
+      "sha256": "f626b78ed52ee5ab8628798664dfad6284cec531563a34962481703cbfd22b2d",
+      "bytes": 4937,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_SUPPORTED_PRE_C2_ENVIRONMENT.json": {
+      "sha256": "f07c72b565882c3c6604769e95d1389423ee441371759540e96a6640d6881cf5",
+      "bytes": 2077,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_SUPPORTED_PRE_C2_TEST_AUTHORITY.json": {
+      "sha256": "4c33e5c042241b5ffc82ccabfd9e29a61fc4c379a8b8f6771ab6ab52df14cb46",
+      "bytes": 1109,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_TEST_AUTHORITY_OWNER_ADJUDICATION.json": {
+      "sha256": "ce1c12afa03528078d52e964d04c6f741ec5bf97aa19e2c90713916b6e4fbb47",
+      "bytes": 1882,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C2_R1_TEST_AUTHORITY_OWNER_ADJUDICATION.md": {
+      "sha256": "dda6857c068843f7c27a17a9a42aa55fa7916d606e9265e3c7faaa359019f7ff",
+      "bytes": 757,
+      "git_mode": "100644"
+    },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/CHANNEL_SEMANTICS.json": {
       "sha256": "dab6f93323f0bfb9d32fec9ceec5effe0942d96e6f7168a905997e4e172e43df",
       "bytes": 434,
@@ -1294,8 +1359,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/PROCESSING_ROBUSTNESS.json": {
-      "sha256": "25a9a039361da7012d79020068b562656b7a2c09353eed6c8bf6572d1816bab6",
-      "bytes": 626,
+      "sha256": "ac4f8cc1bb84cf3373cdb315dc00559a4bd16cc410370256c78222ae319f39bb",
+      "bytes": 828,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/PROCESSING_SENSITIVITY.csv": {
@@ -2278,6 +2343,11 @@
       "bytes": 2573,
       "git_mode": "100644"
     },
+    "schemas/xsv_waszkiewicz_processing_robustness.schema.json": {
+      "sha256": "e931f637c56b2e2d31c9cd78368d8f6da52cf745e36a76a18bd36a82df0b4b30",
+      "bytes": 1527,
+      "git_mode": "100644"
+    },
     "scripts/analyze_r1.py": {
       "sha256": "e76d28b8a1c2804373005cc6d6e7e79f5ee79a6ca8d2a3b70a64438581cbcfa0",
       "bytes": 22712,
@@ -2604,8 +2674,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "496a6ed0a010a7882a76a6aa8196f3ffdc2231cf8706914a5563dc105ac38ae9",
-      "bytes": 31700,
+      "sha256": "7eebf3c9b1d1fe3be8d577fd73505bdbabd34caa4bf336e6f127a79e60435e68",
+      "bytes": 32092,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
@@ -2666,6 +2736,11 @@
     "scripts/validate_sci_lc_001a_ledger.py": {
       "sha256": "5258a50b0813851b10d297e9409565976dd127a1236852eb5f4d7ec31aea9e60",
       "bytes": 9804,
+      "git_mode": "100755"
+    },
+    "scripts/validate_xsv_waszkiewicz_dynamic_hyd_001.py": {
+      "sha256": "51eb4cd55454a8f416fb5233c6d41ff2637d20a1176e0ed289a2f8bb52b6f99f",
+      "bytes": 3657,
       "git_mode": "100755"
     },
     "scripts/verify_build_provenance.py": {
@@ -3259,8 +3334,13 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_waszkiewicz_dynamic_hyd_001_c1.py": {
-      "sha256": "8439fdee3732dbed56382edaad36bdd873cd53fe89c676700fc612a78cae9545",
-      "bytes": 4088,
+      "sha256": "ef934edfcdc3884a30c74f2290e446ead10d7bd9405d38be732feb496d4ae89c",
+      "bytes": 4136,
+      "git_mode": "100644"
+    },
+    "tests/test_xsv_waszkiewicz_dynamic_hyd_001_c2_r1.py": {
+      "sha256": "cabe6eb8d5c48a3942622402908a65ba89468e1c55de8d5b4c0f7b1112139ed3",
+      "bytes": 4507,
       "git_mode": "100644"
     },
     "tests/test_xsv_xct_001.py": {

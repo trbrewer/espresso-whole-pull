@@ -39,7 +39,7 @@ class TestWaszkiewiczC1(unittest.TestCase):
         rr=rows('BLOCKED_TIME_RESULTS.csv');self.assertTrue(all(r['parameter_training_source']=='OTHER_PHYSICAL_BREWS_PREFIX_ONLY' for r in rr));self.assertTrue(all(r['state_at_split']=='CONTINUED_FROM_MODELED_PREFIX' for r in rr))
         inv=rows('INVALID_STATE_AUDIT.csv');self.assertEqual(sum(int(r['invalid_intervals']) for r in inv if r['inside_primary_LOCO']=='True'),0)
     def test_processing_decomposition(self):
-        p=json.loads((DOC/'PROCESSING_ROBUSTNESS.json').read_text());self.assertEqual(p['mean_loco_ranking_across_tested_windows'],'STABLE');self.assertEqual(p['adoption_decision_across_tested_windows'],'STABLE');self.assertEqual(p['broader_processing_scope'],'TESTED_CONFIGURATIONS_ONLY')
+        p=json.loads((DOC/'PROCESSING_ROBUSTNESS.json').read_text());self.assertEqual(p['mean_loco_ranking_across_tested_windows'],'STABLE');self.assertEqual(p['adoption_decision_across_tested_windows'],'STABLE_NO_EVOLVING_MODEL_PASSES');self.assertEqual(p['broader_processing_robustness'],'NOT_ESTABLISHED_BEYOND_TESTED_CONFIGURATIONS')
         rr=rows('PROCESSING_SENSITIVITY.csv')
         for cfg in {r['configuration_id'] for r in rr}:
             self.assertEqual(next(r for r in rr if r['configuration_id']==cfg and r['model']=='W-H2')['mean_rank'],'1')
