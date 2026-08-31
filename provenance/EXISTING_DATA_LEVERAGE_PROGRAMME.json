@@ -2,7 +2,7 @@
   "$schema": "../schemas/existing_data_leverage_programme.schema.json",
   "schema_version": 1,
   "programme_id": "ESPRESSO-EXISTING-DATA-LEVERAGE-PROGRAMME",
-  "current_priority": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
+  "current_priority": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
   "home_lab_status": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY",
   "authorities": {
     "puckworks_commit": "a3428a4d4ad571ef3168a70e8a04620fca5d3520",
@@ -23,11 +23,11 @@
       "data_families": ["waszkiewicz2025"],
       "scientific_question": "Does fixed effective resistance adequately predict held-out physical brews and controlled conditions, or is one bounded evolving component justified?",
       "model_component": "basket-node effective hydraulic resistance",
-      "status": "READY",
+      "status": "COMPLETE_NULL",
       "priority": 1,
       "prerequisites": ["stable reviewed producer authority"],
       "task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
-      "current_evidence": "56 distinct physical brews in 11 controlled conditions; processed channels; aggregate SEM",
+      "current_evidence": "Mass-progress dynamics reduced mean LOCO error 27.0% but the clustered interval crossed zero, condition signs were 6-5, and blocked-time error worsened; fixed resistance retained",
       "expected_information": "grouped held-out fixed-versus-evolving resistance comparison",
       "positive_action": "authorize smallest supported EWP-compatible evolving component task",
       "negative_action": "preserve fixed resistance and constrain uncertainty",
@@ -35,11 +35,11 @@
       "blocked_action": "perform one bounded source-observation qualification",
       "claim_ceiling": "SOURCE_INTERNAL_CONTROLLED_COMPONENT_EVIDENCE_ON_ONE_APPARATUS",
       "home_lab_effect": "DEFER",
-      "completion_evidence": [],
-      "exhausted_for_decision": false,
-      "exhaustion_decision": null,
+      "completion_evidence": ["docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/RESULT.md", "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/summary.json", "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/MODEL_COMPARISON_RESULTS.csv"],
+      "exhausted_for_decision": true,
+      "exhaustion_decision": "WHETHER_ONE_OF_THE_TESTED_BOUNDED_EVOLVING_EFFECTIVE_RESISTANCE_STRUCTURES_OUTPERFORMS_THE_STRONGEST_FAIR_FIXED_RESISTANCE_REPRESENTATION_ON_THE_QUALIFIED_WASZKIEWICZ_BREWS_AND_CONDITIONS",
       "review_trigger": "task completion or material source-semantics change",
-      "notes": "Physical brew is the independent unit; no row-level pseudo-replication and no production adoption."
+      "notes": "Physical brew was the independent unit; no row-level pseudo-replication or production adoption. The corpus remains available for other named decisions."
     },
     {
       "opportunity_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001", "title": "Separate-source porosity/permeability priors", "data_families": ["wadsworth2026", "vacaguerra2023a"], "scientific_question": "Can source-specific priors and observation operators constrain EWP hydraulics?", "model_component": "porosity/permeability priors", "status": "PROPOSED_CONDITIONAL_SECOND_PRIORITY", "priority": 2, "prerequisites": ["Waszkiewicz result review"], "task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001", "current_evidence": "22 PSD rows, 21 permeability values, 50 dry-porosity rows", "expected_information": "separate prior/operator utility", "positive_action": "adopt bounded separate adapters", "negative_action": "reject unsupported mapping", "null_action": "retain broad priors", "blocked_action": "resolve one source definition", "claim_ceiling": "SEPARATE_SOURCE_PRIORS_AND_OBSERVATION_OPERATORS", "home_lab_effect": "DEFER", "completion_evidence": [], "exhausted_for_decision": false, "exhaustion_decision": null, "review_trigger": "preceding task result", "notes": "Direct combined validation-table fusion is prohibited."

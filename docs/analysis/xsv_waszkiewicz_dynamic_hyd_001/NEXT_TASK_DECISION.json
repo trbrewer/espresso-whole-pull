@@ -1,0 +1,10 @@
+{
+  "do_not_implement": true,
+  "first_fallback": "EWP-REAL-WORLD-BOUNDARIES-001",
+  "second_fallback": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+  "selected": {
+    "task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
+    "title": "Static porosity/permeability prior qualification",
+    "triggering_result": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_BREW_AND_CONDITION_VARIABILITY"
+  }
+}

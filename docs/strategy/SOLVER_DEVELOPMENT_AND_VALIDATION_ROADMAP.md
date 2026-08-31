@@ -1,5 +1,13 @@
 # Solver Development and Validation Roadmap
 
+## Waszkiewicz model-form decision (2026-08-31)
+
+The source-internal grouped comparison was null: no tested bounded evolving
+resistance passed the strong predictive-advantage gate. Default fixed
+resistance is retained. `EWP-POROSITY-PERMEABILITY-PRIOR-001` is the selected
+research successor; this result adds no solver equation, production default,
+or physical-validation claim.
+
 Conditional order: Waszkiewicz hydraulics; separate Wadsworth/Vaca priors;
 Visualizer boundaries; Pannusch fraction windows; rheology sensitivity. Results
 select successors; no production adoption or home-lab work is authorized.

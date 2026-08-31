@@ -1,5 +1,15 @@
 # Project State
 
+## XSV-WASZKIEWICZ-DYNAMIC-HYD-001 grouped result (2026-08-31)
+
+`XSV_WASZKIEWICZ_DYNAMIC_HYD_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_BREW_AND_CONDITION_VARIABILITY`.
+The best mean evolving result (recursive mass-progress resistance) improved
+LOCO normalized mass RMSE by 27.0%, but its clustered interval crossed zero,
+only 6/11 conditions improved, and blocked-time performance worsened. Fixed
+resistance remains the simpler representation. The next task is
+`EWP-POROSITY-PERMEABILITY-PRIOR-001`; no production physics, production
+parameter, independent-validation claim, or home-lab authority changed.
+
 ## Reviewed whole-corpus authority (2026-08-31)
 
 All 39 material families are registered. Current priority is grouped

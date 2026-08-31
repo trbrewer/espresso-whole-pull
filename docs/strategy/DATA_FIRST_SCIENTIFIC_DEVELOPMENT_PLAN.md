@@ -1,5 +1,10 @@
 # Data-First Scientific Development Plan
 
+> 2026-08-31 result: grouped Waszkiewicz fixed-versus-evolving resistance was
+> null at condition variability. Retain fixed hydraulics and proceed to the
+> separate-source `EWP-POROSITY-PERMEABILITY-PRIOR-001` task. No laboratory
+> operation or production adoption is authorized.
+
 > 2026-08-31: 39 reviewed families are registered. Immediate priority is grouped
 > Waszkiewicz hydraulics. Visualizer is descriptive/boundary authority,
 > Wadsworth/Vaca remain separate, and home lab remains deferred.

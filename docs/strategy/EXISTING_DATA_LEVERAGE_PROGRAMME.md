@@ -1,5 +1,18 @@
 # Existing Data Leverage Programme
 
+## Waszkiewicz grouped hydraulic result (2026-08-31)
+
+`XSV-WASZKIEWICZ-DYNAMIC-HYD-001` is `COMPLETE_NULL`. Across 56 physical
+brews and 11 conditions, mass-progress resistance reduced mean LOCO normalized
+mass RMSE by 27.0%, but its condition-then-brew interval crossed zero, condition
+signs were 6–5, and blocked-time prediction worsened. The strong evolving-state
+gate therefore failed and fixed resistance is retained. Observation delay was
+not supported and processing robustness was materially conditional. Only the
+named tested-model-form decision is exhausted; the Waszkiewicz corpus is not.
+The strongest next task is `EWP-POROSITY-PERMEABILITY-PRIOR-001`, keeping
+Wadsworth and Vaca Guerra as separate priors/operators. Home-lab work remains
+deferred and unauthorized.
+
 ## Reviewed C1 portfolio (2026-08-31)
 
 All 39 material families are registered. Current priority is

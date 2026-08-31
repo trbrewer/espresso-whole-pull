@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 693,
-  "total_uncompressed_bytes_excluding_manifest": 7744345,
-  "aggregate_source_sha256": "5f72f2051065ae39aa154dd1498b648684f23240ee12d6367a53040a21ac3277",
-  "aggregate_sha256": "5f72f2051065ae39aa154dd1498b648684f23240ee12d6367a53040a21ac3277",
+  "file_count": 720,
+  "total_uncompressed_bytes_excluding_manifest": 8184364,
+  "aggregate_source_sha256": "8f704451d9126d982600f4adf5d33fc26d14e2700b93e206a79c30e269c616a7",
+  "aggregate_sha256": "8f704451d9126d982600f4adf5d33fc26d14e2700b93e206a79c30e269c616a7",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -91,6 +91,26 @@
     "analysis/xsv_pannusch_multimodel_001/update_programme.py": {
       "sha256": "9e779ddab16f65892f7b2b01e45313f6af960a03e018eeb830ce6a4e5863d34e",
       "bytes": 3647,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_waszkiewicz_dynamic_hyd_001/core.py": {
+      "sha256": "1608a82545c146474540d86a5e72fb5ca8b444a4cd4082c48b7024c241d36386",
+      "bytes": 3449,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_waszkiewicz_dynamic_hyd_001/figures.py": {
+      "sha256": "b1f9a57d29a8bf46b75fc21122a56213b29344701275f635fd47220f3e2515a8",
+      "bytes": 4906,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_waszkiewicz_dynamic_hyd_001/finalize_evidence.py": {
+      "sha256": "67942f651d7e0d9550c9fe1406dc0f785796e540dc74b51c40e2cd4f0b34a226",
+      "bytes": 3158,
+      "git_mode": "100644"
+    },
+    "analysis/xsv_waszkiewicz_dynamic_hyd_001/run.py": {
+      "sha256": "c1626a2d635cd91a5417e781f7ce908e962de0ab67eb24e065625ef8cee7d8c3",
+      "bytes": 25403,
       "git_mode": "100644"
     },
     "baseline_evidence/v0_1_2/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_2.json": {
@@ -489,8 +509,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "5e6b3ecc0065800833a72e9d6ca8b5e4388b30ca9a6cbb653fbd9b91cffa99e2",
-      "bytes": 8071,
+      "sha256": "1992344510c7106009397eea1baaedaf64b8fbabfad9797efb194c2d5474db12",
+      "bytes": 8300,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -1143,6 +1163,116 @@
       "bytes": 5971,
       "git_mode": "100644"
     },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/BLOCKED_TIME_RESULTS.csv": {
+      "sha256": "4e547f254da1a94080b190b1cce4b102a5dddbc4dd399fef6aa2d8a2dddd4b0a",
+      "bytes": 26246,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/BREW_CONDITION_REGISTER.csv": {
+      "sha256": "1f9835e35b451c3d38760e4f06b852f2efa758d6d601f1104bd397bc68b4df43",
+      "bytes": 14477,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/CHANNEL_SEMANTICS.json": {
+      "sha256": "dab6f93323f0bfb9d32fec9ceec5effe0942d96e6f7168a905997e4e172e43df",
+      "bytes": 434,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/DATA_AUTHORITY.json": {
+      "sha256": "851665b5185a3a1ffcf4ca3d846dbdeae2e11de4ffa8bd84f9f91675447380c4",
+      "bytes": 1074,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/DATA_PROFILE.json": {
+      "sha256": "f5b3e3598a033ba5dcfe5bbfa3ec933bdc6e5e84c73e9a0f9d6f1517b6e81d4f",
+      "bytes": 620,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/FOLD_MANIFEST.json": {
+      "sha256": "e427afbf7b9ecb3af5c144496f46b7517bdee397dd7eaa77bbdb78bea0419d93",
+      "bytes": 8407,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/LEAVE_ONE_BREW_OUT_RESULTS.csv": {
+      "sha256": "73de4829f45965b97986ca70215271a3065034a8d5691419d2b9482452010b61",
+      "bytes": 23859,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/LEAVE_ONE_CONDITION_OUT_RESULTS.csv": {
+      "sha256": "4fc5571737a99e8cb1fea1fd101b9194f5afa4808e01135506047375801632ff",
+      "bytes": 23837,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/METHODS_FREEZE.json": {
+      "sha256": "c5391a855aee2ddf1bf8d8e0bf3c02395b900b93aabd6ee3edb24248423f70fb",
+      "bytes": 3015,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/MODEL_COMPARISON_RESULTS.csv": {
+      "sha256": "c3d06a47764eaf0f99a26412314dabe328c319692f88dcd71fc8e57f9d04ddce",
+      "bytes": 885,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/MODEL_PRIVILEGE_REGISTRY.csv": {
+      "sha256": "321355f745027c7469c8e3b946cbf42d7c84055d01d42694a9af851b9f83f935",
+      "bytes": 3054,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/NEXT_TASK_DECISION.json": {
+      "sha256": "0298047c9d63a99ffe16716a0bf59f173a52491bf3ec20dddd0fa7af4bb551e6",
+      "bytes": 409,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/NEXT_TASK_DECISION.md": {
+      "sha256": "9c1a97385129efedd70bfd3219d743348ec7148bee3f256d38a52a74b8425e98",
+      "bytes": 300,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/PARAMETER_STABILITY.csv": {
+      "sha256": "fa3f0d02d7a710c1d8e0bf9a829a5fe83c68aa88d372ef3387ef1386caa727a5",
+      "bytes": 7766,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/PROCESSING_SENSITIVITY.csv": {
+      "sha256": "858c2b8d5fc9a666de83aef8794480e699ffb2834adda213bf89b24d8c2d687c",
+      "bytes": 2239,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/RESIDUAL_FINDINGS.csv": {
+      "sha256": "7b72b68a042dac4150468c4e895ad48a7fc52816310df37c3a1b7ac0e5dd613f",
+      "bytes": 552,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/RESULT.md": {
+      "sha256": "07c6eda1bfdffac525083c73cee3d93fe9e82372d2f5bf9f65dbe51969ad51c3",
+      "bytes": 858,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/SIGNAL_CONTRACT.json": {
+      "sha256": "496d6460b386bd3b445f585876c9b8c25c8b1e43f0f82f8443b4c7bc271f5374",
+      "bytes": 738,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/SOURCE_MODEL_PARITY.json": {
+      "sha256": "560e4d509565f4ab22ef677ee4d6377d065986ba0c5914d3a2f85c69f102bc2e",
+      "bytes": 354,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/SOURCE_PROCESSING_CHECKS.csv": {
+      "sha256": "a779816e978548cd20ae5dc65aae13df5420ebcb3433072c3ebc425782067253",
+      "bytes": 165,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/UNCERTAINTY_RESULTS.csv": {
+      "sha256": "3270f70acac9a1a6917b2949e472e71f9589f07c9835f9c384e319c9b7a5a1ec",
+      "bytes": 443,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/summary.json": {
+      "sha256": "c95af5f4f410df0bc3baf983d16b21a28dfc8a439b5cb8b5748654b0375e057e",
+      "bytes": 280467,
+      "git_mode": "100644"
+    },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
       "sha256": "5f4fe4be0b757a460e683f1a783dbf19b41773fe46c23a77fb5ebab83c9a6daa",
       "bytes": 1352,
@@ -1219,13 +1349,13 @@
       "git_mode": "100644"
     },
     "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": {
-      "sha256": "e07ac7c08102fec625c3f23d031bbdd11abc03f2ff48d811ab4481672f0ffa9a",
-      "bytes": 13878,
+      "sha256": "17b045bb9e709cc6ee7526a1c7e9dae0763fce34abccf1f6db56b59795f9c7c0",
+      "bytes": 14159,
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "ce0a6ce95b61ac74e1e2006185d82c4cc8c0ba27c4f286796522bf03f85ccc91",
-      "bytes": 3793,
+      "sha256": "c10b03699be469f5de5466efed3af3bea344732b2c310be8185d6e5235ac1211",
+      "bytes": 4575,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -2739,13 +2869,13 @@
       "git_mode": "100644"
     },
     "tests/test_espresso_corpus_leverage_002_c1.py": {
-      "sha256": "eab7ee8648b6dab58689746c87c0268b2ba9c94de573fef2b1587554b45f9ecc",
-      "bytes": 1251,
+      "sha256": "cf750122ab8af92a23ccda38052cfd50786481627ecd06c05e0fc236299adb24",
+      "bytes": 1255,
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {
-      "sha256": "c10af31a44f46a90798cf0c4d826e2893f7a01c2d9f53f12a39529a9f80ed2d0",
-      "bytes": 658,
+      "sha256": "523fe082a7f96b31d116e2335d706e503692b9d9c44c99ed9589673c054523e9",
+      "bytes": 662,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
@@ -3034,8 +3164,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_multimodel_001.py": {
-      "sha256": "cf7090e07c54a6a228af288a974b0aec9e236f73baa3218d63d4a57ce080e305",
-      "bytes": 5081,
+      "sha256": "4068db1684c19c870b328774004eb40b9b7e4c1747e9f7e8771164a14670f3d6",
+      "bytes": 5085,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {
@@ -3046,6 +3176,11 @@
     "tests/test_xsv_taichi_002.py": {
       "sha256": "521c40b2ce07e6f6bd85fb232a9d0fa6f192d4c51810d68f381694338ba48823",
       "bytes": 31159,
+      "git_mode": "100644"
+    },
+    "tests/test_xsv_waszkiewicz_dynamic_hyd_001.py": {
+      "sha256": "8578070aaffc5e13a74732e6cccf3eb0022a5b2ac1e1f5aca69c758c86dd1b85",
+      "bytes": 1600,
       "git_mode": "100644"
     },
     "tests/test_xsv_xct_001.py": {
