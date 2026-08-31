@@ -1,5 +1,16 @@
 # Project State
 
+## EWP-POROSITY-PERMEABILITY-PRIOR-001 result (2026-08-31)
+
+`EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_AND_PERMEABILITY`.
+Separate Wadsworth and Vaca Guerra empirical supports materially structure
+bounded static EWP sensitivity cases for initial porosity and saturated
+permeability. They are source-conditioned design supports under explicit
+observation/transfer operators, not universal distributions, wet operating-puck
+measurements, or physical validation. The calibrated EWP default remains
+unchanged; wetting permeability remains independent in every primary case.
+Next task: `EWP-REAL-WORLD-BOUNDARIES-001`. Home-lab operation remains deferred.
+
 ## XSV-WASZKIEWICZ-DYNAMIC-HYD-001 grouped result (2026-08-31)
 
 `XSV_WASZKIEWICZ_DYNAMIC_HYD_001_NO_TESTED_EVOLVING_RESISTANCE_FORM_HAS_STABLE_GROUPED_PREDICTIVE_ADVANTAGE`.
@@ -13,8 +24,8 @@ questions remain unexhausted. SCI-ED-003 and home-lab operation remain deferred.
 
 ## Reviewed whole-corpus authority (2026-08-31)
 
-All 39 material families are registered. Current priority is grouped
-Waszkiewicz hydraulics (56 brews/11 conditions). Visualizer is boundary and
+All 39 material families are registered. Current priority is the completed
+source-conditioned EWP hydraulic support qualification. Visualizer is boundary and
 descriptive-hydraulic authority, not population chemistry. Wadsworth/Vaca stay
 separate. Home-lab operation is deferred; production physics is unchanged.
 

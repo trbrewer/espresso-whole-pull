@@ -1,5 +1,14 @@
 # Existing Data Leverage Programme
 
+## Static hydraulic support result (2026-08-31)
+
+`EWP-POROSITY-PERMEABILITY-PRIOR-001` is
+`COMPLETE_POSITIVE_POROSITY_AND_PERMEABILITY`. Wadsworth and Vaca Guerra remain
+separate source-conditioned empirical supports; no rows or probability models
+were pooled. The result selects bounded initial-porosity and saturated-K design
+cases without changing production defaults or claiming physical validation.
+The selected successor is `EWP-REAL-WORLD-BOUNDARIES-001`.
+
 ## Waszkiewicz grouped hydraulic result (2026-08-31)
 
 `XSV-WASZKIEWICZ-DYNAMIC-HYD-001` is `COMPLETE_NEGATIVE`. Across 56 physical
@@ -19,7 +28,7 @@ conditional tasks, SCI-ED-003 is deferred, and home-lab work is unauthorized.
 ## Reviewed C1 portfolio (2026-08-31)
 
 All 39 material families are registered. Current priority is
-`XSV-WASZKIEWICZ-DYNAMIC-HYD-001`. Conditional successors are
+`EWP-REAL-WORLD-BOUNDARIES-001`. Remaining conditional tasks are
 `EWP-POROSITY-PERMEABILITY-PRIOR-001`, `EWP-REAL-WORLD-BOUNDARIES-001`,
 `OBS-PANNUSCH-FRACTION-WINDOW-001`, and `SCI-MD-RHEOLOGY-001`. Each result
 selects the next task; this is not a mandatory queue. Visualizer dynamics are

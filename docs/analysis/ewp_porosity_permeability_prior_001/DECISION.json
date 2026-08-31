@@ -1,0 +1,15 @@
+{
+  "claim_ceiling": "SOURCE_CONDITIONED_STATIC_POROSITY_AND_PERMEABILITY_PRIOR_QUALIFICATION_FOR_EWP_HYDRAULIC_SENSITIVITY",
+  "code": "EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_AND_PERMEABILITY",
+  "production_default_action": "RETAIN_UNCHANGED",
+  "reason": "Separate source-conditioned supports close bounded static design ranges for both requested EWP quantities; they do not establish state equivalence or validation.",
+  "scope": "POROSITY_AND_PERMEABILITY",
+  "source_dispositions": {
+    "VACA_EQ11": "CONTEXTUAL_BOUND_ONLY",
+    "VACA_FIG12": "OBSERVATION_OPERATOR_REQUIRED_AND_CLOSED",
+    "VACA_TABLE_C1": "USEFUL_SOURCE_CONDITIONED_SUPPORT",
+    "WADSWORTH_PERMEABILITY": "USEFUL_SOURCE_CONDITIONED_SUPPORT",
+    "WADSWORTH_POROSITY": "USEFUL_SOURCE_CONDITIONED_SUPPORT"
+  },
+  "successor": "EWP-REAL-WORLD-BOUNDARIES-001"
+}

@@ -1,0 +1,529 @@
+{
+  "nonfusion": "WADSWORTH_AND_VACA_RETAINED_SEPARATELY",
+  "vaca_eq11": {
+    "refit_performed": false,
+    "status": "POST_FIT_RECONSTRUCTION_NOT_INDEPENDENT_DIRECT_DARCY_EVIDENCE",
+    "support_type": "CONTEXTUAL_BOUND"
+  },
+  "vaca_figure12": {
+    "contains_direct_permeability": false,
+    "devices": [
+      "circle_60mm_stainless_portafilter",
+      "square_50mm_acrylic_vessel"
+    ],
+    "n": 50,
+    "r_squared": 0.9417405444330854,
+    "rmse": 0.012535246307911144,
+    "support_type": "SOURCE_OPERATOR_PREDICTION"
+  },
+  "vaca_table_c1": {
+    "epsilon_0": {
+      "max": 0.36,
+      "median": 0.28,
+      "min": 0.24,
+      "n": 9,
+      "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+    },
+    "k_ewp_reference_mu_m2": {
+      "max": 5.4749506877571975e-14,
+      "median": 8.969260540029545e-15,
+      "min": 4.736465593002714e-15,
+      "n": 9,
+      "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+    },
+    "k_published_mu_m2": {
+      "max": 6.083278541952441e-13,
+      "median": 9.965845044477272e-14,
+      "min": 5.262739547780793e-14,
+      "n": 9,
+      "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+    },
+    "rows": [
+      {
+        "area_m2": 0.002733971006786517,
+        "delta_p_bar": 14.4,
+        "distribution": "A",
+        "dose_g": 22.2,
+        "epsilon_0": 0.25,
+        "ewp_mu_pa_s": 0.000315,
+        "k_ewp_reference_mu_m2": 4.790947843808932e-15,
+        "k_published_mu_m2": 5.323275382009924e-14,
+        "length_m": 0.024439999999999996,
+        "limitation": "UNPUBLISHED_PUMP_CURVE",
+        "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+        "published_mu_pa_s": 0.0035,
+        "q_ml_s": 2.45,
+        "row_id": "VACA_C1_01"
+      },
+      {
+        "area_m2": 0.002733971006786517,
+        "delta_p_bar": 14.33,
+        "distribution": "A",
+        "dose_g": 19.86,
+        "epsilon_0": 0.28,
+        "ewp_mu_pa_s": 0.000315,
+        "k_ewp_reference_mu_m2": 5.900253288547942e-15,
+        "k_published_mu_m2": 6.555836987275491e-14,
+        "length_m": 0.02438,
+        "limitation": "UNPUBLISHED_PUMP_CURVE",
+        "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+        "published_mu_pa_s": 0.0035,
+        "q_ml_s": 3.01,
+        "row_id": "VACA_C1_02"
+      },
+      {
+        "area_m2": 0.002733971006786517,
+        "delta_p_bar": 12.57,
+        "distribution": "A",
+        "dose_g": 17.5,
+        "epsilon_0": 0.3,
+        "ewp_mu_pa_s": 0.000315,
+        "k_ewp_reference_mu_m2": 9.556404188651679e-15,
+        "k_published_mu_m2": 1.0618226876279643e-13,
+        "length_m": 0.02419,
+        "limitation": "UNPUBLISHED_PUMP_CURVE",
+        "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+        "published_mu_pa_s": 0.0035,
+        "q_ml_s": 4.31,
+        "row_id": "VACA_C1_03"
+      },
+      {
+        "area_m2": 0.002733971006786517,
+        "delta_p_bar": 13.32,
+        "distribution": "B",
+        "dose_g": 22.2,
+        "epsilon_0": 0.27,
+        "ewp_mu_pa_s": 0.000315,
+        "k_ewp_reference_mu_m2": 6.4109104301894534e-15,
+        "k_published_mu_m2": 7.123233811321614e-14,
+        "length_m": 0.02438,
+        "limitation": "UNPUBLISHED_PUMP_CURVE",
+        "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+        "published_mu_pa_s": 0.0035,
+        "q_ml_s": 3.04,
+        "row_id": "VACA_C1_04"
+      },
+      {
+        "area_m2": 0.002733971006786517,
+        "delta_p_bar": 6.34,
+        "distribution": "B",
+        "dose_g": 19.86,
+        "epsilon_0": 0.31,
+        "ewp_mu_pa_s": 0.000315,
+        "k_ewp_reference_mu_m2": 3.0159909384065563e-14,
+        "k_published_mu_m2": 3.351101042673951e-13,
+        "length_m": 0.02437,
+        "limitation": "UNPUBLISHED_PUMP_CURVE",
+        "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+        "published_mu_pa_s": 0.0035,
+        "q_ml_s": 6.81,
+        "row_id": "VACA_C1_05"
+      },
+      {
+        "area_m2": 0.002733971006786517,
+        "delta_p_bar": 4.19,
+        "distribution": "B",
+        "dose_g": 17.5,
+        "epsilon_0": 0.36,
+        "ewp_mu_pa_s": 0.000315,
+        "k_ewp_reference_mu_m2": 5.4749506877571975e-14,
+        "k_published_mu_m2": 6.083278541952441e-13,
+        "length_m": 0.02437,
+        "limitation": "UNPUBLISHED_PUMP_CURVE",
+        "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+        "published_mu_pa_s": 0.0035,
+        "q_ml_s": 8.17,
+        "row_id": "VACA_C1_06"
+      },
+      {
+        "area_m2": 0.002733971006786517,
+        "delta_p_bar": 14.21,
+        "distribution": "C",
+        "dose_g": 22.2,
+        "epsilon_0": 0.24,
+        "ewp_mu_pa_s": 0.000315,
+        "k_ewp_reference_mu_m2": 4.736465593002714e-15,
+        "k_published_mu_m2": 5.262739547780793e-14,
+        "length_m": 0.024339999999999997,
+        "limitation": "UNPUBLISHED_PUMP_CURVE",
+        "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+        "published_mu_pa_s": 0.0035,
+        "q_ml_s": 2.4,
+        "row_id": "VACA_C1_07"
+      },
+      {
+        "area_m2": 0.002733971006786517,
+        "delta_p_bar": 12.13,
+        "distribution": "C",
+        "dose_g": 19.86,
+        "epsilon_0": 0.27,
+        "ewp_mu_pa_s": 0.000315,
+        "k_ewp_reference_mu_m2": 8.969260540029545e-15,
+        "k_published_mu_m2": 9.965845044477272e-14,
+        "length_m": 0.024399999999999998,
+        "limitation": "UNPUBLISHED_PUMP_CURVE",
+        "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+        "published_mu_pa_s": 0.0035,
+        "q_ml_s": 3.87,
+        "row_id": "VACA_C1_08"
+      },
+      {
+        "area_m2": 0.002733971006786517,
+        "delta_p_bar": 4.71,
+        "distribution": "C",
+        "dose_g": 17.5,
+        "epsilon_0": 0.35,
+        "ewp_mu_pa_s": 0.000315,
+        "k_ewp_reference_mu_m2": 4.239321069224772e-14,
+        "k_published_mu_m2": 4.71035674358308e-13,
+        "length_m": 0.024339999999999997,
+        "limitation": "UNPUBLISHED_PUMP_CURVE",
+        "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+        "published_mu_pa_s": 0.0035,
+        "q_ml_s": 7.12,
+        "row_id": "VACA_C1_09"
+      }
+    ],
+    "support_type": "EMPIRICAL_ROW_SUPPORT"
+  },
+  "wadsworth": {
+    "per_coffee": {
+      "Guayacan": {
+        "k_m2": {
+          "max": 1.55e-10,
+          "median": 4.905e-11,
+          "min": 1.58e-11,
+          "n": 10,
+          "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+        },
+        "phi_connected": {
+          "max": 0.6733,
+          "median": 0.5156499999999999,
+          "min": 0.3707,
+          "n": 10,
+          "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+        },
+        "phi_total": {
+          "max": 0.693,
+          "median": 0.5529,
+          "min": 0.4813,
+          "n": 10,
+          "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+        }
+      },
+      "Tumba": {
+        "k_m2": {
+          "max": 1.91e-10,
+          "median": 6.01e-11,
+          "min": 2.54e-11,
+          "n": 11,
+          "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+        },
+        "phi_connected": {
+          "max": 0.5625,
+          "median": 0.5113,
+          "min": 0.4558,
+          "n": 11,
+          "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+        },
+        "phi_total": {
+          "max": 0.5834,
+          "median": 0.5484,
+          "min": 0.5193,
+          "n": 11,
+          "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+        }
+      }
+    },
+    "rows": [
+      {
+        "coffee": "Guayacan",
+        "k_m2": 2.39e-11,
+        "k_uncertainty_reported_m2": 2.6e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.4792,
+        "phi_total": 0.5014,
+        "s_connected_per_m": 33588.43,
+        "s_total_per_m": 40384.06,
+        "setting": 1,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": null,
+        "k_uncertainty_reported_m2": null,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": null,
+        "phi_total": null,
+        "s_connected_per_m": null,
+        "s_total_per_m": null,
+        "setting": 2,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": 7.38e-11,
+        "k_uncertainty_reported_m2": 7.99e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.4979,
+        "phi_total": 0.5379,
+        "s_connected_per_m": 24439.88,
+        "s_total_per_m": 36412.35,
+        "setting": 3,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": 1.55e-10,
+        "k_uncertainty_reported_m2": 9.36e-11,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.4643,
+        "phi_total": 0.5057,
+        "s_connected_per_m": 17105.0,
+        "s_total_per_m": 29883.78,
+        "setting": 4,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": 5.84e-11,
+        "k_uncertainty_reported_m2": 2.1e-11,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.3707,
+        "phi_total": 0.4813,
+        "s_connected_per_m": 21916.45,
+        "s_total_per_m": 48969.36,
+        "setting": 5,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": 1.25e-10,
+        "k_uncertainty_reported_m2": 1.41e-11,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.6733,
+        "phi_total": 0.693,
+        "s_connected_per_m": 28288.25,
+        "s_total_per_m": 32759.1,
+        "setting": 6,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": 4.87e-11,
+        "k_uncertainty_reported_m2": 1.6e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5312,
+        "phi_total": 0.575,
+        "s_connected_per_m": 29619.7,
+        "s_total_per_m": 41152.9,
+        "setting": 7,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": 4.63e-11,
+        "k_uncertainty_reported_m2": 1.01e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.538,
+        "phi_total": 0.5724,
+        "s_connected_per_m": 33231.1,
+        "s_total_per_m": 43597.65,
+        "setting": 8,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": 4.94e-11,
+        "k_uncertainty_reported_m2": 3.43e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5166,
+        "phi_total": 0.5628,
+        "s_connected_per_m": 32187.77,
+        "s_total_per_m": 46057.74,
+        "setting": 9,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": 3.91e-11,
+        "k_uncertainty_reported_m2": 4.22e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5558,
+        "phi_total": 0.5776,
+        "s_connected_per_m": 36498.73,
+        "s_total_per_m": 42792.86,
+        "setting": 10,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Guayacan",
+        "k_m2": 1.58e-11,
+        "k_uncertainty_reported_m2": 1.05e-13,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5147,
+        "phi_total": 0.543,
+        "s_connected_per_m": 46688.25,
+        "s_total_per_m": 55946.72,
+        "setting": 11,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 6.01e-11,
+        "k_uncertainty_reported_m2": 9.05e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.4558,
+        "phi_total": 0.5193,
+        "s_connected_per_m": 22265.34,
+        "s_total_per_m": 38495.04,
+        "setting": 1,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 5.78e-11,
+        "k_uncertainty_reported_m2": 3.69e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.4945,
+        "phi_total": 0.5384,
+        "s_connected_per_m": 28789.66,
+        "s_total_per_m": 41897.69,
+        "setting": 2,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 9.93e-11,
+        "k_uncertainty_reported_m2": 5.46e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.4908,
+        "phi_total": 0.5394,
+        "s_connected_per_m": 22528.85,
+        "s_total_per_m": 35936.89,
+        "setting": 3,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 1.04e-10,
+        "k_uncertainty_reported_m2": 2.09e-11,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5186,
+        "phi_total": 0.5757,
+        "s_connected_per_m": 23026.25,
+        "s_total_per_m": 38344.69,
+        "setting": 4,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 1.51e-10,
+        "k_uncertainty_reported_m2": 1.27e-11,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.4903,
+        "phi_total": 0.5677,
+        "s_connected_per_m": 18580.9,
+        "s_total_per_m": 36234.3,
+        "setting": 5,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 1.91e-10,
+        "k_uncertainty_reported_m2": 7.96e-11,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5021,
+        "phi_total": 0.5484,
+        "s_connected_per_m": 19616.52,
+        "s_total_per_m": 32069.87,
+        "setting": 6,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 9.06e-11,
+        "k_uncertainty_reported_m2": 1.44e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5507,
+        "phi_total": 0.5823,
+        "s_connected_per_m": 23500.01,
+        "s_total_per_m": 31775.81,
+        "setting": 7,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 3.49e-11,
+        "k_uncertainty_reported_m2": 1.04e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5169,
+        "phi_total": 0.542,
+        "s_connected_per_m": 31510.84,
+        "s_total_per_m": 38389.28,
+        "setting": 8,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 3.4e-11,
+        "k_uncertainty_reported_m2": 3.44e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5126,
+        "phi_total": 0.5574,
+        "s_connected_per_m": 35301.57,
+        "s_total_per_m": 47534.83,
+        "setting": 9,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 2.54e-11,
+        "k_uncertainty_reported_m2": 1.55e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5113,
+        "phi_total": 0.5459,
+        "s_connected_per_m": 38074.56,
+        "s_total_per_m": 47995.53,
+        "setting": 10,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      },
+      {
+        "coffee": "Tumba",
+        "k_m2": 3.09e-11,
+        "k_uncertainty_reported_m2": 2.09e-12,
+        "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+        "phi_connected": 0.5625,
+        "phi_total": 0.5834,
+        "s_connected_per_m": 39815.76,
+        "s_total_per_m": 45841.77,
+        "setting": 11,
+        "uncertainty_semantics": "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+      }
+    ],
+    "support_type": "EMPIRICAL_ROW_SUPPORT",
+    "union": {
+      "k_m2": {
+        "max": 1.91e-10,
+        "median": 5.78e-11,
+        "min": 1.58e-11,
+        "n": 21,
+        "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+      },
+      "phi_connected": {
+        "max": 0.6733,
+        "median": 0.5126,
+        "min": 0.3707,
+        "n": 21,
+        "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+      },
+      "phi_total": {
+        "max": 0.693,
+        "median": 0.5484,
+        "min": 0.4813,
+        "n": 21,
+        "quantile_semantics": "EQUAL_ROW_DESIGN_SUMMARY_NOT_POPULATION_PROBABILITY"
+      }
+    }
+  }
+}

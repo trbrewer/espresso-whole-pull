@@ -1,0 +1,2 @@
+def compare(case_rows):
+ return [{"comparison_authority":"MERGED_XSV_WASZKIEWICZ_DYNAMIC_HYD_001","source_case_id":r["case_id"],"ewp_transferred_R_bar_per_g_per_s":r["R_bar_per_g_per_s"],"overlap_status":"CONTEXT_ONLY_STATIC_RANGE_COMPARISON","validation_status":"NOT_VALIDATION","retained_conclusion":"FIXED_RESISTANCE_RETAINED_BY_PARSIMONY"} for r in case_rows if r["case_id"] in {"EWP_BASELINE","WADS_K_MIN","WADS_K_MEDIAN","WADS_K_MAX","VACA_EWP_K_MIN","VACA_EWP_K_MEDIAN","VACA_EWP_K_MAX"}]

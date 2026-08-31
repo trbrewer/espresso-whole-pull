@@ -17,7 +17,7 @@ preflight. External data unavailable in the checkout are not absent.
 Also read `strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md`,
 `../provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json`, and
 `analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv`. Current priority is
-`XSV-PANNUSCH-MULTIMODEL-001`; home-lab operation is deferred while relevant
+`EWP-POROSITY-PERMEABILITY-PRIOR-001`; home-lab operation is deferred while relevant
 existing-data opportunities remain active.
 
 For validation work, also read the

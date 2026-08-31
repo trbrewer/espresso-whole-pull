@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 752,
-  "total_uncompressed_bytes_excluding_manifest": 8243110,
-  "aggregate_source_sha256": "8bb31ed6c8589636c59c6b139dd7753ceb011223fb5ef9ae14391c4d036edee4",
-  "aggregate_sha256": "8bb31ed6c8589636c59c6b139dd7753ceb011223fb5ef9ae14391c4d036edee4",
+  "file_count": 781,
+  "total_uncompressed_bytes_excluding_manifest": 8328531,
+  "aggregate_source_sha256": "1af5d45f090090afa91565a5fc15f3e33045a79ec773f2f021621e33cd1624ac",
+  "aggregate_sha256": "1af5d45f090090afa91565a5fc15f3e33045a79ec773f2f021621e33cd1624ac",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -66,6 +66,66 @@
     "VERSION": {
       "sha256": "1f930dd1f133c1f97a94fe3acb8db34372cf4c01ffdb2b3ff4ca72f9494121e9",
       "bytes": 6,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/__init__.py": {
+      "sha256": "390c5047f986f91420de136b4fd31409d3d49a478917002b8fd9ae030a39966d",
+      "bytes": 269,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/authority.py": {
+      "sha256": "44264ab4d61159a599b4bc24b11242df928e7e55f35a66a76375548ada41b5eb",
+      "bytes": 2872,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/decision.py": {
+      "sha256": "38272fd7efcace73b7279d51bd1bcc8f96559cee1692d485338e1f8d7df214b4",
+      "bytes": 738,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/ewp_quantities.py": {
+      "sha256": "433b161b3c6ba2121deb4576937837dd224f80dc597127421d13ed0a89bd57b4",
+      "bytes": 1845,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/mappings.py": {
+      "sha256": "beaf0af90b46dfc555b59c4d00e22bf7ea16b05b0b9e254becdbf42867b7fcd4",
+      "bytes": 3156,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/reporting.py": {
+      "sha256": "c29a418beed39d3cf7f6cc51aa14bb621354c70f075a942ecebc431099cc8cc8",
+      "bytes": 398,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/resistance_context.py": {
+      "sha256": "3a9bb624d5854a77b0961d365513b50a81570881bd4ebf3c4b3313bd57045ccd",
+      "bytes": 496,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/run.py": {
+      "sha256": "e6064d6c54f34acf24e447b7dc3387ffa1f48e676e5cdc5fc53091df69dc7793",
+      "bytes": 10264,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/scenarios.py": {
+      "sha256": "3ad40de0d443ec4f5c155a654a32adb36ed4616b6cc2ad0fbaa7a0a0854b01f8",
+      "bytes": 1360,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/sensitivity.py": {
+      "sha256": "847fead635c327e0cd30c342f7cf58fb4ddef82c76da6d8bf55ade9c8c6ab531",
+      "bytes": 2608,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/source_adapters.py": {
+      "sha256": "993b3e6deda6ae7091acd70a784c6d2690e7295ab12ff8653afcd7b07e83b73a",
+      "bytes": 2265,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_porosity_permeability_prior_001/supports.py": {
+      "sha256": "827b4710d031e71c7e3f6eed0243259f35aa19d78ff336543a28c5bb7e0102e4",
+      "bytes": 1331,
       "git_mode": "100644"
     },
     "analysis/xsv_pannusch_multimodel_001/c1_correction.py": {
@@ -529,8 +589,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "e1a260112dbcb5aa686b449d22475ba258c7d4a1b6b57bfe35d4d789ec6be36e",
-      "bytes": 8341,
+      "sha256": "586cc270bbc00b49d7b3e9c73822aecf3aa782a04f97422f6efd468d47a92220",
+      "bytes": 8603,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -616,6 +676,76 @@
     "docs/analysis/espresso_data_leverage_001/summary.json": {
       "sha256": "a5cd09252e634cd78a335f1f3907691da9a2906885ba058b74aa9de9238e4507",
       "bytes": 425,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/AUTHORITY.json": {
+      "sha256": "d6e9c8f16c97a05b8e1b385bd51756c3c1e0bd659d270e708ba80d0c73d7741f",
+      "bytes": 2788,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/DECISION.json": {
+      "sha256": "1d1d4e4e00dd704a7a9448de44d310ee3fde8598c17c1f77829259acce7be268",
+      "bytes": 850,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/DEFAULT_COMPARISON.csv": {
+      "sha256": "e7cc772ac158b74e3ffdb5afb6c2e8ccbfb0132b78922b2f2bee572a0f275fb1",
+      "bytes": 1905,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/EWP_QUANTITY_DEFINITIONS.json": {
+      "sha256": "93edb800acb16f1c1dff601902789b913273c3bdf9c4adbf43be7dc8d6abd027",
+      "bytes": 3183,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/NUMERICAL_IDENTIFIABILITY.json": {
+      "sha256": "57118ef40adbb647817dd8477336507d322bca973fea9f845e29c5ca5d324e25",
+      "bytes": 663,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/REDUCED_TWIN_ANCHORS.csv": {
+      "sha256": "ec6a80e7173028c8117cb64e0f11614b79a1868612567836939e7136730d94cf",
+      "bytes": 1851,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/RESULT.md": {
+      "sha256": "1f91478c04f5307f2514412a138b90635a81289c1facaa106dcceb8dd0ed0fe4",
+      "bytes": 3961,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/SENSITIVITY_CASE_REGISTER.csv": {
+      "sha256": "eed2685241282b30505d44b55731290ce9d0aa6aed7aaffc5777471b57d83399",
+      "bytes": 2125,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/SOURCE_SUPPORTS.json": {
+      "sha256": "ffde3f90e67ed45ff87835dbdb998563ca3ee5db0694d46fe1b9e284bfd9549c",
+      "bytes": 17547,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/SOURCE_VARIABLE_MAPPING_LEDGER.csv": {
+      "sha256": "7da55042fef10fbf514550c0ec93ad468eb4228b8e5e2b1163ed90c0e0868c3d",
+      "bytes": 4612,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/STATIC_HYDRAULIC_SENSITIVITY.csv": {
+      "sha256": "1f4c8f7b8c0dc1cf4e8692abba6e20d9909f8ff72f5764eaf0061ddd0844b55a",
+      "bytes": 8458,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/VISUALIZER_HANDOFF.json": {
+      "sha256": "a20ed85dd78bc2f229c842b3464d3218592da0b6a4f4e23b3d7397aff1db43e8",
+      "bytes": 466,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/WASZKIEWICZ_CONTEXT_COMPARISON.csv": {
+      "sha256": "7915f86de530a3b9c1a3ecec56f76f5202b4c77c3d0450a74b4535a73d61c2a3",
+      "bytes": 1281,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/summary.json": {
+      "sha256": "e568955e42250116b281f9eda9f7c7c95537d5d0def41b8214acd1339bf30a0b",
+      "bytes": 1635,
       "git_mode": "100644"
     },
     "docs/analysis/pannusch_prior_impact_001/CURRENT_DATA_SUFFICIENCY.json": {
@@ -1494,8 +1624,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "1966eaead8c66a09d8c8cfa9d220c696fbe3265a05180d721d9af1480ab207bf",
-      "bytes": 4840,
+      "sha256": "ff92fe67346b79ea8789afc99640b0303078b0586345f075601df70f24f177d2",
+      "bytes": 5307,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -2528,6 +2658,11 @@
       "bytes": 6019,
       "git_mode": "100755"
     },
+    "scripts/run_ewp_porosity_permeability_prior_001.py": {
+      "sha256": "fff2c46dad0cc5d0a760ddf515c3365e44119599416086efbf1468025dbe98b0",
+      "bytes": 210,
+      "git_mode": "100755"
+    },
     "scripts/run_qualification.py": {
       "sha256": "2dc1dc4e65fde24d5119c7f7abf8af54863b1b05372b6f5a8e88df81a597ab04",
       "bytes": 25215,
@@ -2721,6 +2856,11 @@
     "scripts/val_corpus_002_protocol.py": {
       "sha256": "5ac97ec97a87979b5432989288d77a709c409ea65f00afc5db1628368cad1341",
       "bytes": 45036,
+      "git_mode": "100755"
+    },
+    "scripts/validate_ewp_porosity_permeability_prior_001.py": {
+      "sha256": "7345c5830ff73e2e7f578d83f3cdc8cdda5f4b35215076bddfb55602fbbe6bd7",
+      "bytes": 725,
       "git_mode": "100755"
     },
     "scripts/validate_existing_data_leverage_programme.py": {
@@ -3019,13 +3159,18 @@
       "git_mode": "100644"
     },
     "tests/test_espresso_corpus_leverage_002_c1.py": {
-      "sha256": "cf750122ab8af92a23ccda38052cfd50786481627ecd06c05e0fc236299adb24",
-      "bytes": 1255,
+      "sha256": "218dee906ef034f61c922354ac7913a5e6737ffcc82da40b2e17ba14792cdaaa",
+      "bytes": 1249,
+      "git_mode": "100644"
+    },
+    "tests/test_ewp_porosity_permeability_prior_001.py": {
+      "sha256": "31cc3d5c0b7d27a2a255305056c887583c738b900cb4e8930a4fe10ace5b6763",
+      "bytes": 4848,
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {
-      "sha256": "523fe082a7f96b31d116e2335d706e503692b9d9c44c99ed9589673c054523e9",
-      "bytes": 662,
+      "sha256": "d34076091a6cdff337a2840b776eca183a6f116a6b0713a22edbb21c2da0758b",
+      "bytes": 656,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
@@ -3314,8 +3459,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_multimodel_001.py": {
-      "sha256": "4068db1684c19c870b328774004eb40b9b7e4c1747e9f7e8771164a14670f3d6",
-      "bytes": 5085,
+      "sha256": "d33b03279bcd948ad77060d33c5cd662d9f4d094a8d32842c2e3cf5820376491",
+      "bytes": 5079,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {
