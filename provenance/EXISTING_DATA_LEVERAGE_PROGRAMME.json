@@ -5,7 +5,7 @@
   "current_priority": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
   "home_lab_status": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY",
   "authorities": {
-    "puckworks_commit": "8c178d80d813566d114d98fbb376f451f910f180",
+    "puckworks_commit": "a3428a4d4ad571ef3168a70e8a04620fca5d3520",
     "puckworks_tree": "6175b4ad39f45ebcdec32a176e5611bf3b03655b",
     "manifest_sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081",
     "available_data_register_sha256": "0c318f43c40361629bb8f25ab4b8ca9f073425ca3ec3a2418bbd8a6cb67a5481",

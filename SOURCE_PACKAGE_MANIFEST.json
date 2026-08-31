@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 693,
-  "total_uncompressed_bytes_excluding_manifest": 7744365,
-  "aggregate_source_sha256": "365a5dd1e02e5927b1a69a595f335143d23acfac368fc3c691d81d4773e2ef12",
-  "aggregate_sha256": "365a5dd1e02e5927b1a69a595f335143d23acfac368fc3c691d81d4773e2ef12",
+  "total_uncompressed_bytes_excluding_manifest": 7744345,
+  "aggregate_source_sha256": "5f72f2051065ae39aa154dd1498b648684f23240ee12d6367a53040a21ac3277",
+  "aggregate_sha256": "5f72f2051065ae39aa154dd1498b648684f23240ee12d6367a53040a21ac3277",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -529,8 +529,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/espresso_corpus_leverage_002/summary.json": {
-      "sha256": "f062d8808f9b2d1ed4134f419f0c6a17fec1269788cfcb42a066994812402a72",
-      "bytes": 4319,
+      "sha256": "16c65084f5f5459274c5fc1a6e753d6c7f9aef30fdbf44b11a78588fb4e38213",
+      "bytes": 4299,
       "git_mode": "100644"
     },
     "docs/analysis/espresso_data_leverage_001/CURRENT_DECISION_SUPERSESSION.json": {
@@ -2719,7 +2719,7 @@
       "git_mode": "100644"
     },
     "tests/test_available_data_first.py": {
-      "sha256": "01f5a4055930c680a8c8ef82916118cd8b8fba2fad81bd8ddb8dab950d0e12dc",
+      "sha256": "e58cee9bace65e2f2b6c02015aaed57ee5cd206deceefe0e3aaae07a11d89efe",
       "bytes": 1706,
       "git_mode": "100644"
     },
