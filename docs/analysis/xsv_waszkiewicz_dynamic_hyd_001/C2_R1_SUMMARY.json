@@ -1,8 +1,9 @@
 {
   "authorities": {
     "R2_checksum_manifest_sha256": "34817dbf1141d219682ad63665f01e6269965bd27f573743e2611ea565288413",
-    "final_commit": "RESOLVE_FROM_EXACT_FINAL_HEAD",
-    "final_tree": "RESOLVE_FROM_EXACT_FINAL_HEAD",
+    "final_authority_semantics": "EXACT_GREEN_CANDIDATE_PRECEDING_METADATA_ONLY_REVIEW_CLOSEOUT",
+    "final_commit": "b28c0fca7a1d7b98c06f1819e3480d0654d88d8e",
+    "final_tree": "1e6e3dbdef4c09ecbc90d1ac13fd27a067e5c760",
     "starting_commit": "e4667eee315ecb8c93ba9be7c1385e04f12ffcca",
     "starting_tree": "430397d9b4b9de14a4e85df2f75a709ae8c21802"
   },
@@ -63,7 +64,7 @@
   },
   "rereview": {
     "merged": false,
-    "requested": false,
+    "requested": true,
     "scope": "BOUNDED_OWNER_ADJUDICATION_MACHINE_CONTRACT_SEMANTIC_TEST_AND_CURRENT_TEST_AUTHORITY_ADDENDUM"
   },
   "scientific_invariance": {
@@ -110,11 +111,11 @@
   },
   "task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001-C2-R1",
   "validation": {
-    "corpus_validator": "PENDING_FINAL_COMMAND",
-    "exact_producer": "LOCAL_TOOLING_NOT_RUN",
-    "hosted_CI": "PENDING_AFTER_PUSH",
-    "programme_validator": "PENDING_FINAL_COMMAND",
-    "source_manifest": "PASS_750_OF_750",
+    "corpus_validator": "PASS",
+    "exact_producer": "HOSTED_PASS_LOCAL_NOT_RUN",
+    "hosted_CI": "PASS_ALL_THREE_CHECKS",
+    "programme_validator": "PASS",
+    "source_manifest": "PASS_752_OF_752",
     "static_validation": "PASS_39_OF_39"
   }
 }
