@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 693,
-  "total_uncompressed_bytes_excluding_manifest": 7741050,
-  "aggregate_source_sha256": "c29d160a66b4ec332f5ae56638d8e0c2e99e90b9f0a3238bedd0cf789aa0cadf",
-  "aggregate_sha256": "c29d160a66b4ec332f5ae56638d8e0c2e99e90b9f0a3238bedd0cf789aa0cadf",
+  "total_uncompressed_bytes_excluding_manifest": 7741220,
+  "aggregate_source_sha256": "aacafce2069f3bf924b32f0873b0ee5c8a73cc40ce86b30833a8728537d59b73",
+  "aggregate_sha256": "aacafce2069f3bf924b32f0873b0ee5c8a73cc40ce86b30833a8728537d59b73",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2119,8 +2119,8 @@
       "git_mode": "100755"
     },
     "scripts/data_availability_preflight.py": {
-      "sha256": "3a3dc5dc5d904af0c5b4da785145b547e821620290086f220bb3d36427903677",
-      "bytes": 2170,
+      "sha256": "cb12ade19a57a97754ab027f872744cce7ed19dfc30cc35185ac3f4ea8892c56",
+      "bytes": 2236,
       "git_mode": "100755"
     },
     "scripts/espresso_reference_math.py": {
@@ -2456,7 +2456,7 @@
     "scripts/validate_local_data_corpus_authority.py": {
       "sha256": "6b608e66cb0fb833d1169aa414cafc4c32a9d36fb2544a8fdf2e4d6b76596e06",
       "bytes": 1917,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/validate_sci_lc_001a_ledger.py": {
       "sha256": "5258a50b0813851b10d297e9409565976dd127a1236852eb5f4d7ec31aea9e60",
@@ -2719,8 +2719,8 @@
       "git_mode": "100644"
     },
     "tests/test_available_data_first.py": {
-      "sha256": "e5e4b2a48b8e93da2e767d4c04f11e440c0e72051e5cec0da51024307a44ee53",
-      "bytes": 1607,
+      "sha256": "f28a7fde70c81449d46bf5ef696ee9479ea46ecce4613543c88fc51f7bfe5c0a",
+      "bytes": 1706,
       "git_mode": "100644"
     },
     "tests/test_branch_no_physics_change.py": {
@@ -2744,8 +2744,8 @@
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {
-      "sha256": "5bae2c87b336a096f708e05019f9f578e521339c60c596ed609fd1d040d5497e",
-      "bytes": 652,
+      "sha256": "c10af31a44f46a90798cf0c4d826e2893f7a01c2d9f53f12a39529a9f80ed2d0",
+      "bytes": 658,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
@@ -3034,8 +3034,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_multimodel_001.py": {
-      "sha256": "d5759a231c89aacdd50afcb8422e2ceaa9e2104b5008d0f7e3252610bf4d5e28",
-      "bytes": 5082,
+      "sha256": "cf7090e07c54a6a228af288a974b0aec9e236f73baa3218d63d4a57ce080e305",
+      "bytes": 5081,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {
