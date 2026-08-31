@@ -1,6 +1,10 @@
 # Data-First Scientific Development Plan
 
-> 2026-08-31 result: grouped Waszkiewicz fixed-versus-evolving resistance was
+> 2026-08-31 C1 correction: no tested bounded evolving-resistance form has stable
+> grouped predictive advantage sufficient for adoption; fixed resistance is
+> retained by parsimony. Mean ranking and the adoption decision are stable only
+> within the tested processing windows, while effect magnitude varies. The
+> grouped Waszkiewicz fixed-versus-evolving resistance task was
 > null at condition variability. Retain fixed hydraulics and proceed to the
 > separate-source `EWP-POROSITY-PERMEABILITY-PRIOR-001` task. No laboratory
 > operation or production adoption is authorized.

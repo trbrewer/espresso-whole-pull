@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 736,
-  "total_uncompressed_bytes_excluding_manifest": 8184267,
-  "aggregate_source_sha256": "96fae47a1028eb98b1339cbcd6f3c7fafd3f4041b2b0a06b3c3717b28a3a2828",
-  "aggregate_sha256": "96fae47a1028eb98b1339cbcd6f3c7fafd3f4041b2b0a06b3c3717b28a3a2828",
+  "total_uncompressed_bytes_excluding_manifest": 8184544,
+  "aggregate_source_sha256": "0c07205c6ab23bdeea0899785f6b63b5962b7a35b2a0265110eb8790ca458991",
+  "aggregate_sha256": "0c07205c6ab23bdeea0899785f6b63b5962b7a35b2a0265110eb8790ca458991",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1184,8 +1184,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C1_CORRECTION_RECORD.json": {
-      "sha256": "230efdc4150e6c7addd7dbc77eb74347697cdce77d13b21379216b295b6cb41d",
-      "bytes": 2001,
+      "sha256": "80fbd679c95eaf86a1351828fa62bd603ea4f3381b2e62fd6a5e4f5ff5d2a2c4",
+      "bytes": 1979,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C1_CORRECTION_RECORD.md": {
@@ -1424,8 +1424,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": {
-      "sha256": "17b045bb9e709cc6ee7526a1c7e9dae0763fce34abccf1f6db56b59795f9c7c0",
-      "bytes": 14159,
+      "sha256": "a21d8b60aa2cfd468c11c947db7982eca15bd64d009ad7aa52ecd56677c298be",
+      "bytes": 14458,
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
