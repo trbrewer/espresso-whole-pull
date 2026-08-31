@@ -2,13 +2,14 @@
 
 ## XSV-PANNUSCH-MULTIMODEL-001 grouped result (2026-08-30)
 
-`XSV_PANNUSCH_MULTIMODEL_001_MECHANISTIC_STRUCTURE_HAS_GROUPED_PREDICTIVE_ADVANTAGE`.
-On the frozen source-internal, target-exposed March common subset, fixed
-published Pannusch RMSE was 0.0113722 versus 0.0242212 for the pooled baseline
-(53.05% lower; paired condition-bootstrap difference interval entirely below
-zero; zero of four conditions worse). Ranking was stable across 0.01x/0.1x/1x.
-Species partial pooling was not supported. Current successor is
-`OBS-PANNUSCH-TELEMETRY-001` for systematic early/tail observation residuals.
+`XSV_PANNUSCH_MULTIMODEL_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_VARIABILITY`.
+C1 preserves the 53.05% fixed-Pannusch advantage over an ordinal-only pooled
+profile but corrects the primary fairness comparison: fixed Pannusch RMSE
+0.0113722 versus calibration-only boundary-aware empirical RMSE 0.0111868,
+paired interval [-0.001167, 0.001499], with condition signs split 2–2. Unique
+mechanistic predictive advantage is not established. Species partial pooling
+was not supported. Current successor is `OBS-PANNUSCH-FRACTION-WINDOW-001`,
+limited to qualifying source-order joins and the fraction-window observer.
 SCI-ED-003 remains deferred; home-lab operation remains
 `DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED`. No production physics or
 parameters changed; physical and independent validation remain unestablished.

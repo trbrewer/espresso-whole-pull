@@ -4,7 +4,7 @@
 
 XSV-PANNUSCH-MULTIMODEL-001 completed with a strong grouped predictive
 advantage for the fixed published Pannusch structure. The next existing-data
-task is `OBS-PANNUSCH-TELEMETRY-001`, testing whether beverage-mass and
+task is `OBS-PANNUSCH-FRACTION-WINDOW-001`, testing whether qualified beverage-mass and
 fraction-boundary observation mapping explains the retained fraction-2/tail
 residual. No additional extraction-physics complexity or laboratory operation
 is currently justified.

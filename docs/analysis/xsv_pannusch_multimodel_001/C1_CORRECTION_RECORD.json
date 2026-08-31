@@ -1,0 +1,44 @@
+{
+  "blocking_findings": [
+    "unmatched fraction-window privilege",
+    "condition-mean-only bootstrap",
+    "fixed reconstruction mislabeled as CV",
+    "inventory and successor claims too broad"
+  ],
+  "corrected_disposition": "XSV_PANNUSCH_MULTIMODEL_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_VARIABILITY",
+  "correction_commit": "RECORDED_EXTERNALLY_AFTER_COMMIT_TO_AVOID_SELF_REFERENCE",
+  "correction_id": "XSV-PANNUSCH-MULTIMODEL-001-C1",
+  "correction_tree": "RECORDED_EXTERNALLY_AFTER_COMMIT_TO_AVOID_SELF_REFERENCE",
+  "historical_freezes_rewritten": false,
+  "independent_review": {
+    "disposition": "XSV_PANNUSCH_MULTIMODEL_001_R2_INDEPENDENT_REVIEW_SCIENTIFIC_DISPOSITION_NOT_SUPPORTED",
+    "evidence_sha256": "5d6d428aeebf6e8e42bec22dcc29b0435c4c5484905b5d0c5817ea2aca17d93a",
+    "profile": "independent scientific/code exact-head review",
+    "task_id": "XSV-PANNUSCH-MULTIMODEL-001-R2"
+  },
+  "march_historically_exposed": true,
+  "original_calibration_freeze_sha256": "0b9a70bc3fd265c2df49a14c8ffd80baebbb7adc0aadc38bd3fb7e3567e40990",
+  "original_candidate_commit": "14da61067ae88d34d7560b140bfd8445c9b5e0b6",
+  "original_candidate_tree": "d6ef5c3786ec2b634050660a93da9b00b9c96955",
+  "original_disposition": "XSV_PANNUSCH_MULTIMODEL_001_MECHANISTIC_STRUCTURE_HAS_GROUPED_PREDICTIVE_ADVANTAGE",
+  "original_methods_freeze_sha256": "7d7492864adb7eb74c39cfc35692d3cc51fbcf49c423f2abba48c07c779c0631",
+  "original_model_ranking": "fixed Pannusch over ordinal pooled baseline",
+  "parent_task": "XSV-PANNUSCH-MULTIMODEL-001",
+  "rejected_or_narrowed_claims": [
+    "unique mechanistic advantage",
+    "INVENTORY_ROBUST_RANKING",
+    "genuine Pannusch LOSO/LOCO/leave-grind-out",
+    "broad telemetry successor"
+  ],
+  "required_calculations": [
+    "boundary-aware comparator",
+    "condition-then-shot uncertainty",
+    "sign flip",
+    "leave one condition out",
+    "schedule ablation",
+    "source roles",
+    "scale invariance"
+  ],
+  "schema_version": 1,
+  "status": "ORIGINAL_RESULT_SUPERSEDED_BY_C1_CORRECTION"
+}

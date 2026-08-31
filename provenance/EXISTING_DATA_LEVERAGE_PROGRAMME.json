@@ -2,7 +2,7 @@
   "$schema": "../schemas/existing_data_leverage_programme.schema.json",
   "schema_version": 1,
   "programme_id": "ESPRESSO-EXISTING-DATA-LEVERAGE-PROGRAMME",
-  "current_priority": "OBS-PANNUSCH-TELEMETRY-001",
+  "current_priority": "OBS-PANNUSCH-FRACTION-WINDOW-001",
   "home_lab_status": "DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED",
   "authorities": {
     "puckworks_commit": "7cf18d7bc388f636d9bca98e6e1a1def4bf08cf5",
@@ -23,11 +23,11 @@
       ],
       "scientific_question": "Which equally privileged structure predicts replicate-resolved fraction shape?",
       "model_component": "extraction observation and kinetics",
-      "status": "COMPLETE_POSITIVE",
+      "status": "COMPLETE_NULL",
       "priority": 1,
       "prerequisites": [],
       "task_id": "XSV-PANNUSCH-MULTIMODEL-001",
-      "current_evidence": "XSV_PANNUSCH_MULTIMODEL_001_MECHANISTIC_STRUCTURE_HAS_GROUPED_PREDICTIVE_ADVANTAGE",
+      "current_evidence": "XSV_PANNUSCH_MULTIMODEL_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_VARIABILITY",
       "expected_information": "grouped model ranking and residual-selected successor",
       "positive_action": "activate strongest supported successor",
       "negative_action": "retain simpler empirical representation",
@@ -38,12 +38,14 @@
       "completion_evidence": [
         "docs/analysis/xsv_pannusch_multimodel_001/RESULT.md",
         "docs/analysis/xsv_pannusch_multimodel_001/summary.json",
-        "docs/analysis/xsv_pannusch_multimodel_001/MODEL_COMPARISON_RESULTS.csv"
+        "docs/analysis/xsv_pannusch_multimodel_001/C1_CORRECTION_RECORD.json",
+        "docs/analysis/xsv_pannusch_multimodel_001/BOUNDARY_PRIVILEGE_RESULTS.csv",
+        "docs/analysis/xsv_pannusch_multimodel_001/HIERARCHICAL_UNCERTAINTY_RESULTS.csv"
       ],
       "exhausted_for_decision": true,
-      "exhaustion_decision": "WHICH_CURRENTLY_TESTED_MODEL_STRUCTURE_BEST_PREDICTS_PANNUSCH_FRACTION_SHARE_OBSERVABLES_UNDER_DECLARED_PRIVILEGES",
+      "exhaustion_decision": "WHETHER_THE_FIXED_PANNUSCH_STRUCTURE_UNIQUELY_OUTPERFORMS_FAIR_PRIVILEGE_MATCHED_EMPIRICAL_MODELS_ON_THE_DECLARED_MARCH_FRACTION_SHARE_COMPARISON",
       "review_trigger": "task completion",
-      "notes": "Fixed published Pannusch won the frozen grouped comparison; corpus remains open for residual-selected observer work."
+      "notes": "No unique advantage established at available variability; corpus and observer/flow/mapping questions remain unexhausted."
     },
     {
       "opportunity_id": "SCI-MD-PANNUSCH-SPECIES-001",
@@ -53,13 +55,13 @@
       ],
       "scientific_question": "Do species-specific deviations improve grouped prediction?",
       "model_component": "species kinetics",
-      "status": "PROPOSED",
+      "status": "DEFERRED_BY_HIGHER_PRIORITY",
       "priority": 2,
       "prerequisites": [
         "XSV-PANNUSCH-MULTIMODEL-001"
       ],
       "task_id": "SCI-MD-PANNUSCH-SPECIES-001",
-      "current_evidence": "paired species differences",
+      "current_evidence": "SPECIES_SIGNAL_NOT_SUPPORTED_FOR_ADDED_CONDITION_DEPENDENT_COMPLEXITY",
       "expected_information": "shared versus partially pooled kinetics",
       "positive_action": "implement bounded species structure",
       "negative_action": "retain shared kinetics",
@@ -71,35 +73,35 @@
       "exhausted_for_decision": false,
       "exhaustion_decision": null,
       "review_trigger": "species residual signal",
-      "notes": "Conditional."
+      "notes": "DEFERRED_NO_GROUPED_ADVANTAGE"
     },
     {
-      "opportunity_id": "OBS-PANNUSCH-TELEMETRY-001",
-      "title": "Telemetry observation adapter",
+      "opportunity_id": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+      "title": "Source-order join qualification and fraction-window observation-operator reconstruction",
       "data_families": [
         "Pannusch telemetry"
       ],
-      "scientific_question": "Do delivered boundaries explain residuals?",
+      "scientific_question": "Can target-independent shot/window/clock/vial reconstruction explain the fraction-2/tail residual?",
       "model_component": "boundary and observer",
-      "status": "ACTIVE",
+      "status": "READY",
       "priority": 1,
       "prerequisites": [
-        "reliable joins"
+        "PR #121 C1 corrected result merged after independent exact-head rereview"
       ],
-      "task_id": "OBS-PANNUSCH-TELEMETRY-001",
-      "current_evidence": "systematic fraction-2 overprediction and tail underprediction with 24 beverage-mass joins",
+      "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+      "current_evidence": "24 SOURCE_ORDER_ONLY joins; observation schedule materially changes error",
       "expected_information": "programmed versus delivered mismatch",
       "positive_action": "build observation adapter",
       "negative_action": "retain programmed boundary",
       "null_action": "defer",
       "blocked_action": "record join blocker",
-      "claim_ceiling": "OBSERVER_COMPONENT_EVIDENCE",
+      "claim_ceiling": "SOURCE_INTERNAL_FRACTION_WINDOW_AND_OBSERVATION_OPERATOR_QUALIFICATION",
       "home_lab_effect": "DEFER",
       "completion_evidence": [],
       "exhausted_for_decision": false,
       "exhaustion_decision": null,
       "review_trigger": "boundary residual signal",
-      "notes": "Immediate residual-selected successor; observation operator only, not hydraulic validation."
+      "notes": "Narrow observer qualification only; no broad telemetry or hydraulic interpretation."
     },
     {
       "opportunity_id": "SCI-MD-PANNUSCH-LATENT-INVENTORY-001",
@@ -284,6 +286,6 @@
     "before laboratory or procurement recommendation",
     "before exhaustion declaration"
   ],
-  "current_claim_ceiling": "SOURCE_INTERNAL_TARGET_EXPOSED_OBSERVATION_OPERATOR_COMPONENT_EVIDENCE",
-  "last_completed_opportunity_review": "XSV-PANNUSCH-MULTIMODEL-001"
+  "current_claim_ceiling": "SOURCE_INTERNAL_TARGET_EXPOSED_PRIVILEGE_MATCHED_FRACTION_SHARE_COMPARISON",
+  "last_completed_opportunity_review": "XSV-PANNUSCH-MULTIMODEL-001-C1"
 }

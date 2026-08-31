@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 671,
-  "total_uncompressed_bytes_excluding_manifest": 7678002,
-  "aggregate_source_sha256": "f7b6ad58ea9ef29fcb157f0d8be031ca92157d7ae5b5935eea7eebb53335ab39",
-  "aggregate_sha256": "f7b6ad58ea9ef29fcb157f0d8be031ca92157d7ae5b5935eea7eebb53335ab39",
+  "file_count": 683,
+  "total_uncompressed_bytes_excluding_manifest": 7717062,
+  "aggregate_source_sha256": "fd73df5b7f652b3ae2b8ab3fc5954ad1d5db6d3b0cf98098524817af44bd9678",
+  "aggregate_sha256": "fd73df5b7f652b3ae2b8ab3fc5954ad1d5db6d3b0cf98098524817af44bd9678",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -68,6 +68,11 @@
       "bytes": 6,
       "git_mode": "100644"
     },
+    "analysis/xsv_pannusch_multimodel_001/c1_correction.py": {
+      "sha256": "74611a887a9dae009e105921844a3e7d33ee359d2da6c31ab66f4b4636bf6d1e",
+      "bytes": 13054,
+      "git_mode": "100644"
+    },
     "analysis/xsv_pannusch_multimodel_001/finalize.py": {
       "sha256": "c42f1c46d5dd906d17ddb74aa42ea9d6f63d4d383d836a3a08adb8968136cbee",
       "bytes": 8253,
@@ -84,8 +89,8 @@
       "git_mode": "100644"
     },
     "analysis/xsv_pannusch_multimodel_001/update_programme.py": {
-      "sha256": "660a0549a73a82ee2960f2853de4f77f0d79e165b0bc7f502fcdc54998aa6ac4",
-      "bytes": 2599,
+      "sha256": "9e779ddab16f65892f7b2b01e45313f6af960a03e018eeb830ce6a4e5863d34e",
+      "bytes": 3647,
       "git_mode": "100644"
     },
     "baseline_evidence/v0_1_2/ESPRESSO_WHOLE_PULL_RUN_STATUS_V0_1_2.json": {
@@ -484,8 +489,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "364866874ed70572ba526b20ad8cf1763ef162c10d1ee7f189866e5b7eaf8a7f",
-      "bytes": 6179,
+      "sha256": "25da7bc68eede0cb7fc249addc98b13965eba55f33ed0391b148b89999e908b6",
+      "bytes": 6176,
       "git_mode": "100644"
     },
     "docs/analysis/espresso_data_leverage_001/CURRENT_DECISION_SUPERSESSION.json": {
@@ -953,14 +958,44 @@
       "bytes": 588,
       "git_mode": "100644"
     },
+    "docs/analysis/xsv_pannusch_multimodel_001/BOUNDARY_PRIVILEGE_RESULTS.csv": {
+      "sha256": "e9773e4da4b250b777e81c0f7c91eebfac96035b7c4ba8bfe2d6b6299db20aff",
+      "bytes": 738,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/C1_CALIBRATION_FREEZE_ADDENDUM.json": {
+      "sha256": "5326056458b14c987f7765ee7850edd53f54b20c952946a426d32c46f0d728cb",
+      "bytes": 2227,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/C1_CORRECTION_RECORD.json": {
+      "sha256": "5b06c97c5749be70e838faee23763fb2c0aea85aaf75efc552c7158114529225",
+      "bytes": 2041,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/C1_CORRECTION_RECORD.md": {
+      "sha256": "8d3d579f03f362409809d3ba25025d836dd0778b692f8c8d82522493d7e7b308",
+      "bytes": 1055,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/C1_REVIEW_MANDATED_METHODS_ADDENDUM.json": {
+      "sha256": "769502c6f0b2e7b16fe96f8be2e7582ffae2f6454ebc386d6c17c90cab2c776c",
+      "bytes": 1964,
+      "git_mode": "100644"
+    },
     "docs/analysis/xsv_pannusch_multimodel_001/CALIBRATION_FREEZE.json": {
       "sha256": "0b9a70bc3fd265c2df49a14c8ffd80baebbb7adc0aadc38bd3fb7e3567e40990",
       "bytes": 1431,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/CAMPAIGN_SEPARATED_RESULTS.csv": {
-      "sha256": "49c248c0086f51282773fa7d92c9bab4157403d030495a65914157acd70a223e",
-      "bytes": 1380,
+      "sha256": "da75ec0f62fe1d6a168286ff290d8054ac29ee59f46ed11e492fd1e9929dc41a",
+      "bytes": 2561,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/CONDITION_DIFFERENCES.csv": {
+      "sha256": "2f75c6807022d73885a2f8246e412d8128dfe2222a43d636bc56346b43b6853b",
+      "bytes": 547,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/DATA_AUTHORITY.json": {
@@ -978,14 +1013,29 @@
       "bytes": 561,
       "git_mode": "100644"
     },
+    "docs/analysis/xsv_pannusch_multimodel_001/EXACT_SIGN_FLIP_RESULT.json": {
+      "sha256": "5cbe8405904104ccbf37a35bee29aac6c60f354eead2ac2ac4951cb4c66d3b39",
+      "bytes": 125,
+      "git_mode": "100644"
+    },
     "docs/analysis/xsv_pannusch_multimodel_001/GROUPED_INTERNAL_RESULTS.csv": {
-      "sha256": "b5514d254e8603b8a73b439a4469aa75c58e1f7f6507c6083c273fa6f5d04f34",
-      "bytes": 1215,
+      "sha256": "a02eef1f0ae1ea2fb248c72ca7db2e31db76ccd47d7061545eceebb4b40df2a5",
+      "bytes": 1211,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/HIERARCHICAL_UNCERTAINTY_RESULTS.csv": {
+      "sha256": "14ba32f6d74a965888c429ebff9b714e97d409a749231a5bd0d0ec00a5b4111c",
+      "bytes": 397,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/INVENTORY_SENSITIVITY.csv": {
-      "sha256": "485e66dc0d90a1f2c2f6ff18bfde2b1b875078a4ed799244296fdf9b81579719",
-      "bytes": 3052,
+      "sha256": "8ab9a8c46167835443d23aa844040ba96d7fef9349bb6cb2d1b9c887e7b95e74",
+      "bytes": 13528,
+      "git_mode": "100644"
+    },
+    "docs/analysis/xsv_pannusch_multimodel_001/LEAVE_ONE_MARCH_CONDITION_OUT.csv": {
+      "sha256": "71162d209429f586510bc39c374f739568889cb7ab1970f9b0275cbffe6151e7",
+      "bytes": 644,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/METHODS_FREEZE.json": {
@@ -994,23 +1044,23 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/MODEL_COMPARISON_RESULTS.csv": {
-      "sha256": "49c248c0086f51282773fa7d92c9bab4157403d030495a65914157acd70a223e",
-      "bytes": 1380,
+      "sha256": "da75ec0f62fe1d6a168286ff290d8054ac29ee59f46ed11e492fd1e9929dc41a",
+      "bytes": 2561,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/MODEL_PRIVILEGE_REGISTRY.csv": {
-      "sha256": "db79362c534710632e4b034ab25b96ecd9d5b1473ed3f747bc5e0cbb380312f4",
-      "bytes": 3576,
+      "sha256": "fb18136d3518faf486f8236306f245b7df4295d4f88f749581015442a6743199",
+      "bytes": 369,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/NEXT_TASK_DECISION.json": {
-      "sha256": "a55843b037b6a1a29c6e8738e2d647c3475368714fdae3a8a966ee1e92534f35",
-      "bytes": 849,
+      "sha256": "e9f422db55c1818e364895087a4d44f63d9888262b88f31d08677e00f0509ca9",
+      "bytes": 1019,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/NEXT_TASK_DECISION.md": {
-      "sha256": "849be35b8590ca12df8915e23622e4703cbd7c393452d4cb196009a4053f8c76",
-      "bytes": 900,
+      "sha256": "c2d671b9aa5ffa97f8de67bf02c35f65287284db6bd95ff9ee32603fdf666f49",
+      "bytes": 790,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/OBSERVABLE_CONTRACT.json": {
@@ -1018,19 +1068,24 @@
       "bytes": 603,
       "git_mode": "100644"
     },
+    "docs/analysis/xsv_pannusch_multimodel_001/PANNUSCH_SOURCE_ROLE_RESULTS.csv": {
+      "sha256": "5b5bc67a297b8ed5f73928b638396b982e0d7082ec840788af78824fd7065586",
+      "bytes": 511,
+      "git_mode": "100644"
+    },
     "docs/analysis/xsv_pannusch_multimodel_001/RESIDUAL_FINDINGS.csv": {
-      "sha256": "af43b9a58c8b5f4272ed34a9451d2d49a8623be64be53e557277adb0d4de3036",
-      "bytes": 6168,
+      "sha256": "9253b0585d97d29e3971f4226a83d48ce794245ffb32494509b316f02ac26082",
+      "bytes": 428,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/RESULT.md": {
-      "sha256": "24577471066f08670f2c9ae58adc94ee94073add3cc45a278662566689acb366",
-      "bytes": 3355,
+      "sha256": "4245572e7b1cb79a560548be96827a8b384e9dfbc458b1f53f18615dbeeaffd6",
+      "bytes": 4893,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/SPECIES_MODEL_RESULTS.csv": {
-      "sha256": "1a7c1e97708b8995e171fd85dc8ba824302ebe50f39ab8932265b330dd87aae0",
-      "bytes": 864,
+      "sha256": "43f3c7cea05e6dc416b6ce6fbfd5f16d32ee4fcdea288975597144462753a995",
+      "bytes": 1099,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_multimodel_001/SPLIT_CONTRACT.json": {
@@ -1038,9 +1093,14 @@
       "bytes": 491,
       "git_mode": "100644"
     },
+    "docs/analysis/xsv_pannusch_multimodel_001/TELEMETRY_JOIN_AUDIT.csv": {
+      "sha256": "efc98150791e52794632d075d70749c42bd0432c9d87ae5a8994f5524819bd6a",
+      "bytes": 6884,
+      "git_mode": "100644"
+    },
     "docs/analysis/xsv_pannusch_multimodel_001/summary.json": {
-      "sha256": "c22406d96ff892ed4b4cd76b91cd0aa6734e8b14f1e71cde480a4c8026332ea0",
-      "bytes": 5020,
+      "sha256": "deb78f358ad9201de78d779bf2a1d8253ac8816c8092f5c5ada640c0e55c0ddb",
+      "bytes": 5971,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {
@@ -1119,13 +1179,13 @@
       "git_mode": "100644"
     },
     "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": {
-      "sha256": "ec775570e1978641e2ad199aedb0b851f1c48421b5a62d276426da47f6c28d6c",
-      "bytes": 13643,
+      "sha256": "ce592f50c0c59f0ec30ff5fb65128ce3cce6a807db586d56fe0fbd19fae0d0b0",
+      "bytes": 13659,
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "8c98ad15a9c1be32fdaebec33cc20ef1e88df9fe7da24a4f7fa51cf3a7297aee",
-      "bytes": 3318,
+      "sha256": "70e4d4b2f9b040f66c42df19ef5df74541ab3d610258ebf1396088c49d3c71d7",
+      "bytes": 3279,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -2634,8 +2694,8 @@
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {
-      "sha256": "afb67e7ade21abb3b2f2d69a8da0e7eebbd0c654bc911ab44c2b2ca030fb630d",
-      "bytes": 646,
+      "sha256": "5bae2c87b336a096f708e05019f9f578e521339c60c596ed609fd1d040d5497e",
+      "bytes": 652,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
@@ -2924,8 +2984,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_multimodel_001.py": {
-      "sha256": "77dd43e787adc80c64efd8447e4557550f9cb7dbaa68a6ad6e6e9dbf22415eca",
-      "bytes": 3908,
+      "sha256": "d5759a231c89aacdd50afcb8422e2ceaa9e2104b5008d0f7e3252610bf4d5e28",
+      "bytes": 5082,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {

@@ -1,19 +1,7 @@
-# Next-task decision
+# Corrected next-task decision
 
-## Strongest: OBS-PANNUSCH-TELEMETRY-001
+## OBS-PANNUSCH-FRACTION-WINDOW-001
 
-Question: can source-reconstructed beverage-mass and fraction-boundary timing
-remove the fixed-Pannusch fraction-2 overprediction and tail underprediction
-without changing extraction kinetics?
+Source-order join qualification and fraction-window observation-operator reconstruction asks whether target-independent reconstruction of shot identity, clocks, vial transitions, and cumulative beverage-mass windows explains the systematic fraction-2/tail residual without changing extraction kinetics. Its 24 candidate records are all `SOURCE_ORDER_ONLY`; no deterministic join is yet qualified. Maximum claim: `SOURCE_INTERNAL_FRACTION_WINDOW_AND_OBSERVATION_OPERATOR_QUALIFICATION`.
 
-Trigger: the winning mechanistic model retains coherent early/tail residuals,
-while the telemetry register contains 24 source-order beverage-mass joins.
-Positive outcome qualifies a research-only observation adapter; negative outcome
-rules out this observer explanation; a null outcome returns to the grind
-fallback. Maximum claim is observation-operator component evidence, not
-hydraulic validation.
-
-First fallback: `SCI-MD-PANNUSCH-GRIND-001`, if observer correction does not
-remove the nonuniform residual. Second fallback:
-`SCI-MD-PANNUSCH-FLOW-HISTORY-001`, only if C07/C08 directionality becomes
-repeatable under corrected boundaries.
+First fallback is `SCI-MD-PANNUSCH-FLOW-HISTORY-001`; second is `XSV-PANNUSCH-EWP-INPUT-MAPPING-001`. `SCI-MD-PANNUSCH-GRIND-001` remains conditional because no grind residual signal is supported. Home-lab operation remains deferred.

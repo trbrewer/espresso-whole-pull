@@ -1,0 +1,44 @@
+{
+  "boundary_aware_baseline": {
+    "extrapolation": "fail",
+    "fit": "calibration chemistry only",
+    "method": "weighted PAVA monotone cumulative analyte profile; duplicate-coordinate weighted collapse; linear interpolation; endpoint constrained",
+    "model_id": "BASELINE-BOUNDARY-AWARE-POOL-ANALYTE",
+    "target_inputs": "shot-specific fraction liquid/cumulative-beverage-mass windows only"
+  },
+  "classification": "POST_REVIEW_MANDATED_FAIRNESS_CORRECTION",
+  "code_sha256": "74611a887a9dae009e105921844a3e7d33ee359d2da6c31ab66f4b4636bf6d1e",
+  "common_window": {
+    "assumption": "piecewise-linear cumulative interpolation only; no unsupported within-fraction chemistry detail",
+    "status": "SECONDARY_DIAGNOSTIC"
+  },
+  "correction_id": "XSV-PANNUSCH-MULTIMODEL-001-C1",
+  "date": "2026-08-30",
+  "exact_analyses": [
+    "all 16 condition sign flips",
+    "four leave-one-March-condition-out cases"
+  ],
+  "freeze_status": "NOT_A_RETROACTIVE_ORIGINAL_FREEZE",
+  "independent_review_methods_freeze_sha256": "66aa283198f4b3b4505f5beef9c33f74ff799b9231835452a2b2c1da490374fc",
+  "inventory_claim": "normalized fixed-Pannusch c_s0 scale invariance only",
+  "original_methods_freeze_sha256": "7d7492864adb7eb74c39cfc35692d3cc51fbcf49c423f2abba48c07c779c0631",
+  "pannusch_window_ablation": "condition-average non-chemistry schedule",
+  "prospective_status": "NOT_PROSPECTIVELY_TARGET_BLIND",
+  "reason": "Independent review found unequal observation-window privilege and nonconforming uncertainty.",
+  "schema_version": 1,
+  "source_roles": "fixed reconstruction separated from foldwise CV",
+  "successor": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+  "target_exposure": true,
+  "uncertainty": {
+    "absolute_intervals": "direct bootstrap",
+    "hierarchy": [
+      "condition",
+      "physical shot",
+      "paired analytes",
+      "six intact fractions"
+    ],
+    "replicates": 2000,
+    "rng": "numpy.random.Generator(PCG64)",
+    "seed": 20260830
+  }
+}

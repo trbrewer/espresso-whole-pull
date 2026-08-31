@@ -1,0 +1,53 @@
+{
+  "c_l1": {
+    "caffeine": {
+      "derivation": "mean first-fraction concentration_value across valid calibration shots",
+      "source_rows": 45,
+      "units": "source concentration_value units",
+      "value": 8.66100465
+    },
+    "trigonelline": {
+      "derivation": "mean first-fraction concentration_value across valid calibration shots",
+      "source_rows": 45,
+      "units": "source concentration_value units",
+      "value": 5.621420335333333
+    }
+  },
+  "c_l1_effect": {
+    "model_ranking": "unchanged within fixed normalized observable",
+    "normalized_fraction_shape": "cancels to numerical precision",
+    "residual_shape": "unchanged",
+    "unnormalized_magnitude": "multiplicative scale"
+  },
+  "chronology": "C1 follows independent exact-head review",
+  "correction_id": "XSV-PANNUSCH-MULTIMODEL-001-C1",
+  "fraction_window_code_sha256": "74611a887a9dae009e105921844a3e7d33ee359d2da6c31ab66f4b4636bf6d1e",
+  "input_hashes": {
+    "fit_fraction_replicates": "55b16b9897956e2dab5a39c1c8b54e97dca6f7355e33c6513e7933316df5b1f2",
+    "prediction_fraction_replicates": "e29344bcdd87d31ba1c1bcb1fe0ba73286befd82066394ad164fdb2384e0b665"
+  },
+  "inventory_scales": [
+    0.001,
+    0.01,
+    0.1,
+    1,
+    10
+  ],
+  "march_conditions": [
+    "PRED-C01",
+    "PRED-C02",
+    "PRED-C05",
+    "PRED-C06"
+  ],
+  "normalization_code_sha256": "74611a887a9dae009e105921844a3e7d33ee359d2da6c31ab66f4b4636bf6d1e",
+  "original_calibration_freeze_sha256": "0b9a70bc3fd265c2df49a14c8ffd80baebbb7adc0aadc38bd3fb7e3567e40990",
+  "pannusch_implementation_sha256": "8f0f0108a8c44e0abbc32ca6ada676baf579a4f78265a3f7b53b38f118fa2bb4",
+  "privilege_class": "POST_HOC_REPRODUCIBLE_PUBLISHED_PARAMETER_PANNUSCH_MODEL_WITH_TARGET_INDEPENDENT_CALIBRATION_SCALE",
+  "prospective_target_blind": false,
+  "published_parameter_sha256": "8f0f0108a8c44e0abbc32ca6ada676baf579a4f78265a3f7b53b38f118fa2bb4",
+  "puckworks_solver_sha256": "8f0f0108a8c44e0abbc32ca6ada676baf579a4f78265a3f7b53b38f118fa2bb4",
+  "schema_version": 1,
+  "source_grind_map_sha256": "8f0f0108a8c44e0abbc32ca6ada676baf579a4f78265a3f7b53b38f118fa2bb4",
+  "target_driven_tuning_found": false,
+  "target_first_access": "historical pre-C1 candidate; target exposed"
+}
