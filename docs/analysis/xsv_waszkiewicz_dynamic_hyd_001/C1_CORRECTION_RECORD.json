@@ -1,0 +1,40 @@
+{
+  "blocking_findings": [
+    "disposition too broad",
+    "blocked-time leakage and reset",
+    "silent invalid zero fill",
+    "unsupported processing Boolean"
+  ],
+  "corrected_candidate_commit": "e47434bdd7fe9e496661dcd377077a9d7ed5fd75",
+  "corrected_candidate_tree": "11ff69abcb4605f521872513e21877cdf5659e0e",
+  "corrected_methods": [
+    "condition heterogeneity",
+    "fair blocked time with continued state",
+    "typed fail-closed roots",
+    "processing decomposition",
+    "monotone sensitivity"
+  ],
+  "correction_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001-C1",
+  "expected_corrected_disposition": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_NO_TESTED_EVOLVING_RESISTANCE_FORM_HAS_STABLE_GROUPED_PREDICTIVE_ADVANTAGE",
+  "historical_status": "ORIGINAL_RESULT_SUPERSEDED_BY_C1_CORRECTION",
+  "independent_review_checksum_manifest": "eb901030251f6a533fb4d5577013fe0a8aa64136d505422393bbd8e09a2d9e46",
+  "independent_review_disposition": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_R1_INDEPENDENT_REVIEW_CORRECTION_REQUIRED",
+  "independent_review_task": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001-R1",
+  "independent_validation": false,
+  "narrowed_claims": [
+    "tested frozen forms only"
+  ],
+  "original_blocked_time_method": "evaluated prefix fitted; dynamic state reset",
+  "original_candidate_commit": "56580bb31f69c321770a06b61d86835858470078",
+  "original_candidate_tree": "c73996f71add272a30b61962fe30c088103a6654",
+  "original_freezes_modified": false,
+  "original_invalid_state_behavior": "invalid roots silently zero-filled",
+  "original_primary_disposition": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_BREW_AND_CONDITION_VARIABILITY",
+  "original_processing_robustness_disposition": "MATERIALLY_CONDITIONAL",
+  "parent_task": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
+  "rejected_claims": [
+    "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_BREW_AND_CONDITION_VARIABILITY",
+    "unqualified dynamic-form claims"
+  ],
+  "target_blind": false
+}

@@ -1,0 +1,32 @@
+{
+  "alias_excluded": [
+    "12-8-6_alt"
+  ],
+  "cadence_s": 0.1001001001001001,
+  "canonical_physical_brews": 56,
+  "condition_distribution": {
+    "1": 5,
+    "11": 4,
+    "13": 6,
+    "2": 4,
+    "3.5": 3,
+    "4": 10,
+    "5": 5,
+    "6": 6,
+    "7": 4,
+    "8": 4,
+    "9": 5
+  },
+  "controlled_conditions": 11,
+  "missing_values": 0,
+  "negative_flow_rows": 2711,
+  "nonmonotone_mass_steps": 5196,
+  "samples_per_trace": 1000,
+  "source_exclusions": "producer excluded directory not present in qualified table",
+  "source_trace_rows": 57000,
+  "time_range_s": [
+    0,
+    100
+  ],
+  "trace_representations": 57
+}

@@ -1,0 +1,18 @@
+{
+  "data_rights": "CC-BY-4.0",
+  "ewp_base_commit": "992eb00c297a6146b92b632c761ecfa5c6d1e9cd",
+  "ewp_base_tree": "30a620278fc61685ce388b4f9a8e1467f4cedd83",
+  "puckworks_commit": "a3428a4d4ad571ef3168a70e8a04620fca5d3520",
+  "puckworks_tree": "6175b4ad39f45ebcdec32a176e5611bf3b03655b",
+  "source_code_rights": "GPLv3_NOT_INGESTED",
+  "source_hashes": {
+    "brewer_quadratic_parameters": "60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919",
+    "brewer_quadratic_points": "718f848973d708ae2e9044c0d87141524460e947044a59d3cefda5530ab056d8",
+    "constants": "0428390dae9c3032adb31d155dfc21b56ee34f0b407e8089fee3a31e47abf4ee",
+    "equilibrium_windows": "c33bd01729cfe63db6d319d9c64afcac818050fdf8c888ab4d47dc233d5e2213",
+    "static_calibration": "2a2fdd129cbfb7742196abb493409c76aab11e2bef9f74aafb3df996c6b21ce5",
+    "traces_per_brew": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+    "traces_time_dependent": "40e76f43e1584912b55afcc4f15c28b797bf3ac6c3c380765b408cddd33d9fe9"
+  },
+  "task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001"
+}

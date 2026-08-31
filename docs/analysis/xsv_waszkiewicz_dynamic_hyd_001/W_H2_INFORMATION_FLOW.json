@@ -1,0 +1,10 @@
+{
+  "LOCO_target_independent": true,
+  "allowed_initial_state": "observed mass offset at analysis start only",
+  "blocked_time_modeled_progress_continued": true,
+  "held_out_derived_flow_used": false,
+  "held_out_observed_progress_used": false,
+  "line_pressure_forcing_allowed": true,
+  "mutation_tests_required": true,
+  "prediction_progress": "MODELED_RECURSIVE_MASS"
+}

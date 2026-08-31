@@ -25,6 +25,7 @@ from verify_val001_correction import verify as verify_val001_correction  # noqa:
 from verify_val001_hardening import verify as verify_val001_hardening  # noqa: E402
 from verify_val001_deep_schema_coverage import verify as verify_val001_deep_schema_coverage  # noqa: E402
 from tools.validation.val001.administrative import verify_closure as verify_val001_administrative_closure  # noqa: E402
+from validate_xsv_waszkiewicz_dynamic_hyd_001 import validate as validate_waszkiewicz  # noqa: E402
 
 PACKAGE_VERSION = "0.2.0"
 FROZEN_SCENARIO_VERSION = "0.1.4"
@@ -804,6 +805,13 @@ def main() -> None:
         gates["val001_zero_exclusion_administrative_closure"] = gate(True, **closure_details)
     except Exception as exc:
         gates["val001_zero_exclusion_administrative_closure"] = gate(False, error=str(exc))
+
+    try:
+        details = validate_waszkiewicz(root)
+        details.pop("status", None)
+        gates["xsv_waszkiewicz_current_semantic_contract"] = gate(True, **details)
+    except Exception as exc:
+        gates["xsv_waszkiewicz_current_semantic_contract"] = gate(False, error=str(exc))
 
     all_pass = all(item["status"] == "PASS" for item in gates.values())
     report = {

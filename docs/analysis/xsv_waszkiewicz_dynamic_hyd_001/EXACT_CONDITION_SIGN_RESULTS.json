@@ -1,0 +1,26 @@
+{
+  "method": "exact binomial sign test; ties absent",
+  "models": {
+    "W-H1": {
+      "conditions_better": 6,
+      "conditions_worse": 5,
+      "exact_one_sided_probability": 0.5,
+      "exact_two_sided_sign_probability": 1.0,
+      "interpretation": "NO_BROAD_CONDITION_CONSISTENCY"
+    },
+    "W-H2": {
+      "conditions_better": 6,
+      "conditions_worse": 5,
+      "exact_one_sided_probability": 0.5,
+      "exact_two_sided_sign_probability": 1.0,
+      "interpretation": "NO_BROAD_CONDITION_CONSISTENCY"
+    },
+    "W-H3": {
+      "conditions_better": 6,
+      "conditions_worse": 5,
+      "exact_one_sided_probability": 0.5,
+      "exact_two_sided_sign_probability": 1.0,
+      "interpretation": "NO_BROAD_CONDITION_CONSISTENCY"
+    }
+  }
+}

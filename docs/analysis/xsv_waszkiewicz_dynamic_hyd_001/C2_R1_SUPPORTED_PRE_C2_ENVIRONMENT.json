@@ -1,0 +1,29 @@
+{
+  "architecture": "x86_64",
+  "checkout_path": "CLEAN_DETACHED_CHECKOUT_RECORDED_UNREDACTED_IN_EXTERNAL_EVIDENCE",
+  "environment_kind": "system",
+  "environment_variables": {
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "PATH": "REDACTED_LOCAL_PATH_RECORDED_UNREDACTED_IN_EXTERNAL_EVIDENCE",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "generated_files_present_before_discovery": [],
+  "kernel": "6.17.0-35-generic",
+  "locale": "C.UTF-8",
+  "os": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+  "package_versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.11.4"
+  },
+  "python_executable": "/usr/bin/python3",
+  "python_version": "3.12.3",
+  "source_commit": "e4667eee315ecb8c93ba9be7c1385e04f12ffcca",
+  "source_tree": "430397d9b4b9de14a4e85df2f75a709ae8c21802",
+  "sys_path": [
+    "REPOSITORY_ROOT",
+    "SYSTEM_PYTHON_PATHS_RECORDED_UNREDACTED_IN_EXTERNAL_EVIDENCE"
+  ],
+  "test_command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'",
+  "working_directory": "REPOSITORY_ROOT"
+}

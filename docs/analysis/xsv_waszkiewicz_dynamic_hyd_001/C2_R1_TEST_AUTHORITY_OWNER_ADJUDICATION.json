@@ -1,0 +1,51 @@
+{
+  "adjudication_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001-C2-R1",
+  "exact_candidate_commit": "e4667eee315ecb8c93ba9be7c1385e04f12ffcca",
+  "exact_candidate_tree": "430397d9b4b9de14a4e85df2f75a709ae8c21802",
+  "historical_R2_result": {
+    "classification": "HISTORICAL_AGGREGATE_WITHOUT_RECONSTRUCTABLE_TEST_IDENTITY_AUTHORITY",
+    "complete_environment_snapshot_retained": false,
+    "discovered_test_ID_manifest_retained": false,
+    "identity_level_reconstruction_possible": false,
+    "per_test_result_manifest_retained": false,
+    "reported_passed": 1092,
+    "reported_skipped": 2,
+    "result_rejected_as_false": false,
+    "skip_ID_manifest_retained": false,
+    "usable_as_current_test_authority": false
+  },
+  "home_lab_status_changed": false,
+  "model_result_changed": false,
+  "owner_authorization": "OWNER_ADJUDICATION_ACCEPT_R2_RETROSPECTIVE_TEST_IDENTITY_EVIDENCE_NONRECOVERABLE",
+  "scientific_effect": "NONE",
+  "successor_changed": false,
+  "supported_pre_C2_authority": {
+    "classification": "REPRODUCIBLE_PINNED_SUPPORTED_PRE_C2_TEST_AUTHORITY",
+    "discovered_test_count": 1119,
+    "errors": 0,
+    "failed": 0,
+    "numpy_version": "1.26.4",
+    "passed": 1116,
+    "python_executable": "/usr/bin/python3",
+    "python_version": "3.12.3",
+    "repeat_execution_same_totals": true,
+    "scipy_version": "1.11.4",
+    "skipped": 3,
+    "tests_run": 1119
+  },
+  "waiver_scope": {
+    "not_waived": [
+      "current_test_ID_manifest",
+      "current_per_test_result_manifest",
+      "current_skip_ID_and_reason_manifest",
+      "current_environment_snapshot",
+      "processing_machine_contract",
+      "four_semantic_rejection_tests",
+      "scientific_invariance",
+      "full_supported_environment_execution",
+      "hosted_CI",
+      "independent_bounded_addendum_rereview"
+    ],
+    "waived": "EXACT_RETROSPECTIVE_R2_TEST_IDENTITY_RECONSTRUCTION"
+  }
+}

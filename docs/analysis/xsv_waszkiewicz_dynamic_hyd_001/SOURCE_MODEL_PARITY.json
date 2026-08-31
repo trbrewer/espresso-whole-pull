@@ -1,0 +1,8 @@
+{
+  "claim": "not independent validation",
+  "dynamic_9bar_gate": "PASS_EXPECTED_LONG_RUN_WITHIN_2_PERCENT",
+  "grouped_predictive_support": "NOT_EVALUATED_AS_EQUAL_PRIVILEGE",
+  "privilege": "SOURCE_POST_FIT_RECONSTRUCTION",
+  "soft_circularity": "dissolved mass derives from same-rig TDS and flow",
+  "static_gate": "PASS_EXPECTED_Pc_12.39_Qc_1.897"
+}

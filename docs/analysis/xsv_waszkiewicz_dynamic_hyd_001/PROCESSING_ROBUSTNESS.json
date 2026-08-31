@@ -1,0 +1,16 @@
+{
+  "schema_version": 2,
+  "tested_processing_window_count": 5,
+  "tested_processing_window_ids": ["primary_t15", "early_t10", "late_t20", "terminal_t90", "terminal_t100"],
+  "mean_loco_ranking_across_tested_windows": "STABLE",
+  "mean_loco_winner_across_tested_windows": "W-H2",
+  "W_H2_first_in_every_tested_window": true,
+  "adoption_decision_across_tested_windows": "STABLE_NO_EVOLVING_MODEL_PASSES",
+  "all_tested_windows_reject_evolving_model_adoption": true,
+  "effect_magnitude_across_tested_windows": "VARIABLE",
+  "condition_sign_pattern_across_tested_windows": "VARIABLE",
+  "parameter_stability": "VARIABLE",
+  "coverage_stability": "STABLE",
+  "broader_processing_robustness": "NOT_ESTABLISHED_BEYOND_TESTED_CONFIGURATIONS",
+  "processing_disposition": "ADOPTION_DECISION_ROBUST_WITHIN_TESTED_PROCESSING_WINDOWS"
+}

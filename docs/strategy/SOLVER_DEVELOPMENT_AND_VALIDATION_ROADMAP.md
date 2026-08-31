@@ -1,5 +1,20 @@
 # Solver Development and Validation Roadmap
 
+## Waszkiewicz model-form decision (2026-08-31)
+
+C1 replaces the overly broad indistinguishability headline: some tested forms
+reduce average LOCO error, but no tested bounded form has stable grouped,
+cross-condition, corrected blocked-time, and processing-qualified advantage.
+The fixed representation is retained by parsimony, not physically validated.
+`EWP-POROSITY-PERMEABILITY-PRIOR-001` is `READY_AFTER_C1_MERGE`; Visualizer,
+Pannusch, rheology, and laboratory questions remain open or deferred.
+
+The source-internal grouped comparison was null: no tested bounded evolving
+resistance passed the strong predictive-advantage gate. Default fixed
+resistance is retained. `EWP-POROSITY-PERMEABILITY-PRIOR-001` is the selected
+research successor; this result adds no solver equation, production default,
+or physical-validation claim.
+
 Conditional order: Waszkiewicz hydraulics; separate Wadsworth/Vaca priors;
 Visualizer boundaries; Pannusch fraction windows; rheology sensitivity. Results
 select successors; no production adoption or home-lab work is authorized.

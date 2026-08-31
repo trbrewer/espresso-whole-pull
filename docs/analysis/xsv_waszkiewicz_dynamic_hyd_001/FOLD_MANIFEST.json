@@ -1,0 +1,479 @@
+{
+  "alias_excluded": "12-8-6_alt",
+  "outer": {
+    "blocked_time": {
+      "evaluation": [
+        60,
+        95
+      ],
+      "training": [
+        15,
+        60
+      ]
+    },
+    "leave_one_controlled_condition_out": [
+      {
+        "fold_id": "LOCO-1",
+        "held_out_brews": [
+          "1-1",
+          "1-2",
+          "1-3",
+          "1-4",
+          "1-5b"
+        ],
+        "held_out_condition": 1.0
+      },
+      {
+        "fold_id": "LOCO-2",
+        "held_out_brews": [
+          "2-2",
+          "2-3",
+          "2-4",
+          "2-5"
+        ],
+        "held_out_condition": 2.0
+      },
+      {
+        "fold_id": "LOCO-3.5",
+        "held_out_brews": [
+          "3-5-3",
+          "3-5-4",
+          "3-5-5"
+        ],
+        "held_out_condition": 3.5
+      },
+      {
+        "fold_id": "LOCO-4",
+        "held_out_brews": [
+          "4-1",
+          "4-1b",
+          "4-2",
+          "4-2b",
+          "4-3",
+          "4-3b",
+          "4-4",
+          "4-4b",
+          "4-5",
+          "4-5b"
+        ],
+        "held_out_condition": 4.0
+      },
+      {
+        "fold_id": "LOCO-5",
+        "held_out_brews": [
+          "5-1",
+          "5-2",
+          "5-3",
+          "5-4",
+          "5-5"
+        ],
+        "held_out_condition": 5.0
+      },
+      {
+        "fold_id": "LOCO-6",
+        "held_out_brews": [
+          "6-1",
+          "6-2",
+          "6-3",
+          "6-4",
+          "6-5",
+          "6-6"
+        ],
+        "held_out_condition": 6.0
+      },
+      {
+        "fold_id": "LOCO-7",
+        "held_out_brews": [
+          "7-1",
+          "7-2",
+          "7-3",
+          "7-4"
+        ],
+        "held_out_condition": 7.0
+      },
+      {
+        "fold_id": "LOCO-8",
+        "held_out_brews": [
+          "8-1",
+          "8-1b",
+          "8-2",
+          "8-3"
+        ],
+        "held_out_condition": 8.0
+      },
+      {
+        "fold_id": "LOCO-9",
+        "held_out_brews": [
+          "9-1",
+          "9-2",
+          "9-3",
+          "9-4",
+          "9-5"
+        ],
+        "held_out_condition": 9.0
+      },
+      {
+        "fold_id": "LOCO-11",
+        "held_out_brews": [
+          "10-2",
+          "10-3",
+          "10-4",
+          "10-5"
+        ],
+        "held_out_condition": 11.0
+      },
+      {
+        "fold_id": "LOCO-13",
+        "held_out_brews": [
+          "12-8-2",
+          "12-8-3",
+          "12-8-4",
+          "12-8-5",
+          "12-8-6",
+          "12-8-7"
+        ],
+        "held_out_condition": 13.0
+      }
+    ],
+    "leave_one_physical_brew_out": [
+      {
+        "fold_id": "LOBO-1-1",
+        "held_out_brews": [
+          "1-1"
+        ]
+      },
+      {
+        "fold_id": "LOBO-1-2",
+        "held_out_brews": [
+          "1-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-1-3",
+        "held_out_brews": [
+          "1-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-1-4",
+        "held_out_brews": [
+          "1-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-1-5b",
+        "held_out_brews": [
+          "1-5b"
+        ]
+      },
+      {
+        "fold_id": "LOBO-10-2",
+        "held_out_brews": [
+          "10-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-10-3",
+        "held_out_brews": [
+          "10-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-10-4",
+        "held_out_brews": [
+          "10-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-10-5",
+        "held_out_brews": [
+          "10-5"
+        ]
+      },
+      {
+        "fold_id": "LOBO-12-8-2",
+        "held_out_brews": [
+          "12-8-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-12-8-3",
+        "held_out_brews": [
+          "12-8-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-12-8-4",
+        "held_out_brews": [
+          "12-8-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-12-8-5",
+        "held_out_brews": [
+          "12-8-5"
+        ]
+      },
+      {
+        "fold_id": "LOBO-12-8-6",
+        "held_out_brews": [
+          "12-8-6"
+        ]
+      },
+      {
+        "fold_id": "LOBO-12-8-7",
+        "held_out_brews": [
+          "12-8-7"
+        ]
+      },
+      {
+        "fold_id": "LOBO-2-2",
+        "held_out_brews": [
+          "2-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-2-3",
+        "held_out_brews": [
+          "2-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-2-4",
+        "held_out_brews": [
+          "2-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-2-5",
+        "held_out_brews": [
+          "2-5"
+        ]
+      },
+      {
+        "fold_id": "LOBO-3-5-3",
+        "held_out_brews": [
+          "3-5-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-3-5-4",
+        "held_out_brews": [
+          "3-5-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-3-5-5",
+        "held_out_brews": [
+          "3-5-5"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-1",
+        "held_out_brews": [
+          "4-1"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-1b",
+        "held_out_brews": [
+          "4-1b"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-2",
+        "held_out_brews": [
+          "4-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-2b",
+        "held_out_brews": [
+          "4-2b"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-3",
+        "held_out_brews": [
+          "4-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-3b",
+        "held_out_brews": [
+          "4-3b"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-4",
+        "held_out_brews": [
+          "4-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-4b",
+        "held_out_brews": [
+          "4-4b"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-5",
+        "held_out_brews": [
+          "4-5"
+        ]
+      },
+      {
+        "fold_id": "LOBO-4-5b",
+        "held_out_brews": [
+          "4-5b"
+        ]
+      },
+      {
+        "fold_id": "LOBO-5-1",
+        "held_out_brews": [
+          "5-1"
+        ]
+      },
+      {
+        "fold_id": "LOBO-5-2",
+        "held_out_brews": [
+          "5-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-5-3",
+        "held_out_brews": [
+          "5-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-5-4",
+        "held_out_brews": [
+          "5-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-5-5",
+        "held_out_brews": [
+          "5-5"
+        ]
+      },
+      {
+        "fold_id": "LOBO-6-1",
+        "held_out_brews": [
+          "6-1"
+        ]
+      },
+      {
+        "fold_id": "LOBO-6-2",
+        "held_out_brews": [
+          "6-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-6-3",
+        "held_out_brews": [
+          "6-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-6-4",
+        "held_out_brews": [
+          "6-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-6-5",
+        "held_out_brews": [
+          "6-5"
+        ]
+      },
+      {
+        "fold_id": "LOBO-6-6",
+        "held_out_brews": [
+          "6-6"
+        ]
+      },
+      {
+        "fold_id": "LOBO-7-1",
+        "held_out_brews": [
+          "7-1"
+        ]
+      },
+      {
+        "fold_id": "LOBO-7-2",
+        "held_out_brews": [
+          "7-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-7-3",
+        "held_out_brews": [
+          "7-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-7-4",
+        "held_out_brews": [
+          "7-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-8-1",
+        "held_out_brews": [
+          "8-1"
+        ]
+      },
+      {
+        "fold_id": "LOBO-8-1b",
+        "held_out_brews": [
+          "8-1b"
+        ]
+      },
+      {
+        "fold_id": "LOBO-8-2",
+        "held_out_brews": [
+          "8-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-8-3",
+        "held_out_brews": [
+          "8-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-9-1",
+        "held_out_brews": [
+          "9-1"
+        ]
+      },
+      {
+        "fold_id": "LOBO-9-2",
+        "held_out_brews": [
+          "9-2"
+        ]
+      },
+      {
+        "fold_id": "LOBO-9-3",
+        "held_out_brews": [
+          "9-3"
+        ]
+      },
+      {
+        "fold_id": "LOBO-9-4",
+        "held_out_brews": [
+          "9-4"
+        ]
+      },
+      {
+        "fold_id": "LOBO-9-5",
+        "held_out_brews": [
+          "9-5"
+        ]
+      }
+    ]
+  },
+  "row_splits_prohibited": true,
+  "seed": 20260831
+}

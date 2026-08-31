@@ -1,0 +1,27 @@
+{
+  "basket_pressure_direct": false,
+  "brewer_loss": {
+    "a": 0.017184292098914252,
+    "b": 0.03670858658698296,
+    "c": 0.2831597837775055,
+    "equation": "a Q^2 + b Q + c",
+    "sign": "line minus loss equals basket",
+    "units": "bar with Q in g/s"
+  },
+  "flow_direct": false,
+  "held_out_offset": "observed mass at t0 only",
+  "integration": "cumulative trapezoid",
+  "primary_input": "pressure__bar",
+  "primary_target": "mass increment from mass__g",
+  "primary_window": {
+    "end_s": 95,
+    "start_s": 15
+  },
+  "root": "stable nonnegative quadratic root; invalid states reported",
+  "secondary_diagnostics": [
+    "derived flow",
+    "derived basket pressure",
+    "apparent resistance",
+    "equilibrium windows"
+  ]
+}

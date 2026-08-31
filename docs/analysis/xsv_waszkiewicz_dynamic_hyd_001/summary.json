@@ -1,0 +1,159 @@
+{
+  "blocked_time": {
+    "W_H2_modeled_progress_continued": true,
+    "dynamic_state_continued": true,
+    "evaluated_brew_prefix_used_for_parameter_fit": false,
+    "fixed_model_best_after_correction": true,
+    "original_method": "SUPERSEDED_WITHIN_BREW_PREFIX_FITTED_AND_STATE_RESET_DIAGNOSTIC",
+    "original_method_superseded": true
+  },
+  "change_declarations": {
+    "angeloni_access": false,
+    "gpl_source_ingestion": false,
+    "independent_validation_claim": false,
+    "laboratory_operation": false,
+    "production_parameter_adoption": false,
+    "production_physics_change": false,
+    "protected_holdout_scoring": false,
+    "puckworks_mutation": false,
+    "raw_data_mutation": false,
+    "target_blind_claim": false
+  },
+  "condition_inference": {
+    "condition_differences_published": true,
+    "exact_two_sided_sign_probability_for_6_of_11": 1.0,
+    "one_bar_influence": {
+      "adoption_gate_without_1bar": "FAIL",
+      "bootstrap_interval_without_1bar": [
+        -0.09970813652207332,
+        0.029570773333056695
+      ],
+      "bootstrap_replicates_without_1bar": 2000,
+      "bootstrap_seed": 20260831,
+      "condition_id": "1",
+      "condition_wins_without_1bar": 5,
+      "contribution_to_overall_mean": -0.08780473696966726,
+      "mean_with_1bar": -0.12068899925646104,
+      "mean_without_1bar": -0.03288426228679378,
+      "paired_difference": -0.9987363689531337,
+      "relative_improvement_without_1bar": 0.12190656257355942
+    }
+  },
+  "correction_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001-C1",
+  "data": {
+    "canonical_brews": 56,
+    "conditions": 11,
+    "duplicate_alias": "12-8-6_alt",
+    "negative_derived_flow_rows": 2711,
+    "nonmonotone_mass_steps": 5196,
+    "physical_brew_is_independent_unit": true,
+    "time_rows": 57000,
+    "time_rows_independent": false,
+    "trace_representations": 57
+  },
+  "development_consequence": "FIXED_RESISTANCE_RETAINED_BY_PARSIMONY",
+  "disposition": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_NO_TESTED_EVOLVING_RESISTANCE_FORM_HAS_STABLE_GROUPED_PREDICTIVE_ADVANTAGE",
+  "fallback_tasks": [
+    "EWP-REAL-WORLD-BOUNDARIES-001",
+    "OBS-PANNUSCH-FRACTION-WINDOW-001"
+  ],
+  "freezes": {
+    "c1_methods_addendum_sha256": "1a4446559e222cdae630274dc020c751e82796e8d450346004fe9ab46c53907d",
+    "original_files_modified": false,
+    "original_fold_manifest_sha256": "e427afbf7b9ecb3af5c144496f46b7517bdee397dd7eaa77bbdb78bea0419d93",
+    "original_methods_sha256": "c5391a855aee2ddf1bf8d8e0bf3c02395b900b93aabd6ee3edb24248423f70fb"
+  },
+  "home_lab": {
+    "equipment_purchase_authorized": false,
+    "operation_authorized": false,
+    "status": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY"
+  },
+  "independent_review": {
+    "checksum_manifest_sha256": "eb901030251f6a533fb4d5577013fe0a8aa64136d505422393bbd8e09a2d9e46",
+    "disposition": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_R1_INDEPENDENT_REVIEW_CORRECTION_REQUIRED",
+    "task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001-R1"
+  },
+  "invalid_states": {
+    "coverage_reported_explicitly": true,
+    "fail_closed_primary": true,
+    "penalized_sensitivity_performed": true,
+    "primary_loco_invalid_roots": 0,
+    "silent_zero_fill_removed": true
+  },
+  "models": {
+    "W-H0A": {
+      "role": "FIXED_BASELINE"
+    },
+    "W-H1": {
+      "LOBO": 0.24888838396829452,
+      "LOCO": 0.4100917983422724,
+      "blocked_time": 0.40179513576505205,
+      "conditions_better": 6,
+      "conditions_worse": 5,
+      "coverage": 1.0,
+      "disposition": "AVERAGE_LOCO_IMPROVEMENT_NOT_ADOPTION_GRADE",
+      "failure_rate": 0.0
+    },
+    "W-H2": {
+      "LOBO": 0.21834876046349502,
+      "LOCO": 0.32638473719545974,
+      "blocked_time": 0.43996282427816263,
+      "conditions_better": 6,
+      "conditions_worse": 5,
+      "coverage": 1.0,
+      "disposition": "LARGE_MEAN_LOCO_IMPROVEMENT_CONDITION_DOMINATED_AND_NOT_ADOPTION_GRADE",
+      "failure_rate": 0.0
+    },
+    "W-H3": {
+      "LOBO": 0.25223089871405857,
+      "LOCO": 0.41576559159402093,
+      "blocked_time": 0.3276807770846266,
+      "conditions_better": 6,
+      "conditions_worse": 5,
+      "coverage": 1.0,
+      "disposition": "AVERAGE_LOCO_IMPROVEMENT_NOT_ADOPTION_GRADE",
+      "failure_rate": 0.0
+    },
+    "W-H5": {
+      "LOBO": 0.2749704257746699,
+      "LOCO": 0.44715387150958735,
+      "blocked_time": 0.273144459439112,
+      "conditions_better": 5,
+      "conditions_worse": 6,
+      "coverage": 1.0,
+      "disposition": "TESTED_ONE_SECOND_OBSERVATION_DELAY_NOT_SUPPORTED",
+      "failure_rate": 0.0
+    }
+  },
+  "next_task": {
+    "maximum_claim": "SOURCE_CONDITIONED_STATIC_POROSITY_AND_PERMEABILITY_PRIOR_QUALIFICATION_FOR_EWP_HYDRAULIC_SENSITIVITY",
+    "status": "READY_AFTER_C1_MERGE",
+    "task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001"
+  },
+  "original_disposition": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_MODELS_INDISTINGUISHABLE_AT_AVAILABLE_BREW_AND_CONDITION_VARIABILITY",
+  "original_result_superseded": true,
+  "processing": {
+    "adoption_decision_across_tested_windows": "STABLE_NO_EVOLVING_MODEL_PASSES",
+    "broader_processing_robustness": "NOT_ESTABLISHED_BEYOND_TESTED_CONFIGURATIONS",
+    "disposition": "ADOPTION_DECISION_ROBUST_WITHIN_TESTED_PROCESSING_WINDOWS",
+    "effect_magnitude_across_tested_windows": "VARIABLE",
+    "mean_loco_ranking_across_tested_windows": "STABLE"
+  },
+  "scope": {
+    "all_change_point_dependence_ruled_out": false,
+    "all_mass_progress_dependence_ruled_out": false,
+    "all_time_dependence_ruled_out": false,
+    "tested_change_point_form_not_supported_for_adoption": true,
+    "tested_mass_progress_form_not_supported_for_adoption": true,
+    "tested_time_form_not_supported_for_adoption": true
+  },
+  "source_model": {
+    "classification": "SOURCE_POST_FIT_RECONSTRUCTION",
+    "dynamic_9bar_long_run_error_approx": 0.016,
+    "dynamic_post15_correlation_approx": 0.982,
+    "grouped_predictive_validation": false,
+    "static_Pc_bar": 12.392,
+    "static_Qc_g_s": 1.897
+  },
+  "task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001"
+}

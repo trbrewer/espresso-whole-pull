@@ -1,0 +1,56 @@
+{
+  "mutations": [
+    {
+      "expected_error_code": "XSV_BOOTSTRAP_TIME_ROW_INDEPENDENCE_FORBIDDEN",
+      "mutation_id": "INDEPENDENT_TIME_ROW_BOOTSTRAP",
+      "mutation_operation": "set bootstrap.time_rows_resampled=true",
+      "negative_mutation_test_id": "test_independent_time_row_bootstrap_rejected",
+      "positive_control_test_id": "test_independent_time_row_bootstrap_control",
+      "production_validator": "scripts/validate_xsv_waszkiewicz_dynamic_hyd_001.py",
+      "review_requirement_reference": "R2 required rejection of independent time-row resampling",
+      "target_artifacts": [
+        "C1_REVIEW_MANDATED_METHODS_ADDENDUM.json"
+      ]
+    },
+    {
+      "expected_error_code": "XSV_PROCESSING_OBSOLETE_FIELD",
+      "mutation_id": "LEGACY_RANKING_STABLE_FALSE",
+      "mutation_operation": "add ranking_stable=false",
+      "negative_mutation_test_id": "test_legacy_ranking_stable_false_rejected",
+      "positive_control_test_id": "test_legacy_ranking_stable_false_control",
+      "production_validator": "scripts/validate_xsv_waszkiewicz_dynamic_hyd_001.py",
+      "review_requirement_reference": "R2 required rejection of legacy ranking_stable:false",
+      "target_artifacts": [
+        "PROCESSING_ROBUSTNESS.json"
+      ]
+    },
+    {
+      "expected_error_code": "XSV_BROAD_DYNAMIC_ABSENCE_CLAIM_FORBIDDEN",
+      "mutation_id": "BROAD_DYNAMIC_ABSENCE_WORDING",
+      "mutation_operation": "set scope.all_time_dependence_ruled_out=true",
+      "negative_mutation_test_id": "test_broad_dynamic_absence_wording_rejected",
+      "positive_control_test_id": "test_broad_dynamic_absence_wording_control",
+      "production_validator": "scripts/validate_xsv_waszkiewicz_dynamic_hyd_001.py",
+      "review_requirement_reference": "R2 required rejection of broad dynamic-absence wording",
+      "target_artifacts": [
+        "summary.json"
+      ]
+    },
+    {
+      "expected_error_code": "XSV_SOURCE_MODEL_GROUPED_PREDICTION_RELABEL_FORBIDDEN",
+      "mutation_id": "SOURCE_MODEL_GROUPED_PREDICTION_RELABEL",
+      "mutation_operation": "relabel privilege as grouped predictive validation",
+      "negative_mutation_test_id": "test_source_model_grouped_prediction_relabel_rejected",
+      "positive_control_test_id": "test_source_model_grouped_prediction_relabel_control",
+      "production_validator": "scripts/validate_xsv_waszkiewicz_dynamic_hyd_001.py",
+      "review_requirement_reference": "R2 required rejection of source-model grouped-prediction relabeling",
+      "target_artifacts": [
+        "SOURCE_MODEL_PARITY.json"
+      ]
+    }
+  ],
+  "requirements_count": 4,
+  "reviewed_commit": "e4667eee315ecb8c93ba9be7c1385e04f12ffcca",
+  "source_review": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001-R2",
+  "source_review_checksum_manifest_sha256": "34817dbf1141d219682ad63665f01e6269965bd27f573743e2611ea565288413"
+}

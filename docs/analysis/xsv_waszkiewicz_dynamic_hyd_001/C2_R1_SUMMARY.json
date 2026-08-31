@@ -1,0 +1,121 @@
+{
+  "authorities": {
+    "R2_checksum_manifest_sha256": "34817dbf1141d219682ad63665f01e6269965bd27f573743e2611ea565288413",
+    "final_authority_semantics": "EXACT_GREEN_CANDIDATE_PRECEDING_METADATA_ONLY_REVIEW_CLOSEOUT",
+    "final_commit": "b28c0fca7a1d7b98c06f1819e3480d0654d88d8e",
+    "final_tree": "1e6e3dbdef4c09ecbc90d1ac13fd27a067e5c760",
+    "starting_commit": "e4667eee315ecb8c93ba9be7c1385e04f12ffcca",
+    "starting_tree": "430397d9b4b9de14a4e85df2f75a709ae8c21802"
+  },
+  "change_declarations": {
+    "angeloni_access": false,
+    "fold_change": false,
+    "gpl_ingestion": false,
+    "independent_validation_claim": false,
+    "laboratory_operation": false,
+    "metric_change": false,
+    "model_refit": false,
+    "production_parameter_adoption": false,
+    "production_physics_change": false,
+    "protected_scoring": false,
+    "puckworks_mutation": false,
+    "raw_data_mutation": false,
+    "scientific_result_change": false,
+    "successor_change": false
+  },
+  "development_consequence": "FIXED_RESISTANCE_RETAINED_BY_PARSIMONY",
+  "disposition": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_C2_R1_COMPLETE_OWNER_ADJUDICATED_TEST_AUTHORITY_PROCESSING_CONTRACT_AND_SEMANTIC_VALIDATION_READY_FOR_BOUNDED_ADDENDUM_REREVIEW",
+  "final_test_authority": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'",
+    "discovered_test_count": 1133,
+    "environment": "SUPPORTED_SYSTEM_PYTHON_3_12_3_NUMPY_1_26_4_SCIPY_1_11_4",
+    "errors": 0,
+    "failed": 0,
+    "focused_C2_R1_tests_passed": 14,
+    "passed": 1130,
+    "python_version": "3.12.3",
+    "repeated_discovery_identical": true,
+    "result_manifest_sha256": "17e24cea8153c497fb849673a910292f370b88d211748f18f5c92b859eb9a2bb",
+    "skip_manifest_sha256": "bdcce34a64ab56144ce53326da46b1ddbe9783e056cd429e23e4906beca5774b",
+    "skipped": 3,
+    "test_ID_manifest_sha256": "6c04a3e795c05d4ff7c660147758d321734c474acfbcd2f0764e0fe3cceb38e1",
+    "tests_run": 1133
+  },
+  "home_lab_status": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY",
+  "owner_adjudication": {
+    "R2_result_current_test_authority": false,
+    "R2_result_rejected_as_false": false,
+    "current_test_identity_requirement_waived": false,
+    "historical_R2_identity_status": "NONRECOVERABLE_PRESERVED_AS_AGGREGATE",
+    "waived_requirement": "EXACT_RETROSPECTIVE_R2_TEST_IDENTITY_RECONSTRUCTION"
+  },
+  "processing_contract": {
+    "CSV_consistency_verified": true,
+    "adoption_decision": "STABLE_NO_EVOLVING_MODEL_PASSES",
+    "broader_robustness": "NOT_ESTABLISHED_BEYOND_TESTED_CONFIGURATIONS",
+    "condition_sign_pattern": "VARIABLE",
+    "coverage_stability": "STABLE",
+    "disposition": "ADOPTION_DECISION_ROBUST_WITHIN_TESTED_PROCESSING_WINDOWS",
+    "effect_magnitude": "VARIABLE",
+    "mean_loco_ranking": "STABLE",
+    "mean_loco_winner": "W-H2",
+    "parameter_stability": "VARIABLE",
+    "tested_processing_window_count": 5
+  },
+  "rereview": {
+    "merged": false,
+    "requested": true,
+    "scope": "BOUNDED_OWNER_ADJUDICATION_MACHINE_CONTRACT_SEMANTIC_TEST_AND_CURRENT_TEST_AUTHORITY_ADDENDUM"
+  },
+  "scientific_invariance": {
+    "fold_drift": false,
+    "ledger_sha256": "01e32623e94a0af98b27e73c55edd6cba35cc23b9bb2ba18d36f0985a0c531a3",
+    "load_bearing_artifacts_checked": 27,
+    "model_drift": false,
+    "numeric_drift": false,
+    "successor_drift": false,
+    "unexpected_byte_changes": 0
+  },
+  "scientific_result": "XSV_WASZKIEWICZ_DYNAMIC_HYD_001_NO_TESTED_EVOLVING_RESISTANCE_FORM_HAS_STABLE_GROUPED_PREDICTIVE_ADVANTAGE",
+  "scientific_result_changed": false,
+  "semantic_mutations": {
+    "implemented": 4,
+    "mutation_ids": [
+      "INDEPENDENT_TIME_ROW_BOOTSTRAP",
+      "LEGACY_RANKING_STABLE_FALSE",
+      "BROAD_DYNAMIC_ABSENCE_WORDING",
+      "SOURCE_MODEL_GROUPED_PREDICTION_RELABEL"
+    ],
+    "negative_rejections_passed": 4,
+    "positive_controls_passed": 4,
+    "production_validator_used": true,
+    "required": 4
+  },
+  "successor": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
+  "supported_pre_C2_test_authority": {
+    "discovered_test_count": 1119,
+    "errors": 0,
+    "failed": 0,
+    "numpy_version": "1.26.4",
+    "passed": 1116,
+    "python_executable": "/usr/bin/python3",
+    "python_version": "3.12.3",
+    "repeat_discovery_identical": true,
+    "repeat_execution_same_totals": true,
+    "result_manifest_sha256": "dacd3a6e2ca35c702fab42952537f3a90540a41422fc1d0357e71761892ff799",
+    "scipy_version": "1.11.4",
+    "skip_manifest_sha256": "bdcce34a64ab56144ce53326da46b1ddbe9783e056cd429e23e4906beca5774b",
+    "skipped": 3,
+    "test_ID_manifest_sha256": "f306eff95732359da1ceb5be0429236ac766bf05d7dc2de6f761304f78db0fe0",
+    "tests_run": 1119
+  },
+  "task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001-C2-R1",
+  "validation": {
+    "corpus_validator": "PASS",
+    "exact_producer": "HOSTED_PASS_LOCAL_NOT_RUN",
+    "hosted_CI": "PASS_ALL_THREE_CHECKS",
+    "programme_validator": "PASS",
+    "source_manifest": "PASS_752_OF_752",
+    "static_validation": "PASS_39_OF_39"
+  }
+}
