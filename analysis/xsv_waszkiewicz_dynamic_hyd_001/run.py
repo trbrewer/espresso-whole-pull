@@ -18,10 +18,10 @@ ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 from core import *
 
-PW = Path(os.environ.get("XSV_WASZKIEWICZ_PUCKWORKS", "/home/tim/espresso-development/isolated/puckworks-xsv-waszkiewicz-dynamic-hyd-001-20260831"))
+PW = Path(os.environ.get("XSV_WASZKIEWICZ_PUCKWORKS", "external/puckworks"))
 DATA = PW / "puckworks/data/waszkiewicz2025"
 OUT = ROOT / "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001"
-EVID = Path(os.environ.get("XSV_WASZKIEWICZ_EVIDENCE", "/home/tim/Documents/review-evidence/xsv-waszkiewicz-dynamic-hyd-001-20260831"))
+EVID = Path(os.environ.get("XSV_WASZKIEWICZ_EVIDENCE", "review-evidence/xsv-waszkiewicz-dynamic-hyd-001"))
 SEED = 20260831
 MODELS = ["W-H0A", "W-H1", "W-H2", "W-H3", "W-H5"]
 HASHES = {

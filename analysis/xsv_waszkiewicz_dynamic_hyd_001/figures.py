@@ -7,7 +7,7 @@ import numpy as np
 
 ROOT=Path(__file__).resolve().parents[2]
 DOC=ROOT/'docs/analysis/xsv_waszkiewicz_dynamic_hyd_001'
-EVID=Path(os.environ.get('XSV_WASZKIEWICZ_EVIDENCE','/home/tim/Documents/review-evidence/xsv-waszkiewicz-dynamic-hyd-001-20260831'))
+EVID=Path(os.environ.get('XSV_WASZKIEWICZ_EVIDENCE','review-evidence/xsv-waszkiewicz-dynamic-hyd-001'))
 OUT=EVID/'figures'; OUT.mkdir(parents=True,exist_ok=True)
 STAMP='SOURCE_INTERNAL · CONTROLLED COMPONENT COMPARISON · NOT INDEPENDENT WHOLE-MODEL VALIDATION'
 

@@ -1,9 +1,9 @@
 """Materialize the external review bundle from committed reduced products."""
-import hashlib, json, shutil
+import hashlib, json, os, shutil
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 DOC=ROOT/'docs/analysis/xsv_waszkiewicz_dynamic_hyd_001'
-E=Path('/home/tim/Documents/review-evidence/xsv-waszkiewicz-dynamic-hyd-001-20260831')
+E=Path(os.environ.get('XSV_WASZKIEWICZ_EVIDENCE','review-evidence/xsv-waszkiewicz-dynamic-hyd-001'))
 s=json.load((DOC/'summary.json').open())
 sections={
 '00_EXECUTIVE_RESULT.md':f"# Executive result\n\n`{s['disposition']}`. Fixed resistance is retained because no evolving candidate passed all grouped gates.\n",
