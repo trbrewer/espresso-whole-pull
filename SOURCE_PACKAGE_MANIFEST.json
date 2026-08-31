@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 736,
-  "total_uncompressed_bytes_excluding_manifest": 8181506,
-  "aggregate_source_sha256": "2d441599ba724702bc2000d3c3a34cd35d6074f6f914f5bf09599db6b39ebca2",
-  "aggregate_sha256": "2d441599ba724702bc2000d3c3a34cd35d6074f6f914f5bf09599db6b39ebca2",
+  "total_uncompressed_bytes_excluding_manifest": 8182810,
+  "aggregate_source_sha256": "d217d244257e2b3ad0ac3e1227c631fdad6bceaee79c61ad2643a8677eabfcf8",
+  "aggregate_sha256": "d217d244257e2b3ad0ac3e1227c631fdad6bceaee79c61ad2643a8677eabfcf8",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -94,8 +94,8 @@
       "git_mode": "100644"
     },
     "analysis/xsv_waszkiewicz_dynamic_hyd_001/c1_reporting.py": {
-      "sha256": "e0157972c939e4e0f07fcfea7299b829635a00b4fb5c6766e688666f0830ec6d",
-      "bytes": 21914,
+      "sha256": "083528ac1bd990cf5f3d9cde1bd313550b92be7e9e27dddc17fce24116419c1f",
+      "bytes": 23092,
       "git_mode": "100644"
     },
     "analysis/xsv_waszkiewicz_dynamic_hyd_001/core.py": {
@@ -1184,7 +1184,7 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/C1_CORRECTION_RECORD.json": {
-      "sha256": "80fbd679c95eaf86a1351828fa62bd603ea4f3381b2e62fd6a5e4f5ff5d2a2c4",
+      "sha256": "fb1f549a3ccb09b71e5b30031f7d9c5de560a287a3c7d802bbb1d91540f8eb43",
       "bytes": 1979,
       "git_mode": "100644"
     },
@@ -1254,8 +1254,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/MASS_SIGNAL_AUDIT.csv": {
-      "sha256": "643f68bcf3bb2886a2a886d8594cbc201a0cad286a6c7a8bc658741486334a65",
-      "bytes": 3283,
+      "sha256": "8a741499f69ed4afff6b881887483ab088635b05acb33cd6d7f3884907e74757",
+      "bytes": 3356,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/METHODS_FREEZE.json": {
@@ -1344,8 +1344,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/summary.json": {
-      "sha256": "d91a7e77bf8c3b98fb35e60712ee47d7119f8228ce944c796e495997f66ec8ab",
-      "bytes": 5945,
+      "sha256": "f71bcaa683dc6e4b335851900f4fb2afae894162189c44620585e06c3d8e888a",
+      "bytes": 5998,
       "git_mode": "100644"
     },
     "docs/data/XSV_XCT_001_REAL_VOLUME_DATA_REQUEST.md": {

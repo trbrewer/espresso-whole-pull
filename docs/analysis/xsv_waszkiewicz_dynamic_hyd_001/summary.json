@@ -24,7 +24,12 @@
     "exact_two_sided_sign_probability_for_6_of_11": 1.0,
     "one_bar_influence": {
       "adoption_gate_without_1bar": "FAIL",
-      "bootstrap_interval_without_1bar": "reported in CONDITION_INFLUENCE.csv as descriptive C1 influence; primary bootstrap retains 1-bar",
+      "bootstrap_interval_without_1bar": [
+        -0.09970813652207332,
+        0.029570773333056695
+      ],
+      "bootstrap_replicates_without_1bar": 2000,
+      "bootstrap_seed": 20260831,
       "condition_id": "1",
       "condition_wins_without_1bar": 5,
       "contribution_to_overall_mean": -0.08780473696966726,
