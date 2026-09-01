@@ -1,5 +1,10 @@
 # Claim Ceiling
 
+`EWP-REAL-WORLD-BOUNDARIES-001` stopped before boundary construction because
+all canonical Visualizer device/sensor and integration mappings were unresolved.
+It earns no cohort-library, EWP-transfer, porosity-materiality, population,
+permeability, or physical-validation claim.
+
 SCI-MD-009-C1 establishes only a target-blind firewall, closure of 498 retained
 production cases, and a valid negative held-out response-model qualification
 from 96 supplemental cases. It does not establish practical identifiability,

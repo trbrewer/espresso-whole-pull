@@ -1,0 +1,13 @@
+{
+  "candidate_cell_count": 0,
+  "claim_ceiling": "RECENT_PUBLIC_COHORT_BOUNDARY_QUALIFICATION_AND_POROSITY_CONDITIONED_EWP_HYDRAULIC_RESPONSE_MAPPING",
+  "corpus": {"logical_records": 23169, "stored_versions": 23169},
+  "decision_code": "EWP_REAL_WORLD_BOUNDARIES_001_BLOCKED",
+  "determinism": {"comparison": "recursive byte comparison of seven runner-produced public artifacts", "public_replay_status": "PASS_BYTE_EQUIVALENT", "source_state_equal": true},
+  "ewp_executable_case_count": 0,
+  "library_case_count": 0,
+  "materiality_status": "NOT_ADJUDICATED",
+  "stop_code": "EWP_REAL_WORLD_BOUNDARIES_001_STOP_ALL_LOAD_BEARING_MEASUREMENT_MAPPINGS_UNRESOLVED",
+  "successor": "EWP-RWB-001-PRESSURE-SENSOR-BOUNDARY-INTERFACE-RECONCILIATION",
+  "task_id": "EWP-REAL-WORLD-BOUNDARIES-001"
+}

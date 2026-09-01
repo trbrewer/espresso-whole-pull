@@ -1,0 +1,2 @@
+normalized_family_id,definition,shot_count,distinct_user_count,qualification_status,suppression_status,transfer_limitations
+UNRESOLVED_SUPPRESSED,No documented device/integration family in canonical normalized records,23169,NOT_PUBLISHED_FOR_SUPPRESSED_CELL,UNRESOLVED,SUPPRESSED,Pressure sensor location and controller semantics are unknown

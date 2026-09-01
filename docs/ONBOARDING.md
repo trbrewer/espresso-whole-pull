@@ -16,9 +16,9 @@ Before substantive science or new measurement, also read
 preflight. External data unavailable in the checkout are not absent.
 Also read `strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md`,
 `../provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json`, and
-`analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv`. Current priority is
-`EWP-POROSITY-PERMEABILITY-PRIOR-001`; home-lab operation is deferred while relevant
-existing-data opportunities remain active.
+`analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv`. Current priority is the bounded
+`EWP-RWB-001-PRESSURE-SENSOR-BOUNDARY-INTERFACE-RECONCILIATION` successor after
+the boundary task's all-mappings-unresolved stop; home-lab operation remains deferred.
 
 For validation work, also read the
 [Validation Operating Standard v1](validation/VALIDATION_OPERATING_STANDARD_V1.md)

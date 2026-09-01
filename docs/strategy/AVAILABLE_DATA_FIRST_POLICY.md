@@ -4,8 +4,9 @@ This policy is operationalized by
 `EXISTING_DATA_LEVERAGE_PROGRAMME.md` and its machine authority and ledger.
 Source-internal or target-exposed status, unknown M0, absence of independent
 validation, negative results, or component-only tests do not alone exhaust an
-opportunity. Current priority is `XSV-PANNUSCH-MULTIMODEL-001`; immediate
-home-lab operation is deferred and SCI-ED-003 remains a later closure task.
+opportunity. Current priority is bounded reconciliation of Visualizer pressure-sensor,
+device, integration, and EWP boundary-interface identity after
+`EWP-REAL-WORLD-BOUNDARIES-001` stopped; immediate home-lab operation is deferred.
 
 Before substantive scientific work, a general data-gap conclusion, or new measurement, read `provenance/AVAILABLE_DATA_AUTHORITY.json`, the live Puckworks MANIFEST/capability register and cards, external-corpus status, and prior task artifacts; create or validate one task preflight. Unavailable in this checkout is not absent. A data gap must name the observable, decision, directness, independence, and evidence checked.
 

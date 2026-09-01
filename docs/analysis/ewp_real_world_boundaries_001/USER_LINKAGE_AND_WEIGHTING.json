@@ -1,0 +1,14 @@
+{
+  "bootstrap": {
+    "replicates": 1000,
+    "seed_derivation": "protocol hash plus snapshot hash",
+    "status": "NOT_RUN_MATERIAL_STOP"
+  },
+  "linked_distinct_user_count": 555,
+  "namespace": "STORE_LOCAL_PSEUDONYMOUS_LINKAGE_FOR_SELECTION_BIAS_ACCOUNTING",
+  "primary_equal_user_summary_adequate": false,
+  "reason": "No privacy-qualified device cell exists; user identities were not emitted.",
+  "records_with_valid_local_linkage": 23169,
+  "records_without_valid_local_linkage": 0,
+  "valid_linkage_fraction": 1.0
+}

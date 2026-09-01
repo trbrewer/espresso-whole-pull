@@ -1,0 +1,15 @@
+{
+  "attribution": "Data source: Visualizer. We collectively acknowledge the users who make their shots public.",
+  "coarsened_cells": 0,
+  "minimum_distinct_users_per_published_cell": 10,
+  "minimum_shots_per_published_cell": 20,
+  "permission": "PERMISSIONED_RECENT_PUBLIC_AGGREGATE_ANALYSIS",
+  "private_records": false,
+  "published_cells": 0,
+  "raw_redistribution": false,
+  "source": "Visualizer",
+  "suppressed_cells": 1,
+  "suppression_reasons": {
+    "UNRESOLVED_DEVICE_AND_INTEGRATION_FAMILY": 23169
+  }
+}

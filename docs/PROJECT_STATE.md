@@ -1,5 +1,17 @@
 # Project State
 
+## EWP-REAL-WORLD-BOUNDARIES-001 material stop (2026-09-01)
+
+`EWP_REAL_WORLD_BOUNDARIES_001_BLOCKED`. The exact permissioned recent-public
+Visualizer current-state corpus reconciled at 23,169 logical records, but all
+records lack documented device/pressure-sensor family and resolved integration
+provenance in the canonical normalized schema. Under the prospectively frozen
+G1 transfer contract, zero records and zero aggregate cells can qualify as an
+EWP pressure boundary. No boundary library, EWP matrix, porosity materiality,
+or physical-validation claim was manufactured. The single successor is
+`EWP-RWB-001-PRESSURE-SENSOR-BOUNDARY-INTERFACE-RECONCILIATION`; home-lab work
+remains deferred and production physics/defaults are unchanged.
+
 ## EWP-POROSITY-PERMEABILITY-PRIOR-001 result (2026-08-31)
 
 `EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_ONLY` after C2.

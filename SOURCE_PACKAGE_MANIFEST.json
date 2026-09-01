@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 790,
-  "total_uncompressed_bytes_excluding_manifest": 8450481,
-  "aggregate_source_sha256": "d386efbb97ef7d8a486d8944f7c8135f80c1d6e80404cb7979a90d76ed135d65",
-  "aggregate_sha256": "d386efbb97ef7d8a486d8944f7c8135f80c1d6e80404cb7979a90d76ed135d65",
+  "file_count": 818,
+  "total_uncompressed_bytes_excluding_manifest": 8502662,
+  "aggregate_source_sha256": "c8f15e5e24dfb16fdfec0ec33973164d5adedf93a35e1d1183098741bc601f94",
+  "aggregate_sha256": "c8f15e5e24dfb16fdfec0ec33973164d5adedf93a35e1d1183098741bc601f94",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -131,6 +131,31 @@
     "analysis/ewp_porosity_permeability_prior_001/supports.py": {
       "sha256": "0cb2a6056b26d5b0f920bca0a299d7716f35642674d478fc98a5ba514bfb3ad5",
       "bytes": 3187,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_real_world_boundaries_001/__init__.py": {
+      "sha256": "9e482ab3f80d12e640ec21c83973672bac5f4a6d43e2ca3ed301ca040dffcd42",
+      "bytes": 276,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_real_world_boundaries_001/authority.py": {
+      "sha256": "0ab7bb8b91704702c8d0141ec64651dd0981ee64f54fdf59f8c31e8e49c9b3be",
+      "bytes": 1857,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_real_world_boundaries_001/corpus_adapter.py": {
+      "sha256": "59d153a2eab139eb6c6b211e1ffd7cd31aa381781a0480d1ffd040e5649a0aab",
+      "bytes": 3800,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_real_world_boundaries_001/qualification.py": {
+      "sha256": "d0a65471570f44a3dd156623278ae03e8177f5ceb49159d341afd6419d882c94",
+      "bytes": 3505,
+      "git_mode": "100644"
+    },
+    "analysis/ewp_real_world_boundaries_001/run.py": {
+      "sha256": "4d186dc248f402b9c5d0ecb3189f730651e1528993f9302dbba389825cf9362e",
+      "bytes": 9456,
       "git_mode": "100644"
     },
     "analysis/xsv_pannusch_multimodel_001/c1_correction.py": {
@@ -594,8 +619,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "72ac52b6ee523fae2a3486913b782eb09a4425e837c369b37755bca0a77d1fbd",
-      "bytes": 8678,
+      "sha256": "f0a6507e5005c9250a4a75c1534db30f044b2350227998406a89d58c3a56b33e",
+      "bytes": 9449,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -791,6 +816,106 @@
     "docs/analysis/ewp_porosity_permeability_prior_001/summary.json": {
       "sha256": "19529ac2067966b65148d82124e44b374b29293fa95532cf250556d1f882e236",
       "bytes": 9359,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/AUTHORITY.json": {
+      "sha256": "ab3ec82ba5eeb44580e1c04bced32efbda3aa96a2cd41517fd3b121d5d15362a",
+      "bytes": 1100,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/BOUNDARY_COVERAGE.json": {
+      "sha256": "9a080bdb35cb6ab951c99a98c87630eb23c2418f7290881a71f0edd4fcb94ccb",
+      "bytes": 177,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/BOUNDARY_PROFILE_LIBRARY.json": {
+      "sha256": "a24769ccf04d5bf9dfb7f0f74af5f0b405e27aaccdbfbffcba19fb04bc60d3b2",
+      "bytes": 154,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/COHORT_BOUNDARY_SUMMARY.csv": {
+      "sha256": "8ef85b8bd23ca18e36aedfd8ee93216609046bd641ab322f6723ae95bc2e8a06",
+      "bytes": 182,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/CORPUS_SNAPSHOT_RECEIPT.json": {
+      "sha256": "1028edf9e3013c230a0201c1302fa1e4b21b20b61503c15f0d445328835becbf",
+      "bytes": 1306,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/DECISION.json": {
+      "sha256": "498269fc40bde3a02502fa1ad5f83b0603df689935c9f77552aa77bc12913e14",
+      "bytes": 803,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/DEVICE_SCHEMA_SUMMARY.csv": {
+      "sha256": "a896c10e5e7f6dfdc9ea3638986fe45fed8fb8e49a59feea871d5da662e0c0fc",
+      "bytes": 342,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/EWP_BOUNDARY_SENSITIVITY.csv": {
+      "sha256": "50ddae0073ed75b36b1c99d13fbc855f69be5f23d0a617630f5e16968794271b",
+      "bytes": 77,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/EWP_CASE_REGISTER.csv": {
+      "sha256": "94d83c344cd0a21f6c5c1c1ad1e1723845cf77142fc84d88782c3daefec2d900",
+      "bytes": 89,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/FEATURE_DEFINITIONS.json": {
+      "sha256": "52e55d67433dcd55a4f14ae128951c9346da9933406686a736b47ef57c46da33",
+      "bytes": 1449,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/MEASUREMENT_MAPPING_LEDGER.csv": {
+      "sha256": "006770cdf5de59c5b97969bbe9ee9f389715eaa62ab6eec881df89a556e06cf5",
+      "bytes": 3554,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/NUMERICAL_STABILITY.json": {
+      "sha256": "7be4e1f4005cb21351ac9f1c821d9fcf33e8ac48ed768824e24d2fbcd5775328",
+      "bytes": 216,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/POROSITY_BY_BOUNDARY_MATERIALITY.json": {
+      "sha256": "c47bcb18f4d3be87ccafbcebc099d9f9f1d14d0f634d363ac03b7a28020a719f",
+      "bytes": 221,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/PROTOCOL_FREEZE.json": {
+      "sha256": "90f7d5d9ade0298aa9b216d7813b45f56a1af7e270d827ac2d0ad2f61a4b1d20",
+      "bytes": 6379,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/QUALIFICATION_COUNTS.csv": {
+      "sha256": "e96b2585ced41e13bf4a156b794ae78a020ae1e75083f0983955ebc7171ea931",
+      "bytes": 1073,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/R0_COHORT_POSITION.csv": {
+      "sha256": "886c650599a4c6d30b4dbc7654fb69e09517d60cc37f8ca8d6c1af6326a17163",
+      "bytes": 105,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/RESULT.md": {
+      "sha256": "a7a8d5387113c03904c1aa6d2a658e180100e36d2c341b7a4b2751c369f3f603",
+      "bytes": 6121,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/RIGHTS_PRIVACY_AND_ATTRIBUTION.json": {
+      "sha256": "c3bbc6650a44487c8ffb32a5f2004ed82978e0fecd8512fb34ee703606a07825",
+      "bytes": 517,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/USER_LINKAGE_AND_WEIGHTING.json": {
+      "sha256": "f60a42df59490f6af32699ca3009d5d919f2a9f1e29197361e9659e646bde495",
+      "bytes": 524,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_real_world_boundaries_001/summary.json": {
+      "sha256": "c621e9a7feb48477517f86076644e6bff5c3db7bdc45699db3919c3770f28e11",
+      "bytes": 792,
       "git_mode": "100644"
     },
     "docs/analysis/pannusch_prior_impact_001/CURRENT_DATA_SUFFICIENCY.json": {
@@ -1659,8 +1784,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md": {
-      "sha256": "4baa301aeaa056ea7f25a89e9f1fd2c1ff9d7ea9b2f6c73fb5e7cf2bc9cccd64",
-      "bytes": 1948,
+      "sha256": "3da51eba6b9cd242a20013c54789a7f87050ce6e90f89647859c8c9847db4a80",
+      "bytes": 2031,
       "git_mode": "100644"
     },
     "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": {
@@ -1669,8 +1794,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "ba327c2b9682c2a0afdc444fbdaaaaffb3ae87e6c3123921196e8d01d55deba7",
-      "bytes": 5374,
+      "sha256": "a818b2be45980db8dca641acd44f8160d6e4a989ac2edc30a1e662e13bb6ddab",
+      "bytes": 5922,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -2708,6 +2833,11 @@
       "bytes": 210,
       "git_mode": "100755"
     },
+    "scripts/run_ewp_real_world_boundaries_001.py": {
+      "sha256": "6ce7ff9b4ed8d171020eabe7bd39481fd142d1b4644735c08a6ee36cf8c6e01e",
+      "bytes": 1208,
+      "git_mode": "100755"
+    },
     "scripts/run_qualification.py": {
       "sha256": "2dc1dc4e65fde24d5119c7f7abf8af54863b1b05372b6f5a8e88df81a597ab04",
       "bytes": 25215,
@@ -2906,6 +3036,11 @@
     "scripts/validate_ewp_porosity_permeability_prior_001.py": {
       "sha256": "c7cc6dff4d96c47a36a6051a37de69af62c1341435923a509d4597edf7ef92a5",
       "bytes": 1386,
+      "git_mode": "100755"
+    },
+    "scripts/validate_ewp_real_world_boundaries_001.py": {
+      "sha256": "c5dfc70bb9e85acabf1fe077e18922a447ffc7654489f7757aea3dee4d1ffc84",
+      "bytes": 1640,
       "git_mode": "100755"
     },
     "scripts/validate_existing_data_leverage_programme.py": {
@@ -3204,8 +3339,8 @@
       "git_mode": "100644"
     },
     "tests/test_espresso_corpus_leverage_002_c1.py": {
-      "sha256": "218dee906ef034f61c922354ac7913a5e6737ffcc82da40b2e17ba14792cdaaa",
-      "bytes": 1249,
+      "sha256": "a48d239a2c81835d65d50a96a885282bb9158d412c0cbefb76ed5e75b412e41a",
+      "bytes": 1281,
       "git_mode": "100644"
     },
     "tests/test_ewp_porosity_permeability_prior_001.py": {
@@ -3213,9 +3348,14 @@
       "bytes": 11814,
       "git_mode": "100644"
     },
+    "tests/test_ewp_real_world_boundaries_001.py": {
+      "sha256": "f0a5cd2ed0b007a13f888df4d0e99f7ef4dec3f13d0edff5595fdab229c2237b",
+      "bytes": 3760,
+      "git_mode": "100644"
+    },
     "tests/test_existing_data_leverage_programme.py": {
-      "sha256": "d34076091a6cdff337a2840b776eca183a6f116a6b0713a22edbb21c2da0758b",
-      "bytes": 656,
+      "sha256": "5011944947a49b4b9cb0d043452f5c6dbaf35f846e6a5025f1ae3944183604d7",
+      "bytes": 688,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
@@ -3504,8 +3644,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_multimodel_001.py": {
-      "sha256": "d33b03279bcd948ad77060d33c5cd662d9f4d094a8d32842c2e3cf5820376491",
-      "bytes": 5079,
+      "sha256": "747abebcac89066ecefe4bb81746ba2f8824dada55ac1649377b40496be007bb",
+      "bytes": 5111,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {
