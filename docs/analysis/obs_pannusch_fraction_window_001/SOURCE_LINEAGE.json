@@ -1,0 +1,44 @@
+{
+  "evidence": [
+    {
+      "conclusion": "Explicit shared index, coefficient copy, cumulative mass, positive-root inversion, and tE assignment.",
+      "function": "getExperimentalData_validation",
+      "location": "sampling-times block before chemistry ingestion",
+      "source_id": "P24-M-PREP-PRED",
+      "source_sha256": "b1a219b851887af69611a9f22c810c7c07f1f3b8e714e6d4ef62500c960deee7"
+    },
+    {
+      "conclusion": "24 finite a,b,time,flow records in the exact consumed order.",
+      "object": "MassData[1:24]",
+      "source_id": "P24-MASS-PRED",
+      "source_sha256": "430f922d0df443d9f1b1d629409d9ef4a4967d15535ffa8b5a34f795523faaf3"
+    },
+    {
+      "conclusion": "Ten-vial masses are assigned in condition-major, replicate-minor order.",
+      "object": "SampleWeights",
+      "source_id": "P24-DOE-PRED",
+      "source_sha256": "b7fc864e693ddb40317a4c9493a2fb0c0892b1f1c68f5ce581d48008e21cab57"
+    }
+  ],
+  "relationships": {
+    "clock_origin": {
+      "conclusion": "Mass fit time is rebased to its selected first sample; its zero-intercept polynomial is used directly for tE.",
+      "status": "DERIVED_FROM_SAME_MASS_FIT"
+    },
+    "massdata_to_run_tE": {
+      "conclusion": "run.tE is the positive-root inversion of cumulative ten-vial mE using copied MassData a and b.",
+      "status": "DERIVED_FROM_SAME_MASS_FIT"
+    },
+    "massdata_to_shot_order": {
+      "conclusion": "Released preprocessing traverses eight conditions and three physical runs and indexes MassData as i*3-3+j.",
+      "status": "EXPLICIT_SOURCE_CODE_MAPPING"
+    },
+    "vial_transition": {
+      "conclusion": "Boundaries are cumulative measured vial masses; source supplies ten ordered collection intervals.",
+      "status": "DERIVED_FROM_SAME_MASS_FIT"
+    }
+  },
+  "rights": "CC-BY-NC-3.0; source-derived numeric data are not relicensed as repository code",
+  "schema_version": 1,
+  "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001"
+}

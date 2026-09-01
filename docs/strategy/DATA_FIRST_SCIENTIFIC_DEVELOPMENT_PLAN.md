@@ -13,14 +13,15 @@
 > Waszkiewicz hydraulics. Visualizer is descriptive/boundary authority,
 > Wadsworth/Vaca remain separate, and home lab remains deferred.
 
-## Current residual-selected task (2026-08-30)
+## Current residual-selected result (2026-09-01)
 
-XSV-PANNUSCH-MULTIMODEL-001 completed with a strong grouped predictive
-advantage for the fixed published Pannusch structure. The next existing-data
-task is `OBS-PANNUSCH-FRACTION-WINDOW-001`, testing whether qualified beverage-mass and
-fraction-boundary observation mapping explains the retained fraction-2/tail
-residual. No additional extraction-physics complexity or laboratory operation
-is currently justified.
+Fixed Pannusch has strong advantage over the ordinal-only pooled baseline, but
+no established advantage over the calibration-only boundary-aware fair
+comparator; its systematic observation-window residual remains.
+`OBS-PANNUSCH-FRACTION-WINDOW-001` proved that all 24 source windows already
+derive from the corresponding beverage-mass fit and returned an exact null.
+The selected, unimplemented fallback is `SCI-MD-PANNUSCH-FLOW-HISTORY-001`.
+No additional extraction physics or laboratory operation is authorized.
 
 ## Current additive decision (2026-08-30)
 

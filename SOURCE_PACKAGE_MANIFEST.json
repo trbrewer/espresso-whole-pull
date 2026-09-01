@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 819,
-  "total_uncompressed_bytes_excluding_manifest": 8514816,
-  "aggregate_source_sha256": "0edd034074618bd2be701a1664faea1266fdf872f90bc5355121609de94ab05e",
-  "aggregate_sha256": "0edd034074618bd2be701a1664faea1266fdf872f90bc5355121609de94ab05e",
+  "file_count": 842,
+  "total_uncompressed_bytes_excluding_manifest": 8739563,
+  "aggregate_source_sha256": "3fa5a9b0b03192465c32b6f4910c67682f46084dcffced9a2000e0a15fa30caf",
+  "aggregate_sha256": "3fa5a9b0b03192465c32b6f4910c67682f46084dcffced9a2000e0a15fa30caf",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -161,6 +161,31 @@
     "analysis/ewp_real_world_boundaries_001/run.py": {
       "sha256": "66ab2cce1ec2a41b88a568c9ea9a6770a399af7d067a80e18194f4883e8c5cc7",
       "bytes": 10823,
+      "git_mode": "100644"
+    },
+    "analysis/obs_pannusch_fraction_window_001/__init__.py": {
+      "sha256": "37337bb86ae91c51393e0d0d103899f704afc8516d41a277d3f75540968fa07d",
+      "bytes": 63,
+      "git_mode": "100644"
+    },
+    "analysis/obs_pannusch_fraction_window_001/audit.py": {
+      "sha256": "a35fce6c0c53d580db54d7a8f411d9f3d6c54af9aaeb46d3804027e03ecfe401",
+      "bytes": 4374,
+      "git_mode": "100644"
+    },
+    "analysis/obs_pannusch_fraction_window_001/baseline.py": {
+      "sha256": "1425fb4c2b3843d4f037944bef39f4da790f7022bdea5c1293f96180c9bf8fee",
+      "bytes": 1987,
+      "git_mode": "100644"
+    },
+    "analysis/obs_pannusch_fraction_window_001/core.py": {
+      "sha256": "b158ef3bc3cea6977e4e49d4aa0336910ba76e1ce8c355179eaa8b078a105030",
+      "bytes": 5735,
+      "git_mode": "100644"
+    },
+    "analysis/obs_pannusch_fraction_window_001/run.py": {
+      "sha256": "bcf056eec3b2254cab49661242480d2c7252c8e5773a1dfb1cb5bb99f5b2af17",
+      "bytes": 23537,
       "git_mode": "100644"
     },
     "analysis/xsv_pannusch_multimodel_001/c1_correction.py": {
@@ -624,8 +649,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "f0a6507e5005c9250a4a75c1534db30f044b2350227998406a89d58c3a56b33e",
-      "bytes": 9449,
+      "sha256": "7d9b29f5ca85879a30ad1fc0a73dc986cac7722c392f1549e733c3d827b51ab3",
+      "bytes": 9653,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -921,6 +946,76 @@
     "docs/analysis/ewp_real_world_boundaries_001/summary.json": {
       "sha256": "2442958fa10e33314dae6464fced2d02915a2e12e79a67850b793c7ebcaec1b9",
       "bytes": 1184,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/ATTEMPT_LOG.json": {
+      "sha256": "b2f61279278b02843cccdbee7c800cc6b2cc3d1be7b6af46122f4e030754384f",
+      "bytes": 737,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/DATA_AUTHORITY.json": {
+      "sha256": "25c0d46a86681eabacdf2d05dbf4541d9bcd0b127e3e151fed0e0dd5bfdac705",
+      "bytes": 1973,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/DATA_AVAILABILITY_PREFLIGHT.json": {
+      "sha256": "57f63fc6911d7dfb2fc3e58617860398ef96bed84e56e6902daa9c1caa9c996f",
+      "bytes": 2666,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/DECISION.json": {
+      "sha256": "d5e01b292848684ba36ee52d9f0dbcce3ec36401dd3ea01c405e182eae5b8773",
+      "bytes": 1008,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/METRIC_RESULTS.csv": {
+      "sha256": "bf4ce163ca065387838a7d39d6d53e713792c685c10a83fc5fe5992194e578c9",
+      "bytes": 3139,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/OBSERVER_RESULTS.csv": {
+      "sha256": "037f3d183a40169797491029df2322e531739538bf89fcb290972a87d297c781",
+      "bytes": 56287,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/QUALIFICATION_AUDIT.json": {
+      "sha256": "a39876ebe54339235796927c70d9898a642238321ad2645338846de55a9766ef",
+      "bytes": 1011,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/QUALIFICATION_FREEZE.json": {
+      "sha256": "c0ad3033a1b1c33d56d9ea2e8d311688603d98ed038428392fe93a1fe582a306",
+      "bytes": 4937,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/RESULT.md": {
+      "sha256": "c77cc222f5d6a93aabe0984bae9e366083d284828bd697315f1f01e27b5f9306",
+      "bytes": 2042,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/SHOT_JOIN_QUALIFICATION.csv": {
+      "sha256": "980d62bc4b0778fb99d1eaacb93cc2a4aeac382cc49bec7c4cd03b0a81f0b514",
+      "bytes": 9848,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/SOURCE_LINEAGE.json": {
+      "sha256": "f88f3c8cc1afc6759ff51c8957554f206e627225577e9dc5c7ce9904e929314e",
+      "bytes": 1944,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/TASK_CONTRACT.json": {
+      "sha256": "87bb86f4417c593baa7c0595e0a42e1b8610b1d95b0740460b39ff69d42606f3",
+      "bytes": 2399,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/WINDOW_QUALIFICATION.csv": {
+      "sha256": "3ed90c43021ec6c6c629cd7872e51e7d0c1dbe967c12947b91e0c2efc5c2eebe",
+      "bytes": 92491,
+      "git_mode": "100644"
+    },
+    "docs/analysis/obs_pannusch_fraction_window_001/summary.json": {
+      "sha256": "c657e90ca79b8ad96ef7a6ab00bb07bf796052b7d282e5253ee344c6c075b0b5",
+      "bytes": 1403,
       "git_mode": "100644"
     },
     "docs/analysis/pannusch_prior_impact_001/CURRENT_DATA_SUFFICIENCY.json": {
@@ -1794,13 +1889,13 @@
       "git_mode": "100644"
     },
     "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": {
-      "sha256": "a21d8b60aa2cfd468c11c947db7982eca15bd64d009ad7aa52ecd56677c298be",
-      "bytes": 14458,
+      "sha256": "cb2e4a60a0b175a3c59dbd453c25726d01eec64c2a88246279c1077800e71122",
+      "bytes": 14561,
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "a818b2be45980db8dca641acd44f8160d6e4a989ac2edc30a1e662e13bb6ddab",
-      "bytes": 5922,
+      "sha256": "30d18e6f1d2e535fb18eea8ff859e1a28ff1e95a962da1f423245dfe2d300ae6",
+      "bytes": 6464,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -2693,6 +2788,11 @@
       "bytes": 3652,
       "git_mode": "100755"
     },
+    "scripts/audit_obs_pannusch_fraction_window_001_freeze.py": {
+      "sha256": "e53f6a5de817e200bfa3ad83ca3924fddd36812330792b22d322cf2476408596",
+      "bytes": 216,
+      "git_mode": "100755"
+    },
     "scripts/clean_case.sh": {
       "sha256": "4e2b07e57e28c9b1062b508221e27fe6ed4540451c55808b203d3a177910c952",
       "bytes": 1326,
@@ -2841,6 +2941,11 @@
     "scripts/run_ewp_real_world_boundaries_001.py": {
       "sha256": "6ce7ff9b4ed8d171020eabe7bd39481fd142d1b4644735c08a6ee36cf8c6e01e",
       "bytes": 1208,
+      "git_mode": "100755"
+    },
+    "scripts/run_obs_pannusch_fraction_window_001.py": {
+      "sha256": "4b22d4533f716bcef741ead44c4e4ef295ce3192793ca64ba05f62e3bfa91201",
+      "bytes": 217,
       "git_mode": "100755"
     },
     "scripts/run_qualification.py": {
@@ -3056,6 +3161,11 @@
     "scripts/validate_local_data_corpus_authority.py": {
       "sha256": "7f6f1864859c353fea09b9e22a1b2b27407f1a4e8681e391f6f736730ae6c925",
       "bytes": 2325,
+      "git_mode": "100755"
+    },
+    "scripts/validate_obs_pannusch_fraction_window_001.py": {
+      "sha256": "2584a5e3c26bf0e3cbd30063b6293c8d93083b1a84455fcfbf7cd9cf4bca2fb4",
+      "bytes": 888,
       "git_mode": "100755"
     },
     "scripts/validate_sci_lc_001a_ledger.py": {
@@ -3344,8 +3454,8 @@
       "git_mode": "100644"
     },
     "tests/test_espresso_corpus_leverage_002_c1.py": {
-      "sha256": "a48d239a2c81835d65d50a96a885282bb9158d412c0cbefb76ed5e75b412e41a",
-      "bytes": 1281,
+      "sha256": "068a507f9c0db8236bc11a2a8571bfa1a3660846989cd5684080e68b5ff1e356",
+      "bytes": 1252,
       "git_mode": "100644"
     },
     "tests/test_ewp_porosity_permeability_prior_001.py": {
@@ -3359,13 +3469,18 @@
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {
-      "sha256": "5011944947a49b4b9cb0d043452f5c6dbaf35f846e6a5025f1ae3944183604d7",
-      "bytes": 688,
+      "sha256": "7abefe7ba3194c6142eda8da1f6c8eafb226ae98b35bedda61b295aaae42446a",
+      "bytes": 659,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
       "sha256": "8be5237cf525382bf32ac4242d15b56820dfb5924f3ce40846fd45939010ff43",
       "bytes": 3157,
+      "git_mode": "100644"
+    },
+    "tests/test_obs_pannusch_fraction_window_001.py": {
+      "sha256": "aa00061499a8f9517ddb925870e5e0775f0f35de5e24cce48a0eee196ce6dccb",
+      "bytes": 5083,
       "git_mode": "100644"
     },
     "tests/test_r1_analysis.py": {
@@ -3649,8 +3764,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_multimodel_001.py": {
-      "sha256": "747abebcac89066ecefe4bb81746ba2f8824dada55ac1649377b40496be007bb",
-      "bytes": 5111,
+      "sha256": "edc3dbea99e3cdf0e14b0d0ef93918915813cbef4a20f6eb4def271ac4e347d6",
+      "bytes": 5082,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {

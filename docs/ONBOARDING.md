@@ -1,8 +1,9 @@
 # Onboarding
 
-Current authority covers 39/39 reviewed families. Start with
-`XSV-WASZKIEWICZ-DYNAMIC-HYD-001`; use Visualizer only for boundaries and
-descriptive hydraulics, keep Wadsworth/Vaca separate, and defer home-lab work.
+Current authority covers 39/39 reviewed families. The Visualizer route is
+closed at its unresolved boundary-interface mapping. The completed bounded
+Pannusch window task selects `SCI-MD-PANNUSCH-FLOW-HISTORY-001`; keep
+Wadsworth/Vaca separate and defer home-lab work.
 
 Read `README.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, the
 [current scientific execution plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md),
@@ -16,9 +17,9 @@ Before substantive science or new measurement, also read
 preflight. External data unavailable in the checkout are not absent.
 Also read `strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md`,
 `../provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json`, and
-`analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv`. Current priority is the bounded
-`EWP-RWB-001-PRESSURE-SENSOR-BOUNDARY-INTERFACE-RECONCILIATION` successor after
-the boundary task's all-mappings-unresolved stop; home-lab operation remains deferred.
+`analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv`. Current priority after the
+qualified null window result is `SCI-MD-PANNUSCH-FLOW-HISTORY-001`; it is
+selected, not implemented here, and home-lab operation remains deferred.
 
 For validation work, also read the
 [Validation Operating Standard v1](validation/VALIDATION_OPERATING_STANDARD_V1.md)

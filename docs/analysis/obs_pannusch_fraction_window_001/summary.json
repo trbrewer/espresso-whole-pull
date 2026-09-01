@@ -1,0 +1,58 @@
+{
+  "baseline_reproduction": {
+    "rmse": 0.011372155559566843,
+    "rows": 144,
+    "status": "PASS_EXACT_ROW_IDENTITY"
+  },
+  "claims": [
+    "TARGET_EXPOSED",
+    "SOURCE_INTERNAL",
+    "NOT INDEPENDENT VALIDATION",
+    "NOT PHYSICAL VALIDATION",
+    "NOT HYDRAULIC VALIDATION",
+    "NOT PRODUCTION QUALIFICATION"
+  ],
+  "disposition": "OBS_PANNUSCH_FRACTION_WINDOW_001_OBSERVER_EFFECT_INDISTINGUISHABLE",
+  "freeze_sha256": "c0ad3033a1b1c33d56d9ea2e8d311688603d98ed038428392fe93a1fe582a306",
+  "joins": {
+    "qualified": 24,
+    "total": 24
+  },
+  "machine_audit": "PASS",
+  "next_action": "SCI-MD-PANNUSCH-FLOW-HISTORY-001",
+  "phase_b": true,
+  "position_residuals": {
+    "2": {
+      "ci95": [
+        0.01020244357432992,
+        0.02478783409683457
+      ],
+      "mean": 0.016692806742338927
+    },
+    "5": {
+      "ci95": [
+        -0.010928266422367099,
+        -0.008001390103881217
+      ],
+      "mean": -0.009460341863812718
+    },
+    "6": {
+      "ci95": [
+        -0.012412452637578042,
+        -0.00834579684273029
+      ],
+      "mean": -0.010014823166624796
+    }
+  },
+  "primary_delta": 0.0,
+  "primary_rmse": 0.013109926605438514,
+  "qualification": "FULL_24_QUALIFIED",
+  "systematic_residual_norm": 0.02164357983735704,
+  "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+  "total_delta": 0.0,
+  "windows": {
+    "identity": true,
+    "qualified": 240,
+    "total": 240
+  }
+}

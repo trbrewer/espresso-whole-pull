@@ -1,0 +1,121 @@
+{
+  "analytes": [
+    "caffeine",
+    "trigonelline"
+  ],
+  "audit_result": {
+    "audit_sha256": "a39876ebe54339235796927c70d9898a642238321ad2645338846de55a9766ef",
+    "audited_pending_freeze_sha256": "1876be313ded143bf882e4aef8b890a8e466ed369f08eb8e6a4b8685c73b0a13",
+    "status": "PASS"
+  },
+  "authorities": {
+    "consumed_source_sha256": {
+      "DesignOfExperiments_Validation_03_22.xlsx": "b7fc864e693ddb40317a4c9493a2fb0c0892b1f1c68f5ce581d48008e21cab57",
+      "ExperimentalData_validation.mat": "b5fb0245e5cb67cf3191127f6058624243a38fc0031344f8c93344bb95a84d64",
+      "GetMassScale_modelval.m": "9d354ae2fd10148b926e4a5fc9adeafa99ced15d0f24a1a99324a3c81de44b56",
+      "MassData_modelval.mat": "430f922d0df443d9f1b1d629409d9ef4a4967d15535ffa8b5a34f795523faaf3",
+      "ReadMassTimeFromScale.m": "12958952f478afd13387c842e6290ca7551d2511526c6f488a0081a11506192e",
+      "getExperimentalData_validation.m": "b1a219b851887af69611a9f22c810c7c07f1f3b8e714e6d4ef62500c960deee7"
+    },
+    "ewp_base_commit": "97d586fe21ca28cf7ef80a03ec0e15f3032ac0b5",
+    "ewp_base_tree": "a34888b8b3d24122d4e18ecfac6366c44603af32",
+    "independent_validation": false,
+    "pannusch_source_subset_manifest_sha256": "15b9f765d49abe45d6788d7c7891b0695fca185d9c614d122e393993ec06a83c",
+    "prior_artifact_sha256": {
+      "analysis/xsv_pannusch_multimodel_001/c1_correction.py": "74611a887a9dae009e105921844a3e7d33ee359d2da6c31ab66f4b4636bf6d1e",
+      "analysis/xsv_pannusch_multimodel_001/pannusch_fixed.py": "587d7e9a9a6aa953f4b06fb3ea9076a0ae8a554664efce72b06be5da26f9adf5",
+      "docs/analysis/xsv_pannusch_multimodel_001/C1_CALIBRATION_FREEZE_ADDENDUM.json": "5326056458b14c987f7765ee7850edd53f54b20c952946a426d32c46f0d728cb",
+      "docs/analysis/xsv_pannusch_multimodel_001/RESULT.md": "4245572e7b1cb79a560548be96827a8b384e9dfbc458b1f53f18615dbeeaffd6"
+    },
+    "puckworks_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "puckworks_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+    "runtime_puckworks_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+    "schema_version": 1,
+    "source_rights": "CC-BY-NC-3.0; source-derived numeric data are not relicensed as repository code",
+    "target_exposure": "TARGET_EXPOSED;SOURCE_INTERNAL",
+    "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001"
+  },
+  "boundary_inversion": "positive source root at cumulative measured ten-vial mass",
+  "clock_semantics": "MassData fit time rebased to selected first raw-scale sample; run.tE uses that same clock",
+  "code_sha256": {
+    "core": "b158ef3bc3cea6977e4e49d4aa0336910ba76e1ce8c355179eaa8b078a105030",
+    "runner": "bcf056eec3b2254cab49661242480d2c7252c8e5773a1dfb1cb5bb99f5b2af17"
+  },
+  "decision_rules": {
+    "identity": "scientific null",
+    "materiality": "10% relative; interval below zero; <=25% conditions worse; LOCO direction consistent",
+    "positive": "paired 95% interval strictly below zero plus residual norm decrease and safety gates"
+  },
+  "extrapolation": "prohibited",
+  "independent_validation": false,
+  "join_evidence_fields": [
+    "released loop indexes",
+    "copied a",
+    "copied b",
+    "copied flow",
+    "copied time"
+  ],
+  "join_rules": "exact released condition-major/replicate-minor i*3-3+j map; no positional-length inference alone",
+  "mass_function": "m(t)=a*t^2+b*t; grams and seconds; zero intercept",
+  "matching_algorithm": "explicit index mapping; candidate count one; no permutation search",
+  "metrics": {
+    "bootstrap": {
+      "generator": "PCG64",
+      "replicates": 2000,
+      "seed": 20260830,
+      "unit": "condition then physical shot; paired analytes and fraction vectors intact"
+    },
+    "continuity": "condition-balanced shot RMSE over six positions",
+    "primary": "condition-balanced shot RMSE at profile positions 2,5,6"
+  },
+  "observers": {
+    "O0": "current source run.tE windows and measured run.mE",
+    "O1": "same MassData-derived windows reconstructed under exact source semantics"
+  },
+  "operator_construction_target_independent": true,
+  "optional_cohorts": {
+    "extended": [
+      "PRED-C07",
+      "PRED-C08"
+    ],
+    "source_empirical_only": [
+      "PRED-C03",
+      "PRED-C04"
+    ]
+  },
+  "post_score_retuning_permitted": false,
+  "primary_cohort": [
+    "PRED-C01",
+    "PRED-C02",
+    "PRED-C05",
+    "PRED-C06"
+  ],
+  "profile_positions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "protected_holdout": false,
+  "qualification_result": "FULL_24_QUALIFIED;SAME_SOURCE_LINEAGE_IDENTITY",
+  "root_selection": "exact released +sqrt root; unique and inside stored fit support",
+  "schema_version": 1,
+  "source_fraction_ids": [
+    1,
+    2,
+    3,
+    5,
+    7,
+    10
+  ],
+  "target_exposed": true,
+  "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+  "tolerances": {
+    "baseline_share": 1e-10,
+    "boundary_identity_s": 1e-12,
+    "coefficient_copy": "exact float",
+    "source_hash": "exact"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "audit_code_sha256": "a35fce6c0c53d580db54d7a8f411d9f3d6c54af9aaeb46d3804027e03ecfe401",
+  "audited_freeze_sha256": "1876be313ded143bf882e4aef8b890a8e466ed369f08eb8e6a4b8685c73b0a13",
+  "checks": {
+    "chemistry_permutation_invariant": true,
+    "chemistry_synthetic_invariant": true,
+    "chemistry_zero_invariant": true,
+    "code_hashes": true,
+    "fraction_ids": true,
+    "freeze_hash": true,
+    "no_retuning": true,
+    "primary_qualified": true,
+    "prior_results_unavailable_to_phase_a": true,
+    "qualification_rows": true,
+    "rights_resolved": true,
+    "source_hashes": true,
+    "source_semantics": true,
+    "thresholds_frozen": true
+  },
+  "diagnostics": {
+    "chemistry_variants": [
+      "zero",
+      "permuted",
+      "synthetic"
+    ],
+    "join_rows": 24,
+    "window_rows": 240
+  },
+  "schema_version": 1,
+  "status": "PASS",
+  "structural_projection_sha256": "8ebd9d798a4d842f40f340a996908d2c4c362ff2bb3c96b705deb05a6045cb5c",
+  "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001"
+}

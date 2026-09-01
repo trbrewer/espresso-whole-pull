@@ -1,0 +1,26 @@
+{
+  "baseline_reproduction": "PASS_EXACT_144_ROW_IDENTITY_AND_METRIC_SUMMARIES",
+  "claim_ceiling": "SOURCE_INTERNAL_FRACTION_WINDOW_AND_OBSERVATION_OPERATOR_QUALIFICATION",
+  "freeze_sha256": "c0ad3033a1b1c33d56d9ea2e8d311688603d98ed038428392fe93a1fe582a306",
+  "home_lab": "DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED",
+  "materiality": "NOT_MATERIAL_EXACT_IDENTITY",
+  "next_action": "SCI-MD-PANNUSCH-FLOW-HISTORY-001",
+  "next_action_implemented": false,
+  "phase_b_authorized": true,
+  "production_invariants": [
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_REFIT",
+    "NO_PRODUCTION_CHANGE",
+    "PUCKWORKS_READ_ONLY",
+    "RUNTIME_LOCK_UNCHANGED"
+  ],
+  "qualification": "FULL_24_QUALIFIED",
+  "qualifiers": [
+    "FULL_24_QUALIFIED",
+    "SAME_SOURCE_LINEAGE_IDENTITY",
+    "WINDOW_UNCERTAINTY_ROBUSTNESS_NOT_ESTABLISHED"
+  ],
+  "schema_version": 1,
+  "scientific_disposition": "OBS_PANNUSCH_FRACTION_WINDOW_001_OBSERVER_EFFECT_INDISTINGUISHABLE",
+  "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001"
+}

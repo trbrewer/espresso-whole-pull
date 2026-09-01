@@ -1,5 +1,15 @@
 # Existing Data Leverage Programme
 
+## Pannusch observation-operator result (2026-09-01)
+
+`OBS-PANNUSCH-FRACTION-WINDOW-001` is `COMPLETE_NULL`. Released preprocessing
+proves all 24 shot-to-fit joins and shows that `run.tE` is already the exact
+MassData cumulative-vial inversion. The qualified observer is identical to the
+source observer, so it cannot reduce the retained fraction-2/tail residual.
+The first fallback, `SCI-MD-PANNUSCH-FLOW-HISTORY-001`, is selected but not
+implemented. This is source-internal, target-exposed evidence, not independent,
+physical, hydraulic, or production validation. Home-lab work remains deferred.
+
 ## Recent-public boundary result (2026-09-01)
 
 `EWP-REAL-WORLD-BOUNDARIES-001` is `BLOCKED`: exact current-state source and
@@ -46,14 +56,13 @@ selects the next task; this is not a mandatory queue. Visualizer dynamics are
 not predictively qualified, SCI-ED-003 and independent transfer remain deferred,
 and home-lab operation remains unauthorized.
 
-## Current result (2026-08-30)
+## Predecessor result (2026-08-30)
 
 XSV-PANNUSCH-MULTIMODEL-001 is `COMPLETE_NULL`: fixed Pannusch strongly beats
 the ordinal-only pooled profile but is indistinguishable from a calibration-only
 boundary-aware empirical profile with matched fraction-window privilege. Only
 the named unique-advantage decision is exhausted; the Pannusch corpus is not.
-Current priority is `OBS-PANNUSCH-FRACTION-WINDOW-001`, scoped to qualification
-of 24 source-order joins, clocks, vial transitions, and fraction windows.
+That result selected `OBS-PANNUSCH-FRACTION-WINDOW-001`, now completed above.
 Home-lab operation remains deferred.
 
 ## Purpose and authorities
@@ -75,9 +84,9 @@ fusion; experiment reduction; absolute closure; independent validation.
 
 ## Current sequence
 
-1. XSV-PANNUSCH-MULTIMODEL-001.
-2. One residual-selected Pannusch successor.
-3. OBS-PANNUSCH-FRACTION-WINDOW-001 after C1 merge and exact-head rereview.
+1. XSV-PANNUSCH-MULTIMODEL-001 — complete.
+2. OBS-PANNUSCH-FRACTION-WINDOW-001 — complete null.
+3. SCI-MD-PANNUSCH-FLOW-HISTORY-001 — selected, not implemented.
 4. Permissioned Visualizer population-hydraulics lane.
 5. Cross-corpus boundary/uncertainty integration.
 6. SCI-ED-003 targeted closure contract.

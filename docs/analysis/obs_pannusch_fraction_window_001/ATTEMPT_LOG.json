@@ -1,0 +1,16 @@
+{
+  "attempts": [
+    {
+      "candidate_commit": "2ed4f65d7bb702e7e702327759b7d83b32abc3b6",
+      "candidate_tree": "187cb1fd9668eca21879cd0a675bc49892ffb245",
+      "disposition": "INVALIDATED_MATERIAL_EVIDENCE_DEFECT",
+      "freeze_sha256": "701c77f2db32f3d59f23c8ea13d4dc9034157336cdca72a4f49c5d21ee07378d",
+      "reason": "The pre-score audit trusted declarations rather than independently perturbing chemistry inputs; the O0 gate checked aggregate RMSE but not exact predecessor rows; required exposed baseline diagnostics were omitted.",
+      "review_outcome": "MATERIAL_CHANGES_REQUIRED",
+      "score_valid": false
+    }
+  ],
+  "correction_count": 1,
+  "schema_version": 1,
+  "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001"
+}
