@@ -1,0 +1,12 @@
+{
+  "active_interval": {"end": "last finite time", "minimum_duration_s": 5.0, "start": "first time achieved or commanded pressure is at least 100000 Pa"},
+  "cleanup": {"conflicting_repeated_timestamp": "EXCLUDE", "exact_repeated_timestamp": "COLLAPSE_ONLY_WHEN_ALL_RETAINED_CHANNEL_VALUES_AGREE", "gap_threshold_s": 2.0, "nonmonotone_time": "EXCLUDE_NO_SORT", "smoothing": "NONE"},
+  "command_shape_authority": "pressure-atlas/v1",
+  "feature_rule_id": "EWP_RWB_001_VISUALIZER_FEATURE_RULES_V1",
+  "flow": {"positive_threshold_kg_s": 1e-06, "post_first_flow_minimum_s": 3.0, "robust_maximum_quantile": 0.95, "sustained_duration_s": 1.0},
+  "pressure": {"fit_error_limit_relative": 0.1, "low_pressure_ceiling_Pa": 400000.0, "plateau_minimum_duration_s": 3.0, "plateau_tolerance_relative": 0.1, "pressurization_threshold_Pa": 100000.0, "sustained_duration_s": 1.0},
+  "profile_classes": {"achieved": ["SIMPLE_RAMP_HOLD", "LOW_PRESSURE_THEN_HOLD", "DECLINING", "MULTISTAGE", "COMPLEX", "UNCLASSIFIED"], "execution": ["DIRECT_SIMPLE_PRESSURE_SCENARIO", "COMMAND_SCENARIO_ONLY", "ACHIEVED_PRESSURE_APPROXIMATION", "COMPLEX_PROFILE_LIBRARY_ONLY", "UNSUPPORTED_BY_CURRENT_EWP_BOUNDARY", "UNRESOLVED"]},
+  "quantile": "smallest sorted value whose cumulative normalized weight is greater than or equal to q",
+  "role_bands": {"CENTRAL": "P25 <= value <= P75", "HIGH": "value > P75", "LOW": "value < P25", "ties": "BAND_COLLAPSED_BY_TIES"},
+  "version": 1
+}

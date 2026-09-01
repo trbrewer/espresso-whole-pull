@@ -1,0 +1,22 @@
+{
+  "attribution": "Data source: Visualizer. We collectively acknowledge the users who make their shots public.",
+  "coarsened_cell_count": 0,
+  "minimum_distinct_users_per_published_cell": 10,
+  "minimum_shots_per_published_cell": 20,
+  "permission": "PERMISSIONED_RECENT_PUBLIC_AGGREGATE_ANALYSIS",
+  "privacy_suppressed_cell_count": 0,
+  "privacy_suppression_reasons": {},
+  "private_records": false,
+  "published_cell_count": 0,
+  "raw_redistribution": false,
+  "semantic_unresolved_group": {
+    "aggregate_linked_contributor_count": 555,
+    "aggregate_shot_count": 23169,
+    "disposition": "OMITTED_NOT_PUBLISHED",
+    "numeric_privacy_threshold_passes": true,
+    "reason": "SEMANTIC_TRANSFER_AUTHORITY_UNRESOLVED"
+  },
+  "semantic_unresolved_unpublished_group_count": 1,
+  "source": "Visualizer",
+  "unsupported_boundary_group_count": 1
+}

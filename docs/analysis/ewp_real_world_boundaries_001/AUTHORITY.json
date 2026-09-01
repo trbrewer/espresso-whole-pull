@@ -1,0 +1,21 @@
+{
+  "ewp_start_commit": "34deac91170f49587820e60b6e357bfdc3e0874a",
+  "ewp_start_tree": "e57f7318ffa02bfb5dc37f2a45646e7d6b3e569b",
+  "no_governing_physics_change": true,
+  "no_live_api_acquisition": true,
+  "no_production_default_change": true,
+  "no_runtime_puckworks_lock_change": true,
+  "protocol_sha256": "90f7d5d9ade0298aa9b216d7813b45f56a1af7e270d827ac2d0ad2f61a4b1d20",
+  "puckworks": {
+    "commit": "a3428a4d4ad571ef3168a70e8a04620fca5d3520",
+    "files": {
+      "puckworks/data/AVAILABLE_DATA_REGISTER.json": "0c318f43c40361629bb8f25ab4b8ca9f073425ca3ec3a2418bbd8a6cb67a5481",
+      "puckworks/data/LOCAL_CORPUS_FAMILY_INDEX.json": "448a1eef0944d0d2b5e0f4ea04b3e5bc8418f315b5a323707f855815f8dcefcd",
+      "puckworks/data/MANIFEST.csv": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081",
+      "puckworks/data/VISUALIZER_API_PERMISSION_STATUS.json": "6c9231e80a47643551845191542e1578ecce880a1468774158bb4e8a35e27706"
+    },
+    "tree": "6175b4ad39f45ebcdec32a176e5611bf3b03655b"
+  },
+  "source_scenario_change_only": true,
+  "task_id": "EWP-REAL-WORLD-BOUNDARIES-001"
+}

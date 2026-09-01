@@ -1,5 +1,15 @@
 # Existing Data Leverage Programme
 
+## Recent-public boundary result (2026-09-01)
+
+`EWP-REAL-WORLD-BOUNDARIES-001` is `BLOCKED`: exact current-state source and
+rights qualification passed, but every canonical record lacks documented
+device/pressure-sensor and resolved integration identity. The frozen transfer
+contract therefore admits zero EWP-executable boundaries. No cohort boundary
+library or porosity response map was manufactured. The bounded successor is
+`EWP-RWB-001-PRESSURE-SENSOR-BOUNDARY-INTERFACE-RECONCILIATION`; production
+defaults and home-lab status are unchanged.
+
 ## Static hydraulic support result (2026-08-31)
 
 `EWP-POROSITY-PERMEABILITY-PRIOR-001` is
@@ -29,8 +39,8 @@ conditional tasks, SCI-ED-003 is deferred, and home-lab work is unauthorized.
 ## Reviewed C1 portfolio (2026-08-31)
 
 All 39 material families are registered. Current priority is
-`EWP-REAL-WORLD-BOUNDARIES-001`. Remaining conditional tasks are
-`EWP-POROSITY-PERMEABILITY-PRIOR-001`, `EWP-REAL-WORLD-BOUNDARIES-001`,
+`EWP-RWB-001-PRESSURE-SENSOR-BOUNDARY-INTERFACE-RECONCILIATION`. Remaining conditional tasks are
+`EWP-POROSITY-PERMEABILITY-PRIOR-001`,
 `OBS-PANNUSCH-FRACTION-WINDOW-001`, and `SCI-MD-RHEOLOGY-001`. Each result
 selects the next task; this is not a mandatory queue. Visualizer dynamics are
 not predictively qualified, SCI-ED-003 and independent transfer remain deferred,
