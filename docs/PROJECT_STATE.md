@@ -2,13 +2,13 @@
 
 ## EWP-POROSITY-PERMEABILITY-PRIOR-001 result (2026-08-31)
 
-`EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_AND_PERMEABILITY`.
-Separate Wadsworth and Vaca Guerra empirical supports materially structure
-bounded static EWP sensitivity cases for initial porosity and saturated
-permeability. They are source-conditioned design supports under explicit
-observation/transfer operators, not universal distributions, wet operating-puck
-measurements, or physical validation. The calibrated EWP default remains
-unchanged; wetting permeability remains independent in every primary case.
+`EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_ONLY` after C1.
+Separate Wadsworth and Vaca Guerra dry-porosity supports materially structure
+bounded EWP initial-porosity sensitivity. Source permeability substitutions are
+source-native stress supports only because no closed transfer to calibrated EWP
+effective saturated permeability is established. They are not universal
+distributions, wet operating-puck measurements, or physical validation. The
+calibrated EWP default remains unchanged; wetting permeability remains independent.
 Next task: `EWP-REAL-WORLD-BOUNDARIES-001`. Home-lab operation remains deferred.
 
 ## XSV-WASZKIEWICZ-DYNAMIC-HYD-001 grouped result (2026-08-31)

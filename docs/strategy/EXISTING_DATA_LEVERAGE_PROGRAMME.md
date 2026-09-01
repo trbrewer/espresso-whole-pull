@@ -3,10 +3,11 @@
 ## Static hydraulic support result (2026-08-31)
 
 `EWP-POROSITY-PERMEABILITY-PRIOR-001` is
-`COMPLETE_POSITIVE_POROSITY_AND_PERMEABILITY`. Wadsworth and Vaca Guerra remain
+`COMPLETE_POSITIVE_POROSITY_ONLY` after C1. Wadsworth and Vaca Guerra remain
 separate source-conditioned empirical supports; no rows or probability models
-were pooled. The result selects bounded initial-porosity and saturated-K design
-cases without changing production defaults or claiming physical validation.
+were pooled. The result selects bounded initial-porosity cases; saturated-K
+substitutions remain stress-only diagnostics without a closed EWP transfer.
+Production defaults are unchanged and physical validation is not claimed.
 The selected successor is `EWP-REAL-WORLD-BOUNDARIES-001`.
 
 ## Waszkiewicz grouped hydraulic result (2026-08-31)

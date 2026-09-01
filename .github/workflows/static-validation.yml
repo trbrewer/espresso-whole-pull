@@ -40,6 +40,16 @@ jobs:
               raise SystemExit(f"PINNED_PYTHON_ENVIRONMENT_MISMATCH:{actual!r}")
           print(actual)
           PY
+      - name: Checkout exact Puckworks source authority
+        run: |
+          PUCKWORKS_ROOT="$RUNNER_TEMP/ewp-porosity-permeability-prior-puckworks"
+          git init "$PUCKWORKS_ROOT"
+          git -C "$PUCKWORKS_ROOT" remote add origin https://github.com/trbrewer/puckworks.git
+          git -C "$PUCKWORKS_ROOT" fetch --depth=1 origin a3428a4d4ad571ef3168a70e8a04620fca5d3520
+          git -C "$PUCKWORKS_ROOT" checkout --detach FETCH_HEAD
+          test "$(git -C "$PUCKWORKS_ROOT" rev-parse HEAD)" = a3428a4d4ad571ef3168a70e8a04620fca5d3520
+          test "$(git -C "$PUCKWORKS_ROOT" rev-parse 'HEAD^{tree}')" = 6175b4ad39f45ebcdec32a176e5611bf3b03655b
+          echo "EWP_POROSITY_PERMEABILITY_PRIOR_PUCKWORKS_ROOT=$PUCKWORKS_ROOT" >> "$GITHUB_ENV"
       - name: Externally pinned VAL-001 candidate root
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}

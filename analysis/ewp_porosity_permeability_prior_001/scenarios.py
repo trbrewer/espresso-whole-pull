@@ -2,7 +2,10 @@ from __future__ import annotations
 import copy,math
 def scenario(base,case_id,phi=None,k=None,closure="BASELINE",pressure=None):
  c=copy.deepcopy(base); oldL=c["coffee_bed"]["bed_depth_m"]
- if phi is not None:c["coffee_bed"]["initial_porosity"]=phi
+ if phi is not None:
+  if not math.isfinite(phi) or not 0.0<phi<1.0:raise ValueError("EWP_POROSITY_PERMEABILITY_PRIOR_001_INVALID_POROSITY")
+  c["coffee_bed"]["initial_porosity"]=phi
+ if k is not None and (not math.isfinite(k) or k<=0):raise ValueError("EWP_POROSITY_PERMEABILITY_PRIOR_001_INVALID_PERMEABILITY")
  if k is not None:
   c["hydraulics"]["saturated_permeability_m2"]=k
   if c["hydraulics"]["permeability_profile"]["type"]=="uniform":

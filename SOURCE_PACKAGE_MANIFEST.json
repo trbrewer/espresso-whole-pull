@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 781,
-  "total_uncompressed_bytes_excluding_manifest": 8328531,
-  "aggregate_source_sha256": "1af5d45f090090afa91565a5fc15f3e33045a79ec773f2f021621e33cd1624ac",
-  "aggregate_sha256": "1af5d45f090090afa91565a5fc15f3e33045a79ec773f2f021621e33cd1624ac",
+  "file_count": 787,
+  "total_uncompressed_bytes_excluding_manifest": 8425220,
+  "aggregate_source_sha256": "729b6932cc088b781f0b8eaf0f140db7e1b032e80b41240bd00d17e7786d1e5e",
+  "aggregate_sha256": "729b6932cc088b781f0b8eaf0f140db7e1b032e80b41240bd00d17e7786d1e5e",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -79,8 +79,8 @@
       "git_mode": "100644"
     },
     "analysis/ewp_porosity_permeability_prior_001/decision.py": {
-      "sha256": "38272fd7efcace73b7279d51bd1bcc8f96559cee1692d485338e1f8d7df214b4",
-      "bytes": 738,
+      "sha256": "cd247aa06ab799b6ae751d1238a91fdfc77c1b8b4246fb0747f7287fe5679ba4",
+      "bytes": 1559,
       "git_mode": "100644"
     },
     "analysis/ewp_porosity_permeability_prior_001/ewp_quantities.py": {
@@ -89,28 +89,28 @@
       "git_mode": "100644"
     },
     "analysis/ewp_porosity_permeability_prior_001/mappings.py": {
-      "sha256": "beaf0af90b46dfc555b59c4d00e22bf7ea16b05b0b9e254becdbf42867b7fcd4",
-      "bytes": 3156,
+      "sha256": "5055bf85f59cbfff21ed3d2fe6e2d45c2a3680f86721c7e4c9fd29e1018113d7",
+      "bytes": 9808,
       "git_mode": "100644"
     },
     "analysis/ewp_porosity_permeability_prior_001/reporting.py": {
-      "sha256": "c29a418beed39d3cf7f6cc51aa14bb621354c70f075a942ecebc431099cc8cc8",
-      "bytes": 398,
+      "sha256": "4abfd001908c551382a2d08a936939dbeaea609454f14ac7c7eec5f9b7a23774",
+      "bytes": 418,
       "git_mode": "100644"
     },
     "analysis/ewp_porosity_permeability_prior_001/resistance_context.py": {
-      "sha256": "3a9bb624d5854a77b0961d365513b50a81570881bd4ebf3c4b3313bd57045ccd",
-      "bytes": 496,
+      "sha256": "4836e3502f6edaf60b5b4636347d9e7cc53fc9151863d60198dc5b2c88ff6998",
+      "bytes": 1342,
       "git_mode": "100644"
     },
     "analysis/ewp_porosity_permeability_prior_001/run.py": {
-      "sha256": "e6064d6c54f34acf24e447b7dc3387ffa1f48e676e5cdc5fc53091df69dc7793",
-      "bytes": 10264,
+      "sha256": "09b93fe2705b42b92c8620a585f8151e4c946fadc3193d5a0c32f560f1788d96",
+      "bytes": 17106,
       "git_mode": "100644"
     },
     "analysis/ewp_porosity_permeability_prior_001/scenarios.py": {
-      "sha256": "3ad40de0d443ec4f5c155a654a32adb36ed4616b6cc2ad0fbaa7a0a0854b01f8",
-      "bytes": 1360,
+      "sha256": "db522eb405aff35da24c4ebb9f6d1e73c75b9dcf61be676c1e69cd9e53516a53",
+      "bytes": 1613,
       "git_mode": "100644"
     },
     "analysis/ewp_porosity_permeability_prior_001/sensitivity.py": {
@@ -589,8 +589,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "586cc270bbc00b49d7b3e9c73822aecf3aa782a04f97422f6efd468d47a92220",
-      "bytes": 8603,
+      "sha256": "6b262e778e67af37b3f187b16877ae259167714a683fc69115bd6c582835e3c3",
+      "bytes": 8624,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -679,18 +679,23 @@
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/AUTHORITY.json": {
-      "sha256": "d6e9c8f16c97a05b8e1b385bd51756c3c1e0bd659d270e708ba80d0c73d7741f",
-      "bytes": 2788,
+      "sha256": "b6f07dccd420404172cb0aa37cd0488cd185059b26c94284bf36f601be7b4f7d",
+      "bytes": 2895,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/C1_CORRECTION_RECORD.json": {
+      "sha256": "7ac53c184bdfe8e7d4c8b6609b40cebf9ab48cd147c528a37dcaa0561d2fe74e",
+      "bytes": 1347,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/DECISION.json": {
-      "sha256": "1d1d4e4e00dd704a7a9448de44d310ee3fde8598c17c1f77829259acce7be268",
-      "bytes": 850,
+      "sha256": "93158195a3f143769e73324d670a828a81601df89484daa6b06ffd16660386a5",
+      "bytes": 1435,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/DEFAULT_COMPARISON.csv": {
-      "sha256": "e7cc772ac158b74e3ffdb5afb6c2e8ccbfb0132b78922b2f2bee572a0f275fb1",
-      "bytes": 1905,
+      "sha256": "17f2763f6f2d9f0b35352ddeed3152f8afa9539448185495e4ff5186af0f5366",
+      "bytes": 1819,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/EWP_QUANTITY_DEFINITIONS.json": {
@@ -698,24 +703,44 @@
       "bytes": 3183,
       "git_mode": "100644"
     },
+    "docs/analysis/ewp_porosity_permeability_prior_001/INTERACTION_EFFECTS.csv": {
+      "sha256": "46a305d587892e3560d9836e792028795e025ac8c035a9f49ff27050a936fc60",
+      "bytes": 788,
+      "git_mode": "100644"
+    },
     "docs/analysis/ewp_porosity_permeability_prior_001/NUMERICAL_IDENTIFIABILITY.json": {
       "sha256": "57118ef40adbb647817dd8477336507d322bca973fea9f845e29c5ca5d324e25",
       "bytes": 663,
       "git_mode": "100644"
     },
+    "docs/analysis/ewp_porosity_permeability_prior_001/NUMERICAL_STABILITY.json": {
+      "sha256": "484897850cd8d5970aee795fcf5ca8490673a6fc3f870587f1bc661c53459a32",
+      "bytes": 350,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/PRESSURE_FLOW_RESPONSE.csv": {
+      "sha256": "ee480134504528d95dde849d1825ca684ccd06c82d381f6b19fbbdff69b2b319",
+      "bytes": 8953,
+      "git_mode": "100644"
+    },
     "docs/analysis/ewp_porosity_permeability_prior_001/REDUCED_TWIN_ANCHORS.csv": {
-      "sha256": "ec6a80e7173028c8117cb64e0f11614b79a1868612567836939e7136730d94cf",
-      "bytes": 1851,
+      "sha256": "cbe3234a4ed5bda879defb0535b9bd5cfb3d18963daf08ebc910f4d28bc0111b",
+      "bytes": 1132,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/REDUCED_TWIN_CONVERGENCE.csv": {
+      "sha256": "2209b37e3be44f0f1f175d25e1387659c7cd990513204e297b2363d30cb268f2",
+      "bytes": 2732,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/RESULT.md": {
-      "sha256": "1f91478c04f5307f2514412a138b90635a81289c1facaa106dcceb8dd0ed0fe4",
-      "bytes": 3961,
+      "sha256": "7b5d0f189474dcfac67cb88c4cc2fc921f587021c3438053d35fc390ccf31064",
+      "bytes": 3574,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/SENSITIVITY_CASE_REGISTER.csv": {
-      "sha256": "eed2685241282b30505d44b55731290ce9d0aa6aed7aaffc5777471b57d83399",
-      "bytes": 2125,
+      "sha256": "e1ca8426baf12ca9ada456797269dd9636f964dff8ff8dd60805bc379f1301ce",
+      "bytes": 15905,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/SOURCE_SUPPORTS.json": {
@@ -724,28 +749,33 @@
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/SOURCE_VARIABLE_MAPPING_LEDGER.csv": {
-      "sha256": "7da55042fef10fbf514550c0ec93ad468eb4228b8e5e2b1163ed90c0e0868c3d",
-      "bytes": 4612,
+      "sha256": "fed1be117de8d3469eac653eae0ebe5c7efd3bfe5e935467b54964c56ff0cafe",
+      "bytes": 8814,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/STATIC_HYDRAULIC_SENSITIVITY.csv": {
-      "sha256": "1f4c8f7b8c0dc1cf4e8692abba6e20d9909f8ff72f5764eaf0061ddd0844b55a",
-      "bytes": 8458,
+      "sha256": "cf729749a9863f1f42ce69447b64fa3e74e74dda0df7579a6518292643aadbc0",
+      "bytes": 50240,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/VISUALIZER_HANDOFF.json": {
-      "sha256": "a20ed85dd78bc2f229c842b3464d3218592da0b6a4f4e23b3d7397aff1db43e8",
-      "bytes": 466,
+      "sha256": "6a99d85ed3a01a61320e71d29813f2bd8673148c9f4bf99573c2a502c171337c",
+      "bytes": 297,
+      "git_mode": "100644"
+    },
+    "docs/analysis/ewp_porosity_permeability_prior_001/WASZKIEWICZ_CONTEXT.json": {
+      "sha256": "fcb35d33806858b31725ca0680f8ce86497fda5785800ffeb34feaccc17543aa",
+      "bytes": 572,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/WASZKIEWICZ_CONTEXT_COMPARISON.csv": {
-      "sha256": "7915f86de530a3b9c1a3ecec56f76f5202b4c77c3d0450a74b4535a73d61c2a3",
-      "bytes": 1281,
+      "sha256": "eea01edbbfc1fd7090651312f335b241043b94a6ce0e24d5382f461834df460b",
+      "bytes": 2359,
       "git_mode": "100644"
     },
     "docs/analysis/ewp_porosity_permeability_prior_001/summary.json": {
-      "sha256": "e568955e42250116b281f9eda9f7c7c95537d5d0def41b8214acd1339bf30a0b",
-      "bytes": 1635,
+      "sha256": "d8b70ae9de63ab9b74f3af60e181e13a86979391c1d27791a8638b570818eb65",
+      "bytes": 3516,
       "git_mode": "100644"
     },
     "docs/analysis/pannusch_prior_impact_001/CURRENT_DATA_SUFFICIENCY.json": {
@@ -1624,8 +1654,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "ff92fe67346b79ea8789afc99640b0303078b0586345f075601df70f24f177d2",
-      "bytes": 5307,
+      "sha256": "ba327c2b9682c2a0afdc444fbdaaaaffb3ae87e6c3123921196e8d01d55deba7",
+      "bytes": 5374,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -2859,8 +2889,8 @@
       "git_mode": "100755"
     },
     "scripts/validate_ewp_porosity_permeability_prior_001.py": {
-      "sha256": "7345c5830ff73e2e7f578d83f3cdc8cdda5f4b35215076bddfb55602fbbe6bd7",
-      "bytes": 725,
+      "sha256": "3a877df1934e08dff740a5bbb472086a196d195c11cc7df27d459951e11a8bf3",
+      "bytes": 1023,
       "git_mode": "100755"
     },
     "scripts/validate_existing_data_leverage_programme.py": {
@@ -3164,8 +3194,8 @@
       "git_mode": "100644"
     },
     "tests/test_ewp_porosity_permeability_prior_001.py": {
-      "sha256": "31cc3d5c0b7d27a2a255305056c887583c738b900cb4e8930a4fe10ace5b6763",
-      "bytes": 4848,
+      "sha256": "b72253c6c6199be560fc33cc2cea2c2992292b5293f78a8ddb5c8ac76588ba42",
+      "bytes": 8921,
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {

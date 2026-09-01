@@ -1,15 +1,9 @@
 {
-  "execution": "NOT_PERFORMED",
   "future_case_selection_contract": {
     "flow": [
       "low",
       "central",
       "high"
-    ],
-    "hydraulics": [
-      "per-source low",
-      "per-source central",
-      "per-source high"
     ],
     "pressure": [
       "low",
@@ -22,5 +16,5 @@
       "high"
     ]
   },
-  "status": "EXACT_AGGREGATE_AUTHORITY_INSUFFICIENT_FOR_NEW_ROW_LEVEL_WORK"
+  "status": "NO_NEW_VISUALIZER_EXECUTION"
 }
