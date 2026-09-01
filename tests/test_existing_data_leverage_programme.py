@@ -8,5 +8,5 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         data = module.validate()
-        self.assertEqual(data["current_priority"], "EWP-POROSITY-PERMEABILITY-PRIOR-001")
+        self.assertEqual(data["current_priority"], "EWP-REAL-WORLD-BOUNDARIES-001")
         self.assertEqual(data["home_lab_status"], "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY")

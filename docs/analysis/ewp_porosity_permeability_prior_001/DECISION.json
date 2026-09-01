@@ -1,0 +1,40 @@
+{
+  "claim_ceiling": "SOURCE_CONDITIONED_STATIC_POROSITY_AND_PERMEABILITY_PRIOR_QUALIFICATION_FOR_EWP_HYDRAULIC_SENSITIVITY",
+  "code": "EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_ONLY",
+  "gate_inputs": {
+    "convergence_pass": true,
+    "eligible_permeability_support_count": 0,
+    "eligible_permeability_support_ids": [],
+    "eligible_porosity_support_count": 2,
+    "eligible_porosity_support_ids": [
+      "WADSWORTH_TOTAL_XCT_POROSITY",
+      "VACA_TABLE_C1_EPSILON_0"
+    ],
+    "material_support_count": 2,
+    "materiality_rule_id": "EWP_PP_PRIOR_001_POROSITY_MATERIALITY_RULE_V1",
+    "materially_structures_sensitivity": true,
+    "numerical_execution_pass": true,
+    "permeability_stress_support_count": 3,
+    "pressure_response_pass": true,
+    "production_invariants_pass": true,
+    "qualified_source_operator_count": 1,
+    "source_authority_pass": true,
+    "unresolved_mapping_count": 0,
+    "waszkiewicz_comparison_status": "NOT_COMPARABLE_EXACT_RANGE_UNAVAILABLE"
+  },
+  "production_default_action": "RETAIN_UNCHANGED",
+  "reason": "Evidence-derived; source-native stress supports do not satisfy positive EWP-compatible gates.",
+  "scope": "POROSITY_ONLY",
+  "source_dispositions": {
+    "Eq11_postfit_K": "CONTEXTUAL_BOUND_ONLY",
+    "calculated_dry_bed_porosity": "OPERATOR_QUALIFICATION_ONLY",
+    "epsilon_0": "USEFUL_SOURCE_CONDITIONED_SUPPORT",
+    "k_ewp_reference_mu_m2": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+    "k_m2": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+    "k_published_mu_m2": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+    "measured_dry_bed_porosity": "OPERATOR_QUALIFICATION_ONLY",
+    "phi_T_total": "USEFUL_SOURCE_CONDITIONED_SUPPORT",
+    "phi_p_connected": "CONTEXTUAL_BOUND_ONLY"
+  },
+  "successor": "EWP-REAL-WORLD-BOUNDARIES-001"
+}

@@ -1,0 +1,33 @@
+{
+  "derivatives": {
+    "log10_saturated_k": [
+      0.0,
+      3.415194425520545e-06,
+      0.0
+    ],
+    "phi": [
+      8.029240463079734,
+      0.0,
+      0.02297619047619045
+    ]
+  },
+  "interpretation": "DISTINGUISHABLE_LOCAL_NUMERICAL_SIGNATURES; saturated-K derivative of first drip is zero because primary lane retains wetting K",
+  "observables": [
+    "first_drip_s",
+    "steady_outlet_volume_flow_m3_s",
+    "saturated_pore_water_mass_kg"
+  ],
+  "parameters": [
+    "phi",
+    "log10_saturated_k"
+  ],
+  "rank": 2,
+  "scaled_singular_values": [
+    1.4142135623730951,
+    1.0
+  ],
+  "steps": {
+    "log10_saturated_k": 0.02,
+    "phi": 0.01
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "artifact": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/summary.json",
+  "central": 6.532419609910384,
+  "grouping_scope": "source post-fit reconstruction",
+  "limitations": "central value only; exact empirical min/max unavailable; definition differs from EWP Darcy resistance",
+  "maximum": null,
+  "minimum": null,
+  "pressure_scope": "Pc=12.392 bar",
+  "processing_authority": "merged XSV-WASZKIEWICZ-DYNAMIC-HYD-001 summary",
+  "quantity_definition": "source post-fit static characteristic pressure divided by characteristic mass flow",
+  "unit": "bar/(g/s)"
+}

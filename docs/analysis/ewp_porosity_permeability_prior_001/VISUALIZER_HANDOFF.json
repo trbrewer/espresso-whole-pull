@@ -1,0 +1,20 @@
+{
+  "future_case_selection_contract": {
+    "flow": [
+      "low",
+      "central",
+      "high"
+    ],
+    "pressure": [
+      "low",
+      "central",
+      "high"
+    ],
+    "yield_or_duration": [
+      "low",
+      "central",
+      "high"
+    ]
+  },
+  "status": "NO_NEW_VISUALIZER_EXECUTION"
+}

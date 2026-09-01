@@ -1,0 +1,245 @@
+{
+  "counts": {
+    "analytical_cases": 82,
+    "convergence_rows": 12,
+    "eligible_permeability_supports": 0,
+    "eligible_porosity_supports": 2,
+    "factorial_cases": 27,
+    "permeability_stress_supports": 3,
+    "pressure_cases": 15,
+    "qualified_source_operators": 1,
+    "reduced_anchors": 7,
+    "vaca_c1": 9,
+    "vaca_fig12": 50,
+    "vaca_observed_pair_representations": 18,
+    "wadsworth_k": 21,
+    "wadsworth_observed_pairs": 21,
+    "wadsworth_rows": 22
+  },
+  "decision": {
+    "claim_ceiling": "SOURCE_CONDITIONED_STATIC_POROSITY_AND_PERMEABILITY_PRIOR_QUALIFICATION_FOR_EWP_HYDRAULIC_SENSITIVITY",
+    "code": "EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_ONLY",
+    "gate_inputs": {
+      "convergence_pass": true,
+      "eligible_permeability_support_count": 0,
+      "eligible_permeability_support_ids": [],
+      "eligible_porosity_support_count": 2,
+      "eligible_porosity_support_ids": [
+        "WADSWORTH_TOTAL_XCT_POROSITY",
+        "VACA_TABLE_C1_EPSILON_0"
+      ],
+      "material_support_count": 2,
+      "materiality_rule_id": "EWP_PP_PRIOR_001_POROSITY_MATERIALITY_RULE_V1",
+      "materially_structures_sensitivity": true,
+      "numerical_execution_pass": true,
+      "permeability_stress_support_count": 3,
+      "pressure_response_pass": true,
+      "production_invariants_pass": true,
+      "qualified_source_operator_count": 1,
+      "source_authority_pass": true,
+      "unresolved_mapping_count": 0,
+      "waszkiewicz_comparison_status": "NOT_COMPARABLE_EXACT_RANGE_UNAVAILABLE"
+    },
+    "production_default_action": "RETAIN_UNCHANGED",
+    "reason": "Evidence-derived; source-native stress supports do not satisfy positive EWP-compatible gates.",
+    "scope": "POROSITY_ONLY",
+    "source_dispositions": {
+      "Eq11_postfit_K": "CONTEXTUAL_BOUND_ONLY",
+      "calculated_dry_bed_porosity": "OPERATOR_QUALIFICATION_ONLY",
+      "epsilon_0": "USEFUL_SOURCE_CONDITIONED_SUPPORT",
+      "k_ewp_reference_mu_m2": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+      "k_m2": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+      "k_published_mu_m2": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+      "measured_dry_bed_porosity": "OPERATOR_QUALIFICATION_ONLY",
+      "phi_T_total": "USEFUL_SOURCE_CONDITIONED_SUPPORT",
+      "phi_p_connected": "CONTEXTUAL_BOUND_ONLY"
+    },
+    "successor": "EWP-REAL-WORLD-BOUNDARIES-001"
+  },
+  "full_openfoam": "NOT_REQUIRED_FOR_SOURCE_QUALIFICATION",
+  "numerical_stability": {
+    "all_finite": true,
+    "case_count": 4,
+    "configurations": [
+      {
+        "axial_cells": 128,
+        "delta_t_s": 0.04
+      },
+      {
+        "axial_cells": 256,
+        "delta_t_s": 0.02
+      },
+      {
+        "axial_cells": 512,
+        "delta_t_s": 0.01
+      }
+    ],
+    "max_relative_difference": 0.0011961762519999166,
+    "status": "PASS_NUMERICALLY_STABLE"
+  },
+  "porosity_materiality": {
+    "absolute_engineering_floor": 0.05,
+    "all_eligible_supports_material": true,
+    "baseline_case_id": "EWP_BASELINE",
+    "eligible_support_count": 2,
+    "exclusions": {
+      "figure_12": "OPERATOR_QUALIFICATION_ONLY_NOT_PROPAGATED",
+      "fixed_geometry_cases": "MASS_INCONSISTENT_DIAGNOSTIC",
+      "min_max_cases": "CONTEXT_ONLY",
+      "permeability_stress_cases": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+      "pressure_3_bar_and_12_bar": "CONTEXT_ONLY",
+      "wadsworth_connected_porosity": "CONTEXTUAL_BOUND_ONLY",
+      "waszkiewicz": "CONTEXT_ONLY"
+    },
+    "final_gate_value": true,
+    "geometry_closure": "FIXED_DOSE_MASS_CONSERVING_PRIMARY",
+    "material_support_count": 2,
+    "materiality_threshold": 0.05,
+    "materially_structures_sensitivity": true,
+    "maximum_relative_convergence_uncertainty": 0.0011961762519999166,
+    "numerical_floor": 0.011961762519999166,
+    "numerical_separation_multiplier": 10.0,
+    "reference_pressure_bar": 9,
+    "reference_pressure_pa": 900000,
+    "rule_authority": "OWNER_FROZEN_TASK_CRITERION_NOT_PUBLICATION_DERIVED",
+    "rule_id": "EWP_PP_PRIOR_001_POROSITY_MATERIALITY_RULE_V1",
+    "rule_version": 1,
+    "support_decisions": [
+      {
+        "baseline_case_id": "EWP_BASELINE",
+        "convergence_uncertainty": 0.0011961762519999166,
+        "failure_reason": null,
+        "geometry_closure": "FIXED_DOSE_MASS_CONSERVING_PRIMARY",
+        "observables": {
+          "effective_hydraulic_resistance": {
+            "baseline_value": 607010579008.8234,
+            "qualifies": true,
+            "relative_effect": 0.32860938883968116,
+            "source_value": 806479954396.1338,
+            "status": "COMPARABLE"
+          },
+          "final_water_mass_kg": {
+            "baseline_value": 0.036182057813537505,
+            "qualifies": true,
+            "relative_effect": 0.3830815966297451,
+            "source_value": 0.022321377336977814,
+            "status": "COMPARABLE"
+          },
+          "first_drip_time_s": {
+            "baseline_value": 4.711696185231869,
+            "qualifies": true,
+            "relative_effect": 0.9679970210580598,
+            "source_value": 9.272604056666943,
+            "status": "COMPARABLE"
+          },
+          "steady_outlet_flow_m3_s": {
+            "baseline_value": 1.4826759715944223e-06,
+            "qualifies": true,
+            "relative_effect": 0.24733333333333332,
+            "source_value": 1.1159607812867352e-06,
+            "status": "COMPARABLE"
+          },
+          "time_to_target_yield_s": {
+            "baseline_value": 32.668429818338296,
+            "qualifies": false,
+            "source_value": 46.41618284290223,
+            "status": "NOT_COMPARABLE_TARGET_NOT_REACHED"
+          }
+        },
+        "pressure_bar": 9.0,
+        "pressure_pa": 900000.0,
+        "qualifying_observable_count": 4,
+        "qualifying_observables": [
+          "first_drip_time_s",
+          "steady_outlet_flow_m3_s",
+          "effective_hydraulic_resistance",
+          "final_water_mass_kg"
+        ],
+        "selected_case_id": "WADS_TOTAL_PHI_DOSE_MEDIAN",
+        "support_id": "WADSWORTH_TOTAL_XCT_POROSITY",
+        "support_material": true,
+        "threshold": 0.05
+      },
+      {
+        "baseline_case_id": "EWP_BASELINE",
+        "convergence_uncertainty": 0.0011961762519999166,
+        "failure_reason": null,
+        "geometry_closure": "FIXED_DOSE_MASS_CONSERVING_PRIMARY",
+        "observables": {
+          "effective_hydraulic_resistance": {
+            "baseline_value": 607010579008.8234,
+            "qualifies": true,
+            "relative_effect": 0.16666666666666657,
+            "source_value": 505842149174.01953,
+            "status": "COMPARABLE"
+          },
+          "final_water_mass_kg": {
+            "baseline_value": 0.036182057813537505,
+            "qualifies": true,
+            "relative_effect": 0.2783186565378244,
+            "source_value": 0.046252199534975155,
+            "status": "COMPARABLE"
+          },
+          "first_drip_time_s": {
+            "baseline_value": 4.711696185231869,
+            "qualifies": true,
+            "relative_effect": 0.3502889233925143,
+            "source_value": 3.061241201154381,
+            "status": "COMPARABLE"
+          },
+          "steady_outlet_flow_m3_s": {
+            "baseline_value": 1.4826759715944223e-06,
+            "qualifies": true,
+            "relative_effect": 0.19999999999999982,
+            "source_value": 1.7792111659133065e-06,
+            "status": "COMPARABLE"
+          },
+          "time_to_target_yield_s": {
+            "baseline_value": 32.668429818338296,
+            "qualifies": true,
+            "source_value": 26.358519228743077,
+            "status": "TARGET_REACHABILITY_CHANGED"
+          }
+        },
+        "pressure_bar": 9.0,
+        "pressure_pa": 900000.0,
+        "qualifying_observable_count": 5,
+        "qualifying_observables": [
+          "first_drip_time_s",
+          "steady_outlet_flow_m3_s",
+          "effective_hydraulic_resistance",
+          "final_water_mass_kg",
+          "time_to_target_yield_s"
+        ],
+        "selected_case_id": "VACA_PHI_DOSE_MEDIAN",
+        "support_id": "VACA_TABLE_C1_EPSILON_0",
+        "support_material": true,
+        "threshold": 0.05
+      }
+    ]
+  },
+  "pressure_grid_pa": [
+    300000.0,
+    900000.0,
+    1200000.0
+  ],
+  "production_invariants": {
+    "config/reference_R0.json": "67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286",
+    "dependencies/puckworks.lock.json": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+    "scripts/prepare_case.py": "e99443c47594321ccb48b73a20af474c4f453238ffca2096e1971e3cd73390d6",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6"
+  },
+  "task": "EWP-POROSITY-PERMEABILITY-PRIOR-001-C2",
+  "waszkiewicz": {
+    "artifact": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/summary.json",
+    "central": 6.532419609910384,
+    "grouping_scope": "source post-fit reconstruction",
+    "limitations": "central value only; exact empirical min/max unavailable; definition differs from EWP Darcy resistance",
+    "maximum": null,
+    "minimum": null,
+    "pressure_scope": "Pc=12.392 bar",
+    "processing_authority": "merged XSV-WASZKIEWICZ-DYNAMIC-HYD-001 summary",
+    "quantity_definition": "source post-fit static characteristic pressure divided by characteristic mass flow",
+    "unit": "bar/(g/s)"
+  }
+}

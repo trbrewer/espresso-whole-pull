@@ -1,0 +1,20 @@
+{
+  "all_finite": true,
+  "case_count": 4,
+  "configurations": [
+    {
+      "axial_cells": 128,
+      "delta_t_s": 0.04
+    },
+    {
+      "axial_cells": 256,
+      "delta_t_s": 0.02
+    },
+    {
+      "axial_cells": 512,
+      "delta_t_s": 0.01
+    }
+  ],
+  "max_relative_difference": 0.0011961762519999166,
+  "status": "PASS_NUMERICALLY_STABLE"
+}

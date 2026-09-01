@@ -1,5 +1,21 @@
 # Project State
 
+## EWP-POROSITY-PERMEABILITY-PRIOR-001 result (2026-08-31)
+
+`EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_ONLY` after C2.
+Exactly two propagated supports—Wadsworth total XCT porosity and Vaca C.1
+epsilon_0—materially structure
+bounded EWP initial-porosity sensitivity. Source permeability substitutions are
+source-native stress supports only because no closed transfer to calibrated EWP
+effective saturated permeability is established. They are not universal
+distributions, wet operating-puck measurements, or physical validation. The
+Vaca Figure 12 measured/calculated dry-porosity rows qualify its source operator
+only and contribute zero eligible supports. Materiality is computed by
+`EWP_PP_PRIOR_001_POROSITY_MATERIALITY_RULE_V1`, not inserted as a literal.
+The
+calibrated EWP default remains unchanged; wetting permeability remains independent.
+Next task: `EWP-REAL-WORLD-BOUNDARIES-001`. Home-lab operation remains deferred.
+
 ## XSV-WASZKIEWICZ-DYNAMIC-HYD-001 grouped result (2026-08-31)
 
 `XSV_WASZKIEWICZ_DYNAMIC_HYD_001_NO_TESTED_EVOLVING_RESISTANCE_FORM_HAS_STABLE_GROUPED_PREDICTIVE_ADVANTAGE`.
@@ -13,8 +29,8 @@ questions remain unexhausted. SCI-ED-003 and home-lab operation remain deferred.
 
 ## Reviewed whole-corpus authority (2026-08-31)
 
-All 39 material families are registered. Current priority is grouped
-Waszkiewicz hydraulics (56 brews/11 conditions). Visualizer is boundary and
+All 39 material families are registered. Current priority is the completed
+source-conditioned EWP hydraulic support qualification. Visualizer is boundary and
 descriptive-hydraulic authority, not population chemistry. Wadsworth/Vaca stay
 separate. Home-lab operation is deferred; production physics is unchanged.
 

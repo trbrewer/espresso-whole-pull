@@ -1,0 +1,92 @@
+[
+  {
+    "compatibility_limit": "source-native dry/connected/intrinsic definitions require explicit operator",
+    "default_value": 0.4,
+    "path": "coffee_bed.initial_porosity",
+    "runtime_role": "geometry_or_property",
+    "state": "INITIAL_DRY",
+    "symbol": "phi",
+    "unit": "1",
+    "validation_status": "NOT_PHYSICALLY_VALIDATED"
+  },
+  {
+    "compatibility_limit": "source-native dry/connected/intrinsic definitions require explicit operator",
+    "default_value": 1.77e-15,
+    "path": "hydraulics.saturated_permeability_m2",
+    "runtime_role": "saturated_flow",
+    "state": "STATIC",
+    "symbol": "K",
+    "unit": "m^2",
+    "validation_status": "CALIBRATED_EFFECTIVE_NOT_INDEPENDENTLY_VALIDATED"
+  },
+  {
+    "compatibility_limit": "source-native dry/connected/intrinsic definitions require explicit operator",
+    "default_value": 1.77e-15,
+    "path": "hydraulics.wetting_permeability_m2",
+    "runtime_role": "wetting",
+    "state": "STATIC",
+    "symbol": "K",
+    "unit": "m^2",
+    "validation_status": "NOT_PHYSICALLY_VALIDATED"
+  },
+  {
+    "compatibility_limit": "source-native dry/connected/intrinsic definitions require explicit operator",
+    "default_value": 0.009011660896432553,
+    "path": "coffee_bed.bed_depth_m",
+    "runtime_role": "geometry_or_property",
+    "state": "STATIC",
+    "symbol": "L",
+    "unit": "SI_AS_PATH",
+    "validation_status": "NOT_PHYSICALLY_VALIDATED"
+  },
+  {
+    "compatibility_limit": "source-native dry/connected/intrinsic definitions require explicit operator",
+    "default_value": 0.02,
+    "path": "coffee_bed.dry_dose_kg",
+    "runtime_role": "geometry_or_property",
+    "state": "STATIC",
+    "symbol": "m_dry",
+    "unit": "SI_AS_PATH",
+    "validation_status": "NOT_PHYSICALLY_VALIDATED"
+  },
+  {
+    "compatibility_limit": "source-native dry/connected/intrinsic definitions require explicit operator",
+    "default_value": 1400.0,
+    "path": "coffee_bed.particle_solid_density_kg_m3",
+    "runtime_role": "geometry_or_property",
+    "state": "STATIC",
+    "symbol": "rho",
+    "unit": "SI_AS_PATH",
+    "validation_status": "NOT_PHYSICALLY_VALIDATED"
+  },
+  {
+    "compatibility_limit": "source-native dry/connected/intrinsic definitions require explicit operator",
+    "default_value": 0.029,
+    "path": "geometry.basket_radius_m",
+    "runtime_role": "geometry_or_property",
+    "state": "STATIC",
+    "symbol": "r",
+    "unit": "SI_AS_PATH",
+    "validation_status": "NOT_PHYSICALLY_VALIDATED"
+  },
+  {
+    "compatibility_limit": "source-native dry/connected/intrinsic definitions require explicit operator",
+    "default_value": 965.0,
+    "path": "liquid.density_kg_m3",
+    "runtime_role": "geometry_or_property",
+    "state": "STATIC",
+    "symbol": "rho",
+    "unit": "SI_AS_PATH",
+    "validation_status": "NOT_PHYSICALLY_VALIDATED"
+  },
+  {
+    "compatibility_limit": "source-native dry/connected/intrinsic definitions require explicit operator",
+    "default_value": 0.000315,
+    "path": "liquid.dynamic_viscosity_Pa_s",
+    "runtime_role": "geometry_or_property",
+    "state": "STATIC",
+    "symbol": "mu",
+    "unit": "SI_AS_PATH",
+    "validation_status": "NOT_PHYSICALLY_VALIDATED"
+  }
+]
