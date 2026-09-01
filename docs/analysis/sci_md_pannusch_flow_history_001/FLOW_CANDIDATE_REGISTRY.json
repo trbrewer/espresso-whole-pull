@@ -1,0 +1,121 @@
+{
+  "candidates": [
+    {
+      "applicable_conditions": [
+        "PRED-C01",
+        "PRED-C02",
+        "PRED-C05",
+        "PRED-C06",
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "Q0_LEGACY_CONSTANT_START",
+      "clock": "solver elapsed seconds",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "ELIGIBLE_BASELINE_ONLY",
+      "formula": "q(t)=flow_start_mL_s",
+      "post_support_behaviour": "not applicable",
+      "pre_support_behaviour": "not applicable",
+      "primary_or_diagnostic_role": "mandatory baseline",
+      "reason": "mandatory existing scalar-start baseline; no fitted parameters",
+      "source_evidence": "Puckworks prediction_conditions.csv",
+      "source_semantic": "PROGRAMMED_MACHINE_INSTRUCTION_NOT_MEASURED_INLET_OR_PUCK_FACE_FLOW",
+      "support": "all solver intervals",
+      "target_independent_construction_proof": "literal source start value; chemistry argument ignored",
+      "units": "mL/s"
+    },
+    {
+      "applicable_conditions": [
+        "PRED-C01",
+        "PRED-C02",
+        "PRED-C05",
+        "PRED-C06",
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "QP_SOURCE_PROGRAMMED_SCHEDULE",
+      "clock": "UNRESOLVED_PROGRAMME_TO_SOLVER",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "INELIGIBLE_NONIDENTITY;IDENTICAL_TO_Q0_ON_PRIMARY",
+      "formula": "source exact schedule only; no generic endpoint interpolation",
+      "post_support_behaviour": "UNRESOLVED",
+      "pre_support_behaviour": "UNRESOLVED",
+      "primary_or_diagnostic_role": "gated source schedule",
+      "reason": "ramp coordinate, zero, support, duration, and pre/post holds absent",
+      "source_evidence": "workbook DoE endpoint labels; no time-coordinate cells or released programme definition",
+      "source_semantic": "SOURCE_PROGRAMMED_MACHINE_SCHEDULE_NOT_MEASURED_INLET_FLOW",
+      "support": "UNRESOLVED_FOR_RAMPS",
+      "target_independent_construction_proof": "static source metadata only",
+      "units": "mL/s"
+    },
+    {
+      "applicable_conditions": [
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "QP_VOLUME_EQUIVALENT_CONSTANT",
+      "clock": "solver elapsed seconds",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "GATED_INELIGIBLE",
+      "formula": "constant integral-equivalent QP over exact solver support",
+      "post_support_behaviour": "not applicable",
+      "pre_support_behaviour": "not applicable",
+      "primary_or_diagnostic_role": "diagnostic only",
+      "reason": "QP is ineligible; diagnostic must not be constructed",
+      "source_evidence": "requires eligible QP",
+      "source_semantic": "DIAGNOSTIC_DERIVED_FROM_QP",
+      "support": "NOT_CONSTRUCTED",
+      "target_independent_construction_proof": "would use QP integral only",
+      "units": "mL/s"
+    },
+    {
+      "applicable_conditions": [
+        "PRED-C01",
+        "PRED-C02",
+        "PRED-C05",
+        "PRED-C06",
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "QM_MASSDATA_FLOW_SCALAR",
+      "clock": "rebased scale mass-fit seconds",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "INELIGIBLE",
+      "formula": "exact MassData.flow if source-authorized",
+      "post_support_behaviour": "undefined",
+      "pre_support_behaviour": "undefined",
+      "primary_or_diagnostic_role": "gated input mapping",
+      "reason": "not scalar; beverage mass-rate physical side; no volumetric conversion or published Pannusch-Q authorization",
+      "source_evidence": "GetMassScale_modelval.m: dm_dt=2*a*tfit+b; flow=dm_dt; MassData.flow=flow",
+      "source_semantic": "MISNAMED_REGISTRY_ENTRY_SOURCE_OBJECT_IS_VECTOR",
+      "support": "MassData.time fit support",
+      "target_independent_construction_proof": "released mass-scale code only",
+      "units": "g/s (dm/dt stored without density conversion)"
+    },
+    {
+      "applicable_conditions": [
+        "PRED-C01",
+        "PRED-C02",
+        "PRED-C05",
+        "PRED-C06",
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "QD_MASS_DERIVATIVE_OUTFLOW",
+      "clock": "rebased scale mass-fit seconds",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "GATED_INELIGIBLE_BY_CURRENT_AUTHORITY",
+      "formula": "dm/dt=2*a*t+b",
+      "post_support_behaviour": "undefined",
+      "pre_support_behaviour": "undefined",
+      "primary_or_diagnostic_role": "context only",
+      "reason": "beverage outflow is not inlet Q; density/conversion and programme/solver clock mapping unauthorized; no published Pannusch-Q use",
+      "source_evidence": "GetMassScale_modelval.m and getExperimentalData_validation.m",
+      "source_semantic": "BEVERAGE_MASS_DERIVED_OUTFLOW_TIMING;DERIVED_NOT_INLET_FLOW;CONTEXT_ONLY",
+      "support": "MassData.time fit support",
+      "target_independent_construction_proof": "released mass-scale code only",
+      "units": "g/s"
+    }
+  ],
+  "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+}

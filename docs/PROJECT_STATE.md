@@ -1,5 +1,19 @@
 # Project State
 
+## SCI-MD-PANNUSCH-FLOW-HISTORY-001 result (2026-09-01)
+
+`SCI_MD_PANNUSCH_FLOW_HISTORY_001_FLOW_AUTHORITY_INELIGIBLE`. Programmed flow
+endpoints are machine instructions, not measured inlet or puck-face flow, and
+the released source does not define the ramp coordinate, programme zero,
+support, duration, or holds. `MassData.flow` is the vector derivative of fitted
+beverage scale mass in g/s, not a scalar or authorized volumetric Pannusch Q;
+no admissible density conversion or clock mapping is supplied. Phase B was
+therefore prohibited before chemistry access. The scalar-start treatment is
+retained and `XSV-PANNUSCH-EWP-INPUT-MAPPING-001` is selected, not implemented.
+TARGET_EXPOSED; SOURCE_INTERNAL; NOT INDEPENDENT, PHYSICAL, HYDRAULIC,
+PUCK_FACE_FLOW, OR PRODUCTION VALIDATION. No production adoption occurred;
+Visualizer and home-lab restrictions are unchanged.
+
 ## OBS-PANNUSCH-FRACTION-WINDOW-001 result (2026-09-01)
 
 `OBS_PANNUSCH_FRACTION_WINDOW_001_OBSERVER_EFFECT_INDISTINGUISHABLE` with

@@ -1,13 +1,24 @@
 # Existing Data Leverage Programme
 
+## Pannusch flow-history result (2026-09-01)
+
+`SCI-MD-PANNUSCH-FLOW-HISTORY-001` is complete flow-authority-ineligible.
+Programmed ramp endpoints lack a source-authorized coordinate, support, and
+clock mapping. The scale-derived `MassData.flow` is fitted beverage mass rate,
+not authorized inlet or puck-face volumetric Q. No nonidentity candidate was
+eligible, so chemistry scoring was prohibited. The scalar-start treatment is
+retained and `XSV-PANNUSCH-EWP-INPUT-MAPPING-001` is selected but not
+implemented. This is target-exposed, source-internal qualification only; no
+physical, hydraulic, puck-face-flow, independent, or production validation.
+
 ## Pannusch observation-operator result (2026-09-01)
 
 `OBS-PANNUSCH-FRACTION-WINDOW-001` is `COMPLETE_NULL`. Released preprocessing
 proves all 24 shot-to-fit joins and shows that `run.tE` is already the exact
 MassData cumulative-vial inversion. The qualified observer is identical to the
 source observer, so it cannot reduce the retained fraction-2/tail residual.
-The first fallback, `SCI-MD-PANNUSCH-FLOW-HISTORY-001`, is selected but not
-implemented. This is source-internal, target-exposed evidence, not independent,
+The first fallback, `SCI-MD-PANNUSCH-FLOW-HISTORY-001`, is completed above.
+This is source-internal, target-exposed evidence, not independent,
 physical, hydraulic, or production validation. Home-lab work remains deferred.
 
 ## Recent-public boundary result (2026-09-01)
@@ -86,8 +97,8 @@ fusion; experiment reduction; absolute closure; independent validation.
 
 1. XSV-PANNUSCH-MULTIMODEL-001 — complete.
 2. OBS-PANNUSCH-FRACTION-WINDOW-001 — complete null.
-3. SCI-MD-PANNUSCH-FLOW-HISTORY-001 — selected, not implemented.
-4. Permissioned Visualizer population-hydraulics lane.
+3. SCI-MD-PANNUSCH-FLOW-HISTORY-001 — complete, flow authority ineligible.
+4. XSV-PANNUSCH-EWP-INPUT-MAPPING-001 — selected, not implemented.
 5. Cross-corpus boundary/uncertainty integration.
 6. SCI-ED-003 targeted closure contract.
 7. Prospectively independent transfer tier.

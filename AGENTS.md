@@ -1,10 +1,12 @@
 # Public Repository Agent Rules
 
 The Visualizer boundary route is closed at its unresolved device/sensor and
-integration identity block. `OBS-PANNUSCH-FRACTION-WINDOW-001` is the active
-bounded scientific task until its pull request records the qualified result;
-do not reopen Visualizer, promote sparse chemistry, fuse Wadsworth/Vaca, or
-authorize home-lab work.
+integration identity block. `OBS-PANNUSCH-FRACTION-WINDOW-001` is complete
+null. `SCI-MD-PANNUSCH-FLOW-HISTORY-001` completed flow-authority-ineligible:
+no nonidentity source input has the required physical semantics, units, clock,
+support, and Pannusch-Q authority. `XSV-PANNUSCH-EWP-INPUT-MAPPING-001` is
+selected but not implemented. Visualizer and home-lab restrictions remain
+unchanged, and no production adoption occurred.
 
 Scientific-development governance follows
 `docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md`.

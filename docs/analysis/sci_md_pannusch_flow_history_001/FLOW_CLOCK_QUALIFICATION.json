@@ -1,0 +1,26 @@
+{
+  "evidence": [
+    "workbook DoE endpoint labels",
+    "GetMassScale_modelval.m mass/time rebase",
+    "getExperimentalData_validation.m scalar flow_start model use"
+  ],
+  "fraction_clock_zero": "same derived mass-fit zero",
+  "mass_fit_zero": "first selected beverage-scale fit sample",
+  "post_ramp_hold": "UNRESOLVED",
+  "pre_ramp_hold": "UNRESOLVED",
+  "programme_coordinate": "NOT_DEFINED_BY_RELEASED_SOURCE",
+  "programme_time_zero": "UNRESOLVED",
+  "prohibited_substitutions": [
+    "final tE as ramp duration",
+    "chemistry-fitted lag/offset",
+    "unsupported extrapolation",
+    "shared zero because clocks use seconds"
+  ],
+  "ramp_duration_s": "UNRESOLVED",
+  "ramp_end_s": "UNRESOLVED",
+  "ramp_start_s": "UNRESOLVED",
+  "solver_time_zero": "first requested t_bound; physical mapping to programme unresolved",
+  "status": "FAIL_CLOSED_NONIDENTITY",
+  "support_over_solver_intervals": false,
+  "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+}

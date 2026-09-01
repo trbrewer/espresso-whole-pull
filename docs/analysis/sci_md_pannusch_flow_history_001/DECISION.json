@@ -1,0 +1,23 @@
+{
+  "audit_sha256": "ca5e7365290e7f949797f46dbf074eeca2adbdd13605e53d96eafa9c2fd2229a",
+  "claim_ceiling": "SOURCE_INTERNAL_FLOW_HISTORY_QUALIFICATION_ONLY",
+  "claims": [
+    "TARGET_EXPOSED",
+    "SOURCE_INTERNAL",
+    "NOT INDEPENDENT VALIDATION",
+    "NOT PHYSICAL VALIDATION",
+    "NOT HYDRAULIC VALIDATION",
+    "NOT PUCK_FACE_FLOW VALIDATION",
+    "NOT PRODUCTION QUALIFICATION"
+  ],
+  "freeze_sha256": "b870397d0a0bbdc5253b6c4a905f9d37f97ad040c81dac5a60912638d77cb1ef",
+  "materiality": "NOT_ADJUDICATED_NO_ELIGIBLE_NONIDENTITY_INPUT",
+  "next_action": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001",
+  "next_action_implemented": false,
+  "production_adoption": false,
+  "programmed_ramp_conclusion": "NOT_SCORED; source endpoints lack authorized time coordinate/support/clock mapping",
+  "qualification": "COMPLETE_SOURCE_AUTHORITY_INELIGIBLE",
+  "retained_residual_conclusion": "NOT_EXPLAINED; QP is exact identity on C01/C02/C05/C06 and other nonidentity candidates are ineligible",
+  "scientific_disposition": "SCI_MD_PANNUSCH_FLOW_HISTORY_001_FLOW_AUTHORITY_INELIGIBLE",
+  "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+}

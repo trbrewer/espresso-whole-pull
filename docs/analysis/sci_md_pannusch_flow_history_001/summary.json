@@ -1,0 +1,28 @@
+{
+  "audit_sha256": "ca5e7365290e7f949797f46dbf074eeca2adbdd13605e53d96eafa9c2fd2229a",
+  "claims": [
+    "TARGET_EXPOSED",
+    "SOURCE_INTERNAL",
+    "NOT INDEPENDENT VALIDATION",
+    "NOT PHYSICAL VALIDATION",
+    "NOT HYDRAULIC VALIDATION",
+    "NOT PUCK_FACE_FLOW VALIDATION",
+    "NOT PRODUCTION QUALIFICATION"
+  ],
+  "disposition": "SCI_MD_PANNUSCH_FLOW_HISTORY_001_FLOW_AUTHORITY_INELIGIBLE",
+  "eligible_candidates": [
+    "Q0_LEGACY_CONSTANT_START (baseline only)"
+  ],
+  "freeze_sha256": "b870397d0a0bbdc5253b6c4a905f9d37f97ad040c81dac5a60912638d77cb1ef",
+  "ineligible_nonidentity_candidates": [
+    "QP_SOURCE_PROGRAMMED_SCHEDULE",
+    "QP_VOLUME_EQUIVALENT_CONSTANT",
+    "QM_MASSDATA_FLOW_SCALAR",
+    "QD_MASS_DERIVATIVE_OUTFLOW"
+  ],
+  "next_action": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001",
+  "parity_max_normalized_share_difference": 0.0,
+  "phase_b": false,
+  "retained_residual_explained": false,
+  "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+}

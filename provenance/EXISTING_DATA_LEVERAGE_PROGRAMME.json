@@ -2,7 +2,7 @@
   "$schema": "../schemas/existing_data_leverage_programme.schema.json",
   "schema_version": 1,
   "programme_id": "ESPRESSO-EXISTING-DATA-LEVERAGE-PROGRAMME",
-  "current_priority": "SCI-MD-PANNUSCH-FLOW-HISTORY-001",
+  "current_priority": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001",
   "home_lab_status": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY",
   "authorities": {
     "puckworks_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
@@ -120,11 +120,11 @@
       "data_families": ["Pannusch delivered flow history"],
       "scientific_question": "Can source-authorized delivered flow history explain the retained residual without changing extraction kinetics?",
       "model_component": "source input history",
-      "status": "READY",
+      "status": "COMPLETE_NULL",
       "priority": 1,
       "prerequisites": ["OBS-PANNUSCH-FRACTION-WINDOW-001 complete null"],
       "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001",
-      "current_evidence": "Selected first fallback; not implemented",
+      "current_evidence": "No nonidentity candidate has complete physical semantics, volumetric units, clock/support mapping, and published Pannusch-Q authority; Phase B prohibited before chemistry access",
       "expected_information": "source-authorized delivered versus programmed flow-history effect",
       "positive_action": "retain a qualified source-internal input mapping",
       "negative_action": "use XSV-PANNUSCH-EWP-INPUT-MAPPING-001",
@@ -132,11 +132,35 @@
       "blocked_action": "use XSV-PANNUSCH-EWP-INPUT-MAPPING-001 only if flow authority is ineligible",
       "claim_ceiling": "SOURCE_INTERNAL_FLOW_HISTORY_QUALIFICATION_ONLY",
       "home_lab_effect": "DEFER",
+      "completion_evidence": ["docs/analysis/sci_md_pannusch_flow_history_001/RESULT.md", "docs/analysis/sci_md_pannusch_flow_history_001/DECISION.json", "docs/analysis/sci_md_pannusch_flow_history_001/FLOW_SEMANTICS.csv"],
+      "exhausted_for_decision": true,
+      "exhaustion_decision": "WHETHER_A_SOURCE_AUTHORIZED_FLOW_INPUT_CAN_EXPLAIN_THE_RETAINED_PANNUSCH_RESIDUAL",
+      "review_trigger": "material source-semantics or programme-clock authority",
+      "notes": "Flow authority ineligible; Q0 retained; XSV-PANNUSCH-EWP-INPUT-MAPPING-001 selected but not implemented; no physics or production adoption."
+    },
+    {
+      "opportunity_id": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001",
+      "title": "Pannusch-to-EWP input mapping qualification",
+      "data_families": ["Pannusch and EWP input authorities"],
+      "scientific_question": "Can one source-authorized Pannusch input be mapped to an EWP input without changing governing physics?",
+      "model_component": "cross-model input mapping",
+      "status": "READY",
+      "priority": 1,
+      "prerequisites": ["SCI-MD-PANNUSCH-FLOW-HISTORY-001 complete flow-authority-ineligible"],
+      "task_id": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001",
+      "current_evidence": "Selected by flow-authority-ineligible closeout; not implemented",
+      "expected_information": "source-authorized cross-model input mapping or closed ineligibility",
+      "positive_action": "retain only the exact bounded mapping",
+      "negative_action": "retain existing independent input treatments",
+      "null_action": "retain existing independent input treatments",
+      "blocked_action": "record exact missing mapping authority",
+      "claim_ceiling": "SOURCE_INTERNAL_INPUT_MAPPING_QUALIFICATION_ONLY",
+      "home_lab_effect": "DEFER",
       "completion_evidence": [],
       "exhausted_for_decision": false,
       "exhaustion_decision": null,
-      "review_trigger": "separate task authorization",
-      "notes": "Selected but not implemented by the fraction-window task; no new physics or production adoption."
+      "review_trigger": "separate owner authorization",
+      "notes": "Selected only; no implementation, production adoption, or governing-physics change."
     },
     {
       "opportunity_id": "OBS-PANNUSCH-FRACTION-WINDOW-001",
@@ -348,5 +372,5 @@
     "before exhaustion declaration"
   ],
   "current_claim_ceiling": "SOURCE_INTERNAL_FRACTION_WINDOW_AND_OBSERVATION_OPERATOR_QUALIFICATION",
-  "last_completed_opportunity_review": "OBS-PANNUSCH-FRACTION-WINDOW-001"
+  "last_completed_opportunity_review": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
 }

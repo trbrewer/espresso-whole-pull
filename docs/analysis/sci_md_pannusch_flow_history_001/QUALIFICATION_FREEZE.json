@@ -1,0 +1,342 @@
+{
+  "audit_result": {
+    "audit_sha256": "ca5e7365290e7f949797f46dbf074eeca2adbdd13605e53d96eafa9c2fd2229a",
+    "audited_pending_freeze_sha256": "4dd78a88b8310a9b737206213886eaf98f0c10eee4d2450091458032eee1a4c3",
+    "status": "PASS"
+  },
+  "authority": {
+    "ewp_base_commit": "c81a1e3af1e55bac81e12443e26f3e45f43319e6",
+    "ewp_base_tree": "1eb780cd0704e84866508816d240c10f6b749204",
+    "external_source_sha256": {
+      "DesignOfExperiments_Validation_03_22.xlsx": "b7fc864e693ddb40317a4c9493a2fb0c0892b1f1c68f5ce581d48008e21cab57",
+      "ExperimentalData_validation.mat": "b5fb0245e5cb67cf3191127f6058624243a38fc0031344f8c93344bb95a84d64",
+      "GetMassScale_modelval.m": "9d354ae2fd10148b926e4a5fc9adeafa99ced15d0f24a1a99324a3c81de44b56",
+      "MassData_modelval.mat": "430f922d0df443d9f1b1d629409d9ef4a4967d15535ffa8b5a34f795523faaf3",
+      "ReadMassTimeFromScale.m": "12958952f478afd13387c842e6290ca7551d2511526c6f488a0081a11506192e",
+      "getExperimentalData_validation.m": "b1a219b851887af69611a9f22c810c7c07f1f3b8e714e6d4ef62500c960deee7"
+    },
+    "later_unrelated_commits": [],
+    "pannusch_source_subset_manifest_sha256": "15b9f765d49abe45d6788d7c7891b0695fca185d9c614d122e393993ec06a83c",
+    "predecessor_freeze_sha256": "c0ad3033a1b1c33d56d9ea2e8d311688603d98ed038428392fe93a1fe582a306",
+    "puckworks_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "puckworks_solver_sha256": "8f0f0108a8c44e0abbc32ca6ada676baf579a4f78265a3f7b53b38f118fa2bb4",
+    "puckworks_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+    "runtime_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+    "source_rights": "CC-BY-NC-3.0; source-derived numeric data are not relicensed as repository code",
+    "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+  },
+  "candidate_registry": [
+    {
+      "applicable_conditions": [
+        "PRED-C01",
+        "PRED-C02",
+        "PRED-C05",
+        "PRED-C06",
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "Q0_LEGACY_CONSTANT_START",
+      "clock": "solver elapsed seconds",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "ELIGIBLE_BASELINE_ONLY",
+      "formula": "q(t)=flow_start_mL_s",
+      "post_support_behaviour": "not applicable",
+      "pre_support_behaviour": "not applicable",
+      "primary_or_diagnostic_role": "mandatory baseline",
+      "reason": "mandatory existing scalar-start baseline; no fitted parameters",
+      "source_evidence": "Puckworks prediction_conditions.csv",
+      "source_semantic": "PROGRAMMED_MACHINE_INSTRUCTION_NOT_MEASURED_INLET_OR_PUCK_FACE_FLOW",
+      "support": "all solver intervals",
+      "target_independent_construction_proof": "literal source start value; chemistry argument ignored",
+      "units": "mL/s"
+    },
+    {
+      "applicable_conditions": [
+        "PRED-C01",
+        "PRED-C02",
+        "PRED-C05",
+        "PRED-C06",
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "QP_SOURCE_PROGRAMMED_SCHEDULE",
+      "clock": "UNRESOLVED_PROGRAMME_TO_SOLVER",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "INELIGIBLE_NONIDENTITY;IDENTICAL_TO_Q0_ON_PRIMARY",
+      "formula": "source exact schedule only; no generic endpoint interpolation",
+      "post_support_behaviour": "UNRESOLVED",
+      "pre_support_behaviour": "UNRESOLVED",
+      "primary_or_diagnostic_role": "gated source schedule",
+      "reason": "ramp coordinate, zero, support, duration, and pre/post holds absent",
+      "source_evidence": "workbook DoE endpoint labels; no time-coordinate cells or released programme definition",
+      "source_semantic": "SOURCE_PROGRAMMED_MACHINE_SCHEDULE_NOT_MEASURED_INLET_FLOW",
+      "support": "UNRESOLVED_FOR_RAMPS",
+      "target_independent_construction_proof": "static source metadata only",
+      "units": "mL/s"
+    },
+    {
+      "applicable_conditions": [
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "QP_VOLUME_EQUIVALENT_CONSTANT",
+      "clock": "solver elapsed seconds",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "GATED_INELIGIBLE",
+      "formula": "constant integral-equivalent QP over exact solver support",
+      "post_support_behaviour": "not applicable",
+      "pre_support_behaviour": "not applicable",
+      "primary_or_diagnostic_role": "diagnostic only",
+      "reason": "QP is ineligible; diagnostic must not be constructed",
+      "source_evidence": "requires eligible QP",
+      "source_semantic": "DIAGNOSTIC_DERIVED_FROM_QP",
+      "support": "NOT_CONSTRUCTED",
+      "target_independent_construction_proof": "would use QP integral only",
+      "units": "mL/s"
+    },
+    {
+      "applicable_conditions": [
+        "PRED-C01",
+        "PRED-C02",
+        "PRED-C05",
+        "PRED-C06",
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "QM_MASSDATA_FLOW_SCALAR",
+      "clock": "rebased scale mass-fit seconds",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "INELIGIBLE",
+      "formula": "exact MassData.flow if source-authorized",
+      "post_support_behaviour": "undefined",
+      "pre_support_behaviour": "undefined",
+      "primary_or_diagnostic_role": "gated input mapping",
+      "reason": "not scalar; beverage mass-rate physical side; no volumetric conversion or published Pannusch-Q authorization",
+      "source_evidence": "GetMassScale_modelval.m: dm_dt=2*a*tfit+b; flow=dm_dt; MassData.flow=flow",
+      "source_semantic": "MISNAMED_REGISTRY_ENTRY_SOURCE_OBJECT_IS_VECTOR",
+      "support": "MassData.time fit support",
+      "target_independent_construction_proof": "released mass-scale code only",
+      "units": "g/s (dm/dt stored without density conversion)"
+    },
+    {
+      "applicable_conditions": [
+        "PRED-C01",
+        "PRED-C02",
+        "PRED-C05",
+        "PRED-C06",
+        "PRED-C07",
+        "PRED-C08"
+      ],
+      "candidate_id": "QD_MASS_DERIVATIVE_OUTFLOW",
+      "clock": "rebased scale mass-fit seconds",
+      "code_hash": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+      "eligibility": "GATED_INELIGIBLE_BY_CURRENT_AUTHORITY",
+      "formula": "dm/dt=2*a*t+b",
+      "post_support_behaviour": "undefined",
+      "pre_support_behaviour": "undefined",
+      "primary_or_diagnostic_role": "context only",
+      "reason": "beverage outflow is not inlet Q; density/conversion and programme/solver clock mapping unauthorized; no published Pannusch-Q use",
+      "source_evidence": "GetMassScale_modelval.m and getExperimentalData_validation.m",
+      "source_semantic": "BEVERAGE_MASS_DERIVED_OUTFLOW_TIMING;DERIVED_NOT_INLET_FLOW;CONTEXT_ONLY",
+      "support": "MassData.time fit support",
+      "target_independent_construction_proof": "released mass-scale code only",
+      "units": "g/s"
+    }
+  ],
+  "chemistry_targets_accessed": false,
+  "clock_map": {
+    "evidence": [
+      "workbook DoE endpoint labels",
+      "GetMassScale_modelval.m mass/time rebase",
+      "getExperimentalData_validation.m scalar flow_start model use"
+    ],
+    "fraction_clock_zero": "same derived mass-fit zero",
+    "mass_fit_zero": "first selected beverage-scale fit sample",
+    "post_ramp_hold": "UNRESOLVED",
+    "pre_ramp_hold": "UNRESOLVED",
+    "programme_coordinate": "NOT_DEFINED_BY_RELEASED_SOURCE",
+    "programme_time_zero": "UNRESOLVED",
+    "prohibited_substitutions": [
+      "final tE as ramp duration",
+      "chemistry-fitted lag/offset",
+      "unsupported extrapolation",
+      "shared zero because clocks use seconds"
+    ],
+    "ramp_duration_s": "UNRESOLVED",
+    "ramp_end_s": "UNRESOLVED",
+    "ramp_start_s": "UNRESOLVED",
+    "solver_time_zero": "first requested t_bound; physical mapping to programme unresolved",
+    "status": "FAIL_CLOSED_NONIDENTITY",
+    "support_over_solver_intervals": false,
+    "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+  },
+  "code_hashes": {
+    "core": "d085608c4d11bdccbc8c36502760747927619c1a48b6e0488f8876fb9a9262de",
+    "runner": "65b0a82ad14cdd38ecadaacff690847bfbab2c875c7e724d526d1bf89e8749ac"
+  },
+  "cohort_roles": {
+    "excluded": [
+      "PRED-C03",
+      "PRED-C04"
+    ],
+    "programmed_ramp_identification": [
+      "PRED-C07",
+      "PRED-C08"
+    ],
+    "retained_residual_primary": [
+      "PRED-C01",
+      "PRED-C02",
+      "PRED-C05",
+      "PRED-C06"
+    ]
+  },
+  "decision_thresholds": {
+    "loco": "all beneficial",
+    "maximum_fraction_conditions_worse": 0.25,
+    "paired_interval": "strictly below zero",
+    "relative_improvement": 0.1
+  },
+  "frozen_kinetics_parameters_grind": "exact Puckworks authority; March grind=1.7; unchanged",
+  "legacy_baseline": "Q0 scalar programmed start; predecessor 144-row reproduction frozen",
+  "metrics": {
+    "bootstrap": {
+      "replicates": 2000,
+      "resampling": "condition then physical shot; retain analytes and complete vectors",
+      "rng": "NumPy PCG64",
+      "seed": 20260830
+    },
+    "continuity": "all six",
+    "primary": "condition-balanced physical-shot RMSE positions 2,5,6"
+  },
+  "normalization": "max(concentration,0)*measured fraction mass; normalize six assayed masses",
+  "numerical_gates": {
+    "constant_q_normalized_share_ceiling": 1e-06,
+    "frozen_tolerance": 1e-08,
+    "observed_max_difference": 0.0,
+    "test_cases": [
+      {
+        "bounds_s": "0;2;4;7",
+        "deterministic_rerun_max_abs": "0",
+        "flow_mL_s": 1.7,
+        "frozen_tolerance": "1e-8",
+        "hard_ceiling": "1e-6",
+        "normalized_share_max_abs": "0",
+        "raw_max_abs": "0",
+        "status": "PASS",
+        "temperature_C": 86.0
+      },
+      {
+        "bounds_s": "0;1.5;3.5;6",
+        "deterministic_rerun_max_abs": "0",
+        "flow_mL_s": 2.3,
+        "frozen_tolerance": "1e-8",
+        "hard_ceiling": "1e-6",
+        "normalized_share_max_abs": "0",
+        "raw_max_abs": "0",
+        "status": "PASS",
+        "temperature_C": 92.0
+      }
+    ]
+  },
+  "phase_b": "PROHIBITED_NO_ELIGIBLE_NONIDENTITY_CANDIDATE",
+  "predecessor_boundary_reference": {
+    "all_ten_boundaries_for_24_shots": true,
+    "artifact": "docs/analysis/obs_pannusch_fraction_window_001/WINDOW_QUALIFICATION.csv",
+    "freeze_sha256": "c0ad3033a1b1c33d56d9ea2e8d311688603d98ed038428392fe93a1fe582a306"
+  },
+  "prohibited_post_score_changes": [
+    "lag",
+    "offset",
+    "multiplier",
+    "smoothing",
+    "density chosen from performance",
+    "extrapolation"
+  ],
+  "result_classes": [
+    "FLOW_AUTHORITY_INELIGIBLE"
+  ],
+  "semantic_conclusions": [
+    {
+      "Pannusch_model_input_role": "scalar start only",
+      "admissible_as_Q_t": "NO_NONIDENTITY",
+      "clock_name": "programme clock unresolved",
+      "clock_origin": "UNRESOLVED",
+      "conclusion": "endpoints do not define an exact time history",
+      "condition_id_or_scope": "PRED-C01..C08",
+      "eligibility_status": "IDENTITY_ONLY_PRIMARY;RAMP_INELIGIBLE",
+      "evidence_class": "SOURCE_PROGRAMMED",
+      "exact_source_locator": "programmed start/end temperature and flow columns",
+      "failure_reason": "no ramp coordinate, zero, duration, support, or holds",
+      "measurement_or_derivation": "programmed",
+      "physical_shot_id_or_scope": "all shots",
+      "physical_side": "machine instruction",
+      "published_processing_role": "design labels/scalar start passed to published validation model",
+      "rights": "CC-BY-NC-3.0; source-derived numeric data are not relicensed as repository code",
+      "semantic_id": "PROGRAMMED_ENDPOINTS",
+      "source_field_or_expression": "flow_start_mL_s; flow_end_mL_s",
+      "source_file": "DesignOfExperiments_Validation_03_22.xlsx",
+      "source_object_function_sheet": "DoE / normalized prediction_conditions",
+      "source_sha256": "b7fc864e693ddb40317a4c9493a2fb0c0892b1f1c68f5ce581d48008e21cab57",
+      "source_units": "mL/s",
+      "source_value_class": "PROGRAMMED_MACHINE_INSTRUCTION_NOT_MEASURED_INLET_OR_PUCK_FACE_FLOW",
+      "support_end": "UNRESOLVED",
+      "support_start": "UNRESOLVED",
+      "target_exposure": "TARGET_EXPOSED;SOURCE_INTERNAL"
+    },
+    {
+      "Pannusch_model_input_role": "none authorized",
+      "admissible_as_Q_t": "NO",
+      "clock_name": "mass-fit time",
+      "clock_origin": "selected scale segment rebased to first sample",
+      "conclusion": "vector, not scalar; derived beverage mass rate, not inlet volumetric flow",
+      "condition_id_or_scope": "PRED-C01..C08",
+      "eligibility_status": "INELIGIBLE",
+      "evidence_class": "SOURCE_DERIVED_FIT",
+      "exact_source_locator": "dm_dt=2*f.a.*tfit+f.b; flow=dm_dt; MassData(field).flow=flow",
+      "failure_reason": "physical side, density conversion, and model-Q authority absent",
+      "measurement_or_derivation": "quadratic fitted derivative",
+      "physical_shot_id_or_scope": "24 shots",
+      "physical_side": "beverage scale outflow",
+      "published_processing_role": "copied to run.flow; not used as extraction-model Q",
+      "rights": "CC-BY-NC-3.0; source-derived numeric data are not relicensed as repository code",
+      "semantic_id": "MASSDATA_FLOW",
+      "source_field_or_expression": "MassData.flow vector",
+      "source_file": "GetMassScale_modelval.m;MassData_modelval.mat",
+      "source_object_function_sheet": "released mass-scale script / MassData[1:24]",
+      "source_sha256": "9d354ae2fd10148b926e4a5fc9adeafa99ced15d0f24a1a99324a3c81de44b56;430f922d0df443d9f1b1d629409d9ef4a4967d15535ffa8b5a34f795523faaf3",
+      "source_units": "g/s",
+      "source_value_class": "BEVERAGE_MASS_DERIVED_OUTFLOW_TIMING",
+      "support_end": "per-shot MassData.time end",
+      "support_start": "0 s",
+      "target_exposure": "TARGET_EXPOSED;SOURCE_INTERNAL"
+    },
+    {
+      "Pannusch_model_input_role": "none authorized",
+      "admissible_as_Q_t": "NO",
+      "clock_name": "mass-fit/fraction clock",
+      "clock_origin": "selected scale segment first sample",
+      "conclusion": "m(t) and tE timing qualified; dm/dt remains context-only",
+      "condition_id_or_scope": "PRED-C01..C08",
+      "eligibility_status": "GATED_INELIGIBLE_BY_CURRENT_AUTHORITY",
+      "evidence_class": "SOURCE_DERIVED_FIT",
+      "exact_source_locator": "mass/time rebasing; fit(x^2,x); tE inversion",
+      "failure_reason": "0.98 plotting conversion is neither stored MassData.flow nor published Pannusch-Q mapping",
+      "measurement_or_derivation": "quadratic fit and derivative",
+      "physical_shot_id_or_scope": "24 shots",
+      "physical_side": "beverage scale",
+      "published_processing_role": "tE/fraction timing; derivative copied for context",
+      "rights": "CC-BY-NC-3.0; source-derived numeric data are not relicensed as repository code",
+      "semantic_id": "MASS_QUADRATIC",
+      "source_field_or_expression": "m(t)=a*t^2+b*t; dm/dt=2*a*t+b",
+      "source_file": "GetMassScale_modelval.m",
+      "source_object_function_sheet": "released mass-scale script",
+      "source_sha256": "9d354ae2fd10148b926e4a5fc9adeafa99ced15d0f24a1a99324a3c81de44b56",
+      "source_units": "m:g; t:s; derivative:g/s",
+      "source_value_class": "BEVERAGE_MASS_DERIVED_OUTFLOW_TIMING;DERIVED_NOT_INLET_FLOW;CONTEXT_ONLY",
+      "support_end": "fit tEnd",
+      "support_start": "0 s",
+      "target_exposure": "TARGET_EXPOSED;SOURCE_INTERNAL"
+    }
+  ],
+  "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+}
