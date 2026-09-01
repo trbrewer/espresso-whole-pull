@@ -4,6 +4,8 @@ from pathlib import Path
 from analysis.ewp_porosity_permeability_prior_001.authority import verify,STOP_AUTHORITY
 from analysis.ewp_porosity_permeability_prior_001.decision import decide
 from analysis.ewp_porosity_permeability_prior_001.mappings import build,validate
+from analysis.ewp_porosity_permeability_prior_001.materiality import evaluate_support,compute,RULE_ID
+from analysis.ewp_porosity_permeability_prior_001.supports import ELIGIBLE_SUPPORTS,NONELIGIBLE_SUPPORTS
 from analysis.ewp_porosity_permeability_prior_001.source_adapters import wadsworth,vaca
 from analysis.ewp_porosity_permeability_prior_001.scenarios import scenario
 from analysis.ewp_porosity_permeability_prior_001.sensitivity import metrics
@@ -50,9 +52,14 @@ class Prior001(unittest.TestCase):
   for v in ["phi_T_total","phi_p_connected","measured_dry_bed_porosity","calculated_dry_bed_porosity","epsilon_0"]:self.assertEqual(by[v]["source_unit"],"1")
   self.assertEqual(by["phi_T_total"]["total_or_connected_basis"],"TOTAL");self.assertEqual(by["phi_p_connected"]["total_or_connected_basis"],"CONNECTED");self.assertNotEqual(by["k_published_mu_m2"]["viscosity_treatment"],by["k_ewp_reference_mu_m2"]["viscosity_treatment"]);self.assertEqual(by["Eq11_postfit_K"]["measurement_or_derivation_method"],"POST_FIT_RECONSTRUCTION");self.assertTrue(all(r["source_file"].startswith("puckworks/data/") for r in self.maps))
  def test_operator_consistency(self):
-  bad=[dict(r) for r in self.maps];x=next(r for r in bad if r["source_variable"]=="calculated_dry_bed_porosity");x["observation_operator_closure_status"]="UNRESOLVED"
+  bad=[dict(r) for r in self.maps];x=next(r for r in bad if r["source_variable"]=="calculated_dry_bed_porosity");x["observation_operator_inputs"]="NONE"
   with self.assertRaisesRegex(ValueError,"UNCLOSED_OPERATOR"):validate(bad)
   self.assertFalse(any(r["primary_sensitivity_eligible"]=="true" for r in self.maps if r["source_disposition"]=="SOURCE_NATIVE_STRESS_SUPPORT_ONLY"))
+  fig=[r for r in self.maps if r["lineage_id"]=="VACA_FIG12_DRY_POROSITY_OPERATOR"]
+  self.assertEqual(len(fig),2);self.assertTrue(all(r["decision_role"]=="OPERATOR_QUALIFICATION_ONLY" and r["primary_sensitivity_eligible"]=="false" and r["counts_toward_eligible_porosity_support"]=="false" and r["propagated_through_ewp_hydraulics"]=="false" for r in fig))
+ def test_authoritative_support_register(self):
+  self.assertEqual([x["support_id"] for x in ELIGIBLE_SUPPORTS],["WADSWORTH_TOTAL_XCT_POROSITY","VACA_TABLE_C1_EPSILON_0"])
+  self.assertEqual(len(ELIGIBLE_SUPPORTS),2);self.assertEqual(sum(x["reason"]=="SOURCE_NATIVE_STRESS_SUPPORT_ONLY" for x in NONELIGIBLE_SUPPORTS),3);self.assertEqual(sum(x["reason"]=="OPERATOR_QUALIFICATION_ONLY" for x in NONELIGIBLE_SUPPORTS),2)
  def test_primary_k_keeps_wetting_k(self):
   _,c,_=scenario(BASE,"K",k=1e-12);self.assertEqual(c["hydraulics"]["wetting_permeability_m2"],BASE["hydraulics"]["wetting_permeability_m2"])
  def test_geometry_and_stable_invalid_input(self):
@@ -65,12 +72,22 @@ class Prior001(unittest.TestCase):
  def test_waszkiewicz_is_actual_or_explicitly_not_comparable(self):
   rows=list(csv.DictReader((DOC/"WASZKIEWICZ_CONTEXT_COMPARISON.csv").open()));self.assertTrue(rows);self.assertTrue(all(float(r["waszkiewicz_central"])>0 for r in rows));self.assertTrue(all(r["comparison_status"]=="NOT_COMPARABLE_EXACT_RANGE_UNAVAILABLE" for r in rows));self.assertFalse(any("CONTEXT_ONLY_STATIC_RANGE_COMPARISON" in r.values() for r in rows))
  def test_decision_all_branches_and_not_constant(self):
-  b={"source_authority_ok":True,"eligible_porosity_supports":0,"eligible_permeability_supports":0,"stress_supports":1,"unresolved_count":0,"numerical_execution_ok":True,"pressure_response_ok":True,"convergence_ok":True,"waszkiewicz_status":"NOT_COMPARABLE_EXACT_RANGE_UNAVAILABLE","production_invariants_ok":True,"materially_structures_sensitivity":True}
+  b={"source_authority_pass":True,"eligible_porosity_support_ids":[],"eligible_porosity_support_count":0,"eligible_permeability_support_ids":[],"eligible_permeability_support_count":0,"permeability_stress_support_count":3,"qualified_source_operator_count":1,"unresolved_mapping_count":0,"numerical_execution_pass":True,"pressure_response_pass":True,"convergence_pass":True,"waszkiewicz_comparison_status":"NOT_COMPARABLE_EXACT_RANGE_UNAVAILABLE","production_invariants_pass":True,"materially_structures_sensitivity":True,"material_support_count":1,"materiality_rule_id":RULE_ID}
   expected={(1,0):"POSITIVE_POROSITY_ONLY",(0,1):"POSITIVE_PERMEABILITY_ONLY",(1,1):"POSITIVE_POROSITY_AND_PERMEABILITY",(0,0):"NEGATIVE"}
-  for (p,k),suffix in expected.items():g=dict(b,eligible_porosity_supports=p,eligible_permeability_supports=k);self.assertTrue(decide(g)["code"].endswith(suffix))
-  self.assertTrue(decide(dict(b,eligible_porosity_supports=1,materially_structures_sensitivity=False))["code"].endswith("NULL"));self.assertTrue(decide(dict(b,source_authority_ok=False))["code"].endswith("BLOCKED"))
+  for (p,k),suffix in expected.items():g=dict(b,eligible_porosity_support_count=p,eligible_permeability_support_count=k);self.assertTrue(decide(g)["code"].endswith(suffix))
+  self.assertTrue(decide(dict(b,eligible_porosity_support_count=2,materially_structures_sensitivity=False,material_support_count=0))["code"].endswith("NULL"));self.assertTrue(decide(dict(b,source_authority_pass=False))["code"].endswith("BLOCKED"))
+ def test_materiality_rule_failure_modes(self):
+  base={"case_id":"EWP_BASELINE","pressure_pa":900000.0,"closure":"BASELINE","target_reached":True,"first_drip_s":10.,"steady_outlet_volume_flow_m3_s":10.,"R_Q_pa_s_m3":10.,"mass_at_final_time_kg":10.,"time_to_target_yield_s":10.}
+  def case(**changes):return {**base,"case_id":"C","closure":"FIXED_DOSE_MASS_CONSERVING_PRIMARY",**changes}
+  self.assertTrue(evaluate_support("S",case(first_drip_s=11.,steady_outlet_volume_flow_m3_s=11.),base,.001,.05)["support_material"])
+  self.assertFalse(evaluate_support("S",case(first_drip_s=11.),base,.001,.05)["support_material"])
+  self.assertFalse(evaluate_support("S",case(first_drip_s=11.,steady_outlet_volume_flow_m3_s=10.4),base,.001,.05)["support_material"])
+  self.assertFalse(evaluate_support("S",case(first_drip_s=11.,steady_outlet_volume_flow_m3_s=10.6),base,.01,.1)["support_material"])
+  self.assertFalse(evaluate_support("S",case(first_drip_s=float("nan")),base,.001,.05)["support_material"])
+  zero={**base,"steady_outlet_volume_flow_m3_s":0.};z=evaluate_support("S",case(),zero,.001,.05);self.assertEqual(z["observables"]["steady_outlet_flow_m3_s"]["status"],"NOT_COMPARABLE_ZERO_BASELINE")
+  reach=evaluate_support("S",case(first_drip_s=11.,target_reached=False,time_to_target_yield_s=None),base,.001,.05);self.assertIn("time_to_target_yield_s",reach["qualifying_observables"])
  def test_claims_and_invariants(self):
-  s=json.loads((DOC/"summary.json").read_text());self.assertTrue(s["decision"]["code"].endswith("POSITIVE_POROSITY_ONLY"));text=(DOC/"RESULT.md").read_text().lower();self.assertIn("physical validation is not established",text);self.assertNotIn("universal distribution established",text);self.assertEqual(s["production_invariants"]["config/reference_R0.json"],"67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286")
+  s=json.loads((DOC/"summary.json").read_text());d=json.loads((DOC/"DECISION.json").read_text());m=json.loads((DOC/"POROSITY_MATERIALITY.json").read_text());self.assertTrue(s["decision"]["code"].endswith("POSITIVE_POROSITY_ONLY"));self.assertEqual(d["gate_inputs"]["eligible_porosity_support_count"],2);self.assertEqual(d["gate_inputs"]["materially_structures_sensitivity"],m["final_gate_value"]);text=(DOC/"RESULT.md").read_text().lower();self.assertIn("physical validation is not established",text);self.assertNotIn("universal distribution established",text);self.assertEqual(s["production_invariants"]["config/reference_R0.json"],"67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286")
  def test_deterministic_generation(self):
   with tempfile.TemporaryDirectory() as d:
    a=Path(d)/"a";b=Path(d)/"b";cmd=["python3",str(ROOT/"scripts/run_ewp_porosity_permeability_prior_001.py"),"--root",str(ROOT),"--puckworks-root",str(self.pw)]

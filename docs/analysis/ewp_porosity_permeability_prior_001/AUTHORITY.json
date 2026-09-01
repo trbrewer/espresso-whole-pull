@@ -9,9 +9,9 @@
     "PHYSICAL_VALIDATION_NOT_ESTABLISHED"
   ],
   "commit": "a3428a4d4ad571ef3168a70e8a04620fca5d3520",
-  "correction_status": "EWP_POROSITY_PERMEABILITY_PRIOR_001_C1_CHANGES_REQUIRED_BEFORE_EXACT_HEAD_REVIEW",
-  "ewp_start_head": "98623e6853428ea65ace9de796d9619b209a698f",
-  "ewp_start_tree": "00a8f24dbd19912f14d426a4461f44a162271aa0",
+  "correction_status": "EWP_POROSITY_PERMEABILITY_PRIOR_001_C2_CORRECTED",
+  "ewp_start_head": "c60e7bafd5df9220fa097539cdd364689d564572",
+  "ewp_start_tree": "8a00e97003883e2c2eae89e06fd7395a20c470ac",
   "files": {
     "docs/cards/vacaguerra2023a.md": "d2c5e0877578336210d96e15749ed8eea0fd7d910be636e07010b056639e7a30",
     "docs/cards/wadsworth2026.md": "606abfce68ba40105b4650ee6af2e8c716c60adb2653b87065b5fd2207c25fe8",

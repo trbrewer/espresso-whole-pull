@@ -1,0 +1,141 @@
+{
+  "absolute_engineering_floor": 0.05,
+  "all_eligible_supports_material": true,
+  "baseline_case_id": "EWP_BASELINE",
+  "eligible_support_count": 2,
+  "exclusions": {
+    "figure_12": "OPERATOR_QUALIFICATION_ONLY_NOT_PROPAGATED",
+    "fixed_geometry_cases": "MASS_INCONSISTENT_DIAGNOSTIC",
+    "min_max_cases": "CONTEXT_ONLY",
+    "permeability_stress_cases": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+    "pressure_3_bar_and_12_bar": "CONTEXT_ONLY",
+    "wadsworth_connected_porosity": "CONTEXTUAL_BOUND_ONLY",
+    "waszkiewicz": "CONTEXT_ONLY"
+  },
+  "final_gate_value": true,
+  "geometry_closure": "FIXED_DOSE_MASS_CONSERVING_PRIMARY",
+  "material_support_count": 2,
+  "materiality_threshold": 0.05,
+  "materially_structures_sensitivity": true,
+  "maximum_relative_convergence_uncertainty": 0.0011961762519999166,
+  "numerical_floor": 0.011961762519999166,
+  "numerical_separation_multiplier": 10.0,
+  "reference_pressure_bar": 9,
+  "reference_pressure_pa": 900000,
+  "rule_authority": "OWNER_FROZEN_TASK_CRITERION_NOT_PUBLICATION_DERIVED",
+  "rule_id": "EWP_PP_PRIOR_001_POROSITY_MATERIALITY_RULE_V1",
+  "rule_version": 1,
+  "support_decisions": [
+    {
+      "baseline_case_id": "EWP_BASELINE",
+      "convergence_uncertainty": 0.0011961762519999166,
+      "failure_reason": null,
+      "geometry_closure": "FIXED_DOSE_MASS_CONSERVING_PRIMARY",
+      "observables": {
+        "effective_hydraulic_resistance": {
+          "baseline_value": 607010579008.8234,
+          "qualifies": true,
+          "relative_effect": 0.32860938883968116,
+          "source_value": 806479954396.1338,
+          "status": "COMPARABLE"
+        },
+        "final_water_mass_kg": {
+          "baseline_value": 0.036182057813537505,
+          "qualifies": true,
+          "relative_effect": 0.3830815966297451,
+          "source_value": 0.022321377336977814,
+          "status": "COMPARABLE"
+        },
+        "first_drip_time_s": {
+          "baseline_value": 4.711696185231869,
+          "qualifies": true,
+          "relative_effect": 0.9679970210580598,
+          "source_value": 9.272604056666943,
+          "status": "COMPARABLE"
+        },
+        "steady_outlet_flow_m3_s": {
+          "baseline_value": 1.4826759715944223e-06,
+          "qualifies": true,
+          "relative_effect": 0.24733333333333332,
+          "source_value": 1.1159607812867352e-06,
+          "status": "COMPARABLE"
+        },
+        "time_to_target_yield_s": {
+          "baseline_value": 32.668429818338296,
+          "qualifies": false,
+          "source_value": 46.41618284290223,
+          "status": "NOT_COMPARABLE_TARGET_NOT_REACHED"
+        }
+      },
+      "pressure_bar": 9.0,
+      "pressure_pa": 900000.0,
+      "qualifying_observable_count": 4,
+      "qualifying_observables": [
+        "first_drip_time_s",
+        "steady_outlet_flow_m3_s",
+        "effective_hydraulic_resistance",
+        "final_water_mass_kg"
+      ],
+      "selected_case_id": "WADS_TOTAL_PHI_DOSE_MEDIAN",
+      "support_id": "WADSWORTH_TOTAL_XCT_POROSITY",
+      "support_material": true,
+      "threshold": 0.05
+    },
+    {
+      "baseline_case_id": "EWP_BASELINE",
+      "convergence_uncertainty": 0.0011961762519999166,
+      "failure_reason": null,
+      "geometry_closure": "FIXED_DOSE_MASS_CONSERVING_PRIMARY",
+      "observables": {
+        "effective_hydraulic_resistance": {
+          "baseline_value": 607010579008.8234,
+          "qualifies": true,
+          "relative_effect": 0.16666666666666657,
+          "source_value": 505842149174.01953,
+          "status": "COMPARABLE"
+        },
+        "final_water_mass_kg": {
+          "baseline_value": 0.036182057813537505,
+          "qualifies": true,
+          "relative_effect": 0.2783186565378244,
+          "source_value": 0.046252199534975155,
+          "status": "COMPARABLE"
+        },
+        "first_drip_time_s": {
+          "baseline_value": 4.711696185231869,
+          "qualifies": true,
+          "relative_effect": 0.3502889233925143,
+          "source_value": 3.061241201154381,
+          "status": "COMPARABLE"
+        },
+        "steady_outlet_flow_m3_s": {
+          "baseline_value": 1.4826759715944223e-06,
+          "qualifies": true,
+          "relative_effect": 0.19999999999999982,
+          "source_value": 1.7792111659133065e-06,
+          "status": "COMPARABLE"
+        },
+        "time_to_target_yield_s": {
+          "baseline_value": 32.668429818338296,
+          "qualifies": true,
+          "source_value": 26.358519228743077,
+          "status": "TARGET_REACHABILITY_CHANGED"
+        }
+      },
+      "pressure_bar": 9.0,
+      "pressure_pa": 900000.0,
+      "qualifying_observable_count": 5,
+      "qualifying_observables": [
+        "first_drip_time_s",
+        "steady_outlet_flow_m3_s",
+        "effective_hydraulic_resistance",
+        "final_water_mass_kg",
+        "time_to_target_yield_s"
+      ],
+      "selected_case_id": "VACA_PHI_DOSE_MEDIAN",
+      "support_id": "VACA_TABLE_C1_EPSILON_0",
+      "support_material": true,
+      "threshold": 0.05
+    }
+  ]
+}

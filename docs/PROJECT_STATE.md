@@ -2,12 +2,17 @@
 
 ## EWP-POROSITY-PERMEABILITY-PRIOR-001 result (2026-08-31)
 
-`EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_ONLY` after C1.
-Separate Wadsworth and Vaca Guerra dry-porosity supports materially structure
+`EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_ONLY` after C2.
+Exactly two propagated supports—Wadsworth total XCT porosity and Vaca C.1
+epsilon_0—materially structure
 bounded EWP initial-porosity sensitivity. Source permeability substitutions are
 source-native stress supports only because no closed transfer to calibrated EWP
 effective saturated permeability is established. They are not universal
 distributions, wet operating-puck measurements, or physical validation. The
+Vaca Figure 12 measured/calculated dry-porosity rows qualify its source operator
+only and contribute zero eligible supports. Materiality is computed by
+`EWP_PP_PRIOR_001_POROSITY_MATERIALITY_RULE_V1`, not inserted as a literal.
+The
 calibrated EWP default remains unchanged; wetting permeability remains independent.
 Next task: `EWP-REAL-WORLD-BOUNDARIES-001`. Home-lab operation remains deferred.
 

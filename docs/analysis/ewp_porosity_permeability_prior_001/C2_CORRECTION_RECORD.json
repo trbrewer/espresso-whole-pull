@@ -1,0 +1,13 @@
+{
+  "correction_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001-C2",
+  "accepted_r1_disposition": "EWP_POROSITY_PERMEABILITY_PRIOR_001_R1_INDEPENDENT_EXACT_HEAD_REVIEW_CHANGES_REQUIRED",
+  "accepted_r1_comment": "https://github.com/trbrewer/espresso-whole-pull/pull/127#issuecomment-5486905642",
+  "starting_head": "c60e7bafd5df9220fa097539cdd364689d564572",
+  "starting_tree": "8a00e97003883e2c2eae89e06fd7395a20c470ac",
+  "figure_12_interpretation": "VACA_FIGURE_12_OPERATOR_QUALIFICATION_ONLY",
+  "eligible_porosity_support_count": 2,
+  "materiality_rule_id": "EWP_PP_PRIOR_001_POROSITY_MATERIALITY_RULE_V1",
+  "governing_physics_change": false,
+  "production_default_change": false,
+  "physical_validation_established": false
+}

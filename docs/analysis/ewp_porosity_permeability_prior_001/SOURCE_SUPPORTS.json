@@ -1,4 +1,48 @@
 {
+  "eligible_porosity_supports": [
+    {
+      "eligible": true,
+      "quantity": "initial_porosity",
+      "source_lineage": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+      "support_id": "WADSWORTH_TOTAL_XCT_POROSITY"
+    },
+    {
+      "eligible": true,
+      "quantity": "initial_porosity",
+      "source_lineage": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+      "support_id": "VACA_TABLE_C1_EPSILON_0"
+    }
+  ],
+  "noneligible_supports": [
+    {
+      "reason": "CONTEXTUAL_BOUND_ONLY",
+      "support_id": "WADSWORTH_CONNECTED_XCT_POROSITY"
+    },
+    {
+      "reason": "OPERATOR_QUALIFICATION_ONLY",
+      "support_id": "VACA_FIG12_MEASURED_DRY_POROSITY"
+    },
+    {
+      "reason": "OPERATOR_QUALIFICATION_ONLY",
+      "support_id": "VACA_FIG12_CALCULATED_DRY_POROSITY"
+    },
+    {
+      "reason": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+      "support_id": "WADSWORTH_XCT_LBFLOW_PERMEABILITY"
+    },
+    {
+      "reason": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+      "support_id": "VACA_C1_DARCY_K_PUBLISHED_VISCOSITY"
+    },
+    {
+      "reason": "SOURCE_NATIVE_STRESS_SUPPORT_ONLY",
+      "support_id": "VACA_C1_DARCY_K_EWP_VISCOSITY_REEXPRESSION"
+    },
+    {
+      "reason": "CONTEXTUAL_BOUND_ONLY",
+      "support_id": "VACA_EQ11_POSTFIT_RECONSTRUCTION"
+    }
+  ],
   "nonfusion": "WADSWORTH_AND_VACA_RETAINED_SEPARATELY",
   "vaca_eq11": {
     "refit_performed": false,
@@ -6,15 +50,29 @@
     "support_type": "CONTEXTUAL_BOUND"
   },
   "vaca_figure12": {
+    "claim_limit": "DRY_POROSITY_OPERATOR_QUALIFICATION_ONLY",
+    "coefficient_authority": "SOURCE_REPORTED_NO_REFIT",
     "contains_direct_permeability": false,
+    "decision_role": "OPERATOR_QUALIFICATION_ONLY",
     "devices": [
       "circle_60mm_stainless_portafilter",
       "square_50mm_acrylic_vessel"
     ],
+    "dry_state_limitation": "DRY_BED_NOT_WET_OPERATING_PUCK",
+    "eligible_support_contribution": 0,
+    "ewp_transfer_status": "NOT_A_SEPARATE_PROPAGATED_EWP_SUPPORT",
+    "lineage_id": "VACA_FIG12_DRY_POROSITY_OPERATOR",
     "n": 50,
+    "negated_beta_convention": true,
+    "operator_closure": "CLOSED_FOR_SOURCE_OPERATOR_QUALIFICATION",
+    "operator_formula_authority": "VACA_EQ9_EQ10_NEGATED_BETA_DRY_POROSITY",
+    "primary_sensitivity_eligible": false,
+    "propagated_through_ewp_hydraulics": false,
     "r_squared": 0.9417405444330854,
+    "refit_performed": false,
     "rmse": 0.012535246307911144,
-    "support_type": "SOURCE_OPERATOR_PREDICTION"
+    "source_file": "puckworks/data/vacaguerra2023a/Figure_12_Calculated_versus_experimental_dry_bed_porosity_validation_experiments.csv",
+    "support_type": "OPERATOR_QUALIFICATION_DOMAIN_SUMMARY"
   },
   "vaca_table_c1": {
     "epsilon_0": {
