@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 838,
-  "total_uncompressed_bytes_excluding_manifest": 8721548,
-  "aggregate_source_sha256": "14c48f98d2eb8d20107cee6cf62306b17a17e5d635ce84bdb3f4b4a1b671a759",
-  "aggregate_sha256": "14c48f98d2eb8d20107cee6cf62306b17a17e5d635ce84bdb3f4b4a1b671a759",
+  "file_count": 842,
+  "total_uncompressed_bytes_excluding_manifest": 8739563,
+  "aggregate_source_sha256": "3fa5a9b0b03192465c32b6f4910c67682f46084dcffced9a2000e0a15fa30caf",
+  "aggregate_sha256": "3fa5a9b0b03192465c32b6f4910c67682f46084dcffced9a2000e0a15fa30caf",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -168,14 +168,24 @@
       "bytes": 63,
       "git_mode": "100644"
     },
+    "analysis/obs_pannusch_fraction_window_001/audit.py": {
+      "sha256": "a35fce6c0c53d580db54d7a8f411d9f3d6c54af9aaeb46d3804027e03ecfe401",
+      "bytes": 4374,
+      "git_mode": "100644"
+    },
+    "analysis/obs_pannusch_fraction_window_001/baseline.py": {
+      "sha256": "1425fb4c2b3843d4f037944bef39f4da790f7022bdea5c1293f96180c9bf8fee",
+      "bytes": 1987,
+      "git_mode": "100644"
+    },
     "analysis/obs_pannusch_fraction_window_001/core.py": {
       "sha256": "b158ef3bc3cea6977e4e49d4aa0336910ba76e1ce8c355179eaa8b078a105030",
       "bytes": 5735,
       "git_mode": "100644"
     },
     "analysis/obs_pannusch_fraction_window_001/run.py": {
-      "sha256": "b9ed142e3fc3f0c99c48ba30741f8173da51b1c0ee6f4849e6b78452bee1aeaa",
-      "bytes": 18350,
+      "sha256": "bcf056eec3b2254cab49661242480d2c7252c8e5773a1dfb1cb5bb99f5b2af17",
+      "bytes": 23537,
       "git_mode": "100644"
     },
     "analysis/xsv_pannusch_multimodel_001/c1_correction.py": {
@@ -938,6 +948,11 @@
       "bytes": 1184,
       "git_mode": "100644"
     },
+    "docs/analysis/obs_pannusch_fraction_window_001/ATTEMPT_LOG.json": {
+      "sha256": "b2f61279278b02843cccdbee7c800cc6b2cc3d1be7b6af46122f4e030754384f",
+      "bytes": 737,
+      "git_mode": "100644"
+    },
     "docs/analysis/obs_pannusch_fraction_window_001/DATA_AUTHORITY.json": {
       "sha256": "25c0d46a86681eabacdf2d05dbf4541d9bcd0b127e3e151fed0e0dd5bfdac705",
       "bytes": 1973,
@@ -949,13 +964,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/obs_pannusch_fraction_window_001/DECISION.json": {
-      "sha256": "ab1a5c310150258428e196263aef6e8edd3df9644a00ea7eab6cb065d64dc96c",
-      "bytes": 1010,
+      "sha256": "d5e01b292848684ba36ee52d9f0dbcce3ec36401dd3ea01c405e182eae5b8773",
+      "bytes": 1008,
       "git_mode": "100644"
     },
     "docs/analysis/obs_pannusch_fraction_window_001/METRIC_RESULTS.csv": {
-      "sha256": "db5fe135af7c3d621f4388969a08059ec2d6df22f9c668a7b9fa0cdbe8568aee",
-      "bytes": 336,
+      "sha256": "bf4ce163ca065387838a7d39d6d53e713792c685c10a83fc5fe5992194e578c9",
+      "bytes": 3139,
       "git_mode": "100644"
     },
     "docs/analysis/obs_pannusch_fraction_window_001/OBSERVER_RESULTS.csv": {
@@ -963,14 +978,19 @@
       "bytes": 56287,
       "git_mode": "100644"
     },
+    "docs/analysis/obs_pannusch_fraction_window_001/QUALIFICATION_AUDIT.json": {
+      "sha256": "a39876ebe54339235796927c70d9898a642238321ad2645338846de55a9766ef",
+      "bytes": 1011,
+      "git_mode": "100644"
+    },
     "docs/analysis/obs_pannusch_fraction_window_001/QUALIFICATION_FREEZE.json": {
-      "sha256": "701c77f2db32f3d59f23c8ea13d4dc9034157336cdca72a4f49c5d21ee07378d",
-      "bytes": 4757,
+      "sha256": "c0ad3033a1b1c33d56d9ea2e8d311688603d98ed038428392fe93a1fe582a306",
+      "bytes": 4937,
       "git_mode": "100644"
     },
     "docs/analysis/obs_pannusch_fraction_window_001/RESULT.md": {
-      "sha256": "b86b51bbf9f8b57b1fb1522cdfb003323fe5029f810ee06a353cc88329544f87",
-      "bytes": 1514,
+      "sha256": "c77cc222f5d6a93aabe0984bae9e366083d284828bd697315f1f01e27b5f9306",
+      "bytes": 2042,
       "git_mode": "100644"
     },
     "docs/analysis/obs_pannusch_fraction_window_001/SHOT_JOIN_QUALIFICATION.csv": {
@@ -994,8 +1014,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/obs_pannusch_fraction_window_001/summary.json": {
-      "sha256": "e7146c60b84556bf353d2853ed8e67829ee63e509c82c2db21ab1c1969181336",
-      "bytes": 804,
+      "sha256": "c657e90ca79b8ad96ef7a6ab00bb07bf796052b7d282e5253ee344c6c075b0b5",
+      "bytes": 1403,
       "git_mode": "100644"
     },
     "docs/analysis/pannusch_prior_impact_001/CURRENT_DATA_SUFFICIENCY.json": {
@@ -2769,8 +2789,8 @@
       "git_mode": "100755"
     },
     "scripts/audit_obs_pannusch_fraction_window_001_freeze.py": {
-      "sha256": "7b1fdeb2e5757152161f51527822cbd9387dde6be720ce5bd42b84c4e138b5a5",
-      "bytes": 931,
+      "sha256": "e53f6a5de817e200bfa3ad83ca3924fddd36812330792b22d322cf2476408596",
+      "bytes": 216,
       "git_mode": "100755"
     },
     "scripts/clean_case.sh": {
@@ -3459,8 +3479,8 @@
       "git_mode": "100644"
     },
     "tests/test_obs_pannusch_fraction_window_001.py": {
-      "sha256": "3b7ca48e8f6ce6a29421fe846db21e926d45298470bdeb1ef49723be90bf4647",
-      "bytes": 3757,
+      "sha256": "aa00061499a8f9517ddb925870e5e0775f0f35de5e24cce48a0eee196ce6dccb",
+      "bytes": 5083,
       "git_mode": "100644"
     },
     "tests/test_r1_analysis.py": {

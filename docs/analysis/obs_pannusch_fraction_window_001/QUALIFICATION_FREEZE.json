@@ -3,7 +3,11 @@
     "caffeine",
     "trigonelline"
   ],
-  "audit_result": "PASS_TARGET_INDEPENDENCE_AND_IDENTITY",
+  "audit_result": {
+    "audit_sha256": "a39876ebe54339235796927c70d9898a642238321ad2645338846de55a9766ef",
+    "audited_pending_freeze_sha256": "1876be313ded143bf882e4aef8b890a8e466ed369f08eb8e6a4b8685c73b0a13",
+    "status": "PASS"
+  },
   "authorities": {
     "consumed_source_sha256": {
       "DesignOfExperiments_Validation_03_22.xlsx": "b7fc864e693ddb40317a4c9493a2fb0c0892b1f1c68f5ce581d48008e21cab57",
@@ -35,7 +39,7 @@
   "clock_semantics": "MassData fit time rebased to selected first raw-scale sample; run.tE uses that same clock",
   "code_sha256": {
     "core": "b158ef3bc3cea6977e4e49d4aa0336910ba76e1ce8c355179eaa8b078a105030",
-    "runner": "b9ed142e3fc3f0c99c48ba30741f8173da51b1c0ee6f4849e6b78452bee1aeaa"
+    "runner": "bcf056eec3b2254cab49661242480d2c7252c8e5773a1dfb1cb5bb99f5b2af17"
   },
   "decision_rules": {
     "identity": "scientific null",

@@ -1,4 +1,4 @@
-import hashlib, json, pathlib, tempfile, unittest
+import csv, hashlib, json, pathlib, tempfile, unittest
 from analysis.obs_pannusch_fraction_window_001.core import *
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
@@ -44,6 +44,18 @@ class QualificationTests(unittest.TestCase):
         if not doc.exists(): self.skipTest("generated result not installed yet")
         s=json.loads((doc/"summary.json").read_text()); self.assertEqual(s["joins"],{"qualified":24,"total":24}); self.assertEqual(s["primary_delta"],0)
         self.assertEqual(s["claims"],["TARGET_EXPOSED","SOURCE_INTERNAL","NOT INDEPENDENT VALIDATION","NOT PHYSICAL VALIDATION","NOT HYDRAULIC VALIDATION","NOT PRODUCTION QUALIFICATION"])
+    def test_independent_audit_perturbations(self):
+        audit=json.loads((ROOT/"docs/analysis/obs_pannusch_fraction_window_001/QUALIFICATION_AUDIT.json").read_text())
+        self.assertEqual(audit["status"],"PASS")
+        for name in ("chemistry_zero_invariant","chemistry_permutation_invariant","chemistry_synthetic_invariant","source_hashes","code_hashes","prior_results_unavailable_to_phase_a"):
+            self.assertTrue(audit["checks"][name],name)
+    def test_baseline_rows_and_required_diagnostics(self):
+        doc=ROOT/"docs/analysis/obs_pannusch_fraction_window_001"
+        summary=json.loads((doc/"summary.json").read_text()); self.assertEqual(summary["baseline_reproduction"]["rows"],144); self.assertEqual(summary["baseline_reproduction"]["status"],"PASS_EXACT_ROW_IDENTITY")
+        with (doc/"METRIC_RESULTS.csv").open(newline="") as stream: rows=list(csv.DictReader(stream))
+        pairs={(r["metric"],r["scope"]) for r in rows}
+        required={("mean_signed_residual",f"profile_position_{i}") for i in range(1,7)}|{("systematic_residual_vector_norm","positions_2_5_6"),("cumulative_share_rmse","PRIMARY"),("centroid_error","PRIMARY"),("exact_four_condition_sign_enumeration","4_conditions")}
+        self.assertTrue(required<=pairs); self.assertTrue(all(float(r["delta"])==0 for r in rows))
     def test_repository_invariants(self):
         changed=set(__import__('subprocess').check_output(["git","diff","--name-only","HEAD"],cwd=ROOT,text=True).splitlines())
         forbidden=("applications/solvers/","cases/","dependencies/puckworks.lock.json")
