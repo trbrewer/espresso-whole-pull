@@ -1,9 +1,10 @@
 # Public Repository Agent Rules
 
-Current authority records `EWP-REAL-WORLD-BOUNDARIES-001` blocked by unresolved
-Visualizer device/sensor and integration identity. The bounded successor is
-pressure-sensor/boundary-interface reconciliation; do not promote Visualizer
-sparse chemistry, fuse Wadsworth/Vaca, or authorize home-lab work.
+The Visualizer boundary route is closed at its unresolved device/sensor and
+integration identity block. `OBS-PANNUSCH-FRACTION-WINDOW-001` is the active
+bounded scientific task until its pull request records the qualified result;
+do not reopen Visualizer, promote sparse chemistry, fuse Wadsworth/Vaca, or
+authorize home-lab work.
 
 Scientific-development governance follows
 `docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md`.

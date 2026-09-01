@@ -1,0 +1,3 @@
+metric,O0,O1,delta,paired_ci_low,paired_ci_high,relative_improvement,materiality,status
+primary_positions_2_5_6_condition_balanced_rmse,0.013109926605438514,0.013109926605438514,0.0,0.0,0.0,0.0,False,EXACT_IDENTITY_NULL
+all_six_condition_balanced_rmse,0.011372155559566843,0.011372155559566843,0.0,0.0,0.0,0.0,False,EXACT_IDENTITY_NULL

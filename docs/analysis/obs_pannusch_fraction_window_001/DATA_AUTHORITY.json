@@ -1,0 +1,27 @@
+{
+  "consumed_source_sha256": {
+    "DesignOfExperiments_Validation_03_22.xlsx": "b7fc864e693ddb40317a4c9493a2fb0c0892b1f1c68f5ce581d48008e21cab57",
+    "ExperimentalData_validation.mat": "b5fb0245e5cb67cf3191127f6058624243a38fc0031344f8c93344bb95a84d64",
+    "GetMassScale_modelval.m": "9d354ae2fd10148b926e4a5fc9adeafa99ced15d0f24a1a99324a3c81de44b56",
+    "MassData_modelval.mat": "430f922d0df443d9f1b1d629409d9ef4a4967d15535ffa8b5a34f795523faaf3",
+    "ReadMassTimeFromScale.m": "12958952f478afd13387c842e6290ca7551d2511526c6f488a0081a11506192e",
+    "getExperimentalData_validation.m": "b1a219b851887af69611a9f22c810c7c07f1f3b8e714e6d4ef62500c960deee7"
+  },
+  "ewp_base_commit": "97d586fe21ca28cf7ef80a03ec0e15f3032ac0b5",
+  "ewp_base_tree": "a34888b8b3d24122d4e18ecfac6366c44603af32",
+  "independent_validation": false,
+  "pannusch_source_subset_manifest_sha256": "15b9f765d49abe45d6788d7c7891b0695fca185d9c614d122e393993ec06a83c",
+  "prior_artifact_sha256": {
+    "analysis/xsv_pannusch_multimodel_001/c1_correction.py": "74611a887a9dae009e105921844a3e7d33ee359d2da6c31ab66f4b4636bf6d1e",
+    "analysis/xsv_pannusch_multimodel_001/pannusch_fixed.py": "587d7e9a9a6aa953f4b06fb3ea9076a0ae8a554664efce72b06be5da26f9adf5",
+    "docs/analysis/xsv_pannusch_multimodel_001/C1_CALIBRATION_FREEZE_ADDENDUM.json": "5326056458b14c987f7765ee7850edd53f54b20c952946a426d32c46f0d728cb",
+    "docs/analysis/xsv_pannusch_multimodel_001/RESULT.md": "4245572e7b1cb79a560548be96827a8b384e9dfbc458b1f53f18615dbeeaffd6"
+  },
+  "puckworks_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+  "puckworks_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+  "runtime_puckworks_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "schema_version": 1,
+  "source_rights": "CC-BY-NC-3.0; source-derived numeric data are not relicensed as repository code",
+  "target_exposure": "TARGET_EXPOSED;SOURCE_INTERNAL",
+  "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001"
+}

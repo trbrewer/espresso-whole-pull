@@ -1,5 +1,20 @@
 # Project State
 
+## OBS-PANNUSCH-FRACTION-WINDOW-001 result (2026-09-01)
+
+`OBS_PANNUSCH_FRACTION_WINDOW_001_OBSERVER_EFFECT_INDISTINGUISHABLE` with
+`FULL_24_QUALIFIED` and `SAME_SOURCE_LINEAGE_IDENTITY`. Released source code
+proves the condition-major/replicate-minor 24-way join and derives `run.tE`
+directly from the corresponding `MassData_modelval.mat` quadratic mass fit and
+all ten cumulative vial masses. O1 is therefore exactly O0: the task-specific
+positions 2/5/6 RMSE is 0.0131099266054 for both and the all-six RMSE is
+0.0113721555596 for both; paired deltas and intervals are exactly zero.
+Retain the source observer. Selected next action:
+`SCI-MD-PANNUSCH-FLOW-HISTORY-001`, not implemented. TARGET_EXPOSED;
+SOURCE_INTERNAL; NOT INDEPENDENT, PHYSICAL, HYDRAULIC, OR PRODUCTION
+VALIDATION. No production physics, default, Puckworks tree, or runtime lock
+changed; home-lab work remains deferred.
+
 ## EWP-REAL-WORLD-BOUNDARIES-001 material stop (2026-09-01)
 
 `EWP_REAL_WORLD_BOUNDARIES_001_BLOCKED`. The exact permissioned recent-public

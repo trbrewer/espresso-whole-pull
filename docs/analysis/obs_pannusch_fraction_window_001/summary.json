@@ -1,0 +1,29 @@
+{
+  "O0_reproduction_rmse": 0.011372155559566843,
+  "claims": [
+    "TARGET_EXPOSED",
+    "SOURCE_INTERNAL",
+    "NOT INDEPENDENT VALIDATION",
+    "NOT PHYSICAL VALIDATION",
+    "NOT HYDRAULIC VALIDATION",
+    "NOT PRODUCTION QUALIFICATION"
+  ],
+  "disposition": "OBS_PANNUSCH_FRACTION_WINDOW_001_OBSERVER_EFFECT_INDISTINGUISHABLE",
+  "freeze_sha256": "701c77f2db32f3d59f23c8ea13d4dc9034157336cdca72a4f49c5d21ee07378d",
+  "joins": {
+    "qualified": 24,
+    "total": 24
+  },
+  "next_action": "SCI-MD-PANNUSCH-FLOW-HISTORY-001",
+  "phase_b": true,
+  "primary_delta": 0.0,
+  "primary_rmse": 0.013109926605438514,
+  "qualification": "FULL_24_QUALIFIED",
+  "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001",
+  "total_delta": 0.0,
+  "windows": {
+    "identity": true,
+    "qualified": 240,
+    "total": 240
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "allowed_information": [
+    "source identity",
+    "source code",
+    "non-chemistry metadata",
+    "fraction masses and times",
+    "clock and vial semantics"
+  ],
+  "always_state": [
+    "TARGET_EXPOSED",
+    "SOURCE_INTERNAL",
+    "NOT INDEPENDENT VALIDATION",
+    "NOT PHYSICAL VALIDATION",
+    "NOT HYDRAULIC VALIDATION",
+    "NOT PRODUCTION QUALIFICATION"
+  ],
+  "change_declaration": "SOURCE_SCENARIO_CHANGE_ONLY",
+  "claim_ceiling": "SOURCE_INTERNAL_FRACTION_WINDOW_AND_OBSERVATION_OPERATOR_QUALIFICATION",
+  "decisions": {
+    "blocked": "close route and use fallback",
+    "negative": "retain original and use fallback",
+    "null": "retain simpler source-original observer and use fallback",
+    "positive": "retain source-internal only if materiality separately passes"
+  },
+  "forbidden_phase_a": [
+    "chemistry",
+    "analyte mass/share",
+    "predictions",
+    "residuals",
+    "RMSE"
+  ],
+  "governance_class": "G1",
+  "grinder_to_cup_link": "Qualifies the predicted extraction-history to collected cup-fraction measurement interface only.",
+  "lower_cost_alternative": "Direct deterministic source/metadata audit precedes experiment or model lanes.",
+  "metrics": {
+    "bootstrap": {
+      "generator": "PCG64",
+      "replicates": 2000,
+      "seed": 20260830,
+      "unit": "condition then physical shot; paired analytes and fraction vectors intact"
+    },
+    "continuity": "condition-balanced shot RMSE over six positions",
+    "primary": "condition-balanced shot RMSE at profile positions 2,5,6"
+  },
+  "new_information": [
+    "24-way association",
+    "MassData/run.tE lineage",
+    "clock compatibility",
+    "vial reconstruction",
+    "mass-to-time observer"
+  ],
+  "objective": "Can target-independent shot/window/clock/vial reconstruction explain or reduce the fraction-2/tail residual without changing extraction kinetics?",
+  "owner_authorization": "OBS_PANNUSCH_FRACTION_WINDOW_001_OWNER_AUTHORIZATION_EXECUTE_ONE_BOUNDED_G1_SOURCE_INTERNAL_TARGET_EXPOSED_OBSERVATION_OPERATOR_QUALIFICATION_ONE_IMPLEMENTATION_ONE_SUBSTANTIVE_EXACT_HEAD_REVIEW_AT_MOST_ONE_MATERIAL_CORRECTION_ONE_MERGE_NO_GOVERNING_PHYSICS_CHANGE_2026_09_01",
+  "repeated_blocker": "No surrogate or empirical fit may conceal source identity or clock semantics.",
+  "schema_version": 1,
+  "scientific_invariant": "NO_GOVERNING_PHYSICS_CHANGE",
+  "task_id": "OBS-PANNUSCH-FRACTION-WINDOW-001"
+}
