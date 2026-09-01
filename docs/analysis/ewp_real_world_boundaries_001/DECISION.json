@@ -2,15 +2,16 @@
   "claim_ceiling": "RECENT_PUBLIC_COHORT_BOUNDARY_QUALIFICATION_AND_POROSITY_CONDITIONED_EWP_HYDRAULIC_RESPONSE_MAPPING",
   "code": "EWP_REAL_WORLD_BOUNDARIES_001_BLOCKED",
   "gate_inputs": {
+    "achieved_transfer_resolved_records": 0,
     "all_load_bearing_pressure_mappings_unresolved": true,
     "authority_pass": true,
     "canonical_source_pass": true,
+    "command_transfer_resolved_records": 0,
     "ewp_executable_case_count": 0,
     "privacy_contract_pass": true,
-    "protocol_pass": true,
-    "resolved_device_records": 0
+    "protocol_pass": true
   },
-  "reason": "Every record lacks a documented pressure-sensor/device and integration family, so the frozen EWP transfer contract cannot qualify any pressure boundary.",
+  "reason": "No record has explicit resolved command-controller transfer authority or achieved-pressure sensor/location transfer authority, so the frozen EWP transfer contract cannot qualify any pressure boundary.",
   "stop_code": "EWP_REAL_WORLD_BOUNDARIES_001_STOP_ALL_LOAD_BEARING_MEASUREMENT_MAPPINGS_UNRESOLVED",
   "successor": "EWP-RWB-001-PRESSURE-SENSOR-BOUNDARY-INTERFACE-RECONCILIATION"
 }

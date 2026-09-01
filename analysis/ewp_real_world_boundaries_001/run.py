@@ -10,7 +10,9 @@ from pathlib import Path
 
 from .authority import sha256, verify_protocol, verify_puckworks
 from .corpus_adapter import adapt
-from .qualification import FLAGS, qualify
+from .privacy import classify_group
+from .qualification import (FLAGS, UNRESOLVED_TRANSFER_AUTHORITY, TransferState,
+                            qualify)
 
 STOP_STORE = "EWP_REAL_WORLD_BOUNDARIES_001_STOP_VISUALIZER_STORE_UNAVAILABLE"
 STOP_CORPUS = "EWP_REAL_WORLD_BOUNDARIES_001_STOP_CORPUS_IDENTITY_UNRESOLVED"
@@ -60,7 +62,8 @@ def execute(root: Path, puckworks: Path, store: Path, private: Path, output: Pat
     if not recon["ok"]: raise RuntimeError(STOP_CORPUS)
     if integ["n_logical_records"] != 23169 or integ["n_stored_versions"] != 23169: raise RuntimeError(STOP_CORPUS)
     start_hash = source_digest(store)
-    reasons, tiers, schemas, device_resolved = Counter(), Counter(), Counter(), 0
+    reasons, tiers, schemas = Counter(), Counter(), Counter()
+    command_transfer_resolved = 0; achieved_transfer_resolved = 0
     linked = 0; linked_users: set[str] = set(); ambiguous = 0; eligible_any = 0
     private_rows = private / "qualification_rows.csv"
     with private_rows.open("w", newline="", encoding="utf-8") as fh:
@@ -70,7 +73,12 @@ def execute(root: Path, puckworks: Path, store: Path, private: Path, output: Pat
             reasons.update(why); schemas[r.schema_version] += 1; linked += bool(r.local_linkage)
             if r.local_linkage: linked_users.add(r.local_linkage)
             ambiguous += r.ambiguous_native_flow_present
-            device_resolved += bool(r.machine and r.integration_source and r.integration_source_provenance)
+            command_transfer_resolved += (
+                UNRESOLVED_TRANSFER_AUTHORITY.command_state
+                is TransferState.COMMAND_TRANSFER_RESOLVED)
+            achieved_transfer_resolved += (
+                UNRESOLVED_TRANSFER_AUTHORITY.achieved_state
+                is TransferState.ACHIEVED_TRANSFER_RESOLVED)
             for key, value in flags.items(): tiers[key] += bool(value)
             eligible_any += any(flags.values())
             w.writerow([r.audit_id or "", ";".join(sorted(why)), *[str(flags[k]).lower() for k in FLAGS]])
@@ -79,14 +87,19 @@ def execute(root: Path, puckworks: Path, store: Path, private: Path, output: Pat
     manifest_end = snap.manifest(); end_hash = source_digest(store)
     if start_hash != end_hash or manifest_start != manifest_end: raise RuntimeError(STOP_MUTATED)
     total = integ["n_logical_records"]
-    mapping_blocked = tiers["ewp_pressure_boundary_executable"] == 0 and device_resolved == 0
+    mapping_blocked = (tiers["ewp_pressure_boundary_executable"] == 0
+                       and command_transfer_resolved == 0
+                       and achieved_transfer_resolved == 0)
+    unresolved_group = classify_group(total, len(linked_users), False)
     decision = {
         "claim_ceiling": "RECENT_PUBLIC_COHORT_BOUNDARY_QUALIFICATION_AND_POROSITY_CONDITIONED_EWP_HYDRAULIC_RESPONSE_MAPPING",
         "code": "EWP_REAL_WORLD_BOUNDARIES_001_BLOCKED" if mapping_blocked else "UNADJUDICATED",
         "gate_inputs": {"authority_pass": True, "canonical_source_pass": True, "privacy_contract_pass": True,
-                        "protocol_pass": True, "resolved_device_records": device_resolved,
+                        "protocol_pass": True,
+                        "command_transfer_resolved_records": command_transfer_resolved,
+                        "achieved_transfer_resolved_records": achieved_transfer_resolved,
                         "ewp_executable_case_count": 0, "all_load_bearing_pressure_mappings_unresolved": mapping_blocked},
-        "reason": "Every record lacks a documented pressure-sensor/device and integration family, so the frozen EWP transfer contract cannot qualify any pressure boundary." if mapping_blocked else "Execution continuation required.",
+        "reason": "No record has explicit resolved command-controller transfer authority or achieved-pressure sensor/location transfer authority, so the frozen EWP transfer contract cannot qualify any pressure boundary." if mapping_blocked else "Execution continuation required.",
         "stop_code": "EWP_REAL_WORLD_BOUNDARIES_001_STOP_ALL_LOAD_BEARING_MEASUREMENT_MAPPINGS_UNRESOLVED" if mapping_blocked else None,
         "successor": "EWP-RWB-001-PRESSURE-SENSOR-BOUNDARY-INTERFACE-RECONCILIATION",
     }
@@ -108,8 +121,16 @@ def execute(root: Path, puckworks: Path, store: Path, private: Path, output: Pat
     privacy = {"source": "Visualizer", "attribution": "Data source: Visualizer. We collectively acknowledge the users who make their shots public.",
                "permission": "PERMISSIONED_RECENT_PUBLIC_AGGREGATE_ANALYSIS", "raw_redistribution": False, "private_records": False,
                "minimum_shots_per_published_cell": 20, "minimum_distinct_users_per_published_cell": 10,
-               "published_cells": 0, "coarsened_cells": 0, "suppressed_cells": 1,
-               "suppression_reasons": {"UNRESOLVED_DEVICE_AND_INTEGRATION_FAMILY": total}}
+               "published_cell_count": 0, "coarsened_cell_count": 0,
+               "privacy_suppressed_cell_count": 0,
+               "semantic_unresolved_unpublished_group_count": 1,
+               "unsupported_boundary_group_count": 1,
+               "semantic_unresolved_group": {"aggregate_shot_count": total,
+                                               "aggregate_linked_contributor_count": len(linked_users),
+                                               "numeric_privacy_threshold_passes": unresolved_group.privacy_threshold_passes,
+                                               "disposition": "OMITTED_NOT_PUBLISHED",
+                                               "reason": unresolved_group.reason},
+               "privacy_suppression_reasons": {}}
     linkage = {"records_with_valid_local_linkage": linked, "records_without_valid_local_linkage": total-linked,
                "valid_linkage_fraction": linked/total, "linked_distinct_user_count": len(linked_users),
                "namespace": "STORE_LOCAL_PSEUDONYMOUS_LINKAGE_FOR_SELECTION_BIAS_ACCOUNTING",
@@ -124,8 +145,8 @@ def execute(root: Path, puckworks: Path, store: Path, private: Path, output: Pat
           [{"kind":"reconciliation","code":"eligible_for_one_or_more_tiers","count":eligible_any},
            {"kind":"reconciliation","code":"excluded_from_every_task_tier","count":total-eligible_any},
            {"kind":"reconciliation","code":"canonical_logical_total","count":total}]))
-    _csv(output/"DEVICE_SCHEMA_SUMMARY.csv", ["normalized_family_id","definition","shot_count","distinct_user_count","qualification_status","suppression_status","transfer_limitations"],
-         [{"normalized_family_id":"UNRESOLVED_SUPPRESSED","definition":"No documented device/integration family in canonical normalized records", "shot_count":total,
-           "distinct_user_count":"NOT_PUBLISHED_FOR_SUPPRESSED_CELL","qualification_status":"UNRESOLVED","suppression_status":"SUPPRESSED",
+    _csv(output/"DEVICE_SCHEMA_SUMMARY.csv", ["normalized_family_id","definition","shot_count","distinct_user_count","qualification_status","publication_disposition","transfer_limitations"],
+         [{"normalized_family_id":"UNRESOLVED_UNPUBLISHED","definition":"No documented device/integration family in canonical normalized records", "shot_count":total,
+           "distinct_user_count":len(linked_users),"qualification_status":"SEMANTIC_AUTHORITY_UNRESOLVED","publication_disposition":"NOT_PRIVACY_SUPPRESSED_SEMANTICALLY_UNPUBLISHED",
            "transfer_limitations":"Pressure sensor location and controller semantics are unknown"}])
     return {"decision": decision, "receipt": receipt, "tiers": dict(tiers), "reasons": dict(reasons), "ambiguous_native_flow_records": ambiguous}

@@ -5,6 +5,8 @@
   "decision_code": "EWP_REAL_WORLD_BOUNDARIES_001_BLOCKED",
   "determinism": {"comparison": "recursive byte comparison of seven runner-produced public artifacts", "public_replay_status": "PASS_BYTE_EQUIVALENT", "source_state_equal": true},
   "ewp_executable_case_count": 0,
+  "qualification": {"achieved_transfer_resolved_records": 0, "command_transfer_resolved_records": 0, "eligible_for_one_or_more_tiers": 14462, "excluded_from_every_task_tier": 8707},
+  "publication_disposition": {"coarsened_cell_count": 0, "privacy_suppressed_cell_count": 0, "published_cell_count": 0, "semantic_unresolved_unpublished_group_count": 1, "unsupported_boundary_group_count": 1},
   "library_case_count": 0,
   "materiality_status": "NOT_ADJUDICATED",
   "stop_code": "EWP_REAL_WORLD_BOUNDARIES_001_STOP_ALL_LOAD_BEARING_MEASUREMENT_MAPPINGS_UNRESOLVED",

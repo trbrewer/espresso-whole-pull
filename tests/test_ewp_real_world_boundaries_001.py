@@ -9,7 +9,10 @@ from analysis.ewp_real_world_boundaries_001.authority import (
     STOP_AUTHORITY, STOP_PROTOCOL, verify_protocol, verify_puckworks,
 )
 from analysis.ewp_real_world_boundaries_001.corpus_adapter import adapt, public_safe
-from analysis.ewp_real_world_boundaries_001.qualification import qualify
+from analysis.ewp_real_world_boundaries_001.privacy import classify_group
+from analysis.ewp_real_world_boundaries_001.qualification import (
+    PressureTransferAuthority, TransferState, qualify, structural_statuses,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = ROOT / "docs/analysis/ewp_real_world_boundaries_001/PROTOCOL_FREEZE.json"
@@ -57,6 +60,37 @@ class ProtocolAuthorityTests(unittest.TestCase):
     def test_nonmonotone_and_length_mismatch_fail_without_repair(self):
         raw={"schema_version":6,"hydraulic":{"time__s":[0,2,1],"pressure__Pa":[1,2]},"context":{},"qc":{"time_monotonic":False}}
         flags,reasons=qualify(adapt(raw)); self.assertIn("NONMONOTONE_TIME",reasons); self.assertIn("ARRAY_LENGTH_MISMATCH",reasons); self.assertFalse(flags["boundary_summary_eligible"])
+
+    def test_unrelated_scale_flow_mismatch_does_not_invalidate_achieved_pressure(self):
+        raw={"schema_version":6,"hydraulic":{"time__s":[0,1,2],"pressure__Pa":[0,1,2],"mass_flow_from_scale__kg_per_s":[0,1]},"context":{},"qc":{"time_monotonic":True}}
+        flags,reasons=qualify(adapt(raw)); self.assertTrue(flags["achieved_pressure_profile_eligible"]); self.assertFalse(flags["scale_flow_profile_eligible"]); self.assertIn("ARRAY_LENGTH_MISMATCH_SCALE_FLOW",reasons)
+
+    def test_achieved_mismatch_does_not_invalidate_command(self):
+        raw={"schema_version":6,"hydraulic":{"time__s":[0,1,2],"pressure__Pa":[0,1],"pressure_goal__Pa":[0,1,2]},"context":{},"qc":{"time_monotonic":True}}
+        flags,reasons=qualify(adapt(raw)); self.assertTrue(flags["commanded_pressure_profile_eligible"]); self.assertFalse(flags["achieved_pressure_profile_eligible"]); self.assertFalse(flags["pressure_tracking_eligible"]); self.assertIn("ARRAY_LENGTH_MISMATCH_ACHIEVED_PRESSURE",reasons)
+
+    def test_water_mismatch_does_not_invalidate_scale_flow(self):
+        raw={"schema_version":6,"hydraulic":{"time__s":[0,1,2],"mass_flow_from_scale__kg_per_s":[0,.1,.2],"water_dispensed__kg":[0,1]},"context":{},"qc":{"time_monotonic":True}}
+        flags,reasons=qualify(adapt(raw)); self.assertTrue(flags["scale_flow_profile_eligible"]); self.assertIn("ARRAY_LENGTH_MISMATCH_WATER_DISPENSED",reasons)
+
+    def test_non_null_strings_are_not_transfer_authority(self):
+        raw={"schema_version":6,"hydraulic":{"time__s":[0,1],"pressure__Pa":[0,1]},"context":{"machine":"synthetic_machine","integration_source":"synthetic_controller","integration_source_provenance":"synthetic_doc"},"qc":{"time_monotonic":True}}
+        flags,_=qualify(adapt(raw)); self.assertFalse(flags["ewp_pressure_boundary_executable"])
+
+    def test_explicit_command_authority_is_independent_of_achieved_sensor(self):
+        authority=PressureTransferAuthority(integration_controller_family_resolved=True,pressure_goal_definition_source_verified=True,command_units_resolved=True,command_time_basis_resolved=True,explicitly_commanded_setpoint=True,target_ramp_operator_compatible=True,no_achieved_pressure_claim=True)
+        self.assertEqual(authority.command_state,TransferState.COMMAND_TRANSFER_RESOLVED); self.assertEqual(authority.achieved_state,TransferState.ACHIEVED_TRANSFER_UNRESOLVED)
+        raw={"schema_version":6,"hydraulic":{"time__s":[0,1],"pressure_goal__Pa":[0,1]},"context":{},"qc":{"time_monotonic":True}}
+        flags,_=qualify(adapt(raw),authority); self.assertTrue(flags["ewp_pressure_boundary_executable"])
+
+    def test_semantically_unresolved_large_group_is_not_privacy_suppressed(self):
+        unresolved=classify_group(20,10,False); private=classify_group(19,10,False)
+        self.assertTrue(unresolved.privacy_threshold_passes); self.assertTrue(unresolved.semantic_unresolved_unpublished); self.assertFalse(unresolved.privacy_suppressed)
+        self.assertTrue(private.privacy_suppressed); self.assertFalse(private.semantic_unresolved_unpublished)
+
+    def test_all_unresolved_normalized_condition_has_zero_executable_records(self):
+        records=[{"schema_version":6,"hydraulic":{"time__s":[0,1],"pressure__Pa":[0,1],"pressure_goal__Pa":[0,1]},"context":{},"qc":{"time_monotonic":True}} for _ in range(20)]
+        self.assertEqual(sum(qualify(adapt(raw))[0]["ewp_pressure_boundary_executable"] for raw in records),0)
 
 
 if __name__ == "__main__":
