@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 875,
-  "total_uncompressed_bytes_excluding_manifest": 8921062,
-  "aggregate_source_sha256": "ad9770ab6b4a1c8e96a0d4561194de0e2bf99550fbb27cfb28825267eef21a52",
-  "aggregate_sha256": "ad9770ab6b4a1c8e96a0d4561194de0e2bf99550fbb27cfb28825267eef21a52",
+  "file_count": 893,
+  "total_uncompressed_bytes_excluding_manifest": 8979260,
+  "aggregate_source_sha256": "157d530426a9d3085ea8c7e32ae1d73a3c7ae5f8cbac8df8facbc7f32719c1e0",
+  "aggregate_sha256": "157d530426a9d3085ea8c7e32ae1d73a3c7ae5f8cbac8df8facbc7f32719c1e0",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -186,6 +186,56 @@
     "analysis/obs_pannusch_fraction_window_001/run.py": {
       "sha256": "bcf056eec3b2254cab49661242480d2c7252c8e5773a1dfb1cb5bb99f5b2af17",
       "bytes": 23537,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/__init__.py": {
+      "sha256": "86862c6604713b4b883fcfc1cb8218f1a756ddf3221f2566e0ac95a55c8db449",
+      "bytes": 107,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/authority.py": {
+      "sha256": "9d018d7fc10a5f945744cbedf8f0210d6dc8a38cd3deb117212b0a4ec2fb2e16",
+      "bytes": 2836,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/compatibility.py": {
+      "sha256": "1c62f368b96cc7509d5b3663edfa83e79062dbd476f74a363ae71f855091ab3b",
+      "bytes": 2517,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/constraints.py": {
+      "sha256": "1640026631711a9726814fbc4233cabb8f4bf55de3814d32a8db86ed64571f31",
+      "bytes": 930,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/decision.py": {
+      "sha256": "b60cfa0d1e895b067360c36d7aae4638b2b3f04ed55fac9b64440f3a9bae07cd",
+      "bytes": 605,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/freeze_inputs.json": {
+      "sha256": "b7f75d1d56ca2427ecfadbbd184b5c1c592008712048f17afe84ecef49cdd732",
+      "bytes": 9303,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/lineage.py": {
+      "sha256": "c156aaa0ec8127a298e20d3db3a518a7e092ea8702b267d972e50c73a66a60ae",
+      "bytes": 484,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/run.py": {
+      "sha256": "337254f4772475c8db25b7bb53d078f9bd245e0d7c12e525d8b3c64dd08d8ed0",
+      "bytes": 4157,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/task_contract_template.json": {
+      "sha256": "2066c3224be1d34b8d102279ee6ed7a55132000dcb27a9f73d30f8827e7086fd",
+      "bytes": 6984,
+      "git_mode": "100644"
+    },
+    "analysis/sci_data_fusion_001/uncertainty.py": {
+      "sha256": "ac5dc086369982ec73253301258063d481261b26ae5f29b6a8451198cca33496",
+      "bytes": 381,
       "git_mode": "100644"
     },
     "analysis/sci_md_pannusch_flow_history_001/__init__.py": {
@@ -1131,6 +1181,41 @@
     "docs/analysis/pannusch_prior_impact_001/summary.json": {
       "sha256": "6c639c3b450c533b61caf1a99f406b85ad851fe18125da10f03153cf5283fa0e",
       "bytes": 4097,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/AUTHORITY.json": {
+      "sha256": "86ef1540fb7dfd670ee1738261a79ef67fd2cd69f7424cc27a101bf73bb42cd9",
+      "bytes": 862,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/CANDIDATE_SUPPORT_FREEZE.json": {
+      "sha256": "1cbdd89efece615b36d6d07586d72e171f22592f3aa740591d9f77c2dc5a6b0c",
+      "bytes": 6315,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/CANONICAL_QUANTITY_REGISTER.json": {
+      "sha256": "f603089b2cf1bc4f6b33730b879641c2584adf155ebacf7f5dd9701f4f26c85a",
+      "bytes": 3750,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/CONSUMED_RESULT_ARTIFACTS.json": {
+      "sha256": "5908b2b48bc94b4d85e21542121b25e128802f3c522584409f4fa7f099836c39",
+      "bytes": 2346,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/DATA_AVAILABILITY_PREFLIGHT.json": {
+      "sha256": "3c370e1e22123dc6de3a33844508dac2de0a34e974ab2eaefcfe82923be99a1b",
+      "bytes": 285,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/ISSUE_CONTRACT.md": {
+      "sha256": "5a37ccfe478e64effc92e434dc7b23785c4e3e8cb5ffe03e6adbb529469db08f",
+      "bytes": 4687,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/TASK_CONTRACT.json": {
+      "sha256": "0e6a8c44a14c3141ce390414e5207c9211b7d93370b8983926e0e7caea2581f7",
+      "bytes": 7629,
       "git_mode": "100644"
     },
     "docs/analysis/sci_ed_001/CORRECTION_HISTORY_C1.md": {
@@ -3651,6 +3736,11 @@
     "tests/test_reference_case.py": {
       "sha256": "905665cb80ef2254ffb1367be325a1bcf8911a93d3af3b0ad96d86e36d337d42",
       "bytes": 67098,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_data_fusion_001.py": {
+      "sha256": "4bf06efb3988ec96a4067839928e8fb7ba615799f9f6452a929e41b27a4b9d72",
+      "bytes": 4020,
       "git_mode": "100644"
     },
     "tests/test_sci_ed_001_c1.py": {

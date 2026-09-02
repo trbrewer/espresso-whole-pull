@@ -1,0 +1,9 @@
+{
+  "external_contact": "PROHIBITED",
+  "full_puckworks_register_scan_required": true,
+  "home_lab": "PROHIBITED",
+  "scope": "registered metadata and already-qualified component artifacts",
+  "status": "PASS",
+  "task_id": "SCI-DATA-FUSION-001",
+  "unavailable_is_not_absent": true
+}

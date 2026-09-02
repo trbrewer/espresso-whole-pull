@@ -1,0 +1,150 @@
+{
+  "predeclared_porosity_pair_gates": {
+    "ewp_consumer": true,
+    "frozen_interpretation": "The two sources may each populate source-conditioned EWP initial-porosity scenarios, but their total-XCT and source epsilon_0 meanings, preparation states, specimen/bed supports, operators, coffees, apparatus, PSD methods, compaction, and geometry are not interchangeable. No qualified bridge exists and this task may not fit one.",
+    "independence_target_exposure": true,
+    "lineage": true,
+    "no_new_inference": false,
+    "observation_operator": false,
+    "physical_quantity": null,
+    "population_regime": false,
+    "provenance_rights": true,
+    "reference_state": false,
+    "spatial_support": false,
+    "temporal_support": false,
+    "unit_basis": true
+  },
+  "support_candidates": [
+    {
+      "canonical_quantity_id": "EWP_INITIAL_DRY_POROSITY",
+      "correlation_group_id": "WADSWORTH_2026_SINGLE_EXPERIMENT",
+      "dataset_ids": [
+        "wadsworth2026/table1_full"
+      ],
+      "family_id": "wadsworth2026",
+      "frozen_role": "COMMON_CONSTRAINT_CANDIDATE",
+      "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+      "observation_operator": "total XCT porosity",
+      "originating_task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
+      "physical_state": "DRY_UNTAMPED_XCT_SAMPLE",
+      "population_regime": "two coffees; source grind settings; XCT specimen geometry",
+      "support_id": "WADSWORTH_TOTAL_XCT_POROSITY",
+      "target_exposed": false
+    },
+    {
+      "canonical_quantity_id": "EWP_INITIAL_DRY_POROSITY",
+      "correlation_group_id": "VACA_2023_PERMEABILITY_CAMPAIGN",
+      "dataset_ids": [
+        "vacaguerra2023a/extraction_conditions"
+      ],
+      "family_id": "vacaguerra2023a",
+      "frozen_role": "COMMON_CONSTRAINT_CANDIDATE",
+      "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+      "observation_operator": "source epsilon_0 derived through source compression/geometry treatment",
+      "originating_task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
+      "physical_state": "SOURCE_INITIAL_COMPACTED_DRY_BED",
+      "population_regime": "source coffee; three PSDs; three doses; circular apparatus",
+      "support_id": "VACA_TABLE_C1_EPSILON_0",
+      "target_exposed": false
+    },
+    {
+      "canonical_quantity_id": "EWP_INITIAL_DRY_POROSITY",
+      "correlation_group_id": "WADSWORTH_2026_SINGLE_EXPERIMENT",
+      "dataset_ids": [
+        "wadsworth2026/table1_full"
+      ],
+      "family_id": "wadsworth2026",
+      "frozen_role": "CONTEXT_ONLY",
+      "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+      "originating_task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
+      "support_id": "WADSWORTH_CONNECTED_XCT_POROSITY",
+      "terminal_disposition": "CONTEXT_ONLY"
+    },
+    {
+      "canonical_quantity_id": "EWP_INITIAL_DRY_POROSITY",
+      "correlation_group_id": "VACA_2023_COMPRESSION_OPERATOR",
+      "dataset_ids": [
+        "vacaguerra2023a/dry_porosity_validation"
+      ],
+      "family_id": "vacaguerra2023a",
+      "frozen_role": "OPERATOR_QUALIFICATION_ONLY",
+      "lineage_id": "VACA_FIG12_DRY_POROSITY_OPERATOR",
+      "originating_task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
+      "support_id": "VACA_FIG12_DRY_POROSITY_OPERATOR",
+      "target_exposed": true,
+      "terminal_disposition": "OPERATOR_QUALIFICATION_ONLY"
+    },
+    {
+      "canonical_quantity_id": "EWP_EFFECTIVE_SATURATED_PERMEABILITY",
+      "correlation_group_id": "WADSWORTH_2026_SINGLE_EXPERIMENT",
+      "dataset_ids": [
+        "wadsworth2026/table1_full"
+      ],
+      "family_id": "wadsworth2026",
+      "frozen_role": "STRESS_ONLY",
+      "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED",
+      "originating_task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
+      "support_id": "WADSWORTH_XCT_LBFLOW_PERMEABILITY",
+      "terminal_disposition": "STRESS_ONLY_NO_QUALIFIED_TRANSFER"
+    },
+    {
+      "canonical_quantity_id": "EWP_EFFECTIVE_SATURATED_PERMEABILITY",
+      "correlation_group_id": "VACA_2023_PERMEABILITY_CAMPAIGN",
+      "dataset_ids": [
+        "vacaguerra2023a/extraction_conditions"
+      ],
+      "family_id": "vacaguerra2023a",
+      "frozen_role": "STRESS_ONLY",
+      "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS",
+      "originating_task_id": "EWP-POROSITY-PERMEABILITY-PRIOR-001",
+      "support_id": "VACA_C1_DARCY_PERMEABILITY",
+      "terminal_disposition": "STRESS_ONLY_NO_QUALIFIED_TRANSFER"
+    },
+    {
+      "canonical_quantity_id": "EWP_INLET_PRESSURE_BOUNDARY",
+      "correlation_group_id": "VISUALIZER_RECENT_PUBLIC_COHORT",
+      "dataset_ids": [
+        "visualizer/hydraulic_timeseries"
+      ],
+      "family_id": "visualizer",
+      "frozen_role": "BLOCKED_AUTHORITY",
+      "lineage_id": "VISUALIZER_RECENT_PUBLIC_COHORT",
+      "originating_task_id": "EWP-REAL-WORLD-BOUNDARIES-001",
+      "qualified_row_count": 0,
+      "support_id": "VISUALIZER_PRESSURE_BOUNDARY_COHORT",
+      "terminal_disposition": "BLOCKED_AUTHORITY_DEVICE_SENSOR_INTEGRATION"
+    },
+    {
+      "canonical_quantity_id": null,
+      "correlation_group_id": "PANNUSCH_2024_SOURCE_CAMPAIGN",
+      "dataset_ids": [
+        "pannusch2024/table2_params",
+        "pannusch2024/experimental_kinetics"
+      ],
+      "family_id": "pannusch2024",
+      "frozen_role": "INELIGIBLE_TARGET_EXPOSURE",
+      "lineage_id": "PANNUSCH_2024_SOURCE_CAMPAIGN",
+      "originating_task_id": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001",
+      "qualified_mapping_count": 0,
+      "source_internal_validation": true,
+      "support_id": "PANNUSCH_OPERATIONAL_INPUT_MAPPING",
+      "target_exposed": true,
+      "terminal_disposition": "INELIGIBLE_NO_QUALIFIED_OPERATIONAL_EWP_MAPPING"
+    },
+    {
+      "canonical_quantity_id": "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM",
+      "correlation_group_id": "WASZKIEWICZ_2025_CAMPAIGN",
+      "dataset_ids": [
+        "waszkiewicz2025/traces_time_dependent"
+      ],
+      "family_id": "waszkiewicz2025",
+      "frozen_role": "CONTEXT_ONLY",
+      "lineage_id": "WASZKIEWICZ_2025_CAMPAIGN",
+      "originating_task_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
+      "source_internal_validation": true,
+      "support_id": "WASZKIEWICZ_EVOLVING_RESISTANCE_FORMS",
+      "target_exposed": true,
+      "terminal_disposition": "FIXED_RESISTANCE_RETAINED_EVOLVING_FORM_UNADOPTED"
+    }
+  ]
+}

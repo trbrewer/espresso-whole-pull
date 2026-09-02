@@ -1,0 +1,56 @@
+{
+  "artifacts": [
+    {
+      "path": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/summary.json",
+      "sha256": "f71bcaa683dc6e4b335851900f4fb2afae894162189c44620585e06c3d8e888a"
+    },
+    {
+      "path": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/RESULT.md",
+      "sha256": "e5700af735c01529275a72c95a3b91b77c1911747e2d3deb6f49d105027b151e"
+    },
+    {
+      "path": "docs/analysis/ewp_porosity_permeability_prior_001/SOURCE_SUPPORTS.json",
+      "sha256": "6b87ae70328709f73f06eeba5feb8bbe91f20107195b92073799f65953dfa03c"
+    },
+    {
+      "path": "docs/analysis/ewp_porosity_permeability_prior_001/EWP_QUANTITY_DEFINITIONS.json",
+      "sha256": "93edb800acb16f1c1dff601902789b913273c3bdf9c4adbf43be7dc8d6abd027"
+    },
+    {
+      "path": "docs/analysis/ewp_porosity_permeability_prior_001/DECISION.json",
+      "sha256": "d1d2485b1b0ec101040f40091d7f0a1659822500a27805a456e0a5b9d4a9fabf"
+    },
+    {
+      "path": "docs/analysis/ewp_porosity_permeability_prior_001/POROSITY_MATERIALITY.json",
+      "sha256": "5ee7d7731073e833a2e41c49cf44fde0a20910c5a3ad1e12015824dc51d05b63"
+    },
+    {
+      "path": "docs/analysis/ewp_real_world_boundaries_001/DECISION.json",
+      "sha256": "a7905ba05a44010248ac6e7c8e2577d371e33d03f8dd0d143564cd34956ce83f"
+    },
+    {
+      "path": "docs/analysis/ewp_real_world_boundaries_001/MEASUREMENT_MAPPING_LEDGER.csv",
+      "sha256": "006770cdf5de59c5b97969bbe9ee9f389715eaa62ab6eec881df89a556e06cf5"
+    },
+    {
+      "path": "docs/analysis/xsv_pannusch_multimodel_001/summary.json",
+      "sha256": "deb78f358ad9201de78d779bf2a1d8253ac8816c8092f5c5ada640c0e55c0ddb"
+    },
+    {
+      "path": "docs/analysis/obs_pannusch_fraction_window_001/summary.json",
+      "sha256": "c657e90ca79b8ad96ef7a6ab00bb07bf796052b7d282e5253ee344c6c075b0b5"
+    },
+    {
+      "path": "docs/analysis/sci_md_pannusch_flow_history_001/summary.json",
+      "sha256": "b808aa2ef0a0c6b4279fde7e14fc026dc2caaab884416a6b3f6678b988d936c5"
+    },
+    {
+      "path": "docs/analysis/xsv_pannusch_ewp_input_mapping_001/MAPPING_DECISION.json",
+      "sha256": "8bcf38f39a0545b4ed0b1d8f144429a53ace96c46de6b1533f63fed67b6e106a"
+    },
+    {
+      "path": "docs/analysis/xsv_pannusch_ewp_input_mapping_001/MAPPING_MATRIX.csv",
+      "sha256": "544e1e8aebba33c537a61cdc81025620259b3a44e9825fe051d4e16a8214c575"
+    }
+  ]
+}
