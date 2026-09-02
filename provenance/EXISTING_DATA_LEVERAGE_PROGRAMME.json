@@ -2,7 +2,7 @@
   "$schema": "../schemas/existing_data_leverage_programme.schema.json",
   "schema_version": 1,
   "programme_id": "ESPRESSO-EXISTING-DATA-LEVERAGE-PROGRAMME",
-  "current_priority": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001",
+  "current_priority": "SCI-DATA-FUSION-001",
   "home_lab_status": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY",
   "authorities": {
     "puckworks_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
@@ -144,11 +144,11 @@
       "data_families": ["Pannusch and EWP input authorities"],
       "scientific_question": "Can one source-authorized Pannusch input be mapped to an EWP input without changing governing physics?",
       "model_component": "cross-model input mapping",
-      "status": "COMPLETE_NULL",
+      "status": "COMPLETE_NEGATIVE",
       "priority": 1,
       "prerequisites": ["SCI-MD-PANNUSCH-FLOW-HISTORY-001 complete flow-authority-ineligible"],
       "task_id": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001",
-      "current_evidence": "No operational mapping passed all gates; context/state compatibilities only; programmed-flow unit basis unresolved fail-closed",
+      "current_evidence": "Twenty-one plausible operational mappings were adjudicated and none qualified; six genuine context/state compatibilities remain; density and programmed-flow bases fail closed",
       "expected_information": "source-authorized cross-model input mapping or closed ineligibility",
       "positive_action": "retain only the exact bounded mapping",
       "negative_action": "retain existing independent input treatments",
@@ -160,7 +160,7 @@
       "exhausted_for_decision": true,
       "exhaustion_decision": "WHETHER_ANY_SOURCE_AUTHORIZED_PANNUSCH_PRIMITIVE_CAN_POPULATE_AN_EXISTING_EWP_INPUT_WITHOUT_INFERENCE_REFIT_RECONSTRUCTION_OR_PHYSICS_CHANGE",
       "review_trigger": "material source-unit semantics or existing-consumer change",
-      "notes": "Complete context-only; preserve independent input treatments. No materializer, execution, production adoption, or governing-physics change."
+      "notes": "Complete negative under mixed/adjudicated-negative reducer branch C; preserve independent input treatments. No materializer, execution, production adoption, or governing-physics change."
     },
     {
       "opportunity_id": "OBS-PANNUSCH-FRACTION-WINDOW-001",
@@ -281,13 +281,13 @@
       ],
       "scientific_question": "Can common boundaries reduce uncertainty?",
       "model_component": "boundary uncertainty",
-      "status": "DEFERRED_BY_HIGHER_PRIORITY",
+      "status": "READY",
       "priority": 7,
       "prerequisites": [
         "component results"
       ],
       "task_id": "SCI-DATA-FUSION-001",
-      "current_evidence": "opportunity map",
+      "current_evidence": "Merged component results and completed Pannusch-to-EWP mapping audit satisfy the existing component-results prerequisite; selection/readiness is not implementation authorization",
       "expected_information": "cross-corpus constraints",
       "positive_action": "integrate",
       "negative_action": "keep corpora separate",
@@ -299,7 +299,7 @@
       "exhausted_for_decision": false,
       "exhaustion_decision": null,
       "review_trigger": "prerequisites complete",
-      "notes": "Deferred."
+      "notes": "Selected and READY after merged component results; separate owner authorization is required before implementation."
     },
     {
       "opportunity_id": "SCI-ED-003",
@@ -371,6 +371,6 @@
     "before laboratory or procurement recommendation",
     "before exhaustion declaration"
   ],
-  "current_claim_ceiling": "SOURCE_INTERNAL_FLOW_HISTORY_QUALIFICATION_ONLY",
-  "last_completed_opportunity_review": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+  "current_claim_ceiling": "CROSS_CORPUS_COMPONENT_EVIDENCE",
+  "last_completed_opportunity_review": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001"
 }

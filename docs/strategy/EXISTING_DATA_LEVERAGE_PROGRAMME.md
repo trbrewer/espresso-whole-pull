@@ -2,13 +2,16 @@
 
 ## Pannusch-to-EWP input-mapping result (2026-09-01)
 
-`XSV-PANNUSCH-EWP-INPUT-MAPPING-001` is complete context-only. No operational
-mapping qualified; the apparent programmed-flow mL/s versus Python
+`XSV-PANNUSCH-EWP-INPUT-MAPPING-001` is complete negative after C1. Twenty-one
+plausible operational mappings were adjudicated and none qualified; six genuine
+context/state compatibilities remain. The apparent programmed-flow mL/s versus Python
 mass/density convention is unresolved and fails closed. Geometry, saturated
 state, clean inlet, and observer/run-control similarities remain compatibility
 facts only. `PRESERVE_PANNUSCH_AND_EWP_INDEPENDENT_INPUT_TREATMENTS`; no
 materializer, execution, physics/default/parameter/lock change, or production
-adoption is authorized.
+adoption is authorized. `SCI-DATA-FUSION-001` is selected and schema-valid
+`READY` because the existing component-results prerequisite is complete; this
+selection is not implementation authorization.
 
 ## Pannusch flow-history result (2026-09-01)
 
@@ -108,7 +111,7 @@ fusion; experiment reduction; absolute closure; independent validation.
 1. XSV-PANNUSCH-MULTIMODEL-001 — complete.
 2. OBS-PANNUSCH-FRACTION-WINDOW-001 — complete null.
 3. SCI-MD-PANNUSCH-FLOW-HISTORY-001 — complete, flow authority ineligible.
-4. XSV-PANNUSCH-EWP-INPUT-MAPPING-001 — complete context-only; independent input treatments preserved.
+4. XSV-PANNUSCH-EWP-INPUT-MAPPING-001 — complete negative after C1; independent input treatments preserved.
 5. Cross-corpus boundary/uncertainty integration.
 6. SCI-ED-003 targeted closure contract.
 7. Prospectively independent transfer tier.

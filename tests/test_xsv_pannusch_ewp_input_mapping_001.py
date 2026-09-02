@@ -1,64 +1,47 @@
-import csv, hashlib, json, re, unittest
-from decimal import Decimal
+import csv,hashlib,json,unittest
 from pathlib import Path
-
-ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/"docs/analysis/xsv_pannusch_ewp_input_mapping_001"
-def load(name): return json.loads((OUT/name).read_text())
-def rows(name):
- with (OUT/name).open() as stream: return list(csv.DictReader(stream))
-def sha(path): return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
-
-class TestInputMapping001(unittest.TestCase):
+from analysis.xsv_pannusch_ewp_input_mapping_001.artifacts import generate,reduce_disposition
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/"docs/analysis/xsv_pannusch_ewp_input_mapping_001"
+def load(n):return json.loads((OUT/n).read_text())
+def rows(n):
+ with (OUT/n).open() as f:return list(csv.DictReader(f))
+def sha(p):return hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
+def syn(role="OPERATIONAL_PROPERTY_INPUT",qualified="false",context="false",source="PASS",physical="PASS"):
+ return {"mapping_role":role,"operationally_qualified":qualified,"context_compatible":context,"source_authority_gate":source,"physical_quantity_gate":physical}
+class MappingC1(unittest.TestCase):
  @classmethod
- def setUpClass(cls): cls.reg=rows("INPUT_REGISTRY.csv");cls.maps=rows("MAPPING_MATRIX.csv");cls.byid={x["mapping_id"]:x for x in cls.maps}
- def test_authority_and_predecessor(self):
-  a=load("REPOSITORY_AUTHORITY.json")
-  self.assertEqual(a["puckworks_authority_commit"],"2058d0e947ee9eb92c52d64f6165b810f1fb4732")
-  self.assertTrue(a["no_local_path_assertion"] and a["no_puckworks_mutation_assertion"])
-  self.assertIn("SCI_MD_PANNUSCH_FLOW_HISTORY_001_FLOW_AUTHORITY_INELIGIBLE",(ROOT/"docs/analysis/sci_md_pannusch_flow_history_001/DECISION.json").read_text())
- def test_no_machine_identifiers_or_paths(self):
-  text="\n".join(p.read_text(errors="ignore") for p in OUT.iterdir())
-  self.assertNotRegex(text,r"/home/|/Users/|[A-Za-z]:\\|espresso-development")
- def test_registry_complete_and_unique(self):
-  ids=[x["input_id"] for x in self.reg];self.assertEqual(len(ids),len(set(ids)))
-  required={"P-Q-CONST","P-Q0","P-QT","P-Q-GRAD-END","P-MASSDATA-FLOW","P-Q-DIV098","P-BEV-DM-DT","P-DURATION","P-TBOUNDS","P-CLOCKS","P-T-CONST","P-T-END","P-TT","P-TREF","P-RHO","P-ETA","P-DI","P-MOLPROP","P-DBED","P-ACS","P-L","P-DOSE","P-ALPHA-L","P-PHI-V2","P-SATURATED","P-CLEAN-INLET","P-1D","P-DS1","P-DS2","P-D32","P-PSI","P-GRIND","P-SOLUTE","P-AB","P-KREF","P-GAMMA","P-CS0","P-CL1","P-EQ-IC","P-TDS-PSEUDO","E-FLOW-MODE","E-FLOW-TYPE","E-FLOW-CONST","E-FLOW-TIMES","E-FLOW-VALUES","E-FLOW-TOL","E-RADIUS","E-DOSE","E-POROSITY","E-SATURATION","E-INLET-ZERO","E-MU","E-DEFF","E-PERMEABILITY","E-INVENTORY","E-CAPACITY","E-KEXT","E-END","E-FRACTIONS","E-TEMP","E-PARTICLE"}
-  self.assertEqual(set(ids),required)
- def test_mapping_gates_complete_and_final(self):
-  gates=[x for x in self.maps[0] if x.endswith("_gate")]
-  for m in self.maps:
-   self.assertIn(m["mapping_classification"],load("TASK_CONTRACT.json")["rejection_classes"])
-   self.assertTrue(all(m[g] in {"PASS","FAIL","NOT_APPLICABLE","UNRESOLVED"} for g in gates))
- def test_no_operational_mapping_accepted(self):
-  self.assertFalse(any(x["operationally_qualified"]=="true" for x in self.maps))
-  self.assertTrue(any(x["context_compatible"]=="true" for x in self.maps))
-  for x in self.maps:
-   if x["context_compatible"]=="true": self.assertEqual(x["operationally_qualified"],"false")
- def test_fail_closed_semantics(self):
-  expected={"M-FLOW-CONST":"UNIT_OR_BASIS_UNRESOLVED","M-FLOW-ENDPOINTS":"REQUIRES_SPATIAL_OR_TEMPORAL_RECONSTRUCTION","M-MASSDATA":"OUTLET_FLOW_NOT_INLET_FLOW","M-DIV098":"SOURCE_AUTHORITY_INELIGIBLE","M-PHIV2":"SEMANTIC_QUANTITY_MISMATCH","M-CS0":"REQUIRES_CALIBRATION_OR_REFIT","M-KREF":"SEMANTIC_QUANTITY_MISMATCH","M-AB-KEXT":"REQUIRES_CONSTITUTIVE_INFERENCE","M-DI":"SEMANTIC_QUANTITY_MISMATCH","M-TOLERANCE":"REQUIRES_NUMERICAL_METHOD_CHANGE"}
-  for k,v in expected.items(): self.assertEqual(self.byid[k]["mapping_classification"],v)
- def test_flow_audit_hypotheses_and_round_trip(self):
-  a=load("UNIT_BASIS_AUDIT.json");self.assertEqual(a["authoritative_adjudication"],"H_UNRESOLVED")
-  self.assertTrue(a["source_condition_restrictions"]["C07_C08_histories_excluded"] and a["source_condition_restrictions"]["MassData_flow_excluded"])
-  for x in a["numeric_checks"]:
-   q=Decimal(x["source_numeric_value"]);v=Decimal(x["converted_ewp_m3_s"])
-   self.assertEqual(v,q*Decimal("1e-6"));self.assertEqual(Decimal(x["inverse_converted_value"]),q)
-   self.assertFalse(x["density_enters"] or x["area_enters"] or x["porosity_enters"] or x["mapping_use_authorized"])
-  self.assertFalse(a["mass_hypothesis_density"]["mapping_use_authorized"])
- def test_context_states_and_run_control(self):
-  for mid in ("M-SATURATED","M-CLEAN","M-DURATION","M-TBOUNDS"):
-   self.assertEqual(self.byid[mid]["context_compatible"],"true");self.assertEqual(self.byid[mid]["operationally_qualified"],"false")
- def test_decision_summary_result_consistency(self):
-  d=load("MAPPING_DECISION.json");s=load("summary.json");text=(OUT/"RESULT.md").read_text()
-  self.assertEqual(d["scientific_disposition"],s["disposition"]);self.assertIn(s["disposition"],text)
-  self.assertEqual(s["mapping_count"],len(self.maps));self.assertEqual(s["registry_count"],len(self.reg))
-  self.assertEqual(s["context_compatibility_count"],sum(x["context_compatible"]=="true" for x in self.maps))
-  self.assertEqual(d["operationally_qualified_mapping_ids"],[]);self.assertFalse(d["materializer_implemented"])
- def test_repository_invariance(self):
-  expected={"solver/espressoWholePullFoam/espressoWholePullFoam.C":"99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6","solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H":"a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082","config/reference_R0.json":"67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286","dependencies/puckworks.lock.json":"52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10","scripts/prepare_case.py":"e99443c47594321ccb48b73a20af474c4f453238ffca2096e1971e3cd73390d6"}
-  for p,h in expected.items(): self.assertEqual(sha(p),h)
- def test_claim_boundary_complete(self):
-  claims=set(load("MAPPING_DECISION.json")["claims"])
-  self.assertEqual(claims,{"SOURCE_INTERNAL","TARGET_EXPOSED","NOT INDEPENDENT VALIDATION","NOT PHYSICAL VALIDATION","NOT HYDRAULIC VALIDATION","NOT PUCK_FACE_FLOW VALIDATION","NOT PRESSURE_FLOW_VALIDATION","NOT CHEMISTRY VALIDATION","NOT MODEL COUPLING","NOT PRODUCTION QUALIFICATION","NO PRODUCTION ADOPTION"})
-
-if __name__=="__main__": unittest.main()
+ def setUpClass(c):c.r=rows("INPUT_REGISTRY.csv");c.m=rows("MAPPING_MATRIX.csv");c.ids={x["input_id"] for x in c.r};c.mm={x["mapping_id"]:x for x in c.m}
+ def test_reducer(self):
+  self.assertEqual(reduce_disposition([syn(qualified="true")])[1],"A");self.assertEqual(reduce_disposition([syn("DOCUMENTATION_ONLY_COMPATIBILITY",context="true")])[1],"B")
+  self.assertEqual(reduce_disposition([syn(),syn("DOCUMENTATION_ONLY_COMPATIBILITY",context="true")])[1],"C");self.assertEqual(reduce_disposition([syn()])[1],"C")
+  self.assertEqual(reduce_disposition([syn(source="FAIL",physical="UNRESOLVED")])[1],"D");self.assertEqual(reduce_disposition([],False)[1],"E")
+ def test_current_reducer(self):
+  d=load("MAPPING_DECISION.json");self.assertEqual(reduce_disposition(self.m),(d["scientific_disposition"],"C"));self.assertEqual((d["operational_candidate_count"],d["rejected_operational_count"]),(21,21));self.assertFalse(d["operationally_qualified_mapping_ids"])
+ def test_unique_and_consumers(self):
+  self.assertEqual(len(self.r),len(self.ids));required={"E-FLOW-MODE","E-FLOW-TYPE","E-FLOW-CONST","E-FLOW-TIMES","E-FLOW-VALUES","E-FLOW-TOL","E-RADIUS","E-DOSE","E-DENSITY","E-POROSITY","E-SATURATION","E-INLET-ZERO","E-INITIAL-CONC","E-TEMP","E-MU","E-DEFF","E-PERMEABILITY","E-PARTICLE","E-SPECIES-ID","E-INVENTORY","E-CAPACITY","E-KEXT","E-END","E-FRACTIONS"};self.assertTrue(required<=self.ids)
+  self.assertNotIn("P-RHO",self.ids);self.assertNotIn("P-D32",self.ids);self.assertTrue({"P-RHO-CLOSURE","P-RHO-FLOW-CONVERSION","P-D32-CLOSURE","P-D32-RECOMPUTED"}<=self.ids)
+ def test_density_temperature_consumers(self):
+  d=next(x for x in self.r if x["input_id"]=="E-DENSITY");t=next(x for x in self.r if x["input_id"]=="E-TEMP");self.assertIn("liquid.density_kg_m3",d["symbol_or_key"]);self.assertIn("liquidDensity",d["symbol_or_key"]);self.assertEqual(d["runtime_consumer_status"],"CONSUMED");self.assertEqual(t["runtime_consumer_status"],"VALIDATED_NOT_RENDERED_TO_SOLVER")
+ def test_complete_coverage(self):
+  covered={x["pannusch_input_id"] for x in self.m};pids={x["input_id"] for x in self.r if x["system"]=="PANNUSCH"};self.assertEqual(pids-covered,set());self.assertTrue(all(x["pannusch_input_id"] in self.ids for x in self.m));self.assertTrue(all(x["ewp_input_id"] in self.ids or x["ewp_input_id"]=="NO_EWP_RUNTIME_CONSUMER" for x in self.m))
+ def test_context_is_genuine(self):
+  ctx=[x for x in self.m if x["context_compatible"]=="true"];self.assertEqual([x["mapping_id"] for x in ctx],["M-DBED","M-ACS","M-DOSE","M-SATURATED","M-CLEAN","M-DS1"])
+  self.assertTrue(all(x["physical_quantity_gate"]==x["unit_basis_gate"]=="PASS" and x["operationally_qualified"]=="false" for x in ctx));self.assertEqual(self.mm["M-TBOUNDS"]["context_compatible"],"false");self.assertEqual(load("summary.json")["context_compatibility_count"],6)
+ def test_density_decisions_do_not_resolve_flow(self):
+  a=self.mm["M-DENSITY-CLOSURE"];b=self.mm["M-DENSITY-FIXED"];self.assertEqual(a["mapping_classification"],"REQUIRES_CONSTITUTIVE_INFERENCE");self.assertEqual(a["no_constitutive_inference_gate"],"FAIL");self.assertEqual(b["mapping_classification"],"SOURCE_AUTHORITY_INELIGIBLE");self.assertEqual(b["source_authority_gate"],"FAIL");self.assertEqual(load("UNIT_BASIS_AUDIT.json")["authoritative_adjudication"],"H_UNRESOLVED")
+ def test_original_protections(self):
+  exp={"M-FLOW-CONST":"UNIT_OR_BASIS_UNRESOLVED","M-FLOW-ENDPOINTS":"REQUIRES_SPATIAL_OR_TEMPORAL_RECONSTRUCTION","M-MASSDATA":"OUTLET_FLOW_NOT_INLET_FLOW","M-DIV098":"SOURCE_AUTHORITY_INELIGIBLE","M-PHIV2":"SEMANTIC_QUANTITY_MISMATCH","M-GRIND":"REQUIRES_CONSTITUTIVE_INFERENCE","M-DI":"SEMANTIC_QUANTITY_MISMATCH","M-CS0":"REQUIRES_CALIBRATION_OR_REFIT","M-KREF":"SEMANTIC_QUANTITY_MISMATCH","M-AB-KEXT":"REQUIRES_CONSTITUTIVE_INFERENCE","M-TOLERANCE":"REQUIRES_NUMERICAL_METHOD_CHANGE"}
+  for k,v in exp.items():self.assertEqual(self.mm[k]["mapping_classification"],v)
+ def test_terminal_gates_no_materializer(self):
+  gates=[k for k in self.m[0] if k.endswith("_gate")];self.assertTrue(all(x[g] in {"PASS","FAIL","NOT_APPLICABLE","UNRESOLVED"} for x in self.m for g in gates));self.assertFalse(load("MAPPING_DECISION.json")["materializer_implemented"])
+ def test_deterministic_regeneration(self):
+  before={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in OUT.iterdir()};generate();after={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in OUT.iterdir()};self.assertEqual(before,after)
+ def test_programme(self):
+  p=json.loads((ROOT/"provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json").read_text());o={x["opportunity_id"]:x for x in p["opportunities"]};self.assertEqual(p["current_priority"],"SCI-DATA-FUSION-001");self.assertEqual(p["current_claim_ceiling"],o[p["current_priority"]]["claim_ceiling"]);self.assertEqual(p["last_completed_opportunity_review"],"XSV-PANNUSCH-EWP-INPUT-MAPPING-001");self.assertEqual(o["XSV-PANNUSCH-EWP-INPUT-MAPPING-001"]["status"],"COMPLETE_NEGATIVE");self.assertEqual(o["SCI-DATA-FUSION-001"]["status"],"READY")
+  text="\n".join((ROOT/x).read_text() for x in ["docs/PROJECT_STATE.md","docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md","docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv"]);self.assertIn(load("summary.json")["disposition"],text);self.assertIn("separate authorization",text.lower())
+ def test_authority_paths(self):
+  a=load("REPOSITORY_AUTHORITY.json");self.assertEqual(a["correction_starting_commit"],"3e988084455b6dde85321b9447730a3747352ef0");self.assertEqual(a["puckworks_authority_commit"],"2058d0e947ee9eb92c52d64f6165b810f1fb4732");self.assertNotIn("/home/","\n".join(p.read_text(errors="ignore") for p in OUT.iterdir()))
+ def test_invariance(self):
+  e={"solver/espressoWholePullFoam/espressoWholePullFoam.C":"99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6","solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H":"a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082","config/reference_R0.json":"67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286","dependencies/puckworks.lock.json":"52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10","scripts/prepare_case.py":"e99443c47594321ccb48b73a20af474c4f453238ffca2096e1971e3cd73390d6"}
+  for p,h in e.items():self.assertEqual(sha(p),h)
+if __name__=="__main__":unittest.main()

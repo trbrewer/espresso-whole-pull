@@ -8,6 +8,10 @@
     "puckworks_active_checkout": "clean",
     "task_worktree": "clean_at_creation"
   },
+  "correction_authorization_token": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001-C1-OWNER-AUTHORIZE-CORRECTION-LIMITED-DISPOSITION-INPUT-COVERAGE-AND-PROGRAMME-STATE-AMENDMENT-OF-PR-134-2026-09-01",
+  "correction_review_disposition": "XSV_PANNUSCH_EWP_INPUT_MAPPING_001_R1_MATERIAL_CORRECTION_REQUIRED",
+  "correction_starting_commit": "3e988084455b6dde85321b9447730a3747352ef0",
+  "correction_starting_tree": "33fab154953b1e502eca9e69239f6df9353d57fc",
   "ewp_base_commit": "7c79c8c6bf4670cb8ade7fb107ecdfd73afa827e",
   "ewp_base_tree": "808abec7b2e9f5ca6cd42d5786daa293af627f88",
   "lock_dependency_evidence": {

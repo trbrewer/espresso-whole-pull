@@ -2,15 +2,18 @@
 
 ## XSV-PANNUSCH-EWP-INPUT-MAPPING-001 result (2026-09-01)
 
-`XSV_PANNUSCH_EWP_INPUT_MAPPING_001_CONTEXT_ONLY_PRESERVE_INDEPENDENT_INPUT_TREATMENTS`.
-No operational mapping passed every source-authority and interface-semantics
-gate. Nominal geometry, saturated initial state, clean inlet, and run-control
-facts are context/state compatibilities only. The programmed-flow table label
+`XSV_PANNUSCH_EWP_INPUT_MAPPING_001_NO_QUALIFIED_MAPPING_PRESERVE_INDEPENDENT_INPUT_TREATMENTS`
+after C1 correction. Twenty-one plausible operational mappings were adjudicated
+and none qualified; six genuine context/state compatibilities remain. The EWP
+density consumer is now registered, while the Pannusch temperature-dependent
+density closure and fixed `RHO=980` flow-conversion constant are separately
+rejected. The programmed-flow table label
 and Puckworks Python density conversion do not close to one authorized unit
 basis, so flow fails closed; C07/C08 histories and `MassData.flow` remain
 excluded. **PRESERVE_PANNUSCH_AND_EWP_INDEPENDENT_INPUT_TREATMENTS.** No
 materializer, solver/default/parameter/lock change, execution, coupling, or
-production adoption occurred. SOURCE_INTERNAL; TARGET_EXPOSED; NOT INDEPENDENT,
+production adoption occurred. `SCI-DATA-FUSION-001` is selected/READY only and
+requires separate authorization. SOURCE_INTERNAL; TARGET_EXPOSED; NOT INDEPENDENT,
 PHYSICAL, HYDRAULIC, PUCK_FACE_FLOW, PRESSURE_FLOW, CHEMISTRY, OR PRODUCTION
 VALIDATION.
 
