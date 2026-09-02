@@ -1,0 +1,73 @@
+{
+  "artifacts": [
+    {
+      "path": "docs/analysis/sci_md_010/ISSUE_CONTRACT.md",
+      "sha256": "3e4e4a6cd70f7752ba9d05aa0df26a840e7beea039d60d0a0859750fca8fa376"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/AUTHORITY_AND_DATA_PREFLIGHT.json",
+      "sha256": "36652e9947625a4be78dda8717170eaa44cfc0a19ffc76854048379f099d2e48"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/EVIDENCE_UTILITY_REGISTER.csv",
+      "sha256": "15433f31a1baf7554babfb57a7fac12326447ef3dbcf34efb0a2650887fca2e9"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/EWP_INPUT_OBSERVABILITY_REGISTER.csv",
+      "sha256": "b2150d91de7ae816456a33a8a2402199928a7e0a46f873f579ad813222a62c62"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/END_TO_END_OBSERVABILITY_GRAPH.json",
+      "sha256": "956524a5c1b3223d5e7dbd610d514970eb50c83630f3ebd3ed0ff64f98768b6a"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/BENCHMARK_LANE_SELECTION.json",
+      "sha256": "1f9ec0938a699d5f6814a306914012e5c6f9284012a3d375f85c2236b9781328"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/MODEL_LADDER.json",
+      "sha256": "64029ef01e77aebafe9a5974c4f3205e6c4dc0670bdb779fa72aebc95dbd408d"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/PRIVILEGE_LEDGER.csv",
+      "sha256": "b4139d827f7a1c326fb47baf8e74bbdee6734fd29adb15593f637cb0b16a74b7"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FOLD_ASSIGNMENTS.csv",
+      "sha256": "333e35fa6a7a2d0fa8be6b2e2488bf50b5a8a1c7152f5dc46fd8c23d801717bd"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/METRIC_CONTRACT.json",
+      "sha256": "2c60773b84843170b31fe66c5367a0ec5f8eeb487dbd787bc7a8f817c9210b96"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/EVALUATION_CONTRACT.json",
+      "sha256": "0600c2b08c35a7b22c85a2ce4211ad51645fabb1d43c56631a8e668a42691b80"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/PRE_SCORE_FREEZE.json",
+      "sha256": "fb1c6a8af753f7fd80f6688a7ae38d1e737e4b4cb04bb2c93fa9f8cb4ead36bb"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FREEZE_REPORT.md",
+      "sha256": "e7fdbd9b5cb53296f68819242265fa1e48ca5f0590eedbab3a78685e8084e240"
+    },
+    {
+      "path": "scripts/sci_md_010_prepare.py",
+      "sha256": "507a5edebfed3060ac0cf87214ba983536df9349e3c3998584c630f5e26dceef"
+    },
+    {
+      "path": "scripts/sci_md_010_execute.py",
+      "sha256": "77f0ba80f4af100bd2f43a242b06bc576eea76419e78f3650971b1d9cdd5e572"
+    },
+    {
+      "path": "scripts/validate_sci_md_010.py",
+      "sha256": "644d17dda9e5fd76576dc69e01c6c24ce828a1b727c46bf818ba9c152684ba44"
+    },
+    {
+      "path": "tests/test_sci_md_010.py",
+      "sha256": "e12782e5a4f112221e87e074029068aa65e8c8181dbcdb0b388467b97d3d1b53"
+    }
+  ],
+  "task_id": "SCI-MD-010"
+}

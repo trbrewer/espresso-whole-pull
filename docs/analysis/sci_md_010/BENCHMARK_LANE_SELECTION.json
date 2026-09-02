@@ -1,0 +1,73 @@
+{
+  "excluded_lanes": [
+    "L-AGG"
+  ],
+  "lanes": [
+    {
+      "decision": "utility of fixed/effective resistance versus simple baselines",
+      "families": [
+        "waszkiewicz2025"
+      ],
+      "lane_id": "L-HYD",
+      "models": [
+        "B0",
+        "B1",
+        "B2",
+        "E1",
+        "E2"
+      ],
+      "observable": "blocked time and pressure-conditioned resistance response",
+      "outer_group": "physical brew/pressure condition",
+      "reuse_only": true,
+      "selected": true
+    },
+    {
+      "decision": "chemistry shape complexity utility",
+      "families": [
+        "pannusch2024"
+      ],
+      "lane_id": "L-FRAC",
+      "models": [
+        "B0",
+        "B1",
+        "B2",
+        "E1",
+        "E2"
+      ],
+      "observable": "normalized fraction share vector",
+      "outer_group": "physical shot/condition",
+      "reuse_only": true,
+      "selected": true
+    },
+    {
+      "decision": "source adapter versus reduced effective resistance",
+      "families": [
+        "wadsworth2026",
+        "vacaguerra2023a"
+      ],
+      "lane_id": "L-STRUCT",
+      "models": [
+        "B0",
+        "B1",
+        "B2",
+        "E1"
+      ],
+      "observable": "dry porosity and source-native log permeability",
+      "outer_group": "source-defined independent grinder/coffee condition",
+      "reuse_only": false,
+      "selected": true
+    },
+    {
+      "families": [],
+      "lane_id": "L-AGG",
+      "reason": "no qualified common absolute-inventory operator with sufficient independent groups",
+      "selected": false
+    }
+  ],
+  "new_production_case_budget": 0,
+  "selected_lanes": [
+    "L-HYD",
+    "L-FRAC",
+    "L-STRUCT"
+  ]
+}

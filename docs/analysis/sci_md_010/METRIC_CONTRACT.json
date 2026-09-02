@@ -1,0 +1,35 @@
+{
+  "delta_loss": "competitive_baseline_loss-candidate_loss",
+  "materiality": "PREDICTIVE_RANKING_ONLY when no uncertainty floor",
+  "metrics": {
+    "L-FRAC": {
+      "normalization": "none; composition metric",
+      "primary": "total variation distance",
+      "secondary": [
+        "cumulative profile IAE",
+        "condition wins"
+      ]
+    },
+    "L-HYD": {
+      "normalization": "training-fold range",
+      "primary": "normalized absolute blocked-time error",
+      "secondary": [
+        "signed bias",
+        "pressure ordering",
+        "condition wins"
+      ]
+    },
+    "L-STRUCT": {
+      "normalization": "training-fold scale",
+      "primary": "source-specific standardized RMSE",
+      "secondary": [
+        "porosity RMSE",
+        "log-permeability RMSE",
+        "slope"
+      ]
+    }
+  },
+  "resampling_unit": "outer physical/source group",
+  "seed": 10010,
+  "uncertainty": "paired group bootstrap only when defensible; otherwise all group losses"
+}

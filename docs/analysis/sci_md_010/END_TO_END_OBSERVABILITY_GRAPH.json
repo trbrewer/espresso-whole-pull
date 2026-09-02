@@ -1,0 +1,125 @@
+{
+  "broken_edges": [
+    "g_psd",
+    "psd_r",
+    "pf_shape",
+    "scale_cup"
+  ],
+  "edges": [
+    {
+      "authority": "Wadsworth/Vaca Guerra",
+      "blocks_level4": true,
+      "existing_dataset_test": true,
+      "from": "grinder_setting",
+      "id": "g_psd",
+      "identified": false,
+      "operator": "source-conditioned grinder adapter",
+      "production_implemented": false,
+      "source_conditioned": true,
+      "target_shot_calibration": false,
+      "to": "psd",
+      "uncertainty": "UNRESOLVED"
+    },
+    {
+      "authority": "EWP and source priors",
+      "blocks_level4": true,
+      "existing_dataset_test": true,
+      "from": "psd",
+      "id": "psd_r",
+      "identified": false,
+      "operator": "collapsed hydraulic bridge",
+      "production_implemented": false,
+      "source_conditioned": true,
+      "target_shot_calibration": false,
+      "to": "effective_resistance",
+      "uncertainty": "LARGE"
+    },
+    {
+      "authority": "EWP production",
+      "blocks_level4": false,
+      "existing_dataset_test": true,
+      "from": "effective_resistance",
+      "id": "r_pf",
+      "identified": true,
+      "operator": "Darcy response",
+      "production_implemented": true,
+      "source_conditioned": false,
+      "target_shot_calibration": false,
+      "to": "pressure_flow",
+      "uncertainty": "QUANTIFIED_EXISTING"
+    },
+    {
+      "authority": "Pannusch/EWP",
+      "blocks_level4": true,
+      "existing_dataset_test": true,
+      "from": "pressure_flow",
+      "id": "pf_shape",
+      "identified": false,
+      "operator": "chemistry transport observer",
+      "production_implemented": true,
+      "source_conditioned": true,
+      "target_shot_calibration": false,
+      "to": "fraction_shape",
+      "uncertainty": "MIXED"
+    },
+    {
+      "authority": "NONE_EXISTING_CLOSURE",
+      "blocks_level4": true,
+      "existing_dataset_test": false,
+      "from": "inventory_scale",
+      "id": "scale_cup",
+      "identified": false,
+      "operator": "absolute inventory scale",
+      "production_implemented": true,
+      "source_conditioned": true,
+      "target_shot_calibration": true,
+      "to": "cup_observable",
+      "uncertainty": "UNRESOLVED"
+    }
+  ],
+  "frozen_structure": true,
+  "minimal_level4_cut_sets": [
+    [
+      "source-conditioned grinder-to-PSD bridge",
+      "effective hydraulic bridge",
+      "absolute inventory/closure"
+    ],
+    [
+      "simplified effective resistance from user-known context",
+      "absolute inventory/closure"
+    ]
+  ],
+  "nodes": [
+    {
+      "class": "USER_INPUT",
+      "id": "grinder_setting"
+    },
+    {
+      "class": "MEASURED_CONTEXT",
+      "id": "psd"
+    },
+    {
+      "class": "EFFECTIVE_PARAMETER",
+      "id": "effective_resistance"
+    },
+    {
+      "class": "OBSERVATION",
+      "id": "pressure_flow"
+    },
+    {
+      "class": "CALIBRATED_NUISANCE",
+      "id": "inventory_scale"
+    },
+    {
+      "class": "OUTPUT",
+      "id": "fraction_shape"
+    },
+    {
+      "class": "OUTPUT",
+      "id": "cup_observable"
+    }
+  ],
+  "per_shot_fitted_edges": [
+    "scale_cup"
+  ]
+}

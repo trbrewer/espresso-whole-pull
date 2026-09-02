@@ -1,0 +1,10 @@
+lane_id,source_family,group_id,outer_fold,role,parent_physical_unit,stratification_fields,assignment_rule,assignment_seed,target_used_for_assignment
+L-HYD,waszkiewicz2025,brew_1,0,EVALUATION_ONCE; TRAINING_IN_OTHER_FOLDS,brew_1,source_condition,sorted stable group id,10010,false
+L-HYD,waszkiewicz2025,brew_2,1,EVALUATION_ONCE; TRAINING_IN_OTHER_FOLDS,brew_2,source_condition,sorted stable group id,10010,false
+L-HYD,waszkiewicz2025,brew_3,2,EVALUATION_ONCE; TRAINING_IN_OTHER_FOLDS,brew_3,source_condition,sorted stable group id,10010,false
+L-FRAC,pannusch2024,condition_1,0,EVALUATION_ONCE; TRAINING_IN_OTHER_FOLDS,condition_1,source_condition,sorted stable group id,10010,false
+L-FRAC,pannusch2024,condition_2,1,EVALUATION_ONCE; TRAINING_IN_OTHER_FOLDS,condition_2,source_condition,sorted stable group id,10010,false
+L-FRAC,pannusch2024,condition_3,2,EVALUATION_ONCE; TRAINING_IN_OTHER_FOLDS,condition_3,source_condition,sorted stable group id,10010,false
+L-STRUCT,source_separate,wadsworth_group,0,EVALUATION_ONCE; TRAINING_IN_OTHER_FOLDS,wadsworth_group,source_condition,sorted stable group id,10010,false
+L-STRUCT,source_separate,vacaguerra_group,1,EVALUATION_ONCE; TRAINING_IN_OTHER_FOLDS,vacaguerra_group,source_condition,sorted stable group id,10010,false
+L-STRUCT,source_separate,wadsworth_holdout,2,EVALUATION_ONCE; TRAINING_IN_OTHER_FOLDS,wadsworth_holdout,source_condition,sorted stable group id,10010,false
