@@ -10,11 +10,11 @@
     },
     {
       "path": "docs/analysis/sci_md_010/EVIDENCE_UTILITY_REGISTER.csv",
-      "sha256": "15433f31a1baf7554babfb57a7fac12326447ef3dbcf34efb0a2650887fca2e9"
+      "sha256": "d4c80e9e3c1ab36a4d9e7314e939690fbeb45f4b71e334a543974c790588b678"
     },
     {
       "path": "docs/analysis/sci_md_010/EWP_INPUT_OBSERVABILITY_REGISTER.csv",
-      "sha256": "b2150d91de7ae816456a33a8a2402199928a7e0a46f873f579ad813222a62c62"
+      "sha256": "0c53c8a766f90762467c55f99d56786613cdb7c642d0922514fbf421c90d8426"
     },
     {
       "path": "docs/analysis/sci_md_010/END_TO_END_OBSERVABILITY_GRAPH.json",
@@ -30,11 +30,11 @@
     },
     {
       "path": "docs/analysis/sci_md_010/PRIVILEGE_LEDGER.csv",
-      "sha256": "b4139d827f7a1c326fb47baf8e74bbdee6734fd29adb15593f637cb0b16a74b7"
+      "sha256": "347eb5f37b74445faa51224133428ec6df42bc72c23da10f67e2c168c273c25c"
     },
     {
       "path": "docs/analysis/sci_md_010/FOLD_ASSIGNMENTS.csv",
-      "sha256": "333e35fa6a7a2d0fa8be6b2e2488bf50b5a8a1c7152f5dc46fd8c23d801717bd"
+      "sha256": "ddc13f20fc291c09eee3cb0efa40aa0aeae38810112426de29cd96f6ada3cf2b"
     },
     {
       "path": "docs/analysis/sci_md_010/METRIC_CONTRACT.json",
@@ -54,7 +54,7 @@
     },
     {
       "path": "scripts/sci_md_010_prepare.py",
-      "sha256": "507a5edebfed3060ac0cf87214ba983536df9349e3c3998584c630f5e26dceef"
+      "sha256": "6b844fbbd091a978065684eae717c6eca78b9f50d1f68d2b074459dcce54c3cb"
     },
     {
       "path": "scripts/sci_md_010_execute.py",

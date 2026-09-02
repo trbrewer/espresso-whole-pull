@@ -16,7 +16,7 @@ def git(cwd,*a): return subprocess.check_output(['git','-C',str(cwd),*a],text=Tr
 def dump(name,obj): (OUT/name).write_text(json.dumps(obj,indent=2,sort_keys=True)+'\n')
 def writecsv(name,fields,rows):
  with (OUT/name).open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
+  w=csv.DictWriter(f,fieldnames=fields,lineterminator='\n');w.writeheader();w.writerows(rows)
 def family_rows():
  manifest=PW/'puckworks/data/MANIFEST.csv'; seen={}
  for r in csv.DictReader(manifest.open()): seen.setdefault(r['source_card'],[]).append(r)
