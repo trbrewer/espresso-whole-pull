@@ -1,5 +1,11 @@
 # Public Repository Agent Rules
 
+SCI-ED-003 is complete with status
+`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`. The Pareto-minimal future
+candidate is M01 paired absolute chemistry/mass closure plus the contextual
+subset of M02 synchronized shot telemetry. No execution task is automatically
+selected or authorized; physical validation remains `NOT_ESTABLISHED`.
+
 `SCI-DATA-FUSION-001` is complete as
 `SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`; its named
 decision is exhausted with no common constraint or EWP narrowing. Current

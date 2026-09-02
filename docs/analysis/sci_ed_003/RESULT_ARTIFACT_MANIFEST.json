@@ -1,0 +1,18 @@
+{
+  "schema": "ewp.sci-ed-003.result-artifact-manifest/v1",
+  "algorithm": "sha256",
+  "artifacts": [
+    {"path":"ISSUE_CONTRACT.md","sha256":"f1d67cf2f2fd4cf5e15a3584538e0a7370d9f292f02eb298f886cd9e1cd96476"},
+    {"path":"DATA_AVAILABILITY_PREFLIGHT.json","sha256":"cfe74d7fae58169ad388adddc16f5c89d1fdb1ca466d5aa9b02a37106066af33"},
+    {"path":"DECISION_ESTIMAND_REGISTER.json","sha256":"fb05da0671b7e6ec8099bc11e86f857bd2ac6b9ea297c03157e3f325c321706e"},
+    {"path":"MEASUREMENT_MODULES.json","sha256":"51945a9194dbef311296fb0b3cc91bc0f2f51e615a174ae17298088c9baea8c2"},
+    {"path":"DECISION_IMPACT_MATRIX.csv","sha256":"e2d27ada4a88342967b5a7ab12e82ffe2d6528c0cce7adaef0a2cdf650a10f45"},
+    {"path":"PRIORITIZATION_MATRIX.csv","sha256":"7cc8b33945fdb4b69cab289883f14ab7e88d1d2a3f10dda1495eeed60fddd806"},
+    {"path":"MINIMUM_PROGRAMME.json","sha256":"d2647c54cf64513183ca31626ec9331f245226a505924bb7e49dfe6141ba64af"},
+    {"path":"MINIMUM_PROGRAMME.md","sha256":"372903500aadab8e6fd6b0ec17dde1c18120aceae34b456af39eda2caa1f11dc"},
+    {"path":"DATA_PACKAGE_PROFILE.json","sha256":"e13854c987ecb5a28592f19b7a358a04566881c6c18b261ebeb50ee39d2ab19d"},
+    {"path":"DATA_DICTIONARY.csv","sha256":"1e91bd9be77b57897429b45b3d8c0fd84dc3ab86166738849e69a5332de274e0"},
+    {"path":"RESULT.md","sha256":"07f26cd49d1cd8eb4f831ef796854c73633c419c488d3a2ebb5d06a555619730"},
+    {"path":"summary.json","sha256":"4b57132a06368ea990878f8df58782bea099320a85c2d3359dc4d80799df2b40"}
+  ]
+}

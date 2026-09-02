@@ -1,0 +1,19 @@
+{
+  "schema": "ewp.sci-ed-003.data-availability-preflight/v1",
+  "task_id": "SCI-ED-003",
+  "live_ewp_base": {"commit": "bd031c5acfbfb41e378424e5358a932a8f2f5a50", "tree": "338b4354913fd1d1e844fe0f13c8772dcaed1de0"},
+  "reviewed_ewp_authority": {"commit": "bd031c5acfbfb41e378424e5358a932a8f2f5a50", "tree": "338b4354913fd1d1e844fe0f13c8772dcaed1de0", "relationship": "IDENTICAL_TO_LIVE_BASE"},
+  "reviewed_sci_data_fusion_001_candidate": "0c2928a4483b966e2b0d0c55e26914677cd2bcae",
+  "puckworks_pin": {"commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732", "tree": "a6ffb312473b15be43c1571a893b19873ea47c5a"},
+  "puckworks_relevant_delta": {"comparison_target": "LOCALLY_AVAILABLE_CURRENT_MAIN", "result": "NO_LOCALLY_AVAILABLE_CURRENT_MAIN_REF; NO_SILENT_REPIN; PINNED_CONTENT_INSPECTED", "authority_drift": false},
+  "predecessors": [
+    {"path": "docs/analysis/sci_data_fusion_001/RESULT.md", "sha256": "462b8ca7a720122bc19933446c5ebd660aef300795509c5dc7ba4aaa43a6bc7c"},
+    {"path": "docs/analysis/sci_data_fusion_001/DECISION.json", "sha256": "437c7b99e8b4bdc876df84574acdf3464174522fa7f4978425d3ee484b70c501"},
+    {"path": "docs/validation/PAIRED_INVENTORY_FRACTION_FEASIBILITY_PILOT_BRIEF.md", "sha256": "7bff6670b7647cdb6ef773bf49d5c14ac735aec6ce456e0cb094df8144e762e3"},
+    {"repository": "puckworks", "commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732", "path": "docs/analysis/sci_ed_002/r1/REFERENCE_EXTRACTABILITY_STOPPING_RULE_PROVENANCE.json", "sha256": "bc7db115f0ea864406c0a63c0c6debad7c4a214999158900bf05f81ffa7eeb40"}
+  ],
+  "unresolved_joins": ["I_ref_initial_to_Q_production_solid_initial", "Q_production_solid_initial_to_c_s0", "spent_and_retained_terms_to_initial_inventory", "achieved_pressure_location_to_EWP_inlet_boundary", "source_apparatus_porosity_permeability_to_EWP_effective_parameters"],
+  "existing_data_finding": "NAMED_SCI_DATA_FUSION_001_CROSS_CORPUS_DECISION_EXHAUSTED_WITHOUT_COMMON_CONSTRAINT_OR_EWP_NARROWING",
+  "scope_caution": "This does not claim that all imaginable external evidence is absent.",
+  "new_observations_entered": false
+}

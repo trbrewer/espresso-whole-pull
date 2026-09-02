@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 934,
-  "total_uncompressed_bytes_excluding_manifest": 9379736,
-  "aggregate_source_sha256": "df14c5fbe8c06ea61c884b38a52adbf0d1389576538b95bd71389b2bf69a705b",
-  "aggregate_sha256": "df14c5fbe8c06ea61c884b38a52adbf0d1389576538b95bd71389b2bf69a705b",
+  "file_count": 950,
+  "total_uncompressed_bytes_excluding_manifest": 9470902,
+  "aggregate_source_sha256": "3eca3a1fabb2e75706e7b4c509863196577564b37cb1008a755546ef7fdad875",
+  "aggregate_sha256": "3eca3a1fabb2e75706e7b4c509863196577564b37cb1008a755546ef7fdad875",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -789,8 +789,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "d2ec2f0c444d6b56f496a654392f4c2a386af9f789fc598407a37ffc231b92aa",
-      "bytes": 12244,
+      "sha256": "03a084d9a46970b926cc4f83c8c53acf724a3666a1dcfbd7772cc4de793fb4b8",
+      "bytes": 12313,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -1446,6 +1446,71 @@
     "docs/analysis/sci_ed_001/RESULT.md": {
       "sha256": "6216eb5372daf64f9e77bce9aef7e14cc311a75c1004fc7161d9e192bd648bdd",
       "bytes": 3631,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/DATA_AVAILABILITY_PREFLIGHT.json": {
+      "sha256": "cfe74d7fae58169ad388adddc16f5c89d1fdb1ca466d5aa9b02a37106066af33",
+      "bytes": 2086,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/DATA_DICTIONARY.csv": {
+      "sha256": "1e91bd9be77b57897429b45b3d8c0fd84dc3ab86166738849e69a5332de274e0",
+      "bytes": 2646,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/DATA_PACKAGE_PROFILE.json": {
+      "sha256": "e13854c987ecb5a28592f19b7a358a04566881c6c18b261ebeb50ee39d2ab19d",
+      "bytes": 6042,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/DECISION_ESTIMAND_REGISTER.json": {
+      "sha256": "fb05da0671b7e6ec8099bc11e86f857bd2ac6b9ea297c03157e3f325c321706e",
+      "bytes": 26961,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/DECISION_IMPACT_MATRIX.csv": {
+      "sha256": "e2d27ada4a88342967b5a7ab12e82ffe2d6528c0cce7adaef0a2cdf650a10f45",
+      "bytes": 2412,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/ISSUE_CONTRACT.md": {
+      "sha256": "f1d67cf2f2fd4cf5e15a3584538e0a7370d9f292f02eb298f886cd9e1cd96476",
+      "bytes": 3644,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/MEASUREMENT_MODULES.json": {
+      "sha256": "51945a9194dbef311296fb0b3cc91bc0f2f51e615a174ae17298088c9baea8c2",
+      "bytes": 15475,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/MINIMUM_PROGRAMME.json": {
+      "sha256": "d2647c54cf64513183ca31626ec9331f245226a505924bb7e49dfe6141ba64af",
+      "bytes": 10621,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/MINIMUM_PROGRAMME.md": {
+      "sha256": "372903500aadab8e6fd6b0ec17dde1c18120aceae34b456af39eda2caa1f11dc",
+      "bytes": 3686,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/PRIORITIZATION_MATRIX.csv": {
+      "sha256": "7cc8b33945fdb4b69cab289883f14ab7e88d1d2a3f10dda1495eeed60fddd806",
+      "bytes": 1414,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/RESULT.md": {
+      "sha256": "07f26cd49d1cd8eb4f831ef796854c73633c419c488d3a2ebb5d06a555619730",
+      "bytes": 2608,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/RESULT_ARTIFACT_MANIFEST.json": {
+      "sha256": "d4e35597b600191e9170f262daa8df3da9b447353bf81e46c0652f3cd7fc1247",
+      "bytes": 1485,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_ed_003/summary.json": {
+      "sha256": "4b57132a06368ea990878f8df58782bea099320a85c2d3359dc4d80799df2b40",
+      "bytes": 879,
       "git_mode": "100644"
     },
     "docs/analysis/sci_lc_001a/ACCELERATED_RECOVERY_RESET_DECISION.md": {
@@ -2309,8 +2374,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "0b479612421c2f9561b10512fae9225bd2dc2717deab3724cb3c4f9e0bdf6ab5",
-      "bytes": 9042,
+      "sha256": "375f5f7486b91f25591c437ad43d8979bfc6d69a1aa7c750d710411ed75145c7",
+      "bytes": 9581,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -3168,6 +3233,11 @@
       "bytes": 1551,
       "git_mode": "100644"
     },
+    "schemas/sci_ed_003_closure_contract.schema.json": {
+      "sha256": "f90e6402fd4ba3fab80f04de763435eeae2961881f6bdd91ce6f3e14171dc50b",
+      "bytes": 1195,
+      "git_mode": "100644"
+    },
     "schemas/xsv_waszkiewicz_processing_robustness.schema.json": {
       "sha256": "e931f637c56b2e2d31c9cd78368d8f6da52cf745e36a76a18bd36a82df0b4b30",
       "bytes": 1527,
@@ -3594,8 +3664,8 @@
       "git_mode": "100755"
     },
     "scripts/validate_existing_data_leverage_programme.py": {
-      "sha256": "bd359ca9d075aad8efc6bc766e42bc0bfc0309e59cf07874e7e53e11b3cd58c3",
-      "bytes": 2365,
+      "sha256": "e739fc15c3196f8fca7319113e5b904aabe6980fbcecdc5c70a0e6519032d49e",
+      "bytes": 2771,
       "git_mode": "100755"
     },
     "scripts/validate_local_data_corpus_authority.py": {
@@ -3606,6 +3676,11 @@
     "scripts/validate_obs_pannusch_fraction_window_001.py": {
       "sha256": "2584a5e3c26bf0e3cbd30063b6293c8d93083b1a84455fcfbf7cd9cf4bca2fb4",
       "bytes": 888,
+      "git_mode": "100755"
+    },
+    "scripts/validate_sci_ed_003.py": {
+      "sha256": "2f3ace5f7457ebdb98ee2393af94f7616ce5fd4b5fabce47efa06d003a698c02",
+      "bytes": 6803,
       "git_mode": "100755"
     },
     "scripts/validate_sci_lc_001a_ledger.py": {
@@ -3914,8 +3989,8 @@
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {
-      "sha256": "177c54b27a72f0b2607e4421adf6fe4f49be3994f144ef4d10939c9fbf83bb2c",
-      "bytes": 5289,
+      "sha256": "9b9f2182f288474ebce72bfd195bb344b0182b94b074b9b91651987aaa7747b0",
+      "bytes": 5155,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
@@ -3966,6 +4041,11 @@
     "tests/test_sci_ed_002_handoff.py": {
       "sha256": "bf5477aa0d4b6e96dba6fc379fc7910b3b0f910cc3ad089a57556e7c598aa975",
       "bytes": 12805,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_ed_003.py": {
+      "sha256": "afbf63bf4c44f043a3661b20be8dc1957e913a851cf6f3e9d61b0778777b77b7",
+      "bytes": 2338,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_executor.py": {
@@ -4219,8 +4299,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_ewp_input_mapping_001.py": {
-      "sha256": "862e8da66645eb5b3baafa5ddabbb6fd6ad819f7e5e80931dc49fe22431121d6",
-      "bytes": 7118,
+      "sha256": "c695dd9ab035faa39cf09e3e320e4e7a54c9a6b3d5aafb94355e0b03837b43fa",
+      "bytes": 7109,
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_multimodel_001.py": {

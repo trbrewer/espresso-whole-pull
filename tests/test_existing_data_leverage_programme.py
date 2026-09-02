@@ -9,7 +9,7 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         spec.loader.exec_module(module)
         data = module.validate()
         self.assertEqual(data["current_priority"], "SCI-ED-003")
-        self.assertEqual(data["last_completed_opportunity_review"], "SCI-DATA-FUSION-001")
+        self.assertEqual(data["last_completed_opportunity_review"], "SCI-ED-003")
         self.assertEqual(data["current_claim_ceiling"], "CLOSURE_CONTRACT_ONLY")
         self.assertEqual(data["home_lab_status"], "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY")
 
@@ -40,15 +40,14 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         successor, ledger = successor[0], ledger[0]
         self.assertEqual(self.programme["current_priority"], "SCI-ED-003")
         self.assertEqual(successor["status"], ledger["current_status"])
-        self.assertEqual(successor["status"], "READY")
-        self.assertNotIn(successor["status"], {"ACTIVE", "COMPLETE", "IMPLEMENTED", "DEFERRED_BY_HIGHER_PRIORITY"})
+        self.assertEqual(successor["status"], "COMPLETE_POSITIVE")
         self.assertEqual(self.programme["current_claim_ceiling"], successor["claim_ceiling"])
-        self.assertIn("separate owner authorization", successor["notes"])
-        self.assertIn("not implemented", successor["notes"].lower())
+        self.assertIn("EXECUTION_NOT_AUTHORIZED", successor["notes"])
+        self.assertIn("NOT_ESTABLISHED", successor["notes"])
         self.assertFalse(self.programme["laboratory_gate"]["operation_authorized"])
 
     def test_completed_review_and_artifact_hashes(self):
-        self.assertEqual(self.programme["last_completed_opportunity_review"], "SCI-DATA-FUSION-001")
+        self.assertEqual(self.programme["last_completed_opportunity_review"], "SCI-ED-003")
         fusion = next(x for x in self.programme["opportunities"] if x["opportunity_id"] == "SCI-DATA-FUSION-001")
         self.assertEqual(fusion["result"], "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY")
         expected = {

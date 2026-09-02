@@ -2,6 +2,15 @@
 
 ## Current programme state (2026-09-02)
 
+SCI-ED-003 is complete with status
+`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED` and result
+`SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED`.
+The minimum future candidate is M01 plus the contextual M02 subset; M03-M05 are
+conditional later modules. The bounded next action is an owner decision to
+authorize, decline, or request specific human apparatus/laboratory capability
+input for a separately scoped execution task. No execution is automatically
+selected or authorized.
+
 `SCI-DATA-FUSION-001` is `COMPLETE_NEGATIVE` with exact disposition
 `SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`. No common
 cross-corpus constraint, compatible uncertainty support, authorized EWP-domain

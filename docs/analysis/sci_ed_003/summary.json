@@ -1,0 +1,18 @@
+{
+  "task_id": "SCI-ED-003",
+  "result": "SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED",
+  "status": "CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED",
+  "selected": ["M01", "M02_CONTEXT"],
+  "deferred": {"M03": "EWP_OUTPUT_MATERIALITY_AND_BRIDGE_TRIGGER", "M04": "DISTINGUISHING_SYNCHRONIZED_INTERVENTION_TRIGGER", "M05": "LOCAL_QUALIFICATION_AND_G1_G3_FREEZE_TRIGGER"},
+  "I_ref_EQUALS_PRODUCTION_M0": "NOT_ESTABLISHED",
+  "c_s0_MAPPING": "NOT_ESTABLISHED",
+  "physical_validation": "NOT_ESTABLISHED",
+  "stage_f_adjudicative": false,
+  "stage_d_separate_authorization_required": true,
+  "operation_authorized": false,
+  "procurement_authorized": false,
+  "data_collection_authorized": false,
+  "model_change_authorized": false,
+  "parameter_adoption_authorized": false,
+  "claim_ceiling": "CLOSURE_CONTRACT_ONLY"
+}

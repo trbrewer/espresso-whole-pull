@@ -1,0 +1,30 @@
+table_name,field_name,type,unit,basis,required,description
+campaign.json,package_id,string,,,true,durable future package identifier
+campaign.json,authority_commit,string,,,true,immutable governing protocol authority
+coffee_lots.csv,coffee_lot_id,string,,,true,traceable coffee-lot identifier
+coffee_lots.csv,roast_unit_id,string,,,true,material roast-unit identifier
+sample_lineage.csv,parent_sample_id,string,,,false,parent for aliquot-shot-fraction-preparation joins
+shots.csv,shot_id,string,,,true,independently prepared puck/shot identifier
+shots.csv,dose_kg,number,kg,as weighed with moisture record,true,coffee dose
+shot_timeseries_raw.csv,elapsed_time_s,number,s,monotonic clock,true,raw elapsed time
+shot_timeseries_raw.csv,raw_value,number,declared per row,raw sensor basis,true,unaltered native value
+shot_timeseries_raw.csv,measurement_location,string,,,true,physical sensor/collector location
+shot_timeseries_raw.csv,reference_basis,string,,,true,gauge absolute mass temperature or other reference
+fractions.csv,fraction_id,string,,,true,durable fraction identifier
+fractions.csv,collected_mass_kg,number,kg,measured beverage mass,true,fraction mass
+chemistry_measurements.csv,analyte,string,,,true,caffeine or trigonelline
+chemistry_measurements.csv,result_kg,number,kg,absolute analyte mass,false,null when censored
+chemistry_measurements.csv,censoring_status,string,,,true,quantified below-LOQ below-LOD or other declared status
+initial_reference_cycles.csv,cycle_index,integer,,sequential extraction,true,one-based extraction cycle order
+initial_reference_cycles.csv,signed_blank_corrected_mass_kg,number,kg,method-conditioned,false,negative values preserved
+initial_reference_cycles.csv,tail_status,string,,,true,qualified unresolved or feasible-maximum status
+spent_puck_measurements.csv,recovery_id,string,,,true,complete puck recovery lineage
+retained_liquid_measurements.csv,location,string,,,true,machine basket collector line vial or other declared location
+moisture_dry_mass.csv,moisture_fraction,number,1,declared wet/dry method,false,dry-basis conversion input
+calibration_qc.csv,status,string,,,true,prospectively defined QC disposition
+analytical_records.csv,native_chromatogram_file_id,string,,,true,immutable raw chromatogram link
+deviations.csv,reason,string,,,true,all exclusions reruns failures and deviations retained
+deviations.csv,model_disagreement_reason,boolean,,,true,must never justify removal
+apparatus_sensors.csv,reference_basis,string,,,true,measurement basis/reference
+manifest.sha256.csv,sha256,string,,,true,SHA-256 lowercase digest
+rights_provenance.json,licence,string,,,true,future reuse rights

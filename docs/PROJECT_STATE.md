@@ -1,5 +1,18 @@
 # Project State
 
+## SCI-ED-003 closure-contract result (2026-09-02)
+
+`SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED`.
+The current status is `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`.
+M01 paired absolute chemistry/mass closure plus only the contextual subset of
+M02 synchronized shot telemetry is the Pareto-minimal future candidate. Stage F
+is nonadjudicative feasibility; Stage D would be sized and frozen only after
+Stage F and separate authorization. M03, M04, and M05 have explicit later
+triggers. No laboratory operation, procurement, data collection, OpenFOAM/model
+execution, physics/default/parameter change, inventory predictor, or `c_s0`
+mapping occurred. Physical validation remains `NOT_ESTABLISHED`; the old
+SCI-DATA-FUSION-001 feature branch remains untouched.
+
 ## Current scientific-development priority (2026-09-02)
 
 `SCI-DATA-FUSION-001` is complete as

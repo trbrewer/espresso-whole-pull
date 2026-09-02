@@ -453,25 +453,25 @@
       ],
       "scientific_question": "Which minimum measurement closes the controlling absolute quantity?",
       "model_component": "absolute closure",
-      "status": "READY",
+      "status": "COMPLETE_POSITIVE",
       "priority": 8,
       "prerequisites": [
         "SCI-DATA-FUSION-001 named existing-data fusion decision exhausted"
       ],
       "task_id": "SCI-ED-003",
-      "current_evidence": "Completed SCI-DATA-FUSION-001 decision/result: the named existing-data fusion decision is exhausted and identifies unresolved targeted closure requirements",
+      "current_evidence": "SCI-ED-003 defines M01 paired absolute chemistry/mass closure plus the contextual M02 subset as the Pareto-minimal future candidate; no observations entered",
       "expected_information": "minimum closure measurement",
-      "positive_action": "prepare nonoperational contract",
-      "negative_action": "continue analysis",
-      "null_action": "defer",
-      "blocked_action": "record blocker",
+      "positive_action": "owner may separately authorize Stage F feasibility",
+      "negative_action": "decline laboratory escalation and retain current representations",
+      "null_action": "request only the named capability input or decline",
+      "blocked_action": "request exact estimand/apparatus/operator capability input without inventing a value",
       "claim_ceiling": "CLOSURE_CONTRACT_ONLY",
       "home_lab_effect": "POTENTIAL_LATER_AUTHORIZATION",
-      "completion_evidence": [],
-      "exhausted_for_decision": false,
-      "exhaustion_decision": null,
+      "completion_evidence": ["docs/analysis/sci_ed_003/RESULT.md", "docs/analysis/sci_ed_003/MINIMUM_PROGRAMME.json"],
+      "exhausted_for_decision": true,
+      "exhaustion_decision": "Minimum decision-relevant closure contract defined; execution requires separate owner authorization",
       "review_trigger": "specific closure blocker controls",
-      "notes": "READY targeted closure-contract task only; not implemented and requires separate owner authorization. No laboratory operation authorized."
+      "notes": "CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED; physical validation and all inventory/c_s0 bridges remain NOT_ESTABLISHED."
     },
     {
       "opportunity_id": "INDEPENDENT-TRANSFER-TIER",
@@ -516,5 +516,5 @@
     "before exhaustion declaration"
   ],
   "current_claim_ceiling": "CLOSURE_CONTRACT_ONLY",
-  "last_completed_opportunity_review": "SCI-DATA-FUSION-001"
+  "last_completed_opportunity_review": "SCI-ED-003"
 }
