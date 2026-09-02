@@ -1,0 +1,57 @@
+{
+  "accepted_mapping_classes": [
+    "DIRECT_PHYSICAL_QUANTITY_IDENTITY",
+    "EXACT_UNIT_CONVERSION",
+    "SOURCE_DEFINED_BASIS_CONVERSION"
+  ],
+  "activation_precondition": "SCI_MD_PANNUSCH_FLOW_HISTORY_001_FLOW_AUTHORITY_INELIGIBLE present on origin/main",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_ceiling": "SOURCE_AUTHORITY_AND_INTERFACE_SEMANTICS_QUALIFICATION_ONLY",
+  "correction_authorization_token": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001-C1-OWNER-AUTHORIZE-CORRECTION-LIMITED-DISPOSITION-INPUT-COVERAGE-AND-PROGRAMME-STATE-AMENDMENT-OF-PR-134-2026-09-01",
+  "exclusions": [
+    "solver execution",
+    "OpenFOAM",
+    "calibration/refit",
+    "pressure-flow inference",
+    "history reconstruction",
+    "default or lock changes",
+    "model coupling"
+  ],
+  "global_disposition_rules": [
+    "A: any qualified OPERATIONAL_* mapping",
+    "B: no operational candidates and genuine context compatibility exists",
+    "C: operational candidates adjudicated and none qualified, with or without context",
+    "D: every operational candidate blocked at source authority before semantic adjudication",
+    "E: exact required authority unavailable"
+  ],
+  "null_result_handling": "preserve independent input treatments; no adapter",
+  "owner_authorization_token": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001-OWNER-AUTHORIZED-AFTER-SCI-MD-PANNUSCH-FLOW-HISTORY-001-MERGE-2026-09-01",
+  "positive_result_restrictions": "partial adapter only; execution separately authorized",
+  "prohibited_predecessor_evidence": [
+    "C07/C08 reconstructed schedules",
+    "MassData.flow as inlet flow",
+    "/0.98 flow",
+    "beverage outlet as inlet",
+    "pressure-derived Q",
+    "chemistry scoring"
+  ],
+  "rejection_classes": [
+    "CLOCK_MAPPING_UNRESOLVED",
+    "CONTEXT_ONLY_NOT_OPERATIONAL",
+    "NO_EWP_RUNTIME_CONSUMER",
+    "OUTLET_FLOW_NOT_INLET_FLOW",
+    "REQUIRES_CALIBRATION_OR_REFIT",
+    "REQUIRES_CONSTITUTIVE_INFERENCE",
+    "REQUIRES_GOVERNING_PHYSICS_CHANGE",
+    "REQUIRES_NUMERICAL_METHOD_CHANGE",
+    "REQUIRES_SPATIAL_OR_TEMPORAL_RECONSTRUCTION",
+    "SEMANTIC_QUANTITY_MISMATCH",
+    "SOURCE_AUTHORITY_INELIGIBLE",
+    "SOURCE_VALUE_NOT_AVAILABLE",
+    "TEMPORAL_SUPPORT_MISMATCH",
+    "UNIT_OR_BASIS_UNRESOLVED"
+  ],
+  "scientific_question": "Can any source-authorized Pannusch input map to an existing EWP input without inference, fitting, reconstruction, defaults, coupling, or physics change?",
+  "scope": "source authority and existing-interface semantics qualification; C1 disposition, input coverage, context, and programme-state correction",
+  "task_id": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001"
+}
