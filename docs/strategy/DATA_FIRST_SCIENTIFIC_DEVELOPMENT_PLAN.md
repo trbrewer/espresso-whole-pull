@@ -1,5 +1,16 @@
 # Data-First Scientific Development Plan
 
+> **Current authority (2026-09-02):** SCI-DATA-FUSION-001 and SCI-ED-003 are
+> complete; the named existing-data route is exhausted for the closure
+> decision. SCI-ED-003 has status
+> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED` and selects M01 paired
+> absolute chemistry/mass closure plus contextual M02 synchronized shot
+> telemetry as a future candidate. The current repository item is
+> `OWNER_DECISION_PENDING`. Stage F and Stage D are not authorized, no
+> automatic successor exists, and no further Pannusch or data-fusion cleanup is
+> selected. Separate owner authorization is required for execution. Physical
+> validation remains `NOT_ESTABLISHED`.
+
 > 2026-08-31 C1 correction: no tested bounded evolving-resistance form has stable
 > grouped predictive advantage sufficient for adoption; fixed resistance is
 > retained by parsimony. Mean ranking and the adoption decision are stable only
@@ -13,7 +24,10 @@
 > Waszkiewicz hydraulics. Visualizer is descriptive/boundary authority,
 > Wadsworth/Vaca remain separate, and home lab remains deferred.
 
-## Current residual-selected result (2026-09-01)
+## Historical residual-selected result, superseded by later work (2026-09-01)
+
+The task selection in this section is retained as history and is not current
+execution authority.
 
 Fixed Pannusch has strong advantage over the ordinal-only pooled baseline, but
 no established advantage over the calibration-only boundary-aware fair
@@ -23,7 +37,10 @@ derive from the corresponding beverage-mass fit and returned an exact null.
 The selected, unimplemented fallback is `SCI-MD-PANNUSCH-FLOW-HISTORY-001`.
 No additional extraction physics or laboratory operation is authorized.
 
-## Current additive decision (2026-08-30)
+## Historical additive decision, superseded by later work (2026-08-30)
+
+The task selection in this section is retained as history and is not current
+execution authority.
 
 `ESPRESSO_DATA_LEVERAGE_001_EXISTING_DATA_SUPPORTS_IMMEDIATE_MODEL_ADVANCEMENT`.
 The immediate task is `XSV-PANNUSCH-MULTIMODEL-001`, using grouped, scale-
@@ -37,11 +54,11 @@ home-lab operation remains deferred. See `EXISTING_DATA_LEVERAGE_PROGRAMME.md`.
 - **Governance class:** `G0`
 - **Change declaration:** `NO_GOVERNING_PHYSICS_CHANGE`
 - **Claim ceiling:** `PHYSICAL_VALIDATION_NOT_ESTABLISHED`
-- **Current scientific gate:** `DIRECT_PAIRED_MEASUREMENT_FEASIBILITY`
+- **Current scientific gate:** `OWNER_DECISION_PENDING`
 - **Current solver task:** `NONE`
 - **Current surrogate task:** `NONE`
 - **SCI-MD-009-C2:** `PAUSED_NOT_CURRENT_PRIORITY`
-- **Pilot scientific direction:** `OWNER_APPROVED_FOR_LAB_READY_PREPARATION`
+- **Pilot scientific direction:** `CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`
 - **Exact laboratory commissioning, expenditure, shipment and collection:** `REQUIRES_SEPARATE_HUMAN_OPERATIONAL_ACTION`
 
 ## 1. Executive decision
@@ -160,21 +177,23 @@ Use the least burdensome governance class that protects the claim. G0 documentat
 
 ## 7. Current priority sequence
 
-### Priority 0 — close current lane
+### Priority 0 — bounded owner decision
 
-SCI-MD-009-C1-R1 is merged as a terminal response-model stop. The current surrogate/identifiability lane is closed, and SCI-MD-009-C2 must not execute now.
-
-### Priority 1 — local method and mass-closure qualification contract
-
-Prepare, but do not execute without separate authorization, the minimum contract
-for repeated operational references, paired caffeine/trigonelline fractions,
-spent residual, retained liquid, moisture basis, blanks, recovery, LOD/LOQ and
-durable joins. Pannusch already supplies source-apparatus feasibility and planning
-evidence; the remaining decision is local qualification and closure.
+SCI-ED-003 has completed the minimum contract. The pending owner options are
+`AUTHORIZE_STAGE_F_FEASIBILITY`, `DECLINE_EXECUTION`, or
+`REQUEST_SPECIFIC_APPARATUS_OR_LABORATORY_CAPABILITY_INPUT`. None has been
+exercised. If Stage F is separately authorized, execute only its defined
+nonadjudicative feasibility programme. Stage D may be sized and frozen only
+after qualified Stage F results and separate owner authorization. Independent
+no-retuning comparison remains later; hydraulic and grinder modules remain
+conditional under the SCI-ED-003 triggers.
 
 ### Historical Priority 1 — paired inventory/fraction feasibility pilot
 
 Prepare and execute, through human laboratory operations, a small combined EXP-006 / EXP-010 feasibility pilot. It asks whether measurement, uncertainty, mass closure, and the empirical relationship—if any—between operational reference extractability and production-shot inventory can support a later experiment. It is not an independent model-validation campaign. The laboratory-facing preparation brief is `docs/validation/PAIRED_INVENTORY_FRACTION_FEASIBILITY_PILOT_BRIEF.md`.
+
+“Prepare and execute” above is superseded historical wording. It grants no
+current laboratory, preparation, commissioning, or execution authorization.
 
 ### Priority 2 — prospective no-retuning comparison
 
@@ -226,7 +245,7 @@ PROTECTED_OR_HOLDOUT_SCORING:
 NEW_GOVERNING_PHYSICS:
   NOT_CURRENTLY_JUSTIFIED
 EXPERIMENTAL_FEASIBILITY_DIRECTION:
-  OWNER_APPROVED
+  CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED
 EXACT_LABORATORY_PROTOCOL_AND_OPERATION:
   REQUIRES_HUMAN_LAB_CAPABILITY_INPUTS_AND_SEPARATE_OPERATIONAL_ACTION
 ```

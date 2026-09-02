@@ -4,12 +4,16 @@ This policy is operationalized by
 `EXISTING_DATA_LEVERAGE_PROGRAMME.md` and its machine authority and ledger.
 Source-internal or target-exposed status, unknown M0, absence of independent
 validation, negative results, or component-only tests do not alone exhaust an
-opportunity. The current priority is `SCI-ED-003`, `READY` only for a bounded
-targeted closure contract after `SCI-DATA-FUSION-001` exhausted the named
-cross-corpus decision without a common constraint or EWP narrowing.
-`SCI-ED-003` is not implemented or separately authorized, and immediate
-home-lab operation remains unauthorized. Another Pannusch or data-fusion
-cleanup is not selected.
+opportunity. SCI-DATA-FUSION-001 exhausted the named cross-corpus decision
+without a common constraint or EWP narrowing. SCI-ED-003 is complete and has
+defined M01 plus contextual M02 as the minimum future programme. Its status is
+`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`. The current item is the bounded owner decision to
+authorize Stage F feasibility, decline execution, or request specific
+apparatus/laboratory capability input. Capability information may be requested
+without authorizing operation, procurement, or an automatic successor; any
+execution requires separate owner authorization. Another
+Pannusch or data-fusion cleanup is not selected. Physical validation remains
+`NOT_ESTABLISHED`.
 
 Before substantive scientific work, a general data-gap conclusion, or new measurement, read `provenance/AVAILABLE_DATA_AUTHORITY.json`, the live Puckworks MANIFEST/capability register and cards, external-corpus status, and prior task artifacts; create or validate one task preflight. Unavailable in this checkout is not absent. A data gap must name the observable, decision, directness, independence, and evidence checked.
 

@@ -1,10 +1,15 @@
 # Espresso Whole-Pull Program Handoff and Forward Execution Plan
 
-> **Current-status notice (29 August 2026):** Detailed execution blocks below
+> **Current-status notice (2 September 2026):** Detailed historical execution blocks below
 > are retained for provenance. Their current-action fields are superseded by
 > the [Data-First Scientific Development Plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md)
-> and live [Project State](PROJECT_STATE.md). The current gate is direct paired
-> measurement feasibility; no solver or surrogate task is active.
+> and live [Project State](PROJECT_STATE.md). SCI-ED-003 is complete with status
+> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; M01 plus contextual M02
+> is a future candidate and the current repository item is
+> `OWNER_DECISION_PENDING`. Stage F and Stage D are not authorized, separate
+> owner authorization is required for execution, no automatic successor exists,
+> and no solver, surrogate, or laboratory-execution task is active. Physical
+> validation remains `NOT_ESTABLISHED`.
 
 Current addendum: `SCI-MD-001` is `CORRECTED_PENDING_EXACT_HEAD_REVIEW`. The enduring
 scientific sequence and restart handoff are maintained in the

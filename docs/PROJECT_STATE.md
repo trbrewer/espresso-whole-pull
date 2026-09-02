@@ -1,15 +1,33 @@
 # Project State
 
-## Current scientific-development priority (2026-09-02)
+## SCI-ED-003 closure-contract result (2026-09-02)
+
+`SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED`.
+The current status is `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`.
+M01 paired absolute chemistry/mass closure plus only the contextual subset of
+M02 synchronized shot telemetry is the Pareto-minimal future candidate. Stage F
+is nonadjudicative feasibility; Stage D would be sized and frozen only after
+Stage F and separate authorization. M03, M04, and M05 have explicit later
+triggers. No laboratory operation, procurement, data collection, OpenFOAM/model
+execution, physics/default/parameter change, inventory predictor, or `c_s0`
+mapping occurred. Physical validation remains `NOT_ESTABLISHED`; the old
+SCI-DATA-FUSION-001 feature branch remains untouched.
+
+## Current owner decision (2026-09-02)
 
 `SCI-DATA-FUSION-001` is complete as
 `SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`: no common
 constraint, compatible uncertainty support, EWP-domain narrowing, or EWP-output
 narrowing was established. Its named existing-data decision is exhausted.
-`SCI-ED-003` is the current `READY` successor for a targeted closure contract
-under `CLOSURE_CONTRACT_ONLY`; it is not implemented or separately authorized.
-Home-lab operation remains unauthorized, and another Pannusch or data-fusion
-cleanup is not selected.
+SCI-ED-003 is complete. The current repository item is
+`OWNER_DECISION_PENDING`: authorize Stage F feasibility, decline execution, or
+request specific apparatus/laboratory capability input. Stage F is designed but
+not authorized and nonadjudicative. Stage D is conditional, not sized, not
+frozen, not authorized, and requires Stage F plus separate owner authorization.
+No execution successor is automatically selected or authorized. Home-lab
+status is `DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION`, and another
+Pannusch or data-fusion cleanup is not selected. Physical validation remains
+`NOT_ESTABLISHED`.
 
 ## XSV-PANNUSCH-EWP-INPUT-MAPPING-001 result (2026-09-01)
 

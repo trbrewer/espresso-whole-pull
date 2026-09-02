@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ewp.sci-ed-003.closure-contract.schema/v1",
+  "type": "object",
+  "required": ["schema", "task_id", "result", "selected_programme", "mandatory_measurements", "stage_f", "stage_d", "uncertainty_model", "qualification_gates", "materiality_derivation", "deferred_modules", "operation_authorized", "procurement_authorized", "data_collection_authorized", "model_change_authorized", "parameter_adoption_authorized", "separate_owner_authorization_required"],
+  "properties": {
+    "task_id": {"const": "SCI-ED-003"},
+    "result": {"const": "SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED"},
+    "mandatory_measurements": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["measurement_id", "decisions", "necessity"]}},
+    "operation_authorized": {"const": false}, "procurement_authorized": {"const": false}, "data_collection_authorized": {"const": false}, "model_change_authorized": {"const": false}, "parameter_adoption_authorized": {"const": false}, "separate_owner_authorization_required": {"const": true}
+  },
+  "additionalProperties": true
+}

@@ -1,6 +1,18 @@
 # Solver Development and Validation Roadmap
 
-## Waszkiewicz model-form decision (2026-08-31)
+## Current roadmap authority (2026-09-02)
+
+SCI-ED-003 is complete with status
+`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`. M01 paired absolute
+chemistry/mass closure plus contextual M02 synchronized shot telemetry is the
+selected future candidate. The current repository item is
+`OWNER_DECISION_PENDING`; Stage F and Stage D are not authorized, separate
+owner authorization is required for execution, and no automatic successor
+exists. No solver, surrogate, experimental-commissioning, Pannusch-cleanup, or
+data-fusion-cleanup task is active. Physical validation remains
+`NOT_ESTABLISHED`.
+
+## Historical Waszkiewicz model-form decision, superseded by later work (2026-08-31)
 
 C1 replaces the overly broad indistinguishability headline: some tested forms
 reduce average LOCO error, but no tested bounded form has stable grouped,
@@ -19,7 +31,7 @@ Conditional order: Waszkiewicz hydraulics; separate Wadsworth/Vaca priors;
 Visualizer boundaries; Pannusch fraction windows; rheology sensitivity. Results
 select successors; no production adoption or home-lab work is authorized.
 
-## XSV-PANNUSCH-MULTIMODEL-001 consequence (2026-08-30)
+## Historical XSV-PANNUSCH-MULTIMODEL-001 consequence, superseded by later work (2026-08-30)
 
 The unchanged published Pannusch structure has source-internal grouped
 predictive content beyond simple baselines for fraction shares. The immediate
@@ -27,7 +39,7 @@ successor is the research-only `OBS-PANNUSCH-FRACTION-WINDOW-001` observation-op
 not production parameter adoption or new governing physics. SCI-ED-003 and
 laboratory operation remain deferred.
 
-## Current programme priority (2026-08-30)
+## Historical programme priority, superseded by later work (2026-08-30)
 
 `XSV-PANNUSCH-MULTIMODEL-001` is the immediate scientific task. It permits
 research-only adapters and grouped comparison but no production governing-
@@ -128,8 +140,17 @@ ACTIVE_SOLVER_TASK:
 ACTIVE_SURROGATE_TASK:
   NONE
 
-CURRENT_SCIENTIFIC_GATE:
-  DIRECT_PAIRED_MEASUREMENT_FEASIBILITY
+CURRENT_REPOSITORY_ITEM:
+  OWNER_DECISION_PENDING
+
+SCI_ED_003:
+  COMPLETE
+
+STAGE_F:
+  NOT_AUTHORIZED
+
+STAGE_D:
+  NOT_AUTHORIZED
 
 VAL_CASE_002:
   NOT_STARTED
@@ -171,22 +192,18 @@ interface qualification from physical validation. It requires explicit unit,
 reference-volume and provenance contracts. No stage substitutes for
 independent physical data or changes the current scientific gate.
 
-## Current next scientific action
+## Current bounded owner decision
 
-`PAIRED INVENTORY AND SPECIES-FRACTION FEASIBILITY PILOT USING THE EXP-006 /
-EXP-010 MEASUREMENT ROUTE` is the current next scientific action. It begins
-with laboratory-facing feasibility preparation and requires separate human
-operational action before collection. It is not an optimized design,
-independent validation, or authorization to score a holdout. Mechanism
-candidates below remain later, evidence-selected possibilities.
+The owner may choose `AUTHORIZE_STAGE_F_FEASIBILITY`, `DECLINE_EXECUTION`, or
+`REQUEST_SPECIFIC_APPARATUS_OR_LABORATORY_CAPABILITY_INPUT`. None has been
+exercised. The EXP-006/EXP-010 route is historical context, not an active,
+commissioned, or authorized pilot.
 
 ## Next human-owner decision
 
-The human owner may separately choose one of two evidence routes:
-
-1. locate and qualify an admissible independent dataset; or
-2. authorize and commission the synchronized measurement package already
-   defined by VAL-DATA-001.
+The human owner may act only on the bounded SCI-ED-003 options above. Stage F
+would require separate authorization; Stage D remains conditional, not sized,
+not frozen, and not authorized.
 
 Neither route is authorized by this roadmap. Experimental commissioning,
 protected or holdout scoring, VAL-CASE-002, and new governing physics remain

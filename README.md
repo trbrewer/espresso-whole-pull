@@ -2,12 +2,14 @@
 
 OpenFOAM-based research solver for espresso-puck wetting, porous flow, extraction, and multiscale integration with Puckworks.
 
-> **Research software:** Hydraulic integration through static radial
-> heterogeneity and saturated quasi-static compaction are merged. The source-
-> specific comparison program has progressed through VAL-CORPUS-002. No
-> solver or surrogate task is active. The current scientific gate is direct
-> paired measurement feasibility, beginning with paired inventory and species-
-> fraction feasibility preparation. Physical validation is **NOT_ESTABLISHED**.
+> **Current research status:** SCI-ED-003 is complete with status
+> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`. Its closure contract
+> selects M01 paired absolute chemistry/mass closure plus contextual M02
+> synchronized shot telemetry as a future candidate. The current repository
+> item is `OWNER_DECISION_PENDING`; neither Stage F nor Stage D is authorized,
+> separate owner authorization is required for execution, no automatic
+> successor exists, and no solver, surrogate, or execution task is active.
+> Physical validation remains **NOT_ESTABLISHED**.
 
 The approximately 40 g beverage endpoint at 30 s was used in the saturated-permeability calibration. It is not an independent prediction or validation target. The software does not yet predict taste.
 
