@@ -371,6 +371,6 @@
     "before laboratory or procurement recommendation",
     "before exhaustion declaration"
   ],
-  "current_claim_ceiling": "SOURCE_INTERNAL_FRACTION_WINDOW_AND_OBSERVATION_OPERATOR_QUALIFICATION",
+  "current_claim_ceiling": "SOURCE_INTERNAL_FLOW_HISTORY_QUALIFICATION_ONLY",
   "last_completed_opportunity_review": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
 }
