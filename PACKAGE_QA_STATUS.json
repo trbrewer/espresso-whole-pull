@@ -51,7 +51,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
     "source_manifest_file_count": 875,
-    "source_manifest_aggregate_sha256": "b2bf43f03388fd3411123edbd0a8998667179aeb24f2f593186256ca4d1c7ae3",
+    "source_manifest_aggregate_sha256": "5aa2c95aab00176ce2da411deaf54b890d63ac17fe1e168df6d920e2f31592e5",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -61,7 +61,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "b2bf43f03388fd3411123edbd0a8998667179aeb24f2f593186256ca4d1c7ae3",
+    "source_manifest_aggregate_source_sha256": "5aa2c95aab00176ce2da411deaf54b890d63ac17fe1e168df6d920e2f31592e5",
     "xsv_pannusch_ewp_input_mapping_001": {
       "focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_pannusch_ewp_input_mapping_001 -v",
       "focused_tests_run": 11,

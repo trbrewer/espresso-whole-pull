@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 875,
-  "total_uncompressed_bytes_excluding_manifest": 8898125,
-  "aggregate_source_sha256": "b2bf43f03388fd3411123edbd0a8998667179aeb24f2f593186256ca4d1c7ae3",
-  "aggregate_sha256": "b2bf43f03388fd3411123edbd0a8998667179aeb24f2f593186256ca4d1c7ae3",
+  "total_uncompressed_bytes_excluding_manifest": 8898030,
+  "aggregate_source_sha256": "5aa2c95aab00176ce2da411deaf54b890d63ac17fe1e168df6d920e2f31592e5",
+  "aggregate_sha256": "5aa2c95aab00176ce2da411deaf54b890d63ac17fe1e168df6d920e2f31592e5",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1539,8 +1539,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_ewp_input_mapping_001/INPUT_REGISTRY.csv": {
-      "sha256": "6291236d6d3717e5ccb15f28e65a8dfac38780147b37513a055aa91cecd96cbb",
-      "bytes": 20064,
+      "sha256": "be3fe6530bcbbae14308f301678eeed2935b5bffe85e78322526abdb36593dfe",
+      "bytes": 20002,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_ewp_input_mapping_001/MAPPING_DECISION.json": {
@@ -1549,8 +1549,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_ewp_input_mapping_001/MAPPING_MATRIX.csv": {
-      "sha256": "b9051c8211d180636d3f85a32f45a0b298c6f558a5da684723e8fe00319154ac",
-      "bytes": 9090,
+      "sha256": "e2737d9921efd8d5f253be380faf49c351c16f798ce562dd7a5c828ca83b0180",
+      "bytes": 9057,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_ewp_input_mapping_001/REPOSITORY_AUTHORITY.json": {
