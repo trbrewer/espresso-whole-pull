@@ -426,7 +426,7 @@
         "component results"
       ],
       "task_id": "SCI-DATA-FUSION-001",
-      "current_evidence": "Merged component results and completed Pannusch-to-EWP mapping audit satisfy the existing component-results prerequisite; selection/readiness is not implementation authorization",
+      "current_evidence": "Exact audited Phase B completed from e3cb32856aa994e44e1af3aefc6fecff573818f1; 39-family census and 25 detailed supports established source-conditioned complementarity only, with no common constraint, compatible uncertainty support, or EWP narrowing",
       "expected_information": "cross-corpus constraints",
       "positive_action": "integrate",
       "negative_action": "keep corpora separate",
@@ -441,7 +441,9 @@
       "exhausted_for_decision": true,
       "exhaustion_decision": "cross-corpus route exhausted; sources remain conditioned alternatives",
       "review_trigger": "prerequisites complete",
-      "notes": "Completed under CROSS_CORPUS_COMPONENT_EVIDENCE; no production adoption or physical validation."
+      "notes": "Completed under CROSS_CORPUS_COMPONENT_EVIDENCE; no production adoption, laboratory authorization, or physical validation.",
+      "result": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
+      "next_action": "SCI-ED-003"
     },
     {
       "opportunity_id": "SCI-ED-003",
@@ -451,13 +453,13 @@
       ],
       "scientific_question": "Which minimum measurement closes the controlling absolute quantity?",
       "model_component": "absolute closure",
-      "status": "DEFERRED_BY_HIGHER_VALUE_EXISTING_DATA_TASKS",
+      "status": "READY",
       "priority": 8,
       "prerequisites": [
-        "existing-data successors"
+        "SCI-DATA-FUSION-001 named existing-data fusion decision exhausted"
       ],
       "task_id": "SCI-ED-003",
-      "current_evidence": "PANNUSCH-PRIOR-IMPACT-001",
+      "current_evidence": "Completed SCI-DATA-FUSION-001 decision/result: the named existing-data fusion decision is exhausted and identifies unresolved targeted closure requirements",
       "expected_information": "minimum closure measurement",
       "positive_action": "prepare nonoperational contract",
       "negative_action": "continue analysis",
@@ -469,7 +471,7 @@
       "exhausted_for_decision": false,
       "exhaustion_decision": null,
       "review_trigger": "specific closure blocker controls",
-      "notes": "No operation authorized."
+      "notes": "READY targeted closure-contract task only; not implemented and requires separate owner authorization. No laboratory operation authorized."
     },
     {
       "opportunity_id": "INDEPENDENT-TRANSFER-TIER",
@@ -514,5 +516,5 @@
     "before exhaustion declaration"
   ],
   "current_claim_ceiling": "CLOSURE_CONTRACT_ONLY",
-  "last_completed_opportunity_review": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001"
+  "last_completed_opportunity_review": "SCI-DATA-FUSION-001"
 }

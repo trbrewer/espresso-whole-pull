@@ -1,6 +1,20 @@
 # Existing Data Leverage Programme
 
+## Current programme state (2026-09-02)
+
+`SCI-DATA-FUSION-001` is `COMPLETE_NEGATIVE` with exact disposition
+`SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`. No common
+cross-corpus constraint, compatible uncertainty support, authorized EWP-domain
+narrowing, or EWP-output-envelope narrowing was established; the named fusion
+decision is exhausted. `SCI-ED-003` is the current priority and is `READY` only
+for a bounded targeted closure contract under `CLOSURE_CONTRACT_ONLY`. It is
+not implemented or separately authorized, and no laboratory operation is
+authorized. No further Pannusch or data-fusion cleanup is selected.
+
 ## Pannusch-to-EWP input-mapping result (2026-09-01)
+
+This section records the historical current state on 2026-09-01 and is
+superseded by the current programme state above.
 
 `XSV-PANNUSCH-EWP-INPUT-MAPPING-001` is complete negative after C1. Twenty-one
 plausible operational mappings were adjudicated and none qualified; six genuine

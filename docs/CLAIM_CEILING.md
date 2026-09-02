@@ -1,5 +1,12 @@
 # Claim Ceiling
 
+Current programme priority `SCI-ED-003` is limited to
+`CLOSURE_CONTRACT_ONLY`. It is `READY` but not implemented or separately
+authorized and does not authorize laboratory operation. The completed
+`SCI-DATA-FUSION-001` result establishes source-conditioned complementarity
+only: no common constraint, compatible uncertainty support, EWP-domain
+narrowing, EWP-output narrowing, production adoption, or physical validation.
+
 `EWP-REAL-WORLD-BOUNDARIES-001` stopped before boundary construction because
 all canonical Visualizer device/sensor and integration mappings were unresolved.
 It earns no cohort-library, EWP-transfer, porosity-materiality, population,
