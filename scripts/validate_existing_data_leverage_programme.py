@@ -22,7 +22,9 @@ def validate():
     selected_is_completed_owner_decision = (
         selected["status"].startswith("COMPLETE_")
         and data.get("last_completed_opportunity_review") == data["current_priority"]
+        and not data["laboratory_gate"]["operation_authorized"]
         and data["laboratory_gate"]["separate_owner_authorization_required"]
+        and data["home_lab_status"] == "DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION"
     )
     assert selected_is_open or selected_is_completed_owner_decision, (
         "current priority must be ready/active or the completed task awaiting a separate owner decision"

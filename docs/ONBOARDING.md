@@ -1,9 +1,13 @@
 # Onboarding
 
-Current authority covers 39/39 reviewed families. The Visualizer route is
-closed at its unresolved boundary-interface mapping. The completed bounded
-Pannusch window task selects `SCI-MD-PANNUSCH-FLOW-HISTORY-001`; keep
-Wadsworth/Vaca separate and defer home-lab work.
+SCI-DATA-FUSION-001 is complete negative and its named cross-corpus decision is
+exhausted. SCI-ED-003 is complete with status
+`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; M01 plus contextual M02 is
+the selected future candidate. The current item is the bounded owner decision
+to authorize Stage F feasibility, decline execution, or request specific
+apparatus/laboratory capability input. Laboratory and home-lab operation remain
+unauthorized, execution requires separate owner authorization, and no execution
+successor is automatically selected.
 
 Read `README.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, the
 [current scientific execution plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md),
@@ -17,9 +21,10 @@ Before substantive science or new measurement, also read
 preflight. External data unavailable in the checkout are not absent.
 Also read `strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md`,
 `../provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json`, and
-`analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv`. Current priority after the
-qualified null window result is `SCI-MD-PANNUSCH-FLOW-HISTORY-001`; it is
-selected, not implemented here, and home-lab operation remains deferred.
+`analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv`. The current programme item is
+the completed SCI-ED-003 contract awaiting the bounded owner decision. Stage F
+and Stage D both require separate owner authorization; physical validation
+remains `NOT_ESTABLISHED`.
 
 For validation work, also read the
 [Validation Operating Standard v1](validation/VALIDATION_OPERATING_STANDARD_V1.md)

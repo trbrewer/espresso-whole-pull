@@ -15,10 +15,11 @@ selected or authorized.
 `SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`. No common
 cross-corpus constraint, compatible uncertainty support, authorized EWP-domain
 narrowing, or EWP-output-envelope narrowing was established; the named fusion
-decision is exhausted. `SCI-ED-003` is the current priority and is `READY` only
-for a bounded targeted closure contract under `CLOSURE_CONTRACT_ONLY`. It is
-not implemented or separately authorized, and no laboratory operation is
-authorized. No further Pannusch or data-fusion cleanup is selected.
+decision is exhausted. SCI-ED-003 is complete under `CLOSURE_CONTRACT_ONLY`.
+Neither Stage F nor Stage D is authorized; execution requires separate owner
+authorization. No further Pannusch or data-fusion cleanup is selected. Current home-lab status is
+`DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION`. Physical validation
+remains `NOT_ESTABLISHED`.
 
 ## Pannusch-to-EWP input-mapping result (2026-09-01)
 
@@ -135,12 +136,13 @@ fusion; experiment reduction; absolute closure; independent validation.
 2. OBS-PANNUSCH-FRACTION-WINDOW-001 — complete null.
 3. SCI-MD-PANNUSCH-FLOW-HISTORY-001 — complete, flow authority ineligible.
 4. XSV-PANNUSCH-EWP-INPUT-MAPPING-001 — complete negative after C1; independent input treatments preserved.
-5. Cross-corpus boundary/uncertainty integration.
-6. SCI-ED-003 targeted closure contract.
-7. Prospectively independent transfer tier.
+5. SCI-DATA-FUSION-001 cross-corpus integration — complete negative; named route exhausted.
+6. SCI-ED-003 targeted closure contract — complete.
+7. Bounded owner decision — pending; no execution task automatically selected or authorized.
+8. Prospectively independent transfer tier — later, after separately authorized prerequisites.
 
 The sequence is conditional and each result updates it. Current home-lab status
-is `DEFER_HOME_LAB_EXISTING_DATA_NOT_YET_EXHAUSTED`.
+is `DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION`.
 
 ## Exhaustion and laboratory gate
 

@@ -1,19 +1,20 @@
 # Claim Ceiling
 
-SCI-ED-003 defines only a `CLOSURE_CONTRACT_ONLY` design with status
+## Current claim ceiling (2026-09-02)
+
+The current claim ceiling is `CLOSURE_CONTRACT_ONLY`. SCI-ED-003 is complete
+with exact result
+`SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED`
+and status
 `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`. It identifies M01 plus the
-contextual M02 subset as a Pareto-minimal future candidate, but authorizes no
+contextual M02 subset as the selected future candidate, but authorizes no
 operation, procurement, collection, model change, parameter adoption, bridge,
 predictor, or protected comparison. `I_ref_EQUALS_PRODUCTION_M0` and
 `c_s0_MAPPING` remain `NOT_ESTABLISHED`; physical validation remains
-`NOT_ESTABLISHED`.
-
-Current programme priority `SCI-ED-003` is limited to
-`CLOSURE_CONTRACT_ONLY`. It is `READY` but not implemented or separately
-authorized and does not authorize laboratory operation. The completed
-`SCI-DATA-FUSION-001` result establishes source-conditioned complementarity
-only: no common constraint, compatible uncertainty support, EWP-domain
-narrowing, EWP-output narrowing, production adoption, or physical validation.
+`NOT_ESTABLISHED`. The current repository item is `OWNER_DECISION_PENDING`:
+authorize Stage F feasibility, decline execution, or request specific
+apparatus/laboratory capability input. Execution requires separate owner
+authorization; no execution successor is automatically selected or authorized.
 
 `EWP-REAL-WORLD-BOUNDARIES-001` stopped before boundary construction because
 all canonical Visualizer device/sensor and integration mappings were unresolved.

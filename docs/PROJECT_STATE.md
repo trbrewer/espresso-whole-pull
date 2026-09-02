@@ -13,16 +13,21 @@ execution, physics/default/parameter change, inventory predictor, or `c_s0`
 mapping occurred. Physical validation remains `NOT_ESTABLISHED`; the old
 SCI-DATA-FUSION-001 feature branch remains untouched.
 
-## Current scientific-development priority (2026-09-02)
+## Current owner decision (2026-09-02)
 
 `SCI-DATA-FUSION-001` is complete as
 `SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`: no common
 constraint, compatible uncertainty support, EWP-domain narrowing, or EWP-output
 narrowing was established. Its named existing-data decision is exhausted.
-`SCI-ED-003` is the current `READY` successor for a targeted closure contract
-under `CLOSURE_CONTRACT_ONLY`; it is not implemented or separately authorized.
-Home-lab operation remains unauthorized, and another Pannusch or data-fusion
-cleanup is not selected.
+SCI-ED-003 is complete. The current repository item is
+`OWNER_DECISION_PENDING`: authorize Stage F feasibility, decline execution, or
+request specific apparatus/laboratory capability input. Stage F is designed but
+not authorized and nonadjudicative. Stage D is conditional, not sized, not
+frozen, not authorized, and requires Stage F plus separate owner authorization.
+No execution successor is automatically selected or authorized. Home-lab
+status is `DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION`, and another
+Pannusch or data-fusion cleanup is not selected. Physical validation remains
+`NOT_ESTABLISHED`.
 
 ## XSV-PANNUSCH-EWP-INPUT-MAPPING-001 result (2026-09-01)
 

@@ -3,7 +3,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 SCRIPT=ROOT/"scripts/validate_sci_ed_003.py"
-FILES=["docs/analysis/sci_ed_003","docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md","docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv","docs/PROJECT_STATE.md","docs/CLAIM_CEILING.md"]
+FILES=["docs/analysis/sci_ed_003","docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md","docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md","docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv","docs/PROJECT_STATE.md","docs/CLAIM_CEILING.md","docs/ONBOARDING.md","AGENTS.md","provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json"]
 
 class SciEd003Test(unittest.TestCase):
     def run_validator(self,root): return subprocess.run([sys.executable,str(SCRIPT),"--root",str(root)],text=True,capture_output=True)
@@ -32,5 +32,13 @@ class SciEd003Test(unittest.TestCase):
     def test_technical_replicate_pseudoreplication_rejected(self):
         def edit(root):
             p=root/"docs/analysis/sci_ed_003/MEASUREMENT_MODULES.json"; x=json.loads(p.read_text()); x["replication_contract"].pop("not_independent_shots"); p.write_text(json.dumps(x))
+        self.mutate(edit)
+    def test_active_ready_not_implemented_regression_rejected(self):
+        def edit(root):
+            p=root/"AGENTS.md"; p.write_text(p.read_text().replace("SCI-ED-003 is complete", "SCI-ED-003 is READY and not implemented", 1))
+        self.mutate(edit)
+    def test_stale_pannusch_current_priority_rejected(self):
+        def edit(root):
+            p=root/"docs/ONBOARDING.md"; p.write_text(p.read_text().replace("SCI-DATA-FUSION-001 is complete", "SCI-MD-PANNUSCH-FLOW-HISTORY-001 is current. SCI-DATA-FUSION-001 is complete", 1))
         self.mutate(edit)
 if __name__=="__main__": unittest.main()

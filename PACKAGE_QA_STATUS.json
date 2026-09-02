@@ -7,6 +7,7 @@
   "canonical_identity_role": "LAST_SUBSTANTIVE_SCIENTIFIC_MERGE_BASE",
   "live_repository_identity": "RESOLVE_HEAD_AND_TREE_FROM_GIT",
   "sci_ed_003": {
+    "correction_result": "SCI_ED_003_C1_CURRENT_STATE_RECONCILED_SCIENTIFIC_CONTRACT_UNCHANGED_EXECUTION_NOT_AUTHORIZED",
     "status": "CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED",
     "result": "SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED",
     "governance_class": "G0",
@@ -16,19 +17,19 @@
     "physical_validation": "NOT_ESTABLISHED",
     "qa_identity": "RESOLVE_FROM_EXACT_HEAD_QA",
     "focused_validator": "PASS",
-    "focused_tests_run": 5,
-    "focused_tests_passed": 5,
+    "focused_tests_run": 7,
+    "focused_tests_passed": 7,
     "static_gates_passed": 39,
     "existing_data_programme_validator": "PASS",
-    "complete_suite_tests_run": 1237,
-    "complete_suite_passed": 1232,
+    "complete_suite_tests_run": 1259,
+    "complete_suite_passed": 1255,
     "complete_suite_skipped": 4,
     "complete_suite_failures": 0,
-    "complete_suite_errors": 1,
-    "complete_suite_status": "ENVIRONMENT_CONDITIONED_INCOMPLETE",
-    "complete_suite_note": "Exact porosity Puckworks authority commit/tree exists locally only in a sparse worktree missing required cards; no Puckworks mutation was permitted. All task-focused and affected tests pass.",
+    "complete_suite_errors": 0,
+    "complete_suite_status": "PASS",
+    "complete_suite_note": "The task-pinned Puckworks authority was verified separately. The historical porosity tests passed against their own exact authority in an isolated read-only checkout; no protected Puckworks worktree mutation occurred.",
     "source_manifest_file_count": 950,
-    "source_manifest_aggregate_sha256": "3eca3a1fabb2e75706e7b4c509863196577564b37cb1008a755546ef7fdad875"
+    "source_manifest_aggregate_sha256": "5632e1ab34d1a9556debedb817b792e7733e4675b0be1ff74f9dda645de62aa4"
   },
   "release_scope": {
     "scientific_milestone": "WP-0.2F",
@@ -54,7 +55,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1256,
+    "python_test_count": 1259,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -75,7 +76,7 @@
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
     "source_manifest_file_count": 950,
-    "source_manifest_aggregate_sha256": "3eca3a1fabb2e75706e7b4c509863196577564b37cb1008a755546ef7fdad875",
+    "source_manifest_aggregate_sha256": "5632e1ab34d1a9556debedb817b792e7733e4675b0be1ff74f9dda645de62aa4",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -85,7 +86,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "3eca3a1fabb2e75706e7b4c509863196577564b37cb1008a755546ef7fdad875",
+    "source_manifest_aggregate_source_sha256": "5632e1ab34d1a9556debedb817b792e7733e4675b0be1ff74f9dda645de62aa4",
     "sci_data_fusion_001_c1": {
       "disposition": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
       "focused_tests_run": 51,

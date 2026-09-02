@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 950,
-  "total_uncompressed_bytes_excluding_manifest": 9470902,
-  "aggregate_source_sha256": "3eca3a1fabb2e75706e7b4c509863196577564b37cb1008a755546ef7fdad875",
-  "aggregate_sha256": "3eca3a1fabb2e75706e7b4c509863196577564b37cb1008a755546ef7fdad875",
+  "total_uncompressed_bytes_excluding_manifest": 9475827,
+  "aggregate_source_sha256": "5632e1ab34d1a9556debedb817b792e7733e4675b0be1ff74f9dda645de62aa4",
+  "aggregate_sha256": "5632e1ab34d1a9556debedb817b792e7733e4675b0be1ff74f9dda645de62aa4",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2364,8 +2364,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md": {
-      "sha256": "00caeecc2c4c9ad4d8dce3a194df7ea3c1189086db0952649529ff2cd9982021",
-      "bytes": 2490,
+      "sha256": "140ba15a6ba78d4d07c7b1cf56b0b47f2a04e680c9ebe434a9867d00592f67cf",
+      "bytes": 2811,
       "git_mode": "100644"
     },
     "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": {
@@ -2374,8 +2374,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "375f5f7486b91f25591c437ad43d8979bfc6d69a1aa7c750d710411ed75145c7",
-      "bytes": 9581,
+      "sha256": "9bf538b8e1a381e2e23dd874f1f08348ff0070ed376a5ec26dc72f454cc99687",
+      "bytes": 9855,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -3219,8 +3219,8 @@
       "git_mode": "100644"
     },
     "schemas/existing_data_leverage_programme.schema.json": {
-      "sha256": "9366a62cda3a52514a072010b66a4c1db5034b4446fa08f885abfbd1e04d4b4c",
-      "bytes": 2573,
+      "sha256": "c26929c3a3a13e8b7666c0088938587490c47c40bf3e84543f29782e72d3cc38",
+      "bytes": 2575,
       "git_mode": "100644"
     },
     "schemas/sci_data_fusion_001_audit_record.schema.json": {
@@ -3664,8 +3664,8 @@
       "git_mode": "100755"
     },
     "scripts/validate_existing_data_leverage_programme.py": {
-      "sha256": "e739fc15c3196f8fca7319113e5b904aabe6980fbcecdc5c70a0e6519032d49e",
-      "bytes": 2771,
+      "sha256": "9f8f9cc18646ccfeb5da91065d8ccb68c373e137f89ab88454660317cf2f2b0c",
+      "bytes": 2932,
       "git_mode": "100755"
     },
     "scripts/validate_local_data_corpus_authority.py": {
@@ -3679,8 +3679,8 @@
       "git_mode": "100755"
     },
     "scripts/validate_sci_ed_003.py": {
-      "sha256": "2f3ace5f7457ebdb98ee2393af94f7616ce5fd4b5fabce47efa06d003a698c02",
-      "bytes": 6803,
+      "sha256": "87af041852e4b3a4cbf4ffc2348b31ecf58605a95a432074b4309a88b887f8be",
+      "bytes": 9266,
       "git_mode": "100755"
     },
     "scripts/validate_sci_lc_001a_ledger.py": {
@@ -3974,8 +3974,8 @@
       "git_mode": "100644"
     },
     "tests/test_espresso_corpus_leverage_002_c1.py": {
-      "sha256": "79b87fddd81e8b9cb2db7ef88824d5885be36806184474d4e00d10bfb33c93cf",
-      "bytes": 1244,
+      "sha256": "d2833e26a491087a725bb57750076c833af00b09b1cf6e263293aea524cb61e2",
+      "bytes": 1246,
       "git_mode": "100644"
     },
     "tests/test_ewp_porosity_permeability_prior_001.py": {
@@ -3989,8 +3989,8 @@
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {
-      "sha256": "9b9f2182f288474ebce72bfd195bb344b0182b94b074b9b91651987aaa7747b0",
-      "bytes": 5155,
+      "sha256": "ac299bc854f3990b50bce6af9f8b0a64aaf7e4f08c07099cb93e54fbdd283e8b",
+      "bytes": 6161,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
@@ -4044,8 +4044,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_ed_003.py": {
-      "sha256": "afbf63bf4c44f043a3661b20be8dc1957e913a851cf6f3e9d61b0778777b77b7",
-      "bytes": 2338,
+      "sha256": "bb60ae36ec287053d896183a93b46c60c0e14b9208eac4a67a34429b9799d5a8",
+      "bytes": 3034,
       "git_mode": "100644"
     },
     "tests/test_sci_lc_001a_executor.py": {

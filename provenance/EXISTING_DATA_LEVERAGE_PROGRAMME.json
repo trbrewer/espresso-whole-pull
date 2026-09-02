@@ -3,7 +3,7 @@
   "schema_version": 1,
   "programme_id": "ESPRESSO-EXISTING-DATA-LEVERAGE-PROGRAMME",
   "current_priority": "SCI-ED-003",
-  "home_lab_status": "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY",
+  "home_lab_status": "DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION",
   "authorities": {
     "puckworks_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
     "puckworks_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",

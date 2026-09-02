@@ -1,18 +1,15 @@
 # Public Repository Agent Rules
 
 SCI-ED-003 is complete with status
-`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`. The Pareto-minimal future
+`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`. The selected future
 candidate is M01 paired absolute chemistry/mass closure plus the contextual
-subset of M02 synchronized shot telemetry. No execution task is automatically
-selected or authorized; physical validation remains `NOT_ESTABLISHED`.
-
-`SCI-DATA-FUSION-001` is complete as
-`SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`; its named
-decision is exhausted with no common constraint or EWP narrowing. Current
-priority `SCI-ED-003` is `READY` only for a bounded targeted closure contract
-under `CLOSURE_CONTRACT_ONLY`; it is not implemented or separately authorized.
-No further Pannusch or data-fusion cleanup is selected. Visualizer and home-lab
-restrictions remain unchanged, and no production adoption occurred.
+subset of M02 synchronized shot telemetry. Neither Stage F nor Stage D is
+authorized; either would require separate owner authorization. The current
+action is the bounded owner decision to authorize
+Stage F feasibility, decline execution, or request specific apparatus or
+laboratory capability input. No execution successor is automatically selected,
+no further Pannusch or data-fusion cleanup is selected, and physical validation
+remains `NOT_ESTABLISHED`.
 
 Scientific-development governance follows
 `docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md`.
@@ -42,4 +39,7 @@ controls require an explicit owner exception tied to a named risk.
 
 ## SCI-DATA-FUSION-001 deterministic closeout
 
-Completed as `SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`; next action is `SCI-ED-003`. Home-lab operation remains unauthorized.
+Completed as `SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`;
+its historical selection of SCI-ED-003 has now been completed. The current
+item is the bounded owner decision, not an automatically authorized successor.
+Home-lab operation remains unauthorized.

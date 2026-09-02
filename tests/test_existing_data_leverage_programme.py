@@ -11,7 +11,7 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         self.assertEqual(data["current_priority"], "SCI-ED-003")
         self.assertEqual(data["last_completed_opportunity_review"], "SCI-ED-003")
         self.assertEqual(data["current_claim_ceiling"], "CLOSURE_CONTRACT_ONLY")
-        self.assertEqual(data["home_lab_status"], "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY")
+        self.assertEqual(data["home_lab_status"], "DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION")
 
     @classmethod
     def setUpClass(cls):
@@ -45,6 +45,7 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         self.assertIn("EXECUTION_NOT_AUTHORIZED", successor["notes"])
         self.assertIn("NOT_ESTABLISHED", successor["notes"])
         self.assertFalse(self.programme["laboratory_gate"]["operation_authorized"])
+        self.assertTrue(self.programme["laboratory_gate"]["separate_owner_authorization_required"])
 
     def test_completed_review_and_artifact_hashes(self):
         self.assertEqual(self.programme["last_completed_opportunity_review"], "SCI-ED-003")
@@ -71,10 +72,22 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         self.assertEqual(changed, "")
 
     def test_human_current_state_agreement(self):
-        paths = ["docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md", "docs/PROJECT_STATE.md", "docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md", "docs/CLAIM_CEILING.md", "AGENTS.md"]
-        text = "\n".join((ROOT / path).read_text() for path in paths)
-        self.assertIn("SCI-ED-003", text)
-        self.assertIn("CLOSURE_CONTRACT_ONLY", text)
-        self.assertIn("not implemented", text.lower())
-        self.assertIn("not implemented or separately authorized", text.lower())
-        self.assertIn("Home-lab operation remains unauthorized", text)
+        sections = {
+            "AGENTS.md": (ROOT / "AGENTS.md").read_text().split("Scientific-development governance", 1)[0],
+            "docs/PROJECT_STATE.md": (ROOT / "docs/PROJECT_STATE.md").read_text().split("## XSV-PANNUSCH", 1)[0],
+            "docs/CLAIM_CEILING.md": (ROOT / "docs/CLAIM_CEILING.md").read_text().split("`EWP-REAL-WORLD", 1)[0],
+            "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": (ROOT / "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md").read_text().split("## Pannusch-to-EWP", 1)[0],
+            "docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md": (ROOT / "docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md").read_text().split("Before substantive", 1)[0],
+            "docs/ONBOARDING.md": (ROOT / "docs/ONBOARDING.md").read_text().split("For validation work", 1)[0],
+        }
+        for text in sections.values():
+            lower = text.lower()
+            normalized = lower.replace("_", " ")
+            self.assertIn("sci-ed-003", lower)
+            self.assertIn("complete", lower)
+            self.assertTrue("unauthorized" in lower or "not_authorized" in lower)
+            self.assertIn("owner decision", normalized)
+            self.assertNotIn("sci-ed-003` is `ready", lower)
+            self.assertNotIn("sci-ed-003 is ready", lower)
+            self.assertNotIn("sci-ed-003 is not implemented", lower)
+        self.assertNotIn("sci-md-pannusch-flow-history-001", sections["docs/ONBOARDING.md"].lower())
