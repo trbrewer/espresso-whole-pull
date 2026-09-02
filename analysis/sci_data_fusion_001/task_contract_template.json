@@ -21,7 +21,8 @@
   "candidate_discovery": {
     "ewp": "all support, boundary, uncertainty, operator, and exclusion records in the enumerated consumed completed-result artifacts",
     "puckworks": "full exact LOCAL_CORPUS_FAMILY_INDEX and AVAILABLE_DATA_REGISTER metadata scan for quantities matching already-qualified EWP components",
-    "eligible_completed_statuses": ["COMPLETE", "COMPLETE_NULL", "COMPLETE_INELIGIBLE", "COMPLETE_POSITIVE_POROSITY_ONLY", "BLOCKED"],
+    "eligible_completed_statuses": ["COMPLETE_NEGATIVE", "COMPLETE_POSITIVE", "COMPLETE_NULL", "BLOCKED_DATA_JOIN"],
+    "status_normalization": {"COMPLETE_NEGATIVE":"COMPLETED_COMPONENT_RESULT", "COMPLETE_POSITIVE":"COMPLETED_COMPONENT_RESULT", "COMPLETE_NULL":"COMPLETED_COMPONENT_RESULT", "BLOCKED_DATA_JOIN":"COMPLETED_BLOCKED_COMPONENT_RESULT", "READY":"NOT_COMPLETED", "PROPOSED":"NOT_COMPLETED", "PROPOSED_CONDITIONAL_FIFTH_PRIORITY":"NOT_COMPLETED", "DEFERRED_BY_HIGHER_PRIORITY":"NOT_COMPLETED", "DEFERRED_BY_HIGHER_VALUE_EXISTING_DATA_TASKS":"NOT_COMPLETED", "READY_FOR_BOUNDARY_LIBRARY_AND_DESCRIPTIVE_HYDRAULIC_ANALYSIS":"NOT_COMPLETED"},
     "unqualified_family_role": "CANDIDATE_OR_SUCCESSOR_ONLY",
     "raw_literature_reconstruction": "PROHIBITED"
   },
@@ -74,4 +75,3 @@
   "claim_wording": "Cross-corpus component evidence only; source identities, states, populations, operators, and correlation structures remain explicit.",
   "nonclaims": ["whole-model validation", "universal transfer", "population representativeness", "universal prior", "physical validation", "coupled grinder-to-cup validation", "improved predictive accuracy", "production readiness", "production adoption"]
 }
-

@@ -18,15 +18,26 @@
   },
   "candidate_discovery": {
     "eligible_completed_statuses": [
-      "COMPLETE",
+      "COMPLETE_NEGATIVE",
+      "COMPLETE_POSITIVE",
       "COMPLETE_NULL",
-      "COMPLETE_INELIGIBLE",
-      "COMPLETE_POSITIVE_POROSITY_ONLY",
-      "BLOCKED"
+      "BLOCKED_DATA_JOIN"
     ],
     "ewp": "all support, boundary, uncertainty, operator, and exclusion records in the enumerated consumed completed-result artifacts",
     "puckworks": "full exact LOCAL_CORPUS_FAMILY_INDEX and AVAILABLE_DATA_REGISTER metadata scan for quantities matching already-qualified EWP components",
     "raw_literature_reconstruction": "PROHIBITED",
+    "status_normalization": {
+      "BLOCKED_DATA_JOIN": "COMPLETED_BLOCKED_COMPONENT_RESULT",
+      "COMPLETE_NEGATIVE": "COMPLETED_COMPONENT_RESULT",
+      "COMPLETE_NULL": "COMPLETED_COMPONENT_RESULT",
+      "COMPLETE_POSITIVE": "COMPLETED_COMPONENT_RESULT",
+      "DEFERRED_BY_HIGHER_PRIORITY": "NOT_COMPLETED",
+      "DEFERRED_BY_HIGHER_VALUE_EXISTING_DATA_TASKS": "NOT_COMPLETED",
+      "PROPOSED": "NOT_COMPLETED",
+      "PROPOSED_CONDITIONAL_FIFTH_PRIORITY": "NOT_COMPLETED",
+      "READY": "NOT_COMPLETED",
+      "READY_FOR_BOUNDARY_LIBRARY_AND_DESCRIPTIVE_HYDRAULIC_ANALYSIS": "NOT_COMPLETED"
+    },
     "unqualified_family_role": "CANDIDATE_OR_SUCCESSOR_ONLY"
   },
   "canonical_quantity_required_fields": [

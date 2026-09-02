@@ -1,7 +1,3 @@
-def independently_eligible(left: dict, right: dict) -> bool:
-    return bool(left.get("eligible") and right.get("eligible") and
-                left.get("lineage_id") != right.get("lineage_id") and
-                left.get("correlation_group_id") != right.get("correlation_group_id") and
-                not left.get("target_exposed") and not right.get("target_exposed") and
-                not left.get("source_internal_validation") and not right.get("source_internal_validation"))
-
+def pair_independence(left,right):
+    gates={"eligible_roles":left.get("frozen_role")==right.get("frozen_role")=="COMMON_CONSTRAINT_CANDIDATE","distinct_lineage":bool(left.get("lineage_id") and right.get("lineage_id") and left["lineage_id"]!=right["lineage_id"]),"distinct_correlation_group":bool(left.get("correlation_group_id") and right.get("correlation_group_id") and left["correlation_group_id"]!=right["correlation_group_id"]),"target_exposure_permitted":not left.get("target_exposed") and not right.get("target_exposed"),"source_internal_permitted":not left.get("source_internal_validation") and not right.get("source_internal_validation"),"consumed_comparison_permitted":not left.get("consumed_comparison_conflict") and not right.get("consumed_comparison_conflict"),"provenance_complete":bool(left.get("provenance_complete") and right.get("provenance_complete")),"rights_permit_analysis":bool(left.get("rights_permit_analysis") and right.get("rights_permit_analysis")),"distinct_experiment":left.get("experiment_id")!=right.get("experiment_id")}
+    return {"left_support_id":left["support_id"],"right_support_id":right["support_id"],"gates":gates,"independent_for_common_constraint":all(gates.values()),"context_roles_preserved":True}

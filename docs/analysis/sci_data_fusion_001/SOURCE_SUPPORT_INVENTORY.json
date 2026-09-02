@@ -1,23 +1,5 @@
 {
-  "pairwise_gate_contracts": {
-    "VACA_TABLE_C1_EPSILON_0|WADSWORTH_TOTAL_XCT_POROSITY": {
-      "correlation_group": true,
-      "ewp_consumer": true,
-      "independence_target_exposure": true,
-      "lineage": true,
-      "no_new_inference": false,
-      "observation_operator": false,
-      "physical_quantity": null,
-      "population_regime": false,
-      "provenance_rights": true,
-      "reference_state": false,
-      "source_internal_role": true,
-      "spatial_support": false,
-      "temporal_support": false,
-      "unit_basis": true
-    }
-  },
-  "support_candidates": [
+  "records": [
     {
       "apparatus_identity": "UNKNOWN_NOT_INFERRED",
       "basis": "UNKNOWN_NOT_INFERRED",

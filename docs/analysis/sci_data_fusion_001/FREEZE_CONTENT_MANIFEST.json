@@ -1,0 +1,196 @@
+{
+  "files": [
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/__init__.py",
+      "sha256": "86862c6604713b4b883fcfc1cb8218f1a756ddf3221f2566e0ac95a55c8db449"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/audit.py",
+      "sha256": "4686faff8488d6b2e6f45fca01b6b558492594b80c35d728bf5777f3d295bfdd"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/authority.py",
+      "sha256": "ae668f8f8dedff668b050375487f1600163b5241d505e83cfb6fb12d5fa930b0"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/closeout.py",
+      "sha256": "157d0e53f73b09a98a7e4535f778633eabd0dc1859ca7ec51f5f3445fe112590"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/compatibility.py",
+      "sha256": "be44180be30bd0b9e60900a87f127df59d50d1f14a55b9916a850c84916710b7"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/constraints.py",
+      "sha256": "e01ff2d93f843a5e7bef53a7e2fb4cef63a7537826134f174476a61f27da0a53"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/decision.py",
+      "sha256": "8e8952fcfc106d2ffcc268586eb64f2850984f72cecc646b8eb02e0bc8fe4d1d"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/execution_plan.json",
+      "sha256": "50e7c03b973b9df4f278c65ac5c015a4d240da2c749cdd6baead6a548e14d388"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/extraction.py",
+      "sha256": "60b4e7708b30221ba8f06cf7cca3502f93cd007058cd231ab1f0a67f2c578bdb"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/family_screen_rules.json",
+      "sha256": "dd3fdcacdb10788c559cfff06be9359a1f770523a3821199a91d8fefe9a23a2d"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/freeze_inputs.json",
+      "sha256": "b7f75d1d56ca2427ecfadbbd184b5c1c592008712048f17afe84ecef49cdd732"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/inventory.py",
+      "sha256": "1435f02636e171a467ce0f070d9ebf7179c3c1c97e87711541c8511fdd395c32"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/lineage.py",
+      "sha256": "8d961ec8c083de2b50eb1ae0859c733d01b7b18d20a507223ffaec7a6df7af13"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/phase_b.py",
+      "sha256": "6ab339f4676f36bd096c8adf1bf5c61748cfcf063e035eb5f38eb6f26ed7a314"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/preexecution.py",
+      "sha256": "f0e96364e8a9ac775696eac40e700a5d68711a286b0ffb64546f495e10aaa2a4"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/run.py",
+      "sha256": "cac4c3bfcc1f50fbf16f13f146d04927f1eb355abbd53a5ddad2fb68b7be8faa"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/support_extraction_rules.json",
+      "sha256": "436cf21efb8995bf22020f90debe484b4468730a745ce5e966a51558488ffc18"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/support_inventory.json",
+      "sha256": "41b9fd52ded3307f4738f3eb0c14c1360129cf4066d63981087f2d86edf354b2"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/task_contract_template.json",
+      "sha256": "b81cd014b51d5dd0b19802befc9f21ae9289ef7d9bc0aea67de1cfbc72edfec9"
+    },
+    {
+      "decision_surface_role": "Phase B implementation and frozen configuration",
+      "path": "analysis/sci_data_fusion_001/uncertainty.py",
+      "sha256": "ac5dc086369982ec73253301258063d481261b26ae5f29b6a8451198cca33496"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/AUDIT_RECORD_SCHEMA.json",
+      "sha256": "afd5cc02ad1567e79c75d9eedca40013bf31fef4333889b3d95cbf840dfe93f9"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/AUTHORITY.json",
+      "sha256": "9e309a8442b9445d8ffd3b6348a283cfaaa2f235e98203f01935d533d5895ed0"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/CANDIDATE_SUPPORT_FREEZE.json",
+      "sha256": "aad79662e1b932d3e128af1351daec1649efaf5cc6f14c57e325add521c40d56"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/CANONICAL_QUANTITY_REGISTER.json",
+      "sha256": "f603089b2cf1bc4f6b33730b879641c2584adf155ebacf7f5dd9701f4f26c85a"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/CONSUMED_RESULT_ARTIFACTS.json",
+      "sha256": "5908b2b48bc94b4d85e21542121b25e128802f3c522584409f4fa7f099836c39"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/DATA_AVAILABILITY_PREFLIGHT.json",
+      "sha256": "3c370e1e22123dc6de3a33844508dac2de0a34e974ab2eaefcfe82923be99a1b"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/EXECUTION_PLAN.json",
+      "sha256": "8c1d9104ee776a5e2a5ec104c73ba66151affc0f0f4d4630df63fb859f035269"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/ISSUE_CONTRACT.md",
+      "sha256": "e8bfd3d77e8a3b0f5741f21635d38e125997034cc68d801570dae70d2462ad30"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/LINEAGE_CORRELATION_REGISTER.json",
+      "sha256": "829aeafcddf1a2f23696bf13b7a27f7b990407421ffbdde77ff238f520669fcb"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/PREEXECUTION_VALIDATION.json",
+      "sha256": "878fdba03cfc09f3bee4bcf12b4b3d49b9ebc89be24c9a2967eec91f337d9cb4"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/PUCKWORKS_DATASET_SCREEN.csv",
+      "sha256": "dff2f0ef86e91e027e3298fc9e8afb47f952aaecb55cec1917747e83696ccdcd"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/PUCKWORKS_FAMILY_SCREEN.csv",
+      "sha256": "77dabedb735c8def034ef3a63ba1111c0065d5b6babf05ede81397f19f10dba5"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/PUCKWORKS_FAMILY_SCREEN.json",
+      "sha256": "560fd14fe859f4a789d2775d26eb8ecd5873aed556a0c081b21d288977311ee9"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/SOURCE_SUPPORT_INVENTORY.csv",
+      "sha256": "45b2b79a5fa0f9a80ef0ae0e662dd1a306b2a38520880944c7f25a24f163aacd"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/SOURCE_SUPPORT_INVENTORY.json",
+      "sha256": "3acc96f64b525520f99fc74761269c2074a5a152440572883b00298f956cdf84"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/SUPPORT_EXTRACTION_RULES.json",
+      "sha256": "241ff2c6c8d33e379c284368601bda0609a95d2f7d5d3cfb6eb1c83993a0fea7"
+    },
+    {
+      "decision_surface_role": "committed pre-execution decision surface",
+      "path": "docs/analysis/sci_data_fusion_001/TASK_CONTRACT.json",
+      "sha256": "ab59b6012bf34071a95a82e0e6b301be6c48ae54186097fb2f3542f05bbb92d8"
+    },
+    {
+      "decision_surface_role": "audit gate schema",
+      "path": "schemas/sci_data_fusion_001_audit_record.schema.json",
+      "sha256": "d902dd375b01c32e9e67c337c71ae47534e6ef47d464d104a968a1bd319dea8f"
+    }
+  ],
+  "manifest_scope": "all committed paths capable of changing Phase B scientific result",
+  "task_id": "SCI-DATA-FUSION-001"
+}

@@ -1,0 +1,46 @@
+{
+  "rules": [
+    {
+      "artifact_path": "docs/analysis/ewp_porosity_permeability_prior_001/SOURCE_SUPPORTS.json",
+      "artifact_sha256": "6b87ae70328709f73f06eeba5feb8bbe91f20107195b92073799f65953dfa03c",
+      "conversion": "dimensionless identity",
+      "interval_semantics": "FULL_ACCEPTED_DESIGN_RANGE_NOT_PROBABILITY_DISTRIBUTION",
+      "maximum_json_path": [
+        "wadsworth",
+        "union",
+        "phi_total",
+        "max"
+      ],
+      "minimum_json_path": [
+        "wadsworth",
+        "union",
+        "phi_total",
+        "min"
+      ],
+      "null_treatment": "exclude source-null row exactly as predecessor",
+      "row_selection": "all non-null accepted Wadsworth rows across both source coffees",
+      "support_id": "WADSWORTH_TOTAL_XCT_POROSITY",
+      "unit_scale": 1.0
+    },
+    {
+      "artifact_path": "docs/analysis/ewp_porosity_permeability_prior_001/SOURCE_SUPPORTS.json",
+      "artifact_sha256": "6b87ae70328709f73f06eeba5feb8bbe91f20107195b92073799f65953dfa03c",
+      "conversion": "dimensionless identity",
+      "interval_semantics": "FULL_EQUAL_ROW_DESIGN_RANGE_NOT_PROBABILITY_DISTRIBUTION",
+      "maximum_json_path": [
+        "vaca_table_c1",
+        "epsilon_0",
+        "max"
+      ],
+      "minimum_json_path": [
+        "vaca_table_c1",
+        "epsilon_0",
+        "min"
+      ],
+      "null_treatment": "no null rows authorized",
+      "row_selection": "all nine accepted Table C1 operating-point rows",
+      "support_id": "VACA_TABLE_C1_EPSILON_0",
+      "unit_scale": 1.0
+    }
+  ]
+}
