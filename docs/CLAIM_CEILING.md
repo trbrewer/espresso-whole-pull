@@ -67,3 +67,7 @@ but the historical process-attempt count, retry-ceiling compliance, and exact
 execution chronology are not independently reconstructable because no
 immutable process-attempt ledger was retained. This provenance limitation
 does not raise or lower the scientific claim ceiling.
+
+## SCI-DATA-FUSION-001 result (2026-09-02)
+
+`SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`. cross-corpus route exhausted; sources remain conditioned alternatives. Selected next action: `SCI-ED-003`. No production adoption, physical validation, OpenFOAM, or laboratory operation.

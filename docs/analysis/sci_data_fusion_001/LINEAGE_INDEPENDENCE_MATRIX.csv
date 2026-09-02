@@ -1,0 +1,2 @@
+left_support_id,right_support_id,gates,independent_for_common_constraint,context_roles_preserved
+VACA_TABLE_C1_EPSILON_0,WADSWORTH_TOTAL_XCT_POROSITY,"{""consumed_comparison_permitted"": true, ""distinct_correlation_group"": true, ""distinct_experiment"": true, ""distinct_lineage"": true, ""eligible_roles"": true, ""ewp_calibration_independent"": true, ""provenance_complete"": true, ""rights_permit_analysis"": true, ""source_internal_permitted"": true, ""target_exposure_permitted"": true}",True,True

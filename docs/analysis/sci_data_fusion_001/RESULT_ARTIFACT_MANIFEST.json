@@ -1,0 +1,128 @@
+{
+  "artifacts": [
+    {
+      "path": "AUDIT_RECORD_SCHEMA.json",
+      "sha256": "6164ca960fc299a3780365112edfbf0402543160c07a21f0699fdf588884d376"
+    },
+    {
+      "path": "AUTHORITY.json",
+      "sha256": "61b9cf196cade207506e457d06808040535b930a8f233e8d3885402b93b47678"
+    },
+    {
+      "path": "CANDIDATE_SUPPORT_FREEZE.json",
+      "sha256": "0c1a02a69fe66f01a3dbbf30fe3b56aab03bab68c1fe492085eb6d77b074cb42"
+    },
+    {
+      "path": "CANONICAL_QUANTITY_REGISTER.json",
+      "sha256": "f603089b2cf1bc4f6b33730b879641c2584adf155ebacf7f5dd9701f4f26c85a"
+    },
+    {
+      "path": "COMPATIBILITY_MATRIX.csv",
+      "sha256": "a7ce6f0b13658331e31bedc6982927ec619c3c470d1192d14af13f48a9b8dbf7"
+    },
+    {
+      "path": "COMPONENT_CONSTRAINTS.json",
+      "sha256": "04d8b960d95243f0096b5975bb234344596b454ee567d6d58753e62724b9de2b"
+    },
+    {
+      "path": "CONSUMED_RESULT_ARTIFACTS.json",
+      "sha256": "5908b2b48bc94b4d85e21542121b25e128802f3c522584409f4fa7f099836c39"
+    },
+    {
+      "path": "DATA_AVAILABILITY_PREFLIGHT.json",
+      "sha256": "3c370e1e22123dc6de3a33844508dac2de0a34e974ab2eaefcfe82923be99a1b"
+    },
+    {
+      "path": "DECISION.json",
+      "sha256": "437c7b99e8b4bdc876df84574acdf3464174522fa7f4978425d3ee484b70c501"
+    },
+    {
+      "path": "EWP_BASELINE_REGISTER.json",
+      "sha256": "1bd6ad3529dfcb49a2363facf35f28e275b341fed5aa44354d2278b21f55a4aa"
+    },
+    {
+      "path": "EWP_CONSTRAINT_EFFECTS.csv",
+      "sha256": "6c0bbcb063d0a6642eb072dc59e5253c2c2ed2b3089d75582fe935d2d1e32cb7"
+    },
+    {
+      "path": "EXECUTION_PLAN.json",
+      "sha256": "8c1d9104ee776a5e2a5ec104c73ba66151affc0f0f4d4630df63fb859f035269"
+    },
+    {
+      "path": "FREEZE_CONTENT_MANIFEST.json",
+      "sha256": "a0babb491b5c515e393782311e5be49b51e75ce99710ddb1d8c1c759f145c481"
+    },
+    {
+      "path": "ISSUE_CONTRACT.md",
+      "sha256": "e8bfd3d77e8a3b0f5741f21635d38e125997034cc68d801570dae70d2462ad30"
+    },
+    {
+      "path": "LINEAGE_CORRELATION_REGISTER.json",
+      "sha256": "829aeafcddf1a2f23696bf13b7a27f7b990407421ffbdde77ff238f520669fcb"
+    },
+    {
+      "path": "LINEAGE_INDEPENDENCE_MATRIX.csv",
+      "sha256": "a8286dc4337504401662c39eaaeda250fe330cb312d49cc43440e1351ce94c2e"
+    },
+    {
+      "path": "PREEXECUTION_AUDIT.json",
+      "sha256": "623620262fc9151f9033b41251400d73c3fb92dadc443b4593baeef6239f5e69"
+    },
+    {
+      "path": "PREEXECUTION_VALIDATION.json",
+      "sha256": "3002dcb5a8a1acfbe72dd9421961cc69397eaf12df3bd5e5465358529a9ca327"
+    },
+    {
+      "path": "PUCKWORKS_DATASET_SCREEN.csv",
+      "sha256": "dff2f0ef86e91e027e3298fc9e8afb47f952aaecb55cec1917747e83696ccdcd"
+    },
+    {
+      "path": "PUCKWORKS_FAMILY_SCREEN.csv",
+      "sha256": "48ccabcb4aed46cb8b46d4cce8ddc18c6d952b2414e421bfb29bcf01fcc26606"
+    },
+    {
+      "path": "PUCKWORKS_FAMILY_SCREEN.json",
+      "sha256": "f72174783206fd85a1f328c677061d9286ad3d0e0f5eb6d0799ed3179fbb9e15"
+    },
+    {
+      "path": "REPRODUCTION.md",
+      "sha256": "5b1f3ea46cf72403e739f374618dff4f8a2f4aec2368d8c15bfd21e34c7cb2aa"
+    },
+    {
+      "path": "RESULT.md",
+      "sha256": "462b8ca7a720122bc19933446c5ebd660aef300795509c5dc7ba4aaa43a6bc7c"
+    },
+    {
+      "path": "RESULT_VOCABULARY.json",
+      "sha256": "5908642b6e392cbe96fc58bfe4fe573a9241c5a0bfdbfbbcf1f82512eba63769"
+    },
+    {
+      "path": "SOURCE_SUPPORT_INVENTORY.csv",
+      "sha256": "8655dc3456a85110fa44dc1996104d0abfadf810bd5509bfb2aa0178b88f6d83"
+    },
+    {
+      "path": "SOURCE_SUPPORT_INVENTORY.json",
+      "sha256": "3e69724d110336b702b8ba93dcdbe6021327aa6d5c3a733862243a9c537fe244"
+    },
+    {
+      "path": "SUPPORT_EXTRACTION_RULES.json",
+      "sha256": "241ff2c6c8d33e379c284368601bda0609a95d2f7d5d3cfb6eb1c83993a0fea7"
+    },
+    {
+      "path": "SUPPORT_RECORD_SCHEMA.json",
+      "sha256": "d64c3facc8895061a94663bd49775a388140df4086d078b0bd52c3d8fe7b24a7"
+    },
+    {
+      "path": "TASK_CONTRACT.json",
+      "sha256": "ea17ee04805c2b6eb8b7ffba2a843c53ba1ee2a13c0d5196fe8599a58acebe3a"
+    },
+    {
+      "path": "UNCERTAINTY_SUPPORTS.json",
+      "sha256": "76679113f2da16387068aa97ad5bb70affe9f74b17424334205b543e9ba344c9"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "437c7b99e8b4bdc876df84574acdf3464174522fa7f4978425d3ee484b70c501"
+    }
+  ]
+}

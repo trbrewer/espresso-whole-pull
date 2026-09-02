@@ -33,3 +33,7 @@ controls require an explicit owner exception tied to a named risk.
   checks before acceptance. Historical release comparators are not global
   assertions about authorized current-development solver source.
 - Full OpenFOAM runs are manual and release-gated; retain complete evidence outside Git.
+
+## SCI-DATA-FUSION-001 deterministic closeout
+
+Completed as `SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`; next action is `SCI-ED-003`. Home-lab operation remains unauthorized.

@@ -15,3 +15,7 @@ Espresso Whole-Pull owns the exact producer pin, task preflight, production obse
 Before laboratory escalation consider direct comparison, corrected reconstruction, source-internal transfer, normalized comparison, compatible joins/adapters, sensitivity, identifiability/discrimination, fair baselines, and bounded public search. A recommendation requires the unresolved join, minimum marginal-value measurement set, source-apparatus feasibility already known, local qualification still needed, and closure-versus-independence purpose. Source feasibility does not qualify the local apparatus; independence tiers do not replace local method/closure qualification.
 
 The preflight is one artifact reviewed with the task, not a new stage. It authorizes no purchase, expenditure, contact, quotation, shipment, collection, laboratory operation, or protected score.
+
+## SCI-DATA-FUSION-001 result (2026-09-02)
+
+`SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`. cross-corpus route exhausted; sources remain conditioned alternatives. Selected next action: `SCI-ED-003`. No production adoption, physical validation, OpenFOAM, or laboratory operation.

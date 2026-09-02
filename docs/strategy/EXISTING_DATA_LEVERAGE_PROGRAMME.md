@@ -145,3 +145,7 @@ programme-wide data-gap statement, evidence-missing mechanism choice, lab or
 procurement recommendation, or exhaustion declaration. Historical results stay
 attached to their original authority; current decisions are superseded only
 additively.
+
+## SCI-DATA-FUSION-001 result (2026-09-02)
+
+`SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`. cross-corpus route exhausted; sources remain conditioned alternatives. Selected next action: `SCI-ED-003`. No production adoption, physical validation, OpenFOAM, or laboratory operation.

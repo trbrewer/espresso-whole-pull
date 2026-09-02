@@ -30,7 +30,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1252,
+    "python_test_count": 1251,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -50,8 +50,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 922,
-    "source_manifest_aggregate_sha256": "aa4595e95384a4f14c37e8780e20214b33ef5c63d42432afd8f06d6a996abb17",
+    "source_manifest_file_count": 934,
+    "source_manifest_aggregate_sha256": "6fc46c1ee3fbd9770373de45e09fe553014f6927ec4ceccbeda6da0517c402b8",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -61,16 +61,17 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "aa4595e95384a4f14c37e8780e20214b33ef5c63d42432afd8f06d6a996abb17",
+    "source_manifest_aggregate_source_sha256": "6fc46c1ee3fbd9770373de45e09fe553014f6927ec4ceccbeda6da0517c402b8",
     "sci_data_fusion_001_c1": {
-      "disposition": "SCI_DATA_FUSION_001_CONSOLIDATED_REVISED_FREEZE_AWAITING_INDEPENDENT_PREEXECUTION_REAUDIT",
+      "disposition": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
       "focused_tests_run": 51,
       "family_census": "39_OF_39",
       "detailed_support_count": 25,
       "uncertainty_candidate_count": 0,
       "intended_pair_reachability_count": 1,
-      "real_phase_b_executed": false,
-      "openfoam_executed": false
+      "real_phase_b_executed": true,
+      "openfoam_executed": false,
+      "deterministic_phase_b_replay": "PASS"
     },
     "xsv_pannusch_ewp_input_mapping_001": {
       "focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_pannusch_ewp_input_mapping_001 -v",

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 922,
-  "total_uncompressed_bytes_excluding_manifest": 9339057,
-  "aggregate_source_sha256": "aa4595e95384a4f14c37e8780e20214b33ef5c63d42432afd8f06d6a996abb17",
-  "aggregate_sha256": "aa4595e95384a4f14c37e8780e20214b33ef5c63d42432afd8f06d6a996abb17",
+  "file_count": 934,
+  "total_uncompressed_bytes_excluding_manifest": 9373096,
+  "aggregate_source_sha256": "6fc46c1ee3fbd9770373de45e09fe553014f6927ec4ceccbeda6da0517c402b8",
+  "aggregate_sha256": "6fc46c1ee3fbd9770373de45e09fe553014f6927ec4ceccbeda6da0517c402b8",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -789,8 +789,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "bfe6d6807898cdc1204678c9eebdac4afa11f66f8bfac7b2bea2993661c15b30",
-      "bytes": 11461,
+      "sha256": "233be04bcfcd7231ae6b990cc136fdbf9d96dbb15d93640c942f98a30a033af1",
+      "bytes": 11548,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -1268,6 +1268,16 @@
       "bytes": 3750,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_data_fusion_001/COMPATIBILITY_MATRIX.csv": {
+      "sha256": "a7ce6f0b13658331e31bedc6982927ec619c3c470d1192d14af13f48a9b8dbf7",
+      "bytes": 723,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/COMPONENT_CONSTRAINTS.json": {
+      "sha256": "04d8b960d95243f0096b5975bb234344596b454ee567d6d58753e62724b9de2b",
+      "bytes": 6764,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_data_fusion_001/CONSUMED_RESULT_ARTIFACTS.json": {
       "sha256": "5908b2b48bc94b4d85e21542121b25e128802f3c522584409f4fa7f099836c39",
       "bytes": 2346,
@@ -1276,6 +1286,21 @@
     "docs/analysis/sci_data_fusion_001/DATA_AVAILABILITY_PREFLIGHT.json": {
       "sha256": "3c370e1e22123dc6de3a33844508dac2de0a34e974ab2eaefcfe82923be99a1b",
       "bytes": 285,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/DECISION.json": {
+      "sha256": "437c7b99e8b4bdc876df84574acdf3464174522fa7f4978425d3ee484b70c501",
+      "bytes": 7038,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/EWP_BASELINE_REGISTER.json": {
+      "sha256": "1bd6ad3529dfcb49a2363facf35f28e275b341fed5aa44354d2278b21f55a4aa",
+      "bytes": 841,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/EWP_CONSTRAINT_EFFECTS.csv": {
+      "sha256": "6c0bbcb063d0a6642eb072dc59e5253c2c2ed2b3089d75582fe935d2d1e32cb7",
+      "bytes": 49,
       "git_mode": "100644"
     },
     "docs/analysis/sci_data_fusion_001/EXECUTION_PLAN.json": {
@@ -1298,6 +1323,16 @@
       "bytes": 808,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_data_fusion_001/LINEAGE_INDEPENDENCE_MATRIX.csv": {
+      "sha256": "a8286dc4337504401662c39eaaeda250fe330cb312d49cc43440e1351ce94c2e",
+      "bytes": 505,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/PREEXECUTION_AUDIT.json": {
+      "sha256": "623620262fc9151f9033b41251400d73c3fb92dadc443b4593baeef6239f5e69",
+      "bytes": 2625,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_data_fusion_001/PREEXECUTION_VALIDATION.json": {
       "sha256": "3002dcb5a8a1acfbe72dd9421961cc69397eaf12df3bd5e5465358529a9ca327",
       "bytes": 2673,
@@ -1316,6 +1351,21 @@
     "docs/analysis/sci_data_fusion_001/PUCKWORKS_FAMILY_SCREEN.json": {
       "sha256": "f72174783206fd85a1f328c677061d9286ad3d0e0f5eb6d0799ed3179fbb9e15",
       "bytes": 47605,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/REPRODUCTION.md": {
+      "sha256": "5b1f3ea46cf72403e739f374618dff4f8a2f4aec2368d8c15bfd21e34c7cb2aa",
+      "bytes": 865,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/RESULT.md": {
+      "sha256": "462b8ca7a720122bc19933446c5ebd660aef300795509c5dc7ba4aaa43a6bc7c",
+      "bytes": 2492,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/RESULT_ARTIFACT_MANIFEST.json": {
+      "sha256": "6d0d298941b14174199e1909439b7bab81a7cc3655db56953f8ae646f84a33f2",
+      "bytes": 4309,
       "git_mode": "100644"
     },
     "docs/analysis/sci_data_fusion_001/RESULT_VOCABULARY.json": {
@@ -1346,6 +1396,16 @@
     "docs/analysis/sci_data_fusion_001/TASK_CONTRACT.json": {
       "sha256": "ea17ee04805c2b6eb8b7ffba2a843c53ba1ee2a13c0d5196fe8599a58acebe3a",
       "bytes": 9642,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/UNCERTAINTY_SUPPORTS.json": {
+      "sha256": "76679113f2da16387068aa97ad5bb70affe9f74b17424334205b543e9ba344c9",
+      "bytes": 69,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_data_fusion_001/summary.json": {
+      "sha256": "437c7b99e8b4bdc876df84574acdf3464174522fa7f4978425d3ee484b70c501",
+      "bytes": 7038,
       "git_mode": "100644"
     },
     "docs/analysis/sci_ed_001/CORRECTION_HISTORY_C1.md": {
@@ -2239,8 +2299,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md": {
-      "sha256": "3da51eba6b9cd242a20013c54789a7f87050ce6e90f89647859c8c9847db4a80",
-      "bytes": 2031,
+      "sha256": "7027e64bb481858dcb1a1d4cd27f97167bf46cc9f3a36f21c2cdc5d18f0ac8d4",
+      "bytes": 2333,
       "git_mode": "100644"
     },
     "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": {
@@ -2249,8 +2309,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "a0c5f039aa2bb8d86e2b148e4e78f974dbed0ccaefb1d9741f3ff9d1db75057c",
-      "bytes": 7974,
+      "sha256": "5361563e0d11315e14e885878c642de9fd81baac4ced77cd09b20c65415129db",
+      "bytes": 8276,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -3839,8 +3899,8 @@
       "git_mode": "100644"
     },
     "tests/test_espresso_corpus_leverage_002_c1.py": {
-      "sha256": "d0c0a57ad2d031943902386c7a9043e090d3d84952543417d7b6cbcbbe10cb69",
-      "bytes": 1239,
+      "sha256": "79b87fddd81e8b9cb2db7ef88824d5885be36806184474d4e00d10bfb33c93cf",
+      "bytes": 1244,
       "git_mode": "100644"
     },
     "tests/test_ewp_porosity_permeability_prior_001.py": {
@@ -3854,8 +3914,8 @@
       "git_mode": "100644"
     },
     "tests/test_existing_data_leverage_programme.py": {
-      "sha256": "d768fd45b5e10349cbf1b33047854faf87fbf4f8a679610e18d3cbec50642d72",
-      "bytes": 843,
+      "sha256": "3625bd4a1d1a6a9f1b1f17bf39ee785a369c3827fad887d4d93839c014234462",
+      "bytes": 824,
       "git_mode": "100644"
     },
     "tests/test_git_object_authority.py": {
@@ -4159,13 +4219,13 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_ewp_input_mapping_001.py": {
-      "sha256": "65c72db9136df4b2bf7346ae1b390edbc72fa3e7216e612a5cbdb22bf27e69b7",
-      "bytes": 7080,
+      "sha256": "74200beecd16ecf0217b257970216b9050d67cf14f2034d51818b08b573314a7",
+      "bytes": 7133,
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_multimodel_001.py": {
-      "sha256": "d7d9c11c00f64ba0436dc2eea376ae37543572c77998594ab57eddc27e8bd312",
-      "bytes": 5069,
+      "sha256": "479b3f723c3721f41b8e56364739626c3ab0565a9f728b90111d32ca5a96ad0e",
+      "bytes": 5060,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {
