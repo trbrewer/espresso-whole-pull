@@ -1,5 +1,15 @@
 # Existing Data Leverage Programme
 
+## Pannusch-to-EWP input-mapping result (2026-09-01)
+
+`XSV-PANNUSCH-EWP-INPUT-MAPPING-001` is complete context-only. No operational
+mapping qualified; the apparent programmed-flow mL/s versus Python
+mass/density convention is unresolved and fails closed. Geometry, saturated
+state, clean inlet, and observer/run-control similarities remain compatibility
+facts only. `PRESERVE_PANNUSCH_AND_EWP_INDEPENDENT_INPUT_TREATMENTS`; no
+materializer, execution, physics/default/parameter/lock change, or production
+adoption is authorized.
+
 ## Pannusch flow-history result (2026-09-01)
 
 `SCI-MD-PANNUSCH-FLOW-HISTORY-001` is complete flow-authority-ineligible.
@@ -98,7 +108,7 @@ fusion; experiment reduction; absolute closure; independent validation.
 1. XSV-PANNUSCH-MULTIMODEL-001 — complete.
 2. OBS-PANNUSCH-FRACTION-WINDOW-001 — complete null.
 3. SCI-MD-PANNUSCH-FLOW-HISTORY-001 — complete, flow authority ineligible.
-4. XSV-PANNUSCH-EWP-INPUT-MAPPING-001 — selected, not implemented.
+4. XSV-PANNUSCH-EWP-INPUT-MAPPING-001 — complete context-only; independent input treatments preserved.
 5. Cross-corpus boundary/uncertainty integration.
 6. SCI-ED-003 targeted closure contract.
 7. Prospectively independent transfer tier.

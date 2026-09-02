@@ -1,0 +1,160 @@
+{
+  "authoritative_adjudication": "H_UNRESOLVED",
+  "authoritative_source_flow_quantity": "programmed machine command; physical mass-versus-volume basis unresolved in implementation chain",
+  "authoritative_units": "table/schema label mL/s conflicts with Python mass/density conversion",
+  "end_to_end_trace": [
+    "prediction_conditions.csv flow_start_mL_s/flow_end_mL_s: programmed mL/s labels",
+    "released MATLAB authority: source locators retained in source_inputs.csv; no unambiguous mass/volume basis closure",
+    "Puckworks schema: programmed values, not puck-face measurements",
+    "solver.py simulate_fractions(flow_mL_s)",
+    "solver.py q=flow_mL_s/1000/RHO/ACS",
+    "q passed as superficial velocity; v_l=q/ALPHA_L",
+    "fraction volume integration multiplies q*ACS*TC*1e6",
+    "EWP volumetricFlowRateM3PerS requires full-basket m3/s"
+  ],
+  "ewp_target": {
+    "area_applied": false,
+    "eligibility": [
+      "initially saturated",
+      "static Darcy hydraulics",
+      "no wetting front",
+      "no pressure ramp",
+      "no lumped compliance",
+      "no Forchheimer",
+      "no compaction",
+      "no evolving permeability",
+      "no radial profile",
+      "default disabled",
+      "EWP tolerances remain independent"
+    ],
+    "key": "prescribedFlowBoundary.volumetricFlowRateM3PerS",
+    "porosity_applied": false,
+    "quantity": "finite nonnegative full-basket volumetric flow"
+  },
+  "failure_classification": "UNIT_OR_BASIS_UNRESOLVED",
+  "hypotheses": {
+    "H_MASS": {
+      "expression": "Q_m3_s=(Q_g_s*1e-3)/rho_kg_m3",
+      "status": "IMPLEMENTATION_FORM_SUGGESTS_BUT_SOURCE_DOES_NOT_AUTHORIZE"
+    },
+    "H_NUMERIC_WATER_EQUIVALENT": {
+      "status": "NOT_SOURCE_AUTHORIZED"
+    },
+    "H_UNRESOLVED": {
+      "status": "SELECTED_FAIL_CLOSED"
+    },
+    "H_VOL": {
+      "expression": "Q_m3_s=Q_mL_s*1e-6",
+      "status": "LABEL_SUPPORTED_IMPLEMENTATION_CONFLICT"
+    }
+  },
+  "mass_hypothesis_density": {
+    "authority": "SOURCE_FIXED_MODEL_CONSTANT_NOT_AUTHORIZED_AS_INPUT_BASIS_CONVERSION",
+    "mapping_use_authorized": false,
+    "rho_kg_m3": "980"
+  },
+  "numeric_checks": [
+    {
+      "area_enters": false,
+      "constants": {
+        "mL_to_m3": "1e-6 exact SI"
+      },
+      "converted_ewp_m3_s": "0.0000010",
+      "density_enters": false,
+      "exact_conversion_expression": "Q_m3_s = Q_mL_s * 1e-6",
+      "hypothesis": "H_VOL_ONLY_NOT_AUTHORIZED_FOR_MAPPING",
+      "inverse_converted_value": "1.0",
+      "mapping_use_authorized": false,
+      "porosity_enters": false,
+      "round_trip_absolute_error": "0.0",
+      "round_trip_relative_error": "0",
+      "source_numeric_value": "1.0",
+      "source_units": "mL/s table label"
+    },
+    {
+      "area_enters": false,
+      "constants": {
+        "mL_to_m3": "1e-6 exact SI"
+      },
+      "converted_ewp_m3_s": "0.0000017",
+      "density_enters": false,
+      "exact_conversion_expression": "Q_m3_s = Q_mL_s * 1e-6",
+      "hypothesis": "H_VOL_ONLY_NOT_AUTHORIZED_FOR_MAPPING",
+      "inverse_converted_value": "1.7",
+      "mapping_use_authorized": false,
+      "porosity_enters": false,
+      "round_trip_absolute_error": "0.0",
+      "round_trip_relative_error": "0",
+      "source_numeric_value": "1.7",
+      "source_units": "mL/s table label"
+    },
+    {
+      "area_enters": false,
+      "constants": {
+        "mL_to_m3": "1e-6 exact SI"
+      },
+      "converted_ewp_m3_s": "0.0000020",
+      "density_enters": false,
+      "exact_conversion_expression": "Q_m3_s = Q_mL_s * 1e-6",
+      "hypothesis": "H_VOL_ONLY_NOT_AUTHORIZED_FOR_MAPPING",
+      "inverse_converted_value": "2.0",
+      "mapping_use_authorized": false,
+      "porosity_enters": false,
+      "round_trip_absolute_error": "0.0",
+      "round_trip_relative_error": "0",
+      "source_numeric_value": "2.0",
+      "source_units": "mL/s table label"
+    },
+    {
+      "area_enters": false,
+      "constants": {
+        "mL_to_m3": "1e-6 exact SI"
+      },
+      "converted_ewp_m3_s": "0.0000023",
+      "density_enters": false,
+      "exact_conversion_expression": "Q_m3_s = Q_mL_s * 1e-6",
+      "hypothesis": "H_VOL_ONLY_NOT_AUTHORIZED_FOR_MAPPING",
+      "inverse_converted_value": "2.3",
+      "mapping_use_authorized": false,
+      "porosity_enters": false,
+      "round_trip_absolute_error": "0.0",
+      "round_trip_relative_error": "0",
+      "source_numeric_value": "2.3",
+      "source_units": "mL/s table label"
+    },
+    {
+      "area_enters": false,
+      "constants": {
+        "mL_to_m3": "1e-6 exact SI"
+      },
+      "converted_ewp_m3_s": "0.0000030",
+      "density_enters": false,
+      "exact_conversion_expression": "Q_m3_s = Q_mL_s * 1e-6",
+      "hypothesis": "H_VOL_ONLY_NOT_AUTHORIZED_FOR_MAPPING",
+      "inverse_converted_value": "3.0",
+      "mapping_use_authorized": false,
+      "porosity_enters": false,
+      "round_trip_absolute_error": "0.0",
+      "round_trip_relative_error": "0",
+      "source_numeric_value": "3.0",
+      "source_units": "mL/s table label"
+    }
+  ],
+  "source_condition_restrictions": {
+    "C07_C08_histories_excluded": true,
+    "MassData_flow_excluded": true,
+    "beverage_outlet_excluded": true,
+    "clock_alignment_inference_prohibited": true,
+    "constant_candidates": [
+      "PRED-C01",
+      "PRED-C02",
+      "PRED-C03",
+      "PRED-C04",
+      "PRED-C05",
+      "PRED-C06"
+    ],
+    "plotted_div_0_98_excluded": true,
+    "qualified": []
+  },
+  "task_id": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001"
+}

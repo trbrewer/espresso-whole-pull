@@ -1,0 +1,48 @@
+{
+  "accepted_mapping_classes": [
+    "DIRECT_PHYSICAL_QUANTITY_IDENTITY",
+    "EXACT_UNIT_CONVERSION",
+    "SOURCE_DEFINED_BASIS_CONVERSION"
+  ],
+  "activation_precondition": "SCI_MD_PANNUSCH_FLOW_HISTORY_001_FLOW_AUTHORITY_INELIGIBLE present on origin/main",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_ceiling": "SOURCE_AUTHORITY_AND_INTERFACE_SEMANTICS_QUALIFICATION_ONLY",
+  "exclusions": [
+    "solver execution",
+    "OpenFOAM",
+    "calibration/refit",
+    "pressure-flow inference",
+    "history reconstruction",
+    "default or lock changes",
+    "model coupling"
+  ],
+  "global_disposition_rules": "A iff operational set nonempty; B iff none and context set nonempty; C mixed negative without context; D only if all operational candidates authority-blocked; E authority unavailable",
+  "null_result_handling": "preserve independent input treatments; no adapter",
+  "owner_authorization_token": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001-OWNER-AUTHORIZED-AFTER-SCI-MD-PANNUSCH-FLOW-HISTORY-001-MERGE-2026-09-01",
+  "positive_result_restrictions": "partial adapter only; execution separately authorized",
+  "prohibited_predecessor_evidence": [
+    "C07/C08 reconstructed schedules",
+    "MassData.flow as inlet flow",
+    "/0.98 flow",
+    "beverage outlet as inlet",
+    "pressure-derived Q",
+    "chemistry scoring"
+  ],
+  "rejection_classes": [
+    "CLOCK_MAPPING_UNRESOLVED",
+    "CONTEXT_ONLY_NOT_OPERATIONAL",
+    "NO_EWP_RUNTIME_CONSUMER",
+    "OUTLET_FLOW_NOT_INLET_FLOW",
+    "REQUIRES_CALIBRATION_OR_REFIT",
+    "REQUIRES_CONSTITUTIVE_INFERENCE",
+    "REQUIRES_NUMERICAL_METHOD_CHANGE",
+    "REQUIRES_SPATIAL_OR_TEMPORAL_RECONSTRUCTION",
+    "SEMANTIC_QUANTITY_MISMATCH",
+    "SOURCE_AUTHORITY_INELIGIBLE",
+    "TEMPORAL_SUPPORT_MISMATCH",
+    "UNIT_OR_BASIS_UNRESOLVED"
+  ],
+  "scientific_question": "Can any source-authorized Pannusch input map to an existing EWP input without inference, fitting, reconstruction, defaults, coupling, or physics change?",
+  "scope": "source authority and existing-interface semantics qualification",
+  "task_id": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001"
+}

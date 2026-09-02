@@ -1,5 +1,19 @@
 # Project State
 
+## XSV-PANNUSCH-EWP-INPUT-MAPPING-001 result (2026-09-01)
+
+`XSV_PANNUSCH_EWP_INPUT_MAPPING_001_CONTEXT_ONLY_PRESERVE_INDEPENDENT_INPUT_TREATMENTS`.
+No operational mapping passed every source-authority and interface-semantics
+gate. Nominal geometry, saturated initial state, clean inlet, and run-control
+facts are context/state compatibilities only. The programmed-flow table label
+and Puckworks Python density conversion do not close to one authorized unit
+basis, so flow fails closed; C07/C08 histories and `MassData.flow` remain
+excluded. **PRESERVE_PANNUSCH_AND_EWP_INDEPENDENT_INPUT_TREATMENTS.** No
+materializer, solver/default/parameter/lock change, execution, coupling, or
+production adoption occurred. SOURCE_INTERNAL; TARGET_EXPOSED; NOT INDEPENDENT,
+PHYSICAL, HYDRAULIC, PUCK_FACE_FLOW, PRESSURE_FLOW, CHEMISTRY, OR PRODUCTION
+VALIDATION.
+
 ## SCI-MD-PANNUSCH-FLOW-HISTORY-001 result (2026-09-01)
 
 `SCI_MD_PANNUSCH_FLOW_HISTORY_001_FLOW_AUTHORITY_INELIGIBLE`. Programmed flow

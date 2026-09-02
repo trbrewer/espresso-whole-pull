@@ -1,0 +1,36 @@
+{
+  "branch_starting_commit": "7c79c8c6bf4670cb8ade7fb107ecdfd73afa827e",
+  "branch_starting_tree": "808abec7b2e9f5ca6cd42d5786daa293af627f88",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "clean_state_evidence": {
+    "authority_worktree": "detached_exact_commit",
+    "ewp_active_checkout": "clean_before_worktree",
+    "puckworks_active_checkout": "clean",
+    "task_worktree": "clean_at_creation"
+  },
+  "ewp_base_commit": "7c79c8c6bf4670cb8ade7fb107ecdfd73afa827e",
+  "ewp_base_tree": "808abec7b2e9f5ca6cd42d5786daa293af627f88",
+  "lock_dependency_evidence": {
+    "merged_predecessor_exact_analysis_authority_takes_precedence": true,
+    "runtime_lock_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "runtime_lock_unchanged": true
+  },
+  "no_local_path_assertion": true,
+  "no_puckworks_mutation_assertion": true,
+  "owner_authorization_token": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001-OWNER-AUTHORIZED-AFTER-SCI-MD-PANNUSCH-FLOW-HISTORY-001-MERGE-2026-09-01",
+  "predecessor_merge_commit": "7c79c8c6bf4670cb8ade7fb107ecdfd73afa827e",
+  "predecessor_merged_tree": "808abec7b2e9f5ca6cd42d5786daa293af627f88",
+  "puckworks_authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+  "puckworks_authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+  "recorded_at_utc": "2026-09-01T00:00:00Z",
+  "relevant_source_file_sha256": {
+    "docs/cards/pannusch2024.md": "e53d7bbfe682e799e04436b2ba91389dd2982c65ce0e04e2063ac15482c9c220",
+    "puckworks/data/pannusch2024/prediction_conditions.csv": "a1efcf9ce876101be373a3b5955193dbf5a2075aef2e3b65dc0c83e80bbb3ee5",
+    "puckworks/data/pannusch2024/source_inputs.csv": "15b9f765d49abe45d6788d7c7891b0695fca185d9c614d122e393993ec06a83c",
+    "puckworks/data/pannusch2024/table2_fitted_params.csv": "318e1440d2922dfe98ddc06efe89de8fcd70c65f49ae9a8b92bc1123bd26a409",
+    "puckworks/models/pannusch2024/closures.py": "9d144765200b66422e72218f8ceff5d5ca531da88150fa71d023bbc490b20cf1",
+    "puckworks/models/pannusch2024/solver.py": "8f0f0108a8c44e0abbc32ca6ada676baf579a4f78265a3f7b53b38f118fa2bb4"
+  },
+  "rights_redistribution_status": "CC-BY-NC-3.0 source inspected; only derived facts, locators, hashes, and classifications recorded",
+  "task_id": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001"
+}

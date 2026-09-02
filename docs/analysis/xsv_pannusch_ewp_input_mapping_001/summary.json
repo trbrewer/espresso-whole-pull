@@ -1,0 +1,15 @@
+{
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_ceiling": "SOURCE_AUTHORITY_AND_INTERFACE_SEMANTICS_QUALIFICATION_ONLY",
+  "context_compatibility_count": 13,
+  "disposition": "XSV_PANNUSCH_EWP_INPUT_MAPPING_001_CONTEXT_ONLY_PRESERVE_INDEPENDENT_INPUT_TREATMENTS",
+  "flow_unit_basis_result": "H_UNRESOLVED_FAIL_CLOSED_UNIT_OR_BASIS_UNRESOLVED",
+  "independent_input_treatments_preserved": true,
+  "mapping_count": 32,
+  "materializer_present": false,
+  "operational_mapping_count": 0,
+  "programme_action": "PRESERVE_PANNUSCH_AND_EWP_INDEPENDENT_INPUT_TREATMENTS",
+  "registry_count": 61,
+  "rejected_mapping_count": 32,
+  "task_id": "XSV-PANNUSCH-EWP-INPUT-MAPPING-001"
+}
