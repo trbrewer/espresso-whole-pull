@@ -1,73 +1,152 @@
 {
-  "excluded_lanes": [
-    "L-AGG"
-  ],
-  "lanes": [
+  "aggregate_candidate_audit": [
     {
-      "decision": "utility of fixed/effective resistance versus simple baselines",
-      "families": [
-        "waszkiewicz2025"
-      ],
-      "lane_id": "L-HYD",
-      "models": [
-        "B0",
-        "B1",
-        "B2",
-        "E1",
-        "E2"
-      ],
-      "observable": "blocked time and pressure-conditioned resistance response",
-      "outer_group": "physical brew/pressure condition",
-      "reuse_only": true,
-      "selected": true
+      "absolute_inventory_required": "observable-dependent; normalized/trend considered",
+      "b1_possible": "source-specific conditional/trend comparator",
+      "decision": "EXCLUDED_FROM_QUANTITATIVE_SCORING",
+      "ewp_prediction": "no exact matching current-EWP artifact",
+      "exact_blocker": "no row-bound current-EWP projection plus fair B1; retain CONDITIONAL_PREDICTIVE_EVALUATION",
+      "independent_groups": "not bound for new scoring under zero-case R1",
+      "measured_observable": "angeloni2023/inventories;angeloni2023/bioactives;angeloni2023/total_solids;angeloni2023/lipids;angeloni2023/total_solids_lipids_rsd",
+      "realistic_inputs": "source-specific incomplete context",
+      "source_family": "angeloni2023",
+      "target_exposed": true
     },
     {
-      "decision": "chemistry shape complexity utility",
-      "families": [
-        "pannusch2024"
-      ],
-      "lane_id": "L-FRAC",
-      "models": [
-        "B0",
-        "B1",
-        "B2",
-        "E1",
-        "E2"
-      ],
-      "observable": "normalized fraction share vector",
-      "outer_group": "physical shot/condition",
-      "reuse_only": true,
-      "selected": true
+      "absolute_inventory_required": "observable-dependent; normalized/trend considered",
+      "b1_possible": "source-specific conditional/trend comparator",
+      "decision": "EXCLUDED_FROM_QUANTITATIVE_SCORING",
+      "ewp_prediction": "no exact matching current-EWP artifact",
+      "exact_blocker": "no row-bound current-EWP projection plus fair B1; retain SOURCE_MODEL_REPRODUCTION",
+      "independent_groups": "not bound for new scoring under zero-case R1",
+      "measured_observable": "perticarini2024/ey_tds_cibao;perticarini2024/bed_height_time;perticarini2024/granulometry_params",
+      "realistic_inputs": "source-specific incomplete context",
+      "source_family": "perticarini2024",
+      "target_exposed": true
     },
     {
-      "decision": "source adapter versus reduced effective resistance",
-      "families": [
-        "wadsworth2026",
-        "vacaguerra2023a"
-      ],
-      "lane_id": "L-STRUCT",
-      "models": [
-        "B0",
-        "B1",
-        "B2",
-        "E1"
-      ],
-      "observable": "dry porosity and source-native log permeability",
-      "outer_group": "source-defined independent grinder/coffee condition",
-      "reuse_only": false,
-      "selected": true
+      "absolute_inventory_required": "observable-dependent; normalized/trend considered",
+      "b1_possible": "source-specific conditional/trend comparator",
+      "decision": "EXCLUDED_FROM_QUANTITATIVE_SCORING",
+      "ewp_prediction": "no exact matching current-EWP artifact",
+      "exact_blocker": "no row-bound current-EWP projection plus fair B1; retain CONDITIONAL_PREDICTIVE_EVALUATION",
+      "independent_groups": "not bound for new scoring under zero-case R1",
+      "measured_observable": "egidi2024/table2",
+      "realistic_inputs": "source-specific incomplete context",
+      "source_family": "egidi2024",
+      "target_exposed": true
     },
     {
-      "families": [],
-      "lane_id": "L-AGG",
-      "reason": "no qualified common absolute-inventory operator with sufficient independent groups",
-      "selected": false
+      "absolute_inventory_required": "observable-dependent; normalized/trend considered",
+      "b1_possible": "source-specific conditional/trend comparator",
+      "decision": "EXCLUDED_FROM_QUANTITATIVE_SCORING",
+      "ewp_prediction": "no exact matching current-EWP artifact",
+      "exact_blocker": "no row-bound current-EWP projection plus fair B1; retain SOURCE_MODEL_REPRODUCTION",
+      "independent_groups": "not bound for new scoring under zero-case R1",
+      "measured_observable": "pocketscience2024/edge_ey_condition_means;pocketscience2024/lrr_scalars",
+      "realistic_inputs": "source-specific incomplete context",
+      "source_family": "pocketscience2024",
+      "target_exposed": true
+    },
+    {
+      "absolute_inventory_required": "observable-dependent; normalized/trend considered",
+      "b1_possible": "source-specific conditional/trend comparator",
+      "decision": "EXCLUDED_FROM_QUANTITATIVE_SCORING",
+      "ewp_prediction": "no exact matching current-EWP artifact",
+      "exact_blocker": "no row-bound current-EWP projection plus fair B1; retain SOURCE_MODEL_REPRODUCTION",
+      "independent_groups": "not bound for new scoring under zero-case R1",
+      "measured_observable": "romancorrochano2017/tamped_kappa;romancorrochano2017/deff_table4_9;romancorrochano2017/partition_K_table4_10;romancorrochano2017/hindrance_table4_8;romancorrochano2017/Db_table3_4;romancorrochano2017/mpe_table5_3;romancorrochano2017/fig5_11_mpe;romancorrochano2017/fig5_13_mpe;romancorrochano2017/fig7_4_espresso;romancorrochano2017/y0_extractable",
+      "realistic_inputs": "source-specific incomplete context",
+      "source_family": "romancorrochano2017",
+      "target_exposed": true
+    },
+    {
+      "absolute_inventory_required": "observable-dependent; normalized/trend considered",
+      "b1_possible": "source-specific conditional/trend comparator",
+      "decision": "EXCLUDED_FROM_QUANTITATIVE_SCORING",
+      "ewp_prediction": "no exact matching current-EWP artifact",
+      "exact_blocker": "no row-bound current-EWP projection plus fair B1; retain SOURCE_MODEL_REPRODUCTION",
+      "independent_groups": "not bound for new scoring under zero-case R1",
+      "measured_observable": "schmieder2023/kinetics_fit_params_avg;schmieder2023/kinetics_fit_params_reps;schmieder2023/cup_masses;schmieder2023/raw_fractions;schmieder2023/rsm_coefficients",
+      "realistic_inputs": "source-specific incomplete context",
+      "source_family": "schmieder2023",
+      "target_exposed": true
+    },
+    {
+      "absolute_inventory_required": "observable-dependent; normalized/trend considered",
+      "b1_possible": "source-specific conditional/trend comparator",
+      "decision": "EXCLUDED_FROM_QUANTITATIVE_SCORING",
+      "ewp_prediction": "no exact matching current-EWP artifact",
+      "exact_blocker": "no row-bound current-EWP projection plus fair B1; retain CONDITIONAL_PREDICTIVE_EVALUATION",
+      "independent_groups": "not bound for new scoring under zero-case R1",
+      "measured_observable": "liang2021/fig3_tds;liang2021/fig4_E;liang2021/fig5_cupping",
+      "realistic_inputs": "source-specific incomplete context",
+      "source_family": "liang2021",
+      "target_exposed": true
+    },
+    {
+      "absolute_inventory_required": "observable-dependent; normalized/trend considered",
+      "b1_possible": "source-specific conditional/trend comparator",
+      "decision": "EXCLUDED_FROM_QUANTITATIVE_SCORING",
+      "ewp_prediction": "no exact matching current-EWP artifact",
+      "exact_blocker": "no row-bound current-EWP projection plus fair B1; retain DIRECT_RETROSPECTIVE_PREDICTIVE_EVALUATION",
+      "independent_groups": "not bound for new scoring under zero-case R1",
+      "measured_observable": "waszkiewicz2025/traces_time_dependent;waszkiewicz2025/tds_fractions;waszkiewicz2025/static_calibration;waszkiewicz2025/tds_solids_calibration;waszkiewicz2025/brewer_quadratic;waszkiewicz2025/mastersizer_psd;waszkiewicz2025/constants;waszkiewicz2025/traces_per_brew;waszkiewicz2025/equilibrium_windows",
+      "realistic_inputs": "source-specific incomplete context",
+      "source_family": "waszkiewicz2025",
+      "target_exposed": true
     }
   ],
-  "new_production_case_budget": 0,
-  "selected_lanes": [
-    "L-HYD",
-    "L-FRAC",
-    "L-STRUCT"
+  "nonpredictive_sublanes": [
+    {
+      "lane_id": "L-POROSITY-WADSWORTH",
+      "reason": "one source support; no three independent predictive groups",
+      "status": "SOURCE_CONDITIONED_CONSTRAINT"
+    },
+    {
+      "lane_id": "L-POROSITY-VACA",
+      "reason": "Figure 12 dry operator only",
+      "status": "OPERATOR_QUALIFICATION"
+    },
+    {
+      "lane_id": "L-PERMEABILITY-SOURCE_NATIVE",
+      "reason": "source-native K is not EWP effective K",
+      "status": "DATA_INSUFFICIENT_FOR_GROUPED_PREDICTIVE_TEST"
+    }
+  ],
+  "selected": [
+    {
+      "claim_level": "LEVEL_1_SOURCE_POST_FIT_RECONSTRUCTION",
+      "current_ewp_status": "CURRENT_EWP_NOT_EXECUTABLE_IN_L_HYD_UNDER_FROZEN_CASE_BUDGET",
+      "decision_enabled": "source hydraulic utility and EWP interface evaluability",
+      "fold_count": 11,
+      "lane_id": "L-HYD",
+      "models": [
+        "HYD_B0_TRAINING_MEAN",
+        "HYD_B1_WH0A_FIXED_LOG_R",
+        "HYD_E1_EFFECTIVE_RESISTANCE",
+        "HYD_E2_CURRENT_EWP_UNAVAILABLE"
+      ],
+      "observable": "condition-balanced cumulative-mass NRMSE; blocked time secondary",
+      "outer_group": "11 actual pressure conditions; 56 canonical brews nested",
+      "source_family": "waszkiewicz2025"
+    },
+    {
+      "claim_level": "SOURCE_INTERNAL_TARGET_EXPOSED_GROUPED_COMPARISON",
+      "current_ewp_status": "CURRENT_EWP_NOT_EXECUTABLE_IN_L_FRAC_UNDER_FROZEN_CASE_BUDGET",
+      "decision_enabled": "source-native versus B1 utility and EWP interface evaluability",
+      "fold_count": 4,
+      "lane_id": "L-FRAC",
+      "models": [
+        "FRAC_B0_ORDINAL",
+        "FRAC_B1_BOUNDARY_AWARE",
+        "FRAC_B2_PANNUSCH_FIXED",
+        "FRAC_E1_EXPONENTIAL_SHAPE",
+        "FRAC_E2_CURRENT_EWP_UNAVAILABLE"
+      ],
+      "observable": "six-fraction mass-share vector, caffeine/trigonelline",
+      "outer_group": "4 actual primary March conditions; shots/analytes/fractions nested",
+      "source_family": "pannusch2024"
+    }
   ]
 }

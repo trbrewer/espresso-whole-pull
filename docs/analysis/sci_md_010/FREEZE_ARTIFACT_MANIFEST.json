@@ -1,4 +1,5 @@
 {
+  "aggregate_content_sha256": "1f1c4a6ea6f53707aa3c4c009c764faf8a57263e730ac46c8112790b122650d0",
   "artifacts": [
     {
       "path": "docs/analysis/sci_md_010/ISSUE_CONTRACT.md",
@@ -6,68 +7,90 @@
     },
     {
       "path": "docs/analysis/sci_md_010/AUTHORITY_AND_DATA_PREFLIGHT.json",
-      "sha256": "36652e9947625a4be78dda8717170eaa44cfc0a19ffc76854048379f099d2e48"
+      "sha256": "46d792241d5fc7f61cd3d9f216012c1fcfab5829d4fd90a4f6c5fcd8628fc958"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/INPUT_ARTIFACT_REGISTER.json",
+      "sha256": "ca4aa6ff4ddaa7472b62e32868e95a2c14e21fca4062d75ca3d249149304fd17"
     },
     {
       "path": "docs/analysis/sci_md_010/EVIDENCE_UTILITY_REGISTER.csv",
-      "sha256": "d4c80e9e3c1ab36a4d9e7314e939690fbeb45f4b71e334a543974c790588b678"
+      "sha256": "cefb34da0dd787522b72e8e6a59ee1b0a409d84aed9a452a6b31f3939f67f6fb"
     },
     {
       "path": "docs/analysis/sci_md_010/EWP_INPUT_OBSERVABILITY_REGISTER.csv",
-      "sha256": "0c53c8a766f90762467c55f99d56786613cdb7c642d0922514fbf421c90d8426"
+      "sha256": "b6f8ec67c06167351b0a477bbb18348cdef83c6c4ac3921cac28b637d6ce2ea8"
     },
     {
       "path": "docs/analysis/sci_md_010/END_TO_END_OBSERVABILITY_GRAPH.json",
-      "sha256": "956524a5c1b3223d5e7dbd610d514970eb50c83630f3ebd3ed0ff64f98768b6a"
+      "sha256": "074225652f088864371a8af2545f992c6787e8abcbe8044ba31baf8dcba5f9a0"
     },
     {
       "path": "docs/analysis/sci_md_010/BENCHMARK_LANE_SELECTION.json",
-      "sha256": "1f9ec0938a699d5f6814a306914012e5c6f9284012a3d375f85c2236b9781328"
+      "sha256": "e090a3ad7a40828bffa9504b43361922ec3c7aa7d10abb88c7466c71f73fdd5e"
     },
     {
-      "path": "docs/analysis/sci_md_010/MODEL_LADDER.json",
-      "sha256": "64029ef01e77aebafe9a5974c4f3205e6c4dc0670bdb779fa72aebc95dbd408d"
-    },
-    {
-      "path": "docs/analysis/sci_md_010/PRIVILEGE_LEDGER.csv",
-      "sha256": "347eb5f37b74445faa51224133428ec6df42bc72c23da10f67e2c168c273c25c"
+      "path": "docs/analysis/sci_md_010/ANALYSIS_ROW_INDEX.csv",
+      "sha256": "f7eec8d311e9afca1ebb90731c542ca5bd9ba324934935b1168fe11ffe0c682b"
     },
     {
       "path": "docs/analysis/sci_md_010/FOLD_ASSIGNMENTS.csv",
-      "sha256": "ddc13f20fc291c09eee3cb0efa40aa0aeae38810112426de29cd96f6ada3cf2b"
+      "sha256": "5d0a40ac07184be220be2c03380e2b0fde51a79a54c0fa031f147055b0aa282e"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv",
+      "sha256": "2ccba012380db1dbf5ff44767450be748eb3165ea84dfe1bd72b5f8c75905c32"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/MODEL_LADDER.json",
+      "sha256": "20975585b121a8d1fc075b52ba40462cbdaf4ad525e0330f65716805f08f8fcf"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/MODEL_SPECIFICATIONS.json",
+      "sha256": "7ff5be0b91a08abf590c82143da29a47cfbbeb094067d7fcef6d6cc7b9d98e26"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/PRIVILEGE_LEDGER.csv",
+      "sha256": "5ac08bab9b336afa9d2c85cef5e94540e34a0823832f053e02d6405e9fb1c0af"
     },
     {
       "path": "docs/analysis/sci_md_010/METRIC_CONTRACT.json",
-      "sha256": "2c60773b84843170b31fe66c5367a0ec5f8eeb487dbd787bc7a8f817c9210b96"
+      "sha256": "6073c6494c84e7cff990b9a3ad69b008949cc3562afe83431e267c5ac228d05d"
     },
     {
       "path": "docs/analysis/sci_md_010/EVALUATION_CONTRACT.json",
-      "sha256": "0600c2b08c35a7b22c85a2ce4211ad51645fabb1d43c56631a8e668a42691b80"
+      "sha256": "dc947f498bc2f81ee204f010ff1bdf7ed0123327209a0df454c0a710d5f3896e"
     },
     {
       "path": "docs/analysis/sci_md_010/PRE_SCORE_FREEZE.json",
-      "sha256": "fb1c6a8af753f7fd80f6688a7ae38d1e737e4b4cb04bb2c93fa9f8cb4ead36bb"
+      "sha256": "9010a7ec3729fe80bdc0bbf449c9c3509fec4240967b797720668968cf5a66ec"
     },
     {
       "path": "docs/analysis/sci_md_010/FREEZE_REPORT.md",
-      "sha256": "e7fdbd9b5cb53296f68819242265fa1e48ca5f0590eedbab3a78685e8084e240"
+      "sha256": "84069b17a170c399b3a61b72434d292f0ecc6a87ef11ec6cd64f8d044fcbf7a1"
+    },
+    {
+      "path": "scripts/sci_md_010_core.py",
+      "sha256": "89da3d55fa1e68a87d46ddf12c09cd991a79779ab43b17705153940cb8ec683d"
     },
     {
       "path": "scripts/sci_md_010_prepare.py",
-      "sha256": "6b844fbbd091a978065684eae717c6eca78b9f50d1f68d2b074459dcce54c3cb"
+      "sha256": "b50f949d2ddbf9c691a05bfce023ef67935fb41986ffdc5f6ebb9eeee375a53e"
     },
     {
       "path": "scripts/sci_md_010_execute.py",
-      "sha256": "77f0ba80f4af100bd2f43a242b06bc576eea76419e78f3650971b1d9cdd5e572"
+      "sha256": "d54fddc463da6b0774021766b7917e06e037d77a088ffd0bb50482a69467d436"
     },
     {
       "path": "scripts/validate_sci_md_010.py",
-      "sha256": "644d17dda9e5fd76576dc69e01c6c24ce828a1b727c46bf818ba9c152684ba44"
+      "sha256": "188428541df828c6c7027612832e82bb96c9567ab03f5c265c692c10bb2d2522"
     },
     {
       "path": "tests/test_sci_md_010.py",
-      "sha256": "e12782e5a4f112221e87e074029068aa65e8c8181dbcdb0b388467b97d3d1b53"
+      "sha256": "b7331d023ead1ede289682ec5a9618304c381266af1c34d297cc52e2374f9fdf"
     }
   ],
+  "revision": "R1",
+  "scoring_executed": false,
   "task_id": "SCI-MD-010"
 }

@@ -1,35 +1,58 @@
 {
-  "delta_loss": "competitive_baseline_loss-candidate_loss",
-  "materiality": "PREDICTIVE_RANKING_ONLY when no uncertainty floor",
-  "metrics": {
-    "L-FRAC": {
-      "normalization": "none; composition metric",
-      "primary": "total variation distance",
-      "secondary": [
-        "cumulative profile IAE",
-        "condition wins"
-      ]
-    },
-    "L-HYD": {
-      "normalization": "training-fold range",
-      "primary": "normalized absolute blocked-time error",
-      "secondary": [
-        "signed bias",
-        "pressure ordering",
-        "condition wins"
-      ]
-    },
-    "L-STRUCT": {
-      "normalization": "training-fold scale",
-      "primary": "source-specific standardized RMSE",
-      "secondary": [
-        "porosity RMSE",
-        "log-permeability RMSE",
-        "slope"
-      ]
-    }
+  "L-FRAC": {
+    "across_physical_units": "shot then condition; analytes equal",
+    "bootstrap_count": 2000,
+    "confidence_interval": "95% percentile",
+    "disposition_mapping": "source-native utility possible; unavailable EWP forbids EWP advantage",
+    "failed_model": "infinite loss",
+    "formula": "TV=0.5*sum(abs(y/sum(y)-p/sum(p))); reused score retains predecessor RMSE",
+    "influential_group": "leave one March condition",
+    "materiality": "PREDICTIVE_RANKING_ONLY",
+    "missing_value": "incomplete vector fails",
+    "normalization": "within-vector sum only",
+    "prediction": "six shares",
+    "primary": "exact predecessor fraction-share RMSE; TV for any new vector execution",
+    "resampling_unit": "physical condition",
+    "secondary": [
+      "cumulative IAE=sum(abs(cumsum(y)-cumsum(p)))/6",
+      "early/tail share",
+      "condition wins"
+    ],
+    "seed": 20260831,
+    "target": "six-fraction share vector",
+    "tie_rule": "interval includes zero -> prefer simpler",
+    "trend_sign_rule": "cumulative and early/tail direction",
+    "uncertainty_method": "reuse predecessor paired condition interval",
+    "units": "share",
+    "within_physical_unit": "analyte separate; six fractions together",
+    "zero_range": "zero observed/predicted total fails; no pseudocount"
   },
-  "resampling_unit": "outer physical/source group",
-  "seed": 10010,
-  "uncertainty": "paired group bootstrap only when defensible; otherwise all group losses"
+  "L-HYD": {
+    "across_physical_units": "brew then condition equal weights",
+    "bootstrap_count": 2000,
+    "confidence_interval": "95% percentile",
+    "disposition_mapping": "Level 1 reconstruction; unavailable EWP forbids EWP advantage",
+    "failed_model": "infinite loss",
+    "formula": "mean_condition(mean_brew(sqrt(mean_time((obs-pred)^2))/training_range))",
+    "influential_group": "leave one condition",
+    "materiality": "PREDICTIVE_RANKING_ONLY",
+    "missing_value": "fail closed",
+    "normalization": "outer-training range only",
+    "prediction": "mass increment",
+    "primary": "condition-balanced normalized RMSE exact predecessor reuse",
+    "resampling_unit": "condition/physical brew",
+    "secondary": [
+      "blocked-time NRMSE 60-95s",
+      "endpoint bias",
+      "condition wins"
+    ],
+    "seed": 20260831,
+    "target": "cumulative beverage-mass increment",
+    "tie_rule": "interval includes zero -> no stable advantage",
+    "trend_sign_rule": "pressure ordering not systematically wrong",
+    "uncertainty_method": "condition then brew paired bootstrap",
+    "units": "dimensionless",
+    "within_physical_unit": "time RMSE 15-95 s",
+    "zero_range": "fold failure"
+  }
 }

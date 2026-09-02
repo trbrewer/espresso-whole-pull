@@ -1,27 +1,45 @@
-import csv,json,tempfile,unittest
+import copy,sys,tempfile,unittest
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1];D=ROOT/'docs/analysis/sci_md_010'
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
+from sci_md_010_core import *
+D=ROOT/'docs/analysis/sci_md_010'
 class TestSciMd010(unittest.TestCase):
- def test_exact_frozen_authority(self):
-  p=json.load(open(D/'AUTHORITY_AND_DATA_PREFLIGHT.json'));self.assertEqual(p['puckworks_analysis_commit'],'2058d0e947ee9eb92c52d64f6165b810f1fb4732')
- def test_all_families_classified(self):self.assertTrue(all(r['utility_class'] for r in csv.DictReader(open(D/'EVIDENCE_UTILITY_REGISTER.csv'))))
- def test_direct_transfer_failure_not_useless(self):
-  rs=list(csv.DictReader(open(D/'EVIDENCE_UTILITY_REGISTER.csv')));self.assertTrue(all(r['utility_class']!='NO_CURRENT_DECISION_RELEVANT_USE' for r in rs if r['direct_parameter_transfer_possible']=='false'))
- def test_physical_groups_and_no_target_assignment(self):
-  for r in csv.DictReader(open(D/'FOLD_ASSIGNMENTS.csv')):self.assertEqual((r['group_id'],r['target_used_for_assignment']),(r['parent_physical_unit'],'false'))
- def test_baselines_and_primary_metrics(self):
-  c=json.load(open(D/'EVALUATION_CONTRACT.json'))
-  for lane in c['selected_lanes']:
-   ids={m['model_id'] for m in c['models'] if m['lane_id']==lane};self.assertTrue({'B0','B1'}<=ids);self.assertTrue(c['metrics'][lane]['primary'])
- def test_no_test_calibration(self):
-  c=json.load(open(D/'EVALUATION_CONTRACT.json'));self.assertFalse(c['test_group_calibration']);self.assertFalse(c['per_shot_prediction_calibration'])
- def test_exposed_claim_ceiling(self):self.assertNotIn('INDEPENDENT',json.load(open(D/'EVALUATION_CONTRACT.json'))['claim_ceiling'])
- def test_stages_unauthorized(self):
-  p=json.load(open(D/'AUTHORITY_AND_DATA_PREFLIGHT.json'));self.assertFalse(p['stage_f_authorized']);self.assertFalse(p['stage_d_authorized'])
- def test_synthetic_outcomes(self):
-  # Compact fixtures encode leakage rejection, mechanistic win, tie->reduced,
-  # wrong sign, rank-deficient pair, and reconstruction mislabel rejection.
-  self.assertGreater(2.0-1.0,0);self.assertEqual(1.0-1.0,0);self.assertLess(1.0-2.0,0)
-  self.assertEqual([[1,1],[2,2]][1][1],2)
-  with self.assertRaises(AssertionError): assert not True, 'per-test calibration cannot be prediction'
+ def test_01_leakage(self):
+  with self.assertRaises(ValueError):validate_no_leakage([{'nested_unit_id':'f','physical_unit_id':'s1'},{'nested_unit_id':'f','physical_unit_id':'s2'}],[])
+ def test_02_target_independent_folds(self):
+  a=[{'g':'b','y':1},{'g':'a','y':9}];b=copy.deepcopy(a);b[0]['y']=-9;self.assertEqual(stable_folds(a,'g'),stable_folds(b,'g'))
+ def test_03_training_only_fit(self):
+  m=fit_linear([1,2],[2,4]);self.assertEqual(m,fit_linear([1,2],[2,4]));self.assertEqual(predict_linear(m,[3]),[6])
+ def test_04_mechanistic_win(self):self.assertIn('ADVANTAGE',lane_decision(.1,1))
+ def test_05_tie_reduced(self):self.assertIn('PREFER_REDUCED',lane_decision(.2,.3,full=.2))
+ def test_06_wrong_order(self):self.assertIn('WRONG',lane_decision(.1,.2,False))
+ def test_07_practical_not_structural(self):self.assertIn('PRACTICALLY',classify_identifiability([[1,1],[2,2]]))
+ def test_08_reconstruction(self):
+  with self.assertRaises(ValueError):enforce_privilege({'derived_from_target':'true','claim_class':'RETROSPECTIVE_GROUPED_PREDICTION','supplied_to_ewp':'true','supplied_to_b1':'true'})
+ def test_09_privilege(self):
+  with self.assertRaises(ValueError):enforce_privilege({'derived_from_target':'false','claim_class':'RETROSPECTIVE_GROUPED_PREDICTION','supplied_to_ewp':'true','supplied_to_b1':'false'})
+ def test_10_real_joins(self):
+  u={r['physical_unit_id'] for r in load_csv(D/'ANALYSIS_ROW_INDEX.csv')};self.assertTrue(all(x in u for f in load_csv(D/'FOLD_ASSIGNMENTS.csv') for x in f['evaluation_physical_units'].split(';')))
+ def test_11_callables(self):
+  for m in load_json(D/'MODEL_SPECIFICATIONS.json')['models']:
+   if m['callable'] not in {'EXACT_REUSE_ONLY','UNAVAILABLE'}:self.assertTrue(all(x in MODEL_CALLABLES for x in m['callable'].split(',')))
+ def test_12_hash_change(self):
+  with tempfile.TemporaryDirectory() as t:p=Path(t)/'x';p.write_text('a');h=sha256(p);p.write_text('b');self.assertNotEqual(h,sha256(p))
+ def receipt(self,**kw):
+  r={'task_id':'SCI-MD-010','review_disposition':REVIEW_DISPOSITION,'reviewed_freeze_commit':'SYNTHETIC_HEAD','reviewed_freeze_tree':'SYNTHETIC_TREE','freeze_manifest_sha256':'h','reviewer_identity':'independent','review_record':'synthetic','reviewed_at_utc':'2026-09-02T00:00:00Z','material_findings':[],'phase_b_authorized':True};r.update(kw);return r
+ def test_13_receipt_guards(self):
+  for k,v in [('review_disposition','bad'),('reviewer_identity',''),('material_findings',['x']),('phase_b_authorized',False),('freeze_manifest_sha256','bad')]:
+   with self.assertRaises(ValueError):verify_receipt(self.receipt(**{k:v}),{},'h',ROOT,True)
+ def test_14_no_circular_mutation(self):p=D/'PRE_SCORE_FREEZE.json';h=sha256(p);verify_receipt(self.receipt(),{},'h',ROOT,True);self.assertEqual(h,sha256(p))
+ def test_15_single_run(self):
+  with tempfile.TemporaryDirectory() as t:
+   p=Path(t);(p/'x').write_text('x')
+   with self.assertRaises(ValueError):synthetic_run(p)
+ def test_16_synthetic_pipeline(self):
+  with tempfile.TemporaryDirectory() as t:r=synthetic_run(Path(t)/'o');self.assertEqual(r['primary_loss'],0);self.assertTrue((Path(t)/'o/RUN_RECEIPT.json').is_file())
+ def test_17_utility(self):u={x['utility_class'] for x in load_csv(D/'EVIDENCE_UTILITY_REGISTER.csv')};self.assertIn('NO_CURRENT_DECISION_RELEVANT_USE',u);self.assertIn('DIRECT_RETROSPECTIVE_PREDICTIVE_EVALUATION',u)
+ def test_18_claim(self):self.assertNotIn('INDEPENDENT_VALIDATION',load_json(D/'PRE_SCORE_FREEZE.json')['claim_ceiling'])
+ def test_19_stages(self):p=load_json(D/'PRE_SCORE_FREEZE.json');self.assertFalse(p['stage_f_authorized'] or p['stage_d_authorized'])
+ def test_20_no_private_path(self):
+  for p in ['sci_md_010_core.py','sci_md_010_prepare.py','sci_md_010_execute.py','validate_sci_md_010.py']:self.assertNotIn('/'+'home'+'/',(ROOT/'scripts'/p).read_text())
 if __name__=='__main__':unittest.main()

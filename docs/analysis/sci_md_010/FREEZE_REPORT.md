@@ -1,7 +1,11 @@
-# SCI-MD-010 pre-score freeze
+# SCI-MD-010 R1 executable source-bound pre-score freeze
 
-The exact authority, complete registered-family utility register, observability register, end-to-end graph, three bounded lanes, model privileges, folds, metrics, nuisance bounds, uncertainty rules, and closed result vocabulary are frozen. The lanes are L-HYD (Waszkiewicz), L-FRAC (Pannusch), and L-STRUCT (Wadsworth and Vaca Guerra). Existing exact results will be reused where identity and observable match; the frozen budget contains zero new production cases.
+Used quantitatively: exact exposed predecessor result rows for Waszkiewicz (11 real conditions, 56 canonical brews) and Pannusch (four named primary March conditions; shots, analytes, six fractions nested). Wadsworth and Vaca remain separate constraint/operator/permeability-context sublanes. Every other family is assessed source-specifically in the evidence register and aggregate candidate audit; none is pooled.
 
-No adjudicative scoring occurred and no outer-fold result was generated or inspected. Execution fails closed until an independent reviewer approves the exact committed head and tree.
+Exact real execution materializes frozen predecessor scores without refitting. HYD_B1 is a prior analysis model, not EWP. FRAC_B2 is source-native Pannusch, not EWP. B0/E1 callables are implemented and synthetically exercised but not newly scored on real targets by this freeze. Current EWP predictions at exact matching inputs do not exist, so both E2 records explicitly say unavailable.
 
-Disposition: `SCI_MD_010_PRE_SCORE_FREEZE_READY_FOR_SINGLE_INDEPENDENT_REVIEW`.
+Actual folds are 11 Waszkiewicz LOCO condition groups with brews/timesteps nested and four Pannusch conditions PRED-C01, PRED-C02, PRED-C05, PRED-C06 with shots/analytes/fractions nested. HYD retains predecessor condition-balanced NRMSE and blocked-time diagnostics at Level 1 reconstruction. FRAC retains target-exposed source-internal RMSE; TV is defined for future vectors. Structure questions are not predictive folds. Aggregate exclusion is source-specific and is not based on a common-inventory requirement.
+
+Phase B products: execution state/receipt, fold and aggregate results, parameter/identifiability records, scorecard, limitation/architecture decisions, graph result fields, experiment decision, summaries, and result manifest. These lanes can decide source-model utility and EWP observation-interface evaluability, not current-EWP predictive advantage. Outside scope: new production cases, real-target refits, wet-puck equivalence, inventory closure, Level 4/5, laboratory work, Stage F/D, and production changes. Utility counts: {"CONDITIONAL_PREDICTIVE_EVALUATION": 13, "DIRECT_RETROSPECTIVE_PREDICTIVE_EVALUATION": 2, "NO_CURRENT_DECISION_RELEVANT_USE": 8, "OBSERVATION_OPERATOR_QUALIFICATION": 1, "PARAMETER_RANGE_OR_PRIOR": 2, "RIGHTS_OR_AVAILABILITY_BLOCKED": 1, "SOURCE_MODEL_REPRODUCTION": 18, "TREND_OR_SIGN_TEST": 2}.
+
+Disposition: `SCI_MD_010_R1_EXECUTABLE_SOURCE_BOUND_PRE_SCORE_FREEZE_READY_FOR_REPLACEMENT_INDEPENDENT_REVIEW`. No adjudicative scoring occurred.
