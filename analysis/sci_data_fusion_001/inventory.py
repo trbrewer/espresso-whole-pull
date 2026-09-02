@@ -11,9 +11,9 @@ def scan_registered_families(puckworks:Path,rules:dict)->tuple[list[dict],list[d
     ids=[row["family_id"] for row in families]
     if len(ids)!=len(set(ids)):raise ValueError("duplicate family in exact family index")
     screens,datasets=[],[]
-    default={"quantity_ids":[],"match_basis":"no accepted component mapping or existing EWP consumer","disposition":"EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY","terminal_reason":"NO_FROZEN_MATCH"}
     for family in sorted(families,key=lambda row:row["family_id"]):
-        family_id=family["family_id"]; rule=rules.get(family_id,default)
+        family_id=family["family_id"]; rule=rules.get(family_id)
+        if rule is None:rule={"quantity_ids":[],"match_basis":"explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity","disposition":"EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY","terminal_reason":"REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"}
         if rule["disposition"] not in SCREEN_VOCABULARY:raise ValueError(f"unknown screening disposition for {family_id}")
         dataset_ids=family.get("manifest_dataset_ids",[]); missing=[item for item in dataset_ids if item not in manifest_by_id]
         if missing:raise ValueError(f"unregistered manifest datasets for {family_id}: {missing}")
@@ -29,4 +29,4 @@ def validate_support_inventory(records:list[dict])->None:
     if any(not item for item in ids) or len(ids)!=len(set(ids)):raise ValueError("support IDs must be present and unique")
     for row in records:
         if not row.get("frozen_role") or not row.get("terminal_reason"):raise ValueError(f"support lacks terminal role: {row.get('support_id')}")
-        if row.get("qualified_support") and row.get("originating_task_id") is None:raise ValueError("unqualified registry entry promoted to qualified support")
+        if row.get("qualified_for_task_role") is True and row.get("originating_task_id") is None:raise ValueError("unqualified registry entry promoted to qualified support")

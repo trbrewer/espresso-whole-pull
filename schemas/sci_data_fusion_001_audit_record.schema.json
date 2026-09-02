@@ -8,7 +8,7 @@
     "task_id":{"const":"SCI-DATA-FUSION-001"},
     "audit_type":{"const":"SINGLE_INDEPENDENT_PREEXECUTION_AUDIT"},
     "audit_disposition":{"const":"SCI_DATA_FUSION_001_SINGLE_INDEPENDENT_PREEXECUTION_AUDIT_PASS"},
-    "reviewed_head":{"type":"string","pattern":"^[0-9a-f]{40}$","not":{"const":"54b2164eaf81907a8573d54e89fd8eecbf99293e"}},
+    "reviewed_head":{"type":"string","pattern":"^[0-9a-f]{40}$","not":{"enum":["54b2164eaf81907a8573d54e89fd8eecbf99293e","1f9b8758c2b2b756eeb29daab28b4dce0cf3525b"]}},
     "reviewed_tree":{"type":"string","pattern":"^[0-9a-f]{40}$"},
     "reviewed_freeze_content_manifest_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
     "reviewer_identity":{"type":"string","minLength":1},

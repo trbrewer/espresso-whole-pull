@@ -83,7 +83,9 @@
     "observation_operator",
     "population_regime",
     "lineage",
+    "correlation_group",
     "independence_target_exposure",
+    "source_internal_role",
     "provenance_rights",
     "ewp_consumer",
     "no_new_inference"
@@ -128,6 +130,32 @@
     "strict_subset",
     "common_support_empty"
   ],
+  "next_action_mapping": {
+    "SCI_DATA_FUSION_001_BLOCKED_DECISION_MATERIAL_SEMANTIC_OR_AUTHORITY": {
+      "decision_exhausted": false,
+      "next_task": "SCI-DATA-FUSION-001-BOUNDED-RECONCILIATION"
+    },
+    "SCI_DATA_FUSION_001_COMMON_SUPPORT_IDENTIFIED_NO_QUANTITATIVE_EWP_NARROWING": {
+      "decision_exhausted": true,
+      "next_task": "SCI-DATA-FUSION-001-BASELINE-CONTRACT"
+    },
+    "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY": {
+      "decision_exhausted": true,
+      "next_task": "SCI-ED-003"
+    },
+    "SCI_DATA_FUSION_001_CONFLICTING_SAME_SCOPE_COMPONENT_EVIDENCE": {
+      "decision_exhausted": false,
+      "next_task": "SCI-DATA-FUSION-001-CONFLICT-ADJUDICATION-CONTRACT"
+    },
+    "SCI_DATA_FUSION_001_NEGATIVE_NO_COMMON_CROSS_CORPUS_CONSTRAINT": {
+      "decision_exhausted": true,
+      "next_task": "SCI-ED-003"
+    },
+    "SCI_DATA_FUSION_001_POSITIVE_AT_LEAST_ONE_COMMON_EWP_CONSTRAINT": {
+      "decision_exhausted": true,
+      "next_task": "SCI-DATA-FUSION-001-CONSUMER-CONTRACT"
+    }
+  },
   "nonclaims": [
     "whole-model validation",
     "universal transfer",
@@ -161,6 +189,7 @@
     ],
     "porosity_reuse_authority": "docs/analysis/ewp_porosity_permeability_prior_001/POROSITY_MATERIALITY.json"
   },
+  "result_vocabulary_authority": "analysis/sci_data_fusion_001/result_vocabulary.json",
   "rights_rule": "registered use must permit metadata/derived constraint analysis; restricted source bytes remain outside EWP",
   "set_combination": {
     "common_support": "closed interval intersection only after every compatibility gate passes",
@@ -206,8 +235,10 @@
   ],
   "target_exposure_treatment": "may qualify source operator, exclusion, shape, stress, or conditioned alternative only when prior authority permits; never independent EWP validation",
   "task_id": "SCI-DATA-FUSION-001",
+  "typed_support_record_schema": "schemas/sci_data_fusion_001_support_record.schema.json",
   "uncertainty_combination": {
     "numeric_rule": "NONE_FROZEN",
+    "presence_rule": "uncertainty_present must be true and every typed semantic field recognized; absent metadata is null and is not evidence",
     "prohibited": [
       "inverse variance",
       "Bayesian update",

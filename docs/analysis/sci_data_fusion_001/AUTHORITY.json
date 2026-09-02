@@ -5,8 +5,10 @@
   "branch_base_relationship":"revised freeze must descend from frozen_ewp_base; later origin/main advancement is reported but never substituted",
   "accepted_predecessor":{"commit":"186c13000cfb1a402b220bec8fbb89164bac4686","tree":"3a3565f8bab605ed706f5ce51bbfed4de039d46b","relationship":"reachable from frozen EWP base"},
   "superseded_original_freeze":{"commit":"54b2164eaf81907a8573d54e89fd8eecbf99293e","tree":"2b3a84f7158e4b7687ef0acc556cf5b4b80a6890","audit_eligible":false},
+  "superseded_audited_correction_required_freeze":{"commit":"1f9b8758c2b2b756eeb29daab28b4dce0cf3525b","tree":"f2e606e5c9f1d4b47f76bded42d8aca6fac9fdbe","audit_disposition":"SCI_DATA_FUSION_001_SINGLE_INDEPENDENT_PREEXECUTION_AUDIT_CORRECTION_REQUIRED","phase_b_enabling":false,"audit_eligible":false},
   "revised_freeze_identity":"bound by independent audit record to exact git head/tree after C1 commit; never inferred from origin/main",
   "puckworks":{"commit":"2058d0e947ee9eb92c52d64f6165b810f1fb4732","tree":"a6ffb312473b15be43c1571a893b19873ea47c5a","manifest_sha256":"3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081","available_data_register_sha256":"0c318f43c40361629bb8f25ab4b8ca9f073425ca3ec3a2418bbd8a6cb67a5481","local_corpus_family_index_sha256":"448a1eef0944d0d2b5e0f4ea04b3e5bc8418f315b5a323707f855815f8dcefcd"},
   "owner_authorization":"SCI-DATA-FUSION-001-OWNER-AUTHORIZE-BOUNDED-CROSS-CORPUS-COMPONENT-CONSTRAINT-QUALIFICATION-2026-09-02",
-  "owner_correction_direction":"SCI-DATA-FUSION-001-C1-OWNER-DIRECT-BIND-COMPLETE-EXECUTION-AND-FULL-CORPUS-CENSUS-BEFORE-INDEPENDENT-AUDIT-2026-09-02"
+  "owner_correction_direction":"SCI-DATA-FUSION-001-C1-OWNER-DIRECT-BIND-COMPLETE-EXECUTION-AND-FULL-CORPUS-CENSUS-BEFORE-INDEPENDENT-AUDIT-2026-09-02",
+  "owner_consolidated_audit_remediation":"SCI_DATA_FUSION_001_CONSOLIDATED_REVISED_FREEZE_AWAITING_INDEPENDENT_PREEXECUTION_REAUDIT"
 }

@@ -31,7 +31,10 @@
     },
     "reviewed_head": {
       "not": {
-        "const": "54b2164eaf81907a8573d54e89fd8eecbf99293e"
+        "enum": [
+          "54b2164eaf81907a8573d54e89fd8eecbf99293e",
+          "1f9b8758c2b2b756eeb29daab28b4dce0cf3525b"
+        ]
       },
       "pattern": "^[0-9a-f]{40}$",
       "type": "string"

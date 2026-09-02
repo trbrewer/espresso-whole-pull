@@ -9,10 +9,13 @@ from analysis.sci_data_fusion_001.decision import reduce_overall
 from analysis.sci_data_fusion_001.inventory import scan_registered_families,validate_support_inventory
 from analysis.sci_data_fusion_001.lineage import pair_independence
 from analysis.sci_data_fusion_001.phase_b import execute
+from analysis.sci_data_fusion_001.preexecution import BOOL_FIELDS,real_config_preflight,uncertainty_eligible
+from analysis.sci_data_fusion_001.reporting import render_reproduction,render_result
+from analysis.sci_data_fusion_001.vocabulary import COMPONENT_RESULTS
 from analysis.sci_data_fusion_001.uncertainty import combine,compatible
 ROOT=Path(__file__).parents[1];PUCK=Path(os.environ["EWP_SCI_DATA_FUSION_001_PUCKWORKS_ROOT"])
 def support(name,lineage,group,interval=(.2,.4),**extra):
-    row={"support_id":name,"lineage_id":lineage,"correlation_group_id":group,"experiment_id":lineage,"interval":list(interval),"frozen_role":"COMMON_CONSTRAINT_CANDIDATE","qualified_support":True,"target_exposed":False,"source_internal_validation":False,"consumed_comparison_conflict":False,"provenance_complete":True,"rights_permit_analysis":True,"canonical_quantity_id":"Q"};row.update(extra);return row
+    row={"support_id":name,"lineage_id":lineage,"correlation_group_id":group,"experiment_id":lineage,"interval":list(interval),"frozen_role":"COMMON_CONSTRAINT_CANDIDATE","qualified_for_task_role":True,"target_exposed":False,"source_internal_validation":False,"consumed_comparison_conflict":False,"provenance_complete":True,"rights_permit_analysis":True,"ewp_calibration_independent":True,"uncertainty_present":False,"canonical_quantity_id":"Q"};row.update(extra);return row
 def gates(value=True):return {name:value for name in LOAD_BEARING_GATES}
 class AuthorityTests(unittest.TestCase):
     def test_frozen_base_not_current_head(self):
@@ -50,7 +53,7 @@ class InventoryTests(unittest.TestCase):
     def test_fig12_separate(self):self.assertTrue({"VACA_FIG12_MEASURED_DRY_POROSITY","VACA_FIG12_CALCULATED_DRY_POROSITY"}<={x["support_id"] for x in self.rows})
     def test_vaca_k_separate(self):self.assertTrue({"VACA_C1_DARCY_K_PUBLISHED_VISCOSITY","VACA_C1_DARCY_K_EWP_VISCOSITY_REEXPRESSION"}<={x["support_id"] for x in self.rows})
     def test_eq11_context(self):self.assertEqual(next(x for x in self.rows if x["support_id"]=="VACA_EQ11_POSTFIT_RECONSTRUCTION")["frozen_role"],"CONTEXT_ONLY")
-    def test_unqualified_not_promoted(self):self.assertTrue(all(x.get("originating_task_id") or not x.get("qualified_support") for x in self.rows))
+    def test_unqualified_not_promoted(self):self.assertTrue(all(x.get("originating_task_id") or x.get("qualified_for_task_role") is not True for x in self.rows))
 class CompatibilityTests(unittest.TestCase):
     def test_complete_pair_count(self):
         items=[support("a","a","a"),support("b","b","b"),support("c","c","c")];contracts={f"{a}|{b}":gates() for a,b in (("a","b"),("a","c"),("b","c"))};self.assertEqual(len(build_pairwise(items,contracts)),3)
@@ -103,4 +106,31 @@ class DeterminismTests(unittest.TestCase):
         fixture={"inventory":[support("a","a","a"),support("b","b","b",(.3,.5))],"extraction_rules":[],"pairwise_gate_contracts":{"a|b":gates()},"baselines":{"Q":{"status":"NO_AUTHORIZED_NUMERIC_BASELINE"}}}
         with tempfile.TemporaryDirectory() as td:
             a,b=Path(td)/"a",Path(td)/"b";execute(ROOT,a,fixture);execute(ROOT,b,fixture);self.assertEqual({x.name:hashlib.sha256(x.read_bytes()).hexdigest() for x in a.iterdir()},{x.name:hashlib.sha256(x.read_bytes()).hexdigest() for x in b.iterdir()})
+class RealConfigurationTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.package=ROOT/"docs/analysis/sci_data_fusion_001";cls.rows=json.loads((cls.package/"SOURCE_SUPPORT_INVENTORY.json").read_text())["records"];cls.execution=json.loads((cls.package/"EXECUTION_PLAN.json").read_text());cls.preflight=real_config_preflight(cls.rows,cls.execution)
+    def test_all_real_booleans_typed(self):self.assertTrue(all(type(row[field]) is bool for row in self.rows for field in BOOL_FIELDS))
+    def test_porosity_pair_reachable(self):
+        item=next(x for x in self.preflight["components"] if x["canonical_quantity_id"]=="EWP_INITIAL_DRY_POROSITY");self.assertEqual((item["common_candidate_count"],item["independently_eligible_count"],item["required_pair_count"],item["generated_pair_count"]),(2,2,1,1));self.assertEqual(set(item["common_candidate_ids"]),{"VACA_TABLE_C1_EPSILON_0","WADSWORTH_TOTAL_XCT_POROSITY"})
+    def test_no_phantom_uncertainty(self):self.assertEqual(sum(uncertainty_eligible(x) for x in self.rows),sum(x["uncertainty_present"] is True for x in self.rows));self.assertEqual(self.preflight["uncertainty_record_count"],0)
+    def test_typed_uncertainty_fixture(self):
+        row=support("u","u","u",frozen_role="UNCERTAINTY_SUPPORT_CANDIDATE",uncertainty_present=True,uncertainty_statistic="STANDARD_DEVIATION",uncertainty_estimand="porosity",replicate_unit="specimen",uncertainty_scale="linear",observation_operator="measurement")
+        self.assertTrue(uncertainty_eligible(row));row["uncertainty_statistic"]="UNKNOWN_NOT_INFERRED";self.assertFalse(uncertainty_eligible(row));row["uncertainty_statistic"]=None;self.assertFalse(uncertainty_eligible(row))
+    def test_family_support_reconciliation(self):
+        families=json.loads((self.package/"PUCKWORKS_FAMILY_SCREEN.json").read_text())["families"];self.assertEqual(sum(x["detailed_support_record_count"] for x in families),len(self.rows));self.assertEqual(next(x for x in families if x["family_id"]=="vacaguerra2023a")["detailed_support_record_count"],6)
+    def test_hydraulic_families_explicit(self):
+        families={x["family_id"]:x for x in json.loads((self.package/"PUCKWORKS_FAMILY_SCREEN.json").read_text())["families"]}
+        for family in ("grudeva2025","foster2025_2","fasano2000_partI","ellero2019"):self.assertNotEqual(families[family]["terminal_reason"],"REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN")
+    def test_contract_gate_and_vocabulary_equal(self):
+        contract=json.loads((self.package/"TASK_CONTRACT.json").read_text());self.assertEqual(tuple(contract["compatibility_gates"]),LOAD_BEARING_GATES);self.assertEqual(set(contract["component_result_classes"]),set(COMPONENT_RESULTS))
+    def test_blocker_reachability_and_materiality(self):
+        blocker=support("z","z","z",frozen_role="BLOCKED_AUTHORITY",qualified_for_task_role=False,decision_material=False,source_artifact_path="authority")
+        component=reduce_component("Q",[blocker],{}, {"status":"BASELINE_AUTHORITY_BLOCKED"});self.assertEqual(component["component_result"],"BLOCKED_AUTHORITY");self.assertNotIn("BLOCKED",reduce_overall([component])["disposition"])
+        blocker["decision_material"]=True;component=reduce_component("Q",[blocker],{}, {"status":"BASELINE_AUTHORITY_BLOCKED"});self.assertIn("BLOCKED",reduce_overall([component])["disposition"])
+    def test_common_no_baseline_reachable(self):self.assertEqual(reduce_component("Q",[support("a","a","a"),support("b","b","b")],{"a|b":gates()},{"status":"NO_AUTHORIZED_NUMERIC_BASELINE"})["component_result"],"COMMON_SUPPORT_IDENTIFIED_NO_AUTHORIZED_EWP_BASELINE")
+    def test_reporting_complete(self):
+        auth=json.loads((self.package/"AUTHORITY.json").read_text());decision=reduce_overall([{"quantity_id":"Q","component_result":"NEGATIVE_NO_COMMON_SUPPORT","candidate_count":1,"eligible_lineage_count":0,"compatibility_findings":[],"baseline_status":"NO_AUTHORIZED_NUMERIC_BASELINE","blockers":[],"decision_material":False}]);result=render_result(decision,auth,[]);repro=render_reproduction(auth)
+        for text in ("Direct answer","Baseline status","Narrowing status","nonclaims","Next action"):self.assertIn(text.lower(),result.lower())
+        for text in ("audit-record","puckworks-root","OpenFOAM","laboratory"):self.assertIn(text,repro)
 if __name__=="__main__":unittest.main()

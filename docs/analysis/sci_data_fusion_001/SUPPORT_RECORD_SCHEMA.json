@@ -1,0 +1,115 @@
+{
+  "$id": "https://github.com/trbrewer/espresso-whole-pull/schemas/sci_data_fusion_001_support_record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "consumed_comparison_conflict": {
+      "type": "boolean"
+    },
+    "dataset_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "decision_material": {
+      "type": "boolean"
+    },
+    "ewp_calibration_independent": {
+      "type": "boolean"
+    },
+    "family_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "frozen_role": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "observation_operator": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provenance_complete": {
+      "type": "boolean"
+    },
+    "qualified_for_task_role": {
+      "type": "boolean"
+    },
+    "replicate_unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rights_permit_analysis": {
+      "type": "boolean"
+    },
+    "source_artifact_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_artifact_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_internal_validation": {
+      "type": "boolean"
+    },
+    "support_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "target_exposed": {
+      "type": "boolean"
+    },
+    "terminal_reason": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "uncertainty_estimand": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uncertainty_present": {
+      "type": "boolean"
+    },
+    "uncertainty_scale": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uncertainty_statistic": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "support_id",
+    "family_id",
+    "dataset_ids",
+    "frozen_role",
+    "terminal_reason",
+    "qualified_for_task_role",
+    "rights_permit_analysis",
+    "provenance_complete",
+    "target_exposed",
+    "source_internal_validation",
+    "consumed_comparison_conflict",
+    "ewp_calibration_independent",
+    "uncertainty_present",
+    "decision_material"
+  ],
+  "type": "object"
+}
