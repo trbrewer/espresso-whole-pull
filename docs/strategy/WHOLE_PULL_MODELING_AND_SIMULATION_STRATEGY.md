@@ -1,9 +1,15 @@
 # Puckworks Whole-Pull Multiscale Modeling and Simulation Strategy
 
-> **Current execution note (29 August 2026):** The enduring strategy remains
-> controlling technical context, while current task selection and the direct
-> paired-measurement feasibility gate are defined by the
-> [Data-First Scientific Development Plan](DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md).
+> **Current execution note (2 September 2026):** The enduring strategy remains
+> controlling technical context. Current execution authority is the completed
+> SCI-ED-003 contract, with status
+> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`, plus the bounded
+> `OWNER_DECISION_PENDING` item defined by
+> the [Data-First Scientific Development Plan](DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md).
+> M01 plus contextual M02 is a future candidate; Stage F and Stage D are not
+> authorized, separate owner authorization is required for execution, no
+> automatic successor exists, and physical validation remains
+> `NOT_ESTABLISHED`.
 
 **Strategy version:** 1.7
 **Date:** 4 August 2026
@@ -17,7 +23,7 @@
 **Primary pore-scale platform:** Taichi/LBM on NVIDIA A100-SXM4-80GB-class GPU resources
 **Scientific and software backbone:** Puckworks models, data, model cards, contracts, validation gates, rights records, and public product layer
 **WP-0.1 disposition:** **IMPLEMENTATION PASS; BOUNDED CODE VERIFICATION PASS; NUMERICAL QUALIFICATION PASS; RELEASE PROVENANCE PASS; R0 FROZEN / QUALIFIED; PHYSICAL VALIDATION NOT ESTABLISHED**
-**Current scientific gate:** `DIRECT_PAIRED_MEASUREMENT_FEASIBILITY`; no XSV stage substitutes for direct data
+**Current repository item:** `OWNER_DECISION_PENDING`; no solver, surrogate, or execution task is active
 
 ---
 

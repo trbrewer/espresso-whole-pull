@@ -25,6 +25,11 @@ def current_sections(root: Path):
         "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": "## Pannusch-to-EWP",
         "docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md": "Before substantive",
         "docs/ONBOARDING.md": "For validation work",
+        "README.md": "The approximately 40 g",
+        "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": "Current addendum:",
+        "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": "## Historical residual-selected",
+        "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md": "## Historical Waszkiewicz",
+        "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md": "---",
     }
     return {name: (root/name).read_text(encoding="utf-8").split(stop, 1)[0] for name, stop in specs.items()}
 
@@ -82,17 +87,34 @@ def validate(root: Path) -> None:
     selected=next(x for x in machine["opportunities"] if x["opportunity_id"]==machine["current_priority"])
     require(selected["status"].startswith("COMPLETE_") and machine["last_completed_opportunity_review"]==machine["current_priority"], "current priority is not the completed owner-decision item")
     require(machine["laboratory_gate"]["operation_authorized"] is False and machine["laboratory_gate"]["separate_owner_authorization_required"] is True, "laboratory authorization fail-open")
-    stale = [r"SCI-ED-003.{0,40}(?:is|`)\s*(?:`)?READY", r"SCI-ED-003.{0,50}not implemented", r"SCI-MD-PANNUSCH-FLOW-HISTORY-001.{0,60}current"]
-    for name, section in current_sections(root).items():
+    stale = [
+        r"SCI-ED-003.{0,40}(?:is|`)\s*(?:`)?READY",
+        r"SCI-ED-003.{0,50}not implemented",
+        r"SCI-ED-003.{0,50}(?:is\s+)?deferred",
+        r"SCI-MD-PANNUSCH-FLOW-HISTORY-001.{0,80}(?:selected|current)",
+        r"XSV-PANNUSCH-MULTIMODEL-001.{0,80}(?:immediate|current)",
+        r"DIRECT_PAIRED_MEASUREMENT_FEASIBILITY.{0,40}current gate",
+        r"current (?:scientific )?gate.{0,40}DIRECT_PAIRED_MEASUREMENT_FEASIBILITY",
+        r"OWNER_APPROVED_FOR_LAB_READY_PREPARATION",
+        r"EXP-006.{0,30}EXP-010.{0,80}current next scientific action",
+        r"EXPERIMENTAL_FEASIBILITY_DIRECTION\s*:\s*OWNER_APPROVED(?:\s|$)",
+    ]
+    sections = current_sections(root)
+    for name, section in sections.items():
         lower=section.lower()
-        normalized=re.sub(r"\s+", " ", lower).replace("_", " ")
+        normalized=re.sub(r"\s+", " ", lower.replace(">", " ")).replace("_", " ")
         require("sci-ed-003" in lower and "complete" in lower, f"{name}: completion absent from active block")
         require("closure contract defined execution not authorized" in normalized, f"{name}: completion status absent from active block")
         require("separate owner authorization" in normalized, f"{name}: separate authorization absent from active block")
         require("owner decision" in normalized, f"{name}: bounded owner decision absent from active block")
-        require("automatically selected" in normalized or "automatic successor" in normalized, f"{name}: no-automatic-successor boundary absent")
+        require("automatically selected" in normalized or ("automatic" in normalized and "successor" in normalized), f"{name}: no-automatic-successor boundary absent")
         require("physical validation" in normalized and "not established" in normalized, f"{name}: physical-validation ceiling absent")
         for pat in stale: require(re.search(pat, section, re.I|re.S) is None, f"{name}: stale active-state language: {pat}")
+    added = ["README.md", "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md", "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md", "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md", "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md"]
+    for name in added:
+        normalized=re.sub(r"\s+", " ", sections[name].lower().replace(">", " ")).replace("_", " ")
+        require("stage f" in normalized and "not authorized" in normalized, f"{name}: Stage F boundary absent")
+        require("stage d" in normalized and "not authorized" in normalized, f"{name}: Stage D boundary absent")
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument("--root",type=Path,default=Path(__file__).resolve().parents[1]); args=p.parse_args()

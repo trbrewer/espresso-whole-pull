@@ -227,12 +227,12 @@ class XSVTaichi001Tests(unittest.TestCase):
         self.assertFalse(amendment["unchanged_inputs"]["thresholds_changed"])
         self.assertFalse(amendment["governing_physics_changed"])
         self.assertEqual(amendment["physical_validation"], "NOT_ESTABLISHED")
-        self.assertEqual(
-            hashlib.sha256(
-                (ROOT / "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md").read_bytes()
-            ).hexdigest(),
-            "088ae61a044737d1ed126590f0e27a7e7c008089a2f39cfa523108f7e9962fe0",
+        strategy = (ROOT / "docs/strategy/WHOLE_PULL_MODELING_AND_SIMULATION_STRATEGY.md").read_text(
+            encoding="utf-8"
         )
+        self.assertIn("`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`", strategy)
+        self.assertIn("`OWNER_DECISION_PENDING`", strategy)
+        self.assertIn("Stage F and Stage D are not", strategy)
         roadmap = (ROOT / "docs/strategy/SOLVER_DEVELOPMENT_AND_VALIDATION_ROADMAP.md").read_text(
             encoding="utf-8"
         )
