@@ -1,0 +1,259 @@
+{
+  "analysis_class": "SOURCE_CONSTRAINT_ANALYSIS_ONLY",
+  "baseline_rules": {
+    "allowed": "explicit machine-readable authorized admissible interval, scenario domain, uncertainty envelope, or completed component support",
+    "prohibited": [
+      "percentage around default",
+      "test tolerance",
+      "scalar default as interval",
+      "observed source range as baseline",
+      "unstated distribution"
+    ],
+    "statuses": [
+      "AUTHORIZED_BASELINE_AVAILABLE",
+      "NO_AUTHORIZED_NUMERIC_BASELINE",
+      "BASELINE_SEMANTICALLY_INCOMPATIBLE",
+      "BASELINE_AUTHORITY_BLOCKED"
+    ]
+  },
+  "candidate_discovery": {
+    "eligible_completed_statuses": [
+      "COMPLETE_NEGATIVE",
+      "COMPLETE_POSITIVE",
+      "COMPLETE_NULL",
+      "BLOCKED_DATA_JOIN"
+    ],
+    "ewp": "all support, boundary, uncertainty, operator, and exclusion records in the enumerated consumed completed-result artifacts",
+    "puckworks": "full exact LOCAL_CORPUS_FAMILY_INDEX and AVAILABLE_DATA_REGISTER metadata scan for quantities matching already-qualified EWP components",
+    "raw_literature_reconstruction": "PROHIBITED",
+    "status_normalization": {
+      "BLOCKED_DATA_JOIN": "COMPLETED_BLOCKED_COMPONENT_RESULT",
+      "COMPLETE_NEGATIVE": "COMPLETED_COMPONENT_RESULT",
+      "COMPLETE_NULL": "COMPLETED_COMPONENT_RESULT",
+      "COMPLETE_POSITIVE": "COMPLETED_COMPONENT_RESULT",
+      "DEFERRED_BY_HIGHER_PRIORITY": "NOT_COMPLETED",
+      "DEFERRED_BY_HIGHER_VALUE_EXISTING_DATA_TASKS": "NOT_COMPLETED",
+      "PROPOSED": "NOT_COMPLETED",
+      "PROPOSED_CONDITIONAL_FIFTH_PRIORITY": "NOT_COMPLETED",
+      "READY": "NOT_COMPLETED",
+      "READY_FOR_BOUNDARY_LIBRARY_AND_DESCRIPTIVE_HYDRAULIC_ANALYSIS": "NOT_COMPLETED"
+    },
+    "unqualified_family_role": "CANDIDATE_OR_SUCCESSOR_ONLY"
+  },
+  "canonical_quantity_required_fields": [
+    "quantity_id",
+    "physical_definition",
+    "symbol",
+    "si_unit",
+    "basis",
+    "reference_state",
+    "physical_state",
+    "spatial_support",
+    "temporal_support",
+    "statistical_estimand",
+    "population_regime",
+    "observation_operator",
+    "ewp_consumer",
+    "existing_admissible_domain",
+    "domain_authority"
+  ],
+  "change_declarations": [
+    "NO_GOVERNING_PHYSICS_CHANGE",
+    "NO_PRODUCTION_SOLVER_CHANGE",
+    "NO_PRODUCTION_DEFAULT_CHANGE",
+    "NO_CALIBRATED_PARAMETER_CHANGE",
+    "NO_RUNTIME_PUCKWORKS_LOCK_CHANGE",
+    "NO_SOURCE_ROW_FUSION",
+    "NO_PROBABILISTIC_META_ANALYSIS",
+    "NO_NEW_CALIBRATION",
+    "NO_HOLDOUT_RELABELING",
+    "NO_PROTECTED_SCORE",
+    "NO_OPENFOAM_EXECUTION",
+    "NO_HOME_LAB_OPERATION",
+    "PHYSICAL_VALIDATION_NOT_ESTABLISHED"
+  ],
+  "claim_ceiling": "CROSS_CORPUS_COMPONENT_EVIDENCE",
+  "claim_wording": "Cross-corpus component evidence only; source identities, states, populations, operators, and correlation structures remain explicit.",
+  "compatibility_gates": [
+    "physical_quantity",
+    "reference_state",
+    "unit_basis",
+    "spatial_support",
+    "temporal_support",
+    "observation_operator",
+    "population_regime",
+    "lineage",
+    "correlation_group",
+    "independence_target_exposure",
+    "source_internal_role",
+    "provenance_rights",
+    "ewp_consumer",
+    "no_new_inference"
+  ],
+  "component_result_classes": [
+    "POSITIVE_COMMON_CONSTRAINT",
+    "POSITIVE_COMPATIBLE_UNCERTAINTY_SUPPORT",
+    "COMMON_SUPPORT_IDENTIFIED_NO_AUTHORIZED_EWP_BASELINE",
+    "COMPLEMENTARY_SOURCE_CONDITIONED_ONLY",
+    "NEGATIVE_NO_COMMON_SUPPORT",
+    "CONFLICT_SAME_SCOPE_SUPPORTS",
+    "BLOCKED_SEMANTIC",
+    "BLOCKED_AUTHORITY",
+    "BLOCKED_RIGHTS",
+    "NOT_APPLICABLE_NO_SHARED_EWP_COMPONENT"
+  ],
+  "conversion_rules": "definition-preserving SI conversions explicitly authorized by source metadata only; no empirical bridge",
+  "governance_class": "G1",
+  "known_sentinels": [
+    "WADSWORTH_VACA_NO_ROW_FUSION",
+    "WADSWORTH_VACA_OPERATORS_SEPARATE",
+    "WADSWORTH_VACA_POROSITY_NOT_ASSUMED_EQUIVALENT",
+    "PERMEABILITY_STRESS_ONLY",
+    "VACA_FIG12_OPERATOR_ONLY_ZERO_PRIOR_ROWS",
+    "VISUALIZER_ZERO_EWP_PRESSURE_BOUNDARIES",
+    "PANNUSCH_ZERO_OPERATIONAL_EWP_MAPPINGS",
+    "PANNUSCH_CONTEXT_NONOPERATIONAL",
+    "PANNUSCH_TARGET_EXPOSED_NOT_INDEPENDENT",
+    "WASZKIEWICZ_FIXED_RESISTANCE_RETAINED"
+  ],
+  "lineage_rules": {
+    "fitted_and_measured_same_campaign": "ONE_CORRELATION_GROUP",
+    "minimum_positive_lineages": 2,
+    "same_experiment_files_tables_figures_reductions": "ONE_LINEAGE",
+    "source_model_and_fit_data": "NOT_INDEPENDENT",
+    "target_exposed_or_source_internal": "NOT_INDEPENDENT_EWP_VALIDATION"
+  },
+  "narrowing_metrics": [
+    "absolute_width_reduction",
+    "relative_width_reduction",
+    "log10_width_reduction_for_strictly_positive_order_spanning_quantity",
+    "strict_subset",
+    "common_support_empty"
+  ],
+  "next_action_mapping": {
+    "SCI_DATA_FUSION_001_BLOCKED_DECISION_MATERIAL_SEMANTIC_OR_AUTHORITY": {
+      "decision_exhausted": false,
+      "next_task": "SCI-DATA-FUSION-001-BOUNDED-RECONCILIATION"
+    },
+    "SCI_DATA_FUSION_001_COMMON_SUPPORT_IDENTIFIED_NO_QUANTITATIVE_EWP_NARROWING": {
+      "decision_exhausted": true,
+      "next_task": "SCI-DATA-FUSION-001-BASELINE-CONTRACT"
+    },
+    "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY": {
+      "decision_exhausted": true,
+      "next_task": "SCI-ED-003"
+    },
+    "SCI_DATA_FUSION_001_CONFLICTING_SAME_SCOPE_COMPONENT_EVIDENCE": {
+      "decision_exhausted": false,
+      "next_task": "SCI-DATA-FUSION-001-CONFLICT-ADJUDICATION-CONTRACT"
+    },
+    "SCI_DATA_FUSION_001_NEGATIVE_NO_COMMON_CROSS_CORPUS_CONSTRAINT": {
+      "decision_exhausted": true,
+      "next_task": "SCI-ED-003"
+    },
+    "SCI_DATA_FUSION_001_POSITIVE_AT_LEAST_ONE_COMMON_EWP_CONSTRAINT": {
+      "decision_exhausted": true,
+      "next_task": "SCI-DATA-FUSION-001-CONSUMER-CONTRACT"
+    }
+  },
+  "nonclaims": [
+    "whole-model validation",
+    "universal transfer",
+    "population representativeness",
+    "universal prior",
+    "physical validation",
+    "coupled grinder-to-cup validation",
+    "improved predictive accuracy",
+    "production readiness",
+    "production adoption"
+  ],
+  "overall_precedence": [
+    "decision-material blocker",
+    "same-scope conflict",
+    "positive common EWP constraint",
+    "common support without quantitative EWP narrowing",
+    "complementarity",
+    "negative"
+  ],
+  "overall_preserves_all_components": true,
+  "propagation": {
+    "allowed": "existing qualified unchanged EWP adapter, source-scenario-only input, unchanged reduced or analytical path",
+    "materiality": "reuse only for identical geometry, operating conditions, observables, and numerical uncertainty",
+    "openfoam": "PROHIBITED",
+    "porosity_observables": [
+      "first_drip_time",
+      "steady_flow",
+      "effective_hydraulic_resistance",
+      "final_water_mass",
+      "time_to_target"
+    ],
+    "porosity_reuse_authority": "docs/analysis/ewp_porosity_permeability_prior_001/POROSITY_MATERIALITY.json"
+  },
+  "result_vocabulary_authority": "analysis/sci_data_fusion_001/result_vocabulary.json",
+  "rights_rule": "registered use must permit metadata/derived constraint analysis; restricted source bytes remain outside EWP",
+  "set_combination": {
+    "common_support": "closed interval intersection only after every compatibility gate passes",
+    "descriptive_union": "allowed only with explicit non-prior/non-distribution label",
+    "different_regime_disjoint": "SOURCE_CONDITIONED_ALTERNATIVE",
+    "preserve_source_supports": true,
+    "prohibited": [
+      "raw row concatenation",
+      "cross-source empirical distribution",
+      "averaged quantiles",
+      "range-to-confidence-interval conversion"
+    ],
+    "same_scope_disjoint": "CONFLICT_SAME_SCOPE_SUPPORTS"
+  },
+  "set_narrowing_materiality_threshold": null,
+  "stop_conditions": [
+    "predecessor absent",
+    "programme selection/status mismatch",
+    "Puckworks commit/tree/hash mismatch",
+    "unregistered source",
+    "rights prohibit intended use",
+    "new constitutive inference/refit/reconstruction/physics required",
+    "protected or consumed evidence misuse",
+    "protected production/default/runtime-lock mutation",
+    "Phase B without exact independent audit",
+    "producer defect controls validity"
+  ],
+  "support_roles": [
+    "COMMON_CONSTRAINT_CANDIDATE",
+    "UNCERTAINTY_SUPPORT_CANDIDATE",
+    "SOURCE_CONDITIONED_ALTERNATIVE",
+    "OPERATOR_QUALIFICATION_ONLY",
+    "SHAPE_ONLY",
+    "STRESS_ONLY",
+    "CONTEXT_ONLY",
+    "BLOCKED_SEMANTIC",
+    "BLOCKED_AUTHORITY",
+    "INELIGIBLE_LINEAGE_DUPLICATION",
+    "INELIGIBLE_TARGET_EXPOSURE",
+    "INELIGIBLE_CONSUMED_COMPARISON",
+    "INELIGIBLE_RIGHTS",
+    "INELIGIBLE_NO_EWP_CONSUMER"
+  ],
+  "target_exposure_treatment": "may qualify source operator, exclusion, shape, stress, or conditioned alternative only when prior authority permits; never independent EWP validation",
+  "task_id": "SCI-DATA-FUSION-001",
+  "typed_support_record_schema": "schemas/sci_data_fusion_001_support_record.schema.json",
+  "uncertainty_combination": {
+    "numeric_rule": "NONE_FROZEN",
+    "presence_rule": "uncertainty_present must be true and every typed semantic field recognized; absent metadata is null and is not evidence",
+    "prohibited": [
+      "inverse variance",
+      "Bayesian update",
+      "random effects",
+      "likelihood multiplication",
+      "SD/SE/CI/IQR/range interchange"
+    ],
+    "required_equal_fields": [
+      "statistic",
+      "estimand",
+      "scale",
+      "replicate_unit",
+      "state",
+      "observation_operator"
+    ]
+  },
+  "unknown_required_semantics": "FAIL_CLOSED_BLOCKED_SEMANTIC"
+}

@@ -1,0 +1,1098 @@
+{
+  "declared_family_count": 39,
+  "families": [
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "angeloni2023",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "angeloni2023/inventories",
+        "angeloni2023/bioactives",
+        "angeloni2023/total_solids",
+        "angeloni2023/lipids",
+        "angeloni2023/total_solids_lipids_rsd"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "chemistry",
+        "extraction"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Angeloni et al. Appl. Sci. 2023, 13, 2688 (MDPI, open access; Cloudflare-blocked for fetch)",
+        "Angeloni et al. Appl. Sci. 13 (2023) 2688 (MDPI, open access; Cloudflare-blocked for fetch); transcribed from article tables, no repository",
+        "Angeloni et al. Appl. Sci. 13 (2023) 2688 (MDPI open access); author-deposited PDF hashed"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:ANGELONI2023",
+      "strongest_current_uses": [
+        "extraction inventory priors; INDEPENDENT multi-species target for pannusch2024"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "bruno2026",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "bruno2026/roasted_composition"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "source_material",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "CC BY 4.0 (Scientific Reports, open access)"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:BRUNO2026",
+      "strongest_current_uses": [
+        "G6 / ledger-A4 SoluteInventory prior (offline provider); NOT a registered component"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "cameron2020",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "cameron2020/fig5_grind_deviation",
+        "cameron2020/psd_figure2"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "extraction",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "paper (DOI 10.1016/j.matt.2020.06.019)",
+        "Cameron et al., Matter 2 (2020) 631-648; Fig 2 PSD digitized 2026-07-25"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:CAMERON2020",
+      "strongest_current_uses": [
+        "gate_streamtube_heldout; streamtube sigma(GS) fines-closure leave-one-out"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "egidi2024",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "egidi2024/table2"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "extraction",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "paper (DOI 10.1016/j.chaos.2024.115625)"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:EGIDI2024",
+      "strongest_current_uses": [
+        "RC-1 EY/TDS range bracket (2.1)"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "ellero2019",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "ellero2019/fig2_inverse_discharge",
+        "ellero2019/fig3_direct_discharge",
+        "ellero2019/fig4_caffeine_content"
+      ],
+      "match_basis": "registered fines-migration mechanism, shape, and timescale simulation evidence",
+      "model_chain_stages": [
+        "extraction",
+        "transport"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "no DOI (conference proceedings); figures digitized, no PDF redistributed",
+        "no DOI (conference proceedings); figures digitized"
+      ],
+      "screening_disposition": "MATCHED_STRESS_OR_SHAPE_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:ELLERO2019",
+      "strongest_current_uses": [
+        "G2 fines-migration mechanism SHAPE/timescale (qualitative pointer)"
+      ],
+      "terminal_reason": "QUALITATIVE_NONCOFFEE_SIMULATION_DOES_NOT_AUTHORIZE_EVOLVING_EWP_RESISTANCE"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "fasano2000_partI",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "fasano2000_partI/fig8_1_experimental",
+        "fasano2000_partI/fig8_4_reversal",
+        "fasano2000_partI/fig8_6_model_q_inf",
+        "fasano2000_partI/fig8_7_thresholds"
+      ],
+      "match_basis": "registered transient pressure peak-and-decay evidence",
+      "model_chain_stages": [
+        "extraction",
+        "transport"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Fasano/Talamucci/Petracco, Complex Flows in Industrial Processes ch.8, Springer 2000 (no DOI; no code/data); digitized figures"
+      ],
+      "screening_disposition": "MATCHED_STRESS_OR_SHAPE_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:FASANO2000_PARTI",
+      "strongest_current_uses": [
+        "3.3 experimental target (only nonmonotone-q_inf evidence)"
+      ],
+      "terminal_reason": "TRANSIENT_SHAPE_EVIDENCE_IS_LOW_FIDELITY_AND_NOT_AN_EWP_BOUNDARY"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "foster2025_2",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "foster2025_2/params",
+        "foster2025_2/fig15_flow",
+        "foster2025_2/fig12_14_curves"
+      ],
+      "match_basis": "registered wetting/hydraulics and machine-mode t_p/t_s reproduction",
+      "model_chain_stages": [
+        "wetting",
+        "hydraulics"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INLET_PRESSURE_BOUNDARY",
+        "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "paper (DOI 10.1063/5.0245167)"
+      ],
+      "screening_disposition": "MATCHED_STRESS_OR_SHAPE_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:FOSTER2025_2",
+      "strongest_current_uses": [
+        "item 1.6: machine-mode t_p/t_s reproduction"
+      ],
+      "terminal_reason": "SOURCE_INTERNAL_MACHINE_MODE_REPRODUCTION_HAS_NO_QUALIFIED_EWP_BOUNDARY_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "g10_liquor_rheology",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "g10_liquor_rheology/telis_romero_envelope",
+        "g10_liquor_rheology/telisromero2001_closures",
+        "g10_liquor_rheology/telisromero2001_tables",
+        "g10_liquor_rheology/telisromero2000_thermal",
+        "g10_liquor_rheology/khomyakov_kinematic_viscosity"
+      ],
+      "match_basis": "registered liquid-property context potentially entering hydraulic interpretation",
+      "model_chain_stages": [
+        "rheology",
+        "thermal"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "paywalled (Wiley/Tandfonline, bot-blocked here); ranges/forms from snippets + open 2013 xref",
+        "paywalled (Wiley, bot-blocked here); coefficients + anchors transcribed from docs/cards/telisromero2001.md, primary Tables 1-2 NOT redistributed",
+        "paywalled (Wiley); tables digitized by author-side drop, not redistributed beyond this repo",
+        "paywalled (Tandfonline, bot-blocked here); coefficients + anchors from docs/cards/telisromero2000.md, Figs 2-5 NOT digitized/redistributed",
+        "CC BY 3.0 (IOP; open access)"
+      ],
+      "screening_disposition": "MATCHED_CONTEXT_OR_OPERATOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:G10_LIQUOR_RHEOLOGY",
+      "strongest_current_uses": [
+        "G10 flow-closure mu(T,c)/rho(T,c); RC-2/RC-3 early-shot-bias check"
+      ],
+      "terminal_reason": "RHEOLOGY_CONTEXT_IS_NOT_PERMEABILITY_SUPPORT"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "g1_glassbead_analog",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "g1_glassbead_analog/retention_kr"
+      ],
+      "match_basis": "registered porous-media hydraulic analog",
+      "model_chain_stages": [
+        "bed_structure",
+        "hydraulics"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "open arXiv:2501.13361 (no journal DOI); underlying bead data per cited 1966-2017 refs"
+      ],
+      "screening_disposition": "MATCHED_STRESS_OR_SHAPE_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:G1_GLASSBEAD_ANALOG",
+      "strongest_current_uses": [
+        "G1 Richards closure shape prior (egidi2018 solver); P3 hyp#2 machinery only"
+      ],
+      "terminal_reason": "NONCOFFEE_ANALOG_NO_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "g3_pump_characteristic",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "g3_pump_characteristic/ulka_envelope"
+      ],
+      "match_basis": "registered pump characteristic boundary evidence",
+      "model_chain_stages": [
+        "machine_boundary",
+        "hydraulics"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INLET_PRESSURE_BOUNDARY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "public (manufacturer datasheet; Decent blog; espressoaf community)"
+      ],
+      "screening_disposition": "MATCHED_BUT_UNQUALIFIED_SUCCESSOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:G3_PUMP_CHARACTERISTIC",
+      "strongest_current_uses": [
+        "RC-3 machine-mode envelope bound; flow boundary-condition context"
+      ],
+      "terminal_reason": "MANUFACTURER_ENDPOINTS_NO_QUALIFIED_INTERIOR_EWP_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "gagne2021",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "gagne2021/grinder_arm_summary",
+        "gagne2021/shots",
+        "gagne2021/resistance_decline_summary"
+      ],
+      "match_basis": "registered machine-boundary/resistance evidence",
+      "model_chain_stages": [
+        "hydraulics",
+        "bed_structure"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INLET_PRESSURE_BOUNDARY",
+        "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "J. Gagne, Coffee Ad Astra / Patreon (2021); no DOI, not peer-reviewed; 11 .shot files published alongside",
+        "J. Gagne, Coffee Ad Astra (2021); .shot files published alongside the post; no explicit licence (blog); not peer-reviewed",
+        "J. Gagne, Coffee Ad Astra (2021); derived summary of the published .shot files; not peer-reviewed"
+      ],
+      "screening_disposition": "MATCHED_BUT_UNQUALIFIED_SUCCESSOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:GAGNE2021",
+      "strongest_current_uses": [
+        "arms the kappa(t)-vs-viscosity-decline discrimination (needs the .shot traces, an acquisition target); grinder-contrast observable"
+      ],
+      "terminal_reason": "NO_COMPLETED_EWP_COMPONENT_QUALIFICATION"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "gloess2013",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "gloess2013/de_espresso_endpoint"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "sensory",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "CC-BY (open access; Eur. Food Res. Technol. 236:607-627; DOI 10.1007/s00217-013-1917-x)"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:GLOESS2013",
+      "strongest_current_uses": [
+        "no gate -- low-priority cross-check anchor only (EY ~20% at TDS ~5.5% sits below cameron2020's 29.6% inventory ceiling)"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "grudeva2025",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "grudeva2025/params",
+        "grudeva2025/exp13_vial_stats"
+      ],
+      "match_basis": "registered adjudicated kappa/P_app model parameters; source model role is not a measured EWP prior",
+      "model_chain_stages": [
+        "extraction",
+        "transport"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "thesis + EJAM CC-BY (DOI 10.1017/S095679252500018X)",
+        "reference repo declares no SPDX license; DIRECT WRITTEN PERMISSION from Dr. Yoana Grudeva 2026-08-14 (LinkedIn) covering code and data - full evidence retained privately (docs/permissions/grudeva2025.md; #73); paper CC-BY is a separate record"
+      ],
+      "screening_disposition": "MATCHED_BUT_UNQUALIFIED_SUCCESSOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:GRUDEVA2025",
+      "strongest_current_uses": [
+        "item 1.7b: two named configs; adjudicated kappa/P_app"
+      ],
+      "terminal_reason": "MODEL_PARAMETERS_REQUIRE_NEW_COMPONENT_INVESTIGATION_AND_QUALIFIED_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "hargarten2020",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "hargarten2020/swelling_progress",
+        "hargarten2020/scalar_anchors"
+      ],
+      "match_basis": "registered compaction/bed-structure evidence",
+      "model_chain_stages": [
+        "source_material",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INITIAL_DRY_POROSITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "CC BY-NC (JSFA, open access); PSD/single-particle figures NOT digitized (owed)",
+        "CC BY-NC (JSFA)"
+      ],
+      "screening_disposition": "MATCHED_BUT_UNQUALIFIED_SUCCESSOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:HARGARTEN2020",
+      "strongest_current_uses": [
+        "DATA-ONLY empirical anchor for the (not-yet-open) bed_dynamics swelling/erosion backlog; NOT a registered component"
+      ],
+      "terminal_reason": "NO_ACCEPTED_CANONICAL_POROSITY_MAPPING"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "khamitova2020",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "khamitova2020/tamping"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "source_material",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Khamitova PhD dissertation, University of Camerino (2020); no DOI"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:KHAMITOVA2020",
+      "strongest_current_uses": [
+        "weak-effect reference (tamping ~ null on per-species concentration at fixed 1:2 ratio); multi-compound espresso chemistry beside pannusch/schmieder"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "liang2021",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "liang2021/fig3_tds",
+        "liang2021/fig4_E",
+        "liang2021/fig5_cupping"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "extraction",
+        "transport"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "open access (DOI 10.1038/s41598-021-85787-1)"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:LIANG2021",
+      "strongest_current_uses": [
+        "item 1.3: refit K*E_max (Eq 11, R_brew>=3)"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "maille2024",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "maille2024/materials",
+        "maille2024/phi",
+        "maille2024/psd_hybrid",
+        "maille2024/psd_dispersion",
+        "maille2024/kinetics_caffeine_3cqa",
+        "maille2024/kinetics_organic_acids",
+        "maille2024/equilibrium_concentrations",
+        "maille2024/normalized_curves",
+        "maille2024/ssa",
+        "maille2024/particle_porosity",
+        "maille2024/extraction_curves"
+      ],
+      "match_basis": "registered bed-structure/porosity use; no completed EWP component qualification",
+      "model_chain_stages": [
+        "bed_structure",
+        "hydraulics"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INITIAL_DRY_POROSITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Maille PhD thesis, U. Sheffield 2024 (unredacted tables); White Rose eTheses; digitized 2026-07-25",
+        "Maille PhD thesis, U. Sheffield 2024; White Rose eTheses; figures digitized 2026-07-25"
+      ],
+      "screening_disposition": "MATCHED_BUT_UNQUALIFIED_SUCCESSOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:MAILLE2024",
+      "strongest_current_uses": [
+        "material legend for all maille datasets (Sample ID -> roast, sieve class)"
+      ],
+      "terminal_reason": "REQUIRES_NEW_COMPONENT_INVESTIGATION"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "mckeonaloe2022",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "mckeonaloe2022/basket_open_area_geometry"
+      ],
+      "match_basis": "registered density and bed-structure context",
+      "model_chain_stages": [
+        "source_material",
+        "sensory"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INITIAL_DRY_POROSITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "R. McKeon Aloe, Medium / Coffee Data Science (2022); non-peer-reviewed; no DOI"
+      ],
+      "screening_disposition": "EXCLUDED_REQUIRES_NEW_COMPONENT_INVESTIGATION",
+      "source_registration": "AVAILABLE_DATA_REGISTER:MCKEONALOE2022",
+      "strongest_current_uses": [
+        "G9 exit-boundary geometry seed (complements schulman2011 multi-brand table); orifice open-area reference"
+      ],
+      "terminal_reason": "DENSITY_TO_POROSITY_MAPPING_IS_NOT_ALREADY_QUALIFIED"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "mo2023",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "mo2023/forchheimer",
+        "mo2023/fig8a"
+      ],
+      "match_basis": "registered Darcy/Forchheimer hydraulic evidence",
+      "model_chain_stages": [
+        "bed_structure",
+        "hydraulics"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "preprint arXiv:2305.03911 (no journal DOI)",
+        "preprint arXiv:2305.03911"
+      ],
+      "screening_disposition": "MATCHED_STRESS_OR_SHAPE_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:MO2023",
+      "strongest_current_uses": [
+        "1.1 \u00a75.2 Mo Re overlay; P6 Forchheimer priors"
+      ],
+      "terminal_reason": "DIFFERENT_MEDIUM_OR_UNQUALIFIED_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "mo2023_2",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "mo2023_2/granulometry_table1",
+        "mo2023_2/k0_table2",
+        "mo2023_2/yield_strength_figs6_9",
+        "mo2023_2/fig3a_qdecay",
+        "mo2023_2/fig6_Ksweep_typeM",
+        "mo2023_2/sim_lines_figs7_9"
+      ],
+      "match_basis": "registered pressure-drop/flow hydraulic evidence",
+      "model_chain_stages": [
+        "bed_structure",
+        "hydraulics",
+        "extraction"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Elsevier, J. Food Eng. 2023 DOI 10.1016/j.jfoodeng.2023.111843 (paywalled); no code/data published"
+      ],
+      "screening_disposition": "MATCHED_STRESS_OR_SHAPE_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:MO2023_2",
+      "strongest_current_uses": [
+        "Carman-Kozeny k0 input; 3.1"
+      ],
+      "terminal_reason": "UNQUALIFIED_EWP_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "moroney2015",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "moroney2015/data"
+      ],
+      "match_basis": "registered espresso transport-model pressure-flow context",
+      "model_chain_stages": [
+        "extraction",
+        "transport"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY",
+        "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Moroney et al. 2015, Chemical Engineering Science (Elsevier); DOI 10.1016/j.ces.2015.06.003; digitized/transcribed by Puckworks"
+      ],
+      "screening_disposition": "EXCLUDED_REQUIRES_NEW_COMPONENT_INVESTIGATION",
+      "source_registration": "AVAILABLE_DATA_REGISTER:MORONEY2015",
+      "strongest_current_uses": [
+        "primary-source provenance for moroney2016/moroney2019/cooper2021 parameters; a permeability anchor + bed-depth scaling (Fig 11) and the pressure-invariance result (Fig 12); fine+coarse extraction curves; measured kappa=3.1 and c_sat=212.4 cross-checks"
+      ],
+      "terminal_reason": "MODEL_OUTPUT_REQUIRES_SEPARATE_QUALIFICATION_AND_NO_EXISTING_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "moroney2016",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "moroney2016/table1",
+        "moroney2016/fig6"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "extraction",
+        "transport"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "paper (DOI 10.1137/15M1036658)"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:MORONEY2016",
+      "strongest_current_uses": [
+        "item 1.4: surrogate parameters (a2=5.139, a3=0.473, eps=0.127)"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "moroney2019",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "moroney2019/table2"
+      ],
+      "match_basis": "registered porous-bed hydraulic model context",
+      "model_chain_stages": [
+        "extraction",
+        "transport"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Moroney et al. 2019 PLoS ONE (CC BY 4.0); cooper2021 Quantitative Cafe blog (errata, author-confirmed)"
+      ],
+      "screening_disposition": "MATCHED_STRESS_OR_SHAPE_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:MORONEY2019",
+      "strongest_current_uses": [
+        "transcription-check target (reproduce 1-D two-grain c_exit RMSE 5.81/6.23 kg m^-3 from CORRECTED h_sl); two Delta-p permeability cross-check anchors"
+      ],
+      "terminal_reason": "NO_QUALIFIED_EFFECTIVE_PARAMETER_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "pannusch2024",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "pannusch2024/table2_params",
+        "pannusch2024/experimental_kinetics"
+      ],
+      "match_basis": "accepted complete Pannusch-to-EWP mapping audit",
+      "model_chain_stages": [
+        "extraction",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "EXTERNAL_RECOVERED_LOCAL_CORPUS",
+      "rights_access_summary": [
+        "CC-BY-NC-3.0 (Mendeley 10.17632/y2tz67f6ry.1) / paper CC-BY",
+        "CC-BY-NC-3.0 (Mendeley 10.17632/y2tz67f6ry.1)"
+      ],
+      "screening_disposition": "EXCLUDED_ALREADY_EXHAUSTED_FOR_NAMED_DECISION",
+      "source_registration": "AVAILABLE_DATA_REGISTER:PANNUSCH2024",
+      "strongest_current_uses": [
+        "source reconstruction",
+        "replicate analysis",
+        "source-internal campaign-separated comparison",
+        "programmed-flow contrast",
+        "source-apparatus variance planning"
+      ],
+      "terminal_reason": "ZERO_OPERATIONALLY_QUALIFIED_EWP_MAPPINGS"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "perticarini2024",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "perticarini2024/ey_tds_cibao",
+        "perticarini2024/bed_height_time",
+        "perticarini2024/granulometry_params"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "source_material",
+        "sensory"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Universita degli Studi di Camerino PhD thesis (Perticarini 2024), deposited 28 Feb 2024; no DOI, no explicit licence stated -- transcribed table values only, under academic quotation; no code or figures reproduced"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:PERTICARINI2024",
+      "strongest_current_uses": [
+        "NONE YET -- held for the multi-class extraction backlog; no component consumes it (perticarini2024 verdict is implement-later)"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "pocketscience2024",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "pocketscience2024/edge_ey_condition_means",
+        "pocketscience2024/lrr_scalars"
+      ],
+      "match_basis": "registered machine-boundary evidence",
+      "model_chain_stages": [
+        "machine_boundary",
+        "hydraulics"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INLET_PRESSURE_BOUNDARY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "used with author's permission (attribution/citation pocketscience2024 required); raw workbook kept local for size, derived summary tracked"
+      ],
+      "screening_disposition": "MATCHED_BUT_DATA_UNAVAILABLE",
+      "source_registration": "AVAILABLE_DATA_REGISTER:POCKETSCIENCE2024",
+      "strongest_current_uses": [
+        "offline validation target for a future radial two-zone bed_dynamics/extraction variant (reproduce edge-loss SIGN structure); prior-shaping caution for brewer2026.streamtube sigma"
+      ],
+      "terminal_reason": "RELEVANT_BYTES_OR_INTERFACE_AUTHORITY_UNAVAILABLE"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "ribes2020",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "ribes2020/radial_ey"
+      ],
+      "match_basis": "registered espresso process pressure-flow context",
+      "model_chain_stages": [
+        "source_material",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INLET_PRESSURE_BOUNDARY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "S. Ribes 2020 slide deck (Decent community); no DOI, not peer-reviewed"
+      ],
+      "screening_disposition": "MATCHED_CONTEXT_OR_OPERATOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:RIBES2020",
+      "strongest_current_uses": [
+        "qualitative secondary target for a future radial bed_dynamics/extraction variant (reproduce outer/center ratio sign structure); G9 outlet-boundary context"
+      ],
+      "terminal_reason": "NO_QUALIFIED_MACHINE_BOUNDARY_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "ribes2021",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "ribes2021/radial_ey"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "source_material",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "S. Ribes 2021 slide deck (Decent community); no DOI, not peer-reviewed"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:RIBES2021",
+      "strongest_current_uses": [
+        "qualitative secondary target (outer deficit + contact-screen flattening); corroborates ribes2020/pocketscience2024"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "romancorrochano2015",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "romancorrochano2015/table2"
+      ],
+      "match_basis": "registered bed density evidence",
+      "model_chain_stages": [
+        "extraction",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INITIAL_DRY_POROSITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Roman-Corrochano et al. 2015 (CC BY 4.0; DOI'd version of record)"
+      ],
+      "screening_disposition": "EXCLUDED_REQUIRES_NEW_COMPONENT_INVESTIGATION",
+      "source_registration": "AVAILABLE_DATA_REGISTER:ROMANCORROCHANO2015",
+      "strongest_current_uses": [
+        "tamped-permeability data for wadsworth2026.permeability tamped-reconciliation (G9/P4); supersedes the thesis Table 6.1 transcription target"
+      ],
+      "terminal_reason": "DENSITY_TO_POROSITY_BRIDGE_NOT_QUALIFIED"
+    },
+    {
+      "detailed_support_record_count": 1,
+      "family_id": "romancorrochano2017",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "romancorrochano2017/tamped_kappa",
+        "romancorrochano2017/deff_table4_9",
+        "romancorrochano2017/partition_K_table4_10",
+        "romancorrochano2017/hindrance_table4_8",
+        "romancorrochano2017/Db_table3_4",
+        "romancorrochano2017/mpe_table5_3",
+        "romancorrochano2017/fig5_11_mpe",
+        "romancorrochano2017/fig5_13_mpe",
+        "romancorrochano2017/fig7_4_espresso",
+        "romancorrochano2017/y0_extractable"
+      ],
+      "match_basis": "registered density/porosity and hydraulic evidence",
+      "model_chain_stages": [
+        "extraction",
+        "transport"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INITIAL_DRY_POROSITY",
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "University of Birmingham e-theses (open access; non-commercial research use); no DOI"
+      ],
+      "screening_disposition": "MATCHED_BUT_UNQUALIFIED_SUCCESSOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:ROMANCORROCHANO2017",
+      "strongest_current_uses": [
+        "G9 permeability target; \u00a75.5; permeability card is DATA-ONLY"
+      ],
+      "terminal_reason": "NO_ACCEPTED_EWP_TRANSFER_OR_COMPONENT_QUALIFICATION"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "schmieder2023",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "schmieder2023/kinetics_fit_params_avg",
+        "schmieder2023/kinetics_fit_params_reps",
+        "schmieder2023/cup_masses",
+        "schmieder2023/raw_fractions",
+        "schmieder2023/rsm_coefficients"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "extraction",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "open access CC-BY (Foods 12,2871; DOI 10.3390/foods12152871)"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:SCHMIEDER2023",
+      "strongest_current_uses": [
+        "RC-4 / item 1.8a: reproduce fit c0,lambda (post-fit); liang/cameron ceiling context"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "schulman2011",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "schulman2011/basket_geometry"
+      ],
+      "match_basis": "registered porous-flow model context",
+      "model_chain_stages": [
+        "extraction",
+        "chemistry"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Schulman, Home-Barista.com (2011); non-peer-reviewed; no DOI"
+      ],
+      "screening_disposition": "EXCLUDED_REQUIRES_NEW_COMPONENT_INVESTIGATION",
+      "source_registration": "AVAILABLE_DATA_REGISTER:SCHULMAN2011",
+      "strongest_current_uses": [
+        "G9 screen-resistance [RS] orifice/Poiseuille construction"
+      ],
+      "terminal_reason": "NO_ALREADY_QUALIFIED_EWP_COMPONENT_MAPPING"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "smrke2024",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "smrke2024/figures"
+      ],
+      "match_basis": "registered espresso machine/process context",
+      "model_chain_stages": [
+        "source_material",
+        "extraction"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INLET_PRESSURE_BOUNDARY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Smrke et al. 2024, Scientific Reports (CC BY 4.0); DOI 10.1038/s41598-024-55831-x; raw on request from S. Smrke"
+      ],
+      "screening_disposition": "MATCHED_CONTEXT_OR_OPERATOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:SMRKE2024",
+      "strongest_current_uses": [
+        "consumer gate target: an extraction config at 20 g/40 g/9 bar lands its (EY, t_shot) on the Fig 3 curve within scatter; Fig S1 is a second-machine flow-profile complement to DE1 fixture A"
+      ],
+      "terminal_reason": "CONTEXT_DOES_NOT DEFINE_AN_EWP_BOUNDARY"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "sobolik2002",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "sobolik2002/rheology"
+      ],
+      "match_basis": "registered packed-bed pressure-flow context",
+      "model_chain_stages": [
+        "rheology",
+        "thermal"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "Sobolik et al. 2002, Journal of Food Engineering 51:93-98 (Elsevier); PII S0260-8774(01)00042-5; digitized/computed by Puckworks"
+      ],
+      "screening_disposition": "MATCHED_STRESS_OR_SHAPE_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:SOBOLIK2002",
+      "strongest_current_uses": [
+        "third independent liquor-viscosity source for gap G10 (adjudicate the ~40-55% telisromero/khomyakov offset); mu(omega,T) data for flow-coupling sensitivity"
+      ],
+      "terminal_reason": "NONCOFFEE_SYSTEM_HAS_NO_QUALIFIED_MAGNITUDE_TRANSFER"
+    },
+    {
+      "detailed_support_record_count": 0,
+      "family_id": "telisromero2001",
+      "last_qualified_task": "PANNUSCH-PRIOR-IMPACT-001",
+      "manifest_dataset_ids": [
+        "g10_liquor_rheology/telisromero2001_closures",
+        "g10_liquor_rheology/telisromero2001_tables"
+      ],
+      "match_basis": "explicit review of registered stages, strongest-current-use, dataset identity, and register limitations found no definition-preserving mapping to a frozen canonical EWP quantity",
+      "model_chain_stages": [
+        "rheology",
+        "thermal"
+      ],
+      "potentially_matching_canonical_quantity_ids": [],
+      "raw_access_status": "RIGHTS_BOUNDED_COMPACT_TRANSCRIPTION_NO_RAW_ARTICLE",
+      "rights_access_summary": [
+        "paywalled Wiley article; compact normalized factual transcriptions only; no article PDF or raw rheograms redistributed"
+      ],
+      "screening_disposition": "EXCLUDED_NO_MATCHING_CANONICAL_QUANTITY",
+      "source_registration": "SOURCE_CARD:docs/cards/telisromero2001.md;PROVENANCE:puckworks/data/telisromero2001/PROVENANCE.md;G10_LINK:AVAILABLE_DATA_REGISTER:G10_LIQUOR_RHEOLOGY",
+      "strongest_current_uses": [
+        "RHEOLOGY_OR_VISCOSITY_SOURCE_AUTHORITY_FOR_BOUNDED_FLUID_PROPERTY_SENSITIVITY"
+      ],
+      "terminal_reason": "REVIEWED_NO_CANONICAL_MAPPING_AFTER_EXACT_REGISTER_AND_SOURCE_CARD_SCREEN"
+    },
+    {
+      "detailed_support_record_count": 6,
+      "family_id": "vacaguerra2023a",
+      "last_qualified_task": "ESPRESSO-CORPUS-LEVERAGE-002-C1",
+      "manifest_dataset_ids": [
+        "vacaguerra2023a/extraction_conditions",
+        "vacaguerra2023a/psd",
+        "vacaguerra2023a/phi_coefficients",
+        "vacaguerra2023a/omega_coefficients",
+        "vacaguerra2023a/dry_porosity_validation"
+      ],
+      "match_basis": "accepted EWP porosity/permeability component mapping",
+      "model_chain_stages": [
+        "bed_structure",
+        "hydraulics"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INITIAL_DRY_POROSITY",
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "JFE 340 (2023) 111301 (Elsevier); preprint digitized, not redistributed",
+        "JFE 340 (2023) 111301 (Elsevier); preprint digitized"
+      ],
+      "screening_disposition": "MATCHED_DETAILED_SUPPORT_CANDIDATE",
+      "source_registration": "AVAILABLE_DATA_REGISTER:VACAGUERRA2023A",
+      "strongest_current_uses": [
+        "SEPARATE_SOURCE_PRIORS_AND_OBSERVATION_OPERATORS"
+      ],
+      "terminal_reason": "ACCEPTED_SOURCE_CONDITIONED_SUPPORTS_AND_OPERATOR"
+    },
+    {
+      "detailed_support_record_count": 2,
+      "family_id": "visualizer",
+      "last_qualified_task": "ESPRESSO-CORPUS-LEVERAGE-002-C1",
+      "manifest_dataset_ids": [
+        "visualizer/hydraulic_timeseries",
+        "visualizer/user_outcomes"
+      ],
+      "match_basis": "accepted blocked boundary result and descriptive apparent resistance",
+      "model_chain_stages": [
+        "machine_boundary",
+        "hydraulics"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INLET_PRESSURE_BOUNDARY",
+        "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM"
+      ],
+      "raw_access_status": "PERMISSIONED_LOCAL_API_SNAPSHOT_READY_FOR_INTERNAL_ANALYSIS",
+      "rights_access_summary": [
+        "public shots used with author (Miha Rekar) permission 2026-07-14 via documented API within published rate limits; PUBLICATION MUST credit Visualizer + collectively acknowledge contributing users; raw corpus gitignored (not redistributed)"
+      ],
+      "screening_disposition": "MATCHED_CONTEXT_OR_OPERATOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:VISUALIZER",
+      "strongest_current_uses": [
+        "REAL_WORLD_BOUNDARY_LIBRARY_AND_OPERATING_ENVELOPE",
+        "profile and response variability",
+        "descriptive apparent-resistance analysis"
+      ],
+      "terminal_reason": "ZERO_QUALIFIED_BOUNDARIES_DEVICE_SENSOR_INTEGRATION_UNRESOLVED"
+    },
+    {
+      "detailed_support_record_count": 3,
+      "family_id": "wadsworth2026",
+      "last_qualified_task": "ESPRESSO-CORPUS-LEVERAGE-002-C1",
+      "manifest_dataset_ids": [
+        "wadsworth2026/table1_full"
+      ],
+      "match_basis": "accepted EWP porosity/permeability component mapping",
+      "model_chain_stages": [
+        "source_material",
+        "bed_structure",
+        "hydraulics"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INITIAL_DRY_POROSITY",
+        "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "open access CC-BY-4.0 (DOI 10.1098/rsos.252031)"
+      ],
+      "screening_disposition": "MATCHED_DETAILED_SUPPORT_CANDIDATE",
+      "source_registration": "AVAILABLE_DATA_REGISTER:WADSWORTH2026",
+      "strongest_current_uses": [
+        "SEPARATE_SOURCE_PRIORS_AND_OBSERVATION_OPERATORS"
+      ],
+      "terminal_reason": "ACCEPTED_SOURCE_CONDITIONED_SUPPORTS"
+    },
+    {
+      "detailed_support_record_count": 2,
+      "family_id": "waszkiewicz2025",
+      "last_qualified_task": "ESPRESSO-CORPUS-LEVERAGE-002-C1",
+      "manifest_dataset_ids": [
+        "waszkiewicz2025/traces_time_dependent",
+        "waszkiewicz2025/tds_fractions",
+        "waszkiewicz2025/static_calibration",
+        "waszkiewicz2025/tds_solids_calibration",
+        "waszkiewicz2025/brewer_quadratic",
+        "waszkiewicz2025/mastersizer_psd",
+        "waszkiewicz2025/constants",
+        "waszkiewicz2025/traces_per_brew",
+        "waszkiewicz2025/equilibrium_windows"
+      ],
+      "match_basis": "accepted grouped resistance decision and brewer quadratic dataset",
+      "model_chain_stages": [
+        "machine_boundary",
+        "hydraulics",
+        "extraction"
+      ],
+      "potentially_matching_canonical_quantity_ids": [
+        "EWP_INLET_PRESSURE_BOUNDARY",
+        "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM"
+      ],
+      "raw_access_status": "PACKAGED_IN_REPOSITORY",
+      "rights_access_summary": [
+        "CC-BY-4.0 (Zenodo 10.5281/zenodo.18046315); code GPLv3 not ingested",
+        "CC-BY-4.0 (Zenodo 10.5281/zenodo.18046315, record license); code GPLv3 not ingested"
+      ],
+      "screening_disposition": "MATCHED_CONTEXT_OR_OPERATOR_ONLY",
+      "source_registration": "AVAILABLE_DATA_REGISTER:WASZKIEWICZ2025",
+      "strongest_current_uses": [
+        "controlled component-level fixed-versus-evolving effective-resistance comparison"
+      ],
+      "terminal_reason": "FIXED_RESISTANCE_RETAINED_EVOLVING_FORM_UNADOPTED"
+    }
+  ],
+  "screened_family_count": 39
+}

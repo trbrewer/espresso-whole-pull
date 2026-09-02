@@ -14,8 +14,12 @@ def validate():
     except ImportError:
         pass
     by_id = {item["opportunity_id"]: item for item in data["opportunities"]}
+    assert len(by_id) == len(data["opportunities"])
     assert not data["laboratory_gate"]["operation_authorized"]
     assert data["current_priority"] in by_id
+    selected = by_id[data["current_priority"]]
+    assert selected["status"] in {"READY", "ACTIVE"}, "selected current priority must be ready or active"
+    assert data["current_claim_ceiling"] == selected["claim_ceiling"]
     for item in by_id.values():
         if item["status"] in {"READY", "ACTIVE"}:
             assert item["data_families"] and item["scientific_question"]
@@ -26,8 +30,13 @@ def validate():
             assert item["completion_evidence"]
             assert item["notes"] != "source-internal only"
     with LEDGER.open(newline="") as handle:
-        rows = list(csv.DictReader(handle))
+        reader = csv.DictReader(handle)
+        rows = list(reader)
+        assert reader.fieldnames and all(None not in row for row in rows)
     assert rows and all(row["opportunity_id"] in by_id for row in rows)
+    selected_rows = [row for row in rows if row["opportunity_id"] == data["current_priority"]]
+    assert len(selected_rows) == 1
+    assert selected_rows[0]["current_status"] == selected["status"]
     public = [PROGRAMME, LEDGER, ROOT / "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md"]
     assert all("/home/" not in path.read_text() for path in public)
     state = (ROOT / "docs/PROJECT_STATE.md").read_text()

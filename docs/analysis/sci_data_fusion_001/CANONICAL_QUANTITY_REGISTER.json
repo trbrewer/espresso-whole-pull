@@ -1,0 +1,72 @@
+{
+  "quantities": [
+    {
+      "basis": "void volume / bulk bed volume",
+      "domain_authority": "docs/analysis/ewp_porosity_permeability_prior_001/SOURCE_SUPPORTS.json; production scalar default is not a domain",
+      "ewp_consumer": "coffee_bed.initial_porosity",
+      "existing_admissible_domain": null,
+      "observation_operator": "source-specific operator must be retained",
+      "physical_definition": "dimensionless void-volume fraction assigned to the initial dry EWP coffee-bed state",
+      "physical_state": "INITIAL_DRY",
+      "population_regime": "source-conditioned coffee, preparation, compaction, and geometry",
+      "quantity_id": "EWP_INITIAL_DRY_POROSITY",
+      "reference_state": "initial EWP case before wetting",
+      "si_unit": "1",
+      "spatial_support": "EWP resolved coffee-bed domain",
+      "statistical_estimand": "admissible deterministic scenario support; not a population distribution",
+      "symbol": "phi_0",
+      "temporal_support": "initial condition scalar or field"
+    },
+    {
+      "basis": "effective EWP saturated-flow parameter",
+      "domain_authority": "docs/analysis/ewp_porosity_permeability_prior_001/EWP_QUANTITY_DEFINITIONS.json",
+      "ewp_consumer": "hydraulics.saturated_permeability_m2",
+      "existing_admissible_domain": null,
+      "observation_operator": "EWP calibrated effective parameter",
+      "physical_definition": "effective saturated permeability consumed by the calibrated EWP static hydraulic law",
+      "physical_state": "SATURATED_STATIC",
+      "population_regime": "EWP calibration regime",
+      "quantity_id": "EWP_EFFECTIVE_SATURATED_PERMEABILITY",
+      "reference_state": "calibrated EWP saturated state",
+      "si_unit": "m^2",
+      "spatial_support": "EWP coffee-bed hydraulic domain",
+      "statistical_estimand": "source-conditioned stress support only unless an authorized bridge exists",
+      "symbol": "K_sat_eff",
+      "temporal_support": "static parameter"
+    },
+    {
+      "basis": "interface pressure relative to the case reference",
+      "domain_authority": "docs/analysis/ewp_real_world_boundaries_001/DECISION.json",
+      "ewp_consumer": "pressure boundary adapter",
+      "existing_admissible_domain": null,
+      "observation_operator": "resolved command-controller or achieved-pressure sensor transfer",
+      "physical_definition": "pressure boundary history at the EWP inlet interface",
+      "physical_state": "OPERATING_TRANSIENT",
+      "population_regime": "device/controller/sensor-specific",
+      "quantity_id": "EWP_INLET_PRESSURE_BOUNDARY",
+      "reference_state": "resolved EWP boundary interface",
+      "si_unit": "Pa",
+      "spatial_support": "EWP inlet boundary",
+      "statistical_estimand": "source-conditioned boundary scenario",
+      "symbol": "p_in(t)",
+      "temporal_support": "source-authorized common clock history"
+    },
+    {
+      "basis": "existing EWP reduced hydraulic formulation",
+      "domain_authority": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/RESULT.md",
+      "ewp_consumer": "constraint-only model-form interpretation",
+      "existing_admissible_domain": null,
+      "observation_operator": "accepted grouped comparison",
+      "physical_definition": "retained fixed-resistance model-form alternative",
+      "physical_state": "OPERATING",
+      "population_regime": "Waszkiewicz grouped source campaign",
+      "quantity_id": "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM",
+      "reference_state": "existing unchanged formulation",
+      "si_unit": "model-defined",
+      "spatial_support": "reduced EWP hydraulic consumer",
+      "statistical_estimand": "model-form decision",
+      "symbol": "R_h",
+      "temporal_support": "fixed rather than evolving resistance"
+    }
+  ]
+}

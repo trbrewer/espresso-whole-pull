@@ -1,6 +1,20 @@
 # Project State
 
+## Current scientific-development priority (2026-09-02)
+
+`SCI-DATA-FUSION-001` is complete as
+`SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`: no common
+constraint, compatible uncertainty support, EWP-domain narrowing, or EWP-output
+narrowing was established. Its named existing-data decision is exhausted.
+`SCI-ED-003` is the current `READY` successor for a targeted closure contract
+under `CLOSURE_CONTRACT_ONLY`; it is not implemented or separately authorized.
+Home-lab operation remains unauthorized, and another Pannusch or data-fusion
+cleanup is not selected.
+
 ## XSV-PANNUSCH-EWP-INPUT-MAPPING-001 result (2026-09-01)
+
+The selection language in this dated section is historical and superseded by
+the current scientific-development priority above.
 
 `XSV_PANNUSCH_EWP_INPUT_MAPPING_001_NO_QUALIFIED_MAPPING_PRESERVE_INDEPENDENT_INPUT_TREATMENTS`
 after C1 correction. Twenty-one plausible operational mappings were adjudicated
@@ -744,3 +758,7 @@ CURRENT_AVAILABLE_DATA_AUTHORITY: `provenance/AVAILABLE_DATA_AUTHORITY.json`
 CURRENT_DATA_SUFFICIENCY: `docs/analysis/pannusch_prior_impact_001/CURRENT_DATA_SUFFICIENCY.json`
 
 CURRENT_DATA_PREFLIGHT_POLICY: `docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md`
+
+## SCI-DATA-FUSION-001 result (2026-09-02)
+
+`SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`. cross-corpus route exhausted; sources remain conditioned alternatives. Selected next action: `SCI-ED-003`. No production adoption, physical validation, OpenFOAM, or laboratory operation.

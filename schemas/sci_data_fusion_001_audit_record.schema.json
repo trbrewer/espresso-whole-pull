@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://github.com/trbrewer/espresso-whole-pull/schemas/sci_data_fusion_001_audit_record.schema.json",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["task_id","audit_type","audit_disposition","reviewed_head","reviewed_tree","reviewed_freeze_content_manifest_sha256","reviewer_identity","reviewer_independence_statement","reviewed_authorities","material_findings","review_record_reference","review_date"],
+  "properties":{
+    "task_id":{"const":"SCI-DATA-FUSION-001"},
+    "audit_type":{"const":"SINGLE_INDEPENDENT_PREEXECUTION_AUDIT"},
+    "audit_disposition":{"const":"SCI_DATA_FUSION_001_SINGLE_INDEPENDENT_PREEXECUTION_AUDIT_PASS"},
+    "reviewed_head":{"type":"string","pattern":"^[0-9a-f]{40}$","not":{"enum":["54b2164eaf81907a8573d54e89fd8eecbf99293e","1f9b8758c2b2b756eeb29daab28b4dce0cf3525b"]}},
+    "reviewed_tree":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "reviewed_freeze_content_manifest_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "reviewer_identity":{"type":"string","minLength":1},
+    "reviewer_independence_statement":{"type":"string","minLength":1},
+    "reviewed_authorities":{"type":"object","minProperties":1},
+    "material_findings":{"type":"array","maxItems":0},
+    "review_record_reference":{"type":"string","minLength":1},
+    "review_date":{"type":"string","format":"date"}
+  }
+}

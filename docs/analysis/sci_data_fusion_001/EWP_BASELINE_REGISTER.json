@@ -1,0 +1,22 @@
+{
+  "EWP_EFFECTIVE_SATURATED_PERMEABILITY": {
+    "authority": "calibrated effective EWP scalar is not commensurable with source-native stress supports",
+    "interval": null,
+    "status": "BASELINE_SEMANTICALLY_INCOMPATIBLE"
+  },
+  "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM": {
+    "authority": "accepted Waszkiewicz decision retains a model form, not a numeric uncertainty interval",
+    "interval": null,
+    "status": "NO_AUTHORIZED_NUMERIC_BASELINE"
+  },
+  "EWP_INITIAL_DRY_POROSITY": {
+    "authority": "production scalar default is explicitly not an uncertainty interval",
+    "interval": null,
+    "status": "NO_AUTHORIZED_NUMERIC_BASELINE"
+  },
+  "EWP_INLET_PRESSURE_BOUNDARY": {
+    "authority": "accepted Visualizer boundary result has zero qualified transfers",
+    "interval": null,
+    "status": "BASELINE_AUTHORITY_BLOCKED"
+  }
+}

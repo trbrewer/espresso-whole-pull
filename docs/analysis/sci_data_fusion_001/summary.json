@@ -1,0 +1,185 @@
+{
+  "component_results": [
+    {
+      "baseline_status": "BASELINE_SEMANTICALLY_INCOMPATIBLE",
+      "blockers": [],
+      "candidate_count": 8,
+      "compatibility_findings": [],
+      "component_result": "NEGATIVE_NO_COMMON_SUPPORT",
+      "conflicts": [],
+      "decision_material": false,
+      "eligible_correlation_group_count": 0,
+      "eligible_lineage_count": 0,
+      "eligible_support_count": 0,
+      "narrowing": {
+        "baseline_status": "BASELINE_SEMANTICALLY_INCOMPATIBLE",
+        "narrowing_status": "UNAVAILABLE",
+        "quantitative_narrowing_claim": false
+      },
+      "narrowing_status": "UNAVAILABLE",
+      "quantity_id": "EWP_EFFECTIVE_SATURATED_PERMEABILITY"
+    },
+    {
+      "baseline_status": "NO_AUTHORIZED_NUMERIC_BASELINE",
+      "blockers": [],
+      "candidate_count": 3,
+      "compatibility_findings": [],
+      "component_result": "NEGATIVE_NO_COMMON_SUPPORT",
+      "conflicts": [],
+      "decision_material": false,
+      "eligible_correlation_group_count": 0,
+      "eligible_lineage_count": 0,
+      "eligible_support_count": 0,
+      "narrowing": {
+        "baseline_status": "NO_AUTHORIZED_NUMERIC_BASELINE",
+        "narrowing_status": "UNAVAILABLE",
+        "quantitative_narrowing_claim": false
+      },
+      "narrowing_status": "UNAVAILABLE",
+      "quantity_id": "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM"
+    },
+    {
+      "baseline_status": "NO_AUTHORIZED_NUMERIC_BASELINE",
+      "blockers": [
+        {
+          "affected_canonical_component": "EWP_INITIAL_DRY_POROSITY",
+          "blocker_type": "BLOCKED_AUTHORITY",
+          "controls_overall": false,
+          "decision_material": false,
+          "exact_authority": null,
+          "support_id": "HARGARTEN2020_COMPACTION_METADATA_CANDIDATE",
+          "terminal_next_action_consequence": "UNQUALIFIED_SUCCESSOR_ONLY"
+        },
+        {
+          "affected_canonical_component": "EWP_INITIAL_DRY_POROSITY",
+          "blocker_type": "BLOCKED_AUTHORITY",
+          "controls_overall": false,
+          "decision_material": false,
+          "exact_authority": null,
+          "support_id": "MAILLE2024_POROSITY_METADATA_CANDIDATE",
+          "terminal_next_action_consequence": "UNQUALIFIED_SUCCESSOR_ONLY_REQUIRES_COMPONENT_INVESTIGATION"
+        },
+        {
+          "affected_canonical_component": "EWP_INITIAL_DRY_POROSITY",
+          "blocker_type": "BLOCKED_SEMANTIC",
+          "controls_overall": false,
+          "decision_material": false,
+          "exact_authority": null,
+          "support_id": "ROMANCORROCHANO2015_DENSITY_METADATA_CANDIDATE",
+          "terminal_next_action_consequence": "DENSITY_TO_POROSITY_BRIDGE_NOT_QUALIFIED"
+        },
+        {
+          "affected_canonical_component": "EWP_INITIAL_DRY_POROSITY",
+          "blocker_type": "BLOCKED_AUTHORITY",
+          "controls_overall": false,
+          "decision_material": false,
+          "exact_authority": null,
+          "support_id": "ROMANCORROCHANO2017_DENSITY_HYDRAULIC_METADATA_CANDIDATE",
+          "terminal_next_action_consequence": "NO_QUALIFIED_DENSITY_TO_POROSITY_OR_HYDRAULIC_TRANSFER"
+        }
+      ],
+      "candidate_count": 9,
+      "common_support": null,
+      "compatibility_findings": [
+        {
+          "failed_gates": [
+            "reference_state",
+            "spatial_support",
+            "temporal_support",
+            "observation_operator",
+            "population_regime",
+            "no_new_inference"
+          ],
+          "gates": {
+            "correlation_group": true,
+            "ewp_consumer": true,
+            "independence_target_exposure": true,
+            "lineage": true,
+            "no_new_inference": false,
+            "observation_operator": false,
+            "physical_quantity": null,
+            "population_regime": false,
+            "provenance_rights": true,
+            "reference_state": false,
+            "source_internal_role": true,
+            "spatial_support": false,
+            "temporal_support": false,
+            "unit_basis": true
+          },
+          "left_support_id": "VACA_TABLE_C1_EPSILON_0",
+          "right_support_id": "WADSWORTH_TOTAL_XCT_POROSITY",
+          "terminal_compatibility": "INCOMPATIBLE",
+          "unknown_gates": [
+            "physical_quantity"
+          ]
+        }
+      ],
+      "component_result": "COMPLEMENTARY_SOURCE_CONDITIONED_ONLY",
+      "conflicts": [],
+      "decision_material": false,
+      "eligible_correlation_group_count": 2,
+      "eligible_lineage_count": 2,
+      "eligible_support_count": 2,
+      "narrowing": {
+        "baseline_status": "NO_AUTHORIZED_NUMERIC_BASELINE",
+        "narrowing_status": "UNAVAILABLE",
+        "quantitative_narrowing_claim": false
+      },
+      "narrowing_status": "UNAVAILABLE",
+      "quantity_id": "EWP_INITIAL_DRY_POROSITY"
+    },
+    {
+      "baseline_status": "BASELINE_AUTHORITY_BLOCKED",
+      "blockers": [
+        {
+          "affected_canonical_component": "EWP_INLET_PRESSURE_BOUNDARY",
+          "blocker_type": "BLOCKED_AUTHORITY",
+          "controls_overall": false,
+          "decision_material": false,
+          "exact_authority": null,
+          "support_id": "G3_PUMP_CHARACTERISTIC_METADATA_CANDIDATE",
+          "terminal_next_action_consequence": "ENDPOINTS_ONLY_NO_QUALIFIED_INTERIOR_TRANSFER"
+        },
+        {
+          "affected_canonical_component": "EWP_INLET_PRESSURE_BOUNDARY",
+          "blocker_type": "BLOCKED_AUTHORITY",
+          "controls_overall": false,
+          "decision_material": false,
+          "exact_authority": null,
+          "support_id": "POCKETSCIENCE2024_BOUNDARY_METADATA_CANDIDATE",
+          "terminal_next_action_consequence": "RELEVANT_DATA_OR_INTERFACE_AUTHORITY_UNAVAILABLE"
+        },
+        {
+          "affected_canonical_component": "EWP_INLET_PRESSURE_BOUNDARY",
+          "blocker_type": "BLOCKED_AUTHORITY",
+          "controls_overall": false,
+          "decision_material": false,
+          "exact_authority": "docs/analysis/ewp_real_world_boundaries_001/DECISION.json",
+          "support_id": "VISUALIZER_PRESSURE_BOUNDARY_COHORT",
+          "terminal_next_action_consequence": "ZERO_QUALIFIED_ROWS_DEVICE_SENSOR_INTEGRATION_UNRESOLVED"
+        }
+      ],
+      "candidate_count": 4,
+      "compatibility_findings": [],
+      "component_result": "BLOCKED_AUTHORITY",
+      "conflicts": [],
+      "decision_material": false,
+      "eligible_correlation_group_count": 0,
+      "eligible_lineage_count": 0,
+      "eligible_support_count": 0,
+      "narrowing": {
+        "baseline_status": "BASELINE_AUTHORITY_BLOCKED",
+        "narrowing_status": "UNAVAILABLE",
+        "quantitative_narrowing_claim": false
+      },
+      "narrowing_status": "UNAVAILABLE",
+      "quantity_id": "EWP_INLET_PRESSURE_BOUNDARY"
+    }
+  ],
+  "conflict_count": 0,
+  "decision_material_blocker_count": 0,
+  "disposition": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
+  "mixed_outcomes_preserved": true,
+  "positive_component_count": 0,
+  "quantitatively_narrowed_component_count": 0
+}

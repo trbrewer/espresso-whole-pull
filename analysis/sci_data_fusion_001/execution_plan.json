@@ -1,0 +1,17 @@
+{
+  "phase_b_steps":["validate_exact_independent_audit","verify_frozen_paths","verify_authorities_and_consumed_ledger","extract_frozen_support_intervals","construct_complete_pairwise_matrices","apply_frozen_semantic_gates","reduce_component_constraints","apply_frozen_baseline_rules","inventory_without_pooling_uncertainty","write_deterministic_results","update_programme_surfaces_without_production_adoption"],
+  "pairwise_gate_contracts":{
+    "VACA_TABLE_C1_EPSILON_0|WADSWORTH_TOTAL_XCT_POROSITY":{
+      "physical_quantity":null,"reference_state":false,"unit_basis":true,"spatial_support":false,"temporal_support":false,"observation_operator":false,"population_regime":false,"lineage":true,"correlation_group":true,"independence_target_exposure":true,"source_internal_role":true,"provenance_rights":true,"ewp_consumer":true,"no_new_inference":false
+    }
+  },
+  "baselines":{
+    "EWP_INITIAL_DRY_POROSITY":{"status":"NO_AUTHORIZED_NUMERIC_BASELINE","interval":null,"authority":"production scalar default is explicitly not an uncertainty interval"},
+    "EWP_EFFECTIVE_SATURATED_PERMEABILITY":{"status":"BASELINE_SEMANTICALLY_INCOMPATIBLE","interval":null,"authority":"calibrated effective EWP scalar is not commensurable with source-native stress supports"},
+    "EWP_INLET_PRESSURE_BOUNDARY":{"status":"BASELINE_AUTHORITY_BLOCKED","interval":null,"authority":"accepted Visualizer boundary result has zero qualified transfers"},
+    "EWP_FIXED_HYDRAULIC_RESISTANCE_FORM":{"status":"NO_AUTHORIZED_NUMERIC_BASELINE","interval":null,"authority":"accepted Waszkiewicz decision retains a model form, not a numeric uncertainty interval"}
+  },
+  "uncertainty_numeric_combination":"NONE_AUTHORIZED",
+  "propagation_rule":"NO_COMPONENT_CAN_PROPAGATE_UNLESS_COMMON_SUPPORT_AND_AUTHORIZED_BASELINE_AND_UNCHANGED_QUALIFIED_ADAPTER_ALL_PASS",
+  "programme_closeout":"deterministically map final disposition using TASK_CONTRACT next-action rules; never alter production adoption surfaces"
+}

@@ -1,0 +1,28 @@
+{
+  "groups": [
+    {
+      "correlation_group_id": "PANNUSCH_2024_SOURCE_CAMPAIGN",
+      "lineage_id": "PANNUSCH_2024_SOURCE_CAMPAIGN"
+    },
+    {
+      "correlation_group_id": "VACA_2023_COMPRESSION_OPERATOR",
+      "lineage_id": "VACA_FIG12_DRY_POROSITY_OPERATOR"
+    },
+    {
+      "correlation_group_id": "VACA_2023_PERMEABILITY_CAMPAIGN",
+      "lineage_id": "VACA_TABLE_C1_DARCY_OPERATING_POINTS"
+    },
+    {
+      "correlation_group_id": "VISUALIZER_RECENT_PUBLIC_COHORT",
+      "lineage_id": "VISUALIZER_RECENT_PUBLIC_COHORT"
+    },
+    {
+      "correlation_group_id": "WADSWORTH_2026_SINGLE_EXPERIMENT",
+      "lineage_id": "WADSWORTH_TABLE1_XCT_LBFLOW_UNTAMPED"
+    },
+    {
+      "correlation_group_id": "WASZKIEWICZ_2025_CAMPAIGN",
+      "lineage_id": "WASZKIEWICZ_2025_CAMPAIGN"
+    }
+  ]
+}

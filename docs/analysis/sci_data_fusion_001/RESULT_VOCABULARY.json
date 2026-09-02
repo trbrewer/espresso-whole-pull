@@ -1,0 +1,58 @@
+{
+  "baseline_statuses": [
+    "AUTHORIZED_BASELINE_AVAILABLE",
+    "NO_AUTHORIZED_NUMERIC_BASELINE",
+    "BASELINE_SEMANTICALLY_INCOMPATIBLE",
+    "BASELINE_AUTHORITY_BLOCKED"
+  ],
+  "compatibility_gates": [
+    "physical_quantity",
+    "reference_state",
+    "unit_basis",
+    "spatial_support",
+    "temporal_support",
+    "observation_operator",
+    "population_regime",
+    "lineage",
+    "correlation_group",
+    "independence_target_exposure",
+    "source_internal_role",
+    "provenance_rights",
+    "ewp_consumer",
+    "no_new_inference"
+  ],
+  "component_results": [
+    "POSITIVE_COMMON_CONSTRAINT",
+    "POSITIVE_COMPATIBLE_UNCERTAINTY_SUPPORT",
+    "COMMON_SUPPORT_IDENTIFIED_NO_AUTHORIZED_EWP_BASELINE",
+    "COMPLEMENTARY_SOURCE_CONDITIONED_ONLY",
+    "NEGATIVE_NO_COMMON_SUPPORT",
+    "CONFLICT_SAME_SCOPE_SUPPORTS",
+    "BLOCKED_SEMANTIC",
+    "BLOCKED_AUTHORITY",
+    "BLOCKED_RIGHTS",
+    "NOT_APPLICABLE_NO_SHARED_EWP_COMPONENT"
+  ],
+  "overall_results": [
+    "SCI_DATA_FUSION_001_POSITIVE_AT_LEAST_ONE_COMMON_EWP_CONSTRAINT",
+    "SCI_DATA_FUSION_001_COMMON_SUPPORT_IDENTIFIED_NO_QUANTITATIVE_EWP_NARROWING",
+    "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
+    "SCI_DATA_FUSION_001_NEGATIVE_NO_COMMON_CROSS_CORPUS_CONSTRAINT",
+    "SCI_DATA_FUSION_001_CONFLICTING_SAME_SCOPE_COMPONENT_EVIDENCE",
+    "SCI_DATA_FUSION_001_BLOCKED_DECISION_MATERIAL_SEMANTIC_OR_AUTHORITY"
+  ],
+  "uncertainty_eligible_roles": [
+    "UNCERTAINTY_SUPPORT_CANDIDATE"
+  ],
+  "uncertainty_statistics": [
+    "STANDARD_DEVIATION",
+    "STANDARD_ERROR",
+    "CONFIDENCE_INTERVAL",
+    "INTERQUARTILE_RANGE",
+    "FULL_RANGE",
+    "REPLICATE_SPREAD",
+    "DIGITIZATION_ERROR",
+    "MODEL_DISCREPANCY",
+    "REPORTED_MAGNITUDE_CONFIDENCE_LEVEL_NOT_STATED"
+  ]
+}

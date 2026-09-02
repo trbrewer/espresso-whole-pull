@@ -1,4 +1,4 @@
-import importlib.util, pathlib, unittest
+import csv, hashlib, importlib.util, json, pathlib, subprocess, unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -8,7 +8,74 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         data = module.validate()
-        self.assertEqual(data["current_priority"], "SCI-DATA-FUSION-001")
-        self.assertEqual(data["last_completed_opportunity_review"], "XSV-PANNUSCH-EWP-INPUT-MAPPING-001")
-        self.assertEqual(data["current_claim_ceiling"], "CROSS_CORPUS_COMPONENT_EVIDENCE")
+        self.assertEqual(data["current_priority"], "SCI-ED-003")
+        self.assertEqual(data["last_completed_opportunity_review"], "SCI-DATA-FUSION-001")
+        self.assertEqual(data["current_claim_ceiling"], "CLOSURE_CONTRACT_ONLY")
         self.assertEqual(data["home_lab_status"], "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY")
+
+    @classmethod
+    def setUpClass(cls):
+        cls.programme = json.loads((ROOT / "provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json").read_text())
+        with (ROOT / "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv").open(newline="") as handle:
+            cls.ledger = list(csv.DictReader(handle))
+
+    def test_fusion_machine_ledger_agreement(self):
+        machine = [x for x in self.programme["opportunities"] if x["opportunity_id"] == "SCI-DATA-FUSION-001"]
+        ledger = [x for x in self.ledger if x["opportunity_id"] == "SCI-DATA-FUSION-001"]
+        self.assertEqual((len(machine), len(ledger)), (1, 1))
+        machine, ledger = machine[0], ledger[0]
+        self.assertEqual(machine["status"], ledger["current_status"])
+        self.assertEqual(machine["status"], "COMPLETE_NEGATIVE")
+        self.assertTrue(machine["exhausted_for_decision"])
+        self.assertEqual(ledger["exhausted_for_named_decision"], "true")
+        self.assertEqual(machine["result"], ledger["result"])
+        self.assertEqual(machine["next_action"], ledger["next_action"])
+        self.assertEqual(ledger["evidence_path"], "docs/analysis/sci_data_fusion_001/DECISION.json")
+        self.assertNotIn("implementation not authorized", ledger["data_not_yet_used"].lower())
+
+    def test_current_priority_coherence(self):
+        successor = [x for x in self.programme["opportunities"] if x["opportunity_id"] == "SCI-ED-003"]
+        ledger = [x for x in self.ledger if x["opportunity_id"] == "SCI-ED-003"]
+        self.assertEqual((len(successor), len(ledger)), (1, 1))
+        successor, ledger = successor[0], ledger[0]
+        self.assertEqual(self.programme["current_priority"], "SCI-ED-003")
+        self.assertEqual(successor["status"], ledger["current_status"])
+        self.assertEqual(successor["status"], "READY")
+        self.assertNotIn(successor["status"], {"ACTIVE", "COMPLETE", "IMPLEMENTED", "DEFERRED_BY_HIGHER_PRIORITY"})
+        self.assertEqual(self.programme["current_claim_ceiling"], successor["claim_ceiling"])
+        self.assertIn("separate owner authorization", successor["notes"])
+        self.assertIn("not implemented", successor["notes"].lower())
+        self.assertFalse(self.programme["laboratory_gate"]["operation_authorized"])
+
+    def test_completed_review_and_artifact_hashes(self):
+        self.assertEqual(self.programme["last_completed_opportunity_review"], "SCI-DATA-FUSION-001")
+        fusion = next(x for x in self.programme["opportunities"] if x["opportunity_id"] == "SCI-DATA-FUSION-001")
+        self.assertEqual(fusion["result"], "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY")
+        expected = {
+            "DECISION.json": "437c7b99e8b4bdc876df84574acdf3464174522fa7f4978425d3ee484b70c501",
+            "RESULT_ARTIFACT_MANIFEST.json": "6d0d298941b14174199e1909439b7bab81a7cc3655db56953f8ae646f84a33f2",
+            "PREEXECUTION_AUDIT.json": "623620262fc9151f9033b41251400d73c3fb92dadc443b4593baeef6239f5e69",
+        }
+        result = ROOT / "docs/analysis/sci_data_fusion_001"
+        for name, digest in expected.items():
+            self.assertEqual(hashlib.sha256((result / name).read_bytes()).hexdigest(), digest)
+        manifest = json.loads((result / "RESULT_ARTIFACT_MANIFEST.json").read_text())
+        self.assertEqual(len(manifest["artifacts"]), 31)
+        for artifact in manifest["artifacts"]:
+            self.assertEqual(hashlib.sha256((result / artifact["path"]).read_bytes()).hexdigest(), artifact["sha256"])
+
+    def test_frozen_scientific_paths_unchanged(self):
+        changed = subprocess.check_output([
+            "git", "diff", "--name-only", "5968917fb4da2b671e9d6132e120ea1e646ce4a0", "--",
+            "analysis/sci_data_fusion_001", "docs/analysis/sci_data_fusion_001",
+        ], cwd=ROOT, text=True)
+        self.assertEqual(changed, "")
+
+    def test_human_current_state_agreement(self):
+        paths = ["docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md", "docs/PROJECT_STATE.md", "docs/strategy/AVAILABLE_DATA_FIRST_POLICY.md", "docs/CLAIM_CEILING.md", "AGENTS.md"]
+        text = "\n".join((ROOT / path).read_text() for path in paths)
+        self.assertIn("SCI-ED-003", text)
+        self.assertIn("CLOSURE_CONTRACT_ONLY", text)
+        self.assertIn("not implemented", text.lower())
+        self.assertIn("not implemented or separately authorized", text.lower())
+        self.assertIn("Home-lab operation remains unauthorized", text)

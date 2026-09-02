@@ -1,12 +1,12 @@
 # Public Repository Agent Rules
 
-The Visualizer boundary route is closed at its unresolved device/sensor and
-integration identity block. `OBS-PANNUSCH-FRACTION-WINDOW-001` is complete
-null. `SCI-MD-PANNUSCH-FLOW-HISTORY-001` completed flow-authority-ineligible:
-no nonidentity source input has the required physical semantics, units, clock,
-support, and Pannusch-Q authority. `XSV-PANNUSCH-EWP-INPUT-MAPPING-001` is
-selected but not implemented. Visualizer and home-lab restrictions remain
-unchanged, and no production adoption occurred.
+`SCI-DATA-FUSION-001` is complete as
+`SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`; its named
+decision is exhausted with no common constraint or EWP narrowing. Current
+priority `SCI-ED-003` is `READY` only for a bounded targeted closure contract
+under `CLOSURE_CONTRACT_ONLY`; it is not implemented or separately authorized.
+No further Pannusch or data-fusion cleanup is selected. Visualizer and home-lab
+restrictions remain unchanged, and no production adoption occurred.
 
 Scientific-development governance follows
 `docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md`.
@@ -33,3 +33,7 @@ controls require an explicit owner exception tied to a named risk.
   checks before acceptance. Historical release comparators are not global
   assertions about authorized current-development solver source.
 - Full OpenFOAM runs are manual and release-gated; retain complete evidence outside Git.
+
+## SCI-DATA-FUSION-001 deterministic closeout
+
+Completed as `SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY`; next action is `SCI-ED-003`. Home-lab operation remains unauthorized.
