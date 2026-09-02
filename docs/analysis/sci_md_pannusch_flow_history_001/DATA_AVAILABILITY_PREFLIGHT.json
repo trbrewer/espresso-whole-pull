@@ -1,0 +1,13 @@
+{
+  "rights": "CC-BY-NC-3.0; source-derived numeric data are not relicensed as repository code",
+  "sources": {
+    "DesignOfExperiments_Validation_03_22.xlsx": "b7fc864e693ddb40317a4c9493a2fb0c0892b1f1c68f5ce581d48008e21cab57",
+    "ExperimentalData_validation.mat": "b5fb0245e5cb67cf3191127f6058624243a38fc0031344f8c93344bb95a84d64",
+    "GetMassScale_modelval.m": "9d354ae2fd10148b926e4a5fc9adeafa99ced15d0f24a1a99324a3c81de44b56",
+    "MassData_modelval.mat": "430f922d0df443d9f1b1d629409d9ef4a4967d15535ffa8b5a34f795523faaf3",
+    "ReadMassTimeFromScale.m": "12958952f478afd13387c842e6290ca7551d2511526c6f488a0081a11506192e",
+    "getExperimentalData_validation.m": "b1a219b851887af69611a9f22c810c7c07f1f3b8e714e6d4ef62500c960deee7"
+  },
+  "status": "AVAILABLE_AND_HASH_VERIFIED",
+  "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+}

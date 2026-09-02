@@ -8,5 +8,7 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         data = module.validate()
-        self.assertEqual(data["current_priority"], "SCI-MD-PANNUSCH-FLOW-HISTORY-001")
+        self.assertEqual(data["current_priority"], "XSV-PANNUSCH-EWP-INPUT-MAPPING-001")
+        self.assertEqual(data["last_completed_opportunity_review"], "SCI-MD-PANNUSCH-FLOW-HISTORY-001")
+        self.assertEqual(data["current_claim_ceiling"], "SOURCE_INTERNAL_FLOW_HISTORY_QUALIFICATION_ONLY")
         self.assertEqual(data["home_lab_status"], "DEFER_HOME_LAB_HIGHER_VALUE_EXISTING_DATA_TASKS_READY")

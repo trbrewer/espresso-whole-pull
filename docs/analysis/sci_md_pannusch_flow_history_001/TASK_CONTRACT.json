@@ -1,0 +1,60 @@
+{
+  "always_state": [
+    "TARGET_EXPOSED",
+    "SOURCE_INTERNAL",
+    "NOT INDEPENDENT VALIDATION",
+    "NOT PHYSICAL VALIDATION",
+    "NOT HYDRAULIC VALIDATION",
+    "NOT PUCK_FACE_FLOW VALIDATION",
+    "NOT PRODUCTION QUALIFICATION"
+  ],
+  "analytes": [
+    "caffeine",
+    "trigonelline"
+  ],
+  "assay_fraction_ids": [
+    1,
+    2,
+    3,
+    5,
+    7,
+    10
+  ],
+  "change_declaration": "SOURCE_SCENARIO_CHANGE_ONLY",
+  "claim_ceiling": "SOURCE_INTERNAL_FLOW_HISTORY_QUALIFICATION_ONLY",
+  "cohorts": {
+    "excluded": [
+      "PRED-C03",
+      "PRED-C04"
+    ],
+    "programmed_ramp_identification": [
+      "PRED-C07",
+      "PRED-C08"
+    ],
+    "retained_residual_primary": [
+      "PRED-C01",
+      "PRED-C02",
+      "PRED-C05",
+      "PRED-C06"
+    ]
+  },
+  "governance_class": "G1",
+  "materiality": {
+    "loco": "all beneficial",
+    "maximum_fraction_conditions_worse": 0.25,
+    "paired_interval": "strictly below zero",
+    "relative_improvement": 0.1
+  },
+  "metrics": {
+    "bootstrap": {
+      "replicates": 2000,
+      "resampling": "condition then physical shot; retain analytes and complete vectors",
+      "rng": "NumPy PCG64",
+      "seed": 20260830
+    },
+    "continuity": "all six",
+    "primary": "condition-balanced physical-shot RMSE positions 2,5,6"
+  },
+  "scientific_invariant": "NO_GOVERNING_PHYSICS_CHANGE",
+  "task_id": "SCI-MD-PANNUSCH-FLOW-HISTORY-001"
+}
