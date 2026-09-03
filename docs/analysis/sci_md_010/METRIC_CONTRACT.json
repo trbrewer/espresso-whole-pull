@@ -1,58 +1,23 @@
 {
-  "L-FRAC": {
-    "across_physical_units": "shot then condition; analytes equal",
-    "bootstrap_count": 2000,
-    "confidence_interval": "95% percentile",
-    "disposition_mapping": "source-native utility possible; unavailable EWP forbids EWP advantage",
-    "failed_model": "infinite loss",
-    "formula": "TV=0.5*sum(abs(y/sum(y)-p/sum(p))); reused score retains predecessor RMSE",
-    "influential_group": "leave one March condition",
-    "materiality": "PREDICTIVE_RANKING_ONLY",
-    "missing_value": "incomplete vector fails",
-    "normalization": "within-vector sum only",
-    "prediction": "six shares",
-    "primary": "exact predecessor fraction-share RMSE; TV for any new vector execution",
-    "resampling_unit": "physical condition",
-    "secondary": [
-      "cumulative IAE=sum(abs(cumsum(y)-cumsum(p)))/6",
-      "early/tail share",
-      "condition wins"
-    ],
-    "seed": 20260831,
-    "target": "six-fraction share vector",
-    "tie_rule": "interval includes zero -> prefer simpler",
-    "trend_sign_rule": "cumulative and early/tail direction",
-    "uncertainty_method": "reuse predecessor paired condition interval",
-    "units": "share",
-    "within_physical_unit": "analyte separate; six fractions together",
-    "zero_range": "zero observed/predicted total fails; no pseudocount"
-  },
   "L-HYD": {
-    "across_physical_units": "brew then condition equal weights",
-    "bootstrap_count": 2000,
-    "confidence_interval": "95% percentile",
-    "disposition_mapping": "Level 1 reconstruction; unavailable EWP forbids EWP advantage",
+    "across_physical_units": "equal brew then equal condition",
+    "decision_mapping": {
+      "E1_beats_B1_and_order_correct": "RETAIN_AS_MECHANISTIC_CORE",
+      "E1_loses_B1": "NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE",
+      "E1_ties_B1": "SIMPLIFY_OR_REPARAMETERIZE",
+      "wrong_order": "REJECT_CURRENT_FORM"
+    },
     "failed_model": "infinite loss",
-    "formula": "mean_condition(mean_brew(sqrt(mean_time((obs-pred)^2))/training_range))",
-    "influential_group": "leave one condition",
-    "materiality": "PREDICTIVE_RANKING_ONLY",
-    "missing_value": "fail closed",
-    "normalization": "outer-training range only",
-    "prediction": "mass increment",
-    "primary": "condition-balanced normalized RMSE exact predecessor reuse",
-    "resampling_unit": "condition/physical brew",
-    "secondary": [
-      "blocked-time NRMSE 60-95s",
-      "endpoint bias",
-      "condition wins"
-    ],
-    "seed": 20260831,
-    "target": "cumulative beverage-mass increment",
-    "tie_rule": "interval includes zero -> no stable advantage",
-    "trend_sign_rule": "pressure ordering not systematically wrong",
-    "uncertainty_method": "condition then brew paired bootstrap",
-    "units": "dimensionless",
-    "within_physical_unit": "time RMSE 15-95 s",
-    "zero_range": "fold failure"
+    "formula": "mean_conditions(mean_brews(RMSE_t(obs,pred)/training_flow_range))",
+    "implementation": "scripts/sci_md_010_core.py:rmse and contract executor aggregation",
+    "missing_value": "fold failure",
+    "normalization": "outer-training global flow range only; zero range fails",
+    "paired_delta": "B1_loss-E1_loss",
+    "prediction": "predicted_mass_flow_rate__g_per_s",
+    "primary": "condition-balanced normalized flow RMSE",
+    "target": "mass_flow_rate__g_per_s",
+    "trend_rule": "condition mean predicted flow ordering compared with observed ordering",
+    "uncertainty": "paired condition then brew bootstrap 2000 replicates seed 20260902",
+    "within_physical_unit": "RMSE across indices 150..949"
   }
 }

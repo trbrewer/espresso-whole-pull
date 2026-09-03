@@ -53,6 +53,33 @@ def fraction_shape(params,coordinate):
  return [v/s for v in vals] if s>0 else [0.0 for v in vals]
 MODEL_CALLABLES={'fit_mean':fit_mean,'predict_mean':predict_mean,'fit_linear':fit_linear,'predict_linear':predict_linear,'hyd_reduced':hyd_reduced,'fraction_shape':fraction_shape}
 
+def fit_darcy_conductance(rows):
+ """Fit m_dot=C*p through origin; C collapses rho*A*K/(mu*L)."""
+ x=[float(r['basket_pressure__bar']) for r in rows];y=[float(r['mass_flow_rate__g_per_s']) for r in rows]
+ den=sum(v*v for v in x)
+ if den<=0:raise ValueError('DARCY_ZERO_PRESSURE_INFORMATION')
+ return {'conductance_g_s_bar':sum(a*b for a,b in zip(x,y))/den}
+def predict_darcy_conductance(model,rows):return [model['conductance_g_s_bar']*max(float(r['basket_pressure__bar']),0.0) for r in rows]
+MODEL_CALLABLES.update({'fit_darcy_conductance':fit_darcy_conductance,'predict_darcy_conductance':predict_darcy_conductance})
+
+def execute_fold_models(rows,train_ids,evaluation_id,model_ids):
+ """Normal contract-driven fold path used by synthetic and future real execution."""
+ train=[r for r in rows if r['group_id'] in train_ids];test=[r for r in rows if r['group_id']==evaluation_id]
+ if not train or not test:raise ValueError('EMPTY_FOLD_PARTITION')
+ results=[]
+ for mid in model_ids:
+  if mid=='HYD_B0_TRAINING_MEAN':model=fit_mean([float(r['mass_flow_rate__g_per_s']) for r in train]);pred=predict_mean(model,test)
+  elif mid=='HYD_B1_PRESSURE_LINEAR':model=fit_linear([float(r['basket_pressure__bar']) for r in train],[float(r['mass_flow_rate__g_per_s']) for r in train]);pred=predict_linear(model,[float(r['basket_pressure__bar']) for r in test])
+  elif mid=='HYD_E1_LUMPED_DARCY':model=fit_darcy_conductance(train);pred=predict_darcy_conductance(model,test)
+  else:raise ValueError('UNFROZEN_OR_UNSUPPORTED_MODEL:'+mid)
+  target=[float(r['mass_flow_rate__g_per_s']) for r in test];train_y=[float(r['mass_flow_rate__g_per_s']) for r in train];scale=max(train_y)-min(train_y)
+  if scale<=0:raise ValueError('TRAINING_NORMALIZATION_ZERO_RANGE')
+  by_brew={}
+  for row,yhat,y in zip(test,pred,target):by_brew.setdefault(row.get('shot_id',evaluation_id),[]).append((y,yhat))
+  loss=sum(rmse([v[0] for v in pairs],[v[1] for v in pairs])/scale for pairs in by_brew.values())/len(by_brew)
+  results.append({'model_id':mid,'group_id':evaluation_id,'fit':model,'predictions':pred,'targets':target,'primary_loss':loss})
+ return results
+
 def rmse(y,p): return math.sqrt(sum((a-b)**2 for a,b in zip(y,p))/len(y)) if y else math.inf
 def total_variation(y,p):
  sy,sp=sum(y),sum(p)

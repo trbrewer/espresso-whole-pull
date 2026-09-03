@@ -4,8 +4,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "WASZ_BREWS",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "condition_id",
@@ -40,8 +40,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "WASZ_FOLDS",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "outer.leave_one_controlled_condition_out"
@@ -71,8 +71,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "WASZ_LOCO",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -107,8 +107,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "WASZ_BLOCKED",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -144,8 +144,8 @@
     {
       "artifact_class": "SOURCE_MODEL",
       "artifact_id": "WASZ_MODELS",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -178,8 +178,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "WASZ_METHODS",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "models",
@@ -209,8 +209,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "WASZ_AGG",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -241,8 +241,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "PANN_AUTH",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "puckworks_commit",
@@ -271,8 +271,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "PANN_OBS",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "primary",
@@ -303,8 +303,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "PANN_SPLIT",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "minimum_unit",
@@ -334,8 +334,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "PANN_LOCO",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "omitted_condition",
@@ -367,8 +367,8 @@
     {
       "artifact_class": "SOURCE_MODEL",
       "artifact_id": "PANN_MODELS",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -398,8 +398,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "PANN_AGG",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model",
@@ -434,8 +434,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "PANN_SPECIES",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -468,8 +468,8 @@
     {
       "artifact_class": "PROCESSED_OBSERVATION",
       "artifact_id": "STRUCT_MAP",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "source",
@@ -501,8 +501,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "STRUCT_PORO",
-      "authority_commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
-      "authority_tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99",
+      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
+      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "eligible_support_count",
@@ -561,6 +561,45 @@
       "units": "SOURCE_NATIVE",
       "uses": [
         "context"
+      ]
+    },
+    {
+      "artifact_class": "PROCESSED_OBSERVATION",
+      "artifact_id": "WASZ_OBSERVATIONS",
+      "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+      "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "reference_pressure_round__bar",
+        "shot_id",
+        "time_index",
+        "basket_pressure__bar",
+        "mass__g",
+        "mass_flow_rate__g_per_s"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "shot_id",
+        "reference_pressure_round__bar"
+      ],
+      "path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+      "physical_unit": "shot_id;reference_pressure_round__bar",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "puckworks",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+      "size_bytes": 2602224,
+      "source_family": "wasz",
+      "target_field": "mass_flow_rate__g_per_s",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "fitting",
+        "prediction",
+        "scoring",
+        "uncertainty"
       ]
     }
   ],

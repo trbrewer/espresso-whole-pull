@@ -1,36 +1,24 @@
 {
-  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
-  "claim_ceiling": "RETROSPECTIVE_SOURCE_CONDITIONED_COMPONENT_MODEL_UTILITY_AND_ARCHITECTURE_AUDIT_ONLY",
-  "execution": "exact predecessor score materialization only; no new real target fitting",
-  "folds": "FOLD_ASSIGNMENTS.csv",
-  "governance_class": "G1",
-  "input_register": "INPUT_ARTIFACT_REGISTER.json",
-  "membership": "FOLD_MEMBERSHIP.csv",
-  "metrics": "METRIC_CONTRACT.json",
-  "models": "MODEL_SPECIFICATIONS.json",
-  "new_production_cases": 0,
-  "nonpredictive_sublanes": [
-    "L-POROSITY-WADSWORTH",
-    "L-POROSITY-VACA",
-    "L-PERMEABILITY-SOURCE_NATIVE"
+  "folds": "docs/analysis/sci_md_010/FOLD_ASSIGNMENTS.csv",
+  "input_register": "docs/analysis/sci_md_010/INPUT_ARTIFACT_REGISTER.json",
+  "membership": "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv",
+  "metrics": "docs/analysis/sci_md_010/METRIC_CONTRACT.json",
+  "model_ids": [
+    "HYD_B0_TRAINING_MEAN",
+    "HYD_B1_PRESSURE_LINEAR",
+    "HYD_E1_LUMPED_DARCY"
   ],
-  "overall_mapping": "no executed EWP forbids positive EWP utility disposition",
+  "models": "docs/analysis/sci_md_010/MODEL_SPECIFICATIONS.json",
   "result_mapping": {
-    "full_loses_b1": "NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE",
-    "insufficient_groups": "DATA_INSUFFICIENT_FOR_GROUPED_PREDICTIVE_TEST",
-    "no_ewp_executed": "EWP_NOT_EVALUABLE_ON_SOURCE_OBSERVABLE",
-    "reduced_matches_full": "FULL_AND_REDUCED_MODELS_INDISTINGUISHABLE_PREFER_REDUCED",
-    "source_native_beats_b1_ewp_unavailable": "source science useful; EWP architecture not evaluated",
-    "systematic_wrong_order": "CURRENT_FORM_SYSTEMATICALLY_WRONG_ON_OBSERVABLE",
-    "target_fitted_only": "SOURCE_CONDITIONED_RECONSTRUCTION_ONLY"
+    "E1_beats_B1_and_order_correct": "RETAIN_AS_MECHANISTIC_CORE",
+    "E1_loses_B1": "NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE",
+    "E1_ties_B1": "SIMPLIFY_OR_REPARAMETERIZE",
+    "wrong_order": "REJECT_CURRENT_FORM"
   },
-  "row_index": "ANALYSIS_ROW_INDEX.csv",
+  "row_index": "docs/analysis/sci_md_010/ANALYSIS_ROW_INDEX.csv",
   "scoring_executed": false,
   "selected_lanes": [
-    "L-HYD",
-    "L-FRAC"
+    "L-HYD"
   ],
-  "target_shot_calibration_predictive": false,
-  "task_id": "SCI-MD-010",
-  "test_group_calibration": false
+  "task_id": "SCI-MD-010"
 }

@@ -1,505 +1,105 @@
 {
-  "broken_edges": [
-    "beverage_mass__rate",
-    "deformation__beverage_mass",
-    "extractable_inventory__initial_solid",
-    "grinder__psd",
-    "initial_solid__cs0",
-    "permeability__resistance",
-    "retained_spent__cup_outputs"
-  ],
   "edges": [
     {
-      "blocks_level4": false,
-      "from": "coffee",
-      "id": "coffee__roast",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "roast",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
+      "architecture_implication": "tests reduced hydraulic core",
+      "equation": "mdot=C*p",
+      "from": "measured_basket_pressure",
+      "id": "pressure_darcy",
+      "implementation": "steady_outlet_flow_m3_s uniform Darcy reduction",
+      "simplification_bypasses": false,
+      "status": "SOURCE_CONDITIONED",
+      "target_shot_fitting": false,
+      "test_family": "waszkiewicz2025",
+      "to": "darcy_mass_flow",
+      "uncertainty": "bootstrap"
     },
     {
-      "blocks_level4": false,
-      "from": "roast",
-      "id": "roast__dose",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "dose",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
+      "architecture_implication": "separate K,mu,L not identified",
+      "equation": "C=sum(p*q)/sum(p^2) on training only",
+      "from": "training_effective_conductance",
+      "id": "training_C",
+      "implementation": "fit_darcy_conductance",
+      "simplification_bypasses": true,
+      "status": "SOURCE_CONDITIONED",
+      "target_shot_fitting": false,
+      "test_family": "waszkiewicz2025",
+      "to": "darcy_mass_flow",
+      "uncertainty": "between folds"
     },
     {
-      "blocks_level4": false,
-      "from": "dose",
-      "id": "dose__dry_mass",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "dry_mass",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
+      "architecture_implication": "executable L-HYD",
+      "equation": "g/s to g/s",
+      "from": "darcy_mass_flow",
+      "id": "darcy_observer",
+      "implementation": "identity source observer",
+      "simplification_bypasses": false,
+      "status": "IMPLEMENTED",
+      "target_shot_fitting": false,
+      "test_family": "waszkiewicz2025",
+      "to": "measured_mass_flow",
+      "uncertainty": "brew variation"
     },
     {
-      "blocks_level4": false,
-      "from": "dry_mass",
-      "id": "dry_mass__grinder",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "grinder",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
+      "architecture_implication": "blocks Level 4",
+      "equation": "none",
+      "from": "grinder_psd",
+      "id": "psd_K",
+      "implementation": "none qualified",
+      "simplification_bypasses": true,
+      "status": "MAPPING_NOT_ESTABLISHED",
+      "target_shot_fitting": false,
+      "test_family": "Wadsworth/Vaca context",
+      "to": "wet_permeability",
+      "uncertainty": "unresolved"
     },
     {
-      "blocks_level4": true,
-      "from": "grinder",
-      "id": "grinder__psd",
-      "identifiability_status": "MAPPING_NOT_ESTABLISHED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "psd",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "psd",
-      "id": "psd__fines",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "fines",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "fines",
-      "id": "fines__geometry",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "geometry",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "geometry",
-      "id": "geometry__porosity",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "porosity",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "porosity",
-      "id": "porosity__permeability",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "permeability",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": true,
-      "from": "permeability",
-      "id": "permeability__resistance",
-      "identifiability_status": "MAPPING_NOT_ESTABLISHED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": true,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": true,
-      "testable_existing_family": "source-specific",
-      "to": "resistance",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "resistance",
-      "id": "resistance__command",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "command",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "command",
-      "id": "command__achieved_boundary",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "achieved_boundary",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "achieved_boundary",
-      "id": "achieved_boundary__temperature",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "temperature",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "temperature",
-      "id": "temperature__viscosity",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "viscosity",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "viscosity",
-      "id": "viscosity__wetting",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "wetting",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "wetting",
-      "id": "wetting__deformation",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "deformation",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": true,
-      "from": "deformation",
-      "id": "deformation__beverage_mass",
-      "identifiability_status": "MAPPING_NOT_ESTABLISHED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "beverage_mass",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": true,
-      "from": "beverage_mass",
-      "id": "beverage_mass__rate",
-      "identifiability_status": "MAPPING_NOT_ESTABLISHED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": true,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "rate",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "rate",
-      "id": "rate__total_inventory",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": true,
-      "testable_existing_family": "source-specific",
-      "to": "total_inventory",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "total_inventory",
-      "id": "total_inventory__extractable_inventory",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "extractable_inventory",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": true,
-      "from": "extractable_inventory",
-      "id": "extractable_inventory__initial_solid",
-      "identifiability_status": "MAPPING_NOT_ESTABLISHED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "initial_solid",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": true,
-      "from": "initial_solid",
-      "id": "initial_solid__cs0",
-      "identifiability_status": "MAPPING_NOT_ESTABLISHED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": true,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "cs0",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "cs0",
-      "id": "cs0__fraction_observer",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "fraction_observer",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": false,
-      "from": "fraction_observer",
-      "id": "fraction_observer__retained_spent",
-      "identifiability_status": "NOT_YET_ADJUDICATED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "retained_spent",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
-    },
-    {
-      "blocks_level4": true,
-      "from": "retained_spent",
-      "id": "retained_spent__cup_outputs",
-      "identifiability_status": "MAPPING_NOT_ESTABLISHED",
-      "implementation": "production component or proposed source-conditioned operator",
-      "production_status": "IMPLEMENTED_OR_INTERFACE_GAP",
-      "requires_experiment": false,
-      "simplification_can_remove": false,
-      "source_authority": "adjacent item source families",
-      "target_shot_calibration": false,
-      "testable_existing_family": "source-specific",
-      "to": "cup_outputs",
-      "uncertainty": "SOURCE_SPECIFIC_OR_UNAVAILABLE"
+      "architecture_implication": "blocks Level 4",
+      "equation": "production solver",
+      "from": "wet_permeability",
+      "id": "K_cup",
+      "implementation": "full coupled EWP",
+      "simplification_bypasses": false,
+      "status": "IMPLEMENTED_BUT_UNCALIBRATED",
+      "target_shot_fitting": true,
+      "test_family": "none complete",
+      "to": "cup_chemistry",
+      "uncertainty": "unresolved"
     }
   ],
   "minimal_cut_sets": [
     [
-      "grinder-specific PSD/effective-resistance bridge",
-      "absolute inventory/closure"
-    ],
-    [
-      "observable-first effective resistance adapter",
-      "normalized chemistry shape; absolute cup remains unavailable"
+      "grinder_psd__wet_permeability",
+      "absolute inventory/chemistry observer"
     ]
   ],
   "nodes": [
     {
-      "class": "USER_INPUT",
-      "id": "coffee"
+      "class": "MEASURED_CONTEXT",
+      "id": "measured_basket_pressure"
     },
     {
-      "class": "USER_INPUT",
-      "id": "roast"
+      "class": "CALIBRATED_NUISANCE",
+      "id": "training_effective_conductance"
     },
     {
-      "class": "USER_INPUT",
-      "id": "dose"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "dry_mass"
-    },
-    {
-      "class": "USER_INPUT",
-      "id": "grinder"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "psd"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "fines"
-    },
-    {
-      "class": "USER_INPUT",
-      "id": "geometry"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "porosity"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "permeability"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "resistance"
-    },
-    {
-      "class": "USER_INPUT",
-      "id": "command"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "achieved_boundary"
-    },
-    {
-      "class": "USER_INPUT",
-      "id": "temperature"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "viscosity"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "wetting"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "deformation"
+      "class": "OUTPUT",
+      "id": "darcy_mass_flow"
     },
     {
       "class": "OBSERVATION",
-      "id": "beverage_mass"
+      "id": "measured_mass_flow"
     },
     {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "rate"
+      "class": "USER_INPUT",
+      "id": "grinder_psd"
     },
     {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "total_inventory"
+      "class": "EFFECTIVE_PARAMETER",
+      "id": "wet_permeability"
     },
     {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "extractable_inventory"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "initial_solid"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "cs0"
-    },
-    {
-      "class": "OBSERVATION",
-      "id": "fraction_observer"
-    },
-    {
-      "class": "MODEL_INTERNAL_STATE",
-      "id": "retained_spent"
-    },
-    {
-      "class": "OBSERVATION",
-      "id": "cup_outputs"
+      "class": "OUTPUT",
+      "id": "cup_chemistry"
     }
-  ],
-  "phase_a_results_unset": true
+  ]
 }

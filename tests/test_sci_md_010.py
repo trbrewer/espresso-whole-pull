@@ -42,4 +42,22 @@ class TestSciMd010(unittest.TestCase):
  def test_19_stages(self):p=load_json(D/'PRE_SCORE_FREEZE.json');self.assertFalse(p['stage_f_authorized'] or p['stage_d_authorized'])
  def test_20_no_private_path(self):
   for p in ['sci_md_010_core.py','sci_md_010_prepare.py','sci_md_010_execute.py','validate_sci_md_010.py']:self.assertNotIn('/'+'home'+'/',(ROOT/'scripts'/p).read_text())
+ def fixture_rows(self):
+  return [{'group_id':g,'shot_id':g+'-s','basket_pressure__bar':str(p),'mass_flow_rate__g_per_s':str(2*p)} for g,p in [('g1',1.),('g2',2.),('g3',3.)] for _ in range(3)]
+ def test_21_registry_controls_execution(self):
+  r=self.fixture_rows();self.assertEqual({x['model_id'] for x in execute_fold_models(r,['g1','g2'],'g3',['HYD_B0_TRAINING_MEAN'])},{'HYD_B0_TRAINING_MEAN'});self.assertEqual(len(execute_fold_models(r,['g1','g2'],'g3',['HYD_B0_TRAINING_MEAN','HYD_E1_LUMPED_DARCY'])),2)
+ def test_22_unfrozen_model_rejected(self):
+  with self.assertRaises(ValueError):execute_fold_models(self.fixture_rows(),['g1','g2'],'g3',['UNFROZEN'])
+ def test_23_evaluation_target_does_not_change_prediction(self):
+  a=self.fixture_rows();x=execute_fold_models(a,['g1','g2'],'g3',['HYD_E1_LUMPED_DARCY'])[0];b=copy.deepcopy(a)
+  for r in b:
+   if r['group_id']=='g3':r['mass_flow_rate__g_per_s']='999'
+  y=execute_fold_models(b,['g1','g2'],'g3',['HYD_E1_LUMPED_DARCY'])[0];self.assertEqual(x['fit'],y['fit']);self.assertEqual(x['predictions'],y['predictions'])
+ def test_24_metric_recomputation(self):
+  x=execute_fold_models(self.fixture_rows(),['g1','g2'],'g3',['HYD_E1_LUMPED_DARCY'])[0];self.assertAlmostEqual(x['primary_loss'],0.0)
+ def test_25_opposite_results_not_hardcoded(self):self.assertNotEqual(lane_decision(.1,.2),lane_decision(.3,.2))
+ def test_26_real_e1_derivation(self):
+  e=next(x for x in load_json(D/'MODEL_SPECIFICATIONS.json')['models'] if x['class']=='E1');self.assertIn('steady_outlet_flow_m3_s',e['ewp_derivation']);self.assertEqual(e['actual_execution_mode'],'FIT_AND_PREDICT')
+ def test_27_actual_observation_binding(self):self.assertFalse(any(x['target_field'].endswith('PRIOR_SCORE_ONLY') for x in load_csv(D/'ANALYSIS_ROW_INDEX.csv')))
+ def test_28_explicit_graph_topology(self):self.assertEqual(len(load_json(D/'END_TO_END_OBSERVABILITY_GRAPH.json')['edges']),5)
 if __name__=='__main__':unittest.main()

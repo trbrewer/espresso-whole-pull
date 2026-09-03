@@ -1,74 +1,22 @@
 {
-  "conceptual_ladder": [
-    "B0",
-    "B1",
-    "B2",
-    "E1",
-    "E2"
-  ],
   "models": [
     {
-      "claim_level": "LEVEL_1_RECONSTRUCTION_CONTEXT",
+      "actual_execution_mode": "FIT_AND_PREDICT",
+      "claim_level": "LEVEL_2_RETROSPECTIVE_GROUPED_WITHIN_SOURCE",
       "class": "B0",
-      "lane_id": "L-HYD",
-      "model_id": "HYD_B0_TRAINING_MEAN",
-      "status": "ANALYSIS_ONLY_NOT_REAL_SCORED"
+      "model_id": "HYD_B0_TRAINING_MEAN"
     },
     {
-      "claim_level": "LEVEL_1_SOURCE_POST_FIT_RECONSTRUCTION",
+      "actual_execution_mode": "FIT_AND_PREDICT",
+      "claim_level": "LEVEL_2_RETROSPECTIVE_GROUPED_WITHIN_SOURCE",
       "class": "B1",
-      "lane_id": "L-HYD",
-      "model_id": "HYD_B1_WH0A_FIXED_LOG_R",
-      "status": "PRIOR_ANALYSIS_MODEL_NOT_CURRENT_EWP"
+      "model_id": "HYD_B1_PRESSURE_LINEAR"
     },
     {
-      "claim_level": "NOT_ADJUDICATED",
+      "actual_execution_mode": "FIT_AND_PREDICT",
+      "claim_level": "LEVEL_2_RETROSPECTIVE_GROUPED_WITHIN_SOURCE",
       "class": "E1",
-      "lane_id": "L-HYD",
-      "model_id": "HYD_E1_EFFECTIVE_RESISTANCE",
-      "status": "SPECIFIED_NOT_REAL_SCORED"
-    },
-    {
-      "claim_level": "NOT_ADJUDICATED",
-      "class": "E2",
-      "lane_id": "L-HYD",
-      "model_id": "HYD_E2_CURRENT_EWP_UNAVAILABLE",
-      "status": "CURRENT_EWP_NOT_EXECUTABLE_IN_L_HYD_UNDER_FROZEN_CASE_BUDGET"
-    },
-    {
-      "claim_level": "SOURCE_INTERNAL_TARGET_EXPOSED_GROUPED_COMPARISON",
-      "class": "B0",
-      "lane_id": "L-FRAC",
-      "model_id": "FRAC_B0_ORDINAL",
-      "status": "PRIOR_ANALYSIS_MODEL"
-    },
-    {
-      "claim_level": "SOURCE_INTERNAL_TARGET_EXPOSED_GROUPED_COMPARISON",
-      "class": "B1",
-      "lane_id": "L-FRAC",
-      "model_id": "FRAC_B1_BOUNDARY_AWARE",
-      "status": "PRIOR_ANALYSIS_MODEL"
-    },
-    {
-      "claim_level": "SOURCE_INTERNAL_TARGET_EXPOSED_GROUPED_COMPARISON",
-      "class": "B2",
-      "lane_id": "L-FRAC",
-      "model_id": "FRAC_B2_PANNUSCH_FIXED",
-      "status": "SOURCE_NATIVE_PANNUSCH_MODEL_NOT_CURRENT_EWP"
-    },
-    {
-      "claim_level": "NOT_ADJUDICATED",
-      "class": "E1",
-      "lane_id": "L-FRAC",
-      "model_id": "FRAC_E1_EXPONENTIAL_SHAPE",
-      "status": "SPECIFIED_NOT_REAL_SCORED"
-    },
-    {
-      "claim_level": "NOT_ADJUDICATED",
-      "class": "E2",
-      "lane_id": "L-FRAC",
-      "model_id": "FRAC_E2_CURRENT_EWP_UNAVAILABLE",
-      "status": "CURRENT_EWP_NOT_EXECUTABLE_IN_L_FRAC_UNDER_FROZEN_CASE_BUDGET"
+      "model_id": "HYD_E1_LUMPED_DARCY"
     }
   ]
 }
