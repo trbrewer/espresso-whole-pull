@@ -13,7 +13,7 @@ class CorpusLeverageC1Tests(unittest.TestCase):
 
     def test_priority_and_home_lab_gate(self):
         programme = json.loads((ROOT / "provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json").read_text())
-        self.assertEqual(programme["current_priority"], "SCI-MD-011")
+        self.assertEqual(programme["current_priority"], "SCI-MD-012")
         self.assertEqual(programme["home_lab_status"], "DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION")
         self.assertFalse(programme["laboratory_gate"]["operation_authorized"])
         self.assertTrue(any(x["opportunity_id"] == "SCI-DATA-FUSION-001" and x["status"] == "COMPLETE_NEGATIVE" and x["exhausted_for_decision"] for x in programme["opportunities"]))

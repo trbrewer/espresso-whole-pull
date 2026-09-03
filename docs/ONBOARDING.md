@@ -3,14 +3,15 @@
 SCI-MD-010 is `MERGED_COMPLETE`.
 L-HYD is `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`;
 reduced E1 is `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2
-is `NOT_ADJUDICATED`. SCI-MD-011 is
-`PHASE_B_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`, with disposition
+is `NOT_ADJUDICATED`. SCI-MD-011 is `MERGED_COMPLETE`, with disposition
 `SCI_MD_011_POROELASTIC_CLOSURE_TEST_BLOCKED_BY_IDENTIFIABILITY_EXECUTION_DOMAIN_OR_EQUIVALENCE_GAP`
 and architecture `NOT_ADJUDICATED`; finite-Phi E2C is `BLOCKED`, universal P1
 is `WRONG_PRESSURE_RESPONSE`, and current full EWP is `NOT_VALIDATED`.
 SCI-ED-003 remains complete, Stage F/D remain
-unauthorized, laboratory operation remains unauthorized, no automatic
-successor is selected, and physical validation remains `NOT_ESTABLISHED`.
+unauthorized, laboratory operation remains unauthorized, and physical
+validation remains `NOT_ESTABLISHED`. SCI-MD-012 is complete as the bounded
+existing-data diagnosis with next action
+`RETIRE_E2C_FROM_CURRENT_DEVELOPMENT_PRIORITY_NO_REPARAMETERIZATION_TEST`.
 The SCI-ED-003 owner decision remains bounded; its status is
 `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`, and execution requires
 separate owner authorization.

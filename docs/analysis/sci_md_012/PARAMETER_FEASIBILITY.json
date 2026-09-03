@@ -1,0 +1,215 @@
+{
+  "Pc_delta_from_frozen_bar": 0.18803641146384464,
+  "Pc_relative_delta_from_frozen": 0.01528675251922107,
+  "Qc_delta_from_frozen_g_s": 1.4573655583768148,
+  "Qc_relative_delta_from_frozen": 0.7445478448078049,
+  "bounds": {
+    "Pc_bar": [
+      1.0,
+      100.0
+    ],
+    "Qc_g_s": [
+      0.01,
+      20.0
+    ]
+  },
+  "completed_e2c_fold_Pc_range_bar": {
+    "maximum": 12.498229289146458,
+    "minimum": 12.490492176668338,
+    "required_relation": "OUTSIDE"
+  },
+  "endpoint_shape_fphi": 1.0000000000003257,
+  "existing_profile_points": [
+    {
+      "crosses_root_feasibility_threshold": false,
+      "finite": true,
+      "frozen_profile_objective": 0.07565667646911788,
+      "implied_value": 11.700704072825955,
+      "offset": -0.05,
+      "parameter": "log_Pc"
+    },
+    {
+      "crosses_root_feasibility_threshold": true,
+      "finite": true,
+      "frozen_profile_objective": 0.07568089742676783,
+      "implied_value": 12.93127786229653,
+      "offset": 0.05,
+      "parameter": "log_Pc"
+    },
+    {
+      "crosses_root_feasibility_threshold": false,
+      "finite": true,
+      "frozen_profile_objective": 0.07817520114898005,
+      "implied_value": 11.130054001447393,
+      "offset": -0.1,
+      "parameter": "log_Pc"
+    },
+    {
+      "crosses_root_feasibility_threshold": true,
+      "finite": true,
+      "frozen_profile_objective": 0.07836728186464671,
+      "implied_value": 13.594278655839481,
+      "offset": 0.1,
+      "parameter": "log_Pc"
+    },
+    {
+      "crosses_root_feasibility_threshold": false,
+      "finite": false,
+      "frozen_profile_objective": null,
+      "implied_value": 9.579726257087403,
+      "offset": -0.25,
+      "parameter": "log_Pc"
+    },
+    {
+      "crosses_root_feasibility_threshold": true,
+      "finite": true,
+      "frozen_profile_objective": 0.09797312497083546,
+      "implied_value": 15.794298447544525,
+      "offset": 0.25,
+      "parameter": "log_Pc"
+    },
+    {
+      "crosses_root_feasibility_threshold": false,
+      "finite": true,
+      "frozen_profile_objective": 0.08072359294554066,
+      "implied_value": 1.8619206422386347,
+      "offset": -0.05,
+      "parameter": "log_Qc"
+    },
+    {
+      "crosses_root_feasibility_threshold": false,
+      "finite": true,
+      "frozen_profile_objective": 0.08133141625142483,
+      "implied_value": 2.0577405455668716,
+      "offset": 0.05,
+      "parameter": "log_Qc"
+    },
+    {
+      "crosses_root_feasibility_threshold": false,
+      "finite": true,
+      "frozen_profile_objective": 0.09737123213036032,
+      "implied_value": 1.7711137009826563,
+      "offset": -0.1,
+      "parameter": "log_Qc"
+    },
+    {
+      "crosses_root_feasibility_threshold": false,
+      "finite": true,
+      "frozen_profile_objective": 0.10224554360465832,
+      "implied_value": 2.163243159395483,
+      "offset": 0.1,
+      "parameter": "log_Qc"
+    },
+    {
+      "crosses_root_feasibility_threshold": false,
+      "finite": true,
+      "frozen_profile_objective": 0.197058431122974,
+      "implied_value": 1.5244116895914772,
+      "offset": -0.25,
+      "parameter": "log_Qc"
+    },
+    {
+      "crosses_root_feasibility_threshold": false,
+      "finite": true,
+      "frozen_profile_objective": 0.274106773930128,
+      "implied_value": 2.513329977933389,
+      "offset": 0.25,
+      "parameter": "log_Qc"
+    }
+  ],
+  "formal_identifiability_status": "SCI_MD_011_EXECUTION_BLOCKED_IDENTIFIABILITY_NOT_ADJUDICATED",
+  "frozen_parameters": {
+    "Pc_bar": 12.300611999011151,
+    "Qc_g_s": 1.9573833549313604
+  },
+  "maximum_Pc_required_bar": 12.488648410474996,
+  "maximum_Qc_required_g_s_at_frozen_Pc": 3.414748913308175,
+  "per_brew_thresholds": [
+    {
+      "Pc_required_bar": 12.301898410456321,
+      "Qc_required_g_s_at_frozen_Pc": 1.969729754551837,
+      "brew_id": "WASZ-BREW-12-8-2"
+    },
+    {
+      "Pc_required_bar": 12.313148410457448,
+      "Qc_required_g_s_at_frozen_Pc": 2.0756366827910426,
+      "brew_id": "WASZ-BREW-12-8-3"
+    },
+    {
+      "Pc_required_bar": 12.418148410467948,
+      "Qc_required_g_s_at_frozen_Pc": 2.9310669710936863,
+      "brew_id": "WASZ-BREW-12-8-4"
+    },
+    {
+      "Pc_required_bar": 12.488648410474996,
+      "Qc_required_g_s_at_frozen_Pc": 3.414748913308175,
+      "brew_id": "WASZ-BREW-12-8-5"
+    },
+    {
+      "Pc_required_bar": 12.376148410463747,
+      "Qc_required_g_s_at_frozen_Pc": 2.6128285110919864,
+      "brew_id": "WASZ-BREW-12-8-6"
+    },
+    {
+      "Pc_required_bar": 12.214148410447546,
+      "Qc_required_g_s_at_frozen_Pc": 0.9621642177562705,
+      "brew_id": "WASZ-BREW-12-8-7"
+    }
+  ],
+  "profile_information_source": "FROZEN_READ_ONLY_NO_NEW_OBJECTIVE_EVALUATION",
+  "required_Pc_within_frozen_bounds": true,
+  "task_id": "SCI-MD-012",
+  "thresholds_are_sensitivity_degeneracy_diagnostics_not_fits": true,
+  "witness": {
+    "Pc_bar": 12.488648411474996,
+    "Qc_g_s": 1.9573833549313604,
+    "inside_existing_bounds": true,
+    "rows": [
+      {
+        "brew_id": "WASZ-BREW-12-8-2",
+        "coupled_endpoint_ceiling_bar": 12.909500001,
+        "line_pressure_bar": 12.72275,
+        "margin_bar": 0.18675000100000005,
+        "root_admissible": true
+      },
+      {
+        "brew_id": "WASZ-BREW-12-8-3",
+        "coupled_endpoint_ceiling_bar": 12.909500001,
+        "line_pressure_bar": 12.734,
+        "margin_bar": 0.17550000099999963,
+        "root_admissible": true
+      },
+      {
+        "brew_id": "WASZ-BREW-12-8-4",
+        "coupled_endpoint_ceiling_bar": 12.909500001,
+        "line_pressure_bar": 12.839,
+        "margin_bar": 0.0705000009999992,
+        "root_admissible": true
+      },
+      {
+        "brew_id": "WASZ-BREW-12-8-5",
+        "coupled_endpoint_ceiling_bar": 12.909500001,
+        "line_pressure_bar": 12.9095,
+        "margin_bar": 1.000000082740371e-09,
+        "root_admissible": true
+      },
+      {
+        "brew_id": "WASZ-BREW-12-8-6",
+        "coupled_endpoint_ceiling_bar": 12.909500001,
+        "line_pressure_bar": 12.797,
+        "margin_bar": 0.11250000099999902,
+        "root_admissible": true
+      },
+      {
+        "brew_id": "WASZ-BREW-12-8-7",
+        "coupled_endpoint_ceiling_bar": 12.909500001,
+        "line_pressure_bar": 12.635,
+        "margin_bar": 0.2745000009999998,
+        "root_admissible": true
+      }
+    ],
+    "witness_is_candidate_fit": false,
+    "witness_is_prediction": false,
+    "witness_is_scored": false
+  }
+}

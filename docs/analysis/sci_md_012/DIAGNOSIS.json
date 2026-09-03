@@ -1,0 +1,43 @@
+{
+  "architecture": "NOT_ADJUDICATED",
+  "broader_high_pressure_behavior": "STRUCTURALLY_CANNOT_PRODUCE_REQUIRED_TURNOVER",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_ceiling": "RETROSPECTIVE_TARGET_EXPOSED_NONSCORING_EXISTING_DATA_ROOT_BLOCKER_DIAGNOSIS_ONLY",
+  "closure_function_domain_role": "NOT_CAUSAL",
+  "decision_materiality": "ROOT_REPAIR_CANNOT_CHANGE_ADOPTION_DECISION",
+  "declared_family_root_representability": "REPRESENTABLE_WITHIN_EXISTING_BOUNDS",
+  "formal_identifiability_status": "SCI_MD_011_EXECUTION_BLOCKED_IDENTIFIABILITY_NOT_ADJUDICATED",
+  "frozen_parameter_scale_role": "FEASIBILITY_ARTIFACT_SUPPORTED",
+  "frozen_root_failure_mechanism": "COUPLED_ENDPOINT_ENVELOPE_EXCEEDED",
+  "m01": "NOT_ADJUDICATED",
+  "machine_adapter_role": "MITIGATING",
+  "next_action": "RETIRE_E2C_FROM_CURRENT_DEVELOPMENT_PRIORITY_NO_REPARAMETERIZATION_TEST",
+  "physical_validation": "NOT_ESTABLISHED",
+  "source_parameterization_relation": "SOURCE_FIT_PARAMETERIZATION_DIFFERENCE_PRESENT",
+  "stage_d_authorized": false,
+  "stage_f_authorized": false,
+  "structural_high_pressure": {
+    "Qc_Pc_only_family_negative_slope_or_turnover_capability": false,
+    "finite_phi_curve_monotone_declared_domain": true,
+    "frozen_E2C_structural_saturation_capability": true,
+    "frozen_E2C_structural_turnover_capability": false,
+    "frozen_P1_high_pressure_gate": {
+      "candidate_status": "WRONG_PRESSURE_RESPONSE",
+      "high_direction_ok": false
+    },
+    "frozen_P1_predicted_high_pressure_slope": 0.016120300986234796,
+    "frozen_observed_high_pressure_slope": -0.06550641262782862,
+    "restoring_a_root_is_not_restoring_required_high_pressure_behavior": true,
+    "universal_curve_monotone_declared_domain": true
+  },
+  "supporting_facts": {
+    "feasible_at_frozen_pair": 1,
+    "held_out_rows": 6,
+    "infeasible_at_frozen_pair": 5,
+    "restoring_a_root_restores_required_high_pressure_behavior": false,
+    "sci_md_011_domain_failure_count": 0,
+    "sci_md_012_domain_failure_count": 0
+  },
+  "targeted_measurement_authorized": false,
+  "task_id": "SCI-MD-012"
+}

@@ -15,11 +15,14 @@ execution requires separate owner authorization. Another
 Pannusch or data-fusion cleanup is not selected. Physical validation remains
 `NOT_ESTABLISHED`.
 
-SCI-MD-010 is `PHASE_B_EXECUTION_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`.
+SCI-MD-010 and SCI-MD-011 are `MERGED_COMPLETE`.
 L-HYD is `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`;
 reduced E1 is `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2
-is `NOT_ADJUDICATED`. Stage F/D remain unauthorized, no automatic successor
-is selected, and physical validation remains `NOT_ESTABLISHED`.
+is `NOT_ADJUDICATED`. Finite-Phi E2C remains `BLOCKED`, universal P1 remains
+`WRONG_PRESSURE_RESPONSE`, and SCI-MD-012 is complete as the bounded
+existing-data diagnosis with next action
+`RETIRE_E2C_FROM_CURRENT_DEVELOPMENT_PRIORITY_NO_REPARAMETERIZATION_TEST`.
+Stage F/D remain unauthorized and physical validation remains `NOT_ESTABLISHED`.
 The SCI-ED-003 owner decision remains bounded and execution requires separate
 owner authorization.
 
