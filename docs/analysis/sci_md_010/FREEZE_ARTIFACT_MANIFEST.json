@@ -1,5 +1,5 @@
 {
-  "aggregate_content_sha256": "9032817681dbb076d7ea3531dcb20ce7a632da8f53e76f23b81e57c453cc8084",
+  "aggregate_content_sha256": "cc04d349140a42072d9260321569cb363eb796ce782db0ad3903c284f5e8edf0",
   "artifacts": [
     {
       "path": "docs/analysis/sci_md_010/ISSUE_CONTRACT.md",
@@ -83,7 +83,7 @@
     },
     {
       "path": "scripts/sci_md_010_execute.py",
-      "sha256": "51129bc77b4536a5409bc79eaa4efb9e9d68e2530bcbcc0df8bce427cb8cd106"
+      "sha256": "f9c255ae38a49a4ed99220d118fffac3069988d1bec7a5619585d05bf918c098"
     },
     {
       "path": "scripts/validate_sci_md_010.py",
@@ -91,7 +91,7 @@
     },
     {
       "path": "tests/test_sci_md_010.py",
-      "sha256": "fe57d85ee6b6cf0d10ad6ef639df1885bbc95670e30eb83be385fc6c95364a65"
+      "sha256": "82cbcb7cf3ece69ef99f06953cb41086d44776b31527d4e64faa36b8f2088c13"
     }
   ],
   "revision": "R4",

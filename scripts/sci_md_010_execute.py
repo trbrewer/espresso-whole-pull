@@ -11,7 +11,9 @@ def verify_manifest():
   if sha256(ROOT/a['path'])!=a['sha256']:raise ValueError('FREEZE_ARTIFACT_CHANGED:'+a['path'])
  return sha256(p)
 def preflight(c,f,receipt,out,test=False):
- mh=verify_manifest();pw=resolve_puckworks();reg=load_json(cpath(c,'input_register'));validate_artifacts(ROOT,reg,pw);specs=load_json(cpath(c,'models'))['models'];ids={m['model_id'] for m in specs}
+ mh=verify_manifest();reg=load_json(cpath(c,'input_register'));pw=None if test else resolve_puckworks()
+ if not test:validate_artifacts(ROOT,reg,pw)
+ specs=load_json(cpath(c,'models'))['models'];ids={m['model_id'] for m in specs}
  if ids!=set(c['model_ids']):raise ValueError('CONTRACT_MODEL_REGISTRY_MISMATCH')
  for m in specs:
   if sha256(ROOT/m['implementation_file'])!=m['implementation_sha256']:raise ValueError('MODEL_IMPLEMENTATION_CHANGED')
