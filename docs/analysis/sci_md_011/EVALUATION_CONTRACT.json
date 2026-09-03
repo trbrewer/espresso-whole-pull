@@ -38,8 +38,8 @@
     "optimizer": {
       "bound_hit_log_distance": 1e-05,
       "lattice_points_per_axis": 5,
-      "max_evaluations": 4000,
-      "max_iterations_per_start": 32,
+      "max_evaluations": 40000,
+      "max_iterations_per_start": 256,
       "objective_comparison_tolerance": 1e-14,
       "step_reduction": 0.5,
       "stopping_log_step": 1e-06,
@@ -82,7 +82,7 @@
     "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT"
   ],
   "observation_interface": "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json",
-  "revision": "R1",
+  "revision": "R2",
   "row_index": "docs/analysis/sci_md_010/ANALYSIS_ROW_INDEX.csv",
   "sci_md_010_handoff": "docs/analysis/sci_md_011/SCI_MD_010_HANDOFF.json",
   "task_id": "SCI-MD-011"

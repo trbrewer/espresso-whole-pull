@@ -15,6 +15,14 @@ class TestSciMd011Core(unittest.TestCase):
  def test_nonfinite_optimizer_blocks(self):self.assertEqual(c.fit([],c.P1,lambda x:math.inf)['execution_status'],'BLOCKED')
  def test_optimizer_deterministic(self):
   rows=ex.synthetic_rows('poro')[:12];self.assertEqual(c.fit(rows,c.P1),c.fit(rows,c.P1))
+ def test_optimizer_pass_requires_convergence(self):
+  train=ex.partitions(ex.synthetic_rows('poro'))[0][1];r=c.fit(train,c.P1);self.assertEqual(r['execution_status'],'PASS');self.assertEqual(r['convergence_reason'],'LOG_STEP_TOLERANCE');self.assertTrue(all(x['convergence_status'] in ('CONVERGED','NONFINITE_START') for x in r['start_receipts']));self.assertLessEqual(r['final_step_size'],c.OPT['stopping_log_step'])
+ def test_optimizer_iteration_cap_blocks(self):
+  with mock.patch.dict(c.OPT,{'max_iterations_per_start':1}):r=c.fit(ex.synthetic_rows('poro')[:12],c.P1)
+  self.assertEqual((r['execution_status'],r['failure_class'],r['failure_reason']),('BLOCKED','OPTIMIZER_NONCONVERGENCE','MAX_ITERATIONS_REACHED'))
+ def test_optimizer_evaluation_cap_blocks(self):
+  with mock.patch.dict(c.OPT,{'max_evaluations':26}):r=c.fit(ex.synthetic_rows('poro')[:12],c.P1)
+  self.assertEqual((r['execution_status'],r['failure_class'],r['failure_reason']),('BLOCKED','OPTIMIZER_NONCONVERGENCE','MAX_EVALUATIONS_REACHED'))
  def test_phi_exact(self):self.assertEqual(c.PHI,0.12202109866812735)
  def test_shapes_and_limit(self):
   for x in (0,.1,.4,.9,1):self.assertAlmostEqual(c.integral(x,1e-8)/c.integral(1,1e-8),c.f0(x),7)
@@ -72,7 +80,7 @@ class TestBindings(unittest.TestCase):
   self.assertEqual((r['candidate_real_fits'],r['candidate_real_predictions'],r['candidate_real_scores']),(0,0,0))
 
 class TestReceipts(unittest.TestCase):
- def base(self):return {'task_id':c.TASK,'disposition':ex.PASS,'freeze_commit':c.git(ROOT,'rev-parse','HEAD'),'freeze_tree':c.git(ROOT,'rev-parse','HEAD^{tree}'),'freeze_manifest_sha256':c.sha256(ROOT/'docs/analysis/sci_md_011/FREEZE_ARTIFACT_MANIFEST.json'),'reviewer_identity':'independent-reviewer','review_mode':'EXACT_HEAD_COMMENT','durable_review_url':'https://github.com/trbrewer/espresso-whole-pull/pull/142#issuecomment-1','reviewed_at':'2026-09-03T00:00:00Z','material_findings':[],'phase_b_authorized':True}
+ def base(self):return {'task_id':c.TASK,'disposition':ex.PASS,'freeze_commit':c.git(ROOT,'rev-parse','HEAD'),'freeze_tree':c.git(ROOT,'rev-parse','HEAD^{tree}'),'freeze_manifest_sha256':c.sha256(ROOT/'docs/analysis/sci_md_011/FREEZE_ARTIFACT_MANIFEST.json'),'reviewer_identity':'authenticated-human-reviewer','review_mode':'EXACT_HEAD_COMMENT_FALLBACK_AUTHENTICATED_ACCOUNT_IS_PR_AUTHOR','durable_review_url':'https://github.com/trbrewer/espresso-whole-pull/pull/142#issuecomment-1','reviewed_at':'2026-09-03T00:00:00Z','material_findings':[],'phase_b_authorized':True}
  def check_bad(self,key,value):
   r=self.base();r[key]=value
   with tempfile.NamedTemporaryFile('w',suffix='.json') as f:
@@ -84,22 +92,47 @@ class TestReceipts(unittest.TestCase):
   r=self.base();r['synthetic']=True
   with tempfile.NamedTemporaryFile('w',suffix='.json') as f:
    json.dump(r,f);f.flush()
-   with self.assertRaisesRegex(ValueError,'SYNTHETIC'):ex.verify_receipt(f.name,'real',r['freeze_manifest_sha256'])
+   with self.assertRaises(ValueError):ex.verify_receipt(f.name,'real',r['freeze_manifest_sha256'])
+ def test_table_driven_real_receipts(self):
+  valid=[];comment=self.base();valid.append(comment);formal=self.base();formal['review_mode']='FORMAL_APPROVAL';formal['durable_review_url']='https://github.com/trbrewer/espresso-whole-pull/pull/142#pullrequestreview-2';valid.append(formal)
+  mutations=[lambda r:r.pop('task_id'),lambda r:r.__setitem__('extra',1),lambda r:r.__setitem__('task_id',None),lambda r:r.__setitem__('task_id','SCI-MD-010'),lambda r:r.__setitem__('disposition','BAD'),lambda r:r.__setitem__('freeze_commit','0'*40),lambda r:r.__setitem__('freeze_tree','0'*40),lambda r:r.__setitem__('freeze_manifest_sha256','0'*64),lambda r:r.__setitem__('reviewer_identity',''),lambda r:r.__setitem__('reviewer_identity',' '),lambda r:r.__setitem__('reviewer_identity',1),lambda r:r.__setitem__('review_mode',''),lambda r:r.__setitem__('review_mode','UNKNOWN'),lambda r:r.__setitem__('review_mode',1),lambda r:r.__setitem__('reviewed_at',''),lambda r:r.__setitem__('reviewed_at','bad'),lambda r:r.__setitem__('reviewed_at','2026-09-03T00:00:00-05:00'),lambda r:r.__setitem__('reviewed_at',1),lambda r:r.__setitem__('durable_review_url','https://github.com/trbrewer/espresso-whole-pull/pull/142'),lambda r:r.__setitem__('durable_review_url','https://github.com/trbrewer/espresso-whole-pull/pull/142#arbitrary'),lambda r:r.__setitem__('durable_review_url','https://github.com/trbrewer/espresso-whole-pull/pull/141#issuecomment-1'),lambda r:r.__setitem__('durable_review_url','https://github.com/trbrewer/espresso-whole-pull/pull/142#pullrequestreview-2'),lambda r:r.__setitem__('material_findings',['x']),lambda r:r.__setitem__('material_findings','none'),lambda r:r.__setitem__('phase_b_authorized',False),lambda r:r.__setitem__('phase_b_authorized',1),lambda r:r.__setitem__('synthetic',True),lambda r:r.__setitem__('purpose','SYNTHETIC_TEST_ONLY')]
+  def check(receipt,accept):
+   with tempfile.NamedTemporaryFile('w',suffix='.json') as f:
+    json.dump(receipt,f);f.flush()
+    if accept:ex.verify_receipt(f.name,'real',receipt['freeze_manifest_sha256'])
+    else:
+     with self.assertRaises((ValueError,TypeError)):ex.verify_receipt(f.name,'real',c.sha256(ROOT/'docs/analysis/sci_md_011/FREEZE_ARTIFACT_MANIFEST.json'))
+  for r in valid:check(r,True)
+  for mutate in mutations:r=self.base();mutate(r);check(r,False)
+  for value in (None,[]):
+   with tempfile.NamedTemporaryFile('w',suffix='.json') as f:
+    json.dump(value,f);f.flush()
+    with self.assertRaises(ValueError):ex.verify_receipt(f.name,'real',c.sha256(ROOT/'docs/analysis/sci_md_011/FREEZE_ARTIFACT_MANIFEST.json'))
 
 class TestIntegratedResults(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
   cls.tmp=tempfile.TemporaryDirectory();cls.base=Path(cls.tmp.name);env=os.environ|{'SCI_MD_011_PUCKWORKS_ROOT':str(PW),'PYTHONDONTWRITEBYTECODE':'1'}
   common=[sys.executable,str(ROOT/'scripts/sci_md_011_execute.py'),'--contract',str(ROOT/'docs/analysis/sci_md_011/EVALUATION_CONTRACT.json'),'--freeze',str(ROOT/'docs/analysis/sci_md_011/PRE_SCORE_FREEZE.json'),'--review-receipt',str(ROOT/'tests/fixtures/sci_md_011_synthetic_receipt.json'),'--synthetic-test-mode']
-  for outcome in ('poro','quadratic','blocked'):
+  for outcome in ex.SYNTHETIC_SCENARIOS:
    subprocess.run(common+['--output',str(cls.base/outcome),'--synthetic-outcome',outcome],env=env,check=True)
  @classmethod
  def tearDownClass(cls):cls.tmp.cleanup()
  def test_two_full_outcomes_differ(self):self.assertNotEqual(c.load_json(self.base/'poro/summary.json')['disposition'],c.load_json(self.base/'blocked/summary.json')['disposition'])
  def test_results_validate(self):
-  for x in ('poro','quadratic','blocked'):val.result(self.base/x)
+  for x in ex.SYNTHETIC_SCENARIOS:val.result(self.base/x)
  def test_blocked_complete_package(self):
-  d=c.load_json(self.base/'blocked/ARCHITECTURE_DECISION.json');s=c.load_json(self.base/'blocked/EXECUTION_STATE.json');self.assertEqual(d['scientific_status'],'BLOCKED');self.assertEqual(s['process_status'],'COMPLETE');self.assertEqual(set(ex.RESULT_FILES),{p.name for p in (self.base/'blocked').iterdir() if p.name!='SYNTHETIC_INPUT_ROWS.csv'})
+  d=c.load_json(self.base/'blocked/ARCHITECTURE_DECISION.json');s=c.load_json(self.base/'blocked/EXECUTION_STATE.json');self.assertEqual(d['scientific_status'],'BLOCKED');self.assertEqual(s['process_status'],'COMPLETE');self.assertEqual(set(ex.RESULT_FILES+ex.SYNTHETIC_RESULT_ADDITIONS),{p.name for p in (self.base/'blocked').iterdir()})
+ def test_partial_block_patterns_preserved(self):
+  expected={'one-P1-fold-blocked':{c.P1:1,c.E2C:0},'one-E2C-fold-blocked':{c.P1:0,c.E2C:1},'both-candidates-different-folds-blocked':{c.P1:1,c.E2C:1}}
+  for scenario,counts in expected.items():
+   rows=c.load_csv(self.base/scenario/'FOLD_RESULTS.csv')
+   for model,count in counts.items():self.assertEqual(sum(r['model_id']==model and r['execution_status']=='BLOCKED' for r in rows),count)
+ def test_scored_synthetic_fits_converged(self):
+  for scenario in ('poro','quadratic'):
+   rows=c.load_csv(self.base/scenario/'FOLD_RESULTS.csv')
+   for r in rows:
+    if r['model_id'] in c.CANDIDATES and r['execution_status']=='PASS':self.assertEqual(json.loads(r['fit_receipt'])['convergence_reason'],'LOG_STEP_TOLERANCE')
  def test_blocked_pairs_not_computable(self):self.assertTrue(all(x['status']=='NOT_COMPUTABLE' for x in c.load_json(self.base/'blocked/PAIRWISE_COMPARISONS.json').values()))
  def test_root_failure_writes_complete_block(self):
   rows=ex.synthetic_rows('poro');parts=ex.partitions(rows);base=ex.synthetic_baselines(parts)
@@ -115,8 +148,38 @@ class TestIntegratedResults(unittest.TestCase):
  def test_heldout_target_perturbation(self):
   rows=ex.synthetic_rows();fold,train,test=ex.partitions(rows)[0];a=c.fit(train,c.P1);test[0]['flow_g_s']+=100;b=c.fit(train,c.P1);self.assertEqual(a,b);p=a['fitted_parameters'];self.assertEqual(c.predict(test[0]['line_pressure_bar'],p['Qc_g_s'],p['Pc_bar'],c.P1)[:2],c.predict(test[0]['line_pressure_bar'],p['Qc_g_s'],p['Pc_bar'],c.P1)[:2])
  def test_tamper_regenerated_manifest_fails(self):
-  target=self.base/'tamper';subprocess.run(['cp','-a',str(self.base/'poro'),str(target)],check=True);rows=c.load_csv(target/'BREW_RESULTS.csv');rows[0]['predicted_flow_g_s']=str(float(rows[0]['predicted_flow_g_s'])+.1);c.write_csv(target/'BREW_RESULTS.csv',list(rows[0]),rows);m=c.load_json(target/'RESULT_ARTIFACT_MANIFEST.json');next(x for x in m['artifacts'] if x['path']=='BREW_RESULTS.csv')['sha256']=c.sha256(target/'BREW_RESULTS.csv');c.write_json(target/'RESULT_ARTIFACT_MANIFEST.json',m)
+  target=self.base/'tamper';subprocess.run(['cp','-a',str(self.base/'blocked'),str(target)],check=True);rows=c.load_csv(target/'BREW_RESULTS.csv');rows[0]['predicted_flow_g_s']=str(float(rows[0]['predicted_flow_g_s'])+.1);c.write_csv(target/'BREW_RESULTS.csv',list(rows[0]),rows);m=c.load_json(target/'RESULT_ARTIFACT_MANIFEST.json');next(x for x in m['artifacts'] if x['path']=='BREW_RESULTS.csv')['sha256']=c.sha256(target/'BREW_RESULTS.csv');c.write_json(target/'RESULT_ARTIFACT_MANIFEST.json',m)
   with self.assertRaises(ValueError):val.result(target)
+ def regen_manifest(self,target):
+  files=sorted(p for p in target.iterdir() if p.name!='RESULT_ARTIFACT_MANIFEST.json');c.write_json(target/'RESULT_ARTIFACT_MANIFEST.json',{'task_id':c.TASK,'artifacts':[{'path':p.name,'sha256':c.sha256(p)} for p in files]})
+ def test_every_payload_tamper_rejected_after_manifest_regeneration(self):
+  for name in ex.REQUIRED_RESULT_PAYLOAD_FILES+ex.SYNTHETIC_RESULT_ADDITIONS:
+   with tempfile.TemporaryDirectory() as td:
+    target=Path(td)/'result';subprocess.run(['cp','-a',str(self.base/'blocked'),str(target)],check=True);p=target/name;p.write_bytes(p.read_bytes()+b' ');self.regen_manifest(target)
+    with self.assertRaises(Exception,msg=name):val.result(target)
+ def test_manifest_structure_and_file_set_rejections(self):
+  for kind in ('missing','extra','duplicate','traversal'):
+   with tempfile.TemporaryDirectory() as td:
+    target=Path(td)/'result';subprocess.run(['cp','-a',str(self.base/'blocked'),str(target)],check=True);m=c.load_json(target/'RESULT_ARTIFACT_MANIFEST.json')
+    if kind=='missing':(target/'RUN_RECEIPT.json').unlink();m['artifacts']=[a for a in m['artifacts'] if a['path']!='RUN_RECEIPT.json']
+    elif kind=='extra':(target/'EXTRA.txt').write_text('x')
+    elif kind=='duplicate':m['artifacts'].append(dict(m['artifacts'][0]))
+    else:m['artifacts'].append({'path':'../escape','sha256':'0'*64})
+    c.write_json(target/'RESULT_ARTIFACT_MANIFEST.json',m)
+    with self.assertRaises(ValueError,msg=kind):val.result(target)
+ def test_run_receipt_and_markdown_claim_tamper_rejected(self):
+  for name in ('RUN_RECEIPT.json','RESULTS_SUMMARY.md','RESULT.md'):
+   with tempfile.TemporaryDirectory() as td:
+    target=Path(td)/'result';subprocess.run(['cp','-a',str(self.base/'blocked'),str(target)],check=True);p=target/name
+    if name.endswith('.json'):
+     r=c.load_json(p);r['stage_f_authorized']=True;c.write_json(p,r)
+    else:p.write_text(p.read_text().replace('Stage F/D: NOT_AUTHORIZED','Stage F/D: AUTHORIZED'))
+    self.regen_manifest(target)
+    with self.assertRaises(ValueError,msg=name):val.result(target)
+ def test_altered_blocked_fold_identity_rejected(self):
+  with tempfile.TemporaryDirectory() as td:
+   target=Path(td)/'result';subprocess.run(['cp','-a',str(self.base/'one-P1-fold-blocked'),str(target)],check=True);rows=c.load_csv(target/'FOLD_RESULTS.csv');next(r for r in rows if r['execution_status']=='BLOCKED')['outer_fold']='HYD-LOCO-13.0';c.write_csv(target/'FOLD_RESULTS.csv',list(rows[0]),rows);self.regen_manifest(target)
+   with self.assertRaises(ValueError):val.result(target)
  def test_duplicate_guard(self):
   self.assertTrue(any((self.base/'poro').iterdir()))
  def calculated_fixture(self,case,out):

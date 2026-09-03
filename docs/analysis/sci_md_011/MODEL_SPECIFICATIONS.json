@@ -54,8 +54,8 @@
   "optimizer": {
     "bound_hit_log_distance": 1e-05,
     "lattice_points_per_axis": 5,
-    "max_evaluations": 4000,
-    "max_iterations_per_start": 32,
+    "max_evaluations": 40000,
+    "max_iterations_per_start": 256,
     "objective_comparison_tolerance": 1e-14,
     "step_reduction": 0.5,
     "stopping_log_step": 1e-06,
@@ -71,6 +71,6 @@
     "broad deterministic numerical feasibility; invalid combinations receive infinite objective"
   ],
   "physical_parameter_claim": "effective predictive Qc/Pc only; k0,rho,A,h,mu,Y,Phi and wet permeability not identified",
-  "revision": "R1",
+  "revision": "R2",
   "task_id": "SCI-MD-011"
 }

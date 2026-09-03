@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Independent deterministic SCI-MD-011 freeze/result reproduction validator."""
-import argparse, csv, hashlib, json, math, os, sys, tempfile
+"""Independent deterministic SCI-MD-011 R2 freeze/result reproduction validator."""
+import argparse, csv, hashlib, json, math, os, re, sys, tempfile
 from pathlib import Path
 from sci_md_011_core import *
 import sci_md_011_execute as ex
@@ -18,7 +18,7 @@ def verify_oracle():
  if ma!=rec['maximum_absolute_error'] or mr!=rec['maximum_relative_error'] or not rec['pass'] or ma>rec['absolute_tolerance'] or mr>rec['relative_tolerance']:raise ValueError('ORACLE_SUMMARY_RECOMPUTATION_FAILED')
 def freeze():
  f=load_json(D/'PRE_SCORE_FREEZE.json')
- if f['task_id']!=TASK or f['revision']!='R1' or f['supersedes_freeze_commit']!='5c252033bcdd40d46dc4cc457e571aa729a8d1cc' or f['scoring_executed'] or f['phase_b_authorized'] or tuple(f['selected_models'])!=MODELS or f['parameter_bounds']!=BOUNDS:raise ValueError('FREEZE_FLAGS')
+ if f['task_id']!=TASK or f['revision']!='R2' or f['supersedes_freeze_commit']!='5944c597a3208a606a93b0f51e4394adf11488ec' or f['scoring_executed'] or f['phase_b_authorized'] or not f['review_required'] or tuple(f['selected_models'])!=MODELS or f['parameter_bounds']!=BOUNDS:raise ValueError('FREEZE_FLAGS')
  ex.verify_manifest();ex.verify_handoff();ex.verify_production();verify_oracle()
  if load_json(ROOT/'dependencies/puckworks.lock.json')['checkout_commit']!='fc61c4670ec7bf801e40bb391aab16048b8da26b':raise ValueError('LOCK')
  return len(load_json(D/'FREEZE_ARTIFACT_MANIFEST.json')['artifacts'])
@@ -39,6 +39,25 @@ def compare_value(a,b,path='root'):
 def compare_csv(a,b):
  x=load_csv(a);y=load_csv(b)
  if x!=y:raise ValueError('RESULT_CSV_RECOMPUTATION_MISMATCH:'+a.name)
+def verify_result_manifest(result_dir,synthetic):
+ if result_dir.is_symlink():raise ValueError('RESULT_DIRECTORY_SYMLINK')
+ manifest=load_json(result_dir/'RESULT_ARTIFACT_MANIFEST.json')
+ if not isinstance(manifest,dict) or set(manifest)!= {'task_id','artifacts'} or manifest['task_id']!=TASK or not isinstance(manifest['artifacts'],list):raise ValueError('RESULT_MANIFEST_SCHEMA')
+ expected=set(ex.REQUIRED_RESULT_PAYLOAD_FILES+(ex.SYNTHETIC_RESULT_ADDITIONS if synthetic else ()))
+ entries=manifest['artifacts'];paths=[]
+ for a in entries:
+  if not isinstance(a,dict) or set(a)!= {'path','sha256'} or type(a['path']) is not str or not re.fullmatch(r'[0-9a-f]{64}',a['sha256']):raise ValueError('RESULT_MANIFEST_ENTRY')
+  p=Path(a['path'])
+  if p.is_absolute() or '..' in p.parts or len(p.parts)!=1 or a['path']=='RESULT_ARTIFACT_MANIFEST.json':raise ValueError('RESULT_MANIFEST_PATH')
+  q=result_dir/p
+  if q.is_symlink() or not q.is_file() or q.resolve().parent!=result_dir.resolve():raise ValueError('RESULT_MANIFEST_TARGET')
+  paths.append(a['path'])
+ if len(paths)!=len(set(paths)) or set(paths)!=expected:raise ValueError('RESULT_MANIFEST_FILE_SET')
+ actual={p.name for p in result_dir.iterdir()}
+ if actual!=expected|{'RESULT_ARTIFACT_MANIFEST.json'}:raise ValueError('RESULT_DIRECTORY_FILE_SET')
+ for a in entries:
+  if sha256(result_dir/a['path'])!=a['sha256']:raise ValueError('RESULT_MANIFEST_HASH:'+a['path'])
+ return manifest
 def independent_derived(records):
  """Recalculate metrics/diagnostics/decisions without trusting result fields."""
  brew=[x for r in records for x in r['brew_rows']];diag={};aggregates=[]
@@ -67,29 +86,27 @@ def independent_derived(records):
  ci=None if comparisons['P1_VS_E2C']['status']!='COMPLETE' else comparisons['P1_VS_E2C']['full_domain_interval'];complexity=complexity_status(ci);disp,arch=overall(statuses,complexity)
  return brew,diag,aggregates,comparisons,{'disposition':disp,'architecture':arch,'candidate_status':statuses,'finite_vs_universal':complexity,'process_status':'COMPLETE','scientific_status':'BLOCKED' if 'BLOCKED' in statuses.values() else 'SCORED','current_full_ewp':'NOT_VALIDATED','physical_validation':'NOT_ESTABLISHED'},experiment_consequence(arch)
 def result(result_dir):
- manifest=load_json(result_dir/'RESULT_ARTIFACT_MANIFEST.json')
- for a in manifest['artifacts']:
-  if sha256(result_dir/a['path'])!=a['sha256']:raise ValueError('RESULT_MANIFEST_HASH:'+a['path'])
- state=load_json(result_dir/'EXECUTION_STATE.json');synthetic=state['synthetic'];mh=sha256(D/'FREEZE_ARTIFACT_MANIFEST.json');review=load_json(result_dir/'PHASE_B_REVIEW_RECEIPT.json')
+ state=load_json(result_dir/'EXECUTION_STATE.json');synthetic=state.get('synthetic');
+ if type(synthetic) is not bool:raise ValueError('RESULT_MODE_INVALID')
+ verify_result_manifest(result_dir,synthetic);mh=sha256(D/'FREEZE_ARTIFACT_MANIFEST.json');review=ex.verify_receipt(result_dir/'PHASE_B_REVIEW_RECEIPT.json','synthetic' if synthetic else 'real',mh)
  if synthetic:
-  rows=[dict(r,line_pressure_bar=float(r['line_pressure_bar']),flow_g_s=float(r['flow_g_s'])) for r in load_csv(result_dir/'SYNTHETIC_INPUT_ROWS.csv')];parts=ex.partitions(rows);base=ex.synthetic_baselines(parts)
-  blocked=load_json(result_dir/'ARCHITECTURE_DECISION.json')['scientific_status']=='BLOCKED'
-  fit_fn=(lambda train,m:{'execution_status':'BLOCKED','failure_class':'FIT_FAILURE','failure_reason':'SYNTHETIC_FORCED_BLOCK','optimizer_status':'FAIL','prediction_status':'NOT_ATTEMPTED','fitted_parameters':None,'objective':None,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':25,'identifiability':'EXECUTION_BLOCKED'}) if blocked else fit
-  records=base+ex.execute_candidates(parts,fit_fn)
+  scenario_record=load_json(result_dir/'SYNTHETIC_SCENARIO.json')
+  if not isinstance(scenario_record,dict) or scenario_record!={'task_id':TASK,'revision':REVISION,'synthetic_scenario':state.get('synthetic_scenario'),'test_only':True}:raise ValueError('SYNTHETIC_SCENARIO_RECORD')
+  scenario=state['synthetic_scenario']
+  if scenario not in ex.SYNTHETIC_SCENARIOS:raise ValueError('SYNTHETIC_SCENARIO_INVALID')
+  kind=scenario if scenario in ('poro','quadratic','turnover','blocked') else 'poro';rows=ex.synthetic_rows(kind);parts=ex.partitions(rows);base=ex.synthetic_baselines(parts);records=base+ex.execute_candidates(parts,failure_plan=ex.synthetic_failure_plan(scenario,parts))
  else:
-  pw=ex.resolve_puckworks();ex.verify_receipt(result_dir/'PHASE_B_REVIEW_RECEIPT.json','real',mh);rows=ex.load_real_rows(pw);parts=ex.partitions(rows);records=ex.accepted_baselines(parts)+ex.execute_candidates(parts)
+  if 'synthetic_scenario' in state:raise ValueError('REAL_RESULT_HAS_SYNTHETIC_SCENARIO')
+  pw=ex.resolve_puckworks();rows=ex.load_real_rows(pw);parts=ex.partitions(rows);records=ex.accepted_baselines(parts)+ex.execute_candidates(parts)
  recomputed_brew,recomputed_diag,recomputed_agg,recomputed_pairs,recomputed_decision,recomputed_experiment=independent_derived(records)
  compare_value(load_json(result_dir/'PRESSURE_RESPONSE_DIAGNOSTICS.json'),recomputed_diag,'PRESSURE_RESPONSE_DIAGNOSTICS.json')
  compare_value(load_json(result_dir/'PAIRWISE_COMPARISONS.json'),recomputed_pairs,'PAIRWISE_COMPARISONS.json')
  compare_value(load_json(result_dir/'ARCHITECTURE_DECISION.json'),recomputed_decision,'ARCHITECTURE_DECISION.json')
  compare_value(load_json(result_dir/'EXPERIMENT_CONSEQUENCE.json'),recomputed_experiment,'EXPERIMENT_CONSEQUENCE.json')
  with tempfile.TemporaryDirectory() as td:
-  expected=Path(td);ex.write_result(expected,records,mh,review,synthetic,rows if synthetic else None)
-  csvs=('BREW_RESULTS.csv','FOLD_RESULTS.csv','CONDITION_RESULTS.csv','AGGREGATE_RESULTS.csv','PARAMETER_STABILITY.csv','MODEL_UTILITY_SCORECARD.csv')
-  jsons=('PAIRWISE_COMPARISONS.json','IDENTIFIABILITY_RESULTS.json','PRESSURE_RESPONSE_DIAGNOSTICS.json','UNCERTAINTY_RESULTS.json','ARCHITECTURE_DECISION.json','EXPERIMENT_CONSEQUENCE.json','summary.json','EXECUTION_STATE.json')
-  for n in csvs:compare_csv(result_dir/n,expected/n)
-  for n in jsons:compare_value(load_json(result_dir/n),load_json(expected/n),n)
-  if (result_dir/'RESULT.md').read_text()!=(expected/'RESULT.md').read_text():raise ValueError('RESULT_MD_RECOMPUTATION_MISMATCH')
+  expected=Path(td);ex.write_result(expected,records,mh,review,synthetic,rows if synthetic else None,state.get('synthetic_scenario'))
+  for n in sorted(p.name for p in expected.iterdir()):
+   if (result_dir/n).read_bytes()!=(expected/n).read_bytes():raise ValueError('RESULT_BYTE_RECOMPUTATION_MISMATCH:'+n)
  s=load_json(result_dir/'summary.json')
  if s['current_full_ewp_validated'] or s['stage_f_authorized'] or s['stage_d_authorized'] or s['physical_validation']!='NOT_ESTABLISHED':raise ValueError('CLAIM_BOUNDARY')
  return len(load_csv(result_dir/'BREW_RESULTS.csv'))

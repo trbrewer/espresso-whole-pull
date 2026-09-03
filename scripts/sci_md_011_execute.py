@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
-"""SCI-MD-011 R1: metadata preflight, synthetic execution, or reviewed real execution."""
+"""SCI-MD-011 R2: metadata preflight, synthetic execution, or reviewed real execution."""
 import argparse, json, math, os, re
+from datetime import datetime, timezone
 from pathlib import Path
 from sci_md_011_core import *
 ROOT=Path(__file__).resolve().parents[1]; D=ROOT/'docs/analysis/sci_md_011'; S10=ROOT/'docs/analysis/sci_md_010'
 PW_COMMIT='2058d0e947ee9eb92c52d64f6165b810f1fb4732'; PW_TREE='a6ffb312473b15be43c1571a893b19873ea47c5a'
 PASS='SCI_MD_011_PRE_SCORE_FREEZE_SINGLE_INDEPENDENT_REVIEW_PASS_READY_FOR_EXECUTION'
-RESULT_FILES=('PHASE_B_REVIEW_RECEIPT.json','EXECUTION_STATE.json','RUN_RECEIPT.json','BREW_RESULTS.csv','FOLD_RESULTS.csv','CONDITION_RESULTS.csv','AGGREGATE_RESULTS.csv','PAIRWISE_COMPARISONS.json','PARAMETER_STABILITY.csv','IDENTIFIABILITY_RESULTS.json','PRESSURE_RESPONSE_DIAGNOSTICS.json','UNCERTAINTY_RESULTS.json','MODEL_UTILITY_SCORECARD.csv','ARCHITECTURE_DECISION.json','EXPERIMENT_CONSEQUENCE.json','RESULTS_SUMMARY.md','RESULT.md','summary.json','RESULT_ARTIFACT_MANIFEST.json')
+REQUIRED_RESULT_PAYLOAD_FILES=('PHASE_B_REVIEW_RECEIPT.json','EXECUTION_STATE.json','RUN_RECEIPT.json','BREW_RESULTS.csv','FOLD_RESULTS.csv','CONDITION_RESULTS.csv','AGGREGATE_RESULTS.csv','PAIRWISE_COMPARISONS.json','PARAMETER_STABILITY.csv','IDENTIFIABILITY_RESULTS.json','PRESSURE_RESPONSE_DIAGNOSTICS.json','UNCERTAINTY_RESULTS.json','MODEL_UTILITY_SCORECARD.csv','ARCHITECTURE_DECISION.json','EXPERIMENT_CONSEQUENCE.json','RESULTS_SUMMARY.md','RESULT.md','summary.json')
+SYNTHETIC_RESULT_ADDITIONS=('SYNTHETIC_INPUT_ROWS.csv','SYNTHETIC_SCENARIO.json')
+RESULT_FILES=REQUIRED_RESULT_PAYLOAD_FILES+('RESULT_ARTIFACT_MANIFEST.json',)
+REAL_RECEIPT_FIELDS=('task_id','disposition','freeze_commit','freeze_tree','freeze_manifest_sha256','reviewer_identity','review_mode','durable_review_url','reviewed_at','material_findings','phase_b_authorized')
+REVIEW_MODES=('FORMAL_APPROVAL','EXACT_HEAD_COMMENT_FALLBACK_AUTHENTICATED_ACCOUNT_IS_PR_AUTHOR')
+SYNTHETIC_SCENARIOS=('poro','quadratic','turnover','blocked','one-P1-fold-blocked','one-E2C-fold-blocked','both-candidates-different-folds-blocked')
 
 def verify_manifest():
  m=load_json(D/'FREEZE_ARTIFACT_MANIFEST.json');hs=[]
@@ -49,16 +55,29 @@ def verify_contract(contract,freeze,require_puckworks=True):
  return mh,pw
 def verify_receipt(path,mode,mh):
  r=load_json(path)
+ if not isinstance(r,dict):raise ValueError('REVIEW_RECEIPT_OBJECT_REQUIRED')
  if mode in ('synthetic','preflight'):
-  if r.get('purpose') not in ('SYNTHETIC_TEST_ONLY','REAL_BINDING_PREFLIGHT_ONLY') and r.get('synthetic') is not True:raise ValueError('PURPOSE_LIMITED_RECEIPT_REQUIRED')
+  if r.get('task_id')!=TASK or r.get('synthetic') is not True or r.get('phase_b_authorized') is not False:raise ValueError('PURPOSE_LIMITED_RECEIPT_REQUIRED')
   return r
- required=('task_id','disposition','freeze_commit','freeze_tree','freeze_manifest_sha256','reviewer_identity','review_mode','durable_review_url','reviewed_at','material_findings','phase_b_authorized')
- if any(k not in r for k in required):raise ValueError('REVIEW_RECEIPT_SCHEMA')
- if r['task_id']!=TASK or r['disposition']!=PASS or r['phase_b_authorized'] is not True:raise ValueError('PHASE_B_UNAUTHORIZED')
- if r.get('synthetic') is True:raise ValueError('SYNTHETIC_RECEIPT_REJECTED_REAL_MODE')
- if not r['reviewer_identity'] or r['material_findings'] not in ([],{},'',None,'none','NONE'):raise ValueError('REVIEWER_OR_FINDINGS_INVALID')
+ if set(r)!=set(REAL_RECEIPT_FIELDS):raise ValueError('REVIEW_RECEIPT_SCHEMA')
+ string_fields=REAL_RECEIPT_FIELDS[:9]
+ if any(type(r[k]) is not str for k in string_fields):raise ValueError('REVIEW_RECEIPT_STRING_TYPES')
+ if r['task_id']!=TASK or r['disposition']!=PASS or type(r['phase_b_authorized']) is not bool or r['phase_b_authorized'] is not True:raise ValueError('PHASE_B_UNAUTHORIZED')
+ if type(r['material_findings']) is not list or r['material_findings']!=[]:raise ValueError('MATERIAL_FINDINGS_INVALID')
+ identity=r['reviewer_identity']
+ if not identity or identity!=identity.strip() or identity.lower() in {'reviewer','independent-reviewer','unknown','none','test'}:raise ValueError('REVIEWER_IDENTITY_INVALID')
+ review_mode=r['review_mode']
+ if review_mode not in REVIEW_MODES or review_mode!=review_mode.strip():raise ValueError('REVIEW_MODE_INVALID')
+ reviewed_at=r['reviewed_at']
+ if not re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z',reviewed_at):raise ValueError('REVIEW_TIME_INVALID')
+ try: parsed=datetime.fromisoformat(reviewed_at[:-1]+'+00:00')
+ except ValueError as e:raise ValueError('REVIEW_TIME_INVALID') from e
+ if parsed.tzinfo!=timezone.utc:raise ValueError('REVIEW_TIME_NOT_UTC')
+ if not re.fullmatch(r'[0-9a-f]{40}',r['freeze_commit']) or not re.fullmatch(r'[0-9a-f]{40}',r['freeze_tree']) or not re.fullmatch(r'[0-9a-f]{64}',r['freeze_manifest_sha256']):raise ValueError('REVIEW_IDENTIFIER_FORMAT')
  if r['freeze_commit']!=git(ROOT,'rev-parse','HEAD') or r['freeze_tree']!=git(ROOT,'rev-parse','HEAD^{tree}') or r['freeze_manifest_sha256']!=mh:raise ValueError('REVIEW_EXACT_FREEZE_MISMATCH')
- if not re.fullmatch(r'https://github\.com/trbrewer/espresso-whole-pull/(pull/142(?:#.*)?|pull/142/reviews/\d+)',r['durable_review_url']):raise ValueError('REVIEW_URL_NOT_PR_142')
+ comment=re.fullmatch(r'https://github\.com/trbrewer/espresso-whole-pull/pull/142#issuecomment-([1-9]\d*)',r['durable_review_url'])
+ formal=re.fullmatch(r'https://github\.com/trbrewer/espresso-whole-pull/pull/142(?:#pullrequestreview-([1-9]\d*)|/reviews/([1-9]\d*))',r['durable_review_url'])
+ if (review_mode==REVIEW_MODES[1] and not comment) or (review_mode==REVIEW_MODES[0] and not formal):raise ValueError('REVIEW_MODE_URL_MISMATCH')
  return r
 
 def input_artifacts():
@@ -144,7 +163,17 @@ def fold_record(fold,train,test,model,pars,scale,rows=None,accepted=False,fitrec
  return base
 def blocked_fold(fold,train,test,model,scale,fitrec,reason=None,failure_class=None):
  return {'outer_fold':fold['outer_fold'],'evaluation_condition_id':fold['group_id'],'model_id':model,'training_condition_ids':fold['training_groups'],'training_physical_unit_ids':';'.join(x['physical_unit_id'] for x in train),'evaluation_physical_unit_ids':';'.join(x['physical_unit_id'] for x in test),'training_scale_g_s':scale,'execution_status':'BLOCKED','failure_class':failure_class or fitrec.get('failure_class','EXECUTION_FAILURE'),'failure_reason':reason or fitrec.get('failure_reason','UNKNOWN'),'optimizer_status':fitrec.get('optimizer_status','FAIL'),'prediction_status':'FAIL','root_failure_count':fitrec.get('root_failure_count',0),'domain_failure_count':fitrec.get('domain_failure_count',0),'nonfinite_count':fitrec.get('nonfinite_count',0),'fitted_parameters':fitrec.get('fitted_parameters'),'rmse_g_s':None,'normalized_loss':None,'identifiability':'EXECUTION_BLOCKED','fit_receipt':fitrec,'brew_rows':[]}
-def execute_candidates(parts,fit_fn=fit):
+def forced_block_receipt(reason='SYNTHETIC_FORCED_BLOCK'):
+ return {'execution_status':'BLOCKED','failure_class':'FIT_FAILURE','failure_reason':reason,'optimizer_status':'FAIL','prediction_status':'NOT_ATTEMPTED','fitted_parameters':None,'objective':None,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':25,'identifiability':'EXECUTION_BLOCKED','start_receipts':[],'optimizer_objective_evaluations':0,'identifiability_objective_evaluations':0,'total_objective_evaluations':0}
+def synthetic_failure_plan(scenario,parts):
+ if scenario not in SYNTHETIC_SCENARIOS:raise ValueError('UNKNOWN_SYNTHETIC_SCENARIO')
+ folds=[x[0]['outer_fold'] for x in parts]
+ if scenario=='blocked':return {(f,m):'SYNTHETIC_ALL_CANDIDATE_FOLDS_BLOCKED' for f in folds for m in CANDIDATES}
+ if scenario=='one-P1-fold-blocked':return {(folds[0],P1):'SYNTHETIC_ONE_P1_FOLD_BLOCKED'}
+ if scenario=='one-E2C-fold-blocked':return {(folds[0],E2C):'SYNTHETIC_ONE_E2C_FOLD_BLOCKED'}
+ if scenario=='both-candidates-different-folds-blocked':return {(folds[0],P1):'SYNTHETIC_P1_FOLD_BLOCKED',(folds[1],E2C):'SYNTHETIC_E2C_DIFFERENT_FOLD_BLOCKED'}
+ return {}
+def execute_candidates(parts,fit_fn=fit,failure_plan=None):
  out=[]
  for fold,train,test in parts:
   try:scale=training_scale(train)
@@ -152,7 +181,7 @@ def execute_candidates(parts,fit_fn=fit):
    for m in CANDIDATES:out.append(blocked_fold(fold,train,test,m,None,{},str(e),'TRAINING_SCALE_FAILURE'))
    continue
   for m in CANDIDATES:
-   rec=fit_fn(train,m)
+   reason=(failure_plan or {}).get((fold['outer_fold'],m));rec=forced_block_receipt(reason) if reason else fit_fn(train,m)
    if rec['execution_status']!='PASS':out.append(blocked_fold(fold,train,test,m,scale,rec));continue
    try:out.append(fold_record(fold,train,test,m,rec['fitted_parameters'],scale,fitrec=rec))
    except ValueError as e:
@@ -207,7 +236,7 @@ def decisions(records,pairs,diag):
  for m,key in ((P1,'B1_VS_P1'),(E2C,'B1_VS_E2C')):
   blocked=any(r['model_id']==m and r['execution_status']!='PASS' for r in records);ci=None if pairs[key]['status']!='COMPLETE' else pairs[key]['full_domain_interval'];statuses[m]=candidate_status(ci or (0,0),diag[m] if diag[m]['status']=='COMPLETE' else {'low_direction_ok':False,'high_direction_ok':False},blocked)
  ci=None if pairs['P1_VS_E2C']['status']!='COMPLETE' else pairs['P1_VS_E2C']['full_domain_interval'];complexity=complexity_status(ci);disp,arch=overall(statuses,complexity);return statuses,complexity,disp,arch
-def write_result(out,records,mh,review,synthetic,input_rows=None):
+def write_result(out,records,mh,review,synthetic,input_rows=None,synthetic_scenario=None):
  out.mkdir(parents=True,exist_ok=True);brew=[x for r in records for x in r['brew_rows']];diag=diagnostics(records);agg=aggregate(records,diag);pairs=comparisons(records,brew,agg,diag);statuses,complexity,disp,arch=decisions(records,pairs,diag);blocked=any(x=='BLOCKED' for x in statuses.values());scientific='BLOCKED' if blocked else 'SCORED'
  ff=[]
  for r in records:
@@ -215,18 +244,26 @@ def write_result(out,records,mh,review,synthetic,input_rows=None):
  bf=('outer_fold','model_id','source_row_id','physical_unit_id','condition_id','line_pressure_bar','observed_flow_g_s','predicted_flow_g_s','predicted_basket_pressure_bar','coupled_equation_residual_bar','error_g_s','squared_error_g_s2','training_scale_g_s');write_csv(out/'BREW_RESULTS.csv',bf,brew);write_csv(out/'FOLD_RESULTS.csv',list(ff[0]),ff)
  cond=[{'condition_id':x['condition_id'],'model_id':m,'line_pressure_bar':x['line_pressure_bar'],'observed_flow_g_s':x['observed_flow_g_s'],'predicted_flow_g_s':x['predicted_flow_g_s'],'signed_bias_g_s':x['signed_bias_g_s']} for m,d in diag.items() if d['status']=='COMPLETE' for x in d['condition_means']];write_csv(out/'CONDITION_RESULTS.csv',['condition_id','model_id','line_pressure_bar','observed_flow_g_s','predicted_flow_g_s','signed_bias_g_s'],cond);write_csv(out/'AGGREGATE_RESULTS.csv',list(agg[0]),agg);write_json(out/'PAIRWISE_COMPARISONS.json',pairs);write_json(out/'UNCERTAINTY_RESULTS.json',{'bootstrap_count':BOOTSTRAPS,'seed':SEED,'bootstrap_refit':False,'unit':'condition_then_paired_brew','comparisons':pairs});write_json(out/'PRESSURE_RESPONSE_DIAGNOSTICS.json',diag)
  ps=[{'outer_fold':r['outer_fold'],'model_id':r['model_id'],'execution_status':r['execution_status'],'Qc_g_s':'' if not r['fitted_parameters'] else r['fitted_parameters'].get('Qc_g_s',''),'Pc_bar':'' if not r['fitted_parameters'] else r['fitted_parameters'].get('Pc_bar',''),'bound_proximity':r['fit_receipt'].get('bound_proximity',''),'identifiability':r['identifiability']} for r in records if r['model_id'] in CANDIDATES];write_csv(out/'PARAMETER_STABILITY.csv',list(ps[0]),ps);write_json(out/'IDENTIFIABILITY_RESULTS.json',{'scope':'effective predictive Qc/Pc only; no constituent physical parameters identified','folds':{r['outer_fold']+'|'+r['model_id']:{'classification':r['identifiability'],'diagnostics':r['fit_receipt'].get('identifiability_diagnostics',{}),'bound_proximity':r['fit_receipt'].get('bound_proximity')} for r in records if r['model_id'] in CANDIDATES}});write_csv(out/'MODEL_UTILITY_SCORECARD.csv',list(agg[0]),agg)
- decision={'disposition':disp,'architecture':arch,'candidate_status':statuses,'finite_vs_universal':complexity,'process_status':'COMPLETE','scientific_status':scientific,'current_full_ewp':'NOT_VALIDATED','physical_validation':'NOT_ESTABLISHED'};exp=experiment_consequence(arch);write_json(out/'ARCHITECTURE_DECISION.json',decision);write_json(out/'EXPERIMENT_CONSEQUENCE.json',exp);write_json(out/'PHASE_B_REVIEW_RECEIPT.json',review);state={'process_status':'COMPLETE','scientific_status':scientific,'synthetic':synthetic,'scoring_executed':not synthetic,'real_candidate_fits_generated':not synthetic,'real_candidate_predictions_generated':not synthetic and not blocked,'real_candidate_scores_generated':not synthetic and not blocked,'current_full_ewp_validated':False,'stage_f_authorized':False,'stage_d_authorized':False};write_json(out/'EXECUTION_STATE.json',state);write_json(out/'RUN_RECEIPT.json',{'task_id':TASK,'revision':REVISION,'freeze_manifest_sha256':mh,'single_unchanged_scientific_configuration':True,**state});summary={'disposition':disp,'architecture':arch,'candidate_status':statuses,'finite_vs_universal':complexity,'current_full_ewp_validated':False,'stage_f_authorized':False,'stage_d_authorized':False,'physical_validation':'NOT_ESTABLISHED','synthetic':synthetic};write_json(out/'summary.json',summary)
- lines=['# SCI-MD-011 '+('synthetic ' if synthetic else '')+'result','',f'`{disp}`','',f'Architecture: `{arch}`. Scientific status: `{scientific}`.','', 'Authority: SCI-MD-010 frozen 56-brew, 11-condition observation interface; Puckworks analysis commit '+PW_COMMIT+'. The source 60-brew full-data calibration is context only.','', 'Models: immutable B0/B1 baselines, universal P1, and fixed-Phi E2C. Candidate fits estimate effective positive Qc/Pc only. The production-equivalent closure uses the SCI-MD-010 quadratic adapter, not the production machine boundary.','', 'Aggregate results:']+[f"- {r['model_id']}: {r['normalized_loss'] if r['normalized_loss']!='' else 'NOT_COMPUTABLE'}" for r in agg]+['','Pairwise comparisons:']+[f"- {k}: {v['status']} delta={v['point_delta']} interval={v['full_domain_interval']}" for k,v in pairs.items()]+['','Every fold, failure, diagnostic, parameter, and identifiability receipt is retained in the machine-readable package. P1/E2C are monotone saturating forms and do not contain turnover physics.','',f"Experiment consequence: `{exp['action']}`.",'','Current full EWP: NOT_VALIDATED. Physical validation: NOT_ESTABLISHED. Stage F/D: NOT_AUTHORIZED.'];text='\n'.join(lines)+'\n';(out/'RESULTS_SUMMARY.md').write_text(text);(out/'RESULT.md').write_text(text)
- if synthetic and input_rows is not None:write_csv(out/'SYNTHETIC_INPUT_ROWS.csv',['source_row_id','physical_unit_id','condition_id','line_pressure_bar','flow_g_s'],input_rows)
+ decision={'disposition':disp,'architecture':arch,'candidate_status':statuses,'finite_vs_universal':complexity,'process_status':'COMPLETE','scientific_status':scientific,'current_full_ewp':'NOT_VALIDATED','physical_validation':'NOT_ESTABLISHED'};exp=experiment_consequence(arch);write_json(out/'ARCHITECTURE_DECISION.json',decision);write_json(out/'EXPERIMENT_CONSEQUENCE.json',exp);write_json(out/'PHASE_B_REVIEW_RECEIPT.json',review)
+ candidate_records=[r for r in records if r['model_id'] in CANDIDATES];passed=[r for r in candidate_records if r['execution_status']=='PASS'];real_fit_started=not synthetic and any(r['fit_receipt'].get('optimizer_objective_evaluations',0)>0 for r in candidate_records);real_complete=not synthetic and len(passed)==len(candidate_records)
+ state={'process_status':'COMPLETE','scientific_status':scientific,'synthetic':synthetic,'scoring_executed':not synthetic,'real_candidate_fits_generated':real_fit_started,'real_candidate_predictions_generated':real_complete,'real_candidate_scores_generated':real_complete,'current_full_ewp_validated':False,'physical_validation':'NOT_ESTABLISHED','stage_f_authorized':False,'stage_d_authorized':False,'m01_adjudicated':False}
+ if synthetic:state['synthetic_scenario']=synthetic_scenario
+ write_json(out/'EXECUTION_STATE.json',state);run={'task_id':TASK,'revision':REVISION,'execution_mode':'synthetic' if synthetic else 'real','freeze_commit':git(ROOT,'rev-parse','HEAD'),'freeze_tree':git(ROOT,'rev-parse','HEAD^{tree}'),'freeze_manifest_sha256':mh,'synthetic_scenario':synthetic_scenario if synthetic else None,'single_unchanged_scientific_configuration':True,**state};write_json(out/'RUN_RECEIPT.json',run);summary={'disposition':disp,'architecture':arch,'candidate_status':statuses,'finite_vs_universal':complexity,'current_full_ewp_validated':False,'stage_f_authorized':False,'stage_d_authorized':False,'m01_adjudicated':False,'physical_validation':'NOT_ESTABLISHED','synthetic':synthetic};write_json(out/'summary.json',summary)
+ lines=['# SCI-MD-011 '+('synthetic ' if synthetic else '')+'result','',f'`{disp}`','',f'Architecture: `{arch}`. Scientific status: `{scientific}`.','', 'Authority: SCI-MD-010 frozen 56-brew, 11-condition observation interface; Puckworks analysis commit '+PW_COMMIT+'. The source 60-brew full-data calibration is context only.','', 'Models: immutable B0/B1 baselines, universal P1, and fixed-Phi E2C. Candidate fits estimate effective positive Qc/Pc only. The production-equivalent closure uses the SCI-MD-010 quadratic adapter, not the production machine boundary.','', 'Aggregate results:']+[f"- {r['model_id']}: {r['normalized_loss'] if r['normalized_loss']!='' else 'NOT_COMPUTABLE'}" for r in agg]+['','Pairwise comparisons:']+[f"- {k}: {v['status']} delta={v['point_delta']} interval={v['full_domain_interval']}" for k,v in pairs.items()]+['','Every fold, failure, diagnostic, parameter, and identifiability receipt is retained in the machine-readable package. P1/E2C are monotone saturating forms and do not contain turnover physics.','',f"Experiment consequence: `{exp['action']}`.",'','Current full EWP: NOT_VALIDATED. Physical validation: NOT_ESTABLISHED. Stage F/D: NOT_AUTHORIZED. M01: NOT_ADJUDICATED.'];text='\n'.join(lines)+'\n';(out/'RESULTS_SUMMARY.md').write_text(text);(out/'RESULT.md').write_text(text)
+ if synthetic and input_rows is not None:
+  write_csv(out/'SYNTHETIC_INPUT_ROWS.csv',['source_row_id','physical_unit_id','condition_id','line_pressure_bar','flow_g_s'],input_rows);write_json(out/'SYNTHETIC_SCENARIO.json',{'task_id':TASK,'revision':REVISION,'synthetic_scenario':synthetic_scenario,'test_only':True})
  files=sorted(p for p in out.iterdir() if p.name!='RESULT_ARTIFACT_MANIFEST.json');write_json(out/'RESULT_ARTIFACT_MANIFEST.json',{'task_id':TASK,'artifacts':[{'path':p.name,'sha256':sha256(p)} for p in files]})
 def real_binding_metadata(pw):
  idx=load_csv(S10/'ANALYSIS_ROW_INDEX.csv');folds=load_csv(S10/'FOLD_ASSIGNMENTS.csv');mem=load_csv(S10/'FOLD_MEMBERSHIP.csv');validate_row_identities([{'source_row_id':r['source_row_id'],'physical_unit_id':r['physical_unit_id'],'condition_id':r['condition_id']} for r in idx]);partitions([{'source_row_id':r['source_row_id'],'physical_unit_id':r['physical_unit_id'],'condition_id':r['condition_id']} for r in idx],mem,folds);accepted=load_csv(S10/'BREW_RESULTS.csv');b0=len([r for r in accepted if r['model_id']==B0])==56;b1=len([r for r in accepted if r['model_id']==B1])==56;oracle=load_json(D/'CLOSURE_ORACLE_RECEIPT.json')['pass']
  return {'joined_rows':56,'distinct_physical_brews':56,'pressure_conditions':11,'outer_folds':11,'alias_duplication':0,'candidate_real_fits':0,'candidate_real_predictions':0,'candidate_real_scores':0,'b0_handoff_valid':b0,'b1_handoff_valid':b1,'production_oracle_valid':oracle,'puckworks_authority_valid':True,'phase_b_ready_after_exact_review':True}
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--contract',required=True);ap.add_argument('--freeze',required=True);ap.add_argument('--review-receipt',required=True);ap.add_argument('--output',required=True);ap.add_argument('--synthetic-test-mode',action='store_true');ap.add_argument('--real-binding-preflight-only',action='store_true');ap.add_argument('--synthetic-outcome',choices=['poro','turnover','quadratic','blocked'],default='poro');a=ap.parse_args();out=Path(a.output)
+ ap=argparse.ArgumentParser();ap.add_argument('--contract',required=True);ap.add_argument('--freeze',required=True);ap.add_argument('--review-receipt',required=True);ap.add_argument('--output',required=True);ap.add_argument('--synthetic-test-mode',action='store_true');ap.add_argument('--real-binding-preflight-only',action='store_true');ap.add_argument('--synthetic-outcome',choices=SYNTHETIC_SCENARIOS,default=None);a=ap.parse_args();out=Path(a.output)
+ if a.synthetic_test_mode and a.real_binding_preflight_only:raise ValueError('MUTUALLY_EXCLUSIVE_EXECUTION_MODES')
+ if a.synthetic_outcome is not None and not a.synthetic_test_mode:raise ValueError('SYNTHETIC_SCENARIO_REQUIRES_SYNTHETIC_MODE')
  if out.exists() and any(out.iterdir()):raise ValueError('DUPLICATE_RESULT_GUARD')
  c=load_json(a.contract);f=load_json(a.freeze);mode='preflight' if a.real_binding_preflight_only else 'synthetic' if a.synthetic_test_mode else 'real';mh,pw=verify_contract(c,f,mode!='synthetic');r=verify_receipt(a.review_receipt,mode,mh)
  if a.real_binding_preflight_only:out.mkdir(parents=True);write_json(out/'REAL_BINDING_PREFLIGHT.json',real_binding_metadata(pw));return
- if a.synthetic_test_mode:rows=synthetic_rows(a.synthetic_outcome);parts=partitions(rows);base=synthetic_baselines(parts);fit_fn=(lambda train,m: {'execution_status':'BLOCKED','failure_class':'FIT_FAILURE','failure_reason':'SYNTHETIC_FORCED_BLOCK','optimizer_status':'FAIL','prediction_status':'NOT_ATTEMPTED','fitted_parameters':None,'objective':None,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':25,'identifiability':'EXECUTION_BLOCKED'}) if a.synthetic_outcome=='blocked' else fit;rec=base+execute_candidates(parts,fit_fn);write_result(out,rec,mh,r,True,rows);return
+ if a.synthetic_test_mode:
+  scenario=a.synthetic_outcome or 'poro';kind=scenario if scenario in ('poro','quadratic','turnover','blocked') else 'poro';rows=synthetic_rows(kind);parts=partitions(rows);base=synthetic_baselines(parts);rec=base+execute_candidates(parts,failure_plan=synthetic_failure_plan(scenario,parts));write_result(out,rec,mh,r,True,rows,scenario);return
  rows=load_real_rows(pw);parts=partitions(rows);records=accepted_baselines(parts)+execute_candidates(parts);write_result(out,records,mh,r,False)
 if __name__=='__main__':main()

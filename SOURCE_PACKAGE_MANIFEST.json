@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1017,
-  "total_uncompressed_bytes_excluding_manifest": 10095268,
-  "aggregate_source_sha256": "763e53e72154e89b6763ecdb9178c54ea2737d73812968ac9295f15a4edb7073",
-  "aggregate_sha256": "763e53e72154e89b6763ecdb9178c54ea2737d73812968ac9295f15a4edb7073",
+  "total_uncompressed_bytes_excluding_manifest": 10111774,
+  "aggregate_source_sha256": "1173ef97b305f39d0a54f8ccf4298eefa72c059d46a3f491b421d33323c00a83",
+  "aggregate_sha256": "1173ef97b305f39d0a54f8ccf4298eefa72c059d46a3f491b421d33323c00a83",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -1994,7 +1994,7 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/AUTHORITY_AND_HANDOFF.json": {
-      "sha256": "c3d5e73ff7661deac62c4ce87e51b525311902d11577a271843d4dd40b18ec79",
+      "sha256": "88a5c14e5a9891d133cf962c9db9b10007e6561621295fb97001787918829819",
       "bytes": 3779,
       "git_mode": "100644"
     },
@@ -2009,8 +2009,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/EVALUATION_CONTRACT.json": {
-      "sha256": "cfe2ab384a440652d1c9b91c84491fa73fca1f5bdf66b32fecdaccf774ca28f0",
-      "bytes": 2685,
+      "sha256": "ac15cd1990dd3b235a5a5b0b3ad196cd272e07dbd160b99363d65b62400b11ac",
+      "bytes": 2687,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.json": {
@@ -2019,23 +2019,23 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.md": {
-      "sha256": "7c006eebd98059a3643ea3bb2d0e85ecf90f4604e967f63646b57ce3a75ff2e3",
+      "sha256": "d73a67793a626977455c8d153b783a65d662016d8c84a0af69b41efe221c0c1e",
       "bytes": 853,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/FREEZE_ARTIFACT_MANIFEST.json": {
-      "sha256": "d36ee582cd43d95ab3de1aed6323b28f3a5659391c150d2b7847bdd36843e55a",
+      "sha256": "2e4547e1aa5bf3e51675912a9b73178e1f303dbbcbea55507edd99c5d12a2719",
       "bytes": 3847,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/FREEZE_REPORT.md": {
-      "sha256": "1151408cd1c1cefffb4aaa4956e8c3e9fc041818d0bea6124e32351a488cd546",
-      "bytes": 674,
+      "sha256": "5ea4bac63059649512127c3f5a4c31bcc2ce1a7796ca466aa0e617ebea1ee8d7",
+      "bytes": 945,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/MODEL_SPECIFICATIONS.json": {
-      "sha256": "0076edccb28e0e7f68296b3b3d24c1077902ef8cc68c84915c079d736cfdb3db",
-      "bytes": 2247,
+      "sha256": "fca9f358dc884516d06a7c4d43211935a3f84332af07965bc1f718fcb9e7c3ca",
+      "bytes": 2249,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json": {
@@ -2044,8 +2044,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/PRE_SCORE_FREEZE.json": {
-      "sha256": "22388f27a2396d3c39ecfd1ff54aaa3da095dbbb9babcd25f19f709ed7e65ca2",
-      "bytes": 3314,
+      "sha256": "1a03d595eac897ab4010014509af4197530210e05280b41da4441c259a720e6c",
+      "bytes": 3984,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/PRIVILEGE_LEDGER.csv": {
@@ -3884,18 +3884,18 @@
       "git_mode": "100755"
     },
     "scripts/sci_md_011_core.py": {
-      "sha256": "9951e067853815dfd323edf5032474bc112629fb4992f5155d60d3aa8608e29f",
-      "bytes": 14307,
+      "sha256": "3e3651cf19b01850cc94ce5e648c5b65b58f7c0fdb6d5bb972032e9d78ad70a5",
+      "bytes": 16977,
       "git_mode": "100755"
     },
     "scripts/sci_md_011_execute.py": {
-      "sha256": "d9c274acd534d48305c82672cb2e8eba10a4390b7f06cba79f5233f912d56163",
-      "bytes": 28189,
+      "sha256": "a22d8e66f3d968693bbb675b06a4aefa70e3b27af2e37735216bd013c8c6504a",
+      "bytes": 32087,
       "git_mode": "100755"
     },
     "scripts/sci_md_011_prepare.py": {
-      "sha256": "1d4496799449834e0e0d4206a93643bbb7720d19dbc845bbf26fd7385537106a",
-      "bytes": 13216,
+      "sha256": "d07701c374b590511c98558e6b321c2b9972cc86bd59f2a61cbd5f77f961ff73",
+      "bytes": 14195,
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
@@ -3989,8 +3989,8 @@
       "git_mode": "100755"
     },
     "scripts/validate_sci_md_011.py": {
-      "sha256": "cdb93eefb1ab9a03021ec673fbe81caef280adb03924040394be29add1913cf2",
-      "bytes": 11797,
+      "sha256": "4009badd3defcd029fb70698f70cd300dfcb9f22f935c7870ac01f1ced7b19e9",
+      "bytes": 12794,
       "git_mode": "100755"
     },
     "scripts/validate_sci_md_pannusch_flow_history_001.py": {
@@ -4229,8 +4229,8 @@
       "git_mode": "100644"
     },
     "tests/fixtures/sci_md_011_synthetic_receipt.json": {
-      "sha256": "da3042815a050aa649db56219c69f2a4b0111ffc43d00a907079c317bf1e2d33",
-      "bytes": 136,
+      "sha256": "979a473bf9434e757f3331be76e371b2ddd1217642daa6fa8a713d9a7ab5a779",
+      "bytes": 192,
       "git_mode": "100644"
     },
     "tests/fixtures/wp02_003_zero_inertia/Make/files": {
@@ -4479,8 +4479,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_011.py": {
-      "sha256": "a0561bf79a07a4df0629a0ac933326014444ed2342d09ce20c84a9399aaeb8f7",
-      "bytes": 14548,
+      "sha256": "4679b9575593dc55cb0d990318d4b4f62162b6f15411396b47b2af5923a8bc4d",
+      "bytes": 21509,
       "git_mode": "100644"
     },
     "tests/test_sci_md_pannusch_flow_history_001.py": {

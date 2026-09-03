@@ -1,5 +1,5 @@
 {
-  "aggregate_content_sha256": "397abc1f6bc620bc462e5548f27c783ab67663a5dd9b6d7eaf8d276c0d2a5951",
+  "aggregate_content_sha256": "41c7dc763643c91e2b384a950589fe86adfcdca3be1c1dce68f1d6db6973a266",
   "artifacts": [
     {
       "path": "docs/analysis/sci_md_011/TASK_CONTRACT.md",
@@ -7,7 +7,7 @@
     },
     {
       "path": "docs/analysis/sci_md_011/AUTHORITY_AND_HANDOFF.json",
-      "sha256": "c3d5e73ff7661deac62c4ce87e51b525311902d11577a271843d4dd40b18ec79"
+      "sha256": "88a5c14e5a9891d133cf962c9db9b10007e6561621295fb97001787918829819"
     },
     {
       "path": "docs/analysis/sci_md_011/SCI_MD_010_HANDOFF.json",
@@ -19,7 +19,7 @@
     },
     {
       "path": "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.md",
-      "sha256": "7c006eebd98059a3643ea3bb2d0e85ecf90f4604e967f63646b57ce3a75ff2e3"
+      "sha256": "d73a67793a626977455c8d153b783a65d662016d8c84a0af69b41efe221c0c1e"
     },
     {
       "path": "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.json",
@@ -27,7 +27,7 @@
     },
     {
       "path": "docs/analysis/sci_md_011/MODEL_SPECIFICATIONS.json",
-      "sha256": "0076edccb28e0e7f68296b3b3d24c1077902ef8cc68c84915c079d736cfdb3db"
+      "sha256": "fca9f358dc884516d06a7c4d43211935a3f84332af07965bc1f718fcb9e7c3ca"
     },
     {
       "path": "docs/analysis/sci_md_011/PRIVILEGE_LEDGER.csv",
@@ -35,15 +35,15 @@
     },
     {
       "path": "docs/analysis/sci_md_011/EVALUATION_CONTRACT.json",
-      "sha256": "cfe2ab384a440652d1c9b91c84491fa73fca1f5bdf66b32fecdaccf774ca28f0"
+      "sha256": "ac15cd1990dd3b235a5a5b0b3ad196cd272e07dbd160b99363d65b62400b11ac"
     },
     {
       "path": "docs/analysis/sci_md_011/PRE_SCORE_FREEZE.json",
-      "sha256": "22388f27a2396d3c39ecfd1ff54aaa3da095dbbb9babcd25f19f709ed7e65ca2"
+      "sha256": "1a03d595eac897ab4010014509af4197530210e05280b41da4441c259a720e6c"
     },
     {
       "path": "docs/analysis/sci_md_011/FREEZE_REPORT.md",
-      "sha256": "1151408cd1c1cefffb4aaa4956e8c3e9fc041818d0bea6124e32351a488cd546"
+      "sha256": "5ea4bac63059649512127c3f5a4c31bcc2ce1a7796ca466aa0e617ebea1ee8d7"
     },
     {
       "path": "docs/analysis/sci_md_011/CLOSURE_ORACLE_RESULTS.csv",
@@ -55,19 +55,19 @@
     },
     {
       "path": "scripts/sci_md_011_core.py",
-      "sha256": "9951e067853815dfd323edf5032474bc112629fb4992f5155d60d3aa8608e29f"
+      "sha256": "3e3651cf19b01850cc94ce5e648c5b65b58f7c0fdb6d5bb972032e9d78ad70a5"
     },
     {
       "path": "scripts/sci_md_011_prepare.py",
-      "sha256": "1d4496799449834e0e0d4206a93643bbb7720d19dbc845bbf26fd7385537106a"
+      "sha256": "d07701c374b590511c98558e6b321c2b9972cc86bd59f2a61cbd5f77f961ff73"
     },
     {
       "path": "scripts/sci_md_011_execute.py",
-      "sha256": "d9c274acd534d48305c82672cb2e8eba10a4390b7f06cba79f5233f912d56163"
+      "sha256": "a22d8e66f3d968693bbb675b06a4aefa70e3b27af2e37735216bd013c8c6504a"
     },
     {
       "path": "scripts/validate_sci_md_011.py",
-      "sha256": "cdb93eefb1ab9a03021ec673fbe81caef280adb03924040394be29add1913cf2"
+      "sha256": "4009badd3defcd029fb70698f70cd300dfcb9f22f935c7870ac01f1ced7b19e9"
     },
     {
       "path": "scripts/run_sci_md_011_closure_oracle.sh",
@@ -75,11 +75,11 @@
     },
     {
       "path": "tests/test_sci_md_011.py",
-      "sha256": "a0561bf79a07a4df0629a0ac933326014444ed2342d09ce20c84a9399aaeb8f7"
+      "sha256": "4679b9575593dc55cb0d990318d4b4f62162b6f15411396b47b2af5923a8bc4d"
     },
     {
       "path": "tests/fixtures/sci_md_011_synthetic_receipt.json",
-      "sha256": "da3042815a050aa649db56219c69f2a4b0111ffc43d00a907079c317bf1e2d33"
+      "sha256": "979a473bf9434e757f3331be76e371b2ddd1217642daa6fa8a713d9a7ab5a779"
     },
     {
       "path": "tests/fixtures/sci_md_011_closure_oracle/sci_md_011_closure_oracle.C",
@@ -94,7 +94,7 @@
       "sha256": "f9b96c6c772cfc029508cae6b97b22cac5db743df6f61e4e71873a50df6c1ef6"
     }
   ],
-  "revision": "R1",
+  "revision": "R2",
   "scoring_executed": false,
   "task_id": "SCI-MD-011"
 }

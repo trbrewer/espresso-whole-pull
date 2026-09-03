@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Deterministic numerical and decision core for SCI-MD-011 R1."""
+"""Deterministic numerical and decision core for SCI-MD-011 R2."""
 from __future__ import annotations
 import csv, hashlib, json, math, random, subprocess
 from functools import lru_cache
 from pathlib import Path
 
-TASK="SCI-MD-011"; REVISION="R1"; SEED=20260902; BOOTSTRAPS=2000
+TASK="SCI-MD-011"; REVISION="R2"; SEED=20260902; BOOTSTRAPS=2000
 MODELS=("HYD_B0_TRAINING_MEAN","HYD_B1_PRESSURE_QUADRATIC","HYD_P1_POROELASTIC_UNIVERSAL_LIMIT","HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT")
 B0,B1,P1,E2C=MODELS; CANDIDATES=(P1,E2C); PHI=2.257390325360356/18.5
 CAL={"a":0.017184292098914252,"b":0.03670858658698296,"c":0.2831597837775055}
 DOMAIN_EPS=1e-10; PRESSURE_TOL=1e-9; COUPLED_RESIDUAL_TOL=2e-9; MAX_ROOT_ITER=100
 BOUNDS={"Qc_g_s":[0.01,20.0],"Pc_bar":[1.0,100.0]}
-OPT={"lattice_points_per_axis":5,"max_iterations_per_start":32,"max_evaluations":4000,"step_reduction":0.5,"stopping_log_step":1e-6,"objective_comparison_tolerance":1e-14,"tie_break":"objective tolerance then lexicographic log(Qc),log(Pc)","bound_hit_log_distance":1e-5}
+OPT={"lattice_points_per_axis":5,"max_iterations_per_start":256,"max_evaluations":40000,"step_reduction":0.5,"stopping_log_step":1e-6,"objective_comparison_tolerance":1e-14,"tie_break":"objective tolerance then lexicographic log(Qc),log(Pc)","bound_hit_log_distance":1e-5}
 IDENT={"hessian_step":1e-3,"profile_log_offsets":[0.05,0.1,0.25],"adequate_condition_max":1e5,"weak_condition_max":1e9,"minimum_relative_profile_increase":1e-5,"fold_log_cv_weak":0.5}
 
 def sha256(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -106,40 +106,51 @@ def _profile_hessian(x,v,rows,model):
    for sign in (-1,1):
     y=list(x);y[k]+=sign*off;profiles[name].append({'offset':sign*off,'objective':objective(y,rows,model)})
  finite=[z['objective'] for q in profiles.values() for z in q if math.isfinite(z['objective'])];inc=min(((z-v)/max(abs(v),1e-12) for z in finite),default=0.)
- return {'hessian_log_space':[[fxx,fxy],[fxy,fyy]],'hessian_eigenvalues':eig,'hessian_condition_number':None if not math.isfinite(cond) else cond,'profile_scans':profiles,'minimum_relative_profile_increase':inc}
+ return {'hessian_log_space':[[fxx,fxy],[fxy,fyy]],'hessian_eigenvalues':eig,'hessian_condition_number':None if not math.isfinite(cond) else cond,'profile_scans':profiles,'minimum_relative_profile_increase':inc},len(cache)
 def fit(rows,model,objective_fn=None):
- raw_obj=objective_fn or (lambda x:objective(x,rows,model));cache={}
+ raw_obj=objective_fn or (lambda x:objective(x,rows,model));cache={};optimizer_evals=0
  def obj(x):
+  nonlocal optimizer_evals
   key=tuple(x)
-  if key not in cache:cache[key]=raw_obj(x)
+  if key not in cache:cache[key]=raw_obj(x);optimizer_evals+=1
   return cache[key]
  lo=[math.log(BOUNDS['Qc_g_s'][0]),math.log(BOUNDS['Pc_bar'][0])];hi=[math.log(BOUNDS['Qc_g_s'][1]),math.log(BOUNDS['Pc_bar'][1])]
- starts=lattice();best=None;evals=0;finite_starts=0;total_iters=0;last_step=None
- for start in starts:
-  x=list(start);v=obj(x);evals+=1
-  if not math.isfinite(v):continue
-  finite_starts+=1;step=[(hi[k]-lo[k])/4 for k in range(2)];reason='MAX_ITERATIONS'
+ starts=lattice();best=None;finite_starts=0;total_iters=0;receipts=[];cap_reason=None
+ for index,start in enumerate(starts):
+  x=list(start);before=optimizer_evals;initial=obj(x);start_evals=optimizer_evals-before
+  receipt={'start_index':index,'initial_log_Qc':start[0],'initial_log_Pc':start[1],'initial_objective':initial if math.isfinite(initial) else None,'finite_start':math.isfinite(initial),'final_log_Qc':None,'final_log_Pc':None,'final_objective':None,'iterations':0,'objective_evaluations':start_evals,'final_step_size':None,'convergence_reason':'NONFINITE_START','convergence_status':'NONFINITE_START'}
+  if not math.isfinite(initial):receipts.append(receipt);continue
+  finite_starts+=1;v=initial;step=[(hi[k]-lo[k])/4 for k in range(2)];reason='MAX_ITERATIONS';iterations=0
   for it in range(1,OPT['max_iterations_per_start']+1):
-   total_iters+=1;improved=False
+   iterations=it;total_iters+=1;improved=False
    for k in range(2):
     for sign in (-1,1):
-     if evals>=OPT['max_evaluations']:reason='MAX_EVALUATIONS';break
-     z=x.copy();z[k]=min(hi[k],max(lo[k],z[k]+sign*step[k]));vz=obj(z);evals+=1
+     if optimizer_evals>=OPT['max_evaluations']:reason='MAX_EVALUATIONS';break
+     z=x.copy();z[k]=min(hi[k],max(lo[k],z[k]+sign*step[k]));before=optimizer_evals;vz=obj(z);start_evals+=optimizer_evals-before
      if math.isfinite(vz) and _better(vz,z,v,x):x,v,improved=z,vz,True
-    if evals>=OPT['max_evaluations']:break
+    if reason=='MAX_EVALUATIONS':break
+   if reason=='MAX_EVALUATIONS':break
    if not improved:step=[q*OPT['step_reduction'] for q in step]
    if max(step)<=OPT['stopping_log_step']:reason='LOG_STEP_TOLERANCE';break
-   if evals>=OPT['max_evaluations']:break
-  last_step=max(step);candidate=(v,x,reason)
+  status='CONVERGED' if reason=='LOG_STEP_TOLERANCE' else reason
+  valid=math.isfinite(v) and all(math.isfinite(q) and lo[k]-1e-12<=q<=hi[k]+1e-12 for k,q in enumerate(x))
+  if not valid:reason=status='INVALID_FINAL_STATE'
+  receipt.update({'final_log_Qc':x[0] if valid else None,'final_log_Pc':x[1] if valid else None,'final_objective':v if valid else None,'iterations':iterations,'objective_evaluations':start_evals,'final_step_size':max(step),'convergence_reason':reason,'convergence_status':status})
+  receipts.append(receipt)
+  if status!='CONVERGED':cap_reason=reason;continue
+  candidate=(v,x,receipt)
   if best is None or _better(v,x,best[0],best[1]):best=candidate
- if best is None:
-  return {'execution_status':'BLOCKED','failure_class':'FIT_FAILURE','failure_reason':'NO_FINITE_ADMISSIBLE_FIT','optimizer_status':'FAIL','prediction_status':'NOT_ATTEMPTED','fitted_parameters':None,'objective':None,'finite_start_count':0,'start_count':len(starts),'evaluations':evals,'iterations':total_iters,'final_step_size':last_step,'convergence_reason':'NO_FINITE_START','root_failure_count':0,'domain_failure_count':0,'nonfinite_count':len(starts),'identifiability':'EXECUTION_BLOCKED'}
- v,x,reason=best;qc,pc=map(math.exp,x)
+ if finite_starts==0:
+  return {'execution_status':'BLOCKED','failure_class':'FIT_FAILURE','failure_reason':'NO_FINITE_ADMISSIBLE_FIT','optimizer_status':'FAIL','prediction_status':'NOT_ATTEMPTED','fitted_parameters':None,'objective':None,'finite_start_count':0,'start_count':len(starts),'optimizer_objective_evaluations':optimizer_evals,'identifiability_objective_evaluations':0,'total_objective_evaluations':optimizer_evals,'iterations':total_iters,'final_step_size':None,'convergence_reason':'NO_FINITE_START','start_receipts':receipts,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':len(starts),'identifiability':'EXECUTION_BLOCKED'}
+ if cap_reason or best is None:
+  reason='MAX_EVALUATIONS_REACHED' if cap_reason=='MAX_EVALUATIONS' else 'MAX_ITERATIONS_REACHED' if cap_reason=='MAX_ITERATIONS' else 'INVALID_FINAL_STATE'
+  return {'execution_status':'BLOCKED','failure_class':'OPTIMIZER_NONCONVERGENCE','failure_reason':reason,'optimizer_status':'FAIL','prediction_status':'NOT_ATTEMPTED','fitted_parameters':None,'objective':None,'finite_start_count':finite_starts,'start_count':len(starts),'optimizer_objective_evaluations':optimizer_evals,'identifiability_objective_evaluations':0,'total_objective_evaluations':optimizer_evals,'iterations':total_iters,'final_step_size':None,'convergence_reason':cap_reason or 'INVALID_FINAL_STATE','start_receipts':receipts,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':len(starts)-finite_starts,'identifiability':'EXECUTION_BLOCKED'}
+ v,x,winner=best;reason=winner['convergence_reason'];qc,pc=map(math.exp,x)
  if not(math.isfinite(v) and all(map(math.isfinite,(qc,pc))) and all(lo[k]-1e-12<=x[k]<=hi[k]+1e-12 for k in range(2))):
-  return {'execution_status':'BLOCKED','failure_class':'FIT_FAILURE','failure_reason':'INVALID_FINAL_FIT','optimizer_status':'FAIL','prediction_status':'NOT_ATTEMPTED','fitted_parameters':None,'objective':None,'finite_start_count':finite_starts,'start_count':len(starts),'evaluations':evals,'iterations':total_iters,'final_step_size':last_step,'convergence_reason':reason,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':len(starts)-finite_starts,'identifiability':'EXECUTION_BLOCKED'}
- near=any(min(abs(x[k]-lo[k]),abs(hi[k]-x[k]))<=OPT['bound_hit_log_distance'] for k in range(2));diag=_profile_hessian(x,v,rows,model);cond=diag['hessian_condition_number'];inc=diag['minimum_relative_profile_increase']
+  return {'execution_status':'BLOCKED','failure_class':'FIT_FAILURE','failure_reason':'INVALID_FINAL_FIT','optimizer_status':'FAIL','prediction_status':'NOT_ATTEMPTED','fitted_parameters':None,'objective':None,'finite_start_count':finite_starts,'start_count':len(starts),'optimizer_objective_evaluations':optimizer_evals,'identifiability_objective_evaluations':0,'total_objective_evaluations':optimizer_evals,'iterations':total_iters,'final_step_size':winner['final_step_size'],'convergence_reason':reason,'start_receipts':receipts,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':len(starts)-finite_starts,'identifiability':'EXECUTION_BLOCKED'}
+ near=any(min(abs(x[k]-lo[k]),abs(hi[k]-x[k]))<=OPT['bound_hit_log_distance'] for k in range(2));diag,diag_evals=_profile_hessian(x,v,rows,model);cond=diag['hessian_condition_number'];inc=diag['minimum_relative_profile_increase']
  ident='BOUND_CONTROLLED' if near else ('PRACTICALLY_NONIDENTIFIABLE' if cond is None or cond>IDENT['weak_condition_max'] or inc<=0 else ('WEAKLY_IDENTIFIED' if cond>IDENT['adequate_condition_max'] or inc<IDENT['minimum_relative_profile_increase'] else 'ADEQUATELY_IDENTIFIED_FOR_PREDICTION'))
- return {'execution_status':'PASS','failure_class':'','failure_reason':'','optimizer_status':'PASS','prediction_status':'PENDING','fitted_parameters':{'Qc_g_s':qc,'Pc_bar':pc,'log_Qc':x[0],'log_Pc':x[1]},'objective':v,'finite_start_count':finite_starts,'start_count':len(starts),'evaluations':evals+16,'iterations':total_iters,'final_step_size':last_step,'convergence_reason':reason,'bound_proximity':near,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':len(starts)-finite_starts,'identifiability':ident,'identifiability_diagnostics':diag}
+ return {'execution_status':'PASS','failure_class':'','failure_reason':'','optimizer_status':'PASS','prediction_status':'PENDING','fitted_parameters':{'Qc_g_s':qc,'Pc_bar':pc,'log_Qc':x[0],'log_Pc':x[1]},'objective':v,'finite_start_count':finite_starts,'start_count':len(starts),'optimizer_objective_evaluations':optimizer_evals,'identifiability_objective_evaluations':diag_evals,'total_objective_evaluations':optimizer_evals+diag_evals,'iterations':total_iters,'final_step_size':winner['final_step_size'],'convergence_reason':reason,'winning_start_index':winner['start_index'],'start_receipts':receipts,'bound_proximity':near,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':len(starts)-finite_starts,'identifiability':ident,'identifiability_diagnostics':diag}
 
 def percentile(v,p):return sorted(v)[max(0,min(len(v)-1,math.ceil(p*len(v))-1))]
 def bootstrap(br,scales,a,b,folds=None):
