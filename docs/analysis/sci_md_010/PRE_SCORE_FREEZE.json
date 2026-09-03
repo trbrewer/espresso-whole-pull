@@ -45,8 +45,9 @@
   "required_review_disposition": "SCI_MD_010_PRE_SCORE_FREEZE_SINGLE_INDEPENDENT_REVIEW_PASS_READY_FOR_EXECUTION",
   "review_receipt_embedded": false,
   "review_required": true,
-  "revision": "R3",
+  "revision": "R4",
   "scoring_executed": false,
+  "seed": 20260902,
   "selected_lanes": [
     "L-HYD"
   ],

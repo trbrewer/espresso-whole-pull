@@ -1,19 +1,25 @@
 {
   "L-HYD": {
     "bootstrap_count": 2000,
+    "bootstrap_refit": false,
+    "bootstrap_unit": "condition_then_paired_brew",
     "diagnostics": [
-      "low/high slope sign",
       "condition means",
-      "peak condition",
-      "ordering concordance",
-      "Spearman"
+      "low/high slope sign",
+      "peak ties",
+      "pairwise ordering concordance excluding observed ties",
+      "Spearman with average ranks for ties"
     ],
+    "expected_high_pressure_direction": "NONPOSITIVE_OR_SATURATING slope <= 0",
+    "expected_low_pressure_direction": "POSITIVE slope > 0",
     "fitting_weight": "1/(n_training_conditions*n_brews_in_condition)",
     "high_pressure_subset_bar": "direct line-pressure condition means >=8.5, frozen before scoring",
     "low_pressure_subset_bar": "direct line-pressure condition means <=5.25, frozen before scoring",
+    "materiality_status": "PREDICTIVE_RANKING_ONLY",
     "overall": "equal mean over 11 heldout conditions",
     "prediction": "predicted equilibrium flow g/s",
     "primary": "heldout equilibrium-flow RMSE divided by outer-training condition-mean flow range",
+    "quantile_convention": "nearest-rank ceil(p*n)-1",
     "result_mapping": {
       "full_correct": "REDUCED_DARCY_CONDITIONAL_UTILITY_ESTABLISHED_FULL_DOMAIN",
       "loss": "NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE",
@@ -24,7 +30,7 @@
     "seed": 20260902,
     "target": "endpoint_100s mass_flow_rate__g_per_s",
     "training_scale": "range of outer-training condition-mean flows; nonfinite/zero fails",
-    "uncertainty": "nested conditional test-loss bootstrap: conditions then brews; no refit",
+    "uncertainty": "paired normalized nested conditional test-loss bootstrap: same condition and brew draws for B1/E1; no refit",
     "within_fold": "equal per canonical brew"
   }
 }

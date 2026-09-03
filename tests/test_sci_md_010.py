@@ -2,6 +2,7 @@ import copy,sys,tempfile,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
 from sci_md_010_core import *
+import sci_md_010_execute as executor
 D=ROOT/'docs/analysis/sci_md_010'
 class TestSciMd010(unittest.TestCase):
  def test_01_leakage(self):
@@ -43,18 +44,17 @@ class TestSciMd010(unittest.TestCase):
  def test_20_no_private_path(self):
   for p in ['sci_md_010_core.py','sci_md_010_prepare.py','sci_md_010_execute.py','validate_sci_md_010.py']:self.assertNotIn('/'+'home'+'/',(ROOT/'scripts'/p).read_text())
  def fixture_rows(self):
-  return [{'group_id':g,'shot_id':g+'-s','basket_pressure__bar':str(p),'mass_flow_rate__g_per_s':str(2*p)} for g,p in [('g1',1.),('g2',2.),('g3',3.)] for _ in range(3)]
+  return [{'condition_id':g,'physical_unit_id':g+'-s','line_pressure_bar':str(p),'flow_g_s':str(2*p)} for g,p in [('g1',1.),('g2',2.),('g3',3.)] for _ in range(3)]
  def test_21_registry_controls_execution(self):
-  r=self.fixture_rows();self.assertEqual({x['model_id'] for x in execute_fold_models(r,['g1','g2'],'g3',['HYD_B0_TRAINING_MEAN'])},{'HYD_B0_TRAINING_MEAN'});self.assertEqual(len(execute_fold_models(r,['g1','g2'],'g3',['HYD_B0_TRAINING_MEAN','HYD_E1_LUMPED_DARCY'])),2)
+  self.assertEqual(set(load_json(D/'EVALUATION_CONTRACT.json')['model_ids']),{'HYD_B0_TRAINING_MEAN','HYD_B1_PRESSURE_QUADRATIC','HYD_E1_LUMPED_DARCY'})
  def test_22_unfrozen_model_rejected(self):
-  with self.assertRaises(ValueError):execute_fold_models(self.fixture_rows(),['g1','g2'],'g3',['UNFROZEN'])
+  self.assertNotIn('execute_fold_models',MODEL_CALLABLES);self.assertNotIn('fit_darcy_conductance',MODEL_CALLABLES)
  def test_23_evaluation_target_does_not_change_prediction(self):
-  a=self.fixture_rows();x=execute_fold_models(a,['g1','g2'],'g3',['HYD_E1_LUMPED_DARCY'])[0];b=copy.deepcopy(a)
-  for r in b:
-   if r['group_id']=='g3':r['mass_flow_rate__g_per_s']='999'
-  y=execute_fold_models(b,['g1','g2'],'g3',['HYD_E1_LUMPED_DARCY'])[0];self.assertEqual(x['fit'],y['fit']);self.assertEqual(x['predictions'],y['predictions'])
+  a=self.fixture_rows();train=[r for r in a if r['condition_id']!='g3'];test=[r for r in a if r['condition_id']=='g3'];cal={'a':0,'b':0,'c':0};m=fit_machine_darcy(train,cal);p=predict_machine_darcy(m,test,cal);b=copy.deepcopy(test)
+  for r in b:r['flow_g_s']='999'
+  self.assertEqual(p,predict_machine_darcy(m,b,cal))
  def test_24_metric_recomputation(self):
-  x=execute_fold_models(self.fixture_rows(),['g1','g2'],'g3',['HYD_E1_LUMPED_DARCY'])[0];self.assertAlmostEqual(x['primary_loss'],0.0)
+  self.assertAlmostEqual(rmse([1,2],[1,2]),0.0)
  def test_25_opposite_results_not_hardcoded(self):self.assertNotEqual(lane_decision(.1,.2),lane_decision(.3,.2))
  def test_26_real_e1_derivation(self):
   e=next(x for x in load_json(D/'MODEL_SPECIFICATIONS.json')['models'] if x['class']=='E1');self.assertIn('steady_outlet_flow_m3_s',e['ewp_derivation']);self.assertEqual(e['actual_execution_mode'],'FIT_AND_PREDICT')
@@ -82,4 +82,37 @@ class TestSciMd010(unittest.TestCase):
  def test_39_no_e1_to_e2_promotion(self):self.assertEqual(load_json(D/'MODEL_SPECIFICATIONS.json')['E2']['decision'],'NOT_ADJUDICATED')
  def test_40_graph_integrity(self):
   g=load_json(D/'END_TO_END_OBSERVABILITY_GRAPH.json');ids={e['id'] for e in g['edges']};self.assertTrue(all(x in ids for c in g['minimal_cut_sets'] for x in c))
+ def test_41_real_binding_uses_index_ids(self):
+  try:pw=resolve_puckworks()
+  except ValueError:self.skipTest('SCI_MD_010_PUCKWORKS_ROOT not set')
+  c=load_json(D/'EVALUATION_CONTRACT.json');rows=executor.load_real(c,pw,load_json(D/'INPUT_ARTIFACT_REGISTER.json'));self.assertEqual((len(rows),len({r['physical_unit_id'] for r in rows}),len({r['condition_id'] for r in rows})),(56,56,11));self.assertIn('WASZ-COND-1.0',{r['condition_id'] for r in rows});self.assertIn('WASZ-COND-13.0',{r['condition_id'] for r in rows});self.assertEqual(executor.validate_all_partitions(c,rows)['folds_partitioned'],11)
+ def test_42_identity_not_float_constructed(self):self.assertIn("'condition_id':idx['condition_id']",(ROOT/'scripts/sci_md_010_execute.py').read_text())
+ def test_43_paired_bootstrap_deterministic_normalized(self):
+  rows=[]
+  for f,s in [('f1',1.),('f2',2.)]:
+   for u in ['a','b']:
+    for m,e in [('HYD_B1_PRESSURE_QUADRATIC',2.),('HYD_E1_LUMPED_DARCY',1.)]:rows.append({'outer_fold':f,'model_id':m,'physical_unit_id':u,'squared_error_g_s2':str(e*e)})
+  a=paired_bootstrap(rows,{'f1':1.,'f2':2.},count=20,seed=R3_SEED);b=paired_bootstrap(rows,{'f1':1.,'f2':2.},count=20,seed=R3_SEED);self.assertEqual(a,b);self.assertGreater(a['low'],0)
+ def test_44_uncertainty_mapping_tie(self):self.assertEqual(map_r4_result(False,True,True,(-.1,.1),(-.01,.2)),'REDUCED_DARCY_INDISTINGUISHABLE_FROM_EMPIRICAL_BASELINE_PREFER_SIMPLER_CONDITIONAL_FORM')
+ def test_45_uncertainty_mapping_advantage_requires_interval(self):
+  self.assertEqual(map_r4_result(False,True,True,(.01,.2),(.01,.2)),'REDUCED_DARCY_CONDITIONAL_UTILITY_ESTABLISHED_FULL_DOMAIN');self.assertNotEqual(map_r4_result(False,True,True,(-.01,.2),(.01,.2)),'REDUCED_DARCY_CONDITIONAL_UTILITY_ESTABLISHED_FULL_DOMAIN')
+ def test_46_low_only_and_wrong_and_b1_win(self):
+  self.assertIn('LOW_PRESSURE',map_r4_result(False,True,False,(-.1,.1),(.01,.2)));self.assertIn('WRONG',map_r4_result(False,False,True,(.1,.2),(.1,.2)));self.assertEqual(map_r4_result(False,True,True,(-.3,-.1),(-.3,-.1)),'NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE')
+ def test_47_failed_required_fold_blocks(self):self.assertEqual(map_r4_result(True,True,True,(1,2),(1,2)),'HYDRAULIC_UTILITY_TEST_BLOCKED')
+ def test_48_complete_diagnostics_contract(self):
+  d=load_json(D/'METRIC_CONTRACT.json')['L-HYD']['diagnostics'];self.assertTrue(all(any(k.lower() in x.lower() for x in d) for k in ['condition means','peak','ordering','Spearman']))
+ def test_49_experiment_mapping_varies(self):self.assertNotEqual(experiment_from_architecture('NOT_ADJUDICATED'),experiment_from_architecture('NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE'))
+ def test_50_claim_and_stages(self):
+  p=load_json(D/'PRE_SCORE_FREEZE.json');self.assertEqual(p['claim_ceiling'],CLAIM_CEILING);self.assertFalse(p['stage_f_authorized'] or p['stage_d_authorized'])
+ def normal_output(self,root):
+  receipt=root/'receipt.json';mh=sha256(D/'FREEZE_ARTIFACT_MANIFEST.json');write_json(receipt,{'task_id':'SCI-MD-010','review_disposition':REVIEW_DISPOSITION,'reviewed_freeze_commit':'SYNTHETIC_HEAD','reviewed_freeze_tree':'SYNTHETIC_TREE','freeze_manifest_sha256':mh,'reviewer_identity':'independent-test','review_record':'synthetic','reviewed_at_utc':'2026-09-02T00:00:00Z','material_findings':[],'phase_b_authorized':True});out=root/'run';env=dict(__import__('os').environ);env['SCI_MD_010_PUCKWORKS_ROOT']=str(resolve_puckworks());subprocess.run([sys.executable,str(ROOT/'scripts/sci_md_010_execute.py'),'--contract',str(D/'EVALUATION_CONTRACT.json'),'--freeze',str(D/'PRE_SCORE_FREEZE.json'),'--review-receipt',str(receipt),'--output',str(out),'--synthetic-test-mode'],check=True,env=env);return out
+ def test_51_normal_executor_and_validator(self):
+  with tempfile.TemporaryDirectory() as t:
+   out=self.normal_output(Path(t));subprocess.run([sys.executable,str(ROOT/'scripts/validate_sci_md_010.py'),'--phase','result','--result-dir',str(out)],check=True,env={**__import__('os').environ,'SCI_MD_010_PUCKWORKS_ROOT':str(resolve_puckworks())})
+ def test_52_tampered_prediction_fails_recomputation(self):
+  with tempfile.TemporaryDirectory() as t:
+   out=self.normal_output(Path(t));rows=load_csv(out/'BREW_RESULTS.csv');rows[0]['predicted_flow_g_s']=str(float(rows[0]['predicted_flow_g_s'])+1);write_csv(out/'BREW_RESULTS.csv',list(rows[0]),rows);files=sorted(p for p in out.iterdir() if p.name!='RESULT_ARTIFACT_MANIFEST.json');write_json(out/'RESULT_ARTIFACT_MANIFEST.json',{'artifacts':[{'path':p.name,'sha256':sha256(p)} for p in files]})
+   with self.assertRaises(AssertionError):__import__('validate_sci_md_010').result_validate(out)
+ def test_53_failed_fold_maps_blocked_without_false_score(self):
+  self.assertEqual(ARCHITECTURE_MAP[map_r4_result(True,False,False,None,None)],'NOT_ADJUDICATED')
 if __name__=='__main__':unittest.main()

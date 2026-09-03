@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Shared, task-specific fold/model/scoring machinery for SCI-MD-010."""
 from __future__ import annotations
-import csv,hashlib,json,math,os,subprocess
+import csv,hashlib,json,math,os,random,subprocess
 from pathlib import Path
 
 REVIEW_DISPOSITION="SCI_MD_010_PRE_SCORE_FREEZE_SINGLE_INDEPENDENT_REVIEW_PASS_READY_FOR_EXECUTION"
-CLAIM_CEILING="RETROSPECTIVE_SOURCE_CONDITIONED_COMPONENT_MODEL_UTILITY_AND_ARCHITECTURE_AUDIT_ONLY"
+CLAIM_CEILING="RETROSPECTIVE_SOURCE_CONDITIONED_CONDITIONAL_HYDRAULIC_COMPONENT_UTILITY_ONLY"
 
 def sha256(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def canonical_sha(value): return hashlib.sha256((json.dumps(value,sort_keys=True,separators=(',',':'))+'\n').encode()).hexdigest()
@@ -52,15 +52,6 @@ def fraction_shape(params,coordinate):
  vals=[max(math.exp(-params['rate']*x),0.0) for x in coordinate];s=sum(vals)
  return [v/s for v in vals] if s>0 else [0.0 for v in vals]
 MODEL_CALLABLES={'fit_mean':fit_mean,'predict_mean':predict_mean,'fit_linear':fit_linear,'predict_linear':predict_linear,'hyd_reduced':hyd_reduced,'fraction_shape':fraction_shape}
-
-def fit_darcy_conductance(rows):
- """Fit m_dot=C*p through origin; C collapses rho*A*K/(mu*L)."""
- x=[float(r['basket_pressure__bar']) for r in rows];y=[float(r['mass_flow_rate__g_per_s']) for r in rows]
- den=sum(v*v for v in x)
- if den<=0:raise ValueError('DARCY_ZERO_PRESSURE_INFORMATION')
- return {'conductance_g_s_bar':sum(a*b for a,b in zip(x,y))/den}
-def predict_darcy_conductance(model,rows):return [model['conductance_g_s_bar']*max(float(r['basket_pressure__bar']),0.0) for r in rows]
-MODEL_CALLABLES.update({'fit_darcy_conductance':fit_darcy_conductance,'predict_darcy_conductance':predict_darcy_conductance})
 
 R3_SEED=20260902
 def brewer_drop(q,cal): return cal['a']*q*q+cal['b']*q+cal['c']
@@ -113,23 +104,48 @@ def fit_machine_darcy(rows,cal,bound=(0.0,10.0)):
 def predict_machine_darcy(model,rows,cal):return [solve_machine_darcy(float(r['line_pressure_bar']),model['conductance_g_s_bar'],cal) for r in rows]
 MODEL_CALLABLES.update({'fit_condition_balanced_mean':fit_condition_balanced_mean,'fit_condition_balanced_quadratic':fit_condition_balanced_quadratic,'predict_quadratic':predict_quadratic,'fit_machine_darcy':fit_machine_darcy,'predict_machine_darcy':predict_machine_darcy,'solve_machine_darcy':solve_machine_darcy})
 
-def execute_fold_models(rows,train_ids,evaluation_id,model_ids):
- """Normal contract-driven fold path used by synthetic and future real execution."""
- train=[r for r in rows if r['group_id'] in train_ids];test=[r for r in rows if r['group_id']==evaluation_id]
- if not train or not test:raise ValueError('EMPTY_FOLD_PARTITION')
- results=[]
- for mid in model_ids:
-  if mid=='HYD_B0_TRAINING_MEAN':model=fit_mean([float(r['mass_flow_rate__g_per_s']) for r in train]);pred=predict_mean(model,test)
-  elif mid=='HYD_B1_PRESSURE_LINEAR':model=fit_linear([float(r['basket_pressure__bar']) for r in train],[float(r['mass_flow_rate__g_per_s']) for r in train]);pred=predict_linear(model,[float(r['basket_pressure__bar']) for r in test])
-  elif mid=='HYD_E1_LUMPED_DARCY':model=fit_darcy_conductance(train);pred=predict_darcy_conductance(model,test)
-  else:raise ValueError('UNFROZEN_OR_UNSUPPORTED_MODEL:'+mid)
-  target=[float(r['mass_flow_rate__g_per_s']) for r in test];train_y=[float(r['mass_flow_rate__g_per_s']) for r in train];scale=max(train_y)-min(train_y)
-  if scale<=0:raise ValueError('TRAINING_NORMALIZATION_ZERO_RANGE')
-  by_brew={}
-  for row,yhat,y in zip(test,pred,target):by_brew.setdefault(row.get('shot_id',evaluation_id),[]).append((y,yhat))
-  loss=sum(rmse([v[0] for v in pairs],[v[1] for v in pairs])/scale for pairs in by_brew.values())/len(by_brew)
-  results.append({'model_id':mid,'group_id':evaluation_id,'fit':model,'predictions':pred,'targets':target,'primary_loss':loss})
- return results
+def percentile_sorted(values,p):
+ """Nearest-rank percentile with zero-based ceil(p*n)-1 indexing."""
+ if not values:raise ValueError('EMPTY_PERCENTILE')
+ return sorted(values)[max(0,min(len(values)-1,math.ceil(p*len(values))-1))]
+def paired_bootstrap(brew_rows,fold_scales,subset=None,count=2000,seed=R3_SEED):
+ """Paired condition-then-brew bootstrap in normalized fold-loss space."""
+ by={}
+ for r in brew_rows:
+  if r['model_id'] in {'HYD_B1_PRESSURE_QUADRATIC','HYD_E1_LUMPED_DARCY'}:by.setdefault((r['outer_fold'],r['model_id']),{})[r['physical_unit_id']]=float(r['squared_error_g_s2'])
+ folds=sorted(subset or {k[0] for k in by});rng=random.Random(seed);draws=[]
+ for _ in range(count):
+  sampled=[rng.choice(folds) for _ in folds];loss={'HYD_B1_PRESSURE_QUADRATIC':0.0,'HYD_E1_LUMPED_DARCY':0.0}
+  for f in sampled:
+   shared=sorted(set(by[(f,'HYD_B1_PRESSURE_QUADRATIC')])&set(by[(f,'HYD_E1_LUMPED_DARCY')]))
+   picked=[rng.choice(shared) for _ in shared]
+   for m in loss:loss[m]+=math.sqrt(sum(by[(f,m)][u] for u in picked)/len(picked))/fold_scales[f]
+  draws.append((loss['HYD_B1_PRESSURE_QUADRATIC']-loss['HYD_E1_LUMPED_DARCY'])/len(folds))
+ return {'draws':draws,'low':percentile_sorted(draws,.025),'high':percentile_sorted(draws,.975),'quantile_convention':'nearest-rank ceil(p*n)-1'}
+def average_ranks(values):
+ order=sorted(range(len(values)),key=lambda i:values[i]);r=[0.0]*len(values);i=0
+ while i<len(order):
+  j=i
+  while j+1<len(order) and values[order[j+1]]==values[order[i]]:j+=1
+  rank=(i+j+2)/2
+  for k in range(i,j+1):r[order[k]]=rank
+  i=j+1
+ return r
+def spearman(values_a,values_b):
+ a=average_ranks(values_a);b=average_ranks(values_b);am=sum(a)/len(a);bm=sum(b)/len(b);den=math.sqrt(sum((x-am)**2 for x in a)*sum((y-bm)**2 for y in b))
+ return 0.0 if den==0 else sum((x-am)*(y-bm) for x,y in zip(a,b))/den
+def map_r4_result(required_failed,low_ok,high_ok,full_ci,low_ci):
+ if required_failed or full_ci is None or low_ci is None:return 'HYDRAULIC_UTILITY_TEST_BLOCKED'
+ if not low_ok:return 'REDUCED_DARCY_SYSTEMATICALLY_WRONG_ON_PRESSURE_RESPONSE'
+ if low_ci[0]>0 and (not high_ok or full_ci[0]<=0):return 'REDUCED_DARCY_LOW_PRESSURE_LIMIT_SUPPORTED_FULL_PRESSURE_DOMAIN_INSUFFICIENT'
+ if high_ok and full_ci[0]>0:return 'REDUCED_DARCY_CONDITIONAL_UTILITY_ESTABLISHED_FULL_DOMAIN'
+ if high_ok and full_ci[0]<=0<=full_ci[1]:return 'REDUCED_DARCY_INDISTINGUISHABLE_FROM_EMPIRICAL_BASELINE_PREFER_SIMPLER_CONDITIONAL_FORM'
+ return 'NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE'
+ARCHITECTURE_MAP={'HYDRAULIC_UTILITY_TEST_BLOCKED':'NOT_ADJUDICATED','REDUCED_DARCY_SYSTEMATICALLY_WRONG_ON_PRESSURE_RESPONSE':'REJECT_REDUCED_FORM_FOR_FULL_PRESSURE_RESPONSE','REDUCED_DARCY_LOW_PRESSURE_LIMIT_SUPPORTED_FULL_PRESSURE_DOMAIN_INSUFFICIENT':'RETAIN_LOW_PRESSURE_DARCY_LIMIT_SIMPLIFY_OR_REPARAMETERIZE_FULL_HYDRAULICS','REDUCED_DARCY_CONDITIONAL_UTILITY_ESTABLISHED_FULL_DOMAIN':'RETAIN_AS_CONDITIONAL_COMPONENT','REDUCED_DARCY_INDISTINGUISHABLE_FROM_EMPIRICAL_BASELINE_PREFER_SIMPLER_CONDITIONAL_FORM':'PREFER_REDUCED_CONDITIONAL_FORM_BY_PARSIMONY_FULL_EWP_NOT_ADJUDICATED','NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE':'NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE'}
+def experiment_from_architecture(arch):
+ if arch=='NOT_ADJUDICATED':return 'HYDRAULIC_EXECUTION_BLOCKER_MUST_BE_RESOLVED_M01_NOT_ADJUDICATED'
+ if arch in {'NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE','PREFER_REDUCED_CONDITIONAL_FORM_BY_PARSIMONY_FULL_EWP_NOT_ADJUDICATED'}:return 'SIMPLIFY_BEFORE_HYDRAULIC_SPECIFIC_EXPERIMENT_M01_NOT_ADJUDICATED'
+ return 'CONDITIONAL_HYDRAULIC_RELATION_RETAINED_M01_NOT_ADJUDICATED'
 
 def rmse(y,p): return math.sqrt(sum((a-b)**2 for a,b in zip(y,p))/len(y)) if y else math.inf
 def total_variation(y,p):

@@ -1,5 +1,5 @@
 {
-  "aggregate_content_sha256": "30f586b001e6f0a69dc41e58e2704e1842c9a2a3a9c5834078a8d0afc8c17377",
+  "aggregate_content_sha256": "9032817681dbb076d7ea3531dcb20ce7a632da8f53e76f23b81e57c453cc8084",
   "artifacts": [
     {
       "path": "docs/analysis/sci_md_010/ISSUE_CONTRACT.md",
@@ -51,7 +51,7 @@
     },
     {
       "path": "docs/analysis/sci_md_010/MODEL_SPECIFICATIONS.json",
-      "sha256": "0bc4c7acf5a1ddd64c0af9f94644c1b514cabdabc379b5f79b51e92eae37dc86"
+      "sha256": "208d9539ca07a82d9d4b51c2e3e7e52218ae5db233700be50898c222167bf35c"
     },
     {
       "path": "docs/analysis/sci_md_010/PRIVILEGE_LEDGER.csv",
@@ -59,42 +59,42 @@
     },
     {
       "path": "docs/analysis/sci_md_010/METRIC_CONTRACT.json",
-      "sha256": "21f67ddab80206d67fb8fa27f756a1a6b711640a6ffd06fdd50f6a80350f6100"
+      "sha256": "b4f13f1aa512a41a07c9649aeabaae1cc582cbe65bff0bf585803aef261a833d"
     },
     {
       "path": "docs/analysis/sci_md_010/EVALUATION_CONTRACT.json",
-      "sha256": "203abc97aac0877c734bc85d8a21d1254c42a5588ae9b315a2900838552f98e5"
+      "sha256": "7fa9471fcfefb8087f5fdb68eee83171e2625ea869fa487b95e83ce27289ea9b"
     },
     {
       "path": "docs/analysis/sci_md_010/PRE_SCORE_FREEZE.json",
-      "sha256": "f6a584b9bc1b194b2cf2b4f5ed49cc1cac1349dc891458f55c44507b9e37d2fc"
+      "sha256": "87d6b626155b3bb8f50fb7df060170557877a52c51215f3edd8b01c016d4d824"
     },
     {
       "path": "docs/analysis/sci_md_010/FREEZE_REPORT.md",
-      "sha256": "d95f40de15d936477c742a1e4e470022ca8cc6291478709ab51977d4b668c3ff"
+      "sha256": "6cea47e7f53262be23a5a5dc89f76eb8a341f3df14fb5fa2e2cd8dea323befbb"
     },
     {
       "path": "scripts/sci_md_010_core.py",
-      "sha256": "474ec61d515f58e5b4de9b40d963a9808ff797af6bc83c0cdd4947586b5de49b"
+      "sha256": "fd174c5d71bc9cb72246e696209bde03f26dff804550e0483b3a44d9d596dfdc"
     },
     {
       "path": "scripts/sci_md_010_prepare.py",
-      "sha256": "1ccd8a3408a3834913e77988f287ca8ef3b525f5bbf03ec058bb586da588ef99"
+      "sha256": "2466a6a755bc3389654b4c1d10d6d763790259df2fb56f79ba8bbf031651b3b0"
     },
     {
       "path": "scripts/sci_md_010_execute.py",
-      "sha256": "eba12c0cc25efc0fb7ae3e95b4a896db8c83c60a440ee7cf7db66c2ecafdc79e"
+      "sha256": "51129bc77b4536a5409bc79eaa4efb9e9d68e2530bcbcc0df8bce427cb8cd106"
     },
     {
       "path": "scripts/validate_sci_md_010.py",
-      "sha256": "2f534c97cedc7ca41e409a69976638c751056587970b1807dd2dfb6cb05e8506"
+      "sha256": "e20a804fa0c55f91ae77843d24759206e6858111248b3220b95c2d4a4fb2b3a5"
     },
     {
       "path": "tests/test_sci_md_010.py",
-      "sha256": "6179c3e98f4465e457a3057a5e2603501ab1057e54e1d04075e882f4b4485c8b"
+      "sha256": "fe57d85ee6b6cf0d10ad6ef639df1885bbc95670e30eb83be385fc6c95364a65"
     }
   ],
-  "revision": "R3",
+  "revision": "R4",
   "scoring_executed": false,
   "task_id": "SCI-MD-010"
 }
