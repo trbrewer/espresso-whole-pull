@@ -1,0 +1,27 @@
+{
+  "task_id": "SCI-MD-011",
+  "production_files": {
+    "solver/espressoWholePullFoam/poroelasticCompaction.H": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6"
+  },
+  "symbol_sha256": {
+    "poroelasticIntegral": "442cfb04c2358b2a8e157e8a0ed8136cffe85183b2f1a92d4dfaa7196c3761f4",
+    "poroelasticUniversalIntegral": "c03ebec3aa135197c48e958361558998ac1c6b0203c9a9ea3a1fda98af6b3827",
+    "poroelasticUniversalQhat": "f14df16a99a74c1f15b42564e0d2191755db712471331e835dee5182ed2d6bf2",
+    "poroelasticPermeabilityRatio": "608c57032abcbfb06e6aba669dbc2e53bc54d880342823a330c4db4ecac84060",
+    "poroelasticPuckFlow": "7eb06344ec2ff114bfc5ac25d43c9f3ec245552fa9133d7cb4404c607c134362",
+    "poroelasticSaturatedPuckState": "771091491964c05c934afaabed8f6369b7209d94c86ed754854c8be385806e78"
+  },
+  "mapping": {"X":"p_basket/Pc","stressFreePorosity":"fixed Phi","criticalCompactionPressure":"Pc","mobility_geometry_scale":"Qc"},
+  "fixed_phi": 0.12202109866812735,
+  "fixed_phi_authority": "k_solids__g/dose__g = 2.257390325360356/18.5",
+  "dense_grid": {"points":100001,"x_min":0,"x_max":1,"max_abs_fphi_minus_f0":0.008305675506984245,"argmax_x":0.20341},
+  "oracle": {"path":"tests/fixtures/sci_md_011_closure_oracle/sci_md_011_closure_oracle.C","runner":"scripts/run_sci_md_011_closure_oracle.sh","absolute_tolerance":1e-12,"relative_tolerance":1e-12,"production_header_unchanged":true,"phi_values":[0.12202109866812735,0.1,0.4],"x_values":[0,0.1,0.25,0.5,0.9,0.999999,1]},
+  "domain":"0 <= x < 1 for prediction; x=1 normalization/oracle only",
+  "monotone":true,
+  "saturation_capability":true,
+  "turnover_capability":false,
+  "full_production_machine_boundary_equivalence":false,
+  "physical_validation":"NOT_ESTABLISHED"
+}

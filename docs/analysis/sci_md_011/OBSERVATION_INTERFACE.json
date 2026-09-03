@@ -1,0 +1,24 @@
+{
+  "authority": "SCI_MD_010_ACCEPTED_LINE_TO_BASKET_OBSERVATION_ADAPTER",
+  "equation": "p_basket_pred = p_line_measured - (a*q_pred^2+b*q_pred+c)",
+  "evaluation_units": 56,
+  "machine_calibration": {
+    "a": 0.017184292098914252,
+    "b": 0.03670858658698296,
+    "c": 0.2831597837775055
+  },
+  "outer_folds": 11,
+  "predictive_input": "directly measured endpoint line_pressure__bar",
+  "pressure_conditions": 11,
+  "prohibited_input": "flow-derived or target-derived basket pressure",
+  "safety_flow_range_g_s": [
+    0,
+    20
+  ],
+  "source_60_brew_calibration": "CONTEXT_ONLY",
+  "target": {
+    "field": "mass_flow_rate__g_per_s",
+    "role": "accepted equilibrium proxy; not identical to source 110-120 s calibration",
+    "time": "endpoint_100s"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "ewp": {
+    "commit": "375b19b96096cf1d9681ab26efec7ed02b87dd09",
+    "tree": "5ae6135157019048205fe6bcdd6a9c2bce0a51fc"
+  },
+  "issue_139": "CLOSED",
+  "pr_140": "MERGED",
+  "production_puckworks_lock": {
+    "adoption_recommendation": "ADOPT_WITH_FOLLOWUP",
+    "alignment_status": "REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF",
+    "checkout_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "checkout_tree_sha": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "dependency_role": "external public evidence/model/data dependency",
+    "historical_reviewed_commit": "352dacd51015d95a3b5a5b3e1a8fb331419d78b0",
+    "impact_report_json": "validation/integration/PUCKWORKS_UPDATE_IMPACT.json",
+    "impact_report_markdown": "docs/integration/PUCKWORKS_UPDATE_IMPACT.md",
+    "per_artifact_rights_review_required": true,
+    "previous_checkout_commit": "352dacd51015d95a3b5a5b3e1a8fb331419d78b0",
+    "repository_code_license": "MIT",
+    "repository_url": "https://github.com/trbrewer/puckworks.git",
+    "review_cutoff_utc": "2026-07-28T16:12:00Z",
+    "reviewed_main_resolved_at_utc": "2026-07-28T16:05:27Z",
+    "reviewed_ref": "refs/heads/main",
+    "rights_restricted_material_vendored": false,
+    "schema_version": "espresso.public.puckworks_lock.v2",
+    "submodule": false,
+    "vendored": false
+  },
+  "puckworks_analysis": {
+    "commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "sources": [
+      {
+        "path": "docs/cards/waszkiewicz2025.md",
+        "sha256": "fa5708aeedc3d069fdf22d50aabf02d44db430399fb21be1ec37c5ebd1279698"
+      },
+      {
+        "path": "puckworks/models/waszkiewicz2025/poroelastic.py",
+        "sha256": "7dcce1b91ead1043a7e62f47d09a84973b900e720e4af364f4415f2165e8aa8e"
+      },
+      {
+        "path": "puckworks/data/MANIFEST.csv",
+        "sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/solids_calibration.csv",
+        "sha256": "98cbdd42ea99dc454b7c150c86e07c78bca07e7987e5ac5a0f37b7008937e04d"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/constants.csv",
+        "sha256": "0428390dae9c3032adb31d155dfc21b56ee34f0b407e8089fee3a31e47abf4ee"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/brewer_quadratic_params.csv",
+        "sha256": "60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/equilibrium_windows.csv",
+        "sha256": "c33bd01729cfe63db6d319d9c64afcac818050fdf8c888ab4d47dc233d5e2213"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+        "sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08"
+      }
+    ],
+    "tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+    "worktree": "CLEAN"
+  },
+  "reviewed_to_live_delta": [],
+  "stage_d_authorized": false,
+  "stage_f_authorized": false,
+  "task_id": "SCI-MD-011"
+}

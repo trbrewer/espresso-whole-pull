@@ -1,13 +1,15 @@
 # Existing Data Leverage Programme
 
-## Current programme state (2026-09-02)
+## Current programme state (2026-09-03)
 
-SCI-MD-010 is `PHASE_B_EXECUTION_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`.
+SCI-MD-010 is `MERGED_COMPLETE`.
 L-HYD is `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`;
 reduced E1 is `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2
-is `NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
-unauthorized, no automatic successor is selected, and physical validation
+is `NOT_ADJUDICATED`. SCI-MD-011 is
+`ACTIVE_OWNER_AUTHORIZED_G1_EXISTING_DATA_TASK`. SCI-ED-003 remains complete,
+Stage F/D remain unauthorized, and physical validation
 remains `NOT_ESTABLISHED`.
+No automatic successor is selected.
 The SCI-ED-003 owner decision remains bounded; its status is
 `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`, and execution requires
 separate owner authorization.

@@ -1,0 +1,76 @@
+{
+  "artifacts": [
+    {
+      "path": "docs/analysis/sci_md_010/ANALYSIS_ROW_INDEX.csv",
+      "sha256": "b272aeb67727b2a889a40245ff294804e405cd244242ad73d24c13237bdad8a8"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FOLD_ASSIGNMENTS.csv",
+      "sha256": "f825deec8ea10481e9282b3a17971a52da5a72e6450a00663534561e9a11d4fa"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv",
+      "sha256": "72ea3fbdf31acf4304b99b3ed3a920fc797357583f46238b6938107303202064"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/BREW_RESULTS.csv",
+      "sha256": "3a293f6a702f9cad357afe08689f07a2b54924f069355f4b6e7b7fc95dfd2e5f"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FOLD_RESULTS.csv",
+      "sha256": "3adf5f1bc965fa0a1d31c2c97fd12d2e59076c4b17a0b0cac0c5b621af805faa"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/CONDITION_RESULTS.csv",
+      "sha256": "00f122e5f0bea379fd5821f1635945788a7e69e3a1e90a4ef1e0df4756fe5383"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/AGGREGATE_RESULTS.csv",
+      "sha256": "c38a7cabafeccdae3d38a7b1151ff5c5cd41eaa1cfe45f5c99196c37e8eecc0b"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/UNCERTAINTY_RESULTS.json",
+      "sha256": "4c40816e2eebd0c5448075175defbaaddcf99da1c9689d950ffb68fdfe2aaf56"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/PRESSURE_RESPONSE_DIAGNOSTICS.json",
+      "sha256": "f35b42ace4f3f07992a46af8f1dcc2fa0689dd8554a0ff84f18a8f274f747bcd"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/PARAMETER_STABILITY.csv",
+      "sha256": "72664401b59429169cd9430f2d53832dac97af6282156ccce4ad0c1901488eee"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/METRIC_CONTRACT.json",
+      "sha256": "b4f13f1aa512a41a07c9649aeabaae1cc582cbe65bff0bf585803aef261a833d"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/MODEL_SPECIFICATIONS.json",
+      "sha256": "208d9539ca07a82d9d4b51c2e3e7e52218ae5db233700be50898c222167bf35c"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/INPUT_ARTIFACT_REGISTER.json",
+      "sha256": "026c4b7891c431b66f219bdfd6825b45047a43c1e03331e2860bf30769fb7f03"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/PRE_SCORE_FREEZE.json",
+      "sha256": "87d6b626155b3bb8f50fb7df060170557877a52c51215f3edd8b01c016d4d824"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FREEZE_ARTIFACT_MANIFEST.json",
+      "sha256": "cdac6800b8976290621b1f0e75b484c7b062833d4ebe03fefee51a8789dbf030"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/RESULT_ARTIFACT_MANIFEST.json",
+      "sha256": "2e7379806f021bc26649fd8169b07620a85808c74a6f590d4441e07530d3a3d5"
+    }
+  ],
+  "freeze_head": "9b1c7ed2505ac5a95768cdd188682e7a6ee6ee77",
+  "freeze_manifest_sha256": "cdac6800b8976290621b1f0e75b484c7b062833d4ebe03fefee51a8789dbf030",
+  "freeze_tree": "1ef01bd26ee2a45ec509ee8c6afa99eaa009c4a5",
+  "result_head": "72236a656b9d8230e657ce5cb2df4b610f5c1503",
+  "result_manifest_sha256": "2e7379806f021bc26649fd8169b07620a85808c74a6f590d4441e07530d3a3d5",
+  "sci_md_010_merge_commit": "375b19b96096cf1d9681ab26efec7ed02b87dd09",
+  "sci_md_010_merge_tree": "5ae6135157019048205fe6bcdd6a9c2bce0a51fc",
+  "task_id": "SCI-MD-011"
+}

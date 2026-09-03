@@ -1,0 +1,56 @@
+{
+  "bounds": {
+    "Pc_bar": [
+      13.00000001,
+      100.0
+    ],
+    "Qc_g_s": [
+      0.01,
+      20.0
+    ]
+  },
+  "bounds_basis": "broad numerical/source-domain admissibility; not candidate performance",
+  "models": [
+    {
+      "model_id": "HYD_B0_TRAINING_MEAN",
+      "role": "contextual naive; immutable SCI-MD-010 reuse"
+    },
+    {
+      "equation": "max(0,a0+a1*p_line+a2*p_line^2)",
+      "model_id": "HYD_B1_PRESSURE_QUADRATIC",
+      "role": "accepted comparator; immutable reuse plus integrity recomputation"
+    },
+    {
+      "equation": "Qc*x*(4-6*x+4*x^2-x^3)",
+      "fitted": [
+        "log(Qc_g_s)",
+        "log(Pc_bar)"
+      ],
+      "model_id": "HYD_P1_POROELASTIC_UNIVERSAL_LIMIT"
+    },
+    {
+      "equation": "Qc*J(x,Phi)/J(1,Phi)",
+      "fitted": [
+        "log(Qc_g_s)",
+        "log(Pc_bar)"
+      ],
+      "fixed_Phi": 0.12202109866812735,
+      "model_id": "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT",
+      "phi_privilege": "TARGET_EXPOSED_SOURCE_CONDITIONED_CONTEXT_NOT_FOLD_FITTED"
+    }
+  ],
+  "optimizer": {
+    "log_step_stop": 1e-05,
+    "max_iterations_per_start": 24,
+    "refinement": "bounded coordinate pattern search",
+    "same_for_candidates": true,
+    "starts": "2x2 inclusive deterministic log-boundary lattice",
+    "tie_break": "objective then lexicographic log parameters"
+  },
+  "parameterization": "log positive",
+  "production_code": {
+    "path": "solver/espressoWholePullFoam/poroelasticCompaction.H",
+    "sha256": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6"
+  },
+  "task_id": "SCI-MD-011"
+}

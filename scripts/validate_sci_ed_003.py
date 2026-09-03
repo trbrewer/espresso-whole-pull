@@ -85,7 +85,7 @@ def validate(root: Path) -> None:
     machine=json.loads((root/"provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json").read_text())
     require(machine["home_lab_status"] == HOME_LAB, "stale home-lab current status")
     selected=next(x for x in machine["opportunities"] if x["opportunity_id"]==machine["current_priority"])
-    require(selected["status"].startswith("COMPLETE_") and machine["last_completed_opportunity_review"]==machine["current_priority"], "current priority is not the completed owner-decision item")
+    require((selected["status"]=="ACTIVE" and machine["current_priority"]=="SCI-MD-011") or (selected["status"].startswith("COMPLETE_") and machine["last_completed_opportunity_review"]==machine["current_priority"]), "current priority is neither the authorized SCI-MD-011 task nor the completed owner-decision item")
     require(machine["laboratory_gate"]["operation_authorized"] is False and machine["laboratory_gate"]["separate_owner_authorization_required"] is True, "laboratory authorization fail-open")
     stale = [
         r"SCI-ED-003.{0,40}(?:is|`)\s*(?:`)?READY",

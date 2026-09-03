@@ -2,7 +2,7 @@
   "$schema": "../schemas/existing_data_leverage_programme.schema.json",
   "schema_version": 1,
   "programme_id": "ESPRESSO-EXISTING-DATA-LEVERAGE-PROGRAMME",
-  "current_priority": "SCI-ED-003",
+  "current_priority": "SCI-MD-011",
   "home_lab_status": "DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION",
   "authorities": {
     "puckworks_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
@@ -17,6 +17,30 @@
     "ewp_tree": "63c28db50e807d38faf65fc68b22da98f52c20f3"
   },
   "opportunities": [
+    {
+      "opportunity_id": "SCI-MD-011",
+      "title": "High-pressure poroelastic puck-closure adjudication",
+      "data_families": ["waszkiewicz2025"],
+      "scientific_question": "Do the universal or implemented finite-Phi quasi-static closures predict held-out pressure conditions relative to B1?",
+      "model_component": "quasi-static poroelastic puck closure",
+      "status": "ACTIVE",
+      "priority": 1,
+      "prerequisites": ["SCI-MD-010 MERGED_COMPLETE"],
+      "task_id": "SCI-MD-011",
+      "current_evidence": "Owner-authorized Phase A freeze implementation",
+      "expected_information": "retrospective grouped predictive utility",
+      "positive_action": "retain supported conditional component pending separate production decision",
+      "negative_action": "retire tested closure family from current priority",
+      "null_action": "prefer universal limit or empirical comparator by parsimony",
+      "blocked_action": "record exact equivalence source parameter domain root or execution blocker",
+      "claim_ceiling": "RETROSPECTIVE_SOURCE_CONDITIONED_GROUPED_PREDICTIVE_UTILITY_OF_AN_IMPLEMENTED_PUCK_CLOSURE_UNDER_THE_SCI_MD_010_OBSERVATION_ADAPTER_ONLY",
+      "home_lab_effect": "DEFER",
+      "completion_evidence": [],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "independent exact-freeze review",
+      "notes": "G1 existing-data component test only; Stage F/D unauthorized; physical validation NOT_ESTABLISHED."
+    },
     {
       "opportunity_id": "XSV-WASZKIEWICZ-DYNAMIC-HYD-001",
       "title": "Grouped comparison of fixed versus evolving basket-node effective hydraulic resistance",
@@ -515,6 +539,18 @@
     "before laboratory or procurement recommendation",
     "before exhaustion declaration"
   ],
-  "current_claim_ceiling": "CLOSURE_CONTRACT_ONLY",
-  "last_completed_opportunity_review": "SCI-ED-003"
+  "current_claim_ceiling": "RETROSPECTIVE_SOURCE_CONDITIONED_GROUPED_PREDICTIVE_UTILITY_OF_AN_IMPLEMENTED_PUCK_CLOSURE_UNDER_THE_SCI_MD_010_OBSERVATION_ADAPTER_ONLY",
+  "last_completed_opportunity_review": "SCI-ED-003",
+  "active_task": {
+    "task_id": "SCI-MD-011",
+    "status": "ACTIVE_OWNER_AUTHORIZED_G1_EXISTING_DATA_TASK",
+    "sci_md_010_status": "MERGED_COMPLETE",
+    "sci_md_010_result": "NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE",
+    "reduced_e1_architecture": "NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE",
+    "current_full_ewp": "NOT_ADJUDICATED",
+    "experiment_recommendation": "SIMPLIFY_BEFORE_HYDRAULIC_SPECIFIC_EXPERIMENT_M01_NOT_ADJUDICATED",
+    "stage_f_authorized": false,
+    "stage_d_authorized": false,
+    "physical_validation": "NOT_ESTABLISHED"
+  }
 }

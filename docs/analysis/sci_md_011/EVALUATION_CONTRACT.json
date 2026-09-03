@@ -1,0 +1,63 @@
+{
+  "claim_level": "LEVEL_3_RETROSPECTIVE_GROUPED_WITHIN_SOURCE_CONDITIONAL_ON_MEASURED_HYDRAULIC_CONTEXT",
+  "current_full_ewp": "NOT_TESTED",
+  "domain": {
+    "epsilon": 1e-10,
+    "flow_consistency_tolerance": 2e-09,
+    "line_pressure_le_c": "zero flow and basket pressure",
+    "maximum_iterations": 100,
+    "no_bracket": "retain failed prediction",
+    "nonfinite": "reject",
+    "pressure_residual_tolerance_bar": 1e-09,
+    "x": [
+      0,
+      "1 exclusive"
+    ]
+  },
+  "fit": {
+    "bounds": {
+      "Pc_bar": [
+        13.00000001,
+        100.0
+      ],
+      "Qc_g_s": [
+        0.01,
+        20.0
+      ]
+    },
+    "objective": "condition-balanced squared flow error g2/s2"
+  },
+  "fixed_phi": 0.12202109866812735,
+  "fold_assignments": "docs/analysis/sci_md_010/FOLD_ASSIGNMENTS.csv",
+  "fold_membership": "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv",
+  "gates": {
+    "high": "predicted slope <= 0",
+    "high_subset_condition_mean_line_pressure_bar": ">=8.5",
+    "low": "predicted slope > 0",
+    "low_subset_condition_mean_line_pressure_bar": "<=5.25"
+  },
+  "machine_calibration": {
+    "a": 0.017184292098914252,
+    "b": 0.03670858658698296,
+    "c": 0.2831597837775055
+  },
+  "metrics": {
+    "bootstrap_count": 2000,
+    "bootstrap_refit": false,
+    "primary": "equal-condition mean of fold RMSE/training condition-mean flow range",
+    "quantile": "nearest-rank ceil(p*n)-1",
+    "seed": 20260902,
+    "unit": "condition_then_paired_brew"
+  },
+  "model_specifications": "docs/analysis/sci_md_011/MODEL_SPECIFICATIONS.json",
+  "models": [
+    "HYD_B0_TRAINING_MEAN",
+    "HYD_B1_PRESSURE_QUADRATIC",
+    "HYD_P1_POROELASTIC_UNIVERSAL_LIMIT",
+    "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT"
+  ],
+  "observation_interface": "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json",
+  "row_index": "docs/analysis/sci_md_010/ANALYSIS_ROW_INDEX.csv",
+  "sci_md_010_brew_results": "docs/analysis/sci_md_010/BREW_RESULTS.csv",
+  "task_id": "SCI-MD-011"
+}

@@ -1,8 +1,16 @@
 # Project State
 
-## SCI-MD-010 Phase B result (2026-09-02)
+## SCI-MD-011 active owner-authorized task (2026-09-03)
 
-`PHASE_B_EXECUTION_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`. L-HYD is
+`ACTIVE_OWNER_AUTHORIZED_G1_EXISTING_DATA_TASK`. This task adjudicates only the
+implemented poroelastic puck-closure component under the frozen SCI-MD-010
+observation adapter. Current full EWP is `NOT_ADJUDICATED`; Stage F and Stage D
+are `NOT_AUTHORIZED`; physical validation is `NOT_ESTABLISHED`.
+No automatic successor is selected.
+
+## SCI-MD-010 merged result (2026-09-03)
+
+`MERGED_COMPLETE`. L-HYD is
 `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`; reduced E1 is
 `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2 is
 `NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain

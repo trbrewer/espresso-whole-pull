@@ -8,9 +8,9 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         data = module.validate()
-        self.assertEqual(data["current_priority"], "SCI-ED-003")
+        self.assertEqual(data["current_priority"], "SCI-MD-011")
         self.assertEqual(data["last_completed_opportunity_review"], "SCI-ED-003")
-        self.assertEqual(data["current_claim_ceiling"], "CLOSURE_CONTRACT_ONLY")
+        self.assertEqual(data["current_claim_ceiling"], "RETROSPECTIVE_SOURCE_CONDITIONED_GROUPED_PREDICTIVE_UTILITY_OF_AN_IMPLEMENTED_PUCK_CLOSURE_UNDER_THE_SCI_MD_010_OBSERVATION_ADAPTER_ONLY")
         self.assertEqual(data["home_lab_status"], "DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION")
 
     @classmethod
@@ -34,15 +34,15 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         self.assertNotIn("implementation not authorized", ledger["data_not_yet_used"].lower())
 
     def test_current_priority_coherence(self):
-        successor = [x for x in self.programme["opportunities"] if x["opportunity_id"] == "SCI-ED-003"]
-        ledger = [x for x in self.ledger if x["opportunity_id"] == "SCI-ED-003"]
+        successor = [x for x in self.programme["opportunities"] if x["opportunity_id"] == "SCI-MD-011"]
+        ledger = [x for x in self.ledger if x["opportunity_id"] == "SCI-MD-011"]
         self.assertEqual((len(successor), len(ledger)), (1, 1))
         successor, ledger = successor[0], ledger[0]
-        self.assertEqual(self.programme["current_priority"], "SCI-ED-003")
+        self.assertEqual(self.programme["current_priority"], "SCI-MD-011")
         self.assertEqual(successor["status"], ledger["current_status"])
-        self.assertEqual(successor["status"], "COMPLETE_POSITIVE")
+        self.assertEqual(successor["status"], "ACTIVE")
         self.assertEqual(self.programme["current_claim_ceiling"], successor["claim_ceiling"])
-        self.assertIn("EXECUTION_NOT_AUTHORIZED", successor["notes"])
+        self.assertIn("Stage F/D unauthorized", successor["notes"])
         self.assertIn("NOT_ESTABLISHED", successor["notes"])
         self.assertFalse(self.programme["laboratory_gate"]["operation_authorized"])
         self.assertTrue(self.programme["laboratory_gate"]["separate_owner_authorization_required"])
