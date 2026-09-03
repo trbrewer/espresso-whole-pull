@@ -1,5 +1,5 @@
 {
-  "aggregate_content_sha256": "740925cec9ab7d17f0e0b3138edb2b12c05acb54416e2d522238f713c091b646",
+  "aggregate_content_sha256": "2fd8192b04b8d57de0e7e9473df88858ee9c95fbb57b075f9d761a47f014fe1f",
   "artifacts": [
     {
       "path": "docs/analysis/sci_md_011/TASK_CONTRACT.md",
@@ -7,7 +7,7 @@
     },
     {
       "path": "docs/analysis/sci_md_011/AUTHORITY_AND_HANDOFF.json",
-      "sha256": "f0c58b162a77ce96573c5fa9df968a8e20770b4837bf23926f1985e2e577d481"
+      "sha256": "c3d5e73ff7661deac62c4ce87e51b525311902d11577a271843d4dd40b18ec79"
     },
     {
       "path": "docs/analysis/sci_md_011/SCI_MD_010_HANDOFF.json",
@@ -15,19 +15,19 @@
     },
     {
       "path": "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json",
-      "sha256": "36fa963f0c4250aec10a48b8812121a7ead15d49d6f0cdfcb6c3710cfbc594b9"
+      "sha256": "592f66b7a106e1817e5116dbab73cf69bb366581f3b3b5130d66f7def96c7cfb"
     },
     {
       "path": "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.md",
-      "sha256": "b908761808720cee40aa7b6bbdb5a3424ca857f57e470e510e169ced842b8a89"
+      "sha256": "7c006eebd98059a3643ea3bb2d0e85ecf90f4604e967f63646b57ce3a75ff2e3"
     },
     {
       "path": "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.json",
-      "sha256": "32190e7632e2c1868804412fa2079bfd771adccc49804e680cfe43a33850daec"
+      "sha256": "ad1a42783e90b0a74b2a69276340a5c0627c06125a758fcc341c3c78cdf75d1f"
     },
     {
       "path": "docs/analysis/sci_md_011/MODEL_SPECIFICATIONS.json",
-      "sha256": "320909c781b15a641ffad802ffbc9b3cd47c6e2e7c35d1b4aad989d060c7c171"
+      "sha256": "0076edccb28e0e7f68296b3b3d24c1077902ef8cc68c84915c079d736cfdb3db"
     },
     {
       "path": "docs/analysis/sci_md_011/PRIVILEGE_LEDGER.csv",
@@ -35,39 +35,47 @@
     },
     {
       "path": "docs/analysis/sci_md_011/EVALUATION_CONTRACT.json",
-      "sha256": "0613f71f6145d528ed1af5a2cac04126160f318d9db947165844e6ef1803147a"
+      "sha256": "cfe2ab384a440652d1c9b91c84491fa73fca1f5bdf66b32fecdaccf774ca28f0"
     },
     {
       "path": "docs/analysis/sci_md_011/PRE_SCORE_FREEZE.json",
-      "sha256": "407403549631a1629b7f40935271d4494efa4bc60b43ee9c7ab73a141065bfb0"
+      "sha256": "22388f27a2396d3c39ecfd1ff54aaa3da095dbbb9babcd25f19f709ed7e65ca2"
     },
     {
       "path": "docs/analysis/sci_md_011/FREEZE_REPORT.md",
-      "sha256": "f4e32e47eb404dba251feeb88c19dda6793d369700953dc385527ed51d1e6d3a"
+      "sha256": "1151408cd1c1cefffb4aaa4956e8c3e9fc041818d0bea6124e32351a488cd546"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/CLOSURE_ORACLE_RESULTS.csv",
+      "sha256": "89645aa3bbe210700465765eeed76383d8ffb42d2f51eb5c4a9b1c03e12d02b2"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/CLOSURE_ORACLE_RECEIPT.json",
+      "sha256": "db72a02d441087b5439b66cc53cfaed44886f994a85a19a07556e1c642cd9337"
     },
     {
       "path": "scripts/sci_md_011_core.py",
-      "sha256": "d783f1accf802e7ca8ea800e0f26f0148526e8c645bc1dbcd293202904a2b74c"
+      "sha256": "9951e067853815dfd323edf5032474bc112629fb4992f5155d60d3aa8608e29f"
     },
     {
       "path": "scripts/sci_md_011_prepare.py",
-      "sha256": "f8ac729e1c374a56fbe9c2d827789a4ebcf26c82619ea5323d1163722c483c27"
+      "sha256": "1d4496799449834e0e0d4206a93643bbb7720d19dbc845bbf26fd7385537106a"
     },
     {
       "path": "scripts/sci_md_011_execute.py",
-      "sha256": "c6d56253d04a159c6a394fb212832b149e2fbde53afa57528befcaa3de827448"
+      "sha256": "4b2789baed0ba088552f9c7b45107fb92acfa87259074ab00f15d550427eea08"
     },
     {
       "path": "scripts/validate_sci_md_011.py",
-      "sha256": "8965814f5fe4a20bb9a95d6688e68aa6f76672b5d2da7ff126bb1ca6d4698812"
+      "sha256": "cdb93eefb1ab9a03021ec673fbe81caef280adb03924040394be29add1913cf2"
     },
     {
       "path": "scripts/run_sci_md_011_closure_oracle.sh",
-      "sha256": "b5ae8a0055d516e143c6d7565f7ce4dfc4dd0313b7c2357659750174a6ef9426"
+      "sha256": "dc394e892e44dfd9427ba4f271dc84ac4344ca36dae59807a3b175316cd5770f"
     },
     {
       "path": "tests/test_sci_md_011.py",
-      "sha256": "967f0ad7d700bd5b1d9a957f36b3f4dd6045e60ebf455531189ed272b556d124"
+      "sha256": "4df401bf92d079c435f63f4f2e3e497156343533c662013a61ae50aaa9e7cb63"
     },
     {
       "path": "tests/fixtures/sci_md_011_synthetic_receipt.json",
@@ -86,6 +94,7 @@
       "sha256": "f9b96c6c772cfc029508cae6b97b22cac5db743df6f61e4e71873a50df6c1ef6"
     }
   ],
+  "revision": "R1",
   "scoring_executed": false,
   "task_id": "SCI-MD-011"
 }

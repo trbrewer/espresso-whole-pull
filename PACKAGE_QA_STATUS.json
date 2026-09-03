@@ -57,7 +57,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1315,
+    "python_test_count": 1356,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -77,8 +77,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1015,
-    "source_manifest_aggregate_sha256": "b347fdbd0fd4f6288efbbc1fb7e2a860bc03d1ea079cab14696e5129bc75d24c",
+    "source_manifest_file_count": 1017,
+    "source_manifest_aggregate_sha256": "659d85d7a3dee56a247bc989d6728757607dd9e9a9a85e8962701587e5f7065c",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",

@@ -1,5 +1,6 @@
 {
   "bootstrap_count": 2000,
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
   "current_full_ewp_validated": false,
   "ewp_base": {
     "commit": "375b19b96096cf1d9681ab26efec7ed02b87dd09",
@@ -7,7 +8,40 @@
   },
   "fixed_phi": 0.12202109866812735,
   "governance": "G1",
+  "identifiability": {
+    "adequate_condition_max": 100000.0,
+    "fold_log_cv_weak": 0.5,
+    "hessian_step": 0.001,
+    "minimum_relative_profile_increase": 1e-05,
+    "profile_log_offsets": [
+      0.05,
+      0.1,
+      0.25
+    ],
+    "weak_condition_max": 1000000000.0
+  },
+  "optimizer": {
+    "bound_hit_log_distance": 1e-05,
+    "lattice_points_per_axis": 5,
+    "max_evaluations": 4000,
+    "max_iterations_per_start": 32,
+    "objective_comparison_tolerance": 1e-14,
+    "step_reduction": 0.5,
+    "stopping_log_step": 1e-06,
+    "tie_break": "objective tolerance then lexicographic log(Qc),log(Pc)"
+  },
+  "parameter_bounds": {
+    "Pc_bar": [
+      1.0,
+      100.0
+    ],
+    "Qc_g_s": [
+      0.01,
+      20.0
+    ]
+  },
   "phase_b_authorized": false,
+  "physical_validation": "NOT_ESTABLISHED",
   "production_openfoam_case_count": 0,
   "puckworks_analysis": {
     "commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
@@ -51,6 +85,7 @@
   "real_candidate_fits_generated": false,
   "real_candidate_predictions_generated": false,
   "real_candidate_scores_generated": false,
+  "revision": "R1",
   "scoring_executed": false,
   "seed": 20260902,
   "selected_models": [
@@ -61,5 +96,7 @@
   ],
   "stage_d_authorized": false,
   "stage_f_authorized": false,
+  "superseded_freeze_disposition": "REVIEW_FAIL_MATERIAL_FINDINGS",
+  "supersedes_freeze_commit": "5c252033bcdd40d46dc4cc457e571aa729a8d1cc",
   "task_id": "SCI-MD-011"
 }

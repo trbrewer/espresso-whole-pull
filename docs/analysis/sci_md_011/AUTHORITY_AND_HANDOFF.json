@@ -26,6 +26,20 @@
     "submodule": false,
     "vendored": false
   },
+  "production_sources": [
+    {
+      "path": "solver/espressoWholePullFoam/poroelasticCompaction.H",
+      "sha256": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6"
+    },
+    {
+      "path": "solver/espressoWholePullFoam/machineBoundaryModel.H",
+      "sha256": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719"
+    },
+    {
+      "path": "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+      "sha256": "99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6"
+    }
+  ],
   "puckworks_analysis": {
     "commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
     "sources": [
@@ -65,8 +79,14 @@
     "tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
     "worktree": "CLEAN"
   },
-  "reviewed_to_live_delta": [],
+  "revision": "R1",
   "stage_d_authorized": false,
   "stage_f_authorized": false,
+  "starting_r0": {
+    "commit": "5c252033bcdd40d46dc4cc457e571aa729a8d1cc",
+    "freeze_manifest_file_sha256": "bbff4d488f84fad17509de69a28b057b45a9c2cec6496947c096262c7842e733",
+    "review_disposition": "REVIEW_FAIL_MATERIAL_FINDINGS",
+    "tree": "31c964eaeb91b8f6190aaab15325e8e1f99afe95"
+  },
   "task_id": "SCI-MD-011"
 }
