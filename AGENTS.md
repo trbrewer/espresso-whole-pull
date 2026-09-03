@@ -1,15 +1,15 @@
 # Public Repository Agent Rules
 
-SCI-ED-003 is complete with status
-`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`. The selected future
-candidate is M01 paired absolute chemistry/mass closure plus the contextual
-subset of M02 synchronized shot telemetry. Neither Stage F nor Stage D is
-authorized; either would require separate owner authorization. The current
-action is the bounded owner decision to authorize
-Stage F feasibility, decline execution, or request specific apparatus or
-laboratory capability input. No execution successor is automatically selected,
-no further Pannusch or data-fusion cleanup is selected, and physical validation
+SCI-MD-010 is `PHASE_B_EXECUTION_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`.
+Its L-HYD result is `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`;
+reduced E1 is `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2
+is `NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
+unauthorized, no automatic successor is selected, and physical validation
 remains `NOT_ESTABLISHED`.
+
+SCI-ED-003 is complete with status
+`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; its owner decision
+remains bounded and execution requires separate owner authorization.
 
 Scientific-development governance follows
 `docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md`.

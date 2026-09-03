@@ -39,11 +39,11 @@ class SciEd003Test(unittest.TestCase):
         self.mutate(edit)
     def test_stale_pannusch_current_priority_rejected(self):
         def edit(root):
-            p=root/"docs/ONBOARDING.md"; p.write_text(p.read_text().replace("SCI-DATA-FUSION-001 is complete", "SCI-MD-PANNUSCH-FLOW-HISTORY-001 is current. SCI-DATA-FUSION-001 is complete", 1))
+            p=root/"docs/ONBOARDING.md"; p.write_text(p.read_text().replace("SCI-MD-010 is", "SCI-MD-PANNUSCH-FLOW-HISTORY-001 is current. SCI-MD-010 is", 1))
         self.mutate(edit)
     def test_data_first_current_state_regression_rejected(self):
         def edit(root):
-            p=root/"docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md"; p.write_text(p.read_text().replace("SCI-DATA-FUSION-001 and SCI-ED-003 are\n> complete", "SCI-ED-003 is deferred and XSV-PANNUSCH-MULTIMODEL-001 is the immediate task", 1))
+            p=root/"docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md"; p.write_text(p.read_text().replace("SCI-MD-010 Phase B is complete", "SCI-ED-003 is deferred and XSV-PANNUSCH-MULTIMODEL-001 is the immediate task", 1))
         self.mutate(edit)
     def test_roadmap_current_action_regression_rejected(self):
         def edit(root):
@@ -51,6 +51,6 @@ class SciEd003Test(unittest.TestCase):
         self.mutate(edit)
     def test_direct_paired_current_gate_regression_rejected(self):
         def edit(root):
-            p=root/"README.md"; p.write_text(p.read_text().replace("The current repository\n> item is `OWNER_DECISION_PENDING`", "The current scientific gate is `DIRECT_PAIRED_MEASUREMENT_FEASIBILITY`", 1))
+            p=root/"README.md"; p.write_text(p.read_text().replace("SCI-MD-010 Phase B is complete", "The current scientific gate is `DIRECT_PAIRED_MEASUREMENT_FEASIBILITY`", 1))
         self.mutate(edit)
 if __name__=="__main__": unittest.main()

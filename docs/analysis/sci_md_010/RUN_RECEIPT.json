@@ -1,0 +1,14 @@
+{
+  "contract_sha256": "7fa9471fcfefb8087f5fdb68eee83171e2625ea869fa487b95e83ce27289ea9b",
+  "ewp_or_reduced_ewp_scored": true,
+  "freeze_manifest_sha256": "cdac6800b8976290621b1f0e75b484c7b062833d4ebe03fefee51a8789dbf030",
+  "freeze_sha256": "87d6b626155b3bb8f50fb7df060170557877a52c51215f3edd8b01c016d4d824",
+  "new_real_predictions_generated": true,
+  "new_real_scores_generated": true,
+  "prior_scores_materialized": false,
+  "review_receipt_sha256": "cd56ea04316f122a70f4227af85b158732c32f969f45f09d346c5cc87c2acf60",
+  "scoring_attempted": true,
+  "scoring_completed": true,
+  "scoring_executed": true,
+  "synthetic": false
+}

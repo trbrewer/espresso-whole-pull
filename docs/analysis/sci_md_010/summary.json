@@ -1,0 +1,13 @@
+{
+  "architecture_decision": "NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE",
+  "ewp_or_reduced_ewp_scored": true,
+  "experiment_recommendation": "SIMPLIFY_BEFORE_HYDRAULIC_SPECIFIC_EXPERIMENT_M01_NOT_ADJUDICATED",
+  "lane_result": "NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE",
+  "new_real_predictions_generated": true,
+  "new_real_scores_generated": true,
+  "prior_scores_materialized": false,
+  "scoring_attempted": true,
+  "scoring_completed": true,
+  "scoring_executed": true,
+  "synthetic": false
+}

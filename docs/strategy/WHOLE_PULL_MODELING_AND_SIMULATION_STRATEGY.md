@@ -1,15 +1,16 @@
 # Puckworks Whole-Pull Multiscale Modeling and Simulation Strategy
 
-> **Current execution note (2 September 2026):** The enduring strategy remains
-> controlling technical context. Current execution authority is the completed
-> SCI-ED-003 contract, with status
-> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`, plus the bounded
-> `OWNER_DECISION_PENDING` item defined by
-> the [Data-First Scientific Development Plan](DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md).
-> M01 plus contextual M02 is a future candidate; Stage F and Stage D are not
-> authorized, separate owner authorization is required for execution, no
-> automatic successor exists, and physical validation remains
-> `NOT_ESTABLISHED`.
+> **Current execution note (2 September 2026):** SCI-MD-010 Phase B is complete
+> pending final exact-result-head review. L-HYD is
+> `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`; reduced E1 is
+> `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2 is
+> `NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
+> unauthorized, no automatic successor is selected, and physical validation
+> remains `NOT_ESTABLISHED`.
+> SCI-ED-003 remains
+> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; its owner decision
+> remains bounded and execution requires separate owner authorization.
+> Stage F and Stage D are not authorized.
 
 **Strategy version:** 1.7
 **Date:** 4 August 2026

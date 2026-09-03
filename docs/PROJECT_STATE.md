@@ -1,5 +1,16 @@
 # Project State
 
+## SCI-MD-010 Phase B result (2026-09-02)
+
+`PHASE_B_EXECUTION_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`. L-HYD is
+`NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`; reduced E1 is
+`NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2 is
+`NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
+unauthorized, no automatic successor is selected, and physical validation
+remains `NOT_ESTABLISHED`.
+The separate SCI-ED-003 owner decision remains bounded and authorizes no
+execution; execution requires separate owner authorization.
+
 ## SCI-ED-003 closure-contract result (2026-09-02)
 
 `SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED`.

@@ -2,7 +2,17 @@
 
 ## Current claim ceiling (2026-09-02)
 
-The current claim ceiling is `CLOSURE_CONTRACT_ONLY`. SCI-ED-003 is complete
+The SCI-MD-010 claim ceiling is
+`RETROSPECTIVE_SOURCE_CONDITIONED_CONDITIONAL_HYDRAULIC_COMPONENT_UTILITY_ONLY`.
+Phase B is complete pending final exact-result-head review, with L-HYD
+`NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`, reduced E1
+`NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`, and current full EWP E2
+`NOT_ADJUDICATED`. It establishes no independent, full-EWP, grinder-to-cup,
+or physical validation.
+The separate SCI-ED-003 owner decision remains bounded and authorizes no
+execution; execution requires separate owner authorization.
+
+The SCI-ED-003 claim ceiling remains `CLOSURE_CONTRACT_ONLY`. SCI-ED-003 is complete
 with exact result
 `SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED`
 and status

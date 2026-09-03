@@ -1,15 +1,20 @@
 # Espresso Whole-Pull Program Handoff and Forward Execution Plan
 
-> **Current-status notice (2 September 2026):** Detailed historical execution blocks below
+> **Current-status notice (2 September 2026):** SCI-MD-010 Phase B is complete
+> pending final exact-result-head review. L-HYD is
+> `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`; reduced E1 is
+> `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2 is
+> `NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
+> unauthorized, no automatic successor is selected, and physical validation
+> remains `NOT_ESTABLISHED`. Detailed historical execution blocks below
 > are retained for provenance. Their current-action fields are superseded by
 > the [Data-First Scientific Development Plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md)
-> and live [Project State](PROJECT_STATE.md). SCI-ED-003 is complete with status
-> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; M01 plus contextual M02
-> is a future candidate and the current repository item is
-> `OWNER_DECISION_PENDING`. Stage F and Stage D are not authorized, separate
-> owner authorization is required for execution, no automatic successor exists,
-> and no solver, surrogate, or laboratory-execution task is active. Physical
-> validation remains `NOT_ESTABLISHED`.
+> and live [Project State](PROJECT_STATE.md).
+> SCI-ED-003 is complete with status
+> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; its bounded
+> `OWNER_DECISION_PENDING` requires separate owner authorization.
+> Stage F and Stage D are not authorized.
+> no solver, surrogate, or laboratory-execution task is active.
 
 Current addendum: `SCI-MD-001` is `CORRECTED_PENDING_EXACT_HEAD_REVIEW`. The enduring
 scientific sequence and restart handoff are maintained in the

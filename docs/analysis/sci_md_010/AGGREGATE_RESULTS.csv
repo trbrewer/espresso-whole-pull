@@ -1,0 +1,4 @@
+model_id,normalized_loss,normalized_delta_b1_minus_e1,normalized_delta_ci_low,normalized_delta_ci_high,low_pressure_normalized_delta_b1_minus_e1,low_pressure_normalized_delta_ci_low,low_pressure_normalized_delta_ci_high,materiality_status
+HYD_B0_TRAINING_MEAN,0.31786798610901296,,,,,,,PREDICTIVE_RANKING_ONLY
+HYD_B1_PRESSURE_QUADRATIC,0.1532500174983135,,,,,,,PREDICTIVE_RANKING_ONLY
+HYD_E1_LUMPED_DARCY,0.29894242558587686,-0.14569240808756337,-0.2487589900770766,-0.036163174040446486,-0.11232543181874685,-0.2669334833198054,0.029735204181095785,PREDICTIVE_RANKING_ONLY

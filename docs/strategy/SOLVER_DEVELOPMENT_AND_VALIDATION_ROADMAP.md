@@ -2,6 +2,17 @@
 
 ## Current roadmap authority (2026-09-02)
 
+SCI-MD-010 Phase B is complete pending final exact-result-head review. L-HYD is
+`NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`; reduced E1 is
+`NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2 is
+`NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
+unauthorized, no automatic successor is selected, and physical validation
+remains `NOT_ESTABLISHED`.
+SCI-ED-003 is complete with status
+`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; its owner decision is
+bounded and execution requires separate owner authorization. Stage F and Stage
+D are not authorized.
+
 SCI-ED-003 is complete with status
 `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`. M01 paired absolute
 chemistry/mass closure plus contextual M02 synchronized shot telemetry is the
