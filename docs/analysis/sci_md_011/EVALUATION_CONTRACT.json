@@ -1,0 +1,89 @@
+{
+  "blocked_precedence": true,
+  "current_full_ewp": "NOT_TESTED",
+  "domain": {
+    "coupled_equation_residual_tolerance_bar": 2e-09,
+    "epsilon": 1e-10,
+    "line_pressure_le_c": "zero flow and basket pressure",
+    "maximum_iterations": 100,
+    "no_bracket": "structured failed prediction; no clamp/exclusion",
+    "nonfinite": "structured rejection",
+    "pressure_residual_tolerance_bar": 1e-09,
+    "x": "0 <= x < 1"
+  },
+  "fit": {
+    "bounds": {
+      "Pc_bar": [
+        1.0,
+        100.0
+      ],
+      "Qc_g_s": [
+        0.01,
+        20.0
+      ]
+    },
+    "identifiability": {
+      "adequate_condition_max": 100000.0,
+      "fold_log_cv_weak": 0.5,
+      "hessian_step": 0.001,
+      "minimum_relative_profile_increase": 1e-05,
+      "profile_log_offsets": [
+        0.05,
+        0.1,
+        0.25
+      ],
+      "weak_condition_max": 1000000000.0
+    },
+    "objective": "condition-balanced squared flow error g2/s2",
+    "optimizer": {
+      "bound_hit_log_distance": 1e-05,
+      "lattice_points_per_axis": 5,
+      "max_evaluations": 40000,
+      "max_iterations_per_start": 256,
+      "objective_comparison_tolerance": 1e-14,
+      "step_reduction": 0.5,
+      "stopping_log_step": 1e-06,
+      "tie_break": "objective tolerance then lexicographic log(Qc),log(Pc)"
+    }
+  },
+  "fixed_phi": 0.12202109866812735,
+  "fold_assignments": "docs/analysis/sci_md_010/FOLD_ASSIGNMENTS.csv",
+  "fold_membership": "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv",
+  "gates": {
+    "finite_vs_universal_gate": "NONE",
+    "high": "predicted slope <= 0",
+    "high_subset_condition_mean_line_pressure_bar": ">=8.5",
+    "low": "predicted slope > 0",
+    "low_subset_condition_mean_line_pressure_bar": "<=5.25"
+  },
+  "machine_calibration": {
+    "a": 0.017184292098914252,
+    "b": 0.03670858658698296,
+    "c": 0.2831597837775055
+  },
+  "metrics": {
+    "bootstrap_count": 2000,
+    "bootstrap_refit": false,
+    "full_and_low_pressure_intervals": true,
+    "pairs": [
+      "B1_VS_P1",
+      "B1_VS_E2C",
+      "P1_VS_E2C"
+    ],
+    "primary": "equal-condition mean fold RMSE/training condition-mean-flow range",
+    "quantile": "nearest-rank ceil(p*n)-1",
+    "seed": 20260902,
+    "unit": "condition_then_paired_brew"
+  },
+  "models": [
+    "HYD_B0_TRAINING_MEAN",
+    "HYD_B1_PRESSURE_QUADRATIC",
+    "HYD_P1_POROELASTIC_UNIVERSAL_LIMIT",
+    "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT"
+  ],
+  "observation_interface": "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json",
+  "revision": "R2",
+  "row_index": "docs/analysis/sci_md_010/ANALYSIS_ROW_INDEX.csv",
+  "sci_md_010_handoff": "docs/analysis/sci_md_011/SCI_MD_010_HANDOFF.json",
+  "task_id": "SCI-MD-011"
+}

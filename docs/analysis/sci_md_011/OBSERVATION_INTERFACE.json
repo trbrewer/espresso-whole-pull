@@ -1,0 +1,31 @@
+{
+  "authority": "SCI_MD_010_ACCEPTED_LINE_TO_BASKET_OBSERVATION_ADAPTER",
+  "equation": "p_basket_pred=p_line_measured-(a*q_pred^2+b*q_pred+c)",
+  "machine_calibration": {
+    "a": 0.017184292098914252,
+    "b": 0.03670858658698296,
+    "c": 0.2831597837775055
+  },
+  "membership_authority": "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv",
+  "population": {
+    "conditions": 11,
+    "outer_folds": 11,
+    "physical_brews": 56
+  },
+  "predictive_input": {
+    "field": "pressure__bar",
+    "meaning": "directly measured endpoint line pressure; never parsed from condition identity",
+    "time_index": 999
+  },
+  "prohibited_inputs": [
+    "observed basket pressure",
+    "flow-derived basket pressure",
+    "target-derived pressure"
+  ],
+  "source_60_brew_calibration": "CONTEXT_ONLY",
+  "target": {
+    "field": "mass_flow_rate__g_per_s",
+    "role": "accepted equilibrium proxy; not source 110-120 s full-data calibration",
+    "window": "endpoint_100s"
+  }
+}

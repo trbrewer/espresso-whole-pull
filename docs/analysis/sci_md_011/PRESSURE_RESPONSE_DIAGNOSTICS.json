@@ -1,0 +1,314 @@
+{
+  "HYD_B0_TRAINING_MEAN": {
+    "condition_means": [
+      {
+        "condition_id": "WASZ-COND-1.0",
+        "line_pressure_bar": 1.0454,
+        "observed_flow_g_s": 0.111088,
+        "predicted_flow_g_s": 1.61466705,
+        "signed_bias_g_s": 1.5035790500000001
+      },
+      {
+        "condition_id": "WASZ-COND-2.0",
+        "line_pressure_bar": 1.791125,
+        "observed_flow_g_s": 0.3748125,
+        "predicted_flow_g_s": 1.5882946,
+        "signed_bias_g_s": 1.2134821
+      },
+      {
+        "condition_id": "WASZ-COND-3.5",
+        "line_pressure_bar": 3.4457500000000003,
+        "observed_flow_g_s": 1.0529066666666667,
+        "predicted_flow_g_s": 1.5204851833333333,
+        "signed_bias_g_s": 0.4675785166666666
+      },
+      {
+        "condition_id": "WASZ-COND-4.0",
+        "line_pressure_bar": 4.076975,
+        "observed_flow_g_s": 1.674454,
+        "predicted_flow_g_s": 1.45833045,
+        "signed_bias_g_s": -0.21612354999999997
+      },
+      {
+        "condition_id": "WASZ-COND-5.0",
+        "line_pressure_bar": 4.9364,
+        "observed_flow_g_s": 2.0335259999999997,
+        "predicted_flow_g_s": 1.42242325,
+        "signed_bias_g_s": -0.6111027499999999
+      },
+      {
+        "condition_id": "WASZ-COND-6.0",
+        "line_pressure_bar": 6.0047500000000005,
+        "observed_flow_g_s": 2.041015,
+        "predicted_flow_g_s": 1.42167435,
+        "signed_bias_g_s": -0.6193406499999999
+      },
+      {
+        "condition_id": "WASZ-COND-7.0",
+        "line_pressure_bar": 7.161875,
+        "observed_flow_g_s": 1.9362300000000001,
+        "predicted_flow_g_s": 1.43215285,
+        "signed_bias_g_s": -0.50407715
+      },
+      {
+        "condition_id": "WASZ-COND-8.0",
+        "line_pressure_bar": 7.944875,
+        "observed_flow_g_s": 1.81826,
+        "predicted_flow_g_s": 1.44394985,
+        "signed_bias_g_s": -0.3743101499999999
+      },
+      {
+        "condition_id": "WASZ-COND-9.0",
+        "line_pressure_bar": 9.1244,
+        "observed_flow_g_s": 1.8416080000000001,
+        "predicted_flow_g_s": 1.44161505,
+        "signed_bias_g_s": -0.39999295
+      },
+      {
+        "condition_id": "WASZ-COND-11.0",
+        "line_pressure_bar": 10.821875,
+        "observed_flow_g_s": 1.7694800000000002,
+        "predicted_flow_g_s": 1.44882785,
+        "signed_bias_g_s": -0.32065215
+      },
+      {
+        "condition_id": "WASZ-COND-13.0",
+        "line_pressure_bar": 12.772874999999999,
+        "observed_flow_g_s": 1.6043783333333332,
+        "predicted_flow_g_s": 1.4653380166666665,
+        "signed_bias_g_s": -0.13904031666666658
+      }
+    ],
+    "distance_high_slope_from_zero": 0.006550641262782813,
+    "high_direction_ok": false,
+    "low_direction_ok": false,
+    "observed_high_slope": -0.06550641262782862,
+    "observed_low_slope": 0.5042068394004887,
+    "observed_peak_conditions": [
+      "WASZ-COND-6.0"
+    ],
+    "ordering_concordance": 0.0,
+    "ordering_denominator": 55,
+    "predicted_high_slope": 0.006550641262782813,
+    "predicted_low_slope": -0.05042068394004887,
+    "predicted_peak_conditions": [
+      "WASZ-COND-1.0"
+    ],
+    "signed_bias_g_s": 4.0371746350005693e-17,
+    "slope_attenuation": -0.056971325202831685,
+    "spearman_average_ties": -1.0,
+    "status": "COMPLETE",
+    "structural_saturation_capability": false,
+    "structural_turnover_capability": null
+  },
+  "HYD_B1_PRESSURE_QUADRATIC": {
+    "condition_means": [
+      {
+        "condition_id": "WASZ-COND-1.0",
+        "line_pressure_bar": 1.0454,
+        "observed_flow_g_s": 0.111088,
+        "predicted_flow_g_s": 0.22064532167687578,
+        "signed_bias_g_s": 0.10955732167687579
+      },
+      {
+        "condition_id": "WASZ-COND-2.0",
+        "line_pressure_bar": 1.791125,
+        "observed_flow_g_s": 0.3748125,
+        "predicted_flow_g_s": 0.6048394282350873,
+        "signed_bias_g_s": 0.23002692823508736
+      },
+      {
+        "condition_id": "WASZ-COND-3.5",
+        "line_pressure_bar": 3.4457500000000003,
+        "observed_flow_g_s": 1.0529066666666667,
+        "predicted_flow_g_s": 1.2346782322828893,
+        "signed_bias_g_s": 0.1817715656162225
+      },
+      {
+        "condition_id": "WASZ-COND-4.0",
+        "line_pressure_bar": 4.076975,
+        "observed_flow_g_s": 1.674454,
+        "predicted_flow_g_s": 1.3689728046885308,
+        "signed_bias_g_s": -0.3054811953114693
+      },
+      {
+        "condition_id": "WASZ-COND-5.0",
+        "line_pressure_bar": 4.9364,
+        "observed_flow_g_s": 2.0335259999999997,
+        "predicted_flow_g_s": 1.5780568826355548,
+        "signed_bias_g_s": -0.4554691173644452
+      },
+      {
+        "condition_id": "WASZ-COND-6.0",
+        "line_pressure_bar": 6.0047500000000005,
+        "observed_flow_g_s": 2.041015,
+        "predicted_flow_g_s": 1.8329219955021807,
+        "signed_bias_g_s": -0.20809300449781928
+      },
+      {
+        "condition_id": "WASZ-COND-7.0",
+        "line_pressure_bar": 7.161875,
+        "observed_flow_g_s": 1.9362300000000001,
+        "predicted_flow_g_s": 2.037543005786307,
+        "signed_bias_g_s": 0.10131300578630698
+      },
+      {
+        "condition_id": "WASZ-COND-8.0",
+        "line_pressure_bar": 7.944875,
+        "observed_flow_g_s": 1.81826,
+        "predicted_flow_g_s": 2.1215907208723954,
+        "signed_bias_g_s": 0.30333072087239543
+      },
+      {
+        "condition_id": "WASZ-COND-9.0",
+        "line_pressure_bar": 9.1244,
+        "observed_flow_g_s": 1.8416080000000001,
+        "predicted_flow_g_s": 2.102680546567867,
+        "signed_bias_g_s": 0.26107254656786694
+      },
+      {
+        "condition_id": "WASZ-COND-11.0",
+        "line_pressure_bar": 10.821875,
+        "observed_flow_g_s": 1.7694800000000002,
+        "predicted_flow_g_s": 1.9049893130103719,
+        "signed_bias_g_s": 0.13550931301037183
+      },
+      {
+        "condition_id": "WASZ-COND-13.0",
+        "line_pressure_bar": 12.772874999999999,
+        "observed_flow_g_s": 1.6043783333333332,
+        "predicted_flow_g_s": 0.8792142493470448,
+        "signed_bias_g_s": -0.7251640839862885
+      }
+    ],
+    "distance_high_slope_from_zero": 0.3400461981768364,
+    "high_direction_ok": true,
+    "low_direction_ok": true,
+    "observed_high_slope": -0.06550641262782862,
+    "observed_low_slope": 0.5042068394004887,
+    "observed_peak_conditions": [
+      "WASZ-COND-6.0"
+    ],
+    "ordering_concordance": 0.7818181818181819,
+    "ordering_denominator": 55,
+    "predicted_high_slope": -0.3400461981768364,
+    "predicted_low_slope": 0.3491836916872465,
+    "predicted_peak_conditions": [
+      "WASZ-COND-8.0"
+    ],
+    "signed_bias_g_s": -0.03378418176317231,
+    "slope_attenuation": 0.689229889864083,
+    "spearman_average_ties": 0.7363636363636363,
+    "status": "COMPLETE",
+    "structural_saturation_capability": false,
+    "structural_turnover_capability": null
+  },
+  "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT": {
+    "reason": "REQUIRED_FOLD_BLOCKED",
+    "status": "NOT_COMPUTABLE",
+    "structural_saturation_capability": true,
+    "structural_turnover_capability": false
+  },
+  "HYD_P1_POROELASTIC_UNIVERSAL_LIMIT": {
+    "condition_means": [
+      {
+        "condition_id": "WASZ-COND-1.0",
+        "line_pressure_bar": 1.0454,
+        "observed_flow_g_s": 0.111088,
+        "predicted_flow_g_s": 0.4157227046203049,
+        "signed_bias_g_s": 0.3046347046203049
+      },
+      {
+        "condition_id": "WASZ-COND-2.0",
+        "line_pressure_bar": 1.791125,
+        "observed_flow_g_s": 0.3748125,
+        "predicted_flow_g_s": 0.7578040086676157,
+        "signed_bias_g_s": 0.3829915086676157
+      },
+      {
+        "condition_id": "WASZ-COND-3.5",
+        "line_pressure_bar": 3.4457500000000003,
+        "observed_flow_g_s": 1.0529066666666667,
+        "predicted_flow_g_s": 1.3112358556825638,
+        "signed_bias_g_s": 0.2583291890158972
+      },
+      {
+        "condition_id": "WASZ-COND-4.0",
+        "line_pressure_bar": 4.076975,
+        "observed_flow_g_s": 1.674454,
+        "predicted_flow_g_s": 1.4237815094577142,
+        "signed_bias_g_s": -0.2506724905422858
+      },
+      {
+        "condition_id": "WASZ-COND-5.0",
+        "line_pressure_bar": 4.9364,
+        "observed_flow_g_s": 2.0335259999999997,
+        "predicted_flow_g_s": 1.5511584732553612,
+        "signed_bias_g_s": -0.48236752674463884
+      },
+      {
+        "condition_id": "WASZ-COND-6.0",
+        "line_pressure_bar": 6.0047500000000005,
+        "observed_flow_g_s": 2.041015,
+        "predicted_flow_g_s": 1.6964054027474376,
+        "signed_bias_g_s": -0.3446095972525624
+      },
+      {
+        "condition_id": "WASZ-COND-7.0",
+        "line_pressure_bar": 7.161875,
+        "observed_flow_g_s": 1.9362300000000001,
+        "predicted_flow_g_s": 1.8098057519695012,
+        "signed_bias_g_s": -0.1264242480304988
+      },
+      {
+        "condition_id": "WASZ-COND-8.0",
+        "line_pressure_bar": 7.944875,
+        "observed_flow_g_s": 1.81826,
+        "predicted_flow_g_s": 1.8689296715220598,
+        "signed_bias_g_s": 0.05066967152205992
+      },
+      {
+        "condition_id": "WASZ-COND-9.0",
+        "line_pressure_bar": 9.1244,
+        "observed_flow_g_s": 1.8416080000000001,
+        "predicted_flow_g_s": 1.9018377821267882,
+        "signed_bias_g_s": 0.06022978212678818
+      },
+      {
+        "condition_id": "WASZ-COND-11.0",
+        "line_pressure_bar": 10.821875,
+        "observed_flow_g_s": 1.7694800000000002,
+        "predicted_flow_g_s": 1.929836437744266,
+        "signed_bias_g_s": 0.16035643774426606
+      },
+      {
+        "condition_id": "WASZ-COND-13.0",
+        "line_pressure_bar": 12.772874999999999,
+        "observed_flow_g_s": 1.6043783333333332,
+        "predicted_flow_g_s": 1.9606810409914373,
+        "signed_bias_g_s": 0.3563027076581042
+      }
+    ],
+    "distance_high_slope_from_zero": 0.016120300986234796,
+    "high_direction_ok": false,
+    "low_direction_ok": true,
+    "observed_high_slope": -0.06550641262782862,
+    "observed_low_slope": 0.5042068394004887,
+    "observed_peak_conditions": [
+      "WASZ-COND-6.0"
+    ],
+    "ordering_concordance": 0.6363636363636364,
+    "ordering_denominator": 55,
+    "predicted_high_slope": 0.016120300986234796,
+    "predicted_low_slope": 0.2959757534665287,
+    "predicted_peak_conditions": [
+      "WASZ-COND-13.0"
+    ],
+    "signed_bias_g_s": 0.033585467162277303,
+    "slope_attenuation": 0.2798554524802939,
+    "spearman_average_ties": 0.44545454545454544,
+    "status": "COMPLETE",
+    "structural_saturation_capability": true,
+    "structural_turnover_capability": false
+  }
+}

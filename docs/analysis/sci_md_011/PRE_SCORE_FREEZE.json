@@ -1,0 +1,109 @@
+{
+  "bootstrap_count": 2000,
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "complete_finding_inventory_comment": "https://github.com/trbrewer/espresso-whole-pull/pull/142#issuecomment-5528421223",
+  "current_full_ewp_validated": false,
+  "ewp_base": {
+    "commit": "375b19b96096cf1d9681ab26efec7ed02b87dd09",
+    "tree": "5ae6135157019048205fe6bcdd6a9c2bce0a51fc"
+  },
+  "fixed_phi": 0.12202109866812735,
+  "governance": "G1",
+  "identifiability": {
+    "adequate_condition_max": 100000.0,
+    "fold_log_cv_weak": 0.5,
+    "hessian_step": 0.001,
+    "minimum_relative_profile_increase": 1e-05,
+    "profile_log_offsets": [
+      0.05,
+      0.1,
+      0.25
+    ],
+    "weak_condition_max": 1000000000.0
+  },
+  "m01_adjudicated": false,
+  "optimizer": {
+    "bound_hit_log_distance": 1e-05,
+    "lattice_points_per_axis": 5,
+    "max_evaluations": 40000,
+    "max_iterations_per_start": 256,
+    "objective_comparison_tolerance": 1e-14,
+    "step_reduction": 0.5,
+    "stopping_log_step": 1e-06,
+    "tie_break": "objective tolerance then lexicographic log(Qc),log(Pc)"
+  },
+  "parameter_bounds": {
+    "Pc_bar": [
+      1.0,
+      100.0
+    ],
+    "Qc_g_s": [
+      0.01,
+      20.0
+    ]
+  },
+  "phase_b_authorized": false,
+  "physical_validation": "NOT_ESTABLISHED",
+  "prior_review_failure_comment": "https://github.com/trbrewer/espresso-whole-pull/pull/142#issuecomment-5528108991",
+  "production_openfoam_case_count": 0,
+  "puckworks_analysis": {
+    "commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "sources": [
+      {
+        "path": "docs/cards/waszkiewicz2025.md",
+        "sha256": "fa5708aeedc3d069fdf22d50aabf02d44db430399fb21be1ec37c5ebd1279698"
+      },
+      {
+        "path": "puckworks/models/waszkiewicz2025/poroelastic.py",
+        "sha256": "7dcce1b91ead1043a7e62f47d09a84973b900e720e4af364f4415f2165e8aa8e"
+      },
+      {
+        "path": "puckworks/data/MANIFEST.csv",
+        "sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/solids_calibration.csv",
+        "sha256": "98cbdd42ea99dc454b7c150c86e07c78bca07e7987e5ac5a0f37b7008937e04d"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/constants.csv",
+        "sha256": "0428390dae9c3032adb31d155dfc21b56ee34f0b407e8089fee3a31e47abf4ee"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/brewer_quadratic_params.csv",
+        "sha256": "60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/equilibrium_windows.csv",
+        "sha256": "c33bd01729cfe63db6d319d9c64afcac818050fdf8c888ab4d47dc233d5e2213"
+      },
+      {
+        "path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+        "sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08"
+      }
+    ],
+    "tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+    "worktree": "CLEAN"
+  },
+  "real_candidate_fits_generated": false,
+  "real_candidate_predictions_generated": false,
+  "real_candidate_scores_generated": false,
+  "required_review_disposition": "SCI_MD_011_PRE_SCORE_FREEZE_SINGLE_INDEPENDENT_REVIEW_PASS_READY_FOR_EXECUTION",
+  "review_required": true,
+  "revision": "R2",
+  "scoring_executed": false,
+  "seed": 20260902,
+  "selected_models": [
+    "HYD_B0_TRAINING_MEAN",
+    "HYD_B1_PRESSURE_QUADRATIC",
+    "HYD_P1_POROELASTIC_UNIVERSAL_LIMIT",
+    "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT"
+  ],
+  "stage_d_authorized": false,
+  "stage_f_authorized": false,
+  "superseded_freeze_disposition": "SCI_MD_011_R1_EXACT_FREEZE_REVIEW_COMPLETE_MATERIAL_FINDING_INVENTORY_READY_FOR_CONSOLIDATED_R2_CORRECTION",
+  "superseded_freeze_manifest_sha256": "d36ee582cd43d95ab3de1aed6323b28f3a5659391c150d2b7847bdd36843e55a",
+  "superseded_freeze_tree": "0058aebc21d9e88e21a2e6dd4fd1f2f8fe2da6f3",
+  "supersedes_freeze_commit": "5944c597a3208a606a93b0f51e4394adf11488ec",
+  "task_id": "SCI-MD-011"
+}

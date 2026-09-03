@@ -1,0 +1,100 @@
+{
+  "aggregate_content_sha256": "41c7dc763643c91e2b384a950589fe86adfcdca3be1c1dce68f1d6db6973a266",
+  "artifacts": [
+    {
+      "path": "docs/analysis/sci_md_011/TASK_CONTRACT.md",
+      "sha256": "f74a24494ebb6573cf3e387f638f70060180d317c26e9ee519afa0db480e2f60"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/AUTHORITY_AND_HANDOFF.json",
+      "sha256": "88a5c14e5a9891d133cf962c9db9b10007e6561621295fb97001787918829819"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/SCI_MD_010_HANDOFF.json",
+      "sha256": "482cba9459fa1f237fde36a3050d4eb5d8a28994edef4f4226378edaf11f5096"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json",
+      "sha256": "592f66b7a106e1817e5116dbab73cf69bb366581f3b3b5130d66f7def96c7cfb"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.md",
+      "sha256": "d73a67793a626977455c8d153b783a65d662016d8c84a0af69b41efe221c0c1e"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.json",
+      "sha256": "ad1a42783e90b0a74b2a69276340a5c0627c06125a758fcc341c3c78cdf75d1f"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/MODEL_SPECIFICATIONS.json",
+      "sha256": "fca9f358dc884516d06a7c4d43211935a3f84332af07965bc1f718fcb9e7c3ca"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/PRIVILEGE_LEDGER.csv",
+      "sha256": "1b6fedc127b7426d9193398e0516f4842925091b386e9d7a78a6709ccb968443"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/EVALUATION_CONTRACT.json",
+      "sha256": "ac15cd1990dd3b235a5a5b0b3ad196cd272e07dbd160b99363d65b62400b11ac"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/PRE_SCORE_FREEZE.json",
+      "sha256": "1a03d595eac897ab4010014509af4197530210e05280b41da4441c259a720e6c"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/FREEZE_REPORT.md",
+      "sha256": "5ea4bac63059649512127c3f5a4c31bcc2ce1a7796ca466aa0e617ebea1ee8d7"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/CLOSURE_ORACLE_RESULTS.csv",
+      "sha256": "89645aa3bbe210700465765eeed76383d8ffb42d2f51eb5c4a9b1c03e12d02b2"
+    },
+    {
+      "path": "docs/analysis/sci_md_011/CLOSURE_ORACLE_RECEIPT.json",
+      "sha256": "db72a02d441087b5439b66cc53cfaed44886f994a85a19a07556e1c642cd9337"
+    },
+    {
+      "path": "scripts/sci_md_011_core.py",
+      "sha256": "3e3651cf19b01850cc94ce5e648c5b65b58f7c0fdb6d5bb972032e9d78ad70a5"
+    },
+    {
+      "path": "scripts/sci_md_011_prepare.py",
+      "sha256": "d07701c374b590511c98558e6b321c2b9972cc86bd59f2a61cbd5f77f961ff73"
+    },
+    {
+      "path": "scripts/sci_md_011_execute.py",
+      "sha256": "a22d8e66f3d968693bbb675b06a4aefa70e3b27af2e37735216bd013c8c6504a"
+    },
+    {
+      "path": "scripts/validate_sci_md_011.py",
+      "sha256": "4009badd3defcd029fb70698f70cd300dfcb9f22f935c7870ac01f1ced7b19e9"
+    },
+    {
+      "path": "scripts/run_sci_md_011_closure_oracle.sh",
+      "sha256": "dc394e892e44dfd9427ba4f271dc84ac4344ca36dae59807a3b175316cd5770f"
+    },
+    {
+      "path": "tests/test_sci_md_011.py",
+      "sha256": "4679b9575593dc55cb0d990318d4b4f62162b6f15411396b47b2af5923a8bc4d"
+    },
+    {
+      "path": "tests/fixtures/sci_md_011_synthetic_receipt.json",
+      "sha256": "979a473bf9434e757f3331be76e371b2ddd1217642daa6fa8a713d9a7ab5a779"
+    },
+    {
+      "path": "tests/fixtures/sci_md_011_closure_oracle/sci_md_011_closure_oracle.C",
+      "sha256": "bd225c42acf5836db96e2deaf7b1eaa8c496c8185354d89f7f59335caf754ed3"
+    },
+    {
+      "path": "tests/fixtures/sci_md_011_closure_oracle/Make/files",
+      "sha256": "41070f3c3ab58409b4f6c3c5352b16279be830465b282c0735867e9397a91050"
+    },
+    {
+      "path": "tests/fixtures/sci_md_011_closure_oracle/Make/options",
+      "sha256": "f9b96c6c772cfc029508cae6b97b22cac5db743df6f61e4e71873a50df6c1ef6"
+    }
+  ],
+  "revision": "R2",
+  "scoring_executed": false,
+  "task_id": "SCI-MD-011"
+}

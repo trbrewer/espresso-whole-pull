@@ -1,0 +1,77 @@
+{
+  "artifacts": [
+    {
+      "path": "AGGREGATE_RESULTS.csv",
+      "sha256": "51675b20eb13df5a2b08199ceef021ccb063c6c6f47317d288948b1b8525d576"
+    },
+    {
+      "path": "ARCHITECTURE_DECISION.json",
+      "sha256": "ac1e67a97161ddd93afe73af742af045ac9f164b470b4758819065feb0ce4ae5"
+    },
+    {
+      "path": "BREW_RESULTS.csv",
+      "sha256": "7373b0e8f6174c327f9395dfb253b4fee943c40cbcffc11ffc1b9462951827dc"
+    },
+    {
+      "path": "CONDITION_RESULTS.csv",
+      "sha256": "7a8f618a027e06f306f6942c26080a500c05cff6584dcc7989f097b4ae850784"
+    },
+    {
+      "path": "EXECUTION_STATE.json",
+      "sha256": "e488ccf7834a4315ce336595dc3e9ed3129911916ceb54e4a53b838ed959e027"
+    },
+    {
+      "path": "EXPERIMENT_CONSEQUENCE.json",
+      "sha256": "598243222b45186273931e5bb9e0e3c2af15e40fd38c55c12c2dad1adbd54794"
+    },
+    {
+      "path": "FOLD_RESULTS.csv",
+      "sha256": "9b3d5236676512fb765f46aecf61fb6c00d110eb764eb10802b78e383d3245a1"
+    },
+    {
+      "path": "IDENTIFIABILITY_RESULTS.json",
+      "sha256": "b06df1c7c0e7ecee6f2e9ec066cf8146ea467b29c73a72813d0ca9e6e7113355"
+    },
+    {
+      "path": "MODEL_UTILITY_SCORECARD.csv",
+      "sha256": "51675b20eb13df5a2b08199ceef021ccb063c6c6f47317d288948b1b8525d576"
+    },
+    {
+      "path": "PAIRWISE_COMPARISONS.json",
+      "sha256": "5383f20befd5cf2bf2c5f66bda4edf30a2d7fd3cf4c3cef9713c5e0934665604"
+    },
+    {
+      "path": "PARAMETER_STABILITY.csv",
+      "sha256": "3a880c90cd36851c23e42cdbc6e4aa0b00695b72dc8d1d539dbc8b5e0a8e87c8"
+    },
+    {
+      "path": "PHASE_B_REVIEW_RECEIPT.json",
+      "sha256": "fbe34f9513a1bc1fc830ef91506a309b6d7b7cde79e20bfdd233c88721be5fb5"
+    },
+    {
+      "path": "PRESSURE_RESPONSE_DIAGNOSTICS.json",
+      "sha256": "35b6259ea2db82dc6b647db95880d67f0b1f602e8e974b87d981692a5bf4e140"
+    },
+    {
+      "path": "RESULT.md",
+      "sha256": "c61aa8706da104ba00560f444e3a95abec51b9c397c6c90de6a0ea17fd5f27db"
+    },
+    {
+      "path": "RESULTS_SUMMARY.md",
+      "sha256": "c61aa8706da104ba00560f444e3a95abec51b9c397c6c90de6a0ea17fd5f27db"
+    },
+    {
+      "path": "RUN_RECEIPT.json",
+      "sha256": "7e84ee71bab7b4952f5e28510fdc2faf26311db5a566344a62558c6b9bacaed2"
+    },
+    {
+      "path": "UNCERTAINTY_RESULTS.json",
+      "sha256": "73093487236505a2be053094a047d0d227a65e23c3e48d70ba66bdfe32dc813a"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "d37eef6a53c6596d4028faec235b2e0e3c003289adff49070b310affc671dec5"
+    }
+  ],
+  "task_id": "SCI-MD-011"
+}

@@ -1,0 +1,76 @@
+{
+  "bound_selection_candidate_information_used": false,
+  "bounds": {
+    "Pc_bar": [
+      1.0,
+      100.0
+    ],
+    "Qc_g_s": [
+      0.01,
+      20.0
+    ]
+  },
+  "identifiability": {
+    "adequate_condition_max": 100000.0,
+    "fold_log_cv_weak": 0.5,
+    "hessian_step": 0.001,
+    "minimum_relative_profile_increase": 1e-05,
+    "profile_log_offsets": [
+      0.05,
+      0.1,
+      0.25
+    ],
+    "weak_condition_max": 1000000000.0
+  },
+  "models": [
+    {
+      "model_id": "HYD_B0_TRAINING_MEAN",
+      "real_mode": "immutable accepted SCI-MD-010 predictions/scales/parameters/losses"
+    },
+    {
+      "equation": "max(0,a0+a1*p_line+a2*p_line^2)",
+      "model_id": "HYD_B1_PRESSURE_QUADRATIC",
+      "real_mode": "immutable accepted reuse; recomputation integrity only"
+    },
+    {
+      "equation": "Qc*x*(4-6*x+4*x^2-x^3)",
+      "fitted": [
+        "log(Qc_g_s)",
+        "log(Pc_bar)"
+      ],
+      "model_id": "HYD_P1_POROELASTIC_UNIVERSAL_LIMIT"
+    },
+    {
+      "equation": "Qc*J(x,Phi)/J(1,Phi)",
+      "fitted": [
+        "log(Qc_g_s)",
+        "log(Pc_bar)"
+      ],
+      "fixed_Phi": 0.12202109866812735,
+      "model_id": "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT",
+      "phi_privilege": "TARGET_EXPOSED_SOURCE_CONDITIONED_CONTEXT_NOT_FOLD_FITTED"
+    }
+  ],
+  "optimizer": {
+    "bound_hit_log_distance": 1e-05,
+    "lattice_points_per_axis": 5,
+    "max_evaluations": 40000,
+    "max_iterations_per_start": 256,
+    "objective_comparison_tolerance": 1e-14,
+    "step_reduction": 0.5,
+    "stopping_log_step": 1e-06,
+    "tie_break": "objective tolerance then lexicographic log(Qc),log(Pc)"
+  },
+  "parameterization": "log positive",
+  "pc_bound_basis": [
+    "positive mathematical parameter domain",
+    "exogenous line-pressure design",
+    "positive quadratic machine drop means basket pressure is below line pressure",
+    "fixed Qc 0-20 g/s safety range",
+    "source Pc 12.39 bar and reported approximately 12 +/- 3 bar context",
+    "broad deterministic numerical feasibility; invalid combinations receive infinite objective"
+  ],
+  "physical_parameter_claim": "effective predictive Qc/Pc only; k0,rho,A,h,mu,Y,Phi and wet permeability not identified",
+  "revision": "R2",
+  "task_id": "SCI-MD-011"
+}

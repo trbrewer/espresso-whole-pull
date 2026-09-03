@@ -2,13 +2,18 @@
 
 OpenFOAM-based research solver for espresso-puck wetting, porous flow, extraction, and multiscale integration with Puckworks.
 
-> **Current research status:** SCI-MD-010 Phase B is complete pending final
-> exact-result-head review. L-HYD is
+> **Current research status:** SCI-MD-010 is `MERGED_COMPLETE`. L-HYD is
 > `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`; reduced E1 is
 > `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2 is
-> `NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
-> unauthorized, no automatic successor exists, and physical validation remains
+> `NOT_ADJUDICATED`. SCI-MD-011 is
+> `PHASE_B_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`, with disposition
+> `SCI_MD_011_POROELASTIC_CLOSURE_TEST_BLOCKED_BY_IDENTIFIABILITY_EXECUTION_DOMAIN_OR_EQUIVALENCE_GAP`
+> and architecture `NOT_ADJUDICATED`. Finite-Phi E2C is `BLOCKED`; universal
+> P1 is `WRONG_PRESSURE_RESPONSE`. Current full EWP is `NOT_VALIDATED`.
+> SCI-ED-003 remains complete,
+> Stage F/D remain unauthorized, and physical validation remains
 > **NOT_ESTABLISHED**.
+> No automatic successor is selected.
 > SCI-ED-003 is complete with status
 > `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; the bounded
 > `OWNER_DECISION_PENDING` remains, neither Stage F nor Stage D is authorized,
