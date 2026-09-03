@@ -888,6 +888,6 @@
     "m01_adjudicated": false,
     "physical_validation": "NOT_ESTABLISHED"
   },
-  "current_scientific_gate": "SCI_MD_011_PHASE_B_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW",
+  "current_scientific_gate": "OWNER_DECISION_PENDING",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }
