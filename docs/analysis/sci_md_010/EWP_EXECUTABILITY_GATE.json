@@ -1,0 +1,19 @@
+{
+  "lanes": [
+    {
+      "actual_observation_artifact": "WASZ_EQUILIBRIUM endpoint_100s",
+      "direct_pressure": "WASZ_LINE_PRESSURE pressure__bar index 999",
+      "e1_executable": true,
+      "e2_executable": false,
+      "ewp_candidate_id": "HYD_E1_LUMPED_DARCY",
+      "exact_blocker": "",
+      "executable": true,
+      "lane_id": "L-HYD",
+      "machine_operator": "WASZ_MACHINE_PARAMS fixed; predicted q only",
+      "observation_rows_available": 56,
+      "physical_groups_available": "56 canonical brews; 11 conditions",
+      "target_group_calibration_required": false
+    }
+  ],
+  "revision": "R3"
+}

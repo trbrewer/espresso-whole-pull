@@ -1,0 +1,10 @@
+{
+  "ewp_or_reduced_ewp_scored": true,
+  "new_real_predictions_generated": true,
+  "new_real_scores_generated": true,
+  "prior_scores_materialized": false,
+  "scoring_attempted": true,
+  "scoring_completed": true,
+  "scoring_executed": true,
+  "synthetic": false
+}

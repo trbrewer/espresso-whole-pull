@@ -1,0 +1,57 @@
+{
+  "adjudicative_lane_count": 1,
+  "claim_ceiling": "RETROSPECTIVE_SOURCE_CONDITIONED_CONDITIONAL_HYDRAULIC_COMPONENT_UTILITY_ONLY",
+  "ewp_base": {
+    "commit": "f8bd4cc5c4c05869ceda75e273784781b8429c28",
+    "tree": "9d9a8ae2434b35c405e47e2d164084677aa13b48"
+  },
+  "executable_ewp_or_reduced_ewp_lane_count": 1,
+  "new_production_cases": 0,
+  "old_reviewed_freeze": {
+    "commit": "ec03c813ab71c9a16ea315b41d349f7f1535579b",
+    "manifest_sha256": "898707e2457266bb23ef59b32ed2a9a2bc664fafec00449e8651c224031473c2",
+    "tree": "b552638426975898d6a8a9ccde7c8a3d01e62c99"
+  },
+  "phase_b_authorized": false,
+  "production_puckworks_lock": {
+    "adoption_recommendation": "ADOPT_WITH_FOLLOWUP",
+    "alignment_status": "REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF",
+    "checkout_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "checkout_tree_sha": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "dependency_role": "external public evidence/model/data dependency",
+    "historical_reviewed_commit": "352dacd51015d95a3b5a5b3e1a8fb331419d78b0",
+    "impact_report_json": "validation/integration/PUCKWORKS_UPDATE_IMPACT.json",
+    "impact_report_markdown": "docs/integration/PUCKWORKS_UPDATE_IMPACT.md",
+    "per_artifact_rights_review_required": true,
+    "previous_checkout_commit": "352dacd51015d95a3b5a5b3e1a8fb331419d78b0",
+    "repository_code_license": "MIT",
+    "repository_url": "https://github.com/trbrewer/puckworks.git",
+    "review_cutoff_utc": "2026-07-28T16:12:00Z",
+    "reviewed_main_resolved_at_utc": "2026-07-28T16:05:27Z",
+    "reviewed_ref": "refs/heads/main",
+    "rights_restricted_material_vendored": false,
+    "schema_version": "espresso.public.puckworks_lock.v2",
+    "submodule": false,
+    "vendored": false
+  },
+  "puckworks_analysis": {
+    "commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "tree": "a6ffb312473b15be43c1571a893b19873ea47c5a"
+  },
+  "random_seeds": [
+    20260902
+  ],
+  "real_target_scores_generated": false,
+  "required_review_disposition": "SCI_MD_010_PRE_SCORE_FREEZE_SINGLE_INDEPENDENT_REVIEW_PASS_READY_FOR_EXECUTION",
+  "review_receipt_embedded": false,
+  "review_required": true,
+  "revision": "R4",
+  "scoring_executed": false,
+  "seed": 20260902,
+  "selected_lanes": [
+    "L-HYD"
+  ],
+  "stage_d_authorized": false,
+  "stage_f_authorized": false,
+  "task_id": "SCI-MD-010"
+}

@@ -1,13 +1,14 @@
 # Onboarding
 
-SCI-DATA-FUSION-001 is complete negative and its named cross-corpus decision is
-exhausted. SCI-ED-003 is complete with status
-`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; M01 plus contextual M02 is
-the selected future candidate. The current item is the bounded owner decision
-to authorize Stage F feasibility, decline execution, or request specific
-apparatus/laboratory capability input. Laboratory and home-lab operation remain
-unauthorized, execution requires separate owner authorization, and no execution
-successor is automatically selected.
+SCI-MD-010 is `PHASE_B_EXECUTION_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`.
+L-HYD is `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`;
+reduced E1 is `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2
+is `NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
+unauthorized, laboratory operation remains unauthorized, no automatic
+successor is selected, and physical validation remains `NOT_ESTABLISHED`.
+The SCI-ED-003 owner decision remains bounded; its status is
+`CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`, and execution requires
+separate owner authorization.
 
 Read `README.md`, `docs/PROJECT_STATE.md`, `docs/CLAIM_CEILING.md`, the
 [current scientific execution plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md),

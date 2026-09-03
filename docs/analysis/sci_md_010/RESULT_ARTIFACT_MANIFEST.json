@@ -1,0 +1,76 @@
+{
+  "artifacts": [
+    {
+      "path": "AGGREGATE_RESULTS.csv",
+      "sha256": "c38a7cabafeccdae3d38a7b1151ff5c5cd41eaa1cfe45f5c99196c37e8eecc0b"
+    },
+    {
+      "path": "ARCHITECTURE_DECISIONS.json",
+      "sha256": "7b154d46606a18e830ac6803ae579b0602df8012c2349db3cb9193ee180a6d12"
+    },
+    {
+      "path": "BREW_RESULTS.csv",
+      "sha256": "3a293f6a702f9cad357afe08689f07a2b54924f069355f4b6e7b7fc95dfd2e5f"
+    },
+    {
+      "path": "CONDITION_RESULTS.csv",
+      "sha256": "00f122e5f0bea379fd5821f1635945788a7e69e3a1e90a4ef1e0df4756fe5383"
+    },
+    {
+      "path": "EXECUTION_STATE.json",
+      "sha256": "cb9c55d6e24dde880b71395dd5269b72c17028bb6271f44e1b897a0943a87512"
+    },
+    {
+      "path": "EXPERIMENT_NECESSITY_DECISION.json",
+      "sha256": "ff4769aefa722e48ee29ca23c25dbb364847b6138bf47524c249b512761f4064"
+    },
+    {
+      "path": "FOLD_RESULTS.csv",
+      "sha256": "3adf5f1bc965fa0a1d31c2c97fd12d2e59076c4b17a0b0cac0c5b621af805faa"
+    },
+    {
+      "path": "IDENTIFIABILITY_RESULTS.json",
+      "sha256": "50b89475359485111cbd23458e0a7ee0937b5e272187645d38eaa9cc88cc59db"
+    },
+    {
+      "path": "LIMITATION_ATTRIBUTION.csv",
+      "sha256": "2f498409a07e9869472cb85bb32cdaf75d9f8772e0e4f02942d87a5e486be2ca"
+    },
+    {
+      "path": "MODEL_UTILITY_SCORECARD.csv",
+      "sha256": "c38a7cabafeccdae3d38a7b1151ff5c5cd41eaa1cfe45f5c99196c37e8eecc0b"
+    },
+    {
+      "path": "PARAMETER_STABILITY.csv",
+      "sha256": "72664401b59429169cd9430f2d53832dac97af6282156ccce4ad0c1901488eee"
+    },
+    {
+      "path": "PHASE_B_REVIEW_RECEIPT.json",
+      "sha256": "cd56ea04316f122a70f4227af85b158732c32f969f45f09d346c5cc87c2acf60"
+    },
+    {
+      "path": "PRESSURE_RESPONSE_DIAGNOSTICS.json",
+      "sha256": "f35b42ace4f3f07992a46af8f1dcc2fa0689dd8554a0ff84f18a8f274f747bcd"
+    },
+    {
+      "path": "RESULT.md",
+      "sha256": "93f0c2c6c75c004c54a0b9e2f312c219bb7781c37703279e65a62640447a4cc7"
+    },
+    {
+      "path": "RESULTS_SUMMARY.md",
+      "sha256": "fa394c8a5316651af05cab5ebc3d5ee438b4ca2318c1d6514bd9af576dfc5af9"
+    },
+    {
+      "path": "RUN_RECEIPT.json",
+      "sha256": "6e77f23e8473732d08418f6c1afbf049ccdfb20a8e56e11fd123bc37906716d9"
+    },
+    {
+      "path": "UNCERTAINTY_RESULTS.json",
+      "sha256": "4c40816e2eebd0c5448075175defbaaddcf99da1c9689d950ffb68fdfe2aaf56"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "f7d2f77419c9be644766d24aba11920e3aa256ef3010bdbbaba1c73b76bfe02e"
+    }
+  ]
+}

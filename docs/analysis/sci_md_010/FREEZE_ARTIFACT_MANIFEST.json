@@ -1,0 +1,100 @@
+{
+  "aggregate_content_sha256": "cc04d349140a42072d9260321569cb363eb796ce782db0ad3903c284f5e8edf0",
+  "artifacts": [
+    {
+      "path": "docs/analysis/sci_md_010/ISSUE_CONTRACT.md",
+      "sha256": "3e4e4a6cd70f7752ba9d05aa0df26a840e7beea039d60d0a0859750fca8fa376"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/AUTHORITY_AND_DATA_PREFLIGHT.json",
+      "sha256": "379419eb0ac0efa76680ad21b737f6357ce4066623a4c8b815cadeb28d6ea2d6"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/EWP_EXECUTABILITY_GATE.json",
+      "sha256": "c7f2d79fc6a94327f2e21017897b4499a13cfa0a7d556931e142ebf0902cacec"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/INPUT_ARTIFACT_REGISTER.json",
+      "sha256": "026c4b7891c431b66f219bdfd6825b45047a43c1e03331e2860bf30769fb7f03"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/EVIDENCE_UTILITY_REGISTER.csv",
+      "sha256": "97237ae95a08f6d7cc799cca6136bb57157e99d79032ed9062ec8565074e44e7"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/EWP_INPUT_OBSERVABILITY_REGISTER.csv",
+      "sha256": "b6f8ec67c06167351b0a477bbb18348cdef83c6c4ac3921cac28b637d6ce2ea8"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/END_TO_END_OBSERVABILITY_GRAPH.json",
+      "sha256": "002b3b57a003db0980cf63bba0b633c19db0729f3e13b0b0f9268464a9a67ca4"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/BENCHMARK_LANE_SELECTION.json",
+      "sha256": "04013cdb899c2ec2c6c18dffc6fe26236905df0e70e181bf25614f783ba15a91"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/ANALYSIS_ROW_INDEX.csv",
+      "sha256": "b272aeb67727b2a889a40245ff294804e405cd244242ad73d24c13237bdad8a8"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FOLD_ASSIGNMENTS.csv",
+      "sha256": "f825deec8ea10481e9282b3a17971a52da5a72e6450a00663534561e9a11d4fa"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv",
+      "sha256": "72ea3fbdf31acf4304b99b3ed3a920fc797357583f46238b6938107303202064"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/MODEL_LADDER.json",
+      "sha256": "7c00d4e89e9c48f0f81e643f2ee5bc509b55c1cd5f899c867dfc272a61d1a335"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/MODEL_SPECIFICATIONS.json",
+      "sha256": "208d9539ca07a82d9d4b51c2e3e7e52218ae5db233700be50898c222167bf35c"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/PRIVILEGE_LEDGER.csv",
+      "sha256": "94b79ffd8873f31fe120ae2b4fdf893044a27a1ab34643fb4cdc2504547d5685"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/METRIC_CONTRACT.json",
+      "sha256": "b4f13f1aa512a41a07c9649aeabaae1cc582cbe65bff0bf585803aef261a833d"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/EVALUATION_CONTRACT.json",
+      "sha256": "7fa9471fcfefb8087f5fdb68eee83171e2625ea869fa487b95e83ce27289ea9b"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/PRE_SCORE_FREEZE.json",
+      "sha256": "87d6b626155b3bb8f50fb7df060170557877a52c51215f3edd8b01c016d4d824"
+    },
+    {
+      "path": "docs/analysis/sci_md_010/FREEZE_REPORT.md",
+      "sha256": "6cea47e7f53262be23a5a5dc89f76eb8a341f3df14fb5fa2e2cd8dea323befbb"
+    },
+    {
+      "path": "scripts/sci_md_010_core.py",
+      "sha256": "fd174c5d71bc9cb72246e696209bde03f26dff804550e0483b3a44d9d596dfdc"
+    },
+    {
+      "path": "scripts/sci_md_010_prepare.py",
+      "sha256": "2466a6a755bc3389654b4c1d10d6d763790259df2fb56f79ba8bbf031651b3b0"
+    },
+    {
+      "path": "scripts/sci_md_010_execute.py",
+      "sha256": "f9c255ae38a49a4ed99220d118fffac3069988d1bec7a5619585d05bf918c098"
+    },
+    {
+      "path": "scripts/validate_sci_md_010.py",
+      "sha256": "e20a804fa0c55f91ae77843d24759206e6858111248b3220b95c2d4a4fb2b3a5"
+    },
+    {
+      "path": "tests/test_sci_md_010.py",
+      "sha256": "82cbcb7cf3ece69ef99f06953cb41086d44776b31527d4e64faa36b8f2088c13"
+    }
+  ],
+  "revision": "R4",
+  "scoring_executed": false,
+  "task_id": "SCI-MD-010"
+}

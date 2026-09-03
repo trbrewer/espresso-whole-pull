@@ -1,15 +1,15 @@
 # Data-First Scientific Development Plan
 
-> **Current authority (2026-09-02):** SCI-DATA-FUSION-001 and SCI-ED-003 are
-> complete; the named existing-data route is exhausted for the closure
-> decision. SCI-ED-003 has status
-> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED` and selects M01 paired
-> absolute chemistry/mass closure plus contextual M02 synchronized shot
-> telemetry as a future candidate. The current repository item is
-> `OWNER_DECISION_PENDING`. Stage F and Stage D are not authorized, no
-> automatic successor exists, and no further Pannusch or data-fusion cleanup is
-> selected. Separate owner authorization is required for execution. Physical
-> validation remains `NOT_ESTABLISHED`.
+> **Current authority (2026-09-02):** SCI-MD-010 Phase B is complete pending
+> final exact-result-head review. L-HYD is
+> `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`; reduced E1 is
+> `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2 is
+> `NOT_ADJUDICATED`. SCI-ED-003 remains complete. Stage F and Stage D are not
+> authorized; no automatic successor is selected, and physical validation
+> remains `NOT_ESTABLISHED`.
+> SCI-ED-003 is complete with status
+> `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; its owner decision is
+> bounded and execution requires separate owner authorization.
 
 > 2026-08-31 C1 correction: no tested bounded evolving-resistance form has stable
 > grouped predictive advantage sufficient for adoption; fixed resistance is

@@ -1,0 +1,155 @@
+{
+  "E2": {
+    "decision": "NOT_ADJUDICATED",
+    "model_id": "HYD_E2_CURRENT_FULL_EWP",
+    "status": "NOT_EXECUTABLE_IN_THIS_LANE"
+  },
+  "models": [
+    {
+      "actual_execution_mode": "FIT_AND_PREDICT",
+      "allowed_exogenous_inputs": [
+        "direct line pressure__bar",
+        "fixed brewer calibration"
+      ],
+      "callable": "fit_condition_balanced_mean,predict_mean",
+      "claim_level": "LEVEL_3_RETROSPECTIVE_GROUPED_WITHIN_SOURCE_CONDITIONAL_ON_MEASURED_HYDRAULIC_CONTEXT",
+      "class": "B0",
+      "computational_cost": "11 folds x 3 analytic models; zero production cases",
+      "effective_degrees": 1,
+      "equation_algorithm": "qhat=sum_conditions(mean_brew(q))/n_conditions",
+      "evaluation_target_access": "post-prediction scoring only",
+      "failed_fit_handling": "retain failed fold/root",
+      "fitted_parameters": [
+        {
+          "bound_provenance": "closed form",
+          "lower": null,
+          "name": "mean",
+          "transform": "identity",
+          "unit": "g/s",
+          "upper": null
+        }
+      ],
+      "group_metadata_access": "frozen membership",
+      "implementation_file": "scripts/sci_md_010_core.py",
+      "implementation_sha256": "fd174c5d71bc9cb72246e696209bde03f26dff804550e0483b3a44d9d596dfdc",
+      "lane_id": "L-HYD",
+      "model_id": "HYD_B0_TRAINING_MEAN",
+      "observation_operator": "endpoint_100s flow; line pressure at final 100-s grid sample",
+      "required_input_columns": [
+        "line_pressure_bar",
+        "flow_g_s",
+        "condition_id",
+        "physical_unit_id"
+      ],
+      "scientific_role": "naive condition-balanced mean",
+      "sublane_id": "L-HYD-EQUILIBRIUM",
+      "target_exposure_status": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "target_observable": "endpoint_100s equilibrium mass_flow_rate__g_per_s",
+      "training_target_access": "outer-training membership only",
+      "weighting": "1/(number training conditions * brews in condition)"
+    },
+    {
+      "actual_execution_mode": "FIT_AND_PREDICT",
+      "allowed_exogenous_inputs": [
+        "direct line pressure__bar",
+        "fixed brewer calibration"
+      ],
+      "callable": "fit_condition_balanced_quadratic,predict_quadratic",
+      "claim_level": "LEVEL_3_RETROSPECTIVE_GROUPED_WITHIN_SOURCE_CONDITIONAL_ON_MEASURED_HYDRAULIC_CONTEXT",
+      "class": "B1",
+      "computational_cost": "11 folds x 3 analytic models; zero production cases",
+      "effective_degrees": 3,
+      "equation_algorithm": "q=max(0,a+b*p_line+c*p_line^2)",
+      "evaluation_target_access": "post-prediction scoring only",
+      "failed_fit_handling": "retain failed fold/root",
+      "fitted_parameters": [
+        {
+          "bound_provenance": "closed form",
+          "lower": null,
+          "name": "a",
+          "transform": "identity",
+          "unit": "g/s",
+          "upper": null
+        },
+        {
+          "bound_provenance": "closed form",
+          "lower": null,
+          "name": "b",
+          "transform": "identity",
+          "unit": "g/(s bar)",
+          "upper": null
+        },
+        {
+          "bound_provenance": "closed form",
+          "lower": null,
+          "name": "c",
+          "transform": "identity",
+          "unit": "g/(s bar2)",
+          "upper": null
+        }
+      ],
+      "group_metadata_access": "frozen membership",
+      "implementation_file": "scripts/sci_md_010_core.py",
+      "implementation_sha256": "fd174c5d71bc9cb72246e696209bde03f26dff804550e0483b3a44d9d596dfdc",
+      "lane_id": "L-HYD",
+      "model_id": "HYD_B1_PRESSURE_QUADRATIC",
+      "observation_operator": "endpoint_100s flow; line pressure at final 100-s grid sample",
+      "required_input_columns": [
+        "line_pressure_bar",
+        "flow_g_s",
+        "condition_id",
+        "physical_unit_id"
+      ],
+      "scientific_role": "competitive fixed quadratic turnover comparator",
+      "sublane_id": "L-HYD-EQUILIBRIUM",
+      "target_exposure_status": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "target_observable": "endpoint_100s equilibrium mass_flow_rate__g_per_s",
+      "training_target_access": "outer-training membership only",
+      "weighting": "1/(number training conditions * brews in condition)"
+    },
+    {
+      "actual_execution_mode": "FIT_AND_PREDICT",
+      "allowed_exogenous_inputs": [
+        "direct line pressure__bar",
+        "fixed brewer calibration"
+      ],
+      "callable": "fit_machine_darcy,predict_machine_darcy,solve_machine_darcy",
+      "claim_level": "LEVEL_3_RETROSPECTIVE_GROUPED_WITHIN_SOURCE_CONDITIONAL_ON_MEASURED_HYDRAULIC_CONTEXT",
+      "class": "E1",
+      "computational_cost": "11 folds x 3 analytic models; zero production cases",
+      "effective_degrees": 1,
+      "equation_algorithm": "q=C max(p_line-(a_m q^2+b_m q+c_m),0), root solved on predicted q",
+      "evaluation_target_access": "post-prediction scoring only",
+      "ewp_derivation": "scripts/espresso_reference_math.py continuum_hydraulic_resistance_m_inv and steady_outlet_flow_m3_s; uniform saturated steady fixed resistance; rho,A,K,mu,L collapsed; full EWP quantities not identified; machine drop uses predicted q",
+      "failed_fit_handling": "retain failed fold/root",
+      "fitted_parameters": [
+        {
+          "bound_provenance": "nonnegative Darcy mobility; broad frozen upper bound",
+          "lower": 0,
+          "name": "conductance_g_s_bar",
+          "transform": "identity",
+          "unit": "g/(s bar)",
+          "upper": 10
+        }
+      ],
+      "group_metadata_access": "frozen membership",
+      "implementation_file": "scripts/sci_md_010_core.py",
+      "implementation_sha256": "fd174c5d71bc9cb72246e696209bde03f26dff804550e0483b3a44d9d596dfdc",
+      "lane_id": "L-HYD",
+      "model_id": "HYD_E1_LUMPED_DARCY",
+      "observation_operator": "endpoint_100s flow; line pressure at final 100-s grid sample",
+      "required_input_columns": [
+        "line_pressure_bar",
+        "flow_g_s",
+        "condition_id",
+        "physical_unit_id"
+      ],
+      "scientific_role": "reduced EWP uniform saturated fixed-resistance Darcy limit",
+      "sublane_id": "L-HYD-EQUILIBRIUM",
+      "target_exposure_status": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "target_observable": "endpoint_100s equilibrium mass_flow_rate__g_per_s",
+      "training_target_access": "outer-training membership only",
+      "weighting": "1/(number training conditions * brews in condition)"
+    }
+  ]
+}

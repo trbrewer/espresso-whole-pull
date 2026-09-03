@@ -15,6 +15,14 @@ execution requires separate owner authorization. Another
 Pannusch or data-fusion cleanup is not selected. Physical validation remains
 `NOT_ESTABLISHED`.
 
+SCI-MD-010 is `PHASE_B_EXECUTION_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`.
+L-HYD is `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`;
+reduced E1 is `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2
+is `NOT_ADJUDICATED`. Stage F/D remain unauthorized, no automatic successor
+is selected, and physical validation remains `NOT_ESTABLISHED`.
+The SCI-ED-003 owner decision remains bounded and execution requires separate
+owner authorization.
+
 Before substantive scientific work, a general data-gap conclusion, or new measurement, read `provenance/AVAILABLE_DATA_AUTHORITY.json`, the live Puckworks MANIFEST/capability register and cards, external-corpus status, and prior task artifacts; create or validate one task preflight. Unavailable in this checkout is not absent. A data gap must name the observable, decision, directness, independence, and evidence checked.
 
 Espresso Whole-Pull owns the exact producer pin, task preflight, production observation operator, compatibility, consumed-comparison status, claim ceiling, and decision whether measurement is necessary. Puckworks owns provenance, capabilities, external identities, rights, and eligible/blocked uses.

@@ -1,0 +1,716 @@
+{
+  "analysis_authority_only": true,
+  "artifacts": [
+    {
+      "artifact_class": "METADATA_ONLY",
+      "artifact_id": "WASZ_BREWS",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "condition_id",
+        "physical_brew_id",
+        "canonical_brew_id",
+        "alias_status",
+        "excluded",
+        "source_hash"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "physical_brew_id",
+        "condition_id"
+      ],
+      "path": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/BREW_CONDITION_REGISTER.csv",
+      "physical_unit": "physical_brew_id;condition_id",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "a149e7b9f181909163a3a4ca80ed797f5dc412fd16181c338d6af7881489eccb",
+      "size_bytes": 14419,
+      "source_family": "wasz",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "METADATA_ONLY",
+      "artifact_id": "WASZ_FOLDS",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "outer.leave_one_controlled_condition_out"
+      ],
+      "format": "json",
+      "group_identifier_fields": [
+        "physical_brew_id",
+        "condition_id"
+      ],
+      "path": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/FOLD_MANIFEST.json",
+      "physical_unit": "physical_brew_id;condition_id",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "e427afbf7b9ecb3af5c144496f46b7517bdee397dd7eaa77bbdb78bea0419d93",
+      "size_bytes": 8407,
+      "source_family": "wasz",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "PRIOR_SCORE",
+      "artifact_id": "WASZ_LOCO",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "model_id",
+        "condition_id",
+        "physical_brew_id",
+        "nrmse",
+        "failed"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "physical_brew_id",
+        "condition_id"
+      ],
+      "path": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/LEAVE_ONE_CONDITION_OUT_RESULTS.csv",
+      "physical_unit": "physical_brew_id;condition_id",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived result",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "448f87127236b7c4f5933bc1735865ecf9272b02c380efc8927f3de0189eb1df",
+      "size_bytes": 29272,
+      "source_family": "wasz",
+      "target_field": "nrmse",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "scoring",
+        "uncertainty"
+      ]
+    },
+    {
+      "artifact_class": "PRIOR_SCORE",
+      "artifact_id": "WASZ_BLOCKED",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "model_id",
+        "condition_id",
+        "physical_brew_id",
+        "nrmse",
+        "training_window",
+        "evaluation_window",
+        "parameter_training_source"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "physical_brew_id",
+        "condition_id"
+      ],
+      "path": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/BLOCKED_TIME_RESULTS.csv",
+      "physical_unit": "physical_brew_id;condition_id",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived result",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "4faaa4b682fe40467288e106da9830854cb8942b64c74cf69981d7ba289f94c1",
+      "size_bytes": 71038,
+      "source_family": "wasz",
+      "target_field": "nrmse",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "scoring"
+      ]
+    },
+    {
+      "artifact_class": "SOURCE_MODEL",
+      "artifact_id": "WASZ_MODELS",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "model_id",
+        "model_family",
+        "equations",
+        "direct_inputs",
+        "fitted_parameters",
+        "parameter_bounds",
+        "maximum_claim"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [],
+      "path": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/MODEL_PRIVILEGE_REGISTRY.csv",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived metadata",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "6f1360191026b1026056d10c832fe3a8ef689bd6504f1d70b47ba399d0f2537c",
+      "size_bytes": 3045,
+      "source_family": "wasz",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "METADATA_ONLY",
+      "artifact_id": "WASZ_METHODS",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "models",
+        "parameter_bounds",
+        "primary_metric",
+        "uncertainty"
+      ],
+      "format": "json",
+      "group_identifier_fields": [],
+      "path": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/METHODS_FREEZE.json",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived metadata",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "c5391a855aee2ddf1bf8d8e0bf3c02395b900b93aabd6ee3edb24248423f70fb",
+      "size_bytes": 3015,
+      "source_family": "wasz",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "PRIOR_SCORE",
+      "artifact_id": "WASZ_AGG",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "model_id",
+        "loco_condition_balanced_nrmse",
+        "blocked_time_condition_balanced_nrmse"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "condition_id"
+      ],
+      "path": "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/MODEL_COMPARISON_RESULTS.csv",
+      "physical_unit": "condition_id",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived result",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "cf24d1972588a2a9849551d4d2829ef09b647b6cc95fbf9091ecdb1d33882287",
+      "size_bytes": 878,
+      "source_family": "wasz",
+      "target_field": "loco_condition_balanced_nrmse",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "scoring"
+      ]
+    },
+    {
+      "artifact_class": "METADATA_ONLY",
+      "artifact_id": "PANN_AUTH",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "puckworks_commit",
+        "source_subset_manifest_sha256",
+        "target_exposure"
+      ],
+      "format": "json",
+      "group_identifier_fields": [],
+      "path": "docs/analysis/xsv_pannusch_multimodel_001/DATA_AUTHORITY.json",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "CC-BY-NC-3.0",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "c6702c707bb10732ec547b9910c5df17dec99c0eb1b0251347aea5517e96d33f",
+      "size_bytes": 747,
+      "source_family": "pann",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "METADATA_ONLY",
+      "artifact_id": "PANN_OBS",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "primary",
+        "definition",
+        "independent_unit",
+        "fractions",
+        "primary_analytes"
+      ],
+      "format": "json",
+      "group_identifier_fields": [],
+      "path": "docs/analysis/xsv_pannusch_multimodel_001/OBSERVABLE_CONTRACT.json",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived metadata",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "f46b369883deac90bfa920276e71c05789280d0886174d69b0cf9f54356a6b75",
+      "size_bytes": 603,
+      "source_family": "pann",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "METADATA_ONLY",
+      "artifact_id": "PANN_SPLIT",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "minimum_unit",
+        "march_primary",
+        "keep_fractions_together",
+        "keep_paired_species_together"
+      ],
+      "format": "json",
+      "group_identifier_fields": [],
+      "path": "docs/analysis/xsv_pannusch_multimodel_001/SPLIT_CONTRACT.json",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived metadata",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "abdeb61c8ead24ea761b88d0894c19d3e13c18261b88fe19dc6c8f05bac138c9",
+      "size_bytes": 491,
+      "source_family": "pann",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "PRIOR_SCORE",
+      "artifact_id": "PANN_LOCO",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "omitted_condition",
+        "pannusch_rmse",
+        "ordinal_rmse",
+        "boundary_rmse"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "omitted_condition"
+      ],
+      "path": "docs/analysis/xsv_pannusch_multimodel_001/LEAVE_ONE_MARCH_CONDITION_OUT.csv",
+      "physical_unit": "omitted_condition",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived result",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "71162d209429f586510bc39c374f739568889cb7ab1970f9b0275cbffe6151e7",
+      "size_bytes": 644,
+      "source_family": "pann",
+      "target_field": "pannusch_rmse",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "scoring"
+      ]
+    },
+    {
+      "artifact_class": "SOURCE_MODEL",
+      "artifact_id": "PANN_MODELS",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "model_id",
+        "privilege_class",
+        "march_chemistry_fit",
+        "target_shot_windows"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [],
+      "path": "docs/analysis/xsv_pannusch_multimodel_001/MODEL_PRIVILEGE_REGISTRY.csv",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived metadata",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "fb18136d3518faf486f8236306f245b7df4295d4f88f749581015442a6743199",
+      "size_bytes": 369,
+      "source_family": "pann",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "PRIOR_SCORE",
+      "artifact_id": "PANN_AGG",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "model",
+        "privilege_class",
+        "march_rmse",
+        "difference_vs_boundary",
+        "paired_ci_low",
+        "paired_ci_high"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "model"
+      ],
+      "path": "docs/analysis/xsv_pannusch_multimodel_001/MODEL_COMPARISON_RESULTS.csv",
+      "physical_unit": "model",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived result",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "da75ec0f62fe1d6a168286ff290d8054ac29ee59f46ed11e492fd1e9929dc41a",
+      "size_bytes": 2561,
+      "source_family": "pann",
+      "target_field": "march_rmse",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "scoring",
+        "uncertainty"
+      ]
+    },
+    {
+      "artifact_class": "PRIOR_SCORE",
+      "artifact_id": "PANN_SPECIES",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "model_id",
+        "error",
+        "difference_vs_pool",
+        "conditions_worse",
+        "n_conditions"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "model_id"
+      ],
+      "path": "docs/analysis/xsv_pannusch_multimodel_001/SPECIES_MODEL_RESULTS.csv",
+      "physical_unit": "model_id",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived result",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "43f3c7cea05e6dc416b6ce6fbfd5f16d32ee4fcdea288975597144462753a995",
+      "size_bytes": 1099,
+      "source_family": "pann",
+      "target_field": "error",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "PROCESSED_OBSERVATION",
+      "artifact_id": "STRUCT_MAP",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "source",
+        "lineage_id",
+        "source_file",
+        "source_variable",
+        "mapping_class",
+        "decision_role"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [],
+      "path": "docs/analysis/ewp_porosity_permeability_prior_001/SOURCE_VARIABLE_MAPPING_LEDGER.csv",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived mapping",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "00496e1f1a7640e194371deb8e390105ff16e1071cf73ee443d931bd423376eb",
+      "size_bytes": 9475,
+      "source_family": "struct",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "PRIOR_SCORE",
+      "artifact_id": "STRUCT_PORO",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "eligible_support_count",
+        "support_decisions"
+      ],
+      "format": "json",
+      "group_identifier_fields": [
+        "support_id"
+      ],
+      "path": "docs/analysis/ewp_porosity_permeability_prior_001/POROSITY_MATERIALITY.json",
+      "physical_unit": "support_id",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "ewp",
+      "rights_redistribution": "derived result",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "5ee7d7731073e833a2e41c49cf44fde0a20910c5a3ad1e12015824dc51d05b63",
+      "size_bytes": 5016,
+      "source_family": "struct",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "artifact_class": "METADATA_ONLY",
+      "artifact_id": "PW_MANIFEST",
+      "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+      "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "dataset_id",
+        "source_card",
+        "units_as_published",
+        "uncertainty_retained",
+        "license_access",
+        "gate_use",
+        "caveat"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [],
+      "path": "puckworks/data/MANIFEST.csv",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "puckworks",
+      "rights_redistribution": "per-row rights",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081",
+      "size_bytes": 71115,
+      "source_family": "pw",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    },
+    {
+      "alias_handling": "12-8-6 duplicate representation excluded; 56 canonical brews",
+      "artifact_class": "PROCESSED_OBSERVATION",
+      "artifact_id": "WASZ_EQUILIBRIUM",
+      "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+      "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+      "equilibrium_definition": "endpoint_100s; final point of 0-100 s preprocessed grid",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "reference_pressure_round__bar",
+        "shot_id",
+        "window",
+        "n_samples",
+        "mass_flow_rate__g_per_s"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "shot_id",
+        "reference_pressure_round__bar"
+      ],
+      "path": "puckworks/data/waszkiewicz2025/equilibrium_windows.csv",
+      "physical_unit": "shot_id;reference_pressure_round__bar",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "puckworks",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "c33bd01729cfe63db6d319d9c64afcac818050fdf8c888ab4d47dc233d5e2213",
+      "size_bytes": 7974,
+      "source_family": "wasz",
+      "target_field": "mass_flow_rate__g_per_s",
+      "uncertainty_fields": [],
+      "uncertainty_status": "per-brew values; between-brew variability retained",
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "scoring"
+      ]
+    },
+    {
+      "artifact_class": "RAW_OBSERVATION",
+      "artifact_id": "WASZ_LINE_PRESSURE",
+      "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+      "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "reference_pressure_round__bar",
+        "shot_id",
+        "time_index",
+        "pressure__bar"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "shot_id",
+        "reference_pressure_round__bar"
+      ],
+      "path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
+      "physical_unit": "shot_id;reference_pressure_round__bar",
+      "pressure_reference": "direct pump/line sensor pressure",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "puckworks",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "time_index=999 final 100-s grid sample for each canonical brew",
+      "sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+      "size_bytes": 2602224,
+      "source_family": "wasz",
+      "target_field": "",
+      "target_independence": "pressure__bar is directly measured and does not use mass-flow target",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "prediction"
+      ]
+    },
+    {
+      "artifact_class": "SOURCE_MODEL",
+      "artifact_id": "WASZ_MACHINE_PARAMS",
+      "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+      "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+      "calibration_flow_basis": "measured mass flow g/s in separate brewer pressure-drop calibration",
+      "coefficient_units": {
+        "a": "bar/(g/s)^2",
+        "b": "bar/(g/s)",
+        "c": "bar"
+      },
+      "coefficients": {
+        "a": 0.017184292098914252,
+        "b": 0.03670858658698296,
+        "c": 0.2831597837775055
+      },
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "parameter",
+        "value",
+        "model"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [],
+      "independence": "calibration series is separate from brew equilibrium targets",
+      "path": "puckworks/data/waszkiewicz2025/brewer_quadratic_params.csv",
+      "physical_unit": "source-defined",
+      "pressure_reference": "pump/line minus basket, bar",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "puckworks",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919",
+      "size_bytes": 166,
+      "source_family": "wasz",
+      "target_field": "",
+      "uncertainty": "point-level pressure and flow standard deviations in WASZ_MACHINE_POINTS",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "prediction"
+      ],
+      "validity_range": "source calibration points; root solve frozen to 0-20 g/s"
+    },
+    {
+      "artifact_class": "RAW_OBSERVATION",
+      "artifact_id": "WASZ_MACHINE_POINTS",
+      "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+      "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "delta_p_mean__bar",
+        "flow_rate_mean__g_per_s"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [],
+      "path": "puckworks/data/waszkiewicz2025/brewer_quadratic_points.csv",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "puckworks",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "718f848973d708ae2e9044c0d87141524460e947044a59d3cefda5530ab056d8",
+      "size_bytes": 3596,
+      "source_family": "wasz",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
+      ]
+    }
+  ],
+  "schema_version": 1
+}

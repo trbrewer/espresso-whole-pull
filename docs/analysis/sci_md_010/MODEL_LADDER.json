@@ -1,0 +1,23 @@
+{
+  "E2": "NOT_EXECUTABLE_IN_THIS_LANE_NOT_ADJUDICATED",
+  "models": [
+    {
+      "actual_execution_mode": "FIT_AND_PREDICT",
+      "claim_level": "LEVEL_3_RETROSPECTIVE_GROUPED_WITHIN_SOURCE_CONDITIONAL_ON_MEASURED_HYDRAULIC_CONTEXT",
+      "class": "B0",
+      "model_id": "HYD_B0_TRAINING_MEAN"
+    },
+    {
+      "actual_execution_mode": "FIT_AND_PREDICT",
+      "claim_level": "LEVEL_3_RETROSPECTIVE_GROUPED_WITHIN_SOURCE_CONDITIONAL_ON_MEASURED_HYDRAULIC_CONTEXT",
+      "class": "B1",
+      "model_id": "HYD_B1_PRESSURE_QUADRATIC"
+    },
+    {
+      "actual_execution_mode": "FIT_AND_PREDICT",
+      "claim_level": "LEVEL_3_RETROSPECTIVE_GROUPED_WITHIN_SOURCE_CONDITIONAL_ON_MEASURED_HYDRAULIC_CONTEXT",
+      "class": "E1",
+      "model_id": "HYD_E1_LUMPED_DARCY"
+    }
+  ]
+}

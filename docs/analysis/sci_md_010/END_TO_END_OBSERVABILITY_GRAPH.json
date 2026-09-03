@@ -1,0 +1,61 @@
+{
+  "edges": [
+    {
+      "from": "line_pressure_measured",
+      "id": "e_line_machine",
+      "to": "machine_drop_predicted_q"
+    },
+    {
+      "from": "machine_drop_predicted_q",
+      "id": "e_machine_basket",
+      "to": "basket_pressure_predicted"
+    },
+    {
+      "from": "basket_pressure_predicted",
+      "id": "e_basket_darcy",
+      "to": "darcy_puck_response"
+    },
+    {
+      "from": "darcy_puck_response",
+      "id": "e_darcy_flow",
+      "to": "equilibrium_flow_predicted"
+    },
+    {
+      "from": "equilibrium_flow_predicted",
+      "id": "e_flow_observer",
+      "to": "equilibrium_flow_observed"
+    }
+  ],
+  "minimal_cut_sets": [
+    [
+      "e_line_machine"
+    ],
+    [
+      "e_basket_darcy"
+    ],
+    [
+      "e_flow_observer"
+    ]
+  ],
+  "nodes": [
+    {
+      "id": "line_pressure_measured"
+    },
+    {
+      "id": "machine_drop_predicted_q"
+    },
+    {
+      "id": "basket_pressure_predicted"
+    },
+    {
+      "id": "darcy_puck_response"
+    },
+    {
+      "id": "equilibrium_flow_predicted"
+    },
+    {
+      "id": "equilibrium_flow_observed"
+    }
+  ],
+  "operator": "machine drop always evaluated using predicted flow; observed basket pressure prohibited"
+}

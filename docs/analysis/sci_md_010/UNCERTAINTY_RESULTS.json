@@ -1,0 +1,66 @@
+{
+  "bootstrap_refit": false,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20260902,
+  "bootstrap_unit": "condition_then_paired_brew",
+  "condition_level_paired_differences": [
+    {
+      "normalized_delta_b1_minus_e1": 0.04502816985693528,
+      "outer_fold": "HYD-LOCO-1.0"
+    },
+    {
+      "normalized_delta_b1_minus_e1": -0.24423470520287058,
+      "outer_fold": "HYD-LOCO-11.0"
+    },
+    {
+      "normalized_delta_b1_minus_e1": -0.3961254966749788,
+      "outer_fold": "HYD-LOCO-13.0"
+    },
+    {
+      "normalized_delta_b1_minus_e1": 0.0916460308168119,
+      "outer_fold": "HYD-LOCO-2.0"
+    },
+    {
+      "normalized_delta_b1_minus_e1": -0.09464035642483527,
+      "outer_fold": "HYD-LOCO-3.5"
+    },
+    {
+      "normalized_delta_b1_minus_e1": -0.2824855359901189,
+      "outer_fold": "HYD-LOCO-4.0"
+    },
+    {
+      "normalized_delta_b1_minus_e1": -0.32117546735252733,
+      "outer_fold": "HYD-LOCO-5.0"
+    },
+    {
+      "normalized_delta_b1_minus_e1": -0.3316041110881307,
+      "outer_fold": "HYD-LOCO-6.0"
+    },
+    {
+      "normalized_delta_b1_minus_e1": -0.20480816405017596,
+      "outer_fold": "HYD-LOCO-7.0"
+    },
+    {
+      "normalized_delta_b1_minus_e1": 0.052625494441993784,
+      "outer_fold": "HYD-LOCO-8.0"
+    },
+    {
+      "normalized_delta_b1_minus_e1": 0.08315765270469977,
+      "outer_fold": "HYD-LOCO-9.0"
+    }
+  ],
+  "low_pressure_normalized_delta_b1_minus_e1": -0.11232543181874685,
+  "low_pressure_normalized_delta_ci_high": 0.029735204181095785,
+  "low_pressure_normalized_delta_ci_low": -0.2669334833198054,
+  "materiality_status": "PREDICTIVE_RANKING_ONLY",
+  "model_losses": {
+    "HYD_B0_TRAINING_MEAN": 0.31786798610901296,
+    "HYD_B1_PRESSURE_QUADRATIC": 0.1532500174983135,
+    "HYD_E1_LUMPED_DARCY": 0.29894242558587686
+  },
+  "normalized_delta_b1_minus_e1": -0.14569240808756337,
+  "normalized_delta_ci_high": -0.036163174040446486,
+  "normalized_delta_ci_low": -0.2487589900770766,
+  "quantile_convention": "nearest-rank ceil(p*n)-1",
+  "status": "COMPLETE"
+}
