@@ -41,6 +41,7 @@ class TestBindings(unittest.TestCase):
  def test_handoff_all_hashes(self):ex.verify_handoff()
  def test_production_hashes_and_symbols(self):ex.verify_production()
  def test_puckworks_exact(self):
+  if not (PW/'.git').exists() and not PW.is_dir():self.skipTest('external SCI-MD-011 authority not provisioned')
   with mock.patch.dict(os.environ,{'SCI_MD_011_PUCKWORKS_ROOT':str(PW)}):self.assertEqual(ex.resolve_puckworks(),PW.resolve())
  def test_wrong_puckworks_rejected(self):
   with tempfile.TemporaryDirectory() as td,mock.patch.dict(os.environ,{'SCI_MD_011_PUCKWORKS_ROOT':td}):

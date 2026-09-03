@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1017,
-  "total_uncompressed_bytes_excluding_manifest": 10095083,
-  "aggregate_source_sha256": "659d85d7a3dee56a247bc989d6728757607dd9e9a9a85e8962701587e5f7065c",
-  "aggregate_sha256": "659d85d7a3dee56a247bc989d6728757607dd9e9a9a85e8962701587e5f7065c",
+  "total_uncompressed_bytes_excluding_manifest": 10095268,
+  "aggregate_source_sha256": "763e53e72154e89b6763ecdb9178c54ea2737d73812968ac9295f15a4edb7073",
+  "aggregate_sha256": "763e53e72154e89b6763ecdb9178c54ea2737d73812968ac9295f15a4edb7073",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2024,7 +2024,7 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/FREEZE_ARTIFACT_MANIFEST.json": {
-      "sha256": "3aef4f2dc7a3688712bc6e399baac00ab3843fa7c6795668b2f4eba91c6e3694",
+      "sha256": "d36ee582cd43d95ab3de1aed6323b28f3a5659391c150d2b7847bdd36843e55a",
       "bytes": 3847,
       "git_mode": "100644"
     },
@@ -3889,8 +3889,8 @@
       "git_mode": "100755"
     },
     "scripts/sci_md_011_execute.py": {
-      "sha256": "4b2789baed0ba088552f9c7b45107fb92acfa87259074ab00f15d550427eea08",
-      "bytes": 28117,
+      "sha256": "d9c274acd534d48305c82672cb2e8eba10a4390b7f06cba79f5233f912d56163",
+      "bytes": 28189,
       "git_mode": "100755"
     },
     "scripts/sci_md_011_prepare.py": {
@@ -4479,8 +4479,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_011.py": {
-      "sha256": "4df401bf92d079c435f63f4f2e3e497156343533c662013a61ae50aaa9e7cb63",
-      "bytes": 14435,
+      "sha256": "a0561bf79a07a4df0629a0ac933326014444ed2342d09ce20c84a9399aaeb8f7",
+      "bytes": 14548,
       "git_mode": "100644"
     },
     "tests/test_sci_md_pannusch_flow_history_001.py": {

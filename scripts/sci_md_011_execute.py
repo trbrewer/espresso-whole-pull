@@ -40,8 +40,8 @@ def resolve_puckworks():
  for x in a['sources']:
   if sha256(p/x['path'])!=x['sha256']:raise ValueError('PUCKWORKS_SOURCE_CHANGED:'+x['path'])
  return p
-def verify_contract(contract,freeze):
- mh=verify_manifest();verify_handoff();verify_production();pw=resolve_puckworks()
+def verify_contract(contract,freeze,require_puckworks=True):
+ mh=verify_manifest();verify_handoff();verify_production();pw=resolve_puckworks() if require_puckworks else None
  if contract['task_id']!=TASK or freeze['task_id']!=TASK or freeze.get('revision')!=REVISION:raise ValueError('TASK_OR_REVISION_MISMATCH')
  if tuple(contract['models'])!=MODELS or tuple(freeze['selected_models'])!=MODELS:raise ValueError('MODEL_SET_CHANGED')
  if contract['metrics']['seed']!=SEED or contract['metrics']['bootstrap_count']!=BOOTSTRAPS:raise ValueError('SEED_OR_BOOTSTRAP_CHANGED')
@@ -225,7 +225,7 @@ def real_binding_metadata(pw):
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--contract',required=True);ap.add_argument('--freeze',required=True);ap.add_argument('--review-receipt',required=True);ap.add_argument('--output',required=True);ap.add_argument('--synthetic-test-mode',action='store_true');ap.add_argument('--real-binding-preflight-only',action='store_true');ap.add_argument('--synthetic-outcome',choices=['poro','turnover','quadratic','blocked'],default='poro');a=ap.parse_args();out=Path(a.output)
  if out.exists() and any(out.iterdir()):raise ValueError('DUPLICATE_RESULT_GUARD')
- c=load_json(a.contract);f=load_json(a.freeze);mh,pw=verify_contract(c,f);mode='preflight' if a.real_binding_preflight_only else 'synthetic' if a.synthetic_test_mode else 'real';r=verify_receipt(a.review_receipt,mode,mh)
+ c=load_json(a.contract);f=load_json(a.freeze);mode='preflight' if a.real_binding_preflight_only else 'synthetic' if a.synthetic_test_mode else 'real';mh,pw=verify_contract(c,f,mode!='synthetic');r=verify_receipt(a.review_receipt,mode,mh)
  if a.real_binding_preflight_only:out.mkdir(parents=True);write_json(out/'REAL_BINDING_PREFLIGHT.json',real_binding_metadata(pw));return
  if a.synthetic_test_mode:rows=synthetic_rows(a.synthetic_outcome);parts=partitions(rows);base=synthetic_baselines(parts);fit_fn=(lambda train,m: {'execution_status':'BLOCKED','failure_class':'FIT_FAILURE','failure_reason':'SYNTHETIC_FORCED_BLOCK','optimizer_status':'FAIL','prediction_status':'NOT_ATTEMPTED','fitted_parameters':None,'objective':None,'root_failure_count':0,'domain_failure_count':0,'nonfinite_count':25,'identifiability':'EXECUTION_BLOCKED'}) if a.synthetic_outcome=='blocked' else fit;rec=base+execute_candidates(parts,fit_fn);write_result(out,rec,mh,r,True,rows);return
  rows=load_real_rows(pw);parts=partitions(rows);records=accepted_baselines(parts)+execute_candidates(parts);write_result(out,records,mh,r,False)

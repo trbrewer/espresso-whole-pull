@@ -1,5 +1,5 @@
 {
-  "aggregate_content_sha256": "2fd8192b04b8d57de0e7e9473df88858ee9c95fbb57b075f9d761a47f014fe1f",
+  "aggregate_content_sha256": "397abc1f6bc620bc462e5548f27c783ab67663a5dd9b6d7eaf8d276c0d2a5951",
   "artifacts": [
     {
       "path": "docs/analysis/sci_md_011/TASK_CONTRACT.md",
@@ -63,7 +63,7 @@
     },
     {
       "path": "scripts/sci_md_011_execute.py",
-      "sha256": "4b2789baed0ba088552f9c7b45107fb92acfa87259074ab00f15d550427eea08"
+      "sha256": "d9c274acd534d48305c82672cb2e8eba10a4390b7f06cba79f5233f912d56163"
     },
     {
       "path": "scripts/validate_sci_md_011.py",
@@ -75,7 +75,7 @@
     },
     {
       "path": "tests/test_sci_md_011.py",
-      "sha256": "4df401bf92d079c435f63f4f2e3e497156343533c662013a61ae50aaa9e7cb63"
+      "sha256": "a0561bf79a07a4df0629a0ac933326014444ed2342d09ce20c84a9399aaeb8f7"
     },
     {
       "path": "tests/fixtures/sci_md_011_synthetic_receipt.json",
