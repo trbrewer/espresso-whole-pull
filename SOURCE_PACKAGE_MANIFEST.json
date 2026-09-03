@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1017,
-  "total_uncompressed_bytes_excluding_manifest": 10111774,
-  "aggregate_source_sha256": "1173ef97b305f39d0a54f8ccf4298eefa72c059d46a3f491b421d33323c00a83",
-  "aggregate_sha256": "1173ef97b305f39d0a54f8ccf4298eefa72c059d46a3f491b421d33323c00a83",
+  "file_count": 1036,
+  "total_uncompressed_bytes_excluding_manifest": 10551809,
+  "aggregate_source_sha256": "0015514fd162450306152a33597fc5667e7c36283b960f7326d6c08cb353832f",
+  "aggregate_sha256": "0015514fd162450306152a33597fc5667e7c36283b960f7326d6c08cb353832f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "2da5190d298719f2ba5fbf4df17fe4bdc7398bd93c78626349de0f9dbc67b9c9",
-      "bytes": 8440,
+      "sha256": "24d9df4e4ac63787be0b91e861093857e601112bb64e9ebfbdf468f164b405a9",
+      "bytes": 8714,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -789,8 +789,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "752d7f841e9dc3d0129ac7372fe935998cc1985ecc213b48b4f082f1e4497a45",
-      "bytes": 13029,
+      "sha256": "b64a70319dcb6c1c3f925d8210ae8e9ba94be70b714cce185241c8ddabe92585",
+      "bytes": 13182,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -1993,9 +1993,24 @@
       "bytes": 514,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_011/AGGREGATE_RESULTS.csv": {
+      "sha256": "51675b20eb13df5a2b08199ceef021ccb063c6c6f47317d288948b1b8525d576",
+      "bytes": 739,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/ARCHITECTURE_DECISION.json": {
+      "sha256": "ac1e67a97161ddd93afe73af742af045ac9f164b470b4758819065feb0ce4ae5",
+      "bytes": 511,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_011/AUTHORITY_AND_HANDOFF.json": {
       "sha256": "88a5c14e5a9891d133cf962c9db9b10007e6561621295fb97001787918829819",
       "bytes": 3779,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/BREW_RESULTS.csv": {
+      "sha256": "7373b0e8f6174c327f9395dfb253b4fee943c40cbcffc11ffc1b9462951827dc",
+      "bytes": 41514,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/CLOSURE_ORACLE_RECEIPT.json": {
@@ -2006,6 +2021,11 @@
     "docs/analysis/sci_md_011/CLOSURE_ORACLE_RESULTS.csv": {
       "sha256": "89645aa3bbe210700465765eeed76383d8ffb42d2f51eb5c4a9b1c03e12d02b2",
       "bytes": 2368,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/CONDITION_RESULTS.csv": {
+      "sha256": "7a8f618a027e06f306f6942c26080a500c05cff6584dcc7989f097b4ae850784",
+      "bytes": 3487,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/EVALUATION_CONTRACT.json": {
@@ -2023,6 +2043,21 @@
       "bytes": 853,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_011/EXECUTION_STATE.json": {
+      "sha256": "e488ccf7834a4315ce336595dc3e9ed3129911916ceb54e4a53b838ed959e027",
+      "bytes": 426,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/EXPERIMENT_CONSEQUENCE.json": {
+      "sha256": "598243222b45186273931e5bb9e0e3c2af15e40fd38c55c12c2dad1adbd54794",
+      "bytes": 231,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/FOLD_RESULTS.csv": {
+      "sha256": "9b3d5236676512fb765f46aecf61fb6c00d110eb764eb10802b78e383d3245a1",
+      "bytes": 326295,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_011/FREEZE_ARTIFACT_MANIFEST.json": {
       "sha256": "2e4547e1aa5bf3e51675912a9b73178e1f303dbbcbea55507edd99c5d12a2719",
       "bytes": 3847,
@@ -2033,14 +2068,44 @@
       "bytes": 945,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_011/IDENTIFIABILITY_RESULTS.json": {
+      "sha256": "b06df1c7c0e7ecee6f2e9ec066cf8146ea467b29c73a72813d0ca9e6e7113355",
+      "bytes": 40600,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_011/MODEL_SPECIFICATIONS.json": {
       "sha256": "fca9f358dc884516d06a7c4d43211935a3f84332af07965bc1f718fcb9e7c3ca",
       "bytes": 2249,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_011/MODEL_UTILITY_SCORECARD.csv": {
+      "sha256": "51675b20eb13df5a2b08199ceef021ccb063c6c6f47317d288948b1b8525d576",
+      "bytes": 739,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json": {
       "sha256": "592f66b7a106e1817e5116dbab73cf69bb366581f3b3b5130d66f7def96c7cfb",
       "bytes": 964,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/PAIRWISE_COMPARISONS.json": {
+      "sha256": "5383f20befd5cf2bf2c5f66bda4edf30a2d7fd3cf4c3cef9713c5e0934665604",
+      "bytes": 1589,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/PARAMETER_STABILITY.csv": {
+      "sha256": "3a880c90cd36851c23e42cdbc6e4aa0b00695b72dc8d1d539dbc8b5e0a8e87c8",
+      "bytes": 2953,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/PHASE_B_REVIEW_RECEIPT.json": {
+      "sha256": "fbe34f9513a1bc1fc830ef91506a309b6d7b7cde79e20bfdd233c88721be5fb5",
+      "bytes": 722,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/PRESSURE_RESPONSE_DIAGNOSTICS.json": {
+      "sha256": "35b6259ea2db82dc6b647db95880d67f0b1f602e8e974b87d981692a5bf4e140",
+      "bytes": 10571,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_011/PRE_SCORE_FREEZE.json": {
@@ -2053,6 +2118,26 @@
       "bytes": 1125,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_011/RESULT.md": {
+      "sha256": "c61aa8706da104ba00560f444e3a95abec51b9c397c6c90de6a0ea17fd5f27db",
+      "bytes": 1511,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/RESULTS_SUMMARY.md": {
+      "sha256": "c61aa8706da104ba00560f444e3a95abec51b9c397c6c90de6a0ea17fd5f27db",
+      "bytes": 1511,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/RESULT_ARTIFACT_MANIFEST.json": {
+      "sha256": "40bd2baee79750673499c3509359197c40a80c9c6ff50016931ec7e6d57f3a0d",
+      "bytes": 2493,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/RUN_RECEIPT.json": {
+      "sha256": "7e84ee71bab7b4952f5e28510fdc2faf26311db5a566344a62558c6b9bacaed2",
+      "bytes": 804,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_011/SCI_MD_010_HANDOFF.json": {
       "sha256": "482cba9459fa1f237fde36a3050d4eb5d8a28994edef4f4226378edaf11f5096",
       "bytes": 3162,
@@ -2061,6 +2146,16 @@
     "docs/analysis/sci_md_011/TASK_CONTRACT.md": {
       "sha256": "f74a24494ebb6573cf3e387f638f70060180d317c26e9ee519afa0db480e2f60",
       "bytes": 1612,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/UNCERTAINTY_RESULTS.json": {
+      "sha256": "73093487236505a2be053094a047d0d227a65e23c3e48d70ba66bdfe32dc813a",
+      "bytes": 1815,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_011/summary.json": {
+      "sha256": "d37eef6a53c6596d4028faec235b2e0e3c003289adff49070b310affc671dec5",
+      "bytes": 557,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_pannusch_flow_history_001/ATTEMPT_LOG.json": {
@@ -2629,13 +2724,13 @@
       "git_mode": "100644"
     },
     "docs/strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md": {
-      "sha256": "57530e610d6f0ef6b080bc20653022cad3ae96fec13808676f83f7b4bc99c876",
-      "bytes": 15577,
+      "sha256": "bf0532b729041a42527db7104e483ac82348c4fd39985e97f9fe346d2116b5aa",
+      "bytes": 15851,
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "37564b7e00d18ecad427ea3b353838423fde9dc7ae874bd639544021f7e65f98",
-      "bytes": 10436,
+      "sha256": "6fcce5ad6341d7bde15ba19147985fb1008245bb3991704ee6b7993fbedbdeb5",
+      "bytes": 10702,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {

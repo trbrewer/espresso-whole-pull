@@ -1,0 +1,7 @@
+{
+  "action": "IDENTIFY_EXACT_BLOCKER_NO_MEASUREMENT_UNLESS_IRREDUCIBLE_DECISION_CHANGING_OBSERVABLE",
+  "architecture": "NOT_ADJUDICATED",
+  "m01_adjudicated": false,
+  "stage_d_authorized": false,
+  "stage_f_authorized": false
+}

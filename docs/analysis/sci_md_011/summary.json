@@ -1,0 +1,15 @@
+{
+  "architecture": "NOT_ADJUDICATED",
+  "candidate_status": {
+    "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT": "BLOCKED",
+    "HYD_P1_POROELASTIC_UNIVERSAL_LIMIT": "WRONG_PRESSURE_RESPONSE"
+  },
+  "current_full_ewp_validated": false,
+  "disposition": "SCI_MD_011_POROELASTIC_CLOSURE_TEST_BLOCKED_BY_IDENTIFIABILITY_EXECUTION_DOMAIN_OR_EQUIVALENCE_GAP",
+  "finite_vs_universal": "NOT_COMPUTABLE",
+  "m01_adjudicated": false,
+  "physical_validation": "NOT_ESTABLISHED",
+  "stage_d_authorized": false,
+  "stage_f_authorized": false,
+  "synthetic": false
+}

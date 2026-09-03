@@ -1,0 +1,13 @@
+{
+  "disposition": "SCI_MD_011_PRE_SCORE_FREEZE_SINGLE_INDEPENDENT_REVIEW_PASS_READY_FOR_EXECUTION",
+  "durable_review_url": "https://github.com/trbrewer/espresso-whole-pull/pull/142#issuecomment-5529895164",
+  "freeze_commit": "76e4251ad4723a5dd8a6da73d1a04ef8567813b3",
+  "freeze_manifest_sha256": "2e4547e1aa5bf3e51675912a9b73178e1f303dbbcbea55507edd99c5d12a2719",
+  "freeze_tree": "3a6ccfa15b677691c27a4163c84cf51ffbb81669",
+  "material_findings": [],
+  "phase_b_authorized": true,
+  "review_mode": "EXACT_HEAD_COMMENT_FALLBACK_AUTHENTICATED_ACCOUNT_IS_PR_AUTHOR",
+  "reviewed_at": "2026-09-03T17:57:39Z",
+  "reviewer_identity": "trbrewer/independent-codex-r2-exact-freeze-review-session",
+  "task_id": "SCI-MD-011"
+}

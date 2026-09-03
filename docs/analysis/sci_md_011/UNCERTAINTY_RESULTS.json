@@ -1,0 +1,52 @@
+{
+  "bootstrap_count": 2000,
+  "bootstrap_refit": false,
+  "comparisons": {
+    "B1_VS_E2C": {
+      "full_domain_interval": null,
+      "low_pressure_interval": null,
+      "models": [
+        "HYD_B1_PRESSURE_QUADRATIC",
+        "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT"
+      ],
+      "point_delta": null,
+      "reason": "REQUIRED_MODEL_BLOCKED",
+      "sign_convention": "LOSS_HYD_B1_PRESSURE_QUADRATIC - LOSS_HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT; positive favors HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT",
+      "status": "NOT_COMPUTABLE"
+    },
+    "B1_VS_P1": {
+      "bootstrap_count": 2000,
+      "full_domain_interval": [
+        -0.04021079718472187,
+        0.06296560155251746
+      ],
+      "low_pressure_interval": [
+        -0.08283389414585202,
+        -0.003261716080237553
+      ],
+      "models": [
+        "HYD_B1_PRESSURE_QUADRATIC",
+        "HYD_P1_POROELASTIC_UNIVERSAL_LIMIT"
+      ],
+      "point_delta": 0.008695588464900761,
+      "quantile_convention": "nearest-rank ceil(p*n)-1",
+      "seed": 20260902,
+      "sign_convention": "LOSS_HYD_B1_PRESSURE_QUADRATIC - LOSS_HYD_P1_POROELASTIC_UNIVERSAL_LIMIT; positive favors HYD_P1_POROELASTIC_UNIVERSAL_LIMIT",
+      "status": "COMPLETE"
+    },
+    "P1_VS_E2C": {
+      "full_domain_interval": null,
+      "low_pressure_interval": null,
+      "models": [
+        "HYD_P1_POROELASTIC_UNIVERSAL_LIMIT",
+        "HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT"
+      ],
+      "point_delta": null,
+      "reason": "REQUIRED_MODEL_BLOCKED",
+      "sign_convention": "LOSS_HYD_P1_POROELASTIC_UNIVERSAL_LIMIT - LOSS_HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT; positive favors HYD_E2C_EWP_FINITE_PHI_POROELASTIC_COMPONENT",
+      "status": "NOT_COMPUTABLE"
+    }
+  },
+  "seed": 20260902,
+  "unit": "condition_then_paired_brew"
+}

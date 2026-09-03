@@ -1,12 +1,17 @@
 # Project State
 
-## SCI-MD-011 active owner-authorized task (2026-09-03)
+## SCI-MD-011 Phase B result (2026-09-03)
 
-`ACTIVE_OWNER_AUTHORIZED_G1_EXISTING_DATA_TASK`. This task adjudicates only the
-implemented poroelastic puck-closure component under the frozen SCI-MD-010
-observation adapter. Current full EWP is `NOT_ADJUDICATED`; Stage F and Stage D
-are `NOT_AUTHORIZED`; physical validation is `NOT_ESTABLISHED`.
-No automatic successor is selected.
+`PHASE_B_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`, with exact disposition
+`SCI_MD_011_POROELASTIC_CLOSURE_TEST_BLOCKED_BY_IDENTIFIABILITY_EXECUTION_DOMAIN_OR_EQUIVALENCE_GAP`
+and architecture `NOT_ADJUDICATED`. Universal P1 is
+`WRONG_PRESSURE_RESPONSE`; finite-Phi E2C is `BLOCKED`, so finite-versus-
+universal status is `NOT_COMPUTABLE`. This existing-data-only task adjudicated
+only the implemented component under the frozen SCI-MD-010 observation
+adapter. Current full EWP is `NOT_VALIDATED`; independent physical validation
+is `NOT_ESTABLISHED`; Stage F and Stage D are `NOT_AUTHORIZED`; M01 is
+`NOT_ADJUDICATED`; laboratory execution is `NOT_AUTHORIZED`; and automatic
+successor is `NONE`.
 
 ## SCI-MD-010 merged result (2026-09-03)
 

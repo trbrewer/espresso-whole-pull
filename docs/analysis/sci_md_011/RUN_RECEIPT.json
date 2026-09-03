@@ -1,0 +1,22 @@
+{
+  "current_full_ewp_validated": false,
+  "execution_mode": "real",
+  "freeze_commit": "76e4251ad4723a5dd8a6da73d1a04ef8567813b3",
+  "freeze_manifest_sha256": "2e4547e1aa5bf3e51675912a9b73178e1f303dbbcbea55507edd99c5d12a2719",
+  "freeze_tree": "3a6ccfa15b677691c27a4163c84cf51ffbb81669",
+  "m01_adjudicated": false,
+  "physical_validation": "NOT_ESTABLISHED",
+  "process_status": "COMPLETE",
+  "real_candidate_fits_generated": true,
+  "real_candidate_predictions_generated": false,
+  "real_candidate_scores_generated": false,
+  "revision": "R2",
+  "scientific_status": "BLOCKED",
+  "scoring_executed": true,
+  "single_unchanged_scientific_configuration": true,
+  "stage_d_authorized": false,
+  "stage_f_authorized": false,
+  "synthetic": false,
+  "synthetic_scenario": null,
+  "task_id": "SCI-MD-011"
+}

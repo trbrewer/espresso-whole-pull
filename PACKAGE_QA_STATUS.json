@@ -77,8 +77,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1017,
-    "source_manifest_aggregate_sha256": "1173ef97b305f39d0a54f8ccf4298eefa72c059d46a3f491b421d33323c00a83",
+    "source_manifest_file_count": 1036,
+    "source_manifest_aggregate_sha256": "0015514fd162450306152a33597fc5667e7c36283b960f7326d6c08cb353832f",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -88,7 +88,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "016bca22c13c0dd539639b832cc887fae785eff1a6e302ee981159829ecd84e1",
+    "source_manifest_aggregate_source_sha256": "0015514fd162450306152a33597fc5667e7c36283b960f7326d6c08cb353832f",
     "sci_data_fusion_001_c1": {
       "disposition": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
       "focused_tests_run": 51,
@@ -837,7 +837,7 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "sci_md_010": {
-    "status": "PHASE_B_EXECUTION_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW",
+    "status": "MERGED_COMPLETE",
     "lane_result": "NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE",
     "reduced_E1_architecture": "NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE",
     "current_full_EWP_E2": "NOT_ADJUDICATED",
@@ -861,6 +861,33 @@
     "result_artifact_manifest_sha256": "2e7379806f021bc26649fd8169b07620a85808c74a6f590d4441e07530d3a3d5",
     "qa_identity": "RESOLVE_FROM_EXACT_RESULT_HEAD_QA"
   },
-  "current_scientific_gate": "OWNER_DECISION_PENDING",
+  "sci_md_011": {
+    "status": "PHASE_B_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW",
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "disposition": "SCI_MD_011_POROELASTIC_CLOSURE_TEST_BLOCKED_BY_IDENTIFIABILITY_EXECUTION_DOMAIN_OR_EQUIVALENCE_GAP",
+    "architecture": "NOT_ADJUDICATED",
+    "scientific_status": "BLOCKED",
+    "result_validator": "PASS_241_ITEMS",
+    "focused_tests_run": 51,
+    "focused_tests_passed": 51,
+    "complete_suite_tests_run": 1366,
+    "complete_suite_passed": 1361,
+    "complete_suite_skipped": 5,
+    "complete_suite_failures": 0,
+    "complete_suite_errors": 0,
+    "static_gates_passed": 39,
+    "json_files_validated": 972,
+    "source_manifest_file_count": 1036,
+    "source_manifest_aggregate_sha256": "0015514fd162450306152a33597fc5667e7c36283b960f7326d6c08cb353832f",
+    "result_artifact_manifest_sha256": "40bd2baee79750673499c3509359197c40a80c9c6ff50016931ec7e6d57f3a0d",
+    "external_import_byte_identity": "PASS",
+    "openfoam_executed": false,
+    "laboratory_work": false,
+    "stage_f_authorized": false,
+    "stage_d_authorized": false,
+    "m01_adjudicated": false,
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "current_scientific_gate": "SCI_MD_011_PHASE_B_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }
