@@ -4,8 +4,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "WASZ_BREWS",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "condition_id",
@@ -40,8 +40,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "WASZ_FOLDS",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "outer.leave_one_controlled_condition_out"
@@ -71,8 +71,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "WASZ_LOCO",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -107,8 +107,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "WASZ_BLOCKED",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -144,8 +144,8 @@
     {
       "artifact_class": "SOURCE_MODEL",
       "artifact_id": "WASZ_MODELS",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -178,8 +178,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "WASZ_METHODS",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "models",
@@ -209,8 +209,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "WASZ_AGG",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -241,8 +241,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "PANN_AUTH",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "puckworks_commit",
@@ -271,8 +271,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "PANN_OBS",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "primary",
@@ -303,8 +303,8 @@
     {
       "artifact_class": "METADATA_ONLY",
       "artifact_id": "PANN_SPLIT",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "minimum_unit",
@@ -334,8 +334,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "PANN_LOCO",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "omitted_condition",
@@ -367,8 +367,8 @@
     {
       "artifact_class": "SOURCE_MODEL",
       "artifact_id": "PANN_MODELS",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -398,8 +398,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "PANN_AGG",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model",
@@ -434,8 +434,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "PANN_SPECIES",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "model_id",
@@ -468,8 +468,8 @@
     {
       "artifact_class": "PROCESSED_OBSERVATION",
       "artifact_id": "STRUCT_MAP",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "source",
@@ -501,8 +501,8 @@
     {
       "artifact_class": "PRIOR_SCORE",
       "artifact_id": "STRUCT_PORO",
-      "authority_commit": "dbab2196caaf594f47ec1eb17bc9f88765b296bb",
-      "authority_tree": "af4e08ed18cc1f8d764641aa779055cff02fffea",
+      "authority_commit": "8c22c2710d92e3343c54be8bb82e95ba0acf529e",
+      "authority_tree": "091cbbfef46e908f4adb6478fb2e1477d20a2a26",
       "exogenous_input_fields": [],
       "fields_consumed": [
         "eligible_support_count",
@@ -564,8 +564,46 @@
       ]
     },
     {
+      "alias_handling": "12-8-6 duplicate representation excluded; 56 canonical brews",
       "artifact_class": "PROCESSED_OBSERVATION",
-      "artifact_id": "WASZ_OBSERVATIONS",
+      "artifact_id": "WASZ_EQUILIBRIUM",
+      "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+      "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+      "equilibrium_definition": "endpoint_100s; final point of 0-100 s preprocessed grid",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "reference_pressure_round__bar",
+        "shot_id",
+        "window",
+        "n_samples",
+        "mass_flow_rate__g_per_s"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [
+        "shot_id",
+        "reference_pressure_round__bar"
+      ],
+      "path": "puckworks/data/waszkiewicz2025/equilibrium_windows.csv",
+      "physical_unit": "shot_id;reference_pressure_round__bar",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "puckworks",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "c33bd01729cfe63db6d319d9c64afcac818050fdf8c888ab4d47dc233d5e2213",
+      "size_bytes": 7974,
+      "source_family": "wasz",
+      "target_field": "mass_flow_rate__g_per_s",
+      "uncertainty_fields": [],
+      "uncertainty_status": "per-brew values; between-brew variability retained",
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "scoring"
+      ]
+    },
+    {
+      "artifact_class": "RAW_OBSERVATION",
+      "artifact_id": "WASZ_LINE_PRESSURE",
       "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
       "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
       "exogenous_input_fields": [],
@@ -573,9 +611,7 @@
         "reference_pressure_round__bar",
         "shot_id",
         "time_index",
-        "basket_pressure__bar",
-        "mass__g",
-        "mass_flow_rate__g_per_s"
+        "pressure__bar"
       ],
       "format": "csv",
       "group_identifier_fields": [
@@ -584,22 +620,95 @@
       ],
       "path": "puckworks/data/waszkiewicz2025/traces_per_brew.csv",
       "physical_unit": "shot_id;reference_pressure_round__bar",
+      "pressure_reference": "direct pump/line sensor pressure",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "puckworks",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "time_index=999 final 100-s grid sample for each canonical brew",
+      "sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+      "size_bytes": 2602224,
+      "source_family": "wasz",
+      "target_field": "",
+      "target_independence": "pressure__bar is directly measured and does not use mass-flow target",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "prediction"
+      ]
+    },
+    {
+      "artifact_class": "SOURCE_MODEL",
+      "artifact_id": "WASZ_MACHINE_PARAMS",
+      "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+      "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+      "calibration_flow_basis": "measured mass flow g/s in separate brewer pressure-drop calibration",
+      "coefficient_units": {
+        "a": "bar/(g/s)^2",
+        "b": "bar/(g/s)",
+        "c": "bar"
+      },
+      "coefficients": {
+        "a": 0.017184292098914252,
+        "b": 0.03670858658698296,
+        "c": 0.2831597837775055
+      },
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "parameter",
+        "value",
+        "model"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [],
+      "independence": "calibration series is separate from brew equilibrium targets",
+      "path": "puckworks/data/waszkiewicz2025/brewer_quadratic_params.csv",
+      "physical_unit": "source-defined",
+      "pressure_reference": "pump/line minus basket, bar",
       "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
       "reference_basis": "SOURCE_NATIVE",
       "repository": "puckworks",
       "rights_redistribution": "CC-BY-4.0",
       "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
-      "sha256": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
-      "size_bytes": 2602224,
+      "sha256": "60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919",
+      "size_bytes": 166,
       "source_family": "wasz",
-      "target_field": "mass_flow_rate__g_per_s",
+      "target_field": "",
+      "uncertainty": "point-level pressure and flow standard deviations in WASZ_MACHINE_POINTS",
       "uncertainty_fields": [],
       "units": "SOURCE_NATIVE",
       "uses": [
-        "fitting",
-        "prediction",
-        "scoring",
-        "uncertainty"
+        "prediction"
+      ],
+      "validity_range": "source calibration points; root solve frozen to 0-20 g/s"
+    },
+    {
+      "artifact_class": "RAW_OBSERVATION",
+      "artifact_id": "WASZ_MACHINE_POINTS",
+      "authority_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+      "authority_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+      "exogenous_input_fields": [],
+      "fields_consumed": [
+        "delta_p_mean__bar",
+        "flow_rate_mean__g_per_s"
+      ],
+      "format": "csv",
+      "group_identifier_fields": [],
+      "path": "puckworks/data/waszkiewicz2025/brewer_quadratic_points.csv",
+      "physical_unit": "source-defined",
+      "prior_target_exposure": "TARGET_EXPOSED_RETROSPECTIVE_COMPARISON_DATA",
+      "reference_basis": "SOURCE_NATIVE",
+      "repository": "puckworks",
+      "rights_redistribution": "CC-BY-4.0",
+      "row_selection_rule": "all named metadata/result rows; no Phase-A target recomputation",
+      "sha256": "718f848973d708ae2e9044c0d87141524460e947044a59d3cefda5530ab056d8",
+      "size_bytes": 3596,
+      "source_family": "wasz",
+      "target_field": "",
+      "uncertainty_fields": [],
+      "units": "SOURCE_NATIVE",
+      "uses": [
+        "context"
       ]
     }
   ],

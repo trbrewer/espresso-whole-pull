@@ -1,6 +1,6 @@
 {
   "adjudicative_lane_count": 1,
-  "claim_ceiling": "RETROSPECTIVE_SOURCE_CONDITIONED_COMPONENT_MODEL_UTILITY_AND_ARCHITECTURE_AUDIT_ONLY",
+  "claim_ceiling": "RETROSPECTIVE_SOURCE_CONDITIONED_CONDITIONAL_HYDRAULIC_COMPONENT_UTILITY_ONLY",
   "ewp_base": {
     "commit": "f8bd4cc5c4c05869ceda75e273784781b8429c28",
     "tree": "9d9a8ae2434b35c405e47e2d164084677aa13b48"
@@ -39,13 +39,13 @@
     "tree": "a6ffb312473b15be43c1571a893b19873ea47c5a"
   },
   "random_seeds": [
-    20260831
+    20260902
   ],
   "real_target_scores_generated": false,
   "required_review_disposition": "SCI_MD_010_PRE_SCORE_FREEZE_SINGLE_INDEPENDENT_REVIEW_PASS_READY_FOR_EXECUTION",
   "review_receipt_embedded": false,
   "review_required": true,
-  "revision": "R2",
+  "revision": "R3",
   "scoring_executed": false,
   "selected_lanes": [
     "L-HYD"

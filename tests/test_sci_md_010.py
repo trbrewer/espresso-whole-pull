@@ -60,4 +60,26 @@ class TestSciMd010(unittest.TestCase):
   e=next(x for x in load_json(D/'MODEL_SPECIFICATIONS.json')['models'] if x['class']=='E1');self.assertIn('steady_outlet_flow_m3_s',e['ewp_derivation']);self.assertEqual(e['actual_execution_mode'],'FIT_AND_PREDICT')
  def test_27_actual_observation_binding(self):self.assertFalse(any(x['target_field'].endswith('PRIOR_SCORE_ONLY') for x in load_csv(D/'ANALYSIS_ROW_INDEX.csv')))
  def test_28_explicit_graph_topology(self):self.assertEqual(len(load_json(D/'END_TO_END_OBSERVABILITY_GRAPH.json')['edges']),5)
+ def test_29_flow_derived_basket_pressure_prohibited(self):
+  p=load_csv(D/'PRIVILEGE_LEDGER.csv');self.assertTrue(all(x['allowed']=='false' and x['target_derived']=='true' for x in p if x['variable']=='basket_pressure__bar'))
+ def test_30_machine_coupling_uses_predicted_flow(self):
+  cal={'a':.017184292098914252,'b':.03670858658698296,'c':.2831597837775055};q=solve_machine_darcy(8,.2,cal);self.assertAlmostEqual(q,.2*max(8-brewer_drop(q,cal),0),9)
+ def test_31_target_perturbation_does_not_change_input_or_prediction(self):
+  cal={'a':.017,'b':.037,'c':.283};train=[{'condition_id':'a','line_pressure_bar':'2','flow_g_s':'.3'},{'condition_id':'b','line_pressure_bar':'4','flow_g_s':'.6'}];m=fit_machine_darcy(train,cal);x=[{'line_pressure_bar':'6','flow_g_s':'1'}];y=[{'line_pressure_bar':'6','flow_g_s':'999'}];self.assertEqual(predict_machine_darcy(m,x,cal),predict_machine_darcy(m,y,cal))
+ def test_32_equilibrium_primary(self):
+  m=load_json(D/'METRIC_CONTRACT.json')['L-HYD'];self.assertTrue(m['target'].startswith('endpoint_100s'));self.assertNotIn('15-95',json.dumps(m))
+ def test_33_exact_56_brews(self):self.assertEqual(len({x['physical_unit_id'] for x in load_csv(D/'ANALYSIS_ROW_INDEX.csv')}),56)
+ def test_34_membership_controls_partitions(self):
+  f=load_csv(D/'FOLD_ASSIGNMENTS.csv')[0];m=[x for x in load_csv(D/'FOLD_MEMBERSHIP.csv') if x['outer_fold']==f['outer_fold'] and x['role']=='EVALUATION'];self.assertEqual({x['physical_unit_id'] for x in m},set(f['evaluation_physical_units'].split(';')))
+ def test_35_condition_balanced_duplicate_invariance(self):
+  a=[{'condition_id':'a','flow_g_s':'1'},{'condition_id':'b','flow_g_s':'3'}];b=a+[dict(a[0]) for _ in range(9)];self.assertEqual(fit_condition_balanced_mean(a),fit_condition_balanced_mean(b))
+ def test_36_conductance_nonnegative(self):
+  cal={'a':0.,'b':0.,'c':0.};r=[{'condition_id':'a','line_pressure_bar':'1','flow_g_s':'-1'},{'condition_id':'b','line_pressure_bar':'2','flow_g_s':'-2'}];self.assertGreaterEqual(fit_machine_darcy(r,cal)['conductance_g_s_bar'],0)
+ def test_37_quadratic_turnover(self):
+  r=[{'condition_id':str(x),'line_pressure_bar':str(x),'flow_g_s':str(4*x-x*x)} for x in [1,2,3]];m=fit_condition_balanced_quadratic(r);self.assertLess(m['quadratic'],0);self.assertGreater(predict_quadratic(m,[{'line_pressure_bar':'2'}])[0],predict_quadratic(m,[{'line_pressure_bar':'3'}])[0])
+ def test_38_seed_consistency(self):
+  self.assertEqual(load_json(D/'PRE_SCORE_FREEZE.json')['random_seeds'],[R3_SEED]);self.assertEqual(load_json(D/'EVALUATION_CONTRACT.json')['seed'],R3_SEED);self.assertEqual(load_json(D/'METRIC_CONTRACT.json')['L-HYD']['seed'],R3_SEED)
+ def test_39_no_e1_to_e2_promotion(self):self.assertEqual(load_json(D/'MODEL_SPECIFICATIONS.json')['E2']['decision'],'NOT_ADJUDICATED')
+ def test_40_graph_integrity(self):
+  g=load_json(D/'END_TO_END_OBSERVABILITY_GRAPH.json');ids={e['id'] for e in g['edges']};self.assertTrue(all(x in ids for c in g['minimal_cut_sets'] for x in c))
 if __name__=='__main__':unittest.main()

@@ -1,58 +1,19 @@
 {
   "lanes": [
     {
-      "actual_observation_artifact": "WASZ_OBSERVATIONS",
-      "b0_executable": true,
-      "b1_executable": true,
-      "candidate_class": "TRACEABLY_DERIVED_REDUCED_EWP",
-      "decision_changed": "retain reduced Darcy core versus empirical pressure response; whether full input architecture is necessary",
-      "derivation_status": "UNIFORM_DARCY_LIMIT; rho,A,K,mu,L collapsed into effective conductance",
+      "actual_observation_artifact": "WASZ_EQUILIBRIUM endpoint_100s",
+      "direct_pressure": "WASZ_LINE_PRESSURE pressure__bar index 999",
       "e1_executable": true,
       "e2_executable": false,
-      "estimated_new_case_count": 0,
       "ewp_candidate_id": "HYD_E1_LUMPED_DARCY",
       "exact_blocker": "",
-      "exact_ewp_source_or_equation": "scripts/espresso_reference_math.py:160-190; solver/espressoWholePullFoam/espressoWholePullFoam.C hydraulicMobility=permeability/mu",
       "executable": true,
       "lane_id": "L-HYD",
-      "missing_inputs": [],
-      "nuisance_parameters": [
-        "conductance_g_s_bar"
-      ],
-      "observation_operator": "identity mass-flow observer on common 15-95 s support",
-      "observation_rows_available": 44800,
-      "physical_groups_available": "56 brews; 11 conditions",
-      "source_family": "waszkiewicz2025",
-      "source_inputs_available": true,
-      "target_group_calibration_required": false,
-      "training_only_fit_possible": true
-    },
-    {
-      "actual_observation_artifact": "external corpus not bound in R2",
-      "b0_executable": false,
-      "b1_executable": false,
-      "candidate_class": "NONE",
-      "decision_changed": "none under R2",
-      "derivation_status": "exponential shape not proven EWP-derived",
-      "e1_executable": false,
-      "e2_executable": false,
-      "estimated_new_case_count": 0,
-      "ewp_candidate_id": "NONE",
-      "exact_blocker": "actual vectors and EWP-derived model not jointly bound",
-      "exact_ewp_source_or_equation": "none qualified",
-      "executable": false,
-      "lane_id": "L-FRAC",
-      "missing_inputs": [
-        "rights-bound row loader and EWP boundary mapping"
-      ],
-      "nuisance_parameters": [],
-      "observation_operator": "mapping not established",
-      "observation_rows_available": 0,
-      "physical_groups_available": "historical four conditions only",
-      "source_family": "pannusch2024",
-      "source_inputs_available": false,
-      "target_group_calibration_required": false,
-      "training_only_fit_possible": false
+      "machine_operator": "WASZ_MACHINE_PARAMS fixed; predicted q only",
+      "observation_rows_available": 56,
+      "physical_groups_available": "56 canonical brews; 11 conditions",
+      "target_group_calibration_required": false
     }
-  ]
+  ],
+  "revision": "R3"
 }

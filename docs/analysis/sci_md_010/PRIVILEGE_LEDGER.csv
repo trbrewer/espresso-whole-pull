@@ -1,7 +1,13 @@
-lane_id,model_id,variable,source,realistic_user_known,measured_on_target_shot,derived_from_target,supplied_to_b1,supplied_to_e1,supplied_to_e2,claim_downgrade
-L-HYD,HYD_B0_TRAINING_MEAN,basket_pressure__bar,WASZ_OBSERVATIONS,false,true,false,true,true,false,CONDITIONAL_MEASURED_BOUNDARY
-L-HYD,HYD_B0_TRAINING_MEAN,mass_flow_rate__g_per_s,WASZ_OBSERVATIONS,false,false,true,true,true,false,TRAINING_TARGET_OR_EVALUATION_SCORE_ONLY
-L-HYD,HYD_B1_PRESSURE_LINEAR,basket_pressure__bar,WASZ_OBSERVATIONS,false,true,false,true,true,false,CONDITIONAL_MEASURED_BOUNDARY
-L-HYD,HYD_B1_PRESSURE_LINEAR,mass_flow_rate__g_per_s,WASZ_OBSERVATIONS,false,false,true,true,true,false,TRAINING_TARGET_OR_EVALUATION_SCORE_ONLY
-L-HYD,HYD_E1_LUMPED_DARCY,basket_pressure__bar,WASZ_OBSERVATIONS,false,true,false,true,true,false,CONDITIONAL_MEASURED_BOUNDARY
-L-HYD,HYD_E1_LUMPED_DARCY,mass_flow_rate__g_per_s,WASZ_OBSERVATIONS,false,false,true,true,true,false,TRAINING_TARGET_OR_EVALUATION_SCORE_ONLY
+lane_id,model_id,variable,source,directly_measured,target_derived,allowed,use,claim_effect
+L-HYD,HYD_B0_TRAINING_MEAN,pressure__bar,WASZ_LINE_PRESSURE,true,false,true,exogenous measured line pressure,conditional measured context
+L-HYD,HYD_B0_TRAINING_MEAN,basket_pressure__bar,WASZ_EQUILIBRIUM,false,true,false,PROHIBITED exogenous predictor,flow-derived leakage
+L-HYD,HYD_B0_TRAINING_MEAN,machine_quadratic,WASZ_MACHINE_PARAMS,true,false,true,fixed source calibration available to all,same information privilege
+L-HYD,HYD_B0_TRAINING_MEAN,mass_flow_rate__g_per_s,WASZ_EQUILIBRIUM,true,true,true,training target or post-prediction score only,retrospective
+L-HYD,HYD_B1_PRESSURE_QUADRATIC,pressure__bar,WASZ_LINE_PRESSURE,true,false,true,exogenous measured line pressure,conditional measured context
+L-HYD,HYD_B1_PRESSURE_QUADRATIC,basket_pressure__bar,WASZ_EQUILIBRIUM,false,true,false,PROHIBITED exogenous predictor,flow-derived leakage
+L-HYD,HYD_B1_PRESSURE_QUADRATIC,machine_quadratic,WASZ_MACHINE_PARAMS,true,false,true,fixed source calibration available to all,same information privilege
+L-HYD,HYD_B1_PRESSURE_QUADRATIC,mass_flow_rate__g_per_s,WASZ_EQUILIBRIUM,true,true,true,training target or post-prediction score only,retrospective
+L-HYD,HYD_E1_LUMPED_DARCY,pressure__bar,WASZ_LINE_PRESSURE,true,false,true,exogenous measured line pressure,conditional measured context
+L-HYD,HYD_E1_LUMPED_DARCY,basket_pressure__bar,WASZ_EQUILIBRIUM,false,true,false,PROHIBITED exogenous predictor,flow-derived leakage
+L-HYD,HYD_E1_LUMPED_DARCY,machine_quadratic,WASZ_MACHINE_PARAMS,true,false,true,fixed source calibration available to all,same information privilege
+L-HYD,HYD_E1_LUMPED_DARCY,mass_flow_rate__g_per_s,WASZ_EQUILIBRIUM,true,true,true,training target or post-prediction score only,retrospective

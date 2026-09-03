@@ -1,22 +1,43 @@
 {
   "folds": "docs/analysis/sci_md_010/FOLD_ASSIGNMENTS.csv",
   "input_register": "docs/analysis/sci_md_010/INPUT_ARTIFACT_REGISTER.json",
+  "machine_calibration": {
+    "a": 0.017184292098914252,
+    "application": "predicted flow only",
+    "authority": "WASZ_MACHINE_PARAMS",
+    "b": 0.03670858658698296,
+    "c": 0.2831597837775055,
+    "equation": "delta_p_bar=a*q_g_s^2+b*q_g_s+c",
+    "flow_unit": "g/s",
+    "multiple_root_rule": "lowest nonnegative bracketed root; monotone on frozen domain",
+    "no_root_rule": "failed prediction",
+    "pressure_unit": "bar",
+    "root_bounds_g_s": [
+      0,
+      20
+    ],
+    "root_max_iterations": 200,
+    "root_tolerance": 1e-10
+  },
   "membership": "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv",
   "metrics": "docs/analysis/sci_md_010/METRIC_CONTRACT.json",
   "model_ids": [
     "HYD_B0_TRAINING_MEAN",
-    "HYD_B1_PRESSURE_LINEAR",
+    "HYD_B1_PRESSURE_QUADRATIC",
     "HYD_E1_LUMPED_DARCY"
   ],
   "models": "docs/analysis/sci_md_010/MODEL_SPECIFICATIONS.json",
   "result_mapping": {
-    "E1_beats_B1_and_order_correct": "RETAIN_AS_MECHANISTIC_CORE",
-    "E1_loses_B1": "NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE",
-    "E1_ties_B1": "SIMPLIFY_OR_REPARAMETERIZE",
-    "wrong_order": "REJECT_CURRENT_FORM"
+    "full_correct": "REDUCED_DARCY_CONDITIONAL_UTILITY_ESTABLISHED_FULL_DOMAIN",
+    "loss": "NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE",
+    "low_only": "REDUCED_DARCY_LOW_PRESSURE_LIMIT_SUPPORTED_FULL_PRESSURE_DOMAIN_INSUFFICIENT",
+    "tie": "REDUCED_DARCY_INDISTINGUISHABLE_FROM_EMPIRICAL_BASELINE_PREFER_SIMPLER_CONDITIONAL_FORM",
+    "wrong": "REDUCED_DARCY_SYSTEMATICALLY_WRONG_ON_PRESSURE_RESPONSE"
   },
+  "revision": "R3",
   "row_index": "docs/analysis/sci_md_010/ANALYSIS_ROW_INDEX.csv",
   "scoring_executed": false,
+  "seed": 20260902,
   "selected_lanes": [
     "L-HYD"
   ],

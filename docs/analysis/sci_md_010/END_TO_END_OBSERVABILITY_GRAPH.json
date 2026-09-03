@@ -1,105 +1,61 @@
 {
   "edges": [
     {
-      "architecture_implication": "tests reduced hydraulic core",
-      "equation": "mdot=C*p",
-      "from": "measured_basket_pressure",
-      "id": "pressure_darcy",
-      "implementation": "steady_outlet_flow_m3_s uniform Darcy reduction",
-      "simplification_bypasses": false,
-      "status": "SOURCE_CONDITIONED",
-      "target_shot_fitting": false,
-      "test_family": "waszkiewicz2025",
-      "to": "darcy_mass_flow",
-      "uncertainty": "bootstrap"
+      "from": "line_pressure_measured",
+      "id": "e_line_machine",
+      "to": "machine_drop_predicted_q"
     },
     {
-      "architecture_implication": "separate K,mu,L not identified",
-      "equation": "C=sum(p*q)/sum(p^2) on training only",
-      "from": "training_effective_conductance",
-      "id": "training_C",
-      "implementation": "fit_darcy_conductance",
-      "simplification_bypasses": true,
-      "status": "SOURCE_CONDITIONED",
-      "target_shot_fitting": false,
-      "test_family": "waszkiewicz2025",
-      "to": "darcy_mass_flow",
-      "uncertainty": "between folds"
+      "from": "machine_drop_predicted_q",
+      "id": "e_machine_basket",
+      "to": "basket_pressure_predicted"
     },
     {
-      "architecture_implication": "executable L-HYD",
-      "equation": "g/s to g/s",
-      "from": "darcy_mass_flow",
-      "id": "darcy_observer",
-      "implementation": "identity source observer",
-      "simplification_bypasses": false,
-      "status": "IMPLEMENTED",
-      "target_shot_fitting": false,
-      "test_family": "waszkiewicz2025",
-      "to": "measured_mass_flow",
-      "uncertainty": "brew variation"
+      "from": "basket_pressure_predicted",
+      "id": "e_basket_darcy",
+      "to": "darcy_puck_response"
     },
     {
-      "architecture_implication": "blocks Level 4",
-      "equation": "none",
-      "from": "grinder_psd",
-      "id": "psd_K",
-      "implementation": "none qualified",
-      "simplification_bypasses": true,
-      "status": "MAPPING_NOT_ESTABLISHED",
-      "target_shot_fitting": false,
-      "test_family": "Wadsworth/Vaca context",
-      "to": "wet_permeability",
-      "uncertainty": "unresolved"
+      "from": "darcy_puck_response",
+      "id": "e_darcy_flow",
+      "to": "equilibrium_flow_predicted"
     },
     {
-      "architecture_implication": "blocks Level 4",
-      "equation": "production solver",
-      "from": "wet_permeability",
-      "id": "K_cup",
-      "implementation": "full coupled EWP",
-      "simplification_bypasses": false,
-      "status": "IMPLEMENTED_BUT_UNCALIBRATED",
-      "target_shot_fitting": true,
-      "test_family": "none complete",
-      "to": "cup_chemistry",
-      "uncertainty": "unresolved"
+      "from": "equilibrium_flow_predicted",
+      "id": "e_flow_observer",
+      "to": "equilibrium_flow_observed"
     }
   ],
   "minimal_cut_sets": [
     [
-      "grinder_psd__wet_permeability",
-      "absolute inventory/chemistry observer"
+      "e_line_machine"
+    ],
+    [
+      "e_basket_darcy"
+    ],
+    [
+      "e_flow_observer"
     ]
   ],
   "nodes": [
     {
-      "class": "MEASURED_CONTEXT",
-      "id": "measured_basket_pressure"
+      "id": "line_pressure_measured"
     },
     {
-      "class": "CALIBRATED_NUISANCE",
-      "id": "training_effective_conductance"
+      "id": "machine_drop_predicted_q"
     },
     {
-      "class": "OUTPUT",
-      "id": "darcy_mass_flow"
+      "id": "basket_pressure_predicted"
     },
     {
-      "class": "OBSERVATION",
-      "id": "measured_mass_flow"
+      "id": "darcy_puck_response"
     },
     {
-      "class": "USER_INPUT",
-      "id": "grinder_psd"
+      "id": "equilibrium_flow_predicted"
     },
     {
-      "class": "EFFECTIVE_PARAMETER",
-      "id": "wet_permeability"
-    },
-    {
-      "class": "OUTPUT",
-      "id": "cup_chemistry"
+      "id": "equilibrium_flow_observed"
     }
-  ]
+  ],
+  "operator": "machine drop always evaluated using predicted flow; observed basket pressure prohibited"
 }

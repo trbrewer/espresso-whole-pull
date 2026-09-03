@@ -62,6 +62,57 @@ def fit_darcy_conductance(rows):
 def predict_darcy_conductance(model,rows):return [model['conductance_g_s_bar']*max(float(r['basket_pressure__bar']),0.0) for r in rows]
 MODEL_CALLABLES.update({'fit_darcy_conductance':fit_darcy_conductance,'predict_darcy_conductance':predict_darcy_conductance})
 
+R3_SEED=20260902
+def brewer_drop(q,cal): return cal['a']*q*q+cal['b']*q+cal['c']
+def solve_machine_darcy(line_pressure,conductance,cal,lower=0.0,upper=20.0,tol=1e-10,max_iter=200):
+ """Solve q=C max(p_line-dp_machine(q),0), using predicted q only."""
+ if conductance<0: raise ValueError('NEGATIVE_CONDUCTANCE')
+ def f(q): return q-conductance*max(line_pressure-brewer_drop(q,cal),0.0)
+ lo,hi=lower,upper;flo,fhi=f(lo),f(hi)
+ if flo>0 or fhi<0: raise ValueError('NO_PHYSICAL_ROOT')
+ for _ in range(max_iter):
+  mid=(lo+hi)/2;fm=f(mid)
+  if abs(fm)<=tol:return mid
+  if fm>0:hi=mid
+  else:lo=mid
+ raise ValueError('ROOT_NOT_CONVERGED')
+def condition_balanced_rows(rows):
+ by={}
+ for r in rows:by.setdefault(r['condition_id'],[]).append(r)
+ return [(r,1.0/len(by)/len(v)) for v in by.values() for r in v]
+def _solve_linear(a,b):
+ n=len(b);m=[list(map(float,a[i]))+[float(b[i])] for i in range(n)]
+ for i in range(n):
+  k=max(range(i,n),key=lambda j:abs(m[j][i]))
+  if abs(m[k][i])<1e-14:raise ValueError('SINGULAR_FIT')
+  m[i],m[k]=m[k],m[i];z=m[i][i];m[i]=[x/z for x in m[i]]
+  for j in range(n):
+   if j!=i:
+    z=m[j][i];m[j]=[x-z*y for x,y in zip(m[j],m[i])]
+ return [m[i][-1] for i in range(n)]
+def fit_condition_balanced_mean(rows):return {'mean':sum(w*float(r['flow_g_s']) for r,w in condition_balanced_rows(rows))}
+def fit_condition_balanced_quadratic(rows):
+ wr=condition_balanced_rows(rows);s=[[0.0]*3 for _ in range(3)];t=[0.0]*3
+ for r,w in wr:
+  x=float(r['line_pressure_bar']);y=float(r['flow_g_s']);v=[1,x,x*x]
+  for i in range(3):
+   t[i]+=w*v[i]*y
+   for j in range(3):s[i][j]+=w*v[i]*v[j]
+ a,b,c=_solve_linear(s,t);return {'intercept':a,'linear':b,'quadratic':c}
+def predict_quadratic(model,rows):return [max(0.0,model['intercept']+model['linear']*float(r['line_pressure_bar'])+model['quadratic']*float(r['line_pressure_bar'])**2) for r in rows]
+def fit_machine_darcy(rows,cal,bound=(0.0,10.0)):
+ wr=condition_balanced_rows(rows)
+ def loss(c):
+  try:return sum(w*(solve_machine_darcy(float(r['line_pressure_bar']),c,cal)-float(r['flow_g_s']))**2 for r,w in wr)
+  except ValueError:return math.inf
+ lo,hi=bound;gr=(math.sqrt(5)-1)/2;x1=hi-gr*(hi-lo);x2=lo+gr*(hi-lo);f1,f2=loss(x1),loss(x2)
+ for _ in range(120):
+  if f1<=f2:hi,x2,f2=x2,x1,f1;x1=hi-gr*(hi-lo);f1=loss(x1)
+  else:lo,x1,f1=x1,x2,f2;x2=lo+gr*(hi-lo);f2=loss(x2)
+ c=max(0.0,(lo+hi)/2);return {'conductance_g_s_bar':c,'bound_status':'LOWER_BOUND' if c<=1e-9 else 'INTERIOR'}
+def predict_machine_darcy(model,rows,cal):return [solve_machine_darcy(float(r['line_pressure_bar']),model['conductance_g_s_bar'],cal) for r in rows]
+MODEL_CALLABLES.update({'fit_condition_balanced_mean':fit_condition_balanced_mean,'fit_condition_balanced_quadratic':fit_condition_balanced_quadratic,'predict_quadratic':predict_quadratic,'fit_machine_darcy':fit_machine_darcy,'predict_machine_darcy':predict_machine_darcy,'solve_machine_darcy':solve_machine_darcy})
+
 def execute_fold_models(rows,train_ids,evaluation_id,model_ids):
  """Normal contract-driven fold path used by synthetic and future real execution."""
  train=[r for r in rows if r['group_id'] in train_ids];test=[r for r in rows if r['group_id']==evaluation_id]
