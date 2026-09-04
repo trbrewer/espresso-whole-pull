@@ -1,0 +1,77 @@
+{
+  "cases": [
+    "RAMP_legacy",
+    "RAMP_history"
+  ],
+  "common_time_count": 1500,
+  "conservation_pass": true,
+  "cup_relative_difference": null,
+  "differences": {
+    "cumulative_inlet_water_mass_kg": {
+      "limit": 4.29569387675671e-10,
+      "maximum_absolute": 1.0408340855860843e-17,
+      "relative_to_peak": 2.422970806224963e-16
+    },
+    "cup_beverage_mass_kg": {
+      "limit": 3.83558439384609e-10,
+      "maximum_absolute": 1.0061396160665481e-16,
+      "relative_to_peak": 2.6231716285028805e-15
+    },
+    "cup_solute_mass_kg": {
+      "limit": 4.5893813613685206e-11,
+      "maximum_absolute": 1.0408340855860843e-17,
+      "relative_to_peak": 2.267918056118385e-15
+    },
+    "first_drip_s": {
+      "limit": 1e-08,
+      "maximum_absolute": 0.0,
+      "relative_to_peak": 0.0
+    },
+    "inlet_flow_m3_s": {
+      "limit": 1.48267597159444e-14,
+      "maximum_absolute": 2.0117032497289633e-20,
+      "relative_to_peak": 1.3568057271243277e-14
+    },
+    "inlet_pressure_Pa": {
+      "limit": 1e-06,
+      "maximum_absolute": 0.0,
+      "relative_to_peak": 0.0
+    },
+    "outlet_flow_m3_s": {
+      "limit": 1.48267597159447e-14,
+      "maximum_absolute": 0.0,
+      "relative_to_peak": 0.0
+    },
+    "remaining_extractable_mass_kg": {
+      "limit": 5.6000000000000304e-11,
+      "maximum_absolute": 1.0408340855860843e-17,
+      "relative_to_peak": 1.858632295689426e-15
+    },
+    "stored_water_mass_kg": {
+      "limit": 9.19047619047618e-11,
+      "maximum_absolute": 1.0408340855860843e-17,
+      "relative_to_peak": 1.132513771881233e-15
+    },
+    "wet_front_m": {
+      "limit": 1e-10,
+      "maximum_absolute": 1.0408340855860843e-17,
+      "relative_to_peak": 1.1549858539374466e-15
+    }
+  },
+  "mass_curve_nrmse": null,
+  "normalized_final_field_linf": {
+    "U": 0.0,
+    "darcyFlux": 0.0,
+    "dissolvedConcentration": 1.478324370049007e-15,
+    "hydraulicMobility": 0.0,
+    "localExtractionRate": 1.4117602350374372e-15,
+    "p": 0.0,
+    "permeability": 0.0,
+    "permeabilityZoneId": 0.0,
+    "porosity": 0.0,
+    "remainingExtractable": 1.2943904544915033e-15,
+    "saturation": 0.0,
+    "wetMask": 0.0
+  },
+  "pass": true
+}

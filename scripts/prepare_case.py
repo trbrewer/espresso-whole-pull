@@ -45,6 +45,38 @@ ALLOWED_SPECIES_PROVENANCE = {
 MAX_FRACTION_BOUNDARIES = 10000
 
 
+def pressure_history_contract(scenario: dict) -> dict | None:
+    hydraulic = scenario["hydraulics"]
+    mode = hydraulic.get("pressure_boundary_model", scenario.get("pressureBoundaryModel", "prescribedPressure"))
+    if "pressure_boundary_model" in hydraulic and "pressureBoundaryModel" in scenario and mode != scenario["pressureBoundaryModel"]:
+        raise SystemExit("XSV_PRESSURE_001_CONTRACT_CONFLICT conflicting mode keys")
+    if mode not in {"prescribedPressure", "prescribedPressureHistory", "prescribedFlow", "lumpedMachineCompliance"}:
+        raise SystemExit("unsupported pressureBoundaryModel")
+    raw = hydraulic.get("prescribed_pressure_boundary")
+    if mode != "prescribedPressureHistory":
+        if "prescribed_pressure_boundary" in hydraulic:
+            raise SystemExit("XSV_PRESSURE_001_CONTRACT_CONFLICT history dictionary in another mode")
+        return None
+    if any(k in hydraulic for k in ("target_inlet_pressure_gauge_Pa", "pressure_ramp_time_s")):
+        raise SystemExit("XSV_PRESSURE_001_CONTRACT_CONFLICT history prohibits scalar ramp")
+    if not isinstance(raw, dict) or set(raw) != {"schedule_type", "times_s", "pressures_gauge_Pa"}:
+        raise SystemExit("XSV_PRESSURE_001_INVALID_SCHEDULE missing/malformed history or units contract")
+    if raw["schedule_type"] != "piecewiseLinear":
+        raise SystemExit("XSV_PRESSURE_001_INVALID_SCHEDULE unsupported schedule type")
+    times, pressures = raw["times_s"], raw["pressures_gauge_Pa"]
+    if not isinstance(times, list) or not isinstance(pressures, list) or len(times)<2 or len(times)!=len(pressures):
+        raise SystemExit("XSV_PRESSURE_001_INVALID_SCHEDULE unequal/short arrays")
+    if any(type(x) not in (float,int) or not math.isfinite(x) for x in times):
+        raise SystemExit("XSV_PRESSURE_001_INVALID_SCHEDULE nonfinite time")
+    if any(type(x) not in (float,int) or not math.isfinite(x) or x<0 for x in pressures):
+        raise SystemExit("XSV_PRESSURE_001_INVALID_TARGET_PRESSURE")
+    if any(b<=a or not math.isfinite(b-a) for a,b in zip(times,times[1:])):
+        raise SystemExit("XSV_PRESSURE_001_INVALID_SCHEDULE times not increasing")
+    if times[0]>float(scenario["time"].get("start_s",0.)) or times[-1]<float(scenario["time"]["end_s"]):
+        raise SystemExit("XSV_PRESSURE_001_INVALID_SCHEDULE incomplete run coverage")
+    return raw
+
+
 def fraction_collection_contract(scenario: dict) -> dict | None:
     """Validate the optional fraction observer before case materialization."""
     raw = scenario.get("fractionCollection")
@@ -475,9 +507,17 @@ def render_properties(scenario: dict) -> str:
         ]
     axial_dx = float(bed["bed_depth_m"]) / int(geometry["axial_cells"])
     smoothing = float(wetting["front_smoothing_cells"]) * axial_dx
-    pressure_boundary_model = scenario.get(
-        "pressureBoundaryModel", "prescribedPressure"
-    )
+    history = pressure_history_contract(scenario)
+    pressure_boundary_model = hydraulic.get("pressure_boundary_model", scenario.get(
+        "pressureBoundaryModel", "prescribedPressure"))
+    history_dictionary = ""
+    if history is not None:
+        times_text = " ".join(format(x, ".17g") for x in history["times_s"])
+        pressures_text = " ".join(format(x, ".17g") for x in history["pressures_gauge_Pa"])
+        history_dictionary = ("prescribedPressureBoundary\n{\n    scheduleType piecewiseLinear;\n"
+            f"    timesS ({times_text});\n    pressuresPa ({pressures_text});\n}}\n")
+    target_line = "" if history else f"targetInletPressure        {float(hydraulic['target_inlet_pressure_gauge_Pa']):.16g};"
+    ramp_line = "" if history else f"pressureRampTime           {float(hydraulic['pressure_ramp_time_s']):.16g};"
     prescribed_flow_dictionary = ""
     if pressure_boundary_model == "prescribedFlow":
         boundary = scenario.get("prescribedFlowBoundary")
@@ -676,7 +716,7 @@ machineBoundary
     couplingMaximumIterations {maximum_iterations};
 }}
 '''
-    elif pressure_boundary_model != "prescribedPressure":
+    elif pressure_boundary_model not in ("prescribedPressure", "prescribedPressureHistory"):
         raise SystemExit("unsupported pressureBoundaryModel")
     mechanics_model = scenario.get("bedMechanicsModel", "none")
     mechanics_dictionary = "bedMechanicsModel none;\n"
@@ -720,7 +760,7 @@ machineBoundary
         maximum_drop = (
             float(scenario["machineBoundary"]["shutoffPressure"])
             if pressure_boundary_model == "lumpedMachineCompliance"
-            else float(hydraulic["target_inlet_pressure_gauge_Pa"])
+            else (max(history["pressures_gauge_Pa"]) if history else float(hydraulic["target_inlet_pressure_gauge_Pa"]))
         ) - float(hydraulic["outlet_pressure_gauge_Pa"])
         if not 0.0 <= maximum_drop < pc:
             raise SystemExit("maximum pressure drop must be below critical pressure")
@@ -777,7 +817,7 @@ inletPatch                 inlet;
 outletPatch                outlet;
 pressureIntegrationMethod  exactPiecewiseLinearIntegral;
 pressureBoundaryModel      {pressure_boundary_model};
-{prescribed_flow_dictionary}{flow_dictionary}
+{history_dictionary}{prescribed_flow_dictionary}{flow_dictionary}
 
 // Geometry [SI]
 basketRadius               {float(geometry['basket_radius_m']):.16g};
@@ -798,10 +838,10 @@ effectiveSoluteDiffusivity {float(liquid['effective_solute_diffusivity_m2_s']):.
 // Hydraulics and exact sharp-front pressure integration [SI]
 saturatedPermeability      {float(hydraulic['saturated_permeability_m2']):.16g};
 wettingPermeability        {float(hydraulic['wetting_permeability_m2']):.16g};
-targetInletPressure        {float(hydraulic['target_inlet_pressure_gauge_Pa']):.16g};
+{target_line}
 outletPressure             {float(hydraulic['outlet_pressure_gauge_Pa']):.16g};
 frontPressure              {float(hydraulic['front_pressure_gauge_Pa']):.16g};
-pressureRampTime           {float(hydraulic['pressure_ramp_time_s']):.16g};
+{ramp_line}
 frontSmoothingLength       {smoothing:.16g};
 
 permeabilityProfile        {profile['type'] if r1 else profile.get('type', 'uniform')};
@@ -1420,7 +1460,9 @@ def main() -> None:
         preview_scenario["hydraulics"]["permeability_profile"] = {
             "type": "uniform"
         }
-    preview = analytical_preview(preview_scenario)
+    history = pressure_history_contract(scenario)
+    preview = ({"status": "NOT_APPLICABLE", "reason": "Legacy scalar-ramp preview does not support pressure history"}
+               if history else analytical_preview(preview_scenario))
     if r1:
         if is_wp02_scenario(scenario):
             preview["notes"] = [
@@ -1444,7 +1486,7 @@ def main() -> None:
     )
 
     b0 = None
-    if str(scenario["scenario_id"]).startswith("reference_R0") or r1:
+    if history is None and (str(scenario["scenario_id"]).startswith("reference_R0") or r1):
         b0 = b0_reduced_simulation(scenario)
         (preflight_dir / "B0_REDUCED_TWIN_V0_1_4.json").write_text(
             canonical_json(b0) if r1 else json.dumps(b0, indent=2) + "\n",
@@ -1498,6 +1540,8 @@ def main() -> None:
         case / "system/decomposeParDict",
         case / "constant/espressoModelProperties",
     ] + sorted((case / "0.orig").iterdir())
+    if history is not None:
+        scientific_inputs += sorted((root / "solver/espressoWholePullFoam").glob("*.H"))
     hashes = {}
     for path in scientific_inputs:
         try:

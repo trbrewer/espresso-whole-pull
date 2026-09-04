@@ -14,8 +14,8 @@ class TestAvailableDataFirst(unittest.TestCase):
   bad=copy.deepcopy(d); bad["home_lab_recommendation"]["minimum_measurement_set"]=[]
   with self.assertRaises(ValueError): pre.validate(bad, enforce_current_authority=False)
  def test_no_solver_or_angeloni_mutation(self):
-  # Task diff is documentation, metadata, validators and tests only.
+  # The completed policy task had no production change; bind its accepted merge.
   import subprocess
-  names=subprocess.check_output(["git","diff","--name-only","origin/main"],cwd=ROOT,text=True).splitlines()
+  names=subprocess.check_output(["git","diff","--name-only","1519a0294eda106ceeff9c56cd57c8027bdcd9cf^1","1519a0294eda106ceeff9c56cd57c8027bdcd9cf"],cwd=ROOT,text=True).splitlines()
   self.assertFalse(any(x.startswith("solver/") for x in names)); self.assertFalse(any("angeloni" in x.lower() for x in names))
 if __name__=="__main__":unittest.main()

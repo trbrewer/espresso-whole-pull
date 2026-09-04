@@ -1,0 +1,113 @@
+{
+  "first_drip_error_s": 2.6645352591003757e-15,
+  "integral_max_error_Pa_s": 1.4042598195374012e-09,
+  "pass": true,
+  "pressure_max_error_Pa": 6.05359673500061e-09,
+  "run": {
+    "bounded_state_pass": true,
+    "case_id": "synthetic",
+    "commands": {
+      "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/synthetic.json --nprocs 1 --case-dir <work>/synthetic",
+      "geometry": [
+        "postProcess -case <work>/synthetic -func writeCellCentres -time 0",
+        "postProcess -case <work>/synthetic -func writeCellVolumes -time 0"
+      ],
+      "mesh": "blockMesh -case <work>/synthetic",
+      "parallel_workflow": [],
+      "solver": "<bound-executable> -case <work>/synthetic"
+    },
+    "completion_status": "PASS",
+    "configuration_sha256": "303bc5271118292cb8707769e65aea6f38e6d82b334753eb77f8801d845bdd4d",
+    "conservation_pass": true,
+    "end_time_s": 32.9999999999996,
+    "endpoint_cup_mass_kg": 0.0298183117424719,
+    "error": null,
+    "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+    "execution": "serial",
+    "final_wet_front_m": 0.00901166089643255,
+    "first_drip_s": 7.35021479798101,
+    "input_hashes": {
+      "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+      "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+      "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+      "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+      "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+      "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+      "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+      "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+      "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+      "constant/espressoModelProperties": "1f0dadc65ce764777aa2d2bb1df0eb3294aa5f72e9d7fce7e50704626620fa2a",
+      "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+      "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+      "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+      "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+      "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+      "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+      "system/controlDict": "9f920e4a2da166c241bf835c79d0349d837a8296ac5d2b56b46d18dd515461dd",
+      "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+      "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+      "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+    },
+    "log_sha256": "3abe52577fa080414efc4e90a0d4a329a58e637cd15fecbe11befff6b2302d57",
+    "maximum_solute_residual_kg": 1.88029805230284e-14,
+    "maximum_water_residual_kg": 7.11705000489005e-14,
+    "mode": "prescribedPressureHistory",
+    "pass": true,
+    "rank_count": 1,
+    "runtime_s": 0.9349699020385742,
+    "schedule": {
+      "pressures_gauge_Pa": [
+        0,
+        300000,
+        900000,
+        900000,
+        600000,
+        0,
+        0
+      ],
+      "schedule_type": "piecewiseLinear",
+      "times_s": [
+        0,
+        3,
+        8,
+        18,
+        25,
+        30,
+        33
+      ]
+    },
+    "schedule_sha256": "e386ae448c3afc35846847af67bbcbcf551736983f2cd5e28ebf9ade1f677a55",
+    "start_time_s": 0.0,
+    "trace_sha256": "e5d132d7dae23f747742d301936ee197599e9a420e4cc0d8f335562a8b7dfa33"
+  },
+  "schedule": [
+    [
+      0,
+      0
+    ],
+    [
+      3,
+      300000
+    ],
+    [
+      8,
+      900000
+    ],
+    [
+      18,
+      900000
+    ],
+    [
+      25,
+      600000
+    ],
+    [
+      30,
+      0
+    ],
+    [
+      33,
+      0
+    ]
+  ]
+}

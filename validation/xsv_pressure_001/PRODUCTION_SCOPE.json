@@ -1,0 +1,23 @@
+{
+  "authorized_candidate_sha256": {
+    "scripts/prepare_case.py": "af81ff2af131600b9e1ea7fdce08f2181df51c5a73fb80f0d600d6a8264c4c5f",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "c6d7014c128158994b0b6da040a894f98fb7f78684ea0b7eb1efe4bfca2c2a84",
+    "solver/espressoWholePullFoam/prescribedPressureBoundaryModel.H": "2b8f4d622129fdfe4c2606d4445d5ee12ad02a509dcc6341f8aad8e2581cd234"
+  },
+  "base_commit": "d4a93971cd7a80c8670b83017e4283e9d34dabf0",
+  "dependency_sha256": {
+    "dependencies/puckworks.lock.json": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10"
+  },
+  "governing_equation_change": false,
+  "governing_physics_change": false,
+  "production_boundary_behavior_change": true,
+  "review_notes": "The main solver diff changes only mode parsing, validation, schedule dispatch, startup reporting and boundary maximum. Original ramp/integral/crossing helper definitions and all constitutive/equation bodies remain unchanged. prepare_case changes pressure validation/rendering/maximum and manifest/preview applicability only.",
+  "unchanged_production_sha256": {
+    "solver/espressoWholePullFoam/Make/files": "70aa84e2e2cbd37a9c25217fee498c234816cf41fb57b5f24c41a0e8495f7d83",
+    "solver/espressoWholePullFoam/Make/options": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
+    "solver/espressoWholePullFoam/forchheimerResistance.H": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719",
+    "solver/espressoWholePullFoam/poroelasticCompaction.H": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6",
+    "solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H": "a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082"
+  }
+}

@@ -1,0 +1,2278 @@
+{
+  "base_commit": "d4a93971cd7a80c8670b83017e4283e9d34dabf0",
+  "base_tree": "95607f7b0b2e897ead16b2847934f8d047d05a13",
+  "build_environment": {
+    "WM_COMPILER": "Gcc",
+    "WM_LABEL_SIZE": "32",
+    "WM_OPTIONS": "linux64GccDPInt32Opt",
+    "WM_PRECISION_OPTION": "DP"
+  },
+  "candidate_commit_at_generation": null,
+  "candidate_tree_at_generation": null,
+  "candidate_worktree_modified": true,
+  "case_preparation_sha256": "af81ff2af131600b9e1ea7fdce08f2181df51c5a73fb80f0d600d6a8264c4c5f",
+  "commands": [
+    {
+      "argv": [
+        "wclean",
+        "solver/espressoWholePullFoam"
+      ],
+      "exit_code": 0,
+      "log_sha256": "7b98ad087c87caedf8620ef18afdd5d69f78ad3521cea5c58046b03045435f1b",
+      "runtime_s": 0.0077936649322509766
+    },
+    {
+      "argv": [
+        "wmake",
+        "solver/espressoWholePullFoam"
+      ],
+      "exit_code": 0,
+      "log_sha256": "8cb738be3d9d4746e68a9c316eff6df55d849fde81f96d4c88aa040b36692d38",
+      "runtime_s": 14.481879711151123
+    },
+    {
+      "argv": [
+        "wclean",
+        "verification/xsv_pressure_001/pressureHistoryProbe"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e63b78a680d86ac87ccec54bb1c006c1667b1fc570e4deb96c7bf3e0b17cebd7",
+      "runtime_s": 0.007959127426147461
+    },
+    {
+      "argv": [
+        "wmake",
+        "verification/xsv_pressure_001/pressureHistoryProbe"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f471ef9cdecaf1770a7823ddeba1a39e3a2282edb292e0878999930d09a22fdd",
+      "runtime_s": 1.4388282299041748
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/constant.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "9eae21d639bf2d861ce84c688070e557ff82581c608473c9537d3e23617611ec",
+      "runtime_s": 0.010164976119995117
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/constant.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "9eae21d639bf2d861ce84c688070e557ff82581c608473c9537d3e23617611ec",
+      "runtime_s": 0.010605096817016602
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/zero.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "589e0d2574a4ff8833f6d88776db676fcbddf1b8fbaee5f31c313f1f65079aa2",
+      "runtime_s": 0.007349967956542969
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/zero.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "589e0d2574a4ff8833f6d88776db676fcbddf1b8fbaee5f31c313f1f65079aa2",
+      "runtime_s": 0.007281780242919922
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/rising.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "d198499f0ac9bb643be8c293ad6c2e26fba734c81998b8591c7ae5a0a0a3a023",
+      "runtime_s": 0.010512590408325195
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/rising.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "d198499f0ac9bb643be8c293ad6c2e26fba734c81998b8591c7ae5a0a0a3a023",
+      "runtime_s": 0.0072171688079833984
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/falling.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "6ad8dd9074b999df04710edcdeab79d412f1a505225e76db727853e40e3410e0",
+      "runtime_s": 0.007428646087646484
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/falling.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "6ad8dd9074b999df04710edcdeab79d412f1a505225e76db727853e40e3410e0",
+      "runtime_s": 0.010820865631103516
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/rising_threshold.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "9cc21e787e0c65fb350b21890ed94e60356e853856b56c817b0904a84952a012",
+      "runtime_s": 0.007467985153198242
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/rising_threshold.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "9cc21e787e0c65fb350b21890ed94e60356e853856b56c817b0904a84952a012",
+      "runtime_s": 0.006983757019042969
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/falling_threshold.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e84f0e99bde084e3d533840037e733b2a0f17ce0fa847716c8cfc4b632597143",
+      "runtime_s": 0.007217884063720703
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/falling_threshold.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e84f0e99bde084e3d533840037e733b2a0f17ce0fa847716c8cfc4b632597143",
+      "runtime_s": 0.007694244384765625
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/hold_above.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "05f7793cd6616d95323f36d46dbab7af08a9d5548bc9d008137f7f424ce90268",
+      "runtime_s": 0.0071947574615478516
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/hold_above.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "05f7793cd6616d95323f36d46dbab7af08a9d5548bc9d008137f7f424ce90268",
+      "runtime_s": 0.007209062576293945
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/hold_below.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e9816a94662edcb6f6236192dfe3c87917101b394ed4acd1b7494a2f3a22fb4c",
+      "runtime_s": 0.008809089660644531
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/hold_below.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e9816a94662edcb6f6236192dfe3c87917101b394ed4acd1b7494a2f3a22fb4c",
+      "runtime_s": 0.0073699951171875
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/multiple_knots.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "30ffb217cef332b50a1424ad3771a0e1e097f283cd49b5dfa755f3860649548e",
+      "runtime_s": 0.007461071014404297
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/multiple_knots.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "30ffb217cef332b50a1424ad3771a0e1e097f283cd49b5dfa755f3860649548e",
+      "runtime_s": 0.009075164794921875
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/knot_crossing.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "cc5c9e72a7698e864883c3cf645e0d4349eccaf1460c4047b65738cbeffdf5db",
+      "runtime_s": 0.0072596073150634766
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/knot_crossing.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "cc5c9e72a7698e864883c3cf645e0d4349eccaf1460c4047b65738cbeffdf5db",
+      "runtime_s": 0.008572101593017578
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/rising_crossing.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f3366b1739ed25baa7417e2c8189bcbe9686d533718b411b9267f00f3d6a3395",
+      "runtime_s": 0.007266044616699219
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/rising_crossing.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f3366b1739ed25baa7417e2c8189bcbe9686d533718b411b9267f00f3d6a3395",
+      "runtime_s": 0.00767064094543457
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/falling_crossing.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "fbd8175f0a11ca0adcbdb4bde222bbbdf1fb3c54f213daa60d40e119f2881290",
+      "runtime_s": 0.007205963134765625
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/falling_crossing.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "fbd8175f0a11ca0adcbdb4bde222bbbdf1fb3c54f213daa60d40e119f2881290",
+      "runtime_s": 0.009582996368408203
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/constant_crossing.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "35f91b129607479ecbf42eeef365c7fa55c22115a1b608758005ded027dea683",
+      "runtime_s": 0.008891820907592773
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/constant_crossing.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "35f91b129607479ecbf42eeef365c7fa55c22115a1b608758005ded027dea683",
+      "runtime_s": 0.010520696640014648
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/no_positive.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "1a48a0f68dd0264630a64262b2fc085361c1e4ac89af6afc590653d9ecb6c4ff",
+      "runtime_s": 0.007274150848388672
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/no_positive.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "1a48a0f68dd0264630a64262b2fc085361c1e4ac89af6afc590653d9ecb6c4ff",
+      "runtime_s": 0.007445573806762695
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/zero_required.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "75dc8022dd40707e2d824f613135993ce652816cd4851db6bf8d8e9f44aa7766",
+      "runtime_s": 0.00883173942565918
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/zero_required.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "75dc8022dd40707e2d824f613135993ce652816cd4851db6bf8d8e9f44aa7766",
+      "runtime_s": 0.00865316390991211
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/interior_maximum.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "fac7624f8baa8607a3c036953847f6c75ae20301988c463a4c26c9e9ccbf112c",
+      "runtime_s": 0.007361412048339844
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/interior_maximum.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "fac7624f8baa8607a3c036953847f6c75ae20301988c463a4c26c9e9ccbf112c",
+      "runtime_s": 0.007460594177246094
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/decline_to_zero.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "05701116a9751dade21fa5243113f8654da52cb67274f4f9765a257e57ea384f",
+      "runtime_s": 0.00694584846496582
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/decline_to_zero.dict"
+      ],
+      "exit_code": 0,
+      "log_sha256": "05701116a9751dade21fa5243113f8654da52cb67274f4f9765a257e57ea384f",
+      "runtime_s": 0.008907794952392578
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-missing_dictionary.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "4b3c9cfc21813c95f1dfad3bee29a5dab8aab169a8d36b8dd80dec8925a9a004",
+      "runtime_s": 0.011488676071166992
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-missing_type.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "8e98ed0094893683921ffaf704db3542bb2c2d3913ca8e39ee7273518bbd61a4",
+      "runtime_s": 0.010716438293457031
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-unsupported_type.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "61cd698e9fb1aa7a4ab2314a261d031ca959f93907dc835ef7188fa7db0c3b25",
+      "runtime_s": 0.007329702377319336
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-missing_times.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "8e98ed0094893683921ffaf704db3542bb2c2d3913ca8e39ee7273518bbd61a4",
+      "runtime_s": 0.011120319366455078
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-missing_pressures.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "8e98ed0094893683921ffaf704db3542bb2c2d3913ca8e39ee7273518bbd61a4",
+      "runtime_s": 0.007231473922729492
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-short.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "db6d4ea2bdfec580dbbb8f4348422ebcc9d3c2d76adc267d81142853be213b4c",
+      "runtime_s": 0.010519742965698242
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-unequal.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "db6d4ea2bdfec580dbbb8f4348422ebcc9d3c2d76adc267d81142853be213b4c",
+      "runtime_s": 0.011247873306274414
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-duplicate.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "bcd347ce8172cb33b9de6bbb2458dc52872baf27c813f0d0bcb63faff176813b",
+      "runtime_s": 0.0071604251861572266
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-decreasing.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "bcd347ce8172cb33b9de6bbb2458dc52872baf27c813f0d0bcb63faff176813b",
+      "runtime_s": 0.007462263107299805
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-nonfinite_time.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "44f7cb3c968d23687b4343b6dbce8dba289bafe4c6d3b5ebfb052581786fa363",
+      "runtime_s": 0.007152080535888672
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-nonfinite_pressure.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "ad91a534d121a336ebaa8a8bad96f7e46bbd31180c4bd70162231ca76ddbc2bd",
+      "runtime_s": 0.008324384689331055
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-negative_pressure.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "a8ecccc017d63cae0181d7fda013463a4ec07127de0edb9ff19bc1abeed06c80",
+      "runtime_s": 0.011017560958862305
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-start_coverage.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "e796cf34397d70b1ffde119fefd5c4efacbfe14d081f5c7dc405bdeb7c329fec",
+      "runtime_s": 0.007467746734619141
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-end_coverage.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "e796cf34397d70b1ffde119fefd5c4efacbfe14d081f5c7dc405bdeb7c329fec",
+      "runtime_s": 0.008859872817993164
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-scalar_target.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "64e47ffee6f4d729a7a0e109d59c1bac782399e197c5f1124ed262b0da66fefd",
+      "runtime_s": 0.0114288330078125
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-scalar_ramp.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "64e47ffee6f4d729a7a0e109d59c1bac782399e197c5f1124ed262b0da66fefd",
+      "runtime_s": 0.007273674011230469
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-before_support.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "704beda136b1159fce2c6796e6fce2843b72f334d3a87382c30798c2bcc9e1cf",
+      "runtime_s": 0.008590221405029297
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-after_support.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "ef06505f04bea59920f3be2078a5a23c8115c3dffcbd00b26395c303217e236c",
+      "runtime_s": 0.007147312164306641
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/probe",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-unreachable.dict"
+      ],
+      "exit_code": 1,
+      "log_sha256": "c5688af7ad4e7a622a7870e1d2da37fcd463321d555a91109178acb585ef5d99",
+      "runtime_s": 0.007180929183959961
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/solver",
+        "-case",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/invalid-legacy-history"
+      ],
+      "exit_code": 1,
+      "log_sha256": "adee77c10271cc61f8aa70811e4fc75847531fd2e860760b5a507486c8159f8d",
+      "runtime_s": 0.03106403350830078
+    },
+    {
+      "argv": [
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/solver",
+        "-case",
+        "<repository>/qualification_runs/xsv-pressure-001/frozen-contract-final/compaction_invalid"
+      ],
+      "exit_code": 1,
+      "log_sha256": "58bfebdf53e1e26cc69a60fbebfcca7bb20bdb9130b0bb5653d22f01c79c53da",
+      "runtime_s": 0.0327305793762207
+    }
+  ],
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "contract_sha256": {
+    "MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.json": "e1c3719da9e3a18ec32dec2c18f7d4167a3d03884b23250e08b4cfe4394cc070",
+    "MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.md": "6330a7369928008063ab76c166e6f50d31f77109b60565cf05701cb385a6ff2a"
+  },
+  "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+  "focused_test_totals": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 45,
+    "run": 45,
+    "skipped": 0
+  },
+  "git_binding_note": "Qualification preceded the candidate commit; exact production-source hashes bind execution. The PR records the final candidate commit/tree.",
+  "openfoam_version": "12",
+  "probe_sha256": "c5089b8d21df5402f395173c2d4e6099e3eb4b5e190a7e68d7611234a84d997d",
+  "probe_source_sha256": "efb37cef1cf3bf2d36ab9a53f8dd3bf28f126f4a446c48d9a66fb2cf92443c47",
+  "production_runs": [
+    {
+      "bounded_state_pass": true,
+      "case_id": "CONSTANT_legacy",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/CONSTANT_legacy.json --nprocs 1 --case-dir <work>/CONSTANT_legacy",
+        "geometry": [
+          "postProcess -case <work>/CONSTANT_legacy -func writeCellCentres -time 0",
+          "postProcess -case <work>/CONSTANT_legacy -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/CONSTANT_legacy",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/CONSTANT_legacy"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "170295b790b057c3da9b84c23fcdd92e8df3ed5e0738cd0bb26f3821c2a19d6f",
+      "conservation_pass": true,
+      "end_time_s": 29.9999999999994,
+      "endpoint_cup_mass_kg": 0.0432108085324431,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 3.21169618523187,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "6acdfc2d8a306d87fd3f5a62ac9c1342bbcdacb3348362c9a801cfa95dfc86b5",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "c4417b912d9f5061aeb6d1408555d9d32300416c327260204eaec7d909e3e1b8",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "0cbe8e3290571887e137f83cb533c4e6eb5290bced9647d02cfdc351068fe3e3",
+      "maximum_solute_residual_kg": 4.68852853337753e-17,
+      "maximum_water_residual_kg": 1.45716771982052e-15,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.8390913009643555,
+      "schedule": {
+        "pressure_ramp_time_s": 0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "f016c7452fa6ce8ce924f629e8db1758dec6727a444694005f4f39f6d1303bc8",
+      "start_time_s": 0.0,
+      "trace_sha256": "425aa0670d5df5c575b210dd8d70df0f0d3a38ad5dadacce4455936159879366"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "CONSTANT_history",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/CONSTANT_history.json --nprocs 1 --case-dir <work>/CONSTANT_history",
+        "geometry": [
+          "postProcess -case <work>/CONSTANT_history -func writeCellCentres -time 0",
+          "postProcess -case <work>/CONSTANT_history -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/CONSTANT_history",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/CONSTANT_history"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "60c172285821ff353fbf42b6c3813880682f7761476376a4f0200390695b1885",
+      "conservation_pass": true,
+      "end_time_s": 29.9999999999994,
+      "endpoint_cup_mass_kg": 0.0432108085324431,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 3.21169618523187,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "f0a9ac441c51b26f7058fc804cb09ac35d6fb936dc5ae1d3c40a0d946900184a",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "c4417b912d9f5061aeb6d1408555d9d32300416c327260204eaec7d909e3e1b8",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "05491ff2da01b1d0a920f820443df822791bd4ec15417300e0b0a261923178fe",
+      "maximum_solute_residual_kg": 4.68858147293673e-17,
+      "maximum_water_residual_kg": 1.45716771982052e-15,
+      "mode": "prescribedPressureHistory",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.8503072261810303,
+      "schedule": {
+        "pressures_gauge_Pa": [
+          900000,
+          900000
+        ],
+        "schedule_type": "piecewiseLinear",
+        "times_s": [
+          0,
+          30
+        ]
+      },
+      "schedule_sha256": "c64fa9a7d3df50862ba10071bafe33949213769babf1c3e69ac3df803f5f1abb",
+      "start_time_s": 0.0,
+      "trace_sha256": "9468143ba4391d9811b3367f0a71287363ea7b5d94579e06c2cd05e57d4d937b"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "RAMP_legacy",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/RAMP_legacy.json --nprocs 1 --case-dir <work>/RAMP_legacy",
+        "geometry": [
+          "postProcess -case <work>/RAMP_legacy -func writeCellCentres -time 0",
+          "postProcess -case <work>/RAMP_legacy -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/RAMP_legacy",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/RAMP_legacy"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "bbee23207a374dd218cc1dc8d58cff4f1354dcd1cdaa26fae2b3f53dde6d1d23",
+      "conservation_pass": true,
+      "end_time_s": 29.9999999999994,
+      "endpoint_cup_mass_kg": 0.0383558439384609,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 6.39093598616363,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "dd9764fd210f24ffd993a4876b7291214395996ea54db431e1bfbf359e9a4707",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "c4417b912d9f5061aeb6d1408555d9d32300416c327260204eaec7d909e3e1b8",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "2262b3199aa5a7080b60c8f2c4f14c3093d94bf95efa23125bb5b1ba58d029ca",
+      "maximum_solute_residual_kg": 4.26631437290678e-17,
+      "maximum_water_residual_kg": 1.45716771982052e-15,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.8026535511016846,
+      "schedule": {
+        "pressure_ramp_time_s": 5,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8efcbcc32e87ef0dafb32feb8b51e6c14dc4ba959a8af1476fd2751c113e7032",
+      "start_time_s": 0.0,
+      "trace_sha256": "bbb911fbe83c68c963b793a5a44bd87b63c17af659ed63334274324e75ab1079"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "RAMP_history",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/RAMP_history.json --nprocs 1 --case-dir <work>/RAMP_history",
+        "geometry": [
+          "postProcess -case <work>/RAMP_history -func writeCellCentres -time 0",
+          "postProcess -case <work>/RAMP_history -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/RAMP_history",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/RAMP_history"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "ac4603cd7e995888ae208a8677593e23d7003fc59917acc6629e0c96fd9ab8ff",
+      "conservation_pass": true,
+      "end_time_s": 29.9999999999994,
+      "endpoint_cup_mass_kg": 0.0383558439384609,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 6.39093598616363,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "d5f7d421ec40e831377c21ac90b41650cd29171a1aa21cbbed5013815e3924d3",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "c4417b912d9f5061aeb6d1408555d9d32300416c327260204eaec7d909e3e1b8",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "d006bbbce409464d0f6321fe4d948e16cdd97cffe04825c58a760c36c5cfdf24",
+      "maximum_solute_residual_kg": 4.27552585620817e-17,
+      "maximum_water_residual_kg": 1.45716771982052e-15,
+      "mode": "prescribedPressureHistory",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.8016073703765869,
+      "schedule": {
+        "pressures_gauge_Pa": [
+          0,
+          900000,
+          900000
+        ],
+        "schedule_type": "piecewiseLinear",
+        "times_s": [
+          0,
+          5,
+          30
+        ]
+      },
+      "schedule_sha256": "a98118fdf3325540d105c80d6a8478b35c0c3345c65372833e6a640ccf3cd9a5",
+      "start_time_s": 0.0,
+      "trace_sha256": "37c768c47e82bb8310e65bd426625cb6f57670c14ee7e81d8814a6a322b4020f"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "synthetic",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/synthetic.json --nprocs 1 --case-dir <work>/synthetic",
+        "geometry": [
+          "postProcess -case <work>/synthetic -func writeCellCentres -time 0",
+          "postProcess -case <work>/synthetic -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/synthetic",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/synthetic"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "303bc5271118292cb8707769e65aea6f38e6d82b334753eb77f8801d845bdd4d",
+      "conservation_pass": true,
+      "end_time_s": 32.9999999999996,
+      "endpoint_cup_mass_kg": 0.0298183117424719,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 7.35021479798101,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "1f0dadc65ce764777aa2d2bb1df0eb3294aa5f72e9d7fce7e50704626620fa2a",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9f920e4a2da166c241bf835c79d0349d837a8296ac5d2b56b46d18dd515461dd",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "3abe52577fa080414efc4e90a0d4a329a58e637cd15fecbe11befff6b2302d57",
+      "maximum_solute_residual_kg": 1.88029805230284e-14,
+      "maximum_water_residual_kg": 7.11705000489005e-14,
+      "mode": "prescribedPressureHistory",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.9349699020385742,
+      "schedule": {
+        "pressures_gauge_Pa": [
+          0,
+          300000,
+          900000,
+          900000,
+          600000,
+          0,
+          0
+        ],
+        "schedule_type": "piecewiseLinear",
+        "times_s": [
+          0,
+          3,
+          8,
+          18,
+          25,
+          30,
+          33
+        ]
+      },
+      "schedule_sha256": "e386ae448c3afc35846847af67bbcbcf551736983f2cd5e28ebf9ade1f677a55",
+      "start_time_s": 0.0,
+      "trace_sha256": "e5d132d7dae23f747742d301936ee197599e9a420e4cc0d8f335562a8b7dfa33"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "synthetic_refined",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/synthetic_refined.json --nprocs 1 --case-dir <work>/synthetic_refined",
+        "geometry": [
+          "postProcess -case <work>/synthetic_refined -func writeCellCentres -time 0",
+          "postProcess -case <work>/synthetic_refined -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/synthetic_refined",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/synthetic_refined"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "aeebd01d4c857673c4101479c7cde93d7686b3acea2a0f80e20e5bcf7d971020",
+      "conservation_pass": true,
+      "end_time_s": 33.000000000002,
+      "endpoint_cup_mass_kg": 0.0298248132408222,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 7.35021479798102,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "1f0dadc65ce764777aa2d2bb1df0eb3294aa5f72e9d7fce7e50704626620fa2a",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "82efa86de39bfffecaaa919dd932010f631493c31202726a1c056ade31661163",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "77b4ac8712b24b1b8f0baf10c36c23f342843f56a247a3bbd5f31409a8b52de5",
+      "maximum_solute_residual_kg": 4.5072446277117e-13,
+      "maximum_water_residual_kg": 6.65127675159027e-14,
+      "mode": "prescribedPressureHistory",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 1.49251389503479,
+      "schedule": {
+        "pressures_gauge_Pa": [
+          0,
+          300000,
+          900000,
+          900000,
+          600000,
+          0,
+          0
+        ],
+        "schedule_type": "piecewiseLinear",
+        "times_s": [
+          0,
+          3,
+          8,
+          18,
+          25,
+          30,
+          33
+        ]
+      },
+      "schedule_sha256": "e386ae448c3afc35846847af67bbcbcf551736983f2cd5e28ebf9ade1f677a55",
+      "start_time_s": 0.0,
+      "trace_sha256": "5466b34e6f655cff186c87bb46e2611441ca0e5eb8d6bba0b2dd4d0c60ea2beb"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "synthetic_mpi",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/synthetic_mpi.json --nprocs 4 --case-dir <work>/synthetic_mpi",
+        "geometry": [
+          "postProcess -case <work>/synthetic_mpi -func writeCellCentres -time 0",
+          "postProcess -case <work>/synthetic_mpi -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/synthetic_mpi",
+        "parallel_workflow": [
+          "decomposePar -case <work>/synthetic_mpi -force",
+          "reconstructPar -case <work>/synthetic_mpi -latestTime"
+        ],
+        "solver": "mpirun --oversubscribe -np 4 <bound-executable> -parallel -case <work>/synthetic_mpi"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "303bc5271118292cb8707769e65aea6f38e6d82b334753eb77f8801d845bdd4d",
+      "conservation_pass": true,
+      "end_time_s": 32.9999999999996,
+      "endpoint_cup_mass_kg": 0.0298183117426578,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "MPI",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 7.35021479798101,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "1f0dadc65ce764777aa2d2bb1df0eb3294aa5f72e9d7fce7e50704626620fa2a",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/cellProc": "9ac537bb2870ddd377560f8bb17bb195b1a6d2fd34441bd780b218c885447ddc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9f920e4a2da166c241bf835c79d0349d837a8296ac5d2b56b46d18dd515461dd",
+        "system/decomposeParDict": "19156622f3249a382f33c70a393d01336185cabcea19c04d0190ad0c7c6fbf14",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "c206b4ee2b06f270df0172ed4166b1383a111b22e7b466155461edab01990fa2",
+      "maximum_solute_residual_kg": 3.83965849236283e-13,
+      "maximum_water_residual_kg": 2.0048199211864e-14,
+      "mode": "prescribedPressureHistory",
+      "pass": true,
+      "rank_count": 4,
+      "runtime_s": 1.8906259536743164,
+      "schedule": {
+        "pressures_gauge_Pa": [
+          0,
+          300000,
+          900000,
+          900000,
+          600000,
+          0,
+          0
+        ],
+        "schedule_type": "piecewiseLinear",
+        "times_s": [
+          0,
+          3,
+          8,
+          18,
+          25,
+          30,
+          33
+        ]
+      },
+      "schedule_sha256": "e386ae448c3afc35846847af67bbcbcf551736983f2cd5e28ebf9ade1f677a55",
+      "start_time_s": 0.0,
+      "trace_sha256": "cd57618103882d72281f1053fa4f08cb809bdcfc7b514e324b702ac24dfff43f"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "compaction_valid",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/compaction_valid.json --nprocs 1 --case-dir <work>/compaction_valid",
+        "geometry": [
+          "postProcess -case <work>/compaction_valid -func writeCellCentres -time 0",
+          "postProcess -case <work>/compaction_valid -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/compaction_valid",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/compaction_valid"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "a0dab529492409c58c0b5b49b3b16dca075c40485a5d27d8c9da4ddfaea78baf",
+      "conservation_pass": true,
+      "end_time_s": 0.2,
+      "endpoint_cup_mass_kg": 0.0,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00053004941368931,
+      "first_drip_s": -1.0,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "a9fb6ff25cbfbadf026191a3aea7f6ca1ba5b2d8f2370712c365b3cc973dae16",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "281609a30935a3b4e917290e8c78bf6022fac85eb3f36980cc1c72762c556312",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "c375990f228918265efa932bfc24b8938f54028edca83d77c802d063d1523523",
+        "system/fvSolution": "a3c5b92e11cf42111a1c60a7219325ca6b252fc82ef63d50ae1cd7d26084061a"
+      },
+      "log_sha256": "43f30df51bd17408aae952c01a36abb6a1f659819c21a8ffdd65fdd2addfe681",
+      "maximum_solute_residual_kg": 2.44275831658668e-17,
+      "maximum_water_residual_kg": 0.0,
+      "mode": "prescribedPressureHistory",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.3434169292449951,
+      "schedule": {
+        "pressures_gauge_Pa": [
+          0,
+          100000,
+          0
+        ],
+        "schedule_type": "piecewiseLinear",
+        "times_s": [
+          0,
+          0.1,
+          0.2
+        ]
+      },
+      "schedule_sha256": "86743ce4ac7a1bc58af2c4297d268720c89b5f635668eb75fdc144352ee3d1fc",
+      "start_time_s": 0.0,
+      "trace_sha256": "4fd4fb6693b312c06cb312e47e83b636cad8517acd8d1680cf75d318958cee11"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_prescribedPressure_base",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_prescribedPressure_base.json --nprocs 1 --case-dir <work>/regression_prescribedPressure_base",
+        "geometry": [
+          "postProcess -case <work>/regression_prescribedPressure_base -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_prescribedPressure_base -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_prescribedPressure_base",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_prescribedPressure_base"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "0afc4f90b1ef3f5df5f325a7baceb80ef3ecc794f1a56cc883703874b07d917a",
+      "conservation_pass": true,
+      "end_time_s": 7.99999999999992,
+      "endpoint_cup_mass_kg": 0.00527536930383127,
+      "error": null,
+      "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9e08ebd840d446400215dd44076c2832366fa3bbb8d3b237a3326625241836bb",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "e0862a7107883c4073fbc60aad2958d55c667cb4dec1a6594e99f62321b011f9",
+      "maximum_solute_residual_kg": 2.67602060234867e-17,
+      "maximum_water_residual_kg": 2.39391839684799e-16,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.4486093521118164,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "2156e67dafd0ec11b287a41b3a6b8833d985a16ef0048c308e37a5572af156b3"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_prescribedPressure_candidate",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_prescribedPressure_candidate.json --nprocs 1 --case-dir <work>/regression_prescribedPressure_candidate",
+        "geometry": [
+          "postProcess -case <work>/regression_prescribedPressure_candidate -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_prescribedPressure_candidate -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_prescribedPressure_candidate",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_prescribedPressure_candidate"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "0afc4f90b1ef3f5df5f325a7baceb80ef3ecc794f1a56cc883703874b07d917a",
+      "conservation_pass": true,
+      "end_time_s": 7.99999999999992,
+      "endpoint_cup_mass_kg": 0.00527536930383127,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9e08ebd840d446400215dd44076c2832366fa3bbb8d3b237a3326625241836bb",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "6c95539d7d2bcaf473b06e4a9cc10b0ee72fe318ed8b8fbb760be56f94f0f058",
+      "maximum_solute_residual_kg": 2.67602060234867e-17,
+      "maximum_water_residual_kg": 2.39391839684799e-16,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.44097352027893066,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "2156e67dafd0ec11b287a41b3a6b8833d985a16ef0048c308e37a5572af156b3"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_prescribedFlow_constant_base",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_prescribedFlow_constant_base.json --nprocs 1 --case-dir <work>/regression_prescribedFlow_constant_base",
+        "geometry": [
+          "postProcess -case <work>/regression_prescribedFlow_constant_base -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_prescribedFlow_constant_base -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_prescribedFlow_constant_base",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_prescribedFlow_constant_base"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "b7525a9c6811419d1071a5bbf05f38117c7a94132c27a58201cc0b0fdc1869c5",
+      "conservation_pass": true,
+      "end_time_s": 5.99999999999996,
+      "endpoint_cup_mass_kg": 0.00578999999999998,
+      "error": null,
+      "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 0.0,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "9b7bbe18ef2d6a342cbac4f2804e22fa80d50e171f54a47929a0a4f3b5e6c806",
+        "constant/polyMesh/boundary": "ea7aec677c3f2174f5d28b39be38819358a5d2895d949754ca70da8bca8756e6",
+        "constant/polyMesh/faces": "e4b473f70d3dd66e0d8413734b1cc3cf0e201742abc7c941a34e68e11c5645b9",
+        "constant/polyMesh/neighbour": "4c01f21719d93d2901c8effb9c8b9256b94ba0d55694baf1b5791afec410a258",
+        "constant/polyMesh/owner": "fc66c38279c1a0ffe470d3d4f8f83a57a614767356f484d14bb11bf86bbaeeb2",
+        "constant/polyMesh/points": "08528a806aca7cfb97f8435a66b9b2a52d2d88b1f04adaeec80bd7d3013da9d4",
+        "system/blockMeshDict": "cd36e1a0c9d03940ae7e3f31b50c06e592e7fbe6b242317c8c9d1ae656d5f790",
+        "system/controlDict": "bfd077718fd703f38f6cdc99fb552747e1f511ed15bd1e83b441386844ee9300",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "15f722133859055059d88aaf1407d0a69185c32be8e978a9b462e38b3713b49e",
+      "maximum_solute_residual_kg": 1.73472347597681e-18,
+      "maximum_water_residual_kg": 1.32272665043232e-17,
+      "mode": "prescribedFlow",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.3987441062927246,
+      "schedule": {
+        "absoluteFlowToleranceM3PerS": 1e-14,
+        "relativeFlowTolerance": 1e-08,
+        "scheduleType": "constant",
+        "volumetricFlowRateM3PerS": 1e-06
+      },
+      "schedule_sha256": "cfbd583b545326a5b07bb17248936cbaf104ca12e73d8501e797b5e0df15f075",
+      "start_time_s": 0.0,
+      "trace_sha256": "b19fcc34805a17cdcb7dd7e5df25d8d094e73874cc713e10daa08486a758b63a"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_prescribedFlow_constant_candidate",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_prescribedFlow_constant_candidate.json --nprocs 1 --case-dir <work>/regression_prescribedFlow_constant_candidate",
+        "geometry": [
+          "postProcess -case <work>/regression_prescribedFlow_constant_candidate -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_prescribedFlow_constant_candidate -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_prescribedFlow_constant_candidate",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_prescribedFlow_constant_candidate"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "b7525a9c6811419d1071a5bbf05f38117c7a94132c27a58201cc0b0fdc1869c5",
+      "conservation_pass": true,
+      "end_time_s": 5.99999999999996,
+      "endpoint_cup_mass_kg": 0.00578999999999998,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 0.0,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "9b7bbe18ef2d6a342cbac4f2804e22fa80d50e171f54a47929a0a4f3b5e6c806",
+        "constant/polyMesh/boundary": "ea7aec677c3f2174f5d28b39be38819358a5d2895d949754ca70da8bca8756e6",
+        "constant/polyMesh/faces": "e4b473f70d3dd66e0d8413734b1cc3cf0e201742abc7c941a34e68e11c5645b9",
+        "constant/polyMesh/neighbour": "4c01f21719d93d2901c8effb9c8b9256b94ba0d55694baf1b5791afec410a258",
+        "constant/polyMesh/owner": "fc66c38279c1a0ffe470d3d4f8f83a57a614767356f484d14bb11bf86bbaeeb2",
+        "constant/polyMesh/points": "08528a806aca7cfb97f8435a66b9b2a52d2d88b1f04adaeec80bd7d3013da9d4",
+        "system/blockMeshDict": "cd36e1a0c9d03940ae7e3f31b50c06e592e7fbe6b242317c8c9d1ae656d5f790",
+        "system/controlDict": "bfd077718fd703f38f6cdc99fb552747e1f511ed15bd1e83b441386844ee9300",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "2186343a67748c13849c3ed8decb26a2778235ae136d78deaff8920d035d7ac8",
+      "maximum_solute_residual_kg": 1.73472347597681e-18,
+      "maximum_water_residual_kg": 1.32272665043232e-17,
+      "mode": "prescribedFlow",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.3951427936553955,
+      "schedule": {
+        "absoluteFlowToleranceM3PerS": 1e-14,
+        "relativeFlowTolerance": 1e-08,
+        "scheduleType": "constant",
+        "volumetricFlowRateM3PerS": 1e-06
+      },
+      "schedule_sha256": "cfbd583b545326a5b07bb17248936cbaf104ca12e73d8501e797b5e0df15f075",
+      "start_time_s": 0.0,
+      "trace_sha256": "b19fcc34805a17cdcb7dd7e5df25d8d094e73874cc713e10daa08486a758b63a"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_prescribedFlow_piecewiseLinear_base",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_prescribedFlow_piecewiseLinear_base.json --nprocs 1 --case-dir <work>/regression_prescribedFlow_piecewiseLinear_base",
+        "geometry": [
+          "postProcess -case <work>/regression_prescribedFlow_piecewiseLinear_base -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_prescribedFlow_piecewiseLinear_base -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_prescribedFlow_piecewiseLinear_base",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_prescribedFlow_piecewiseLinear_base"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "14d15c64e238d3124bfeb25e701438de23e658faca5a33c95548ce5416192797",
+      "conservation_pass": true,
+      "end_time_s": 5.99999999999996,
+      "endpoint_cup_mass_kg": 0.00506625,
+      "error": null,
+      "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 0.0,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "3a421b6de02946cd396735cfaedc885c1491f3cbcbabab86d04639564e1538f8",
+        "constant/polyMesh/boundary": "ea7aec677c3f2174f5d28b39be38819358a5d2895d949754ca70da8bca8756e6",
+        "constant/polyMesh/faces": "e4b473f70d3dd66e0d8413734b1cc3cf0e201742abc7c941a34e68e11c5645b9",
+        "constant/polyMesh/neighbour": "4c01f21719d93d2901c8effb9c8b9256b94ba0d55694baf1b5791afec410a258",
+        "constant/polyMesh/owner": "fc66c38279c1a0ffe470d3d4f8f83a57a614767356f484d14bb11bf86bbaeeb2",
+        "constant/polyMesh/points": "08528a806aca7cfb97f8435a66b9b2a52d2d88b1f04adaeec80bd7d3013da9d4",
+        "system/blockMeshDict": "cd36e1a0c9d03940ae7e3f31b50c06e592e7fbe6b242317c8c9d1ae656d5f790",
+        "system/controlDict": "bfd077718fd703f38f6cdc99fb552747e1f511ed15bd1e83b441386844ee9300",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "745d342dcfa9deaf8c7693d12e04465453f3b1a0f360a97b0d52658a53db83d7",
+      "maximum_solute_residual_kg": 1.73472347597681e-18,
+      "maximum_water_residual_kg": 2.60208521396521e-18,
+      "mode": "prescribedFlow",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.393632173538208,
+      "schedule": {
+        "absoluteFlowToleranceM3PerS": 1e-12,
+        "relativeFlowTolerance": 1e-08,
+        "scheduleType": "piecewiseLinear",
+        "timesS": [
+          0,
+          1,
+          3,
+          5,
+          6
+        ],
+        "volumetricFlowRatesM3PerS": [
+          0,
+          1e-06,
+          1.5e-06,
+          5e-07,
+          0
+        ]
+      },
+      "schedule_sha256": "c4c3f75f6fe36c40fd6309bfabfb70f10eced4c3218730bedd5f29f6f42e243a",
+      "start_time_s": 0.0,
+      "trace_sha256": "7ce816be4a3ebf687b197714cf086410c8eedd67811c0109327a98d2cc02c4a7"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_prescribedFlow_piecewiseLinear_candidate",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_prescribedFlow_piecewiseLinear_candidate.json --nprocs 1 --case-dir <work>/regression_prescribedFlow_piecewiseLinear_candidate",
+        "geometry": [
+          "postProcess -case <work>/regression_prescribedFlow_piecewiseLinear_candidate -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_prescribedFlow_piecewiseLinear_candidate -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_prescribedFlow_piecewiseLinear_candidate",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_prescribedFlow_piecewiseLinear_candidate"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "14d15c64e238d3124bfeb25e701438de23e658faca5a33c95548ce5416192797",
+      "conservation_pass": true,
+      "end_time_s": 5.99999999999996,
+      "endpoint_cup_mass_kg": 0.00506625,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 0.0,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "3a421b6de02946cd396735cfaedc885c1491f3cbcbabab86d04639564e1538f8",
+        "constant/polyMesh/boundary": "ea7aec677c3f2174f5d28b39be38819358a5d2895d949754ca70da8bca8756e6",
+        "constant/polyMesh/faces": "e4b473f70d3dd66e0d8413734b1cc3cf0e201742abc7c941a34e68e11c5645b9",
+        "constant/polyMesh/neighbour": "4c01f21719d93d2901c8effb9c8b9256b94ba0d55694baf1b5791afec410a258",
+        "constant/polyMesh/owner": "fc66c38279c1a0ffe470d3d4f8f83a57a614767356f484d14bb11bf86bbaeeb2",
+        "constant/polyMesh/points": "08528a806aca7cfb97f8435a66b9b2a52d2d88b1f04adaeec80bd7d3013da9d4",
+        "system/blockMeshDict": "cd36e1a0c9d03940ae7e3f31b50c06e592e7fbe6b242317c8c9d1ae656d5f790",
+        "system/controlDict": "bfd077718fd703f38f6cdc99fb552747e1f511ed15bd1e83b441386844ee9300",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "3ac4486846e11968702cfb1a60b036aaf335fe56c6036589e70de5f14444e790",
+      "maximum_solute_residual_kg": 1.73472347597681e-18,
+      "maximum_water_residual_kg": 2.60208521396521e-18,
+      "mode": "prescribedFlow",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.389615535736084,
+      "schedule": {
+        "absoluteFlowToleranceM3PerS": 1e-12,
+        "relativeFlowTolerance": 1e-08,
+        "scheduleType": "piecewiseLinear",
+        "timesS": [
+          0,
+          1,
+          3,
+          5,
+          6
+        ],
+        "volumetricFlowRatesM3PerS": [
+          0,
+          1e-06,
+          1.5e-06,
+          5e-07,
+          0
+        ]
+      },
+      "schedule_sha256": "c4c3f75f6fe36c40fd6309bfabfb70f10eced4c3218730bedd5f29f6f42e243a",
+      "start_time_s": 0.0,
+      "trace_sha256": "7ce816be4a3ebf687b197714cf086410c8eedd67811c0109327a98d2cc02c4a7"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_lumpedMachineCompliance_base",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_lumpedMachineCompliance_base.json --nprocs 1 --case-dir <work>/regression_lumpedMachineCompliance_base",
+        "geometry": [
+          "postProcess -case <work>/regression_lumpedMachineCompliance_base -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_lumpedMachineCompliance_base -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_lumpedMachineCompliance_base",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_lumpedMachineCompliance_base"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "66ba2aea49d31fe38ee8f335a47e5e97d53634e5a8766de7a0d98bfc68fa4ab4",
+      "conservation_pass": true,
+      "end_time_s": 7.99999999999992,
+      "endpoint_cup_mass_kg": 0.0,
+      "error": null,
+      "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+      "execution": "serial",
+      "final_wet_front_m": 0.0089944741696094,
+      "first_drip_s": -1.0,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "ba39a1cde958f1705921c43731fe5e31f647606923d1c851f68f77c0688b0c16",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9e08ebd840d446400215dd44076c2832366fa3bbb8d3b237a3326625241836bb",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "88c4a9769c77bb183be4949bb6fd59c29b1f956523476309c9b2faa8fce8e7c1",
+      "maximum_solute_residual_kg": 2.57498015965307e-17,
+      "maximum_water_residual_kg": 0.0,
+      "mode": "lumpedMachineCompliance",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.42513370513916016,
+      "schedule": {
+        "couplingAbsoluteTolerance": 1e-12,
+        "couplingMaximumIterations": 80,
+        "couplingRelativeTolerance": 1e-08,
+        "freeFlowRate": 2e-06,
+        "initialUpstreamPressure": 0.0,
+        "shutoffPressure": 1000000.0,
+        "supplyRampTime": 0.0,
+        "upstreamCompliance": 1e-12,
+        "upstreamResistance": 10000000000.0
+      },
+      "schedule_sha256": "cbb19fe48acedf6ea6abc51badfaa5d1b18d9f8cdc80645ecd489283c368b1f1",
+      "start_time_s": 0.0,
+      "trace_sha256": "42b4c06a9685efec8538dd4798e73d38d918745a8d7cc3a0db2d026f47da8d38"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_lumpedMachineCompliance_candidate",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_lumpedMachineCompliance_candidate.json --nprocs 1 --case-dir <work>/regression_lumpedMachineCompliance_candidate",
+        "geometry": [
+          "postProcess -case <work>/regression_lumpedMachineCompliance_candidate -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_lumpedMachineCompliance_candidate -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_lumpedMachineCompliance_candidate",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_lumpedMachineCompliance_candidate"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "66ba2aea49d31fe38ee8f335a47e5e97d53634e5a8766de7a0d98bfc68fa4ab4",
+      "conservation_pass": true,
+      "end_time_s": 7.99999999999992,
+      "endpoint_cup_mass_kg": 0.0,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.0089944741696094,
+      "first_drip_s": -1.0,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "ba39a1cde958f1705921c43731fe5e31f647606923d1c851f68f77c0688b0c16",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9e08ebd840d446400215dd44076c2832366fa3bbb8d3b237a3326625241836bb",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "ee92a7f45af04a64f94e6a5998653f33d14f2f4e5dd77d165ef7325a629f9462",
+      "maximum_solute_residual_kg": 2.57498015965307e-17,
+      "maximum_water_residual_kg": 0.0,
+      "mode": "lumpedMachineCompliance",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.41295742988586426,
+      "schedule": {
+        "couplingAbsoluteTolerance": 1e-12,
+        "couplingMaximumIterations": 80,
+        "couplingRelativeTolerance": 1e-08,
+        "freeFlowRate": 2e-06,
+        "initialUpstreamPressure": 0.0,
+        "shutoffPressure": 1000000.0,
+        "supplyRampTime": 0.0,
+        "upstreamCompliance": 1e-12,
+        "upstreamResistance": 10000000000.0
+      },
+      "schedule_sha256": "cbb19fe48acedf6ea6abc51badfaa5d1b18d9f8cdc80645ecd489283c368b1f1",
+      "start_time_s": 0.0,
+      "trace_sha256": "42b4c06a9685efec8538dd4798e73d38d918745a8d7cc3a0db2d026f47da8d38"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_DarcyForchheimer_base",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_DarcyForchheimer_base.json --nprocs 1 --case-dir <work>/regression_DarcyForchheimer_base",
+        "geometry": [
+          "postProcess -case <work>/regression_DarcyForchheimer_base -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_DarcyForchheimer_base -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_DarcyForchheimer_base",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_DarcyForchheimer_base"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "f4b1300526c7e3001f9c3591e7162f30ab16856892778444d04f1d0187ec7fb0",
+      "conservation_pass": true,
+      "end_time_s": 7.99999999999992,
+      "endpoint_cup_mass_kg": 0.00517222906746828,
+      "error": null,
+      "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "a5c0bb399022d8469cf4eabeebeec7b691a0d5fa39df7508c0eebac4bba1bd2f",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9e08ebd840d446400215dd44076c2832366fa3bbb8d3b237a3326625241836bb",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "c375990f228918265efa932bfc24b8938f54028edca83d77c802d063d1523523",
+        "system/fvSolution": "a3c5b92e11cf42111a1c60a7219325ca6b252fc82ef63d50ae1cd7d26084061a"
+      },
+      "log_sha256": "092b1ed723923d7ee7ea664094c5482ccaad266563b1029ba06ffce839d96bd1",
+      "maximum_solute_residual_kg": 2.64138754271781e-17,
+      "maximum_water_residual_kg": 4.85722573273506e-17,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.8184614181518555,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "cbc2178ab13ba337302a2557b0e84aedb36dca82b44dc44b4ed6dc1a1ebba174"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_DarcyForchheimer_candidate",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_DarcyForchheimer_candidate.json --nprocs 1 --case-dir <work>/regression_DarcyForchheimer_candidate",
+        "geometry": [
+          "postProcess -case <work>/regression_DarcyForchheimer_candidate -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_DarcyForchheimer_candidate -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_DarcyForchheimer_candidate",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_DarcyForchheimer_candidate"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "f4b1300526c7e3001f9c3591e7162f30ab16856892778444d04f1d0187ec7fb0",
+      "conservation_pass": true,
+      "end_time_s": 7.99999999999992,
+      "endpoint_cup_mass_kg": 0.00517222906746828,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "a5c0bb399022d8469cf4eabeebeec7b691a0d5fa39df7508c0eebac4bba1bd2f",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9e08ebd840d446400215dd44076c2832366fa3bbb8d3b237a3326625241836bb",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "c375990f228918265efa932bfc24b8938f54028edca83d77c802d063d1523523",
+        "system/fvSolution": "a3c5b92e11cf42111a1c60a7219325ca6b252fc82ef63d50ae1cd7d26084061a"
+      },
+      "log_sha256": "75203b3f5e4e1c35db41138dfe2082e442e9b4882671a1b721649e69202213ff",
+      "maximum_solute_residual_kg": 2.64138754271781e-17,
+      "maximum_water_residual_kg": 4.85722573273506e-17,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.8267192840576172,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "cbc2178ab13ba337302a2557b0e84aedb36dca82b44dc44b4ed6dc1a1ebba174"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_effective_permeability_base",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_effective_permeability_base.json --nprocs 1 --case-dir <work>/regression_effective_permeability_base",
+        "geometry": [
+          "postProcess -case <work>/regression_effective_permeability_base -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_effective_permeability_base -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_effective_permeability_base",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_effective_permeability_base"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "7d2a8d313ecdf34bdaaab263162c869b0de207fa3e98cd137fdbc09aad480756",
+      "conservation_pass": true,
+      "end_time_s": 14.9999999999998,
+      "endpoint_cup_mass_kg": 1.68607073141077e-08,
+      "error": null,
+      "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "cccae9c46bd91f28cd8a253efef8a99e368241d1765eb2cd309445a78e27223f",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "15c8e68df223136e8dab95a8d6c9552ea69e4e4428b66bb4caf5913a6d6cfa35",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "8a1b9df8a04aad857f405168d60b7dc515f20d510f80a14f5298e952f93f7f83",
+      "maximum_solute_residual_kg": 1.14025605160739e-13,
+      "maximum_water_residual_kg": 3.03641757040986e-17,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.5752768516540527,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "1e4137e5bc0207af43e2eeef3f91d69c129b79549b2bf5fd02132ec0ca98f724"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_effective_permeability_candidate",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_effective_permeability_candidate.json --nprocs 1 --case-dir <work>/regression_effective_permeability_candidate",
+        "geometry": [
+          "postProcess -case <work>/regression_effective_permeability_candidate -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_effective_permeability_candidate -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_effective_permeability_candidate",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_effective_permeability_candidate"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "7d2a8d313ecdf34bdaaab263162c869b0de207fa3e98cd137fdbc09aad480756",
+      "conservation_pass": true,
+      "end_time_s": 14.9999999999998,
+      "endpoint_cup_mass_kg": 1.68607073141077e-08,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "cccae9c46bd91f28cd8a253efef8a99e368241d1765eb2cd309445a78e27223f",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "15c8e68df223136e8dab95a8d6c9552ea69e4e4428b66bb4caf5913a6d6cfa35",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "903be4ad665ef3e097ec920f2a110ab755152e3e2f246964f15e71cba00f1885",
+      "maximum_solute_residual_kg": 1.14025605160739e-13,
+      "maximum_water_residual_kg": 3.03641757040986e-17,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.5748729705810547,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "1e4137e5bc0207af43e2eeef3f91d69c129b79549b2bf5fd02132ec0ca98f724"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_fraction_collection_base",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_fraction_collection_base.json --nprocs 1 --case-dir <work>/regression_fraction_collection_base",
+        "geometry": [
+          "postProcess -case <work>/regression_fraction_collection_base -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_fraction_collection_base -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_fraction_collection_base",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_fraction_collection_base"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "c26b0d6ab50df80c372ff6cf64144bfad8d85a7f1f3dc543cc3b8217dd09f53a",
+      "conservation_pass": true,
+      "end_time_s": 7.99999999999992,
+      "endpoint_cup_mass_kg": 0.00527536930383127,
+      "error": null,
+      "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "abc6d78a23c55298cbdddd020420ef9a88e9a38c4216acf4072f98808db44b44",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9e08ebd840d446400215dd44076c2832366fa3bbb8d3b237a3326625241836bb",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "24fd0bd6fc9b638420c68d3e2ea4475a4ff005affef1274aae9492d61d10a73e",
+      "maximum_solute_residual_kg": 2.67602060234867e-17,
+      "maximum_water_residual_kg": 2.39391839684799e-16,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.45006871223449707,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "2156e67dafd0ec11b287a41b3a6b8833d985a16ef0048c308e37a5572af156b3"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_fraction_collection_candidate",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_fraction_collection_candidate.json --nprocs 1 --case-dir <work>/regression_fraction_collection_candidate",
+        "geometry": [
+          "postProcess -case <work>/regression_fraction_collection_candidate -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_fraction_collection_candidate -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_fraction_collection_candidate",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_fraction_collection_candidate"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "c26b0d6ab50df80c372ff6cf64144bfad8d85a7f1f3dc543cc3b8217dd09f53a",
+      "conservation_pass": true,
+      "end_time_s": 7.99999999999992,
+      "endpoint_cup_mass_kg": 0.00527536930383127,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "980cf8787d57672a8c4f42d9f8e574a80e133e707b65c3d246ca421764eeb38d",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "9e08ebd840d446400215dd44076c2832366fa3bbb8d3b237a3326625241836bb",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "c172caad285137a7b84d562fe83b56f58fc39c6047dd3e2c71862b85af68f02b",
+      "maximum_solute_residual_kg": 2.67602060234867e-17,
+      "maximum_water_residual_kg": 2.39391839684799e-16,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.4392263889312744,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "2156e67dafd0ec11b287a41b3a6b8833d985a16ef0048c308e37a5572af156b3"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_compaction_base",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_compaction_base.json --nprocs 1 --case-dir <work>/regression_compaction_base",
+        "geometry": [
+          "postProcess -case <work>/regression_compaction_base -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_compaction_base -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_compaction_base",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_compaction_base"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "99f086772971987b7b56a9a3a6a6a0cf9513ab75f2f544aca0c5439849bf31aa",
+      "conservation_pass": true,
+      "end_time_s": 0.2,
+      "endpoint_cup_mass_kg": 2.72128997904316e-05,
+      "error": null,
+      "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 0.0,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "94b4fd965dd75a0c98b05143bbd45a9ac88d67da624f07674d45de3761f969b0",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "281609a30935a3b4e917290e8c78bf6022fac85eb3f36980cc1c72762c556312",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "c375990f228918265efa932bfc24b8938f54028edca83d77c802d063d1523523",
+        "system/fvSolution": "a3c5b92e11cf42111a1c60a7219325ca6b252fc82ef63d50ae1cd7d26084061a"
+      },
+      "log_sha256": "68cbae37bded8427ed33335513131084cc02444c1c298c6a07e729cd1befba55",
+      "maximum_solute_residual_kg": 2.39282059582624e-17,
+      "maximum_water_residual_kg": 6.81014489592457e-19,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.4194309711456299,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "a2274db27b3b9b6a4dafd3dc7326523f2ed02db887b1c8ab52a703652c0fdb00"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_compaction_candidate",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_compaction_candidate.json --nprocs 1 --case-dir <work>/regression_compaction_candidate",
+        "geometry": [
+          "postProcess -case <work>/regression_compaction_candidate -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_compaction_candidate -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_compaction_candidate",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_compaction_candidate"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "99f086772971987b7b56a9a3a6a6a0cf9513ab75f2f544aca0c5439849bf31aa",
+      "conservation_pass": true,
+      "end_time_s": 0.2,
+      "endpoint_cup_mass_kg": 2.72128997904316e-05,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 0.0,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "94b4fd965dd75a0c98b05143bbd45a9ac88d67da624f07674d45de3761f969b0",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "281609a30935a3b4e917290e8c78bf6022fac85eb3f36980cc1c72762c556312",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "c375990f228918265efa932bfc24b8938f54028edca83d77c802d063d1523523",
+        "system/fvSolution": "a3c5b92e11cf42111a1c60a7219325ca6b252fc82ef63d50ae1cd7d26084061a"
+      },
+      "log_sha256": "7d11906204ccfa99a5dff803a17167f88cf90b39bad89a40b6d9392b1aced60b",
+      "maximum_solute_residual_kg": 2.39282059582624e-17,
+      "maximum_water_residual_kg": 6.81014489592457e-19,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.4200406074523926,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "a2274db27b3b9b6a4dafd3dc7326523f2ed02db887b1c8ab52a703652c0fdb00"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_reference_completion_base",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_reference_completion_base.json --nprocs 1 --case-dir <work>/regression_reference_completion_base",
+        "geometry": [
+          "postProcess -case <work>/regression_reference_completion_base -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_reference_completion_base -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_reference_completion_base",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_reference_completion_base"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "3f81075c54853d58acf0fac16edad9302586cd81378c9e8e71d4ca9c8fa06c19",
+      "conservation_pass": true,
+      "end_time_s": 29.9999999999994,
+      "endpoint_cup_mass_kg": 0.0409285897351434,
+      "error": null,
+      "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "c4417b912d9f5061aeb6d1408555d9d32300416c327260204eaec7d909e3e1b8",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "8becc1f8c9bddd68c577f3c2c84a26d2b18ae842f96dba84886c3c1ef1a12977",
+      "maximum_solute_residual_kg": 3.31931036205279e-17,
+      "maximum_water_residual_kg": 1.45716771982052e-15,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.8291921615600586,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "53347b9c12131b342dacf0efef73688f4ab575769605f84054c24189e84c5b9f"
+    },
+    {
+      "bounded_state_pass": true,
+      "case_id": "regression_reference_completion_candidate",
+      "commands": {
+        "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/regression_reference_completion_candidate.json --nprocs 1 --case-dir <work>/regression_reference_completion_candidate",
+        "geometry": [
+          "postProcess -case <work>/regression_reference_completion_candidate -func writeCellCentres -time 0",
+          "postProcess -case <work>/regression_reference_completion_candidate -func writeCellVolumes -time 0"
+        ],
+        "mesh": "blockMesh -case <work>/regression_reference_completion_candidate",
+        "parallel_workflow": [],
+        "solver": "<bound-executable> -case <work>/regression_reference_completion_candidate"
+      },
+      "completion_status": "PASS",
+      "configuration_sha256": "3f81075c54853d58acf0fac16edad9302586cd81378c9e8e71d4ca9c8fa06c19",
+      "conservation_pass": true,
+      "end_time_s": 29.9999999999994,
+      "endpoint_cup_mass_kg": 0.0409285897351434,
+      "error": null,
+      "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+      "execution": "serial",
+      "final_wet_front_m": 0.00901166089643255,
+      "first_drip_s": 4.71169618523188,
+      "input_hashes": {
+        "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356",
+        "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+        "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+        "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+        "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+        "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+        "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+        "system/controlDict": "c4417b912d9f5061aeb6d1408555d9d32300416c327260204eaec7d909e3e1b8",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "log_sha256": "64e2393d4e1504aa47dbf1c3fa9987b0530f23136a2d1455493e81c2442a0518",
+      "maximum_solute_residual_kg": 3.31931036205279e-17,
+      "maximum_water_residual_kg": 1.45716771982052e-15,
+      "mode": "prescribedPressure",
+      "pass": true,
+      "rank_count": 1,
+      "runtime_s": 0.8100488185882568,
+      "schedule": {
+        "pressure_ramp_time_s": 3.0,
+        "target_inlet_pressure_gauge_Pa": 900000.0
+      },
+      "schedule_sha256": "8da9ffd47cdfce350de19783b0fa6da6b540b4da479c674839302dff8c692923",
+      "start_time_s": 0.0,
+      "trace_sha256": "53347b9c12131b342dacf0efef73688f4ab575769605f84054c24189e84c5b9f"
+    }
+  ],
+  "source_hashes": {
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "c6d7014c128158994b0b6da040a894f98fb7f78684ea0b7eb1efe4bfca2c2a84",
+    "solver/espressoWholePullFoam/forchheimerResistance.H": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719",
+    "solver/espressoWholePullFoam/poroelasticCompaction.H": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6",
+    "solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H": "a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082",
+    "solver/espressoWholePullFoam/prescribedPressureBoundaryModel.H": "2b8f4d622129fdfe4c2606d4445d5ee12ad02a509dcc6341f8aad8e2581cd234"
+  },
+  "status": "COMPLETE",
+  "test_totals": {
+    "counting_note": "Class-level SkipTest contributes one skip event but no testsRun; six CensusTests methods were not run.",
+    "discovered_test_methods": 1424,
+    "errors": 0,
+    "failures": 0,
+    "methods_in_skipped_classes": 6,
+    "passed_test_methods": 1412,
+    "skipped_classes": 1,
+    "skipped_test_methods": 6,
+    "tests_run": 1418,
+    "unittest_reported_skip_events": 7
+  },
+  "work_directory_class": "ignored qualification_runs"
+}

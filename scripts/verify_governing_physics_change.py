@@ -29,6 +29,11 @@ def verify(root: Path, declaration_path: Path | None = None) -> dict:
         root / "validation/wp02/WP02_001_POST_RESULT_GOVERNANCE_AMENDMENT.json"
     )
     declaration = json.loads(declaration_path.read_text())
+    if declaration.get("task_id") == "XSV-PRESSURE-001":
+        from validate_xsv_pressure_001 import inspect
+        report = inspect(root)
+        report["status"] = "PASS" if report["pass"] else "FAIL"
+        return report
     manifest = json.loads((root / "SOURCE_PACKAGE_MANIFEST.json").read_text())
     contract = json.loads(
         (root / "validation/wp02/WP02_001_CLOSURE_CONTRACT.json").read_text()

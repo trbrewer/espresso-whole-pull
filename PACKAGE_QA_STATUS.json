@@ -14,7 +14,10 @@
     "result": "SCI_ED_003_MINIMUM_DECISION_RELEVANT_CLOSURE_CONTRACT_DEFINED_SEPARATE_EXECUTION_AUTHORIZATION_REQUIRED",
     "governance_class": "G0",
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
-    "selected_programme": ["M01", "M02_CONTEXT"],
+    "selected_programme": [
+      "M01",
+      "M02_CONTEXT"
+    ],
     "operation_authorized": false,
     "physical_validation": "NOT_ESTABLISHED",
     "qa_identity": "RESOLVE_FROM_EXACT_HEAD_QA",
@@ -57,7 +60,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1373,
+    "python_test_count": 1418,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -77,8 +80,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1046,
-    "source_manifest_aggregate_sha256": "cdd35a9adaa6849a5fa66de0da563794b7d6db9962a10a66da23f3ee8407af3f",
+    "source_manifest_file_count": 1055,
+    "source_manifest_aggregate_sha256": "7f08e3b42735b1851f5a465d786f62090ed1f91605e6aa893fd20b3fbd143e2c",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -735,7 +738,7 @@
     "planned_scored_cuda_identities": 22,
     "absolute_process_attempt_ceiling": 24,
     "target_type": "APPARENT_HYDRAULIC_CONDUCTANCE_RATIO_TARGET",
-    "primary_target_ratio_T_11_5": 0.37327310642080013,
+    "primary_target_ratio_T_11_5": 0.37327310642080014,
     "current_scientific_gate": "ADDITIONAL_INDEPENDENT_DATA_REQUIRED",
     "physical_validation": "NOT_ESTABLISHED",
     "merge_authority": "NOT_GRANTED",
@@ -897,5 +900,33 @@
     "physical_validation": "NOT_ESTABLISHED"
   },
   "current_scientific_gate": "SCI_MD_012_RESULT_COMPLETE_RETIRE_E2C_CURRENT_PRIORITY",
-  "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
+  "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED.",
+  "xsv_pressure_001": {
+    "status": "QUALIFIED_READY_FOR_EXACT_HEAD_REVIEW",
+    "governance_class": "G2",
+    "production_boundary_behavior_change": true,
+    "governing_physics_change": false,
+    "governing_equation_change": false,
+    "full_discovery": {
+      "discovered_test_methods": 1424,
+      "tests_run": 1418,
+      "passed_test_methods": 1412,
+      "skipped_test_methods": 6,
+      "skipped_classes": 1,
+      "methods_in_skipped_classes": 6,
+      "unittest_reported_skip_events": 7,
+      "failures": 0,
+      "errors": 0,
+      "counting_note": "Class-level SkipTest contributes one skip event but no testsRun; six CensusTests methods were not run."
+    },
+    "focused_tests_run": 45,
+    "focused_tests_passed": 45,
+    "actual_production_runs": 26,
+    "source_manifest_file_count": 1055,
+    "source_manifest_aggregate_sha256": "7f08e3b42735b1851f5a465d786f62090ed1f91605e6aa893fd20b3fbd143e2c",
+    "hosted_checks": "EXTERNAL_GITHUB_EXACT_HEAD_STATUS_REQUIRED",
+    "exact_head_binding": "EXTERNAL_PR_HEAD_AND_INDEPENDENT_REVIEW",
+    "independent_review": "PENDING",
+    "merge": "NOT_PERFORMED"
+  }
 }

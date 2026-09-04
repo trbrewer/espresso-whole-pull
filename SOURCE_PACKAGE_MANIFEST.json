@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1046,
-  "total_uncompressed_bytes_excluding_manifest": 10606794,
-  "aggregate_source_sha256": "cdd35a9adaa6849a5fa66de0da563794b7d6db9962a10a66da23f3ee8407af3f",
-  "aggregate_sha256": "cdd35a9adaa6849a5fa66de0da563794b7d6db9962a10a66da23f3ee8407af3f",
+  "file_count": 1055,
+  "total_uncompressed_bytes_excluding_manifest": 10681821,
+  "aggregate_source_sha256": "7f08e3b42735b1851f5a465d786f62090ed1f91605e6aa893fd20b3fbd143e2c",
+  "aggregate_sha256": "7f08e3b42735b1851f5a465d786f62090ed1f91605e6aa893fd20b3fbd143e2c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -771,6 +771,11 @@
     "docs/PATCH_NOTES_V0_1_4.md": {
       "sha256": "fb680962cf8bcaf569640c0f97c69fca82e75df1ea2111cdfc9db1f756894155",
       "bytes": 3417,
+      "git_mode": "100644"
+    },
+    "docs/PRESCRIBED_PRESSURE_HISTORY.md": {
+      "sha256": "8929d5db2b474497d39f595199fff836e31045d6a38a4c5eb6ff830ef438603a",
+      "bytes": 4107,
       "git_mode": "100644"
     },
     "docs/PROGRAM_STATE_AND_FORWARD_PLAN.md": {
@@ -3799,8 +3804,8 @@
       "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
-      "sha256": "e99443c47594321ccb48b73a20af474c4f453238ffca2096e1971e3cd73390d6",
-      "bytes": 66778,
+      "sha256": "af81ff2af131600b9e1ea7fdce08f2181df51c5a73fb80f0d600d6a8264c4c5f",
+      "bytes": 70181,
       "git_mode": "100755"
     },
     "scripts/r1_contract_bridge.py": {
@@ -3931,6 +3936,11 @@
     "scripts/run_wp03_001_production_fixture.sh": {
       "sha256": "9893a273308bba8cbc4da34246c01ea0dbd99a912c901496110a212f1a5fa467",
       "bytes": 274,
+      "git_mode": "100755"
+    },
+    "scripts/run_xsv_pressure_001_qualification.py": {
+      "sha256": "55bb78ca3aad1b5f0fb2b1ad218867c01e4f3b19be0232ca01024eb741ed3036",
+      "bytes": 27323,
       "git_mode": "100755"
     },
     "scripts/sci_ed_001.py": {
@@ -4138,6 +4148,11 @@
       "bytes": 1475,
       "git_mode": "100755"
     },
+    "scripts/validate_xsv_pressure_001.py": {
+      "sha256": "527e4013d35eedf681a3f35b0d94df04759dd5d8b6c37bc6535d9337145dd5fe",
+      "bytes": 14031,
+      "git_mode": "100755"
+    },
     "scripts/validate_xsv_waszkiewicz_dynamic_hyd_001.py": {
       "sha256": "51eb4cd55454a8f416fb5233c6d41ff2637d20a1176e0ed289a2f8bb52b6f99f",
       "bytes": 3657,
@@ -4149,8 +4164,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_change_contract.py": {
-      "sha256": "e465f391f0eab40fbcf3106065ebd5af9cf04977325531bc7f08b7392f2ddb22",
-      "bytes": 1933,
+      "sha256": "4489494ea4cdee0cd933c2c2d41649dc686ce21d5e79c457a5f722cd90055340",
+      "bytes": 2287,
       "git_mode": "100755"
     },
     "scripts/verify_freeze_manifest.py": {
@@ -4159,8 +4174,8 @@
       "git_mode": "100755"
     },
     "scripts/verify_governing_physics_change.py": {
-      "sha256": "ff9ef42cdb58cf005825550cb35feb8863aaf9483e5e9aa1d78c917b9b8b7fcc",
-      "bytes": 7632,
+      "sha256": "00f35f0b3d060d503fc42e94b5acfd70bca11902d0d066bf853175cb20d9ef34",
+      "bytes": 7860,
       "git_mode": "100755"
     },
     "scripts/verify_no_physics_change.py": {
@@ -4303,6 +4318,11 @@
       "bytes": 354,
       "git_mode": "100755"
     },
+    "scripts/xsv_pressure_001_reference.py": {
+      "sha256": "02c0efa80292a5150f9f2d05ec41f3ec4ee928036e28abd03e3305ff3cddb413",
+      "bytes": 3571,
+      "git_mode": "100755"
+    },
     "scripts/xsv_taichi_001.py": {
       "sha256": "b5e12f40cdfc6245b8c1192abf66b4db4d269629ee2f81eb3800c0f012cdf7b0",
       "bytes": 486,
@@ -4329,8 +4349,8 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6",
-      "bytes": 178411,
+      "sha256": "c6d7014c128158994b0b6da040a894f98fb7f78684ea0b7eb1efe4bfca2c2a84",
+      "bytes": 180416,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/forchheimerResistance.H": {
@@ -4351,6 +4371,11 @@
     "solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H": {
       "sha256": "a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082",
       "bytes": 4589,
+      "git_mode": "100644"
+    },
+    "solver/espressoWholePullFoam/prescribedPressureBoundaryModel.H": {
+      "sha256": "2b8f4d622129fdfe4c2606d4445d5ee12ad02a509dcc6341f8aad8e2581cd234",
+      "bytes": 9475,
       "git_mode": "100644"
     },
     "tests/fixtures/sci_md_011_closure_oracle/Make/files": {
@@ -4419,8 +4444,8 @@
       "git_mode": "100644"
     },
     "tests/test_available_data_first.py": {
-      "sha256": "e58cee9bace65e2f2b6c02015aaed57ee5cd206deceefe0e3aaae07a11d89efe",
-      "bytes": 1706,
+      "sha256": "40932207a75a7609639c6bb4103a9d35e86fd2a3f3778f298210fb3d1c919f89",
+      "bytes": 1792,
       "git_mode": "100644"
     },
     "tests/test_branch_no_physics_change.py": {
@@ -4619,8 +4644,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_011.py": {
-      "sha256": "4679b9575593dc55cb0d990318d4b4f62162b6f15411396b47b2af5923a8bc4d",
-      "bytes": 21509,
+      "sha256": "7a452d22b06b5badbf1a38c498642299cb042d415f803fa8104412eeac4ebaf7",
+      "bytes": 22433,
       "git_mode": "100644"
     },
     "tests/test_sci_md_012.py": {
@@ -4779,13 +4804,18 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_ewp_input_mapping_001.py": {
-      "sha256": "3b7a4adf81796a598eae8f61bf1ef6487efe98e4f6c80fab89887297078d135f",
-      "bytes": 7040,
+      "sha256": "ef15032db72362e02de994fd9f3b0c0bbc1b111ad9c2c3f375dd1481fcdff321",
+      "bytes": 7246,
       "git_mode": "100644"
     },
     "tests/test_xsv_pannusch_multimodel_001.py": {
-      "sha256": "9de182c1c928ebadbfc7bf03bc323ea4b729af2cbd81cfae7a61ae11083d5dfe",
-      "bytes": 5060,
+      "sha256": "58e2bd127b67c9f0eb2de8ad710779588e48d5ef83787a6a384ad69df6a5dd98",
+      "bytes": 5103,
+      "git_mode": "100644"
+    },
+    "tests/test_xsv_pressure_001.py": {
+      "sha256": "e1b8a03a0a3c2b902e72417fde6940eabebb8aa023cb888a5ed5e78a29f21c98",
+      "bytes": 7999,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {
@@ -5262,6 +5292,21 @@
       "sha256": "8c8d6cb12eeea3a571af062a37f1ae4abaa5777e8a8e06723d46208348057701",
       "bytes": 24807,
       "git_mode": "100755"
+    },
+    "verification/xsv_pressure_001/pressureHistoryProbe/Make/files": {
+      "sha256": "276767c522ca47daea414cac39779024c0663f4d3c17fa6dfbee9cbdd40306b7",
+      "bytes": 73,
+      "git_mode": "100644"
+    },
+    "verification/xsv_pressure_001/pressureHistoryProbe/Make/options": {
+      "sha256": "f9b96c6c772cfc029508cae6b97b22cac5db743df6f61e4e71873a50df6c1ef6",
+      "bytes": 72,
+      "git_mode": "100644"
+    },
+    "verification/xsv_pressure_001/pressureHistoryProbe/pressureHistoryProbe.C": {
+      "sha256": "efb37cef1cf3bf2d36ab9a53f8dd3bf28f126f4a446c48d9a66fb2cf92443c47",
+      "bytes": 1127,
+      "git_mode": "100644"
     }
   }
 }

@@ -1,0 +1,33 @@
+{
+  "PLAY_003": "PAUSED",
+  "disposition": "XSV_PRESSURE_001_NATIVE_PIECEWISE_LINEAR_PRESCRIBED_PRESSURE_HISTORY_QUALIFIED_READY_FOR_EXACT_HEAD_REVIEW",
+  "gates": {
+    "bounded_state_pass": true,
+    "compaction_maximum_pressure_pass": true,
+    "conservation_pass": true,
+    "contract_frozen": true,
+    "helper_reference_vectors_pass": true,
+    "invalid_contract_matrix_pass": true,
+    "legacy_constant_equivalence_pass": true,
+    "legacy_prescribed_pressure_regression_pass": true,
+    "legacy_ramp_equivalence_pass": true,
+    "lumped_machine_regression_pass": true,
+    "no_governing_equation_change": true,
+    "no_puckworks_change": true,
+    "no_visualizer_specific_production_code": true,
+    "prescribed_flow_regression_pass": true,
+    "production_case_completion_pass": true,
+    "schedule_validation_pass": true,
+    "serial_mpi_equivalence_pass": true,
+    "source_usage_inventory_complete": true,
+    "synthetic_profile_pass": true,
+    "timestep_refinement_pass": true
+  },
+  "governing_equation_change": false,
+  "governing_physics_change": false,
+  "independent_exact_head_review": "PENDING",
+  "owner_merge": "NOT_PERFORMED",
+  "production_boundary_behavior_change": true,
+  "task_id": "XSV-PRESSURE-001",
+  "validation_errors": []
+}

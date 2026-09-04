@@ -1,0 +1,9 @@
+{
+  "sha256": {
+    "MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.json": "e1c3719da9e3a18ec32dec2c18f7d4167a3d03884b23250e08b4cfe4394cc070",
+    "MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.md": "6330a7369928008063ab76c166e6f50d31f77109b60565cf05701cb385a6ff2a"
+  },
+  "revision": 3,
+  "frozen_before_requalified_production_runs": true,
+  "reason_record": "QUALIFICATION_CORRECTIONS.json"
+}

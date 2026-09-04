@@ -1,0 +1,119 @@
+{
+  "affected_tests": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 95,
+    "run": 95,
+    "skipped": 0
+  },
+  "base_commit": "d4a93971cd7a80c8670b83017e4283e9d34dabf0",
+  "base_tree": "95607f7b0b2e897ead16b2847934f8d047d05a13",
+  "baseline_full_discovery": {
+    "classification": "EXTERNAL_SOURCE_ENVIRONMENT_NOT_CONFIGURED",
+    "corrected_authority_suites": {
+      "errors": 0,
+      "failures": 0,
+      "log_sha256": "8172f9b791a7bde11af9dd36bd4143ea113c2714ab7b930f89e1b20a6c45d5ba",
+      "passed": 27,
+      "read_only_authority_commit": "a3428a4d4ad571ef3168a70e8a04620fca5d3520",
+      "read_only_authority_tree": "6175b4ad39f45ebcdec32a176e5611bf3b03655b",
+      "run": 27,
+      "skipped": 0
+    },
+    "errors": 1,
+    "failures": 1,
+    "note": "Pristine archived starting source; missing explicit Puckworks authority environment for two suites. Affected suites rerun with verified read-only existing checkout; initial overlapping discovery excluded from pristine baseline.",
+    "run": 1353,
+    "skipped": 7
+  },
+  "baseline_initial_overlapping_discovery": "NOT_VALID_AS_PRISTINE_BASELINE_RETAINED_LOCALLY",
+  "build_status": "PASS",
+  "commands": [
+    "git fetch origin --prune",
+    "git merge-base --is-ancestor d4a93971cd7a80c8670b83017e4283e9d34dabf0 origin/main",
+    "python3 scripts/verify_source_manifest.py --root .",
+    "python3 scripts/static_validate.py --root .",
+    "wmake solver/espressoWholePullFoam",
+    "python3 -m unittest tests.test_reference_case tests.test_wp02_002_machine_coupling tests.test_wp03_001_poroelastic_compaction tests.test_xsv_flow_001",
+    "Matrix.compact(end=30,dt=.02,axial=32,radial=16); Matrix.run(legacy_fixture)",
+    "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p test_*.py"
+  ],
+  "executable_sha256": "72f6be253aa6c544ef074c71819a433e81fde5abed028764884e4037a3daff30",
+  "fixture": {
+    "case_id": "legacy_fixture",
+    "completion_status": "PASS",
+    "end_time_s": 29.9999999999994,
+    "endpoint_cup_mass_kg": 0.0409285897351434,
+    "final_wet_front_m": 0.00901166089643255,
+    "first_drip_s": 4.71169618523188,
+    "log_sha256": "af2e297e9eaacab530865c74ea340ab5623634081d91dcc44a86899af59d2118",
+    "maximum_solute_residual_kg": 3.31931036205279e-17,
+    "maximum_water_residual_kg": 1.45716771982052e-15,
+    "mode": "prescribedPressure",
+    "rank_count": 1,
+    "start_time_s": 0
+  },
+  "fixture_configuration_sha256": "1fb2b3c610ca5939ed607290f99332860157e2751708e791ee611b6ffac6c220",
+  "fixture_inputs_sha256": {
+    "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+    "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+    "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+    "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+    "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+    "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+    "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+    "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+    "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+    "constant/espressoModelProperties": "9f46c2fc231cd13f20bb315957e03be73bfaeddeef7a91d7a58a0070d866f0cb",
+    "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+    "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+    "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+    "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+    "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+    "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+    "system/controlDict": "c4417b912d9f5061aeb6d1408555d9d32300416c327260204eaec7d909e3e1b8",
+    "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+    "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+    "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+  },
+  "initial_source_check_false_positive": "Task evidence directory was initially outside the manifest runtime exclusions; moved to qualification_runs, clean source check passed.",
+  "logs_sha256": {
+    "affected-tests.log": "e99513eee2ab85b0fba121a765d09c5a75e0de261a01c8d0ec11aec700a3a08a",
+    "build.log": "71aebc756c81c199ab6503e0b7e190f9d8013fc25ff65225646b69844b644667",
+    "fixture-command.log": "b5145b8740f6f6c1e639bea8e26874195e150d7f603d2fef5d923daa3de4373f",
+    "full-tests.log": "06bef6e1b4eb0c1956cfd4ebc06836f63aa815e2e8c29281d0e5185665899410",
+    "pristine-corrected-authority-tests.log": "8172f9b791a7bde11af9dd36bd4143ea113c2714ab7b930f89e1b20a6c45d5ba",
+    "pristine-full-tests.log": "8d09e4ca501e12845cf006814a5c85ab56b9db392077941a797043d269a99902",
+    "source-check-clean.log": "9d06133c39cbed7475905272491f8c8f5bb7f3e0fd555204420014e66e47a218",
+    "source-check.log": "e92c64e8e77606b5abf2667137c3dd98de27f5c706c9327a37170c65fab0c276",
+    "static-check.log": "565a8cb3dfc2e31b93a28f7b1342415c4ed9b2e2927c6be7b6d32d226cbb3aa5"
+  },
+  "openfoam_version": "12",
+  "production_source_sha256": {
+    "solver/espressoWholePullFoam/Make/files": "70aa84e2e2cbd37a9c25217fee498c234816cf41fb57b5f24c41a0e8495f7d83",
+    "solver/espressoWholePullFoam/Make/options": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6",
+    "solver/espressoWholePullFoam/forchheimerResistance.H": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719",
+    "solver/espressoWholePullFoam/poroelasticCompaction.H": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6",
+    "solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H": "a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082"
+  },
+  "required_ancestor_verified": true,
+  "source_aggregate_sha256": "cdd35a9adaa6849a5fa66de0da563794b7d6db9962a10a66da23f3ee8407af3f",
+  "source_file_count": 1046,
+  "source_status": "PASS",
+  "starting_primary_worktree": {
+    "branch": "research/sci-md-011-high-pressure-poroelastic-closure",
+    "commit": "78cbd59c751393cddfe539e4c69e43a224329bca",
+    "tracked_changes": [],
+    "untracked_files": []
+  },
+  "static_status": "PASS",
+  "task_id": "XSV-PRESSURE-001",
+  "task_worktree_initial_state": {
+    "branch": "feature/xsv-pressure-001-native-pressure-history",
+    "commit": "d4a93971cd7a80c8670b83017e4283e9d34dabf0",
+    "tracked_changes": [],
+    "untracked_files": []
+  }
+}

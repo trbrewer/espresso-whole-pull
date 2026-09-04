@@ -1,0 +1,32 @@
+{
+  "task_id": "XSV-PRESSURE-001",
+  "change_class": "G2",
+  "governing_physics_change": false,
+  "governing_equation_change": false,
+  "production_behavior_change": true,
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "affected_behavior": "prescribed inlet-pressure schedule evaluation and the associated wetting-pressure integration/crossing semantics",
+  "permitted_production_paths": [
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C",
+    "solver/espressoWholePullFoam/prescribedPressureBoundaryModel.H",
+    "scripts/prepare_case.py"
+  ],
+  "prohibited_changes": [
+    "every governing equation",
+    "constitutive law",
+    "extraction model",
+    "machine coupling equation",
+    "prescribed-flow meaning",
+    "geometry",
+    "chemistry",
+    "calibration parameter",
+    "scientific threshold"
+  ],
+  "normative_contract": "MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.md",
+  "bisection_iterations": 96,
+  "base_commit": "d4a93971cd7a80c8670b83017e4283e9d34dabf0",
+  "base_tree": "95607f7b0b2e897ead16b2847934f8d047d05a13",
+  "issue": 145,
+  "required_invalid_contract_count": 20,
+  "crossing_full_segment_endpoint": "analytic earliest positive-support endpoint; bisection for strictly interior positive-area requests"
+}

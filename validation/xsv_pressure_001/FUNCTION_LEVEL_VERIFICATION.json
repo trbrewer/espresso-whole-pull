@@ -1,0 +1,960 @@
+{
+  "count": 17,
+  "maximum_errors": {
+    "crossing": 8.881784197001252e-16,
+    "integral": 0.0,
+    "integral_relative": 0.0,
+    "maximum": 0.0,
+    "target": 0.0
+  },
+  "pass": true,
+  "probe_sha256": "c5089b8d21df5402f395173c2d4e6099e3eb4b5e190a7e68d7611234a84d997d",
+  "source_hashes": {
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "c6d7014c128158994b0b6da040a894f98fb7f78684ea0b7eb1efe4bfca2c2a84",
+    "solver/espressoWholePullFoam/forchheimerResistance.H": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719",
+    "solver/espressoWholePullFoam/poroelasticCompaction.H": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6",
+    "solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H": "a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082",
+    "solver/espressoWholePullFoam/prescribedPressureBoundaryModel.H": "2b8f4d622129fdfe4c2606d4445d5ee12ad02a509dcc6341f8aad8e2581cd234"
+  },
+  "vectors": [
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "9000000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "3.7000000000000002"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "82df8dc1909e46214a31f39a5295b11c092abde536c14f8dc09d6c7d1ab9bd99",
+      "id": "constant",
+      "output_sha256": "9eae21d639bf2d861ce84c688070e557ff82581c608473c9537d3e23617611ec",
+      "pass": true,
+      "repeat_sha256": "9eae21d639bf2d861ce84c688070e557ff82581c608473c9537d3e23617611ec"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "d88525a65e88bf5766264b19509628c5375be30a9b21a5b07db5c96b708172b6",
+      "id": "zero",
+      "output_sha256": "589e0d2574a4ff8833f6d88776db676fcbddf1b8fbaee5f31c313f1f65079aa2",
+      "pass": true,
+      "repeat_sha256": "589e0d2574a4ff8833f6d88776db676fcbddf1b8fbaee5f31c313f1f65079aa2"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "4500000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "6.0827625302982202"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "ac8fb78db37dce25aa92bef34adcdd74e94a9667f86d52367f19f426e1461809",
+      "id": "rising",
+      "output_sha256": "d198499f0ac9bb643be8c293ad6c2e26fba734c81998b8591c7ae5a0a0a3a023",
+      "pass": true,
+      "repeat_sha256": "d198499f0ac9bb643be8c293ad6c2e26fba734c81998b8591c7ae5a0a0a3a023"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "4500000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "2.0627460668062279"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "c0c77f54708bc8ea881105ebc30290a4df6d449a3018d0b351edece442ad1f3a",
+      "id": "falling",
+      "output_sha256": "6ad8dd9074b999df04710edcdeab79d412f1a505225e76db727853e40e3410e0",
+      "pass": true,
+      "repeat_sha256": "6ad8dd9074b999df04710edcdeab79d412f1a505225e76db727853e40e3410e0"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "2000000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "7.3885083535321474"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "1cbf8658c268b4c919ed712771934ea8ba740b252a14aa910e150714e93b5f3d",
+      "id": "rising_threshold",
+      "output_sha256": "9cc21e787e0c65fb350b21890ed94e60356e853856b56c817b0904a84952a012",
+      "pass": true,
+      "repeat_sha256": "9cc21e787e0c65fb350b21890ed94e60356e853856b56c817b0904a84952a012"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "2000000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "1.3751640445374851"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        },
+        {
+          "index": "2",
+          "kind": "crossing",
+          "value": "6.6666666666666661"
+        }
+      ],
+      "dictionary_sha256": "07076be0b5c3dd958550b05014854cc48ccc1baa9b6a67c0460c48ea0abeab6a",
+      "id": "falling_threshold",
+      "output_sha256": "e84f0e99bde084e3d533840037e733b2a0f17ce0fa847716c8cfc4b632597143",
+      "pass": true,
+      "repeat_sha256": "e84f0e99bde084e3d533840037e733b2a0f17ce0fa847716c8cfc4b632597143"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "400000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "400000"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "400000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "400000"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "1000000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "3.6999999999999993"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "123f0a211f49ad0fe8795f2e8db044e770e79b64743e8fcf1ffda43015673f38",
+      "id": "hold_above",
+      "output_sha256": "05f7793cd6616d95323f36d46dbab7af08a9d5548bc9d008137f7f424ce90268",
+      "pass": true,
+      "repeat_sha256": "05f7793cd6616d95323f36d46dbab7af08a9d5548bc9d008137f7f424ce90268"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "200000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "200000"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "200000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "200000"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "9f7fef45e8377c5cf2e606ac80986cd20c0d742b707e5ffd6f09749d1b1e2173",
+      "id": "hold_below",
+      "output_sha256": "e9816a94662edcb6f6236192dfe3c87917101b394ed4acd1b7494a2f3a22fb4c",
+      "pass": true,
+      "repeat_sha256": "e9816a94662edcb6f6236192dfe3c87917101b394ed4acd1b7494a2f3a22fb4c"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "150000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "300000"
+        },
+        {
+          "index": "3",
+          "kind": "target",
+          "value": "600000"
+        },
+        {
+          "index": "4",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "5",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "6",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "7",
+          "kind": "target",
+          "value": "750000"
+        },
+        {
+          "index": "8",
+          "kind": "target",
+          "value": "600000"
+        },
+        {
+          "index": "9",
+          "kind": "target",
+          "value": "300000"
+        },
+        {
+          "index": "10",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "11",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "12",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "13566666.666666666"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "13566666.666666666"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "12.242380952380952"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "22bd86ff6ae9507bc86873e073c1b693b77c45288f5f671ef7da08991f07824f",
+      "id": "multiple_knots",
+      "output_sha256": "30ffb217cef332b50a1424ad3771a0e1e097f283cd49b5dfa755f3860649548e",
+      "pass": true,
+      "repeat_sha256": "30ffb217cef332b50a1424ad3771a0e1e097f283cd49b5dfa755f3860649548e"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "300000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "100000"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "200000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "300000"
+        },
+        {
+          "index": "3",
+          "kind": "target",
+          "value": "200000"
+        },
+        {
+          "index": "4",
+          "kind": "target",
+          "value": "100000"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "800000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "500000"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "2"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "0aea26b4aa4790cee814cb8797d365f5af34a1569bf27b9caa36dda8a79df342",
+      "id": "knot_crossing",
+      "output_sha256": "cc5c9e72a7698e864883c3cf645e0d4349eccaf1460c4047b65738cbeffdf5db",
+      "pass": true,
+      "repeat_sha256": "cc5c9e72a7698e864883c3cf645e0d4349eccaf1460c4047b65738cbeffdf5db"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "3555555.5555555555"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "6.518011138042862"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "0c088625c81007d35787c19c10d25906203b332fc31c2f624c48f51011f34675",
+      "id": "rising_crossing",
+      "output_sha256": "f3366b1739ed25baa7417e2c8189bcbe9686d533718b411b9267f00f3d6a3395",
+      "pass": true,
+      "repeat_sha256": "f3366b1739ed25baa7417e2c8189bcbe9686d533718b411b9267f00f3d6a3395"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "3555555.5555555555"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "1.8335520593833134"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "f06903a28e01659a9578e3ea52afe5a9cb96a698d78e2cd78cdf7ee7d0c83a24",
+      "id": "falling_crossing",
+      "output_sha256": "fbd8175f0a11ca0adcbdb4bde222bbbdf1fb3c54f213daa60d40e119f2881290",
+      "pass": true,
+      "repeat_sha256": "fbd8175f0a11ca0adcbdb4bde222bbbdf1fb3c54f213daa60d40e119f2881290"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "8000000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "3.6999999999999993"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "70c5ee0f3dfdca46c4f7be5914ebb39932f3b78695bcce9f68cdc8090a266e25",
+      "id": "constant_crossing",
+      "output_sha256": "35f91b129607479ecbf42eeef365c7fa55c22115a1b608758005ded027dea683",
+      "pass": true,
+      "repeat_sha256": "35f91b129607479ecbf42eeef365c7fa55c22115a1b608758005ded027dea683"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "100000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "50000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "100000"
+        },
+        {
+          "index": "3",
+          "kind": "target",
+          "value": "50000"
+        },
+        {
+          "index": "4",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "400297a6198966bd60dbaadab8a6ba38941287f1770fd653181902634ce3b5d1",
+      "id": "no_positive",
+      "output_sha256": "1a48a0f68dd0264630a64262b2fc085361c1e4ac89af6afc590653d9ecb6c4ff",
+      "pass": true,
+      "repeat_sha256": "1a48a0f68dd0264630a64262b2fc085361c1e4ac89af6afc590653d9ecb6c4ff"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "4500000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "dce31a8e2c503b9d7fe89c32ea9814125d24bf1f1d957a0574221fe2df6c29cf",
+      "id": "zero_required",
+      "output_sha256": "75dc8022dd40707e2d824f613135993ce652816cd4851db6bf8d8e9f44aa7766",
+      "pass": true,
+      "repeat_sha256": "75dc8022dd40707e2d824f613135993ce652816cd4851db6bf8d8e9f44aa7766"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "3",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "4",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "4500000"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "3375000"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "2.9007042602804605"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "fa7f458e3fa1336f21755e8da182589361894c00dd9b57682cdfcc2bf3c1541e",
+      "id": "interior_maximum",
+      "output_sha256": "fac7624f8baa8607a3c036953847f6c75ae20301988c463a4c26c9e9ccbf112c",
+      "pass": true,
+      "repeat_sha256": "fac7624f8baa8607a3c036953847f6c75ae20301988c463a4c26c9e9ccbf112c"
+    },
+    {
+      "actual": [
+        {
+          "index": "0",
+          "kind": "maximum",
+          "value": "900000"
+        },
+        {
+          "index": "0",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "1",
+          "kind": "target",
+          "value": "450000"
+        },
+        {
+          "index": "2",
+          "kind": "target",
+          "value": "900000"
+        },
+        {
+          "index": "3",
+          "kind": "target",
+          "value": "650000"
+        },
+        {
+          "index": "4",
+          "kind": "target",
+          "value": "400000"
+        },
+        {
+          "index": "5",
+          "kind": "target",
+          "value": "200000"
+        },
+        {
+          "index": "6",
+          "kind": "target",
+          "value": "0"
+        },
+        {
+          "index": "0",
+          "kind": "integral",
+          "value": "3361111.111111111"
+        },
+        {
+          "index": "1",
+          "kind": "integral",
+          "value": "3175000"
+        },
+        {
+          "index": "0",
+          "kind": "crossing",
+          "value": "2.704387653640743"
+        },
+        {
+          "index": "1",
+          "kind": "crossing",
+          "value": "0"
+        }
+      ],
+      "dictionary_sha256": "635be9fb37705895b213d726fa00f520de2f518c7db3854f986bed9084b78e61",
+      "id": "decline_to_zero",
+      "output_sha256": "05701116a9751dade21fa5243113f8654da52cb67274f4f9765a257e57ea384f",
+      "pass": true,
+      "repeat_sha256": "05701116a9751dade21fa5243113f8654da52cb67274f4f9765a257e57ea384f"
+    }
+  ]
+}

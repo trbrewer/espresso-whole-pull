@@ -1,4 +1,4 @@
-import csv,hashlib,json,unittest
+import csv,hashlib,json,unittest,subprocess
 from pathlib import Path
 from analysis.xsv_pannusch_ewp_input_mapping_001.artifacts import generate,reduce_disposition
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/"docs/analysis/xsv_pannusch_ewp_input_mapping_001"
@@ -43,5 +43,6 @@ class MappingC1(unittest.TestCase):
   a=load("REPOSITORY_AUTHORITY.json");self.assertEqual(a["correction_starting_commit"],"3e988084455b6dde85321b9447730a3747352ef0");self.assertEqual(a["puckworks_authority_commit"],"2058d0e947ee9eb92c52d64f6165b810f1fb4732");self.assertNotIn("/home/","\n".join(p.read_text(errors="ignore") for p in OUT.iterdir()))
  def test_invariance(self):
   e={"solver/espressoWholePullFoam/espressoWholePullFoam.C":"99c8fe756a57410eff65e302784247346d2d2b0d61d6f9db401033b73996b6e6","solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H":"a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082","config/reference_R0.json":"67a3d9e226f5e66a598a9594c6aedf0809eefe8e80745ae142d2812784b7a286","dependencies/puckworks.lock.json":"52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10","scripts/prepare_case.py":"e99443c47594321ccb48b73a20af474c4f453238ffca2096e1971e3cd73390d6"}
-  for p,h in e.items():self.assertEqual(sha(p),h)
+  # Preserve this historical no-production-change claim at its accepted merge.
+  for p,h in e.items():self.assertEqual(hashlib.sha256(subprocess.check_output(['git','show','2bf996596bb7408c2b5e2fc1eb0f7a65e5f5bae2:'+p],cwd=ROOT)).hexdigest(),h)
 if __name__=="__main__":unittest.main()
