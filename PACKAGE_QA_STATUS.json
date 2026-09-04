@@ -57,7 +57,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1366,
+    "python_test_count": 1373,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
