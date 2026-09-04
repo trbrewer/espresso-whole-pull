@@ -2,7 +2,7 @@
 
 ## Current claim ceiling (2026-09-03)
 
-SCI-MD-011 is `PHASE_B_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW` with exact
+SCI-MD-011 is `MERGED_COMPLETE` with exact
 disposition
 `SCI_MD_011_POROELASTIC_CLOSURE_TEST_BLOCKED_BY_IDENTIFIABILITY_EXECUTION_DOMAIN_OR_EQUIVALENCE_GAP`
 and architecture `NOT_ADJUDICATED`. This is retrospective, source-conditioned
@@ -11,7 +11,9 @@ E2C is `BLOCKED`, universal P1 is `WRONG_PRESSURE_RESPONSE`, current full EWP
 is `NOT_VALIDATED`, and independent physical validation is `NOT_ESTABLISHED`.
 No fitted effective parameter is a constituent physical measurement or a
 production value. M01 remains `NOT_ADJUDICATED`; Stage F/D and laboratory
-execution remain unauthorized; no automatic successor is selected.
+execution remain unauthorized. SCI-MD-012 is complete under
+`RETROSPECTIVE_TARGET_EXPOSED_NONSCORING_EXISTING_DATA_ROOT_BLOCKER_DIAGNOSIS_ONLY`;
+its next action is `RETIRE_E2C_FROM_CURRENT_DEVELOPMENT_PRIORITY_NO_REPARAMETERIZATION_TEST`.
 
 The SCI-MD-010 claim ceiling is
 `RETROSPECTIVE_SOURCE_CONDITIONED_CONDITIONAL_HYDRAULIC_COMPONENT_UTILITY_ONLY`.

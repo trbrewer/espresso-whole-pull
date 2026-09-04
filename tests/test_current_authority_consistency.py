@@ -152,7 +152,7 @@ def current_authorities_pass(texts: dict[str, str], qa: dict) -> bool:
         ("active_data_planning_task", "NONE"),
         ("active_solver_task", "NONE"),
         ("active_surrogate_task", "NONE"),
-        ("current_scientific_gate", "OWNER_DECISION_PENDING"),
+        ("current_scientific_gate", "SCI_MD_012_RESULT_COMPLETE_RETIRE_E2C_CURRENT_PRIORITY"),
         ("experimental_commissioning", "NOT_AUTHORIZED"),
         ("protected_or_holdout_scoring", "NOT_AUTHORIZED"),
         ("general_whole_solver_physical_validation", "NOT_ESTABLISHED"),

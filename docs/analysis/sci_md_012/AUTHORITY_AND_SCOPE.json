@@ -1,0 +1,69 @@
+{
+  "allowed_operations": [
+    "bounded deterministic diagnosis",
+    "documentation",
+    "tests",
+    "current-state normalization"
+  ],
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claim_ceiling": "RETROSPECTIVE_TARGET_EXPOSED_NONSCORING_EXISTING_DATA_ROOT_BLOCKER_DIAGNOSIS_ONLY",
+  "data_availability_preflight": {
+    "decision": "E2C_13_BAR_ROOT_BLOCKER_DIAGNOSIS",
+    "existing_evidence_checked": [
+      "SCI-MD-011 frozen results and profiles",
+      "exact Puckworks source authority",
+      "six exposed held-out observations"
+    ],
+    "external_corpus_needed": false,
+    "measurement_needed": false,
+    "status": "PASS_EXISTING_EVIDENCE_SUFFICIENT",
+    "unavailable_observable": null
+  },
+  "ewp_base": {
+    "commit": "6451cfe04ff10bd9c4ec706ccafc895619cf9851",
+    "tree": "b23347e33c67576b786922762eae168bf06b28fa"
+  },
+  "governance_class": "G0",
+  "immutable_input_sha256": {
+    "docs/analysis/sci_md_011/BREW_RESULTS.csv": "7373b0e8f6174c327f9395dfb253b4fee943c40cbcffc11ffc1b9462951827dc",
+    "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.json": "ad1a42783e90b0a74b2a69276340a5c0627c06125a758fcc341c3c78cdf75d1f",
+    "docs/analysis/sci_md_011/EXECUTION_STATE.json": "e488ccf7834a4315ce336595dc3e9ed3129911916ceb54e4a53b838ed959e027",
+    "docs/analysis/sci_md_011/EXPERIMENT_CONSEQUENCE.json": "598243222b45186273931e5bb9e0e3c2af15e40fd38c55c12c2dad1adbd54794",
+    "docs/analysis/sci_md_011/FOLD_RESULTS.csv": "9b3d5236676512fb765f46aecf61fb6c00d110eb764eb10802b78e383d3245a1",
+    "docs/analysis/sci_md_011/FREEZE_ARTIFACT_MANIFEST.json": "2e4547e1aa5bf3e51675912a9b73178e1f303dbbcbea55507edd99c5d12a2719",
+    "docs/analysis/sci_md_011/IDENTIFIABILITY_RESULTS.json": "b06df1c7c0e7ecee6f2e9ec066cf8146ea467b29c73a72813d0ca9e6e7113355",
+    "docs/analysis/sci_md_011/MODEL_SPECIFICATIONS.json": "fca9f358dc884516d06a7c4d43211935a3f84332af07965bc1f718fcb9e7c3ca",
+    "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json": "592f66b7a106e1817e5116dbab73cf69bb366581f3b3b5130d66f7def96c7cfb",
+    "docs/analysis/sci_md_011/PARAMETER_STABILITY.csv": "3a880c90cd36851c23e42cdbc6e4aa0b00695b72dc8d1d539dbc8b5e0a8e87c8",
+    "docs/analysis/sci_md_011/PRESSURE_RESPONSE_DIAGNOSTICS.json": "35b6259ea2db82dc6b647db95880d67f0b1f602e8e974b87d981692a5bf4e140",
+    "docs/analysis/sci_md_011/RESULT.md": "c61aa8706da104ba00560f444e3a95abec51b9c397c6c90de6a0ea17fd5f27db",
+    "docs/analysis/sci_md_011/RESULT_ARTIFACT_MANIFEST.json": "40bd2baee79750673499c3509359197c40a80c9c6ff50016931ec7e6d57f3a0d",
+    "scripts/sci_md_011_core.py": "3e3651cf19b01850cc94ce5e648c5b65b58f7c0fdb6d5bb972032e9d78ad70a5"
+  },
+  "owner_authorization": "SCI-MD-012-OWNER-AUTHORIZE-BOUNDED-NONSCORING-EXISTING-DATA-E2C-13BAR-COUPLED-ROOT-DIAGNOSIS-NO-REFIT-NO-NEW-SCORE-NO-PHYSICS-CHANGE-NO-MEASUREMENT-2026-09-03",
+  "prohibited_operations": [
+    "refit",
+    "altered bounds",
+    "changed equation or closure",
+    "clamping or extrapolation",
+    "replacement prediction",
+    "scoring or ranking",
+    "bootstrap or confidence intervals",
+    "protected-data rerun",
+    "production solver change",
+    "OpenFOAM",
+    "laboratory work",
+    "Puckworks mutation",
+    "architecture adjudication",
+    "automatic reparameterization authorization"
+  ],
+  "puckworks": {
+    "commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "tree": "a6ffb312473b15be43c1571a893b19873ea47c5a"
+  },
+  "sci_md_011": {
+    "merge_commit": "6451cfe04ff10bd9c4ec706ccafc895619cf9851",
+    "reviewed_result_head": "78cbd59c751393cddfe539e4c69e43a224329bca"
+  },
+  "task_id": "SCI-MD-012"
+}

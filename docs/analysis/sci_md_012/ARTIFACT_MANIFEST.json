@@ -1,0 +1,29 @@
+{
+  "artifacts": [
+    {
+      "path": "AUTHORITY_AND_SCOPE.json",
+      "sha256": "e28da02b6c04545d27cf6fe9d52bb29d97b7f0a29a3522b3b7f43bc5a6b207ab"
+    },
+    {
+      "path": "DIAGNOSIS.json",
+      "sha256": "a07029d6cdc7c97540c2909549250ea0bf60ca06a5c28556c0762f20c7f4b9ad"
+    },
+    {
+      "path": "PARAMETER_FEASIBILITY.json",
+      "sha256": "d2c156f0fa3b83279964abcf071c27cc2d8255ba8ecd4e3189070d864f0e709f"
+    },
+    {
+      "path": "RESULT.md",
+      "sha256": "bd751c0fdc37da6195d90b1bcaf3b8c61d589cb202db7b99b607049627fb0683"
+    },
+    {
+      "path": "ROOT_FEASIBILITY.csv",
+      "sha256": "a3c8d2359a40e2e08c47978060c5283db7c1127a622ebdf779686bc58052d6b7"
+    },
+    {
+      "path": "SOURCE_PARAMETERIZATION_COMPARISON.json",
+      "sha256": "b6a3f874c8a9b752e8ea81b4d3bfb5c661bda2f049c781bf7ee59b517e41f843"
+    }
+  ],
+  "task_id": "SCI-MD-012"
+}

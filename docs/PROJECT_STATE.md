@@ -1,8 +1,8 @@
 # Project State
 
-## SCI-MD-011 Phase B result (2026-09-03)
+## SCI-MD-012 bounded diagnosis (2026-09-03)
 
-`PHASE_B_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW`, with exact disposition
+SCI-MD-011 is `MERGED_COMPLETE`, with exact disposition
 `SCI_MD_011_POROELASTIC_CLOSURE_TEST_BLOCKED_BY_IDENTIFIABILITY_EXECUTION_DOMAIN_OR_EQUIVALENCE_GAP`
 and architecture `NOT_ADJUDICATED`. Universal P1 is
 `WRONG_PRESSURE_RESPONSE`; finite-Phi E2C is `BLOCKED`, so finite-versus-
@@ -10,8 +10,13 @@ universal status is `NOT_COMPUTABLE`. This existing-data-only task adjudicated
 only the implemented component under the frozen SCI-MD-010 observation
 adapter. Current full EWP is `NOT_VALIDATED`; independent physical validation
 is `NOT_ESTABLISHED`; Stage F and Stage D are `NOT_AUTHORIZED`; M01 is
-`NOT_ADJUDICATED`; laboratory execution is `NOT_AUTHORIZED`; and automatic
-successor is `NONE`.
+`NOT_ADJUDICATED`; and laboratory execution is `NOT_AUTHORIZED`.
+
+SCI-MD-012 is complete. The E2C failure is a frozen coupled-endpoint-envelope
+exceedance, not a closure-domain defect; the adapter is mitigating and the
+family is root-representable inside existing bounds. The unchanged family
+cannot produce required high-pressure turnover, so the next action is
+`RETIRE_E2C_FROM_CURRENT_DEVELOPMENT_PRIORITY_NO_REPARAMETERIZATION_TEST`.
 
 ## SCI-MD-010 merged result (2026-09-03)
 
@@ -19,8 +24,8 @@ successor is `NONE`.
 `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`; reduced E1 is
 `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2 is
 `NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
-unauthorized, no automatic successor is selected, and physical validation
-remains `NOT_ESTABLISHED`.
+unauthorized, and physical validation remains `NOT_ESTABLISHED`. The bounded
+SCI-MD-012 successor selected later is now complete as recorded above.
 The separate SCI-ED-003 owner decision remains bounded and authorizes no
 execution; execution requires separate owner authorization.
 

@@ -8,9 +8,9 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         data = module.validate()
-        self.assertEqual(data["current_priority"], "SCI-MD-011")
-        self.assertEqual(data["last_completed_opportunity_review"], "SCI-ED-003")
-        self.assertEqual(data["current_claim_ceiling"], "RETROSPECTIVE_SOURCE_CONDITIONED_GROUPED_PREDICTIVE_UTILITY_OF_AN_IMPLEMENTED_PUCK_CLOSURE_UNDER_THE_SCI_MD_010_OBSERVATION_ADAPTER_ONLY")
+        self.assertEqual(data["current_priority"], "SCI-MD-012")
+        self.assertEqual(data["last_completed_opportunity_review"], "SCI-MD-012")
+        self.assertEqual(data["current_claim_ceiling"], "RETROSPECTIVE_TARGET_EXPOSED_NONSCORING_EXISTING_DATA_ROOT_BLOCKER_DIAGNOSIS_ONLY")
         self.assertEqual(data["home_lab_status"], "DEFER_HOME_LAB_PENDING_SEPARATE_EXECUTION_AUTHORIZATION")
 
     @classmethod
@@ -34,13 +34,13 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         self.assertNotIn("implementation not authorized", ledger["data_not_yet_used"].lower())
 
     def test_current_priority_coherence(self):
-        successor = [x for x in self.programme["opportunities"] if x["opportunity_id"] == "SCI-MD-011"]
-        ledger = [x for x in self.ledger if x["opportunity_id"] == "SCI-MD-011"]
+        successor = [x for x in self.programme["opportunities"] if x["opportunity_id"] == "SCI-MD-012"]
+        ledger = [x for x in self.ledger if x["opportunity_id"] == "SCI-MD-012"]
         self.assertEqual((len(successor), len(ledger)), (1, 1))
         successor, ledger = successor[0], ledger[0]
-        self.assertEqual(self.programme["current_priority"], "SCI-MD-011")
+        self.assertEqual(self.programme["current_priority"], "SCI-MD-012")
         self.assertEqual(successor["status"], ledger["current_status"])
-        self.assertEqual(successor["status"], "ACTIVE")
+        self.assertEqual(successor["status"], "COMPLETE_NEGATIVE")
         self.assertEqual(self.programme["current_claim_ceiling"], successor["claim_ceiling"])
         self.assertIn("Stage F/D unauthorized", successor["notes"])
         self.assertIn("NOT_ESTABLISHED", successor["notes"])
@@ -48,7 +48,7 @@ class ExistingDataLeverageProgrammeTest(unittest.TestCase):
         self.assertTrue(self.programme["laboratory_gate"]["separate_owner_authorization_required"])
 
     def test_completed_review_and_artifact_hashes(self):
-        self.assertEqual(self.programme["last_completed_opportunity_review"], "SCI-ED-003")
+        self.assertEqual(self.programme["last_completed_opportunity_review"], "SCI-MD-012")
         fusion = next(x for x in self.programme["opportunities"] if x["opportunity_id"] == "SCI-DATA-FUSION-001")
         self.assertEqual(fusion["result"], "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY")
         expected = {

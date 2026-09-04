@@ -1,0 +1,38 @@
+{
+  "classification": "SOURCE_FIT_PARAMETERIZATION_DIFFERENCE_PRESENT",
+  "diagnostic_only_neither_implementation_declared_incorrect": true,
+  "frozen_ewp_semantics": {
+    "Pc_bounds": [
+      1.0,
+      100.0
+    ],
+    "clamping_or_continuation_above_Pc_permitted": false,
+    "condition_13_bar_excluded_from_loco_fit": true,
+    "effective_fitted_parameters": [
+      "Qc",
+      "Pc"
+    ],
+    "measured_line_pressure_coupled_through_machine_adapter": true
+  },
+  "puckworks_authority": {
+    "commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "path": "puckworks/models/waszkiewicz2025/poroelastic.py",
+    "sha256": "7dcce1b91ead1043a7e62f47d09a84973b900e720e4af364f4415f2165e8aa8e",
+    "tree": "a6ffb312473b15be43c1571a893b19873ea47c5a"
+  },
+  "source_semantics": {
+    "above_Pc_behavior": "CALLER_RESPONSIBILITY",
+    "can_produce_hinted_high_pressure_decrease": false,
+    "constants_transferable": false,
+    "fit_static_lower_bounds": [
+      "maximum_fitted_basket_pressure",
+      0.01
+    ],
+    "fit_static_parameter_order": [
+      "Pc",
+      "Qc"
+    ],
+    "static_domain": "P <= Pc",
+    "universal_curve_monotone_on_declared_domain": true
+  }
+}

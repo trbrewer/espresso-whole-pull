@@ -1,11 +1,12 @@
 # Espresso Whole-Pull Program Handoff and Forward Execution Plan
 
-> **Current-status notice (2 September 2026):** SCI-MD-010 Phase B is complete
-> pending final exact-result-head review. L-HYD is
+> **Current-status notice (3 September 2026):** SCI-MD-010 and SCI-MD-011 are
+> `MERGED_COMPLETE`. L-HYD is
 > `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`; reduced E1 is
 > `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2 is
-> `NOT_ADJUDICATED`. SCI-ED-003 remains complete, Stage F/D remain
-> unauthorized, no automatic successor is selected, and physical validation
+> `NOT_ADJUDICATED`. SCI-MD-012 is complete with next action
+> `RETIRE_E2C_FROM_CURRENT_DEVELOPMENT_PRIORITY_NO_REPARAMETERIZATION_TEST`.
+> SCI-ED-003 remains complete, Stage F/D remain unauthorized, and physical validation
 > remains `NOT_ESTABLISHED`. Detailed historical execution blocks below
 > are retained for provenance. Their current-action fields are superseded by
 > the [Data-First Scientific Development Plan](strategy/DATA_FIRST_SCIENTIFIC_DEVELOPMENT_PLAN.md)

@@ -57,7 +57,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1366,
+    "python_test_count": 1373,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -77,8 +77,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1036,
-    "source_manifest_aggregate_sha256": "0015514fd162450306152a33597fc5667e7c36283b960f7326d6c08cb353832f",
+    "source_manifest_file_count": 1046,
+    "source_manifest_aggregate_sha256": "cdd35a9adaa6849a5fa66de0da563794b7d6db9962a10a66da23f3ee8407af3f",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -88,7 +88,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "0015514fd162450306152a33597fc5667e7c36283b960f7326d6c08cb353832f",
+    "source_manifest_aggregate_source_sha256": "cdd35a9adaa6849a5fa66de0da563794b7d6db9962a10a66da23f3ee8407af3f",
     "sci_data_fusion_001_c1": {
       "disposition": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
       "focused_tests_run": 51,
@@ -862,7 +862,7 @@
     "qa_identity": "RESOLVE_FROM_EXACT_RESULT_HEAD_QA"
   },
   "sci_md_011": {
-    "status": "PHASE_B_COMPLETE_PENDING_FINAL_EXACT_HEAD_REVIEW",
+    "status": "MERGED_COMPLETE",
     "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
     "disposition": "SCI_MD_011_POROELASTIC_CLOSURE_TEST_BLOCKED_BY_IDENTIFIABILITY_EXECUTION_DOMAIN_OR_EQUIVALENCE_GAP",
     "architecture": "NOT_ADJUDICATED",
@@ -888,6 +888,14 @@
     "m01_adjudicated": false,
     "physical_validation": "NOT_ESTABLISHED"
   },
-  "current_scientific_gate": "OWNER_DECISION_PENDING",
+  "sci_md_012": {
+    "status": "RESULT_COMPLETE",
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "claim_ceiling": "RETROSPECTIVE_TARGET_EXPOSED_NONSCORING_EXISTING_DATA_ROOT_BLOCKER_DIAGNOSIS_ONLY",
+    "next_action": "RETIRE_E2C_FROM_CURRENT_DEVELOPMENT_PRIORITY_NO_REPARAMETERIZATION_TEST",
+    "architecture": "NOT_ADJUDICATED",
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "current_scientific_gate": "SCI_MD_012_RESULT_COMPLETE_RETIRE_E2C_CURRENT_PRIORITY",
   "claim_ceiling": "Software and source-linked reconstruction release only; independent physical validation and universal transfer remain NOT_ESTABLISHED."
 }
