@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1046,
-  "total_uncompressed_bytes_excluding_manifest": 10606471,
-  "aggregate_source_sha256": "84d438c10237139e4769dad6b13350c6e9077db266d6ccaafb16b33ef92723ec",
-  "aggregate_sha256": "84d438c10237139e4769dad6b13350c6e9077db266d6ccaafb16b33ef92723ec",
+  "total_uncompressed_bytes_excluding_manifest": 10606794,
+  "aggregate_source_sha256": "cdd35a9adaa6849a5fa66de0da563794b7d6db9962a10a66da23f3ee8407af3f",
+  "aggregate_sha256": "cdd35a9adaa6849a5fa66de0da563794b7d6db9962a10a66da23f3ee8407af3f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -4624,8 +4624,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_012.py": {
-      "sha256": "76227595d4a9ccc114f6dbb12526a2cb5f7d2ea860300860df1e97e445fdb06a",
-      "bytes": 5950,
+      "sha256": "96f385eb64fe9a1f95c64474777438fb3c97422c30ac4b68886c901ee1b72304",
+      "bytes": 6273,
       "git_mode": "100644"
     },
     "tests/test_sci_md_pannusch_flow_history_001.py": {

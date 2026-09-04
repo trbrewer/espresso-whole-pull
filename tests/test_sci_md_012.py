@@ -1,4 +1,4 @@
-import ast, csv, hashlib, importlib.util, json, shutil, subprocess, tempfile, unittest
+import ast, csv, hashlib, importlib.util, json, os, shutil, subprocess, sys, tempfile, unittest
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -38,8 +38,11 @@ class TestSciMd012(unittest.TestCase):
    if path.suffix=='.json': self.assertFalse(set(V.walk_keys(json.load(path.open()))) & V.FORBIDDEN_KEYS)
  def test_deterministic_rerun(self):
   before={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in D.iterdir()}
-  puckworks=ROOT.parents[1]/'puckworks-upstream'
-  subprocess.run(['python3','scripts/diagnose_sci_md_012.py','--root','.','--puckworks-repo',str(puckworks)],cwd=ROOT,check=True,env={'PYTHONDONTWRITEBYTECODE':'1'})
+  configured=os.environ.get('SCI_MD_012_PUCKWORKS_ROOT')
+  puckworks=Path(configured).resolve() if configured else (ROOT.parents[1]/'puckworks-upstream').resolve()
+  self.assertTrue(puckworks.exists(),'SCI_MD_012_PUCKWORKS_AUTHORITY_UNAVAILABLE: set SCI_MD_012_PUCKWORKS_ROOT or provide puckworks-upstream')
+  child_env=os.environ.copy(); child_env['PYTHONDONTWRITEBYTECODE']='1'
+  subprocess.run([sys.executable,'scripts/diagnose_sci_md_012.py','--root','.','--puckworks-repo',str(puckworks)],cwd=ROOT,check=True,env=child_env)
   after={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in D.iterdir()}; self.assertEqual(before,after)
  def mutate(self,name,change,error):
   with tempfile.TemporaryDirectory() as td:

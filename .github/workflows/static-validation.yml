@@ -49,7 +49,18 @@ jobs:
           git -C "$PUCKWORKS_ROOT" checkout --detach FETCH_HEAD
           test "$(git -C "$PUCKWORKS_ROOT" rev-parse HEAD)" = a3428a4d4ad571ef3168a70e8a04620fca5d3520
           test "$(git -C "$PUCKWORKS_ROOT" rev-parse 'HEAD^{tree}')" = 6175b4ad39f45ebcdec32a176e5611bf3b03655b
+          git -C "$PUCKWORKS_ROOT" fetch --depth=1 origin \
+            2058d0e947ee9eb92c52d64f6165b810f1fb4732
+          test "$(git -C "$PUCKWORKS_ROOT" rev-parse \
+            '2058d0e947ee9eb92c52d64f6165b810f1fb4732^{commit}')" \
+            = 2058d0e947ee9eb92c52d64f6165b810f1fb4732
+          test "$(git -C "$PUCKWORKS_ROOT" rev-parse \
+            '2058d0e947ee9eb92c52d64f6165b810f1fb4732^{tree}')" \
+            = a6ffb312473b15be43c1571a893b19873ea47c5a
+          test "$(git -C "$PUCKWORKS_ROOT" rev-parse HEAD)" = a3428a4d4ad571ef3168a70e8a04620fca5d3520
+          test "$(git -C "$PUCKWORKS_ROOT" rev-parse 'HEAD^{tree}')" = 6175b4ad39f45ebcdec32a176e5611bf3b03655b
           echo "EWP_POROSITY_PERMEABILITY_PRIOR_PUCKWORKS_ROOT=$PUCKWORKS_ROOT" >> "$GITHUB_ENV"
+          echo "SCI_MD_012_PUCKWORKS_ROOT=$PUCKWORKS_ROOT" >> "$GITHUB_ENV"
       - name: Externally pinned VAL-001 candidate root
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
