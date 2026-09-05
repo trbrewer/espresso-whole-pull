@@ -549,6 +549,34 @@
       "exhaustion_decision": null,
       "review_trigger": "independent corpus available",
       "notes": "Deferred."
+    },
+    {
+      "opportunity_id": "VIS-EWP-PRIVATE-PROGRAM-001",
+      "title": "Completed private Visualizer programme \u2014 public-safe historical record",
+      "data_families": [
+        "visualizer permissioned private corpus"
+      ],
+      "scientific_question": "What can the permissioned Visualizer corpus establish about empirical pressure-to-mass reconstruction, EWP transfer, onset/storage behavior, and machine-context priors?",
+      "model_component": "empirical and production hydraulic reconstruction",
+      "status": "EXHAUSTED_FOR_NAMED_DECISION",
+      "priority": "HISTORICAL_RECORD_ONLY_NO_NEW_PRIORITY",
+      "prerequisites": [],
+      "task_id": "VIS-EWP-RECORD-001",
+      "current_evidence": "docs/analysis/data_leverage/VISUALIZER_PRIVATE_WORK_RECORD.md",
+      "expected_information": "Historical preservation only; no new analysis",
+      "positive_action": "No successor authorized",
+      "negative_action": "No successor authorized",
+      "null_action": "No successor authorized",
+      "blocked_action": "No successor authorized",
+      "claim_ceiling": "PUBLIC_SAFE_REPOSITORY_RECORD_OF_PRIVATE_VISUALIZER_WORK_NO_PRIVATE_DATA_OR_PHYSICAL_VALIDATION_CLAIM",
+      "home_lab_effect": "no execution authorized",
+      "completion_evidence": [
+        "docs/analysis/data_leverage/VISUALIZER_PRIVATE_WORK_RECORD.md"
+      ],
+      "exhausted_for_decision": true,
+      "exhaustion_decision": "current Visualizer pressure-boundary, transfer, onset/storage, and machine-prior decisions exhausted under existing semantics",
+      "review_trigger": "explicit source/machine semantics, synchronized measurement, materially new independent data, or separately authorized new decision",
+      "notes": "G0 registry companion required for the consolidated ledger entry; COMPLETE_MIXED_EXISTING_DATA_LIMIT_REACHED. No historical disposition or current priority changed. Physical validation NOT_ESTABLISHED."
     }
   ],
   "laboratory_gate": {
