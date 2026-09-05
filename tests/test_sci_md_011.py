@@ -129,6 +129,9 @@ class TestReceipts(unittest.TestCase):
 class TestIntegratedResults(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
+  # Recomputed receipts must bind the same historical commit as the subprocess.
+  # On a committed feature head, using the current ROOT changes RUN_RECEIPT.
+  binding=mock.patch.object(ex,'ROOT',historical_root());binding.start();cls.addClassCleanup(binding.stop)
   cls.tmp=tempfile.TemporaryDirectory();cls.base=Path(cls.tmp.name);env=os.environ|{'SCI_MD_011_PUCKWORKS_ROOT':str(PW),'PYTHONDONTWRITEBYTECODE':'1'}
   common=[sys.executable,str(historical_root()/'scripts/sci_md_011_execute.py'),'--contract',str(ROOT/'docs/analysis/sci_md_011/EVALUATION_CONTRACT.json'),'--freeze',str(ROOT/'docs/analysis/sci_md_011/PRE_SCORE_FREEZE.json'),'--review-receipt',str(ROOT/'tests/fixtures/sci_md_011_synthetic_receipt.json'),'--synthetic-test-mode']
   for outcome in ex.SYNTHETIC_SCENARIOS:

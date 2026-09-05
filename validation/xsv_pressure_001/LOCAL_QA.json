@@ -171,7 +171,8 @@
     "unittest_reported_skip_events": 7
   },
   "full_discovery_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p 'test_*.py'",
-  "full_discovery_log_sha256": "acfa84d55d704090bd15ea397c47dbef9cb3d8243effeb11754ebe8f5f3e1b12",
+  "full_discovery_log_sha256": "818d0ef10e7b9df11256696bee95c3b617b89ad72dea5c96749754f05a9fe1ab",
+  "full_discovery_runtime_s": 609.655,
   "historical_affected": {
     "errors": 0,
     "failures": 0,
@@ -181,6 +182,14 @@
     "skipped": 1
   },
   "hosted_checks": "EXTERNAL_GITHUB_EXACT_HEAD_STATUS_REQUIRED",
+  "hosted_prior_failure": {
+    "candidate_commit": "dc9eb4161c7e61389c71750b155674e298102487",
+    "classification": "HISTORICAL_TEST_CHECKOUT_BINDING",
+    "correction": "Bind the synthetic recomputation executor ROOT to the same accepted historical checkout used by its producer. Production source and scientific results unchanged.",
+    "error": "RESULT_BYTE_RECOMPUTATION_MISMATCH:RESULT_ARTIFACT_MANIFEST.json",
+    "log_sha256": "05cd634ff4119d412336c7f28b2470eefc53fe596e296288a0ff16a4014abdd1",
+    "run_id": 33931173041
+  },
   "independent_review": "PENDING",
   "merge": "NOT_PERFORMED",
   "optional_skip_reasons": [
@@ -192,12 +201,32 @@
     "test_cross_repository_manifest_member_tamper_fails (tests.test_sci_md_007_handoff.TestSciMd007Handoff.test_cross_repository_manifest_member_tamper_fails) ... skipped 'optional cross-repository checkout is unavailable'",
     "setUpClass(test_sci_data_fusion_001.CensusTests): exact optional SCI-DATA-FUSION-001 Puckworks authority not configured; six methods not run"
   ],
+  "post_hosted_correction_prior_run": {
+    "classification": "PACKAGE_QA_MANIFEST_AGGREGATE_NOT_YET_REGENERATED",
+    "correction": "Synchronize package QA to mechanically generated source manifest before final rerun.",
+    "errors": 0,
+    "failures": 1,
+    "log_sha256": "a67e04475a5387ed6413a895869ed6b0cf3efafa6113a4a490fe7d9c30f4e5e5",
+    "passed_test_methods": 1411,
+    "runtime_s": 548.432,
+    "tests_run": 1418,
+    "unittest_reported_skip_events": 7
+  },
+  "post_hosted_metadata_targeted": {
+    "errors": 0,
+    "failures": 0,
+    "log_sha256": "51513355eca004e2d6fbb2b4978c80493515c75c066ce2588d8ce217ea4e4e6c",
+    "passed": 62,
+    "run": 62,
+    "skipped": 0
+  },
   "prior_QA_classification": "Historical-current boundary scope and mechanical manifest/permission/receipt drift corrected; initial environment authority omissions corrected. No numerical thresholds loosened.",
   "prior_failed_QA_log_sha256": {
     "focused-affected.log": "13a981a06bb7ae7c6da7861c1dbc363ab2eb9d79b9032b4734173a0fd4bcaade",
     "full-tests.log": "aca137959a6475ff5c78f1cba7138ed83855289bf565f6cc6e9bd4b2b61fa9ad",
     "static.log": "f6ca676bd3567cad4a07ac98b5d04ee48018ec00f83f6ea611141093f6cdd0dd"
   },
+  "prior_passing_full_discovery_log_sha256": "acfa84d55d704090bd15ea397c47dbef9cb3d8243effeb11754ebe8f5f3e1b12",
   "python_version": "3.12.3",
   "status": "PASS",
   "syntax_and_scope": {
