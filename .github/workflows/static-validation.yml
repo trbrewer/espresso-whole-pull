@@ -76,6 +76,11 @@ jobs:
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_v0_1_4_baseline_integrity.py --root . --output /tmp/v0-1-4-baseline.json
       - name: Active governing-change boundary
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_governing_physics_change.py --root . --output /tmp/governing-change.json
+      - name: XSV-PRESSURE-001 active G2 boundary qualification
+        run: |
+          PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_change_contract.py --root . \
+            --declaration validation/xsv_pressure_001/MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.json \
+            --output /tmp/xsv-pressure-001-contract.json
       - name: Release-finalization boundary
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_change_contract.py --root . --output /tmp/change-contract.json
       - name: Historical release integrity

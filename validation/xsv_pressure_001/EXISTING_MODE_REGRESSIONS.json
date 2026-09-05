@@ -1,0 +1,723 @@
+{
+  "comparisons": {
+    "DarcyForchheimer": {
+      "cases": [
+        "regression_DarcyForchheimer_base",
+        "regression_DarcyForchheimer_candidate"
+      ],
+      "common_time_count": 400,
+      "conservation_pass": true,
+      "cup_relative_difference": null,
+      "differences": {
+        "cumulative_inlet_water_mass_kg": {
+          "limit": 1.3793224882228302e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_beverage_mass_kg": {
+          "limit": 5.17222906746828e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_solute_mass_kg": {
+          "limit": 5.6948037571614495e-12,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "first_drip_s": {
+          "limit": 1e-08,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_flow_m3_s": {
+          "limit": 1.45417309862001e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_pressure_Pa": {
+          "limit": 1e-06,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "outlet_flow_m3_s": {
+          "limit": 1.45417309862003e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "remaining_extractable_mass_kg": {
+          "limit": 5.5997885422120704e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "stored_water_mass_kg": {
+          "limit": 9.19047619047618e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "wet_front_m": {
+          "limit": 1e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        }
+      },
+      "mass_curve_nrmse": null,
+      "normalized_final_field_linf": {
+        "U": 0.0,
+        "darcyDragMagnitude": 0.0,
+        "darcyFlux": 0.0,
+        "dissolvedConcentration": 0.0,
+        "forchheimerNumber": 0.0,
+        "hydraulicMobility": 0.0,
+        "inertialDragMagnitude": 0.0,
+        "inertialPermeability": 0.0,
+        "inertialPressureFraction": 0.0,
+        "localExtractionRate": 0.0,
+        "nonlinearMobility": 0.0,
+        "p": 0.0,
+        "permeability": 0.0,
+        "permeabilityZoneId": 0.0,
+        "porosity": 0.0,
+        "remainingExtractable": 0.0,
+        "saturation": 0.0,
+        "wetMask": 0.0
+      },
+      "pass": true
+    },
+    "compaction": {
+      "cases": [
+        "regression_compaction_base",
+        "regression_compaction_candidate"
+      ],
+      "common_time_count": 10,
+      "conservation_pass": true,
+      "cup_relative_difference": null,
+      "differences": {
+        "cumulative_inlet_water_mass_kg": {
+          "limit": 2.6885150366155403e-13,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_beverage_mass_kg": {
+          "limit": 2.72128997904316e-13,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_solute_mass_kg": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "first_drip_s": {
+          "limit": 1e-08,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_flow_m3_s": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_pressure_Pa": {
+          "limit": 1e-06,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "outlet_flow_m3_s": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "remaining_extractable_mass_kg": {
+          "limit": 5.5832000000000104e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "stored_water_mass_kg": {
+          "limit": 9.19047619047618e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "wet_front_m": {
+          "limit": 1e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        }
+      },
+      "mass_curve_nrmse": null,
+      "normalized_final_field_linf": {
+        "U": 0.0,
+        "compactionPermeabilityRatio": 0.0,
+        "compactionStrain": 0.0,
+        "darcyFlux": 0.0,
+        "dissolvedConcentration": 0.0,
+        "effectiveMatrixStress": 0.0,
+        "hydraulicMobility": 0.0,
+        "localExtractionRate": 0.0,
+        "mechanicalPorosity": 0.0,
+        "normalizedEffectiveStress": 0.0,
+        "p": 0.0,
+        "permeability": 0.0,
+        "permeabilityZoneId": 0.0,
+        "porosity": 0.0,
+        "remainingExtractable": 0.0,
+        "saturation": 0.0,
+        "wetMask": 0.0
+      },
+      "pass": true
+    },
+    "effective_permeability": {
+      "cases": [
+        "regression_effective_permeability_base",
+        "regression_effective_permeability_candidate"
+      ],
+      "common_time_count": 750,
+      "conservation_pass": true,
+      "cup_relative_difference": null,
+      "differences": {
+        "cumulative_inlet_water_mass_kg": {
+          "limit": 9.19049089891839e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_beverage_mass_kg": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_solute_mass_kg": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "first_drip_s": {
+          "limit": 1e-08,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_flow_m3_s": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_pressure_Pa": {
+          "limit": 1e-06,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "outlet_flow_m3_s": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "remaining_extractable_mass_kg": {
+          "limit": 5.5997885422120704e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "stored_water_mass_kg": {
+          "limit": 9.19047619047618e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "wet_front_m": {
+          "limit": 1e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        }
+      },
+      "mass_curve_nrmse": null,
+      "normalized_final_field_linf": {
+        "U": 0.0,
+        "darcyFlux": 0.0,
+        "dissolvedConcentration": 0.0,
+        "effectivePermeabilityMultiplier": 0.0,
+        "hydraulicMobility": 0.0,
+        "localExtractionRate": 0.0,
+        "p": 0.0,
+        "permeability": 0.0,
+        "permeabilityZoneId": 0.0,
+        "porosity": 0.0,
+        "remainingExtractable": 0.0,
+        "saturation": 0.0,
+        "wetMask": 0.0
+      },
+      "pass": true
+    },
+    "fraction_collection": {
+      "cases": [
+        "regression_fraction_collection_base",
+        "regression_fraction_collection_candidate"
+      ],
+      "common_time_count": 400,
+      "conservation_pass": true,
+      "cup_relative_difference": null,
+      "differences": {
+        "cumulative_inlet_water_mass_kg": {
+          "limit": 1.38834421757668e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_beverage_mass_kg": {
+          "limit": 5.2753693038312703e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_solute_mass_kg": {
+          "limit": 5.82403318540458e-12,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "first_drip_s": {
+          "limit": 1e-08,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_flow_m3_s": {
+          "limit": 1.48267597159442e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_pressure_Pa": {
+          "limit": 1e-06,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "outlet_flow_m3_s": {
+          "limit": 1.48267597159447e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "remaining_extractable_mass_kg": {
+          "limit": 5.5997885422120704e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "stored_water_mass_kg": {
+          "limit": 9.19047619047618e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "wet_front_m": {
+          "limit": 1e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        }
+      },
+      "fraction_output_comparison": {
+        "fraction_species.csv": {
+          "baseline_sha256": "9ec6bd7f7924feed7949cf884c75af701f428c4fae849b349a87198db956d201",
+          "byte_equal": true,
+          "candidate_sha256": "9ec6bd7f7924feed7949cf884c75af701f428c4fae849b349a87198db956d201"
+        },
+        "fractions.csv": {
+          "baseline_sha256": "b6cf59f68b1034a49c2e94abe95d52ed35c937c7ea1f16a5d2a4075f9aeb6493",
+          "byte_equal": true,
+          "candidate_sha256": "b6cf59f68b1034a49c2e94abe95d52ed35c937c7ea1f16a5d2a4075f9aeb6493"
+        }
+      },
+      "mass_curve_nrmse": null,
+      "normalized_final_field_linf": {
+        "U": 0.0,
+        "darcyFlux": 0.0,
+        "dissolvedConcentration": 0.0,
+        "hydraulicMobility": 0.0,
+        "localExtractionRate": 0.0,
+        "p": 0.0,
+        "permeability": 0.0,
+        "permeabilityZoneId": 0.0,
+        "porosity": 0.0,
+        "remainingExtractable": 0.0,
+        "saturation": 0.0,
+        "wetMask": 0.0
+      },
+      "pass": true
+    },
+    "lumpedMachineCompliance": {
+      "cases": [
+        "regression_lumpedMachineCompliance_base",
+        "regression_lumpedMachineCompliance_candidate"
+      ],
+      "common_time_count": 400,
+      "conservation_pass": true,
+      "cup_relative_difference": null,
+      "differences": {
+        "cumulative_inlet_water_mass_kg": {
+          "limit": 9.08834559596133e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_beverage_mass_kg": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_solute_mass_kg": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "first_drip_s": {
+          "limit": 1e-08,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_flow_m3_s": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_pressure_Pa": {
+          "limit": 1e-06,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "outlet_flow_m3_s": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "remaining_extractable_mass_kg": {
+          "limit": 5.59980622292924e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "stored_water_mass_kg": {
+          "limit": 9.08834559596133e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "wet_front_m": {
+          "limit": 1e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        }
+      },
+      "mass_curve_nrmse": null,
+      "normalized_final_field_linf": {
+        "U": 0.0,
+        "darcyFlux": 0.0,
+        "dissolvedConcentration": 0.0,
+        "hydraulicMobility": 0.0,
+        "localExtractionRate": 0.0,
+        "p": 0.0,
+        "permeability": 0.0,
+        "permeabilityZoneId": 0.0,
+        "porosity": 0.0,
+        "remainingExtractable": 0.0,
+        "saturation": 0.0,
+        "wetMask": 0.0
+      },
+      "pass": true
+    },
+    "prescribedFlow_constant": {
+      "cases": [
+        "regression_prescribedFlow_constant_base",
+        "regression_prescribedFlow_constant_candidate"
+      ],
+      "common_time_count": 300,
+      "conservation_pass": true,
+      "cup_relative_difference": null,
+      "differences": {
+        "cumulative_inlet_water_mass_kg": {
+          "limit": 5.78999999999997e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_beverage_mass_kg": {
+          "limit": 5.78999999999998e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_solute_mass_kg": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "first_drip_s": {
+          "limit": 1e-08,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_flow_m3_s": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_pressure_Pa": {
+          "limit": 1e-06,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "outlet_flow_m3_s": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "remaining_extractable_mass_kg": {
+          "limit": 5.6e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "stored_water_mass_kg": {
+          "limit": 9.19047619047616e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "wet_front_m": {
+          "limit": 1e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        }
+      },
+      "mass_curve_nrmse": null,
+      "normalized_final_field_linf": {
+        "U": 0.0,
+        "darcyFlux": 0.0,
+        "dissolvedConcentration": 0.0,
+        "hydraulicMobility": 0.0,
+        "localExtractionRate": 0.0,
+        "p": 0.0,
+        "permeability": 0.0,
+        "permeabilityZoneId": 0.0,
+        "porosity": 0.0,
+        "remainingExtractable": 0.0,
+        "saturation": 0.0,
+        "wetMask": 0.0
+      },
+      "pass": true
+    },
+    "prescribedFlow_piecewiseLinear": {
+      "cases": [
+        "regression_prescribedFlow_piecewiseLinear_base",
+        "regression_prescribedFlow_piecewiseLinear_candidate"
+      ],
+      "common_time_count": 300,
+      "conservation_pass": true,
+      "cup_relative_difference": null,
+      "differences": {
+        "cumulative_inlet_water_mass_kg": {
+          "limit": 5.06625e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_beverage_mass_kg": {
+          "limit": 5.06625e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_solute_mass_kg": {
+          "limit": 1e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "first_drip_s": {
+          "limit": 1e-08,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_flow_m3_s": {
+          "limit": 1.5e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_pressure_Pa": {
+          "limit": 1e-06,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "outlet_flow_m3_s": {
+          "limit": 1.5e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "remaining_extractable_mass_kg": {
+          "limit": 5.6e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "stored_water_mass_kg": {
+          "limit": 9.19047619047616e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "wet_front_m": {
+          "limit": 1e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        }
+      },
+      "mass_curve_nrmse": null,
+      "normalized_final_field_linf": {
+        "U": 0.0,
+        "darcyFlux": 0.0,
+        "dissolvedConcentration": 0.0,
+        "hydraulicMobility": 0.0,
+        "localExtractionRate": 0.0,
+        "p": 0.0,
+        "permeability": 0.0,
+        "permeabilityZoneId": 0.0,
+        "porosity": 0.0,
+        "remainingExtractable": 0.0,
+        "saturation": 0.0,
+        "wetMask": 0.0
+      },
+      "pass": true
+    },
+    "prescribedPressure": {
+      "cases": [
+        "regression_prescribedPressure_base",
+        "regression_prescribedPressure_candidate"
+      ],
+      "common_time_count": 400,
+      "conservation_pass": true,
+      "cup_relative_difference": null,
+      "differences": {
+        "cumulative_inlet_water_mass_kg": {
+          "limit": 1.38834421757668e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_beverage_mass_kg": {
+          "limit": 5.2753693038312703e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_solute_mass_kg": {
+          "limit": 5.82403318540458e-12,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "first_drip_s": {
+          "limit": 1e-08,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_flow_m3_s": {
+          "limit": 1.48267597159442e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_pressure_Pa": {
+          "limit": 1e-06,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "outlet_flow_m3_s": {
+          "limit": 1.48267597159447e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "remaining_extractable_mass_kg": {
+          "limit": 5.5997885422120704e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "stored_water_mass_kg": {
+          "limit": 9.19047619047618e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "wet_front_m": {
+          "limit": 1e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        }
+      },
+      "mass_curve_nrmse": null,
+      "normalized_final_field_linf": {
+        "U": 0.0,
+        "darcyFlux": 0.0,
+        "dissolvedConcentration": 0.0,
+        "hydraulicMobility": 0.0,
+        "localExtractionRate": 0.0,
+        "p": 0.0,
+        "permeability": 0.0,
+        "permeabilityZoneId": 0.0,
+        "porosity": 0.0,
+        "remainingExtractable": 0.0,
+        "saturation": 0.0,
+        "wetMask": 0.0
+      },
+      "pass": true
+    },
+    "reference_completion": {
+      "cases": [
+        "regression_reference_completion_base",
+        "regression_reference_completion_candidate"
+      ],
+      "common_time_count": 1500,
+      "conservation_pass": true,
+      "cup_relative_difference": null,
+      "differences": {
+        "cumulative_inlet_water_mass_kg": {
+          "limit": 4.5360653052715796e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_beverage_mass_kg": {
+          "limit": 4.09285897351434e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "cup_solute_mass_kg": {
+          "limit": 4.75841287290236e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "first_drip_s": {
+          "limit": 1e-08,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_flow_m3_s": {
+          "limit": 1.48267597159442e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "inlet_pressure_Pa": {
+          "limit": 1e-06,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "outlet_flow_m3_s": {
+          "limit": 1.48267597159447e-14,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "remaining_extractable_mass_kg": {
+          "limit": 5.5997885422120704e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "stored_water_mass_kg": {
+          "limit": 9.19047619047618e-11,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        },
+        "wet_front_m": {
+          "limit": 1e-10,
+          "maximum_absolute": 0.0,
+          "relative_to_peak": 0.0
+        }
+      },
+      "mass_curve_nrmse": null,
+      "normalized_final_field_linf": {
+        "U": 0.0,
+        "darcyFlux": 0.0,
+        "dissolvedConcentration": 0.0,
+        "hydraulicMobility": 0.0,
+        "localExtractionRate": 0.0,
+        "p": 0.0,
+        "permeability": 0.0,
+        "permeabilityZoneId": 0.0,
+        "porosity": 0.0,
+        "remainingExtractable": 0.0,
+        "saturation": 0.0,
+        "wetMask": 0.0
+      },
+      "pass": true
+    }
+  },
+  "pass": true,
+  "remaining_required": []
+}

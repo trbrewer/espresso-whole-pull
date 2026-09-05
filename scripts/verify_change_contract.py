@@ -14,6 +14,12 @@ DEFAULT_DECLARATION = Path(
 
 
 def selected_verifier(declaration: dict) -> str:
+    if (declaration.get("task_id") == "XSV-PRESSURE-001"
+        and declaration.get("change_class") == "G2"
+        and declaration.get("production_behavior_change") is True
+        and declaration.get("governing_equation_change") is False
+        and declaration.get("governing_physics_change") is False):
+        return "validate_xsv_pressure_001.py"
     classifications = declaration.get("task_classification", [])
     if (
         "NO_GOVERNING_PHYSICS_CHANGE" in classifications

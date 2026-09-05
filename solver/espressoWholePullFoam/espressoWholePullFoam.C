@@ -36,6 +36,7 @@
 #include "forchheimerResistance.H"
 #include "poroelasticCompaction.H"
 #include "prescribedFlowBoundaryModel.H"
+#include "prescribedPressureBoundaryModel.H"
 
 #include <cmath>
 #include <cstdlib>
@@ -301,20 +302,29 @@ int main(int argc, char *argv[])
         readScalar(modelProperties.lookup("saturatedPermeability"));
     const scalar wettingPermeability =
         readScalar(modelProperties.lookup("wettingPermeability"));
-    const scalar targetInletPressure =
+    const word pressureBoundaryModel =
+        modelProperties.lookupOrDefault<word>("pressureBoundaryModel", "prescribedPressure");
+    const bool prescribedPressureHistory =
+        pressureBoundaryModel == "prescribedPressureHistory";
+    if (!prescribedPressureHistory && modelProperties.found("prescribedPressureBoundary"))
+    {
+        FatalErrorInFunction << "XSV_PRESSURE_001_CONTRACT_CONFLICT history dictionary in another mode"
+            << exit(FatalError);
+    }
+    PrescribedPressureBoundaryParameters prescribedPressureParameters;
+    if (prescribedPressureHistory)
+    {
+        prescribedPressureParameters = readPrescribedPressureBoundary
+        (modelProperties, runTime.value(), runTime.endTime().value());
+    }
+    const scalar targetInletPressure = prescribedPressureHistory ? 0.0 :
         readScalar(modelProperties.lookup("targetInletPressure"));
     const scalar outletPressure =
         readScalar(modelProperties.lookup("outletPressure"));
     const scalar frontPressure =
         readScalar(modelProperties.lookup("frontPressure"));
-    const scalar pressureRampTime =
+    const scalar pressureRampTime = prescribedPressureHistory ? 0.0 :
         readScalar(modelProperties.lookup("pressureRampTime"));
-    const word pressureBoundaryModel =
-        modelProperties.lookupOrDefault<word>
-        (
-            "pressureBoundaryModel",
-            "prescribedPressure"
-        );
     const bool prescribedFlow = pressureBoundaryModel == "prescribedFlow";
     PrescribedFlowBoundaryParameters prescribedFlowParameters
     {
@@ -674,7 +684,7 @@ int main(int argc, char *argv[])
 
     const bool lumpedMachine =
         pressureBoundaryModel == "lumpedMachineCompliance";
-    if (!lumpedMachine && !prescribedFlow
+    if (!lumpedMachine && !prescribedFlow && !prescribedPressureHistory
      && pressureBoundaryModel != "prescribedPressure")
     {
         FatalErrorInFunction << "Unsupported pressureBoundaryModel="
@@ -857,9 +867,11 @@ int main(int argc, char *argv[])
             << "Compaction requires uniform Darcy flow with WP02 evolution disabled"
             << exit(FatalError);
     }
-    const scalar maximumCompactionPressureDrop =
-        (lumpedMachine ? machineParameters.shutoffPressure : targetInletPressure)
-      - outletPressure;
+    const scalar maximumBoundaryPressure = lumpedMachine
+        ? machineParameters.shutoffPressure
+        : (prescribedPressureHistory ? prescribedPressureParameters.maximumPressure()
+                                     : targetInletPressure);
+    const scalar maximumCompactionPressureDrop = maximumBoundaryPressure-outletPressure;
     if
     (
         poroelasticCompaction
@@ -1976,12 +1988,25 @@ int main(int argc, char *argv[])
             << " targetSemantics=fullBasketPositiveInletToOutlet" << nl << endl;
     }
 
+    if (prescribedPressureHistory)
+    {
+        Info<< "pressureBoundaryModel=prescribedPressureHistory"
+            << " scheduleType=piecewiseLinear"
+            << " pointCount=" << prescribedPressureParameters.times.size()
+            << " scheduleStartS=" << prescribedPressureParameters.times[0]
+            << " scheduleEndS=" << prescribedPressureParameters.times.last()
+            << " minimumPressurePa=" << min(prescribedPressureParameters.pressures)
+            << " maximumPressurePa=" << prescribedPressureParameters.maximumPressure()
+            << " integration=exactPositivePiecewiseLinear" << nl << endl;
+    }
+
     while (runTime.loop())
     {
         const scalar timeValue = runTime.value();
         const scalar deltaT = runTime.deltaTValue();
         const scalar stepStartTime = timeValue - deltaT;
-        scalar inletPressure = rampedPressure
+        scalar inletPressure = prescribedPressureHistory
+            ? prescribedPressureParameters.target(timeValue) : rampedPressure
         (
             timeValue,
             targetInletPressure,
@@ -2126,8 +2151,10 @@ int main(int argc, char *argv[])
         {
             upstreamPressure = inletPressure;
         }
-        scalar wettingPressureIntegral =
-            positiveDrivingPressureIntegral
+        scalar wettingPressureIntegral = prescribedPressureHistory
+            ? prescribedPressureParameters.positiveDrivingIntegral
+              (stepStartTime, timeValue, frontPressure)
+            : positiveDrivingPressureIntegral
             (
                 stepStartTime,
                 timeValue,
@@ -2258,7 +2285,12 @@ int main(int argc, char *argv[])
                     (sqr(bedDepth) - sqr(previousWetFront))
                    *initialPorosity*dynamicViscosity
                    /(2.0*wettingPermeability);
-                if (lumpedMachine)
+                if (prescribedPressureHistory)
+                {
+                    firstDripTime = prescribedPressureParameters.crossingTime
+                    (stepStartTime, timeValue, requiredIntegral, frontPressure);
+                }
+                else if (lumpedMachine)
                 {
                     const scalar coupledDrivingPressure =
                         Foam::max(inletPressure - frontPressure, 0.0);

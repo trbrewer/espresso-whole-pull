@@ -38,3 +38,7 @@ venv/
 *~
 *.swp
 .DS_Store
+
+# XSV-PRESSURE-001 local solver/probe compilation products.
+solver/espressoWholePullFoam/Make/linux*/
+verification/xsv_pressure_001/pressureHistoryProbe/Make/linux*/

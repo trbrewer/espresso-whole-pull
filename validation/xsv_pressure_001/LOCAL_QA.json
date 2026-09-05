@@ -1,0 +1,257 @@
+{
+  "affected": {
+    "errors": 0,
+    "failures": 0,
+    "log_sha256": "fcea6785d196ec602643efc20378a1415a5fc1883e7e27a367f751bf38a5ef0e",
+    "passed": 148,
+    "run": 148,
+    "skipped": 0
+  },
+  "checks": {
+    "active": {
+      "command": [
+        "python3",
+        "scripts/verify_change_contract.py",
+        "--root",
+        ".",
+        "--declaration",
+        "validation/xsv_pressure_001/MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.json",
+        "--output",
+        "qualification_runs/xsv-pressure-001/active-exact.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "8196faa1b7339e5588ca0efda337da9fe84c1abf41e5b8196d47cb3c70bae93e"
+    },
+    "active_governing": {
+      "command": [
+        "python3",
+        "scripts/verify_governing_physics_change.py",
+        "--root",
+        ".",
+        "--declaration",
+        "validation/xsv_pressure_001/MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.json",
+        "--output",
+        "qualification_runs/xsv-pressure-001/active-governing-exact.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "56963ca2a0e68ddc157e4846cc60d8c54644da8a0b704e31a726b44038bae744"
+    },
+    "governing": {
+      "command": [
+        "python3",
+        "scripts/verify_governing_physics_change.py",
+        "--root",
+        ".",
+        "--output",
+        "qualification_runs/xsv-pressure-001/governing-exact.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "07d82a998a116bfe25463d4484025b0c4a5b3906bd703a2d11949dd65e34f13d"
+    },
+    "historical_baseline": {
+      "command": [
+        "python3",
+        "scripts/verify_v0_1_4_baseline_integrity.py",
+        "--root",
+        ".",
+        "--output",
+        "qualification_runs/xsv-pressure-001/historical_baseline-exact.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "982d4fa488835ff6c0ccfe7930db958f6f80f05e74143dcb326c01b028a927fe"
+    },
+    "release_contract": {
+      "command": [
+        "python3",
+        "scripts/verify_change_contract.py",
+        "--root",
+        ".",
+        "--output",
+        "qualification_runs/xsv-pressure-001/release_contract-exact.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "0c0f40bc9098c54bd733519b0237fc1023fb232283b986087721a44da4fdb92f"
+    },
+    "release_integrity": {
+      "command": [
+        "python3",
+        "scripts/verify_release_finalization.py",
+        "--root",
+        ".",
+        "--output",
+        "qualification_runs/xsv-pressure-001/release_integrity-exact.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "0c0f40bc9098c54bd733519b0237fc1023fb232283b986087721a44da4fdb92f"
+    },
+    "source": {
+      "command": [
+        "python3",
+        "scripts/verify_source_manifest.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "log_sha256": "91179838649a15cb11664c224c13b99d5b76696172e29573dc9a07958c757c21"
+    },
+    "static": {
+      "command": [
+        "python3",
+        "scripts/static_validate.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "log_sha256": "565a8cb3dfc2e31b93a28f7b1342415c4ed9b2e2927c6be7b6d32d226cbb3aa5"
+    },
+    "task": {
+      "command": [
+        "python3",
+        "scripts/validate_xsv_pressure_001.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "log_sha256": "8196faa1b7339e5588ca0efda337da9fe84c1abf41e5b8196d47cb3c70bae93e"
+    },
+    "wp03a": {
+      "command": [
+        "python3",
+        "scripts/verify_wp03_evidence_review.py",
+        "--root",
+        ".",
+        "--output",
+        "qualification_runs/xsv-pressure-001/wp03a-exact.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "19a3e8f85e874333bab33a1474754f7188689fa02edf4d8939f9621d7c031acc"
+    },
+    "wp03b": {
+      "command": [
+        "python3",
+        "scripts/verify_wp03b_nonprotected_verification.py",
+        "--root",
+        ".",
+        "--output",
+        "qualification_runs/xsv-pressure-001/wp03b-exact.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "dd065c09fdd7c4f3ae6ba0c5e2c9db0c2dca95c8f708a2f2f7c2e295636ae0d4"
+    },
+    "wp03c": {
+      "command": [
+        "python3",
+        "scripts/verify_wp03c_stage0_scaffold.py",
+        "--root",
+        ".",
+        "--output",
+        "qualification_runs/xsv-pressure-001/wp03c-exact.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "72bc4add6d2e8bb46574993b8c48077eee5c05a3211d3ab3666f8d0b81a9d20c"
+    }
+  },
+  "focused": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 45,
+    "run": 45,
+    "skipped": 0
+  },
+  "full_discovery": {
+    "counting_note": "Class-level SkipTest contributes one skip event but no testsRun; six CensusTests methods were not run.",
+    "discovered_test_methods": 1424,
+    "errors": 0,
+    "failures": 0,
+    "methods_in_skipped_classes": 6,
+    "passed_test_methods": 1412,
+    "skipped_classes": 1,
+    "skipped_test_methods": 6,
+    "tests_run": 1418,
+    "unittest_reported_skip_events": 7
+  },
+  "full_discovery_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p 'test_*.py'",
+  "full_discovery_log_sha256": "818d0ef10e7b9df11256696bee95c3b617b89ad72dea5c96749754f05a9fe1ab",
+  "full_discovery_runtime_s": 609.655,
+  "historical_affected": {
+    "errors": 0,
+    "failures": 0,
+    "log_sha256": "7b1deafe0a209194c3f660d77cbe05d5746d8a908cbbddd58efd99e79885e6e7",
+    "passed": 70,
+    "run": 71,
+    "skipped": 1
+  },
+  "hosted_checks": "EXTERNAL_GITHUB_EXACT_HEAD_STATUS_REQUIRED",
+  "hosted_prior_failure": {
+    "candidate_commit": "dc9eb4161c7e61389c71750b155674e298102487",
+    "classification": "HISTORICAL_TEST_CHECKOUT_BINDING",
+    "correction": "Bind the synthetic recomputation executor ROOT to the same accepted historical checkout used by its producer. Production source and scientific results unchanged.",
+    "error": "RESULT_BYTE_RECOMPUTATION_MISMATCH:RESULT_ARTIFACT_MANIFEST.json",
+    "log_sha256": "05cd634ff4119d412336c7f28b2470eefc53fe596e296288a0ff16a4014abdd1",
+    "run_id": 33931173041
+  },
+  "independent_review": "PENDING",
+  "merge": "NOT_PERFORMED",
+  "optional_skip_reasons": [
+    "test_41_real_binding_uses_index_ids (tests.test_sci_md_010.TestSciMd010.test_41_real_binding_uses_index_ids) ... skipped 'SCI_MD_010_PUCKWORKS_ROOT not set'",
+    "test_puckworks_exact (tests.test_sci_md_011.TestBindings.test_puckworks_exact) ... skipped 'external SCI-MD-011 authority not provisioned'",
+    "test_puckworks_exact (tests.test_sci_data_fusion_001.AuthorityTests.test_puckworks_exact) ... skipped 'exact optional SCI-DATA-FUSION-001 Puckworks authority not configured'",
+    "test_reference_binding_and_full_1500_parity (tests.test_val_corpus_002_b0_tooling.ReferenceArtifactAndIntervalTests.test_reference_binding_and_full_1500_parity) ... skipped 'retained artifact absent in portable CI'",
+    "test_fake_commit_and_wrong_tree_fail_cross_repository (tests.test_sci_md_007_handoff.TestSciMd007Handoff.test_fake_commit_and_wrong_tree_fail_cross_repository) ... skipped 'optional cross-repository checkout is unavailable'",
+    "test_cross_repository_manifest_member_tamper_fails (tests.test_sci_md_007_handoff.TestSciMd007Handoff.test_cross_repository_manifest_member_tamper_fails) ... skipped 'optional cross-repository checkout is unavailable'",
+    "setUpClass(test_sci_data_fusion_001.CensusTests): exact optional SCI-DATA-FUSION-001 Puckworks authority not configured; six methods not run"
+  ],
+  "post_hosted_correction_prior_run": {
+    "classification": "PACKAGE_QA_MANIFEST_AGGREGATE_NOT_YET_REGENERATED",
+    "correction": "Synchronize package QA to mechanically generated source manifest before final rerun.",
+    "errors": 0,
+    "failures": 1,
+    "log_sha256": "a67e04475a5387ed6413a895869ed6b0cf3efafa6113a4a490fe7d9c30f4e5e5",
+    "passed_test_methods": 1411,
+    "runtime_s": 548.432,
+    "tests_run": 1418,
+    "unittest_reported_skip_events": 7
+  },
+  "post_hosted_metadata_targeted": {
+    "errors": 0,
+    "failures": 0,
+    "log_sha256": "51513355eca004e2d6fbb2b4978c80493515c75c066ce2588d8ce217ea4e4e6c",
+    "passed": 62,
+    "run": 62,
+    "skipped": 0
+  },
+  "prior_QA_classification": "Historical-current boundary scope and mechanical manifest/permission/receipt drift corrected; initial environment authority omissions corrected. No numerical thresholds loosened.",
+  "prior_failed_QA_log_sha256": {
+    "focused-affected.log": "13a981a06bb7ae7c6da7861c1dbc363ab2eb9d79b9032b4734173a0fd4bcaade",
+    "full-tests.log": "aca137959a6475ff5c78f1cba7138ed83855289bf565f6cc6e9bd4b2b61fa9ad",
+    "static.log": "f6ca676bd3567cad4a07ac98b5d04ee48018ec00f83f6ea611141093f6cdd0dd"
+  },
+  "prior_passing_full_discovery_log_sha256": "acfa84d55d704090bd15ea397c47dbef9cb3d8243effeb11754ebe8f5f3e1b12",
+  "python_version": "3.12.3",
+  "status": "PASS",
+  "syntax_and_scope": {
+    ".json": {
+      "checked": 999,
+      "errors": []
+    },
+    ".yaml": {
+      "checked": 0,
+      "errors": []
+    },
+    ".yml": {
+      "checked": 8,
+      "errors": []
+    },
+    "git_diff_check": {
+      "exit_code": 0
+    },
+    "private_scan": {
+      "findings": [],
+      "scoped_paths": 43
+    },
+    "shell": {
+      "checked": 20,
+      "errors": []
+    }
+  }
+}

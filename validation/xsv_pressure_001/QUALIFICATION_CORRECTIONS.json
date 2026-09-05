@@ -1,0 +1,49 @@
+{
+  "reason": "Reducer originally divided zero-tail fields by vanishing final magnitude and skipped uniform fields. Normalize each final field by max(1 SI unit, both field Linf magnitudes), retaining absolute errors. Parse uniform fields with known cell count. Existing 1e-8 gate is unchanged. Explicit token list parsing was corrected for malformed/nonfinite inputs.",
+  "superseded_run": "run-01",
+  "retained_receipt_sha256": "70862793db804a0f8ba11b65e787e561ecf3871714dc9cdc063543ed21b4da44",
+  "prior_contract_receipt": {
+    "sha256": {
+      "MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.json": "02cbae81b2ddd0dfcf4b1d131a98f497fc5971e84a742693b9f1900d0caef93a",
+      "MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.md": "a65382f5f7c25a7c966f96245076eda7cca62e31c39c237368dd086ca7375e95"
+    },
+    "frozen_before_modified_production_runs": true
+  },
+  "affected_evidence": "All helper/production runs rerun after parser correction; field reductions rerun; original MPI reduction retained as QA defect, not numerical model failure.",
+  "final_audit_correction": "Endpoint tolerance now applies only immediately outside support; every interior knot is preserved, even when very close to an endpoint. Negative declared list lengths fail closed. All helper/production gates are rerun. Contract mathematics unchanged.",
+  "test_harness_corrections": "Historical mapping/multimodel invariants bind their accepted historical merges; active production invariants are validated under XSV-PRESSURE-001. Full baseline discovery lacking explicit external-source environment is retained; affected tests rerun with verified read-only authority.",
+  "malformed_input_final_audit": "Reject nested dictionaries in primitive schedule fields, numeric/non-word schedule types, trailing schedule-type tokens and trailing list tokens using stable task diagnostics. All production/helper gates rerun; mathematical contract unchanged.",
+  "plateau_edge_mathematics_correction": {
+    "prior_status": "FAIL",
+    "classification": "XSV_PRESSURE_001_BLOCKED_PRESSURE_HISTORY_MATHEMATICS",
+    "times_s": [
+      0,
+      10
+    ],
+    "pressures_Pa": [
+      900000,
+      0
+    ],
+    "front_pressure_Pa": 300000,
+    "required_integral_Pa_s": 2000000,
+    "prior_crossing_s": 6.666666615791096,
+    "expected_crossing_s": 6.666666666666667,
+    "absolute_error_s": 5.087557131133735e-08,
+    "limit_s": 1e-10,
+    "correction": "Return exact positive-support endpoint when the requested integral equals cumulative full-segment area; otherwise bound bisection by the positive endpoint. Added permanent full-area falling-threshold vector query. Rebuild and all production/helper gates rerun; mathematical contract unchanged.",
+    "prior_contract_receipt": {
+      "sha256": {
+        "MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.json": "02cbae81b2ddd0dfcf4b1d131a98f497fc5971e84a742693b9f1900d0caef93a",
+        "MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.md": "3303a2bdae8f9d0246315da2c93e0efabada67499a8777e3a2d7a12e34ad863b"
+      },
+      "frozen_before_modified_production_runs": true,
+      "revision": 2,
+      "reason_record": "QUALIFICATION_CORRECTIONS.json"
+    },
+    "contract_revision": 3,
+    "invalidation": "All earlier crossing/production qualification artifacts are superseded and rerun after this explicit endpoint algorithm clarification.",
+    "failed_probe_output_sha256": "0ca8cdbb99267235d3de43306e759aaecce97a6c0b6246257bf8fda0c8627cc7"
+  },
+  "independent_reference_correction": "Exact rational segment geometry and 80-digit Decimal inversion replace rounded threshold-time geometry in the independent oracle, so exact full triangle areas remain reachable.",
+  "build_isolation": "Authoritative qualification cleans both targets and builds into a task-local bin directory, preventing shared executable reuse and avoiding probe installation."
+}

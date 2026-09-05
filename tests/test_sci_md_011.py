@@ -7,6 +7,22 @@ import sci_md_011_execute as ex
 import validate_sci_md_011 as val
 PW=Path(os.environ.get('SCI_MD_011_PUCKWORKS_ROOT',str(ROOT.parent/'puckworks-xsv-pannusch-authority')))
 
+# These are historical frozen-source tests, including synthetic executor tests.
+# Keep the execution guard strict by supplying its accepted source in isolation.
+_HISTORICAL_TEMP = None
+def historical_root():
+ global _HISTORICAL_TEMP
+ if _HISTORICAL_TEMP is None:
+  _HISTORICAL_TEMP = tempfile.TemporaryDirectory()
+  path=Path(_HISTORICAL_TEMP.name)/'source'
+  subprocess.run(['git','worktree','add','--detach',str(path),'d4a93971cd7a80c8670b83017e4283e9d34dabf0'],cwd=ROOT,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+ return Path(_HISTORICAL_TEMP.name)/'source'
+def tearDownModule():
+ global _HISTORICAL_TEMP
+ if _HISTORICAL_TEMP is not None:
+  subprocess.run(['git','worktree','remove',str(historical_root())],cwd=ROOT,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+  _HISTORICAL_TEMP.cleanup();_HISTORICAL_TEMP=None
+
 class TestSciMd011Core(unittest.TestCase):
  def test_corrected_bounds(self):self.assertLessEqual(c.BOUNDS['Pc_bar'][0],9);self.assertLessEqual(c.BOUNDS['Pc_bar'][0],12.39);self.assertGreaterEqual(c.BOUNDS['Pc_bar'][1],15)
  def test_bound_was_prospective(self):self.assertFalse(c.load_json(ROOT/'docs/analysis/sci_md_011/MODEL_SPECIFICATIONS.json')['bound_selection_candidate_information_used'])
@@ -47,7 +63,8 @@ class TestSciMd011Core(unittest.TestCase):
 class TestBindings(unittest.TestCase):
  def test_real_execution_not_unconditionally_disabled(self):self.assertNotIn('REAL_EXECUTION_REQUIRES_EXTERNAL_EXACT_REVIEW_AND_PHASE_B_PACKAGING',(ROOT/'scripts/sci_md_011_execute.py').read_text())
  def test_handoff_all_hashes(self):ex.verify_handoff()
- def test_production_hashes_and_symbols(self):ex.verify_production()
+ def test_production_hashes_and_symbols(self):
+  with mock.patch.object(ex,'ROOT',historical_root()):ex.verify_production()
  def test_puckworks_exact(self):
   if not (PW/'.git').exists() and not PW.is_dir():self.skipTest('external SCI-MD-011 authority not provisioned')
   with mock.patch.dict(os.environ,{'SCI_MD_011_PUCKWORKS_ROOT':str(PW)}):self.assertEqual(ex.resolve_puckworks(),PW.resolve())
@@ -112,8 +129,11 @@ class TestReceipts(unittest.TestCase):
 class TestIntegratedResults(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
+  # Recomputed receipts must bind the same historical commit as the subprocess.
+  # On a committed feature head, using the current ROOT changes RUN_RECEIPT.
+  binding=mock.patch.object(ex,'ROOT',historical_root());binding.start();cls.addClassCleanup(binding.stop)
   cls.tmp=tempfile.TemporaryDirectory();cls.base=Path(cls.tmp.name);env=os.environ|{'SCI_MD_011_PUCKWORKS_ROOT':str(PW),'PYTHONDONTWRITEBYTECODE':'1'}
-  common=[sys.executable,str(ROOT/'scripts/sci_md_011_execute.py'),'--contract',str(ROOT/'docs/analysis/sci_md_011/EVALUATION_CONTRACT.json'),'--freeze',str(ROOT/'docs/analysis/sci_md_011/PRE_SCORE_FREEZE.json'),'--review-receipt',str(ROOT/'tests/fixtures/sci_md_011_synthetic_receipt.json'),'--synthetic-test-mode']
+  common=[sys.executable,str(historical_root()/'scripts/sci_md_011_execute.py'),'--contract',str(ROOT/'docs/analysis/sci_md_011/EVALUATION_CONTRACT.json'),'--freeze',str(ROOT/'docs/analysis/sci_md_011/PRE_SCORE_FREEZE.json'),'--review-receipt',str(ROOT/'tests/fixtures/sci_md_011_synthetic_receipt.json'),'--synthetic-test-mode']
   for outcome in ex.SYNTHETIC_SCENARIOS:
    subprocess.run(common+['--output',str(cls.base/outcome),'--synthetic-outcome',outcome],env=env,check=True)
  @classmethod

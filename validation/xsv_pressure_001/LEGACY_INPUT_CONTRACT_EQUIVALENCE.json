@@ -1,0 +1,150 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "case_id": "regression_DarcyForchheimer_base",
+      "configuration_sha256": "f4b1300526c7e3001f9c3591e7162f30ab16856892778444d04f1d0187ec7fb0",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "a5c0bb399022d8469cf4eabeebeec7b691a0d5fa39df7508c0eebac4bba1bd2f",
+      "candidate_normalized_sha256": "a5c0bb399022d8469cf4eabeebeec7b691a0d5fa39df7508c0eebac4bba1bd2f"
+    },
+    {
+      "case_id": "regression_DarcyForchheimer_candidate",
+      "configuration_sha256": "f4b1300526c7e3001f9c3591e7162f30ab16856892778444d04f1d0187ec7fb0",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "a5c0bb399022d8469cf4eabeebeec7b691a0d5fa39df7508c0eebac4bba1bd2f",
+      "candidate_normalized_sha256": "a5c0bb399022d8469cf4eabeebeec7b691a0d5fa39df7508c0eebac4bba1bd2f"
+    },
+    {
+      "case_id": "regression_compaction_base",
+      "configuration_sha256": "99f086772971987b7b56a9a3a6a6a0cf9513ab75f2f544aca0c5439849bf31aa",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "94b4fd965dd75a0c98b05143bbd45a9ac88d67da624f07674d45de3761f969b0",
+      "candidate_normalized_sha256": "94b4fd965dd75a0c98b05143bbd45a9ac88d67da624f07674d45de3761f969b0"
+    },
+    {
+      "case_id": "regression_compaction_candidate",
+      "configuration_sha256": "99f086772971987b7b56a9a3a6a6a0cf9513ab75f2f544aca0c5439849bf31aa",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "94b4fd965dd75a0c98b05143bbd45a9ac88d67da624f07674d45de3761f969b0",
+      "candidate_normalized_sha256": "94b4fd965dd75a0c98b05143bbd45a9ac88d67da624f07674d45de3761f969b0"
+    },
+    {
+      "case_id": "regression_effective_permeability_base",
+      "configuration_sha256": "7d2a8d313ecdf34bdaaab263162c869b0de207fa3e98cd137fdbc09aad480756",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "cccae9c46bd91f28cd8a253efef8a99e368241d1765eb2cd309445a78e27223f",
+      "candidate_normalized_sha256": "cccae9c46bd91f28cd8a253efef8a99e368241d1765eb2cd309445a78e27223f"
+    },
+    {
+      "case_id": "regression_effective_permeability_candidate",
+      "configuration_sha256": "7d2a8d313ecdf34bdaaab263162c869b0de207fa3e98cd137fdbc09aad480756",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "cccae9c46bd91f28cd8a253efef8a99e368241d1765eb2cd309445a78e27223f",
+      "candidate_normalized_sha256": "cccae9c46bd91f28cd8a253efef8a99e368241d1765eb2cd309445a78e27223f"
+    },
+    {
+      "case_id": "regression_fraction_collection_base",
+      "configuration_sha256": "c26b0d6ab50df80c372ff6cf64144bfad8d85a7f1f3dc543cc3b8217dd09f53a",
+      "legacy_properties_byte_equal": false,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "00947221e8f18c151f6444449714f3cbca0987641f5a72ee7b4cb98e2053b099",
+      "candidate_normalized_sha256": "00947221e8f18c151f6444449714f3cbca0987641f5a72ee7b4cb98e2053b099"
+    },
+    {
+      "case_id": "regression_fraction_collection_candidate",
+      "configuration_sha256": "c26b0d6ab50df80c372ff6cf64144bfad8d85a7f1f3dc543cc3b8217dd09f53a",
+      "legacy_properties_byte_equal": false,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "00947221e8f18c151f6444449714f3cbca0987641f5a72ee7b4cb98e2053b099",
+      "candidate_normalized_sha256": "00947221e8f18c151f6444449714f3cbca0987641f5a72ee7b4cb98e2053b099"
+    },
+    {
+      "case_id": "regression_lumpedMachineCompliance_base",
+      "configuration_sha256": "66ba2aea49d31fe38ee8f335a47e5e97d53634e5a8766de7a0d98bfc68fa4ab4",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "ba39a1cde958f1705921c43731fe5e31f647606923d1c851f68f77c0688b0c16",
+      "candidate_normalized_sha256": "ba39a1cde958f1705921c43731fe5e31f647606923d1c851f68f77c0688b0c16"
+    },
+    {
+      "case_id": "regression_lumpedMachineCompliance_candidate",
+      "configuration_sha256": "66ba2aea49d31fe38ee8f335a47e5e97d53634e5a8766de7a0d98bfc68fa4ab4",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "ba39a1cde958f1705921c43731fe5e31f647606923d1c851f68f77c0688b0c16",
+      "candidate_normalized_sha256": "ba39a1cde958f1705921c43731fe5e31f647606923d1c851f68f77c0688b0c16"
+    },
+    {
+      "case_id": "regression_prescribedFlow_constant_base",
+      "configuration_sha256": "b7525a9c6811419d1071a5bbf05f38117c7a94132c27a58201cc0b0fdc1869c5",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "9b7bbe18ef2d6a342cbac4f2804e22fa80d50e171f54a47929a0a4f3b5e6c806",
+      "candidate_normalized_sha256": "9b7bbe18ef2d6a342cbac4f2804e22fa80d50e171f54a47929a0a4f3b5e6c806"
+    },
+    {
+      "case_id": "regression_prescribedFlow_constant_candidate",
+      "configuration_sha256": "b7525a9c6811419d1071a5bbf05f38117c7a94132c27a58201cc0b0fdc1869c5",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "9b7bbe18ef2d6a342cbac4f2804e22fa80d50e171f54a47929a0a4f3b5e6c806",
+      "candidate_normalized_sha256": "9b7bbe18ef2d6a342cbac4f2804e22fa80d50e171f54a47929a0a4f3b5e6c806"
+    },
+    {
+      "case_id": "regression_prescribedFlow_piecewiseLinear_base",
+      "configuration_sha256": "14d15c64e238d3124bfeb25e701438de23e658faca5a33c95548ce5416192797",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "3a421b6de02946cd396735cfaedc885c1491f3cbcbabab86d04639564e1538f8",
+      "candidate_normalized_sha256": "3a421b6de02946cd396735cfaedc885c1491f3cbcbabab86d04639564e1538f8"
+    },
+    {
+      "case_id": "regression_prescribedFlow_piecewiseLinear_candidate",
+      "configuration_sha256": "14d15c64e238d3124bfeb25e701438de23e658faca5a33c95548ce5416192797",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "3a421b6de02946cd396735cfaedc885c1491f3cbcbabab86d04639564e1538f8",
+      "candidate_normalized_sha256": "3a421b6de02946cd396735cfaedc885c1491f3cbcbabab86d04639564e1538f8"
+    },
+    {
+      "case_id": "regression_prescribedPressure_base",
+      "configuration_sha256": "0afc4f90b1ef3f5df5f325a7baceb80ef3ecc794f1a56cc883703874b07d917a",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356",
+      "candidate_normalized_sha256": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356"
+    },
+    {
+      "case_id": "regression_prescribedPressure_candidate",
+      "configuration_sha256": "0afc4f90b1ef3f5df5f325a7baceb80ef3ecc794f1a56cc883703874b07d917a",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356",
+      "candidate_normalized_sha256": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356"
+    },
+    {
+      "case_id": "regression_reference_completion_base",
+      "configuration_sha256": "3f81075c54853d58acf0fac16edad9302586cd81378c9e8e71d4ca9c8fa06c19",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356",
+      "candidate_normalized_sha256": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356"
+    },
+    {
+      "case_id": "regression_reference_completion_candidate",
+      "configuration_sha256": "3f81075c54853d58acf0fac16edad9302586cd81378c9e8e71d4ca9c8fa06c19",
+      "legacy_properties_byte_equal": true,
+      "input_contract_unchanged": true,
+      "baseline_normalized_sha256": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356",
+      "candidate_normalized_sha256": "c66641b4cbd930eef4799ca6d72c2ccf35721bf1d7a07725b08fff14b5b66356"
+    }
+  ],
+  "provenance_exception": "Only the productionSourceSha256 field inside fractionCollection is normalized; it must bind each respective executable source."
+}

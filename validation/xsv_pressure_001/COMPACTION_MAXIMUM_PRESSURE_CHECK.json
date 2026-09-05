@@ -1,0 +1,90 @@
+{
+  "final_pressure_Pa": 0,
+  "invalid": {
+    "case_id": "compaction_invalid",
+    "completion_status": "REJECTED",
+    "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+    "exit_code": 1,
+    "input_sha256": "5a0192e53983d81eec6caddbdad4b9b1c29fbd9f22ac378b5c7e1771baa77fbf",
+    "log_sha256": "58bfebdf53e1e26cc69a60fbebfcca7bb20bdb9130b0bb5653d22f01c79c53da",
+    "mode": "prescribedPressureHistory",
+    "pass": true,
+    "rank_count": 1,
+    "schedule": [
+      0,
+      1239155,
+      0
+    ]
+  },
+  "maximum_is_interior": true,
+  "pass": true,
+  "valid": {
+    "bounded_state_pass": true,
+    "case_id": "compaction_valid",
+    "commands": {
+      "case_preparation": "python3 scripts/prepare_case.py --root <repository> --config <work>/compaction_valid.json --nprocs 1 --case-dir <work>/compaction_valid",
+      "geometry": [
+        "postProcess -case <work>/compaction_valid -func writeCellCentres -time 0",
+        "postProcess -case <work>/compaction_valid -func writeCellVolumes -time 0"
+      ],
+      "mesh": "blockMesh -case <work>/compaction_valid",
+      "parallel_workflow": [],
+      "solver": "<bound-executable> -case <work>/compaction_valid"
+    },
+    "completion_status": "PASS",
+    "configuration_sha256": "a0dab529492409c58c0b5b49b3b16dca075c40485a5d27d8c9da4ddfaea78baf",
+    "conservation_pass": true,
+    "end_time_s": 0.2,
+    "endpoint_cup_mass_kg": 0.0,
+    "error": null,
+    "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+    "execution": "serial",
+    "final_wet_front_m": 0.00053004941368931,
+    "first_drip_s": -1.0,
+    "input_hashes": {
+      "0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+      "0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+      "0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+      "0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+      "0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+      "0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+      "0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+      "0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+      "0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+      "constant/espressoModelProperties": "a9fb6ff25cbfbadf026191a3aea7f6ca1ba5b2d8f2370712c365b3cc973dae16",
+      "constant/polyMesh/boundary": "f933b867c030fc560e9f6b321bd1a72adb5b27843e68549189fede76dd6ca8cc",
+      "constant/polyMesh/faces": "b0e2b8501b87bbeb32c7613f98c8d4a5b4b5076e10cd008d1e6f7f2871be4c3f",
+      "constant/polyMesh/neighbour": "811d7fcb81f687677a23440429d0fd0293ad1ec03c52d9d50d89ffb91a03e768",
+      "constant/polyMesh/owner": "655ef9e2b16ae2446937f3a5651b018cdd0e1306c1e1bd673ae14f914ca984d8",
+      "constant/polyMesh/points": "4a31938bf45bb0874becd912e86001556bcd8bebebf8eb253b71ed0eed50dbad",
+      "system/blockMeshDict": "a3cd1c60e91bf65d97db935e7c844b164eb52c836e5949def3d83ada511cd7c2",
+      "system/controlDict": "281609a30935a3b4e917290e8c78bf6022fac85eb3f36980cc1c72762c556312",
+      "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+      "system/fvSchemes": "c375990f228918265efa932bfc24b8938f54028edca83d77c802d063d1523523",
+      "system/fvSolution": "a3c5b92e11cf42111a1c60a7219325ca6b252fc82ef63d50ae1cd7d26084061a"
+    },
+    "log_sha256": "43f30df51bd17408aae952c01a36abb6a1f659819c21a8ffdd65fdd2addfe681",
+    "maximum_solute_residual_kg": 2.44275831658668e-17,
+    "maximum_water_residual_kg": 0.0,
+    "mode": "prescribedPressureHistory",
+    "pass": true,
+    "rank_count": 1,
+    "runtime_s": 0.3434169292449951,
+    "schedule": {
+      "pressures_gauge_Pa": [
+        0,
+        100000,
+        0
+      ],
+      "schedule_type": "piecewiseLinear",
+      "times_s": [
+        0,
+        0.1,
+        0.2
+      ]
+    },
+    "schedule_sha256": "86743ce4ac7a1bc58af2c4297d268720c89b5f635668eb75fdc144352ee3d1fc",
+    "start_time_s": 0.0,
+    "trace_sha256": "4fd4fb6693b312c06cb312e47e83b636cad8517acd8d1680cf75d318958cee11"
+  }
+}

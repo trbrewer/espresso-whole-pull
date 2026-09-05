@@ -1,0 +1,77 @@
+{
+  "cases": [
+    "synthetic",
+    "synthetic_refined"
+  ],
+  "common_time_count": 1650,
+  "conservation_pass": true,
+  "cup_relative_difference": 0.00021798957458020956,
+  "differences": {
+    "cumulative_inlet_water_mass_kg": {
+      "limit": 3.5099254000722303e-10,
+      "maximum_absolute": 6.543444445401836e-06,
+      "relative_to_peak": 0.0001864268809037132
+    },
+    "cup_beverage_mass_kg": {
+      "limit": 2.98248132408222e-10,
+      "maximum_absolute": 6.501498350301033e-06,
+      "relative_to_peak": 0.00021798957458020956
+    },
+    "cup_solute_mass_kg": {
+      "limit": 3.91607737671953e-11,
+      "maximum_absolute": 1.9875842719180173e-06,
+      "relative_to_peak": 0.0005075446884001568
+    },
+    "first_drip_s": {
+      "limit": 1e-08,
+      "maximum_absolute": 9.769962616701378e-15,
+      "relative_to_peak": 1.3292077694634205e-15
+    },
+    "inlet_flow_m3_s": {
+      "limit": 1.48267597159602e-14,
+      "maximum_absolute": 5.4019526211143e-19,
+      "relative_to_peak": 3.643380431463654e-13
+    },
+    "inlet_pressure_Pa": {
+      "limit": 1e-06,
+      "maximum_absolute": 2.9244029065012e-07,
+      "relative_to_peak": 3.2493365627791114e-13
+    },
+    "outlet_flow_m3_s": {
+      "limit": 1.48267597159145e-14,
+      "maximum_absolute": 5.3570598749098225e-18,
+      "relative_to_peak": 3.6131022405116278e-12
+    },
+    "remaining_extractable_mass_kg": {
+      "limit": 5.59981316266378e-11,
+      "maximum_absolute": 2.029517311359294e-06,
+      "relative_to_peak": 0.0003624258975086717
+    },
+    "stored_water_mass_kg": {
+      "limit": 9.19047619047618e-11,
+      "maximum_absolute": 8.153200337090993e-17,
+      "relative_to_peak": 8.871357879736324e-15
+    },
+    "wet_front_m": {
+      "limit": 1e-10,
+      "maximum_absolute": 7.112366251504909e-17,
+      "relative_to_peak": 7.892403335239218e-15
+    }
+  },
+  "mass_curve_nrmse": 9.471655730322358e-05,
+  "normalized_final_field_linf": {
+    "U": 1.3986141335343561e-28,
+    "darcyFlux": 1.7761079499402419e-34,
+    "dissolvedConcentration": 0.000566108263571995,
+    "hydraulicMobility": 0.0,
+    "localExtractionRate": 0.0005508813567240265,
+    "p": 3.534449640442806e-20,
+    "permeability": 0.0,
+    "permeabilityZoneId": 0.0,
+    "porosity": 0.0,
+    "remainingExtractable": 0.0013508852835725687,
+    "saturation": 0.0,
+    "wetMask": 0.0
+  },
+  "pass": true
+}

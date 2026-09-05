@@ -1,0 +1,77 @@
+{
+  "cases": [
+    "synthetic",
+    "synthetic_mpi"
+  ],
+  "common_time_count": 1650,
+  "conservation_pass": true,
+  "cup_relative_difference": null,
+  "differences": {
+    "cumulative_inlet_water_mass_kg": {
+      "limit": 3.50927105562769e-10,
+      "maximum_absolute": 1.1032841307212493e-15,
+      "relative_to_peak": 3.1439125483110027e-14
+    },
+    "cup_beverage_mass_kg": {
+      "limit": 2.9818311742657803e-10,
+      "maximum_absolute": 1.8589990657957856e-13,
+      "relative_to_peak": 6.2344209217462795e-12
+    },
+    "cup_solute_mass_kg": {
+      "limit": 3.91607737687306e-11,
+      "maximum_absolute": 1.535395074969692e-13,
+      "relative_to_peak": 3.92074754201023e-11
+    },
+    "first_drip_s": {
+      "limit": 1e-08,
+      "maximum_absolute": 0.0,
+      "relative_to_peak": 0.0
+    },
+    "inlet_flow_m3_s": {
+      "limit": 1.48267597159549e-14,
+      "maximum_absolute": 4.002230675776569e-20,
+      "relative_to_peak": 2.699329288698067e-14
+    },
+    "inlet_pressure_Pa": {
+      "limit": 1e-06,
+      "maximum_absolute": 0.0,
+      "relative_to_peak": 0.0
+    },
+    "outlet_flow_m3_s": {
+      "limit": 1.4826759715934e-14,
+      "maximum_absolute": 1.3196985076458813e-17,
+      "relative_to_peak": 8.90078839159732e-12
+    },
+    "remaining_extractable_mass_kg": {
+      "limit": 5.5998067525892103e-11,
+      "maximum_absolute": 1.1453988799092762e-13,
+      "relative_to_peak": 2.0454257271997332e-11
+    },
+    "stored_water_mass_kg": {
+      "limit": 9.1904761904762e-11,
+      "maximum_absolute": 2.0816681711721685e-17,
+      "relative_to_peak": 2.2650275437624607e-15
+    },
+    "wet_front_m": {
+      "limit": 1e-10,
+      "maximum_absolute": 0.0,
+      "relative_to_peak": 0.0
+    }
+  },
+  "mass_curve_nrmse": null,
+  "normalized_final_field_linf": {
+    "U": 1.1922534404781002e-28,
+    "darcyFlux": 2.1299498376830793e-34,
+    "dissolvedConcentration": 1.1089190847815527e-09,
+    "hydraulicMobility": 0.0,
+    "localExtractionRate": 3.92212148295619e-09,
+    "p": 2.607010025671882e-20,
+    "permeability": 0.0,
+    "permeabilityZoneId": 0.0,
+    "porosity": 0.0,
+    "remainingExtractable": 3.798979304676619e-10,
+    "saturation": 0.0,
+    "wetMask": 0.0
+  },
+  "pass": true
+}
