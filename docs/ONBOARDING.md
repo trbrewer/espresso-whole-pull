@@ -33,6 +33,12 @@ the completed SCI-ED-003 contract awaiting the bounded owner decision. Stage F
 and Stage D both require separate owner authorization; physical validation
 remains `NOT_ESTABLISHED`.
 
+Before proposing any new Visualizer corpus, machine-context, empirical
+pressure-boundary, or Visualizer-driven EWP task, read the
+[private Visualizer work record](analysis/data_leverage/VISUALIZER_PRIVATE_WORK_RECORD.md).
+It preserves the completed private programme, public-safe lessons, exhausted
+named decisions, and revisit triggers without committing private data.
+
 For validation work, also read the
 [Validation Operating Standard v1](validation/VALIDATION_OPERATING_STANDARD_V1.md)
 and use its

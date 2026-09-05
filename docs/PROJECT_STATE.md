@@ -1,5 +1,26 @@
 # Project State
 
+## Private Visualizer corpus programme record (2026-09-05)
+
+A substantial owner-authorized private Visualizer.coffee programme was
+completed and is preserved in the
+[private Visualizer work record](analysis/data_leverage/VISUALIZER_PRIVATE_WORK_RECORD.md).
+No raw or row-level data are in Git. The record preserves completed analysis
+and its decision boundaries without publishing the private evidence package.
+
+Pressure was useful but cohort-specific. Full EWP executed stably but showed
+no clear no-retuning transfer value under the tested shared case. Onset/storage
+was material but insufficient to explain all selected cases. Machine identity
+was too sparse for machine-specific priors. XSV-PRESSURE-001, the generic native
+prescribed-pressure-history interface, is the public production consequence.
+
+The current named boundary, transfer, onset/storage, and machine-prior decisions
+require new semantics or synchronized measurements before revisit. Another
+broad sweep using the same uncertain inputs should not be selected by default;
+the enduring record gives the bounded revisit triggers. Physical validation
+remains `NOT_ESTABLISHED`. This historical preservation record changes no
+scientific disposition and authorizes no successor.
+
 ## SCI-MD-012 bounded diagnosis (2026-09-03)
 
 SCI-MD-011 is `MERGED_COMPLETE`, with exact disposition

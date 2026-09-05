@@ -12,5 +12,25 @@
   "resistance_qualified": 1061,
   "time_series_qualified": 1223,
   "unique_records": 23169,
-  "usable_population_chemistry": false
+  "usable_population_chemistry": false,
+  "private_work_record": "docs/analysis/data_leverage/VISUALIZER_PRIVATE_WORK_RECORD.md",
+  "private_work_record_id": "VIS-EWP-RECORD-001",
+  "private_work_record_date": "2026-09-05",
+  "private_work_completed": true,
+  "private_work_raw_data_committed": false,
+  "private_work_public_safe_summary_only": true,
+  "private_work_status": "EXISTING_VISUALIZER_DATA_LANE_COMPLETE_FOR_CURRENT_BOUNDARY_AND_ONSET_DECISIONS",
+  "private_work_terminal_results": [
+    "VIS_EWP_PLAY_002_PRESSURE_VALUE_CONCENTRATED_IN_SELECTED_COHORTS",
+    "VIS_EWP_PLAY_003_RESUMED_FULL_EWP_STABLE_NO_INCREMENTAL_VALUE",
+    "VIS_EWP_PLAY_004_ONSET_STORAGE_MATERIAL_BUT_NOT_SUFFICIENT",
+    "VIS_MACHINE_PRIORS_001_MACHINE_METADATA_TOO_SPARSE_FOR_CORPUS_MAPPING",
+    "SCI_ED_003_HYD_F0_OWNER_APPARATUS_INPUT_REQUIRED"
+  ],
+  "private_work_revisit_requires": [
+    "EXPLICIT_SOURCE_OR_MACHINE_SEMANTICS",
+    "SYNCHRONIZED_KNOWN_BOUNDARY_MEASUREMENTS",
+    "MATERIALLY_NEW_INDEPENDENT_DATA",
+    "SEPARATELY_AUTHORIZED_NEW_DECISION"
+  ]
 }
