@@ -17,7 +17,7 @@ def figures(data,output):
                 alpha=calibrate(dd[CASES[0]]['C'],dd[CASES[0]]['W'])
                 if kind=='flow':yy=c['Q_m3_s']*1e6;unit='C outlet flow (mL/s)'
                 elif kind=='residual':yy=100*(c['Q_m3_s']/(alpha*w['Q_m3_s'])-1);unit='Signed C/N residual (%)'
-                else:yy=c['solute_kg']*1e3;unit='C cumulative outlet solute (g)'
+                else:yy=c['solute_kg']*1e3;unit='C cumulative outlet solute (g)';xx=c['end_s']
                 curves.append((law,yy))
             ymax=max(float(max(y)) for _,y in curves)*1.06
             ymin=min(0.,min(float(min(y)) for _,y in curves)*1.06)

@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 import numpy as np
-from tools.sci_md_rheology_001.analysis import write,sha
+from tools.sci_md_rheology_001.analysis import ROOT,write,sha
 from tools.sci_md_rheology_002.run import rows, CASES, DOC as OLD
 from tools.sci_md_rheology_002.analyze import errors,qualified_effect,analyze as baseline_analyze
 from .laws import LAWS,NEW,fraction
@@ -47,7 +47,7 @@ def gates(d):
         correction_total_kg=float(sum(abs(d['correction_kg']))),
         c_min_kg_m3=cmin,c_max_kg_m3=cmax,remaining_min_kg=float(min(d['remaining_kg'])),
         volume_identity_max_m3=float(max(abs(d['volume_m3']-d['Q_m3_s']*d['dt_s']))))
-    result['source_domain_pass']=cmin>=-1e-10 and cmax/(965+cmax)<=.24
+    result['source_domain_pass']=cmax/(965+cmax)<=.24
     result['numerical_state_pass']=(result['water_balance_max_kg']<=1e-8 and result['solute_balance_max_kg']<=1e-8
         and result['correction_total_kg']<=1e-10 and cmin>=-1e-10 and cmax<=180+1e-8
         and result['remaining_min_kg']>=-1e-12 and result['volume_identity_max_m3']<=1e-15)
@@ -91,16 +91,73 @@ def check_baseline(baseline, output):
     receipt['metric_reproduction']='EXACT';return reproduced,receipt
 
 
+def validate_campaign(artifacts):
+    artifacts=Path(artifacts)
+    freeze=json.loads((DOC/'FREEZE.json').read_text())
+    freeze_hash=sha(DOC/'FREEZE.json')
+    for p,h in freeze['files'].items():
+        if sha(ROOT/p)!=h:
+            raise ValueError('scoring implementation differs from freeze: '+p)
+    events=[json.loads(s) for s in (artifacts/'INVOCATIONS.jsonl').read_text().splitlines()]
+    specs={'_'.join(x):x for x in matrix()};starts={};ends={};terminal=set()
+    for e in events:
+        ident=e['id']
+        if ident not in specs:raise ValueError('undeclared campaign identity')
+        if e['status']=='STARTED':
+            if ident in starts or len(starts)>=24:raise ValueError('duplicate/budget violation')
+            r,c,law=specs[ident];table=law+('_refined' if r=='property' else '_base')
+            if (e['freeze_sha256']!=freeze_hash or e['executable_sha256']!=freeze['executable_sha256']
+                or e['table_sha256']!=freeze['tables'][table]):raise ValueError('run authority mismatch')
+            starts[ident]=e
+        else:
+            if ident not in starts or ident in terminal or e['status'] not in ('FAILED','COMPLETE'):
+                raise ValueError('invalid ledger event sequence')
+            terminal.add(ident)
+            if e['status']=='COMPLETE':
+                directory=artifacts/ident
+                files={directory/'scenario.json':e['configuration_sha256'],directory/'case'/INTERVAL:e['intervals_sha256']}
+                files.update({directory/p:h for p,h in e['logs_sha256'].items()})
+                files.update({directory/'case'/p:h for p,h in e['input_hashes'].items()})
+                if any(sha(p)!=h for p,h in files.items()):raise ValueError('completed run artifact mismatch')
+                ends[ident]=e
+    return list(starts.values()),list(ends.values())
+
+
+def partial_report(artifacts,baseline):
+    """Retain completed subsets without converting incomplete evidence into PASS."""
+    report=dict(classification='SOURCE_DOMAIN_OR_NUMERICAL_UNRESOLVED',completed={},unavailable={})
+    try:
+        reuse(baseline);_,ends=validate_campaign(artifacts)
+    except (OSError,ValueError,KeyError) as e:
+        report['provenance_blocker']=str(e);return report
+    available={r['id'] for r in ends}
+    for law in NEW:
+        for res in SETS:
+            wr='base' if res=='property' else res
+            alpha=None;ref=f'{res}_{CASES[0]}_{law}'
+            if ref in available:
+                try:alpha=calibrate(rows(Path(artifacts)/ref/'case'),rows(Path(baseline)/f'{wr}_{CASES[0]}_W/case'))
+                except (OSError,ValueError) as e:report['unavailable'][ref]=str(e)
+            for name in CASES:
+                ident=f'{res}_{name}_{law}'
+                if ident not in available:
+                    report['unavailable'][ident]='not completed';continue
+                try:
+                    c=rows(Path(artifacts)/ident/'case');w=rows(Path(baseline)/f'{wr}_{name}_W/case');matched(c,w)
+                    item=dict(alpha=alpha,C_W=errors(c['Q_m3_s'],w['Q_m3_s'],c['dt_s']),gates=gates(c),coupled_secondary=secondary(c),qualification='UNRESOLVED_INCOMPLETE_FAMILY')
+                    if alpha is not None:item['C_N']=errors(c['Q_m3_s'],alpha*w['Q_m3_s'],c['dt_s'])
+                    report['completed'][ident]=item
+                except (OSError,ValueError) as e:report['unavailable'][ident]=str(e)
+    return report
+
+
 def analyze(artifacts,baseline,output):
     artifacts,baseline,output=map(Path,(artifacts,baseline,output));output.mkdir(parents=True,exist_ok=False)
     old,receipt=check_baseline(baseline,output/'baseline-reproduction')
-    ledger=[json.loads(s) for s in (artifacts/'INVOCATIONS.jsonl').read_text().splitlines()]
-    starts=[r for r in ledger if r['status']=='STARTED'];ends=[r for r in ledger if r['status']=='COMPLETE']
+    starts,ends=validate_campaign(artifacts)
     expected={'_'.join(x) for x in matrix()}
-    if len(starts)!=24 or len(ends)!=24 or {r['id'] for r in starts}!=expected or {r['id'] for r in ends}!=expected:
+    if len(starts)!=24 or len(ends)!=24 or {r['id'] for r in ends}!=expected:
         raise ValueError('incomplete family/failed attempts: no scientific PASS')
-    for r in ends:
-        if sha(artifacts/r['id']/'case'/INTERVAL)!=r['intervals_sha256']:raise ValueError('new interval identity mismatch')
     mu_water=json.loads((DOC/'EXPORT.json').read_text())['water_viscosity_Pa_s']
     data={};laws={};run_gates={}
     for law in LAWS:
@@ -171,7 +228,8 @@ def main():
     try:r=analyze(a.artifacts,a.baseline,a.output)
     except (ValueError,OSError) as e:
         a.output.mkdir(parents=True,exist_ok=True)
-        write(a.output/'UNRESOLVED.json',dict(classification='SOURCE_DOMAIN_OR_NUMERICAL_UNRESOLVED',cause=str(e)))
+        partial=partial_report(a.artifacts,a.baseline);partial['cause']=str(e)
+        write(a.output/'UNRESOLVED.json',partial)
         raise
     print(r['classification'])
 

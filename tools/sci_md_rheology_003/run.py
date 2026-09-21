@@ -36,7 +36,9 @@ def invoke(root, ident, budget, allowed, record, callback):
             case=callback(directory)
             end=dict(id=ident,status='COMPLETE',intervals_sha256=sha(case/INTERVAL),
                      configuration_sha256=sha(directory/'scenario.json'),
-                     logs_sha256={p.name:sha(p) for p in sorted(directory.glob('command-*.log'))})
+                     logs_sha256={p.name:sha(p) for p in sorted(directory.glob('command-*.log'))},
+                     input_hashes={str(p.relative_to(case)):sha(p) for folder in ('0','system','constant')
+                                   for p in sorted((case/folder).iterdir()) if p.is_file()})
             append(end)
         except BaseException:
             append(dict(id=ident,status='FAILED'));raise

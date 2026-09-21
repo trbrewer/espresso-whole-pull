@@ -124,6 +124,34 @@ class Rheology003(unittest.TestCase):
             with self.assertRaises(OSError):evidence.reuse(Path(d))
             with self.assertRaises((OSError,ValueError)):analyze.analyze(Path(d)/'runs',Path(d),Path(d)/'output')
 
+    def test_campaign_provenance_tamper(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);doc=root/'doc';doc.mkdir()
+            (doc/'FREEZE.json').write_text(json.dumps(dict(files={},executable_sha256='exe',tables={'TR_DELAYED_base':'table'})))
+            ident='base_uniform_9bar_TR_DELAYED';out=root/ident;out.mkdir()
+            (out/'scenario.json').write_text('{}');(out/'case').mkdir();interval=out/'case'/evidence.INTERVAL
+            interval.parent.mkdir(parents=True);interval.write_text('test')
+            start=dict(id=ident,status='STARTED',freeze_sha256=evidence.sha(doc/'FREEZE.json'),executable_sha256='exe',table_sha256='table')
+            end=dict(id=ident,status='COMPLETE',configuration_sha256=evidence.sha(out/'scenario.json'),intervals_sha256=evidence.sha(interval),logs_sha256={},input_hashes={})
+            def save(a,b):(root/'INVOCATIONS.jsonl').write_text(json.dumps(a)+'\n'+json.dumps(b)+'\n')
+            with patch.object(analyze,'DOC',doc):
+                save(start,end);self.assertEqual(len(analyze.validate_campaign(root)[1]),1)
+                for key in ('freeze_sha256','executable_sha256','table_sha256'):
+                    bad=dict(start);bad[key]='wrong';save(bad,end)
+                    with self.assertRaises(ValueError):analyze.validate_campaign(root)
+                save(start,end);(out/'scenario.json').write_text('tamper')
+                with self.assertRaises(ValueError):analyze.validate_campaign(root)
+
+    def test_partial_preserves_completed_branch(self):
+        ident='base_uniform_9bar_TR_DELAYED'
+        with patch.object(analyze,'reuse'),patch.object(analyze,'validate_campaign',return_value=([],[{'id':ident}])), \
+             patch.object(analyze,'rows',return_value=trace([1,2])),patch.object(analyze,'gates',return_value={'numerical_state_pass':True}), \
+             patch.object(analyze,'secondary',return_value={'solute_kg':.001}):
+            r=analyze.partial_report(Path('new'),Path('old'))
+            self.assertEqual(r['classification'],'SOURCE_DOMAIN_OR_NUMERICAL_UNRESOLVED')
+            self.assertIn(ident,r['completed']);self.assertEqual(r['completed'][ident]['C_N']['integrated'],0.)
+            self.assertEqual(len(r['unavailable']),23)
+
     def test_failed_attempt_preserved_and_budget(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d)

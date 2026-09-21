@@ -31,7 +31,7 @@ def main():
         'tools/sci_md_rheology_001/analysis.py','tools/sci_md_rheology_002/authority.py',
         'tools/sci_md_rheology_002/run.py','tools/sci_md_rheology_002/analyze.py',
         'tools/sci_md_rheology_002/export.py','tools/sci_md_rheology_002/evaluator.cpp',
-        'docs/analysis/sci_md_rheology_001/SCENARIOS.json','dependencies/puckworks/PUCKWORKS_LOCK.json')]
+        'docs/analysis/sci_md_rheology_001/SCENARIOS.json','dependencies/puckworks.lock.json')]
     freeze=dict(task='SCI-MD-RHEOLOGY-003',governance='G1',declaration='SOURCE_SCENARIO_CHANGE_ONLY',
         starting_commit='d40e0e64316d57dd4b685089daf07e3a13a11974',starting_tree='ebf8c0b78fda04f182ddae52968eab6002dbf768',
         files={str(p.relative_to(ROOT)):sha(p) for p in sorted(set(paths))},executable_sha256=exe,
