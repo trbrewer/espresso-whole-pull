@@ -1,4 +1,5 @@
 """Ordinary CI uses synthetic tables only; native fixtures are separately recorded."""
+from __future__ import annotations
 import copy
 import json
 from pathlib import Path
@@ -44,6 +45,16 @@ class Rheology002(unittest.TestCase):
             with self.subTest(body=body):
                 self.table.write_text(HEADER+body);self.assertNotEqual(self.evaluate('0').returncode,0)
                 with self.assertRaises(ValueError):contract(self.s)
+
+    def test_malformed_terminal_tokens_without_newline(self):
+        valid = self.table.read_text()
+        for token in ('1e999', '1e', '-', 'nan', 'inf', '.24', '.24 1e999'):
+            with self.subTest(token=token):
+                self.table.write_text(valid+token)
+                self.assertNotEqual(self.evaluate('0').returncode, 0)
+                with self.assertRaises(ValueError):contract(self.s)
+        self.table.write_text(valid.rstrip())
+        self.assertEqual(self.evaluate('0').returncode, 0)
 
     def test_metadata_rejections(self):
         for old,new in [('Pa.s','mPa.s'),('wet_mass_fraction','percent'),('363.15','360'),('965','1000'),('linear','cubic')]:

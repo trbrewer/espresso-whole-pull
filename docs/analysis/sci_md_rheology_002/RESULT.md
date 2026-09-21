@@ -151,7 +151,7 @@ Final native verification: absent/disabled traces equal the accepted predecessor
 executable exactly on both short scenarios; constant synthetic table recovery,
 water/zero source, evolving feedback, multiplier, uniform/layer analytical,
 continuum approach, conservation, repeat and two-rank checks pass. Maximum
-analytical relative error is 5.40e-12; serial/MPI normalized maximum 1.41e-11;
+analytical relative error is 5.40e-12; serial/MPI normalized maximum 3.054e-11;
 repeat difference zero. Baseline executable SHA-256 is independently tied to
 predecessor AUTHORITY.json. No predecessor field was relabeled as a new run.
 
@@ -168,6 +168,22 @@ paths. EXPORT.json, VERIFICATION.json and STARTUP.json retain compact evidence.
 All raw fields, meshes, logs, binaries and source-derived tables are external.
 Final Python/static/hosted CI and exact-head review status are reported in the
 PR handoff; a scientific classification is not a substitute for those checks.
+
+The independent review of fd514398380daeedb10c6c8d726ee018e5d291f4 found one
+native parser defect: malformed terminal numeric tokens without a newline could
+be mistaken for clean EOF. The review independently reproduced METRICS.json
+exactly and verified all 18 runs. POST_RESULT_AMENDMENT.json preserves that FAIL
+and the bounded correction: reject a failed numeric entry after it starts.
+Mapping/interpolation, accepted runtime-table bytes and scientific calculations
+are unchanged. The corrected native build passes the 18 short fixtures again;
+compiled malformed-EOF regressions and accepted-adapter equivalence pass. No
+full scientific run was repeated. This adds 18 short invocations to the earlier
+fixture ledger; all prior failed/accepted evidence is retained externally.
+The first hosted static attempt also exposed missing executable bits and a
+missing future-annotations marker, and local integration found stale active
+package-manifest metadata. These packaging defects are corrected in this PR;
+historical metadata is preserved. Final-candidate full-suite/CI evidence replaces
+the superseded in-progress checks, without relabeling their failures as science.
 
 Recommendation: **retain the experimental option for further qualified work**.
 Keep constant viscosity as the default. No automatic successor or merge.

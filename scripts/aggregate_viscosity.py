@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Maintained case-generation contract for optional aggregate viscosity."""
 import math
 from pathlib import Path

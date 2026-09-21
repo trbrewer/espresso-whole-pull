@@ -52,10 +52,11 @@ def execute(s, directory, executable, nprocs=1):
 
 
 def check_freeze(executable,table):
-    f=json.loads((DOC/'FREEZE.json').read_text())
-    for path,digest in f['files'].items():
+    from tools.sci_md_rheology_002.authority import expected
+    f,files,executable_hash=expected(DOC)
+    for path,digest in files.items():
         if sha(ROOT/path)!=digest: raise ValueError('frozen implementation changed: '+path)
-    if sha(executable)!=f['executable_sha256'] or sha(table)!=f['runtime_table_sha256']:
+    if sha(executable)!=executable_hash or sha(table)!=f['runtime_table_sha256']:
         raise ValueError('runtime identity differs from freeze')
 
 

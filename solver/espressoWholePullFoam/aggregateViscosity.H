@@ -22,8 +22,10 @@ struct AggregateViscosity {
             || rho!=965 || dilute!=0.10 || upper!=0.24)
             throw std::runtime_error("RHEOLOGY_TABLE_CONTRACT");
         double x,y;
-        while (f >> x) {
-            if (!(f >> y) || !std::isfinite(x) || !std::isfinite(y) || y<=0
+        while (true) {
+            f >> std::ws;
+            if (f.eof()) break; // EOF is allowed only before an entry starts.
+            if (!(f >> x >> y) || !std::isfinite(x) || !std::isfinite(y) || y<=0
                 || x<0 || x>upper || (!w.empty() && x<=w.back()))
                 throw std::runtime_error("RHEOLOGY_TABLE_ENTRIES");
             w.push_back(x); mu.push_back(y);

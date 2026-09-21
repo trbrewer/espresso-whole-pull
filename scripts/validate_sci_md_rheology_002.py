@@ -5,13 +5,16 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from tools.sci_md_rheology_002.authority import expected
 
 
 def inspect(root):
     doc=root/'docs/analysis/sci_md_rheology_002'
-    f=json.loads((doc/'FREEZE.json').read_text())
+    f,files,_=expected(doc)
     errors=[]
-    for path,digest in f['files'].items():
+    for path,digest in files.items():
         if hashlib.sha256((root/path).read_bytes()).hexdigest()!=digest:
             errors.append('frozen source changed: '+path)
     if f['governance']!='G2' or f['change_declaration']!='GOVERNING_PHYSICS_CHANGE':errors.append('wrong declaration')
