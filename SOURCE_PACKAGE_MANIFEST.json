@@ -28,8 +28,8 @@
   ],
   "file_count": 1064,
   "total_uncompressed_bytes_excluding_manifest": 10740073,
-  "aggregate_source_sha256": "1a097f66bdbaaabe9b2a8139139345d2eff485e82d89f0fed6a375fea701a39c",
-  "aggregate_sha256": "1a097f66bdbaaabe9b2a8139139345d2eff485e82d89f0fed6a375fea701a39c",
+  "aggregate_source_sha256": "328cbdd2d16cff7e1f920e178204f9c02a2ae277f02215ad6b083f2c4a2dbe15",
+  "aggregate_sha256": "328cbdd2d16cff7e1f920e178204f9c02a2ae277f02215ad6b083f2c4a2dbe15",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2279,7 +2279,7 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/FREEZE.json": {
-      "sha256": "1301f41e436c27a2105bbb4eb65907f372f19cbb6e15a7c534fe91ba2026a9bd",
+      "sha256": "3108a8c7dcdf324328c228c80bfb77fae479ca9d56e99d52a0c412dc26c18229",
       "bytes": 1255,
       "git_mode": "100644"
     },

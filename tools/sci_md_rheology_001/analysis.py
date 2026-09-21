@@ -169,7 +169,7 @@ def load_profile(case, s, measured, excess):
     scale=straight_sided_wedge_scale(s['geometry']['wedge_angle_deg'])
     length=s['coffee_bed']['bed_depth_m']; muw=s['liquid']['dynamic_viscosity_Pa_s']
     centres=np.array(internal_numeric_values(case/'0/C',cell_count=n)).reshape(n,3)
-    volumes=np.array(scalar_internal_values(case/'0/V',cell_count=n))
+    volumes=np.array(scalar_internal_values(case/'0/Vc',cell_count=n))
     with (case/'postProcessing/wholePull/0/traces.csv').open() as f:
         trace=[{k:float(v) for k,v in row.items()} for row in csv.DictReader(f)]
     if abs(trace[-1]['time_s']-30)>1e-8:
