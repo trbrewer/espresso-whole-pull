@@ -1,0 +1,452 @@
+{
+  "primary": {
+    "alpha": 0.8816834149858902,
+    "category": "STATE_DEPENDENT_EFFECT",
+    "metrics": {
+      "layered_3bar": {
+        "absolute": {
+          "integrated": 0.23047363019929004,
+          "peak": 0.29343939102669464
+        },
+        "concentration_range_kg_m3": [
+          0,
+          179.9869992144981
+        ],
+        "continuum_hydraulic_relative_error": 0.0007036197453789139,
+        "dilute_cell_fraction_range": [
+          0.080078125,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.10865689732538839,
+          1.0
+        ],
+        "hydraulic_relative_error": 1.2745138278091872e-11,
+        "residual": {
+          "integrated": 0.14260393260094428,
+          "peak": 0.19862322806127342
+        },
+        "solids_range": [
+          0,
+          0.15719567063903397
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.0004425295409598148
+        ]
+      },
+      "layered_9bar": {
+        "absolute": {
+          "integrated": 0.07040414341222194,
+          "peak": 0.15566695430901514
+        },
+        "concentration_range_kg_m3": [
+          0,
+          174.1780803263036
+        ],
+        "continuum_hydraulic_relative_error": 0.0007036197455272397,
+        "dilute_cell_fraction_range": [
+          0.23046875,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.34293854578003574,
+          1.0
+        ],
+        "hydraulic_relative_error": 1.2893242029576868e-11,
+        "residual": {
+          "integrated": 0.06641953318113399,
+          "peak": 0.1341939555662428
+        },
+        "solids_range": [
+          0,
+          0.15289802651084403
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.0003703206259010721
+        ]
+      },
+      "reversed_3bar": {
+        "absolute": {
+          "integrated": 0.31499266308195445,
+          "peak": 0.36181326603223996
+        },
+        "concentration_range_kg_m3": [
+          0,
+          179.98699921524573
+        ],
+        "continuum_hydraulic_relative_error": 0.0007036197378840203,
+        "dilute_cell_fraction_range": [
+          0.080078125,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.02642503710563632,
+          1.0
+        ],
+        "hydraulic_relative_error": 5.255351709365641e-12,
+        "residual": {
+          "integrated": 0.23814214556299412,
+          "peak": 0.27617246381120475
+        },
+        "solids_range": [
+          0,
+          0.15719567063958428
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.0004899411493643485
+        ]
+      },
+      "reversed_9bar": {
+        "absolute": {
+          "integrated": 0.15950972026287683,
+          "peak": 0.29106348660813053
+        },
+        "concentration_range_kg_m3": [
+          0,
+          174.17808032795196
+        ],
+        "continuum_hydraulic_relative_error": 0.0007036197375975828,
+        "dilute_cell_fraction_range": [
+          0.23046875,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.08074691446049989,
+          1.0
+        ],
+        "hydraulic_relative_error": 4.969358258222201e-12,
+        "residual": {
+          "integrated": 0.10118842533838325,
+          "peak": 0.1959284916307349
+        },
+        "solids_range": [
+          0,
+          0.1528980265120698
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.00044104646331908054
+        ]
+      },
+      "uniform_3bar": {
+        "absolute": {
+          "integrated": 0.2760411303243177,
+          "peak": 0.32651264761683374
+        },
+        "concentration_range_kg_m3": [
+          0,
+          179.98708237783353
+        ],
+        "continuum_hydraulic_relative_error": 1.5050849455633397e-11,
+        "dilute_cell_fraction_range": [
+          0.078125,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.06703025970570713,
+          1.0
+        ],
+        "hydraulic_relative_error": 1.5050849455633397e-11,
+        "residual": {
+          "integrated": 0.1941110627457623,
+          "peak": 0.23613471577670062
+        },
+        "solids_range": [
+          0,
+          0.15719573185406446
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.0004642610449072766
+        ]
+      },
+      "uniform_9bar": {
+        "absolute": {
+          "integrated": 0.11831658501410999,
+          "peak": 0.22553141048516812
+        },
+        "concentration_range_kg_m3": [
+          0,
+          174.19070742032812
+        ],
+        "continuum_hydraulic_relative_error": 1.4900747302704076e-11,
+        "dilute_cell_fraction_range": [
+          0.23046875,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.20891076442875384,
+          1.0
+        ],
+        "hydraulic_relative_error": 1.4900747302704076e-11,
+        "residual": {
+          "integrated": 0.07325479303356289,
+          "peak": 0.13419395556624286
+        },
+        "solids_range": [
+          0,
+          0.15290741601533872
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.0004037270796806872
+        ]
+      }
+    },
+    "qualification": "FROZEN_FIELD_SOURCE_CONDITIONED_ONLY",
+    "reversal": {
+      "3": {
+        "absolute": {
+          "integrated": 0.08451903288266441,
+          "peak": 0.06837387500554531
+        },
+        "residual": {
+          "integrated": 0.09553821296204984,
+          "peak": 0.07754923574993133
+        }
+      },
+      "9": {
+        "absolute": {
+          "integrated": 0.08910557685065489,
+          "peak": 0.13539653229911539
+        },
+        "residual": {
+          "integrated": 0.034768892157249265,
+          "peak": 0.061734536064492085
+        }
+      }
+    },
+    "uncertainty_pp": [
+      0.10152716209110013,
+      0.10696019194510742
+    ]
+  },
+  "stress": {
+    "alpha": 0.7958825451483534,
+    "category": "STATE_DEPENDENT_EFFECT",
+    "metrics": {
+      "layered_3bar": {
+        "absolute": {
+          "integrated": 0.3689469778351765,
+          "peak": 0.4537350463615787
+        },
+        "concentration_range_kg_m3": [
+          0,
+          179.9869992144981
+        ],
+        "continuum_hydraulic_relative_error": 0.0007036197453789139,
+        "dilute_cell_fraction_range": [
+          0.080078125,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.09158612321687506,
+          1.0
+        ],
+        "hydraulic_relative_error": 1.2745138278091872e-11,
+        "residual": {
+          "integrated": 0.23513696444659893,
+          "peak": 0.3136362180972358
+        },
+        "solids_range": [
+          0,
+          0.15719567063903397
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.0005723851399703857
+        ]
+      },
+      "layered_9bar": {
+        "absolute": {
+          "integrated": 0.12784758419294187,
+          "peak": 0.26939760409103325
+        },
+        "concentration_range_kg_m3": [
+          0,
+          174.1780803263036
+        ],
+        "continuum_hydraulic_relative_error": 0.0007036197455272397,
+        "dilute_cell_fraction_range": [
+          0.23046875,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.3142501718377757,
+          1.0
+        ],
+        "hydraulic_relative_error": 1.2893242029576868e-11,
+        "residual": {
+          "integrated": 0.12104668302188232,
+          "peak": 0.25646680668640476
+        },
+        "solids_range": [
+          0,
+          0.15289802651084403
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.00042796730985290025
+        ]
+      },
+      "reversed_3bar": {
+        "absolute": {
+          "integrated": 0.4700198211972406,
+          "peak": 0.5313698655417186
+        },
+        "concentration_range_kg_m3": [
+          0,
+          179.98699921524573
+        ],
+        "continuum_hydraulic_relative_error": 0.0007036197378840203,
+        "dilute_cell_fraction_range": [
+          0.080078125,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.021586021932891646,
+          1.0
+        ],
+        "hydraulic_relative_error": 5.255351709365641e-12,
+        "residual": {
+          "integrated": 0.3615719416091632,
+          "peak": 0.4111817914401827
+        },
+        "solids_range": [
+          0,
+          0.15719567063958428
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.000667208356779453
+        ]
+      },
+      "reversed_9bar": {
+        "absolute": {
+          "integrated": 0.26365210605728756,
+          "peak": 0.450889502533775
+        },
+        "concentration_range_kg_m3": [
+          0,
+          174.17808032795196
+        ],
+        "continuum_hydraulic_relative_error": 0.0007036197375975828,
+        "dilute_cell_fraction_range": [
+          0.23046875,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.06756696673996507,
+          1.0
+        ],
+        "hydraulic_relative_error": 4.969358258222201e-12,
+        "residual": {
+          "integrated": 0.17125618824734987,
+          "peak": 0.31006088673062915
+        },
+        "solids_range": [
+          0,
+          0.1528980265120698
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.0005694189846889171
+        ]
+      },
+      "uniform_3bar": {
+        "absolute": {
+          "integrated": 0.42557363173380086,
+          "peak": 0.49228727400893596
+        },
+        "concentration_range_kg_m3": [
+          0,
+          179.98708237783353
+        ],
+        "continuum_hydraulic_relative_error": 1.5050849455633397e-11,
+        "dilute_cell_fraction_range": [
+          0.078125,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.055416398081586486,
+          1.0
+        ],
+        "hydraulic_relative_error": 1.5050849455633397e-11,
+        "residual": {
+          "integrated": 0.30599528362354483,
+          "peak": 0.3620758124599582
+        },
+        "solids_range": [
+          0,
+          0.15719573185406446
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.0006158481478653092
+        ]
+      },
+      "uniform_9bar": {
+        "absolute": {
+          "integrated": 0.2041174548516468,
+          "peak": 0.36805488387422697
+        },
+        "concentration_range_kg_m3": [
+          0,
+          174.19070742032812
+        ],
+        "continuum_hydraulic_relative_error": 1.4900747302704076e-11,
+        "dilute_cell_fraction_range": [
+          0.23046875,
+          1.0
+        ],
+        "dilute_resistance_fraction_range": [
+          0.18302097662527608,
+          1.0
+        ],
+        "hydraulic_relative_error": 1.4900747302704076e-11,
+        "residual": {
+          "integrated": 0.13041812299150982,
+          "peak": 0.2564668066864048
+        },
+        "solids_range": [
+          0,
+          0.15290741601533872
+        ],
+        "weighted_mu_range_Pa_s": [
+          0.00031267394194924405,
+          0.0004947802174121304
+        ]
+      }
+    },
+    "qualification": "FROZEN_FIELD_SOURCE_CONDITIONED_ONLY",
+    "reversal": {
+      "3": {
+        "absolute": {
+          "integrated": 0.10107284336206412,
+          "peak": 0.07763481918013992
+        },
+        "residual": {
+          "integrated": 0.1264349771625643,
+          "peak": 0.09754557334294689
+        }
+      },
+      "9": {
+        "absolute": {
+          "integrated": 0.1358045218643457,
+          "peak": 0.18149189844274177
+        },
+        "residual": {
+          "integrated": 0.05020950522546755,
+          "peak": 0.05359408004422439
+        }
+      }
+    },
+    "uncertainty_pp": [
+      0.1145144689475519,
+      0.11888413322775349
+    ]
+  }
+}

@@ -1,5 +1,15 @@
 # Project State
 
+## SCI-MD-RHEOLOGY-001 saturated viscosity screen (2026-09-21)
+
+The [bounded EWP screen](analysis/sci_md_rheology_001/RESULT.md) is
+`IMPLEMENTED_AND_EXECUTED`, with source-conditioned `STATE_DEPENDENT_EFFECT`.
+Twelve unchanged-solver runs completed. Primary worst fixed-scale residuals are
+23.81% integrated and 27.62% peak; numerical estimates are 0.102/0.107 percentage
+points. Industrial-extract transfer and the dilute extension remain limitations.
+Production equations/defaults/runtime lock are unchanged. A minimal two-condition
+coupled test is recommended only; no successor or merge is authorized.
+
 ## Private Visualizer corpus programme record (2026-09-05)
 
 A substantial owner-authorized private Visualizer.coffee programme was

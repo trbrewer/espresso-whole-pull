@@ -1,0 +1,23 @@
+{
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "files": {
+    "tools/sci_md_rheology_001/analysis.py": {
+      "amended_sha256": "d44249324c17de8aae0db1fe10b1a17ff8cef6d2278b9c29e84bf4a62b49c81d",
+      "original_sha256": "96d58269e0e88058833bab26bff3b381ef1a254ffaccf357a19e897f2761ff8a"
+    },
+    "tools/sci_md_rheology_001/report.py": {
+      "amended_sha256": "8b887c7afb22aead46f9af4b560df3fa2741934b588dfdfb64d005e13336077f",
+      "original_sha256": "dd47acc526e3ce8203e454713b414958c3a3a03ea9fc531d6fafe63d60abc656"
+    },
+    "tools/sci_md_rheology_001/runner.py": {
+      "amended_sha256": "9cf1e5c6aec109ee4417d16698025e87083fd65b69a20ff845c8a41bd9600c21",
+      "original_sha256": "5dbec949b492b0b0ae63e2b648136cffccbb53b58e674ae4e7cc6e21265bbc3a"
+    }
+  },
+  "governance_class": "G0",
+  "original_candidate": "1c4d5dff1732b73894e60a611817e64b6c314efe",
+  "original_freeze_sha256": "5565e1dba7aa4b2ddd93bbfa51c88b7d536d45f16380684553f3d4a9332d659e",
+  "original_pre_result_commit": "a024ba82e08dc3aca5fca6b0fe3516e568a10e6d",
+  "scope": "Qualified imports in report and runner; check_freeze accepts only the explicitly hash-bound post-result deltas. Scientific functions, cases, inputs and results unchanged.",
+  "timing": "POST_RESULT"
+}

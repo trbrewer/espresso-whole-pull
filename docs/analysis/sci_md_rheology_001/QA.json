@@ -1,0 +1,112 @@
+{
+  "baseline_run_checks": {
+    "layered_3bar": {
+      "max_liquid_balance_residual_kg": 8.12457739973738e-14,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 8.33361306090024e-17,
+      "min_saturation": 1.0
+    },
+    "layered_3bar_spatial": {
+      "max_liquid_balance_residual_kg": 3.92082200040278e-13,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 9.82032280837915e-17,
+      "min_saturation": 1.0
+    },
+    "layered_3bar_temporal": {
+      "max_liquid_balance_residual_kg": 8.04304539636647e-14,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 2.18078634459177e-12,
+      "min_saturation": 1.0
+    },
+    "layered_9bar": {
+      "max_liquid_balance_residual_kg": 2.53776166747599e-13,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 7.7771766037697e-17,
+      "min_saturation": 1.0
+    },
+    "reversed_3bar": {
+      "max_liquid_balance_residual_kg": 2.58602167457767e-13,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 7.91486644155731e-17,
+      "min_saturation": 1.0
+    },
+    "reversed_3bar_spatial": {
+      "max_liquid_balance_residual_kg": 8.62327570461119e-13,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 9.96526983255294e-17,
+      "min_saturation": 1.0
+    },
+    "reversed_3bar_temporal": {
+      "max_liquid_balance_residual_kg": 2.5862645358643e-13,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 2.18078292003757e-12,
+      "min_saturation": 1.0
+    },
+    "reversed_9bar": {
+      "max_liquid_balance_residual_kg": 8.05341904275281e-13,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 7.96056122208372e-17,
+      "min_saturation": 1.0
+    },
+    "uniform_3bar": {
+      "max_liquid_balance_residual_kg": 1.91539492599979e-13,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 7.63438603945283e-17,
+      "min_saturation": 1.0
+    },
+    "uniform_9bar": {
+      "max_liquid_balance_residual_kg": 5.81742987115774e-13,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 7.68111975882861e-17,
+      "min_saturation": 1.0
+    },
+    "uniform_9bar_spatial": {
+      "max_liquid_balance_residual_kg": 1.08003883614316e-12,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 1.10628190605304e-16,
+      "min_saturation": 1.0
+    },
+    "uniform_9bar_temporal": {
+      "max_liquid_balance_residual_kg": 5.82301568075039e-13,
+      "max_saturation": 1.0,
+      "max_solute_balance_residual_kg": 9.87047758133232e-17,
+      "min_saturation": 1.0
+    }
+  },
+  "focused_tests": {
+    "command": "python3 -m unittest tests.test_sci_md_rheology_001 -q",
+    "passed": 23,
+    "run": 23
+  },
+  "full_suite": {
+    "command": "EWP_POROSITY_PERMEABILITY_PRIOR_PUCKWORKS_ROOT=<exact prior authority> PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p test_*.py",
+    "errors": 0,
+    "failures": 0,
+    "run": 1436,
+    "scope_note": "Full run completed; five later audit-amendment tests additionally passed in focused run.",
+    "skipped": 7
+  },
+  "governing_change_boundary": "PASS",
+  "historical_baseline": "PASS",
+  "measured_grid": {
+    "points": 24,
+    "source_tables_redistributed": false,
+    "status": "PASS"
+  },
+  "prior_failed_checks": "Initial suite had missing historical source-root environment and stale package records; affected recheck ran45 tests, all passed. Subsequent full suite passed.",
+  "production_source_diff": "EMPTY",
+  "retained_logs_sha256": {
+    "boundary": "07d82a998a116bfe25463d4484025b0c4a5b3906bd703a2d11949dd65e34f13d",
+    "full_suite": "4105e42c9bdaf9a82cb23d4de9aee97d526e3706093715d1fd40ea86b3ea11f5",
+    "historical_baseline": "982d4fa488835ff6c0ccfe7930db958f6f80f05e74143dcb326c01b028a927fe",
+    "source": "759641b3025e87431a55da0ff2b5a1fec4ba2c3e1ab0d12a20f7675ced4829f6",
+    "static": "403a46f4b1a716232aa2bae251c5048ae67bf72342c257193d242fbaa23869fa",
+    "targeted_rechecks": "dcacee557f06ecde779ff8c9f144b4addb7a34b14119f4b47c9abd0fcf2b08e8"
+  },
+  "runtime_lock_diff": "EMPTY",
+  "shell_syntax": "PASS",
+  "static": {
+    "gates": 39,
+    "passed": 39
+  }
+}

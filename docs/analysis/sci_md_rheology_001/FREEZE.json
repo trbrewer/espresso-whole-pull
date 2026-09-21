@@ -1,0 +1,17 @@
+{
+  "ewp_base": "ac49fe939f9e7fb38ba4eabc95d65e2fa47ee666",
+  "files": {
+    "docs/analysis/sci_md_rheology_001/AUTHORITY.json": "e2c320b1aade83e403b5d53c127b0900367e32c0bb56fba6585976cf9d4d45e8",
+    "docs/analysis/sci_md_rheology_001/PROTOCOL.md": "20eb3cbc5cc7e743ddc9b5c399e0a16e777d42fbb3db54443d4eb39ff405ac22",
+    "docs/analysis/sci_md_rheology_001/SCENARIOS.json": "b1561c3ddf32a04a604f788709f6e3ba3b091566bad5d917c1fcdf145e85a7a5",
+    "scripts/report_sci_md_rheology_001.py": "9495e5d0348ca07a6d79621bd0f3998261d732212a345d10b2ebc18db69166ec",
+    "scripts/run_sci_md_rheology_001.py": "fa759653a7ebab7a184b0e7751a0abe3d3a8460fe501bbf9ea44b4128c5a13db",
+    "scripts/sci_md_rheology_001.py": "de10f283e4c793f79f0d389d4e0636ea8e335485d325c6368291d5205bd83761",
+    "tests/test_sci_md_rheology_001.py": "d73382c587ef6f43ce3d3af405299a7c0b3abf171c4911e2e23c98c2c02a06c7",
+    "tools/sci_md_rheology_001/analysis.py": "96d58269e0e88058833bab26bff3b381ef1a254ffaccf357a19e897f2761ff8a",
+    "tools/sci_md_rheology_001/report.py": "dd47acc526e3ce8203e454713b414958c3a3a03ea9fc531d6fafe63d60abc656",
+    "tools/sci_md_rheology_001/runner.py": "5dbec949b492b0b0ae63e2b648136cffccbb53b58e674ae4e7cc6e21265bbc3a"
+  },
+  "puckworks_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+  "runtime_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10"
+}
