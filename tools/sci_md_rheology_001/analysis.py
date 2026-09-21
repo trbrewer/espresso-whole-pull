@@ -171,7 +171,8 @@ def load_profile(case, s, measured, excess):
     centres=np.array(internal_numeric_values(case/'0/C',cell_count=n)).reshape(n,3)
     volumes=np.array(scalar_internal_values(case/'0/Vc',cell_count=n))
     with (case/'postProcessing/wholePull/0/traces.csv').open() as f:
-        trace=[{k:float(v) for k,v in row.items()} for row in csv.DictReader(f)]
+        trace=[{k:float(row[k]) for k in ('time_s','outlet_flow_m3_s','radialToAxialVelocityRatio')}
+               for row in csv.DictReader(f)]
     if abs(trace[-1]['time_s']-30)>1e-8:
         raise ValueError('incomplete extraction window')
     if max(abs(row['radialToAxialVelocityRatio']) for row in trace)>1e-7:

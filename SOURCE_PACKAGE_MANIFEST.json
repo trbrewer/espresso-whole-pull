@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1064,
-  "total_uncompressed_bytes_excluding_manifest": 10740073,
-  "aggregate_source_sha256": "328cbdd2d16cff7e1f920e178204f9c02a2ae277f02215ad6b083f2c4a2dbe15",
-  "aggregate_sha256": "328cbdd2d16cff7e1f920e178204f9c02a2ae277f02215ad6b083f2c4a2dbe15",
+  "file_count": 1065,
+  "total_uncompressed_bytes_excluding_manifest": 10742945,
+  "aggregate_source_sha256": "e99d5d55cfc42f95fda000729c7f0d0b19af04feb101dab9f405ad6b859dcb61",
+  "aggregate_sha256": "e99d5d55cfc42f95fda000729c7f0d0b19af04feb101dab9f405ad6b859dcb61",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2279,8 +2279,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/FREEZE.json": {
-      "sha256": "3108a8c7dcdf324328c228c80bfb77fae479ca9d56e99d52a0c412dc26c18229",
+      "sha256": "3c8f9dbe483ec46f30ef6c544e42cfa10b56b605c35e9fb5ba2bdc1cf89eca91",
       "bytes": 1255,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_001/MANIFEST.json": {
+      "sha256": "951c257998d74714f3274db07ba0fe2a604ad1ecf656677e94e87057448fb392",
+      "bytes": 2872,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/PROTOCOL.md": {
