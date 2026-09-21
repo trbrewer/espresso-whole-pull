@@ -232,7 +232,17 @@ def freeze(puckworks):
 
 def check_freeze(audit):
     f=json.loads((DOC/'FREEZE.json').read_text())
-    if any(sha(ROOT/p)!=h for p,h in f['files'].items()): raise ValueError('frozen analysis changed')
+    expected = dict(f['files'])
+    amendment = DOC/'POST_RESULT_AMENDMENT.json'
+    if amendment.exists():
+        a = json.loads(amendment.read_text())
+        if a['original_freeze_sha256'] != sha(DOC/'FREEZE.json'):
+            raise ValueError('post-result amendment targets another freeze')
+        for path, delta in a['files'].items():
+            if expected.get(path) != delta['original_sha256']:
+                raise ValueError('post-result amendment original hash mismatch')
+            expected[path] = delta['amended_sha256']
+    if any(sha(ROOT/p)!=h for p,h in expected.items()): raise ValueError('frozen analysis changed')
     if f['puckworks_commit']!=PIN: raise ValueError('wrong analysis authority')
     subprocess.run(['git','-C',str(ROOT),'merge-base','--is-ancestor',f['ewp_base'],'HEAD'],check=True)
     if sha(ROOT/'dependencies/puckworks.lock.json')!=f['runtime_lock_sha256']:

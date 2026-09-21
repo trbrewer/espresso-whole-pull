@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1076,
-  "total_uncompressed_bytes_excluding_manifest": 11764985,
-  "aggregate_source_sha256": "c9a87e543a000ee2c7d9ddcf5c754272e5e029fbc1f899a86374554abb1ca460",
-  "aggregate_sha256": "c9a87e543a000ee2c7d9ddcf5c754272e5e029fbc1f899a86374554abb1ca460",
+  "file_count": 1079,
+  "total_uncompressed_bytes_excluding_manifest": 11774924,
+  "aggregate_source_sha256": "199d8ccfdc3440ce620e57b48a509ef128831ab98fd7d8c5466d7b706f9e09b5",
+  "aggregate_sha256": "199d8ccfdc3440ce620e57b48a509ef128831ab98fd7d8c5466d7b706f9e09b5",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2293,6 +2293,11 @@
       "bytes": 3510,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_rheology_001/CLOSEOUT.md": {
+      "sha256": "3bddb0f08ee51475fd6a03d56ed9165d68bbd488e5b3e5d2a751bd2a5c261d78",
+      "bytes": 5085,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_rheology_001/FREEZE.json": {
       "sha256": "5565e1dba7aa4b2ddd93bbfa51c88b7d536d45f16380684553f3d4a9332d659e",
       "bytes": 1379,
@@ -2321,6 +2326,11 @@
     "docs/analysis/sci_md_rheology_001/NUMERICAL.json": {
       "sha256": "5e2e57c1b67bae9a74edf68c3a34d6393e75e8015295265628e58fa85a193c2a",
       "bytes": 2628,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_001/POST_RESULT_AMENDMENT.json": {
+      "sha256": "402326695cc96d0c154721e494751ff9d7d0f8caf54a7af80c50f808f792ebb3",
+      "bytes": 1265,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/PROTOCOL.md": {
@@ -4761,6 +4771,11 @@
     "tests/test_sci_md_rheology_001.py": {
       "sha256": "d73382c587ef6f43ce3d3af405299a7c0b3abf171c4911e2e23c98c2c02a06c7",
       "bytes": 7527,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_rheology_001_imports.py": {
+      "sha256": "4e2b416be8e806e4ffc62c2b5dd7b4afa462df9d2e3e4b7a860006301c7c3f0f",
+      "bytes": 3589,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

@@ -7,8 +7,8 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
-sys.path.insert(0,str(Path(__file__).resolve().parent))
-from analysis import ROOT,DOC,check_freeze,sha,write
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
+from tools.sci_md_rheology_001.analysis import ROOT,DOC,check_freeze,sha,write
 
 
 def budget_available(inv, kind):

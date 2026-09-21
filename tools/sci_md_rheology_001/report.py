@@ -6,8 +6,8 @@ import json
 from pathlib import Path
 import sys
 import numpy as np
-sys.path.insert(0,str(Path(__file__).resolve().parent))
-from analysis import (DOC,ROOT,REF,source,load_profile,compare,errors,write,sha,check_freeze,check_output)
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
+from tools.sci_md_rheology_001.analysis import (DOC,ROOT,REF,source,load_profile,compare,errors,write,sha,check_freeze,check_output)
 
 
 def metrics_difference(a,b):
