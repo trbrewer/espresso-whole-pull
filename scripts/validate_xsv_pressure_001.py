@@ -36,7 +36,18 @@ def production_bytes(root, path):
     freeze = root/'docs/analysis/sci_md_rheology_002/FREEZE.json'
     if freeze.exists() and path in AUTHORIZED_EXISTING_PRODUCTION_DELTAS:
         frozen = load(freeze)
-        if sha(root/path) != frozen['files'][path]:
+        amendment = root/'docs/analysis/sci_md_rheology_002/POST_RESULT_AMENDMENT.json'
+        expected = frozen['files'][path]
+        if amendment.exists():
+            record = load(amendment)
+            if record['original_freeze_sha256'] != sha(freeze):
+                raise ValueError('post-result amendment targets another freeze')
+            if path in record['files']:
+                change = record['files'][path]
+                if change['original_sha256'] != expected:
+                    raise ValueError('post-result original production hash mismatch')
+                expected = change['amended_sha256']
+        if sha(root/path) != expected:
             raise ValueError('active rheology source differs from frozen contract '+path)
         if frozen['base_commit'] != '14fc4c8a4a94ffa54ffafd5c2c99037c1af680b9':
             raise ValueError('unrecognized historical production authority')

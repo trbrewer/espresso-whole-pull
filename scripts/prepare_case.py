@@ -1466,8 +1466,10 @@ def main() -> None:
             "type": "uniform"
         }
     history = pressure_history_contract(scenario)
+    aggregate_coupled = scenario.get("aggregate_viscosity", {}).get("mode", "off") == "coupled"
     preview = ({"status": "NOT_APPLICABLE", "reason": "Legacy scalar-ramp preview does not support pressure history"}
-               if history else analytical_preview(preview_scenario))
+               if history else {"status": "NOT_APPLICABLE", "reason": "Scalar-viscosity analytical preview is inapplicable to local aggregate-viscosity feedback; use native interval resistance diagnostics"}
+               if aggregate_coupled else analytical_preview(preview_scenario))
     if r1:
         if is_wp02_scenario(scenario):
             preview["notes"] = [
@@ -1491,7 +1493,7 @@ def main() -> None:
     )
 
     b0 = None
-    if history is None and (str(scenario["scenario_id"]).startswith("reference_R0") or r1):
+    if history is None and not aggregate_coupled and (str(scenario["scenario_id"]).startswith("reference_R0") or r1):
         b0 = b0_reduced_simulation(scenario)
         (preflight_dir / "B0_REDUCED_TWIN_V0_1_4.json").write_text(
             canonical_json(b0) if r1 else json.dumps(b0, indent=2) + "\n",
@@ -1547,6 +1549,9 @@ def main() -> None:
     ] + sorted((case / "0.orig").iterdir())
     if history is not None:
         scientific_inputs += sorted((root / "solver/espressoWholePullFoam").glob("*.H"))
+    if scenario.get("aggregate_viscosity", {}).get("mode", "off") != "off":
+        scientific_inputs += [root / "solver/espressoWholePullFoam/aggregateViscosity.H",
+                              Path(scenario["aggregate_viscosity"]["table"]).resolve()]
     hashes = {}
     for path in scientific_inputs:
         try:

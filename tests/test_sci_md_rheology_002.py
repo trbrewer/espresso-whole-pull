@@ -100,6 +100,19 @@ class Rheology002(unittest.TestCase):
         self.assertEqual(classify(metrics,uncertainty,True),'COUPLED_STATE_DEPENDENCE_PERSISTS')
         self.assertEqual(classify(metrics,uncertainty,False),'NUMERICALLY_UNRESOLVED')
 
+    def test_coupled_generated_preview_inapplicable(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);config=root/'config.json';case=root/'case'
+            config.write_text(json.dumps(self.s))
+            subprocess.run(['python3',str(ROOT/'scripts/prepare_case.py'),'--root',str(ROOT),
+                '--config',str(config),'--case-dir',str(case),'--nprocs','1'],check=True,capture_output=True)
+            preview=json.loads((case/'preflight/ANALYTICAL_PREFLIGHT_V0_1_4.json').read_text())
+            self.assertEqual(preview['status'],'NOT_APPLICABLE')
+            self.assertFalse((case/'preflight/B0_REDUCED_TWIN_V0_1_4.json').exists())
+            manifest=json.loads(next(case.glob('*CASE_MANIFEST_V0_1_4.json')).read_text())
+            self.assertIn('solver/espressoWholePullFoam/aggregateViscosity.H',manifest['scientific_input_sha256'])
+            self.assertIn(str(self.table),manifest['scientific_input_sha256'])
+
     def test_package_cli_discovery(self):
         for module in ('export','run','analyze','verify'):
             r=subprocess.run(['python3','-m','tools.sci_md_rheology_002.'+module,'--help'],cwd=ROOT,capture_output=True)

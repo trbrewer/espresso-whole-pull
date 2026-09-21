@@ -182,7 +182,12 @@ fixture ledger; all prior failed/accepted evidence is retained externally.
 The first hosted static attempt also exposed missing executable bits and a
 test importing a numerical library directly, and local integration found stale active
 package-manifest metadata. These packaging defects are corrected in this PR;
-historical metadata is preserved. Final-candidate full-suite/CI evidence replaces
+historical metadata is preserved. A final diagnostic audit also marks the generated scalar analytical preflight
+and reduced twin inapplicable for coupled cases and adds helper/table hashes
+to maintained generated provenance. Original unused scalar preflight files are
+retained with the historical runs; they were never scientific reference inputs.
+Regenerated solver inputs are byte-identical, so no native reruns are needed.
+Final-candidate full-suite/CI evidence replaces
 the superseded in-progress checks, without relabeling their failures as science.
 
 Recommendation: **retain the experimental option for further qualified work**.
