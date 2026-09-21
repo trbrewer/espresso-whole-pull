@@ -139,14 +139,26 @@
       "disposition": "EWP_POROSITY_PERMEABILITY_PRIOR_001_POSITIVE_POROSITY_ONLY"
     },
     "sci_md_rheology_001": {
-      "focused_tests": 23,
-      "full_suite_run": 1436,
-      "full_suite_skipped": 7,
       "static_gates_passed": 39,
       "solver_invocations": 12,
       "scientific_result": "STATE_DEPENDENT_EFFECT",
       "production_physics_changed": false,
-      "physical_validation": "NOT_ESTABLISHED"
+      "physical_validation": "NOT_ESTABLISHED",
+      "historical_test_record": {
+        "focused_tests": 23,
+        "full_suite_run": 1436,
+        "full_suite_skipped": 7,
+        "candidate": "1c4d5dff1732b73894e60a611817e64b6c314efe",
+        "scope": "Pre-closeout full-suite discovery followed by five separately executed audit-amendment tests; not final-candidate integration evidence."
+      },
+      "closeout_focused_tests": {
+        "run": 29,
+        "passed": 29,
+        "failed": 0,
+        "errored": 0,
+        "skipped": 0
+      },
+      "final_candidate_verification": "Exact-head complete-suite counts, hosted checks and review are recorded in PR #150 closeout evidence; historical_test_record is preserved history."
     },
     "python_test_count_role": "DISCOVERED_NOT_EXECUTED; exact-candidate execution counts are in PR #150 closeout evidence"
   },
