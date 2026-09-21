@@ -9,8 +9,8 @@
     "QA.json": "4872ef68f2af8b6c717db165f3a610696e272ce2dc21481b39f9522d3630a138",
     "RESULT.md": "1865f784c936c3b5f365495449fbe1efcd1ce8db11fc42023c959de12df0626a",
     "SCENARIOS.csv": "7cf226fc316962f2d88e0fbb4e35d408f5c0818680c0cfefe3a352c450661bbe",
-    "effects.svg": "0985b64496038325ddd539efb197c6ce38ca0ef0bec4b41c6e22b5f361f14ce6",
-    "resistance.svg": "150fd0c11ed02a11db07b7f4799ffdaf28b8bf40e309c4f5194d6d2d852cf550"
+    "effects.svg": "51d364f4d07f46b6d7885cb2101b212545243b7201009efecd19ea449ea45aca",
+    "resistance.svg": "12f049094b60445fdadaac5fb27547f3995c9a555dbb0572e1d0581e7a2b55cc"
   },
   "audit_file": "AUDIT.json",
   "authority_file": "AUTHORITY.json",
@@ -27,7 +27,7 @@
   "numerical_solver_invocations": 6,
   "primary_solver_invocations": 6,
   "production_physics_change": false,
-  "public_text_normalization": "CSV line endings normalized from CRLF to LF for Git; numeric content unchanged",
+  "public_text_normalization": "CSV CRLF normalized to LF; generated SVG trailing whitespace removed for Git. Numeric and rendered content unchanged.",
   "raw_artifact_directory": "external SCI-MD-RHEOLOGY-001/runs; explicit --runs supplied at execution",
   "raw_inventory_definition": "SHA256 of compact JSON [[relative_path,bytes,file_sha256],...] in sorted path order; full entries retained externally",
   "raw_inventory_sha256": "18e29f8b20c35db4ff12c36648f87bee8c1c4fb6c3b9b36c832e2a1f740339aa",

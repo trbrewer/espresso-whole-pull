@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1076,
-  "total_uncompressed_bytes_excluding_manifest": 11767091,
-  "aggregate_source_sha256": "4553968e9b36f9fec6e7aee68d4ca2cb1644ccaf2ad7cfd3bf7bd2857c3faf93",
-  "aggregate_sha256": "4553968e9b36f9fec6e7aee68d4ca2cb1644ccaf2ad7cfd3bf7bd2857c3faf93",
+  "total_uncompressed_bytes_excluding_manifest": 11764985,
+  "aggregate_source_sha256": "c9a87e543a000ee2c7d9ddcf5c754272e5e029fbc1f899a86374554abb1ca460",
+  "aggregate_sha256": "c9a87e543a000ee2c7d9ddcf5c754272e5e029fbc1f899a86374554abb1ca460",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2304,8 +2304,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/MANIFEST.json": {
-      "sha256": "d0a9cfae64d6612db51f705628ca8b5b49760f09dfe85dbb87701843aa818694",
-      "bytes": 8971,
+      "sha256": "0ff2be09f92f650cfdd4b3d3888a6cb39210d2bfb33d8c92e66e2d1c0b418cb6",
+      "bytes": 9010,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/METRICS.csv": {
@@ -2349,13 +2349,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/effects.svg": {
-      "sha256": "0985b64496038325ddd539efb197c6ce38ca0ef0bec4b41c6e22b5f361f14ce6",
-      "bytes": 47103,
+      "sha256": "51d364f4d07f46b6d7885cb2101b212545243b7201009efecd19ea449ea45aca",
+      "bytes": 46362,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/resistance.svg": {
-      "sha256": "150fd0c11ed02a11db07b7f4799ffdaf28b8bf40e309c4f5194d6d2d852cf550",
-      "bytes": 66694,
+      "sha256": "12f049094b60445fdadaac5fb27547f3995c9a555dbb0572e1d0581e7a2b55cc",
+      "bytes": 65290,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_ewp_input_mapping_001/INPUT_REGISTRY.csv": {
