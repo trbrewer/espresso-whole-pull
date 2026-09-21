@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1104,
-  "total_uncompressed_bytes_excluding_manifest": 12047508,
-  "aggregate_source_sha256": "87fec7f851a5da11817784ff509a91941d5cdd3052c7c8a662031a9f7379b1b7",
-  "aggregate_sha256": "87fec7f851a5da11817784ff509a91941d5cdd3052c7c8a662031a9f7379b1b7",
+  "file_count": 1110,
+  "total_uncompressed_bytes_excluding_manifest": 12731726,
+  "aggregate_source_sha256": "e8de0d908e90648272517c35238b9166aafb5ab32dde27e3dd1ca20c6e4d0554",
+  "aggregate_sha256": "e8de0d908e90648272517c35238b9166aafb5ab32dde27e3dd1ca20c6e4d0554",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2443,6 +2443,11 @@
       "bytes": 7038,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_rheology_003/METRICS.json": {
+      "sha256": "ba0c9739ca4103f424e4d8934fcf307f75aa144b16acfb5c57c4053d2f2b6368",
+      "bytes": 88447,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_rheology_003/PROTOCOL.md": {
       "sha256": "e374034b4acf7c45bc3e548e2feb7cd70638a716b80204c6bd56ba1084ea045d",
       "bytes": 10850,
@@ -2453,9 +2458,19 @@
       "bytes": 2723,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_rheology_003/RESULT.md": {
+      "sha256": "6a956eff16c953ec2faeb4f7efda2944761c4461f91612fcc4a80eb6ab4773c0",
+      "bytes": 10983,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_rheology_003/REUSE.json": {
       "sha256": "7d8e9e2326fa4a3be1d71a603c880d7375123a472c59c4e954225cb5b2d7efb2",
       "bytes": 2236,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_003/RUNS.json": {
+      "sha256": "423fe76022ef79fd57908f37b44f8ad1c38a63e47f5ff6385c7320304ad5dc96",
+      "bytes": 70900,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_003/SHORT_CHECKS.json": {
@@ -2466,6 +2481,21 @@
     "docs/analysis/sci_md_rheology_003/SOURCE_USE.json": {
       "sha256": "ed7058e71fdaf9ac321fd41e6c17d6fa1c70408f162e20a8890c153e3df016df",
       "bytes": 1828,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_003/flow.svg": {
+      "sha256": "ff3a99be5aaa483fd817c03fa25008373100f07a6d700e3ed57bb08e5b4be972",
+      "bytes": 170827,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_003/residual.svg": {
+      "sha256": "7d4671db807279bf731d5ba922b78dafc2700d73fac194ddaae9694496207bcb",
+      "bytes": 171744,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_003/solute.svg": {
+      "sha256": "148a4dbeb15ac3bf44fc998f7f7e2607e8c7616f857654247ddcb5461db4309a",
+      "bytes": 171317,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_ewp_input_mapping_001/INPUT_REGISTRY.csv": {

@@ -1,5 +1,21 @@
 # Project State
 
+## SCI-MD-RHEOLOGY-003 viscosity-law robustness (2026-09-21)
+
+G1, `SOURCE_SCENARIO_CHANGE_ONLY`; `IMPLEMENTED_AND_EXECUTED`.
+The [bounded result](analysis/sci_md_rheology_003/RESULT.md) is
+`ROBUST_ACROSS_TESTED_VISCOSITY_LAWS`: all four declared laws have qualified
+material C/N residuals in both conditions. Exactly 24 full coupled runs and four
+short checks completed; accepted W/TR_LINEAR evidence was reused by hash.
+TR continuation stresses and the separately labelled water-anchored Sobolik/Weisser
+90 C extrapolation preserve the decision. This is finite-family, source-conditioned
+model development, not measured uncertainty or fresh-espresso validation.
+Production solver/interfaces/defaults/runtime lock are unchanged. Pre-scoring
+independent audit passed; final result review and hosted CI are separate PR #154
+statuses. Retain optional coupling for separately authorized development and close
+this specific robustness question. No merge, default adoption, laboratory action,
+or automatic successor is authorized.
+
 ## SCI-MD-RHEOLOGY-002 coupled experiment (2026-09-21)
 
 Owner-authorized G2, `GOVERNING_PHYSICS_CHANGE`, implemented and executed.
