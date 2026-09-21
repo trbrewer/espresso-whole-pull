@@ -1,0 +1,22 @@
+{
+  "checks": {
+    "base_reversed_3bar_constant_2water": {
+      "intervals_sha256": "fd9af1b6bffb9c3f879e5fd4ae6b715470199f18bc6b9ccc841436164ac5254f",
+      "max_relative_discrepancy": 7.487344078072056e-13
+    },
+    "base_uniform_9bar_constant_2water": {
+      "intervals_sha256": "07a104c437fde818244bb6b37e2b6c7768643f5c8a1d7f8ce8813174b4f61dae",
+      "max_relative_discrepancy": 9.092726571680032e-13
+    },
+    "spatial_reversed_3bar_constant_2water": {
+      "intervals_sha256": "9f3c5efa3d57d91b0bee8ccc038fc456d77d8401cce4cbcdfc21f7368985d24d",
+      "max_relative_discrepancy": 5.753175713607561e-13
+    },
+    "spatial_uniform_9bar_constant_2water": {
+      "intervals_sha256": "b3b36733032a89e72c20b5e9817b9bf282b971c2295495cf479b1d96bf391d80",
+      "max_relative_discrepancy": 1.0371703496048212e-12
+    }
+  },
+  "freeze_sha256": "e6c8c009b35deb5e518f3449f936d7aa9a5399f214eb317892941b67897d6124",
+  "status": "PASS"
+}
