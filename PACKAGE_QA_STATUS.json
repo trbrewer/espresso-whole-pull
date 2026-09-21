@@ -80,8 +80,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1095,
-    "source_manifest_aggregate_sha256": "4c2e0d9e9cc20649ce96608bdff93629c7c3583f84ec0bef37368f4e8ce7e12b",
+    "source_manifest_file_count": 1111,
+    "source_manifest_aggregate_sha256": "778639819b77a6263b64d744e036e6a699ead348d83aa8405cedccaddeab4c8e",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -988,5 +988,20 @@
     "privacy_scan": "PASS_NO_PRIVATE_VISUALIZER_DATA_OR_IDENTIFIERS",
     "historical_baseline_integrity": "PASS",
     "required_registry_companion": "provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json"
+  },
+  "sci_md_rheology_003": {
+    "governance": "G1",
+    "change_declaration": "SOURCE_SCENARIO_CHANGE_ONLY",
+    "implementation": "COMPLETE",
+    "execution": "COMPLETE_24_FULL_PLUS_4_SHORT_ZERO_FAILED",
+    "science": "ROBUST_ACROSS_TESTED_VISCOSITY_LAWS",
+    "pre_scoring_audit": "PASS",
+    "independent_result_review": "PASS",
+    "focused_tests": 14,
+    "hosted_ci": "RESOLVE_LIVE_PR_154_CHECKS",
+    "full_suite": "FINAL_RESULT_REPORTED_ON_PR_154",
+    "initial_local_qa_correction": "Missing required external-source environment variable and stale current manifest count; scientific code and artifacts unchanged",
+    "merge": "NOT_AUTHORIZED",
+    "production_default_runtime_lock_change": false
   }
 }
