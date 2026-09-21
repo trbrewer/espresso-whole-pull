@@ -88,7 +88,7 @@ Use maintained prepare_case.py, blockMesh and OpenFOAM postProcess cell-centre/
 volume exporters, then unchanged espressoWholePullFoam. Six distinct executions;
 no concentration-field reuse. Raw case inputs/logs/fields/build stay outside Git.
 
-Primary mesh 64 axial x 4 radial x 1 azimuthal cells, uniform grading, 5-degree
+Primary mesh 512 axial x 4 radial x 1 azimuthal cells, uniform grading, 5-degree
 straight-sided wedge; dt=0.02 s; output every 0.1 s through exactly 30 s.
 No cup-mass stopping (target metadata set out of reach at 100 kg). Initial t=0
 state is exactly c=0 and water resistance, not a first-drip alignment.
@@ -99,8 +99,13 @@ Group actual cell x centres, verify transverse concentration/permeability/porosi
 saturation invariance and radial/axial velocity ratio <=1e-7; derive dz from actual
 cell volumes. Full-area conversion uses existing 2*pi/sin(wedgeAngle), not 360/angle.
 Check centres, sum(dz)=L and full area pi*r^2; nonuniform thickness is supported.
-Require static k, porosity=0.4, saturation=1. Verify Q0 against every EWP outlet-flow
-trace row to relative 1e-6 before use. Failure blocks scientific classification.
+Require static k, porosity=0.4, saturation=1. Verify every EWP outlet-flow trace row
+against the maintained discrete_layered_pressure_reference to relative 1e-6.
+Separately require continuum Q0 versus actual flow discrepancy <=0.1%. Include
+that observed discrepancy conservatively in BOTH reported metric uncertainties.
+EWP's unchanged arithmetic face mobility has an analytically known interface bias;
+512/1024 axial cells reduce it without changing any interpolation or equation.
+Failure of either hydraulic gate blocks scientific classification.
 
 R_mu=sum(mu_i*dz_i/k_i)/A [Pa.s/m3]; Q_mu=DeltaP/R_mu [m3/s].
 R0=mu_water*sum(dz_i/k_i)/A; Q0=DeltaP/R0. Each variant gets one alpha =
@@ -120,11 +125,17 @@ predicted cup mass, extraction yield or first-drip shift.
 Material if integrated >=5% OR peak >=10% for this owner-selected screen.
 Categories: NO_NEW_INFORMATION (preflight only); SMALL_WITHIN_TESTED_ENVELOPE;
 STATIC_SCALE_SUFFICIENT; STATE_DEPENDENT_EFFECT; SOURCE_OR_MAPPING_LIMITED.
+SOURCE_OR_MAPPING_LIMITED is reserved for preflight/domain rejection or an
+unresolved aggregate mapping, and for any claim of physical espresso qualification
+(which this task explicitly excludes). Dilute occupancy alone does not trigger it:
+the owner explicitly authorizes this extension for computational prioritization.
+Domain rejection blocks computation and is reported manually with the exact input;
+no post-result data-dependent support threshold is selected.
 Classify primary and stress separately. Stress-only materiality is stress-dependent.
 Measured/dilute support qualifies every conclusion; no physical validation.
 
 At most six primary and six additional solver invocations (failures count).
-Separate temporal (dt=.01, sampling=.05) and spatial (128 axial, same dt/sampling)
+Separate temporal (dt=.01, sampling=.05) and spatial (1024 axial, same dt/sampling)
 refinements on uniform_9bar and layered_3bar: four invocations. Up to two more on
 the scenario with largest primary-or-stress residual threshold-normalized metric
 max(Eint/.05,Epeak/.10), if it is neither representative. Ties sorted by scenario ID.
@@ -132,7 +143,9 @@ Recompute reference alpha when refining reference; assess its propagated metric
 change across ALL primary cases; retain reference-alpha propagation in uncertainty.
 For each metric use a conservative empirical numerical estimate: maximum temporal
 change + maximum spatial change + maximum 0.1-versus-0.2 s decimation change,
-over checked cases and alpha propagation. Also compare extrema at .05 vs .1 s.
+over checked cases and alpha propagation, PLUS the largest observed continuum/discrete
+water-flow discrepancy. Sampling allowance is the larger of .1-versus-.2 and
+.05-versus-.1 s changes in the refined runs. Report E_peak changes at .05 vs .1 s explicitly.
 This is a resolution estimate, not a statistical confidence interval or rigorous
 PDE error bound. Require <0.5 percentage points for each error metric. A threshold
 within this estimate is unresolved. No extra sweeps if budget or uncertainty fails.
@@ -154,6 +167,28 @@ Source the installed Foundation OpenFOAM 12 environment first. Build unchanged
 solver into a task-local FOAM_USER_APPBIN with wmake if executable identity cannot
 be tied to this source. Record source/build/executable hashes before invocation.
 Run the same two refinement commands for layered_3bar and, if required, the selected
-largest residual case. Keep raw output paths explicit and outside Git.
+largest residual case. The initial analyze command writes PRIMARY_SCREEN.json only;
+it is preliminary, with no classification. Then apply all numerical gates:
+
+```sh
+python3 scripts/report_sci_md_rheology_001.py --puckworks "$PUCKWORKS" --runs "$RUNS" --output "$OUTPUT" --audit "$AUDIT"
+```
+
+This writes final METRICS.json/CSV, NUMERICAL.json, histories and figures. Only
+compact reduced outputs may go into the task's docs directory; raw products
+remain external. AUTHORITY.json freezes executable/build/source/environment and
+the per-artifact rights review at the analysis pin; MANIFEST.json is the final
+execution/output inventory. The audit checks frozen source identities as well as
+file hashes. No new solver run or scientific score occurred before this amendment. Keep raw output paths explicit and outside Git.
 If audit or environment is unavailable, report IMPLEMENTED_NOT_EXECUTED separately
 from scientific status NOT_ADJUDICATED. No successor or merge is authorized.
+
+## Pre-result audit amendment
+
+Independent AI review identified that the initial 64-cell continuum-versus-discrete
+1e-6 comparison was unsatisfiable for the layered inputs. The remedy retains the
+owner's continuum integral as the scientific response, adds the existing exact
+discrete comparator as a solver check and reduces the known mesh interface bias.
+No production scheme or default changes. All changes preceded scientific execution.
+The same review's reproduction, support-status, sampling and provenance findings
+are addressed above; there is no new governance stage or successor.

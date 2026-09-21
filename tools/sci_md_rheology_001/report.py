@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parent))
-from analysis import (DOC,ROOT,REF,source,load_profile,compare,errors,write,sha,check_freeze)
+from analysis import (DOC,ROOT,REF,source,load_profile,compare,errors,write,sha,check_freeze,check_output)
 
 
 def metrics_difference(a,b):
@@ -15,10 +15,22 @@ def metrics_difference(a,b):
                      for m in ('integrated','peak')])
 
 
+def classify(metrics, uncertainty):
+    thresholds=np.array([.05,.10]); uncertainty=np.asarray(uncertainty)
+    absolute=np.array([max(v['absolute'][k] for v in metrics.values()) for k in ('integrated','peak')])
+    residual=np.array([max(v['residual'][k] for v in metrics.values()) for k in ('integrated','peak')])
+    near=any(np.any(np.abs(values-thresholds)<=uncertainty) for values in (absolute,residual))
+    if np.any(uncertainty>=.005) or near: return None,'NUMERICAL_CLASSIFICATION_UNRESOLVED'
+    if np.any(residual>=thresholds): category='STATE_DEPENDENT_EFFECT'
+    elif np.any(absolute>=thresholds): category='STATIC_SCALE_SUFFICIENT'
+    else: category='SMALL_WITHIN_TESTED_ENVELOPE'
+    return category,'FROZEN_FIELD_SOURCE_CONDITIONED_ONLY'
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('puckworks','runs','output','audit'): p.add_argument('--'+name,required=True,type=Path)
-    a=p.parse_args(); check_freeze(a.audit); data,_=source(a.puckworks)
+    a=p.parse_args(); check_output(a.output); check_freeze(a.audit); data,_=source(a.puckworks)
     ss=json.loads((DOC/'SCENARIOS.json').read_text()); summary={}; changes={}; histories={}
     for variant,excess in [('primary',1),('stress',2)]:
         profiles={n:load_profile(a.runs/n,s,data.telisromero_eta_measured,excess) for n,s in ss.items()}
@@ -26,7 +38,7 @@ def main():
         histories[variant]=profiles
         coarse={n:{k:v[::2] if k in ('t','q','q0') else v for k,v in prof.items()} for n,prof in profiles.items()}
         _,cm=compare(coarse); decimation=metrics_difference(m,cm)
-        diffs={}
+        diffs={}; temporal_sampling={}
         for kind in ('temporal','spatial'):
             diffs[kind]=[]
             for config in sorted(a.runs.glob('*_'+kind+'.json')):
@@ -36,26 +48,29 @@ def main():
                 updated=dict(profiles); updated[name]=refined
                 _,rm=compare(updated)
                 diffs[kind].append((name,metrics_difference(m,rm)))
+                if kind=='temporal':
+                    down={k:v[::2] if k in ('t','q','q0') else v for k,v in refined.items()}
+                    sampled=dict(profiles);sampled[name]=down
+                    _,sm=compare(sampled)
+                    temporal_sampling[name]=metrics_difference(rm,sm)
+                    decimation=np.maximum(decimation,temporal_sampling[name])
             if not {'uniform_9bar','layered_3bar'}.issubset({n for n,d in diffs[kind]}):
                 raise ValueError('required representative refinement missing')
-        uncertainty=decimation+np.max([d for n,d in diffs['temporal']],axis=0)+np.max([d for n,d in diffs['spatial']],axis=0)
-        changes[variant]=dict(decimation=decimation.tolist(),
+        # Include measured continuum/discrete water-flow discrepancy in BOTH metrics.
+        hydraulic=max(prof['continuum_hydraulic_relative_error'] for prof in profiles.values())
+        uncertainty=hydraulic+decimation+np.max([d for n,d in diffs['temporal']],axis=0)+np.max([d for n,d in diffs['spatial']],axis=0)
+        changes[variant]=dict(decimation=decimation.tolist(),continuum_hydraulic_allowance_pp=100*hydraulic,
+            temporal_sampling_changes_pp={n:(100*v).tolist() for n,v in temporal_sampling.items()},
             temporal={n:d.tolist() for n,d in diffs['temporal']},spatial={n:d.tolist() for n,d in diffs['spatial']},
             uncertainty_pp=(100*uncertainty).tolist())
-        thresholds=np.array([.05,.10])
-        absolute=np.array([max(v['absolute'][key] for v in m.values()) for key in ('integrated','peak')])
-        residual=np.array([max(v['residual'][key] for v in m.values()) for key in ('integrated','peak')])
-        near=any(np.any(np.abs(values-thresholds)<=uncertainty) for values in (absolute,residual))
-        if np.any(uncertainty>=.005) or near: category=None; reason='NUMERICAL_CLASSIFICATION_UNRESOLVED'
-        elif np.any(residual>=thresholds): category='STATE_DEPENDENT_EFFECT';reason='FROZEN_FIELD_SOURCE_CONDITIONED_ONLY'
-        elif np.any(absolute>=thresholds): category='STATIC_SCALE_SUFFICIENT';reason='FROZEN_FIELD_SOURCE_CONDITIONED_ONLY'
-        else: category='SMALL_WITHIN_TESTED_ENVELOPE';reason='FROZEN_FIELD_SOURCE_CONDITIONED_ONLY'
+        category,reason=classify(m,uncertainty)
         summary[variant].update(category=category,qualification=reason,uncertainty_pp=(100*uncertainty).tolist())
         for name,prof in profiles.items():
             h=prof['histories']
             m[name].update(concentration_range_kg_m3=[0,max(v['c_max_kg_m3'] for v in h)],
                 solids_range=[0,max(v['solids_max'] for v in h)],
                 hydraulic_relative_error=prof['hydraulic_relative_error'],
+                continuum_hydraulic_relative_error=prof['continuum_hydraulic_relative_error'],
                 dilute_cell_fraction_range=[min(v['dilute_cell_fraction'] for v in h),max(v['dilute_cell_fraction'] for v in h)],
                 dilute_resistance_fraction_range=[min(v['dilute_resistance_fraction'] for v in h),max(v['dilute_resistance_fraction'] for v in h)],
                 weighted_mu_range_Pa_s=[ss[name]['liquid']['dynamic_viscosity_Pa_s'],max(v['weighted_mu_Pa_s'] for v in h)])

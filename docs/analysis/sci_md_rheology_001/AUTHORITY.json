@@ -1,0 +1,51 @@
+{
+  "build_command": "FOAM_USER_APPBIN=\"$ARTIFACTS/bin\" wmake solver/espressoWholePullFoam",
+  "build_log_sha256": "82dc4b0ba03fcf9a3d3cb02d466dc80a63a29b31a05ba8d07e1917704766fb71",
+  "change_declaration": "SOURCE_SCENARIO_CHANGE_ONLY",
+  "ewp_base_commit": "ac49fe939f9e7fb38ba4eabc95d65e2fa47ee666",
+  "ewp_base_tree": "a7bbbc2963bdf89c183892749797c4530c713dc3",
+  "executable": "external task-local bin/espressoWholePullFoam",
+  "executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+  "governance": "G1",
+  "openfoam": "Foundation 12",
+  "puckworks_analysis_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+  "puckworks_analysis_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+  "puckworks_source_hashes": {
+    "docs/cards/telisromero2001.md": "3635c6221ab516405f69564d55c7c72d8664007a72d30be5767c2cdad4315b36",
+    "puckworks/analysis/g10_viscosity_sensitivity.py": "fe2da859f724cd783ce28445b916aa2f98e85fe4caeae1bd7c5831f2b171be5f",
+    "puckworks/data/__init__.py": "7adb18f36784058bbf8ea596cf54d9ca0a8d8ac20ed57037bffdb2243957c805",
+    "puckworks/data/g10_liquor_rheology/telisromero2001_table1_eta.csv": "dc1cbfd5bd472668f9f62a551f4a04a92460d1d72a1674e1288ded90866610de",
+    "puckworks/data/telisromero2001/PROVENANCE.md": "066538a3a8fa9b65c4361306eae47e33426567ca54dac7441dbffa7ffad4e610",
+    "puckworks/models/pannusch2024/closures.py": "9d144765200b66422e72218f8ceff5d5ca531da88150fa71d023bbc490b20cf1"
+  },
+  "raw_artifacts": "Owner-retained external SCI-MD-RHEOLOGY-001 artifact directory; supply --runs explicitly",
+  "rights_review": {
+    "analysis_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "artifacts_reviewed": [
+      "docs/cards/telisromero2001.md",
+      "puckworks/data/telisromero2001/PROVENANCE.md",
+      "puckworks/data/AVAILABLE_DATA_REGISTER.json",
+      "puckworks/data/MANIFEST.csv"
+    ],
+    "decision": "AUTHORITATIVE_LOADER_USE_FOR_BOUNDED_SENSITIVITY_ALLOWED; NO_SOURCE_TABLE_REDISTRIBUTION",
+    "material_limitation": "One industrial soluble extract batch, not fresh espresso. Dilute extension is a modelling assumption.",
+    "outputs": "Derived hydraulic diagnostics only; no measured table/fit replication."
+  },
+  "runtime_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "software_environment": {
+    "numpy": "1.26.4",
+    "python": "3.12.3"
+  },
+  "solver_source_hashes": {
+    "solver/espressoWholePullFoam/Make/files": "70aa84e2e2cbd37a9c25217fee498c234816cf41fb57b5f24c41a0e8495f7d83",
+    "solver/espressoWholePullFoam/Make/options": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "c6d7014c128158994b0b6da040a894f98fb7f78684ea0b7eb1efe4bfca2c2a84",
+    "solver/espressoWholePullFoam/forchheimerResistance.H": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719",
+    "solver/espressoWholePullFoam/poroelasticCompaction.H": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6",
+    "solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H": "a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082",
+    "solver/espressoWholePullFoam/prescribedPressureBoundaryModel.H": "2b8f4d622129fdfe4c2606d4445d5ee12ad02a509dcc6341f8aad8e2581cd234"
+  },
+  "source_tables_redistributed": false,
+  "task": "SCI-MD-RHEOLOGY-001"
+}

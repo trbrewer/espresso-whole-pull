@@ -21,7 +21,7 @@
     },
     "flowResistanceModel": "darcy",
     "geometry": {
-      "axial_cells": 64,
+      "axial_cells": 512,
       "axial_grading": 1.0,
       "azimuthal_cells": 1,
       "basket_diameter_m": 0.058,
@@ -145,7 +145,7 @@
     },
     "flowResistanceModel": "darcy",
     "geometry": {
-      "axial_cells": 64,
+      "axial_cells": 512,
       "axial_grading": 1.0,
       "azimuthal_cells": 1,
       "basket_diameter_m": 0.058,
@@ -269,7 +269,7 @@
     },
     "flowResistanceModel": "darcy",
     "geometry": {
-      "axial_cells": 64,
+      "axial_cells": 512,
       "axial_grading": 1.0,
       "azimuthal_cells": 1,
       "basket_diameter_m": 0.058,
@@ -393,7 +393,7 @@
     },
     "flowResistanceModel": "darcy",
     "geometry": {
-      "axial_cells": 64,
+      "axial_cells": 512,
       "axial_grading": 1.0,
       "azimuthal_cells": 1,
       "basket_diameter_m": 0.058,
@@ -517,7 +517,7 @@
     },
     "flowResistanceModel": "darcy",
     "geometry": {
-      "axial_cells": 64,
+      "axial_cells": 512,
       "axial_grading": 1.0,
       "azimuthal_cells": 1,
       "basket_diameter_m": 0.058,
@@ -641,7 +641,7 @@
     },
     "flowResistanceModel": "darcy",
     "geometry": {
-      "axial_cells": 64,
+      "axial_cells": 512,
       "axial_grading": 1.0,
       "azimuthal_cells": 1,
       "basket_diameter_m": 0.058,

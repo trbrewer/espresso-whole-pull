@@ -16,7 +16,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools.sci_md_004_stage_c.compare import scalar_internal_values, internal_numeric_values
-from scripts.espresso_reference_math import straight_sided_wedge_scale
+from scripts.espresso_reference_math import straight_sided_wedge_scale, discrete_layered_pressure_reference
 
 PIN = '2058d0e947ee9eb92c52d64f6165b810f1fb4732'
 AGGREGATE = 'single_effective_solute_first_order_with_capacity_ceiling'
@@ -38,6 +38,11 @@ def source(puckworks):
         raise ValueError('analysis source pin mismatch')
     if subprocess.check_output(['git', '-C', str(p), 'status', '--porcelain'], text=True).strip():
         raise ValueError('analysis source must be clean')
+    authority_path=DOC/'AUTHORITY.json'
+    if authority_path.exists():
+        authority=json.loads(authority_path.read_text())
+        if any(sha(p/f)!=h for f,h in authority['puckworks_source_hashes'].items()):
+            raise ValueError('source artifact identity mismatch')
     sys.dont_write_bytecode = True
     sys.path.insert(0, str(p))
     data = importlib.import_module('puckworks.data')
@@ -134,7 +139,7 @@ def scenarios(water):
     base['mode']='research_scenario'
     base['calibration']={'parameter':None,'note':'Synthetic frozen-field component screen; no experimental fit.'}
     base['claim_ceiling']='FROZEN_FIELD_HYDRAULIC_SENSITIVITY_NOT_PHYSICAL_VALIDATION'
-    base['geometry'].update(axial_cells=64, radial_cells=4)
+    base['geometry'].update(axial_cells=512, radial_cells=4)
     base['liquid'].update(temperature_K=363.15,dynamic_viscosity_Pa_s=float(water.water_viscosity(363.15)))
     # Preserve the EWP water accounting convention and reference input density.
     base['wetting'].update(initial_saturation=1., initial_wet_front_m=base['coffee_bed']['bed_depth_m'])
@@ -204,9 +209,13 @@ def load_profile(case, s, measured, excess):
             solids_min=float(w.min()),solids_max=float(w.max()),weighted_mu_Pa_s=float(np.sum(contrib)/np.sum(dz/k)),
             dilute_cell_fraction=float(np.mean(dilute)),dilute_resistance_fraction=float(np.sum(contrib[dilute])/np.sum(contrib)),
             upstream_resistance_fraction=float(np.sum(contrib[z<length/2])/np.sum(contrib))))
-    hydraulic_error=max(abs(row['outlet_flow_m3_s']/result['q0'][0]-1) for row in trace)
-    if hydraulic_error>1e-6: raise ValueError('Q0 fails unchanged EWP output check: '+str(hydraulic_error))
+    discrete_q=discrete_layered_pressure_reference(s)['outlet_flow_m3_s']
+    hydraulic_error=max(abs(row['outlet_flow_m3_s']/discrete_q-1) for row in trace)
+    continuum_error=max(abs(row['outlet_flow_m3_s']/result['q0'][0]-1) for row in trace)
+    if hydraulic_error>1e-6: raise ValueError('unchanged EWP fails exact discrete water-flow check')
+    if continuum_error>.001: raise ValueError('continuum Q0 discrepancy exceeds 0.1 percent')
     result['hydraulic_relative_error']=hydraulic_error
+    result['continuum_hydraulic_relative_error']=continuum_error
     for key in ('t','r','q','q0'): result[key]=np.array(result[key])
     return result
 
@@ -216,7 +225,7 @@ def freeze(puckworks):
     write(DOC/'SCENARIOS.json',scenarios(water))
     files=['scripts/sci_md_rheology_001.py','scripts/run_sci_md_rheology_001.py','scripts/report_sci_md_rheology_001.py',
            'tools/sci_md_rheology_001/analysis.py','tools/sci_md_rheology_001/runner.py','tools/sci_md_rheology_001/report.py','tests/test_sci_md_rheology_001.py',
-           'docs/analysis/sci_md_rheology_001/PROTOCOL.md','docs/analysis/sci_md_rheology_001/SCENARIOS.json']
+           'docs/analysis/sci_md_rheology_001/AUTHORITY.json','docs/analysis/sci_md_rheology_001/PROTOCOL.md','docs/analysis/sci_md_rheology_001/SCENARIOS.json']
     write(DOC/'FREEZE.json',dict(files={p:sha(ROOT/p) for p in files},puckworks_commit=PIN,
         ewp_base='ac49fe939f9e7fb38ba4eabc95d65e2fa47ee666',runtime_lock_sha256=sha(ROOT/'dependencies/puckworks.lock.json')))
 
@@ -224,14 +233,27 @@ def freeze(puckworks):
 def check_freeze(audit):
     f=json.loads((DOC/'FREEZE.json').read_text())
     if any(sha(ROOT/p)!=h for p,h in f['files'].items()): raise ValueError('frozen analysis changed')
+    if f['puckworks_commit']!=PIN: raise ValueError('wrong analysis authority')
+    subprocess.run(['git','-C',str(ROOT),'merge-base','--is-ancestor',f['ewp_base'],'HEAD'],check=True)
+    if sha(ROOT/'dependencies/puckworks.lock.json')!=f['runtime_lock_sha256']:
+        raise ValueError('runtime lock changed')
+    authority=json.loads((DOC/'AUTHORITY.json').read_text())
+    if any(sha(ROOT/p)!=h for p,h in authority['solver_source_hashes'].items()):
+        raise ValueError('solver source changed')
     a=json.loads(Path(audit).read_text())
     if a.get('disposition')!='PASS' or a.get('freeze_sha256')!=sha(DOC/'FREEZE.json') or not a.get('independent_reviewer'):
         raise ValueError('independent pre-result audit missing or not bound to freeze')
 
 
+def check_output(output):
+    p=Path(output).resolve()
+    if p.is_relative_to(ROOT) and p!=DOC.resolve():
+        raise ValueError('only task reduced summaries may be written inside repository')
+
+
 def analyze(puckworks, runs, output, audit):
     check_freeze(audit)
-    data,_=source(puckworks); runs=Path(runs); output=Path(output); output.mkdir(exist_ok=True,parents=True)
+    data,_=source(puckworks); runs=Path(runs); output=Path(output); check_output(output); output.mkdir(exist_ok=True,parents=True)
     ss=json.loads((DOC/'SCENARIOS.json').read_text()); summary={}; histories={}
     for variant,excess in [('primary',1),('stress',2)]:
         profiles={name:load_profile(runs/name,s,data.telisromero_eta_measured,excess) for name,s in ss.items()}
@@ -243,7 +265,7 @@ def analyze(puckworks, runs, output, audit):
                 concentration_range_kg_m3=[0,max(h['c_max_kg_m3'] for h in hist)],
                 weighted_mu_range_Pa_s=[min(p['r'])/p['r'][0]*ss[name]['liquid']['dynamic_viscosity_Pa_s'],max(h['weighted_mu_Pa_s'] for h in hist)],
                 dilute_resistance_range=[min(h['dilute_resistance_fraction'] for h in hist),max(h['dilute_resistance_fraction'] for h in hist)])
-    write(output/'METRICS.json',summary); write(output/'HISTORIES.json',histories)
+    write(output/'PRIMARY_SCREEN.json',summary); write(output/'HISTORIES.json',histories)
     return summary
 
 

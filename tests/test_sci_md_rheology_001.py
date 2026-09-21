@@ -4,6 +4,10 @@ import tempfile
 import json
 import math
 from pathlib import Path
+from unittest.mock import patch
+from tools.sci_md_rheology_001 import analysis
+from tools.sci_md_rheology_001.report import classify
+from tools.sci_md_rheology_001.runner import budget_available
 from tools.sci_md_rheology_001.analysis import np
 from tools.sci_md_rheology_001.analysis import (solids_fraction,viscosity,resistance,errors,compare,
     axial_reduce,REF,AGGREGATE,straight_sided_wedge_scale,load_profile)
@@ -70,7 +74,7 @@ class RheologyTests(unittest.TestCase):
                    coffee_bed=dict(bed_depth_m=2,initial_porosity=.4),
                    liquid=dict(dynamic_viscosity_Pa_s=.001,density_kg_m3=965),
                    time=dict(field_write_interval_s=30),
-                   extraction=dict(model=AGGREGATE),hydraulics=dict(target_inlet_pressure_gauge_Pa=1))
+                   extraction=dict(model=AGGREGATE),hydraulics=dict(target_inlet_pressure_gauge_Pa=1,outlet_pressure_gauge_Pa=0,saturated_permeability_m2=1))
             (p/'CASE_SCENARIO_V0_1_4.json').write_text(json.dumps(s))
             (p/'0/C').write_text('internalField nonuniform List<vector> 2 ((0.5 0 0) (1.5 0 0));')
             (p/'0/Vc').write_text('internalField uniform '+str(1/scale)+';')
@@ -82,6 +86,32 @@ class RheologyTests(unittest.TestCase):
             np.testing.assert_allclose(prof['q'],[500,500]);self.assertLess(prof['hydraulic_relative_error'],1e-14)
             s['liquid']['density_kg_m3']=1000
             with self.assertRaises(ValueError):load_profile(p,s,lambda t,x:.002,1)
+    def test_decision_surface(self):
+        def metric(a,b): return {REF:dict(absolute=dict(integrated=a,peak=a),residual=dict(integrated=b,peak=b))}
+        for a,b,expected in [(0.01,.01,'SMALL_WITHIN_TESTED_ENVELOPE'),(.08,.01,'STATIC_SCALE_SUFFICIENT'),(.12,.08,'STATE_DEPENDENT_EFFECT')]:
+            self.assertEqual(classify(metric(a,b),[.001,.001])[0],expected)
+        self.assertIsNone(classify(metric(.0495,.01),[.001,.001])[0])
+        self.assertIsNone(classify(metric(.01,.01),[.005,.001])[0])
+    def test_budget_includes_failures(self):
+        self.assertFalse(budget_available([dict(kind='primary',status='FAILED')]*6,'primary'))
+        self.assertTrue(budget_available([dict(kind='primary')]*6,'spatial'))
+        self.assertFalse(budget_available([dict(kind='temporal')]*3+[dict(kind='spatial')]*3,'temporal'))
+    def test_audit_binding_rejects_wrong_freeze(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'audit.json';p.write_text(json.dumps(dict(disposition='PASS',independent_reviewer='synthetic',freeze_sha256='wrong')))
+            with self.assertRaises(ValueError): analysis.check_freeze(p)
+    def test_runtime_lock_guard(self):
+        real=analysis.sha
+        with patch.object(analysis,'sha',side_effect=lambda p:'changed' if str(p).endswith('puckworks.lock.json') else real(p)):
+            with self.assertRaisesRegex(ValueError,'runtime lock'): analysis.check_freeze('unused')
+    def test_discrete_continuum_gate_is_feasible(self):
+        cases=json.loads((analysis.DOC/'SCENARIOS.json').read_text())
+        for s in cases.values():
+            k,dz=analysis.discrete_layered_pressure_reference.__globals__['axial_permeability_profile'](s)
+            r=resistance(np.full(len(k),s['liquid']['dynamic_viscosity_Pa_s']),np.full(len(k),dz),k,math.pi*.029**2)
+            q=s['hydraulics']['target_inlet_pressure_gauge_Pa']/r
+            qd=analysis.discrete_layered_pressure_reference(s)['outlet_flow_m3_s']
+            self.assertLess(abs(qd/q-1),.001)
     def test_positive_window(self):
         with self.assertRaises(ValueError): errors([0,1],[1,1],[0,1])
 

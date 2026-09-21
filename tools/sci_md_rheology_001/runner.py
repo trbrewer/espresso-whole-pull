@@ -11,6 +11,9 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 from analysis import ROOT,DOC,check_freeze,sha,write
 
 
+def budget_available(inv, kind):
+    return sum(x['kind']=='primary' if kind=='primary' else x['kind']!='primary' for x in inv)<6
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--runs',required=True,type=Path); p.add_argument('--audit',required=True,type=Path)
@@ -18,6 +21,8 @@ def main():
     p.add_argument('--refine',choices=['temporal','spatial'])
     p.add_argument('--case',choices=['uniform_3bar','uniform_9bar','layered_3bar','layered_9bar','reversed_3bar','reversed_9bar'])
     a=p.parse_args(); check_freeze(a.audit)
+    authority=json.loads((DOC/'AUTHORITY.json').read_text())
+    if sha(a.executable)!=authority['executable_sha256']: raise SystemExit('executable identity mismatch')
     if os.environ.get('WM_PROJECT_VERSION')!='12': raise SystemExit('Foundation OpenFOAM 12 required')
     if a.runs.resolve().is_relative_to(ROOT): raise SystemExit('raw artifacts must remain outside Git')
     if bool(a.case)!=bool(a.refine): p.error('--case and --refine must be paired')
@@ -30,12 +35,12 @@ def main():
         if any(x['run']==runname for x in inv):
             if a.refine: raise SystemExit('refinement already attempted')
             continue
-        if sum(x['kind']==kind if kind=='primary' else x['kind']!='primary' for x in inv)>=6:
+        if not budget_available(inv,kind):
             raise SystemExit('solver invocation budget exhausted')
         case=a.runs/runname
         if case.exists(): raise SystemExit('refusing to overwrite run directory')
         if a.refine=='temporal': s['time'].update(delta_t_s=.01,field_write_interval_s=.05)
-        if a.refine=='spatial': s['geometry'].update(axial_cells=128)
+        if a.refine=='spatial': s['geometry'].update(axial_cells=1024)
         config=a.runs/(runname+'.json'); write(config,s)
         def command(cmd,log):
             with (a.runs/(runname+'-'+log+'.log')).open('w') as f:
