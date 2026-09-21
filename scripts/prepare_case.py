@@ -17,6 +17,9 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+sys.path.insert(0, str(SCRIPT_DIR.parent))
+from scripts.aggregate_viscosity import contract as aggregate_viscosity_contract
+
 from espresso_reference_math import (  # noqa: E402
     analytical_preview,
     b0_reduced_simulation,
@@ -818,6 +821,7 @@ outletPatch                outlet;
 pressureIntegrationMethod  exactPiecewiseLinearIntegral;
 pressureBoundaryModel      {pressure_boundary_model};
 {history_dictionary}{prescribed_flow_dictionary}{flow_dictionary}
+{aggregate_viscosity_contract(scenario)}
 
 // Geometry [SI]
 basketRadius               {float(geometry['basket_radius_m']):.16g};
@@ -1370,6 +1374,7 @@ def main() -> None:
     scenario = json.loads(config_path.read_text(encoding="utf-8"))
     # Validate optional observers before creating or copying any case path.
     fraction_collection_contract(scenario)
+    aggregate_viscosity_contract(scenario)
     if args.nprocs < 1:
         raise SystemExit("nprocs must be positive")
     r1 = config_path == (root / R1_CONFIG_RELATIVE).resolve() or is_r1_scenario(

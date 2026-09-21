@@ -38,6 +38,8 @@
 #include "prescribedFlowBoundaryModel.H"
 #include "prescribedPressureBoundaryModel.H"
 
+#include "aggregateViscosity.H"
+#include <memory>
 #include <cmath>
 #include <cstdlib>
 #include <fstream>
@@ -742,6 +744,35 @@ int main(int argc, char *argv[])
 
     const bool effectivePermeabilityEnabled =
         modelProperties.found("effectivePermeabilityEvolution");
+
+    const word aggregateViscosityMode = modelProperties.lookupOrDefault<word>
+        ("aggregateViscosityMode", "off");
+    const bool aggregateDiagnostics = aggregateViscosityMode != "off";
+    const bool aggregateCoupled = aggregateViscosityMode == "coupled";
+    std::unique_ptr<espresso::AggregateViscosity> aggregateTable;
+    if (aggregateDiagnostics)
+    {
+        if ((aggregateViscosityMode != "observe" && !aggregateCoupled)
+            || pressureBoundaryModel != "prescribedPressure"
+            || flowResistanceModel != "darcy" || bedMechanicsModel != "none"
+            || effectivePermeabilityEnabled || indexedSpeciesMode
+            || (permeabilityProfile != "uniform" && permeabilityProfile != "axial_two_layer")
+            || initialWetFront != bedDepth || pressureRampTime != 0
+            || !(targetInletPressure > outletPressure) || liquidDensity != 965
+            || modelProperties.lookupOrDefault<scalar>("liquidTemperature", 0) != 363.15
+            || runTime.value() != 0
+            || runTime.controlDict().lookupOrDefault<word>("startFrom", "startTime") != "startTime")
+        {
+            FatalErrorInFunction << "RHEOLOGY_UNSUPPORTED_MODE_OR_RESTART" << exit(FatalError);
+        }
+        const word purpose(modelProperties.lookup("aggregateViscosityPurpose"));
+        if (purpose != "scientific" && purpose != "synthetic")
+            FatalErrorInFunction << "RHEOLOGY_INVALID_PURPOSE" << exit(FatalError);
+        const fileName tablePath(modelProperties.lookup("aggregateViscosityTable"));
+        try { aggregateTable.reset(new espresso::AggregateViscosity(tablePath)); }
+        catch (const std::exception& error)
+        { FatalErrorInFunction << error.what() << exit(FatalError); }
+    }
 
     if (prescribedFlow)
     {
@@ -1470,6 +1501,15 @@ int main(int argc, char *argv[])
         permeability/dynamicViscosityCoefficient
     );
 
+    // Copy permeability patch types so zero-gradient, wedge and processor
+    // patches follow the same coefficient semantics as the pressure operator.
+    volScalarField aggregateMu
+    (
+        IOobject("aggregateMu", runTime.name(), mesh, IOobject::NO_READ,
+            aggregateDiagnostics ? IOobject::AUTO_WRITE : IOobject::NO_WRITE),
+        mesh, dynamicViscosityCoefficient, permeability.boundaryField().types()
+    );
+
     const scalar referencePressureDropPa = 1.0e5;
     scalar discreteConductanceM3sPa = 0.0;
     if (prescribedFlow)
@@ -2000,11 +2040,64 @@ int main(int argc, char *argv[])
             << " integration=exactPositivePiecewiseLinear" << nl << endl;
     }
 
+    std::ofstream aggregateTrace;
+    if (aggregateDiagnostics && Pstream::master())
+    {
+        aggregateTrace.open((traceDirectory/"aggregate_intervals.csv").c_str());
+        aggregateTrace << std::setprecision(17)
+            << "start_s,end_s,dt_s,state_s,Q_m3_s,volume_m3,Q_cont_m3_s,dilute_resistance_fraction,c_n_min,c_n_max,mu_min,mu_max,c_next_min,c_next_max,correction_kg,water_kg,solute_kg,stored_solute_kg,remaining_kg,inlet_loss_kg,water_balance_kg,solute_balance_kg,tds,cumulative_tds,dilute_volume_fraction,mu_next_min,mu_next_max,pore_courant_max\n";
+    }
+
     while (runTime.loop())
     {
         const scalar timeValue = runTime.value();
         const scalar deltaT = runTime.deltaTValue();
         const scalar stepStartTime = timeValue - deltaT;
+        scalar aggregateResistance = 0, diluteResistance = 0, diluteVolume = 0;
+        scalar laggedMinC = GREAT, laggedMaxC = -GREAT;
+        scalar laggedMinMu = GREAT, laggedMaxMu = -GREAT;
+        scalar correctionMass = 0;
+        if (aggregateDiagnostics)
+        {
+            try
+            {
+                forAll(dissolvedConcentration, celli)
+                {
+                    const scalar c = dissolvedConcentration[celli];
+                    const scalar w = aggregateTable->fraction(c);
+                    const scalar mu = aggregateTable->value(w);
+                    aggregateMu[celli] = mu;
+                    laggedMinC = Foam::min(laggedMinC, c);
+                    laggedMaxC = Foam::max(laggedMaxC, c);
+                    laggedMinMu = Foam::min(laggedMinMu, mu);
+                    laggedMaxMu = Foam::max(laggedMaxMu, mu);
+                    // V_sector * sectorScale / A gives dz with radial weights.
+                    const scalar resistance = mu*mesh.V()[celli]*sectorScale
+                        /(sqr(fullCrossSectionArea)*permeability[celli]);
+                    aggregateResistance += resistance;
+                    if (w < 0.1)
+                    {
+                        diluteResistance += resistance;
+                        diluteVolume += mesh.V()[celli]*sectorScale;
+                    }
+                }
+            }
+            catch (const std::exception& error)
+            { FatalErrorInFunction << error.what() << exit(FatalError); }
+            aggregateMu.correctBoundaryConditions();
+            if (aggregateCoupled)
+            {
+                hydraulicMobility = permeability/aggregateMu;
+                hydraulicMobility.correctBoundaryConditions();
+            }
+            aggregateResistance = globalSumValue(aggregateResistance);
+            diluteResistance = globalSumValue(diluteResistance);
+            diluteVolume = globalSumValue(diluteVolume);
+            laggedMinC = globalMinValue(laggedMinC);
+            laggedMaxC = globalMaxValue(laggedMaxC);
+            laggedMinMu = globalMinValue(laggedMinMu);
+            laggedMaxMu = globalMaxValue(laggedMaxMu);
+        }
         scalar inletPressure = prescribedPressureHistory
             ? prescribedPressureParameters.target(timeValue) : rampedPressure
         (
@@ -3028,7 +3121,9 @@ int main(int argc, char *argv[])
         const scalar continuumAnalyticalOutletFlow =
             saturatedAtStepStart
           ? (
-                poroelasticCompaction
+                aggregateCoupled
+              ? (inletPressure-outletPressure)/aggregateResistance
+              : poroelasticCompaction
               ? poroelasticExactFlow
               : radialTwoZone
               ? stableSeriesFlow
@@ -3107,6 +3202,14 @@ int main(int argc, char *argv[])
 
             forAll(remainingExtractable, celli)
             {
+                if (aggregateDiagnostics)
+                {
+                    correctionMass += mesh.V()[celli]*sectorScale*
+                        (porosity[celli]*Foam::max(-dissolvedConcentration[celli], 0.0)
+                        + Foam::max(deltaT*localExtractionRate[celli]-remainingExtractable[celli], 0.0));
+                    if (!std::isfinite(dissolvedConcentration[celli]) || dissolvedConcentration[celli] < -1e-10)
+                        FatalErrorInFunction << "RHEOLOGY_NUMERICAL_NEGATIVE_STATE" << exit(FatalError);
+                }
                 remainingExtractable[celli] = Foam::max
                 (
                     remainingExtractable[celli]
@@ -3951,6 +4054,48 @@ int main(int argc, char *argv[])
           - dissolvedMass
           - cupSoluteMass
           - soluteBackDiffusionMass;
+
+        if (aggregateDiagnostics)
+        {
+            // Validate accepted next state including the final physical interval.
+            scalar nextMuMin = GREAT, nextMuMax = -GREAT, poreCourant = 0;
+            try {
+                forAll(dissolvedConcentration, celli)
+                {
+                    const scalar mu = aggregateTable->value(aggregateTable->fraction(dissolvedConcentration[celli]));
+                    nextMuMin = Foam::min(nextMuMin, mu);
+                    nextMuMax = Foam::max(nextMuMax, mu);
+                    // Axial advective pore Courant; supported straight-area wedge only.
+                    scalar dx = GREAT;
+                    const cell& faces = mesh.cells()[celli];
+                    forAll(faces, fi)
+                    {
+                        const label facei = faces[fi];
+                        if (Foam::mag(mesh.faceAreas()[facei].x()) > VSMALL)
+                            dx = Foam::min(dx, mesh.V()[celli]/Foam::mag(mesh.faceAreas()[facei].x()));
+                    }
+                    poreCourant = Foam::max(poreCourant, mag(U[celli].x())*deltaT/(porosity[celli]*dx));
+                }
+            } catch (const std::exception& error)
+            { FatalErrorInFunction << error.what() << exit(FatalError); }
+            nextMuMin = globalMinValue(nextMuMin);
+            nextMuMax = globalMaxValue(nextMuMax);
+            poreCourant = globalMaxValue(poreCourant);
+            correctionMass = globalSumValue(correctionMass);
+            const scalar nextMin = gMin(dissolvedConcentration.primitiveField());
+            const scalar nextMax = gMax(dissolvedConcentration.primitiveField());
+            if (Pstream::master())
+                aggregateTrace << stepStartTime << ',' << timeValue << ',' << deltaT << ','
+                    << stepStartTime << ',' << outletVolumeFlow << ',' << stepWaterMass/liquidDensity << ','
+                    << (inletPressure-outletPressure)/aggregateResistance << ','
+                    << diluteResistance/aggregateResistance << ',' << laggedMinC << ',' << laggedMaxC << ','
+                    << laggedMinMu << ',' << laggedMaxMu << ',' << nextMin << ',' << nextMax << ','
+                    << correctionMass << ',' << cupWaterMass << ',' << cupSoluteMass << ','
+                    << dissolvedMass << ',' << remainingMass << ',' << soluteBackDiffusionMass << ','
+                    << liquidBalanceResidual << ',' << soluteBalanceResidual << ','
+                    << instantaneousTds << ',' << cumulativeTds << ',' << diluteVolume/fullMeshVolume
+                    << ',' << nextMuMin << ',' << nextMuMax << ',' << poreCourant << '\n';
+        }
 
         if
         (
