@@ -26,6 +26,38 @@ def classify(g):
     for keys,reason in groups:
         if any(g.get(k) is not True for k in keys):return 'XSV_PRESSURE_001_BLOCKED_'+names[reason]
     return SUCCESS if g and all(v is True for v in g.values()) else 'XSV_PRESSURE_001_STOP_AUTHORITY_MISMATCH'
+def production_bytes(root, path):
+    """Preserve XSV's exact historical qualification after authorized G2 evolution.
+
+    Current rheology source must independently match its prospective freeze;
+    only then may XSV's unchanged historical evidence bind predecessor bytes.
+    Mutations never become an implicit historical fallback.
+    """
+    freeze = root/'docs/analysis/sci_md_rheology_002/FREEZE.json'
+    if freeze.exists() and path in AUTHORIZED_EXISTING_PRODUCTION_DELTAS:
+        frozen = load(freeze)
+        amendment = root/'docs/analysis/sci_md_rheology_002/POST_RESULT_AMENDMENT.json'
+        expected = frozen['files'][path]
+        if amendment.exists():
+            record = load(amendment)
+            if record['original_freeze_sha256'] != sha(freeze):
+                raise ValueError('post-result amendment targets another freeze')
+            if path in record['files']:
+                change = record['files'][path]
+                if change['original_sha256'] != expected:
+                    raise ValueError('post-result original production hash mismatch')
+                expected = change['amended_sha256']
+        if sha(root/path) != expected:
+            raise ValueError('active rheology source differs from frozen contract '+path)
+        if frozen['base_commit'] != '14fc4c8a4a94ffa54ffafd5c2c99037c1af680b9':
+            raise ValueError('unrecognized historical production authority')
+        return subprocess.check_output(['git','show',frozen['base_commit']+':'+path],cwd=root)
+    return (root/path).read_bytes()
+
+
+def production_sha(root,path):
+    return hashlib.sha256(production_bytes(root,path)).hexdigest()
+
 def inspect(root,verify_result=True,verify_manifest=True):
     out=root/'validation/xsv_pressure_001';errors=[];g={}
     try:
@@ -37,7 +69,7 @@ def inspect(root,verify_result=True,verify_manifest=True):
         function=load(out/'FUNCTION_LEVEL_VERIFICATION.json');vectors=load(out/'REFERENCE_VECTORS.json')
         g['helper_reference_vectors_pass'] &= function['count']==len(vectors)>=17 and len(function['vectors'])==len(vectors) and all(v['pass'] is True and digest_ok(v['dictionary_sha256']) and v['output_sha256']==v['repeat_sha256'] for v in function['vectors'])
         for key,value in function['source_hashes'].items():
-            if sha(root/key)!=value:errors.append('probe source mismatch '+key)
+            if production_sha(root,key)!=value:errors.append('probe source mismatch '+key)
         for key,limit in [('target',1e-6),('crossing',1e-10),('maximum',1e-6)]:
             g['helper_reference_vectors_pass'] &= math.isfinite(function['maximum_errors'][key]) and function['maximum_errors'][key]<=limit
         g['helper_reference_vectors_pass'] &= function['maximum_errors']['integral']<=1e-6 or function['maximum_errors']['integral_relative']<=1e-12
@@ -50,7 +82,7 @@ def inspect(root,verify_result=True,verify_manifest=True):
         if len(runmap)!=len(runs) or not runs:errors.append('missing/duplicate production runs')
         if not digest_ok(execution['executable_sha256']) or execution['openfoam_version']!='12':errors.append('binary/OpenFOAM identity absent')
         for key,value in execution['source_hashes'].items():
-            if sha(root/key)!=value:errors.append('production source mismatch '+key)
+            if production_sha(root,key)!=value:errors.append('production source mismatch '+key)
         required={'solver/espressoWholePullFoam/espressoWholePullFoam.C','solver/espressoWholePullFoam/prescribedPressureBoundaryModel.H'}
         if not required<=execution['source_hashes'].keys():errors.append('missing production source binding')
         for r in runs:
@@ -83,7 +115,7 @@ def inspect(root,verify_result=True,verify_manifest=True):
             errors.append('legacy input contract changed')
         for path,expected in AUTHORIZED_EXISTING_PRODUCTION_DELTAS.items():
             original=subprocess.check_output(['git','show',contract['base_commit']+':'+path],cwd=root,text=True)
-            delta='\n'.join(difflib.unified_diff(original.splitlines(),(root/path).read_text().splitlines(),n=0))
+            delta='\n'.join(difflib.unified_diff(original.splitlines(),production_bytes(root,path).decode().splitlines(),n=0))
             if hashlib.sha256(delta.encode()).hexdigest()!=expected:errors.append('change outside frozen pressure boundary delta '+path)
         scope=load(out/'PRODUCTION_SCOPE.json')
         base=contract['base_commit']
@@ -91,18 +123,18 @@ def inspect(root,verify_result=True,verify_manifest=True):
         for path in paths:
             if path not in contract['permitted_production_paths']:
                 original=subprocess.check_output(['git','show',base+':'+path],cwd=root)
-                if (root/path).read_bytes()!=original:errors.append('prohibited production path changed '+path)
+                if production_bytes(root,path)!=original:errors.append('prohibited production path changed '+path)
         original_source=subprocess.check_output(['git','show',base+':solver/espressoWholePullFoam/espressoWholePullFoam.C'],cwd=root,text=True)
-        current_source=(root/'solver/espressoWholePullFoam/espressoWholePullFoam.C').read_text()
+        current_source=production_bytes(root,'solver/espressoWholePullFoam/espressoWholePullFoam.C').decode()
         if original_source[:original_source.index('int main(')] != current_source[:current_source.index('int main(')].replace('#include "prescribedPressureBoundaryModel.H"\n',''):
             errors.append('legacy mathematical helper equations changed')
         for k,h in scope['unchanged_production_sha256'].items():
-            if sha(root/k)!=h:errors.append('prohibited production change '+k)
+            if production_sha(root,k)!=h:errors.append('prohibited production change '+k)
         for k,h in scope['authorized_candidate_sha256'].items():
-            if sha(root/k)!=h:errors.append('unreviewed production delta '+k)
+            if production_sha(root,k)!=h:errors.append('unreviewed production delta '+k)
         g['no_governing_equation_change']=not errors and scope['governing_equation_change'] is False
         g['no_puckworks_change']=all(sha(root/k)==h for k,h in scope['dependency_sha256'].items())
-        production='\n'.join((root/k).read_text() for k in scope['authorized_candidate_sha256'])
+        production='\n'.join(production_bytes(root,k).decode() for k in scope['authorized_candidate_sha256'])
         g['no_visualizer_specific_production_code']=all(x not in production.lower() for x in ('visualizer','cohort 066','play-003','puckworks/','/home/'))
         if verify_result:
             result=load(out/'RESULT.json')

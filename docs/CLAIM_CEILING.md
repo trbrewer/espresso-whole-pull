@@ -1,5 +1,19 @@
 # Claim Ceiling
 
+## SCI-MD-RHEOLOGY-002 coupled experiment (2026-09-21)
+
+Owner-authorized G2, `GOVERNING_PHYSICS_CHANGE`, implemented and executed.
+The [bounded result](analysis/sci_md_rheology_002/RESULT.md) is
+`COUPLED_STATE_DEPENDENCE_PERSISTS` in both conditions. All 18 full native runs
+completed; base reference alpha is 0.8406087210339453. Production source changes
+through an optional lagged aggregate-viscosity mode; constant-viscosity defaults
+and the runtime dependency lock remain unchanged. This is source-conditioned
+computational evidence, not physical validation or transport equivalence.
+Industrial-extract transfer and the dilute extension remain assumptions.
+Retain the experimental option for further qualified work; no default adoption,
+merge, laboratory action, or automatic successor is authorized. Review and CI
+status are separate and recorded on the focused PR.
+
 ## Current claim ceiling (2026-09-03)
 
 SCI-MD-011 is `MERGED_COMPLETE` with exact

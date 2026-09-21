@@ -1,0 +1,27 @@
+{
+  "base_commit": "14fc4c8a4a94ffa54ffafd5c2c99037c1af680b9",
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+  "files": {
+    "docs/analysis/sci_md_rheology_002/PROTOCOL.md": "d7674fd3495ea2f448a1b0f2646813e81c962b95a49bc1a7bb8ab10498d3afee",
+    "scripts/aggregate_viscosity.py": "72295e2221f7da6395d9662b03a757ce8e30e7a5e6bbfc6b0d11266e32fede2b",
+    "scripts/prepare_case.py": "9f6e9f1c06679ca1ac61acd63378ea3560cda7504fa9423cf7a85fdc0b37cc7a",
+    "solver/espressoWholePullFoam/aggregateViscosity.H": "2b0ffe7bafd83f823a1ce7372e025e112168aa223993ded9055ee51969bca248",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "7e22427b38e2f955e63e4db2855c4722a01fa0bfdc091feba54dff91aee0d18e",
+    "tests/test_sci_md_rheology_002.py": "845f144ccf261701acd70cb026709b2be47bae9924bc8634d53b8612091fd465",
+    "tools/sci_md_rheology_002/analyze.py": "021ab7f64000c92ef2bac0b59d9819204243e76bc67c5582b9b274213d15f087",
+    "tools/sci_md_rheology_002/check_startup.py": "d531a2aff2b8f5793630ae7d497be95d19a39cb471fd5582465fe5b668b9db86",
+    "tools/sci_md_rheology_002/evaluator.cpp": "e1d9281cb5cf2cff86818b1386acb7026ecfdf89db90952f89d298479b3d2c2f",
+    "tools/sci_md_rheology_002/export.py": "45635dfe63cdca75ddeb49da83a38ec301459e501b6f6ea15ace620c36237fad",
+    "tools/sci_md_rheology_002/plot.py": "b5a0d288e5d4a5ed1967ef3003dad35afae4455b32529b0326a347e021b4756f",
+    "tools/sci_md_rheology_002/run.py": "59038f29f6f40bcfc016c88728c428721eae5c88b2451405c672560eac52c692",
+    "tools/sci_md_rheology_002/verify.py": "a2237f70f38c0844b9ce203800fbe36714ea3b0296bb2582b01e0989d74c73d6"
+  },
+  "frozen_at_utc": "2026-09-21T22:06:55.354401+00:00",
+  "governance": "G2",
+  "runtime_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "runtime_table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+  "scientific_invocations_before_freeze": 0,
+  "task": "SCI-MD-RHEOLOGY-002",
+  "verification_sha256": "a4be0762f2bab6c4180bc3fbfdaa8140d358debaa67ffbe7e046567fd1fb0cef"
+}

@@ -1,0 +1,233 @@
+{
+  "corrected_export": {
+    "basis": "dimensionless wet-basis aggregate mass fraction c/(rho_water+c)",
+    "breakpoint_count": 5,
+    "density_kg_m3": 965,
+    "dilute_boundary": 0.1,
+    "dilute_extension": "linear water anchor to measured 0.10 boundary; assumption",
+    "domain": [
+      0,
+      0.24
+    ],
+    "equivalence_tolerance": 0.0001,
+    "evaluator_sha256": "3c38380c675cdb15c2bb81dab223f7da550285a8eb07e0d3d3856a73ac11a4f7",
+    "exporter_sha256": "45635dfe63cdca75ddeb49da83a38ec301459e501b6f6ea15ace620c36237fad",
+    "interpolation": "piecewise linear preserving every measured-loader concentration breakpoint",
+    "max_relative_mismatch": 1.3322676295501878e-15,
+    "measured_domain": [
+      0.1,
+      0.24
+    ],
+    "points": 24011,
+    "runtime_table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+    "source_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "source_hashes": {
+      "docs/cards/telisromero2001.md": "3635c6221ab516405f69564d55c7c72d8664007a72d30be5767c2cdad4315b36",
+      "puckworks/analysis/g10_viscosity_sensitivity.py": "fe2da859f724cd783ce28445b916aa2f98e85fe4caeae1bd7c5831f2b171be5f",
+      "puckworks/data/__init__.py": "7adb18f36784058bbf8ea596cf54d9ca0a8d8ac20ed57037bffdb2243957c805",
+      "puckworks/data/g10_liquor_rheology/telisromero2001_table1_eta.csv": "dc1cbfd5bd472668f9f62a551f4a04a92460d1d72a1674e1288ded90866610de",
+      "puckworks/data/telisromero2001/PROVENANCE.md": "066538a3a8fa9b65c4361306eae47e33426567ca54dac7441dbffa7ffad4e610",
+      "puckworks/models/pannusch2024/closures.py": "9d144765200b66422e72218f8ceff5d5ca531da88150fa71d023bbc490b20cf1"
+    },
+    "source_tables_redistributed": false,
+    "source_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+    "temperature_K": 363.15,
+    "viscosity_units": "Pa.s",
+    "water_viscosity_Pa_s": 0.00031267394194924405
+  },
+  "corrected_native_verification": {
+    "balance_max_kg": 4.515485207967629e-15,
+    "baseline_executable_sha256": "62bca097ee440a51d98d1fb07ff3af381e229e5aafb5c90c4428a01c33d77274",
+    "correction_max_kg": 0.0,
+    "evolving_flow_ratio": 0.6192689590795,
+    "executable_sha256": "9dea02fc3ba0a2858bd1efda6743c0feefffc5a1f863db3953bfb3d60efb5d43",
+    "layer_continuum_32": 0.011378002522984154,
+    "layer_continuum_64": 0.0056568196026896,
+    "native_short_runs": 18,
+    "parallel_max_normalized": 3.0531967648437333e-11,
+    "repeat_max_absolute": 0.0,
+    "reversed_3bar_absent_baseline_normalized_max": 0.0,
+    "reversed_3bar_analytical_relative_max": 5.399680702566911e-12,
+    "reversed_3bar_disabled_baseline_normalized_max": 0.0,
+    "reversed_3bar_multiplier_relative_max": 0.0,
+    "reversed_3bar_water_baseline_normalized_max": 3.993089974658984e-14,
+    "scaling": "max absolute difference / max(max(abs(reference)), stated floor)",
+    "status": "PASS",
+    "uniform_9bar_absent_baseline_normalized_max": 0.0,
+    "uniform_9bar_analytical_relative_max": 4.64450700121688e-12,
+    "uniform_9bar_disabled_baseline_normalized_max": 0.0,
+    "uniform_9bar_multiplier_relative_max": 0.0,
+    "uniform_9bar_water_baseline_normalized_max": 1.9984014443145706e-14,
+    "zero_water_relative_max": 0.0
+  },
+  "diagnostic_amendment": "Scalar analytical preview/reduced twin marked inapplicable for coupled cases; maintained generated provenance includes helper and table hashes. Original unused previews retained; no scientific reference used them.",
+  "files": {
+    "scripts/aggregate_viscosity.py": {
+      "amended_sha256": "1c8dab1a4dd0ee9f00ace431eb071339642089a6706f590fa1beeb353f1f189b",
+      "original_sha256": "72295e2221f7da6395d9662b03a757ce8e30e7a5e6bbfc6b0d11266e32fede2b"
+    },
+    "scripts/prepare_case.py": {
+      "amended_sha256": "967a150fc1af9333530262203fd8d7f4c01e13156fc5b96ca0c131d4619e671c",
+      "original_sha256": "9f6e9f1c06679ca1ac61acd63378ea3560cda7504fa9423cf7a85fdc0b37cc7a"
+    },
+    "scripts/validate_sci_md_rheology_002.py": {
+      "amended_sha256": "05d0e655e09ccf7f7db414849350d28b30d4cedc55563f11e30577db5981ff7a",
+      "original_sha256": null
+    },
+    "scripts/validate_xsv_pressure_001.py": {
+      "amended_sha256": "67ac9a73b5225afc62af86b12b5919f6ce9c373571c0bd7fbee24aed813266f0",
+      "original_sha256": null
+    },
+    "solver/espressoWholePullFoam/aggregateViscosity.H": {
+      "amended_sha256": "d65ca875589bf2cef1555011c9943a1823a2ae2aecaae6222988e2aec98bfb98",
+      "original_sha256": "2b0ffe7bafd83f823a1ce7372e025e112168aa223993ded9055ee51969bca248"
+    },
+    "tests/test_sci_md_rheology_002.py": {
+      "amended_sha256": "2fdfefee0157faa812412828d9cb7b9a2c7c22f63436f87c6d3b02d13d0fcfd0",
+      "original_sha256": "845f144ccf261701acd70cb026709b2be47bae9924bc8634d53b8612091fd465"
+    },
+    "tools/sci_md_rheology_002/authority.py": {
+      "amended_sha256": "b88384c267b28f34bca5b6202a3a5fee41f3ae78af5b6a6015a39eb1ca8ce24c",
+      "original_sha256": null
+    },
+    "tools/sci_md_rheology_002/run.py": {
+      "amended_sha256": "f3e3d27fd730de76ee496ab5bd5358a88aa4db0f0570e37169fab82d0f9a6cc5",
+      "original_sha256": "59038f29f6f40bcfc016c88728c428721eae5c88b2451405c672560eac52c692"
+    }
+  },
+  "full_scientific_invocations": 18,
+  "generation_equivalence": {
+    "base_reversed_3bar_C": {
+      "differing_files": [],
+      "preview_status": "NOT_APPLICABLE",
+      "solver_input_files": 15
+    },
+    "base_reversed_3bar_N": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "base_reversed_3bar_W": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "base_uniform_9bar_C": {
+      "differing_files": [],
+      "preview_status": "NOT_APPLICABLE",
+      "solver_input_files": 15
+    },
+    "base_uniform_9bar_N": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "base_uniform_9bar_W": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "spatial_reversed_3bar_C": {
+      "differing_files": [],
+      "preview_status": "NOT_APPLICABLE",
+      "solver_input_files": 15
+    },
+    "spatial_reversed_3bar_N": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "spatial_reversed_3bar_W": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "spatial_uniform_9bar_C": {
+      "differing_files": [],
+      "preview_status": "NOT_APPLICABLE",
+      "solver_input_files": 15
+    },
+    "spatial_uniform_9bar_N": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "spatial_uniform_9bar_W": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "temporal_reversed_3bar_C": {
+      "differing_files": [],
+      "preview_status": "NOT_APPLICABLE",
+      "solver_input_files": 15
+    },
+    "temporal_reversed_3bar_N": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "temporal_reversed_3bar_W": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "temporal_uniform_9bar_C": {
+      "differing_files": [],
+      "preview_status": "NOT_APPLICABLE",
+      "solver_input_files": 15
+    },
+    "temporal_uniform_9bar_N": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    },
+    "temporal_uniform_9bar_W": {
+      "differing_files": [],
+      "preview_status": "LEGACY_CONSTANT_REFERENCE",
+      "solver_input_files": 15
+    }
+  },
+  "initial_independent_review": {
+    "base": "14fc4c8a4a94ffa54ffafd5c2c99037c1af680b9",
+    "ci_and_full_suite": "Not adjudicated by this review; parent reports final integration/hosted checks separately.",
+    "disposition": "FAIL",
+    "findings": [
+      {
+        "correction_scope": "Distinguish clean EOF before a token from failed numeric extraction; add terminal malformed/overflow synthetic tests. Preserve prospective freeze and explicitly record post-result correction. Reverify compiled evaluator/native startup and accepted-table numerical equivalence; existing valid-table scientific evidence may be reused with explicit old/new identity proof.",
+        "file": "solver/espressoWholePullFoam/aggregateViscosity.H",
+        "finding": "Formatted extraction failure at physical EOF is accepted as clean EOF. A valid complete table followed by terminal 1e999, 1e, or - without a trailing newline is silently accepted by the compiled evaluator. This violates the required native malformed/nonfinite entry rejection for dictionary-bypass users.",
+        "id": "R1",
+        "lines": "26-34",
+        "reproduction": "Compile tools/sci_md_rheology_002/evaluator.cpp; supply valid synthetic header and rows 0 .001 / .1 .002 / .24 .005 followed by terminal 1e999 without newline; input concentration 0 returns status 0 and 0.001.",
+        "severity": "material fail-open input defect"
+      }
+    ],
+    "nonblocking_notes": [
+      "RESULT.md quotes MPI normalized maximum 1.41e-11, whereas final VERIFICATION.json records 3.0531967648437333e-11; both below 1e-6."
+    ],
+    "review_type": "independent G2 exact-head review",
+    "reviewed_head": "fd514398380daeedb10c6c8d726ee018e5d291f4",
+    "reviewed_tree": "92c6671b08eacc1a026c8a1639119f1acd08dd31",
+    "scientific_disposition": "Recorded valid-table numerical evidence supports COUPLED_STATE_DEPENDENCE_PERSISTS. Parser defect does not change those accepted input bytes or calculations; software acceptance blocked pending bounded correction.",
+    "task": "SCI-MD-RHEOLOGY-002",
+    "verified": [
+      "Reviewed native coefficient timing, conservative pressure-matrix flux transport, unsupported-mode guards, scalar diagnostics, property representation, maintained configuration path, accounting, scenario/calibration, metrics and classification.",
+      "All original FREEZE file hashes match reviewed head.",
+      "All 18 run configuration/input/interval/trace/log identities match external artifacts.",
+      "Reanalysis of all recorded intervals reproduces METRICS.json exactly and COUPLED_STATE_DEPENDENCE_PERSISTS.",
+      "Focused unittest module: 10 tests passed.",
+      "No full native scientific runs invoked during review; source audit reused."
+    ]
+  },
+  "no_full_scientific_reruns": true,
+  "original_executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+  "original_freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+  "packaging_note": "Static portability check requires standard-library test entrypoints; dense synthetic expected values use Python arithmetic. Source numerical tools retain qualified imports. No scientific function changed.",
+  "qualified_executable_sha256": "9dea02fc3ba0a2858bd1efda6743c0feefffc5a1f863db3953bfb3d60efb5d43",
+  "reason": "Independent review R1: malformed terminal numeric token at EOF accepted by native table parser. Reject failure after entry start; clean EOF remains valid.",
+  "recorded_at_utc": "2026-09-21T22:17:54.926667+00:00",
+  "runtime_table_unchanged": true,
+  "scientific_reuse": "Original 18 valid-table scientific runs retain their original executable and freeze identities. Interpolation, mapping, solver integration, metrics, calibration and thresholds are unchanged.",
+  "type": "POST_RESULT_SOFTWARE_INPUT_VALIDATION_CORRECTION"
+}

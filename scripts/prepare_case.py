@@ -17,6 +17,9 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+sys.path.insert(0, str(SCRIPT_DIR.parent))
+from scripts.aggregate_viscosity import contract as aggregate_viscosity_contract
+
 from espresso_reference_math import (  # noqa: E402
     analytical_preview,
     b0_reduced_simulation,
@@ -818,6 +821,7 @@ outletPatch                outlet;
 pressureIntegrationMethod  exactPiecewiseLinearIntegral;
 pressureBoundaryModel      {pressure_boundary_model};
 {history_dictionary}{prescribed_flow_dictionary}{flow_dictionary}
+{aggregate_viscosity_contract(scenario)}
 
 // Geometry [SI]
 basketRadius               {float(geometry['basket_radius_m']):.16g};
@@ -1370,6 +1374,7 @@ def main() -> None:
     scenario = json.loads(config_path.read_text(encoding="utf-8"))
     # Validate optional observers before creating or copying any case path.
     fraction_collection_contract(scenario)
+    aggregate_viscosity_contract(scenario)
     if args.nprocs < 1:
         raise SystemExit("nprocs must be positive")
     r1 = config_path == (root / R1_CONFIG_RELATIVE).resolve() or is_r1_scenario(
@@ -1461,8 +1466,10 @@ def main() -> None:
             "type": "uniform"
         }
     history = pressure_history_contract(scenario)
+    aggregate_coupled = scenario.get("aggregate_viscosity", {}).get("mode", "off") == "coupled"
     preview = ({"status": "NOT_APPLICABLE", "reason": "Legacy scalar-ramp preview does not support pressure history"}
-               if history else analytical_preview(preview_scenario))
+               if history else {"status": "NOT_APPLICABLE", "reason": "Scalar-viscosity analytical preview is inapplicable to local aggregate-viscosity feedback; use native interval resistance diagnostics"}
+               if aggregate_coupled else analytical_preview(preview_scenario))
     if r1:
         if is_wp02_scenario(scenario):
             preview["notes"] = [
@@ -1486,7 +1493,7 @@ def main() -> None:
     )
 
     b0 = None
-    if history is None and (str(scenario["scenario_id"]).startswith("reference_R0") or r1):
+    if history is None and not aggregate_coupled and (str(scenario["scenario_id"]).startswith("reference_R0") or r1):
         b0 = b0_reduced_simulation(scenario)
         (preflight_dir / "B0_REDUCED_TWIN_V0_1_4.json").write_text(
             canonical_json(b0) if r1 else json.dumps(b0, indent=2) + "\n",
@@ -1542,6 +1549,9 @@ def main() -> None:
     ] + sorted((case / "0.orig").iterdir())
     if history is not None:
         scientific_inputs += sorted((root / "solver/espressoWholePullFoam").glob("*.H"))
+    if scenario.get("aggregate_viscosity", {}).get("mode", "off") != "off":
+        scientific_inputs += [root / "solver/espressoWholePullFoam/aggregateViscosity.H",
+                              Path(scenario["aggregate_viscosity"]["table"]).resolve()]
     hashes = {}
     for path in scientific_inputs:
         try:

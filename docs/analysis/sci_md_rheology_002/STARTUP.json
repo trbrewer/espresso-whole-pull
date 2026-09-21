@@ -1,0 +1,37 @@
+[
+  {
+    "exit_code": 1,
+    "fixture": "restart",
+    "status": "REJECTED"
+  },
+  {
+    "exit_code": 1,
+    "fixture": "temperature",
+    "status": "REJECTED"
+  },
+  {
+    "exit_code": 1,
+    "fixture": "density",
+    "status": "REJECTED"
+  },
+  {
+    "exit_code": 1,
+    "fixture": "wetting",
+    "status": "REJECTED"
+  },
+  {
+    "exit_code": 1,
+    "fixture": "ramp",
+    "status": "REJECTED"
+  },
+  {
+    "exit_code": 1,
+    "fixture": "bad_mode",
+    "status": "REJECTED"
+  },
+  {
+    "exit_code": 1,
+    "fixture": "bad_purpose",
+    "status": "REJECTED"
+  }
+]

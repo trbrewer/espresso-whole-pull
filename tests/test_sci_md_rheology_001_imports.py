@@ -37,7 +37,16 @@ assert report.compare is expected.compare
                 self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_original_audit_and_amended_hashes(self):
-        analysis.check_freeze(analysis.DOC/'AUDIT.json')
+        # The predecessor runner must still reject a changed production solver.
+        # Its immutable evidence binds its accepted historical source, not future G2 work.
+        authority = json.loads((analysis.DOC/'AUTHORITY.json').read_text())
+        import hashlib
+        for path, digest in authority['solver_source_hashes'].items():
+            data = subprocess.check_output(['git', 'show',
+                '14fc4c8a4a94ffa54ffafd5c2c99037c1af680b9:' + path], cwd=analysis.ROOT)
+            self.assertEqual(hashlib.sha256(data).hexdigest(), digest)
+        with self.assertRaisesRegex(ValueError, 'solver source changed'):
+            analysis.check_freeze(analysis.DOC/'AUDIT.json')
 
     def test_unlisted_scientific_change_rejected(self):
         original = analysis.sha

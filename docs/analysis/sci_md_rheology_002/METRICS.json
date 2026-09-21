@@ -1,0 +1,877 @@
+{
+  "alpha_propagation_diagnostic_not_added_twice": {
+    "spatial": {
+      "reversed_3bar": {
+        "integrated": -4.8538823712418466e-05,
+        "peak": -6.124332221496553e-05
+      },
+      "uniform_9bar": {
+        "integrated": -9.745319036469358e-07,
+        "peak": 9.725503488500209e-05
+      }
+    },
+    "temporal": {
+      "reversed_3bar": {
+        "integrated": -3.2864199213000767e-05,
+        "peak": -4.146603868404597e-05
+      },
+      "uniform_9bar": {
+        "integrated": -6.656272370370031e-07,
+        "peak": 6.584849943733206e-05
+      }
+    }
+  },
+  "classification": "COUPLED_STATE_DEPENDENCE_PERSISTS",
+  "empirical_estimates": {
+    "reversed_3bar": {
+      "C_N": {
+        "integrated": {
+          "native_continuum_allowance": 0.0008365158144205944,
+          "quadrature_sampling": 0.0,
+          "spatial": 2.2845554520645184e-06,
+          "temporal": 8.440988204838629e-05,
+          "total": 0.0009232102519210452
+        },
+        "peak": {
+          "native_continuum_allowance": 0.0008365158144205944,
+          "quadrature_sampling": 0.0,
+          "spatial": 7.232169577264802e-06,
+          "temporal": 5.348699868717999e-05,
+          "total": 0.0008972349826850391
+        }
+      },
+      "C_W": {
+        "integrated": {
+          "native_continuum_allowance": 0.000703125006002081,
+          "quadrature_sampling": 0.0,
+          "spatial": 4.537062279769133e-05,
+          "temporal": 4.3198186339410416e-05,
+          "total": 0.0007916938151391827
+        },
+        "peak": {
+          "native_continuum_allowance": 0.000703125006002081,
+          "quadrature_sampling": 0.0,
+          "spatial": 4.539854077328931e-05,
+          "temporal": 1.0104369299601679e-05,
+          "total": 0.000758627916074972
+        }
+      }
+    },
+    "uniform_9bar": {
+      "C_N": {
+        "integrated": {
+          "native_continuum_allowance": 4.956493202285751e-07,
+          "quadrature_sampling": 0.0,
+          "spatial": 9.237094782553468e-05,
+          "temporal": 9.37922886261322e-06,
+          "total": 0.00010224582600837648
+        },
+        "peak": {
+          "native_continuum_allowance": 4.956493202285751e-07,
+          "quadrature_sampling": 0.0,
+          "spatial": 9.725502845495115e-05,
+          "temporal": 6.584850247426388e-05,
+          "total": 0.0001635991802494436
+        }
+      },
+      "C_W": {
+        "integrated": {
+          "native_continuum_allowance": 4.166130816092606e-07,
+          "quadrature_sampling": 0.0,
+          "spatial": 6.871703044081245e-05,
+          "temporal": 4.652749187961103e-05,
+          "total": 0.00011566113540203274
+        },
+        "peak": {
+          "native_continuum_allowance": 4.166130816092606e-07,
+          "quadrature_sampling": 0.0,
+          "spatial": 0.00016554092939630172,
+          "temporal": 4.258949218799435e-05,
+          "total": 0.00020854703466590533
+        }
+      }
+    }
+  },
+  "gates": {
+    "base_reversed_3bar_C": {
+      "c_max_kg_m3": 179.9955276184211,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0031212445048522104,
+      "solute_balance_max_kg": 8.560877294604488e-17,
+      "volume_identity_max_m3": 1.6543612251060553e-24,
+      "water_balance_max_kg": 9.150059182561066e-13
+    },
+    "base_reversed_3bar_N": {
+      "c_max_kg_m3": 179.99546083036708,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.002914764176035978,
+      "solute_balance_max_kg": 7.593237443573016e-17,
+      "volume_identity_max_m3": 0.0,
+      "water_balance_max_kg": 1.6400596158927527e-13
+    },
+    "base_reversed_3bar_W": {
+      "c_max_kg_m3": 179.9870010232091,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0027320179022483296,
+      "solute_balance_max_kg": 7.914866441557315e-17,
+      "volume_identity_max_m3": 8.271806125530277e-25,
+      "water_balance_max_kg": 2.5860216745776654e-13
+    },
+    "base_uniform_9bar_C": {
+      "c_max_kg_m3": 177.35294031577754,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0011880413372341197,
+      "solute_balance_max_kg": 8.278306441655963e-17,
+      "volume_identity_max_m3": 3.308722450212111e-24,
+      "water_balance_max_kg": 2.527943132601962e-13
+    },
+    "base_uniform_9bar_N": {
+      "c_max_kg_m3": 176.77982378433734,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0011347901851582166,
+      "solute_balance_max_kg": 7.846038397148002e-17,
+      "volume_identity_max_m3": 0.0,
+      "water_balance_max_kg": 3.4873839926952144e-13
+    },
+    "base_uniform_9bar_W": {
+      "c_max_kg_m3": 174.1909268425698,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0008165741288186548,
+      "solute_balance_max_kg": 7.68111975882861e-17,
+      "volume_identity_max_m3": 0.0,
+      "water_balance_max_kg": 5.817429871157742e-13
+    },
+    "spatial_reversed_3bar_C": {
+      "c_max_kg_m3": 179.99552761924005,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0031225850253151126,
+      "solute_balance_max_kg": 9.81516393105284e-17,
+      "volume_identity_max_m3": 1.6543612251060553e-24,
+      "water_balance_max_kg": 7.612231157916316e-13
+    },
+    "spatial_reversed_3bar_N": {
+      "c_max_kg_m3": 179.99550806808364,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0029161394399109864,
+      "solute_balance_max_kg": 1.0000720808373491e-16,
+      "volume_identity_max_m3": 0.0,
+      "water_balance_max_kg": 8.817946373085306e-14
+    },
+    "spatial_reversed_3bar_W": {
+      "c_max_kg_m3": 179.98815518228625,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0027333287508456493,
+      "solute_balance_max_kg": 9.965269832552939e-17,
+      "volume_identity_max_m3": 0.0,
+      "water_balance_max_kg": 8.623275704611189e-13
+    },
+    "spatial_uniform_9bar_C": {
+      "c_max_kg_m3": 177.39908633832383,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0011880594338583078,
+      "solute_balance_max_kg": 1.0674198028224366e-16,
+      "volume_identity_max_m3": 3.308722450212111e-24,
+      "water_balance_max_kg": 2.431136889025076e-13
+    },
+    "spatial_uniform_9bar_N": {
+      "c_max_kg_m3": 176.85471509677757,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0011347157186944073,
+      "solute_balance_max_kg": 1.0897878253770545e-16,
+      "volume_identity_max_m3": 0.0,
+      "water_balance_max_kg": 1.4195589148613408e-12
+    },
+    "spatial_uniform_9bar_W": {
+      "c_max_kg_m3": 174.2944300370008,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0008160711938032733,
+      "solute_balance_max_kg": 1.1062819060530354e-16,
+      "volume_identity_max_m3": 3.308722450212111e-24,
+      "water_balance_max_kg": 1.08003883614316e-12
+    },
+    "temporal_reversed_3bar_C": {
+      "c_max_kg_m3": 179.99544312590393,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0031216461981628564,
+      "solute_balance_max_kg": 8.1926816015537e-13,
+      "volume_identity_max_m3": 8.271806125530277e-25,
+      "water_balance_max_kg": 3.9277001789850274e-13
+    },
+    "temporal_reversed_3bar_N": {
+      "c_max_kg_m3": 179.99539418303067,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.002915287987229237,
+      "solute_balance_max_kg": 1.54685586103878e-12,
+      "volume_identity_max_m3": 4.1359030627651384e-25,
+      "water_balance_max_kg": 2.8619467906665363e-13
+    },
+    "temporal_reversed_3bar_W": {
+      "c_max_kg_m3": 179.98720328855072,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.002732577205438967,
+      "solute_balance_max_kg": 2.180782920037567e-12,
+      "volume_identity_max_m3": 4.1359030627651384e-25,
+      "water_balance_max_kg": 2.586264535864302e-13
+    },
+    "temporal_uniform_9bar_C": {
+      "c_max_kg_m3": 177.37215355281984,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.001188995599201018,
+      "solute_balance_max_kg": 9.954578688571813e-17,
+      "volume_identity_max_m3": 3.308722450212111e-24,
+      "water_balance_max_kg": 1.142796794695311e-13
+    },
+    "temporal_uniform_9bar_N": {
+      "c_max_kg_m3": 176.82466837053087,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0011356917255964795,
+      "solute_balance_max_kg": 9.994318430432331e-17,
+      "volume_identity_max_m3": 1.6543612251060553e-24,
+      "water_balance_max_kg": 3.0966548769661983e-13
+    },
+    "temporal_uniform_9bar_W": {
+      "c_max_kg_m3": 174.26737403509046,
+      "c_min_kg_m3": 0.0,
+      "correction_total_kg": 0.0,
+      "remaining_min_kg": 0.0008172263882981925,
+      "solute_balance_max_kg": 9.870477581332322e-17,
+      "volume_identity_max_m3": 0.0,
+      "water_balance_max_kg": 5.823015680750387e-13
+    }
+  },
+  "numerical_gates_pass": true,
+  "sets": {
+    "base": {
+      "alpha": 0.8406087210339453,
+      "conditions": {
+        "reversed_3bar": {
+          "C_N": {
+            "integrated": 0.21961122132702499,
+            "peak": 0.25087771332972414
+          },
+          "C_W": {
+            "integrated": 0.323404909370799,
+            "peak": 0.37028127270075223
+          },
+          "constant_multiplier_relative_max": 5.276223902228594e-12,
+          "decomposition": {
+            "feedback_peak_relative_to_W": 0.018754613330268337,
+            "feedback_signed_volume_relative_to_W": -0.008533639628148982,
+            "frozen_absolute": {
+              "integrated": 0.3153584574078853,
+              "peak": 0.3622621905154958
+            },
+            "operator_max_relative_to_W": 0.000703125006002081
+          },
+          "secondary": {
+            "C": {
+              "beverage_kg": 0.0077216183159085966,
+              "cumulative_tds": 0.14310740493449367,
+              "dilute_resistance_range": [
+                0.020940803216574023,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.07421874999999954,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 4.2964412874887164e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005117299332725272
+              ],
+              "pore_courant_max": 0.4721607891015918,
+              "remaining_kg": 0.0031212445048522104,
+              "solute_kg": 0.0011050207590843346,
+              "stored_solute_kg": 0.0013694382947759562,
+              "tds_range": [
+                0.0018246438634454572,
+                0.1572019481949438
+              ],
+              "water_kg": 0.006616597556824262
+            },
+            "N": {
+              "beverage_kg": 0.00963047663781242,
+              "cumulative_tds": 0.1464047546880493,
+              "dilute_resistance_range": [
+                0.02216265043057684,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.06640624999999956,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 3.892761650913881e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005117297547136406
+              ],
+              "pore_courant_max": 0.3969024770490724,
+              "remaining_kg": 0.002914764176035978,
+              "solute_kg": 0.0014099475696879172,
+              "stored_solute_kg": 0.001271395492625191,
+              "tds_range": [
+                0.001824643863445459,
+                0.15720189903530393
+              ],
+              "water_kg": 0.008220529068124503
+            },
+            "W": {
+              "beverage_kg": 0.01145654443388207,
+              "cumulative_tds": 0.1464042695251036,
+              "dilute_resistance_range": [
+                0.026382241283447867,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.08007812499999951,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 3.339752655918508e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005117071371210369
+              ],
+              "pore_courant_max": 0.4721607891014418,
+              "remaining_kg": 0.0027320179022483296,
+              "solute_kg": 0.001677287019124396,
+              "stored_solute_kg": 0.001187355325971338,
+              "tds_range": [
+                0.0018246438634454574,
+                0.1571956719692326
+              ],
+              "water_kg": 0.009779257414757674
+            }
+          }
+        },
+        "uniform_9bar": {
+          "C_N": {
+            "integrated": 0.07896601957743919,
+            "peak": 0.18961411531976163
+          },
+          "C_W": {
+            "integrated": 0.15939127896604563,
+            "peak": 0.25415639566999765
+          },
+          "constant_multiplier_relative_max": 1.9640955528643644e-12,
+          "decomposition": {
+            "feedback_peak_relative_to_W": 0.06406735735719257,
+            "feedback_signed_volume_relative_to_W": -0.041080985978234855,
+            "frozen_absolute": {
+              "integrated": 0.11831063084646237,
+              "peak": 0.22553286253388488
+            },
+            "operator_max_relative_to_W": 4.160450733839283e-07
+          },
+          "secondary": {
+            "C": {
+              "beverage_kg": 0.028619859069001247,
+              "cumulative_tds": 0.13891095806718182,
+              "dilute_resistance_range": [
+                0.1839019153408783,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.22070312499999872,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 1.4388261328692142e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005046485926566343
+              ],
+              "pore_courant_max": 1.088835694762977,
+              "remaining_kg": 0.0011880413372341197,
+              "solute_kg": 0.003975612043022685,
+              "stored_solute_kg": 0.000434907793610295,
+              "tds_range": [
+                0.001824643863445442,
+                0.1552523165567852
+              ],
+              "water_kg": 0.02464424702597856
+            },
+            "N": {
+              "beverage_kg": 0.02864863020159562,
+              "cumulative_tds": 0.13977572915311798,
+              "dilute_resistance_range": [
+                0.1738263076511885,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.1933593749999986,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 1.431375147290179e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005031084870479667
+              ],
+              "pore_courant_max": 0.9152847807932708,
+              "remaining_kg": 0.0011347901851582166,
+              "solute_kg": 0.004004383175666065,
+              "stored_solute_kg": 0.0004593952640283844,
+              "tds_range": [
+                0.0018246438634454455,
+                0.15482829535058734
+              ],
+              "water_kg": 0.024644247025929555
+            },
+            "W": {
+              "beverage_kg": 0.03378202483682023,
+              "cumulative_tds": 0.1321673503865009,
+              "dilute_resistance_range": [
+                0.20855516186957973,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.2304687499999987,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 1.2145541409518087e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0004961321715065047
+              ],
+              "pore_courant_max": 1.0888356947604045,
+              "remaining_kg": 0.0008165741288186548,
+              "solute_kg": 0.004464880713373496,
+              "stored_solute_kg": 0.0003173306036668454,
+              "tds_range": [
+                0.0018246438634454414,
+                0.152907579173747
+              ],
+              "water_kg": 0.029317144123446735
+            }
+          }
+        }
+      }
+    },
+    "spatial": {
+      "alpha": 0.8405400040035043,
+      "conditions": {
+        "reversed_3bar": {
+          "C_N": {
+            "integrated": 0.21961350588247705,
+            "peak": 0.2508704811601469
+          },
+          "C_W": {
+            "integrated": 0.3234502799935967,
+            "peak": 0.3703266712415255
+          },
+          "constant_multiplier_relative_max": 1.0035194897284327e-11,
+          "decomposition": {
+            "feedback_peak_relative_to_W": 0.018677739699000714,
+            "feedback_signed_volume_relative_to_W": -0.008510909959753931,
+            "frozen_absolute": {
+              "integrated": 0.31518286536745155,
+              "peak": 0.3620912101374845
+            },
+            "operator_max_relative_to_W": 0.0003515625191950589
+          },
+          "secondary": {
+            "C": {
+              "beverage_kg": 0.007718380290156561,
+              "cumulative_tds": 0.14310686858183672,
+              "dilute_resistance_range": [
+                0.021043190922243625,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.07421874999999979,
+                0.9999999999999966
+              ],
+              "inlet_loss_kg": 3.868635158337373e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005117299332747168
+              ],
+              "pore_courant_max": 0.943989473399141,
+              "remaining_kg": 0.0031225850253151126,
+              "solute_kg": 0.0011045532338480736,
+              "stored_solute_kg": 0.0013689931056784725,
+              "tds_range": [
+                0.0018246438634454592,
+                0.15720194819497882
+              ],
+              "water_kg": 0.0066138270563084875
+            },
+            "N": {
+              "beverage_kg": 0.009626302760386413,
+              "cumulative_tds": 0.14640475566567113,
+              "dilute_resistance_range": [
+                0.0222875582707559,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.06640624999999983,
+                0.9999999999999966
+              ],
+              "inlet_loss_kg": 3.5267280268821453e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005117298810044024
+              ],
+              "pore_courant_max": 0.7934609157485076,
+              "remaining_kg": 0.0029161394399109864,
+              "solute_kg": 0.0014093365035981484,
+              "stored_solute_kg": 0.001270997328463967,
+              "tds_range": [
+                0.001824643863445461,
+                0.15720193380564304
+              ],
+              "water_kg": 0.008216966256788265
+            },
+            "W": {
+              "beverage_kg": 0.011452516809791237,
+              "cumulative_tds": 0.14640438010508994,
+              "dilute_resistance_range": [
+                0.026549617850327473,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.07812499999999978,
+                0.9999999999999966
+              ],
+              "inlet_loss_kg": 3.046648576373236e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005117102228256966
+              ],
+              "pore_courant_max": 0.9439894734019435,
+              "remaining_kg": 0.0027333287508456493,
+              "solute_kg": 0.0016766986241806084,
+              "stored_solute_kg": 0.0011869259763973732,
+              "tds_range": [
+                0.0018246438634454594,
+                0.15719652152425553
+              ],
+              "water_kg": 0.009775818185610628
+            }
+          }
+        },
+        "uniform_9bar": {
+          "C_N": {
+            "integrated": 0.07905839052526473,
+            "peak": 0.18971137034821658
+          },
+          "C_W": {
+            "integrated": 0.15945999599648644,
+            "peak": 0.25432193659939395
+          },
+          "constant_multiplier_relative_max": 5.532685420917005e-12,
+          "decomposition": {
+            "feedback_peak_relative_to_W": 0.06418550667179936,
+            "feedback_signed_volume_relative_to_W": -0.04113333697867926,
+            "frozen_absolute": {
+              "integrated": 0.11832674401792091,
+              "peak": 0.22570371879181014
+            },
+            "operator_max_relative_to_W": 1.0434235238637616e-07
+          },
+          "secondary": {
+            "C": {
+              "beverage_kg": 0.028618768648225573,
+              "cumulative_tds": 0.13894854310630347,
+              "dilute_resistance_range": [
+                0.18423154833094793,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.22070312500000014,
+                0.9999999999999966
+              ],
+              "inlet_loss_kg": 1.3639155447922295e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.000504772531191512
+              ],
+              "pore_courant_max": 2.177671389549823,
+              "remaining_kg": 0.0011880594338583078,
+              "solute_kg": 0.003976536209167297,
+              "stored_solute_kg": 0.0004340404414296058,
+              "tds_range": [
+                0.0018246438634454405,
+                0.15528643926429597
+              ],
+              "water_kg": 0.024642232439058276
+            },
+            "N": {
+              "beverage_kg": 0.028647611580664756,
+              "cumulative_tds": 0.13981546525062713,
+              "dilute_resistance_range": [
+                0.1743066702834741,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.19335937500000047,
+                0.9999999999999966
+              ],
+              "inlet_loss_kg": 1.3580240325301712e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005033098263053569
+              ],
+              "pore_courant_max": 1.8304199184823264,
+              "remaining_kg": 0.0011347157186944073,
+              "solute_kg": 0.0040053791414698964,
+              "stored_solute_kg": 0.00045854711580313196,
+              "tds_range": [
+                0.0018246438634454457,
+                0.1548837279868641
+              ],
+              "water_kg": 0.02464223243919486
+            },
+            "W": {
+              "beverage_kg": 0.03378341815943803,
+              "cumulative_tds": 0.1322031422254678,
+              "dilute_resistance_range": [
+                0.20895455470075486,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.22949218749999975,
+                0.9999999999999966
+              ],
+              "inlet_loss_kg": 1.1596794445522874e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0004964116906115465
+              ],
+              "pore_courant_max": 2.177671389527845,
+              "remaining_kg": 0.0008160711938032733,
+              "solute_kg": 0.004466274035794637,
+              "stored_solute_kg": 0.0003164950909574944,
+              "tds_range": [
+                0.0018246438634454405,
+                0.15298453625293615
+              ],
+              "water_kg": 0.02931714412364339
+            }
+          }
+        }
+      }
+    },
+    "temporal": {
+      "alpha": 0.840562193542064,
+      "conditions": {
+        "reversed_3bar": {
+          "C_N": {
+            "integrated": 0.2195268114449766,
+            "peak": 0.25082422633103696
+          },
+          "C_W": {
+            "integrated": 0.3233617111844596,
+            "peak": 0.3702711683314526
+          },
+          "constant_multiplier_relative_max": 7.607914298546348e-12,
+          "decomposition": {
+            "feedback_peak_relative_to_W": 0.018741987512074138,
+            "feedback_signed_volume_relative_to_W": -0.008524941838030998,
+            "frozen_absolute": {
+              "integrated": 0.31532398268164563,
+              "peak": 0.362250854498599
+            },
+            "operator_max_relative_to_W": 0.000703125006002081
+          },
+          "secondary": {
+            "C": {
+              "beverage_kg": 0.007721561917565398,
+              "cumulative_tds": 0.143046436245547,
+              "dilute_resistance_range": [
+                0.0209426369460988,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.07421874999999954,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 4.296167985115068e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005117297073804834
+              ],
+              "pore_courant_max": 0.2360803945507959,
+              "remaining_kg": 0.0031216461981628564,
+              "solute_kg": 0.0011045419145570624,
+              "stored_solute_kg": 0.0013695157201142351,
+              "tds_range": [
+                0.0009131550230773469,
+                0.15720188600384413
+              ],
+              "water_kg": 0.006617020003008335
+            },
+            "N": {
+              "beverage_kg": 0.009629388419300899,
+              "cumulative_tds": 0.14635554140203283,
+              "dilute_resistance_range": [
+                0.02215981482575931,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.06640624999999956,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 3.89279957605644e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005117295765309439
+              ],
+              "pore_courant_max": 0.19844025429585369,
+              "remaining_kg": 0.002915287987229237,
+              "solute_kg": 0.0014093143554772482,
+              "stored_solute_kg": 0.001271504859264315,
+              "tds_range": [
+                0.000913155023077347,
+                0.1572018499782284
+              ],
+              "water_kg": 0.00822007406382365
+            },
+            "W": {
+              "beverage_kg": 0.01145588443134575,
+              "cumulative_tds": 0.1463550917116963,
+              "dilute_resistance_range": [
+                0.026379071873192612,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.07812499999999953,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 3.339623674223605e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005117076778884564
+              ],
+              "pore_courant_max": 0.2360803945507209,
+              "remaining_kg": 0.002732577205438967,
+              "solute_kg": 0.0016766270165882013,
+              "stored_solute_kg": 0.0011874561564793919,
+              "tds_range": [
+                0.0009131550230773468,
+                0.15719582085307252
+              ],
+              "water_kg": 0.009779257414757549
+            }
+          }
+        },
+        "uniform_9bar": {
+          "C_N": {
+            "integrated": 0.0789753988063018,
+            "peak": 0.1896799638222359
+          },
+          "C_W": {
+            "integrated": 0.15943780645792524,
+            "peak": 0.25419898516218564
+          },
+          "constant_multiplier_relative_max": 2.5527358005206224e-12,
+          "decomposition": {
+            "feedback_peak_relative_to_W": 0.06412402491574952,
+            "feedback_signed_volume_relative_to_W": -0.0411006690669449,
+            "frozen_absolute": {
+              "integrated": 0.11833747606149407,
+              "peak": 0.22559835272574008
+            },
+            "operator_max_relative_to_W": 4.166130816092606e-07
+          },
+          "secondary": {
+            "C": {
+              "beverage_kg": 0.028617464082459406,
+              "cumulative_tds": 0.13888655885837523,
+              "dilute_resistance_range": [
+                0.1838810244343407,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.22070312499999872,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 1.4388738992451457e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005047001965968861
+              ],
+              "pore_courant_max": 0.5444178473814885,
+              "remaining_kg": 0.001188995599201018,
+              "solute_kg": 0.003974581109665937,
+              "stored_solute_kg": 0.0004349844172337533,
+              "tds_range": [
+                0.0009131550230773451,
+                0.15526652413550518
+              ],
+              "water_kg": 0.02464288297279347
+            },
+            "N": {
+              "beverage_kg": 0.028646258212926122,
+              "cumulative_tds": 0.1397521173773404,
+              "dilute_resistance_range": [
+                0.17386945669400977,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.1933593749999986,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 1.4313952057528806e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0005032290512760778
+              ],
+              "pore_courant_max": 0.45761705999923796,
+              "remaining_kg": 0.0011356917255964795,
+              "solute_kg": 0.004003375240194453,
+              "stored_solute_kg": 0.00045950163900326433,
+              "tds_range": [
+                0.0009131550230773455,
+                0.15486148904190744
+              ],
+              "water_kg": 0.024642882972731667
+            },
+            "W": {
+              "beverage_kg": 0.03378135749218413,
+              "cumulative_tds": 0.13215020650873086,
+              "dilute_resistance_range": [
+                0.20863602512574128,
+                1.0
+              ],
+              "dilute_volume_range": [
+                0.2285156249999987,
+                1.0000000000000007
+              ],
+              "inlet_loss_kg": 1.2145078862683716e-06,
+              "mu_range_Pa_s": [
+                0.00031267394194924405,
+                0.0004963386284996877
+              ],
+              "pore_courant_max": 0.5444178473802023,
+              "remaining_kg": 0.0008172263882981925,
+              "solute_kg": 0.0044642133687373955,
+              "stored_solute_kg": 0.00031734573507808485,
+              "tds_range": [
+                0.000913155023077345,
+                0.15296442082378772
+              ],
+              "water_kg": 0.02931714412344674
+            }
+          }
+        }
+      }
+    }
+  }
+}
