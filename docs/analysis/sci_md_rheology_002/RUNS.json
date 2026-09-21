@@ -1,0 +1,719 @@
+{
+  "external_artifacts": "Owner-retained SCI-MD-RHEOLOGY-002 directory; provide explicit artifact root",
+  "failed_full_runs": 0,
+  "full_run_budget": 18,
+  "full_run_count": 18,
+  "geometry": {
+    "base_reversed_3bar_C": {
+      "axial_groups": 512,
+      "full_area_m2": 0.0026420794216690164,
+      "porosity_range": [
+        0.3999999999999999,
+        0.40000000000000013
+      ],
+      "radial_scalar_invariance": "PASS (inherited axial_reduce relative 1e-7)",
+      "radial_to_axial_velocity_max": 2.93447419005653e-10,
+      "saturation_range": [
+        1.0,
+        1.0
+      ],
+      "sector_scale": 72.09146648398465,
+      "summed_axial_thickness_m": 0.009011660896432556
+    },
+    "base_reversed_3bar_W": {
+      "axial_groups": 512,
+      "full_area_m2": 0.0026420794216690164,
+      "porosity_range": [
+        0.3999999999999999,
+        0.40000000000000013
+      ],
+      "radial_scalar_invariance": "PASS (inherited axial_reduce relative 1e-7)",
+      "radial_to_axial_velocity_max": 1.16803829922577e-11,
+      "saturation_range": [
+        1.0,
+        1.0
+      ],
+      "sector_scale": 72.09146648398465,
+      "summed_axial_thickness_m": 0.009011660896432556
+    },
+    "base_uniform_9bar_C": {
+      "axial_groups": 512,
+      "full_area_m2": 0.0026420794216690164,
+      "porosity_range": [
+        0.3999999999999999,
+        0.40000000000000013
+      ],
+      "radial_scalar_invariance": "PASS (inherited axial_reduce relative 1e-7)",
+      "radial_to_axial_velocity_max": 2.88196151818588e-10,
+      "saturation_range": [
+        1.0,
+        1.0
+      ],
+      "sector_scale": 72.09146648398465,
+      "summed_axial_thickness_m": 0.009011660896432556
+    },
+    "base_uniform_9bar_W": {
+      "axial_groups": 512,
+      "full_area_m2": 0.0026420794216690164,
+      "porosity_range": [
+        0.3999999999999999,
+        0.40000000000000013
+      ],
+      "radial_scalar_invariance": "PASS (inherited axial_reduce relative 1e-7)",
+      "radial_to_axial_velocity_max": 1.06566037427773e-11,
+      "saturation_range": [
+        1.0,
+        1.0
+      ],
+      "sector_scale": 72.09146648398465,
+      "summed_axial_thickness_m": 0.009011660896432556
+    },
+    "spatial_reversed_3bar_C": {
+      "axial_groups": 1024,
+      "full_area_m2": 0.0026420794216690164,
+      "porosity_range": [
+        0.3999999999999999,
+        0.40000000000000013
+      ],
+      "radial_scalar_invariance": "PASS (inherited axial_reduce relative 1e-7)",
+      "radial_to_axial_velocity_max": 7.92251802289993e-10,
+      "saturation_range": [
+        1.0,
+        1.0
+      ],
+      "sector_scale": 72.09146648398465,
+      "summed_axial_thickness_m": 0.009011660896432584
+    }
+  },
+  "reused_evidence": "Accepted source audit/adapter/scenarios; accepted baseline executable used in short compatibility fixtures. No prior concentration fields reused as coupled runs.",
+  "scientific_invocations": [
+    {
+      "alpha": null,
+      "configuration_sha256": "57fc7a786ff05935fa14b1238e3f230a81500f540d7f2e6ed673574ed908c40b",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "base_uniform_9bar_W",
+      "input_hashes": {
+        "0/Ccx": "11cbaad70a49ef72420b97b0d9308f17a96b189128a470d8103835ae3bf7d5d6",
+        "0/Ccy": "d6301fe97e9af1991f663c37dbd633e2e798ba8344fa24f4415a8cf985f0f318",
+        "0/Ccz": "457a6676c15f90872ce0ee77076f40d823c3bffa52e59914295f95f273107c22",
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "b070c508854b42985861c8cee887e88bd56a25180da95f418ff2a799b0a0fbeb",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "d62110f7c56fb8f572d194705f5f8bfaa16623af930b2e3e0adca94f2be5cba2",
+      "logs_sha256": {
+        "command-0.log": "d3d04e0e878f327bf8313fa45e68a845b5a4d1bdf8c07416366778bb2ddc4d40",
+        "command-1.log": "c9c2ff35f13857e238b30d6e0e5ad9a82ce829d257b4e0c251dd9f5b7e619e2b",
+        "command-2.log": "e21e7ba6fdcb732cd2edb2ffd422064326bbcfa7dc2ea39998a0a6f3441b72d2"
+      },
+      "normalized_solute_balance_max": 1.3716285283622517e-14,
+      "normalized_water_balance_max": 1.9843098791144474e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "bf0f7df3bf902d368d8ee4a0f4127917de04136db3a1b08a748e174a97457da4"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "a5cad1a3de9a849827e9eadffe5bada183999b615be42f0f418bdeceb6e17d3d",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "base_uniform_9bar_C",
+      "input_hashes": {
+        "0/Ccx": "11cbaad70a49ef72420b97b0d9308f17a96b189128a470d8103835ae3bf7d5d6",
+        "0/Ccy": "d6301fe97e9af1991f663c37dbd633e2e798ba8344fa24f4415a8cf985f0f318",
+        "0/Ccz": "457a6676c15f90872ce0ee77076f40d823c3bffa52e59914295f95f273107c22",
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "3d97fd84b0dc2d5176ca39b3e432c5cebc15dc311709b41dc57e8de6fe4f5c94",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "2a6b1c7960859d5f80b3f6fddd44d0d729c318acd2ba22739e8406af05016bf6",
+      "logs_sha256": {
+        "command-0.log": "788ab43a581b091b0ee58b53d8d19e4952521860efac57d47adb960bece9a9e0",
+        "command-1.log": "936bbc4da8a304462c12b5dcbb9c97ad40e0f4c7e2ff397ac8e7b21d3842b763",
+        "command-2.log": "284007363f8b489459fac702d0462c244b4c6ff03f90b2e4ec23d46f656d8d94"
+      },
+      "normalized_solute_balance_max": 1.4782690074385648e-14,
+      "normalized_water_balance_max": 1.0257741410955458e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "4bf5dc92bbadd83fe48651f8f9686c85d44134c0653a5884653c819c5ee40c96"
+    },
+    {
+      "alpha": 0.8406087210339557,
+      "configuration_sha256": "5e9e138ef5b3a0b926421b8de2af7b183a47a4c2ab168e258ad9d79965d82a9e",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "base_uniform_9bar_N",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "ed3a7e3c1a5a715dad195ff1c45b7191d548e120b261f367fe70f012796babc9",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "28dae8a908cb3b0d74b8ccdeaf8533d0894350f15b11f070cea03faf4e15cc51",
+      "logs_sha256": {
+        "command-0.log": "29262c2995bfa862de92e15b650da50c2ff7c22d5935f888159cabd619d44d42",
+        "command-1.log": "e20b97b7ab2e9e8f83add623a917ce588f52da3b412d10436670031f9650bf48",
+        "command-2.log": "17c84b894230c5fc410a80d67c49001c14c78340779898369e7f0216eb6d6def"
+      },
+      "normalized_solute_balance_max": 1.4010782852050004e-14,
+      "normalized_water_balance_max": 1.415090503282956e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "81ab9355e0469184a92259da28b2d6af073c7767e54eb9dde933a551576ee9f5"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "fcf21c646499cad51ebd0c95c6078eb874622509bb9974694d85af844e6baa11",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "base_reversed_3bar_W",
+      "input_hashes": {
+        "0/Ccx": "11cbaad70a49ef72420b97b0d9308f17a96b189128a470d8103835ae3bf7d5d6",
+        "0/Ccy": "d6301fe97e9af1991f663c37dbd633e2e798ba8344fa24f4415a8cf985f0f318",
+        "0/Ccz": "457a6676c15f90872ce0ee77076f40d823c3bffa52e59914295f95f273107c22",
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "97cec84ff346778ab03ca739eb981a3d2c4ebe26091698200f0fd7ea80e8279d",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "f9391aea044c6c420d747fe829f44958939d18446d059669f2671aff7ce4a2b1",
+      "logs_sha256": {
+        "command-0.log": "b15b1def267b880bf07dd4a12d94b65f6a8b0e527ce5da63c29d85d6b33f29cb",
+        "command-1.log": "0e8fc6b025ca4cb6e1cb66e9a03a46fb6afd5a550812d04c21509c3c4a538e3a",
+        "command-2.log": "10012c87cdaf1c9b36f356d9ee60f91a16a51c051ad64e38a861fe498f4ca03b"
+      },
+      "normalized_solute_balance_max": 1.413369007420949e-14,
+      "normalized_water_balance_max": 2.644394727431097e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "70d37ab779eab538a8adfa5003f6f53b14f2d2e5c42232f61831582a5f3d667e"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "9477e0232d9bff8e6dd504caa06357728974c2996a25a972b698ceec0240c805",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "base_reversed_3bar_C",
+      "input_hashes": {
+        "0/Ccx": "11cbaad70a49ef72420b97b0d9308f17a96b189128a470d8103835ae3bf7d5d6",
+        "0/Ccy": "d6301fe97e9af1991f663c37dbd633e2e798ba8344fa24f4415a8cf985f0f318",
+        "0/Ccz": "457a6676c15f90872ce0ee77076f40d823c3bffa52e59914295f95f273107c22",
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "0263897686459273ca9f939da348981588e565d0b1315100706561c9a038e1c8",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "9a6f641cad2c8fd7dd801e5f9c3839fd828aa4ddb42645be7f14e7ba95e44ae9",
+      "logs_sha256": {
+        "command-0.log": "7d26cb472e8efe655c8bc9ea639e795baf80da3d0cd9b1a0531e9f97bc228664",
+        "command-1.log": "6f54146e73c6cca8dee6d299313f027cb2d178d86f9b46de45de89919c2c665c",
+        "command-2.log": "0069b2596ffe7ba86c1822a8ff5bb6790d175ade01d3d9047bd3c4db3ebecab2"
+      },
+      "normalized_solute_balance_max": 1.52872808832223e-14,
+      "normalized_water_balance_max": 1.382894925069733e-10,
+      "status": "COMPLETE",
+      "trace_sha256": "69c21e63531789db32fab94bbb4abf83066531eb9df267c72a07cc8dc211679b"
+    },
+    {
+      "alpha": 0.8406087210339557,
+      "configuration_sha256": "e8cffeb8d928e708cdf4fe92659c651a22d8376aabb5c432e9ef4e21d2886ba7",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "base_reversed_3bar_N",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "43da1af0a7013219ebcf01d89d651f4b3cfeee850ed4f5db3b42d0a1d1c46a37",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "2f358c92853e9e0ea18179326919b4e41f2741fafa43319ddaa40ad2c5911c05",
+      "logs_sha256": {
+        "command-0.log": "bb9fc8a583e37315dd48372c2c5e7c894e3415260ef09fadf1d09b198a24a674",
+        "command-1.log": "cbc00cdd81e2786b353173e291cf8c47e4e9616121c99821d026ee3a33083a2d",
+        "command-2.log": "cc054eb71228efb44318fd9e5c227a9916e14bc0a95cd3fc6b41eb0e913db0d1"
+      },
+      "normalized_solute_balance_max": 1.3559352577808957e-14,
+      "normalized_water_balance_max": 1.995077935132135e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "23369c6fcc5a4964f86cfc50830d73ead1c00d2cac90a893883e4b4c88329044"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "dd8cd1980196bb7bf4451481a62c2c6b8e7989fcfe7cdb6042dac0ce800bd7c9",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "temporal_uniform_9bar_W",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "b070c508854b42985861c8cee887e88bd56a25180da95f418ff2a799b0a0fbeb",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "8eb17863c13fe0d5bf80c8f736e970aa8463501f04ab78fae3acc4cc59f6f636",
+      "logs_sha256": {
+        "command-0.log": "5abc02ab4951433be3d3d44841e886e253a1f26fb8d944379d2fdb32f284e29c",
+        "command-1.log": "ccf05b1040700421a738ea2170eb7207e3b09d90f78cdfa20ec12b861f3bcc74",
+        "command-2.log": "3dec3022efed8179a966afe05b3fecaea177c0bb50d9e499a81440a361d57e69"
+      },
+      "normalized_solute_balance_max": 1.7625852823807717e-14,
+      "normalized_water_balance_max": 1.9862151839316985e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "25fa18e6f2f2a5522a785e39a328f6310e668c201780adb08b07d77f06f30154"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "c087b36c7904493128911467ae5bbc805c0dd34e6608e9fef634c1307b3372f2",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "temporal_uniform_9bar_C",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "3d97fd84b0dc2d5176ca39b3e432c5cebc15dc311709b41dc57e8de6fe4f5c94",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "433b6a8813439694b1d71eec51ab924ba1aba740d93aa180ec99d6f2245768b2",
+      "logs_sha256": {
+        "command-0.log": "a59c60600047a56e67e20d39bb4ee5d124e1f6c43cb1caa0e6eda0784d1a1540",
+        "command-1.log": "65fafe052312ee47db249e9c0ad6873b2baa9640b9796b987b3bb872969f9064",
+        "command-2.log": "d76dd47368509411390cb6145ec3538ec5f60b8e04f665b818364010f5d244d8"
+      },
+      "normalized_solute_balance_max": 1.7776033372449666e-14,
+      "normalized_water_balance_max": 4.637431407506156e-12,
+      "status": "COMPLETE",
+      "trace_sha256": "ae0bc6119fa26c98125d33c10d2a5e0734b328a937589db2171b8f3bd5f945da"
+    },
+    {
+      "alpha": 0.8405621935420757,
+      "configuration_sha256": "78e4e1b105380b5d2147787b9f1e2ebceea04daea8f168f39cc362b9d44085c3",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "temporal_uniform_9bar_N",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "6df6c95bd8ff350ad0e5db04a208e099c8ce673a6d7de54abca2711dfd2bb6bc",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "0aade6a3420fcbb7433400de9062c460da88ee217a39b247cd921da9fe96d152",
+      "logs_sha256": {
+        "command-0.log": "fc08288798bbf224a13c8949af2feab837a5d39c461d58a6fffc849801cdde83",
+        "command-1.log": "f9be4e580163c6b17f15608b0cdbce4cd0bfdc9b93f856dbe7a071ea5bdd8524",
+        "command-2.log": "188cb5bd89e7b4987e8118150ca022b1418a55383acfb9c21399b7edcd1d52f3"
+      },
+      "normalized_solute_balance_max": 1.784699719720059e-14,
+      "normalized_water_balance_max": 1.2566122561198584e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "2df9f418c385aa1dfa786f6ba3463ed7e4ad76e18927b3d7d9b69ce637598084"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "796c2185a5a6ac0b0f208613ed46d31301c7a0802343fa8bd055d32b8292789e",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "temporal_reversed_3bar_W",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "97cec84ff346778ab03ca739eb981a3d2c4ebe26091698200f0fd7ea80e8279d",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "c57e8676d525fbea775a0d15cce0af88be1a015dff0f8a555b5efe4f64ee59b8",
+      "logs_sha256": {
+        "command-0.log": "50ed6c3684d5fbb61fd4e07c34e2253cf121d79bf533519978132888e687d948",
+        "command-1.log": "669c270d454e83d23e79b016ef54ffaf4bd8d684d1ec510c037800ed62259387",
+        "command-2.log": "d0dfab9195c415c4cb9f0de817a4e3506ed042628f1e14bffce7bb44ff9a61e8"
+      },
+      "normalized_solute_balance_max": 3.894255214352798e-10,
+      "normalized_water_balance_max": 2.644643070711542e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "7b9b63d18c5c6b6a4fdf167074b3a3246481b0dda783e9e3969ef490eb1605ba"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "ec7d0ec62ae830dcec3d94e2b3f7f78e7a8c3616488586ec63f97dfe44708c80",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "temporal_reversed_3bar_C",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "0263897686459273ca9f939da348981588e565d0b1315100706561c9a038e1c8",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "c8788e43865b5332bb16da8f0220aa9886486ce01d539a91bbee6d8b865efc90",
+      "logs_sha256": {
+        "command-0.log": "3c1f29d75f86961f5212b81d366f874e8d7391c20806f659c380dbf21b5df73a",
+        "command-1.log": "ec1046d611f8e3a7fc7f8fee6d9132e8fc581ce7f3ca752b145dfd13e3211603",
+        "command-2.log": "248d6442d8b763d5904ed77cd0a19ea41b5b653347b0da987bb4d312d9c1d54a"
+      },
+      "normalized_solute_balance_max": 1.4629788574203037e-10,
+      "normalized_water_balance_max": 5.935753824530308e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "f0a0dac3f242cdbf38924152f5b50234451aae6f338e125638e0145b34a60015"
+    },
+    {
+      "alpha": 0.8405621935420757,
+      "configuration_sha256": "b133709328d044318429b3a7fb04d8c7e2e5e1a5dedcb9601558421bd7061612",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "temporal_reversed_3bar_N",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "39b27a91141169da7deefb200dd5589ddfc49f2b003c41b1d436e0b738cd1fa9",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "da343beccc0c33eaf2906b2437b73f3629e8b02fb5a0cad790cf7429e62cbf05",
+      "logs_sha256": {
+        "command-0.log": "89d95f6931335e874020d825fc34c24642f28cd324e3af2d6df33c822fe4adca",
+        "command-1.log": "a1497a0a4343e0e7a498e23f5b42fa92e58edfbe0de750c5174ada1dc66a7f62",
+        "command-2.log": "fc24d5b2e7b0fe5f5d80ee600ef23af2bca45362fe9fe942b0f535f229ac2333"
+      },
+      "normalized_solute_balance_max": 2.7622426089978216e-10,
+      "normalized_water_balance_max": 3.481655722862518e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "af1cdbf3456301ac9c7774b37605fad42d501e7091dca5a1b4bece81fbb71a28"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "a9bd9119fdf3fad68d00ebb83bb7e62ca36e93c941482794cb116beffbb3af91",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "spatial_uniform_9bar_W",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "fffdfb1ea2f7a47839307f2bfcd99c52d9b212dac07ec9a1b5ba3ceee9ba8f6f",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "fecf75d181c95e5dd22af044242a1629c4bd7a77da64a22d8bfd68fb881c89b7",
+      "logs_sha256": {
+        "command-0.log": "23f02ca98800b4ecae4bfa094d519e6f252d4133162f9eb1f68a096c3fcbe3eb",
+        "command-1.log": "da5a7ee02a34a4a9a1f97b6e63e776cad488674573e370fc031533870f5b0e32",
+        "command-2.log": "dbf37813002a351bd0e4774ff40de3d6615667c544b64d8fc2b42ec4af549464"
+      },
+      "normalized_solute_balance_max": 1.9755034036661345e-14,
+      "normalized_water_balance_max": 3.6839837863748175e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "178d2cb1a7dfcc0387a91c376bfcc35ef491e97190fd9e072de0653c302ba1e4"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "76870ee127783ce118384b6e5c898a97437f02ecccef27d7e4e2f4ddc07b516f",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "spatial_uniform_9bar_C",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "0792b7d6a9594e6d922bdae2219a8f03bdbff1d45cfaa5431fde43ac84aa733c",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "6930a96e8b512fa9162c8264fa19144d4062510571fae452f43b596b7d56a8b9",
+      "logs_sha256": {
+        "command-0.log": "114e7e1b91f7032cee923240f723d327e05cb26fe13a25bc590c1af8204a3385",
+        "command-1.log": "f8ad2e63fb72bc37842473ad96e920f4e33afeff52bdd22651be0da489c52eef",
+        "command-2.log": "5a9fbe32cfacb0895e4c1d58f15836175d1dd41ac8ed4d4ca09eb8fed27ae109"
+      },
+      "normalized_solute_balance_max": 1.906106790754351e-14,
+      "normalized_water_balance_max": 9.865733127213308e-12,
+      "status": "COMPLETE",
+      "trace_sha256": "ba6dab2e951059d76093e8175b5992ef8fc9ed5aba911799ecb0629c67f166ea"
+    },
+    {
+      "alpha": 0.840540004003515,
+      "configuration_sha256": "8be5c161b2436d1eebd67aacaddb5ea1ab5f5e9d007b21a4ef14fcfe6830156e",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "spatial_uniform_9bar_N",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "406c634719cdec9be41177f7ddd8f92f90a6298619a7bab5fd61abb941bf307e",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "c1efca583ab57253f6fc793bfec3c967ad2c0c744fad6fd382b648ee97b5e4bf",
+      "logs_sha256": {
+        "command-0.log": "81945e1615220682628a0466f7c7769032d1cf5b465bd25890aab340e6ead6ff",
+        "command-1.log": "d1d90afbe0608bce0a0f9bf766e0156090d8b00dd8aa5975d7d691062b4938be",
+        "command-2.log": "4eb31bf3d6eb39b8a9f1050766a179b1435acaf12e024d3d5ce5999e12770746"
+      },
+      "normalized_solute_balance_max": 1.9460496881733117e-14,
+      "normalized_water_balance_max": 5.760674964673461e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "beccbc04830a3afea02021f41b87fe4547d852632f0cf02d6a8ab8e39f4d5ff3"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "a83e9f2c5cf3a3453cb58d405c7f6c07a4ed82ebd8bb9c560d2b3df852f1b4b8",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "spatial_reversed_3bar_W",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "51281dc4bf0b666308b461f772c38a5b683df42ffe7d56d094f043d2de33d272",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "bc69d10906a68db0302f16f6c827efa58551d6ca2949613f0dbdbdd7fc7e9051",
+      "logs_sha256": {
+        "command-0.log": "84fcd568369e24021c4431063ae7b6f92e3d8e144c01434d81e67e6c579c55b0",
+        "command-1.log": "a010c46408f3765e41404154f7466841747f11caded7536c7189f45e8895a0d1",
+        "command-2.log": "274199ba07c078c7c2ceb9849486647e8f07b521db0c0af52fa3e624fc15f195"
+      },
+      "normalized_solute_balance_max": 1.779512470098739e-14,
+      "normalized_water_balance_max": 8.821027090401592e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "3041bffcd4b6cd4317a06d748666326c32adc09c4bae51455e5f532d3270028f"
+    },
+    {
+      "alpha": null,
+      "configuration_sha256": "48be699ad68826fa58673fdbb650c18d658fabb41e00df46dea044728aefb1ae",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "spatial_reversed_3bar_C",
+      "input_hashes": {
+        "0/Ccx": "cef5e3a2cc43c96354c25783187dc0d3d92b647783af254957b0ec8a4c1e4903",
+        "0/Ccy": "fcf0d361f544515f3be2b0fd9392ff0d437a4c7f4472546ae8c77f738eba6c59",
+        "0/Ccz": "1eecf052f1243d6a8f2d2d8710d94609457044214984e5b67bc0cabbbf4b6deb",
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "57f27a24f2be78e63474a09e9bbbfecddee91215f0cc0852262f9363c8ed347b",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "0f6014c681acfb9bcbb976ef04354593832a781b80db514e51c66a2e8c5ac545",
+      "logs_sha256": {
+        "command-0.log": "bc2f106ed5d4f4b3e0ebdf3d485c15ccf7022d505dd9fb96e8e2981a62e98aba",
+        "command-1.log": "7bc1ea2a9b09c9598403c1ea0dfd132ee2008c626bae9d809e4ec4c53b43aaa9",
+        "command-2.log": "576966824ab2f71c54c911d597c614f0951833fbcfa6e13830a56a7187891ae3"
+      },
+      "normalized_solute_balance_max": 1.7527078448308644e-14,
+      "normalized_water_balance_max": 1.1509570923321192e-10,
+      "status": "COMPLETE",
+      "trace_sha256": "6b719c402c64e1e0284cfd04ff300493629005ab588f16f46a808e45743e93f4"
+    },
+    {
+      "alpha": 0.840540004003515,
+      "configuration_sha256": "4b986f0a49466dfa23aa5af31c6cb15a32bc09a06120c4f679c49e5d2e0f64c7",
+      "executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+      "freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+      "id": "spatial_reversed_3bar_N",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "066fbbccf80d5bcbf235dea1dc3d3f68c883c2621bf95c7a8528f15cd537020a",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "ea29935c77a626d30b5fe2a713ddf2fc21a2c58fd68a18d85f9c8dd039601b34",
+      "logs_sha256": {
+        "command-0.log": "8818c1f9929c8c49e9d4e45770507a191b2cc00d36272f07961d3a11d7bea28e",
+        "command-1.log": "5ce3b0a5e1ea98d744914ecf2247c777abb33baa2b7fb242d65f0535689402c0",
+        "command-2.log": "e867bd4d0f25fe45c6aa7af283e22b1bfd17e994b3b72836e9c3d23c5242a272"
+      },
+      "normalized_solute_balance_max": 1.7858430014952664e-14,
+      "normalized_water_balance_max": 1.0731389295654651e-11,
+      "status": "COMPLETE",
+      "trace_sha256": "c337e6afd3b131b8c4ced32630a9934bf50de1c29273de620004a4b31aa28f9e"
+    }
+  ],
+  "source_derived_runtime_inputs_redistributed": false
+}
