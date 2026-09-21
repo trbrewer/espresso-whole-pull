@@ -180,7 +180,7 @@ compiled malformed-EOF regressions and accepted-adapter equivalence pass. No
 full scientific run was repeated. This adds 18 short invocations to the earlier
 fixture ledger; all prior failed/accepted evidence is retained externally.
 The first hosted static attempt also exposed missing executable bits and a
-missing future-annotations marker, and local integration found stale active
+test importing a numerical library directly, and local integration found stale active
 package-manifest metadata. These packaging defects are corrected in this PR;
 historical metadata is preserved. Final-candidate full-suite/CI evidence replaces
 the superseded in-progress checks, without relabeling their failures as science.

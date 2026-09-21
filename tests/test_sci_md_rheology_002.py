@@ -6,7 +6,6 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
-import numpy as np
 from scripts.aggregate_viscosity import contract
 from tools.sci_md_rheology_002.run import scenario, ROOT
 from tools.sci_md_rheology_002.export import HEADER
@@ -30,9 +29,14 @@ class Rheology002(unittest.TestCase):
     def evaluate(self,c):return subprocess.run([str(self.exe),str(self.table)],input=c,text=True,capture_output=True)
 
     def test_native_dense_mapping(self):
-        w=np.linspace(0,.24,2401);c=965*w/(1-w)
+        w=[.24*i/2400 for i in range(2401)]
+        c=[965*x/(1-x) for x in w]
         r=self.evaluate('\n'.join(map(str,c)));self.assertEqual(r.returncode,0,r.stderr)
-        np.testing.assert_allclose(np.array(r.stdout.split(),float),np.interp(w,[0,.1,.24],[.001,.002,.005]),rtol=1e-12)
+        actual=list(map(float,r.stdout.split()))
+        self.assertEqual(len(actual),len(w))
+        for x,y in zip(w,actual):
+            expected=.001+.01*x if x<=.1 else .002+(x-.1)*.003/.14
+            self.assertLessEqual(abs(y/expected-1),1e-12)
 
     def test_native_domains(self):
         for c in ('-1','1000','nan','inf'):

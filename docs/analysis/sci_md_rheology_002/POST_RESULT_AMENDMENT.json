@@ -74,7 +74,7 @@
       "original_sha256": "2b0ffe7bafd83f823a1ce7372e025e112168aa223993ded9055ee51969bca248"
     },
     "tests/test_sci_md_rheology_002.py": {
-      "amended_sha256": "d72c81e26e627995997777bbaed4512cfd16da289b5ac550a37f3a76c14f78ed",
+      "amended_sha256": "f40393094d2b6819400a02680624971f337a9d4f5cbc2e0a249fbc9265a28811",
       "original_sha256": "845f144ccf261701acd70cb026709b2be47bae9924bc8634d53b8612091fd465"
     },
     "tools/sci_md_rheology_002/authority.py": {
@@ -122,6 +122,7 @@
   "no_full_scientific_reruns": true,
   "original_executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
   "original_freeze_sha256": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+  "packaging_note": "Static portability check requires standard-library test entrypoints; dense synthetic expected values use Python arithmetic. Source numerical tools retain qualified imports. No scientific function changed.",
   "qualified_executable_sha256": "9dea02fc3ba0a2858bd1efda6743c0feefffc5a1f863db3953bfb3d60efb5d43",
   "reason": "Independent review R1: malformed terminal numeric token at EOF accepted by native table parser. Reject failure after entry start; clean EOF remains valid.",
   "recorded_at_utc": "2026-09-21T22:17:54.926667+00:00",
