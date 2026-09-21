@@ -1,0 +1,180 @@
+{
+  "basis": "w=c/(965+c); c is kg dissolved aggregate per m3 pore water",
+  "evaluator_sha256": "3c38380c675cdb15c2bb81dab223f7da550285a8eb07e0d3d3856a73ac11a4f7",
+  "exporter_sha256": "bbe95b266f8ac0bbdfe06f9010b363603ccaf083e254a4aab34c8dc57e71a604",
+  "laws_sha256": "99931b6bc9e356ce041cf27f7ee7a4d0b57891e808f647d29299276deb48a80e",
+  "normalization_factor": 0.9639762633206826,
+  "raw_eq5_water_90C_Pa_s": 0.0003243585489046714,
+  "rho_water_kg_m3": 965.0,
+  "source_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+  "source_csv": {
+    "domain_temperature_C": [
+      0,
+      80
+    ],
+    "domain_w": [
+      0,
+      0.5
+    ],
+    "evidence": "equation-generated, not independent measurements",
+    "max_absolute_error_Pa_s": 4.990240830152551e-09,
+    "rows": 486,
+    "tolerance_Pa_s": 5.0000010000000004e-09,
+    "tolerance_reason": "half of 1e-8 Pa.s decimal rounding plus floating arithmetic margin"
+  },
+  "source_hashes": {
+    "docs/cards/sobolik2002.md": "92abf4779318f4ef6fa12851753b5ddf3012f4e8451385529b352629fe6834b4",
+    "docs/cards/telisromero2001.md": "3635c6221ab516405f69564d55c7c72d8664007a72d30be5767c2cdad4315b36",
+    "puckworks/analysis/g10_viscosity_sensitivity.py": "fe2da859f724cd783ce28445b916aa2f98e85fe4caeae1bd7c5831f2b171be5f",
+    "puckworks/data/__init__.py": "7adb18f36784058bbf8ea596cf54d9ca0a8d8ac20ed57037bffdb2243957c805",
+    "puckworks/data/g10_liquor_rheology/telisromero2001_table1_eta.csv": "dc1cbfd5bd472668f9f62a551f4a04a92460d1d72a1674e1288ded90866610de",
+    "puckworks/data/sobolik2002/README.md": "1acca05013884dce09c4e3022b225c27807effb3c8842e45612236ce21553d3d",
+    "puckworks/data/sobolik2002/eq5_viscosity_dilute_computed.csv": "2cd37968d78e704da7ab86378a61fb53306abf2e2515d21332432fe18e0dbd0d",
+    "puckworks/data/sobolik2002/fig3_viscosity_dilute_weisser_digitized.csv": "bfa79ea7a4632455373cde8a03a92abfb8eb9aba2ed690e8d136a51027394452",
+    "puckworks/data/telisromero2001/PROVENANCE.md": "066538a3a8fa9b65c4361306eae47e33426567ca54dac7441dbffa7ffad4e610",
+    "puckworks/models/pannusch2024/closures.py": "9d144765200b66422e72218f8ceff5d5ca531da88150fa71d023bbc490b20cf1"
+  },
+  "source_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+  "tables": {
+    "SW_WATER_ANCHORED_90C_base": {
+      "dense_points": 240552,
+      "domain": [
+        0,
+        0.24
+      ],
+      "endpoints_Pa_s": [
+        0.00031267394194924405,
+        0.0009397992792241958
+      ],
+      "extrema_Pa_s": [
+        0.00031267394194924405,
+        0.0009397992792241958
+      ],
+      "knots": 241,
+      "max_relative_native_python": 2.220446049250313e-16,
+      "max_relative_table_approximation": 7.3537964548897605e-06,
+      "monotone": true,
+      "monotonicity_roundoff_relative_tolerance": 1e-14,
+      "positive": true,
+      "sha256": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+      "spacing": 0.001
+    },
+    "SW_WATER_ANCHORED_90C_refined": {
+      "dense_points": 241104,
+      "domain": [
+        0,
+        0.24
+      ],
+      "endpoints_Pa_s": [
+        0.00031267394194924405,
+        0.0009397992792241958
+      ],
+      "extrema_Pa_s": [
+        0.00031267394194924405,
+        0.0009397992792241958
+      ],
+      "knots": 481,
+      "max_relative_native_python": 2.220446049250313e-16,
+      "max_relative_table_approximation": 1.84010233672538e-06,
+      "monotone": true,
+      "monotonicity_roundoff_relative_tolerance": 1e-14,
+      "positive": true,
+      "sha256": "578de2bd622e06ed14fdee18e22509e410e71b1d21a3516f9877c41d70da8842",
+      "spacing": 0.0005
+    },
+    "TR_DELAYED_base": {
+      "dense_points": 240552,
+      "domain": [
+        0,
+        0.24
+      ],
+      "endpoints_Pa_s": [
+        0.00031267394194924405,
+        0.0009496428571428576
+      ],
+      "extrema_Pa_s": [
+        0.00031267394194924405,
+        0.0009496428571428576
+      ],
+      "knots": 241,
+      "max_relative_native_python": 2.220446049250313e-16,
+      "max_relative_table_approximation": 1.2196899730199107e-06,
+      "monotone": true,
+      "monotonicity_roundoff_relative_tolerance": 1e-14,
+      "positive": true,
+      "sha256": "607804e19b4980f970c27d75c45d6fa8961303697826b33f27bec242405a03ec",
+      "spacing": 0.001
+    },
+    "TR_DELAYED_refined": {
+      "dense_points": 241104,
+      "domain": [
+        0,
+        0.24
+      ],
+      "endpoints_Pa_s": [
+        0.00031267394194924405,
+        0.0009496428571428576
+      ],
+      "extrema_Pa_s": [
+        0.00031267394194924405,
+        0.0009496428571428576
+      ],
+      "knots": 481,
+      "max_relative_native_python": 2.220446049250313e-16,
+      "max_relative_table_approximation": 3.0492277214300145e-07,
+      "monotone": true,
+      "monotonicity_roundoff_relative_tolerance": 1e-14,
+      "positive": true,
+      "sha256": "c8c9c8dca8a8b2fdc8364bbe16e0ef1c2f58e47e7ab777bd17818532bd8a97e7",
+      "spacing": 0.0005
+    },
+    "TR_EARLY_base": {
+      "dense_points": 240552,
+      "domain": [
+        0,
+        0.24
+      ],
+      "endpoints_Pa_s": [
+        0.00031267394194924405,
+        0.0009496428571428576
+      ],
+      "extrema_Pa_s": [
+        0.00031267394194924405,
+        0.0009496428571428576
+      ],
+      "knots": 241,
+      "max_relative_native_python": 2.220446049250313e-16,
+      "max_relative_table_approximation": 1.2190981782955745e-06,
+      "monotone": true,
+      "monotonicity_roundoff_relative_tolerance": 1e-14,
+      "positive": true,
+      "sha256": "103435417ec15a158af768880ea90176f562455e261626e7b5e27736142fbf3e",
+      "spacing": 0.001
+    },
+    "TR_EARLY_refined": {
+      "dense_points": 241104,
+      "domain": [
+        0,
+        0.24
+      ],
+      "endpoints_Pa_s": [
+        0.00031267394194924405,
+        0.0009496428571428576
+      ],
+      "extrema_Pa_s": [
+        0.00031267394194924405,
+        0.0009496428571428576
+      ],
+      "knots": 481,
+      "max_relative_native_python": 2.220446049250313e-16,
+      "max_relative_table_approximation": 3.0484859381285645e-07,
+      "monotone": true,
+      "monotonicity_roundoff_relative_tolerance": 1e-14,
+      "positive": true,
+      "sha256": "eb89569e505b2b284687f7bbcb992c3d6b81a3229199b2d16c0bf7a63318611c",
+      "spacing": 0.0005
+    }
+  },
+  "temperature_K": 363.15,
+  "water_viscosity_Pa_s": 0.00031267394194924405
+}

@@ -1,0 +1,29 @@
+{
+  "amendment_sha256": "d86c398229565ab0963cbd259f910541dc920d0855d6b4614fdc2639fa96831c",
+  "count": 18,
+  "historical_executable_sha256": "9e28686e567498de6d3f4bd2ba7b8e61872fef7b12f7daee4e2df6846b101139",
+  "intervals": {
+    "base_reversed_3bar_C": "9a6f641cad2c8fd7dd801e5f9c3839fd828aa4ddb42645be7f14e7ba95e44ae9",
+    "base_reversed_3bar_N": "2f358c92853e9e0ea18179326919b4e41f2741fafa43319ddaa40ad2c5911c05",
+    "base_reversed_3bar_W": "f9391aea044c6c420d747fe829f44958939d18446d059669f2671aff7ce4a2b1",
+    "base_uniform_9bar_C": "2a6b1c7960859d5f80b3f6fddd44d0d729c318acd2ba22739e8406af05016bf6",
+    "base_uniform_9bar_N": "28dae8a908cb3b0d74b8ccdeaf8533d0894350f15b11f070cea03faf4e15cc51",
+    "base_uniform_9bar_W": "d62110f7c56fb8f572d194705f5f8bfaa16623af930b2e3e0adca94f2be5cba2",
+    "spatial_reversed_3bar_C": "0f6014c681acfb9bcbb976ef04354593832a781b80db514e51c66a2e8c5ac545",
+    "spatial_reversed_3bar_N": "ea29935c77a626d30b5fe2a713ddf2fc21a2c58fd68a18d85f9c8dd039601b34",
+    "spatial_reversed_3bar_W": "bc69d10906a68db0302f16f6c827efa58551d6ca2949613f0dbdbdd7fc7e9051",
+    "spatial_uniform_9bar_C": "6930a96e8b512fa9162c8264fa19144d4062510571fae452f43b596b7d56a8b9",
+    "spatial_uniform_9bar_N": "c1efca583ab57253f6fc793bfec3c967ad2c0c744fad6fd382b648ee97b5e4bf",
+    "spatial_uniform_9bar_W": "fecf75d181c95e5dd22af044242a1629c4bd7a77da64a22d8bfd68fb881c89b7",
+    "temporal_reversed_3bar_C": "c8788e43865b5332bb16da8f0220aa9886486ce01d539a91bbee6d8b865efc90",
+    "temporal_reversed_3bar_N": "da343beccc0c33eaf2906b2437b73f3629e8b02fb5a0cad790cf7429e62cbf05",
+    "temporal_reversed_3bar_W": "c57e8676d525fbea775a0d15cce0af88be1a015dff0f8a555b5efe4f64ee59b8",
+    "temporal_uniform_9bar_C": "433b6a8813439694b1d71eec51ab924ba1aba740d93aa180ec99d6f2245768b2",
+    "temporal_uniform_9bar_N": "0aade6a3420fcbb7433400de9062c460da88ee217a39b247cd921da9fe96d152",
+    "temporal_uniform_9bar_W": "8eb17863c13fe0d5bf80c8f736e970aa8463501f04ab78fae3acc4cc59f6f636"
+  },
+  "manifest_sha256": "f712243a9a3b6362e3821575d6b81605e785857dfda67d3a595ecbd7010b0719",
+  "metric_reproduction": "EXACT",
+  "qualified_executable_sha256": "9dea02fc3ba0a2858bd1efda6743c0feefffc5a1f863db3953bfb3d60efb5d43",
+  "status": "PASS"
+}
