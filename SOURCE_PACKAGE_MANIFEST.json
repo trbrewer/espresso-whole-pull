@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1065,
-  "total_uncompressed_bytes_excluding_manifest": 10742945,
-  "aggregate_source_sha256": "e99d5d55cfc42f95fda000729c7f0d0b19af04feb101dab9f405ad6b859dcb61",
-  "aggregate_sha256": "e99d5d55cfc42f95fda000729c7f0d0b19af04feb101dab9f405ad6b859dcb61",
+  "total_uncompressed_bytes_excluding_manifest": 10744706,
+  "aggregate_source_sha256": "fe50abd1624ca92488b44913ca476bdf24d5eece2a4009475faeba18da9a91f4",
+  "aggregate_sha256": "fe50abd1624ca92488b44913ca476bdf24d5eece2a4009475faeba18da9a91f4",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2279,7 +2279,7 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/FREEZE.json": {
-      "sha256": "3c8f9dbe483ec46f30ef6c544e42cfa10b56b605c35e9fb5ba2bdc1cf89eca91",
+      "sha256": "331dceea736eb3867f981810ae9d4973c554da4b5855bfa45c2d5b90a4593410",
       "bytes": 1255,
       "git_mode": "100644"
     },
@@ -4704,8 +4704,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_rheology_001.py": {
-      "sha256": "8f6b5abb7e5c0c8be7e96df5a29c84f261d23a1dba12029220345db9436d422f",
-      "bytes": 3493,
+      "sha256": "14de46a1614aa372f6fef9ff53b1b8f8290facfdbc5113f8284fd7c5be1f3c81",
+      "bytes": 5254,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

@@ -1,8 +1,12 @@
 """Synthetic fixtures only; no redistributed measured tables."""
 import unittest
+import tempfile
+import json
+import math
+from pathlib import Path
 from tools.sci_md_rheology_001.analysis import np
 from tools.sci_md_rheology_001.analysis import (solids_fraction,viscosity,resistance,errors,compare,
-    axial_reduce,REF,AGGREGATE,straight_sided_wedge_scale)
+    axial_reduce,REF,AGGREGATE,straight_sided_wedge_scale,load_profile)
 
 class RheologyTests(unittest.TestCase):
     def test_mass_basis(self):
@@ -57,6 +61,27 @@ class RheologyTests(unittest.TestCase):
     def test_deterministic(self):
         p={REF:dict(t=[0,1],q=[1,2],q0=np.array([2,2]))}
         self.assertEqual(compare(p),compare(p))
+    def test_export_adapter_with_text_trace_columns(self):
+        # Foundation12 geometry export and EWP mixed numeric/text CSV contract.
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d); (p/'0').mkdir();(p/'30').mkdir();(p/'postProcessing/wholePull/0').mkdir(parents=True)
+            scale=straight_sided_wedge_scale(5)
+            s=dict(geometry=dict(axial_cells=2,radial_cells=1,basket_radius_m=1/math.sqrt(math.pi),wedge_angle_deg=5),
+                   coffee_bed=dict(bed_depth_m=2,initial_porosity=.4),
+                   liquid=dict(dynamic_viscosity_Pa_s=.001,density_kg_m3=965),
+                   time=dict(field_write_interval_s=30),
+                   extraction=dict(model=AGGREGATE),hydraulics=dict(target_inlet_pressure_gauge_Pa=1))
+            (p/'CASE_SCENARIO_V0_1_4.json').write_text(json.dumps(s))
+            (p/'0/C').write_text('internalField nonuniform List<vector> 2 ((0.5 0 0) (1.5 0 0));')
+            (p/'0/Vc').write_text('internalField uniform '+str(1/scale)+';')
+            for name,value in dict(dissolvedConcentration=0,permeability=1,porosity=.4,saturation=1).items():
+                (p/'30'/name).write_text('internalField uniform '+str(value)+';')
+            (p/'postProcessing/wholePull/0/traces.csv').write_text(
+                'time_s,outlet_flow_m3_s,radialToAxialVelocityRatio,bedMechanicsModel\n30,500,0,none\n')
+            prof=load_profile(p,s,lambda t,x:.002,1)
+            np.testing.assert_allclose(prof['q'],[500,500]);self.assertLess(prof['hydraulic_relative_error'],1e-14)
+            s['liquid']['density_kg_m3']=1000
+            with self.assertRaises(ValueError):load_profile(p,s,lambda t,x:.002,1)
     def test_positive_window(self):
         with self.assertRaises(ValueError): errors([0,1],[1,1],[0,1])
 
