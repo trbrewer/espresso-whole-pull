@@ -756,19 +756,30 @@ int main(int argc, char *argv[])
     if (aggregateDiagnostics)
     {
         if ((aggregateViscosityMode != "observe" && !aggregateCoupled)
-            || pressureBoundaryModel != "prescribedPressure"
+            || (pressureBoundaryModel != "prescribedPressure"
+                && !(prescribedPressureHistory && !aggregateBulkCoupled
+                     && permeabilityProfile == "radial_two_zone"))
             || flowResistanceModel != "darcy" || bedMechanicsModel != "none"
             || effectivePermeabilityEnabled || indexedSpeciesMode
             || (permeabilityProfile != "uniform" && permeabilityProfile != "axial_two_layer"
                 && (permeabilityProfile != "radial_two_zone" || aggregateBulkCoupled))
             || initialWetFront != bedDepth || pressureRampTime != 0
-            || !(targetInletPressure > outletPressure)
+            || (!prescribedPressureHistory && !(targetInletPressure > outletPressure))
             || !std::isfinite(targetInletPressure) || !std::isfinite(outletPressure) || liquidDensity != 965
             || modelProperties.lookupOrDefault<scalar>("liquidTemperature", 0) != 363.15
             || runTime.value() != 0
             || runTime.controlDict().lookupOrDefault<word>("startFrom", "startTime") != "startTime")
         {
             FatalErrorInFunction << "RHEOLOGY_UNSUPPORTED_MODE_OR_RESTART" << exit(FatalError);
+        }
+        if (prescribedPressureHistory)
+        {
+            forAll(prescribedPressureParameters.pressures, i)
+            {
+                if (!(prescribedPressureParameters.pressures[i] > outletPressure))
+                    FatalErrorInFunction << "RHEOLOGY_HISTORY_PRESSURE_NOT_ABOVE_OUTLET"
+                        << exit(FatalError);
+            }
         }
         const word purpose(modelProperties.lookup("aggregateViscosityPurpose"));
         if (purpose != "scientific" && purpose != "synthetic")

@@ -1,0 +1,7 @@
+{
+  "description": "C_double native completed. Initial audit incorrectly required binary equality between precision(15) general trace and precision(17) radial trace. Exact serialized 15-digit endpoint keys now joined, with collisions rejected. Original FAILED ledger event retained and native evidence requalified. No scientific outputs accessed.",
+  "native_runs_repeated": 0,
+  "original_log_sha256": "4e5143abc28aef8fe84e9b3f09cbd75a48683db280b9792c53d574a24dce218f",
+  "original_preparation_sha256": "36f032fa79b6ed81192fd7497918c92f2c73f3de95160700d0a5874d21b1473c",
+  "type": "PRE_SCIENCE_OBSERVER_SERIALIZATION_CORRECTION"
+}

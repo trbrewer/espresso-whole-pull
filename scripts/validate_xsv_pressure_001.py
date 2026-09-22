@@ -53,6 +53,9 @@ def production_bytes(root, path):
             successor = root/'docs/analysis/sci_md_rheology_006/FREEZE.json'
             if successor.exists():
                 active = successor
+            history_successor = root/'docs/analysis/sci_md_rheology_009/FREEZE.json'
+            if history_successor.exists():
+                active = history_successor
             current = load(active)
             if sha(root/path) != current['files'][path]:
                 raise ValueError('active rheology source differs from frozen contract '+path)
