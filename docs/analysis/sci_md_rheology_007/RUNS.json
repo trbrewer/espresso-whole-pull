@@ -1,0 +1,1115 @@
+{
+  "counts": {
+    "bridge": 0,
+    "new_full_completed": 28,
+    "new_full_failed": 1,
+    "new_full_started": 28,
+    "reused_radial": 18,
+    "short": 6
+  },
+  "events": [
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_3bar_base_inner",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_3bar_base_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:40:22.708909+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.062144061737957e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "fa935dd1a8485c5398096ebb4b80eaae6ee333c135418a62ef4d6579e6d579ed",
+      "cells": 1024,
+      "elapsed_s": 1.3942612390965223,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 168.127689976384,
+          "min": 0.02290259230718731,
+          "radial_relative": 4.472353628640524e-11
+        },
+        "p": {
+          "max": 299739.3128948754,
+          "min": 400.0119195695058,
+          "radial_relative": 1.3126296356900397e-11
+        },
+        "remainingExtractable": {
+          "max": 155.6578099488044,
+          "min": 2.62690484105622,
+          "radial_relative": 7.127898643713097e-11
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_3bar_base_inner",
+      "slot": "TR_LINEAR_3bar_base_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_3bar_base_outer",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_3bar_base_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:40:24.127945+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 4.2954555673691735e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "9fc288ae49f71a96a3f4580bf5dc8270b20c5c33b7d6dd43dba1bb2ac97a34c9",
+      "cells": 1024,
+      "elapsed_s": 1.413480351679027,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9955276171009,
+          "min": 0.1110216430471414,
+          "radial_relative": 1.4444805594912008e-08
+        },
+        "p": {
+          "max": 299808.2090699891,
+          "min": 313.8720768213646,
+          "radial_relative": 4.707929715209455e-10
+        },
+        "remainingExtractable": {
+          "max": 163.2017889610908,
+          "min": 2.713655134122832,
+          "radial_relative": 1.1141399997399818e-08
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_3bar_base_outer",
+      "slot": "TR_LINEAR_3bar_base_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_3bar_temporal_inner",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_3bar_temporal_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:40:25.559728+00:00"
+    },
+    {
+      "elapsed_s": 2.4076856188476086,
+      "id": "TR_LINEAR_3bar_temporal_inner",
+      "reason": "[Errno 2] No such file or directory: '[ART]/science/TR_LINEAR_3bar_temporal_inner/case/30/dissolvedConcentration'",
+      "slot": "TR_LINEAR_3bar_temporal_inner",
+      "status": "FAILED"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.5607962638789998e-12,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "a6422801cfb8ed4cef240fbe87e8fb738401b289442800e646053d41c1b58069",
+      "cells": 1024,
+      "elapsed_s": 2.4076856188476086,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 168.1762280479444,
+          "min": 0.02294512506949399,
+          "radial_relative": 1.887264752285866e-08
+        },
+        "p": {
+          "max": 299739.3125503031,
+          "min": 400.0728304130396,
+          "radial_relative": 4.1371265364525e-09
+        },
+        "remainingExtractable": {
+          "max": 155.7018738694371,
+          "min": 2.635765404223037,
+          "radial_relative": 1.369712202046514e-08
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_3bar_temporal_inner",
+      "native_reexecuted": false,
+      "prior_failure": "FINAL_FIELD_DIRECTORY_LOOKUP",
+      "qualification_recovered": true,
+      "slot": "TR_LINEAR_3bar_temporal_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_3bar_temporal_outer",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_3bar_temporal_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:20.662066+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.0454744702766512e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "7d8714d0f24b5381275e4c9cbe921aee5021033ce2895fcf4e1be86d08438fb4",
+      "cells": 1024,
+      "elapsed_s": 2.3942993665114045,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9954431259537,
+          "min": 0.1112149752665992,
+          "radial_relative": 4.202674065716823e-09
+        },
+        "p": {
+          "max": 299808.2103293459,
+          "min": 313.8698980386923,
+          "radial_relative": 1.322800465292203e-10
+        },
+        "remainingExtractable": {
+          "max": 163.2018227593563,
+          "min": 2.722671631242362,
+          "radial_relative": 3.2680068176247745e-09
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_3bar_temporal_outer",
+      "slot": "TR_LINEAR_3bar_temporal_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_3bar_axial_inner",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_3bar_axial_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:23.082719+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.3261276537892065e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "0dbe11a53dfcc2a0a457b937938432fe294081dd462c95bceda40c3ddb6c4d8f",
+      "cells": 2048,
+      "elapsed_s": 2.5612802943214774,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 168.2346254425099,
+          "min": 0.01071890503360694,
+          "radial_relative": 4.9303724990312576e-11
+        },
+        "p": {
+          "max": 299869.6567376773,
+          "min": 200.1282870344995,
+          "radial_relative": 1.254868675677898e-11
+        },
+        "remainingExtractable": {
+          "max": 155.7741038390159,
+          "min": 2.610064921438311,
+          "radial_relative": 8.148829637531438e-11
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_3bar_axial_inner",
+      "slot": "TR_LINEAR_3bar_axial_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_3bar_axial_outer",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_3bar_axial_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:25.663602+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 8.53411333198988e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "def437499666dbaede3a943cab8cb767a3f93615e2b5c4933fc4e40bb0a90e4b",
+      "cells": 2048,
+      "elapsed_s": 2.486851369962096,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9955276171733,
+          "min": 0.04771555823283469,
+          "radial_relative": 2.5181459096412122e-08
+        },
+        "p": {
+          "max": 299904.1184826143,
+          "min": 156.9182491029759,
+          "radial_relative": 8.039843413172939e-10
+        },
+        "remainingExtractable": {
+          "max": 163.2017889609571,
+          "min": 2.647231457804237,
+          "radial_relative": 1.8282058612129568e-08
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_3bar_axial_outer",
+      "slot": "TR_LINEAR_3bar_axial_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_9bar_base_inner",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_9bar_base_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:28.169733+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.468144638797211e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "03250c0e825e27365f53e86b41a32533a2b18a8570306a97ab3520c65bb4a1e6",
+      "cells": 1024,
+      "elapsed_s": 1.3919325284659863,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 12.84439139445436,
+          "min": 0.007058760005616497,
+          "radial_relative": 5.915043769634682e-11
+        },
+        "p": {
+          "max": 899123.0481911056,
+          "min": 882.5840965700966,
+          "radial_relative": 6.456256083765422e-11
+        },
+        "remainingExtractable": {
+          "max": 16.38008500146761,
+          "min": 2.604715918833568,
+          "radial_relative": 4.1439463526209455e-11
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_9bar_base_inner",
+      "slot": "TR_LINEAR_9bar_base_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_9bar_base_outer",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_9bar_base_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:29.581100+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 4.395880884574079e-12,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "d019bd3979674c85b5eb201100a12a81885b67f85a48b3e2ed250bc487ada9b4",
+      "cells": 1024,
+      "elapsed_s": 1.3862585593014956,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.4215702044985,
+          "min": 0.0337373386413705,
+          "radial_relative": 3.7687463835200344e-08
+        },
+        "p": {
+          "max": 899308.6555015674,
+          "min": 1128.071480237297,
+          "radial_relative": 4.722448918310189e-09
+        },
+        "remainingExtractable": {
+          "max": 162.8803967792904,
+          "min": 2.637667144994679,
+          "radial_relative": 2.6532766192121497e-08
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_9bar_base_outer",
+      "slot": "TR_LINEAR_9bar_base_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_9bar_temporal_inner",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_9bar_temporal_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:30.986274+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 1.6557005827190114e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "b26b10c0124d92ea77c27c34543648d5ba6762ed71d033253ff2ccdceb94be64",
+      "cells": 1024,
+      "elapsed_s": 2.390361836180091,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 12.84963600596965,
+          "min": 0.007071996210779611,
+          "radial_relative": 3.4451253356667726e-10
+        },
+        "p": {
+          "max": 899123.0468591563,
+          "min": 882.5799263356608,
+          "radial_relative": 3.130027235759342e-11
+        },
+        "remainingExtractable": {
+          "max": 16.4039410028163,
+          "min": 2.613534790288986,
+          "radial_relative": 4.764020496778414e-10
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_9bar_temporal_inner",
+      "slot": "TR_LINEAR_9bar_temporal_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_9bar_temporal_outer",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_9bar_temporal_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:33.396963+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 1.1244753754844445e-12,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "44687d06f4c5a2227c3c9908e194dad0173db0dc9ede426eaf722d20c35a186c",
+      "cells": 1024,
+      "elapsed_s": 2.388098600320518,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.4278238643989,
+          "min": 0.03380066889324155,
+          "radial_relative": 1.3071371701460231e-08
+        },
+        "p": {
+          "max": 899308.6779204959,
+          "min": 1128.064954128838,
+          "radial_relative": 1.5445856111862831e-09
+        },
+        "remainingExtractable": {
+          "max": 162.8852161598481,
+          "min": 2.646547114522145,
+          "radial_relative": 9.748139839068987e-09
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_9bar_temporal_outer",
+      "slot": "TR_LINEAR_9bar_temporal_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_9bar_axial_inner",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_9bar_axial_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:35.807075+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.456416872072434e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "e3832018063a4ef192baf47974aa39e82773f9697d3d2165ba4480d01ef1736e",
+      "cells": 2048,
+      "elapsed_s": 2.481133113615215,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 12.8311803464538,
+          "min": 0.003446250357938563,
+          "radial_relative": 5.638451982489693e-11
+        },
+        "p": {
+          "max": 899561.5224569115,
+          "min": 441.2916473421153,
+          "radial_relative": 6.760656297341378e-11
+        },
+        "remainingExtractable": {
+          "max": 16.38219616504291,
+          "min": 2.599860940808139,
+          "radial_relative": 3.600673921514091e-11
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_9bar_axial_inner",
+      "slot": "TR_LINEAR_9bar_axial_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "TR_LINEAR_9bar_axial_outer",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_9bar_axial_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:38.308124+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 4.120888080286076e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "d99a2c2a076814f96799d73e5282d3030a82b49865e5cc0b5d09240befdf37cc",
+      "cells": 2048,
+      "elapsed_s": 2.5156700843945146,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.4430879253267,
+          "min": 0.01546656227507521,
+          "radial_relative": 1.4077554781350455e-10
+        },
+        "p": {
+          "max": 899654.3700641732,
+          "min": 564.035382387864,
+          "radial_relative": 3.817300030233827e-11
+        },
+        "remainingExtractable": {
+          "max": 162.8965613297059,
+          "min": 2.614808811493242,
+          "radial_relative": 2.34116501114853e-11
+        }
+      },
+      "file_count": 58,
+      "id": "TR_LINEAR_9bar_axial_outer",
+      "slot": "TR_LINEAR_9bar_axial_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_3bar_base_inner",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_3bar_base_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:40.843383+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.1174553131936627e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "0cdaee89c405c93d852a1593fcde9fe9678f484763df3b327aec719a07e6c80e",
+      "cells": 1024,
+      "elapsed_s": 1.4382204236462712,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 177.01089214434,
+          "min": 0.02764524109100295,
+          "radial_relative": 8.553541475458115e-11
+        },
+        "p": {
+          "max": 299786.1804710322,
+          "min": 391.0603173504426,
+          "radial_relative": 1.0618509506464016e-11
+        },
+        "remainingExtractable": {
+          "max": 161.4628222846987,
+          "min": 2.632828488244388,
+          "radial_relative": 2.7178500251150636e-11
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_3bar_base_inner",
+      "slot": "SW_WATER_ANCHORED_90C_3bar_base_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_3bar_base_outer",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_3bar_base_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:42.301116+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.258275717442816e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "96bb7be087d443ce4657a1e23cdd8ade36ff6a80a7d92516d51f481a9c0056f0",
+      "cells": 1024,
+      "elapsed_s": 1.4245235435664654,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9955276171249,
+          "min": 0.1268356329686697,
+          "radial_relative": 1.2819306598471983e-08
+        },
+        "p": {
+          "max": 299832.1478039916,
+          "min": 310.4081584188619,
+          "radial_relative": 3.391637960802103e-10
+        },
+        "remainingExtractable": {
+          "max": 163.2017889598044,
+          "min": 2.732177241053276,
+          "radial_relative": 9.967804644048348e-09
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_3bar_base_outer",
+      "slot": "SW_WATER_ANCHORED_90C_3bar_base_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_3bar_temporal_inner",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_3bar_temporal_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:43.744970+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 1.7877756651511973e-12,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "7b06e15f5c82b2c054b5f87508e2b1cd3a67cce123eed9973858b670de9ed108",
+      "cells": 1024,
+      "elapsed_s": 2.4879869166761637,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 177.0322468476902,
+          "min": 0.02769569165569284,
+          "radial_relative": 1.605554108763382e-08
+        },
+        "p": {
+          "max": 299786.1738289979,
+          "min": 391.0951866322262,
+          "radial_relative": 1.6196733766048893e-09
+        },
+        "remainingExtractable": {
+          "max": 161.4794873759366,
+          "min": 2.641702745131775,
+          "radial_relative": 1.1786831709383243e-08
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_3bar_temporal_inner",
+      "slot": "SW_WATER_ANCHORED_90C_3bar_temporal_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_3bar_temporal_outer",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_3bar_temporal_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:46.255103+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 1.7843742264745787e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "f30b681f2a2330d58bf7ca01398a3b2a78936feee3da5d76a822896b5bdcf767",
+      "cells": 1024,
+      "elapsed_s": 2.476596831344068,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9954431259699,
+          "min": 0.1270524519368151,
+          "radial_relative": 3.790501353034191e-09
+        },
+        "p": {
+          "max": 299832.1474928296,
+          "min": 310.4086304765212,
+          "radial_relative": 9.74361122484818e-11
+        },
+        "remainingExtractable": {
+          "max": 163.2018227575199,
+          "min": 2.741240998617643,
+          "radial_relative": 3.0541147156678585e-09
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_3bar_temporal_outer",
+      "slot": "SW_WATER_ANCHORED_90C_3bar_temporal_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_3bar_axial_inner",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_3bar_axial_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:48.754006+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.109968816116849e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "75ef3b7d87380dc7950da7a4d73c280eb7dab4ea45aaccefd2ca575616c1c3d5",
+      "cells": 2048,
+      "elapsed_s": 2.5779934376478195,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 177.0661823074123,
+          "min": 0.01280792468042935,
+          "radial_relative": 4.2601335119217007e-10
+        },
+        "p": {
+          "max": 299893.0725530211,
+          "min": 195.6117928592453,
+          "radial_relative": 3.366280516296212e-11
+        },
+        "remainingExtractable": {
+          "max": 161.5107658775468,
+          "min": 2.612683024466993,
+          "radial_relative": 6.205906532380048e-10
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_3bar_axial_inner",
+      "slot": "SW_WATER_ANCHORED_90C_3bar_axial_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_3bar_axial_outer",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_3bar_axial_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:51.351986+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 6.793729719279306e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "f9273315f2eb0f4e084ce267ba44d671301ed5b42bfff4e6a9c8b12dbe2005fe",
+      "cells": 2048,
+      "elapsed_s": 2.5166607284918427,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9955276171897,
+          "min": 0.05418268152666443,
+          "radial_relative": 2.2929886301820313e-08
+        },
+        "p": {
+          "max": 299916.0863512278,
+          "min": 155.2120806032618,
+          "radial_relative": 5.981252071314916e-10
+        },
+        "remainingExtractable": {
+          "max": 163.2017889591085,
+          "min": 2.655113662856282,
+          "radial_relative": 1.6694184579730802e-08
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_3bar_axial_outer",
+      "slot": "SW_WATER_ANCHORED_90C_3bar_axial_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_3bar_property_inner",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_3bar_property_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:53.888655+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.138174533176891e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "cb3a9dffadb18cbccc7677122ea6dc2500771e83bebc10fc8eb4f8cb67f6d9f3",
+      "cells": 1024,
+      "elapsed_s": 1.4479326037690043,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 177.0108195710336,
+          "min": 0.02764516006103709,
+          "radial_relative": 1.0776277664580688e-10
+        },
+        "p": {
+          "max": 299786.1798427667,
+          "min": 391.061388481625,
+          "radial_relative": 1.0655524659125596e-11
+        },
+        "remainingExtractable": {
+          "max": 161.4627772554473,
+          "min": 2.632828402886997,
+          "radial_relative": 2.723698423654964e-11
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_3bar_property_inner",
+      "slot": "SW_WATER_ANCHORED_90C_3bar_property_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_3bar_property_outer",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_3bar_property_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:55.356125+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.2582545755004523e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "45471db32ccede74d4357ca6c9422a9acc72f0118bcfa2b5ed698b8cab7f356e",
+      "cells": 1024,
+      "elapsed_s": 1.4230706728994846,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9955276171266,
+          "min": 0.1268353455168594,
+          "radial_relative": 1.2819600291093953e-08
+        },
+        "p": {
+          "max": 299832.1475487098,
+          "min": 310.408190326819,
+          "radial_relative": 3.390636208474808e-10
+        },
+        "remainingExtractable": {
+          "max": 163.2017889598033,
+          "min": 2.732176962541307,
+          "radial_relative": 9.967859232539166e-09
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_3bar_property_outer",
+      "slot": "SW_WATER_ANCHORED_90C_3bar_property_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_9bar_base_inner",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_9bar_base_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:56.798917+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.4774760795122624e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "3b8f55aa86f1c227631cb2d819872b9f8ca18750b713ff23756e51931112ea6e",
+      "cells": 1024,
+      "elapsed_s": 1.4429227160289884,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 15.84697489257646,
+          "min": 0.007150724019568847,
+          "radial_relative": 5.68456723431941e-10
+        },
+        "p": {
+          "max": 899133.8962754905,
+          "min": 905.8144037717823,
+          "radial_relative": 5.240038977259396e-10
+        },
+        "remainingExtractable": {
+          "max": 21.81108080954206,
+          "min": 2.606571392359591,
+          "radial_relative": 6.066043518838131e-11
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_9bar_base_inner",
+      "slot": "SW_WATER_ANCHORED_90C_9bar_base_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_9bar_base_outer",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_9bar_base_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:58.261487+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.391604117998758e-12,
+        "water_max_kg": 1.734723475976807e-18
+      },
+      "case_manifest_sha256": "0e11af86896282482e7a74b45fa71a0d95ccd264065192150412b9e8f2600de0",
+      "cells": 1024,
+      "elapsed_s": 1.4353708075359464,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9052590859853,
+          "min": 0.0396096802369802,
+          "radial_relative": 3.3076349048319464e-08
+        },
+        "p": {
+          "max": 899417.4683120662,
+          "min": 1077.160407106559,
+          "radial_relative": 3.2167891561693688e-09
+        },
+        "remainingExtractable": {
+          "max": 163.1625065877373,
+          "min": 2.645147746267438,
+          "radial_relative": 2.4252465101131585e-08
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_9bar_base_outer",
+      "slot": "SW_WATER_ANCHORED_90C_9bar_base_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_9bar_temporal_inner",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_9bar_temporal_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:43:59.716393+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 5.582294154451307e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "1f499173c2d95e6aa399351d5157fc21bef5c4e30c97ce4a590f421d46d951fc",
+      "cells": 1024,
+      "elapsed_s": 2.510301130823791,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 15.84963441000571,
+          "min": 0.00716404124043906,
+          "radial_relative": 1.7663315214751048e-09
+        },
+        "p": {
+          "max": 899133.8844918887,
+          "min": 905.774990175181,
+          "radial_relative": 2.1260000556704432e-10
+        },
+        "remainingExtractable": {
+          "max": 21.83510953312932,
+          "min": 2.61539434507683,
+          "radial_relative": 2.0877781834824413e-09
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_9bar_temporal_inner",
+      "slot": "SW_WATER_ANCHORED_90C_9bar_temporal_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_9bar_temporal_outer",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_9bar_temporal_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:44:02.249922+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 7.773632400866193e-13,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "d969e92303f1989727cf009c140c69a4a3652bb89566b940a4fc8b783e10fe78",
+      "cells": 1024,
+      "elapsed_s": 2.464754798449576,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9065582249443,
+          "min": 0.03968230634988014,
+          "radial_relative": 1.1409176732936648e-08
+        },
+        "p": {
+          "max": 899417.4632429471,
+          "min": 1077.174343625067,
+          "radial_relative": 1.0523107290320018e-09
+        },
+        "remainingExtractable": {
+          "max": 163.1635326252976,
+          "min": 2.65404559468002,
+          "radial_relative": 9.06013548108757e-09
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_9bar_temporal_outer",
+      "slot": "SW_WATER_ANCHORED_90C_9bar_temporal_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_9bar_axial_inner",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_9bar_axial_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:44:04.738735+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.487142843022802e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "0a03aa4ea2af2b564ff7733342b119d592003efac55b9f2913b5fe9aee2dad76",
+      "cells": 2048,
+      "elapsed_s": 2.5748405074700713,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 15.82694378812107,
+          "min": 0.003488834108810575,
+          "radial_relative": 5.843112395759165e-10
+        },
+        "p": {
+          "max": 899566.9341571378,
+          "min": 452.8998727913026,
+          "radial_relative": 5.172339641655976e-10
+        },
+        "remainingExtractable": {
+          "max": 21.81023000354062,
+          "min": 2.600742940683201,
+          "radial_relative": 2.7068672445713446e-10
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_9bar_axial_inner",
+      "slot": "SW_WATER_ANCHORED_90C_9bar_axial_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_9bar_axial_outer",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_9bar_axial_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:44:07.336134+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.066860133057526e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "bbbb31ab4f3bd92da88c847777708828d8c1e667fcc3fd86bd00cc3c185700d5",
+      "cells": 2048,
+      "elapsed_s": 2.5529078291729093,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.9106537517831,
+          "min": 0.01797977236760496,
+          "radial_relative": 4.152466107474226e-10
+        },
+        "p": {
+          "max": 899708.7120301821,
+          "min": 538.6642814169536,
+          "radial_relative": 5.885852279748247e-11
+        },
+        "remainingExtractable": {
+          "max": 163.165921185445,
+          "min": 2.618052871573002,
+          "radial_relative": 9.399314779061842e-10
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_9bar_axial_outer",
+      "slot": "SW_WATER_ANCHORED_90C_9bar_axial_outer",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_9bar_property_inner",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_9bar_property_inner",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:44:09.907018+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.735355260303834e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "b271a16d0e5bed13c636f224bc050fa3c0fd7ed0ba32d798bed31a6c7180afe7",
+      "cells": 1024,
+      "elapsed_s": 1.4386387458071113,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 15.84690280186647,
+          "min": 0.007150713248943704,
+          "radial_relative": 5.717451469891293e-10
+        },
+        "p": {
+          "max": 899133.8949891487,
+          "min": 905.8144735989047,
+          "radial_relative": 5.233012643216387e-10
+        },
+        "remainingExtractable": {
+          "max": 21.81098942170839,
+          "min": 2.606571367269943,
+          "radial_relative": 1.1248821179757836e-10
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_9bar_property_inner",
+      "slot": "SW_WATER_ANCHORED_90C_9bar_property_inner",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+      "id": "SW_WATER_ANCHORED_90C_9bar_property_outer",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_9bar_property_outer",
+      "status": "STARTED",
+      "utc": "2026-09-22T19:44:11.363659+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.391612413415927e-12,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "7f369bf10c0cde216983b61ce22bba2dedc90ba1f9b684fbeeed76d4095984d6",
+      "cells": 1024,
+      "elapsed_s": 1.4442122085019946,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 179.905256241573,
+          "min": 0.03960958262622221,
+          "radial_relative": 3.3076248663699407e-08
+        },
+        "p": {
+          "max": 899417.4669117851,
+          "min": 1077.161659668968,
+          "radial_relative": 3.218098158997078e-09
+        },
+        "remainingExtractable": {
+          "max": 163.1625051352573,
+          "min": 2.645147637229002,
+          "radial_relative": 2.4252514679426713e-08
+        }
+      },
+      "file_count": 58,
+      "id": "SW_WATER_ANCHORED_90C_9bar_property_outer",
+      "slot": "SW_WATER_ANCHORED_90C_9bar_property_outer",
+      "status": "COMPLETE"
+    }
+  ],
+  "ledger_sha256": "738357c21bc284cf6fa9fc3140be1d4ad547b62d483ddd0cf9e4c5e82cc5255e"
+}

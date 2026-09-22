@@ -1,0 +1,21 @@
+{
+  "classification": "NONSEMANTIC_FINAL_FIELD_DIRECTORY_LOOKUP",
+  "files": {
+    "tests/test_sci_md_rheology_007.py": {
+      "corrected_sha256": "989d88e462459e8e6a67cff5f5d4780ec1741af5f1307aa1e7bfc53b4e598192",
+      "original_sha256": "6cdf33898c964d2cac56ff4139cc99fd5a5d1bd55c87dde71b7ba1430d9f56d3"
+    },
+    "tools/sci_md_rheology_007/common.py": {
+      "corrected_sha256": "cbbb711845395c887695cc10bb29eb2aafcaf9e4f4b0c3b64e4754ec5261475a",
+      "original_sha256": "d6628c5e9fa6b6d85b116e0e67f15d51a0c65095ef2835117357268e7438d6ab"
+    },
+    "tools/sci_md_rheology_007/short.py": {
+      "corrected_sha256": "eee0b65e378f9ff8d47544dc3692d486222594085003b5792d30ebb648a9b450",
+      "original_sha256": "1eb73df95ab86f6353d863d237c0415e90740057f8b9e14c9ef1f2e70b919495"
+    }
+  },
+  "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+  "new_native_runs": 0,
+  "reason": "Native temporal output final directory is 30.000000000002; literal 30 lookup failed after native completion. Select exactly one numeric directory within unchanged 1e-9 s endpoint tolerance; reject absent/ambiguous. Avoid overwriting existing centre files. Retain failed qualification, requalify same completed native evidence without solver replay.",
+  "scientific_inputs_executable_metrics_support_budgets": "UNCHANGED"
+}

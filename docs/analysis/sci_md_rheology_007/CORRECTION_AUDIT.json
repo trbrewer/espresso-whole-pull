@@ -1,0 +1,35 @@
+{
+  "audit_type": "BOUNDED_NONSEMANTIC_QA_DELTA_ADDENDUM",
+  "classification": "NONSEMANTIC_FINAL_FIELD_DIRECTORY_LOOKUP",
+  "correction_sha256": "ccaf9a781524fa684843bdc645cce7490f4e8e501da17600dc208d131c1ff8a7",
+  "disposition": "Original G1 scientific audit remains applicable with this bounded nonsemantic addendum. Same retained native attempt may be marked qualification_recovered without another STARTED or native solve; retain and report its FAILED QA event.",
+  "failed_qualification_manifest_sha256": "73290ab0004522e99d26f9469dcaee214b04d33e54109354fbf24f15530223e6",
+  "findings": [
+    "Literal final-directory 30 lookup failed after temporal solver completion because native directory is 30.000000000002. The unique numeric-directory selection uses the existing 1e-9 s endpoint tolerance and rejects missing/ambiguous matches. No native inputs or time integration changed.",
+    "Retained temporal evidence independently passes all uniform interval and accounting gates: 3000 intervals, end 30.00000000000189 s, water balance 0, maximum solute balance 2.5607962638789998e-12 kg.",
+    "Independent field grouping and corrected helper agree: radial discrepancies concentration 1.887264752285866e-08, pressure 4.1371265364525e-09, remaining inventory 1.369712202046514e-08, all below unchanged 1e-6.",
+    "All preserved failed-attempt files remain hash-identical after read-only requalification; original STARTED/FAILED ledger events retained.",
+    "25 focused tests pass, including absent and ambiguous final-directory rejection. Original freeze remains unchanged; corrected hashes match explicit amendment, which is gated by independent audit hash."
+  ],
+  "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+  "material_findings": [],
+  "native_runs_by_reviewer": 0,
+  "original_audit_sha256": "79a3ffd8ac35e9fcfa3a36e90e5f7f8714ddea9a5fd3b1a2c40ca2150af248dc",
+  "pc_score_reductions_by_reviewer": 0,
+  "reviewed_commit": "96c5cd6277bae1f34d09d54ddf43f30bf8892b8c",
+  "reviewed_tree": "7e6451f52dff27ec72a7b3c959d8763185eaebfa",
+  "reviewer": "independent_audit agent; no implementation authorship",
+  "status": "PASS",
+  "task": "SCI-MD-RHEOLOGY-007",
+  "unchanged_scope": [
+    "native executable",
+    "physical dictionaries",
+    "tables",
+    "composition and metrics",
+    "support rule",
+    "engineering budgets",
+    "numerical tolerances",
+    "native run matrix and attempt ceiling"
+  ],
+  "utc": "2026-09-22T19:42:46.820903+00:00"
+}

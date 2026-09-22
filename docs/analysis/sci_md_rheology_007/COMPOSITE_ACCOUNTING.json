@@ -1,0 +1,581 @@
+{
+  "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+  "meaning": "End-state masses and weighted native interval accounting; regional intensive states not averaged",
+  "sets": {
+    "SW_WATER_ANCHORED_90C_3bar_axial": {
+      "balance": {
+        "solute_max_kg": 5.095367165442464e-13,
+        "water_max_kg": 7.806255641895632e-18
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 5.398778311492363e-06,
+        "remaining_kg": 0.003104106541845937,
+        "solute_kg": 0.0011396153843628398,
+        "stored_solute_kg": 0.0013508792959892673,
+        "water_kg": 0.0067715609533156645
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 7.017161609653552e-06,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 4.816828537563578e-07,
+            "remaining_kg": 0.0005063466016582128,
+            "solute_kg": 0.00068517587305479,
+            "stored_solute_kg": 0.00020799584243324804,
+            "water_kg": 0.00405871769269047
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 4.205925070145573e-06
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 4.9170954577360156e-06,
+            "remaining_kg": 0.0025977599401877244,
+            "solute_kg": 0.0004544395113080501,
+            "stored_solute_kg": 0.0011428834535560193,
+            "water_kg": 0.0027128432606251993
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 2.811236539507975e-06
+        }
+      }
+    },
+    "SW_WATER_ANCHORED_90C_3bar_base": {
+      "balance": {
+        "solute_max_kg": 2.443761262888532e-13,
+        "water_max_kg": 8.673617379884035e-18
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 6.058596023070709e-06,
+        "remaining_kg": 0.003103001494640666,
+        "solute_kg": 0.001139529971720986,
+        "stored_solute_kg": 0.0013514099378596535,
+        "water_kg": 0.006771399288848881
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 7.016994081708686e-06,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 5.167462433671692e-07,
+            "remaining_kg": 0.0005062065636650175,
+            "solute_kg": 0.0006850816937349098,
+            "stored_solute_kg": 0.0002081949963567102,
+            "water_kg": 0.0040584990856092585
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 4.205698534310114e-06
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 5.541849779703541e-06,
+            "remaining_kg": 0.0025967949309756485,
+            "solute_kg": 0.00045444827798607533,
+            "stored_solute_kg": 0.0011432149415029434,
+            "water_kg": 0.002712900203239623
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 2.811295547398572e-06
+        }
+      }
+    },
+    "SW_WATER_ANCHORED_90C_3bar_property": {
+      "balance": {
+        "solute_max_kg": 2.4437171748236276e-13,
+        "water_max_kg": 7.806255641895632e-18
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 6.058583872980025e-06,
+        "remaining_kg": 0.00310299952024686,
+        "solute_kg": 0.0011395328955935147,
+        "stored_solute_kg": 0.001351409000531017,
+        "water_kg": 0.006771416539152232
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 7.017011957670706e-06,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 5.167450788064724e-07,
+            "remaining_kg": 0.0005062052794467142,
+            "solute_kg": 0.0006850835998040607,
+            "stored_solute_kg": 0.00020819437567042294,
+            "water_kg": 0.004058510340474421
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 4.205710197382814e-06
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 5.54183879417355e-06,
+            "remaining_kg": 0.002596794240800146,
+            "solute_kg": 0.00045444929578945564,
+            "stored_solute_kg": 0.001143214624860594,
+            "water_kg": 0.0027129061986778096
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 2.811301760287887e-06
+        }
+      }
+    },
+    "SW_WATER_ANCHORED_90C_3bar_temporal": {
+      "balance": {
+        "solute_max_kg": 3.8962520733501265e-13,
+        "water_max_kg": 1.214306433183765e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 6.058864430358892e-06,
+        "remaining_kg": 0.0031034121377780813,
+        "solute_kg": 0.0011390360412267342,
+        "stored_solute_kg": 0.0013514929569544507,
+        "water_kg": 0.006771200157184036
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 7.016787727651867e-06,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 5.167860794868714e-07,
+            "remaining_kg": 0.0005064469598968221,
+            "solute_kg": 0.0006847921198812542,
+            "stored_solute_kg": 0.00020824413458938077,
+            "water_kg": 0.004058304755420735
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 4.205497155876408e-06
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 5.542078350872021e-06,
+            "remaining_kg": 0.0025969651778812593,
+            "solute_kg": 0.0004542439213454832,
+            "stored_solute_kg": 0.00114324882236507,
+            "water_kg": 0.002712895401763317
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 2.811290571775461e-06
+        }
+      }
+    },
+    "SW_WATER_ANCHORED_90C_9bar_axial": {
+      "balance": {
+        "solute_max_kg": 2.742715182522086e-17,
+        "water_max_kg": 2.7755575615628914e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 2.040175500463336e-06,
+        "remaining_kg": 0.0019648656814433576,
+        "solute_kg": 0.0028047631554824256,
+        "stored_solute_kg": 0.0008283309875737659,
+        "water_kg": 0.024715126092703963
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 2.561152962974507e-05,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 1.526193547695572e-07,
+            "remaining_kg": 5.6026120272958634e-05,
+            "solute_kg": 0.0013313986196882793,
+            "stored_solute_kg": 1.2422640683991246e-05,
+            "water_kg": 0.01597638162635024
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 1.6555835882228217e-05
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 1.8875561456937771e-06,
+            "remaining_kg": 0.0019088395611703988,
+            "solute_kg": 0.0014733645357941478,
+            "stored_solute_kg": 0.0008159083468897747,
+            "water_kg": 0.008738744466353745
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 9.055693747516813e-06
+        }
+      }
+    },
+    "SW_WATER_ANCHORED_90C_9bar_base": {
+      "balance": {
+        "solute_max_kg": 2.543698779748345e-12,
+        "water_max_kg": 5.204170427930421e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 2.2100109596614705e-06,
+        "remaining_kg": 0.0019643175075796937,
+        "solute_kg": 0.0028046013045114515,
+        "stored_solute_kg": 0.000828871179492892,
+        "water_kg": 0.024712841437055353
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 2.5609162110938143e-05,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 1.56718005024563e-07,
+            "remaining_kg": 5.60831144963123e-05,
+            "solute_kg": 0.0013313022723444178,
+            "stored_solute_kg": 1.2457895154240245e-05,
+            "water_kg": 0.015974386057148734
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 1.655376793486917e-05
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 2.0532929546369035e-06,
+            "remaining_kg": 0.0019082343930833816,
+            "solute_kg": 0.0014732990321670329,
+            "stored_solute_kg": 0.0008164132843386518,
+            "water_kg": 0.008738455379906593
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 9.05539417606901e-06
+        }
+      }
+    },
+    "SW_WATER_ANCHORED_90C_9bar_property": {
+      "balance": {
+        "solute_max_kg": 2.5436960052919262e-12,
+        "water_max_kg": 2.7755575615628914e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 2.210006171739503e-06,
+        "remaining_kg": 0.0019643147896785482,
+        "solute_kg": 0.002804605270543762,
+        "stored_solute_kg": 0.0008288699361496464,
+        "water_kg": 0.0247128957581962
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 2.5609218402275816e-05,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 1.5671765928192986e-07,
+            "remaining_kg": 5.608294303037934e-05,
+            "solute_kg": 0.0013313024923526935,
+            "stored_solute_kg": 1.245784695764027e-05,
+            "water_kg": 0.015974418625809266
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 1.6553801684776448e-05
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 2.0532885124575733e-06,
+            "remaining_kg": 0.001908231846648169,
+            "solute_kg": 0.0014733027781910768,
+            "stored_solute_kg": 0.0008164120891920061,
+            "water_kg": 0.008738477132386922
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 9.055416717499399e-06
+        }
+      }
+    },
+    "SW_WATER_ANCHORED_90C_9bar_temporal": {
+      "balance": {
+        "solute_max_kg": 7.225678444012856e-13,
+        "water_max_kg": 4.163336342344337e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 2.2101600602145395e-06,
+        "remaining_kg": 0.0019649655950509564,
+        "solute_kg": 0.002803827593331935,
+        "stored_solute_kg": 0.0008289966522794619,
+        "water_kg": 0.024712449504964838
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 2.560875596369409e-05,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 1.5673628388270894e-07,
+            "remaining_kg": 5.618327570508524e-05,
+            "solute_kg": 0.0013311951139698753,
+            "stored_solute_kg": 1.2464874180706445e-05,
+            "water_kg": 0.01597427448083013
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 1.655365231174105e-05
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 2.0534237763318344e-06,
+            "remaining_kg": 0.001908782319345871,
+            "solute_kg": 0.0014726324793620641,
+            "stored_solute_kg": 0.0008165317780987555,
+            "water_kg": 0.008738175024134695
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 9.055103651953081e-06
+        }
+      }
+    },
+    "TR_LINEAR_3bar_axial": {
+      "balance": {
+        "solute_max_kg": 6.400607735474297e-13,
+        "water_max_kg": 1.474514954580286e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 4.685976077542144e-06,
+        "remaining_kg": 0.0029658077106409415,
+        "solute_kg": 0.001343469555241798,
+        "stored_solute_kg": 0.001286036758679779,
+        "water_kg": 0.008023452431311816
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 8.314458478043337e-06,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 4.0965773774510987e-07,
+            "remaining_kg": 0.00041676721491354254,
+            "solute_kg": 0.0008177464379055246,
+            "stored_solute_kg": 0.00016507668944319007,
+            "water_kg": 0.004879893752747047
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 5.056884717872588e-06
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 4.276318339797031e-06,
+            "remaining_kg": 0.002549040495727399,
+            "solute_kg": 0.0005257231173362732,
+            "stored_solute_kg": 0.001120960069236589,
+            "water_kg": 0.003143558678564773
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 3.257573760170754e-06
+        }
+      }
+    },
+    "TR_LINEAR_3bar_base": {
+      "balance": {
+        "solute_max_kg": 3.2216602026098953e-13,
+        "water_max_kg": 2.3418766925686896e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 5.244624767846032e-06,
+        "remaining_kg": 0.0029646905966100767,
+        "solute_kg": 0.0013434989306551884,
+        "stored_solute_kg": 0.0012865658482890548,
+        "water_kg": 0.008024511351229066
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 8.315555804382454e-06,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 4.3583734833876175e-07,
+            "remaining_kg": 0.0004166064839756978,
+            "solute_kg": 0.000817697972229863,
+            "stored_solute_kg": 0.00016525970644610437,
+            "water_kg": 0.004880513369231721
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 5.057526807494009e-06
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 4.808787419507294e-06,
+            "remaining_kg": 0.0025480841126343788,
+            "solute_kg": 0.0005258009584253226,
+            "stored_solute_kg": 0.0011213061418429504,
+            "water_kg": 0.0031439979819973493
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 3.2580289968884458e-06
+        }
+      }
+    },
+    "TR_LINEAR_3bar_temporal": {
+      "balance": {
+        "solute_max_kg": 5.857340682968661e-13,
+        "water_max_kg": 1.474514954580286e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 5.244356229325203e-06,
+        "remaining_kg": 0.0029651526166972557,
+        "solute_kg": 0.0013429503325577954,
+        "stored_solute_kg": 0.0012866526951013577,
+        "water_kg": 0.008024441614062293
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 8.315483537888387e-06,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 4.3584323392347814e-07,
+            "remaining_kg": 0.00041687607909602487,
+            "solute_kg": 0.0008173789694986085,
+            "stored_solute_kg": 0.0001653091088116422,
+            "water_kg": 0.004880271140496833
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 5.057275793260959e-06
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 4.808512995401722e-06,
+            "remaining_kg": 0.002548276537601231,
+            "solute_kg": 0.000525571363059185,
+            "stored_solute_kg": 0.0011213435862897155,
+            "water_kg": 0.0031441704735654732
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 3.2582077446274254e-06
+        }
+      }
+    },
+    "TR_LINEAR_9bar_axial": {
+      "balance": {
+        "solute_max_kg": 3.9961042452877564e-17,
+        "water_max_kg": 5.204170427930421e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 1.748589530962247e-06,
+        "remaining_kg": 0.001770533818177651,
+        "solute_kg": 0.0030878250771071945,
+        "stored_solute_kg": 0.0007398925151842072,
+        "water_kg": 0.02821196662894996
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 2.9235198579222768e-05,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 1.282527855409392e-07,
+            "remaining_kg": 4.53253564054725e-05,
+            "solute_kg": 0.0013440098612759526,
+            "stored_solute_kg": 1.0536529533036317e-05,
+            "water_kg": 0.017871037105053087
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 1.8519209435288173e-05
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 1.620336745421308e-06,
+            "remaining_kg": 0.0017252084617721784,
+            "solute_kg": 0.0017438152158312423,
+            "stored_solute_kg": 0.0007293559856511708,
+            "water_kg": 0.01034092952389688
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 1.0715989143934583e-05
+        }
+      }
+    },
+    "TR_LINEAR_9bar_base": {
+      "balance": {
+        "solute_max_kg": 3.29690500546223e-12,
+        "water_max_kg": 6.591949208711867e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 1.879246535738364e-06,
+        "remaining_kg": 0.001769801303307258,
+        "solute_kg": 0.0030879752137022917,
+        "stored_solute_kg": 0.0007403442397516167,
+        "water_kg": 0.028213419006712568
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 2.9236703633899016e-05,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 1.3114034363816883e-07,
+            "remaining_kg": 4.5361652072107e-05,
+            "solute_kg": 0.0013439440930063328,
+            "stored_solute_kg": 1.0563114577915495e-05,
+            "water_kg": 0.017871026482513583
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 1.8519198427475216e-05
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 1.748106192100195e-06,
+            "remaining_kg": 0.001724439651235151,
+            "solute_kg": 0.0017440311206959585,
+            "stored_solute_kg": 0.0007297811251737011,
+            "water_kg": 0.010342392524198975
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 1.0717505206423824e-05
+        }
+      }
+    },
+    "TR_LINEAR_9bar_temporal": {
+      "balance": {
+        "solute_max_kg": 8.847426753421099e-13,
+        "water_max_kg": 4.85722573273506e-17
+      },
+      "correction_absolute_kg": 0.0,
+      "dose_kg": 0.02,
+      "final": {
+        "inlet_loss_kg": 1.8792344559022543e-06,
+        "remaining_kg": 0.001770552628248493,
+        "solute_kg": 0.0030870678607177893,
+        "stored_solute_kg": 0.0007405002774625582,
+        "water_kg": 0.02821266747513217
+      },
+      "initial_inventory_kg": 0.0056,
+      "integrated_volume_m3": 2.923592484469642e-05,
+      "regions": {
+        "inner": {
+          "final": {
+            "inlet_loss_kg": 1.3115052060410402e-07,
+            "remaining_kg": 4.545518533165394e-05,
+            "solute_kg": 0.001343842557913397,
+            "stored_solute_kg": 1.057110627573519e-05,
+            "water_kg": 0.01787042276291598
+          },
+          "initial_inventory_kg": 0.0014,
+          "integrated_volume_m3": 1.8518572811311924e-05
+        },
+        "outer": {
+          "final": {
+            "inlet_loss_kg": 1.7480839352981544e-06,
+            "remaining_kg": 0.0017250974429168391,
+            "solute_kg": 0.0017432253028043963,
+            "stored_solute_kg": 0.000729929171186823,
+            "water_kg": 0.010342244712216071
+          },
+          "initial_inventory_kg": 0.0042,
+          "integrated_volume_m3": 1.0717352033384545e-05
+        }
+      }
+    }
+  },
+  "status": "PASS"
+}
