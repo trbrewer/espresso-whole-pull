@@ -1,0 +1,253 @@
+{
+  "comparisons": {
+    "inner_area": {
+      "Q_m3_s": 7.1648809085986654e-12,
+      "c_n_max": 2.5193321734768414e-12,
+      "c_n_min": 5.612957614145373e-12,
+      "c_next_max": 2.5193321734768414e-12,
+      "c_next_min": 7.2167651456041374e-12,
+      "correction_kg": 0.0,
+      "inlet_loss_kg": 5.336940468267133e-13,
+      "mu_max": 1.0703184424250536e-14,
+      "mu_min": 2.0899594902459118e-14,
+      "mu_next_max": 1.0703184424250536e-14,
+      "mu_next_min": 2.797685274485174e-14,
+      "pressure_Pa": 1.9881549830799045e-12,
+      "remaining_kg": 3.1794063483479673e-16,
+      "solute_kg": 4.56114760321903e-12,
+      "stored_solute_kg": 8.314736240522329e-14,
+      "volume_m3": 7.1649438556125515e-12,
+      "water_kg": 3.427246551071355e-12
+    },
+    "inner_radial": {
+      "Q_m3_s": 1.1167292383975293e-11,
+      "c_n_max": 6.127912787922747e-12,
+      "c_n_min": 9.84548460674614e-12,
+      "c_next_max": 6.127912787922747e-12,
+      "c_next_min": 9.84548460674614e-12,
+      "correction_kg": 0.0,
+      "inlet_loss_kg": 4.887512680977906e-13,
+      "mu_max": 3.5849330247910534e-14,
+      "mu_min": 1.3850673680371417e-14,
+      "mu_next_max": 3.5849330247910534e-14,
+      "mu_next_min": 1.93420216507617e-14,
+      "pressure_Pa": 8.038211052220337e-12,
+      "remaining_kg": 1.8697796309736976e-15,
+      "solute_kg": 5.740489573063195e-12,
+      "stored_solute_kg": 9.659989848419271e-14,
+      "volume_m3": 1.1167271454824837e-11,
+      "water_kg": 4.935551228344534e-12
+    },
+    "outer_area": {
+      "Q_m3_s": 4.5732394840634035e-12,
+      "c_n_max": 1.361391785962647e-13,
+      "c_n_min": 1.1880047612724475e-12,
+      "c_next_max": 1.6771345625484883e-13,
+      "c_next_min": 1.4243995098130783e-12,
+      "correction_kg": 0.0,
+      "inlet_loss_kg": 9.876610387352899e-14,
+      "mu_max": 1.032495990849239e-15,
+      "mu_min": 7.064899504979553e-15,
+      "mu_next_max": 1.3756093457143011e-15,
+      "mu_next_min": 9.30030045397185e-15,
+      "pressure_Pa": 1.0246001003127996e-12,
+      "remaining_kg": 7.859236251629523e-16,
+      "solute_kg": 4.5730159631276176e-12,
+      "stored_solute_kg": 1.874430376101562e-14,
+      "volume_m3": 4.573155841524006e-12,
+      "water_kg": 4.5731753436704974e-12
+    },
+    "outer_radial": {
+      "Q_m3_s": 1.305400222335128e-11,
+      "c_n_max": 2.2131380458741024e-12,
+      "c_n_min": 8.123455344054776e-12,
+      "c_next_max": 2.2131380458741024e-12,
+      "c_next_min": 8.123455344054776e-12,
+      "correction_kg": 0.0,
+      "inlet_loss_kg": 1.3786526252036934e-13,
+      "mu_max": 1.1039427291468646e-14,
+      "mu_min": 3.555720424629639e-14,
+      "mu_next_max": 1.1864630606785847e-14,
+      "mu_next_min": 3.555720424629639e-14,
+      "pressure_Pa": 2.7242702168950606e-11,
+      "remaining_kg": 2.493039214954689e-15,
+      "solute_kg": 8.535493789447437e-12,
+      "stored_solute_kg": 3.987697931898971e-14,
+      "volume_m3": 1.3054096725046891e-11,
+      "water_kg": 5.841165980668425e-12
+    }
+  },
+  "completed": 6,
+  "denominator_floors": {
+    "concentration_kg_m3": 1e-08,
+    "flow_m3_s": 1e-14,
+    "mass_kg": 1e-12,
+    "pressure_Pa": 0.001,
+    "viscosity_Pa_s": 1e-12,
+    "volume_m3": 1e-16
+  },
+  "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+  "failed": 0,
+  "ledger_sha256": "ba9c78f4a042d1cfe364e1253442d1b3c81d457c54060ba2ba6718b0328b98bd",
+  "relative_tolerance": 1e-06,
+  "slots": {
+    "inner_area": {
+      "area_fraction": 0.25,
+      "area_m2": 0.0006605198554172541,
+      "bed_depth_m": 0.009011660896432553,
+      "dose_kg": 0.005,
+      "elapsed_s": 0.2315625948831439,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 16.67120651887948,
+          "min": 7.842610986427109,
+          "radial_relative": 1.4443598082415955e-12
+        },
+        "p": {
+          "max": 885986.989072825,
+          "min": 14065.2298929092,
+          "radial_relative": 5.191115624430849e-13
+        },
+        "remainingExtractable": {
+          "max": 228.5315173924581,
+          "min": 228.4137066495763,
+          "radial_relative": 3.109184437587843e-15
+        }
+      },
+      "initial_inventory_kg": 0.0014000000000000004,
+      "volume_m3": 5.9523809523809525e-06
+    },
+    "inner_full": {
+      "area_fraction": 1.0,
+      "area_m2": 0.0026420794216690164,
+      "bed_depth_m": 0.009011660896432553,
+      "dose_kg": 0.02,
+      "elapsed_s": 0.240274372510612,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 16.67120651887778,
+          "min": 7.84261098637051,
+          "radial_relative": 1.0227978635913414e-11
+        },
+        "p": {
+          "max": 885986.9890728416,
+          "min": 14065.2298927834,
+          "radial_relative": 1.0680196629982085e-11
+        },
+        "remainingExtractable": {
+          "max": 228.5315173924577,
+          "min": 228.4137066495761,
+          "radial_relative": 3.484063525453012e-15
+        }
+      },
+      "initial_inventory_kg": 0.005600000000000002,
+      "volume_m3": 2.380952380952381e-05
+    },
+    "inner_radial": {
+      "area_fraction": 1.0,
+      "area_m2": 0.0026420794216690164,
+      "bed_depth_m": 0.009011660896432553,
+      "dose_kg": 0.02,
+      "elapsed_s": 0.25431314017623663,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 16.67120651894231,
+          "min": 7.842610986409566,
+          "radial_relative": 5.3840920867309465e-12
+        },
+        "p": {
+          "max": 885986.9890728504,
+          "min": 14065.22989279167,
+          "radial_relative": 9.50501806306471e-12
+        },
+        "remainingExtractable": {
+          "max": 228.5315173924591,
+          "min": 228.4137066495761,
+          "radial_relative": 6.591434813888466e-15
+        }
+      },
+      "initial_inventory_kg": 0.0055999999999999965,
+      "volume_m3": 2.380952380952381e-05
+    },
+    "outer_area": {
+      "area_fraction": 0.7499999999999999,
+      "area_m2": 0.001981559566251762,
+      "bed_depth_m": 0.009011660896432553,
+      "dose_kg": 0.015,
+      "elapsed_s": 0.243653598241508,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 16.67120651886051,
+          "min": 13.36757618233304,
+          "radial_relative": 2.902484755423227e-12
+        },
+        "p": {
+          "max": 885955.7448573206,
+          "min": 14063.18594148881,
+          "radial_relative": 8.761765840811581e-12
+        },
+        "remainingExtractable": {
+          "max": 228.5315173924577,
+          "min": 228.4911803866132,
+          "radial_relative": 1.7414410978681627e-15
+        }
+      },
+      "initial_inventory_kg": 0.0042000000000000015,
+      "volume_m3": 1.7857142857142855e-05
+    },
+    "outer_full": {
+      "area_fraction": 1.0,
+      "area_m2": 0.0026420794216690164,
+      "bed_depth_m": 0.009011660896432553,
+      "dose_kg": 0.02,
+      "elapsed_s": 0.2442117016762495,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 16.67120651885772,
+          "min": 13.36757618235208,
+          "radial_relative": 9.044186084324855e-13
+        },
+        "p": {
+          "max": 885955.7448572895,
+          "min": 14063.18594156123,
+          "radial_relative": 2.917829273905994e-12
+        },
+        "remainingExtractable": {
+          "max": 228.5315173924575,
+          "min": 228.4911803866133,
+          "radial_relative": 4.974668751223315e-16
+        }
+      },
+      "initial_inventory_kg": 0.005600000000000002,
+      "volume_m3": 2.380952380952381e-05
+    },
+    "outer_radial": {
+      "area_fraction": 1.0,
+      "area_m2": 0.0026420794216690164,
+      "bed_depth_m": 0.009011660896432553,
+      "dose_kg": 0.02,
+      "elapsed_s": 0.25301744416356087,
+      "fields": {
+        "dissolvedConcentration": {
+          "max": 16.67120651888211,
+          "min": 13.3675761823087,
+          "radial_relative": 5.7482274089172766e-12
+        },
+        "p": {
+          "max": 885955.7448573146,
+          "min": 14063.18594121884,
+          "radial_relative": 2.965251113610438e-11
+        },
+        "remainingExtractable": {
+          "max": 228.5315173924581,
+          "min": 228.4911803866121,
+          "radial_relative": 7.960873590254496e-15
+        }
+      },
+      "initial_inventory_kg": 0.005599999999999996,
+      "volume_m3": 2.380952380952381e-05
+    }
+  },
+  "started": 6,
+  "status": "PASS"
+}
