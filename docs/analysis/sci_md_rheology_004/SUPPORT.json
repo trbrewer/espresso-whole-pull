@@ -1,0 +1,226 @@
+{
+  "coverage": {
+    "SW_WATER_ANCHORED_90C/base/reversed_3bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.006684052478886042,
+      "final_W_kg": 0.005725888911813368
+    },
+    "SW_WATER_ANCHORED_90C/base/reversed_3bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.007922795425048812,
+      "final_W_kg": 0.006762860494480794
+    },
+    "SW_WATER_ANCHORED_90C/base/reversed_3bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.01145654443388207,
+      "final_W_kg": 0.009779257414757674
+    },
+    "SW_WATER_ANCHORED_90C/base/uniform_9bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.02366057284845191,
+      "final_W_kg": 0.02027431607460784
+    },
+    "SW_WATER_ANCHORED_90C/base/uniform_9bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.02369237467091123,
+      "final_W_kg": 0.02027431607460158
+    },
+    "SW_WATER_ANCHORED_90C/base/uniform_9bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.03378202483682023,
+      "final_W_kg": 0.029317144123446735
+    },
+    "SW_WATER_ANCHORED_90C/property/reversed_3bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.006684067003623264,
+      "final_W_kg": 0.005725901333472808
+    },
+    "SW_WATER_ANCHORED_90C/property/reversed_3bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.00792281740467572,
+      "final_W_kg": 0.0067628792561855965
+    },
+    "SW_WATER_ANCHORED_90C/property/reversed_3bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.01145654443388207,
+      "final_W_kg": 0.009779257414757674
+    },
+    "SW_WATER_ANCHORED_90C/property/uniform_9bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.023660637634889292,
+      "final_W_kg": 0.02027437232028148
+    },
+    "SW_WATER_ANCHORED_90C/property/uniform_9bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.023692439317640847,
+      "final_W_kg": 0.020274372320183847
+    },
+    "SW_WATER_ANCHORED_90C/property/uniform_9bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.03378202483682023,
+      "final_W_kg": 0.029317144123446735
+    },
+    "SW_WATER_ANCHORED_90C/spatial/reversed_3bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.006681617998051428,
+      "final_W_kg": 0.0057238032344802655
+    },
+    "SW_WATER_ANCHORED_90C/spatial/reversed_3bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.007920707264311922,
+      "final_W_kg": 0.006761078050406849
+    },
+    "SW_WATER_ANCHORED_90C/spatial/reversed_3bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.011452516809791237,
+      "final_W_kg": 0.009775818185610628
+    },
+    "SW_WATER_ANCHORED_90C/spatial/uniform_9bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.023663349950550742,
+      "final_W_kg": 0.020276103326969497
+    },
+    "SW_WATER_ANCHORED_90C/spatial/uniform_9bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.023695148611293106,
+      "final_W_kg": 0.02027610332681912
+    },
+    "SW_WATER_ANCHORED_90C/spatial/uniform_9bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.03378341815943803,
+      "final_W_kg": 0.02931714412364339
+    },
+    "SW_WATER_ANCHORED_90C/temporal/reversed_3bar/C": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.006683637914364321,
+      "final_W_kg": 0.005725904797393337
+    },
+    "SW_WATER_ANCHORED_90C/temporal/reversed_3bar/N": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.007921926075407969,
+      "final_W_kg": 0.006762508289085888
+    },
+    "SW_WATER_ANCHORED_90C/temporal/reversed_3bar/W": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.01145588443134575,
+      "final_W_kg": 0.009779257414757549
+    },
+    "SW_WATER_ANCHORED_90C/temporal/uniform_9bar/C": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.023658382893039853,
+      "final_W_kg": 0.02027326020133667
+    },
+    "SW_WATER_ANCHORED_90C/temporal/uniform_9bar/N": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.023690148212914094,
+      "final_W_kg": 0.020273260201233247
+    },
+    "SW_WATER_ANCHORED_90C/temporal/uniform_9bar/W": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.03378135749218413,
+      "final_W_kg": 0.02931714412344674
+    },
+    "TR_LINEAR/base/reversed_3bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.0077216183159085966,
+      "final_W_kg": 0.006616597556824262
+    },
+    "TR_LINEAR/base/reversed_3bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.00963047663781242,
+      "final_W_kg": 0.008220529068124503
+    },
+    "TR_LINEAR/base/reversed_3bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.01145654443388207,
+      "final_W_kg": 0.009779257414757674
+    },
+    "TR_LINEAR/base/uniform_9bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.028619859069001247,
+      "final_W_kg": 0.02464424702597856
+    },
+    "TR_LINEAR/base/uniform_9bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.02864863020159562,
+      "final_W_kg": 0.024644247025929555
+    },
+    "TR_LINEAR/base/uniform_9bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.03378202483682023,
+      "final_W_kg": 0.029317144123446735
+    },
+    "TR_LINEAR/spatial/reversed_3bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.007718380290156561,
+      "final_W_kg": 0.0066138270563084875
+    },
+    "TR_LINEAR/spatial/reversed_3bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.009626302760386413,
+      "final_W_kg": 0.008216966256788265
+    },
+    "TR_LINEAR/spatial/reversed_3bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.011452516809791237,
+      "final_W_kg": 0.009775818185610628
+    },
+    "TR_LINEAR/spatial/uniform_9bar/C": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.028618768648225573,
+      "final_W_kg": 0.024642232439058276
+    },
+    "TR_LINEAR/spatial/uniform_9bar/N": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.028647611580664756,
+      "final_W_kg": 0.02464223243919486
+    },
+    "TR_LINEAR/spatial/uniform_9bar/W": {
+      "end_s": 29.99999999999945,
+      "final_B_kg": 0.03378341815943803,
+      "final_W_kg": 0.02931714412364339
+    },
+    "TR_LINEAR/temporal/reversed_3bar/C": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.007721561917565398,
+      "final_W_kg": 0.006617020003008335
+    },
+    "TR_LINEAR/temporal/reversed_3bar/N": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.009629388419300899,
+      "final_W_kg": 0.00822007406382365
+    },
+    "TR_LINEAR/temporal/reversed_3bar/W": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.01145588443134575,
+      "final_W_kg": 0.009779257414757549
+    },
+    "TR_LINEAR/temporal/uniform_9bar/C": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.028617464082459406,
+      "final_W_kg": 0.02464288297279347
+    },
+    "TR_LINEAR/temporal/uniform_9bar/N": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.028646258212926122,
+      "final_W_kg": 0.024642882972731667
+    },
+    "TR_LINEAR/temporal/uniform_9bar/W": {
+      "end_s": 30.00000000000189,
+      "final_B_kg": 0.03378135749218413,
+      "final_W_kg": 0.02931714412344674
+    }
+  },
+  "missing": [],
+  "provisional": false,
+  "support": {
+    "reversed_3bar": {
+      "B": 0.006681617998051428,
+      "W": 0.0057238032344802655
+    },
+    "uniform_9bar": {
+      "B": 0.023658382893039853,
+      "W": 0.020273260201233247
+    }
+  }
+}

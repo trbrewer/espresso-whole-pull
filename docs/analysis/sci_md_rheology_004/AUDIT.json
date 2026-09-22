@@ -1,0 +1,25 @@
+{
+  "checks": [
+    "Reviewed owner directive, applicable instructions, protocol, observer, runner, provenance checks, analysis and tests independently of implementation.",
+    "All frozen source/evidence files and accepted corrected executable and both scientific SW tables match their hashes.",
+    "Verified external accepted 002 eighteen-run and 003 twenty-four-run artifact provenance; selected SW reuse remains eight C runs.",
+    "Independently recalculated every frozen alpha solely from uniform reference C/W hydraulic volume; exact equality.",
+    "Inspected parent-reproduced 002 and 003 metric artifacts and verified exact equality to accepted committed metrics; reviewer did not replay scientific executions.",
+    "Verified task execution-root digest and absence of new science root before this audit; no 004 full attempts or scientific scores performed by reviewer.",
+    "Fourteen focused tests passed independently, including malformed histories, conservative fractions, curve crossings, identity, support, calibration isolation, run-budget failures, source mismatch and completed-subset preservation.",
+    "Initial findings resolved: missing/mismatched individual artifacts preserve other valid attempts; missing matching W disqualifies N; interval mismatch is isolated; fraction discrepancy remains in selected floating-point precision through metric evaluation.",
+    "Verified unchanged production solver, runtime lock and predecessor scientific records; changes are task-local G1 SOURCE_SCENARIO_CHANGE_ONLY.",
+    "Declared shared support, primary/secondary coordinates, thresholds, empirical targets and unresolved precedence agree with owner scope; no chemistry scaling or threshold selection from new outputs.",
+    "Single draft freeze reconciliation is documented before scoring, with earlier preparation preserved in Git; no new campaign or correction ladder."
+  ],
+  "findings": [],
+  "freeze_sha256": "12cb10630db2ce082a08ae36f22e033132b21d63771a819ad870188d4b0fab02",
+  "independent": true,
+  "review_type": "Independent G1 exact-commit pre-scoring audit",
+  "reviewed_commit": "ec0540ba24fe2e4f0e333aca162da26fce98a688",
+  "reviewed_tree": "1f5716a5e9c372735e89aeee7d8b10cdc115dd8b",
+  "reviewer": "Separate Codex reviewer agent /root/independent_review",
+  "scope_limit": "Pre-scoring implementation and frozen design only. Scientific result, final exact-head review, hosted CI and merge status remain separate.",
+  "status": "PASS",
+  "task": "SCI-MD-RHEOLOGY-004"
+}
