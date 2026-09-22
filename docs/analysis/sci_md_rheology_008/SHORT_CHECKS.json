@@ -1,0 +1,533 @@
+{
+  "MPI_zone_sets": [
+    [
+      0.0
+    ],
+    [
+      1.0
+    ]
+  ],
+  "analytical": {
+    "E2_double": {
+      "Q_relative": 3.955724636739433e-12,
+      "expected_core_share": 0.5714285714285714,
+      "inverse_viscosity_relative": 0.0,
+      "share_relative": 2.1800339311539574e-12
+    },
+    "E2_uniform": {
+      "Q_relative": 4.660272168166557e-12,
+      "expected_core_share": 0.25,
+      "share_relative": 5.364597654988756e-12
+    },
+    "E2_water": {
+      "Q_relative": 3.955724636739433e-12,
+      "expected_core_share": 0.5714285714285714,
+      "share_relative": 2.1800339311539574e-12
+    },
+    "E4_double": {
+      "Q_relative": 1.4210854715202004e-13,
+      "expected_core_share": 0.5714285714285714,
+      "inverse_viscosity_relative": 0.0,
+      "share_relative": 2.55351295663786e-15
+    },
+    "E4_uniform": {
+      "Q_relative": 5.683453707661101e-12,
+      "expected_core_share": 0.25,
+      "share_relative": 1.433075880186152e-12
+    },
+    "E4_water": {
+      "Q_relative": 1.4210854715202004e-13,
+      "expected_core_share": 0.5714285714285714,
+      "share_relative": 2.55351295663786e-15
+    },
+    "E8_double": {
+      "Q_relative": 1.2170264795940966e-12,
+      "expected_core_share": 0.5714285714285714,
+      "inverse_viscosity_relative": 0.0,
+      "share_relative": 3.991251773527438e-13
+    },
+    "E8_uniform": {
+      "Q_relative": 2.753353101070388e-13,
+      "expected_core_share": 0.25,
+      "share_relative": 3.4570124540778124e-12
+    },
+    "E8_water": {
+      "Q_relative": 1.2170264795940966e-12,
+      "expected_core_share": 0.5714285714285714,
+      "share_relative": 3.991251773527438e-13
+    }
+  },
+  "completed": 12,
+  "consistency": {
+    "E2_mpi": {
+      "Q_inner_m3_s": 1.8270876305800137e-12,
+      "Q_outer_m3_s": 6.5130772577700124e-12,
+      "Q_total_m3_s": 3.835512286580285e-12,
+      "c_n_max_kg_m3": 2.5156919951493723e-13,
+      "c_n_min_kg_m3": 1.1764406184102523e-12,
+      "c_next_max_kg_m3": 3.254109881843995e-13,
+      "c_next_min_kg_m3": 1.1764406184102523e-12,
+      "correction_kg": 0.0,
+      "cumulative_tds_fraction": 8.06520406883085e-13,
+      "cup_Q_m3_s": 3.835512286580285e-12,
+      "dilute_pore_volume_fraction": 1.1102230246251565e-16,
+      "dt_s": 0.0,
+      "end_s": 0.0,
+      "inlet_loss_kg": 4.074063938944147e-13,
+      "inner_area_m2": 0.0,
+      "inner_outlet_solute_kg_s": 1.7231121778193245e-12,
+      "inner_remaining_kg": 4.729072072462822e-16,
+      "inner_volume_m3": 0.0,
+      "mu_n_max_Pa_s": 3.305166478212859e-14,
+      "mu_n_min_Pa_s": 4.5701173470544404e-14,
+      "mu_next_max_Pa_s": 4.6536898073780374e-14,
+      "mu_next_min_Pa_s": 5.574839264570804e-14,
+      "outer_area_m2": 0.0,
+      "outer_outlet_solute_kg_s": 6.505151510748865e-12,
+      "outer_remaining_kg": 2.1254198117450265e-16,
+      "outer_volume_m3": 0.0,
+      "pore_courant_outgoing_max": 7.451383406914414e-12,
+      "remaining_kg": 6.250987236627278e-16,
+      "reverse_inner_m3_s": 0.0,
+      "reverse_outer_m3_s": 0.0,
+      "reverse_total_m3_s": 0.0,
+      "schema_version": 0.0,
+      "solute_kg": 3.772483094717188e-12,
+      "start_s": 0.0,
+      "state_s": 0.0,
+      "stored_solute_kg": 1.6010437023584924e-13,
+      "tds_fraction": 1.7569432106942135e-13,
+      "volume_m3": 3.835458516376387e-12,
+      "water_kg": 3.835545966477719e-12
+    },
+    "E2_repeat": {
+      "Q_inner_m3_s": 0.0,
+      "Q_outer_m3_s": 0.0,
+      "Q_total_m3_s": 0.0,
+      "c_n_max_kg_m3": 0.0,
+      "c_n_min_kg_m3": 0.0,
+      "c_next_max_kg_m3": 0.0,
+      "c_next_min_kg_m3": 0.0,
+      "correction_kg": 0.0,
+      "cumulative_tds_fraction": 0.0,
+      "cup_Q_m3_s": 0.0,
+      "dilute_pore_volume_fraction": 0.0,
+      "dt_s": 0.0,
+      "end_s": 0.0,
+      "inlet_loss_kg": 0.0,
+      "inner_area_m2": 0.0,
+      "inner_outlet_solute_kg_s": 0.0,
+      "inner_remaining_kg": 0.0,
+      "inner_volume_m3": 0.0,
+      "mu_n_max_Pa_s": 0.0,
+      "mu_n_min_Pa_s": 0.0,
+      "mu_next_max_Pa_s": 0.0,
+      "mu_next_min_Pa_s": 0.0,
+      "outer_area_m2": 0.0,
+      "outer_outlet_solute_kg_s": 0.0,
+      "outer_remaining_kg": 0.0,
+      "outer_volume_m3": 0.0,
+      "pore_courant_outgoing_max": 0.0,
+      "remaining_kg": 0.0,
+      "reverse_inner_m3_s": 0.0,
+      "reverse_outer_m3_s": 0.0,
+      "reverse_total_m3_s": 0.0,
+      "schema_version": 0.0,
+      "solute_kg": 0.0,
+      "start_s": 0.0,
+      "state_s": 0.0,
+      "stored_solute_kg": 0.0,
+      "tds_fraction": 0.0,
+      "volume_m3": 0.0,
+      "water_kg": 0.0
+    }
+  },
+  "failed": 0,
+  "ledger_sha256": "8d6cf4fae6b3377107c6584e9364ce90c77c84ac6655018939c4397e89fe98ec",
+  "meaning": "Mesh geometry, annular volumes, native signed interface advective exchange; no total diffusion attribution",
+  "slots": {
+    "E2_double": {
+      "balance": {
+        "solute_max_kg": 2.5366943117962093e-18,
+        "water_max_kg": 2.710505431213761e-20
+      },
+      "cells": 64,
+      "elapsed_s": 0.15386516228318214,
+      "fields": {
+        "cells": 64,
+        "final_remaining_kg": 0.0054411968040984715,
+        "final_stored_solute_kg": 0.00015775611464950362,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602897494652893,
+        "inner_volume_m3": 5.952380952380954e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142865e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380954e-06,
+          1.7857142857142865e-05
+        ]
+      },
+      "id": "E2_double",
+      "initial_inventory_kg": 0.005600000000000002,
+      "slot": "E2_double",
+      "status": "COMPLETE"
+    },
+    "E2_dynamic": {
+      "balance": {
+        "solute_max_kg": 3.4308188581183066e-18,
+        "water_max_kg": 3.3881317890172014e-21
+      },
+      "cells": 64,
+      "elapsed_s": 0.16415252815932035,
+      "fields": {
+        "cells": 64,
+        "exchange": {
+          "absolute_upwind_solute_kg_s": 5.5238391784577605e-09,
+          "absolute_water_m3_s": 3.407983941516188e-10,
+          "meaning": "Advective-only native face flux and upwind donor; no total diffusion or unique mechanism attribution",
+          "signed_core_to_annulus_upwind_solute_kg_s": 5.5238391784577605e-09,
+          "signed_core_to_annulus_water_m3_s": 3.407983941516188e-10
+        },
+        "final_remaining_kg": 0.005441171162176635,
+        "final_stored_solute_kg": 0.00015693753587324303,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602750813394274,
+        "inner_volume_m3": 5.952380952380954e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142865e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380954e-06,
+          1.7857142857142865e-05
+        ]
+      },
+      "id": "E2_dynamic",
+      "initial_inventory_kg": 0.005600000000000002,
+      "slot": "E2_dynamic",
+      "status": "COMPLETE"
+    },
+    "E2_mpi": {
+      "balance": {
+        "solute_max_kg": 2.3367131003128886e-17,
+        "water_max_kg": 0.0
+      },
+      "cells": 64,
+      "elapsed_s": 0.9112239331007004,
+      "fields": {},
+      "id": "E2_mpi",
+      "initial_inventory_kg": 0.005600000000000001,
+      "slot": "E2_mpi",
+      "status": "COMPLETE"
+    },
+    "E2_repeat": {
+      "balance": {
+        "solute_max_kg": 3.4308188581183066e-18,
+        "water_max_kg": 3.3881317890172014e-21
+      },
+      "cells": 64,
+      "elapsed_s": 0.15230444353073835,
+      "fields": {
+        "cells": 64,
+        "exchange": {
+          "absolute_upwind_solute_kg_s": 5.5238391784577605e-09,
+          "absolute_water_m3_s": 3.407983941516188e-10,
+          "meaning": "Advective-only native face flux and upwind donor; no total diffusion or unique mechanism attribution",
+          "signed_core_to_annulus_upwind_solute_kg_s": 5.5238391784577605e-09,
+          "signed_core_to_annulus_water_m3_s": 3.407983941516188e-10
+        },
+        "final_remaining_kg": 0.005441171162176635,
+        "final_stored_solute_kg": 0.00015693753587324303,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602750813394274,
+        "inner_volume_m3": 5.952380952380954e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142865e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380954e-06,
+          1.7857142857142865e-05
+        ]
+      },
+      "id": "E2_repeat",
+      "initial_inventory_kg": 0.005600000000000002,
+      "slot": "E2_repeat",
+      "status": "COMPLETE"
+    },
+    "E2_uniform": {
+      "balance": {
+        "solute_max_kg": 3.689907128811247e-18,
+        "water_max_kg": 1.0842021724855044e-19
+      },
+      "cells": 64,
+      "elapsed_s": 0.15246025752276182,
+      "fields": {
+        "cells": 64,
+        "final_remaining_kg": 0.005441091770252409,
+        "final_stored_solute_kg": 0.00015416955638404092,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602729425631025,
+        "inner_volume_m3": 5.952380952380954e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142865e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380954e-06,
+          1.7857142857142865e-05
+        ]
+      },
+      "id": "E2_uniform",
+      "initial_inventory_kg": 0.005600000000000002,
+      "slot": "E2_uniform",
+      "status": "COMPLETE"
+    },
+    "E2_water": {
+      "balance": {
+        "solute_max_kg": 2.300150228312942e-18,
+        "water_max_kg": 5.421010862427522e-20
+      },
+      "cells": 64,
+      "elapsed_s": 0.15113642532378435,
+      "fields": {
+        "cells": 64,
+        "final_remaining_kg": 0.0054411673961417325,
+        "final_stored_solute_kg": 0.0001567519922471969,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602729425792035,
+        "inner_volume_m3": 5.952380952380954e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142865e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380954e-06,
+          1.7857142857142865e-05
+        ]
+      },
+      "id": "E2_water",
+      "initial_inventory_kg": 0.005600000000000002,
+      "slot": "E2_water",
+      "status": "COMPLETE"
+    },
+    "E4_double": {
+      "balance": {
+        "solute_max_kg": 8.769037006240243e-18,
+        "water_max_kg": 0.0
+      },
+      "cells": 128,
+      "elapsed_s": 0.17327324487268925,
+      "fields": {
+        "cells": 128,
+        "final_remaining_kg": 0.005441196804098479,
+        "final_stored_solute_kg": 0.00015775611464955339,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602897494718747,
+        "inner_volume_m3": 5.952380952380953e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.785714285714286e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952381e-06,
+          4.464285714285715e-06,
+          7.440476190476188e-06,
+          1.0416666666666668e-05
+        ]
+      },
+      "id": "E4_double",
+      "initial_inventory_kg": 0.005599999999999998,
+      "slot": "E4_double",
+      "status": "COMPLETE"
+    },
+    "E4_uniform": {
+      "balance": {
+        "solute_max_kg": 9.017580068291628e-18,
+        "water_max_kg": 0.0
+      },
+      "cells": 128,
+      "elapsed_s": 0.16979187540709972,
+      "fields": {
+        "cells": 128,
+        "final_remaining_kg": 0.0054410917702524125,
+        "final_stored_solute_kg": 0.00015416955638399525,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602729425631027,
+        "inner_volume_m3": 5.952380952380953e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.785714285714286e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952381e-06,
+          4.464285714285715e-06,
+          7.440476190476188e-06,
+          1.0416666666666668e-05
+        ]
+      },
+      "id": "E4_uniform",
+      "initial_inventory_kg": 0.005599999999999998,
+      "slot": "E4_uniform",
+      "status": "COMPLETE"
+    },
+    "E4_water": {
+      "balance": {
+        "solute_max_kg": 8.63077087171986e-18,
+        "water_max_kg": 0.0
+      },
+      "cells": 128,
+      "elapsed_s": 0.1700667506083846,
+      "fields": {
+        "cells": 128,
+        "final_remaining_kg": 0.00544116739614174,
+        "final_stored_solute_kg": 0.0001567519922473259,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602729425923785,
+        "inner_volume_m3": 5.952380952380953e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.785714285714286e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952381e-06,
+          4.464285714285715e-06,
+          7.440476190476188e-06,
+          1.0416666666666668e-05
+        ]
+      },
+      "id": "E4_water",
+      "initial_inventory_kg": 0.005599999999999998,
+      "slot": "E4_water",
+      "status": "COMPLETE"
+    },
+    "E8_double": {
+      "balance": {
+        "solute_max_kg": 1.3787651590825778e-17,
+        "water_max_kg": 0.0
+      },
+      "cells": 256,
+      "elapsed_s": 0.20736496057361364,
+      "fields": {
+        "cells": 256,
+        "final_remaining_kg": 0.005441196804098469,
+        "final_stored_solute_kg": 0.00015775611464966712,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602897494860075,
+        "inner_volume_m3": 5.952380952380952e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142845e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.7202380952380975e-07,
+          1.1160714285714284e-06,
+          1.8601190476190497e-06,
+          2.6041666666666645e-06,
+          3.348214285714284e-06,
+          4.092261904761905e-06,
+          4.8363095238095285e-06,
+          5.580357142857144e-06
+        ]
+      },
+      "id": "E8_double",
+      "initial_inventory_kg": 0.0055999999999999965,
+      "slot": "E8_double",
+      "status": "COMPLETE"
+    },
+    "E8_uniform": {
+      "balance": {
+        "solute_max_kg": 1.0625037671124089e-17,
+        "water_max_kg": 5.421010862427522e-20
+      },
+      "cells": 256,
+      "elapsed_s": 0.2043716385960579,
+      "fields": {
+        "cells": 256,
+        "final_remaining_kg": 0.005441091770252406,
+        "final_stored_solute_kg": 0.00015416955638401856,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.001360272942563103,
+        "inner_volume_m3": 5.952380952380952e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142845e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.7202380952380975e-07,
+          1.1160714285714284e-06,
+          1.8601190476190497e-06,
+          2.6041666666666645e-06,
+          3.348214285714284e-06,
+          4.092261904761905e-06,
+          4.8363095238095285e-06,
+          5.580357142857144e-06
+        ]
+      },
+      "id": "E8_uniform",
+      "initial_inventory_kg": 0.0055999999999999965,
+      "slot": "E8_uniform",
+      "status": "COMPLETE"
+    },
+    "E8_water": {
+      "balance": {
+        "solute_max_kg": 1.3693691111070114e-17,
+        "water_max_kg": 0.0
+      },
+      "cells": 256,
+      "elapsed_s": 0.20333187095820904,
+      "fields": {
+        "cells": 256,
+        "final_remaining_kg": 0.005441167396141732,
+        "final_stored_solute_kg": 0.00015675199224761676,
+        "final_time_s": 0.2,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0013602729426206565,
+        "inner_volume_m3": 5.952380952380952e-06,
+        "interface_faces": 32,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142845e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.7202380952380975e-07,
+          1.1160714285714284e-06,
+          1.8601190476190497e-06,
+          2.6041666666666645e-06,
+          3.348214285714284e-06,
+          4.092261904761905e-06,
+          4.8363095238095285e-06,
+          5.580357142857144e-06
+        ]
+      },
+      "id": "E8_water",
+      "initial_inventory_kg": 0.005599999999999996,
+      "slot": "E8_water",
+      "status": "COMPLETE"
+    }
+  },
+  "started": 12,
+  "status": "PASS"
+}

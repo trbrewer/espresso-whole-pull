@@ -1,5 +1,21 @@
 # Project State
 
+## SCI-MD-RHEOLOGY-008 communicating radial reduction (2026-09-22)
+
+G1 / SOURCE_SCENARIO_CHANGE_ONLY; IMPLEMENTED_AND_EXECUTED.
+[Result](analysis/sci_md_rheology_008/RESULT.md): E2 is
+COARSEST_QUALIFIED_PASSING_CANDIDATE_AMONG_2_4_8. All 72 decisions PASS;
+E2/E4/E8 each pass hydraulics, allocation and fixed-support aggregate delivery.
+Exactly 42 full and 12 short native attempts completed, zero native failures,
+recoveries or extra runs; 18 C and 28 P traces reused by hash. One short aggregate
+QA failure was corrected without replay; original evidence is retained.
+Independent pre-scoring audit PASS. Numerical errors are nonmonotonic with N;
+allowances are empirical sensitivities, not continuum bounds. P's accepted
+PARALLEL_PATH_REDUCTION_INSUFFICIENT conclusion and hydraulic/allocation success
+remain valid. Production source/defaults/lock, case generator and Puckworks are
+unchanged. Ordinary PR review/CI are separate statuses. No global minimality,
+production adoption or automatic successor; PHYSICAL_VALIDATION: NOT_ESTABLISHED.
+
 ## SCI-MD-RHEOLOGY-007 autonomous parallel paths (2026-09-22)
 
 G1 / SOURCE_SCENARIO_CHANGE_ONLY; IMPLEMENTED_AND_EXECUTED.

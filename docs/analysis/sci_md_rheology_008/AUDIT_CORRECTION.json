@@ -1,0 +1,19 @@
+{
+  "files": {
+    "tests/test_sci_md_rheology_008.py": {
+      "corrected_sha256": "507aa3ac8e8eb4df63aaeaa7a4181c1e0e3fab2ef7136baace84ff6e2f017d98",
+      "original_sha256": "109b4bfa09b4ee06f5f0869b6bd8d8cded3af90959876cf3d705e10975c0d91a"
+    },
+    "tools/sci_md_rheology_008/observer.py": {
+      "corrected_sha256": "e5f4eab4f22ea10c4a119959bd3dab487482a80849a6c847b875439dc9b1cfdb",
+      "original_sha256": "a1285483be84530ce32033976a3f1d50e5b5ee644286ba0ef663bacef3a60654"
+    }
+  },
+  "freeze_sha256": "960b2ea57fc939d23ad665ce081cbf174d7ed6bdc969c9c5c9a7436270874e63",
+  "native_short_replays": 0,
+  "original_freeze_sha256": "ab569dfee1765dfee695f8c6bf149cfee5cdd7f7b54795d306e607ff1c2732a2",
+  "protocol_matrix_scenarios_support_thresholds_unchanged": true,
+  "reason": "Strict physical delivery support check prevents inherited interpolation rejection from discarding valid hydraulic/allocation metrics in endpoint roundoff gap.",
+  "science_starts": 0,
+  "status": "INDEPENDENT_AUDIT_CORRECTION_BEFORE_EXECUTION"
+}

@@ -1,0 +1,11 @@
+{
+  "corrected_sha256": "109b4bfa09b4ee06f5f0869b6bd8d8cded3af90959876cf3d705e10975c0d91a",
+  "file": "tests/test_sci_md_rheology_008.py",
+  "freeze_sha256": "ab569dfee1765dfee695f8c6bf149cfee5cdd7f7b54795d306e607ff1c2732a2",
+  "matrix_protocol_scenarios_support_tools_unchanged": true,
+  "original_freeze_sha256": "752be505ab4be4911e5ff5f69376f482026ac487e7d5f720d425effc3fdbb19b",
+  "original_sha256": "0cbf2a2cb92525911f63d5ef1236c8ffeb5cc17ccca9cb7466a9833fc22852c0",
+  "reason": "Relative test fixture import worked module-qualified but failed unittest discover; changed to absolute tests package import.",
+  "science_starts": 0,
+  "status": "TEST_IMPORT_ONLY_BEFORE_AUDIT_AND_SCORING"
+}

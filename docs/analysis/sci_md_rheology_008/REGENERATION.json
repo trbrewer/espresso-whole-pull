@@ -1,0 +1,14 @@
+{
+  "files": {
+    "COVERAGE.json": "31a752b53dbbcfd4746f3f32eac364abba8d575a027e353c53c445e32ccbe01c",
+    "METRICS.json": "dddfdde3def462934b7986fb2ee1364512e4029756ebc410446a1f32836586ef",
+    "QUALIFICATION.json": "baa58a1a3987ca846ba43f56959f81be0d063ea9e4ebc79971e47526f77faf27",
+    "RUNS.json": "4cd5d771a96658edd8dcaf5123502758b4530e6a4727649098b8e5cb525aaab1",
+    "flow.svg": "dfa036509f04b2fd30eba1b6d478713280dcafb9b6dc476a3f4739800cbb30de",
+    "fractions.svg": "163fae2da9a193691b781e34980c19875db5dc7b41d09b61301be4182bc62edc",
+    "share.svg": "0fc670f85a89fc847a8e01a924cad7ff54d3d1c8a9fd17b41403a098aa334be7",
+    "solute.svg": "c0b4e234d0a2d2689fd28de62cea114f850d36ad477a5c88cfaeae7bb0ee8d39"
+  },
+  "new_native_runs": 0,
+  "status": "BYTE_IDENTICAL"
+}

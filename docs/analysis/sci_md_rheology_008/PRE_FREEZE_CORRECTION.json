@@ -1,0 +1,14 @@
+{
+  "corrected_preparation_sha256": "d07ff35cd34bda18218da312e8115f06a39097264617afccd4ec1fb3a2524437",
+  "corrected_sha256": "832b3745a72636a9f72d2f251b6e3b0f3728da529c9aec8f7a97d5834f2d0c36",
+  "failure": "Short MPI aggregate QA applied relative error to cancellation balance residuals",
+  "max_balance_difference_kg": 3.036037133502534e-16,
+  "native_reruns": 0,
+  "new_scores_exposed": false,
+  "original_log_sha256": "812fb7edd7b268dec5147407662482301531ea5454162806251bf9a6c0e742eb",
+  "original_preparation_sha256": "2d26dab33e55ce50f345048ca5620555bf010a94a9774b591cfa84309fbc9b54",
+  "original_sha256": "35fc3bcf9c7e30503997197bdf4aa7a2a66b9d33af97d2c8d393b0291575c158",
+  "original_test_failure": "Exact binary64 dose equality expected .02 from .0056/.28; changed assertion to 15-place equality before preparation; no model change",
+  "status": "CORRECTED_BEFORE_SCIENCE_FREEZE",
+  "unchanged_absolute_balance_tolerance_kg": 1e-08
+}

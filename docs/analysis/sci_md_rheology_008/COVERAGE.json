@@ -1,0 +1,128 @@
+{
+  "3": {
+    "candidate_terminal_kg": {
+      "E2_SW_WATER_ANCHORED_90C_3bar_axial": 0.007919555086020715,
+      "E2_SW_WATER_ANCHORED_90C_3bar_base": 0.007919283096270227,
+      "E2_SW_WATER_ANCHORED_90C_3bar_property": 0.007919302894227912,
+      "E2_SW_WATER_ANCHORED_90C_3bar_temporal": 0.007918594780041576,
+      "E2_TR_LINEAR_3bar_axial": 0.00937643862109878,
+      "E2_TR_LINEAR_3bar_base": 0.009377491435177321,
+      "E2_TR_LINEAR_3bar_temporal": 0.009376879942175165,
+      "E4_SW_WATER_ANCHORED_90C_3bar_axial": 0.007922555143626475,
+      "E4_SW_WATER_ANCHORED_90C_3bar_base": 0.007922273922806793,
+      "E4_SW_WATER_ANCHORED_90C_3bar_property": 0.007922294222331202,
+      "E4_SW_WATER_ANCHORED_90C_3bar_temporal": 0.007921587575525194,
+      "E4_TR_LINEAR_3bar_axial": 0.009379776810606522,
+      "E4_TR_LINEAR_3bar_base": 0.009380815851968382,
+      "E4_TR_LINEAR_3bar_temporal": 0.009380207510100838,
+      "E8_SW_WATER_ANCHORED_90C_3bar_axial": 0.00792464864322626,
+      "E8_SW_WATER_ANCHORED_90C_3bar_base": 0.007924360896867998,
+      "E8_SW_WATER_ANCHORED_90C_3bar_property": 0.007924381075194283,
+      "E8_SW_WATER_ANCHORED_90C_3bar_temporal": 0.007923676351033934,
+      "E8_TR_LINEAR_3bar_axial": 0.009382017947299898,
+      "E8_TR_LINEAR_3bar_base": 0.009383044198994168,
+      "E8_TR_LINEAR_3bar_temporal": 0.009382439546556876
+    },
+    "inherited": {
+      "B_ref_kg": 0.007921787280163343,
+      "B_star_kg": 0.007910236198410771,
+      "adequate": true,
+      "complete": true,
+      "coverage": 0.9985418591355645,
+      "individual_C_coverage": {
+        "SW_WATER_ANCHORED_90C_3bar_axial": 0.9984199380232518,
+        "SW_WATER_ANCHORED_90C_3bar_base": 0.998455529373023,
+        "SW_WATER_ANCHORED_90C_3bar_property": 0.9984529899842965,
+        "SW_WATER_ANCHORED_90C_3bar_radial": 0.9984944001695727,
+        "SW_WATER_ANCHORED_90C_3bar_temporal": 0.9985418591355645,
+        "TR_LINEAR_3bar_axial": 0.8433050932766815,
+        "TR_LINEAR_3bar_base": 0.8432129916604111,
+        "TR_LINEAR_3bar_radial": 0.8432352791623345,
+        "TR_LINEAR_3bar_temporal": 0.843267227360009
+      },
+      "terminal_C_kg": {
+        "SW_WATER_ANCHORED_90C_3bar_axial": 0.00792275464177134,
+        "SW_WATER_ANCHORED_90C_3bar_base": 0.007922472224053864,
+        "SW_WATER_ANCHORED_90C_3bar_property": 0.007922492373461851,
+        "SW_WATER_ANCHORED_90C_3bar_radial": 0.00792216380689505,
+        "SW_WATER_ANCHORED_90C_3bar_temporal": 0.007921787280163343,
+        "TR_LINEAR_3bar_axial": 0.009380040819717293,
+        "TR_LINEAR_3bar_base": 0.009381065373333903,
+        "TR_LINEAR_3bar_radial": 0.009380817422948383,
+        "TR_LINEAR_3bar_temporal": 0.009380462019347184
+      },
+      "terminal_P_kg": {
+        "SW_WATER_ANCHORED_90C_3bar_axial": 0.007911176337678504,
+        "SW_WATER_ANCHORED_90C_3bar_base": 0.007910929260569867,
+        "SW_WATER_ANCHORED_90C_3bar_property": 0.007910949434745747,
+        "SW_WATER_ANCHORED_90C_3bar_temporal": 0.007910236198410771,
+        "TR_LINEAR_3bar_axial": 0.009366921986553615,
+        "TR_LINEAR_3bar_base": 0.009368010281884255,
+        "TR_LINEAR_3bar_temporal": 0.009367391946620087
+      }
+    }
+  },
+  "9": {
+    "candidate_terminal_kg": {
+      "E2_SW_WATER_ANCHORED_90C_9bar_axial": 0.0275182192069413,
+      "E2_SW_WATER_ANCHORED_90C_9bar_base": 0.027515718224739274,
+      "E2_SW_WATER_ANCHORED_90C_9bar_property": 0.027515776717581646,
+      "E2_SW_WATER_ANCHORED_90C_9bar_temporal": 0.0275145348878001,
+      "E2_TR_LINEAR_9bar_axial": 0.031352768275462316,
+      "E2_TR_LINEAR_9bar_base": 0.031354350392368086,
+      "E2_TR_LINEAR_9bar_temporal": 0.031352696525270396,
+      "E4_SW_WATER_ANCHORED_90C_9bar_axial": 0.027518062524947134,
+      "E4_SW_WATER_ANCHORED_90C_9bar_base": 0.027515543670397623,
+      "E4_SW_WATER_ANCHORED_90C_9bar_property": 0.027515602216173038,
+      "E4_SW_WATER_ANCHORED_90C_9bar_temporal": 0.02751435637112445,
+      "E4_TR_LINEAR_9bar_axial": 0.03136936482361007,
+      "E4_TR_LINEAR_9bar_base": 0.03137093946668544,
+      "E4_TR_LINEAR_9bar_temporal": 0.031369290603618004,
+      "E8_SW_WATER_ANCHORED_90C_9bar_axial": 0.027518095920324972,
+      "E8_SW_WATER_ANCHORED_90C_9bar_base": 0.027515564562752445,
+      "E8_SW_WATER_ANCHORED_90C_9bar_property": 0.027515623055453572,
+      "E8_SW_WATER_ANCHORED_90C_9bar_temporal": 0.027514375774256736,
+      "E8_TR_LINEAR_9bar_axial": 0.03137941756813841,
+      "E8_TR_LINEAR_9bar_base": 0.03138098476945965,
+      "E8_TR_LINEAR_9bar_temporal": 0.03137934413249001
+    },
+    "inherited": {
+      "B_ref_kg": 0.027511021841771385,
+      "B_star_kg": 0.027511021841771385,
+      "adequate": true,
+      "complete": true,
+      "coverage": 1.0,
+      "individual_C_coverage": {
+        "SW_WATER_ANCHORED_90C_9bar_axial": 0.9998347871634723,
+        "SW_WATER_ANCHORED_90C_9bar_base": 0.9999262914663073,
+        "SW_WATER_ANCHORED_90C_9bar_property": 0.9999241698004233,
+        "SW_WATER_ANCHORED_90C_9bar_radial": 1.0,
+        "SW_WATER_ANCHORED_90C_9bar_temporal": 0.9999696319749376,
+        "TR_LINEAR_9bar_axial": 0.8770340212407061,
+        "TR_LINEAR_9bar_base": 0.8769898302487332,
+        "TR_LINEAR_9bar_radial": 0.8772643436025342,
+        "TR_LINEAR_9bar_temporal": 0.8770357074473325
+      },
+      "terminal_C_kg": {
+        "SW_WATER_ANCHORED_90C_9bar_axial": 0.027515567766770804,
+        "SW_WATER_ANCHORED_90C_9bar_base": 0.0275130497883287,
+        "SW_WATER_ANCHORED_90C_9bar_property": 0.02751310816625461,
+        "SW_WATER_ANCHORED_90C_9bar_radial": 0.027511021841771385,
+        "SW_WATER_ANCHORED_90C_9bar_temporal": 0.02751185732254407,
+        "TR_LINEAR_9bar_axial": 0.03136824932156293,
+        "TR_LINEAR_9bar_base": 0.03136982994884749,
+        "TR_LINEAR_9bar_radial": 0.03136001370897609,
+        "TR_LINEAR_9bar_temporal": 0.03136818901233103
+      },
+      "terminal_P_kg": {
+        "SW_WATER_ANCHORED_90C_9bar_axial": 0.027519889248186387,
+        "SW_WATER_ANCHORED_90C_9bar_base": 0.027517442741566804,
+        "SW_WATER_ANCHORED_90C_9bar_property": 0.02751750102873996,
+        "SW_WATER_ANCHORED_90C_9bar_temporal": 0.027516277098296772,
+        "TR_LINEAR_9bar_axial": 0.03129979170605715,
+        "TR_LINEAR_9bar_base": 0.03130139422041486,
+        "TR_LINEAR_9bar_temporal": 0.03129973533584996
+      }
+    }
+  }
+}
