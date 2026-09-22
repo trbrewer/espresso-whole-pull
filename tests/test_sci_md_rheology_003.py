@@ -121,7 +121,9 @@ class Rheology003(unittest.TestCase):
 
     def test_missing_artifacts_and_audit_fail_closed(self):
         with tempfile.TemporaryDirectory() as d:
-            with self.assertRaises(OSError):evidence.reuse(Path(d))
+            # Later authorized G2 source can fail the historical source check
+            # before the missing-file check; either must remain fail-closed.
+            with self.assertRaises((OSError,ValueError)):evidence.reuse(Path(d))
             with self.assertRaises((OSError,ValueError)):analyze.analyze(Path(d)/'runs',Path(d),Path(d)/'output')
 
     def test_campaign_provenance_tamper(self):

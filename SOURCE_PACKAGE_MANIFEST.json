@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1140,
-  "total_uncompressed_bytes_excluding_manifest": 14082082,
-  "aggregate_source_sha256": "d5e893859459e0c13fb9c7f850b193adab6aea16eef034c318eb7cdddae5b02e",
-  "aggregate_sha256": "d5e893859459e0c13fb9c7f850b193adab6aea16eef034c318eb7cdddae5b02e",
+  "total_uncompressed_bytes_excluding_manifest": 14082250,
+  "aggregate_source_sha256": "2e5d497ad020ef29ff0d814643124bfa9463a2b5bc382fd32fc94b1f6408c014",
+  "aggregate_sha256": "2e5d497ad020ef29ff0d814643124bfa9463a2b5bc382fd32fc94b1f6408c014",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -5069,8 +5069,8 @@
       "git_mode": "100644"
     },
     "tests/test_sci_md_rheology_003.py": {
-      "sha256": "b82089b4b28604bf9b90fef0a7fcc05db2a80b8a78a9db0edd535fa6ff89e8d3",
-      "bytes": 10625,
+      "sha256": "a51c578154d2084a5e2bc74c8946662c6c8f91995b25d539805a02689c27127f",
+      "bytes": 10793,
       "git_mode": "100644"
     },
     "tests/test_sci_md_rheology_004.py": {
