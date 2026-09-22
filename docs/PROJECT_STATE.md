@@ -1,5 +1,21 @@
 # Project State
 
+## SCI-MD-RHEOLOGY-007 autonomous parallel paths (2026-09-22)
+
+G1 / SOURCE_SCENARIO_CHANGE_ONLY; IMPLEMENTED_AND_EXECUTED.
+The [bounded result](analysis/sci_md_rheology_007/RESULT.md) is
+PARALLEL_PATH_REDUCTION_INSUFFICIENT: all hydraulic/allocation metrics pass,
+but TR/9 bar fraction TDS fails and SW/9 bar fraction TDS is unresolved.
+All cumulative-solute metrics pass; common delivery coverage is 99.854%/100%
+at 3/9 bar. Exactly 28 new full native attempts and six short fixtures completed;
+18 radial science runs reused, zero bridge or extra full runs, zero native failures.
+One failed post-run field-directory qualification was recovered without replay;
+the original event and freeze are preserved. Independent pre-scoring audit and
+bounded nonsemantic delta audit PASS; software/QA and hosted CI are separate
+PR #162 statuses. Production source/defaults/lock and Puckworks are unchanged.
+Source-conditioned computational comparison only; PHYSICAL_VALIDATION remains
+NOT_ESTABLISHED. No merge, adoption, laboratory work or automatic successor.
+
 ## SCI-MD-RHEOLOGY-006 radial viscosity and flow allocation (2026-09-22)
 
 G2 / GOVERNING_PHYSICS_CHANGE; IMPLEMENTED_AND_EXECUTED.

@@ -1,0 +1,39 @@
+{
+  "audit_type": "INDEPENDENT_G1_PRE_SCORING_CONTRACT_AUDIT",
+  "checks": {
+    "allowances": "Fresh paired time/axial/property effects, P_base versus C_radial effect, zero TR property term, independent 50-digit Decimal recomputation including native C share, composition and mass splitting. Terms summed once; no inherited scalar or 1D operator allowance.",
+    "authority": "Live PR 160 MERGED at e5b3ef819f9692973f674d5da52511d3b3dad07c; issue 159 CLOSED; Git merge tree c930fab51b530e20d48efdde9e2bfda4e0cba118. Frozen candidate immediately descends from accepted merge.",
+    "claims": "C explicitly computational reference and already exposed; source-transfer/TR/SW caveats and physical validation NOT_ESTABLISHED retained. No mechanism attribution to restricted transverse diagnostic or outlet-zone solute provenance.",
+    "composition": "Exactly-once 0.25/0.75 extensive weighting, independent native arms, full-basket normalization, cumulative increments before combination, B=W+S and mixed mass-derived TDS. 20 g represented dose and 5.6 g inventory retained.",
+    "decisions": "Strict PASS/FAIL boundaries, <=20% allowance qualification, missing evidence unresolved, qualified failure preserved beside unresolved sibling. Separate hydraulic/allocation/delivery and overall dispositions.",
+    "execution": "28 full native slots, zero bridge, at most four nonsemantic recoveries, ceiling 36; durable STARTED before launch, failed evidence retained, refusal to overwrite and hash-valid completed resume. No science invocation ledger exists at audit completion.",
+    "metrics_support": "Six owner metrics, C denominators, identical intervals, every first increment and conservative 004 union-breakpoint/five-fraction observer. SUPPORT written before discrepancy evaluation; fixed minimum across both laws and all required resolutions at each pressure, 0.95 completeness/support gate for delivery.",
+    "physical_envelope": "All 28 generated complete constituent dictionaries independently compared with authorized transformations of accepted 006 scenarios. Native coupled mode retained; no bulk state, C forcing, new physical parameters or additional envelope.",
+    "reference_reuse": "18 required accepted radial science traces pass native radial validator and independent accounting; all 1178 files in their accepted case manifests hash verified.",
+    "runtime": "Python 3.12.3, NumPy 1.26.4, SciPy 1.11.4; longdouble 64 mantissa bits; all 21 recorded linked library hashes verified.",
+    "short_evidence": "Six STARTED and COMPLETE short slots, zero failed. All retained short file manifests verified. Native uniform validators/accounting and generated radius/depth checked. Independently grouped cells by axial coordinate and compared complete final pressure/concentration/remaining profiles across area and radial fixtures; maximum relative discrepancy 2.965251113610438e-11, below predeclared 1e-6.",
+    "source_authority": "Accepted 003 Puckworks source commit/tree and every source_hashes file verified read-only; streamtube context hash verified. Analysis authority distinct from unchanged runtime lock.",
+    "source_freeze": "All frozen repository and external hashes verified; solver/scripts/dependencies diff from predecessor empty.",
+    "tables_executable": "Exact accepted native executable and three accepted table hashes verified. Zero bridge selected before execution.",
+    "tests": "python3 -m unittest tests.test_sci_md_rheology_007 -q: 23 passed."
+  },
+  "freeze_sha256": "2417246a1fc8927c7e1844e8e9a63f2f885ab0d6952c29559a05347b9b3b0368",
+  "limitations": [
+    "Pre-scoring audit establishes admissible contract and implementation readiness, not scientific sufficiency or physical validation. Full campaign validity, numerical allowances, support and outcomes remain to be assessed after authorized execution.",
+    "Ordinary repository QA, hosted CI and final PR review/protection remain separate statuses."
+  ],
+  "material_findings": [],
+  "reviewed_commit": "9856530b1590be35f2fb22ddae08f22ed09b63bd",
+  "reviewed_tree": "26f548fe17b26a45ff93ae887e77560272fffa74",
+  "reviewer": "independent_audit agent; read-only repository review; no implementation authorship",
+  "scope": "Exact frozen protocol, scenarios, source/executable/table reuse, six short qualification results, composition/observer, six metrics, fixed support, independent Decimal arithmetic, decision handling and execution budgets. No full scientific launch or P/C score reduction by reviewer.",
+  "status": "PASS",
+  "supplemental_external_hashes": {
+    "ENVIRONMENT.json": "718863a0db5208b9022bf62b0e53050aa0a53f810b456ddaabe4cbc2dc6cff91",
+    "RUNTIME_LIBRARIES.json": "3a5e087e97fb627e7832274fedb92875ad1115880eb892e9c4898755673ca18d",
+    "short/INVOCATIONS.jsonl": "ba9c78f4a042d1cfe364e1253442d1b3c81d457c54060ba2ba6718b0328b98bd"
+  },
+  "task": "SCI-MD-RHEOLOGY-007",
+  "unfrozen_delta": "Only untracked README reproduction prose present during review; not included in scientific freeze or reviewed commit. No frozen scientific files changed.",
+  "utc": "2026-09-22T19:39:31.549443+00:00"
+}
