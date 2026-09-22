@@ -1,0 +1,20 @@
+{
+  "task": "SCI-MD-RHEOLOGY-003",
+  "source_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+  "source_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+  "TR_authority": "docs/analysis/sci_md_rheology_001/AUTHORITY.json",
+  "SW_reviewed": ["docs/cards/sobolik2002.md", "puckworks/data/sobolik2002/README.md", "puckworks/data/sobolik2002/eq5_viscosity_dilute_computed.csv", "puckworks/data/sobolik2002/fig3_viscosity_dilute_weisser_digitized.csv", "puckworks/data/MANIFEST.csv", "puckworks/data/AVAILABLE_DATA_REGISTER.json"],
+  "rights_decision": "BOUNDED_ANALYSIS_USE_ALLOWED_NO_SOURCE_PAYLOAD_REDISTRIBUTION",
+  "rights_rationale": "Existing source-use approach retained. Sobolik publisher attribution and Puckworks computed/digitized provenance reviewed; no identified restriction blocks the scoped equation adaptation. No assertion of public source-payload redistribution rights. Runtime tables, CSVs, digitizations and paper remain external.",
+  "provenance_document": "Sobolik README.md supplies provenance; a separate PROVENANCE.md is not required",
+  "evidence_classes": {
+    "TR": "measured industrial-extract interpolation; deliberate below-0.10 continuation",
+    "SW_equation": "Sobolik Eq5 fitted to Weisser, source-fitted equation",
+    "SW_CSV": "equation-generated values; not new independent measurements",
+    "SW_Fig3": "digitized Weisser measurements, same lineage as Eq5",
+    "SW_test": "alternative source-derived concentration shape; water-anchored model adaptation, not literal published absolute law; temperature extrapolation from recorded 0–80 C to 90 C across entire evaluated curve; industrial/reconstituted-coffee material transfer; not independent espresso validation"
+  },
+  "no_source_ranking": true,
+  "source_payloads_committed": false,
+  "physical_validation": "NOT_ESTABLISHED"
+}

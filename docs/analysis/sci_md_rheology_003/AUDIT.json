@@ -1,0 +1,37 @@
+{
+  "task": "SCI-MD-RHEOLOGY-003",
+  "status": "PASS",
+  "independent": true,
+  "reviewer": "Independent Codex AI review agent /root/source_audit; separate from implementation agent; not human approval",
+  "review_type": "G1 exact-freeze independent pre-scoring audit",
+  "reviewed_commit": "ea0e1169b29cd7d71761ea3b16a7d1a270878a8e",
+  "reviewed_tree": "e1655c9a42019afcf301e280a981a2ac46f0b002",
+  "freeze_sha256": "e6c8c009b35deb5e518f3449f936d7aa9a5399f214eb317892941b67897d6124",
+  "disposition": "Declared bounded experiment qualified to proceed under existing owner authorization; scientific outcome not yet known",
+  "checks": [
+    "All 31 frozen file hashes and six external table hashes verified; external/committed EXPORT receipts identical.",
+    "Accepted amended executable SHA256 verified separately from original predecessor scientific executable; production solver, maintained input interface and runtime lock unchanged from starting main.",
+    "All 18 predecessor interval identities and 357 input/log/trace hashes independently checked; baseline recomputation exactly reproduces accepted METRICS.json and numerical qualification.",
+    "Accepted TR source hashes verified; Sobolik card, README provenance, equation CSV and Weisser digitization reviewed. All 486 Eq5 CSV rows reproduced within justified decimal-rounding tolerance. No identified source restriction blocks scoped analysis; payloads remain external.",
+    "Inspected constitutive laws, fixed concentration/temperature/density basis, water normalization, measured-segment preservation, continuation and extrapolation labels. Independently spot-recomputed all six table approximations on 2401 fixed points; all below 1e-4.",
+    "Reviewed unchanged saturated static Darcy scaling path, scenario reuse, reference-only law/set calibration, hydraulic-only null, metrics, numerical estimate terms, classifications, conservation/domain gates and separate 4-short/24-full budgets.",
+    "All 14 focused tests passed, including native evaluator equivalence, interval validation, missing evidence, provenance tampering, partial completed-result preservation, failed-attempt retention and classification tests.",
+    "No task invocation ledgers existed during audit; no native scientific runs performed by reviewer. Full runs remain gated on four short invariant checks."
+  ],
+  "findings": [
+    {
+      "id": "R1",
+      "finding": "Incomplete campaign analysis discarded completed results",
+      "resolution": "Resolved by partial_report retaining completed run metrics, calibration where available, gates and coupled secondary outputs, with global unresolved status.",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "R2",
+      "finding": "Analysis did not validate campaign authority and recorded input/log provenance",
+      "resolution": "Resolved by validate_campaign checking frozen source hashes, event ordering and budget, freeze/executable/expected-table identities, and completed configuration/interval/log/input hashes.",
+      "status": "RESOLVED"
+    }
+  ],
+  "nonblocking_corrections": "Negative numerical states separated from positive source-domain exceedance; cumulative solute plotted at interval end.",
+  "scope_limits": "Pre-scoring scientific audit only. Hosted CI, complete repository checks, later scientific execution/outcome and final result review are separate statuses. Locally regenerated source-package manifest is administrative and outside frozen scientific files. No merge, default adoption, laboratory activity or successor authorization."
+}
