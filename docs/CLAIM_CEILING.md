@@ -1,5 +1,23 @@
 # Claim Ceiling
 
+## SCI-MD-RHEOLOGY-004 matched-output aggregate delivery (2026-09-22)
+
+G1, `SOURCE_SCENARIO_CHANGE_ONLY`; `IMPLEMENTED_AND_EXECUTED`.
+The [bounded result](analysis/sci_md_rheology_004/RESULT.md) is
+`MASS_MATCHED_AGGREGATE_DELIVERY_MATERIAL`: both selected laws in both
+scenarios exceed the declared fraction-TDS threshold after empirical numerical
+estimates, while cumulative-solute E_path is qualified below 5% throughout.
+Shared modeled beverage support is 0–23.658383 g (uniform_9bar) and
+0–6.681618 g (reversed_3bar); no whole-shot extrapolation. Exactly eight native
+SW N attempts completed without failures; accepted 002 and selected 003 evidence
+was reused. Retain coupling relevance for these mass-conditioned aggregate
+fraction outputs and retain the established hydraulic conclusions.
+Source-transfer, TR dilute-continuation and SW 90 C extrapolation limitations
+remain; physical validation is not established. Production source, defaults
+and runtime lock are unchanged. Independent pre-scoring audit passed; final
+exact-head review and hosted CI are separate PR statuses. No merge, default
+adoption, laboratory action or automatic successor is authorized.
+
 ## SCI-MD-RHEOLOGY-003 viscosity-law robustness (2026-09-21)
 
 G1, `SOURCE_SCENARIO_CHANGE_ONLY`; `IMPLEMENTED_AND_EXECUTED`.
