@@ -1,5 +1,6 @@
 """Synthetic fixtures for the independent storage closure and decision arithmetic."""
 import copy
+import json
 import subprocess
 import tempfile
 import unittest
@@ -19,6 +20,16 @@ class BulkClosureTests(unittest.TestCase):
         exe=self.root/'fixture'
         subprocess.run(['c++','-std=c++11','-O2',str(ROOT/'tools/sci_md_rheology_005/analytical.cpp'),'-o',str(exe)],check=True)
         subprocess.run([str(exe),str(self.table),str(constant)],check=True)
+    def test_bulk_generated_preview_inapplicable(self):
+        s=scenario('uniform_9bar');s['scenario_id']='reference_R0_bulk_fixture'
+        s['aggregate_viscosity']={'mode':'bulkCoupled','table':str(self.table),'purpose':'synthetic'}
+        config=self.root/'config.json';config.write_text(json.dumps(s));case=self.root/'case'
+        subprocess.run(['python3',str(ROOT/'scripts/prepare_case.py'),'--root',str(ROOT),
+            '--config',str(config),'--case-dir',str(case),'--nprocs','1'],check=True,capture_output=True)
+        preview=json.loads((case/'preflight/ANALYTICAL_PREFLIGHT_V0_1_4.json').read_text())
+        self.assertEqual(preview['status'],'NOT_APPLICABLE')
+        self.assertFalse((case/'preflight/B0_REDUCED_TWIN_V0_1_4.json').exists())
+
     def test_generation_modes(self):
         s=scenario('uniform_9bar');self.assertEqual(contract(s),'')
         s['aggregate_viscosity']={'mode':'off','table':'missing'};self.assertEqual(contract(s),'')

@@ -199,3 +199,14 @@ checks remain required and are reported separately from scientific disposition.
 Failure rejects this specific pore-volume closure only; success covers selected
 hydraulic/aggregate outputs only, not internal-field equivalence, physical espresso,
 whole-shot transfer, taste or implementation speed. No operational adoption follows.
+
+## Pre-scoring review correction
+
+Independent audit of 4d08f32 found the maintained case generator's legacy preview/
+B0 exclusion recognized only coupled. Before any full attempt, extend that same
+guard to bulkCoupled and test generated NOT_APPLICABLE/no-B0 output. No native
+coefficient, physical input, metric, threshold or executable changed; accepted
+short solver results remain applicable. Original contract and failed review are
+preserved in Git/external review history. A preparatory unit fixture also replaced
+a decimal subtraction equality assertion with an unambiguous above-budget value;
+production decision arithmetic was unchanged. Final freeze follows passing tests.
