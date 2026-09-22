@@ -39,6 +39,7 @@
 #include "prescribedPressureBoundaryModel.H"
 
 #include "aggregateViscosity.H"
+#include <limits>
 #include <memory>
 #include <cmath>
 #include <cstdlib>
@@ -758,9 +759,11 @@ int main(int argc, char *argv[])
             || pressureBoundaryModel != "prescribedPressure"
             || flowResistanceModel != "darcy" || bedMechanicsModel != "none"
             || effectivePermeabilityEnabled || indexedSpeciesMode
-            || (permeabilityProfile != "uniform" && permeabilityProfile != "axial_two_layer")
+            || (permeabilityProfile != "uniform" && permeabilityProfile != "axial_two_layer"
+                && (permeabilityProfile != "radial_two_zone" || aggregateBulkCoupled))
             || initialWetFront != bedDepth || pressureRampTime != 0
-            || !(targetInletPressure > outletPressure) || liquidDensity != 965
+            || !(targetInletPressure > outletPressure)
+            || !std::isfinite(targetInletPressure) || !std::isfinite(outletPressure) || liquidDensity != 965
             || modelProperties.lookupOrDefault<scalar>("liquidTemperature", 0) != 363.15
             || runTime.value() != 0
             || runTime.controlDict().lookupOrDefault<word>("startFrom", "startTime") != "startTime")
@@ -2042,12 +2045,18 @@ int main(int argc, char *argv[])
             << " integration=exactPositivePiecewiseLinear" << nl << endl;
     }
 
-    std::ofstream aggregateTrace, bulkTrace;
-    if (aggregateDiagnostics && Pstream::master())
+    std::ofstream aggregateTrace, bulkTrace, radialTrace;
+    if (aggregateDiagnostics && !radialTwoZone && Pstream::master())
     {
         aggregateTrace.open((traceDirectory/"aggregate_intervals.csv").c_str());
         aggregateTrace << std::setprecision(17)
             << "start_s,end_s,dt_s,state_s,Q_m3_s,volume_m3,Q_cont_m3_s,dilute_resistance_fraction,c_n_min,c_n_max,mu_min,mu_max,c_next_min,c_next_max,correction_kg,water_kg,solute_kg,stored_solute_kg,remaining_kg,inlet_loss_kg,water_balance_kg,solute_balance_kg,tds,cumulative_tds,dilute_volume_fraction,mu_next_min,mu_next_max,pore_courant_max\n";
+    }
+
+    if (aggregateDiagnostics && radialTwoZone && Pstream::master())
+    {
+        radialTrace.open((traceDirectory/"aggregate_radial_intervals_v1.csv").c_str());
+        radialTrace << std::setprecision(17) << "schema_version,start_s,end_s,dt_s,state_s,Q_inner_m3_s,Q_outer_m3_s,Q_total_m3_s,reverse_inner_m3_s,reverse_outer_m3_s,reverse_total_m3_s,volume_m3,cup_Q_m3_s,c_n_min_kg_m3,c_n_max_kg_m3,mu_n_min_Pa_s,mu_n_max_Pa_s,c_next_min_kg_m3,c_next_max_kg_m3,mu_next_min_Pa_s,mu_next_max_Pa_s,correction_kg,water_kg,solute_kg,stored_solute_kg,remaining_kg,inlet_loss_kg,water_balance_kg,solute_balance_kg,tds_fraction,cumulative_tds_fraction,dilute_pore_volume_fraction,pore_courant_outgoing_max,inner_area_m2,outer_area_m2,inner_volume_m3,outer_volume_m3,inner_remaining_kg,outer_remaining_kg,inner_outlet_solute_kg_s,outer_outlet_solute_kg_s,transverse_abs_internal_flux_m3_s\n";
     }
 
     if (aggregateBulkCoupled && Pstream::master())
@@ -2091,8 +2100,8 @@ int main(int argc, char *argv[])
                     laggedMaxC = Foam::max(laggedMaxC, c);
                     laggedMinMu = Foam::min(laggedMinMu, mu);
                     laggedMaxMu = Foam::max(laggedMaxMu, mu);
-                    // V_sector * sectorScale / A gives dz with radial weights.
-                    const scalar resistance = mu*mesh.V()[celli]*sectorScale
+                    // Series resistance applies only to uniform/axial geometry.
+                    const scalar resistance = radialTwoZone ? 0.0 : mu*mesh.V()[celli]*sectorScale
                         /(sqr(fullCrossSectionArea)*permeability[celli]);
                     aggregateResistance += resistance;
                     if (w < 0.1)
@@ -3158,7 +3167,8 @@ int main(int argc, char *argv[])
             saturatedAtStepStart
           ? (
                 aggregateCoupled
-              ? (inletPressure-outletPressure)/appliedAggregateResistance
+              ? (radialTwoZone ? std::numeric_limits<scalar>::quiet_NaN()
+                    : (inletPressure-outletPressure)/appliedAggregateResistance)
               : poroelasticCompaction
               ? poroelasticExactFlow
               : radialTwoZone
@@ -4080,6 +4090,7 @@ int main(int argc, char *argv[])
             initialStoredWaterMass + cumulativeInletWaterMass
           - storedWaterMass - cupWaterMass;
         const scalar relativeOutletFlowError =
+            aggregateCoupled && radialTwoZone ? std::numeric_limits<scalar>::quiet_NaN() :
             saturatedAtStepStart && continuumAnalyticalOutletFlow > VSMALL
           ? Foam::mag(outletVolumeFlow - continuumAnalyticalOutletFlow)
            /continuumAnalyticalOutletFlow
@@ -4114,13 +4125,59 @@ int main(int argc, char *argv[])
                 }
             } catch (const std::exception& error)
             { FatalErrorInFunction << error.what() << exit(FatalError); }
+            scalar radialQi=0, radialQo=0, radialQ=0, radialRi=0, radialRo=0;
+            scalar transverseAbs=0;
+            if (radialTwoZone)
+            {
+                scalarField outgoing(mesh.nCells(), 0.0);
+                forAll(darcyFlux.primitiveField(), facei)
+                {
+                    const scalar flux=darcyFlux[facei];
+                    outgoing[mesh.owner()[facei]] += Foam::max(flux, 0.0);
+                    outgoing[mesh.neighbour()[facei]] += Foam::max(-flux, 0.0);
+                    if (Foam::mag(mesh.Sf()[facei].x()) < VSMALL)
+                        transverseAbs += Foam::mag(flux);
+                }
+                forAll(darcyFlux.boundaryField(), patchi)
+                {
+                    const auto& patchFlux=darcyFlux.boundaryField()[patchi];
+                    const auto& owners=mesh.boundary()[patchi].faceCells();
+                    forAll(patchFlux, facei)
+                    {
+                        outgoing[owners[facei]] += Foam::max(patchFlux[facei], 0.0);
+                        if (mesh.boundary()[patchi].coupled()
+                            && mesh.boundary()[patchi].type() == "processor"
+                            && Foam::mag(mesh.Sf().boundaryField()[patchi][facei].x()) < VSMALL)
+                            transverseAbs += 0.5*Foam::mag(patchFlux[facei]);
+                    }
+                }
+                poreCourant=0;
+                forAll(outgoing, celli)
+                    poreCourant=Foam::max(poreCourant, deltaT*outgoing[celli]/(porosity[celli]*mesh.V()[celli]));
+                const auto& flux=darcyFlux.boundaryField()[outletPatchId];
+                forAll(flux, facei)
+                {
+                    radialQ += flux[facei];
+                    const scalar radius=Foam::sqrt(sqr(outletCentres[facei].y())+sqr(outletCentres[facei].z()));
+                    if (radius < interfaceRadius)
+                    { radialQi += flux[facei]; radialRi += Foam::max(-flux[facei],0.0); }
+                    else
+                    { radialQo += flux[facei]; radialRo += Foam::max(-flux[facei],0.0); }
+                }
+                radialQi=sectorScale*globalSumValue(radialQi);
+                radialQo=sectorScale*globalSumValue(radialQo);
+                radialQ=sectorScale*globalSumValue(radialQ);
+                radialRi=sectorScale*globalSumValue(radialRi);
+                radialRo=sectorScale*globalSumValue(radialRo);
+                transverseAbs=sectorScale*globalSumValue(transverseAbs);
+            }
             nextMuMin = globalMinValue(nextMuMin);
             nextMuMax = globalMaxValue(nextMuMax);
             poreCourant = globalMaxValue(poreCourant);
             correctionMass = globalSumValue(correctionMass);
             const scalar nextMin = gMin(dissolvedConcentration.primitiveField());
             const scalar nextMax = gMax(dissolvedConcentration.primitiveField());
-            if (Pstream::master())
+            if (Pstream::master() && !radialTwoZone)
                 aggregateTrace << stepStartTime << ',' << timeValue << ',' << deltaT << ','
                     << stepStartTime << ',' << outletVolumeFlow << ',' << stepWaterMass/liquidDensity << ','
                     << (inletPressure-outletPressure)/appliedAggregateResistance << ','
@@ -4131,6 +4188,20 @@ int main(int argc, char *argv[])
                     << liquidBalanceResidual << ',' << soluteBalanceResidual << ','
                     << instantaneousTds << ',' << cumulativeTds << ',' << diluteVolume/fullMeshVolume
                     << ',' << nextMuMin << ',' << nextMuMax << ',' << poreCourant << '\n';
+            if (radialTwoZone && Pstream::master())
+                radialTrace << 1 << ',' << stepStartTime << ',' << timeValue << ',' << deltaT << ',' << stepStartTime
+                    << ',' << radialQi << ',' << radialQo << ',' << radialQ << ',' << radialRi << ',' << radialRo
+                    << ',' << radialRi+radialRo << ',' << radialQ*deltaT << ',' << outletVolumeFlow
+                    << ',' << laggedMinC << ',' << laggedMaxC << ',' << laggedMinMu << ',' << laggedMaxMu
+                    << ',' << nextMin << ',' << nextMax << ',' << nextMuMin << ',' << nextMuMax
+                    << ',' << correctionMass << ',' << cupWaterMass << ',' << cupSoluteMass
+                    << ',' << dissolvedMass << ',' << remainingMass << ',' << soluteBackDiffusionMass
+                    << ',' << liquidBalanceResidual << ',' << soluteBalanceResidual
+                    << ',' << instantaneousTds << ',' << cumulativeTds << ',' << diluteVolume/fullMeshVolume
+                    << ',' << poreCourant << ',' << meshInnerArea << ',' << meshOuterArea
+                    << ',' << innerCellVolume << ',' << outerCellVolume
+                    << ',' << innerRemainingMass << ',' << outerRemainingMass
+                    << ',' << innerSoluteRate << ',' << outerSoluteRate << ',' << transverseAbs << '\n';
             if (aggregateBulkCoupled && Pstream::master())
                 bulkTrace << stepStartTime << ',' << timeValue << ',' << bulkPoreVolume << ','
                     << bulkDissolvedMass << ',' << bulkDissolvedMass/bulkPoreVolume << ','
@@ -4163,7 +4234,7 @@ int main(int argc, char *argv[])
          && std::isfinite(maxVelocity)
          && std::isfinite(pressureProbe1)
          && std::isfinite(pressureProbe2)
-         && std::isfinite(relativeOutletFlowError);
+         && ((aggregateCoupled && radialTwoZone) || std::isfinite(relativeOutletFlowError));
         if (!finiteState)
         {
             FatalErrorInFunction

@@ -18,13 +18,23 @@ def contract(s):
         or 'effective_permeability_evolution' in s
         or h.get('pressure_ramp_time_s') != 0
         or not h['target_inlet_pressure_gauge_Pa'] > h['outlet_pressure_gauge_Pa']
-        or h.get('permeability_profile', {}).get('type', 'uniform') not in ('uniform', 'axial_two_layer')
+        or h.get('permeability_profile', {}).get('type', 'uniform') not in (('uniform', 'axial_two_layer') if mode == 'bulkCoupled' else ('uniform', 'axial_two_layer', 'radial_two_zone'))
         or s['wetting']['initial_wet_front_m'] != b['bed_depth_m']
         or s['wetting']['initial_saturation'] != 1
         or s['extraction']['model'] != 'single_effective_solute_first_order_with_capacity_ceiling'
         or l['temperature_K'] != 363.15 or l['density_kg_m3'] != 965
         or s['time'].get('start_s', 0) != 0):
         raise ValueError('aggregate viscosity requires fresh saturated static aggregate Darcy at 363.15 K')
+    profile = h.get('permeability_profile', {})
+    if profile.get('type') == 'radial_two_zone':
+        radius = s['geometry']['basket_radius_m']
+        interface = profile['interface_radius_m']
+        n = s['geometry']['radial_cells']
+        values = (radius, interface, profile['inner_permeability_m2'], profile['outer_permeability_m2'], h['target_inlet_pressure_gauge_Pa'], h['outlet_pressure_gauge_Pa'])
+        if not all(math.isfinite(v) for v in values) or not 0 < interface < radius or min(values[2:4]) <= 0:
+            raise ValueError('invalid radial aggregate geometry/permeability/pressure')
+        if s['geometry'].get('radial_grading', 1) != 1 or abs(interface/radius*n-round(interface/radius*n)) > 1e-10:
+            raise ValueError('radial aggregate interface must align with mesh')
     table = Path(option['table']).resolve()
     # Validate metadata and entries here as well as independently in native startup.
     tokens = table.read_text().split()
