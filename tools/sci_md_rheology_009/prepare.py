@@ -66,10 +66,15 @@ def prepare(art, accepted, e_art, pw):
     shutil.copy2(accepted/'bin/espressoWholePullFoam',art/'bin/accepted')
     write(art/'LOCATIONS.json',dict(accepted=str(accepted),e_art=str(e_art),puckworks=str(pw)))
     write(DOC/'REUSE.json',dict(source_commit=src['source_commit'],source_tree=src['source_tree'],source_hashes=src['source_hashes'],tables=f['tables'],accepted_reference_hashes={k:v['sha256'] for k,v in references.items()},production_lock_sha256=sha(ROOT/'dependencies/puckworks.lock.json'),available_data_register_sha256=sha(pw/'puckworks/data/AVAILABLE_DATA_REGISTER.json'),source_manifest_sha256=sha(pw/'puckworks/data/MANIFEST.csv'),preflight='Accepted source-conditioned 003 source-use and export authority; 006 C and 008 E2 references present and verified. Controlled synthetic histories need no experimental acquisition. No global gap.'))
+    import re, platform
+    ldd=subprocess.check_output(['ldd',str(art/'bin/espressoWholePullFoam')],text=True)
+    libs={p:sha(Path(p)) for p in re.findall(r'(?:=>\s+)?(/\S+)\s+\(',ldd)}
+    executors={shutil.which(p):sha(Path(shutil.which(p))) for p in ('blockMesh','decomposePar','mpirun')}
+    write(art/'RUNTIME.json',dict(ldd=ldd,libraries=libs,execution_tools=executors,python=platform.python_version(),numpy=np.__version__,openfoam=12))
     bind(art,'PREPARATION.json')
 
 def bind(art,name):
-    patterns=['tools/sci_md_rheology_00[1-9]/*.py','scripts/*.py','solver/espressoWholePullFoam/*.C','solver/espressoWholePullFoam/*.H','solver/espressoWholePullFoam/Make/*','tests/test_sci_md_rheology_009.py','dependencies/puckworks.lock.json','docs/analysis/sci_md_rheology_009/PROTOCOL.md','docs/analysis/sci_md_rheology_009/CONTRACT.json']
+    patterns=['tools/sci_md_rheology_00[1-9]/*.py','scripts/*.py','cases/reference_R0_20g_58mm_9bar/0.orig/*','cases/reference_R0_20g_58mm_9bar/system/fvSchemes','cases/reference_R0_20g_58mm_9bar/system/fvSolution','tools/sci_md_004_stage_c/compare.py','solver/espressoWholePullFoam/*.C','solver/espressoWholePullFoam/*.H','solver/espressoWholePullFoam/Make/*','tests/test_sci_md_rheology_009.py','dependencies/puckworks.lock.json','docs/analysis/sci_md_rheology_009/PROTOCOL.md','docs/analysis/sci_md_rheology_009/CONTRACT.json']
     files={p for pat in patterns for p in ROOT.glob(pat) if p.is_file()}
     external=[p for p in art.glob('*.json') if p.name not in ('PREPARATION.json',)]+list((art/'tables').glob('*'))+list((art/'bin').glob('*'))+[art/'build.log']
     record=dict(files={str(p.relative_to(ROOT)):sha(p) for p in sorted(files)},external={str(p.relative_to(art)):sha(p) for p in sorted(external)},matrix=matrix(),executable_sha256=sha(art/'bin/espressoWholePullFoam'),build_log_sha256=sha(art/'build.log'),governance='G2',change_declaration='NO_GOVERNING_PHYSICS_CHANGE',max_full_attempts=52)

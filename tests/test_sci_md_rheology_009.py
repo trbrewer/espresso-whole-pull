@@ -51,3 +51,47 @@ class HistoryTests(unittest.TestCase):
         t=dict(time_s=raw['end_s'],inlet_pressure_Pa=np.array([364285.7142857143]))
         with self.assertRaises(ValueError):pressure_audit(raw,t,s)
 if __name__=='__main__':unittest.main()
+
+class FreezeMutationTests(unittest.TestCase):
+    def test_changed_dependencies_fail(self):
+        import json
+        from unittest.mock import patch
+        from tools.sci_md_rheology_009 import common
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);art=root/'art';art.mkdir()
+            source=root/'observer.py';source.write_text('observer')
+            template=root/'fvSchemes';template.write_text('template')
+            external={}
+            for name in ('table','executable','scenario'):
+                p=art/name;p.write_text(name);external[name]=common.sha(p)
+            library=root/'library';library.write_text('runtime')
+            runtime=dict(libraries={str(library):common.sha(library)},execution_tools={})
+            (art/'RUNTIME.json').write_text(json.dumps(runtime));external['RUNTIME.json']=common.sha(art/'RUNTIME.json')
+            f=dict(files={p.name:common.sha(p) for p in (source,template)},external=external)
+            (art/'PREPARATION.json').write_text(json.dumps(f))
+            with patch.object(common,'ROOT',root):
+                common.verify(art)
+                for path in [source,template,library,art/'table',art/'executable',art/'scenario']:
+                    old=path.read_bytes();path.write_bytes(old+b'changed')
+                    with self.assertRaises(ValueError,msg=path.name):common.verify(art)
+                    path.write_bytes(old)
+    def test_support_cannot_be_silently_shortened(self):
+        import json
+        from unittest.mock import patch
+        from tools.sci_md_rheology_009 import analyze as a
+        from tools.sci_md_rheology_009.common import sha
+        with tempfile.TemporaryDirectory() as tmp:
+            art=Path(tmp);doc=art/'doc';doc.mkdir();(doc/'FREEZE.json').write_text('{}')
+            required={k for k,v in matrix().items() if v['model']=='C'}
+            terminals={k:.009+.001 for k in required};hashes={k:'trace-hash' for k in required}
+            sealed=dict(freeze_sha256=sha(doc/'FREEZE.json'),C_traces=hashes,C_terminals_kg=terminals,B_star_kg=support(terminals))
+            def save(receipt=True):
+                for path in (doc/'SUPPORT.json',art/'SUPPORT.json'):path.write_text(json.dumps(sealed))
+                if receipt:(doc/'SUPPORT_RECEIPT.json').write_text(json.dumps(dict(sha256=sha(doc/'SUPPORT.json'))))
+            def mocked_sha(p):return 'trace-hash' if p.name==a.TRACE.name else sha(p)
+            with patch.object(a,'DOC',doc),patch.object(a,'complete'),patch.object(a,'sha',side_effect=mocked_sha),patch.object(a,'read'),patch.object(a,'native',return_value=dict(water_kg=[.009],solute_kg=[.001])):
+                save();a.checked_support(art)
+                sealed['B_star_kg']['UP']='0.001000000';save(False)
+                with self.assertRaises(ValueError):a.checked_support(art)
+                save(True)
+                with self.assertRaises(ValueError):a.checked_support(art)

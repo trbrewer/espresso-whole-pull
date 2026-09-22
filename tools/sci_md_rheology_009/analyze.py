@@ -55,10 +55,25 @@ def seal(art):
     write(art/'SUPPORT.json',record);write(DOC/'SUPPORT.json',record)
     write(DOC/'SUPPORT_RECEIPT.json',dict(sha256=sha(DOC/'SUPPORT.json')))
 
+def checked_support(art):
+    sealed=json.loads((DOC/'SUPPORT.json').read_text())
+    receipt=json.loads((DOC/'SUPPORT_RECEIPT.json').read_text())
+    if sha(DOC/'SUPPORT.json')!=receipt['sha256'] or sha(art/'SUPPORT.json')!=receipt['sha256']:
+        raise ValueError('support receipt mismatch')
+    if sealed['freeze_sha256']!=sha(DOC/'FREEZE.json'):raise ValueError('support freeze mismatch')
+    required={k for k,v in matrix().items() if v['model']=='C'}
+    complete(art,'full',required)
+    terminals={};hashes={}
+    for k in sorted(required):
+        path=art/'full'/k/'case'/TRACE;d=native(read(path))
+        terminals[k]=float(d['water_kg'][-1]+d['solute_kg'][-1]);hashes[k]=sha(path)
+    if hashes!=sealed['C_traces'] or terminals!=sealed['C_terminals_kg'] or support(terminals)!=sealed['B_star_kg']:
+        raise ValueError('support changed from complete qualified reference rule')
+    return sealed
+
 def analyze(art):
     verify(art,'FREEZE.json',True);complete(art,'full',matrix())
-    if sha(art/'SUPPORT.json')!=sha(DOC/'SUPPORT.json'):raise ValueError('support seal changed')
-    sealed=json.loads((DOC/'SUPPORT.json').read_text());data={k:native(read(art/'full'/k/'case'/TRACE)) for k in matrix()};cases={};coverage={}
+    sealed=checked_support(art);data={k:native(read(art/'full'/k/'case'/TRACE)) for k in matrix()};cases={};coverage={}
     for k,d in data.items():
         end=float(sealed['B_star_kg'][matrix()[k]['history']]);terminal=float(d['water_kg'][-1]+d['solute_kg'][-1]);coverage[k]=dict(terminal_beverage_kg=terminal,B_star_kg=end,reaches_support=terminal>=end,scored_fraction_of_terminal=end/terminal)
     for law in LAWS:

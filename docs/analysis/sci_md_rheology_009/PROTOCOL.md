@@ -37,7 +37,9 @@ with P(t_end). Native pressure-equation face flux drives both transport and
 water: dV=Q_native dt; dW=rho dV. No U dot Sf or analytical water replacement.
 Join native traces.csv time_s to radial end_s exactly in the existing 15-significant-digit trace serialization (reject key collisions), reject missing/duplicate
 rows and wrong state clocks; compare applied pressure to independent interpolation.
-No output schema change.
+No output schema change. The inherited pressure_integration_method scenario label
+describes the legacy wetting integral; it is not an operative saturated
+quadrature selector. Saturated delivery uses native endpoint Qdt.
 
 ## Frozen experiment and support
 

@@ -57,6 +57,11 @@ def verify(art, filename='PREPARATION.json', audit=False):
     for root,key in ((ROOT,'files'),(art,'external')):
         for name,h in f[key].items():
             if sha(root/name)!=h:raise ValueError('frozen identity changed: '+name)
+    runtime_path=art/'RUNTIME.json'
+    if runtime_path.exists():
+        runtime=json.loads(runtime_path.read_text())
+        for name,h in {**runtime['libraries'],**runtime['execution_tools']}.items():
+            if sha(Path(name))!=h:raise ValueError('frozen runtime changed: '+Path(name).name)
     if audit:
         a=json.loads((DOC/'AUDIT.json').read_text())
         if a['status']!='PASS' or a['freeze_sha256']!=sha(DOC/'FREEZE.json'):raise ValueError('independent audit missing/stale')

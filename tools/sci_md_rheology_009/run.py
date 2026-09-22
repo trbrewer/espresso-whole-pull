@@ -17,10 +17,8 @@ def run(art,stage,slot):
     if stage in ('C','E2'):
         if json.loads((DOC/'COMPATIBILITY.json').read_text())['status']!='PASS':raise ValueError('compatibility gate')
     if stage=='E2':
-        sealed=json.loads((DOC/'SUPPORT.json').read_text())
-        if sha(art/'SUPPORT.json')!=sha(DOC/'SUPPORT.json'):raise ValueError('support changed')
-        for k,h in sealed['C_traces'].items():
-            if sha(art/'full'/k/'case'/TRACE)!=h:raise ValueError('C support evidence changed')
+        from .analyze import checked_support
+        checked_support(art)
     parent=art/('short' if short else 'regression' if reg else 'full');parent.mkdir(exist_ok=True)
     ledger=parent/'INVOCATIONS.jsonl'
     with (parent/'ledger.lock').open('w') as lock:
