@@ -1,0 +1,159 @@
+{
+  "accepted_disposition": "PARALLEL_PATH_REDUCTION_INSUFFICIENT",
+  "all_variants": {
+    "SW_WATER_ANCHORED_90C_3bar": {
+      "axial": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "base": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "property": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "radial": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "temporal": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      }
+    },
+    "SW_WATER_ANCHORED_90C_9bar": {
+      "axial": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "base": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "property": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "radial": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "temporal": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      }
+    },
+    "TR_LINEAR_3bar": {
+      "axial": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "base": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "radial": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "temporal": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      }
+    },
+    "TR_LINEAR_9bar": {
+      "axial": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "base": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "radial": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      },
+      "temporal": {
+        "D_TDS_pp": 0.0,
+        "D_share_mean_pp": 0.0,
+        "D_share_peak_pp": 0.0,
+        "E_Qint": 0.0,
+        "E_Qpeak": 0.0,
+        "E_Spath": 0.0
+      }
+    }
+  },
+  "new_P_runs": 0,
+  "status": "PASS"
+}

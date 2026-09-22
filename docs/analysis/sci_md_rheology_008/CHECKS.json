@@ -1,0 +1,55 @@
+{
+  "change_contract": "PASS",
+  "corrected_environment_and_focused_tests": {
+    "log_sha256": "4809e63965e09d3fd293a0166a60628502bae7ce72c5d104faa87150538d0ae0",
+    "status": "PASS",
+    "tests": 40
+  },
+  "corrected_manifest_test": {
+    "log_sha256": "b46f03e81b55c8e3e5346c92e758f4c7d14b2a8aaf448b8e37d369250f991678",
+    "status": "PASS",
+    "tests": 1
+  },
+  "final_static_validation": {
+    "log_sha256": "a788f16e7d165ef46c4690ff834a33b5e48f2dd0a5c35429f56a27a93ea6bb26",
+    "status": "PASS"
+  },
+  "focused_008": {
+    "status": "PASS",
+    "tests": 19
+  },
+  "governing_boundary": "PASS",
+  "historical_005_006_validators": "PASS",
+  "historical_baseline": "PASS",
+  "hosted_CI": "RESOLVE_FROM_PR_CHECKS",
+  "independent_audit_tests": {
+    "discovery_tests": 19,
+    "status": "PASS",
+    "tests": 50
+  },
+  "initial_local_full_suite": {
+    "causes": [
+      "Historical porosity authority environment not set",
+      "Historical 012 authority environment not set",
+      "008 test relative import (already corrected before audit/execution)",
+      "Package QA manifest bookkeeping not yet updated"
+    ],
+    "errors": 2,
+    "failures": 2,
+    "log_sha256": "fb424923c89fd649a9b337e2fd3c6c80db133ba12a3417d4baea4676befc9d55",
+    "skipped": 5,
+    "status": "FAILED",
+    "tests_run": 1507
+  },
+  "initial_static_validation": "PASS",
+  "native_science_failures": 0,
+  "ordinary_review": "PENDING",
+  "physical_validation": "NOT_ESTABLISHED",
+  "regeneration": "BYTE_IDENTICAL_FOUR_JSON_FOUR_SVG",
+  "secret_path_and_generated_product_boundary": "PASS",
+  "shell_json": "PASS",
+  "short_aggregate_QA_failures_preserved": 1,
+  "source_diff_whitespace": "PASS_EXCLUDING_UNCHANGED_GENERATOR_SVG_FORMATTING",
+  "source_manifest": "PASS",
+  "task": "SCI-MD-RHEOLOGY-008"
+}

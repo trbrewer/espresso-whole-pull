@@ -1,0 +1,79 @@
+{
+  "checks": [
+    "Frozen 42-slot science family: 18 TR plus 24 SW; N=2/4/8, pressure=3/9 bar, declared time/axial/property variants only; all end at 30 s.",
+    "Frozen 12 short slots at 32 axial cells, 0.2 s and dt=0.02 s; 12 durable STARTED and 12 COMPLETE events, zero native failure/recovery events.",
+    "Final freeze verifies all bound file/external hashes. Accepted executable hash, build identity, analysis Puckworks commit/source hashes, distinct unchanged production lock, viscosity tables and 21 recorded runtime library hashes verified.",
+    "18 accepted C traces and 1178 manifest-bound C files, 28 accepted P native constituent traces and 1624 ledger-bound P files, and 686 completed short-run files independently hash-verified read-only.",
+    "Actual generated meshes for N=2/4/8 independently rechecked: 64/128/256 short cells, positive annular volumes, core fraction 0.25, aligned interface at 0.0145 m, 32 connected interface faces each, and physical full-cylinder areas/volumes.",
+    "Actual native short traces independently validated with inherited native radial and independent mass accounting gates; analytical Darcy flow/core share and inverse-viscosity checks independently recomputed.",
+    "Actual serial/repeat/MPI native traces checked; serial repeat identical, maximum MPI relative difference 7.451383406914414e-12 under declared dimensioned floors; cancellation balance residuals separately satisfy absolute gates.",
+    "Dynamic fixture signed native owner-neighbour interface flux orientation inspected and exchange recomputed from final native darcyFlux and upwind donor concentration; restricted transverse diagnostic excluded.",
+    "Native E adapter preserves physical totals with no P constituent reweighting; annular volumes and zone aggregation inspected. P/C regression reconstruction code uses accepted P composition once.",
+    "Exact inherited pressure supports and individual C coverage preserved; no candidate-dependent shrink. Conservative origin/first interval, union mass breakpoints and five equal-mass fraction splitting inspected and tested.",
+    "Independent 50-digit Decimal implementation recomputes native shares, increments, mass breakpoints and splits from two native radial histories; does not invoke the P constituent arithmetic audit.",
+    "Per-candidate time/axial/reference-radial/property/arithmetic sensitivity terms counted once; no inter-candidate radial differences enter allowances. Strict boundary decisions, failure precedence and unresolved evidence/support behavior inspected and tested.",
+    "Durable fsynced STARTED events, immutable hash-valid resume, failed-attempt preservation, 46 full/4 recovery and 14 short/2 recovery ceilings inspected and tested; tolerant native final-directory lookup retained.",
+    "Zero science starts confirmed immediately before receipt; production solver, schemes, tolerances and generator unchanged."
+  ],
+  "corrections_in_this_single_audit": [
+    {
+      "assessment": "Preserved aggregate short-QA cancellation-normalization failure corrected to inherited absolute balance gates before science freeze. Native evidence unchanged; no reruns or scored outcomes.",
+      "record": "PRE_FREEZE_CORRECTION.json",
+      "sha256": "7ca8c3f393d28fd33b6dae046830551da920f1f91be198bb1d98b8698473e490"
+    },
+    {
+      "assessment": "Test discovery import-only correction verified; original freeze retained externally. Matrix/protocol/scenarios/support/tooling unchanged.",
+      "record": "TEST_IMPORT_CORRECTION.json",
+      "sha256": "1df1b64890ce7a34fc3611f071362066df37c6361fa6226d1f27bea3dce7583f"
+    },
+    {
+      "assessment": "Auditor found endpoint roundoff gap could discard hydraulic/allocation metrics when delivery lacked strict support. Implementer corrected the delivery-only guard and added regression; independently checked. Original freeze retained externally; native adapter/short execution unchanged, no native reruns, no science starts or scores. This receipt binds the corrected final freeze.",
+      "record": "AUDIT_CORRECTION.json",
+      "sha256": "1313abb5ee12f53021c633577192766e8b0467c201d6111637ccae9ee2d6eff1"
+    }
+  ],
+  "freeze_sha256": "960b2ea57fc939d23ad665ce081cbf174d7ed6bdc969c9c5c9a7436270874e63",
+  "issued_utc": "2026-09-22T22:46:07.577821+00:00",
+  "limitations": [
+    "Pre-scoring qualification only; no full E science run, final candidate decision, runtime benchmark or CI conclusion is established by this receipt.",
+    "Audit is independent agent review, not a human PR approval. Ordinary PR protections and review remain required.",
+    "Advective interface check is not total advective-plus-diffusive transport or unique mechanism attribution.",
+    "Numerical allowances are empirical sensitivities, not confidence intervals or rigorous continuum-error bounds.",
+    "C remains source-conditioned computational reference, with inherited source transfer and rheology caveats; physical validation is not established."
+  ],
+  "observed_short_evidence": {
+    "MPI_solute_balance_difference_kg": 2.4046118900220588e-17,
+    "MPI_water_balance_difference_kg": 3.036037133502534e-16,
+    "completed": 12,
+    "dynamic_absolute_interface_water_m3_s": 3.407983941516188e-10,
+    "dynamic_absolute_upwind_interface_solute_kg_s": 5.5238391784577605e-09,
+    "failed_native_events": 0,
+    "maximum_analytical_Q_relative_error": 5.683453707661101e-12,
+    "maximum_analytical_core_share_relative_error": 5.364597654988756e-12,
+    "recovery_starts": 0,
+    "short_summary_sha256": "e96811bda018fdf3da79217d085722cd26f47e13465dc0bd9e498bcb4f115524",
+    "started": 12
+  },
+  "physical_validation": "NOT_ESTABLISHED",
+  "reviewer": {
+    "agent_identity": "/root/prescoring_audit",
+    "human_review": false,
+    "role": "Independent audit agent; not the implementation agent"
+  },
+  "scientific_class": "G1 / SOURCE_SCENARIO_CHANGE_ONLY",
+  "scope": "One independent pre-scoring audit of the fixed native E2/E4/E8 research family, implementation, frozen evidence and actual short qualification; no E science runs or E/C discrepancy scores accessed.",
+  "status": "PASS",
+  "task": "SCI-MD-RHEOLOGY-008",
+  "tests": [
+    {
+      "command": "python3 -m unittest tests.test_sci_md_rheology_008 tests.test_sci_md_rheology_007 tests.test_sci_md_rheology_006",
+      "count": 50,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_sci_md_rheology_008.py",
+      "count": 19,
+      "status": "PASS"
+    }
+  ]
+}

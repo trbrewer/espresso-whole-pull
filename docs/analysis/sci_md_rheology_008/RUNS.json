@@ -1,0 +1,1850 @@
+{
+  "counts": {
+    "bridge": 0,
+    "failure_events": 0,
+    "full_completions": 42,
+    "full_starts": 42,
+    "new_C": 0,
+    "new_P": 0,
+    "recoveries": 0,
+    "reused_C": 18,
+    "reused_P_native_traces": 28
+  },
+  "events": [
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_TR_LINEAR_3bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "e2a9fb023b3fec42539a73f52dd4f95f4689498fae49a484ab16dce8415e9ce8",
+      "slot": "E2_TR_LINEAR_3bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:27.399396+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.1708607405180463e-17,
+        "water_max_kg": 1.0842021724855044e-19
+      },
+      "case_manifest_sha256": "02f76501bd82eecc4fc485f7ba133fea561dc8101779101614a47fc9bd3d1877",
+      "cells": 1024,
+      "elapsed_s": 1.5415644031018019,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.0029633313013158902,
+        "final_stored_solute_kg": 0.0012865206138478202,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.000413815539924277,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_TR_LINEAR_3bar_base",
+      "initial_inventory_kg": 0.0056000000000000025,
+      "slot": "E2_TR_LINEAR_3bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_TR_LINEAR_3bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "5c4bacad7b117ff5599100c701c2eb0b72382267202f1e056cd82f2e9b3e17ad",
+      "slot": "E2_TR_LINEAR_3bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:28.966647+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.5899144093043504e-17,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "1404e96bf0c3ef65bbfb3d3654ca60b13b598200adaca1df637c46870e64ce1a",
+      "cells": 1024,
+      "elapsed_s": 2.6306137684732676,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.0029637927353349316,
+        "final_stored_solute_kg": 0.0012866066568290786,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.00041408181611734884,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_TR_LINEAR_3bar_temporal",
+      "initial_inventory_kg": 0.0056,
+      "slot": "E2_TR_LINEAR_3bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_TR_LINEAR_3bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "8640e7c55821e7d8221fb30f2387a0859d80f144a2258d5c65af65726d405c6b",
+      "slot": "E2_TR_LINEAR_3bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:31.623133+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 4.684261604905732e-17,
+        "water_max_kg": 8.673617379884035e-19
+      },
+      "case_manifest_sha256": "7491196a1f5794a771c2f9c35243fc5bf6965a844034c2e24dc1d5d8852beac9",
+      "cells": 2048,
+      "elapsed_s": 2.849918774329126,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.002964444126676457,
+        "final_stored_solute_kg": 0.0012859933866439747,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0004139660134400094,
+        "inner_volume_m3": 5.952380952380966e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714293e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380966e-06,
+          1.785714285714293e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_TR_LINEAR_3bar_axial",
+      "initial_inventory_kg": 0.005600000000000013,
+      "slot": "E2_TR_LINEAR_3bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_TR_LINEAR_9bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "5509f8abc7fc8e11139553f42b373e9874a66366e90f583ccf70072dc9555e52",
+      "slot": "E2_TR_LINEAR_9bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:34.491479+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 5.4076434119704284e-15,
+        "water_max_kg": 5.204170427930421e-18
+      },
+      "case_manifest_sha256": "2117d3dfbce5909a392a6f3cb6a220841bc65ac050afa9d69333ba1ee2d2d6b5",
+      "cells": 1024,
+      "elapsed_s": 1.5378405218943954,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.0017546688358725416,
+        "final_stored_solute_kg": 0.000734210347530268,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 4.6983280063580366e-05,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_TR_LINEAR_9bar_base",
+      "initial_inventory_kg": 0.0056000000000000025,
+      "slot": "E2_TR_LINEAR_9bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_TR_LINEAR_9bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "d2bb95066fa359c49a25bcdce8f549035168a2ef75dfabe694a57396172b3cec",
+      "slot": "E2_TR_LINEAR_9bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:36.048902+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 8.035928625543635e-16,
+        "water_max_kg": 8.673617379884035e-19
+      },
+      "case_manifest_sha256": "2f9b46d4ea31ca706affbe61ae5cd4b4dafcca6cda3fa6a2168a92ce7702e568",
+      "cells": 1024,
+      "elapsed_s": 2.6539938310161233,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.001755421919662259,
+        "final_stored_solute_kg": 0.000734366293919388,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 4.70782899240674e-05,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_TR_LINEAR_9bar_temporal",
+      "initial_inventory_kg": 0.005599999999999999,
+      "slot": "E2_TR_LINEAR_9bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_TR_LINEAR_9bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "27af489259f254c2b3e80c5153ac964998d4b4d17d036d2e8de71797d2810979",
+      "slot": "E2_TR_LINEAR_9bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:38.726979+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 7.019926793113969e-15,
+        "water_max_kg": 1.734723475976807e-18
+      },
+      "case_manifest_sha256": "4077744d2f9072224b39cfdfa4554e780b661b4e05f23c935f9172934144b1df",
+      "cells": 2048,
+      "elapsed_s": 2.787011540494859,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.0017553972703817683,
+        "final_stored_solute_kg": 0.0007337625161214748,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 4.6944751882008616e-05,
+        "inner_volume_m3": 5.952380952380966e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714293e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380966e-06,
+          1.785714285714293e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_TR_LINEAR_9bar_axial",
+      "initial_inventory_kg": 0.005600000000000013,
+      "slot": "E2_TR_LINEAR_9bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_SW_WATER_ANCHORED_90C_3bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "8079145bd0d7db1b5856473265eb521c060ca35e13790c777c9afda40e9c2d61",
+      "slot": "E2_SW_WATER_ANCHORED_90C_3bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:41.533970+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.270641221704603e-17,
+        "water_max_kg": 8.673617379884035e-19
+      },
+      "case_manifest_sha256": "800d12e7317daf662017b86148a1277cc973b66681d6e5af95fbb933543c1a45",
+      "cells": 1024,
+      "elapsed_s": 1.5554131008684635,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.00310178474348499,
+        "final_stored_solute_kg": 0.0013512865644768203,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005033384284056292,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_SW_WATER_ANCHORED_90C_3bar_base",
+      "initial_inventory_kg": 0.0056000000000000025,
+      "slot": "E2_SW_WATER_ANCHORED_90C_3bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "2d096cec00a0859f188ec88059e42eb2b9a7d1422055910e8c4a13d287dd1223",
+      "slot": "E2_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:43.108896+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.430391635556764e-17,
+        "water_max_kg": 2.168404344971009e-19
+      },
+      "case_manifest_sha256": "be00a408e8baccdd23c34b4013137f2fa86e40cba0b6163de8f817e1a56fb996",
+      "cells": 1024,
+      "elapsed_s": 2.699385354295373,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.0031021950566058713,
+        "final_stored_solute_kg": 0.001351369146575033,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005035766009472075,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "initial_inventory_kg": 0.0056,
+      "slot": "E2_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_SW_WATER_ANCHORED_90C_3bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "0b1dba5e211f24e3671ccb23c8f97a47eaff60ba7f161b082af149d34ee65c49",
+      "slot": "E2_SW_WATER_ANCHORED_90C_3bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:45.831266+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 4.3662854365064674e-17,
+        "water_max_kg": 5.421010862427522e-20
+      },
+      "case_manifest_sha256": "3eb07cb7400f3d0e34d4bed668088caf19f34fdf2e8e871130e3fb60b4b5307c",
+      "cells": 2048,
+      "elapsed_s": 2.859210280701518,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.003102888639703527,
+        "final_stored_solute_kg": 0.0013507578776293537,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005034716911897209,
+        "inner_volume_m3": 5.952380952380966e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714293e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380966e-06,
+          1.785714285714293e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_SW_WATER_ANCHORED_90C_3bar_axial",
+      "initial_inventory_kg": 0.005600000000000013,
+      "slot": "E2_SW_WATER_ANCHORED_90C_3bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_SW_WATER_ANCHORED_90C_3bar_property",
+      "recovery_reason": null,
+      "scenario_sha256": "6358b41c1d38b81fc5e4d99ea4d191f0e040e11154f275c7651738d6f6460e56",
+      "slot": "E2_SW_WATER_ANCHORED_90C_3bar_property",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:48.708943+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.3649159887340065e-17,
+        "water_max_kg": 4.336808689942018e-19
+      },
+      "case_manifest_sha256": "b0786c1ecce7c82d79d18523ddfa00588c211a6ca954fa2e3cf9020496717e6c",
+      "cells": 1024,
+      "elapsed_s": 1.5913353580981493,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.003101782792968077,
+        "final_stored_solute_kg": 0.0013512856627954236,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005033371517373646,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_SW_WATER_ANCHORED_90C_3bar_property",
+      "initial_inventory_kg": 0.0056000000000000025,
+      "slot": "E2_SW_WATER_ANCHORED_90C_3bar_property",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_SW_WATER_ANCHORED_90C_9bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "6fc37b6fd169dd59c04fa7b0298346a0bb434e1446672a266b648e77f709abdd",
+      "slot": "E2_SW_WATER_ANCHORED_90C_9bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:50.320262+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 1.8531132710145407e-15,
+        "water_max_kg": 3.3881317890172014e-21
+      },
+      "case_manifest_sha256": "2a38753125f1b55db881737d8b1c0640c4ed39a953ed7cec390ea08d987d84bf",
+      "cells": 1024,
+      "elapsed_s": 1.5760224731639028,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.0019575527612271494,
+        "final_stored_solute_kg": 0.0008268183902599764,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.71376050891636e-05,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_SW_WATER_ANCHORED_90C_9bar_base",
+      "initial_inventory_kg": 0.0056000000000000025,
+      "slot": "E2_SW_WATER_ANCHORED_90C_9bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "c19b6377a897859f76ad9b24f02d5485fdbd0d0196e1a38c19761805005055e9",
+      "slot": "E2_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:51.916001+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.608124558879134e-16,
+        "water_max_kg": 1.734723475976807e-18
+      },
+      "case_manifest_sha256": "0f6cfe0ed46b575388833ec4f614c76837a3bbcf1324523e9704f41ca21ff552",
+      "cells": 1024,
+      "elapsed_s": 2.708611342124641,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.0019581985767748744,
+        "final_stored_solute_kg": 0.0008269423834311985,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.7239438078527574e-05,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "initial_inventory_kg": 0.005599999999999999,
+      "slot": "E2_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_SW_WATER_ANCHORED_90C_9bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "2a8c5c1fc75a8ec98ed82ad3c55bd628fd9ac5ec5498966968d1299c48129e5d",
+      "slot": "E2_SW_WATER_ANCHORED_90C_9bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:54.647699+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.3924466771021394e-15,
+        "water_max_kg": 8.673617379884035e-19
+      },
+      "case_manifest_sha256": "3f70532a869dc008d72c8a0c94aa2741c73c17bc3d439743e6b05938edf33715",
+      "cells": 2048,
+      "elapsed_s": 2.8404159331694245,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.001958075968148247,
+        "final_stored_solute_kg": 0.0008262762431585653,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.708163310661467e-05,
+        "inner_volume_m3": 5.952380952380966e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714293e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380966e-06,
+          1.785714285714293e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_SW_WATER_ANCHORED_90C_9bar_axial",
+      "initial_inventory_kg": 0.005600000000000013,
+      "slot": "E2_SW_WATER_ANCHORED_90C_9bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E2_SW_WATER_ANCHORED_90C_9bar_property",
+      "recovery_reason": null,
+      "scenario_sha256": "d080f7cb1a3696600eb695c35798d33b927a0e986d432510f380d64284804a58",
+      "slot": "E2_SW_WATER_ANCHORED_90C_9bar_property",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:57.508435+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 1.8586545605554783e-15,
+        "water_max_kg": 1.734723475976807e-18
+      },
+      "case_manifest_sha256": "05cf6b153a5cb9fdbdcc4eefbc20f3cd14373ad490d7fe6cc892f2b3b2cd61b8",
+      "cells": 1024,
+      "elapsed_s": 1.59579942189157,
+      "fields": {
+        "cells": 1024,
+        "final_remaining_kg": 0.0019575499904052928,
+        "final_stored_solute_kg": 0.0008268171157891768,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.713743574310695e-05,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142835e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          5.952380952380959e-06,
+          1.7857142857142835e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E2_SW_WATER_ANCHORED_90C_9bar_property",
+      "initial_inventory_kg": 0.0056000000000000025,
+      "slot": "E2_SW_WATER_ANCHORED_90C_9bar_property",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_TR_LINEAR_3bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "32c7bb1c7bb2d14832b0a38d729644143be88977c61a3d564d23cfa5d1363302",
+      "slot": "E4_TR_LINEAR_3bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:46:59.124668+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 9.268658025330181e-17,
+        "water_max_kg": 1.0842021724855044e-19
+      },
+      "case_manifest_sha256": "1e1cd560d4d9e5b3abae07358c5c69bbf71508679f1749b264bb862c9e152f7d",
+      "cells": 2048,
+      "elapsed_s": 2.9255939861759543,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.0029628041030705854,
+        "final_stored_solute_kg": 0.0012865503988744697,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0004129802391548546,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_TR_LINEAR_3bar_base",
+      "initial_inventory_kg": 0.00559999999999997,
+      "slot": "E4_TR_LINEAR_3bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_TR_LINEAR_3bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "27a5b7835b6d3f64b80983b1c58ad31526db0d00196b32ba89eaa732e4e1b960",
+      "slot": "E4_TR_LINEAR_3bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:02.070821+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 1.0275118455125502e-16,
+        "water_max_kg": 4.336808689942018e-19
+      },
+      "case_manifest_sha256": "d1b69b139252a5b7767110ef6c5acc661f48f593061c1c5270ba18470150c1b0",
+      "cells": 2048,
+      "elapsed_s": 5.1118666753172874,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.0029632653031617276,
+        "final_stored_solute_kg": 0.0012866361798372365,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0004132451147189902,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_TR_LINEAR_3bar_temporal",
+      "initial_inventory_kg": 0.005599999999999959,
+      "slot": "E4_TR_LINEAR_3bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_TR_LINEAR_3bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "17be4013bc85f0744f982c85502459efb6d8ac71b9dd145fe8fd276c878aca24",
+      "slot": "E4_TR_LINEAR_3bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:07.205782+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 6.482504081597139e-16,
+        "water_max_kg": 5.421010862427522e-20
+      },
+      "case_manifest_sha256": "1988dff03afb3422eaf011f991fa508916bad3f2b02350b2c92e63f806266f69",
+      "cells": 4096,
+      "elapsed_s": 5.569808846339583,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.002963915150255092,
+        "final_stored_solute_kg": 0.001286023938513493,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.00041312651179709655,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.785714285714286e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.488095238095241e-06,
+          4.46428571428573e-06,
+          7.4404761904762e-06,
+          1.04166666666667e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_TR_LINEAR_3bar_axial",
+      "initial_inventory_kg": 0.005599999999999903,
+      "slot": "E4_TR_LINEAR_3bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_TR_LINEAR_9bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "84e6259c3cf58e5bbd135a8f03f8a7479ec21dd56cea394134661bd0d128bca1",
+      "slot": "E4_TR_LINEAR_9bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:12.793053+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 4.078238529318229e-13,
+        "water_max_kg": 2.168404344971009e-19
+      },
+      "case_manifest_sha256": "36037bfab8abe5d30bd7bf785f57884cd5b6e28d41d48a1fb8c703d998e371da",
+      "cells": 2048,
+      "elapsed_s": 2.9070650385692716,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.0017501750825128241,
+        "final_stored_solute_kg": 0.0007323652459262571,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 4.7496367136481854e-05,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_TR_LINEAR_9bar_base",
+      "initial_inventory_kg": 0.0055999999999999705,
+      "slot": "E4_TR_LINEAR_9bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_TR_LINEAR_9bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "2d21de52e527a30ef211d1c2626b60ac89ca3063f8382466b10bd5af69673f37",
+      "slot": "E4_TR_LINEAR_9bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:15.721214+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 6.406715999223973e-14,
+        "water_max_kg": 8.673617379884035e-19
+      },
+      "case_manifest_sha256": "1c721076442dc6a70bc5e865391819b6812e906ef0fac6d9820a5625fee03ee9",
+      "cells": 2048,
+      "elapsed_s": 5.082529779523611,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.001750928144144759,
+        "final_stored_solute_kg": 0.000732520837996348,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 4.7591854349831284e-05,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_TR_LINEAR_9bar_temporal",
+      "initial_inventory_kg": 0.005599999999999959,
+      "slot": "E4_TR_LINEAR_9bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_TR_LINEAR_9bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "dc3519cfd00845e92ed1c7d5972f21f567e20e1058944f5b83131c37d4baedf6",
+      "slot": "E4_TR_LINEAR_9bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:20.827289+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 5.386561856703353e-13,
+        "water_max_kg": 8.673617379884035e-19
+      },
+      "case_manifest_sha256": "6779b8f0cb9bd2898c303dba481d29f0d0723a01ea9a5bea3da39232273c023d",
+      "cells": 4096,
+      "elapsed_s": 5.574717446230352,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0017509028117688743,
+        "final_stored_solute_kg": 0.0007319187276398073,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 4.745712447776769e-05,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.785714285714286e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.488095238095241e-06,
+          4.46428571428573e-06,
+          7.4404761904762e-06,
+          1.04166666666667e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_TR_LINEAR_9bar_axial",
+      "initial_inventory_kg": 0.005599999999999903,
+      "slot": "E4_TR_LINEAR_9bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_SW_WATER_ANCHORED_90C_3bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "3e233a4fb8c87b08113816e910542e71391735eb0783a1e04d79e99ed299ab8b",
+      "slot": "E4_SW_WATER_ANCHORED_90C_3bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:26.421119+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 8.001142041191085e-17,
+        "water_max_kg": 2.6020852139652106e-18
+      },
+      "case_manifest_sha256": "d3d5527000ebec387676f3ff6d37bbebf14b5af2be23d0f77468f3d0efe0770d",
+      "cells": 2048,
+      "elapsed_s": 2.886721677146852,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.0031013337125626807,
+        "final_stored_solute_kg": 0.001351256707495254,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005023374735205049,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_SW_WATER_ANCHORED_90C_3bar_base",
+      "initial_inventory_kg": 0.00559999999999997,
+      "slot": "E4_SW_WATER_ANCHORED_90C_3bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "181e782f868c1324a0f8c268c03008cd76d16e7f4a82941e10c189a6cf11df35",
+      "slot": "E4_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:29.328676+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 1.0559552118813496e-16,
+        "water_max_kg": 2.168404344971009e-19
+      },
+      "case_manifest_sha256": "84e320a2744139730f9e23145c198bc9982cfa4aae4cdf79bc62358719ae1f42",
+      "cells": 2048,
+      "elapsed_s": 4.998783937655389,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.0031017438693822577,
+        "final_stored_solute_kg": 0.0013513391307166914,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005025747273681966,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "initial_inventory_kg": 0.005599999999999959,
+      "slot": "E4_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_SW_WATER_ANCHORED_90C_3bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "f89328b22ead33d217f3d285c4245b59735d902b377967e3c7ce6bb99e69320b",
+      "slot": "E4_SW_WATER_ANCHORED_90C_3bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:34.351080+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 6.093148446732755e-16,
+        "water_max_kg": 3.3881317890172014e-21
+      },
+      "case_manifest_sha256": "7596e7bd0ef078a1bea6237306c2fcb13a4d8df7d13508352953c1b17136de06",
+      "cells": 4096,
+      "elapsed_s": 5.6428039921447635,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0031024369185445435,
+        "final_stored_solute_kg": 0.0013507291018853055,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.000502468405646431,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.785714285714286e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.488095238095241e-06,
+          4.46428571428573e-06,
+          7.4404761904762e-06,
+          1.04166666666667e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_SW_WATER_ANCHORED_90C_3bar_axial",
+      "initial_inventory_kg": 0.005599999999999903,
+      "slot": "E4_SW_WATER_ANCHORED_90C_3bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_SW_WATER_ANCHORED_90C_3bar_property",
+      "recovery_reason": null,
+      "scenario_sha256": "6e1f6afbcc7e98958a4bca3725f91363a0ea24f885c4dc771aaeec03d894eec4",
+      "slot": "E4_SW_WATER_ANCHORED_90C_3bar_property",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:40.013304+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 7.981051478473397e-17,
+        "water_max_kg": 1.0842021724855044e-19
+      },
+      "case_manifest_sha256": "138b5103518e206044de7095be2981691499551b8927642b473c2adc96565370",
+      "cells": 2048,
+      "elapsed_s": 2.9234613180160522,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.0031013317253547916,
+        "final_stored_solute_kg": 0.0013512557641086166,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005023362039574432,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_SW_WATER_ANCHORED_90C_3bar_property",
+      "initial_inventory_kg": 0.00559999999999997,
+      "slot": "E4_SW_WATER_ANCHORED_90C_3bar_property",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_SW_WATER_ANCHORED_90C_9bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "6d58891531b2bf0671acc1b9298b9bdb434a70b3ac806048098cd217459ea96d",
+      "slot": "E4_SW_WATER_ANCHORED_90C_9bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:42.957388+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.8868084019849057e-13,
+        "water_max_kg": 3.469446951953614e-18
+      },
+      "case_manifest_sha256": "e8d6d3d57734d95d127a7bff61d4eb9ac11a267106d52cb605b72845c6cd6782",
+      "cells": 2048,
+      "elapsed_s": 2.8993506217375398,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.001955283845213511,
+        "final_stored_solute_kg": 0.0008262293753887949,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.746302166076819e-05,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_SW_WATER_ANCHORED_90C_9bar_base",
+      "initial_inventory_kg": 0.0055999999999999705,
+      "slot": "E4_SW_WATER_ANCHORED_90C_9bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "4307809f7850f26de81416860cf4ef911318e01b0e89493ed291061be87599bb",
+      "slot": "E4_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:45.877438+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 4.455591127102451e-14,
+        "water_max_kg": 3.469446951953614e-18
+      },
+      "case_manifest_sha256": "b59f5ccdcc7355624dbda38454b86453ea6a1916170ed46c4f37c8d98fb2226a",
+      "cells": 2048,
+      "elapsed_s": 5.0764200910925865,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.001955928917891775,
+        "final_stored_solute_kg": 0.0008263527865227787,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.756537157369209e-05,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "initial_inventory_kg": 0.005599999999999959,
+      "slot": "E4_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_SW_WATER_ANCHORED_90C_9bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "4b8f45cd7ef6044704cd1795ed4a81dbecadf9bd27e3603c5f76e8a51b34dc19",
+      "slot": "E4_SW_WATER_ANCHORED_90C_9bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:50.973903+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.8898520745127567e-13,
+        "water_max_kg": 3.469446951953614e-18
+      },
+      "case_manifest_sha256": "ae9c4b672d1d6f16e9fde9851fee7818919da05ec6bf01a2048eb06ae7bf458c",
+      "cells": 4096,
+      "elapsed_s": 5.652606741525233,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0019557999927906243,
+        "final_stored_solute_kg": 0.0008256874985430144,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.740729982040676e-05,
+        "inner_volume_m3": 5.952380952380959e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.785714285714286e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.488095238095241e-06,
+          4.46428571428573e-06,
+          7.4404761904762e-06,
+          1.04166666666667e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_SW_WATER_ANCHORED_90C_9bar_axial",
+      "initial_inventory_kg": 0.005599999999999903,
+      "slot": "E4_SW_WATER_ANCHORED_90C_9bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E4_SW_WATER_ANCHORED_90C_9bar_property",
+      "recovery_reason": null,
+      "scenario_sha256": "ede53ba8b45cd366fab446bb33f35ba04b427be3dc907436951913459eba8f18",
+      "slot": "E4_SW_WATER_ANCHORED_90C_9bar_property",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:56.647959+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.886791613791891e-13,
+        "water_max_kg": 4.336808689942018e-19
+      },
+      "case_manifest_sha256": "abbc61c2d27bbcaa13577ebf857d30c9f5caf9c6287dd05d3f24f2a228225d55",
+      "cells": 2048,
+      "elapsed_s": 2.9520102376118302,
+      "fields": {
+        "cells": 2048,
+        "final_remaining_kg": 0.001955281068286096,
+        "final_stored_solute_kg": 0.0008262280948889352,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.7462852043173375e-05,
+        "inner_volume_m3": 5.952380952380956e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.0019815595662517624,
+        "outer_volume_m3": 1.7857142857142875e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          1.4880952380952396e-06,
+          4.464285714285715e-06,
+          7.44047619047619e-06,
+          1.0416666666666693e-05
+        ]
+      },
+      "file_count": 53,
+      "id": "E4_SW_WATER_ANCHORED_90C_9bar_property",
+      "initial_inventory_kg": 0.0055999999999999705,
+      "slot": "E4_SW_WATER_ANCHORED_90C_9bar_property",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_TR_LINEAR_3bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "4c952f0c31ec010f8b3284c33c76236499334bee9495b08422731e3f3a1e42d9",
+      "slot": "E8_TR_LINEAR_3bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:47:59.621553+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 1.6414253379355877e-15,
+        "water_max_kg": 6.776263578034403e-21
+      },
+      "case_manifest_sha256": "8ba6a106608523b3cb7c60f6ad05955c329f0e103b46122725865233cafca341",
+      "cells": 4096,
+      "elapsed_s": 6.365936264395714,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0029622983753014274,
+        "final_stored_solute_kg": 0.0012867017045955407,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.00041277537912169963,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_TR_LINEAR_3bar_base",
+      "initial_inventory_kg": 0.00559999999999997,
+      "slot": "E8_TR_LINEAR_3bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_TR_LINEAR_3bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "33b2a5c2b6c6325ecd5d037572fdf1db8c826b063338be981588499db443deeb",
+      "slot": "E8_TR_LINEAR_3bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:48:06.009363+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.190090439828638e-16,
+        "water_max_kg": 1.734723475976807e-18
+      },
+      "case_manifest_sha256": "273c6e944953cf58485e99be57eb800345905624643f23645e1845b4c1f72288",
+      "cells": 4096,
+      "elapsed_s": 11.212053204886615,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0029627593639802168,
+        "final_stored_solute_kg": 0.001286787399024171,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.000413038861749636,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_TR_LINEAR_3bar_temporal",
+      "initial_inventory_kg": 0.005600000000000104,
+      "slot": "E8_TR_LINEAR_3bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_TR_LINEAR_3bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "a3d1015a940f8379098741459db153976172a1e1c29d48ddae5ec9021b3a61ab",
+      "slot": "E8_TR_LINEAR_3bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:48:17.246359+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 6.368223243386536e-15,
+        "water_max_kg": 1.734723475976807e-18
+      },
+      "case_manifest_sha256": "864437e2fdf8f6bbb9852d70ae8b3263124a73304d0e46a8d5ff41264e8f883d",
+      "cells": 8192,
+      "elapsed_s": 11.961440670304,
+      "fields": {
+        "cells": 8192,
+        "final_remaining_kg": 0.0029634073376673667,
+        "final_stored_solute_kg": 0.0012861761380133611,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0004129174924810292,
+        "inner_volume_m3": 5.952380952380904e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142747e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.7202380952381e-07,
+          1.1160714285714314e-06,
+          1.8601190476190535e-06,
+          2.604166666666667e-06,
+          3.3482142857142855e-06,
+          4.092261904761914e-06,
+          4.836309523809522e-06,
+          5.580357142857151e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_TR_LINEAR_3bar_axial",
+      "initial_inventory_kg": 0.005600000000000233,
+      "slot": "E8_TR_LINEAR_3bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_TR_LINEAR_9bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "87c357f504220e74a60115d9b0c6a8a873bd30f1e091b0d53aa7ac730fbe92fc",
+      "slot": "E8_TR_LINEAR_9bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:48:29.231173+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.41777122879972e-12,
+        "water_max_kg": 2.168404344971009e-19
+      },
+      "case_manifest_sha256": "381bf178ac6cb2199dc8eb058693b5469c26e9986bc2b31ad4ad8b3503b818a4",
+      "cells": 4096,
+      "elapsed_s": 6.424851793795824,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0017477174830707392,
+        "final_stored_solute_kg": 0.0007313289087419724,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 4.784343057486709e-05,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_TR_LINEAR_9bar_base",
+      "initial_inventory_kg": 0.005599999999999969,
+      "slot": "E8_TR_LINEAR_9bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_TR_LINEAR_9bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "b860d7709986c3915f5fa15a74d1611e7b65a5c00ca112bd8da6285bbde67303",
+      "slot": "E8_TR_LINEAR_9bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:48:35.677908+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 5.336176372886474e-13,
+        "water_max_kg": 1.734723475976807e-18
+      },
+      "case_manifest_sha256": "c01f0df7d938aae8caefaff75a043d364d8a4c29ebb7320acfac2950772573bc",
+      "cells": 4096,
+      "elapsed_s": 11.244414022192359,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0017484697577456556,
+        "final_stored_solute_kg": 0.0007314838231728838,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 4.793928476962205e-05,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_TR_LINEAR_9bar_temporal",
+      "initial_inventory_kg": 0.005600000000000105,
+      "slot": "E8_TR_LINEAR_9bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_TR_LINEAR_9bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "3a4ad5997b2e3cd6ef0d0b722157eeda7d9f0ec5fb87a515d157262f59c52ed4",
+      "slot": "E8_TR_LINEAR_9bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:48:46.947433+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 4.569409812702087e-12,
+        "water_max_kg": 0.0
+      },
+      "case_manifest_sha256": "23905f4e4de2bdd178c425131857b593aedc8265152c27e29ed04915feb74b4b",
+      "cells": 8192,
+      "elapsed_s": 11.998063066974282,
+      "fields": {
+        "cells": 8192,
+        "final_remaining_kg": 0.0017484451482775892,
+        "final_stored_solute_kg": 0.000730882958293087,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 4.7803777738326055e-05,
+        "inner_volume_m3": 5.952380952380904e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142747e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.7202380952381e-07,
+          1.1160714285714314e-06,
+          1.8601190476190535e-06,
+          2.604166666666667e-06,
+          3.3482142857142855e-06,
+          4.092261904761914e-06,
+          4.836309523809522e-06,
+          5.580357142857151e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_TR_LINEAR_9bar_axial",
+      "initial_inventory_kg": 0.005600000000000232,
+      "slot": "E8_TR_LINEAR_9bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_SW_WATER_ANCHORED_90C_3bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "856edfcf917f5aa9ca52781b2edd9eed27906808648c6451e044c322e209cba6",
+      "slot": "E8_SW_WATER_ANCHORED_90C_3bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:48:58.968933+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 7.422210903610532e-16,
+        "water_max_kg": 5.421010862427522e-20
+      },
+      "case_manifest_sha256": "9eb1faa3968dffa0fd51154b266ffe897b7191a94e8ec0ab0b934896be4d0ab7",
+      "cells": 4096,
+      "elapsed_s": 6.326843691058457,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.003100948352065636,
+        "final_stored_solute_kg": 0.0013513036175371838,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005017043154390085,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_SW_WATER_ANCHORED_90C_3bar_base",
+      "initial_inventory_kg": 0.00559999999999997,
+      "slot": "E8_SW_WATER_ANCHORED_90C_3bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "327c0c706d2929cfd1629d10a746f43624090f6322dc32711225163b8a594163",
+      "slot": "E8_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:49:05.318091+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.1905338830832216e-16,
+        "water_max_kg": 8.470329472543003e-22
+      },
+      "case_manifest_sha256": "52cd0328e8aefef68774c76bcbf48246ac340d250dca7c4f9d70b9e60fb60d93",
+      "cells": 4096,
+      "elapsed_s": 11.17278855573386,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0031013583096048424,
+        "final_stored_solute_kg": 0.0013513859698479334,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005019407141832378,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "initial_inventory_kg": 0.005600000000000104,
+      "slot": "E8_SW_WATER_ANCHORED_90C_3bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_SW_WATER_ANCHORED_90C_3bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "55383e4b5b25f4cefca71843813322e6b12a5be3167b5fc48748fcabe9ab15f2",
+      "slot": "E8_SW_WATER_ANCHORED_90C_3bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:49:16.515865+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 4.729561773957839e-15,
+        "water_max_kg": 5.421010862427522e-20
+      },
+      "case_manifest_sha256": "6b42934f8c185390b463ec9b068d5b4f9658fa7e9c3e52f063af6e255b4c171d",
+      "cells": 8192,
+      "elapsed_s": 12.17345056310296,
+      "fields": {
+        "cells": 8192,
+        "final_remaining_kg": 0.0031020501545102816,
+        "final_stored_solute_kg": 0.0013507779440745486,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005018343115805681,
+        "inner_volume_m3": 5.952380952380904e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142747e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.7202380952381e-07,
+          1.1160714285714314e-06,
+          1.8601190476190535e-06,
+          2.604166666666667e-06,
+          3.3482142857142855e-06,
+          4.092261904761914e-06,
+          4.836309523809522e-06,
+          5.580357142857151e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_SW_WATER_ANCHORED_90C_3bar_axial",
+      "initial_inventory_kg": 0.005600000000000233,
+      "slot": "E8_SW_WATER_ANCHORED_90C_3bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_SW_WATER_ANCHORED_90C_3bar_property",
+      "recovery_reason": null,
+      "scenario_sha256": "0fc98931c56d2681ba7e15d550e070fc0fffaa5928ac0e33f9f39316b2a455e2",
+      "slot": "E8_SW_WATER_ANCHORED_90C_3bar_property",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:49:28.713100+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 7.417721628990084e-16,
+        "water_max_kg": 4.336808689942018e-19
+      },
+      "case_manifest_sha256": "fad81944b340e07839eef1e44c3b432fa30ee42ca133b9265b7d126fca0c9b0d",
+      "cells": 4096,
+      "elapsed_s": 6.446565513499081,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0031009463752359272,
+        "final_stored_solute_kg": 0.0013513026827783074,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 0.0005017030477150953,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_SW_WATER_ANCHORED_90C_3bar_property",
+      "initial_inventory_kg": 0.00559999999999997,
+      "slot": "E8_SW_WATER_ANCHORED_90C_3bar_property",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_SW_WATER_ANCHORED_90C_9bar_base",
+      "recovery_reason": null,
+      "scenario_sha256": "0e97179bb3fdbd451c8ba33040e467146ea3728148de97dcbf5def7f8ffb88ff",
+      "slot": "E8_SW_WATER_ANCHORED_90C_9bar_base",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:49:35.179292+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.438018080080001e-12,
+        "water_max_kg": 2.168404344971009e-19
+      },
+      "case_manifest_sha256": "b76eaa076a895469e037502f1a19f3e6893d09be7509fbdc72aa8388813b40f3",
+      "cells": 4096,
+      "elapsed_s": 6.47199781704694,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0019533885378207054,
+        "final_stored_solute_kg": 0.0008258701029127876,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.7707641633679695e-05,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_SW_WATER_ANCHORED_90C_9bar_base",
+      "initial_inventory_kg": 0.005599999999999969,
+      "slot": "E8_SW_WATER_ANCHORED_90C_9bar_base",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "recovery_reason": null,
+      "scenario_sha256": "5a7cec7baf2da42a5be04571bd22332b0939a7ed20c6c64c379131d81a92982e",
+      "slot": "E8_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:49:41.670535+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.7554810462789626e-13,
+        "water_max_kg": 5.421010862427522e-20
+      },
+      "case_manifest_sha256": "4e953e3a774af04fb88bf908368b27d581f8572818769683c5e618570facb9bc",
+      "cells": 4096,
+      "elapsed_s": 11.309289623051882,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.0019540327914070775,
+        "final_stored_solute_kg": 0.0008259928937815383,
+        "final_time_s": 30.000000000002,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.781043019462332e-05,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "initial_inventory_kg": 0.005600000000000105,
+      "slot": "E8_SW_WATER_ANCHORED_90C_9bar_temporal",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_SW_WATER_ANCHORED_90C_9bar_axial",
+      "recovery_reason": null,
+      "scenario_sha256": "f2d0698b7ffd048ecab39cbc343675ec04486138f52733788b11ae2b478a1713",
+      "slot": "E8_SW_WATER_ANCHORED_90C_9bar_axial",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:49:53.004426+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 3.2973076309270044e-12,
+        "water_max_kg": 4.336808689942018e-19
+      },
+      "case_manifest_sha256": "ca9b7d8e6422ee152ce5eadbc19be7bed8030a0ee6d35c87cb9b1534e7719002",
+      "cells": 8192,
+      "elapsed_s": 12.221889625303447,
+      "fields": {
+        "cells": 8192,
+        "final_remaining_kg": 0.00195390041822668,
+        "final_stored_solute_kg": 0.000825329445201842,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.7652055461435076e-05,
+        "inner_volume_m3": 5.952380952380904e-06,
+        "interface_faces": 1024,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.7857142857142747e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.7202380952381e-07,
+          1.1160714285714314e-06,
+          1.8601190476190535e-06,
+          2.604166666666667e-06,
+          3.3482142857142855e-06,
+          4.092261904761914e-06,
+          4.836309523809522e-06,
+          5.580357142857151e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_SW_WATER_ANCHORED_90C_9bar_axial",
+      "initial_inventory_kg": 0.005600000000000232,
+      "slot": "E8_SW_WATER_ANCHORED_90C_9bar_axial",
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+      "id": "E8_SW_WATER_ANCHORED_90C_9bar_property",
+      "recovery_reason": null,
+      "scenario_sha256": "ba1be3328ef65532d58caf45f36bd7bdd87fff13c0b7cf836583052cd25975c6",
+      "slot": "E8_SW_WATER_ANCHORED_90C_9bar_property",
+      "status": "STARTED",
+      "utc": "2026-09-22T22:50:05.250075+00:00"
+    },
+    {
+      "balance": {
+        "solute_max_kg": 2.4380326994451543e-12,
+        "water_max_kg": 3.469446951953614e-18
+      },
+      "case_manifest_sha256": "58807ae1ccdde842c9201b31d264a81a4df342bbfa20bc9699c74ec1a66e0f9c",
+      "cells": 4096,
+      "elapsed_s": 6.420419938862324,
+      "fields": {
+        "cells": 4096,
+        "final_remaining_kg": 0.001953385778698865,
+        "final_stored_solute_kg": 0.0008258688237136464,
+        "final_time_s": 30.0,
+        "inner_area_m2": 0.0006605198554172542,
+        "inner_remaining_kg": 5.7707471017861604e-05,
+        "inner_volume_m3": 5.952380952380979e-06,
+        "interface_faces": 512,
+        "outer_area_m2": 0.001981559566251763,
+        "outer_volume_m3": 1.785714285714272e-05,
+        "positive_volumes": true,
+        "radial_face_alignment_max_m": 1.734723475976807e-18,
+        "radial_shell_volumes_m3": [
+          3.720238095238096e-07,
+          1.116071428571428e-06,
+          1.8601190476190504e-06,
+          2.6041666666666674e-06,
+          3.3482142857142826e-06,
+          4.092261904761903e-06,
+          4.836309523809516e-06,
+          5.58035714285714e-06
+        ]
+      },
+      "file_count": 53,
+      "id": "E8_SW_WATER_ANCHORED_90C_9bar_property",
+      "initial_inventory_kg": 0.005599999999999969,
+      "slot": "E8_SW_WATER_ANCHORED_90C_9bar_property",
+      "status": "COMPLETE"
+    }
+  ],
+  "ledger_sha256": "269bc2be4b1795a783b40e3c9dbb500130d64aaa404389195f7e1fa4408e64bc"
+}
