@@ -71,7 +71,7 @@ jobs:
           PY
       - name: Exercise complete end-to-end decision mutations
         run: PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v tests.test_sci_ed_002_handoff
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: sci-ed-002-exact-producer-handoff
           path: /tmp/sci-ed-002-exact-producer.json
