@@ -1,0 +1,24 @@
+{
+  "files": {
+    "0.2/darcyFlux": "d776bd2fb86a55b5d4a37fb872653d218f5f91f25462deb2c545f84be2a792ff",
+    "0.2/dissolvedConcentration": "a0c4f30c15cb495a443c1df7fc7d040e43e51dc0e6de60a5bdaeb73a353a9609",
+    "0/C": "585fe846af3ea5baec3a1a18aa6e38479f8b53e0f6127767b04c65c21ea3b28e",
+    "constant/polyMesh/neighbour": "527c0936f476f2601821e95d76d03d740ca59caf35e1be0bcae161048df2499e",
+    "constant/polyMesh/owner": "f1f4e987d619567bac11e2b45314152d80fa7f6d0727a0a3be6ff194f9f26801",
+    "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f"
+  },
+  "interval_end_s": 0.2,
+  "operator": "Gauss upwind: pressure-matrix face flux times accepted implicit donor concentration; diffusion also retained, not included in this advective-only demonstration",
+  "processor_interface": "32 radial-normal processor faces, material interface between ranks",
+  "processor_zone_sets": [
+    [
+      0.0
+    ],
+    [
+      1.0
+    ]
+  ],
+  "status": "PASS",
+  "transverse_absolute_native_water_flux_m3_s": 9.876964920381905e-10,
+  "transverse_absolute_upwind_solute_flux_kg_s": 1.6012777957101985e-08
+}

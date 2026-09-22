@@ -1,0 +1,148 @@
+{
+  "axial_double": {
+    "Q_relative": 7.805645019232088e-12,
+    "share_absolute": 1.7412737918220955e-12
+  },
+  "axial_uniform_k": {
+    "Q_relative": 3.438671569711005e-11,
+    "share_absolute": 2.1608687061913656e-11
+  },
+  "axial_water": {
+    "Q_relative": 8.426925823812326e-12,
+    "share_absolute": 1.8187673589409314e-12
+  },
+  "base_double": {
+    "Q_relative": 1.0149658891123181e-11,
+    "share_absolute": 1.4552803406786552e-12
+  },
+  "base_uniform_k": {
+    "Q_relative": 1.0272005468436873e-11,
+    "share_absolute": 1.8653412148239568e-12
+  },
+  "base_water": {
+    "Q_relative": 1.0080936085898884e-11,
+    "share_absolute": 1.5232259897857148e-12
+  },
+  "baseline_executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+  "bulk_regression": 0.0,
+  "concentration_range_final": 8.364412992256929,
+  "constant_coupled_baseline": 7.679412661332208e-13,
+  "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+  "mpi_normalized": 4.7943420067309006e-08,
+  "native_rejections": {
+    "bulk_radial": {
+      "log_sha256": "04466398d6c7595683b2c1dc3a6a2d827df3f125913909b2e7be66fac48caad9",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "density": {
+      "log_sha256": "78fb2ea08637b0148aa1bf653f101d983361221c5f17151096a7798ac7a14029",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "flow": {
+      "log_sha256": "a5fd5d05fc7c83627200d4137ee837d6f205246f76bc84b3b0a9add5269b3849",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "interface_empty": {
+      "log_sha256": "68c2b848257bbf828f1b1f09306b9569eed6ac4b47448410ea0591ba11a4bf18",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "interface_misaligned": {
+      "log_sha256": "dc6a9e888fde6ad7252646695e96a76a8380ab42b093e712a74a23224f908d3b",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "k_negative": {
+      "log_sha256": "640bbe9abea7f4bba7b7573bf09195f2ff77d7d9a26eccc56ecd6fbf1f8b14ad",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "k_zero": {
+      "log_sha256": "24851b1027792828028c58df978a90380592bc0faf6103d65426418d5dd9a83b",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "malformed_table": {
+      "log_sha256": "45ced9f1ff2c8598d842377684fb08f4edc5185c0e5b019b2340519a5a370e4a",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "mechanics": {
+      "log_sha256": "94d0894637470c4d1d3945517dcb41ed03baf31dc94195a118b8781a627cf3d2",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "mode": {
+      "log_sha256": "c42ff5303d2e5f5c3fa891205fd63045461566af10dfe489d25a74c5073a68f9",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "nonfinite_pressure": {
+      "layer": "OpenFOAM numeric parser SIGFPE before time loop",
+      "log_sha256": "e30a8e0a7cf3da10dc9cf67305093c63875745d7202f3548d6b113ff858e08a2",
+      "returncode": -8,
+      "status": "REJECTED"
+    },
+    "ramp": {
+      "log_sha256": "e1edc3498e004a57f5f3c7e2b8cd5bcd46385e5b635dd4639f15b2aead61d284",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "restart": {
+      "log_sha256": "0d1db30b6d1a12756d1adb25f73622dadb0ec93ba2848ba36c0e055c4e418a74",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "temperature": {
+      "log_sha256": "1028f0b907aa3493b0e4c31ac185910e777d11553cb408f7720bf7a56fb85916",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "unsaturated": {
+      "log_sha256": "040d476606cf995860cf082ffb34b37b3bf02f5a1800a791aa6e87dbb14fe547",
+      "returncode": 1,
+      "status": "REJECTED"
+    },
+    "zero_pressure": {
+      "log_sha256": "d8d7eb4c5a888869138d4f8507363d5dfc564b24fa954fef93e8ee2fe093eb79",
+      "returncode": 1,
+      "status": "REJECTED"
+    }
+  },
+  "observe_baseline": 0.0,
+  "radial_double": {
+    "Q_relative": 4.522826557717963e-12,
+    "share_absolute": 1.334043986389588e-12
+  },
+  "radial_uniform_k": {
+    "Q_relative": 2.0965451597021456e-12,
+    "share_absolute": 2.4065194281774893e-12
+  },
+  "radial_water": {
+    "Q_relative": 4.494404848287559e-12,
+    "share_absolute": 1.347144618080165e-12
+  },
+  "repeat_absolute": 0.0,
+  "scalar_fixture_allowance_pp": 2.1608687061913656e-09,
+  "short_runs": 16,
+  "status": "PASS",
+  "traces": {
+    "axial_double": "594fab3c75cae88b6f738f959f8022e23f81014cac92aef8706e5efa9ec98aa3",
+    "axial_uniform_k": "992d58ad75606cb9ba7ef8be25d8ba70b669683ccda3c60c9dd7b6ef1df0d9de",
+    "axial_water": "67266d11edef7ac4a1c7f5838b4d69a8f0154b99676523870665d919d23182ac",
+    "base_constant_coupled": "797baec6b7ea5ef8caa25ea3c8e07d94e4328f997584a09d6a16647a53f5b083",
+    "base_double": "fa265ab3c4ba1ba8248f062d5fbcc7f536d993b9db31c71abeb6bcd5ec0242a4",
+    "base_uniform_k": "8195b3b2994f6f81d86b4b5adba065ace496f4774b429c269ccf6ca7e2454499",
+    "base_water": "eb12dc3f3194abd2e389129e0452be3e2e645660feff32e3582dabe8956bf6a0",
+    "radial_double": "d923e3edc447c328882d1f73711fb48e4e10507db04c5dd42f7a3047f23a3994",
+    "radial_uniform_k": "2882d6675c2e465090b4e5782eb4a464be1a546cbae5d3882ed2678978b6274c",
+    "radial_water": "0839e5827d7e9f236d2c19461cebbfd3a4674ca6e56c6ecac414d07019619054",
+    "transverse": "49399b31fcaf64a2b417fac5b85eea855fbc0a0b393e0abd1fb7c0395d6eff71",
+    "transverse_mpi": "1ed1d43bc40d03449520f7515e92ad529f3e9c2fa33a8937b8d85a4b4ff57c68",
+    "transverse_repeat": "49399b31fcaf64a2b417fac5b85eea855fbc0a0b393e0abd1fb7c0395d6eff71"
+  },
+  "transverse_abs_flux_max": 8.830734868493507e-10
+}

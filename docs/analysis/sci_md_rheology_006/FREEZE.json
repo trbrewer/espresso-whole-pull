@@ -1,0 +1,256 @@
+{
+  "allowance_fraction": 0.2,
+  "artifact_root_sha256": "19bce6b703a40638aa8973adfdc4ebea577f094173190a3594aeb2a736681cdf",
+  "budgets_pp": {
+    "D_mean_pp": 1.0,
+    "D_peak_pp": 2.0
+  },
+  "build_log_sha256": "2f0dd97c7142a53592582dc9a94ff175934f3063d37875934431c81a40a2d6b8",
+  "change_declaration": "GOVERNING_PHYSICS_CHANGE",
+  "executable_sha256": "bea2860f92f4934c3f191b7da8d9c425f73ac254cd42131172dad133dd77d7ad",
+  "files": {
+    "dependencies/puckworks.lock.json": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+    "docs/analysis/sci_md_rheology_001/AUDIT.json": "dbdea5a91f1d10efcee47662568c5b284f2740122a98532f77350582e437dce7",
+    "docs/analysis/sci_md_rheology_001/AUTHORITY.json": "e2c320b1aade83e403b5d53c127b0900367e32c0bb56fba6585976cf9d4d45e8",
+    "docs/analysis/sci_md_rheology_001/FREEZE.json": "5565e1dba7aa4b2ddd93bbfa51c88b7d536d45f16380684553f3d4a9332d659e",
+    "docs/analysis/sci_md_rheology_001/MANIFEST.json": "0ff2be09f92f650cfdd4b3d3888a6cb39210d2bfb33d8c92e66e2d1c0b418cb6",
+    "docs/analysis/sci_md_rheology_001/METRICS.json": "587db93c5afbf7a54e08eef917104992d0d4c7b94e991c2cc3031f1e3d98a85d",
+    "docs/analysis/sci_md_rheology_001/NUMERICAL.json": "5e2e57c1b67bae9a74edf68c3a34d6393e75e8015295265628e58fa85a193c2a",
+    "docs/analysis/sci_md_rheology_001/POST_RESULT_AMENDMENT.json": "402326695cc96d0c154721e494751ff9d7d0f8caf54a7af80c50f808f792ebb3",
+    "docs/analysis/sci_md_rheology_001/QA.json": "4872ef68f2af8b6c717db165f3a610696e272ce2dc21481b39f9522d3630a138",
+    "docs/analysis/sci_md_rheology_001/SCENARIOS.json": "b1561c3ddf32a04a604f788709f6e3ba3b091566bad5d917c1fcdf145e85a7a5",
+    "docs/analysis/sci_md_rheology_002/EXPORT.json": "f7df2dccdd2486b0d672dfd3ba7c8dcd87d82ba192ae60174396532da3b87699",
+    "docs/analysis/sci_md_rheology_002/FREEZE.json": "a6ab55359cf78c9e6c3e65c2301e158771f41f5b8ec01dd12b79914641bf6845",
+    "docs/analysis/sci_md_rheology_002/METRICS.json": "8b9391f25476671f7709cefca9048e85dab1eab1ee4de8db69e783a2d858fe52",
+    "docs/analysis/sci_md_rheology_002/POST_RESULT_AMENDMENT.json": "d86c398229565ab0963cbd259f910541dc920d0855d6b4614fdc2639fa96831c",
+    "docs/analysis/sci_md_rheology_002/RUNS.json": "f712243a9a3b6362e3821575d6b81605e785857dfda67d3a595ecbd7010b0719",
+    "docs/analysis/sci_md_rheology_002/STARTUP.json": "be48e57c6a157bd4e29bfdb5d0f116434f1647cfc079e1a81050b70d2bb72284",
+    "docs/analysis/sci_md_rheology_002/VERIFICATION.json": "a4be0762f2bab6c4180bc3fbfdaa8140d358debaa67ffbe7e046567fd1fb0cef",
+    "docs/analysis/sci_md_rheology_003/AUDIT.json": "9200df4b69a608b5bb320055778c8c235f5d9c40c98eea5cc13d34487b15e3ee",
+    "docs/analysis/sci_md_rheology_003/EXPORT.json": "d7933b57165796e9658202b1b83006fa910f56afb7b754cc7c6b6ab36e039c34",
+    "docs/analysis/sci_md_rheology_003/FREEZE.json": "e6c8c009b35deb5e518f3449f936d7aa9a5399f214eb317892941b67897d6124",
+    "docs/analysis/sci_md_rheology_003/METRICS.json": "ba0c9739ca4103f424e4d8934fcf307f75aa144b16acfb5c57c4053d2f2b6368",
+    "docs/analysis/sci_md_rheology_003/RESULT_REVIEW.json": "528ca41c59e5117bf3beba9aa2c32b3e1cdbae91b0463813c625457b8cc71865",
+    "docs/analysis/sci_md_rheology_003/REUSE.json": "7d8e9e2326fa4a3be1d71a603c880d7375123a472c59c4e954225cb5b2d7efb2",
+    "docs/analysis/sci_md_rheology_003/RUNS.json": "423fe76022ef79fd57908f37b44f8ad1c38a63e47f5ff6385c7320304ad5dc96",
+    "docs/analysis/sci_md_rheology_003/SHORT_CHECKS.json": "a7cda7b904b94b695951b53f0d9eaebc980b11b02d108f2e30b76bdf9db8ce17",
+    "docs/analysis/sci_md_rheology_003/SOURCE_USE.json": "ed7058e71fdaf9ac321fd41e6c17d6fa1c70408f162e20a8890c153e3df016df",
+    "docs/analysis/sci_md_rheology_004/AUDIT.json": "848af08fbdb12c5d49b530ffa712d095fb946900857060b564a70a58001e6061",
+    "docs/analysis/sci_md_rheology_004/FREEZE.json": "12cb10630db2ce082a08ae36f22e033132b21d63771a819ad870188d4b0fab02",
+    "docs/analysis/sci_md_rheology_004/METRICS.json": "a7db857cac76b9d68e3ebdcaea75a97f88a19b6ef3100b6aec7d8eeea513e754",
+    "docs/analysis/sci_md_rheology_004/REUSE.json": "7bf2dacb03b33ad3a3703298a9f39dd961dd20ac7338cbefef10a5c8f30392b9",
+    "docs/analysis/sci_md_rheology_004/RUNS.json": "d148735a6e6b962864720e11699985229d9541f1c462c1b243330aea358ead12",
+    "docs/analysis/sci_md_rheology_004/SUPPORT.json": "66e9fb0b75586e7f2612a2375250059e1d6715c102a9284231484d4d545fda12",
+    "docs/analysis/sci_md_rheology_005/AUDIT.json": "167d12b2412f4f643ccb4fb5d11f70c1581f35829fa67b335ab66431ae224e72",
+    "docs/analysis/sci_md_rheology_005/FREEZE.json": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+    "docs/analysis/sci_md_rheology_005/METRICS.json": "4c8407bb5316f73423945b5ac70c9875dbec06fa8e3ef1e72f6c267ba57e700b",
+    "docs/analysis/sci_md_rheology_005/PROPERTY.json": "56b89d36754a335b4b9c6a49c1587125252425324c831bb6f30cc41b485848a8",
+    "docs/analysis/sci_md_rheology_005/REUSE.json": "84e44649315fe8596b66d9341acd9c723d3844f759d4908a16b79eae181e5c87",
+    "docs/analysis/sci_md_rheology_005/RUNS.json": "a9738a9e9e8e506f76c01cb5795d7abe6811e1dd3e23fc934ac53abe7f9546eb",
+    "docs/analysis/sci_md_rheology_005/SHORT_CHECKS.json": "4b3dd17562c011ebb5e8eafb88e96444dfd49b9571b1aa38589b03e2d83795e3",
+    "docs/analysis/sci_md_rheology_005/SUPPORT.json": "32163086f3dda91fc12ed482df9a1f2fd5cf80e86a4de8491d16ee96faa846ff",
+    "docs/analysis/sci_md_rheology_006/PROTOCOL.md": "7f18db330d539cae0f39e3e8890934acafed6616bc710b404f581bdbed500a0a",
+    "docs/analysis/sci_md_rheology_006/REUSE.json": "6931093efdeb5368f9794cb4da6b8d355f1cab4ecfbab748b219824868d1d595",
+    "docs/analysis/sci_md_rheology_006/SHORT_CHECKS.json": "7252978fdb26241a8a73637efa7e3e62c476407454dfffe79144305c5623eef1",
+    "scripts/aggregate_viscosity.py": "8311bd58ad9740dcf948d3fb5baa7f78100a7620195870b9821522018775205f",
+    "scripts/prepare_case.py": "8fee839766a6666ec97ace86f1bf0ca1ef19680b6a9be9f396a600361d64c722",
+    "solver/espressoWholePullFoam/Make/files": "70aa84e2e2cbd37a9c25217fee498c234816cf41fb57b5f24c41a0e8495f7d83",
+    "solver/espressoWholePullFoam/Make/options": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
+    "solver/espressoWholePullFoam/aggregateViscosity.H": "8b7ef1b7e4fc7ba0eb52dc2d06cb0b5770aa8021fe481af23f3a74c0c45fbb8c",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "9e9402741c28dbf9215e27d10996b5816ee6e9f8890bf9b88733a8705545f7c6",
+    "solver/espressoWholePullFoam/forchheimerResistance.H": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719",
+    "solver/espressoWholePullFoam/poroelasticCompaction.H": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6",
+    "solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H": "a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082",
+    "solver/espressoWholePullFoam/prescribedPressureBoundaryModel.H": "2b8f4d622129fdfe4c2606d4445d5ee12ad02a509dcc6341f8aad8e2581cd234",
+    "tests/test_sci_md_rheology_006.py": "fa1b008c2581ffb67f3232b958fe5309a0bc0a7d15d6f38d5d888e669f11a013",
+    "tools/sci_md_rheology_001/analysis.py": "d44249324c17de8aae0db1fe10b1a17ff8cef6d2278b9c29e84bf4a62b49c81d",
+    "tools/sci_md_rheology_001/report.py": "8b887c7afb22aead46f9af4b560df3fa2741934b588dfdfb64d005e13336077f",
+    "tools/sci_md_rheology_001/runner.py": "9cf1e5c6aec109ee4417d16698025e87083fd65b69a20ff845c8a41bd9600c21",
+    "tools/sci_md_rheology_002/analyze.py": "021ab7f64000c92ef2bac0b59d9819204243e76bc67c5582b9b274213d15f087",
+    "tools/sci_md_rheology_002/authority.py": "b88384c267b28f34bca5b6202a3a5fee41f3ae78af5b6a6015a39eb1ca8ce24c",
+    "tools/sci_md_rheology_002/check_startup.py": "d531a2aff2b8f5793630ae7d497be95d19a39cb471fd5582465fe5b668b9db86",
+    "tools/sci_md_rheology_002/evidence.py": "f6313a494384b882168f71c6083253dd4f2660522addae2a9e08cbdf5de22042",
+    "tools/sci_md_rheology_002/export.py": "45635dfe63cdca75ddeb49da83a38ec301459e501b6f6ea15ace620c36237fad",
+    "tools/sci_md_rheology_002/plot.py": "b5a0d288e5d4a5ed1967ef3003dad35afae4455b32529b0326a347e021b4756f",
+    "tools/sci_md_rheology_002/run.py": "f3e3d27fd730de76ee496ab5bd5358a88aa4db0f0570e37169fab82d0f9a6cc5",
+    "tools/sci_md_rheology_002/verify.py": "a2237f70f38c0844b9ce203800fbe36714ea3b0296bb2582b01e0989d74c73d6",
+    "tools/sci_md_rheology_003/analyze.py": "b8c220322f51f87209f692943a1640ceeda31a7d9b7e2011c39b6aade9828490",
+    "tools/sci_md_rheology_003/evidence.py": "b823feba73f3fa752a23131c115f81b959e477eabe8810c678ccd60df6624922",
+    "tools/sci_md_rheology_003/export.py": "bbe95b266f8ac0bbdfe06f9010b363603ccaf083e254a4aab34c8dc57e71a604",
+    "tools/sci_md_rheology_003/freeze.py": "cb5696007873daaf129fffd5431502722257555dd195f94dff9f747393c0359a",
+    "tools/sci_md_rheology_003/laws.py": "99931b6bc9e356ce041cf27f7ee7a4d0b57891e808f647d29299276deb48a80e",
+    "tools/sci_md_rheology_003/plot.py": "a4d71806e72833b8b06d756b24f48a4ff91cdcb73a76451d47b3df85b0a2f1ee",
+    "tools/sci_md_rheology_003/run.py": "e26da863b11d7fafb0ea6ac59a04151dd823d40c9c5f123a9de81e6fa9c72668",
+    "tools/sci_md_rheology_004/analyze.py": "b252ffaff09308fe0f9f3f55d29cd84b703659b8a0cdaf17846f03541512418c",
+    "tools/sci_md_rheology_004/evidence.py": "b951d31053c66c2301953f95b2d8ce2387213d4b81c0cdad5f02699b8e6afa78",
+    "tools/sci_md_rheology_004/freeze.py": "891f52162c955d7167dd4eb574f922a9e0bf7ac51f8a41aa615018a43256e4ee",
+    "tools/sci_md_rheology_004/observer.py": "ed284d5e897549a0a058afaf1941b2a1bfe35c619fd3adc2bf8d56b11ea71514",
+    "tools/sci_md_rheology_004/plot.py": "57e181926ba6882177b5c70b8adbc2fe414abda9286dcb8d64dea9bef8e96c3e",
+    "tools/sci_md_rheology_004/run.py": "964a157e8ecb97a094b0bbd8cd22159b9e974d4d2320a5b745b47325bddc2a90",
+    "tools/sci_md_rheology_005/analyze.py": "e74e0b58aebae7cd733d195c7e8920b2c859f97c3eaedf9290eb9801d4fddb40",
+    "tools/sci_md_rheology_005/evidence.py": "2d5c99ec0343f18d53778fe6ad54a3687c1721126af0476521ecb5fe7a0310d2",
+    "tools/sci_md_rheology_005/plot.py": "92c89b57cbaf54d4ec208654d6f68d4a4724684d675098c683584e3f9fec4543",
+    "tools/sci_md_rheology_005/prepare.py": "f93e19609fccddf5696474d11c1ee9f2a012543e712cce4128a432a65d4f2b83",
+    "tools/sci_md_rheology_005/run.py": "20441ade72e2a89ffa69481e034d407600d125122c60587f82aa0d75dd39a460",
+    "tools/sci_md_rheology_005/short.py": "8f215ea35702c9b290b46dc94d16812388932b9ad8b694c1f2fc1cbbc1458f94",
+    "tools/sci_md_rheology_006/analyze.py": "c27b407743ee20da3c27a97d2961cd41eac0c6e52e125efd01c296f0e8a4d777",
+    "tools/sci_md_rheology_006/common.py": "d8c79c87c503d0217715c05e5f4d9aabcea0e457aa6f2762fdcfc9a7ab267c71",
+    "tools/sci_md_rheology_006/observer.py": "f2655201bd97974798598acbbf2236b6b1f79f846fc928086ac87b68093ac9d9",
+    "tools/sci_md_rheology_006/prepare.py": "e7fb4475de6b5ec53c2829e5e70b7a0cd880bfdb0b91ff13eba9080dc9f6fa2c",
+    "tools/sci_md_rheology_006/reject.py": "e1835cd1df406ce279434174f89b0e8c5a7b5c7e0acbf2bf3964069f5155f4d7",
+    "tools/sci_md_rheology_006/run.py": "2a622d8d1e23fc9eee9648313ab6ee6cc86eadab6b83bd1d90800a84ee282dbf",
+    "tools/sci_md_rheology_006/short.py": "303fbc8323061564a5402b91d170529a21336e4b7bce6271eda67c7531a40346"
+  },
+  "full_matrix": {
+    "SW_WATER_ANCHORED_90C_3bar_axial": [
+      "SW_WATER_ANCHORED_90C",
+      "axial",
+      3
+    ],
+    "SW_WATER_ANCHORED_90C_3bar_base": [
+      "SW_WATER_ANCHORED_90C",
+      "base",
+      3
+    ],
+    "SW_WATER_ANCHORED_90C_3bar_property": [
+      "SW_WATER_ANCHORED_90C",
+      "property",
+      3
+    ],
+    "SW_WATER_ANCHORED_90C_3bar_radial": [
+      "SW_WATER_ANCHORED_90C",
+      "radial",
+      3
+    ],
+    "SW_WATER_ANCHORED_90C_3bar_temporal": [
+      "SW_WATER_ANCHORED_90C",
+      "temporal",
+      3
+    ],
+    "SW_WATER_ANCHORED_90C_9bar_axial": [
+      "SW_WATER_ANCHORED_90C",
+      "axial",
+      9
+    ],
+    "SW_WATER_ANCHORED_90C_9bar_base": [
+      "SW_WATER_ANCHORED_90C",
+      "base",
+      9
+    ],
+    "SW_WATER_ANCHORED_90C_9bar_property": [
+      "SW_WATER_ANCHORED_90C",
+      "property",
+      9
+    ],
+    "SW_WATER_ANCHORED_90C_9bar_radial": [
+      "SW_WATER_ANCHORED_90C",
+      "radial",
+      9
+    ],
+    "SW_WATER_ANCHORED_90C_9bar_temporal": [
+      "SW_WATER_ANCHORED_90C",
+      "temporal",
+      9
+    ],
+    "TR_LINEAR_3bar_axial": [
+      "TR_LINEAR",
+      "axial",
+      3
+    ],
+    "TR_LINEAR_3bar_base": [
+      "TR_LINEAR",
+      "base",
+      3
+    ],
+    "TR_LINEAR_3bar_radial": [
+      "TR_LINEAR",
+      "radial",
+      3
+    ],
+    "TR_LINEAR_3bar_temporal": [
+      "TR_LINEAR",
+      "temporal",
+      3
+    ],
+    "TR_LINEAR_9bar_axial": [
+      "TR_LINEAR",
+      "axial",
+      9
+    ],
+    "TR_LINEAR_9bar_base": [
+      "TR_LINEAR",
+      "base",
+      9
+    ],
+    "TR_LINEAR_9bar_radial": [
+      "TR_LINEAR",
+      "radial",
+      9
+    ],
+    "TR_LINEAR_9bar_temporal": [
+      "TR_LINEAR",
+      "temporal",
+      9
+    ],
+    "control_SW_WATER_ANCHORED_90C_reversed_3bar": [
+      "SW_WATER_ANCHORED_90C",
+      "control",
+      "reversed_3bar"
+    ],
+    "control_SW_WATER_ANCHORED_90C_uniform_9bar": [
+      "SW_WATER_ANCHORED_90C",
+      "control",
+      "uniform_9bar"
+    ],
+    "control_TR_LINEAR_reversed_3bar": [
+      "TR_LINEAR",
+      "control",
+      "reversed_3bar"
+    ],
+    "control_TR_LINEAR_uniform_9bar": [
+      "TR_LINEAR",
+      "control",
+      "uniform_9bar"
+    ]
+  },
+  "governance": "G2",
+  "maximum_full_attempts": 26,
+  "native_rejection_ceiling": 20,
+  "planned_full_runs": 22,
+  "scalar_fixture_allowance_pp": 2.1608687061913656e-09,
+  "scenario_identities": {
+    "SW_WATER_ANCHORED_90C_3bar_axial": "513d168384a42bedb7dc3a71dcf48f50af357aa8efb49f97a4c84f1ea19e309d",
+    "SW_WATER_ANCHORED_90C_3bar_base": "31d375b7bbd0996eefe83c73dfb1aa97a79862b1d6bc56ed52ee5a8592ada596",
+    "SW_WATER_ANCHORED_90C_3bar_property": "7a5b9165eb913d100edaf3c3cf1c037c2812779dc19e64572e419e1b06c8ec48",
+    "SW_WATER_ANCHORED_90C_3bar_radial": "cb046e0d79d4b19653482d44c338df9d8682afc2c7e58bf9ff39a64778d82db2",
+    "SW_WATER_ANCHORED_90C_3bar_temporal": "d8bbaabee172dae6cd0043e0e49dc4676b432d77602fc5669b7e9064dee81831",
+    "SW_WATER_ANCHORED_90C_9bar_axial": "6082e70bf64b0d4a7d460eef90662c98e92388cf2fd4688a7068f0bb6a5166c4",
+    "SW_WATER_ANCHORED_90C_9bar_base": "6e0fbf5dbbb271f0a91ef607356480f0b12b1d28c33dbf42147c8151d01001c1",
+    "SW_WATER_ANCHORED_90C_9bar_property": "6ec2af48ff7ccd18c7ae9372fbbb68b8e3f12822b678bdb126f6df19321f9687",
+    "SW_WATER_ANCHORED_90C_9bar_radial": "59e1396eccf1fb5f71d64816d9ff8ff1c5853f6a03486e56808871b42919addb",
+    "SW_WATER_ANCHORED_90C_9bar_temporal": "93d43323393ffadcc36723e3bed6b3d91c9865e5df8280b032cb27d9e883dc55",
+    "TR_LINEAR_3bar_axial": "8f224df94a1753784d3b1811a8287771283711ea7c40fed935fdf4d1c453c603",
+    "TR_LINEAR_3bar_base": "5b5e052e7f250f3d8a2b62ba4a8f18e7ee987202f10d241ece99534fa6805765",
+    "TR_LINEAR_3bar_radial": "b547f6f7c0724304585ccd161393ed5e82a779179fe3f68bdaad5b7117d23abe",
+    "TR_LINEAR_3bar_temporal": "a741c79450b56f8ef30970ba0fb10600113be0611a0481f705b5c7a4d80aa082",
+    "TR_LINEAR_9bar_axial": "7d1de940b7ed3fd13432ffba0faa20ce33aa20edc19807de977b38bd1f609841",
+    "TR_LINEAR_9bar_base": "8de32abf1a02091ef10e53ce405b2be4f095c009a54fa2b1a338d54b63e34bc6",
+    "TR_LINEAR_9bar_radial": "f62f1d5f37fc3f34a570157f0618029a505baeafc6b9cf3709820ecbf0206da7",
+    "TR_LINEAR_9bar_temporal": "4f127556c3d96312219ab615b27c766376bc5f96e850f41202064c4028ee2525",
+    "control_SW_WATER_ANCHORED_90C_reversed_3bar": "71c5d0a72bbcb217f2dbe7112e7b972abb56d6ef51aaaf2feb46579f4d6c8a0d",
+    "control_SW_WATER_ANCHORED_90C_uniform_9bar": "fb7d19058d01ba660725b4b5c5965b8b1260de9145037828e012595b02a5c040",
+    "control_TR_LINEAR_reversed_3bar": "3b1f9c518437ee141d75164e54f676ff2ff739a74ef8543d2959ab59fe0175b1",
+    "control_TR_LINEAR_uniform_9bar": "b3788bae6d171f8f9a7856a3b844e26cb4e2cdfbcb3c1afdee0ccf221fe154e3"
+  },
+  "scenarios_sha256": "d1c739136f96806cfb2ca7a1d713bbc7d4ab1b4a435e1d3cf8ed842fc01ad8d0",
+  "short_ceiling": 20,
+  "starting_commit": "db705b644bbc2c3f719690448657e845f2a8f65b",
+  "starting_tree": "7acc2aa9777fab3dbe5bedcdee4306920d21675d",
+  "tables": {
+    "SW_WATER_ANCHORED_90C_base.table": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+    "SW_WATER_ANCHORED_90C_refined.table": "578de2bd622e06ed14fdee18e22509e410e71b1d21a3516f9877c41d70da8842",
+    "TR_LINEAR.table": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3"
+  },
+  "task": "SCI-MD-RHEOLOGY-006"
+}

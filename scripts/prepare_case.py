@@ -1468,7 +1468,7 @@ def main() -> None:
     history = pressure_history_contract(scenario)
     aggregate_coupled = scenario.get("aggregate_viscosity", {}).get("mode", "off") in ("coupled", "bulkCoupled")
     preview = ({"status": "NOT_APPLICABLE", "reason": "Legacy scalar-ramp preview does not support pressure history"}
-               if history else {"status": "NOT_APPLICABLE", "reason": "Scalar-viscosity analytical preview is inapplicable to aggregate-viscosity feedback; use native interval resistance diagnostics"}
+               if history else {"status": "NOT_APPLICABLE", "reason": "Scalar-viscosity analytical preview is inapplicable to aggregate-viscosity feedback; use topology-specific native interval diagnostics"}
                if aggregate_coupled else analytical_preview(preview_scenario))
     if r1:
         if is_wp02_scenario(scenario):
