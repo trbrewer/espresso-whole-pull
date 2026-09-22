@@ -49,10 +49,14 @@ def production_bytes(root, path):
                 expected = change['amended_sha256']
         active = root/'docs/analysis/sci_md_rheology_005/FREEZE.json'
         if active.exists():
+            historical_base = load(active)['starting_commit']
+            successor = root/'docs/analysis/sci_md_rheology_006/FREEZE.json'
+            if successor.exists():
+                active = successor
             current = load(active)
             if sha(root/path) != current['files'][path]:
-                raise ValueError('active 005 source differs from frozen contract '+path)
-            historical = subprocess.check_output(['git','show',current['starting_commit']+':'+path],cwd=root)
+                raise ValueError('active rheology source differs from frozen contract '+path)
+            historical = subprocess.check_output(['git','show',historical_base+':'+path],cwd=root)
             if hashlib.sha256(historical).hexdigest() != expected:
                 raise ValueError('historical 002 source differs from accepted contract '+path)
         elif sha(root/path) != expected:
