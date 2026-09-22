@@ -1,0 +1,48 @@
+{
+  "missing": {},
+  "provisional": false,
+  "support": {
+    "reversed_3bar": {
+      "B_star_kg": 0.006681617998051428,
+      "adequate": true,
+      "coverage_ratio": 1.0,
+      "inherited_004_B_kg": 0.006681617998051428
+    },
+    "uniform_9bar": {
+      "B_star_kg": 0.023658382893039853,
+      "adequate": true,
+      "coverage_ratio": 1.0,
+      "inherited_004_B_kg": 0.023658382893039853
+    }
+  },
+  "terminal_B_kg": {
+    "SW_WATER_ANCHORED_90C/base/reversed_3bar/C": 0.006684052478886042,
+    "SW_WATER_ANCHORED_90C/base/reversed_3bar/G": 0.006994333356017052,
+    "SW_WATER_ANCHORED_90C/base/uniform_9bar/C": 0.02366057284845191,
+    "SW_WATER_ANCHORED_90C/base/uniform_9bar/G": 0.024404301668112312,
+    "SW_WATER_ANCHORED_90C/property/reversed_3bar/C": 0.006684067003623264,
+    "SW_WATER_ANCHORED_90C/property/reversed_3bar/G": 0.006994352567306924,
+    "SW_WATER_ANCHORED_90C/property/uniform_9bar/C": 0.023660637634889292,
+    "SW_WATER_ANCHORED_90C/property/uniform_9bar/G": 0.02440436734247168,
+    "SW_WATER_ANCHORED_90C/spatial/reversed_3bar/C": 0.006681617998051428,
+    "SW_WATER_ANCHORED_90C/spatial/reversed_3bar/G": 0.006992382854095763,
+    "SW_WATER_ANCHORED_90C/spatial/uniform_9bar/C": 0.023663349950550742,
+    "SW_WATER_ANCHORED_90C/spatial/uniform_9bar/G": 0.024409519214747134,
+    "SW_WATER_ANCHORED_90C/temporal/reversed_3bar/C": 0.006683637914364321,
+    "SW_WATER_ANCHORED_90C/temporal/reversed_3bar/G": 0.006993838317700542,
+    "SW_WATER_ANCHORED_90C/temporal/uniform_9bar/C": 0.023658382893039853,
+    "SW_WATER_ANCHORED_90C/temporal/uniform_9bar/G": 0.024402627245383567,
+    "TR_LINEAR/base/reversed_3bar/C": 0.0077216183159085966,
+    "TR_LINEAR/base/reversed_3bar/G": 0.008463009885084664,
+    "TR_LINEAR/base/uniform_9bar/C": 0.028619859069001247,
+    "TR_LINEAR/base/uniform_9bar/G": 0.031548715997600396,
+    "TR_LINEAR/spatial/reversed_3bar/C": 0.007718380290156561,
+    "TR_LINEAR/spatial/reversed_3bar/G": 0.008461115985412097,
+    "TR_LINEAR/spatial/uniform_9bar/C": 0.028618768648225573,
+    "TR_LINEAR/spatial/uniform_9bar/G": 0.0315523604721857,
+    "TR_LINEAR/temporal/reversed_3bar/C": 0.007721561917565398,
+    "TR_LINEAR/temporal/reversed_3bar/G": 0.00846287023050754,
+    "TR_LINEAR/temporal/uniform_9bar/C": 0.028617464082459406,
+    "TR_LINEAR/temporal/uniform_9bar/G": 0.03154811046659505
+  }
+}

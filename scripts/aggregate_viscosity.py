@@ -9,7 +9,7 @@ def contract(s):
     mode = option.get('mode', 'off')
     if mode == 'off':
         return ''
-    if mode not in ('observe', 'coupled'):
+    if mode not in ('observe', 'coupled', 'bulkCoupled'):
         raise ValueError('unsupported aggregate viscosity mode')
     h, b, l = s['hydraulics'], s['coffee_bed'], s['liquid']
     if (h.get('pressure_boundary_model', s.get('pressureBoundaryModel', 'prescribedPressure')) != 'prescribedPressure'

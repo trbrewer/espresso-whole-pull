@@ -1,5 +1,22 @@
 # Claim Ceiling
 
+## SCI-MD-RHEOLOGY-005 autonomous bulk-state viscosity (2026-09-22)
+
+G2 / `GOVERNING_PHYSICS_CHANGE`; `IMPLEMENTED_AND_EXECUTED`.
+The [bounded result](analysis/sci_md_rheology_005/RESULT.md) is
+`BULK_STATE_CLOSURE_INSUFFICIENT`: all four law/scenario pairs fail the
+hydraulic approximation budgets; TR_LINEAR/uniform_9bar also fails both
+aggregate-delivery budgets. All 16 metrics are numerically qualified. Both
+scenarios retain 100% of inherited 004 beverage support. Exactly 18 full
+attempts completed, zero failures/recoveries; four C regression controls
+match accepted outputs exactly. Optional `bulkCoupled` evolves its own stored
+dissolved state without fitting or C-state forcing. Defaults and production
+lock are unchanged; Puckworks is read-only. Source-transfer, TR continuation
+and SW temperature-extrapolation limits remain. Physical validation remains
+NOT_ESTABLISHED. Pre-scoring independent audit passed; final exact-head review
+and hosted CI are separate PR statuses. No merge, adoption, laboratory work
+or successor is authorized.
+
 ## SCI-MD-RHEOLOGY-004 matched-output aggregate delivery (2026-09-22)
 
 G1, `SOURCE_SCENARIO_CHANGE_ONLY`; `IMPLEMENTED_AND_EXECUTED`.

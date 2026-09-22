@@ -76,8 +76,8 @@ jobs:
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_v0_1_4_baseline_integrity.py --root . --output /tmp/v0-1-4-baseline.json
       - name: Active governing-change boundary
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_governing_physics_change.py --root . --output /tmp/governing-change.json
-      - name: SCI-MD-RHEOLOGY-002 active G2 source and historical evidence
-        run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_sci_md_rheology_002.py --root .
+      - name: SCI-MD-RHEOLOGY-005 active G2 source and historical evidence
+        run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_sci_md_rheology_005.py --root .
       - name: XSV-PRESSURE-001 historical G2 boundary qualification
         run: |
           PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_change_contract.py --root . \

@@ -47,7 +47,15 @@ def production_bytes(root, path):
                 if change['original_sha256'] != expected:
                     raise ValueError('post-result original production hash mismatch')
                 expected = change['amended_sha256']
-        if sha(root/path) != expected:
+        active = root/'docs/analysis/sci_md_rheology_005/FREEZE.json'
+        if active.exists():
+            current = load(active)
+            if sha(root/path) != current['files'][path]:
+                raise ValueError('active 005 source differs from frozen contract '+path)
+            historical = subprocess.check_output(['git','show',current['starting_commit']+':'+path],cwd=root)
+            if hashlib.sha256(historical).hexdigest() != expected:
+                raise ValueError('historical 002 source differs from accepted contract '+path)
+        elif sha(root/path) != expected:
             raise ValueError('active rheology source differs from frozen contract '+path)
         if frozen['base_commit'] != '14fc4c8a4a94ffa54ffafd5c2c99037c1af680b9':
             raise ValueError('unrecognized historical production authority')

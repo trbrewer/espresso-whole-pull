@@ -1,0 +1,42 @@
+{
+  "task": "SCI-MD-RHEOLOGY-005",
+  "review_type": "INDEPENDENT_CONTRACT_PRE_SCORING",
+  "reviewed_commit": "8b8ea68251d8a90bdb4c597e56d99c134d4b485f",
+  "reviewed_tree": "92b494a60d7b50a3c13cf13e1358d9a41503068e",
+  "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+  "independent": true,
+  "reviewer": "independent contract_review agent",
+  "status": "PASS",
+  "findings": [],
+  "verified": [
+    "Inspected autonomous beginning-of-step native storage closure, phi*V weights, one global reduction per extensive sum, sector scaling, uniform applied coefficient and boundary update before pressure, unchanged conservative face-flux transport and post-step local validity checks.",
+    "Inspected applied G continuum diagnostics and separately labelled local-law counterfactual diagnostics.",
+    "Inspected C-denominated full-interval hydraulic metrics, conservative 004 mass observer, support-before-score code, five fractions, paired refinement allowance and both-arm operator/denominator terms, numerical gates and 005 failure precedence.",
+    "Inspected 18-slot matrix, fsynced attempt ledger, frozen executable/table/root checks and four-recovery/22-attempt limit.",
+    "All frozen source, build-log, candidate executable and runtime table hashes matched at the reviewed commit.",
+    "Reverified 42 law/set/scenario/arm reuse records against historical inputs, logs, configuration, interval and executable manifest identities.",
+    "Ran all six focused unit tests successfully, including compiled synthetic weighting/domain/resistance fixtures.",
+    "Independently checked 23 retained short runs have ten intervals each where aggregate diagnostics apply, conservation gates, exact lagged-storage accounting and bulk MPI normalized discrepancy 5.763316708726865e-12.",
+    "No full scientific runs launched or scores inspected by reviewer.",
+    "Bounded amended-head review inspected preview fix, generated-preflight test, non-scoring figure consumer, historical/current CI validator and documented pre-scoring reconciliation.",
+    "Seven focused unit tests passed on amended head; active G2 validator passed for 80 frozen files, 58 immutable historical files and eight unchanged controls.",
+    "Reverified amended freeze/executable/table identities and absence of full-science attempt ledger. Native executable and mathematical decision surface unchanged by R1 correction."
+  ],
+  "limits": [
+    "Source audits reused unchanged; no repeated source-material review.",
+    "Final exact-head G2 review and hosted CI remain separately required.",
+    "PASS authorizes use of the frozen pre-scoring contract only; it is not a result review or a physical-validation finding."
+  ],
+  "recorded_at_utc": "2026-09-22T16:24:09.686213+00:00",
+  "resolved_findings": [
+    {
+      "id": "R1",
+      "resolution": "Maintained preparation includes bulkCoupled in feedback preview and B0 suppression; generated reference_R0 fixture verifies NOT_APPLICABLE and absent B0."
+    }
+  ],
+  "prior_review": {
+    "reviewed_commit": "4d08f32f4ab9d298e61b70968873f3249b391430",
+    "status": "FAIL",
+    "receipt_sha256": "b877c1c36960ee5515c41975b77bb488f40c79dbf1f2efe2610e6b1fed68117c"
+  }
+}
