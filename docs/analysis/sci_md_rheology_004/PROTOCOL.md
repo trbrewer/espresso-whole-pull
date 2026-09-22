@@ -146,3 +146,16 @@ independent espresso dataset. Below thresholds does not establish pressure-flow
 accuracy, residence-time fields, species extraction, whole-shot transfer, universal
 transport equivalence or exact time rescaling. No physical validation, taste,
 calibrated species inventory, constitutive-law universality or default adoption.
+
+## Pre-scoring reconciliation
+
+The inherited preparation commit fbe6992 contained the draft freeze and no 004
+science attempts or audit. Owner authorized takeover of its unfinished edits.
+Before any scoring or native attempt, the single freeze was reconciled with
+independent audit findings: retain admissible subsets and actual ledger counts,
+require matching W for N hydraulic qualification, and retain long-double
+fraction arithmetic through metric evaluation. Fourteen focused tests pass.
+Thresholds, laws, scenarios, alpha values and execution budget did not change.
+The original preparation state remains in Git history; no predecessor record
+or consumed campaign was changed. The independent exact-commit audit binds
+the final pre-scoring freeze used for all eight attempts.

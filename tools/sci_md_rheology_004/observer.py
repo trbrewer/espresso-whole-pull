@@ -59,7 +59,7 @@ def compare(c,n,coordinate,endpoint,dtype=np.float64):
     fca,fnb=fractions(fa),fractions(fb)
     return dict(E_end=float(abs(signed[-1])/denominator),E_path=float(max(abs(signed))/denominator),
                 signed_endpoint_solute_g=float(1000*signed[-1]),
-                max_fraction_TDS_pp=float(max(abs(np.asarray(fca['TDS_percent'])-fnb['TDS_percent']))),
+                max_fraction_TDS_pp=float(max(abs(100*np.diff(fa['S'])/np.diff(fa['B'])-100*np.diff(fb['S'])/np.diff(fb['B'])))),
                 t_C_s=float(a['t'][-1]),t_R_s=float(b['t'][-1]),
                 time_difference_s=float(a['t'][-1]-b['t'][-1]),time_ratio=float(a['t'][-1]/b['t'][-1]),
                 C=fca,R=fnb,breakpoint_count=len(points),support_kg=float(endpoint))

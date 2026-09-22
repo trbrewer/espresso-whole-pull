@@ -46,7 +46,7 @@ def check(executable=None,tables=None,audit=None):
     return f
 
 
-def completed(artifacts):
+def completed(artifacts, problems=None):
     f=check(); starts={};ends={};terminal=set()
     ledger=Path(artifacts)/'INVOCATIONS.jsonl'
     events=[json.loads(x) for x in ledger.read_text().splitlines()] if ledger.exists() else []
@@ -63,11 +63,34 @@ def completed(artifacts):
         else:
             if ident not in starts or ident in terminal or e['status'] not in ('COMPLETE','FAILED'):raise ValueError('invalid ledger sequence')
             terminal.add(ident)
+            starts[ident] = dict(starts[ident], terminal_status=e['status'])
             if e['status']=='COMPLETE':
                 directory=Path(artifacts)/ident
                 paths={directory/'scenario.json':e['configuration_sha256'],directory/'case'/INTERVAL:e['intervals_sha256']}
                 paths.update({directory/p:h for p,h in e['logs_sha256'].items()})
                 paths.update({directory/'case'/p:h for p,h in e['input_hashes'].items()})
-                if any(sha(p)!=h for p,h in paths.items()):raise ValueError('native run artifact mismatch')
+                try:
+                    if any(sha(p)!=h for p,h in paths.items()):raise ValueError('native run artifact mismatch')
+                except (OSError,ValueError) as ex:
+                    if problems is None:raise
+                    problems[ident]=type(ex).__name__+': missing/mismatched native artifact'
+                    continue
                 ends[ident]=e
     return starts,ends
+
+
+def verify_accepted(directory,task):
+    """Qualify one historical branch independently so absent siblings lose no data."""
+    directory=Path(directory)
+    doc=ROOT/('docs/analysis/sci_md_rheology_'+task)
+    m=json.loads((doc/'RUNS.json').read_text())
+    records=m['scientific_invocations'] if task=='002' else m['events']['science']
+    r=next(x for x in records if x['id']==directory.name and x['status']=='COMPLETE')
+    start=r if task=='002' else next(x for x in records if x['id']==directory.name and x['status']=='STARTED')
+    f=json.loads((doc/'FREEZE.json').read_text())
+    if start['executable_sha256']!=f['executable_sha256']:raise ValueError('historical executable mismatch')
+    paths={directory/'scenario.json':r['configuration_sha256'],directory/'case'/INTERVAL:r['intervals_sha256']}
+    paths.update({directory/p:h for p,h in r['logs_sha256'].items()})
+    paths.update({directory/'case'/p:h for p,h in r['input_hashes'].items()})
+    for p,h in paths.items():
+        if not p.is_file() or sha(p)!=h:raise ValueError('missing/mismatched historical artifact: '+directory.name+'/'+str(p.relative_to(directory)))

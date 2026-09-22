@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1111,
-  "total_uncompressed_bytes_excluding_manifest": 12735663,
-  "aggregate_source_sha256": "778639819b77a6263b64d744e036e6a699ead348d83aa8405cedccaddeab4c8e",
-  "aggregate_sha256": "778639819b77a6263b64d744e036e6a699ead348d83aa8405cedccaddeab4c8e",
+  "file_count": 1115,
+  "total_uncompressed_bytes_excluding_manifest": 12765580,
+  "aggregate_source_sha256": "be188753eb7069a3a66531405f72f96de3e763cf511ff745bca55c26f46f30fc",
+  "aggregate_sha256": "be188753eb7069a3a66531405f72f96de3e763cf511ff745bca55c26f46f30fc",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2503,6 +2503,21 @@
       "bytes": 171317,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_rheology_004/FREEZE.json": {
+      "sha256": "12cb10630db2ce082a08ae36f22e033132b21d63771a819ad870188d4b0fab02",
+      "bytes": 7091,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_004/PROTOCOL.md": {
+      "sha256": "6d15b1c3c6932e34829a67cec0bb18ec4c976f825276495bbdee9831a39f7457",
+      "bytes": 10797,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_004/REUSE.json": {
+      "sha256": "7bf2dacb03b33ad3a3703298a9f39dd961dd20ac7338cbefef10a5c8f30392b9",
+      "bytes": 2458,
+      "git_mode": "100644"
+    },
     "docs/analysis/xsv_pannusch_ewp_input_mapping_001/INPUT_REGISTRY.csv": {
       "sha256": "1b5d7c9631e7cdba9bb62e97d8373326726dea36df4d0914e6393cfa7ae21b98",
       "bytes": 22557,
@@ -4936,6 +4951,11 @@
     "tests/test_sci_md_rheology_003.py": {
       "sha256": "b82089b4b28604bf9b90fef0a7fcc05db2a80b8a78a9db0edd535fa6ff89e8d3",
       "bytes": 10625,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_rheology_004.py": {
+      "sha256": "a0e90ff85b871d32a2700db9804ba0d277a66553ef5fd0ba52d69fe9f2fdddc1",
+      "bytes": 9571,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

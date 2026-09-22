@@ -111,6 +111,40 @@ class Rheology004(unittest.TestCase):
             with patch.object(e,'check',return_value=f),patch.object(e,'sha',return_value='x'):
                 with self.assertRaises(ValueError):e.completed(p)
 
+    def test_missing_native_artifact_preserves_other_attempts(self):
+        with tempfile.TemporaryDirectory() as root:
+            p=Path(root);events=[]
+            f=dict(executable_sha256='e',tables={'SW_WATER_ANCHORED_90C_base':'t'},alpha={'SW_WATER_ANCHORED_90C':{'base':.8}})
+            for ident in e.matrix()[:2]:
+                events.extend([dict(id=ident,status='STARTED',freeze_sha256='x',executable_sha256='e',table_sha256='t',alpha=.8,transport='INDEPENDENT_NATIVE'),
+                    dict(id=ident,status='COMPLETE',configuration_sha256='x',intervals_sha256='x',logs_sha256={},input_hashes={})])
+            p.joinpath('INVOCATIONS.jsonl').write_text('\n'.join(json.dumps(x) for x in events))
+            def digest(path):
+                if e.matrix()[0] in str(path):raise FileNotFoundError('fixture')
+                return 'x'
+            with patch.object(e,'check',return_value=f),patch.object(e,'sha',side_effect=digest):
+                problems={};starts,ends=e.completed(p,problems)
+            self.assertEqual(len(starts),2);self.assertEqual(set(ends),{e.matrix()[1]})
+            self.assertEqual(set(problems),{e.matrix()[0]})
+            self.assertTrue(all(x['terminal_status']=='COMPLETE' for x in starts.values()))
+
+    def test_missing_W_disqualifies_N_without_losing_other_groups(self):
+        from tools.sci_md_rheology_004 import analyze as a
+        d=trace();d.update(remaining_kg=o.np.array([.005,.004]),stored_solute_kg=o.np.array([0.,0.]))
+        f={'alpha':{law:{r:1. for r in e.SETS} for law in e.LAWS}}
+        def verify(path,task):
+            if path.name=='base_uniform_9bar_W':raise ValueError('missing W fixture')
+        with tempfile.TemporaryDirectory() as root, patch.object(a,'check',return_value=f), \
+             patch.object(a,'completed',return_value=({},dict.fromkeys(e.matrix(),{}))), \
+             patch.object(a,'verify_accepted',side_effect=verify),patch.object(a,'rows',return_value=d), \
+             patch.object(a,'gates',return_value={'source_domain_pass':True,'numerical_state_pass':True}), \
+             patch.object(a,'secondary',return_value={}),patch('tools.sci_md_rheology_004.plot.figures'):
+            result=a.analyze('baseline','coupled','new',Path(root)/'output')
+        self.assertEqual(result['classification'],'PARTIALLY_QUALIFIED_OR_UNRESOLVED')
+        self.assertEqual(result['comparisons']['TR_LINEAR/uniform_9bar']['classification'],'UNRESOLVED')
+        self.assertEqual(result['comparisons']['TR_LINEAR/reversed_3bar']['classification'],'BELOW THRESHOLDS')
+        self.assertIn('matching W unavailable',result['dependencies']['TR_LINEAR/base/uniform_9bar/N'])
+
     def test_source_executable_mismatch(self):
         with tempfile.TemporaryDirectory() as root:
             p=Path(root);p.joinpath('FREEZE.json').write_text(json.dumps(dict(files={'missing':'wrong'},executable_sha256='expected')))

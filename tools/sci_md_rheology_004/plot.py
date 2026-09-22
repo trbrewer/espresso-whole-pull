@@ -11,9 +11,9 @@ def figures(curves,report,output):
     for name in ('coordinates','discrepancy','fraction_tds','timing'):
         fig,axes=plt.subplots(2,2,figsize=(13,9),constrained_layout=True)
         for ax,(key,h) in zip(axes.flat,curves.items()):
-            law,scenario=key.split('/');end=report['support'][scenario]['B']
+            law,scenario=key.split('/');end=report['support'].get(scenario,{}).get('B',0)
             ax.set_title(f'{law}\n{scenario}; beverage support 0–{end*1000:.6f} g',fontsize=10)
-            if 'N' not in h:
+            if 'N' not in h or 'C' not in h or end<=0:
                 ax.text(.1,.5,'Native N unavailable');continue
             if name=='coordinates':
                 for arm,color in (('C','tab:blue'),('N','tab:orange')):
