@@ -9,6 +9,17 @@
 #include <string>
 #include <vector>
 namespace espresso {
+struct AggregateStorage {
+    double poreVolume=0, dissolvedMass=0;
+    void add(double phi, double c, double volume) {
+        if (!std::isfinite(phi) || phi<=0 || phi>1
+            || !std::isfinite(volume) || volume<=0
+            || !std::isfinite(c) || c<0)
+            throw std::runtime_error("RHEOLOGY_INVALID_STORAGE_CELL");
+        poreVolume += phi*volume;
+        dissolvedMass += phi*c*volume;
+    }
+};
 struct AggregateViscosity {
     std::vector<double> w, mu;
     double rho=965, temperature=363.15;
@@ -37,6 +48,14 @@ struct AggregateViscosity {
     double fraction(double c) const {
         if (!std::isfinite(c) || c<0) throw std::runtime_error("RHEOLOGY_NEGATIVE_OR_NONFINITE_STATE");
         return c/(rho+c);
+    }
+    // Inputs are globally reduced exactly once by the caller. Extensive units:
+    // dissolved mass [kg], pore-water volume [m3]. No resistance weighting.
+    double bulkFraction(double dissolvedMass, double poreVolume) const {
+        if (!std::isfinite(dissolvedMass) || dissolvedMass<0
+            || !std::isfinite(poreVolume) || poreVolume<=0)
+            throw std::runtime_error("RHEOLOGY_INVALID_BULK_STORAGE");
+        return fraction(dissolvedMass/poreVolume);
     }
     double value(double x) const {
         if (!std::isfinite(x) || x<0 || x>w.back())

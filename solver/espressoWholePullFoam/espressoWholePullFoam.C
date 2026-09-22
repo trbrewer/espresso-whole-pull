@@ -748,7 +748,9 @@ int main(int argc, char *argv[])
     const word aggregateViscosityMode = modelProperties.lookupOrDefault<word>
         ("aggregateViscosityMode", "off");
     const bool aggregateDiagnostics = aggregateViscosityMode != "off";
-    const bool aggregateCoupled = aggregateViscosityMode == "coupled";
+    const bool aggregateBulkCoupled = aggregateViscosityMode == "bulkCoupled";
+    const bool aggregateCoupled = aggregateViscosityMode == "coupled"
+        || aggregateBulkCoupled;
     std::unique_ptr<espresso::AggregateViscosity> aggregateTable;
     if (aggregateDiagnostics)
     {
@@ -2040,12 +2042,19 @@ int main(int argc, char *argv[])
             << " integration=exactPositivePiecewiseLinear" << nl << endl;
     }
 
-    std::ofstream aggregateTrace;
+    std::ofstream aggregateTrace, bulkTrace;
     if (aggregateDiagnostics && Pstream::master())
     {
         aggregateTrace.open((traceDirectory/"aggregate_intervals.csv").c_str());
         aggregateTrace << std::setprecision(17)
             << "start_s,end_s,dt_s,state_s,Q_m3_s,volume_m3,Q_cont_m3_s,dilute_resistance_fraction,c_n_min,c_n_max,mu_min,mu_max,c_next_min,c_next_max,correction_kg,water_kg,solute_kg,stored_solute_kg,remaining_kg,inlet_loss_kg,water_balance_kg,solute_balance_kg,tds,cumulative_tds,dilute_volume_fraction,mu_next_min,mu_next_max,pore_courant_max\n";
+    }
+
+    if (aggregateBulkCoupled && Pstream::master())
+    {
+        bulkTrace.open((traceDirectory/"aggregate_bulk_intervals.csv").c_str());
+        bulkTrace << std::setprecision(17)
+            << "state_s,end_s,pore_water_volume_m3,stored_dissolved_mass_kg,c_bar_kg_m3,w_bar,applied_mu_Pa_s,Q_native_m3_s,Q_applied_cont_m3_s,local_counterfactual_Q_cont_m3_s\n";
     }
 
     while (runTime.loop())
@@ -2057,6 +2066,10 @@ int main(int argc, char *argv[])
         scalar laggedMinC = GREAT, laggedMaxC = -GREAT;
         scalar laggedMinMu = GREAT, laggedMaxMu = -GREAT;
         scalar correctionMass = 0;
+        espresso::AggregateStorage bulkStorage;
+        scalar bulkPoreVolume = 0, bulkDissolvedMass = 0, bulkWetFraction = 0;
+        scalar bulkViscosity = 0, permeabilityResistance = 0;
+        scalar appliedAggregateResistance = 0;
         if (aggregateDiagnostics)
         {
             try
@@ -2067,6 +2080,13 @@ int main(int argc, char *argv[])
                     const scalar w = aggregateTable->fraction(c);
                     const scalar mu = aggregateTable->value(w);
                     aggregateMu[celli] = mu;
+                    if (aggregateBulkCoupled)
+                    {
+                        // Local validity above is mandatory even if the mean is valid.
+                        bulkStorage.add(porosity[celli], c, mesh.V()[celli]);
+                        permeabilityResistance += mesh.V()[celli]*sectorScale
+                            /(sqr(fullCrossSectionArea)*permeability[celli]);
+                    }
                     laggedMinC = Foam::min(laggedMinC, c);
                     laggedMaxC = Foam::max(laggedMaxC, c);
                     laggedMinMu = Foam::min(laggedMinMu, mu);
@@ -2084,6 +2104,20 @@ int main(int argc, char *argv[])
             }
             catch (const std::exception& error)
             { FatalErrorInFunction << error.what() << exit(FatalError); }
+            if (aggregateBulkCoupled)
+            {
+                bulkPoreVolume = sectorScale*globalSumValue(bulkStorage.poreVolume);
+                bulkDissolvedMass = sectorScale*globalSumValue(bulkStorage.dissolvedMass);
+                permeabilityResistance = globalSumValue(permeabilityResistance);
+                try
+                {
+                    bulkWetFraction = aggregateTable->bulkFraction(bulkDissolvedMass, bulkPoreVolume);
+                    bulkViscosity = aggregateTable->value(bulkWetFraction);
+                }
+                catch (const std::exception& error)
+                { FatalErrorInFunction << error.what() << exit(FatalError); }
+                aggregateMu = dimensionedScalar("bulkMu", aggregateMu.dimensions(), bulkViscosity);
+            }
             aggregateMu.correctBoundaryConditions();
             if (aggregateCoupled)
             {
@@ -2091,6 +2125,8 @@ int main(int argc, char *argv[])
                 hydraulicMobility.correctBoundaryConditions();
             }
             aggregateResistance = globalSumValue(aggregateResistance);
+            appliedAggregateResistance = aggregateBulkCoupled
+                ? bulkViscosity*permeabilityResistance : aggregateResistance;
             diluteResistance = globalSumValue(diluteResistance);
             diluteVolume = globalSumValue(diluteVolume);
             laggedMinC = globalMinValue(laggedMinC);
@@ -3122,7 +3158,7 @@ int main(int argc, char *argv[])
             saturatedAtStepStart
           ? (
                 aggregateCoupled
-              ? (inletPressure-outletPressure)/aggregateResistance
+              ? (inletPressure-outletPressure)/appliedAggregateResistance
               : poroelasticCompaction
               ? poroelasticExactFlow
               : radialTwoZone
@@ -4087,7 +4123,7 @@ int main(int argc, char *argv[])
             if (Pstream::master())
                 aggregateTrace << stepStartTime << ',' << timeValue << ',' << deltaT << ','
                     << stepStartTime << ',' << outletVolumeFlow << ',' << stepWaterMass/liquidDensity << ','
-                    << (inletPressure-outletPressure)/aggregateResistance << ','
+                    << (inletPressure-outletPressure)/appliedAggregateResistance << ','
                     << diluteResistance/aggregateResistance << ',' << laggedMinC << ',' << laggedMaxC << ','
                     << laggedMinMu << ',' << laggedMaxMu << ',' << nextMin << ',' << nextMax << ','
                     << correctionMass << ',' << cupWaterMass << ',' << cupSoluteMass << ','
@@ -4095,6 +4131,12 @@ int main(int argc, char *argv[])
                     << liquidBalanceResidual << ',' << soluteBalanceResidual << ','
                     << instantaneousTds << ',' << cumulativeTds << ',' << diluteVolume/fullMeshVolume
                     << ',' << nextMuMin << ',' << nextMuMax << ',' << poreCourant << '\n';
+            if (aggregateBulkCoupled && Pstream::master())
+                bulkTrace << stepStartTime << ',' << timeValue << ',' << bulkPoreVolume << ','
+                    << bulkDissolvedMass << ',' << bulkDissolvedMass/bulkPoreVolume << ','
+                    << bulkWetFraction << ',' << bulkViscosity << ',' << outletVolumeFlow << ','
+                    << (inletPressure-outletPressure)/appliedAggregateResistance << ','
+                    << (inletPressure-outletPressure)/aggregateResistance << '\n';
         }
 
         if

@@ -1,0 +1,261 @@
+{
+  "runs": {
+    "SW_WATER_ANCHORED_90C/base/reversed_3bar/C": {
+      "configuration_sha256": "ef0ed1a4846e7a417f895d27c00fa1e2a413f8c4f6f15e85631408eae4d4be65",
+      "id": "base_reversed_3bar_SW_WATER_ANCHORED_90C",
+      "intervals_sha256": "141f025ade54e88b67c184df7db003021086f0cd173237c173b6fd6aca19f352",
+      "task": "003"
+    },
+    "SW_WATER_ANCHORED_90C/base/reversed_3bar/N": {
+      "configuration_sha256": "168b712462463d6c46c0f17714cad853071136a8e306fed029e8070548d6be4f",
+      "id": "base_reversed_3bar_N",
+      "intervals_sha256": "06c1ddc76ea184773c0c5eb9c15a7ee34da62f2f07a7fd91c05675ad2e3b5b46",
+      "task": "004"
+    },
+    "SW_WATER_ANCHORED_90C/base/reversed_3bar/W": {
+      "configuration_sha256": "fcf21c646499cad51ebd0c95c6078eb874622509bb9974694d85af844e6baa11",
+      "id": "base_reversed_3bar_W",
+      "intervals_sha256": "f9391aea044c6c420d747fe829f44958939d18446d059669f2671aff7ce4a2b1",
+      "task": "002"
+    },
+    "SW_WATER_ANCHORED_90C/base/uniform_9bar/C": {
+      "configuration_sha256": "03cde7b82d9d500a13c25127c805935c192207b4bc94f37bc8d97f44aaee30eb",
+      "id": "base_uniform_9bar_SW_WATER_ANCHORED_90C",
+      "intervals_sha256": "ab5418852862f9da81c5cc1a82f6d00853ca8a82af18f66583e02359b8f208ec",
+      "task": "003"
+    },
+    "SW_WATER_ANCHORED_90C/base/uniform_9bar/N": {
+      "configuration_sha256": "976f0cf3aa3be3ad28460e28200097171203a79e6c98b45f8357c84b195b9dae",
+      "id": "base_uniform_9bar_N",
+      "intervals_sha256": "c292e17beff4cda17ae9ec980e8a751259119da37a26060419b5e3890f3790d7",
+      "task": "004"
+    },
+    "SW_WATER_ANCHORED_90C/base/uniform_9bar/W": {
+      "configuration_sha256": "57fc7a786ff05935fa14b1238e3f230a81500f540d7f2e6ed673574ed908c40b",
+      "id": "base_uniform_9bar_W",
+      "intervals_sha256": "d62110f7c56fb8f572d194705f5f8bfaa16623af930b2e3e0adca94f2be5cba2",
+      "task": "002"
+    },
+    "SW_WATER_ANCHORED_90C/property/reversed_3bar/C": {
+      "configuration_sha256": "8422352bcc37e6b14b078c13f49a6c38929f284e008027e6bd2649a437c5cc83",
+      "id": "property_reversed_3bar_SW_WATER_ANCHORED_90C",
+      "intervals_sha256": "8ac1527cd2568180006bfb97fc2c44ef555e378fd5e7a3cea7ab6f36b3c1ed42",
+      "task": "003"
+    },
+    "SW_WATER_ANCHORED_90C/property/reversed_3bar/N": {
+      "configuration_sha256": "065e4ce9ac75e232374a1c648d1d21ca3368bfcddbd831a15be93cac68abb533",
+      "id": "property_reversed_3bar_N",
+      "intervals_sha256": "9a9b567ab75c2cc7aef0de50261bd14295045779629d9b22180bc0857cb5829d",
+      "task": "004"
+    },
+    "SW_WATER_ANCHORED_90C/property/reversed_3bar/W": {
+      "configuration_sha256": "fcf21c646499cad51ebd0c95c6078eb874622509bb9974694d85af844e6baa11",
+      "id": "base_reversed_3bar_W",
+      "intervals_sha256": "f9391aea044c6c420d747fe829f44958939d18446d059669f2671aff7ce4a2b1",
+      "task": "002"
+    },
+    "SW_WATER_ANCHORED_90C/property/uniform_9bar/C": {
+      "configuration_sha256": "7aa716522dfa2994927a2e78df6310b5dff827795abd0e1aaa93871a9a8c9a45",
+      "id": "property_uniform_9bar_SW_WATER_ANCHORED_90C",
+      "intervals_sha256": "7d4c39fc44c14debc81a74c03bd0ad4933ec420d1333e4199bc5f84ba014577c",
+      "task": "003"
+    },
+    "SW_WATER_ANCHORED_90C/property/uniform_9bar/N": {
+      "configuration_sha256": "45c23daf757aebb7d55526503bb8f08a4da57155dae44f8478ec292776b97140",
+      "id": "property_uniform_9bar_N",
+      "intervals_sha256": "9495335f1861ee227d772c6d0c646ee909cab682e8a6f2adc665c6bacb731b26",
+      "task": "004"
+    },
+    "SW_WATER_ANCHORED_90C/property/uniform_9bar/W": {
+      "configuration_sha256": "57fc7a786ff05935fa14b1238e3f230a81500f540d7f2e6ed673574ed908c40b",
+      "id": "base_uniform_9bar_W",
+      "intervals_sha256": "d62110f7c56fb8f572d194705f5f8bfaa16623af930b2e3e0adca94f2be5cba2",
+      "task": "002"
+    },
+    "SW_WATER_ANCHORED_90C/spatial/reversed_3bar/C": {
+      "configuration_sha256": "17caf42fa46cf4d3ed84b136eff40c961d982995517b87bd40d2d4aa23171572",
+      "id": "spatial_reversed_3bar_SW_WATER_ANCHORED_90C",
+      "intervals_sha256": "d377054405679e214307033b57baa505e849129344712b952fd493f9b61f29cc",
+      "task": "003"
+    },
+    "SW_WATER_ANCHORED_90C/spatial/reversed_3bar/N": {
+      "configuration_sha256": "ca1ebbed939b7ecd155fe5ebe367bfc2bbe6366ebe6f8501957f6bd4b83d43e9",
+      "id": "spatial_reversed_3bar_N",
+      "intervals_sha256": "dd00cff17ff301ef3a50c085c37ba1ea11d4514d568df631fe72379e9b9cb2b5",
+      "task": "004"
+    },
+    "SW_WATER_ANCHORED_90C/spatial/reversed_3bar/W": {
+      "configuration_sha256": "a83e9f2c5cf3a3453cb58d405c7f6c07a4ed82ebd8bb9c560d2b3df852f1b4b8",
+      "id": "spatial_reversed_3bar_W",
+      "intervals_sha256": "bc69d10906a68db0302f16f6c827efa58551d6ca2949613f0dbdbdd7fc7e9051",
+      "task": "002"
+    },
+    "SW_WATER_ANCHORED_90C/spatial/uniform_9bar/C": {
+      "configuration_sha256": "9beab106e4b8f194495f72aea4e4d4cd1a2a2bd9c0a54acf4cab11dee6461876",
+      "id": "spatial_uniform_9bar_SW_WATER_ANCHORED_90C",
+      "intervals_sha256": "9a83dc10a214dae314d60ab1bb4ac333731b6d120217c2f083037593c80204d3",
+      "task": "003"
+    },
+    "SW_WATER_ANCHORED_90C/spatial/uniform_9bar/N": {
+      "configuration_sha256": "501b5f80f70a73821307858b18b14c3e4e6ec61d08746b016291a7db35502c30",
+      "id": "spatial_uniform_9bar_N",
+      "intervals_sha256": "5ccda72c5f3fd57c4904f8f1fa8dde8ed49424fdb31afb27133147ed5413e4d9",
+      "task": "004"
+    },
+    "SW_WATER_ANCHORED_90C/spatial/uniform_9bar/W": {
+      "configuration_sha256": "a9bd9119fdf3fad68d00ebb83bb7e62ca36e93c941482794cb116beffbb3af91",
+      "id": "spatial_uniform_9bar_W",
+      "intervals_sha256": "fecf75d181c95e5dd22af044242a1629c4bd7a77da64a22d8bfd68fb881c89b7",
+      "task": "002"
+    },
+    "SW_WATER_ANCHORED_90C/temporal/reversed_3bar/C": {
+      "configuration_sha256": "6dd447a88d3a8930d30ba0f0a0183eaf25b4d95fa5a4a715f40fc2f3969dcb20",
+      "id": "temporal_reversed_3bar_SW_WATER_ANCHORED_90C",
+      "intervals_sha256": "008ba95246ad6075d7a342a8b0e24820634f07bd2a813c7eeb472a2bca89aa5d",
+      "task": "003"
+    },
+    "SW_WATER_ANCHORED_90C/temporal/reversed_3bar/N": {
+      "configuration_sha256": "e1de4857ac8ce705379b5cfad1be55e44cc8f3535cc134fece13ff52b051bfb0",
+      "id": "temporal_reversed_3bar_N",
+      "intervals_sha256": "a28580384b276912fef22f46935a73ba0f2f089acb4a520426be4cf3984e0a7f",
+      "task": "004"
+    },
+    "SW_WATER_ANCHORED_90C/temporal/reversed_3bar/W": {
+      "configuration_sha256": "796c2185a5a6ac0b0f208613ed46d31301c7a0802343fa8bd055d32b8292789e",
+      "id": "temporal_reversed_3bar_W",
+      "intervals_sha256": "c57e8676d525fbea775a0d15cce0af88be1a015dff0f8a555b5efe4f64ee59b8",
+      "task": "002"
+    },
+    "SW_WATER_ANCHORED_90C/temporal/uniform_9bar/C": {
+      "configuration_sha256": "af52cd099de31b95bd01b91819b70df636e4129bf48c4d8ea5eb6f110ac00433",
+      "id": "temporal_uniform_9bar_SW_WATER_ANCHORED_90C",
+      "intervals_sha256": "91a4ea11d4596af0cfb675d47bceae82e97e28d9942ddb273c6a553f05b719cd",
+      "task": "003"
+    },
+    "SW_WATER_ANCHORED_90C/temporal/uniform_9bar/N": {
+      "configuration_sha256": "c4eb452f7d5d918550f26c0bcaaebbb06c8928ef0a9b930052172bde2ce99456",
+      "id": "temporal_uniform_9bar_N",
+      "intervals_sha256": "9b3fc3514a648b280d3b8b7e14e0fc7c58d79bb8d675e1e84bca45fb221dbb2f",
+      "task": "004"
+    },
+    "SW_WATER_ANCHORED_90C/temporal/uniform_9bar/W": {
+      "configuration_sha256": "dd8cd1980196bb7bf4451481a62c2c6b8e7989fcfe7cdb6042dac0ce800bd7c9",
+      "id": "temporal_uniform_9bar_W",
+      "intervals_sha256": "8eb17863c13fe0d5bf80c8f736e970aa8463501f04ab78fae3acc4cc59f6f636",
+      "task": "002"
+    },
+    "TR_LINEAR/base/reversed_3bar/C": {
+      "configuration_sha256": "9477e0232d9bff8e6dd504caa06357728974c2996a25a972b698ceec0240c805",
+      "id": "base_reversed_3bar_C",
+      "intervals_sha256": "9a6f641cad2c8fd7dd801e5f9c3839fd828aa4ddb42645be7f14e7ba95e44ae9",
+      "task": "002"
+    },
+    "TR_LINEAR/base/reversed_3bar/N": {
+      "configuration_sha256": "e8cffeb8d928e708cdf4fe92659c651a22d8376aabb5c432e9ef4e21d2886ba7",
+      "id": "base_reversed_3bar_N",
+      "intervals_sha256": "2f358c92853e9e0ea18179326919b4e41f2741fafa43319ddaa40ad2c5911c05",
+      "task": "002"
+    },
+    "TR_LINEAR/base/reversed_3bar/W": {
+      "configuration_sha256": "fcf21c646499cad51ebd0c95c6078eb874622509bb9974694d85af844e6baa11",
+      "id": "base_reversed_3bar_W",
+      "intervals_sha256": "f9391aea044c6c420d747fe829f44958939d18446d059669f2671aff7ce4a2b1",
+      "task": "002"
+    },
+    "TR_LINEAR/base/uniform_9bar/C": {
+      "configuration_sha256": "a5cad1a3de9a849827e9eadffe5bada183999b615be42f0f418bdeceb6e17d3d",
+      "id": "base_uniform_9bar_C",
+      "intervals_sha256": "2a6b1c7960859d5f80b3f6fddd44d0d729c318acd2ba22739e8406af05016bf6",
+      "task": "002"
+    },
+    "TR_LINEAR/base/uniform_9bar/N": {
+      "configuration_sha256": "5e9e138ef5b3a0b926421b8de2af7b183a47a4c2ab168e258ad9d79965d82a9e",
+      "id": "base_uniform_9bar_N",
+      "intervals_sha256": "28dae8a908cb3b0d74b8ccdeaf8533d0894350f15b11f070cea03faf4e15cc51",
+      "task": "002"
+    },
+    "TR_LINEAR/base/uniform_9bar/W": {
+      "configuration_sha256": "57fc7a786ff05935fa14b1238e3f230a81500f540d7f2e6ed673574ed908c40b",
+      "id": "base_uniform_9bar_W",
+      "intervals_sha256": "d62110f7c56fb8f572d194705f5f8bfaa16623af930b2e3e0adca94f2be5cba2",
+      "task": "002"
+    },
+    "TR_LINEAR/spatial/reversed_3bar/C": {
+      "configuration_sha256": "48be699ad68826fa58673fdbb650c18d658fabb41e00df46dea044728aefb1ae",
+      "id": "spatial_reversed_3bar_C",
+      "intervals_sha256": "0f6014c681acfb9bcbb976ef04354593832a781b80db514e51c66a2e8c5ac545",
+      "task": "002"
+    },
+    "TR_LINEAR/spatial/reversed_3bar/N": {
+      "configuration_sha256": "4b986f0a49466dfa23aa5af31c6cb15a32bc09a06120c4f679c49e5d2e0f64c7",
+      "id": "spatial_reversed_3bar_N",
+      "intervals_sha256": "ea29935c77a626d30b5fe2a713ddf2fc21a2c58fd68a18d85f9c8dd039601b34",
+      "task": "002"
+    },
+    "TR_LINEAR/spatial/reversed_3bar/W": {
+      "configuration_sha256": "a83e9f2c5cf3a3453cb58d405c7f6c07a4ed82ebd8bb9c560d2b3df852f1b4b8",
+      "id": "spatial_reversed_3bar_W",
+      "intervals_sha256": "bc69d10906a68db0302f16f6c827efa58551d6ca2949613f0dbdbdd7fc7e9051",
+      "task": "002"
+    },
+    "TR_LINEAR/spatial/uniform_9bar/C": {
+      "configuration_sha256": "76870ee127783ce118384b6e5c898a97437f02ecccef27d7e4e2f4ddc07b516f",
+      "id": "spatial_uniform_9bar_C",
+      "intervals_sha256": "6930a96e8b512fa9162c8264fa19144d4062510571fae452f43b596b7d56a8b9",
+      "task": "002"
+    },
+    "TR_LINEAR/spatial/uniform_9bar/N": {
+      "configuration_sha256": "8be5c161b2436d1eebd67aacaddb5ea1ab5f5e9d007b21a4ef14fcfe6830156e",
+      "id": "spatial_uniform_9bar_N",
+      "intervals_sha256": "c1efca583ab57253f6fc793bfec3c967ad2c0c744fad6fd382b648ee97b5e4bf",
+      "task": "002"
+    },
+    "TR_LINEAR/spatial/uniform_9bar/W": {
+      "configuration_sha256": "a9bd9119fdf3fad68d00ebb83bb7e62ca36e93c941482794cb116beffbb3af91",
+      "id": "spatial_uniform_9bar_W",
+      "intervals_sha256": "fecf75d181c95e5dd22af044242a1629c4bd7a77da64a22d8bfd68fb881c89b7",
+      "task": "002"
+    },
+    "TR_LINEAR/temporal/reversed_3bar/C": {
+      "configuration_sha256": "ec7d0ec62ae830dcec3d94e2b3f7f78e7a8c3616488586ec63f97dfe44708c80",
+      "id": "temporal_reversed_3bar_C",
+      "intervals_sha256": "c8788e43865b5332bb16da8f0220aa9886486ce01d539a91bbee6d8b865efc90",
+      "task": "002"
+    },
+    "TR_LINEAR/temporal/reversed_3bar/N": {
+      "configuration_sha256": "b133709328d044318429b3a7fb04d8c7e2e5e1a5dedcb9601558421bd7061612",
+      "id": "temporal_reversed_3bar_N",
+      "intervals_sha256": "da343beccc0c33eaf2906b2437b73f3629e8b02fb5a0cad790cf7429e62cbf05",
+      "task": "002"
+    },
+    "TR_LINEAR/temporal/reversed_3bar/W": {
+      "configuration_sha256": "796c2185a5a6ac0b0f208613ed46d31301c7a0802343fa8bd055d32b8292789e",
+      "id": "temporal_reversed_3bar_W",
+      "intervals_sha256": "c57e8676d525fbea775a0d15cce0af88be1a015dff0f8a555b5efe4f64ee59b8",
+      "task": "002"
+    },
+    "TR_LINEAR/temporal/uniform_9bar/C": {
+      "configuration_sha256": "c087b36c7904493128911467ae5bbc805c0dd34e6608e9fef634c1307b3372f2",
+      "id": "temporal_uniform_9bar_C",
+      "intervals_sha256": "433b6a8813439694b1d71eec51ab924ba1aba740d93aa180ec99d6f2245768b2",
+      "task": "002"
+    },
+    "TR_LINEAR/temporal/uniform_9bar/N": {
+      "configuration_sha256": "78e4e1b105380b5d2147787b9f1e2ebceea04daea8f168f39cc362b9d44085c3",
+      "id": "temporal_uniform_9bar_N",
+      "intervals_sha256": "0aade6a3420fcbb7433400de9062c460da88ee217a39b247cd921da9fe96d152",
+      "task": "002"
+    },
+    "TR_LINEAR/temporal/uniform_9bar/W": {
+      "configuration_sha256": "dd8cd1980196bb7bf4451481a62c2c6b8e7989fcfe7cdb6042dac0ce800bd7c9",
+      "id": "temporal_uniform_9bar_W",
+      "intervals_sha256": "8eb17863c13fe0d5bf80c8f736e970aa8463501f04ab78fae3acc4cc59f6f636",
+      "task": "002"
+    }
+  },
+  "source_audit_reused": [
+    "docs/analysis/sci_md_rheology_001/AUDIT.json",
+    "docs/analysis/sci_md_rheology_003/AUDIT.json"
+  ],
+  "status": "PASS"
+}
