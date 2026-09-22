@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1159,
-  "total_uncompressed_bytes_excluding_manifest": 15577178,
-  "aggregate_source_sha256": "1d91409e6cb75e21af2583d4e9d918b2277481b64c6aa62314e0181a1a6373b7",
-  "aggregate_sha256": "1d91409e6cb75e21af2583d4e9d918b2277481b64c6aa62314e0181a1a6373b7",
+  "total_uncompressed_bytes_excluding_manifest": 15581028,
+  "aggregate_source_sha256": "a47389925306d62b7ed9046c146fbd1072bbb22133489affb308c778ff0ac3bd",
+  "aggregate_sha256": "a47389925306d62b7ed9046c146fbd1072bbb22133489affb308c778ff0ac3bd",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2664,18 +2664,18 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_006/RADIAL_SCHEMA.json": {
-      "sha256": "0321400678e530798f4648b617648511fbce18b93fe52aac2795f104b2ae2ebc",
-      "bytes": 3901,
+      "sha256": "cb32969bd5b9b491527235e5d17709038c122006c98e00f0922c0daaa7025745",
+      "bytes": 5086,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_006/README.md": {
-      "sha256": "4e87f593917078a958da46d807776998e163a51fbc2f730d5fe1eea5ba9df1da",
-      "bytes": 4079,
+      "sha256": "bd0b0c0e0381886f75e9ad97263583ded67963fcdb5aa40adb1dc7fd84aca424",
+      "bytes": 5521,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_006/RESULT.md": {
-      "sha256": "aa657c23a348d20bd0d76cca620d641ada65fc4903ef4a6424875fc708834bfd",
-      "bytes": 8659,
+      "sha256": "40efff64f3eba5bb6ce3b8ee6232c433b0bce8c6348c8c216fe5a9d7d0b6e694",
+      "bytes": 9882,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_006/REUSE.json": {

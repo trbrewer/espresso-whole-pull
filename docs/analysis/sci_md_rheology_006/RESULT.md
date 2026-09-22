@@ -32,6 +32,23 @@ TR uses its exact accepted piecewise-linear table, so no property refinement ter
 
 Sixteen short native fixtures passed: three meshes × water/double/uniform-k analytical checks, observe/constant-table equivalence, accepted bulk regression, deterministic transverse evolution, exact repeat and radial MPI. Repeat traces are byte-identical; MPI normalized maximum is 4.7943420067309006e-8 (limit 1e-6). The processor interface has 32 radial-normal faces and separates the inner and outer material zones. EXCHANGE.json verifies nonzero native transverse water and upwind solute flux. Sixteen native startup rejections and standalone domain checks completed. An overflowing pressure literal triggered the OpenFOAM parser SIGFPE before the time loop; its initial harness assertion was corrected without rerunning that attempt. The original log is retained.
 
+The `transverse_abs_internal_flux_m3_s` field remains a **RESTRICTED AUXILIARY
+DIAGNOSTIC**. The [schema](RADIAL_SCHEMA.json) and [output contract](README.md)
+document its strict `abs(Sf.x()) < VSMALL` internal/processor-face selector,
+once-per-internal-face and half-per-rank processor accounting, and omission risk
+for geometrically transverse faces with small nonzero axial area-vector components.
+It is not complete transverse exchange, net core-annulus transfer, or solute
+provenance. The retained review and final short-fixture interval ending at 0.2 s
+show approximately 10.59% undercount, specific to that fixture and not an all-case
+error bound or correction factor. [EXCHANGE.json](EXCHANGE.json) and
+[exchange.py](../../../tools/sci_md_rheology_006/exchange.py) separately reconstruct
+water 9.876964920381905e-10 m3/s and upwind advective solute
+1.6012777957101985e-8 kg/s; the latter excludes diffusion and is not total solute
+exchange. The restricted statistic does not enter primary scores or allowances
+or control native pressure/transport or all-face outgoing Courant, so the MATERIAL
+decisions are unchanged. This post-result documentation clarification does not
+repair or change the emitted calculation.
+
 ## Modeled delivery and regional inventory
 
 | Case | Water / solute / beverage at 30 s (g) | Cup aggregate TDS (%) | Inner / outer remaining inventory (g) | Dilute pore occupancy range (%) |

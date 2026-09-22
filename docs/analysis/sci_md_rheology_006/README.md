@@ -60,9 +60,30 @@ comparator is 4/7 under the frozen geometry/boundaries, not a chemistry comparat
 Plots identify synthetic geometry and source assumptions. Field plots use only
 5 and 15 s; viscosity is the applied beginning-step coefficient, while pressure
 is the interval solution. Scoring uses every native interval over 0–30 s.
-EXCHANGE.json independently reconstructs the fixture's native upwind advective
-solute flux using saved darcyFlux and donor concentrations, and confirms that
+The `transverse_abs_internal_flux_m3_s` field is a **RESTRICTED AUXILIARY
+DIAGNOSTIC**; see the [schema description](RADIAL_SCHEMA.json). The native
+`abs(Sf.x()) < VSMALL` selector, including the corresponding processor-face
+selector, can omit geometrically transverse faces with small nonzero axial
+area-vector components. Selected internal faces count once; selected processor
+faces count half per rank before global/full-basket scaling. It is not complete
+transverse exchange, net core-annulus transfer, or a solute provenance measure.
+
+The retained independent review and interval evidence show approximately 10.59%
+undercount in the final short-fixture interval ending at 0.2 s. This is a
+fixture-specific observation, not an all-case error bound or correction factor.
+[EXCHANGE.json](EXCHANGE.json) and [exchange.py](../../../tools/sci_md_rheology_006/exchange.py)
+document the separate structured-fixture reconstruction: water
+9.876964920381905e-10 m3/s and upwind advective solute
+1.6012777957101985e-8 kg/s. The latter excludes diffusive flux and is not total
+solute exchange. The restricted statistic is not an input to primary flow-share
+scores or allowance construction and does not control native pressure/transport
+or the all-face outgoing Courant calculation. Its limitation does not alter the
+MATERIAL decisions. This is a post-result documentation clarification: the
+auxiliary calculation remains unchanged, not numerically repaired.
+
+The reconstruction uses saved darcyFlux and donor concentrations and confirms
 MPI partitions straddle the material interface. No new native run is involved.
+See the [result limitation](RESULT.md) for scientific applicability.
 
 The original execution freeze is retained after the bounded analysis-only repair
 in POST_EXECUTION_CORRECTION.json. The current reducer implements the protocol's
