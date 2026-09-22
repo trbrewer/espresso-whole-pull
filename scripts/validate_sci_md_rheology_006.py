@@ -6,7 +6,19 @@ from pathlib import Path
 def inspect(root):
     errors=[];freeze=json.loads((root/'docs/analysis/sci_md_rheology_006/FREEZE.json').read_text())
     def sha(b):return hashlib.sha256(b).hexdigest()
+    amendment_path=root/'docs/analysis/sci_md_rheology_006/POST_EXECUTION_CORRECTION.json'
+    amendments={}
+    if amendment_path.exists():
+        amendment=json.loads(amendment_path.read_text())
+        if (amendment['type']!='ANALYSIS_ONLY_CORRECTION'
+            or amendment['original_freeze_sha256']!=sha((root/'docs/analysis/sci_md_rheology_006/FREEZE.json').read_bytes())
+            or set(amendment['files'])!={'tools/sci_md_rheology_006/analyze.py'}):
+            errors.append('invalid bounded analysis amendment')
+        else:amendments=amendment['files']
     for path,digest in freeze['files'].items():
+        if path in amendments:
+            if amendments[path]['original_sha256']!=digest:errors.append('wrong amendment parent '+path)
+            digest=amendments[path]['amended_sha256']
         if sha((root/path).read_bytes())!=digest:errors.append('active frozen file changed: '+path)
     if freeze['governance']!='G2' or freeze['change_declaration']!='GOVERNING_PHYSICS_CHANGE':errors.append('declaration')
     base=freeze['starting_commit']

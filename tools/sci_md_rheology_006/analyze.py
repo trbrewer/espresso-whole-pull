@@ -5,6 +5,13 @@ import numpy as np
 from .common import DOC,TRACE,LAWS,matrix,sha,write
 from .observer import read,validate,scores,decision
 
+def case_decision(metrics):
+    if not all(v['numerically_qualified'] for v in metrics.values()):return 'UNRESOLVED'
+    outcomes=[v['outcome'] for v in metrics.values()]
+    if 'MATERIAL' in outcomes:return 'MATERIAL'
+    if all(v=='BELOW_BUDGET' for v in outcomes):return 'BELOW_BUDGET'
+    return 'UNRESOLVED'
+
 def analyze(art):
     f=json.loads((DOC/'FREEZE.json').read_text())
     events=[json.loads(l) for l in (art/'science/INVOCATIONS.jsonl').read_text().splitlines()]
@@ -31,16 +38,13 @@ def analyze(art):
                 components['scalar_invariance_fixture']=f['scalar_fixture_allowance_pp']
                 u=sum(components.values())
                 result[metric]=dict(value_pp=value,allowance_pp=u,components_pp=components,budget_pp=budget,numerically_qualified=qualified and u<=.2*budget,outcome=decision(value,u,budget,qualified))
-            outcomes=[v['outcome'] for v in result.values()]
-            if not all(v['numerically_qualified'] for v in result.values()) or 'UNRESOLVED' in outcomes:outcome='UNRESOLVED'
-            elif 'MATERIAL' in outcomes:outcome='MATERIAL'
-            else:outcome='BELOW_BUDGET'
+            outcome=case_decision(result)
             d=read(art/'science'/ends[prefix+'base']['id']/'case')
             context={k:float(d[k][-1]) for k in ('water_kg','solute_kg','remaining_kg','stored_solute_kg','inner_remaining_kg','outer_remaining_kg','cumulative_tds_fraction')}
             context.update(beverage_kg=context['water_kg']+context['solute_kg'],dilute_pore_occupancy_min=float(min(d['dilute_pore_volume_fraction'])),dilute_pore_occupancy_max=float(max(d['dilute_pore_volume_fraction'])),max_pore_courant=float(max(d['pore_courant_outgoing_max'])))
             metrics[prefix[:-1]]=dict(metrics=result,case_outcome=outcome,signed_shift_pp=base['score']['signed_shift_pp'],context=context)
-    return dict(task='SCI-MD-RHEOLOGY-006',freeze_sha256=sha(DOC/'FREEZE.json'),cases=metrics,runs=runs,counts=dict(planned=22,started=len(starts),completed=len(ends),failed=sum(v['status']=='FAILED' for v in events),recoveries=sum('__recovery' in v['id'] for v in starts)),physical_validation='NOT_ESTABLISHED')
+    return dict(task='SCI-MD-RHEOLOGY-006',analysis_source_sha256=sha(Path(__file__)),freeze_sha256=sha(DOC/'FREEZE.json'),cases=metrics,runs=runs,counts=dict(planned=22,started=len(starts),completed=len(ends),failed=sum(v['status']=='FAILED' for v in events),recoveries=sum('__recovery' in v['id'] for v in starts)),physical_validation='NOT_ESTABLISHED')
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--artifacts',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();write(a.output/'METRICS.json',analyze(a.artifacts))
+    p=argparse.ArgumentParser();p.add_argument('--artifacts',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=True);write(a.output/'METRICS.json',analyze(a.artifacts))
 if __name__=='__main__':main()

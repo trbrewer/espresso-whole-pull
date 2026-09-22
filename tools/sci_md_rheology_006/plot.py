@@ -4,6 +4,7 @@ from pathlib import Path
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
+matplotlib.rcParams['svg.hashsalt']='SCI-MD-RHEOLOGY-006'
 import matplotlib.pyplot as plt
 from .common import LAWS
 from .observer import read
@@ -25,7 +26,14 @@ def main():
             bx=bxs[i,j];bx.step(d['end_s'],d['water_kg']*1000,where='pre',label='Water (g)');bx.step(d['end_s'],d['solute_kg']*1000,where='pre',label='Solute (g)');bx.step(d['end_s'],(d['water_kg']+d['solute_kg'])*1000,where='pre',label='Beverage (g)')
             bx.set_title(f'{law} / {pressure} bar',fontsize=10);bx.set_xlabel('Time (s)');bx.set_ylabel('Modeled delivery (g)');bx.grid(alpha=.2)
     for fig,axes,name in [(fig,axs,'flow_share.svg'),(fig2,bxs,'delivery.svg')]:
-        axes[0,0].legend(fontsize=8);fig.suptitle(LABEL,fontsize=9);fig.tight_layout();fig.savefig(a.output/name);plt.close(fig)
+        axes[0,0].legend(fontsize=8);fig.suptitle(LABEL,fontsize=9);fig.tight_layout();fig.savefig(a.output/name,metadata={'Date':None});plt.close(fig)
+    fig,axes=plt.subplots(1,2,figsize=(10,3.5))
+    for ax,pressure in zip(axes,(3,9)):
+        for law in LAWS:
+            case=a.artifacts/'science'/ends[f'{law}_{pressure}bar_base']/'case';d=read(case)
+            ax.step(d['end_s'],d['Q_total_m3_s']*1e6,where='pre',label=law)
+        ax.set_title(f'{pressure} bar');ax.set_xlabel('Time (s)');ax.set_ylabel('Native flow (mL/s)');ax.grid(alpha=.2)
+    axes[0].legend(fontsize=8);fig.suptitle(LABEL,fontsize=9);fig.tight_layout();fig.savefig(a.output/'flow.svg',metadata={'Date':None});plt.close(fig)
     # Only predeclared 5 and 15 s snapshots of four base cases.
     fig,axs=plt.subplots(4,4,figsize=(12,10))
     for row,(law,pressure) in enumerate((l,p) for l in LAWS for p in (3,9)):

@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "controls": {
+    "control_SW_WATER_ANCHORED_90C_reversed_3bar": {
+      "postProcessing/wholePull/0/aggregate_intervals.csv": {
+        "accepted_sha256": "141f025ade54e88b67c184df7db003021086f0cd173237c173b6fd6aca19f352",
+        "candidate_sha256": "141f025ade54e88b67c184df7db003021086f0cd173237c173b6fd6aca19f352",
+        "normalized_max": 0.0,
+        "rows": 1500,
+        "excluded_runtime_columns": []
+      },
+      "postProcessing/wholePull/0/traces.csv": {
+        "accepted_sha256": "9999f7412ff186bd750da1e737c5bd72398bc349a158a48425df8fd1e1d147e6",
+        "candidate_sha256": "9999f7412ff186bd750da1e737c5bd72398bc349a158a48425df8fd1e1d147e6",
+        "normalized_max": 0.0,
+        "rows": 1500,
+        "excluded_runtime_columns": []
+      }
+    },
+    "control_SW_WATER_ANCHORED_90C_uniform_9bar": {
+      "postProcessing/wholePull/0/aggregate_intervals.csv": {
+        "accepted_sha256": "ab5418852862f9da81c5cc1a82f6d00853ca8a82af18f66583e02359b8f208ec",
+        "candidate_sha256": "ab5418852862f9da81c5cc1a82f6d00853ca8a82af18f66583e02359b8f208ec",
+        "normalized_max": 0.0,
+        "rows": 1500,
+        "excluded_runtime_columns": []
+      },
+      "postProcessing/wholePull/0/traces.csv": {
+        "accepted_sha256": "c214bd9db7a3ca610a02ad19a3abda9cc10fbbc97cb069b2be0738da6154af17",
+        "candidate_sha256": "c214bd9db7a3ca610a02ad19a3abda9cc10fbbc97cb069b2be0738da6154af17",
+        "normalized_max": 0.0,
+        "rows": 1500,
+        "excluded_runtime_columns": []
+      }
+    },
+    "control_TR_LINEAR_reversed_3bar": {
+      "postProcessing/wholePull/0/aggregate_intervals.csv": {
+        "accepted_sha256": "9a6f641cad2c8fd7dd801e5f9c3839fd828aa4ddb42645be7f14e7ba95e44ae9",
+        "candidate_sha256": "9a6f641cad2c8fd7dd801e5f9c3839fd828aa4ddb42645be7f14e7ba95e44ae9",
+        "normalized_max": 0.0,
+        "rows": 1500,
+        "excluded_runtime_columns": []
+      },
+      "postProcessing/wholePull/0/traces.csv": {
+        "accepted_sha256": "69c21e63531789db32fab94bbb4abf83066531eb9df267c72a07cc8dc211679b",
+        "candidate_sha256": "69c21e63531789db32fab94bbb4abf83066531eb9df267c72a07cc8dc211679b",
+        "normalized_max": 0.0,
+        "rows": 1500,
+        "excluded_runtime_columns": []
+      }
+    },
+    "control_TR_LINEAR_uniform_9bar": {
+      "postProcessing/wholePull/0/aggregate_intervals.csv": {
+        "accepted_sha256": "2a6b1c7960859d5f80b3f6fddd44d0d729c318acd2ba22739e8406af05016bf6",
+        "candidate_sha256": "2a6b1c7960859d5f80b3f6fddd44d0d729c318acd2ba22739e8406af05016bf6",
+        "normalized_max": 0.0,
+        "rows": 1500,
+        "excluded_runtime_columns": []
+      },
+      "postProcessing/wholePull/0/traces.csv": {
+        "accepted_sha256": "4bf5dc92bbadd83fe48651f8f9686c85d44134c0653a5884653c819c5ee40c96",
+        "candidate_sha256": "4bf5dc92bbadd83fe48651f8f9686c85d44134c0653a5884653c819c5ee40c96",
+        "normalized_max": 0.0,
+        "rows": 1500,
+        "excluded_runtime_columns": []
+      }
+    }
+  }
+}

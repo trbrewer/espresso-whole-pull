@@ -1,5 +1,21 @@
 # Project State
 
+## SCI-MD-RHEOLOGY-006 radial viscosity and flow allocation (2026-09-22)
+
+G2 / GOVERNING_PHYSICS_CHANGE; IMPLEMENTED_AND_EXECUTED.
+The [bounded result](analysis/sci_md_rheology_006/RESULT.md) is
+RADIAL_FLOW_ALLOCATION_MATERIAL: all four law/pressure cases have qualified
+material mean and peak inner-share deviations from the analytical 4/7 scalar
+invariant. Both laws agree at 3 and 9 bar. All 22 planned full runs completed,
+zero failures/recoveries; four original-settings legacy controls pass.
+Optional observe/coupled support static radial_two_zone with signed native
+interval diagnostics; bulkCoupled retains its accepted geometry envelope.
+Source-conditioned synthetic evidence only; source-transfer/continuation/
+extrapolation limits remain. PHYSICAL_VALIDATION is NOT_ESTABLISHED.
+Defaults, dependency lock and Puckworks are unchanged. Independent exact-head
+review and hosted CI are separate PR #160 statuses. No merge, adoption,
+laboratory action, additional sweep or automatic successor is authorized.
+
 ## SCI-MD-RHEOLOGY-005 autonomous bulk-state viscosity (2026-09-22)
 
 G2 / `GOVERNING_PHYSICS_CHANGE`; `IMPLEMENTED_AND_EXECUTED`.

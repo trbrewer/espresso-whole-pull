@@ -1,0 +1,14 @@
+{
+  "type": "ANALYSIS_ONLY_CORRECTION",
+  "reason": "Review identified before complete execution/scoring: both metrics numerically qualified plus either material establishes a material case, even if the other straddles its threshold. Corrected after all 22 native runs; original actual-case outcomes were all MATERIAL and are unchanged. Also create the requested analysis output directory and bind reducer identity.",
+  "original_freeze_sha256": "7e04ca0a7f923b27cb0a1fc76acc61198495ca1df66871f20b6bfe9ce241deab",
+  "files": {
+    "tools/sci_md_rheology_006/analyze.py": {
+      "original_sha256": "c27b407743ee20da3c27a97d2961cd41eac0c6e52e125efd01c296f0e8a4d777",
+      "amended_sha256": "6b54c2ce29c20ba5d704f4fcd352a1a913da194dd7a6eb6107b07da6118dd5d0"
+    }
+  },
+  "original_metrics_sha256": "23c332e0853cf47d278aea9c26704ad1eb86ab688a931ea63ce8b83ce60f4ca3",
+  "native_source_executable_tables_scenarios_unchanged": true,
+  "additional_native_runs": 0
+}

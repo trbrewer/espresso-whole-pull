@@ -1,0 +1,465 @@
+{
+  "analysis_source_sha256": "6b54c2ce29c20ba5d704f4fcd352a1a913da194dd7a6eb6107b07da6118dd5d0",
+  "cases": {
+    "SW_WATER_ANCHORED_90C_3bar": {
+      "case_outcome": "MATERIAL",
+      "context": {
+        "beverage_kg": 0.007922472224053864,
+        "cumulative_tds_fraction": 0.1440629834950079,
+        "dilute_pore_occupancy_max": 0.9999999999999829,
+        "dilute_pore_occupancy_min": 0.0651865005493147,
+        "inner_remaining_kg": 0.000502621251766859,
+        "max_pore_courant": 0.907363079045153,
+        "outer_remaining_kg": 0.0025983890113370186,
+        "remaining_kg": 0.0031010102631038724,
+        "solute_kg": 0.0011413349852535304,
+        "stored_solute_kg": 0.0013515353832511169,
+        "water_kg": 0.006781137238800334
+      },
+      "metrics": {
+        "D_mean_pp": {
+          "allowance_pp": 0.009705813000016383,
+          "budget_pp": 1.0,
+          "components_pp": {
+            "axial": 0.001000358482709629,
+            "property": 1.4422820834525396e-05,
+            "radial": 0.007634254911500271,
+            "roundoff_reduction": 3.9968028886505635e-15,
+            "scalar_invariance_fixture": 2.1608687061913656e-09,
+            "temporal": 0.0010567746240992548
+          },
+          "numerically_qualified": true,
+          "outcome": "MATERIAL",
+          "value_pp": 2.2377353268085467
+        },
+        "D_peak_pp": {
+          "allowance_pp": 0.019427989273736013,
+          "budget_pp": 2.0,
+          "components_pp": {
+            "axial": 0.002332539544069867,
+            "property": 2.2203761374406383e-05,
+            "radial": 0.01673101092358742,
+            "roundoff_reduction": 3.552713678800501e-15,
+            "scalar_invariance_fixture": 2.1608687061913656e-09,
+            "temporal": 0.00034223288383206096
+          },
+          "numerically_qualified": true,
+          "outcome": "MATERIAL",
+          "value_pp": 4.895464103033498
+        }
+      },
+      "signed_shift_pp": 2.237735326808532
+    },
+    "SW_WATER_ANCHORED_90C_9bar": {
+      "case_outcome": "MATERIAL",
+      "context": {
+        "beverage_kg": 0.0275130497883287,
+        "cumulative_tds_fraction": 0.10236079447733423,
+        "dilute_pore_occupancy_max": 0.9999999999999829,
+        "dilute_pore_occupancy_min": 0.1992540359496992,
+        "inner_remaining_kg": 5.7975211092671e-05,
+        "max_pore_courant": 2.7811195653599143,
+        "outer_remaining_kg": 0.0018969474811608026,
+        "remaining_kg": 0.0019549226922534716,
+        "solute_kg": 0.002816257634827778,
+        "stored_solute_kg": 0.0008266118216014253,
+        "water_kg": 0.024696792153500922
+      },
+      "metrics": {
+        "D_mean_pp": {
+          "allowance_pp": 0.0027531486803108463,
+          "budget_pp": 1.0,
+          "components_pp": {
+            "axial": 0.00238312283964337,
+            "property": 7.170765829123127e-06,
+            "radial": 2.6773346482045213e-06,
+            "roundoff_reduction": 3.552713678800501e-15,
+            "scalar_invariance_fixture": 2.1608687061913656e-09,
+            "temporal": 0.00036017557931788957
+          },
+          "numerically_qualified": true,
+          "outcome": "MATERIAL",
+          "value_pp": 7.5072513011142314
+        },
+        "D_peak_pp": {
+          "allowance_pp": 0.014275597794845996,
+          "budget_pp": 2.0,
+          "components_pp": {
+            "axial": 0.0006399515817481216,
+            "property": 1.4671981830360892e-05,
+            "radial": 0.012659429344164863,
+            "roundoff_reduction": 5.329070518200751e-15,
+            "scalar_invariance_fixture": 2.1608687061913656e-09,
+            "temporal": 0.0009615427262286147
+          },
+          "numerically_qualified": true,
+          "outcome": "MATERIAL",
+          "value_pp": 10.250476881214466
+        }
+      },
+      "signed_shift_pp": 7.507251301114215
+    },
+    "TR_LINEAR_3bar": {
+      "case_outcome": "MATERIAL",
+      "context": {
+        "beverage_kg": 0.009381065373333903,
+        "cumulative_tds_fraction": 0.14342300804309246,
+        "dilute_pore_occupancy_max": 0.9999999999999829,
+        "dilute_pore_occupancy_min": 0.08154296874999759,
+        "inner_remaining_kg": 0.0004140402384637346,
+        "max_pore_courant": 0.907363079045153,
+        "outer_remaining_kg": 0.002548325241326286,
+        "remaining_kg": 0.0029623654797900113,
+        "solute_kg": 0.0013454606144924445,
+        "stored_solute_kg": 0.0012868974638471755,
+        "water_kg": 0.008035604758841458
+      },
+      "metrics": {
+        "D_mean_pp": {
+          "allowance_pp": 0.01334684698534827,
+          "budget_pp": 1.0,
+          "components_pp": {
+            "axial": 0.0006616319087520139,
+            "property": 0.0,
+            "radial": 0.010240155962133013,
+            "roundoff_reduction": 3.552713678800501e-15,
+            "scalar_invariance_fixture": 2.1608687061913656e-09,
+            "temporal": 0.002445056953590985
+          },
+          "numerically_qualified": true,
+          "outcome": "MATERIAL",
+          "value_pp": 3.1083823915942546
+        },
+        "D_peak_pp": {
+          "allowance_pp": 0.02222878648760218,
+          "budget_pp": 2.0,
+          "components_pp": {
+            "axial": 0.0014679371970416355,
+            "property": 0.0,
+            "radial": 0.020730713513994026,
+            "roundoff_reduction": 6.217248937900877e-15,
+            "scalar_invariance_fixture": 2.1608687061913656e-09,
+            "temporal": 3.013361569159656e-05
+          },
+          "numerically_qualified": true,
+          "outcome": "MATERIAL",
+          "value_pp": 6.743145673577622
+        }
+      },
+      "signed_shift_pp": 3.1083823915942443
+    },
+    "TR_LINEAR_9bar": {
+      "case_outcome": "MATERIAL",
+      "context": {
+        "beverage_kg": 0.03136982994884749,
+        "cumulative_tds_fraction": 0.0992850742784528,
+        "dilute_pore_occupancy_max": 0.9999999999999829,
+        "dilute_pore_occupancy_min": 0.2426757812499933,
+        "inner_remaining_kg": 4.829114906467268e-05,
+        "max_pore_courant": 2.8350065768600285,
+        "outer_remaining_kg": 0.0017027912605328058,
+        "remaining_kg": 0.0017510824095974772,
+        "solute_kg": 0.0031145558965737564,
+        "stored_solute_kg": 0.0007325066566410877,
+        "water_kg": 0.028255274052273734
+      },
+      "metrics": {
+        "D_mean_pp": {
+          "allowance_pp": 0.029866410662693244,
+          "budget_pp": 1.0,
+          "components_pp": {
+            "axial": 0.0030091264870604206,
+            "property": 0.0,
+            "radial": 0.025999469415209475,
+            "roundoff_reduction": 3.552713678800501e-15,
+            "scalar_invariance_fixture": 2.1608687061913656e-09,
+            "temporal": 0.0008578125995510888
+          },
+          "numerically_qualified": true,
+          "outcome": "MATERIAL",
+          "value_pp": 6.684540336589766
+        },
+        "D_peak_pp": {
+          "allowance_pp": 0.03854644346654179,
+          "budget_pp": 2.0,
+          "components_pp": {
+            "axial": 0.0038993834842067088,
+            "property": 0.0,
+            "radial": 0.03399873937245346,
+            "roundoff_reduction": 8.881784197001252e-15,
+            "scalar_invariance_fixture": 2.1608687061913656e-09,
+            "temporal": 0.0006483184490040372
+          },
+          "numerically_qualified": true,
+          "outcome": "MATERIAL",
+          "value_pp": 8.539400916846596
+        }
+      },
+      "signed_shift_pp": 6.6845403365897615
+    }
+  },
+  "counts": {
+    "completed": 22,
+    "failed": 0,
+    "planned": 22,
+    "recoveries": 0,
+    "started": 22
+  },
+  "freeze_sha256": "7e04ca0a7f923b27cb0a1fc76acc61198495ca1df66871f20b6bfe9ce241deab",
+  "physical_validation": "NOT_ESTABLISHED",
+  "runs": {
+    "SW_WATER_ANCHORED_90C_3bar_axial": {
+      "high_precision": {
+        "D_mean_pp": 2.238735685291253,
+        "D_peak_pp": 4.897796642577565,
+        "signed_shift_pp": 2.2387356852908913
+      },
+      "score": {
+        "D_mean_pp": 2.2387356852912563,
+        "D_peak_pp": 4.897796642577568,
+        "signed_shift_pp": 2.2387356852908935
+      },
+      "trace_sha256": "ef1022525883951529094ce0863988aaa6f96cc37fa457968e26ca3b0e0341ad",
+      "validity": true
+    },
+    "SW_WATER_ANCHORED_90C_3bar_base": {
+      "high_precision": {
+        "D_mean_pp": 2.2377353268085436,
+        "D_peak_pp": 4.895464103033494,
+        "signed_shift_pp": 2.2377353268085436
+      },
+      "score": {
+        "D_mean_pp": 2.2377353268085467,
+        "D_peak_pp": 4.895464103033498,
+        "signed_shift_pp": 2.237735326808532
+      },
+      "trace_sha256": "c4a1c4541991d48d0abebb9e047b42c6f3fcd4a1106e6142e77b2a1239acf165",
+      "validity": true
+    },
+    "SW_WATER_ANCHORED_90C_3bar_property": {
+      "high_precision": {
+        "D_mean_pp": 2.237749749629378,
+        "D_peak_pp": 4.8954863067948695,
+        "signed_shift_pp": 2.237749749629378
+      },
+      "score": {
+        "D_mean_pp": 2.2377497496293812,
+        "D_peak_pp": 4.895486306794872,
+        "signed_shift_pp": 2.237749749629392
+      },
+      "trace_sha256": "1eb694e16ae1bb11f9950446f9fce01148d56afd8fcd20cd25f20964c7e11d05",
+      "validity": true
+    },
+    "SW_WATER_ANCHORED_90C_3bar_radial": {
+      "high_precision": {
+        "D_mean_pp": 2.245369581720043,
+        "D_peak_pp": 4.9121951139570825,
+        "signed_shift_pp": 2.2453695817197628
+      },
+      "score": {
+        "D_mean_pp": 2.245369581720047,
+        "D_peak_pp": 4.912195113957085,
+        "signed_shift_pp": 2.2453695817197583
+      },
+      "trace_sha256": "1eaad4fba13415aa4f40af1e98a9f3536b01e49596b046243e4003a74f8f7577",
+      "validity": true
+    },
+    "SW_WATER_ANCHORED_90C_3bar_temporal": {
+      "high_precision": {
+        "D_mean_pp": 2.236678552184444,
+        "D_peak_pp": 4.895806335917327,
+        "signed_shift_pp": 2.236678552184444
+      },
+      "score": {
+        "D_mean_pp": 2.2366785521844474,
+        "D_peak_pp": 4.89580633591733,
+        "signed_shift_pp": 2.2366785521844568
+      },
+      "trace_sha256": "afc0d441ec4e51e951098370b7b092a76c11d78b37ab9d538554899a0d97bc08",
+      "validity": true
+    },
+    "SW_WATER_ANCHORED_90C_9bar_axial": {
+      "high_precision": {
+        "D_mean_pp": 7.509634423953871,
+        "D_peak_pp": 10.251116832796212,
+        "signed_shift_pp": 7.50963442395357
+      },
+      "score": {
+        "D_mean_pp": 7.509634423953875,
+        "D_peak_pp": 10.251116832796214,
+        "signed_shift_pp": 7.509634423953582
+      },
+      "trace_sha256": "6693c5dfc9c94c3716d52927c8b527c071ee88bbabbf73f89f9619856f1a2415",
+      "validity": true
+    },
+    "SW_WATER_ANCHORED_90C_9bar_base": {
+      "high_precision": {
+        "D_mean_pp": 7.507251301114228,
+        "D_peak_pp": 10.250476881214462,
+        "signed_shift_pp": 7.507251301114228
+      },
+      "score": {
+        "D_mean_pp": 7.5072513011142314,
+        "D_peak_pp": 10.250476881214466,
+        "signed_shift_pp": 7.507251301114215
+      },
+      "trace_sha256": "ec4b5aa02116785a2c5437fc84f4acc3170069fc3a21bea14a9b02f98a8c7a31",
+      "validity": true
+    },
+    "SW_WATER_ANCHORED_90C_9bar_property": {
+      "high_precision": {
+        "D_mean_pp": 7.5072441303484005,
+        "D_peak_pp": 10.25046220923263,
+        "signed_shift_pp": 7.5072441303484005
+      },
+      "score": {
+        "D_mean_pp": 7.507244130348402,
+        "D_peak_pp": 10.250462209232635,
+        "signed_shift_pp": 7.5072441303484005
+      },
+      "trace_sha256": "205d47183460c58f138697aedad55a77f47dc6622e87af210603598f604b6be0",
+      "validity": true
+    },
+    "SW_WATER_ANCHORED_90C_9bar_radial": {
+      "high_precision": {
+        "D_mean_pp": 7.5072486237795815,
+        "D_peak_pp": 10.237817451870303,
+        "signed_shift_pp": 7.5072486237793505
+      },
+      "score": {
+        "D_mean_pp": 7.507248623779583,
+        "D_peak_pp": 10.237817451870301,
+        "signed_shift_pp": 7.507248623779339
+      },
+      "trace_sha256": "002b0045830c3b20393afdd35ec00cd231be8476cfdf285a21dd426d685e6883",
+      "validity": true
+    },
+    "SW_WATER_ANCHORED_90C_9bar_temporal": {
+      "high_precision": {
+        "D_mean_pp": 7.507611476693546,
+        "D_peak_pp": 10.251438423940694,
+        "signed_shift_pp": 7.507611476693546
+      },
+      "score": {
+        "D_mean_pp": 7.507611476693549,
+        "D_peak_pp": 10.251438423940694,
+        "signed_shift_pp": 7.507611476693543
+      },
+      "trace_sha256": "c9465e2ebd08611df457094e5b739d54bd04a38819ade51e7d32ed66e9bd26e6",
+      "validity": true
+    },
+    "TR_LINEAR_3bar_axial": {
+      "high_precision": {
+        "D_mean_pp": 3.1077207596855003,
+        "D_peak_pp": 6.744613610774661,
+        "signed_shift_pp": 3.107720759685195
+      },
+      "score": {
+        "D_mean_pp": 3.1077207596855025,
+        "D_peak_pp": 6.744613610774664,
+        "signed_shift_pp": 3.1077207596851952
+      },
+      "trace_sha256": "f79818ff770c1868b2ea4d78d4b25f2dddb1663b08c294fabaeeafdddfc77af4",
+      "validity": true
+    },
+    "TR_LINEAR_3bar_base": {
+      "high_precision": {
+        "D_mean_pp": 3.108382391594252,
+        "D_peak_pp": 6.743145673577616,
+        "signed_shift_pp": 3.108382391594252
+      },
+      "score": {
+        "D_mean_pp": 3.1083823915942546,
+        "D_peak_pp": 6.743145673577622,
+        "signed_shift_pp": 3.1083823915942443
+      },
+      "trace_sha256": "68737dbf93a7f90f0c107a1a46470d7e91cab5200208641198fe14ece4d7263f",
+      "validity": true
+    },
+    "TR_LINEAR_3bar_radial": {
+      "high_precision": {
+        "D_mean_pp": 3.1186225475563853,
+        "D_peak_pp": 6.763876387091611,
+        "signed_shift_pp": 3.1186225475561486
+      },
+      "score": {
+        "D_mean_pp": 3.1186225475563876,
+        "D_peak_pp": 6.763876387091616,
+        "signed_shift_pp": 3.118622547556149
+      },
+      "trace_sha256": "3e0fc9e2ab1d2c103b163ab9c3ed4a9bf7b5efb4b91c7c55c027ef3bba0434f2",
+      "validity": true
+    },
+    "TR_LINEAR_3bar_temporal": {
+      "high_precision": {
+        "D_mean_pp": 3.10593733464066,
+        "D_peak_pp": 6.743115539961925,
+        "signed_shift_pp": 3.10593733464066
+      },
+      "score": {
+        "D_mean_pp": 3.1059373346406636,
+        "D_peak_pp": 6.743115539961931,
+        "signed_shift_pp": 3.1059373346406516
+      },
+      "trace_sha256": "c2bbf690e6e2eb82771db720336547496d10259b198b1ca120e8e46c70e22a42",
+      "validity": true
+    },
+    "TR_LINEAR_9bar_axial": {
+      "high_precision": {
+        "D_mean_pp": 6.687549463076824,
+        "D_peak_pp": 8.543300300330802,
+        "signed_shift_pp": 6.68754946307656
+      },
+      "score": {
+        "D_mean_pp": 6.687549463076826,
+        "D_peak_pp": 8.543300300330802,
+        "signed_shift_pp": 6.687549463076559
+      },
+      "trace_sha256": "f290800b26bc14c605f2619a6906891f957b907258cdea14b368eed61ef7b6bd",
+      "validity": true
+    },
+    "TR_LINEAR_9bar_base": {
+      "high_precision": {
+        "D_mean_pp": 6.684540336589763,
+        "D_peak_pp": 8.539400916846587,
+        "signed_shift_pp": 6.684540336589763
+      },
+      "score": {
+        "D_mean_pp": 6.684540336589766,
+        "D_peak_pp": 8.539400916846596,
+        "signed_shift_pp": 6.6845403365897615
+      },
+      "trace_sha256": "4b088ad589b8b7badf7744642505d6bba86642ab585946dda54ecb1122133cd9",
+      "validity": true
+    },
+    "TR_LINEAR_9bar_radial": {
+      "high_precision": {
+        "D_mean_pp": 6.658540867174554,
+        "D_peak_pp": 8.505402177474137,
+        "signed_shift_pp": 6.658540867174351
+      },
+      "score": {
+        "D_mean_pp": 6.6585408671745565,
+        "D_peak_pp": 8.505402177474142,
+        "signed_shift_pp": 6.658540867174345
+      },
+      "trace_sha256": "896ee317142dd66177cc65b34fe0c9b8dae4e7f243d7006921c2a37f61b5cc4c",
+      "validity": true
+    },
+    "TR_LINEAR_9bar_temporal": {
+      "high_precision": {
+        "D_mean_pp": 6.683682523990211,
+        "D_peak_pp": 8.540049235295598,
+        "signed_shift_pp": 6.683682523990211
+      },
+      "score": {
+        "D_mean_pp": 6.683682523990215,
+        "D_peak_pp": 8.5400492352956,
+        "signed_shift_pp": 6.683682523990219
+      },
+      "trace_sha256": "6bdbfc0a06a2692f37f38108c081f3b3e8040cd033e00cfb827a4b0b241326f3",
+      "validity": true
+    }
+  },
+  "task": "SCI-MD-RHEOLOGY-006"
+}
