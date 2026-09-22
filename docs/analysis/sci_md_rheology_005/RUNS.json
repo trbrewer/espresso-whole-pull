@@ -1,0 +1,732 @@
+{
+  "bulk_receipts": {
+    "SW_WATER_ANCHORED_90C_base_reversed_3bar_G": {
+      "sha256": "9e314b7cedcc12c1a2c03a883b543d9199f1cb3f75fb78e19f0c16f9599aafd8"
+    },
+    "SW_WATER_ANCHORED_90C_base_uniform_9bar_G": {
+      "sha256": "6eafe7a4eda34c965c8470416f194f3e2bbcb71893049730253c222cd37ae708"
+    },
+    "SW_WATER_ANCHORED_90C_property_reversed_3bar_G": {
+      "sha256": "4947b8290b3cc6042b6d91d1662dea2d1ccb378829dabf7a13a7c29a2005a695"
+    },
+    "SW_WATER_ANCHORED_90C_property_uniform_9bar_G": {
+      "sha256": "dd4611db62bc619290d6c50ace3bff10b0a14172ad27b87c51829862565b8681"
+    },
+    "SW_WATER_ANCHORED_90C_spatial_reversed_3bar_G": {
+      "sha256": "5aafbab47eb504c9ce8e7d073349478175e8469d40086f8e77faef37a65f4d08"
+    },
+    "SW_WATER_ANCHORED_90C_spatial_uniform_9bar_G": {
+      "sha256": "99f35d65a6e254e224c5666a55a113dcc7cfb68531ecdaad68420426f0704edd"
+    },
+    "SW_WATER_ANCHORED_90C_temporal_reversed_3bar_G": {
+      "sha256": "9c4046e6d407539c16ecd25c36819668cacfc901e829dd1dde60502ad02502b1"
+    },
+    "SW_WATER_ANCHORED_90C_temporal_uniform_9bar_G": {
+      "sha256": "936c76577ca4d0b8f827f52ca949af331f535336cbc76445a1e4b029d065c0d0"
+    },
+    "TR_LINEAR_base_reversed_3bar_G": {
+      "sha256": "943fa2eb303fdbd1388b011ede0e21e8fd02c4b2cb352aef8a200097d6b04613"
+    },
+    "TR_LINEAR_base_uniform_9bar_G": {
+      "sha256": "a30d8e3a5e7d00ad3a800cf5bc241edbbb025aa17639469ea23a870702c26851"
+    },
+    "TR_LINEAR_spatial_reversed_3bar_G": {
+      "sha256": "3b4265f8021ae92a52c47d193c5b0679a0080ca31c45a6b8d39589a9e4de3756"
+    },
+    "TR_LINEAR_spatial_uniform_9bar_G": {
+      "sha256": "6371def11c0e593168b42c5a871e7da3eea7dec5d884db6422491fcf53b17590"
+    },
+    "TR_LINEAR_temporal_reversed_3bar_G": {
+      "sha256": "519ffb7876940855e2e595a4f4ed363a75f74b7fcae362816c01d095d6919758"
+    },
+    "TR_LINEAR_temporal_uniform_9bar_G": {
+      "sha256": "6168293006d5ea37c90e92448497fa21d6fe7346674ae22c0bd8b6c43a826e82"
+    }
+  },
+  "events": [
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "TR_LINEAR_base_uniform_9bar_C",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_base_uniform_9bar_C",
+      "status": "STARTED",
+      "table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "dabc606f36b62a8fd2ef0e26ba239528bea9df11d254f0ebf2d971501c76a82f",
+      "id": "TR_LINEAR_base_uniform_9bar_C",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "bde4906c7282ad0436f10678385c5f1cebb573f7b8722959c14dc763bf9fa1a8",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "2a6b1c7960859d5f80b3f6fddd44d0d729c318acd2ba22739e8406af05016bf6",
+      "logs_sha256": {
+        "command-0.log": "6fd6b03090ebd6e69dd96dce4410e4bfef26d24211937d110d52f178263f99fb",
+        "command-1.log": "579884deff7e515d3123227f5d5104303ce5dd12d6371a4794408efe2ef3f337",
+        "command-2.log": "43436a151e03ab5d1c30bf6360b618e800dbc385255df508fd3bc4942b362c4a"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "TR_LINEAR_base_reversed_3bar_C",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_base_reversed_3bar_C",
+      "status": "STARTED",
+      "table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "a0e266e4926cb065ca163d00ff570c0be263c7d8904c3a4f028ed578a8be7315",
+      "id": "TR_LINEAR_base_reversed_3bar_C",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "4ef5619db798d1d2e8dc3c126cde83eeff4a3e08b2a63e6ccb1db1ca74cff2ed",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "9a6f641cad2c8fd7dd801e5f9c3839fd828aa4ddb42645be7f14e7ba95e44ae9",
+      "logs_sha256": {
+        "command-0.log": "ef922ff8cf2097ae9194af3dd5959308c077a5cd8d4016ca9d8ac478abc9d0e9",
+        "command-1.log": "7f80fbde72fcb68c460c170200ca4260ecae0ca61d18333d4d1bc7487dab2cdf",
+        "command-2.log": "6b83bc7360aa12ac5b1ad540e9de8a784391d0db267e0b5eabebd6daae6b6391"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_base_uniform_9bar_C",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_base_uniform_9bar_C",
+      "status": "STARTED",
+      "table_sha256": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "d33ed6bc5bf1a58142aa4fdc515d3580967c0f35a039e9e704384fc6435ce837",
+      "id": "SW_WATER_ANCHORED_90C_base_uniform_9bar_C",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "31d9b2546e128c1ff25e3fcaa99ca5b5eac53a98eb80555641bd3a0fb6b4b313",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "ab5418852862f9da81c5cc1a82f6d00853ca8a82af18f66583e02359b8f208ec",
+      "logs_sha256": {
+        "command-0.log": "9250523c0c15eab1cd419d9fc564c48c7d3ac20bf4fee1e44bc9330da6634a48",
+        "command-1.log": "4ef3ac07194d168fabc806009f44445279ecdd08e59314a3eac1b9b7c3e5e848",
+        "command-2.log": "4c24a5b4c1cf754a806850cacb0dd78319d552e33c3abe22c964fd017b21d280"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_base_reversed_3bar_C",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_base_reversed_3bar_C",
+      "status": "STARTED",
+      "table_sha256": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "f0ef67e0282859cf18dcf4f3bec56bcf774c11a64017394e8f9c73458083002e",
+      "id": "SW_WATER_ANCHORED_90C_base_reversed_3bar_C",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "60a303ce435ebc53c9d9ca2e92ea835d2207cde6fc488e9441755d413b4488e0",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "141f025ade54e88b67c184df7db003021086f0cd173237c173b6fd6aca19f352",
+      "logs_sha256": {
+        "command-0.log": "6902121e6889759299e5ffaa3a98c64bb76130834fd9529f9afd3663a34efc57",
+        "command-1.log": "92a3d65317ea7fb271c302c516412db879d224c48d13ec77e03042e2333edcbe",
+        "command-2.log": "7b60c8102e927ca28cbbf905d39c1bdb4ab125ba3799a0dd982c1ec7d5c7072d"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "TR_LINEAR_base_uniform_9bar_G",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_base_uniform_9bar_G",
+      "status": "STARTED",
+      "table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "162aa27f8b9436178cb0da99c4e25c4a93a91ba545fa56b3a055c5d8f585548e",
+      "id": "TR_LINEAR_base_uniform_9bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "8871e452a11a45a293054f5eabd2f9537fe508956cfd8c95bf1789e8a440cdc3",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "ec278f52ab81e12d8af63884bf6653b2e4cf5f89c3bc4ef4826f8be16a4dd3b5",
+      "logs_sha256": {
+        "command-0.log": "cad7e2d74361ca9e9aa9a5a8418534a9b2ff305085b03c49d0430c9119d0fe3d",
+        "command-1.log": "28320f0f9d60682dfdaf4d71fb078e6e89834f1a4ea598427c35c9e7db0f3815",
+        "command-2.log": "fc19fa5749e0bf24fd4830a139e32a1e8b94742604ff6554bd27611906c58692"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "TR_LINEAR_base_reversed_3bar_G",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_base_reversed_3bar_G",
+      "status": "STARTED",
+      "table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "35151bec24ca3e15bef3ec981cda1ab4c56cfec6e5616c97ad49e9e239181ad4",
+      "id": "TR_LINEAR_base_reversed_3bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "412ab8ca7d95b18b7fa69a707d4a2f5bd1136bba4b3037c8c67a1aa3568f9a9e",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "e2494b85df7d67a6b80d84e2bdfbbb5a9419751beccc47b340be0be806688218",
+      "logs_sha256": {
+        "command-0.log": "fd9fa480cb08ce95c69a75d92fe3b1b7fbc68e32a63563f297ad32efba3e8372",
+        "command-1.log": "96e39dad57e79528100fa82f84a82d9ebda13c4ef95ec001da81f85d4d031996",
+        "command-2.log": "8dc9e632f6bbfc00514f50482e59a58c918e1c670e69e36ca6c674283a09d7fc"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "TR_LINEAR_temporal_uniform_9bar_G",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_temporal_uniform_9bar_G",
+      "status": "STARTED",
+      "table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "e1074d460f1a8cddb036b57ce5219df3c5d890ccc2ba6273f3759d080c15a516",
+      "id": "TR_LINEAR_temporal_uniform_9bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "8871e452a11a45a293054f5eabd2f9537fe508956cfd8c95bf1789e8a440cdc3",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "1f427e0aa8a43d46b5588df7bdd4340ab4c6cce1651a777726882d7e16c84f24",
+      "logs_sha256": {
+        "command-0.log": "98f557ad4f7885d5dce4da79a16ef9e407cfd32c11ae778cf52db6d4b92121a7",
+        "command-1.log": "77679161e8a03a69bcc4ff9792d0ada5ad769cf35f11b76fdb18885b62872587",
+        "command-2.log": "2e2ae21f6514670ec8fcc244d2628edc8cb0b5c47e85cb48ced3cb940148602e"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "TR_LINEAR_temporal_reversed_3bar_G",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_temporal_reversed_3bar_G",
+      "status": "STARTED",
+      "table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "012ef0139931e61d9141a0dd9ace3be8f6850361fc10775c4d444439b2bb9084",
+      "id": "TR_LINEAR_temporal_reversed_3bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "412ab8ca7d95b18b7fa69a707d4a2f5bd1136bba4b3037c8c67a1aa3568f9a9e",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "f4f8f03c74bbbc83b7a44e4612650946669ca3101af5a4cac775c4c6d5c111c3",
+      "logs_sha256": {
+        "command-0.log": "27bca764d9ab321afa1ebfd6745ea26b2fe383aee76c768d9cb36061518e7cac",
+        "command-1.log": "763b2e71d1dea55c1454517b4cde34ef1c982b6832ead30a872d897a0c852196",
+        "command-2.log": "47396442c2b89bfe04039fd857adc39728153317471505d64a035401839a8e98"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "TR_LINEAR_spatial_uniform_9bar_G",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_spatial_uniform_9bar_G",
+      "status": "STARTED",
+      "table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "3c8af5d243e2eb568755d0a5beb5cc82f4720fd3ad1310e944f611a9573c618b",
+      "id": "TR_LINEAR_spatial_uniform_9bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "e8bc18793fa878afda4735aae79f78f118508b7ef908165eb9ed941846403291",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "0b89ef52df974dde4ae8e78bbca62a3179e64c34e59805fc796f033192f43216",
+      "logs_sha256": {
+        "command-0.log": "63c345f3d66ce005716576f7f28c69151442d999332952d206c63130844b0077",
+        "command-1.log": "8f2e9ae3484658cc33f9fa8594c6c468aec928ebfd83de6cb166c51a0d4eed61",
+        "command-2.log": "885c26484d6379d02eef067f55e87679b932631fca8d2ebd016a294d0d7daad8"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "TR_LINEAR_spatial_reversed_3bar_G",
+      "recovery_reason": null,
+      "slot": "TR_LINEAR_spatial_reversed_3bar_G",
+      "status": "STARTED",
+      "table_sha256": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "8bde295ac7e1385100992188bccff5af883545f4fc54a1b90cd0c2eebce674f9",
+      "id": "TR_LINEAR_spatial_reversed_3bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "6ff374bedabb644fb7e30bc140682ad33cf461187a8c467c9abdcffdc31974bf",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "536236cd4741e1efc0027bd17e3f82889eb1eb247148d6732387520e377526a2",
+      "logs_sha256": {
+        "command-0.log": "cb74b932fe145499cb126cc719a0451780d0d566c7c9c93faf5b55b1972e357e",
+        "command-1.log": "5e94cd2793539cba11f3b9cd2ac9035094d335ea067c293dcb4571d58c324955",
+        "command-2.log": "3577c372b7192cd93c4a7f308d1d8c59580f51906c97b2dab62a71d13f7d0ba0"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_base_uniform_9bar_G",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_base_uniform_9bar_G",
+      "status": "STARTED",
+      "table_sha256": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "f7bcc61109c357ab26686fc172339016a6405fbc7217a22ed2b65b2c5d0b1856",
+      "id": "SW_WATER_ANCHORED_90C_base_uniform_9bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "b67e0cfbcd88ec3ce8a021b8be2714adf0359fc5a3ac8aed60a15ad620697292",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "ccd8c949cb162d0ddd6296f0cf3de174ced0a56eb2ff621a18f12582410b6fbb",
+      "logs_sha256": {
+        "command-0.log": "50495af0a2334c3f49bc733fdbf1741ed1042a7a85f52de3bd2c8a4e51c37f15",
+        "command-1.log": "9a9bb7872885483d292d875777be008f1562cd45b8142533f024a7bf571d60fc",
+        "command-2.log": "eda1018f67a1163c891482f5c6232c0178cd2e11468e49d70c80b8a3d10256d2"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_base_reversed_3bar_G",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_base_reversed_3bar_G",
+      "status": "STARTED",
+      "table_sha256": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "943e7cd1f0b52715022432b851d354b95dd1c30b44f77f5e7008d0a1c0e240c9",
+      "id": "SW_WATER_ANCHORED_90C_base_reversed_3bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "ced001149f3b462e16628556faca8602323e9ef800d68a4f8fa17ff57a455bdb",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "14382b01c88c6a8fe2e994fa7ab26fd564cc04c9431e062bc0647ab5f8514c77",
+      "logs_sha256": {
+        "command-0.log": "6be70ec9ad58252725d26397b5776db974626efe00e51c1f02a17bc2a18d38ce",
+        "command-1.log": "dbb4434ac38c14064b6e195473d09faf35a87497e02dd40b7d871d4bbd6c88ff",
+        "command-2.log": "179f4d86a5e66de251134167e4631a2eb5f20ff2b2576c804fb779a4391f6e52"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_temporal_uniform_9bar_G",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_temporal_uniform_9bar_G",
+      "status": "STARTED",
+      "table_sha256": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "dea1360c2fd5f88c112b95974fcbecfffc95951a19a21b751b0950e6f4ea8e89",
+      "id": "SW_WATER_ANCHORED_90C_temporal_uniform_9bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "b67e0cfbcd88ec3ce8a021b8be2714adf0359fc5a3ac8aed60a15ad620697292",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "f63134080b3a5ad89d03030ffcec6daf14073525b336240e836e84d310f9dfc4",
+      "logs_sha256": {
+        "command-0.log": "7dea75293d1ddc4d111d063794cada3a6150452ea194f3a1d278e8b9c969e5b3",
+        "command-1.log": "e8808c2e8417aee261fff073c326b8676d4da9cb7ab9625ee0b079b7dcc32647",
+        "command-2.log": "80e442a67d311af9db611ffad97953711eba910f7e17d6bb870486c522c740ab"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_temporal_reversed_3bar_G",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_temporal_reversed_3bar_G",
+      "status": "STARTED",
+      "table_sha256": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "2941869bcdf009f4b8676bef74ac591d74a134d4ef599a878a5c1d595c47ebd2",
+      "id": "SW_WATER_ANCHORED_90C_temporal_reversed_3bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "ced001149f3b462e16628556faca8602323e9ef800d68a4f8fa17ff57a455bdb",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "188f2feb2555215d8ddb6f922b52e5232bd09c3a2e4fee47b9a920bdf6bd0ff7",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "cb5662ce08eb18c24cba9196c511cc1affa38f7e4daed911e817a1c635b1f7c7",
+      "logs_sha256": {
+        "command-0.log": "59c1122b09dded4a6784e9c0946ab65a3536fcc830b31abb7c62872e297d91ed",
+        "command-1.log": "d58ac2a9f904a8974df612bddc193f421be076c032a9b6064138b998a6740a4a",
+        "command-2.log": "d121eedc601d08c3b409158da93fbe65c13bdd209900f5230474786943cda5db"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_spatial_uniform_9bar_G",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_spatial_uniform_9bar_G",
+      "status": "STARTED",
+      "table_sha256": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "10af0d1bfcfbf2d8b28fdf03b232156fac6ebbbce1c76f466da3b69f5d2ae473",
+      "id": "SW_WATER_ANCHORED_90C_spatial_uniform_9bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "bd606402532d96d24756f4fc32dc4551f1b5a494acb777102cec9834e1aae317",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "65d763c8a55cea9b7f4492e45b3f69cab327fff9ff93a7794e24337bffd32fba",
+      "logs_sha256": {
+        "command-0.log": "fbf100d97f80cb8ac8cea74bd03e8e66a346835103b8780b4b503b0b0ae20f86",
+        "command-1.log": "930c9215f629bc5141ff9bd615d74aeb18856fa7ddc13efcbd064c0dfc332b59",
+        "command-2.log": "afdb26529bfb6670263b200c5ce77b2395f5e70aeacdda44da59ef32988af0e2"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_spatial_reversed_3bar_G",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_spatial_reversed_3bar_G",
+      "status": "STARTED",
+      "table_sha256": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "2f02fee7764073b0f3ca03ed6f4e429830c067b21e5372d8281acf694290c8e9",
+      "id": "SW_WATER_ANCHORED_90C_spatial_reversed_3bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "f4ea6cb00a029a41c59ac9317a7a3fd1a977960e827443c3c58227eea0ddbd68",
+        "system/blockMeshDict": "7f37b7982aa7500b6cd7e01df0f7dfbe86301023e9ce825f64868aacd7b74098",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "e504f7380f34c8ee9cb63cc46bcf6228ba6cb629f239628e963666a1ae0e7da8",
+      "logs_sha256": {
+        "command-0.log": "fe24057b35ef2555d0ffdf117ce256687ca1bf6f84cbd10bc4f8098b3e8b935d",
+        "command-1.log": "100bbb7e9a151255e3895407a75734e3fc77a91bfcf83ac06b5b651bb3e29952",
+        "command-2.log": "73730406a228293670b0277e8f4523f2ce58170dbbfbb84d71ccb2409e1d8e74"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_property_uniform_9bar_G",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_property_uniform_9bar_G",
+      "status": "STARTED",
+      "table_sha256": "578de2bd622e06ed14fdee18e22509e410e71b1d21a3516f9877c41d70da8842",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "e1b878c7a6ca9a926234917f143fd004e5b7ad4ab7c072c9271556b3a72bc3a8",
+      "id": "SW_WATER_ANCHORED_90C_property_uniform_9bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "82728b8188f8093ebb563e9b9a6b973aedadc02e387b69cc0f407f5c159d27af",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "3355bf0027a2cba9be5a30119aa2c5f66131f9d6ea3a4103c598a333d205799d",
+      "logs_sha256": {
+        "command-0.log": "72bb5fe6c3eb4eb86be24245e45e18fb32cae218f35e78f4e5e69658e450ed67",
+        "command-1.log": "0451bdcabe46e3437744be5d404ec8210237b4b1f8fde4214f80ac4f642645f1",
+        "command-2.log": "184853f79f1641b6b3c9212be5cf04f0ce7f319987b86cecfa81bc0f7bf694fa"
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "executable_sha256": "5cacc9c709361c7d9ef05baa18545058bce9800bc64ae363636d35fcee1be5d8",
+      "freeze_sha256": "d49ac9991fda33bd761b472d44b43d09f30a1c1cd5435b7055932ff09e01bb12",
+      "id": "SW_WATER_ANCHORED_90C_property_reversed_3bar_G",
+      "recovery_reason": null,
+      "slot": "SW_WATER_ANCHORED_90C_property_reversed_3bar_G",
+      "status": "STARTED",
+      "table_sha256": "578de2bd622e06ed14fdee18e22509e410e71b1d21a3516f9877c41d70da8842",
+      "transport": "INDEPENDENT_NATIVE"
+    },
+    {
+      "configuration_sha256": "eb7dd64a304ba992ad84d32c3505d536cef1f7dda61bcdb73dca4f8737bd1bbf",
+      "id": "SW_WATER_ANCHORED_90C_property_reversed_3bar_G",
+      "input_hashes": {
+        "0/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+        "0/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+        "0/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+        "0/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+        "0/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+        "0/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+        "0/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+        "0/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+        "0/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+        "constant/espressoModelProperties": "9744c73aba4417219f35c78c36589f8ac3a06193d53c6f4746dc49152fddb2ee",
+        "system/blockMeshDict": "73699095d18c1cc5654f1e4d61772c37e7c09072512c11f3d846a6896710f232",
+        "system/controlDict": "79ef49b30eedea4e45d9c7d3b0e8063b4e0584fa80e7762fa4f9c4c6f1719613",
+        "system/decomposeParDict": "8e51eb8ad2444aa5712d8e790464ebfdc1596803b61734005789baac063f2057",
+        "system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+        "system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+      },
+      "intervals_sha256": "ea040e255ed739a984784cd01c89716b29f3ad1daec317a7989660ae65ad6e4a",
+      "logs_sha256": {
+        "command-0.log": "7ee124bc0375243e775990989206b2af7a36eec2385e161da882fecdf48112fd",
+        "command-1.log": "d40e21f82421af17ed3ee675a1948efde453250e157a983834ab8438cb201d4b",
+        "command-2.log": "33ff705b2216f1b4ab75e6e98d3b3f0d262d65e3a3e379da82ab12abdecb210e"
+      },
+      "status": "COMPLETE"
+    }
+  ]
+}
