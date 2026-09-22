@@ -48,3 +48,8 @@ See [protocol](PROTOCOL.md), [freeze](FREEZE.json), [reuse](REUSE.json),
 [compatibility](COMPATIBILITY.json) and [short fixtures](SHORT_CHECKS.json).
 Physical validation remains NOT_ESTABLISHED. No production/default/lock changes,
 Puckworks write, adoption, merge, laboratory action or successor.
+
+The public RUNS.json is a metadata projection of the external reduction: replace
+the machine-local ART prefix in failure reasons with `[ART]` before publication.
+The complete external ledger, its hash, failure event and file manifests remain
+unchanged. This redaction changes no scientific value or invocation identity.
