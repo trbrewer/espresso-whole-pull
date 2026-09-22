@@ -1,5 +1,7 @@
 """Focused synthetic qualification of the autonomous composition and decisions."""
-import copy,unittest
+import copy,unittest,tempfile
+from pathlib import Path
+from tools.sci_md_rheology_007.short import final_directory
 import numpy as np
 from tools.sci_md_rheology_007.common import BUDGETS,matrix,constituent,radial
 from tools.sci_md_rheology_007.observer import adapt,compose,history,metrics,decide,verdict,clocks,accounting
@@ -17,6 +19,16 @@ def fixture(q=1e-7):
 
 class TestParallelPaths(unittest.TestCase):
     def path(self,q=1e-7):return adapt(fixture(q),'uniform')
+    def test_final_directory_roundoff(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'30.000000000002').mkdir()
+            self.assertEqual(final_directory(root,30).name,'30.000000000002')
+            (root/'30').mkdir()
+            with self.assertRaises(ValueError):final_directory(root,30)
+    def test_final_directory_missing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            (Path(tmp)/'29.99').mkdir()
+            with self.assertRaises(ValueError):final_directory(Path(tmp),30)
     def test_matrix(self):self.assertEqual(len(matrix()),28)
     def test_physical_changes(self):
         s=radial();p=constituent(s,'inner');self.assertEqual(p['coffee_bed'],s['coffee_bed']);self.assertEqual(p['liquid'],s['liquid']);self.assertEqual(p['hydraulics']['saturated_permeability_m2'],3e-15)

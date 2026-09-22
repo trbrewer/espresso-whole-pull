@@ -8,16 +8,28 @@ from tools.sci_md_004_stage_c.compare import scalar_internal_values,internal_num
 FLOORS=dict(flow_m3_s=1e-14,volume_m3=1e-16,mass_kg=1e-12,concentration_kg_m3=1e-8,pressure_Pa=1e-3,viscosity_Pa_s=1e-12)
 
 def relative(a,b,floor):return float(np.max(abs(np.asarray(a)-b)/np.maximum(abs(np.asarray(b)),floor)))
+def final_directory(case,end):
+    candidates=[]
+    for p in case.iterdir():
+        if not p.is_dir():continue
+        try:value=float(p.name)
+        except ValueError:continue
+        if abs(value-end)<=1e-9:candidates.append(p)
+    if len(candidates)!=1:raise ValueError("missing/ambiguous final field time")
+    return candidates[0]
+
 def fields(case,nz,nr,end):
     n=nz*nr
     # Native structured block ordering is x-fastest; verify using generated centres.
-    with (case.parent/'centres.log').open('w') as f:subprocess.run(['postProcess','-case',str(case),'-func','writeCellCentres','-time','0'],stdout=f,stderr=subprocess.STDOUT,check=True)
+    if not (case/'0/C').exists():
+        with (case.parent/'centres.log').open('w') as f:subprocess.run(['postProcess','-case',str(case),'-func','writeCellCentres','-time','0'],stdout=f,stderr=subprocess.STDOUT,check=True)
+    final=final_directory(case,end)
     xyz=np.array(internal_numeric_values(case/'0/C',cell_count=n)).reshape(n,3)
     x=np.round(xyz[:,0],13);unique=np.unique(x)
     if len(unique)!=nz or any(sum(x==v)!=nr for v in unique):raise ValueError('axial coordinate grouping')
     result={}
     for name,floor in [('dissolvedConcentration',FLOORS['concentration_kg_m3']),('p',FLOORS['pressure_Pa']),('remainingExtractable',FLOORS['concentration_kg_m3'])]:
-        values=np.array(scalar_internal_values(case/str(end)/name,cell_count=n))
+        values=np.array(scalar_internal_values(final/name,cell_count=n))
         groups=np.array([values[x==v] for v in unique]);err=relative(groups,groups[:,0,None],floor)
         if err>1e-6:raise ValueError('radial nonuniformity '+name+' '+str(err))
         result[name]=dict(radial_relative=err,min=float(min(values)),max=float(max(values)))

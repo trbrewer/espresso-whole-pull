@@ -30,11 +30,19 @@ def constituent(reference,zone,area=1.,short=False,nr=2):
 def check(art,audit=False):
     f=json.loads((DOC/'FREEZE.json').read_text())
     if digest(str(art.resolve()))!=f['artifact_root_sha256']:raise ValueError('wrong execution root')
+    correction=DOC/'POST_FREEZE_CORRECTION.json'
+    changes=json.loads(correction.read_text())['files'] if correction.exists() else {}
     for p,h in f['files'].items():
+        if p in changes:
+            if changes[p]['original_sha256']!=h:raise ValueError('correction original differs')
+            h=changes[p]['corrected_sha256']
         if sha(ROOT/p)!=h:raise ValueError('frozen source changed: '+p)
     for p,h in f['external'].items():
         if sha(art/p)!=h:raise ValueError('frozen external input changed: '+p)
     if audit:
+        if changes:
+            delta=json.loads((DOC/'CORRECTION_AUDIT.json').read_text())
+            if delta['status']!='PASS' or delta['correction_sha256']!=sha(correction):raise ValueError('correction audit missing/stale')
         a=json.loads((DOC/'AUDIT.json').read_text())
         if a['status']!='PASS' or a['freeze_sha256']!=sha(DOC/'FREEZE.json'):raise ValueError('independent audit missing/stale')
     return f
