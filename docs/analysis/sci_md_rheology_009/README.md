@@ -27,6 +27,7 @@ python3 -m tools.sci_md_rheology_009.run --artifacts "$ART" --stage C
 python3 -m tools.sci_md_rheology_009.analyze --artifacts "$ART" --stage support
 python3 -m tools.sci_md_rheology_009.run --artifacts "$ART" --stage E2
 python3 -m tools.sci_md_rheology_009.analyze --artifacts "$ART" --stage analyze
+python3 -m tools.sci_md_rheology_009.plot --artifacts "$ART"
 ```
 
 Completed slots are hash-verified before reuse. Failed starts are preserved.
@@ -35,3 +36,21 @@ recorded identical configuration and remaining four-attempt budget; scientific
 or numerical failure cannot be recovered by changing inputs.
 Historical accepted evidence and defaults remain unchanged. Final figures and
 result are generated only if the corresponding qualified evidence is available.
+
+The sequence above records preparation of a fresh experiment. Committed freeze
+and support records are immutable: do not overwrite them to replay qualification.
+For the retained receipt-bound artifacts, verify all identities without rerunning:
+
+```bash
+python3 - "$ART" <<'PYTHON'
+import sys
+from pathlib import Path
+from tools.sci_md_rheology_009.common import verify
+verify(Path(sys.argv[1]), 'FREEZE.json', audit=True)
+PYTHON
+```
+
+Full execution in this task used independent serial cases concurrently (up to
+eight C workers), and short MPI used two ranks across the radial interface.
+The sequential commands above produce the same per-case configuration; timing
+comparisons across these incidental launch schedules are not benchmarks.
