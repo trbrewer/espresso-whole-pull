@@ -1,5 +1,14 @@
 # Onboarding
 
+## External espresso data — start here
+
+Read the [canonical Puckworks espresso data guide](https://github.com/trbrewer/puckworks/blob/main/docs/data/ESPRESSO_DATA_GUIDE.md)
+and the [EWP use map](EXTERNAL_ESPRESSO_DATA.md) before proposing scientific work. Identify relevant
+dataset IDs, inspect capabilities and prior-use limits, and say whether files were
+actually inspected or only catalog metadata was available. Known external data
+unavailable here are not nonexistent or exhausted; repository-only recommendations
+may proceed provisionally. Current discovery does not update production authority.
+
 SCI-MD-010 is `MERGED_COMPLETE`.
 L-HYD is `NO_STABLE_REDUCED_DARCY_ADVANTAGE_OVER_EMPIRICAL_BASELINE`;
 reduced E1 is `NO_STABLE_ADVANTAGE_OVER_SIMPLE_BASELINE`; current full EWP E2
