@@ -60,7 +60,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1552,
+    "python_test_count": 1581,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -80,8 +80,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1232,
-    "source_manifest_aggregate_sha256": "7bf216132fe6ec3c41631249a6810d3aede38d3f1efe61c17cce08baaeab402b",
+    "source_manifest_file_count": 1260,
+    "source_manifest_aggregate_sha256": "3fe517a339fb96f1fdd675c09f3e7bd8b337115fb1fa99fe004fc0f536b10c6e",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -91,7 +91,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "0a1f5626fecf467d5dc3d4350f5510c29e299a52862f8046ca6952f99b24fa75",
+    "source_manifest_aggregate_source_sha256": "3fe517a339fb96f1fdd675c09f3e7bd8b337115fb1fa99fe004fc0f536b10c6e",
     "sci_data_fusion_001_c1": {
       "disposition": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
       "focused_tests_run": 51,
@@ -160,7 +160,7 @@
       },
       "final_candidate_verification": "Exact-head complete-suite counts, hosted checks and review are recorded in PR #150 closeout evidence; historical_test_record is preserved history."
     },
-    "python_test_count_role": "DISCOVERED_NOT_EXECUTED; exact-candidate execution counts are in PR #150 closeout evidence",
+    "python_test_count_role": "DISCOVERED_NOT_EXECUTED; exact-candidate execution results are reported in the task PR handoff",
     "sci_md_rheology_009": {
       "status": "IMPLEMENTED_AND_EXECUTED",
       "compatibility": "QUALIFIED",
@@ -171,6 +171,26 @@
       "independent_prescoring_audit": "PASS",
       "physical_validation": "NOT_ESTABLISHED",
       "final_exact_head_review": "SEPARATE_PR_STATUS"
+    },
+    "sci_md_rheology_010": {
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "primary_pass": 24,
+      "primary_fail": 0,
+      "primary_unresolved": 0,
+      "secondary_material": 6,
+      "secondary_below_budget": 0,
+      "secondary_unresolved": 2,
+      "native_launches": 42,
+      "native_failed": 0,
+      "infrastructure_retries": 0,
+      "short_launches": 10,
+      "new_C_launches": 18,
+      "new_E2_launches": 14,
+      "reused_C_traces": 18,
+      "separate_sectioning_cases": 16,
+      "independent_prescoring_audit": "PASS",
+      "full_suite_and_final_review": "EXACT_HEAD_PR_HANDOFF_REQUIRED",
+      "physical_validation": "NOT_ESTABLISHED"
     }
   },
   "sci_ed_002_r2b": {

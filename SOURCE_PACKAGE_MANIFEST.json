@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1232,
-  "total_uncompressed_bytes_excluding_manifest": 19374024,
-  "aggregate_source_sha256": "7bf216132fe6ec3c41631249a6810d3aede38d3f1efe61c17cce08baaeab402b",
-  "aggregate_sha256": "7bf216132fe6ec3c41631249a6810d3aede38d3f1efe61c17cce08baaeab402b",
+  "file_count": 1260,
+  "total_uncompressed_bytes_excluding_manifest": 20410886,
+  "aggregate_source_sha256": "3fe517a339fb96f1fdd675c09f3e7bd8b337115fb1fa99fe004fc0f536b10c6e",
+  "aggregate_sha256": "3fe517a339fb96f1fdd675c09f3e7bd8b337115fb1fa99fe004fc0f536b10c6e",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -3063,6 +3063,136 @@
       "bytes": 81303,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_rheology_010/ARTIFACT_RECEIPT.json": {
+      "sha256": "e53eaa3eeb52a5d8b0ec2872ce285be1d9c8de3604e532984d58b5ca3143cf9a",
+      "bytes": 4819,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/AUDIT.json": {
+      "sha256": "93411c6e8e29e801c191123de21908f483ec6d7604e674982a30e677deee62cf",
+      "bytes": 4017,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/CONTRACT.json": {
+      "sha256": "78e782dd953be263e1b7673be9a7b19d8e982a23b0733039dfbcadce65a1bb90",
+      "bytes": 6462,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/COVERAGE.json": {
+      "sha256": "2a5a0f353a70a015ac3fd4e8d4c7b4231bf29b543bb58be8b2151b003b91efc0",
+      "bytes": 10422,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/FREEZE.json": {
+      "sha256": "518920beb697fc93ea6279018df709dadf7520e45086be499697bbea9a6a27f9",
+      "bytes": 32681,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/METRICS.json": {
+      "sha256": "a0bc4986348aafc90ae8d7a33a0b8162acd02f2688708f6b215340fded7b3c20",
+      "bytes": 147721,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/PROTOCOL.md": {
+      "sha256": "9f2a26fbb69c126768a67f15919143a6d0e58f7956fc28a44fa5cc7d84722174",
+      "bytes": 10368,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/QA_CORRECTION.json": {
+      "sha256": "e28d66238b1d7cba7a91789b2add8cd3009180504760602ebd9f3822e816693f",
+      "bytes": 714,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/QUALIFICATION.json": {
+      "sha256": "cab86e5b34c6462b6c6780b4ae57d400b420ac441146bd0a6c2942fc01ce64b6",
+      "bytes": 14980,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/README.md": {
+      "sha256": "05f041b4030967c6a91a642ff1425a51e1c3bd8424350f37cd7ab9857b678c79",
+      "bytes": 3758,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/REFERENCE_QUALIFICATION.json": {
+      "sha256": "6a9e01c3a90d9c03b8489d15f3a02c86e8d2bc1a1890151ddf9af698702981f7",
+      "bytes": 124754,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/RESULT.md": {
+      "sha256": "c4e3d78a8507d7195b9945606c42f0410a1147d6105bf4e82efbdeca13974460",
+      "bytes": 12641,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/REUSE.json": {
+      "sha256": "03440af65c37afbabf3a94ab7feee631aaf69b8a16f6ec1270870b69847a79c5",
+      "bytes": 5172,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/RUNS.json": {
+      "sha256": "ca3aaa9ff79cb5ea49e9261f0d231b019c8cdfbe8be9a68c66acbc9878ea578e",
+      "bytes": 152773,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/SECTIONING.md": {
+      "sha256": "f80bcd70a9a0bc4838b0d8dc5c5a28ae03f5e0d26a83db90740de4de8438fb15",
+      "bytes": 8778,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/SECTIONS.json": {
+      "sha256": "bcfa05a0217919d92a53279173abfb55bf8579fa154b21f35fb256d651373a90",
+      "bytes": 59956,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/SECTION_SOURCE_RECEIPT.json": {
+      "sha256": "fd1c483fbc21ae26ce637daaa403fb5c5d3d59e8f0f1aa1cd450db13634618c1",
+      "bytes": 1761,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/SHORT_CHECKS.json": {
+      "sha256": "2f75c40ddfa7eabf2d2a4d24c5c5077b0c4ceb3c69a2cfd02abb41a63b849266",
+      "bytes": 7265,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/SOURCE_USE.md": {
+      "sha256": "ca63564c195a5f5b1eb7f7c0af294a7bd7c2ab67620f1b1df74f214165e4b4ec",
+      "bytes": 7806,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/SUPPORT.json": {
+      "sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "bytes": 6594,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/SUPPORT_RECEIPT.json": {
+      "sha256": "df2165b125b76faa09fd6a86ddd4346de0b60693e8ef23e28b4f5c518a200597",
+      "bytes": 83,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/budgets.svg": {
+      "sha256": "3a0f15d7e380c732c07af2766c4cea805bd6b0e156f47766cbd9a9e2bf142639",
+      "bytes": 100248,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/coverage.svg": {
+      "sha256": "79ca70c05f8976a6eec85c25df38f1c2147040955904f74c3e2e52b0b6e4f5cd",
+      "bytes": 49029,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/delivery.svg": {
+      "sha256": "1581d1183adb13b27833403eea7e5c474585b3f91b2eab5f1976bdfae96d2054",
+      "bytes": 85019,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/fractions.svg": {
+      "sha256": "ae0965ba98e4cdcd400ba1a82b5cbf4ce8e9e4b2e9dbd91a6e1914d888290ec8",
+      "bytes": 60918,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_rheology_010/hydraulics.svg": {
+      "sha256": "2a77e87f62a2a9fedd7246e843e37a231bfb64d4bd1e025d9a43301ad25f247a",
+      "bytes": 104632,
+      "git_mode": "100644"
+    },
     "docs/analysis/xsv_pannusch_ewp_input_mapping_001/INPUT_REGISTRY.csv": {
       "sha256": "1b5d7c9631e7cdba9bb62e97d8373326726dea36df4d0914e6393cfa7ae21b98",
       "bytes": 22557,
@@ -4854,8 +4984,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "f767f3a74a34f47725351c488aafd6a9aa7ddeb2a05617834f52afd18c149ef5",
-      "bytes": 32575,
+      "sha256": "c1eaa98b60d50ec347bcf2515142d06bfe7f1a4b780b9366416e1e480d3104ef",
+      "bytes": 32612,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
@@ -5541,6 +5671,16 @@
     "tests/test_sci_md_rheology_009.py": {
       "sha256": "db6ea256cb1935f25ccee4afe596061b0d830e2b306b32ae5c3fbeea51eb7840",
       "bytes": 6770,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_rheology_010.py": {
+      "sha256": "a2e2f5ca43ea40768b7cdf088ca8f0d267ed4f094c123e386b56a4ea3b3e8ed7",
+      "bytes": 9623,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_rheology_010_sections.py": {
+      "sha256": "e503055d530d4461433d77da59ed9139c65b7302036e1da320af57ed7e033733",
+      "bytes": 3831,
       "git_mode": "100644"
     },
     "tests/test_static_validate_non_mutating.py": {

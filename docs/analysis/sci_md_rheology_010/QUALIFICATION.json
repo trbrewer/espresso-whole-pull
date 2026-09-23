@@ -1,0 +1,506 @@
+{
+  "E2_SW_WATER_ANCHORED_90C_DOWN_axial": {
+    "balance": {
+      "solute_max_kg": 5.864602016904599e-17,
+      "water_max_kg": 4.336808689942018e-19
+    },
+    "fields": {
+      "cells": 2048,
+      "final_remaining_kg": 0.0021369920872192014,
+      "final_stored_solute_kg": 0.0011255943272962953,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.000851010767841035,
+      "inner_volume_m3": 5.952380952380966e-06,
+      "interface_faces": 1024,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.785714285714293e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380966e-06,
+        1.785714285714293e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_SW_WATER_ANCHORED_90C_DOWN_base": {
+    "balance": {
+      "solute_max_kg": 4.79763696489572e-17,
+      "water_max_kg": 1.734723475976807e-18
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.002136432481888641,
+      "final_stored_solute_kg": 0.0011263910829987587,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008507144894131582,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_SW_WATER_ANCHORED_90C_DOWN_property": {
+    "balance": {
+      "solute_max_kg": 4.8767498421692715e-17,
+      "water_max_kg": 0.0
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.0021364280953116072,
+      "final_stored_solute_kg": 0.0011263894650760588,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008507141898037186,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_SW_WATER_ANCHORED_90C_DOWN_temporal": {
+    "balance": {
+      "solute_max_kg": 7.992355683725922e-13,
+      "water_max_kg": 2.710505431213761e-20
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.0021372636387976675,
+      "final_stored_solute_kg": 0.0011265632454387766,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.000850788090119381,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 3000,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_SW_WATER_ANCHORED_90C_UP_axial": {
+    "balance": {
+      "solute_max_kg": 8.844379222050502e-17,
+      "water_max_kg": 6.776263578034403e-21
+    },
+    "fields": {
+      "cells": 2048,
+      "final_remaining_kg": 0.002261327147971719,
+      "final_stored_solute_kg": 0.0008458086929863364,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008592303113922983,
+      "inner_volume_m3": 5.952380952380966e-06,
+      "interface_faces": 1024,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.785714285714293e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380966e-06,
+        1.785714285714293e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_SW_WATER_ANCHORED_90C_UP_base": {
+    "balance": {
+      "solute_max_kg": 5.112690869626957e-17,
+      "water_max_kg": 4.336808689942018e-19
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.002260877052325524,
+      "final_stored_solute_kg": 0.0008463963940248982,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.000858887633943689,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_SW_WATER_ANCHORED_90C_UP_property": {
+    "balance": {
+      "solute_max_kg": 4.8878883254256655e-17,
+      "water_max_kg": 3.3881317890172014e-21
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.0022608733070380188,
+      "final_stored_solute_kg": 0.0008463944686757542,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008588874076085065,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_SW_WATER_ANCHORED_90C_UP_temporal": {
+    "balance": {
+      "solute_max_kg": 3.5799847515703004e-17,
+      "water_max_kg": 1.734723475976807e-18
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.0022614016144024605,
+      "final_stored_solute_kg": 0.0008463502939135966,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008589466563428633,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 3000,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_TR_LINEAR_DOWN_axial": {
+    "balance": {
+      "solute_max_kg": 4.5230712350432384e-17,
+      "water_max_kg": 3.469446951953614e-18
+    },
+    "fields": {
+      "cells": 2048,
+      "final_remaining_kg": 0.001791458950604237,
+      "final_stored_solute_kg": 0.000995424520981877,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008296355772939205,
+      "inner_volume_m3": 5.952380952380966e-06,
+      "interface_faces": 1024,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.785714285714293e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380966e-06,
+        1.785714285714293e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_TR_LINEAR_DOWN_base": {
+    "balance": {
+      "solute_max_kg": 4.0658004984680043e-17,
+      "water_max_kg": 5.421010862427522e-20
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.0017910090852938571,
+      "final_stored_solute_kg": 0.0009961785431980947,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008293347875446513,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_TR_LINEAR_DOWN_temporal": {
+    "balance": {
+      "solute_max_kg": 1.0158589892169583e-12,
+      "water_max_kg": 0.0
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.0017918327566686179,
+      "final_stored_solute_kg": 0.0009963893459350014,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008294189694923865,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 3000,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_TR_LINEAR_UP_axial": {
+    "balance": {
+      "solute_max_kg": 9.277297761392175e-17,
+      "water_max_kg": 1.734723475976807e-18
+    },
+    "fields": {
+      "cells": 2048,
+      "final_remaining_kg": 0.002006394249272963,
+      "final_stored_solute_kg": 0.0007194130800157976,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008424585123934875,
+      "inner_volume_m3": 5.952380952380966e-06,
+      "interface_faces": 1024,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.785714285714293e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380966e-06,
+        1.785714285714293e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_TR_LINEAR_UP_base": {
+    "balance": {
+      "solute_max_kg": 4.4325234129817537e-17,
+      "water_max_kg": 8.470329472543003e-22
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.0020059486661864446,
+      "final_stored_solute_kg": 0.0007199240340651257,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008421138296381071,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 1500,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  },
+  "E2_TR_LINEAR_UP_temporal": {
+    "balance": {
+      "solute_max_kg": 2.3532269340618972e-17,
+      "water_max_kg": 6.776263578034403e-21
+    },
+    "fields": {
+      "cells": 1024,
+      "final_remaining_kg": 0.002006467185804175,
+      "final_stored_solute_kg": 0.000719852082312467,
+      "inner_area_m2": 0.0006605198554172542,
+      "inner_remaining_kg": 0.0008421819619756823,
+      "inner_volume_m3": 5.952380952380959e-06,
+      "interface_faces": 512,
+      "outer_area_m2": 0.001981559566251763,
+      "outer_volume_m3": 1.7857142857142835e-05,
+      "permeability_assignment": "PASS",
+      "positive_volumes": true,
+      "radial_face_alignment_max_m": 1.734723475976807e-18,
+      "radial_shell_volumes_m3": [
+        5.952380952380959e-06,
+        1.7857142857142835e-05
+      ],
+      "rank_zones": [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pressure": {
+      "clock": "P(t_end), mu(c_start)",
+      "intervals": 3000,
+      "max_pressure_error_Pa": 5.820766091346741e-10,
+      "pressure_trace_sha256": null
+    }
+  }
+}

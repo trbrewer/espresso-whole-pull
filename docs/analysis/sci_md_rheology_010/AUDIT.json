@@ -1,0 +1,51 @@
+{
+  "task": "SCI-MD-RHEOLOGY-010",
+  "status": "PASS",
+  "independent_reviewer": "/root/prescoring_audit",
+  "review_type": "independent agent pre-scoring scientific audit",
+  "audited_head": "3ef4567bef13316edb14fac0e4e4852c58b99e6d",
+  "audited_tree": "c6b4898502d58b98d3884968d08ebb9c2a793438",
+  "freeze_sha256": "518920beb697fc93ea6279018df709dadf7520e45086be499697bbea9a6a27f9",
+  "original_freeze_sha256": "c7e2c3bf3dd7645d39eed56c523c556c809d194259fc1bf9d91a51307f460999",
+  "g0_correction": "Reviewed exact one-line scientific-test static-check allowlist addition and corresponding single freeze hash amendment; original freeze retained externally. Scientific inputs, source/runtime, observers, matrix, support rule, budgets and decisions unchanged. This completes the one pre-scoring audit before any full launch.",
+  "evidence": {
+    "source_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+    "source_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+    "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+    "runtime_sha256": "91917bc53ed84777a7c3eaf9838954bdb947041d8ad3dd0e9fd1e137d7052d5c",
+    "source_runtime_reuse": "PASS: source exports/build source/production lock, exact accepted property bytes, executable, loaded libraries and execution tools independently verified",
+    "scenarios": "PASS: all 32 full and 10 short objects compared against 009; only algebraic permeability and external table locator differ",
+    "retained_C": "PASS: all 18 immutable accepted manifests verified; all native traces, pressure clocks, conservation/bounds, actual meshes and final-field aggregation independently requalified read-only",
+    "shorts": "PASS: all ten native artifacts independently requalified; constant Q, CORE share 1/13, discrete carrier water, identical serial repeats and radial-interface MPI independently checked for C/E2",
+    "constant_analytical_max_relative_error": 9.545031431912321e-12,
+    "actual_launches_at_audit": 10,
+    "short_launches": 10,
+    "full_launches": 0,
+    "failed_launches": 0,
+    "ledger_sha256_at_audit": "7ecbf42c3b6842f796f2d439da8f84af3f613c13a42826736b94789598bbe8a1",
+    "observers_decisions": "PASS: own native solutions, CORE label, zero origin/first increment, conservative fraction splits, native-breakpoint union, independent 50-digit arithmetic; fresh paired allowances with primary C-only versus secondary both-C radial refinement; strict thresholds, 20% allowance ceiling, fail precedence",
+    "support_execution_order": "PASS: all 36 C variants required, 18 per history; Decimal floor(0.95 minimum) to 1e-9 kg; immutable support before E2; shortages unresolved without shortening; hydraulic decisions retained",
+    "accounting": "PASS: fsync append-only prelaunch accounting, preparation/startup/integrating states, immutable completed reuse, 42 planned integrations and maximum two identical infrastructure retries; no numerical retry",
+    "restricted_diagnostic": "Excluded from scoring and mechanism inference; no repair introduced"
+  },
+  "tests": [
+    {
+      "command": "RHEOLOGY010_ARTIFACTS=<retained-artifacts> python3 -m unittest tests.test_sci_md_rheology_010 -v",
+      "passed": 17,
+      "skipped": 0
+    },
+    {
+      "command": "python3 -m unittest tests.test_sci_md_rheology_007 tests.test_sci_md_rheology_008 tests.test_sci_md_rheology_009 -v",
+      "passed": 51,
+      "skipped": 0
+    }
+  ],
+  "findings": [],
+  "scope_limits": [
+    "No new native integrations launched by reviewer.",
+    "Approval covers only declared frozen scientific execution/scoring; later non-scoring diagnostics and final report require ordinary exact-head final review.",
+    "Agent review is not protected GitHub approval or external human review.",
+    "No scientific success is predicted; qualification may fail or remain unresolved.",
+    "PHYSICAL_VALIDATION = NOT_ESTABLISHED. No unique lateral mechanism, default adoption, arbitrary-scenario, whole-shot or measured-speedup claim."
+  ]
+}
