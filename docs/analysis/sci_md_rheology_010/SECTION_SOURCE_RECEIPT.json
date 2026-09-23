@@ -1,0 +1,38 @@
+{
+  "retrieval_date": "2026-09-23",
+  "sources": {
+    "ribes2020.pdf": {
+      "url": "https://decentespresso.com/doc/radial_extraction_uniformity/radial_extraction_uniformity.pdf",
+      "sha256": "09efadd7a0b34be972f07ab8090bc58d0a0d2cfbfc6ea03611c3410177045b06",
+      "bytes": 1533310,
+      "role": "CONTEXTUAL_OBSERVER_INTERPRETATION_ONLY"
+    },
+    "ribes2021.pdf": {
+      "url": "https://decentespresso.com/doc/wdt_radial_uniformity/wdt_radial_uniformity.pdf",
+      "sha256": "2ad061b2ccdac225d9e5c4823b163e8ef0b7627aff452f0431bc6a947b806f2a",
+      "bytes": 1519172,
+      "role": "CONTEXTUAL_OBSERVER_INTERPRETATION_ONLY"
+    },
+    "decent-summary.html": {
+      "url": "https://www.decent.la/docs/radial_uniformity_of_espresso_extractions",
+      "sha256": "22548ec2d0e86b6f60426e9655cb8d4ba7b8031038509b246352b52353e78d40",
+      "bytes": 21208,
+      "role": "CONTEXTUAL_OBSERVER_INTERPRETATION_ONLY"
+    },
+    "mckeon-critique.html": {
+      "url": "https://rmckeon.medium.com/a-critique-of-radial-uniformity-experiments-in-espresso-a232f9087ed5",
+      "byte_receipt_status": "KNOWN_EXTERNAL_UNAVAILABLE_HERE",
+      "browser_text_review": "FILES_INSPECTED",
+      "error": "HTTPError",
+      "limitation": "Browser text inspected; separate raw-byte HTTP retrieval returned HTTPError. No numeric target or purported content hash."
+    },
+    "pocketscience-workflow.html": {
+      "url": "https://pocketsciencecoffee.com/2024/01/07/espresso-water-flow-part-0-workflow/",
+      "sha256": "e277f30ec262081280dcdf7e4c93fdfeaa2426277d0b150f2f4b467c23781f86",
+      "bytes": 173918,
+      "role": "CONTEXTUAL_OBSERVER_INTERPRETATION_ONLY"
+    }
+  },
+  "new_independent_experiments_from_decent_summary": 0,
+  "raw_payloads_external_only": true
+}

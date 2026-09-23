@@ -1,0 +1,4585 @@
+{
+  "C_launches": 18,
+  "E2_launches": 14,
+  "actual_native_launches": 42,
+  "events": [
+    {
+      "id": "C_down",
+      "slot": "C_down",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:27:25.353756+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_down",
+      "recovery": null,
+      "scenario_sha256": "a6f6c00f158cfe68d77196954d3a84d5c4a2650aa2a135c4370b7e5aa1823b4f",
+      "slot": "C_down",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:27:25.474207+00:00"
+    },
+    {
+      "id": "C_down",
+      "slot": "C_down",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 2048,
+      "elapsed_s": 0.7922820039093494,
+      "id": "C_down",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.3458486318904345e-16,
+          "water_max_kg": 1.3552527156068805e-20
+        },
+        "fields": {
+          "cells": 2048,
+          "final_remaining_kg": 0.00544118695950098,
+          "final_stored_solute_kg": 0.00015778006578415395,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0013603035327552,
+          "inner_volume_m3": 5.952380952380969e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142903e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.812872023809522e-09,
+            1.7438616071428573e-08,
+            2.9064360119047612e-08,
+            4.06901041666667e-08,
+            5.2315848214285685e-08,
+            6.394159226190488e-08,
+            7.556733630952369e-08,
+            8.719308035714299e-08,
+            9.881882440476182e-08,
+            1.1044456845238095e-07,
+            1.2207031249999987e-07,
+            1.3369605654761945e-07,
+            1.453218005952379e-07,
+            1.5694754464285716e-07,
+            1.6857328869047598e-07,
+            1.8019903273809553e-07,
+            1.9182477678571443e-07,
+            2.0345052083333308e-07,
+            2.1507626488095235e-07,
+            2.267020089285715e-07,
+            2.3832775297619082e-07,
+            2.499534970238094e-07,
+            2.6157924107143033e-07,
+            2.732049851190486e-07,
+            2.848307291666625e-07,
+            2.964564732142849e-07,
+            3.080822172619039e-07,
+            3.197079613095253e-07,
+            3.313337053571426e-07,
+            3.429594494047622e-07,
+            3.5458519345238143e-07,
+            3.662109375000017e-07,
+            3.77836681547618e-07,
+            3.8946242559523917e-07,
+            4.010881696428582e-07,
+            4.127139136904753e-07,
+            4.2433965773809506e-07,
+            4.3596540178571655e-07,
+            4.475911458333336e-07,
+            4.592168898809469e-07,
+            4.7084263392856884e-07,
+            4.824683779762006e-07,
+            4.940941220238019e-07,
+            5.05719866071429e-07,
+            5.17345610119049e-07,
+            5.289713541666672e-07,
+            5.405970982142856e-07,
+            5.522228422619035e-07,
+            5.638485863095273e-07,
+            5.754743303571408e-07,
+            5.871000744047637e-07,
+            5.987258184523838e-07,
+            6.103515624999988e-07,
+            6.21977306547616e-07,
+            6.33603050595234e-07,
+            6.452287946428645e-07,
+            6.568545386904784e-07,
+            6.684802827380904e-07,
+            6.801060267857196e-07,
+            6.917317708333221e-07,
+            7.033575148809572e-07,
+            7.1498325892857e-07,
+            7.266090029761904e-07,
+            7.382347470238154e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_down",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_dynamic",
+      "slot": "C_dynamic",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:27:26.329021+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_dynamic",
+      "recovery": null,
+      "scenario_sha256": "e13a9b697a83c1df64ee2938330c45f907c599338dc4ee4e46ae28cdb2f78176",
+      "slot": "C_dynamic",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:27:26.445638+00:00"
+    },
+    {
+      "id": "C_dynamic",
+      "slot": "C_dynamic",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 2048,
+      "elapsed_s": 0.8063674988225102,
+      "id": "C_dynamic",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.64334619060305e-16,
+          "water_max_kg": 2.710505431213761e-20
+        },
+        "fields": {
+          "cells": 2048,
+          "final_remaining_kg": 0.005441187934435626,
+          "final_stored_solute_kg": 0.00015711522699246125,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0013603036084038071,
+          "inner_volume_m3": 5.952380952380969e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142903e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.812872023809522e-09,
+            1.7438616071428573e-08,
+            2.9064360119047612e-08,
+            4.06901041666667e-08,
+            5.2315848214285685e-08,
+            6.394159226190488e-08,
+            7.556733630952369e-08,
+            8.719308035714299e-08,
+            9.881882440476182e-08,
+            1.1044456845238095e-07,
+            1.2207031249999987e-07,
+            1.3369605654761945e-07,
+            1.453218005952379e-07,
+            1.5694754464285716e-07,
+            1.6857328869047598e-07,
+            1.8019903273809553e-07,
+            1.9182477678571443e-07,
+            2.0345052083333308e-07,
+            2.1507626488095235e-07,
+            2.267020089285715e-07,
+            2.3832775297619082e-07,
+            2.499534970238094e-07,
+            2.6157924107143033e-07,
+            2.732049851190486e-07,
+            2.848307291666625e-07,
+            2.964564732142849e-07,
+            3.080822172619039e-07,
+            3.197079613095253e-07,
+            3.313337053571426e-07,
+            3.429594494047622e-07,
+            3.5458519345238143e-07,
+            3.662109375000017e-07,
+            3.77836681547618e-07,
+            3.8946242559523917e-07,
+            4.010881696428582e-07,
+            4.127139136904753e-07,
+            4.2433965773809506e-07,
+            4.3596540178571655e-07,
+            4.475911458333336e-07,
+            4.592168898809469e-07,
+            4.7084263392856884e-07,
+            4.824683779762006e-07,
+            4.940941220238019e-07,
+            5.05719866071429e-07,
+            5.17345610119049e-07,
+            5.289713541666672e-07,
+            5.405970982142856e-07,
+            5.522228422619035e-07,
+            5.638485863095273e-07,
+            5.754743303571408e-07,
+            5.871000744047637e-07,
+            5.987258184523838e-07,
+            6.103515624999988e-07,
+            6.21977306547616e-07,
+            6.33603050595234e-07,
+            6.452287946428645e-07,
+            6.568545386904784e-07,
+            6.684802827380904e-07,
+            6.801060267857196e-07,
+            6.917317708333221e-07,
+            7.033575148809572e-07,
+            7.1498325892857e-07,
+            7.266090029761904e-07,
+            7.382347470238154e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_dynamic",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_mpi",
+      "slot": "C_mpi",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:27:27.314392+00:00"
+    },
+    {
+      "elapsed_s": 0.1156410425901413,
+      "error_type": "CalledProcessError",
+      "failure_class": "UNCLASSIFIED_NO_RETRY",
+      "id": "C_mpi",
+      "integrating": false,
+      "reason_location": "IMMUTABLE_EXTERNAL_ATTEMPT_LEDGER",
+      "reason_sha256": "25cc55dc616ab4c13019024e9d500e3a4eff29346bf36a59ddc5975032c04030",
+      "slot": "C_mpi",
+      "stage": "short",
+      "status": "PREPARATION_FAILED"
+    },
+    {
+      "id": "C_mpi__preparation1",
+      "slot": "C_mpi",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:28:22.973071+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_mpi__preparation1",
+      "recovery": null,
+      "scenario_sha256": "e13a9b697a83c1df64ee2938330c45f907c599338dc4ee4e46ae28cdb2f78176",
+      "slot": "C_mpi",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:28:23.169968+00:00"
+    },
+    {
+      "id": "C_mpi__preparation1",
+      "slot": "C_mpi",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 2048,
+      "elapsed_s": 1.5627349661663175,
+      "id": "C_mpi__preparation1",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 4.0274593535871914e-17,
+          "water_max_kg": 6.776263578034403e-21
+        },
+        "fields": {
+          "cells": 2048,
+          "final_remaining_kg": 0.005441187934435623,
+          "final_stored_solute_kg": 0.00015711522699270265,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.001360303608403809,
+          "inner_volume_m3": 5.952380952380969e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142903e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.812872023809522e-09,
+            1.7438616071428573e-08,
+            2.9064360119047612e-08,
+            4.06901041666667e-08,
+            5.2315848214285685e-08,
+            6.394159226190488e-08,
+            7.556733630952369e-08,
+            8.719308035714299e-08,
+            9.881882440476182e-08,
+            1.1044456845238095e-07,
+            1.2207031249999987e-07,
+            1.3369605654761945e-07,
+            1.453218005952379e-07,
+            1.5694754464285716e-07,
+            1.6857328869047598e-07,
+            1.8019903273809553e-07,
+            1.9182477678571443e-07,
+            2.0345052083333308e-07,
+            2.1507626488095235e-07,
+            2.267020089285715e-07,
+            2.3832775297619082e-07,
+            2.499534970238094e-07,
+            2.6157924107143033e-07,
+            2.732049851190486e-07,
+            2.848307291666625e-07,
+            2.964564732142849e-07,
+            3.080822172619039e-07,
+            3.197079613095253e-07,
+            3.313337053571426e-07,
+            3.429594494047622e-07,
+            3.5458519345238143e-07,
+            3.662109375000017e-07,
+            3.77836681547618e-07,
+            3.8946242559523917e-07,
+            4.010881696428582e-07,
+            4.127139136904753e-07,
+            4.2433965773809506e-07,
+            4.3596540178571655e-07,
+            4.475911458333336e-07,
+            4.592168898809469e-07,
+            4.7084263392856884e-07,
+            4.824683779762006e-07,
+            4.940941220238019e-07,
+            5.05719866071429e-07,
+            5.17345610119049e-07,
+            5.289713541666672e-07,
+            5.405970982142856e-07,
+            5.522228422619035e-07,
+            5.638485863095273e-07,
+            5.754743303571408e-07,
+            5.871000744047637e-07,
+            5.987258184523838e-07,
+            6.103515624999988e-07,
+            6.21977306547616e-07,
+            6.33603050595234e-07,
+            6.452287946428645e-07,
+            6.568545386904784e-07,
+            6.684802827380904e-07,
+            6.801060267857196e-07,
+            6.917317708333221e-07,
+            7.033575148809572e-07,
+            7.1498325892857e-07,
+            7.266090029761904e-07,
+            7.382347470238154e-07
+          ],
+          "rank_zones": [
+            [
+              0.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_mpi",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_repeat",
+      "slot": "C_repeat",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:28:24.724396+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_repeat",
+      "recovery": null,
+      "scenario_sha256": "e13a9b697a83c1df64ee2938330c45f907c599338dc4ee4e46ae28cdb2f78176",
+      "slot": "C_repeat",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:28:24.840409+00:00"
+    },
+    {
+      "id": "C_repeat",
+      "slot": "C_repeat",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 2048,
+      "elapsed_s": 0.7897910922765732,
+      "id": "C_repeat",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.64334619060305e-16,
+          "water_max_kg": 2.710505431213761e-20
+        },
+        "fields": {
+          "cells": 2048,
+          "final_remaining_kg": 0.005441187934435626,
+          "final_stored_solute_kg": 0.00015711522699246125,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0013603036084038071,
+          "inner_volume_m3": 5.952380952380969e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142903e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.812872023809522e-09,
+            1.7438616071428573e-08,
+            2.9064360119047612e-08,
+            4.06901041666667e-08,
+            5.2315848214285685e-08,
+            6.394159226190488e-08,
+            7.556733630952369e-08,
+            8.719308035714299e-08,
+            9.881882440476182e-08,
+            1.1044456845238095e-07,
+            1.2207031249999987e-07,
+            1.3369605654761945e-07,
+            1.453218005952379e-07,
+            1.5694754464285716e-07,
+            1.6857328869047598e-07,
+            1.8019903273809553e-07,
+            1.9182477678571443e-07,
+            2.0345052083333308e-07,
+            2.1507626488095235e-07,
+            2.267020089285715e-07,
+            2.3832775297619082e-07,
+            2.499534970238094e-07,
+            2.6157924107143033e-07,
+            2.732049851190486e-07,
+            2.848307291666625e-07,
+            2.964564732142849e-07,
+            3.080822172619039e-07,
+            3.197079613095253e-07,
+            3.313337053571426e-07,
+            3.429594494047622e-07,
+            3.5458519345238143e-07,
+            3.662109375000017e-07,
+            3.77836681547618e-07,
+            3.8946242559523917e-07,
+            4.010881696428582e-07,
+            4.127139136904753e-07,
+            4.2433965773809506e-07,
+            4.3596540178571655e-07,
+            4.475911458333336e-07,
+            4.592168898809469e-07,
+            4.7084263392856884e-07,
+            4.824683779762006e-07,
+            4.940941220238019e-07,
+            5.05719866071429e-07,
+            5.17345610119049e-07,
+            5.289713541666672e-07,
+            5.405970982142856e-07,
+            5.522228422619035e-07,
+            5.638485863095273e-07,
+            5.754743303571408e-07,
+            5.871000744047637e-07,
+            5.987258184523838e-07,
+            6.103515624999988e-07,
+            6.21977306547616e-07,
+            6.33603050595234e-07,
+            6.452287946428645e-07,
+            6.568545386904784e-07,
+            6.684802827380904e-07,
+            6.801060267857196e-07,
+            6.917317708333221e-07,
+            7.033575148809572e-07,
+            7.1498325892857e-07,
+            7.266090029761904e-07,
+            7.382347470238154e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_repeat",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_up",
+      "slot": "C_up",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:28:25.694613+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_up",
+      "recovery": null,
+      "scenario_sha256": "d92a71fda52b229bc9465836638de8b338c03ab7a882ba7290fc03ed2b7d506d",
+      "slot": "C_up",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:28:25.816450+00:00"
+    },
+    {
+      "id": "C_up",
+      "slot": "C_up",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 2048,
+      "elapsed_s": 0.7929294100031257,
+      "id": "C_up",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.7587667877448e-16,
+          "water_max_kg": 6.776263578034403e-21
+        },
+        "fields": {
+          "cells": 2048,
+          "final_remaining_kg": 0.005441187045978932,
+          "final_stored_solute_kg": 0.00015706296623370047,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0013603035392791294,
+          "inner_volume_m3": 5.952380952380969e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142903e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.812872023809522e-09,
+            1.7438616071428573e-08,
+            2.9064360119047612e-08,
+            4.06901041666667e-08,
+            5.2315848214285685e-08,
+            6.394159226190488e-08,
+            7.556733630952369e-08,
+            8.719308035714299e-08,
+            9.881882440476182e-08,
+            1.1044456845238095e-07,
+            1.2207031249999987e-07,
+            1.3369605654761945e-07,
+            1.453218005952379e-07,
+            1.5694754464285716e-07,
+            1.6857328869047598e-07,
+            1.8019903273809553e-07,
+            1.9182477678571443e-07,
+            2.0345052083333308e-07,
+            2.1507626488095235e-07,
+            2.267020089285715e-07,
+            2.3832775297619082e-07,
+            2.499534970238094e-07,
+            2.6157924107143033e-07,
+            2.732049851190486e-07,
+            2.848307291666625e-07,
+            2.964564732142849e-07,
+            3.080822172619039e-07,
+            3.197079613095253e-07,
+            3.313337053571426e-07,
+            3.429594494047622e-07,
+            3.5458519345238143e-07,
+            3.662109375000017e-07,
+            3.77836681547618e-07,
+            3.8946242559523917e-07,
+            4.010881696428582e-07,
+            4.127139136904753e-07,
+            4.2433965773809506e-07,
+            4.3596540178571655e-07,
+            4.475911458333336e-07,
+            4.592168898809469e-07,
+            4.7084263392856884e-07,
+            4.824683779762006e-07,
+            4.940941220238019e-07,
+            5.05719866071429e-07,
+            5.17345610119049e-07,
+            5.289713541666672e-07,
+            5.405970982142856e-07,
+            5.522228422619035e-07,
+            5.638485863095273e-07,
+            5.754743303571408e-07,
+            5.871000744047637e-07,
+            5.987258184523838e-07,
+            6.103515624999988e-07,
+            6.21977306547616e-07,
+            6.33603050595234e-07,
+            6.452287946428645e-07,
+            6.568545386904784e-07,
+            6.684802827380904e-07,
+            6.801060267857196e-07,
+            6.917317708333221e-07,
+            7.033575148809572e-07,
+            7.1498325892857e-07,
+            7.266090029761904e-07,
+            7.382347470238154e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_up",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_down",
+      "slot": "E2_down",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:28:26.666803+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_down",
+      "recovery": null,
+      "scenario_sha256": "1556d52fd3c0753459ea564d13e321f8ebc94775b16a514106df3855bdc999c1",
+      "slot": "E2_down",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:28:26.769054+00:00"
+    },
+    {
+      "id": "E2_down",
+      "slot": "E2_down",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 64,
+      "elapsed_s": 0.16233906336128712,
+      "id": "E2_down",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.2648707683924024e-18,
+          "water_max_kg": 6.776263578034403e-21
+        },
+        "fields": {
+          "cells": 64,
+          "final_remaining_kg": 0.005441186959500978,
+          "final_stored_solute_kg": 0.0001577800657834011,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0013603035329359998,
+          "inner_volume_m3": 5.952380952380954e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142865e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380954e-06,
+            1.7857142857142865e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_down",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_dynamic",
+      "slot": "E2_dynamic",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:28:27.004440+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_dynamic",
+      "recovery": null,
+      "scenario_sha256": "1145a031941bbb6af8fe4cd1c6e1aab2819d2c72b69b6299b52f87cd78e66a61",
+      "slot": "E2_dynamic",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:28:27.110058+00:00"
+    },
+    {
+      "id": "E2_dynamic",
+      "slot": "E2_dynamic",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 64,
+      "elapsed_s": 0.18446661159396172,
+      "id": "E2_dynamic",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.7671462100680234e-18,
+          "water_max_kg": 3.3881317890172014e-21
+        },
+        "fields": {
+          "cells": 64,
+          "final_remaining_kg": 0.0054411879344357286,
+          "final_stored_solute_kg": 0.00015711522700994469,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0013603036081562448,
+          "inner_volume_m3": 5.952380952380954e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142865e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380954e-06,
+            1.7857142857142865e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_dynamic",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_mpi",
+      "slot": "E2_mpi",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:28:27.376942+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_mpi",
+      "recovery": null,
+      "scenario_sha256": "1145a031941bbb6af8fe4cd1c6e1aab2819d2c72b69b6299b52f87cd78e66a61",
+      "slot": "E2_mpi",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:28:27.527652+00:00"
+    },
+    {
+      "id": "E2_mpi",
+      "slot": "E2_mpi",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 64,
+      "elapsed_s": 0.9379898086190224,
+      "id": "E2_mpi",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 1.1040561615480022e-18,
+          "water_max_kg": 0.0
+        },
+        "fields": {
+          "cells": 64,
+          "final_remaining_kg": 0.005441187934435729,
+          "final_stored_solute_kg": 0.00015711522700994444,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0013603036081562448,
+          "inner_volume_m3": 5.952380952380954e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142865e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380954e-06,
+            1.7857142857142865e-05
+          ],
+          "rank_zones": [
+            [
+              0.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_mpi",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_repeat",
+      "slot": "E2_repeat",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:28:28.505434+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_repeat",
+      "recovery": null,
+      "scenario_sha256": "1145a031941bbb6af8fe4cd1c6e1aab2819d2c72b69b6299b52f87cd78e66a61",
+      "slot": "E2_repeat",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:28:28.610078+00:00"
+    },
+    {
+      "id": "E2_repeat",
+      "slot": "E2_repeat",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 64,
+      "elapsed_s": 0.16370983235538006,
+      "id": "E2_repeat",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.7671462100680234e-18,
+          "water_max_kg": 3.3881317890172014e-21
+        },
+        "fields": {
+          "cells": 64,
+          "final_remaining_kg": 0.0054411879344357286,
+          "final_stored_solute_kg": 0.00015711522700994469,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0013603036081562448,
+          "inner_volume_m3": 5.952380952380954e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142865e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380954e-06,
+            1.7857142857142865e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_repeat",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_up",
+      "slot": "E2_up",
+      "stage": "short",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:28:28.840704+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_up",
+      "recovery": null,
+      "scenario_sha256": "45d770cf38be40cc005170a06f6d00126c1bc34f79e6579c74392ec63a97b13a",
+      "slot": "E2_up",
+      "stage": "short",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:28:28.947100+00:00"
+    },
+    {
+      "id": "E2_up",
+      "slot": "E2_up",
+      "stage": "short",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 64,
+      "elapsed_s": 0.16629337705671787,
+      "id": "E2_up",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.9128693778105714e-18,
+          "water_max_kg": 6.776263578034403e-21
+        },
+        "fields": {
+          "cells": 64,
+          "final_remaining_kg": 0.005441187045978921,
+          "final_stored_solute_kg": 0.00015706296623282316,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0013603035394152896,
+          "inner_volume_m3": 5.952380952380954e-06,
+          "interface_faces": 32,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142865e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380954e-06,
+            1.7857142857142865e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 10,
+          "max_pressure_error_Pa": 4.656612873077393e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_up",
+      "stage": "short",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_TR_LINEAR_DOWN_radial",
+      "slot": "C_TR_LINEAR_DOWN_radial",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:37:42.362486+00:00"
+    },
+    {
+      "id": "C_TR_LINEAR_UP_axial",
+      "slot": "C_TR_LINEAR_UP_axial",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:37:42.370428+00:00"
+    },
+    {
+      "id": "C_TR_LINEAR_DOWN_axial",
+      "slot": "C_TR_LINEAR_DOWN_axial",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:37:42.396167+00:00"
+    },
+    {
+      "id": "C_TR_LINEAR_UP_temporal",
+      "slot": "C_TR_LINEAR_UP_temporal",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:37:42.405161+00:00"
+    },
+    {
+      "id": "C_TR_LINEAR_UP_radial",
+      "slot": "C_TR_LINEAR_UP_radial",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:37:42.416401+00:00"
+    },
+    {
+      "id": "C_TR_LINEAR_DOWN_temporal",
+      "slot": "C_TR_LINEAR_DOWN_temporal",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:37:42.419628+00:00"
+    },
+    {
+      "id": "C_TR_LINEAR_DOWN_base",
+      "slot": "C_TR_LINEAR_DOWN_base",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:37:42.422823+00:00"
+    },
+    {
+      "id": "C_TR_LINEAR_UP_base",
+      "slot": "C_TR_LINEAR_UP_base",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:37:42.426058+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_TR_LINEAR_UP_temporal",
+      "recovery": null,
+      "scenario_sha256": "71e12e528d027b9640e849a32b1dfde9a74e38c2a25f7cdbb311f1baf15a1b20",
+      "slot": "C_TR_LINEAR_UP_temporal",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:37:42.819518+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_TR_LINEAR_DOWN_base",
+      "recovery": null,
+      "scenario_sha256": "4bb871277a671af7017b76fc783c85f88db721eb78a12d59ba360f8c6d7acba7",
+      "slot": "C_TR_LINEAR_DOWN_base",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:37:42.825853+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_TR_LINEAR_DOWN_temporal",
+      "recovery": null,
+      "scenario_sha256": "d2c2542ee51311fae833a7d8bb2a51da0471389275acdabc8244fca9c2148d24",
+      "slot": "C_TR_LINEAR_DOWN_temporal",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:37:42.829908+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_TR_LINEAR_UP_base",
+      "recovery": null,
+      "scenario_sha256": "8f2c3c5a0a3518967dd6257f5c41f4fa7a270b5a22181dd09b475e4bed28c4b6",
+      "slot": "C_TR_LINEAR_UP_base",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:37:42.834791+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_TR_LINEAR_UP_axial",
+      "recovery": null,
+      "scenario_sha256": "b8dc9df7d131374d5031eb0cdd801b5f4ec310d21c17a57a3ce646f3418e422e",
+      "slot": "C_TR_LINEAR_UP_axial",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:37:43.095051+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_TR_LINEAR_DOWN_radial",
+      "recovery": null,
+      "scenario_sha256": "bd9b28850f700fb06e78f477e96cab7e5d0647f1555779f3ad8770b49370661e",
+      "slot": "C_TR_LINEAR_DOWN_radial",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:37:43.101458+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_TR_LINEAR_DOWN_axial",
+      "recovery": null,
+      "scenario_sha256": "9813c464df228d4edd4dd7cad14162a08508b0c93a1e30a67ca6f8843df2648f",
+      "slot": "C_TR_LINEAR_DOWN_axial",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:37:43.129200+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_TR_LINEAR_UP_radial",
+      "recovery": null,
+      "scenario_sha256": "257379c613ca0c850c27dc8f9ed15f0a3d91d3546f43a433b1a69e960b0bfb61",
+      "slot": "C_TR_LINEAR_UP_radial",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:37:43.134948+00:00"
+    },
+    {
+      "id": "C_TR_LINEAR_DOWN_base",
+      "slot": "C_TR_LINEAR_DOWN_base",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_TR_LINEAR_UP_base",
+      "slot": "C_TR_LINEAR_UP_base",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 130.62349013518542,
+      "id": "C_TR_LINEAR_DOWN_base",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.3430582061213204e-13,
+          "water_max_kg": 4.336808689942018e-19
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.0017898989816896654,
+          "final_stored_solute_kg": 0.0009967867315186381,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008269779034211437,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_TR_LINEAR_DOWN_base",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 131.02139424998313,
+      "id": "C_TR_LINEAR_UP_base",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 5.331581318673991e-13,
+          "water_max_kg": 1.6940658945086007e-21
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.0020047760833775525,
+          "final_stored_solute_kg": 0.00072027066673645,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.000840592990249275,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_TR_LINEAR_UP_base",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_base",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_base",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:39:53.569834+00:00"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_temporal",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_temporal",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:39:53.656373+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_UP_base",
+      "recovery": null,
+      "scenario_sha256": "520d7884a3e4915b38e2fe25525f2c465bed5b5d7c28fb9ede0ec56ec2dcb9b3",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_base",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:39:53.985652+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_UP_temporal",
+      "recovery": null,
+      "scenario_sha256": "0362b2541f02c9593bc8d22716c54531710060de4762e1eabbb3b7864210193e",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_temporal",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:39:54.068825+00:00"
+    },
+    {
+      "id": "C_TR_LINEAR_UP_temporal",
+      "slot": "C_TR_LINEAR_UP_temporal",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_TR_LINEAR_DOWN_temporal",
+      "slot": "C_TR_LINEAR_DOWN_temporal",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_TR_LINEAR_DOWN_axial",
+      "slot": "C_TR_LINEAR_DOWN_axial",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_TR_LINEAR_UP_axial",
+      "slot": "C_TR_LINEAR_UP_axial",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_base",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_base",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_TR_LINEAR_DOWN_radial",
+      "slot": "C_TR_LINEAR_DOWN_radial",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_TR_LINEAR_UP_radial",
+      "slot": "C_TR_LINEAR_UP_radial",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_temporal",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_temporal",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 285.0537242507562,
+      "id": "C_SW_WATER_ANCHORED_90C_UP_base",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 1.1720145270548198e-13,
+          "water_max_kg": 1.0842021724855044e-19
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.0022598766699481647,
+          "final_stored_solute_kg": 0.0008466129787760337,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008586489069458105,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_base",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 416.8751656692475,
+      "id": "C_TR_LINEAR_DOWN_temporal",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 1.0162178215960519e-13,
+          "water_max_kg": 1.734723475976807e-18
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.0017907231071452743,
+          "final_stored_solute_kg": 0.0009969972212518711,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008270655792339014,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 3000,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_TR_LINEAR_DOWN_temporal",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 416.71693805698305,
+      "id": "C_TR_LINEAR_UP_temporal",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 9.201696106735536e-13,
+          "water_max_kg": 4.235164736271502e-22
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.002005295320860471,
+          "final_stored_solute_kg": 0.0007201997827243491,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008406637261019528,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 3000,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_TR_LINEAR_UP_temporal",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_property",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_property",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:44:39.875343+00:00"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_radial",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_radial",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:44:39.976209+00:00"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_axial",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_axial",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:44:39.988750+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_UP_property",
+      "recovery": null,
+      "scenario_sha256": "f3fafbc10a44c10ffe54420ee1e061090db501113276a8042ed706dd7217ebf1",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_property",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:44:40.311947+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_UP_axial",
+      "recovery": null,
+      "scenario_sha256": "5f316a93a15cc988249bc91dbc0c791f7b830b9ef18bfd3f94362f5ffa102543",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_axial",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:44:40.717452+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_UP_radial",
+      "recovery": null,
+      "scenario_sha256": "3becc3d3ce27945a598fa1c874e2209462538cd74bf2d102c4d9d03da94951ce",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_radial",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:44:40.731865+00:00"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 289.2530548302457,
+      "id": "C_SW_WATER_ANCHORED_90C_UP_temporal",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 7.173610689235259e-13,
+          "water_max_kg": 1.734723475976807e-18
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.002260400901155989,
+          "final_stored_solute_kg": 0.0008465674500318172,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008587095895662919,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 3000,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_temporal",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_base",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_base",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:44:43.520422+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_base",
+      "recovery": null,
+      "scenario_sha256": "1193e9720e4beaca776a5fb62669455f820c7514252da9d80b9059203b769f43",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_base",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:44:44.001639+00:00"
+    },
+    {
+      "cells": 65536,
+      "elapsed_s": 431.1855319654569,
+      "id": "C_TR_LINEAR_DOWN_axial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 7.206378628903077e-14,
+          "water_max_kg": 1.3552527156068805e-20
+        },
+        "fields": {
+          "cells": 65536,
+          "final_remaining_kg": 0.0017903463294834578,
+          "final_stored_solute_kg": 0.0009960323086129629,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008272822778735116,
+          "inner_volume_m3": 5.952380952380834e-06,
+          "interface_faces": 1024,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.78571428571431e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.81287202380952e-09,
+            1.7438616071428573e-08,
+            2.9064360119047655e-08,
+            4.0690104166666685e-08,
+            5.2315848214285626e-08,
+            6.394159226190496e-08,
+            7.556733630952369e-08,
+            8.719308035714316e-08,
+            9.881882440476186e-08,
+            1.1044456845238111e-07,
+            1.220703124999996e-07,
+            1.3369605654762027e-07,
+            1.453218005952376e-07,
+            1.5694754464285724e-07,
+            1.6857328869047568e-07,
+            1.8019903273809545e-07,
+            1.918247767857141e-07,
+            2.0345052083333313e-07,
+            2.1507626488095243e-07,
+            2.2670200892857082e-07,
+            2.3832775297619106e-07,
+            2.4995349702380884e-07,
+            2.6157924107142906e-07,
+            2.7320498511904806e-07,
+            2.8483072916666246e-07,
+            2.964564732142849e-07,
+            3.0808221726190384e-07,
+            3.197079613095243e-07,
+            3.3133370535714295e-07,
+            3.4295944940476375e-07,
+            3.5458519345238074e-07,
+            3.662109375000024e-07,
+            3.778366815476179e-07,
+            3.8946242559524e-07,
+            4.010881696428585e-07,
+            4.127139136904758e-07,
+            4.2433965773809236e-07,
+            4.359654017857146e-07,
+            4.475911458333314e-07,
+            4.5921688988094925e-07,
+            4.708426339285708e-07,
+            4.824683779761975e-07,
+            4.940941220238014e-07,
+            5.057198660714295e-07,
+            5.173456101190464e-07,
+            5.289713541666679e-07,
+            5.405970982142837e-07,
+            5.522228422619041e-07,
+            5.638485863095263e-07,
+            5.754743303571384e-07,
+            5.871000744047656e-07,
+            5.987258184523837e-07,
+            6.103515624999977e-07,
+            6.219773065476135e-07,
+            6.336030505952325e-07,
+            6.452287946428608e-07,
+            6.568545386904794e-07,
+            6.684802827380906e-07,
+            6.801060267857191e-07,
+            6.917317708333244e-07,
+            7.033575148809564e-07,
+            7.149832589285692e-07,
+            7.266090029761954e-07,
+            7.382347470238096e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_TR_LINEAR_DOWN_axial",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 65536,
+      "elapsed_s": 431.5127106308937,
+      "id": "C_TR_LINEAR_UP_axial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 3.514275797992551e-13,
+          "water_max_kg": 3.469446951953614e-18
+        },
+        "fields": {
+          "cells": 65536,
+          "final_remaining_kg": 0.002005217684742173,
+          "final_stored_solute_kg": 0.0007197635565099903,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008409442372390556,
+          "inner_volume_m3": 5.952380952380834e-06,
+          "interface_faces": 1024,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.78571428571431e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.81287202380952e-09,
+            1.7438616071428573e-08,
+            2.9064360119047655e-08,
+            4.0690104166666685e-08,
+            5.2315848214285626e-08,
+            6.394159226190496e-08,
+            7.556733630952369e-08,
+            8.719308035714316e-08,
+            9.881882440476186e-08,
+            1.1044456845238111e-07,
+            1.220703124999996e-07,
+            1.3369605654762027e-07,
+            1.453218005952376e-07,
+            1.5694754464285724e-07,
+            1.6857328869047568e-07,
+            1.8019903273809545e-07,
+            1.918247767857141e-07,
+            2.0345052083333313e-07,
+            2.1507626488095243e-07,
+            2.2670200892857082e-07,
+            2.3832775297619106e-07,
+            2.4995349702380884e-07,
+            2.6157924107142906e-07,
+            2.7320498511904806e-07,
+            2.8483072916666246e-07,
+            2.964564732142849e-07,
+            3.0808221726190384e-07,
+            3.197079613095243e-07,
+            3.3133370535714295e-07,
+            3.4295944940476375e-07,
+            3.5458519345238074e-07,
+            3.662109375000024e-07,
+            3.778366815476179e-07,
+            3.8946242559524e-07,
+            4.010881696428585e-07,
+            4.127139136904758e-07,
+            4.2433965773809236e-07,
+            4.359654017857146e-07,
+            4.475911458333314e-07,
+            4.5921688988094925e-07,
+            4.708426339285708e-07,
+            4.824683779761975e-07,
+            4.940941220238014e-07,
+            5.057198660714295e-07,
+            5.173456101190464e-07,
+            5.289713541666679e-07,
+            5.405970982142837e-07,
+            5.522228422619041e-07,
+            5.638485863095263e-07,
+            5.754743303571384e-07,
+            5.871000744047656e-07,
+            5.987258184523837e-07,
+            6.103515624999977e-07,
+            6.219773065476135e-07,
+            6.336030505952325e-07,
+            6.452287946428608e-07,
+            6.568545386904794e-07,
+            6.684802827380906e-07,
+            6.801060267857191e-07,
+            6.917317708333244e-07,
+            7.033575148809564e-07,
+            7.149832589285692e-07,
+            7.266090029761954e-07,
+            7.382347470238096e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_TR_LINEAR_UP_axial",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 65536,
+      "elapsed_s": 432.2629496483132,
+      "id": "C_TR_LINEAR_UP_radial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 1.1093903827676761e-13,
+          "water_max_kg": 0.0
+        },
+        "fields": {
+          "cells": 65536,
+          "final_remaining_kg": 0.0020049878585008955,
+          "final_stored_solute_kg": 0.0007202731478652868,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008407391775216289,
+          "inner_volume_m3": 5.952380952380977e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142218e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            1.4532180059523826e-09,
+            4.359654017857145e-09,
+            7.266090029761914e-09,
+            1.017252604166666e-08,
+            1.3078962053571423e-08,
+            1.5985398065476188e-08,
+            1.8891834077380954e-08,
+            2.1798270089285737e-08,
+            2.4704706101190464e-08,
+            2.7611142113095208e-08,
+            3.0517578125000054e-08,
+            3.342401413690472e-08,
+            3.633045014880935e-08,
+            3.9236886160714204e-08,
+            4.214332217261898e-08,
+            4.504975818452402e-08,
+            4.7956194196428474e-08,
+            5.086263020833337e-08,
+            5.3769066220238087e-08,
+            5.6675502232142684e-08,
+            5.9581938244047805e-08,
+            6.248837425595212e-08,
+            6.539481026785716e-08,
+            6.830124627976221e-08,
+            7.120768229166621e-08,
+            7.411411830357157e-08,
+            7.702055431547615e-08,
+            7.992699032738078e-08,
+            8.283342633928579e-08,
+            8.573986235119012e-08,
+            8.864629836309564e-08,
+            9.155273437500021e-08,
+            9.44591703869046e-08,
+            9.736560639880975e-08,
+            1.0027204241071393e-07,
+            1.0317847842261915e-07,
+            1.0608491443452383e-07,
+            1.089913504464284e-07,
+            1.1189778645833295e-07,
+            1.1480422247023832e-07,
+            1.1771065848214234e-07,
+            1.2061709449404822e-07,
+            1.235235305059521e-07,
+            1.2642996651785698e-07,
+            1.2933640252976264e-07,
+            1.3224283854166716e-07,
+            1.3514927455357267e-07,
+            1.3805571056547616e-07,
+            1.4096214657738069e-07,
+            1.438685825892819e-07,
+            1.467750186011883e-07,
+            1.4968145461309704e-07,
+            1.5258789062500167e-07,
+            1.5549432663690172e-07,
+            1.5840076264881194e-07,
+            1.6130719866071334e-07,
+            1.6421363467261916e-07,
+            1.6712007068452403e-07,
+            1.7002650669642874e-07,
+            1.7293294270833316e-07,
+            1.7583937872023964e-07,
+            1.787458147321425e-07,
+            1.816522507440477e-07,
+            1.8455868675595423e-07,
+            1.874651227678564e-07,
+            1.9037155877976137e-07,
+            1.932779947916683e-07,
+            1.96184430803571e-07,
+            1.9909086681547674e-07,
+            2.0199730282738177e-07,
+            2.049037388392841e-07,
+            2.0781017485119185e-07,
+            2.1071661086309683e-07,
+            2.136230468749976e-07,
+            2.1652948288690606e-07,
+            2.1943591889881067e-07,
+            2.2234235491070993e-07,
+            2.2524879092262282e-07,
+            2.281552269345251e-07,
+            2.3106166294642138e-07,
+            2.3396809895833904e-07,
+            2.368745349702305e-07,
+            2.3978097098214414e-07,
+            2.4268740699405603e-07,
+            2.455938430059444e-07,
+            2.485002790178569e-07,
+            2.514067150297598e-07,
+            2.543131510416689e-07,
+            2.5721958705357204e-07,
+            2.6012602306547635e-07,
+            2.6303245907738013e-07,
+            2.65938895089287e-07,
+            2.688453311011887e-07,
+            2.7175176711309625e-07,
+            2.746582031250034e-07,
+            2.775646391368995e-07,
+            2.804710751488126e-07,
+            2.8337751116071594e-07,
+            2.8628394717261723e-07,
+            2.8919038318452335e-07,
+            2.920968191964326e-07,
+            2.950032552083319e-07,
+            2.979096912202386e-07,
+            3.0081612723214494e-07,
+            3.0372256324404624e-07,
+            3.0662899925595335e-07,
+            3.095354352678562e-07,
+            3.1244187127975944e-07,
+            3.1534830729167153e-07,
+            3.182547433035615e-07,
+            3.211611793154844e-07,
+            3.240676153273783e-07,
+            3.2697405133928577e-07,
+            3.298804873511946e-07,
+            3.3278692336308476e-07,
+            3.3569335937500554e-07,
+            3.3859979538690715e-07,
+            3.4150623139881237e-07,
+            3.4441266741070614e-07,
+            3.47319103422617e-07,
+            3.5022553943452954e-07,
+            3.5313197544642697e-07,
+            3.5603841145833626e-07,
+            3.589448474702349e-07,
+            3.618512834821463e-07,
+            3.647577194940478e-07,
+            3.676641555059503e-07,
+            3.7057059151786063e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_TR_LINEAR_UP_radial",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 65536,
+      "elapsed_s": 432.3080678274855,
+      "id": "C_TR_LINEAR_DOWN_radial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.6944077563984415e-13,
+          "water_max_kg": 1.0842021724855044e-19
+        },
+        "fields": {
+          "cells": 65536,
+          "final_remaining_kg": 0.0017900053598942048,
+          "final_stored_solute_kg": 0.000996751530941721,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008270367931572177,
+          "inner_volume_m3": 5.952380952380977e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142218e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            1.4532180059523826e-09,
+            4.359654017857145e-09,
+            7.266090029761914e-09,
+            1.017252604166666e-08,
+            1.3078962053571423e-08,
+            1.5985398065476188e-08,
+            1.8891834077380954e-08,
+            2.1798270089285737e-08,
+            2.4704706101190464e-08,
+            2.7611142113095208e-08,
+            3.0517578125000054e-08,
+            3.342401413690472e-08,
+            3.633045014880935e-08,
+            3.9236886160714204e-08,
+            4.214332217261898e-08,
+            4.504975818452402e-08,
+            4.7956194196428474e-08,
+            5.086263020833337e-08,
+            5.3769066220238087e-08,
+            5.6675502232142684e-08,
+            5.9581938244047805e-08,
+            6.248837425595212e-08,
+            6.539481026785716e-08,
+            6.830124627976221e-08,
+            7.120768229166621e-08,
+            7.411411830357157e-08,
+            7.702055431547615e-08,
+            7.992699032738078e-08,
+            8.283342633928579e-08,
+            8.573986235119012e-08,
+            8.864629836309564e-08,
+            9.155273437500021e-08,
+            9.44591703869046e-08,
+            9.736560639880975e-08,
+            1.0027204241071393e-07,
+            1.0317847842261915e-07,
+            1.0608491443452383e-07,
+            1.089913504464284e-07,
+            1.1189778645833295e-07,
+            1.1480422247023832e-07,
+            1.1771065848214234e-07,
+            1.2061709449404822e-07,
+            1.235235305059521e-07,
+            1.2642996651785698e-07,
+            1.2933640252976264e-07,
+            1.3224283854166716e-07,
+            1.3514927455357267e-07,
+            1.3805571056547616e-07,
+            1.4096214657738069e-07,
+            1.438685825892819e-07,
+            1.467750186011883e-07,
+            1.4968145461309704e-07,
+            1.5258789062500167e-07,
+            1.5549432663690172e-07,
+            1.5840076264881194e-07,
+            1.6130719866071334e-07,
+            1.6421363467261916e-07,
+            1.6712007068452403e-07,
+            1.7002650669642874e-07,
+            1.7293294270833316e-07,
+            1.7583937872023964e-07,
+            1.787458147321425e-07,
+            1.816522507440477e-07,
+            1.8455868675595423e-07,
+            1.874651227678564e-07,
+            1.9037155877976137e-07,
+            1.932779947916683e-07,
+            1.96184430803571e-07,
+            1.9909086681547674e-07,
+            2.0199730282738177e-07,
+            2.049037388392841e-07,
+            2.0781017485119185e-07,
+            2.1071661086309683e-07,
+            2.136230468749976e-07,
+            2.1652948288690606e-07,
+            2.1943591889881067e-07,
+            2.2234235491070993e-07,
+            2.2524879092262282e-07,
+            2.281552269345251e-07,
+            2.3106166294642138e-07,
+            2.3396809895833904e-07,
+            2.368745349702305e-07,
+            2.3978097098214414e-07,
+            2.4268740699405603e-07,
+            2.455938430059444e-07,
+            2.485002790178569e-07,
+            2.514067150297598e-07,
+            2.543131510416689e-07,
+            2.5721958705357204e-07,
+            2.6012602306547635e-07,
+            2.6303245907738013e-07,
+            2.65938895089287e-07,
+            2.688453311011887e-07,
+            2.7175176711309625e-07,
+            2.746582031250034e-07,
+            2.775646391368995e-07,
+            2.804710751488126e-07,
+            2.8337751116071594e-07,
+            2.8628394717261723e-07,
+            2.8919038318452335e-07,
+            2.920968191964326e-07,
+            2.950032552083319e-07,
+            2.979096912202386e-07,
+            3.0081612723214494e-07,
+            3.0372256324404624e-07,
+            3.0662899925595335e-07,
+            3.095354352678562e-07,
+            3.1244187127975944e-07,
+            3.1534830729167153e-07,
+            3.182547433035615e-07,
+            3.211611793154844e-07,
+            3.240676153273783e-07,
+            3.2697405133928577e-07,
+            3.298804873511946e-07,
+            3.3278692336308476e-07,
+            3.3569335937500554e-07,
+            3.3859979538690715e-07,
+            3.4150623139881237e-07,
+            3.4441266741070614e-07,
+            3.47319103422617e-07,
+            3.5022553943452954e-07,
+            3.5313197544642697e-07,
+            3.5603841145833626e-07,
+            3.589448474702349e-07,
+            3.618512834821463e-07,
+            3.647577194940478e-07,
+            3.676641555059503e-07,
+            3.7057059151786063e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_TR_LINEAR_DOWN_radial",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:44:54.922330+00:00"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_property",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_property",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:44:54.955562+00:00"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_radial",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_radial",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:44:54.963553+00:00"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "stage": "C",
+      "status": "PREPARING",
+      "utc": "2026-09-23T14:44:54.971088+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "recovery": null,
+      "scenario_sha256": "0be8525e0b36936d19f48311cbd3c7955a69211554f272eeff3c6100890f674a",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:44:55.340806+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_property",
+      "recovery": null,
+      "scenario_sha256": "935939f19b2697d202d5c260290bb3a3f2f32565a98fbfe801608028656e623d",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_property",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:44:55.374662+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_radial",
+      "recovery": null,
+      "scenario_sha256": "85249bc460c17f2e84b4bcf28266ae3f567c97424d250a65d8e425489e379210",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_radial",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:44:55.701152+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "recovery": null,
+      "scenario_sha256": "0a1745043d074881131a0dbdbb7fce6eb9176b9367eca53eb8252cf0a573452d",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "stage": "C",
+      "status": "STARTED",
+      "support_sha256": null,
+      "utc": "2026-09-23T14:44:55.713247+00:00"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_property",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_property",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_base",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_base",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_property",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_property",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 143.43773618899286,
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_base",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 9.426441455037064e-13,
+          "water_max_kg": 1.734723475976807e-18
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.0021355146079797653,
+          "final_stored_solute_kg": 0.0011267126006046834,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008504244416562106,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_base",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 147.21883738040924,
+      "id": "C_SW_WATER_ANCHORED_90C_UP_property",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 1.1718812548908988e-13,
+          "water_max_kg": 3.469446951953614e-18
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.0022598729265639445,
+          "final_stored_solute_kg": 0.0008466110516512456,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008586486745989784,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_property",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 131.77766586560756,
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_property",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 9.426484708774515e-13,
+          "water_max_kg": 1.734723475976807e-18
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.0021355102166224927,
+          "final_stored_solute_kg": 0.001126710978567487,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008504241275566174,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_property",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_axial",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_axial",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 32768,
+      "elapsed_s": 274.5753428284079,
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 7.132760052017714e-14,
+          "water_max_kg": 8.673617379884035e-19
+        },
+        "fields": {
+          "cells": 32768,
+          "final_remaining_kg": 0.0021363453844495286,
+          "final_stored_solute_kg": 0.001126884630328281,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008505002574692123,
+          "inner_volume_m3": 5.95238095238111e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142852e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.8128720238095215e-09,
+            1.743861607142856e-08,
+            2.906436011904764e-08,
+            4.069010416666673e-08,
+            5.231584821428566e-08,
+            6.394159226190486e-08,
+            7.556733630952369e-08,
+            8.719308035714306e-08,
+            9.881882440476192e-08,
+            1.1044456845238092e-07,
+            1.2207031249999992e-07,
+            1.3369605654761927e-07,
+            1.4532180059523768e-07,
+            1.5694754464285727e-07,
+            1.6857328869047608e-07,
+            1.8019903273809545e-07,
+            1.9182477678571482e-07,
+            2.0345052083333337e-07,
+            2.1507626488095216e-07,
+            2.267020089285708e-07,
+            2.3832775297619111e-07,
+            2.499534970238092e-07,
+            2.6157924107143007e-07,
+            2.7320498511904843e-07,
+            2.8483072916666214e-07,
+            2.964564732142846e-07,
+            3.08082217261904e-07,
+            3.197079613095252e-07,
+            3.313337053571431e-07,
+            3.429594494047609e-07,
+            3.5458519345238196e-07,
+            3.6621093750000207e-07,
+            3.778366815476186e-07,
+            3.8946242559523965e-07,
+            4.0108816964285886e-07,
+            4.1271391369047553e-07,
+            4.2433965773809416e-07,
+            4.359654017857178e-07,
+            4.4759114583333205e-07,
+            4.592168898809477e-07,
+            4.7084263392857e-07,
+            4.824683779761992e-07,
+            4.940941220238011e-07,
+            5.057198660714279e-07,
+            5.173456101190488e-07,
+            5.289713541666678e-07,
+            5.405970982142842e-07,
+            5.522228422619024e-07,
+            5.638485863095286e-07,
+            5.7547433035714e-07,
+            5.871000744047642e-07,
+            5.987258184523835e-07,
+            6.103515624999987e-07,
+            6.219773065476148e-07,
+            6.336030505952344e-07,
+            6.452287946428616e-07,
+            6.568545386904802e-07,
+            6.684802827380909e-07,
+            6.801060267857194e-07,
+            6.91731770833323e-07,
+            7.03357514880955e-07,
+            7.149832589285703e-07,
+            7.266090029761963e-07,
+            7.382347470238108e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 3000,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 65536,
+      "elapsed_s": 274.9929526625201,
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 8.42974122072153e-14,
+          "water_max_kg": 1.0842021724855044e-19
+        },
+        "fields": {
+          "cells": 65536,
+          "final_remaining_kg": 0.002136071745860416,
+          "final_stored_solute_kg": 0.0011259188211616548,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008507176418402685,
+          "inner_volume_m3": 5.952380952380834e-06,
+          "interface_faces": 1024,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.78571428571431e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.81287202380952e-09,
+            1.7438616071428573e-08,
+            2.9064360119047655e-08,
+            4.0690104166666685e-08,
+            5.2315848214285626e-08,
+            6.394159226190496e-08,
+            7.556733630952369e-08,
+            8.719308035714316e-08,
+            9.881882440476186e-08,
+            1.1044456845238111e-07,
+            1.220703124999996e-07,
+            1.3369605654762027e-07,
+            1.453218005952376e-07,
+            1.5694754464285724e-07,
+            1.6857328869047568e-07,
+            1.8019903273809545e-07,
+            1.918247767857141e-07,
+            2.0345052083333313e-07,
+            2.1507626488095243e-07,
+            2.2670200892857082e-07,
+            2.3832775297619106e-07,
+            2.4995349702380884e-07,
+            2.6157924107142906e-07,
+            2.7320498511904806e-07,
+            2.8483072916666246e-07,
+            2.964564732142849e-07,
+            3.0808221726190384e-07,
+            3.197079613095243e-07,
+            3.3133370535714295e-07,
+            3.4295944940476375e-07,
+            3.5458519345238074e-07,
+            3.662109375000024e-07,
+            3.778366815476179e-07,
+            3.8946242559524e-07,
+            4.010881696428585e-07,
+            4.127139136904758e-07,
+            4.2433965773809236e-07,
+            4.359654017857146e-07,
+            4.475911458333314e-07,
+            4.5921688988094925e-07,
+            4.708426339285708e-07,
+            4.824683779761975e-07,
+            4.940941220238014e-07,
+            5.057198660714295e-07,
+            5.173456101190464e-07,
+            5.289713541666679e-07,
+            5.405970982142837e-07,
+            5.522228422619041e-07,
+            5.638485863095263e-07,
+            5.754743303571384e-07,
+            5.871000744047656e-07,
+            5.987258184523837e-07,
+            6.103515624999977e-07,
+            6.219773065476135e-07,
+            6.336030505952325e-07,
+            6.452287946428608e-07,
+            6.568545386904794e-07,
+            6.684802827380906e-07,
+            6.801060267857191e-07,
+            6.917317708333244e-07,
+            7.033575148809564e-07,
+            7.149832589285692e-07,
+            7.266090029761954e-07,
+            7.382347470238096e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 65536,
+      "elapsed_s": 290.4631994171068,
+      "id": "C_SW_WATER_ANCHORED_90C_UP_axial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.313786962455369e-14,
+          "water_max_kg": 3.469446951953614e-18
+        },
+        "fields": {
+          "cells": 65536,
+          "final_remaining_kg": 0.0022603222025115014,
+          "final_stored_solute_kg": 0.0008460294915729469,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008589879992103917,
+          "inner_volume_m3": 5.952380952380834e-06,
+          "interface_faces": 1024,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.78571428571431e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.81287202380952e-09,
+            1.7438616071428573e-08,
+            2.9064360119047655e-08,
+            4.0690104166666685e-08,
+            5.2315848214285626e-08,
+            6.394159226190496e-08,
+            7.556733630952369e-08,
+            8.719308035714316e-08,
+            9.881882440476186e-08,
+            1.1044456845238111e-07,
+            1.220703124999996e-07,
+            1.3369605654762027e-07,
+            1.453218005952376e-07,
+            1.5694754464285724e-07,
+            1.6857328869047568e-07,
+            1.8019903273809545e-07,
+            1.918247767857141e-07,
+            2.0345052083333313e-07,
+            2.1507626488095243e-07,
+            2.2670200892857082e-07,
+            2.3832775297619106e-07,
+            2.4995349702380884e-07,
+            2.6157924107142906e-07,
+            2.7320498511904806e-07,
+            2.8483072916666246e-07,
+            2.964564732142849e-07,
+            3.0808221726190384e-07,
+            3.197079613095243e-07,
+            3.3133370535714295e-07,
+            3.4295944940476375e-07,
+            3.5458519345238074e-07,
+            3.662109375000024e-07,
+            3.778366815476179e-07,
+            3.8946242559524e-07,
+            4.010881696428585e-07,
+            4.127139136904758e-07,
+            4.2433965773809236e-07,
+            4.359654017857146e-07,
+            4.475911458333314e-07,
+            4.5921688988094925e-07,
+            4.708426339285708e-07,
+            4.824683779761975e-07,
+            4.940941220238014e-07,
+            5.057198660714295e-07,
+            5.173456101190464e-07,
+            5.289713541666679e-07,
+            5.405970982142837e-07,
+            5.522228422619041e-07,
+            5.638485863095263e-07,
+            5.754743303571384e-07,
+            5.871000744047656e-07,
+            5.987258184523837e-07,
+            6.103515624999977e-07,
+            6.219773065476135e-07,
+            6.336030505952325e-07,
+            6.452287946428608e-07,
+            6.568545386904794e-07,
+            6.684802827380906e-07,
+            6.801060267857191e-07,
+            6.917317708333244e-07,
+            7.033575148809564e-07,
+            7.149832589285692e-07,
+            7.266090029761954e-07,
+            7.382347470238096e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_axial",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_UP_radial",
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_radial",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_radial",
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_radial",
+      "stage": "C",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 65536,
+      "elapsed_s": 358.75676105637103,
+      "id": "C_SW_WATER_ANCHORED_90C_UP_radial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 4.3527937263160114e-14,
+          "water_max_kg": 1.0842021724855044e-19
+        },
+        "fields": {
+          "cells": 65536,
+          "final_remaining_kg": 0.0022599940608131128,
+          "final_stored_solute_kg": 0.0008465366547208119,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008587388567451427,
+          "inner_volume_m3": 5.952380952380977e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142218e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            1.4532180059523826e-09,
+            4.359654017857145e-09,
+            7.266090029761914e-09,
+            1.017252604166666e-08,
+            1.3078962053571423e-08,
+            1.5985398065476188e-08,
+            1.8891834077380954e-08,
+            2.1798270089285737e-08,
+            2.4704706101190464e-08,
+            2.7611142113095208e-08,
+            3.0517578125000054e-08,
+            3.342401413690472e-08,
+            3.633045014880935e-08,
+            3.9236886160714204e-08,
+            4.214332217261898e-08,
+            4.504975818452402e-08,
+            4.7956194196428474e-08,
+            5.086263020833337e-08,
+            5.3769066220238087e-08,
+            5.6675502232142684e-08,
+            5.9581938244047805e-08,
+            6.248837425595212e-08,
+            6.539481026785716e-08,
+            6.830124627976221e-08,
+            7.120768229166621e-08,
+            7.411411830357157e-08,
+            7.702055431547615e-08,
+            7.992699032738078e-08,
+            8.283342633928579e-08,
+            8.573986235119012e-08,
+            8.864629836309564e-08,
+            9.155273437500021e-08,
+            9.44591703869046e-08,
+            9.736560639880975e-08,
+            1.0027204241071393e-07,
+            1.0317847842261915e-07,
+            1.0608491443452383e-07,
+            1.089913504464284e-07,
+            1.1189778645833295e-07,
+            1.1480422247023832e-07,
+            1.1771065848214234e-07,
+            1.2061709449404822e-07,
+            1.235235305059521e-07,
+            1.2642996651785698e-07,
+            1.2933640252976264e-07,
+            1.3224283854166716e-07,
+            1.3514927455357267e-07,
+            1.3805571056547616e-07,
+            1.4096214657738069e-07,
+            1.438685825892819e-07,
+            1.467750186011883e-07,
+            1.4968145461309704e-07,
+            1.5258789062500167e-07,
+            1.5549432663690172e-07,
+            1.5840076264881194e-07,
+            1.6130719866071334e-07,
+            1.6421363467261916e-07,
+            1.6712007068452403e-07,
+            1.7002650669642874e-07,
+            1.7293294270833316e-07,
+            1.7583937872023964e-07,
+            1.787458147321425e-07,
+            1.816522507440477e-07,
+            1.8455868675595423e-07,
+            1.874651227678564e-07,
+            1.9037155877976137e-07,
+            1.932779947916683e-07,
+            1.96184430803571e-07,
+            1.9909086681547674e-07,
+            2.0199730282738177e-07,
+            2.049037388392841e-07,
+            2.0781017485119185e-07,
+            2.1071661086309683e-07,
+            2.136230468749976e-07,
+            2.1652948288690606e-07,
+            2.1943591889881067e-07,
+            2.2234235491070993e-07,
+            2.2524879092262282e-07,
+            2.281552269345251e-07,
+            2.3106166294642138e-07,
+            2.3396809895833904e-07,
+            2.368745349702305e-07,
+            2.3978097098214414e-07,
+            2.4268740699405603e-07,
+            2.455938430059444e-07,
+            2.485002790178569e-07,
+            2.514067150297598e-07,
+            2.543131510416689e-07,
+            2.5721958705357204e-07,
+            2.6012602306547635e-07,
+            2.6303245907738013e-07,
+            2.65938895089287e-07,
+            2.688453311011887e-07,
+            2.7175176711309625e-07,
+            2.746582031250034e-07,
+            2.775646391368995e-07,
+            2.804710751488126e-07,
+            2.8337751116071594e-07,
+            2.8628394717261723e-07,
+            2.8919038318452335e-07,
+            2.920968191964326e-07,
+            2.950032552083319e-07,
+            2.979096912202386e-07,
+            3.0081612723214494e-07,
+            3.0372256324404624e-07,
+            3.0662899925595335e-07,
+            3.095354352678562e-07,
+            3.1244187127975944e-07,
+            3.1534830729167153e-07,
+            3.182547433035615e-07,
+            3.211611793154844e-07,
+            3.240676153273783e-07,
+            3.2697405133928577e-07,
+            3.298804873511946e-07,
+            3.3278692336308476e-07,
+            3.3569335937500554e-07,
+            3.3859979538690715e-07,
+            3.4150623139881237e-07,
+            3.4441266741070614e-07,
+            3.47319103422617e-07,
+            3.5022553943452954e-07,
+            3.5313197544642697e-07,
+            3.5603841145833626e-07,
+            3.589448474702349e-07,
+            3.618512834821463e-07,
+            3.647577194940478e-07,
+            3.676641555059503e-07,
+            3.7057059151786063e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_UP_radial",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 65536,
+      "elapsed_s": 345.62221546284854,
+      "id": "C_SW_WATER_ANCHORED_90C_DOWN_radial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.30433512932003e-13,
+          "water_max_kg": 3.3881317890172014e-21
+        },
+        "fields": {
+          "cells": 65536,
+          "final_remaining_kg": 0.0021355492846558133,
+          "final_stored_solute_kg": 0.0011267189565402215,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008503074163478889,
+          "inner_volume_m3": 5.952380952380977e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142218e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            1.4532180059523826e-09,
+            4.359654017857145e-09,
+            7.266090029761914e-09,
+            1.017252604166666e-08,
+            1.3078962053571423e-08,
+            1.5985398065476188e-08,
+            1.8891834077380954e-08,
+            2.1798270089285737e-08,
+            2.4704706101190464e-08,
+            2.7611142113095208e-08,
+            3.0517578125000054e-08,
+            3.342401413690472e-08,
+            3.633045014880935e-08,
+            3.9236886160714204e-08,
+            4.214332217261898e-08,
+            4.504975818452402e-08,
+            4.7956194196428474e-08,
+            5.086263020833337e-08,
+            5.3769066220238087e-08,
+            5.6675502232142684e-08,
+            5.9581938244047805e-08,
+            6.248837425595212e-08,
+            6.539481026785716e-08,
+            6.830124627976221e-08,
+            7.120768229166621e-08,
+            7.411411830357157e-08,
+            7.702055431547615e-08,
+            7.992699032738078e-08,
+            8.283342633928579e-08,
+            8.573986235119012e-08,
+            8.864629836309564e-08,
+            9.155273437500021e-08,
+            9.44591703869046e-08,
+            9.736560639880975e-08,
+            1.0027204241071393e-07,
+            1.0317847842261915e-07,
+            1.0608491443452383e-07,
+            1.089913504464284e-07,
+            1.1189778645833295e-07,
+            1.1480422247023832e-07,
+            1.1771065848214234e-07,
+            1.2061709449404822e-07,
+            1.235235305059521e-07,
+            1.2642996651785698e-07,
+            1.2933640252976264e-07,
+            1.3224283854166716e-07,
+            1.3514927455357267e-07,
+            1.3805571056547616e-07,
+            1.4096214657738069e-07,
+            1.438685825892819e-07,
+            1.467750186011883e-07,
+            1.4968145461309704e-07,
+            1.5258789062500167e-07,
+            1.5549432663690172e-07,
+            1.5840076264881194e-07,
+            1.6130719866071334e-07,
+            1.6421363467261916e-07,
+            1.6712007068452403e-07,
+            1.7002650669642874e-07,
+            1.7293294270833316e-07,
+            1.7583937872023964e-07,
+            1.787458147321425e-07,
+            1.816522507440477e-07,
+            1.8455868675595423e-07,
+            1.874651227678564e-07,
+            1.9037155877976137e-07,
+            1.932779947916683e-07,
+            1.96184430803571e-07,
+            1.9909086681547674e-07,
+            2.0199730282738177e-07,
+            2.049037388392841e-07,
+            2.0781017485119185e-07,
+            2.1071661086309683e-07,
+            2.136230468749976e-07,
+            2.1652948288690606e-07,
+            2.1943591889881067e-07,
+            2.2234235491070993e-07,
+            2.2524879092262282e-07,
+            2.281552269345251e-07,
+            2.3106166294642138e-07,
+            2.3396809895833904e-07,
+            2.368745349702305e-07,
+            2.3978097098214414e-07,
+            2.4268740699405603e-07,
+            2.455938430059444e-07,
+            2.485002790178569e-07,
+            2.514067150297598e-07,
+            2.543131510416689e-07,
+            2.5721958705357204e-07,
+            2.6012602306547635e-07,
+            2.6303245907738013e-07,
+            2.65938895089287e-07,
+            2.688453311011887e-07,
+            2.7175176711309625e-07,
+            2.746582031250034e-07,
+            2.775646391368995e-07,
+            2.804710751488126e-07,
+            2.8337751116071594e-07,
+            2.8628394717261723e-07,
+            2.8919038318452335e-07,
+            2.920968191964326e-07,
+            2.950032552083319e-07,
+            2.979096912202386e-07,
+            3.0081612723214494e-07,
+            3.0372256324404624e-07,
+            3.0662899925595335e-07,
+            3.095354352678562e-07,
+            3.1244187127975944e-07,
+            3.1534830729167153e-07,
+            3.182547433035615e-07,
+            3.211611793154844e-07,
+            3.240676153273783e-07,
+            3.2697405133928577e-07,
+            3.298804873511946e-07,
+            3.3278692336308476e-07,
+            3.3569335937500554e-07,
+            3.3859979538690715e-07,
+            3.4150623139881237e-07,
+            3.4441266741070614e-07,
+            3.47319103422617e-07,
+            3.5022553943452954e-07,
+            3.5313197544642697e-07,
+            3.5603841145833626e-07,
+            3.589448474702349e-07,
+            3.618512834821463e-07,
+            3.647577194940478e-07,
+            3.676641555059503e-07,
+            3.7057059151786063e-07
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "C_SW_WATER_ANCHORED_90C_DOWN_radial",
+      "stage": "C",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "support",
+      "sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "slot": "support",
+      "stage": "support",
+      "status": "SUPPORT_SEALED"
+    },
+    {
+      "id": "E2_TR_LINEAR_UP_temporal",
+      "slot": "E2_TR_LINEAR_UP_temporal",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:13.722562+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_TR_LINEAR_UP_temporal",
+      "recovery": null,
+      "scenario_sha256": "0058a0381e2ee31c62292036fc530849ba8cea24ace8b07a5d55e8cf7614cb4f",
+      "slot": "E2_TR_LINEAR_UP_temporal",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:13.937498+00:00"
+    },
+    {
+      "id": "E2_TR_LINEAR_UP_base",
+      "slot": "E2_TR_LINEAR_UP_base",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:14.249647+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_TR_LINEAR_UP_base",
+      "recovery": null,
+      "scenario_sha256": "4111f5602da832b0e563901201755dd36df930215c46859299621d2cb8bb2ac5",
+      "slot": "E2_TR_LINEAR_UP_base",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:14.509182+00:00"
+    },
+    {
+      "id": "E2_TR_LINEAR_DOWN_base",
+      "slot": "E2_TR_LINEAR_DOWN_base",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:14.572530+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_TR_LINEAR_DOWN_base",
+      "recovery": null,
+      "scenario_sha256": "04e90b935d613825181df47bce37b406f217a474172f04367ed9073abad6d861",
+      "slot": "E2_TR_LINEAR_DOWN_base",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:14.759327+00:00"
+    },
+    {
+      "id": "E2_TR_LINEAR_UP_axial",
+      "slot": "E2_TR_LINEAR_UP_axial",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:14.921641+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_TR_LINEAR_UP_axial",
+      "recovery": null,
+      "scenario_sha256": "a474fc15ace6e27f563f4fb20b0a0c5116f233f119ddd56a47e41dcc1f13d3cc",
+      "slot": "E2_TR_LINEAR_UP_axial",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:15.044528+00:00"
+    },
+    {
+      "id": "E2_TR_LINEAR_UP_base",
+      "slot": "E2_TR_LINEAR_UP_base",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "E2_TR_LINEAR_DOWN_base",
+      "slot": "E2_TR_LINEAR_DOWN_base",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "E2_TR_LINEAR_UP_temporal",
+      "slot": "E2_TR_LINEAR_UP_temporal",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "E2_TR_LINEAR_UP_axial",
+      "slot": "E2_TR_LINEAR_UP_axial",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 3.4206735361367464,
+      "id": "E2_TR_LINEAR_UP_base",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 4.4325234129817537e-17,
+          "water_max_kg": 8.470329472543003e-22
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.0020059486661864446,
+          "final_stored_solute_kg": 0.0007199240340651257,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008421138296381071,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_TR_LINEAR_UP_base",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 3.927762378938496,
+      "id": "E2_TR_LINEAR_DOWN_base",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 4.0658004984680043e-17,
+          "water_max_kg": 5.421010862427522e-20
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.0017910090852938571,
+          "final_stored_solute_kg": 0.0009961785431980947,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008293347875446513,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_TR_LINEAR_DOWN_base",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 4.869935505092144,
+      "id": "E2_TR_LINEAR_UP_temporal",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 2.3532269340618972e-17,
+          "water_max_kg": 6.776263578034403e-21
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.002006467185804175,
+          "final_stored_solute_kg": 0.000719852082312467,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008421819619756823,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 3000,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_TR_LINEAR_UP_temporal",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 2048,
+      "elapsed_s": 3.8958400627598166,
+      "id": "E2_TR_LINEAR_UP_axial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 9.277297761392175e-17,
+          "water_max_kg": 1.734723475976807e-18
+        },
+        "fields": {
+          "cells": 2048,
+          "final_remaining_kg": 0.002006394249272963,
+          "final_stored_solute_kg": 0.0007194130800157976,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008424585123934875,
+          "inner_volume_m3": 5.952380952380966e-06,
+          "interface_faces": 1024,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.785714285714293e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380966e-06,
+            1.785714285714293e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_TR_LINEAR_UP_axial",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_temporal",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_temporal",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:28.188956+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_temporal",
+      "recovery": null,
+      "scenario_sha256": "ca3e08aa0645ce702ae614cf25afa65f1cfe69ebdf7702395eb44e4f4dc3ed71",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_temporal",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:28.484057+00:00"
+    },
+    {
+      "id": "E2_TR_LINEAR_DOWN_axial",
+      "slot": "E2_TR_LINEAR_DOWN_axial",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:29.513481+00:00"
+    },
+    {
+      "id": "E2_TR_LINEAR_DOWN_temporal",
+      "slot": "E2_TR_LINEAR_DOWN_temporal",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:29.551882+00:00"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_base",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_base",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:29.592182+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_TR_LINEAR_DOWN_temporal",
+      "recovery": null,
+      "scenario_sha256": "1352c830e50478d54a7ccde047e97cc8cfcbcaee0dc84ce9a8e50eca487af2fb",
+      "slot": "E2_TR_LINEAR_DOWN_temporal",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:29.667079+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_TR_LINEAR_DOWN_axial",
+      "recovery": null,
+      "scenario_sha256": "bd3029e2cace1afb883b4fd82d1f2dbb7a4cd9f76e616ec801816d649f4b534d",
+      "slot": "E2_TR_LINEAR_DOWN_axial",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:29.676002+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_base",
+      "recovery": null,
+      "scenario_sha256": "9f4f49cece81fe82b7e2d0dff25c9c1c79e87da44438ff9698db5b50a930461a",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_base",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:29.709523+00:00"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_temporal",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_temporal",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_base",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_base",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "E2_TR_LINEAR_DOWN_axial",
+      "slot": "E2_TR_LINEAR_DOWN_axial",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "E2_TR_LINEAR_DOWN_temporal",
+      "slot": "E2_TR_LINEAR_DOWN_temporal",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 3.947372943162918,
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_temporal",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 3.5799847515703004e-17,
+          "water_max_kg": 1.734723475976807e-18
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.0022614016144024605,
+          "final_stored_solute_kg": 0.0008463502939135966,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008589466563428633,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 3000,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_temporal",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 4.575613980181515,
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_base",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 5.112690869626957e-17,
+          "water_max_kg": 4.336808689942018e-19
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.002260877052325524,
+          "final_stored_solute_kg": 0.0008463963940248982,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.000858887633943689,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_base",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 4.598720896057785,
+      "id": "E2_TR_LINEAR_DOWN_temporal",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 1.0158589892169583e-12,
+          "water_max_kg": 0.0
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.0017918327566686179,
+          "final_stored_solute_kg": 0.0009963893459350014,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008294189694923865,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 3000,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_TR_LINEAR_DOWN_temporal",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 2048,
+      "elapsed_s": 4.82900942210108,
+      "id": "E2_TR_LINEAR_DOWN_axial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 4.5230712350432384e-17,
+          "water_max_kg": 3.469446951953614e-18
+        },
+        "fields": {
+          "cells": 2048,
+          "final_remaining_kg": 0.001791458950604237,
+          "final_stored_solute_kg": 0.000995424520981877,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008296355772939205,
+          "inner_volume_m3": 5.952380952380966e-06,
+          "interface_faces": 1024,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.785714285714293e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380966e-06,
+            1.785714285714293e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_TR_LINEAR_DOWN_axial",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_axial",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_axial",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:43.455480+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_axial",
+      "recovery": null,
+      "scenario_sha256": "0183dc474011b493e4ad42a916b5a472bd6b961d31e79bc1b7f7a1aade39998e",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_axial",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:43.750345+00:00"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:44.983005+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "recovery": null,
+      "scenario_sha256": "9112a32adab2d13d8a9d6793dfea0b288bee056a70429019ef7e77f553eb263d",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:45.302003+00:00"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_base",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_base",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:45.347164+00:00"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_property",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_property",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:45.356320+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_base",
+      "recovery": null,
+      "scenario_sha256": "8924e12075dc1d5c4a2cd3ef16d206401d8d1baf0cace59ff8fbd75e5352ad16",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_base",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:45.470514+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_property",
+      "recovery": null,
+      "scenario_sha256": "f4a6c645df7e59ed52549ca38db753d7cc153926bf34637c70cc9a31336bff32",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_property",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:45.477202+00:00"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_axial",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_axial",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_base",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_base",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 2048,
+      "elapsed_s": 3.126101141795516,
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_axial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 8.844379222050502e-17,
+          "water_max_kg": 6.776263578034403e-21
+        },
+        "fields": {
+          "cells": 2048,
+          "final_remaining_kg": 0.002261327147971719,
+          "final_stored_solute_kg": 0.0008458086929863364,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008592303113922983,
+          "inner_volume_m3": 5.952380952380966e-06,
+          "interface_faces": 1024,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.785714285714293e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380966e-06,
+            1.785714285714293e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_axial",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_property",
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_property",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 3.428756886161864,
+      "id": "E2_SW_WATER_ANCHORED_90C_UP_property",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 4.8878883254256655e-17,
+          "water_max_kg": 3.3881317890172014e-21
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.0022608733070380188,
+          "final_stored_solute_kg": 0.0008463944686757542,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008588874076085065,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_SW_WATER_ANCHORED_90C_UP_property",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 3.42571023106575,
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_base",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 4.79763696489572e-17,
+          "water_max_kg": 1.734723475976807e-18
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.002136432481888641,
+          "final_stored_solute_kg": 0.0011263910829987587,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008507144894131582,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_base",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 3.8122436683624983,
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 7.992355683725922e-13,
+          "water_max_kg": 2.710505431213761e-20
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.0021372636387976675,
+          "final_stored_solute_kg": 0.0011265632454387766,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.000850788090119381,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 3000,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_temporal",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:53.400539+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "recovery": null,
+      "scenario_sha256": "1edf8f3900cb63490139b22a2661c9a06a0f88608a31d0197c59cd3f2b12db7a",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:53.591766+00:00"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_property",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_property",
+      "stage": "E2",
+      "status": "PREPARING",
+      "utc": "2026-09-23T15:00:53.660991+00:00"
+    },
+    {
+      "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_property",
+      "recovery": null,
+      "scenario_sha256": "0d3d42c670dd6f668dcce563cc7f07d28d0bbf0ae853bc1b2569c710efd42e8a",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_property",
+      "stage": "E2",
+      "status": "STARTED",
+      "support_sha256": "272e83982702f0309972d81596889f304eb4e21f27dee4bd8647485270bb490f",
+      "utc": "2026-09-23T15:00:53.776896+00:00"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_property",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_property",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 1024,
+      "elapsed_s": 1.6922539956867695,
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_property",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 4.8767498421692715e-17,
+          "water_max_kg": 0.0
+        },
+        "fields": {
+          "cells": 1024,
+          "final_remaining_kg": 0.0021364280953116072,
+          "final_stored_solute_kg": 0.0011263894650760588,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.0008507141898037186,
+          "inner_volume_m3": 5.952380952380959e-06,
+          "interface_faces": 512,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.7857142857142835e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380959e-06,
+            1.7857142857142835e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_property",
+      "stage": "E2",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "stage": "E2",
+      "status": "NATIVE_COMPLETED"
+    },
+    {
+      "cells": 2048,
+      "elapsed_s": 3.075539730489254,
+      "id": "E2_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "quality": {
+        "balance": {
+          "solute_max_kg": 5.864602016904599e-17,
+          "water_max_kg": 4.336808689942018e-19
+        },
+        "fields": {
+          "cells": 2048,
+          "final_remaining_kg": 0.0021369920872192014,
+          "final_stored_solute_kg": 0.0011255943272962953,
+          "inner_area_m2": 0.0006605198554172542,
+          "inner_remaining_kg": 0.000851010767841035,
+          "inner_volume_m3": 5.952380952380966e-06,
+          "interface_faces": 1024,
+          "outer_area_m2": 0.001981559566251763,
+          "outer_volume_m3": 1.785714285714293e-05,
+          "permeability_assignment": "PASS",
+          "positive_volumes": true,
+          "radial_face_alignment_max_m": 1.734723475976807e-18,
+          "radial_shell_volumes_m3": [
+            5.952380952380966e-06,
+            1.785714285714293e-05
+          ],
+          "rank_zones": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "pressure": {
+          "clock": "P(t_end), mu(c_start)",
+          "intervals": 1500,
+          "max_pressure_error_Pa": 5.820766091346741e-10,
+          "pressure_trace_sha256": null
+        }
+      },
+      "slot": "E2_SW_WATER_ANCHORED_90C_DOWN_axial",
+      "stage": "E2",
+      "status": "COMPLETE"
+    }
+  ],
+  "failed": 0,
+  "infrastructure_retries": 0,
+  "ledger_sha256": "23f9942343e315cdac0600ce3518f2da4d1994d8d1e60b3ed19711a05e111e61",
+  "native_completed": 42,
+  "pending_attempts": [],
+  "planned_full": 32,
+  "planned_short": 10,
+  "qualified_completions": 42,
+  "short_launches": 10,
+  "startup_failures": 0
+}

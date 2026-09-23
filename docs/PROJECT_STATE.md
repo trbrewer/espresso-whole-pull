@@ -1,5 +1,30 @@
 # Project State
 
+## SCI-MD-RHEOLOGY-010 matched-conductance reversal (2026-09-23)
+
+G1 / SOURCE_SCENARIO_CHANGE_ONLY; IMPLEMENTED_AND_EXECUTED.
+[Result](analysis/sci_md_rheology_010/RESULT.md):
+E2_CONDUCTANCE_MATCHED_REVERSAL_SUFFICIENT_FOR_TESTED_OUTPUTS; all 24 primary
+decisions PASS. Six of eight resolved-model delivery contrasts qualify as
+material. UP fraction-TDS contrasts for both laws remain UNRESOLVED because
+empirical allowances exceed the frozen 20% ceiling. All traces reach the new
+C-only common support: UP 0.015983191 kg, DOWN 0.016114389 kg. Exactly 42 native
+integrations (10 short + 18 C + 14 E2), zero native failures/retries; all 18 old
+C traces reused read-only. One prelaunch MPI preparation failure is retained.
+E2 remains a candidate for this additional tested scenario, with modeled delivery
+consequences limited to the named qualified outputs. Independent pre-scoring
+agent audit PASS; final exact-head review and CI are separate PR statuses.
+
+The separately authorized [virtual sections](analysis/sci_md_rheology_010/SECTIONING.md)
+use 16 stored final base fields, separate solid depletion from retained dissolved
+solute, and close conservatively. E2 cannot resolve the Ribes middle/outer
+contrast because both cuts occupy its annulus cell. Assay mapping remains
+unqualified. No acceptance rule or native run was added for these diagnostics.
+Production source/defaults/lock, Puckworks and accepted 006–009 results are
+unchanged. PHYSICAL_VALIDATION = NOT_ESTABLISHED. No unique lateral mechanism,
+arbitrary-scenario/whole-shot equivalence, lumped-model, speedup, adoption,
+merge, rescue matrix, laboratory action or successor claim/authorization.
+
 ## SCI-MD-RHEOLOGY-009 pressure-history transfer (2026-09-22)
 
 G2 / NO_GOVERNING_PHYSICS_CHANGE, production boundary/coupling compatibility;
