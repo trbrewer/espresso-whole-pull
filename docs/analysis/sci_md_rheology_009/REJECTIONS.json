@@ -1,0 +1,82 @@
+{
+  "bulk": {
+    "log_sha256": "82211b514aecd2c000605f58e487260eabdee75f48bcbc200510d6346ed30362",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "density": {
+    "log_sha256": "594d1272ddeba5ade4ffd985557406530f1e02680a3df427bdac9dba946f7b1a",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "duplicate_knot": {
+    "log_sha256": "1b24b0f14b5eec4caf00aa73aec522f407d7adc66b32d6cc27d26c285963f889",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "evolving": {
+    "log_sha256": "aeb9f5bedffcc1fed144dde0451c5bb99154df5185122995930f21f69bd5950e",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "flow": {
+    "log_sha256": "e1c76b80652127d61e489d81c2e913f730d180a80da322cb8a67be4f54cd8f2c",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "mechanics": {
+    "log_sha256": "80f16ee3d9f3b8edeb1f542bc1dc08391b4fc1af0d48dca776605146baba980c",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "missing_knot": {
+    "log_sha256": "536175e7fdd54c1e785d064abcbab33bd28b098c6c91efeaf62f468cf0c52913",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "mode": {
+    "log_sha256": "e2969455a81439da2e13f35688ef32db00581796a2bfa4932b5df79f8cc1027a",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "nonfinite_knot": {
+    "log_sha256": "6114930f1fb43a11eb03b89bc20c431f6e814339c8df4226f09563973ea686a3",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "out_of_support": {
+    "log_sha256": "9216fe348190d658c6e6e9ceee1f543011fada962f85d181028144fa6d836c9c",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "ramp_conflict": {
+    "log_sha256": "8c04757025af842731a2ddc991abe48f1c9494cc48f89d25f9b316e9b48a1029",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "restart": {
+    "log_sha256": "312e9fe115877d9c493978a349a630012eb586ca7572e1b244eefcbf47c70f27",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "scalar_conflict": {
+    "log_sha256": "51ec0f32237f8face5215b2653dd64e28c672eaac57687fe6c728c50c7dbc2e4",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "temperature": {
+    "log_sha256": "28d22a7af106a35293d739c38fd2ebc218f7d36af2f4a50f44144289c51aa13f",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "wetting": {
+    "log_sha256": "24f2a1ef56275bf77dadb09b1ed40c4a409bace3fe255c0d97822f9bf8841046",
+    "returncode": 1,
+    "status": "REJECTED"
+  },
+  "zero_knot": {
+    "log_sha256": "a978591f514db58fa47546aa22c0018d01ab9f8ee745642e914053cb01c0f9f2",
+    "returncode": 1,
+    "status": "REJECTED"
+  }
+}

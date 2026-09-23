@@ -1,0 +1,69 @@
+{
+  "all_primary_delivery_supported": true,
+  "controls": 16,
+  "independent_solute_max_kg": 5.928850191861074e-12,
+  "independent_water_max_kg": 3.469446951953614e-18,
+  "limits_sha256": "d32fe58dbb1315948554900774a037be0c6c31c329a48cb0e65399e5d0f64480",
+  "maximum_allowance_budget_ratio": 0.07861663003697637,
+  "meaning": "Native and independent inherited validators passed before all scores; bounds are explicit in CONTRACT.json. Empirical numerical allowances are not confidence intervals or continuum bounds.",
+  "native_extrema": {
+    "c_n_max_kg_m3": {
+      "max": 179.99549710990334,
+      "max_abs": 179.99549710990334,
+      "min": 0.0
+    },
+    "c_n_min_kg_m3": {
+      "max": 1.8665238085128666,
+      "max_abs": 1.8665238085128666,
+      "min": 0.0
+    },
+    "c_next_max_kg_m3": {
+      "max": 179.99552772973647,
+      "max_abs": 179.99552772973647,
+      "min": 0.8820000000005959
+    },
+    "c_next_min_kg_m3": {
+      "max": 1.8665238085128666,
+      "max_abs": 1.8665238085128666,
+      "min": 0.003479234917280833
+    },
+    "correction_kg": {
+      "max": 0.0,
+      "max_abs": 0.0,
+      "min": 0.0
+    },
+    "mu_n_max_Pa_s": {
+      "max": 0.0005784280810922426,
+      "max_abs": 0.0005784280810922426,
+      "min": 0.00031267394194924405
+    },
+    "mu_n_min_Pa_s": {
+      "max": 0.0003142792566747722,
+      "max_abs": 0.0003142792566747722,
+      "min": 0.00031267394194924405
+    },
+    "mu_next_max_Pa_s": {
+      "max": 0.0005784281489161127,
+      "max_abs": 0.0005784281489161127,
+      "min": 0.00031281324036458647
+    },
+    "mu_next_min_Pa_s": {
+      "max": 0.0003142792566747722,
+      "max_abs": 0.0003142792566747722,
+      "min": 0.00031267449194145316
+    },
+    "solute_balance_kg": {
+      "max": 5.727116194413867e-13,
+      "max_abs": 5.928849324499336e-12,
+      "min": -5.928849324499336e-12
+    },
+    "water_balance_kg": {
+      "max": 1.1642336400496944e-12,
+      "max_abs": 1.1642336400496944e-12,
+      "min": -9.78175873633802e-13
+    }
+  },
+  "primary_runs": 32,
+  "short_runs": 14,
+  "status": "PASS"
+}

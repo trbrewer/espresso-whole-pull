@@ -47,7 +47,8 @@ class BulkClosureTests(unittest.TestCase):
             q=copy.deepcopy(s)
             if key is None:q[section]=value
             else:q[section][key]=value
-            with self.subTest(section=section,key=key),self.assertRaises(ValueError):contract(q)
+            # The history parser rejects conflicting legacy keys with SystemExit.
+            with self.subTest(section=section,key=key),self.assertRaises((ValueError, SystemExit)):contract(q)
         q=copy.deepcopy(s);q['effective_permeability_evolution']={}
         with self.assertRaises(ValueError):contract(q)
 
