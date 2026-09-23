@@ -1,0 +1,35 @@
+{
+  "accepted_reference_hashes": {
+    "C_SW_WATER_ANCHORED_90C_3bar": "c4a1c4541991d48d0abebb9e047b42c6f3fcd4a1106e6142e77b2a1239acf165",
+    "C_SW_WATER_ANCHORED_90C_9bar": "ec4b5aa02116785a2c5437fc84f4acc3170069fc3a21bea14a9b02f98a8c7a31",
+    "C_TR_LINEAR_3bar": "68737dbf93a7f90f0c107a1a46470d7e91cab5200208641198fe14ece4d7263f",
+    "C_TR_LINEAR_9bar": "4b088ad589b8b7badf7744642505d6bba86642ab585946dda54ecb1122133cd9",
+    "E2_SW_WATER_ANCHORED_90C_3bar": "508d915e5cbcaf99c1d7860d39dff63497b3cf352559a9fe09090c080b912e1c",
+    "E2_SW_WATER_ANCHORED_90C_9bar": "8aea471249b8095e0babed9fd8eeb8356a8677173320e75f61247d7624f0151d",
+    "E2_TR_LINEAR_3bar": "63696c05fe2b87ebd5c1343f05a4d7f4f198a707177a92131b01b3d8f6cde1e6",
+    "E2_TR_LINEAR_9bar": "9ccb9e0286c5e6d02ce05c23d2aa77140b68c0cc5627177f564ff0df81df48ce"
+  },
+  "available_data_register_sha256": "0c318f43c40361629bb8f25ab4b8ca9f073425ca3ec3a2418bbd8a6cb67a5481",
+  "preflight": "Accepted source-conditioned 003 source-use and export authority; 006 C and 008 E2 references present and verified. Controlled synthetic histories need no experimental acquisition. No global gap.",
+  "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "source_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+  "source_hashes": {
+    "docs/cards/sobolik2002.md": "92abf4779318f4ef6fa12851753b5ddf3012f4e8451385529b352629fe6834b4",
+    "docs/cards/telisromero2001.md": "3635c6221ab516405f69564d55c7c72d8664007a72d30be5767c2cdad4315b36",
+    "puckworks/analysis/g10_viscosity_sensitivity.py": "fe2da859f724cd783ce28445b916aa2f98e85fe4caeae1bd7c5831f2b171be5f",
+    "puckworks/data/__init__.py": "7adb18f36784058bbf8ea596cf54d9ca0a8d8ac20ed57037bffdb2243957c805",
+    "puckworks/data/g10_liquor_rheology/telisromero2001_table1_eta.csv": "dc1cbfd5bd472668f9f62a551f4a04a92460d1d72a1674e1288ded90866610de",
+    "puckworks/data/sobolik2002/README.md": "1acca05013884dce09c4e3022b225c27807effb3c8842e45612236ce21553d3d",
+    "puckworks/data/sobolik2002/eq5_viscosity_dilute_computed.csv": "2cd37968d78e704da7ab86378a61fb53306abf2e2515d21332432fe18e0dbd0d",
+    "puckworks/data/sobolik2002/fig3_viscosity_dilute_weisser_digitized.csv": "bfa79ea7a4632455373cde8a03a92abfb8eb9aba2ed690e8d136a51027394452",
+    "puckworks/data/telisromero2001/PROVENANCE.md": "066538a3a8fa9b65c4361306eae47e33426567ca54dac7441dbffa7ffad4e610",
+    "puckworks/models/pannusch2024/closures.py": "9d144765200b66422e72218f8ceff5d5ca531da88150fa71d023bbc490b20cf1"
+  },
+  "source_manifest_sha256": "3f073e3c5b2cbbfb9d94a7a2ebc3b06b2d1755b705c101804a3b7946966fb081",
+  "source_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+  "tables": {
+    "SW_WATER_ANCHORED_90C_base.table": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+    "SW_WATER_ANCHORED_90C_refined.table": "578de2bd622e06ed14fdee18e22509e410e71b1d21a3516f9877c41d70da8842",
+    "TR_LINEAR.table": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3"
+  }
+}

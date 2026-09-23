@@ -1,0 +1,194 @@
+{
+  "C_SW_WATER_ANCHORED_90C_DOWN_axial": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498724405950454,
+    "terminal_beverage_kg": 0.017788025294654633
+  },
+  "C_SW_WATER_ANCHORED_90C_DOWN_base": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499836439033249,
+    "terminal_beverage_kg": 0.017785943061688604
+  },
+  "C_SW_WATER_ANCHORED_90C_DOWN_property": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499814711179202,
+    "terminal_beverage_kg": 0.01778598374146886
+  },
+  "C_SW_WATER_ANCHORED_90C_DOWN_radial": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499999845637389,
+    "terminal_beverage_kg": 0.01778563713109867
+  },
+  "C_SW_WATER_ANCHORED_90C_DOWN_temporal": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499074255862071,
+    "terminal_beverage_kg": 0.017787370163542954
+  },
+  "C_SW_WATER_ANCHORED_90C_UP_axial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498139197140537,
+    "terminal_beverage_kg": 0.01746093698541804
+  },
+  "C_SW_WATER_ANCHORED_90C_UP_base": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.949890108501741,
+    "terminal_beverage_kg": 0.017459536478550038
+  },
+  "C_SW_WATER_ANCHORED_90C_UP_property": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498880171966428,
+    "terminal_beverage_kg": 0.017459574918047102
+  },
+  "C_SW_WATER_ANCHORED_90C_UP_radial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499195503791572,
+    "terminal_beverage_kg": 0.0174589953363738
+  },
+  "C_SW_WATER_ANCHORED_90C_UP_temporal": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499999624585471,
+    "terminal_beverage_kg": 0.01745751753197955
+  },
+  "C_TR_LINEAR_DOWN_axial": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8060817962135869,
+    "terminal_beverage_kg": 0.020961092384628153
+  },
+  "C_TR_LINEAR_DOWN_base": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8060533854491372,
+    "terminal_beverage_kg": 0.02096183119507061
+  },
+  "C_TR_LINEAR_DOWN_radial": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8063827780959291,
+    "terminal_beverage_kg": 0.020953268669621775
+  },
+  "C_TR_LINEAR_DOWN_temporal": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8059790725769975,
+    "terminal_beverage_kg": 0.020963763917562314
+  },
+  "C_TR_LINEAR_UP_axial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8310979712017159,
+    "terminal_beverage_kg": 0.01995509744298815
+  },
+  "C_TR_LINEAR_UP_base": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8310193142273725,
+    "terminal_beverage_kg": 0.01995698621688392
+  },
+  "C_TR_LINEAR_UP_radial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8312949614824163,
+    "terminal_beverage_kg": 0.019950368724026966
+  },
+  "C_TR_LINEAR_UP_temporal": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8311699402437274,
+    "terminal_beverage_kg": 0.01995336957823188
+  },
+  "E2_SW_WATER_ANCHORED_90C_DOWN_axial": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9497235477370848,
+    "terminal_beverage_kg": 0.01779081401136057
+  },
+  "E2_SW_WATER_ANCHORED_90C_DOWN_base": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498347212125071,
+    "terminal_beverage_kg": 0.017788731684214527
+  },
+  "E2_SW_WATER_ANCHORED_90C_DOWN_property": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.949832564842544,
+    "terminal_beverage_kg": 0.01778877206931829
+  },
+  "E2_SW_WATER_ANCHORED_90C_DOWN_temporal": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9497580159875904,
+    "terminal_beverage_kg": 0.017790168354020787
+  },
+  "E2_SW_WATER_ANCHORED_90C_UP_axial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498622330556533,
+    "terminal_beverage_kg": 0.01746004886061018
+  },
+  "E2_SW_WATER_ANCHORED_90C_UP_base": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499374537126829,
+    "terminal_beverage_kg": 0.01745866628921884
+  },
+  "E2_SW_WATER_ANCHORED_90C_UP_property": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499353784493859,
+    "terminal_beverage_kg": 0.01745870443005472
+  },
+  "E2_SW_WATER_ANCHORED_90C_UP_temporal": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9500466585473833,
+    "terminal_beverage_kg": 0.01745665947118622
+  },
+  "E2_TR_LINEAR_DOWN_axial": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8061411420819615,
+    "terminal_beverage_kg": 0.020959549287315894
+  },
+  "E2_TR_LINEAR_DOWN_base": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8061121274381116,
+    "terminal_beverage_kg": 0.020960303690874815
+  },
+  "E2_TR_LINEAR_DOWN_temporal": {
+    "B_star_kg": 0.016896355,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.806037891649744,
+    "terminal_beverage_kg": 0.020962234127005715
+  },
+  "E2_TR_LINEAR_UP_axial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8315128460326094,
+    "terminal_beverage_kg": 0.019945141051193816
+  },
+  "E2_TR_LINEAR_UP_base": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.83143345310202,
+    "terminal_beverage_kg": 0.019947045597123698
+  },
+  "E2_TR_LINEAR_UP_temporal": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8315851515217002,
+    "terminal_beverage_kg": 0.0199434068413224
+  }
+}

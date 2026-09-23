@@ -60,7 +60,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1453,
+    "python_test_count": 1552,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -80,8 +80,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1203,
-    "source_manifest_aggregate_sha256": "6a254e53d4f2a793e960ecf2b6bebeb10dd3d078da670e4ab1b1855c1deb57aa",
+    "source_manifest_file_count": 1232,
+    "source_manifest_aggregate_sha256": "c1f5c0987e0de69d56912ef1ba745087c08a84daa775828c8293df13ff87505f",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -160,7 +160,18 @@
       },
       "final_candidate_verification": "Exact-head complete-suite counts, hosted checks and review are recorded in PR #150 closeout evidence; historical_test_record is preserved history."
     },
-    "python_test_count_role": "DISCOVERED_NOT_EXECUTED; exact-candidate execution counts are in PR #150 closeout evidence"
+    "python_test_count_role": "DISCOVERED_NOT_EXECUTED; exact-candidate execution counts are in PR #150 closeout evidence",
+    "sci_md_rheology_009": {
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "compatibility": "QUALIFIED",
+      "primary_decisions_pass": 24,
+      "primary_decisions_total": 24,
+      "python_tests": 1552,
+      "python_skipped": 5,
+      "independent_prescoring_audit": "PASS",
+      "physical_validation": "NOT_ESTABLISHED",
+      "final_exact_head_review": "SEPARATE_PR_STATUS"
+    }
   },
   "sci_ed_002_r2b": {
     "scientific_protocol_disposition": "SCI_ED_002_PROTOCOL_INCOMPLETE_COMMISSIONING_BLOCKED_REFERENCE_EXTRACTABILITY_STOPPING_RULE_NOT_DEFENSIBLY_FROZEN",

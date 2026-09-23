@@ -44,12 +44,13 @@ history, not a current collection-wide absence claim.
 
 ## RHEOLOGY-009 assessment
 
-The inspected open [PR #166](https://github.com/trbrewer/espresso-whole-pull/pull/166)
+The initially inspected [PR #166](https://github.com/trbrewer/espresso-whole-pull/pull/166)
 at `ef2be8a3293bdcdf7771037edb0502ae4ca76c31` already reports implemented
 pressure-history compatibility and all 24 E2 transfer decisions passing against
-its source-conditioned computational C reference. It is **unmerged**, distinct
-from this task's EWP main base `3960b4a`. Its proposed question has therefore
-progressed beyond a proposal, but this task does not adopt or re-run it.
+its source-conditioned computational C reference. It was unmerged at this task's starting EWP base `3960b4a`, then merged independently
+as `dd05d3dd8dd8f690941f22e1583acf2026a23955` during this inventory. The guide branch
+incorporates that accepted main commit to resolve package-metadata conflicts.
+This task neither executed nor selected that scientific work.
 
 This census does **not materially change that task's rationale**. It confirms
 existing rheology sources and machine histories, but discovers no qualified

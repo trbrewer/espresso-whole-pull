@@ -1,0 +1,7 @@
+{
+  "full_starts": 0,
+  "native_reruns": 0,
+  "reason": "Independent audit: bind transitive templates, field reader, runtime libraries and executable tools; validate support receipt and recompute from complete C; add tamper mutations.",
+  "superseded_freeze_sha256": "799973076f203a31af51dd8dbfbb91e09e8931aec878eb6c7784f62ebbcd2b83",
+  "unchanged_short_evidence_sha256": "e2302308be71f9a8178f646ba7fc3dd539273802979a6ea475f9c38a1d017204"
+}

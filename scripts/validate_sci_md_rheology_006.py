@@ -15,11 +15,15 @@ def inspect(root):
             or set(amendment['files'])!={'tools/sci_md_rheology_006/analyze.py'}):
             errors.append('invalid bounded analysis amendment')
         else:amendments=amendment['files']
+    successor=root/'docs/analysis/sci_md_rheology_009/FREEZE.json'
+    active=json.loads(successor.read_text()) if successor.exists() else None
     for path,digest in freeze['files'].items():
         if path in amendments:
             if amendments[path]['original_sha256']!=digest:errors.append('wrong amendment parent '+path)
             digest=amendments[path]['amended_sha256']
-        if sha((root/path).read_bytes())!=digest:errors.append('active frozen file changed: '+path)
+        historical = subprocess.check_output(['git','show','3960b4a9c4b05aa3f3cdec1dade33eb16c485d24:'+path],cwd=root) if active else (root/path).read_bytes()
+        if sha(historical)!=digest:errors.append('accepted frozen file changed: '+path)
+        if active and path in active['files'] and sha((root/path).read_bytes())!=active['files'][path]:errors.append('active frozen file changed: '+path)
     if freeze['governance']!='G2' or freeze['change_declaration']!='GOVERNING_PHYSICS_CHANGE':errors.append('declaration')
     base=freeze['starting_commit']
     paths=subprocess.check_output(['git','ls-tree','-r','--name-only',base,'docs/analysis','config','dependencies/puckworks.lock.json'],cwd=root,text=True).splitlines()

@@ -12,12 +12,22 @@ def contract(s):
     if mode not in ('observe', 'coupled', 'bulkCoupled'):
         raise ValueError('unsupported aggregate viscosity mode')
     h, b, l = s['hydraulics'], s['coffee_bed'], s['liquid']
-    if (h.get('pressure_boundary_model', s.get('pressureBoundaryModel', 'prescribedPressure')) != 'prescribedPressure'
+    boundary = h.get('pressure_boundary_model', s.get('pressureBoundaryModel', 'prescribedPressure'))
+    history = boundary == 'prescribedPressureHistory'
+    if history:
+        # Reuse the native case-parser contract; no scalar target/ramp fabrication.
+        from scripts.prepare_case import pressure_history_contract
+        schedule = pressure_history_contract(s)
+        if (mode == 'bulkCoupled'
+            or h.get('permeability_profile', {}).get('type') != 'radial_two_zone'
+            or not all(p > h['outlet_pressure_gauge_Pa'] for p in schedule['pressures_gauge_Pa'])):
+            raise ValueError('history viscosity requires local radial flow above outlet pressure')
+    if (boundary not in ('prescribedPressure', 'prescribedPressureHistory')
         or s.get('flowResistanceModel', 'darcy') != 'darcy'
         or s.get('bedMechanicsModel', 'none') != 'none'
         or 'effective_permeability_evolution' in s
-        or h.get('pressure_ramp_time_s') != 0
-        or not h['target_inlet_pressure_gauge_Pa'] > h['outlet_pressure_gauge_Pa']
+        or (not history and (h.get('pressure_ramp_time_s') != 0
+            or not h['target_inlet_pressure_gauge_Pa'] > h['outlet_pressure_gauge_Pa']))
         or h.get('permeability_profile', {}).get('type', 'uniform') not in (('uniform', 'axial_two_layer') if mode == 'bulkCoupled' else ('uniform', 'axial_two_layer', 'radial_two_zone'))
         or s['wetting']['initial_wet_front_m'] != b['bed_depth_m']
         or s['wetting']['initial_saturation'] != 1
@@ -30,7 +40,9 @@ def contract(s):
         radius = s['geometry']['basket_radius_m']
         interface = profile['interface_radius_m']
         n = s['geometry']['radial_cells']
-        values = (radius, interface, profile['inner_permeability_m2'], profile['outer_permeability_m2'], h['target_inlet_pressure_gauge_Pa'], h['outlet_pressure_gauge_Pa'])
+        values = (radius, interface, profile['inner_permeability_m2'], profile['outer_permeability_m2'], h['outlet_pressure_gauge_Pa'])
+        if not history:
+            values += (h['target_inlet_pressure_gauge_Pa'],)
         if not all(math.isfinite(v) for v in values) or not 0 < interface < radius or min(values[2:4]) <= 0:
             raise ValueError('invalid radial aggregate geometry/permeability/pressure')
         if s['geometry'].get('radial_grading', 1) != 1 or abs(interface/radius*n-round(interface/radius*n)) > 1e-10:

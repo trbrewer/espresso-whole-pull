@@ -1,0 +1,38 @@
+{
+  "XSV_history": {
+    "receipt_sha256": "8196faa1b7339e5588ca0efda337da9fe84c1abf41e5b8196d47cb3c70bae93e",
+    "status": "PASS"
+  },
+  "focused": {
+    "log_sha256": "6684d61331f97e093cc39901287876a38534f62c2b47852b403f3e8743ecbb5d",
+    "status": "PASS",
+    "tests": 57
+  },
+  "historical_baseline": {
+    "receipt_sha256": "982d4fa488835ff6c0ccfe7930db958f6f80f05e74143dcb326c01b028a927fe",
+    "status": "PASS"
+  },
+  "historical_change": {
+    "receipt_sha256": "07d82a998a116bfe25463d4484025b0c4a5b3906bd703a2d11949dd65e34f13d",
+    "status": "PASS"
+  },
+  "initial_QA_failure": "Full suite started during implementation edits lacked pinned test-authority environment; source manifest/stability checks failed and old bulk rejection test did not accept native parser SystemExit. Rerun on stable worktree with pinned authority passed. No native reruns or scientific changes.",
+  "initial_log_sha256": "f46963f5c0c69be622282dba5fd9ccad7e1dba3fe350f0b0216ab15316fe087f",
+  "json": "PASS",
+  "private_path_secret_scan": "PASS",
+  "python": {
+    "log_sha256": "5a13a4d6b0ae92e305e68406b3a03b831e0ddabc78d75f7d9f9c7b1335d70149",
+    "skipped": 5,
+    "status": "PASS",
+    "tests": 1552
+  },
+  "release": {
+    "receipt_sha256": "0c0f40bc9098c54bd733519b0237fc1023fb232283b986087721a44da4fdb92f",
+    "status": "PASS"
+  },
+  "shell": "PASS",
+  "static": {
+    "log_sha256": "43eb2dfb691dbc61d12c59b0e5b4ebea4e6699f915375719c41732318358786c",
+    "status": "PASS"
+  }
+}

@@ -1,5 +1,23 @@
 # Claim Ceiling
 
+## SCI-MD-RHEOLOGY-009 pressure-history transfer (2026-09-22)
+
+G2 / NO_GOVERNING_PHYSICS_CHANGE, production boundary/coupling compatibility;
+IMPLEMENTED_AND_EXECUTED. [Result](analysis/sci_md_rheology_009/RESULT.md):
+PRESSURE_HISTORY_LOCAL_VISCOSITY_COMPATIBILITY_QUALIFIED and
+E2_PRESSURE_HISTORY_TRANSFER_SUFFICIENT_FOR_TESTED_OUTPUTS. All 24 decisions
+PASS for frozen UP/DOWN, both laws and fixed reference-only mass support
+(UP 0.016584641 kg; DOWN 0.016896355 kg); every required trace reaches support.
+48 task full + 14 short + 6 separately counted off-mode regression runs completed,
+plus 16 expected native startup rejections; zero native failures or recovery runs.
+One post-run short QA failure was corrected without reexecution. Pre-scoring
+independent agent audit PASS; final exact-head review/CI remain separate PR #166
+statuses. Existing constitutive laws, temporal ordering, defaults, Puckworks and
+production lock are unchanged. Accepted constant-pressure scope is preserved.
+No arbitrary-history/geometry/whole-shot-beyond-support or physical-validation
+claim; PHYSICAL_VALIDATION is NOT_ESTABLISHED. No merge, adoption, rescue or
+successor is authorized.
+
 ## SCI-MD-RHEOLOGY-005 autonomous bulk-state viscosity (2026-09-22)
 
 G2 / `GOVERNING_PHYSICS_CHANGE`; `IMPLEMENTED_AND_EXECUTED`.

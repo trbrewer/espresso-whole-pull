@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "scope": "Independent pre-scoring audit of bounded G2 contract, implementation, short qualification and execution gates; not full compatibility or scientific transfer qualification.",
+  "reviewer_identity": "/root/prescoring_audit",
+  "reviewer_role": "Separate reviewer agent; not implementation author; no production/tool edits, native runs, full-run outputs, or scientific scoring performed by reviewer.",
+  "independence_limit": "Independent agent review within the same collaborative task, not an external human review. Final ordinary exact-head review remains required.",
+  "freeze_sha256": "2c9ed0725d273f11daf9a75c1f4e1af209c75dcfef4cbbc8d1ee89fb097ff432",
+  "repository_head_at_review": "70be1f66623f9074f8944b2052ed98c24d2f6ad3",
+  "binding": "Exact frozen file hashes include reviewed changes beyond repository HEAD; audit binds FREEZE SHA256, not an assertion that HEAD includes those files.",
+  "baseline_commit": "3960b4a9c4b05aa3f3cdec1dade33eb16c485d24",
+  "baseline_tree": "5b262e92a2d0f7ec5e3051bfa6671f9ac0d07fd8",
+  "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+  "short_ledger_sha256": "ca16ed0875e2505b99b9d044f0c57e7aad64df139a00934ed5700fcaab47b228",
+  "checks": [
+    "Verified minimum accepted baseline tree and fetched origin/main identity; no intervening main commits.",
+    "Reviewed narrow Python/C++ admission changes: local radial history only, legacy positivity bypassed only for history and schedule knots checked above outlet; native parser and state/pressure update ordering unchanged.",
+    "Verified all frozen local/external file hashes, actual recorded runtime library/tool hashes, source tables/source hashes and eight accepted native reference hashes.",
+    "Verified 14 short COMPLETE manifests and every stored file hash; independently reran native admissibility and exact serialized pressure/end-time joins on all 14 traces.",
+    "Verified 16 rejection logs and hashes: fatal startup with no native time stepping.",
+    "Reviewed analytical, endpoint-versus-continuous quadrature, serial-repeat, MPI interface, native geometry and field/inventory checks. Maximum reported analytical relative error 5.374145573000533e-12; pressure-integral quadrature discrepancy +6000 or -6000 Pa s as prescribed.",
+    "Independently executed 51 passing tests from tests.test_sci_md_rheology_007, 008 and 009, including correction mutation tests.",
+    "Verified 18 C plus 14 E2 primary, 16 controls, 14 shorts, six separate off-mode regressions; no full/regression slots started at review.",
+    "Reviewed support from exact 18 qualified C variants, nine per history; Decimal downward rounding; receipt/freeze/C-trace verification and deterministic recomputation before E2 and scoring.",
+    "Reviewed six metrics, union-of-breakpoints conservative delivery, independent 50-digit arithmetic, refinement allowance components, strict budgets and unresolved rules; no E2 disagreement included in allowance.",
+    "Reviewed stage order, audit gate, compatibility prerequisite, bounded attempt ceilings, failure preservation, and no defaults/adoption/successor authorization."
+  ],
+  "resolved_findings": [
+    "Bound transitive case templates and independent field parser.",
+    "Verify actual runtime libraries and execution tool identities, not only runtime receipt.",
+    "Validate sealed support receipt and recompute from full qualified C evidence; test paired shortening.",
+    "Added dependency tamper mutation tests.",
+    "Handle unavailable delivery metric values in review figures.",
+    "Documented inherited pressure integration metadata as wetting-only; native saturated endpoint convention unchanged."
+  ],
+  "remaining_gates": [
+    "16 full-length compatibility controls and six affected regression runs",
+    "18 qualified C runs, sealed reference-only support, then 14 E2 runs",
+    "All 24 scientific decisions and admissibility evidence",
+    "Required repository QA/CI and final ordinary exact-head review"
+  ],
+  "compatibility_verdict_at_audit": "NOT_YET_QUALIFIED_FULL_CONTROLS_PENDING",
+  "transfer_verdict_at_audit": "NOT_EXECUTED",
+  "physical_validation": "NOT_ESTABLISHED"
+}
