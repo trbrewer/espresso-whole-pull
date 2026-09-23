@@ -1,6 +1,6 @@
 # External espresso data — EWP use map
 
-Start with the canonical [Puckworks espresso data guide](https://github.com/trbrewer/puckworks/blob/docs/data-corpus-guide-001/docs/data/ESPRESSO_DATA_GUIDE.md).
+Start with the canonical [Puckworks espresso data guide](https://github.com/trbrewer/puckworks/blob/main/docs/data/ESPRESSO_DATA_GUIDE.md).
 It describes the external collection, inspected subsets, source rights and local
 resolver commands. Puckworks owns dataset identity/provenance/capabilities/rights;
 EWP owns compatibility, consumption history and decision-specific use.
@@ -9,15 +9,25 @@ EWP owns compatibility, consumption history and decision-specific use.
 31,503 files / 4,482,119,523 apparent bytes; 39 registered source families found.
 Content identity: `f46181ee8c461fab055b73511148dd26888c7c5b3cb1bc908aad6ab9db2bb766`.
 Inspected Puckworks base: `2058d0e947ee9eb92c52d64f6165b810f1fb4732`;
-public guide candidate: [`57187b8b36d51d6421d89e21a90be96531bbafa2`](https://github.com/trbrewer/puckworks/blob/57187b8b36d51d6421d89e21a90be96531bbafa2/docs/data/ESPRESSO_DATA_GUIDE.md)
+original inspected guide candidate: [`57187b8b36d51d6421d89e21a90be96531bbafa2`](https://github.com/trbrewer/puckworks/blob/57187b8b36d51d6421d89e21a90be96531bbafa2/docs/data/ESPRESSO_DATA_GUIDE.md)
 (tree `83b6e121afb67573d43bd17467911f38dfd98be8`).
 Read the guide for structural coverage, protected exclusions and private lookup.
 
 This discovery pointer is separate from the historical accepted receipt in
 [AVAILABLE_DATA_AUTHORITY](../provenance/AVAILABLE_DATA_AUTHORITY.json) and the
 production-qualified Puckworks dependency lock. Neither is advanced by this task.
-The guide branch must merge before replacing the live guide link with `main`;
-the immutable candidate link remains the inspected version.
+Puckworks PR #265 published the final reviewed guide as squash commit
+[`518fb9c480dbcef475789f48f25843238ff8a9d4`](https://github.com/trbrewer/puckworks/blob/518fb9c480dbcef475789f48f25843238ff8a9d4/docs/data/ESPRESSO_DATA_GUIDE.md),
+tree `7519f4794b63a04bcfc4be6888e979c96faeee8a`, identical to the final reviewed
+candidate `57573ddaf9145f47d7509d3e809d9edc8210e402`. The bounded final corrections
+clarify mismatch/exception records and Schulman's structural parse; the corpus
+snapshot identity is unchanged. The `main` link is current navigation, not an
+immutable scientific reference. Original inspected and final published identities
+remain distinct from the production-qualified pin.
+
+This reference update descends from the initial EWP guide candidate
+`38e23c008d3e38c479e1e4d7bda6c6a0de198092` (tree
+`8d99ce6e11f9c9d00021303c0ec219a69ef40e7b`).
 
 | EWP question | Puckworks dataset/subset | Prior use, current opportunity and limits |
 |---|---|---|
@@ -64,6 +74,7 @@ calibration, solver run or scientific adjudication is authorized by this guide.
 ## Delivery and review boundary
 
 DATA-CORPUS-GUIDE-001 is G0 / `NO_GOVERNING_PHYSICS_CHANGE`. The scientific files,
-production lock and accepted authority receipts are unchanged. Merge Puckworks
-first, then update this current-discovery link to its merged guide and merge EWP.
-An unmerged branch does not change instructions inherited by future main readers.
+production lock and accepted authority receipts are unchanged. Puckworks is
+published first; this EWP update installs current navigation to its merged guide.
+The PR closeout records EWP publication separately. No scientific successor is
+authorized.

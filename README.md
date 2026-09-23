@@ -2,7 +2,7 @@
 
 ## External espresso data — start here
 
-Read the [canonical Puckworks espresso data guide](https://github.com/trbrewer/puckworks/blob/docs/data-corpus-guide-001/docs/data/ESPRESSO_DATA_GUIDE.md)
+Read the [canonical Puckworks espresso data guide](https://github.com/trbrewer/puckworks/blob/main/docs/data/ESPRESSO_DATA_GUIDE.md)
 and the [EWP use map](docs/EXTERNAL_ESPRESSO_DATA.md) before proposing scientific work. Identify relevant
 dataset IDs, inspect capabilities and prior-use limits, and say whether files were
 actually inspected or only catalog metadata was available. Known external data
