@@ -1,0 +1,12 @@
+{
+  "classification": "G0_STATIC_TEST_INTEGRATION_ONLY",
+  "reason": "Add 010 to existing scientific NumPy test allowlist; no historical test exemption changed.",
+  "original_freeze_sha256": "c7e2c3bf3dd7645d39eed56c523c556c809d194259fc1bf9d91a51307f460999",
+  "corrected_freeze_sha256": "518920beb697fc93ea6279018df709dadf7520e45086be499697bbea9a6a27f9",
+  "changed_file": "scripts/static_validate.py",
+  "old_sha256": "f767f3a74a34f47725351c488aafd6a9aa7ddeb2a05617834f52afd18c149ef5",
+  "new_sha256": "c1eaa98b60d50ec347bcf2515142d06bfe7f1a4b780b9366416e1e480d3104ef",
+  "scientific_inputs_observers_matrix_thresholds_unchanged": true,
+  "full_native_launches": 0,
+  "original_freeze_retained_external": true
+}
