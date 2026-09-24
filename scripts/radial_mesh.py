@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Explicit conforming two-zone wedge mesh; legacy scenarios are untouched."""
 import math
 
