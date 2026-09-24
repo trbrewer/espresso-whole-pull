@@ -1,0 +1,83 @@
+{
+  "all_analyte_adequacy_two_rate_and_phi_decisions": "NOT_ADJUDICATED",
+  "analytes": [
+    "Caffeine",
+    "3-CQA",
+    "Citric Acid",
+    "Malic Acid",
+    "Quinic Acid"
+  ],
+  "blocker": "B/C replicate-specific selected-maximum normalization lineage and selection uncertainty unresolved; marginal summaries cannot reconstruct the operator",
+  "consumer_base": {
+    "commit": "3ca164871cb4cdfdd2958f1ef34c6e62a8d8bb35",
+    "tree": "329dac55b06f2a946c4b0a746ba5b83ecea68a8c"
+  },
+  "declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "development_decision": "Retain existing implementation; no coupling change earned; no kinetic family rejected",
+  "early_comparative_values": 75,
+  "executed_folds": 0,
+  "governance": "G1",
+  "hosted_ci": "SEPARATE_LIVE_PR_STATUS",
+  "late_replicate_means": 30,
+  "local_qa": {
+    "ewp_initial_suite": {
+      "class_setup_errors": 1,
+      "failures": 2,
+      "run": 1572,
+      "skipped": 9
+    },
+    "ewp_recovery": "21 authority-configured tests passed; package-manifest metadata check passed; initial logs preserved",
+    "puckworks_existing_maille_plus_task_distinct_tests": 65,
+    "puckworks_existing_quick_suite": {
+      "deselected": 65,
+      "passed": 4571,
+      "skipped": 33
+    },
+    "puckworks_task_tests": 26,
+    "scientific_hypothesis": "NOT_TESTED",
+    "source_static_historical_active_boundaries": "PASS"
+  },
+  "material_analyte_curves": 15,
+  "material_groups": 3,
+  "native_builds": 0,
+  "native_integrations": 0,
+  "observed_cells": 105,
+  "optimizer_attempts": 0,
+  "physical_validation": "NOT_ESTABLISHED",
+  "planned_material_folds": 3,
+  "predictions": 0,
+  "private_export_hashes": {
+    "RESULT.json": "5f8e3dd55de68e53e4010bacfb31b60d95b110914298cf0fe79bd5ba13d7b1d1",
+    "analysis_view.csv": "6373b31bc1e363806fcc09d1503949268ea884c87cccb7dbb6f0d54d722ffdbc",
+    "reference_summaries.csv": "56591d243a791b56962da50749d0ad8c4e795adf529fc3fe27a4860ac5f83d74"
+  },
+  "producer": {
+    "base_commit": "1648fa095f1aca133616b8a4bb07dcae569a91d2",
+    "base_tree": "df57a459b9b40e4e7adb5a026502da37eee5a974",
+    "commit": "66b018e946f58ec99f4f510238a1926cf04855cf",
+    "files_sha256": {
+      "docs/analysis/sci_md_maille_transfer_001/AUDIT.json": "83ac8f2dec071644a8b8d878965045d372b7e8950931bb33fcc90f9df6086e03",
+      "docs/analysis/sci_md_maille_transfer_001/RESULT.json": "5f8e3dd55de68e53e4010bacfb31b60d95b110914298cf0fe79bd5ba13d7b1d1",
+      "docs/analysis/sci_md_maille_transfer_001/RESULT.md": "0704745b3e1960b220a5d7921b433f7a06fac95c0ed566b8af57c53b35a70b2f",
+      "puckworks/analysis/maille_transfer.py": "c99734b08ae2ee0ff307792bed8e0bde93c73954ff7b81b89d8846a430799744",
+      "tests/test_maille_transfer.py": "04fad9e52f29885c883b38f294241de807f4660e0d8b6d6005eab1f52eca4b7d",
+      "tools/analyze_maille_transfer.py": "83129cf48e6f5db55547516e52da1f51256630dbfdb7b34e678f98d1365ccaa3"
+    },
+    "repository": "https://github.com/trbrewer/puckworks",
+    "tree": "f806e8d4dfc8cf7a0efe323d919536d1e6e7b221"
+  },
+  "production_runtime_lock": {
+    "changed": false,
+    "path": "dependencies/puckworks.lock.json",
+    "sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10"
+  },
+  "qualified_scoring_cells": 0,
+  "reproduce_at_producer": "python tools/analyze_maille_transfer.py --output /tmp/maille-transfer-audit",
+  "reviews": {
+    "independent_final": "EXTERNAL_EXACT_HEAD_RECEIPT_CONTROLS_SEE_PR_270_AND_EWP_176",
+    "pre_scoring": "NOT_REACHED_SOURCE_GATE_STOP"
+  },
+  "scientific_verdict": "BLOCKED_SOURCE_CONTRACT",
+  "successor_execution_authorized": false,
+  "task": "SCI-MD-MAILLE-TRANSFER-001"
+}
