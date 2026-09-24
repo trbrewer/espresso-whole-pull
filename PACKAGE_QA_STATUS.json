@@ -60,7 +60,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1586,
+    "python_test_count": 1592,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -191,6 +191,23 @@
       "independent_prescoring_audit": "PASS",
       "full_suite_and_final_review": "EXACT_HEAD_PR_HANDOFF_REQUIRED",
       "physical_validation": "NOT_ESTABLISHED"
+    },
+    "sci_md_smrke_transfer_001": {
+      "status": "IMPLEMENTED_AND_EXECUTED_IN_PUCKWORKS_HANDOFF_COMPLETE",
+      "common_time_response": "TESTED_COMMON_MODELS_INADEQUATE",
+      "fines_covariate_increment": "NO_MATERIAL_GAIN_FOR_TESTED_CORRECTIONS",
+      "independent_prescoring_audit": "PASS_IN_PUCKWORKS",
+      "local_tests_run": 1592,
+      "local_tests_passed": 1583,
+      "local_tests_skipped": 9,
+      "local_tests_failed": 0,
+      "static_gates_passed": 39,
+      "source_manifest_files": 1310,
+      "native_integrations": 0,
+      "native_builds": 0,
+      "production_defaults_and_lock": "UNCHANGED",
+      "physical_validation": "NOT_ESTABLISHED",
+      "hosted_ci": "SEPARATE_LIVE_PR_STATUS"
     }
   },
   "sci_ed_002_r2b": {
