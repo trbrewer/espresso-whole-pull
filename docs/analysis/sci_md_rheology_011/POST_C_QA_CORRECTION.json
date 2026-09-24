@@ -4,6 +4,7 @@
     "Restore legacy viscosity-off empty/missing geometry acceptance; explicit radial_mesh validation unchanged.",
     "Short command now emits its required geometry qualification receipt, previously generated with a separate read-only call."
   ],
+  "independent_review": "AUDIT.json",
   "native_at_correction": {
     "C": 18,
     "E2": 0,
@@ -248,5 +249,5 @@
   "science_inputs_tables_executable_runtime_observer_metrics_thresholds_unchanged": true,
   "short_qualification_unchanged": true,
   "source_native_fields_unchanged": true,
-  "status": "PENDING_INDEPENDENT_DELTA_REVIEW"
+  "status": "PASS_INDEPENDENT_DELTA_REVIEW"
 }

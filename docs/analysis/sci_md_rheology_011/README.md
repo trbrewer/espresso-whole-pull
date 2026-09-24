@@ -28,6 +28,7 @@ python3 -m tools.sci_md_rheology_011.analyze --artifacts "$ART" --stage primary
 python3 -m tools.sci_md_rheology_011.run --artifacts "$ART" --stage E2 --workers 4
 python3 -m tools.sci_md_rheology_011.analyze --artifacts "$ART" --stage analyze
 python3 -m tools.sci_md_rheology_011.plot --artifacts "$ART"
+python3 -m tools.sci_md_rheology_011.layout
 ```
 
 Support/primary seals are immutable. The E2 launcher checks both their hashes
@@ -40,3 +41,7 @@ or integration commands to recover missing reference artifacts.
 Historical A is exactly 18 009 C traces; no historical support is changed.
 This is computational numerical qualification, not experimental validation.
 Final exact-head independent review and hosted CI are separate dispositions.
+
+The final layout-only redraw moves overlapping area labels into a legend. It
+was added after scoring; frozen preparation, native evidence, scoring code,
+thresholds and support/primary seals are unchanged.
