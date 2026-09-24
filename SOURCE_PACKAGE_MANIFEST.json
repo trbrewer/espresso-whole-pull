@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1314,
-  "total_uncompressed_bytes_excluding_manifest": 22322561,
-  "aggregate_source_sha256": "5338d03a4dde12e526035a126e05d6cbab9af0fe89be692b0ffbfcedaed25ea7",
-  "aggregate_sha256": "5338d03a4dde12e526035a126e05d6cbab9af0fe89be692b0ffbfcedaed25ea7",
+  "total_uncompressed_bytes_excluding_manifest": 22322560,
+  "aggregate_source_sha256": "e9fd4a62ca3658c4db214d384704f8239f6b81f6c2d71b6b6480e45afd9b03e9",
+  "aggregate_sha256": "e9fd4a62ca3658c4db214d384704f8239f6b81f6c2d71b6b6480e45afd9b03e9",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "b561ff58b82edcca2ce85d7356aea654d45c6381f1edb3e3bc7187c9c2dfa120",
-      "bytes": 19174,
+      "sha256": "a02112063432d8b5e451bd7c60b646ea19defef0a214a3526b6db0ea969227b9",
+      "bytes": 19173,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
