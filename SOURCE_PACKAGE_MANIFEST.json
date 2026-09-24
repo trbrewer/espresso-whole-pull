@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1297,
-  "total_uncompressed_bytes_excluding_manifest": 21572004,
-  "aggregate_source_sha256": "1617dde07c78a03d190ee57d1c472e22edbeead1eac72855104923828208ad51",
-  "aggregate_sha256": "1617dde07c78a03d190ee57d1c472e22edbeead1eac72855104923828208ad51",
+  "file_count": 1307,
+  "total_uncompressed_bytes_excluding_manifest": 22261780,
+  "aggregate_source_sha256": "6b7755a64f7886ccca897627c39fd40cdf66003cd1e868840f596461efe03255",
+  "aggregate_sha256": "6b7755a64f7886ccca897627c39fd40cdf66003cd1e868840f596461efe03255",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "b19009ef07c10d40dee49b42e1130bc2cf849a78a934c6862050c2bffc4a330e",
-      "bytes": 15906,
+      "sha256": "bfd894d9327b8754fd3985685d8960d7414b2dcff573ed097b5e012d37312ce3",
+      "bytes": 16672,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2281,6 +2281,51 @@
     "docs/analysis/sci_md_pannusch_flow_history_001/summary.json": {
       "sha256": "b808aa2ef0a0c6b4279fde7e14fc026dc2caaab884416a6b3f6678b988d936c5",
       "bytes": 964,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_radial_obs_001/ANALYSIS_SOURCE.json": {
+      "sha256": "9f4c7b611ce1f1166c59540e84d5cadd7352a10c67cc9469563b0815d6e62147",
+      "bytes": 512,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_radial_obs_001/AUDIT.json": {
+      "sha256": "23323491b305a34a8c9169aca3e938e60d717aa43e328afb9ef55f52a18c4cf2",
+      "bytes": 7744,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_radial_obs_001/CONTRACT.json": {
+      "sha256": "e33301e3c402b14d4fd9ebdf07669510844fe96ac4cf056902cc5c6536607285",
+      "bytes": 25077,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_radial_obs_001/README.md": {
+      "sha256": "3375920a578d3c24e5007c1dad6965539a42f57d11a0c1e3afc9db05ce9eba80",
+      "bytes": 2317,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_radial_obs_001/RESULT.json": {
+      "sha256": "c2993bf61435ddca301d8dda4ddd90a99f860a67a9e21368a3753d86448d0422",
+      "bytes": 463634,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_radial_obs_001/RESULT.md": {
+      "sha256": "54981063479a9bb0c72c23ffaf3db6cc2245bbd359b07e48b74e8ce49672cbfd",
+      "bytes": 5016,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_radial_obs_001/compartments.svg": {
+      "sha256": "565883e3211fa9f8e79b6c9f5679ee394e944134a90a63ade810cfb0ba8ed042",
+      "bytes": 57820,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_radial_obs_001/composite.svg": {
+      "sha256": "fafc3e00a673202cd34c553d62b43c1ad166fd32bd2c726c8b848dea8f5c3219",
+      "bytes": 60230,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_radial_obs_001/conditional.svg": {
+      "sha256": "ad881d04f70bdeed3e9d30a5980e8ba0c3576dec56fdd903e4463c5cee2d562f",
+      "bytes": 62819,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/AUDIT.json": {
@@ -5164,8 +5209,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "3c88068d1d71de50021a75011a4b58616c0c1fb9ef7a2655de9bd009558ebb5d",
-      "bytes": 32649,
+      "sha256": "7c3b8c423fe3ea6757e359b7ed4af036801a43b6e6ac1083f7e68c02b987c5b2",
+      "bytes": 32688,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
@@ -5796,6 +5841,11 @@
     "tests/test_sci_md_pannusch_flow_history_001.py": {
       "sha256": "a2c01068882567cddf25d300e12f5ca28d8321d1e16a77e324fa33b9ba79fd5b",
       "bytes": 2894,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_radial_obs_001.py": {
+      "sha256": "f2338079241730f4195356c516c3155b5fc30ee989e77b30f841368149a2e00c",
+      "bytes": 3802,
       "git_mode": "100644"
     },
     "tests/test_sci_md_rheology_001.py": {

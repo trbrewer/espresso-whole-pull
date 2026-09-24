@@ -736,7 +736,7 @@ def main() -> None:
         # These scientific tests explicitly exercise NumPy observer arithmetic;
         # CI installs the pinned numerical environment. Production scripts retain
         # the standard-library entrypoint rule.
-        scientific_test = path.relative_to(root).as_posix() in ("tests/test_sci_md_rheology_005.py", "tests/test_sci_md_rheology_006.py", "tests/test_sci_md_rheology_007.py", "tests/test_sci_md_rheology_008.py", "tests/test_sci_md_rheology_009.py", "tests/test_sci_md_rheology_010.py", "tests/test_sci_md_rheology_011.py")
+        scientific_test = path.relative_to(root).as_posix() in ("tests/test_sci_md_rheology_005.py", "tests/test_sci_md_rheology_006.py", "tests/test_sci_md_rheology_007.py", "tests/test_sci_md_rheology_008.py", "tests/test_sci_md_rheology_009.py", "tests/test_sci_md_rheology_010.py", "tests/test_sci_md_radial_obs_001.py", "tests/test_sci_md_rheology_011.py")
         if third_party_re.search(text) and not scientific_test:
             third_party.append(str(path.relative_to(root)))
         if write_text_newline_re.search(text):

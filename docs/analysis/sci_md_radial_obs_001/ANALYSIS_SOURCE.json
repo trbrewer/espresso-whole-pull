@@ -1,0 +1,10 @@
+{
+  "role": "TASK_LOCAL_ANALYSIS_SOURCE_NOT_PRODUCTION_DEPENDENCY",
+  "repository": "https://github.com/trbrewer/puckworks",
+  "commit": "fbac78029a9179e3af271652787633c93ef83e0b",
+  "tree": "2ae9fe673ddcdb8638e3a41370bf6ffa1fb87a00",
+  "module": "puckworks/analysis/pocketscience2024_assay.py",
+  "module_sha256": "9e0bb78814d2f4ff97f85b914a2f42a011a1b14c2ffbeed8aa7521373d1e5487",
+  "production_lock": "UNCHANGED",
+  "source_result_sha256": "36994ebfde27162ccf465b41ec37f0a7242f2a7433331ee1bcb468aec0a6e3fd"
+}

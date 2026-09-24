@@ -1,5 +1,19 @@
 # Project State
 
+## SCI-MD-RADIAL-OBS-001 source assay diagnostic (2026-09-24)
+
+G1 / NO_GOVERNING_PHYSICS_CHANGE. [Result](analysis/sci_md_radial_obs_001/RESULT.md):
+32 illustrative evaluations of 16 retained 010 base snapshots are COMPLETE.
+Puckworks reconstructs the sheet-specific source calculation; forward mapping
+is CONDITIONAL. Operational recoverable-solute contrasts remain usable, while
+radial solid depletion requires explicit retained-liquid, recovery/handling and
+initial-inventory assumptions. No source-EWP fit or new spatial-transfer
+qualification. Old E2 remains historical evidence. Native integrations/builds=0;
+production defaults/lock unchanged; physical validation NOT_ESTABLISHED.
+Linked task PRs remain open/unmerged; no successor is authorized.
+
+
+
 ## SCI-MD-RHEOLOGY-011 distribution-preserving relocation (2026-09-24)
 
 G2 / GEOMETRY_COMPATIBILITY_NO_GOVERNING_PHYSICS_CHANGE; IMPLEMENTED_AND_EXECUTED.
