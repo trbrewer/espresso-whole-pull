@@ -7,8 +7,9 @@ BLOCKED_SOURCE_CONTRACT. The adapter audited 105 empirical tabulations, but
 replicate-specific selected-maximum normalization remains unresolved. Zero
 folds, fits or predictions; adequacy, two-rate gain and source-phi increment
 are NOT_ADJUDICATED for all five analytes. Retain current implementation;
-no kinetic family is rejected. Independent final review is pending. Native
-builds/integrations=0; defaults/runtime lock unchanged. Await owner disposition;
+no kinetic family is rejected. Independent final review outcome and exact reviewed
+identities are controlled by the external receipt linked from PR #176 and
+Puckworks PR #270. Native builds/integrations=0; defaults/runtime lock unchanged. Await owner disposition;
 linked PRs remain open/unmerged and no successor execution is authorized.
 
 ## SCI-MD-SMRKE-TRANSFER-001 endpoint analysis (2026-09-24)
