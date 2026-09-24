@@ -577,6 +577,37 @@
       "exhaustion_decision": "current Visualizer pressure-boundary, transfer, onset/storage, and machine-prior decisions exhausted under existing semantics",
       "review_trigger": "explicit source/machine semantics, synchronized measurement, materially new independent data, or separately authorized new decision",
       "notes": "G0 registry companion required for the consolidated ledger entry; COMPLETE_MIXED_EXISTING_DATA_LIMIT_REACHED. No historical disposition or current priority changed. Physical validation NOT_ESTABLISHED."
+    },
+    {
+      "opportunity_id": "SCI-MD-RADIAL-OBS-001",
+      "title": "Spent-puck radial assay reconstruction and retained-field observation",
+      "data_families": [
+        "pocketscience2024"
+      ],
+      "scientific_question": "What radial quantity does the destructive dried-and-re-extracted assay identify?",
+      "model_component": "observation operator",
+      "status": "COMPLETE_POSITIVE",
+      "priority": "COMPLETED_OWNER_DIRECTIVE_NO_NEW_PRIORITY",
+      "prerequisites": [
+        "Original workbook access and independent pre-analysis contract audit"
+      ],
+      "task_id": "SCI-MD-RADIAL-OBS-001",
+      "current_evidence": "1672 formula cells reproduced; operational composite identified; conditional forward map; 32 retained-field partitions complete",
+      "expected_information": "Workbook calculation and executable model-to-assay mapping",
+      "positive_action": "Retain the qualified sheet-specific recoverable-solute contrast; stop",
+      "negative_action": "Retain constructive solid-depletion non-identifiability; stop",
+      "null_action": "Stop; no automatic successor",
+      "blocked_action": "Preserve reconstruction and name missing mapping inputs; no simulation",
+      "claim_ceiling": "SOURCE_INTERNAL_RECOVERY_COMPOSITE_AND_CONDITIONAL_RETAINED_FIELD_DIAGNOSTIC_ONLY",
+      "home_lab_effect": "NO_LAB_ACTION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_radial_obs_001/RESULT.md",
+        "docs/analysis/sci_md_radial_obs_001/RESULT.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separately authorized source or mapping information",
+      "notes": "COMPLETE_CONDITIONAL ledger disposition: positive code/reconstruction delivery does not qualify radial solid depletion. Companion registration only; current priority and historical outcomes unchanged. PHYSICAL_VALIDATION=NOT_ESTABLISHED; zero native builds/integrations."
     }
   ],
   "laboratory_gate": {
