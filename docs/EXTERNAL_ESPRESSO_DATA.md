@@ -1,5 +1,9 @@
 # External espresso data — EWP use map
 
+## Moroney transfer preparation (2026-09-24)
+
+`moroney2015/data` selected Fig3/7/11 CSVs and source tables were inspected. A task-local mapping flags four suspected Fig11 legend symbols, pending original-PDF confirmation. Public text is available; original PDF object evidence is unresolved. Other source families remain catalog-only for this task. [Exact development handoff](analysis/sci_md_moroney_transfer_001/RESULT.md); no production authority promotion.
+
 ## Maillé held-material source gate (2026-09-24)
 
 [SCI-MD-MAILLE-TRANSFER-001](analysis/sci_md_maille_transfer_001/RESULT.md) audited

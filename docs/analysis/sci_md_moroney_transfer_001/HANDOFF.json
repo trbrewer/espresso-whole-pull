@@ -1,0 +1,34 @@
+{
+  "task": "SCI-MD-MORONEY-TRANSFER-001",
+  "status": "BLOCKED_SOURCE_CONTRACT",
+  "integration_decision": "NOT_ADJUDICATED",
+  "producer_repository": "trbrewer/puckworks",
+  "producer_base": {
+    "base_commit": "e95d4585aa2dd9ab6eaa9da4f6aa8d311109e5ba",
+    "base_tree": "f806e8d4dfc8cf7a0efe323d919536d1e6e7b221"
+  },
+  "consumer_base": {
+    "base_commit": "09cdda7fb4b28229be34915a3371c79229316cee",
+    "base_tree": "6d962e653ab30e3e191e09edb842718d6df76bc0"
+  },
+  "producer_candidate_identity_status": "EXACT_REVIEWED_PREPARATION_COMMIT",
+  "production_dependency_changed": false,
+  "physical_validation": "NOT_ESTABLISHED",
+  "real_data_fits": 0,
+  "target_scores": 0,
+  "native_builds": 0,
+  "successor_execution": false,
+  "producer_candidate": {
+    "commit": "60a161680abaf9f597f081d249299e6c807c8ad2",
+    "tree": "d0208ab9b54d9f642a84d0f95b3567e723c5223d"
+  },
+  "producer_artifacts": {
+    "docs/analysis/sci_md_moroney_transfer_001/freeze.json": "51a9ad37d4fe3526b207654ff5069d1d0bda48b0b802b57b71a9918bdbd60938",
+    "docs/analysis/sci_md_moroney_transfer_001/RESULT.md": "9d3fb99641b74126cbe6c9eb462d1543338a9600cb468a4f7aadb0c5c8f4c367",
+    "docs/analysis/sci_md_moroney_transfer_001/review/final-review-addendum.md": "e602248e3eea531cfaff3a26a2f19fb296174c30f8a64cc03ca05668676eb95f",
+    "puckworks/analysis/moroney_transfer.py": "86e65a0b50b7187aea3fe8d4c96fa8582085217cd930c8b4f352bf2825e76302",
+    "puckworks/analysis/moroney_transfer_run.py": "7b073f0acbe0ed7765625e51246eb885fd1c67faa6291f2e1ae2c8e87f3e164f"
+  },
+  "independent_review": "ACCEPTED_UNSCORED_PREPARATION_ONLY",
+  "real_scoring_authorized": false
+}

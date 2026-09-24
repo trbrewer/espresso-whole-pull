@@ -18,6 +18,38 @@
   },
   "opportunities": [
     {
+      "opportunity_id": "SCI-MD-MORONEY-TRANSFER-001",
+      "title": "Conservative deep-to-shallow extraction transfer",
+      "data_families": [
+        "moroney2015"
+      ],
+      "scientific_question": "Does the deep-conditioned conservative formulation outperform N_M and N_T in shallow transfer?",
+      "model_component": "analysis-only Moroney2015 spatial extraction and storage",
+      "status": "BLOCKED_ACCESS",
+      "priority": 1,
+      "prerequisites": [
+        "original Fig11 and selected Fig3 object qualification",
+        "independent pre-scoring scientific approval"
+      ],
+      "task_id": "SCI-MD-MORONEY-TRANSFER-001",
+      "current_evidence": "Executable conservative solver and synthetic verification; source-object confirmation pending; no real-data fit or target score",
+      "expected_information": "retrospective same-source conditional predictive utility",
+      "positive_action": "retain spatial storage candidate for separately authorized integration",
+      "negative_action": "deprioritize tested combined formulation and startup family",
+      "null_action": "prefer empirical parsimony if adequate without material gain",
+      "blocked_action": "preserve preparation and resolve named original-PDF access/object qualification",
+      "claim_ceiling": "RETROSPECTIVE_SAME_SOURCE_CONDITIONAL_MODEL_DEVELOPMENT_ONLY",
+      "home_lab_effect": "DEFER",
+      "completion_evidence": [
+        "docs/analysis/sci_md_moroney_transfer_001/RESULT.md",
+        "docs/analysis/sci_md_moroney_transfer_001/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "independent pre-scoring and final scientific review",
+      "notes": "Scientific disposition BLOCKED_SOURCE_CONTRACT is scoped to original-figure object evidence. Production lock and physical validation unchanged. No successor execution."
+    },
+    {
       "opportunity_id": "SCI-MD-011",
       "title": "High-pressure poroelastic puck-closure adjudication",
       "data_families": ["waszkiewicz2025"],

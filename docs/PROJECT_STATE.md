@@ -1,5 +1,9 @@
 # Project State
 
+## SCI-MD-MORONEY-TRANSFER-001 preparation (2026-09-24)
+
+Conservative deep-to-shallow extraction research implementation is prepared in Puckworks. Original figure-object qualification is pending; no real-data calibration or scoring has executed. Spatial storage integration remains NOT_ADJUDICATED. [Handoff](analysis/sci_md_moroney_transfer_001/RESULT.md). Production lock and PHYSICAL_VALIDATION=NOT_ESTABLISHED are unchanged; no successor is authorized.
+
 ## SCI-MD-MAILLE-TRANSFER-001 source gate (2026-09-24)
 
 G1 / NO_GOVERNING_PHYSICS_CHANGE. [Puckworks handoff](analysis/sci_md_maille_transfer_001/RESULT.md):
