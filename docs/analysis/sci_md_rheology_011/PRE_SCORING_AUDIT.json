@@ -1,0 +1,91 @@
+{
+  "candidate_head": "3ea743bec85d9a6d89cfd5b85ad96fc531348ca3",
+  "candidate_tree": "5c37b2e275e673da6b99fdfa3214134b1b22bc28",
+  "conclusion": "Frozen comparison is ready for the authorized 18 B/C integrations. Full E2 remains conditional on sealed qualified C support and at least one qualified MATERIAL primary contrast. This review establishes neither full-run scientific outcomes nor hosted CI acceptance.",
+  "evidence": {
+    "external_receipt": "INDEPENDENT_PRE_SCORING_EVIDENCE.json",
+    "receipt_freeze_note": "Detailed receipt generated during initial candidate review; corrected freeze changes only shebang and two historical checkers, independently reviewed and verified above.",
+    "sha256": "0d8e169e138fddeb0318e43ac2acb20061aee06d3b4b9243dfdcbac34a6a2c7c"
+  },
+  "execution_at_review": {
+    "C_full_native_invocations": 0,
+    "E2_full_native_invocations": 0,
+    "failures": 0,
+    "retries": 0,
+    "reviewer_native_invocations": 0,
+    "short_completions": 14,
+    "short_integration_starts": 14,
+    "short_native_invocations": 14
+  },
+  "final_exact_head_review": "PENDING_RESULT_AND_RELEVANT_DELTAS",
+  "findings": [],
+  "freeze_sha256": "71b699370616f6fd807175ecf88f8bf56456b1e00fa579441de473978fbe499c",
+  "hosted_ci": "NOT_ASSESSED",
+  "independent_reviewer": "Codex independent_audit sub-agent /root/independent_audit; independently inspected code and retained evidence; not implementation author",
+  "physical_validation": "NOT_ESTABLISHED",
+  "review_kind": "INDEPENDENT_PRE_SCORING_EXACT_CANDIDATE",
+  "reviewed_utc": "2026-09-24T11:30:34.777273+00:00",
+  "scope": [
+    "Owner contract, G2 geometry compatibility and claim ceiling",
+    "Explicit supported mesh validation and conforming interface topology",
+    "Task-local observer, imported helper audit, A interpretation parity",
+    "Actual accepted 009 reference artifacts, tables, executable and loaded runtime",
+    "Fourteen retained short integrations, analytical flow/share/native accounting, repeat and MPI interface ownership",
+    "Frozen scenarios, 50-digit arithmetic implementation, paired allowances and separate radial terms",
+    "Reference-only support sealing, eight primary decisions, conditional complete fourteen-run E2 gate",
+    "Relevant historical-checker correction from 0df472a without scientific input changes"
+  ],
+  "status": "PASS",
+  "task": "SCI-MD-RHEOLOGY-011",
+  "tests": [
+    {
+      "check": "python3 -m unittest tests.test_sci_md_rheology_011 -v",
+      "result": "PASS",
+      "tests": 10
+    },
+    {
+      "accepted_reference_sets": 18,
+      "check": "Independent read-only frozen/runtime/library/source/table/artifact hash verification",
+      "result": "PASS",
+      "short_sets": 14
+    },
+    {
+      "check": "Requalified all 14 short trace/field/actual polyMesh evidence sets without native invocation",
+      "result": "PASS"
+    },
+    {
+      "check": "Independent analytical flow/share/water, inverse viscosity, inherited per-column repeat/MPI comparisons",
+      "result": "PASS"
+    },
+    {
+      "check": "Actual processor cell ownership separates nonempty material zones and processor face count equals all axial interface faces for C and E2",
+      "result": "PASS"
+    },
+    {
+      "check": "Legacy generated dictionary rendering at identical locators and unchanged initial fields/operators; legacy.verify with writes disabled",
+      "identical_A_adapters": 18,
+      "legacy_scenarios": 43,
+      "result": "PASS"
+    },
+    {
+      "check": "All 32 frozen full scenarios differ from accepted 009 only in declared radial material/mesh placement and table locator",
+      "result": "PASS"
+    },
+    {
+      "check": "Targeted 11 external viscosity/radial-assay source record byte hashes and CSV structures",
+      "result": "PASS"
+    },
+    {
+      "check": "python3 scripts/validate_sci_md_rheology_006.py --root .",
+      "result": "PASS"
+    },
+    {
+      "check": "python3 scripts/validate_xsv_pressure_001.py --root .",
+      "result": "PASS"
+    },
+    {
+      "check": "Corrected freeze byte verification and scientific external identities unchanged from 0df472a",
+      "result": "PASS"
+    }
+  ]
+}

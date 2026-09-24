@@ -4,8 +4,8 @@ import math
 
 
 def contract(s):
-    g = s['geometry']
-    if 'radial_mesh' not in g:
+    g = s.get('geometry', {})
+    if not isinstance(g, dict) or 'radial_mesh' not in g:
         return None
     m = g['radial_mesh']
     if not isinstance(m, dict) or set(m) != {'type', 'inner_cells', 'outer_cells'}:

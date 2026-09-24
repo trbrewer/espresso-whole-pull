@@ -21,6 +21,9 @@ class RelocationTests(unittest.TestCase):
         self.table=Path(self.tmp.name)/'constant.table';self.table.write_text(HEADER+'0 .001\n.1 .001\n.24 .001\n')
     def spec(self):
         s=history(radial(),'UP');s['aggregate_viscosity']=dict(mode='coupled',table=str(self.table));return relocate(s)
+    def test_legacy_off_requires_no_geometry(self):
+        for s in ({}, {'aggregate_viscosity':{'mode':'off'}}, {'geometry':None}):
+            self.assertEqual(contract(s),'')
     def test_distribution_and_blocks(self):
         s=self.spec();self.assertIn('coupled',contract(s))
         self.assertAlmostEqual((float(interface()['binary64_repr'])/.029)**2,.75)

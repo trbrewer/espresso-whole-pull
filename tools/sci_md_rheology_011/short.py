@@ -1,7 +1,7 @@
 """Fourteen analytical and serial/repeat/radial-MPI qualification runs."""
 import argparse
 from .common import *
-from .run import run
+from .run import run, complete, qualify
 from tools.sci_md_rheology_007.short import relative, final_directory
 from tools.sci_md_004_stage_c.compare import scalar_internal_values
 
@@ -41,5 +41,7 @@ def main():
             zones.append(sorted(set(scalar_internal_values(final/'permeabilityZoneId',cell_count=32*(1 if n==2 else (3*n//4 if rank==0 else n//4))))))
         if sorted(zones)!=[[0.],[1.]]:raise ValueError('MPI interface not decomposed')
         checks[model+'_mpi_zones']=zones
+    records=complete(art,specs)
+    write(DOC/'SHORT_QUALIFICATION.json',{k:qualify(art/'runs'/e['id']/'case',specs[k],k.endswith('_mpi')) for k,e in records.items()})
     write(DOC/'SHORT_CHECKS.json',dict(status='PASS',checks=checks,ledger_sha256=sha(art/'ATTEMPTS.jsonl'),started=14,completed=14))
 if __name__=='__main__':main()
