@@ -60,7 +60,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1581,
+    "python_test_count": 1586,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -80,8 +80,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1260,
-    "source_manifest_aggregate_sha256": "3fe517a339fb96f1fdd675c09f3e7bd8b337115fb1fa99fe004fc0f536b10c6e",
+    "source_manifest_file_count": 1297,
+    "source_manifest_aggregate_sha256": "1617dde07c78a03d190ee57d1c472e22edbeead1eac72855104923828208ad51",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -91,7 +91,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "3fe517a339fb96f1fdd675c09f3e7bd8b337115fb1fa99fe004fc0f536b10c6e",
+    "source_manifest_aggregate_source_sha256": "1617dde07c78a03d190ee57d1c472e22edbeead1eac72855104923828208ad51",
     "sci_data_fusion_001_c1": {
       "disposition": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
       "focused_tests_run": 51,
@@ -1034,5 +1034,28 @@
     "initial_local_qa_correction": "Missing required external-source environment variable and stale current manifest count; scientific code and artifacts unchanged",
     "merge": "NOT_AUTHORIZED",
     "production_default_runtime_lock_change": false
+  },
+  "sci_md_rheology_011": {
+    "status": "IMPLEMENTED_AND_EXECUTED",
+    "governance_class": "G2",
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "disposition": "NO_MATERIAL_ARRANGEMENT_CONTRAST_FOR_TESTED_DELIVERY",
+    "primary_decisions": {
+      "BELOW_BUDGET": 8
+    },
+    "conditional_disposition": "E2_NOT_EXECUTED_CONDITIONAL_GATE",
+    "new_native_integrations": 32,
+    "short": 14,
+    "C": 18,
+    "E2": 0,
+    "reused_C": 18,
+    "native_failures": 0,
+    "preparation_failures": 0,
+    "retries": 0,
+    "local_python_tests": 1586,
+    "local_python_skips": 7,
+    "physical_validation": "NOT_ESTABLISHED",
+    "review_and_hosted_ci": "SEPARATE_EXACT_HEAD_PR_STATUSES",
+    "pr": 171
   }
 }

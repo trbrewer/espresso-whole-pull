@@ -1,0 +1,232 @@
+{
+  "g10_liquor_rheology/telisromero2001_table1_eta.csv": {
+    "sha256": "dc1cbfd5bd472668f9f62a551f4a04a92460d1d72a1674e1288ded90866610de",
+    "rows": 25,
+    "header": [
+      "Xw_pct",
+      "T_K",
+      "eta_Pas",
+      "source"
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "g10_liquor_rheology/telisromero2001_table2_Kn.csv": {
+    "sha256": "c987e2d8b87a58f90bcbb4e828120d7ad4c72e1abda16cb7510f1229973d4622",
+    "rows": 28,
+    "header": [
+      "Xw_pct",
+      "T_K",
+      "K_Pasn",
+      "n",
+      "source"
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "sobolik2002/eq5_viscosity_dilute_computed.csv": {
+    "sha256": "2cd37968d78e704da7ab86378a61fb53306abf2e2515d21332432fe18e0dbd0d",
+    "rows": 487,
+    "header": [
+      "omega",
+      "T_degC",
+      "mu_Pa_s"
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "sobolik2002/fig3_viscosity_dilute_weisser_digitized.csv": {
+    "sha256": "bfa79ea7a4632455373cde8a03a92abfb8eb9aba2ed690e8d136a51027394452",
+    "rows": 25,
+    "header": [
+      "omega",
+      "T_nominal_degC",
+      "T_digitized_degC",
+      "mu_digitized_Pa_s",
+      "mu_eq5_Pa_s",
+      "ratio_digitized_over_eq5",
+      "evidence_strength",
+      "notes"
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "ribes2021/radial_ey.csv": {
+    "sha256": "55c39930b3e4c625e4da5136feef11ee23a949a27f5b813db067b4a631291815",
+    "rows": 13,
+    "header": [
+      "basket",
+      "contact_screen",
+      "zone",
+      "r_inner_mm",
+      "r_outer_mm",
+      "zone_ey_pct",
+      "shot_ey_pct"
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "ribes2020/radial_ey.csv": {
+    "sha256": "2e865c53e43f58d684826c72886252edd930fa0b0367c7147e7980fe39c0333f",
+    "rows": 10,
+    "header": [
+      "condition",
+      "tamper_base",
+      "bottom_paper_filter",
+      "zone",
+      "r_inner_mm",
+      "r_outer_mm",
+      "zone_ey_pct",
+      "shot_ey_pct"
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "pocketscience2024/Espresso water flow experiment - Sworks High Flow.csv": {
+    "sha256": "c1172725b4bc48f0daeade28fabe75720b65e4409d5f181b46e2121878696982",
+    "rows": 55,
+    "header": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "pocketscience2024/Espresso water flow experiment - LRR.csv": {
+    "sha256": "abe24e1ed40475074a2290b5be43a7320fe48ee3aff38db2a5c549f0a373a5e2",
+    "rows": 14,
+    "header": [
+      "Shot",
+      "Grinder",
+      "LRR",
+      "Dose",
+      "Water weight",
+      "Beverage weigbt"
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "pocketscience2024/Espresso water flow experiment - VST18.csv": {
+    "sha256": "5c476647593edfe914d096736e4a0e9fabcc8bad58b7b93f69a3d08135250901",
+    "rows": 28,
+    "header": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "pocketscience2024/lrr_scalars.csv": {
+    "sha256": "b2848db723597d8c4f31777c8611f7de16e522dcfe4a5a2c73de38b3b1091b54",
+    "rows": 3,
+    "header": [
+      "grinder",
+      "lrr_g_per_g",
+      "n",
+      "method",
+      "provenance"
+    ],
+    "status": "FILES_INSPECTED"
+  },
+  "pocketscience2024/edge_ey_condition_means.csv": {
+    "sha256": "01665a54d2eab1efb82d1c0d466a14f6bfc4487a5bd7566ab813435d6a0847aa",
+    "rows": 13,
+    "header": [
+      "basket",
+      "shot_style",
+      "grinder",
+      "puck_screen",
+      "dispersion_block",
+      "ey_center_pct",
+      "ey_edge_pct",
+      "edge_yield_loss_pct",
+      "shot_ey_filtered_pct",
+      "outer_mass_frac_of_dose",
+      "n_shots",
+      "provenance"
+    ],
+    "status": "FILES_INSPECTED"
+  }
+}

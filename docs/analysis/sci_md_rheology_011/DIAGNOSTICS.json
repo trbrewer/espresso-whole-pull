@@ -1,0 +1,98 @@
+{
+  "TR_LINEAR_UP": {
+    "A": {
+      "flow_min_m3_s": 2.5535781522196604e-07,
+      "flow_max_m3_s": 9.785886259714964e-07,
+      "native_water_kg": 0.017599788419486038,
+      "native_solute_kg": 0.0023571977973978835,
+      "INNER_share_flow_weighted": 0.6372099320692436,
+      "high_k_share_flow_weighted": 0.6372099320692436
+    },
+    "B": {
+      "flow_min_m3_s": 2.5555919215545434e-07,
+      "flow_max_m3_s": 9.797494400210463e-07,
+      "native_water_kg": 0.017609135276220843,
+      "native_solute_kg": 0.002361794362702704,
+      "INNER_share_flow_weighted": 0.36217867707568313,
+      "high_k_share_flow_weighted": 0.637821322924318
+    },
+    "diagnostic_only": {
+      "E_Qint": 0.0005937586319147627,
+      "E_Qpeak": 0.0013998874854462523,
+      "D_share_mean_pp": 27.503437353857162,
+      "D_share_peak_pp": 32.845570146919265
+    }
+  },
+  "TR_LINEAR_DOWN": {
+    "A": {
+      "flow_min_m3_s": 3.146937253535911e-07,
+      "flow_max_m3_s": 1.1076209459142006e-06,
+      "native_water_kg": 0.018585945324657512,
+      "native_solute_kg": 0.0023758858704130957,
+      "INNER_share_flow_weighted": 0.6352851891347308,
+      "high_k_share_flow_weighted": 0.6352851891347308
+    },
+    "B": {
+      "flow_min_m3_s": 3.144535852523831e-07,
+      "flow_max_m3_s": 1.1076209459228187e-06,
+      "native_water_kg": 0.018582867308358474,
+      "native_solute_kg": 0.0023813459516474587,
+      "INNER_share_flow_weighted": 0.3640067254455359,
+      "high_k_share_flow_weighted": 0.6359932745544638
+    },
+    "diagnostic_only": {
+      "E_Qint": 0.00024411598651464774,
+      "E_Qpeak": 0.0007642212335026512,
+      "D_share_mean_pp": 27.128383174269214,
+      "D_share_peak_pp": 32.68294978292642
+    }
+  },
+  "SW_WATER_ANCHORED_90C_UP": {
+    "A": {
+      "flow_min_m3_s": 2.1807387753016348e-07,
+      "flow_max_m3_s": 8.986279408971727e-07,
+      "native_water_kg": 0.015308505017894276,
+      "native_solute_kg": 0.0021510314606557595,
+      "INNER_share_flow_weighted": 0.6375444997369453,
+      "high_k_share_flow_weighted": 0.6375444997369453
+    },
+    "B": {
+      "flow_min_m3_s": 2.1820224327921967e-07,
+      "flow_max_m3_s": 8.975894054623293e-07,
+      "native_water_kg": 0.015307978458606935,
+      "native_solute_kg": 0.00215224129804651,
+      "INNER_share_flow_weighted": 0.3640293277029251,
+      "high_k_share_flow_weighted": 0.6359706722970738
+    },
+    "diagnostic_only": {
+      "E_Qint": 0.0007646380110955562,
+      "E_Qpeak": 0.0015201388859813149,
+      "D_share_mean_pp": 27.353807889694483,
+      "D_share_peak_pp": 34.879493731218815
+    }
+  },
+  "SW_WATER_ANCHORED_90C_DOWN": {
+    "A": {
+      "flow_min_m3_s": 2.670952824325951e-07,
+      "flow_max_m3_s": 1.1076209459142006e-06,
+      "native_water_kg": 0.015637450805480062,
+      "native_solute_kg": 0.002148492256208543,
+      "INNER_share_flow_weighted": 0.6281274106656095,
+      "high_k_share_flow_weighted": 0.6281274106656095
+    },
+    "B": {
+      "flow_min_m3_s": 2.6683128035142873e-07,
+      "flow_max_m3_s": 1.1076209459228187e-06,
+      "native_water_kg": 0.015634077727005893,
+      "native_solute_kg": 0.002150146642873737,
+      "INNER_share_flow_weighted": 0.3740834593943719,
+      "high_k_share_flow_weighted": 0.6259165406056286
+    },
+    "diagnostic_only": {
+      "E_Qint": 0.000510397320086478,
+      "E_Qpeak": 0.0012985437566644556,
+      "D_share_mean_pp": 25.405693161809978,
+      "D_share_peak_pp": 33.60105182081527
+    }
+  }
+}
