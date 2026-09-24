@@ -608,6 +608,37 @@
       "exhaustion_decision": null,
       "review_trigger": "Separately authorized source or mapping information",
       "notes": "COMPLETE_CONDITIONAL ledger disposition: positive code/reconstruction delivery does not qualify radial solid depletion. Companion registration only; current priority and historical outcomes unchanged. PHYSICAL_VALIDATION=NOT_ESTABLISHED; zero native builds/integrations."
+    },
+    {
+      "opportunity_id": "SCI-MD-SMRKE-TRANSFER-001",
+      "title": "Source-conditioned fines-intervention endpoint transfer",
+      "data_families": [
+        "smrke2024/figures"
+      ],
+      "scientific_question": "Does a nominal added-fines correction improve final-yield prediction beyond shot duration in whole-intervention out-of-fit comparisons?",
+      "model_component": "analysis-only endpoint response",
+      "status": "COMPLETE_NEGATIVE",
+      "priority": "COMPLETED_OWNER_DIRECTIVE_NO_NEW_PRIORITY",
+      "prerequisites": [
+        "Auditable Figure 3 marker identities, sufficient support and independent pre-scoring audit"
+      ],
+      "task_id": "SCI-MD-SMRKE-TRANSFER-001",
+      "current_evidence": "33 primary/46 all-marker estimates; 18 treatments; M0/M1/B0/B1; robust common inadequacy and no correction gain",
+      "expected_information": "Source-conditioned endpoint predictive content beyond duration",
+      "positive_action": "Retain named endpoint constraint only under supported result; stop",
+      "negative_action": "Reject tested response forms without a missing-mechanism inference; stop",
+      "null_action": "No added complexity established for tested corrections; stop",
+      "blocked_action": "Name precise unsupported quantity; no substitute project",
+      "claim_ceiling": "PUBLIC_SOURCE_CONDITIONED_ENDPOINT_COMPARISON_ONLY_NO_PHYSICAL_VALIDATION",
+      "home_lab_effect": "NO_LAB_ACTION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_smrke_transfer_001/RESULT.md",
+        "docs/analysis/sci_md_smrke_transfer_001/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separately authorized new evidence or materially different decision",
+      "notes": "COMMON_TIME_RESPONSE=TESTED_COMMON_MODELS_INADEQUATE; FINES_COVARIATE_INCREMENT=NO_MATERIAL_GAIN_FOR_TESTED_CORRECTIONS. No governing physics/default/lock change, S-B reopening, native execution or automatic successor."
     }
   ],
   "laboratory_gate": {

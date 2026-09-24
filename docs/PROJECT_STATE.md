@@ -1,5 +1,15 @@
 # Project State
 
+## SCI-MD-SMRKE-TRANSFER-001 endpoint analysis (2026-09-24)
+
+G1 / NO_GOVERNING_PHYSICS_CHANGE. [Puckworks handoff](analysis/sci_md_smrke_transfer_001/RESULT.md):
+TESTED_COMMON_MODELS_INADEQUATE; NO_MATERIAL_GAIN_FOR_TESTED_CORRECTIONS.
+Four source-conditioned models, 33 primary/46 all-marker estimates, 18 source
+treatments, independent pre-scoring audit and frozen predictions completed.
+Reject these tested adequacy forms; no tested fines term earns complexity.
+No mechanism inference, native run/build, production/default/lock change, S-B
+reopening or EWP physical-validation claim. No successor execution or merge.
+
 ## SCI-MD-RADIAL-OBS-001 source assay diagnostic (2026-09-24)
 
 G1 / NO_GOVERNING_PHYSICS_CHANGE. [Result](analysis/sci_md_radial_obs_001/RESULT.md):

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1307,
-  "total_uncompressed_bytes_excluding_manifest": 22261780,
-  "aggregate_source_sha256": "6b7755a64f7886ccca897627c39fd40cdf66003cd1e868840f596461efe03255",
-  "aggregate_sha256": "6b7755a64f7886ccca897627c39fd40cdf66003cd1e868840f596461efe03255",
+  "file_count": 1310,
+  "total_uncompressed_bytes_excluding_manifest": 22304467,
+  "aggregate_source_sha256": "27695d4cc052bdd26c30ad3ff3aed002027e2edd21db9e485d424c10104b840c",
+  "aggregate_sha256": "27695d4cc052bdd26c30ad3ff3aed002027e2edd21db9e485d424c10104b840c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "bfd894d9327b8754fd3985685d8960d7414b2dcff573ed097b5e012d37312ce3",
-      "bytes": 16672,
+      "sha256": "1d00fa08ab314fd3bafc6a3155704731633eecd5b9126f1a0e6c777235cb23af",
+      "bytes": 17515,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -3411,6 +3411,21 @@
     "docs/analysis/sci_md_rheology_011/primary_budgets.svg": {
       "sha256": "2ea8a25fece1a08efff12d521817c7e026632f0cf59ff1d43f8f92c9e88a1e82",
       "bytes": 44830,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_smrke_transfer_001/HANDOFF.json": {
+      "sha256": "274e52726585f7fb56b535eb597cce9fc242722fecaf2d024ee34f95f5c0fe1b",
+      "bytes": 33770,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_smrke_transfer_001/README.md": {
+      "sha256": "aa2ac72f43403120e85318b09d899dd00161da699e3fca32f5ec4a4326d87606",
+      "bytes": 2730,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_smrke_transfer_001/RESULT.md": {
+      "sha256": "b23265f52f288f1b06f335c1e4a7a3c3590b70c2ca4f0bf2e910da5ea64597ca",
+      "bytes": 5344,
       "git_mode": "100644"
     },
     "docs/analysis/xsv_pannusch_ewp_input_mapping_001/INPUT_REGISTRY.csv": {
