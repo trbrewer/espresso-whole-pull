@@ -1,5 +1,17 @@
 # External espresso data — EWP use map
 
+## Maillé held-material source gate (2026-09-24)
+
+[SCI-MD-MAILLE-TRANSFER-001](analysis/sci_md_maille_transfer_001/RESULT.md) audited
+`maille2024/materials`, `psd_hybrid`, `phi`, `normalized_curves` and
+`equilibrium_concentrations`. All 105 primary table cells are present, but
+per-replicate selected-maximum denominator lineage and selection uncertainty
+are not recoverable from pooled late-reference summaries. Result:
+BLOCKED_SOURCE_CONTRACT; zero fits/folds/predictions. All five model/analyte
+decisions remain NOT_ADJUDICATED. [Exact producer receipt](analysis/sci_md_maille_transfer_001/HANDOFF.json)
+does not advance the production lock. No blanket corpus-exhaustion, physical
+validation, laboratory recommendation or successor authorization follows.
+
 Start with the canonical [Puckworks espresso data guide](https://github.com/trbrewer/puckworks/blob/main/docs/data/ESPRESSO_DATA_GUIDE.md).
 It describes the external collection, inspected subsets, source rights and local
 resolver commands. Puckworks owns dataset identity/provenance/capabilities/rights;

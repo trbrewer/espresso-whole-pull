@@ -639,6 +639,37 @@
       "exhaustion_decision": null,
       "review_trigger": "Separately authorized new evidence or materially different decision",
       "notes": "COMMON_TIME_RESPONSE=TESTED_COMMON_MODELS_INADEQUATE; FINES_COVARIATE_INCREMENT=NO_MATERIAL_GAIN_FOR_TESTED_CORRECTIONS. No governing physics/default/lock change, S-B reopening, native execution or automatic successor."
+    },
+    {
+      "opportunity_id": "SCI-MD-MAILLE-TRANSFER-001",
+      "title": "Maill\u00e9 whole-material normalized-curve source contract",
+      "data_families": [
+        "maille2024"
+      ],
+      "scientific_question": "Does particle-size-informed two-rate release predict withheld Maill\u00e9 materials without held-material rate fitting?",
+      "model_component": "analysis-only normalized batch release",
+      "status": "BLOCKED_DATA_JOIN",
+      "priority": "COMPLETED_OWNER_DIRECTIVE_NO_NEW_PRIORITY",
+      "prerequisites": [
+        "qualified replicate-normalization operator"
+      ],
+      "task_id": "SCI-MD-MAILLE-TRANSFER-001",
+      "current_evidence": "105 empirical tabulations; replicate-specific selected-maximum denominator joins unresolved",
+      "expected_information": "source-internal whole-material out-of-fit prediction",
+      "positive_action": "Prioritize supported representation for separately authorized coupling decision",
+      "negative_action": "Retire exact failed rule only",
+      "null_action": "Retain simpler representation when added complexity is unearned",
+      "blocked_action": "Retain current implementation; owner disposition; no successor execution",
+      "claim_ceiling": "SOURCE_CONTRACT_AUDIT_ONLY_NO_MODEL_SELECTION_NO_PHYSICAL_VALIDATION",
+      "home_lab_effect": "NO_LAB_ACTION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_maille_transfer_001/RESULT.md",
+        "docs/analysis/sci_md_maille_transfer_001/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separately authorized resolution of replicate denominator and selection uncertainty",
+      "notes": "BLOCKED_SOURCE_CONTRACT; no fitting/scoring; all five analytes NOT_ADJUDICATED. Source audit complete, predictive task blocked. No native builds/integrations/default/lock change or automatic successor."
     }
   ],
   "laboratory_gate": {
