@@ -38,11 +38,19 @@ The public source is Maille (2024), University of Sheffield,
 No thesis PDF, private original or new raw-data dump is committed.
 
 **Development decision:** retain current implementation and defaults. This task
-earns no two-rate coupling and rejects no kinetic family. Resolving the named
-source contract would require the original replicate normalization lineage and
-a defensible treatment of maximum-selection uncertainty; no recovery project,
-measurement campaign or successor execution is authorized. This is a bounded
-existing-data gap, not a blanket claim that Maillé or the corpus is exhausted.
+earns no two-rate coupling and rejects no kinetic family. No source-qualified
+mapping or bounds sufficient for the specified comparison margins and adequacy
+budgets were established. Table 5.10 already supplies the targets; the gap is
+mapping release responses to its selected-maximum observer. The pooled-summary
+diagnostic tests one replacement, and the synthetic pairing example establishes
+nonuniqueness from marginal summaries. Neither establishes an empirical error
+bound, ranking sensitivity, or that no informative bound can exist.
+Original replicate normalization lineage could help resolve the gap, but is
+not the only logically possible remedy. A narrower descriptive observable or
+independently justified selection bounds could support a separately authorized
+revised question. No such alternative is selected or executed here; no recovery
+project, measurement campaign or successor execution is authorized. This is a
+bounded existing-data gap, not a claim that Maillé or the corpus is exhausted.
 
 The requested predictive curves, error comparisons, early residuals and A-held
 figure overlay were not produced because no eligible prediction freeze exists.
@@ -69,8 +77,8 @@ unrelated changes and predecessor work. Prior Maillé reproduction, shell-depth,
 model-generated timescale portability, Smrke transfer and radial-observation
 results were not restarted. No duplicate whole-material task was found.
 
-The exact producer is [`e950540ba3b421950e9103f383ba7d9740cf00f7`](https://github.com/trbrewer/puckworks/tree/e950540ba3b421950e9103f383ba7d9740cf00f7),
-tree `a8a58371231408e8e44e72d11bd426394231ec84`. HANDOFF.json binds this commit/tree and compact artifact
+The exact producer is [`66b018e946f58ec99f4f510238a1926cf04855cf`](https://github.com/trbrewer/puckworks/tree/66b018e946f58ec99f4f510238a1926cf04855cf),
+tree `f806e8d4dfc8cf7a0efe323d919536d1e6e7b221`. HANDOFF.json binds this commit/tree and compact artifact
 hashes; it is a task-specific scientific receipt, not a production dependency
 update. The source views and complete QA logs remain in private evidence.
 
@@ -95,7 +103,11 @@ required pinned-authority environment was supplied and 21 affected tests passed;
 manifest metadata was refreshed and its check passed. Initial logs are retained.
 Source/static/historical/active-boundary/shell/JSON checks pass. Hosted CI and
 independent review remain separate dispositions recorded on the PRs.
-Independent final exact-head/base review is **pending**, not approved.
+Independent final exact-head/base review is recorded in the external receipt
+linked from this PR #176 and Puckworks PR #270; that receipt controls its outcome
+and reviewed identities. The fixed adapter status records the source assessment;
+status-assertion tests enforce it, rather than prove the stop's scientific
+necessity.
 Passing software checks does not pass the scientific hypothesis.
 
 Native OpenFOAM builds **0**; native integrations **0**. Solver behavior,

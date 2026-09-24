@@ -54,17 +54,17 @@
   "producer": {
     "base_commit": "1648fa095f1aca133616b8a4bb07dcae569a91d2",
     "base_tree": "df57a459b9b40e4e7adb5a026502da37eee5a974",
-    "commit": "e950540ba3b421950e9103f383ba7d9740cf00f7",
+    "commit": "66b018e946f58ec99f4f510238a1926cf04855cf",
     "files_sha256": {
-      "docs/analysis/sci_md_maille_transfer_001/AUDIT.json": "80070cc5422a993204a1475d8acead2c5741f3b7e4fc2514e0c1cb73c7eac94c",
+      "docs/analysis/sci_md_maille_transfer_001/AUDIT.json": "83ac8f2dec071644a8b8d878965045d372b7e8950931bb33fcc90f9df6086e03",
       "docs/analysis/sci_md_maille_transfer_001/RESULT.json": "5f8e3dd55de68e53e4010bacfb31b60d95b110914298cf0fe79bd5ba13d7b1d1",
-      "docs/analysis/sci_md_maille_transfer_001/RESULT.md": "8528b81d0731e0ea3a1534664b264ac985161735ad91c9ae3e40deda4f3dfb0e",
+      "docs/analysis/sci_md_maille_transfer_001/RESULT.md": "0704745b3e1960b220a5d7921b433f7a06fac95c0ed566b8af57c53b35a70b2f",
       "puckworks/analysis/maille_transfer.py": "c99734b08ae2ee0ff307792bed8e0bde93c73954ff7b81b89d8846a430799744",
       "tests/test_maille_transfer.py": "04fad9e52f29885c883b38f294241de807f4660e0d8b6d6005eab1f52eca4b7d",
       "tools/analyze_maille_transfer.py": "83129cf48e6f5db55547516e52da1f51256630dbfdb7b34e678f98d1365ccaa3"
     },
     "repository": "https://github.com/trbrewer/puckworks",
-    "tree": "a8a58371231408e8e44e72d11bd426394231ec84"
+    "tree": "f806e8d4dfc8cf7a0efe323d919536d1e6e7b221"
   },
   "production_runtime_lock": {
     "changed": false,
@@ -74,7 +74,7 @@
   "qualified_scoring_cells": 0,
   "reproduce_at_producer": "python tools/analyze_maille_transfer.py --output /tmp/maille-transfer-audit",
   "reviews": {
-    "independent_final": "PENDING_NOT_SELF_CERTIFIED",
+    "independent_final": "EXTERNAL_EXACT_HEAD_RECEIPT_CONTROLS_SEE_PR_270_AND_EWP_176",
     "pre_scoring": "NOT_REACHED_SOURCE_GATE_STOP"
   },
   "scientific_verdict": "BLOCKED_SOURCE_CONTRACT",
