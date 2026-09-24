@@ -19,6 +19,7 @@ if str(SCRIPT_DIR) not in sys.path:
 
 sys.path.insert(0, str(SCRIPT_DIR.parent))
 from scripts.aggregate_viscosity import contract as aggregate_viscosity_contract
+from scripts.radial_mesh import contract as radial_mesh_contract, render as render_radial_mesh
 
 from espresso_reference_math import (  # noqa: E402
     analytical_preview,
@@ -315,6 +316,10 @@ def artifact_stem(scenario: dict) -> str:
 
 
 def render_block_mesh(scenario: dict) -> str:
+    mesh = radial_mesh_contract(scenario)
+    if mesh is not None:
+        aggregate_viscosity_contract(scenario)
+        return render_radial_mesh(scenario, mesh)
     geometry = scenario["geometry"]
     bed = scenario["coffee_bed"]
     radius = float(geometry["basket_radius_m"])
@@ -455,6 +460,7 @@ functions
 
 
 def render_properties(scenario: dict) -> str:
+    radial_mesh_contract(scenario)
     geometry = scenario["geometry"]
     bed = scenario["coffee_bed"]
     liquid = scenario["liquid"]

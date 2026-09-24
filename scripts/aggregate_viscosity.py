@@ -2,9 +2,11 @@
 """Maintained case-generation contract for optional aggregate viscosity."""
 import math
 from pathlib import Path
+from scripts.radial_mesh import contract as radial_mesh_contract
 
 
 def contract(s):
+    mesh = radial_mesh_contract(s)
     option = s.get('aggregate_viscosity', {})
     mode = option.get('mode', 'off')
     if mode == 'off':
@@ -45,7 +47,7 @@ def contract(s):
             values += (h['target_inlet_pressure_gauge_Pa'],)
         if not all(math.isfinite(v) for v in values) or not 0 < interface < radius or min(values[2:4]) <= 0:
             raise ValueError('invalid radial aggregate geometry/permeability/pressure')
-        if s['geometry'].get('radial_grading', 1) != 1 or abs(interface/radius*n-round(interface/radius*n)) > 1e-10:
+        if mesh is None and (s['geometry'].get('radial_grading', 1) != 1 or abs(interface/radius*n-round(interface/radius*n)) > 1e-10):
             raise ValueError('radial aggregate interface must align with mesh')
     table = Path(option['table']).resolve()
     # Validate metadata and entries here as well as independently in native startup.

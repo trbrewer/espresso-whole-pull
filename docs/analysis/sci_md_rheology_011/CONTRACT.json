@@ -1,0 +1,251 @@
+{
+  "governance": "G2",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "production_boundary_behavior_change": false,
+  "temporal_discretization_changed": false,
+  "budgets": {
+    "E_Qint": 0.01,
+    "E_Qpeak": 0.02,
+    "D_share_mean_pp": 1.0,
+    "D_share_peak_pp": 2.0,
+    "E_Spath": 0.01,
+    "D_TDS_pp": 0.1
+  },
+  "limits": {
+    "water_balance_kg": 1e-08,
+    "solute_balance_kg": 1e-08,
+    "absolute_correction_sum_kg": 1e-10,
+    "c_min_kg_m3": -1e-10,
+    "c_max_kg_m3": 180.00000001,
+    "w_max": 0.24,
+    "inventory_min_kg": -1e-12,
+    "inventory_max_kg": 0.0056000000999999995,
+    "storage_min_kg": -1e-12,
+    "Qdt_volume_m3": 1e-15,
+    "water_increment_kg": 1e-14,
+    "reverse_relative": 1e-10,
+    "regional_flow_sum_relative": 1e-10,
+    "geometry_relative": 1e-08,
+    "face_alignment_m": 1e-12,
+    "field_mass_kg": 1e-10,
+    "clock_end_s": 1e-09,
+    "clock_dt_s": 1e-12,
+    "analytical_relative": 1e-06,
+    "pressure_Pa": 1e-06,
+    "baseline_normalized": 1e-10,
+    "repeat_absolute": 1e-12,
+    "mpi_relative": 1e-06,
+    "mpi_floors": {
+      "flow_m3_s": 1e-14,
+      "volume_m3": 1e-16,
+      "mass_kg": 1e-12,
+      "viscosity_Pa_s": 1e-12,
+      "other": 1e-08
+    },
+    "allowance_budget_fraction": 0.2
+  },
+  "matrix": {
+    "C_TR_LINEAR_UP_base": {
+      "model": "C",
+      "law": "TR_LINEAR",
+      "history": "UP",
+      "resolution": "base"
+    },
+    "C_TR_LINEAR_UP_temporal": {
+      "model": "C",
+      "law": "TR_LINEAR",
+      "history": "UP",
+      "resolution": "temporal"
+    },
+    "C_TR_LINEAR_UP_axial": {
+      "model": "C",
+      "law": "TR_LINEAR",
+      "history": "UP",
+      "resolution": "axial"
+    },
+    "C_TR_LINEAR_UP_radial": {
+      "model": "C",
+      "law": "TR_LINEAR",
+      "history": "UP",
+      "resolution": "radial"
+    },
+    "C_TR_LINEAR_DOWN_base": {
+      "model": "C",
+      "law": "TR_LINEAR",
+      "history": "DOWN",
+      "resolution": "base"
+    },
+    "C_TR_LINEAR_DOWN_temporal": {
+      "model": "C",
+      "law": "TR_LINEAR",
+      "history": "DOWN",
+      "resolution": "temporal"
+    },
+    "C_TR_LINEAR_DOWN_axial": {
+      "model": "C",
+      "law": "TR_LINEAR",
+      "history": "DOWN",
+      "resolution": "axial"
+    },
+    "C_TR_LINEAR_DOWN_radial": {
+      "model": "C",
+      "law": "TR_LINEAR",
+      "history": "DOWN",
+      "resolution": "radial"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_base": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "UP",
+      "resolution": "base"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_temporal": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "UP",
+      "resolution": "temporal"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_axial": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "UP",
+      "resolution": "axial"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_property": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "UP",
+      "resolution": "property"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_radial": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "UP",
+      "resolution": "radial"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_base": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "DOWN",
+      "resolution": "base"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_temporal": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "DOWN",
+      "resolution": "temporal"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_axial": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "DOWN",
+      "resolution": "axial"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_property": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "DOWN",
+      "resolution": "property"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_radial": {
+      "model": "C",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "DOWN",
+      "resolution": "radial"
+    },
+    "E2_TR_LINEAR_UP_base": {
+      "model": "E2",
+      "law": "TR_LINEAR",
+      "history": "UP",
+      "resolution": "base"
+    },
+    "E2_TR_LINEAR_UP_temporal": {
+      "model": "E2",
+      "law": "TR_LINEAR",
+      "history": "UP",
+      "resolution": "temporal"
+    },
+    "E2_TR_LINEAR_UP_axial": {
+      "model": "E2",
+      "law": "TR_LINEAR",
+      "history": "UP",
+      "resolution": "axial"
+    },
+    "E2_TR_LINEAR_DOWN_base": {
+      "model": "E2",
+      "law": "TR_LINEAR",
+      "history": "DOWN",
+      "resolution": "base"
+    },
+    "E2_TR_LINEAR_DOWN_temporal": {
+      "model": "E2",
+      "law": "TR_LINEAR",
+      "history": "DOWN",
+      "resolution": "temporal"
+    },
+    "E2_TR_LINEAR_DOWN_axial": {
+      "model": "E2",
+      "law": "TR_LINEAR",
+      "history": "DOWN",
+      "resolution": "axial"
+    },
+    "E2_SW_WATER_ANCHORED_90C_UP_base": {
+      "model": "E2",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "UP",
+      "resolution": "base"
+    },
+    "E2_SW_WATER_ANCHORED_90C_UP_temporal": {
+      "model": "E2",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "UP",
+      "resolution": "temporal"
+    },
+    "E2_SW_WATER_ANCHORED_90C_UP_axial": {
+      "model": "E2",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "UP",
+      "resolution": "axial"
+    },
+    "E2_SW_WATER_ANCHORED_90C_UP_property": {
+      "model": "E2",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "UP",
+      "resolution": "property"
+    },
+    "E2_SW_WATER_ANCHORED_90C_DOWN_base": {
+      "model": "E2",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "DOWN",
+      "resolution": "base"
+    },
+    "E2_SW_WATER_ANCHORED_90C_DOWN_temporal": {
+      "model": "E2",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "DOWN",
+      "resolution": "temporal"
+    },
+    "E2_SW_WATER_ANCHORED_90C_DOWN_axial": {
+      "model": "E2",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "DOWN",
+      "resolution": "axial"
+    },
+    "E2_SW_WATER_ANCHORED_90C_DOWN_property": {
+      "model": "E2",
+      "law": "SW_WATER_ANCHORED_90C",
+      "history": "DOWN",
+      "resolution": "property"
+    }
+  },
+  "full_slots": 32,
+  "short_slots": 14,
+  "regression_slots": 0,
+  "physical_validation": "NOT_ESTABLISHED",
+  "task": "SCI-MD-RHEOLOGY-011",
+  "classification": "GEOMETRY_COMPATIBILITY_NO_GOVERNING_PHYSICS_CHANGE",
+  "planned_ceiling": 46,
+  "max_total_attempts": 48,
+  "max_identical_infrastructure_retries": 2,
+  "geometry_generation_change": true
+}
