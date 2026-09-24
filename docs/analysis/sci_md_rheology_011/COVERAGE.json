@@ -1,0 +1,218 @@
+{
+  "new_C_SW_WATER_ANCHORED_90C_DOWN_axial": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498890543454136,
+    "terminal_beverage_kg": 0.017786301381946833
+  },
+  "new_C_SW_WATER_ANCHORED_90C_DOWN_base": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499999914876441,
+    "terminal_beverage_kg": 0.017784224369879628
+  },
+  "new_C_SW_WATER_ANCHORED_90C_DOWN_property": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499978219506837,
+    "terminal_beverage_kg": 0.017784264984217042
+  },
+  "new_C_SW_WATER_ANCHORED_90C_DOWN_radial": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499990617639442,
+    "terminal_beverage_kg": 0.01778424177454406
+  },
+  "new_C_SW_WATER_ANCHORED_90C_DOWN_temporal": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499242077621309,
+    "terminal_beverage_kg": 0.017785643172313653
+  },
+  "new_C_SW_WATER_ANCHORED_90C_UP_axial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.949775760763921,
+    "terminal_beverage_kg": 0.017461638509979123
+  },
+  "new_C_SW_WATER_ANCHORED_90C_UP_base": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498529360536947,
+    "terminal_beverage_kg": 0.017460219756653444
+  },
+  "new_C_SW_WATER_ANCHORED_90C_UP_property": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498508436065286,
+    "terminal_beverage_kg": 0.01746025822015284
+  },
+  "new_C_SW_WATER_ANCHORED_90C_UP_radial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498824788320154,
+    "terminal_beverage_kg": 0.01745967671747418
+  },
+  "new_C_SW_WATER_ANCHORED_90C_UP_temporal": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499644166504776,
+    "terminal_beverage_kg": 0.017458170758096955
+  },
+  "new_C_TR_LINEAR_DOWN_axial": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8059266528000045,
+    "terminal_beverage_kg": 0.020963462296850727
+  },
+  "new_C_TR_LINEAR_DOWN_base": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.805897783544834,
+    "terminal_beverage_kg": 0.020964213260005932
+  },
+  "new_C_TR_LINEAR_DOWN_radial": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8063973601471398,
+    "terminal_beverage_kg": 0.020951225580546594
+  },
+  "new_C_TR_LINEAR_DOWN_temporal": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8058238463303099,
+    "terminal_beverage_kg": 0.020966136801410414
+  },
+  "new_C_TR_LINEAR_UP_axial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8305169399703298,
+    "terminal_beverage_kg": 0.019969058067126826
+  },
+  "new_C_TR_LINEAR_UP_base": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.830439108236422,
+    "terminal_beverage_kg": 0.019970929638923548
+  },
+  "new_C_TR_LINEAR_UP_radial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8310417266596554,
+    "terminal_beverage_kg": 0.0199564479952907
+  },
+  "new_C_TR_LINEAR_UP_temporal": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.830589451010478,
+    "terminal_beverage_kg": 0.019967314754387344
+  },
+  "old_C_SW_WATER_ANCHORED_90C_DOWN_axial": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9497969965826962,
+    "terminal_beverage_kg": 0.017788025294654633
+  },
+  "old_C_SW_WATER_ANCHORED_90C_DOWN_base": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499081910586068,
+    "terminal_beverage_kg": 0.017785943061688604
+  },
+  "old_C_SW_WATER_ANCHORED_90C_DOWN_property": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499060184457765,
+    "terminal_beverage_kg": 0.01778598374146886
+  },
+  "old_C_SW_WATER_ANCHORED_90C_DOWN_radial": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499245304211571,
+    "terminal_beverage_kg": 0.01778563713109867
+  },
+  "old_C_SW_WATER_ANCHORED_90C_DOWN_temporal": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498319787951605,
+    "terminal_beverage_kg": 0.017787370163542954
+  },
+  "old_C_SW_WATER_ANCHORED_90C_UP_axial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498139197140537,
+    "terminal_beverage_kg": 0.01746093698541804
+  },
+  "old_C_SW_WATER_ANCHORED_90C_UP_base": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.949890108501741,
+    "terminal_beverage_kg": 0.017459536478550038
+  },
+  "old_C_SW_WATER_ANCHORED_90C_UP_property": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9498880171966428,
+    "terminal_beverage_kg": 0.017459574918047102
+  },
+  "old_C_SW_WATER_ANCHORED_90C_UP_radial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499195503791572,
+    "terminal_beverage_kg": 0.0174589953363738
+  },
+  "old_C_SW_WATER_ANCHORED_90C_UP_temporal": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.9499999624585471,
+    "terminal_beverage_kg": 0.01745751753197955
+  },
+  "old_C_TR_LINEAR_DOWN_axial": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8060177728327739,
+    "terminal_beverage_kg": 0.020961092384628153
+  },
+  "old_C_TR_LINEAR_DOWN_base": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8059893643248609,
+    "terminal_beverage_kg": 0.02096183119507061
+  },
+  "old_C_TR_LINEAR_DOWN_radial": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8063187308095052,
+    "terminal_beverage_kg": 0.020953268669621775
+  },
+  "old_C_TR_LINEAR_DOWN_temporal": {
+    "B_star_kg": 0.016895013,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8059150573550519,
+    "terminal_beverage_kg": 0.020963763917562314
+  },
+  "old_C_TR_LINEAR_UP_axial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8310979712017159,
+    "terminal_beverage_kg": 0.01995509744298815
+  },
+  "old_C_TR_LINEAR_UP_base": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8310193142273725,
+    "terminal_beverage_kg": 0.01995698621688392
+  },
+  "old_C_TR_LINEAR_UP_radial": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8312949614824163,
+    "terminal_beverage_kg": 0.019950368724026966
+  },
+  "old_C_TR_LINEAR_UP_temporal": {
+    "B_star_kg": 0.016584641,
+    "reaches_support": true,
+    "scored_fraction_of_terminal": 0.8311699402437274,
+    "terminal_beverage_kg": 0.01995336957823188
+  }
+}

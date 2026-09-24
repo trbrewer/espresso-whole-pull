@@ -1,0 +1,16 @@
+{
+  "corrected_complete_suite": {
+    "status": "PASS",
+    "tests": 1586,
+    "skipped": 7,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_s": 495.507,
+    "log_sha256": "f1642e61acf1803e6f39632cbd59f4f4842296b3a2ccffc1d9db4d49ab7ee25f"
+  },
+  "initial_local_suite": "Failed: historical-source environment mismatch, missing empty off-mode API, stale source-manifest QA counters, and checker loaded before correction. Logs retained; no native reruns.",
+  "initial_hosted_ci": "Failed at initial head 3ea743b: empty off-mode API and stale source-manifest QA counters. Corrected. Final hosted status is reported separately on PR #171.",
+  "native_failure_count": 0,
+  "correction_record": "POST_C_QA_CORRECTION.json",
+  "presentation_correction": "Layout-only redraw moves overlapping area labels to a legend. Added after scoring; no frozen workflow, native evidence, metrics or seals changed."
+}

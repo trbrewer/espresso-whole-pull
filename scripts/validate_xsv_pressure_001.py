@@ -57,6 +57,15 @@ def production_bytes(root, path):
             if history_successor.exists():
                 active = history_successor
             current = load(active)
+            geometry = root/'docs/analysis/sci_md_rheology_011/FREEZE.json'
+            if geometry.exists() and path == 'scripts/prepare_case.py':
+                old009 = subprocess.check_output(['git','show','dd05d3dd8dd8f690941f22e1583acf2026a23955:'+path],cwd=root)
+                if hashlib.sha256(old009).hexdigest() != current['files'][path]:
+                    raise ValueError('historical 009 geometry source changed')
+                current = load(geometry)
+                for helper in ('scripts/radial_mesh.py','scripts/aggregate_viscosity.py'):
+                    if sha(root/helper) != current['files'][helper]:
+                        raise ValueError('active 011 geometry helper changed '+helper)
             if sha(root/path) != current['files'][path]:
                 raise ValueError('active rheology source differs from frozen contract '+path)
             historical = subprocess.check_output(['git','show',historical_base+':'+path],cwd=root)

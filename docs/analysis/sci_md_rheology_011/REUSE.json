@@ -1,0 +1,59 @@
+{
+  "accepted_head": "ef2be8a3293bdcdf7771037edb0502ae4ca76c31",
+  "accepted_squash": "dd05d3dd8dd8f690941f22e1583acf2026a23955",
+  "build_log_sha256": "40bd4a48d0910c5de54064a663ec1c343e33e6909f699b1e5b0f6ef4b28ff9f9",
+  "executable_sha256": "3de93829850829db53927e5a079a855d1c09922f238a3a330f5d01f32f9eb1fb",
+  "new_build": false,
+  "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "reference_count": 18,
+  "reference_manifest_sha256": "7459dda73f44e8a61b4e3cfd4969b0a6a32991eef9aea4f24b7bc1e5bef9b4ec",
+  "reference_trace_hashes": {
+    "C_SW_WATER_ANCHORED_90C_DOWN_axial": "71b69e3141b307058b739653c458a7ec9a916c4b18809ab00e07d3ca269b95ef",
+    "C_SW_WATER_ANCHORED_90C_DOWN_base": "9960f2b38d7febff949f799556dc86987aa8bf88223cefb96a1e1c968793c3a5",
+    "C_SW_WATER_ANCHORED_90C_DOWN_property": "b597dc3d571d881d3fc10eeb2e2d006c3ebf42cf6bbc110da54f863259789bd2",
+    "C_SW_WATER_ANCHORED_90C_DOWN_radial": "d87d34ce8dee1c9be6c6fbd21a9c5dffee1f59f43ce4106ea2a6159ff6cee033",
+    "C_SW_WATER_ANCHORED_90C_DOWN_temporal": "00bc64fd93143812f984706a2f22a4672f7726914a80f761c008d8cd9567ceed",
+    "C_SW_WATER_ANCHORED_90C_UP_axial": "b8c31899a98a13fd68a932922cc241bef7ca88f28744154ad07e1f48901d7f1e",
+    "C_SW_WATER_ANCHORED_90C_UP_base": "3fa8d9f2687137518fd52fddadeba3122b3a3d5af22377ae8c65975c7d38699c",
+    "C_SW_WATER_ANCHORED_90C_UP_property": "0167df27294183d0cda9cf3bef32673f70615bbc8c70c68bd3a87d9716412d1d",
+    "C_SW_WATER_ANCHORED_90C_UP_radial": "81956083c9c5efcffc63165eb505ca189f58a7090034d96582888bbbce6bb1df",
+    "C_SW_WATER_ANCHORED_90C_UP_temporal": "522d368578883c2b00b64cae44ace85bbcf305b3cb56e7d0b444cb5d4d6e3b84",
+    "C_TR_LINEAR_DOWN_axial": "6abb00abc66001780ff447d595a624c1e87d1c80c1283db797c3d9099f917cf6",
+    "C_TR_LINEAR_DOWN_base": "17ea6a16f7c1cff8f7dcee73367d0f566e3f5c8c8ce0daa691ec7c7223d12fd3",
+    "C_TR_LINEAR_DOWN_radial": "4e1e47a25688ec4c3191b584dcc5933c5641ed6f00b4b7a2d89878950adeacc0",
+    "C_TR_LINEAR_DOWN_temporal": "cce0be2efc1d1056397bfc0f842aba54a53452f3c82b96e487cfb0176e17dd96",
+    "C_TR_LINEAR_UP_axial": "f5ce476afd2e3cb2e1cc9300ce9bc1ee530d21fab332ed815d6560888f6b2810",
+    "C_TR_LINEAR_UP_base": "f911c54a66f5a76f6154c8751a4362b5b917d155a3b1f9306ea8585e89d9160f",
+    "C_TR_LINEAR_UP_radial": "fd134d8c3138454d681bf8fcc430d5afe01381e715e034ed9ced22cc62770169",
+    "C_TR_LINEAR_UP_temporal": "d8a47fb73e4021e054b5d86de657a05fda41479fc41572e69800bd58c3b02dc8"
+  },
+  "runtime_sha256": "91917bc53ed84777a7c3eaf9838954bdb947041d8ad3dd0e9fd1e137d7052d5c",
+  "source_build": {
+    "solver/espressoWholePullFoam/aggregateViscosity.H": "8b7ef1b7e4fc7ba0eb52dc2d06cb0b5770aa8021fe481af23f3a74c0c45fbb8c",
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "0e31905c1f174554cf192122e565d566ebd7327ac6d4a6a8cd7e4c2df3beb667",
+    "solver/espressoWholePullFoam/forchheimerResistance.H": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124",
+    "solver/espressoWholePullFoam/machineBoundaryModel.H": "20d8e48ee6c4f9ffe6c61b40604760be65fc3ff4225f33f2cac5a61437baf719",
+    "solver/espressoWholePullFoam/poroelasticCompaction.H": "4a673a52e9d690ac22b3ecc21b8cf2c9b7e32168bd62863465c7e53b9515b0b6",
+    "solver/espressoWholePullFoam/prescribedFlowBoundaryModel.H": "a593bbb86e06af081b9a6d277c8f99030f4ae25f86c86949645d56fd6e2e8082",
+    "solver/espressoWholePullFoam/prescribedPressureBoundaryModel.H": "2b8f4d622129fdfe4c2606d4445d5ee12ad02a509dcc6341f8aad8e2581cd234"
+  },
+  "source_commit": "2058d0e947ee9eb92c52d64f6165b810f1fb4732",
+  "source_hashes": {
+    "docs/cards/sobolik2002.md": "92abf4779318f4ef6fa12851753b5ddf3012f4e8451385529b352629fe6834b4",
+    "docs/cards/telisromero2001.md": "3635c6221ab516405f69564d55c7c72d8664007a72d30be5767c2cdad4315b36",
+    "puckworks/analysis/g10_viscosity_sensitivity.py": "fe2da859f724cd783ce28445b916aa2f98e85fe4caeae1bd7c5831f2b171be5f",
+    "puckworks/data/__init__.py": "7adb18f36784058bbf8ea596cf54d9ca0a8d8ac20ed57037bffdb2243957c805",
+    "puckworks/data/g10_liquor_rheology/telisromero2001_table1_eta.csv": "dc1cbfd5bd472668f9f62a551f4a04a92460d1d72a1674e1288ded90866610de",
+    "puckworks/data/sobolik2002/README.md": "1acca05013884dce09c4e3022b225c27807effb3c8842e45612236ce21553d3d",
+    "puckworks/data/sobolik2002/eq5_viscosity_dilute_computed.csv": "2cd37968d78e704da7ab86378a61fb53306abf2e2515d21332432fe18e0dbd0d",
+    "puckworks/data/sobolik2002/fig3_viscosity_dilute_weisser_digitized.csv": "bfa79ea7a4632455373cde8a03a92abfb8eb9aba2ed690e8d136a51027394452",
+    "puckworks/data/telisromero2001/PROVENANCE.md": "066538a3a8fa9b65c4361306eae47e33426567ca54dac7441dbffa7ffad4e610",
+    "puckworks/models/pannusch2024/closures.py": "9d144765200b66422e72218f8ceff5d5ca531da88150fa71d023bbc490b20cf1"
+  },
+  "source_tree": "a6ffb312473b15be43c1571a893b19873ea47c5a",
+  "tables": {
+    "SW_WATER_ANCHORED_90C_base.table": "f573b330b959c641ef53f7ca14f579cfa12701cb4eb875a68efeef7350540948",
+    "SW_WATER_ANCHORED_90C_refined.table": "578de2bd622e06ed14fdee18e22509e410e71b1d21a3516f9877c41d70da8842",
+    "TR_LINEAR.table": "c66bb035be1e6126ff4ab713cd08d08852a539392599a46fbd36d15103c1f3f3"
+  }
+}

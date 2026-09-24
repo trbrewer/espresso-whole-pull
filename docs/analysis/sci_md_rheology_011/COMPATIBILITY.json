@@ -1,0 +1,255 @@
+{
+  "A_observer_parity": {
+    "C_SW_WATER_ANCHORED_90C_DOWN_axial": "IDENTICAL",
+    "C_SW_WATER_ANCHORED_90C_DOWN_base": "IDENTICAL",
+    "C_SW_WATER_ANCHORED_90C_DOWN_property": "IDENTICAL",
+    "C_SW_WATER_ANCHORED_90C_DOWN_radial": "IDENTICAL",
+    "C_SW_WATER_ANCHORED_90C_DOWN_temporal": "IDENTICAL",
+    "C_SW_WATER_ANCHORED_90C_UP_axial": "IDENTICAL",
+    "C_SW_WATER_ANCHORED_90C_UP_base": "IDENTICAL",
+    "C_SW_WATER_ANCHORED_90C_UP_property": "IDENTICAL",
+    "C_SW_WATER_ANCHORED_90C_UP_radial": "IDENTICAL",
+    "C_SW_WATER_ANCHORED_90C_UP_temporal": "IDENTICAL",
+    "C_TR_LINEAR_DOWN_axial": "IDENTICAL",
+    "C_TR_LINEAR_DOWN_base": "IDENTICAL",
+    "C_TR_LINEAR_DOWN_radial": "IDENTICAL",
+    "C_TR_LINEAR_DOWN_temporal": "IDENTICAL",
+    "C_TR_LINEAR_UP_axial": "IDENTICAL",
+    "C_TR_LINEAR_UP_base": "IDENTICAL",
+    "C_TR_LINEAR_UP_radial": "IDENTICAL",
+    "C_TR_LINEAR_UP_temporal": "IDENTICAL"
+  },
+  "legacy_generated_physics": {
+    "C_SW_WATER_ANCHORED_90C_DOWN_axial": {
+      "render_block_mesh": "a5ad1e3290f1dac9f961a0f4a31925565c00ad95ff44734d0957d840d04bed2b",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "bb63dccf529a86012825e50f9a275af5d464dc7f4834dfa40f0532cf362f0379"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_base": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "1cd91653d43978c12db4ed36dcf3d3418dffc16c2cb198ec8f372fed12497276"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_base_off": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "fcc817ebdac40c740032bd983357b29f731667fa341820d6da9305d489e76b60"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_property": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "bbd5fbd2ea2579de7680be3da9a260b206e419f7e5622f5e35497e84aa84aa7d"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_radial": {
+      "render_block_mesh": "37dc5b0f1587d4e0020a224b7e6ef13ed4a46742c8b92b78cae8418be710fa85",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "1cd91653d43978c12db4ed36dcf3d3418dffc16c2cb198ec8f372fed12497276"
+    },
+    "C_SW_WATER_ANCHORED_90C_DOWN_temporal": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "dc2700ef15286e684667eee387d965e7145ae1b806b14cb8ea3eb8177b1188b9",
+      "render_properties": "1cd91653d43978c12db4ed36dcf3d3418dffc16c2cb198ec8f372fed12497276"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_axial": {
+      "render_block_mesh": "a5ad1e3290f1dac9f961a0f4a31925565c00ad95ff44734d0957d840d04bed2b",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "298da9f5792c0ed377880018885ad085332304f7da21ef63a6acc5621fa6cd77"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_base": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "49f2bbed09ef6a680d9bd90d359ba2fa56dbc7842a88621656a4f7516c2f07a2"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_base_off": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "b6937387a83e39856c70473ab07f63fe95541ed7a4cc90f04ee61a7a5055ad62"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_property": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "ddf59ff7599c787a5d683d69180db8bf528ba37bd2a3d69dd0aa1c5780fb0fcf"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_radial": {
+      "render_block_mesh": "37dc5b0f1587d4e0020a224b7e6ef13ed4a46742c8b92b78cae8418be710fa85",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "49f2bbed09ef6a680d9bd90d359ba2fa56dbc7842a88621656a4f7516c2f07a2"
+    },
+    "C_SW_WATER_ANCHORED_90C_UP_temporal": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "dc2700ef15286e684667eee387d965e7145ae1b806b14cb8ea3eb8177b1188b9",
+      "render_properties": "49f2bbed09ef6a680d9bd90d359ba2fa56dbc7842a88621656a4f7516c2f07a2"
+    },
+    "C_TR_LINEAR_DOWN_axial": {
+      "render_block_mesh": "a5ad1e3290f1dac9f961a0f4a31925565c00ad95ff44734d0957d840d04bed2b",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "fef559bace6d0e43bc729f6ce1223cf9b480a5a6001496065ab08e9b178db92b"
+    },
+    "C_TR_LINEAR_DOWN_base": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "c1bb3df8d5092a35cc3570e6dbee3cd6d7f71710c0725e1c506af2d872e72744"
+    },
+    "C_TR_LINEAR_DOWN_base_off": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "fcc817ebdac40c740032bd983357b29f731667fa341820d6da9305d489e76b60"
+    },
+    "C_TR_LINEAR_DOWN_radial": {
+      "render_block_mesh": "37dc5b0f1587d4e0020a224b7e6ef13ed4a46742c8b92b78cae8418be710fa85",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "c1bb3df8d5092a35cc3570e6dbee3cd6d7f71710c0725e1c506af2d872e72744"
+    },
+    "C_TR_LINEAR_DOWN_temporal": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "dc2700ef15286e684667eee387d965e7145ae1b806b14cb8ea3eb8177b1188b9",
+      "render_properties": "c1bb3df8d5092a35cc3570e6dbee3cd6d7f71710c0725e1c506af2d872e72744"
+    },
+    "C_TR_LINEAR_UP_axial": {
+      "render_block_mesh": "a5ad1e3290f1dac9f961a0f4a31925565c00ad95ff44734d0957d840d04bed2b",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "98215ed8af4d27ddb625cbdd2f191dd73e260a2eb605ab9fba47eea8da5013f4"
+    },
+    "C_TR_LINEAR_UP_base": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "46e03d5c62d0ead994acf182758c55a1d8a3e317d9633eaf4c4b80a335054165"
+    },
+    "C_TR_LINEAR_UP_base_off": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "b6937387a83e39856c70473ab07f63fe95541ed7a4cc90f04ee61a7a5055ad62"
+    },
+    "C_TR_LINEAR_UP_radial": {
+      "render_block_mesh": "37dc5b0f1587d4e0020a224b7e6ef13ed4a46742c8b92b78cae8418be710fa85",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "46e03d5c62d0ead994acf182758c55a1d8a3e317d9633eaf4c4b80a335054165"
+    },
+    "C_TR_LINEAR_UP_temporal": {
+      "render_block_mesh": "2a1a10ed95b57044f4bdae6801450746633981429b27df8de8489035eef7d15e",
+      "render_control_dict": "dc2700ef15286e684667eee387d965e7145ae1b806b14cb8ea3eb8177b1188b9",
+      "render_properties": "46e03d5c62d0ead994acf182758c55a1d8a3e317d9633eaf4c4b80a335054165"
+    },
+    "E2_SW_WATER_ANCHORED_90C_DOWN_axial": {
+      "render_block_mesh": "446f2967851c1477b07e9c961bae0917e3b9a8a6957f1564a94993893fb9586e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "bb63dccf529a86012825e50f9a275af5d464dc7f4834dfa40f0532cf362f0379"
+    },
+    "E2_SW_WATER_ANCHORED_90C_DOWN_base": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "1cd91653d43978c12db4ed36dcf3d3418dffc16c2cb198ec8f372fed12497276"
+    },
+    "E2_SW_WATER_ANCHORED_90C_DOWN_base_off": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "fcc817ebdac40c740032bd983357b29f731667fa341820d6da9305d489e76b60"
+    },
+    "E2_SW_WATER_ANCHORED_90C_DOWN_property": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "bbd5fbd2ea2579de7680be3da9a260b206e419f7e5622f5e35497e84aa84aa7d"
+    },
+    "E2_SW_WATER_ANCHORED_90C_DOWN_temporal": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "dc2700ef15286e684667eee387d965e7145ae1b806b14cb8ea3eb8177b1188b9",
+      "render_properties": "1cd91653d43978c12db4ed36dcf3d3418dffc16c2cb198ec8f372fed12497276"
+    },
+    "E2_SW_WATER_ANCHORED_90C_UP_axial": {
+      "render_block_mesh": "446f2967851c1477b07e9c961bae0917e3b9a8a6957f1564a94993893fb9586e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "298da9f5792c0ed377880018885ad085332304f7da21ef63a6acc5621fa6cd77"
+    },
+    "E2_SW_WATER_ANCHORED_90C_UP_base": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "49f2bbed09ef6a680d9bd90d359ba2fa56dbc7842a88621656a4f7516c2f07a2"
+    },
+    "E2_SW_WATER_ANCHORED_90C_UP_base_off": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "b6937387a83e39856c70473ab07f63fe95541ed7a4cc90f04ee61a7a5055ad62"
+    },
+    "E2_SW_WATER_ANCHORED_90C_UP_property": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "ddf59ff7599c787a5d683d69180db8bf528ba37bd2a3d69dd0aa1c5780fb0fcf"
+    },
+    "E2_SW_WATER_ANCHORED_90C_UP_temporal": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "dc2700ef15286e684667eee387d965e7145ae1b806b14cb8ea3eb8177b1188b9",
+      "render_properties": "49f2bbed09ef6a680d9bd90d359ba2fa56dbc7842a88621656a4f7516c2f07a2"
+    },
+    "E2_TR_LINEAR_DOWN_axial": {
+      "render_block_mesh": "446f2967851c1477b07e9c961bae0917e3b9a8a6957f1564a94993893fb9586e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "fef559bace6d0e43bc729f6ce1223cf9b480a5a6001496065ab08e9b178db92b"
+    },
+    "E2_TR_LINEAR_DOWN_base": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "c1bb3df8d5092a35cc3570e6dbee3cd6d7f71710c0725e1c506af2d872e72744"
+    },
+    "E2_TR_LINEAR_DOWN_base_off": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "fcc817ebdac40c740032bd983357b29f731667fa341820d6da9305d489e76b60"
+    },
+    "E2_TR_LINEAR_DOWN_temporal": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "dc2700ef15286e684667eee387d965e7145ae1b806b14cb8ea3eb8177b1188b9",
+      "render_properties": "c1bb3df8d5092a35cc3570e6dbee3cd6d7f71710c0725e1c506af2d872e72744"
+    },
+    "E2_TR_LINEAR_UP_axial": {
+      "render_block_mesh": "446f2967851c1477b07e9c961bae0917e3b9a8a6957f1564a94993893fb9586e",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "98215ed8af4d27ddb625cbdd2f191dd73e260a2eb605ab9fba47eea8da5013f4"
+    },
+    "E2_TR_LINEAR_UP_base": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "46e03d5c62d0ead994acf182758c55a1d8a3e317d9633eaf4c4b80a335054165"
+    },
+    "E2_TR_LINEAR_UP_base_off": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "b6937387a83e39856c70473ab07f63fe95541ed7a4cc90f04ee61a7a5055ad62"
+    },
+    "E2_TR_LINEAR_UP_temporal": {
+      "render_block_mesh": "00f4c3f7801a2940770c31b38524e4d0080440199be30bb895550fcd3ddeac04",
+      "render_control_dict": "dc2700ef15286e684667eee387d965e7145ae1b806b14cb8ea3eb8177b1188b9",
+      "render_properties": "46e03d5c62d0ead994acf182758c55a1d8a3e317d9633eaf4c4b80a335054165"
+    },
+    "config/reference_R0.json": {
+      "render_block_mesh": "a69ba33790e4a984e2e0eae1ab2c8c16477b09893af73a83c0c6d21cf23950df",
+      "render_control_dict": "27e9392c67b152e63801f1849218c03fa856bd9b77f0e9f553025f5faf565bd0",
+      "render_properties": "196afa755f96cbaf22f205ea9b230cb1837b3120c6796318aa1f806e9915a916"
+    },
+    "legacy_radial_constant": {
+      "render_block_mesh": "a5ad1e3290f1dac9f961a0f4a31925565c00ad95ff44734d0957d840d04bed2b",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "140db09cc017b59b193ed098a62c924449a1c5a41b818fcf7cdaaa09a25f96cc"
+    },
+    "legacy_radial_constant_off": {
+      "render_block_mesh": "a5ad1e3290f1dac9f961a0f4a31925565c00ad95ff44734d0957d840d04bed2b",
+      "render_control_dict": "9a44f15666fea43461c912dde288d6683e6f92446fbcf6b1643e042b7d32b24e",
+      "render_properties": "dd274e81f056d96b8346d3d1f751b7a7e62823d497324146a3f85d195e460c6f"
+    }
+  },
+  "native_reruns": 0,
+  "provenance_metadata": "No physical differences normalized. New source/config hashes will change generated provenance metadata only.",
+  "status": "PASS",
+  "templates": {
+    "cases/reference_R0_20g_58mm_9bar/0.orig/U": "17049d5517d5e69eb23f4dca9ec70008361904994657faf4368346514ed298e0",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/dissolvedConcentration": "f318c437400b1f1e012094e2e4c1055c04acd7c7228f3e7f65dd84a379121e72",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/localExtractionRate": "f5140dd725150e68ee62d47fcc82a767e2a8fc3c88dadbba6e47089efa8aaa0d",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/p": "147df2ac2c4eb656ccfb2999e4f04497ffe1e656f278eb7bee1c5d08a8489f6b",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/permeability": "402d7a54402dfb7226854ee73da1e75f80f3c991e834a1f3e2e12a522cab1b7c",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/porosity": "c9349c5abc83d588ea4a7422dbb58dec851556a43218f64b06e9a8c462cafad0",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/remainingExtractable": "185577ae37abca36e293ee4b5c12e0c2bf74895b332b897a1d02d29426082eb8",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/saturation": "7ce4722123bc42cd9beda12a679f39942cf8429bccb8c6ceeb11b7a137692993",
+    "cases/reference_R0_20g_58mm_9bar/0.orig/wetMask": "c03fa177cc355ad85c475af36eac3d29df0fedf8799d1f1ec90dc828ac390b74",
+    "cases/reference_R0_20g_58mm_9bar/system/fvSchemes": "60633ee2ea2527093aeab8a464ca7097ff04d3bb85bdf3542bfc2a3eb38aa07f",
+    "cases/reference_R0_20g_58mm_9bar/system/fvSolution": "39775cfc57b7376ae1e9a9e409d3dbb202009974ab9d371d4cefd689b77124b0"
+  }
+}

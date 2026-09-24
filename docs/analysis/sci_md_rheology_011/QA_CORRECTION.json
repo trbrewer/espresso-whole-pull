@@ -1,0 +1,5 @@
+{
+  "corrected_freeze_sha256": "71b699370616f6fd807175ecf88f8bf56456b1e00fa579441de473978fbe499c",
+  "original_freeze_sha256": "e26ef1bc8cdfc69ff1c961c916ee6f705831a07aad5b4af7b1e42a3b242016c0",
+  "scope": "Historical checkers preserve 009 source bytes and bind only supported 011 geometry changes; add executable module entry point. No scenario/table/native input/observer/metric/threshold change; zero full runs before correction. One independent audit still pending."
+}

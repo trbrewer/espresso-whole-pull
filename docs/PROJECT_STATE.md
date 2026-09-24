@@ -13,6 +13,23 @@ production defaults/lock unchanged; physical validation NOT_ESTABLISHED.
 Linked task PRs remain open/unmerged; no successor is authorized.
 
 
+
+## SCI-MD-RHEOLOGY-011 distribution-preserving relocation (2026-09-24)
+
+G2 / GEOMETRY_COMPATIBILITY_NO_GOVERNING_PHYSICS_CHANGE; IMPLEMENTED_AND_EXECUTED.
+[Result](analysis/sci_md_rheology_011/RESULT.md):
+NO_MATERIAL_ARRANGEMENT_CONTRAST_FOR_TESTED_DELIVERY; all eight decisions
+BELOW_BUDGET with qualified empirical allowances. Full E2 was not triggered
+(E2_NOT_EXECUTED_CONDITIONAL_GATE). UP support 0.016584641 kg; DOWN 0.016895013 kg.
+Exactly 32 new integrations (14 short + 18 C), zero failures/retries; all 18
+accepted A/C integrations reused read-only. Class distributions and inventories
+are preserved by verified interface-aligned geometry. Native physics/operators,
+production defaults and Puckworks lock are unchanged. Independent pre-scoring
+review and bounded correction addendum PASS; final exact-head review/hosted CI
+are separate PR #171 statuses. This qualified delivery null is not hydraulic
+invariance or E2 transfer qualification. PHYSICAL_VALIDATION=NOT_ESTABLISHED.
+PR stays open/unmerged; no successor execution or adoption is authorized.
+
 ## SCI-MD-RHEOLOGY-010 matched-conductance reversal (2026-09-23)
 
 G1 / SOURCE_SCENARIO_CHANGE_ONLY; IMPLEMENTED_AND_EXECUTED.
