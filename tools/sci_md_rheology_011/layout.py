@@ -20,6 +20,9 @@ def plot():
     fig.tight_layout(rect=(0,.09,1,1))
     fig.savefig(DOC/'layouts.svg',metadata={'Date':None})
     plt.close(fig)
+    # Matplotlib emits trailing spaces in SVG path data; remove whitespace only.
+    for path in DOC.glob("*.svg"):
+        path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines())+"\n")
 
 if __name__=='__main__':
     plot()
