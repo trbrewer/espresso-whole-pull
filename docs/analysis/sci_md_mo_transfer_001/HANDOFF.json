@@ -1,0 +1,44 @@
+{
+  "task": "SCI-MD-MO-TRANSFER-001",
+  "status": "BLOCKED_SOURCE_CONTRACT",
+  "secondary_status": "NUMERICALLY_UNRESOLVED",
+  "governance_class": "G1",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "producer_repository": "trbrewer/puckworks",
+  "producer_candidate": {
+    "commit": "2781cbd535fb0253e44ca860f3f12d566ecf73ee",
+    "tree": "6dde801a8e470c5cfb7a3ca7a4eb2f7a8a252931"
+  },
+  "consumer_base": {
+    "commit": "51ac2a0bc0d4f083dcbd6f6285c7f32f27d2c6be",
+    "tree": "5908e3a00bd098d5938d9e3cd54a763d945d6893"
+  },
+  "producer_freeze_sha256": "7aca89675fef2bec7955f569fbbbaf56f637f26f731de99ed5ab528f498e8098",
+  "producer_artifacts": {
+    "docs/analysis/sci_md_mo_transfer_001/freeze.json": "7aca89675fef2bec7955f569fbbbaf56f637f26f731de99ed5ab528f498e8098",
+    "docs/analysis/sci_md_mo_transfer_001/decision.json": "e4a8c5cee6be69a71b5f1cb04b67e077c133935b1baf99e760d3a6a988ed9e53",
+    "docs/analysis/sci_md_mo_transfer_001/RESULT.md": "0f77dcf32e7f67e9545554dcbed7199396ef7ec7cc3f8004d22faa909de07fa0",
+    "docs/analysis/sci_md_mo_transfer_001/observation_register.csv": "26f810a73790adfc93f428ddf68bb3235b8043de27efecb5a935082d5f9350eb",
+    "docs/analysis/sci_md_mo_transfer_001/numerical_summary.json": "5f5f7431985b79ff3294b0b342c5ee1cc5d62849e60110a8d3479ffd1e68bcbd",
+    "puckworks/analysis/mo_transfer.py": "738053eaefc44b3877a725c37064e17eb0ef5d79a62a5014e6b73cd26351cb14",
+    "puckworks/analysis/mo_transfer_run.py": "e964ba78a7c24c6a4193b0864f0fd2f6c94cb4d6c034b2d5c131297c64a66b66",
+    "puckworks/analysis/mo_transfer_report.py": "146a2f1c818c8c63eeae81460c43c39636a905cde0779e4976f320365c5695b3"
+  },
+  "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "production_dependency_changed": false,
+  "independent_acceptance": "pending exact submitted identities; external receipt on linked PRs",
+  "scoring_approval": false,
+  "optimization_starts": 0,
+  "real_predictions": 0,
+  "score_passes": 0,
+  "bed_verification_launched": 36,
+  "bed_verification_passed": 32,
+  "bed_verification_rejected": 4,
+  "all_verification_solver_calls": 2419,
+  "physical_validation": "NOT_ESTABLISHED",
+  "architecture": "NOT_ADJUDICATED",
+  "native_integrations": 0,
+  "native_builds": 0,
+  "development_decision": "RETAIN_PRODUCTION_NO_KINETIC_WINNER_OR_REJECTION",
+  "successor_execution": false
+}

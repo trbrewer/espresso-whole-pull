@@ -1,5 +1,17 @@
 # Project State
 
+## SCI-MD-MO-TRANSFER-001 conservative reference (2026-09-24)
+
+G1 / NO_GOVERNING_PHYSICS_CHANGE. [Exact research handoff](analysis/sci_md_mo_transfer_001/RESULT.md):
+BLOCKED_SOURCE_CONTRACT for flow and powder transfer; numerical application
+separately NUMERICALLY_UNRESOLVED. Three conservative candidate implementations,
+51-row audit and 36 bed verification attempts; zero real fits/predictions/scores.
+Retain production behavior without a kinetic winner or rejection. Original
+manuscript inspected; cup split/startup/denominator and common-material authority
+remain unresolved. Production lock unchanged; native integrations/builds=0;
+PHYSICAL_VALIDATION_NOT_ESTABLISHED. No merge or successor execution.
+
+
 ## SCI-MD-MORONEY-TRANSFER-001 executed comparison (2026-09-24)
 
 G1 / NO_GOVERNING_PHYSICS_CHANGE. [Exact Puckworks handoff](analysis/sci_md_moroney_transfer_001/RESULT.md):
