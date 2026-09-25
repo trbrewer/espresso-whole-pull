@@ -1,6 +1,16 @@
 {
   "bounded_recheck": "Affected prior001 and sci_md_012 suites passed with existing exact a3428a4 authority checkout; no repository code changes",
   "change_contract": "PASS",
+  "ci_bookkeeping_correction": {
+    "classification": "QA_BOOKKEEPING_ONLY_SCIENTIFIC_EVIDENCE_UNCHANGED",
+    "correction": "add existing-schema COMPLETE_POSITIVE programme companion; synchronize current package QA with generated manifest; retain all historical records",
+    "failed_run": 36142405975,
+    "failures": [
+      "ledger opportunity missing machine programme entry",
+      "current package QA source count/hash stale"
+    ],
+    "log_sha256": "d189cb4544105629658680f82e080a28161f191069d506c7538f6f2f6f722f29"
+  },
   "full_python_suite": "1572 tests; 9 skipped; one failed test and one setup error caused solely by missing local source-authority environment paths",
   "governing_change_boundary": "PASS",
   "historical_baseline": "PASS",
