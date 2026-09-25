@@ -18,6 +18,38 @@
   },
   "opportunities": [
     {
+      "opportunity_id": "SCI-MD-GRUDEVA-CLOCK-001",
+      "title": "Conditional held-shot time versus beverage-mass extraction prediction",
+      "data_families": [
+        "grudeva2025"
+      ],
+      "scientific_question": "Does cumulative measured beverage mass improve held-shot vial-solute prediction beyond elapsed time?",
+      "model_component": "analysis-only shared empirical delivery predictor",
+      "status": "COMPLETE_POSITIVE",
+      "priority": 1,
+      "prerequisites": [
+        "qualified joint mass/TDS physical-shot mapping",
+        "independent exact-freeze pre-scoring approval"
+      ],
+      "task_id": "SCI-MD-GRUDEVA-CLOCK-001",
+      "current_evidence": "MASS adequate in 11/13 shots; 61.6061% lower mean RMSE than TIME; material improvement over TEMPLATE; MIXED complexity not earned",
+      "expected_information": "retrospective source-conditioned whole-shot-grouped predictive utility",
+      "positive_action": "prefer MASS reduced research predictor under declared source conditions",
+      "negative_action": "reject adequacy only for tested forms that fail the output budgets",
+      "null_action": "retain simpler coordinate absent material gain",
+      "blocked_action": "preserve named source or numerical limits without substituting aggregate targets",
+      "claim_ceiling": "RETROSPECTIVE_SOURCE_CONDITIONED_WHOLE_SHOT_GROUPED_PREDICTION_ONLY",
+      "home_lab_effect": "NO_LAB_ACTION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_grudeva_clock_001/RESULT.md",
+        "docs/analysis/sci_md_grudeva_clock_001/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner authority for changed source/cohort or independent transfer",
+      "notes": "Conditional compact prediction only; no production solver/default/lock changes, physical validation, laboratory operation or automatic successor. Literal-zero and both timing sensitivities preserve the result; extra14 cohort remains unqualified. Exact Puckworks research authority and artifact hashes in task HANDOFF.json."
+    },
+    {
       "opportunity_id": "SCI-MD-MORONEY-TRANSFER-001",
       "title": "Conservative deep-to-shallow extraction transfer",
       "data_families": [
