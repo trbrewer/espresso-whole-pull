@@ -1,8 +1,17 @@
 # Project State
 
-## SCI-MD-MORONEY-TRANSFER-001 preparation (2026-09-24)
+## SCI-MD-MORONEY-TRANSFER-001 executed comparison (2026-09-24)
 
-Conservative deep-to-shallow extraction research implementation is prepared in Puckworks. Original figure-object qualification is pending; no real-data calibration or scoring has executed. Spatial storage integration remains NOT_ADJUDICATED. [Handoff](analysis/sci_md_moroney_transfer_001/RESULT.md). Production lock and PHYSICAL_VALIDATION=NOT_ESTABLISHED are unchanged; no successor is authorized.
+G1 / NO_GOVERNING_PHYSICS_CHANGE. [Exact Puckworks handoff](analysis/sci_md_moroney_transfer_001/RESULT.md):
+CALIBRATION_INADEQUATE throughout the frozen startup/readout/start family.
+Original-PDF qualification, independent pre-scoring approval, 33 deep-only
+calibrations, immutable transfer predictions and once-only scoring are complete.
+Numerics qualify; deep cumulative delivery misses the 1.0 EY-pp budget even in
+the most favorable tested case (2.185 pp with numerical allowance). Do not
+prioritize integration of this tested formulation; spatial-storage architecture
+remains NOT_ADJUDICATED. No independent transfer-failure or mechanism inference.
+Production lock and PHYSICAL_VALIDATION=NOT_ESTABLISHED remain unchanged; no
+successor execution, native build/integration, default change or merge.
 
 ## SCI-MD-MAILLE-TRANSFER-001 source gate (2026-09-24)
 

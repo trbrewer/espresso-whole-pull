@@ -1,8 +1,15 @@
 # External espresso data — EWP use map
 
-## Moroney transfer preparation (2026-09-24)
+## Moroney executed transfer comparison (2026-09-24)
 
-`moroney2015/data` selected Fig3/7/11 CSVs and source tables were inspected. A task-local mapping flags four suspected Fig11 legend symbols, pending original-PDF confirmation. Public text is available; original PDF object evidence is unresolved. Other source families remain catalog-only for this task. [Exact development handoff](analysis/sci_md_moroney_transfer_001/RESULT.md); no production authority promotion.
+`moroney2015/data` selected Fig3/7/11 CSVs, source tables and original 2015 PDF
+were inspected. Original PDF objects and visual checks confirm four Fig11 legend
+symbols at data rows 7, 33, 45, 71; the qualified view accepts 44 deep/28 shallow
+observations and excludes 44 duplicate deep symbols. Original CSVs are unchanged.
+The bounded deep-only fit/frozen-transfer run returns CALIBRATION_INADEQUATE,
+with qualified numerics. [Exact development handoff](analysis/sci_md_moroney_transfer_001/RESULT.md)
+records metrics and implications. Other families remain catalog-only for this
+task; no production authority promotion, exhaustion claim or successor follows.
 
 ## Maillé held-material source gate (2026-09-24)
 

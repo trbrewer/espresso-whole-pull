@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1314,
-  "total_uncompressed_bytes_excluding_manifest": 22322560,
-  "aggregate_source_sha256": "e9fd4a62ca3658c4db214d384704f8239f6b81f6c2d71b6b6480e45afd9b03e9",
-  "aggregate_sha256": "e9fd4a62ca3658c4db214d384704f8239f6b81f6c2d71b6b6480e45afd9b03e9",
+  "total_uncompressed_bytes_excluding_manifest": 22327686,
+  "aggregate_source_sha256": "84b9e7625bd8bb6c893b25e78e6009c2f5fd7504beb3cc38570d27c5c91c5f87",
+  "aggregate_sha256": "84b9e7625bd8bb6c893b25e78e6009c2f5fd7504beb3cc38570d27c5c91c5f87",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -729,8 +729,8 @@
       "git_mode": "100644"
     },
     "docs/EXTERNAL_ESPRESSO_DATA.md": {
-      "sha256": "935ed45775c1fe747c0a705caa195535769b8830a936f735e43e9ccd6e0fd118",
-      "bytes": 8750,
+      "sha256": "903dc438772ad85d65dca9ebafcb2751e9169b098cbfec65a9ace2ae72890765",
+      "bytes": 9005,
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "a02112063432d8b5e451bd7c60b646ea19defef0a214a3526b6db0ea969227b9",
-      "bytes": 19173,
+      "sha256": "6e7de446fc2459041dd7d2c7b2bc35749eda62e98e606333352f6c45d67202a5",
+      "bytes": 19323,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2219,13 +2219,13 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_moroney_transfer_001/HANDOFF.json": {
-      "sha256": "fea677c2ceb150010cdcc2b085a07c5852d2430787523ea952658aa82b216cc9",
-      "bytes": 1644,
+      "sha256": "9a808bb39b64b7e6c211490765c5c1ce4a793f546bb01db7e522fbc6b59ba2a3",
+      "bytes": 4126,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_moroney_transfer_001/RESULT.md": {
-      "sha256": "9b86bc3813d2df340a6cd64cdfd4a29a7f8cf05a0bc38516b1ebb4127992d6f8",
-      "bytes": 2763,
+      "sha256": "c5aba8c52184f9805596a8e1dc207275dbd6f369bce6432ab5222340bcaad8a6",
+      "bytes": 5002,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_pannusch_flow_history_001/ATTEMPT_LOG.json": {
