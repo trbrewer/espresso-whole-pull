@@ -18,6 +18,38 @@
   },
   "opportunities": [
     {
+      "opportunity_id": "SCI-MD-MORONEY-TRANSFER-001",
+      "title": "Conservative deep-to-shallow extraction transfer",
+      "data_families": [
+        "moroney2015"
+      ],
+      "scientific_question": "Does the deep-conditioned conservative formulation outperform N_M and N_T in shallow transfer?",
+      "model_component": "analysis-only Moroney2015 spatial extraction and storage",
+      "status": "COMPLETE_NEGATIVE",
+      "priority": 1,
+      "prerequisites": [
+        "original Fig11 and selected Fig3 object qualification",
+        "independent pre-scoring scientific approval"
+      ],
+      "task_id": "SCI-MD-MORONEY-TRANSFER-001",
+      "current_evidence": "CALIBRATION_INADEQUATE throughout frozen family; original source qualified; 33 calibrations/66 starts; frozen predictions and once-only scores; numerics qualified",
+      "expected_information": "retrospective same-source conditional predictive utility",
+      "positive_action": "retain spatial storage candidate for separately authorized integration",
+      "negative_action": "deprioritize tested combined formulation and startup family",
+      "null_action": "prefer empirical parsimony if adequate without material gain",
+      "blocked_action": "preserve qualified subsets if a new specifically demonstrated source or numerical defect arises",
+      "claim_ceiling": "RETROSPECTIVE_SAME_SOURCE_CONDITIONAL_MODEL_DEVELOPMENT_ONLY",
+      "home_lab_effect": "DEFER",
+      "completion_evidence": [
+        "docs/analysis/sci_md_moroney_transfer_001/RESULT.md",
+        "docs/analysis/sci_md_moroney_transfer_001/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "independent pre-scoring and final scientific review",
+      "notes": "COMPLETE_NEGATIVE is scoped to calibration inadequacy under the tested bounded procedure, not proof of transfer failure or absence of spatial benefit. Integration not earned; architecture NOT_ADJUDICATED. No production lock or physical-validation change, data-exhaustion/laboratory claim or successor execution."
+    },
+    {
       "opportunity_id": "SCI-MD-011",
       "title": "High-pressure poroelastic puck-closure adjudication",
       "data_families": ["waszkiewicz2025"],

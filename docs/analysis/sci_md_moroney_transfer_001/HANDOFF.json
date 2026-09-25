@@ -1,0 +1,63 @@
+{
+  "task": "SCI-MD-MORONEY-TRANSFER-001",
+  "status": "CALIBRATION_INADEQUATE",
+  "integration_decision": "NOT_ADJUDICATED",
+  "producer_repository": "trbrewer/puckworks",
+  "producer_base": {
+    "base_commit": "e95d4585aa2dd9ab6eaa9da4f6aa8d311109e5ba",
+    "base_tree": "f806e8d4dfc8cf7a0efe323d919536d1e6e7b221"
+  },
+  "consumer_base": {
+    "base_commit": "09cdda7fb4b28229be34915a3371c79229316cee",
+    "base_tree": "6d962e653ab30e3e191e09edb842718d6df76bc0"
+  },
+  "producer_candidate_identity_status": "EXACT_REVIEWED_SCIENTIFIC_RESULT_PLUS_FINAL_REVIEW",
+  "production_dependency_changed": false,
+  "physical_validation": "NOT_ESTABLISHED",
+  "real_data_fits": 33,
+  "target_scores": 1,
+  "native_builds": 0,
+  "successor_execution": false,
+  "producer_artifacts": {
+    "docs/analysis/sci_md_moroney_transfer_001/freeze.json": "39ff2ff62c77879bfd5640217406f4b85c2c9e683f3bf5129e27c3c22b6ba067",
+    "docs/analysis/sci_md_moroney_transfer_001/RESULT.md": "9c4b5a97c47abd4dafe547694e6a974b413ca4a95b4e1366dde0fa636e419c98",
+    "docs/analysis/sci_md_moroney_transfer_001/qualified_rows.csv": "69f980783ec6f15135611c91cc803253ee01ee49fac17ea2aa03272ecfcc43d4",
+    "docs/analysis/sci_md_moroney_transfer_001/source_objects.json": "f5f1809bd23aa857ea1bd780eab4826cf26feded5b4838d16f8e1867e0e80ff7",
+    "docs/analysis/sci_md_moroney_transfer_001/review/pre-scoring-approval.json": "fcfc0017b3ca011a66b3e104af849f5937f9b164d87dab8fe8e73426f315db81",
+    "docs/analysis/sci_md_moroney_transfer_001/review/pre-scoring-review.md": "41447b35df44d6fd6421cab7f74e3ba20a946b4c9ee9a7ce2c34bfd4bc1f0824",
+    "docs/analysis/sci_md_moroney_transfer_001/review/final-result-review.md": "39ee57e1e824d4a03788a07230a8800380ee563a622bb0417087476ac6a705f2",
+    "docs/analysis/sci_md_moroney_transfer_001/results/prediction_freeze.json": "69eb224f51112e036bbf1cbbe17e554a4741c61259cd037d28f28191913868d8",
+    "docs/analysis/sci_md_moroney_transfer_001/results/calibration.json": "99d1701cf007ffc79acbd13720681e1f6889e512e2e4612ee1a385d9337e075c",
+    "docs/analysis/sci_md_moroney_transfer_001/results/predictions.json": "303a393558fafc628c24cc69a4eae7db3f1db8661e9d0ee625bd911533e49a05",
+    "docs/analysis/sci_md_moroney_transfer_001/results/numerics.json": "546a8449d47f7b0e456006537030706f4f4a9d28b95a48fcb9c06f692708ece9",
+    "docs/analysis/sci_md_moroney_transfer_001/results/inventory_audit.json": "2105ae409413e57e0fc512a7a951e039b22e1e3ea5967f8b21973af88f445117",
+    "docs/analysis/sci_md_moroney_transfer_001/results/scores.json": "b2f6d23be2ab56a64b10570e5429090bcb5155af01c5ba62c9bed6dd6caf4ab1",
+    "docs/analysis/sci_md_moroney_transfer_001/results/decisions.json": "96c04a03d65e0a51091503fcb63bc5d60c92bc20f518f4f5d48b1caa5b0470dd",
+    "docs/analysis/sci_md_moroney_transfer_001/results/summary.json": "f637ce8c4e148aca3fb99dc685bb1f3b811238cecf9ad4ff4fbad7682bbb3812",
+    "puckworks/analysis/moroney_transfer.py": "86e65a0b50b7187aea3fe8d4c96fa8582085217cd930c8b4f352bf2825e76302",
+    "puckworks/analysis/moroney_transfer_run.py": "fd902d6cebffc17237d5ddad03d138424a958c37714c793a5627e615cfc52681",
+    "puckworks/analysis/moroney_transfer_report.py": "a6225892300b556945908d38e9a16d863091316e4254e5bc2e46d9bfc1800697"
+  },
+  "independent_review": "ACCEPTED_CALIBRATION_INADEQUATE",
+  "real_scoring_authorized": true,
+  "development_recommendation": "DO_NOT_PRIORITIZE_TESTED_FORMULATION_FOR_INTEGRATION",
+  "optimizer_starts": 66,
+  "scored_prediction_records": 144,
+  "observations": {
+    "accepted_deep": 44,
+    "accepted_shallow": 28,
+    "excluded_duplicate_deep": 44,
+    "excluded_confirmed_legends": 4
+  },
+  "engineering_budgets": {
+    "outlet_rmse_mg_g": 5,
+    "cumulative_max_dry_ey_pp": 1
+  },
+  "most_favorable_tested_deep_delivery_error_with_allowance_ey_pp": 2.185482089192084,
+  "producer_candidate": {
+    "commit": "2d78d3028010d0334112a90c4cf21ae7127ca7d7",
+    "tree": "3e71edf861c3b9ec13504319000b0aab1251ae05"
+  },
+  "reviewed_scientific_tree": "92054d40c2dfa7af29e9a8ea4362cbb8878a8821",
+  "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10"
+}
