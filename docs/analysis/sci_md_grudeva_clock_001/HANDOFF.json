@@ -1,0 +1,46 @@
+{
+  "canonical_artifacts": {
+    "AGGREGATE.json": "1211b60738148c0a379c0353bac14315dc2a40e10330e1b11a9176bb7b83bf89",
+    "EXECUTION.json": "200e4e0ea62c75a0eddcc570599d7b592e3701dce2c48e463566a55a42d3ff7a",
+    "FREEZE.json": "6c436b8f5721193a18c879a50c6b58d28f65aeac2b89916b183867c872a50355",
+    "PREDICTION_MANIFEST.json": "c87dc894ee5b1e3b835b14f608ca0a843ace5eeea1173750e702fca1e60f48ae",
+    "PRIVATE_EVIDENCE_MANIFEST.json": "0ed49aa125da63d5e7fd8998981a612dc5e55644dd4eb1e2aa541d926906f352",
+    "PROTOCOL.md": "795a416b7206d94bccfda01e799b0a9a98c0211161ea7760e80678435558941e",
+    "RESULT.md": "c4e85028a352d23efe579b639743ca14289695ee3f58b5433c537c9dd2b104c0",
+    "SCORE_RECEIPT.json": "5646797a38a4e13c2af5d15bcf970ef37d19f746ee0044d9dce15184d112c028",
+    "SOFTWARE_QA.json": "05255afc9641bcfbe802f63fe384797a60993bb0e25cc41401dafd9ff3e6313c",
+    "SOURCE.json": "660ba40fc9451a8c6601c40ab7350cb3f82264c4260432fabe2e99c161833eb5",
+    "SOURCE_AUDIT.json": "189c094b6d5096e58b6760f689d0082c10424b97eb8e2e73aa2659e6ea7dd964",
+    "review/PRE_SCORING.json": "a1af0e7b461dc6a2c54f54f329d7d5ad41da615c564558ca4b91ccbd96d5a31c"
+  },
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "conditional_inputs": [
+    "measured vial beverage masses in grams",
+    "source-qualified nominal collection intervals in seconds",
+    "shared training-only fitted coefficients"
+  ],
+  "conditional_output": "integrated vial delivered solute in grams; observed-support sums when chemistry unavailable",
+  "execution_commit": "66c09e12916f2d0e1e1b66ecd30705a01aec7b5e",
+  "execution_tree": "4be165c5fae225e50cd54137fbdff08964e7b29c",
+  "governance": "G1",
+  "native_ewp_builds": 0,
+  "native_ewp_integrations": 0,
+  "next_action": "OWNER_DISPOSITION_OF_OPEN_UNMERGED_PRS; no integration/laboratory/rescue/successor execution",
+  "physical_validation": "NOT_ESTABLISHED",
+  "preferred_reduced_research_predictor": "MASS",
+  "production_defaults_changed": false,
+  "production_dependency_lock_changed": false,
+  "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "puckworks_commit": "f395dc004a34f00d8e4583e62d5c22f066198d9f",
+  "puckworks_tree": "3fddf9dca7543a1229ef71192cf2d71defde4b83",
+  "result_axes": {
+    "adequacy": "MASS and MIXED 11/13; TIME 3/13; TEMPLATE 2/13",
+    "mass_increment": "MASS_CLOCK_GAIN_UNDER_DECLARED_CONDITIONS",
+    "mixed_increment": "MIXED_CLOCK_COMPLEXITY_NOT_EARNED",
+    "numerical": "QUALIFIED",
+    "sensitivity": "same conclusion across literal-zero and both timing sensitivities; alternate14 blocked",
+    "template": "MASS/MIXED competitive and materially better"
+  },
+  "source": "13 notebook/thesis-qualified physical shots;14th block cohort unqualified;16 regular vials per shot",
+  "task": "SCI-MD-GRUDEVA-CLOCK-001"
+}

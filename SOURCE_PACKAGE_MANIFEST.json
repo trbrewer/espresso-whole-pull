@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1317,
-  "total_uncompressed_bytes_excluding_manifest": 22337112,
-  "aggregate_source_sha256": "c5363ff148df536e6dccf02cb4b76eff4cc3f5d5ce3705eaac0fb18901fc83db",
-  "aggregate_sha256": "c5363ff148df536e6dccf02cb4b76eff4cc3f5d5ce3705eaac0fb18901fc83db",
+  "file_count": 1320,
+  "total_uncompressed_bytes_excluding_manifest": 22347406,
+  "aggregate_source_sha256": "7f760c64e864aac685e8c5920d57dbd06c425118452aaea8e272d535de2b4a87",
+  "aggregate_sha256": "7f760c64e864aac685e8c5920d57dbd06c425118452aaea8e272d535de2b4a87",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "34e84f4be77e69fc3b95f4e6c3805efba054af783af0aeed89ca52fef914ecfc",
-      "bytes": 20073,
+      "sha256": "75fa23c11d31155163f86c40e3b360f35c7fd913ea5d3c3457fa3c2ecb3d629a",
+      "bytes": 21029,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2206,6 +2206,21 @@
     "docs/analysis/sci_md_012/SOURCE_PARAMETERIZATION_COMPARISON.json": {
       "sha256": "b6a3f874c8a9b752e8ea81b4d3bfb5c661bda2f049c781bf7ee59b517e41f843",
       "bytes": 1176,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_grudeva_clock_001/HANDOFF.json": {
+      "sha256": "982dd9d65ea11f461f0d8bb7e07b8f617e2cf6796a62400a98f3d6c657de64e8",
+      "bytes": 2808,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_grudeva_clock_001/LOCAL_QA.json": {
+      "sha256": "2ba833b9e6e93d2261f04dc351769e27dd8e52cf3b9dde383d0ed68cb651b676",
+      "bytes": 1291,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_grudeva_clock_001/RESULT.md": {
+      "sha256": "2c7f95a6f9fefa30cdd020e04d02f70e69d54eff230198acd01e4fc8fc770626",
+      "bytes": 5239,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_maille_transfer_001/HANDOFF.json": {

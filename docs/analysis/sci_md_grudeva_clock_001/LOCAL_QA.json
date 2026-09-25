@@ -1,0 +1,21 @@
+{
+  "bounded_recheck": "Affected prior001 and sci_md_012 suites passed with existing exact a3428a4 authority checkout; no repository code changes",
+  "change_contract": "PASS",
+  "full_python_suite": "1572 tests; 9 skipped; one failed test and one setup error caused solely by missing local source-authority environment paths",
+  "governing_change_boundary": "PASS",
+  "historical_baseline": "PASS",
+  "hosted_ci": "see open PR checks; not inferred from local test results",
+  "log_hashes": {
+    "ewp-authority-recheck.log": "b535c0eeeb156889931ec74fd0b26cf6e6d21fbe19289389c8bee6c6acff9b7b",
+    "ewp-baseline.json": "982d4fa488835ff6c0ccfe7930db958f6f80f05e74143dcb326c01b028a927fe",
+    "ewp-boundary.json": "07d82a998a116bfe25463d4484025b0c4a5b3906bd703a2d11949dd65e34f13d",
+    "ewp-contract.json": "0c0f40bc9098c54bd733519b0237fc1023fb232283b986087721a44da4fdb92f",
+    "ewp-final-source.log": "510eb5b2d00ac7db5467866bd3c9686079f588c5c8082ab33ecff5f6d4645247",
+    "ewp-final-static.log": "495eafe21a39c8a0a63136e98b45a89c53e89cca8f588d58aa0f4f6cc58020e7",
+    "ewp-tests.log": "2c9aa25118bf14310422a53fe2c3d5f53045f363f77af30ebd431855d4ac2420"
+  },
+  "native_execution_count": 0,
+  "shell_syntax": "PASS",
+  "source_verification": "PASS",
+  "static_validation": "PASS (39 gates)"
+}
