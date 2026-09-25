@@ -702,6 +702,39 @@
       "exhaustion_decision": null,
       "review_trigger": "Separately authorized resolution of replicate denominator and selection uncertainty",
       "notes": "BLOCKED_SOURCE_CONTRACT; no fitting/scoring; all five analytes NOT_ADJUDICATED. Source audit complete, predictive task blocked. No native builds/integrations/default/lock change or automatic successor."
+    },
+    {
+      "opportunity_id": "SCI-MD-MO-TRANSFER-001",
+      "title": "Mo conservative fixed-flow extraction and PSD transfer",
+      "data_families": [
+        "mo2023_2"
+      ],
+      "scientific_question": "Does PSD-informed extraction predict withheld flow and powder conditions?",
+      "model_component": "analysis-only conservative fixed-flow S0/S2/D2",
+      "status": "BLOCKED_DATA_JOIN",
+      "priority": "COMPLETED_OWNER_DIRECTIVE_NO_NEW_PRIORITY",
+      "prerequisites": [
+        "qualified cup/flow/startup/yield operator",
+        "common material for powder axis",
+        "numerical allowance qualification"
+      ],
+      "task_id": "SCI-MD-MO-TRANSFER-001",
+      "current_evidence": "Source mapping blocked; numerical application unresolved; no kinetic decision",
+      "expected_information": "source-internal grouped transfer across flows and powders",
+      "positive_action": "Prioritize supported representation for separately authorized coupling decision",
+      "negative_action": "Retire exact failed rule only",
+      "null_action": "Retain simpler representation when added complexity is unearned",
+      "blocked_action": "Retain current implementation; owner disposition; no successor execution",
+      "claim_ceiling": "RETROSPECTIVE_SOURCE_CONDITIONED_PREPARATION_ONLY",
+      "home_lab_effect": "NO_LAB_ACTION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mo_transfer_001/RESULT.md",
+        "docs/analysis/sci_md_mo_transfer_001/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate authority resolving source mapping and numerical qualification",
+      "notes": "BLOCKED_SOURCE_CONTRACT on flow and powder axes; S0/S2/D2 training and transfer NOT_ADJUDICATED. Numerical application NUMERICALLY_UNRESOLVED. No fitting/scoring/native integration/default/lock change or successor."
     }
   ],
   "laboratory_gate": {
