@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1326,
-  "total_uncompressed_bytes_excluding_manifest": 22369993,
-  "aggregate_source_sha256": "48abcf6e543e7c567983b172e7120b9d692142f2997a81cb691e999edb662f7b",
-  "aggregate_sha256": "48abcf6e543e7c567983b172e7120b9d692142f2997a81cb691e999edb662f7b",
+  "file_count": 1331,
+  "total_uncompressed_bytes_excluding_manifest": 22398485,
+  "aggregate_source_sha256": "72d4073d13456ce4afe41ef08f553cdf1c1696ffb6390a32e26a07510a2aea0c",
+  "aggregate_sha256": "72d4073d13456ce4afe41ef08f553cdf1c1696ffb6390a32e26a07510a2aea0c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2251,6 +2251,21 @@
     "docs/analysis/sci_md_mass_delivery_001/SOFTWARE_QA.json": {
       "sha256": "1b053f8fab155183268d604d4368a745864a6ee7be3870940f59130e0943d4bf",
       "bytes": 1697,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/HANDOFF.json": {
+      "sha256": "88b1f058c8dfa816dd48d48d0112b96ddf08d9db9b5b202bfff11c4ddf01861d",
+      "bytes": 3547,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/PROTOCOL.md": {
+      "sha256": "ad02f7c936bc85fa524ba49b9d485cf63fbebc3c689b92cf336f072bbfff4dae",
+      "bytes": 9529,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/README.md": {
+      "sha256": "5d379b9125276a8f39a09ec5be98a5b582708914e82fa014bbbce9474c5ab233",
+      "bytes": 2576,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
@@ -5078,6 +5093,11 @@
       "bytes": 392,
       "git_mode": "100755"
     },
+    "scripts/research_conditioned_mass_delivery.py": {
+      "sha256": "be1bdca8e817e8406e7813288b6b40a35f831cbde55663005be887fa3cb422b7",
+      "bytes": 5888,
+      "git_mode": "100755"
+    },
     "scripts/research_mass_delivery.py": {
       "sha256": "12d7c6c6fee42d4422ef087d8d1497b6b3ca9c2cfddf4be2ec8e80f5dd8814bc",
       "bytes": 3955,
@@ -5781,6 +5801,11 @@
     "tests/test_reference_case.py": {
       "sha256": "905665cb80ef2254ffb1367be325a1bcf8911a93d3af3b0ad96d86e36d337d42",
       "bytes": 67098,
+      "git_mode": "100644"
+    },
+    "tests/test_research_conditioned_mass_delivery.py": {
+      "sha256": "9463c90193d97eab298e31f2f394161b2ced85142a3056d0f9c0317d07c1f459",
+      "bytes": 6952,
       "git_mode": "100644"
     },
     "tests/test_research_mass_delivery.py": {

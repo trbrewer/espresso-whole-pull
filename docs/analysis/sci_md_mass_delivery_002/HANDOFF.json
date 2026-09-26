@@ -1,0 +1,77 @@
+{
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "domain_kg": [
+    0.0,
+    0.06350639999999999
+  ],
+  "feature_definitions": {
+    "xF": "source_flow_setting_code - 2.0",
+    "xT": "(T_set_K - 362.15) / 9.0"
+  },
+  "governance": "G1",
+  "models": {
+    "M0": {
+      "model_id": "SCI-MD-MASS-DELIVERY-002/M0/v1",
+      "path": "docs/analysis/sci_md_mass_delivery_002/models/M0.json"
+    },
+    "MF": {
+      "model_id": "SCI-MD-MASS-DELIVERY-002/MF/v1",
+      "path": "docs/analysis/sci_md_mass_delivery_002/models/MF.json"
+    },
+    "MT": {
+      "model_id": "SCI-MD-MASS-DELIVERY-002/MT/v1",
+      "path": "docs/analysis/sci_md_mass_delivery_002/models/MT.json"
+    },
+    "MTF": {
+      "model_id": "SCI-MD-MASS-DELIVERY-002/MTF/v1",
+      "path": "docs/analysis/sci_md_mass_delivery_002/models/MTF.json"
+    },
+    "SETTING_AWARE_EMPIRICAL": {
+      "model_id": "SCI-MD-MASS-DELIVERY-002/SETTING_AWARE_EMPIRICAL/v1",
+      "path": "docs/analysis/sci_md_mass_delivery_002/models/SETTING_AWARE_EMPIRICAL.json"
+    }
+  },
+  "native_ewp_runs": 0,
+  "no_successor_authorized": true,
+  "physical_validation": "NOT_ESTABLISHED",
+  "producer_commit": "cec97741e72b126f04f05b73691d9223bbdb148f",
+  "producer_files": {
+    "docs/analysis/sci_md_mass_delivery_002/PROTOCOL.md": "ad02f7c936bc85fa524ba49b9d485cf63fbebc3c689b92cf336f072bbfff4dae",
+    "docs/analysis/sci_md_mass_delivery_002/SOURCE.json": "fcba004d3e195283b3a8450d3335f069b1784110e8a8514def0d756f8455b906",
+    "docs/analysis/sci_md_mass_delivery_002/models/M0.json": "97a1afd6295498bc8f929d3b5197032c8682dcd8fd1e28bb3179e00f599ef462",
+    "docs/analysis/sci_md_mass_delivery_002/models/MF.json": "67f982d58aaf83c48daae57e124c14be174a552c8004e14b26a1d449b284142c",
+    "docs/analysis/sci_md_mass_delivery_002/models/MT.json": "ae7e9fc2a859aef46d8e852a39f0bf531c90a05b89a7ed027a9f42c1ad3d9461",
+    "docs/analysis/sci_md_mass_delivery_002/models/MTF.json": "5b4ef7c75dddc92c3877aa785f91ef168ae183450c165f696017b62617762fe9",
+    "docs/analysis/sci_md_mass_delivery_002/models/SETTING_AWARE_EMPIRICAL.json": "4c52e977f4a37ec3f323476d100f8f7d240ce6b8ac34025777db0aa16f318808",
+    "puckworks/analysis/conditioned_mass_delivery.py": "be122722900cbb8294b26f24e832a958b558617c0df2e2c8d6707df3e3980c2e",
+    "puckworks/analysis/mass_delivery.py": "301cd4bc8a469559faa3a776fcb60d3082ffb3f4a12bee373b8f44e9b21d3b4f"
+  },
+  "producer_repository": "https://github.com/trbrewer/puckworks",
+  "producer_tree": "1b30d6d6152baedc28fab42419a2c33d61b8694b",
+  "production_defaults_changed": false,
+  "production_dependency_lock_changed": false,
+  "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "runtime_modules": [
+    "puckworks/analysis/mass_delivery.py",
+    "puckworks/analysis/conditioned_mass_delivery.py"
+  ],
+  "schema_version": "conditioned-mass-delivery/1",
+  "setting_hull": {
+    "constant_settings_only": true,
+    "product_with_mass_domain": "MODELING_ASSUMPTION_NOT_COMPLETE_JOINT_COVERAGE",
+    "rule": "abs(xT) + abs(xF) <= 1"
+  },
+  "source_code_semantics": "DIMENSIONLESS_SOURCE_SPECIFIC_NOMINAL_DESIGN_CODE_NOT_MEASURED_FLOW",
+  "source_rights": "CC-BY-NC-3.0; Pannusch/Schmieder; Mendeley 10.17632/y2tz67f6ry.1; derived artifact, not MIT",
+  "task": "SCI-MD-MASS-DELIVERY-002",
+  "units": {
+    "average_TDS": "percent",
+    "basis": "MASS",
+    "beverage": "kg",
+    "concentration": "kg/kg",
+    "mass_rate": "kg^-1",
+    "solute": "kg",
+    "source_flow_setting_code": "source_design_code",
+    "temperature": "K"
+  }
+}
