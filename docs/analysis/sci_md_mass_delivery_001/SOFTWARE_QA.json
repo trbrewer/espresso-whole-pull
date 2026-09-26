@@ -1,0 +1,42 @@
+{
+  "affected_reruns": {
+    "final_static_nonmutating_tests_passed": 3,
+    "first_passed": 20,
+    "first_tests": 21,
+    "remaining_error": "new CLI executable bit",
+    "resolution": "source manifest regenerated; package QA count/hash synchronized; CLI marked executable; affected failures resolved"
+  },
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "consumer_synthetic_tests_passed": 5,
+  "current_checks": {
+    "active_governing_change": "PASS",
+    "change_contract": "PASS",
+    "historical_baseline_integrity": "PASS",
+    "json_syntax": "PASS",
+    "programme_schema": "PASS",
+    "release_integrity": "PASS",
+    "secret_path_generated_boundary": "PASS",
+    "shell_syntax": "PASS_20_FILES",
+    "source_manifest": "PASS",
+    "static_validation": "PASS"
+  },
+  "full_suite": {
+    "classification": "QA_MANIFEST_AND_ENTRYPOINT_MODE",
+    "details": "Initial suite began before regenerating source manifest; source portability checks failed on three new files. Static validator required executable mode for the new CLI.",
+    "initial_errors": 1,
+    "initial_failures": 2,
+    "passed": 1585,
+    "skipped": 9,
+    "tests_run": 1597
+  },
+  "hosted_ci": "RESOLVE_FROM_LIVE_PR_CHECKS; not claimed passed by this record",
+  "independent_pre_score_audit": "APPROVED_EXACT_FROZEN_PRODUCER",
+  "native_builds": 0,
+  "native_runs": 0,
+  "ordinary_final_review": "RESOLVE_FROM_PR_EXACT_HEAD_RECEIPT",
+  "physical_validation": "NOT_ESTABLISHED",
+  "producer_demo": "PASS_EXACT_COMMIT_TREE_KERNEL_MODEL_UNITS_DOMAIN; system and study Python environments",
+  "production_defaults_changed": false,
+  "production_dependency_lock_changed": false,
+  "task": "SCI-MD-MASS-DELIVERY-001"
+}
