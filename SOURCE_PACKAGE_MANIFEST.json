@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1355,
-  "total_uncompressed_bytes_excluding_manifest": 22612874,
-  "aggregate_source_sha256": "4140a4934c3802541c406cacbbd45bab8edeae57ebc4803a076b6574963582f5",
-  "aggregate_sha256": "4140a4934c3802541c406cacbbd45bab8edeae57ebc4803a076b6574963582f5",
+  "file_count": 1358,
+  "total_uncompressed_bytes_excluding_manifest": 22623592,
+  "aggregate_source_sha256": "c2204cfdc4e739aa730861f9c254f4d4f127a50ee4fec161bb0a2e118583fd00",
+  "aggregate_sha256": "c2204cfdc4e739aa730861f9c254f4d4f127a50ee4fec161bb0a2e118583fd00",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2376,6 +2376,21 @@
     "docs/analysis/sci_md_mass_delivery_003/SOURCE.json": {
       "sha256": "b38d1b9d2890d701f5f9534271df3381240a704e9f6819177b99eb11e5bcf343",
       "bytes": 4593,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_004/HANDOFF.json": {
+      "sha256": "81ce5355c457527d763dcf54354db128e36753a21cc5d7a08414b86b1b269acf",
+      "bytes": 6771,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_004/QUALIFICATION.md": {
+      "sha256": "0eb7f45a088cc3d2033f51bc124a49f0a6cff3f5acbbde93b117a40b032b2d94",
+      "bytes": 1717,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_004/README.md": {
+      "sha256": "50f5ff20b4bb2050a122cd2426c21814024180712d467b5d26351ce48ddc61aa",
+      "bytes": 2230,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
