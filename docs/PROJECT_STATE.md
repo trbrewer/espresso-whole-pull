@@ -1,5 +1,9 @@
 # Project State
 
+## SCI-MD-MASS-DELIVERY-002 recipe-conditioned research delivery (2026-09-26)
+
+G1 / NO_GOVERNING_PHYSICS_CHANGE. [Implemented/executed result](analysis/sci_md_mass_delivery_002/RESULT.md): TESTED_CONDITIONING_FAMILY_INADEQUATE. MTF passes 3/4 primary conditions but balanced R=1.038188 pp exceeds frozen M0=1.025939 pp; added complexity is not earned. Setting-aware empirical R=1.053344 pp and only 1/4 adequate conditions. Source contract and numerics qualify; independent pre-score audit approved, one scoring pass, exact M0 replay. Research consumer verifies producer commit/tree and wrapper/kernel/model hashes. Hosted CI and final owner review remain separate. PRs Puckworks #280/EWP #186 remain OPEN/UNMERGED; no native runs, production/default/lock changes or successor. PHYSICAL_VALIDATION=NOT_ESTABLISHED. Predecessor #278/#184 are verified merged; prior artifacts/results remain unchanged.
+
 ## SCI-MD-MO-TRANSFER-001 conservative reference (2026-09-24)
 
 G1 / NO_GOVERNING_PHYSICS_CHANGE. [Exact research handoff](analysis/sci_md_mo_transfer_001/RESULT.md):

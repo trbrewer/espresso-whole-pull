@@ -818,6 +818,40 @@
       "exhaustion_decision": null,
       "review_trigger": "Separately authorized new scientific question;no automatic successor",
       "notes": "User-authorized bounded G1 task;primary failure preserved;temperature ramps separate;C07 support limited;zero native runs and unchanged production defaults/lock. No laboratory work or automatic successor."
+    },
+    {
+      "opportunity_id": "SCI-MD-MASS-DELIVERY-002",
+      "title": "Recipe-conditioned mass-coordinate solute delivery",
+      "data_families": [
+        "pannusch2024",
+        "schmieder2023_shared_source_not_independent_cohort"
+      ],
+      "scientific_question": "Do nominal recipe settings earn mass-delivery complexity against M0 and a setting-aware empirical comparator?",
+      "model_component": "research-only conditioned mass delivery",
+      "status": "COMPLETE_NEGATIVE",
+      "priority": "COMPLETED_OWNER_DIRECTIVE_NO_NEW_PRIORITY",
+      "prerequisites": [
+        "qualified nominal source-design codes and complete measured mass prefixes",
+        "independent exact-freeze pre-score approval"
+      ],
+      "task_id": "SCI-MD-MASS-DELIVERY-002",
+      "current_evidence": "TESTED_CONDITIONING_FAMILY_INADEQUATE;M0 replay exact;empirical also inadequate",
+      "expected_information": "Whether the frozen compact recipe conditioning earns complexity against M0 and the setting-aware empirical comparator",
+      "positive_action": "Retain adequate research predictor only if the frozen A/B/C axes pass; no production adoption",
+      "negative_action": "Preserve TESTED_CONDITIONING_FAMILY_INADEQUATE; no post-score retuning",
+      "null_action": "No superiority or causal interpretation",
+      "blocked_action": "Preserve unsupported records and report the named source/support/numerical gap",
+      "claim_ceiling": "SOURCE_INTERNAL;TARGET_EXPOSED;RETROSPECTIVE_MODEL_DEVELOPMENT_COMPARISON;PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mass_delivery_002/RESULT.md",
+        "docs/analysis/sci_md_mass_delivery_002/RESULTS.json",
+        "docs/analysis/sci_md_mass_delivery_002/HANDOFF.json"
+      ],
+      "exhausted_for_decision": true,
+      "exhaustion_decision": "THIS_FROZEN_CONDITIONING_FAMILY_AND_FOUR_CONDITION_COMPARISON_ONLY_NOT_CORPUS_EXHAUSTION",
+      "review_trigger": "material source or model contract change",
+      "notes": "Completed owner-authorized G1 experiment, not merged. MTF A/B/C/D FAIL; all candidates fail C01; empirical is also inadequate. Source-internal, target-exposed retrospective model-development comparison. Nominal settings are not hydraulic measurements. Physical validation NOT_ESTABLISHED; zero native EWP runs; unchanged production defaults/lock. No corpus-exhaustion claim, laboratory work or successor authorized."
     }
   ],
   "laboratory_gate": {
