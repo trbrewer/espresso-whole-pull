@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1326,
-  "total_uncompressed_bytes_excluding_manifest": 22369993,
-  "aggregate_source_sha256": "48abcf6e543e7c567983b172e7120b9d692142f2997a81cb691e999edb662f7b",
-  "aggregate_sha256": "48abcf6e543e7c567983b172e7120b9d692142f2997a81cb691e999edb662f7b",
+  "file_count": 1336,
+  "total_uncompressed_bytes_excluding_manifest": 22440765,
+  "aggregate_source_sha256": "84ec62b62f5472c28d87759a891e05ce0119d7952badb5fcb1a1a64f2d9cab3d",
+  "aggregate_sha256": "84ec62b62f5472c28d87759a891e05ce0119d7952badb5fcb1a1a64f2d9cab3d",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "ed64c4f9dea7ff21874d2829a323d3043a496d10c5a6ddca6134a70218130a69",
-      "bytes": 21967,
+      "sha256": "75a731c0f417cd0fd32b95ae623d63241db3207f01efe1c35c4be3e2ca792891",
+      "bytes": 23094,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2251,6 +2251,46 @@
     "docs/analysis/sci_md_mass_delivery_001/SOFTWARE_QA.json": {
       "sha256": "1b053f8fab155183268d604d4368a745864a6ee7be3870940f59130e0943d4bf",
       "bytes": 1697,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/HANDOFF.json": {
+      "sha256": "2e533cf68d32b52ba4fbc560d57a86236d135e91ff5b6355f2391a33d9031645",
+      "bytes": 5304,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/PRE_SCORE_REVIEW.json": {
+      "sha256": "6e618c64461c064d3cba5e899285ead709bd68fb1f87358ab3089eb880855605",
+      "bytes": 1046,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/PRIVATE_EVIDENCE_MANIFEST.json": {
+      "sha256": "017971759370a51375984b0ce3e0349c7be5536c7a8b63c128b522ea6b4ade14",
+      "bytes": 5533,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/PROTOCOL.md": {
+      "sha256": "ad02f7c936bc85fa524ba49b9d485cf63fbebc3c689b92cf336f072bbfff4dae",
+      "bytes": 9529,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/README.md": {
+      "sha256": "5d379b9125276a8f39a09ec5be98a5b582708914e82fa014bbbce9474c5ab233",
+      "bytes": 2576,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/RESULT.md": {
+      "sha256": "0b0d73058a1f66a48bb7586e5194e4e383b782b0356f717e025e6ce0a234cbe1",
+      "bytes": 5227,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/RESULTS.json": {
+      "sha256": "189d014437391b0f7b3d33c9b5a98d16223edc5e0189c8772bd88c0a804966a9",
+      "bytes": 25553,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_002/SOFTWARE_QA.json": {
+      "sha256": "6079afe78e7f8c6f6bf167e2d113d6e8fa59b32b159e45168885ab8b225be138",
+      "bytes": 2037,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
@@ -5078,6 +5118,11 @@
       "bytes": 392,
       "git_mode": "100755"
     },
+    "scripts/research_conditioned_mass_delivery.py": {
+      "sha256": "be1bdca8e817e8406e7813288b6b40a35f831cbde55663005be887fa3cb422b7",
+      "bytes": 5888,
+      "git_mode": "100755"
+    },
     "scripts/research_mass_delivery.py": {
       "sha256": "12d7c6c6fee42d4422ef087d8d1497b6b3ca9c2cfddf4be2ec8e80f5dd8814bc",
       "bytes": 3955,
@@ -5781,6 +5826,11 @@
     "tests/test_reference_case.py": {
       "sha256": "905665cb80ef2254ffb1367be325a1bcf8911a93d3af3b0ad96d86e36d337d42",
       "bytes": 67098,
+      "git_mode": "100644"
+    },
+    "tests/test_research_conditioned_mass_delivery.py": {
+      "sha256": "9463c90193d97eab298e31f2f394161b2ced85142a3056d0f9c0317d07c1f459",
+      "bytes": 6952,
       "git_mode": "100644"
     },
     "tests/test_research_mass_delivery.py": {
