@@ -852,6 +852,40 @@
       "exhaustion_decision": "THIS_FROZEN_CONDITIONING_FAMILY_AND_FOUR_CONDITION_COMPARISON_ONLY_NOT_CORPUS_EXHAUSTION",
       "review_trigger": "material source or model contract change",
       "notes": "Completed owner-authorized G1 experiment, not merged. MTF A/B/C/D FAIL; all candidates fail C01; empirical is also inadequate. Source-internal, target-exposed retrospective model-development comparison. Nominal settings are not hydraulic measurements. Physical validation NOT_ESTABLISHED; zero native EWP runs; unchanged production defaults/lock. No corpus-exhaustion claim, laboratory work or successor authorized."
+    },
+    {
+      "blocked_action": "Name exact source information numerical or review gap",
+      "claim_ceiling": "SOURCE_INTERNAL;TARGET_EXPOSED;RETROSPECTIVE_EARLY_ASSAY_CONDITIONED_COMPARISON",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mass_delivery_003/RESULT.md",
+        "docs/analysis/sci_md_mass_delivery_003/HANDOFF.json"
+      ],
+      "current_evidence": "SINGLE_ANCHOR_MASS_DELIVERY_INADEQUATE",
+      "data_families": [
+        "pannusch2024",
+        "schmieder2023"
+      ],
+      "exhausted_for_decision": true,
+      "exhaustion_decision": "THIS_FROZEN_SINGLE_AMPLITUDE_UPDATE_AND_FOUR_CONDITION_SUFFIX_COMPARISON_ONLY_NOT_CORPUS_EXHAUSTION",
+      "expected_information": "Same-shot fraction-1 mass and TDS as an explicit operational predictor input; not a new experiment or independent corpus",
+      "home_lab_effect": "NO_LAB_ACTION_AUTHORIZED",
+      "model_component": "research-only observation-conditioned mass delivery",
+      "negative_action": "Reject adequacy or earned value of this frozen update only",
+      "notes": "One audited scoring pass; zero new fits; production defaults/lock unchanged; physical validation NOT_ESTABLISHED. PRs #282/#188 open/unmerged. Alpha is not identified inventory. No lab or successor authorization.",
+      "null_action": "Report adequate alternatives without automatic adoption",
+      "opportunity_id": "SCI-MD-MASS-DELIVERY-003",
+      "positive_action": "Retain specifically qualified early-assay-conditioned research predictor",
+      "prerequisites": [
+        "Separate owner task authorization",
+        "frozen 001/002 artifacts",
+        "independent exact-freeze pre-scoring audit"
+      ],
+      "priority": 1,
+      "review_trigger": "Separately authorized changed scientific question; no automatic successor",
+      "scientific_question": "Does one fraction-1 amplitude update predict later fractions adequately and earn value against unanchored and equally anchored alternatives?",
+      "status": "COMPLETE_NEGATIVE",
+      "task_id": "SCI-MD-MASS-DELIVERY-003",
+      "title": "One-fraction-anchored remaining-delivery prediction"
     }
   ],
   "laboratory_gate": {

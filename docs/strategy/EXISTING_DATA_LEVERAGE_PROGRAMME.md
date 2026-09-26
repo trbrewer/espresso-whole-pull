@@ -1,5 +1,7 @@
 # Existing Data Leverage Programme
 
+SCI-MD-MASS-DELIVERY-003 is implemented and executed: `SINGLE_ANCHOR_MASS_DELIVERY_INADEQUATE`. Axes A/B/C/D are FAIL/FAIL/PASS/FAIL. Seven fixed arms on 12 fraction-1 anchors and 60 later assays; zero new fits and native EWP runs. SOURCE_INTERNAL; TARGET_EXPOSED; RETROSPECTIVE_EARLY_ASSAY_CONDITIONED_COMPARISON. Research only; production defaults and lock unchanged; physical validation NOT_ESTABLISHED. Both task PRs remain open/unmerged; NO_SUCCESSOR_AUTHORIZED. [Result](../analysis/sci_md_mass_delivery_003/RESULT.md).
+
 ## Current programme state (2026-09-03)
 
 SCI-MD-010 is `MERGED_COMPLETE`.
