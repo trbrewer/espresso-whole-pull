@@ -1,5 +1,7 @@
 # Project State
 
+SCI-MD-MASS-DELIVERY-003 is implemented and executed: `SINGLE_ANCHOR_MASS_DELIVERY_INADEQUATE`. Axes A/B/C/D are FAIL/FAIL/PASS/FAIL. Seven fixed arms on 12 fraction-1 anchors and 60 later assays; zero new fits and native EWP runs. SOURCE_INTERNAL; TARGET_EXPOSED; RETROSPECTIVE_EARLY_ASSAY_CONDITIONED_COMPARISON. Research only; production defaults and lock unchanged; physical validation NOT_ESTABLISHED. Both task PRs remain open/unmerged; NO_SUCCESSOR_AUTHORIZED. [Result](analysis/sci_md_mass_delivery_003/RESULT.md).
+
 ## SCI-MD-MASS-DELIVERY-002 recipe-conditioned research delivery (2026-09-26)
 
 G1 / NO_GOVERNING_PHYSICS_CHANGE. [Implemented/executed result](analysis/sci_md_mass_delivery_002/RESULT.md): TESTED_CONDITIONING_FAMILY_INADEQUATE. MTF passes 3/4 primary conditions but balanced R=1.038188 pp exceeds frozen M0=1.025939 pp; added complexity is not earned. Setting-aware empirical R=1.053344 pp and only 1/4 adequate conditions. Source contract and numerics qualify; independent pre-score audit approved, one scoring pass, exact M0 replay. Research consumer verifies producer commit/tree and wrapper/kernel/model hashes. Hosted CI and final owner review remain separate. PRs Puckworks #280/EWP #186 remain OPEN/UNMERGED; no native runs, production/default/lock changes or successor. PHYSICAL_VALIDATION=NOT_ESTABLISHED. Predecessor #278/#184 are verified merged; prior artifacts/results remain unchanged.
