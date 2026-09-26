@@ -4,6 +4,7 @@
     0.0,
     0.06350639999999999
   ],
+  "ewp_pr": "https://github.com/trbrewer/espresso-whole-pull/pull/186",
   "feature_definitions": {
     "xF": "source_flow_setting_code - 2.0",
     "xT": "(T_set_K - 362.15) / 9.0"
@@ -51,6 +52,22 @@
   "production_defaults_changed": false,
   "production_dependency_lock_changed": false,
   "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "puckworks_pr": "https://github.com/trbrewer/puckworks/pull/280",
+  "result_artifacts": {
+    "docs/analysis/sci_md_mass_delivery_002/EXECUTION.json": "81500f6d63019e7c66950e6b6897956558c633d459793449427c785fdf031d45",
+    "docs/analysis/sci_md_mass_delivery_002/FREEZE.json": "e8333b85943bc3ab54db88adb8b631cd863911a9e626a9ba20c006b5c7dbc7c6",
+    "docs/analysis/sci_md_mass_delivery_002/PRE_SCORE_REVIEW.json": "6e618c64461c064d3cba5e899285ead709bd68fb1f87358ab3089eb880855605",
+    "docs/analysis/sci_md_mass_delivery_002/PRIVATE_EVIDENCE_MANIFEST.json": "017971759370a51375984b0ce3e0349c7be5536c7a8b63c128b522ea6b4ade14",
+    "docs/analysis/sci_md_mass_delivery_002/RESULT.md": "38388d9905ab1197d929116c23f1e621c15a6ded30ba87d1e09c824c62f71eea",
+    "docs/analysis/sci_md_mass_delivery_002/RESULTS.json": "189d014437391b0f7b3d33c9b5a98d16223edc5e0189c8772bd88c0a804966a9",
+    "docs/analysis/sci_md_mass_delivery_002/SCORE_COMPLETION.json": "6786d07f455c9afea6d8f7c4d5b6f7ec03d2aecce9de50a631a66d8a3da94840",
+    "docs/analysis/sci_md_mass_delivery_002/SCORE_RECEIPT.json": "b8b1eaeca846bc843e91c1a3eb10ecdfe255e0dfb05ec32596e6876b77922e1a",
+    "docs/analysis/sci_md_mass_delivery_002/SOFTWARE_QA.json": "6079afe78e7f8c6f6bf167e2d113d6e8fa59b32b159e45168885ab8b225be138",
+    "docs/analysis/sci_md_mass_delivery_002/SOURCE.json": "fcba004d3e195283b3a8450d3335f069b1784110e8a8514def0d756f8455b906",
+    "docs/analysis/sci_md_mass_delivery_002/TRAINING_SELECTION.json": "24686657808ca1654e7fcae9c9a59de0a03c670466ca3312e21a9ebd0a240435"
+  },
+  "result_record_commit": "029b57c00a17d298f45728216f0168a6bcfc082f",
+  "result_record_tree": "3b98650a1284eb4bf2c13ad4cc80313e670c9de5",
   "runtime_modules": [
     "puckworks/analysis/mass_delivery.py",
     "puckworks/analysis/conditioned_mass_delivery.py"

@@ -1,5 +1,7 @@
 # Claim Ceiling
 
+SCI-MD-MASS-DELIVERY-002 adds a research-only nominal-recipe/mass delivery API. Its primary MTF family and setting-aware empirical comparator both fail all-four-condition absolute adequacy; conditioning complexity is not earned. The executed comparison is SOURCE_INTERNAL, TARGET_EXPOSED and RETROSPECTIVE_MODEL_DEVELOPMENT_COMPARISON. Task selection used exposed predecessor results; March is not newly blind. No causal recipe effects, identified mechanism, inventory, flow/pressure/time or mass-attainment prediction, physical validation or production adoption. PHYSICAL_VALIDATION=NOT_ESTABLISHED; native EWP runs=0; defaults/production lock unchanged; no successor. [Result](analysis/sci_md_mass_delivery_002/RESULT.md).
+
 ## SCI-MD-RHEOLOGY-009 pressure-history transfer (2026-09-22)
 
 G2 / NO_GOVERNING_PHYSICS_CHANGE, production boundary/coupling compatibility;
