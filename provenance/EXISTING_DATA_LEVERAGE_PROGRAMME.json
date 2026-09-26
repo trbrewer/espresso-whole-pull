@@ -84,12 +84,16 @@
     {
       "opportunity_id": "SCI-MD-011",
       "title": "High-pressure poroelastic puck-closure adjudication",
-      "data_families": ["waszkiewicz2025"],
+      "data_families": [
+        "waszkiewicz2025"
+      ],
       "scientific_question": "Do the universal or implemented finite-Phi quasi-static closures predict held-out pressure conditions relative to B1?",
       "model_component": "quasi-static poroelastic puck closure",
       "status": "COMPLETE_NEGATIVE",
       "priority": 1,
-      "prerequisites": ["SCI-MD-010 MERGED_COMPLETE"],
+      "prerequisites": [
+        "SCI-MD-010 MERGED_COMPLETE"
+      ],
       "task_id": "SCI-MD-011",
       "current_evidence": "Validated one-shot R2 Phase B result: finite-Phi E2C blocked and universal P1 has wrong pressure response",
       "expected_information": "retrospective grouped predictive utility",
@@ -99,7 +103,11 @@
       "blocked_action": "record exact equivalence source parameter domain root or execution blocker",
       "claim_ceiling": "RETROSPECTIVE_SOURCE_CONDITIONED_GROUPED_PREDICTIVE_UTILITY_OF_AN_IMPLEMENTED_PUCK_CLOSURE_UNDER_THE_SCI_MD_010_OBSERVATION_ADAPTER_ONLY",
       "home_lab_effect": "DEFER",
-      "completion_evidence": ["docs/analysis/sci_md_011/RESULT.md", "docs/analysis/sci_md_011/summary.json", "docs/analysis/sci_md_011/RESULT_ARTIFACT_MANIFEST.json"],
+      "completion_evidence": [
+        "docs/analysis/sci_md_011/RESULT.md",
+        "docs/analysis/sci_md_011/summary.json",
+        "docs/analysis/sci_md_011/RESULT_ARTIFACT_MANIFEST.json"
+      ],
       "exhausted_for_decision": true,
       "exhaustion_decision": "WHETHER_THE_TESTED_POROELASTIC_CLOSURES_PASS_THE_FROZEN_GROUPED_PREDICTIVE_AND_PRESSURE_RESPONSE_GATES",
       "review_trigger": "material source-semantics change",
@@ -108,12 +116,16 @@
     {
       "opportunity_id": "SCI-MD-012",
       "title": "E2C 13-bar coupled-root representability diagnosis",
-      "data_families": ["waszkiewicz2025"],
+      "data_families": [
+        "waszkiewicz2025"
+      ],
       "scientific_question": "What caused the frozen E2C 13-bar root blocker, and can restoring a root change the adoption decision?",
       "model_component": "quasi-static poroelastic puck closure",
       "status": "COMPLETE_NEGATIVE",
       "priority": 1,
-      "prerequisites": ["SCI-MD-011 MERGED_COMPLETE"],
+      "prerequisites": [
+        "SCI-MD-011 MERGED_COMPLETE"
+      ],
       "task_id": "SCI-MD-012",
       "current_evidence": "Target-exposed non-scoring diagnosis: local parameter-scale feasibility artifact, but unchanged family cannot produce required turnover",
       "expected_information": "root-blocker mechanism and decision materiality",
@@ -123,7 +135,11 @@
       "blocked_action": "stop on authority or reproduction mismatch",
       "claim_ceiling": "RETROSPECTIVE_TARGET_EXPOSED_NONSCORING_EXISTING_DATA_ROOT_BLOCKER_DIAGNOSIS_ONLY",
       "home_lab_effect": "DEFER",
-      "completion_evidence": ["docs/analysis/sci_md_012/RESULT.md", "docs/analysis/sci_md_012/DIAGNOSIS.json", "docs/analysis/sci_md_012/ARTIFACT_MANIFEST.json"],
+      "completion_evidence": [
+        "docs/analysis/sci_md_012/RESULT.md",
+        "docs/analysis/sci_md_012/DIAGNOSIS.json",
+        "docs/analysis/sci_md_012/ARTIFACT_MANIFEST.json"
+      ],
       "exhausted_for_decision": true,
       "exhaustion_decision": "WHETHER_THE_LOCAL_NO_ROOT_RESULT_IS_A_DOMAIN_COUPLING_PARAMETER_SCALE_OR_WHOLE_FAMILY_REPRESENTABILITY_BLOCKER_AND_CAN_ROOT_REPAIR_CHANGE_ADOPTION",
       "review_trigger": "material source-semantics change",
@@ -579,7 +595,10 @@
       "blocked_action": "request exact estimand/apparatus/operator capability input without inventing a value",
       "claim_ceiling": "CLOSURE_CONTRACT_ONLY",
       "home_lab_effect": "POTENTIAL_LATER_AUTHORIZATION",
-      "completion_evidence": ["docs/analysis/sci_ed_003/RESULT.md", "docs/analysis/sci_ed_003/MINIMUM_PROGRAMME.json"],
+      "completion_evidence": [
+        "docs/analysis/sci_ed_003/RESULT.md",
+        "docs/analysis/sci_ed_003/MINIMUM_PROGRAMME.json"
+      ],
       "exhausted_for_decision": true,
       "exhaustion_decision": "Minimum decision-relevant closure contract defined; execution requires separate owner authorization",
       "review_trigger": "specific closure blocker controls",
@@ -767,6 +786,38 @@
       "exhaustion_decision": null,
       "review_trigger": "Separate authority resolving source mapping and numerical qualification",
       "notes": "BLOCKED_SOURCE_CONTRACT on flow and powder axes; S0/S2/D2 training and transfer NOT_ADJUDICATED. Numerical application NUMERICALLY_UNRESOLVED. No fitting/scoring/native integration/default/lock change or successor."
+    },
+    {
+      "opportunity_id": "SCI-MD-MASS-DELIVERY-001",
+      "title": "Reusable absolute mass-coordinate TDS delivery and campaign transfer",
+      "data_families": [
+        "pannusch2024"
+      ],
+      "scientific_question": "Can a compact absolute TDS mass-coordinate family transfer between source campaigns?",
+      "model_component": "research-only conditional delivery component",
+      "status": "COMPLETE_NEGATIVE",
+      "priority": 1,
+      "prerequisites": [
+        "qualified Pannusch complete measured mass prefixes",
+        "independent exact-freeze pre-score approval"
+      ],
+      "task_id": "SCI-MD-MASS-DELIVERY-001",
+      "current_evidence": "MASS and empirical primary adequacy limited to C02/C05;no declared broad competitiveness or material gain",
+      "expected_information": "Fixed source-specific coefficients tested against target-exposed later campaign absolute fractions",
+      "positive_action": "retain adequate conditional research predictor",
+      "negative_action": "limit scientific use to supported adequate conditions",
+      "null_action": "no model superiority claim",
+      "blocked_action": "retain unsupported intervals without reducing denominator",
+      "claim_ceiling": "SOURCE_INTERNAL_TARGET_EXPOSED_CONDITIONAL_ABSOLUTE_DELIVERY_ONLY",
+      "home_lab_effect": "NO_LAB_ACTION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mass_delivery_001/RESULT.md",
+        "docs/analysis/sci_md_mass_delivery_001/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separately authorized new scientific question;no automatic successor",
+      "notes": "User-authorized bounded G1 task;primary failure preserved;temperature ramps separate;C07 support limited;zero native runs and unchanged production defaults/lock. No laboratory work or automatic successor."
     }
   ],
   "laboratory_gate": {

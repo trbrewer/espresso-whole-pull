@@ -1,0 +1,69 @@
+{
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claims": [
+    "RESEARCH_ONLY",
+    "CONDITIONAL_ON_BEVERAGE_MASS",
+    "NO_TIME_FLOW_PRESSURE_PREDICTION",
+    "NOT_INVENTORY_CLOSURE",
+    "PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+    "SOURCE_INTERNAL",
+    "TARGET_EXPOSED",
+    "PANNUSCH_SOURCE_SPECIFIC_COEFFICIENTS"
+  ],
+  "domain_kg": [
+    0.0,
+    0.06350639999999999
+  ],
+  "governance": "G1",
+  "kernel_path": "puckworks/analysis/mass_delivery.py",
+  "model_id": "SCI-MD-MASS-DELIVERY-001/MASS/v1",
+  "model_path": "docs/analysis/sci_md_mass_delivery_001/models/MASS.json",
+  "model_version": "mass-delivery/1",
+  "native_builds": 0,
+  "native_runs": 0,
+  "producer_commit": "d59cec8ab8314e2697837c6752d296d20f4dc370",
+  "producer_files": {
+    "docs/analysis/sci_md_mass_delivery_001/EXECUTION.json": "caf1a0d793e0cee9708c26a09d4d6151e35adaffbd15869cf9ad81bd50fb22a1",
+    "docs/analysis/sci_md_mass_delivery_001/PROTOCOL.md": "c927815298aed74b04a5bb7b1c3f7acbf4762b9b8eff6a2e31ab0510ab2685b4",
+    "docs/analysis/sci_md_mass_delivery_001/SOURCE.json": "9a3f9129f52c29429a07b148de1c35b16b7f73bc51c2c4bd02867d76a96a49a7",
+    "docs/analysis/sci_md_mass_delivery_001/models/MASS.json": "75aa34648f73883e975b16c2267594a247142e247713f14642641789f5e2182d",
+    "puckworks/analysis/mass_delivery.py": "301cd4bc8a469559faa3a776fcb60d3082ffb3f4a12bee373b8f44e9b21d3b4f"
+  },
+  "producer_repository": "https://github.com/trbrewer/puckworks",
+  "producer_tree": "1645ad55cf08d18938088d19ec8d7efcffa15ef1",
+  "production_defaults_changed": false,
+  "production_dependency_lock_changed": false,
+  "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "puckworks_pr": "https://github.com/trbrewer/puckworks/pull/278",
+  "result_artifacts": {
+    "docs/analysis/sci_md_mass_delivery_001/DATA_AVAILABILITY_PREFLIGHT.json": "be10e203b238274676dc7b2174bb664cc2ead1fca8d0859fe2a740c3e3e55cb4",
+    "docs/analysis/sci_md_mass_delivery_001/EXECUTION.json": "caf1a0d793e0cee9708c26a09d4d6151e35adaffbd15869cf9ad81bd50fb22a1",
+    "docs/analysis/sci_md_mass_delivery_001/FREEZE.json": "4ac2a06e8a047c2a0218d83dcf9709c8d707220e52e46384b45e5483b2095d4e",
+    "docs/analysis/sci_md_mass_delivery_001/PRE_SCORE_REVIEW.json": "492c719d85b209d7da7a7b6c1a311af194e1af6d111838976f52bb904c83f445",
+    "docs/analysis/sci_md_mass_delivery_001/PRIVATE_EVIDENCE_MANIFEST.json": "e0fb207928fe395ea36f04510da7c18453c8f656402036e460810702094093bf",
+    "docs/analysis/sci_md_mass_delivery_001/RESULT.md": "e53a6780bb7165080a35806677a987850df4bbb83963933a514b77ce1438852c",
+    "docs/analysis/sci_md_mass_delivery_001/RESULTS.json": "38a3f358e1c28855cda076dd7f5fbf24be2bf430a6dc727a50e96b43558862ef",
+    "docs/analysis/sci_md_mass_delivery_001/SCORE_COMPLETION.json": "46109d132bc31cd6a7129578bea489492d3b5c752d8e01049a6bb6ecb2ebe42f",
+    "docs/analysis/sci_md_mass_delivery_001/SCORE_RECEIPT.json": "4336350db012d18b1ec4e8488224a4a4fa07277ea9fb090eb1c6b9eb64d822ca",
+    "docs/analysis/sci_md_mass_delivery_001/SOFTWARE_QA.json": "b62de1c7e12c36dc4946234dab983fabed2ca6f9da200ac01544dbe61dccf3fe",
+    "docs/analysis/sci_md_mass_delivery_001/SOURCE.json": "9a3f9129f52c29429a07b148de1c35b16b7f73bc51c2c4bd02867d76a96a49a7",
+    "docs/analysis/sci_md_mass_delivery_001/TRAINING_SELECTION.json": "c51808f5b021ff2805960aa60bb3f03aedca36a8f56956fa666af7fd27c47bac"
+  },
+  "result_record_commit": "8b5d0bb105047cc4a3b5e82a0d6092584a3960d6",
+  "result_record_tree": "24ebe16623b350f8e4f3fd04b7ecbf241c9a03a8",
+  "reviewed_ewp_base": "9b11bafddb2e64c1b5af7c64026d8a5910dee0b7",
+  "reviewed_ewp_base_tree": "ab59c6b2ab3b44ab8ab32feac17eb9f3627a2e64",
+  "reviewed_puckworks_base": "85442cbc6341a872a90769ba5217ca3f375b4c2a",
+  "reviewed_puckworks_base_tree": "3fddf9dca7543a1229ef71192cf2d71defde4b83",
+  "source_rights": "CC-BY-NC-3.0; Pannusch/Schmieder; Mendeley 10.17632/y2tz67f6ry.1; derived artifact, not MIT",
+  "task": "SCI-MD-MASS-DELIVERY-001",
+  "units": {
+    "basis": "MASS",
+    "beverage": "kg",
+    "concentration": "kg/kg",
+    "mass_rate": "kg^-1",
+    "solute": "kg",
+    "time": "s",
+    "time_rate": "s^-1"
+  }
+}
