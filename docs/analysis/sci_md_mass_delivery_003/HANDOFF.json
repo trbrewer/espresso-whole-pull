@@ -1,0 +1,115 @@
+{
+  "base_domain_kg": [
+    0.0,
+    0.06350639999999999
+  ],
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "feature_definitions": {
+    "xF": "source_flow_setting_code - 2.0",
+    "xT": "(T_set_K - 362.15) / 9.0"
+  },
+  "governance": "G1",
+  "models": {
+    "EMPIRICAL": {
+      "family": "BOUNDARY_AWARE_EMPIRICAL",
+      "model_id": "SCI-MD-MASS-DELIVERY-001/BOUNDARY_AWARE_EMPIRICAL/v1",
+      "path": "docs/analysis/sci_md_mass_delivery_001/models/BOUNDARY_AWARE_EMPIRICAL.json",
+      "units": {
+        "basis": "MASS",
+        "beverage": "kg",
+        "concentration": "kg/kg",
+        "mass_rate": "kg^-1",
+        "solute": "kg",
+        "time": "s",
+        "time_rate": "s^-1"
+      },
+      "version": "mass-delivery/1"
+    },
+    "MASS": {
+      "family": "MASS",
+      "model_id": "SCI-MD-MASS-DELIVERY-001/MASS/v1",
+      "path": "docs/analysis/sci_md_mass_delivery_001/models/MASS.json",
+      "units": {
+        "basis": "MASS",
+        "beverage": "kg",
+        "concentration": "kg/kg",
+        "mass_rate": "kg^-1",
+        "solute": "kg",
+        "time": "s",
+        "time_rate": "s^-1"
+      },
+      "version": "mass-delivery/1"
+    },
+    "SETTING_EMPIRICAL": {
+      "family": "SETTING_AWARE_EMPIRICAL",
+      "model_id": "SCI-MD-MASS-DELIVERY-002/SETTING_AWARE_EMPIRICAL/v1",
+      "path": "docs/analysis/sci_md_mass_delivery_002/models/SETTING_AWARE_EMPIRICAL.json",
+      "units": {
+        "average_TDS": "percent",
+        "basis": "MASS",
+        "beverage": "kg",
+        "concentration": "kg/kg",
+        "mass_rate": "kg^-1",
+        "solute": "kg",
+        "source_flow_setting_code": "source_design_code",
+        "temperature": "K"
+      },
+      "version": "conditioned-mass-delivery/1"
+    }
+  },
+  "native_ewp_runs": 0,
+  "no_successor_authorized": true,
+  "physical_validation": "NOT_ESTABLISHED",
+  "producer_commit": "2a5439f185d11b5cb730b9106435d373b282aeae",
+  "producer_files": {
+    "docs/analysis/sci_md_mass_delivery_001/models/BOUNDARY_AWARE_EMPIRICAL.json": "659fdb4eec504190e68ece2cfea449db003bce85ea4279ed68feb59b09772c8d",
+    "docs/analysis/sci_md_mass_delivery_001/models/MASS.json": "75aa34648f73883e975b16c2267594a247142e247713f14642641789f5e2182d",
+    "docs/analysis/sci_md_mass_delivery_002/models/SETTING_AWARE_EMPIRICAL.json": "4c52e977f4a37ec3f323476d100f8f7d240ce6b8ac34025777db0aa16f318808",
+    "puckworks/analysis/anchored_mass_delivery.py": "8abf4e6c8ad90f243ac65ea8ca549423c14a43737a0be790a81710947bfe2d5f",
+    "puckworks/analysis/conditioned_mass_delivery.py": "be122722900cbb8294b26f24e832a958b558617c0df2e2c8d6707df3e3980c2e",
+    "puckworks/analysis/mass_delivery.py": "301cd4bc8a469559faa3a776fcb60d3082ffb3f4a12bee373b8f44e9b21d3b4f"
+  },
+  "producer_repository": "https://github.com/trbrewer/puckworks",
+  "producer_tree": "3851cc491980a85ab0eb6e8e6e8719a91c4973c0",
+  "production_defaults_changed": false,
+  "production_dependency_lock_changed": false,
+  "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+  "required_state_claims": [
+    "RESEARCH_ONLY",
+    "CONDITIONAL_ON_BEVERAGE_MASS",
+    "NO_TIME_FLOW_PRESSURE_PREDICTION",
+    "NOT_INVENTORY_CLOSURE",
+    "PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+    "EARLY_ASSAY_CONDITIONED_NOT_RECIPE_ONLY",
+    "ALPHA_NOT_IDENTIFIED_INVENTORY",
+    "NO_REAL_TIME_ASSAY_OR_CONTROLLER_CLAIM",
+    "ASSAYED_SUFFIX_NOT_MEASURED_WHOLE_CUP"
+  ],
+  "runtime_modules": [
+    "puckworks/analysis/mass_delivery.py",
+    "puckworks/analysis/conditioned_mass_delivery.py",
+    "puckworks/analysis/anchored_mass_delivery.py"
+  ],
+  "setting_hull": {
+    "constant_settings_only": true,
+    "product_with_mass_domain": "MODELING_ASSUMPTION_NOT_COMPLETE_JOINT_COVERAGE",
+    "rule": "abs(xT) + abs(xF) <= 1"
+  },
+  "source_code_semantics": "DIMENSIONLESS_SOURCE_SPECIFIC_NOMINAL_DESIGN_CODE_NOT_MEASURED_FLOW",
+  "source_labels": [
+    "SOURCE_INTERNAL",
+    "TARGET_EXPOSED",
+    "RETROSPECTIVE_EARLY_ASSAY_CONDITIONED_COMPARISON"
+  ],
+  "source_rights": "CC-BY-NC-3.0; Pannusch/Schmieder; Mendeley 10.17632/y2tz67f6ry.1; derived artifact, not MIT",
+  "state_schema": "anchored-mass-delivery/1",
+  "state_units": {
+    "anchor_TDS": "percent",
+    "average_TDS": "percent",
+    "basis": "MASS",
+    "beverage": "kg",
+    "concentration": "kg/kg",
+    "solute": "kg"
+  },
+  "task": "SCI-MD-MASS-DELIVERY-003"
+}
