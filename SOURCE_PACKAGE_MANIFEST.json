@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1410,
-  "total_uncompressed_bytes_excluding_manifest": 22979064,
-  "aggregate_source_sha256": "944eb55d9484758e3769d05a18f3af54950cfeabf8fc80f80b904bb842d00c6c",
-  "aggregate_sha256": "944eb55d9484758e3769d05a18f3af54950cfeabf8fc80f80b904bb842d00c6c",
+  "file_count": 1417,
+  "total_uncompressed_bytes_excluding_manifest": 23019128,
+  "aggregate_source_sha256": "0f5a70f0adc55c8585b947306785097e26c8b0f70edbb7859f9594403f80060f",
+  "aggregate_sha256": "0f5a70f0adc55c8585b947306785097e26c8b0f70edbb7859f9594403f80060f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -729,8 +729,8 @@
       "git_mode": "100644"
     },
     "docs/EXTERNAL_ESPRESSO_DATA.md": {
-      "sha256": "28d7cd3da074da4ca6986715f6219849a42aadef33ca37cbb2dcd5db252b17e9",
-      "bytes": 11942,
+      "sha256": "1505ec378649b69566bf674ae05f99c846ab6ca4222ef390948b6904b01b606c",
+      "bytes": 12839,
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "8295550cefb699cf37aff2a0fc34be5b3624527be0a9d129179b7907c5b8f3e9",
-      "bytes": 28132,
+      "sha256": "dcaa079530af998e815e08bf1fca9a1ecbae1d7f8171dc9d4064ba46b700985e",
+      "bytes": 29265,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2613,6 +2613,31 @@
       "bytes": 488,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_mass_delivery_008/HANDOFF.json": {
+      "sha256": "9dad4894a0233f7b18e99769d064008d66cba682b316abc26b8e6968703a2a17",
+      "bytes": 3726,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_008/README.md": {
+      "sha256": "211efeaf7825614bf073ad2e5f2366faeb21b81d116c1dd6cc6057542b864161",
+      "bytes": 2816,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_008/RESULT.md": {
+      "sha256": "9437416717ffccd3f54e745afd0f464967fbf933b2452cbc55f2d320c6d3440e",
+      "bytes": 3484,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_008/RESULTS.json": {
+      "sha256": "ab5fda152dd06954516cfd04d44c3657217a7ba7475f285035188fdda5f5c8b3",
+      "bytes": 15960,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_008/RESULT_BINDING.json": {
+      "sha256": "a56954e4196a57445a2c114e77e517a707ee0a174f97e1b6286bdc6c0dde0ccb",
+      "bytes": 1271,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
       "sha256": "119b80c8fa1c256cd708bdb2060b4bbeb0d050e060da8243bb5e58b1413eaf3e",
       "bytes": 3572,
@@ -4354,8 +4379,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "b200aca5b05006856fe7d8a1bc76452a53f39588aae64c94393ef8cdb30bc51e",
-      "bytes": 14271,
+      "sha256": "a1b708cd988adbceceabad4f87af9f8ecc4bc67f565aa739622ab85e3fbe2fb3",
+      "bytes": 15171,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -5458,6 +5483,11 @@
       "bytes": 5888,
       "git_mode": "100755"
     },
+    "scripts/research_grudeva_one_shot_calibration.py": {
+      "sha256": "608859e39e680cfc94b78f68647c897d13af692eaa1a3c3d794bf895ac8f31f5",
+      "bytes": 6144,
+      "git_mode": "100755"
+    },
     "scripts/research_grudeva_pooled_tail_delivery.py": {
       "sha256": "44c91270c2e3530c4817801b4404989e804010d7913aa67532fcb3c47c8e89bb",
       "bytes": 6515,
@@ -6191,6 +6221,11 @@
     "tests/test_research_conditioned_mass_delivery.py": {
       "sha256": "9463c90193d97eab298e31f2f394161b2ced85142a3056d0f9c0317d07c1f459",
       "bytes": 6952,
+      "git_mode": "100644"
+    },
+    "tests/test_research_grudeva_one_shot_calibration.py": {
+      "sha256": "08cb9292e127cdb4bb6acb89f4384fd07dfdd124b71124f44801b8bee08b7102",
+      "bytes": 3733,
       "git_mode": "100644"
     },
     "tests/test_research_grudeva_pooled_tail_delivery.py": {
