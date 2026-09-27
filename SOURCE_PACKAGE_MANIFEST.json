@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1375,
-  "total_uncompressed_bytes_excluding_manifest": 22769646,
-  "aggregate_source_sha256": "8bac1ad78ebaec34ea5c02b970d0c11f2cf4b2304eff5ac65a7ff77992ec56df",
-  "aggregate_sha256": "8bac1ad78ebaec34ea5c02b970d0c11f2cf4b2304eff5ac65a7ff77992ec56df",
+  "file_count": 1381,
+  "total_uncompressed_bytes_excluding_manifest": 22795700,
+  "aggregate_source_sha256": "3648df715f5c3bfcdd0ccba6359bb312784a95ae174a07c1163dd967648adc6f",
+  "aggregate_sha256": "3648df715f5c3bfcdd0ccba6359bb312784a95ae174a07c1163dd967648adc6f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2206,6 +2206,26 @@
     "docs/analysis/sci_md_012/SOURCE_PARAMETERIZATION_COMPARISON.json": {
       "sha256": "b6a3f874c8a9b752e8ea81b4d3bfb5c661bda2f049c781bf7ee59b517e41f843",
       "bytes": 1176,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/DATA_AVAILABILITY_PREFLIGHT.json": {
+      "sha256": "c84e1abcf9ce137491c5524003d39867f0cb1187f92b038915210609448b9466",
+      "bytes": 1204,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/DEPENDENCIES.json": {
+      "sha256": "74a3d73cf7a9a0c4dc79301f1535a5d39cd9edb717a81aca5f9aeb890bd0c93e",
+      "bytes": 4731,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/MODEL_CARD.md": {
+      "sha256": "1fede1b9a3399734c0b2377108799b3ba1f50cf28026466c24aca84a6cf14870",
+      "bytes": 484,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/PROTOCOL.md": {
+      "sha256": "edcdd59f60d58b0b30a23aa0a77c77d98a3a4a2363eb490e6690a2cdfcffcc0d",
+      "bytes": 6879,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_grudeva_clock_001/HANDOFF.json": {
@@ -5288,6 +5308,11 @@
       "bytes": 5990,
       "git_mode": "100755"
     },
+    "scripts/research_conditional_caffeine_delivery.py": {
+      "sha256": "2746ad3bf87e0a9157bb206bff7f52512c2506ec4280976e97fa173d5380057d",
+      "bytes": 6201,
+      "git_mode": "100644"
+    },
     "scripts/research_conditional_tail_delivery.py": {
       "sha256": "d8a7a88fa781eb123740a72b2af21bc1e1edd2970980c2e1d4f51f3bbb1ff667",
       "bytes": 5590,
@@ -6011,6 +6036,11 @@
     "tests/test_research_anchored_mass_delivery.py": {
       "sha256": "497144f9baf8e024c86b51070afa97f21ae37dc0c98ccc1368a11535e8bae849",
       "bytes": 7801,
+      "git_mode": "100644"
+    },
+    "tests/test_research_conditional_caffeine_delivery.py": {
+      "sha256": "d1a605a0abdfe1b8b2becbf7424a107a487fd183a8e4eb05aae6b8bbbd29e53a",
+      "bytes": 6555,
       "git_mode": "100644"
     },
     "tests/test_research_conditional_tail_delivery.py": {
