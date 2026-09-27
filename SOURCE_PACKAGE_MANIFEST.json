@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1410,
-  "total_uncompressed_bytes_excluding_manifest": 22979025,
-  "aggregate_source_sha256": "30e84de427e84e137c1624fbf1a5b4ddf212aa6b30222cbfbdf1c8f73993f735",
-  "aggregate_sha256": "30e84de427e84e137c1624fbf1a5b4ddf212aa6b30222cbfbdf1c8f73993f735",
+  "total_uncompressed_bytes_excluding_manifest": 22979064,
+  "aggregate_source_sha256": "944eb55d9484758e3769d05a18f3af54950cfeabf8fc80f80b904bb842d00c6c",
+  "aggregate_sha256": "944eb55d9484758e3769d05a18f3af54950cfeabf8fc80f80b904bb842d00c6c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2559,8 +2559,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mass_delivery_007/MODEL_CARD.md": {
-      "sha256": "127012b4dd2a2138361a326fde21907250f12c188aceafb486b21ba97c94fba2",
-      "bytes": 1657,
+      "sha256": "a7a5887cc3e828c0e10e4e27d58335557a3fa053edf4c7973238a40369b09a4f",
+      "bytes": 1696,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mass_delivery_007/PREDICTION_MANIFEST.json": {

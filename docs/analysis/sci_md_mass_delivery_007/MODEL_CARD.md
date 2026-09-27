@@ -1,7 +1,7 @@
 # Frozen model use and limitations
 
 This adapter uses the exact existing 006 C0/C1/C2 serialized models and
-conditional_tail_delivery runtime; see PARENT_006_HANDOFF.json for immutable
+conditional_tail_delivery runtime; see the [parent handoff](../sci_md_mass_delivery_006/HANDOFF.json) for immutable
 producer commit/tree, artifact byte hashes and separate canonical identities.
 No coefficient, scale, mean, knot, domain, training claim or embedded limitation
 is rewritten. C2 remains primary. No new model family, fit or adaptation occurs.
