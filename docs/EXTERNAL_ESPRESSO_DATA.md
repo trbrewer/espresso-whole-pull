@@ -1,5 +1,7 @@
 # External espresso data — EWP use map
 
+SCI-MD-MASS-DELIVERY-006 completed one independently approved frozen score: **LEARNED_TWO_ASSAY_MAPPING_EARNED**; A/B/C/D PASS on 12 primary shots / 48 suffix windows. C2 balanced R=0.480034 pp; versus C1 gain=0.117553 pp (19.6713%), versus legacy=0.299567 pp (38.4256%). All 45 FIT shots now train 006 only (177/180 eligible suffix windows); historical roles/results remain unchanged. C05 is worse than learned controls; temperature stress has 24/24 support, flow 23/24 and no full-panel claim. G1 / NO_GOVERNING_PHYSICS_CHANGE; SOURCE_INTERNAL / TARGET_EXPOSED / RETROSPECTIVE_CAMPAIGN_SEPARATED_CONDITIONAL_PREDICTION. Research only; physical validation NOT_ESTABLISHED. No merge, adoption, production/default/lock change, native run or successor. [Result](analysis/sci_md_mass_delivery_006/RESULT.md). Draft PR #194 open/unmerged, linked Puckworks #288. At intake 005 #286/#192 were verified merged; older lifecycle text is historical.
+
 [SCI-MD-MASS-DELIVERY-005](analysis/sci_md_mass_delivery_005/RESULT.md): accepted Pannusch/Schmieder reconstruction and all six originals inspected. Exactly 42 shots, 84 conditioning observations, 161/168 primary future windows; seven explicit source/domain gaps. The fixed first-two-assay primary is inadequate despite qualified numerics. SOURCE_INTERNAL / TARGET_EXPOSED / RETROSPECTIVE_TWO_ASSAY_CONDITIONED_COMPARISON; no corpus exhaustion, laboratory recommendation, production authority or successor.
 
 ## SCI-MD-MO-TRANSFER-001 conservative reference (2026-09-24)

@@ -956,6 +956,41 @@
       "exhaustion_decision": null,
       "review_trigger": "Separate owner authorization for a changed scientific question; no automatic successor",
       "notes": "All 252 states and 966 supported predictions numerically qualify. Full suffix inadequate with incomplete coverage: C01 complete-shot failure survives using denominator three. 84 rate inversions and 168 amplitude updates; zero global refits, native runs, production/default/lock changes. Preserve 004 inadequate disposition. Puckworks #285/#286; EWP #191/#192 OPEN_UNMERGED. Owner PR disposition only; no successor or laboratory action."
+    },
+    {
+      "opportunity_id": "SCI-MD-MASS-DELIVERY-006",
+      "task_id": "SCI-MD-MASS-DELIVERY-006",
+      "title": "Supervised early-to-late conditional delivery mapping",
+      "data_families": [
+        "pannusch2024",
+        "schmieder2023"
+      ],
+      "scientific_question": "Does training on all complete FIT early-to-late pairs yield a useful later-delivery predictor with incremental second-assay value?",
+      "model_component": "isolated research conditional tail spline",
+      "status": "COMPLETE_POSITIVE",
+      "priority": 1,
+      "prerequisites": [
+        "explicit bounded owner task",
+        "merged 001-005 ancestry and qualified originals",
+        "FIT-only grouped development and independent exact-freeze approval"
+      ],
+      "current_evidence": "LEARNED_TWO_ASSAY_MAPPING_EARNED; primary A/B/C/D PASS on 48/48 slots; flow stress SOURCE_SUPPORT_INCOMPLETE on 23/24",
+      "expected_information": "45 existing FIT shots including former 30 FIT-transfer shots explicitly reclassified for 006 only; supervised early-to-late association, not new experiments",
+      "positive_action": "Retain this qualified conditional research predictor and exact source/training/support limitations for a later owner adoption decision",
+      "negative_action": "Reject this bounded learned mapping; no automatic family expansion",
+      "null_action": "Report sufficient simpler learned control as secondary without switching the fixed C2 primary",
+      "blocked_action": "Name actual source, numerical, access or independent-review limitation",
+      "claim_ceiling": "RESEARCH_ONLY_SOURCE_INTERNAL_TARGET_EXPOSED_RETROSPECTIVE_CAMPAIGN_SEPARATED_CONDITIONAL_PREDICTION",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mass_delivery_006/RESULT.md",
+        "docs/analysis/sci_md_mass_delivery_006/RESULT_BINDING.json",
+        "docs/analysis/sci_md_mass_delivery_006/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner authorization for production adoption or a changed scientific question; no automatic successor",
+      "notes": "549 starts, all converged; 98012 residual calls; 177/180 FIT suffix windows; 380 qualified predictions out of 384 intended statuses; one independently approved score. C05 loses to learned controls; all C08 shots extrapolate m2. Source/internal exposure and CC-BY-NC treatment retained. Puckworks #287/#288 and EWP #193/#194; draft PRs unmerged, owner disposition only. No physical validation, native run, production change, acquisition or laboratory action."
     }
   ],
   "laboratory_gate": {
