@@ -1027,6 +1027,38 @@
       "exhaustion_decision": null,
       "review_trigger": "Separate owner authorization; no automatic successor or production adoption",
       "notes": "SCI-MD-MASS-DELIVERY-007 completed one independently approved frozen cross-source score: **FROZEN_CONDITIONAL_TRANSFER_INADEQUATE_ON_DECLARED_COHORT**. C2 adequacy=FAIL; I0/I1=PASS/PASS; coverage/numerics=PASS/PASS. 11/13 qualified shots, 55/55 later vials per arm, 98 original assays summarized into 22 pooled inputs. Zero new fits, optimizer calls or native runs. Retrospective, target-exposed and conditional on collected beverage mass; PHYSICAL_VALIDATION=NOT_ESTABLISHED. No production adoption, lock/default change, merge, laboratory work or successor. Parent 006 and GRUDEVA-CLOCK-001 PRs verified merged at intake; their artifacts remain unchanged. Linked draft PRs Puckworks #292 / EWP #198 remain open/unmerged."
+    },
+    {
+      "opportunity_id": "SCI-MD-MASS-DELIVERY-008",
+      "task_id": "SCI-MD-MASS-DELIVERY-008",
+      "title": "One-calibration-shot source adaptation",
+      "data_families": [
+        "grudeva2025",
+        "pannusch2024",
+        "schmieder2023"
+      ],
+      "scientific_question": "Does exactly one separately assayed Grudeva calibration shot make frozen C2 useful on other shots and earn value beyond one-shot source-only MASS and adapted C0?",
+      "model_component": "research-only immutable source-calibration wrapper and source-only MASS",
+      "status": "ACTIVE",
+      "priority": 1,
+      "prerequisites": [
+        "Explicit bounded owner task",
+        "Exact accepted parent and source identities",
+        "Independent exact-freeze pre-score approval"
+      ],
+      "current_evidence": "SOURCE_AND_COHORT_VERIFIED_PROTOCOL_COMMITTED",
+      "expected_information": "One other physical shot suffix becomes explicitly fold-local calibration information; 007 allowed no Grudeva fitting.",
+      "positive_action": "Retain source-calibrated research utility under the declared cohort.",
+      "negative_action": "Reject this one-offset adaptation without automatic expansion.",
+      "null_action": "Retain adequate source-only or mass-only control; conditional complexity not earned.",
+      "blocked_action": "Name precise source/access/numerical or review limitation; no exhaustion claim.",
+      "claim_ceiling": "RETROSPECTIVE_TARGET_EXPOSED_ONE_CALIBRATION_SHOT_SOURCE_ADAPTATION_ONLY",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner authorization; no automatic successor or production adoption",
+      "notes": "SCI-MD-MASS-DELIVERY-008 is owner-authorized G1 / NO_GOVERNING_PHYSICS_CHANGE: retrospective one-calibration-shot source adaptation, fixed A2 with F2/A0/M controls. Exact 007 source/cohort identities verified: 13 qualified shots, 11 eligible, 55 unique suffix observations, 98 prefix assays forming 22 summaries; 110 ordered pairs and 550 prediction slots per arm do not increase the physical cohort. Protocol and model card precede fitting; one independent exact-freeze audit is required before the sole new-task score. 007 zero-shot inadequacy is unchanged. RESEARCH_ONLY / TARGET_EXPOSED; PHYSICAL_VALIDATION=NOT_ESTABLISHED. Issues Puckworks #293 / EWP #199; no merge, adoption, defaults/lock change, native work, laboratory operation or successor."
     }
   ],
   "laboratory_gate": {
