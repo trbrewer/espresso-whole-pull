@@ -80,8 +80,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1392,
-    "source_manifest_aggregate_sha256": "226bb41f08c3520c43ae871a235a2eb2ceed94b4e8a60f07a2d52c5afa47addc",
+    "source_manifest_file_count": 1410,
+    "source_manifest_aggregate_sha256": "944eb55d9484758e3769d05a18f3af54950cfeabf8fc80f80b904bb842d00c6c",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -1074,5 +1074,30 @@
     "physical_validation": "NOT_ESTABLISHED",
     "review_and_hosted_ci": "SEPARATE_EXACT_HEAD_PR_STATUSES",
     "pr": 171
+  },
+  "sci_md_mass_delivery_007": {
+    "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+    "governance": "G1",
+    "scientific_result": "FROZEN_CONDITIONAL_TRANSFER_INADEQUATE_ON_DECLARED_COHORT",
+    "coverage": "PASS",
+    "numerical": "PASS",
+    "adequacy": {
+      "C0": "FAIL",
+      "C1": "FAIL",
+      "C2": "FAIL"
+    },
+    "I0": "PASS",
+    "I1": "PASS",
+    "scientific_prediction_sets": 1,
+    "scientific_scoring_passes": 1,
+    "real_fits": 0,
+    "native_runs": 0,
+    "physical_validation": "NOT_ESTABLISHED",
+    "pre_score_independent_review": "APPROVED_EXACT_FREEZE",
+    "final_publication_review": "RESOLVE_FROM_EXACT_HEAD_QA",
+    "hosted_ci": "RESOLVE_FROM_EXACT_HEAD_HOSTED_CHECKS",
+    "merge_authorized": false,
+    "production_adoption_authorized": false,
+    "successor_authorized": false
   }
 }

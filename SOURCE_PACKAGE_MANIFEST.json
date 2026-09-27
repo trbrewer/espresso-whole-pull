@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1392,
-  "total_uncompressed_bytes_excluding_manifest": 22906467,
-  "aggregate_source_sha256": "226bb41f08c3520c43ae871a235a2eb2ceed94b4e8a60f07a2d52c5afa47addc",
-  "aggregate_sha256": "226bb41f08c3520c43ae871a235a2eb2ceed94b4e8a60f07a2d52c5afa47addc",
+  "file_count": 1410,
+  "total_uncompressed_bytes_excluding_manifest": 22979064,
+  "aggregate_source_sha256": "944eb55d9484758e3769d05a18f3af54950cfeabf8fc80f80b904bb842d00c6c",
+  "aggregate_sha256": "944eb55d9484758e3769d05a18f3af54950cfeabf8fc80f80b904bb842d00c6c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -729,8 +729,8 @@
       "git_mode": "100644"
     },
     "docs/EXTERNAL_ESPRESSO_DATA.md": {
-      "sha256": "a78f3d1b88c32816458af24f773a4ffb549ccc1d9d5632a86b957a743b785503",
-      "bytes": 11164,
+      "sha256": "28d7cd3da074da4ca6986715f6219849a42aadef33ca37cbb2dcd5db252b17e9",
+      "bytes": 11942,
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "259acfa178e9c33a5c8bd365894da638299fafc27a311e36ed954f0a5ed8fce0",
-      "bytes": 27057,
+      "sha256": "8295550cefb699cf37aff2a0fc34be5b3624527be0a9d129179b7907c5b8f3e9",
+      "bytes": 28132,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2531,6 +2531,86 @@
     "docs/analysis/sci_md_mass_delivery_006/SCORE_RECEIPT.json": {
       "sha256": "1fb683399e7021db1ccc271d5e2cac04ce4c129438b56b47eb85795917201275",
       "bytes": 330,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/CONSUMER_EQUIVALENCE.json": {
+      "sha256": "beaf30afb53cb4fa819a516d66ca9b154441fc7fc856b8dda0039001c27b0e4c",
+      "bytes": 555,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/DATA_AVAILABILITY_PREFLIGHT.json": {
+      "sha256": "ed46d264e843e6a88a55f5d6814df0f4ccce687f109fa9ff803fe21c283b7687",
+      "bytes": 1819,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/EXECUTION.json": {
+      "sha256": "679a92b2145aff392a34b67b000f1d6f2cf143b3cc95e2987cb846d618f41fbb",
+      "bytes": 940,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/FREEZE.json": {
+      "sha256": "2b3c39c942bc25ed9450d8ee14ac6dcaaa029ccc8d0a4540e14007ae17913966",
+      "bytes": 4418,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/HANDOFF.json": {
+      "sha256": "43ac7dfd425faddba8361f3f14a3680bd848e22f6e8e1b9616c5221d58eeadc3",
+      "bytes": 2489,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/MODEL_CARD.md": {
+      "sha256": "a7a5887cc3e828c0e10e4e27d58335557a3fa053edf4c7973238a40369b09a4f",
+      "bytes": 1696,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/PREDICTION_MANIFEST.json": {
+      "sha256": "312f637ee4de8eae6547f88faa2e6527d7e73d0c3a5d53aad19b34fc00dc8102",
+      "bytes": 1719,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/PRE_SCORE_REVIEW.json": {
+      "sha256": "a62798aeadeceb6256cbc614a7874f1f6922b124ea558d83b0d322819a110378",
+      "bytes": 9211,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/PROTOCOL.md": {
+      "sha256": "327badc3bef399f4ad180da051083f88662b981019f5080273e255357ac5d477",
+      "bytes": 11068,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/README.md": {
+      "sha256": "4d0e097d396ddea3f3e1f6cbe7cec21852d8adc6146463ea288425eebd5ae12c",
+      "bytes": 1660,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/RESULT.md": {
+      "sha256": "1405336d3e1618e72e920d6e87667e670db24687cb891eea377846105e1828c1",
+      "bytes": 7781,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/RESULTS.json": {
+      "sha256": "c5dd263b5998a1b560c867640c5408e79974b37ac035ca1665de401fe6c1c4ac",
+      "bytes": 10583,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/RESULT_BINDING.json": {
+      "sha256": "25cac553688f16f3744239a99397b671a0793e34b725df53ab2c43be68366852",
+      "bytes": 4933,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/SCORE_COMPLETION.json": {
+      "sha256": "36353ae76538a497038a0b4d59a130852df7f31bb40b6d4d2de7d69450b263a5",
+      "bytes": 467,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/SCORE_RECEIPT.json": {
+      "sha256": "c86c36d60144c045ee33e9fd501d4f6386fa6743deca32b5a804da21e24973b5",
+      "bytes": 330,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_007/SOURCE_COUNTS.json": {
+      "sha256": "8bac8da5d15260eb700a9ff917935384dd369f824afe56315d9cd0b71c1f33a4",
+      "bytes": 488,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
@@ -4274,8 +4354,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "eddc07215825398bcd0ba94f19465992f51b1cfe9ec2d1c220906acc2ae81ef3",
-      "bytes": 13490,
+      "sha256": "b200aca5b05006856fe7d8a1bc76452a53f39588aae64c94393ef8cdb30bc51e",
+      "bytes": 14271,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -5378,6 +5458,11 @@
       "bytes": 5888,
       "git_mode": "100755"
     },
+    "scripts/research_grudeva_pooled_tail_delivery.py": {
+      "sha256": "44c91270c2e3530c4817801b4404989e804010d7913aa67532fcb3c47c8e89bb",
+      "bytes": 6515,
+      "git_mode": "100755"
+    },
     "scripts/research_mass_delivery.py": {
       "sha256": "12d7c6c6fee42d4422ef087d8d1497b6b3ca9c2cfddf4be2ec8e80f5dd8814bc",
       "bytes": 3955,
@@ -6106,6 +6191,11 @@
     "tests/test_research_conditioned_mass_delivery.py": {
       "sha256": "9463c90193d97eab298e31f2f394161b2ced85142a3056d0f9c0317d07c1f459",
       "bytes": 6952,
+      "git_mode": "100644"
+    },
+    "tests/test_research_grudeva_pooled_tail_delivery.py": {
+      "sha256": "a9fe088df8f9e909a9f260860b3187449b7e9b3abac4748b4d50294cb2eca94d",
+      "bytes": 3291,
       "git_mode": "100644"
     },
     "tests/test_research_mass_delivery.py": {
