@@ -24,7 +24,7 @@
     "tools/pannusch2024_reconstruct.py": "011e495de95114144d6599cde4b8747356ab25af06d13a2dba0c7783ab685464"
   },
   "evaluation_freeze_sha256": "ff62fd2ba11ba6203a28ede3a380e7b5a51659198484c629fb97013da8c40dec",
-  "evaluation_qualification": "ONE_AUDITED_SCORE_COMPLETE_SOURCE_AND_DOMAIN_SUPPORT_LIMITED_NUMERICS_QUALIFIED",
+  "evaluation_qualification": "ONE_AUDITED_SCORE_COMPLETE_DEFINITE_ADEQUACY_FAILURE_WITH_SOURCE_AND_DOMAIN_SUPPORT_LIMITATIONS_NUMERICS_QUALIFIED",
   "evaluation_tree": "fa7e0b7b8d35efaff5f17a545eb212dd02a3bbea",
   "ewp_pr": "https://github.com/trbrewer/espresso-whole-pull/pull/190",
   "feature_definitions": {
@@ -101,12 +101,12 @@
   "production_defaults_changed": false,
   "production_dependency_lock_changed": false,
   "puckworks_pr": "https://github.com/trbrewer/puckworks/pull/284",
-  "qualification_status": "TRANSFER_CLAIM_LIMITED_BY_SOURCE_COORDINATES_AND_FROZEN_MASS_DOMAIN",
+  "qualification_status": "FROZEN_EMPIRICAL_TRANSFER_INADEQUATE",
   "qualified_model_selection": [
     "EMPIRICAL",
     "MASS"
   ],
-  "reporting_correction": "Independent label-only attribution addendum; original scores/freeze preserved; no reexecution",
+  "reporting_correction": "Material interpretation correction independently reviewed: C01 complete-shot lower bounds prove A/D FAIL despite incomplete support. Prior report/review preserved at 135bdc87d3e57f32743194d39c3f85940c5157d2. Frozen protocol/scorer retained with documented classification defect; raw score/prediction/model bytes unchanged; no rescore.",
   "required_state_claims": [
     "RESEARCH_ONLY",
     "CONDITIONAL_ON_BEVERAGE_MASS",
@@ -119,11 +119,12 @@
     "ASSAYED_SUFFIX_NOT_MEASURED_WHOLE_CUP"
   ],
   "result_artifacts": {
-    "docs/analysis/sci_md_mass_delivery_004/ADJUDICATION.json": "b47467dda82c9d86e13d8ed93bfc89670a258c31433e32802912281d8dcb7cc4",
+    "docs/analysis/sci_md_mass_delivery_004/ADJUDICATION.json": "d067f1e4096a3a5dc1e7b6ba78c3d03f5e1e4e99b71c4a7a26ad97988c0227f5",
     "docs/analysis/sci_md_mass_delivery_004/BASES.json": "7d05a8a71de3d81490d53db7bb8e221a0167e707f41a55ab8f0b7e3315f9d417",
     "docs/analysis/sci_md_mass_delivery_004/COVERAGE.json": "35c363db58757c30b4bd8781f18b3fdfa409154cb5999ab6e41df34ebfeea1cc",
     "docs/analysis/sci_md_mass_delivery_004/DATA_AVAILABILITY_PREFLIGHT.json": "8edaae94534deb5500335cfef3203ec553f8fd7a956031341f9a4aaa33cc93b2",
     "docs/analysis/sci_md_mass_delivery_004/EXECUTION.json": "4c9c2b803dfeb9407502149aa3ab86fbf2b9d4db3c2564e8be9f74007fc6abfd",
+    "docs/analysis/sci_md_mass_delivery_004/FAILURE_BOUND_REVIEW.json": "ef7fbb5146d34b4db5441754644ee5da7727ff20cf4af6ec509878e797dc0dce",
     "docs/analysis/sci_md_mass_delivery_004/FREEZE.json": "ff62fd2ba11ba6203a28ede3a380e7b5a51659198484c629fb97013da8c40dec",
     "docs/analysis/sci_md_mass_delivery_004/INFORMATION_CONTRACT.json": "471805356a30c4ba54609f87166ae8bef7f87547306daa7356fe52676560c8a4",
     "docs/analysis/sci_md_mass_delivery_004/LIVE_BASE.json": "7996832641becef98f3b44f7cd1ac5d41218fe59ce44c5297b34a2c1e4457e08",
@@ -131,27 +132,27 @@
     "docs/analysis/sci_md_mass_delivery_004/PRIVATE_EVIDENCE_MANIFEST.json": "1eda608adb1d4b26233b62f79a404cd21058d974164aff8ae1d7b0ad454046b3",
     "docs/analysis/sci_md_mass_delivery_004/PROTOCOL.md": "ec13356bdd2a92887472dfe26df32dd85db04a740b11046c10fcdf8a13078a0d",
     "docs/analysis/sci_md_mass_delivery_004/QUALIFICATION_CARD.md": "aa1deb5490c22faa59b3fde3b080e7c2de09ceca6e7c7ddbf44934375957ee79",
-    "docs/analysis/sci_md_mass_delivery_004/README.md": "385657579c15b8b66b022b67388e13a0cb128bf1705f59a71dc1a7a5c0c9b84b",
+    "docs/analysis/sci_md_mass_delivery_004/README.md": "60c74249bfa05fb2a770971a9e78ab3e67949f48f021da45875bd8f5fac5724b",
     "docs/analysis/sci_md_mass_delivery_004/REPORTING_REVIEW_ADDENDUM.json": "599ec7855b8c66190a7ccb73e7c3592c44c5c082ded0c097f7f1aaa265fb83a1",
-    "docs/analysis/sci_md_mass_delivery_004/RESULT.md": "e2c6843039683aa3e8c80082ac16701767ea7a545c8464e24ed428b95254bfd4",
+    "docs/analysis/sci_md_mass_delivery_004/RESULT.md": "f8014ffb3d6ba3d379fceebba8dae0b74bd4894cdbfd3b730b6196c34567a84d",
     "docs/analysis/sci_md_mass_delivery_004/RESULTS.json": "a9c93a84e9f8de90864052c4befff59d917e19e76b4bae972e82447683fc663f",
     "docs/analysis/sci_md_mass_delivery_004/SCORE_COMPLETION.json": "de828fefdfd7a1abd11eebbf4e3e59b5ce037e61abfa79d0dfd7fe58fb894cab",
     "docs/analysis/sci_md_mass_delivery_004/SCORE_RECEIPT.json": "8e62af0a9d5aec8e7eef467aa3f5c279dc857fc93ad29d2a74b1140e96624f3a",
-    "docs/analysis/sci_md_mass_delivery_004/SOFTWARE_QA.json": "d7b40b1594c55fd6837fc5f08dde55b855cb987c1ea5fb14ff8d4b8bca2807b7",
+    "docs/analysis/sci_md_mass_delivery_004/SOFTWARE_QA.json": "642f84dd56f71746fdcb61b70d9d05cf15f54bdde297bc64ad1194547a873fe6",
     "docs/analysis/sci_md_mass_delivery_004/SOURCE.json": "d6037448d2334841ea38a5eb6cb3c9e4e5a3445dc6780cac04b6c8ba0e5cc8c2"
   },
-  "result_record_commit": "135bdc87d3e57f32743194d39c3f85940c5157d2",
-  "result_record_tree": "2c052dfb22bca5b35ccc680ddfe41bee17dba711",
+  "result_record_commit": "e544d1b96b08a68cd79f04e4bd36ef3144bd3193",
+  "result_record_tree": "b579a2c60c3e7a087701083014c47e36a5d8d9f6",
   "runtime_modules": [
     "puckworks/analysis/mass_delivery.py",
     "puckworks/analysis/conditioned_mass_delivery.py",
     "puckworks/analysis/anchored_mass_delivery.py"
   ],
   "scientific_axes": {
-    "A": "NOT_ADJUDICATED_INCOMPLETE_SUPPORT",
+    "A": "FAIL",
     "B": "NOT_ADJUDICATED_INCOMPLETE_SUPPORT",
     "C": "NOT_ADJUDICATED_INCOMPLETE_SUPPORT",
-    "D": "NOT_ADJUDICATED_INCOMPLETE_SUPPORT",
+    "D": "FAIL",
     "E": "NOT_ADJUDICATED_INCOMPLETE_SUPPORT"
   },
   "score_passes": 1,

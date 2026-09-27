@@ -895,7 +895,7 @@
         "pannusch2024",
         "schmieder2023"
       ],
-      "disposition": "TRANSFER_CLAIM_LIMITED_BY_SOURCE_COORDINATES_AND_FROZEN_MASS_DOMAIN",
+      "disposition": "FROZEN_EMPIRICAL_TRANSFER_INADEQUATE",
       "evidence_path": "docs/analysis/sci_md_mass_delivery_004/QUALIFICATION.md",
       "expected_information": "existing-source transfer outside calibration identities",
       "model_component": "isolated research anchored empirical consumer",
@@ -910,7 +910,7 @@
       ],
       "priority": 1,
       "scientific_question": "Can fraction-1 anchored frozen empirical delivery transfer across the ten other FIT conditions?",
-      "status": "BLOCKED_DATA_JOIN",
+      "status": "COMPLETE_NEGATIVE",
       "task_id": "SCI-MD-MASS-DELIVERY-004",
       "title": "Frozen empirical transfer across other source grind-and-recipe regimes",
       "home_lab_effect": "NO_OPERATION_AUTHORIZED",
@@ -921,7 +921,7 @@
       "exhausted_for_decision": false,
       "exhaustion_decision": null,
       "review_trigger": "Separate owner authorization for changed scientific question; no automatic successor",
-      "notes": "Execution complete: one audited scoring pass. All-ten qualification blocked by three unavailable measured prefixes and four intervals beyond frozen model support. Reporting-only attribution addendum; no rescore. No corpus exhaustion; physical validation NOT_ESTABLISHED."
+      "notes": "Execution complete: one audited scoring pass. A/D FAIL: complete C01 shot contributions alone exceed original condition error budgets. B/C/E incomplete-support; three unavailable prefixes and four out-of-domain intervals remain. Material interpretation correction explicitly supersedes the support-only first report; frozen protocol/code and raw scores retained; no rescore. No corpus exhaustion; physical validation NOT_ESTABLISHED."
     }
   ],
   "laboratory_gate": {

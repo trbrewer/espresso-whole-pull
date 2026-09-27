@@ -17,6 +17,7 @@
   },
   "hosted_ci": "Live PR #190 status is separate; do not infer completion from local QA",
   "json_shell_boundary_secret_path": "PASS",
+  "material_result_correction": "Independent FAILURE_BOUND_REVIEW.json accepted C01 nonnegative lower-bound proof; A/D FAIL. Prior support-only interpretation superseded; immutable original scoring evidence reused without rerun.",
   "merge_authorized": false,
   "native_ewp_runs": 0,
   "new_004_handoff_demonstration": "PASS_SYNTHETIC_ANCHOR_INPUT_ONLY",
