@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1359,
-  "total_uncompressed_bytes_excluding_manifest": 22633672,
-  "aggregate_source_sha256": "73e3da9004b33ac4081667176559e18bbc281c4813d371e78be04a56555a7629",
-  "aggregate_sha256": "73e3da9004b33ac4081667176559e18bbc281c4813d371e78be04a56555a7629",
+  "file_count": 1363,
+  "total_uncompressed_bytes_excluding_manifest": 22657000,
+  "aggregate_source_sha256": "61ba0fcc10d19bcf41a13c5531b335c5133cde71ec44766fe7c8348117fcdc63",
+  "aggregate_sha256": "61ba0fcc10d19bcf41a13c5531b335c5133cde71ec44766fe7c8348117fcdc63",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2396,6 +2396,16 @@
     "docs/analysis/sci_md_mass_delivery_004/SOFTWARE_QA.json": {
       "sha256": "d0b166c976233fdd5ccc5b9d54315160bfeac161475121b00165e70c32d51132",
       "bytes": 1746,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_005/HANDOFF.json": {
+      "sha256": "3da14e850a290d2eaa914e1c3bda23aab2445403aa504c3aaf960a82d6585a2a",
+      "bytes": 3882,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_005/README.md": {
+      "sha256": "7387ade4cad388bf3d13a5ca7cc3735a709f151a5b45bbac8446a18216c8a372",
+      "bytes": 3666,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
@@ -5238,6 +5248,11 @@
       "bytes": 3955,
       "git_mode": "100755"
     },
+    "scripts/research_two_assay_mass_delivery.py": {
+      "sha256": "c4b6a13ec9c8530f3f57fd1caf466b56381c14e193bfdfd19581a78e33aedcc3",
+      "bytes": 7572,
+      "git_mode": "100644"
+    },
     "scripts/run_ewp_porosity_permeability_prior_001.py": {
       "sha256": "fff2c46dad0cc5d0a760ddf515c3365e44119599416086efbf1468025dbe98b0",
       "bytes": 210,
@@ -5951,6 +5966,11 @@
     "tests/test_research_mass_delivery.py": {
       "sha256": "a054136d1da4e8a863e0ccf6b3c5da14623a0edf9596ef968e95e0e6fabf8952",
       "bytes": 3768,
+      "git_mode": "100644"
+    },
+    "tests/test_research_two_assay_mass_delivery.py": {
+      "sha256": "4c6d72efb9be15358655f7b1a7cefffb3b0c521c1077fc5ca9ab80a375a171e7",
+      "bytes": 8208,
       "git_mode": "100644"
     },
     "tests/test_sci_data_fusion_001.py": {
