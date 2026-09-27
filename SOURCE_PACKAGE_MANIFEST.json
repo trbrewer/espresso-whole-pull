@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1383,
-  "total_uncompressed_bytes_excluding_manifest": 22801854,
-  "aggregate_source_sha256": "35c8ba5724fd12538364c7d1289f1b16181728a00072c8fb74c49194972d98f3",
-  "aggregate_sha256": "35c8ba5724fd12538364c7d1289f1b16181728a00072c8fb74c49194972d98f3",
+  "file_count": 1392,
+  "total_uncompressed_bytes_excluding_manifest": 22906467,
+  "aggregate_source_sha256": "226bb41f08c3520c43ae871a235a2eb2ceed94b4e8a60f07a2d52c5afa47addc",
+  "aggregate_sha256": "226bb41f08c3520c43ae871a235a2eb2ceed94b4e8a60f07a2d52c5afa47addc",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2228,14 +2228,59 @@
       "bytes": 484,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_caffeine_delivery_001/PRE_SCORE_REVIEW.json": {
+      "sha256": "236690a327a23ee92f3ba7e621a07ce32bc7b152772cf05836abec5860584078",
+      "bytes": 5228,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_caffeine_delivery_001/PROTOCOL.md": {
       "sha256": "edcdd59f60d58b0b30a23aa0a77c77d98a3a4a2363eb490e6690a2cdfcffcc0d",
       "bytes": 6879,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_caffeine_delivery_001/QUALIFICATION.json": {
+      "sha256": "5b08ad7659e11a370bd8a6841f78a7a17746ad6b3f07fee88e4ef6d5d32c3cdc",
+      "bytes": 3146,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/QUALIFICATION.md": {
+      "sha256": "0d5176ec90bed6e11a7df738f131db670898b3ada32dcd388440d729ce6fc491",
+      "bytes": 4474,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_caffeine_delivery_001/README.md": {
       "sha256": "9acca351ed398e3b6182da7e48a670ed5ebd5999b3da4dbd73c84499c8fe9be2",
       "bytes": 2265,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/RESULT.md": {
+      "sha256": "9f718dc8e2eb4c0fbc160dc801b81e69853588ff777a04b4d572491f83ee78a2",
+      "bytes": 11545,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/RESULTS.json": {
+      "sha256": "f42708bb45acbdd3b637fc6db28c5236ff7e973c02dd5c489ea9f9c2569e7c06",
+      "bytes": 65961,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/RESULT_BINDING.json": {
+      "sha256": "57fe30e6ac2385a774a1bb8af40d99e2678e1ed199322b66337f4ea420c05146",
+      "bytes": 8865,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/RESULT_INTEGRITY_ADDENDUM.json": {
+      "sha256": "ceb2a18c6ad5d0a87c6a61edaa0be77b4cddd178d742bb25f8fdb4811d7bbfe9",
+      "bytes": 4589,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/SCORE_COMPLETION.json": {
+      "sha256": "ad5485b82c920dd59615a0d22a755f3b838b240c0d0ea41031186de5d116809c",
+      "bytes": 471,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/SCORE_RECEIPT.json": {
+      "sha256": "123702efd694252ada6527b258fdb0f6086071948e28bf53d17446f0786babe9",
+      "bytes": 334,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_grudeva_clock_001/HANDOFF.json": {
