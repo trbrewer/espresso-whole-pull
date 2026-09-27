@@ -8,6 +8,8 @@ A2's balanced R is 0.483158 pp and mean absolute pair bias is 0.346410 pp; 9/11 
 
 All 2,200 saved producer/consumer slots are byte-identical. EWP imports exact verified code and preserves numerical allowances, statuses and all four arms. Production dependency lock, native solver and defaults are unchanged.
 
+G0 metadata clarification: the saved arm summaries retain an unused generic `required_adequate_pairs=83` field. It is not an overall decision gate. The declared gate uses balanced error/bias budgets and 9/11 adequate calibration choices, each requiring 8/10 adequate targets. A2 has 81/110 individually adequate pairs and 9/11 adequate choices. The independent reviewer confirmed that the unused field enters no final decision. Saved JSON, scoring code and scores remain unchanged; no rescore occurred.
+
 All shots train other folds; 110 ordered pairs are not independent experiments. Source shots vary, and block order supports neither chronological deployment nor a controlled fixed-recipe claim. Source-derived CC-BY-NC-3.0 treatment and Grudeva permission scope remain separate from software licensing. Private per-shot evidence stays outside Git.
 
 Independent pre-scoring audit approved the exact freeze. Final publication review, software/numerical status and required hosted CI are separate live PR statuses; pending CI is not PASS. MERGE_AUTHORIZED=false; PRODUCTION_ADOPTION_AUTHORIZED=false; PRODUCTION_DEPENDENCY_LOCK_CHANGED=false; NATIVE_EWP_RUNS=0; NO_SUCCESSOR_AUTHORIZED.
