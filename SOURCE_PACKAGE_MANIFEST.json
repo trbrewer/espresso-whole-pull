@@ -28,8 +28,8 @@
   ],
   "file_count": 1383,
   "total_uncompressed_bytes_excluding_manifest": 22801854,
-  "aggregate_source_sha256": "5446452dab13193e61d41c7273eae48df2e469f71a7c54351aa41348c2325892",
-  "aggregate_sha256": "5446452dab13193e61d41c7273eae48df2e469f71a7c54351aa41348c2325892",
+  "aggregate_source_sha256": "35c8ba5724fd12538364c7d1289f1b16181728a00072c8fb74c49194972d98f3",
+  "aggregate_sha256": "35c8ba5724fd12538364c7d1289f1b16181728a00072c8fb74c49194972d98f3",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -5321,7 +5321,7 @@
     "scripts/research_conditional_caffeine_delivery.py": {
       "sha256": "2746ad3bf87e0a9157bb206bff7f52512c2506ec4280976e97fa173d5380057d",
       "bytes": 6201,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/research_conditional_tail_delivery.py": {
       "sha256": "d8a7a88fa781eb123740a72b2af21bc1e1edd2970980c2e1d4f51f3bbb1ff667",
