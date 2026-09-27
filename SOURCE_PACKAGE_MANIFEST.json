@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1381,
-  "total_uncompressed_bytes_excluding_manifest": 22795700,
-  "aggregate_source_sha256": "3648df715f5c3bfcdd0ccba6359bb312784a95ae174a07c1163dd967648adc6f",
-  "aggregate_sha256": "3648df715f5c3bfcdd0ccba6359bb312784a95ae174a07c1163dd967648adc6f",
+  "file_count": 1383,
+  "total_uncompressed_bytes_excluding_manifest": 22801854,
+  "aggregate_source_sha256": "5446452dab13193e61d41c7273eae48df2e469f71a7c54351aa41348c2325892",
+  "aggregate_sha256": "5446452dab13193e61d41c7273eae48df2e469f71a7c54351aa41348c2325892",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -2218,6 +2218,11 @@
       "bytes": 4731,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_caffeine_delivery_001/HANDOFF.json": {
+      "sha256": "42b3f08e4378cf976537bf510dfd1abda5aed8ea8ea9d73e1d40c5bb5fff638e",
+      "bytes": 3889,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_caffeine_delivery_001/MODEL_CARD.md": {
       "sha256": "1fede1b9a3399734c0b2377108799b3ba1f50cf28026466c24aca84a6cf14870",
       "bytes": 484,
@@ -2226,6 +2231,11 @@
     "docs/analysis/sci_md_caffeine_delivery_001/PROTOCOL.md": {
       "sha256": "edcdd59f60d58b0b30a23aa0a77c77d98a3a4a2363eb490e6690a2cdfcffcc0d",
       "bytes": 6879,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_caffeine_delivery_001/README.md": {
+      "sha256": "9acca351ed398e3b6182da7e48a670ed5ebd5999b3da4dbd73c84499c8fe9be2",
+      "bytes": 2265,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_grudeva_clock_001/HANDOFF.json": {
