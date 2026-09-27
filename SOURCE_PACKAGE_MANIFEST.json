@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1369,
-  "total_uncompressed_bytes_excluding_manifest": 22685310,
-  "aggregate_source_sha256": "54376492f545f85aa4ad58f6e4201b3babd6781617db2e687852b2291a3eb0d7",
-  "aggregate_sha256": "54376492f545f85aa4ad58f6e4201b3babd6781617db2e687852b2291a3eb0d7",
+  "file_count": 1375,
+  "total_uncompressed_bytes_excluding_manifest": 22769646,
+  "aggregate_source_sha256": "8bac1ad78ebaec34ea5c02b970d0c11f2cf4b2304eff5ac65a7ff77992ec56df",
+  "aggregate_sha256": "8bac1ad78ebaec34ea5c02b970d0c11f2cf4b2304eff5ac65a7ff77992ec56df",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -729,8 +729,8 @@
       "git_mode": "100644"
     },
     "docs/EXTERNAL_ESPRESSO_DATA.md": {
-      "sha256": "b6d98b8298887826a518d48107bc766c817e966013ce8e625e1fc49391ee82ef",
-      "bytes": 10223,
+      "sha256": "a78f3d1b88c32816458af24f773a4ffb549ccc1d9d5632a86b957a743b785503",
+      "bytes": 11164,
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "818788b508c8b350e18ea2bfa782120e645bc8135faf588ec5a5e26c00728c6f",
-      "bytes": 25945,
+      "sha256": "259acfa178e9c33a5c8bd365894da638299fafc27a311e36ed954f0a5ed8fce0",
+      "bytes": 27057,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2423,9 +2423,39 @@
       "bytes": 3748,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_mass_delivery_006/PRE_SCORE_REVIEW.json": {
+      "sha256": "ad070f8e485907e5e38f7b28f90536d2b3c9c3f167e1f502aad51df5b5a5fd5d",
+      "bytes": 9025,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_mass_delivery_006/README.md": {
       "sha256": "3a3522dfa4f6801d8a8723d6153101bccb4e1cc9d8c98ce276a5ed1069209066",
       "bytes": 3534,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_006/RESULT.md": {
+      "sha256": "aeff47b73cedcee079117fe90d30300e45a0cd996742f185547502807fe52931",
+      "bytes": 4960,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_006/RESULTS.json": {
+      "sha256": "c1cae77cabfd55db0ba93989203537b773fa9334d8416f9082aae6729b9071b6",
+      "bytes": 58950,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_006/RESULT_BINDING.json": {
+      "sha256": "4c91609fc5cc60ad9cb215147f20d3cfe4a4bfeee6dd84c724aeb120a622a829",
+      "bytes": 7703,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_006/SCORE_COMPLETION.json": {
+      "sha256": "e2116d0b46b30445521253777226f9b3735ea83d8e04f07c7b9484a834a1271a",
+      "bytes": 371,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_006/SCORE_RECEIPT.json": {
+      "sha256": "1fb683399e7021db1ccc271d5e2cac04ce4c129438b56b47eb85795917201275",
+      "bytes": 330,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
@@ -4169,8 +4199,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "0fb64b212fc39f750e3138523f5e6cb2aab49e285f745a0f400124726a1f5162",
-      "bytes": 12546,
+      "sha256": "eddc07215825398bcd0ba94f19465992f51b1cfe9ec2d1c220906acc2ae81ef3",
+      "bytes": 13490,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
