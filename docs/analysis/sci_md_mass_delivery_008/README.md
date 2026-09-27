@@ -1,5 +1,7 @@
 # One-calibration-shot source adaptation consumer
 
+[Executed result](RESULT.md): `ADAPTATION_ADEQUATE_INCREMENT_NOT_ESTABLISHED`. One independently approved score; final publication review and CI remain separate PR statuses.
+
 SCI-MD-MASS-DELIVERY-008; G1 / NO_GOVERNING_PHYSICS_CHANGE.
 The thin research consumer imports the exact evaluated Puckworks implementation
 and verifies actual file bytes and committed blobs, accepted parent models,
