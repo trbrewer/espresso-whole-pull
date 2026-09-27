@@ -1,0 +1,46 @@
+{
+  "adapter_files": {
+    "puckworks/analysis/grudeva_clock.py": "4d8d5ef6d47bd40e0522b3d091e306f2126ee3ed78194f90cfa9a58f4519d57d",
+    "puckworks/analysis/grudeva_pooled_tail_delivery.py": "75c84e716f66201cc8623b96ba903c20763299b1f2e511f043517e20fc247910"
+  },
+  "adapter_schema": "grudeva-pooled-tail/1",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "claims": [
+    "RESEARCH_ONLY",
+    "TARGET_EXPOSED",
+    "RETROSPECTIVE_CROSS_SOURCE_CONDITIONAL_PREDICTION",
+    "PHYSICAL_VALIDATION_NOT_ESTABLISHED"
+  ],
+  "execution_producer_commit": "6190aa1c58851bcf2258d548f45e880439da8f96",
+  "execution_producer_tree": "f97685c8a613a36a15b52c9881e87f9178861755",
+  "governance": "G1",
+  "immutable_parent_producer_commit": "0f130d4f2dfca552e56cd7d7e96bb73b8c50f421",
+  "immutable_parent_producer_tree": "9f6b5346ea7cfceef4d014c80b235818eee0a23f",
+  "merge_authorized": false,
+  "native_ewp_runs": 0,
+  "parent_artifact_byte_hashes": {
+    "docs/analysis/sci_md_mass_delivery_006/models/C0.json": "4af994f532d65cc9989e426c802ba4069838eb3564155781ce591330cb2318a5",
+    "docs/analysis/sci_md_mass_delivery_006/models/C1.json": "3abb77e22cd24f75afd8958178045badbb28cc98327690d31fd16608141cf034",
+    "docs/analysis/sci_md_mass_delivery_006/models/C2.json": "c0e38da25edf5441b88f444e3270b5b83f2ea94773fc09048009a691ac7c230e",
+    "puckworks/analysis/conditional_tail_delivery.py": "4fb20dd42e0ed7d5a758f549d616131988a1dab05ddc49b9253441606f155e33"
+  },
+  "parent_handoff_path": "docs/analysis/sci_md_mass_delivery_006/HANDOFF.json",
+  "parent_handoff_sha256": "b9b55bc137f9a97839e6f3b8aa24725a37de6acb9ed849baf2200dab59450069",
+  "parent_model_canonical_identities": {
+    "C0": "d486067fc8e8c381860f2473bfe0d14176f0a5abc3f8fed7cd75525923d82d86",
+    "C1": "43b08545dd7adc0a63d2dba696b4e29864385d3e25cb9676989d1c2374ff1145",
+    "C2": "960e0c7dd37d3ba876f95a44c00c69f222e53c022a641e4b092a2af686fb9516"
+  },
+  "primary": "C2",
+  "production_adoption_authorized": false,
+  "production_dependency_lock_changed": false,
+  "real_fits": 0,
+  "rights": {
+    "grudeva": "PERMISSION_DOCUMENTED; no raw redistribution",
+    "parent_model": "CC-BY-NC-3.0; Pannusch/Schmieder; Mendeley 10.17632/y2tz67f6ry.1; derived artifact, not MIT"
+  },
+  "source_record_sha256": "660ba40fc9451a8c6601c40ab7350cb3f82264c4260432fabe2e99c161833eb5",
+  "source_sha256": "291cadb1d06a009f758c158c95b020db551c127333e9dec6f6c581eac320130c",
+  "successor_authorized": false,
+  "task": "SCI-MD-MASS-DELIVERY-007"
+}
