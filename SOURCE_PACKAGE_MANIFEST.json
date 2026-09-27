@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1359,
-  "total_uncompressed_bytes_excluding_manifest": 22633672,
-  "aggregate_source_sha256": "73e3da9004b33ac4081667176559e18bbc281c4813d371e78be04a56555a7629",
-  "aggregate_sha256": "73e3da9004b33ac4081667176559e18bbc281c4813d371e78be04a56555a7629",
+  "file_count": 1365,
+  "total_uncompressed_bytes_excluding_manifest": 22666637,
+  "aggregate_source_sha256": "e099b54791cf3c121ca78ed12bafda9f08b56f1a16f7fcfca3add7bd90c4eeb9",
+  "aggregate_sha256": "e099b54791cf3c121ca78ed12bafda9f08b56f1a16f7fcfca3add7bd90c4eeb9",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -729,8 +729,8 @@
       "git_mode": "100644"
     },
     "docs/EXTERNAL_ESPRESSO_DATA.md": {
-      "sha256": "daac5c3250b79f4ed948788eb9a502f6c224ee6cba84af566528cb7cf1d6b3aa",
-      "bytes": 9715,
+      "sha256": "b6d98b8298887826a518d48107bc766c817e966013ce8e625e1fc49391ee82ef",
+      "bytes": 10223,
       "git_mode": "100644"
     },
     "docs/FILE_TREE.md": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "7a2a3b69ea3729182e98e706a5eefcc8d66f64938afd8b2f914b49c6cd1b4b6a",
-      "bytes": 25006,
+      "sha256": "818788b508c8b350e18ea2bfa782120e645bc8135faf588ec5a5e26c00728c6f",
+      "bytes": 25945,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2396,6 +2396,26 @@
     "docs/analysis/sci_md_mass_delivery_004/SOFTWARE_QA.json": {
       "sha256": "d0b166c976233fdd5ccc5b9d54315160bfeac161475121b00165e70c32d51132",
       "bytes": 1746,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_005/HANDOFF.json": {
+      "sha256": "c2fcf3314d8c12c047e9d063997e4a3b427c70fec0d89b6acd565008ae4cebb9",
+      "bytes": 5014,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_005/QA.md": {
+      "sha256": "42b5d76405915ae608615e0922e49d32aea3d83294465ded3dab52e3780bacc3",
+      "bytes": 2393,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_005/README.md": {
+      "sha256": "ad1befef737957fddaa6dcd19c94fb0ff3ee88606dadadf29d46eb0eea1d26b9",
+      "bytes": 3829,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mass_delivery_005/RESULT.md": {
+      "sha256": "c9e5c3bbeec4c9977631ba8311e5f8a8de0ca48c5974c70e27020d094fe4ce69",
+      "bytes": 3778,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
@@ -4139,8 +4159,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "e2309ccb52b658c8c312db8c13f24767c7854cd8aedf3f3686a0f3f283ae6468",
-      "bytes": 11822,
+      "sha256": "0fb64b212fc39f750e3138523f5e6cb2aab49e285f745a0f400124726a1f5162",
+      "bytes": 12546,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -5238,6 +5258,11 @@
       "bytes": 3955,
       "git_mode": "100755"
     },
+    "scripts/research_two_assay_mass_delivery.py": {
+      "sha256": "c4b6a13ec9c8530f3f57fd1caf466b56381c14e193bfdfd19581a78e33aedcc3",
+      "bytes": 7572,
+      "git_mode": "100755"
+    },
     "scripts/run_ewp_porosity_permeability_prior_001.py": {
       "sha256": "fff2c46dad0cc5d0a760ddf515c3365e44119599416086efbf1468025dbe98b0",
       "bytes": 210,
@@ -5951,6 +5976,11 @@
     "tests/test_research_mass_delivery.py": {
       "sha256": "a054136d1da4e8a863e0ccf6b3c5da14623a0edf9596ef968e95e0e6fabf8952",
       "bytes": 3768,
+      "git_mode": "100644"
+    },
+    "tests/test_research_two_assay_mass_delivery.py": {
+      "sha256": "4c6d72efb9be15358655f7b1a7cefffb3b0c521c1077fc5ca9ab80a375a171e7",
+      "bytes": 8208,
       "git_mode": "100644"
     },
     "tests/test_sci_data_fusion_001.py": {

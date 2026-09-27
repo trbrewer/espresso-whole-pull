@@ -922,6 +922,40 @@
       "exhaustion_decision": null,
       "review_trigger": "Separate owner authorization for changed scientific question; no automatic successor",
       "notes": "Execution complete: one audited scoring pass. A/D FAIL: complete C01 shot contributions alone exceed original condition error budgets. B/C/E incomplete-support; three unavailable prefixes and four out-of-domain intervals remain. Material interpretation correction explicitly supersedes the support-only first report; frozen protocol/code and raw scores retained; no rescore. No corpus exhaustion; physical validation NOT_ESTABLISHED."
+    },
+    {
+      "opportunity_id": "SCI-MD-MASS-DELIVERY-005",
+      "task_id": "SCI-MD-MASS-DELIVERY-005",
+      "title": "Two-assay amplitude-and-decay prediction",
+      "data_families": [
+        "pannusch2024",
+        "schmieder2023"
+      ],
+      "scientific_question": "Do the first two fraction masses and TDS estimate scale and decay sufficiently to improve later-fraction prediction over equally informed fixed shapes?",
+      "model_component": "isolated research two-assay mass delivery",
+      "status": "COMPLETE_NEGATIVE",
+      "priority": 1,
+      "prerequisites": [
+        "explicit bounded owner task",
+        "merged 001\u2013004 baseline identities",
+        "independent exact-freeze pre-scoring approval"
+      ],
+      "current_evidence": "TWO_ASSAY_MASS_INADEQUATE_ON_DECLARED_OBSERVED_WINDOWS; 161/168 support; one score; A/B/C/D fail both panels; E passes PRED only",
+      "expected_information": "Fraction 2 explicitly conditions same-shot decay as well as amplitude; existing observations, no new experiments",
+      "positive_action": "Retain only a specifically qualified conditional research estimator",
+      "negative_action": "Reject this fixed first-two-assay two-parameter family; no variant tuning",
+      "null_action": "Report adequate simpler comparators without automatic adoption",
+      "blocked_action": "Name actual source, inversion, support, numerical or review limitation",
+      "claim_ceiling": "SOURCE_INTERNAL_TARGET_EXPOSED_RETROSPECTIVE_TWO_ASSAY_CONDITIONED_COMPARISON_ON_DECLARED_OBSERVED_WINDOWS",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mass_delivery_005/RESULT.md",
+        "docs/analysis/sci_md_mass_delivery_005/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner authorization for a changed scientific question; no automatic successor",
+      "notes": "All 252 states and 966 supported predictions numerically qualify. Full suffix inadequate with incomplete coverage: C01 complete-shot failure survives using denominator three. 84 rate inversions and 168 amplitude updates; zero global refits, native runs, production/default/lock changes. Preserve 004 inadequate disposition. Puckworks #285/#286; EWP #191/#192 OPEN_UNMERGED. Owner PR disposition only; no successor or laboratory action."
     }
   ],
   "laboratory_gate": {

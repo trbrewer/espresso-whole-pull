@@ -1,5 +1,7 @@
 # External espresso data — EWP use map
 
+[SCI-MD-MASS-DELIVERY-005](analysis/sci_md_mass_delivery_005/RESULT.md): accepted Pannusch/Schmieder reconstruction and all six originals inspected. Exactly 42 shots, 84 conditioning observations, 161/168 primary future windows; seven explicit source/domain gaps. The fixed first-two-assay primary is inadequate despite qualified numerics. SOURCE_INTERNAL / TARGET_EXPOSED / RETROSPECTIVE_TWO_ASSAY_CONDITIONED_COMPARISON; no corpus exhaustion, laboratory recommendation, production authority or successor.
+
 ## SCI-MD-MO-TRANSFER-001 conservative reference (2026-09-24)
 
 G1 / NO_GOVERNING_PHYSICS_CHANGE. [Exact research handoff](analysis/sci_md_mo_transfer_001/RESULT.md):
