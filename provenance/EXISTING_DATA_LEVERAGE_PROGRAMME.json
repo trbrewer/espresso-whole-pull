@@ -886,6 +886,42 @@
       "status": "COMPLETE_NEGATIVE",
       "task_id": "SCI-MD-MASS-DELIVERY-003",
       "title": "One-fraction-anchored remaining-delivery prediction"
+    },
+    {
+      "blocked_action": "preserve source-prefix and domain limits and narrower diagnostics",
+      "claim_ceiling": "SOURCE_INTERNAL_TARGET_EXPOSED_CONDITIONAL_TRANSFER_NOT_PHYSICAL_VALIDATION",
+      "current_evidence": "30 anchors;150 source-eligible suffix assays;143 supported per arm;715/750 qualified prediction records;one score",
+      "data_families": [
+        "pannusch2024",
+        "schmieder2023"
+      ],
+      "disposition": "TRANSFER_CLAIM_LIMITED_BY_SOURCE_COORDINATES_AND_FROZEN_MASS_DOMAIN",
+      "evidence_path": "docs/analysis/sci_md_mass_delivery_004/QUALIFICATION.md",
+      "expected_information": "existing-source transfer outside calibration identities",
+      "model_component": "isolated research anchored empirical consumer",
+      "negative_action": "report bounded error failure without rescue fit",
+      "next_action": "OWNER_PR_DISPOSITION_NO_SUCCESSOR_AUTHORIZED",
+      "null_action": "retain separate axes without candidate replacement",
+      "opportunity_id": "SCI-MD-MASS-DELIVERY-004",
+      "positive_action": "restricted research qualification only if all-ten A/B/C/D pass",
+      "prerequisites": [
+        "merged 001/002/003 artifacts and runtime",
+        "independent exact-freeze pre-scoring approval"
+      ],
+      "priority": 1,
+      "scientific_question": "Can fraction-1 anchored frozen empirical delivery transfer across the ten other FIT conditions?",
+      "status": "BLOCKED_DATA_JOIN",
+      "task_id": "SCI-MD-MASS-DELIVERY-004",
+      "title": "Frozen empirical transfer across other source grind-and-recipe regimes",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mass_delivery_004/QUALIFICATION.md",
+        "docs/analysis/sci_md_mass_delivery_004/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner authorization for changed scientific question; no automatic successor",
+      "notes": "Execution complete: one audited scoring pass. All-ten qualification blocked by three unavailable measured prefixes and four intervals beyond frozen model support. Reporting-only attribution addendum; no rescore. No corpus exhaustion; physical validation NOT_ESTABLISHED."
     }
   ],
   "laboratory_gate": {
