@@ -1,5 +1,7 @@
 # Development History
 
+SCI-MD-MASS-DELIVERY-007 completed one independently approved frozen cross-source score: **FROZEN_CONDITIONAL_TRANSFER_INADEQUATE_ON_DECLARED_COHORT**. C2 adequacy=FAIL; I0/I1=PASS/PASS; coverage/numerics=PASS/PASS. 11/13 qualified shots, 55/55 later vials per arm, 98 original assays summarized into 22 pooled inputs. Zero new fits, optimizer calls or native runs. Retrospective, target-exposed and conditional on collected beverage mass; PHYSICAL_VALIDATION=NOT_ESTABLISHED. No production adoption, lock/default change, merge, laboratory work or successor. Parent 006 and GRUDEVA-CLOCK-001 PRs verified merged at intake; their artifacts remain unchanged. Linked draft PRs Puckworks #292 / EWP #198 remain open/unmerged. [Result](analysis/sci_md_mass_delivery_007/RESULT.md).
+
 - XSV-TAICHI-001 execution completion: 19/19 governed LBM cases and 8/8 final
   OpenFOAM case identities passed the frozen synthetic closure-interface
   gates. One original radial pre-solve attempt is retained as protocol-invalid;

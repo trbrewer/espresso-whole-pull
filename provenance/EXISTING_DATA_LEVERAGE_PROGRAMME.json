@@ -991,6 +991,42 @@
       "exhaustion_decision": null,
       "review_trigger": "Separate owner authorization for production adoption or a changed scientific question; no automatic successor",
       "notes": "549 starts, all converged; 98012 residual calls; 177/180 FIT suffix windows; 380 qualified predictions out of 384 intended statuses; one independently approved score. C05 loses to learned controls; all C08 shots extrapolate m2. Source/internal exposure and CC-BY-NC treatment retained. Puckworks #287/#288 and EWP #193/#194; draft PRs unmerged, owner disposition only. No physical validation, native run, production change, acquisition or laboratory action."
+    },
+    {
+      "opportunity_id": "SCI-MD-MASS-DELIVERY-007",
+      "task_id": "SCI-MD-MASS-DELIVERY-007",
+      "title": "Mass-aligned frozen cross-source conditional TDS delivery",
+      "data_families": [
+        "grudeva2025",
+        "pannusch2024",
+        "schmieder2023"
+      ],
+      "scientific_question": "Does frozen C2 transfer to Grudeva with two mass-conserving prefix pools, and earn increments against frozen C0/C1?",
+      "model_component": "research-only immutable conditional tail runtime and pooled source adapter",
+      "status": "COMPLETE_NEGATIVE",
+      "priority": 1,
+      "prerequisites": [
+        "Explicit bounded owner task",
+        "Exact accepted parent and source identities",
+        "Independent exact-freeze pre-score approval"
+      ],
+      "current_evidence": "FROZEN_CONDITIONAL_TRANSFER_INADEQUATE_ON_DECLARED_COHORT",
+      "expected_information": "New cross-source prediction test using frozen training means and measured geometry; no fitting",
+      "positive_action": "Retain bounded portability/increment result for owner disposition only",
+      "negative_action": "Reject this frozen transfer on the declared cohort; no general mass-coordinate rejection",
+      "null_action": "Report adequate simpler arm or actual mixed/unresolved vector without changing C2 primary",
+      "blocked_action": "Name actual source, parent, numerical or review limitation",
+      "claim_ceiling": "RETROSPECTIVE_TARGET_EXPOSED_CROSS_SOURCE_MASS_CONDITIONED_PREDICTION_ONLY",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mass_delivery_007/RESULT.md",
+        "docs/analysis/sci_md_mass_delivery_007/RESULT_BINDING.json",
+        "docs/analysis/sci_md_mass_delivery_007/HANDOFF.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner authorization; no automatic successor or production adoption",
+      "notes": "SCI-MD-MASS-DELIVERY-007 completed one independently approved frozen cross-source score: **FROZEN_CONDITIONAL_TRANSFER_INADEQUATE_ON_DECLARED_COHORT**. C2 adequacy=FAIL; I0/I1=PASS/PASS; coverage/numerics=PASS/PASS. 11/13 qualified shots, 55/55 later vials per arm, 98 original assays summarized into 22 pooled inputs. Zero new fits, optimizer calls or native runs. Retrospective, target-exposed and conditional on collected beverage mass; PHYSICAL_VALIDATION=NOT_ESTABLISHED. No production adoption, lock/default change, merge, laboratory work or successor. Parent 006 and GRUDEVA-CLOCK-001 PRs verified merged at intake; their artifacts remain unchanged. Linked draft PRs Puckworks #292 / EWP #198 remain open/unmerged."
     }
   ],
   "laboratory_gate": {
