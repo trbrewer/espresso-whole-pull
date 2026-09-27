@@ -52,3 +52,5 @@ Assayed-support solute sums are not measured whole-cup totals. Raw sources,
 observations, states, row predictions, per-shot results and logs stay private.
 Pannusch/Schmieder source-derived artifacts retain CC-BY-NC-3.0 treatment and
 Mendeley 10.17632/y2tz67f6ry.1 attribution, separate from software licensing.
+
+Executed result: [RESULT.md](RESULT.md); separate [QA/review status](QA.md). Actual estimation was 84 two-parameter updates and 168 analytical amplitude updates.
