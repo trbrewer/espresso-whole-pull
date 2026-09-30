@@ -35,7 +35,7 @@ This supports `FROZEN / QUALIFIED` for the bounded WP-0.1 numerical implementati
 
 R0 is an engineering calibration scenario. Saturated permeability was selected to place the simplified 20 g, 58 mm, 9 bar case near an approximately 40 g beverage endpoint at 30 s. That endpoint is not an independent validation target.
 
-The extraction-rate constant, initial extractable fraction, effective diffusivity, and concentration ceiling are engineering assumptions for WP-0.1. The resulting TDS and extraction yield are internally conserved model outputs, not validated chemistry for a named coffee.
+The extraction-rate constant, initial extractable fraction, effective diffusivity, and release-suppression concentration are engineering assumptions for WP-0.1. The resulting TDS and extraction yield are internally conserved model outputs, not validated chemistry for a named coffee. The concentration factor suppresses new release above its threshold; it does not enforce an upper bound on the discrete solved concentration. The qualified R0 boundedness result applies to its tested configuration and timestep.
 
 ## Principal physical assumptions
 
@@ -47,7 +47,7 @@ The extraction-rate constant, initial extractable fraction, effective diffusivit
 - sharp-front pore-volume wetting;
 - incompressible saturated Darcy flow;
 - uniform, static permeability and porosity in R0;
-- one effective soluble inventory with first-order release and a capacity ceiling;
+- one effective soluble inventory with first-order release suppressed by liquid concentration;
 - conservative advection–dispersion in the wetted pore volume;
 - no gravity in the reference configuration.
 
