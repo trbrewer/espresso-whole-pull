@@ -35,6 +35,21 @@ Using 20 g, 1400 kg/m³, and porosity 0.40 gives:
 H = 0.009011660896432553 m
 ```
 
+This assumes a dry bulk density of `1400*(1-0.40) = 840 kg/m³`;
+it is not a measured depth or bulk density of the R0 coffee. Skeletal density,
+particle-envelope density and bulk density have different volume bases.
+Intraparticle voids cannot be added to the single R0 porosity while also
+treating that porosity as interparticle hydraulic space without a new storage
+contract. A depth-only sensitivity at fixed porosity is consequently a
+diagnostic scenario, not a source-qualified replacement material.
+
+The native initial soluble inventory is `dryDose*extractableFraction`, divided
+by the actual full mesh volume to initialize `remainingExtractable` in kg/m³
+of bed. Changing depth at fixed dose therefore changes inventory concentration,
+as well as `phi*A*H` water storage and `A*k/(mu*H)` saturated conductance.
+Scaling permeability with depth preserves that conductance algebraically;
+it is not an independent calibration or validation.
+
 The exact full-cylinder multiplier for the straight-sided block is:
 
 ```text
@@ -85,6 +100,23 @@ d(m_s)/dt = -R_ext
 
 During filling, dissolved bulk mass is conserved as the wetted volume increases. After breakthrough, the finite-volume transport equation advances solute through the saturated bed. Inlet diffusive back-loss is accumulated explicitly.
 
+`m_s` is remaining soluble mass per bulk cell volume, `c` is mass per liquid
+volume, and `R_ext` is mass per bulk volume per second. Each scalar or indexed
+source uses the beginning-of-step inventory and concentration, the current
+wet mask, and an inventory cap `R_ext <= m_s/delta_t`. The concentration
+factor suppresses release when `c >= c_sat`; it does not project the solved
+concentration onto `c <= c_sat`. Negative concentrations are clipped after
+the transport solve. Boundedness and conservation must therefore be checked
+for the actual scenario and timestep; a successful R0 capacity check is not
+a global discrete maximum principle.
+
+For example, a fully saturated, closed, zero-diffusion R0-volume cell starts
+with `m_s=235.2 kg/m³` of bed and `c=0`. A deliberately coarse 5 s step at
+`k_ext=0.15 s^-1` releases `176.4 kg/m³` of bed, yielding
+`c=176.4/0.4=441 kg/m³`. The following step suppresses further release.
+This diagnostic conserves soluble mass while exceeding `c_sat=180 kg/m³`;
+it is not an admissible R0 timestep or a proposed parameter change.
+
 ## Cup and inventory accounting
 
 At every step:
@@ -103,6 +135,13 @@ initial extractable solid
 ```
 
 Cup beverage mass is cup water plus cup solute. TDS and extraction yield are calculated from the cup and initial dose inventories. Retained water and dissolved solute remain separate outputs.
+
+The frozen R0 30 s endpoint is 40.957867483 g beverage, 23.938453103% EY and
+11.689306389% TDS. At the distinct 40 g beverage event, linear interpolation
+of native accumulated masses gives 29.374480171 s, 23.624029229% EY and
+11.812014614% TDS. Interpolation is exact for the solver's constant per-step
+cup increments; continuum timestep error remains separate. A scenario that
+has not crossed 40 g by its end time has no 40 g event result.
 
 ## Primary fields
 
