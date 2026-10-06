@@ -1,5 +1,24 @@
 # Onboarding
 
+## PW/EWP development guide
+
+The [canonical development guide](https://github.com/trbrewer/puckworks/blob/docs/espresso-development-guide-001/docs/research/ESPRESSO_DEVELOPMENT_GUIDE.md)
+answers what exists, what it predicts, how it compares with eligible evidence,
+and which next decisions are justified. This branch-aware link points to the
+unmerged guide; switch it to `main` only after the PW guide merges. Reviewed on
+2026-10-06 at PW `f08677b177d9569068941cbb602c7b88f3aca769` and EWP
+`73ec476ffe6ac626705ca949e28b32935ddf2992`.
+
+For EWP, the guide preserves WP03's numerically qualified but reversed pressure
+ranking, the existing stress-dependent permeability law, and SCI-MD-012's
+retirement of E2C from current priority. Any new mechanism decision needs a
+distinct identifiable hypothesis and matched source/observation contract. PW
+main capabilities are not automatically adopted by the locked dependency.
+SCI-ED-003 execution and Stage F/D remain unauthorized;
+`PHYSICAL_VALIDATION=NOT_ESTABLISHED`. This G0 documentation change is
+`NO_GOVERNING_PHYSICS_CHANGE`; it starts no successor and changes no solver,
+parameters, historical evidence or dependency authority.
+
 ## External espresso data — start here
 
 Read the [canonical Puckworks espresso data guide](https://github.com/trbrewer/puckworks/blob/main/docs/data/ESPRESSO_DATA_GUIDE.md)
