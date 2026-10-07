@@ -2,12 +2,10 @@
 
 ## PW/EWP development guide
 
-The [development guide — reviewed candidate snapshot](https://github.com/trbrewer/puckworks/blob/9ba015a8aa3fa2d2c606020390b452053bbcdf84/docs/research/ESPRESSO_DEVELOPMENT_GUIDE.md)
+The [development guide](https://github.com/trbrewer/puckworks/blob/main/docs/research/ESPRESSO_DEVELOPMENT_GUIDE.md)
 answers what exists, what it predicts, how it compares with eligible evidence,
-and which next decisions are justified. This exact PW documentation commit is
-the reviewed candidate in [PW PR #322](https://github.com/trbrewer/puckworks/pull/322),
-not merged main. After the PW guide merges, replace the commit SHA in this link
-with `main` to use the canonical guide. The 2026-10-06 source-attribution closeout
+and which next decisions are justified. The canonical guide was merged in
+[PW PR #322](https://github.com/trbrewer/puckworks/pull/322). The 2026-10-06 source-attribution closeout
 inspected both hash-verified October 5 reviews; the guide records the initial
 delivery's missing-input limitation separately. Reviewed source baselines are
 PW `f08677b177d9569068941cbb602c7b88f3aca769` and EWP
