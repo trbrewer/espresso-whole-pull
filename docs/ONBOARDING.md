@@ -2,6 +2,14 @@
 
 ## PW/EWP development guide
 
+The later [updated independent review of thresholds, capabilities and development
+priorities (9 October 2026)](https://github.com/trbrewer/puckworks/blob/36e72d5f54d9d8d37746ff5bf97b91dc0a910d2e/docs/research/ESPRESSO_THRESHOLD_AND_CAPABILITY_REVIEW_2026-10-09.md)
+is preserved in Puckworks at the exact linked commit. EWP links to that canonical
+document rather than keeping an independently edited copy. It is owner-supplied
+review and recommendations, not new scientific adjudication or execution
+authorization; its T01–T12 action register does not start those tasks or change
+the production dependency lock. `PHYSICAL_VALIDATION=NOT_ESTABLISHED`.
+
 The [development guide](https://github.com/trbrewer/puckworks/blob/main/docs/research/ESPRESSO_DEVELOPMENT_GUIDE.md)
 answers what exists, what it predicts, how it compares with eligible evidence,
 and which next decisions are justified. The canonical guide was merged in
