@@ -11,7 +11,7 @@ authorization; its T01–T12 action register does not start those tasks or chang
 the production dependency lock. `PHYSICAL_VALIDATION=NOT_ESTABLISHED`.
 
 The complete [independent PW/EWP technical review by GPT-6 Astra Pro,
-18 October 2026](https://github.com/trbrewer/puckworks/blob/e690af5412c74ffcfd6c406bbe9a84c87f0ac116/docs/research/REVIEW_PW_EWP_2026-10-18_gpt6-astra-pro.md)
+18 October 2026](https://github.com/trbrewer/puckworks/blob/4170b2229e6875227d09517dceb840ccdaf4d41a/docs/research/REVIEW_PW_EWP_2026-10-18_gpt6-astra-pro.md)
 is an independent AI technical review supplied for preservation; PW holds the
 canonical report at the exact artifact commit above. Its recommendations R-01–R-08
 require separate subsequent decisions and are not started by this filing.
