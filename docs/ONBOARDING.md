@@ -10,6 +10,15 @@ review and recommendations, not new scientific adjudication or execution
 authorization; its T01–T12 action register does not start those tasks or change
 the production dependency lock. `PHYSICAL_VALIDATION=NOT_ESTABLISHED`.
 
+The complete [independent PW/EWP technical review by GPT-6 Astra Pro,
+18 October 2026](https://github.com/trbrewer/puckworks/blob/4170b2229e6875227d09517dceb840ccdaf4d41a/docs/research/REVIEW_PW_EWP_2026-10-18_gpt6-astra-pro.md)
+is an independent AI technical review supplied for preservation; PW holds the
+canonical report at the exact artifact commit above. Its recommendations R-01–R-08
+require separate subsequent decisions and are not started by this filing.
+This G0 reference is `NO_GOVERNING_PHYSICS_CHANGE`: it changes no solver,
+parameter, production dependency lock, historical result or physical-validation
+status. `PHYSICAL_VALIDATION=NOT_ESTABLISHED`.
+
 The [development guide](https://github.com/trbrewer/puckworks/blob/main/docs/research/ESPRESSO_DEVELOPMENT_GUIDE.md)
 answers what exists, what it predicts, how it compares with eligible evidence,
 and which next decisions are justified. The canonical guide was merged in
